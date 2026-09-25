@@ -126,7 +126,8 @@ def test_repository_has_one_enforced_smart_note_write_boundary():
             # This module writes only its derived event validation/index artifacts.
             pass
         elif "smart-notes" in source and "write_text" in source:
-            violations.append(rel + ": Smart Note writer outside canonical projection boundary")
+            if "SMART_NOTES_ROOT" in source or "canonical_smart_note_path" in source:
+                violations.append(rel + ": Smart Note writer must delegate to canonical projection API")
         if "SUPERBRAIN/SMART-NOTES" in source or "NAYANET/SMART-NOTES" in source or ".naya/memory/notes" in source:
             violations.append(rel + ": alternate Smart Note namespace")
         if "_allocate_ib_id" in source or "identity_cursor" in source:
