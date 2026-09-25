@@ -23,3 +23,17 @@ def test_runtime_deployment_fails_when_live_hub_lacks_canonical_deep_link(monkey
     assert verifier.check_runtime_deployment() is False
     assert verifier.results["checks"]["runtime_deployment"]["status"] == "FAIL"
     assert verifier.results["checks"]["runtime_deployment"]["reason"] == "LIVE_SOURCE_MISSING_DEEP_LINK_CONTRACT"
+
+
+class GoodResponse:
+    status = 200
+    def read(self):
+        return b"NAYA-CANONICAL-IB-DEEP-LINK-V1 NayaHubDeepLink retrieveIntelligentBlock"
+
+def test_runtime_deployment_passes_when_live_hub_contains_deep_link_contract(monkeypatch):
+    module = load_verifier()
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *args, **kwargs: GoodResponse())
+    verifier = module.DeploymentVerifier()
+    assert verifier.check_runtime_deployment() is True
+    assert verifier.results["checks"]["runtime_deployment"]["status"] == "PASS"
+    assert verifier.results["checks"]["runtime_deployment"]["reason"] == "LIVE_SOURCE_CONTRACT_PRESENT"
