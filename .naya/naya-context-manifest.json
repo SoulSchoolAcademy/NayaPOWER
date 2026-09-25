@@ -7,8 +7,8 @@
   "principle": "FULL SYSTEM AWARENESS + SELECTIVE DEEP LOADING",
   "optimization": "MAXIMUM USEFUL PERFORMANCE: quality, correctness, reliability, continuity, verification, safety, efficiency, and minimum unnecessary complexity",
   "boot_order": [
-    ".naya/codex/NAYAPOWER-BRAIN/README.md",
     "SUPERBRAIN/AI-BOOT/START-HERE.md",
+    ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
     "SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
     "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md",
     "SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md",
@@ -175,6 +175,10 @@
       "canonical": "SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md",
       "implementation": ".naya/runtime/project_intelligence_reconstruction.py",
       "purpose": "Canonical distilled current-truth reconstruction: authorized events, semantic subjects, effective-time precedence, explicit supersession, stale/history preservation, evidence-backed resolution, conflict/unknown preservation, causal lineage, and cold-Naya continuation."
+    },
+    "nayapower_brain_map": {
+      "canonical": ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
+      "purpose": "Compact cognitive index mapping the 00–14 domains to the real authority layers; navigation only, not a second memory store or source of truth."
     }
   },
   "task_routes": {
@@ -426,5 +430,6 @@
     "successor_must_inherit_verified_project_state_not_chat_history": true,
     "execution_baton_is_required_for_substantive_handoff": true,
     "next_execution_prompt_is_required_for_substantive_handoff": true
-  }
+  },
+  "boot_routes": {}
 }
