@@ -21,4 +21,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify fresh-start memory boundary
-        run: python .naya/memory/verify_memory_surface.py
+        run: |
+          python .naya/memory/verify_memory_surface.py
+          python -m pytest .naya/memory/test_verify_memory_surface.py -q
