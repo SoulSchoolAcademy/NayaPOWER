@@ -1,4 +1,4 @@
-﻿import ast
+import ast
 from pathlib import Path
 
 SOURCE = Path(__file__).with_name('smart_note_enforcement.py')
