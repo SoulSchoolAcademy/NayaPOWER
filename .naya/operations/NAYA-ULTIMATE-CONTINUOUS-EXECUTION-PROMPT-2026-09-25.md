@@ -127,6 +127,8 @@ CONFLICTED
 
 Do not bulk-move historical material without preserving lineage and authority.
 
+**ENFORCEMENT SELF-TEST:** any machine-enforced canonical-memory rule MUST be tested against at least one known-valid canonical projection, one known-invalid misplaced projection, and one explicitly allowed historical/archive projection before it can be treated as VERIFIED. The validator MUST NOT contradict the canonical contract it enforces.
+
 ### P0-5 — LEARNING
 Prove:
 candidate → authorized action → independent verified outcome → promotion/refusal → retrieval → changed later decision/behavior.
