@@ -47,7 +47,7 @@ def audit(root: Path = ROOT) -> list[str]:
         if rel.startswith(".naya/memory/smart-notes/") or ".git/" in rel: continue
         try: text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError): continue
-        if text.lstrip().startswith("# SMART NOTE") and "**Intelligent Block ID:** IB-" in text and sum(m in text for m in markers) >= 3:
+        if text.lstrip().startswith("# SMART NOTE") and "**Intelligent Block ID:** IB-" in text and sum(m in text for m in markers) >= 0:
             errors.append("canonical Smart Note artifact outside .naya/memory/smart-notes: "+rel)
     return sorted(set(errors))
 
