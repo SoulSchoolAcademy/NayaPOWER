@@ -195,10 +195,6 @@ Learning becomes real when evidence and outcomes support a change in future beha
 
 **For us:** valuable intelligence from a conversation can survive the conversation and compound into future capability.
 
-## NEXT ACTION
-
-**Independently LIVE VERIFY one real human Smart Note through the exact current runtime path — capture → canonical receiver → persistence → IB/PIS → Feed → Activity → reload → retrieval — and repair only the first deterministic failure found.**
-
 ## SCORECARD
 
 **Current engineering maturity assessment: 7.0 / 10**
@@ -223,3 +219,7 @@ Largest remaining value gaps:
 **Truth state:** Source-level canonicalization is implemented and recorded. Production adoption of the newest source changes still requires independent live verification.
 
 **END — IB-000002**
+
+## NEXT ACTION
+
+**Independently LIVE VERIFY one real human Smart Note through the exact current runtime path — capture → canonical receiver → persistence → IB/PIS → Feed → Activity → reload → retrieval — and repair only the first deterministic failure found.**
