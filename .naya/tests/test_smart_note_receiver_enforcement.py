@@ -63,11 +63,14 @@ def test_after_accepts_only_completed_receiver_receipt():
     current = load_module("smart_note_calendar", "")
     body = "\n".join(f"## {h}" for h in current.REQUIRED_HEADINGS)
     receipt = {
+        "schema": "naya/smart-note-receiver-receipt/v1",
         "canonical_receiver": "v7-smart-note-canonical",
         "status": "completed",
         "intelligent_block_id": "IB-001025",
         "event_id": "EV-001025",
         "transaction_id": "TX-001025",
+        "feed_verification": {"verified": True, "event_id": "EV-001025", "source_id": "FEED-001025"},
+        "smart_link": {"kind": "smart_feed_intelligent_block", "path": "/hub?ib=IB-001025", "intelligent_block_id": "IB-001025"}
     }
     with tempfile.TemporaryDirectory() as raw:
         result = current.persist_smart_note(
@@ -80,7 +83,7 @@ def test_after_accepts_only_completed_receiver_receipt():
         assert result["intelligent_block_id"] == "IB-001025"
         assert result["source_event_id"] == "EV-001025"
         assert Path(result["path"]).is_file()
-        print("AFTER_BRANCH=PASS (receiver-issued identity + lineage projected canonically)")
+        print("AFTER_BRANCH=PASS (feed-verified receiver identity + lineage projected canonically)")
 
 if __name__ == "__main__":
     test_before_main_bypasses_receiver()
