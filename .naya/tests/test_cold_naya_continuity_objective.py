@@ -5,6 +5,7 @@ future product front door separate from the current Superbrain rehabilitation
 frontier.
 """
 from pathlib import Path
+import json
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -13,6 +14,9 @@ BRAIN_MAP = ROOT / ".naya/memory/NAYAPOWER-BRAIN-MAP.md"
 CONTINUATION = ROOT / ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
 CURRENT = ROOT / ".naya/projects/CURRENT-PROJECT.md"
 START = ROOT / "SUPERBRAIN/AI-BOOT/START-HERE.md"
+STATE = ROOT / ".naya/control-plane/STATE.json"
+BLOCKS = ROOT / ".naya/control-plane/BLOCKS.json"
+PROOF = ROOT / ".naya/control-plane/PROOF.json"
 
 
 def read(path):
@@ -56,3 +60,23 @@ def test_cold_naya_boot_order_contains_the_authoritative_memory_chain():
         assert required in bootstrap
 
     assert "RESTORE → FIND THE RIGHT AUTHORITY → READ THE MINIMUM REQUIRED SOURCE → RECONCILE LIVE EVIDENCE → ACT → VERIFY → PRESERVE LEARNING" in brain_map
+
+
+def test_control_plane_agrees_on_the_same_superbrain_next_action():
+    state = json.loads(STATE.read_text(encoding="utf-8"))
+    blocks = json.loads(BLOCKS.read_text(encoding="utf-8"))
+    proof = json.loads(PROOF.read_text(encoding="utf-8"))
+
+    actions = {
+        state["single_next_action"],
+        blocks["next_action"],
+        proof["next_action"]["next_action"],
+    }
+    assert len(actions) == 1
+    action = next(iter(actions))
+    assert "Superbrain" in action
+    assert "BOOTSTRAP" in action
+    assert "RETRIEVAL-MANIFEST" in action
+    assert "handoff/next-action" in action
+    assert "NINA login" in action
+    assert "Welcome/front-door" in action
