@@ -18,11 +18,14 @@ jobs:
     environment: assistant-cloudflare-production
     timeout-minutes: 15
     env:
+      STREAM_E_AUTHORITY_GRANT_ID: ${{ vars.STREAM_E_AUTHORITY_GRANT_ID }}
       HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
       SUPA_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPA_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
     steps:
       - uses: actions/checkout@v4
+      - name: Require governed authority grant
+        run: node .github/scripts/require-governed-authority-grant.mjs
       - uses: actions/setup-node@v4
         with:
           node-version: 22
