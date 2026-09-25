@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-"generated_at": "2026-09-25T06:16:45.000Z",
+  "generated_at": "2026-09-25T06:16:45.000Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,7 +13,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-"live_head": "LIVE_AT_EXECUTION_TIME",
+    "live_head": "LIVE_AT_EXECUTION_TIME",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -22,7 +22,8 @@
     "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
     "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "observed_head": "9a4bd09cfb409fa5945f3bcd7834094d8a821bee",
-    "live_head_resolution": "Resolve git HEAD at execution time; observed_head is a non-authoritative snapshot."
+    "live_head_resolution": "Resolve git HEAD at execution time; observed_head is a non-authoritative snapshot.",
+    "continuation_prompt": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -115,8 +116,9 @@
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
-    "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
+    "prompt": "Read and execute .naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md; restore live state; execute the single current next action; independently verify; update the control plane; post Issue #554 SIGN-IN/SIGN-OUT; leave exactly one successor next action. Never stop at a plan.",
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof.",
+    "artifact": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
