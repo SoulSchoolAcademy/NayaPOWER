@@ -1,5 +1,18 @@
 # NayaPOWER Canonical Smart Note / Intelligent Block System — V1
 
+## 🔴 ZERO-AMBIGUITY SMART LINK LAW — READ THIS BEFORE USING THE TERM “SMART LINK”
+
+**Canonical contract:** `.naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md`
+
+> **SMART LINK = DIRECT GITHUB LINK TO THE CANONICAL HUMAN-READABLE `smart-note.md` ARTIFACT.**
+
+A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Smart Link. A receipt/event/workflow/commit URL is an **Evidence/Provenance Link**, never a Smart Note Smart Link.
+
+**Before saying “Smart Link,” verify:** the URL lands on `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`, the file exists on the reported canonical branch, and the file contains the same IB ID being reported. If the repository projection does not exist, report **SMART LINK: PENDING**. Never substitute a runtime link.
+
+**This distinction is mandatory for every Naya, handoff, report, test, and UI label.**
+
+
 **Status:** CANONICAL — RATIFIED BY HUMAN DIRECTOR 2026-09-24
 **Authority:** Specialized canonical subsystem contract under the NayaPOWER Constitution and Control Plane
 **Purpose:** Establish one law, one identity, one structure, one lifecycle, and one operating protocol for durable intelligence.
