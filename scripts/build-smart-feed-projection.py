@@ -57,23 +57,6 @@ def when() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def legacy_events(text: str, ts: str) -> list[dict[str, Any]]:
-    matches = list(NOTE_RE.finditer(text))
-    events = []
-    for i, m in enumerate(matches):
-        body = text[m.end():matches[i + 1].start() if i + 1 < len(matches) else len(text)].strip()
-        sec = sections(body)
-        subject = re.search(r"(?:\*\*\s*)?Subject ID:\s*([^\n]+)", body, re.I)
-        number = int(m.group(1))
-        eid = subject.group(1).strip() if subject else f"NAYA-POWER-{number:02d}"
-        title = re.sub(r"^What (?:Is|Are)\s+", "", body.splitlines()[0].strip())
-        nutshell, human, child, grandma = para(sec.get(1, "")) or title, para(sec.get(2, "")), para(sec.get(3, "")), para(sec.get(4, ""))
-        naya, machine, lesson, meaning = para(sec.get(5, "")), para(sec.get(6, "")), para(sec.get(7, "")), para(sec.get(8, ""))
-        links, action, value = para(sec.get(9, "")), para(sec.get(10, "")), para(sec.get(11, ""))
-        events.append({"event_id": eid, "user_id": "canonical", "created_at": ts, "updated_at": ts, "source": {"type": "smart_note", "id": eid, "label": title}, "human_input": {"raw": human or nutshell, "captured_at": ts}, "context": {"topic": title, "tags": ["Smart Note", "Naya Power", "Intelligent Feed"], "canonical_path": f"SMART FEED CONTENT#NAYA-POWER-{number:02d}"}, "naya_interpretation": {"observation": nutshell, "interpretation": naya, "recommendation": action, "uncertainty": "Source uncertainty is preserved; projection does not invent certainty."}, "machine_evidence": {"items": ["Canonical source: SMART FEED CONTENT", "PIS projection generated from canonical Smart Feed content."], "verification_state": "source-projection-generated"}, "weaver_synthesis": {"summary": nutshell, "relationships": []}, "lesson": {"text": lesson, "retained": True}, "meaning": {"text": meaning, "significance": "Canonical Smart Note meaning"}, "action": {"text": action, "status": "from-source"}, "whats_in_it_for_you": value, "relationships": {"event_ids": [], "connection_ids": [], "space_ids": []}, "privacy": {"visibility": "source-defined", "consent_state": "source-defined"}, "trust": {"level": "source-projection", "evidence_ids": []}, "status": "active", "perspectives": [{"label": "HUMAN", "body": human or nutshell, "tone": "human"}, {"label": "CHILD", "body": child, "tone": "child"}, {"label": "GRANDMA", "body": grandma, "tone": "grandma"}, {"label": "NAYA", "body": naya, "tone": "naya"}, {"label": "MACHINE", "body": machine, "tone": "machine"}, {"label": "WEAVER", "body": links, "tone": "weaver"}], "pis": {"source_ref": f"SMART FEED CONTENT#NAYA-POWER-{number:02d}", "projection_version": "3.0", "timestamp_precision": "source-commit"}})
-    return events
-
-
 def parse_canonical_note(path: Path, root: Path = ROOT) -> dict[str, Any] | None:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("# SMART NOTE"):
