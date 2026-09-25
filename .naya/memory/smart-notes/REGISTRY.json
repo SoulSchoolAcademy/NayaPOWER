@@ -4,25 +4,8 @@
   "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
   "identity_rule": "One immutable IB identity per canonical intelligence object.",
   "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
-  "entries": [
-    {
-      "intelligent_block_id": "IB-000001",
-      "path": ".naya/memory/smart-notes/2026/09/24/system/canonical-smart-note-system/IB-000001/smart-note.md",
-      "date": "2026-09-24",
-      "category": "system",
-      "topic": "canonical-smart-note-system",
-      "status": "CANONICAL_SYSTEM_UPDATE"
-    },
-    {
-      "intelligent_block_id": "IB-000002",
-      "path": ".naya/memory/smart-notes/2026/09/24/system/superbrain-scorecard/IB-000002/smart-note.md",
-      "date": "2026-09-24",
-      "category": "system",
-      "topic": "superbrain-scorecard",
-      "status": "CANONICAL"
-    }
-  ],
-  "archive_boundary_note": "Registry restored to canonical active path on 2026-09-25 after fresh-start quarantine; historical noncanonical Smart Note projections remain archived.",
+  "entries": [],
+  "archive_boundary_note": "IB-000001 and IB-000002 are preserved as historical repository-only projections. Live receiver evidence shows no receiver-backed records for either ID; the production receiver currently begins at IB-000003. They are excluded from the active canonical registry and cannot be retrieved as live Intelligent Blocks.",
   "identity_authority": "live canonical receiver only",
   "identity_allocation_rule": "The live canonical receiver allocates immutable IB IDs. Repository files, registry consumers, tests, scripts, and Nayas must never calculate, guess, increment, reserve, or assign an IB ID."
 }

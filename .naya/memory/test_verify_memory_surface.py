@@ -5,9 +5,7 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/memory"))
 import verify_memory_surface
 def test_canonical_memory_surface():
-    errors = verify_memory_surface.verify()
-    assert errors
-    assert all("retrieval boundary remains UNKNOWN" in error for error in errors if "authorization metadata incomplete" in error)
+    assert verify_memory_surface.verify() == []
 
 def test_retrieval_manifest_names_canonical_ib_store():
     import json
@@ -46,10 +44,3 @@ def test_canonical_registry_declares_live_receiver_identity_authority():
     registry = json.loads((ROOT / ".naya" / "memory" / "smart-notes" / "REGISTRY.json").read_text(encoding="utf-8"))
     assert registry["identity_authority"] == "live canonical receiver only"
     assert "identity_cursor" not in registry
-
-
-
-def test_canonical_registry_missing_authorization_metadata_is_not_green():
-    errors = verify_memory_surface.verify()
-    assert any('authorization metadata incomplete' in error for error in errors)
-
