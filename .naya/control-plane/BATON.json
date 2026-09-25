@@ -82,13 +82,15 @@
       "receipt_id": "test-receipt-001",
       "timestamp": "2026-09-25T01:28:45.130320+00:00",
       "action": "test_intelligence_commit",
-      "status": "SUCCESS"
+      "status": "SUCCESS",
+      "source": ".naya/control-plane/PROOF.json"
     },
     {
       "kind": "learning_candidate",
       "evidence_id": "learning-execution-receipt:test-receipt-001-20260925012845",
       "claim": "Verified learning improved policy from 0 to 1 on held-out case",
-      "status": "CANDIDATE"
+      "status": "CANDIDATE",
+      "source": ".naya/control-plane/PROOF.json"
     }
   ],
   "next_action": {
