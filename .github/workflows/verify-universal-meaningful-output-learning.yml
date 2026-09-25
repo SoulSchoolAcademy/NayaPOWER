@@ -88,7 +88,7 @@ jobs:
               if(before.status!==200||before.body?.length!==1)throw new Error('SOURCE_EVENT_READ_FAILED:'+JSON.stringify(before));
               const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
               if(blockQ.status!==200)throw new Error('BLOCK_READ_FAILED:'+JSON.stringify(blockQ));
-              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
               const learningQ=await db('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&member_id=eq.'+encodeURIComponent(ownerId)+'&id=eq.'+encodeURIComponent(evidenceId));
               if(learningQ.status!==200||learningQ.body?.length!==1)throw new Error('LEARNING_READ_FAILED:'+JSON.stringify(learningQ));
               const learning=learningQ.body[0];
@@ -98,7 +98,7 @@ jobs:
               reason='LEARNING_OUTPUT_IS_REUSABLE_CANDIDATE_BUT_PROMOTION_IS_BLOCKED_UNTIL_AN_INDEPENDENT_VERIFIED_OUTCOME_EXISTS';
               mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId});
               const blockQ2=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
-              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
               if(blockAfter.length!==blockBefore.length)throw new Error('PENDING_LEARNING_MUTATED_BLOCK_COUNT');
               if(blockAfter[0]?.block_id!==blockBefore[0]?.block_id)throw new Error('PENDING_LEARNING_CHANGED_BLOCK_ID');
               mark('NO_UNAUTHORIZED_PROMOTION','PASS',{existing_block_count_before:blockBefore.length,existing_block_count_after:blockAfter.length,block_id:blockAfter[0]?.block_id||null});
