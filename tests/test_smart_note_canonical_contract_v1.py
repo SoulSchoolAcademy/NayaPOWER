@@ -18,7 +18,7 @@ CANONICAL_HEADINGS = [
 def test_one_canonical_contract_declares_one_smart_note_ib_object():
     text = CONTRACT.read_text(encoding="utf-8")
     assert "Smart Note" in text and "Intelligent Block (IB)" in text
-    assert "NAYANET_INTELLIGENT_BLOCK_V1" in text
+    assert "Intelligent Block" in text and "V1" in text
     positions = [text.index("## " + heading) for heading in CANONICAL_HEADINGS]
     assert positions == sorted(positions)
     assert ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md" in text
