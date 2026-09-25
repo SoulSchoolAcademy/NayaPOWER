@@ -45,7 +45,7 @@ function buildIntelligentBlock(args:{
 }){
   return {
     identity:{
-      object_id:"IB:"+args.eventId,
+      object_id:"event:"+args.eventId,
       event_id:args.eventId,
       version:1,
       namespace:"nayanet",
@@ -344,7 +344,7 @@ Deno.serve(async(req)=>{
     },
     intelligence_checkpoint:checkpoint
   };
-  const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id||transactionWithIntelligence?.intelligent_block?.identity?.object_id);
+  const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);\n  if(!/^IB-\\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
    const repositoryProjection={
      status:"PENDING",
      rule:"Repository Smart Note projection MUST use the authoritative live intelligent_block_id returned by this receiver; repository code MUST NOT allocate or guess IB identities.",
