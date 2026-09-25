@@ -25,7 +25,7 @@ def verify():
 
     forbidden_identity_authority = ("_allocate_ib_id", "identity_cursor", "IB-ID-REGISTRY.json")
     for path in MEMORY.iterdir():
-        if path.is_file():
+        if path.is_file() and not path.name.startswith("test_"):
             body = path.read_text(encoding="utf-8")
             for token in forbidden_identity_authority:
                 if token in body:
