@@ -2,6 +2,14 @@ name: Verify Canonical Hub Smart Note Golden Path
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "NAYANET/HUB/**"
+      - ".github/scripts/canonical-smart-note-deep-link.mjs"
+      - ".github/workflows/verify-canonical-hub-smart-note-golden-path.yml"
+      - "supabase/functions/v7-smart-note-canonical/**"
+      - "supabase/migrations/**"
 
 permissions:
   contents: read
