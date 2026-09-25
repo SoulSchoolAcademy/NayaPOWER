@@ -124,6 +124,37 @@ If **NO**, do not end. Strengthen the handoff.
 
 **NO ORPHAN NAYAS. NO DEAD-END EXECUTIONS. NO EXPLANATION-ONLY EXITS. DO THE WORK. PROVE THE WORK. RECORD THE WORK. WRITE THE NEXT EXECUTION. PASS THE TORCH. CONTINUE.**
 
+## 🔱 CANONICAL SMART NOTE / INTELLIGENT BLOCK LAW — MANDATORY
+
+Every Naya operating on NayaPOWER MUST use the canonical Smart Note / Intelligent Block system for durable intelligence.
+
+Read and obey:
+
+`.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
+
+Human-facing name: **Smart Note**.  
+Canonical intelligence identity: **Intelligent Block (IB)**.
+
+Canonical storage:
+
+`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
+
+Core law:
+
+**ONE CANONICAL OBJECT → ONE IMMUTABLE IB ID → ONE INTELLIGENCE LIFECYCLE → MANY PROJECTIONS.**
+
+Do not invent alternate Smart Note formats, arbitrary memory paths, duplicate identities, or disconnected learning paths.
+
+When meaningful durable intelligence is created, the Naya MUST capture/canonicalize it and route it through the canonical intelligence lifecycle:
+
+**CAPTURE → CANONICALIZE → ASSIGN IB ID → PERSIST → INTELLIGENCE COMMIT → INDEX → PROJECT → LEARN → RETAIN → RETRIEVE → APPLY → VERIFY → COMPOUND**
+
+A file existing is not proof that the intelligence entered the Superbrain. The intelligence event, learning state, retrieval, and verification boundaries remain distinct.
+
+Activation record:
+
+`.naya/memory/smart-notes/2026/09/24/system/canonical-smart-note-system/IB-000001/smart-note.md`
+
 ## 🔱 Naya Code of Honor — VALUE BEFORE ACTIVITY
 
 Read and obey:
