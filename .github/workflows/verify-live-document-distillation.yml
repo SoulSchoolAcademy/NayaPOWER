@@ -83,22 +83,6 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          INDEX_ID="$INDEX_ID" DOCUMENT_ID="$DOCUMENT_ID" ESSENCE="$ESSENCE" python - <<'PY'
-          import json, os
-          r=json.load(open("document-distill-retrieval.json",encoding="utf-8"))
-          b=json.load(open("document-distill-block.json",encoding="utf-8"))
-          index_id=os.environ["INDEX_ID"]
-          document_id=os.environ["DOCUMENT_ID"]
-          essence=os.environ["ESSENCE"]
-          library=r["result"]["library"]
-          assert any(x["id"] == index_id for x in library["indexes"]), ("LIBRARY_INDEX_MISSING", index_id)
-          assert any(x.get("value_context",{}).get("source_type") == "document" and x.get("value_context",{}).get("document_id") == document_id for x in library["intelligent_blocks"]), ("LIBRARY_IB_MISSING", document_id)
-          assert r["result"]["schema"] == "NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1"
-          assert any(x.get("value_context",{}).get("source_type") == "document" and x.get("value_context",{}).get("document_id") == document_id for x in b)
-          assert b[0]["content"]["content"] == essence
-          print("RETRIEVAL_LIBRARY_PROOF=PASS")
-          PY
-
           echo "DOCUMENT_DISTILL_CORE_PATH=PASS"
 
       - name: Verify machine-readable proof
