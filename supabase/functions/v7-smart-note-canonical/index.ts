@@ -177,7 +177,7 @@ function buildIntelligentBlock(args:{
     lifecycle:{
       stage:"DISTILLED",
       captured_at:args.now,
-      verified_at:args.now,
+      verified_at:null,
       updated_at:args.now
     },
     projections:{
