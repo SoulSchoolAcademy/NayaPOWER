@@ -94,7 +94,7 @@ jobs:
               return await fetch(SUPA + '/rest/v1/rpc/nayanet_smart_connect', {
                 method:'POST',
                 headers:{Authorization:'Bearer '+accessToken,apikey:KEY,'Content-Type':'application/json'},
-                body:JSON.stringify({p_door:'mcp'})
+                body:JSON.stringify({p_door:'mcp',p_consent_state:'explicit'})
               }).then(async r=>({status:r.status,body:await r.json()}));
             },{SUPA,KEY,accessToken});
             if (participationResponse.status !== 200 || !['CONNECTED','ALREADY_CONNECTED'].includes(participationResponse.body?.status)) {
@@ -242,7 +242,7 @@ jobs:
               await fetch(SUPA + '/rest/v1/rpc/nayanet_smart_connect', {
                 method:'POST',
                 headers:{Authorization:'Bearer '+accessToken,apikey:KEY,'Content-Type':'application/json'},
-                body:JSON.stringify({p_door:'mcp'})
+                body:JSON.stringify({p_door:'mcp',p_consent_state:'explicit'})
               }).then(async r=>({status:r.status,body:await r.json()})),{SUPA,KEY,accessToken});
             if (reconnectResponse.status !== 200 || !['CONNECTED','ALREADY_CONNECTED'].includes(reconnectResponse.body?.status)) throw new Error('SMART_CONNECT_RECONNECT_FAILED:'+JSON.stringify(reconnectResponse));
 

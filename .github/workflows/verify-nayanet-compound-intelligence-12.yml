@@ -196,7 +196,7 @@ jobs:
               },{supabaseUrl,supabaseKey,token:session.access_token,sourceEventId:eventId,sourceId:sourceRow.data.id,userId:session.userId,run});
               if(grant.error||!grant.data?.grant_id) throw new Error('AUTHORITY_GRANT_ISSUE_FAILED:'+JSON.stringify(grant));
               mark('AUTHORITY_GRANT','PASS',{grant_id:grant.data.grant_id});
-              const share=await call(page,session,'share',{source_event_id:sourceRow.data.id,authority_grant_id:grant.data.grant_id});
+              const share=await call(page,session,'share',{source_event_id:sourceRow.data.id,authority_grant_id:grant.data.grant_id,consent_state:'explicit'});
               if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share));
 
               const supersede=await call(page,session,'supersede',{
