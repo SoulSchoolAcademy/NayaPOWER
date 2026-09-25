@@ -54,7 +54,7 @@ Integrity hash: d58642bfc180b6aceb7d6f576cce236a0707af8ac5387045f3ef599341d947fb
 
 ## WHAT WE LEARNED
 
-The live receiver can correctly turn this specific human lesson into a receiver-issued Intelligent Block. The next required boundary is repository projection: the exact IB must be written under the canonical namespace, registered once, and then retrieved by canonical memory tooling. The validator itself must be tested against valid, invalid, and archived cases so enforcement cannot contradict the contract.
+The live receiver can correctly turn this specific human lesson into a receiver-issued Intelligent Block. The repository projection and registry boundary are now completed for IB-001024. Canonical organization enforcement passed in GitHub Actions run 36189775576, and the canonical retrieval/Smart Brain v3 workflow passed in run 36189933084. The remaining continuity boundary is fresh successor behavior.
 
 ## CONNECTIONS
 
@@ -74,4 +74,4 @@ Less noise, less repeated discovery, less cognitive archaeology, fewer duplicate
 
 ## NEXT ACTION
 
-Project IB-001024 into .naya/memory/smart-notes/2026/09/25/system/canonical-memory-organization/IB-001024/smart-note.md, register it exactly once, verify the validator and canonical retrieval, then run a cold successor retrieval of IB-001024.
+Run a cold successor retrieval of IB-001024 from canonical repository state only, require the successor to identify the exact IB path, meaning, provenance, authority, truth state, learning state, and next action, and record the behavioral receipt. Do not supply the answers from conversation.
