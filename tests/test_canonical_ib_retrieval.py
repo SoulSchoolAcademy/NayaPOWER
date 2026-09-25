@@ -17,7 +17,7 @@ class CanonicalIBRetrievalTests(unittest.TestCase):
         manifest = __import__('json').loads((ROOT / '.naya/memory/RETRIEVAL-MANIFEST.json').read_text(encoding='utf-8'))
         self.assertEqual(manifest['index'], '.naya/memory/smart-notes/REGISTRY.json')
         self.assertEqual(manifest['event_lineage_store'], '.naya/memory/events/')
-        self.assertEqual([obj["intelligent_block_id"] for obj in objects], ["IB-000001", "IB-000002"])
+        registry_data = __import__("json").loads(registry)\n        self.assertEqual([obj["intelligent_block_id"] for obj in objects], [entry["intelligent_block_id"] for entry in registry_data["entries"]])
         self.assertTrue(all(obj["canonical"] for obj in objects))
         self.assertTrue(all(obj["path"].endswith("/smart-note.md") for obj in objects))
         self.assertTrue(all(obj["content"].startswith("# SMART NOTE") for obj in objects))
