@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
-"""Build the Primary Intelligence System feed consumed by the Intelligent Hub.
+"""Build the Primary Intelligence System feed from canonical Smart Note / IB projections.
 
-Sources:
-- legacy/canonical SMART FEED CONTENT
-- canonical .naya/memory/notes Smart Note calendar
-- optional in-transaction Smart Note objects
-
-The output is a projection, not a competing source of truth.
+The output is a projection, not a competing source of truth. It never creates
+Smart Notes or Intelligent Block identities.
 """
 from __future__ import annotations
 
@@ -19,6 +15,12 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[1]
 SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
 OUT = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
+HEADING_RE = re.compile(r"^##\\s+(.+?)\\s*$", re.M)
+META_RE = re.compile(r"^\\*\\*(.+?):\\*\\*\\s*(.+?)\\s*$", re.M)
+
+
+def when() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 def clean(s: str) -> str:
     s = re.sub(r"\*\*([^*]+)\*\*", r"\1", s)
