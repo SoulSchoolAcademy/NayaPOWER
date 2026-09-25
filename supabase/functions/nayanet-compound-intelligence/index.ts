@@ -428,18 +428,50 @@ async function learningCandidate(client: any, userId: string, body: any) {
 async function learningVerify(client: any, userId: string, body: any) {
   const id = String(body.evidence_id ?? "").trim();
   const method = String(body.verification_method ?? "").trim();
+  const outcomeId = String(body.outcome_id ?? "").trim();
   const evidenceRefs = Array.isArray(body.evidence_refs) ? body.evidence_refs : [];
   if (!id || !method) throw new Error("EVIDENCE_ID_AND_VERIFICATION_METHOD_REQUIRED");
+  if (!outcomeId) throw new Error("INDEPENDENT_OUTCOME_ID_REQUIRED");
   if (evidenceRefs.length === 0 && !body.observed_value) throw new Error("VERIFICATION_EVIDENCE_REQUIRED");
   const { data: evidence, error: readError } = await client.from("learning_evidence").select("*").eq("id",id).eq("member_id",userId).single();
   if (readError || !evidence) throw new Error("LEARNING_EVIDENCE_NOT_FOUND");
   if (evidence.status !== "CANDIDATE" && evidence.status !== "ACTIVE") throw new Error("LEARNING_EVIDENCE_NOT_PROMOTABLE");
-  const observed = body.observed_value ?? evidence.observed_value;
+  const sourceEventId = String(body.source_event_id ?? evidence.source_event_id ?? "").trim();
+  if (!sourceEventId || sourceEventId !== String(evidence.source_event_id ?? "").trim()) throw new Error("LEARNING_SOURCE_EVENT_LINEAGE_REQUIRED");
+  const { data: outcome, error: outcomeError } = await client.from("nayanet_execution_outcomes")
+    .select("outcome_id,receipt_id,user_id,project_id,verified,verified_value,verifier_id,verification_method,evidence")
+    .eq("outcome_id", outcomeId)
+    .eq("user_id", userId)
+    .eq("project_id", PROJECT)
+    .eq("verified", true)
+    .maybeSingle();
+  if (outcomeError || !outcome) throw new Error("INDEPENDENT_OUTCOME_NOT_FOUND_OR_UNVERIFIED");
+  if (String(outcome.verifier_id) === userId) throw new Error("OUTCOME_VERIFIER_MUST_BE_INDEPENDENT");
+  if (!outcome.evidence || typeof outcome.evidence !== "object" || Object.keys(outcome.evidence).length === 0) throw new Error("INDEPENDENT_OUTCOME_EVIDENCE_REQUIRED");
+  if (!Number.isFinite(Number(outcome.verified_value))) throw new Error("INDEPENDENT_OUTCOME_VALUE_REQUIRED");
+  const receiptId = String(body.receipt_id ?? evidence.observed_value?.receipt_id ?? "").trim();
+  if (!receiptId || receiptId !== String(outcome.receipt_id)) throw new Error("OUTCOME_RECEIPT_LINEAGE_MISMATCH");
+  if (evidence.status === "ACTIVE") {
+    if (String(evidence.observed_value?.outcome_id ?? "") !== String(outcome.outcome_id)) throw new Error("LEARNING_ALREADY_PROMOTED_WITH_DIFFERENT_OUTCOME");
+    return { status: "VERIFIED_LEARNING", learning: evidence, outcome, rule: "Verification is idempotent for the same independent outcome; it does not change authority or policy by itself." };
+  }
+  const suppliedObserved = body.observed_value && typeof body.observed_value === "object" && !Array.isArray(body.observed_value) ? body.observed_value : {};
+  const observed = {
+    ...suppliedObserved,
+    outcome_id: String(outcome.outcome_id),
+    receipt_id: String(outcome.receipt_id),
+    source_event_id: sourceEventId,
+    verified: true,
+    verified_value: Number(outcome.verified_value),
+    outcome_verification_method: String(outcome.verification_method ?? "INDEPENDENT_OUTCOME"),
+    independent_outcome: true,
+    evidence_refs
+  };
   const { data, error } = await client.from("learning_evidence").update({
-    status: "ACTIVE", verification_method: method, observed_value: observed
-  }).eq("id",id).eq("member_id",userId).select("*").single();
+    status: "ACTIVE", verification_method: String(outcome.verification_method ?? method), observed_value: observed
+  }).eq("id",id).eq("member_id",userId).eq("status", "CANDIDATE").select("*").single();
   if (error) throw error;
-  return { status: "VERIFIED_LEARNING", learning: data, rule: "Verification promotes evidence; it does not change authority or policy by itself." };
+  return { status: "VERIFIED_LEARNING", learning: data, outcome, rule: "Only a verified independent outcome can promote evidence; it does not change authority or policy by itself." };
 }
 
 async function successor(client: any, userId: string, body: any) {
