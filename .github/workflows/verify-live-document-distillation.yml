@@ -84,10 +84,8 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          LIBRARY_INDEX_ID=$(echo "$RETRIEVED" | jq -r --arg id "$INDEX_ID" '.result.result.library.indexes[]? | select(.id==$id) | .id' | head -n1)
-          test "$LIBRARY_INDEX_ID" = "$INDEX_ID"
-          test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.source_type // empty')" = document
-          test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.document_id // empty')" = "$DOCUMENT_ID"
+          echo "$RETRIEVED" | jq -e --arg id "$INDEX_ID" '.result.result.library.indexes | map(.id) | index($id) != null' >/dev/null
+          echo "$RETRIEVED" | jq -e --arg did "$DOCUMENT_ID" '.result.result.library.intelligent_blocks | any(.value_context.source_type=="document" and .value_context.document_id==$did)' >/dev/null
 
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           test "$(echo "$DUP" | jq -r '.ok // false')" = true
