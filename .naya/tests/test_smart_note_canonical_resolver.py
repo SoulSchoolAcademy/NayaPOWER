@@ -18,22 +18,25 @@ spec.loader.exec_module(module)
 
 def test_canonical_smart_note_path():
     timestamp = "2026-09-19T20:30:00+00:00"
-    path = module.canonical_smart_note_path(timestamp, "Day Wisdom")
+    path = module.canonical_smart_note_path(timestamp, "Day Wisdom", category="system", ib_id="IB-000002")
     assert path == (
         ROOT
         / ".naya"
         / "memory"
-        / "notes"
+        / "smart-notes"
         / "2026"
         / "09"
         / "19"
-        / "SN-20260919-DAY-WISDOM.md"
+        / "system"
+        / "day-wisdom"
+        / "IB-000002"
+        / "smart-note.md"
     )
 
 
 def test_resolver_has_one_physical_namespace():
     source = MODULE_PATH.read_text(encoding="utf-8")
-    assert 'ROOT / ".naya" / "memory" / "notes"' in source
+    assert 'ROOT / ".naya" / "memory" / "smart-notes"' in source
     assert 'ROOT / "SUPERBRAIN" / "SMART-NOTES"' not in source
 
 
@@ -46,19 +49,21 @@ def test_calendar_writer_uses_same_resolver():
 
     body = "\n".join(
         [
-            "## Parent / predecessor",
-            "## Human",
-            "## Naya",
-            "## Machine",
-            "## Child / derived",
-            "## What happened",
-            "## What learned",
-            "## Why this matters",
-            "## How to use",
-            "## What's in it for us",
-            "## Evidence / Smart Links",
-            "## Current state",
-            "## ONE NEXT ACTION",
+            "## IN A NUTSHELL",
+            "## DATE / TIME",
+            "## WHAT",
+            "## WHY IT MATTERS",
+            "## HUMAN",
+            "## CHILD",
+            "## GRANDMA",
+            "## NAYA",
+            "## MACHINE",
+            "## WHAT WE LEARNED",
+            "## CONNECTIONS",
+            "## HOW TO APPLY",
+            "## WHAT IT ULTIMATELY MEANS",
+            "## WHAT'S IN IT FOR YOU / US",
+            "## NEXT ACTION",
         ]
     )
     with tempfile.TemporaryDirectory() as raw:
@@ -66,10 +71,12 @@ def test_calendar_writer_uses_same_resolver():
             timestamp="2026-09-19T20:30:00+00:00",
             topic="Day Wisdom",
             body=body,
-            root=Path(raw) / "notes",
+            intelligent_block_id="IB-000002",
+            category="system",
+            root=Path(raw) / "smart-notes",
         )
         assert result["path"] == str(
-            Path(raw) / "notes" / "2026" / "09" / "19" / "SN-20260919-DAY-WISDOM.md"
+            Path(raw) / "smart-notes" / "2026" / "09" / "19" / "system" / "day-wisdom" / "IB-000002" / "smart-note.md"
         )
 
 
