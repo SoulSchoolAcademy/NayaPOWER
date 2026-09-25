@@ -990,5 +990,83 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script>
 (()=>{'use strict';function bindRoom01(){document.querySelectorAll('[data-room01-ask]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',()=>document.querySelector('.nayaCard [data-action="ask"]')?.click())})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindRoom01,{once:true});else bindRoom01();setTimeout(bindRoom01,800)})();
 </script>
+<!-- NAYA-CANONICAL-IB-DEEP-LINK-V1 -->
+<script>
+(()=>{'use strict';
+const Q=(s,r=document)=>r.querySelector(s);
+const QQ=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const canonicalUrl=ib=>new URL('/hub?ib='+encodeURIComponent(String(ib)),location.origin).href;
+function params(){const q=new URLSearchParams(location.search);return{ib:(q.get('ib')||q.get('intelligent_block_id')||'').trim(),eventId:(q.get('event_id')||'').trim()}}
+function identityFromEvent(event){return String(event?.metadata?.intelligent_block_v1?.identity?.intelligent_block_id||event?.metadata?.intelligent_block_id||event?.intelligent_block_id||'').trim()}
+function summaryOf(event,block){return String(event?.content?.meaning?.summary||event?.content?.meaning?.content||event?.content||block?.content?.meaning?.summary||block?.content?.meaning?.content||block?.title||'').trim()}
+function renderResolved(block,event){
+  const ib=String(block?.intelligent_block_id||identityFromEvent(event)||'').trim();
+  const sourceEventId=String(event?.event_id||block?.source_event_ids?.[0]||'').trim();
+  if(!ib||!sourceEventId)throw new Error('DEEP_LINK_IDENTITY_INCOMPLETE');
+  const old=Q('[data-naya-deep-link-target="true"]');if(old)old.remove();
+  const title=String(event?.title||block?.title||'Preserved Intelligence').trim();
+  const summary=summaryOf(event,block).slice(0,4000);
+  const article=document.createElement('article');
+  article.className='block naya509-board naya-runtime-live naya-deep-link-target';
+  article.dataset.nayaDeepLinkTarget='true';
+  article.dataset.intelligenceId=ib;
+  article.dataset.eventId=sourceEventId;
+  article.dataset.sourceEventId=sourceEventId;
+  article.tabIndex=0;
+  article.innerHTML='<div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph" aria-hidden="true">◈</div><div><h3></h3><div class="meta"><span>CANONICAL INTELLIGENT BLOCK</span><span>AUTHENTICATED RETRIEVAL</span></div></div></div><div class="truth">PERSISTED · OWNER-SCOPED</div></div><div class="nutshell"><b>IN A NUTSHELL</b><p></p></div><div class="layers"><section class="layer" style="--layer:#55e39a"><div class="layerHead"><span class="dot"></span><b>NAYA NOTE</b><span class="state">PERSISTED</span></div><div class="layerBody"></div></section><section class="layer" style="--layer:#55b9ee"><div class="layerHead"><span class="dot"></span><b>MACHINE NOTE</b><span class="state">PROVENANCE</span></div><div class="layerBody">Intelligent Block ID: <strong data-ib></strong><br>Source Event ID: <strong data-event></strong></div></section></div><div class="actions"><a class="action" data-canonical-link target="_self" rel="canonical">CANONICAL LINK</a></div><div class="blockFoot"><span>PRIVATE BY DEFAULT · AUTHENTICATED RUNTIME</span><span>RETRIEVED FROM CANONICAL IB</span></div></div>';
+  Q('h3',article).textContent=title;
+  Q('.nutshell p',article).textContent=summary||'Canonical intelligence retrieved.';
+  Q('.layerBody',article).textContent=summary||'Preserved intelligence retrieved from the canonical Intelligent Block.';
+  Q('[data-ib]',article).textContent=ib;
+  Q('[data-event]',article).textContent=sourceEventId;
+  const link=Q('[data-canonical-link]',article);link.href=canonicalUrl(ib);
+  const blocks=Q('#blocks')||Q('.blocks');
+  if(!blocks)throw new Error('DEEP_LINK_TARGET_CONTAINER_MISSING');
+  blocks.prepend(article);
+  document.documentElement.dataset.nayaDeepLinkStatus='resolved';
+  document.documentElement.dataset.nayaDeepLinkIb=ib;
+  document.documentElement.dataset.nayaDeepLinkEvent=sourceEventId;
+  requestAnimationFrame(()=>article.scrollIntoView({behavior:'smooth',block:'start'}));
+  article.focus({preventScroll:true});
+  return{intelligent_block_id:ib,source_event_id:sourceEventId,url:canonicalUrl(ib)};
+}
+async function resolve(){
+  const {ib,eventId}=params();if(!ib&&!eventId)return null;
+  const rt=window.NayaAssistantRuntime;
+  if(!rt?.retrieveIntelligentBlock){throw new Error('DEEP_LINK_RUNTIME_UNAVAILABLE')}
+  await rt.init();
+  let block=null,event=null;
+  if(ib){
+    const result=await rt.retrieveIntelligentBlock(ib);
+    block=result?.block||null;event=result?.event||null;
+  }else{
+    const events=await rt.retrieve(eventId);
+    event=(events||[]).find(e=>String(e?.event_id||'')===eventId)||null;
+    if(!event)throw new Error('DEEP_LINK_NOT_FOUND');
+    const resolvedIb=identityFromEvent(event);
+    if(!resolvedIb)throw new Error('DEEP_LINK_NOT_FOUND');
+    const result=await rt.retrieveIntelligentBlock(resolvedIb);
+    block=result?.block||null;event=result?.event||event;
+  }
+  if(!block)throw new Error('DEEP_LINK_NOT_FOUND');
+  return renderResolved(block,event);
+}
+async function boot(attempt=0){
+  if(!params().ib&&!params().eventId)return;
+  try{await resolve()}
+  catch(error){
+    if((String(error?.message||'').includes('RUNTIME_UNAVAILABLE')||String(error?.message||'').includes('DEEP_LINK_RUNTIME_UNAVAILABLE'))&&attempt<30){setTimeout(()=>boot(attempt+1),250);return}
+    document.documentElement.dataset.nayaDeepLinkStatus='error';
+    document.documentElement.dataset.nayaDeepLinkError=String(error?.message||error).slice(0,120);
+    console.error('NayaHubDeepLink',error);
+  }
+}
+window.NayaHubDeepLink={resolve,canonicalUrl,params,version:'1.0.0'};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>boot(),{once:true});else boot();
+window.addEventListener('naya-auth-ready',()=>boot());
+window.addEventListener('naya-auth-state',e=>{if(e.detail?.authenticated)boot()});
+})();
+</script>
 </body>
 </html>
