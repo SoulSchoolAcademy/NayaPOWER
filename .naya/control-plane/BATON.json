@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-25T05:34:30Z",
+  "generated_at": "2026-09-25T06:09:22.673Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,13 +13,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "1377f181f42a679f0870d89f97dc692ac431ddb6",
+    "live_head": "772464d1111db32219bc73b7cfdd9b9c01b47424",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-    "canonical_hub_source_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c"
+    "block_next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -56,7 +56,8 @@
       "Universal automatic Intelligence -> Activity -> Control Plane synchronization.",
       "Universal lineage/Playback runtime behavior.",
       "Automatic successor-prompt generation from every meaningful output.",
-      "Full intended-scope cold Naya independent continuation across all work."
+      "Full intended-scope cold Naya independent continuation across all work.",
+      "Current production Hub has not yet been updated to the merged deep-link source; live browser continuity remains unverified."
     ],
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
@@ -96,23 +97,17 @@
   "next_action": {
     "count": 1,
     "status": "BLOCKED",
-    "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+    "action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived from event execution-receipt:test-receipt-001",
+    "reason": "Current main has a verified canonical Smart Note/IB deep-link implementation, but the live Worker still serves the pre-deep-link Hub artifact and the recorded Supabase deployment parity receipt is stale across all six critical source paths. Production deployment is the only remaining external boundary before live browser continuity proof.",
     "acceptance": [
-      "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-      "UNDERSTAND the current intelligence and activity projection.",
-      "NAVIGATE across required Hub surfaces.",
-      "SEARCH for existing intelligence.",
-      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
-      "SAVE it durably.",
-      "SEE the result in the canonical projection.",
-      "RELOAD and recover the same result.",
-      "FIND it again through authorized retrieval.",
-      "UNDERSTAND the evidence/provenance displayed with it.",
-      "CONTINUE with one authorized next action from the recovered state."
+      "Deploy current canonical Hub source to the authorized production runtime.",
+      "Navigate to /hub?ib=<fresh persisted Intelligent Block ID> with an authenticated owner session.",
+      "Verify exact Intelligent Block identity, source event identity, and provenance.",
+      "Reload and verify the same identity/provenance survives.",
+      "Rerun sender→receiver→Hub production parity against the same deployed source identity."
     ],
-    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
+    "verification": "Independent browser observation plus source/deployment identity parity and fresh retrieval."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
