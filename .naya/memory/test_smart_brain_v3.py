@@ -66,6 +66,38 @@ class SmartBrainV3Tests(unittest.TestCase):
         results = brain.retrieve('anything', limit=5)
         self.assertEqual(results, [])
 
+    def test_verified_historical_event_without_canonical_url_is_valid(self):
+        event = {
+            'event_id': 'SE-20260916-193500-test-historical',
+            'created_at': '2026-09-16T19:35:00-07:00',
+            'effective_at': '2026-09-16T19:35:00-07:00',
+            'status': 'VERIFIED_REPOSITORY_RECORD',
+            'source': {'kind': 'execution', 'event_id': 'EXEC-TEST'},
+            'representations': [{'id': 'SN-20260916-193500-test-historical', 'content': 'historical lineage'}],
+            'verification': {'status': 'VERIFIED'},
+        }
+        path = brain.EVENTS / '2026' / '09' / '16' / '19' / 'SE-20260916-193500-test-historical.json'
+        self.assertEqual(brain.validate_event(event, path), [])
+
+    def test_same_payload_from_distinct_execution_sessions_is_not_a_duplicate(self):
+        base = {
+            'event_id': 'SE-20260917-035241-test-a',
+            'effective_at': '2026-09-17T03:52:41-07:00',
+            'created_at': '2026-09-17T03:52:41-07:00',
+            'title': 'same action',
+            'subject': 'same action',
+            'project': 'Naya Power',
+            'event_type': 'activity',
+            'summary': 'same execution summary',
+            'tags': ['activity'],
+            'representations': [{'representation': 'NAYA', 'summary': 'same', 'content': 'same'}],
+        }
+        other = dict(base)
+        other['event_id'] = 'SE-20260917-035249-test-b'
+        base['execution'] = {'action_id': 'ACT-1', 'run_id': 'RUN-1', 'session_id': 'SESSION-1'}
+        other['execution'] = {'action_id': 'ACT-1', 'run_id': 'RUN-2', 'session_id': 'SESSION-2'}
+        self.assertEqual(duplicates.classify(base, other)['decision'], 'DISTINCT')
+
     def test_duplicate_entity_audit_is_green(self):
         report = duplicates.audit()
         self.assertEqual(report['status'], 'GREEN')
