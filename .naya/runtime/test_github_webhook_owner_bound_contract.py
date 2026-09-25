@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 WEBHOOK = (ROOT / "NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts").read_text(encoding="utf-8")
 BIND = (ROOT / "supabase/migrations/20260924230000_harden_github_app_owner_binding_v1.sql").read_text(encoding="utf-8")
+SERVER_BIND = (ROOT / "supabase/migrations/20260925030000_require_server_verified_github_bindings_v1.sql").read_text(encoding="utf-8")
 PERSIST = (ROOT / "supabase/migrations/20260924233100_repair_github_webhook_owner_aware_canonical_replay_v1.sql").read_text(encoding="utf-8")
 
 def require(text: str, needle: str) -> None:
@@ -30,6 +31,14 @@ def main() -> None:
     require(BIND, "GITHUB_BINDING_NOT_FOUND")
     require(BIND, "GITHUB_BINDING_AMBIGUOUS")
     require(BIND, "grant execute on function public.nayanet_resolve_github_webhook_owner(bigint,text) to service_role")
+    require(SERVER_BIND, "GITHUB_BINDING_REQUIRES_SERVER_VERIFICATION")
+    require(SERVER_BIND, "nayanet_bind_github_installation_verified")
+    require(SERVER_BIND, "auth.role() <> 'service_role'")
+    require(SERVER_BIND, "GITHUB_APP_PARTICIPATION_CONSENT_REQUIRED")
+    require(SERVER_BIND, "SIGNED_GITHUB_WEBHOOK")
+    require(SERVER_BIND, "b->>'verification'='SIGNED_GITHUB_WEBHOOK'")
+    require(SERVER_BIND, "revoke all on function public.nayanet_smart_connect_github_bind(bigint,text) from public, anon, authenticated")
+    require(SERVER_BIND, "grant execute on function public.nayanet_bind_github_installation_verified(uuid,bigint,text,text) to service_role")
 
     # Canonical persistence accepts service-role only for the explicit webhook action,
     # and independently re-resolves the owner. Ordinary user-scoped calls remain
