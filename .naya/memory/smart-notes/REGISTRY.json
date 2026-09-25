@@ -20,6 +20,14 @@
       "category": "system",
       "topic": "superbrain-scorecard",
       "status": "CANONICAL"
+    },
+    {
+      "intelligent_block_id": "IB-001019",
+      "path": ".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+      "date": "2026-09-25",
+      "category": "system",
+      "topic": "canonical-memory-receiver",
+      "status": "CANONICAL"
     }
   ],
   "archive_boundary_note": "Registry restored to canonical active path on 2026-09-25 after fresh-start quarantine; historical noncanonical Smart Note projections remain archived.",
