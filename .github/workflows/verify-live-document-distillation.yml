@@ -69,7 +69,7 @@ jobs:
           INDEX_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.projection.index.id // empty')
           test -n "$EVENT_ID"; test -n "$BLOCK_ID"; test -n "$INDEX_ID"
 
-          RETRIEVED=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-pi-retrieve" "${H[@]}" -d "$(jq -n --arg event "$EVENT_ID" '{event_id:$event}')")
+          RETRIEVED=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-pi-retrieve" "${H[@]}" -d "$(jq -n --arg q "$ESSENCE" '{query:$q,limit:10}')")
           echo "$RETRIEVED" | jq .
           echo "$RETRIEVED" > document-distill-retrieval.json
           grep -q "$EVENT_ID" document-distill-retrieval.json
