@@ -256,6 +256,11 @@ async function bootCanonicalHub(){
  try{
    const data=await rt.smartFeed({stream,limit:20,before:null});
    const items=list(data?.items);
+   for(let attempt=0;attempt<60;attempt+=1){
+     const blocks=document.querySelector('.feed .blocks')||document.querySelector('#blocks');
+     if(blocks?.querySelector('[data-real-smart-note],.block'))break;
+     await new Promise(resolve=>setTimeout(resolve,50));
+   }
    renderCanonicalHub(items,stream);
    bindCanonicalHubNav();
    document.documentElement.dataset.nayaCanonicalSmartFeed='live';
