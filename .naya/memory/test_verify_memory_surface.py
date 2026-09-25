@@ -27,7 +27,7 @@ def test_cold_restore_uses_canonical_ib_runtime():
 def test_active_memory_surface_cannot_reintroduce_local_ib_allocation_or_legacy_registry():
     active_files = [
         path for path in (ROOT / ".naya" / "memory").iterdir()
-        if path.is_file() and path.name != "verify_memory_surface.py"
+        if path.is_file() and path.name not in {"verify_memory_surface.py", "test_verify_memory_surface.py"}
     ]
     forbidden = ("_allocate_ib_id", "identity_cursor", "IB-ID-REGISTRY.json")
     violations = []
