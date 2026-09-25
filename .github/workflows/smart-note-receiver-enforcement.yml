@@ -9,6 +9,9 @@ on:
       - "supabase/functions/v7-smart-note-canonical/index.ts"
       - ".naya/runtime/smart_note_transaction.py"
       - ".github/workflows/smart-note-receiver-enforcement.yml"
+  push:
+    branches:
+      - "fix/canonical-smart-note-receiver-enforcement"
 
 jobs:
   enforcement:
