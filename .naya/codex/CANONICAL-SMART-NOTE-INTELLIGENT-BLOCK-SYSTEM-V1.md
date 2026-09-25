@@ -41,6 +41,8 @@ Rules:
 
 The path is an organizational index, not the object's identity.
 
+**Authoritative identity rule:** the live canonical receiver (`v7-smart-note-canonical`) is the sole authority that allocates the IB identity. Repository files, scripts, migrations, tests, or Nayas MUST NOT calculate, guess, increment, or reserve an IB number locally. A repository projection may be written only after the receiver returns the authoritative IB ID.
+
 If classification changes, the same IB remains the same intelligence object; the system updates classification/projection rather than creating a duplicate.
 
 ## 4. CANONICAL HUMAN STRUCTURE
@@ -97,9 +99,13 @@ Canonical intelligence follows:
 
 Writing a Markdown file alone is NOT completion.
 
+**Lifecycle clarification:** `VERIFIED` lifecycle means the canonical persistence/lineage/transport boundary has been verified. It does **not** mean the content claim is independently truth-verified. Content truth remains separately represented (for example `SUPPORTED`), and learning promotion remains blocked until an independent verified outcome exists.
+
 A Smart Note becomes system intelligence when its canonical event and downstream intelligence processing succeed.
 
 ## 7. INTELLIGENCE EVENT
+
+Creation MUST cross the canonical receiver before a repository Smart Note projection is created. The receiver is the intake/identity boundary; the repository path is the human-readable projection.
 
 The system MUST treat creation of canonical intelligence as an **Intelligence Commit Event**, not merely a UI notification.
 
