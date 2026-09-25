@@ -3,7 +3,7 @@
 **Status:** CANONICAL MIGRATION PLAN
 **Authority:** .naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md + current constitutional/control-plane precedence
 **Current alignment:** 2026-09-24 NayaNET System-Wide Alignment — The Hub Is the House
-**Current canonical IB created from that alignment:** IB-000650
+**Current canonical IB created from that alignment:** IB-000659
 
 ## Purpose
 
@@ -76,8 +76,8 @@ Current state: CANONICAL
 Current registered objects include:
 - IB-000001 — Canonical Smart Note System Activation
 - IB-000002 — NayaNET Superbrain Daily Scorecard
-- IB-000650 — NayaNET System-Wide Alignment: The Hub Is the House
-The registry high-water mark is 649; IB-000650 is therefore the next canonical repository Smart Note identity.
+- IB-000659 — NayaNET System-Wide Alignment: The Hub Is the House
+The registry high-water mark is 649; IB-000659 is therefore the next canonical repository Smart Note identity.
 
 ### D. SUPERBRAIN/MASTER-NOTES/
 Current state: MIXED
@@ -125,7 +125,7 @@ This is not a Smart Note home. It records causal/provenance events that connect 
 ## First-pass migration order
 
 ### Wave 1 — Current truth and core intelligence
-1. Current September 24 system alignment → IB-000650 DONE
+1. Current September 24 system alignment → IB-000659 DONE
 2. Current canonical Smart Note system contract → already canonical
 3. Current Superbrain scorecard → IB-000002 DONE
 4. Current source map / boot law → keep as specialized authority
