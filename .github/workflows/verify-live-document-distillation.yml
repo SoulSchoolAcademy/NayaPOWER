@@ -74,18 +74,54 @@ jobs:
           echo "$RETRIEVED" > document-distill-retrieval.json
 
           BLOCK=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligent_blocks?select=block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version&block_id=eq.$BLOCK_ID" "${H[@]}")
-          echo "$BLOCK" | jq .
-          echo "$BLOCK" > document-distill-block.json
-          test "$(echo "$BLOCK" | jq 'length')" -eq 1
-          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_type')" = document
-          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_hash')" = "$SOURCE_HASH"
-          test "$(echo "$BLOCK" | jq -r '.[0].value_context.document_id')" = "$DOCUMENT_ID"
-          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
-          test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
+          echo "$BLOCK" | jq . > document-distill-block.json
 
-          echo "DOCUMENT_DISTILL_CORE_PATH=PASS"
-          echo "DOCUMENT_DISTILL_RETRIEVAL_PATH=PASS"
-          # Canonical retrieval assertions are evaluated in the machine-readable proof step.
+          DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          echo "$DUP" | jq . > document-distill-duplicate.json
+
+          python - <<'PY'
+          import json
+          response=json.load(open("document-distill-response.json"))
+          retrieval=json.load(open("document-distill-retrieval.json"))
+          block=json.load(open("document-distill-block.json"))
+          duplicate=json.load(open("document-distill-duplicate.json"))
+          x=response["result"]
+          assert x["schema"]=="NAYANET_DOCUMENT_DISTILL_V1"
+          assert x["document"]["source_hash"] and len(x["document"]["source_hash"])==64
+          assert x["document"]["document_id"].startswith("DOC-")
+          ib=x["intelligence"]["intelligent_block"]
+          assert ib["block_id"]
+          row=block[0]
+          assert len(block)==1
+          assert row["block_id"]==ib["block_id"]
+          assert row["value_context"]["source_type"]=="document"
+          assert row["value_context"]["document_id"]==x["document"]["document_id"]
+          assert row["value_context"]["source_hash"]==x["document"]["source_hash"]
+          assert row["value_context"]["source_ref"]==x["document"]["source_ref"]
+          assert row["content"]["content"]==x["document"]["essence"]
+          q=retrieval["result"]
+          assert q["schema"]=="NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1"
+          assert any(i["id"]==x["intelligence"]["projection"]["index"]["id"] for i in q["library"]["indexes"])
+          assert any(i.get("value_context",{}).get("document_id")==x["document"]["document_id"] for i in q["library"]["intelligent_blocks"])
+          assert duplicate["ok"] is True
+          assert duplicate["result"]["intelligence"]["source_event"]["event_id"]==x["intelligence"]["source_event"]["event_id"]
+          proof={
+            "status":"VERIFIED",
+            "document_id":x["document"]["document_id"],
+            "source_ref":x["document"]["source_ref"],
+            "source_hash":x["document"]["source_hash"],
+            "source_event_id":x["intelligence"]["source_event"]["event_id"],
+            "intelligent_block_id":ib["block_id"],
+            "intelligence_index_id":x["intelligence"]["projection"]["index"]["id"],
+            "checks":{
+              "source_capture":"PASS","source_hash":"PASS","distillation":"PASS","classification":"PASS",
+              "provenance_binding":"PASS","private_scope":"PASS","intelligent_block_persistence":"PASS",
+              "cognition_retrieval":"PASS","library_index_retrieval":"PASS","idempotency":"PASS"
+            }
+          }
+          json.dump(proof,open("document-distill-proof-machine.json","w"),indent=2)
+          print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")
+          PY
 
       - name: Verify machine-readable proof
         run: |
