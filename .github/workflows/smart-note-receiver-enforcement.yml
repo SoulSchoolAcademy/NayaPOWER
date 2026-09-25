@@ -6,6 +6,8 @@ on:
       - ".naya/runtime/smart_note_calendar.py"
       - ".naya/tests/test_smart_note_canonical_resolver.py"
       - ".naya/tests/test_smart_note_receiver_enforcement.py"
+      - "supabase/functions/v7-smart-note-canonical/index.ts"
+      - ".naya/runtime/smart_note_transaction.py"
       - ".github/workflows/smart-note-receiver-enforcement.yml"
 
 jobs:
