@@ -99,7 +99,7 @@ def validate_event(e,p):
         try:parsed[k]=parse_time(e[k])
         except Exception as exc:errors.append(f'{p}: invalid {k}: {exc}')
     if not isinstance(e.get('status'),str) or not e.get('status').strip():errors.append(f'{p}: invalid status')
-    if not reps(e):errors.append(f'{p}: missing representations')
+    if not reps(e) and str(e.get('status','')).upper()=='CANONICAL':errors.append(f'{p}: missing canonical representations')
     if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):errors.append(f'{p}: missing source')
     v=e.get('verification',{}) or {}
     if v.get('status')=='VERIFIED' and str(e.get('status','')).upper()=='CANONICAL' and not v.get('canonical_url'):errors.append(f'{p}: canonical verified event missing canonical_url')
