@@ -30,7 +30,18 @@ class Reconciliation:
 def reconcile(candidate: dict[str, Any], current: list[dict[str, Any]]) -> Reconciliation:
     if not candidate.get("meaning"):
         return Reconciliation(Disposition.LOW_VALUE, "candidate has no reusable meaning")
-    if candidate.get("verification") in {"UNKNOWN", "UNVERIFIED"}:
+    verification = candidate.get("verification")
+    if isinstance(verification, dict):
+        verification_state = str(
+            verification.get("status")
+            or verification.get("state")
+            or verification.get("verification_state")
+            or verification.get("evidence_state")
+            or "UNKNOWN"
+        ).upper()
+    else:
+        verification_state = str(verification or "UNKNOWN").upper()
+    if verification_state in {"UNKNOWN", "UNVERIFIED", "UNPROVEN", "PENDING", "OBSERVED"}:
         return Reconciliation(Disposition.UNCERTAIN, "candidate is not sufficiently verified")
     key = candidate.get("semantic_key")
     matches = [x for x in current if key and x.get("semantic_key") == key]
