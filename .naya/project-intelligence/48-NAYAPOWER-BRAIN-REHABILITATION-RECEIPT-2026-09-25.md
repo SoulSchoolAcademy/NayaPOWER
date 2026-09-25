@@ -1,7 +1,8 @@
 # NayaPOWER Brain Rehabilitation Receipt — 2026-09-25
 
 **Status:** REPAIRED / VERIFICATION PENDING
-**Authoritative HEAD at receipt creation:** `08d961c2e7b8a91f119234f1901f8b6518870dcf`
+**Latest main HEAD at receipt update:** `a9b2c5b5bdea487a0233f9f54c233dd351f3973f`
+**Initial repair source HEAD:** `08d961c2e7b8a91f119234f1901f8b6518870dcf`
 **Scope:** `.naya/memory/` canonical-memory boundary and related Smart Note / Intelligent Block runtime contracts.
 
 ## Executed repairs
@@ -15,6 +16,7 @@
 7. Classified the pre-fresh-start archaeology and migration map as historical/non-executable.
 8. Classified the in-memory Smart Ledger SmartNote factory as legacy compatibility/test machinery, not canonical durable intelligence.
 9. Confirmed cold restore resolves canonical IBs through `.naya/memory/smart-notes/REGISTRY.json` and `smart_notes_v3.retrieve_canonical_ibs(...)`, not legacy note filenames.
+10. Aligned `smart_note_enforcement.py` with the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE perspective contract; the stale SHAWN/NAYA/MACHINE requirement is removed.
 
 ## Source-of-truth findings
 
@@ -58,7 +60,7 @@ Those prior results do **not** prove the repaired HEAD.
 
 1. Full executable test suite for the repaired HEAD remains UNKNOWN.
 2. Full semantic classification of every one of the 154 runtime files remains UNKNOWN; the canonical restore/retrieval/Smart Note paths and the identified high-risk compatibility modules were inspected.
-3. `.naya/memory/smart_note_enforcement.py` still carries an older representation-oriented enforcement model and requires a dedicated contract-conformance pass before it can be called the sole canonical Smart Note enforcement implementation.
+3. The Smart Note enforcement representation boundary is now aligned to the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE contract; executable verification of that repaired HEAD remains UNKNOWN.
 4. Production receiver/database registry versus repository registry parity remains UNKNOWN; repository registry is a projection/index, not authority.
 5. Positive owner-authenticated production retrieval/deep-link/reload proof for the real production IB remains blocked until the legitimate owner session is available.
 6. Behavioral cold-Naya takeover remains UNKNOWN; structural cold-successor proof does not establish independent fresh-LLM behavior.
@@ -69,4 +71,4 @@ No credential, token, impersonation, synthetic authority grant, or private-data 
 
 ## Next executable action
 
-Run the focused canonical memory/IB tests against current `main` HEAD `08d961c2e7b8a91f119234f1901f8b6518870dcf`. If the first failure is in the canonical memory surface, repair only that bounded defect and rerun. If focused tests pass, immediately reconcile `smart_note_enforcement.py` against the canonical codex contract and prove its enforcement boundary without creating another Smart Note format or store.
+Run the focused canonical memory/IB tests against current `main` HEAD `a9b2c5b5bdea487a0233f9f54c233dd351f3973f`. If the first failure is in the canonical memory surface, repair only that bounded defect and rerun. If focused tests pass, run the Smart Note enforcement tests and continue the cold-start/retrieval proof without creating another Smart Note format or store.

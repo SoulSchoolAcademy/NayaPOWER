@@ -62,13 +62,14 @@
     "brain_rehabilitation_2026_09_25": {
       "status": "REPAIRED_VERIFICATION_PENDING",
       "claim_type": "SOURCE_AND_ENFORCEMENT",
-      "source_head": "08d961c2e7b8a91f119234f1901f8b6518870dcf",
+      "source_head": "a9b2c5b5bdea487a0233f9f54c233dd351f3973f",
       "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
       "evidence": [
         "Repository-side local IB allocator removed.",
         "Receiver-assigned IB is now required before canonical Smart Note projection persistence.",
         "Active memory machine-enforcement rejects local allocation, identity cursors, and legacy registry references.",
-        "Duplicate contract projections were demoted to non-authoritative status."
+        "Duplicate contract projections were demoted to non-authoritative status.",
+        "Smart Note enforcement now requires the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE perspectives."
       ],
       "test_execution": "UNKNOWN"
     },

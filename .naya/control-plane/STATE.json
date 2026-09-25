@@ -69,7 +69,7 @@
   "memory_rehabilitation": {
     "status": "REPAIRED_VERIFICATION_PENDING",
     "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
-    "source_head": "08d961c2e7b8a91f119234f1901f8b6518870dcf",
+    "source_head": "a9b2c5b5bdea487a0233f9f54c233dd351f3973f",
     "canonical_memory_store": ".naya/memory/smart-notes/",
     "canonical_registry": ".naya/memory/smart-notes/REGISTRY.json",
     "identity_authority": "live canonical receiver only",
