@@ -1,0 +1,19 @@
+from pathlib import Path
+import re
+
+ROOT = Path(__file__).resolve().parents[1]
+HUB = ROOT / "NAYANET/HUB/index.html"
+
+def test_hub_has_canonical_intelligent_block_deep_link_contract():
+    source = HUB.read_text(encoding="utf-8")
+    assert "NayaHubDeepLink" in source
+    assert "intelligent_block_id" in source
+    assert "location.search" in source
+    assert "/hub" in source
+
+def test_hub_deep_link_resolves_exact_ib_or_source_event_without_fallback_projection():
+    source = HUB.read_text(encoding="utf-8")
+    assert re.search(r"NayaHubDeepLink.*resolve|resolve.*NayaHubDeepLink", source, re.S)
+    assert "data-event-id" in source
+    assert "data-intelligence-id" in source
+    assert "DEEP_LINK_NOT_FOUND" in source
