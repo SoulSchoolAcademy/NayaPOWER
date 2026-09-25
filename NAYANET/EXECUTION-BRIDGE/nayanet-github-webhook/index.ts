@@ -20,17 +20,30 @@ function normalize(payload:any,delivery:string){
   const repo=payload?.repository?.full_name||"";
   const sha=payload?.after||payload?.pull_request?.head?.sha||payload?.workflow_run?.head_sha||null;
   const eventType=String(payload?.action?payload?.action:"github.webhook");
+  const ref=payload?.ref||payload?.pull_request?.base?.ref||payload?.workflow_run?.head_branch||null;
+  const actor=payload?.sender?.login||payload?.pusher?.name||null;
+  const occurredAt=payload?.head_commit?.timestamp||payload?.workflow_run?.created_at||payload?.repository?.pushed_at||new Date().toISOString();
+  const headline=(payload?.head_commit?.message||payload?.pull_request?.title||payload?.workflow_run?.display_title||payload?.issue?.title||payload?.release?.name||"").split("\n")[0].trim();
+  const bodyLines=(payload?.head_commit?.message||"").split("\n").slice(1).join("\n").trim();
   return {
     event_id:"github:"+delivery,
     source_event_id:delivery,
     source_system:"github",
     event_type:eventType,
     repository:repo,
-    ref:payload?.ref||payload?.pull_request?.base?.ref||payload?.workflow_run?.head_branch||null,
+    ref,
     commit_sha:sha,
-    actor:payload?.sender?.login||payload?.pusher?.name||null,
-    occurred_at:payload?.head_commit?.timestamp||payload?.workflow_run?.created_at||new Date().toISOString(),
+    actor,
+    occurred_at:occurredAt,
     received_at:new Date().toISOString(),
+    created_at:occurredAt,
+    title:[eventType,repo].filter(Boolean).join(" · "),
+    content:[headline,bodyLines,ref?`ref ${ref}`:"",sha?`commit ${sha}`:""].filter(Boolean).join("\n")||`GitHub ${eventType} received for ${repo||"an unbound repository"}`,
+    type:eventType,
+    classification:"observation",
+    status:"active",
+    tags:["github",eventType,repo?`repo:${repo}`:""].filter(Boolean),
+    schema_version:"2.0.0",
     correlation_id:"github:"+delivery,
     idempotency_key:"github:"+delivery,
     authority:{source:"github_app",scope:repo},
@@ -38,6 +51,7 @@ function normalize(payload:any,delivery:string){
     verification:{state:"SIGNED_WEBHOOK_VERIFIED"},
     processing_state:"RECEIVED",
     projection_targets:["Personal Intelligence","Activity","Intelligence Today"],
+    metadata:{source:"github_webhook",event_type:eventType,repository:repo,delivery_id:delivery,commit_sha:sha||null},
     payload
   };
 }
