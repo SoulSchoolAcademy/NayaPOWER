@@ -2,14 +2,6 @@ name: NayaNET canonical Smart Share governed proof
 # PROOF-TRIGGER: rerun after successful canonical Hub production parity deployment
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/verify-smart-share-canonical.yml'
-      - 'NAYANET/HUB/index.html'
-      - 'NAYANET/HUB/public/assistant-runtime.js'
-      - 'NAYANET/HUB/public/hub-completeness.js'
-      - 'smart-feed.js'
   workflow_dispatch:
 
 permissions:
@@ -25,6 +17,8 @@ jobs:
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
     steps:
       - uses: actions/checkout@v4
+      - name: Require explicit legacy diagnostic authorization
+        run: node -e "if(process.env.ALLOW_LEGACY_SMART_SHARE_DIAGNOSTIC!=='true'){console.error('LEGACY_SMART_SHARE_DIAGNOSTIC_BLOCKED');process.exit(78)}"
       - uses: actions/setup-node@v4
         with:
           node-version: 20
