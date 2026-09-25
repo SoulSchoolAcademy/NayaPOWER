@@ -80,7 +80,8 @@ jobs:
           set -euo pipefail
           token=$(cat /tmp/token); user=$(cat /tmp/user); auth=$(cat /tmp/execution_authorization.json)
           idem="governed-intelligence-$GITHUB_RUN_ID"
-          make_body(){ jq -n --arg idem "$1" --argjson auth "$auth" --arg run "$GITHUB_RUN_ID" '{action:"intelligence_commit",idempotency_key:$idem,title:("Governed Intelligence Proof "+$run),content:"Observed governed intelligence persistence through the canonical commit boundary.",category:"CAUSAL_PROOF",topic:"governed-intelligence",confidence:1,learning_claim:"The governed commit boundary consumed gate authorization.",epistemic_state:"OBSERVED",evidence:["fresh runtime authority grant","canonical UniversalExecutionGate","managed runtime"],execution_authorization:$auth,unknown:["Outcome-based behavior change remains unverified."]}'; }
+          grant_id=$(jq -r '.grant_id' /tmp/grant)
+          make_body(){ jq -n --arg idem "$1" --argjson auth "$auth" --arg run "$GITHUB_RUN_ID" '{action:"intelligence_commit",idempotency_key:$idem,title:("Governed Intelligence Proof "+$run),content:"Observed governed intelligence persistence through the canonical commit boundary.",category:"CAUSAL_PROOF",topic:"governed-intelligence",confidence:1,learning_claim:"The governed commit boundary consumed gate authorization.",epistemic_state:"OBSERVED",evidence:["fresh runtime authority grant","canonical UniversalExecutionGate","managed runtime"],execution_authorization:$auth,authority_grant_id:$grant_id,unknown:["Outcome-based behavior change remains unverified."]}'; }
           body=$(make_body "$idem")
           first=$(curl -sS -w '\n%{http_code}' -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$body")
           code=$(tail -n1 <<<"$first"); payload=$(sed '$d' <<<"$first")
