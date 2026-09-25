@@ -18,7 +18,7 @@ on:
         type: string
       deployed_source_sha:
         description: 'Source SHA known to be deployed at HUB_URL'
-        required: false
+        required: true
         type: string
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
     env:
       HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
       EXPECTED_SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
-      DEPLOYED_SOURCE_SHA: ${{ inputs.deployed_source_sha || github.sha }}
+      DEPLOYED_SOURCE_SHA: ${{ inputs.deployed_source_sha }}
     steps:
       - name: Checkout exact requested source
         uses: actions/checkout@v4
@@ -99,23 +99,24 @@ jobs:
             if(!eventId||!tx?.id)throw new Error('CANONICAL_CAPTURE_RESULT_INCOMPLETE');
             mark('CAPTURE_VERIFIED',{eventId,transactionId:tx.id});
             await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId)+'&stream=personal',{waitUntil:'domcontentloaded',timeout:60000});
-            await page.locator('#naya-smart-feed-v2').waitFor({state:'visible',timeout:30000}); mark('FEED_ROUTE_REACHED',{url:page.url()});
-            const feedDiagnostic=await page.evaluate(async({eventId})=>{const rt=window.NayaAssistantRuntime;const data=await rt.smartFeed({stream:'personal',limit:50,before:null});const items=Array.isArray(data?.items)?data.items:[];const matching=items.filter(x=>String(x?.event_id||x?.id||'')===String(eventId));const blocks=[...document.querySelectorAll('.feed .blocks [data-event-id]')].map(x=>({event_id:x.getAttribute('data-event-id'),real:x.hasAttribute('data-real-smart-note'),display:getComputedStyle(x).display}));return{item_count:items.length,matching_count:matching.length,matching:matching.map(x=>({id:x.id,event_id:x.event_id,title:x.title,source_id:x.source_id,status:x.status,has_block:!!x.intelligent_block})),canonical_flag:document.documentElement.dataset.nayaCanonicalSmartFeed||null,canonical_meta:!!document.querySelector('meta[name="nayanet-direct-nine"]'),blocks_count:blocks.length,blocks:blocks.slice(0,30),body_has_event:document.body.innerText.includes(String(eventId))};},{eventId});
+            const board=page.locator('#blocks [data-event-id="'+eventId+'"]');
+            await board.waitFor({state:'visible',timeout:30000}); mark('FEED_ROUTE_REACHED',{url:page.url(),surface:'canonical-hub-blocks'});
+            const feedDiagnostic=await page.evaluate(async({eventId})=>{const rt=window.NayaAssistantRuntime;const data=await rt.smartFeed({stream:'personal',limit:50,before:null});const items=Array.isArray(data?.items)?data.items:[];const matching=items.filter(x=>String(x?.event_id||x?.id||'')===String(eventId));const blocks=[...document.querySelectorAll('#blocks [data-event-id]')].map(x=>({event_id:x.getAttribute('data-event-id'),real:x.hasAttribute('data-real-smart-note'),display:getComputedStyle(x).display}));return{item_count:items.length,matching_count:matching.length,matching:matching.map(x=>({id:x.id,event_id:x.event_id,title:x.title,source_id:x.source_id,status:x.status,has_block:!!x.intelligent_block})),canonical_flag:document.documentElement.dataset.nayaCanonicalSmartFeed||null,canonical_meta:!!document.querySelector('meta[name="nayanet-direct-nine"]'),blocks_count:blocks.length,blocks:blocks.slice(0,30),body_has_event:document.body.innerText.includes(String(eventId))};},{eventId});
             mark('FEED_RUNTIME_DIAGNOSTIC',feedDiagnostic);
-            const board=page.locator('#naya-smart-feed-v2 .sf-card[data-event-id="'+eventId+'"]');
             await board.waitFor({state:'visible',timeout:30000});
             mark('FEED_BOARD_VISIBLE',{eventId});
-            const activityTab=page.locator('#naya-smart-feed-v2 [data-sf-stream="activity"]').first();
+            const activityTab=page.locator('.feedNav button[data-feed="activity"]');
             await activityTab.waitFor({state:'visible',timeout:30000});
             await activityTab.click();
-            await page.waitForFunction(()=>document.querySelector('#naya-smart-feed-v2 [data-sf-stream="activity"]')?.getAttribute('aria-selected')==='true',{timeout:30000});
-            const activity=page.locator('#naya-smart-feed-v2 .sf-card[data-event-id="'+eventId+'"]');
+            await page.waitForFunction(()=>document.querySelector('.feedNav button[data-feed="activity"]')?.classList.contains('active'),{timeout:30000});
+            const activity=page.locator('#blocks [data-event-id="'+eventId+'"]');
             await activity.waitFor({state:'visible',timeout:30000});
             mark('ACTIVITY_EXACT_EVENT_PRESERVED',{eventId});
             await page.reload({waitUntil:'domcontentloaded',timeout:60000});
-            const restored=page.locator('#naya-smart-feed-v2 .sf-card[data-event-id="'+eventId+'"]');
+            const restored=page.locator('#blocks [data-event-id="'+eventId+'"]');
             await restored.waitFor({state:'visible',timeout:30000});
             mark('RELOAD_EXACT_EVENT_PRESERVED',{eventId});
+
             const proof={status:'VERIFIED',expected_source_sha:expectedSha,deployed_source_sha:deployedSha,event_id:eventId,transaction_id:tx.id,checks:{source_identity:'PASS',human_capture_control:'PASS',canonical_receiver:'PASS',same_event_identity:'PASS',smart_feed_render:'PASS',reload_identity:'PASS'},trace};
             fs.writeFileSync('human-smart-note-capture-proof.json',JSON.stringify(proof,null,2)+'\\n');
             console.log(JSON.stringify(proof));
