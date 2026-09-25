@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-25T06:09:22.673Z",
+  "generated_at": "2026-09-25T06:12:30.000Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,13 +13,14 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "772464d1111db32219bc73b7cfdd9b9c01b47424",
+    "live_head": "bd0d1ad55373bfc9d3d1f4b2772b58d553bbde51",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
-    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
+    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
+    "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -96,6 +97,7 @@
   ],
   "next_action": {
     "count": 1,
+    "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "status": "BLOCKED",
     "action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "source": ".naya/control-plane/BLOCKS.json",
