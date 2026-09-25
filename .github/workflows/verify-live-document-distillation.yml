@@ -73,7 +73,7 @@ jobs:
           echo "$RETRIEVED" | jq .
           echo "$RETRIEVED" > document-distill-retrieval.json
 
-          python - <<'PY'
+          INDEX_ID="$INDEX_ID" DOCUMENT_ID="$DOCUMENT_ID" ESSENCE="$ESSENCE" python - <<'PY'
           import json, os
           r=json.load(open("document-distill-retrieval.json",encoding="utf-8"))
           b=json.load(open("document-distill-block.json",encoding="utf-8"))
