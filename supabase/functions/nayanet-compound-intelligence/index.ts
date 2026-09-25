@@ -614,17 +614,21 @@ async function consolidatePiGates(client: any, userId: string, body: any) {
   return {schema:"NAYANET_PROJECT_INTELLIGENCE_GATE_CONSOLIDATION_V1",status:"PI_GATES_CONSOLIDATED",event,receipt,flags,source_head:sourceHead,proof_run_id:proofRunId};
 }
 
-async function share(client: any, userId: string, body: any) {
+async function share(client: any, _userId: string, body: any) {
   const sourceId = String(body.source_event_id ?? "").trim();
+  const authorityGrantId = String(body.authority_grant_id ?? "").trim();
+  const consentState = String(body.consent_state ?? "").trim();
   if (!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
-  const own = await client.from("nayanet_cognition_events").select("id,event_id,title,content").eq("id",sourceId).eq("user_id",userId).single();
-  if (own.error || !own.data) throw new Error("SOURCE_NOT_OWNED");
-  const result = await client.from("nayanet_intelligence_publications").upsert({
-    intelligence_event_id: sourceId, owner_id: userId, status: "published",
-    consent_state: "explicit", published_at: new Date().toISOString(), updated_at: new Date().toISOString()
-  },{onConflict:"intelligence_event_id"}).select("*").single();
+  if (!authorityGrantId) throw new Error("PUBLISH_AUTHORITY_REQUIRED");
+  if (consentState !== "explicit") throw new Error("EXPLICIT_CONSENT_REQUIRED");
+  const result = await client.rpc("nayanet_publish_intelligence", {
+    p_intelligence_event_id: sourceId,
+    p_authority_grant_id: authorityGrantId,
+    p_consent_state: consentState
+  });
   if (result.error) throw result.error;
-  return { status:"SHARED_BY_EXPLICIT_CONSENT", publication:result.data };
+  if (result.data?.status !== "SHARED_BY_EXPLICIT_CONSENT" || !result.data?.publication) throw new Error("PUBLICATION_NOT_PERSISTED");
+  return result.data;
 }
 
 async function supersede(client: any, userId: string, body: any) {
