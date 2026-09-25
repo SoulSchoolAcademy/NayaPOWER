@@ -1,0 +1,28 @@
+name: verify-smart-link-identity
+
+on:
+  push:
+    paths:
+      - ".naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md"
+      - ".naya/tests/test_smart_link_identity_contract.py"
+      - ".github/workflows/verify-smart-link-identity.yml"
+  pull_request:
+    paths:
+      - ".naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md"
+      - ".naya/tests/test_smart_link_identity_contract.py"
+      - ".github/workflows/verify-smart-link-identity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-link-contract:
+    name: Smart Link identity contract gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Smart Link identity gate
+        run: python3 .naya/tests/test_smart_link_identity_contract.py
