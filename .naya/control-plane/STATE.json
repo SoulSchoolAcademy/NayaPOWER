@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-25T06:12:45.000Z",
-    "observed_head": "3277ec4399e409668112ce506a60ab68c976cafb",
+    "recorded_at": "2026-09-25T06:16:30.000Z",
+    "observed_head": "9a4bd09cfb409fa5945f3bcd7834094d8a821bee",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -306,9 +306,10 @@
     "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
-    "status": "PROVEN"
+    "status": "PROVEN",
+    "one_next_action_rule": "STATE/BLOCKS/BATON next-action values must match; recorded HEAD is informational and must never override live execution resolution."
   },
   "reconciliation": {
     "date": "2026-09-22",
