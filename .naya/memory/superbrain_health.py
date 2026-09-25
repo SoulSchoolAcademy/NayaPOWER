@@ -25,11 +25,26 @@ def report()->dict:
         for key in ("related","depends_on","supersedes","superseded_by","source_events"):
             vals=brain.normalize_targets(rel.get(key,[]))
             relationships+=len(vals); orphan+=sum(1 for target in vals if target not in ids and not str(target).startswith("EXT:"))
-    policy=load_policy()
+    verified=lambda e: (e.get("verification") or {}).get("status")=="VERIFIED"
+    try:
+        policy=load_policy()
+    except (FileNotFoundError, json.JSONDecodeError) as exc:
+        return {
+            "schema_version":2,
+            "status":"UNKNOWN",
+            "health_unknown":["continuity_enforcement_policy_missing"],
+            "policy_error":type(exc).__name__,
+            "canonical_event_count":len(ids),
+            "parse_error_count":parse_errors,
+            "relationship_reference_count":relationships,
+            "orphan_relationship_count":orphan,
+            "verified_event_count":sum(1 for _,e in loaded if verified(e)),
+            "derived_indexes":{"index_exists":(EVENTS/"INDEX.json").exists(),"validation_report_exists":(MEMORY/"VALIDATION-REPORT.json").exists(),"relationship_graph_exists":(MEMORY/"RELATIONSHIP-GRAPH.json").exists()},
+            "note":"Continuity policy could not be loaded; health is UNKNOWN rather than inferred GREEN/RED."
+        }
     meaningful=[e for _,e in loaded if is_meaningful_execution(e,policy)]
     receipt=lambda e: bool((e.get("receipt") or {}).get("receipt_id") or (e.get("verification") or {}).get("receipt") or (e.get("verification") or {}).get("receipt_url"))
     delivery=lambda e: bool((e.get("delivery") or {}).get("state") or (e.get("verification") or {}).get("feed_status"))
-    verified=lambda e: (e.get("verification") or {}).get("status")=="VERIFIED"
     all_receipt=completeness([e for _,e in loaded],receipt); all_delivery=completeness([e for _,e in loaded],delivery)
     meaningful_metrics={"count":len(meaningful),"verification_completeness":completeness(meaningful,verified),"receipt_completeness":completeness(meaningful,receipt),"delivery_state_completeness":completeness(meaningful,delivery)}
     return {"schema_version":2,"status":"GREEN" if parse_errors==0 and orphan==0 else "RED","canonical_event_count":len(ids),"parse_error_count":parse_errors,"relationship_reference_count":relationships,"orphan_relationship_count":orphan,"verified_event_count":sum(1 for _,e in loaded if verified(e)),"receipt_completeness":all_receipt,"delivery_state_completeness":all_delivery,"all_event_metrics":{"receipt_completeness":all_receipt,"delivery_state_completeness":all_delivery},"meaningful_execution_metrics":meaningful_metrics,"derived_indexes":{"index_exists":(EVENTS/"INDEX.json").exists(),"validation_report_exists":(MEMORY/"VALIDATION-REPORT.json").exists(),"relationship_graph_exists":(MEMORY/"RELATIONSHIP-GRAPH.json").exists()},"note":"Overall health does not equate non-meaningful historical events with completed executions; continuity completeness is measured separately for meaningful executions."}
