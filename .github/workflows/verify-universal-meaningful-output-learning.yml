@@ -43,8 +43,11 @@ jobs:
             const key='learning-output-'+run+'-'+action+'-'+crypto.randomBytes(4).toString('hex');
             const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
             const out={status:r.status,body:await r.json().catch(()=>({}))};
-            if(out.status!==200||out.body?.ok!==true)throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
-            return out.body.result;
+            // learning_verify is intentionally fail-closed when no independent outcome exists.
+            // Preserve its non-2xx response so the proof can assert the governed rejection rather than
+            // treating an expected safety refusal as a test-helper failure.
+            if(action!=='learning_verify' && (out.status!==200||out.body?.ok!==true))throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
+            return action==='learning_verify' ? out : out.body.result;
           }
           (async()=>{
             const browser=await chromium.launch({headless:true}), ctx=await browser.newContext({serviceWorkers:'block'}), page=await ctx.newPage();
