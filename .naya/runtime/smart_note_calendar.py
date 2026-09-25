@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Canonical human Smart Note calendar writer.
+"""Canonical human-readable Smart Note projection calendar writer.
 
-Smart Notes remain a separate human-readable intelligence stream. The writer
-owns only their calendar placement and day index; it does not change the
-machine event store or NAYA-TEAM semantics.
+The Intelligent Block is the canonical durable intelligence object. This helper
+owns only projection placement and day indexing; it does not allocate identity,
+change the machine event store, or create a competing memory system.
 """
 from __future__ import annotations
 
