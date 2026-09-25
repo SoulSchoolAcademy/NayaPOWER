@@ -77,8 +77,8 @@ def test_after_accepts_only_completed_receiver_receipt():
             receiver_receipt=receipt,
             root=Path(raw) / "smart-notes",
         )
-        assert result["intelligent_block_id"] == "IB-NEW001"
-        assert result["source_event_id"] == "EV-NEW001"
+        assert result["intelligent_block_id"] == "IB-001025"
+        assert result["source_event_id"] == "EV-001025"
         assert Path(result["path"]).is_file()
         print("AFTER_BRANCH=PASS (receiver-issued identity + lineage projected canonically)")
 
