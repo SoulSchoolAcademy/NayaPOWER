@@ -147,60 +147,60 @@ def _synthetic(template: str = NOTES_TEMPLATE) -> str:
     )
 
 
-def test_grammar_is_derived_from_canonical_source():
+def test_legacy_509_reference_corpus_is_parseable():
     text = _canonical()
-    assert parse_notes(text), "canonical source must parse into notes"
+    assert parse_notes(text), "legacy 509 reference corpus must parse into notes"
 
 
-def test_smart_notes_count_is_nine():
+def test_legacy_reference_count_is_nine():
     notes = parse_notes(_canonical())
     assert len(notes) == 9, len(notes)
 
 
-def test_note_numbers_are_sequential_01_to_09():
+def test_legacy_reference_numbers_are_sequential_01_to_09():
     notes = parse_notes(_canonical())
     assert [note["number"] for note in notes] == list(range(1, 10))
 
 
-def test_identity_contract_present_per_note():
+def test_legacy_reference_identity_present_per_note():
     for note in parse_notes(_canonical()):
         assert note["subject_id"] == EXPECTED_SUBJECT_BY_NUMBER[note["number"]]
         assert note["status"] == EXPECTED_STATUS
 
 
-def test_identity_block_precedes_content_sections():
+def test_legacy_reference_identity_block_precedes_content_sections():
     for note in parse_notes(_canonical()):
         head_text = "\n".join(note["head"])
         assert f"Subject ID: {note['subject_id']}" in head_text
         assert f"Status: {note['status']}" in head_text
 
 
-def test_required_sections_present_complete():
+def test_legacy_reference_sections_present_complete():
     for note in parse_notes(_canonical()):
         names = [section["name"] for section in note["sections"]]
         assert set(names) == set(CANONICAL_SECTIONS), names
 
 
-def test_required_section_order_is_canonical():
+def test_legacy_reference_section_order_is_stable():
     for note in parse_notes(_canonical()):
         names = [section["name"] for section in note["sections"]]
         assert names == CANONICAL_SECTIONS, names
 
 
-def test_no_empty_required_sections():
+def test_legacy_reference_no_empty_sections():
     for note in parse_notes(_canonical()):
         for name in CANONICAL_SECTIONS:
             assert note["bodies"][name].strip(), (note["number"], name)
 
 
-def test_no_duplicate_or_unknown_sections():
+def test_legacy_reference_no_duplicate_or_unknown_sections():
     for note in parse_notes(_canonical()):
         names = [section["name"] for section in note["sections"]]
         assert len(set(names)) == len(names), names
         assert all(name in CANONICAL_SECTIONS for name in names)
 
 
-def test_grammar_consistent_across_all_notes():
+def test_legacy_reference_grammar_consistent_across_all_notes():
     parsings = parse_notes(_canonical())
     first = [section["name"] for section in parsings[0]["sections"]]
     for note in parsings[1:]:
