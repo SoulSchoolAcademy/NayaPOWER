@@ -23,18 +23,19 @@ ROOT = Path(__file__).resolve().parents[2]
 SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
 
 REQUIRED_HEADINGS = (
-    "Parent / predecessor",
-    "Human",
-    "Naya",
-    "Machine",
-    "Child / derived",
-    "What happened",
-    "What learned",
-    "Why this matters",
-    "How to use",
-    "What's in it for us",
-    "Evidence / Smart Links",
-    "Current state",
+    "IN A NUTSHELL",
+    "HUMAN NOTE",
+    "CHILD NOTE",
+    "GRANDMA NOTE",
+    "NAYA NOTE",
+    "MACHINE NOTE",
+    "LEARNING LESSON",
+    "WHAT IT MEANS",
+    "HOW IT CONNECTS",
+    "HOW TO APPLY IT",
+    "WHAT'S IN IT FOR THEM / YOU / US",
+    "EVIDENCE / SMART LINKS",
+    "CURRENT STATE",
     "ONE NEXT ACTION",
 )
 
