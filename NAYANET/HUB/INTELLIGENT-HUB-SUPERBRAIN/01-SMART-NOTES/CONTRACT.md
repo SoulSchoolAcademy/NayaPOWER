@@ -2,9 +2,11 @@
 
 **Feature ID:** `01-SMART-NOTES`
 **Parent:** Intelligent Hub / Superbrain
-**Status:** IMPLEMENTATION SLICE — FOUR HARD GATES RECONCILED
+**Status:** ACTIVE PROJECTION CONTRACT — SMART NOTE / INTELLIGENT BLOCK V1
 **Version:** 1.1
 **Date:** 2026-09-17
+
+> **Current authority:** `.naya/SMART-NOTE-CONTRACT-V1.md`. Smart Note = Intelligent Block. This Hub feature is a projection/interaction surface over that canonical object.
 
 ## 1. What is it?
 
@@ -18,7 +20,7 @@ To prevent valuable intelligence from disappearing in chat, memory, or disconnec
 
 A note begins with a meaningful source/input, is interpreted and structured, receives the appropriate evidence/context, is stored as a canonical intelligence record/event where applicable, and becomes available to authorized downstream surfaces such as Personal Feed, Reports, Library, Connections, and Collective Feed after consent.
 
-The canonical Smart Note is the durable source record. CIS and PIS are downstream projections and must not become competing stores of truth.
+The canonical Smart Note artifact is stored at `.naya/memory/notes/YYYY/MM/DD/` through the shared resolver. The event ledger and runtime persistence preserve the same event identity and provenance; Hub, Feed, Reports, Library, Learning, and Dream are downstream projections/uses. CIS and PIS are downstream projections and must not become competing stores of truth.
 
 ## 4. Inputs and outputs
 
@@ -85,3 +87,27 @@ Run the updated Smart Note transaction verifier and inspect the proof before mak
 ## 14. Whole-system reconciliation
 
 Smart Notes are a source of intelligence, not a separate feed or database. All downstream surfaces must consume the canonical representation.
+
+
+## 15. Canonical structure
+
+Every created Smart Note follows the V1 human-readable order:
+
+```text
+IN A NUTSHELL
+HUMAN NOTE
+CHILD NOTE
+GRANDMA NOTE
+NAYA NOTE
+MACHINE NOTE
+LEARNING LESSON
+WHAT IT MEANS
+HOW IT CONNECTS
+HOW TO APPLY IT
+WHAT'S IN IT FOR THEM / YOU / US
+EVIDENCE / SMART LINKS
+CURRENT STATE
+ONE NEXT ACTION
+```
+
+The machine object conforms to `NAYANET_INTELLIGENT_BLOCK_V1`. The Hub may progressively disclose these perspectives, but it does not create a second Smart Note structure.
