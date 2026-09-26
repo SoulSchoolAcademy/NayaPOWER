@@ -1,0 +1,59 @@
+name: Verify Contract Library Integrity
+
+# Makes the contract stack enforceable rather than merely asserted.
+#
+# A registry written in prose is an assertion. This gate is the machine-checkable
+# substrate that proves structural claims about the library from the repository
+# itself, so a cold Naya never has to infer which artifact governs.
+#
+# It detects, deterministically:
+#   - two artifacts sharing a contract name but diverging in content
+#   - two artifacts claiming the same NN- contract id in one scope
+#   - declared specialized boundaries that contain no substantive contract
+#   - stubs too small and too non-normative to govern
+#   - governed nouns defined in more than one place (operating law S6)
+#   - ambiguous library-wide authority between top-level documents
+#   - contract artifacts no index or registry ever references
+#
+# BASELINE MODEL: the library already carries known debt. A gate that failed on
+# merge would block every unrelated PR, and one that silently passed would hide
+# the debt. Each finding is reduced to a stable fingerprint and compared to
+# .naya/contracts/CONTRACT-LIBRARY-INTEGRITY-BASELINE.json. New drift fails;
+# recorded debt is reported but does not block. Debt cannot grow silently, and
+# clearing the baseline becomes a reviewable act rather than an accident.
+#
+# This gate makes no semantic decision about which artifact is correct. That
+# reconciliation is an authority decision under operating law S13.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/contracts/**'
+      - '.naya/runtime/contract_library_integrity.py'
+      - '.github/workflows/verify-contract-library-integrity.yml'
+  pull_request:
+    paths:
+      - '.naya/contracts/**'
+      - '.naya/runtime/contract_library_integrity.py'
+      - '.github/workflows/verify-contract-library-integrity.yml'
+permissions: {contents: read}
+jobs:
+  contract-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Fail on new structural drift in the contract library
+        run: python -B .naya/runtime/contract_library_integrity.py
+      - name: Archive machine-readable integrity report
+        if: always()
+        run: |
+          python -B .naya/runtime/contract_library_integrity.py --json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contract-library-integrity-report
+          path: .naya/contract-library-integrity-report.json
+          if-no-files-found: warn
