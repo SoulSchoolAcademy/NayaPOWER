@@ -227,6 +227,7 @@ Deno.serve(async(req)=>{
   const machine={event_id:eventId,schema:"nayanet.smart_note.machine.v2",occurred_at:now,source,type:human.type||"insight",actor:user.id,human_note_id:canonicalHuman.id||null,normalized_text:humanText,idempotency_key:idempotencyKey};
   const feed={event_id:eventId,kind:"smart_note.created",occurred_at:now,status:"verified",source,type:machine.type,summary:nutshell};
   const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey});
+  blockBase.metadata={...blockBase.metadata,projection_category:projectionCategory,projection_topic:projectionTopic};
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
