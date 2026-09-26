@@ -1007,6 +1007,7 @@ The library MUST be discovered from actual system boundaries.
 
 Candidate domains currently include:
 
+- Execution Protocol;
 - Smart Note + Smart Link;
 - Intelligence Organization;
 - Adaptive Learning;
