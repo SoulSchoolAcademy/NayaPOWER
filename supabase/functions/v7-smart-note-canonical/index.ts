@@ -392,7 +392,9 @@ Deno.serve(async(req)=>{
       topic:projectionTopic,
       intelligent_block_id:intelligentBlockId,
       source_event_id:eventId,
-      canonical_receiver:"v7-smart-note-canonical"
+      canonical_receiver:"v7-smart-note-canonical",
+      workflow:"project-canonical-smart-note.yml",
+      transaction_id:canonicalTransactionId
     }
   };
   return json({
