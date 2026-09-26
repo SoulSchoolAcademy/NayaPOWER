@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from smart_note_intent_router import resolve_smart_note_intent
+
 REQUIRED = {
     "id", "description", "expected_benefit", "necessary_cost", "risk_loss",
     "authorization", "boundary_violations", "evidence_state", "reversible",
@@ -51,6 +53,45 @@ def build_request(base_request: dict[str, Any], model_candidates: list[dict[str,
     request = dict(base_request)
     request["candidates"] = normalize_candidates(model_candidates)
     return request
+
+
+def build_smart_note_capture_request(
+    user_input: str,
+    *,
+    title: str,
+    content: str,
+    naya_note: str | None = None,
+) -> dict[str, Any]:
+    """Build the mandatory canonical capture envelope for a clear user command."""
+    intent = resolve_smart_note_intent(user_input)
+    if intent["operation"] != "CREATE":
+        return {
+            "intent": intent,
+            "execution": {
+                "mode": "NO_CANONICAL_CAPTURE",
+                "required_outputs": [],
+            },
+        }
+    if not isinstance(title, str) or not title.strip():
+        raise ValueError("Smart Note capture requires a non-empty title")
+    if not isinstance(content, str) or not content.strip():
+        raise ValueError("Smart Note capture requires non-empty content")
+
+    return {
+        "intent": intent,
+        "execution": {
+            "mode": "CANONICAL_SMART_NOTE_CAPTURE",
+            "receiver": intent["canonical_receiver"],
+            "human_note": {"title": title.strip(), "content": content.strip()},
+            "naya_note": (naya_note or "").strip(),
+            "required_outputs": [
+                "intelligent_block_id",
+                "verified_smart_link",
+                "completion_receipt",
+            ],
+            "on_missing_evidence": "BLOCKED_NOT_EXPLANATION",
+        },
+    }
 
 
 if __name__ == "__main__":
