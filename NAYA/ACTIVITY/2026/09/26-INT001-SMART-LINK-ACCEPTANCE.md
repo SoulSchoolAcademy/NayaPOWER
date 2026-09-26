@@ -218,10 +218,23 @@ PR #780 merged to `main` as `6b8db5a74aa0389521081bcd5db830530fc7a114`.
 
 This does not claim to prove system-level duplicate prevention, privacy/publication policy, or full creation-path behavior; those remain outside this verifier-only acceptance boundary and require their authoritative systems.
 
+## Natural production PENDING investigation — completed
+
+Queried the authoritative live Smart Note receiver stores for current non-success states.
+
+Observed:
+- `smart_note_events`: 1,200 VERIFIED and 4 INCOMPLETE.
+- `smart_note_receipts`: 1,200 VERIFIED and 4 INCOMPLETE.
+- `v7_smart_note_transactions`: 1,198 completed.
+- The 4 INCOMPLETE events have no corresponding Intelligent Block rows and their artifacts have no artifact URL.
+
+Conclusion:
+These four historical INCOMPLETE receiver events do **not** qualify as INT-001's PENDING state because PENDING specifically requires receiver persistence with the repository projection not yet established. Here the receiver-to-IB persistence boundary itself is incomplete. Therefore no natural production PENDING case is claimed or manufactured.
+
 ## Reassessment
 The receiver-to-projection correspondence boundary is now evidenced end-to-end for three real Smart Notes at the live data boundary and guarded by deterministic acceptance logic. This materially closes M10's prior gap.
 
-INT-001 is still PROPOSED and not ready for human ratification. Remaining technical boundaries are now concentrated around cold-Naya behavioral acceptance, natural production PENDING evidence, and the unobserved repository test/CI execution boundary. System-level duplicate prevention, privacy/publication enforcement, and complete creation-path auditing remain governed by their respective authoritative boundaries rather than being fabricated into INT-001 verifier scope.
+INT-001 is still PROPOSED and not ready for human ratification. The natural-production-PENDING investigation found no qualifying PENDING case; the four historical INCOMPLETE events are receiver-incomplete, not projection-pending. Remaining major boundaries are cold-Naya behavioral acceptance and the unobserved repository test/CI execution boundary, plus any owner-contract audits that INT-001's completion standard explicitly leaves outside this verifier. System-level duplicate prevention, privacy/publication enforcement, and complete creation-path auditing remain governed by their respective authoritative boundaries rather than being fabricated into INT-001 verifier scope.
 
 ## Reassessment
 Remote Smart Link target resolution is now technically evidenced for three real representative artifacts and adversarially rejected for wrong ref/path/identity observations. This removes the prior remote-resolution gap at the observed repository boundary.
