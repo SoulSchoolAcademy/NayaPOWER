@@ -138,11 +138,12 @@ jobs:
           set -euo pipefail
           git fetch origin main
           TARGET="$(cat projection-path.txt)"
-          git cat-file -e "origin/main:$TARGET" || {
+          FETCH_HEAD="$(git rev-parse FETCH_HEAD)"
+          git cat-file -e "$FETCH_HEAD:$TARGET" || {
             echo "SMART_NOTE_PROJECTION_NOT_COMMITTED"
             exit 1
           }
-          git show "origin/main:$TARGET" > committed-smart-note.md
+          git show "$FETCH_HEAD:$TARGET" > committed-smart-note.md
           cmp -s committed-smart-note.md projected-smart-note.md || {
             echo "SMART_NOTE_PROJECTION_BYTE_DRIFT_FROM_MAIN"
             sha256sum committed-smart-note.md projected-smart-note.md
