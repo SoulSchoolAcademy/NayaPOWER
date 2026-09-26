@@ -92,6 +92,52 @@ Real sign-in evidence from that browser proof (test identity, **not** the owner)
   it proves the front door and identity boundary, not full Hub rendering. Full shell rendering
   remains the release workflow's own browser gate.
 
+## PRODUCTION PROOF (added after release)
+
+- PR `#795` merged to `main` as `8d7ee84875163ee28b86870cc24373ac462a022e`.
+- Release workflow `assistant-cloudflare-hub-release.yml` run **`36262036641`**: `success`, with the
+  new `Verify live name-first identity front door` step passing alongside
+  `HUB_PRESERVATION_GATE_VERIFIED` and the Naya session/merge-boundary lease.
+- Independent byte-parity probe (not the workflow's own check):
+
+| Artifact | Source | Live | Byte identical |
+| --- | --- | --- | --- |
+| `/identity.html` | `4c8947633d1e0c0e36f12ff65df79479f55cbd0a5b6c77b82bb1106436988976` (7285 bytes) | same sha256 | yes |
+| `/` index | `ece071671e1ea589bfa98dbfb9c182eb7b5021a07605231b3a43cd88e4e90681` | same sha256 | yes |
+
+  Live `/identity.html` now serves `NayaNET — Identity`, is not the Hub SPA fallback, loads
+  `/NAYANET/name-first-auth-adapter.js`, and calls `establish()`.
+
+### Live journey proof: sign-in -> capture -> feed -> deep link -> reload -> canonical projection
+
+Real headless-Chrome run against production, throwaway anonymous identity
+`4df2803c-a048-4611-8e93-3f31e1d7c4a0` (alias `fdlive47000439`). **Test identity, never owner
+attribution.**
+
+| Stage | Evidence |
+| --- | --- |
+| Front door | title `NayaNET — Identity`, state `READY · NAME-FIRST IDENTITY · NO PREVIEW IDENTITY IS PROMOTED` |
+| Sign in | `IDENTITY ESTABLISHED · CONTINUING TO THE HUB`; adapter `current().authenticated = true`; Supabase session present; runtime `snapshot().authenticated = true` |
+| Hub | canonical shell present (`.shell`) |
+| Capture | event `546d7a37-b155-43c4-9e48-4ba255c093d5`, receipt `4841cd24-0758-4ebe-8ac5-523c01759de4`, transaction `9af0d718-cec6-4a4a-ad35-2317173c9b19` |
+| Receiver identity | **`IB-001223`**, issued by the canonical receiver, not guessed |
+| Smart Link | `https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/26/system/front-door-live/IB-001223/smart-note.md` |
+| Projection | `PROJECTION_VERIFIED`, authority grant `6b1ffbe4-9d41-42e3-aa28-00e9bf9f9796`, dispatch receipt `08b67dca-e890-4706-9a5c-8e0efb2d9f07`, run `36262371595` (success) |
+| Repository | canonical Smart Note present on `main` at the exact Smart Link path |
+| Feed | personal stream returned the event, `verification_state: active` |
+| Retrieval | authorized retrieval returned the event |
+| Deep link | `/hub?ib=IB-001223` renders the Intelligent Block |
+| Reload | the same deep link re-renders it after a full reload |
+
+`LIVE_JOURNEY_PROOF: PASS`
+
+### What remains unproven
+
+- The authorized **owner** journey for member `1112073e-08ee-407e-a47a-8b65b845f57b`, including the
+  exact `LEARNING_OUTPUT` candidate acceptance recorded in `BLOCKS.json`.
+- The orphaned conversation -> intelligence entry from the 2026-09-25 memory quarantine, which is
+  still neither restored nor explicitly retired.
+
 ## Exact successor action
 
 Dispatch `.github/workflows/assistant-cloudflare-hub-release.yml` against `main` with
