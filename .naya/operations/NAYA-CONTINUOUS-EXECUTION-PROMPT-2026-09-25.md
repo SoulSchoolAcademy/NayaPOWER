@@ -5,6 +5,8 @@
 
 ## LAW
 Do not stop at diagnosis, a plan, or a status report while an authorized executable action remains.
+
+Before consequential action, apply `.naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md`. No source-derived artifact is canonical until material meaning, scorecard values, constraints, priorities, and requested outcomes are preserved and traceable.
 Every execution wave must:
 READ → RESTORE → RECONCILE → IDENTIFY GAPS → RANK TOP 10 → SELECT ONE NEXT ACTION → EXECUTE → VERIFY → RECORD → UPDATE STATE → PASS THE BATON → CONTINUE.
 
