@@ -541,3 +541,57 @@ The existing Smart Link identity test suite is structurally consistent with the 
 ### Next authorized P0
 
 **SMART-LINK-DEPENDENCY-002 — AUTHORITATIVE REFERENCE SWEEP:** obtain complete repository bytes through a source that permits whole-tree materialization (local clone/authorized workspace or equivalent), then run exact literal-reference scans for `SMART-LINK-CONTRACT.json`, `nayanet://contracts/smart-link-v1`, `target_type`, and each enum value across source, tests, workflows, fixtures, generated artifacts, and historical compatibility surfaces. Reconcile any discovered consumer before changing the schema.
+
+
+## SMART-LINK-DEPENDENCY-002 — AUTHORITATIVE WHOLE-TREE SWEEP RECEIPT
+
+**Date:** 2026-09-26
+**Authoritative source:** authorized local Git clone at `C:\\Users\\Admin\\NayaPOWER`, inspected with exact `git grep` and `git log --all -S` against repository HEAD/history. Local working tree has unrelated uncommitted changes; no local changes were used as dependency evidence except the generated sweep artifact, which was excluded from the tracked grep target.
+
+### Proven live dependencies
+
+1. **Live implementation dependency:** `.naya/runtime/smart_ledger_engine.py:138-145` defines `generate_smart_link(target_type, target_ref,...)` and accepts all four broad targets: `smart_note`, `ledger_event`, `value_event`, `collective_intelligence`.
+2. **Live vertical-slice dependency:** `.naya/runtime/smart_ledger_engine.py:192` generates a Smart Link with `target_type=ledger_event`.
+3. **Executable test dependency:** `.naya/runtime/test_smart_ledger_engine.py:27,61` asserts and invokes `ledger_event` Smart Links.
+4. **Duplicate machine schema:** `.naya/contracts/schemas/SMART-LINK-CONTRACT.json` independently defines Smart Link V1 with targets `ledger_event`, `smart_note`, `verification_receipt`, `value_event`, `collective_intelligence`.
+5. **Canonical primary machine schema:** `.naya/contracts/SMART-LINK-CONTRACT.json` defines `nayanet://contracts/smart-link-v1` and the four-target enum.
+6. **Relationship registry:** `.naya/control-plane/RELATIONSHIP-INDEX.json` references both Smart Link schema paths.
+
+### Target-type classification
+
+- `smart_note`: LIVE/CANONICAL. It is the newer canonical Smart Link semantic target.
+- `ledger_event`: LIVE. The current Smart Ledger engine generates it and the executable unit test asserts it.
+- `value_event`: LIVE AS A GENERATED DATA TYPE; no direct Smart Link test was found beyond the engine's accepted enum. A dedicated Value Event schema exists.
+- `collective_intelligence`: LIVE AS A DOMAIN/PROJECTION; no direct Smart Link generation/test consumer was found. It must not be called an actual Smart Link consumer solely from domain references.
+- `verification_receipt`: LIVE only in the duplicate schema's enum; no corresponding consumer was established in this sweep.
+
+### Generic-link finding
+
+A generic link concept is **real and executable in the current repository**, not merely historical: `generate_smart_link` is a live function parameterized by `target_type`. The older Contract 48 broad concept also exists historically. Therefore the earlier assumption that the broad enum might be unused is disproven.
+
+### Safety decision
+
+**NARROWING `.naya/contracts/SMART-LINK-CONTRACT.json` to `smart_note` is NOT SAFE at this time.** Doing so without first reconciling the live `generate_smart_link(...)` behavior and its test would create a schema/runtime contradiction and break the current vertical slice. No schema mutation was made.
+
+The correct next architectural action is **reconcile the existing generic Smart Link implementation and duplicate schema against the newer canonical Smart Link semantic**, without creating a replacement contract. This requires deciding whether the generic runtime function should be retired/renamed/re-scoped and whether the duplicate schema is historical, supporting, or a merge candidate. That decision must preserve the one-noun/one-owner boundary and avoid silently breaking existing ledger/value projections.
+
+### History evidence
+
+`git log --all -S` confirms `target_type` and `generate_smart_link` entered with the Smart Link/Smart Ledger vertical slice and persisted through subsequent repository restoration/runtime work. This is therefore not an orphaned documentation-only artifact.
+
+### Verification
+
+- Whole-tree authoritative scan: **PASS** for the accessible local clone scope.
+- Historical search across reachable refs: **PASS** for the inspected paths/terms.
+- Live generic Smart Link dependency: **CONFIRMED**.
+- Safe narrowing: **FAIL / NOT SAFE**.
+- Schema mutation: **NONE**.
+- Runtime/test reconciliation: **PENDING**.
+- JSON validation after mutation: **N/A — no mutation**.
+- Full repository test execution: **UNKNOWN** (not run in this wave).
+- Constitutional authority: **UNCHANGED**.
+- BLOCKS/EP-001/BATON topology: **PRESERVED**.
+
+### Exact next action
+
+**SMART-LINK-RECONCILIATION-001:** reconcile the existing `generate_smart_link` runtime/test path and both existing Smart Link schemas against the canonical narrow Smart Link law. Establish one canonical machine owner, one semantic owner, and an explicit disposition for generic ledger/value/collective targets. Do not create a replacement Smart Link contract; do not change constitutional authority; do not delete a live dependency until its callers/tests are migrated or explicitly retired with evidence.
