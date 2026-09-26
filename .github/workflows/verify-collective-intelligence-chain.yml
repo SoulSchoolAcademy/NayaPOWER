@@ -179,6 +179,24 @@ jobs:
             });
             if(verifierSession.userId===session.userId) throw new Error('INDEPENDENT_VERIFIER_IDENTITY_NOT_DISTINCT');
             const smartMailGrantId=await issueSmartMailAuthority(session,verifierSession.userId);
+            const relationshipSpaceId='04ee4dc8-bc73-47df-a1de-162570f6a56e';
+            const relationship=await page.evaluate(async({spaceId,verifierId})=>{
+              const client=window.__NayaNETSupabaseClient;
+              const {data:space,error:spaceError}=await client.from('nayanet_spaces').select('id,visibility').eq('id',spaceId).single();
+              if(spaceError||!space||space.visibility!=='shared') throw spaceError||new Error('OUTCOME_SHARED_SPACE_NOT_AVAILABLE');
+              const joined=await client.rpc('nayanet_join_space',{p_space_id:spaceId}); if(joined.error) throw joined.error;
+              const saved=await client.rpc('nayanet_save_connection',{p_target_member_id:verifierId,p_space_id:spaceId}); if(saved.error) throw saved.error;
+              if(!saved.data?.connection?.id) throw new Error('SENDER_VERIFIER_CONNECTION_MISSING');
+              return saved.data.connection.id;
+            },{spaceId:relationshipSpaceId,verifierId:verifierSession.userId});
+            const verifierRelationship=await verifierPage.evaluate(async({spaceId,senderId})=>{
+              const client=window.__NayaNETSupabaseClient;
+              const joined=await client.rpc('nayanet_join_space',{p_space_id:spaceId}); if(joined.error) throw joined.error;
+              const saved=await client.rpc('nayanet_save_connection',{p_target_member_id:senderId,p_space_id:spaceId}); if(saved.error) throw saved.error;
+              if(!saved.data?.connection?.id) throw new Error('VERIFIER_SENDER_CONNECTION_MISSING');
+              return saved.data.connection.id;
+            },{spaceId:relationshipSpaceId,senderId:session.userId});
+            if(!relationship||!verifierRelationship) throw new Error('INDEPENDENT_VERIFIER_RELATIONSHIP_NOT_ESTABLISHED');
 
             const captured=await compound(session,'intelligence_commit',{
               idempotency_key:lessonId,
