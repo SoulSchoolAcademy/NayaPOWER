@@ -303,14 +303,54 @@ async function retrieve(client: any, userId: string, body: any) {
   ]);
   if (indexResult.error) throw indexResult.error;
   if (blockResult.error) throw blockResult.error;
+  const indexes = indexResult.data ?? [];
+  const blocks = blockResult.data ?? [];
+  const items = (result.data ?? []).map((row:any) => {
+    const index = indexes.find((candidate:any) => candidate.source_id === row.id) ?? null;
+    const intelligentBlocks = blocks.filter((block:any) =>
+      Array.isArray(block.source_event_ids) && block.source_event_ids.includes(row.id)
+    );
+    const primaryBlock = intelligentBlocks[0] ?? null;
+    const provenance = primaryBlock?.provenance
+      ?? index?.metadata?.provenance
+      ?? row.metadata?.provenance
+      ?? {
+        source: row.source ?? "nayanet_cognition_events",
+        source_event_id: row.id,
+        event_id: row.event_id,
+      };
+    const confidence = Number(
+      row.confidence
+      ?? primaryBlock?.content?.truth?.confidence
+      ?? primaryBlock?.value_context?.confidence
+      ?? 0
+    );
+    return {
+      ...row,
+      source_event_id: row.id,
+      source_event_key: row.event_id,
+      confidence,
+      provenance,
+      index,
+      intelligent_blocks: intelligentBlocks,
+    };
+  });
   return {
-    schema: "NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1",
+    schema: "NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V2",
     query: q,
-    count: result.data?.length ?? 0,
-    items: result.data ?? [],
+    count: items.length,
+    items,
     library: {
-      indexes: indexResult.data ?? [],
-      intelligent_blocks: blockResult.data ?? []
+      indexes,
+      intelligent_blocks: blocks
+    },
+    contract: {
+      authorization: "owner_scoped",
+      project: PROJECT,
+      provenance_required: true,
+      confidence_required: true,
+      source_lineage_required: true,
+      rule: "Retrieval returns the matched canonical event together with its provenance-bound index and Intelligent Block lineage; no unscoped or arbitrary project data is returned."
     }
   };
 }
