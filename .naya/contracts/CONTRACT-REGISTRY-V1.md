@@ -11,14 +11,14 @@ This registry is the master map for reconciling, hardening, testing, and complet
 
 ## Current determination
 
-The repository contains a substantial contract system, but its final topology is not yet proven. The current library explicitly says the former 10-contract stack is historical/scaffold context and that final specialized boundaries must emerge from reconciliation.
+The repository contains a substantial contract system, but its final topology is not yet proven. The current library explicitly says the former 10-contract stack is historical/scaffold context and that final specialized boundaries must emerge from reconciliation. Topology reconciliation has now confirmed an important correction: a dedicated Execution Protocol already exists as EP-001 under `.naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md`; it is PROPOSED, so the problem is hardening/integration and ownership reconciliation, not absence.
 
 Two P0 conflicts are already established:
 1. Smart Link semantic conflict between 02-SMART-LINK.md and SMART-LINK-CONTRACT.json.
 2. Constitutional authority conflict: Contract 00 Constitutional Law says it is ratified 2026-09-26, while control-plane GOVERNANCE-KERNEL and MAP still identify .naya/codex/11-RUNTIME-CONSTITUTION.md as current constitutional authority.
 
 One P0 topology gap is established:
-- Execution behavior is distributed across Master Execution Contract, Master Activation Protocol, Lead Mode Protocol, Mission Contract, Continuous Execution Policy, and related laws. A dedicated Execution Protocol Contract is not present in .naya/contracts.
+- Execution behavior has a dedicated proposed owner, EP-001, but its relationship to Master Execution Contract, Master Activation Protocol, Lead Mode Protocol, Mission Contract, Continuous Execution Policy, and related laws is not yet fully normalized. The required action is EXTEND/HARDEN EP-001 and reconcile supporting layers; do not create a second Execution Protocol.
 
 ## Authority and status law
 
@@ -197,11 +197,11 @@ These may be intentional layers, but ownership is not yet fully normalized.
 
 # P0 Gaps / Boundary Decisions
 
-## G01 — Dedicated Execution Protocol Contract
-Status: MISSING AS A DEDICATED LIBRARY CONTRACT; behavior exists as distributed operating law.
-Required behavior: READ → UNDERSTAND → LEAD → ACT → VERIFY → LEARN → IMPROVE → REPEAT.
-Must define initiative, ownership, mission restoration, authority check, next-action selection, continuous execution, verification, learning, reassessment, successor handoff, stop conditions, blockers, escalation, and anti-passivity.
-Do not draft it until existing execution artifacts have been mapped into one ownership boundary.
+## G01 — Execution Protocol Boundary
+Status: EXISTING / PROPOSED — EXTEND/HARDEN REQUIRED.
+Canonical candidate: `.naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md` (EP-001, V1.0, PROPOSED).
+EP-001 already defines initiative, ownership, mission advancement, authority boundaries, next-action selection, continuous verified progress, verification, evidence preservation, successor handoff, blockers, stop conditions, and anti-passivity.
+Required action: reconcile EP-001 against the legacy/supporting execution stack and establish one normative owner with explicit supporting-layer boundaries. Do not create a second Execution Protocol.
 
 ## G02 — Contract Topology / Ownership Contract
 Status: MISSING AS A SINGLE FINAL TOPOLOGY ARTIFACT.
@@ -282,7 +282,7 @@ These may be deliberate layers. They must be assigned explicit ownership before 
 ## P0
 1. Resolve constitutional authority.
 2. Reconcile contract ownership/topology.
-3. Establish dedicated Execution Protocol boundary.
+3. Reconcile and harden EP-001 as the single normative Execution Protocol boundary.
 4. Reconcile identity/authority boundary.
 5. Reconcile Proof/Evidence/Verification ownership.
 6. Resolve Smart Link semantics.
@@ -311,10 +311,10 @@ These are execution priorities, not Contract IDs.
 **Additional contractual artifacts:** machine schemas and specialized contracts listed above.
 **Critical conflicts:** 2.
 **Critical overlaps:** 4.
-**Dedicated Execution Protocol:** not present in current library; behavior is distributed across canonical execution artifacts.
+**Execution Protocol:** EP-001 exists in `.naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md`; status PROPOSED; topology action is EXTEND/HARDEN and reconcile supporting execution artifacts.
 **Final topology:** NOT YET VERIFIED.
 **Human decision boundary:** constitutional precedence/supersession if repository evidence cannot itself establish it.
-**Next action:** CONTRACT-TOPOLOGY-001.
+**Next action:** CONTRACT-TOPOLOGY-002 — reconcile constitutional authority and execution ownership.
 
 ---
 
@@ -339,7 +339,7 @@ Do not write Contract 04 yet.
 7. Map Proof Contract vs Verification Receipt Schema vs Governance Kernel verification chain.
 8. Determine CREATE / EXTEND / MERGE / SCHEMA / LAW / NOT NEEDED / UNKNOWN for every proposed missing contract.
 9. Update this registry with evidence-backed conclusions.
-10. Only after topology is coherent, identify the highest-value P0 contract work.
+10. Only after topology is coherent, identify the highest-value P0 contract work; if a boundary is already owned by a proposed contract, harden/reconcile it instead of creating a duplicate.
 
 ### Acceptance
 A cold Naya can identify exactly one owner for each material normative responsibility; no two contracts silently claim the same authority; no noun has competing meanings; no second next-action state machine exists; all unresolved conflicts are explicit.
