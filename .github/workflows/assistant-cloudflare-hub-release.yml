@@ -146,6 +146,7 @@ jobs:
           rm -rf dist
           mkdir -p dist/NAYANET/HUB
           cp NAYANET/HUB/index.html dist/index.html
+          cp NAYANET/HUB/public/identity.html dist/identity.html
           cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
           cp NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
@@ -153,6 +154,7 @@ jobs:
           cp smart-tabs.js dist/smart-tabs.js
           cp hub-completeness.js dist/hub-completeness.js
           test -s dist/index.html
+          test -s dist/identity.html
           test -s dist/NAYANET/name-first-auth-adapter.js
           test -s dist/assistant-runtime.js
           test -s dist/NAYANET/HUB/intelligence-surfaces-runtime.js
@@ -221,6 +223,25 @@ jobs:
             }
           } finally { await browser.close(); }
           NODE
+
+      - name: Verify live name-first identity front door
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 30); do
+            curl --fail --silent --show-error --location "${NAYA_RUNTIME_URL}/identity.html" -o "${RUNNER_TEMP}/live-identity.html" && break
+            sleep 2
+          done
+          test -s "${RUNNER_TEMP}/live-identity.html"
+          live_identity_hash=$(sha256sum "${RUNNER_TEMP}/live-identity.html" | cut -d' ' -f1)
+          source_identity_hash=$(sha256sum dist/identity.html | cut -d' ' -f1)
+          test "${live_identity_hash}" = "${source_identity_hash}"
+          grep -q 'NayaNETNameFirstAuth' "${RUNNER_TEMP}/live-identity.html"
+          if grep -q 'Intelligent Hub V7' "${RUNNER_TEMP}/live-identity.html"; then
+            echo "IDENTITY_FRONT_DOOR_SERVED_HUB_SPA_FALLBACK"
+            exit 1
+          fi
+          echo "LIVE_IDENTITY_FRONT_DOOR_VERIFIED sha256=${live_identity_hash}"
 
       - name: Final proof
         run: |

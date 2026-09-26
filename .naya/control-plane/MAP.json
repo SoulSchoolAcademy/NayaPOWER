@@ -123,7 +123,7 @@
     ],
     "active_block": "HUMAN-JOURNEY-P2",
     "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation.",
-"next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
+"next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -191,7 +191,7 @@
     "artifact": 10720229874
   },
   "current_frontier": {
-    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
     "status": "BLOCKED"
   },
   "non_owner_retrieval_boundary": {
@@ -223,7 +223,7 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+  "next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
   "current_next_action": {
     "status": "ACTIVE",
     "proof_scope": "P7 intelligence health GREEN; cold 14-question reconstruction PASS; baton successor reconstruction PASS. Behavioral successor execution remains the open boundary."
