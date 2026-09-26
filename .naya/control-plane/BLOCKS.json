@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "next_action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action.",
     "next_actions": [
-      "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
+      "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,7 +57,7 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "next_action_reason": "Derived after SMART-LINK-RECONCILIATION-001 verified runtime/schema reconciliation.",
     "memory_rehabilitation": {
       "status": "REPAIRED_VERIFICATION_PENDING",
       "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
@@ -99,7 +99,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "next_action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action.",
     "completion": "P0-04 meaningful-output promotion is verified at defined owner/runtime scope: identity, authority, canonical ingress, provenance, validation, integration, checkpoint, Intelligent Block persistence, and fresh retrieval all passed.",
     "status": "PROVEN"
   },
@@ -202,25 +202,19 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+  "next_action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action.",
   "next_action_blocker": {
     "status": "CLEARED",
-    "boundary": "external production deployment authorization",
-    "required_capability": "none; production continuity proof completed",
-    "no_bypass": true,
-    "cleared_by": {
-      "release_run": 36167597116,
-      "golden_path_run": 36168690512,
-      "sender_receiver_chain_run": 36168925903
-    }
+    "boundary": "Smart Link semantic reconciliation",
+    "required_capability": "repository + CI access",
+    "no_bypass": true
   },
   "current_attempt": {
     "status": "VERIFIED",
-    "workflow_run": 35913487739,
-    "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
-    "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
-    "causal_boundary": "intelligence_commit → canonical Intelligent Block materialization",
-    "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
+    "source_head": "0d58be8c7a72f14fb602dd806617951e714babea",
+    "proof_receipt": ".naya/contracts/CONTRACT-REGISTRY-V1.md",
+    "causal_boundary": "generic reference runtime -> canonical Smart Link schema separation",
+    "next_action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action."
   },
   "legacy_cognition_disposition": {
     "cohort_size": 88,
