@@ -1,0 +1,24 @@
+{
+  "procedure_id":"C00-DECISION-V2",
+  "contract_id":"CC-000",
+  "version":"2.0-candidate",
+  "steps":[
+    "IDENTIFY",
+    "RESTORE",
+    "DISCOVER",
+    "RESOLVE_AUTHORITY",
+    "CHECK_SCOPE",
+    "CHECK_CONFLICT",
+    "CLASSIFY_ACTION",
+    "DEFINE_SUCCESS_AND_PROOF",
+    "CHECK_ENFORCEMENT",
+    "EXECUTE_OR_REFUSE",
+    "OBSERVE",
+    "VERIFY",
+    "RECORD_EVIDENCE",
+    "UPDATE_CANONICAL_STATE",
+    "LEAVE_SUCCESSOR_STATE"
+  ],
+  "fail_closed_states":["UNKNOWN","BLOCKED","CONFLICTED"],
+  "action_classes":{"L0":"observe","L1":"reversible_change","L2":"material_change","L3":"high_consequence"}
+}
