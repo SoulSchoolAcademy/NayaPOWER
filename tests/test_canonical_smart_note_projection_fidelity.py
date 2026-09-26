@@ -108,6 +108,6 @@ def test_projection_rejects_identity_drift():
 def test_existing_daily_scorecard_contains_material_score_and_canonical_identity():
     text = TARGET.read_text(encoding="utf-8")
     assert "**Intelligent Block ID:** `IB-001061`" in text
-    assert "approximately **7/10**" in text
+    assert "approximately 7/10" in text
     assert "**Smart Link = the actual canonical GitHub `smart-note.md` artifact.**" in text
     assert "**Hub Deep Link = runtime `/hub?ib=IB-XXXXXX`.**" in text
