@@ -1,0 +1,36 @@
+name: Verify Smart Mail RPC Signature Conformance
+
+# Guards a defect class that is invisible until runtime: an Edge Function
+# passing an rpc() argument that the deployed SQL function does not declare.
+# Supabase/PostgREST resolves rpc() by argument NAME, so this fails as an
+# opaque "Could not find the function ... in the schema cache" error rather
+# than a compile or type error. It previously blocked the Collective
+# Intelligence Chain proof at INDEPENDENT_OUTCOME_ACTION_FAILED.
+#
+# Any new or changed migration that alters an RPC signature re-runs this gate,
+# so caller drift is caught at the commit that causes it.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/smart_mail_rpc_signature_check.py'
+      - 'supabase/functions/nayanet-smart-mail/index.ts'
+      - 'supabase/migrations/*.sql'
+      - '.github/workflows/verify-smart-mail-rpc-signature.yml'
+  pull_request:
+    paths:
+      - '.naya/runtime/smart_mail_rpc_signature_check.py'
+      - 'supabase/functions/nayanet-smart-mail/index.ts'
+      - 'supabase/migrations/*.sql'
+      - '.github/workflows/verify-smart-mail-rpc-signature.yml'
+permissions: {contents: read}
+jobs:
+  signature-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Reject any rpc() argument the SQL function does not declare
+        run: python -B .naya/runtime/smart_mail_rpc_signature_check.py
