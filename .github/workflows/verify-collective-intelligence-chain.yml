@@ -168,7 +168,14 @@ jobs:
             const authorityGrantId=await issueCommitAuthority(session);
             const verifierContext=await browser.newContext();
             const verifierPage=await verifierContext.newPage();
-            const verifierSession=await setupIdentity(verifierPage,'verifier');
+            await verifierPage.goto(hub+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            const verifierSession=await verifierPage.evaluate(async()=>{
+              const client=window.__NayaNETSupabaseClient;
+              if(!client) throw new Error('VERIFIER_SUPABASE_CLIENT_MISSING');
+              const {data,error}=await client.auth.signInAnonymously();
+              if(error||!data.session||!data.user) throw new Error('VERIFIER_ANONYMOUS_AUTH_FAILED:'+JSON.stringify(error));
+              return {userId:data.user.id,access_token:data.session.access_token};
+            });
             if(verifierSession.userId===session.userId) throw new Error('INDEPENDENT_VERIFIER_IDENTITY_NOT_DISTINCT');
             const smartMailGrantId=await issueSmartMailAuthority(session,verifierSession.userId);
 
