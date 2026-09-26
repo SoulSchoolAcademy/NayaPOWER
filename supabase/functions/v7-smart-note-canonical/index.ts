@@ -453,7 +453,7 @@ Deno.serve(async(req)=>{
   };
   return json({
     ok:true,
-    pipeline:replayed?"replayed":"completed",
+    pipeline:"PROJECTION_VERIFIED",
     canonical_event:true,
     collection:"Smart Notes",
     replayed,
