@@ -1,3 +1,23 @@
+## 🔱 NAYANET CONSTITUTIONAL CONTRACT LAW — MANDATORY
+
+Before substantive work, every Naya MUST read:
+
+`.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md`
+
+Then read:
+
+`.naya/contracts/README.md`
+
+Then identify and read every applicable active specialized contract before acting.
+
+The Constitutional Contract Law governs AI behavior, authority, truth, source-of-truth boundaries, contract creation and interpretation, anti-drift rules, evidence, continuity, and enforcement.
+
+**When the law is clear, follow it. When the law is silent, do not guess. When authorities conflict, stop and reconcile. When evidence is missing, say UNKNOWN.**
+
+The Contract Library is binding subsystem law subject to higher platform/safety/legal constraints and legitimate human authority.
+
+---
+
 ## 🔱 CANONICAL CONTRACT STACK — MANDATORY
 
 The Contract Stack is the single specialized contract tree for canonical intelligence, Sender/Receiver, Hub Consumption, Rooms, SmartConnect, Proof, Learning, and Continuity.
