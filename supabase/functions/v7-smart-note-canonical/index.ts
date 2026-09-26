@@ -226,13 +226,13 @@ Deno.serve(async(req)=>{
   const source=String(body?.source||"naya_conversation");
   const machine={event_id:eventId,schema:"nayanet.smart_note.machine.v2",occurred_at:now,source,type:human.type||"insight",actor:user.id,human_note_id:canonicalHuman.id||null,normalized_text:humanText,idempotency_key:idempotencyKey};
   const feed={event_id:eventId,kind:"smart_note.created",occurred_at:now,status:"verified",source,type:machine.type,summary:nutshell};
+  const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
+  const projectionCategory=String(body?.projection_category||body?.category||"system").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,64)||"system";
+  const projectionTopic=String(body?.projection_topic||body?.topic||subject).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").split("-").filter(Boolean).slice(0,3).join("-")||"smart-note";
   const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey});
   blockBase.metadata={...blockBase.metadata,projection_category:projectionCategory,projection_topic:projectionTopic};
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
-  const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
-  const projectionCategory=String(body?.projection_category||body?.category||"system").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,64)||"system";
-  const projectionTopic=String(body?.projection_topic||body?.topic||subject).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").split("-").filter(Boolean).slice(0,3).join("-")||"smart-note";
   const evidence={receipt_id:crypto.randomUUID(),event_id:eventId,source,correlation_id:typeof body?.correlation_id==='string'?body.correlation_id:null,chain:["human_note","naya_note","machine_note","intelligence_feed","intelligent_block_v1"],verified_at:now,artifact_urls:artifactUrls,receipt_url:typeof body?.receipt_url==="string"?body.receipt_url:null,intelligent_block_v1:true,intelligent_block_hash:blockHash};canonicalReceiptId=evidence.receipt_id;
   const hubState={event_id:eventId,last_intelligence_event_at:now,smart_note_created:true,intelligent_block_created:true,intelligent_block_schema:"NAYANET_INTELLIGENT_BLOCK_V1",intelligent_block_hash:blockHash,feed_updated:true,canonical_collection:"Smart Notes",private_feed:true};
    const {data,error}=await supabase.rpc("v7_create_smart_note",{p_idempotency_key:idempotencyKey,p_user_id:user.id,p_human_note:canonicalHuman,p_naya_note:canonicalNaya,p_machine_note:machine,p_intelligent_feed:feed,p_intelligent_block:block,p_evidence:evidence,p_hub_state:hubState,p_subject:subject});
