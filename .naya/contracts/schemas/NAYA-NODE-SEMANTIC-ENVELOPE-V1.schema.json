@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.app/schemas/naya-node-semantic-envelope-v1.json",
+  "title": "Naya Node Semantic Envelope V1",
+  "description": "Candidate semantic contract derived from the verified first Naya Node specimen IB-001229.",
+  "type": "object",
+  "required": ["node","meaning","intent","provenance","truth","authority","privacy","value","lifecycle","relationships"],
+  "additionalProperties": false,
+  "properties": {
+    "node": {
+      "type": "object",
+      "required": ["node_type","status"],
+      "additionalProperties": false,
+      "properties": {
+        "node_type": {"const": "NAYA_NODE"},
+        "status": {"enum": ["CANDIDATE","COMMITTED","VERIFIED","SUPERSEDED","REJECTED"]},
+        "intelligent_block_id": {"type": ["string","null"],"pattern": "^IB-[0-9]{6}$"},
+        "event_id": {"type": ["string","null"]},
+        "transaction_id": {"type": ["string","null"]},
+        "canonical_url": {"type": ["string","null"],"format": "uri"},
+        "content_hash": {"type": ["string","null"],"pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "meaning": {
+      "type": "object",
+      "required": ["subject","essence"],
+      "additionalProperties": false,
+      "properties": {
+        "subject": {"type":"string","minLength":1},
+        "essence": {"type":"string","minLength":1},
+        "why_it_matters": {"type":"string"},
+        "how_to_use": {"type":"string"},
+        "human": {"type":"string"},
+        "simple": {"type":"string"},
+        "naya": {"type":"string"},
+        "machine": {"type":"string"}
+      }
+    },
+    "intent": {
+      "type": "object",
+      "required": ["action","ambiguity_requires_clarification"],
+      "additionalProperties": false,
+      "properties": {
+        "action": {"type":"string","minLength":1},
+        "target_ref": {"type":["string","null"]},
+        "ambiguity_requires_clarification": {"type":"boolean"},
+        "clarifying_question": {"type":["string","null"]},
+        "authority_expansion": {"const":false}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_type","source_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "source_type": {"type":"string","minLength":1},
+        "source_ref": {"type":"string","minLength":1},
+        "source_hash": {"type":["string","null"]}
+      }
+    },
+    "truth": {
+      "type": "object",
+      "required": ["state"],
+      "additionalProperties": false,
+      "properties": {
+        "state": {"enum":["UNKNOWN","SUPPORTED","VERIFIED","CONFLICTED","REJECTED","SUPERSEDED"]},
+        "evidence_refs": {"type":"array","items":{"type":"string"}},
+        "confidence": {"type":["number","null"],"minimum":0,"maximum":1}
+      }
+    },
+    "authority": {
+      "type":"object",
+      "required":["state"],
+      "additionalProperties":false,
+      "properties":{
+        "state":{"enum":["NONE","PROPOSED","AUTHORIZED","REVOKED","EXPIRED"]},
+        "authority_ref":{"type":["string","null"]},
+        "scope":{"type":["string","null"]}
+      }
+    },
+    "privacy": {
+      "type":"object",
+      "required":["visibility"],
+      "additionalProperties":false,
+      "properties":{
+        "visibility":{"enum":["PRIVATE","SHARED","COLLECTIVE","PUBLIC"]},
+        "audience_refs":{"type":"array","items":{"type":"string"}}
+      }
+    },
+    "value": {
+      "type":"object",
+      "required":["state","dimensions"],
+      "additionalProperties":false,
+      "properties":{
+        "state":{"enum":["UNKNOWN","POTENTIAL","OBSERVED","VERIFIED","NEGATIVE"]},
+        "dimensions":{"type":"object","additionalProperties":{"type":"number","minimum":-9,"maximum":9}},
+        "composite":{"type":["number","null"]}
+      }
+    },
+    "lifecycle": {
+      "type":"object",
+      "required":["stage"],
+      "additionalProperties":false,
+      "properties":{
+        "stage":{"enum":["RECOGNIZED","DISTILLED","STRUCTURED","GOVERNED","COMMITTED","VERIFIED","CONNECTED","SURFACED","APPLIED","MEASURED","LEARNED","SUPERSEDED"]},
+        "supersedes":{"type":["string","null"]},
+        "superseded_by":{"type":["string","null"]}
+      }
+    },
+    "relationships": {
+      "type":"array",
+      "items":{
+        "type":"object",
+        "required":["relation","target"],
+        "additionalProperties":false,
+        "properties":{
+          "relation":{"type":"string","minLength":1},
+          "target":{"type":"string","minLength":1},
+          "evidence_refs":{"type":"array","items":{"type":"string"}}
+        }
+      }
+    },
+    "evidence": {
+      "type":"object",
+      "additionalProperties":false,
+      "properties":{
+        "state":{"enum":["NONE","OBSERVED","SUPPORTED","VERIFIED"]},
+        "refs":{"type":"array","items":{"type":"string"}},
+        "method":{"type":["string","null"]},
+        "verified_at":{"type":["string","null"],"format":"date-time"}
+      }
+    },
+    "application": {
+      "type":"object",
+      "additionalProperties":false,
+      "properties":{
+        "intended_outcome":{"type":["string","null"]},
+        "action_class":{"type":["string","null"]},
+        "observed_result":{"type":["string","null"]},
+        "verification_ref":{"type":["string","null"]}
+      }
+    },
+    "learning": {
+      "type":"object",
+      "additionalProperties":false,
+      "properties":{
+        "status":{"enum":["NONE","CANDIDATE","PROMOTED","REJECTED"]},
+        "lesson":{"type":["string","null"]},
+        "evidence_refs":{"type":"array","items":{"type":"string"}},
+        "applicability":{"type":["string","null"]}
+      }
+    }
+  }
+}
