@@ -1,0 +1,35 @@
+name: Verify Naya Understanding Fidelity
+
+on:
+  push:
+    paths:
+      - ".naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md"
+      - ".naya/control-plane/**"
+      - ".naya/memory/BOOTSTRAP.md"
+      - ".naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md"
+      - ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md"
+      - ".naya/tests/test_naya_understanding_fidelity_protocol.py"
+      - ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md"
+      - ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
+  pull_request:
+    paths:
+      - ".naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md"
+      - ".naya/control-plane/**"
+      - ".naya/memory/BOOTSTRAP.md"
+      - ".naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md"
+      - ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md"
+      - ".naya/tests/test_naya_understanding_fidelity_protocol.py"
+      - ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md"
+      - ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Run understanding/fidelity regression tests
+        run: python -m pytest -q .naya/tests/test_naya_understanding_fidelity_protocol.py
