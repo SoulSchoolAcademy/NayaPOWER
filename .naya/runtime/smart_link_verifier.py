@@ -60,7 +60,7 @@ def classify_link_kind(url: str) -> str:
     if (parsed.scheme == "https" and parsed.netloc == "github.com" and
         path.startswith("/SoulSchoolAcademy/NayaPOWER/blob/") and
         "/.naya/memory/smart-notes/" in path and
-        re.search(r"/IB-\d{6}/smart-note\\.md$", path)):
+        re.search(r"/IB-\d{6}/smart-note\.md$", path)):
         return "SMART_LINK"
     if (parsed.scheme == "https" and parsed.netloc == "github.com" and
         any(token in path for token in ("/commit/", "/pull/", "/issues/", "/actions/"))):
