@@ -28,7 +28,7 @@ def test_uai_smart_note_capture_requires_the_completion_contract():
 
 def test_uai_openapi_documents_the_same_canonical_operation():
     spec = OPENAPI.read_text(encoding="utf-8")
-    assert "nayanet_smart_note_capture" in spec
+    assert "captureCanonicalSmartNote" in spec
     assert "smart_note_capture" in spec
     assert "v7-smart-note-canonical" in spec
 
