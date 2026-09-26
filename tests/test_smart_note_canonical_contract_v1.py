@@ -46,6 +46,9 @@ def test_live_receiver_and_hub_surface_carry_canonical_block():
     assert "NAYANET_INTELLIGENT_BLOCK_V1" in receiver
     assert "v7_create_smart_note" in receiver
     assert "intelligent_block_id" in receiver
+    assert 'const smartLink=null;' in receiver
+    assert 'const hubDeepLink="/hub?ib="+encodeURIComponent(intelligentBlockId);' in receiver
+    assert 'projection_category:input.projection_category||input.category||\'system\'' in runtime
     assert "child_note" in runtime and "grandma_note" in runtime
     assert "how_to_apply" in runtime and "how_it_connects" in runtime
     assert "SMART_NOTE_CANONICAL_BLOCK_INCOMPLETE" in surface
