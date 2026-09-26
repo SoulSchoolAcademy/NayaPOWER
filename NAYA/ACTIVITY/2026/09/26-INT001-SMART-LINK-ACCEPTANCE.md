@@ -79,13 +79,53 @@ GREEN:
 
 The verifier proves the repository projection/link boundary. It does not allocate IBs, prove receiver persistence, or replace the canonical receiver. Receiver correspondence remains an authoritative input.
 
+## Adversarial acceptance wave — D / F / receiver-link correspondence
+
+### D — Vocabulary
+- Added deterministic `classify_link_kind()`.
+- Adversarial cases distinguish **HUB_DEEP_LINK**, **SMART_LINK**, **EVIDENCE_LINK**, and **UNKNOWN**.
+- Explicitly rejects a Hub URL from being classified as a Smart Link.
+- The implementation and test are on `main`.
+
+### F — Identity preservation
+- Added a deterministic regression that changes date/category/topic while retaining the same receiver-issued IB.
+- The test asserts the projection path changes while the `IB-XXXXXX` identity segment remains identical.
+- This closes F at the deterministic implementation/test layer.
+
+### Receiver/link correspondence
+- Added `receiver_link_correspondence()`.
+- It requires the repository projection path to match the receiver-issued IB and the note content to match the receiver-issued source event and canonical receiver, then requires the constructed link to be a Smart Link.
+- Adversarial cases reject wrong IB, wrong source event, and wrong receiver.
+- This materially strengthens M10, but the receiver record remains an authoritative input; an independent live receiver/API join is still unproven.
+
+### TDD / independent verification
+- RED was observed before implementation: the adversarial test imported symbols that did not exist.
+- GREEN was observed in an isolated reconstructed execution environment after implementation: **INT-001 adversarial D/F/receiver-link tests passed**.
+- Main was then independently re-fetched after merge and confirmed to contain both the verifier and adversarial test suite.
+- No Codex execution environment or repository CI workflow was available to independently execute the exact checked-in suite on GitHub, so no full-suite/CI claim is made.
+
+## Reassessment
+
+**Cold-Naya evidence is NOT the only remaining technical boundary.**
+
+The new wave closes D and F at the deterministic test layer and materially strengthens receiver/link correspondence. Remaining technical boundaries are:
+1. deterministic 15-section Smart Note structural enforcement;
+2. independently observed Smart Link target/ref resolution;
+3. independent receiver-object/API correspondence;
+4. broader adversarial anti-pattern coverage;
+5. naturally occurring production PENDING evidence;
+6. cold-Naya terminology/decision behavior;
+7. human ratification.
+
 ## Remaining UNKNOWN
 
 1. A naturally occurring production PENDING case has not been evidenced.
 2. INT-001 remains PROPOSED and is not ratified.
 3. Full cold-Naya behavioral acceptance has not been proven.
-4. Repository-wide CI/full-suite execution of this new test was not independently observed through the available GitHub interface.
+4. Repository-wide CI/full-suite execution of this new test was not independently observed.
 
 ## Next action
 
-Integrate and independently verify the minimal verifier on main, then reconcile INT-001 ratification readiness against its acceptance results. Do not ratify without human authority.
+Add and run deterministic adversarial structural acceptance tests for the required 15-section Smart Note order against representative canonical artifacts, preserving explicit N/A exceptions; then independently verify the results and reassess the remaining ratification blockers.
+
+Do not ratify without human authority.
