@@ -20,7 +20,7 @@ INT-001 remains PROPOSED. Conclusion: NOT READY FOR HUMAN RATIFICATION.
 | M14 | Contract conflict requires STOP → IDENTIFY AUTHORITY → RECONCILE → RECORD → RESUME. | PROVEN | Contract Stack + CC-000 + INT-001 agree; no semantic conflict found. | No live conflict case observed. | NO |
 | M15 | Smart Link creation cannot broaden privacy, authority, consent, or publication. | PROVEN | INT-001 §18 + CC-000; verifier has no authority-grant behavior. | All publication surfaces not tested by INT-001. | YES |
 | M16 | Contract changes follow required change-control sequence. | PROVEN | INT-001 creation/indexing; acceptance tests; verifier; receipts; no autonomous ratification. | Human ratification remains reserved. | NO |
-| M17 | Anti-patterns are prevented: wrong URL type, fabrication, local allocation, duplicate Note, file-only persistence, receiver-only projection. | PARTIALLY PROVEN | D vocabulary, remote wrong ref/path/IB, and receiver wrong receiver/event/IB/path cases reject; local creation path fails closed. | Broader anti-pattern matrix remains incomplete. | YES |
+| M17 | Anti-patterns are prevented: wrong URL type, fabrication, local allocation, duplicate Note, file-only persistence, receiver-only projection. | PARTIALLY PROVEN | D vocabulary; remote wrong ref/path/IB; receiver wrong receiver/event/IB/path; fabricated/noncanonical target; receiver-only PENDING; no-receiver UNKNOWN; local creation path fails closed. | System-level duplicate prevention, privacy/publication enforcement, and complete creation-path audit remain outside this verifier boundary. | YES |
 | M18 | Cold-Naya decision rule is applied before saying Smart Link. | PARTIALLY PROVEN | Verifier covers repository/path/IB inputs; cold frontier remains open. | Independent fresh-context behavioral observation. | YES |
 | M19 | Completion standard requires ratification, mapped implementation, deterministic checks, passing acceptance, independent artifacts, cold terminology behavior, no competing interpretation. | PARTIALLY PROVEN | Index, implementation, verifier, tests, three real artifacts. | Ratification + missing acceptance/behavioral evidence. | YES |
 
@@ -54,7 +54,7 @@ Control plane: unchanged. HUMAN-JOURNEY-P2 remains active and its current next a
 
 INT-001 is NOT READY FOR HUMAN RATIFICATION.
 
-The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. The completed waves now close D, F, the 15-section structural requirement, the observed remote Smart Link target/ref boundary, and the live receiver-to-projection correspondence boundary. Remaining technical boundaries are: broader anti-pattern coverage, natural production PENDING evidence, cold-Naya terminology/decision behavior, and the unobserved repository test/CI execution boundary. Human ratification remains a separate authority boundary.
+The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. The completed waves now close D, F, the 15-section structural requirement, the observed remote Smart Link target/ref boundary, and the live receiver-to-projection correspondence boundary. Remaining technical boundaries are: natural production PENDING evidence, cold-Naya terminology/decision behavior, the unobserved repository test/CI execution boundary, and separate system-level creation/privacy/duplicate audits where those are required by their owning contracts. Human ratification remains a separate authority boundary.
 
 ## Human-authority boundary
 
@@ -62,4 +62,4 @@ When all technical prerequisites are satisfied, the minimal human action is to r
 
 ## Single successor action
 
-Expand the INT-001 anti-pattern acceptance matrix across the remaining concrete failure modes (duplicate Smart Note/projection, file-only persistence, receiver-only projection, wrong link type, fabricated target, and privacy/authority broadening), using real repository/receiver evidence where available and controlled adversarial fixtures where a natural production case does not exist; then reassess the full ratification frontier.
+Investigate whether any natural production PENDING projection exists in authoritative receiver/repository evidence; if none exists, preserve that as UNKNOWN rather than manufacturing a case. In parallel, reassess the INT-001 completion standard against the remaining cold-Naya and test-execution boundaries, and identify the smallest safe action that can close another one.
