@@ -36,7 +36,7 @@ For system-wide contract-library work, the Naya SHOULD read **all active contrac
 
 **01 — Intelligence:** Smart Note + Smart Link; Intelligence Organization; Adaptive Learning; Naya Playback / Dream.
 
-**02 — Governance and Flow:** Smart Ledger; Receiver / Canonical Intelligence Engine; Sender; Backend / Sync / Projection.
+**02 — Governance and Flow:** Execution Protocol; Smart Ledger; Receiver / Canonical Intelligence Engine; Sender; Backend / Sync / Projection.
 
 **03 — Hub:** Smart Feed; Intelligence Today; Reports; Intelligent Library; SmartConnect; Connections; Smart Lists; Smart Mail; Smart Spaces; Settings.
 
