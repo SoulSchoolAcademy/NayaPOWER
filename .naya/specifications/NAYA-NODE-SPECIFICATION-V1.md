@@ -154,19 +154,207 @@ Essence; Why; Use; Human; Simple; Naya; Machine; Evidence; Governance; Learning.
 A view is earned when it adds decision value.
 Copying the same paragraph into ten headings is not transformation.
 
-## 15. Value mathematics
-Where numeric valuation is useful, use bounded dimensions from -9 through +9.
+## 15. Naya Value System
 
-Possible dimensions:
-relevance, usefulness, benefit, harm, risk, effort, evidence strength, freshness, applicability, learning value, responsible value.
+The Naya Node uses a multidimensional, evidence-bound Value System rather than a single rating.
 
-0 means neutral or not established.
-Positive means beneficial direction for that named dimension.
-Negative means adverse direction.
+### 15.1 Value is a vector, not a verdict
 
-Numbers never replace evidence.
-Unauthorized action is BLOCKED or INVALID, not merely low value.
-A composite score may prioritize work only when its formula and meaning are explicit.
+A Node may carry multiple value dimensions, for example:
+
+relevance, usefulness, benefit, harm, risk, effort, evidence strength, freshness, applicability, reliability, reusability, transferability, learning value, compounding value, time saved, cognitive effort avoided, errors prevented, contribution value, and system value.
+
+Each dimension answers a different question. The system MUST NOT collapse distinct dimensions into one number merely for convenience.
+
+### 15.2 Reference anchors are not limits
+
+The human reference scale uses:
+
+-9 … -8 … -1 … 0 … +1 … +8 … +9
+
+but **-9 and +9 are reference anchors, not mathematical ceilings or floors**.
+
+The semantic value domain is unbounded in both directions.
+
+Valid values therefore include:
+
++9, +9.1, +9.01, +10, +100, +1,000, +1,000,000 …
+
+and:
+
+-9, -9.1, -10, -100, -1,000, -1,000,000 …
+
+The implementation MUST NOT silently clamp a value merely because it crosses the ±9 human reference range.
+
+For exact arbitrary-precision representation, canonical interchange SHOULD serialize decimal values losslessly rather than relying on a binary floating-point representation.
+
+### 15.3 Zero is a first-class value
+
+0 is valid.
+
+0 MUST NOT mean “bad.”
+
+0 means one of:
+
+- neutral measured contribution;
+- no measurable positive or negative effect on that dimension;
+- insufficient evidence to establish a directional effect, when the dimension explicitly uses zero as its neutral representation.
+
+The reason for a zero should remain distinguishable where necessary.
+
+### 15.4 Polarity and magnitude
+
+Positive and negative directional value are represented explicitly.
+
+For dimensions where “harm” is conceptually a magnitude rather than a direction, harm SHOULD be represented as a non-negative magnitude with:
+
+0 = no observed or estimated harm
+
+and increasing positive magnitude = increasing harm.
+
+A positive benefit MUST NOT numerically cancel or erase an explicit harmful effect merely because a composite formula can subtract one number from another.
+
+The system preserves the underlying dimensions and their reasons.
+
+### 15.5 Value is not truth
+
+Value answers:
+
+> “How useful, beneficial, costly, risky, harmful, reusable, consequential, or otherwise important does this appear to be?”
+
+Truth answers:
+
+> “How well supported is the claim that this is so?”
+
+Authority answers:
+
+> “Who or what is allowed to act?”
+
+These MUST remain separate dimensions.
+
+High value MUST NOT increase truth confidence.
+
+High value MUST NOT create authority.
+
+Strong engagement MUST NOT create truth.
+
+### 15.6 Every value estimate carries an evidence boundary
+
+A value record SHOULD distinguish:
+
+- estimated_value;
+- observed_value;
+- evidence_strength;
+- evidence_refs;
+- basis/method;
+- context;
+- timestamp;
+- value_model_version;
+- value_history.
+
+The system MUST distinguish:
+
+**ASSIGNED VALUE** — current estimate or prior assignment;
+
+**OBSERVED VALUE** — value supported by observed results;
+
+**EVIDENCE STRENGTH** — how strongly the evidence supports the assigned or observed value.
+
+A value estimate may be wrong.
+
+The system must therefore be able to revise value without pretending the earlier estimate never existed.
+
+### 15.7 Value learning loop
+
+Value changes should follow:
+
+ESTIMATE → APPLY → OBSERVE → VERIFY → UPDATE VALUE
+
+A verified outcome may increase or decrease the value estimate.
+
+Unverified assumptions may remain provisional.
+
+The system MUST NOT promote estimated value merely because an AI generated it confidently.
+
+### 15.8 Engagement is evidence of reaction, not truth
+
+Likes, comments, shares, clicks, reuse, completion, retention, or other engagement signals MAY contribute to a value model.
+
+They MUST NOT be treated as automatic proof of truth.
+
+Engagement SHOULD have a defined influence, provenance, time window, and diminishing-return rule where appropriate so popularity cannot create a self-reinforcing ranking loop.
+
+### 15.9 Value categories
+
+The system should distinguish at least:
+
+1. Intelligence Value — value of the knowledge itself.
+2. Outcome Value — value of the observed result.
+3. Action Value — benefit/cost/harm associated with an action.
+4. Relationship Value — value added by connecting intelligence.
+5. Learning Value — value created by what was learned.
+6. Contribution Value — reusable value contributed by an actor.
+7. System Value — value created for the larger intelligence system.
+
+These values MUST NOT be silently conflated into a person score, Node score, or authorization decision.
+
+### 15.10 Composite values
+
+A composite value MAY be calculated for prioritization or retrieval when:
+
+- the formula is explicit;
+- the dimensions are known;
+- the weights are versioned;
+- missing evidence is handled explicitly;
+- harm and risk are not hidden;
+- the result does not create authority;
+- the result does not replace the underlying vector.
+
+A composite score is a derived view, never the canonical meaning.
+
+### 15.11 Value histories
+
+Value is temporal.
+
+The Node SHOULD preserve value revisions as history:
+
+VALUE(t0) → VALUE(t1) → VALUE(t2) …
+
+A newer value estimate does not erase the older one.
+
+Where context changes, value MAY change without the underlying Node becoming false or superseded.
+
+### 15.12 Human profiles
+
+A person or contributor SHOULD NOT be reduced to one permanent score.
+
+A profile may expose derived dimensions such as:
+
+knowledge, demonstrated utility, reliability, contribution, verification record, learning yield, collaboration, stewardship, consistency, and domain mastery.
+
+Any human-facing star/progression label is a derived projection of the underlying evidence and MUST NOT become a hidden authority mechanism.
+
+### 15.13 Value invariants
+
+- **VALUE ≠ TRUTH**
+- **VALUE ≠ AUTHORITY**
+- **VALUE ≠ POPULARITY**
+- **ESTIMATE ≠ OBSERVATION**
+- **OBSERVATION ≠ CAUSALITY**
+- **ZERO ≠ BAD**
+- **HARM MUST REMAIN EXPLICIT**
+- **POSITIVE VALUE DOES NOT ERASE NEGATIVE EFFECTS**
+- **±9 ARE REFERENCE ANCHORS, NOT LIMITS**
+- **MORE ENGAGEMENT ≠ MORE TRUTH**
+- **MORE VALUE ≠ MORE AUTHORITY**
+
+### 15.14 Implementation boundary
+
+This section defines the semantic target.
+
+The existing V1 Node envelope may require a versioned schema evolution to represent lossless arbitrary-precision decimals, value history, explicit polarity, and evidence strength without ambiguity.
+
+Until that evolution is implemented and tested, these semantics remain **SPECIFICATION CANDIDATE**, not an assumed runtime capability.
 
 ## 16. Provenance and evidence
 Every committed Node must be attributable to a source event or source object.
@@ -315,7 +503,11 @@ These remain testable:
 - requirement that every Node connect to another Node;
 - automatic promotion of every verified outcome;
 - a single composite value score;
-- a fixed number of perspectives.
+- a fixed number of perspectives;
+- exact value-update formulas and weights;
+- diminishing-return curves for engagement;
+- the canonical arbitrary-precision interchange representation;
+- thresholds for converting estimated value into observed or verified value.
 
 ## North Star
 Make intelligence a connected, governed object:
