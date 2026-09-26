@@ -142,8 +142,8 @@ The authoritative system architecture is documented in the Master System Archite
 
 # 5. THE MOST IMPORTANT DISTINCTIONS
 
-### Smart Note ≠ Intelligent Block
-A Smart Note is a durable event capture mechanism. An Intelligent Block is the portable semantic representation of the underlying intelligence.
+### Smart Note = Intelligent Block
+**Smart Note and Intelligent Block are the same canonical intelligence object.** The IB is the stable machine identity; Smart Note is the human-readable canonical projection/name of that same object. There is one identity, one meaning, one provenance chain, one lifecycle, and many authorized projections.
 
 ### Intelligent Block ≠ source of truth
 The block carries canonical semantic meaning for transport and reasoning. The authoritative underlying event/evidence remains in its governed source systems.
