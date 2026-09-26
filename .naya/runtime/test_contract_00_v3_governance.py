@@ -12,9 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT = ROOT / ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md"
-SCHEMA = ROOT / ".naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V2.schema.json"
-ENFORCEMENT = ROOT / ".naya/contracts/CONTRACT-00-ENFORCEMENT-REGISTRY-V2.json"
-PROCEDURE = ROOT / ".naya/contracts/CONTRACT-00-DECISION-PROCEDURE-V2.json"
+SCHEMA = ROOT / ".naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V3.schema.json"
+ENFORCEMENT = ROOT / ".naya/contracts/CONTRACT-00-ENFORCEMENT-REGISTRY-V3.json"
+PROCEDURE = ROOT / ".naya/contracts/CONTRACT-00-DECISION-PROCEDURE-V3.json"
 REGISTRY = ROOT / ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
 
 
@@ -34,7 +34,7 @@ def test_contract_00_identity_and_candidate_state_are_explicit():
     text = CONTRACT.read_text(encoding="utf-8")
     assert "Contract ID:** CC-000" in text
     assert "3.0-CANDIDATE" in text
-    assert "V2 CANDIDATE UNDER REVIEW" in text
+    assert "V3 CANDIDATE UNDER REVIEW" in text
 
 
 def test_contract_00_required_governance_sections_exist():
@@ -85,7 +85,7 @@ def test_registry_points_to_cc000_and_blocks_premature_full_governance():
     text = REGISTRY.read_text(encoding="utf-8")
     assert "### CC-000: NayaNET Constitutional Contract Law" in text
     assert ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md" in text
-    assert "CONTRACT 00 V2 GOVERNANCE GATE" in text
+    assert "CONTRACT 00 V3 GOVERNANCE GATE" in text
     assert "must not be treated as operationally ratified" in text
 
 
@@ -109,6 +109,9 @@ def test_critical_truth_and_anti_guessing_rules_survive_mutation_probe():
 if __name__ == "__main__":
     tests = [
         test_contract_00_machine_chain_is_reachable,
+        test_contract_00_v3_canonicality_and_human_ratification_rules,
+        test_contract_00_v3_proactive_execution_and_no_permission_loop_are_explicit,
+        test_contract_00_v3_ratification_cannot_be_inferred,
         test_contract_00_identity_and_candidate_state_are_explicit,
         test_contract_00_required_governance_sections_exist,
         test_decision_procedure_is_fail_closed_and_ordered,
@@ -119,13 +122,13 @@ if __name__ == "__main__":
     for test in tests:
         test()
         print(f"PASS {test.__name__}")
-    print(f"PASS Contract 00 V2 self-governance suite: {len(tests)} tests")
+    print(f"PASS Contract 00 V3 self-governance suite: {len(tests)} tests")
 
 
 def test_contract_00_v3_canonicality_and_human_ratification_rules():
     schema = _json(ROOT / ".naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V3.schema.json")
     assert schema["canonicality"]["max_in_force_constitutional_claimants"] == 1
-    assert schema["canonicality"]["unmapped_in_force_constitutional_claimants_before_ratification"] == 0 if "unmapped_in_force_constitutional_claimants_before_ratification" in schema["canonicality"] else True
+    assert schema["canonicality"]["unmapped_in_force_constitutional_claimants_before_ratification"] == 0
     assert schema["properties"]["ratification"]["properties"]["human_only"]["const"] is True
     assert schema["properties"]["ratification"]["properties"]["machine_cannot_ratify"]["const"] is True
 
