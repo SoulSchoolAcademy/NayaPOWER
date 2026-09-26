@@ -1,0 +1,17 @@
+name: INT-001 Smart Link Acceptance
+
+on:
+  pull_request:
+    paths:
+      - ".naya/runtime/**"
+      - "tests/int001/**"
+      - "tests/fixtures/**"
+      - ".github/workflows/int001-smart-link-acceptance.yml"
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: RED/GREEN acceptance
+        run: python3 tests/int001/test_smart_link_verifier.py
