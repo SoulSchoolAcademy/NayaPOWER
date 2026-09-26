@@ -230,7 +230,7 @@ This is the shared operational handoff stream for every AI/session entering the 
 # 🔱 2026-09-26 — NayaNET Constitutional Contract Law Established for Ratification
 
 **Type:** GOVERNANCE / CONTRACT LAW  
-**Status:** PROPOSED — awaiting human-director ratification  
+**Status:** RATIFIED — human-director directed 2026-09-26  
 **Canonical contract:** `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md`  
 **Contract library:** `.naya/contracts/README.md`
 
@@ -262,11 +262,11 @@ Core rules include:
 
 ## Current state
 
-Contract 00 has been drafted and placed in the new library structure on a ratification branch. The specialized contract tree is intentionally structural only; specialized contracts will be reconciled and written one at a time.
+Contract 00 has been ratified and placed in the new library structure. The specialized contract tree is intentionally structural only; specialized contracts will be reconciled and written one at a time.
 
 ## Next action
 
-Human-director review/ratification of Contract 00, followed by source/implementation reconciliation to freeze the true specialized contract boundaries before writing Contract 01.
+Source/implementation reconciliation of Contract 00, followed by freezing to freeze the true specialized contract boundaries before writing Contract 01.
 
 ## Evidence
 

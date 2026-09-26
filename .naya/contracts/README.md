@@ -1,6 +1,6 @@
 # NayaNET Contract Law Library
 
-**Status:** V1 STRUCTURE — Constitutional Contract Law in ratification
+**Status:** V1 STRUCTURE — Constitutional Contract Law RATIFIED 2026-09-26
 **Canonical home:** `.naya/contracts/`
 
 This directory is the **single navigational home for NayaNET Contract Law**.

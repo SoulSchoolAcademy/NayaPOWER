@@ -2,11 +2,13 @@
 
 **Contract ID:** CC-000  
 **Proposed Version:** 1.0  
-**Status:** DRAFT FOR HUMAN-DIRECTOR RATIFICATION  
+**Status:** RATIFIED — HUMAN-DIRECTOR DIRECTED 2026-09-26  
 **Target Canonical Location:** `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md`  
 **Scope:** Every Naya, AI agent, automation, contract, canonical intelligence capability, projection, integration, and governed execution operating within NayaNET/NayaPOWER.
 
 > **This is the constitutional law from which all subsequent NayaNET contracts derive their operating discipline.**
+
+**Ratification:** The human director explicitly directed establishment of this Constitutional Contract Law on 2026-09-26. This repository change records that authorization; behavioral compliance remains separately verifiable.
 
 ---
 
