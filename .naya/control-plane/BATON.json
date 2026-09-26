@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-25T06:16:45.000Z",
+  "generated_at": "2026-09-26T17:51:43.373050+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,17 +13,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "LIVE_AT_EXECUTION_TIME",
+    "live_head": "9bff8f512bb10032beb9b49508f004e0468d25f3",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
-    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
-    "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
-    "observed_head": "d1d1b1efd08e0f00ff49da515baa1926f511d502",
-    "live_head_resolution": "Resolve git HEAD at execution time; observed_head is a non-authoritative snapshot.",
-    "continuation_prompt": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
+    "block_next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
+    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -60,24 +56,17 @@
       "Universal automatic Intelligence -> Activity -> Control Plane synchronization.",
       "Universal lineage/Playback runtime behavior.",
       "Automatic successor-prompt generation from every meaningful output.",
-      "Full intended-scope cold Naya independent continuation across all work.",
-      "Current production Hub has not yet been updated to the merged deep-link source; live browser continuity remains unverified."
+      "Full intended-scope cold Naya independent continuation across all work."
     ],
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
     "id": "HUMAN-JOURNEY-P2",
     "status": "VERIFIED",
-    "priority": "P1",
+    "priority": "P0",
     "source": ".naya/control-plane/BLOCKS.json"
   },
   "evidence": [
-    {
-      "kind": "brain_rehabilitation_receipt",
-      "source": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
-      "status": "VERIFIED_REPOSITORY_SCOPE_BEHAVIORAL_BOUNDARY_OPEN",
-      "source_head": "b490cb074f0917377bba73d3d6a5a3f80345595d"
-    },
     {
       "kind": "active_block_proof_receipt",
       "source": ".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md"
@@ -86,44 +75,33 @@
       "kind": "proof_current_evidence",
       "source": ".naya/control-plane/PROOF.json",
       "field": "current_evidence"
-    },
-    {
-      "kind": "activity_event",
-      "event_id": "execution-receipt:test-receipt-001",
-      "receipt_id": "test-receipt-001",
-      "timestamp": "2026-09-25T01:28:45.130320+00:00",
-      "action": "test_intelligence_commit",
-      "status": "SUCCESS",
-      "source": ".naya/control-plane/PROOF.json"
-    },
-    {
-      "kind": "learning_candidate",
-      "evidence_id": "learning-execution-receipt:test-receipt-001-20260925012845",
-      "claim": "Verified learning improved policy from 0 to 1 on held-out case",
-      "status": "CANDIDATE",
-      "source": ".naya/control-plane/PROOF.json"
     }
   ],
   "next_action": {
     "count": 1,
-    "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "status": "ACTIVE",
-    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Production Hub continuity is freshly proven; behavioral cold-Naya takeover is the next unresolved boundary.",
+    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "acceptance": [
-      "Restore current main from canonical sources without conversational memory.",
-      "Answer the 14 cold-Naya questions with evidence-bound current values.",
-      "Execute the canonical next action without Shawn reconstructing context.",
-      "Leave a runnable successor with exactly one next action."
+      "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ],
-    "verification": "Independent fresh-context behavioral observation plus repository evidence and successor continuation receipt."
+    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
-    "prompt": "Read and execute .naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md; restore live state; execute the single current next action; independently verify; update the control plane; post Issue #554 SIGN-IN/SIGN-OUT; leave exactly one successor next action. Never stop at a plan.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof.",
-    "artifact": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
+    "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -134,22 +112,5 @@
       "SUPERBRAIN/INTELLIGENT-BLOCKS/"
     ],
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
-  },
-  "canonical_smart_note": {
-    "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
-    "status": "CANONICAL_RATIFIED_2026-09-24",
-    "identity": "IB-XXXXXX",
-    "registry": ".naya/memory/smart-notes/REGISTRY.json",
-    "resolver": ".naya/runtime/smart_note_transaction.py::canonical_smart_note_path",
-    "physical_namespace": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
-    "logical_namespace": "NayaPOWER/SMART-NOTES/YYYY/MM/DD/",
-    "rule": "Smart Note = Intelligent Block; one canonical object, one identity, one lifecycle, many projections.",
-    "naya_gate": "READ_THIS_CONTRACT_BEFORE_CREATE_READ_UPDATE_MIGRATE_TEST_OR_DOCUMENT_SMART_NOTE"
-  },
-  "understanding_fidelity_execution": {
-    "protocol": ".naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md",
-    "status": "CANONICAL",
-    "rule": "Before consequential transformation or action, READ → RECONSTRUCT → RECONCILE → ACT → VERIFY. Preserve material meaning, scorecard values, constraints, priorities, authority, and success conditions. Never claim full understanding from an incomplete read.",
-    "purpose": "Prevent semantic drift, skipped steps, plausible-but-wrong execution, and human-as-integration-layer failure."
   }
 }

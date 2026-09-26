@@ -169,13 +169,17 @@
     "2026-09-25 NAYA_NEXT_EXECUTION_MASTER_PLAN.md created: complete 14-question cold reconstruction, 10 prioritized actions, 5 scorecards, 28 holes categorized, ultimate execution prompt for next Naya.",
     "2026-09-25 CODA3_INTEGRATION_HANDOFF.md updated: integration-specific handoff with runtime parity audit (SOURCE, BUILD, DEPLOYMENT, RUNTIME, RECEIVER, HUB), external boundary BLOCKED_EXTERNAL_CREDENTIAL (GITHUB_WEBHOOK_SECRET), source/runtime parity issue (deployed v4 lacks title fix, v5 needed).",
     "2026-09-25 canonical Smart Note/Intelligent Block deep-link route merged at current main: /hub?ib=<IB-ID>, backed by authenticated owner-scoped NayaAssistantRuntime.retrieveIntelligentBlock(); focused pytest 4/4 PASS; current UTC-day persisted inventory contains 259 distinct IB identities.",
-    "2026-09-25 live Worker probe at sparkling-shape-7ae5 returned HTTP 200 but did not contain NayaHubDeepLink, retrieveIntelligentBlock, or the canonical deep-link marker; therefore current production Hub parity is not proven."
+    "2026-09-25 live Worker probe at sparkling-shape-7ae5 returned HTTP 200 but did not contain NayaHubDeepLink, retrieveIntelligentBlock, or the canonical deep-link marker; therefore current production Hub parity is not proven.",
+    "2026-09-26 cold restoration found the canonical checkout detached at 9b6568f4 (1 behind origin/main; local main 55 behind). Fast-forwarded to 2846a5e6 with 0 divergence; 259 untracked files preserved. Live main advanced again during the session, so live resolution at execution time is mandatory.",
+    "2026-09-26 receiver measures 9.5/10 PROVEN across 8 boundaries plus a 9/9 adversarial matrix, while Hub identity is 3.0/10. That inversion - strong machinery, weak human door - is the current frontier."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
     "Cold successor retrieval of exact bridge lineage through governed runtime remains open.",
     "Universal real-world computation savings remain unmeasured.",
-    "Universal model/provider learning quality remains unproven."
+    "Universal model/provider learning quality remains unproven.",
+    "Whether a brand-new unauthenticated human can actually establish identity, capture intelligence, and see it projected in the canonical Hub. The Hub exposes no sign-in UI; auth is reachable only via ?name=&alias= URL parameters.",
+    "Whether the conversation -> intelligence entry is retired by design or broken by the 2026-09-25 memory quarantine. conversation_continuity.py reads .naya/memory/projects/CURRENT-DAILY-PROJECT.json, which was deliberately quarantined in human commit 52452926; the reader was not quarantined with it."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -211,10 +215,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Behavioral cold-Naya takeover remains unproven.",
-  "single_next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+  "bottleneck": "The human surface cannot reach the proven receiver: the canonical Hub exposes no sign-in UI, and the conversation -> intelligence entry point reads a project file that was deliberately quarantined on 2026-09-25.",
+  "single_next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
   "next_actions": [
-    "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
+    "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -236,7 +240,7 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "031bee2a6b996fb747f7159d2e7572575b5defde",
+  "recorded_at_head": "2846a5e6032380e03bf47e7ee3b6e47ed3d09efa",
   "latest_human_facing_observation": {
     "next_boundary": "PROJECT_INTELLIGENCE_RESTORE_RETRIEVE_RENDER_COLD_SUCCESSOR",
     "proof7_job_id": 106388476799,
@@ -252,7 +256,7 @@
     "compound_runtime_version": 5,
     "operating_migration": "20260921093000_project_intelligence_operating_layer_v1"
   },
-  "today_mission": "Complete the next highest-value property after PI-01: measure computational compounding without sacrificing verified value, provenance, authority, or human agency.",
+  "today_mission": "Make one verified useful human action possible end to end on the canonical Hub, then hand off a coherent baton.",
   "supabase_runtime": {
     "status": "ACTIVE_HEALTHY",
     "project_ref": "dahisasgpfvziswqvmvm",
@@ -370,8 +374,8 @@
     "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
   },
   "current_next_action": {
-    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
-    "reason": "Production Hub deployment, authenticated deep-link continuity, and sender-to-receiver-to-Hub production parity are freshly proven. Behavioral cold-Naya takeover is the remaining unresolved continuity boundary."
+    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
+    "reason": "Cold takeover was executed and proved at HEAD 2846a5e6: control plane is coherent (STATE == BLOCKS == BATON), the cold-14 harness passes at live main, and the receiver is the strongest component (9.5). The binding constraint is now the human surface: the Hub has no sign-in UI (identity 3.0) and the conversation -> intelligence entry is orphaned by the 2026-09-25 memory quarantine. Capability without a reachable human surface does not fulfill the mission."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -485,5 +489,6 @@
     "status": "CANONICAL",
     "rule": "Before consequential transformation or action, READ → RECONSTRUCT → RECONCILE → ACT → VERIFY. Preserve material meaning, scorecard values, constraints, priorities, authority, and success conditions. Never claim full understanding from an incomplete read.",
     "purpose": "Prevent semantic drift, skipped steps, plausible-but-wrong execution, and human-as-integration-layer failure."
-  }
+  },
+  "cold_14_scorecard_receipt": ".naya/project-intelligence/50-NAYAPOWER-COLD-14-SCORECARD-AND-RANKED-EXECUTION-2026-09-26.md"
 }
