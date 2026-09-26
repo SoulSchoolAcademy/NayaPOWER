@@ -65,7 +65,13 @@ def run():
     assert ok is False
     assert errors
     assert "section order" in " ".join(errors).lower()
-    n_a_note = malformed.replace("## NEXT ACTION", "## HOW TO APPLY\nN/A\n## NEXT ACTION")
+    valid_synthetic = "\n".join(["# SMART NOTE"] + [f"## {section}\ncontent" for section in (
+        "IN A NUTSHELL", "DATE / TIME", "WHAT", "WHY IT MATTERS", "HUMAN",
+        "CHILD", "GRANDMA", "NAYA", "MACHINE", "WHAT WE LEARNED",
+        "CONNECTIONS", "HOW TO APPLY", "WHAT IT ULTIMATELY MEANS",
+        "WHAT'S IN IT FOR YOU / US", "NEXT ACTION",
+    )])
+    n_a_note = valid_synthetic.replace("## HOW TO APPLY\ncontent", "## HOW TO APPLY\nN/A", 1)
     ok, errors = validate_smart_note_structure(n_a_note)
     assert ok is True
     assert errors == []
