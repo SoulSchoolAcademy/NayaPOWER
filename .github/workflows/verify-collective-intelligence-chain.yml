@@ -198,6 +198,8 @@ jobs:
 
             const verifierContext=await browser.newContext();
             const verifierPage=await verifierContext.newPage();
+            await verifierPage.goto(hub+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await verifierPage.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
             const verifier=await verifierPage.evaluate(async({run})=>{
               const name='Collective Chain Verifier '+run;
               const alias=('verifier'+run).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
