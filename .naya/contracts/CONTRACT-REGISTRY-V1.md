@@ -441,3 +441,22 @@ This work may proceed without resolving the constitutional conflict because it i
 ### Result
 
 **CONTRACT-TOPOLOGY-002: EXECUTED.** Constitutional authority remains **CONFLICTED / HUMAN DECISION REQUIRED**. Execution ownership is reconciled to **EP-001 as the single normative execution owner**, with existing execution artifacts retained as subordinate/supporting layers until explicit hardening is completed.
+
+
+## CONTRACT-TOPOLOGY-002B — SMART LINK SEMANTIC RECONCILIATION
+
+**Status:** VERIFIED SEMANTIC FINDING / SCHEMA CHANGE NOT YET APPLIED
+
+The P0 Smart Link boundary was inspected after execution ownership was hardened.
+
+**Normative semantic owner:** INT-001 / `.naya/contracts/01-INTELLIGENCE/01-SMART-NOTE-AND-SMART-LINK.md`, reinforced by `.naya/contracts/02-SMART-LINK.md`.
+
+Both normative Markdown artifacts agree: **Smart Link means only the direct GitHub link to the canonical human-readable `smart-note.md` projection of one Receiver-created IB.** Hub Deep Link and Evidence Link are explicitly different nouns.
+
+**Conflict:** `.naya/contracts/SMART-LINK-CONTRACT.json` currently permits `target_type = smart_note | ledger_event | value_event | collective_intelligence`. That machine schema therefore exposes multiple meanings for the same noun and violates the repository's Exact-Noun Law.
+
+**Disposition:** `SMART-LINK-CONTRACT.json` = **MACHINE SCHEMA / MERGE-NARROW CANDIDATE**, not a competing semantic contract. The schema should be narrowed to the single normative Smart Link meaning only after a reference audit establishes whether any live implementation depends on the broad enum. No schema mutation was made in this wave because the reference/dependent surface was not yet established; guessing a compatibility impact would violate the anti-guessing law.
+
+**Next P0 action:** audit all repository references to `SMART-LINK-CONTRACT.json` and its `target_type` values; then, if no distinct canonical generic-link owner exists, narrow the schema to `smart_note` and preserve ledger/value/collective links under their own nouns/schemas rather than calling them Smart Links.
+
+**EP-001 hardening receipt:** EP-001 now contains an explicit normative ownership boundary and acceptance tests; status remains PROPOSED because hardening does not equal ratification/verification.
