@@ -27,20 +27,19 @@ A commit SHA, internal ID, tool result, filename in gray/code formatting, or pro
 
 ## 2. WHAT A SMART LINK IS
 
-A **Smart Link** is:
+For a **Smart Note / Intelligent Block**, the term **Smart Link** has exactly one meaning:
 
-**a direct, clickable, navigable link to the actual durable artifact or evidence that supports the claim being made.**
+**a direct, clickable GitHub link to the canonical `smart-note.md` projection for the receiver-issued IB.**
 
-Examples:
+A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never the Smart Link.
 
-- a Markdown Smart Note → direct GitHub file link;
-- a verification receipt → direct GitHub file link;
-- an Activity record → direct GitHub file link;
-- a continuation prompt → direct GitHub file link;
-- a JSON control-plane record → direct GitHub file link when machine inspection is useful;
-- a standalone HTML artifact → direct GitHub file link;
-- a workflow/run/artifact → direct navigable evidence link when available;
-- a live deployment claim → direct public runtime URL plus deployment evidence when available.
+A receipt, event, transaction, test, workflow, commit, or deployment URL is an **Evidence/Provenance Link**, not the Smart Note Smart Link.
+
+Before reporting a Smart Link, verify the GitHub artifact exists on the canonical branch and contains the same IB ID. If it does not exist, report:
+
+**SMART LINK: PENDING**
+
+Do not substitute another link type.
 
 ## 3. WHY THE SMART LINK EXISTS
 
@@ -78,27 +77,23 @@ Do not dump a list of SHAs and expect the human to reconstruct which file change
 
 ## 5. SMART LINK PRIORITY
 
-For human-facing delivery, use this order:
+For Smart Note / IB delivery, use this order:
 
-1. **Human-readable artifact link**
-2. **Verification receipt link**
-3. **AI Smart Note link**, when applicable
-4. **Canonical JSON/event link**, when useful
+1. **Canonical GitHub Smart Note artifact**
+2. **Verification receipt / Evidence link**
+3. **Hub Deep Link**, when runtime navigation was verified
+4. **Canonical JSON/event**, when useful
 5. **Commit/PR/workflow identifiers**, as secondary provenance
 
-A commit SHA is useful for provenance and reproducibility.
-
-It is **not the primary human receipt** when the artifact itself has a navigable URL.
+A Hub Deep Link is never relabeled as the Smart Link.
 
 ## 6. SMART NOTE DELIVERY
 
-When reporting a Smart Note:
+When reporting a Smart Note / IB:
 
-**Human Smart Note → Verification Receipt → AI Smart Note (optional) → Canonical Event JSON (optional/system use)**
+**Smart Link → Verification/Evidence Link → Hub Deep Link (when applicable) → canonical event/receipt (when useful)**
 
-Never give a raw JSON link and label it simply “Smart Note” when Shawn needs the readable note.
-
-The canonical Smart Notes human-readable delivery law already requires this distinction.
+The Smart Link must be the actual GitHub `smart-note.md` projection. If that projection has not been created and verified, say **SMART LINK: PENDING**.
 
 ## 7. ACTIVITY DELIVERY
 
