@@ -20,7 +20,8 @@ Evidence record for surgical consolidation toward the locked AAA NayaPOWER/NayaN
 ## Legacy product candidates
 - `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` - ARCHIVE per canonical map; 3 historical files; referenced by historical successor/corpus records. Preserve provenance.
 - `.naya/archive/historical-product-generations/E01-WELCOME/` - ARCHIVE per canonical map; 7 historical files; preserved as provenance after executable-reference review.
-- `NAYANET/E02-INTELLIGENT-HUB/`, `E02-INTELLIGENT-HUB-AAA/`, `E02-INTELLIGENT-HUB-CLOUDFLARE/`, `E03-INTELLIGENT-HUB/` - historical/alternate Hub generations with live references. No blind deletion.
+- `NAYANET/E02-INTELLIGENT-HUB/`, `E02-INTELLIGENT-HUB-AAA/`, `E02-INTELLIGENT-HUB-CLOUDFLARE/` - historical/alternate Hub generations with live documentary references; no blind deletion.
+- `.naya/archive/historical-product-generations/E03-INTELLIGENT-HUB/` - ARCHIVE; 2 historical files; no executable/workflow references found.
 - `NAYANET/HUB-ROOM-SYSTEM/` - CONSOLIDATE; active room contracts are referenced by tests/handoffs.
 - `NAYANET/UNIVERSAL-AGENT-INTERFACE/` - CONSOLIDATE; current release workflows and Smart Door reconciliation depend on it.
 
@@ -33,8 +34,9 @@ Evidence record for surgical consolidation toward the locked AAA NayaPOWER/NayaN
 - Removed all 10 detected Python `__pycache__` directories; verified zero remain.
 - Archived `NAYANET/E01-ULTIMATE-ENTRANCE/` to `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` because executable/workflow reference checks found no active dependency; historical references were rewritten to the archive path.
 - Archived `NAYANET/E01-WELCOME/` to `.naya/archive/historical-product-generations/E01-WELCOME/` after executable/workflow reference checks found no active dependency; Team Naya and control-plane references were rewritten.
-- Verification: both old E01 paths are absent locally, both archive paths exist, archive contents are preserved, and `git diff --check` is clean.
+- Archived `NAYANET/E03-INTELLIGENT-HUB/` to `.naya/archive/historical-product-generations/E03-INTELLIGENT-HUB/` after executable/workflow reference checks found no active dependency; control-plane references were rewritten.
+- Verification: old E01/E03 paths are absent locally, archive paths exist, archive contents are preserved, and `git diff --check` is clean.
 - The live GitHub main head advanced independently during the work; local `main` was repeatedly rebased and synchronized before publication.
 
 ## One next action
-Inventory the E02/E03 historical Hub generations for unique proof/intelligence and active dependencies, then archive the smallest no-runtime-dependency generation with reference integrity preserved.
+Inventory `NAYANET/E02-INTELLIGENT-HUB/` and `E02-INTELLIGENT-HUB-AAA/` for unique proof/intelligence and documentary-only references, then archive the next smallest no-runtime-dependency generation with reference integrity preserved.

@@ -154,7 +154,7 @@ UPDATED CONTEXT FOR THE NEXT NAYA
 | `NAYANET/E02-INTELLIGENT-HUB/` | ARCHIVE | Historical Hub generation |
 | `NAYANET/E02-INTELLIGENT-HUB-AAA/` | ARCHIVE | Historical visual/build variant |
 | `NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/` | ARCHIVE | Historical implementation/visual provenance; do not execute as current Hub |
-| `NAYANET/E03-INTELLIGENT-HUB/` | ARCHIVE | Historical alternate generation |
+| `.naya/archive/historical-product-generations/E03-INTELLIGENT-HUB/` | ARCHIVE | Historical alternate generation |
 | `NAYANET/NAYA-FUTURE/` | ARCHIVE | Future/alternate entrance surface |
 | `NAYANET/cloudflare/` | ARCHIVE / PROVENANCE | Preserve only evidence/reference required for historical releases |
 | `NAYANET/SMART-NOTES/` | ARCHIVE | Historical Smart Note source material; not current receiver write target |
