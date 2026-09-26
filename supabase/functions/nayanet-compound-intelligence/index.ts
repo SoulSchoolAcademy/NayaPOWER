@@ -69,8 +69,47 @@ async function record(client: any, event: any, action: string, expected: string,
   return data;
 }
 
+
+async function loadMasterContractNodes(client: any, userId: string) {
+  const { data, error } = await client
+    .from("nayanet_intelligent_blocks")
+    .select("intelligent_block_id,title,status,understanding_state,owner_scope,created_at,content")
+    .eq("owner_id", userId)
+    .eq("owner_scope", "PRIVATE")
+    .eq("content->metadata->>node_role", "MASTER_CONTRACT_INTELLIGENCE_NODE")
+    .order("created_at", { ascending: true });
+  if (error) throw error;
+
+  const nodes = (data ?? [])
+    .map((node: any) => {
+      const content = node?.content ?? {};
+      const metadata = content?.metadata ?? {};
+      const meaning = content?.meaning ?? {};
+      return {
+        intelligent_block_id: String(node.intelligent_block_id ?? ""),
+        title: String(node.title ?? meaning.title ?? ""),
+        node_no: Number(metadata.node_no ?? 0),
+        contracts: Array.isArray(metadata.contracts) ? metadata.contracts : [],
+        summary: String(meaning.summary ?? meaning.meaning ?? ""),
+        purpose: String(content?.intent?.purpose ?? meaning.meaning ?? ""),
+        next_use: String(content?.successor?.reason ?? content?.action?.action ?? ""),
+        status: String(node.status ?? ""),
+        understanding_state: String(node.understanding_state ?? ""),
+        owner_scope: String(node.owner_scope ?? ""),
+        created_at: node.created_at ?? null
+      };
+    })
+    .sort((a: any, b: any) => a.node_no - b.node_no);
+
+  return {
+    count: nodes.length,
+    complete: nodes.length === 9 && nodes.every((node: any) => node.node_no >= 1 && node.node_no <= 9),
+    nodes
+  };
+}
+
 async function restore(client: any, userId: string) {
-  const [state, events, learning, replays, receipts, ops, bridge] = await Promise.all([
+  const [state, events, learning, replays, receipts, ops, bridge, masterContractNodes] = await Promise.all([
     admin.from("nayanet_project_intelligence_state")
       .select("*").eq("project_id", PROJECT).maybeSingle(),
     client.from("nayanet_cognition_events")
@@ -90,7 +129,8 @@ async function restore(client: any, userId: string) {
       .eq("user_id", userId).eq("project_id", PROJECT).order("created_at", { ascending: false }).limit(20),
     admin.from("nayanet_project_intelligence_bridge")
       .select("packet_id,project_id,source_ref,content_hash,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected,retrieved,rendered,retrieval_evidence,render_evidence,acknowledged_at,verified_at,accepted_at")
-      .eq("project_id", PROJECT).order("accepted_at", { ascending: false }).limit(10)
+      .eq("project_id", PROJECT).order("accepted_at", { ascending: false }).limit(10),
+    loadMasterContractNodes(client, userId)
   ]);
   for (const r of [state, events, learning, replays, receipts, ops, bridge]) if (r.error) throw r.error;
 
@@ -100,6 +140,7 @@ async function restore(client: any, userId: string) {
   const latestReceipt = receipts.data?.[0] ?? null;
   const latestBridge = bridge.data?.[0] ?? null;
   const canonicalState = state.data ?? null;
+  const masterContractIntelligence = masterContractNodes ?? { count: 0, complete: false, nodes: [] };
 
   const proven = [
     ...(Array.isArray(canonicalState?.proven) ? canonicalState.proven : []),
@@ -126,6 +167,11 @@ async function restore(client: any, userId: string) {
   return {
     schema: "NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2",
     restored_at: new Date().toISOString(),
+    system_intelligence: {
+      master_contract_nodes: masterContractIntelligence,
+      semantic_rule: "The nine Master Contract Nodes are compiled semantic context for Naya; the underlying contracts and deterministic runtime gates remain the enforceable law.",
+      boot_rule: "Every restore loads these nodes automatically before consequential work so a cold Naya receives the system model without manually reading 26 contract files."
+    },
     source_authority: {
       repository: GITHUB_REPO,
       ref: GITHUB_REF,
