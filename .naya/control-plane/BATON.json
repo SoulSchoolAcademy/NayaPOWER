@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-26T18:05:50.040856+00:00",
+  "generated_at": "2026-09-26T18:25:06.392599+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,7 +13,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "93c9329d476945e47b8cf152c31c66133d88643a",
+    "live_head": "ba22c3dcf9f6c45f42c6219ba2d58799d0e64a6f",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",

@@ -57,6 +57,41 @@ retrieved, no deployment was attempted, and no production-parity claim is made.
 - Any production behavior of the deployed Edge Function beyond the two read-only probes above.
 - That any other Edge Function in the deployment is current; the same drift may affect peers.
 
+## Later observation: the failure advanced to a second overload ambiguity
+
+Run `36262162073` (2026-09-26T18:20Z) no longer fails at Smart Mail. It now fails **earlier**, in
+`learning_apply`:
+
+```
+Error: LEARNING_APPLY_FAILED:{"status":500,"body":{"ok":false,"error":"SUPERBRAIN_LEARNING_COMMIT_FAILED",
+"detail":"Could not choose the best candidate function between:
+ public.nayanet_record_cognition_event(p_project_id => text, p_event => jsonb, p_action => text,
+ p_expected_result => text, p_observed_result => text, p_learning => jsonb),
+ public.nayanet_record_cognition_event(p_project_id => text, p_event => jsonb, p_action => text,
+ p_expected_result => text, p_observed_result => text, p_learning => jsonb, p_execution_authorization => jsonb)",
+"learner_state_version":1}}
+```
+
+This is the same class of defect as the Smart Mail failure: an **overloaded function family that
+PostgREST cannot disambiguate**, not a logic error. The repository already established the correct
+precedent for exactly this in `supabase/migrations/20260919182500_unique_policy_smart_mail_rpc.sql`,
+whose header states that "Supabase/PostgREST RPC does not safely support this overloaded function
+family" and therefore gives the policy path a unique name.
+
+Because `learning_apply` now fails before the Smart Mail stage is reached, this run does **not**
+prove that the Smart Mail drift was corrected; the Smart Mail stage remains unproven either way
+until a run gets past `learning_apply`.
+
+This is being worked in parallel and is deliberately **not** duplicated here:
+
+- PR `#797` "fix: disambiguate cognition receipt overload in learning apply" (commit `4d1841259`,
+  touches `supabase/functions/naya-learning-apply/index.ts`)
+- PR `#796` "ci: introduce witnessed, manual-only Supabase Edge Function deploy workflow"
+
+If the fix stays inside the Edge Function, note that disambiguating a PostgREST overload usually
+requires a uniquely named database function, which means a **migration applied to the live
+database** — the same external credential boundary described above, not a repository-only change.
+
 ## Exact successor action
 
 An authorized Supabase operator redeploys `nayanet-smart-mail` from current `main`, then reruns
