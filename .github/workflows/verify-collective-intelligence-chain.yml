@@ -156,7 +156,6 @@ jobs:
               execution_authorization:{authority_id:authorityGrantId,actor_id:session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               what_changed:'A verified continuation lesson was captured for later cold retrieval.',
               next_use:'Use when restoring project state before consequential continuation.',
-              execution_authorization:{authority_id:verifierGrant.grant_id,actor_id:verifier.session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               unknown:['Real-world usefulness outside the tested project scope remains unproven.']
             });
             const eventId=captured.source_event?.event_id;
@@ -251,6 +250,7 @@ jobs:
               target_id:targetId,
               applicable_scope:'NayaNET project continuation',
               authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              execution_authorization:{authority_id:verifierGrant.grant_id,actor_id:verifier.session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               what_changed:'An independent verifier confirmed the lesson applicability through a separate governed commit.',
               next_use:'Use as independent outcome evidence for learning verification.',
               parent_event_id:eventId,
