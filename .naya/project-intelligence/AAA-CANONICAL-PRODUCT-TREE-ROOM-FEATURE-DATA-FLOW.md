@@ -149,7 +149,7 @@ UPDATED CONTEXT FOR THE NEXT NAYA
 ## 8. REPOSITORY CLASSIFICATION — HISTORICAL / ALTERNATE PRODUCT BUILDS
 | Repository area | Classification | Rule |
 |---|---|---|
-| `NAYANET/E01-WELCOME/` | ARCHIVE | Historical front door; not current Hub |
+| `.naya/archive/historical-product-generations/E01-WELCOME/` | ARCHIVE | Historical front door; not current Hub |
 | `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` | ARCHIVE | Historical entrance experiment |
 | `NAYANET/E02-INTELLIGENT-HUB/` | ARCHIVE | Historical Hub generation |
 | `NAYANET/E02-INTELLIGENT-HUB-AAA/` | ARCHIVE | Historical visual/build variant |

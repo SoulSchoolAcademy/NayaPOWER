@@ -51,7 +51,7 @@ These must never be selected or presented as the current Hub:
 
 - Welcome / public front-door pages
 - `WelcometoNayaNET.html`
-- `NAYANET/E01-WELCOME/`
+- `.naya/archive/historical-product-generations/E01-WELCOME/`
 - `2026 09 17 NAYANET HUB V2.html`
 - `2026 09 13 NayaNET HUB 509 AAA.html`
 - `NAYANET-LIVE-HUB.html`

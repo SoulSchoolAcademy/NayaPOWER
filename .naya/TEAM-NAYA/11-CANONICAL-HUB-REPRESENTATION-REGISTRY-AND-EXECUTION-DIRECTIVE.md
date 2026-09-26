@@ -39,7 +39,7 @@ The following are explicitly non-authoritative:
 
 - Welcome / public front-door pages
 - `WelcometoNayaNET.html`
-- `NAYANET/E01-WELCOME/`
+- `.naya/archive/historical-product-generations/E01-WELCOME/`
 - historical E02/E03 Hub builds
 - 509 visual experiments and old static Hub variants
 - deleted V2 / 509 AAA / NAYANET-LIVE-HUB root files
