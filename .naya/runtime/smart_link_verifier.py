@@ -110,6 +110,29 @@ def classify_smart_link(repo_path: Path, reported_ib: str, receiver_persisted: b
     build_smart_link(repo_path, canonical_ref)
     return "VERIFIED"
 
+def verify_receiver_projection_join(receiver_record: dict, observed_projection: dict) -> bool:
+    """Join authoritative receiver identity/provenance to an observed canonical projection/link."""
+    required = ("intelligent_block_id", "source_event_id", "canonical_receiver", "canonical_path", "canonical_ref")
+    if any(not receiver_record.get(key) for key in required):
+        return False
+    if any(observed_projection.get(key) != receiver_record.get(key) for key in required):
+        return False
+    ib_id = receiver_record["intelligent_block_id"]
+    path = receiver_record["canonical_path"]
+    if not _valid_ib(ib_id) or not path.endswith("/" + ib_id + "/smart-note.md"):
+        return False
+    link = observed_projection.get("smart_link")
+    if not isinstance(link, str) or classify_link_kind(link) != "SMART_LINK":
+        return False
+    return verify_remote_smart_link(
+        link,
+        expected_path=path,
+        expected_ref=receiver_record["canonical_ref"],
+        observed_path=observed_projection["canonical_path"],
+        observed_ref=observed_projection["canonical_ref"],
+        observed_ib=observed_projection["intelligent_block_id"],
+    )
+
 def receiver_link_correspondence(repo_path: Path, receiver_record: dict, canonical_ref: str = "main") -> bool:
     """Require the projection to join to the receiver-issued identity and event."""
     if not repo_path.exists():
@@ -136,4 +159,4 @@ def receiver_link_correspondence(repo_path: Path, receiver_record: dict, canonic
     link = build_smart_link(repo_path, canonical_ref)
     return classify_link_kind(link) == "SMART_LINK"
 
-__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence", "validate_smart_note_structure", "verify_remote_smart_link"]
+__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence", "validate_smart_note_structure", "verify_remote_smart_link", "verify_receiver_projection_join"]
