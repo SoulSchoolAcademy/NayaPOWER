@@ -1,0 +1,60 @@
+name: Execute canonical Smart Note capture
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: Smart Note title
+        required: true
+        type: string
+      content:
+        description: Canonical Smart Note content
+        required: true
+        type: string
+      naya_note:
+        description: Naya interpretation
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue' }}
+      NOTE_TITLE: ${{ inputs.title }}
+      NOTE_CONTENT: ${{ inputs.content }}
+      NAYA_NOTE: ${{ inputs.naya_note }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Capture through canonical receiver
+        shell: bash
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_KEY,runtime=process.env.RUNTIME_URL;
+          async function req(url,opt={}){const r=await fetch(url,opt),t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}};if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
+          (async()=>{
+            const s=await req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+            if(!s.access_token) throw Error('AUTH_BOOTSTRAP_FAILED:'+JSON.stringify(s));
+            const browser=await chromium.launch({headless:true});
+            const storageState={cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(s)}]}]};
+            const context=await browser.newContext({storageState});
+            const page=await context.newPage();
+            await page.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const auth=await page.evaluate(()=>window.NayaAssistantRuntime.init());
+            if(!auth.authenticated) throw Error('RUNTIME_AUTH_FAILED:'+JSON.stringify(auth));
+            const result=await page.evaluate(({title,content,naya_note})=>window.NayaAssistantRuntime.captureSmartNote({title,content,naya_note}),{title:process.env.NOTE_TITLE,content:process.env.NOTE_CONTENT,naya_note:process.env.NAYA_NOTE});
+            console.log('CANONICAL_SMART_NOTE_RECEIPT='+JSON.stringify(result));
+            await browser.close();
+          })().catch(e=>{console.error('CANONICAL_CAPTURE_FAILED',e);process.exitCode=1});
+          NODE
