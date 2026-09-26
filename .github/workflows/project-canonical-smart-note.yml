@@ -151,6 +151,8 @@ jobs:
               exit 1
             fi
             git reset --hard origin/main
+            mkdir -p "$(dirname "$TARGET")"
+            cp projected-smart-note.md "$TARGET"
             git add "$TARGET"
             git commit -m "Project canonical Smart Note from receiver transaction"
             if git push origin HEAD:main; then
