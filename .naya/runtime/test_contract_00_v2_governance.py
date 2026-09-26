@@ -104,3 +104,19 @@ def test_critical_truth_and_anti_guessing_rules_survive_mutation_probe():
     mutated = text.replace("UNKNOWN ≠ PASS", "UNKNOWN = PASS", 1)
     assert "UNKNOWN ≠ PASS" not in mutated
     assert "UNKNOWN = PASS" in mutated
+
+
+if __name__ == "__main__":
+    tests = [
+        test_contract_00_machine_chain_is_reachable,
+        test_contract_00_identity_and_candidate_state_are_explicit,
+        test_contract_00_required_governance_sections_exist,
+        test_decision_procedure_is_fail_closed_and_ordered,
+        test_enforcement_registry_does_not_fake_full_enforcement,
+        test_registry_points_to_cc000_and_blocks_premature_full_governance,
+        test_critical_truth_and_anti_guessing_rules_survive_mutation_probe,
+    ]
+    for test in tests:
+        test()
+        print(f"PASS {test.__name__}")
+    print(f"PASS Contract 00 V2 self-governance suite: {len(tests)} tests")
