@@ -136,6 +136,20 @@ EXECUTE → VERIFY → RECORD → HANDOFF
 
 ---
 
+# 5A. CANONICAL CONTRACT STACK
+
+**.naya/contracts/README.md** is the single navigational home for the Contract Stack.
+
+The mandatory operating law is **.naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md**. Contracts 01–10 define the specialized boundaries for Smart Note/IB, Smart Link, Receiver, Sender, Hub Consumption, Room, SmartConnect, Proof/Receipt, Learning, and Continuity/Successor.
+
+These contracts are specialized canonical rules. They are subordinate to the Constitution and control plane and MUST NOT create a second constitutional hierarchy. A cold Naya must read the stack before substantive work in an applicable area.
+
+The stack is the repository's deterministic anti-drift layer:
+
+**ONE MISSION → ONE CANONICAL MODEL → ONE CONTRACTED BOUNDARY → MANY VALID PROJECTIONS → ZERO COMPETING AUTHORITIES.**
+
+README.md and START-HERE.md point directly to this tree so the architecture itself reminds every Naya to read the applicable contracts.
+
 # 6. SPECIALIZED CANONICAL DOCUMENTS
 
 Specialized documents can be authoritative **within their declared subject** without becoming constitutional authorities.
