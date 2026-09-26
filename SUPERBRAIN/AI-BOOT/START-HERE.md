@@ -1,3 +1,17 @@
+## 🔱 CANONICAL CONTRACT STACK — MANDATORY
+
+The Contract Stack is the single specialized contract tree for canonical intelligence, Sender/Receiver, Hub Consumption, Rooms, SmartConnect, Proof, Learning, and Continuity.
+
+Read:
+
+`.naya/contracts/README.md`
+
+`.naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md`
+
+then the specific applicable contracts `01`–`10`.
+
+**Do not improvise a competing interpretation when a contract applies. If authorities conflict, stop and reconcile.**
+
 # Naya Power Superbrain — AI START HERE
 
 # 🔱 HUB EXECUTION LOCK — MANDATORY FOR HUB WORK
