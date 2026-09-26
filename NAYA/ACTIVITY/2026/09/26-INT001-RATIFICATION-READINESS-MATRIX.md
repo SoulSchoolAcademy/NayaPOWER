@@ -28,7 +28,7 @@ INT-001 remains PROPOSED. Conclusion: NOT READY FOR HUMAN RATIFICATION.
 | Test | State | Evidence / gap | Blocks ratification? |
 |---|---|---|---|
 | A — Verified link | PARTIALLY PROVEN | Three real canonical targets fetched from main and matched by path/ref/IB; wrong ref/path/IB observations reject. Receiver-object join remains separate. | YES |
-| B — Pending projection | PARTIALLY PROVEN | Controlled PENDING fixture works; no natural production PENDING case and no cold-Naya wording observation. | YES |
+| B — Pending projection | PARTIALLY PROVEN | Controlled PENDING fixture works. Live receiver stores were inspected: 4 historical INCOMPLETE events have no IB persistence, so they do not qualify as PENDING under INT-001. No natural qualifying PENDING case was found. | YES |
 | C — Conflict | PROVEN | Controlled wrong-IB fixture returns CONFLICTED; fixture is explicitly synthetic, not historical evidence. | NO |
 | D — Vocabulary | PROVEN | Deterministic classify_link_kind() test rejects Hub Deep Link as Smart Link and distinguishes Smart Link, Evidence Link, and unknown GitHub pages. | YES — cold behavior still required by H/M18 |
 | E — No fabrication | PROVEN | Verifier rejects noncanonical paths and preserves UNKNOWN/MISSING/PENDING. | YES |
@@ -54,7 +54,7 @@ Control plane: unchanged. HUMAN-JOURNEY-P2 remains active and its current next a
 
 INT-001 is NOT READY FOR HUMAN RATIFICATION.
 
-The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. The completed waves now close D, F, the 15-section structural requirement, the observed remote Smart Link target/ref boundary, and the live receiver-to-projection correspondence boundary. Remaining technical boundaries are: natural production PENDING evidence, cold-Naya terminology/decision behavior, the unobserved repository test/CI execution boundary, and separate system-level creation/privacy/duplicate audits where those are required by their owning contracts. Human ratification remains a separate authority boundary.
+The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. The completed waves now close D, F, the 15-section structural requirement, the observed remote Smart Link target/ref boundary, and the live receiver-to-projection correspondence boundary. Remaining technical boundaries are: cold-Naya terminology/decision behavior, the unobserved repository test/CI execution boundary, and separate system-level creation/privacy/duplicate audits where those are required by their owning contracts. No qualifying natural production PENDING case was found. Human ratification remains a separate authority boundary.
 
 ## Human-authority boundary
 
@@ -62,4 +62,4 @@ When all technical prerequisites are satisfied, the minimal human action is to r
 
 ## Single successor action
 
-Investigate whether any natural production PENDING projection exists in authoritative receiver/repository evidence; if none exists, preserve that as UNKNOWN rather than manufacturing a case. In parallel, reassess the INT-001 completion standard against the remaining cold-Naya and test-execution boundaries, and identify the smallest safe action that can close another one.
+Execute independent cold-Naya terminology/decision acceptance if an independent Naya execution boundary is available. If that boundary is unavailable, record H as UNKNOWN/BLOCKED and do not substitute the current conversation for a cold successor; then reassess whether INT-001 is technically complete except for that external behavioral boundary and human ratification.
