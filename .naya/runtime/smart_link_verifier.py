@@ -10,6 +10,29 @@ SMART_NOTES_ROOT = ".naya/memory/smart-notes"
 GITHUB_BASE = "https://github.com/SoulSchoolAcademy/NayaPOWER/blob"
 CANONICAL_RECEIVER = "v7-smart-note-canonical"
 
+REQUIRED_SMART_NOTE_SECTIONS = (
+    "IN A NUTSHELL", "DATE / TIME", "WHAT", "WHY IT MATTERS", "HUMAN",
+    "CHILD", "GRANDMA", "NAYA", "MACHINE", "WHAT WE LEARNED",
+    "CONNECTIONS", "HOW TO APPLY", "WHAT IT ULTIMATELY MEANS",
+    "WHAT'S IN IT FOR YOU / US", "NEXT ACTION",
+)
+
+def validate_smart_note_structure(content: str) -> tuple[bool, list[str]]:
+    """Validate the required 15-section order without changing IB identity."""
+    headings = re.findall(r"^##\\s+(.+?)\\s*$", content, flags=re.MULTILINE)
+    errors = []
+    cursor = -1
+    for section in REQUIRED_SMART_NOTE_SECTIONS:
+        matches = [i for i, heading in enumerate(headings) if heading == section]
+        if not matches:
+            errors.append(f"missing required section: {section}")
+            continue
+        position = matches[0]
+        if position <= cursor:
+            errors.append(f"section order violation at: {section}")
+        cursor = position
+    return (not errors, errors)
+
 def _valid_ib(value: str) -> bool:
     return bool(IB_RE.fullmatch(value))
 
@@ -88,4 +111,4 @@ def receiver_link_correspondence(repo_path: Path, receiver_record: dict, canonic
     link = build_smart_link(repo_path, canonical_ref)
     return classify_link_kind(link) == "SMART_LINK"
 
-__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence"]
+__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence", "validate_smart_note_structure"]
