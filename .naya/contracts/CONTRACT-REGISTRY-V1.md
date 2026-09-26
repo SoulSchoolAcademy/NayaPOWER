@@ -595,3 +595,46 @@ The correct next architectural action is **reconcile the existing generic Smart 
 ### Exact next action
 
 **SMART-LINK-RECONCILIATION-001:** reconcile the existing `generate_smart_link` runtime/test path and both existing Smart Link schemas against the canonical narrow Smart Link law. Establish one canonical machine owner, one semantic owner, and an explicit disposition for generic ledger/value/collective targets. Do not create a replacement Smart Link contract; do not change constitutional authority; do not delete a live dependency until its callers/tests are migrated or explicitly retired with evidence.
+
+
+## SMART-LINK-RECONCILIATION-001 — FINAL RECEIPT
+
+**Date:** 2026-09-26
+**Result:** RECONCILED — LIVE GENERIC REFERENCE SEPARATED FROM CANONICAL SMART LINK
+
+### Authoritative finding
+The prior live generate_smart_link() path had only two runtime consumers: the vertical slice and its executable test. No other live repository caller was found in the authoritative whole-tree scan. The function was therefore safe to re-scope without breaking an unobserved caller.
+
+### Reconciliation performed
+- Renamed generate_smart_link() to generate_reference().
+- Renamed the vertical-slice output from smart_link to reference.
+- The compatibility engine now explicitly calls this object a generic reference, not a Smart Link.
+- Updated the two executable tests to assert reference semantics.
+- Narrowed the existing canonical machine contract .naya/contracts/SMART-LINK-CONTRACT.json to the canonical Smart Note meaning: target_type=smart_note, canonical IB/path identity, and direct GitHub smart-note.md URL shape.
+- Converted .naya/contracts/schemas/SMART-LINK-CONTRACT.json into a supporting alias that $ref's the canonical machine contract instead of defining a competing target enum.
+
+### Ownership
+- **Semantic owner:** .naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md, reinforced by Contract 02 / INT-001.
+- **Canonical machine owner:** .naya/contracts/SMART-LINK-CONTRACT.json (nayanet://contracts/smart-link-v1).
+- **Supporting schema alias:** .naya/contracts/schemas/SMART-LINK-CONTRACT.json.
+- **Ledger Event:** remains owned by its dedicated Ledger Event schema.
+- **Value Event:** remains owned by its dedicated Value Event schema.
+- **Collective Intelligence:** remains a distinct domain/projection; it is not a Smart Link target.
+- **Verification Receipt:** remains evidence/receipt semantics; it is not a Smart Link target.
+
+### Verification
+- Clean detached worktree created from this reconciliation branch.
+- .naya/runtime/test_smart_ledger_engine.py: **6/6 PASS**.
+- Both Smart Link JSON files: **JSON_PARSE_OK**.
+- Authoritative git grep after mutation: no generate_smart_link implementation/caller remains; stale mentions are confined to historical registry/execution receipts describing prior state.
+- Constitutional authority: **UNCHANGED**.
+- BLOCKS / EP-001 / BATON authority boundaries: **UNCHANGED**.
+
+### Remaining boundary
+The canonical Smart Link schema mechanically validates the required URL/path shape, while cross-field identity correspondence (URL IB == ib_id == target_ref IB) remains an application-level verification responsibility. This is not claimed as fully mechanically proven by JSON Schema alone.
+
+### Status
+**VERIFIED for the reconciled runtime/schema scope.** Full production Smart Link delivery remains a separate production-proof boundary.
+
+### Exactly one successor
+**SMART-LINK-ENFORCEMENT-002 — wire the canonical Smart Link machine contract into the existing Smart Link identity test/workflow so invalid Hub/runtime/evidence URLs are mechanically rejected at the repository boundary, without creating another contract or changing constitutional authority.**
