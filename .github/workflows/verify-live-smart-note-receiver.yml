@@ -85,7 +85,7 @@ jobs:
             const ibId=String(firstCall.body?.intelligent_block_id||'');
             const expectedHubDeepLink='/hub?ib='+encodeURIComponent(ibId);
             const receipt=firstCall.body?.completion_receipt||{};
-            if(!/^IB-\\d{6}$/.test(ibId))throw new Error('SMART_NOTE_RECEIVER_IB_ID_MISSING:'+JSON.stringify(firstCall.body));
+            if(!/^IB-\d{6}$/.test(ibId))throw new Error('SMART_NOTE_RECEIVER_IB_ID_MISSING:'+JSON.stringify(firstCall.body));
             if(receipt?.schema!=='naya/smart-note-receiver-receipt/v1'||receipt?.canonical_receiver!=='v7-smart-note-canonical'||receipt?.intelligent_block_id!==ibId||!receipt?.transaction_id)throw new Error('SMART_NOTE_COMPLETION_RECEIPT_INVALID:'+JSON.stringify(receipt));
             if(firstCall.body?.feed_verification?.verified!==true||firstCall.body?.feed_verification?.event_id!==String(tx?.evidence?.event_id||tx?.hub_state?.event_id||''))throw new Error('SMART_NOTE_FEED_VERIFICATION_MISSING:'+JSON.stringify(firstCall.body?.feed_verification));
             const smartLink=String(firstCall.body?.smart_link||'');
