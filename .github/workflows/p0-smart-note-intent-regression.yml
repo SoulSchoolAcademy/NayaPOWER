@@ -1,0 +1,25 @@
+name: P0 Smart Note Intent Regression
+
+on:
+  push:
+    branches:
+      - naya/p0-smart-note-intent-execution-20260926
+    paths:
+      - ".naya/runtime/smart_note_intent_router.py"
+      - ".naya/runtime/test_smart_note_intent_router.py"
+      - ".github/workflows/p0-smart-note-intent-regression.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reproduce and guard conversational Smart Note intent
+        run: python -B .naya/runtime/test_smart_note_intent_router.py
