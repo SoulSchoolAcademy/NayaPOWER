@@ -710,16 +710,16 @@ Next Review: After each contract completion
 
 ---
 
-## CONTRACT 00 V2 GOVERNANCE GATE
+## CONTRACT 00 V3 GOVERNANCE GATE
 
-As of this registry version, CC-000 V2 is the constitutional specification candidate and **must not be treated as operationally ratified merely because its Markdown exists**.
+As of this registry version, CC-000 V3 is the constitutional specification candidate and **must not be treated as operationally ratified merely because its Markdown exists**.
 
 The ratified 1.0 baseline remains the governing baseline until the V2 acceptance gates pass and the Human Director explicitly ratifies V2.
 
 The following are mandatory before Contracts 01–10 may declare themselves fully governed:
 
 1. Constitutional identity conflict resolved and registry-mapped.
-2. Contract 00 V2 schema validated.
+2. Contract 00 V3 schema validated.
 3. Deterministic decision procedure validated.
 4. Enforcement registry present and every critical rule classified.
 5. Constitutional self-governance tests pass, including mutation coverage where applicable.
@@ -728,3 +728,45 @@ The following are mandatory before Contracts 01–10 may declare themselves full
 8. No specialized contract claims a stronger governance status than its evidence supports.
 
 Until then, downstream contracts remain developable but governance status is limited to the evidence actually established.
+
+
+---
+
+## CONTRACT 00 V3 CONSTITUTIONAL RELEASE GATE
+
+CC-000 V3 is the candidate constitutional law for the next Contract Wave.
+
+**Ratification state: CANDIDATE.**
+
+V3 cannot be treated as ratified or active until all mandatory constitutional gates pass and the Human Director explicitly ratifies the exact version/commit.
+
+### Mandatory gates
+
+1. Constitutional specification is complete for its boundary.
+2. Exactly one in-force constitutional authority is canonical.
+3. Every constitutional claimant is mapped or explicitly non-authoritative.
+4. Contract 00 machine artifacts agree with the normative law.
+5. The deterministic decision procedure is complete and fail-closed.
+6. Critical rules have enforcement classifications backed by real evidence.
+7. Contract 00 self-governance and mutation tests pass.
+8. Cold-Naya boot reachability and comprehension are proven.
+9. Claimed runtime enforcement is proven at the runtime boundary.
+10. Production claims are supported by production evidence where applicable.
+
+**No machine gate, CI result, merge, deployment, or AI declaration may substitute for Human Director ratification.**
+
+### Constitutional claimant condition
+
+Before V3 ratification:
+
+**unmapped in-force constitutional claimants MUST = 0**
+
+and
+
+**in-force canonical constitutional Contract 00 identities MUST = 1**
+
+This gate intentionally does not decide which disputed claimant is correct. The authorized constitutional decision must establish the disposition of each claimant and record the decision.
+
+### Downstream wave gate
+
+Contracts 01–04 may be developed, but they MUST NOT claim full governance until CC-000 V3 passes its required gates and is ratified/activated through the authorized process.
