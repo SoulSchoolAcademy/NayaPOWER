@@ -1,0 +1,134 @@
+name: Project Canonical Smart Note
+
+on:
+  workflow_dispatch:
+    inputs:
+      transaction_id:
+        description: "Canonical v7 Smart Note transaction UUID"
+        required: true
+        type: string
+      approval:
+        description: "Explicit projection approval"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    environment: assistant-canonical-projection
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      TRANSACTION_ID: ${{ inputs.transaction_id }}
+      APPROVAL: ${{ inputs.approval }}
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+
+      - name: Require explicit projection approval
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$APPROVAL" = "EXPLICIT_PROJECTION_APPROVAL_GRANTED"
+
+      - name: Fetch canonical receiver transaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, urllib.request
+          url = os.environ["SUPABASE_URL"] + "/rest/v1/v7_smart_note_transactions"
+          query = "?id=eq." + urllib.parse.quote(os.environ["TRANSACTION_ID"]) + "&select=*"
+          req = urllib.request.Request(
+              url + query,
+              headers={
+                  "apikey": os.environ["SUPABASE_SERVICE_ROLE_KEY"],
+                  "Authorization": "Bearer " + os.environ["SUPABASE_SERVICE_ROLE_KEY"],
+                  "Accept": "application/json",
+              },
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              rows = json.load(response)
+          if len(rows) != 1:
+              raise SystemExit(f"EXPECTED_ONE_CANONICAL_TRANSACTION_GOT_{len(rows)}")
+          row = rows[0]
+          if row.get("status") != "completed":
+              raise SystemExit(f"CANONICAL_TRANSACTION_NOT_COMPLETED:{row.get('status')}")
+          block = row.get("intelligent_block") or {}
+          identity = block.get("identity") or {}
+          ib = identity.get("intelligent_block_id")
+          if not isinstance(ib, str) or not ib.startswith("IB-"):
+              raise SystemExit("RECEIVER_ISSUED_IB_ID_MISSING")
+          if row.get("id") != os.environ["TRANSACTION_ID"]:
+              raise SystemExit("TRANSACTION_ID_BINDING_FAILED")
+          with open("canonical-receiver-transaction.json", "w", encoding="utf-8") as f:
+              json.dump(row, f, ensure_ascii=False, sort_keys=True, indent=2)
+          print(json.dumps({"transaction_id": row["id"], "ib": ib}))
+          PY
+
+      - name: Render deterministic projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/project_canonical_smart_note.py canonical-receiver-transaction.json --output projected-smart-note.md
+          cat projected-smart-note.md
+
+      - name: Resolve canonical projection path
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import importlib.util, json
+          spec=importlib.util.spec_from_file_location("projection","scripts/project_canonical_smart_note.py")
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          tx=json.load(open("canonical-receiver-transaction.json",encoding="utf-8"))
+          path=m.canonical_path(tx)
+          path.parent.mkdir(parents=True,exist_ok=True)
+          open("projection-path.txt","w",encoding="utf-8").write(str(path))
+          print(path)
+          PY
+
+      - name: Fail closed on existing projection drift
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET="$(cat projection-path.txt)"
+          if test -f "$TARGET"; then
+            cmp -s "$TARGET" projected-smart-note.md || {
+              echo "SMART_NOTE_PROJECTION_DRIFT"
+              sha256sum "$TARGET" projected-smart-note.md
+              exit 1
+            }
+            echo "SMART_NOTE_PROJECTION_ALREADY_BYTE_IDENTICAL=PASS"
+            exit 0
+          fi
+          cp projected-smart-note.md "$TARGET"
+
+      - name: Commit deterministic projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- "$(<projection-path.txt)"; then
+            echo "SMART_NOTE_PROJECTION_COMMIT=NOT_REQUIRED"
+            exit 0
+          fi
+          git config user.name "NayaPOWER Canonical Projection"
+          git config user.email "naya-power-canonical-projection@users.noreply.github.com"
+          git add "$(<projection-path.txt)"
+          git commit -m "Project canonical Smart Note from receiver transaction"
+          git push origin HEAD:main
+
+      - name: Byte-for-byte verification from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout --detach origin/main
+          TARGET="$(cat projection-path.txt)"
+          cmp -s "$TARGET" projected-smart-note.md
+          sha256sum "$TARGET" projected-smart-note.md
+          echo "SMART_NOTE_PROJECTION_BYTE_IDENTICAL=PASS"
