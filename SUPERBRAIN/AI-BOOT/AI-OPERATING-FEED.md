@@ -223,3 +223,53 @@ This is the shared operational handoff stream for every AI/session entering the 
 **Next action:** Continue the personal Superbrain hardening sequence: green post-repair CI → duplicate/entity resolution → true semantic/vector retrieval → automated CIS → then implement the secure federation bridge.
 
 ---
+
+
+---
+
+# 🔱 2026-09-26 — NayaNET Constitutional Contract Law Established for Ratification
+
+**Type:** GOVERNANCE / CONTRACT LAW  
+**Status:** PROPOSED — awaiting human-director ratification  
+**Canonical contract:** `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md`  
+**Contract library:** `.naya/contracts/README.md`
+
+## What happened
+
+The former 10-contract scaffold is being replaced as the final organizing model by a Contract Law Library governed by a constitutional master law. Contract boundaries will be discovered from actual responsibilities rather than forced into a predetermined count.
+
+## Why it matters
+
+This law is intended to prevent AI drift by defining one mission, authority hierarchy, truth model, source-of-truth model, contract ontology, anti-drift controls, evidence rules, continuity requirements, and rules for creating, interpreting, conflicting, changing, and enforcing contracts.
+
+## Mandatory AI behavior
+
+Every Naya performing substantive work MUST read the Constitutional Contract Law, then the Contract Library index, then every applicable active specialized contract before acting on a governed boundary.
+
+Core rules include:
+
+- When the law is clear, follow it.
+- When the law is silent, do not guess.
+- When authorities conflict, stop and reconcile.
+- When authority is missing, do not act.
+- When evidence is missing, say UNKNOWN.
+- Capability does not create authority.
+- Implemented does not equal verified.
+- Verified does not equal production-proven.
+- Projections do not become canonical merely because they are convenient.
+- Durable intelligence uses the governed canonical path.
+- The next Naya must inherit understanding, not a document pile.
+
+## Current state
+
+Contract 00 has been drafted and placed in the new library structure on a ratification branch. The specialized contract tree is intentionally structural only; specialized contracts will be reconciled and written one at a time.
+
+## Next action
+
+Human-director review/r ratification of Contract 00, followed by source/implementation reconciliation to freeze the true specialized contract boundaries before writing Contract 01.
+
+## Evidence
+
+The repository branch contains the Constitutional Contract Law, Contract Library index, domain structure READMEs, and mandatory boot-path instruction directing Nayas to read Contract 00 first.
+
+**Important:** Repository presence is not behavioral proof. Behavioral cold-Naya compliance remains a separate acceptance boundary.
