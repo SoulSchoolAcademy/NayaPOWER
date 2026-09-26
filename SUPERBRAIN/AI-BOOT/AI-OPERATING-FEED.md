@@ -266,7 +266,7 @@ Contract 00 has been drafted and placed in the new library structure on a ratifi
 
 ## Next action
 
-Human-director review/r ratification of Contract 00, followed by source/implementation reconciliation to freeze the true specialized contract boundaries before writing Contract 01.
+Human-director review/ratification of Contract 00, followed by source/implementation reconciliation to freeze the true specialized contract boundaries before writing Contract 01.
 
 ## Evidence
 
