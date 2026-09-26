@@ -150,6 +150,24 @@ def run():
         observed_ib="IB-001019",
     ) is False
 
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/other.md",
+        observed_ref="main",
+        observed_ib="IB-001019",
+    ) is False
+
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        observed_ref="main",
+        observed_ib="IB-001020",
+    ) is False
+
     print("INT-001 acceptance tests passed + adversarial D/F/receiver-link cases")
 
 
