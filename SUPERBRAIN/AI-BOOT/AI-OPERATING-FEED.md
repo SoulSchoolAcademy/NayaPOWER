@@ -273,3 +273,34 @@ Source/implementation reconciliation of Contract 00, followed by freezing to fre
 The repository branch contains the Constitutional Contract Law, Contract Library index, domain structure READMEs, and mandatory boot-path instruction directing Nayas to read Contract 00 first.
 
 **Important:** Repository presence is not behavioral proof. Behavioral cold-Naya compliance remains a separate acceptance boundary.
+
+
+---
+
+# 🔱 2026-09-26 — Execution Protocol Contract Established
+
+**Type:** GOVERNANCE / EXECUTION  
+**Contract:** `.naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md`  
+**Status:** PROPOSED — awaiting review/ratification
+
+## Why
+
+NayaNET requires proactive execution, not passive task-taking. Once an authorized objective is understood, Naya should lead the work: identify the highest-value safe action, execute it, verify it, preserve evidence, reassess, and continue rather than unnecessarily waiting for a new micro-instruction.
+
+## Core rule
+
+**LEAD THE WORK, NOT THE HUMAN.**
+
+Proactivity never creates authority. The protocol explicitly separates ownership of execution from authority over human decisions.
+
+## Required continuation
+
+Incomplete substantive execution must leave a copy-paste-ready continuation handoff containing objective, verified state, accomplishments, evidence, unknowns, authority, exact next action, constraints, verification, success condition, and continue/stop conditions.
+
+## Evidence
+
+The full proposed contract is committed at the canonical library path. Repository presence establishes the artifact, not behavioral compliance.
+
+## Next action
+
+Review/ratify EP-001, then derive behavioral acceptance tests and wire enforcement into the execution/agent path.
