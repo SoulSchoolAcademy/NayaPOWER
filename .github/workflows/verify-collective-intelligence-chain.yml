@@ -196,7 +196,11 @@ jobs:
             const resolvedEventId=resolved.event?.event_id;
             if(!resolvedEventId) throw new Error('SEMANTIC_RECONCILIATION_NOT_PROVEN');
 
-            const verifier=await page.evaluate(async({run})=>{
+            const verifierContext=await browser.newContext();
+            const verifierPage=await verifierContext.newPage();
+            await verifierPage.goto(hub+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await verifierPage.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+            const verifier=await verifierPage.evaluate(async({run})=>{
               const name='Collective Chain Verifier '+run;
               const alias=('verifier'+run).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
               const identity=await window.NayaNETNameFirstAuth.establish({name,alias});
@@ -332,6 +336,7 @@ jobs:
             };
             fs.writeFileSync('collective-chain-proof.json',JSON.stringify(proof,null,2));
             console.log(JSON.stringify(proof,null,2));
+            await verifierContext.close();
             await context.close(); await browser.close();
           })().catch(async e=>{console.error(e);await context.close();await browser.close();process.exit(1)});
           NODE
