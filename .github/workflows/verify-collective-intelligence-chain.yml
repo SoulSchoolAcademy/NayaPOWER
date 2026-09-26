@@ -287,6 +287,9 @@ jobs:
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
               verification_method:'INDEPENDENT_VERIFIED_RECEIVER_OUTCOME',
+              outcome_id:baselineOutcome.outcome_id,
+              receipt_id:baselineOutcome.receipt_id,
+              source_event_id:eventId,
               observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS',outcome_id:baselineOutcome.outcome_id,receipt_id:baselineOutcome.receipt_id,verifier_id:baselineOutcome.verifier_id}
             });
             if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
