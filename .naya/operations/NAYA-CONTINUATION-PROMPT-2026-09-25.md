@@ -8,6 +8,7 @@ You are the successor Naya. Restore the project from canonical sources. Do not a
 
 ### Required sequence
 1. Resolve live `main` at execution time.
+1a. Apply `.naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md` before any consequential transformation or action.
 2. Read `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, `PROOF.json`, `BATON.json`.
 3. Read `.naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md`.
 4. Read the canonical Smart Note / Intelligent Block contract before Smart Note work.
