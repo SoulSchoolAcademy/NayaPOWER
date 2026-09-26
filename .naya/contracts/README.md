@@ -44,6 +44,15 @@ For system-wide contract-library work, the Naya SHOULD read **all active contrac
 
 These are discovery candidates, not yet ratified specialized contracts. The final number MUST emerge from actual boundaries after reconciliation with current documentation, implementation, runtime, and user experience.
 
+## Contract-adjacent machine schemas
+
+Machine-readable schemas may live under `.naya/contracts/schemas/` when they define a candidate or active governed interface.
+
+Current candidate:
+- `.naya/contracts/schemas/NAYA-NODE-SEMANTIC-ENVELOPE-V1.schema.json` — candidate semantic envelope for Naya Node identity, intent, provenance, truth, authority, privacy, value, lifecycle, relationships, evidence, application, and learning.
+
+A machine schema is not self-ratifying authority. It remains subordinate to the applicable contracts and registry until formally adopted.
+
 ## Contract design rule
 
 A capability gets its own contract when it has a materially distinct combination of purpose, responsibility, authority, lifecycle, interface, failure behavior, or acceptance behavior.
