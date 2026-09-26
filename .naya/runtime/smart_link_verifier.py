@@ -19,7 +19,7 @@ REQUIRED_SMART_NOTE_SECTIONS = (
 
 def validate_smart_note_structure(content: str) -> tuple[bool, list[str]]:
     """Validate the required 15-section order without changing IB identity."""
-    headings = re.findall(r"^##\\s+(.+?)\\s*$", content, flags=re.MULTILINE)
+    headings = re.findall(r"^##\s+(.+?)\s*$", content, flags=re.MULTILINE)
     errors = []
     cursor = -1
     for section in REQUIRED_SMART_NOTE_SECTIONS:
