@@ -163,7 +163,54 @@ The deterministic observation helper was independently exercised against real-ca
 ### Test-execution boundary
 No repository test runner/Codex environment was available, and `fetch_commit_workflow_runs` exposed no workflow run for the PR head. Therefore this receipt makes **no claim that the checked-in test file itself was executed by CI**. The deterministic helper behavior was independently executed with a separate implementation, and the remote GitHub observations above were directly fetched from the repository.
 
+### Receiver → Smart Note → Smart Link correspondence wave — completed
+
+### Plain-English purpose
+This wave proves the complete identity/provenance join at the authoritative live receiver boundary. The question was no longer whether a GitHub file exists; it was whether that exact projection can be traced back to the receiver-issued IB and its canonical source event without the repository projection becoming a second authority.
+
+### Authoritative live evidence
+The live Supabase canonical Intelligent Block store was queried for IB-001019, IB-001024, and IB-001061. Each returned:
+- an immutable `intelligent_block_id`;
+- a `source_event_id`;
+- `created_from = v7_create_smart_note`;
+- `canonical_event_id` equal to the source event;
+- a Smart Note receipt ID;
+- provenance source `smart_note`.
+
+The live cognition-event store was then queried by those source event IDs. All three events exist with `type = smart_note`, `source = smart_note_events`, and `status = verified`.
+
+### Representative complete joins
+- IB-001019 → source event `cc7f879b-35d8-43de-adbd-d5708f41c894` → receiver `v7-smart-note-canonical` → canonical path `.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md` → GitHub Smart Link on `main`.
+- IB-001024 → source event `c0e55844-304c-4f25-92bb-a01c585081d8` → receiver `v7-smart-note-canonical` → canonical path `.naya/memory/smart-notes/2026/09/25/system/canonical-memory-organization/IB-001024/smart-note.md` → GitHub Smart Link on `main`.
+- IB-001061 → source event `62c2435f-4de2-4a63-9092-cdb39b034e2d` → receiver `v7-smart-note-canonical` → canonical path `.naya/memory/smart-notes/2026/09/25/system/nayapower-daily-scorecard/IB-001061/smart-note.md` → GitHub Smart Link on `main`.
+
+The three corresponding Smart Notes were fetched from GitHub and each contains the matching IB and source-event identity; each also contains the canonical receiver identity.
+
+### Deterministic acceptance
+Added `verify_receiver_projection_join()` requiring agreement across:
+receiver-issued IB → source event → canonical receiver → canonical path/ref → exact Smart Link → observed projection identity.
+
+Adversarial semantic checks independently exercised:
+- correct real case → TRUE;
+- wrong receiver → FALSE;
+- wrong source event → FALSE;
+- wrong IB → FALSE;
+- wrong canonical path → FALSE.
+
+### Implementation evidence
+- PR #779 merged to `main`: `0ab0661aea5b1e8bc5a0bce05c65be0d9bbb942a`.
+- Runtime verifier now contains `verify_receiver_projection_join()`.
+- Acceptance test now contains real representative and four adversarial mismatch cases.
+
+### Execution truth
+The authoritative live receiver/database evidence was directly queried and independently reconciled. The semantic acceptance behavior was independently executed in a separate JavaScript verification, not by the checked-in Python test runner. No CI/full-suite execution is claimed because no runnable repository/Codex environment or applicable workflow result was available.
+
 ### Reassessment
+The receiver-to-projection correspondence boundary is now evidenced end-to-end for three real Smart Notes at the live data boundary and guarded by deterministic acceptance logic. This materially closes M10's prior gap.
+
+INT-001 is still PROPOSED and not ready for human ratification. Remaining technical boundaries are now concentrated around cold-Naya behavioral acceptance, broader anti-pattern coverage, natural production PENDING evidence, and the unobserved repository test/CI execution boundary.
+
+## Reassessment
 Remote Smart Link target resolution is now technically evidenced for three real representative artifacts and adversarially rejected for wrong ref/path/identity observations. This removes the prior remote-resolution gap at the observed repository boundary.
 
 Cold-Naya behavioral acceptance is **still not proven**, so INT-001 is not ready for human ratification. Other remaining questions are receiver/API correspondence at the live boundary, natural production PENDING evidence, and any remaining adversarial acceptance coverage.
