@@ -65,6 +65,44 @@ jobs:
             return established.session;
           }
 
+          async function issueCommitAuthority(session){
+            const sourceId='collective-chain-authority-source-'+run;
+            const source=await compound(session,'understand',{
+              idempotency_key:sourceId,
+              title:'Collective Chain authority source '+run,
+              content:'Fresh proof owner created an owned source event before issuing intelligence_commit authority.',
+              category:'AUTHORITY',
+              topic:'COLLECTIVE_CHAIN_PROOF',
+              tags:['authority','collective-chain','proof'],
+              applicable_scope:'NayaNET project continuation',
+              authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              what_changed:'Created the owned source event required to issue a bounded proof grant.',
+              next_use:'Issue the minimum scoped intelligence_commit grant for this proof run.'
+            });
+            const sourceEventId=source.event?.event_id;
+            if(!sourceEventId) throw new Error('AUTHORITY_SOURCE_EVENT_MISSING');
+            const grant=await page.evaluate(async({sourceEventId,run})=>{
+              const client=window.__NayaNETSupabaseClient;
+              const session=(await client.auth.getSession()).data.session;
+              const expires=new Date(Date.now()+10*60*1000).toISOString();
+              const {data,error}=await client.rpc('nayanet_issue_authority_grant',{
+                p_subject_id:session.user.id,
+                p_source_event_id:sourceEventId,
+                p_mission_id:'NayaNET collective intelligence chain proof',
+                p_scope:{project_id:'NayaNET',target:'NayaNET'},
+                p_actions:['intelligence_commit'],
+                p_constraints:{proof_run:run,no_external_side_effects:true},
+                p_expires_at:expires,
+                p_evidence:{proof_run:run,source_event_id:sourceEventId}
+              });
+              if(error) throw error;
+              return data;
+            },{sourceEventId,run});
+            const grantId=grant?.grant_id;
+            if(!grantId) throw new Error('AUTHORITY_GRANT_ISSUANCE_FAILED');
+            return grantId;
+          }
+
           async function compound(session,action,extra={}){
             const idempotency_key='cc-'+run+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
             const response=await fetch(url+'/functions/v1/nayanet-compound-intelligence',{
@@ -101,9 +139,11 @@ jobs:
 
           (async()=>{
             const session=await setupIdentity();
+            const authorityGrantId=await issueCommitAuthority(session);
 
             const captured=await compound(session,'intelligence_commit',{
               idempotency_key:lessonId,
+              authority_grant_id:authorityGrantId,
               title:lessonTitle,
               content:lesson,
               category:'COLLECTIVE_INTELLIGENCE',
@@ -113,6 +153,7 @@ jobs:
               target_id:targetId,
               applicable_scope:'NayaNET project continuation',
               authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              execution_authorization:{authority_id:authorityGrantId,actor_id:session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               what_changed:'A verified continuation lesson was captured for later cold retrieval.',
               next_use:'Use when restoring project state before consequential continuation.',
               unknown:['Real-world usefulness outside the tested project scope remains unproven.']
