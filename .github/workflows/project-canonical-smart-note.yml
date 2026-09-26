@@ -112,13 +112,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- "$(<projection-path.txt)"; then
-            echo "SMART_NOTE_PROJECTION_COMMIT=NOT_REQUIRED"
-            exit 0
+          TARGET="$(cat projection-path.txt)"
+          # A newly generated canonical projection is initially untracked. git diff alone cannot see it.
+          # Existing tracked projections must already be byte-identical; any tracked drift remains fail-closed.
+          if git ls-files --error-unmatch "$TARGET" >/dev/null 2>&1; then
+            cmp -s "$TARGET" projected-smart-note.md || {
+              echo "SMART_NOTE_PROJECTION_DRIFT"
+              sha256sum "$TARGET" projected-smart-note.md
+              exit 1
+            }
           fi
           git config user.name "NayaPOWER Canonical Projection"
           git config user.email "naya-power-canonical-projection@users.noreply.github.com"
-          git add "$(<projection-path.txt)"
+          git add "$TARGET"
+          if git diff --cached --quiet -- "$TARGET"; then
+            echo "SMART_NOTE_PROJECTION_COMMIT=NOT_REQUIRED"
+            exit 0
+          fi
           git commit -m "Project canonical Smart Note from receiver transaction"
           git push origin HEAD:main
 
@@ -127,8 +137,16 @@ jobs:
         run: |
           set -euo pipefail
           git fetch origin main
-          git checkout --detach origin/main
           TARGET="$(cat projection-path.txt)"
-          cmp -s "$TARGET" projected-smart-note.md
-          sha256sum "$TARGET" projected-smart-note.md
+          git cat-file -e "origin/main:$TARGET" || {
+            echo "SMART_NOTE_PROJECTION_NOT_COMMITTED"
+            exit 1
+          }
+          git show "origin/main:$TARGET" > committed-smart-note.md
+          cmp -s committed-smart-note.md projected-smart-note.md || {
+            echo "SMART_NOTE_PROJECTION_BYTE_DRIFT_FROM_MAIN"
+            sha256sum committed-smart-note.md projected-smart-note.md
+            exit 1
+          }
+          sha256sum committed-smart-note.md projected-smart-note.md
           echo "SMART_NOTE_PROJECTION_BYTE_IDENTICAL=PASS"
