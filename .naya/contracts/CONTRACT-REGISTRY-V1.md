@@ -460,3 +460,27 @@ Both normative Markdown artifacts agree: **Smart Link means only the direct GitH
 **Next P0 action:** audit all repository references to `SMART-LINK-CONTRACT.json` and its `target_type` values; then, if no distinct canonical generic-link owner exists, narrow the schema to `smart_note` and preserve ledger/value/collective links under their own nouns/schemas rather than calling them Smart Links.
 
 **EP-001 hardening receipt:** EP-001 now contains an explicit normative ownership boundary and acceptance tests; status remains PROPOSED because hardening does not equal ratification/verification.
+
+
+## SMART-LINK-REFERENCE-AUDIT-001 — RECEIPT
+
+**Date:** 2026-09-26
+**Result:** REFERENCE AUDIT LIMITED BY GITHUB CODE-SEARCH INDEX RESPONSE; SCHEMA NOT MODIFIED
+
+### Findings
+
+- The repository contains `.naya/contracts/SMART-LINK-CONTRACT.json` with a broad `target_type` enum.
+- The repository also contains dedicated canonical machine schemas for `ledger_event` (`SMART-LEDGER-EVENT-SCHEMA.json`) and `value_event` (`VALUE-EVENT-SCHEMA.json`).
+- The inspected PIS contract separately models primary intelligence events and does not establish `collective_intelligence` as a Smart Link semantic.
+- GitHub code-search queries for the schema filename and each target type returned no indexed matches. This is **not sufficient evidence of zero dependencies**, because the connected search surface returned no indexed code matches even for known repository artifacts. Therefore live/historical/test/unused classification cannot safely be asserted from this search result alone.
+- No schema narrowing was performed. This preserves compatibility and avoids guessing.
+
+### Disposition
+
+`SMART-LINK-CONTRACT.json` remains **CONFLICTED / MACHINE SCHEMA / NARROW-MERGE CANDIDATE**. Dedicated ledger and value-event schemas exist, supporting separation of those nouns. `collective_intelligence` still lacks a verified distinct Smart Link consumer/owner in the inspected evidence.
+
+### Next authorized P0
+
+Use repository-tree/commit/diff inspection or another authoritative reference mechanism to establish all dependencies of `SMART-LINK-CONTRACT.json` and its enum values. Only after that evidence is complete may the schema be narrowed or retired. Constitutional authority remains untouched.
+
+**Acceptance:** no Smart Link schema mutation without dependency evidence; no competing Smart Link noun; unresolved dependency search limitation remains explicitly UNKNOWN rather than PASS.
