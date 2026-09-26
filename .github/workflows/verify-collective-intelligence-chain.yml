@@ -238,9 +238,9 @@ jobs:
             if(decisionBefore.decision.authority?.changed!==false||decisionBefore.decision.authority?.granted!==false) throw new Error('AUTHORITY_CHANGED');
 
             const outcomeToken='NAYA-COLLECTIVE-OUTCOME-'+run;
-            const outcomeMessage=await page.evaluate(async({verifierId,body,grantId})=>{
+            const outcomeMessage=await page.evaluate(async({verifierId,body,grantId,url,key})=>{
               const client=window.__NayaNETSupabaseClient; const s=(await client.auth.getSession()).data.session;
-              const res=await fetch('/functions/v1/nayanet-smart-mail'.replace(/^\\//,window.location.origin+'/functions/v1/'),{method:'POST',headers:{authorization:'Bearer '+s.access_token,apikey:client.supabaseKey||'', 'content-type':'application/json'},body:JSON.stringify({recipient_user_id:verifierId,body,subject:'Collective Chain independent outcome',kind:'direct',idempotency_key:'cc-outcome-'+Date.now(),project_id:'NayaNET',authority_grant_id:grantId})});
+              const res=await fetch(url+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:{authorization:'Bearer '+s.access_token,apikey:key,'content-type':'application/json'},body:JSON.stringify({recipient_user_id:verifierId,body,subject:'Collective Chain independent outcome',kind:'direct',idempotency_key:'cc-outcome-'+Date.now(),project_id:'NayaNET',authority_grant_id:grantId})});
               const data=await res.json(); if(!res.ok||!data.ok) throw new Error('OUTCOME_MESSAGE_SEND_FAILED:'+JSON.stringify(data)); return data;
             },{verifierId:verifierSession.userId,body:'Return exactly '+outcomeToken+' when this controlled proof message is received.',grantId:smartMailGrantId});
             const outcomeMessageId=outcomeMessage.message_id, outcomeReceiptId=outcomeMessage.execution_receipt_id;
@@ -252,7 +252,7 @@ jobs:
               const body=message.body.includes(token)?token:'NO_MATCH';
               const {data:reply,error:replyError}=await client.from('v7_mail_messages').insert({thread_id:message.thread_id,sender_id:(await client.auth.getSession()).data.session.user.id,body,metadata:{schema_version:'NAYANET_COLLECTIVE_CHAIN_OUTCOME_V1',reply_to_message_id:message.id,receiver_fixture:'controlled_exact_token_v1'}}).select('id').single();
               if(replyError||!reply?.id) throw replyError||new Error('VERIFIER_REPLY_CREATE_FAILED');
-              const expectedHash=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token))).toString('hex');
+              const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token)); const expectedHash=Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,'0')).join('');
               const {data:outcome,error:outcomeError}=await client.rpc('nayanet_record_smart_mail_response_outcome',{p_receipt_id:message.execution_receipt_id,p_message_id:message.id,p_reply_message_id:reply.id,p_expected_reply_hash:expectedHash});
               if(outcomeError||outcome?.status!=='VERIFIED') throw outcomeError||new Error('INDEPENDENT_OUTCOME_RECORD_FAILED:'+JSON.stringify(outcome));
               return {reply,outcome};
