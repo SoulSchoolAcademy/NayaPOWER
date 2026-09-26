@@ -205,10 +205,23 @@ Adversarial semantic checks independently exercised:
 ### Execution truth
 The authoritative live receiver/database evidence was directly queried and independently reconciled. The semantic acceptance behavior was independently executed in a separate JavaScript verification, not by the checked-in Python test runner. No CI/full-suite execution is claimed because no runnable repository/Codex environment or applicable workflow result was available.
 
-### Reassessment
+### Verifier-level anti-pattern wave — completed
+
+Added acceptance coverage for the remaining failure modes that belong inside the Smart Link verifier boundary:
+- Hub Deep Link is not Smart Link;
+- Evidence Link is not Smart Link;
+- fabricated/noncanonical target does not become VERIFIED;
+- receiver persistence without repository projection remains PENDING;
+- no receiver evidence remains UNKNOWN.
+
+PR #780 merged to `main` as `6b8db5a74aa0389521081bcd5db830530fc7a114`.
+
+This does not claim to prove system-level duplicate prevention, privacy/publication policy, or full creation-path behavior; those remain outside this verifier-only acceptance boundary and require their authoritative systems.
+
+## Reassessment
 The receiver-to-projection correspondence boundary is now evidenced end-to-end for three real Smart Notes at the live data boundary and guarded by deterministic acceptance logic. This materially closes M10's prior gap.
 
-INT-001 is still PROPOSED and not ready for human ratification. Remaining technical boundaries are now concentrated around cold-Naya behavioral acceptance, broader anti-pattern coverage, natural production PENDING evidence, and the unobserved repository test/CI execution boundary.
+INT-001 is still PROPOSED and not ready for human ratification. Remaining technical boundaries are now concentrated around cold-Naya behavioral acceptance, natural production PENDING evidence, and the unobserved repository test/CI execution boundary. System-level duplicate prevention, privacy/publication enforcement, and complete creation-path auditing remain governed by their respective authoritative boundaries rather than being fabricated into INT-001 verifier scope.
 
 ## Reassessment
 Remote Smart Link target resolution is now technically evidenced for three real representative artifacts and adversarially rejected for wrong ref/path/identity observations. This removes the prior remote-resolution gap at the observed repository boundary.
