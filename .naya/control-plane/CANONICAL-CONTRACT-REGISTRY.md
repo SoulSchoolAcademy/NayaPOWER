@@ -1,7 +1,7 @@
 # CANONICAL CONTRACT REGISTRY
 
 **Status:** LIVE  
-**Version:** 1.0  
+**Version:** 1.1-V2-GOVERNANCE-CANDIDATE  
 **Authority:** NayaPOWER Control Plane  
 **Purpose:** Map every contract in the NayaPOWER contract stack to its canonical source, authority, dependencies, and current status. This registry is the single navigational home for the contract system.
 
@@ -35,16 +35,16 @@ Each entry maps:
 | **Contract ID** | CC-000 |
 | **Canonical Name** | NayaNET Constitutional Contract Law |
 | **Purpose** | Supreme governing contract law from which all subsequent NayaNET contracts derive their operating discipline |
-| **Authority** | Human-director constitutional authority (ratified 2026-09-26) |
+| **Authority** | Human-director constitutional authority; ratified 1.0 baseline remains in force while V2 is reviewed |
 | **Source** | `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md` |
-| **Dependencies** | None (top of hierarchy) |
-| **Inputs** | Human authority, platform/safety/legal constraints |
-| **Outputs** | 8-level precedence hierarchy, truth model, anti-drift law, conflict protocol, creation law |
-| **Invariants** | CAPABILITY DOES NOT CREATE AUTHORITY; UNKNOWN ≠ PASS; ONE SYSTEM ONE LAW; Receiver-centric durable intelligence; Privacy by default |
-| **Acceptance** | 20 adversarial acceptance questions (Section 33); 10 operational conditions (Section 32) |
-| **Status** | **PARTIAL** — Comprehensive framework but downstream artifacts (library index, boot path, acceptance tests) not yet fully realized |
-| **Conflicts** | None (supreme authority) |
-| **Gaps** | No formal acceptance tests; no machine-readable schema; no receipt format; no state machine for the constitution itself |
+| **Dependencies** | None as normative law; machine governance depends on schema, registry, enforcement registry, decision procedure, and acceptance suite |
+| **Inputs** | Human authority, platform/safety/legal constraints, live control-plane state |
+| **Outputs** | Constitutional law, deterministic decision procedure, action classes, enforcement model, cold-Naya reachability requirements |
+| **Invariants** | CAPABILITY DOES NOT CREATE AUTHORITY; UNKNOWN ≠ PASS; ONE SYSTEM ONE LAW; Receiver-centric durable intelligence; Privacy by default; claim strength MUST NOT exceed evidence |
+| **Acceptance** | V2 self-governance suite, machine-schema validation, enforcement registry, boot reachability, cold-Naya tests, runtime/production evidence |
+| **Status** | **CANDIDATE** — V2 specification and machine governance artifacts added; operational ratification is blocked pending self-governance and reachability evidence |
+| **Conflicts** | Constitutional identity/authority audit remains **CONFLICTED** until all self-declared constitutional artifacts are mapped and supersession is explicit |
+| **Gaps** | Cold-Naya boot enforcement, executable self-governance suite, runtime enforcement receipts, final constitutional supersession decision |
 
 ---
 
@@ -55,7 +55,7 @@ Each entry maps:
 | **Contract ID** | CC-001 |
 | **Canonical Name** | Contract Stack Operating Law V1 |
 | **Purpose** | Meta-governance framework ensuring all contracts are treated as binding subsystem law |
-| **Authority** | CC-000 (Constitutional Contract Law) |
+| **Authority** | CC-000 (Constitutional Contract Law; V2 candidate under review) |
 | **Source** | `.naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md` |
 | **Dependencies** | CC-000 |
 | **Inputs** | All contracts in `.naya/contracts/` |
@@ -706,3 +706,67 @@ CC-000 (Constitutional Law)
 CANONICAL-CONTRACT-REGISTRY-V1
 Status: ACTIVE
 Next Review: After each contract completion
+
+
+---
+
+## CONTRACT 00 V3 GOVERNANCE GATE
+
+As of this registry version, CC-000 V3 is the constitutional specification candidate and **must not be treated as operationally ratified merely because its Markdown exists**.
+
+The ratified 1.0 baseline remains the governing baseline until the V2 acceptance gates pass and the Human Director explicitly ratifies V2.
+
+The following are mandatory before Contracts 01–10 may declare themselves fully governed:
+
+1. Constitutional identity conflict resolved and registry-mapped.
+2. Contract 00 V3 schema validated.
+3. Deterministic decision procedure validated.
+4. Enforcement registry present and every critical rule classified.
+5. Constitutional self-governance tests pass, including mutation coverage where applicable.
+6. Cold-Naya boot reachability is proven.
+7. Runtime enforcement evidence exists for claims marked ENFORCED.
+8. No specialized contract claims a stronger governance status than its evidence supports.
+
+Until then, downstream contracts remain developable but governance status is limited to the evidence actually established.
+
+
+---
+
+## CONTRACT 00 V3 CONSTITUTIONAL RELEASE GATE
+
+CC-000 V3 is the candidate constitutional law for the next Contract Wave.
+
+**Ratification state: CANDIDATE.**
+
+V3 cannot be treated as ratified or active until all mandatory constitutional gates pass and the Human Director explicitly ratifies the exact version/commit.
+
+### Mandatory gates
+
+1. Constitutional specification is complete for its boundary.
+2. Exactly one in-force constitutional authority is canonical.
+3. Every constitutional claimant is mapped or explicitly non-authoritative.
+4. Contract 00 machine artifacts agree with the normative law.
+5. The deterministic decision procedure is complete and fail-closed.
+6. Critical rules have enforcement classifications backed by real evidence.
+7. Contract 00 self-governance and mutation tests pass.
+8. Cold-Naya boot reachability and comprehension are proven.
+9. Claimed runtime enforcement is proven at the runtime boundary.
+10. Production claims are supported by production evidence where applicable.
+
+**No machine gate, CI result, merge, deployment, or AI declaration may substitute for Human Director ratification.**
+
+### Constitutional claimant condition
+
+Before V3 ratification:
+
+**unmapped in-force constitutional claimants MUST = 0**
+
+and
+
+**in-force canonical constitutional Contract 00 identities MUST = 1**
+
+This gate intentionally does not decide which disputed claimant is correct. The authorized constitutional decision must establish the disposition of each claimant and record the decision.
+
+### Downstream wave gate
+
+Contracts 01–04 may be developed, but they MUST NOT claim full governance until CC-000 V3 passes its required gates and is ratified/activated through the authorized process.

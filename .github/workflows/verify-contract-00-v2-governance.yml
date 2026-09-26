@@ -1,0 +1,37 @@
+name: Verify Contract 00 V3 Governance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md'
+      - '.naya/contracts/CONTRACT-00-ENFORCEMENT-REGISTRY-V3.json'
+      - '.naya/contracts/CONTRACT-00-DECISION-PROCEDURE-V3.json'
+      - '.naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V3.schema.json'
+      - '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+      - '.naya/runtime/test_contract_00_v3_governance.py'
+      - '.github/workflows/verify-contract-00-v2-governance.yml'
+  pull_request:
+    paths:
+      - '.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md'
+      - '.naya/contracts/CONTRACT-00-ENFORCEMENT-REGISTRY-V3.json'
+      - '.naya/contracts/CONTRACT-00-DECISION-PROCEDURE-V3.json'
+      - '.naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V3.schema.json'
+      - '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+      - '.naya/runtime/test_contract_00_v3_governance.py'
+      - '.github/workflows/verify-contract-00-v2-governance.yml'
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+jobs:
+  contract-00-v2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Validate Contract 00 V3 self-governance
+        run: python -B .naya/runtime/test_contract_00_v3_governance.py
+      - name: Run contract-library integrity gate
+        run: python -B .naya/runtime/contract_library_integrity.py

@@ -1,0 +1,18 @@
+{
+  "registry_id": "C00-ENFORCEMENT-V2",
+  "contract_id": "CC-000",
+  "status": "CANDIDATE",
+  "canonical_contract": ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md",
+  "rules": [
+    {"rule_id":"C00-AUTH-001","rule":"Capability does not create authority","enforcement":["REVIEW","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-TRUTH-001","rule":"UNKNOWN is not PASS","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-ANTI-GUESS-001","rule":"Naya must not invent canonical identifiers or authority","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-CONFLICT-001","rule":"Unresolved authority conflict blocks the affected action","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-PROOF-001","rule":"Claim strength must not exceed evidence strength","enforcement":["TEST","REVIEW"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-RECEIVER-001","rule":"Durable intelligence must use the canonical Receiver path","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-BOOT-001","rule":"Constitution must be reachable from cold-Naya boot","enforcement":["TEST"],"status":"UNENFORCED","evidence":null},
+    {"rule_id":"C00-SELF-001","rule":"Contract 00 must test its own governance assumptions","enforcement":["TEST"],"status":"UNENFORCED","evidence":null},
+    {"rule_id":"C00-RATIFY-001","rule":"Implementation or tests do not imply human ratification","enforcement":["TEST","REVIEW"],"status":"PARTIALLY_ENFORCED","evidence":null}
+  ],
+  "status_definitions":["ENFORCED","PARTIALLY_ENFORCED","UNENFORCED","BLOCKED","UNKNOWN","NOT_APPLICABLE"]
+}

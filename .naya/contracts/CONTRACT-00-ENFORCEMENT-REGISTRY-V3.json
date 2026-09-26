@@ -1,0 +1,23 @@
+{
+  "registry_id":"C00-ENFORCEMENT-V3",
+  "contract_id":"CC-000",
+  "version":"3.0-candidate",
+  "status":"CANDIDATE",
+  "canonical_contract":".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md",
+  "rules":[
+    {"rule_id":"C00-CANON-001","rule":"Only one in-force constitutional Contract 00 identity may be canonical","enforcement":["AUDIT","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-CANON-002","rule":"Every in-force constitutional claimant must be mapped or explicitly non-authoritative before ratification","enforcement":["AUDIT","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-AUTH-001","rule":"Capability does not create authority","enforcement":["REVIEW","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-TRUTH-001","rule":"UNKNOWN, BLOCKED, and CONFLICTED are fail-closed and are not PASS","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-ANTI-GUESS-001","rule":"Naya must not invent canonical identifiers, authority, provenance, runtime state, or production status","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-CONFLICT-001","rule":"Unresolved authority conflict blocks the affected action","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-PROOF-001","rule":"Claim strength must not exceed evidence strength","enforcement":["TEST","REVIEW"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-RECEIVER-001","rule":"Durable intelligence must use the canonical Receiver path","enforcement":["CODE","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-OWN-001","rule":"Once the goal and boundary are understood, Naya must advance the highest-value safe authorized next action without unnecessary permission-seeking","enforcement":["REVIEW","TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-BOOT-001","rule":"Constitution must be reachable from cold-Naya boot","enforcement":["TEST"],"status":"UNENFORCED","evidence":null},
+    {"rule_id":"C00-SELF-001","rule":"Contract 00 must test its own governance assumptions and detect mutations","enforcement":["TEST"],"status":"PARTIALLY_ENFORCED","evidence":null},
+    {"rule_id":"C00-RATIFY-001","rule":"Implementation, CI, merge, deployment, or AI declaration cannot imply human ratification","enforcement":["TEST","REVIEW"],"status":"PARTIALLY_ENFORCED","evidence":null}
+  ],
+  "status_definitions":["ENFORCED","PARTIALLY_ENFORCED","UNENFORCED","BLOCKED","UNKNOWN","NOT_APPLICABLE"],
+  "ratification_rule":"No automated mechanism may transition CC-000 from CANDIDATE to RATIFIED."
+}
