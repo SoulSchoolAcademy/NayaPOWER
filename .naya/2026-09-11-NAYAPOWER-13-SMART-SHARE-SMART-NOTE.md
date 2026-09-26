@@ -1,23 +1,23 @@
-# NayaPOWER Smart Note #13 — Smart Share
+# NayaPOWER Smart Note #13 — Smart Connect
 
 **Date:** 2026-09-11  
-**Subject:** Smart Share  
+**Subject:** Smart Connect  
 **System:** NayaPOWER / NayaNET Intelligent Hub  
 **Status:** CANONICAL PRODUCT DEFINITION — runtime implementation and end-to-end behavior remain to be independently verified where noted.
 
 ## 1. IN A NUTSHELL
 
-**Smart Share is NayaNET's collective-intelligence syncing and consent layer.**
+**Smart Connect is NayaNET's collective-intelligence syncing and consent layer.**
 
 It is where a human can explicitly agree to let NayaNET distill valuable wisdom from eligible intelligence they create — especially Smart Notes and Daily Intelligence Reports — and contribute genuinely new, reusable wisdom to the collective intelligence of the network.
 
-Smart Share is not primarily “share this object with this person.” It is the agreement and activation layer that lets an individual superbrain contribute wisdom to the collective superbrain.
+Smart Connect is not primarily “share this object with this person.” It is the agreement and activation layer that lets an individual superbrain contribute wisdom to the collective superbrain.
 
 The core promise is simple:
 
 > **Your life can teach people you will never meet.**
 
-Smart Share makes that possible while preserving the person's privacy and identity boundaries.
+Smart Connect makes that possible while preserving the person's privacy and identity boundaries.
 
 The collective contribution is **not a copy of the user's private Superbrain, Smart Notes, reports, conversations, identity, alias, face, or raw personal history.** It is derived, generalized wisdom that has been intentionally authorized for collective use.
 
@@ -33,7 +33,7 @@ But most of that intelligence disappears with the individual.
 
 Social media can broadcast thoughts, but it does not provide a disciplined system for turning millions of people's lived experience into anonymous, reusable collective wisdom.
 
-Smart Share is designed to change that.
+Smart Connect is designed to change that.
 
 When you choose to participate, NayaNET can take eligible intelligence from your Smart Notes and Daily Intelligence Reports, distill the valuable wisdom, protect your identity, compare it with what the collective already knows, and contribute genuinely new intelligence to the collective.
 
@@ -55,11 +55,11 @@ The clubhouse learns the lesson — not who gave it.
 
 And if the Wisdom Book already knows the lesson, you do not need to write the same thing again.
 
-That is Smart Share.
+That is Smart Connect.
 
 ## 4. GRANDMA
 
-Think of Smart Share as voluntarily putting the best lessons from your life into a giant anonymous library that everyone can benefit from.
+Think of Smart Connect as voluntarily putting the best lessons from your life into a giant anonymous library that everyone can benefit from.
 
 You remain you. Your private life remains private. You decide whether to participate.
 
@@ -71,7 +71,7 @@ It is like saying:
 
 ## 5. NAYA
 
-My job with Smart Share is not to expose you.
+My job with Smart Connect is not to expose you.
 
 My job is to help transform authorized human experience into useful collective intelligence.
 
@@ -96,9 +96,9 @@ The governing principle is:
 
 ## 6. MACHINE
 
-The intended Smart Share flow is:
+The intended Smart Connect flow is:
 
-`PRIVATE SUPERBRAIN → ELIGIBLE SMART NOTES / DAILY INTELLIGENCE REPORTS → EXPLICIT SMART SHARE CONSENT → WISDOM DISTILLATION → IDENTITY / RAW-SOURCE PROTECTION → EXISTING-COLLECTIVE INTELLIGENCE CHECK → NEW? → COLLECTIVE CANDIDATE → VERIFICATION → COLLECTIVE INTELLIGENCE → ACTIVITY FEED / FUTURE RETRIEVAL`
+`PRIVATE SUPERBRAIN → ELIGIBLE SMART NOTES / DAILY INTELLIGENCE REPORTS → EXPLICIT SMART CONNECT CONSENT → WISDOM DISTILLATION → IDENTITY / RAW-SOURCE PROTECTION → EXISTING-COLLECTIVE INTELLIGENCE CHECK → NEW? → COLLECTIVE CANDIDATE → VERIFICATION → COLLECTIVE INTELLIGENCE → ACTIVITY FEED / FUTURE RETRIEVAL`
 
 Decision branch:
 
@@ -112,7 +112,7 @@ The existing Collective Intelligence Event architecture requires `identity_inclu
 
 ## 7. LEARNING
 
-Smart Share creates a compounding intelligence loop:
+Smart Connect creates a compounding intelligence loop:
 
 `INDIVIDUAL EXPERIENCE → SMART NOTE → DAILY INTELLIGENCE REPORT → DISTILLED WISDOM → CONSENT → COLLECTIVE CANDIDATE → EXISTING-INTELLIGENCE CHECK → VERIFICATION → COLLECTIVE INTELLIGENCE → FUTURE RETRIEVAL → APPLICATION → OUTCOME → NEW LEARNING`
 
@@ -128,7 +128,7 @@ The system must never claim “the collective learned” merely because a Smart 
 
 ## 8. ULTIMATE MEANING
 
-Smart Share is one of the mechanisms that can turn NayaNET from a network of individual intelligence systems into a **collective intelligence network**.
+Smart Connect is one of the mechanisms that can turn NayaNET from a network of individual intelligence systems into a **collective intelligence network**.
 
 Imagine millions of people each carrying a lifetime of experiences, discoveries, mistakes, solutions, insights, and wisdom.
 
@@ -142,30 +142,30 @@ That is the deeper purpose.
 
 **Not one person's brain replacing another. Millions of people helping the collective become wiser.**
 
-A powerful human reason for Smart Share is:
+A powerful human reason for Smart Connect is:
 
 > **“I wish people could learn and grow from my life, my experiences, my wisdom, and my knowledge.”**
 
-Smart Share is designed to make that possible at network scale.
+Smart Connect is designed to make that possible at network scale.
 
 ## 9. HOW IT CONNECTS
 
-Smart Share connects directly to:
+Smart Connect connects directly to:
 
 - **Smart Notes** — primary individual intelligence events that can contain lessons and wisdom.
 - **Daily Intelligence Reports** — periodic distillations that can surface higher-level learning.
-- **Your Superbrain** — remains the sovereign individual intelligence system; Smart Share does not mean sharing everything inside it.
+- **Your Superbrain** — remains the sovereign individual intelligence system; Smart Connect does not mean sharing everything inside it.
 - **Collective Intelligence** — receives eligible, distilled, privacy-protected contributions.
 - **Collective Chain Technology** — can provide the downstream structure for verified collective intelligence.
 - **Activity Feed / Smart Feed** — can surface genuinely new collective wisdom and meaningful collective-learning events.
 - **Intelligence Hub** — the individual environment where intelligence is captured, organized, found, and compounded.
-- **Smart Spaces / Your Connections** — separate social and relationship systems; Smart Share is not equivalent to connecting with a person.
-- **Smart Mail** — separate communication system; Smart Share is not an email/message-delivery action.
+- **Smart Spaces / Your Connections** — separate social and relationship systems; Smart Connect is not equivalent to connecting with a person.
+- **Smart Mail** — separate communication system; Smart Connect is not an email/message-delivery action.
 
 Three major agreements around the NayaNET connection experience are conceptually distinct:
 
 1. **Connect the Intelligent Hub to the Superbrain** — access and use the user's intelligence environment.
-2. **Agree to share wisdom** — opt into collective intelligence contribution through Smart Share.
+2. **Agree to share wisdom** — opt into collective intelligence contribution through Smart Connect.
 3. **Agree to connect with other humans** — enable human connection through Smart Spaces and Connections according to user choice and system rules.
 
 These agreements must not be conflated.
@@ -176,13 +176,13 @@ These agreements must not be conflated.
 
 A person creates a Smart Note after discovering a principle that dramatically improved how they solve a recurring problem.
 
-If Smart Share is enabled, Naya can identify the reusable lesson, remove unnecessary personal detail, compare it with existing collective intelligence, and — if it is genuinely new and passes the required checks — contribute it to the collective.
+If Smart Connect is enabled, Naya can identify the reusable lesson, remove unnecessary personal detail, compare it with existing collective intelligence, and — if it is genuinely new and passes the required checks — contribute it to the collective.
 
 ### Example 2 — A breakthrough
 
 A user has a major breakthrough during the day. Their Daily Intelligence Report later captures the deeper lesson.
 
-Smart Share can use that eligible intelligence as a candidate source for collective wisdom rather than simply broadcasting the raw report.
+Smart Connect can use that eligible intelligence as a candidate source for collective wisdom rather than simply broadcasting the raw report.
 
 ### Example 3 — Already known
 
@@ -206,7 +206,7 @@ The system may retain minimal private consent, audit, abuse-prevention, or revoc
 
 ## 11. WHAT’S IN IT FOR YOU?
 
-Smart Share lets your life become useful beyond your immediate circle.
+Smart Connect lets your life become useful beyond your immediate circle.
 
 You get to:
 
@@ -229,15 +229,15 @@ The deepest benefit is simple:
 
 ## 12. SYSTEM ROLE
 
-Smart Share is the consent and activation layer between individual intelligence and collective intelligence.
+Smart Connect is the consent and activation layer between individual intelligence and collective intelligence.
 
-It is distinct from Smart Share as an object-sharing feature. The canonical product meaning is collective intelligence contribution and synchronization.
+It is distinct from Smart Connect as an object-sharing feature. The canonical product meaning is collective intelligence contribution and synchronization.
 
 ## 13. CONSENT CONTRACT
 
-Smart Share requires explicit user choice before eligible individual intelligence is considered for collective contribution.
+Smart Connect requires explicit user choice before eligible individual intelligence is considered for collective contribution.
 
-Smart Share does not mean:
+Smart Connect does not mean:
 
 - NayaNET can inspect or expose everything in the user's Superbrain;
 - every Smart Note is automatically public;
@@ -308,7 +308,7 @@ If the candidate is still uncertain or unverified, the interface must not repres
 
 ## 17. COLLECTIVE INTELLIGENCE EVENT RELATIONSHIP
 
-Smart Share should produce or feed the existing Collective Intelligence Event (CIE) architecture rather than inventing a parallel collective-learning object model.
+Smart Connect should produce or feed the existing Collective Intelligence Event (CIE) architecture rather than inventing a parallel collective-learning object model.
 
 The CIE remains downstream of authorized contribution and supports:
 
@@ -330,7 +330,7 @@ Provenance supports verification and intellectual integrity. Public anonymity pr
 
 ## 19. REVOCATION AND USER CONTROL
 
-Smart Share must eventually support a clear consent lifecycle, including at minimum:
+Smart Connect must eventually support a clear consent lifecycle, including at minimum:
 
 - enabled / opted in;
 - disabled / opted out;
@@ -342,9 +342,9 @@ Smart Share must eventually support a clear consent lifecycle, including at mini
 
 Exact runtime behavior remains an implementation question until verified.
 
-## 20. SMART SHARE VS ORDINARY SHARING
+## 20. SMART CONNECT VS ORDINARY SHARING
 
-| Ordinary sharing | Smart Share |
+| Ordinary sharing | Smart Connect |
 |---|---|
 | Sends or exposes an object | Authorizes collective intelligence contribution |
 | Usually has a specific recipient/audience | Collective destination |
@@ -353,7 +353,7 @@ Exact runtime behavior remains an implementation question until verified.
 | May share raw content | Should contribute derived wisdom, not unnecessary raw source |
 | Often immediate | Can involve distillation, comparison, review, verification |
 
-Smart Share therefore should not be reduced to a generic share button.
+Smart Connect therefore should not be reduced to a generic share button.
 
 ## 21. THREE AGREEMENTS MODEL
 
@@ -363,7 +363,7 @@ The broader NayaNET connection/setup experience can be modeled as three distinct
 
 The user connects the intelligence environment so Naya can work with the user's authorized Hub intelligence.
 
-### B. Smart Share ↔ Collective Intelligence
+### B. Smart Connect ↔ Collective Intelligence
 
 The user explicitly agrees to contribute eligible wisdom to the collective intelligence system.
 
@@ -375,10 +375,10 @@ These are separate authorities and must not silently imply one another.
 
 ## 22. CONSTITUTIONAL BOUNDARIES
 
-Smart Share must respect:
+Smart Connect must respect:
 
 - human sovereignty over the private Superbrain;
-- explicit consent for collective contribution;
+- connection-level participation consent for collective contribution;
 - privacy and identity protection;
 - least necessary disclosure;
 - provenance and evidence integrity;
@@ -391,7 +391,7 @@ Smart Share must respect:
 
 ## 23. COMPOUNDING INTELLIGENCE
 
-Smart Share is a key bridge in the compounding intelligence architecture:
+Smart Connect is a key bridge in the compounding intelligence architecture:
 
 `INDIVIDUAL INTELLIGENCE → EXPLICIT SHARE / CONSENT → COLLECTIVE CANDIDATE → PROVENANCE + SCOPE → VERIFICATION → COLLECTIVE INTELLIGENCE → FUTURE RETRIEVAL → APPLICATION → OUTCOME → LEARNING`
 
@@ -401,7 +401,7 @@ This connects directly to the existing Daily Intelligence Report and Continuity 
 
 The following remain to be verified against runtime implementation:
 
-1. Exact Smart Share UI and consent controls.
+1. Exact Smart Connect UI and consent controls.
 2. Exact eligible-source selection rules for Smart Notes and Daily Intelligence Reports.
 3. Whether users can preview what wisdom would be contributed before enabling or submitting.
 4. Exact semantic deduplication mechanism against collective intelligence.
@@ -410,24 +410,24 @@ The following remain to be verified against runtime implementation:
 7. Exact consent revocation semantics for already-published collective intelligence.
 8. Exact audit and abuse-prevention storage boundaries.
 9. Exact runtime integration with Collective Chain.
-10. Exact Superbrain → Hub → Smart Share data flow.
+10. Exact Superbrain → Hub → Smart Connect data flow.
 11. Exact runtime support for the three-agreement connection experience.
 
 These are UNKNOWN / NOT VERIFIED until observed in the real implementation.
 
 ## 25. VERIFICATION STATE
 
-**Known from product direction:** Smart Share is the collective intelligence syncing/consent concept and requires explicit opt-in.
+**Known from product direction:** Smart Connect is the collective intelligence syncing/consent concept and requires explicit opt-in.
 
 **Known from existing architecture:** Collective Intelligence Events support anonymous derived wisdom, privacy boundaries, provenance, confidence, lifecycle, and verification.
 
-**Required next verification:** inspect the actual repository/runtime for Smart Share implementation, consent behavior, source eligibility, deduplication, collective promotion, and Activity Feed learning notifications.
+**Required next verification:** inspect the actual repository/runtime for Smart Connect implementation, consent behavior, source eligibility, deduplication, collective promotion, and Activity Feed learning notifications.
 
 Do not declare runtime completion from this document alone.
 
 ## 26. CANONICAL SUMMARY
 
-**Smart Share = the explicit human-consent and collective-intelligence synchronization layer that lets NayaNET distill genuinely new wisdom from eligible individual intelligence and contribute it anonymously to the collective.**
+**Smart Connect = the explicit human-consent and collective-intelligence synchronization layer that lets NayaNET distill genuinely new wisdom from eligible individual intelligence and contribute it anonymously to the collective.**
 
 It is not “share everything.”
 

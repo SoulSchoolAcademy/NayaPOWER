@@ -13,9 +13,11 @@ USER
  ↓
 PRIVATE SUPERBRAIN
  ↓
-AUTHORIZED HUB CONNECTION
+SMART CONNECT
  ↓
-OPTIONAL CONTRIBUTION
+WISDOM SHARED BY DEFAULT
+ ↓
+GOVERNED FILTERING
 ```
 
 The Hub connects to the Superbrain. It does not absorb it.
@@ -39,7 +41,7 @@ The Hub should store an installation relationship, not a user's password or arbi
 ```text
 PRIVATE SUPERBRAIN
        ↓
-USER AUTHORIZATION
+SMART CONNECT PARTICIPATION CONSENT
        ↓
 VALUE EXTRACTION
        ↓
@@ -65,15 +67,15 @@ Possible scopes:
 - useful mistake;
 - Naya-selected best contribution.
 
-The human sees what Naya intends to share before publication.
+The participant does not approve every learning event. Smart Connect establishes participation consent; governed filtering determines what useful wisdom can enter collective learning. Public publication and identity attribution remain separate decisions.
 
 Actions:
 
-**Share Wisdom / Edit / Keep Private**
+**Smart Connect / Revoke / Public Publish (separate)**
 
 ## 7. Collective event
 
-The shared object should contain generalized intelligence, not the raw source.
+The shared object should contain generalized wisdom, not raw private source material.
 
 Conceptual fields:
 

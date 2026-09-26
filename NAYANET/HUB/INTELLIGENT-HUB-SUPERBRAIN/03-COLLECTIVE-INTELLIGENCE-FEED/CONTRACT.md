@@ -16,7 +16,7 @@ To let human intelligence compound socially without requiring users to expose th
 
 ## 3. How does it work?
 
-A private intelligence item is intentionally selected for sharing. Consent and privacy rules are evaluated. The system applies the collective representation/source policy, publishes the permitted intelligence into the collective lens, and records relevant events. Collective interactions such as like/love/rank are treated as bounded social actions rather than changes to the original private record.
+After Smart Connect participation consent, useful wisdom is eligible for automatic collective learning. The system applies usefulness, trust, privacy, safety, deduplication, verification, and representation rules before contributing a derived collective intelligence object. Personal intelligence, raw private source material, activity, and identity remain protected by default. Collective interactions such as like/love/rank are treated as bounded social actions rather than changes to the original private record.
 
 ## 4. Inputs and outputs
 
@@ -26,11 +26,11 @@ A private intelligence item is intentionally selected for sharing. Consent and p
 
 ## 5. Connections
 
-Smart Notes provide source intelligence. Personal Feed is the private origin lens. Smart Share controls deliberate movement. Connections relate collective knowledge. Activity records meaningful events. Reports/Library can consume permitted collective intelligence.
+Smart Notes provide source intelligence. Personal Feed is the private origin lens. Smart Connect establishes the participation boundary. Connections relate collective knowledge. Activity records meaningful events. Reports/Library can consume permitted collective intelligence.
 
 ## 6. Privacy, consent, and authority
 
-Collective visibility requires explicit consent. Private identity/source information must not leak through content, metadata, relationships, or UI. Any identity attribution must be explicitly permitted. Social actions must not mutate the source record without authorization.
+Collective learning requires Smart Connect participation consent plus governed filtering. Public visibility and identity attribution require a separate explicit decision. Private identity/source information must not leak through content, metadata, relationships, or UI. Any identity attribution must be explicitly permitted. Social actions must not mutate the source record without authorization.
 
 ## 7. What must be built?
 

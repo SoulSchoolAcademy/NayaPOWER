@@ -9,7 +9,7 @@ import { routes } from './routes';
 import { useIdentity } from '../identity/session';
 import { DreamSurface } from './DreamSurface';
 import { ReportsSurface } from './ReportsSurface';
-import { SmartShareSurface } from './SmartShareSurface';
+import { SmartConnectSurface } from './SmartConnectSurface';
 import { SmartListsSurface } from './SmartListsSurface';
 import { ConnectionsSurface } from './ConnectionsSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
@@ -106,8 +106,8 @@ export function HubRouter({ path }: { path: string }) {
       return <ReportsSurface />;
     case routes.lists:
       return <SmartListsSurface />;
-    case routes.share:
-      return <SmartShareSurface />;
+    case routes.connect:
+      return <SmartConnectSurface />;
     case routes.spaces:
       return <SmartSpacesSurface />;
     case routes.connections:
