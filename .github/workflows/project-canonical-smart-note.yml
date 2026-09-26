@@ -40,7 +40,7 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, os, urllib.request
+          import json, os, urllib.request, urllib.parse
           url = os.environ["SUPABASE_URL"] + "/rest/v1/v7_smart_note_transactions"
           query = "?id=eq." + urllib.parse.quote(os.environ["TRANSACTION_ID"]) + "&select=*"
           req = urllib.request.Request(
