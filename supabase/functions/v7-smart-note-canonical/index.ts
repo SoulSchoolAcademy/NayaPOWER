@@ -427,7 +427,7 @@ Deno.serve(async(req)=>{
      canonical_receiver:"v7-smart-note-canonical"
    };
   const hubDeepLink="/hub?ib="+encodeURIComponent(intelligentBlockId);
-  const smartLink=null;
+
   const completionReceipt={
     schema:"naya/smart-note-receiver-receipt/v1",
     canonical_receiver:"v7-smart-note-canonical",
