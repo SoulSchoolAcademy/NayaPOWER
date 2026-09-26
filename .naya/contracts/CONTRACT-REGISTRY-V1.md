@@ -484,3 +484,60 @@ Both normative Markdown artifacts agree: **Smart Link means only the direct GitH
 Use repository-tree/commit/diff inspection or another authoritative reference mechanism to establish all dependencies of `SMART-LINK-CONTRACT.json` and its enum values. Only after that evidence is complete may the schema be narrowed or retired. Constitutional authority remains untouched.
 
 **Acceptance:** no Smart Link schema mutation without dependency evidence; no competing Smart Link noun; unresolved dependency search limitation remains explicitly UNKNOWN rather than PASS.
+
+
+## SMART-LINK-DEPENDENCY-001 — FINAL RECEIPT
+
+**Date:** 2026-09-26
+**Result:** PARTIAL / SAFE RECONCILIATION APPLIED; DEPENDENCY PROOF REMAINS INCOMPLETE
+
+### Authoritative evidence discovered
+
+1. `.naya/contracts/SMART-LINK-CONTRACT.json` was introduced by commit `6611a3fe52dd0b353277c5e763b9e4b6c02b214f` on 2026-09-11. The commit creates the schema from scratch and is the direct provenance of the broad `target_type` enum.
+2. The older prose `.naya/2026-09-12-NAYAPOWER-48-SMART-LINK-CONTRACT.md` was introduced by commit `03a1831b633aabf06d199c6c5929b2c3c920b591`. It defines a broader identity/intelligence-link concept, including canonical intelligence object/event links.
+3. The newer canonical `.naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md` is explicitly **CANONICAL — RATIFIED 2026-09-25** and defines Smart Link narrowly as the direct GitHub canonical `smart-note.md` link. Its enforcement test is `.naya/tests/test_smart_link_identity_contract.py`, executed by `.github/workflows/verify-smart-link-identity.yml`.
+4. The current INT-001 and Contract 02 prose independently agree with that narrow definition.
+5. Dedicated schemas exist for `ledger_event` and `value_event`, so those nouns already have separate machine boundaries.
+
+### Dependency classification
+
+| Surface | Finding |
+|---|---|
+| Current code/schema references to `SMART-LINK-CONTRACT.json` | **UNKNOWN** — GitHub code-search index returned no matches and cannot be treated as exhaustive |
+| Current `target_type` consumers | **UNKNOWN** — no authoritative indexed consumer evidence |
+| Historical provenance | **CONFIRMED** — schema created in commit 6611a3f; broad prose contract created in commit 03a1831 |
+| Smart Note target | **CANONICAL / LIVE SEMANTIC OWNER** via NAYA LINK IDENTITY + INT-001 + Contract 02 |
+| Ledger event target | **SEPARATE CANONICAL NOUN/SCHEMA**, not Smart Link |
+| Value event target | **SEPARATE CANONICAL NOUN/SCHEMA**, not Smart Link |
+| Collective intelligence target | **NO verified Smart Link consumer found; separate Collective Intelligence artifacts exist** |
+| Generic-link concept | **EXISTED HISTORICALLY** in Contract 48, but newer canonical law explicitly narrows the Smart Link noun; historical broader meaning requires supersession/reconciliation, not silent coexistence |
+
+### Safety determination
+
+**Narrowing `target_type` is NOT yet proven safe.** There is insufficient authoritative dependency evidence to claim that no implementation, fixture, generated artifact, or historical compatibility path consumes the broad enum.
+
+Therefore **NO schema mutation was made**.
+
+The smallest safe reconciliation is documentation/topology-level classification: the broad JSON is now treated as a **MACHINE SCHEMA / NARROW-MERGE CANDIDATE**, while the canonical Smart Link semantic owner is the newer narrow contract family. This does not break any demonstrated live consumer because no live consumer was demonstrated; it also avoids claiming that absence from search proves safety.
+
+### Disposition of broad schema
+
+**MERGE / NARROW CANDIDATE — NOT RETIRED YET.**
+
+Do not create a replacement Smart Link contract. If dependency evidence later proves the broad enum unused, narrow this existing schema in place to the canonical `smart_note` target (or retire the redundant machine schema only if the canonical machine representation is explicitly established elsewhere). If a live consumer is discovered, reconcile that consumer first.
+
+### Validation
+
+The existing Smart Link identity test suite is structurally consistent with the narrow definition: Hub Deep Links, wrong-IB links, and generic GitHub pages are rejected; a canonical Smart Note URL is accepted. However, this audit did not execute GitHub Actions or local test runtime, so **test execution status = UNKNOWN**, not PASS.
+
+### Hard stops preserved
+
+- Constitutional authority untouched.
+- No replacement Smart Link contract created.
+- No schema narrowing performed without dependency proof.
+- UNKNOWN was not converted to PASS.
+- BLOCKS / EP-001 / BATON topology preserved.
+
+### Next authorized P0
+
+**SMART-LINK-DEPENDENCY-002 — AUTHORITATIVE REFERENCE SWEEP:** obtain complete repository bytes through a source that permits whole-tree materialization (local clone/authorized workspace or equivalent), then run exact literal-reference scans for `SMART-LINK-CONTRACT.json`, `nayanet://contracts/smart-link-v1`, `target_type`, and each enum value across source, tests, workflows, fixtures, generated artifacts, and historical compatibility surfaces. Reconcile any discovered consumer before changing the schema.
