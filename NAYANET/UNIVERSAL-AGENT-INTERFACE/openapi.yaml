@@ -68,6 +68,32 @@ paths:
         '200': {description: Canonical governed intelligence commit result}
         '400': {description: Authority, scope, participation, or validation rejection}
         '401': {description: Authentication required}
+  /v1/smart-note-capture:
+    post:
+      operationId: captureCanonicalSmartNote
+      summary: Create a canonical Smart Note through the authoritative receiver
+      description: Creates one canonical Smart Note/Intelligent Block and returns the receiver-issued IB identity, verified direct GitHub Smart Link, and completion receipt. A missing Smart Link is a hard failure.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [human_note, naya_note, idempotency_key]
+              properties:
+                human_note: {type: object}
+                naya_note: {type: string}
+                idempotency_key: {type: string, minLength: 1}
+                title: {type: string}
+                content: {type: string}
+                category: {type: string}
+                topic: {type: string}
+      responses:
+        '200': {description: Canonical Smart Note projection verified}
+        '400': {description: Invalid capture request}
+        '401': {description: Authentication required}
+        '502': {description: Canonical receiver completed without required projection evidence}
+
   /v1/understand:
     post:
       operationId: advanceUnderstanding
