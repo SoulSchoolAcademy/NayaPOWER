@@ -1522,8 +1522,8 @@
   "next_action": {
     "status": "ACTIVE",
     "count": 1,
-    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Behavioral cold-Naya takeover is the next unresolved boundary; independent execution must be established without conversational archaeology."
+    "reason": "The Hub front door is unproven and was observed broken: the unauthenticated redirect target /identity.html served the Hub SPA fallback rather than an identity surface, so sign-in -> capture -> feed -> deep link could not begin.",
+    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
   }
 }

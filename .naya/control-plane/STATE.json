@@ -321,7 +321,7 @@
     "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
     "status": "PROVEN",
     "one_next_action_rule": "STATE/BLOCKS/BATON next-action values must match; recorded HEAD is informational and must never override live execution resolution."
@@ -443,8 +443,8 @@
   "next_action": {
     "status": "ACTIVE",
     "count": 1,
-    "reason": "P7 verified; behavioral cold-Naya takeover is the next unresolved boundary.",
-    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
+    "reason": "Live evidence on 2026-09-26: the canonical Hub redirects unauthenticated humans to /identity.html, which resolves to the Hub SPA fallback instead of an identity surface, so sign-in cannot begin. One additive identity surface is the smallest causal repair.",
+    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",
