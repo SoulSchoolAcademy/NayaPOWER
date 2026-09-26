@@ -35,16 +35,16 @@ Each entry maps:
 | **Contract ID** | CC-000 |
 | **Canonical Name** | NayaNET Constitutional Contract Law |
 | **Purpose** | Supreme governing contract law from which all subsequent NayaNET contracts derive their operating discipline |
-| **Authority** | Human-director constitutional authority (ratified 2026-09-26) |
-| **Source** | `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md` |
-| **Dependencies** | None (top of hierarchy) |
-| **Inputs** | Human authority, platform/safety/legal constraints |
-| **Outputs** | 8-level precedence hierarchy, truth model, anti-drift law, conflict protocol, creation law |
-| **Invariants** | CAPABILITY DOES NOT CREATE AUTHORITY; UNKNOWN ≠ PASS; ONE SYSTEM ONE LAW; Receiver-centric durable intelligence; Privacy by default |
-| **Acceptance** | 20 adversarial acceptance questions (Section 33); 10 operational conditions (Section 32) |
-| **Status** | **PARTIAL** — Comprehensive framework but downstream artifacts (library index, boot path, acceptance tests) not yet fully realized |
-| **Conflicts** | None (supreme authority) |
-| **Gaps** | No formal acceptance tests; no machine-readable schema; no receipt format; no state machine for the constitution itself |
+| **Authority** | Human-director constitutional authority ratified Contract 00; precedence against the repository's existing Runtime Constitution remains unresolved |
+| **Source** | `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md`; competing current-constitution reference: `.naya/codex/11-RUNTIME-CONSTITUTION.md` |
+| **Dependencies** | Human ratification; existing Runtime Constitution; Contract Stack Operating Law |
+| **Inputs** | Human authority, platform/safety/legal constraints, live authoritative repository state |
+| **Outputs** | Proposed constitutional precedence hierarchy, truth model, anti-drift law, conflict protocol, creation law |
+| **Invariants** | CAPABILITY DOES NOT CREATE AUTHORITY; UNKNOWN ≠ PASS; ONE SYSTEM ONE LAW; Receiver-centric durable intelligence; Privacy by default; unresolved constitutional precedence MUST fail closed |
+| **Acceptance** | 20 adversarial acceptance questions (Section 33); 10 operational conditions (Section 32); explicit precedence resolution against the Runtime Constitution |
+| **Status** | **CONFLICTED — HUMAN RATIFICATION BOUNDARY** — Contract 00 has explicit human-directed ratification, but repository control-plane truth still identifies `.naya/codex/11-RUNTIME-CONSTITUTION.md` as the canonical current constitution. No machine or Naya inference may silently resolve this |
+| **Conflicts** | Contract 00 claims constitutional authority while STATE/MAP still identify the Runtime Constitution as current canonical constitution |
+| **Gaps** | No explicit supersession record; no authoritative precedence receipt; no machine-readable constitutional selector; no cold-Naya acceptance proving which constitution governs until the conflict is human-ratified |
 
 ---
 
