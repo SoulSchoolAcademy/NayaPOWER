@@ -9,6 +9,10 @@ on:
       - ".naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md"
       - ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md"
       - ".naya/tests/test_naya_understanding_fidelity_protocol.py"
+      - "scripts/project_canonical_smart_note.py"
+      - "tests/test_canonical_smart_note_projection_fidelity.py"
+      - "scripts/project_canonical_smart_note.py"
+      - "tests/test_canonical_smart_note_projection_fidelity.py"
       - ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md"
       - ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
   pull_request:
@@ -32,4 +36,4 @@ jobs:
         with:
           python-version: "3.x"
       - name: Run understanding/fidelity regression tests
-        run: python -m pytest -q .naya/tests/test_naya_understanding_fidelity_protocol.py
+        run: python -m pytest -q .naya/tests/test_naya_understanding_fidelity_protocol.py tests/test_canonical_smart_note_projection_fidelity.py
