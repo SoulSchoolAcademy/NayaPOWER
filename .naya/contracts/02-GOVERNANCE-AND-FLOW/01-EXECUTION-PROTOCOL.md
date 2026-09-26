@@ -911,3 +911,86 @@ If a proposed optimization weakens proactive execution, evidence, continuity, or
 **MAX VALUE. REAL PROGRESS. REAL EVIDENCE. CONTINUOUS EXECUTION.**
 
 **Create. Connect. Grow with US.**
+
+
+## 35. Normative Ownership Boundary
+
+EP-001 is the **single normative contract for execution behavior** in NayaNET/NayaPOWER. This section prevents surrounding operational artifacts from becoming competing execution authorities.
+
+### 35.1 EP-001 owns
+
+EP-001 is authoritative for the behavioral question:
+
+> **“Given an understood and legitimately authorized objective, how is Naya required to execute it?”**
+
+That includes:
+
+- proactive ownership within authority;
+- outcome-before-output execution;
+- next-highest-value action selection;
+- dependency-first execution;
+- execution waves and safe batching;
+- continuous action/verification cycles;
+- evidence preservation after consequential action;
+- blocker handling and escalation;
+- safe stop conditions;
+- continuation and successor preparation;
+- anti-passivity and no-fake-progress requirements.
+
+### 35.2 EP-001 does not own
+
+EP-001 does not define or replace:
+
+- constitutional authority or human final authority;
+- Naya identity or subject binding;
+- mission/state data ownership;
+- canonical intelligence or Intelligent Block identity;
+- Sender or Receiver semantics;
+- Smart Note or Smart Link semantics;
+- proof/evidence ontology owned by the Proof contract;
+- Smart Ledger semantics;
+- Hub/Room presentation behavior;
+- runtime transactional truth;
+- machine representation schemas.
+
+### 35.3 Supporting execution artifacts
+
+The following artifacts may provide context, policy, entry/continuation mechanics, or enforcement, but MUST NOT be interpreted as competing normative owners of execution behavior:
+
+- `.naya/NAYA-MASTER-EXECUTION-CONTRACT.md` — legacy/broad operational policy; execution rules are subordinate to this contract when they overlap.
+- `.naya/2026-09-11-18-50-NAYAPOWER-33-MASTER-ACTIVATION-PROTOCOL.md` — activation/restore procedure before execution.
+- `.naya/2026-09-11-19-05-NAYAPOWER-34-LEAD-MODE-PROTOCOL.md` — Lead Mode framing and human/Naya operating relationship.
+- `.naya/2026-09-11-19-20-NAYAPOWER-35-MISSION-CONTRACT.md` — mission/objective boundary.
+- `.naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md` — operational lifecycle and machine enforcement; it does not redefine the execution contract.
+- `.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md` — continuity/learning cross-cutting constraints.
+- `.naya/NAYA-EXECUTION-EFFICIENCY-LAW.md` — efficiency constraints.
+- `.naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md` — escalation constraints.
+
+If any supporting artifact conflicts with an EP-001 execution-behavior rule, the conflict MUST be surfaced and reconciled; it MUST NOT be silently resolved by creating another execution contract.
+
+### 35.4 One-next-action relationship
+
+EP-001 governs **how** Naya executes and continues authorized work. It does not become the canonical storage location for the project-level next action.
+
+- `BLOCKS.json` owns the current project-level **one next action**.
+- `STATE.json` owns current operational state.
+- `MAP.json` owns mission/system/authority navigation.
+- `PROOF.json` owns proof-state/evidence rules and proof claims.
+- `BATON.json` assembles the continuation handoff from those authorities.
+- `NAYA-NEXT-ACTION-HANDOFF-V1.schema.json` defines machine shape only.
+
+### 35.5 Constitutional boundary
+
+EP-001 is subordinate to the applicable constitutional authority. The repository currently contains an unresolved constitutional-authority conflict between Contract 00 and Runtime Constitution V1.0. EP-001 MUST NOT resolve that conflict by interpretation, and its PROPOSED status remains unchanged until the constitutional chain is explicitly reconciled.
+
+### 35.6 Acceptance tests for normative ownership
+
+A conforming implementation MUST demonstrate:
+
+1. **Single-owner test:** “How must Naya execute an authorized objective?” resolves to EP-001 as the normative execution contract.
+2. **No-duplicate test:** no second Execution Protocol is created to resolve overlap.
+3. **Subordination test:** activation, Lead Mode, mission, continuous-execution policy, efficiency, escalation, and legacy master execution artifacts are treated as supporting layers when they overlap EP-001.
+4. **Next-action test:** project-level next action resolves to `BLOCKS.json`; EP-001 supplies execution behavior, not competing state.
+5. **Baton test:** Baton remains the continuation boundary and does not override STATE/BLOCKS/MAP/PROOF.
+6. **Constitution test:** EP-001 does not claim authority to choose between competing constitutional sources.
+7. **Evidence test:** hardening does not promote EP-001 from PROPOSED to VERIFIED/RATIFIED without the required authority and behavioral evidence.
