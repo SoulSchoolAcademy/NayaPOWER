@@ -415,7 +415,26 @@ async function projectIntelligence(client: any, userId: string, body: any) {
     if(error) throw error;
     row=data;
   }
-  return {schema:"NAYANET_PROJECT_INTELLIGENCE_PROJECT_V1",status:"PROJECTED",index:row,source_event:event};
+  const projectedAt = String(row?.metadata?.projected_at ?? new Date().toISOString());
+  return {
+    schema:"NAYANET_PROJECT_INTELLIGENCE_PROJECT_V2",
+    status:"PROJECTED",
+    index:row,
+    source_event:event,
+    projection_evidence:{
+      source_event_id:sourceId,
+      source_event_key:event.event_id,
+      index_id:row?.id ?? null,
+      owner_id:row?.owner_id ?? userId,
+      project_id:PROJECT,
+      revision:Number(row?.revision ?? 1),
+      projected_at:projectedAt,
+      persisted:true,
+      indexed:true,
+      projected:true,
+      rule:"Projection is evidenced by the canonical source-event/index relationship and the persisted projection timestamp; retrieval/render remain separate claims."
+    }
+  };
 }
 
 async function ackBridge(client: any, userId: string, body: any) {
