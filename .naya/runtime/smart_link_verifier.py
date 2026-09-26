@@ -13,8 +13,17 @@ def _valid_ib(value: str) -> bool:
     return bool(IB_RE.fullmatch(value))
 
 
+def _repo_relative(path: Path) -> str:
+    candidate = path.resolve()
+    root = Path.cwd().resolve()
+    try:
+        return candidate.relative_to(root).as_posix()
+    except ValueError:
+        return path.as_posix().lstrip("/")
+
+
 def build_smart_link(repo_path: Path, canonical_ref: str = "main") -> str:
-    path = repo_path.as_posix().lstrip("./")
+    path = _repo_relative(repo_path)
     if not path.startswith(SMART_NOTES_ROOT + "/") or not path.endswith("/smart-note.md"):
         raise ValueError("path is not a canonical Smart Note projection")
     return f"{GITHUB_BASE}/{canonical_ref}/{path}"
@@ -30,7 +39,7 @@ def classify_smart_link(
     if not _valid_ib(reported_ib) or not receiver_persisted:
         return "UNKNOWN"
 
-    normalized = repo_path.as_posix().lstrip("./")
+    normalized = _repo_relative(repo_path)
     expected_suffix = f"/{reported_ib}/smart-note.md"
 
     if not repo_path.exists():
