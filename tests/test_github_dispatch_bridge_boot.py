@@ -13,4 +13,5 @@ def test_projection_workflow_detects_untracked_projection_for_commit():
     assert "git ls-files --error-unmatch" in commit_step, "commit step must distinguish tracked projections from newly created untracked projections"
     assert "git diff --cached --quiet" in commit_step, "commit step must detect staged changes before deciding no commit is required"
     assert "git show \"$FETCH_HEAD:$TARGET\"" in workflow, "final verification must read the artifact from the freshly fetched main commit"
+    assert "relative_path=path.resolve().relative_to(repo_root).as_posix()" in workflow, "projection-path must be repository-relative for Git object verification"
     assert "git cat-file -e \"$FETCH_HEAD:$TARGET\"" in workflow, "final verification must prove the projection exists in freshly fetched main"
