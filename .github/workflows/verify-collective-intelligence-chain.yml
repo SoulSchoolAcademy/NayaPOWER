@@ -156,6 +156,7 @@ jobs:
               execution_authorization:{authority_id:authorityGrantId,actor_id:session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               what_changed:'A verified continuation lesson was captured for later cold retrieval.',
               next_use:'Use when restoring project state before consequential continuation.',
+              execution_authorization:{authority_id:verifierGrant.grant_id,actor_id:verifier.session.userId,permission:'intelligence_commit',governance_state:'AUTHORIZED'},
               unknown:['Real-world usefulness outside the tested project scope remains unproven.']
             });
             const eventId=captured.source_event?.event_id;
@@ -211,7 +212,35 @@ jobs:
             if(!verifier.identity?.authenticated||!verifier.session?.access_token) throw new Error('VERIFIER_AUTH_NOT_ESTABLISHED');
             if(verifier.session.userId===session.userId) throw new Error('VERIFIER_MUST_BE_DIFFERENT_FROM_LEARNER');
 
+            const verifierAuthoritySource=await compound(verifier.session,'understand',{
+              idempotency_key:'cc-verifier-authority-source-'+run,
+              title:'Collective Chain verifier authority source '+run,
+              content:'Verifier-owned source event for the minimum bounded intelligence_commit needed to record independent outcome evidence.',
+              category:'AUTHORITY',topic:'COLLECTIVE_CHAIN_OUTCOME',tags:['authority','verifier','collective-chain'],
+              applicable_scope:'NayaNET project continuation',authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              what_changed:'Created verifier-owned source evidence before issuing bounded authority.',
+              next_use:'Issue the minimum verifier-scoped intelligence_commit grant.'
+            });
+            const verifierGrant=await verifierPage.evaluate(async({sourceEventId,run})=>{
+              const client=window.__NayaNETSupabaseClient;
+              const s=(await client.auth.getSession()).data.session;
+              const {data,error}=await client.rpc('nayanet_issue_authority_grant',{
+                p_subject_id:s.user.id,p_source_event_id:sourceEventId,
+                p_mission_id:'NayaNET collective intelligence chain independent outcome',
+                p_scope:{project_id:'NayaNET',target:'NayaNET'},
+                p_actions:['intelligence_commit'],
+                p_constraints:{proof_run:run,verifier:true,no_external_side_effects:true},
+                p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+                p_evidence:{proof_run:run,source_event_id:sourceEventId,role:'independent_verifier'},
+                p_parent_authority:null
+              });
+              if(error) throw error;
+              return data;
+            },{sourceEventId:verifierAuthoritySource.event?.event_id,run});
+            if(!verifierGrant?.grant_id) throw new Error('VERIFIER_AUTHORITY_GRANT_FAILED');
+
             const verifierOutcome=await compound(verifier.session,'intelligence_commit',{
+              authority_grant_id:verifierGrant.grant_id,
               idempotency_key:'cc-verifier-'+run+'-'+crypto.randomBytes(5).toString('hex'),
               title:'Collective Intelligence Chain independent outcome '+run,
               content:'Independent verifier observed that the lesson is applicable: restore canonical current state before consequential continuation.',
