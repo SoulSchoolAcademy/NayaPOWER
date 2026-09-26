@@ -240,11 +240,11 @@ jobs:
 
             const recordIndependentOutcome=async(label,body)=>{
               const tokenValue='NAYA-COLLECTIVE-OUTCOME-'+run+'-'+label;
-              const sent=await page.evaluate(async({verifierId,body,grantId,url,key})=>{
+              const sent=await page.evaluate(async({verifierId,body,grantId,url,key,run})=>{
                 const client=window.__NayaNETSupabaseClient; const s=(await client.auth.getSession()).data.session;
                 const res=await fetch(url+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:{authorization:'Bearer '+s.access_token,apikey:key,'content-type':'application/json'},body:JSON.stringify({recipient_user_id:verifierId,body,subject:'Collective Chain independent outcome',kind:'direct',idempotency_key:'cc-outcome-'+run+'-'+Date.now(),project_id:'NayaNET',authority_grant_id:grantId})});
                 const data=await res.json(); if(!res.ok||!data.ok) throw new Error('OUTCOME_MESSAGE_SEND_FAILED:'+JSON.stringify(data)); return data;
-              },{verifierId:verifierSession.userId,body,grantId:smartMailGrantId,url,key});
+              },{verifierId:verifierSession.userId,body,grantId:smartMailGrantId,url,key,run});
               const messageId=sent.message_id, receiptId=sent.execution_receipt_id;
               if(!messageId||!receiptId) throw new Error('OUTCOME_MESSAGE_LINEAGE_MISSING');
               await verifierPage.evaluate(async({messageId,token})=>{
