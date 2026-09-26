@@ -203,3 +203,14 @@ def test_receiver_projection_join_real_and_adversarial():
         bad = dict(observed)
         bad[field] = value
         assert verify_receiver_projection_join(receiver, bad) is False
+
+
+def test_remaining_verifier_level_antipatterns_fail_closed():
+    assert classify_link_kind("/hub?ib=IB-001019") == "HUB_DEEP_LINK"
+    assert classify_link_kind("/hub?ib=IB-001019") != "SMART_LINK"
+    assert classify_link_kind("https://github.com/SoulSchoolAcademy/NayaPOWER/commit/abc123") == "EVIDENCE_LINK"
+    fabricated = ROOT / ".naya/memory/smart-notes/2026/09/25/system/fabricated/IB-001019/note.md"
+    assert classify_smart_link(fabricated, "IB-001019", True, True, "main") == "MISSING"
+    pending = ROOT / ".naya/memory/smart-notes/2026/09/25/system/not-present/IB-777777/smart-note.md"
+    assert classify_smart_link(pending, "IB-777777", True, False, "main") == "PENDING"
+    assert classify_smart_link(pending, "IB-777777", False, True, "main") == "UNKNOWN"
