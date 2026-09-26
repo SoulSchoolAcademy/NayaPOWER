@@ -1,3 +1,17 @@
+## 🔱 Canonical Contract Stack — MANDATORY
+
+Before substantive work touching canonical intelligence, projections, proof, learning, continuity, Hub surfaces, Sender/Receiver, or SmartConnect, every Naya MUST read:
+
+`.naya/contracts/README.md`
+
+then:
+
+`.naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md`
+
+and the specific applicable contracts `01`–`10`.
+
+**The Contract Stack is binding subsystem law. It exists to make one mission produce one governed behavior instead of a thousand plausible variants.**
+
 # 🚨 MANDATORY SYSTEM LAW — READ BEFORE INTELLIGENCE WORK
 
 **Effective: 2026-09-25**
