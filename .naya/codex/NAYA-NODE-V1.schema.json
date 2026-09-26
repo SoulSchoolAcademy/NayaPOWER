@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.app/contracts/naya-node-v1.schema.json",
+  "title": "Naya Node V1",
+  "description": "Candidate portable semantic envelope for a governed piece of NayaNET intelligence.",
+  "type": "object",
+  "required": ["node", "meaning", "provenance", "truth", "authority", "value", "lifecycle"],
+  "properties": {
+    "node": {
+      "type": "object",
+      "required": ["node_type", "status"],
+      "properties": {
+        "node_type": {"const": "NAYA_NODE"},
+        "status": {"enum": ["CANDIDATE", "COMMITTED", "VERIFIED", "SUPERSEDED", "REJECTED"]},
+        "intelligent_block_id": {"type": ["string", "null"], "pattern": "^IB-[0-9]{6}$"},
+        "event_id": {"type": ["string", "null"]},
+        "transaction_id": {"type": ["string", "null"]},
+        "canonical_url": {"type": ["string", "null"], "format": "uri"},
+        "content_hash": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "meaning": {
+      "type": "object",
+      "required": ["subject", "essence"],
+      "properties": {
+        "subject": {"type": "string", "minLength": 1},
+        "essence": {"type": "string", "minLength": 1},
+        "why_it_matters": {"type": "string"},
+        "how_to_use": {"type": "string"},
+        "human": {"type": "string"},
+        "simple": {"type": "string"},
+        "naya": {"type": "string"},
+        "machine": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_type", "source_ref"],
+      "properties": {
+        "source_type": {"type": "string"},
+        "source_ref": {"type": "string"},
+        "source_hash": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "truth": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["UNKNOWN", "SUPPORTED", "VERIFIED", "CONFLICTED", "REJECTED", "SUPERSEDED"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "authority": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["NONE", "PROPOSED", "AUTHORIZED", "REVOKED", "EXPIRED"]},
+        "authority_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "value": {
+      "type": "object",
+      "required": ["state", "dimensions"],
+      "properties": {
+        "state": {"enum": ["UNKNOWN", "POTENTIAL", "OBSERVED", "VERIFIED", "NEGATIVE"]},
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": {"type": "number", "minimum": -9, "maximum": 9}
+        }
+      },
+      "additionalProperties": false
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["stage"],
+      "properties": {
+        "stage": {"enum": ["RECOGNIZED", "DISTILLED", "STRUCTURED", "GOVERNED", "COMMITTED", "VERIFIED", "CONNECTED", "SURFACED", "APPLIED", "MEASURED", "LEARNED", "SUPERSEDED"]}
+      },
+      "additionalProperties": false
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["relation", "target"],
+        "properties": {
+          "relation": {"type": "string"},
+          "target": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
