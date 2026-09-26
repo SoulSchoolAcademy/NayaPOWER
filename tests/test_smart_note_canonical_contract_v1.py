@@ -7,6 +7,7 @@ CAL = ROOT / ".naya" / "runtime" / "smart_note_calendar.py"
 RECEIVER = ROOT / "supabase" / "functions" / "v7-smart-note-canonical" / "index.ts"
 RUNTIME = ROOT / "NAYANET" / "HUB" / "public" / "assistant-runtime.js"
 SURFACE = ROOT / "NAYANET" / "HUB" / "src" / "app" / "SmartNoteSurface.tsx"
+PROJECTION_WORKFLOW = ROOT / ".github" / "workflows" / "project-canonical-smart-note.yml"
 
 CANONICAL_HEADINGS = [
     "IN A NUTSHELL", "DATE / TIME", "WHAT", "WHY IT MATTERS", "HUMAN",
@@ -48,7 +49,14 @@ def test_live_receiver_and_hub_surface_carry_canonical_block():
     assert "intelligent_block_id" in receiver
     assert 'const smartLink=null;' in receiver
     assert 'const hubDeepLink="/hub?ib="+encodeURIComponent(intelligentBlockId);' in receiver
+    assert 'workflow:"project-canonical-smart-note.yml"' in receiver
     assert 'projection_category:input.projection_category||input.category||\'system\'' in runtime
+    workflow = PROJECTION_WORKFLOW.read_text(encoding="utf-8")
+    assert "EXPLICIT_PROJECTION_APPROVAL_GRANTED" in workflow
+    assert "scripts/project_canonical_smart_note.py" in workflow
+    assert "SMART_NOTE_PROJECTION_DRIFT" in workflow
+    assert "SMART_NOTE_PROJECTION_BYTE_IDENTICAL=PASS" in workflow
+    assert "permissions:\n  contents: write" in workflow
     assert "child_note" in runtime and "grandma_note" in runtime
     assert "how_to_apply" in runtime and "how_it_connects" in runtime
     assert "SMART_NOTE_CANONICAL_BLOCK_INCOMPLETE" in surface
