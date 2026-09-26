@@ -2,15 +2,26 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "nayanet://contracts/smart-link-v1",
   "title": "NayaNET Smart Link Contract V1",
+  "description": "Canonical machine contract for a Smart Link: the direct GitHub link to the canonical human-readable Smart Note smart-note.md artifact.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["smart_link_id", "schema_version", "target_type", "target_ref", "access_class"],
+  "required": ["smart_link_id", "schema_version", "target_type", "target_ref", "ib_id", "smart_link_url"],
   "properties": {
     "smart_link_id": {"type": "string", "minLength": 1},
     "schema_version": {"const": "1.0"},
-    "target_type": {"type": "string", "enum": ["smart_note", "ledger_event", "value_event", "collective_intelligence"]},
-    "target_ref": {"type": "string", "minLength": 1},
-    "access_class": {"type": "string", "enum": ["public", "authorized"]},
-    "label": {"type": "string", "minLength": 1}
+    "target_type": {"const": "smart_note"},
+    "target_ref": {
+      "type": "string",
+      "pattern": "^\\.naya/memory/smart-notes/.*/IB-[0-9]{6}/smart-note\\.md$"
+    },
+    "ib_id": {
+      "type": "string",
+      "pattern": "^IB-[0-9]{6}$"
+    },
+    "smart_link_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://github\\.com/SoulSchoolAcademy/NayaPOWER/blob/[^/]+/\\.naya/memory/smart-notes/.*/IB-[0-9]{6}/smart-note\\.md$"
+    }
   }
 }
