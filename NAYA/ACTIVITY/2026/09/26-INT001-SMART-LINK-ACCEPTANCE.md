@@ -104,6 +104,28 @@ The verifier proves the repository projection/link boundary. It does not allocat
 - Main was then independently re-fetched after merge and confirmed to contain both the verifier and adversarial test suite.
 - No Codex execution environment or repository CI workflow was available to independently execute the exact checked-in suite on GitHub, so no full-suite/CI claim is made.
 
+## Structural acceptance wave — 15-section Smart Note
+
+### What we were trying to prove
+INT-001 requires the canonical Smart Note to preserve the required 15-section human-readable structure. This wave adds deterministic enforcement rather than assuming that existing examples are sufficient.
+
+### Implementation
+- Added `REQUIRED_SMART_NOTE_SECTIONS` and `validate_smart_note_structure()` to `.naya/runtime/smart_link_verifier.py`.
+- Added adversarial structural tests to `tests/int001/test_smart_link_verifier.py`.
+- Real canonical artifacts tested by the acceptance suite: IB-001019 and IB-001024.
+- The test also creates a deliberately reordered malformed note and an explicitly N/A section case.
+
+### Verification
+The exact checked-in Python suite could not be executed through a repository runner in this session: no Codex environment was available and no workflow run was exposed for merge commit `861cc6e17d18fc782d691c3a8a23fe75fb731620`. I therefore make no CI/full-suite claim.
+
+Independent verification was performed against the exact fetched real Smart Note contents using an independent implementation of the same structural rule:
+- IB-001019: PASS — all 15 sections in required order.
+- IB-001024: PASS — all 15 sections in required order.
+- Reordered adversarial note: PASS — correctly rejected.
+- Explicit N/A content case: PASS — correctly accepted.
+
+The implementation/test change is merged to `main` as `861cc6e17d18fc782d691c3a8a23fe75fb731620`.
+
 ## Reassessment
 
 **Cold-Naya evidence is NOT the only remaining technical boundary.**
@@ -122,10 +144,10 @@ The new wave closes D and F at the deterministic test layer and materially stren
 1. A naturally occurring production PENDING case has not been evidenced.
 2. INT-001 remains PROPOSED and is not ratified.
 3. Full cold-Naya behavioral acceptance has not been proven.
-4. Repository-wide CI/full-suite execution of this new test was not independently observed.
+4. Repository-wide CI/full-suite execution of the checked-in acceptance suite was not independently observed.
 
 ## Next action
 
-Add and run deterministic adversarial structural acceptance tests for the required 15-section Smart Note order against representative canonical artifacts, preserving explicit N/A exceptions; then independently verify the results and reassess the remaining ratification blockers.
+Independently verify Smart Link target/ref resolution against the actual GitHub repository state for representative real Smart Notes, including a deliberately wrong-ref/path case; then reassess whether remote resolution and cold-Naya behavior are the only remaining technical boundaries.
 
 Do not ratify without human authority.
