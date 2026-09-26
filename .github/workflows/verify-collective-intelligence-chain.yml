@@ -81,7 +81,7 @@ jobs:
             });
             const sourceEventId=source.event?.event_id;
             if(!sourceEventId) throw new Error('AUTHORITY_SOURCE_EVENT_MISSING');
-            const grant=await page.evaluate(async({sourceEventId})=>{
+            const grant=await page.evaluate(async({sourceEventId,run})=>{
               const client=window.__NayaNETSupabaseClient;
               const session=(await client.auth.getSession()).data.session;
               const expires=new Date(Date.now()+10*60*1000).toISOString();
@@ -97,7 +97,7 @@ jobs:
               });
               if(error) throw error;
               return data;
-            },{sourceEventId});
+            },{sourceEventId,run});
             const grantId=grant?.grant_id;
             if(!grantId) throw new Error('AUTHORITY_GRANT_ISSUANCE_FAILED');
             return grantId;
