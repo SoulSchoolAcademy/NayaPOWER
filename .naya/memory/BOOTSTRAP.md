@@ -41,9 +41,9 @@ A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Sm
 
 ## 3. CANONICAL INTELLIGENCE — the one system
 
-The canonical durable intelligence object is an **Intelligent Block (IB)**.
+The canonical durable intelligence object is a **Smart Note / Intelligent Block (IB)**.
 
-A **Smart Note** is its human-readable canonical projection.
+**Smart Note = Intelligent Block.** They are one canonical intelligence object: the IB is its stable machine identity and Smart Note is its human-readable canonical expression/projection.
 
 Canonical repository projection:
 
