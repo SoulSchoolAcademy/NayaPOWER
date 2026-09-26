@@ -354,3 +354,90 @@ Do not create speculative contracts. Do not weaken acceptance criteria. Do not m
 After reconciliation, update the registry, execute the next authorized P0 action when safe, verify it, and leave exactly one successor prompt.
 
 **TAG → YOU'RE IT → EXECUTE → VERIFY → RECORD → UPDATE → PASS THE BATON.**
+
+## CONTRACT-TOPOLOGY-002 — CONSTITUTION + EXECUTION OWNERSHIP RECEIPT
+
+**Date:** 2026-09-26
+**Status:** VERIFIED DISCOVERY / RATIFICATION BLOCKED AT CONSTITUTIONAL PRECEDENCE
+
+### Constitutional authority comparison
+
+| Artifact | Version | Date/effective evidence | Authority claim | Current references | Supersession evidence | Disposition |
+|---|---|---|---|---|---|---|
+| `.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md` | Proposed V1.0 | Human-director-directed 2026-09-26; explicitly marked ratified | NayaNET Constitutional Contract Law; applies to every Naya, agent, contract, capability and governed execution | New contract itself; not yet the sole control-plane pointer | **NONE FOUND in inspected repository evidence** | RATIFIED BY DOCUMENTED HUMAN DIRECTION, but repository authority chain remains conflicted |
+| `.naya/codex/11-RUNTIME-CONSTITUTION.md` | V1.0 | No effective date stated in inspected header | Canonical / Constitutional; Document 11 of 20 | `.naya/control-plane/MAP.json`, `.naya/control-plane/STATE.json` still identify it as current constitutional authority | **NONE FOUND in inspected repository evidence** | CANONICAL/CONSTITUTIONAL POINTER REMAINS ACTIVE; conflict unresolved |
+
+**Precedence finding:** the repository does **not** currently establish explicit supersession or amendment precedence between these two constitutional artifacts. The new law contains a human-directed ratification statement, but that statement does not by itself rewrite the older control-plane authority pointers. Therefore the constitutional chain remains **CONFLICTED / HUMAN DECISION REQUIRED**. No constitutional pointer was silently changed.
+
+### Execution ownership finding
+
+**EP-001 is the single normative execution-owner candidate and should be treated as the only normative Execution Protocol boundary.** It explicitly owns execution behavior: proactive ownership, authorized objective advancement, next-value action selection, continuous execution, dependency ordering, execution waves, verification, evidence preservation, blocker handling, safe stops, continuation, and anti-passivity.
+
+The surrounding execution artifacts are classified as follows:
+
+| Artifact | Classification | Relationship to EP-001 |
+|---|---|---|
+| `.naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md` (EP-001) | **NORMATIVE OWNER** | One bounded normative execution contract; PROPOSED; harden/integrate, do not duplicate |
+| `.naya/NAYA-MASTER-EXECUTION-CONTRACT.md` | **SUPPORTING POLICY / LEGACY NORMATIVE OVERLAP** | Broad operational contract predating EP-001; its execution-behavior claims must be subordinated/reconciled rather than left as a competing owner |
+| `.naya/2026-09-11-18-50-NAYAPOWER-33-MASTER-ACTIVATION-PROTOCOL.md` | **SUPPORTING POLICY** | Entry/activation procedure; restores context and mission before execution; does not own execution loop semantics |
+| `.naya/2026-09-11-19-05-NAYAPOWER-34-LEAD-MODE-PROTOCOL.md` | **SUPPORTING POLICY** | Human/Naya lead-mode behavior; should defer execution mechanics to EP-001 |
+| `.naya/2026-09-11-19-20-NAYAPOWER-35-MISSION-CONTRACT.md` | **SUPPORTING POLICY / MISSION BOUNDARY** | Defines mission/objective framing; not the execution engine |
+| `.naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md` | **SUPPORTING POLICY + ENFORCEMENT BINDING** | Operationalizes continuous execution and lifecycle gating; it must not define a competing execution protocol |
+| `.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md` | **SUPPORTING CROSS-CUTTING LAW** | Governs continuity/learning relationship; EP-001 consumes its constraints |
+| `.naya/NAYA-EXECUTION-EFFICIENCY-LAW.md` | **SUPPORTING POLICY** | Efficiency/optimization constraints; not normative ownership of execution behavior |
+| `.naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md` | **SUPPORTING CROSS-CUTTING LAW** | Escalation/repetition boundary; EP-001 incorporates it as an execution constraint |
+| `.naya/control-plane/BATON-CONTRACT.md` | **SUPPORTING CONTINUATION CONTRACT** | Owns continuation boundary, not execution behavior |
+| `.naya/contracts/NAYA-NEXT-ACTION-HANDOFF-V1.schema.json` | **MACHINE SCHEMA** | Projects one next action/handoff; subordinate to BLOCKS + EP-001 + Baton relationship |
+| `.naya/control-plane/BLOCKS.json` | **CURRENT STATE / NEXT-ACTION AUTHORITY** | Owns active block and exactly one project-level next action; not a second execution protocol |
+| `.naya/control-plane/BATON.json` | **CONTINUATION PROJECTION** | Assembles continuation from STATE/BLOCKS/MAP/PROOF; does not override them |
+| `.naya/control-plane/STATE.json` | **CURRENT STATE AUTHORITY** | Owns current operational state; does not select execution semantics |
+| `.naya/control-plane/MAP.json` | **NAVIGATION / AUTHORITY MAP** | Owns mission/system/authority navigation; its constitutional pointer is currently conflicted |
+
+### One-next-action authority
+
+The topology is now explicit at the execution/continuity boundary:
+
+**BLOCKS.json owns the single project-level next action.**
+
+**EP-001 owns the normative rule for how Naya selects and executes that authorized action.**
+
+**BATON.json owns the continuation handoff projection.**
+
+**NAYA-NEXT-ACTION-HANDOFF-V1.schema.json owns only machine shape.**
+
+**STATE.json owns current operational state; MAP.json owns navigation; PROOF.json owns proof claims/evidence rules.**
+
+This is one next-action authority, not competing state machines.
+
+### Contract topology acceptance status
+
+| Acceptance condition | Result |
+|---|---|
+| One normative execution owner | **PASS — EP-001** |
+| No second Execution Protocol created | **PASS** |
+| Supporting execution artifacts classified | **PASS — evidence-backed classification above** |
+| One project-level next-action authority | **PASS — BLOCKS.json** |
+| Baton preserved as continuation boundary | **PASS** |
+| Machine handoff schema subordinate | **PASS** |
+| Constitutional precedence explicit | **BLOCKED — repository cannot establish supersession** |
+| Final topology ratification-ready | **BLOCKED by constitutional conflict** |
+
+### Safe authorized P0 frontier after reconciliation
+
+Because constitutional precedence remains unresolved, do **not** ratify or rewrite constitutional authority. The next safe P0 work is **EP-001 hardening/integration analysis** that does not alter constitutional authority: identify exact overlapping MUST rules with the Master Execution Contract, Lead Mode, Activation, and Continuous Execution Policy; define subordinate/supporting boundaries; and produce acceptance tests proving EP-001 is the sole normative execution owner.
+
+This work may proceed without resolving the constitutional conflict because it is repository analysis/reconciliation, not constitutional amendment. Any action that would change which constitutional artifact is authoritative remains **HUMAN DECISION REQUIRED**.
+
+### Evidence receipt
+
+- EP-001 exists at the exact canonical path and is V1.0 / PROPOSED.
+- New Constitutional Contract Law exists and is explicitly marked RATIFIED — HUMAN-DIRECTOR DIRECTED — 2026-09-26.
+- Runtime Constitution exists as V1.0 / CANONICAL / CONSTITUTIONAL.
+- MAP.json and STATE.json still point to Runtime Constitution as canonical current constitution.
+- No inspected repository evidence established explicit supersession/amendment of Runtime Constitution by Contract 00.
+- BATON-CONTRACT explicitly says Baton is not a second project state machine.
+- NAYA-NEXT-ACTION-HANDOFF schema explicitly says it is not a competing mission state machine.
+
+### Result
+
+**CONTRACT-TOPOLOGY-002: EXECUTED.** Constitutional authority remains **CONFLICTED / HUMAN DECISION REQUIRED**. Execution ownership is reconciled to **EP-001 as the single normative execution owner**, with existing execution artifacts retained as subordinate/supporting layers until explicit hardening is completed.
