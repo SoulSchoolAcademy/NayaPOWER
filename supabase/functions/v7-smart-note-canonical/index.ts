@@ -1,4 +1,4 @@
-// Canonical receiver contract: authoritative live IB identity is allocated here; repository projections never guess IDs. Acceptance semantics remain provenance-bound.
+﻿// Canonical receiver contract: authoritative live IB identity is allocated here; repository projections never guess IDs. Acceptance semantics remain provenance-bound.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // NAYANET LIVE-PARITY REVALIDATION 2026-09-23
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -479,3 +479,4 @@ Deno.serve(async(req)=>{
 
  }catch(error){console.error(error);return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error),event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)}
 });
+
