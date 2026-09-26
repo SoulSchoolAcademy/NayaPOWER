@@ -70,6 +70,10 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
             if s=="SUPERSEDED" or eid in superseded:superseded_rows.append(e)
             elif s=="STALE":stale.append(e)
             elif s=="HISTORICAL":historical.append(e)
+            elif s=="VERIFIED_REPOSITORY_RECORD" and str(e.get("event_type","")).casefold()=="activity":
+                # Activity events are verified records of completed execution, not
+                # current state claims. Verification must never be silently promoted to CURRENT.
+                historical.append(e)
             elif s in ACTIVE:active.append(e)
             elif s=="CONFLICTED":conflicted.append(e)
             else:unknown.append(e)

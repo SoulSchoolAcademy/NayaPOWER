@@ -9,6 +9,16 @@
 
 Project Intelligence is the deterministic reconstruction of one project's authorized canonical experience into **current, historical, superseded, stale, conflicted, unknown, evidence, and causal-lineage views**. It is not a second memory store.
 
+## SYSTEM 54 CONTRACT
+
+`current[]` is the **current epistemic-claim view** of Project Intelligence. It is not the operational control-plane state and it is not a list of verified execution records.
+
+- **Operational current state** belongs to `.naya/control-plane/STATE.json` (with BLOCKS/MAP/PROOF as the canonical operational control plane).
+- **Project Intelligence `current[]`** contains claims resolved as current under this document's epistemic rules.
+- **Verification is evidence about a record; currentness is a separate classification.** A record may be VERIFIED and still be HISTORICAL, SUPERSEDED, STALE, CONFLICTED, or otherwise not current.
+- **Activity/execution records remain history** unless a separate canonical claim explicitly establishes a current epistemic state.
+- Project state is carried separately in the reconstructed `project_state` field; it must never be inferred from `current[]`.
+
 ## CURRENT-TRUTH LAW
 
 ```
