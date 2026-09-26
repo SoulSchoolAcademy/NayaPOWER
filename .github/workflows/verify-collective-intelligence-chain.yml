@@ -196,10 +196,44 @@ jobs:
             const resolvedEventId=resolved.event?.event_id;
             if(!resolvedEventId) throw new Error('SEMANTIC_RECONCILIATION_NOT_PROVEN');
 
+            const verifier=await page.evaluate(async({run})=>{
+              const name='Collective Chain Verifier '+run;
+              const alias=('verifier'+run).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+              const identity=await window.NayaNETNameFirstAuth.establish({name,alias});
+              const client=window.__NayaNETSupabaseClient;
+              const session=client?(await client.auth.getSession()).data.session:null;
+              return {identity,session:session?{userId:session.user.id,access_token:session.access_token}:null};
+            },{run});
+            if(!verifier.identity?.authenticated||!verifier.session?.access_token) throw new Error('VERIFIER_AUTH_NOT_ESTABLISHED');
+            if(verifier.session.userId===session.userId) throw new Error('VERIFIER_MUST_BE_DIFFERENT_FROM_LEARNER');
+
+            const verifierOutcome=await compound(verifier.session,'intelligence_commit',{
+              idempotency_key:'cc-verifier-'+run+'-'+crypto.randomBytes(5).toString('hex'),
+              title:'Collective Intelligence Chain independent outcome '+run,
+              content:'Independent verifier observed that the lesson is applicable: restore canonical current state before consequential continuation.',
+              category:'COLLECTIVE_INTELLIGENCE',
+              topic:'INDEPENDENT_OUTCOME',
+              tags:['collective-chain','verifier','independent-outcome'],
+              learning_claim:'The lesson was independently observed as applicable by a separate authenticated identity.',
+              target_id:targetId,
+              applicable_scope:'NayaNET project continuation',
+              authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              what_changed:'An independent verifier confirmed the lesson applicability through a separate governed commit.',
+              next_use:'Use as independent outcome evidence for learning verification.',
+              parent_event_id:eventId,
+              unknown:['Real-world usefulness outside the tested project scope remains unproven.']
+            });
+            const verifierEventId=verifierOutcome.source_event?.event_id;
+            const verifierReceiptId=verifierOutcome.receipt?.receipt_id||verifierOutcome.receipt?.id;
+            if(!verifierEventId||!verifierReceiptId) throw new Error('VERIFIER_OUTCOME_INCOMPLETE');
+
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
               verification_method:'CONNECTED_RECONCILED_CONTROLLED_RUNTIME_PROOF',
-              observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS'}
+              outcome_id:verifierEventId,
+              receipt_id:verifierReceiptId,
+              source_event_id:eventId,
+              observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS',verifier_event_id:verifierEventId,verifier_receipt_id:verifierReceiptId}
             });
             if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
 
@@ -272,6 +306,8 @@ jobs:
                 connected_event_id:connectedEventId,
                 initial_checkpoint_id:checkpoint1,
                 learning_evidence_id:evidenceId,
+                verifier_event_id:verifierEventId,
+                verifier_receipt_id:verifierReceiptId,
                 replay_id:replay.id,
                 learner_state_version:applied.learning.learner_state_version,
                 outcome_event_id:outcomeEventId,
@@ -284,6 +320,7 @@ jobs:
                 integrated:true,
                 checkpointed:true,
                 cold_retrieved:true,
+                independent_outcome_proven:true,
                 applicability_proven:true,
                 behavior_changed:true,
                 outcome_observed:true,
