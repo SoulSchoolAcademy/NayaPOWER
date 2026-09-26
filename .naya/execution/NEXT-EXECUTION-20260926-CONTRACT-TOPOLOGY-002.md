@@ -472,3 +472,23 @@ After verification:
 If human authority is genuinely required, stop only that affected decision boundary while continuing all independent safe reconciliation.
 
 **TAG → YOU'RE IT → EXECUTE → VERIFY → RECORD → UPDATE → PASS THE BATON.**
+
+
+## POST-002 CONTINUATION
+
+**CONTRACT-TOPOLOGY-002 RECEIPT**
+
+- Constitutional comparison: **CONFLICTED / HUMAN DECISION REQUIRED**. No explicit supersession evidence was found between Contract 00 and Runtime Constitution V1.0; no constitutional pointer was silently changed.
+- Execution ownership: **EP-001 = single normative execution owner** for execution behavior.
+- Supporting layers: Master Execution, Master Activation, Lead Mode, Mission Contract, Continuous Execution Policy, Efficiency, Escalation, and continuity artifacts are subordinate/supporting boundaries where they overlap execution behavior.
+- Next-action authority: **BLOCKS.json** owns the one project-level next action; EP-001 governs how it is executed; BATON.json remains the continuation projection; NAYA-NEXT-ACTION-HANDOFF remains machine shape.
+- EP-001 hardening: **APPLIED** with explicit ownership boundary and acceptance tests; EP-001 remains PROPOSED.
+- Smart Link: normative meaning is confirmed as direct GitHub canonical Smart Note link. `SMART-LINK-CONTRACT.json` is a conflicting broad machine schema and is now classified as a **narrow/merge candidate**, pending reference audit.
+
+### NEXT HIGHEST-VALUE AUTHORIZED P0
+
+Audit every repository reference/dependent of `.naya/contracts/SMART-LINK-CONTRACT.json` and every `target_type` value. Determine whether the broad enum is used by live implementation or only stale/schema artifacts. If no distinct generic-link contract exists, narrow the schema to the single Smart Link meaning and preserve ledger/value/collective links under their own nouns/schemas.
+
+**STOP:** Do not alter constitutional authority. Do not invent a generic-link meaning. Do not claim Smart Link VERIFIED without exact target evidence.
+
+**VERIFY:** reference audit + schema validation + relevant tests + registry/topology update + one successor action.
