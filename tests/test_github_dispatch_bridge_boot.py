@@ -10,4 +10,6 @@ def test_github_dispatch_bridge_has_single_projection_selector():
 def test_projection_workflow_detects_untracked_projection_for_commit():
     workflow = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "project-canonical-smart-note.yml").read_text(encoding="utf-8")
     commit_step = workflow.split("- name: Commit deterministic projection", 1)[1].split("- name: Byte-for-byte verification from main", 1)[0]
-    assert "git status --porcelain" in commit_step, "git diff alone ignores newly created untracked canonical projections"
+    assert "git ls-files --error-unmatch" in commit_step, "commit step must distinguish tracked projections from newly created untracked projections"
+    assert "git diff --cached --quiet" in commit_step, "commit step must detect staged changes before deciding no commit is required"
+    assert "git show \"origin/main:$TARGET\"" in workflow, "final verification must read the artifact from origin/main, not an untracked workspace file"
