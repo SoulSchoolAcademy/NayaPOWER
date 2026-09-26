@@ -238,62 +238,54 @@ jobs:
             const replay=await page.evaluate(async({eventId})=>window.NayaAssistantRuntime.dreamReplay({event_id:eventId,idempotency_key:'cc-replay-'+eventId}),{eventId});
             if(!replay||replay.source_event_id!==eventId||replay.status!=='SIMULATED') throw new Error('REPLAY_NOT_VERIFIED');
 
+            const recordIndependentOutcome=async(label,body)=>{
+              const tokenValue='NAYA-COLLECTIVE-OUTCOME-'+run+'-'+label;
+              const sent=await page.evaluate(async({verifierId,body,grantId,url,key})=>{
+                const client=window.__NayaNETSupabaseClient; const s=(await client.auth.getSession()).data.session;
+                const res=await fetch(url+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:{authorization:'Bearer '+s.access_token,apikey:key,'content-type':'application/json'},body:JSON.stringify({recipient_user_id:verifierId,body,subject:'Collective Chain independent outcome',kind:'direct',idempotency_key:'cc-outcome-'+run+'-'+Date.now(),project_id:'NayaNET',authority_grant_id:grantId})});
+                const data=await res.json(); if(!res.ok||!data.ok) throw new Error('OUTCOME_MESSAGE_SEND_FAILED:'+JSON.stringify(data)); return data;
+              },{verifierId:verifierSession.userId,body,grantId:smartMailGrantId,url,key});
+              const messageId=sent.message_id, receiptId=sent.execution_receipt_id;
+              if(!messageId||!receiptId) throw new Error('OUTCOME_MESSAGE_LINEAGE_MISSING');
+              await verifierPage.evaluate(async({messageId,token})=>{
+                const client=window.__NayaNETSupabaseClient;
+                const {data:message,error:messageError}=await client.from('v7_mail_messages').select('id,thread_id,execution_receipt_id,body').eq('id',messageId).single();
+                if(messageError||!message) throw messageError||new Error('VERIFIER_MESSAGE_MISSING');
+                const body=message.body.includes(token)?token:'NO_MATCH';
+                const {data:reply,error:replyError}=await client.from('v7_mail_messages').insert({thread_id:message.thread_id,sender_id:(await client.auth.getSession()).data.session.user.id,body,metadata:{schema_version:'NAYANET_COLLECTIVE_CHAIN_OUTCOME_V1',reply_to_message_id:message.id,receiver_fixture:'controlled_exact_token_v1'}}).select('id').single();
+                if(replyError||!reply?.id) throw replyError||new Error('VERIFIER_REPLY_CREATE_FAILED');
+                const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token)); const expectedHash=Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,'0')).join('');
+                const {data:outcome,error:outcomeError}=await client.rpc('nayanet_record_smart_mail_response_outcome',{p_receipt_id:message.execution_receipt_id,p_message_id:message.id,p_reply_message_id:reply.id,p_expected_reply_hash:expectedHash});
+                if(outcomeError||outcome?.status!=='VERIFIED') throw outcomeError||new Error('INDEPENDENT_OUTCOME_RECORD_FAILED:'+JSON.stringify(outcome));
+              },{messageId,token:tokenValue});
+              const {data:outcome,error}=await page.evaluate(async({receiptId})=>window.__NayaNETSupabaseClient.from('nayanet_execution_outcomes').select('outcome_id,receipt_id,verified,verified_value,verifier_id,evidence,verification_method').eq('receipt_id',receiptId).single(),{receiptId});
+              if(error||!outcome?.verified||outcome.verifier_id===session.userId) throw error||new Error('INDEPENDENT_OUTCOME_NOT_VERIFIED');
+              return outcome;
+            };
+
+            const baselineOutcome=await recordIndependentOutcome('baseline','Return exactly NAYA-COLLECTIVE-OUTCOME-'+run+'-baseline when this controlled validation message is received.');
+            const verifiedLearning=await compound(session,'learning_verify',{
+              evidence_id:evidenceId,
+              verification_method:'INDEPENDENT_VERIFIED_RECEIVER_OUTCOME',
+              observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS',outcome_id:baselineOutcome.outcome_id,receipt_id:baselineOutcome.receipt_id,verifier_id:baselineOutcome.verifier_id}
+            });
+            if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
+
             const applied=await learningApply(session,evidenceId,replay.id);
             if(!applied.learning?.learner_state_version) throw new Error('LEARNER_STATE_NOT_UPDATED');
 
-            const decisionBefore=await decision(session,targetId);
-            if(!decisionBefore.decision?.influenced||decisionBefore.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT') throw new Error('APPLICABILITY_BEHAVIOR_CHANGE_NOT_PROVEN:'+JSON.stringify(decisionBefore));
-            if(decisionBefore.decision.authority?.changed!==false||decisionBefore.decision.authority?.granted!==false) throw new Error('AUTHORITY_CHANGED');
+            const decisionAfter=await decision(session,targetId);
+            if(!decisionAfter.decision?.influenced||decisionAfter.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT') throw new Error('APPLICABILITY_BEHAVIOR_CHANGE_NOT_PROVEN:'+JSON.stringify(decisionAfter));
+            if(decisionAfter.decision.authority?.changed!==false||decisionAfter.decision.authority?.granted!==false) throw new Error('AUTHORITY_CHANGED');
 
-            const outcomeToken='NAYA-COLLECTIVE-OUTCOME-'+run;
-            const outcomeMessage=await page.evaluate(async({verifierId,body,grantId,url,key})=>{
-              const client=window.__NayaNETSupabaseClient; const s=(await client.auth.getSession()).data.session;
-              const res=await fetch(url+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:{authorization:'Bearer '+s.access_token,apikey:key,'content-type':'application/json'},body:JSON.stringify({recipient_user_id:verifierId,body,subject:'Collective Chain independent outcome',kind:'direct',idempotency_key:'cc-outcome-'+Date.now(),project_id:'NayaNET',authority_grant_id:grantId})});
-              const data=await res.json(); if(!res.ok||!data.ok) throw new Error('OUTCOME_MESSAGE_SEND_FAILED:'+JSON.stringify(data)); return data;
-            },{verifierId:verifierSession.userId,body:'Return exactly '+outcomeToken+' when this controlled proof message is received.',grantId:smartMailGrantId});
-            const outcomeMessageId=outcomeMessage.message_id, outcomeReceiptId=outcomeMessage.execution_receipt_id;
-            if(!outcomeMessageId||!outcomeReceiptId) throw new Error('OUTCOME_MESSAGE_LINEAGE_MISSING');
-            const verifierReply=await verifierPage.evaluate(async({messageId,token})=>{
-              const client=window.__NayaNETSupabaseClient;
-              const {data:message,error:messageError}=await client.from('v7_mail_messages').select('id,thread_id,execution_receipt_id,body').eq('id',messageId).single();
-              if(messageError||!message) throw messageError||new Error('VERIFIER_MESSAGE_MISSING');
-              const body=message.body.includes(token)?token:'NO_MATCH';
-              const {data:reply,error:replyError}=await client.from('v7_mail_messages').insert({thread_id:message.thread_id,sender_id:(await client.auth.getSession()).data.session.user.id,body,metadata:{schema_version:'NAYANET_COLLECTIVE_CHAIN_OUTCOME_V1',reply_to_message_id:message.id,receiver_fixture:'controlled_exact_token_v1'}}).select('id').single();
-              if(replyError||!reply?.id) throw replyError||new Error('VERIFIER_REPLY_CREATE_FAILED');
-              const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token)); const expectedHash=Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,'0')).join('');
-              const {data:outcome,error:outcomeError}=await client.rpc('nayanet_record_smart_mail_response_outcome',{p_receipt_id:message.execution_receipt_id,p_message_id:message.id,p_reply_message_id:reply.id,p_expected_reply_hash:expectedHash});
-              if(outcomeError||outcome?.status!=='VERIFIED') throw outcomeError||new Error('INDEPENDENT_OUTCOME_RECORD_FAILED:'+JSON.stringify(outcome));
-              return {reply,outcome};
-            },{messageId:outcomeMessageId,token:outcomeToken});
-            const {data:independentOutcome,error:independentOutcomeError}=await page.evaluate(async({receiptId})=>{const c=window.__NayaNETSupabaseClient; return await c.from('nayanet_execution_outcomes').select('outcome_id,receipt_id,verified,verified_value,verifier_id,evidence,verification_method').eq('receipt_id',receiptId).single();},{receiptId:outcomeReceiptId});
-            if(independentOutcomeError||!independentOutcome?.verified||independentOutcome.verifier_id===session.userId) throw independentOutcomeError||new Error('INDEPENDENT_OUTCOME_NOT_VERIFIED');
-            const verifiedLearning=await compound(session,'learning_verify',{evidence_id:evidenceId,verification_method:'INDEPENDENT_VERIFIED_RECEIVER_OUTCOME',observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS',outcome_id:independentOutcome.outcome_id,receipt_id:outcomeReceiptId,verifier_id:independentOutcome.verifier_id}});
-            if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
+            const postOutcome=await recordIndependentOutcome('post','Observed governed action after learning application. Return exactly NAYA-COLLECTIVE-OUTCOME-'+run+'-post.');
+            if(!postOutcome.verified) throw new Error('POST_LEARNING_OUTCOME_NOT_VERIFIED');
 
-
-            const outcome=await page.evaluate(async({outcomeEventId,targetId,decisionBefore,lessonEventId})=>window.NayaAssistantRuntime.record({
-              event_id:outcomeEventId,
-              title:'Collective Intelligence Chain verified outcome',
-              content:'Cold-governed decision context used the verified lesson for target '+targetId+'.',
-              source:'verify-collective-intelligence-chain',
-              actor:'naya',
-              tags:['collective-chain','outcome','verified'],
-              metadata:{
-                lesson_event_id:lessonEventId,
-                target_id:targetId,
-                decision:decisionBefore.decision.decision,
-                influenced:decisionBefore.decision.influenced,
-                authority:decisionBefore.decision.authority,
-                verification:'observed runtime decision context'
-              }
-            }),{outcomeEventId,targetId,decisionBefore,lessonEventId:eventId});
-            if(!outcome?.receipt) throw new Error('OUTCOME_RECEIPT_MISSING');
-            const freshOutcome={event_id:independentOutcome.outcome_id,metadata:{influenced:true,verifier_id:independentOutcome.verifier_id,verified:true}};
-            if(!freshOutcome.metadata.influenced) throw new Error('OUTCOME_VERIFICATION_FAILED');
-
+            const outcomeEventId=postOutcome.outcome_id;
+            const outcome={receipt:{id:postOutcome.receipt_id}};
             const improved=await compound(session,'checkpoint',{
               checkpoint_id:'checkpoint:'+lessonId+':outcome',
-              source_event_ids:[eventId,connectedEventId,independentOutcome.outcome_id],
+              source_event_ids:[eventId,connectedEventId,baselineOutcome.outcome_id,postOutcome.outcome_id],
               current_understanding:'The continuation lesson was connected to a reconciled interpretation, verified as active learning, retrieved in a fresh governed decision context, applied without authority change, and produced an observed verified outcome.',
               title:lessonTitle+' — Improved checkpoint after verified collective lesson',
               confidence:1,
@@ -306,7 +298,8 @@ jobs:
                 {kind:'reconciled_interpretation',event_id:resolvedEventId,resolves_conflict_event_id:conflictingEventId},
                 {kind:'replay',replay_id:replay.id},
                 {kind:'learning_apply',learner_state_version:applied.learning.learner_state_version},
-                {kind:'outcome',event_id:independentOutcome.outcome_id,receipt_id:outcomeReceiptId,verifier_id:independentOutcome.verifier_id}
+                {kind:'baseline_outcome',event_id:baselineOutcome.outcome_id,receipt_id:baselineOutcome.receipt_id,verifier_id:baselineOutcome.verifier_id},
+                {kind:'outcome',event_id:postOutcome.outcome_id,receipt_id:postOutcome.receipt_id,verifier_id:postOutcome.verifier_id}
               ],
               authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
               applicable_scope:'NayaNET project continuation',
@@ -331,7 +324,7 @@ jobs:
                 learning_evidence_id:evidenceId,
                 replay_id:replay.id,
                 learner_state_version:applied.learning.learner_state_version,
-                outcome_event_id:independentOutcome.outcome_id,
+                outcome_event_id:postOutcome.outcome_id,
                 improved_checkpoint_id:'checkpoint:'+lessonId+':outcome'
               },
               acceptance:{
