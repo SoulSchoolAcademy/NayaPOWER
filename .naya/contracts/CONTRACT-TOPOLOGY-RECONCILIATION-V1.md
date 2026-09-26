@@ -361,3 +361,12 @@ The correct next architectural action is **reconcile the existing generic Smart 
 ### Exact next action
 
 **SMART-LINK-RECONCILIATION-001:** reconcile the existing `generate_smart_link` runtime/test path and both existing Smart Link schemas against the canonical narrow Smart Link law. Establish one canonical machine owner, one semantic owner, and an explicit disposition for generic ledger/value/collective targets. Do not create a replacement Smart Link contract; do not change constitutional authority; do not delete a live dependency until its callers/tests are migrated or explicitly retired with evidence.
+
+
+## SMART-LINK-RECONCILIATION-001 — TOPOLOGY UPDATE
+
+The live generic link generator was reconciled rather than preserved under the Smart Link noun. generate_smart_link() is now generate_reference() and the vertical slice exposes reference, eliminating the demonstrated runtime semantic collision. The existing canonical machine owner .naya/contracts/SMART-LINK-CONTRACT.json was narrowed in place to direct canonical Smart Note links. The duplicate .naya/contracts/schemas/SMART-LINK-CONTRACT.json is now a supporting $ref alias. Dedicated Ledger Event and Value Event schemas remain separate owners; Collective Intelligence and Verification Receipt remain distinct nouns.
+
+Acceptance evidence: 6/6 runtime tests pass; both JSON files parse; no live generate_smart_link implementation/caller remains in the clean reconciliation worktree; constitutional authority was untouched. Cross-field URL/IB correspondence remains application-level verification.
+
+**Next P0:** SMART-LINK-ENFORCEMENT-002 — mechanically bind the canonical Smart Link machine contract to the existing identity test/workflow; reject runtime/evidence/Hub URLs as Smart Links; no new contract; no constitutional change.
