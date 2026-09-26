@@ -59,7 +59,7 @@ Deno.serve(async(req)=>{
     if(!allowed) return json({ok:false,error:'SOURCE_NOT_AUTHORIZED'},403)
     const eventId='feed-interaction-'+interaction+'-'+sourceId+'-'+user.id
     const payload={event_id:eventId,project:'NayaNET',source:'nayanet-smart-feed',actor:'human',created_at:new Date().toISOString(),schema_version:'2.0.0',title:'Smart Feed '+interaction,content:'Authorized Smart Feed interaction',type:'interaction',classification:'observation',status:'active',tags:['smart-feed','interaction',interaction],metadata:{source_id:sourceId,interaction,actor_user_id:user.id}}
-    const rpc=await userSupabase.rpc('nayanet_record_cognition_event',{p_project_id:'NayaNET',p_event:payload,p_action:'smart_feed_interaction',p_expected_result:'interaction persisted idempotently',p_observed_result:'interaction persisted',p_learning:[{status:'captured',at:new Date().toISOString()}]})
+     const rpc=await userSupabase.rpc('nayanet_record_cognition_event',{p_project_id:'NayaNET',p_event:payload,p_action:'smart_feed_interaction',p_expected_result:'interaction persisted idempotently',p_observed_result:'interaction persisted',p_learning:[{status:'captured',at:new Date().toISOString()}],p_execution_authorization:null})
     if(rpc.error) return json({ok:false,error:rpc.error.message},400)
     return json({ok:true,action:'interact',interaction,source_id:sourceId,receipt:rpc.data})
   }
