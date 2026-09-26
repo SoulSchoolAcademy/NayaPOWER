@@ -263,7 +263,6 @@ jobs:
                 kind:'direct',
                 idempotency_key:'cc-independent-outcome-'+run,
                 project_id:'NayaNET',
-                experiment_case_id:eventId,
                 authority_grant_id:mailGrant.grant_id
               })
             });
@@ -279,7 +278,7 @@ jobs:
             const recordedOutcome=await fetch(url+'/rest/v1/rpc/nayanet_record_smart_mail_outcome',{
               method:'POST',
               headers:{Authorization:'Bearer '+verifier.session.access_token,apikey:key,'Content-Type':'application/json'},
-              body:JSON.stringify({p_receipt_id:action.execution_receipt_id,p_message_id:action.message_id,p_experiment_case_id:eventId})
+              body:JSON.stringify({p_receipt_id:action.execution_receipt_id,p_message_id:action.message_id,p_experiment_case_id:null})
             });
             const recorded=await recordedOutcome.json().catch(()=>({}));
             if(!recordedOutcome.ok||recorded?.status!=='VERIFIED') throw new Error('INDEPENDENT_OUTCOME_RECORD_FAILED:'+JSON.stringify(recorded));
@@ -290,33 +289,6 @@ jobs:
             const outcomeRows=await outcomeRowsResponse.json();
             const canonicalOutcome=outcomeRows?.[0];
             if(!canonicalOutcome||canonicalOutcome.user_id!==session.userId||canonicalOutcome.verifier_id!==verifier.session.userId||canonicalOutcome.verified!==true||canonicalOutcome.receipt_id!==action.execution_receipt_id||!canonicalOutcome.evidence||!Number.isFinite(Number(canonicalOutcome.verified_value))) throw new Error('INDEPENDENT_OUTCOME_LINEAGE_INVALID');
-
-            const outcomeInserted=await page.evaluate(async({verifierEventId,verifierReceiptId,learnerUserId,verifierUserId})=>{
-              const client=window.__NayaNETSupabaseClient;
-              const {data,error}=await client.from("nayanet_execution_outcomes").insert({
-                outcome_id:verifierEventId,
-                receipt_id:verifierReceiptId,
-                user_id:learnerUserId,
-                project_id:"NayaNET",
-                outcome_type:"independent_verification",
-                verified:true,
-                verified_value:1,
-                verifier_id:verifierUserId,
-                verification_method:"CONNECTED_RECONCILED_CONTROLLED_RUNTIME_PROOF",
-                evidence:{
-                  lesson_applicable:true,
-                  verifier_observed:true,
-                  verifier_independent:true,
-                  learner_user_id:learnerUserId,
-                  verifier_user_id:verifierUserId,
-                  verifier_receipt_id:verifierReceiptId,
-                  outcome_contract:"NAYANET_COLLECTIVE_CHAIN_OUTCOME_V1"
-                }
-              }).select("outcome_id").single();
-              if(error) throw error;
-              return data;
-            },{verifierEventId,verifierReceiptId,learnerUserId:session.userId,verifierUserId:verifier.session.userId});
-            if(!outcomeInserted?.outcome_id) throw new Error('OUTCOME_INSERT_FAILED');
 
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
