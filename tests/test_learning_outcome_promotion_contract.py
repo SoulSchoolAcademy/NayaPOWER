@@ -21,6 +21,9 @@ def test_learning_verify_binds_promotion_to_independent_outcome():
     ):
         assert marker in source
     assert 'const observed = body.observed_value ?? evidence.observed_value;' not in source
+    observed_block = source[source.index('const observed = {'):source.index('};', source.index('const observed = {')) + 2]
+    assert 'evidence_refs: evidenceRefs' in observed_block
+    assert 'evidence_refs\n' not in observed_block
 
 
 def test_database_trigger_blocks_truthy_active_learning_without_outcome():

@@ -560,7 +560,7 @@ async function learningVerify(client: any, userId: string, body: any) {
     verified_value: Number(outcome.verified_value),
     outcome_verification_method: String(outcome.verification_method ?? "INDEPENDENT_OUTCOME"),
     independent_outcome: true,
-    evidence_refs
+    evidence_refs: evidenceRefs
   };
   const { data, error } = await client.from("learning_evidence").update({
     status: "ACTIVE", verification_method: String(outcome.verification_method ?? method), observed_value: observed
