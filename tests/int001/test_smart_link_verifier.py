@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
 
 from smart_note_transaction import canonical_smart_note_path  # noqa: E402
-from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence  # noqa: E402
+from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence, validate_smart_note_structure  # noqa: E402
 
 
 def run():
@@ -43,6 +43,32 @@ def run():
     assert classify_smart_link(conflicted, "IB-001061", True, True, "main") == "CONFLICTED"
 
     assert classify_smart_link(missing, "IB-777777", False, False, "main") == "UNKNOWN"
+
+    # Structural acceptance — required 15-section Smart Note order.
+    for real_note in (
+        ROOT / ".naya/memory/smart-notes/2026/09/25/system/"
+        "canonical-memory-receiver/IB-001019/smart-note.md",
+        ROOT / ".naya/memory/smart-notes/2026/09/25/system/"
+        "canonical-memory-organization/IB-001024/smart-note.md",
+    ):
+        assert validate_smart_note_structure(real_note.read_text(encoding="utf-8")) == (True, [])
+    malformed = "\n".join([
+        "# SMART NOTE",
+        "## IN A NUTSHELL", "x", "## DATE / TIME", "x", "## WHAT", "x",
+        "## WHY IT MATTERS", "x", "## HUMAN", "x", "## CHILD", "x",
+        "## GRANDMA", "x", "## NAYA", "x", "## MACHINE", "x",
+        "## WHAT WE LEARNED", "x", "## CONNECTIONS", "x",
+        "## WHAT'S IN IT FOR YOU / US", "x", "## HOW TO APPLY", "x",
+        "## WHAT IT ULTIMATELY MEANS", "x", "## NEXT ACTION", "x",
+    ])
+    ok, errors = validate_smart_note_structure(malformed)
+    assert ok is False
+    assert errors
+    assert "section order" in " ".join(errors).lower()
+    n_a_note = malformed.replace("## NEXT ACTION", "## HOW TO APPLY\nN/A\n## NEXT ACTION")
+    ok, errors = validate_smart_note_structure(n_a_note)
+    assert ok is True
+    assert errors == []
 
     # D — exact vocabulary: Hub Deep Link, Smart Link, and Evidence Link cannot collapse.
     hub = "/hub?ib=IB-001061"
