@@ -18,7 +18,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "block_next_action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action.",
     "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
     "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "observed_head": "d1d1b1efd08e0f00ff49da515baa1926f511d502",
@@ -106,24 +106,25 @@
   ],
   "next_action": {
     "count": 1,
-    "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
+    "execution_prompt": ".naya/execution/NEXT-EXECUTION-20260926-SMART-LINK-ENFORCEMENT-002.md",
     "status": "ACTIVE",
-    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "action": "Execute SMART-LINK-ENFORCEMENT-002: bind the canonical Smart Link machine contract to the existing identity test/workflow, mechanically reject Hub/runtime/evidence URLs, verify the gate, update the registry/topology/receipt, then leave exactly one successor action.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Production Hub continuity is freshly proven; behavioral cold-Naya takeover is the next unresolved boundary.",
+    "reason": "Smart Link reconciliation is verified; enforcement is the single remaining executable boundary.",
     "acceptance": [
-      "Restore current main from canonical sources without conversational memory.",
-      "Answer the 14 cold-Naya questions with evidence-bound current values.",
-      "Execute the canonical next action without Shawn reconstructing context.",
-      "Leave a runnable successor with exactly one next action."
+      "Canonical schema is loaded by the identity gate.",
+      "Hub/runtime/evidence URLs fail schema validation as Smart Links.",
+      "Canonical Smart Note URL passes.",
+      "Affected tests pass.",
+      "Registry, topology, receipt, and successor baton are updated."
     ],
-    "verification": "Independent fresh-context behavioral observation plus repository evidence and successor continuation receipt."
+    "verification": "Fresh clean-worktree test execution plus repository diff/evidence inspection."
   },
   "successor_prompt": {
-    "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
-    "prompt": "Read and execute .naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md; restore live state; execute the single current next action; independently verify; update the control plane; post Issue #554 SIGN-IN/SIGN-OUT; leave exactly one successor next action. Never stop at a plan.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof.",
-    "artifact": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
+    "rule": "Read canonical baton and referenced control-plane sources before consequential execution.",
+    "prompt": "Read and execute .naya/execution/NEXT-EXECUTION-20260926-SMART-LINK-ENFORCEMENT-002.md; restore live state; execute the single current next action; independently verify; update registry/control plane; post Issue #554 SIGN-IN/SIGN-OUT; leave exactly one successor action. Never stop at a plan.",
+    "do_not": "Do not create a competing Smart Link contract. Do not change constitutional authority. Do not convert UNKNOWN or recorded claims into proof.",
+    "artifact": ".naya/execution/NEXT-EXECUTION-20260926-SMART-LINK-ENFORCEMENT-002.md"
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",

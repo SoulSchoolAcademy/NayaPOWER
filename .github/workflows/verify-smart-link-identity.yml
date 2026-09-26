@@ -5,6 +5,7 @@ on:
     paths:
       - ".naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md"
       - ".naya/tests/test_smart_link_identity_contract.py"
+      - ".naya/contracts/SMART-LINK-CONTRACT.json"
       - ".github/workflows/verify-smart-link-identity.yml"
   pull_request:
     paths:
@@ -23,6 +24,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install Smart Link schema validator
+        run: python3 -m pip install jsonschema
 
       - name: Run Smart Link identity gate
         run: python3 .naya/tests/test_smart_link_identity_contract.py

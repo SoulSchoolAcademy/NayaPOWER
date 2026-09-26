@@ -5,7 +5,7 @@ SmartNote dataclass is NOT the canonical Smart Note / Intelligent Block object.
 Canonical durable intelligence enters through the live receiver and the
 canonical IB projection/runtime.
 
-CREATE COMPATIBILITY NOTE -> CREATE LEDGER EVENT -> VERIFY -> VALUE -> POINTS -> LEVEL -> SMART LINK
+CREATE COMPATIBILITY NOTE -> CREATE LEDGER EVENT -> VERIFY -> VALUE -> POINTS -> LEVEL -> REFERENCE
 """
 from __future__ import annotations
 
@@ -135,15 +135,15 @@ def determine_level(cumulative_points: int) -> dict:
             "next_level": next_level[1] if next_level else None,
             "points_to_next": next_level[2] - cumulative_points if next_level else 0}
 
-def generate_smart_link(target_type: str, target_ref: str, *, access_class: str = "authorized") -> dict:
+def generate_reference(target_type: str, target_ref: str, *, access_class: str = "authorized") -> dict:
+    """Generate a generic compatibility reference, not a canonical Smart Link."""
     if target_type not in {"smart_note", "ledger_event", "value_event", "collective_intelligence"}:
-        raise ValueError("Unsupported Smart Link target type.")
+        raise ValueError("Unsupported reference target type.")
     if access_class not in {"public", "authorized"}:
-        raise ValueError("Unsupported Smart Link access class.")
-    return {"smart_link_id": f"slink_{uuid4().hex}", "schema_version": "1.0",
-            "target_type": target_type, "target_ref": target_ref, "access_class": access_class,
+        raise ValueError("Unsupported reference access class.")
+    return {"reference_id": f"ref_{uuid4().hex}", "schema_version": "1.0",
+            "reference_type": target_type, "target_ref": target_ref, "access_class": access_class,
             "label": f"Open verified {target_type.replace('_', ' ')}"}
-
 
 def record_verified_ai_action(verified_ai_action: dict, *, actor_ref: Optional[str] = None,
                               previous: Optional[LedgerEvent] = None) -> LedgerEvent:
@@ -189,4 +189,4 @@ def run_vertical_slice(title: str, content: str, *, actor_ref: Optional[str] = N
     return {"smart_note": asdict(note), "ledger_event": asdict(verified_ledger),
             "verification_receipt": receipt, "value_event": value,
             "member": determine_level(total),
-            "smart_link": generate_smart_link("ledger_event", verified_ledger.ledger_event_id)}
+            "reference": generate_reference("ledger_event", verified_ledger.ledger_event_id)}

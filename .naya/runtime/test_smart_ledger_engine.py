@@ -9,7 +9,7 @@ from smart_ledger_engine import (
     create_ledger_event,
     create_smart_note,
     determine_level,
-    generate_smart_link,
+    generate_reference,
     record_verified_ai_action,
     run_vertical_slice,
     verify_event,
@@ -24,7 +24,7 @@ class SmartLedgerEngineTests(unittest.TestCase):
         self.assertEqual(result["value_event"]["points"], 5)
         self.assertEqual(result["member"]["level"], 2)
         self.assertEqual(result["member"]["name"], "Emerging Member")
-        self.assertEqual(result["smart_link"]["target_type"], "ledger_event")
+        self.assertEqual(result["reference"]["reference_type"], "ledger_event")
 
     def test_value_requires_verification(self):
         note = create_smart_note("Test", "Content")
@@ -57,10 +57,12 @@ class SmartLedgerEngineTests(unittest.TestCase):
         self.assertEqual(second_event.previous_integrity_hash, first_event.integrity_hash)
         self.assertNotEqual(first_event.integrity_hash, second_event.integrity_hash)
 
-    def test_smart_link_is_safe_reference(self):
-        link = generate_smart_link("ledger_event", "ledger_123", access_class="authorized")
-        self.assertEqual(link["target_ref"], "ledger_123")
-        self.assertNotIn("actor_ref", link)
+    def test_reference_is_safe_and_not_a_smart_link(self):
+        reference = generate_reference("ledger_event", "ledger_123", access_class="authorized")
+        self.assertEqual(reference["target_ref"], "ledger_123")
+        self.assertEqual(reference["reference_type"], "ledger_event")
+        self.assertNotIn("actor_ref", reference)
+        self.assertNotIn("smart_link_id", reference)
 
 
 if __name__ == "__main__":
