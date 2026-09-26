@@ -281,23 +281,32 @@ jobs:
               return outcome;
             };
 
+            console.log('STAGE=BASELINE_OUTCOME_START');
             const baselineOutcome=await recordIndependentOutcome('baseline','Return exactly NAYA-COLLECTIVE-OUTCOME-'+run+'-baseline when this controlled validation message is received.');
+            console.log('STAGE=BASELINE_OUTCOME_VERIFIED');
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
               verification_method:'INDEPENDENT_VERIFIED_RECEIVER_OUTCOME',
               observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS',outcome_id:baselineOutcome.outcome_id,receipt_id:baselineOutcome.receipt_id,verifier_id:baselineOutcome.verifier_id}
             });
             if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
+            console.log('STAGE=LEARNING_VERIFIED');
 
+            console.log('STAGE=LEARNING_APPLY_START');
             const applied=await learningApply(session,evidenceId,replay.id);
             if(!applied.learning?.learner_state_version) throw new Error('LEARNER_STATE_NOT_UPDATED');
+            console.log('STAGE=LEARNING_APPLIED');
 
+            console.log('STAGE=DECISION_START');
             const decisionAfter=await decision(session,targetId);
             if(!decisionAfter.decision?.influenced||decisionAfter.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT') throw new Error('APPLICABILITY_BEHAVIOR_CHANGE_NOT_PROVEN:'+JSON.stringify(decisionAfter));
             if(decisionAfter.decision.authority?.changed!==false||decisionAfter.decision.authority?.granted!==false) throw new Error('AUTHORITY_CHANGED');
+            console.log('STAGE=DECISION_VERIFIED');
 
+            console.log('STAGE=POST_OUTCOME_START');
             const postOutcome=await recordIndependentOutcome('post','Observed governed action after learning application. Return exactly NAYA-COLLECTIVE-OUTCOME-'+run+'-post.');
             if(!postOutcome.verified) throw new Error('POST_LEARNING_OUTCOME_NOT_VERIFIED');
+            console.log('STAGE=POST_OUTCOME_VERIFIED');
 
             const outcomeEventId=postOutcome.outcome_id;
             const outcome={receipt:{id:postOutcome.receipt_id}};
