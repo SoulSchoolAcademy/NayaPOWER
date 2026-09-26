@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
 
 from smart_note_transaction import canonical_smart_note_path  # noqa: E402
-from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence, validate_smart_note_structure  # noqa: E402
+from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence, validate_smart_note_structure, verify_remote_smart_link  # noqa: E402
 
 
 def run():
@@ -130,6 +130,42 @@ def run():
     ) is False
     assert receiver_link_correspondence(
         note, dict(receiver, canonical_receiver="other-receiver"), canonical_ref="main"
+    ) is False
+
+    # RED: remote observation helper is intentionally not implemented yet.
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        observed_ref="main",
+        observed_ib="IB-001019",
+    ) is True
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        observed_ref="wrong-ref",
+        observed_ib="IB-001019",
+    ) is False
+
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/other.md",
+        observed_ref="main",
+        observed_ib="IB-001019",
+    ) is False
+
+    assert verify_remote_smart_link(
+        smart_link="https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        expected_ref="main",
+        observed_path=".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        observed_ref="main",
+        observed_ib="IB-001020",
     ) is False
 
     print("INT-001 acceptance tests passed + adversarial D/F/receiver-link cases")

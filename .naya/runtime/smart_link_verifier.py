@@ -67,6 +67,31 @@ def classify_link_kind(url: str) -> str:
         return "EVIDENCE_LINK"
     return "UNKNOWN"
 
+
+def verify_remote_smart_link(
+    smart_link: str,
+    expected_path: str,
+    expected_ref: str,
+    observed_path: str,
+    observed_ref: str,
+    observed_ib: str,
+) -> bool:
+    """Verify an observed remote GitHub target matches the claimed canonical Smart Link."""
+    parsed = urlparse(smart_link)
+    prefix = "/SoulSchoolAcademy/NayaPOWER/blob/"
+    if parsed.scheme != "https" or parsed.netloc != "github.com" or not parsed.path.startswith(prefix):
+        return False
+    target = parsed.path[len(prefix):].split("/", 1)
+    if len(target) != 2:
+        return False
+    claimed_ref, claimed_path = target
+    if claimed_ref != expected_ref or claimed_path != expected_path:
+        return False
+    if observed_ref != expected_ref or observed_path != expected_path:
+        return False
+    expected_ib = Path(expected_path).parent.name
+    return _valid_ib(expected_ib) and observed_ib == expected_ib
+
 def classify_smart_link(repo_path: Path, reported_ib: str, receiver_persisted: bool, projection_expected: bool, canonical_ref: str = "main") -> str:
     if not _valid_ib(reported_ib) or not receiver_persisted:
         return "UNKNOWN"
@@ -111,4 +136,4 @@ def receiver_link_correspondence(repo_path: Path, receiver_record: dict, canonic
     link = build_smart_link(repo_path, canonical_ref)
     return classify_link_kind(link) == "SMART_LINK"
 
-__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence", "validate_smart_note_structure"]
+__all__ = ["build_smart_link", "classify_link_kind", "classify_smart_link", "receiver_link_correspondence", "validate_smart_note_structure", "verify_remote_smart_link"]
