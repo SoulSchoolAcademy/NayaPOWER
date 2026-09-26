@@ -127,8 +127,9 @@ if __name__ == "__main__":
 
 def test_contract_00_v3_canonicality_and_human_ratification_rules():
     schema = _json(ROOT / ".naya/contracts/schemas/CONTRACT-00-GOVERNANCE-V3.schema.json")
-    assert schema["canonicality"]["max_in_force_constitutional_claimants"] == 1
-    assert schema["canonicality"]["unmapped_in_force_constitutional_claimants_before_ratification"] == 0
+    canonicality = schema["properties"]["canonicality"]["properties"]
+    assert canonicality["max_in_force_constitutional_claimants"]["const"] == 1
+    assert canonicality["unmapped_in_force_constitutional_claimants_before_ratification"]["const"] == 0
     assert schema["properties"]["ratification"]["properties"]["human_only"]["const"] is True
     assert schema["properties"]["ratification"]["properties"]["machine_cannot_ratify"]["const"] is True
 
