@@ -230,6 +230,8 @@ Deno.serve(async(req)=>{
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
+  const projectionCategory=String(body?.projection_category||body?.category||"system").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,64)||"system";
+  const projectionTopic=String(body?.projection_topic||body?.topic||subject).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").split("-").filter(Boolean).slice(0,3).join("-")||"smart-note";
   const evidence={receipt_id:crypto.randomUUID(),event_id:eventId,source,correlation_id:typeof body?.correlation_id==='string'?body.correlation_id:null,chain:["human_note","naya_note","machine_note","intelligence_feed","intelligent_block_v1"],verified_at:now,artifact_urls:artifactUrls,receipt_url:typeof body?.receipt_url==="string"?body.receipt_url:null,intelligent_block_v1:true,intelligent_block_hash:blockHash};canonicalReceiptId=evidence.receipt_id;
   const hubState={event_id:eventId,last_intelligence_event_at:now,smart_note_created:true,intelligent_block_created:true,intelligent_block_schema:"NAYANET_INTELLIGENT_BLOCK_V1",intelligent_block_hash:blockHash,feed_updated:true,canonical_collection:"Smart Notes",private_feed:true};
    const {data,error}=await supabase.rpc("v7_create_smart_note",{p_idempotency_key:idempotencyKey,p_user_id:user.id,p_human_note:canonicalHuman,p_naya_note:canonicalNaya,p_machine_note:machine,p_intelligent_feed:feed,p_intelligent_block:block,p_evidence:evidence,p_hub_state:hubState,p_subject:subject});
@@ -371,15 +373,8 @@ Deno.serve(async(req)=>{
      source_event_id:eventId,
      canonical_receiver:"v7-smart-note-canonical"
    };
-  const smartLinkPath="/hub?ib="+encodeURIComponent(intelligentBlockId);
-  const smartLink={
-    kind:"smart_feed_intelligent_block",
-    path:smartLinkPath,
-    intelligent_block_id:intelligentBlockId,
-    source_event_id:eventId,
-    target:"Smart Feed",
-    canonical:true
-  };
+  const hubDeepLink="/hub?ib="+encodeURIComponent(intelligentBlockId);
+  const smartLink=null;
   const completionReceipt={
     schema:"naya/smart-note-receiver-receipt/v1",
     canonical_receiver:"v7-smart-note-canonical",
@@ -388,7 +383,16 @@ Deno.serve(async(req)=>{
     event_id:eventId,
     transaction_id:canonicalTransactionId,
     feed_verification:feedVerificationReceipt,
-    smart_link:smartLink
+    smart_link:null,
+    hub_deep_link:hubDeepLink,
+    repository_projection:{
+      status:"PENDING",
+      category:projectionCategory,
+      topic:projectionTopic,
+      intelligent_block_id:intelligentBlockId,
+      source_event_id:eventId,
+      canonical_receiver:"v7-smart-note-canonical"
+    }
   };
   return json({
     ok:true,
@@ -400,9 +404,14 @@ Deno.serve(async(req)=>{
     transaction_id:canonicalTransactionId,
     transaction:transactionWithIntelligence,
     feed_verification:feedVerificationReceipt,
-    smart_link:smartLink,
+    smart_link:null,
+    hub_deep_link:hubDeepLink,
     completion_receipt:completionReceipt,
-    repository_projection:repositoryProjection
+    repository_projection:{
+      ...repositoryProjection,
+      category:projectionCategory,
+      topic:projectionTopic
+    }
   });
 
  }catch(error){console.error(error);return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error),event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)}
