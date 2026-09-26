@@ -66,6 +66,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
+      - name: Install test dependency
+        run: pip install --quiet "pytest>=8.0,<9"
       - name: Prove the audit itself still detects a rival constitution
         run: python -B -m pytest .naya/tests/test_constitutional_claim_audit.py -q
       - name: Fail on new self-declared constitutional authority
