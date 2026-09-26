@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
 
 from smart_note_transaction import canonical_smart_note_path  # noqa: E402
-from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence, validate_smart_note_structure, verify_remote_smart_link  # noqa: E402
+from smart_link_verifier import classify_smart_link, build_smart_link, classify_link_kind, receiver_link_correspondence, validate_smart_note_structure, verify_remote_smart_link, verify_receiver_projection_join  # noqa: E402
 
 
 def run():
@@ -174,3 +174,32 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+
+def test_receiver_projection_join_real_and_adversarial():
+    receiver = {
+        "intelligent_block_id": "IB-001019",
+        "source_event_id": "cc7f879b-35d8-43de-adbd-d5708f41c894",
+        "canonical_receiver": "v7-smart-note-canonical",
+        "canonical_path": ".naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+        "canonical_ref": "main",
+    }
+    observed = {
+        "intelligent_block_id": "IB-001019",
+        "source_event_id": "cc7f879b-35d8-43de-adbd-d5708f41c894",
+        "canonical_receiver": "v7-smart-note-canonical",
+        "canonical_path": receiver["canonical_path"],
+        "canonical_ref": "main",
+        "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md",
+    }
+    assert verify_receiver_projection_join(receiver, observed) is True
+
+    for field, value in (
+        ("canonical_receiver", "wrong-receiver"),
+        ("source_event_id", "wrong-event"),
+        ("intelligent_block_id", "IB-001020"),
+        ("canonical_path", receiver["canonical_path"].replace("IB-001019", "IB-001020")),
+    ):
+        bad = dict(observed)
+        bad[field] = value
+        assert verify_receiver_projection_join(receiver, bad) is False
