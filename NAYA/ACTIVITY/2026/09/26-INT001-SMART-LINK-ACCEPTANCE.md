@@ -126,6 +126,48 @@ Independent verification was performed against the exact fetched real Smart Note
 
 The implementation/test change is merged to `main` as `861cc6e17d18fc782d691c3a8a23fe75fb731620`.
 
+## Remote Smart Link resolution wave — completed
+
+### Plain-English purpose
+The previous verifier proved that a Smart Link can be constructed from a canonical path. This wave closes the next gap: prove that the actual remote GitHub target/ref/path/IB observed from repository state matches the claimed Smart Link.
+
+### What changed
+- Added `verify_remote_smart_link()` to `.naya/runtime/smart_link_verifier.py`.
+- Added adversarial tests for wrong ref, wrong path, and wrong IB.
+- Corrected the existing Smart Link filename matcher so the canonical `/IB-XXXXXX/smart-note.md` target is recognized as `SMART_LINK`.
+- Merged implementation/test changes to `main`.
+
+### Main evidence
+- PR #777 merged as `22eeb1740d669afba281b53ac05963a63cb53028`.
+- PR #778 merged as `aeaae60e22076abb86af79dbbab741c6d6f26182`.
+- Final verifier blob on `main`: `76faeca9191167ecd1d7021636c52c347d76be1a`.
+- Final acceptance test blob on `main`: `a18045eeaa48573561196e3bc985ac43381bb496`.
+
+### Independent remote observation
+The actual GitHub repository state was fetched for three real canonical Smart Notes on `main`:
+- IB-001019 → `.naya/memory/smart-notes/2026/09/25/system/canonical-memory-receiver/IB-001019/smart-note.md` → blob SHA `1ec8374698f3f81362799af316a6891a22606d17`.
+- IB-001024 → `.naya/memory/smart-notes/2026/09/25/system/canonical-memory-organization/IB-001024/smart-note.md` → blob SHA `456292514ae7db6899f2b05a0d3cc2ecdb0d3c5e`.
+- IB-001061 → `.naya/memory/smart-notes/2026/09/25/system/nayapower-daily-scorecard/IB-001061/smart-note.md` → blob SHA `047febcdde837b24bc63d3725e1f6da4bb6f325a`.
+All three fetched artifacts contain their claimed IB identity.
+
+Negative remote observations:
+- Same IB-001019 path on deliberately nonexistent ref `definitely-not-canonical-ref` → GitHub 404 / no commit found.
+- Deliberately wrong target path on `main` → GitHub 404 / not found.
+
+The deterministic observation helper was independently exercised against real-case and adversarial inputs:
+- real target/ref/path/IB → TRUE
+- wrong ref → FALSE
+- wrong path → FALSE
+- wrong IB → FALSE
+
+### Test-execution boundary
+No repository test runner/Codex environment was available, and `fetch_commit_workflow_runs` exposed no workflow run for the PR head. Therefore this receipt makes **no claim that the checked-in test file itself was executed by CI**. The deterministic helper behavior was independently executed with a separate implementation, and the remote GitHub observations above were directly fetched from the repository.
+
+### Reassessment
+Remote Smart Link target resolution is now technically evidenced for three real representative artifacts and adversarially rejected for wrong ref/path/identity observations. This removes the prior remote-resolution gap at the observed repository boundary.
+
+Cold-Naya behavioral acceptance is **still not proven**, so INT-001 is not ready for human ratification. Other remaining questions are receiver/API correspondence at the live boundary, natural production PENDING evidence, and any remaining adversarial acceptance coverage.
+
 ## Reassessment
 
 **Cold-Naya evidence is NOT the only remaining technical boundary.**
