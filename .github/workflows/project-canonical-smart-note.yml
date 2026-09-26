@@ -1,4 +1,5 @@
 name: Project Canonical Smart Note
+run-name: Project Canonical Smart Note - ${{ inputs.transaction_id }}
 
 on:
   workflow_dispatch:

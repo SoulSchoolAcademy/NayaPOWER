@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'supabase/functions/v7-smart-note-canonical/index.ts'
+      - 'supabase/functions/nayanet-github-dispatch/index.ts'
+      - '.github/workflows/project-canonical-smart-note.yml'
       - 'supabase/functions/naya-smart-feed/index.ts'
       - 'supabase/migrations/20260920160000_align_smart_note_receiver_canonical_event_identity.sql'
       - 'supabase/migrations/20260920162000_enforce_smart_note_single_canonical_event_identity.sql'
@@ -86,7 +88,10 @@ jobs:
             if(!/^IB-\\d{6}$/.test(ibId))throw new Error('SMART_NOTE_RECEIVER_IB_ID_MISSING:'+JSON.stringify(firstCall.body));
             if(receipt?.schema!=='naya/smart-note-receiver-receipt/v1'||receipt?.canonical_receiver!=='v7-smart-note-canonical'||receipt?.intelligent_block_id!==ibId||!receipt?.transaction_id)throw new Error('SMART_NOTE_COMPLETION_RECEIPT_INVALID:'+JSON.stringify(receipt));
             if(firstCall.body?.feed_verification?.verified!==true||firstCall.body?.feed_verification?.event_id!==String(tx?.evidence?.event_id||tx?.hub_state?.event_id||''))throw new Error('SMART_NOTE_FEED_VERIFICATION_MISSING:'+JSON.stringify(firstCall.body?.feed_verification));
-            if(firstCall.body?.smart_link!==null)throw new Error('SMART_NOTE_HUB_DEEP_LINK_MISLABELED_AS_SMART_LINK:'+JSON.stringify(firstCall.body?.smart_link));
+            const smartLink=String(firstCall.body?.smart_link||'');
+            if(firstCall.body?.pipeline!=='PROJECTION_VERIFIED'||!/^https:\/\/github\.com\/SoulSchoolAcademy\/NayaPOWER\/blob\/main\/.+\/IB-\d{6}\/smart-note\.md$/.test(smartLink))throw new Error('SMART_NOTE_DIRECT_GITHUB_LINK_NOT_VERIFIED:'+JSON.stringify({pipeline:firstCall.body?.pipeline,smart_link:smartLink}));
+            if(receipt?.smart_link!==smartLink||receipt?.repository_projection?.status!=='VERIFIED')throw new Error('SMART_NOTE_PROJECTION_RECEIPT_INCOMPLETE:'+JSON.stringify(receipt));
+            const githubResponse=await fetch(smartLink);const githubText=await githubResponse.text();if(!githubResponse.ok||!githubText.includes(String(ibId)))throw new Error('SMART_NOTE_GITHUB_FILE_NOT_VERIFIED:'+JSON.stringify({status:githubResponse.status,ibId}));
             if(firstCall.body?.hub_deep_link!==expectedHubDeepLink)throw new Error('SMART_NOTE_HUB_DEEP_LINK_INVALID:'+JSON.stringify(firstCall.body?.hub_deep_link));const smartNoteEventId=tx?.evidence?.event_id||tx?.hub_state?.event_id;if(!smartNoteEventId)throw new Error('SMART_NOTE_CANONICAL_EVENT_ID_MISSING');
             const duplicateCall=await callReceiver(first.session,payload);if(duplicateCall.status!==200||!duplicateCall.body?.ok)throw new Error('LIVE_RECEIVER_DUPLICATE_FAILED:'+JSON.stringify(duplicateCall));if(duplicateCall.body.transaction?.id!==tx.id)throw new Error('LIVE_RECEIVER_IDEMPOTENCY_ID_CHANGED');
             const malformed=await callReceiver(first.session,{idempotency_key:'malformed-'+proofKey});if(malformed.status!==400||!String(malformed.body?.error||'').includes('HUMAN_AND_NAYA_NOTES_REQUIRED'))throw new Error('LIVE_RECEIVER_MALFORMED_NOT_REJECTED:'+JSON.stringify(malformed));
@@ -112,7 +117,7 @@ jobs:
           p=Path("receiver-proof-machine.json")
           payload=json.loads(p.read_text(encoding="utf-8"))
           assert payload["status"]=="VERIFIED",payload
-          required={"receive_validate_persist","verified_receipt","four_canonical_artifacts","cognition_bridge","intelligence_index_via_hub","smart_ledger","hub_render","reload_identity","fresh_authenticated_context","duplicate_idempotency","malformed_rejection","unauthorized_rejection","wrong_owner_rejection","private_by_default","intelligent_block_v1_source","intelligent_block_roundtrip","intelligent_block_hub_projection"}
+          required={"receive_validate_persist","verified_receipt","github_projection","direct_smart_link","four_canonical_artifacts","cognition_bridge","intelligence_index_via_hub","smart_ledger","hub_render","reload_identity","fresh_authenticated_context","duplicate_idempotency","malformed_rejection","unauthorized_rejection","wrong_owner_rejection","private_by_default","intelligent_block_v1_source","intelligent_block_roundtrip","intelligent_block_hub_projection"}
           checks=payload["checks"];assert required<=checks.keys(),sorted(required-checks.keys());assert all(checks[k]=="PASS" for k in required),checks
           assert payload["smart_note_event_id"] and payload["cognition_event_id"] and payload["intelligence_index_id"] and payload["ledger_event_id"]
           assert payload["transaction_id"]==payload["duplicate_transaction_id"]

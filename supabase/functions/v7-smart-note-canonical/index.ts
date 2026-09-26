@@ -365,6 +365,58 @@ Deno.serve(async(req)=>{
     visibility:"private"
   };
 
+  // Golden-path closure: the authenticated owner's explicit Smart Note capture authorizes
+  // exactly one narrow repository projection for exactly this receiver transaction.
+  // No standing broad GitHub authority is created and no IB identity is guessed.
+  const existingProjectionGrant=await supabase.from("nayanet_authority_grants")
+    .select("grant_id,status,expires_at,actions,scope,source_event_id")
+    .eq("issuer_id",user.id).eq("subject_id",user.id).eq("source_event_id",eventId)
+    .eq("status","ACTIVE").order("created_at",{ascending:false}).limit(20);
+  if(existingProjectionGrant.error)throw existingProjectionGrant.error;
+  let projectionGrantId="";
+  const reusableGrant=(existingProjectionGrant.data||[]).find((g:any)=>
+    Array.isArray(g?.actions) && g.actions.includes("smart_note_github_projection") &&
+    String(g?.scope?.target||"")===canonicalTransactionId &&
+    (!g?.expires_at || new Date(g.expires_at)>new Date())
+  );
+  if(reusableGrant?.grant_id)projectionGrantId=String(reusableGrant.grant_id);
+  if(!projectionGrantId){
+    const issued=await supabase.rpc("nayanet_issue_authority_grant",{
+      p_subject_id:user.id,
+      p_source_event_id:eventId,
+      p_mission_id:"NayaNET Canonical Smart Note",
+      p_scope:{project_id:"NayaPOWER",target:canonicalTransactionId,repository:"SoulSchoolAcademy/NayaPOWER",branch:"main",workflow:"project-canonical-smart-note.yml"},
+      p_actions:["smart_note_github_projection"],
+      p_constraints:{consent_state:"explicit",source_event_id:eventId,transaction_id:canonicalTransactionId,purpose:"canonical_smart_note_projection",private_by_default:true},
+      p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
+      p_evidence:{authorization_type:"explicit_authenticated_smart_note_capture",source_event_id:eventId,transaction_id:canonicalTransactionId},
+      p_parent_authority:null
+    });
+    if(issued.error||!issued.data?.grant_id)throw issued.error||new Error("SMART_NOTE_PROJECTION_AUTHORITY_GRANT_FAILED");
+    projectionGrantId=String(issued.data.grant_id);
+  }
+  const projectionResponse=await fetch(supabaseUrl+"/functions/v1/nayanet-github-dispatch",{
+    method:"POST",
+    headers:{"Authorization":auth,"apikey":supabaseAnonKey,"Content-Type":"application/json","x-idempotency-key":"smart-note-projection:"+canonicalTransactionId},
+    body:JSON.stringify({operation:"project_smart_note",transaction_id:canonicalTransactionId,authority_grant_id:projectionGrantId,approval:"EXPLICIT_APPROVAL_GRANTED",idempotency_key:"smart-note-projection:"+canonicalTransactionId})
+  });
+  const projectionData=await projectionResponse.json().catch(()=>({}));
+  if(!projectionResponse.ok || projectionData?.ok!==true || projectionData?.pipeline!=="PROJECTION_VERIFIED" || typeof projectionData?.smart_link!=="string"){
+    throw new Error("SMART_NOTE_GITHUB_PROJECTION_FAILED:"+JSON.stringify({status:projectionResponse.status,error:projectionData?.error||"UNKNOWN",pipeline:projectionData?.pipeline||"UNKNOWN",request_id:projectionData?.request_id||null}));
+  }
+  const smartLink=String(projectionData.smart_link);
+  if(!/^https:\/\/github\.com\/SoulSchoolAcademy\/NayaPOWER\/blob\/main\/.+\/IB-\d{6}\/smart-note\.md$/.test(smartLink))throw new Error("SMART_NOTE_GITHUB_LINK_INVALID");
+  const projectionVerification={
+    status:"PROJECTION_VERIFIED",
+    smart_link:smartLink,
+    workflow:"project-canonical-smart-note.yml",
+    transaction_id:canonicalTransactionId,
+    authority_grant_id:projectionGrantId,
+    dispatch_receipt_id:projectionData?.receipt?.id||null,
+    verified_at:projectionData?.projection_verification?.completed_at||new Date().toISOString(),
+    github_run_url:projectionData?.projection_verification?.run_url||null
+  };
+
   const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);
   if(!/^IB-\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
    const repositoryProjection={
@@ -384,17 +436,19 @@ Deno.serve(async(req)=>{
     event_id:eventId,
     transaction_id:canonicalTransactionId,
     feed_verification:feedVerificationReceipt,
-    smart_link:null,
+    smart_link:smartLink,
     hub_deep_link:hubDeepLink,
     repository_projection:{
-      status:"PENDING",
+      status:"VERIFIED",
       category:projectionCategory,
       topic:projectionTopic,
       intelligent_block_id:intelligentBlockId,
       source_event_id:eventId,
       canonical_receiver:"v7-smart-note-canonical",
       workflow:"project-canonical-smart-note.yml",
-      transaction_id:canonicalTransactionId
+      transaction_id:canonicalTransactionId,
+      smart_link:smartLink,
+      projection_verification:projectionVerification
     }
   };
   return json({
@@ -407,15 +461,19 @@ Deno.serve(async(req)=>{
     transaction_id:canonicalTransactionId,
     transaction:transactionWithIntelligence,
     feed_verification:feedVerificationReceipt,
-    smart_link:null,
+    smart_link:smartLink,
     hub_deep_link:hubDeepLink,
+    projection_verification:projectionVerification,
     completion_receipt:completionReceipt,
     repository_projection:{
       ...repositoryProjection,
+      status:"VERIFIED",
       category:projectionCategory,
       topic:projectionTopic,
       workflow:"project-canonical-smart-note.yml",
-      transaction_id:canonicalTransactionId
+      transaction_id:canonicalTransactionId,
+      smart_link:smartLink,
+      projection_verification:projectionVerification
     }
   });
 

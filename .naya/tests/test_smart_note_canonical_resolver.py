@@ -46,7 +46,7 @@ def test_calendar_writer_accepts_only_receiver_issued_identity_and_lineage():
     calendar = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(calendar)
     body = "\n".join(f"## {h}" for h in calendar.REQUIRED_HEADINGS)
-    receipt = {"canonical_receiver":"v7-smart-note-canonical","status":"completed","intelligent_block_id":"IB-000123","event_id":"EV-123","transaction_id":"TX-123"}
+    receipt = {"schema":"naya/smart-note-receiver-receipt/v1","canonical_receiver":"v7-smart-note-canonical","status":"completed","intelligent_block_id":"IB-000123","event_id":"EV-123","transaction_id":"TX-123","feed_verification":{"verified":True,"event_id":"EV-123","source_id":"FEED-123"},"smart_link":{"intelligent_block_id":"IB-000123","path":"https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/smart-notes/2026/09/25/system/enforcement/IB-000123/smart-note.md"}}
     with tempfile.TemporaryDirectory() as raw:
         result = calendar.persist_smart_note(timestamp="2026-09-25T18:00:00+00:00",topic="Enforcement",body=body,receiver_receipt=receipt,root=Path(raw)/"smart-notes")
         assert result["intelligent_block_id"] == "IB-000123"

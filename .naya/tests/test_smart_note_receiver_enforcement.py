@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Failing-before/fixed-after proof for canonical Smart Note receiver enforcement."""
 from pathlib import Path
 import importlib.util
@@ -18,28 +18,22 @@ def load_module(name: str, source: str):
     spec.loader.exec_module(module)
     return module
 
-def test_before_main_bypasses_receiver():
-    old_source = subprocess.check_output(
-        ["git", "show", "origin/main:.naya/runtime/smart_note_calendar.py"],
-        text=True,
-    )
+def test_main_rejects_legacy_direct_identity_bypass():
+    current = load_module("smart_note_calendar", "")
+    body = "\n".join(f"## {h}" for h in current.REQUIRED_HEADINGS)
     with tempfile.TemporaryDirectory() as raw:
-        old_path = Path(raw) / "old_calendar.py"
-        old_path.write_text(old_source, encoding="utf-8")
-        spec = importlib.util.spec_from_file_location("old_calendar", old_path)
-        assert spec and spec.loader
-        old = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(old)
-        body = "\n".join(f"## {h}" for h in old.REQUIRED_HEADINGS)
-        result = old.persist_smart_note(
-            timestamp="2026-09-25T18:00:00+00:00",
-            topic="Before Enforcement",
-            body=body,
-            intelligent_block_id="IB-000002",
-            root=Path(raw) / "smart-notes",
-        )
-        assert Path(result["path"]).is_file()
-        print("BEFORE_MAIN=FAIL (direct intelligent_block_id bypass persisted)")
+        try:
+            current.persist_smart_note(
+                timestamp="2026-09-25T18:00:00+00:00",
+                topic="Legacy Bypass",
+                body=body,
+                intelligent_block_id="IB-000002",
+                root=Path(raw) / "smart-notes",
+            )
+        except (TypeError, ValueError, RuntimeError) as exc:
+            assert "receiver" in str(exc).lower() or "unexpected keyword" in str(exc).lower()
+        else:
+            raise AssertionError("canonical writer accepted a direct caller-supplied IB identity")
 
 def test_after_requires_receiver_receipt():
     current = load_module("smart_note_calendar", "")
@@ -99,12 +93,13 @@ def test_live_receiver_returns_feed_verified_smart_link_and_completion_receipt()
     required = [
         'const feedVerification=await supabase.from("nayanet_cognition_events")',
         'SMART_NOTE_FEED_VERIFICATION_FAILED',
-        'const smartLinkPath="/hub?ib="+encodeURIComponent(intelligentBlockId)',
+        'projectionData.smart_link',
         'const completionReceipt=',
         'schema:"naya/smart-note-receiver-receipt/v1"',
         'transaction_id:canonicalTransactionId',
         'feed_verification:feedVerificationReceipt',
         'smart_link:smartLink',
+        'PROJECTION_VERIFIED',
     ]
     missing = [token for token in required if token not in receiver]
     assert not missing, "live receiver contract missing: " + ", ".join(missing)
