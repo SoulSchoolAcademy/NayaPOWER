@@ -72,6 +72,7 @@ paths:
     post:
       operationId: captureCanonicalSmartNote
       x-canonical-action: smart_note_capture
+      x-canonical-receiver: v7-smart-note-canonical
       summary: Create a canonical Smart Note through the authoritative receiver
       description: Creates one canonical Smart Note/Intelligent Block and returns the receiver-issued IB identity, verified direct GitHub Smart Link, and completion receipt. A missing Smart Link is a hard failure.
       requestBody:
