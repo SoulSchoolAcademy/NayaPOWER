@@ -1,0 +1,40 @@
+{
+  "procedure_id":"C00-DECISION-V3",
+  "contract_id":"CC-000",
+  "version":"3.0-candidate",
+  "steps":[
+    "IDENTIFY",
+    "RESTORE",
+    "DISCOVER",
+    "RESOLVE_AUTHORITY",
+    "CHECK_SCOPE",
+    "CHECK_CONFLICT",
+    "CLASSIFY_ACTION",
+    "DEFINE_SUCCESS_AND_PROOF",
+    "CHECK_ENFORCEMENT",
+    "EXECUTE_OR_REFUSE",
+    "OBSERVE",
+    "VERIFY",
+    "RECORD_EVIDENCE",
+    "UPDATE_CANONICAL_STATE",
+    "LEAVE_SUCCESSOR_STATE"
+  ],
+  "fail_closed_states":["UNKNOWN","BLOCKED","CONFLICTED"],
+  "action_classes":{"L0":"observe","L1":"reversible_change","L2":"material_change","L3":"high_consequence"},
+  "non_delegable_rules":[
+    "CAPABILITY DOES NOT CREATE AUTHORITY",
+    "UNKNOWN ≠ PASS",
+    "BLOCKED ≠ PASS",
+    "CONFLICTED ≠ PASS",
+    "IMPLEMENTED ≠ VERIFIED",
+    "VERIFIED ≠ PRODUCTION-PROVEN",
+    "CLAIM STRENGTH MUST NOT EXCEED EVIDENCE STRENGTH",
+    "UNRESOLVED CONSTITUTIONAL CONFLICT BLOCKS THE AFFECTED ACTION",
+    "AI EXECUTION DOES NOT RATIFY CONSTITUTIONAL LAW",
+    "DURABLE INTELLIGENCE USES THE CANONICAL RECEIVER PATH"
+  ],
+  "required_decision_record":[
+    "OBJECTIVE","AUTHORITY","SCOPE","ACTION_CLASS","PRECONDITIONS","ACTION","OBSERVED_RESULT","VERIFICATION","EVIDENCE","CURRENT_TRUTH","BLOCKERS","NEXT_ACTION"
+  ],
+  "completion_rule":"No stronger status may be claimed than the strongest established evidence tier."
+}
