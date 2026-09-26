@@ -85,11 +85,14 @@ jobs:
           import importlib.util, json
           spec=importlib.util.spec_from_file_location("projection","scripts/project_canonical_smart_note.py")
           m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          from pathlib import Path
           tx=json.load(open("canonical-receiver-transaction.json",encoding="utf-8"))
           path=m.canonical_path(tx)
-          path.parent.mkdir(parents=True,exist_ok=True)
-          open("projection-path.txt","w",encoding="utf-8").write(str(path))
-          print(path)
+          repo_root=Path.cwd().resolve()
+          relative_path=path.resolve().relative_to(repo_root).as_posix()
+          Path(relative_path).parent.mkdir(parents=True,exist_ok=True)
+          open("projection-path.txt","w",encoding="utf-8").write(relative_path)
+          print(relative_path)
           PY
 
       - name: Fail closed on existing projection drift
