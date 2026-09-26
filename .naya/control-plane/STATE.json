@@ -479,5 +479,11 @@
     "repair": "Removed the obsolete duplicate Intelligent Block materialization path, retaining the deterministic canonical Block path.",
     "proof_status": "NOT_VERIFIED_AFTER_REPAIR",
     "deployment_authorization": "REQUIRED_FRESH_L3_PRODUCTION_AUTHORIZATION"
+  },
+  "understanding_fidelity_execution": {
+    "protocol": ".naya/operations/NAYA-UNDERSTANDING-FIDELITY-EXECUTION-PROTOCOL-V1.md",
+    "status": "CANONICAL",
+    "rule": "Before consequential transformation or action, READ → RECONSTRUCT → RECONCILE → ACT → VERIFY. Preserve material meaning, scorecard values, constraints, priorities, authority, and success conditions. Never claim full understanding from an incomplete read.",
+    "purpose": "Prevent semantic drift, skipped steps, plausible-but-wrong execution, and human-as-integration-layer failure."
   }
 }
