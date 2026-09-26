@@ -21,8 +21,10 @@ A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Sm
 
 Every meaningful piece of durable intelligence MUST enter NayaPOWER through the canonical Smart Note / Intelligent Block system.
 
-**Smart Note** is the human-facing name.
-**Intelligent Block (IB)** is the canonical machine identity and intelligence object.
+**Smart Note = Intelligent Block.**
+
+**Smart Note** is the human-facing name/expression.
+**Intelligent Block (IB)** is the stable canonical machine identity of that same intelligence object.
 
 There is ONE canonical object, ONE identity, ONE provenance chain, ONE lifecycle, and many projections.
 
