@@ -13,14 +13,14 @@ INT-001 remains PROPOSED. Conclusion: NOT READY FOR HUMAN RATIFICATION.
 | M7 | Smart Link targets exact canonical path and ends /IB-XXXXXX/smart-note.md. | PROVEN | Verifier path/suffix checks + tests. | None at repository-path scope. | NO |
 | M8 | Target file actually exists. | PROVEN | Three real files fetched from main; missing fixture tested. | Automated remote-link resolution absent. | YES |
 | M9 | Target file identifies the same IB. | PROVEN | Verifier checks path and content; three real artifacts match. | Receiver-object join remains external input. | YES |
-| M10 | Smart Link corresponds to receiver-created canonical object. | PARTIALLY PROVEN | Receiver proofs for real artifacts; verifier accepts receiver_persisted input. | No deterministic machine-level receiver-object join. | YES |
+| M10 | Smart Link corresponds to receiver-created canonical object. | PARTIALLY PROVEN | New receiver_link_correspondence() joins receiver-issued IB, source event, canonical receiver, canonical path, and Smart Link shape; real IB-001061 fields were inspected. | Receiver record is still an authoritative input; independent live receiver/API join remains unproven. | YES |
 | M11 | PENDING/MISSING/CONFLICTED/UNKNOWN are never inferred as VERIFIED. | PROVEN | Verifier + controlled fixtures cover all four. | Production PENDING/CONFLICTED examples do not exist in evidence; fixtures are synthetic. | YES |
-| M12 | Smart Link, Hub Deep Link, and Evidence Link remain distinct. | PARTIALLY PROVEN | CC-000, INT-001, Naya Link contract define exact nouns. | No dedicated adversarial terminology test/cold observation. | YES |
+| M12 | Smart Link, Hub Deep Link, and Evidence Link remain distinct. | PARTIALLY PROVEN | classify_link_kind() plus adversarial D tests deterministically distinguish all three; contracts define the canonical nouns. | Cold-Naya wording/decision behavior is still unobserved. | YES |
 | M13 | Repository projection cannot allocate IBs, create competing Notes/events, bypass intake, or claim persistence from file creation. | PROVEN | local execute() fails closed; receiver remains sole authority. | Complete creation-path audit remains open. | YES |
 | M14 | Contract conflict requires STOP → IDENTIFY AUTHORITY → RECONCILE → RECORD → RESUME. | PROVEN | Contract Stack + CC-000 + INT-001 agree; no semantic conflict found. | No live conflict case observed. | NO |
 | M15 | Smart Link creation cannot broaden privacy, authority, consent, or publication. | PROVEN | INT-001 §18 + CC-000; verifier has no authority-grant behavior. | All publication surfaces not tested by INT-001. | YES |
 | M16 | Contract changes follow required change-control sequence. | PROVEN | INT-001 creation/indexing; acceptance tests; verifier; receipts; no autonomous ratification. | Human ratification remains reserved. | NO |
-| M17 | Anti-patterns are prevented: wrong URL type, fabrication, local allocation, duplicate Note, file-only persistence, receiver-only projection. | PARTIALLY PROVEN | Contracts + fail-closed resolver + verifier. | Adversarial test coverage incomplete. | YES |
+| M17 | Anti-patterns are prevented: wrong URL type, fabrication, local allocation, duplicate Note, file-only persistence, receiver-only projection. | PARTIALLY PROVEN | D adversarial vocabulary cases + receiver correspondence cases now reject wrong link type, wrong IB, wrong source event, and wrong receiver; fail-closed resolver remains authoritative. | Broader anti-pattern matrix is still incomplete. | YES |
 | M18 | Cold-Naya decision rule is applied before saying Smart Link. | PARTIALLY PROVEN | Verifier covers repository/path/IB inputs; cold frontier remains open. | Independent fresh-context behavioral observation. | YES |
 | M19 | Completion standard requires ratification, mapped implementation, deterministic checks, passing acceptance, independent artifacts, cold terminology behavior, no competing interpretation. | PARTIALLY PROVEN | Index, implementation, verifier, tests, three real artifacts. | Ratification + missing acceptance/behavioral evidence. | YES |
 
@@ -30,9 +30,9 @@ INT-001 remains PROPOSED. Conclusion: NOT READY FOR HUMAN RATIFICATION.
 | A — Verified link | PARTIALLY PROVEN | Three real matching artifacts and deterministic link construction; remote resolution and receiver-object correspondence are not fully machine-proven. | YES |
 | B — Pending projection | PARTIALLY PROVEN | Controlled PENDING fixture works; no natural production PENDING case and no cold-Naya wording observation. | YES |
 | C — Conflict | PROVEN | Controlled wrong-IB fixture returns CONFLICTED; fixture is explicitly synthetic, not historical evidence. | NO |
-| D — Vocabulary | UNKNOWN | Contract definitions exist; no executable adversarial terminology test or cold observation. | YES |
+| D — Vocabulary | PROVEN | Deterministic classify_link_kind() test rejects Hub Deep Link as Smart Link and distinguishes Smart Link, Evidence Link, and unknown GitHub pages. | YES — cold behavior still required by H/M18 |
 | E — No fabrication | PROVEN | Verifier rejects noncanonical paths and preserves UNKNOWN/MISSING/PENDING. | YES |
-| F — Identity preservation | PARTIALLY PROVEN | Canonical laws/resolver preserve supplied IB; no dedicated regression test for reclassification/date changes. | YES |
+| F — Identity preservation | PROVEN | Adversarial test generates different date/category/topic paths with the same IB-001061 and asserts the immutable identity segment remains unchanged. | Cold behavioral proof remains separate. |
 | G — Receiver boundary | PROVEN | Local creation execute() fails closed and receiver remains authority. | YES |
 | H — Cold successor | UNKNOWN | Control plane explicitly keeps cold-Naya takeover open; no INT-001 cold behavioral run. | YES |
 
@@ -54,7 +54,7 @@ Control plane: unchanged. HUMAN-JOURNEY-P2 remains active and its current next a
 
 INT-001 is NOT READY FOR HUMAN RATIFICATION.
 
-The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. Remaining blocking evidence is: cold-Naya terminology/decision behavior; complete adversarial acceptance coverage; stronger machine-checkable receiver-object correspondence; independently observed Smart Link resolution; and human ratification itself.
+The contract is semantically aligned with the existing ratified authorities, but its own completion standard is not yet met. The new adversarial wave closes D and F at the deterministic test layer and materially strengthens receiver/link correspondence, but cold-Naya evidence is NOT the only remaining technical boundary. Remaining technical boundaries are: deterministic 15-section Smart Note structure enforcement; independently observed Smart Link target/ref resolution; independent receiver-object/API correspondence; broader anti-pattern coverage; natural production PENDING evidence; and cold-Naya terminology/decision behavior. Human ratification remains a separate authority boundary.
 
 ## Human-authority boundary
 
