@@ -413,7 +413,9 @@ Deno.serve(async(req)=>{
     repository_projection:{
       ...repositoryProjection,
       category:projectionCategory,
-      topic:projectionTopic
+      topic:projectionTopic,
+      workflow:"project-canonical-smart-note.yml",
+      transaction_id:canonicalTransactionId
     }
   });
 
