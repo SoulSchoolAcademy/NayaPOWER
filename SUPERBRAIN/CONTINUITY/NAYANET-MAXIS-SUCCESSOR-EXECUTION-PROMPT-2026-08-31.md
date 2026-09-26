@@ -5,7 +5,7 @@
 Authoritative repository: `SoulSchoolAcademy/NayaPOWER`
 
 NayaNET Front Door + Intelligent Hub implementation:
-`NAYANET/E01-ULTIMATE-ENTRANCE/index.html`
+`.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/index.html`
 
 MAXIS implementation:
 `NAYANET/MAXIS/index.html`

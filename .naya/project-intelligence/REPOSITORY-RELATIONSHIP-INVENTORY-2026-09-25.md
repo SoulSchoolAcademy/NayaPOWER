@@ -18,7 +18,7 @@ Evidence record for surgical consolidation toward the locked AAA NayaPOWER/NayaN
 - Conclusion: P8 and P9 were redundant nested working snapshots, not independent canonical implementations.
 
 ## Legacy product candidates
-- `NAYANET/E01-ULTIMATE-ENTRANCE/` - ARCHIVE per canonical map; 3 historical files; referenced by historical successor/corpus records. Preserve provenance.
+- `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` - ARCHIVE per canonical map; 3 historical files; referenced by historical successor/corpus records. Preserve provenance.
 - `NAYANET/E01-WELCOME/` - ARCHIVE per canonical map; referenced by Team Naya historical records. Preserve until archive/reference reconciliation.
 - `NAYANET/E02-INTELLIGENT-HUB/`, `E02-INTELLIGENT-HUB-AAA/`, `E02-INTELLIGENT-HUB-CLOUDFLARE/`, `E03-INTELLIGENT-HUB/` - historical/alternate Hub generations with live references. No blind deletion.
 - `NAYANET/HUB-ROOM-SYSTEM/` - CONSOLIDATE; active room contracts are referenced by tests/handoffs.
@@ -30,7 +30,10 @@ Evidence record for surgical consolidation toward the locked AAA NayaPOWER/NayaN
 
 ## Executed mutation
 - Removed redundant `NayaPOWER-P8` and `NAYAPOWER/NayaPOWER-P9` nested snapshots.
-- Verification immediately after removal: `P8_EXISTS=False`, `P9_EXISTS=False`; HEAD remained `4e04b048042b47ab152c2179c8745a2a5bf8516d`.
+- Removed all 10 detected Python `__pycache__` directories; verified zero remain.
+- Archived `NAYANET/E01-ULTIMATE-ENTRANCE/` to `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` because executable/workflow reference checks found no active dependency; historical references were rewritten to the archive path.
+- Verification: original E01 path absent, archive path present, and no old E01 path references remain in local text search.
+- The live GitHub main head advanced independently during the work; local `main` was rebased and synchronized to `origin/main` before continuing.
 
 ## One next action
-Reconcile the six stale P8/P9-only smart-note tests and the legacy Hub/room/interface references against the canonical tree, then execute the next highest-confidence consolidation without deleting unique proof or intelligence.
+Verify the E01 archive/reference mutation on `main`, then inventory the remaining historical Hub generations (`E01-WELCOME`, E02 variants, E03) for the next evidence-preserving consolidation move.

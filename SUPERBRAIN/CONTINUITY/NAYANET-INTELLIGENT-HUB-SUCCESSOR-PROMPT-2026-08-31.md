@@ -12,7 +12,7 @@ Do **not** use the retired NayaNET Smart Net repository.
 
 ### Current implementation
 
-`NAYANET/E01-ULTIMATE-ENTRANCE/index.html`
+`.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/index.html`
 
 Current implementation commit:
 

@@ -150,7 +150,7 @@ UPDATED CONTEXT FOR THE NEXT NAYA
 | Repository area | Classification | Rule |
 |---|---|---|
 | `NAYANET/E01-WELCOME/` | ARCHIVE | Historical front door; not current Hub |
-| `NAYANET/E01-ULTIMATE-ENTRANCE/` | ARCHIVE | Historical entrance experiment |
+| `.naya/archive/historical-product-generations/E01-ULTIMATE-ENTRANCE/` | ARCHIVE | Historical entrance experiment |
 | `NAYANET/E02-INTELLIGENT-HUB/` | ARCHIVE | Historical Hub generation |
 | `NAYANET/E02-INTELLIGENT-HUB-AAA/` | ARCHIVE | Historical visual/build variant |
 | `NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/` | ARCHIVE | Historical implementation/visual provenance; do not execute as current Hub |
