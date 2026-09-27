@@ -59,6 +59,67 @@ def parse_runtime_keys(repo: Path) -> list[str]:
     return re.findall(r'"([A-Z]+)"', m.group(1))
 
 
+CANONICAL_REGISTRY = '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+CC_ROW = re.compile(r'^\|\s*(CC-\d{3})\s*\|\s*([^|]+?)\s*\|', re.M)
+TOKEN_STOP = {'and', 'the', 'of', 'for', 'a', 'to', 'in', 'intelligence', 'system', 'contract'}
+
+
+def tokens(s: str) -> set:
+    return {w for w in re.findall(r'[a-z]+', s.lower()) if w not in TOKEN_STOP and len(w) > 3}
+
+
+def parse_cc_registry(repo: Path) -> dict:
+    text = (repo / CANONICAL_REGISTRY).read_text(encoding='utf-8')
+    out = {}
+    for m in CC_ROW.finditer(text):
+        out.setdefault(m.group(1), m.group(2).strip())
+    return out
+
+
+def taxonomy_findings(repo: Path, kernel: dict, mapping: dict | None = None) -> list:
+    """Detect competing contract taxonomies and prove or disprove a naive rebind.
+
+    A kernel key "NN" is NOT assumed to be CC-0NN. If it were, the Node semantics
+    would have to stay coherent. This measures whether they do.
+    """
+    findings = []
+    # A ratified instrument may legitimately declare a canonical contract unassigned,
+    # or declare that a contract id does not exist. Honour that, or the gate can
+    # never pass and becomes theater in the opposite direction.
+    scheme = (mapping or {}).get('contract_id_scheme') or {}
+    declared_unassigned = set(scheme.get('unassigned_canonical_contracts') or [])
+    declared_absent = set(scheme.get('absent_canonical_contracts') or [])
+    cc = parse_cc_registry(repo)
+    if not cc:
+        return findings
+    try:
+        absent = [f'CC-{i:03d}' for i in range(0, 28) if f'CC-{i:03d}' not in cc]
+    except Exception:
+        absent = []
+    undeclared_absent = [a for a in absent if a not in declared_absent]
+    if undeclared_absent:
+        findings.append(f'canonical contract registry has holes inside its own range: {undeclared_absent}')
+    assigned = {f'CC-0{k}' for n in kernel.get('nodes', []) for k in n.get('primary_contracts', [])}
+    unowned = sorted((set(cc) - assigned) - declared_unassigned)
+    if unowned:
+        findings.append(f'canonical contracts owned by no Master Node: {unowned}')
+    incoherent = []
+    for node in kernel.get('nodes', []):
+        declared = tokens(node.get('name', ''))
+        mapped = set()
+        for key in node.get('primary_contracts', []):
+            mapped |= tokens(cc.get(f'CC-0{key}', ''))
+        if declared and len(declared & mapped) / len(declared) < 0.34:
+            incoherent.append(node['id'])
+    if len(incoherent) == len(kernel.get('nodes', [])) and kernel.get('nodes'):
+        findings.append(
+            'kernel contract keys are NOT the CC registry scheme: rebinding "NN" to "CC-0NN" is '
+            f'incoherent for {len(incoherent)}/{len(kernel["nodes"])} Nodes ({incoherent}). '
+            'The kernel contract ownership map is mis-specified, not merely unbound. '
+            'Do not "fix" this by rebinding to CC ids.')
+    return findings
+
+
 def main() -> int:
     repo = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
 
@@ -70,6 +131,18 @@ def main() -> int:
         return fail(f'cannot read a ratified source: {exc}')
 
     errors = []
+
+    mapping_path = repo / MAPPING
+    mapping_schema_rel = '.naya/specifications/schemas/NAYA-MASTER-NODE-SEMANTIC-MAPPING-V1.schema.json'
+    if not (repo / mapping_schema_rel).is_file():
+        errors.append(f'ratification schema is absent: {mapping_schema_rel}')
+    _mapping_preview = {}
+    if mapping_path.is_file():
+        try:
+            _mapping_preview = json.loads(mapping_path.read_text(encoding='utf-8'))
+        except Exception:
+            _mapping_preview = {}
+    errors.extend(taxonomy_findings(repo, kernel, _mapping_preview))
 
     # Gate 1 - the runtime must still agree with the kernel it enforces.
     kernel_keys = [n.get('key') for n in kernel.get('nodes', [])]
@@ -84,7 +157,6 @@ def main() -> int:
         errors.append(f'white paper section 8 defines {len(paper)} nodes, expected 9')
 
     # Gate 3 - a declared reconciliation must exist and be complete.
-    mapping_path = repo / MAPPING
     if not mapping_path.is_file():
         errors.append(
             f'NO DECLARED RECONCILIATION: {MAPPING} is absent. The ratified strategic model and '

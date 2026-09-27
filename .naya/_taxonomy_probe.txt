@@ -1,0 +1,66 @@
+"""Does the kernel's 00-26 contract ownership map correspond to the ratified CC registry?
+
+If the bare numeric keys were simply CC ids with the prefix stripped, rebinding would be
+mechanical and safe. This tests that hypothesis directly. If mapping produces incoherent
+node semantics, then 'just rebind to CC ids' is NOT a safe fix and the Human Director
+needs to know that before ratifying.
+"""
+import json
+import re
+from pathlib import Path
+
+ROOT = Path('.')
+kernel = json.loads((ROOT / '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json').read_text(encoding='utf-8'))
+registry_text = (ROOT / '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md').read_text(encoding='utf-8')
+
+# CC id -> canonical name, from the registry summary table
+cc = {}
+for m in re.finditer(r'^\|\s*(CC-\d{3})\s*\|\s*([^|]+?)\s*\|', registry_text, re.M):
+    cc.setdefault(m.group(1), m.group(2).strip())
+
+print(f'CC ids in registry: {len(cc)}  range {min(cc)}..{max(cc)}')
+missing = [f'CC-{i:03d}' for i in range(0, 28) if f'CC-{i:03d}' not in cc]
+print(f'CC ids absent from registry within CC-000..CC-027: {missing}')
+print()
+
+# Hypothesis: kernel key "NN" == "CC-0NN"
+print('HYPOTHESIS TEST: kernel key "NN" -> CC-0NN')
+print('-' * 96)
+incoherent = []
+for node in kernel['nodes']:
+    mapped = []
+    for key in node['primary_contracts']:
+        target = f'CC-0{key}'
+        mapped.append(f"{key}={cc.get(target, '<<ABSENT>>')}")
+    print(f"{node['id']} {node['key']:<8} declared: {node['name']}")
+    for m in mapped:
+        print(f"        {m}")
+    print()
+
+# Coherence heuristic: does the declared node name share a domain word with its mapped contracts?
+def tokens(s):
+    stop = {'and', 'the', 'of', 'for', 'a', 'to', 'in', 'intelligence', 'system', 'contract'}
+    return {w for w in re.findall(r'[a-z]+', s.lower()) if w not in stop and len(w) > 3}
+
+print('COHERENCE OF "just rebind to CC ids" (declared node name vs mapped contract names):')
+print('-' * 96)
+for node in kernel['nodes']:
+    declared = tokens(node['name'])
+    mapped_words = set()
+    for key in node['primary_contracts']:
+        mapped_words |= tokens(cc.get(f'CC-0{key}', ''))
+    overlap = declared & mapped_words
+    ratio = len(overlap) / len(declared) if declared else 0
+    verdict = 'COHERENT' if ratio >= 0.34 else 'INCOHERENT'
+    if verdict == 'INCOHERENT':
+        incoherent.append(node['id'])
+    print(f"  {node['id']} {node['key']:<8} overlap={len(overlap)}/{len(declared)} ratio={ratio:.2f}  {verdict}")
+    if verdict == 'INCOHERENT':
+        print(f"        declared words : {sorted(declared)}")
+        print(f"        mapped words   : {sorted(mapped_words)[:12]}")
+
+print()
+print(f'Nodes whose declared semantics do NOT survive a naive CC rebind: {incoherent}')
+print()
+print('CC ids the kernel never assigns to any node:',
+      sorted(set(cc) - {f'CC-0{k}' for n in kernel['nodes'] for k in n['primary_contracts']}))

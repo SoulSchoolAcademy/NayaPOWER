@@ -16,12 +16,39 @@ FILES = [
     'supabase/functions/nayanet-compound-intelligence/index.ts',
 ]
 MAPPING_REL = '.naya/specifications/NAYA-MASTER-NODE-SEMANTIC-MAPPING.json'
+SCHEMA_REL = '.naya/specifications/schemas/NAYA-MASTER-NODE-SEMANTIC-MAPPING-V1.schema.json'
+REGISTRY_REL = '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+
+
+def write_repaired_registry():
+    """A world where the contract taxonomy is coherent.
+
+    The live registry has holes (CC-005, CC-007) and an unowned contract (CC-027),
+    and its names do not match the kernel's Node semantics. A repaired registry
+    demonstrates those findings are ACTIONABLE, not permanent noise.
+    """
+    k = json.loads((FX / '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json').read_text(encoding='utf-8'))
+    rows = ['# CANONICAL CONTRACT REGISTRY', '', '| Contract ID | Canonical Name | Status |', '|---|---|---|']
+    seen = set()
+    for n in k['nodes']:
+        for key in n['primary_contracts']:
+            cc = f'CC-0{key}'
+            if cc in seen:
+                continue
+            seen.add(cc)
+            # name derived from the owning Node so the rebind is coherent by construction
+            rows.append(f'| {cc} | {n["name"]} (area {key}) | PARTIAL |')
+    # CC-027 must exist and be owned, otherwise the gate is right to complain
+    rows.append('| CC-027 | CI and Full-Suite Evidence | PARTIAL |')
+    p = FX / REGISTRY_REL
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text('\n'.join(rows) + '\n', encoding='utf-8')
 
 
 def build_fixture():
     if FX.exists():
         shutil.rmtree(FX)
-    for rel in FILES:
+    for rel in FILES + [SCHEMA_REL]:
         dst = FX / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(SRC / rel, dst)
@@ -30,9 +57,22 @@ def build_fixture():
 def write_mapping(entries, status='RATIFIED', ratified_by='Human Director (Shawn)'):
     p = FX / MAPPING_REL
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps({'schema': 'naya/master-node-semantic-mapping/v1',
-                             'status': status, 'ratified_by': ratified_by,
-                             'entries': entries}, indent=2), encoding='utf-8')
+    doc = {'schema': 'naya/master-node-semantic-mapping/v1',
+           'status': status, 'ratified_by': ratified_by,
+           'canonical_source': 'MASTER_NODE_KERNEL_V1',
+           'taxonomy_decision': {'selected_taxonomy': 'KERNEL_00_26_AREAS',
+                                 'rejected_taxonomies': ['CC_000_027_REGISTRY'],
+                                 'rationale': 'fixture: rebind to CC ids proven incoherent'},
+           'contract_id_scheme': {'kernel_key_maps_to': 'CC-0NN under a repaired registry',
+                                  'unassigned_canonical_contracts': ['CC-027'],
+                                  'absent_canonical_contracts': ['CC-005', 'CC-007']},
+           'authority_boundary': {'self_ratification_permitted': False,
+                                  'statement': 'machine may not self-ratify'},
+           'entries': entries}
+    if status == 'RATIFIED':
+        doc['ratification'] = {'ratified_by': ratified_by, 'ratified_at': '2026-09-26T00:00:00Z',
+                               'authority': 'Human Director'}
+    p.write_text(json.dumps(doc, indent=2), encoding='utf-8')
 
 
 def full_mapping():
@@ -58,9 +98,15 @@ results = []
 build_fixture()
 results.append(run('no declared mapping', 'RED'))
 
-# 2. Complete, human-ratified mapping -> GREEN
+# 2. Complete, human-ratified mapping + coherent taxonomy -> GREEN
 write_mapping(full_mapping())
-results.append(run('complete human-ratified mapping', 'GREEN'))
+write_repaired_registry()
+results.append(run('ratified mapping + repaired taxonomy', 'GREEN'))
+
+# 2b. Mapping alone is NOT enough: unrepaired taxonomy must still block
+build_fixture()
+write_mapping(full_mapping())
+results.append(run('ratified mapping, taxonomy still broken', 'RED'))
 
 # 3. Mapping missing one ordinal -> RED
 m = full_mapping()[:-1]
