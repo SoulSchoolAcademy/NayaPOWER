@@ -1,15 +1,17 @@
-# Promotion, Revocation & Supersession V1
+# Promotion & Revocation V1
 
-Promotion must be evidence-bound.
+**Status:** CANONICAL BUILD CONTRACT
 
-```
-RAW → CAPTURED → DISTILLED → STRUCTURED → CANDIDATE → SUPPORTED → VERIFIED → CANONICAL
-```
+## Promotion
+`CANDIDATE → VERIFIED → PROMOTED`
 
-The exact ladder may vary by object type.
+Promotion requires declared evidence, verification reference, owner/scope, provenance, version, acceptance criteria, and authority. UNKNOWN is never promoted.
 
-Revocation removes current applicability without destroying provenance.
+## Revocation
+`PROMOTED → REVOKED` removes eligibility for active use while preserving historical lineage. Reinstatement requires a new version and explicit promotion.
 
-Supersession establishes lineage from old understanding to new understanding.
+## Receipt
+`object_id, prior_state, new_state, actor, authority_basis, evidence_refs[], verification_ref, timestamp, reason`.
 
-No status transition may erase uncertainty or contradictory evidence.
+## Fail-closed
+Missing evidence, authority, scope, provenance, verification, or unresolved contradiction blocks transition.
