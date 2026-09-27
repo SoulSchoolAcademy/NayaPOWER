@@ -1,0 +1,30 @@
+name: Verify Nine Master Node Kernel
+
+on:
+  pull_request:
+    paths:
+      - '.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md'
+      - '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json'
+      - '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.schema.json'
+      - 'scripts/verify-nine-master-nodes.py'
+      - 'tests/test_nine_master_nodes_spec.py'
+      - '.github/workflows/verify-nine-master-node-kernel.yml'
+  push:
+    paths:
+      - '.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md'
+      - '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json'
+      - '.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.schema.json'
+      - 'scripts/verify-nine-master-nodes.py'
+      - 'tests/test_nine_master_nodes_spec.py'
+      - '.github/workflows/verify-nine-master-node-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.13'}
+      - run: python3 scripts/verify-nine-master-nodes.py .naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json
+      - run: python3 -m pytest -q tests/test_nine_master_nodes_spec.py
