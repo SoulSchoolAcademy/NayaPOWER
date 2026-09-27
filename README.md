@@ -1,3 +1,40 @@
+# 🔥 SYSTEM CURRENT TRUTH — 2026-09-26
+
+> **NayaPOWER is a ratified governed-intelligence architecture whose nine Master Node kernel is structurally verified but whose genuine nine-node runtime behavior is not yet proven.**
+
+### Current state at a glance
+
+| Boundary | Truth |
+|---|---|
+| North Star | **RATIFIED** |
+| Canonical intelligence substrate | **STRONG / VERIFIED AT PROVEN SCOPES** |
+| Nine Master Node kernel | **STRUCTURALLY VERIFIED** |
+| Nine-node runtime boot | **NOT PROVEN** |
+| Node-level runtime attribution | **NOT PROVEN** |
+| Causal action proof | **NOT PROVEN** |
+| Learning that measurably changes future behavior | **NOT PROVEN GENERALLY** |
+| Generational compounding | **NOT PROVEN** |
+| Cold N9 successor | **NOT PROVEN** |
+| Production parity | **PARTIAL / BLOCKED** |
+
+**N9 behavioral proof: NOT PROVEN.** The current system has strong structural evidence and selected verified intelligence workflows, but the decisive experiment still requires a legitimate owner-scoped runtime.
+
+### What has changed
+
+- The Human Director ratified the new System North Star and Engineering Blueprint.
+- PR #809 established the enforceable nine-node kernel specification, schema, verifier, mutation suite, and CI gate.
+- PR #813 hardened intelligence evaluation against stale sources, assertion-only evidence, weak causal claims, false proof language, and fake compounding.
+- PR #816 is the machine behavioral harness frontier. Its repaired head has all four required integrity/kernel/evaluation gates green; the repair caught a real contract-library indexing defect rather than weakening the gate.
+- Historical Smart Notes remain valuable source material, but they are **not competing current authorities** and do not by themselves prove current runtime behavior.
+
+### The next proof
+
+**OWNER-SCOPED RUNTIME → N9-001 BOOT → NODE ATTRIBUTION → ABLATION → CAUSAL ACTION → OUTCOME → LEARNING → COMPOUNDING → COLD SUCCESSOR.**
+
+📋 **Daily intelligence report:** `.naya/project-intelligence/NAYAPOWER-DAILY-INTELLIGENCE-REPORT-2026-09-26.md`
+
+---
+
 ## 🔱 Canonical Contract Stack — MANDATORY
 
 Before substantive work touching canonical intelligence, projections, proof, learning, continuity, Hub surfaces, Sender/Receiver, or SmartConnect, every Naya MUST read:
