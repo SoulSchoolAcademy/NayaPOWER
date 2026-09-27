@@ -76,6 +76,15 @@ def score(objective: str, dimensions: Mapping[str, float], weights: Mapping[str,
     dims = tuple(Dimension(name, values[name], normalized[name], name in required_dimensions) for name in normalized)
     return ScoreReceipt(objective, dims, tuple(sorted(normalized.items())), gross, harm, gross - harm, tuple(critical_failures), status)
 
+def sensitivity(objective: str, dimensions: Mapping[str, float], approved_profiles: Mapping[str, Mapping[str, float]], *, harm_cost: float = 0.0, critical_failures: tuple[str, ...] = ()) -> dict[str, ScoreReceipt]:
+    """Evaluate approved alternative profiles without selecting a favorable one."""
+    if not approved_profiles:
+        raise ValueCalculusError("at least one approved profile is required")
+    return {
+        profile_id: score(objective, dimensions, weights, harm_cost=harm_cost, critical_failures=critical_failures)
+        for profile_id, weights in approved_profiles.items()
+    }
+
 def mvpa(verified_value: float, resources_consumed: float) -> float:
     verified_value = _finite(float(verified_value), 'verified_value')
     resources_consumed = _finite(float(resources_consumed), 'resources_consumed')
