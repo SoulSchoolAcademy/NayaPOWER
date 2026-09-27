@@ -8,17 +8,58 @@
   "properties": {
     "identity": {
       "type": "object",
+      "description": "Canonical identity of the Intelligent Block. intelligent_block_id is the receiver-allocated canonical identity (IB-######). It is assigned ONLY by the canonical receiver and MUST NOT be derived, guessed, or allocated by any local projection, test, or client.",
       "required": ["object_id", "event_id", "version", "schema_version"],
       "properties": {
         "object_id": {"type": "string", "minLength": 1},
         "event_id": {"type": "string", "minLength": 1},
+        "intelligent_block_id": {
+          "type": "string",
+          "pattern": "^IB-[0-9]{6}$",
+          "description": "Receiver-allocated canonical Intelligent Block identity. Absent pre-allocation; present on every persisted block."
+        },
         "version": {"type": "integer", "minimum": 1},
         "namespace": {"type": "string"},
         "schema_version": {"const": "NAYANET_INTELLIGENT_BLOCK_V1"}
       },
       "additionalProperties": false
     },
-    "source_bundle": {\n      "type": "array",\n      "description": "One or more provenance-bound sources distilled into the current understanding.",\n      "items": {\n        "type": "object",\n        "required": ["source_type", "source_ref"],\n        "properties": {\n          "source_type": {"type": "string"},\n          "source_ref": {"type": "string"},\n          "source_id": {"type": "string"},\n          "scope": {"type": "string"},\n          "hash": {"type": "string"},\n          "version": {"type": ["string", "integer"]},\n          "relationship": {"type": "string"},\n          "evidence_refs": {"type": "array", "items": {"type": "string"}}\n        },\n        "additionalProperties": true\n      }\n    },\n    "perspectives": {\n      "type": "object",\n      "description": "Human and machine perspectives preserved around the subject; perspectives are interpretations, not automatic truth.",\n      "additionalProperties": {"type": ["string", "object", "array"]}\n    },\n    "distillation": {\n      "type": "object",\n      "properties": {\n        "method": {"type": "string"},\n        "source_count": {"type": "integer", "minimum": 1},\n        "preserved": {"type": "array", "items": {"type": "string"}},\n        "removed_as_redundant": {"type": "array", "items": {"type": "string"}},\n        "compression_notes": {"type": "string"}\n      },\n      "additionalProperties": true\n    },\n    "type": {
+    "source_bundle": {
+      "type": "array",
+      "description": "One or more provenance-bound sources distilled into the current understanding.",
+      "items": {
+        "type": "object",
+        "required": ["source_type", "source_ref"],
+        "properties": {
+          "source_type": {"type": "string"},
+          "source_ref": {"type": "string"},
+          "source_id": {"type": "string"},
+          "scope": {"type": "string"},
+          "hash": {"type": "string"},
+          "version": {"type": ["string", "integer"]},
+          "relationship": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "perspectives": {
+      "type": "object",
+      "description": "Human and machine perspectives preserved around the subject; perspectives are interpretations, not automatic truth.",
+      "additionalProperties": {"type": ["string", "object", "array"]}
+    },
+    "distillation": {
+      "type": "object",
+      "properties": {
+        "method": {"type": "string"},
+        "source_count": {"type": "integer", "minimum": 1},
+        "preserved": {"type": "array", "items": {"type": "string"}},
+        "removed_as_redundant": {"type": "array", "items": {"type": "string"}},
+        "compression_notes": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "type": {
       "type": "object",
       "required": ["object_type", "event_type"],
       "properties": {

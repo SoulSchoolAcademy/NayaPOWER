@@ -41,27 +41,41 @@ assert {"lifecycle", "integrity"} <= set(schema["required"])
 assert schema["properties"]["integrity"]["properties"]["algorithm"]["const"] == "SHA-256"
 assert "truth" in schema["required"] and "authority" in schema["required"] and "value" in schema["required"]
 
-# Validate the portable YAML with Ruby's standard YAML parser when available in CI.
-# The contract gate also checks the canonical schema identifier without requiring
-# third-party Python dependencies.
+# Validate the portable YAML contract: it must parse and carry the canonical
+# schema_version. Prefers Ruby's standard YAML parser when available in CI, and
+# falls back to PyYAML so the constitutional gate runs on any developer machine.
+# Previously this shelled out to `ruby` unconditionally, which raised
+# FileNotFoundError on any host without Ruby and made the gate unrunnable.
+import shutil
 import subprocess
 
-yaml_check = subprocess.run(
-    [
-        "ruby",
-        "-e",
-        (
-            "require 'yaml'; "
-            "x=YAML.load_file(ARGV[0]); "
-            "raise 'schema_version mismatch' unless x['schema_version']=='NAYANET_INTELLIGENT_BLOCK_V1'; "
-            "puts 'YAML_OK'"
-        ),
-        str(block_yaml),
-    ],
-    capture_output=True,
-    text=True,
-)
-assert yaml_check.returncode == 0, yaml_check.stderr or yaml_check.stdout
+ruby = shutil.which("ruby")
+
+if ruby:
+    yaml_check = subprocess.run(
+        [
+            ruby,
+            "-e",
+            (
+                "require 'yaml'; "
+                "x=YAML.load_file(ARGV[0]); "
+                "raise 'schema_version mismatch' unless x['schema_version']=='NAYANET_INTELLIGENT_BLOCK_V1'; "
+                "puts 'YAML_OK'"
+            ),
+            str(block_yaml),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert yaml_check.returncode == 0, yaml_check.stderr or yaml_check.stdout
+else:
+    import yaml as _pyyaml
+
+    doc = _pyyaml.safe_load(block_yaml.read_text(encoding="utf-8"))
+    assert doc is not None, "intelligent-block-v1.yaml did not parse"
+    assert (
+        doc.get("schema_version") == "NAYANET_INTELLIGENT_BLOCK_V1"
+    ), f"schema_version mismatch: {doc.get('schema_version')!r}"
 
 activation_text = activation.read_text(encoding="utf-8")
 assert ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.md" in activation_text

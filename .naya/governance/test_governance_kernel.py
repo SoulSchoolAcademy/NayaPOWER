@@ -156,6 +156,83 @@ class GovernanceKernelTests(unittest.TestCase):
         self.assertIn("verification", receipt_requirements(allowed))
         self.assertIn("failure_or_block_reason", receipt_requirements(blocked))
 
+    # --- Ported from the stale duplicate tests/test_governance_kernel.py ---
+    # That file asserted against a phantom API and aborted collection of all
+    # 458 tests in `pytest tests/`. The three behaviours below were not covered
+    # anywhere; they are now asserted against the CANONICAL kernel.
+
+    def test_risk_tier_routing_is_deterministic_and_ordered(self):
+        def tier(u, c, i):
+            return Risk(uncertainty=u, consequence=c, irreversibility=i).tier
+
+        self.assertEqual(tier(1, 1, 1), "LOW")
+        self.assertEqual(tier(5, 5, 5), "MODERATE")
+        self.assertEqual(tier(5, 5, 7), "HIGH")
+        self.assertEqual(tier(9, 9, 9), "CRITICAL")
+        # Deterministic: identical inputs always yield the identical tier.
+        for _ in range(5):
+            self.assertEqual(tier(3, 4, 5), Risk(3, 4, 5).tier)
+        # Monotonic: raising any dimension never lowers the tier.
+        # Boundaries are score >= 50 (MODERATE), >= 150 (HIGH), >= 400 (CRITICAL).
+        order = {"LOW": 0, "MODERATE": 1, "HIGH": 2, "CRITICAL": 3}
+        self.assertLessEqual(order[tier(4, 4, 4)], order[tier(4, 4, 7)])   # 64 -> 112, both MODERATE
+        self.assertLessEqual(order[tier(4, 4, 7)], order[tier(4, 6, 7)])  # 112 -> 168 crosses HIGH
+        self.assertLessEqual(order[tier(4, 6, 7)], order[tier(8, 8, 8)])  # 168 -> 512 crosses CRITICAL
+        # Exact boundary values land in the higher tier.
+        self.assertEqual(tier(5, 5, 2), "MODERATE")   # score 50
+        self.assertEqual(tier(5, 6, 5), "HIGH")       # score 150
+        self.assertEqual(tier(5, 8, 10), "CRITICAL")  # score 400
+
+    def test_risk_rejects_out_of_range_dimensions(self):
+        for kwargs in (
+            {"uncertainty": -1, "consequence": 1, "irreversibility": 1},
+            {"uncertainty": 1, "consequence": 11, "irreversibility": 1},
+            {"uncertainty": 1, "consequence": 1, "irreversibility": 1.5},
+            {"uncertainty": "1", "consequence": 1, "irreversibility": 1},
+        ):
+            with self.assertRaises(ValueError):
+                Risk(**kwargs)
+
+    def test_receipt_requirements_are_reconstructable_and_complete(self):
+        allowed = evaluate(self.decision, self.authority)
+        required = set(receipt_requirements(allowed))
+        # Every field required for an independent successor to reconstruct the
+        # decision without conversation archaeology.
+        for field in (
+            "decision_id",
+            "actor",
+            "purpose",
+            "authority",
+            "scope",
+            "requested_action",
+            "actual_action",
+            "observation",
+            "verification",
+            "timestamp",
+            "uncertainty",
+            "next_action",
+            "resulting_changes",
+        ):
+            self.assertIn(field, required)
+        # A success receipt must not carry a block reason, and vice versa.
+        blocked = evaluate(self.decision, None)
+        self.assertNotIn("resulting_changes", receipt_requirements(blocked))
+        self.assertNotIn("failure_or_block_reason", receipt_requirements(allowed))
+        # Requirements are stable across repeated evaluation.
+        self.assertEqual(
+            receipt_requirements(evaluate(self.decision, self.authority)), tuple(receipt_requirements(allowed))
+        )
+
+    def test_stop_dominates_continuation(self):
+        # A stopped decision cannot be resumed into execution.
+        with self.assertRaises(ValueError):
+            transition(GovernanceState.STOPPED, GovernanceState.EXECUTING)
+        with self.assertRaises(ValueError):
+            transition(GovernanceState.STOPPED, GovernanceState.AUTHORIZED)
+        # And a stop cannot be laundered into VERIFIED either.
+        with self.assertRaises(ValueError):
+            transition(GovernanceState.STOPPED, GovernanceState.VERIFIED)
+
 
 if __name__ == "__main__":
     unittest.main()

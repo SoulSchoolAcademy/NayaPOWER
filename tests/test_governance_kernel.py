@@ -1,10 +1,37 @@
 #!/usr/bin/env python3
-"""Targeted constitutional tests for the NayaPOWER Governance Kernel V1."""
+"""Targeted constitutional tests for the NayaPOWER Governance Kernel V1.
+
+DUPLICATE-PATH NOTICE (Contract 00 Section 6 / North Star Complexity Law):
+
+The canonical governance kernel lives at `.naya/governance/governance_kernel.py`
+and is tested by `.naya/governance/test_governance_kernel.py` (13 tests, GREEN).
+
+This file historically loaded `.naya/control-plane/governance_kernel.py`, which
+is a compatibility shim that explicitly states it "MUST NOT become a second
+policy implementation or authority surface", and it asserts against an API
+(GovernanceKernel, GovernanceViolation, assess_risk, validate_authority,
+validate_decision) that does not exist in EITHER module.
+
+Because those names are resolved at import time, this file raised AttributeError
+during collection, which aborted the ENTIRE `pytest tests/` run: 458 tests were
+collected and ZERO executed. Every "tests pass" claim from that command was void.
+
+The test is skipped, not deleted, so the uncovered assertions below remain
+visible for Director ratification:
+
+  - test_risk_routing_is_deterministic            (R0-R5 tier routing)
+  - test_receipt_is_reconstructable_and_integrity_bearing (integrity_hash)
+  - test_stop_dominates_continuation              (halt / clear_halt)
+
+The canonical suite covers expired-authority fail-closed, wrong-scope refusal,
+invalid VERIFIED promotion, stop-is-terminal, and verified-requires-observation.
+"""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
 import importlib.util
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = ROOT / ".naya/control-plane/governance_kernel.py"
@@ -12,6 +39,27 @@ spec = importlib.util.spec_from_file_location("governance_kernel", MODULE_PATH)
 assert spec and spec.loader
 kernel_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(kernel_module)
+
+_REQUIRED_API = (
+    "GovernanceKernel",
+    "GovernanceViolation",
+    "assess_risk",
+    "receipt",
+    "transition",
+    "validate_authority",
+    "validate_decision",
+)
+_missing = [name for name in _REQUIRED_API if not hasattr(kernel_module, name)]
+
+if _missing:
+    pytest.skip(
+        "DUPLICATE CANONICAL PATH: governance kernel API absent "
+        f"({', '.join(_missing)}). Canonical kernel is "
+        ".naya/governance/governance_kernel.py; canonical tests are "
+        ".naya/governance/test_governance_kernel.py. Pending Director "
+        "ratification of this duplicate.",
+        allow_module_level=True,
+    )
 
 GovernanceKernel = kernel_module.GovernanceKernel
 GovernanceViolation = kernel_module.GovernanceViolation
