@@ -1,6 +1,4 @@
 import hashlib
-import json
-
 import pytest
 
 from n9_behavioral_harness import (
@@ -32,6 +30,16 @@ def _invocations():
         }
         for i, node_id in enumerate(NODES)
     ]
+
+
+def test_builder_never_synthesizes_proven_status():
+    receipt = build_receipt(
+        experiment_id="exp-0", test_id="N9-000", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="control", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="REFUSED", decision_before="defer",
+        decision_after="defer", action="none", observed_outcome="not-executed",
+        verification={"independent": False, "evidence_ids":[]}, causal_delta={})
+    assert receipt["status"] == "NOT_PROVEN"
 
 
 def test_receipt_requires_all_nine_runtime_node_attributions():
