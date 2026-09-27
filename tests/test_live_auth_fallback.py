@@ -1,5 +1,4 @@
 import json
-from urllib.parse import parse_qs
 from unittest.mock import patch
 
 import pytest
@@ -47,9 +46,10 @@ def test_authenticated_session_refreshes_when_access_token_is_rejected():
     assert session["owner_id"] == "owner-123"
     assert session["access_token"] == "fresh-access-token"
     assert calls[1][0].endswith("/auth/v1/token?grant_type=refresh_token")
-    assert parse_qs(calls[1][2].decode()) == {
-        "refresh_token": ["legitimate-refresh-token"]
+    assert json.loads(calls[1][2].decode()) == {
+        "refresh_token": "legitimate-refresh-token"
     }
+    assert calls[1][1]["Content-type"] == "application/json"
 
 
 def test_authenticated_session_does_not_use_access_token_as_refresh_token():
