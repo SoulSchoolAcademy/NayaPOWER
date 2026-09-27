@@ -121,3 +121,8 @@ Build enough to make the system work at the highest level. Do not add machinery 
 - Self-optimization is not self-authorization.
 - The Hub is not a second brain.
 - The database is not intelligence by itself.
+
+## Execution directives
+
+| NAYA-NODE-0001 pre-race qualification | NAYANODE/0027-NAYA-NODE-0001-PRE-RACE-QUALIFICATION-CONTRACT-V1.md |
+| Ultimate next-Naya execution prompt | NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md |
