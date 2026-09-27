@@ -62,6 +62,9 @@ They are coordinated responsibilities inside one kernel—not nine independent b
 | Governance / change | NAYANODE/0017-GOVERNANCE-CHANGE-ARCHITECTURE-V1.md |
 | Succession | NAYANODE/0018-SUCCESSION-ARCHITECTURE-V1.md |
 | Self-optimization | NAYANODE/0019-SELF-OPTIMIZATION-ARCHITECTURE-V1.md |
+| Foundational value law | NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md |
+| Value Calculus specification | NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md |
+| Master 100-item gap analysis | NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md |
 
 ## Proof discipline
 
@@ -95,7 +98,9 @@ The next engineering work is to establish legitimate identity continuity and the
 
 ## Operating law
 
-> **Maximum responsible verified human value per unit of complexity.**
+> **Maximum Verified Human Value / Minimum Necessary Complexity.**
+
+The deterministic Value Calculus is the canonical measurement mechanism. It evaluates a declared objective using an explicit value vector, evidence state, critical gates, resource costs, harm, and reproducible receipts. See `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md` and `kernel/value_calculus.py`.
 
 Build enough to make the system work at the highest level. Do not add machinery merely because it is possible.
 
