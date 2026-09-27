@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import json
-from typing import Any, Iterable
+from typing import Any
 
 
 NODES = (
@@ -119,7 +119,7 @@ def build_receipt(
         "observed_outcome": observed_outcome,
         "verification": verification,
         "causal_delta": causal_delta,
-        "status": "PROVEN",
+        "status": "NOT_PROVEN",
     }
 
 
