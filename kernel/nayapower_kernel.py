@@ -1,5 +1,9 @@
+from __future__ import annotations
+
+import json
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
 
 
 class Node(str, Enum):
@@ -18,6 +22,10 @@ class TruthState(str, Enum):
     UNKNOWN = "UNKNOWN"
     VERIFIED = "VERIFIED"
     BLOCKED = "BLOCKED"
+
+
+CANONICAL_NODE_ORDER = tuple(Node)
+CANONICAL_NODE_IDS = tuple(f"NAYA-KERNEL-{node.value}" for node in CANONICAL_NODE_ORDER)
 
 
 @dataclass(frozen=True)
@@ -46,17 +54,27 @@ class DecisionResult:
 
 
 class Kernel:
-    _NODE_ORDER = (
-        Node.SELF,
-        Node.LAW,
-        Node.ACT,
-        Node.KNOW,
-        Node.PROVE,
-        Node.CONNECT,
-        Node.VERIFY,
-        Node.LEARN,
-        Node.EVOLVE,
-    )
+    _NODE_ORDER = CANONICAL_NODE_ORDER
+
+    def __init__(self, *, kernel_id: str = "NAYAPOWER-MASTER-KERNEL-V1", source_manifest: str | None = None):
+        self.kernel_id = kernel_id
+        self.source_manifest = source_manifest
+
+    @classmethod
+    def from_brain(cls, root: Path) -> "Kernel":
+        manifest_path = Path(root) / "BRAIN/03-KERNEL/MANIFEST.json"
+        if not manifest_path.exists():
+            raise ValueError("canonical brain manifest is missing")
+        data = json.loads(manifest_path.read_text(encoding="utf-8"))
+        node_names = tuple(node.get("name") for node in data.get("nodes", []))
+        if node_names != tuple(node.value for node in CANONICAL_NODE_ORDER):
+            raise ValueError("manifest does not match canonical nine-node order")
+        node_ids = tuple(node.get("id") for node in data.get("nodes", []))
+        if node_ids != CANONICAL_NODE_IDS:
+            raise ValueError("manifest node IDs do not match canonical nine-node identity")
+        if data.get("kernel_id") != "NAYAPOWER-MASTER-KERNEL-V1":
+            raise ValueError("manifest kernel identity is not canonical")
+        return cls(kernel_id=data["kernel_id"], source_manifest="BRAIN/03-KERNEL/MANIFEST.json")
 
     @classmethod
     def node_order(cls):
