@@ -31,7 +31,7 @@ Generated from the repository tree, because a hand-maintained index is how 41 ar
 | `09-LEARNING.md` | contract / law |
 | `10-CONTINUITY-SUCCESSOR.md` | contract / law |
 | `compounding-intelligence-measurement-contract-v1.json` | schema / machine contract |
-| `CONSTITUTIONAL-OPERATING-LAW-V2.md` | contract / law |
+| `INTELLIGENCE-EVALUATION-EXECUTION-CONTRACT-V1.md` | contract / law |\n| `schemas/INTELLIGENCE-EVALUATION-RECEIPT-V1.schema.json` | schema / machine contract |\n| `CONSTITUTIONAL-OPERATING-LAW-V2.md` | contract / law |
 | `CONTRACT-LIBRARY-INTEGRITY-BASELINE.json` | schema / machine contract |
 | `CONTRACT-REGISTRY-CONFORMANCE-BASELINE.json` | schema / machine contract |
 | `HUB-IDENTITY-PROJECTION-V1.json` | schema / machine contract |
