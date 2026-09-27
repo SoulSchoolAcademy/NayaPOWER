@@ -55,3 +55,11 @@ SELF boots → durable retrieval → governed action → behavioral delta → in
 
 ## Status rule
 `IMPLEMENTED` is not `VERIFIED`. `VERIFIED` is not `PRODUCTION-PROVEN`.
+
+## Live persistence proof
+
+- [Runtime boot](../blob/naya/node-genome-aaa-v1/kernel/runtime_boot.py)
+- [Supabase Intelligent Block reader](../blob/naya/node-genome-aaa-v1/kernel/supabase_intelligent_blocks.py)
+- [Live retrieval test](../blob/naya/node-genome-aaa-v1/tests/test_live_supabase_intelligent_blocks.py)
+- [Live proof workflow](../blob/naya/node-genome-aaa-v1/.github/workflows/live-supabase-runtime-proof.yml)
+- [PR #846](../pull/846)
