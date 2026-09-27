@@ -1,6 +1,6 @@
 {
   "schema": "naya.brain.index.v1",
-  "status": "POPULATION_IN_PROGRESS",
+  "status": "ACTIVE_BUILD",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
@@ -157,7 +157,7 @@
     "SUCCESSOR"
   ],
   "source_corpus": {
-    "concepts": 13,
+    "concepts": 15,
     "duplicate_pairs": [
       [
         "#7",
@@ -171,5 +171,9 @@
   "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
   "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
-  "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/"
+  "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
+  "race_readiness_inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-RACE-READINESS-INVENTORY-V1.md",
+  "aaa_scorecard": "BRAIN/12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md",
+  "race_gate": "DISCOVER→RESTORE→RETRIEVE→UNDERSTAND→AUTHORIZE→APPLY→ACT→OBSERVE→VERIFY→LEARN→HANDOFF→CONTINUE",
+  "race_gate_status": "NOT_PROVEN"
 }
