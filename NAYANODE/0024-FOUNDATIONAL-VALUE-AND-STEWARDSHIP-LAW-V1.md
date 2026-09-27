@@ -1,6 +1,6 @@
 # NayaPOWER Foundational Value & Stewardship Law V1
 
-**Status:** PROPOSED FOR DIRECTOR RATIFICATION  
+**Status:** RATIFIED — HUMAN-DIRECTOR DIRECTED 2026-09-27  
 **Domain:** 03 CONSTITUTION  
 **Canonical implementation:** NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md + kernel/value_calculus.py  
 **Purpose:** Establish value, stewardship, efficiency, evidence, and complexity as governed system laws.
@@ -98,7 +98,7 @@ For each material use, the system must provide:
 
 **LAW → PROFILE → INPUTS → CALCULATION → GATES → RECEIPT → TEST → EVIDENCE**
 
-Until runtime enforcement and verification exist, the relevant claim remains IMPLEMENTED/PROPOSED rather than VERIFIED.
+Until runtime enforcement and verification exist, the relevant claim remains IMPLEMENTED rather than VERIFIED. Ratification establishes governance intent; it does not manufacture runtime proof.
 
 ## 10. Permanent invariant
 
