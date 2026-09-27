@@ -57,6 +57,12 @@ class NineMasterNodeKernelTests(unittest.TestCase):
         self.assertIn('"KERNEL_ACTIVE_STRUCTURAL"', source)
         self.assertIn('"MASTER_NODE_KERNEL_INCOMPLETE:"', source)
         self.assertIn('"MASTER_NODE_KERNEL_INVALID:"', source)
+        self.assertIn('const MASTER_NODE_ACCESS_SCOPE = "SYSTEM_AUTHENTICATED";', source)
+        self.assertIn('admin.from("nayanet_intelligent_blocks")', source)
+        self.assertIn('.eq("owner_scope", MASTER_NODE_ACCESS_SCOPE)', source)
+        self.assertIn('node.content?.classification === "system_intelligence"', source)
+        self.assertNotIn('.eq("owner_id", userId)', source)
+        self.assertIn('"access_scope"', json.dumps(json.loads(MANIFEST.read_text(encoding="utf-8"))))
 
 if __name__ == "__main__":
     unittest.main()
