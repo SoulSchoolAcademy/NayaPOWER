@@ -4,7 +4,7 @@ from urllib.request import Request, urlopen
 
 import pytest
 
-from kernel.nayapower_kernel import Kernel
+from kernel.nayapower_kernel import DecisionContext, Kernel
 from kernel.supabase_intelligent_blocks import SupabaseIntelligentBlockReader
 
 
@@ -104,7 +104,7 @@ def test_live_authenticated_kernel_retrieves_connect_context_and_changes_behavio
     )
 
     control = kernel.decide(
-        __import__("kernel.nayapower_kernel", fromlist=["DecisionContext"]).DecisionContext(
+        DecisionContext(
             action="continue_work",
             consequential=False,
             authority=None,
