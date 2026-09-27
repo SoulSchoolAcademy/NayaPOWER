@@ -15,6 +15,7 @@ class Node(str, Enum):
 
 
 class TruthState(str, Enum):
+    UNKNOWN = "UNKNOWN"
     VERIFIED = "VERIFIED"
     BLOCKED = "BLOCKED"
 
@@ -83,13 +84,16 @@ class Kernel:
             f"CONNECT.relevance:{context.action}",
             f"PROVE.action:{context.action}",
         )
+
+        # Execution is an observation, not proof that the intended outcome
+        # occurred. VERIFY must establish outcome before truth can be promoted.
         outcome = "executed"
         next_state = {"last_action": context.action}
 
         return DecisionResult(
             allowed=True,
             executed=True,
-            truth_state=TruthState.VERIFIED,
+            truth_state=TruthState.UNKNOWN,
             trace=trace,
             evidence=evidence,
             outcome=outcome,
