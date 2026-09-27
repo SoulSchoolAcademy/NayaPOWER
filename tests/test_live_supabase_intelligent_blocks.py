@@ -1,5 +1,7 @@
 import json
 import os
+from urllib.error import HTTPError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 import pytest
@@ -21,7 +23,9 @@ def _protected_config():
     return values
 
 
-def _authenticated_owner_id(url: str, access_token: str, api_key: str) -> str:
+def _authenticated_session(
+    url: str, access_token: str, api_key: str, refresh_token: str | None = None
+) -> dict[str, str]:
     request = Request(
         f"{url.rstrip('/')}/auth/v1/user",
         headers={
@@ -31,24 +35,52 @@ def _authenticated_owner_id(url: str, access_token: str, api_key: str) -> str:
         },
         method="GET",
     )
-    with urlopen(request, timeout=10) as response:
-        payload = json.loads(response.read())
-    owner_id = payload.get("id")
+    try:
+        with urlopen(request, timeout=10) as response:
+            payload = json.loads(response.read())
+    except HTTPError as error:
+        if error.code != 401 or not refresh_token:
+            raise
+        refresh_request = Request(
+            f"{url.rstrip('/')}/auth/v1/token?grant_type=refresh_token",
+            data=urlencode({"refresh_token": refresh_token}).encode(),
+            headers={
+                "apikey": api_key,
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Accept": "application/json",
+            },
+            method="POST",
+        )
+        with urlopen(refresh_request, timeout=10) as response:
+            payload = json.loads(response.read())
+        access_token = payload.get("access_token") or ""
+
+    owner_id = payload.get("id") or payload.get("user", {}).get("id")
     if not owner_id:
         raise AssertionError("authenticated Supabase user response has no id")
-    return owner_id
+    if not access_token:
+        raise AssertionError("Supabase authentication response has no access token")
+    return {"owner_id": owner_id, "access_token": access_token}
+
+
+def _authenticated_owner_id(url: str, access_token: str, api_key: str) -> str:
+    return _authenticated_session(url, access_token, api_key)["owner_id"]
 
 
 def test_live_kernel_retrieves_canonical_private_verified_block():
     config = _protected_config()
-    owner_id = _authenticated_owner_id(
-        config["url"], config["access_token"], config["api_key"]
+    session = _authenticated_session(
+        config["url"],
+        config["access_token"],
+        config["api_key"],
+        refresh_token=config["access_token"],
     )
+    owner_id = session["owner_id"]
 
     kernel = Kernel()
     reader = SupabaseIntelligentBlockReader(
         url=config["url"],
-        access_token=config["access_token"],
+        access_token=session["access_token"],
         api_key=config["api_key"],
     )
 
