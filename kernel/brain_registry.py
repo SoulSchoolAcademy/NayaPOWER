@@ -98,6 +98,23 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         manifest_registry_index_parity = False
         errors.append("registry_manifest_pointer_mismatch")
 
+    if manifest.get("runtime_entrypoint") != "runtime/cold_runtime.py":
+        manifest_registry_index_parity = False
+        errors.append("manifest_runtime_entrypoint_mismatch")
+    if manifest.get("runtime_loader") != "Kernel.from_brain":
+        manifest_registry_index_parity = False
+        errors.append("manifest_runtime_loader_mismatch")
+    if manifest.get("canonical_persistence_adapter") != "runtime/canonical_memory.py":
+        manifest_registry_index_parity = False
+        errors.append("manifest_persistence_adapter_mismatch")
+
+    if registry.get("runtime_entrypoint") != manifest.get("runtime_entrypoint"):
+        manifest_registry_index_parity = False
+        errors.append("registry_runtime_entrypoint_mismatch")
+    if registry.get("persistence_adapter") != manifest.get("canonical_persistence_adapter"):
+        manifest_registry_index_parity = False
+        errors.append("registry_persistence_adapter_mismatch")
+
     object_dir = base / "BRAIN/04-INTELLIGENCE/OBJECTS"
     object_ids = []
     object_envelope_errors: list[str] = []
@@ -156,5 +173,10 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         "graph_edge_count": len(edges),
         "errors": errors + [f"object_envelope:{e}" for e in object_envelope_errors],
         "manifest_registry_index_parity": manifest_registry_index_parity,
+        "runtime_binding": {
+            "entrypoint": manifest.get("runtime_entrypoint"),
+            "loader": manifest.get("runtime_loader"),
+            "persistence_adapter": manifest.get("canonical_persistence_adapter"),
+        },
         "object_envelope_errors": object_envelope_errors,
     }
