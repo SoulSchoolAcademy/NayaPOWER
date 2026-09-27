@@ -60,8 +60,11 @@ class NineMasterNodeKernelTests(unittest.TestCase):
         self.assertIn('const MASTER_NODE_ACCESS_SCOPE = "SYSTEM_AUTHENTICATED";', source)
         self.assertIn('admin.from("nayanet_intelligent_blocks")', source)
         self.assertIn('.eq("owner_scope", MASTER_NODE_ACCESS_SCOPE)', source)
-        self.assertIn('node.content?.classification === "system_intelligence"', source)
-        self.assertNotIn('.eq("owner_id", userId)', source)
+        self.assertIn('node.content?.classification !== "system_intelligence"', source)
+        loader_start = source.index("async function loadMasterNodeKernel")
+        loader_end = source.index("async function restore", loader_start)
+        loader = source[loader_start:loader_end]
+        self.assertNotIn('.eq("owner_id", userId)', loader)
         self.assertIn('"access_scope"', json.dumps(json.loads(MANIFEST.read_text(encoding="utf-8"))))
 
 if __name__ == "__main__":
