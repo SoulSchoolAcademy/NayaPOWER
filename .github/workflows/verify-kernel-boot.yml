@@ -1,0 +1,115 @@
+name: verify-kernel-boot
+
+on:
+  pull_request:
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/tests/test_kernel_boot.py"
+      - ".naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json"
+      - ".github/workflows/verify-kernel-boot.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/tests/test_kernel_boot.py"
+      - ".naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json"
+      - ".github/workflows/verify-kernel-boot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-boot:
+    name: nine-node runtime kernel boot
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check "pytest>=8.0,<9"
+
+      - name: Unit tests (real manifest + mutated copies)
+        run: python -m pytest .naya/tests/test_kernel_boot.py -v
+
+      # The canonical manifest is the single source of truth. A healthy kernel
+      # must load all nine nodes, in order, and must never confer authority.
+      - name: Canonical manifest boots all nine nodes
+        run: |
+          cat > envelope.json <<'JSON'
+          {"next_action": "CI probe: verify the canonical kernel boots."}
+          JSON
+          python -B .naya/runtime/kernel_boot.py --envelope envelope.json --json > boot.json
+          python - <<'PY'
+          import json
+          r = json.load(open("boot.json"))
+          assert r["boot_permitted"] is True, r["unresolved"]
+          assert len(r["loaded"]) == 9, r["loaded"]
+          assert r["authority"] == "NONE", "loading intelligence must never grant authority"
+          assert r["manifest"].endswith("NAYA-MASTER-NODE-KERNEL-V1.json")
+          assert r["schema"] == "naya.kernel-boot-report/2"
+          print("PASS: nine nodes loaded from the canonical manifest, authority NONE")
+          PY
+
+      # Fail-closed direction: an unreachable kernel is UNKNOWN, never an
+      # empty-but-healthy kernel that silently permits a consequential action.
+      - name: Fail-closed when the kernel cannot be read
+        run: |
+          set +e
+          python -B .naya/runtime/kernel_boot.py --source receiver --json > unknown.json
+          code=$?
+          set -e
+          if [ "$code" -ne 1 ]; then
+            echo "::error::expected exit 1 (refused) without receiver credentials, got $code"
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          r = json.load(open("unknown.json"))
+          assert r["boot_permitted"] is False, "boot must be refused"
+          assert r["authority"] == "NONE"
+          assert r["loaded"] == [], "an unreadable kernel must load nothing, not everything"
+          assert r["findings"][0]["status"] == "UNKNOWN", (
+              "absent credentials are UNKNOWN, not a clean pass and not a FAIL")
+          print("PASS: unreadable kernel refused, state UNKNOWN, nothing loaded")
+          PY
+
+      # The acceptance criterion: a mutated copy of the REAL manifest must be
+      # refused. This is what a hardcoded synthetic fixture suite cannot prove.
+      - name: Mutated copy of the real manifest is refused
+        run: |
+          python - <<'PY'
+          import json, subprocess, sys, tempfile, os
+          from pathlib import Path
+          sys.path.insert(0, ".naya/runtime")
+          import kernel_boot as kb
+
+          real = json.loads(Path(kb.MANIFEST_REL).read_text(encoding="utf-8"))
+          env = {"next_action": "CI probe."}
+          mutations = {
+              "drop a node":        lambda m: m["nodes"].pop(8),
+              "lie about count":    lambda m: m.__setitem__("node_count", 12),
+              "open the loop":      lambda m: m.__setitem__("runtime_flow", m["runtime_flow"][:-1]),
+              "break triad split":  lambda m: m["triads"][1]["nodes"].__setitem__(0, m["triads"][0]["nodes"][0]),
+              "drop a contract":    lambda m: m["contract_primary_ownership"].pop("26"),
+              "allow self-auth":    lambda m: m["global_invariants"].__setitem__(
+                                       "must_not", [x for x in m["global_invariants"]["must_not"]
+                                                    if "self-authorize" not in x.lower()]),
+          }
+          failures = []
+          for name, mutate in mutations.items():
+              m = json.loads(json.dumps(real))
+              mutate(m)
+              report = kb.boot_kernel(lambda m=m: m, envelope=env)
+              if report.boot_permitted:
+                  failures.append(name)
+              else:
+                  print(f"  refused as expected: {name}")
+          if failures:
+              raise SystemExit(f"MUTATED MANIFEST WAS ACCEPTED: {failures}")
+          print("PASS: every mutated copy of the canonical manifest was refused")
+          PY
