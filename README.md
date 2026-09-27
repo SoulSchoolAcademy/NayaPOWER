@@ -126,3 +126,15 @@ Build enough to make the system work at the highest level. Do not add machinery 
 
 | NAYA-NODE-0001 pre-race qualification | NAYANODE/0027-NAYA-NODE-0001-PRE-RACE-QUALIFICATION-CONTRACT-V1.md |
 | Ultimate next-Naya execution prompt | NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md |
+
+
+## AAA Nine-Node Genome
+
+The canonical AAA qualification contracts live here:
+
+- NAYANODE/0030-NINE-NODE-GENOME-MASTER-CONTRACT-V1.md
+- NAYANODE/0031-NINE-NODE-GENOME-MACHINE-CONTRACT-V1.json
+- NAYANODE/0032-NINE-NODE-GENOME-ACCEPTANCE-MATRIX-V1.md
+- NAYANODE/0033-NINE-NODE-GENOME-COLD-SUCCESSOR-PROTOCOL-V1.md
+
+Per-node contracts: SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE are in the same NAYANODE directory.

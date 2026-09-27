@@ -8,7 +8,7 @@ def test_brain_population_has_exactly_nine_canonical_kernel_objects():
 
     report = load_and_validate_brain(root)
 
-    assert report["ok"] is True
+    assert report["ok"] is True, report
     assert report["node_count"] == 9
     assert report["source_count"] == 15
     assert report["graph_edge_count"] >= 9
