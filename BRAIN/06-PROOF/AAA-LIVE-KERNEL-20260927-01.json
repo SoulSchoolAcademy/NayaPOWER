@@ -46,10 +46,15 @@
       "successor context was persisted with authority_inherited=false",
       "Value Calculus receipt is bound to event/outcome/item"
     ],
+    "verified_additions": [
+      "independent control/treatment outcome records persisted",
+      "independent verifier recorded for both outcome observations",
+      "treatment verified_value exceeded control verified_value",
+      "learning evidence advanced from CANDIDATE to ACTIVE after the independent comparison"
+    ],
     "not_verified": [
-      "independent outcome verification",
-      "causal attribution",
-      "verified learning through a real held-out future task",
+      "causal attribution beyond the bounded control/treatment specimen",
+      "verified learning through a genuinely held-out future task",
       "successor behavioral improvement",
       "production end-to-end runtime invocation through the application code"
     ]
