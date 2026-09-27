@@ -18,7 +18,7 @@ EVOLVE preserves continuity and enables governed improvement of Naya and NayaPOW
 
 - Successor package (continuity context)
 - Improvement proposal (with impact assessment)
-- Evolution state (what changed, what was rejected)
+- Evolution state (PROPOSED, ADOPTED, REJECTED, ESCALATED, HALTED, VIOLATION_DETECTED)
 - Continuation context (for next execution)
 - Authority verification results
 

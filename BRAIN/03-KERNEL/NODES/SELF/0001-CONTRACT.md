@@ -16,10 +16,10 @@ SELF establishes the identity, mission, objective, scope, current state and cont
 
 ## Outputs
 
-- Identity context (who is executing)
+- Identity context — identity resolution (ESTABLISHED, UNRESOLVED, CONFLICTED)
 - Mission context (what system, what purpose)
 - Current objective (what is being pursued)
-- Continuity context (what must survive)
+- Continuity context — continuity state (INTACT, RESTORING, CORRUPTED, DEGRADED)
 - Known/unknown boundary (what is understood vs. not)
 
 ## MUST Rules

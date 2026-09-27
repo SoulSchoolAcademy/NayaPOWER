@@ -20,13 +20,25 @@
         "Known/unknown boundary declarations"
       ],
       "outputs": [
-        "Identity context (who is executing)",
+        "Identity context — identity resolution (ESTABLISHED, UNRESOLVED, CONFLICTED)",
         "Mission context (what system, what purpose)",
         "Current objective (what is being pursued)",
-        "Continuity context (what must survive)",
+        "Continuity context — continuity state (INTACT, RESTORING, CORRUPTED, DEGRADED)",
         "Known/unknown boundary (what is understood vs. not)"
       ],
-      "typed_decision_vocabulary": {},
+      "typed_decision_vocabulary": {
+        "identity_context": [
+          "CONFLICTED",
+          "ESTABLISHED",
+          "UNRESOLVED"
+        ],
+        "continuity_context": [
+          "CORRUPTED",
+          "DEGRADED",
+          "INTACT",
+          "RESTORING"
+        ]
+      },
       "must_rules": [
         "Establish who is executing before any action.",
         "Establish what system the execution belongs to.",
@@ -156,11 +168,27 @@
       "outputs": [
         "Plan (selected approach)",
         "Action (executed operation)",
-        "Execution state (progress, status)",
+        "Execution state (PLANNED, AUTHORIZED, EXECUTING, COMPLETED, FAILED, HALTED, ROLLED_BACK)",
         "Observation target (what to measure)",
-        "Proof requirement (what evidence is needed)"
+        "Proof requirement — proof status (DEFINED, MET, UNMET, UNVERIFIED)"
       ],
-      "typed_decision_vocabulary": {},
+      "typed_decision_vocabulary": {
+        "execution_state": [
+          "AUTHORIZED",
+          "COMPLETED",
+          "EXECUTING",
+          "FAILED",
+          "HALTED",
+          "PLANNED",
+          "ROLLED_BACK"
+        ],
+        "proof_requirement": [
+          "DEFINED",
+          "MET",
+          "UNMET",
+          "UNVERIFIED"
+        ]
+      },
       "must_rules": [
         "Consume authorized context before any action.",
         "Select the minimum sufficient action.",
@@ -223,10 +251,18 @@
         "Canonical intelligence context",
         "Events and observations",
         "Checkpoints and state snapshots",
-        "Current knowledge state summary",
+        "Current knowledge state summary — knowledge state (CANONICAL, UNVERIFIED, STALE, UNKNOWN, COLLIDING)",
         "Retrieval results with provenance"
       ],
-      "typed_decision_vocabulary": {},
+      "typed_decision_vocabulary": {
+        "current_knowledge_state_summary": [
+          "CANONICAL",
+          "COLLIDING",
+          "STALE",
+          "UNKNOWN",
+          "UNVERIFIED"
+        ]
+      },
       "must_rules": [
         "Distinguish event from understanding.",
         "Preserve canonical identity and provenance.",
@@ -359,11 +395,20 @@
       "outputs": [
         "Relevant intelligence set",
         "Relationship context (how objects connect)",
-        "Applicability assessment (why this matters now)",
+        "Applicability assessment — applicability (APPLICABLE, NOT_APPLICABLE, CONTRADICTED, SUPERSEDED, UNCLASSIFIED, UNVERIFIED)",
         "Freshness indicators",
         "Reconciliation context (conflicts, supersessions)"
       ],
-      "typed_decision_vocabulary": {},
+      "typed_decision_vocabulary": {
+        "applicability_assessment": [
+          "APPLICABLE",
+          "CONTRADICTED",
+          "NOT_APPLICABLE",
+          "SUPERSEDED",
+          "UNCLASSIFIED",
+          "UNVERIFIED"
+        ]
+      },
       "must_rules": [
         "Resolve typed relationships accurately.",
         "Retrieve by semantic, structural, relational and contextual relevance.",
@@ -579,11 +624,20 @@
       "outputs": [
         "Successor package (continuity context)",
         "Improvement proposal (with impact assessment)",
-        "Evolution state (what changed, what was rejected)",
+        "Evolution state (PROPOSED, ADOPTED, REJECTED, ESCALATED, HALTED, VIOLATION_DETECTED)",
         "Continuation context (for next execution)",
         "Authority verification results"
       ],
-      "typed_decision_vocabulary": {},
+      "typed_decision_vocabulary": {
+        "evolution_state": [
+          "ADOPTED",
+          "ESCALATED",
+          "HALTED",
+          "PROPOSED",
+          "REJECTED",
+          "VIOLATION_DETECTED"
+        ]
+      },
       "must_rules": [
         "Construct successor context before any evolution action.",
         "Preserve current truth, evidence, learning and blockers.",

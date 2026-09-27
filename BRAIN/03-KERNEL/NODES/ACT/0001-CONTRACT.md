@@ -18,9 +18,9 @@ ACT converts governed intent into safe execution. It ensures that authorized act
 
 - Plan (selected approach)
 - Action (executed operation)
-- Execution state (progress, status)
+- Execution state (PLANNED, AUTHORIZED, EXECUTING, COMPLETED, FAILED, HALTED, ROLLED_BACK)
 - Observation target (what to measure)
-- Proof requirement (what evidence is needed)
+- Proof requirement — proof status (DEFINED, MET, UNMET, UNVERIFIED)
 
 ## MUST Rules
 

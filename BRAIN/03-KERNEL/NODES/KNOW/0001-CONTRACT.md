@@ -19,7 +19,7 @@ KNOW preserves and serves canonical semantic intelligence, events and memory. It
 - Canonical intelligence context
 - Events and observations
 - Checkpoints and state snapshots
-- Current knowledge state summary
+- Current knowledge state summary — knowledge state (CANONICAL, UNVERIFIED, STALE, UNKNOWN, COLLIDING)
 - Retrieval results with provenance
 
 ## MUST Rules

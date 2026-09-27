@@ -17,7 +17,7 @@ CONNECT turns isolated intelligence into relevant, situated intelligence. It res
 
 - Relevant intelligence set
 - Relationship context (how objects connect)
-- Applicability assessment (why this matters now)
+- Applicability assessment — applicability (APPLICABLE, NOT_APPLICABLE, CONTRADICTED, SUPERSEDED, UNCLASSIFIED, UNVERIFIED)
 - Freshness indicators
 - Reconciliation context (conflicts, supersessions)
 
