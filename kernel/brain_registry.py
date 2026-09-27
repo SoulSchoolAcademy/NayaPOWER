@@ -124,7 +124,12 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
     # of one semantic graph. They must agree exactly on relationship identity,
     # direction, type, endpoints and epistemic state. Otherwise the Brain can
     # appear internally coherent while retrieval consumes a different graph.
-    object_relationship_ids: set[str] = set()
+    # A relationship is legitimately declared by BOTH endpoint objects: once as OUT
+    # at the source and once as IN at the target. That is the documented mirroring of
+    # ONE semantic graph, not a duplicate. A real duplicate is the same
+    # relationship_id declared twice by the SAME node, or a mirror whose declaring
+    # nodes are not exactly the seed's source and target.
+    object_relationship_decls: dict[str, list[tuple[str, str]]] = {}
     for node_id in NODE_IDS:
         path = object_dir / f"{node_id}.json"
         if not path.exists():
@@ -135,9 +140,10 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
             if not relationship_id:
                 errors.append(f"node_relationship_identity_incomplete:{node_id}")
                 continue
-            if relationship_id in object_relationship_ids:
-                errors.append(f"duplicate_node_relationship_id:{relationship_id}")
-            object_relationship_ids.add(relationship_id)
+            decls = object_relationship_decls.setdefault(relationship_id, [])
+            if any(declared_by == node_id for declared_by, _ in decls):
+                errors.append(f"duplicate_node_relationship_id:{node_id}:{relationship_id}")
+            decls.append((node_id, str(rel.get("direction", ""))))
             seed = graph_relationships.get(relationship_id)
             if seed is None:
                 errors.append(f"node_relationship_missing_from_graph:{node_id}:{relationship_id}")
@@ -157,7 +163,20 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
             if actual != expected:
                 errors.append(f"node_relationship_drift:{node_id}:{relationship_id}")
 
-    missing_from_objects = set(graph_relationships) - object_relationship_ids
+    # STRONGER than the original check: the mirror must be declared by exactly the
+    # seed's source and target Nodes. This catches both under- and over-declaration.
+    for relationship_id, decls in object_relationship_decls.items():
+        seed_edge = graph_relationships.get(relationship_id)
+        if seed_edge is None:
+            continue
+        expected_nodes = {seed_edge.get("source_id"), seed_edge.get("target_id")}
+        actual_nodes = {declared_by for declared_by, _ in decls}
+        if actual_nodes != expected_nodes:
+            errors.append(
+                f"node_relationship_mirror_mismatch:{relationship_id}"
+                f":expected={sorted(expected_nodes)}:actual={sorted(actual_nodes)}")
+
+    missing_from_objects = set(graph_relationships) - set(object_relationship_decls)
     for relationship_id in sorted(missing_from_objects):
         errors.append(f"graph_relationship_missing_from_node_objects:{relationship_id}")
 

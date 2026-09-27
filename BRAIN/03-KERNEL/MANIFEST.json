@@ -1,7 +1,8 @@
 {
   "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
   "status":"CANONICAL_MANIFEST_RUNTIME_BINDING_PENDING",
-  "runtime_binding": { "status":"NOT_PROVEN", "entrypoint":null, "source_of_truth":"Actual application runtime source; must be identified by inspection before binding.", "fail_closed_if_unresolved":true },\n  "node_identity_law":"BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
+  "runtime_binding": { "status":"NOT_PROVEN", "entrypoint":null, "source_of_truth":"Actual application runtime source; must be identified by inspection before binding.", "fail_closed_if_unresolved":true },
+  "node_identity_law":"BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
   "nodes":[
     {"id":"NAYA-KERNEL-SELF","name":"SELF","responsibility":"identity, mission, continuity"},
     {"id":"NAYA-KERNEL-LAW","name":"LAW","responsibility":"authority, consent, governance"},
