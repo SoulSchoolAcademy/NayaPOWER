@@ -40,8 +40,8 @@ function baseContext() {
   };
 }
 
-testFn("full kernel executes all nine nodes and permits a safe authorized action", () => {
-  const result = evaluateNineNodeKernel(baseContext());
+testFn("full kernel executes all nine nodes and permits a safe authorized action", async () => {
+  const result = await evaluateNineNodeKernel(baseContext());
 
   assert.deepEqual(result.runtime_flow, N9_NODE_KEYS);
   assert.equal(result.decision_after, "EXECUTE");
@@ -57,6 +57,18 @@ testFn("full kernel executes all nine nodes and permits a safe authorized action
   }
 });
 
+for (const key of N9_NODE_KEYS) {
+  testFn(`healthy kernel ablation of ${key} materially changes the decision`, async () => {
+    const full = await evaluateNineNodeKernel(baseContext());
+    const ablated = await evaluateNineNodeKernel(baseContext(), { disabled_node: key });
+
+    assert.equal(full.decision_after, "EXECUTE");
+    assert.equal(ablated.decision_after, "BLOCK");
+    assert.ok(ablated.block_reasons.includes(`MISSING_NODE:${key}`));
+    assert.equal(ablated.node_invocations.some((x) => x.key === key), false);
+  });
+}
+
 const nodeFailures = {
   SELF: (ctx) => { ctx.identity.authenticated = false; },
   LAW: (ctx) => { ctx.authority.status = "BLOCKED"; ctx.authority.allowed = false; },
@@ -70,34 +82,20 @@ const nodeFailures = {
 };
 
 for (const key of N9_NODE_KEYS) {
-  testFn(`removing ${key} materially changes the decision path`, () => {
+  testFn(`failed ${key} contributes a blocking reason`, async () => {
     const ctx = baseContext();
     nodeFailures[key](ctx);
 
-    const full = evaluateNineNodeKernel(ctx);
-    const ablated = evaluateNineNodeKernel(ctx, { disabled_node: key });
+    const full = await evaluateNineNodeKernel(ctx);
 
     assert.equal(full.decision_after, "BLOCK");
-    assert.equal(ablated.decision_after, "BLOCK");
     assert.ok(full.failed_nodes.includes(key));
-    assert.ok(ablated.block_reasons.some((x) => x.includes(`MISSING_NODE:${key}`)));
-
-    const causalDifference =
-      JSON.stringify(full.block_reasons) !== JSON.stringify(ablated.block_reasons) ||
-      JSON.stringify(full.node_invocations) !== JSON.stringify(ablated.node_invocations);
-    assert.equal(causalDifference, true, `expected material trace difference for ${key}`);
+    assert.ok(full.block_reasons.some((x) => x.startsWith(`${key}:`)));
   });
 }
 
-testFn("ablated healthy kernel fails closed and names the missing node", () => {
-  const result = evaluateNineNodeKernel(baseContext(), { disabled_node: "MN-07" });
-  assert.equal(result.decision_after, "BLOCK");
-  assert.ok(result.block_reasons.includes("MISSING_NODE:VERIFY"));
-  assert.equal(result.authorization_state, "REQUIRES_VERIFICATION");
-});
-
-testFn("invalid node key is rejected", () => {
-  assert.throws(
+testFn("invalid node key is rejected", async () => {
+  await assert.rejects(
     () => evaluateNineNodeKernel(baseContext(), { disabled_node: "MN-99" }),
     /UNKNOWN_NODE/
   );
