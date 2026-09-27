@@ -26,7 +26,7 @@ jobs:
       - name: Verify canonical nine-node structure
         run: |
           set -euo pipefail
-          python scripts/verify-nine-master-nodes.py
+          python scripts/verify-nine-master-nodes.py .naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json
 
       - name: Run N9 attribution and admission tests
         run: |
