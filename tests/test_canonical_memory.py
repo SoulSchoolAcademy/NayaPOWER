@@ -166,3 +166,78 @@ def test_retrieved_intelligence_changes_non_authoritative_behavior_but_cannot_gr
 
     assert blocked.executed is False
     assert blocked.truth_state is TruthState.BLOCKED
+
+
+def test_canonical_memory_retrieves_relationship_context_for_connect():
+    relationships = [
+        {
+            "relationship_id": "82ea8862-4246-47d7-8e62-c8729b195294",
+            "source_id": "NAYA-KERNEL-PROVE",
+            "target_id": "IB-NAYA-NODE-0001-0001",
+            "relationship_type": "VERIFIED_BY",
+            "provenance": {"source": "AAA-LIVE-BRAIN"},
+            "epistemic_state": "VERIFIED",
+        }
+    ]
+    transport = FakeTransport(FakeResponse(200, relationships))
+    memory = SupabaseCanonicalMemory(
+        CanonicalMemoryConfiguration(
+            supabase_url="https://example.supabase.co",
+            anon_key="anon",
+            access_token="user-token",
+        ),
+        transport=transport,
+    )
+
+    result = memory.retrieve_relationships("IB-NAYA-NODE-0001-0001")
+
+    assert len(result) == 1
+    assert result[0].relationship_id == "82ea8862-4246-47d7-8e62-c8729b195294"
+    assert result[0].relationship_type == "VERIFIED_BY"
+    assert result[0].epistemic_state == "VERIFIED"
+    assert transport.calls[-1]["method"] == "GET"
+    assert "/rest/v1/nayanet_brain_relationships?" in transport.calls[-1]["url"]
+    assert "target_id=eq.IB-NAYA-NODE-0001-0001" in transport.calls[-1]["url"]
+
+
+def test_relationship_aware_retrieval_is_required_for_retained_intelligence_influence():
+    block = RetrievedIntelligentBlock.from_payload(_valid_block())
+    relationship = memory_relationship_fixture = {
+        "relationship_id": "r1",
+        "source_id": "NAYA-KERNEL-PROVE",
+        "target_id": block.intelligent_block_id,
+        "relationship_type": "VERIFIED_BY",
+        "provenance": {"source": "proof"},
+        "epistemic_state": "VERIFIED",
+    }
+    from runtime.canonical_memory import RetrievedRelationship
+
+    graph_edge = RetrievedRelationship.from_payload(memory_relationship_fixture)
+    kernel = Kernel()
+
+    no_graph = kernel.decide(
+        DecisionContext(
+            action="continue_work",
+            consequential=False,
+            authority=None,
+            task_target="NAYA-NODE-0001",
+            intelligence=(block,),
+        )
+    )
+    with_graph = kernel.decide(
+        DecisionContext(
+            action="continue_work",
+            consequential=False,
+            authority=None,
+            task_target="NAYA-NODE-0001",
+            intelligence=(block,),
+            relationships=(graph_edge,),
+        )
+    )
+
+    assert no_graph.outcome == "executed"
+    assert with_graph.outcome == "executed_with_relationship_aware_intelligence"
+    assert with_graph.next_state["retained_intelligence_applied"] == "true"
+    assert any(
+        evidence.startswith("CONNECT.relationship:") for evidence in with_graph.evidence
+    )
