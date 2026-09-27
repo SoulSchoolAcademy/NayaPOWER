@@ -1,6 +1,6 @@
 # 🔱 NayaPOWER — System AAA Scorecard V1
 
-**Status:** DIRECTOR-DIRECTED RATIFICATION CANDIDATE  
+**Status:** RATIFIED BASELINE — HUMAN-DIRECTOR DIRECTED 2026-09-26  
 **Date:** 2026-09-26  
 **Companion specification:** \`.naya/NAYAPOWER-SYSTEM-NORTH-STAR-WHITE-PAPER-AND-ENGINEERING-BLUEPRINT-V1.md\`
 
@@ -326,3 +326,14 @@ The system is successful when intelligence is no longer merely stored.
 It is:
 
 **remembered → connected → retrieved → applied → verified → learned → compounded → experienced as greater human capability.**
+
+
+---
+
+## 10. Ratified-baseline rule
+
+This scorecard is the measurement companion to the ratified System North Star and Engineering Blueprint.
+
+It remains a readiness instrument, not a claim that every architectural mechanism is complete. The ratified model defines the target system; live evidence determines which parts are implemented, verified, production-proven, learned, compounded, or still unknown.
+
+The decisive question is not how much has been built. It is whether the next human moment is measurably better because governed intelligence was remembered, connected, retrieved, applied, verified, learned from, and carried forward.
