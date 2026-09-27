@@ -74,7 +74,7 @@ def test_live_kernel_retrieves_canonical_private_verified_block():
         config["url"],
         config["access_token"],
         config["api_key"],
-        refresh_token=config["refresh_token"] or config["access_token"],
+        refresh_token=config["refresh_token"],
     )
     owner_id = session["owner_id"]
 
