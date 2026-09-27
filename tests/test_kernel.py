@@ -34,9 +34,10 @@ def test_law_blocks_consequential_action_without_authority():
     assert result.allowed is False
     assert result.truth_state is TruthState.BLOCKED
     assert result.blocked_by is Node.LAW
+    assert result.trace == (Node.SELF, Node.LAW)
 
 
-def test_law_allows_scoped_authority_and_act_executes():
+def test_law_allows_scoped_authority_and_full_kernel_executes():
     kernel = Kernel()
     context = DecisionContext(
         action="publish_change",
@@ -50,6 +51,7 @@ def test_law_allows_scoped_authority_and_act_executes():
     assert result.blocked_by is None
     assert result.executed is True
     assert result.truth_state is TruthState.VERIFIED
+    assert result.trace == Kernel.node_order()
 
 
 def test_kernel_records_evidence_and_outcome_for_execution():
