@@ -127,7 +127,7 @@ class Kernel:
             if not supporting_relationships:
                 continue
             applicable_blocks.append((block, supporting_relationships))
-            evidence.extend(
+            evidence.append(
                 f"KNOW.retained_intelligence:{block.evidence_key()}"
             )
             evidence.extend(
