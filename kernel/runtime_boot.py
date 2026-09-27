@@ -25,7 +25,7 @@ CANONICAL_NODE_NAMES = (
 
 
 def find_repository_root(start: Path | None = None) -> Path:
-    cursor = (start or Path(__file__)).resolve()
+    cursor = Path(start or __file__).resolve()
     if cursor.is_file():
         cursor = cursor.parent
 
