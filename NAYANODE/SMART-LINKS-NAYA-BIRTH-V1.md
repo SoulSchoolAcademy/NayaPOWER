@@ -1,9 +1,9 @@
 # NAYA SMART LINKS — BIRTH / GENOME / PROOF
 
 **Canonical branch:** `naya/node-genome-aaa-v1`
-**Current HEAD:** `67f4433df3e9e4aa29d458dcbce2416ffe4352d2`
+**Current HEAD:** `4533489d353582b40fe567c47aaec93a9814cd2b`
 
-> These are the navigational links for the first living Naya qualification path. A link means the artifact exists; it does not by itself mean the artifact is verified.
+> These are the navigational links for the first living Naya qualification path. A link means the artifact exists on this branch; it does not by itself mean the artifact is verified. The branch HEAD above is the authoritative revision for these links; do not use an older SHA from an earlier handoff.
 
 ## Start here
 - [Naya Birth — Next Execution Prompt](./0040-NAYA-BIRTH-NEXT-EXECUTION-PROMPT-V1.md)
