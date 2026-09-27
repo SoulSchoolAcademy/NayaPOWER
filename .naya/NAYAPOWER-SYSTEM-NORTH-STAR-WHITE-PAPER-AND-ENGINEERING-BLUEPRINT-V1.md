@@ -1647,3 +1647,493 @@ Compounding
 **This is the direction.**
 
 **The system now builds toward it.**
+
+
+---
+
+# 35. RECURSIVE NAYA ARCHITECTURE — THE DEEPER MODEL
+
+The system should not be treated as one giant AI that must remember and execute everything at once.
+
+A **Naya instance is an execution moment**.
+
+A **Naya Node is durable reusable intelligence**.
+
+A **successor Naya is the next governed execution moment restored from preserved state, intelligence, evidence, authority, relationships, and next action**.
+
+Therefore:
+
+~~~text
+NAYA₀
+  ↓
+verified understanding
+  ↓
+NAYA₁
+  ↓
+verified understanding
+  ↓
+NAYA₂
+  ↓
+NAYA₃
+  ↓
+...
+  ↓
+NAYA NETWORK
+~~~
+
+The system grows because every meaningful execution leaves a better starting point for the next execution.
+
+This is not uncontrolled agent spawning.
+
+It is **governed succession**.
+
+---
+
+# 36. THE SEED → TREE → FOREST MODEL
+
+A useful conceptual model is:
+
+~~~text
+SEED
+  ↓
+FIRST NAYA
+  ↓
+FIRST VERIFIED INTELLIGENCE
+  ↓
+SUCCESSOR NAYA
+  ↓
+MORE INTELLIGENCE
+  ↓
+RELATIONSHIPS
+  ↓
+MANY NAYA EXECUTIONS
+  ↓
+CONNECTED INTELLIGENCE TREE
+  ↓
+NAYANET NETWORK
+~~~
+
+The metaphor does not mean the software is literally biological.
+
+It describes a system in which:
+- one useful unit creates the conditions for another;
+- each successor inherits relevant intelligence;
+- branches can form for different tasks or domains;
+- branches can reconnect when relationships are justified;
+- the total system becomes more capable as verified intelligence accumulates.
+
+---
+
+# 37. NAYA EXECUTION CELL
+
+A mature Naya execution cell should carry:
+
+- identity;
+- purpose;
+- current state;
+- applicable Master Node context;
+- applicable governance rules;
+- authorized scope;
+- input;
+- interpretation;
+- action;
+- output;
+- evidence;
+- outcome;
+- learning;
+- value;
+- relationships;
+- next action;
+- successor context.
+
+Conceptually:
+
+Naya(t+1) = Restore(State(t) + VerifiedIntelligence(t) + Evidence(t) + Learning(t) + NextAction(t))
+
+The successor should receive the **minimum sufficient canonical context** required to continue correctly.
+
+That is zero-archaeology continuity.
+
+---
+
+# 38. THE DOMINO PRINCIPLE
+
+Every meaningful execution should finish in one of two valid states:
+
+**TERMINAL**
+
+The declared objective is complete and no successor action is required.
+
+**SUCCESSOR-READY**
+
+The execution has produced enough durable context for the next Naya to continue.
+
+Therefore:
+
+EveryMeaningfulExecution → TERMINAL OR SUCCESSOR-READY
+
+A consequential execution that leaves only a conversational answer while continuation is required is a continuity failure.
+
+> **Every Naya should leave the next Naya a better place to stand.**
+
+---
+
+# 39. THE NAYA NETWORK IS A GRAPH, NOT A LINE
+
+The Naya lineage can branch.
+
+~~~text
+                 NAYA₀
+                /     \
+             NAYA₁    NAYA₂
+              |       /   \
+           NAYA₃   NAYA₄  NAYA₅
+              \      |    /
+                CONNECT
+                   ↓
+              NAYA NETWORK
+~~~
+
+Branches can represent:
+- different tasks;
+- parallel investigations;
+- alternative solutions;
+- domains;
+- projects;
+- people;
+- or interfaces.
+
+The graph becomes useful when relationships are evidence-supported and contextually applicable.
+
+The goal is not maximum graph size.
+
+The goal is maximum **correct useful connection**.
+
+---
+
+# 40. NAYA SHOULD CREATE SUCCESSOR CONTEXT, NOT UNCONTROLLED COPIES
+
+The phrase “Naya creates Naya” should be implemented as a governed successor mechanism.
+
+It should NOT mean that the system creates uncontrolled autonomous copies.
+
+Instead:
+
+**CREATE SUCCESSOR CONTEXT ≠ GRANT NEW AUTHORITY**
+
+A successor may inherit:
+- relevant intelligence;
+- current state;
+- evidence;
+- unresolved work;
+- relationships;
+- applicable rules;
+- next action.
+
+It does not automatically inherit every permission or every private object.
+
+---
+
+# 41. THE BRAIN IS THE CONNECTED SYSTEM
+
+One Node is a cell.
+
+The nine Master Nodes are the semantic kernel.
+
+The connected Node graph is growing intelligence.
+
+Retrieval is routing.
+
+Governance is constraint.
+
+Verification is the truth boundary.
+
+Learning is adaptation.
+
+Succession is continuity.
+
+Human interface is experience.
+
+Together:
+
+~~~text
+MASTER KERNEL
++
+INTELLIGENCE CELLS
++
+RELATIONSHIP GRAPH
++
+RETRIEVAL
++
+GOVERNANCE
++
+VERIFICATION
++
+LEARNING
++
+SUCCESSION
+=
+NAYA NETWORK INTELLIGENCE
+~~~
+
+This is the stronger interpretation of “Naya creates her own brain.”
+
+Naya does not need one giant brain object.
+
+**Naya becomes the behavior of the connected system.**
+
+---
+
+# 42. SELF-ORGANIZING INTELLIGENCE
+
+The desired loop is:
+
+~~~text
+CREATE / RECEIVE
+      ↓
+UNDERSTAND
+      ↓
+DISTILL
+      ↓
+CLASSIFY
+      ↓
+CONNECT
+      ↓
+MEASURE
+      ↓
+RETRIEVE
+      ↓
+APPLY
+      ↓
+VERIFY
+      ↓
+LEARN
+      ↓
+UPDATE
+      ↓
+REORGANIZE
+      ↓
+SUCCESSOR CONTEXT
+      ↓
+REPEAT
+~~~
+
+The system therefore learns more than facts.
+
+It can eventually learn:
+- what deserves persistence;
+- which intelligence belongs together;
+- what should be retrieved together;
+- what should be surfaced;
+- what should be condensed;
+- what should be re-tested;
+- what should be deprecated;
+- what improves human outcomes.
+
+---
+
+# 43. SELF-SCORING IS PART OF THE LOOP
+
+Every significant execution should eventually carry an evidence-bound self-assessment:
+
+**WHAT DID WE TRY?**
+
+**WHY?**
+
+**WHAT DID IT COST?**
+
+**WHAT HAPPENED?**
+
+**WHAT WAS THE RESULT?**
+
+**WHAT DID WE LEARN?**
+
+**DID THE NEXT MOMENT IMPROVE?**
+
+Self-scoring means:
+
+> **measure ourselves so we can improve ourselves**
+
+It does not mean:
+
+> **declare ourselves successful because we scored ourselves highly.**
+
+Independent verification remains necessary for consequential claims.
+
+---
+
+# 44. CONTEXTUAL INTELLIGENCE WEIGHTS
+
+The system needs to determine not only whether intelligence exists, but how much weight it deserves **for the current task**.
+
+Conceptually:
+
+W(i) = f(
+Relevance,
+Applicability,
+Authority,
+Truth,
+Evidence,
+Freshness,
+OutcomeHistory,
+RelationshipSupport
+)
+
+A weight is contextual.
+
+A highly relevant Node can still be wrong.
+
+A highly verified Node can still be irrelevant.
+
+A valuable Node can still be unauthorized for a particular action.
+
+Therefore:
+
+**INTELLIGENCE WEIGHT ≠ TRUTH**
+
+**INTELLIGENCE WEIGHT ≠ AUTHORITY**
+
+---
+
+# 45. THE SYSTEM'S TRUE GROWTH MECHANISM
+
+The system should grow through:
+
+~~~text
+MORE EXPERIENCE
+      ↓
+MORE UNDERSTANDING
+      ↓
+BETTER NODES
+      ↓
+BETTER RELATIONSHIPS
+      ↓
+BETTER RETRIEVAL
+      ↓
+BETTER ACTION
+      ↓
+BETTER OUTCOMES
+      ↓
+BETTER LEARNING
+      ↓
+BETTER NEXT NAYA
+      ↺
+~~~
+
+Therefore:
+
+Capability(t+1) = Capability(t) + VerifiedCapabilityGain(t)
+
+not merely:
+
+Capability(t+1) = Capability(t) + MoreData(t)
+
+More data does not necessarily make the system smarter.
+
+**Verified useful improvement does.**
+
+---
+
+# 46. THE NINE MASTER NODES BECOME THE KERNEL INTEGRITY CHECK
+
+At consequential boot, the system should verify the kernel:
+
+~~~text
+CHECK NODE 01 → 09
+CHECK VERSION
+CHECK STATUS
+CHECK RELATIONSHIPS
+CHECK GOVERNANCE BINDINGS
+CHECK ENFORCEMENT COVERAGE
+CHECK CONFLICTS
+CHECK FRESHNESS
+CHECK NEXT ACTION
+~~~
+
+A missing, conflicted, stale, or enforcement-disconnected kernel component should be surfaced explicitly.
+
+The system must not silently pretend its operating model is intact.
+
+---
+
+# 47. THE NEXT BIG ENGINEERING TARGET
+
+After North Star ratification:
+
+~~~text
+COLD NAYA
+  ↓
+BOOT KERNEL
+  ↓
+LOAD 9 MASTER NODES
+  ↓
+LOAD APPLICABLE RULES
+  ↓
+RESTORE STATE
+  ↓
+RETRIEVE RELEVANT INTELLIGENCE
+  ↓
+MAKE GOVERNED DECISION
+  ↓
+EXECUTE
+  ↓
+OBSERVE
+  ↓
+VERIFY
+  ↓
+CREATE / UPDATE NODE
+  ↓
+CREATE SUCCESSOR CONTEXT
+  ↓
+NEXT NAYA CONTINUES
+~~~
+
+This is the first major proof of the new architecture.
+
+The goal is not to prove that nine database rows exist.
+
+The goal is to prove that the nine Nodes **change what the next Naya can understand and do without requiring the original conversation**.
+
+---
+
+# 48. REFINED NORTH STAR
+
+> **Build Naya as a self-improving, self-organizing, governed intelligence network that grows from one seed of human intent into a connected lineage of Naya execution cells, each preserving what was learned, connecting it to what already exists, applying it when relevant, measuring the outcome, and passing a better intelligence context forward to the next Naya.**
+>
+> **NayaPOWER is the governed substrate.**
+>
+> **Naya is the intelligence expressed through successive governed execution cells.**
+>
+> **NayaNET is the connected network of intelligence, people, applications, and interfaces.**
+>
+> **The Node is the reusable intelligence cell.**
+>
+> **The Master Nodes are the semantic kernel.**
+>
+> **The relationship graph is the connective tissue.**
+>
+> **Retrieval is the routing system.**
+>
+> **Verification is the truth boundary.**
+>
+> **Learning is the adaptation mechanism.**
+>
+> **Succession is the continuity mechanism.**
+>
+> **Value and experience are the optimization objective.**
+>
+> **Every generation of Naya should leave the next generation with more useful intelligence, better context, better decisions, and less work for the human.**
+
+## The simplest expression
+
+> **One Naya becomes many.**
+>
+> **Many Nayas become connected intelligence.**
+>
+> **Connected intelligence becomes capability.**
+>
+> **Verified capability becomes learning.**
+>
+> **Learning becomes a better Naya.**
+>
+> **And the cycle continues.**
