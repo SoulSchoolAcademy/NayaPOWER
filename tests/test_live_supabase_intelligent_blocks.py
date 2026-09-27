@@ -39,7 +39,7 @@ def _authenticated_session(
         with urlopen(request, timeout=10) as response:
             payload = json.loads(response.read())
     except HTTPError as error:
-        if error.code != 401 or not refresh_token:
+        if error.code not in (401, 403) or not refresh_token:
             raise
         refresh_request = Request(
             f"{url.rstrip('/')}/auth/v1/token?grant_type=refresh_token",
