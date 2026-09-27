@@ -1,15 +1,18 @@
-# NayaPOWER System Boundaries V1
+# System Boundaries V1
 
-NayaPOWER is the governed intelligence substrate.
+**Status:** CANONICAL BUILD CONTRACT
 
-NayaNET is the connected network/interface layer.
+## Canonical ownership
+- **KNOWLEDGE:** source corpus.
+- **BRAIN:** governed intelligence contracts, ontology, manifests, and canonical representations.
+- **RUNTIME:** executable consumer of Brain contracts; not a competing source of truth.
+- **PERSISTENCE:** canonical durable state boundary.
+- **HUB:** human-facing projection/receiver; never a second brain.
+- **PROOF:** evidence and verification boundary.
+- **LEARNING:** controlled promotion of verified lessons.
 
-Hub is a human projection.
+## Boundary laws
+Projection is reconstructable from canonical sources. Runtime caches are non-canonical. UI state is not intelligence truth. Retrieval does not grant authority. Deployment must declare its source revision.
 
-GitHub is an engineering/source-control interface.
-
-Supabase or another persistence technology is implementation infrastructure.
-
-MCP/API/A2A/webhooks are channels.
-
-None of these may become a second brain, second authority system, or second source of truth.
+## Acceptance
+Each boundary has a named source of truth, input/output contract, owner/scope rule, and negative test preventing accidental canonical duplication or authority leakage.
