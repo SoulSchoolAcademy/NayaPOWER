@@ -1,5 +1,12 @@
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
+from typing import TYPE_CHECKING
+
+from kernel.runtime_boot import load_runtime_manifest
+
+if TYPE_CHECKING:
+    from kernel.supabase_intelligent_blocks import IntelligentBlock, SupabaseIntelligentBlockReader
 
 
 class Node(str, Enum):
@@ -58,9 +65,31 @@ class Kernel:
         Node.EVOLVE,
     )
 
+    def __init__(self, brain_root: Path | None = None):
+        manifest = load_runtime_manifest(brain_root)
+        self._manifest = manifest
+        self._NODE_ORDER = tuple(Node(node["name"]) for node in manifest["nodes"])
+
+    @property
+    def manifest(self) -> dict:
+        return self._manifest
+
     @classmethod
     def node_order(cls):
         return cls._NODE_ORDER
+
+    def retrieve_intelligent_block(
+        self,
+        reader: "SupabaseIntelligentBlockReader",
+        *,
+        intelligent_block_id: str,
+        owner_id: str,
+    ) -> "IntelligentBlock | None":
+        """Retrieve canonical retained intelligence through the persistence boundary."""
+        return reader.get_by_intelligent_block_id(
+            intelligent_block_id=intelligent_block_id,
+            owner_id=owner_id,
+        )
 
     def decide(self, context: DecisionContext) -> DecisionResult:
         trace = (Node.SELF, Node.LAW)
@@ -85,8 +114,6 @@ class Kernel:
             f"PROVE.action:{context.action}",
         )
 
-        # Execution is an observation, not proof that the intended outcome
-        # occurred. VERIFY must establish outcome before truth can be promoted.
         outcome = "executed"
         next_state = {"last_action": context.action}
 
