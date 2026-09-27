@@ -1,0 +1,108 @@
+{
+  "execution_id": "NAYA-BIRTH-20260927-225051",
+  "git_head": "0e9451198d8c67ef24342b9f5ec1ace4559980f6",
+  "contract_revision": "NAYANODE/0030-NINE-NODE-GENOME-MASTER-CONTRACT-V1.md",
+  "node_results": {
+    "SELF": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py",
+        "kernel/runtime_boot.py"
+      ]
+    },
+    "LAW": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py"
+      ]
+    },
+    "ACT": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py"
+      ]
+    },
+    "KNOW": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "kernel/supabase_intelligent_blocks.py",
+        "tests/test_live_supabase_intelligent_blocks.py"
+      ]
+    },
+    "PROVE": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "NAYANODE/0032-NINE-NODE-GENOME-ACCEPTANCE-MATRIX-V1.md"
+      ]
+    },
+    "CONNECT": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "NAYANODE/00-CONNECT-MASTER-CONTRACT-V1.md"
+      ]
+    },
+    "VERIFY": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py"
+      ]
+    },
+    "LEARN": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py",
+        "NAYANODE/0032-NINE-NODE-GENOME-ACCEPTANCE-MATRIX-V1.md"
+      ]
+    },
+    "EVOLVE": {
+      "status": "NOT_PROVEN",
+      "evidence_refs": [
+        "tests/test_kernel_behavior_engine.py",
+        "NAYANODE/0033-NINE-NODE-GENOME-COLD-SUCCESSOR-PROTOCOL-V1.md"
+      ]
+    }
+  },
+  "persistence_result": {
+    "status": "BLOCKED",
+    "workflow_run_id": 36356676902,
+    "blocker": "SUPABASE_URL is not configured in GitHub Actions protected secrets.",
+    "credentials_present_by_name_only": [
+      "SUPABASE_USER_ACCESS_TOKEN",
+      "SUPABASE_PUBLISHABLE_KEY"
+    ],
+    "required_secret_names": [
+      "SUPABASE_URL",
+      "SUPABASE_USER_ACCESS_TOKEN",
+      "SUPABASE_PUBLISHABLE_KEY"
+    ],
+    "live_claim_unproven": true
+  },
+  "behavior_delta_result": {
+    "status": "NOT_PROVEN",
+    "reason": "Live canonical persistence gate is blocked; controlled retained-vs-cold behavioral experiment was not executed."
+  },
+  "verification_result": {
+    "status": "NOT_PROVEN",
+    "reason": "No causal behavior-delta specimen exists yet."
+  },
+  "learning_result": {
+    "status": "NOT_PROVEN",
+    "reason": "No verified held-out behavioral improvement exists yet."
+  },
+  "successor_result": {
+    "status": "NOT_PROVEN",
+    "reason": "Cold successor acceptance requires verified retained intelligence and learned improvement."
+  },
+  "blockers": [
+    "SUPABASE_URL protected GitHub Actions secret is missing."
+  ],
+  "evidence_refs": [
+    "GitHub Actions Kernel Tests run 36356680475: success",
+    "GitHub Actions Live Supabase Runtime Proof run 36356676902: blocked at protected secret gate",
+    "tests/test_kernel_behavior_engine.py",
+    "kernel/runtime_boot.py",
+    "kernel/supabase_intelligent_blocks.py",
+    "tests/test_live_supabase_intelligent_blocks.py"
+  ],
+  "overall_status": "BLOCKED"
+}
