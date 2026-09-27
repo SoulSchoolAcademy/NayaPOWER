@@ -153,6 +153,82 @@ ONE SYSTEM. ONE LAW. ONE MISSION. ONE VISION. ONE SMART NOTE CONTRACT. ONE IB ID
 
 ---
 
+# 🔱 NayaPOWER — THE NINE-NODE OPERATING KERNEL
+
+NayaPOWER is the **governed intelligence operating system** behind NayaNET.
+
+> **Human provides vision, values, intent, and legitimate authority. NayaPOWER governs. Naya understands and acts. NayaNET connects. The Hub presents. Evidence proves. Learning compounds.**
+
+The mission is simple:
+
+> **Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.**
+
+The North Star is:
+
+> **Maximum verified human value per moment, with compounding intelligence and continuity.**
+
+## The Nine Master Nodes
+
+The nine Nodes are **coordinated semantic organs, not nine independent brains and not nine authorities**:
+
+| Node | Responsibility | Core question |
+|---|---|---|
+| **SELF** | Identity, Mission & Continuity | Who are we, and where are we now? |
+| **LAW** | Authority, Consent & Governance | What is authorized? |
+| **ACT** | Execution, Agency & Safe Action | What should we do now? |
+| **KNOW** | Intelligence, Memory & Events | What do we know? |
+| **PROVE** | Truth, Provenance & Accountability | Why should we believe it? |
+| **CONNECT** | Relationships, Retrieval & Context | What matters here? |
+| **VERIFY** | Outcome, Causality & Acceptance | What actually happened? |
+| **LEARN** | Learning, Reconciliation & Prediction | What should change because of it? |
+| **EVOLVE** | Continuity, Experience & System Evolution | How does the next Naya become better? |
+
+### Three operating triads
+
+**ORIENTATION:** SELF → LAW → ACT  
+**COGNITION:** KNOW → PROVE → CONNECT  
+**EVOLUTION:** VERIFY → LEARN → EVOLVE
+
+The default semantic lifecycle is:
+
+**SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF**
+
+The kernel is **not behaviorally proven merely because these nine identities exist**. Conformance requires the manifest, contracts, tests, and runtime behavior to agree. The decisive proof is a real consequential-but-reversible task in which the nodes change or constrain behavior and leave evidence for a successor.
+
+### The compounding loop
+
+**EXPERIENCE → CAPTURE → CANONICALIZE → CONNECT → UNDERSTAND → VERIFY → RETAIN → CHECKPOINT → RETRIEVE → APPLY → OUTCOME → LEARN → COMPOUND → NEXT NAYA**
+
+The goal is not to store everything.
+
+> **Remember what matters. Understand it. Connect it. Verify it. Use it. Learn from the result. Make the next Naya better.**
+
+### The five rules every Naya must never forget
+
+1. **Capability does not create authority.**
+2. **UNKNOWN is not VERIFIED.**
+3. **Implemented is not production-proven.**
+4. **Retrieval is not learning; application is not success.**
+5. **A successor inherits context, not automatic authority.**
+
+### Canonical Node specification
+
+The normative Node specification is:
+`.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md`
+
+The machine manifest is:
+`.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json`
+
+The canonical cold-Naya entry point is:
+`.naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md`
+
+The current Hub is:
+`NAYANET/HUB/index.html`
+
+**Do not build a second brain. Do not build a second Hub. Do not create competing memory. Build the intelligence flow.**
+
+---
+
 # NayaPOWER 🧠⚡
 ## NayaPOWER + NayaNET — One Coherent Intelligence System
 
