@@ -250,3 +250,58 @@ def test_execute_control_treatment_requires_distinct_conditions():
     )
     assert control["control_or_treatment"] == "control"
     assert treatment["control_or_treatment"] == "treatment"
+
+
+def test_ablation_requires_material_behavior_change_or_fail_closed():
+    from n9_behavioral_harness import validate_ablation
+    full = build_receipt(
+        experiment_id="exp-5", test_id="N9-000", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="treatment", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="AUTHORIZED",
+        decision_before="defer", decision_after="execute",
+        action="execute-reversible-action", observed_outcome="completed",
+        verification={"independent": True, "evidence_ids": ["verify-full"]},
+        causal_delta={"decision_changed": True, "outcome_changed": True},
+    )
+    ablated = {
+        **full,
+        "node_invocations": [x for x in _invocations() if x["node_id"] != "MN-09"],
+        "decision_after": full["decision_after"],
+        "action": full["action"],
+        "observed_outcome": full["observed_outcome"],
+    }
+    result = validate_ablation(full, ablated, "MN-09")
+    assert result.status == "FAIL"
+    assert "material" in result.reason.lower() or "difference" in result.reason.lower()
+
+
+def test_proven_status_requires_material_causal_delta():
+    receipt = build_receipt(
+        experiment_id="exp-6", test_id="N9-001", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="treatment", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="AUTHORIZED",
+        decision_before="defer", decision_after="execute",
+        action="execute-reversible-action", observed_outcome="completed",
+        verification={"independent": True, "evidence_ids": ["verify-1"]},
+        causal_delta={"decision_changed": False, "outcome_changed": False, "action_changed": False},
+    )
+    receipt["status"] = "PROVEN"
+    result = validate_receipt(receipt)
+    assert result.status == "FAIL"
+    assert "causal" in result.reason.lower() or "delta" in result.reason.lower()
+
+
+def test_proven_status_requires_decision_or_outcome_delta_not_just_nonempty_metadata():
+    receipt = build_receipt(
+        experiment_id="exp-7", test_id="N9-001", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="treatment", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="AUTHORIZED",
+        decision_before="defer", decision_after="execute",
+        action="execute-reversible-action", observed_outcome="completed",
+        verification={"independent": True, "evidence_ids": ["verify-1"]},
+        causal_delta={"note": "kernel was useful"},
+    )
+    receipt["status"] = "PROVEN"
+    result = validate_receipt(receipt)
+    assert result.status == "FAIL"
+    assert "causal" in result.reason.lower() or "delta" in result.reason.lower()
