@@ -1,76 +1,23 @@
-# NayaPOWER Naming & Addressing Law V1
+# Tree & Graph Naming Law V1
 
-**Status:** PROPOSED CANONICAL
+**Status:** CANONICAL BUILD CONTRACT
 
-## Core rule
+## Purpose
+One deterministic naming law for Brain objects, Nodes, relationships, files, and machine references.
 
-**PATH IS NAVIGATION. ID IS IDENTITY.**
+## Laws
+1. **PATH IS NAVIGATION. ID IS IDENTITY.** Paths may change; canonical IDs do not.
+2. Canonical objects have one stable ID; display labels are mutable.
+3. Nine Master Node IDs are exactly SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE.
+4. Relationship IDs are deterministic from source ID + relation type + target ID; duplicate canonical edges are forbidden.
+5. IDs never encode mutable state and are never reused.
+6. Runtime MUST NOT invent IDs by guesswork; allocation is explicit and attributable.
+7. Unknown IDs, ambiguous aliases, and collisions fail closed.
+8. Archived, revoked, or superseded objects remain addressable for lineage but are not current truth.
+9. Machine indexes reference canonical IDs, not filenames or free-form labels.
 
-A path may change during migration. An object ID must not.
+## Acceptance
+The implementation passes when repeated allocation is deterministic, collisions are rejected, unknown IDs fail closed, and renaming a display label does not change identity.
 
-## Domain addressing
-
-Top-level domains use stable numeric addresses because they represent architectural regions, not individual objects:
-
-```
-00 CONSTITUTION
-01 GOVERNANCE
-02 ARCHITECTURE
-03 KERNEL
-04 INTELLIGENCE
-05 MEMORY
-06 PROOF
-07 LEARNING
-08 SUCCESSION
-09 EVOLUTION
-10 INTERFACES
-11 KNOWLEDGE
-12 ENGINEERING
-90 OPERATIONS
-99 ARCHIVE
-```
-
-## Object IDs
-
-Object IDs use:
-
-```
-NAYA-<TYPE>-<SEQUENCE>
-```
-
-Examples:
-
-```
-NAYA-NODE-0001
-NAYA-PRINCIPLE-0001
-NAYA-DECISION-0001
-NAYA-EVIDENCE-0001
-NAYA-VERIFICATION-0001
-NAYA-LEARNING-0001
-NAYA-EVENT-0001
-```
-
-Nine kernel identities are reserved:
-
-```
-NAYA-KERNEL-SELF
-NAYA-KERNEL-LAW
-NAYA-KERNEL-ACT
-NAYA-KERNEL-KNOW
-NAYA-KERNEL-PROVE
-NAYA-KERNEL-CONNECT
-NAYA-KERNEL-VERIFY
-NAYA-KERNEL-LEARN
-NAYA-KERNEL-EVOLVE
-```
-
-## Rules
-
-1. Never encode mutable state in identity.
-2. Never use a filename as the primary identity.
-3. Never reuse an ID.
-4. Never create IDs by guessing at runtime.
-5. Machine allocation owns sequential allocation.
-6. Historical IDs remain resolvable.
-7. Supersession creates lineage; it does not rewrite history.
-8. Human-readable titles may change without changing identity.
+## Evidence
+Every canonical relationship/object receipt records ID, type, source/target where applicable, version, lifecycle, scope, provenance, and allocation evidence.
