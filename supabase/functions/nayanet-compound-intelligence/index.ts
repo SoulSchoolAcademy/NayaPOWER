@@ -1,6 +1,7 @@
 // PI deterministic reconstruction timezone normalization verified 2026-09-21
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { evaluateNineNodeKernel } from "../../../n9_kernel_decision.mjs";
 
 const URL = Deno.env.get("SUPABASE_URL")!;
 const ANON = Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -137,6 +138,51 @@ async function loadMasterNodeKernel(_client: any, _userId: string) {
     runtime_flow: [...MASTER_NODE_KEYS],
     loop_return: "SELF",
     rule: "Nine Master Nodes are coordinated responsibilities, not nine authorities or nine independent brains."
+  };
+}
+
+async function kernelDecision(client: any, userId: string, body: any) {
+  const masterKernel = await loadMasterNodeKernel(client, userId);
+  const context = {
+    identity: {
+      authenticated: true,
+      actor: "naya",
+      project: PROJECT,
+      scope: body.scope ?? "SYSTEM",
+    },
+    authority: body.authority ?? {},
+    action: body.action ?? {},
+    knowledge: body.knowledge ?? {},
+    evidence: body.evidence ?? {},
+    connections: body.connections ?? {},
+    verification: body.verification ?? {},
+    learning: body.learning ?? {},
+    successor: body.successor ?? {},
+    runtime_evidence_ids: Array.isArray(body.runtime_evidence_ids)
+      ? body.runtime_evidence_ids
+      : [],
+  };
+  const decision = await evaluateNineNodeKernel(context, {
+    nodes: masterKernel.nodes,
+    disabled_node: body.disabled_node ?? null,
+  });
+  return {
+    schema: "NAYAPOWER_N9_KERNEL_RUNTIME_DECISION_V1",
+    status: "DECISION_EVALUATED",
+    kernel: {
+      schema: masterKernel.schema,
+      access_scope: masterKernel.access_scope ?? "SYSTEM_AUTHENTICATED",
+      node_count: masterKernel.node_count,
+      source_nodes: masterKernel.nodes.map((node: any) => ({
+        intelligent_block_id: node.intelligent_block_id,
+        node_no: node.node_no,
+        key: node.key,
+        effectiveness_status: node.effectiveness_status,
+      })),
+    },
+    decision,
+    proof_boundary:
+      "This operation proves runtime decision evaluation and node trace persistence at operation scope; it does not by itself prove causal behavioral effectiveness, independent outcome verification, learning, compounding, or successor continuity.",
   };
 }
 
@@ -1118,7 +1164,7 @@ Deno.serve(async (req) => {
   let body:any={}; try { body=await req.json(); } catch {}
   const action=String(body.action||"restore").trim();
   try {
-    const preActionExempt = new Set(["restore","cold_restore","kernel_boot","retrieve","reconcile","health"]);
+    const preActionExempt = new Set(["restore","cold_restore","kernel_boot","kernel_decide","retrieve","reconcile","health"]);
     if (!preActionExempt.has(action)) {
       const gate = await coldRestore(client,user.id);
       if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
@@ -1216,6 +1262,7 @@ Deno.serve(async (req) => {
       switch(action) {
         case "restore": result=await restore(client,user.id); break;
         case "kernel_boot": result=await loadMasterNodeKernel(client,user.id); break;
+        case "kernel_decide": result=await kernelDecision(client,user.id,body); break;
         case "cold_restore": result=await coldRestore(client,user.id); break;
         case "retrieve": result=await retrieve(client,user.id,body); break;
         case "reconcile": result=await reconcile(client,user.id,body); break;
