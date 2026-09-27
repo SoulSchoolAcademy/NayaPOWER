@@ -206,3 +206,39 @@ def test_ablation_rejects_missing_more_than_one_node():
         verification={"independent": True, "evidence_ids": ["verify"]}, causal_delta={"changed": True})
     ablated = {**full, "node_invocations": _invocations()[:-2]}
     assert validate_ablation(full, ablated, "MN-09").status == "FAIL"
+
+
+def test_source_preflight_fails_closed_on_dirty_or_stale_checkout():
+    from n9_behavioral_harness import preflight_source
+    assert preflight_source(observed_sha="sha", expected_sha="sha", clean=False).status == "BLOCKED"
+    assert preflight_source(observed_sha="old", expected_sha="sha", clean=True).status == "STALE"
+
+
+def test_runtime_preflight_fails_closed_on_unknown_or_wrong_owner():
+    from n9_behavioral_harness import preflight_runtime
+    assert preflight_runtime(
+        runtime_id=None, runtime_version=None, deployment_identity=None,
+        owner_id="owner-1", session_id="session-1",
+        expected_owner_id="owner-1", expected_session_id="session-1",
+    ).status == "BLOCKED"
+    assert preflight_runtime(
+        runtime_id="runtime", runtime_version=50, deployment_identity="dep",
+        owner_id="other", session_id="session-1",
+        expected_owner_id="owner-1", expected_session_id="session-1",
+    ).status == "BLOCKED"
+
+
+def test_execute_control_treatment_requires_distinct_conditions():
+    from n9_behavioral_harness import execute_control_treatment
+    def executor(*, experiment_id, condition, scenario, input_payload):
+        return {
+            "experiment_id": experiment_id,
+            "control_or_treatment": condition,
+            "scenario": scenario,
+            "input": input_payload,
+        }
+    control, treatment = execute_control_treatment(
+        experiment_id="exp-4", scenario="s", input_payload={"x": 1}, executor=executor
+    )
+    assert control["control_or_treatment"] == "control"
+    assert treatment["control_or_treatment"] == "treatment"
