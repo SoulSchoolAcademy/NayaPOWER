@@ -130,7 +130,7 @@ def test_stale_source_is_not_admitted():
         verification={"independent": True, "evidence_ids": ["verify-1"]},
         causal_delta={"decision_changed": False},
     )
-    result = validate_receipt(receipt)
+    result = validate_receipt(receipt, expected_source_sha="6e5e8509a59c844b8e148fcda996b70a91e8c97f")
     assert result.status == "FAIL"
     assert "sha" in result.reason.lower()
 
@@ -153,7 +153,7 @@ def test_owner_session_mismatch_fails_closed():
         verification={"independent": True, "evidence_ids": ["verify-1"]},
         causal_delta={"decision_changed": True},
     )
-    result = validate_receipt(receipt)
+    result = validate_receipt(receipt, expected_owner_id="owner-1", expected_session_id="session-1")
     assert result.status == "FAIL"
     assert "owner" in result.reason.lower()
 
