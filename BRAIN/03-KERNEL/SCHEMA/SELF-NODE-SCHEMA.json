@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "naya.kernel.self/v1",
+  "title": "SELF Node",
+  "type": "object",
+  "required": ["node_id", "identity_context", "mission_context", "continuity_context", "state"],
+  "properties": {
+    "node_id": {"const": "NAYA-KERNEL-SELF"},
+    "identity_context": {
+      "type": "object",
+      "required": ["actor_id", "system_id", "role"],
+      "properties": {
+        "actor_id": {"type": "string"},
+        "system_id": {"type": "string"},
+        "role": {"enum": ["naya", "human", "agent", "service"]}
+      }
+    },
+    "mission_context": {
+      "type": "object",
+      "required": ["mission", "objective", "scope"],
+      "properties": {
+        "mission": {"type": "string"},
+        "objective": {"type": "string"},
+        "scope": {"type": "string"}
+      }
+    },
+    "continuity_context": {
+      "type": "object",
+      "properties": {
+        "predecessor_id": {"type": ["string", "null"]},
+        "successor_ready": {"type": "boolean"},
+        "checkpoint_id": {"type": ["string", "null"]}
+      }
+    },
+    "state": {"enum": ["UNINITIALIZED", "BOOTING", "READY", "DEGRADED", "FAILED"]},
+    "known_unknown_boundary": {
+      "type": "object",
+      "properties": {
+        "known": {"type": "array", "items": {"type": "string"}},
+        "unknown": {"type": "array", "items": {"type": "string"}},
+        "blocked": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "additionalProperties": false
+}
