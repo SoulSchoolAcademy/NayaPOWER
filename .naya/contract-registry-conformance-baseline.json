@@ -213,13 +213,6 @@
       "fingerprint": "cefca762d985430f"
     },
     {
-      "code": "LIBRARY_INDEX_LAGS_TREE",
-      "severity": "WARN",
-      "subject": ".naya/contracts/README.md",
-      "detail": "40 contract artifact(s) absent from the library index, including 00-CONTRACT-STACK-OPERATING-LAW.md, 01-SMART-NOTE-AND-SMART-LINK.md, 01-SMART-NOTE-INTELLIGENT-BLOCK.md, 01-EXECUTION-PROTOCOL.md",
-      "fingerprint": "9b323c489e060221"
-    },
-    {
       "code": "RATIFICATION_UNPROVEN",
       "severity": "ERROR",
       "subject": ".naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md",

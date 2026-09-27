@@ -119,10 +119,25 @@ def test_registry_reachability_from_canonical_boot_is_reported():
     assert not (ROOT / ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md").is_symlink()
 
 
-def test_contract_library_index_still_lags_the_tree_is_reported():
+def test_contract_library_index_is_truthful_and_that_is_guarded():
+    # The index previously listed 6 of 48 artifacts, leaving 41 undiscoverable to a
+    # cold Naya. It is now generated from the tree. This guards against regression.
     report = audit()
-    codes = {f["code"] for f in report["findings"]}
-    assert "LIBRARY_INDEX_LAGS_TREE" in codes
+    assert findings(report, "LIBRARY_INDEX_LAGS_TREE") == []
+    # If the index were emptied the check must fire again.
+    law_index = (ROOT / ".naya/contracts/README.md").read_text(encoding="utf-8")
+    assert "COMPLETE ARTIFACT INDEX" in law_index
+    assert "CONSTITUTIONAL-OPERATING-LAW-V2.md" in law_index
+    assert "**Total artifacts:**" in law_index
+    # Every contract artifact in the tree must be named by the index, otherwise a
+    # cold Naya cannot discover it as governing.
+    tree = sorted(
+        p.name
+        for p in (ROOT / ".naya/contracts").rglob("*")
+        if p.is_file() and p.suffix in {".md", ".json"} and p.name != "README.md"
+    )
+    unindexed = [name for name in tree if name not in law_index]
+    assert unindexed == [], unindexed
 
 
 # --- the gate itself must be honest ------------------------------------------------

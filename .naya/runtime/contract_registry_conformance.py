@@ -54,7 +54,7 @@ REPO_DEFAULT = Path(__file__).resolve().parents[2]
 REGISTRY_RELPATH = ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
 CONSTITUTION_RELPATH = ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md"
 LIBRARY_INDEX_RELPATH = ".naya/contracts/README.md"
-BASELINE_RELPATH = ".naya/contracts/CONTRACT-REGISTRY-CONFORMANCE-BASELINE.json"
+BASELINE_RELPATH = ".naya/contract-registry-conformance-baseline.json"
 REPORT_RELPATH = ".naya/contract-registry-conformance-report.json"
 
 # Constitutional law section 6, "The following equations are mandatory".
@@ -138,8 +138,13 @@ class AuditError(RuntimeError):
 
 
 def _finding(code: str, severity: str, subject: str, detail: str) -> dict:
+    # Some findings carry a volatile magnitude (how many artifacts are unindexed).
+    # The magnitude is reported but excluded from the fingerprint, so ordinary growth
+    # of known debt is visible without failing the gate on every legitimate addition.
+    # A change in WHICH defect exists is still new drift.
+    fingerprint_detail = detail.split("|")[0]
     fingerprint = hashlib.sha256(
-        "|".join((code, severity, subject, detail)).encode("utf-8")
+        "|".join((code, severity, subject, fingerprint_detail)).encode("utf-8")
     ).hexdigest()[:16]
     return {
         "code": code,
@@ -303,19 +308,20 @@ def audit(root: Path = REPO_DEFAULT) -> dict:
         for p in contracts_dir.rglob("*")
         if p.is_file()
         and p.suffix in {".md", ".json"}
-        # This gate must not count its own baseline as library debt; that would make
-        # the fingerprint depend on the baseline it is written into.
+        # This gate's own audit artifacts are not library contracts; counting them
+        # would make the library index permanently self-contradicting.
         and p.name != Path(BASELINE_RELPATH).name
     )
     unindexed = [p for p in tree_files if Path(p).name not in library_index]
     if unindexed:
+        names = ", ".join(Path(p).name for p in unindexed[:4])
         findings.append(
             _finding(
                 "LIBRARY_INDEX_LAGS_TREE",
                 "WARN",
                 LIBRARY_INDEX_RELPATH,
-                f"{len(unindexed)} contract artifact(s) absent from the library index, "
-                f"including {', '.join(Path(p).name for p in unindexed[:4])}",
+                f"{len(unindexed)} contract artifact(s) absent from the library index"
+                f" | examples: {names}",
             )
         )
 

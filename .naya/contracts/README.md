@@ -1,9 +1,67 @@
-# NayaNET Contract Law Library
+﻿# NayaNET Contract Law Library
 
 **Status:** V1 STRUCTURE — Constitutional Contract Law RATIFIED 2026-09-26
 **Canonical home:** `.naya/contracts/`
 
 This directory is the **single navigational home for NayaNET Contract Law**.
+
+
+## COMPLETE ARTIFACT INDEX (generated)
+
+Generated from the repository tree, because a hand-maintained index is how 41 artifacts became undiscoverable to a cold Naya. A file is not authoritative merely because it exists here; resolve status through the Contract Registry and the control plane.
+
+| Artifact | Kind |
+| --- | --- |
+| `00-CONTRACT-STACK-OPERATING-LAW.md` | contract / law |
+| `00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md` | contract / law |
+| `01-INTELLIGENCE/01-SMART-NOTE-AND-SMART-LINK.md` | contract / law |
+| `01-INTELLIGENCE/README.md` | contract / law |
+| `01-SMART-NOTE-INTELLIGENT-BLOCK.md` | contract / law |
+| `02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md` | contract / law |
+| `02-GOVERNANCE-AND-FLOW/README.md` | contract / law |
+| `02-SMART-LINK.md` | contract / law |
+| `03-HUB/README.md` | contract / law |
+| `03-RECEIVER.md` | contract / law |
+| `04-CONTINUITY/README.md` | contract / law |
+| `04-SENDER.md` | contract / law |
+| `05-HUB-CONSUMPTION.md` | contract / law |
+| `06-ROOM.md` | contract / law |
+| `07-SMARTCONNECT.md` | contract / law |
+| `08-PROOF-RECEIPT.md` | contract / law |
+| `09-LEARNING.md` | contract / law |
+| `10-CONTINUITY-SUCCESSOR.md` | contract / law |
+| `compounding-intelligence-measurement-contract-v1.json` | schema / machine contract |
+| `CONSTITUTIONAL-OPERATING-LAW-V2.md` | contract / law |
+| `CONTRACT-LIBRARY-INTEGRITY-BASELINE.json` | schema / machine contract |
+| `CONTRACT-REGISTRY-CONFORMANCE-BASELINE.json` | schema / machine contract |
+| `HUB-IDENTITY-PROJECTION-V1.json` | schema / machine contract |
+| `MEMBER-LEVEL-CONTRACT.json` | schema / machine contract |
+| `NAYA-ACTION-V1.schema.json` | schema / machine contract |
+| `nayanet_level1_contracts.json` | schema / machine contract |
+| `NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md` | contract / law |
+| `NAYA-NEXT-ACTION-HANDOFF-V1.schema.json` | schema / machine contract |
+| `NAYA-SUBJECT-BINDING-CONTRACT-V1.json` | schema / machine contract |
+| `NAYA-SUBJECT-IDENTITY-CONTRACT-V1.json` | schema / machine contract |
+| `PRIMARY-INTELLIGENCE-SYSTEM-CONTRACT-V1.json` | schema / machine contract |
+| `README.md` | contract / law |
+| `schemas/CAUSAL-VERIFICATION-OBJECT-SCHEMA.json` | schema / machine contract |
+| `schemas/MEMBER-LEVEL-CONTRACT.json` | schema / machine contract |
+| `schemas/SMART-LEDGER-EVENT-SCHEMA.json` | schema / machine contract |
+| `schemas/SMART-LINK-CONTRACT.json` | schema / machine contract |
+| `schemas/VALUE-EVENT-SCHEMA.json` | schema / machine contract |
+| `schemas/VERIFICATION-RECEIPT-SCHEMA.json` | schema / machine contract |
+| `schemas/VERIFIED-AI-ACTION-V1-SCHEMA.json` | schema / machine contract |
+| `SMART-LEDGER-CCT-MACHINE-CONTRACT-V1.md` | contract / law |
+| `SMART-LEDGER-EVENT-SCHEMA.json` | schema / machine contract |
+| `SMART-LINK-CONTRACT.json` | schema / machine contract |
+| `SMART-NOTE-PROPOSAL-CONTRACT-V1.json` | schema / machine contract |
+| `TEMPORAL-SUPERBRAIN-RECORD-CONTRACT-V1.json` | schema / machine contract |
+| `VALUE-EVENT-SCHEMA.json` | schema / machine contract |
+| `VALUE-MATH-CONTRACT-V1.json` | schema / machine contract |
+| `VERIFICATION-RECEIPT-SCHEMA.json` | schema / machine contract |
+| `VERIFIED-AI-ACTION-V1.md` | contract / law |
+
+**Total artifacts:** 48
 
 ## MANDATORY AI LAW
 
