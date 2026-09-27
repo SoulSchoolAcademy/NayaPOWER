@@ -47,5 +47,16 @@ class NineMasterNodeKernelTests(unittest.TestCase):
         self.assertIn("self-ratify", text)
         self.assertIn("competing canonical intelligence store", text)
 
+
+    def test_runtime_loader_is_bound_to_the_canonical_nine(self):
+        source = (ROOT / "supabase/functions/nayanet-compound-intelligence/index.ts").read_text(encoding="utf-8")
+        for node_id in [f"IB-{n:06d}" for n in range(1233, 1242)]:
+            self.assertIn(node_id, source)
+        self.assertIn("loadMasterNodeKernel", source)
+        self.assertIn('"kernel_boot"', source)
+        self.assertIn('"KERNEL_ACTIVE_STRUCTURAL"', source)
+        self.assertIn('"MASTER_NODE_KERNEL_INCOMPLETE:"', source)
+        self.assertIn('"MASTER_NODE_KERNEL_INVALID:"', source)
+
 if __name__ == "__main__":
     unittest.main()
