@@ -1,0 +1,59 @@
+name: verify-kernel-boot
+
+on:
+  pull_request:
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/tests/test_kernel_boot.py"
+      - ".github/workflows/verify-kernel-boot.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/tests/test_kernel_boot.py"
+      - ".github/workflows/verify-kernel-boot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-boot:
+    name: nine-node kernel boot fails closed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check "pytest>=8.0,<9"
+
+      - name: Kernel boot unit tests
+        run: python -m pytest .naya/tests/test_kernel_boot.py -v
+
+      # Proves the loader is fail-closed in a credential-free environment:
+      # it must report UNKNOWN and refuse to permit a consequential boot.
+      # It must NOT pass just because the kernel is unreachable.
+      - name: Fail-closed proof (no receiver credentials expected)
+        run: |
+          set +e
+          python -B .naya/runtime/kernel_boot.py --json > boot.json
+          code=$?
+          set -e
+          cat boot.json
+          if [ "$code" -ne 1 ]; then
+            echo "::error::expected exit 1 (refused) without receiver credentials, got $code"
+            exit 1
+          fi
+          python - <<'PY'
+          import json, sys
+          r = json.load(open("boot.json"))
+          assert r["boot_permitted"] is False, "boot must be refused"
+          assert r["authority"] == "NONE", "loading must never grant authority"
+          assert r["findings"][0]["status"] == "UNKNOWN", (
+              "absent credentials are UNKNOWN, not an empty healthy kernel")
+          print("PASS: kernel boot refused, authority NONE, state UNKNOWN")
+          PY
