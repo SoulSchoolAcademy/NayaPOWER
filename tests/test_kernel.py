@@ -108,3 +108,17 @@ def test_kernel_rejects_manifest_with_wrong_node_order(tmp_path):
     import pytest
     with pytest.raises(ValueError, match="canonical nine-node order"):
         Kernel.from_brain(tmp_path)
+
+
+def test_kernel_manifest_declares_the_executable_cold_runtime_entrypoint():
+    from pathlib import Path
+    import json
+
+    root = Path(__file__).resolve().parents[1]
+    manifest = json.loads(
+        (root / "BRAIN/03-KERNEL/MANIFEST.json").read_text(encoding="utf-8")
+    )
+
+    assert manifest["runtime_entrypoint"] == "runtime/cold_runtime.py"
+    assert manifest["runtime_loader"] == "Kernel.from_brain"
+    assert manifest["canonical_persistence_adapter"] == "runtime/canonical_memory.py"
