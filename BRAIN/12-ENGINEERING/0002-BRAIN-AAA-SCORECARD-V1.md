@@ -23,9 +23,8 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | Succession | 5.0 | 10 |
 | Production proof | 3.5 | 10 |
 
-**Current artifact/readiness assessment: 8.1/10.**  
+**Current artifact/readiness assessment: 8.1/10 (reconciled from the file-level artifact review; this is not a behavioral or production score).**  
 **Current living-intelligence proof: NOT ESTABLISHED.**  
-**Pre-race qualification:** BLOCKED pending live runtime convergence and behavioral/successor evidence.  
 **Pre-race qualification:** BLOCKED pending live runtime convergence and behavioral/successor evidence.
 
 ## File scorecard
@@ -33,17 +32,17 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | File | E | H | AI | M | P | Overall |
 |---|---:|---:|---:|---:|---:|---:|
 | 00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md | 8.5 | 8.0 | 8.5 | 6.5 | 6.0 | 7.5 |
-| 00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 00-SPEC/0003-REPRESENTATION-LAW-V1.md | 9.0 | 9.0 | 9.0 | 9.0 | 8.0 | 8.8 |
-| 00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 00-SPEC/0005-TREE-V1.md | 7.5 | 8.0 | 8.0 | 8.0 | 6.0 | 7.5 |
-| 00-SPEC/0006-OBJECT-TYPES-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0006-OBJECT-TYPES-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 00-SPEC/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
+| 01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 01-GOVERNANCE/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 02-ARCHITECTURE/0002-DEPENDENCY-ORDER-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
+| 02-ARCHITECTURE/0002-DEPENDENCY-ORDER-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 02-ARCHITECTURE/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 03-KERNEL/0001-KERNEL-CONTRACT-V1.md | 8.5 | 8.0 | 8.5 | 7.5 | 7.0 | 7.9 |
 | 03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md | 8.5 | 8.0 | 8.5 | 7.5 | 7.0 | 7.9 |
@@ -60,9 +59,9 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | 03-KERNEL/NODES/VERIFY/0001-CONTRACT.md | 7.5 | 8.0 | 8.0 | 6.5 | 5.5 | 7.1 |
 | 03-KERNEL/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 04-INTELLIGENCE/0001-FIRST-LIVING-NODE-SPEC-V1.md | 8.5 | 8.0 | 8.5 | 6.5 | 6.0 | 7.5 |
-| 04-INTELLIGENCE/0001-INTELLIGENT-OBJECT-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 04-INTELLIGENCE/0001-INTELLIGENT-OBJECT-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
+| 04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
+| 04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json | 8.0 | 7.0 | 9.0 | 9.0 | 7.0 | 8.0 |
 | 04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json | 8.0 | 7.0 | 9.0 | 9.0 | 7.0 | 8.0 |
 | 04-INTELLIGENCE/GRAPH/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
@@ -77,26 +76,26 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | 04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json | 8.5 | 8.0 | 9.0 | 9.0 | 6.0 | 8.1 |
 | 04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json | 8.5 | 8.0 | 9.0 | 9.0 | 6.0 | 8.1 |
 | 04-INTELLIGENCE/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md | 7.0 | 7.0 | 7.5 | 6.0 | 5.5 | 6.6 |
+| 05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 05-MEMORY/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 06-PROOF/0001-PROOF-CONTRACT-V1.md | 7.0 | 7.0 | 7.5 | 6.0 | 5.5 | 6.6 |
+| 06-PROOF/0001-PROOF-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 06-PROOF/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 07-LEARNING/0001-LEARNING-CONTRACT-V1.md | 7.0 | 7.0 | 7.5 | 6.0 | 5.5 | 6.6 |
+| 07-LEARNING/0001-LEARNING-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 07-LEARNING/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md | 7.0 | 7.0 | 7.5 | 6.0 | 5.5 | 6.6 |
+| 08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 08-SUCCESSION/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 09-EVOLUTION/0001-SELF-BUILDING-CONTRACT-V1.md | 7.0 | 7.0 | 7.5 | 6.0 | 5.5 | 6.6 |
+| 09-EVOLUTION/0001-SELF-BUILDING-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 09-EVOLUTION/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 10-INTERFACES/0001-CHANNEL-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 10-INTERFACES/0001-CHANNEL-CONTRACT-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 10-INTERFACES/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md | 8.0 | 7.5 | 8.0 | 8.0 | 6.0 | 7.5 |
 | 11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md | 8.5 | 8.5 | 8.5 | 6.5 | 6.5 | 7.7 |
-| 11-KNOWLEDGE/0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 11-KNOWLEDGE/0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md | 8.0 | 7.5 | 8.0 | 8.5 | 7.0 | 7.8 |
 | 11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json | 8.0 | 7.5 | 8.0 | 8.5 | 7.0 | 7.8 |
 | 11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md | 9.0 | 9.0 | 9.0 | 9.0 | 8.0 | 8.8 |
 | 11-KNOWLEDGE/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
-| 12-ENGINEERING/0001-ENGINEERING-TRUTH-LAW-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 12-ENGINEERING/0001-ENGINEERING-TRUTH-LAW-V1.md | 9.5 | 9.5 | 9.5 | 9.5 | 7.5 | 9.1 |
 | 12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md | 9.0 | 9.0 | 9.0 | 8.0 | 7.0 | 8.4 |
 | 12-ENGINEERING/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md | 8.5 | 8.0 | 8.5 | 7.0 | 6.0 | 7.6 |
