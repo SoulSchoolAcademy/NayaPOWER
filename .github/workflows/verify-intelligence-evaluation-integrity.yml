@@ -1,0 +1,140 @@
+name: Verify Intelligence Evaluation Integrity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: intelligence-evaluation-integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evaluator-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Run adversarial evidence-gate tests
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet --disable-pip-version-check pytest
+          python -m pytest tests/test_naya_evidence_gate.py -q
+
+      - name: Prove assertion-only evidence is rejected
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp)"
+          cat > "$tmp" <<'JSON'
+          {
+            "schema": "naya/intelligence-evaluation-receipt/v1",
+            "test_id": "NEGATIVE-CONTROL",
+            "fixture_id": "assertion-only",
+            "source_commit": "fixture",
+            "runtime_version": "fixture",
+            "input_hash": "sha256:fixture",
+            "execution_path": [],
+            "state_before": {},
+            "state_after": {"status": "PASS"},
+            "evidence_ids": [],
+            "authority_decision": "AUTHORIZED",
+            "expected": {"status": "PASS"},
+            "actual": {"status": "PASS"},
+            "reproduction": {"command": "echo PASS", "result": "ASSERTION_ONLY"},
+            "evidence_level": "L4_VERIFIED",
+            "evaluator_integrity": {
+              "positive_control": "PASS",
+              "negative_control": "PASS",
+              "mutation_control": "PASS",
+              "contradiction_control": "PASS",
+              "stale_control": "PASS",
+              "cold_control": "PASS"
+            }
+          }
+          JSON
+          set +e
+          python naya_evidence_gate.py "$tmp"
+          code=$?
+          set -e
+          test "$code" -ne 0
+          echo "ASSERTION_ONLY_REJECTION_PROVEN"
+
+      - name: Prove stale evidence is rejected
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp)"
+          cat > "$tmp" <<'JSON'
+          {
+            "schema": "naya/intelligence-evaluation-receipt/v1",
+            "test_id": "STALE-CONTROL",
+            "fixture_id": "stale",
+            "source_commit": "old",
+            "runtime_version": "old",
+            "input_hash": "sha256:old",
+            "execution_path": ["real"],
+            "state_before": {},
+            "state_after": {"status": "SUCCESS"},
+            "evidence_ids": ["old-receipt"],
+            "authority_decision": "AUTHORIZED",
+            "expected": {"status": "SUCCESS"},
+            "actual": {"status": "SUCCESS"},
+            "reproduction": {"command": "real-command", "result": "PASS"},
+            "evidence_level": "L4_VERIFIED",
+            "source_freshness": "STALE",
+            "evaluator_integrity": {
+              "positive_control": "PASS",
+              "negative_control": "PASS",
+              "mutation_control": "PASS",
+              "contradiction_control": "PASS",
+              "stale_control": "PASS",
+              "cold_control": "PASS"
+            }
+          }
+          JSON
+          set +e
+          python naya_evidence_gate.py "$tmp"
+          code=$?
+          set -e
+          test "$code" -ne 0
+          echo "STALE_EVIDENCE_REJECTION_PROVEN"
+
+      - name: Prove evaluator integrity is load-bearing
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from naya_evidence_gate import evaluate_receipt
+          r = {
+              "schema": "naya/intelligence-evaluation-receipt/v1",
+              "test_id": "INTEGRITY-MUTATION",
+              "fixture_id": "integrity",
+              "source_commit": "fixture",
+              "runtime_version": "fixture",
+              "input_hash": "sha256:fixture",
+              "execution_path": ["real"],
+              "state_before": {},
+              "state_after": {"status": "SUCCESS"},
+              "evidence_ids": ["e1"],
+              "authority_decision": "AUTHORIZED",
+              "expected": {"status": "SUCCESS"},
+              "actual": {"status": "SUCCESS"},
+              "reproduction": {"command": "real", "result": "PASS"},
+              "evidence_level": "L4_VERIFIED",
+              "evaluator_integrity": {
+                  "positive_control": "PASS",
+                  "negative_control": "FAIL",
+                  "mutation_control": "PASS",
+                  "contradiction_control": "PASS",
+                  "stale_control": "PASS",
+                  "cold_control": "PASS"
+              }
+          }
+          v = evaluate_receipt(r)
+          assert v.status == "FAIL"
+          assert any("negative" in x.lower() for x in v.reasons)
+          print("EVALUATOR_INTEGRITY_LOAD_BEARING_PROVEN")
+          PY
