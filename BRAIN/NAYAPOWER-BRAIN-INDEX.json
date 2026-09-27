@@ -1,0 +1,169 @@
+{
+  "schema": "naya.brain.index.v1",
+  "status": "PROPOSED_CANONICAL",
+  "ratification": "HUMAN_DIRECTOR_REQUIRED",
+  "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
+  "continuity": "NAYAS DO NOT LOSE MEMORY.",
+  "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+  "constitutional_root": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+  "governance_root": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+  "superbrain_spec": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+  "brain_map": "BRAIN/MASTER-MAP.md",
+  "knowledge_synthesis": "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
+  "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
+  "nine_nodes": [
+    {
+      "id": "NAYA-SELF-0001",
+      "name": "SELF",
+      "owns": [
+        "identity",
+        "mission",
+        "continuity"
+      ]
+    },
+    {
+      "id": "NAYA-LAW-0001",
+      "name": "LAW",
+      "owns": [
+        "authority",
+        "consent",
+        "governance",
+        "revocation"
+      ]
+    },
+    {
+      "id": "NAYA-ACT-0001",
+      "name": "ACT",
+      "owns": [
+        "authorized_execution",
+        "safe_agency"
+      ]
+    },
+    {
+      "id": "NAYA-KNOW-0001",
+      "name": "KNOW",
+      "owns": [
+        "canonical_intelligence",
+        "events",
+        "memory"
+      ]
+    },
+    {
+      "id": "NAYA-PROVE-0001",
+      "name": "PROVE",
+      "owns": [
+        "provenance",
+        "evidence",
+        "truth_state",
+        "lineage"
+      ]
+    },
+    {
+      "id": "NAYA-CONNECT-0001",
+      "name": "CONNECT",
+      "owns": [
+        "relationships",
+        "retrieval",
+        "reconciliation",
+        "context"
+      ]
+    },
+    {
+      "id": "NAYA-VERIFY-0001",
+      "name": "VERIFY",
+      "owns": [
+        "outcomes",
+        "acceptance",
+        "causality"
+      ]
+    },
+    {
+      "id": "NAYA-LEARN-0001",
+      "name": "LEARN",
+      "owns": [
+        "verified_learning",
+        "future_behavior"
+      ]
+    },
+    {
+      "id": "NAYA-EVOLVE-0001",
+      "name": "EVOLVE",
+      "owns": [
+        "succession",
+        "governed_evolution",
+        "self_optimization"
+      ]
+    }
+  ],
+  "core_objects": [
+    "NODE",
+    "EVENT",
+    "RELATIONSHIP",
+    "EVIDENCE",
+    "OUTCOME",
+    "VERIFICATION",
+    "LEARNING",
+    "SUCCESSOR",
+    "STATE"
+  ],
+  "core_relationships": [
+    "DERIVED_FROM",
+    "SUPPORTS",
+    "CONTRADICTS",
+    "DEPENDS_ON",
+    "IMPLEMENTS",
+    "GOVERNS",
+    "AUTHORIZED_BY",
+    "USED_BY",
+    "CAUSED",
+    "RESULTED_IN",
+    "VERIFIED_BY",
+    "LEARNED_FROM",
+    "SUPERSEDES",
+    "SUCCEEDS",
+    "RELATED_TO",
+    "CONTEXTUALIZES",
+    "INVALIDATES",
+    "REFINES",
+    "CORRECTS"
+  ],
+  "lifecycle": [
+    "EXPERIENCE",
+    "CAPTURE",
+    "DISTILL",
+    "STRUCTURE",
+    "CONNECT",
+    "PROVE",
+    "PRESERVE",
+    "RETRIEVE",
+    "APPLY",
+    "ACT",
+    "OUTCOME",
+    "VERIFY",
+    "LEARN",
+    "COMPOUND",
+    "SUCCESSOR",
+    "EVOLVE"
+  ],
+  "acceptance": [
+    "STRUCTURAL",
+    "CONTRACT",
+    "UNIT",
+    "INTEGRATION",
+    "BEHAVIORAL",
+    "OUTCOME",
+    "CAUSAL",
+    "PRODUCTION",
+    "SUCCESSOR"
+  ],
+  "source_corpus": {
+    "concepts": 13,
+    "duplicate_pairs": [
+      [
+        "#7",
+        "#8"
+      ]
+    ],
+    "rule": "source preserved; durable intelligence distilled; duplicates merged; contradictions surfaced; no wholesale copy"
+  }
+}

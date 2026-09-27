@@ -1,0 +1,15 @@
+{
+  "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
+  "status": "ARCHITECTURE_DEFINED_BEHAVIORAL_PROOF_PENDING",
+  "nodes": [
+    {"id":"NAYA-KERNEL-SELF","name":"SELF","responsibility":"identity, mission, continuity"},
+    {"id":"NAYA-KERNEL-LAW","name":"LAW","responsibility":"authority, consent, governance"},
+    {"id":"NAYA-KERNEL-ACT","name":"ACT","responsibility":"execution, agency, safe action"},
+    {"id":"NAYA-KERNEL-KNOW","name":"KNOW","responsibility":"intelligence, memory, events"},
+    {"id":"NAYA-KERNEL-PROVE","name":"PROVE","responsibility":"truth, provenance, accountability"},
+    {"id":"NAYA-KERNEL-CONNECT","name":"CONNECT","responsibility":"relationships, retrieval, context"},
+    {"id":"NAYA-KERNEL-VERIFY","name":"VERIFY","responsibility":"outcomes, causality, acceptance"},
+    {"id":"NAYA-KERNEL-LEARN","name":"LEARN","responsibility":"reconciliation, learning, prediction"},
+    {"id":"NAYA-KERNEL-EVOLVE","name":"EVOLVE","responsibility":"succession, experience, evolution"}
+  ]
+}
