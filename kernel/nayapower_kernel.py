@@ -1,5 +1,8 @@
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
+
+from kernel.runtime_boot import load_runtime_manifest
 
 
 class Node(str, Enum):
@@ -57,6 +60,15 @@ class Kernel:
         Node.LEARN,
         Node.EVOLVE,
     )
+
+    def __init__(self, brain_root: Path | None = None):
+        manifest = load_runtime_manifest(brain_root)
+        self._manifest = manifest
+        self._NODE_ORDER = tuple(Node(node["name"]) for node in manifest["nodes"])
+
+    @property
+    def manifest(self) -> dict:
+        return self._manifest
 
     @classmethod
     def node_order(cls):
