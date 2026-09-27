@@ -11,8 +11,28 @@
     "verification": "CI execution required before VERIFIED"
   },
   "manifest": "BRAIN/03-KERNEL/MANIFEST.json",
-  "node_order": ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"],
-  "node_ids": ["NAYA-KERNEL-SELF", "NAYA-KERNEL-LAW", "NAYA-KERNEL-ACT", "NAYA-KERNEL-KNOW", "NAYA-KERNEL-PROVE", "NAYA-KERNEL-CONNECT", "NAYA-KERNEL-VERIFY", "NAYA-KERNEL-LEARN", "NAYA-KERNEL-EVOLVE"],
+  "node_order": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+  ],
+  "node_ids": [
+    "NAYA-KERNEL-SELF",
+    "NAYA-KERNEL-LAW",
+    "NAYA-KERNEL-ACT",
+    "NAYA-KERNEL-KNOW",
+    "NAYA-KERNEL-PROVE",
+    "NAYA-KERNEL-CONNECT",
+    "NAYA-KERNEL-VERIFY",
+    "NAYA-KERNEL-LEARN",
+    "NAYA-KERNEL-EVOLVE"
+  ],
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
   "knowledge_population": "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
@@ -28,6 +48,16 @@
     "LEARN:verified_future_behavioral_effect",
     "EVOLVE:successor_continuity_without_new_authority"
   ],
-  "fail_closed": ["missing_identity", "missing_authority", "out_of_scope", "missing_provenance", "insufficient_evidence", "material_conflict", "missing_canonical_identity"],
-  "acceptance": "A runtime is not considered living merely because this registry exists; behavioral, outcome, causal, production and successor proof are separate gates."
+  "fail_closed": [
+    "missing_identity",
+    "missing_authority",
+    "out_of_scope",
+    "missing_provenance",
+    "insufficient_evidence",
+    "material_conflict",
+    "missing_canonical_identity"
+  ],
+  "acceptance": "A runtime is not considered living merely because this registry exists; behavioral, outcome, causal, production and successor proof are separate gates.",
+  "functional_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-FUNCTIONAL-CONTRACT-V1.json",
+  "aaa_scorecard": "BRAIN/03-KERNEL/0005-NINE-NODE-AAA-SCORECARD-V1.md"
 }
