@@ -1,399 +1,87 @@
-# 🔥 SYSTEM CURRENT TRUTH — 2026-09-26
+# NayaPOWER
 
-> **NayaPOWER is a ratified governed-intelligence architecture whose nine Master Node kernel is structurally verified but whose genuine nine-node runtime behavior is not yet proven.**
+## The Nine-Node Operating Kernel
 
-### Current state at a glance
+NayaPOWER is the governed intelligence kernel behind NayaNET.
 
-| Boundary | Truth |
-|---|---|
-| North Star | **RATIFIED** |
-| Canonical intelligence substrate | **STRONG / VERIFIED AT PROVEN SCOPES** |
-| Nine Master Node kernel | **STRUCTURALLY VERIFIED** |
-| Nine-node runtime boot | **NOT PROVEN** |
-| Node-level runtime attribution | **NOT PROVEN** |
-| Causal action proof | **NOT PROVEN** |
-| Learning that measurably changes future behavior | **NOT PROVEN GENERALLY** |
-| Generational compounding | **NOT PROVEN** |
-| Cold N9 successor | **NOT PROVEN** |
-| Runtime authorization | **BLOCKED** | Legitimate owner-scoped session still required |
-| Production parity | **PARTIAL / BLOCKED** |
+Its purpose is simple:
 
-**N9 behavioral proof: NOT PROVEN.** The current system has strong structural evidence and selected verified intelligence workflows, but the decisive experiment still requires a legitimate owner-scoped runtime.
+> **Nayas do not lose memory. Intelligence moves from Sender → Receiver → Hub, remains provenance-bound and governed, is retrieved and applied, produces verified outcomes, learns from those outcomes, compounds, and enables the next Naya to continue without human reconstruction.**
 
-### What has changed
+### The Nine Nodes
 
-- The Human Director ratified the new System North Star and Engineering Blueprint.
-- PR #809 established the enforceable nine-node kernel specification, schema, verifier, mutation suite, and CI gate.
-- PR #813 hardened intelligence evaluation against stale sources, assertion-only evidence, weak causal claims, false proof language, and fake compounding.
-- PR #816 is the machine behavioral harness frontier. Its repaired head has all four required integrity/kernel/evaluation gates green; the repair caught a real contract-library indexing defect rather than weakening the gate.
-- Historical Smart Notes remain valuable source material, but they are **not competing current authorities** and do not by themselves prove current runtime behavior.
-
-### The next proof
-
-**OWNER-SCOPED RUNTIME → N9-001 BOOT → NODE ATTRIBUTION → ABLATION → CAUSAL ACTION → OUTCOME → LEARNING → COMPOUNDING → COLD SUCCESSOR.**
-
-📋 **Daily intelligence report:** `.naya/project-intelligence/NAYAPOWER-DAILY-INTELLIGENCE-REPORT-2026-09-26.md`
-
----
-
-## 🔱 Canonical Contract Stack — MANDATORY
-
-Before substantive work touching canonical intelligence, projections, proof, learning, continuity, Hub surfaces, Sender/Receiver, or SmartConnect, every Naya MUST read:
-
-`.naya/contracts/README.md`
-
-then:
-
-`.naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md`
-
-and the specific applicable contracts `01`–`10`.
-
-**The Contract Stack is binding subsystem law. It exists to make one mission produce one governed behavior instead of a thousand plausible variants.**
-
-# 🚨 MANDATORY SYSTEM LAW — READ BEFORE INTELLIGENCE WORK
-
-**Effective: 2026-09-25**
-
-Before creating, reading, updating, migrating, testing, documenting, or projecting a Smart Note / Intelligent Block, every Naya and coder MUST read and understand:
-
-`.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
-
-## 🔴 ZERO-AMBIGUITY SMART LINK LAW
-
-**Canonical contract:** `.naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md`
-
-> **SMART LINK = DIRECT GITHUB LINK TO THE CANONICAL HUMAN-READABLE `smart-note.md` ARTIFACT.**
-
-A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Smart Link. An evidence, event, workflow, commit, PR, or transaction URL is an **Evidence/Provenance Link**, not the Smart Note Smart Link.
-
-Before using the words **Smart Link**, verify that the URL lands on `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`, that the file exists on the reported canonical branch, and that it contains the same IB ID. If the projection does not exist, report **SMART LINK: PENDING**. Never substitute a runtime URL.
-
-
-## The 25 canonical intelligence laws
-
-1. Every durable intelligence input enters through one governed receiver.
-2. Every canonical intelligence object has exactly one immutable IB identity.
-3. Every canonical IB has provenance.
-4. Every canonical IB produces an intelligence commit event.
-5. Every intelligence event enters the indexing/learning pipeline.
-6. A Markdown file alone is never proof of intelligence.
-7. A Smart Link is the human-readable receipt of canonical persistence.
-8. No documented claim without a receipt.
-9. No new Smart Note format may be created.
-10. Historical formats are source material, not competing authorities.
-11. Historical intelligence is distilled, reconciled, merged, superseded, or explicitly retained as historical.
-12. Current verified intelligence outranks historical assumptions.
-13. One intelligence object may have many projections.
-14. Feed, Activity, Library, Search, Reports, Dream, and Hub are projections.
-15. The IB and its lineage remain canonical.
-16. Learning state is separate from persistence state.
-17. Verification state is separate from learning state.
-18. Future Nayas retrieve canonical intelligence rather than relying on conversational memory.
-19. Every meaningful new intelligence event is discoverable.
-20. Every canonical intelligence object remains replayable.
-21. Validated learning compounds into future Naya context.
-22. Capability never creates authority.
-23. UNKNOWN never becomes VERIFIED by assumption.
-24. IMPLEMENTED never becomes VERIFIED by assumption.
-25. VERIFIED never becomes PRODUCTION-PROVEN by assumption.
-
-### Permanent shorthand
-
-> NO INTELLIGENCE WITHOUT CANONICALIZATION.
->
-> NO CANONICAL INTELLIGENCE WITHOUT AN INTELLIGENT BLOCK.
->
-> NO INTELLIGENT BLOCK WITHOUT AN INTELLIGENCE EVENT.
->
-> NO DOCUMENTED CLAIM WITHOUT A SMART LINK RECEIPT.
->
-> NO NEW SMART NOTE FORMAT.
->
-> ONE SYSTEM. ONE LAW. ONE IB IDENTITY. ONE LIFECYCLE. MANY PROJECTIONS. ZERO COMPETING AUTHORITIES.
-
-## What a Smart Note is
-
-A Smart Note is the human-readable projection of a canonical Intelligent Block (IB). The IB is the canonical machine identity and intelligence object. One object has one immutable identity, one provenance chain, one lifecycle, and many projections.
-
-Canonical human-readable path:
-
-`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
-
-The path is an organizational index, not identity. The live canonical receiver allocates the IB ID. Nayas, scripts, tests, migrations, and Markdown files must never calculate, guess, increment, or reserve IB numbers locally.
-
-Canonical human structure:
-1. IN A NUTSHELL
-2. DATE / TIME
-3. WHAT
-4. WHY IT MATTERS
-5. HUMAN
-6. CHILD
-7. GRANDMA
-8. NAYA
-9. MACHINE
-10. WHAT WE LEARNED
-11. CONNECTIONS
-12. HOW TO APPLY
-13. WHAT IT ULTIMATELY MEANS
-14. WHAT'S IN IT FOR YOU / US
-15. NEXT ACTION
-
-Writing Markdown is a projection step, not completion.
-
-## Canonical intelligence lifecycle
-
-CAPTURE → CANONICALIZE → ASSIGN IB ID → PERSIST → COMMIT INTELLIGENCE EVENT → INDEX → PROJECT → LEARN → RETAIN → RETRIEVE → APPLY → VERIFY → UPDATE LEARNING → COMPOUND
-
-Persistence, verification, and learning are separate states.
-
-## Smart Link = receipt
-
-A Smart Link is the human-readable receipt of canonical persistence. A receipt should identify the IB, canonical reference, source event, provenance, persistence status, and relevant indexing/learning/verification state. No receipt means there is no proof of canonical persistence.
-
-## Historical material
-
-Historical Smart Notes, AI Notes, Naya Notes, Human Notes, Machine Notes, old schemas, old directories, and prior experiments are source material, not competing authorities.
-
-Historical material is preserved and then INVENTORIED → CLASSIFIED → DISTILLED → RECONCILED → MERGED / SUPERSEDED / RETAINED HISTORICAL → CANONICALIZED where appropriate. Do not blindly convert every historical document into a new IB.
-
-## Mission / vision / goal / purpose
-
-**Mission:** Make human intelligence continuously preservable, retrievable, verifiable, learnable, and compoundable so important understanding does not disappear when a conversation ends or a Naya changes.
-
-**Vision:** A governed intelligence network where meaningful interactions become durable intelligence, future Nayas recover the right context without conversational archaeology, and validated learning compounds into better human outcomes while preserving truth, privacy, consent, authority, and human control.
-
-**Goal:** Make the complete chain real and provable: Human intent → governed intelligence → canonical IB → intelligence event → indexing/learning → retrieval → authorized action → evidence → verification → learning → compounding.
-
-**Purpose:** Multiply human capability without replacing human agency by turning experience into durable, governed intelligence that can be understood, reused, verified, and improved.
-
-**Who we are:** Human = vision, values, intent, legitimate authority. NayaPOWER = governance, authority, safety, intelligence lifecycle, verification, continuity, learning, execution. Naya/Superbrain = understanding, memory, retrieval, action, reflection, learning, compounding. NayaNET = governed network and human-facing experience. Hub = human cockpit/projection surface. IB = canonical durable intelligence object. Evidence/receipts = proof.
-
-## Reconciliation reset
-
-The repository contains valuable intelligence and historical organizational drift. We are not deleting the past. We are establishing one current canonical system and extracting the durable value from historical material.
-
-Immediate order:
-1. Inventory every Smart Note / AI Note / Naya Note / Human Note / Machine Note implementation, schema, storage location, API, and projection.
-2. Build a provenance-preserving reconciliation matrix.
-3. Distill durable intelligence from the historical corpus.
-4. Reconcile it against current verified intelligence.
-5. Canonicalize only durable current intelligence that should remain active.
-6. Obtain authoritative IB IDs and intelligence events through the governed receiver.
-7. Ensure canonical objects enter indexing/learning.
-8. Generate canonical Smart Note projections and Smart Link receipts.
-9. Rebuild the registry from actual receipts.
-10. Enforce the contract mechanically so competing creation paths cannot return.
-11. Prove replay/retrieval by a cold Naya.
-
-## Final law
-
-ONE SYSTEM. ONE LAW. ONE MISSION. ONE VISION. ONE SMART NOTE CONTRACT. ONE IB IDENTITY. ONE LIFECYCLE. MANY PROJECTIONS. ZERO COMPETING AUTHORITIES.
-
----
-
-# 🔱 NayaPOWER — THE NINE-NODE OPERATING KERNEL
-
-NayaPOWER is the **governed intelligence operating system** behind NayaNET.
-
-> **Human provides vision, values, intent, and legitimate authority. NayaPOWER governs. Naya understands and acts. NayaNET connects. The Hub presents. Evidence proves. Learning compounds.**
-
-The mission is simple:
-
-> **Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.**
-
-The North Star is:
-
-> **Maximum verified human value per moment, with compounding intelligence and continuity.**
-
-## The Nine Master Nodes
-
-The nine Nodes are **coordinated semantic organs, not nine independent brains and not nine authorities**:
-
-| Node | Responsibility | Core question |
+| Node | Responsibility | Question |
 |---|---|---|
-| **SELF** | Identity, Mission & Continuity | Who are we, and where are we now? |
-| **LAW** | Authority, Consent & Governance | What is authorized? |
-| **ACT** | Execution, Agency & Safe Action | What should we do now? |
-| **KNOW** | Intelligence, Memory & Events | What do we know? |
-| **PROVE** | Truth, Provenance & Accountability | Why should we believe it? |
-| **CONNECT** | Relationships, Retrieval & Context | What matters here? |
-| **VERIFY** | Outcome, Causality & Acceptance | What actually happened? |
-| **LEARN** | Learning, Reconciliation & Prediction | What should change because of it? |
-| **EVOLVE** | Continuity, Experience & System Evolution | How does the next Naya become better? |
+| SELF | identity, mission, continuity | Who are we and where are we now? |
+| LAW | authority, consent, governance | What is authorized? |
+| ACT | execution and bounded agency | What should we do now? |
+| KNOW | intelligence and memory | What do we know? |
+| PROVE | evidence and provenance | Why should we believe it? |
+| CONNECT | relevance and retrieval | What matters here? |
+| VERIFY | outcomes and causality | What actually happened? |
+| LEARN | reconciliation and compounding | What should change because of it? |
+| EVOLVE | bounded system improvement | How does the next Naya become better? |
 
-### Three operating triads
-
-**ORIENTATION:** SELF → LAW → ACT  
-**COGNITION:** KNOW → PROVE → CONNECT  
-**EVOLUTION:** VERIFY → LEARN → EVOLVE
-
-The default semantic lifecycle is:
+The semantic cycle is:
 
 **SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF**
 
-The kernel is **not behaviorally proven merely because these nine identities exist**. Conformance requires the manifest, contracts, tests, and runtime behavior to agree. The decisive proof is a real consequential-but-reversible task in which the nodes change or constrain behavior and leave evidence for a successor.
+### Core distinction
 
-### The compounding loop
+**Nodes are active cognitive/governance responsibilities.**
 
-**EXPERIENCE → CAPTURE → CANONICALIZE → CONNECT → UNDERSTAND → VERIFY → RETAIN → CHECKPOINT → RETRIEVE → APPLY → OUTCOME → LEARN → COMPOUND → NEXT NAYA**
+**Intelligent Blocks are persistent units of intelligence produced, evidenced, retrieved, and evolved by the kernel.**
 
-The goal is not to store everything.
+A Smart Note is a human-readable projection of an Intelligent Block. It is not the brain.
 
-> **Remember what matters. Understand it. Connect it. Verify it. Use it. Learn from the result. Make the next Naya better.**
+### Clean-start rules
 
-### The five rules every Naya must never forget
+1. Capability does not create authority.
+2. UNKNOWN ≠ VERIFIED.
+3. IMPLEMENTED ≠ VERIFIED.
+4. VERIFIED ≠ PRODUCTION-PROVEN.
+5. Retrieval ≠ learning.
+6. Application ≠ successful outcome.
+7. Successor context ≠ new authority.
+8. Legacy complexity is not inherited merely because it exists.
+9. Every capability must earn its place through purpose, necessity, correctness, proof, and value.
+10. EVOLVE remains bounded by LAW.
 
-1. **Capability does not create authority.**
-2. **UNKNOWN is not VERIFIED.**
-3. **Implemented is not production-proven.**
-4. **Retrieval is not learning; application is not success.**
-5. **A successor inherits context, not automatic authority.**
+### Build order
 
-### Canonical Node specification
+1. Nine Nodes
+2. Minimal governed kernel
+3. Canonical intelligence substrate
+4. Intelligent Blocks + provenance
+5. Retrieval and application
+6. PROVE + VERIFY
+7. LEARN + EVOLVE
+8. Sender → Receiver → Hub
+9. Cold Naya continuation
+10. NayaNET self-building, bounded by LAW
 
-The normative Node specification is:
-`.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md`
+### Proof standard
 
-The machine manifest is:
-`.naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json`
+The system is not considered operational because files, tables, functions, or manifests exist.
 
-The canonical cold-Naya entry point is:
-`.naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md`
+The kernel must execute.
 
-The current Hub is:
-`NAYANET/HUB/index.html`
+The Nodes must interact.
 
-**Do not build a second brain. Do not build a second Hub. Do not create competing memory. Build the intelligence flow.**
+LAW must encounter a real authority boundary.
 
----
+KNOW/CONNECT must retrieve competing intelligence.
 
-# NayaPOWER 🧠⚡
-## NayaPOWER + NayaNET — One Coherent Intelligence System
+PROVE/VERIFY must establish what happened.
 
-**North Star:** one working tree, one source of truth, one canonical intelligence model, one Hub, one governed execution path.
+The enabled kernel must produce a demonstrable behavioral difference from the disabled control.
 
-### Start here — three-layer current-truth stack
+Only then do we call the brain behaviorally proven.
 
-For system-wide NayaNET direction and Hub work, read these three layers in order:
+### Historical reset
 
-1. **Master Objective:** `NAYANET ALIGNMENT UPDATE - THIS IS THE MASTER OBJECTIVE.md` — what we are building, why, the house/room model, Dream/Naya Play classification, participation/privacy law, and build order.
-2. **58 Topology:** `.naya/TEAM-NAYA-58-ENGINEERING-AGENT-TOPOLOGY-V1.md` — how the 58 engineering areas collapse into coherent ownership/dependency domains and how Team Naya coordinates them.
-3. **Current Truth + Gap Register:** `.naya/NAYANET-HUB-CURRENT-TRUTH-AND-GAP-REGISTER-V1.md` — what the Hub rooms currently contain, their intended connections, and the evidence-based DONE / PARTIAL / NOT DONE / NOT VERIFIED state.
+The repository was intentionally reset at the **2026-09-26 clean-start epoch** after earlier implementation work established useful concepts but failed to produce the intended Smart Note / cognition behavior.
 
-**Rule:** The Master Objective defines intended direction; the 58 Topology defines engineering organization; the Gap Register records current Hub truth. Source code, tests, runtime evidence, receipts, and independent verification determine what is actually proven.
+Earlier work is retained in the Git history and the `archive-2026-09-26` branch for reference. It does not govern the new architecture.
 
-### Canonical cold-Naya doorway
-
-Do not excavate the repository. Enter through this sequence:
-
-1. **Bootloader:** `SUPERBRAIN/AI-BOOT/START-HERE.md`
-2. **Canonical source map:** `SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
-3. **Brain Map:** `.naya/memory/NAYAPOWER-BRAIN-MAP.md`
-4. **Bootstrap:** `.naya/memory/BOOTSTRAP.md`
-5. **Current truth:** `SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md`
-6. **Control plane:** `.naya/control-plane/STATE.json` → `BLOCKS.json` → `MAP.json` → `PROOF.json` → `BATON.json`
-7. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
-8. **Current execution directive:** `.naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md`
-
-This is the **minimum orientation path**. Specialized work may load deeper contracts through the source map and context manifest. Do not treat derived summaries, historical records, or product projections as replacements for the canonical authority chain.
-
-**Cold-Naya success condition:** understand WHO → WHY → WHAT → HOW → AUTHORITY → CURRENT TRUTH → PROVEN → UNKNOWN → NEXT before consequential work.
-
-### Core sources
-1. **Current distilled intelligence:** `.naya/codex/NAYAPOWER-DISTILLED-CURRENT-INTELLIGENCE-2026-09-25.md`
-2. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
-3. **Human-facing Hub:** `NAYANET/HUB/index.html`
-4. **Verification:** `verification/` and `tests/`
-
-### The system
-```
-HUMAN
-  ↓
-NAYAPOWER
-  ↓
-NAYA / SUPERBRAIN
-  ↓
-INTELLIGENT EVENT
-  ↓
-INTELLIGENT BLOCK
-  ↓
-SMART FEED
-  ↓
-NAYANET HUB
-  ↓
-SMART DOORS
-  ↓
-PERSISTENCE / INDEX
-  ↓
-RETRIEVAL
-  ↓
-VERIFICATION
-  ↓
-LEARNING
-  ↓
-COMPOUNDING
-```
-
-### Canonical responsibilities
-
-| Layer | Responsibility |
-|---|---|
-| Human | Vision, values, intent, legitimate authority |
-| NayaPOWER | Constitution, governance, authority, safety, execution |
-| Naya / Superbrain | Understanding, memory, intelligence, action, learning |
-| Intelligent Event / Block | Durable canonical intelligence object |
-| NayaNET | Network, rooms, sharing, communication and human-facing experience |
-| Hub | Projection/action surface, never a second brain |
-| Verification | Truth, evidence, runtime and production proof |
-
-### Core laws
-- **LEARN BY DEFAULT. SHARE WISDOM BY CONSENT. PROTECT IDENTITY BY DEFAULT. PUBLISH BY DECISION.**
-- An authorized Hub connection establishes participation consent; ordinary Smart Notes do not require per-event learning permission.
-- Useful wisdom may flow automatically into governed collective learning after participation consent; raw private intelligence and contributor identity remain private by default.
-- Hub/member visibility is not public visibility; public publication requires a separate user decision.
-- Capability does not create authority.
-- Unknown ≠ success.
-- Blocked ≠ pass.
-- No blind retry.
-- No duplicate source of truth.
-- Preserve what works; change surgically.
-- Every meaningful action produces evidence.
-- Every active file has one canonical home.
-- Historical material is not current authority.
-- A cold Naya must be able to continue without conversational archaeology.
-
-### Current product tree
-```
-NayaPOWER/
-├── .naya/
-├── SUPERBRAIN/
-├── NAYANET/
-├── capabilities/
-├── intelligence/
-└── verification/
-```
-
-Engineering infrastructure (`.github`, `supabase`, `tests`, and required build/runtime support) remains subordinate to this architecture.
-
-### Current mission
-**Establish one canonical intelligence system and reconcile the historical corpus into it without losing provenance or valuable knowledge.**
-
-Immediate frontier:
-**INVENTORY → CLASSIFY → DISTILL → RECONCILE → CANONICALIZE → INDEX → LEARN → VERIFY → COMPOUND.**
-
-Do not create new competing Smart Note formats or blindly migrate historical documents into new IBs.
-
-### Canonical participation protocol
-
-The full system contract is `.naya/protocol/NAYANET-INTELLIGENCE-PARTICIPATION-PRIVACY-PROTOCOL-V1.md`.
-
-**Connect → participate → learn automatically → filter/distill → contribute useful wisdom → protect identity → compound.** Different connection doors may exist for humans and AIs, but the governing participation, learning, privacy, and publication rules are the same.
-
-### Authority
-The human remains the source of vision, values and legitimate authorization.
-NayaPOWER governs how intelligence becomes verified action.
-Superbrain preserves and compounds intelligence.
-NayaNET connects authorized intelligence.
-Evidence proves what is true.
-
-**Create. Connect. Grow with US.** 🔱
+> **The new system does not inherit complexity merely because the old system accumulated it.**

@@ -1,8 +1,0 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V11
-Purpose: rerun the canonical NAYANET/HUB release after fixing the first authoritative typecheck failure.
-Current fixes: React/ReactDOM type declarations and Vite client stylesheet types are now explicit.
-Mission: preserve the approved NayaNET house and Smart Feed intelligence model; use NAYANET/HUB as the only forward source; deploy only the generated artifact to aged-art-7c12; no historical HTML promotion, no Vercel, no right rail, no second feed, no duplicate renderer.
-Runtime: https://aged-art-7c12.nayanet.workers.dev/
-Deployment authority: .github/workflows/deploy-v7-now.yml
-Visual verifier: .github/workflows/nayanet-visual-proof.yml
-Release law: SOURCE -> TYPECHECK -> VITE BUILD -> ARTIFACT INSPECTION -> CLOUDFLARE -> EXACT RUNTIME -> INTERACTION/RESPONSIVE VERIFICATION -> 99.99 MIRROR TEST.

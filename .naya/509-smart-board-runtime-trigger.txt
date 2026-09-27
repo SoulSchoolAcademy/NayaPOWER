@@ -1,1 +1,0 @@
-Final canonical Smart Board runtime verification trigger.
