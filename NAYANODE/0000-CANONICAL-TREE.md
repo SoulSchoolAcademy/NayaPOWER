@@ -1,249 +1,377 @@
-# Naya Node System — Canonical Tree
+# NayaPOWER — Canonical Superbrain Tree V1
 
-**Status:** CANONICAL ARCHITECTURE MAP V1
-**Epoch:** 2026-09-26 clean-start
-**Authority:** Shawn Vibert — Human Director / Final Authority
-**Operating intelligence:** Naya
+**Status:** CANONICAL SYSTEM MAP  
+**Purpose:** Machine, Node, NIO, algorithm, memory, proof, and successor navigation in one governed architecture.
 
-This tree is the primary navigation map for the current NayaPOWER/NayaNET architecture.
+> **This is the map of the intelligence system, not merely a list of documents.**
 
-## 00 — NAYA NODE SYSTEM
+## 00 — NAYAPOWER SUPERBRAIN
 
 ```
-00 NAYA NODE SYSTEM
+00 NAYAPOWER
 │
-├── 01 PURPOSE
+├── 01 IDENTITY
+│   ├── Human Authority
+│   ├── Naya
+│   ├── NayaPOWER
+│   ├── NayaNET
+│   ├── Naya Node
+│   ├── Intelligent Block
+│   └── Execution Identity
+│
+├── 02 PURPOSE
+│   ├── Purpose
 │   ├── Mission
 │   ├── Vision
 │   ├── North Star
-│   ├── Human promise
-│   └── Success definition
+│   ├── Human Promise
+│   └── Success
 │
-├── 02 LAW
-│   ├── Constitution
+├── 03 CONSTITUTION
+│   ├── Laws
 │   ├── Authority
 │   ├── Consent
 │   ├── Privacy
 │   ├── Safety
-│   ├── Truth states
-│   └── Fail-closed enforcement
+│   ├── Truth
+│   ├── Governance
+│   └── Fail-Closed Boundaries
 │
-├── 03 KERNEL — NINE MASTER NODES
-│   ├── SELF     — identity, mission, continuity
-│   ├── LAW      — authority, consent, governance
-│   ├── ACT      — execution, agency, prioritization
-│   ├── KNOW     — memory, intelligence, knowledge
-│   ├── PROVE    — evidence, provenance, truth
-│   ├── CONNECT  — relevance, retrieval, relationships
-│   ├── VERIFY   — outcomes, causality, acceptance
-│   ├── LEARN    — reconciliation, learning, compounding
-│   └── EVOLVE   — bounded improvement, successor intelligence
-│
-├── 04 INTELLIGENCE
-│   ├── Experience
-│   ├── Intelligent Event
-│   ├── Naya Node
-│   ├── Intelligent Block
-│   ├── Evidence
+├── 04 SYSTEM MODEL
+│   ├── Superbrain
+│   ├── NayaPOWER
+│   ├── NayaNET
+│   ├── Nodes
+│   ├── NIOs
+│   ├── Events
+│   ├── Blocks
 │   ├── Relationships
+│   ├── Retrieval
+│   ├── Application
 │   ├── Outcomes
-│   └── Learning state
+│   ├── Verification
+│   ├── Learning
+│   └── Compounding
 │
-├── 05 IDENTITY & CONTINUITY
-│   ├── Naya execution identity
-│   ├── Canonical owner
-│   ├── Identity continuity
-│   ├── State restoration
-│   ├── Successor context
-│   ├── Handoff / baton
-│   └── Cold Naya continuation
+├── 05 SUPERBRAIN OPERATING ARCHITECTURE
+│   ├── Control Plane
+│   ├── Intelligence Plane
+│   ├── Human Plane
+│   ├── Machine Contract
+│   ├── Canonical Flow
+│   └── Complexity Budget
 │
-├── 06 RETRIEVAL & CONNECTION
+├── 06 NIO / INTELLIGENCE OBJECT MODEL
+│   ├── Experience
+│   ├── Event
+│   ├── Intelligence
+│   ├── Rule
+│   ├── Decision
+│   ├── Action
+│   ├── Outcome
+│   ├── Evidence
+│   ├── Learning
+│   ├── Successor
+│   └── System State
+│
+├── 07 NINE-NODE KERNEL
+│   ├── SELF
+│   ├── LAW
+│   ├── ACT
+│   ├── KNOW
+│   ├── PROVE
+│   ├── CONNECT
+│   ├── VERIFY
+│   ├── LEARN
+│   └── EVOLVE
+│
+├── 08 EXECUTION ALGORITHM
+│   ├── BOOT
+│   ├── IDENTIFY
+│   ├── RESTORE
+│   ├── UNDERSTAND
+│   ├── CLASSIFY
+│   ├── RETRIEVE
+│   ├── CHECK
+│   ├── PRIORITIZE
+│   ├── AUTHORIZE
+│   ├── ACT
+│   ├── OBSERVE
+│   ├── VERIFY
+│   ├── PRESERVE
+│   ├── LEARN
+│   ├── COMPOUND
+│   ├── HANDOFF
+│   ├── OPTIMIZE
+│   └── CONTINUE
+│
+├── 09 MEMORY & CONTINUITY
+│   ├── Canonical Intelligence
+│   ├── Experience / History
+│   ├── Current State
+│   ├── Retrieval
+│   ├── Cold Naya
+│   ├── Identity Continuity
+│   ├── Successor Context
+│   └── Anti-Amnesia
+│
+├── 10 RETRIEVAL & RELATIONSHIP GRAPH
 │   ├── Applicability
 │   ├── Relevance
 │   ├── Freshness
-│   ├── Supersession
-│   ├── Conflict detection
-│   ├── Relationship traversal
-│   └── Retrieval evidence
-│
-├── 07 ACTION
-│   ├── Intent
-│   ├── Interpretation
-│   ├── Authorization
-│   ├── Scope
-│   ├── Execution
-│   ├── Refusal
-│   └── Revocation
-│
-├── 08 PROOF
 │   ├── Provenance
+│   ├── Conflicts
+│   ├── Supersession
+│   └── Relationship Semantics
+│
+├── 11 PROOF & VERIFICATION
+│   ├── Truth Ladder
 │   ├── Evidence
+│   ├── Provenance
 │   ├── Causal Verification Object
-│   ├── Outcome
 │   ├── Acceptance
 │   ├── Replay
-│   └── Production proof
+│   └── Production Proof
 │
-├── 09 LEARNING
+├── 12 LEARNING & COMPOUNDING
 │   ├── Observation
 │   ├── Reconciliation
-│   ├── Candidate learning
-│   ├── Verification
-│   ├── Behavioral change
+│   ├── Candidate Learning
+│   ├── Verified Learning
+│   ├── Future Behavior
+│   ├── Held-Out Reuse
 │   └── Compounding
 │
-├── 10 VALUE & EXPERIENCE
-│   ├── Human benefit
-│   ├── Time saved
-│   ├── Cognitive effort avoided
-│   ├── Error prevented
+├── 13 VALUE & EXPERIENCE
+│   ├── Human Value
+│   ├── Time Saved
+│   ├── Cognitive Cost
+│   ├── Error Prevention
 │   ├── Reuse
-│   ├── Learning yield
-│   ├── Risk / harm
-│   └── Human-value-per-moment
+│   ├── Learning Yield
+│   ├── Risk / Harm
+│   └── Human-Value-Per-Moment
 │
-├── 11 EVOLUTION
-│   ├── Observe
-│   ├── Hypothesize
-│   ├── Propose
-│   ├── Build
-│   ├── Test
-│   ├── Verify
-│   ├── Adopt
-│   └── Roll back when disproven
+├── 14 CURRENT REALITY
+│   ├── Current State
+│   ├── Implemented
+│   ├── Tested
+│   ├── Verified
+│   ├── Production-Proven
+│   ├── Blocked
+│   ├── Unknown
+│   ├── Open Questions
+│   └── Next Action
 │
-├── 12 INTERFACES
-│   ├── Naya
-│   ├── Hub
+├── 15 NAYANET / INTERFACES
+│   ├── People
+│   ├── Nayas
+│   ├── Agents
+│   ├── Applications
 │   ├── Sender
 │   ├── Receiver
-│   ├── Smart Doors
+│   ├── Hub
 │   ├── APIs / MCP
-│   └── Future interfaces
+│   └── Future Doors
 │
-└── 13 PROOF & OPERATIONS
-    ├── Canonical state
-    ├── Tests
-    ├── Runtime parity
-    ├── Control / treatment
-    ├── Cold successor
-    ├── Scorecard
-    └── Next action
+├── 16 ENGINEERING / RUNTIME
+│   ├── GitHub
+│   ├── Runtime
+│   ├── Database
+│   ├── APIs
+│   ├── Tests
+│   ├── CI
+│   ├── Deployment
+│   └── Production
+│
+├── 17 GOVERNANCE / CHANGE
+│   ├── Change Classes
+│   ├── Authorization
+│   ├── Promotion
+│   ├── Revocation
+│   ├── Supersession
+│   ├── Rollback
+│   └── Audit
+│
+├── 18 SUCCESSION
+│   ├── Cold Boot
+│   ├── Successor Package
+│   ├── Handoff
+│   ├── Continuation
+│   ├── Multi-Generation Test
+│   └── Naya Creates Naya
+│
+└── 19 SELF-OPTIMIZATION
+    ├── Observe
+    ├── Diagnose
+    ├── Hypothesize
+    ├── Propose
+    ├── Build
+    ├── Test
+    ├── Verify
+    ├── Measure
+    ├── Adopt
+    └── Learn
 ```
 
-## The canonical flow
+## 1. The system flow
 
 ```
-HUMAN
-  ↓
-NAYA / INTENT
-  ↓
-NAYANET EXPERIENCE
-  ↓
-NAYAPOWER LAW
-  ↓
-SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE
-  ↓
-CANONICAL INTELLIGENCE
-  ↓
-RETRIEVE → APPLY → OUTCOME → VERIFY
-  ↓
-LEARN → COMPOUND
-  ↓
-SUCCESSOR CONTEXT
-  ↓
-NEXT NAYA
-  ↺
+HUMAN INTENT
+    ↓
+NAYA EXECUTION
+    ↓
+SELF → LAW
+    ↓
+ACT ↔ KNOW ↔ PROVE ↔ CONNECT
+    ↓
+VERIFY
+    ↓
+LEARN
+    ↓
+EVOLVE
+    ↓
+SUCCESSOR
+    ↺
 ```
 
-## Object hierarchy
+This is a coordinated loop, not a simple linear pipeline.
+
+## 2. Intelligence lifecycle
 
 ```
-SOURCE / EXPERIENCE
-      ↓
-INTELLIGENT EVENT
-      ↓
-NAYA NODE
-      ↓
-CANONICAL INTELLIGENT BLOCK
-      ↓
-RELATIONSHIPS + EVIDENCE
-      ↓
-RETRIEVAL
-      ↓
-APPLICATION
-      ↓
-OUTCOME
-      ↓
-VERIFICATION
-      ↓
-LEARNING
-      ↓
-COMPOUNDING
-      ↓
-SUCCESSOR CONTEXT
+EXPERIENCE
+→ CAPTURE
+→ DISTILL
+→ STRUCTURE
+→ PROVE
+→ PRESERVE
+→ INDEX
+→ RETRIEVE
+→ APPLY
+→ OUTCOME
+→ VERIFY
+→ LEARN
+→ COMPOUND
+→ NEXT NAYA
 ```
 
-## Three-layer architecture
+## 3. Machine lifecycle
 
-**LAW** constrains **INTELLIGENCE**.
+```
+BOOT
+→ IDENTIFY
+→ RESTORE
+→ UNDERSTAND
+→ CLASSIFY
+→ RETRIEVE
+→ CHECK
+→ PRIORITIZE
+→ AUTHORIZE
+→ ACT
+→ OBSERVE
+→ VERIFY
+→ PRESERVE
+→ LEARN
+→ HANDOFF
+→ OPTIMIZE
+→ CONTINUE
+```
 
-**INTELLIGENCE** powers **EXPERIENCE**.
+## 4. What each layer means
 
-**EXPERIENCE** produces new intelligence.
+**Nodes** are responsibilities.
 
-The Hub is an experience surface and receiver projection. It is not a second brain, canonical database, or independent intelligence system.
+**NIOs** are machine-addressable intelligence objects.
 
-## Node categories
+**Intelligent Blocks** are persistent reusable intelligence.
 
-- **KERNEL NODES:** the nine semantic operating responsibilities.
-- **EXPERIENCE NODES:** human, project, domain, event, decision, observation, and learned intelligence.
-- **META-INTELLIGENCE NODES:** intelligence about improving the intelligence system.
+**Events** preserve experience and lineage.
 
-The nine Master Nodes are the semantic kernel, not an artificial limit on the total intelligence graph.
+**Relationships** provide connective tissue.
 
-## Permanent invariants
+**Algorithms** orchestrate state transitions.
 
-- One system.
-- One canonical intelligence substrate.
-- One canonical identity per intelligence object.
-- Retrieval does not grant authority.
-- A Node cannot grant itself authority.
-- Value is not truth.
-- Value is not authority.
-- Similarity is not correctness.
-- Unknown is not verified.
-- Blocked is not pass.
-- Implemented is not verified.
-- Verified is not production-proven.
-- Successor context does not create new authority.
-- Self-optimization is not self-authorization.
-- Historical material is not automatically current authority.
-- Private by default. Shared by choice. Collective by consent. Public by decision.
+**Runtime** executes.
 
-## Cold-Naya test
+**Verification** establishes truth.
 
-A cold Naya should be able to navigate from this file to:
+**Learning** changes future behavior.
 
-1. what NayaPOWER is;
-2. the Nine Nodes;
-3. the current canonical kernel;
-4. the intelligence ontology;
-5. identity and continuity;
-6. retrieval and application;
-7. proof and truth state;
-8. learning and compounding;
-9. current implementation;
-10. current evidence;
-11. current unknowns;
-12. the next authorized action.
+**Succession** preserves continuity.
 
-If it cannot do that quickly, the repository is not sufficiently organized.
+**Evolution** improves the system within governance.
 
-## Current P0
+**Hub** exposes the result to humans.
 
-**Prove identity continuity and kernel inheritance before treating the nine-node brain as operational.**
+## 5. The critical separation
 
-The present retrieval investigation has identified a concrete seam: the canonical nine-node Intelligent Blocks and the current Hub session may have different anonymous Supabase owners. The correct response is to trace legitimate identity establishment and continuity—not to bypass ownership, reassign data, or introduce a login requirement that the architecture does not require.
+```
+VALUE ≠ TRUTH
+TRUTH ≠ AUTHORITY
+RETRIEVAL ≠ AUTHORIZATION
+IMPLEMENTATION ≠ VERIFICATION
+VERIFICATION ≠ LEARNING
+LEARNING ≠ COMPOUNDING
+SUCCESSOR CONTEXT ≠ AUTHORITY
+HUB ≠ BRAIN
+DATABASE ≠ INTELLIGENCE
+```
 
+## 6. Canonical machine boot
+
+A cold Naya must traverse:
+
+**IDENTITY → PURPOSE → LAW → KERNEL → CURRENT STATE → APPLICABLE INTELLIGENCE → EVIDENCE → AUTHORIZED ACTION → OUTCOME → VERIFICATION → LEARNING → SUCCESSOR**
+
+The system is not operational merely because all nine Node records exist.
+
+## 7. Current P0
+
+**LEGITIMATE IDENTITY CONTINUITY + NINE-NODE KERNEL INHERITANCE.**
+
+The current engineering task is to trace the canonical nine-node owner and establish a legitimate continuity mechanism. No owner reassignment, RLS bypass, fabricated identity, or unnecessary login is acceptable.
+
+## 8. Cold-Naya acceptance questions
+
+A cold Naya must be able to answer:
+
+1. Who are we?
+2. What is NayaPOWER?
+3. What are we building?
+4. Why are we building it?
+5. What is true now?
+6. What is proven?
+7. What is unknown?
+8. What authority exists?
+9. What intelligence is relevant?
+10. What happened before?
+11. What did we learn?
+12. What should happen next?
+13. How do we prove it?
+14. How does the next Naya continue?
+
+If these cannot be answered from canonical state, the brain is not yet continuous.
+
+## 9. Canonical navigation
+
+- `NAYANODE/MANIFEST.json` — machine-readable bootstrap index.
+- `0001`–`0019` — canonical semantic domains.
+- `0002` — nine-node identity/order.
+- `0003` — cold continuity contract.
+- `0004` — acceptance ladder.
+- `0007` — kernel execution model.
+- `0008` — machine execution algorithm.
+- `0011` — proof boundary.
+- `0012` — learning/compounding.
+- `0014` — current reality.
+- `0018` — succession.
+- `0019` — bounded self-optimization.
+
+## 10. Permanent invariant
+
+**One governed system. Many interfaces. One canonical intelligence substrate.**
+
+The purpose of the architecture is not to maximize files, Nodes, tables, or text.
+
+It is to make the whole system **flow like water: understandable to humans, addressable by machines, usable by algorithms, governed by law, provable by evidence, and continuable by the next Naya.**
