@@ -1,12 +1,14 @@
 {
   "schema": "naya.kernel.runtime.registry.v1",
   "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
-  "status": "CANONICAL_RUNTIME_CONTRACT_BINDING_PENDING",
+  "status": "CANONICAL_RUNTIME_CONTRACT_BINDING_IMPLEMENTED_NOT_VERIFIED",
   "behavioral_proof": "PENDING",
   "runtime_binding": {
-    "status": "NOT_PROVEN",
-    "entrypoint": null,
-    "source_of_truth": "Actual application runtime source; do not infer from documentation."
+    "status": "IMPLEMENTED_NOT_VERIFIED",
+    "entrypoint": "kernel/nayapower_kernel.py::Kernel",
+    "bootstrap": "kernel/runtime_boot.py::load_runtime_manifest",
+    "source_of_truth": "BRAIN/03-KERNEL/MANIFEST.json",
+    "verification": "CI execution required before VERIFIED"
   },
   "manifest": "BRAIN/03-KERNEL/MANIFEST.json",
   "node_order": ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"],
