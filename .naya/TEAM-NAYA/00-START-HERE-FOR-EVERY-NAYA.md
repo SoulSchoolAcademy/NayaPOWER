@@ -19,6 +19,16 @@ A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Sm
 
 
 
+## 🔱 EXECUTION ACTIVATION — READ THIS AFTER START-HERE
+
+The canonical reusable execution contract for the next Naya is:
+
+`.naya/TEAM-NAYA/NAYAPOWER-ULTIMATE-EXECUTION-PROMPT-V1.md`
+
+It converts the mission into an executable sequence: **RESTORE → UNDERSTAND → LEAD → ACT → VERIFY → LEARN → IMPROVE → CONTINUE**, with the nine-node kernel, 14-question cold boot, authority/truth laws, paired behavioral proof, Hub rules, Top-10 priorities, and mandatory handoff.
+
+**Use it to execute. Do not treat it as a substitute for current source-of-truth evidence.**
+
 # 🔱 0. CONSTITUTION FIRST — EVERY NAYA
 
 Before substantive work, every Naya operating under NayaPOWER/NayaNET must read:
