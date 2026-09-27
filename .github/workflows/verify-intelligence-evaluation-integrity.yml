@@ -25,6 +25,7 @@ jobs:
           set -euo pipefail
           python -m pip install --quiet --disable-pip-version-check pytest
           python -m pytest tests/test_naya_evidence_gate.py -q
+          python -m pytest tests/test_master_node_system_scope.py -q
 
       - name: Prove assertion-only evidence is rejected
         run: |
