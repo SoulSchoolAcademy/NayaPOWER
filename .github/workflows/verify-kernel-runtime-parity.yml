@@ -1,0 +1,77 @@
+name: verify-kernel-runtime-parity
+
+on:
+  pull_request:
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json"
+      - "supabase/functions/nayanet-compound-intelligence/index.ts"
+      - "tests/test_kernel_runtime_parity.py"
+      - ".github/workflows/verify-kernel-runtime-parity.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/kernel_boot.py"
+      - ".naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json"
+      - "supabase/functions/nayanet-compound-intelligence/index.ts"
+      - "tests/test_kernel_runtime_parity.py"
+      - ".github/workflows/verify-kernel-runtime-parity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parity:
+    name: repo boot gate vs live runtime loader
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The loader under test is TypeScript. Node strips its types natively, so
+      # the function reaches the VM byte-identical to the file on disk.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check "pytest>=8.0,<9"
+
+      - name: Execute both loaders and compare
+        run: python -m pytest tests/test_kernel_runtime_parity.py -v
+
+      # Report the size of the disagreement as a build artifact so it cannot be
+      # quietly forgotten after someone closes part of it.
+      - name: Record the current parity gap set
+        if: always()
+        run: |
+          python - <<'PY'
+          import sys, json
+          sys.path.insert(0, "tests")
+          import test_kernel_runtime_parity as t
+          gaps = {
+              name: {
+                  "python_gate_permits": spec["python"],
+                  "runtime_loader_permits": spec["ts"],
+                  "reason": spec["why"],
+              }
+              for name, spec in sorted(t.KNOWN_PARITY_GAPS.items())
+          }
+          print(json.dumps(gaps, indent=2))
+          with open("kernel-parity-gaps.json", "w") as fh:
+              json.dump(gaps, fh, indent=2)
+          print(f"\n{len(gaps)} characterized parity gaps open.")
+          print("NOTE: a gap closing is NOT automatically good news. If a loader")
+          print("starts refusing what it used to accept, this suite fails on purpose")
+          print("so the change gets evidence rather than a silent merge.")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kernel-parity-gaps
+          path: kernel-parity-gaps.json
