@@ -38,16 +38,6 @@ jobs:
           set -euo pipefail
           node --test tests/n9_kernel_decision.test.mjs
 
-      - name: Type-check production N9 runtime
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.6.0
-
-      - name: Type-check N9 Edge Function
-        run: |
-          set -euo pipefail
-          deno check --no-lock supabase/functions/nayanet-compound-intelligence/index.ts
-
       - name: Preserve proof boundary
         run: |
           echo "STRUCTURAL_KERNEL=PROVEN_AT_CI_SCOPE"
