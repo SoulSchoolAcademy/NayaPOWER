@@ -28,7 +28,7 @@ def test_kernel_boots_from_canonical_brain_manifest():
 
     kernel = Kernel(root)
 
-    assert tuple(node.value for node in kernel.manifest["nodes"]) == (
+    assert tuple(node["name"] for node in kernel.manifest["nodes"]) == (
         "SELF",
         "LAW",
         "ACT",
