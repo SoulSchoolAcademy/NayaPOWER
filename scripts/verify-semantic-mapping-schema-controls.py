@@ -5,7 +5,7 @@
 Proves the instrument cannot be self-ratified by a machine, which is the mechanical
 form of "self-optimization must never become self-authorization".
 """
-﻿import json
+import json
 from pathlib import Path
 S=Path(__file__).resolve().parents[1] / ".naya/specifications/schemas/NAYA-MASTER-NODE-SEMANTIC-MAPPING-V1.schema.json"
 schema=json.loads(S.read_text(encoding="utf-8"))
