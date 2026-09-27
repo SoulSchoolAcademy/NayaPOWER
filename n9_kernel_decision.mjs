@@ -141,28 +141,15 @@ export async function evaluateNineNodeKernel(context, options = {}) {
     const invocationId = `n9:${def.key.toLowerCase()}:${crypto.randomUUID()}`;
 
     if (matchesDisabled(def, disabledNode)) {
-      const output = {
+      trace.push({
         node_id: def.node_id,
         key: def.key,
-        gate: "DISABLED",
-        decision: "NODE_ABSENT",
+        gate: "ABSENT",
+        decision: "NODE_NOT_EXECUTED",
         reason: `MISSING_NODE:${def.key}`,
-      };
-      const outputHash = await sha256(output);
-      nodeInvocations.push({
-        node_id: def.node_id,
-        key: def.key,
-        invocation_id: invocationId,
-        input_hash: inputHash,
-        output_hash: outputHash,
-        evidence_ids: [],
-        downstream_consumers: def.downstream,
-        gate: "DISABLED",
-        decision: output.decision,
       });
       failedNodes.push(def.key);
       blockReasons.push(`MISSING_NODE:${def.key}`);
-      trace.push(output);
       continue;
     }
 
