@@ -64,6 +64,14 @@ Observed canonical state:
 
 This is database/RPC evidence, not proof that the current executable runtime successfully invoked the production boundary with a real end-user access token.
 
+### Live RLS evidence
+
+The live database policy surface also shows:
+- `nayanet_intelligent_blocks`: authenticated `SELECT` policy requires `owner_id = auth.uid()`.
+- `nayanet_brain_relationships`: authenticated `ALL` policy requires `owner_id = auth.uid()` for both visibility and writes.
+
+No RLS or security policy was changed during this execution.
+
 ## Truth ladder
 
 | Boundary | Status |
