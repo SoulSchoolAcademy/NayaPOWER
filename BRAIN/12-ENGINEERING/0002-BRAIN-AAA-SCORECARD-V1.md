@@ -150,6 +150,6 @@ with receipts establishing identity, provenance, authority, relationship context
 
 ## Inventory linkage
 
-The current BRAIN contains **77 files** after adding the authoritative inventory. `BRAIN/REAL-TREE.json` still records the previous 74-file receipt and must be regenerated after the canonical tree settles. Do not silently treat that stale receipt as current.
+The current BRAIN contains **77 files** after adding the authoritative inventory. `BRAIN/REAL-TREE.json` and `BRAIN/REAL-TREE.md` have now been regenerated from the Git tree; the JSON receipt counts 75 files while excluding the two receipt files themselves.
 
 The inventory classifies every file as a role-readiness percentage and assigns remaining work to concrete Naya completion categories. This scorecard is the gate-level view; the inventory is the file-level work queue.
