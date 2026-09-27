@@ -52,32 +52,35 @@
     "implementation_status": "DOCUMENTED",
     "behavioral_status": "NOT_PROVEN",
     "production_status": "NOT_PROVEN",
-    "relationships_status": "GRAPH_SEED_ALIGNED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
   },
   "relationships": [
     {
       "relationship_id": "REL-KERNEL-LEARN-EVOLVE",
       "direction": "IN",
       "type": "ENABLES",
-      "related_object_id": "NAYA-KERNEL-LEARN",
-      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+      "source_object_id": "NAYA-KERNEL-LEARN",
+      "target_object_id": "NAYA-KERNEL-EVOLVE",
+      "epistemic_state": "SUPPORTED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     },
     {
       "relationship_id": "REL-KERNEL-EVOLVE-SELF",
       "direction": "OUT",
       "type": "SUCCEEDS",
-      "related_object_id": "NAYA-KERNEL-SELF",
-      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+      "source_object_id": "NAYA-KERNEL-EVOLVE",
+      "target_object_id": "NAYA-KERNEL-SELF",
+      "epistemic_state": "SUPPORTED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     },
     {
       "relationship_id": "REL-KERNEL-LAW-EVOLVE",
       "direction": "IN",
       "type": "GOVERNS",
-      "related_object_id": "NAYA-KERNEL-LAW",
-      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+      "source_object_id": "NAYA-KERNEL-LAW",
+      "target_object_id": "NAYA-KERNEL-EVOLVE",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
   ],
   "successor_effect": "Preserve only the semantic state needed for future continuation; never manufacture authority."
