@@ -97,6 +97,61 @@ class CanonicalMemoryConfiguration:
 
 
 @dataclass(frozen=True)
+@dataclass(frozen=True)
+class RetrievedRelationship:
+    """Validated owner-scoped graph relationship used only as retrieval context."""
+
+    relationship_id: str
+    source_id: str
+    target_id: str
+    relationship_type: str
+    provenance: dict[str, Any]
+    epistemic_state: str
+
+    @classmethod
+    def from_payload(cls, payload: Any) -> "RetrievedRelationship":
+        if not isinstance(payload, dict):
+            raise CanonicalMemoryError("canonical relationship returned a non-object payload")
+        required = (
+            "relationship_id",
+            "source_id",
+            "target_id",
+            "relationship_type",
+            "provenance",
+            "epistemic_state",
+        )
+        missing = [field for field in required if field not in payload]
+        if missing:
+            raise CanonicalMemoryError(
+                f"canonical relationship missing required fields: {', '.join(missing)}"
+            )
+        for field in required[:4] + ("epistemic_state",):
+            if not str(payload[field]).strip():
+                raise CanonicalMemoryError(
+                    f"canonical relationship {field} must be non-empty"
+                )
+        if not isinstance(payload["provenance"], dict) or not payload["provenance"]:
+            raise CanonicalMemoryError(
+                "canonical relationship provenance must be a non-empty object"
+            )
+        return cls(
+            relationship_id=str(payload["relationship_id"]),
+            source_id=str(payload["source_id"]),
+            target_id=str(payload["target_id"]),
+            relationship_type=str(payload["relationship_type"]),
+            provenance=payload["provenance"],
+            epistemic_state=str(payload["epistemic_state"]),
+        )
+
+    def is_verified_support_for(self, block_id: str) -> bool:
+        return (
+            self.target_id == block_id
+            and self.relationship_type == "VERIFIED_BY"
+            and self.epistemic_state == "VERIFIED"
+            and bool(self.provenance)
+        )
+
+
 class RetrievedIntelligentBlock:
     """Validated machine view of a canonical persisted Intelligent Block."""
 
@@ -238,6 +293,61 @@ class SupabaseCanonicalMemory:
     ) -> None:
         self.configuration = configuration
         self.transport = transport or UrllibTransport()
+
+    def retrieve_relationships(self, intelligent_block_id: str) -> tuple[RetrievedRelationship, ...]:
+        """Read owner-scoped relationships targeting one canonical block."""
+
+        if not isinstance(intelligent_block_id, str) or not intelligent_block_id.strip():
+            raise CanonicalMemoryError("intelligent_block_id is required")
+
+        from urllib.parse import urlencode
+
+        base = self.configuration.supabase_url.rstrip("/")
+        params = urlencode(
+            {
+                "target_id": f"eq.{intelligent_block_id}",
+                "select": "relationship_id,source_id,target_id,relationship_type,provenance,epistemic_state",
+                "order": "created_at.asc",
+            }
+        )
+        url = f"{base}/rest/v1/nayanet_brain_relationships?{params}"
+        response = self.transport.request(
+            "GET",
+            url,
+            headers={
+                "apikey": self.configuration.anon_key,
+                "Authorization": f"Bearer {self.configuration.access_token}",
+                "Accept": "application/json",
+            },
+        )
+        if response.status < 200 or response.status >= 300:
+            detail = (
+                response.body.get("message")
+                if isinstance(response.body, dict)
+                else response.body
+            )
+            raise CanonicalMemoryError(
+                f"canonical relationship retrieval rejected ({response.status}): "
+                f"{detail or 'unknown error'}"
+            )
+        if not isinstance(response.body, list):
+            raise CanonicalMemoryError("canonical relationship retrieval returned a non-array payload")
+
+        relationships = tuple(
+            RetrievedRelationship.from_payload(payload)
+            for payload in response.body
+        )
+        mismatched = [
+            relationship.relationship_id
+            for relationship in relationships
+            if relationship.target_id != intelligent_block_id
+        ]
+        if mismatched:
+            raise CanonicalMemoryError(
+                "canonical relationship target mismatch: " + ",".join(mismatched)
+            )
+        return relationships
+
 
     def retrieve_block(self, block_id: str) -> RetrievedIntelligentBlock:
         if not isinstance(block_id, str) or not block_id.strip():
