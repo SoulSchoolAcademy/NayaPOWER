@@ -1,5 +1,5 @@
 import pytest
-from kernel.value_calculus import ValueCalculusError, adaptive_weights, mvpa, mvpm, normalize_weights, score
+from kernel.value_calculus import ValueCalculusError, adaptive_weights, mvpa, mvpm, normalize_weights, score, sensitivity
 
 def test_normalize_weights_sum_to_one():
     weights = normalize_weights({'utility': 2, 'reliability': 1})
@@ -37,3 +37,12 @@ def test_resource_efficiency_metrics():
     assert mvpm(10, 2, 3, 5) == pytest.approx(1)
     with pytest.raises(ValueCalculusError):
         mvpa(1, 0)
+def test_sensitivity_exposes_all_approved_profiles():
+    results = sensitivity(
+        "CODE_QUALITY",
+        {"utility": 0.9, "reliability": 0.6},
+        {"balanced": {"utility": 1, "reliability": 1}, "reliability_first": {"utility": 1, "reliability": 3}},
+    )
+    assert set(results) == {"balanced", "reliability_first"}
+    assert results["balanced"].gross_value == pytest.approx(0.75)
+    assert results["reliability_first"].gross_value == pytest.approx(0.675)
