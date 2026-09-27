@@ -1,18 +1,15 @@
-# Canonical Dependency Order V1
+# Dependency Order V1
 
-```
-CONSTITUTION
-→ GOVERNANCE
-→ ARCHITECTURE
-→ KERNEL
-→ INTELLIGENT OBJECT
-→ MEMORY / RELATIONSHIPS / PROOF
-→ VERIFICATION
-→ LEARNING
-→ SUCCESSION
-→ EVOLUTION
-→ INTERFACES
-→ SCALE
-```
+**Status:** CANONICAL BUILD CONTRACT
 
-An interface must not outrun the substrate it projects.
+## Required causal order
+`IDENTITY → GOVERNANCE → SCHEMA → MANIFEST → PERSISTENCE → RETRIEVAL → RELATIONSHIP ROUTING → ACTION → OBSERVATION → VERIFICATION → LEARNING → SUCCESSOR → INTERFACE`
+
+## Law
+Downstream status cannot be PASS merely because an upstream artifact is documented. Every gate needs its own current evidence.
+
+## Critical chain
+`PERSISTENCE + IDENTITY + GOVERNANCE → RETRIEVE → APPLY → ACT → OBSERVE → VERIFY → LEARN → HANDOFF → CONTINUE`
+
+## Acceptance
+A dependency graph names the artifact/runtime boundary for each edge and prevents false downstream PASS when a critical upstream gate is UNKNOWN or BLOCKED.
