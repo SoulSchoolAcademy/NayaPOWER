@@ -138,3 +138,25 @@ jobs:
           assert any("negative" in x.lower() for x in v.reasons)
           print("EVALUATOR_INTEGRITY_LOAD_BEARING_PROVEN")
           PY
+
+      - name: Run evidence-backed cold 20-question examination
+        run: |
+          set -euo pipefail
+          python naya_cold_20q.py --root . --output cold-20q-report.json
+          python - <<'PY'
+          import json
+          r = json.load(open("cold-20q-report.json", encoding="utf-8"))
+          assert r["cold"] is True
+          assert r["unproven"] >= 0
+          print(f"COLD_20Q_VALID_RECEIPTS={r['valid_receipts']}")
+          print(f"COLD_20Q_ANSWERABLE={r['answerable']}")
+          print(f"COLD_20Q_UNPROVEN={r['unproven']}")
+          PY
+
+      - name: Upload cold examination report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cold-20q-evidence-backed-report
+          path: cold-20q-report.json
+          if-no-files-found: error
