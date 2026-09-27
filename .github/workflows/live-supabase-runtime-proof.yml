@@ -10,7 +10,8 @@ jobs:
   live-proof:
     runs-on: ubuntu-latest
     env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      # Supabase project URL is public configuration, not a credential.
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_USER_ACCESS_TOKEN: ${{ secrets.SUPABASE_USER_ACCESS_TOKEN }}
       SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
     steps:
