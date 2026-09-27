@@ -5,12 +5,24 @@
   "description": "Declares, per ordinal, which semantic domain governs the nine Master Nodes, and reconciles the ratified strategic model against the ratified kernel. This instrument records a HUMAN ratification. It is authored by a machine only as a PROPOSAL, which the schema refuses to mark RATIFIED.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "status", "canonical_source", "taxonomy_decision", "entries", "authority_boundary"],
+  "required": [
+    "schema",
+    "status",
+    "canonical_source",
+    "taxonomy_decision",
+    "entries",
+    "authority_boundary"
+  ],
   "properties": {
-    "schema": { "const": "naya/master-node-semantic-mapping/v1" },
+    "schema": {
+      "const": "naya/master-node-semantic-mapping/v1"
+    },
     "status": {
       "description": "PROPOSAL is machine-authored and never authoritative. RATIFIED requires a human ratifier and a ratification event.",
-      "enum": ["PROPOSAL", "RATIFIED"]
+      "enum": [
+        "PROPOSAL",
+        "RATIFIED"
+      ]
     },
     "canonical_source": {
       "description": "Which ratified artifact governs the meaning of the nine ordinals.",
@@ -24,13 +36,29 @@
       "description": "Which contract taxonomy the Nodes bind to. Recorded explicitly because three are in circulation and a naive rebind to CC ids is provably incoherent (0/9 domain overlap).",
       "type": "object",
       "additionalProperties": false,
-      "required": ["selected_taxonomy", "rejected_taxonomies", "rationale"],
+      "required": [
+        "selected_taxonomy",
+        "rejected_taxonomies",
+        "rationale"
+      ],
       "properties": {
         "selected_taxonomy": {
-          "enum": ["KERNEL_00_26_AREAS", "CC_000_027_REGISTRY", "NEW_SINGLE_TAXONOMY"]
+          "enum": [
+            "KERNEL_00_26_AREAS",
+            "CC_000_027_REGISTRY",
+            "NEW_SINGLE_TAXONOMY"
+          ]
         },
-        "rejected_taxonomies": { "type": "array", "items": { "type": "string" } },
-        "rationale": { "type": "string", "minLength": 20 }
+        "rejected_taxonomies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 20
+        }
       }
     },
     "contract_id_scheme": {
@@ -38,9 +66,21 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "kernel_key_maps_to": { "type": "string" },
-        "unassigned_canonical_contracts": { "type": "array", "items": { "type": "string" } },
-        "absent_canonical_contracts": { "type": "array", "items": { "type": "string" } }
+        "kernel_key_maps_to": {
+          "type": "string"
+        },
+        "unassigned_canonical_contracts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "absent_canonical_contracts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "entries": {
@@ -50,19 +90,61 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["ordinal", "master_node_id", "kernel_key", "governing_domain", "white_paper_domain", "agreement"],
+        "required": [
+          "ordinal",
+          "master_node_id",
+          "kernel_key",
+          "governing_domain",
+          "white_paper_domain",
+          "agreement"
+        ],
         "properties": {
-          "ordinal": { "type": "string", "pattern": "^[0-9]{2}$" },
-          "master_node_id": { "type": "string", "pattern": "^MN-[0-9]{2}$" },
-          "kernel_key": { "enum": ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"] },
-          "governing_domain": { "type": "string", "minLength": 3 },
-          "white_paper_domain": { "type": "string", "minLength": 3 },
+          "ordinal": {
+            "type": "string",
+            "pattern": "^[0-9]{2}$"
+          },
+          "master_node_id": {
+            "type": "string",
+            "pattern": "^MN-[0-9]{2}$"
+          },
+          "kernel_key": {
+            "enum": [
+              "SELF",
+              "LAW",
+              "ACT",
+              "KNOW",
+              "PROVE",
+              "CONNECT",
+              "VERIFY",
+              "LEARN",
+              "EVOLVE"
+            ]
+          },
+          "governing_domain": {
+            "type": "string",
+            "minLength": 3
+          },
+          "white_paper_domain": {
+            "type": "string",
+            "minLength": 3
+          },
           "agreement": {
             "description": "AGREEMENT means the two ratified sources already say the same thing. COLLISION means they do not, and the governing_domain resolves it.",
-            "enum": ["AGREEMENT", "PARTIAL", "COLLISION"]
+            "enum": [
+              "AGREEMENT",
+              "PARTIAL",
+              "COLLISION"
+            ]
           },
-          "canonical_contracts": { "type": "array", "items": { "type": "string" } },
-          "notes": { "type": "string" }
+          "canonical_contracts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       }
     },
@@ -70,33 +152,75 @@
       "description": "Self-optimization must never become self-authorization.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["self_ratification_permitted", "statement"],
+      "required": [
+        "self_ratification_permitted",
+        "statement"
+      ],
       "properties": {
-        "self_ratification_permitted": { "const": false },
-        "statement": { "type": "string", "minLength": 20 }
+        "self_ratification_permitted": {
+          "const": false
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 20
+        }
       }
     },
     "ratification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ratified_by", "ratified_at", "authority"],
+      "required": [
+        "ratified_by",
+        "ratified_at",
+        "authority"
+      ],
       "properties": {
         "ratified_by": {
           "description": "A machine may never appear here.",
           "type": "string",
           "minLength": 3,
-          "not": { "pattern": "(?i)^(machine|naya|ai|agent|bot|system|auto)" }
+          "not": {
+            "pattern": "(?i)^(machine|naya|ai|agent|bot|system|auto)"
+          }
         },
-        "ratified_at": { "type": "string", "format": "date-time" },
-        "authority": { "type": "string", "minLength": 5 },
-        "supersedes": { "type": ["string", "null"] }
+        "ratified_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 5
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       }
+    },
+    "proposal_note": {
+      "description": "Provenance for a machine-authored PROPOSAL. Permitted only while status is PROPOSAL; ignored once RATIFIED.",
+      "type": "string"
     }
   },
   "allOf": [
     {
-      "if": { "properties": { "status": { "const": "RATIFIED" } }, "required": ["status"] },
-      "then": { "required": ["ratification"] }
+      "if": {
+        "properties": {
+          "status": {
+            "const": "RATIFIED"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "ratification"
+        ]
+      }
     }
   ]
 }

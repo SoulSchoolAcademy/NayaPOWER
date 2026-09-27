@@ -89,3 +89,53 @@ Then: `python scripts/verify-master-node-semantic-conformance.py` → **GREEN**.
 
 **I did not write this file.** Authoring it means deciding what the nine Nodes mean, and the
 schema is deliberately built so that a machine cannot do it and call it ratified.
+
+---
+
+## 6. PRECEDENCE EVIDENCE — D1 IS LARGELY DETERMINED, NOT FREE CHOICE
+
+Newly established by inspection. This materially narrows the decision.
+
+| Evidence | Finding |
+|---|---|
+| Commit order | White paper `3e68f14b` ratified **17:20:08**. Kernel `cb7887fe` activated **18:03:25** — 43 minutes later. The kernel is **not** an ancestor of the white paper commit. |
+| Kernel's own declared authority | `NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md` L5: *"**Authority:** NayaPOWER System North Star + NayaNET Constitutional Contract Law"*, and L14: *"The nine Master Nodes are the semantic operating layer **compiled from that law**."* |
+| Ratification record | `.naya/project-intelligence/NAYAPOWER-SYSTEM-NORTH-STAR-RATIFICATION-2026-09-26.md` L19: *"**Master Nodes** = semantic kernel."* — asserted, never enumerated. |
+| Does the white paper know the kernel exists? | **No.** Zero occurrences of `MN-0`, `NAYA-MASTER-NODE-KERNEL`, `IB-001233`, `RATIFIED_BASELINE`, or `EVOLVE` in all 2,166 lines. |
+| Does the white paper supersede it? | **No.** Its supersession rule covers prior *strategic plans*; it never names or carries the kernel forward. |
+| AAA scorecard | `.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md` L101: *"GAP A — Semantic kernel is not yet the runtime kernel."* The gap is known; the enumeration mismatch is not recorded anywhere. |
+
+### What this means
+
+1. **The kernel is subordinate to the North Star by its own declaration.** It claims to be *compiled from* the North Star. A compiler that emits a different result than its source is a **defect in the compilation**, not a competing authority.
+2. **The kernel is the later artifact and the acknowledged source of truth for the nine node identities** (the ratification record names them; the white paper never does).
+3. Therefore **D1 is substantially answered by existing ratified evidence**: North Star §8 is the strategic source; `MN-01..MN-09` are the canonical *identities*; the kernel's *node names* are the defective compilation and should be corrected toward §8.
+
+**What remains genuinely open:** whether to re-key the runtime (`MASTER_NODE_KEYS` is hardcoded and would have to change), D2 taxonomy, and D3 binding.
+
+### Recommendation (a recommendation is not a ratification)
+
+- **D1 → `NORTH_STAR_WHITE_PAPER_SECTION_8`** for the governing *domains*, retaining `MN-01..MN-09` as the stable *identities*. Correct the kernel's node names and the runtime keys toward §8. Evidence: the kernel's own subordination clause plus ratification order.
+- **D2 → `NEW_SINGLE_TAXONOMY`.** Both existing taxonomies are provably defective: the CC rebind is incoherent 9/9, and the `00-26` map preserves 16 nonexistent areas. This is the most expensive option and that cost is real.
+- **D3 → author the missing contracts** for MN-07/08/09, with the range marked aspirational until D2 lands. Rebinding those three to unrelated existing contracts would be a semantic lie; they are the Nodes that verify, learn and compound, which is the North Star's core claim.
+
+## 7. A MACHINE-AUTHORED PROPOSAL NOW EXISTS
+
+`.naya/specifications/NAYA-MASTER-NODE-SEMANTIC-MAPPING.json` is present with **`status: "PROPOSAL"`**, carrying the recommendation above, all nine ordinals, and **no ratification block**.
+
+**The gate refuses to pass on it.** Verified:
+
+```
+- semantic mapping is status='PROPOSAL', not RATIFIED. A proposal authored by a
+  machine may inform the decision but cannot satisfy this gate.
+  Self-optimization must never become self-authorization.
+```
+
+This was a real hole in my own gate, found and closed: an earlier version would have
+accepted a machine-authored proposal as satisfying conformance. Control
+`machine PROPOSAL (no ratification) -> RED` now proves it cannot recur.
+
+**To ratify:** edit the proposal — set `status` to `"RATIFIED"`, delete `proposal_note`,
+and add a `ratification` block with your name. Then
+`python scripts/verify-master-node-semantic-conformance.py` → **GREEN** (once D2's taxonomy
+incoherence is also resolved, which no single edit can fix).

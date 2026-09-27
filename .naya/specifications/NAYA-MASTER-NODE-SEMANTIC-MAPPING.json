@@ -1,0 +1,106 @@
+{
+  "schema": "naya/master-node-semantic-mapping/v1",
+  "status": "PROPOSAL",
+  "canonical_source": "NORTH_STAR_WHITE_PAPER_SECTION_8",
+  "proposal_note": "MACHINE-AUTHORED PROPOSAL. This file is NOT a ratification and deliberately carries no ratification block. It exists so the Human Director's decision is a one-field edit rather than an excavation. `scripts/verify-master-node-semantic-conformance.py` refuses to pass while status is PROPOSAL.",
+  "taxonomy_decision": {
+    "selected_taxonomy": "NEW_SINGLE_TAXONOMY",
+    "rejected_taxonomies": [
+      "CC_000_027_REGISTRY - rejected on evidence: rebinding kernel key NN to CC-0NN is incoherent for 9/9 Nodes (eight score 0.00 domain overlap). The kernel's ownership map is mis-specified, not merely unbound.",
+      "KERNEL_00_26_AREAS - rejected because it preserves a map that is proven incoherent: 16 of 27 areas have no artifact, and MN-07/MN-08/MN-09 own only nonexistent areas."
+    ],
+    "rationale": "Three taxonomies are in circulation (kernel 00-26 areas, white paper section 8 domains, registry CC-000..CC-027) and two are provably defective. The North Star's own rule is REMOVE WHAT DUPLICATES. A single taxonomy is the only option that does not preserve a proven defect. This is the most expensive option and that cost is stated plainly."
+  },
+  "contract_id_scheme": {
+    "kernel_key_maps_to": "UNRESOLVED - no existing scheme maps kernel keys coherently. Awaiting the single taxonomy above.",
+    "unassigned_canonical_contracts": ["CC-027"],
+    "absent_canonical_contracts": ["CC-005", "CC-007"]
+  },
+  "entries": [
+    {
+      "ordinal": "01",
+      "master_node_id": "MN-01",
+      "kernel_key": "SELF",
+      "governing_domain": "Constitution, Mission & Scope",
+      "white_paper_domain": "Constitution, Mission & Scope",
+      "agreement": "PARTIAL",
+      "notes": "Kernel name 'Identity, Mission & Continuity' pulls CC-003 Identity & Continuity into a node whose section 8 domain is Constitution/Mission/Scope. Section 8 splits these across ordinals 01 and 02; the kernel merges them."
+    },
+    {
+      "ordinal": "02",
+      "master_node_id": "MN-02",
+      "kernel_key": "LAW",
+      "governing_domain": "Identity & Continuity",
+      "white_paper_domain": "Identity & Continuity",
+      "agreement": "COLLISION",
+      "notes": "Section 8 assigns Identity & Continuity to ordinal 02. The kernel assigns ordinal 02 to 'Authority, Consent & Governance' and places Identity & Continuity in the same node as the constitution. Direct contradiction on the same ordinal."
+    },
+    {
+      "ordinal": "03",
+      "master_node_id": "MN-03",
+      "kernel_key": "ACT",
+      "governing_domain": "Execution & Authorization",
+      "white_paper_domain": "Execution & Authorization",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Execution, Agency & Safe Action' omits Authorization, which section 8 places here and which the kernel's own contract areas 04/14 place elsewhere."
+    },
+    {
+      "ordinal": "04",
+      "master_node_id": "MN-04",
+      "kernel_key": "KNOW",
+      "governing_domain": "Intelligence Atom",
+      "white_paper_domain": "Intelligence Atom",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Intelligence, Memory & Events' adds Memory and Events, which section 8 does not name at this ordinal."
+    },
+    {
+      "ordinal": "05",
+      "master_node_id": "MN-05",
+      "kernel_key": "PROVE",
+      "governing_domain": "Provenance, Evidence & Ledger",
+      "white_paper_domain": "Provenance, Evidence & Ledger",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Truth, Provenance & Accountability' substitutes Truth and Accountability for Ledger."
+    },
+    {
+      "ordinal": "06",
+      "master_node_id": "MN-06",
+      "kernel_key": "CONNECT",
+      "governing_domain": "Retrieval, Applicability & Smart Links",
+      "white_paper_domain": "Retrieval, Applicability & Smart Links",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Relationships, Retrieval & System Context' substitutes Relationships and System Context for Applicability and Smart Links."
+    },
+    {
+      "ordinal": "07",
+      "master_node_id": "MN-07",
+      "kernel_key": "VERIFY",
+      "governing_domain": "Verification, Safety & Governed Action",
+      "white_paper_domain": "Verification, Safety & Governed Action",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Outcome, Causality & Acceptance' omits Safety and Governed Action. This node also owns only nonexistent contracts - see D3."
+    },
+    {
+      "ordinal": "08",
+      "master_node_id": "MN-08",
+      "kernel_key": "LEARN",
+      "governing_domain": "Learning, Reconciliation & Compounding",
+      "white_paper_domain": "Learning, Reconciliation & Compounding",
+      "agreement": "PARTIAL",
+      "notes": "Kernel 'Learning, Reconciliation & Prediction' substitutes Prediction for Compounding. Compounding is the North Star's core claim; Prediction is not. This node also owns only nonexistent contracts - see D3."
+    },
+    {
+      "ordinal": "09",
+      "master_node_id": "MN-09",
+      "kernel_key": "EVOLVE",
+      "governing_domain": "NayaNET Architecture, Hub & Production Proof",
+      "white_paper_domain": "NayaNET Architecture, Hub & Production Proof",
+      "agreement": "COLLISION",
+      "notes": "Section 8 assigns NayaNET Architecture, Hub and Production Proof to ordinal 09. The kernel assigns ordinal 09 to 'Continuity, Experience & System Evolution' and contains no NayaNET/Hub/Production domain at all. Direct contradiction, and the omitted domain is the one the North Star calls the next big engineering target."
+    }
+  ],
+  "authority_boundary": {
+    "self_ratification_permitted": false,
+    "statement": "This mapping is a machine-authored PROPOSAL. Only the Human Director may set status to RATIFIED and supply a human ratified_by. Self-optimization must never become self-authorization."
+  }
+}

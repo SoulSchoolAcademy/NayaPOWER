@@ -58,7 +58,7 @@ def write_mapping(entries, status='RATIFIED', ratified_by='Human Director (Shawn
     p = FX / MAPPING_REL
     p.parent.mkdir(parents=True, exist_ok=True)
     doc = {'schema': 'naya/master-node-semantic-mapping/v1',
-           'status': status, 'ratified_by': ratified_by,
+           'status': status,
            'canonical_source': 'MASTER_NODE_KERNEL_V1',
            'taxonomy_decision': {'selected_taxonomy': 'KERNEL_00_26_AREAS',
                                  'rejected_taxonomies': ['CC_000_027_REGISTRY'],
@@ -76,9 +76,11 @@ def write_mapping(entries, status='RATIFIED', ratified_by='Human Director (Shawn
 
 
 def full_mapping():
-    return [{'ordinal': f'{i:02d}', 'master_node_id': f'MN-{i:02d}',
-             'semantic_domain': f'domain-{i}', 'ratified_by': 'Human Director (Shawn)'}
-            for i in range(1, 10)]
+    keys = ['SELF','LAW','ACT','KNOW','PROVE','CONNECT','VERIFY','LEARN','EVOLVE']
+    return [{'ordinal': f'{i:02d}', 'master_node_id': f'MN-{i:02d}', 'kernel_key': k,
+             'governing_domain': f'governing domain {i}', 'white_paper_domain': f'white paper domain {i}',
+             'agreement': 'PARTIAL'}
+            for i, k in enumerate(keys, 1)]
 
 
 def run(label, expect):
@@ -108,15 +110,20 @@ build_fixture()
 write_mapping(full_mapping())
 results.append(run('ratified mapping, taxonomy still broken', 'RED'))
 
+# 2c. Machine PROPOSAL must NOT satisfy the gate
+build_fixture(); write_repaired_registry()
+write_mapping(full_mapping(), status='PROPOSAL', ratified_by='MACHINE')
+results.append(run('machine PROPOSAL (no ratification)', 'RED'))
+
 # 3. Mapping missing one ordinal -> RED
 m = full_mapping()[:-1]
 write_mapping(m)
 results.append(run('mapping missing ordinal 09', 'RED'))
 
 # 4. Mapping entry missing a required field -> RED
-m = full_mapping(); m[3].pop('semantic_domain')
+m = full_mapping(); m[3].pop('governing_domain')
 write_mapping(m)
-results.append(run('mapping entry missing semantic_domain', 'RED'))
+results.append(run('mapping entry missing governing_domain', 'RED'))
 
 # 5. Mapping self-ratified by machine -> RED
 write_mapping(full_mapping(), status='RATIFIED', ratified_by='MACHINE')

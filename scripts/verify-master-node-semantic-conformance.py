@@ -175,12 +175,34 @@ def main() -> int:
         for ordinal, _ in paper:
             if ordinal not in by_ordinal:
                 errors.append(f'semantic mapping has no entry for white paper node {ordinal}')
-        for ordinal, entry in by_ordinal.items():
-            for field in ('master_node_id', 'semantic_domain', 'ratified_by'):
-                if not entry.get(field):
-                    errors.append(f'semantic mapping entry {ordinal} missing {field}')
-        if mapping.get('status') == 'RATIFIED' and mapping.get('ratified_by') in (None, '', 'MACHINE'):
-            errors.append('semantic mapping claims RATIFIED without a human ratifier')
+        # Validate against the ratification schema itself so this gate cannot drift
+        # away from the instrument it enforces.
+        schema_file = repo / mapping_schema_rel
+        if schema_file.is_file():
+            try:
+                import jsonschema
+                from jsonschema import Draft202012Validator
+                schema = json.loads(schema_file.read_text(encoding='utf-8'))
+                for err in Draft202012Validator(schema).iter_errors(mapping):
+                    errors.append(f'semantic mapping violates its schema at '
+                                  f'{".".join(str(x) for x in err.path) or "<root>"}: {err.message[:160]}')
+            except ImportError:
+                for ordinal, entry in by_ordinal.items():
+                    for field in ('master_node_id', 'governing_domain', 'white_paper_domain', 'agreement'):
+                        if not entry.get(field):
+                            errors.append(f'semantic mapping entry {ordinal} missing {field}')
+        status = mapping.get('status')
+        rat = mapping.get('ratification') or {}
+        ratifier = str(rat.get('ratified_by') or mapping.get('ratified_by') or '')
+        if status != 'RATIFIED':
+            errors.append(
+                f'semantic mapping is status={status!r}, not RATIFIED. A proposal authored by a '
+                'machine may inform the decision but cannot satisfy this gate. Self-optimization '
+                'must never become self-authorization.')
+        elif not ratifier or re.match(r'(?i)^(machine|naya|ai|agent|bot|system|auto)', ratifier):
+            errors.append(f'semantic mapping claims RATIFIED via a non-human ratifier: {ratifier!r}')
+        if mapping.get('authority_boundary', {}).get('self_ratification_permitted') is not False:
+            errors.append('semantic mapping must declare self_ratification_permitted=false')
 
     # Report - always show the two definitions side by side, conflict or not.
     print('ordinal | strategic model (white paper section 8)            | kernel / deployed (MN)')
