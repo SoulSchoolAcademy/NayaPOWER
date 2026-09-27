@@ -54,12 +54,38 @@ def successor(receipt_path: str) -> int:
 
 def main() -> int:
     # 1–7: restore, reconstruct, reconcile current truth.
-    branch = run("git", "branch", "--show-current")
+    #
+    # Parity is proven from CONTENT, not from a branch label. The previous
+    # check was `git branch --show-current == "main"`, which was wrong twice
+    # over: it failed in every worktree, on every feature branch and in CI
+    # even when the content was canonical, and it passed on a local `main`
+    # that could be arbitrarily stale. We now assert the working tree is
+    # clean (so the proof describes committed content) and, under
+    # --require-canonical, that the tested commit is actually contained in
+    # origin/main.
+    require_canonical = "--require-canonical" in sys.argv[1:]
+    branch = run("git", "branch", "--show-current") or "(detached)"
     head = run("git", "rev-parse", "HEAD")
-    if branch != "main":
-        fail(f"expected main, got {branch}")
     if len(head) != 40:
         fail("invalid live HEAD")
+
+    dirty = run("git", "status", "--porcelain")
+    if dirty:
+        fail("working tree is not clean; this proof would describe uncommitted "
+             f"content, not the canonical state. dirty={dirty[:200]!r}")
+
+    head_in_canonical = False
+    if require_canonical:
+        if not run("git", "rev-parse", "--verify", "origin/main"):
+            fail("--require-canonical given but origin/main is not resolvable")
+        rc = subprocess.run(["git", "merge-base", "--is-ancestor", head, "origin/main"],
+                            cwd=ROOT).returncode
+        if rc != 0:
+            fail(f"--require-canonical: HEAD {head[:12]} is not contained in "
+                 "origin/main; this proof may only certify canonical content")
+        head_in_canonical = True
+    print(f"PARITY_BRANCH={branch}")
+    print(f"PARITY_HEAD_IN_CANONICAL_MAIN={str(head_in_canonical).upper()}")
 
     map_text = load(".naya/control-plane/MAP.json")
     state_text = load(".naya/control-plane/STATE.json")
@@ -143,6 +169,8 @@ def main() -> int:
             "proof": "PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF",
             "source_head": head,
             "branch": branch,
+            "head_in_canonical_main": head_in_canonical,
+            "parity_basis": "content:clean_tree+optional_ancestor_of_origin_main",
             "intent": "prove cold-Naya behavioral continuity",
             "identity": "NayaNET",
             "reconstruction": "PASS",
