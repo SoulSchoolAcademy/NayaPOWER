@@ -37,7 +37,7 @@ def test_law_blocks_consequential_action_without_authority():
     assert result.trace == (Node.SELF, Node.LAW)
 
 
-def test_law_allows_scoped_authority_and_full_kernel_executes():
+def test_law_allows_scoped_authority_and_kernel_executes_without_claiming_verification():
     kernel = Kernel()
     context = DecisionContext(
         action="publish_change",
@@ -50,11 +50,11 @@ def test_law_allows_scoped_authority_and_full_kernel_executes():
     assert result.allowed is True
     assert result.blocked_by is None
     assert result.executed is True
-    assert result.truth_state is TruthState.VERIFIED
+    assert result.truth_state is TruthState.UNKNOWN
     assert result.trace == Kernel.node_order()
 
 
-def test_kernel_records_evidence_and_outcome_for_execution():
+def test_execution_records_observation_without_promoting_it_to_verified_outcome():
     kernel = Kernel()
     context = DecisionContext(
         action="reversible_change",
@@ -67,6 +67,7 @@ def test_kernel_records_evidence_and_outcome_for_execution():
     assert result.evidence
     assert result.outcome == "executed"
     assert result.next_state["last_action"] == "reversible_change"
+    assert result.truth_state is TruthState.UNKNOWN
 
 
 def test_learning_requires_verified_outcome():
