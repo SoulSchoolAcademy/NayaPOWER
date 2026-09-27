@@ -66,6 +66,10 @@ class NineMasterNodeKernelTests(unittest.TestCase):
         loader = source[loader_start:loader_end]
         self.assertNotIn('.eq("owner_id", userId)', loader)
         self.assertIn('"access_scope"', json.dumps(json.loads(MANIFEST.read_text(encoding="utf-8"))))
+        self.assertIn('from "../../../n9_kernel_decision.mjs"', source)
+        self.assertIn('evaluateNineNodeKernel', source)
+        self.assertIn('case "kernel_decide"', source)
+        self.assertIn('masterKernel.nodes', source)
 
 if __name__ == "__main__":
     unittest.main()
