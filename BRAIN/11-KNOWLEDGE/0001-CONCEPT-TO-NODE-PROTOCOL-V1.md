@@ -1,20 +1,19 @@
-# Concept → Intelligent Node Protocol V1
+# Concept-to-Node Protocol V1
 
-The temporary Concept series becomes input to the permanent intelligence chain.
+**Status:** CANONICAL BUILD CONTRACT
 
-```
-CONCEPT SOURCE
-→ EXTRACT
-→ DISTILL
-→ TYPE
-→ RECONCILE
-→ CONNECT
-→ PROVE
-→ PROMOTE
-→ INDEX
-```
+## Purpose
+Map KNOWLEDGE concepts into the nine-node ontology with explicit reasoning and provenance.
 
-One conversation may produce zero, one, or many canonical objects. The system must not force a whole conversation into one Node.
+## Mapping record
+`concept_id, source_ref, source_revision, node_ids[], mapping_reason, relationship_ids[], confidence, truth_state, reviewer, timestamp`.
 
-The human may explicitly request: “Naya, preserve this” or “Naya, make a Node from what matters here.”
+## Laws
+- Mapping is an interpretation, not a rewrite of source knowledge.
+- Every Node mapping has a reason and source evidence.
+- One concept may map to multiple Nodes.
+- Low-confidence or disputed mappings remain explicit and are not silently promoted.
+- Mapping never grants authority.
 
+## Acceptance
+The same source revision produces deterministic concept IDs and stable Node mappings; every mapping is traceable to source and can be challenged or superseded.
