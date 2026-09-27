@@ -15,6 +15,8 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Any, Iterable
 
+from .value_calculus import ResourceCost, ValueProfile, calculate_value
+
 
 NODE_NAMES = (
     "SELF", "LAW", "ACT", "KNOW", "PROVE",
@@ -95,6 +97,13 @@ class FileBrainStore:
                 parent_id TEXT NOT NULL,
                 mission TEXT NOT NULL,
                 authority_inherited INTEGER NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS value_receipts (
+                receipt_id TEXT PRIMARY KEY,
+                event_id TEXT NOT NULL,
+                outcome_id TEXT NOT NULL,
+                item_id TEXT NOT NULL,
+                payload TEXT NOT NULL
             );
             CREATE TABLE IF NOT EXISTS relationships (
                 relationship_id TEXT PRIMARY KEY,
@@ -221,6 +230,16 @@ class FileBrainStore:
             "SELECT * FROM successors WHERE successor_id=?", (successor_id,)
         ).fetchone())
 
+    def record_value_receipt(self, receipt: dict[str, Any]) -> None:
+        self.db.execute(
+            "INSERT OR REPLACE INTO value_receipts VALUES(?,?,?,?,?)",
+            (
+                receipt["receipt_id"], receipt["event_id"], receipt["outcome_id"],
+                receipt["item_id"], json.dumps(receipt, sort_keys=True),
+            ),
+        )
+        self.db.commit()
+
     def close(self) -> None:
         self.db.close()
 
@@ -276,6 +295,37 @@ class GovernedBrain:
         if capability not in authority.get("capabilities", []):
             raise PermissionError("out_of_scope")
         return {"action_id": action_id, "authorized": True, "owner_id": owner_id}
+
+    def record_value(
+        self,
+        event_id: str,
+        outcome_id: str,
+        item_id: str,
+        dimensions: dict[str, float | None],
+        profile: ValueProfile,
+        verified_value: float,
+        resources: ResourceCost,
+        verification_state: str = "VERIFIED",
+    ) -> dict[str, Any]:
+        result = calculate_value(
+            dimensions=dimensions,
+            profile=profile,
+            verification_state=verification_state,
+            verified_value=verified_value,
+            resources=resources,
+        )
+        receipt = {
+            "receipt_type": "NAYA-VALUE-RECEIPT",
+            "event_id": event_id,
+            "outcome_id": outcome_id,
+            "item_id": item_id,
+            **result,
+        }
+        receipt["receipt_id"] = hashlib.sha256(
+            json.dumps(receipt, sort_keys=True).encode()
+        ).hexdigest()[:20]
+        self.store.record_value_receipt(receipt)
+        return receipt
 
     def record_learning(self, **kwargs) -> dict[str, Any]:
         return self.store.record_learning(**kwargs)
