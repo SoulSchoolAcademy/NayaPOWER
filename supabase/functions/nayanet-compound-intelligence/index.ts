@@ -72,12 +72,16 @@ async function record(client: any, event: any, action: string, expected: string,
 
 const MASTER_NODE_KEYS = ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"] as const;
 const MASTER_NODE_IDS = ["IB-001233","IB-001234","IB-001235","IB-001236","IB-001237","IB-001238","IB-001239","IB-001240","IB-001241"] as const;
+const MASTER_NODE_ACCESS_SCOPE = "SYSTEM_AUTHENTICATED";
 
-async function loadMasterNodeKernel(client: any, userId: string) {
-  const result = await client.from("nayanet_intelligent_blocks")
-    .select("block_id,intelligent_block_id,title,version,status,understanding_state,owner_scope,content,provenance,value_context,applicable_scope,updated_at")
-    .eq("owner_id", userId)
+async function loadMasterNodeKernel(_client: any, _userId: string) {
+  // Master Nodes are system intelligence, not personal intelligence.
+  // The caller must already be authenticated by auth(req); this trusted server-side
+  // read intentionally avoids binding kernel availability to one transient owner.
+  const result = await admin.from("nayanet_intelligent_blocks")
+    .select("block_id,intelligent_block_id,title,version,status,understanding_state,owner_id,owner_scope,content,provenance,value_context,applicable_scope,updated_at")
     .in("intelligent_block_id", [...MASTER_NODE_IDS])
+    .eq("owner_scope", MASTER_NODE_ACCESS_SCOPE)
     .eq("status", "ACTIVE");
   if (result.error) throw result.error;
 
@@ -86,12 +90,14 @@ async function loadMasterNodeKernel(client: any, userId: string) {
   );
 
   if (nodes.length !== MASTER_NODE_KEYS.length) {
-    throw new Error("MASTER_NODE_KERNEL_INCOMPLETE:" + String(nodes.length) + "/9");
+    throw new Error("MASTER_NODE_KERNEL_SCOPE_INVALID:" + String(nodes.length) + "/9");
   }
 
   const invalid = nodes.filter((node: any, index: number) =>
     node.intelligent_block_id !== MASTER_NODE_IDS[index] ||
     node.content?.kernel?.key !== MASTER_NODE_KEYS[index] ||
+    node.owner_scope !== MASTER_NODE_ACCESS_SCOPE ||
+    node.content?.classification !== "system_intelligence" ||
     node.content?.kernel_activation?.status !== "ACTIVE" ||
     node.content?.kernel_activation?.runtime_status !== "STRUCTURALLY_ACTIVE"
   );
@@ -103,6 +109,8 @@ async function loadMasterNodeKernel(client: any, userId: string) {
   return {
     schema: "NAYAPOWER_MASTER_NODE_KERNEL_V1",
     status: "KERNEL_ACTIVE_STRUCTURAL",
+    access_scope: MASTER_NODE_ACCESS_SCOPE,
+    caller_owner_equality_required: false,
     node_count: nodes.length,
     effectiveness_status: "NOT_YET_PROVEN",
     activation_boundary: "Structural activation is verified; runtime behavioral integration requires the kernel boot proof.",
@@ -115,6 +123,7 @@ async function loadMasterNodeKernel(client: any, userId: string) {
       version: node.version,
       status: node.status,
       understanding_state: node.understanding_state,
+      owner_scope: node.owner_scope,
       primary_contracts: node.content.kernel.primary_contracts,
       core_question: node.content.kernel.core_question,
       purpose: node.content.kernel.purpose,
