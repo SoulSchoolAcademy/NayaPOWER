@@ -106,13 +106,60 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         errors.append("node_object_set_incomplete")
 
     edges = graph.get("edges", [])
+    graph_relationships: dict[str, dict] = {}
     for edge in edges:
+        relationship_id = edge.get("relationship_id")
         if edge.get("type") not in ALLOWED_RELATIONSHIPS:
             errors.append(f"unsupported_relationship:{edge.get('type')}")
-        if not edge.get("relationship_id") or not edge.get("source_id") or not edge.get("target_id"):
+        if not relationship_id or not edge.get("source_id") or not edge.get("target_id"):
             errors.append("relationship_identity_incomplete")
         if not edge.get("provenance"):
-            errors.append(f"relationship_missing_provenance:{edge.get('relationship_id')}")
+            errors.append(f"relationship_missing_provenance:{relationship_id}")
+        if relationship_id:
+            if relationship_id in graph_relationships:
+                errors.append(f"duplicate_relationship_id:{relationship_id}")
+            graph_relationships[relationship_id] = edge
+
+    # The graph seed and the materialized Node objects are two representations
+    # of one semantic graph. They must agree exactly on relationship identity,
+    # direction, type, endpoints and epistemic state. Otherwise the Brain can
+    # appear internally coherent while retrieval consumes a different graph.
+    object_relationship_ids: set[str] = set()
+    for node_id in NODE_IDS:
+        path = object_dir / f"{node_id}.json"
+        if not path.exists():
+            continue
+        obj = _read_json(path)
+        for rel in obj.get("relationships", []):
+            relationship_id = rel.get("relationship_id")
+            if not relationship_id:
+                errors.append(f"node_relationship_identity_incomplete:{node_id}")
+                continue
+            if relationship_id in object_relationship_ids:
+                errors.append(f"duplicate_node_relationship_id:{relationship_id}")
+            object_relationship_ids.add(relationship_id)
+            seed = graph_relationships.get(relationship_id)
+            if seed is None:
+                errors.append(f"node_relationship_missing_from_graph:{node_id}:{relationship_id}")
+                continue
+            expected = (
+                seed.get("source_id"),
+                seed.get("target_id"),
+                seed.get("type"),
+                seed.get("epistemic_state"),
+            )
+            actual = (
+                rel.get("source_object_id"),
+                rel.get("target_object_id"),
+                rel.get("type"),
+                rel.get("epistemic_state"),
+            )
+            if actual != expected:
+                errors.append(f"node_relationship_drift:{node_id}:{relationship_id}")
+
+    missing_from_objects = set(graph_relationships) - object_relationship_ids
+    for relationship_id in sorted(missing_from_objects):
+        errors.append(f"graph_relationship_missing_from_node_objects:{relationship_id}")
 
     source_count = population.get("source_count")
     if source_count != 15 or len(population.get("source_mappings", [])) != 15:
