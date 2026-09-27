@@ -1,129 +1,121 @@
-# NayaPOWER — REAL BRAIN TREE V1
+# NayaPOWER Brain — Real Tree Receipt
 
-**Status:** MATERIALIZED REPOSITORY TREE  
-**Source commit:** `5830f8c67f4f477d66beaa28f7486e9c0a8d1656`  
-**Meaning:** This file is a receipt of the physical Git tree below. It is not the tree's definition. The directories and files under `BRAIN/` are the tree.
+**Receipt basis:** Git tree at commit 3795554a1a6f148d19e262d37658b8e3e9eeaf27.  
+**Source of truth:** Git itself. This receipt is a snapshot and intentionally excludes its own two receipt files from the inventory.
 
-**Rule:** if this receipt and Git disagree, Git is the source of truth and this receipt is stale.
+## Physical domain count
 
-## Physical tree
+**15** BRAIN domains are physically present:
 
-```text
-BRAIN
-├── 00-SPEC
-│   ├── 0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md
-│   ├── 0002-TREE-AND-GRAPH-NAMING-LAW-V1.md
-│   ├── 0003-REPRESENTATION-LAW-V1.md
-│   ├── 0004-KNOWLEDGE-POPULATION-SPEC-V1.md
-│   ├── 0005-TREE-V1.md
-│   ├── 0006-OBJECT-TYPES-V1.md
-│   └── README.md
-├── 01-GOVERNANCE
-│   ├── 0001-GOVERNANCE-CONTRACT-V1.md
-│   ├── 0002-PROMOTION-AND-REVOCATION-V1.md
-│   └── README.md
-├── 02-ARCHITECTURE
-│   ├── 0001-SYSTEM-BOUNDARIES-V1.md
-│   ├── 0002-DEPENDENCY-ORDER-V1.md
-│   └── README.md
-├── 03-KERNEL
-│   ├── 0001-KERNEL-CONTRACT-V1.md
-│   ├── 0002-KERNEL-ACCEPTANCE-V1.md
-│   ├── MANIFEST.json
-│   ├── NODES
-│   │   ├── ACT
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── CONNECT
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── EVOLVE
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── KNOW
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── LAW
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── LEARN
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── PROVE
-│   │   │   └── 0001-CONTRACT.md
-│   │   ├── SELF
-│   │   │   └── 0001-CONTRACT.md
-│   │   └── VERIFY
-│   │       └── 0001-CONTRACT.md
-│   └── README.md
-├── 04-INTELLIGENCE
-│   ├── 0001-FIRST-LIVING-NODE-SPEC-V1.md
-│   ├── 0001-INTELLIGENT-OBJECT-CONTRACT-V1.md
-│   ├── 0002-GRAPH-CONTRACT-V1.md
-│   ├── 0003-INTELLIGENCE-LIFECYCLE-V1.md
-│   ├── GRAPH
-│   │   └── README.md
-│   ├── MASTER-INDEX.json
-│   └── README.md
-├── 05-MEMORY
-│   ├── 0001-MEMORY-CONTINUITY-CONTRACT-V1.md
-│   └── README.md
-├── 06-PROOF
-│   ├── 0001-PROOF-CONTRACT-V1.md
-│   └── README.md
-├── 07-LEARNING
-│   ├── 0001-LEARNING-CONTRACT-V1.md
-│   └── README.md
-├── 08-SUCCESSION
-│   ├── 0001-SUCCESSOR-CONTRACT-V1.md
-│   └── README.md
-├── 09-EVOLUTION
-│   ├── 0001-SELF-BUILDING-CONTRACT-V1.md
-│   └── README.md
-├── 10-INTERFACES
-│   ├── 0001-CHANNEL-CONTRACT-V1.md
-│   └── README.md
-├── 11-KNOWLEDGE
-│   ├── 00-CONCEPT-CORPUS-REGISTER.md
-│   ├── 0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md
-│   ├── 0001-CONCEPT-TO-NODE-PROTOCOL-V1.md
-│   ├── 0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md
-│   └── README.md
-├── 12-ENGINEERING
-│   ├── 0001-ENGINEERING-TRUTH-LAW-V1.md
-│   └── README.md
-├── 90-OPERATIONS
-│   ├── 0001-MAX-10-EXECUTION-QUEUE-V1.md
-│   └── README.md
-├── 99-ARCHIVE
-│   └── README.md
-├── MASTER-MAP.md
-├── NAYAPOWER-BRAIN-INDEX.json
-└── README.md
-```
+- 00-SPEC
+- 01-GOVERNANCE
+- 02-ARCHITECTURE
+- 03-KERNEL
+- 04-INTELLIGENCE
+- 05-MEMORY
+- 06-PROOF
+- 07-LEARNING
+- 08-SUCCESSION
+- 09-EVOLUTION
+- 10-INTERFACES
+- 11-KNOWLEDGE
+- 12-ENGINEERING
+- 90-OPERATIONS
+- 99-ARCHIVE
 
-## Domain ownership
+## Physical file count
 
-- `00-SPEC` — laws/specifications for the brain representation.
-- `01-GOVERNANCE` — authority, promotion, revocation.
-- `02-ARCHITECTURE` — boundaries and dependency order.
-- `03-KERNEL` — executable semantic responsibility contracts for the nine Nodes.
-- `04-INTELLIGENCE` — intelligent objects, graph, lifecycle, first living-node specimen.
-- `05-MEMORY` — continuity and retrieval preservation.
-- `06-PROOF` — evidence and verification contracts.
-- `07-LEARNING` — verified learning and future behavioral change.
-- `08-SUCCESSION` — cold successor continuity.
-- `09-EVOLUTION` — governed self-building and improvement.
-- `10-INTERFACES` — doors/projections, not competing intelligence stores.
-- `11-KNOWLEDGE` — distilled canonical knowledge and source reconciliation.
-- `12-ENGINEERING` — engineering truth boundaries.
-- `90-OPERATIONS` — current execution priorities.
-- `99-ARCHIVE` — historical/superseded material.
+**74 non-receipt files** exist under BRAIN at the receipt basis.
 
-## What makes this a real tree
+## High-value populated surfaces
 
-1. These directories and files physically exist in Git; they are not placeholders in a diagram.
-2. The nine Nodes have individual contract files under `03-KERNEL/NODES/`.
-3. Intelligence, memory, proof, learning, succession, evolution, interfaces, knowledge, and operations each have physical homes.
-4. `MASTER-MAP.md` and `NAYAPOWER-BRAIN-INDEX.json` navigate the physical structure; they do not substitute for it.
-5. The tree remains separate from the semantic relationship graph: the tree answers **where**, the graph answers **how things relate**.
+- Nine kernel contracts: 9
+- Canonical node objects: 9
+- Knowledge source-to-node population map: present
+- Human/AI/machine representation contract: present
+- Kernel graph seed: present
+- Knowledge-to-node graph map: present
+- Runtime registry: present
+- AAA scorecard: present
+- AAA execution prompt: present
 
-## Acceptance boundary
+## Proof boundary
 
-**MATERIALIZED ≠ VERIFIED BEHAVIOR.**
+Physical presence proves structure only. It does not prove runtime loading, retrieval, behavioral intelligence, verification, learning, or succession.
 
-This tree proves repository structure exists. It does not yet prove that the runtime loads every contract, that every relationship is executable, or that the complete brain survives a cold boot. Those are behavioral acceptance gates.
+## File inventory
+
+- BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md — 11382 bytes — 1078ee42c8f80403fb0fa8e8fe99f8fde40407db
+- BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md — 1335 bytes — dfb3c82cfbc8340fb015bd2a2dc5256a8bcc822c
+- BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md — 948 bytes — bd599702c291e42011782c7b1e301bc0a2b12ff8
+- BRAIN/00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md — 1266 bytes — 26b71a99a5e175b596373620acdcb56568797d9b
+- BRAIN/00-SPEC/0005-TREE-V1.md — 1622 bytes — edc4fdb44334921357369a9852dd0f6fa5ee9e67
+- BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md — 473 bytes — 41c6cecf1357e6d06e8de7ac005dd95ddf1196a8
+- BRAIN/00-SPEC/README.md — 216 bytes — ae23009addc2f216153f088ed5c322443ba63393
+- BRAIN/01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md — 800 bytes — 562abb5fb6f5dc4a7a018360eb0204acaed07e0a
+- BRAIN/01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md — 453 bytes — af3b58740a9abe172e94cf365b960683b4055d41
+- BRAIN/01-GOVERNANCE/README.md — 255 bytes — fc6c5287325dd6698306ab0e5038f01c06919c69
+- BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md — 423 bytes — eb58b66a7208abca789db658d8ea6dda717b979d
+- BRAIN/02-ARCHITECTURE/0002-DEPENDENCY-ORDER-V1.md — 296 bytes — c4394b152549e594d4d12887c06975cd19310266
+- BRAIN/02-ARCHITECTURE/README.md — 197 bytes — 01fe2059eb999320821ca88fcda4c989a7bcff37
+- BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md — 671 bytes — c0fbdb92d466f0378487a0b5ade12d9ae6f5e2af
+- BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md — 411 bytes — 2ceacf3091fa30f7e95b0d71bd0d4b35a62d89b9
+- BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json — 1561 bytes — a09321fdffd93436ef5bda9f04a3d7ecb3b31f27
+- BRAIN/03-KERNEL/MANIFEST.json — 1081 bytes — c41b4ef908541164f0c9b6a8fd546a40c8fc0499
+- BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md — 581 bytes — 11582caa5bb88b9e4ee496d9f445efdf9eb27efb
+- BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md — 563 bytes — c1fb55fcf76af1410515744c39823bbb1bbb55d2
+- BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md — 588 bytes — 7545d605b66338469434c49c1f746fda5189f3cd
+- BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md — 537 bytes — 9da572dfa03766c79a509e5876de9fb9ddb30995
+- BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md — 572 bytes — 843459cc1b146171c08514d3a16b294c6c94f776
+- BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md — 613 bytes — 88903855383dc01f42e66029f98be52ae8bc7706
+- BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md — 475 bytes — 1a80141aa706f927b637d69a998b5f1fb901453d
+- BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md — 716 bytes — b6052c85209b515cfc80f5e795911033fc7069ae
+- BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md — 544 bytes — a5c7fbdcf87c3793753f5abd6a533d91dba51f9e
+- BRAIN/03-KERNEL/README.md — 279 bytes — 775a777bb165abac44aa0fb6d0a34ea9e13016c0
+- BRAIN/04-INTELLIGENCE/0001-FIRST-LIVING-NODE-SPEC-V1.md — 2495 bytes — 149578bb09e3e34bf9c078262176d9bfb61886db
+- BRAIN/04-INTELLIGENCE/0001-INTELLIGENT-OBJECT-CONTRACT-V1.md — 444 bytes — 13e5ace230c8ae64953da98cecf6563b3bc6a569
+- BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md — 401 bytes — 32ab9ed548f52d886209712378bb70fb1430d319
+- BRAIN/04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md — 291 bytes — 67c7a965896b2509f45501a9143e36c06e3e0f52
+- BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json — 4728 bytes — f2a6a2777ceeaa5b152bb30f540da6209dc07713
+- BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json — 798 bytes — b9c63f7d306773580d101a856f514abe77d8f4b6
+- BRAIN/04-INTELLIGENCE/GRAPH/README.md — 360 bytes — 6777f382958284c4e9746846b6417cf3af0827bc
+- BRAIN/04-INTELLIGENCE/MASTER-INDEX.json — 597 bytes — b72465c1c8113cf33466ecf81237a140e4dbbd6f
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json — 1975 bytes — ae50162730f63f5ef950067e4283a0d174695299
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json — 2045 bytes — e214dc31bfd0f1bb20d22e4c4ade4a1ff2722663
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json — 1999 bytes — 8137a0d71bd91ea05135e68b250857de48154099
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json — 1994 bytes — 6fb1d8c6d5296277c8c228914f709d178eae87e8
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json — 1972 bytes — bee1573174571a0e1fea8d7259a731b405f235d5
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json — 1980 bytes — 52acbd9a38666ec9dbdf836c28c64586004fa6a7
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json — 1977 bytes — f4150a7e41c0e846261ce6ad01b504d2b70222f0
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json — 1952 bytes — 3b25967019d2611a894fa318e02df201b1736dd9
+- BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json — 1993 bytes — 8db04f2f82c6daf4a05178d386fc3c794c978acd
+- BRAIN/04-INTELLIGENCE/README.md — 283 bytes — d2cea7ea7466932a6d04fa812f9bb3ff6eb2cc26
+- BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md — 365 bytes — 9d22bfecfdcd41f364528471517e8d2897d65fb7
+- BRAIN/05-MEMORY/README.md — 200 bytes — 4099c113a532d7ff2ce56d8c79fcae775d1c23bf
+- BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md — 299 bytes — 41021754ba8cd44ec672765022fbbf27e8182403
+- BRAIN/06-PROOF/README.md — 158 bytes — d34fb51a5a934ff995f35d83d796a354079024a5
+- BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md — 282 bytes — 3b2a7ede2f078817dfbfcca0fc07c0c239fbb0b3
+- BRAIN/07-LEARNING/README.md — 190 bytes — ec0647f0aacd581552f2203473ad06252082e0fd
+- BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md — 322 bytes — 2c92f95c2387c6437f57f14fcbc21295243765b2
+- BRAIN/08-SUCCESSION/README.md — 161 bytes — f786254f0e5e678112327ce76b463cf6d642955d
+- BRAIN/09-EVOLUTION/0001-SELF-BUILDING-CONTRACT-V1.md — 337 bytes — ca1cba588df689778dce8a6f4d00ac1142760dea
+- BRAIN/09-EVOLUTION/README.md — 212 bytes — e6b6de37080b987dd75fdd00d8ab12d1c02385c6
+- BRAIN/10-INTERFACES/0001-CHANNEL-CONTRACT-V1.md — 329 bytes — 98ff814189063a8d27cb4c20f5c421cd0dc16479
+- BRAIN/10-INTERFACES/README.md — 188 bytes — e5c773334b2b8dadef2036d2c45faeb7c0461585
+- BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md — 1434 bytes — d7c4828718a439fe7208f85a04ec53f84e0c3b4c
+- BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md — 13689 bytes — 65f1892d43508a76c5b9fd7542fa92336cdf11d3
+- BRAIN/11-KNOWLEDGE/0001-CONCEPT-TO-NODE-PROTOCOL-V1.md — 482 bytes — 3988e4df47e6c6e0e257570b8da307a01a21472f
+- BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md — 4076 bytes — f71fd24b0fadfeaebc5a3f82fc598c460deeaf63
+- BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json — 3903 bytes — 2058a985bb648019a5cdf62c8912b182623b0266
+- BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md — 1955 bytes — ad8585a8996c023a5d445d24936b51d93279a579
+- BRAIN/11-KNOWLEDGE/README.md — 306 bytes — 52e9ea4a5551b8f6325374163d1c523aa282b143
+- BRAIN/12-ENGINEERING/0001-ENGINEERING-TRUTH-LAW-V1.md — 360 bytes — e194e6a19bafa2291f282161bea7bc7a9262bbeb
+- BRAIN/12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md — 8724 bytes — 1abc64532bf621f5ea0bff1a71bda12503c50fed
+- BRAIN/12-ENGINEERING/README.md — 234 bytes — 9f4e0c0fd48d586734a1aeee2c1f4a0318fc6c0f
+- BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md — 2656 bytes — 65a441e8140ac220390c2d82352fdfe9bcb7240a
+- BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md — 8894 bytes — 5eb2c3ed81cfab10321c9c2f8df459066d81af95
+- BRAIN/90-OPERATIONS/README.md — 178 bytes — da30356d9686ff72708407ea9e64e7f1b0e4d4e3
+- BRAIN/99-ARCHIVE/README.md — 136 bytes — 399b4925c2e4038333cf1510c9eedbed1a0cb575
+- BRAIN/MASTER-MAP.md — 4375 bytes — 9be2705c859544aaad43e58c94cdc076a50e979a
+- BRAIN/NAYAPOWER-BRAIN-INDEX.json — 3973 bytes — ccfe23e1140bb1547b026abc6654dbcb7cd17721
+- BRAIN/README.md — 1156 bytes — 40d9cbfc0dd814786fb3bafcb6b2203bcfbfaed6
