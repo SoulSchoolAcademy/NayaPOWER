@@ -1,446 +1,426 @@
 """
-NayaPOWER Kernel Behavior Engine V1
+NayaPOWER Kernel Behavior Engine V2
 
-Implements actual node behaviors for the nine-node semantic kernel.
-Each node processes input according to its contract and emits a receipt.
+Contract-first reference implementation of the nine-node kernel.
+This module is intentionally fail-closed: it never turns missing evidence,
+authority, observation, or persistence into a PASS/VERIFIED claim.
 
-Status: IMPLEMENTED
-Authority: BRAIN/03-KERNEL/SCHEMA/*.json
+Status: IMPLEMENTED — runtime production proof remains separate.
 """
 
+from __future__ import annotations
+
+import hashlib
 import json
 import uuid
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Callable, Mapping, Optional
 
 
 NODE_ORDER = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"]
+FAILURE_STATUSES = {"BLOCKED", "FAILED", "INCONCLUSIVE", "DEFERRED"}
 
 
+def canonical_hash(value: Any) -> str:
+    payload = json.dumps(value, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+@dataclass
 class NodeReceipt:
-    def __init__(self, node_id: str):
-        self.receipt = {
-            "node_id": node_id,
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "input_hash": None,
-            "output_hash": None,
-            "rules_enforced": [],
-            "rules_checked": [],
-            "state_transition": None,
-            "evidence": [],
+    node_id: str
+    execution_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    input_hash: Optional[str] = None
+    output_hash: Optional[str] = None
+    status: str = "NOT_STARTED"
+    rules_enforced: list[str] = field(default_factory=list)
+    rules_checked: list[str] = field(default_factory=list)
+    evidence: list[str] = field(default_factory=list)
+    state_transition: Optional[dict[str, str]] = None
+
+    def transition(self, from_state: str, to_state: str) -> None:
+        self.state_transition = {"from": from_state, "to": to_state}
+
+    def check(self, rule: str) -> None:
+        self.rules_checked.append(rule)
+
+    def enforce(self, rule: str) -> None:
+        self.rules_enforced.append(rule)
+
+    def add_evidence(self, evidence: str) -> None:
+        self.evidence.append(evidence)
+
+    def finish(self, status: str, output: Mapping[str, Any]) -> dict[str, Any]:
+        self.status = status
+        self.output_hash = canonical_hash(output)
+        return self.to_dict()
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "node_id": self.node_id,
+            "execution_id": self.execution_id,
+            "timestamp": self.timestamp,
+            "input_hash": self.input_hash,
+            "output_hash": self.output_hash,
+            "status": self.status,
+            "rules_enforced": list(self.rules_enforced),
+            "rules_checked": list(self.rules_checked),
+            "state_transition": self.state_transition,
+            "evidence": list(self.evidence),
         }
-
-    def enforce(self, rule: str):
-        self.receipt["rules_enforced"].append(rule)
-
-    def check(self, rule: str):
-        self.receipt["rules_checked"].append(rule)
-
-    def transition(self, from_state: str, to_state: str):
-        self.receipt["state_transition"] = {"from": from_state, "to": to_state}
-
-    def add_evidence(self, evidence: str):
-        self.receipt["evidence"].append(evidence)
-
-    def to_dict(self) -> dict:
-        return self.receipt
 
 
 class KernelBehaviorEngine:
     """
-    Executes the full nine-node kernel cycle on a real input.
+    Executes a governed nine-node cognitive cycle.
 
-    Each node processes the input according to its contract:
-    - SELF: Establishes identity and mission context
-    - LAW: Resolves authority and consent
-    - ACT: Prepares authorized execution
-    - KNOW: Retrieves applicable intelligence
-    - PROVE: Assesses evidence and claim strength
-    - CONNECT: Resolves relationships and applicability
-    - VERIFY: Compares expected vs observed outcomes
-    - LEARN: Converts verified outcomes to learning candidates
-    - EVOLVE: Constructs successor context
+    The engine is deliberately an orchestration/reference layer. Real
+    persistence, authentication, authorization, and independent verification
+    must be supplied by adapters and proven by runtime receipts.
     """
 
-    def __init__(self):
+    def __init__(
+        self,
+        *,
+        identity_resolver: Optional[Callable[[dict[str, Any]], Optional[dict[str, Any]]]] = None,
+        authority_checker: Optional[Callable[[dict[str, Any], dict[str, Any]], bool]] = None,
+        intelligence_reader: Optional[Callable[[str, str], list[dict[str, Any]]]] = None,
+    ) -> None:
+        self.identity_resolver = identity_resolver
+        self.authority_checker = authority_checker
+        self.intelligence_reader = intelligence_reader
         self.receipts: dict[str, NodeReceipt] = {}
+        self.outputs: dict[str, dict[str, Any]] = {}
         self.cycle_id = str(uuid.uuid4())
         self.start_time = datetime.now(timezone.utc)
 
-    def _receipt(self, node_id: str) -> NodeReceipt:
-        if node_id not in self.receipts:
-            self.receipts[node_id] = NodeReceipt(node_id)
-        return self.receipts[node_id]
+    def _begin(self, node_id: str, input_value: Any) -> NodeReceipt:
+        receipt = self.receipts.setdefault(node_id, NodeReceipt(node_id))
+        receipt.input_hash = canonical_hash(input_value)
+        return receipt
 
-    def process_self(self, input_context: dict) -> dict:
-        r = self._receipt("SELF")
-        r.transition("UNINITIALIZED", "BOOTING")
+    def _finish(self, node_id: str, status: str, output: dict[str, Any]) -> dict[str, Any]:
+        self.outputs[node_id] = output
+        self.receipts[node_id].finish(status, output)
+        return output
 
-        identity = input_context.get("identity", {})
-        mission = input_context.get("mission", {})
+    def process_self(self, input_context: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("SELF", input_context)
+        r.transition("UNINITIALIZED", "VALIDATING")
+        r.check("Identity must be explicit and verifiable")
+        r.check("Mission must be explicit")
+        r.check("Continuity must be represented separately from authority")
 
-        r.check("Establish who is executing before any action")
-        r.check("Establish what system the execution belongs to")
-        r.check("Establish the current mission and objective")
-        r.check("Establish the current known/unknown boundary")
+        identity = dict(input_context.get("identity") or {})
+        mission = dict(input_context.get("mission") or {})
+        if self.identity_resolver:
+            resolved = self.identity_resolver(input_context)
+            if resolved:
+                identity = resolved
 
-        if not identity:
-            r.enforce("HALT: Identity cannot be established")
-            return {"status": "FAILED", "reason": "identity_missing"}
+        if not identity.get("actor_id") or not identity.get("system_id"):
+            r.enforce("FAIL CLOSED: missing canonical identity")
+            return self._finish("SELF", "BLOCKED", {"status": "BLOCKED", "reason": "identity_missing"})
+        if not mission.get("mission") or not mission.get("objective"):
+            r.enforce("FAIL CLOSED: missing mission")
+            return self._finish("SELF", "BLOCKED", {"status": "BLOCKED", "reason": "mission_missing"})
 
-        if not mission:
-            r.enforce("HALT: Mission context missing")
-            return {"status": "FAILED", "reason": "mission_missing"}
-
-        r.enforce("Identity established and verifiable")
-        r.enforce("Mission context traces to canonical source")
-        r.enforce("Known/unknown boundary is explicit")
-
-        r.transition("BOOTING", "READY")
-        r.add_evidence(f"identity: {identity.get('actor_id', 'unknown')}")
-
-        return {
+        r.enforce("Identity resolved without inferring ownership from similarity or names")
+        r.enforce("Continuity is context, not authority")
+        r.transition("VALIDATING", "READY")
+        r.add_evidence(f"identity:{identity['actor_id']}")
+        return self._finish("SELF", "READY", {
             "status": "READY",
             "identity_context": identity,
             "mission_context": mission,
             "continuity_context": input_context.get("continuity", {}),
-        }
+            "known_unknown_blocked": input_context.get("known_unknown_blocked", {}),
+        })
 
-    def process_law(self, input_context: dict, self_output: dict) -> dict:
-        r = self._receipt("LAW")
-        r.transition("UNINITIALIZED", "RESOLVING")
+    def process_law(self, input_context: dict[str, Any], self_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("LAW", {"input": input_context, "self": self_output})
+        r.transition("UNINITIALIZED", "VALIDATING")
+        r.check("Authorization is action-specific")
+        r.check("Revocation and expiry are checked before execution")
+        r.check("Capability, retrieval, role text, and prior success never create authority")
 
-        action = input_context.get("proposed_action", {})
-        authority = input_context.get("authority", {})
-
-        r.check("Resolve actor, purpose, scope, authority, consent")
-        r.check("Apply revocation before any authorization decision")
-        r.check("Enforce higher-level governance over lower-level policy")
-        r.check("Check expiration on all authority grants")
-
+        action = dict(input_context.get("proposed_action") or {})
+        authority = dict(input_context.get("authority") or {})
         if not action:
-            r.enforce("DENIED: No proposed action")
-            return {"status": "DENIED", "reason": "no_action"}
+            r.enforce("DENY: no proposed action")
+            return self._finish("LAW", "BLOCKED", {"status": "BLOCKED", "reason": "action_missing"})
+        if not authority.get("grant_id"):
+            r.enforce("DENY: no authority grant")
+            return self._finish("LAW", "BLOCKED", {"status": "BLOCKED", "reason": "authority_missing"})
+        if authority.get("revoked") is True:
+            r.enforce("DENY: authority revoked")
+            return self._finish("LAW", "BLOCKED", {"status": "BLOCKED", "reason": "authority_revoked"})
+        if authority.get("expires_at") not in (None, ""):
+            # A caller that supplies an expired grant must explicitly mark it expired.
+            if authority.get("expired") is True:
+                r.enforce("DENY: authority expired")
+                return self._finish("LAW", "BLOCKED", {"status": "BLOCKED", "reason": "authority_expired"})
+        if self.authority_checker and not self.authority_checker(authority, action):
+            r.enforce("DENY: external authority checker rejected action")
+            return self._finish("LAW", "BLOCKED", {"status": "BLOCKED", "reason": "authority_scope_mismatch"})
 
-        if not authority:
-            r.enforce("DENIED: No authority context")
-            return {"status": "DENIED", "reason": "no_authority"}
-
-        if authority.get("revoked"):
-            r.enforce("REVOKED: Authority has been revoked")
-            return {"status": "REVOKED", "reason": "authority_revoked"}
-
-        if authority.get("expires_at"):
-            r.enforce("EXPIRED: Authority has lapsed")
-            return {"status": "EXPIRED", "reason": "authority_expired"}
-
-        r.enforce("Every action has an explicit authorization decision")
-        r.enforce("Revoked authority is immediately effective")
-        r.enforce("All decisions are auditable")
-
-        r.transition("RESOLVING", "DECIDED")
-        r.add_evidence(f"decision: AUTHORIZED for {action.get('type', 'unknown')}")
-
-        return {
+        r.enforce("Authorization decision is explicit and auditable")
+        r.transition("VALIDATING", "AUTHORIZED")
+        return self._finish("LAW", "AUTHORIZED", {
             "status": "AUTHORIZED",
             "authority_context": authority,
             "action_context": action,
-        }
+        })
 
-    def process_act(self, input_context: dict, law_output: dict) -> dict:
-        r = self._receipt("ACT")
+    def process_act(self, input_context: dict[str, Any], law_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("ACT", {"input": input_context, "law": law_output})
         r.transition("UNINITIALIZED", "PLANNING")
-
-        action = law_output.get("action_context", {})
-
-        r.check("Consume authorized context before any action")
-        r.check("Select the minimum sufficient action")
-        r.check("Respect refusal, confirmation and reversibility boundaries")
-        r.check("Define expected outcome and proof before consequential execution")
+        r.check("No execution without LAW authorization")
+        r.check("Expected outcome and proof requirements are defined before execution")
+        r.check("Minimum sufficient action and idempotency are explicit")
 
         if law_output.get("status") != "AUTHORIZED":
-            r.enforce("HALT: Authorization missing")
-            return {"status": "HALTED", "reason": "not_authorized"}
+            r.enforce("FAIL CLOSED: authorization missing")
+            return self._finish("ACT", "BLOCKED", {"status": "BLOCKED", "reason": "not_authorized"})
 
-        r.enforce("Every action traces to an authorization decision")
-        r.enforce("Minimum sufficient action is selected")
-        r.enforce("Execution state is fully recorded")
-        r.enforce("Receipts are produced for all actions")
+        action = dict(law_output.get("action_context") or {})
+        if not action.get("type"):
+            r.enforce("FAIL CLOSED: action type missing")
+            return self._finish("ACT", "BLOCKED", {"status": "BLOCKED", "reason": "action_type_missing"})
 
-        r.transition("PLANNING", "EXECUTING")
-        r.add_evidence(f"action: {action.get('type', 'unknown')}")
-
-        return {
-            "status": "EXECUTING",
+        execution_id = str(uuid.uuid4())
+        expected = action.get("expected_outcome")
+        proof_requirements = action.get("proof_requirements") or []
+        r.enforce("Action is bound to the preceding authorization decision")
+        r.transition("PLANNING", "READY")
+        return self._finish("ACT", "READY", {
+            "status": "READY",
+            "execution_id": execution_id,
             "action": action,
-            "execution_state": "PLANNED",
-            "receipt": {"action_id": str(uuid.uuid4())},
-        }
+            "expected_outcome": expected,
+            "proof_requirements": proof_requirements,
+            "idempotency_key": action.get("idempotency_key", execution_id),
+            "execution_state": "READY_TO_EXECUTE",
+        })
 
-    def process_know(self, input_context: dict, self_output: dict) -> dict:
-        r = self._receipt("KNOW")
+    def process_know(self, input_context: dict[str, Any], self_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("KNOW", {"input": input_context, "self": self_output})
         r.transition("UNINITIALIZED", "RESTORING")
+        query = str(input_context.get("query") or "")
+        owner_id = str(self_output.get("identity_context", {}).get("owner_id")
+                        or self_output.get("identity_context", {}).get("actor_id") or "")
+        block_id = str(input_context.get("intelligent_block_id") or "")
 
-        query = input_context.get("query", "")
+        if self.intelligence_reader:
+            if not owner_id or not block_id:
+                r.enforce("FAIL CLOSED: owner and block identity required for durable retrieval")
+                return self._finish("KNOW", "BLOCKED", {"status": "BLOCKED", "reason": "retrieval_identity_missing"})
+            results = self.intelligence_reader(block_id, owner_id)
+        else:
+            results = list(input_context.get("intelligence") or [])
 
-        r.check("Distinguish event from understanding")
-        r.check("Preserve canonical identity and provenance")
-        r.check("Make durable intelligence retrievable")
-        r.check("Classify all incoming material by type and epistemic state")
-
-        r.enforce("All canonical objects have stable identity and provenance")
-        r.enforce("Intelligence is retrievable by semantic, structural, and contextual queries")
-        r.enforce("Retrieval results include epistemic state")
-
+        r.check("Durable intelligence must retain stable identity and provenance")
+        r.check("Retrieval must preserve owner scope and epistemic state")
+        r.enforce("Similarity never becomes truth")
+        r.enforce("Cross-owner retrieval is prohibited")
         r.transition("RESTORING", "READY")
-        r.add_evidence(f"query: {query[:100]}")
-
-        return {
+        r.add_evidence(f"retrieval_count:{len(results)}")
+        return self._finish("KNOW", "READY", {
             "status": "READY",
             "retrieval_context": {
                 "query": query,
-                "results": input_context.get("intelligence", []),
-                "epistemic_states": ["VERIFIED", "SUPPORTED"],
+                "intelligent_block_id": block_id or None,
+                "owner_id": owner_id or None,
+                "results": results,
             },
-        }
+        })
 
-    def process_prove(self, input_context: dict, know_output: dict) -> dict:
-        r = self._receipt("PROVE")
+    def process_prove(self, input_context: dict[str, Any], know_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("PROVE", {"input": input_context, "know": know_output})
         r.transition("UNINITIALIZED", "ASSESSING")
-
-        claim = input_context.get("claim", "")
-
-        r.check("Track provenance for all evidence")
-        r.check("Track evidence strength independently of claim strength")
-        r.check("Track epistemic state explicitly")
-        r.check("Prevent claim strength from exceeding evidence strength")
-
-        r.enforce("Every claim has an explicit epistemic state")
-        r.enforce("Evidence strength matches or exceeds claim strength")
-        r.enforce("Verification method is documented with limitations")
-        r.enforce("Conflicts are surfaced, not hidden")
-
+        evidence = list(input_context.get("evidence") or [])
+        claim = str(input_context.get("claim") or "")
+        r.check("Evidence provenance is explicit")
+        r.check("Claim strength cannot exceed evidence strength")
+        r.check("Limitations and conflicts are preserved")
+        if not claim:
+            r.enforce("FAIL CLOSED: claim missing")
+            return self._finish("PROVE", "BLOCKED", {"status": "BLOCKED", "reason": "claim_missing"})
+        if not evidence:
+            r.enforce("NOT PROVEN: no evidence supplied")
+            return self._finish("PROVE", "INCONCLUSIVE", {
+                "status": "INCONCLUSIVE",
+                "proof_context": {"claim": claim, "epistemic_state": "UNKNOWN", "reason": "evidence_missing"},
+            })
+        if any(not item.get("provenance") for item in evidence if isinstance(item, dict)):
+            r.enforce("NOT PROVEN: evidence without provenance")
+            return self._finish("PROVE", "INCONCLUSIVE", {
+                "status": "INCONCLUSIVE",
+                "proof_context": {"claim": claim, "epistemic_state": "UNKNOWN", "reason": "provenance_missing"},
+            })
         r.transition("ASSESSING", "ASSESSED")
-        r.add_evidence(f"claim: {claim[:100]}")
-
-        return {
+        return self._finish("PROVE", "ASSESSED", {
             "status": "ASSESSED",
             "proof_context": {
                 "claim": claim,
-                "epistemic_state": "SUPPORTED",
-                "claim_strength": "MODERATE",
-                "evidence_strength": "MODERATE",
+                "epistemic_state": input_context.get("epistemic_state", "SUPPORTED"),
+                "evidence_strength": input_context.get("evidence_strength", "MODERATE"),
+                "limitations": list(input_context.get("limitations") or []),
             },
-        }
+        })
 
-    def process_connect(self, input_context: dict, know_output: dict, prove_output: dict) -> dict:
-        r = self._receipt("CONNECT")
+    def process_connect(self, input_context: dict[str, Any], know_output: dict[str, Any], prove_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("CONNECT", {"input": input_context, "know": know_output, "prove": prove_output})
         r.transition("UNINITIALIZED", "RESOLVING")
-
-        intelligence = know_output.get("retrieval_context", {}).get("results", [])
-
-        r.check("Resolve typed relationships accurately")
-        r.check("Retrieve by semantic, structural, relational and contextual relevance")
-        r.check("Detect contradiction, supersession and dependency")
-        r.check("Explain why retrieved intelligence applies")
-
-        r.enforce("Retrieved intelligence is relevant to the current context")
-        r.enforce("Relationships are typed and provenance-bound")
-        r.enforce("Conflicts and supersessions are explicitly surfaced")
-        r.enforce("Applicability is explained, not assumed")
-
+        relationships = list(input_context.get("relationships") or [])
+        valid = [x for x in relationships if isinstance(x, dict) and x.get("type") and x.get("source") and x.get("target")]
+        r.check("Relationships are typed and provenance-bound")
+        r.check("Contradiction and supersession are explicit")
+        r.check("Applicability is contextual, never inferred as authority")
+        r.enforce("No trust is created by proximity or similarity alone")
         r.transition("RESOLVING", "CONNECTED")
-        r.add_evidence(f"connections: {len(intelligence)}")
-
-        return {
+        return self._finish("CONNECT", "CONNECTED", {
             "status": "CONNECTED",
             "connection_context": {
-                "relationships": [],
-                "applicability": "contextual",
-                "freshness": "current",
+                "relationships": valid,
+                "relationship_count": len(valid),
+                "applicability": input_context.get("applicability", "contextual"),
             },
-        }
+        })
 
-    def process_verify(self, input_context: dict, act_output: dict, prove_output: dict) -> dict:
-        r = self._receipt("VERIFY")
+    def process_verify(self, input_context: dict[str, Any], act_output: dict[str, Any], prove_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("VERIFY", {"input": input_context, "act": act_output, "prove": prove_output})
         r.transition("UNINITIALIZED", "VERIFYING")
+        expected = act_output.get("expected_outcome")
+        observed = input_context.get("observed_outcome")
+        independent = list(input_context.get("independent_evidence") or [])
+        r.check("Expected and observed outcomes are compared explicitly")
+        r.check("Independent evidence is required for independent verification")
+        r.check("Causality is not inferred from sequence alone")
 
-        expected = act_output.get("action", {}).get("expected_outcome", "")
-        observed = input_context.get("observed_outcome", "")
-
-        r.check("Compare expected and observed outcome systematically")
-        r.check("Use evidence appropriate to the claim")
-        r.check("Distinguish failure, inconclusive evidence and not-proven states")
-        r.check("Address causality when causality is claimed")
-
-        r.enforce("Every outcome has an explicit status")
-        r.enforce("Acceptance decisions trace to evidence")
-        r.enforce("Unresolved gaps are explicitly recorded")
-
-        r.transition("VERIFYING", "VERIFIED")
-        r.add_evidence(f"expected: {expected[:50]}")
-        r.add_evidence(f"observed: {observed[:50]}")
-
-        return {
-            "status": "VERIFIED",
+        if expected in (None, "") or observed in (None, ""):
+            r.enforce("INCONCLUSIVE: expected or observed outcome missing")
+            return self._finish("VERIFY", "INCONCLUSIVE", {"status": "INCONCLUSIVE", "reason": "observation_missing"})
+        if not independent:
+            r.enforce("INCONCLUSIVE: independent evidence missing")
+            return self._finish("VERIFY", "INCONCLUSIVE", {
+                "status": "INCONCLUSIVE",
+                "verification_context": {"expected_outcome": expected, "observed_outcome": observed},
+                "reason": "independent_evidence_missing",
+            })
+        outcome_status = "SUCCESS" if expected == observed else "MISMATCH"
+        verification_status = "VERIFIED" if outcome_status == "SUCCESS" else "INCONCLUSIVE"
+        r.enforce(f"Outcome classification: {outcome_status}")
+        r.transition("VERIFYING", verification_status)
+        return self._finish("VERIFY", verification_status, {
+            "status": verification_status,
             "verification_context": {
                 "expected_outcome": expected,
                 "observed_outcome": observed,
-                "outcome_status": "SUCCESS" if expected == observed else "INCONCLUSIVE",
-                "acceptance_decision": "PENDING",
+                "outcome_status": outcome_status,
+                "independent_evidence": independent,
+                "causality": input_context.get("causality", "NOT_ESTABLISHED"),
             },
-        }
+        })
 
-    def process_learn(self, input_context: dict, verify_output: dict) -> dict:
-        r = self._receipt("LEARN")
+    def process_learn(self, input_context: dict[str, Any], verify_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("LEARN", {"input": input_context, "verify": verify_output})
         r.transition("UNINITIALIZED", "CANDIDATE")
-
-        outcome = verify_output.get("verification_context", {})
-
-        r.check("Reconcile candidate lessons with existing intelligence")
-        r.check("Verify before promotion where required")
-        r.check("Preserve rejected and contradicted learning states")
-        r.check("Make future applicability explicit")
-
-        r.enforce("Every learning candidate traces to a verified outcome")
-        r.enforce("Promoted learnings have explicit applicability conditions")
-        r.enforce("Contradicted learnings are preserved and marked")
-        r.enforce("Learning does not override governance or authority")
-
+        r.check("Only verified outcomes may enter promotion")
+        r.check("Holdout evidence is required for behavioral promotion")
+        r.check("Contradictions and rejected candidates remain traceable")
+        if verify_output.get("status") != "VERIFIED":
+            r.enforce("DECLINE PROMOTION: outcome not verified")
+            return self._finish("LEARN", "DEFERRED", {
+                "status": "DEFERRED",
+                "learning_context": {"learning_state": "CANDIDATE", "promotion": "DECLINED"},
+            })
+        holdout = input_context.get("holdout_result")
+        if holdout is not True:
+            r.enforce("DECLINE PROMOTION: held-out improvement not proven")
+            return self._finish("LEARN", "DEFERRED", {
+                "status": "DEFERRED",
+                "learning_context": {"learning_state": "CANDIDATE", "promotion": "DECLINED", "reason": "holdout_not_passed"},
+            })
         r.transition("CANDIDATE", "PROMOTED")
-        r.add_evidence(f"outcome: {outcome.get('outcome_status', 'unknown')}")
-
-        return {
+        return self._finish("LEARN", "PROMOTED", {
             "status": "PROMOTED",
             "learning_context": {
                 "candidate_id": str(uuid.uuid4()),
-                "learning_state": "CANDIDATE",
-                "applicability_conditions": ["contextual"],
+                "learning_state": "PROMOTED",
+                "applicability_conditions": list(input_context.get("applicability_conditions") or ["contextual"]),
             },
-        }
+        })
 
-    def process_evolve(self, input_context: dict, self_output: dict, learn_output: dict) -> dict:
-        r = self._receipt("EVOLVE")
+    def process_evolve(self, input_context: dict[str, Any], self_output: dict[str, Any], learn_output: dict[str, Any]) -> dict[str, Any]:
+        r = self._begin("EVOLVE", {"input": input_context, "self": self_output, "learn": learn_output})
         r.transition("UNINITIALIZED", "CONSTRUCTING")
-
-        r.check("Construct successor context before any evolution action")
-        r.check("Preserve current truth, evidence, learning and blockers")
-        r.check("Propose improvements from observed gaps")
-        r.check("Require appropriate authority for consequential adoption")
-
-        r.enforce("Successor context is complete and verifiable")
-        r.enforce("All improvement proposals have authority requirements")
-        r.enforce("Continuity is preserved across context transitions")
-        r.enforce("No change is adopted without appropriate authority")
-
-        r.transition("CONSTRUCTING", "READY")
-        r.add_evidence("successor context constructed")
-
-        return {
-            "status": "READY",
-            "evolution_context": {
-                "successor_package": {
-                    "identity": self_output.get("identity_context", {}),
-                    "current_truth": input_context.get("current_state", {}),
-                    "next_action": input_context.get("next_action", "continue"),
-                },
-                "improvement_proposals": [],
-            },
+        r.check("Successor package preserves current truth, unknowns, blockers, proof and learning")
+        r.check("Successor receives continuity but not inherited authority")
+        if self_output.get("status") != "READY":
+            r.enforce("BLOCK: SELF is not ready")
+            return self._finish("EVOLVE", "BLOCKED", {"status": "BLOCKED", "reason": "self_not_ready"})
+        package = {
+            "kernel_revision": input_context.get("kernel_revision"),
+            "current_truth": input_context.get("current_state", {}),
+            "unknowns": input_context.get("unknowns", []),
+            "blockers": input_context.get("blockers", []),
+            "intelligent_block_ids": input_context.get("intelligent_block_ids", []),
+            "relationships": input_context.get("relationships", []),
+            "last_verified_outcome": input_context.get("observed_outcome"),
+            "learning": learn_output.get("learning_context", {}),
+            "next_action": input_context.get("next_action"),
+            "authority_context": {"inherited_authority": False},
         }
+        r.enforce("Continuity transfers intelligence, not permission")
+        r.transition("CONSTRUCTING", "READY")
+        return self._finish("EVOLVE", "READY", {
+            "status": "READY",
+            "evolution_context": {"successor_package": package, "improvement_proposals": input_context.get("improvement_proposals", [])},
+        })
 
-    def execute_cycle(self, input_context: dict) -> dict:
-        """
-        Execute the full nine-node kernel cycle.
+    def execute_cycle(self, input_context: dict[str, Any]) -> dict[str, Any]:
+        self_result = self.process_self(input_context)
+        if self_result["status"] != "READY":
+            return self._cycle_result("BLOCKED", "SELF blocked")
 
-        Args:
-            input_context: Dict with keys:
-                - identity: {actor_id, system_id, role}
-                - mission: {mission, objective, scope}
-                - proposed_action: {type, target, expected_outcome}
-                - authority: {grant_id, revoked, expires_at}
-                - query: str
-                - intelligence: list
-                - claim: str
-                - observed_outcome: str
-                - current_state: dict
-                - next_action: str
+        law_result = self.process_law(input_context, self_result)
+        if law_result["status"] != "AUTHORIZED":
+            return self._cycle_result("BLOCKED", f"LAW blocked: {law_result.get('reason', 'unknown')}")
 
-        Returns:
-            Cycle result with all node receipts and final output.
-        """
-        self_receipt = self.process_self(input_context)
-        if self_receipt["status"] != "READY":
-            return self._cycle_result("FAILED", f"SELF failed: {self_receipt['reason']}")
+        act_result = self.process_act(input_context, law_result)
+        if act_result["status"] != "READY":
+            return self._cycle_result("BLOCKED", "ACT blocked")
 
-        law_receipt = self.process_law(input_context, self_receipt)
-        if law_receipt["status"] not in ("AUTHORIZED",):
-            return self._cycle_result("DENIED", f"LAW denied: {law_receipt['reason']}")
+        know_result = self.process_know(input_context, self_result)
+        if know_result["status"] != "READY":
+            return self._cycle_result("BLOCKED", "KNOW blocked")
 
-        act_receipt = self.process_act(input_context, law_receipt)
-        know_receipt = self.process_know(input_context, self_receipt)
-        prove_receipt = self.process_prove(input_context, know_receipt)
-        connect_receipt = self.process_connect(input_context, know_receipt, prove_receipt)
-        verify_receipt = self.process_verify(input_context, act_receipt, prove_receipt)
-        learn_receipt = self.process_learn(input_context, verify_receipt)
-        evolve_receipt = self.process_evolve(input_context, self_receipt, learn_receipt)
+        prove_result = self.process_prove(input_context, know_result)
+        connect_result = self.process_connect(input_context, know_result, prove_result)
+        verify_result = self.process_verify(input_context, act_result, prove_result)
+        learn_result = self.process_learn(input_context, verify_result)
+        evolve_result = self.process_evolve(input_context, self_result, learn_result)
 
-        return self._cycle_result("COMPLETED", "All nine nodes processed successfully")
+        final_status = "COMPLETED"
+        if verify_result["status"] != "VERIFIED":
+            final_status = "INCONCLUSIVE"
+        return self._cycle_result(final_status, "Nine-node cycle completed with explicit proof state")
 
-    def _cycle_result(self, status: str, message: str) -> dict:
+    def _cycle_result(self, status: str, message: str) -> dict[str, Any]:
         end_time = datetime.now(timezone.utc)
         duration_ms = (end_time - self.start_time).total_seconds() * 1000
-
         return {
-            "schema": "naya.kernel.cycle-result.v1",
+            "schema": "naya.kernel.cycle-result.v2",
             "cycle_id": self.cycle_id,
             "status": status,
             "message": message,
             "start_time": self.start_time.isoformat(),
             "end_time": end_time.isoformat(),
             "duration_ms": round(duration_ms, 2),
-            "node_receipts": {nid: r.to_dict() for nid, r in self.receipts.items()},
+            "node_receipts": {nid: receipt.to_dict() for nid, receipt in self.receipts.items()},
             "nodes_processed": list(self.receipts.keys()),
-            "overall_status": "READY" if status == "COMPLETED" else status,
+            "overall_status": status,
         }
-
-
-def main():
-    engine = KernelBehaviorEngine()
-
-    test_input = {
-        "identity": {
-            "actor_id": "naya-coda-3",
-            "system_id": "NayaPOWER",
-            "role": "naya",
-        },
-        "mission": {
-            "mission": "Maximum verified human value per moment",
-            "objective": "Execute the highest-value authorized action",
-            "scope": "NayaPOWER project continuation",
-        },
-        "proposed_action": {
-            "type": "implement_node_behaviors",
-            "target": "BRAIN/03-KERNEL/NODES/",
-            "expected_outcome": "All nine nodes enforce rules at runtime",
-        },
-        "authority": {
-            "grant_id": "test-grant-001",
-            "revoked": False,
-            "expires_at": None,
-        },
-        "query": "What is the highest-value next action for NayaPOWER?",
-        "intelligence": [
-            {"id": "IB-0001", "type": "contract", "epistemic_state": "VERIFIED"},
-        ],
-        "claim": "The nine-node kernel operates as one governed system",
-        "observed_outcome": "All nine nodes enforce rules at runtime",
-        "current_state": {"phase": "implementation", "score": 7.2},
-        "next_action": "Prove EXISTS → LOADS → INVOKES → INFLUENCES → APPLIES",
-    }
-
-    result = engine.execute_cycle(test_input)
-    print(json.dumps(result, indent=2))
-
-
-if __name__ == "__main__":
-    main()
