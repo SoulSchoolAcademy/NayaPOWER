@@ -1,6 +1,6 @@
 {
   "schema": "naya.brain.real-tree-receipt.v2",
-  "receipt_basis_commit": "3795554a1a6f148d19e262d37658b8e3e9eeaf27",
+  "receipt_basis_commit": "482b9db3f91ee14c1e4c8641996d8dfab13cdab7",
   "source_of_truth": "git",
   "domain_count": 15,
   "domains": [
@@ -20,7 +20,7 @@
     "90-OPERATIONS",
     "99-ARCHIVE"
   ],
-  "file_count": 74,
+  "file_count": 75,
   "excluded_receipts": [
     "BRAIN/REAL-TREE.md",
     "BRAIN/REAL-TREE.json"
@@ -355,6 +355,11 @@
       "path": "BRAIN/12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md",
       "size": 8724,
       "sha": "1abc64532bf621f5ea0bff1a71bda12503c50fed"
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/0003-BRAIN-RACE-READINESS-INVENTORY-V1.md",
+      "size": 21000,
+      "sha": "42757c30c2381fd30b264bd48a38a83183c07013"
     },
     {
       "path": "BRAIN/12-ENGINEERING/README.md",
