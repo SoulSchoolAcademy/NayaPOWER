@@ -1,19 +1,26 @@
 # Engineering Truth Law V1
 
-Engineering status must distinguish:
+**Status:** CANONICAL BUILD CONTRACT
 
-```
-DESIGNED
-IMPLEMENTED
-TESTED
-VERIFIED
-PRODUCTION-PROVEN
-```
+## Truth hierarchy
+`CANONICAL SOURCE → RUNTIME OBSERVATION → VERIFIED RECEIPT → DERIVED CLAIM → UNKNOWN`
 
-A passing unit test does not prove end-to-end intelligence.
+The exact ordering depends on the claim type; no lower-confidence artifact may overwrite a higher-confidence canonical fact.
 
-A deployment does not prove architecture.
+## Mandatory distinctions
+`UNKNOWN ≠ PASS`
+`BLOCKED ≠ PASS`
+`IMPLEMENTED ≠ VERIFIED`
+`VERIFIED ≠ PRODUCTION_PROVEN`
+`RETRIEVED ≠ AUTHORIZED`
+`CANDIDATE ≠ PROMOTED`
 
-A successful API response does not prove semantic influence.
+## Engineering laws
+1. Every critical claim names its source, revision, scope, and evidence.
+2. Current runtime evidence outranks stale narrative.
+3. Stale receipts are marked stale; they are never silently reused.
+4. Conflicts are surfaced, not averaged away.
+5. A change is complete only when implementation, test, verification, and current receipt agree.
 
-All consequential claims require evidence at the matching layer.
+## Acceptance
+A truth audit can identify the canonical source for every race-critical claim and rejects unsupported PASS status.
