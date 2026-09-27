@@ -24,7 +24,8 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | Production proof | 3.5 | 10 |
 
 **Current architecture/readiness assessment: 6.9/10.**  
-**Current living-intelligence proof: NOT ESTABLISHED.**
+**Current living-intelligence proof: NOT ESTABLISHED.**  
+**Pre-race qualification:** BLOCKED pending live runtime convergence and behavioral/successor evidence.
 
 ## File scorecard
 
@@ -110,7 +111,7 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 
 1. The graph is now represented, but not proven as a live retrieval/runtime capability.
 2. The nine Node objects are canonical candidates, not behaviorally verified living Nodes.
-3. The kernel still has a simplified runtime path; it does not yet load/enforce the full machine registry, graph, provenance, evidence and continuity envelope.
+3. The kernel still has a simplified runtime path; it does not yet prove that the full machine registry, graph, provenance, evidence and continuity envelope are loaded and enforced by the actual application runtime.
 4. Memory continuity is specified but not yet proven through a true cold retrieval round trip.
 5. Learning is specified but not yet proven by later behavioral improvement.
 6. Successor continuity is specified but not yet proven by an independent cold successor.
