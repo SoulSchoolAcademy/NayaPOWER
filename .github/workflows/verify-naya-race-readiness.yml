@@ -1,0 +1,70 @@
+﻿name: Evaluate Naya Race Readiness
+
+# "We need to understand what ready looks like" is not a question a document can
+# answer, and a checklist cannot fail. This gate makes readiness executable.
+#
+# It does NOT print a to-do list. Each gate returns PROVEN / PARTIAL / UNKNOWN /
+# BLOCKED from repository and runtime evidence only. Under AAA law ONE gate that
+# is not PROVEN prevents READY. An average score is not readiness.
+#
+# This gate is additive: it changes no system behavior and grants no authority.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: naya-race-readiness-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Evaluate readiness from evidence
+        id: eval
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B .naya/runtime/race_readiness.py | tee readiness.txt
+          echo "PROVEN=$(grep -m1 '^GATES_PROVEN=' readiness.txt | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          echo "READY=$(grep -m1 '^READY=' readiness.txt | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+          echo "BLOCKING=$(grep -m1 '^BLOCKING=' readiness.txt | cut -d= -f2)" >> "$GITHUB_OUTPUT"
+      - name: Prove the gate detects an unready system
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp=$(mktemp -d)
+          cp -r .naya "$tmp/.naya"; cp -r .github "$tmp/.github"
+          cp -r supabase "$tmp/supabase" 2>/dev/null || true
+          cp -r tests "$tmp/tests" 2>/dev/null || true
+          # Break distributability: remove a runtime file a workflow invokes.
+          rm -f "$tmp/.naya/runtime/contract_library_integrity.py"
+          out=$(python -B "$tmp/.naya/runtime/race_readiness.py" 2>&1 || true)
+          echo "$out" | head -20
+          echo "$out" | grep -q "RUNTIME_DISTRIBUTABLE"
+          echo "$out" | grep -qE "BLOCKED|UNPROVEN|BLOCKING=[A-Z_]*RUNTIME_DISTRIBUTABLE"
+          # And the system must not be reported ready while a gate is broken.
+          if echo "$out" | grep -q "READY=True"; then
+            echo "GATE FAILED TO DETECT AN UNREADY SYSTEM"; exit 1
+          fi
+          echo "ADVERSARIAL_UNREADY_DETECTION_PROVEN"
+      - name: Readiness summary
+        if: always()
+        shell: bash
+        run: |
+          echo "GATES_PROVEN=${{ steps.eval.outputs.PROVEN }}"
+          echo "BLOCKING_GATES=${{ steps.eval.outputs.BLOCKING }}"
+          if [ "${{ steps.eval.outputs.READY }}" = "True" ]; then
+            echo "RACE_READY=true"
+          else
+            echo "RACE_READY=false"
+            echo "Not ready is an honest state, not a failure of this gate."
+          fi
