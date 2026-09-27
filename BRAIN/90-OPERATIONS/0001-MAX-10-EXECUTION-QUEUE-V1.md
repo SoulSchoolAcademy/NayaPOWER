@@ -43,3 +43,22 @@ Completed in the current pass:
 - AAA execution prompt added.
 
 **Next proof frontier:** runtime loader + real persistence/retrieval + behavioral verification.
+
+
+## Live execution update — 2026-09-27
+
+The organization/registry gap has been materially reduced. The first executable brain bridge now exists on PR #829.
+
+**Highest-value remaining sequence:**
+1. Integrate the runtime with the actual canonical persistence boundary (Supabase) rather than treating SQLite as production proof.
+2. Add real event → action → observation → outcome records and Causal Verification Objects.
+3. Run the complete cold NAYA-NODE-0001 continuity sequence against real persisted intelligence.
+4. Prove learning on a held-out later task, not only a synthetic numeric improvement.
+5. Prove successor continuation and improvement with independently valid authority.
+6. Harden temporal freshness, contradiction, supersession, owner and provenance filtering in retrieval.
+7. Bind Value Calculus receipts to verified events/outcomes and resource consumption in the live path.
+8. Add adversarial acceptance cases for every fail-closed condition.
+9. Generate durable machine receipts from the runtime itself.
+10. Re-score after behavioral and production-boundary evidence.
+
+**Do not treat the local SQLite proof as production proof.**

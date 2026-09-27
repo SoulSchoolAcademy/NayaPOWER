@@ -1,0 +1,64 @@
+{
+  "schema": "naya.aaa.execution.receipt.v2",
+  "receipt_id": "AAA-LIVE-KERNEL-20260927-01",
+  "mission": "NayaPOWER AAA Brain Execution Mission",
+  "status": "CANONICAL_PERSISTENCE_RESTORED_AND_COLD_CHAIN_PARTIALLY_EXECUTED",
+  "temporary_artifacts_are_not_canonical": true,
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "branch": "naya/aaa-live-kernel-v1",
+  "pull_request": 829,
+  "evidence": {
+    "canonical_boundary": {
+      "database": "Supabase",
+      "project_ref": "dahisasgpfvziswqvmvm",
+      "restored": [
+        "nayanet_project_cognition_state",
+        "nayanet_cognition_events",
+        "nayanet_execution_receipts",
+        "nayanet_intelligent_blocks",
+        "nayanet_intelligence_index",
+        "nayanet_intelligence_lineage",
+        "nayanet_authority_grants",
+        "nayanet_successor_handoffs",
+        "nayanet_brain_relationships",
+        "learning_evidence",
+        "nayanet_value_receipts"
+      ],
+      "finding": "The 2026-09-27 reset migration had removed the canonical application/intelligence tables while leaving migration history marked applied. The persistence boundary was therefore real in history but absent in the live schema.",
+      "repair": "Restored the canonical boundary through a tracked migration; no parallel brain store is designated."
+    },
+    "cold_chain": [
+      "TEACH",
+      "DISTILL",
+      "PERSIST",
+      "COLD_RETRIEVE",
+      "AUTHORIZE",
+      "APPLY",
+      "OBSERVE",
+      "SUCCESSOR"
+    ],
+    "verified": [
+      "retained intelligence persisted in Supabase",
+      "cold retrieval resolved the same canonical Intelligent Block identity",
+      "retrieval remained separate from authority",
+      "authority validator returned AUTHORIZED only for matching scope/action",
+      "execution receipt records the retrieved intelligence and authority decision",
+      "successor context was persisted with authority_inherited=false",
+      "Value Calculus receipt is bound to event/outcome/item"
+    ],
+    "verified_additions": [
+      "independent control/treatment outcome records persisted",
+      "independent verifier recorded for both outcome observations",
+      "treatment verified_value exceeded control verified_value",
+      "learning evidence advanced from CANDIDATE to ACTIVE after the independent comparison"
+    ],
+    "not_verified": [
+      "causal attribution beyond the bounded control/treatment specimen",
+      "verified learning through a genuinely held-out future task",
+      "successor behavioral improvement",
+      "production end-to-end runtime invocation through the application code"
+    ]
+  },
+  "learning_state": "CANDIDATE",
+  "living_intelligence_verdict": "NOT_PROVEN"
+}

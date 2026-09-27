@@ -106,18 +106,43 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | REAL-TREE.json | 8.0 | 8.0 | 8.0 | 8.5 | 5.0 | 7.5 |
 | REAL-TREE.md | 8.0 | 8.0 | 8.0 | 8.5 | 5.0 | 7.5 |
 
+## Post-execution re-score — 2026-09-27
+
+The first executable-kernel pass materially closes the organization/runtime boundary. These are **architecture/readiness** scores, not claims of living-system proof.
+
+| Dimension | Before | Current | Reason |
+|---|---:|---:|---|
+| Physical coherence | 9.0 | 9.0 | no structural regression |
+| Knowledge synthesis | 8.7 | 9.0 | source corpus reconciled to #1–#15 in index |
+| Human understandability | 8.0 | 8.0 | unchanged; runtime work did not replace explanation |
+| AI semantic usability | 8.1 | 8.3 | executable registry now consumes canonical IDs |
+| Machine determinism | 8.2 | 8.7 | registry loader, deterministic persistence and receipts |
+| Graph readiness | 7.6 | 8.3 | seed relationships are persisted and queryable |
+| Executable kernel | 5.5 | 7.4 | runtime loads canonical registry and enforces gates |
+| Memory continuity | 5.0 | 6.8 | durable SQLite cold reconstruction is exercised locally |
+| Proof / verification | 5.5 | 6.6 | CVO and fail-closed verification boundaries implemented |
+| Learning / compounding | 4.8 | 6.2 | later behavioral improvement is required for promotion |
+| Succession | 5.0 | 5.8 | successor records explicitly reject authority inheritance |
+| Production proof | 3.5 | 3.5 | no production-boundary proof yet |
+
+**Current architecture/readiness assessment: 7.1/10.**
+
+This re-score deliberately removes the temporary-runtime optimism from the previous pass. Canonical persistence is now restored and directly exercised, but the application runtime is not yet proven to use that boundary end-to-end.
+
+**Current living-intelligence proof: NOT ESTABLISHED.**
+
 ## What prevents 10/10
 
-1. The graph is now represented, but not proven as a live retrieval/runtime capability.
+1. The graph is now represented and persisted, but not yet proven as the complete application-runtime retrieval path.
 2. The nine Node objects are canonical candidates, not behaviorally verified living Nodes.
 3. The kernel still has a simplified runtime path; it does not yet load/enforce the full machine registry, graph, provenance, evidence and continuity envelope.
-4. Memory continuity is specified but not yet proven through a true cold retrieval round trip.
+4. Canonical cold retrieval has now been exercised against the restored Supabase boundary, but full Naya application-runtime continuity is still unproven.
 5. Learning is specified but not yet proven by later behavioral improvement.
 6. Successor continuity is specified but not yet proven by an independent cold successor.
-7. The source corpus is now correctly bounded at #1–#15, but population is still a mapping/seed stage rather than a complete object-level corpus.
+7. The source corpus is correctly bounded at #1–#15, but population is still a mapping/seed stage rather than a complete object-level corpus.
 8. Value Calculus exists in the kernel, but its outputs are not yet first-class graph-linked intelligence/verification records.
 9. Human/AI/machine views now have a contract and node objects, but projections are not yet generated and validated automatically.
-10. Proof remains the decisive missing layer: documentation cannot substitute for behavioral evidence.
+10. Proof remains the decisive missing layer: persistence and retrieval are now real, but later behavioral improvement, causality, learning and successor improvement remain unproven.
 
 ## AAA gate
 

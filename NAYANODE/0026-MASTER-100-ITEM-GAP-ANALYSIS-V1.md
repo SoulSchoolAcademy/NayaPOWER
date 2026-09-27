@@ -1,6 +1,8 @@
 # NayaPOWER Master 100-Item Repository Gap Analysis V1
 
-**Status:** CANONICAL AUDIT ARTIFACT — 2026-09-27  
+**Status:** CANONICAL AUDIT ARTIFACT — 2026-09-27
+**Canonical corpus:** Concepts #1–#15
+**Live persistence finding:** the 2026-09-27 reset migration removed the application/intelligence tables while migration history remained marked applied; the canonical boundary has now been restored by tracked migration `restore_canonical_naya_persistence_v1`.  
 **Scope:** `SoulSchoolAcademy/NayaPOWER` at branch `naya/value-calculus-canonical-v1`  
 **Method:** Repository tree + canonical documents inspected directly.  
 **Classification:** EXISTS / PARTIAL / MISSING / DUPLICATE / WRONG HOME / OBSOLETE / NEEDS PROOF.
@@ -150,8 +152,8 @@
 | 92 | Runtime manifest | PARTIAL | MANIFEST exists; manifest→runtime parity is an open gate |
 | 93 | Deterministic loading | PARTIAL | kernel/manifest design; runtime proof pending |
 | 94 | Identity continuity | NEEDS PROOF | current P0 |
-| 95 | Persistence | EXISTS | intelligence substrate |
-| 96 | Retrieval | EXISTS | retrieval architecture/substrate |
+| 95 | Persistence | RESTORED / NEEDS RUNTIME PROOF | canonical Supabase persistence boundary restored; end-to-end application path still needs proof |
+| 96 | Retrieval | NEEDS PROOF | canonical Intelligent Block retrieval RPC now exists; cold retrieval has been exercised against the restored boundary; application-runtime invocation still needs proof |
 | 97 | Observability | PARTIAL | receipts/CI exist; unified telemetry pending |
 | 98 | Performance/resource optimization | PARTIAL | Value Calculus/resource model exists; runtime-wide optimization pending |
 | 99 | Cold successor | PARTIAL | successor package exists; end-to-end cold proof pending |
@@ -168,3 +170,16 @@ The highest-leverage unresolved chain is:
 The Value Calculus itself is now a canonical specification plus deterministic implementation. It is not declared production-proven until its CI, independent recomputation, adversarial tests, and runtime integration pass.
 
 The master inventory must be updated from evidence, not from optimism.
+
+
+## Critical audit correction — canonical persistence boundary
+
+The live Supabase project was inspected directly on 2026-09-27. It contained only the identity bridge after the reset migration, despite historical migration records for the Naya intelligence schema remaining present. This was a real source/runtime drift condition, not a documentation issue.
+
+The repair restored the canonical persistence objects in a tracked migration. No temporary SQLite store is accepted as canonical.
+
+## Current proof boundary
+
+The restored boundary has been exercised with a real persisted NAYA-NODE-0001 specimen: canonical Intelligent Block persisted and cold-retrieved; authority independently validated; execution receipt persisted; successor handoff persisted with no inherited authority; Value receipt persisted.
+
+The specimen remains **NOT PROVEN as living intelligence** because independent outcome verification, causal attribution, future-task behavioral improvement, and successor improvement have not yet been demonstrated.

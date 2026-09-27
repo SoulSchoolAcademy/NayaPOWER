@@ -247,3 +247,8 @@ Never report “done” when the evidence only proves “implemented.”
 Do not produce another architecture picture.
 
 Inspect the actual repository. Build the missing pieces. Test them. Verify them. Record the receipts. Re-score the system. Continue until the remaining gap is a real proof gap, not an organization or documentation gap.
+
+
+## Permanent-runtime rule — added 2026-09-27
+
+A proof harness may isolate an implementation detail, but it must never become the persistence boundary, intelligence store, authority source, or production runtime merely because it is convenient for verification. Any local SQLite/fake/in-memory adapter is test infrastructure only and must be explicitly incapable of being selected as canonical runtime state. Canonical persistence is the governed Supabase/Naya intelligence substrate. If the canonical boundary is absent, the correct verdict is **BLOCKED / NOT PROVEN**, not “use a temporary store.”
