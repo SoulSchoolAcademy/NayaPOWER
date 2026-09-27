@@ -407,3 +407,57 @@ If these cannot be answered from canonical state, the brain is not yet continuou
 The purpose of the architecture is not to maximize files, Nodes, tables, or text.
 
 It is to make the whole system **flow like water: understandable to humans, addressable by machines, usable by algorithms, governed by law, provable by evidence, and continuable by the next Naya.**
+
+
+## 11. PHYSICAL TREE — THE ACTUAL BRAIN
+
+The semantic map above is **not** the repository tree. It describes responsibilities. The physical brain is now materialized under:
+
+**`BRAIN/`**
+
+The actual repository structure is recorded from Git in:
+
+- `BRAIN/REAL-TREE.md` — human-readable physical tree receipt.
+- `BRAIN/REAL-TREE.json` — machine-readable physical tree receipt with Git object SHAs.
+- `BRAIN/MASTER-MAP.md` — semantic navigation map.
+- `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — machine-readable brain index.
+
+### Physical rule
+
+**The files and directories under `BRAIN/` are the tree.**
+
+The diagrams in this document, the Master Map, and the indexes are navigators/receipts. They do not create the tree and they do not substitute for missing files.
+
+### Current materialized domains
+
+```text
+BRAIN/
+├── 00-SPEC/
+├── 01-GOVERNANCE/
+├── 02-ARCHITECTURE/
+├── 03-KERNEL/
+│   └── NODES/
+│       ├── ACT/
+│       ├── CONNECT/
+│       ├── EVOLVE/
+│       ├── KNOW/
+│       ├── LAW/
+│       ├── LEARN/
+│       ├── PROVE/
+│       ├── SELF/
+│       └── VERIFY/
+├── 04-INTELLIGENCE/
+│   └── GRAPH/
+├── 05-MEMORY/
+├── 06-PROOF/
+├── 07-LEARNING/
+├── 08-SUCCESSION/
+├── 09-EVOLUTION/
+├── 10-INTERFACES/
+├── 11-KNOWLEDGE/
+├── 12-ENGINEERING/
+├── 90-OPERATIONS/
+└── 99-ARCHIVE/
+```
+
+This is a **materialization claim only**: structure exists. Runtime loading, graph execution, cold continuity, behavioral learning, and successor proof remain separate acceptance claims and must be proven independently.
