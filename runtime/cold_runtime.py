@@ -30,6 +30,7 @@ def cold_restore_and_decide(
         configuration or CanonicalMemoryConfiguration.from_environment()
     )
     block = memory.retrieve_block(block_id)
+    relationships = memory.retrieve_relationships(block.intelligent_block_id)
     authority = (
         Authority(scope=authority_scope)
         if authority_scope is not None
@@ -42,6 +43,7 @@ def cold_restore_and_decide(
             authority=authority,
             task_target=task_target,
             intelligence=(block,),
+            relationships=relationships,
         )
     )
     return {
@@ -58,6 +60,16 @@ def cold_restore_and_decide(
             "source_event_ids": list(block.source_event_ids),
             "provenance": block.provenance,
             "applicable": block.is_applicable_to(task_target),
+            "relationships": [
+                {
+                    "relationship_id": relationship.relationship_id,
+                    "source_id": relationship.source_id,
+                    "target_id": relationship.target_id,
+                    "relationship_type": relationship.relationship_type,
+                    "epistemic_state": relationship.epistemic_state,
+                }
+                for relationship in relationships
+            ],
         },
         "decision": asdict(decision),
         "truth_contract": {
