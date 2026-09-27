@@ -1,5 +1,13 @@
 from dataclasses import dataclass, field
 from enum import Enum
+from functools import lru_cache
+from pathlib import Path
+
+from kernel.brain_registry import (
+    BrainIntegrityError,
+    load_canonical_node_names,
+    repo_root,
+)
 
 
 class Node(str, Enum):
@@ -12,6 +20,15 @@ class Node(str, Enum):
     VERIFY = "VERIFY"
     LEARN = "LEARN"
     EVOLVE = "EVOLVE"
+
+
+class KernelIntegrityError(RuntimeError):
+    """The canonical kernel manifest could not be trusted to describe the kernel.
+
+    Distinct from BrainIntegrityError so callers can tell "the brain is broken"
+    from "the brain says something this runtime cannot represent" -- the second
+    is a code/manifest mismatch and must never be silently tolerated.
+    """
 
 
 class TruthState(str, Enum):
@@ -46,23 +63,58 @@ class DecisionResult:
 
 
 class Kernel:
-    _NODE_ORDER = (
-        Node.SELF,
-        Node.LAW,
-        Node.ACT,
-        Node.KNOW,
-        Node.PROVE,
-        Node.CONNECT,
-        Node.VERIFY,
-        Node.LEARN,
-        Node.EVOLVE,
-    )
+    """Governed decision kernel whose node order comes from the canonical manifest.
+
+    The nine Master Nodes are defined by BRAIN/03-KERNEL/MANIFEST.json. This
+    class holds no copy of that order: a hardcoded tuple here would be a second
+    canonical store that can drift from the manifest with nothing failing.
+    """
 
     @classmethod
-    def node_order(cls):
-        return cls._NODE_ORDER
+    @lru_cache(maxsize=None)
+    def _manifest_order(cls, root: str | None) -> tuple[Node, ...]:
+        base = Path(root) if root is not None else repo_root()
+        names = load_canonical_node_names(base)
+        order: list[Node] = []
+        for name in names:
+            try:
+                order.append(Node(name))
+            except ValueError as exc:
+                raise KernelIntegrityError(
+                    f"manifest_declares_node_this_runtime_cannot_represent:{name}"
+                ) from exc
+        return tuple(order)
 
-    def decide(self, context: DecisionContext) -> DecisionResult:
+    @classmethod
+    def node_order(cls, root: Path | None = None) -> tuple[Node, ...]:
+        """The nine Master Nodes, read from the canonical manifest.
+
+        Raises KernelIntegrityError if the manifest is missing, malformed, or
+        names a node this runtime does not implement.
+        """
+        return cls._manifest_order(str(root) if root is not None else None)
+
+    @classmethod
+    def clear_cache(cls) -> None:
+        """Drop the memoised manifest order (tests that mutate the manifest)."""
+        cls._manifest_order.cache_clear()
+
+    def decide(self, context: DecisionContext, root: Path | None = None) -> DecisionResult:
+        # Fail closed before anything else. A kernel that cannot prove what its
+        # own nodes are must not authorize an action, however well-scoped the
+        # authority looks.
+        try:
+            node_order = self.node_order(root)
+        except (BrainIntegrityError, KernelIntegrityError) as exc:
+            return DecisionResult(
+                allowed=False,
+                executed=False,
+                truth_state=TruthState.BLOCKED,
+                blocked_by=Node.KNOW,
+                trace=(Node.SELF, Node.KNOW),
+                evidence=(f"KNOW.kernel_integrity:{exc}",),
+            )
+
         trace = (Node.SELF, Node.LAW)
 
         if context.consequential and (
@@ -77,7 +129,7 @@ class Kernel:
                 trace=trace,
             )
 
-        trace = self._NODE_ORDER
+        trace = node_order
         evidence = (
             f"LAW.authority:{context.action}",
             f"KNOW.context:{context.action}",
