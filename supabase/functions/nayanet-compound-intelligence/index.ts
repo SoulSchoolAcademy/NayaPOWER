@@ -1,6 +1,7 @@
 // PI deterministic reconstruction timezone normalization verified 2026-09-21
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { evaluateNineNodeKernel } from "../../../n9_kernel_decision.mjs";
 
 const URL = Deno.env.get("SUPABASE_URL")!;
 const ANON = Deno.env.get("SUPABASE_ANON_KEY")!;
@@ -72,12 +73,16 @@ async function record(client: any, event: any, action: string, expected: string,
 
 const MASTER_NODE_KEYS = ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"] as const;
 const MASTER_NODE_IDS = ["IB-001233","IB-001234","IB-001235","IB-001236","IB-001237","IB-001238","IB-001239","IB-001240","IB-001241"] as const;
+const MASTER_NODE_ACCESS_SCOPE = "SYSTEM_AUTHENTICATED";
 
-async function loadMasterNodeKernel(client: any, userId: string) {
-  const result = await client.from("nayanet_intelligent_blocks")
-    .select("block_id,intelligent_block_id,title,version,status,understanding_state,owner_scope,content,provenance,value_context,applicable_scope,updated_at")
-    .eq("owner_id", userId)
+async function loadMasterNodeKernel(_client: any, _userId: string) {
+  // Master Nodes are system intelligence, not personal intelligence.
+  // The caller must already be authenticated by auth(req); this trusted server-side
+  // read intentionally avoids binding kernel availability to one transient owner.
+  const result = await admin.from("nayanet_intelligent_blocks")
+    .select("block_id,intelligent_block_id,title,version,status,understanding_state,owner_id,owner_scope,content,provenance,value_context,applicable_scope,updated_at")
     .in("intelligent_block_id", [...MASTER_NODE_IDS])
+    .eq("owner_scope", MASTER_NODE_ACCESS_SCOPE)
     .eq("status", "ACTIVE");
   if (result.error) throw result.error;
 
@@ -92,6 +97,8 @@ async function loadMasterNodeKernel(client: any, userId: string) {
   const invalid = nodes.filter((node: any, index: number) =>
     node.intelligent_block_id !== MASTER_NODE_IDS[index] ||
     node.content?.kernel?.key !== MASTER_NODE_KEYS[index] ||
+    node.owner_scope !== MASTER_NODE_ACCESS_SCOPE ||
+    node.content?.classification !== "system_intelligence" ||
     node.content?.kernel_activation?.status !== "ACTIVE" ||
     node.content?.kernel_activation?.runtime_status !== "STRUCTURALLY_ACTIVE"
   );
@@ -103,6 +110,8 @@ async function loadMasterNodeKernel(client: any, userId: string) {
   return {
     schema: "NAYAPOWER_MASTER_NODE_KERNEL_V1",
     status: "KERNEL_ACTIVE_STRUCTURAL",
+    access_scope: MASTER_NODE_ACCESS_SCOPE,
+    caller_owner_equality_required: false,
     node_count: nodes.length,
     effectiveness_status: "NOT_YET_PROVEN",
     activation_boundary: "Structural activation is verified; runtime behavioral integration requires the kernel boot proof.",
@@ -115,6 +124,7 @@ async function loadMasterNodeKernel(client: any, userId: string) {
       version: node.version,
       status: node.status,
       understanding_state: node.understanding_state,
+      owner_scope: node.owner_scope,
       primary_contracts: node.content.kernel.primary_contracts,
       core_question: node.content.kernel.core_question,
       purpose: node.content.kernel.purpose,
@@ -128,6 +138,51 @@ async function loadMasterNodeKernel(client: any, userId: string) {
     runtime_flow: [...MASTER_NODE_KEYS],
     loop_return: "SELF",
     rule: "Nine Master Nodes are coordinated responsibilities, not nine authorities or nine independent brains."
+  };
+}
+
+async function kernelDecision(client: any, userId: string, body: any) {
+  const masterKernel = await loadMasterNodeKernel(client, userId);
+  const context = {
+    identity: {
+      authenticated: true,
+      actor: "naya",
+      project: PROJECT,
+      scope: body.scope ?? "SYSTEM",
+    },
+    authority: body.authority ?? {},
+    action: body.action ?? {},
+    knowledge: body.knowledge ?? {},
+    evidence: body.evidence ?? {},
+    connections: body.connections ?? {},
+    verification: body.verification ?? {},
+    learning: body.learning ?? {},
+    successor: body.successor ?? {},
+    runtime_evidence_ids: Array.isArray(body.runtime_evidence_ids)
+      ? body.runtime_evidence_ids
+      : [],
+  };
+  const decision = await evaluateNineNodeKernel(context, {
+    nodes: masterKernel.nodes,
+    disabled_node: body.disabled_node ?? null,
+  });
+  return {
+    schema: "NAYAPOWER_N9_KERNEL_RUNTIME_DECISION_V1",
+    status: "DECISION_EVALUATED",
+    kernel: {
+      schema: masterKernel.schema,
+      access_scope: masterKernel.access_scope ?? "SYSTEM_AUTHENTICATED",
+      node_count: masterKernel.node_count,
+      source_nodes: masterKernel.nodes.map((node: any) => ({
+        intelligent_block_id: node.intelligent_block_id,
+        node_no: node.node_no,
+        key: node.key,
+        effectiveness_status: node.effectiveness_status,
+      })),
+    },
+    decision,
+    proof_boundary:
+      "This operation proves runtime decision evaluation and node trace persistence at operation scope; it does not by itself prove causal behavioral effectiveness, independent outcome verification, learning, compounding, or successor continuity.",
   };
 }
 
@@ -1109,7 +1164,7 @@ Deno.serve(async (req) => {
   let body:any={}; try { body=await req.json(); } catch {}
   const action=String(body.action||"restore").trim();
   try {
-    const preActionExempt = new Set(["restore","cold_restore","kernel_boot","retrieve","reconcile","health"]);
+    const preActionExempt = new Set(["restore","cold_restore","kernel_boot","kernel_decide","retrieve","reconcile","health"]);
     if (!preActionExempt.has(action)) {
       const gate = await coldRestore(client,user.id);
       if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
@@ -1207,6 +1262,7 @@ Deno.serve(async (req) => {
       switch(action) {
         case "restore": result=await restore(client,user.id); break;
         case "kernel_boot": result=await loadMasterNodeKernel(client,user.id); break;
+        case "kernel_decide": result=await kernelDecision(client,user.id,body); break;
         case "cold_restore": result=await coldRestore(client,user.id); break;
         case "retrieve": result=await retrieve(client,user.id,body); break;
         case "reconcile": result=await reconcile(client,user.id,body); break;
