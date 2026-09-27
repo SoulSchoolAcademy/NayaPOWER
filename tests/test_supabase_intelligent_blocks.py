@@ -33,12 +33,15 @@ def test_cold_kernel_retrieval_round_trip_preserves_canonical_boundary():
         query = parse_qs(urlparse(request.full_url).query)
         assert query["owner_id"] == [f"eq.{row['owner_id']}"]
         assert query["intelligent_block_id"] == [f"eq.{row['intelligent_block_id']}"]
+        assert request.headers["Authorization"] == "Bearer user-jwt"
+        assert request.headers.get("Apikey") == "publishable-key"
         return json.dumps([row]).encode()
 
     kernel = Kernel()
     reader = SupabaseIntelligentBlockReader(
         url="https://example.supabase.co",
-        access_token="test-token",
+        access_token="user-jwt",
+        api_key="publishable-key",
         request=fake_request,
     )
 
@@ -63,7 +66,8 @@ def test_retrieval_rejects_incomplete_canonical_row():
 
     reader = SupabaseIntelligentBlockReader(
         url="https://example.supabase.co",
-        access_token="test-token",
+        access_token="user-jwt",
+        api_key="publishable-key",
         request=fake_request,
     )
 

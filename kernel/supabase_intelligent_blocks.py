@@ -71,10 +71,18 @@ class SupabaseIntelligentBlockReader:
         *,
         url: str | None = None,
         access_token: str | None = None,
+        api_key: str | None = None,
         request: Callable[[Request], bytes] | None = None,
     ) -> None:
         self._url = (url or os.environ.get("SUPABASE_URL", "")).rstrip("/")
-        self._access_token = access_token or os.environ.get("SUPABASE_ACCESS_TOKEN", "")
+        self._access_token = access_token or os.environ.get(
+            "SUPABASE_USER_ACCESS_TOKEN",
+            os.environ.get("SUPABASE_ACCESS_TOKEN", ""),
+        )
+        self._api_key = api_key or os.environ.get(
+            "SUPABASE_PUBLISHABLE_KEY",
+            os.environ.get("SUPABASE_API_KEY", ""),
+        )
         self._request = request or self._default_request
 
     @staticmethod
@@ -85,8 +93,11 @@ class SupabaseIntelligentBlockReader:
     def get_by_intelligent_block_id(
         self, *, intelligent_block_id: str, owner_id: str
     ) -> IntelligentBlock | None:
-        if not self._url or not self._access_token:
-            raise RuntimeError("Supabase URL and access token are required for persistence retrieval")
+        if not self._url or not self._access_token or not self._api_key:
+            raise RuntimeError(
+                "Supabase URL, user access token, and publishable/API key "
+                "are required for persistence retrieval"
+            )
         if not intelligent_block_id or not owner_id:
             raise ValueError("intelligent_block_id and owner_id are required")
 
@@ -101,7 +112,7 @@ class SupabaseIntelligentBlockReader:
             endpoint,
             headers={
                 "Authorization": f"Bearer {self._access_token}",
-                "apikey": self._access_token,
+                "apikey": self._api_key,
                 "Accept": "application/json",
             },
             method="GET",
