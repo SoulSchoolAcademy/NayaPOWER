@@ -73,7 +73,8 @@ def evaluate_receipt(receipt: Mapping[str, Any]) -> Verdict:
             reasons.append("observable evidence IDs are missing")
         if not _has(receipt.get("expected")) or not _has(receipt.get("actual")):
             reasons.append("expected/actual outcome pair is missing")
-        if receipt.get("reproduction", {}).get("result") == "ASSERTION_ONLY":
+        reproduction = receipt.get("reproduction")
+        if isinstance(reproduction, Mapping) and reproduction.get("result") == "ASSERTION_ONLY":
             reasons.append("assertion-only reproduction cannot establish behavior")
 
     # L4+ must show authority and a verified result.
@@ -105,6 +106,33 @@ def evaluate_receipt(receipt: Mapping[str, Any]) -> Verdict:
             if integrity.get(control) != "PASS":
                 reasons.append(f"evaluator {control.replace('_', ' ')} is not PASS")
 
+    # Stronger evidence levels require the corresponding experiment.
+    if LEVELS.index(level) >= LEVELS.index("L5_CAUSALLY_ATTRIBUTED"):
+        causal = receipt.get("causal")
+        if not isinstance(causal, Mapping) or not _has(causal.get("claim")):
+            reasons.append("L5+ evidence requires an explicit causal claim")
+        else:
+            if not _has(causal.get("control")):
+                reasons.append("causal claim requires a control run")
+            if not _has(causal.get("treatment")):
+                reasons.append("causal claim requires a treatment run")
+            if not isinstance(causal.get("confounders"), list):
+                reasons.append("causal claim requires an explicit confounder list")
+
+    if LEVELS.index(level) >= LEVELS.index("L6_GENERALIZED"):
+        generalization = receipt.get("generalization")
+        if not isinstance(generalization, Mapping) or not generalization.get("held_out"):
+            reasons.append("L6+ evidence requires held-out generalization")
+        if not isinstance(generalization, Mapping) or not _has(generalization.get("comparison")):
+            reasons.append("L6+ evidence requires a held-out comparison")
+
+    if LEVELS.index(level) >= LEVELS.index("L7_COMPOUNDED"):
+        compounding = receipt.get("compounding")
+        if not isinstance(compounding, Mapping) or not compounding.get("generations"):
+            reasons.append("L7+ evidence requires multiple scored generations")
+        if not isinstance(compounding, Mapping) or not _has(compounding.get("improvement_delta")):
+            reasons.append("L7+ evidence requires a generational improvement delta")
+
     # Learning is a chain, not a boolean.
     learning = receipt.get("learning")
     if isinstance(learning, Mapping) and any(
@@ -116,16 +144,8 @@ def evaluate_receipt(receipt: Mapping[str, Any]) -> Verdict:
                 reasons.append(f"learning step '{key}' is not proven")
         if not isinstance(learning.get("measured_improvement"), (int, float)):
             reasons.append("learning requires measured improvement")
-
-    # Causal attribution requires a counterfactual boundary.
-    causal = receipt.get("causal")
-    if isinstance(causal, Mapping) and _has(causal.get("claim")):
-        if not _has(causal.get("control")):
-            reasons.append("causal claim requires a control run")
-        if not _has(causal.get("treatment")):
-            reasons.append("causal claim requires a treatment run")
-        if not isinstance(causal.get("confounders"), list):
-            reasons.append("causal claim requires an explicit confounder list")
+        elif learning.get("measured_improvement") <= 0:
+            reasons.append("learning requires positive measured improvement")
 
     # L8 is earned only by a real cold successor that acts.
     if LEVELS.index(level) >= LEVELS.index("L8_COLD_SUCCESSOR_PROVEN"):
