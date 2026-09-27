@@ -49,22 +49,22 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 | Domain | File | Readiness | Status | Why / next work |
 |---|---|---:|---|---|
 | 00-SPEC | `0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` | 95% | READY | Graph/tree semantics are strong; runtime enforcement remains external proof. |
-| 00-SPEC | `0002-TREE-AND-GRAPH-NAMING-LAW-V1.md` | 85% | NEEDS HARDENING | Add machine-checkable uniqueness/collision rules and validator linkage. |
+| 00-SPEC | `0002-TREE-AND-GRAPH-NAMING-LAW-V1.md` | 95% | HARDENED | Machine-checkable identity format, normalization, collision/non-reuse and validator law are now explicit. Runtime validator execution remains proof work. |
 | 00-SPEC | `0003-REPRESENTATION-LAW-V1.md` | 95% | READY | Strong parity law; automatic parity proof still belongs in engineering. |
-| 00-SPEC | `0004-KNOWLEDGE-POPULATION-SPEC-V1.md` | 85% | NEEDS HARDENING | Define object promotion acceptance fields and failure receipts more explicitly. |
+| 00-SPEC | `0004-KNOWLEDGE-POPULATION-SPEC-V1.md` | 95% | HARDENED | Canonical envelope, promotion gates, dispositions and rejection receipts are now explicit. Runtime population proof remains open. |
 | 00-SPEC | `0005-TREE-V1.md` | 90% | READY | Canonical layer ordering is clear; runtime parity remains proof. |
-| 00-SPEC | `0006-OBJECT-TYPES-V1.md` | 85% | NEEDS HARDENING | Type registry is useful but needs required-field schemas per type. |
+| 00-SPEC | `0006-OBJECT-TYPES-V1.md` | 95% | HARDENED | Universal envelope and minimum semantic fields are defined for every registered type. Machine validator execution remains open. |
 | 00-SPEC | `README.md` | 90% | READY | Navigation only; no material race blocker. |
 | 01-GOVERNANCE | `0001-GOVERNANCE-CONTRACT-V1.md` | 90% | READY | Core authority/consent boundary is present; runtime enforcement is proof work. |
-| 01-GOVERNANCE | `0002-PROMOTION-AND-REVOCATION-V1.md` | 85% | NEEDS HARDENING | Add explicit state transition invariants and fail-closed examples. |
+| 01-GOVERNANCE | `0002-PROMOTION-AND-REVOCATION-V1.md` | 95% | HARDENED | State-transition invariants, revocation/supersession receipts and fail-closed law are explicit. Runtime enforcement remains proof work. |
 | 01-GOVERNANCE | `README.md` | 90% | READY | Navigation only. |
 | 02-ARCHITECTURE | `0001-SYSTEM-BOUNDARIES-V1.md` | 95% | READY | Correctly separates substrate, interfaces, source control and persistence. |
 | 02-ARCHITECTURE | `0002-DEPENDENCY-ORDER-V1.md` | 90% | READY | Correct ordering; needs automated dependency validation. |
 | 02-ARCHITECTURE | `README.md` | 90% | READY | Navigation only. |
 | 03-KERNEL | `0001-KERNEL-CONTRACT-V1.md` | 95% | READY | Clear universal input/output and fail-closed law. |
 | 03-KERNEL | `0002-KERNEL-ACCEPTANCE-V1.md` | 95% | READY | Correctly separates structural through successor gates. |
-| 03-KERNEL | `0003-RUNTIME-REGISTRY-V1.json` | 80% | NEEDS RUNTIME BINDING | Registry exists; actual runtime entrypoint must consume it. |
-| 03-KERNEL | `MANIFEST.json` | 80% | NEEDS RUNTIME BINDING | Nine IDs are stable; manifest→runtime parity is not yet proven on main. |
+| 03-KERNEL | `0003-RUNTIME-REGISTRY-V1.json` | 85% | BINDING BLOCKED | Registry is explicit and fail-closed; actual entrypoint is intentionally unresolved until source inspection identifies it. |
+| 03-KERNEL | `MANIFEST.json` | 85% | BINDING BLOCKED | Nine IDs and runtime-binding contract are explicit; actual application consumption remains unproven. |
 | 03-KERNEL | `NODES/ACT/0001-CONTRACT.md` | 85% | READY / PROOF PENDING | Semantic contract is clear; invocation proof pending. |
 | 03-KERNEL | `NODES/CONNECT/0001-CONTRACT.md` | 85% | READY / PROOF PENDING | Semantic contract is clear; relationship/runtime proof pending. |
 | 03-KERNEL | `NODES/EVOLVE/0001-CONTRACT.md` | 85% | READY / PROOF PENDING | Semantic contract is clear; successor/evolution proof pending. |
@@ -77,8 +77,8 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 | 03-KERNEL | `README.md` | 90% | READY | Navigation only. |
 | 04-INTELLIGENCE | `0001-FIRST-LIVING-NODE-SPEC-V1.md` | 90% | READY / PROOF PENDING | Excellent proof target; execution must use canonical runtime. |
 | 04-INTELLIGENCE | `0001-INTELLIGENT-OBJECT-CONTRACT-V1.md` | 90% | READY | Required object questions are well defined. |
-| 04-INTELLIGENCE | `0002-GRAPH-CONTRACT-V1.md` | 85% | NEEDS HARDENING | Needs explicit runtime query contract and temporal/supersession acceptance cases. |
-| 04-INTELLIGENCE | `0003-INTELLIGENCE-LIFECYCLE-V1.md` | 85% | NEEDS HARDENING | Lifecycle is correct but thin; bind every transition to receipt requirements. |
+| 04-INTELLIGENCE | `0002-GRAPH-CONTRACT-V1.md` | 95% | HARDENED | Runtime query contract, filtering order and behavioral CONNECT acceptance are explicit. Live runtime proof remains open. |
+| 04-INTELLIGENCE | `0003-INTELLIGENCE-LIFECYCLE-V1.md` | 95% | HARDENED | Durable transition receipts, truth-state separation and failure law are explicit. Runtime coverage remains open. |
 | 04-INTELLIGENCE | `GRAPH/0001-KERNEL-GRAPH-SEED-V1.json` | 90% | READY / PROOF PENDING | Seed is explicit, provenance-bound and now aligned with node objects. |
 | 04-INTELLIGENCE | `GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json` | 90% | READY | Mapping is machine-readable; promotion remains incomplete. |
 | 04-INTELLIGENCE | `GRAPH/README.md` | 90% | READY | Navigation only. |
@@ -107,7 +107,7 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 | 10-INTERFACES | `README.md` | 90% | READY | Navigation only. |
 | 11-KNOWLEDGE | `00-CONCEPT-CORPUS-REGISTER.md` | 95% | READY | Corpus is explicitly bounded at #1–#15. |
 | 11-KNOWLEDGE | `0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md` | 90% | READY / PROOF PENDING | Strong synthesis; object-level promotion still incomplete. |
-| 11-KNOWLEDGE | `0001-CONCEPT-TO-NODE-PROTOCOL-V1.md` | 85% | NEEDS HARDENING | Thin protocol; add deterministic promotion/rejection schema. |
+| 11-KNOWLEDGE | `0001-CONCEPT-TO-NODE-PROTOCOL-V1.md` | 95% | HARDENED | Candidate envelope, deterministic dispositions and rejection law are explicit. Population proof remains open. |
 | 11-KNOWLEDGE | `0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md` | 90% | READY | Good lineage ledger; runtime population proof remains. |
 | 11-KNOWLEDGE | `0003-KNOWLEDGE-POPULATION-MAP-V1.json` | 90% | READY | 15-source mapping is explicit and reconciled. |
 | 11-KNOWLEDGE | `0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md` | 95% | READY | Strong parity contract. |
