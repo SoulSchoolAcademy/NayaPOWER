@@ -16,6 +16,7 @@ def _protected_config():
     values = {
         "url": os.environ.get("SUPABASE_URL"),
         "access_token": os.environ.get("SUPABASE_USER_ACCESS_TOKEN"),
+        "refresh_token": os.environ.get("SUPABASE_USER_REFRESH_TOKEN"),
         "api_key": os.environ.get("SUPABASE_PUBLISHABLE_KEY"),
     }
     if not all(values.values()):
@@ -73,7 +74,7 @@ def test_live_kernel_retrieves_canonical_private_verified_block():
         config["url"],
         config["access_token"],
         config["api_key"],
-        refresh_token=config["access_token"],
+        refresh_token=config["refresh_token"] or config["access_token"],
     )
     owner_id = session["owner_id"]
 
