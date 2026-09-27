@@ -63,3 +63,5 @@ SELF boots → durable retrieval → governed action → behavioral delta → in
 - [Live retrieval test](../blob/naya/node-genome-aaa-v1/tests/test_live_supabase_intelligent_blocks.py)
 - [Live proof workflow](../blob/naya/node-genome-aaa-v1/.github/workflows/live-supabase-runtime-proof.yml)
 - [PR #846](../pull/846)
+
+- [Latest execution receipt](../blob/naya/node-genome-aaa-v1/NAYANODE/EXECUTION-RECEIPTS/NAYA-BIRTH-EXECUTION-RECEIPT-V1.json)
