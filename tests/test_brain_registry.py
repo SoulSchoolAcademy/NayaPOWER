@@ -64,3 +64,17 @@ def test_brain_population_rejects_graph_edges_that_reference_unknown_nodes(tmp_p
 
     assert report["ok"] is False
     assert any("unknown_graph_node" in error for error in report["errors"])
+
+
+def test_brain_manifest_runtime_binding_is_explicit_and_canonical():
+    from pathlib import Path
+    import json
+
+    root = Path(__file__).resolve().parents[1]
+    manifest = json.loads(
+        (root / "BRAIN/03-KERNEL/MANIFEST.json").read_text(encoding="utf-8")
+    )
+
+    assert manifest["runtime_entrypoint"] == "runtime/cold_runtime.py"
+    assert manifest["runtime_loader"] == "Kernel.from_brain"
+    assert manifest["canonical_persistence_adapter"] == "runtime/canonical_memory.py"
