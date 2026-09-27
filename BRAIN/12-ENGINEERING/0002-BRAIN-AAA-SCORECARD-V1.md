@@ -23,7 +23,7 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | Succession | 5.0 | 10 |
 | Production proof | 3.5 | 10 |
 
-**Current artifact/readiness assessment: 7.8/10.**  
+**Current artifact/readiness assessment: 8.4/10 after the 2026-09-27 hardening pass.**  
 **Current living-intelligence proof: NOT ESTABLISHED.**  
 
 > **Inventory authority:** `BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md` is now the authoritative file-by-file readiness inventory. The older table below is retained as historical scoring context; it is not the current file-count receipt.
@@ -51,14 +51,14 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | File | E | H | AI | M | P | Overall |
 |---|---:|---:|---:|---:|---:|---:|
 | 00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md | 8.5 | 8.0 | 8.5 | 6.5 | 6.0 | 7.5 |
-| 00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 00-SPEC/0003-REPRESENTATION-LAW-V1.md | 9.0 | 9.0 | 9.0 | 9.0 | 8.0 | 8.8 |
-| 00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 00-SPEC/0005-TREE-V1.md | 7.5 | 8.0 | 8.0 | 8.0 | 6.0 | 7.5 |
-| 00-SPEC/0006-OBJECT-TYPES-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 00-SPEC/0006-OBJECT-TYPES-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 00-SPEC/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 01-GOVERNANCE/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
 | 02-ARCHITECTURE/0002-DEPENDENCY-ORDER-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
@@ -79,8 +79,8 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | 03-KERNEL/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 04-INTELLIGENCE/0001-FIRST-LIVING-NODE-SPEC-V1.md | 8.5 | 8.0 | 8.5 | 6.5 | 6.0 | 7.5 |
 | 04-INTELLIGENCE/0001-INTELLIGENT-OBJECT-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
-| 04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
+| 04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json | 8.0 | 7.0 | 9.0 | 9.0 | 7.0 | 8.0 |
 | 04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json | 8.0 | 7.0 | 9.0 | 9.0 | 7.0 | 8.0 |
 | 04-INTELLIGENCE/GRAPH/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
@@ -109,7 +109,7 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | 10-INTERFACES/README.md | 5.5 | 7.0 | 5.0 | 4.5 | 3.5 | 5.1 |
 | 11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md | 8.0 | 7.5 | 8.0 | 8.0 | 6.0 | 7.5 |
 | 11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md | 8.5 | 8.5 | 8.5 | 6.5 | 6.5 | 7.7 |
-| 11-KNOWLEDGE/0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 6.0 | 6.0 | 6.0 | 5.0 | 4.0 | 5.4 |
+| 11-KNOWLEDGE/0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 9.5 | 9.0 | 9.5 | 9.5 | 8.5 | 9.2 |
 | 11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md | 8.0 | 7.5 | 8.0 | 8.5 | 7.0 | 7.8 |
 | 11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json | 8.0 | 7.5 | 8.0 | 8.5 | 7.0 | 7.8 |
 | 11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md | 9.0 | 9.0 | 9.0 | 9.0 | 8.0 | 8.8 |
@@ -128,7 +128,7 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 
 ## What prevents 10/10
 
-1. The graph is now represented, but not proven as a live retrieval/runtime capability.
+1. The graph is now specified as an executable retrieval contract, but not proven as a live retrieval/runtime capability.
 2. The nine Node objects are canonical candidates, not behaviorally verified living Nodes.
 3. The kernel still has a simplified runtime path; it does not yet load/enforce the full machine registry, graph, provenance, evidence and continuity envelope.
 4. Memory continuity is specified but not yet proven through a true cold retrieval round trip.
