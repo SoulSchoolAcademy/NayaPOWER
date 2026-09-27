@@ -4,7 +4,7 @@
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "canonical_identity_registry": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "north_star": "Set the intelligence foundation once so every Naya starts from a better state: maximum verified human value per unit of effort, with compounding intelligence and continuity.",
+  "north_star": "Maximum verified human value per moment, with compounding intelligence and continuity.",
   "authority": {
     "governing_standard": "SUPERBRAIN/CONTINUITY/NAYA-REPOSITORY-OPERATING-STANDARD.md",
     "boot_entry": "SUPERBRAIN/AI-BOOT/START-HERE.md",
@@ -123,7 +123,7 @@
     ],
     "active_block": "HUMAN-JOURNEY-P2",
     "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation.",
-"next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
+    "next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -234,5 +234,37 @@
     "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
     "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   },
-  "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
+  "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
+  "kernel_activation": {
+    "status": "STRUCTURALLY_ACTIVE",
+    "version": "1.0",
+    "activated_date": "2026-09-26",
+    "ratification_commit": "3e68f14b0debbda87d53dbabb2b8b7d9b70d2826",
+    "node_ids": [
+      "IB-001233",
+      "IB-001234",
+      "IB-001235",
+      "IB-001236",
+      "IB-001237",
+      "IB-001238",
+      "IB-001239",
+      "IB-001240",
+      "IB-001241"
+    ],
+    "node_keys": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ],
+    "runtime_function": "nayanet-compound-intelligence",
+    "runtime_version": 50,
+    "effectiveness_status": "NOT_YET_PROVEN",
+    "activation_receipt": "71bf5df3-0e81-4730-96a9-ce87c4965e94"
+  }
 }
