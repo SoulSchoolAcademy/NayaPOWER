@@ -1,68 +1,23 @@
-# NayaPOWER Knowledge Population Specification V1
+# Knowledge Population Specification V1
 
-**Status:** PROPOSED CANONICAL
+**Status:** CANONICAL BUILD CONTRACT
 
-## Objective
-
-Turn the existing knowledge bank into a connected, provenance-bound intelligence corpus without copying conversational bulk into the brain.
+## Purpose
+Convert the external KNOWLEDGE corpus into governed Brain intelligence without creating a competing source of truth.
 
 ## Pipeline
+`KNOWLEDGE source → concept → provenance → Node mapping → relationships → Intelligent Object → verification state → retrieval index`
 
-```
-SOURCE CORPUS
-→ INVENTORY
-→ EXTRACT
-→ DISTILL
-→ TYPE
-→ RECONCILE
-→ CONNECT
-→ PROVE
-→ PROMOTE
-→ INDEX
-```
+## Laws
+- KNOWLEDGE is the source corpus; BRAIN is its governed representation.
+- Every populated item retains source path, source revision/hash, concept ID, mapped Node(s), and population status.
+- Unmapped material remains explicitly `UNMAPPED`; it is never silently promoted.
+- Duplicate concepts are linked or superseded, not copied as competing truth.
+- A concept may map to multiple Nodes only with an explicit mapping reason.
+- Population is reproducible from the declared source revision.
 
-## Required dispositions
+## Minimum record
+`concept_id, source_ref, source_revision, distilled_claim, node_ids[], relationship_ids[], provenance, truth_state, authority_state, privacy_state, lifecycle_state`.
 
-Every source-derived proposition receives one disposition:
-
-```
-PROMOTE
-MERGE
-SUPERSEDE
-RETAIN-AS-SOURCE
-HISTORICAL
-CONTRADICTED
-UNKNOWN
-ARCHIVE
-```
-
-## Priority extraction
-
-First extract:
-
-1. system identity;
-2. mission and North Star;
-3. constitutional laws;
-4. governance;
-5. Nine Nodes;
-6. canonical object model;
-7. intelligence lifecycle;
-8. memory/continuity;
-9. graph/relationships;
-10. proof/verification;
-11. learning/compounding;
-12. succession;
-13. self-building;
-14. NayaNET channels;
-15. Hub boundary;
-16. failure intelligence;
-17. current reality;
-18. acceptance tests.
-
-Feature ideas that do not establish durable intelligence are not automatically promoted.
-
-## Quality rule
-
-The goal is not to maximize the number of canonical objects.
-
-The goal is to maximize **useful, connected, verified intelligence with minimum unnecessary complexity**.
+## Acceptance
+A population run passes when every emitted record traces to source, every source item is accounted for, duplicate handling is deterministic, and repeating the run against the same revision yields the same canonical IDs.
