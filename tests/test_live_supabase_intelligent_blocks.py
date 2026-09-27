@@ -1,7 +1,6 @@
 import json
 import os
 from urllib.error import HTTPError
-from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 import pytest
@@ -44,10 +43,10 @@ def _authenticated_session(
             raise
         refresh_request = Request(
             f"{url.rstrip('/')}/auth/v1/token?grant_type=refresh_token",
-            data=urlencode({"refresh_token": refresh_token}).encode(),
+            data=json.dumps({"refresh_token": refresh_token}).encode(),
             headers={
                 "apikey": api_key,
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
                 "Accept": "application/json",
             },
             method="POST",
