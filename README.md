@@ -65,6 +65,7 @@ They are coordinated responsibilities inside one kernel—not nine independent b
 | Foundational value law | NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md |
 | Value Calculus specification | NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md |
 | Master 100-item gap analysis | NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md |
+| NAYA-NODE-0001 pre-race qualification | NAYANODE/0027-NAYA-NODE-0001-PRE-RACE-QUALIFICATION-CONTRACT-V1.md |
 
 ## Proof discipline
 
@@ -92,7 +93,13 @@ No claim may be promoted beyond its evidence.
 
 The canonical nine-node Intelligent Blocks exist in the intelligence substrate, but behavioral operation and legitimate runtime inheritance remain to be proven.
 
-The next engineering work is to establish legitimate identity continuity and then prove:
+The pre-race qualification gate is now explicit:
+
+`NAYANODE/0027-NAYA-NODE-0001-PRE-RACE-QUALIFICATION-CONTRACT-V1.md`
+
+The canonical benchmark is not run until its critical qualification gates are satisfied.
+
+The target proof is:
 
 **BOOT → LOAD → INVOKE → INFLUENCE → APPLY → OUTCOME → VERIFY → LEARN → COMPOUND → SUCCESSOR → EVOLVE**
 
