@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://nayanet.app/schemas/naya-master-node-kernel-v1.json",
+  "title":"NayaPOWER Nine Master Node Kernel V1",
+  "type":"object",
+  "required":["schema_id","status","effective_date","kernel_version","node_count","contract_id_range","nodes","contract_primary_ownership","triads","runtime_flow","required_input_fields","required_output_fields","global_invariants","state_machine","kernel_gates"],
+  "properties":{
+    "schema_id":{"const":"naya/master-node-kernel/v1"},
+    "status":{"const":"RATIFIED_BASELINE"},
+    "effective_date":{"type":"string","format":"date"},
+    "kernel_version":{"const":"1.0"},
+    "node_count":{"const":9},
+    "contract_id_range":{"const":["00","26"]},
+    "nodes":{"type":"array","minItems":9,"maxItems":9},
+    "contract_primary_ownership":{"type":"object","minProperties":27,"maxProperties":27},
+    "triads":{"type":"array","minItems":3,"maxItems":3},
+    "runtime_flow":{"const":["MN-01","MN-02","MN-03","MN-04","MN-05","MN-06","MN-07","MN-08","MN-09","MN-01"]},
+    "required_input_fields":{"type":"array","uniqueItems":true},
+    "required_output_fields":{"type":"array","uniqueItems":true},
+    "global_invariants":{"type":"object","required":["must","must_not"]},
+    "state_machine":{"type":"object","required":["states","allowed_transitions"]},
+    "kernel_gates":{"type":"array","minItems":6,"maxItems":6}
+  },
+  "additionalProperties":false
+}
