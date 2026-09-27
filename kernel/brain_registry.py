@@ -80,16 +80,32 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
     registry_ids = registry.get("node_ids", [])
     index_ids = [node["id"] for node in index.get("nine_nodes", [])]
 
+    manifest_registry_index_parity = True
     for label, ids in (
         ("manifest", manifest_ids),
         ("registry", registry_ids),
         ("index", index_ids),
     ):
         if tuple(ids) != NODE_IDS:
+            manifest_registry_index_parity = False
             errors.append(f"{label}_node_ids_do_not_match_canonical_order")
+
+    if manifest.get("kernel_id") != registry.get("kernel_id"):
+        manifest_registry_index_parity = False
+        errors.append("manifest_registry_kernel_id_mismatch")
+
+    if registry.get("manifest") != "BRAIN/03-KERNEL/MANIFEST.json":
+        manifest_registry_index_parity = False
+        errors.append("registry_manifest_pointer_mismatch")
 
     object_dir = base / "BRAIN/04-INTELLIGENCE/OBJECTS"
     object_ids = []
+    object_envelope_errors: list[str] = []
+    required_object_fields = (
+        "schema", "object_id", "object_type", "version", "canonical_status",
+        "owner_id", "scope", "human_view", "ai_view", "machine_view",
+        "provenance", "proof", "relationships", "successor_effect",
+    )
     for node_id in NODE_IDS:
         path = object_dir / f"{node_id}.json"
         if not path.exists():
@@ -97,20 +113,35 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
             continue
         obj = _read_json(path)
         object_ids.append(obj.get("object_id"))
+        for field in required_object_fields:
+            if field not in obj:
+                object_envelope_errors.append(f"{node_id}:missing:{field}")
+        if obj.get("schema") != "naya.intelligent.object.v1":
+            object_envelope_errors.append(f"{node_id}:schema_mismatch")
         if obj.get("object_id") != node_id:
             errors.append(f"object_id_mismatch:{node_id}")
         if obj.get("object_type") != "NODE":
             errors.append(f"object_type_mismatch:{node_id}")
+        machine = obj.get("machine_view") or {}
+        if machine.get("stable_id") != node_id or machine.get("node_name") != node_id.removeprefix("NAYA-KERNEL-"):
+            object_envelope_errors.append(f"{node_id}:machine_identity_mismatch")
+        if not isinstance(obj.get("provenance"), dict) or not obj.get("provenance", {}).get("derived_from"):
+            object_envelope_errors.append(f"{node_id}:provenance_missing")
 
     if tuple(object_ids) != NODE_IDS:
         errors.append("node_object_set_incomplete")
 
     edges = graph.get("edges", [])
+    canonical_node_set = set(NODE_IDS)
     for edge in edges:
         if edge.get("type") not in ALLOWED_RELATIONSHIPS:
             errors.append(f"unsupported_relationship:{edge.get('type')}")
         if not edge.get("relationship_id") or not edge.get("source_id") or not edge.get("target_id"):
             errors.append("relationship_identity_incomplete")
+        if edge.get("source_id") not in canonical_node_set:
+            errors.append(f"unknown_graph_node:source:{edge.get('source_id')}")
+        if edge.get("target_id") not in canonical_node_set:
+            errors.append(f"unknown_graph_node:target:{edge.get('target_id')}")
         if not edge.get("provenance"):
             errors.append(f"relationship_missing_provenance:{edge.get('relationship_id')}")
 
@@ -123,5 +154,7 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         "node_count": len(object_ids),
         "source_count": len(population.get("source_mappings", [])),
         "graph_edge_count": len(edges),
-        "errors": errors,
+        "errors": errors + [f"object_envelope:{e}" for e in object_envelope_errors],
+        "manifest_registry_index_parity": manifest_registry_index_parity,
+        "object_envelope_errors": object_envelope_errors,
     }
