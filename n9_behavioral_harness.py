@@ -226,3 +226,62 @@ def validate_ablation(full: dict[str, Any], ablated: dict[str, Any], node_id: st
     if ablated_nodes != set(NODES) - {node_id}:
         return ValidationResult("FAIL", "ablation changed more than one node")
     return ValidationResult("PASS")
+
+
+def preflight_source(*, observed_sha: str, expected_sha: str, clean: bool) -> ValidationResult:
+    if not clean:
+        return ValidationResult("BLOCKED", "working tree is dirty")
+    if not observed_sha or observed_sha != expected_sha:
+        return ValidationResult("STALE", "source SHA does not match required SHA")
+    return ValidationResult("PASS")
+
+
+def preflight_runtime(
+    *,
+    runtime_id: str | None,
+    runtime_version: int | str | None,
+    deployment_identity: str | None,
+    owner_id: str | None,
+    session_id: str | None,
+    expected_owner_id: str,
+    expected_session_id: str,
+) -> ValidationResult:
+    if not runtime_id or runtime_version is None or not deployment_identity:
+        return ValidationResult("BLOCKED", "runtime identity/version/deployment is unknown")
+    if owner_id != expected_owner_id:
+        return ValidationResult("BLOCKED", "owner mismatch")
+    if session_id != expected_session_id:
+        return ValidationResult("BLOCKED", "session mismatch")
+    return ValidationResult("PASS")
+
+
+def execute_control_treatment(
+    *,
+    experiment_id: str,
+    scenario: Any,
+    input_payload: Any,
+    executor: Any,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Execute matched control/treatment through a supplied real runtime executor.
+
+    The executor is deliberately injected: this module never fabricates runtime
+    evidence. It must return a receipt whose control/treatment condition matches
+    the requested condition.
+    """
+    control = executor(
+        experiment_id=experiment_id,
+        condition="control",
+        scenario=scenario,
+        input_payload=input_payload,
+    )
+    treatment = executor(
+        experiment_id=experiment_id,
+        condition="treatment",
+        scenario=scenario,
+        input_payload=input_payload,
+    )
+    if control.get("control_or_treatment") != "control":
+        raise ValueError("executor returned a non-control receipt")
+    if treatment.get("control_or_treatment") != "treatment":
+        raise ValueError("executor returned a non-treatment receipt")
+    return control, treatment
