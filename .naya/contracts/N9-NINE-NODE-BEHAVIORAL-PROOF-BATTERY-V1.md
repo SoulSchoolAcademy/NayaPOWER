@@ -25,7 +25,7 @@ Required controls:
 1. Positive runtime evidence is accepted.
 2. Assertion-only/prose evidence is rejected.
 3. Missing-node mutation is rejected.
-4. Ablation compares full kernel against kernel-minus-one-node under frozen conditions.
+4. Ablation compares full kernel against kernel-minus-one-node under frozen conditions and MUST show a material decision/action/outcome difference; absence of a material difference is NOT_PROVEN.
 
 ## N9-001 — Nine-Node Behavioral Activation
 
@@ -35,7 +35,7 @@ Run one consequential-but-reversible scenario twice:
 
 The scenario MUST contain a genuine authority boundary, relevant and competing intelligence, an observable action outcome, and independently verifiable evidence.
 
-The treatment receipt MUST bind the exact source SHA, runtime/deployment identity, authenticated owner/session, experiment/scenario/input hashes, and node-level runtime evidence.
+The treatment receipt MUST bind the exact source SHA, runtime/deployment identity, authenticated owner/session, experiment/scenario/input hashes, and node-level runtime evidence. A PROVEN causal claim MUST contain an explicit material delta across decision, action, or observed outcome; non-empty metadata alone is insufficient.
 
 ## Fail-closed preflight
 
