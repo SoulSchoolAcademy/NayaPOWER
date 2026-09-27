@@ -1,0 +1,45 @@
+name: Verify Nine-Node Kernel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-nine-node-kernel-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Verify canonical nine-node structure
+        run: |
+          set -euo pipefail
+          python3 scripts/verify-nine-master-nodes.py .naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.json
+
+      - name: Verify canonical kernel specification tests
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v tests/test_nine_master_nodes_spec.py
+
+      - name: Verify executable nine-node decision layer
+        run: |
+          set -euo pipefail
+          node --test tests/n9_kernel_decision.test.mjs
+
+      - name: Preserve proof boundary
+        run: |
+          echo "STRUCTURAL_KERNEL=PROVEN_AT_CI_SCOPE"
+          echo "DECISION_LAYER=TESTED_AT_CI_SCOPE"
+          echo "N9_BEHAVIORAL_RUNTIME=NOT_PROVEN"
