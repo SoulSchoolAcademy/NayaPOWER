@@ -121,20 +121,56 @@ function matchesDisabled(def, disabledNode) {
   return disabledNode === def.key || disabledNode === def.node_id;
 }
 
+function syntheticNodes() {
+  return N9_NODE_DEFS.map((def, index) => ({
+    intelligent_block_id: `IB-${String(1233 + index).padStart(6, "0")}`,
+    node_no: index + 1,
+    key: def.key,
+    runtime_role: def.key,
+    purpose: `synthetic-kernel-purpose:${def.key}`,
+    core_question: `synthetic-kernel-question:${def.key}`,
+    responsibilities: [],
+    activation_rules: ["FAIL_CLOSED"],
+    effectiveness_status: "NOT_YET_PROVEN",
+  }));
+}
+
+function validateLoadedNodes(nodes) {
+  if (!Array.isArray(nodes) || nodes.length !== N9_NODE_DEFS.length) {
+    throw new Error("INVALID_NODE_KERNEL:expected_exactly_9_nodes");
+  }
+  nodes.forEach((node, index) => {
+    const expected = N9_NODE_DEFS[index];
+    const expectedId = `IB-${String(1233 + index).padStart(6, "0")}`;
+    if (
+      node?.intelligent_block_id !== expectedId ||
+      Number(node?.node_no) !== index + 1 ||
+      node?.key !== expected.key
+    ) {
+      throw new Error(`INVALID_NODE_KERNEL:${index + 1}:${String(node?.key ?? "UNKNOWN")}`);
+    }
+  });
+  return nodes;
+}
+
 export async function evaluateNineNodeKernel(context, options = {}) {
   const disabledNode = options.disabled_node ?? null;
   assertKnownNode(disabledNode);
 
+  const loadedNodes = validateLoadedNodes(options.nodes ?? syntheticNodes());
   const safeContext = cloneContext(context);
   const nodeInvocations = [];
   const failedNodes = [];
   const blockReasons = [];
   const trace = [];
 
+  const kernelByKey = new Map(loadedNodes.map((node) => [node.key, node]));
   for (const def of N9_NODE_DEFS) {
+    const sourceNode = kernelByKey.get(def.key);
     const input = {
       node_id: def.node_id,
       key: def.key,
+      source_node: sourceNode,
       relevant_context: safeContext,
     };
     const inputHash = await sha256(input);
@@ -157,6 +193,11 @@ export async function evaluateNineNodeKernel(context, options = {}) {
     const output = {
       node_id: def.node_id,
       key: def.key,
+      source_node_id: sourceNode.intelligent_block_id,
+      source_node_purpose: sourceNode.purpose ?? null,
+      source_node_core_question: sourceNode.core_question ?? null,
+      source_node_responsibilities: sourceNode.responsibilities ?? [],
+      source_node_activation_rules: sourceNode.activation_rules ?? [],
       ...result,
     };
     const outputHash = await sha256(output);
@@ -165,6 +206,10 @@ export async function evaluateNineNodeKernel(context, options = {}) {
       node_id: def.node_id,
       key: def.key,
       invocation_id: invocationId,
+      source_node_id: sourceNode.intelligent_block_id,
+      source_node_hash: await sha256(sourceNode),
+      source_node_purpose: sourceNode.purpose ?? null,
+      source_node_core_question: sourceNode.core_question ?? null,
       input_hash: inputHash,
       output_hash: outputHash,
       evidence_ids: Array.isArray(safeContext.runtime_evidence_ids)
@@ -197,6 +242,7 @@ export async function evaluateNineNodeKernel(context, options = {}) {
 
   const decision = {
     schema: "NAYAPOWER_N9_KERNEL_DECISION_V1",
+    source_kernel_hash: await sha256(loadedNodes),
     runtime_flow: N9_NODE_KEYS,
     runtime_node_ids: N9_NODE_IDS,
     decision_before: "DEFER",
