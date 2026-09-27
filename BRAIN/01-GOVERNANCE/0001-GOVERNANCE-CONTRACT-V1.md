@@ -1,29 +1,22 @@
-# NayaPOWER Governance Contract V1
+# Governance Contract V1
 
-## Authority hierarchy
+**Status:** CANONICAL BUILD CONTRACT
 
-HUMAN DIRECTOR → CONSTITUTION → MASTER DESIGN → GOVERNANCE → NODE CONTRACTS → CAPABILITY CONTRACTS → IMPLEMENTATION → RUNTIME.
+## Purpose
+Govern authority, consent, promotion, revocation, privacy, and fail-closed behavior.
 
-## Authority tuple
+## Laws
+1. Capability does not create authority.
+2. Retrieval does not create authority.
+3. Stored intelligence does not create authority.
+4. Historical evidence is not current truth without explicit verification/promotion.
+5. Private is the default; sharing requires explicit scope and consent.
+6. Revocation and expiry override prior grants.
+7. Unknown, ambiguous, or conflicting authority fails closed.
+8. Consequential actions require an attributable actor, target, scope, authority basis, policy result, and receipt.
 
-Every consequential operation answers:
+## Decision envelope
+`actor → requested_action → target → scope → authority_basis → consent → policy_result → decision_id → receipt`
 
-```
-WHO / WHAT / WHY / SCOPE / AUTHORITY / CONSTRAINTS / EVIDENCE / AFTER
-```
-
-## States
-
-PROPOSED → AUTHORIZED → EXECUTING → OBSERVED → VERIFIED → PROMOTED
-
-Other terminal/control states:
-
-REVOKED, SUPERSEDED, BLOCKED.
-
-## Human-only authority
-
-Constitutional change, ownership change, privacy-boundary change, irreversible destructive action, and authority-model change require human authorization.
-
-## Law
-
-Capability does not create authority. Retrieval does not create authorization. Self-building does not self-authorize.
+## Acceptance
+Positive authorized cases succeed. Missing, expired, revoked, cross-owner, scope-mismatched, and ambiguous cases are denied without fallback.
