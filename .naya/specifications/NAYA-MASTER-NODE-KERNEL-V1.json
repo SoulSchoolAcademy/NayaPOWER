@@ -290,5 +290,13 @@
       "required": "meaningful execution emits successor context"
     }
   ],
-  "state": "RATIFIED_BASELINE"
+  "state": "RATIFIED_BASELINE",
+  "access_scope": {
+    "mode": "SYSTEM_AUTHENTICATED",
+    "visibility": "AUTHENTICATED_RUNTIME_ONLY",
+    "owner_id_role": "PROVENANCE_ONLY",
+    "caller_owner_equality_required": false,
+    "mutation_authority": "SEPARATE_GOVERNED_AUTHORITY",
+    "fail_closed_when_scope_missing_or_mismatched": true
+  }
 }
