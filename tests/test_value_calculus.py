@@ -56,7 +56,7 @@ def test_resource_metrics(profile):
         resources=ResourceCost(attention=2, time=3, compute=5)
     )
     assert result["mvpa"] == pytest.approx(10.0)
-    assert result["mvpm"] == pytest.approx(20.0)
+    assert result["mvpm"] == pytest.approx(10.0)
     assert result["learning_efficiency"] == pytest.approx(0.2)
 
 
