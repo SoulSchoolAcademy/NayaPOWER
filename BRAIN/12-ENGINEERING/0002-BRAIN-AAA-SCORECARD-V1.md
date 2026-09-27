@@ -1,6 +1,6 @@
 # NayaPOWER Brain — AAA File-by-File Scorecard V1
 
-**Review target:** current brain lineage after the knowledge-population pass.  
+**Review target:** current BRAIN lineage on `main`, reconciled against the file inventory created 2026-09-27.  
 **Scoring:** 0–10 architecture/usability/readiness review; **not** runtime proof.  
 **Dimensions:** E=effectiveness, H=human understandability, A=AI understandability, M=machine readiness, P=proof readiness.
 
@@ -23,8 +23,28 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | Succession | 5.0 | 10 |
 | Production proof | 3.5 | 10 |
 
-**Current architecture/readiness assessment: 6.9/10.**  
-**Current living-intelligence proof: NOT ESTABLISHED.**
+**Current artifact/readiness assessment: 7.8/10.**  
+**Current living-intelligence proof: NOT ESTABLISHED.**  
+
+> **Inventory authority:** `BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md` is now the authoritative file-by-file readiness inventory. The older table below is retained as historical scoring context; it is not the current file-count receipt.
+
+## Current system gate status — 2026-09-27
+
+| Gate | Status | Evidence boundary |
+|---|---|---|
+| Brain structure | PASS | 15 domains and stable nine-node organization exist. |
+| Nine-node semantic contracts | PASS | All nine contracts and IDs exist. |
+| Graph seed ↔ Node objects | PASS | All nine objects now carry explicit graph-seed relationships. |
+| Canonical Supabase persistence | RESTORED | Restored canonical tables exist in the tracked repair lineage. |
+| Cold Intelligent Block retrieval | EXERCISED | Same canonical block identity was retrieved from the restored boundary. |
+| Retrieval ≠ authority | EXERCISED | Exact-scope authority validation remains separate from retrieval. |
+| Main runtime consumes Brain manifest | BLOCKED / NOT PROVEN | Main does not yet demonstrate the actual application entrypoint loading the BRAIN registry. |
+| Nine-node runtime influence | NOT PROVEN | No current main-branch evidence proves all nine Nodes load/invoke/influence/apply in one live runtime. |
+| CONNECT behavioral effect | NOT PROVEN | Relationship-aware retrieval has not yet been proven to change a held-out task in the live application runtime. |
+| Learning from later behavior | NOT PROVEN | Specimen evidence exists, but the definitive held-out future-task gate remains open. |
+| Successor improvement | NOT PROVEN | Authority non-inheritance exists; independent behavioral improvement remains open. |
+| Production/browser parity | NOT PROVEN | Source/runtime/deployment parity is not closed. |
+| Definitive NAYA-NODE-0001 race | BLOCKED | Runtime convergence and successor/behavioral gates remain open. |
 
 ## File scorecard
 
@@ -126,3 +146,10 @@ A 10/10 living brain requires demonstrated execution of:
 **DISCOVER → RESTORE → RETRIEVE → UNDERSTAND → AUTHORIZE → APPLY → ACT → OBSERVE → VERIFY → LEARN → HANDOFF → CONTINUE**
 
 with receipts establishing identity, provenance, authority, relationship context, outcome, causal verification, learning effect, and successor improvement.
+
+
+## Inventory linkage
+
+The current BRAIN contains **77 files** after adding the authoritative inventory. `BRAIN/REAL-TREE.json` still records the previous 74-file receipt and must be regenerated after the canonical tree settles. Do not silently treat that stale receipt as current.
+
+The inventory classifies every file as a role-readiness percentage and assigns remaining work to concrete Naya completion categories. This scorecard is the gate-level view; the inventory is the file-level work queue.
