@@ -81,6 +81,12 @@ class Kernel:
             raise ValueError("manifest node IDs do not match canonical nine-node identity")
         if data.get("kernel_id") != "NAYAPOWER-MASTER-KERNEL-V1":
             raise ValueError("manifest kernel identity is not canonical")
+        if data.get("runtime_entrypoint") != "runtime/cold_runtime.py":
+            raise ValueError("manifest runtime entrypoint is not canonical")
+        if data.get("runtime_loader") != "Kernel.from_brain":
+            raise ValueError("manifest runtime loader is not canonical")
+        if data.get("canonical_persistence_adapter") != "runtime/canonical_memory.py":
+            raise ValueError("manifest persistence adapter is not canonical")
         return cls(kernel_id=data["kernel_id"], source_manifest="BRAIN/03-KERNEL/MANIFEST.json")
 
     @classmethod
