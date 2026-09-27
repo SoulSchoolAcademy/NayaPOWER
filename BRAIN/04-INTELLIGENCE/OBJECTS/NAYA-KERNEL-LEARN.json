@@ -52,24 +52,26 @@
     "implementation_status": "DOCUMENTED",
     "behavioral_status": "NOT_PROVEN",
     "production_status": "NOT_PROVEN",
-    "relationships_status": "GRAPH_SEED_ALIGNED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
   },
   "relationships": [
     {
       "relationship_id": "REL-KERNEL-VERIFY-LEARN",
       "direction": "IN",
       "type": "PRODUCES",
-      "related_object_id": "NAYA-KERNEL-VERIFY",
-      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+      "source_object_id": "NAYA-KERNEL-VERIFY",
+      "target_object_id": "NAYA-KERNEL-LEARN",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     },
     {
       "relationship_id": "REL-KERNEL-LEARN-EVOLVE",
       "direction": "OUT",
       "type": "ENABLES",
-      "related_object_id": "NAYA-KERNEL-EVOLVE",
-      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+      "source_object_id": "NAYA-KERNEL-LEARN",
+      "target_object_id": "NAYA-KERNEL-EVOLVE",
+      "epistemic_state": "SUPPORTED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
   ],
   "successor_effect": "Preserve only the semantic state needed for future continuation; never manufacture authority."
