@@ -159,3 +159,54 @@ def test_evaluator_integrity_is_load_bearing():
     verdict = evaluate_receipt(r)
     assert verdict.status == "FAIL"
     assert any("negative" in reason.lower() for reason in verdict.reasons)
+
+
+def test_l5_requires_causal_controls():
+    r = receipt(evidence_level="L5_CAUSALLY_ATTRIBUTED", causal={})
+    verdict = evaluate_receipt(r)
+    assert verdict.status == "FAIL"
+    assert any("causal" in reason.lower() for reason in verdict.reasons)
+
+
+def test_l6_requires_held_out_generalization():
+    r = receipt(evidence_level="L6_GENERALIZED", generalization={})
+    verdict = evaluate_receipt(r)
+    assert verdict.status == "FAIL"
+    assert any("general" in reason.lower() or "held" in reason.lower()
+               for reason in verdict.reasons)
+
+
+def test_l7_requires_generational_compounding():
+    r = receipt(evidence_level="L7_COMPOUNDED", compounding={})
+    verdict = evaluate_receipt(r)
+    assert verdict.status == "FAIL"
+    assert any("compound" in reason.lower() or "generation" in reason.lower()
+               for reason in verdict.reasons)
+
+
+def test_learning_requires_positive_measured_improvement():
+    r = receipt(learning={
+        "outcome_observed": True,
+        "lesson": "lesson-1",
+        "persisted": True,
+        "retrieved": True,
+        "behavior_changed": True,
+        "measured_improvement": 0,
+    })
+    verdict = evaluate_receipt(r)
+    assert verdict.status == "FAIL"
+    assert any("improvement" in reason.lower() for reason in verdict.reasons)
+
+
+def test_stale_control_must_itself_be_load_bearing():
+    r = receipt(source_freshness="CURRENT", evaluator_integrity={
+        "positive_control": "PASS",
+        "negative_control": "PASS",
+        "mutation_control": "PASS",
+        "contradiction_control": "PASS",
+        "stale_control": "FAIL",
+        "cold_control": "PASS",
+    })
+    verdict = evaluate_receipt(r)
+    assert verdict.status == "FAIL"
+    assert any("stale" in reason.lower() for reason in verdict.reasons)
