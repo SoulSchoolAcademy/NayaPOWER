@@ -1,7 +1,7 @@
 {
   "schema":"naya.kernel.runtime.registry.v1",
   "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
-  "status":"DOCUMENTED_RUNTIME_CONTRACT",
+  "status":"EXECUTABLE_RUNTIME_CONTRACT",
   "behavioral_proof":"PENDING",
   "manifest":"BRAIN/03-KERNEL/MANIFEST.json",
   "node_order":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],
