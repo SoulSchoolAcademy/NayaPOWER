@@ -1,0 +1,58 @@
+{
+  "schema": "naya.intelligent.object.v1",
+  "object_id": "NAYA-KERNEL-SELF",
+  "object_type": "NODE",
+  "version": "1.0",
+  "canonical_status": "CANDIDATE",
+  "owner_id": "NAYA-KERNEL-SELF",
+  "scope": "NayaPOWER kernel",
+  "human_view": {
+    "title": "SELF — identity, mission, objective, continuity",
+    "essence": "SELF is the governed semantic responsibility for identity, mission, objective, continuity.",
+    "why": "One responsibility of the single NayaPOWER brain; not an independent brain or authority.",
+    "uncertainty": "Behavioral/runtime proof remains pending unless separately evidenced."
+  },
+  "ai_view": {
+    "purpose": "identity, mission, objective, continuity",
+    "inputs": [
+      "identity",
+      "intent",
+      "state",
+      "context",
+      "authority",
+      "intelligence",
+      "evidence",
+      "relationships"
+    ],
+    "outputs": [
+      "understanding",
+      "decision_context",
+      "action_context",
+      "evidence_context",
+      "learning_context",
+      "successor_context"
+    ],
+    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved"
+  },
+  "machine_view": {
+    "node_name": "SELF",
+    "stable_id": "NAYA-KERNEL-SELF",
+    "contract": "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+    "domain": "03-KERNEL",
+    "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md"
+  },
+  "provenance": {
+    "derived_from": [
+      "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
+      "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json"
+    ],
+    "source_concepts": "see population map"
+  },
+  "proof": {
+    "implementation_status": "DOCUMENTED",
+    "behavioral_status": "NOT_PROVEN",
+    "production_status": "NOT_PROVEN"
+  },
+  "relationships": [],
+  "successor_effect": "Preserve only the semantic state needed for future continuation; never manufacture authority."
+}
