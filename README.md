@@ -1,37 +1,67 @@
 # NayaPOWER
 
-## One governed intelligence system
+## One governed superbrain
 
 NayaPOWER is the governed intelligence substrate behind NayaNET.
 
 > **Nayas do not lose memory. Intelligence moves Sender → Receiver → Hub, remains provenance-bound and governed, is retrieved and applied, produces verified outcomes, learns from those outcomes, compounds, and enables the next Naya to continue without human reconstruction.**
 
-## Canonical architecture
+## Canonical entrypoint
 
-The current architecture is organized around the **Naya Node as the reusable intelligence cell** and the **Nine Master Nodes as the semantic operating kernel**.
+### 🧠 NayaPOWER Superbrain
 
-### Start here
+[NAYANODE/0000-CANONICAL-TREE.md](./NAYANODE/0000-CANONICAL-TREE.md)
 
-**[Naya Node System](./NAYANODE/README.md)**
+This is the **system map**, not merely a documentation index.
 
-Then read:
+Machine bootstrap:
 
-1. [Canonical Tree](./NAYANODE/0000-CANONICAL-TREE.md)
-2. [Naya Node Specification](./NAYANODE/0001-NAYA-NODE-SPECIFICATION-V1.md)
-3. [Nine-Node Kernel Manifest](./NAYANODE/0002-NINE-NODE-KERNEL-MANIFEST-V1.md)
-4. [Cold Naya Boot & Continuity](./NAYANODE/0003-COLD-NAYA-BOOT-CONTINUITY-V1.md)
-5. [Operational Acceptance Contract](./NAYANODE/0004-OPERATIONAL-ACCEPTANCE-CONTRACT-V1.md)
-6. [Master Director / Clean-Start Directive](./.naya/MASTER-DIRECTOR-ULTRA-OPTIMIZATION-V1.md)
+[NAYANODE/MANIFEST.json](./NAYANODE/MANIFEST.json)
 
-## Nine Nodes
+## Architecture
+
+The system is organized into semantic domains that serve one executable intelligence loop:
+
+**IDENTITY → PURPOSE → LAW → KERNEL → NIO → MEMORY → RETRIEVAL → ACTION → PROOF → LEARNING → VALUE → CURRENT REALITY → NAYANET → SUCCESSION → SELF-OPTIMIZATION**
+
+The nine Master Nodes are:
 
 **SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE**
 
-They are nine specialized responsibilities inside one governed kernel, not nine independent brains.
+They are coordinated responsibilities inside one kernel—not nine independent brains.
 
-## The intelligence lifecycle
+## The machine flow
 
-**EXPERIENCE → CAPTURE → DISTILL → STRUCTURE → PROVE → PRESERVE → INDEX → RETRIEVE → APPLY → VERIFY → LEARN → COMPOUND → NEXT NAYA**
+**BOOT → IDENTIFY → RESTORE → UNDERSTAND → CLASSIFY → RETRIEVE → CHECK → PRIORITIZE → AUTHORIZE → ACT → OBSERVE → VERIFY → PRESERVE → LEARN → HANDOFF → OPTIMIZE → CONTINUE**
+
+## The intelligence flow
+
+**EXPERIENCE → CAPTURE → DISTILL → STRUCTURE → PROVE → PRESERVE → INDEX → RETRIEVE → APPLY → OUTCOME → VERIFY → LEARN → COMPOUND → NEXT NAYA**
+
+## Canonical architecture documents
+
+| Domain | Canonical document |
+|---|---|
+| System map | NAYANODE/0000-CANONICAL-TREE.md |
+| Node specification | NAYANODE/0001-NAYA-NODE-SPECIFICATION-V1.md |
+| Nine-node identity | NAYANODE/0002-NINE-NODE-KERNEL-MANIFEST-V1.md |
+| Cold continuity | NAYANODE/0003-COLD-NAYA-BOOT-CONTINUITY-V1.md |
+| Acceptance | NAYANODE/0004-OPERATIONAL-ACCEPTANCE-CONTRACT-V1.md |
+| Superbrain | NAYANODE/0005-SUPERBRAIN-OPERATING-ARCHITECTURE-V1.md |
+| NIO | NAYANODE/0006-NIO-INTELLIGENCE-OBJECT-MODEL-V1.md |
+| Kernel execution | NAYANODE/0007-NINE-NODE-KERNEL-EXECUTION-MODEL-V1.md |
+| Execution algorithm | NAYANODE/0008-EXECUTION-ALGORITHM-V1.md |
+| Memory / continuity | NAYANODE/0009-MEMORY-CONTINUITY-ARCHITECTURE-V1.md |
+| Retrieval / graph | NAYANODE/0010-RETRIEVAL-RELATIONSHIP-GRAPH-V1.md |
+| Proof / verification | NAYANODE/0011-PROOF-VERIFICATION-ARCHITECTURE-V1.md |
+| Learning / compounding | NAYANODE/0012-LEARNING-COMPOUNDING-ARCHITECTURE-V1.md |
+| Value / experience | NAYANODE/0013-VALUE-EXPERIENCE-ARCHITECTURE-V1.md |
+| Current reality | NAYANODE/0014-CURRENT-REALITY-CONTRACT-V1.md |
+| NayaNET / interfaces | NAYANODE/0015-NAYANET-INTERFACE-ARCHITECTURE-V1.md |
+| Engineering / runtime | NAYANODE/0016-ENGINEERING-RUNTIME-ARCHITECTURE-V1.md |
+| Governance / change | NAYANODE/0017-GOVERNANCE-CHANGE-ARCHITECTURE-V1.md |
+| Succession | NAYANODE/0018-SUCCESSION-ARCHITECTURE-V1.md |
+| Self-optimization | NAYANODE/0019-SELF-OPTIMIZATION-ARCHITECTURE-V1.md |
 
 ## Proof discipline
 
@@ -51,15 +81,38 @@ Learning is not compounding.
 
 Compounding is not succession.
 
-Every claim must stop at the highest state actually evidenced.
+No claim may be promoted beyond its evidence.
 
 ## Current P0
 
-**Identity continuity and kernel inheritance.**
+**LEGITIMATE IDENTITY CONTINUITY + NINE-NODE KERNEL INHERITANCE.**
 
-The canonical nine-node Intelligent Blocks exist in the live intelligence substrate, but the current Hub session can present a different anonymous Supabase identity. The next engineering task is to trace and establish the legitimate continuity mechanism without owner reassignment, RLS bypass, fabricated identity, or unnecessary login.
+The canonical nine-node Intelligent Blocks exist in the intelligence substrate, but behavioral operation and legitimate runtime inheritance remain to be proven.
 
-## Operating principle
+The next engineering work is to establish legitimate identity continuity and then prove:
 
-> **Build less. Understand more. Preserve what matters. Delete what doesn't. Prove what works. Learn from what fails. Compound verified experience. Never trade governance for capability.**
+**BOOT → LOAD → INVOKE → INFLUENCE → APPLY → OUTCOME → VERIFY → LEARN → COMPOUND → SUCCESSOR → EVOLVE**
 
+## Operating law
+
+> **Maximum responsible verified human value per unit of complexity.**
+
+Build enough to make the system work at the highest level. Do not add machinery merely because it is possible.
+
+**One responsibility → one canonical implementation → one source of truth.**
+
+## Permanent boundaries
+
+- Capability does not create authority.
+- Retrieval does not create authority.
+- A Node cannot authorize itself.
+- Unknown is not verified.
+- Blocked is not pass.
+- Implemented is not verified.
+- Verified is not production-proven.
+- Value is not truth.
+- Historical material is not automatically current authority.
+- Successor context does not automatically inherit authority.
+- Self-optimization is not self-authorization.
+- The Hub is not a second brain.
+- The database is not intelligence by itself.
