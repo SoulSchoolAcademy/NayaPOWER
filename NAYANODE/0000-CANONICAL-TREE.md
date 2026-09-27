@@ -214,6 +214,35 @@
     └── Learn
 ```
 
+## 20 — CANONICAL VALUE CALCULUS
+
+The system-wide value measurement law and deterministic implementation are:
+
+- `NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md` — constitutional law; director ratification boundary.
+- `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md` — exact mathematical specification.
+- `kernel/value_calculus.py` — executable deterministic implementation.
+- `tests/test_value_calculus.py` — automated acceptance tests.
+- `NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md` — canonical 100-item audit inventory.
+
+Value is cross-cutting; it is not a tenth Node. EVOLVE owns optimization measurement while all nine Nodes may contribute evidence and context.
+
+## 21 — PERMANENT VALUE LOOP
+
+```
+OBJECTIVE → PROFILE → EVIDENCE → CALCULATE → GATE → RECEIPT → OUTCOME → VERIFY → LEARN → COMPOUND → RE-MEASURE
+```
+
+## 22 — VALUE INVARIANTS
+
+- VALUE ≠ TRUTH.
+- VALUE ≠ AUTHORITY.
+- SCORE ≠ HUMAN WORTH.
+- ESTIMATED ≠ OBSERVED ≠ VERIFIED.
+- MISSING ≠ PERFECT.
+- CRITICAL FAILURE CANNOT BE AVERAGED AWAY.
+- PROFILE WEIGHTS ARE DECLARED BEFORE SCORING.
+- IDENTICAL INPUTS + IDENTICAL PROFILE + IDENTICAL ENGINE VERSION = IDENTICAL RESULT.
+
 ## 1. The system flow
 
 ```
@@ -367,6 +396,9 @@ If these cannot be answered from canonical state, the brain is not yet continuou
 - `0014` — current reality.
 - `0018` — succession.
 - `0019` — bounded self-optimization.
+- `0024` — Foundational Value & Stewardship Law.
+- `0025` — exact Value Calculus specification.
+- `0026` — Master 100-item gap analysis.
 
 ## 10. Permanent invariant
 
