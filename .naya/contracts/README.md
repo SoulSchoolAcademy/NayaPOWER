@@ -32,6 +32,7 @@ Generated from the repository tree, because a hand-maintained index is how 41 ar
 | `10-CONTINUITY-SUCCESSOR.md` | contract / law |
 | `compounding-intelligence-measurement-contract-v1.json` | schema / machine contract |
 | `INTELLIGENCE-EVALUATION-EXECUTION-CONTRACT-V1.md` | contract / law |
+| `N9-NINE-NODE-BEHAVIORAL-PROOF-BATTERY-V1.md` | contract / law |
 | `schemas/INTELLIGENCE-EVALUATION-RECEIPT-V1.schema.json` | schema / machine contract |
 | `CONSTITUTIONAL-OPERATING-LAW-V2.md` | contract / law |
 | `CONTRACT-LIBRARY-INTEGRITY-BASELINE.json` | schema / machine contract |
@@ -63,7 +64,7 @@ Generated from the repository tree, because a hand-maintained index is how 41 ar
 | `VERIFICATION-RECEIPT-SCHEMA.json` | schema / machine contract |
 | `VERIFIED-AI-ACTION-V1.md` | contract / law |
 
-**Total artifacts:** 49
+**Total artifacts:** 50
 
 ## MANDATORY AI LAW
 
