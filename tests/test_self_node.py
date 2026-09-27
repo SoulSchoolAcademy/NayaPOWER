@@ -53,3 +53,14 @@ def test_self_requires_identity_and_objective(tmp_path):
         assert str(exc) == "objective_missing"
     else:
         raise AssertionError("missing objective must fail")
+
+
+def test_self_does_not_allow_successor_packet_before_experience(tmp_path):
+    node = SelfNode(JsonContinuityStore(tmp_path / "self.json"))
+    node.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    try:
+        node.successor_packet()
+    except SelfNodeError as exc:
+        assert str(exc) == "successor_not_ready"
+    else:
+        raise AssertionError("successor packet must require preserved experience")
