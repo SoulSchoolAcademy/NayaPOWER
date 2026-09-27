@@ -100,3 +100,41 @@ testFn("invalid node key is rejected", async () => {
     /UNKNOWN_NODE/
   );
 });
+
+
+function canonicalNodeFixtures() {
+  return N9_NODE_KEYS.map((key, index) => ({
+    intelligent_block_id: `IB-${String(1233 + index).padStart(6, "0")}`,
+    node_no: index + 1,
+    key,
+    triad: index < 3 ? "ORIENTATION" : index < 6 ? "COGNITION" : "EVOLUTION",
+    purpose: `purpose-for-${key}`,
+    core_question: `question-for-${key}`,
+    responsibilities: [`responsibility-${key}`],
+    activation_rules: [`activation-rule-${key}`],
+    runtime_role: key,
+    effectiveness_status: "NOT_YET_PROVEN",
+  }));
+}
+
+testFn("decision trace binds every invocation to the loaded canonical Node artifact", async () => {
+  const result = await evaluateNineNodeKernel(baseContext(), {
+    nodes: canonicalNodeFixtures(),
+  });
+
+  assert.equal(result.node_invocations.length, 9);
+  for (const invocation of result.node_invocations) {
+    assert.ok(invocation.source_node_hash);
+    assert.ok(invocation.source_node_id);
+    assert.ok(invocation.source_node_purpose);
+    assert.ok(invocation.source_node_core_question);
+  }
+});
+
+testFn("wrong canonical Node order is rejected before a decision", async () => {
+  const nodes = canonicalNodeFixtures().slice().reverse();
+  await assert.rejects(
+    () => evaluateNineNodeKernel(baseContext(), { nodes }),
+    /INVALID_NODE_KERNEL/
+  );
+});
