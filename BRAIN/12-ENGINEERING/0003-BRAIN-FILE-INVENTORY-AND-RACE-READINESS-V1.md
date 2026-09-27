@@ -40,7 +40,7 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 ## Critical findings fixed in this pass
 
 1. **Nine Node objects had empty relationship arrays** even though the canonical graph seed defined their relationships. All nine objects were updated to v1.1 and aligned to the graph seed with explicit incoming/outgoing relationship lineage.
-2. **The file inventory/receipt is stale.** The current BRAIN tree has 76 files, while `REAL-TREE.json` declares 74. This is now an explicit repair item rather than hidden drift.
+2. **The file inventory/receipt is stale.** The current BRAIN tree has 77 files; `REAL-TREE.json` now records 75 counted files while excluding the two receipt files themselves.
 3. **The runtime registry is not the runtime.** `MANIFEST.json` and `0003-RUNTIME-REGISTRY-V1.json` correctly define the machine contract, but main does not yet prove that the actual application entrypoint consumes them.
 4. **The Brain documentation is ahead of executable convergence.** The BRAIN is coherent as a semantic substrate, but the race gate remains blocked until the nine-node runtime, canonical Supabase persistence, retrieval, authority, outcome, learning and successor loop are one verified executable lineage.
 
@@ -122,8 +122,8 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 | ROOT | `MASTER-MAP.md` | 92% | READY / PROOF PENDING | Strong navigation map; status is intentionally not a runtime claim. |
 | ROOT | `NAYAPOWER-BRAIN-INDEX.json` | 92% | UPDATED REQUIRED | Should include this inventory and explicit runtime-convergence state. |
 | ROOT | `README.md` | 90% | READY | Navigation only. |
-| ROOT | `REAL-TREE.json` | 70% | STALE RECEIPT | Current tree contains 76 files while receipt declares 74 and is pinned to an older generation. |
-| ROOT | `REAL-TREE.md` | 70% | STALE RECEIPT | Same stale-tree issue; regenerate after canonical tree settles. |
+| ROOT | `REAL-TREE.json` | 95% | REGENERATED | Structural receipt now records 75 counted BRAIN files (77 total minus the two receipt files). |
+| ROOT | `REAL-TREE.md` | 95% | REGENERATED | Markdown receipt is synchronized to the current Git-tree receipt. |
 
 ## Completion categories for Nayas
 
