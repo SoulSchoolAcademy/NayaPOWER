@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://naya.power/schemas/learning-record-v1.json",
+  "title": "Learning Record",
+  "description": "Defines the structure for learning records that track behavioral improvement from verified experience.",
+  "type": "object",
+  "required": ["learning_id", "source_outcome", "lesson", "verification_state", "applicability", "created_at"],
+  "properties": {
+    "learning_id": {
+      "type": "string",
+      "description": "Unique identifier for this learning record"
+    },
+    "source_outcome": {
+      "type": "string",
+      "description": "Reference to the verified outcome that produced this learning"
+    },
+    "lesson": {
+      "type": "string",
+      "description": "The distilled lesson or behavioral change"
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": ["CANDIDATE", "VERIFIED", "REJECTED", "CONTRADICTED", "SUPERSEDED"],
+      "description": "Current verification state of this learning"
+    },
+    "applicability": {
+      "type": "object",
+      "required": ["context", "conditions"],
+      "properties": {
+        "context": { "type": "string", "description": "When this learning applies" },
+        "conditions": { "type": "array", "items": { "type": "string" }, "description": "Specific conditions for application" }
+      }
+    },
+    "behavioral_effect": {
+      "type": ["object", "null"],
+      "properties": {
+        "measured": { "type": "boolean" },
+        "effect_description": { "type": "string" },
+        "measurement_method": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "description": "Measured behavioral effect if available"
+    },
+    "compounding": {
+      "type": "object",
+      "properties": {
+        "compounds_with": { "type": "array", "items": { "type": "string" }, "description": "Other learnings this compounds with" },
+        "compounding_measured": { "type": "boolean" }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this learning was first identified"
+    },
+    "verified_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When this learning was verified"
+    },
+    "contradictions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known contradictions with other learnings"
+    }
+  },
+  "additionalProperties": false
+}

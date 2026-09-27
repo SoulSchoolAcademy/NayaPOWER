@@ -1621,6 +1621,15 @@ Naya can prove.
 Naya must never silently convert technical evidence into human approval.
 
 🔥 Priority Order for Getting This Right
+
+> **CONTRACT COUNT RECONCILIATION NOTE (2026-09-27):** This document says "26 contracts"
+> but the stack enumerated below (Waves 1-6) covers IDs 00-26, which is 27 contracts. The
+> enforceable kernel specification (PART #4) requires exactly 27 (contract_id_range
+> ["00","26"], contract_primary_ownership min/maxProperties 27), and PART #1 calls it
+> "THE 27-CONTRACT → 9-NODE COMPILATION". The canonical count is being reconciled in the
+> Contract Registry: **`KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json`** (canonical count
+> adopted there: 27 contracts, IDs 00-26). The "26" here refers to the highest contract ID.
+
 I would not write these sequentially as 26 isolated documents. That would create the exact documentation treadmill we've been fighting.
 I would build them as a dependency graph.
 WAVE 1 — Constitutional Core

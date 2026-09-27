@@ -1,13 +1,15 @@
 {
   "schema": "naya.brain.index.v1",
+  "schema_version": "1.0",
+  "generated_at": "2026-09-27T00:00:00Z",
   "status": "POPULATION_IN_PROGRESS_RUNTIME_CONVERGENCE_HARDENED",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
-  "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
-  "constitutional_root": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
-  "governance_root": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
-  "superbrain_spec": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+  "canonical_root": "ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+  "constitutional_root": "ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+  "governance_root": "ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+  "superbrain_spec": "ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
   "brain_map": "BRAIN/MASTER-MAP.md",
   "knowledge_synthesis": "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
   "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
@@ -125,7 +127,10 @@
     "CONTEXTUALIZES",
     "INVALIDATES",
     "REFINES",
-    "CORRECTS"
+    "CORRECTS",
+    "ENABLES",
+    "PRODUCES",
+    "APPLIES_TO"
   ],
   "lifecycle": [
     "EXPERIENCE",
@@ -158,6 +163,7 @@
   ],
   "source_corpus": {
     "concepts": 15,
+    "concepts_note": "Updated from 13 to 15 to reflect full corpus reconciliation",
     "duplicate_pairs": [
       [
         "#7",

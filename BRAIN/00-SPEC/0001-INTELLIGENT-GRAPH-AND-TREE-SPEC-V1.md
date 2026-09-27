@@ -48,24 +48,29 @@ No dimension substitutes for another.
 The target brain is organized as:
 
 ```
-BRAIN
-├── SPEC
-├── CONSTITUTION
-├── GOVERNANCE
-├── ARCHITECTURE
-├── KERNEL
-├── INTELLIGENCE
-├── MEMORY
-├── PROOF
-├── LEARNING
-├── SUCCESSION
-├── EVOLUTION
-├── INTERFACES
-├── ENGINEERING
-├── KNOWLEDGE
-├── OPERATIONS
-└── ARCHIVE
+ROOT/
+├── CONSTITUTION/          ← immutable human-level principles (outside BRAIN)
+├── GOVERNANCE/            ← authority, consent, change control (outside BRAIN)
+├── ARCHITECTURE/          ← system design (outside BRAIN)
+└── BRAIN/
+    ├── SPEC
+    ├── GOVERNANCE
+    ├── ARCHITECTURE
+    ├── KERNEL
+    ├── INTELLIGENCE
+    ├── MEMORY
+    ├── PROOF
+    ├── LEARNING
+    ├── SUCCESSION
+    ├── EVOLUTION
+    ├── INTERFACES
+    ├── ENGINEERING
+    ├── KNOWLEDGE
+    ├── OPERATIONS
+    └── ARCHIVE
 ```
+
+The CONSTITUTION, GOVERNANCE, and ARCHITECTURE root directories sit **above and outside** the BRAIN directory. They are the immutable foundation from which all brain-level authority flows.
 
 The numeric prefixes are **semantic domain addresses**, not arbitrary document numbers.
 
@@ -219,7 +224,7 @@ Never collapse confidence into truth.
 
 ## 9. Graph relationship vocabulary
 
-The initial controlled relationship vocabulary is:
+The canonical controlled relationship vocabulary (21 types):
 
 ```
 DERIVED_FROM
@@ -241,7 +246,22 @@ CONTEXTUALIZES
 INVALIDATES
 REFINES
 CORRECTS
+ENABLES
+PRODUCES
+APPLIES_TO
 ```
+
+| Category | Types |
+|---|---|
+| Lineage | DERIVED_FROM, SUPERSEDES, SUCCEEDS |
+| Support | SUPPORTS, CONTEXTUALIZES, RELATED_TO |
+| Dependency | DEPENDS_ON, USED_BY, APPLIES_TO |
+| Authority | GOVERNS, AUTHORIZED_BY |
+| Causation | CAUSED, RESULTED_IN, PRODUCES |
+| Verification | VERIFIED_BY, INVALIDATES |
+| Learning | LEARNED_FROM, ENABLES |
+| Refinement | IMPLEMENTS, REFINES, CORRECTS |
+| Conflict | CONTRADICTS |
 
 Every relationship has a source, target, type, provenance, timestamp, and status.
 

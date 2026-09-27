@@ -3,6 +3,10 @@
 **Status:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED  
 **Purpose:** The single human/AI-readable map of the NayaPOWER brain.
 
+**Key references:**
+- [REAL-TREE.md](./REAL-TREE.md) — machine-verified file inventory
+- [12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md](./12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md) — AAA quality scorecard
+
 ## 1. What this map means
 
 This map answers four questions immediately:
@@ -20,11 +24,39 @@ The living brain is the combination of:
 
 ## 2. Canonical brain layers
 
+The CONSTITUTION sits at the repository root, above and outside the BRAIN directory. It is the immutable human-level governing document from which all other authority flows.
+
+```
+ROOT/
+├── CONSTITUTION/          ← immutable human-level principles (outside BRAIN)
+├── GOVERNANCE/            ← authority, consent, change control (outside BRAIN)
+├── ARCHITECTURE/          ← system design (outside BRAIN)
+└── BRAIN/
+    ├── 00-SPEC/           ← definitions, schemas, naming laws
+    ├── 01-GOVERNANCE/     ← brain-level governance contracts
+    ├── 02-ARCHITECTURE/   ← brain-level boundaries
+    ├── 03-KERNEL/         ← nine-node semantic runtime
+    ├── 04-INTELLIGENCE/   ← durable objects, events, relationships
+    ├── 05-MEMORY/         ← retention, indexing, retrieval
+    ├── 06-PROOF/          ← evidence, verification, causal acceptance
+    ├── 07-LEARNING/        ← candidate and verified learning
+    ├── 08-SUCCESSION/     ← cold boot, handoff, continuity
+    ├── 09-EVOLUTION/      ← governed self-improvement
+    ├── 10-INTERFACES/     ← Hub, API, NayaNET projections
+    ├── 11-KNOWLEDGE/      ← distilled domain knowledge
+    ├── 12-ENGINEERING/    ← implementation, runtime, deployment
+    ├── 90-OPERATIONS/     ← current operational truth
+    └── 99-ARCHIVE/        ← historical material
+```
+
 | Address | Layer | Canonical responsibility |
 |---|---|---|
+| ROOT | CONSTITUTION | Immutable human-level governing principles |
+| ROOT | GOVERNANCE | Authority, consent, change, promotion and revocation |
+| ROOT | ARCHITECTURE | System boundaries, dependencies and composition |
 | 00 | SPEC | Definitions, schemas, naming and representation laws |
-| 01 | GOVERNANCE | Authority, consent, change, promotion and revocation |
-| 02 | ARCHITECTURE | System boundaries, dependencies and composition |
+| 01 | GOVERNANCE | Brain-level governance contracts |
+| 02 | ARCHITECTURE | Brain-level boundaries and dependencies |
 | 03 | KERNEL | Nine-node semantic runtime |
 | 04 | INTELLIGENCE | Durable objects, events and relationships |
 | 05 | MEMORY | Retention, indexing, retrieval and reconciliation |
@@ -94,19 +126,19 @@ Never collapse these:
 
 ## 7. Brain entry sequence for a cold Naya
 
-A cold Naya reads:
+A cold Naya reads (items 1–4 are root-level files outside BRAIN/):
 
-1. Constitution
-2. Governance
-3. Master Design Contract
-4. Superbrain Specification
-5. Brain Master Map
-6. Kernel manifest and contracts
-7. Current reality
-8. Relevant canonical intelligence
-9. Evidence and authority
+1. **ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — immutable principles
+2. **ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
+3. **ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
+4. **ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
+5. **BRAIN/MASTER-MAP.md** — this map
+6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — kernel runtime
+7. **BRAIN/90-OPERATIONS/** — current reality
+8. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
+9. **BRAIN/06-PROOF/** — evidence and authority
 10. Current objective and next action
-11. Successor context
+11. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
 
@@ -125,6 +157,21 @@ No projection may silently become authority.
 Current target:
 
 **ARCHITECTURE ESTABLISHED → KNOWLEDGE DISTILLATION IN PROGRESS → CANONICAL OBJECT POPULATION NEXT → BEHAVIORAL PROOF PENDING**
+
+### Concrete next actions
+
+| # | Action | Owner | Status |
+|---|---|---|---|
+| 1 | Complete knowledge distillation from Concept #1–#13 corpus | KNOW | IN PROGRESS |
+| 2 | Reconcile duplicate pair (#7, #8) into single canonical object | KNOW | PENDING |
+| 3 | Promote distilled concepts to canonical Intelligent Objects | KNOW | PENDING |
+| 4 | Build graph relationships between promoted objects | INTELLIGENCE | PENDING |
+| 5 | Write proof records for each promoted object | PROOF | PENDING |
+| 6 | Implement runtime loader consuming MANIFEST.json | ENGINEERING | PENDING |
+| 7 | Cold-boot test: fresh Naya discovers and retrieves intelligence | OPERATIONS | PENDING |
+| 8 | Successor handoff test: context survives context death | SUCCESSION | PENDING |
+| 9 | Behavioral proof: successor performs better than predecessor | VERIFY | PENDING |
+| 10 | Human Director ratification of canonical architecture | HUMAN | PENDING |
 
 This map does not claim a living brain merely because its documentation exists.
 

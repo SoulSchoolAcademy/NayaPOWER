@@ -1797,6 +1797,14 @@ Some may turn out to be implementation specifications rather than contracts.
 Some may be missing.
 That's precisely what our next discovery phase should determine.
 
+> **CONTRACT COUNT RECONCILIATION NOTE (2026-09-27):** This section presents a 19-contract
+> candidate library. PART #3 presents the canonical stack as "26 contracts" but enumerates
+> IDs 00-26, which is 27 contracts; the enforceable kernel specification (PART #4) requires
+> exactly 27. The canonical count is being reconciled in the Contract Registry:
+> **`KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json`** (canonical count adopted there: 27
+> contracts, IDs 00-26). Until the Human Director ratifies the registry, treat the 19-contract
+> map above as a historical candidate library, not the canonical stack.
+
 🧭 The really important distinction
 I think we've now got the conceptual model you're looking for:
 A contract is NOT:
