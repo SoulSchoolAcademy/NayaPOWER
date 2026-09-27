@@ -51,8 +51,21 @@ def _authenticated_session(
             },
             method="POST",
         )
-        with urlopen(refresh_request, timeout=10) as response:
-            payload = json.loads(response.read())
+        try:
+            with urlopen(refresh_request, timeout=10) as response:
+                payload = json.loads(response.read())
+        except HTTPError as refresh_error:
+            raw = refresh_error.read().decode("utf-8", errors="replace")
+            try:
+                error_payload = json.loads(raw)
+            except json.JSONDecodeError:
+                error_payload = {}
+            safe_code = error_payload.get("error_code") or error_payload.get("error")
+            safe_message = error_payload.get("msg") or error_payload.get("message") or refresh_error.reason
+            raise AssertionError(
+                f"Supabase refresh failed: HTTP {refresh_error.code}; "
+                f"code={safe_code!r}; message={safe_message!r}"
+            ) from refresh_error
         access_token = payload.get("access_token") or ""
 
     owner_id = payload.get("id") or payload.get("user", {}).get("id")
