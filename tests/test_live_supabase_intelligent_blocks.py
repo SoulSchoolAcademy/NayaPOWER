@@ -19,7 +19,7 @@ def _protected_config():
         "refresh_token": os.environ.get("SUPABASE_USER_REFRESH_TOKEN"),
         "api_key": os.environ.get("SUPABASE_PUBLISHABLE_KEY"),
     }
-    if not all(values.values()):
+    if not all(values[name] for name in ("url", "access_token", "api_key")):
         pytest.skip("protected Supabase live-proof credentials are not present")
     return values
 
