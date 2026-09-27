@@ -90,7 +90,7 @@ async function loadMasterNodeKernel(_client: any, _userId: string) {
   );
 
   if (nodes.length !== MASTER_NODE_KEYS.length) {
-    throw new Error("MASTER_NODE_KERNEL_SCOPE_INVALID:" + String(nodes.length) + "/9");
+    throw new Error("MASTER_NODE_KERNEL_INCOMPLETE:" + String(nodes.length) + "/9");
   }
 
   const invalid = nodes.filter((node: any, index: number) =>
