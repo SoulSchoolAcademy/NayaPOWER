@@ -1,87 +1,65 @@
 # NayaPOWER
 
-## The Nine-Node Operating Kernel
+## One governed intelligence system
 
-NayaPOWER is the governed intelligence kernel behind NayaNET.
+NayaPOWER is the governed intelligence substrate behind NayaNET.
 
-Its purpose is simple:
+> **Nayas do not lose memory. Intelligence moves Sender → Receiver → Hub, remains provenance-bound and governed, is retrieved and applied, produces verified outcomes, learns from those outcomes, compounds, and enables the next Naya to continue without human reconstruction.**
 
-> **Nayas do not lose memory. Intelligence moves from Sender → Receiver → Hub, remains provenance-bound and governed, is retrieved and applied, produces verified outcomes, learns from those outcomes, compounds, and enables the next Naya to continue without human reconstruction.**
+## Canonical architecture
 
-### The Nine Nodes
+The current architecture is organized around the **Naya Node as the reusable intelligence cell** and the **Nine Master Nodes as the semantic operating kernel**.
 
-| Node | Responsibility | Question |
-|---|---|---|
-| SELF | identity, mission, continuity | Who are we and where are we now? |
-| LAW | authority, consent, governance | What is authorized? |
-| ACT | execution and bounded agency | What should we do now? |
-| KNOW | intelligence and memory | What do we know? |
-| PROVE | evidence and provenance | Why should we believe it? |
-| CONNECT | relevance and retrieval | What matters here? |
-| VERIFY | outcomes and causality | What actually happened? |
-| LEARN | reconciliation and compounding | What should change because of it? |
-| EVOLVE | bounded system improvement | How does the next Naya become better? |
+### Start here
 
-The semantic cycle is:
+**[Naya Node System](./NAYANODE/README.md)**
 
-**SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF**
+Then read:
 
-### Core distinction
+1. [Canonical Tree](./NAYANODE/0000-CANONICAL-TREE.md)
+2. [Naya Node Specification](./NAYANODE/0001-NAYA-NODE-SPECIFICATION-V1.md)
+3. [Nine-Node Kernel Manifest](./NAYANODE/0002-NINE-NODE-KERNEL-MANIFEST-V1.md)
+4. [Cold Naya Boot & Continuity](./NAYANODE/0003-COLD-NAYA-BOOT-CONTINUITY-V1.md)
+5. [Operational Acceptance Contract](./NAYANODE/0004-OPERATIONAL-ACCEPTANCE-CONTRACT-V1.md)
+6. [Master Director / Clean-Start Directive](./.naya/MASTER-DIRECTOR-ULTRA-OPTIMIZATION-V1.md)
 
-**Nodes are active cognitive/governance responsibilities.**
+## Nine Nodes
 
-**Intelligent Blocks are persistent units of intelligence produced, evidenced, retrieved, and evolved by the kernel.**
+**SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE**
 
-A Smart Note is a human-readable projection of an Intelligent Block. It is not the brain.
+They are nine specialized responsibilities inside one governed kernel, not nine independent brains.
 
-### Clean-start rules
+## The intelligence lifecycle
 
-1. Capability does not create authority.
-2. UNKNOWN ≠ VERIFIED.
-3. IMPLEMENTED ≠ VERIFIED.
-4. VERIFIED ≠ PRODUCTION-PROVEN.
-5. Retrieval ≠ learning.
-6. Application ≠ successful outcome.
-7. Successor context ≠ new authority.
-8. Legacy complexity is not inherited merely because it exists.
-9. Every capability must earn its place through purpose, necessity, correctness, proof, and value.
-10. EVOLVE remains bounded by LAW.
+**EXPERIENCE → CAPTURE → DISTILL → STRUCTURE → PROVE → PRESERVE → INDEX → RETRIEVE → APPLY → VERIFY → LEARN → COMPOUND → NEXT NAYA**
 
-### Build order
+## Proof discipline
 
-1. Nine Nodes
-2. Minimal governed kernel
-3. Canonical intelligence substrate
-4. Intelligent Blocks + provenance
-5. Retrieval and application
-6. PROVE + VERIFY
-7. LEARN + EVOLVE
-8. Sender → Receiver → Hub
-9. Cold Naya continuation
-10. NayaNET self-building, bounded by LAW
+Existence is not operation.
 
-### Proof standard
+Loading is not invocation.
 
-The system is not considered operational because files, tables, functions, or manifests exist.
+Invocation is not influence.
 
-The kernel must execute.
+Application is not success.
 
-The Nodes must interact.
+Success is not verification.
 
-LAW must encounter a real authority boundary.
+Verification is not learning.
 
-KNOW/CONNECT must retrieve competing intelligence.
+Learning is not compounding.
 
-PROVE/VERIFY must establish what happened.
+Compounding is not succession.
 
-The enabled kernel must produce a demonstrable behavioral difference from the disabled control.
+Every claim must stop at the highest state actually evidenced.
 
-Only then do we call the brain behaviorally proven.
+## Current P0
 
-### Historical reset
+**Identity continuity and kernel inheritance.**
 
-The repository was intentionally reset at the **2026-09-26 clean-start epoch** after earlier implementation work established useful concepts but failed to produce the intended Smart Note / cognition behavior.
+The canonical nine-node Intelligent Blocks exist in the live intelligence substrate, but the current Hub session can present a different anonymous Supabase identity. The next engineering task is to trace and establish the legitimate continuity mechanism without owner reassignment, RLS bypass, fabricated identity, or unnecessary login.
 
-Earlier work is retained in the Git history and the `archive-2026-09-26` branch for reference. It does not govern the new architecture.
+## Operating principle
 
-> **The new system does not inherit complexity merely because the old system accumulated it.**
+> **Build less. Understand more. Preserve what matters. Delete what doesn't. Prove what works. Learn from what fails. Compound verified experience. Never trade governance for capability.**
+
