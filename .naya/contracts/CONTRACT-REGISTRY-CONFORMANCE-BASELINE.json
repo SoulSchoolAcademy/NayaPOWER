@@ -1,0 +1,356 @@
+{
+  "schema": "naya/contract-registry-conformance-baseline/v1",
+  "note": "Known debt of the canonical contract registry. A finding in this file is reported but does not fail the gate. A finding NOT in this file is new drift and fails. Clearing an entry here is a deliberate, reviewable act.",
+  "findings": [
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-000",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "c7a72783a6600ead"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-001",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "94d3f1a44fa966b1"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-002",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "bba327ceff1f9927"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-003",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "8a6bee4bd2ccb7ed"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-004",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "4faa2fd91b824889"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-005",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "06c1e7160c64b068"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-006",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "44f3e4ba228b0382"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-007",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "e7d1bf51884107b4"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-008",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "bbfdf88e073f47f8"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-009",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "e8857904f4da0929"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-010",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "3fdda5c90d7fd062"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-011",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "c7fec8d22e826350"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-012",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "b485c62591fca931"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-013",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "88799fa1c3929f4a"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-014",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "465663e664c21667"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-015",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "29bf09d958ecbbf1"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-016",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "d46d7009cd064ff5"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-017",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "c6562b3298a6dc67"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-018",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "9a57a07aa05eeaf1"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-019",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "169b1a53498c15e0"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-020",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "e1ba136c00221c63"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-021",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "93543a9bb2e0bc1d"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-022",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "2c527d71920fe122"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-023",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "30f27df2e0159ad1"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-024",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "a426bcc3e34a42ff"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-025",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "a992907288ec8c8f"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-026",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "ef472fcefe949d2c"
+    },
+    {
+      "code": "ACCEPTANCE_CLAIM_UNENFORCED",
+      "severity": "WARN",
+      "subject": "CC-027",
+      "detail": "entry defines acceptance criteria but cites no executable acceptance artifact, so the criteria cannot be checked by any gate",
+      "fingerprint": "c8baaf00f80cd2d5"
+    },
+    {
+      "code": "CITED_PATH_MISSING",
+      "severity": "ERROR",
+      "subject": "STATE.json",
+      "detail": "CC-002 cites an artifact that does not exist in the repository",
+      "fingerprint": "df93854c5e3cc039"
+    },
+    {
+      "code": "CITED_PATH_MISSING",
+      "severity": "ERROR",
+      "subject": "supabase/migrations/20260924110000_wire_authority_grant_into_intelligence_commit_v1.sql",
+      "detail": "CC-004 cites an artifact that does not exist in the repository",
+      "fingerprint": "cefca762d985430f"
+    },
+    {
+      "code": "LIBRARY_INDEX_LAGS_TREE",
+      "severity": "WARN",
+      "subject": ".naya/contracts/README.md",
+      "detail": "40 contract artifact(s) absent from the library index, including 00-CONTRACT-STACK-OPERATING-LAW.md, 01-SMART-NOTE-AND-SMART-LINK.md, 01-SMART-NOTE-INTELLIGENT-BLOCK.md, 01-EXECUTION-PROTOCOL.md",
+      "fingerprint": "9b323c489e060221"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/00-CONTRACT-STACK-OPERATING-LAW.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "8577511d0e569580"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "fda76030e3a62477"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/01-INTELLIGENCE/01-SMART-NOTE-AND-SMART-LINK.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "00450156ca4c03f8"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/01-SMART-NOTE-INTELLIGENT-BLOCK.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "33d2042a484e3bb5"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "45cb8306190738aa"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/02-SMART-LINK.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "4d5d0e20395ca097"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/05-HUB-CONSUMPTION.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "100379c4bea4dfd0"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/06-ROOM.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "e8a44b133401cb9c"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/07-SMARTCONNECT.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "cc0eaeb598fd9bf1"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/08-PROOF-RECEIPT.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "920e355b8dc20d6f"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/09-LEARNING.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "293654b5ef5a58d3"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/10-CONTINUITY-SUCCESSOR.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "66ca24d91f91dbc9"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "2d622200adbee81e"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/SMART-LEDGER-CCT-MACHINE-CONTRACT-V1.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "ae6b689f2167efa9"
+    },
+    {
+      "code": "RATIFICATION_UNPROVEN",
+      "severity": "ERROR",
+      "subject": ".naya/contracts/VERIFIED-AI-ACTION-V1.md",
+      "detail": "artifact claims RATIFIED with no separate recorded human ratification record; technical proof is not ratification",
+      "fingerprint": "c73605c836a99778"
+    },
+    {
+      "code": "REGISTRY_UNREACHABLE_FROM_BOOT",
+      "severity": "ERROR",
+      "subject": ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md",
+      "detail": "no canonical boot path references the registry; a cold Naya following the mandatory boot sequence cannot discover it",
+      "fingerprint": "632626c6e84e9c9f"
+    },
+    {
+      "code": "TRUTH_STATE_VOCABULARY_DRIFT",
+      "severity": "ERROR",
+      "subject": "CONFLICTED",
+      "detail": "state is not definable at truth-model level in the constitutional law; the required state set cannot be enforced",
+      "fingerprint": "b3496eee3cff0872"
+    },
+    {
+      "code": "TRUTH_STATE_VOCABULARY_DRIFT",
+      "severity": "ERROR",
+      "subject": "MISSING",
+      "detail": "state is not definable at truth-model level in the constitutional law; the required state set cannot be enforced",
+      "fingerprint": "2d9937e366c783c9"
+    },
+    {
+      "code": "UNPROVEN_CLAIM_CONTRADICTED",
+      "severity": "ERROR",
+      "subject": "CC-017",
+      "detail": "registry states 'no implementation' while .naya/runtime/portable_authorization.py exists and .github/workflows/verify-stream-b-cross-process-intelligence-authorization.yml runs it",
+      "fingerprint": "4f0ee7615ae3bd62"
+    }
+  ]
+}
