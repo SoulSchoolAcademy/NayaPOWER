@@ -1,6 +1,6 @@
 # NayaPOWER Brain — AAA File-by-File Scorecard V1
 
-**Review target:** current brain lineage after the knowledge-population pass.  
+**Review target:** current Brain lineage on the AAA hardening branch, reconciled against NAYA-NODE-0001 Pre-Race Qualification (Issue #830).  
 **Scoring:** 0–10 architecture/usability/readiness review; **not** runtime proof.  
 **Dimensions:** E=effectiveness, H=human understandability, A=AI understandability, M=machine readiness, P=proof readiness.
 
@@ -23,8 +23,9 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | Succession | 5.0 | 10 |
 | Production proof | 3.5 | 10 |
 
-**Current architecture/readiness assessment: 6.9/10.**  
+**Current artifact/readiness assessment: 8.1/10.**  
 **Current living-intelligence proof: NOT ESTABLISHED.**  
+**Pre-race qualification:** BLOCKED pending live runtime convergence and behavioral/successor evidence.  
 **Pre-race qualification:** BLOCKED pending live runtime convergence and behavioral/successor evidence.
 
 ## File scorecard
