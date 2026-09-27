@@ -117,8 +117,9 @@ class IntelligentBlock:
 class SupabaseIntelligentBlockReader:
     """Read-only adapter for canonical Intelligent Block persistence.
 
-    Supabase/RLS remains the authorization boundary. The adapter requires an
-    access token, filters by owner_id, and performs no persistence writes.
+    Supabase/RLS remains the authorization boundary. User JWTs authenticate
+    through Authorization; a separate publishable/anon API key is sent through
+    apikey. No persistence writes are performed by this adapter.
     """
 
     def __init__(
@@ -126,16 +127,29 @@ class SupabaseIntelligentBlockReader:
         *,
         url: str | None = None,
         access_token: str | None = None,
+        api_key: str | None = None,
         request: Callable[[Request], bytes] | None = None,
     ) -> None:
         self._url = (url or os.environ.get("SUPABASE_URL", "")).rstrip("/")
         self._access_token = access_token or os.environ.get("SUPABASE_ACCESS_TOKEN", "")
+        self._api_key = api_key or os.environ.get("SUPABASE_API_KEY", "") or self._access_token
         self._request = request or self._default_request
 
     @staticmethod
     def _default_request(request: Request) -> bytes:
         with urlopen(request, timeout=10) as response:
             return response.read()
+
+    def _headers(self) -> dict[str, str]:
+        if not self._access_token:
+            raise RuntimeError("Supabase user access token is required for persistence retrieval")
+        if not self._api_key:
+            raise RuntimeError("Supabase API key is required for persistence retrieval")
+        return {
+            "Authorization": f"Bearer {self._access_token}",
+            "apikey": self._api_key,
+            "Accept": "application/json",
+        }
 
     def get_context(
         self, *, intelligent_block_id: str, owner_id: str
@@ -160,22 +174,12 @@ class SupabaseIntelligentBlockReader:
             f"?select={select}&target_id=eq.{target}&owner_id=eq.{owner}"
             f"&order=created_at.asc"
         )
-        request = Request(
-            endpoint,
-            headers={
-                "Authorization": f"Bearer {self._access_token}",
-                "apikey": self._access_token,
-                "Accept": "application/json",
-            },
-            method="GET",
-        )
+        request = Request(endpoint, headers=self._headers(), method="GET")
         rows = json.loads(self._request(request))
         if not isinstance(rows, list):
             raise RuntimeError("canonical relationship retrieval returned a non-list payload")
 
-        relationships = tuple(
-            IntelligentRelationship.from_row(row) for row in rows
-        )
+        relationships = tuple(IntelligentRelationship.from_row(row) for row in rows)
         mismatched = [
             relationship.relationship_id
             for relationship in relationships
@@ -190,8 +194,8 @@ class SupabaseIntelligentBlockReader:
     def get_by_intelligent_block_id(
         self, *, intelligent_block_id: str, owner_id: str
     ) -> IntelligentBlock | None:
-        if not self._url or not self._access_token:
-            raise RuntimeError("Supabase URL and access token are required for persistence retrieval")
+        if not self._url:
+            raise RuntimeError("Supabase URL is required for persistence retrieval")
         if not intelligent_block_id or not owner_id:
             raise ValueError("intelligent_block_id and owner_id are required")
 
@@ -202,15 +206,7 @@ class SupabaseIntelligentBlockReader:
             f"{self._url}/rest/v1/nayanet_intelligent_blocks"
             f"?select={select}&intelligent_block_id=eq.{block_id}&owner_id=eq.{owner}&limit=1"
         )
-        request = Request(
-            endpoint,
-            headers={
-                "Authorization": f"Bearer {self._access_token}",
-                "apikey": self._access_token,
-                "Accept": "application/json",
-            },
-            method="GET",
-        )
+        request = Request(endpoint, headers=self._headers(), method="GET")
         rows = json.loads(self._request(request))
         if not isinstance(rows, list):
             raise RuntimeError("Supabase Intelligent Block retrieval returned a non-list payload")
