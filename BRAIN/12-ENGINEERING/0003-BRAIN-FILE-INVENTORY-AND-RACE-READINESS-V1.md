@@ -1,9 +1,9 @@
 # NayaPOWER Brain — File Inventory & Race Readiness V1
 
-**Review date:** 2026-09-27  
+**Review date:** 2026-09-27 — hardening pass 2  
 **Repository:** SoulSchoolAcademy/NayaPOWER  
 **Scope:** `BRAIN/` on `main`  
-**Inventory count:** 76 files currently present in the BRAIN tree (directories excluded).  
+**Inventory count:** 77 files currently present in the BRAIN tree (directories excluded).  
 **Purpose:** Turn the Brain into an executable work inventory: what exists, what is ready, what is blocked by proof, what needs hardening, and what another Naya should do next.
 
 ## Readiness law
@@ -31,9 +31,9 @@ Race entry still requires the whole system to pass the canonical cold/runtime/be
 | ENGINEERING | 3 | 92% | Truth law strong; scorecard now becomes inventory anchor. |
 | OPERATIONS | 2 | 94% | Execution doctrine strong. |
 | ARCHIVE | 1 | 90% | Boundary clear. |
-| ROOT | 5 | 83% | Tree receipts are stale and must be regenerated. |
+| ROOT | 5 | 95% | Tree receipts are synchronized; index/inventory linkage is current. |
 
-**BRAIN artifact-role readiness: ~89% overall.**  
+**BRAIN artifact-role readiness: ~91% overall after this hardening pass.**  
 **Whole-system race readiness: NOT YET QUALIFIED.**  
 **Primary blocker:** convergence of the executable Nine-Node runtime with the canonical Supabase persistence/retrieval boundary on the canonical branch.
 
