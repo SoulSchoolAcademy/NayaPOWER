@@ -106,6 +106,32 @@ def evaluate_receipt(receipt: Mapping[str, Any]) -> Verdict:
             if integrity.get(control) != "PASS":
                 reasons.append(f"evaluator {control.replace('_', ' ')} is not PASS")
 
+    # Explicit claims cannot hide behind a lower declared evidence level.
+    causal_claim = receipt.get("causal")
+    if isinstance(causal_claim, Mapping) and _has(causal_claim.get("claim")):
+        if not _has(causal_claim.get("control")):
+            reasons.append("causal claim requires a control run")
+        if not _has(causal_claim.get("treatment")):
+            reasons.append("causal claim requires a treatment run")
+        if not isinstance(causal_claim.get("confounders"), list):
+            reasons.append("causal claim requires an explicit confounder list")
+
+    successor_claim = receipt.get("cold_successor")
+    if isinstance(successor_claim, Mapping) and any(
+        _has(successor_claim.get(k)) for k in ("cold_run", "inherited_evidence", "continuation_action")
+    ):
+        if not successor_claim.get("cold_run"):
+            reasons.append("cold successor run is not proven")
+        if not _has(successor_claim.get("inherited_evidence")):
+            reasons.append("successor inherited evidence is missing")
+        if not _has(successor_claim.get("continuation_action")):
+            reasons.append("successor continuation action is missing")
+
+    actual = receipt.get("actual")
+    if isinstance(actual, Mapping) and str(actual.get("language", "")).upper() in {"PROVEN", "VERIFIED", "SUCCESS"}:
+        if LEVELS.index(level) < LEVELS.index("L3_BEHAVIORALLY_OBSERVED"):
+            reasons.append("asserted language cannot upgrade the evidence level")
+
     # Stronger evidence levels require the corresponding experiment.
     if LEVELS.index(level) >= LEVELS.index("L5_CAUSALLY_ATTRIBUTED"):
         causal = receipt.get("causal")
