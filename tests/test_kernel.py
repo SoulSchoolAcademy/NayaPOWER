@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from kernel.nayapower_kernel import (
     Authority,
     DecisionContext,
@@ -18,6 +20,24 @@ def test_kernel_exposes_exactly_nine_master_nodes():
         Node.VERIFY,
         Node.LEARN,
         Node.EVOLVE,
+    )
+
+
+def test_kernel_boots_from_canonical_brain_manifest():
+    root = Path(__file__).resolve().parents[1]
+
+    kernel = Kernel(root)
+
+    assert tuple(node.value for node in kernel.manifest["nodes"]) == (
+        "SELF",
+        "LAW",
+        "ACT",
+        "KNOW",
+        "PROVE",
+        "CONNECT",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE",
     )
 
 
