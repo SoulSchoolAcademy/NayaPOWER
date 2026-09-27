@@ -5,43 +5,15 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-NODE_NAMES = (
-    "SELF",
-    "LAW",
-    "ACT",
-    "KNOW",
-    "PROVE",
-    "CONNECT",
-    "VERIFY",
-    "LEARN",
-    "EVOLVE",
-)
-
+NODE_NAMES = ("SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE")
 NODE_IDS = tuple(f"NAYA-KERNEL-{name}" for name in NODE_NAMES)
 
 ALLOWED_RELATIONSHIPS = {
-    "DERIVED_FROM",
-    "SUPPORTS",
-    "CONTRADICTS",
-    "DEPENDS_ON",
-    "IMPLEMENTS",
-    "GOVERNS",
-    "AUTHORIZED_BY",
-    "USED_BY",
-    "CAUSED",
-    "RESULTED_IN",
-    "VERIFIED_BY",
-    "LEARNED_FROM",
-    "SUPERSEDES",
-    "SUCCEEDS",
-    "RELATED_TO",
-    "CONTEXTUALIZES",
-    "INVALIDATES",
-    "REFINES",
-    "CORRECTS",
-    "ENABLES",
-    "PRODUCES",
-    "APPLIES_TO",
+    "DERIVED_FROM", "SUPPORTS", "CONTRADICTS", "DEPENDS_ON", "IMPLEMENTS",
+    "GOVERNS", "AUTHORIZED_BY", "USED_BY", "CAUSED", "RESULTED_IN",
+    "VERIFIED_BY", "LEARNED_FROM", "SUPERSEDES", "SUCCEEDS", "RELATED_TO",
+    "CONTEXTUALIZES", "INVALIDATES", "REFINES", "CORRECTS", "ENABLES",
+    "PRODUCES", "APPLIES_TO",
 }
 
 
@@ -52,7 +24,6 @@ def _read_json(path: Path) -> dict:
 def load_and_validate_brain(root: Path, root_override: Path | None = None) -> dict:
     base = Path(root_override) if root_override is not None else Path(root)
     errors: list[str] = []
-
     required = [
         base / "BRAIN/03-KERNEL/MANIFEST.json",
         base / "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
@@ -62,11 +33,9 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
         base / "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
         base / "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
     ]
-
     for path in required:
         if not path.exists():
             errors.append(f"missing:{path.relative_to(base)}")
-
     if errors:
         return {"ok": False, "node_count": 0, "source_count": 0, "graph_edge_count": 0, "errors": errors}
 
@@ -76,32 +45,29 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
     graph = _read_json(required[3])
     population = _read_json(required[5])
 
-    manifest_ids = [node["id"] for node in manifest.get("nodes", [])]
-    registry_ids = registry.get("node_ids", [])
-    index_ids = [node["id"] for node in index.get("nine_nodes", [])]
-
     for label, ids in (
-        ("manifest", manifest_ids),
-        ("registry", registry_ids),
-        ("index", index_ids),
+        ("manifest", [node["id"] for node in manifest.get("nodes", [])]),
+        ("registry", registry.get("node_ids", [])),
+        ("index", [node["id"] for node in index.get("nine_nodes", [])]),
     ):
         if tuple(ids) != NODE_IDS:
             errors.append(f"{label}_node_ids_do_not_match_canonical_order")
 
     object_dir = base / "BRAIN/04-INTELLIGENCE/OBJECTS"
     object_ids = []
+    objects: dict[str, dict] = {}
     for node_id in NODE_IDS:
         path = object_dir / f"{node_id}.json"
         if not path.exists():
             errors.append(f"missing:object:{node_id}")
             continue
         obj = _read_json(path)
+        objects[node_id] = obj
         object_ids.append(obj.get("object_id"))
         if obj.get("object_id") != node_id:
             errors.append(f"object_id_mismatch:{node_id}")
         if obj.get("object_type") != "NODE":
             errors.append(f"object_type_mismatch:{node_id}")
-
     if tuple(object_ids) != NODE_IDS:
         errors.append("node_object_set_incomplete")
 
@@ -120,45 +86,33 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
                 errors.append(f"duplicate_relationship_id:{relationship_id}")
             graph_relationships[relationship_id] = edge
 
-    # The graph seed and the materialized Node objects are two representations
-    # of one semantic graph. They must agree exactly on relationship identity,
-    # direction, type, endpoints and epistemic state. Otherwise the Brain can
-    # appear internally coherent while retrieval consumes a different graph.
+    # A relationship may legitimately be materialized on both endpoint objects.
+    # Validate every materialization against the single graph-seed definition,
+    # but do not misclassify identical endpoint copies as duplicate relationships.
     object_relationship_ids: set[str] = set()
-    for node_id in NODE_IDS:
-        path = object_dir / f"{node_id}.json"
-        if not path.exists():
-            continue
-        obj = _read_json(path)
+    for node_id, obj in objects.items():
         for rel in obj.get("relationships", []):
             relationship_id = rel.get("relationship_id")
             if not relationship_id:
                 errors.append(f"node_relationship_identity_incomplete:{node_id}")
                 continue
-            if relationship_id in object_relationship_ids:
-                errors.append(f"duplicate_node_relationship_id:{relationship_id}")
             object_relationship_ids.add(relationship_id)
             seed = graph_relationships.get(relationship_id)
             if seed is None:
                 errors.append(f"node_relationship_missing_from_graph:{node_id}:{relationship_id}")
                 continue
             expected = (
-                seed.get("source_id"),
-                seed.get("target_id"),
-                seed.get("type"),
-                seed.get("epistemic_state"),
+                seed.get("source_id"), seed.get("target_id"),
+                seed.get("type"), seed.get("epistemic_state"),
             )
             actual = (
-                rel.get("source_object_id"),
-                rel.get("target_object_id"),
-                rel.get("type"),
-                rel.get("epistemic_state"),
+                rel.get("source_object_id"), rel.get("target_object_id"),
+                rel.get("type"), rel.get("epistemic_state"),
             )
             if actual != expected:
                 errors.append(f"node_relationship_drift:{node_id}:{relationship_id}")
 
-    missing_from_objects = set(graph_relationships) - object_relationship_ids
-    for relationship_id in sorted(missing_from_objects):
+    for relationship_id in sorted(set(graph_relationships) - object_relationship_ids):
         errors.append(f"graph_relationship_missing_from_node_objects:{relationship_id}")
 
     source_count = population.get("source_count")
