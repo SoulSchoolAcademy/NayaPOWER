@@ -1,6 +1,6 @@
 {
   "schema": "naya.brain.index.v1",
-  "status": "PROPOSED_CANONICAL",
+  "status": "POPULATION_IN_PROGRESS",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
@@ -13,7 +13,7 @@
   "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
   "nine_nodes": [
     {
-      "id": "NAYA-SELF-0001",
+      "id": "NAYA-KERNEL-SELF",
       "name": "SELF",
       "owns": [
         "identity",
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "id": "NAYA-LAW-0001",
+      "id": "NAYA-KERNEL-LAW",
       "name": "LAW",
       "owns": [
         "authority",
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "id": "NAYA-ACT-0001",
+      "id": "NAYA-KERNEL-ACT",
       "name": "ACT",
       "owns": [
         "authorized_execution",
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "id": "NAYA-KNOW-0001",
+      "id": "NAYA-KERNEL-KNOW",
       "name": "KNOW",
       "owns": [
         "canonical_intelligence",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "id": "NAYA-PROVE-0001",
+      "id": "NAYA-KERNEL-PROVE",
       "name": "PROVE",
       "owns": [
         "provenance",
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "id": "NAYA-CONNECT-0001",
+      "id": "NAYA-KERNEL-CONNECT",
       "name": "CONNECT",
       "owns": [
         "relationships",
@@ -69,7 +69,7 @@
       ]
     },
     {
-      "id": "NAYA-VERIFY-0001",
+      "id": "NAYA-KERNEL-VERIFY",
       "name": "VERIFY",
       "owns": [
         "outcomes",
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "id": "NAYA-LEARN-0001",
+      "id": "NAYA-KERNEL-LEARN",
       "name": "LEARN",
       "owns": [
         "verified_learning",
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "id": "NAYA-EVOLVE-0001",
+      "id": "NAYA-KERNEL-EVOLVE",
       "name": "EVOLVE",
       "owns": [
         "succession",
@@ -165,5 +165,11 @@
       ]
     ],
     "rule": "source preserved; durable intelligence distilled; duplicates merged; contradictions surfaced; no wholesale copy"
-  }
+  },
+  "kernel_runtime_registry": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
+  "knowledge_population_map": "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
+  "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
+  "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/"
 }
