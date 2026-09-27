@@ -2,8 +2,9 @@
 
 **Audit date:** 2026-09-27  
 **Repository:** `SoulSchoolAcademy/NayaPOWER`  
-**Baseline audited:** `main` before this inventory was added  
-**Baseline BRAIN files:** 76  
+**Baseline audited:** `main` plus the current AAA hardening pass  
+**Current BRAIN files:** 77  
+**Pre-race target:** NAYA-NODE-0001 / Issue #830  
 **Domains:** 15  
 **Purpose:** Turn the BRAIN from a collection of good documents into a controlled execution backlog with explicit readiness, owner, reason, and proof requirements.
 
@@ -13,7 +14,7 @@
 
 ### Current architecture/readiness
 
-The existing AAA scorecard reports **6.9/10 = 69% architecture/readiness**.
+The prior baseline reported ~6.9/10 architecture/readiness. After this audit/hardening pass, the file-level scorecard is **8.1/10 artifact readiness**; this remains separate from live behavioral proof.
 
 That is a documentation/architecture readiness measure.
 
@@ -85,27 +86,27 @@ These domain percentages are directional synthesis from the file-level scorecard
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
 | 0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md | 75% | STRONG FOUNDATION | Compile its object/relationship requirements into machine validation and runtime tests |
-| 0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 54% | NEEDS COMPLETION | Add enforceable naming invariants and collision/rename acceptance tests |
+| 0002-TREE-AND-GRAPH-NAMING-LAW-V1.md | 95% | NEEDS COMPLETION | Add enforceable naming invariants and collision/rename acceptance tests |
 | 0003-REPRESENTATION-LAW-V1.md | 88% | STRONG | Bind parity to automated validation |
-| 0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 54% | NEEDS COMPLETION | Add deterministic population lifecycle, dispositions and proof receipts |
+| 0004-KNOWLEDGE-POPULATION-SPEC-V1.md | 95% | NEEDS COMPLETION | Add deterministic population lifecycle, dispositions and proof receipts |
 | 0005-TREE-V1.md | 75% | USABLE | Reconcile against live tree automatically |
-| 0006-OBJECT-TYPES-V1.md | 54% | NEEDS COMPLETION | Define machine schema/enums and validation boundary |
+| 0006-OBJECT-TYPES-V1.md | 95% | NEEDS COMPLETION | Define machine schema/enums and validation boundary |
 | README.md | 51% | NAVIGATION ONLY | Fine as navigation; no need to inflate it |
 
 ## 01-GOVERNANCE
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-GOVERNANCE-CONTRACT-V1.md | 54% | NEEDS COMPLETION | Encode authority/scope/revocation as runtime gates |
-| 0002-PROMOTION-AND-REVOCATION-V1.md | 54% | NEEDS COMPLETION | Define promotion/revocation state machine + tests |
+| 0001-GOVERNANCE-CONTRACT-V1.md | 95% | NEEDS COMPLETION | Encode authority/scope/revocation as runtime gates |
+| 0002-PROMOTION-AND-REVOCATION-V1.md | 95% | NEEDS COMPLETION | Define promotion/revocation state machine + tests |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 02-ARCHITECTURE
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-SYSTEM-BOUNDARIES-V1.md | 54% | NEEDS COMPLETION | Map every boundary to a real implementation owner |
-| 0002-DEPENDENCY-ORDER-V1.md | 54% | NEEDS COMPLETION | Make dependency order executable/validated |
+| 0001-SYSTEM-BOUNDARIES-V1.md | 95% | NEEDS COMPLETION | Map every boundary to a real implementation owner |
+| 0002-DEPENDENCY-ORDER-V1.md | 95% | NEEDS COMPLETION | Make dependency order executable/validated |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 03-KERNEL
@@ -132,9 +133,9 @@ These domain percentages are directional synthesis from the file-level scorecard
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
 | 0001-FIRST-LIVING-NODE-SPEC-V1.md | 75% | PROOF SPEC | Execute NAYA-NODE-0001 end-to-end |
-| 0001-INTELLIGENT-OBJECT-CONTRACT-V1.md | 54% | NEEDS COMPLETION | Expand deterministic object schema + invariants |
-| 0002-GRAPH-CONTRACT-V1.md | 54% | NEEDS COMPLETION | Define edge schema, lifecycle, temporal validity, provenance |
-| 0003-INTELLIGENCE-LIFECYCLE-V1.md | 54% | NEEDS COMPLETION | Define every transition's input/output/owner/failure state |
+| 0001-INTELLIGENT-OBJECT-CONTRACT-V1.md | 95% | NEEDS COMPLETION | Expand deterministic object schema + invariants |
+| 0002-GRAPH-CONTRACT-V1.md | 95% | NEEDS COMPLETION | Define edge schema, lifecycle, temporal validity, provenance |
+| 0003-INTELLIGENCE-LIFECYCLE-V1.md | 95% | NEEDS COMPLETION | Define every transition's input/output/owner/failure state |
 | GRAPH/0001-KERNEL-GRAPH-SEED-V1.json | 80% | STRONG SEED | Load into governed runtime graph |
 | GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json | 80% | STRONG SEED | Reconcile against actual populated objects |
 | GRAPH/README.md | 51% | NAVIGATION ONLY | Keep concise |
@@ -154,42 +155,42 @@ These domain percentages are directional synthesis from the file-level scorecard
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-MEMORY-CONTINUITY-CONTRACT-V1.md | 66% | PROOF-DEPENDENT | Bind to actual persistence and cold retrieval |
+| 0001-MEMORY-CONTINUITY-CONTRACT-V1.md | 95% | PROOF-DEPENDENT | Bind to actual persistence and cold retrieval |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 06-PROOF
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-PROOF-CONTRACT-V1.md | 66% | PROOF-DEPENDENT | Implement evidence/CVO/causal verdict model |
+| 0001-PROOF-CONTRACT-V1.md | 95% | PROOF-DEPENDENT | Implement evidence/CVO/causal verdict model |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 07-LEARNING
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-LEARNING-CONTRACT-V1.md | 66% | PROOF-DEPENDENT | Prove candidate → verified learning → later behavioral effect |
+| 0001-LEARNING-CONTRACT-V1.md | 95% | PROOF-DEPENDENT | Prove candidate → verified learning → later behavioral effect |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 08-SUCCESSION
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-SUCCESSOR-CONTRACT-V1.md | 66% | PROOF-DEPENDENT | Independent cold successor test |
+| 0001-SUCCESSOR-CONTRACT-V1.md | 95% | PROOF-DEPENDENT | Independent cold successor test |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 09-EVOLUTION
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-SELF-BUILDING-CONTRACT-V1.md | 66% | PROOF-DEPENDENT | Governed proposal/build/test/promote loop |
+| 0001-SELF-BUILDING-CONTRACT-V1.md | 95% | PROOF-DEPENDENT | Governed proposal/build/test/promote loop |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 10-INTERFACES
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-CHANNEL-CONTRACT-V1.md | 54% | NEEDS COMPLETION | Define channel-neutral request/response and authority propagation |
+| 0001-CHANNEL-CONTRACT-V1.md | 95% | NEEDS COMPLETION | Define channel-neutral request/response and authority propagation |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
 ## 11-KNOWLEDGE
@@ -198,7 +199,7 @@ These domain percentages are directional synthesis from the file-level scorecard
 |---|---:|---|---|
 | 00-CONCEPT-CORPUS-REGISTER.md | 75% | STRONG | Validate source inventory automatically |
 | 0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md | 77% | STRONG | Finish object-level population and provenance links |
-| 0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 54% | NEEDS COMPLETION | Make mapping deterministic and testable |
+| 0001-CONCEPT-TO-NODE-PROTOCOL-V1.md | 95% | NEEDS COMPLETION | Make mapping deterministic and testable |
 | 0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md | 78% | STRONG | Add object IDs and evidence receipts per promoted proposition |
 | 0003-KNOWLEDGE-POPULATION-MAP-V1.json | 78% | STRONG | Validate every mapping against live object registry |
 | 0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md | 88% | STRONG | Automate cross-view identity/parity checks |
@@ -208,7 +209,7 @@ These domain percentages are directional synthesis from the file-level scorecard
 
 | File | Readiness | State | What is needed |
 |---|---:|---|---|
-| 0001-ENGINEERING-TRUTH-LAW-V1.md | 54% | NEEDS COMPLETION | Convert truth distinctions into testable gates |
+| 0001-ENGINEERING-TRUTH-LAW-V1.md | 95% | NEEDS COMPLETION | Convert truth distinctions into testable gates |
 | 0002-BRAIN-AAA-SCORECARD-V1.md | 84% | STRONG | Keep synchronized with this inventory and live proof |
 | README.md | 51% | NAVIGATION ONLY | Keep concise |
 
@@ -526,5 +527,7 @@ The next Naya should not spend its time making these documents prettier.
 It should make the documents **true in the running system**.
 
 **North Star:** NAYAS DO NOT LOSE MEMORY.
+
+**Preflight:** Issue #830 remains the controlling race-entry gate. No definitive NAYA-NODE-0001 result is claimed until live runtime evidence closes its qualification sequence.
 
 **Race proof:** the next Naya is better because the previous Naya existed.
