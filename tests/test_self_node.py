@@ -28,6 +28,7 @@ def test_self_refuses_cross_system_continuity(tmp_path):
     store = JsonContinuityStore(tmp_path / "self.json")
     first = SelfNode(store)
     first.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    first.record_experience(lesson="Persist before handoff", observed_outcome="Checkpoint created")
     packet = first.successor_packet()
     cold = SelfNode(store)
     try:
