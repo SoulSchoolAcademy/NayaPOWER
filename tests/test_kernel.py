@@ -81,3 +81,30 @@ def test_learning_requires_verified_outcome():
     result = kernel.decide(blocked)
 
     assert result.learning_candidate is None
+
+
+def test_kernel_can_boot_from_canonical_brain_manifest():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    kernel = Kernel.from_brain(root)
+
+    assert kernel.node_order() == Kernel.node_order()
+    assert kernel.kernel_id == "NAYAPOWER-MASTER-KERNEL-V1"
+    assert kernel.source_manifest == "BRAIN/03-KERNEL/MANIFEST.json"
+
+
+def test_kernel_rejects_manifest_with_wrong_node_order(tmp_path):
+    import json
+    import shutil
+
+    source = Path(__file__).resolve().parents[1]
+    shutil.copytree(source / "BRAIN", tmp_path / "BRAIN")
+    manifest = tmp_path / "BRAIN/03-KERNEL/MANIFEST.json"
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    data["nodes"][0], data["nodes"][1] = data["nodes"][1], data["nodes"][0]
+    manifest.write_text(json.dumps(data), encoding="utf-8")
+
+    import pytest
+    with pytest.raises(ValueError, match="canonical nine-node order"):
+        Kernel.from_brain(tmp_path)
