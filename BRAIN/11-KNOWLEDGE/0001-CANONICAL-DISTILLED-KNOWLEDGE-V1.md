@@ -1,7 +1,7 @@
 # NayaPOWER — Canonical Distilled Knowledge V1
 
 **Status:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED  
-**Source:** KNOWLEDGE/NAYA POWER CONCEPT PART #1–#13  
+**Source:** KNOWLEDGE/NAYA POWER CONCEPT PART #1–#15  
 **Method:** Distill, reconcile, merge, supersede, connect, preserve provenance.  
 **Rule:** This document is not a copy of the source corpus. It is the reconciled semantic result of processing it.
 
@@ -447,4 +447,4 @@ Important source observations:
 - #12: One Brain / Many Doors and channel governance.
 - #13: Intelligent Chain, graph, canonical object, ingestion, promotion, retrieval and behavioral acceptance.
 
-The source corpus remains preserved. This synthesis is the canonical candidate for future population of the brain.
+Concept #14 adds governed contextual/relationship-aware reasoning memory. Concept #15 adds the Value Calculus and resource-stewardship measurement layer. Both compile into existing Nodes and contracts; neither creates a tenth Node or a second brain.\n\nThe source corpus remains preserved. This synthesis is the canonical candidate for future population of the brain.
