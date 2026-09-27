@@ -25,10 +25,14 @@ Default disposition: **RETAIN ONLY IF JUSTIFIED. Otherwise RETIRE / ARCHIVE / DE
 ## MASTER PRINCIPLE
 
 > **THE NEW SYSTEM DOES NOT INHERIT COMPLEXITY MERELY BECAUSE THE OLD SYSTEM ACCUMULATED IT.**
+>
+> **OPTIMIZATION DOES NOT MEAN MINIMUM SIZE. IT MEANS MAXIMUM RESPONSIBLE FUNCTION WITH MINIMUM UNNECESSARY COMPLEXITY.**
 
 Optimize by:
 
-**REMOVE → CONSOLIDATE → SIMPLIFY → VERIFY → IMPROVE**
+**UNDERSTAND → COMPLETE THE REQUIRED FUNCTION → CONSOLIDATE → SIMPLIFY → VERIFY → IMPROVE**
+
+Do not delete a responsibility merely because its artifact is large. Do not add an artifact merely because it is elegant. Preserve every capability required for the whole intelligence loop to function, and remove only redundancy, dead machinery, ambiguity, or unjustified complexity.
 
 not:
 
@@ -327,6 +331,24 @@ Classify every problem as:
 Then:
 
 **REPRODUCE → DEFINE ACCEPTANCE → TEST → FIX → VERIFY → RECORD → CONTINUE**
+
+## ANTI-MINIMALISM
+
+Do not optimize for the smallest number of files, Nodes, tables, functions, or lines of text.
+
+Optimize for:
+
+- complete cold-Naya comprehension;
+- complete machine navigation;
+- explicit state transitions;
+- reliable Node/NIO interoperability;
+- evidence-bound operation;
+- continuity;
+- learning and compounding;
+- human value;
+- low cognitive and computational waste.
+
+A component is justified when removing it would break a required system responsibility, proof boundary, machine contract, continuity path, or human-value outcome.
 
 ## ANTI-BLOAT
 
