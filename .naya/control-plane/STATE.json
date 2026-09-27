@@ -16,8 +16,8 @@
     "mode": "LIVE_RESOLUTION"
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - NAYA EXECUTION CONTINUITY + CANONICAL HUB AUTHORITY",
+  "north_star": "Maximum verified human value per moment, with compounding intelligence and continuity.",
+  "priority": "P0 - NAYA KERNEL ACTIVATION + BEHAVIORAL PROOF",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "HUMAN-JOURNEY-P2",
   "current_block_status": "VERIFIED",
@@ -321,10 +321,11 @@
     "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
+    "next_action": "Run the first authenticated runtime proof of the nine-node kernel: cold restore → load MN-01..MN-09 → prove each Node is present and usable → make one governed decision → execute only if authorized → verify outcome → record successor context.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
-    "status": "PROVEN",
-    "one_next_action_rule": "STATE/BLOCKS/BATON next-action values must match; recorded HEAD is informational and must never override live execution resolution."
+    "status": "STRUCTURALLY_ACTIVE",
+    "one_next_action_rule": "STATE/BLOCKS/BATON next-action values must match; recorded HEAD is informational and must never override live execution resolution.",
+    "reason": "The nine Master Nodes are now structurally active in Supabase and the nayanet-compound-intelligence runtime has a kernel boot gate. The next unresolved boundary is behavioral proof that the nine Nodes actually influence runtime understanding and action."
   },
   "reconciliation": {
     "date": "2026-09-22",
@@ -374,8 +375,8 @@
     "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
   },
   "current_next_action": {
-    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine.",
-    "reason": "Cold takeover was executed and proved at HEAD 2846a5e6: control plane is coherent (STATE == BLOCKS == BATON), the cold-14 harness passes at live main, and the receiver is the strongest component (9.5). The binding constraint is now the human surface: the Hub has no sign-in UI (identity 3.0) and the conversation -> intelligence entry is orphaned by the 2026-09-25 memory quarantine. Capability without a reachable human surface does not fulfill the mission."
+    "action": "Run the first authenticated runtime proof of the nine-node kernel: cold restore → load MN-01..MN-09 → prove each Node is present and usable → make one governed decision → execute only if authorized → verify outcome → record successor context.",
+    "reason": "The nine Master Nodes are now structurally active in Supabase and the nayanet-compound-intelligence runtime has a kernel boot gate. The next unresolved boundary is behavioral proof that the nine Nodes actually influence runtime understanding and action."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -443,8 +444,8 @@
   "next_action": {
     "status": "ACTIVE",
     "count": 1,
-    "reason": "Live evidence on 2026-09-26: the canonical Hub redirects unauthenticated humans to /identity.html, which resolves to the Hub SPA fallback instead of an identity surface, so sign-in cannot begin. One additive identity surface is the smallest causal repair.",
-    "action": "Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface that calls the existing name-first-auth-adapter establish(), then prove sign-in -> capture -> feed -> deep link at the exact release identity; and restore or explicitly retire the orphaned conversation -> intelligence entry left behind by the 2026-09-25 memory quarantine."
+    "reason": "The nine Master Nodes are now structurally active in Supabase and the nayanet-compound-intelligence runtime has a kernel boot gate. The next unresolved boundary is behavioral proof that the nine Nodes actually influence runtime understanding and action.",
+    "action": "Run the first authenticated runtime proof of the nine-node kernel: cold restore → load MN-01..MN-09 → prove each Node is present and usable → make one governed decision → execute only if authorized → verify outcome → record successor context."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",
@@ -490,5 +491,37 @@
     "rule": "Before consequential transformation or action, READ → RECONSTRUCT → RECONCILE → ACT → VERIFY. Preserve material meaning, scorecard values, constraints, priorities, authority, and success conditions. Never claim full understanding from an incomplete read.",
     "purpose": "Prevent semantic drift, skipped steps, plausible-but-wrong execution, and human-as-integration-layer failure."
   },
-  "cold_14_scorecard_receipt": ".naya/project-intelligence/50-NAYAPOWER-COLD-14-SCORECARD-AND-RANKED-EXECUTION-2026-09-26.md"
+  "cold_14_scorecard_receipt": ".naya/project-intelligence/50-NAYAPOWER-COLD-14-SCORECARD-AND-RANKED-EXECUTION-2026-09-26.md",
+  "kernel_activation": {
+    "status": "STRUCTURALLY_ACTIVE",
+    "version": "1.0",
+    "activated_date": "2026-09-26",
+    "ratification_commit": "3e68f14b0debbda87d53dbabb2b8b7d9b70d2826",
+    "node_ids": [
+      "IB-001233",
+      "IB-001234",
+      "IB-001235",
+      "IB-001236",
+      "IB-001237",
+      "IB-001238",
+      "IB-001239",
+      "IB-001240",
+      "IB-001241"
+    ],
+    "node_keys": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ],
+    "runtime_function": "nayanet-compound-intelligence",
+    "runtime_version": 50,
+    "effectiveness_status": "NOT_YET_PROVEN",
+    "activation_receipt": "71bf5df3-0e81-4730-96a9-ce87c4965e94"
+  }
 }
