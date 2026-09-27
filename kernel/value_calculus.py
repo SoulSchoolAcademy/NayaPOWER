@@ -147,8 +147,10 @@ def calculate_value(
     return result
 
 
-def _perturbed_weights(weights: Mapping[str, float], delta: float, direction: int) -> dict[str, float]:
-    shifted = {d: max(0.0, w * (1.0 + direction * delta)) for d, w in weights.items()}
+def _perturb_one_weight(weights: Mapping[str, float], dimension: str, delta: float, direction: int) -> dict[str, float]:
+    """Shift one declared weight, then renormalize the complete profile."""
+    shifted = dict(weights)
+    shifted[dimension] = max(0.0, shifted[dimension] * (1.0 + direction * delta))
     total = sum(shifted.values())
     return {d: w / total for d, w in shifted.items()}
 
@@ -160,18 +162,26 @@ def sensitivity_analysis(
 ) -> dict:
     base = profile.weights()
     scenarios = []
-    for direction in (-1, 1):
-        w = _perturbed_weights(base, profile.sensitivity_delta, direction)
-        positive = sum(w[d] * _clamp(dimensions.get(d, 0.0) or 0.0) for d in w)
-        scenarios.append(_clamp(positive - _clamp(harm)))
-    baseline = _clamp(sum(base[d] * _clamp(dimensions.get(d, 0.0) or 0.0) for d in base) - _clamp(harm))
-    values = [baseline, *scenarios]
+    for dimension in base:
+        for direction in (-1, 1):
+            w = _perturb_one_weight(base, dimension, profile.sensitivity_delta, direction)
+            positive = sum(w[d] * _clamp(dimensions.get(d, 0.0) or 0.0) for d in w)
+            scenarios.append({
+                "dimension": dimension,
+                "direction": direction,
+                "score": _clamp(positive - _clamp(harm)),
+            })
+    baseline = _clamp(
+        sum(base[d] * _clamp(dimensions.get(d, 0.0) or 0.0) for d in base)
+        - _clamp(harm)
+    )
+    scores = [baseline, *(s["score"] for s in scenarios)]
     return {
         "delta": profile.sensitivity_delta,
         "baseline": baseline,
-        "minimum": min(values),
-        "maximum": max(values),
-        "spread": max(values) - min(values),
-        "stable_within_delta": (max(values) - min(values)) <= profile.sensitivity_delta,
+        "minimum": min(scores),
+        "maximum": max(scores),
+        "spread": max(scores) - min(scores),
+        "stable_within_delta": (max(scores) - min(scores)) <= profile.sensitivity_delta,
         "scenario_scores": scenarios,
     }
