@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Any, Iterable, Mapping
+from typing import Any, Mapping
 
 
 class EventState(str, Enum):
