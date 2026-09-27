@@ -1,6 +1,6 @@
 # NayaPOWER Brain — Real Tree Receipt
 
-**Receipt basis:** current Git tree on `main`, audited 2026-09-27.  
+**Receipt basis:** branch `naya/brain-aaa-audit-and-readiness`, audited 2026-09-27.  
 **Source of truth:** Git itself. This receipt is a snapshot and must be regenerated after structural changes.
 
 ## Physical domain count
@@ -25,9 +25,9 @@
 
 ## Physical file count
 
-**76 non-directory files** currently exist under BRAIN.
+**77 non-directory files** currently exist under BRAIN.
 
-> Previous receipts reported 74. That receipt was stale. The live Git tree is authoritative.
+> Previous receipts reported 74, then 76 before the race-readiness inventory was added. Those receipts were stale. The live Git tree is authoritative.
 
 ## High-value populated surfaces
 
