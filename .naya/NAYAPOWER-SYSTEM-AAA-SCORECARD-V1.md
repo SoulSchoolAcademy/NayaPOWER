@@ -337,3 +337,43 @@ This scorecard is the measurement companion to the ratified System North Star an
 It remains a readiness instrument, not a claim that every architectural mechanism is complete. The ratified model defines the target system; live evidence determines which parts are implemented, verified, production-proven, learned, compounded, or still unknown.
 
 The decisive question is not how much has been built. It is whether the next human moment is measurably better because governed intelligence was remembered, connected, retrieved, applied, verified, learned from, and carried forward.
+
+
+---
+
+# 11. CURRENT EVIDENCE CHECKPOINT — 2026-09-26
+
+This section supersedes stale presentation-level assumptions without rewriting the historical baseline above. It is the current operational reading of the scorecard.
+
+| Gate / capability | Current truth | Evidence boundary |
+|---|---|---|
+| North Star | **RATIFIED** | Human Director ratification + blueprint |
+| Canonical intelligence | **STRONG / VERIFIED AT PROVEN SCOPES** | Receiver, Intelligent Block, event, provenance and receipts |
+| Nine Master Node kernel | **STRUCTURALLY VERIFIED** | PR #809, schema, verifier, 12 mutation negative controls |
+| Runtime kernel boot | **NOT PROVEN** | Loader exists; genuine owner-scoped boot still required |
+| Node interaction / attribution | **NOT PROVEN** | No independent per-node runtime attribution |
+| Authority boundary | **STRONG / PARTIAL** | Fail-closed boundaries exist; universal enforcement remains incomplete |
+| Truth / evidence evaluation | **HARDENED / VERIFIED** | PR #813 evaluator rejects stale, assertion-only, weak causal and fake compounding evidence |
+| N9 machine harness integrity | **GREEN ON REPAIRED HEAD** | PR #816 four integrity/kernel/evaluation gates green at e1e4718… |
+| Action causality | **NOT PROVEN** | Matched control/treatment runtime experiment pending |
+| Learning changes behavior | **NOT PROVEN GENERALLY** | Selected learning paths exist; future behavioral delta not established for N9 |
+| Generational compounding | **NOT PROVEN** | Multi-generation scored experiment pending |
+| Cold successor | **NOT PROVEN FOR N9** | Existing continuity evidence does not substitute for cold N9 proof |
+| Hub | **FUNCTIONAL / PRESENTATION REFRESH REQUIRED** | Current shell exists; this update aligns its front page to current truth |
+| Production parity | **PARTIAL / BLOCKED** | New architecture is not universally exact-source/live proven |
+
+## Current readiness statement
+
+The system is **not 10/10 and not AAA yet**. That is not a failure of the architecture; it is the expected state of a proof-driven system whose decisive behavioral experiment has not yet been completed.
+
+The highest-leverage remaining chain is:
+
+**OWNER-SCOPED RUNTIME → N9-001 → NODE ATTRIBUTION → ABLATION → CAUSAL ACTION → VERIFIED OUTCOME → PERSISTED LEARNING → HELD-OUT IMPROVEMENT → GENERATIONAL COMPOUNDING → COLD SUCCESSOR.**
+
+The historical architectural maturity estimate of **~7.2/10** remains the conservative strategic baseline. It should not be converted into an acceptance score until the critical proof boundaries above are closed.
+
+## Current proof rule
+
+> **A stored Node is not a working Node. A loaded Node is not an influential Node. An influential Node is not a causal Node. A learning record is not learning. A successor baton is not a cold successor.**
+
+The next score increase must be earned by runtime evidence, not documentation.
