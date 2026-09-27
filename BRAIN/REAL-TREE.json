@@ -1,26 +1,9 @@
 {
-  "schema": "naya.brain.real-tree-receipt.v2",
-  "receipt_basis_commit": "3795554a1a6f148d19e262d37658b8e3e9eeaf27",
+  "schema": "naya.brain.real-tree-receipt.v3",
+  "receipt_basis_commit": "9875fc47597326ee80c34e7c648a368af76a0b4e",
   "source_of_truth": "git",
-  "domain_count": 15,
-  "domains": [
-    "00-SPEC",
-    "01-GOVERNANCE",
-    "02-ARCHITECTURE",
-    "03-KERNEL",
-    "04-INTELLIGENCE",
-    "05-MEMORY",
-    "06-PROOF",
-    "07-LEARNING",
-    "08-SUCCESSION",
-    "09-EVOLUTION",
-    "10-INTERFACES",
-    "11-KNOWLEDGE",
-    "12-ENGINEERING",
-    "90-OPERATIONS",
-    "99-ARCHIVE"
-  ],
-  "file_count": 74,
+  "domain_count": 18,
+  "file_count": 75,
   "excluded_receipts": [
     "BRAIN/REAL-TREE.md",
     "BRAIN/REAL-TREE.json"
@@ -203,48 +186,48 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "size": 1975,
-      "sha": "ae50162730f63f5ef950067e4283a0d174695299"
+      "size": 3060,
+      "sha": "c5c482ff480d90f11a600e281c2e18fecc09dabe"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
-      "size": 2045,
-      "sha": "e214dc31bfd0f1bb20d22e4c4ade4a1ff2722663"
+      "size": 2833,
+      "sha": "8ce50d08182ec52981e3ae33f628d0a27d319377"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json",
-      "size": 1999,
-      "sha": "8137a0d71bd91ea05135e68b250857de48154099"
+      "size": 3097,
+      "sha": "24c10a763e82ef948a5c67f7fd0e44f17b55b832"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json",
-      "size": 1994,
-      "sha": "6fb1d8c6d5296277c8c228914f709d178eae87e8"
+      "size": 3094,
+      "sha": "9ba7a3e6495f7bbb3fa264650022c5596445f143"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "size": 1972,
-      "sha": "bee1573174571a0e1fea8d7259a731b405f235d5"
+      "size": 3052,
+      "sha": "974439322651dee72400d839036d860a454a98bd"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
-      "size": 1980,
-      "sha": "52acbd9a38666ec9dbdf836c28c64586004fa6a7"
+      "size": 2750,
+      "sha": "e5a6e16496318cecac656386994d23041bbbfe50"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json",
-      "size": 1977,
-      "sha": "f4150a7e41c0e846261ce6ad01b504d2b70222f0"
+      "size": 2745,
+      "sha": "31d75562ebaebc180b12e4df34abd2dd76604c31"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json",
-      "size": 1952,
-      "sha": "3b25967019d2611a894fa318e02df201b1736dd9"
+      "size": 2712,
+      "sha": "934b3e20183ae3110a611dc0444715b773545210"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
-      "size": 1993,
-      "sha": "8db04f2f82c6daf4a05178d386fc3c794c978acd"
+      "size": 3441,
+      "sha": "e716c23ed8b1b1369835d3df20c7c19cc8a60743"
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -353,8 +336,13 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md",
-      "size": 8724,
-      "sha": "1abc64532bf621f5ea0bff1a71bda12503c50fed"
+      "size": 11150,
+      "sha": "e582fe344234070c3538044e5b694be7317c96a2"
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
+      "size": 20035,
+      "sha": "a7737ff810f8f51a939e41e76f40fd2ee308353c"
     },
     {
       "path": "BRAIN/12-ENGINEERING/README.md",
@@ -363,8 +351,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
-      "size": 2656,
-      "sha": "65a441e8140ac220390c2d82352fdfe9bcb7240a"
+      "size": 4079,
+      "sha": "44d89ff41a19573a17774a4a3e6393a99467dcf3"
     },
     {
       "path": "BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md",
@@ -388,8 +376,8 @@
     },
     {
       "path": "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
-      "size": 3973,
-      "sha": "ccfe23e1140bb1547b026abc6654dbcb7cd17721"
+      "size": 4744,
+      "sha": "e691e837f5c1595d063729f3ee3d90ca7e8540c9"
     },
     {
       "path": "BRAIN/README.md",
