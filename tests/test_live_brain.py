@@ -2,6 +2,8 @@ from pathlib import Path
 
 import pytest
 
+from kernel.value_calculus import ResourceCost, ValueProfile, calculate_value
+
 from kernel.live_brain import (
     CausalVerification,
     FileBrainStore,
@@ -118,6 +120,41 @@ def test_learning_requires_later_behavioral_improvement():
 
     assert verified["state"] == "VERIFIED"
     assert verified["improvement"] == pytest.approx(0.40)
+
+
+def test_value_calculus_is_bound_to_event_outcome_and_receipt():
+    brain = GovernedBrain.from_repository(Path(__file__).resolve().parents[1])
+
+    receipt = brain.record_value(
+        event_id="EVENT-VALUE-001",
+        outcome_id="OUTCOME-VALUE-001",
+        item_id="ACTION-001",
+        dimensions={"U": 0.9, "R": 0.9, "A": 0.8, "E": 0.9, "C": 0.8, "Re": 0.7, "L": 0.6, "K": 0.5, "T": 0.8},
+        profile=ValueProfile(
+            profile_id="proof-profile",
+            version="1",
+            objective="prove retained intelligence creates value",
+            priorities={"U": 1, "R": 1, "E": 1, "C": 1},
+        ),
+        verified_value=0.82,
+        resources=ResourceCost(attention=1, time=2, compute=1),
+        verification_state="VERIFIED",
+    )
+
+    assert receipt["event_id"] == "EVENT-VALUE-001"
+    assert receipt["outcome_id"] == "OUTCOME-VALUE-001"
+    assert receipt["verification_state"] == "VERIFIED"
+    assert receipt["mvpa"] is not None
+
+
+def test_graph_relationships_are_persisted_and_retrievable():
+    brain = GovernedBrain.from_repository(Path(__file__).resolve().parents[1])
+
+    relationships = brain.related("NAYA-KERNEL-LAW")
+
+    assert relationships
+    assert all(row["provenance"] for row in relationships)
+    assert any(row["relationship_type"] == "GOVERNS" for row in relationships)
 
 
 def test_successor_context_does_not_inherit_authority():
