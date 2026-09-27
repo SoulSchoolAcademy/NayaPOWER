@@ -1,12 +1,20 @@
 # Self-Building Contract V1
 
-```
-OBSERVE → DIAGNOSE → PROPOSE → IMPACT-CHECK → AUTHORIZE
-→ BUILD → TEST → VERIFY → MEASURE → ADOPT → LEARN
-```
+**Status:** CANONICAL BUILD CONTRACT
 
-The system may discover and propose its own improvements.
+## Purpose
+Govern bounded system improvement without allowing self-modification to bypass authority, proof, or rollback.
 
-It may execute only changes for which the required authority exists.
+## Loop
+`OBSERVE → PROPOSE → AUTHORIZE → IMPLEMENT → TEST → VERIFY → ADOPT → RECORD`
 
-**Self-building without self-authorizing.**
+## Laws
+- Proposal is not authority.
+- Implementation is not verification.
+- Verification is not production proof.
+- Changes must be scoped, attributable, reversible, and evidence-linked.
+- Failed changes are retained as history and cannot silently become current behavior.
+- Autonomous improvement cannot alter constitutional authority without explicit human authorization.
+
+## Acceptance
+A self-building change requires proposal ID, authority basis, changed artifacts, tests, verification receipt, adoption decision, rollback path, and successor-visible lineage.
