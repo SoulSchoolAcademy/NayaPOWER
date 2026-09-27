@@ -1,0 +1,46 @@
+{
+  "schema": "naya.aaa.execution.receipt.v1",
+  "receipt_id": "AAA-LIVE-KERNEL-20260927-01",
+  "mission": "NayaPOWER AAA Brain Execution Mission",
+  "status": "IMPLEMENTED_LOCAL_BEHAVIOR_TESTED",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "branch": "naya/aaa-live-kernel-v1",
+  "pull_request": 829,
+  "evidence": {
+    "red": {
+      "method": "pytest",
+      "result": "FAIL",
+      "failure": "ModuleNotFoundError: No module named 'kernel.live_brain'"
+    },
+    "green": {
+      "method": "pytest",
+      "result": "PASS",
+      "scope": "local reconstructed acceptance harness exercising the implemented behaviors"
+    },
+    "behaviors": [
+      "canonical nine-node registry loading",
+      "owner-scoped persistence and retrieval",
+      "retrieval independent from authorization",
+      "fail-closed authority checks",
+      "durable cold-store reconstruction",
+      "governed graph relationship persistence",
+      "CVO refuses equal control/treatment outcomes",
+      "learning promotion requires later behavioral improvement",
+      "successor creation without inherited authority",
+      "Value Calculus bound to event/outcome/resource receipt"
+    ]
+  },
+  "verification_boundary": {
+    "verified_here": [
+      "implemented behavior exercised by the local acceptance harness"
+    ],
+    "not_proven": [
+      "production Supabase persistence/retrieval",
+      "full cold Naya end-to-end continuity",
+      "independent causal attribution beyond the bounded CVO test",
+      "production verified learning across future tasks",
+      "independent successor improvement",
+      "production-boundary proof"
+    ]
+  }
+}
