@@ -1,0 +1,26 @@
+name: Verify Control Plane Shape
+
+on:
+  pull_request:
+    paths:
+      - ".naya/control-plane/BLOCKS.json"
+      - "tests/test_control_plane_blocks_shape.py"
+      - ".github/workflows/verify-control-plane-shape.yml"
+  push:
+    paths:
+      - ".naya/control-plane/BLOCKS.json"
+      - "tests/test_control_plane_blocks_shape.py"
+      - ".github/workflows/verify-control-plane-shape.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  control-plane-shape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python3 -m unittest -v tests/test_control_plane_blocks_shape.py
