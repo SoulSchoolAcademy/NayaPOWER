@@ -1,0 +1,43 @@
+﻿name: Verify Conversation Continuity Contract
+
+# The 2026-09-25 memory quarantine moved
+# .naya/memory/projects/CURRENT-DAILY-PROJECT.json into archive/, but
+# .naya/runtime/conversation_continuity.py still reads the live path. Its own
+# contract test therefore failed on main and NO workflow ran it, so the break
+# was silent. This gate makes the conversation -> intelligence continuity
+# vertical slice impossible to break silently again.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: conversation-continuity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  continuity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Every runtime-read path must be tracked
+        shell: bash
+        run: |
+          set -euo pipefail
+          # A runtime that reads a path no clone has is not a working runtime.
+          for p in .naya/memory/projects/CURRENT-DAILY-PROJECT.json; do
+            if ! git cat-file -e "HEAD:$p" 2>/dev/null; then
+              echo "RUNTIME_READS_UNTRACKED_PATH:$p"
+              exit 1
+            fi
+          done
+          echo "RUNTIME_PATHS_TRACKED"
+      - name: Conversation continuity contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/runtime/test_conversation_continuity.py
