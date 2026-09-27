@@ -1,7 +1,8 @@
 {
-  "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
-  "status": "ARCHITECTURE_DEFINED_BEHAVIORAL_PROOF_PENDING",
-  "nodes": [
+  "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
+  "status":"ARCHITECTURE_DEFINED_BEHAVIORAL_PROOF_PENDING",
+  "node_identity_law":"BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
+  "nodes":[
     {"id":"NAYA-KERNEL-SELF","name":"SELF","responsibility":"identity, mission, continuity"},
     {"id":"NAYA-KERNEL-LAW","name":"LAW","responsibility":"authority, consent, governance"},
     {"id":"NAYA-KERNEL-ACT","name":"ACT","responsibility":"execution, agency, safe action"},
