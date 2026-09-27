@@ -129,7 +129,6 @@ def test_stale_source_is_not_admitted():
         observed_outcome="not-executed",
         verification={"independent": True, "evidence_ids": ["verify-1"]},
         causal_delta={"decision_changed": False},
-        expected_source_sha="6e5e8509a59c844b8e148fcda996b70a91e8c97f",
     )
     result = validate_receipt(receipt)
     assert result.status == "FAIL"
@@ -153,8 +152,6 @@ def test_owner_session_mismatch_fails_closed():
         observed_outcome="completed",
         verification={"independent": True, "evidence_ids": ["verify-1"]},
         causal_delta={"decision_changed": True},
-        expected_owner_id="owner-1",
-        expected_session_id="session-1",
     )
     result = validate_receipt(receipt)
     assert result.status == "FAIL"
@@ -180,3 +177,32 @@ def test_control_and_treatment_are_not_interchangeable():
             verification={"independent": True, "evidence_ids": ["verify-1"]},
             causal_delta={"decision_changed": False},
         )
+
+
+def test_control_treatment_delta_requires_matched_fixture():
+    from n9_behavioral_harness import compare_control_treatment
+    control = build_receipt(
+        experiment_id="exp-2", test_id="N9-001", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="control", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="REFUSED", decision_before="defer",
+        decision_after="defer", action="none", observed_outcome="not-executed",
+        verification={"independent": True, "evidence_ids": ["verify-c"]}, causal_delta={})
+    treatment = build_receipt(
+        experiment_id="exp-2", test_id="N9-001", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="treatment", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="AUTHORIZED", decision_before="defer",
+        decision_after="execute", action="execute-reversible-action", observed_outcome="completed",
+        verification={"independent": True, "evidence_ids": ["verify-t"]}, causal_delta={"changed": True})
+    assert compare_control_treatment(control, treatment)["decision_changed"] is True
+
+
+def test_ablation_rejects_missing_more_than_one_node():
+    from n9_behavioral_harness import validate_ablation
+    full = build_receipt(
+        experiment_id="exp-3", test_id="N9-000", source_sha="sha", runtime=_base_runtime(),
+        control_or_treatment="treatment", scenario="s", input_payload={"x": 1},
+        node_invocations=_invocations(), authority_decision="AUTHORIZED", decision_before="defer",
+        decision_after="execute", action="execute-reversible-action", observed_outcome="completed",
+        verification={"independent": True, "evidence_ids": ["verify"]}, causal_delta={"changed": True})
+    ablated = {**full, "node_invocations": _invocations()[:-2]}
+    assert validate_ablation(full, ablated, "MN-09").status == "FAIL"
