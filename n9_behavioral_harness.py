@@ -177,8 +177,14 @@ def validate_receipt(
         return ValidationResult("FAIL", "independent verification evidence is required")
 
     if receipt["status"] == "PROVEN":
-        if not receipt["causal_delta"]:
-            return ValidationResult("FAIL", "causal delta is required for PROVEN")
+        delta = receipt["causal_delta"]
+        if not isinstance(delta, dict) or not any(
+            delta.get(k) is True for k in ("decision_changed", "outcome_changed", "action_changed")
+        ):
+            return ValidationResult(
+                "FAIL",
+                "causal delta must prove a material decision/action/outcome difference for PROVEN",
+            )
     elif receipt["status"] not in {
         "PARTIALLY_PROVEN", "NOT_PROVEN", "FAILED", "BLOCKED", "UNKNOWN", "STALE"
     }:
@@ -225,6 +231,16 @@ def validate_ablation(full: dict[str, Any], ablated: dict[str, Any], node_id: st
         return ValidationResult("FAIL", "ablated node still has execution evidence")
     if ablated_nodes != set(NODES) - {node_id}:
         return ValidationResult("FAIL", "ablation changed more than one node")
+
+    material_change = any(
+        full.get(field) != ablated.get(field)
+        for field in ("decision_after", "action", "observed_outcome")
+    )
+    if not material_change:
+        return ValidationResult(
+            "FAIL",
+            f"ablation of {node_id} produced no material decision/action/outcome difference",
+        )
     return ValidationResult("PASS")
 
 
