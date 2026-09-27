@@ -1,4 +1,4 @@
-# NayaPOWER — Maximum-Value Execution Queue V1
+# NayaPOWER — Maximum-Value Execution Queue V2
 
 **Status:** ACTIVE WORKING PRIORITY — HUMAN DIRECTOR MAY OVERRIDE
 
@@ -6,66 +6,40 @@ The queue orders work by expected verified human value, dependency, proof levera
 
 ## Top 10
 
-1. **Make the canonical brain internally coherent**  
-   Reconcile Constitution, Governance, Master Design Contract, Superbrain Spec, Brain Map, Kernel, and Knowledge synthesis.
-
-2. **Complete canonical knowledge population**  
-   Convert source-corpus intelligence into addressable objects with provenance, dispositions, and relationships.
-
-3. **Make the Nine-Node kernel executable**  
-   Turn contracts into one runtime model with deterministic inputs, outputs, gates, and fail-closed behavior.
-
-4. **Birth NAYA-NODE-0001 as a proof specimen**  
-   Implement the smallest useful end-to-end Intelligent Node.
-
-5. **Prove cold retrieval and application**  
-   Demonstrate that a new Naya can recover the Node without conversational reconstruction.
-
-6. **Prove governed action and outcome verification**  
-   Demonstrate authorization, action, observation, evidence, and verification as separate states.
-
-7. **Prove genuine learning**  
-   Demonstrate that verified learning changes a later task rather than merely being stored.
-
-8. **Prove succession**  
-   Demonstrate that a second Naya inherits the relevant intelligence and continues correctly without inheriting new authority.
-
-9. **Enable bounded self-building**  
-   Let the system detect gaps and propose/build improvements inside governed boundaries.
-
-10. **Only then scale interfaces and network surfaces**  
-    Hub, NayaNET doors, GitHub bridge, and other surfaces project the proven brain rather than becoming competing brains.
+1. **Make the canonical brain internally coherent** — DONE FOR THIS PASS; keep adversarial reconciliation active.
+2. **Complete canonical knowledge population** — source corpus #1–#15 is mapped, distilled, and represented; complete object-level population next.
+3. **Make the Nine-Node kernel executable** — load the machine registry, node objects, contracts, gates and graph context in one deterministic runtime.
+4. **Make the graph live** — persist and retrieve governed typed relationships with provenance, applicability, temporal and supersession handling.
+5. **Birth NAYA-NODE-0001 as a real proof specimen** — persist, cold-retrieve, apply, act, observe and verify.
+6. **Prove memory continuity** — cold Naya restores relevant intelligence without conversational reconstruction.
+7. **Prove governed action and Causal Verification** — separate authorization, action, observation, evidence and causal acceptance.
+8. **Prove genuine learning** — demonstrate later behavioral improvement caused by retained learning.
+9. **Prove succession** — fresh Naya inherits intelligence and continuity without inheriting new authority.
+10. **Bind Value Calculus to verified events/outcomes and then scale interfaces** — measure verified value, resource cost, compounding and system efficiency before adding surface complexity.
 
 ## Priority law
 
-When two tasks compete, prefer the task that:
+Prefer the task that closes a material proof gap, prevents intelligence loss, removes a dependency, reduces duplication, increases future Naya capability, or produces more verified human value per unit of complexity.
 
-- removes a dependency for more valuable work;
-- closes a material proof gap;
-- prevents intelligence loss;
-- reduces architectural duplication;
-- increases future Naya capability;
-- or produces more verified human value per unit of complexity.
-
-Do not prioritize visual polish, feature count, or infrastructure activity over the living intelligence loop.
+Do not prioritize visual polish, feature count, or deployment activity over the living intelligence loop.
 
 ## Current phase
 
-**PHASE 1 — BRAIN DISTILLATION + CANONICALIZATION**
+**PHASE 2 — CANONICAL POPULATION → EXECUTABLE GRAPH/KERNEL**
 
-Completed in this phase:
+Completed in the current pass:
 
-- canonical Brain Map;
-- machine-readable Brain Index;
-- distilled Concepts #1–#13;
-- source distillation ledger;
-- strengthened Constitution;
-- strengthened Governance;
-- Master Design Contract;
-- Superbrain Master Spec;
-- Nine Node contracts;
-- first living Node proof specimen.
+- Concepts #1–#15 explicitly registered;
+- #14 contextual intelligence compiled into existing graph/CONNECT architecture;
+- #15 Value Calculus semantics mapped into the brain population model;
+- stable Nine-Node IDs reconciled with the naming law;
+- nine canonical Node object candidates materialized;
+- human/AI/machine representation contract materialized;
+- source-to-node population map materialized;
+- governed Nine-Node graph seed materialized;
+- machine-readable runtime registry materialized;
+- deterministic population parity validator added;
+- AAA file-by-file scorecard added;
+- AAA execution prompt added.
 
-Next highest-value work:
-
-**canonical object population → typed graph edges → kernel runtime → behavioral proof.**
+**Next proof frontier:** runtime loader + real persistence/retrieval + behavioral verification.
