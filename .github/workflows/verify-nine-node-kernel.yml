@@ -1,0 +1,40 @@
+name: Verify Nine-Node Kernel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-nine-node-kernel-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  n9-harness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Install focused test dependency
+        run: python -m pip install --quiet --disable-pip-version-check "pytest>=8,<9"
+
+      - name: Verify canonical nine-node structure
+        run: |
+          set -euo pipefail
+          python scripts/verify-nine-master-nodes.py
+
+      - name: Run N9 attribution and admission tests
+        run: |
+          set -euo pipefail
+          python -m pytest tests/test_n9_behavioral_harness.py -q
+
+      - name: Emit behavioral-proof boundary
+        run: |
+          echo "N9-000 harness integrity: TESTED"
+          echo "N9-001 runtime behavioral proof: NOT_PROVEN until independently captured runtime receipts exist."
+          echo "No CI result in this workflow promotes structural/test evidence into behavioral proof."
