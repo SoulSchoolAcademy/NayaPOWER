@@ -1,5 +1,10 @@
 # NayaPOWER Brain
 
+**Brain map:** [MASTER-MAP.md](./MASTER-MAP.md)  
+**Machine index:** [NAYAPOWER-BRAIN-INDEX.json](./NAYAPOWER-BRAIN-INDEX.json)  
+**Distilled knowledge:** [11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md](./11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md)  
+**Distillation ledger:** [11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md](./11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md)
+
 **Status:** PROPOSED CANONICAL ARCHITECTURE — HUMAN DIRECTOR RATIFICATION REQUIRED
 
 This is the target home of the NayaPOWER governed intelligence substrate.
@@ -13,4 +18,4 @@ Start here:
 - `00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md`
 - `MASTER-MAP.md`
 
-The brain is deliberately built before the first living Naya Node.
+The brain is deliberately built before the first living Naya Node. The current phase is **distill and canonicalize the knowledge corpus**, not claim behavioral completion.
