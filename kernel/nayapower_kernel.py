@@ -37,6 +37,7 @@ class DecisionResult:
     executed: bool
     truth_state: TruthState
     blocked_by: Node | None = None
+    trace: tuple[Node, ...] = ()
     evidence: tuple[str, ...] = ()
     outcome: str | None = None
     next_state: dict[str, str] = field(default_factory=dict)
@@ -61,6 +62,8 @@ class Kernel:
         return cls._NODE_ORDER
 
     def decide(self, context: DecisionContext) -> DecisionResult:
+        trace = (Node.SELF, Node.LAW)
+
         if context.consequential and (
             context.authority is None
             or context.authority.scope != context.action
@@ -70,10 +73,14 @@ class Kernel:
                 executed=False,
                 truth_state=TruthState.BLOCKED,
                 blocked_by=Node.LAW,
+                trace=trace,
             )
 
+        trace = self._NODE_ORDER
         evidence = (
             f"LAW.authority:{context.action}",
+            f"KNOW.context:{context.action}",
+            f"CONNECT.relevance:{context.action}",
             f"PROVE.action:{context.action}",
         )
         outcome = "executed"
@@ -83,6 +90,7 @@ class Kernel:
             allowed=True,
             executed=True,
             truth_state=TruthState.VERIFIED,
+            trace=trace,
             evidence=evidence,
             outcome=outcome,
             next_state=next_state,
