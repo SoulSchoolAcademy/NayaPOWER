@@ -1,105 +1,58 @@
-# NayaPOWER
+# 🔱 NayaPOWER
 
-## One governed superbrain
+> **Create. Connect. Grow with US.**
 
-NayaPOWER is the governed intelligence substrate behind NayaNET.
+**North Star:** MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.
 
-> **Nayas do not lose memory. Intelligence moves Sender → Receiver → Hub, remains provenance-bound and governed, is retrieved and applied, produces verified outcomes, learns from those outcomes, compounds, and enables the next Naya to continue without human reconstruction.**
+NayaPOWER is a governed intelligence system designed to preserve intelligence across Nayas, verify outcomes, learn from evidence, and evolve within human authority.
 
-## Canonical entrypoint
+## Read first
 
-### 🧠 NayaPOWER Superbrain
+1. [0000 Master Design Contract](./0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md)
+2. [Constitution Act](./CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md)
+3. [Governance Contract](./GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md)
+4. [Superbrain Master Specification](./ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md)
+5. [Canonical Superbrain Tree](./NAYAPOWER-TREE-V1.md)
+6. [NAYANODE system map](./NAYANODE/0000-CANONICAL-TREE.md)
+7. [Cold 14 acceptance interface](./NAYANODE/0020-COLD-14-QUESTION-INTELLIGENCE-INTERFACE-V1.md)
 
-[NAYANODE/0000-CANONICAL-TREE.md](./NAYANODE/0000-CANONICAL-TREE.md)
+## The Nine Nodes
 
-This is the **system map**, not merely a documentation index.
+**SELF · LAW · ACT · KNOW · PROVE · CONNECT · VERIFY · LEARN · EVOLVE**
 
-Machine bootstrap:
+These are nine semantic responsibilities inside one governed kernel.
 
-[NAYANODE/MANIFEST.json](./NAYANODE/MANIFEST.json)
+## The core proof
 
-## Architecture
+**Teach once → preserve → retrieve → apply → act → verify → learn → inherit → improve.**
 
-The system is organized into semantic domains that serve one executable intelligence loop:
+The system is not successful because a table exists, a function returns 200, a file was created, or a deployment completed.
 
-**IDENTITY → PURPOSE → LAW → KERNEL → NIO → MEMORY → RETRIEVAL → ACTION → PROOF → LEARNING → VALUE → CURRENT REALITY → NAYANET → SUCCESSION → SELF-OPTIMIZATION**
+The system is successful when intelligence changes future behavior and survives the transition to the next Naya.
 
-The nine Master Nodes are:
+## The architecture
 
-**SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE**
+**CONSTITUTION → GOVERNANCE → MASTER SPEC → KERNEL → NINE NODES → CANONICAL INTELLIGENT NODE → MEMORY/RELATIONSHIPS/PROOF → VERIFY → LEARN → SUCCESSOR → SELF-BUILDING → INTERFACES → SCALE**
 
-They are coordinated responsibilities inside one kernel—not nine independent brains.
+## Repository law
 
-## The machine flow
+The repository is an architectural instrument, not a museum.
 
-**BOOT → IDENTIFY → RESTORE → UNDERSTAND → CLASSIFY → RETRIEVE → CHECK → PRIORITIZE → AUTHORIZE → ACT → OBSERVE → VERIFY → PRESERVE → LEARN → HANDOFF → OPTIMIZE → CONTINUE**
+Historical implementation may be retired.
 
-## The intelligence flow
+Useful knowledge is extracted and canonicalized.
 
-**EXPERIENCE → CAPTURE → DISTILL → STRUCTURE → PROVE → PRESERVE → INDEX → RETRIEVE → APPLY → OUTCOME → VERIFY → LEARN → COMPOUND → NEXT NAYA**
+No subsystem survives merely because it already exists.
 
-## Canonical architecture documents
+No subsystem is created merely because it sounds useful.
 
-| Domain | Canonical document |
-|---|---|
-| System map | NAYANODE/0000-CANONICAL-TREE.md |
-| Node specification | NAYANODE/0001-NAYA-NODE-SPECIFICATION-V1.md |
-| Nine-node identity | NAYANODE/0002-NINE-NODE-KERNEL-MANIFEST-V1.md |
-| Cold continuity | NAYANODE/0003-COLD-NAYA-BOOT-CONTINUITY-V1.md |
-| Acceptance | NAYANODE/0004-OPERATIONAL-ACCEPTANCE-CONTRACT-V1.md |
-| Superbrain | NAYANODE/0005-SUPERBRAIN-OPERATING-ARCHITECTURE-V1.md |
-| NIO | NAYANODE/0006-NIO-INTELLIGENCE-OBJECT-MODEL-V1.md |
-| Kernel execution | NAYANODE/0007-NINE-NODE-KERNEL-EXECUTION-MODEL-V1.md |
-| Execution algorithm | NAYANODE/0008-EXECUTION-ALGORITHM-V1.md |
-| Memory / continuity | NAYANODE/0009-MEMORY-CONTINUITY-ARCHITECTURE-V1.md |
-| Retrieval / graph | NAYANODE/0010-RETRIEVAL-RELATIONSHIP-GRAPH-V1.md |
-| Proof / verification | NAYANODE/0011-PROOF-VERIFICATION-ARCHITECTURE-V1.md |
-| Learning / compounding | NAYANODE/0012-LEARNING-COMPOUNDING-ARCHITECTURE-V1.md |
-| Value / experience | NAYANODE/0013-VALUE-EXPERIENCE-ARCHITECTURE-V1.md |
-| Current reality | NAYANODE/0014-CURRENT-REALITY-CONTRACT-V1.md |
-| NayaNET / interfaces | NAYANODE/0015-NAYANET-INTERFACE-ARCHITECTURE-V1.md |
-| Engineering / runtime | NAYANODE/0016-ENGINEERING-RUNTIME-ARCHITECTURE-V1.md |
-| Governance / change | NAYANODE/0017-GOVERNANCE-CHANGE-ARCHITECTURE-V1.md |
-| Succession | NAYANODE/0018-SUCCESSION-ARCHITECTURE-V1.md |
-| Self-optimization | NAYANODE/0019-SELF-OPTIMIZATION-ARCHITECTURE-V1.md |
+Every durable capability must have:
 
-## Proof discipline
-
-Existence is not operation.
-
-Loading is not invocation.
-
-Invocation is not influence.
-
-Application is not success.
-
-Success is not verification.
-
-Verification is not learning.
-
-Learning is not compounding.
-
-Compounding is not succession.
-
-No claim may be promoted beyond its evidence.
-
-## Current P0
-
-**LEGITIMATE IDENTITY CONTINUITY + NINE-NODE KERNEL INHERITANCE.**
-
-The canonical nine-node Intelligent Blocks exist in the intelligence substrate, but behavioral operation and legitimate runtime inheritance remain to be proven.
-
-The next engineering work is to establish legitimate identity continuity and then prove:
-
-**BOOT → LOAD → INVOKE → INFLUENCE → APPLY → OUTCOME → VERIFY → LEARN → COMPOUND → SUCCESSOR → EVOLVE**
-
-## Operating law
-
-> **Maximum responsible verified human value per unit of complexity.**
-
-Build enough to make the system work at the highest level. Do not add machinery merely because it is possible.
-
-**One responsibility → one canonical implementation → one source of truth.**
+- one canonical responsibility,
+- one canonical home,
+- one explicit contract,
+- one verification path,
+- and a clear reason to exist.
 
 ## Permanent boundaries
 
