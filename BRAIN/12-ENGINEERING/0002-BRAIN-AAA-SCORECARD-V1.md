@@ -106,6 +106,29 @@ The physical tree is coherent enough to operate as a navigation model, and the k
 | REAL-TREE.json | 8.0 | 8.0 | 8.0 | 8.5 | 5.0 | 7.5 |
 | REAL-TREE.md | 8.0 | 8.0 | 8.0 | 8.5 | 5.0 | 7.5 |
 
+## Post-execution re-score — 2026-09-27
+
+The first executable-kernel pass materially closes the organization/runtime boundary. These are **architecture/readiness** scores, not claims of living-system proof.
+
+| Dimension | Before | Current | Reason |
+|---|---:|---:|---|
+| Physical coherence | 9.0 | 9.0 | no structural regression |
+| Knowledge synthesis | 8.7 | 9.0 | source corpus reconciled to #1–#15 in index |
+| Human understandability | 8.0 | 8.0 | unchanged; runtime work did not replace explanation |
+| AI semantic usability | 8.1 | 8.3 | executable registry now consumes canonical IDs |
+| Machine determinism | 8.2 | 8.7 | registry loader, deterministic persistence and receipts |
+| Graph readiness | 7.6 | 8.3 | seed relationships are persisted and queryable |
+| Executable kernel | 5.5 | 7.4 | runtime loads canonical registry and enforces gates |
+| Memory continuity | 5.0 | 6.8 | durable SQLite cold reconstruction is exercised locally |
+| Proof / verification | 5.5 | 6.6 | CVO and fail-closed verification boundaries implemented |
+| Learning / compounding | 4.8 | 6.2 | later behavioral improvement is required for promotion |
+| Succession | 5.0 | 5.8 | successor records explicitly reject authority inheritance |
+| Production proof | 3.5 | 3.5 | no production-boundary proof yet |
+
+**Current architecture/readiness assessment: 7.3/10.**
+
+**Current living-intelligence proof: NOT ESTABLISHED.**
+
 ## What prevents 10/10
 
 1. The graph is now represented, but not proven as a live retrieval/runtime capability.
