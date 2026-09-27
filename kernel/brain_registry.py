@@ -124,7 +124,7 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
     # of one semantic graph. They must agree exactly on relationship identity,
     # direction, type, endpoints and epistemic state. Otherwise the Brain can
     # appear internally coherent while retrieval consumes a different graph.
-    object_relationship_ids: set[str] = set()
+    object_relationship_nodes: dict[str, set[str]] = {}
     for node_id in NODE_IDS:
         path = object_dir / f"{node_id}.json"
         if not path.exists():
@@ -135,9 +135,7 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
             if not relationship_id:
                 errors.append(f"node_relationship_identity_incomplete:{node_id}")
                 continue
-            if relationship_id in object_relationship_ids:
-                errors.append(f"duplicate_node_relationship_id:{relationship_id}")
-            object_relationship_ids.add(relationship_id)
+            object_relationship_nodes.setdefault(relationship_id, set()).add(node_id)
             seed = graph_relationships.get(relationship_id)
             if seed is None:
                 errors.append(f"node_relationship_missing_from_graph:{node_id}:{relationship_id}")
@@ -157,9 +155,23 @@ def load_and_validate_brain(root: Path, root_override: Path | None = None) -> di
             if actual != expected:
                 errors.append(f"node_relationship_drift:{node_id}:{relationship_id}")
 
+    object_relationship_ids = set(object_relationship_nodes)
     missing_from_objects = set(graph_relationships) - object_relationship_ids
     for relationship_id in sorted(missing_from_objects):
         errors.append(f"graph_relationship_missing_from_node_objects:{relationship_id}")
+
+    # A relationship is intentionally materialized on both endpoint Node
+    # objects. Reuse of the same canonical relationship ID is therefore valid;
+    # what must be unique is its endpoint set.
+    for relationship_id, node_ids in object_relationship_nodes.items():
+        seed = graph_relationships.get(relationship_id)
+        if seed is None:
+            continue
+        expected_nodes = {seed.get("source_id"), seed.get("target_id")}
+        if node_ids != expected_nodes:
+            errors.append(
+                f"node_relationship_endpoint_set_drift:{relationship_id}"
+            )
 
     source_count = population.get("source_count")
     if source_count != 15 or len(population.get("source_mappings", [])) != 15:
