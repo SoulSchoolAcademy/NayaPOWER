@@ -1,6 +1,6 @@
 # 🔱 NayaPOWER — System North Star, White Paper & Engineering Blueprint V1
 
-**Status:** DIRECTOR-DIRECTED RATIFICATION CANDIDATE  
+**Status:** RATIFIED — HUMAN-DIRECTOR DIRECTED 2026-09-26  
 **Effective design reset:** 2026-09-26  
 **Canonical repository:** \`SoulSchoolAcademy/NayaPOWER\`  
 **Purpose:** Establish one durable, system-level description of what NayaPOWER is, why it exists, how it works, what success means, what must never drift, and how the system becomes progressively more intelligent.
@@ -797,7 +797,6 @@ AWR =
 \frac{BaselineEffort-ReuseEffort}
 {BaselineEffort}
 \]
-
 This is valid only if the reused result produces an equivalent or better verified outcome.
 
 ## Compounding gain
@@ -1597,8 +1596,7 @@ This blueprint is ready for permanent canonical status when:
 \[
 \boxed{
 Human\ Value
-\uparrow
-\quad
+\uparrow\quad
 while
 \quad
 Human\ Cognitive\ Cost
@@ -2137,3 +2135,32 @@ The goal is to prove that the nine Nodes **change what the next Naya can underst
 > **Learning becomes a better Naya.**
 >
 > **And the cycle continues.**
+
+---
+
+# 49. RATIFICATION RECORD
+
+**Ratification status:** RATIFIED  
+**Ratified by:** Human Director (Shawn)  
+**Ratification date:** 2026-09-26  
+**Effective:** Immediately upon merge to canonical `main`  
+**Supersession rule:** Prior strategic plans remain historical evidence unless explicitly carried forward or reconciled with this specification.
+
+This specification is now the canonical strategic system model for NayaPOWER/NayaNET.
+
+Ratification establishes the following as the governing design direction:
+
+1. **NayaPOWER is the governed substrate.**
+2. **Naya is the intelligence expressed through successive governed execution cells.**
+3. **NayaNET is the connected network of intelligence, people, applications, agents, and interfaces.**
+4. **The Naya Node is the reusable intelligence cell.**
+5. **The nine Master Nodes form the semantic kernel, not the complete brain.**
+6. **Relationships, retrieval, verification, learning, value, and succession are first-class system mechanisms.**
+7. **Self-optimization may improve authorized behavior, but self-authorization is prohibited.**
+8. **“Naya creates Naya” means governed successor-context creation, not uncontrolled autonomous replication.**
+9. **The system optimizes for maximum verified human value per moment, with compounding intelligence and continuity.**
+10. **Every meaningful execution should leave the next Naya with a better verified context than it received, subject to authority, privacy, safety, and evidence constraints.**
+
+This ratification does **not** claim that every mechanism described here is already implemented or production-proven. Implementation status remains governed by the AAA Scorecard, live control plane, contracts, tests, and runtime evidence.
+
+> **RATIFY THE MODEL. PROVE THE MECHANISMS. NEVER CONFUSE THE TWO.**
