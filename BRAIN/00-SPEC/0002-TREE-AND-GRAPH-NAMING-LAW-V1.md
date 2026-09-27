@@ -1,6 +1,7 @@
 # NayaPOWER Naming & Addressing Law V1
 
-**Status:** PROPOSED CANONICAL
+**Status:** CANONICAL SPECIFICATION — machine-validation requirements defined  
+**Purpose:** Keep navigation, identity, allocation, lineage and historical addressing deterministic.
 
 ## Core rule
 
@@ -38,6 +39,12 @@ Object IDs use:
 NAYA-<TYPE>-<SEQUENCE>
 ```
 
+Canonical machine form:
+
+```regex
+^NAYA-[A-Z][A-Z0-9_]*-[0-9]{4,}$
+```
+
 Examples:
 
 ```
@@ -64,7 +71,9 @@ NAYA-KERNEL-LEARN
 NAYA-KERNEL-EVOLVE
 ```
 
-## Rules
+Reserved kernel IDs are immutable and are not sequence-allocated.
+
+## Deterministic allocation and collision law
 
 1. Never encode mutable state in identity.
 2. Never use a filename as the primary identity.
@@ -74,3 +83,33 @@ NAYA-KERNEL-EVOLVE
 6. Historical IDs remain resolvable.
 7. Supersession creates lineage; it does not rewrite history.
 8. Human-readable titles may change without changing identity.
+9. Allocation MUST reject an existing ID rather than silently overwrite it.
+10. Allocation MUST be atomic at the canonical persistence boundary.
+11. IDs MUST be compared after canonical normalization; case/whitespace variants MUST NOT create distinct identities.
+12. A validator MUST prove uniqueness across all canonical object indexes before a promotion can become CANONICAL.
+13. A deleted/archived object retains its ID forever; the ID may resolve to its terminal historical state but may never be reissued.
+14. Relationship IDs obey the same immutability/non-reuse law.
+
+## Required identity fields
+
+Every canonical object MUST expose:
+
+- `id`
+- `type`
+- `status`
+- `provenance`
+- `relationships`
+- `created_at`
+- `updated_at`
+
+Object-specific contracts may require more fields.
+
+## Validator acceptance
+
+A naming validator is PASS only when it can prove:
+
+```
+FORMAT → NORMALIZATION → UNIQUENESS → RESERVED-ID SAFETY → NON-REUSE → RELATIONSHIP-ID SAFETY
+```
+
+Failure is fail-closed. A naming violation is never repaired by silently renaming an existing canonical identity.
