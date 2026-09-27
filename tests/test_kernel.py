@@ -4,6 +4,7 @@ from kernel.nayapower_kernel import (
     Kernel,
     Node,
     TruthState,
+    LawDecision,
 )
 
 
@@ -34,6 +35,7 @@ def test_law_blocks_consequential_action_without_authority():
     assert result.allowed is False
     assert result.truth_state is TruthState.BLOCKED
     assert result.blocked_by is Node.LAW
+    assert result.law_decision is LawDecision.AMBIGUOUS
     assert result.trace == (Node.SELF, Node.LAW)
 
 
