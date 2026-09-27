@@ -15,6 +15,7 @@
 | Learning that measurably changes future behavior | **NOT PROVEN GENERALLY** |
 | Generational compounding | **NOT PROVEN** |
 | Cold N9 successor | **NOT PROVEN** |
+| Runtime authorization | **BLOCKED** | Legitimate owner-scoped session still required |
 | Production parity | **PARTIAL / BLOCKED** |
 
 **N9 behavioral proof: NOT PROVEN.** The current system has strong structural evidence and selected verified intelligence workflows, but the decisive experiment still requires a legitimate owner-scoped runtime.
