@@ -2,7 +2,7 @@
   "schema": "naya.intelligent.object.v1",
   "object_id": "NAYA-KERNEL-EVOLVE",
   "object_type": "NODE",
-  "version": "1.0",
+  "version": "1.1",
   "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-EVOLVE",
   "scope": "NayaPOWER kernel",
@@ -51,8 +51,34 @@
   "proof": {
     "implementation_status": "DOCUMENTED",
     "behavioral_status": "NOT_PROVEN",
-    "production_status": "NOT_PROVEN"
+    "production_status": "NOT_PROVEN",
+    "relationships_status": "GRAPH_SEED_ALIGNED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
   },
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "REL-KERNEL-LEARN-EVOLVE",
+      "direction": "IN",
+      "type": "ENABLES",
+      "related_object_id": "NAYA-KERNEL-LEARN",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+    },
+    {
+      "relationship_id": "REL-KERNEL-EVOLVE-SELF",
+      "direction": "OUT",
+      "type": "SUCCEEDS",
+      "related_object_id": "NAYA-KERNEL-SELF",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+    },
+    {
+      "relationship_id": "REL-KERNEL-LAW-EVOLVE",
+      "direction": "IN",
+      "type": "GOVERNS",
+      "related_object_id": "NAYA-KERNEL-LAW",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+      "epistemic_state": "VERIFIED_OR_SUPPORTED_AS_DECLARED_BY_GRAPH_SEED"
+    }
+  ],
   "successor_effect": "Preserve only the semantic state needed for future continuation; never manufacture authority."
 }
