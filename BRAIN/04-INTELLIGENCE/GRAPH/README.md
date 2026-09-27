@@ -1,0 +1,9 @@
+# Graph
+
+The graph is the relationship layer over canonical objects.
+
+It does not replace the tree.
+
+Every edge is typed and auditable:
+
+DERIVED_FROM, SUPPORTS, CONTRADICTS, DEPENDS_ON, IMPLEMENTS, GOVERNS, AUTHORIZED_BY, USED_BY, CAUSED, RESULTED_IN, VERIFIED_BY, LEARNED_FROM, SUPERSEDES, SUCCEEDS, RELATED_TO, CONTEXTUALIZES, INVALIDATES, REFINES, CORRECTS.
