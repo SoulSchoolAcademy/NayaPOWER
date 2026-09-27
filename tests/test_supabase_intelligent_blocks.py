@@ -42,7 +42,8 @@ def test_cold_kernel_retrieval_round_trip_preserves_canonical_boundary():
         request=fake_request,
     )
 
-    retrieved = reader.get_by_intelligent_block_id(
+    retrieved = kernel.retrieve_intelligent_block(
+        reader,
         intelligent_block_id="IB-NAYA-NODE-0001-0001",
         owner_id="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f",
     )
