@@ -4,6 +4,10 @@ import json
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from runtime.canonical_memory import RetrievedIntelligentBlock
 
 
 class Node(str, Enum):
@@ -38,6 +42,8 @@ class DecisionContext:
     action: str
     consequential: bool
     authority: Authority | None
+    task_target: str | None = None
+    intelligence: tuple["RetrievedIntelligentBlock", ...] = ()
 
 
 @dataclass(frozen=True)
@@ -96,24 +102,46 @@ class Kernel:
             )
 
         trace = self._NODE_ORDER
-        evidence = (
+        evidence = [
             f"LAW.authority:{context.action}",
             f"KNOW.context:{context.action}",
             f"CONNECT.relevance:{context.action}",
             f"PROVE.action:{context.action}",
+        ]
+
+        applicable = tuple(
+            block
+            for block in context.intelligence
+            if block.understanding_state == "VERIFIED"
+            and block.status not in {"DELETED", "SUPERSEDED"}
+            and block.is_applicable_to(context.task_target)
         )
+        if applicable:
+            evidence.extend(
+                f"KNOW.retained_intelligence:{block.evidence_key()}"
+                for block in applicable
+            )
+            evidence.extend(
+                f"CONNECT.applicability:{block.intelligent_block_id}:{context.task_target}"
+                for block in applicable
+            )
 
         # Execution is an observation, not proof that the intended outcome
         # occurred. VERIFY must establish outcome before truth can be promoted.
-        outcome = "executed"
+        outcome = "executed_with_retained_intelligence" if applicable else "executed"
         next_state = {"last_action": context.action}
+        if applicable:
+            next_state["retained_intelligence_applied"] = "true"
+            next_state["retained_intelligence_ids"] = ",".join(
+                block.intelligent_block_id for block in applicable
+            )
 
         return DecisionResult(
             allowed=True,
             executed=True,
             truth_state=TruthState.UNKNOWN,
             trace=trace,
-            evidence=evidence,
+            evidence=tuple(evidence),
             outcome=outcome,
             next_state=next_state,
             learning_candidate=None,
