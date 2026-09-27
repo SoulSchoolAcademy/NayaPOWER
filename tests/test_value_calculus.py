@@ -66,3 +66,4 @@ def test_sensitivity_is_bounded_and_reproducible(profile):
     b = calculate_value(dims, profile, sensitivity=True)
     assert a["sensitivity"] == b["sensitivity"]
     assert a["sensitivity"]["minimum"] <= a["sensitivity"]["baseline"] <= a["sensitivity"]["maximum"]
+    assert a["sensitivity"]["spread"] > 0
