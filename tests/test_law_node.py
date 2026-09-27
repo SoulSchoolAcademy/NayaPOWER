@@ -9,15 +9,29 @@ from kernel.nayapower_kernel import (
 )
 
 
-def test_law_explicitly_denies_missing_authority():
+def test_law_marks_missing_authority_ambiguous():
     result = Kernel().decide(
         DecisionContext(action="publish_change", consequential=True, authority=None)
     )
 
-    assert result.law_decision is LawDecision.DENIED
+    assert result.law_decision is LawDecision.AMBIGUOUS
     assert result.allowed is False
     assert result.blocked_by.value == "LAW"
-    assert result.audit_receipt["decision"] == "DENIED"
+    assert result.audit_receipt["decision"] == "AMBIGUOUS"
+
+
+def test_law_denies_explicitly_missing_consent():
+    result = Kernel().decide(
+        DecisionContext(
+            action="publish_change",
+            consequential=True,
+            authority=Authority(scope="publish_change", consent_granted=False),
+        )
+    )
+
+    assert result.law_decision is LawDecision.DENIED
+    assert result.allowed is False
+    assert result.executed is False
 
 
 def test_law_requires_confirmation_when_authority_requires_it():
