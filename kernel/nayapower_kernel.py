@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from runtime.canonical_memory import RetrievedIntelligentBlock
+    from runtime.canonical_memory import RetrievedIntelligentBlock, RetrievedRelationship
 
 
 class Node(str, Enum):
@@ -44,6 +44,7 @@ class DecisionContext:
     authority: Authority | None
     task_target: str | None = None
     intelligence: tuple["RetrievedIntelligentBlock", ...] = ()
+    relationships: tuple["RetrievedRelationship", ...] = ()
 
 
 @dataclass(frozen=True)
@@ -109,26 +110,43 @@ class Kernel:
             f"PROVE.action:{context.action}",
         ]
 
-        applicable = tuple(
+        candidates = tuple(
             block
             for block in context.intelligence
             if block.understanding_state == "VERIFIED"
             and block.status not in {"DELETED", "SUPERSEDED"}
             and block.is_applicable_to(context.task_target)
         )
-        if applicable:
+        applicable_blocks = []
+        for block in candidates:
+            supporting_relationships = tuple(
+                relationship
+                for relationship in context.relationships
+                if relationship.is_verified_support_for(block.intelligent_block_id)
+            )
+            if not supporting_relationships:
+                continue
+            applicable_blocks.append((block, supporting_relationships))
             evidence.extend(
                 f"KNOW.retained_intelligence:{block.evidence_key()}"
-                for block in applicable
             )
             evidence.extend(
                 f"CONNECT.applicability:{block.intelligent_block_id}:{context.task_target}"
-                for block in applicable
+                for _ in supporting_relationships
             )
+            evidence.extend(
+                f"CONNECT.relationship:{relationship.relationship_id}:{relationship.relationship_type}"
+                for relationship in supporting_relationships
+            )
+        applicable = tuple(block for block, _ in applicable_blocks)
 
         # Execution is an observation, not proof that the intended outcome
         # occurred. VERIFY must establish outcome before truth can be promoted.
-        outcome = "executed_with_retained_intelligence" if applicable else "executed"
+        outcome = (
+            "executed_with_relationship_aware_intelligence"
+            if applicable
+            else "executed"
+        )
         next_state = {"last_action": context.action}
         if applicable:
             next_state["retained_intelligence_applied"] = "true"
