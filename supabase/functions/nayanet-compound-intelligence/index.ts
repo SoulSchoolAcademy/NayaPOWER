@@ -69,7 +69,70 @@ async function record(client: any, event: any, action: string, expected: string,
   return data;
 }
 
+
+const MASTER_NODE_KEYS = ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"] as const;
+const MASTER_NODE_IDS = ["IB-001233","IB-001234","IB-001235","IB-001236","IB-001237","IB-001238","IB-001239","IB-001240","IB-001241"] as const;
+
+async function loadMasterNodeKernel(client: any, userId: string) {
+  const result = await client.from("nayanet_intelligent_blocks")
+    .select("block_id,intelligent_block_id,title,version,status,understanding_state,owner_scope,content,provenance,value_context,applicable_scope,updated_at")
+    .eq("owner_id", userId)
+    .in("intelligent_block_id", [...MASTER_NODE_IDS])
+    .eq("status", "ACTIVE");
+  if (result.error) throw result.error;
+
+  const nodes = (result.data ?? []).sort((a: any, b: any) =>
+    Number(a.content?.kernel?.node_no ?? 999) - Number(b.content?.kernel?.node_no ?? 999)
+  );
+
+  if (nodes.length !== MASTER_NODE_KEYS.length) {
+    throw new Error("MASTER_NODE_KERNEL_INCOMPLETE:" + String(nodes.length) + "/9");
+  }
+
+  const invalid = nodes.filter((node: any, index: number) =>
+    node.intelligent_block_id !== MASTER_NODE_IDS[index] ||
+    node.content?.kernel?.key !== MASTER_NODE_KEYS[index] ||
+    node.content?.kernel_activation?.status !== "ACTIVE" ||
+    node.content?.kernel_activation?.runtime_status !== "STRUCTURALLY_ACTIVE"
+  );
+
+  if (invalid.length) {
+    throw new Error("MASTER_NODE_KERNEL_INVALID:" + invalid.map((x: any) => x.intelligent_block_id).join(","));
+  }
+
+  return {
+    schema: "NAYAPOWER_MASTER_NODE_KERNEL_V1",
+    status: "KERNEL_ACTIVE_STRUCTURAL",
+    node_count: nodes.length,
+    effectiveness_status: "NOT_YET_PROVEN",
+    activation_boundary: "Structural activation is verified; runtime behavioral integration requires the kernel boot proof.",
+    nodes: nodes.map((node: any) => ({
+      intelligent_block_id: node.intelligent_block_id,
+      node_no: node.content.kernel.node_no,
+      key: node.content.kernel.key,
+      triad: node.content.kernel.triad,
+      title: node.title,
+      version: node.version,
+      status: node.status,
+      understanding_state: node.understanding_state,
+      primary_contracts: node.content.kernel.primary_contracts,
+      core_question: node.content.kernel.core_question,
+      purpose: node.content.kernel.purpose,
+      responsibilities: node.content.kernel.responsibilities,
+      activation_rules: node.content.kernel.activation_rules,
+      relationships: node.content.kernel.relationships,
+      proof_requirements: node.content.kernel.proof_requirements,
+      runtime_role: node.content.kernel.runtime_role,
+      effectiveness_status: node.content.kernel.effectiveness_status ?? "NOT_YET_PROVEN"
+    })),
+    runtime_flow: [...MASTER_NODE_KEYS],
+    loop_return: "SELF",
+    rule: "Nine Master Nodes are coordinated responsibilities, not nine authorities or nine independent brains."
+  };
+}
+
 async function restore(client: any, userId: string) {
+  const masterKernel = await loadMasterNodeKernel(client, userId);
   const [state, events, learning, replays, receipts, ops, bridge] = await Promise.all([
     admin.from("nayanet_project_intelligence_state")
       .select("*").eq("project_id", PROJECT).maybeSingle(),
@@ -240,6 +303,7 @@ async function restore(client: any, userId: string) {
     RECENT_OUTCOMES: receipts.data ?? [],
     ACTIVE_DECISIONS: canonicalState?.current_next_action ?? null,
     CURRENT_NEXT_ACTION: canonicalState?.current_next_action ?? null,
+    system_intelligence: { master_kernel: masterKernel },
     WHY: "Remove manual archaeology and make architecture carry continuity.",
     SUCCESS_CONDITION: canonicalState?.current_next_action?.success_condition ?? "Cold Naya restores, retrieves, acts, verifies, learns and hands off.",
     EVIDENCE_REQUIRED: ["restore response","exact bridge lineage","retrieval evidence","render evidence","execution/verification receipt","cold successor receipt","continuation outcome"],
@@ -250,6 +314,9 @@ async function restore(client: any, userId: string) {
 
 async function coldRestore(client: any, userId: string) {
   const restored = await restore(client, userId);
+  if (restored.system_intelligence?.master_kernel?.status !== "KERNEL_ACTIVE_STRUCTURAL" || restored.system_intelligence?.master_kernel?.node_count !== 9) {
+    throw new Error("MASTER_NODE_KERNEL_BOOT_FAILED");
+  }
   const requiredQuestions = Array.from({ length: 14 }, (_, i) => `${i + 1}_`);
   const missing = requiredQuestions.filter((prefix) =>
     !Object.keys(restored).some((key) => key.startsWith(prefix))
@@ -1042,7 +1109,7 @@ Deno.serve(async (req) => {
   let body:any={}; try { body=await req.json(); } catch {}
   const action=String(body.action||"restore").trim();
   try {
-    const preActionExempt = new Set(["restore","cold_restore","retrieve","reconcile","health"]);
+    const preActionExempt = new Set(["restore","cold_restore","kernel_boot","retrieve","reconcile","health"]);
     if (!preActionExempt.has(action)) {
       const gate = await coldRestore(client,user.id);
       if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
@@ -1139,6 +1206,7 @@ Deno.serve(async (req) => {
     } else {
       switch(action) {
         case "restore": result=await restore(client,user.id); break;
+        case "kernel_boot": result=await loadMasterNodeKernel(client,user.id); break;
         case "cold_restore": result=await coldRestore(client,user.id); break;
         case "retrieve": result=await retrieve(client,user.id,body); break;
         case "reconcile": result=await reconcile(client,user.id,body); break;
