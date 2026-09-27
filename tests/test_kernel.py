@@ -122,3 +122,20 @@ def test_kernel_manifest_declares_the_executable_cold_runtime_entrypoint():
     assert manifest["runtime_entrypoint"] == "runtime/cold_runtime.py"
     assert manifest["runtime_loader"] == "Kernel.from_brain"
     assert manifest["canonical_persistence_adapter"] == "runtime/canonical_memory.py"
+
+
+def test_kernel_rejects_noncanonical_manifest_runtime_binding(tmp_path):
+    from pathlib import Path
+    import json
+    import shutil
+    import pytest
+
+    source = Path(__file__).resolve().parents[1]
+    shutil.copytree(source / "BRAIN", tmp_path / "BRAIN")
+    manifest = tmp_path / "BRAIN/03-KERNEL/MANIFEST.json"
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    data["runtime_entrypoint"] = "runtime/not-the-canonical-runtime.py"
+    manifest.write_text(json.dumps(data), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="runtime entrypoint"):
+        Kernel.from_brain(tmp_path)
