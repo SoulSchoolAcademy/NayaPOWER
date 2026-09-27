@@ -1,11 +1,13 @@
 {
   "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
-  "status": "CANONICAL_MANIFEST_RUNTIME_BINDING_PENDING",
+  "status": "CANONICAL_MANIFEST_RUNTIME_BINDING_IMPLEMENTED_NOT_VERIFIED",
   "runtime_binding": {
-    "status": "NOT_PROVEN",
-    "entrypoint": null,
-    "source_of_truth": "Actual application runtime source; must be identified by inspection before binding.",
-    "fail_closed_if_unresolved": true
+    "status": "IMPLEMENTED_NOT_VERIFIED",
+    "entrypoint": "kernel/nayapower_kernel.py::Kernel",
+    "bootstrap": "kernel/runtime_boot.py::load_runtime_manifest",
+    "source_of_truth": "BRAIN/03-KERNEL/MANIFEST.json",
+    "fail_closed_if_unresolved": true,
+    "verification": "tests/test_runtime_boot.py and tests/test_kernel.py; CI execution required before VERIFIED"
   },
   "node_identity_law": "BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
   "nodes": [
