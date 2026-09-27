@@ -30,3 +30,10 @@ jobs:
       - run: python -m pip install pytest
       - name: Run live authenticated read-only proof
         run: python -m pytest -q tests/test_live_supabase_intelligent_blocks.py
+      - name: Upload live CONNECT runtime receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-connect-runtime-receipt
+          path: .naya/evidence/live-connect-runtime-receipt.json
+          if-no-files-found: ignore
