@@ -33,7 +33,7 @@ def test_store_retrieves_same_event_by_year_month_day_topic_category_and_node():
     store = EventStore()
     store.append(event())
     store.append(event(event_id="evt-2", occurred_at=datetime(2026, 9, 27, tzinfo=timezone.utc), topic="hub"))
-    store.append(event(event_id="evt-3", occurred_at=datetime(2025, 9, 26, tzinfo=timezone.utc), category="project", topic="legacy"))
+    store.append(event(event_id="evt-3", occurred_at=datetime(2025, 9, 26, tzinfo=timezone.utc), category="project", topic="legacy", nodes=["SELF"]))
 
     assert [e.event_id for e in store.search(year=2026)] == ["evt-1", "evt-2"]
     assert [e.event_id for e in store.search(year=2026, month=9, day=26)] == ["evt-1"]
