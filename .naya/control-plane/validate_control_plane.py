@@ -3,6 +3,7 @@
 from __future__ import annotations
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -23,6 +24,7 @@ LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
 MANIFEST=ROOT/'.naya/naya-context-manifest.json'
 SOURCE_MAP=ROOT/'SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md'
 CANONICAL_CONSTITUTION='.naya/codex/11-RUNTIME-CONSTITUTION.md'
+CONSTITUTIONAL_REGISTRY=ROOT/'.naya/control-plane/CONSTITUTIONAL-AUTHORITY-REGISTRY.json'
 KNOWN_REPO_PATH_PREFIXES=('.naya/','.github/','SUPERBRAIN/','NAYANET/','scripts/','tests/','docs/')
 
 
@@ -75,22 +77,132 @@ def validate_authority_map(kernel):
             fail(f'canonical source map missing required rule: {marker}')
     if kernel.get('constitutional_authority')!=CANONICAL_CONSTITUTION:
         fail('governance kernel constitutional authority disagrees with canonical source map')
-    # No second file may claim the repository-wide constitutional status.
-    # Amendment records are intentionally allowed as historical records.
-    offenders=[]
-    for base in (ROOT/'.naya/codex',ROOT/'SUPERBRAIN'):
-        if not base.is_dir():
+    # Every document that may claim constitutional authority must be classified in
+    # the declared constitutional authority registry, and unresolved precedence MUST
+    # fail closed. No machine or Naya may resolve constitutional precedence.
+    global LAST_AUTHORITY_ENUMERATION
+    registry=load(CONSTITUTIONAL_REGISTRY)
+    entries=registry.get('entries',[]) if isinstance(registry,dict) else []
+    registered={e['path'] for e in entries if isinstance(e,dict) and 'path' in e}
+    missing=[p for p in sorted(registered) if not (ROOT/p).is_file()]
+    if missing:
+        fail('constitutional authority registry references missing artifacts: '+'; '.join(missing[:20]))
+    candidates=enumerate_authority_candidates()
+    unregistered=unregistered_authority_candidates(candidates,registered)
+    competing=sorted(e['path'] for e in entries if e.get('role')=='COMPETING_UNRESOLVED')
+    canonical=[e['path'] for e in entries if e.get('role')=='CANONICAL']
+    if canonical and CANONICAL_CONSTITUTION not in canonical:
+        fail('constitutional authority registry disagrees with the canonical constitution '
+             'recorded by the governance kernel: '+str(canonical))
+    LAST_AUTHORITY_ENUMERATION={
+        'registry':CONSTITUTIONAL_REGISTRY.relative_to(ROOT).as_posix(),
+        'precedence_status':registry.get('precedence_status'),
+        'candidates_detected':len(candidates),
+        'registry_entries':len(registered),
+        'unregistered_candidates':unregistered,
+        'competing_unresolved':competing,
+        'role_counts':{
+            role:sum(1 for e in entries if e.get('role')==role)
+            for role in sorted({e.get('role') for e in entries if isinstance(e,dict)})
+        },
+        'candidates_missed_by_retired_detector':sorted(
+            p for p,d in candidates.items() if not d['legacy_detector_detected']),
+    }
+    if unregistered:
+        fail('undeclared constitutional authority claim(s) detected: '+'; '.join(unregistered[:20])
+             +' || every document claiming constitutional authority must be classified in '
+             +CONSTITUTIONAL_REGISTRY.relative_to(ROOT).as_posix())
+    blockers=precedence_blockers(registry)
+    if blockers:
+        fail('constitutional authority is not unambiguous: '+' | '.join(blockers)
+             +' || remediation is an explicit human ratification of precedence. '
+             +'No machine or Naya may resolve this.')
+
+# --- Structured constitutional authority detection -------------------------
+# The retired detector required two literal strings ('CANONICAL / CONSTITUTIONAL'
+# plus 'Authority: Constitutional') and scanned only .naya/codex and SUPERBRAIN.
+# It was blind to claims phrased differently and structurally blind to
+# .naya/contracts/ entirely. Detection is now signal-based, and the semantic
+# judgement is recorded in an explicit registry rather than guessed from wording.
+CONSTITUTIONAL_TITLE_TERM=re.compile(r'\bconstitution(?:al|s)?\b|\bcharter\b|\bstatute\b|\bfoundation\s+law\b',re.I)
+SELF_CANONICAL_CLAIM=re.compile(
+    r'canonical\s+(?:constitution|charter|statute|law)'
+    r'|target\s+canonical\s+location'
+    r'|current\s+(?:constitution|charter)'
+    r'|(?:this|the)\s+(?:supreme|foundational|governing|sole)\s+(?:law|charter|authority|code|constitution)'
+    r'|(?:this|the)\s+(?:document|file|text|contract|law)?\s*(?:is|are)\s+(?:now\s+)?(?:the\s+)?'
+    r'(?:canonical\s+|current\s+|sole\s+|supreme\s+|governing\s+)*(?:constitution|constitutional\s+law|charter|statute)',re.I)
+PRECEDENCE_OVER_ALL=re.compile(
+    r'takes?\s+precedence\s+over\s+(?:all|every|any)\b'
+    r'|overrides?\s+all\s+other'
+    r'|supersedes?\s+all\s+(?:other\s+)?(?:contracts|laws|rules|policies|charters)'
+    r'|governs\s+all\b'
+    r'|binding\s+on\s+all\b',re.I)
+PROJECTION_PATH_PREFIX='.naya/memory/smart-notes/'
+AUTHORITY_SCAN_PREFIXES=('.naya/','SUPERBRAIN/','NAYANET/','docs/')
+ATX_H1=re.compile(r'^\s{0,3}#\s+(\S.*?)\s*$',re.M)
+LAST_AUTHORITY_ENUMERATION={}
+
+
+def legacy_phrase_claim(raw):
+    """The retired phrase detector, kept so regression tests can prove it was blind."""
+    return ('CANONICAL / CONSTITUTIONAL' in raw or '**CANONICAL / CONSTITUTIONAL**' in raw) \
+        and ('Authority: Constitutional' in raw or '**Authority:** Constitutional' in raw)
+
+
+def enumerate_authority_candidates():
+    """Broad, high-recall scan for documents that may claim constitutional authority.
+
+    Precision is deliberately not the goal: an unclassified candidate must be visible
+    to a human, so recall matters more than silence.
+    """
+    candidates={}
+    tracked=subprocess.run(['git','ls-files','*.md'],cwd=ROOT,text=True,capture_output=True,check=True).stdout.split('\n')
+    source_map_rel=SOURCE_MAP.relative_to(ROOT).as_posix()
+    for rel in tracked:
+        rel=rel.strip()
+        if not rel or not rel.startswith(AUTHORITY_SCAN_PREFIXES):
             continue
-        for path in base.rglob('*.md'):
-            if path == ROOT/CANONICAL_CONSTITUTION or path == SOURCE_MAP:
-                continue
-            raw=path.read_text(encoding='utf-8',errors='replace')
-            canonical_const=('CANONICAL / CONSTITUTIONAL' in raw or '**CANONICAL / CONSTITUTIONAL**' in raw)
-            constitutional_authority=('Authority: Constitutional' in raw or '**Authority:** Constitutional' in raw)
-            if canonical_const and constitutional_authority:
-                offenders.append(path.relative_to(ROOT).as_posix())
-    if offenders:
-        fail('multiple current constitutional authorities detected: '+'; '.join(offenders[:20]))
+        if rel==CANONICAL_CONSTITUTION or rel==source_map_rel:
+            continue
+        path=ROOT/rel
+        if not path.is_file():
+            continue
+        raw=path.read_text(encoding='utf-8',errors='replace')
+        title_match=ATX_H1.search(raw)
+        title=title_match.group(1) if title_match else ''
+        head=raw[:4000]
+        self_canonical=bool(SELF_CANONICAL_CLAIM.search(head))
+        signals=[]
+        if CONSTITUTIONAL_TITLE_TERM.search(title):
+            signals.append('title_constitutional')
+        if self_canonical and (rel in raw or Path(rel).name in raw):
+            signals.append('self_canonical_reference')
+        if PRECEDENCE_OVER_ALL.search(head):
+            signals.append('precedence_over_all')
+        if not signals:
+            continue
+        candidates[rel]={'signals':signals,'legacy_detector_detected':legacy_phrase_claim(raw)}
+    return candidates
+
+
+def unregistered_authority_candidates(candidates,registered_paths):
+    """Any candidate absent from the declared registry is a fail-closed finding."""
+    return sorted(p for p in candidates if p not in registered_paths)
+
+
+def precedence_blockers(registry):
+    """Pure decision function: why constitutional authority is not unambiguous."""
+    blockers=[]
+    entries=registry.get('entries',[]) if isinstance(registry,dict) else []
+    competing=sorted(e['path'] for e in entries if e.get('role')=='COMPETING_UNRESOLVED')
+    canonical=[e['path'] for e in entries if e.get('role')=='CANONICAL']
+    if competing and registry.get('precedence_status')!='RATIFIED':
+        blockers.append('precedence_status='+str(registry.get('precedence_status'))
+                        +' with unresolved competing claim(s): '+'; '.join(competing))
+    if len(canonical)!=1:
+        blockers.append('expected exactly one CANONICAL authority, found '+str(len(canonical))+': '+str(canonical))
+    return blockers
 
 
 def validate_identity(reg):
@@ -341,7 +453,7 @@ def main():
     validate_kernel(kernel)
     validate_kernel_self_test()
     validate_scenarios()
-    print(json.dumps({'status':'GREEN','control_loop':'LIVE HEAD → STATE → BLOCKS → MAP → PROOF → BATON','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','authority_map':'GREEN','single_constitution':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
+    print(json.dumps({'status':'GREEN','control_loop':'LIVE HEAD → STATE → BLOCKS → MAP → PROOF → BATON','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','authority_map':'GREEN','single_constitution':'GREEN','constitutional_authority_enumeration':LAST_AUTHORITY_ENUMERATION,'proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
     return 0
 
 

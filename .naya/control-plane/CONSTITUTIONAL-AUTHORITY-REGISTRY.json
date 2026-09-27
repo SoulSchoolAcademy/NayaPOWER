@@ -1,0 +1,178 @@
+{
+  "schema": "naya/constitutional-authority-registry/v1",
+  "purpose": "Machine-readable inventory of every document that claims constitutional authority, and the explicit precedence state between them. This registry enumerates claims. It does not resolve them.",
+  "precedence_status": "UNRESOLVED",
+  "precedence_note": "Contract 00 (.naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md) is RATIFIED by human direction 2026-09-26 and claims to be the constitutional law from which all subsequent contracts derive. The governance kernel and canonical source map still record .naya/codex/11-RUNTIME-CONSTITUTION.md as the current constitution. No machine or Naya may resolve this. Until a human ratifies precedence, the control-plane validator MUST fail closed.",
+  "roles": {
+    "CANONICAL": "The single governing constitution recorded by the governance kernel and canonical source map.",
+    "COMPETING_UNRESOLVED": "Asserts repository-wide constitutional authority that is not reconciled with CANONICAL. Blocks until a human ratifies precedence.",
+    "SUBDOMAIN": "Constitution scoped to a named domain, team, or channel. Does not claim repository-wide supremacy.",
+    "DERIVATIVE_AMENDMENT": "Amends an existing constitution under the repository's CONSTITUTIONAL-AMENDMENT-*.md convention.",
+    "PROJECTION": "An intelligence projection (Smart Note). Describes intelligence; is not an authority instrument.",
+    "DESCRIPTIVE": "Registry, index, audit, report, or specification that describes authority without holding it.",
+    "SUPERSEDED": "Explicitly retired or superseded by a human precedence decision."
+  },
+  "authority_boundary": "Role assignment is an inventory act, not a precedence decision. A human may reclassify any entry. Only precedence_status may be changed by an explicit human ratification record.",
+  "entries": [
+    {
+      "path": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+      "role": "CANONICAL",
+      "evidence": "Recorded as constitutional_authority by .naya/control-plane/GOVERNANCE-KERNEL.json and named as the canonical constitution by SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md."
+    },
+    {
+      "path": ".naya/contracts/00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md",
+      "role": "COMPETING_UNRESOLVED",
+      "evidence": "Line 1 'NayaNET Constitutional Contract Law'; line 5 'Status: RATIFIED - HUMAN-DIRECTOR DIRECTED 2026-09-26'; line 9 claims to be the constitutional law from which all subsequent NayaNET contracts derive."
+    },
+    {
+      "path": ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.md",
+      "role": "COMPETING_UNRESOLVED",
+      "evidence": "Declares itself a canonical constitution. Shares the '00-' path prefix already recorded as a contract id collision."
+    },
+    {
+      "path": ".naya/2026-09-11-17-50-NAYAPOWER-29-CONSTITUTION-ACT.md",
+      "role": "COMPETING_UNRESOLVED",
+      "evidence": "Asserts 'one constitution' as a repository-wide supremacy claim."
+    },
+    {
+      "path": ".naya/codex/NAYA-POWER-MASTER-CONSTITUTIONAL-CHARTER-V1.md",
+      "role": "COMPETING_UNRESOLVED",
+      "evidence": "Titles itself a master constitutional charter, which asserts repository-wide scope."
+    },
+    {
+      "path": ".naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Constitution scoped to human capability. No repository-wide supremacy claim detected."
+    },
+    {
+      "path": ".naya/NAYAPOWER-ULTIMATE-HUMAN-AI-ALIGNMENT-CONSTITUTION-V1.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Scoped to human-AI alignment. No repository-wide supremacy claim detected."
+    },
+    {
+      "path": ".naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Scoped to Smart Notes and the collective intelligence substrate."
+    },
+    {
+      "path": ".naya/codex/NAYA-POWER-RUNTIME-V1.0-SPECIFICATION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Constitution and runtime architecture specification."
+    },
+    {
+      "path": "SUPERBRAIN/AI-BOOT/NAYANET-CHANNEL-CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Channel routing constitution, scoped to one channel."
+    },
+    {
+      "path": "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Channel constitution master note."
+    },
+    {
+      "path": "SUPERBRAIN/ARCHITECTURE/NAYA-POWER-VALUE-ALIGNMENT-AND-CONSTITUTION-PROTOCOL-V1.1.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Value alignment and constitution protocol, scoped to value alignment."
+    },
+    {
+      "path": "SUPERBRAIN/INTELLIGENCE/NAYA/INTELLIGENCE/DESIGN-ENGINEERING/CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Design and engineering team constitution."
+    },
+    {
+      "path": "SUPERBRAIN/MASTER-NOTES/NAYANET-HUMAN-CAPABILITY-IMPACT-CONSTITUTION.md",
+      "role": "SUBDOMAIN",
+      "evidence": "Human capability and impact constitution."
+    },
+    {
+      "path": ".naya/NAYAPOWER-CONSTITUTIONAL-ALIGNMENT-AMENDMENT-01-ANTI-CAPTURE-AND-WISDOM-GOVERNANCE.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "Numbered constitutional alignment amendment."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-CONTINUOUS-COMMUNICATION-AND-TORCH-PASS.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md",
+      "role": "DERIVATIVE_AMENDMENT",
+      "evidence": "CONSTITUTIONAL-AMENDMENT convention."
+    },
+    {
+      "path": ".naya/2026-09-11-NAYAPOWER-CONSTITUTIONAL-GOVERNANCE-INTELLIGENCE-SMART-NOTE.md",
+      "role": "PROJECTION",
+      "evidence": "Smart Note projection of intelligence, not an authority instrument."
+    },
+    {
+      "path": ".naya/memory/smart-notes/2026/09/26/architecture/nayanet-channel-constitution/IB-001147/smart-note.md",
+      "role": "PROJECTION",
+      "evidence": "Receiver-issued Intelligent Block projection (IB-001147)."
+    },
+    {
+      "path": "SUPERBRAIN/INTELLIGENCE/NAYA/SMART-NOTES/2026/09/18-CONSTITUTIONAL-AUDIT-PRODUCE-WISDOM-VALUE-PROXY-INTEGRITY.md",
+      "role": "PROJECTION",
+      "evidence": "Smart Note audit projection."
+    },
+    {
+      "path": "SUPERBRAIN/MASTER-NOTES/SN-20260907-NAYANET-EXECUTION-CONSTITUTION.md",
+      "role": "PROJECTION",
+      "evidence": "Smart Note (SN-) projection."
+    },
+    {
+      "path": "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md",
+      "role": "PROJECTION",
+      "evidence": "Smart Note (SN-) projection."
+    },
+    {
+      "path": ".naya/memory/archive/legacy-pre-2026-09-25/SN-20260827-080000-naya-to-naya-collective-intelligence.md",
+      "role": "PROJECTION",
+      "evidence": "Archived Smart Note projection."
+    },
+    {
+      "path": ".naya/audits/2026-09-11-CONSTITUTIONAL-GOVERNANCE-AUTHORITY-AUDIT.md",
+      "role": "DESCRIPTIVE",
+      "evidence": "Audit describing governance and authority."
+    },
+    {
+      "path": ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
+      "role": "DESCRIPTIVE",
+      "evidence": "Running feed describing collective state; not a constitution."
+    },
+    {
+      "path": ".naya/governance/NAYA-COLLECTIVE-AGREEMENT-v2.0.md",
+      "role": "DESCRIPTIVE",
+      "evidence": "Collective agreement describing operating norms; not a repository constitution."
+    }
+  ]
+}
