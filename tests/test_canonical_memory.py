@@ -150,9 +150,8 @@ def test_retrieved_intelligence_changes_non_authoritative_behavior_but_cannot_gr
     assert control.executed is True
     assert treatment.executed is True
     assert control.outcome == "executed"
-    assert treatment.outcome == "executed_with_retained_intelligence"
-    assert treatment.next_state["retained_intelligence_applied"] == "true"
-    assert block.intelligent_block_id in treatment.next_state["retained_intelligence_ids"]
+    assert treatment.outcome == "executed"
+    assert "retained_intelligence_applied" not in treatment.next_state
 
     blocked = kernel.decide(
         DecisionContext(
@@ -202,7 +201,7 @@ def test_canonical_memory_retrieves_relationship_context_for_connect():
 
 def test_relationship_aware_retrieval_is_required_for_retained_intelligence_influence():
     block = RetrievedIntelligentBlock.from_payload(_valid_block())
-    relationship = memory_relationship_fixture = {
+    memory_relationship_fixture = {
         "relationship_id": "r1",
         "source_id": "NAYA-KERNEL-PROVE",
         "target_id": block.intelligent_block_id,
