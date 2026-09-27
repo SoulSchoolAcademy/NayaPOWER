@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_id": "naya/master-node-kernel/v1",
+  "status": "RATIFIED_BASELINE",
+  "effective_date": "2026-09-26",
+  "kernel_version": "1.0",
+  "node_count": 9,
+  "contract_id_range": [
+    "00",
+    "26"
+  ],
+  "nodes": [
+    {
+      "node_no": 1,
+      "id": "MN-01",
+      "key": "SELF",
+      "name": "Identity, Mission & Continuity",
+      "primary_contracts": [
+        "00",
+        "01",
+        "02"
+      ]
+    },
+    {
+      "node_no": 2,
+      "id": "MN-02",
+      "key": "LAW",
+      "name": "Authority, Consent & Governance",
+      "primary_contracts": [
+        "03",
+        "14",
+        "26"
+      ]
+    },
+    {
+      "node_no": 3,
+      "id": "MN-03",
+      "key": "ACT",
+      "name": "Execution, Agency & Safe Action",
+      "primary_contracts": [
+        "04",
+        "12",
+        "13"
+      ]
+    },
+    {
+      "node_no": 4,
+      "id": "MN-04",
+      "key": "KNOW",
+      "name": "Intelligence, Memory & Events",
+      "primary_contracts": [
+        "05",
+        "06",
+        "15"
+      ]
+    },
+    {
+      "node_no": 5,
+      "id": "MN-05",
+      "key": "PROVE",
+      "name": "Truth, Provenance & Accountability",
+      "primary_contracts": [
+        "07",
+        "10",
+        "16"
+      ]
+    },
+    {
+      "node_no": 6,
+      "id": "MN-06",
+      "key": "CONNECT",
+      "name": "Relationships, Retrieval & System Context",
+      "primary_contracts": [
+        "08",
+        "09",
+        "21"
+      ]
+    },
+    {
+      "node_no": 7,
+      "id": "MN-07",
+      "key": "VERIFY",
+      "name": "Outcome, Causality & Acceptance",
+      "primary_contracts": [
+        "11",
+        "23",
+        "25"
+      ]
+    },
+    {
+      "node_no": 8,
+      "id": "MN-08",
+      "key": "LEARN",
+      "name": "Learning, Reconciliation & Prediction",
+      "primary_contracts": [
+        "17",
+        "18",
+        "22"
+      ]
+    },
+    {
+      "node_no": 9,
+      "id": "MN-09",
+      "key": "EVOLVE",
+      "name": "Continuity, Experience & System Evolution",
+      "primary_contracts": [
+        "19",
+        "20",
+        "24"
+      ]
+    }
+  ],
+  "contract_primary_ownership": {
+    "10": "MN-05",
+    "11": "MN-07",
+    "12": "MN-03",
+    "13": "MN-03",
+    "14": "MN-02",
+    "15": "MN-04",
+    "16": "MN-05",
+    "17": "MN-08",
+    "18": "MN-08",
+    "19": "MN-09",
+    "20": "MN-09",
+    "21": "MN-06",
+    "22": "MN-08",
+    "23": "MN-07",
+    "24": "MN-09",
+    "25": "MN-07",
+    "26": "MN-02",
+    "00": "MN-01",
+    "01": "MN-01",
+    "02": "MN-01",
+    "03": "MN-02",
+    "04": "MN-03",
+    "05": "MN-04",
+    "06": "MN-04",
+    "07": "MN-05",
+    "08": "MN-06",
+    "09": "MN-06"
+  },
+  "triads": [
+    {
+      "id": "T1",
+      "name": "ORIENTATION",
+      "nodes": [
+        "MN-01",
+        "MN-02",
+        "MN-03"
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "COGNITION",
+      "nodes": [
+        "MN-04",
+        "MN-05",
+        "MN-06"
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "EVOLUTION",
+      "nodes": [
+        "MN-07",
+        "MN-08",
+        "MN-09"
+      ]
+    }
+  ],
+  "runtime_flow": [
+    "MN-01",
+    "MN-02",
+    "MN-03",
+    "MN-04",
+    "MN-05",
+    "MN-06",
+    "MN-07",
+    "MN-08",
+    "MN-09",
+    "MN-01"
+  ],
+  "required_input_fields": [
+    "identity",
+    "intent",
+    "state",
+    "context",
+    "authority",
+    "intelligence",
+    "evidence",
+    "relationships"
+  ],
+  "required_output_fields": [
+    "understanding",
+    "decision_context",
+    "action_context",
+    "evidence_context",
+    "learning_context",
+    "successor_context"
+  ],
+  "global_invariants": {
+    "must": [
+      "Every consequential execution resolves identity, authority, scope, evidence requirements, and applicable intelligence before action.",
+      "Every contract 00-26 has exactly one primary Master Node owner.",
+      "Node-to-node transfer preserves relevant provenance, epistemic state, scope, and authority context.",
+      "Meaningful execution completion preserves successor context where reasonably preservable.",
+      "Completion claims require evidence at the declared claim strength."
+    ],
+    "must_not": [
+      "A Master Node must not self-authorize an action.",
+      "A Master Node must not self-ratify a constitutional change or consequential release.",
+      "A Master Node must not create a competing canonical intelligence store.",
+      "A Master Node must not locally allocate canonical Intelligent Block identity.",
+      "A Master Node must not upgrade UNKNOWN/IMPLEMENTED/TESTED to VERIFIED without required evidence.",
+      "A Master Node must not silently override higher authority."
+    ]
+  },
+  "state_machine": {
+    "states": [
+      "PROPOSED",
+      "ACTIVE",
+      "CONFLICTED",
+      "SUPERSEDED",
+      "RETIRED"
+    ],
+    "allowed_transitions": [
+      [
+        "PROPOSED",
+        "ACTIVE"
+      ],
+      [
+        "PROPOSED",
+        "CONFLICTED"
+      ],
+      [
+        "ACTIVE",
+        "CONFLICTED"
+      ],
+      [
+        "ACTIVE",
+        "SUPERSEDED"
+      ],
+      [
+        "ACTIVE",
+        "RETIRED"
+      ],
+      [
+        "CONFLICTED",
+        "ACTIVE"
+      ],
+      [
+        "CONFLICTED",
+        "SUPERSEDED"
+      ],
+      [
+        "SUPERSEDED",
+        "RETIRED"
+      ]
+    ]
+  },
+  "kernel_gates": [
+    {
+      "id": "K1",
+      "name": "Kernel completeness",
+      "required": "exactly nine unique active nodes MN-01..MN-09"
+    },
+    {
+      "id": "K2",
+      "name": "Contract coverage",
+      "required": "contracts 00..26 each have one primary node"
+    },
+    {
+      "id": "K3",
+      "name": "Schema conformance",
+      "required": "canonical manifest/envelopes conform to schema"
+    },
+    {
+      "id": "K4",
+      "name": "Authority safety",
+      "required": "self-authorization and self-ratification are forbidden"
+    },
+    {
+      "id": "K5",
+      "name": "Truth safety",
+      "required": "claim status cannot exceed evidence status"
+    },
+    {
+      "id": "K6",
+      "name": "Successor continuity",
+      "required": "meaningful execution emits successor context"
+    }
+  ],
+  "state": "RATIFIED_BASELINE"
+}
