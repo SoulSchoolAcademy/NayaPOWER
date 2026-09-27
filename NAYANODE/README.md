@@ -25,6 +25,13 @@ This directory is the canonical operating architecture for the NayaPOWER/NayaNET
 19. **0017 — Governance & Change**: authorization, promotion, revocation, rollback.
 20. **0018 — Succession**: cold Naya continuation and multi-generation inheritance.
 21. **0019 — Self-Optimization**: bounded system improvement.
+22. **0020 — Cold 14**: minimum viable intelligence interface.
+23. **0021 — AAA Master Execution Plan**: ten maximum-value priorities.
+24. **0022 — Successor Handoff**: cold continuation packet.
+
+## Cold acceptance interface
+
+The system must answer 14 questions cold: **WHO / WHAT / WHY / SUCCESS / CURRENT TRUTH / PROVEN / UNKNOWN / AUTHORITY / HISTORY / LEARNING / NEXT / PROOF / RECORD / SUCCESSOR**. Each answer is source-bound and marked PROVEN, DOCUMENTED, UNKNOWN, CONFLICTED, or BLOCKED.
 
 ## One operating loop
 
