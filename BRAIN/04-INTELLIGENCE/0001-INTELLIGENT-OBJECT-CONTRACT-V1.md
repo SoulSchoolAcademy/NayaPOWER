@@ -1,19 +1,18 @@
 # Intelligent Object Contract V1
 
-A durable object must answer:
+**Status:** CANONICAL BUILD CONTRACT
 
-- What is it?
-- Why does it exist?
-- Who owns it?
-- What does it mean?
-- Where did it come from?
-- What supports it?
-- What conflicts with it?
-- What authority applies?
-- How current is it?
-- How is it verified?
-- What does it affect?
-- What did it teach?
-- What should a successor inherit?
+An Intelligent Object is durable, addressable intelligence that can be retrieved and safely interpreted.
 
-Object identity is stable across representation, path, version, and interface changes.
+## Required fields
+`object_id, object_type, owner_scope, title, meaning, source_refs[], provenance, truth_state, authority_state, privacy_state, lifecycle_state, node_ids[], relationship_ids[], created_at, updated_at, version`.
+
+## Laws
+- Identity is stable and provenance is mandatory.
+- Retrieval is read-only with respect to authority.
+- Unknown truth/authority/lifecycle remains explicit.
+- Supersession and revocation preserve lineage.
+- Missing required fields invalidate the object.
+
+## Acceptance
+Schema validation rejects malformed objects and cold retrieval returns the same canonical identity, version, scope, and lineage.
