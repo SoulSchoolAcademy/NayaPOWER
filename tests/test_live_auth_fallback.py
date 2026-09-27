@@ -68,3 +68,37 @@ def test_authenticated_session_does_not_use_access_token_as_refresh_token():
             )
 
     assert exc.value.code == 401
+
+
+
+def test_authenticated_session_refreshes_when_access_token_returns_forbidden():
+    calls = []
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def read(self):
+            return json.dumps({"access_token": "fresh-access-token", "user": {"id": "owner-123"}}).encode()
+
+    def fake_urlopen(request, timeout=10):
+        calls.append(request.full_url)
+        if request.full_url.endswith("/auth/v1/user"):
+            from urllib.error import HTTPError
+            raise HTTPError(request.full_url, 403, "Forbidden", {}, None)
+        return Response()
+
+    with patch("tests.test_live_supabase_intelligent_blocks.urlopen", fake_urlopen):
+        session = _authenticated_session(
+            "https://example.supabase.co",
+            "rejected-access",
+            "publishable",
+            "legitimate-refresh-token",
+        )
+
+    assert session["owner_id"] == "owner-123"
+    assert session["access_token"] == "fresh-access-token"
+    assert calls[1].endswith("/auth/v1/token?grant_type=refresh_token")
