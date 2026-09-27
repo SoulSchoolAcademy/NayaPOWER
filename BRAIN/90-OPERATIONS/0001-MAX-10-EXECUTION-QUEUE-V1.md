@@ -43,3 +43,22 @@ Completed in the current pass:
 - AAA execution prompt added.
 
 **Next proof frontier:** runtime loader + real persistence/retrieval + behavioral verification.
+
+
+## File-inventory control — 2026-09-27
+
+**Authoritative inventory:** `BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md`
+
+The inventory now covers every current BRAIN file and assigns remaining work to Naya completion categories A–G. Use it as the dispatch layer for file-level work. Do not reopen completed semantic architecture unless a test or current evidence demonstrates a contradiction.
+
+### Dispatch order
+
+1. **A — Kernel / Runtime Convergence:** bind the actual application entrypoint to the BRAIN manifest/registry and canonical Supabase.
+2. **B — Graph / CONNECT:** make relationship-aware retrieval executable and behaviorally consequential.
+3. **C — Governance / ACT / PROVE / VERIFY:** close the real action/outcome/CVO boundary and adversarial fail-closed cases.
+4. **D — Learning:** prove retained intelligence changes a later held-out task.
+5. **E — Succession:** cold-boot a successor and prove improvement without authority inheritance.
+6. **F — Knowledge / Parity:** finish object-level promotion and automated human/AI/machine parity.
+7. **G — Receipts / Operations:** regenerate tree receipts and keep all status artifacts synchronized.
+
+**Stop condition:** race entry is still blocked until the canonical runtime path is executable and independently verified.
