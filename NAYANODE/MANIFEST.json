@@ -88,7 +88,10 @@
     ".naya/NAYAPOWER-SYSTEM-NORTH-STAR-WHITE-PAPER-AND-ENGINEERING-BLUEPRINT-V1.md",
     ".naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md",
     ".naya/project-intelligence/NAYAPOWER-SYSTEM-NORTH-STAR-RATIFICATION-2026-09-26.md",
-    ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md"
+    ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md",
+    "NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md",
+    "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md"
   ],
   "current_reality": {
     "architecture": "CANONICAL_ARCHITECTURE_ESTABLISHED",
@@ -96,5 +99,13 @@
     "identity_continuity": "BLOCKED_PENDING_LEGITIMATE_RECOVERY_BINDING",
     "hub": "NOT_CURRENT_P0",
     "sender_receiver": "END_TO_END_PROOF_PENDING"
+  },
+  "value_calculus": {
+    "law": "NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md",
+    "specification": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "implementation": "kernel/value_calculus.py",
+    "tests": "tests/test_value_calculus.py",
+    "gap_analysis": "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md",
+    "status": "IMPLEMENTED_VERIFICATION_PENDING"
   }
 }
