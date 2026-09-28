@@ -549,7 +549,8 @@ jobs:
           r=json.load(open("learning-promotion.json"))
           assert r["ok"] is True, r
           assert r["verified"] is True, r
-          assert r["result"]["learning"]["id"]=="f91fc48a-3d34-41aa-b51e-17b4ce89a3e2", r
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert r["result"]["learning"]["id"]==receipt["learning_id"], r
           assert r["result"]["learning"]["status"]=="ACTIVE", r
           assert r["result"]["learning"]["provenance"]=="VERIFICATION", r
           assert r["receipt"] is not None, r
@@ -563,3 +564,46 @@ jobs:
         with:
           name: learning-promotion
           path: learning-promotion.json
+
+  independent-retained-learning-reread:
+    needs: learning-promotion
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+      - name: Mint a fresh independent OIDC verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently reread retained learning from authoritative state
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
+          python - <<PY
+          import json
+          json.dump({"mode":"reread","learning_id":"$learning_id"},open("reread-request.json","w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @reread-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > retained-learning-reread.json
+          cat retained-learning-reread.json
+          python - <<'PY'
+          import json
+          r=json.load(open("retained-learning-reread.json"))
+          assert r["ok"] is True, r
+          assert r["independent_reread"] is True, r
+          assert r["learning"]["status"] == "ACTIVE", r
+          assert r["learning"]["provenance"] == "VERIFICATION", r
+          assert r["learning"]["id"] == json.load(open("causal-learning-experiment-receipt.json"))["learning_id"], r
+          observed=r["learning"]["observed_value"]
+          assert observed["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
+          assert observed["provenance_preserved"] is True, r
+          print("FRESH LESSON RETAINED INTELLIGENCE INDEPENDENT REREAD PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-retained-learning-reread
+          path: retained-learning-reread.json
