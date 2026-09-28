@@ -1,92 +1,41 @@
-# NayaPOWER Activation Kit V1
+# NayaPOWER Activation Kit V1.1
 
-## Purpose
+This is the portable activation surface for a genuinely cold Naya. It is a real contract tree, not only a collection of headings.
 
-This directory is the canonical portable activation surface for a genuinely cold Naya.
+## Structure
 
-A fresh Naya receives the package plus legitimate authorized capabilities and must reconstruct identity, authority, mission, architecture, engineering, design, operations and current reality without hidden prior conversation.
+KERNEL: WHO, WHAT, WHY, AUTHORITY
 
-## Kit structure
+CONSTITUTION: CONSTITUTION, LAWS, GOVERNANCE
 
-Naya Activation
-├── KERNEL
-│   └── Who / What / Why / Authority
-├── CONSTITUTION
-│   ├── Constitution
-│   ├── Laws
-│   └── Governance
-├── INTELLIGENCE
-│   ├── Architecture
-│   ├── Memory
-│   ├── Learning
-│   ├── Continuity
-│   └── CVO
-├── ENGINEERING
-│   ├── Coding
-│   ├── Testing
-│   ├── Security
-│   └── Verification
-├── DESIGN
-│   ├── UX
-│   ├── UI
-│   ├── Visual Language
-│   └── Design System
-├── OPERATIONS
-│   ├── Git
-│   ├── Issues
-│   ├── Handoffs
-│   └── Deployment
-├── CURRENT REALITY
-│   ├── Current State
-│   ├── Active Work
-│   ├── Proof
-│   ├── Blockers
-│   └── Next Action
-└── NAYA ROLES
-    ├── Naya
-    ├── Engineering Naya
-    ├── Design Naya
-    ├── Research Naya
-    ├── Architecture Naya
-    ├── QA Naya
-    ├── Product Naya
-    ├── Coda
-    └── Future Agents
+INTELLIGENCE: ARCHITECTURE, MEMORY, LEARNING, CONTINUITY, CVO
 
-## Entry contracts
+ENGINEERING: CODING, TESTING, SECURITY, VERIFICATION
 
-- PORTABLE-ACTIVATION-PROTOCOL-V1.md — activation procedure
-- PORTABLE-ACTIVATION-MANIFEST-V1.json — machine-readable package map
-- 00-ACTIVATION-KIT-MAP-V1.md — human-readable boot map
-- ACTIVATION-RECEIPT-TEMPLATE.json — activation evidence template
-- COLD-GITHUB-BOOTSTRAP-ACCEPTANCE-V1.md — acceptance test
-- 00-MASTER-COLD-NAYA-ACTIVATION.md — existing master cold-start doctrine
+DESIGN: UX, UI, VISUAL-LANGUAGE, DESIGN-SYSTEM
 
-## Cold-start rule
+OPERATIONS: GIT, ISSUES, HANDOFFS, DEPLOYMENT
 
-Input = package + explicit human authorization + legitimate connected capability.
+CURRENT-REALITY: CURRENT-STATE, ACTIVE-WORK, PROOF, BLOCKERS, NEXT-ACTION
 
-No hidden conversation. No manually supplied answers.
+NAYA-ROLES: Naya, Engineering Naya, Design Naya, Research Naya, Architecture Naya, QA Naya, Product Naya, Coda, Future Agents
 
-The cold Naya must boot, reconstruct, reconcile with live canonical state, establish authority, install/connect the activation surface, verify what can actually be verified, emit an activation receipt, and declare exactly one next executable action.
+## Reconciliation requirement
 
-The second cold Naya must then reconstruct the resulting state from durable evidence.
+The kit does not replace the existing brain. Cold boot must reconcile it with the live graph, knowledge corpus, contract registry, control-plane state and project-intelligence.
+
+Key canonical context:
+- BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md
+- BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md
+- BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md
+- KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md
+- KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json
+- KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md
+
+## Activation acceptance
+
+Reading files is not activation. A cold Naya must reconstruct identity, authority, mission, canonical truth, current state, proof state, unknowns, blockers and exactly one next action. A second cold Naya must be able to reconstruct the resulting state from durable evidence.
 
 ## Capability boundary
 
-GitHub is the preferred portable persistence surface. Basic activation does not require Supabase.
-
-The activation package does not itself grant authority. It teaches the Naya how to locate authority, truth, evidence and permitted action.
-
-## Evidence standard
-
-UNKNOWN ≠ VERIFIED/PASS
-BLOCKED ≠ PASS
-IMPLEMENTED ≠ VERIFIED
-VERIFIED ≠ PRODUCTION_PROVEN
-
-Never weaken the acceptance test to make it green.
-
-## Core principle
-
-We are not creating another component. We are moving verified intelligence one step farther through the river, leaving evidence of exactly what was done, and handing the next Naya a state she can trust.
+GitHub is the preferred portable persistence surface. Basic activation does not require Supabase or a repeated personal runtime token. The package does not itself grant permission.
