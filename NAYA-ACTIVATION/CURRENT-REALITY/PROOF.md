@@ -1,7 +1,9 @@
 # CURRENT REALITY / PROOF
 
 ## Proof registry
-Use .naya/control-plane/PROOF.json, project-intelligence receipts and actual workflow/runtime evidence.
+Use claim-matched repository proof receipts, GitHub Actions/runtime evidence, current test results, and relevant project-intelligence evidence.
+
+There is no active `.naya/control-plane/PROOF.json` source on current `main`.
 
 ## Proof hierarchy
 Distinguish implemented code, tests, workflow execution, runtime behavior, independent verification and production evidence.
