@@ -153,20 +153,8 @@ Deno.serve(async (req: Request) => {
       evidence_refs: refs,
     };
 
-    const { data: operation, error: operationError } = await admin
-      .from("nayanet_intelligence_operations")
-      .insert({
-        user_id: ownerId,
-        project_id: "NayaNET",
-        operation: "learning_verify",
-        status: "SUCCESS",
-        input: body,
-        output: result,
-      })
-      .select("id")
-      .single();
-    if (operationError) throw operationError;
-
+    // Verification is recorded on the existing execution receipt and lineage.
+    // There is no separate operation table in the canonical database.
     let receipt = null;
     let lineage = null;
     const receiptId = String(body?.receipt_id || "");
@@ -204,7 +192,7 @@ Deno.serve(async (req: Request) => {
           ),
           learning: [
             ...(Array.isArray(existingReceipt.learning) ? existingReceipt.learning : []),
-            { learning_id: promoted.id, verification_operation_id: operation.id, verified: true },
+            { learning_id: promoted.id, verification_operation_id: null, verified: true },
           ],
         })
         .eq("id", receiptId)
