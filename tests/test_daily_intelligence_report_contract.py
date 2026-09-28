@@ -53,6 +53,7 @@ def test_publication_event_binds_report():
     assert event["event_type"] == "REPORT_PUBLISHED"
     assert event["report_id"] == report["report_id"]
     assert event["source_commit"] == report["source_boundary"]["source_commit"]
-    assert event["publication_timestamp"]
+    assert event["recorded_at"]
+    assert event["recorded_at_basis"] == "GitHub commit timestamp for publication-event artifact"
     assert event["report_content_hash"] == "271f5c1394e17adbdf3d11c0e7ddbe305f4ff12b"
     assert event["report_content_hash_algorithm"] == "git_blob_sha1"
