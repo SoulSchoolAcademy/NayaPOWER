@@ -58,6 +58,47 @@ Deno.serve(async (req: Request) => {
 
     const admin = createClient(supabaseUrl, serviceRole);
     const body = await req.json();
+    const mode = String(body?.mode || "verify");
+
+    if (mode === "candidate") {
+      const blockId = String(body?.intelligent_block_id || "");
+      if (!blockId) return json({ ok: false, error: "INTELLIGENT_BLOCK_ID_REQUIRED" }, 400);
+      const { data: block, error: blockError } = await admin.from("nayanet_intelligent_blocks").select("id,intelligent_block_id,owner_id,owner_scope,status,understanding_state,content,evidence_refs,created_at").eq("intelligent_block_id", blockId).eq("owner_id", ownerId).maybeSingle();
+      if (blockError) throw blockError;
+      if (!block) return json({ ok: false, error: "INTELLIGENT_BLOCK_NOT_FOUND" }, 404);
+      if (block.understanding_state !== "CANDIDATE") return json({ ok: false, error: "BLOCK_NOT_CANDIDATE" }, 409);
+      const evidenceRefs = Array.isArray(block.evidence_refs) ? block.evidence_refs : [];
+      const sourceEventId = String(evidenceRefs[0]?.event_id || "");
+      const commitReceiptId = String(evidenceRefs[0]?.receipt_id || "");
+      if (!sourceEventId || !commitReceiptId) return json({ ok: false, error: "BLOCK_PROVENANCE_INCOMPLETE" }, 409);
+      const { data: event, error: eventError } = await admin.from("nayanet_cognition_events").select("id,event_id,created_at,receipt_id").eq("event_id", sourceEventId).eq("receipt_id", commitReceiptId).eq("user_id", ownerId).maybeSingle();
+      if (eventError) throw eventError;
+      if (!event) return json({ ok: false, error: "SOURCE_EVENT_NOT_FOUND" }, 409);
+      const { data: lineage, error: lineageError } = await admin.from("nayanet_intelligence_lineage").select("id,source_event_id,target_event_id,relation,created_at").eq("source_event_id", event.id).maybeSingle();
+      if (lineageError) throw lineageError;
+      if (!lineage) return json({ ok: false, error: "LINEAGE_NOT_FOUND" }, 409);
+      const { data: relationship, error: relationshipError } = await admin.from("nayanet_brain_relationships").select("relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance").eq("target_id", blockId).eq("owner_id", ownerId).maybeSingle();
+      if (relationshipError) throw relationshipError;
+      if (!relationship) return json({ ok: false, error: "RELATIONSHIP_NOT_FOUND" }, 409);
+      const { data: index, error: indexError } = await admin.from("nayanet_intelligence_index").select("id,source_id,source_table,object_type,status").eq("source_id", block.id).eq("owner_id", ownerId).maybeSingle();
+      if (indexError) throw indexError;
+      if (!index) return json({ ok: false, error: "INDEX_NOT_FOUND" }, 409);
+      const { data: checkpointRows, error: checkpointError } = await admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("user_id", ownerId).eq("project_id", "NayaNET").order("updated_at", { ascending: false }).limit(1);
+      if (checkpointError) throw checkpointError;
+      const checkpoint = checkpointRows?.[0];
+      if (!checkpoint || checkpoint.state?.intelligent_block_id !== blockId || checkpoint.state?.lineage_id !== lineage.id || checkpoint.state?.relationship_id !== relationship.relationship_id || checkpoint.state?.index_id !== index.id) return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH" }, 409);
+      const lesson = String(block.content?.lesson || "").trim();
+      if (!lesson) return json({ ok: false, error: "LESSON_CONTENT_REQUIRED" }, 409);
+      const existingRows = await admin.from("learning_evidence").select("id,status,claim,source_event_id,observed_value,verification_method,provenance,created_at").eq("member_id", ownerId).eq("target_id", "NAYA-NODE-0001").eq("status", "CANDIDATE").limit(100);
+      if (existingRows.error) throw existingRows.error;
+      const existing = (existingRows.data || []).find((row: any) => row?.observed_value?.intelligent_block_id === blockId);
+      if (existing) return json({ ok: true, created: false, learning: existing, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
+      const { data: learning, error: createError } = await admin.from("learning_evidence").insert(candidate).select("*").single();
+      if (createError) throw createError;
+      return json({ ok: true, created: true, learning, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+    }
+
     const learningId = String(body?.learning_id || "");
     if (!learningId) return json({ ok: false, error: "LEARNING_ID_REQUIRED" }, 400);
 
