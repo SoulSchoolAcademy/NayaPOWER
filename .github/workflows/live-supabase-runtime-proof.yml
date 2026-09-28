@@ -205,7 +205,9 @@ jobs:
           r=json.load(open("causal-learning-experiment.json"))
           open("verify-request.json","w").write(json.dumps({"mode":"verify","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
           PY
-          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-verification.json
+          curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-verification.json
+          echo "--- independent verification response (HTTP body, retained on failure) ---"
+          cat independent-verification.json
           python - <<'PY'
           import json
           import json, os

@@ -133,6 +133,42 @@ def test_strong_verifier_remains_the_reference_pattern():
     )
 
 
+def test_cvo_write_preserves_the_treatment_evidence_conditions():
+    """SECOND DEFECT, found by the strengthened verifier refusing to certify.
+
+    The CVO write built its update as
+        [...(Array.isArray(t.evidence) ? t.evidence : []).filter(...), {causal_verification}]
+    but the treatment receipt's evidence is an OBJECT, so the spread produced
+    nothing and the update replaced the evidence with [{causal_verification}].
+    That silently DESTROYED condition, retained_intelligence_used, learning_id,
+    source_event_id and intelligence_id on the treatment receipt.
+
+    The old self-certifying verifier never noticed because it never read
+    tevidence. Any verifier that does read it sees an empty object and must
+    correctly refuse to certify."""
+    source = LEARNING_EXPERIMENT.read_text(encoding="utf-8")
+    assert "...(Array.isArray(t.evidence)?t.evidence:[]).filter" not in source, (
+        "the CVO write must not discard the original treatment evidence; spreading an object "
+        "yields nothing and replaces the evidence with the CVO alone"
+    )
+    assert "const updatedEvidence={...(tevidence as any)" in source, (
+        "the CVO write must merge the CVO into the existing treatment evidence object"
+    )
+
+
+def test_evidence_reading_tolerates_both_shapes():
+    """Evidence is an object on write, but historical receipts hold an array
+    (the shape the old CVO write produced). A verifier must read both."""
+    source = LEARNING_EXPERIMENT.read_text(encoding="utf-8")
+    assert "Array.isArray(t.evidence)?t.evidence.filter" in source, (
+        "array-shaped evidence must be merged rather than silently read as empty"
+    )
+    block = _verify_block(source)
+    assert "Array.isArray(t.evidence)?" in block, (
+        "the CVO must be locatable in both the object and the array evidence shape"
+    )
+
+
 @pytest.mark.parametrize(
     "required",
     [
