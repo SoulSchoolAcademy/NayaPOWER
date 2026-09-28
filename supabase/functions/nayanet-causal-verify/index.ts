@@ -4,7 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml";
+const WORKFLOW = ".github/workflows/live-cvo-runtime-proof.yml";
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -132,7 +132,7 @@ Deno.serve(async (req: Request) => {
       evidence: {
         refs: [treatmentId, controlId, "IB-NAYA-NODE-0001-0001"],
         control: control.evidence,
-        treatment: treatment.evidence,
+        treatment: {\n          condition: treatment.evidence?.condition ?? "TREATMENT",\n          intelligence_id: treatment.evidence?.intelligence_id ?? "IB-NAYA-NODE-0001-0001",\n          retained_intelligence_used: treatment.evidence?.retained_intelligence_used === true,\n        },
       },
       causal_method: "CONTROLLED_INTERVENTION",
       causal_assessment: "CAUSAL_SUPPORTED",
@@ -150,21 +150,18 @@ Deno.serve(async (req: Request) => {
       verified_at: new Date().toISOString(),
     };
 
-    const {data:op,error:oe} = await admin.from("nayanet_intelligence_operations").insert({
-      user_id: OWNER_ID,
-      project_id: "NayaNET",
-      operation: "causal_verify_runtime",
-      status: "SUCCESS",
-      input: {mode, treatment_receipt_id:treatmentId, control_receipt_id:controlId},
-      output: causal,
-      source_ref: treatmentId,
-      source_event_ids: [treatmentId, controlId],
-    }).select("id").single();
-    if (oe) throw oe;
-
     const existingEvidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
-    const updatedEvidence = [...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification), {causal_verification:causal, causal_operation_id:op.id}];
-    const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",treatmentId).eq("user_id",OWNER_ID).select("*").single();
+    const updatedEvidence = [
+      ...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification),
+      {causal_verification:causal},
+    ];
+    const {data:updated,error:ue} = await admin
+      .from("nayanet_execution_receipts")
+      .update({evidence:updatedEvidence})
+      .eq("id",treatmentId)
+      .eq("user_id",OWNER_ID)
+      .select("id,action,status,evidence")
+      .single();
     if (ue) throw ue;
 
     return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:op.id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
