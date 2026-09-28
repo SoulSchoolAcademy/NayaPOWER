@@ -4,7 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-cvo-runtime-proof.yml";
+const WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml";
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -95,6 +95,9 @@ Deno.serve(async (req: Request) => {
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
+    const controlEvidence = (control.evidence && typeof control.evidence === "object" && !Array.isArray(control.evidence)) ? control.evidence as Record<string,unknown> : {};
+    const treatmentEvidence = (treatment.evidence && typeof treatment.evidence === "object" && !Array.isArray(treatment.evidence)) ? treatment.evidence as Record<string,unknown> : {};
+
     const causal = {
       schema: "NAYANET_CAUSAL_VERIFICATION_V1",
       causal_id: "CVO-NAYA-NODE-0001-TREATMENT-V1",
@@ -166,6 +169,7 @@ Deno.serve(async (req: Request) => {
 
     return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:causal.causal_id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
   } catch (error) {
+    console.error("NAYA_CVO_ERROR", error);
     return json({ok:false,error:String((error as Error)?.message ?? error)},400);
   }
 });
