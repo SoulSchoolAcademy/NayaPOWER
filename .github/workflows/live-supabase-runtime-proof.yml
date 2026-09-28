@@ -562,7 +562,12 @@ jobs:
             x.get("learning_id")==r["result"]["learning"]["id"] and x.get("verified") is True
             for x in (r["receipt"].get("learning") or [])
           ), r
-          print("EXISTING LEARNING VERIFIER PROMOTION PASS")
+          assert r["integration"]["core_intelligence_updated"] is True, r
+          assert r["integration"]["progressive_intelligence_lock_in"] == "LEARNED", r
+          assert r["integration"]["intelligent_block"]["understanding_state"] == "LEARNED", r
+          assert r["integration"]["relationship"]["epistemic_state"] == "VERIFIED", r
+          assert r["integration"]["cognitive_checkpoint"]["state_status"] == "LEARNED", r
+          print("PROGRESSIVE INTELLIGENCE LOCK-IN PASS")
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -605,7 +610,12 @@ jobs:
           observed=r["learning"]["observed_value"]
           assert observed["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
           assert observed["provenance_preserved"] is True, r
-          print("FRESH LESSON RETAINED INTELLIGENCE INDEPENDENT REREAD PASS")
+          assert r["integration"]["core_intelligence_updated"] is True, r
+          assert r["integration"]["progressive_intelligence_lock_in"] is True, r
+          assert r["integration"]["intelligent_block_state"] == "LEARNED", r
+          assert r["integration"]["relationship_epistemic_state"] == "VERIFIED", r
+          assert r["integration"]["checkpoint_state_status"] == "LEARNED", r
+          print("FRESH LESSON RETAINED + CORE INTELLIGENCE LOCK-IN REREAD PASS")
           PY
       - uses: actions/upload-artifact@v4
         with:
