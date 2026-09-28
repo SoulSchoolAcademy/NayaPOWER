@@ -11,7 +11,28 @@ const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const BLOCK_ID = "IB-NAYA-NODE-0001-0001";
 const LEARNING_ID = "de0b794b-224b-4d8b-ad1a-3afc6f8d0771";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
-const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } });
+
+// SOURCE/RUNTIME PARITY MARKER
+//
+// The deployed bundle cannot be inspected from outside, so the only way to know
+// WHICH canonical commit is serving traffic is for the runtime to say so. Every
+// response carries this value.
+//
+// It MUST be stamped with the commit this artifact was deployed from, at deploy
+// time. It is left UNSTAMPED here because this repository has no deployment
+// pipeline: a value written into source is only meaningful if whoever deploys
+// updates it to the commit they actually deployed.
+//
+// While it reads UNSTAMPED, deployed-vs-canonical parity is UNDECIDABLE and the
+// parity detector refuses to report a pass. An unstamped artifact is not a
+// governance failure - it is an absence of evidence - but it must never be
+// mistaken for one.
+const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";
+
+const json = (body: unknown, status = 200) => new Response(
+  JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
+  { status, headers: { "content-type": "application/json", "cache-control": "no-store" } },
+);
 
 async function auth(req: Request) {
   const h = req.headers.get("authorization") ?? "";
