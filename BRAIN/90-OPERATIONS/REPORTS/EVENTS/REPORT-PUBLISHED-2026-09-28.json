@@ -1,0 +1,20 @@
+{
+  "schema": "naya.report.publication-event.v1",
+  "event_id": "RPE-2026-09-28-001",
+  "event_type": "REPORT_PUBLISHED",
+  "occurred_on": "2026-09-28",
+  "report_id": "DIR-2026-09-28-001",
+  "report_type": "DAILY_INTELLIGENCE",
+  "report_status": "PUBLISHED",
+  "source_commit": "3ae1ab0875bef7ded52e1f6d9686b06b508b826e",
+  "human_view": "BRAIN/90-OPERATIONS/REPORTS/DAILY/2026/09/2026-09-28-DAILY-INTELLIGENCE-REPORT.md",
+  "machine_view": "BRAIN/90-OPERATIONS/REPORTS/DAILY/2026/09/2026-09-28-DAILY-INTELLIGENCE-REPORT.json",
+  "downstream_projections": {
+    "activity_feed": "PLANNED_NOT_YET_RUNTIME_PROVEN",
+    "hub_daily_intelligence": "PLANNED_NOT_YET_RUNTIME_PROVEN"
+  },
+  "provenance": {
+    "published_from": "canonical repository intelligence/evidence projection",
+    "second_store": false
+  }
+}
