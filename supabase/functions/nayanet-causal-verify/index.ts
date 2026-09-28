@@ -57,7 +57,7 @@ Deno.serve(async (req: Request) => {
       const actions = Array.isArray(grant.actions) ? grant.actions : [];
       return scope?.target === NAYA_ID && actions.includes("naya_node_apply");
     });
-    if (binding.length !== 1) return json({ok:false,error:"DURABLE_NAYA_AUTHORIZATION_BINDING_INVALID",count:binding.length},403);
+    if (binding.length !== 1) { console.error("CVO_REJECT", "DURABLE_NAYA_AUTHORIZATION_BINDING_INVALID", binding.length); return json({ok:false,error:"DURABLE_NAYA_AUTHORIZATION_BINDING_INVALID",count:binding.length},403); }
 
     const body = await req.json().catch(() => ({}));
     const mode = String(body.mode ?? "cvo");
@@ -69,18 +69,18 @@ Deno.serve(async (req: Request) => {
     if (te) throw te;
     const {data:control,error:ce} = await admin.from("nayanet_execution_receipts").select("*").eq("id",controlId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (ce) throw ce;
-    if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
+    if (!treatment || !control) { console.error("CVO_REJECT", "PAIRED_ACTION_RECEIPTS_NOT_FOUND", treatmentId, controlId); return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404); }
 
     if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
-      return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
+      { console.error("CVO_REJECT", "PAIRED_ACTION_RECEIPTS_INVALID", treatment.action, control.action); return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409); }
     }
     if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
-      return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);
+      { console.error("CVO_REJECT", "PAIRED_ACTION_OUTCOME_NOT_SUCCESS", treatment.status, control.status); return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409); }
     }
     const treatmentEvidence = (treatment.evidence && typeof treatment.evidence === "object" && !Array.isArray(treatment.evidence)) ? treatment.evidence as Record<string,unknown> : {};
     const controlEvidence = (control.evidence && typeof control.evidence === "object" && !Array.isArray(control.evidence)) ? control.evidence as Record<string,unknown> : {};
     if (treatmentEvidence.retained_intelligence_used !== true || controlEvidence.retained_intelligence_used !== false) {
-      return json({ok:false,error:"PAIRED_INTELLIGENCE_CONDITION_INVALID"},409);
+      { console.error("CVO_REJECT", "PAIRED_INTELLIGENCE_CONDITION_INVALID", treatmentEvidence, controlEvidence); return json({ok:false,error:"PAIRED_INTELLIGENCE_CONDITION_INVALID"},409); }
     }
 
     if (mode === "verify") {
