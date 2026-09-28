@@ -10,10 +10,11 @@ Before changing code, documentation, infrastructure, or configuration:
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
 3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
 4. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-5. Read the relevant activation-domain README(s).
-6. Read live canonical state from `.naya/control-plane/` and `.naya/project-intelligence/`.
-7. Inspect current GitHub issues/PRs relevant to the assigned work.
-8. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+5. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
+6. Reconcile the package with the existing graph and knowledge surfaces: BRAIN/00-SPEC/, BRAIN/04-INTELLIGENCE/, BRAIN/11-KNOWLEDGE/, and KNOWLEDGE/.
+7. Read live canonical state from `.naya/control-plane/` and `.naya/project-intelligence/`.
+8. Inspect current GitHub issues/PRs relevant to the assigned work.
+9. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when live canonical state says otherwise.
 
