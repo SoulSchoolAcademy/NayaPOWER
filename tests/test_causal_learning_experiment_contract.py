@@ -14,3 +14,4 @@ def test_causal_learning_experiment_receipt_contract():
     assert receipt["causal_verification"]["verification_status"] == "OUTCOME_VERIFIED"
     assert receipt["independent_verification"] is True
 
+ 
