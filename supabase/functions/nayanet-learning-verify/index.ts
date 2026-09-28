@@ -158,6 +158,40 @@ Deno.serve(async (req: Request) => {
     let receipt = null;
     let lineage = null;
     const receiptId = String(body?.receipt_id || "");
+    const sourceEventId = String(promoted.source_event_id || "");
+    if (!sourceEventId) return json({ ok: false, error: "SOURCE_EVENT_REQUIRED_FOR_VERIFICATION_LINEAGE" }, 409);
+
+    const { data: existingLineages, error: lineageReadError } = await admin
+      .from("nayanet_intelligence_lineage")
+      .select("*")
+      .eq("project_id", "NayaNET")
+      .eq("user_id", ownerId)
+      .eq("source_event_id", sourceEventId)
+      .eq("relation", "VERIFIED_LEARNING");
+    if (lineageReadError) throw lineageReadError;
+
+    lineage = (existingLineages || []).find((row: any) =>
+      Array.isArray(row.evidence_refs) && row.evidence_refs.includes(promoted.id)
+    ) ?? null;
+
+    if (!lineage) {
+      const { data: createdLineage, error: lineageCreateError } = await admin
+        .from("nayanet_intelligence_lineage")
+        .insert({
+          project_id: "NayaNET",
+          user_id: ownerId,
+          source_event_id: sourceEventId,
+          relation: "VERIFIED_LEARNING",
+          target_event_id: sourceEventId,
+          reason: "Independent causal verification promoted this durable learning evidence.",
+          evidence_refs: [...refs, promoted.id, sourceEventId],
+        })
+        .select("*")
+        .single();
+      if (lineageCreateError) throw lineageCreateError;
+      lineage = createdLineage;
+    }
+
     if (receiptId) {
       const { data: existingReceipt, error: receiptError } = await admin
         .from("nayanet_execution_receipts")
@@ -170,29 +204,25 @@ Deno.serve(async (req: Request) => {
       if (!existingReceipt) return json({ ok: false, error: "RECEIPT_NOT_FOUND_OR_NOT_OWNED" }, 404);
 
       const evidence = Array.isArray(existingReceipt.evidence) ? existingReceipt.evidence : [];
-      const foundLineage = [...evidence]
-        .reverse()
-        .find((x: any) => x?.lineage?.schema === "NAYANET_EVIDENCE_LINEAGE_RUNTIME_V1")?.lineage;
-      if (!foundLineage) return json({ ok: false, error: "RUNTIME_LINEAGE_NOT_FOUND" }, 409);
-
-      foundLineage.status = "VERIFIED_LEARNING_BOUND";
-      foundLineage.nodes = foundLineage.nodes.map((node: any) =>
-        node.kind === "verification"
-          ? { ...node, ref: String(operation.id) }
-          : node.kind === "learning"
-            ? { ...node, ref: String(promoted.id) }
-            : node
+      const verificationEvidence = {
+        schema: "NAYANET_LEARNING_VERIFICATION_V1",
+        learning_id: promoted.id,
+        lineage_id: lineage.id,
+        verification_runtime_jti: payload.jti ?? null,
+        evidence_refs: refs,
+        status: "VERIFIED_LEARNING_BOUND",
+      };
+      const hasVerificationEvidence = evidence.some((x: any) =>
+        x?.schema === verificationEvidence.schema && x?.learning_id === promoted.id
       );
 
       const { data: updatedReceipt, error: updateReceiptError } = await admin
         .from("nayanet_execution_receipts")
         .update({
-          evidence: evidence.map((x: any) =>
-            x?.lineage?.lineage_id === foundLineage.lineage_id ? { ...x, lineage: foundLineage } : x
-          ),
+          evidence: hasVerificationEvidence ? evidence : [...evidence, verificationEvidence],
           learning: [
             ...(Array.isArray(existingReceipt.learning) ? existingReceipt.learning : []),
-            { learning_id: promoted.id, verification_operation_id: null, verified: true },
+            { learning_id: promoted.id, verification_runtime_jti: payload.jti ?? null, verified: true, lineage_id: lineage.id },
           ],
         })
         .eq("id", receiptId)
@@ -202,9 +232,7 @@ Deno.serve(async (req: Request) => {
       if (updateReceiptError) throw updateReceiptError;
 
       receipt = updatedReceipt;
-      lineage = foundLineage;
     }
-
     return json({
       ok: true,
       result,
