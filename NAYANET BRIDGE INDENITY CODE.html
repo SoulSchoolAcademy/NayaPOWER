@@ -71,7 +71,7 @@
     <div class="identity-pro-card">
       <img src="icon-512.png" alt="NayaNET Crystal Logo" class="logo-hero" />
       <h1 class="card-title">Official Smart Identity Ready</h1>
-      <p class="card-subtitle">Type your custom alias below to configure your Smart Link and Secure Smart Mail ID, then activate your key to enter Naya Power Academy.</p>
+      <p class="card-subtitle">Type your custom alias below to configure your Smart Link and Secure Smart Mail ID, then authenticate your existing NayaNET identity to enter the governed Naya runtime.</p>
 
       <div class="alias-input-box">
         <label class="alias-label" for="aliasInput">Type Your Custom Smart Alias</label>
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <div class="status-badge"><span class="status-dot"></span> Auto-Login Security Key Configured</div>
+      <div class="status-badge"><span class="status-dot"></span> Real Supabase Identity — OTP Protected</div>
 
       <div class="identity-grid">
         <div class="id-box">
@@ -113,9 +113,114 @@
     </div>
   </main>
 
-  <footer class="bottom-system-bar">NayaNET Private Network — Protected Sovereign Key</footer>
+  <footer class="bottom-system-bar">NayaNET Private Network — Authenticated Identity Boundary</footer>
 
   <script>
+    /* NAYA-REAL-IDENTITY-OTP-BRIDGE-V1
+       Existing-user Supabase OTP. No anonymous sign-in. No token in query string.
+       Do not change the Intelligent Block owner.
+       After verification, the authenticated session crosses to the Hub in the URL fragment;
+       Supabase's detectSessionInUrl consumes it and persists the session on the Hub origin.
+    */
+    const NAYA_SUPABASE_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
+    const NAYA_SUPABASE_KEY = 'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
+    const NAYA_HUB_URL = 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/';
+    let nayaSupabaseClient = null;
+    let nayaOtpSent = false;
+
+    async function nayaAuthClient() {
+      if (nayaSupabaseClient) return nayaSupabaseClient;
+      if (!window.supabase?.createClient) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+          s.onload = resolve;
+          s.onerror = () => reject(new Error('Unable to load the Supabase client.'));
+          document.head.appendChild(s);
+        });
+      }
+      nayaSupabaseClient = window.supabase.createClient(NAYA_SUPABASE_URL, NAYA_SUPABASE_KEY, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storage: window.localStorage, storageKey: 'nayanet.supabase.auth' }
+      });
+      return nayaSupabaseClient;
+    }
+
+    function nayaAuthPanel() {
+      if (document.getElementById('nayaAuthPanel')) return;
+      const panel = document.createElement('div');
+      panel.id = 'nayaAuthPanel';
+      panel.innerHTML = '<div style="margin:0 auto 24px;max-width:520px;text-align:left">'
+        + '<label class="alias-label" for="nayaAuthEmail">SECURE NAYANET EMAIL</label>'
+        + '<div class="alias-field-wrapper"><input id="nayaAuthEmail" class="alias-field-input" type="email" autocomplete="email" placeholder="Enter your existing NayaNET email"></div>'
+        + '<p id="nayaAuthHelp" style="margin-top:9px;color:#94a3b8;font-size:.82rem;line-height:1.5">Use the email account that owns the NayaNET identity. We will not create a new account.</p>'
+        + '<div id="nayaOtpRow" style="display:none;margin-top:16px"><label class="alias-label" for="nayaAuthOtp">SIX-DIGIT VERIFICATION CODE</label><div class="alias-field-wrapper"><input id="nayaAuthOtp" class="alias-field-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456"></div></div>'
+        + '<div id="nayaAuthStatus" style="margin-top:12px;min-height:22px;color:#cbd5e1;font-size:.82rem"></div></div>';
+      const aliasBox = document.querySelector('.alias-input-box');
+      aliasBox?.parentNode?.insertBefore(panel, aliasBox);
+    }
+
+    async function nayaProvisionSession(client, user) {
+      const smartName = rawName.trim().replace(/\\s+/g, ' ').slice(0, 120);
+      const smartAlias = (aliasInput.value || rawName).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48) || 'pioneer';
+      const { error: metadataError } = await client.auth.updateUser({ data: { display_name: smartName, full_name: smartName, smart_name: smartName, smart_alias: smartAlias, nayanet_identity_version: 'name-first-v1' } });
+      if (metadataError) throw metadataError;
+      const { error: memberError } = await client.from('members').upsert({ id: user.id, display_name: smartName }, { onConflict: 'id' });
+      if (memberError) throw memberError;
+      const { error: profileError } = await client.from('nayanet_profiles').upsert({ member_id: user.id, smart_id: smartAlias, public_alias: smartAlias, recovery_ready: false }, { onConflict: 'member_id' });
+      if (profileError) throw profileError;
+      return { smartName, smartAlias };
+    }
+
+    async function nayaEnterAuthenticatedHub(session) {
+      if (!session?.access_token || !session?.refresh_token) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+      const finalAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '') || 'pioneer';
+      localStorage.setItem('nayanet_smart_alias', finalAlias);
+      localStorage.setItem('nayanet_smart_name', rawName);
+      sessionStorage.setItem('nayanet_user_name', rawName);
+      const fragment = '#access_token=' + encodeURIComponent(session.access_token) + '&refresh_token=' + encodeURIComponent(session.refresh_token) + '&token_type=bearer&type=email';
+      window.location.replace(NAYA_HUB_URL + '?name=' + encodeURIComponent(rawName) + '&alias=' + encodeURIComponent(finalAlias) + fragment);
+    }
+
+    async function nayaSendOtp() {
+      nayaAuthPanel();
+      const email = document.getElementById('nayaAuthEmail').value.trim().toLowerCase();
+      const status = document.getElementById('nayaAuthStatus');
+      if (!email || !email.includes('@')) { status.textContent = 'Enter a valid email address.'; return; }
+      status.textContent = 'Sending your six-digit code…';
+      try {
+        const client = await nayaAuthClient();
+        const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+        if (error) throw error;
+        sessionStorage.setItem('nayanet_auth_email', email);
+        nayaOtpSent = true;
+        document.getElementById('nayaOtpRow').style.display = 'block';
+        document.getElementById('nayaAuthOtp').focus();
+        document.getElementById('nayaAuthHelp').textContent = 'Code sent. Enter the six digits from the newest NayaNET email.';
+        status.textContent = 'CODE SENT — check your email.';
+        document.querySelector('.activate-btn').textContent = 'VERIFY CODE → ENTER NAYANET';
+      } catch (error) { status.textContent = 'AUTHENTICATION FAILED — ' + String(error?.message || error); }
+    }
+
+    async function nayaVerifyOtp() {
+      const email = document.getElementById('nayaAuthEmail').value.trim().toLowerCase();
+      const token = document.getElementById('nayaAuthOtp').value.replace(/\\D/g, '').slice(0, 6);
+      const status = document.getElementById('nayaAuthStatus');
+      if (!nayaOtpSent || !email || !/^\\d{6}$/.test(token)) { status.textContent = 'Enter the six-digit code from your email.'; return; }
+      status.textContent = 'Verifying identity…';
+      try {
+        const client = await nayaAuthClient();
+        const { data, error } = await client.auth.verifyOtp({ email, token, type: 'email' });
+        if (error) throw error;
+        const session = data?.session;
+        if (!session?.user?.id) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+        await nayaProvisionSession(client, session.user);
+        status.textContent = 'IDENTITY VERIFIED — opening authenticated NayaNET…';
+        await nayaEnterAuthenticatedHub(session);
+      } catch (error) { status.textContent = 'VERIFICATION FAILED — ' + String(error?.message || error); }
+    }
+
+    window.addEventListener('DOMContentLoaded', nayaAuthPanel, { once: true });
+
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
@@ -150,18 +255,8 @@
     updateSmartCredentials();
 
     window.activateAndRedirect = function() {
-      const finalAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '') || 'pioneer';
-      const deviceKey = 'nayanet_key_' + Math.random().toString(36).substring(2, 15);
-
-      localStorage.setItem('nayanet_vault_key', deviceKey);
-      localStorage.setItem('nayanet_smart_alias', finalAlias);
-      localStorage.setItem('nayanet_smart_name', rawName);
-
-      window.location.href =
-        'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/?name='
-        + encodeURIComponent(rawName)
-        + '&alias='
-        + encodeURIComponent(finalAlias);
+      if (!nayaOtpSent) return nayaSendOtp();
+      return nayaVerifyOtp();
     };
   </script>
 </body>
