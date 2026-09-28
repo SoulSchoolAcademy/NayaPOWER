@@ -20,6 +20,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - run: python -m pip install pytest
       - run: python -m pytest -q tests/test_live_learning_influence.py
         env:
           SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
@@ -42,4 +43,5 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - run: python -m pip install pytest
       - run: python -m pytest -q tests/test_independent_learning_influence.py

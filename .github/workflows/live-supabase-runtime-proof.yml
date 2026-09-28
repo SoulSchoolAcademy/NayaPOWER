@@ -208,10 +208,13 @@ jobs:
           curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-verification.json
           python - <<'PY'
           import json
+          import json, os
           e=json.load(open("causal-learning-experiment.json"))
           v=json.load(open("independent-verification.json"))
           assert v["ok"] is True, v
           c=v["verification"]["causal_verification"]
+          ver=v["verification"]
+          recomputed=ver["recomputed"]
           receipt={
             "schema":"NAYANET_CAUSAL_LEARNING_EXPERIMENT_V1",
             "target_id":"NAYA-NODE-0001",
@@ -219,10 +222,30 @@ jobs:
             "control":{"receipt_id":e["control"]["id"],"retained_intelligence_used":False,"behavior":e["control"]["observed_result"]},
             "treatment":{"receipt_id":e["treatment"]["id"],"retained_intelligence_used":True,"behavior":e["treatment"]["observed_result"]},
             "causal_verification":c,
-            "independent_verification":v["verification"]["independent_verification"]
+            "independent_verification":ver["independent_verification"],
+            "independent_verification_basis":{
+              "verifier_mode":ver["verifier_mode"],
+              "executor_claim_trusted":ver["executor_claim_trusted"],
+              "recomputed_from_authoritative_state":recomputed,
+              "declared_matches_recomputation":ver["declared_matches_recomputation"],
+              "observations_match":ver["observations_match"],
+              "limitations_present":ver["limitations_present"]
+            },
+            "limitations":c.get("limitations",[]),
+            "executor_runtime_jti":e.get("token_jti"),
+            "verifier_runtime_jti":ver.get("token_jti"),
+            "run_id":os.environ.get("GITHUB_RUN_ID"),
+            "head_sha":os.environ.get("GITHUB_SHA"),
+            "reconstructable_by":"a cold successor may re-read both receipts by id and recompute the delta; no local state is required",
+            "next_action":"prove cold-successor retrieval of this learning and confirm the successor does not inherit authority from it"
           }
           assert receipt["control"]["behavior"] != receipt["treatment"]["behavior"]
           assert receipt["independent_verification"] is True
+          # The receipt may only claim success if the verifier independently recomputed it.
+          assert recomputed["recomputed_causal_assessment"]=="CAUSAL_SUPPORTED", recomputed
+          assert recomputed["behavioral_delta_present"] is True, recomputed
+          assert recomputed["task_equivalence"] is True, recomputed
+          assert ver["executor_claim_trusted"] is False
           json.dump(receipt,open("causal-learning-experiment-receipt.json","w"),indent=2)
           PY
       - uses: actions/upload-artifact@v4
