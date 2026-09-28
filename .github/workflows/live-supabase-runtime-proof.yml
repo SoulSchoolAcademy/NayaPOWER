@@ -552,7 +552,7 @@ jobs:
           import json
           r=json.load(open("learning-promotion.json"))
           assert r["ok"] is True, r
-          assert r["verified"] is True, r
+          assert r["verification_record"]["verified"] is True, r
           receipt=json.load(open("causal-learning-experiment-receipt.json"))
           assert r["result"]["learning"]["id"]==receipt["learning_id"], r
           assert r["result"]["learning"]["status"]=="ACTIVE", r
