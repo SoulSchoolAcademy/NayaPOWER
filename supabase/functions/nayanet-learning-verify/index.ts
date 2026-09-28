@@ -391,6 +391,7 @@ Deno.serve(async (req: Request) => {
         ? (receipt.learning || []).find((entry: any) => entry?.learning_id === promoted.id && entry?.verified === true) ?? null
         : null,
       receipt,
+      integration,
       runtime_identity: "github-actions-oidc",
       workflow_ref: workflowRef,
       token_jti: payload.jti ?? null,
