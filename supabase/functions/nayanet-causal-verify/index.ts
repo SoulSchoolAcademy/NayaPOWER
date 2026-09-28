@@ -71,18 +71,41 @@ Deno.serve(async (req: Request) => {
     if (ce) throw ce;
     if (!treatment || !control) { console.error("CVO_REJECT", "PAIRED_ACTION_RECEIPTS_NOT_FOUND", treatmentId, controlId); return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404); }
 
+    const {data:treatmentOutcome,error:toe} = await admin
+      .from("nayanet_execution_outcomes")
+      .select("outcome_id,receipt_id,experiment_case_id,outcome_type,evidence,verified,verification_method,verified_value")
+      .eq("receipt_id",treatmentId)
+      .eq("user_id",OWNER_ID)
+      .eq("project_id","NayaNET")
+      .maybeSingle();
+    if (toe) throw toe;
+    const {data:controlOutcome,error:coe} = await admin
+      .from("nayanet_execution_outcomes")
+      .select("outcome_id,receipt_id,experiment_case_id,outcome_type,evidence,verified,verification_method,verified_value")
+      .eq("receipt_id",controlId)
+      .eq("user_id",OWNER_ID)
+      .eq("project_id","NayaNET")
+      .maybeSingle();
+    if (coe) throw coe;
+    if (!treatmentOutcome || !controlOutcome) return json({ok:false,error:"PAIRED_ACTION_OUTCOMES_NOT_FOUND"},404);
+    if (!treatmentOutcome.verified || !controlOutcome.verified) return json({ok:false,error:"PAIRED_ACTION_OUTCOMES_NOT_VERIFIED"},409);
+    if (treatmentOutcome.experiment_case_id !== "NAYA-NODE-0001-COLD-BEHAVIOR" || controlOutcome.experiment_case_id !== "NAYA-NODE-0001-COLD-BEHAVIOR") {
+      return json({ok:false,error:"PAIRED_ACTION_OUTCOME_CASE_INVALID"},409);
+    }
+    const treatmentOutcomeEvidence = (treatmentOutcome.evidence ?? {}) as Record<string,unknown>;
+    const controlOutcomeEvidence = (controlOutcome.evidence ?? {}) as Record<string,unknown>;
+    if (treatmentOutcomeEvidence.treatment_condition !== true || treatmentOutcomeEvidence.intelligence_id !== "IB-NAYA-NODE-0001-0001" || treatmentOutcomeEvidence.provenance_present !== true) {
+      return json({ok:false,error:"TREATMENT_OUTCOME_EVIDENCE_INVALID"},409);
+    }
+    if (controlOutcomeEvidence.control_condition !== true || controlOutcomeEvidence.provenance_present !== false) {
+      return json({ok:false,error:"CONTROL_OUTCOME_EVIDENCE_INVALID"},409);
+    }
+
     if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
       { console.error("CVO_REJECT", "PAIRED_ACTION_RECEIPTS_INVALID", treatment.action, control.action); return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409); }
     }
     if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
       { console.error("CVO_REJECT", "PAIRED_ACTION_OUTCOME_NOT_SUCCESS", treatment.status, control.status); return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409); }
-    }
-    const treatmentEvidenceRows = Array.isArray(treatment.evidence) ? treatment.evidence : [];
-    const controlEvidenceRows = Array.isArray(control.evidence) ? control.evidence : [];
-    const treatmentEvidence = treatmentEvidenceRows.find((item: Record<string,unknown>) => !item?.causal_verification) ?? {};
-    const controlEvidence = controlEvidenceRows.find((item: Record<string,unknown>) => !item?.causal_verification) ?? {};
-    if (treatmentEvidence.retained_intelligence_used !== true || controlEvidence.retained_intelligence_used !== false) {
-      return json({ok:false,error:"PAIRED_INTELLIGENCE_CONDITION_INVALID"},409);
     }
 
     if (mode === "verify") {
@@ -97,8 +120,10 @@ Deno.serve(async (req: Request) => {
         && causal.verification_status === "OUTCOME_VERIFIED"
         && causal.production_action_executed === true
         && causal.observed_change === treatment.observed_result
-        && causal.evidence?.treatment?.retained_intelligence_used === true
-        && causal.evidence?.control?.retained_intelligence_used === false;
+        && causal.evidence?.treatment?.outcome_id === treatmentOutcome.outcome_id
+        && causal.evidence?.control?.outcome_id === controlOutcome.outcome_id
+        && causal.evidence?.treatment?.provenance_present === true
+        && causal.evidence?.control?.provenance_present === false;
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
@@ -135,12 +160,8 @@ Deno.serve(async (req: Request) => {
       },
       evidence: {
         refs: [treatmentId, controlId, "IB-NAYA-NODE-0001-0001"],
-        control: controlEvidence,
-        treatment: {
-          condition: treatmentEvidence.condition ?? "TREATMENT",
-          intelligence_id: treatmentEvidence.intelligence_id ?? "IB-NAYA-NODE-0001-0001",
-          retained_intelligence_used: treatmentEvidence.retained_intelligence_used === true,
-        },
+        control: { outcome_id: controlOutcome.outcome_id, evidence: controlOutcomeEvidence },
+        treatment: { outcome_id: treatmentOutcome.outcome_id, evidence: treatmentOutcomeEvidence },
       },
       causal_method: "CONTROLLED_INTERVENTION",
       causal_assessment: "CAUSAL_SUPPORTED",
