@@ -1,3 +1,7 @@
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
 import json
 import os
 import urllib.error
@@ -67,13 +71,16 @@ def test_runtime_commit_uses_direct_postgrest_rpc_boundary():
     assert "admin.rpc(" not in call_commit
 
 
-def test_fresh_lesson_enters_existing_learn_promote_and_independent_reread_path():
+def test_fresh_lesson_enters_existing_runtime_and_independent_verification_path():
     workflow = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
-    assert "learn-promote-fresh-lesson" in workflow
-    assert 'mode":"candidate"' in workflow
-    assert "nayanet-learning-verify" in workflow
-    assert 'mode":"cvo"' in workflow
-    assert 'mode":"reread"' in workflow
-    assert "independent-retained-learning-reread" in workflow
-    assert 'status"] == "ACTIVE"' in workflow
-    assert "provenance_preserved" in workflow
+    assert "fresh-lesson:" in workflow
+    assert "independent-verification:" in workflow
+    assert 'mode":"execute"' in workflow
+    assert 'mode":"verify"' in workflow
+    assert "nayanet-intelligence-commit-runtime" in workflow
+    assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in workflow
+    assert "intelligent_block_id" in workflow
+    assert "lineage_id" in workflow
+    assert "relationship_id" in workflow
+    assert "checkpoint_id" in workflow
+    assert "independent_verification" in workflow

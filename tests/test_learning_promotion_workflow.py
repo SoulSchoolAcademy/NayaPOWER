@@ -12,7 +12,7 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "oidc.jwt" in source
     assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in source
     assert '"evidence_refs"' in source
-    assert "f91fc48a-3d34-41aa-b51e-17b4ce89a3e2" in source
+    assert "5c5331c3-8b36-47d9-bf94-846806de90fb" in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
     assert "EXACT_LESSON_ALREADY_LEARNED" in source
@@ -49,7 +49,7 @@ def test_learning_influence_retries_unique_revision_allocation_under_concurrency
 def test_fresh_intelligent_block_can_enter_existing_learning_candidate_path_without_dropping_provenance():
     source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
     assert 'mode === "candidate"' in source
-    assert 'understanding_state !== "CANDIDATE"' in source
+    assert '["CANDIDATE", "LEARNED"]' in source
     assert 'NAYA-NODE-0001' in source
     assert 'intelligent_block_id' in source
     assert 'source_event_id' in source
