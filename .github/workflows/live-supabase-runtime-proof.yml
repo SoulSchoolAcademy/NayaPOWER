@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "naya/runtime-connect-convergence-v1"
+  workflow_dispatch:
 
 jobs:
   live-read-only-proof:
