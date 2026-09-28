@@ -44,6 +44,7 @@ Deno.serve(async (req: Request) => {
   if (!grantResponse.ok) return json({ error: "AUTHORITY_LOOKUP_FAILED", status: grantResponse.status }, 502);
   const grants = await grantResponse.json();
   if (!Array.isArray(grants) || grants.length < 1) return json({ error: "CANONICAL_AUTHORITY_MISSING" }, 403);
+  const block = blocks[0];
   const mode = new URL(req.url).searchParams.get("mode") ?? "cold";
   if (mode !== "cold" && mode !== "connect") return json({ error: "UNSUPPORTED_MODE" }, 400);
 
@@ -110,7 +111,6 @@ Deno.serve(async (req: Request) => {
     return json({ ok: true, receipt });
   }
 
-  const block = blocks[0];
   const lesson = block.content?.lesson;
   if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
   const behavior = lesson.includes("Preserve provenance before applying retained intelligence")
