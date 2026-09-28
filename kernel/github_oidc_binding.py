@@ -4,7 +4,7 @@ CANONICAL_ISSUER = "https://token.actions.githubusercontent.com"
 CANONICAL_AUDIENCE = "nayanet-runtime"
 CANONICAL_REPOSITORY = "SoulSchoolAcademy/NayaPOWER"
 CANONICAL_WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml"
-CANONICAL_REF = "refs/heads/naya/node-genome-aaa-v1"
+CANONICAL_REF = "refs/heads/main"
 CANONICAL_NAYA_ID = "NAYA-NODE-0001"
 CANONICAL_OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
 
@@ -14,7 +14,6 @@ class GitHubRuntimeAuthorization:
     reason: str
     naya_id: str | None = None
     owner_id: str | None = None
-
 
 def authorize_github_runtime(claims: dict) -> GitHubRuntimeAuthorization:
     if claims.get("iss") != CANONICAL_ISSUER:
