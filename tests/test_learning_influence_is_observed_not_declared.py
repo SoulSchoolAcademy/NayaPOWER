@@ -56,14 +56,30 @@ def test_both_arms_execute_a_real_decision_surface():
 
 
 def test_executor_and_verifier_agree_on_evidence_vocabulary():
-    """The executor writes evidence the independent verifier actually requires."""
+    """The executor must write the evidence the independent verifier requires.
+
+    Scoped to the learning-influence branch only. A previous version of this test
+    searched the whole file and passed merely because the VERIFIER mentioned
+    relationship_context_enabled, which made it vacuous. This version requires
+    the EXECUTOR to write the fields, and requires the two vocabularies to
+    actually agree.
+    """
     s = source()
-    # The reconciler in graph-verify demands these exact fields. If the executor
-    # does not write them, the proof can never reconcile and the gate is correct
-    # to fail.
-    assert 'relationship_context_enabled' in s, (
-        "executor never writes relationship_context_enabled, which the independent "
-        "verifier requires. Executor and verifier disagree."
+    start = s.index('mode === "learning-influence"')
+    executor = s[start : s.index('if (mode === "connect")')]
+
+    # The independent verifier (graph-verify) requires these exact fields.
+    assert "relationship_context_enabled" in executor, (
+        "the learning-influence EXECUTOR never writes relationship_context_enabled, "
+        "which the independent verifier requires. Executor and verifier disagree, so "
+        "the proof can never reconcile."
     )
-    for value in ('"OFF"', '"ON"'):
-        assert value in s, f"evidence condition {value} is never written by the executor"
+    assert '"OFF"' in executor and '"ON"' in executor, (
+        "the executor must write evidence condition OFF for control and ON for "
+        "treatment, matching what the verifier asserts."
+    )
+    for literal in ('"CONTROL"', '"TREATMENT"'):
+        assert literal not in executor, (
+            f"executor writes condition {literal} but the verifier requires "
+            f"OFF/ON. The two vocabularies must be identical."
+        )
