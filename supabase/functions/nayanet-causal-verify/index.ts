@@ -9,8 +9,8 @@ const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const MISSION_ID = "NAYA-NODE-0001-CONTINUITY";
-const TREATMENT_ID = "6aee287d-c47d-4667-86ed-6b53be8bd384";
-const CONTROL_ID = "b00ed556-d7b7-4e5e-90a0-4620b9aaef67";
+const DEFAULT_treatmentId = "6aee287d-c47d-4667-86ed-6b53be8bd384";
+const DEFAULT_controlId = "b00ed556-d7b7-4e5e-90a0-4620b9aaef67";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
@@ -61,11 +61,14 @@ Deno.serve(async (req: Request) => {
 
     const body = await req.json().catch(() => ({}));
     const mode = String(body.mode ?? "cvo");
+    const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_treatmentId);
+    const controlId = String(body.control_receipt_id ?? DEFAULT_controlId);
+    const learningId = body.learning_id ? String(body.learning_id) : null;
     if (mode !== "cvo" && mode !== "verify") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
 
-    const {data:treatment,error:te} = await admin.from("nayanet_execution_receipts").select("*").eq("id",TREATMENT_ID).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
+    const {data:treatment,error:te} = await admin.from("nayanet_execution_receipts").select("*").eq("id",treatmentId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (te) throw te;
-    const {data:control,error:ce} = await admin.from("nayanet_execution_receipts").select("*").eq("id",CONTROL_ID).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
+    const {data:control,error:ce} = await admin.from("nayanet_execution_receipts").select("*").eq("id",controlId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (ce) throw ce;
     if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
 
@@ -81,21 +84,21 @@ Deno.serve(async (req: Request) => {
       const causal = evidence.find((item: Record<string,unknown>) => item?.causal_verification)?.causal_verification as Record<string,unknown> | undefined;
       if (!causal) return json({ok:false,error:"CVO_NOT_PERSISTED"},409);
       const valid = causal.schema === "NAYANET_CAUSAL_VERIFICATION_V1"
-        && causal.receipt_id === TREATMENT_ID
-        && causal.comparison_receipt_id === CONTROL_ID
+        && causal.receipt_id === treatmentId
+        && causal.comparison_receipt_id === controlId
         && causal.causal_method === "CONTROLLED_INTERVENTION"
         && causal.causal_assessment === "CAUSAL_SUPPORTED"
         && causal.verification_status === "OUTCOME_VERIFIED"
         && causal.production_action_executed === true
         && causal.observed_change === treatment.observed_result;
-      return json({ok:valid,verification:{independent_verification:valid,receipt_id:TREATMENT_ID,comparison_receipt_id:CONTROL_ID,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
+      return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
     const causal = {
       schema: "NAYANET_CAUSAL_VERIFICATION_V1",
       causal_id: "CVO-NAYA-NODE-0001-TREATMENT-V1",
-      receipt_id: TREATMENT_ID,
-      comparison_receipt_id: CONTROL_ID,
+      receipt_id: treatmentId,
+      comparison_receipt_id: controlId,
       intent: {
         action: treatment.action,
         expected_result: treatment.expected_result,
@@ -122,7 +125,7 @@ Deno.serve(async (req: Request) => {
         status: treatment.status,
       },
       evidence: {
-        refs: [TREATMENT_ID, CONTROL_ID, "IB-NAYA-NODE-0001-0001"],
+        refs: [treatmentId, controlId, "IB-NAYA-NODE-0001-0001"],
         control: control.evidence,
         treatment: treatment.evidence,
       },
@@ -147,16 +150,16 @@ Deno.serve(async (req: Request) => {
       project_id: "NayaNET",
       operation: "causal_verify_runtime",
       status: "SUCCESS",
-      input: {mode, treatment_receipt_id:TREATMENT_ID, control_receipt_id:CONTROL_ID},
+      input: {mode, treatment_receipt_id:treatmentId, control_receipt_id:controlId},
       output: causal,
-      source_ref: TREATMENT_ID,
-      source_event_ids: [TREATMENT_ID, CONTROL_ID],
+      source_ref: treatmentId,
+      source_event_ids: [treatmentId, controlId],
     }).select("id").single();
     if (oe) throw oe;
 
     const existingEvidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
     const updatedEvidence = [...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification), {causal_verification:causal, causal_operation_id:op.id}];
-    const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",TREATMENT_ID).eq("user_id",OWNER_ID).select("*").single();
+    const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",treatmentId).eq("user_id",OWNER_ID).select("*").single();
     if (ue) throw ue;
 
     return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:op.id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
