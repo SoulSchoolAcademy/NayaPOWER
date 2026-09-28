@@ -106,14 +106,26 @@ Deno.serve(async (req: Request) => {
       }
       const existing = matchingCandidates[0];
       if (existing) {
+        const repairedObserved = {
+          ...(existing.observed_value && typeof existing.observed_value === "object" && !Array.isArray(existing.observed_value) ? existing.observed_value : {}),
+          intelligent_block_id: blockId,
+          source_event_id: event.id,
+          source_event_key: event.event_id,
+          commit_receipt_id: commitReceiptId,
+          lineage_id: lineage.id,
+          relationship_id: relationship.relationship_id,
+          index_id: index.id,
+          checkpoint_id: checkpoint.id,
+          provenance_preserved: true,
+        };
+        const { data: repaired, error: repairError } = await admin.from("learning_evidence").update({ observed_value: repairedObserved }).eq("id", existing.id).eq("member_id", ownerId).select("*").single();
+        if (repairError) throw repairError;
         return json({
           ok: true,
           created: false,
-          learning: existing,
+          learning: repaired,
           source: { event, block, lineage, relationship, index, checkpoint },
-          reuse_reason: existing?.observed_value?.intelligent_block_id === blockId
-            ? "CANONICAL_BLOCK_BINDING"
-            : "EXACT_PERSISTED_LESSON_CLAIM",
+          reuse_reason: "EXACT_PERSISTED_LESSON_CLAIM",
           runtime_identity: "github-actions-oidc",
           workflow_ref: workflowRef,
           token_jti: payload.jti ?? null,
