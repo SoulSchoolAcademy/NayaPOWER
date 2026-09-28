@@ -146,7 +146,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
           python - <<'PY'
           import json
           r=json.load(open("causal-learning-experiment.json"))
