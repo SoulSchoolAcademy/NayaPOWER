@@ -174,16 +174,36 @@ jobs:
           set -euo pipefail
           token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
           printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
-      - name: Execute fresh control-vs-treatment experiment
+      - name: Bind the exact persisted fresh lesson into the existing LEARN candidate lane
         shell: bash
         run: |
           set -euo pipefail
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"learning_id":"f91fc48a-3d34-41aa-b51e-17b4ce89a3e2"}' "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
+          python - <<'PY'
+          import json
+          json.dump({"mode":"candidate","intelligent_block_id":"IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147"},open("candidate-request.json","w"),indent=2)
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-candidate.json
+          cat learning-candidate.json
+          python - <<'PY'
+          import json
+          r=json.load(open("learning-candidate.json"))
+          assert r["ok"] is True, r
+          assert r["learning"]["status"] == "CANDIDATE", r
+          assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
+          assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
+          open("learning-id.txt","w").write(r["learning"]["id"])
+          PY
+      - name: Execute the existing causal control-vs-treatment experiment against this exact candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(cat learning-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"learning_id\":\"$learning_id\"}" "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
           python - <<'PY'
           import json
           r=json.load(open("causal-learning-experiment.json"))
           assert r["ok"] is True, r
-          assert r["learning_id"]=="f91fc48a-3d34-41aa-b51e-17b4ce89a3e2"
+          assert r["learning_id"] == open("learning-id.txt").read().strip(), r
           assert r["control"]["evidence"]["retained_intelligence_used"] is False
           assert r["treatment"]["evidence"]["retained_intelligence_used"] is True
           assert r["control"]["observed_result"] != r["treatment"]["observed_result"]
@@ -208,12 +228,14 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: causal-learning-experiment
-          path: causal-learning-experiment.json
+          path: |
+            causal-learning-experiment.json
+            learning-candidate.json
+            learning-id.txt
       - uses: actions/upload-artifact@v4
         with:
           name: causal-verification
           path: causal-verification.json
-
   independent-learning-influence-verification:
     needs: learning-influence-experiment
     runs-on: ubuntu-latest
