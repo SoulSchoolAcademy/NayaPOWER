@@ -1,2 +1,2 @@
 // Browser-safe configuration only. Never put access/refresh tokens or service-role keys here.
-window.NAYA_CONFIG={supabaseUrl:"https://dahisasgpfvziswqvmvm.supabase.co",supabasePublishableKey:"sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue"};
+window.NAYA_CONFIG={supabaseUrl:"https://dahisasgpfvziswqvmvm.supabase.co",supabasePublishableKey:"sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue",activationUrl:"https://shy-wildflower-8202.smartnetpodcast.workers.dev"};
