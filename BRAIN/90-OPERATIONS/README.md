@@ -12,6 +12,7 @@ Current reality must be explicit and time-bounded.
 |---|---|
 | [0001-MAX-10-EXECUTION-QUEUE-V1.md](./0001-MAX-10-EXECUTION-QUEUE-V1.md) | Execution queue management |
 | [0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md](./0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md) | AAA execution prompt |
+| [2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md](./2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md) | Dated evidence scorecard, bounded repair and successor handoff (PR candidate; not production acceptance) |
 
 ## Key Principles
 

@@ -43,11 +43,11 @@ def test_fresh_lesson_intelligence_commit_uses_naya_runtime_and_persists_connect
     assert result["runtime_identity"] == "naya-node-oidc"
 
     lineage = result["result"]
-    for key in ("receipt_id","event_id","intelligent_block_id","lineage_id","relationship_id","checkpoint_id"):
+    for key in ("receipt_id","event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id"):
         assert lineage.get(key), (key, lineage)
 
     status, verify = request({"mode": "verify", **{k: lineage[k] for k in (
-        "receipt_id","event_id","intelligent_block_id","lineage_id","relationship_id","checkpoint_id"
+        "receipt_id","event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id"
     )}})
     assert status == 200 and verify.get("ok") is True, (status, verify)
     assert verify["status"] == "LINEAGE_VERIFIED"
@@ -84,3 +84,15 @@ def test_fresh_lesson_enters_existing_runtime_and_independent_verification_path(
     assert "relationship_id" in workflow
     assert "checkpoint_id" in workflow
     assert "independent_verification" in workflow
+
+
+def test_independent_verifier_downloads_the_produced_lineage_before_reading_it():
+    import yaml
+
+    workflow = yaml.safe_load((ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text())
+    producer = workflow["jobs"]["fresh-lesson"]["steps"]
+    uploads = [step["with"] for step in producer if step.get("uses", "").startswith("actions/upload-artifact@")]
+    artifact = next(item for item in uploads if "fresh-lesson-lineage-ids.json" in item["path"])
+    steps = workflow["jobs"]["independent-verification"]["steps"]
+    reader = next(i for i, step in enumerate(steps) if 'open("fresh-lesson-lineage-ids.json")' in step.get("run", ""))
+    assert any(step.get("uses", "").startswith("actions/download-artifact@") and step.get("with", {}).get("name") == artifact["name"] for step in steps[:reader])

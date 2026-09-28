@@ -100,7 +100,7 @@ Deno.serve(async (req) => {
     const mode = String(body.mode ?? "");
 
     if (mode === "execute") {
-      const result = await callCommit(admin, body, String(payload.jti ?? ""));
+      const result = await callCommit(body, String(payload.jti ?? ""));
       return json({
         ok: result?.ok === true,
         status: "EXECUTED",
