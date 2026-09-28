@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${RUNTIME_FUNCTION}?mode=learning-influence" > learning-influence-receipt.json
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"learning_id":"f91fc48a-3d34-41aa-b51e-17b4ce89a3e2"}' "${RUNTIME_FUNCTION}?mode=learning-influence" > learning-influence-receipt.json
           cat learning-influence-receipt.json
           python - <<'PY'
           import json
