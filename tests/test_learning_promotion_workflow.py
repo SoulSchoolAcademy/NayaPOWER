@@ -12,11 +12,11 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "oidc.jwt" in source
     assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in source
     assert '"evidence_refs"' in source
-    assert "5c5331c3-8b36-47d9-bf94-846806de90fb" in source
+    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
-    assert "EXACT_LESSON_ALREADY_LEARNED" in source
-    assert "5c5331c3-8b36-47d9-bf94-846806de90fb" in source
+    assert "EXACT_LESSON_ALREADY_LEARNED" not in source
+    assert "5c5331c3-8b36-47d9-bf94-846806de90fb" not in source
 
 
 def test_learning_promotion_does_not_relax_runtime_oidc_binding_or_mutate_sql_directly():
