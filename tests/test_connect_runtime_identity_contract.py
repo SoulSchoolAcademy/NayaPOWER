@@ -11,7 +11,7 @@ def test_live_connect_runtime_uses_oidc_not_human_supabase_token():
     assert "id-token: write" in workflow
     assert "SUPABASE_USER_ACCESS_TOKEN" not in workflow
     assert "ACTIONS_ID_TOKEN_REQUEST_URL" in workflow
-    assert "nayanet-cold-runtime-proof?mode=connect" in workflow
+    assert "${COLD_RUNTIME_FUNCTION}?mode=connect" in workflow
 
 
 def test_connect_runtime_resolves_durable_owner_binding_server_side():
@@ -27,6 +27,6 @@ def test_connect_runtime_resolves_durable_owner_binding_server_side():
 
 def test_connect_runtime_keeps_consequential_actions_fail_closed_without_authority():
     source = FUNCTION.read_text(encoding="utf-8")
-    assert '"blocked_by": "LAW"' in source
+    assert 'blocked_by: "LAW"' in source
     assert '"executed": false' in source
     assert '"consequential": true' in source
