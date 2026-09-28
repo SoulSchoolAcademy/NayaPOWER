@@ -111,8 +111,12 @@ jobs:
           set -euo pipefail
           mkdir -p .naya/evidence
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=connect" > .naya/evidence/live-connect-runtime-receipt.json
-          python tests/verify_connect_runtime_receipt.py .naya/evidence/live-connect-runtime-receipt.json
       - name: Record deployed-runtime observation from the real response
+        # Runs BEFORE verification, and unconditionally. If the deployed artifact
+        # is untraceable the verification steps below will fail - and a failing run
+        # that captured no evidence is a failing run nobody can diagnose. The
+        # observation is the evidence, so it is taken first.
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
@@ -120,7 +124,11 @@ jobs:
           python BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py \
             .naya/evidence/live-connect-runtime-receipt.json \
             .naya/evidence/deployed-runtime-observation.json
+      - name: Verify CONNECT receipt contract
+        if: always()
+        run: python tests/verify_connect_runtime_receipt.py .naya/evidence/live-connect-runtime-receipt.json
       - name: Fail if the deployed artifact is not the current canonical source
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
@@ -128,8 +136,13 @@ jobs:
           # deployed must turn this workflow RED, on its own, with no human
           # prompting anything. Exit codes: 0 MATCH | 1 DRIFT/STALE/UNKNOWN.
           # UNKNOWN is deliberately non-zero. "We cannot tell" is not "fine".
+          #
+          # Both this and the contract check above run under `if: always()` so a
+          # single red run reports BOTH the contract verdict and the parity
+          # verdict, instead of only whichever one happened to run first.
           python BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: live-connect-runtime-receipt
           path: |
