@@ -165,7 +165,7 @@ jobs:
           r=json.load(open("causal-learning-experiment.json"))
           open("cvo-request.json","w").write(json.dumps({"mode":"cvo","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
           PY
-          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @cvo-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify" > causal-verification.json
+          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @cvo-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > causal-verification.json
           python - <<'PY'
           import json
           r=json.load(open("causal-verification.json"))
@@ -205,7 +205,7 @@ jobs:
           r=json.load(open("causal-learning-experiment.json"))
           open("verify-request.json","w").write(json.dumps({"mode":"verify","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
           PY
-          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify" > independent-verification.json
+          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-verification.json
           python - <<'PY'
           import json
           e=json.load(open("causal-learning-experiment.json"))
