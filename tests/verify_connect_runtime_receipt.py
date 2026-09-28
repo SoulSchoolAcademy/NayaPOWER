@@ -3,8 +3,27 @@ import sys
 from pathlib import Path
 
 
+def _require(container: object, key: str, where: str):
+    if not isinstance(container, dict) or key not in container:
+        raise SystemExit(
+            f"CONNECT_RECEIPT_CONTRACT_DRIFT: required field {where}.{key} is absent. "
+            "The runtime did not emit the evidence this verifier requires. "
+            "This is an implementation/contract mismatch, NOT an infrastructure failure."
+        )
+    return container[key]
+
+
 def verify(path: Path) -> None:
     receipt = json.loads(path.read_text(encoding="utf-8"))["receipt"]
+    for field in ("receipt_type", "naya_id", "block_id", "block_owner_match", "authorization_binding",
+                  "connect", "behavior", "authority_boundary", "production_mutation_performed",
+                  "rls_changed", "credentials_committed"):
+        _require(receipt, field, "receipt")
+    behavior = receipt["behavior"]
+    for field in ("consequential", "allowed", "executed", "blocked_by"):
+        _require(behavior, field, "receipt.behavior")
+    for field in ("connect_grants_authority", "consequential_actions_authorized"):
+        _require(receipt["authority_boundary"], field, "receipt.authority_boundary")
     assert receipt["receipt_type"] == "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1"
     assert receipt["naya_id"] == "NAYA-NODE-0001"
     assert receipt["block_id"] == "IB-NAYA-NODE-0001-0001"
