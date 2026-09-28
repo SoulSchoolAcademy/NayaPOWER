@@ -34,10 +34,10 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, uuid
+          import json, os, uuid
           lesson_key = "NAYA-FLOW-LESSON-" + uuid.uuid4().hex
           json.dump({
-            "mode":"execute","p_authority_grant_id":"${GRANT_ID}","p_event_id":lesson_key,
+            "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
             "p_title":"Naya runtime flow lesson",
             "p_content":"Durable authority should flow through short-lived runtime credentials without recurring human token handoff.",
             "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
