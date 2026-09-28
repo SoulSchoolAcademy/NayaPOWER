@@ -2,7 +2,7 @@ name: Live Supabase Runtime Proof
 
 on:
   push:
-    branches: ["naya/node-genome-aaa-v1"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -47,8 +47,6 @@ jobs:
           assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
           assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
           assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
-          print("COLD_RUNTIME_1=PASS")
-          print(json.dumps(r, indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -78,8 +76,6 @@ jobs:
           assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
           assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
           assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
-          print("COLD_RUNTIME_2=PASS")
-          print(json.dumps(r, indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
