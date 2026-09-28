@@ -142,20 +142,8 @@ Deno.serve(async (req: Request) => {
       verified_at: new Date().toISOString(),
     };
 
-    const {data:op,error:oe} = await admin.from("nayanet_intelligence_operations").insert({
-      user_id: OWNER_ID,
-      project_id: "NayaNET",
-      operation: "causal_verify_runtime",
-      status: "SUCCESS",
-      input: {mode, treatment_receipt_id:TREATMENT_ID, control_receipt_id:CONTROL_ID},
-      output: causal,
-      source_ref: TREATMENT_ID,
-      source_event_ids: [TREATMENT_ID, CONTROL_ID],
-    }).select("id").single();
-    if (oe) throw oe;
-
     const existingEvidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
-    const updatedEvidence = [...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification), {causal_verification:causal, causal_operation_id:op.id}];
+    const updatedEvidence = [...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification), {causal_verification:causal}];
     const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",TREATMENT_ID).eq("user_id",OWNER_ID).select("*").single();
     if (ue) throw ue;
 
