@@ -1,6 +1,7 @@
 name: Live Learning Influence Proof
 
 on:
+  pull_request:
   push:
     branches:
       - naya/learning-influence-proof-v1
