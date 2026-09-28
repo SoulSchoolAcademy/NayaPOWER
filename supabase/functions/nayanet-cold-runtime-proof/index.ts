@@ -169,7 +169,7 @@ Deno.serve(async (req: Request) => {
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
 
       // 1. Re-read the persisted learning that the previous Naya produced.
-      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
+      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(NAYA_ID) + "&status=eq.ACTIVE&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const learning = learningRows[0];
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
@@ -256,7 +256,7 @@ Deno.serve(async (req: Request) => {
       const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
       const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
-      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
+      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(NAYA_ID) + "&status=eq.ACTIVE&select=id,target_id,level,status,claim,observed_value,source_event_id,provenance");
       if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const l = lRows[0];
       const lObs = (l.observed_value && typeof l.observed_value === "object" && !Array.isArray(l.observed_value)) ? l.observed_value : {};
