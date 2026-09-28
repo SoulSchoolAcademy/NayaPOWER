@@ -75,6 +75,7 @@ Deno.serve(async (req: Request) => {
         grant_id: binding[0].grant_id,
         mission_id: binding[0].mission_id,
         scope: binding[0].scope,
+        actions: binding[0].actions,
         status: binding[0].status,
       },
       block_id: BLOCK_ID,
