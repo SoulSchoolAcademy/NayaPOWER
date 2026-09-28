@@ -236,7 +236,7 @@ Deno.serve(async (req: Request) => {
     return json({
       ok: true,
       result,
-      verification_operation_id: operation.id,
+      verification_operation_id: null,
       receipt,
       lineage,
       runtime_identity: "github-actions-oidc",
