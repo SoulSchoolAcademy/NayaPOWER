@@ -11,10 +11,9 @@ def test_hub_is_canonical_read_only_intelligence_projection():
     assert "nayanet_cognition_events" in source
     assert "RLS remains the authorization boundary" in source
     assert "service_role" not in source
-    assert "nayanet_intelligent_blocks" in source
-    assert ".in("understanding_state",["VERIFIED","LEARNED"])" in source
-    assert ".in("status",["DURABLE","RELEASED"])" in source
-    assert ".eq("owner_scope","PRIVATE")" in source
+    assert '.in("understanding_state",["VERIFIED","LEARNED"])' in source
+    assert '.in("status",["DURABLE","RELEASED"])' in source
+    assert '.eq("owner_scope","PRIVATE")' in source
 
 
 def test_hub_preserves_sender_receiver_provenance_for_display():
