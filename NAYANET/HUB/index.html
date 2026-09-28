@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NayaNET — Intelligence Hub</title>
+<meta name="description" content="Canonical NayaPOWER intelligence projection surface.">
+<style>
+:root{--bg:#050507;--panel:#0c0a11;--panel2:#11101a;--line:#ffffff16;--purple:#9d75ff;--green:#55e39a;--muted:#aaa4b1;--ink:#f8f7fb;--red:#ff6b7a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 55% -10%,#9d75ff18,transparent 70%),var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.shell{max-width:1240px;margin:auto;padding:28px 22px 80px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:1px solid var(--line);padding-bottom:22px}
+.kicker{font-size:9px;font-weight:900;letter-spacing:.18em;color:#cdbbff}.top h1{font-size:clamp(38px,6vw,72px);line-height:.9;letter-spacing:-.07em;margin:8px 0}.top p{max-width:780px;color:#c9c3ce;line-height:1.6;margin:0}
+.auth{min-width:290px;padding:16px;border:1px solid #9d75ff55;border-radius:18px;background:linear-gradient(145deg,#14101b,#08080c)}
+.auth b{display:block;font-size:9px;letter-spacing:.12em}.auth input{width:100%;margin:10px 0;padding:11px;border:1px solid #ffffff22;border-radius:10px;background:#07070a;color:#fff}.btn{min-height:38px;padding:0 13px;border:1px solid #9d75ff77;border-radius:10px;background:#100c17;color:#fff;font-weight:900;font-size:8px;letter-spacing:.08em}.btn.green{border-color:#55e39a77;background:#08140e}.status{margin-top:10px;color:#a8a1af;font-size:8px;line-height:1.5}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.flow span{padding:7px 10px;border:1px solid #ffffff16;border-radius:999px;color:#bdb6c5;font-size:7px;font-weight:900;letter-spacing:.1em}.flow .live{border-color:#55e39a55;color:#bfffd8}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:28px 0 14px}.sectionHead h2{margin:0;font-size:27px;letter-spacing:-.04em}.sectionHead p{margin:4px 0 0;color:#8f8997;font-size:9px}
+.count{padding:6px 9px;border:1px solid #9d75ff55;border-radius:999px;color:#d9c8ff;font-size:7px;font-weight:900}
+.feed{display:grid;gap:12px}.card{border:1px solid #ffffff16;border-radius:20px;background:linear-gradient(145deg,#15111d,#08080c);box-shadow:inset 0 1px #fff3,0 18px 45px #0008;overflow:hidden}.main{padding:20px}.head{display:flex;justify-content:space-between;gap:14px}.title{font-size:21px;font-weight:900;letter-spacing:-.025em}.truth{padding:6px 8px;height:max-content;border:1px solid #55e39a55;border-radius:999px;color:#bfffd8;font-size:6px;font-weight:900;letter-spacing:.1em}.summary{margin:14px 0;color:#eeeaf2;font-size:16px;line-height:1.65}.meta{display:flex;flex-wrap:wrap;gap:7px}.meta span{padding:5px 7px;border:1px solid #ffffff14;border-radius:999px;color:#9f98a7;font-size:6px;font-weight:900;letter-spacing:.08em}
+details{border-top:1px solid var(--line);padding:14px 20px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.box{padding:11px;border:1px solid #ffffff12;border-radius:12px;background:#08080d}.box b{display:block;color:#8f8997;font-size:6px;letter-spacing:.1em;margin-bottom:5px}.box span{font-size:8px;line-height:1.55;word-break:break-word;color:#c9c3ce}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.empty,.error{padding:24px;border:1px dashed #ffffff18;border-radius:18px;color:#9f98a7;text-align:center}.error{border-color:#ff6b7a55;color:#ffb0ba}
+@media(max-width:800px){.top{display:block}.auth{margin-top:18px}.grid{grid-template-columns:1fr}.summary{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="top">
+<div>
+<div class="kicker">NAYAPOWER · CANONICAL INTELLIGENCE HUB</div>
+<h1>Intelligence that arrives.</h1>
+<p>The Hub is a projection surface, not a second brain. It reads the existing owner-scoped cognition events and Intelligent Blocks produced by the canonical Sender → Receiver pipeline.</p>
+</div>
+<section class="auth" aria-label="NayaNET authentication">
+<b>OWNER SESSION</b>
+<input id="email" type="email" autocomplete="email" placeholder="Your NayaNET email">
+<button class="btn green" id="authBtn">SEND OTP</button>
+<div id="authStatus" class="status">Private by default. The Hub never accepts a service key or runtime credential.</div>
+</section>
+</header>
+
+<div class="flow" aria-label="intelligence flow">
+<span>CAPTURE</span><span>RECEIVER</span><span>COGNITION EVENT</span><span>INTELLIGENT BLOCK</span><span class="live">HUB PROJECTION</span>
+</div>
+
+<section>
+<div class="sectionHead"><div><h2>Verified / Learned Intelligence</h2><p>Only owner-scoped durable intelligence is projected. No new record is created here.</p></div><div class="count" id="count">0 ITEMS</div></div>
+<div id="feed" class="feed"><div class="empty">Authenticate to retrieve your retained intelligence.</div></div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* NAYA-HUB-CANONICAL-PROJECTION-V1
+   Read-only projection. No capture, learning, promotion, authority, or second store.
+   RLS remains the authorization boundary; the browser only holds the publishable key. */
+const SUPABASE_URL="https://dahisasgpfvziswqvmvm.supabase.co";
+const SUPABASE_KEY="sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue";
+const client=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const $=s=>document.querySelector(s);
+const text=v=>String(v??"").trim();
+const esc=v=>text(v).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;"}[c]));
+let otpSent=false;
+
+async function sendOtp(){
+  const email=text($("#email").value).toLowerCase();
+  if(!email.includes("@")){$("#authStatus").textContent="Enter the email that owns the NayaNET identity.";return}
+  $("#authStatus").textContent="Sending verification code…";
+  const {error}=await client.auth.signInWithOtp({email,options:{shouldCreateUser:false}});
+  if(error){$("#authStatus").textContent="AUTHENTICATION FAILED — "+error.message;return}
+  otpSent=true;
+  $("#authBtn").textContent="VERIFY OTP";
+  $("#authStatus").textContent="Code sent. Enter it in the email field after the code arrives.";
+  const otp=document.createElement("input");otp.id="otp";otp.inputMode="numeric";otp.maxLength=6;otp.placeholder="6-digit code";otp.style.marginTop="6px";
+  $("#email").after(otp);otp.focus();
+}
+async function verifyOtp(){
+  const email=text($("#email").value).toLowerCase(),token=text($("#otp")?.value);
+  if(!/^\d{6}$/.test(token)){ $("#authStatus").textContent="Enter the six-digit verification code.";return}
+  $("#authStatus").textContent="Verifying identity…";
+  const {error}=await client.auth.verifyOtp({email,token,type:"email"});
+  if(error){$("#authStatus").textContent="VERIFICATION FAILED — "+error.message;return}
+  $("#authStatus").textContent="IDENTITY VERIFIED — retrieving retained intelligence…";
+  await renderFeed();
+}
+$("#authBtn").addEventListener("click",()=>otpSent?verifyOtp():sendOtp());
+
+function card(block,event){
+  const content=block.content&&typeof block.content==="object"?block.content:{};
+  const lesson=text(content.lesson||event?.content||block.title);
+  const sourceEvent=event?.event_id||block.source_event_ids?.[0]||"";
+  const provenance=block.provenance&&typeof block.provenance==="object"?block.provenance:{};
+  const article=document.createElement("article");article.className="card";
+  article.innerHTML=`<div class="main"><div class="head"><div class="title"></div><div class="truth">PERSISTED · OWNER-SCOPED</div></div><div class="summary"></div><div class="meta"><span></span><span></span><span></span></div><div class="actions"><button class="btn" data-copy>COPY LESSON</button></div></div><details><summary>VIEW PROVENANCE + SOURCE EVENT</summary><div class="grid"><div class="box"><b>INTELLIGENT BLOCK</b><span data-ib></span></div><div class="box"><b>SOURCE EVENT</b><span data-event></span></div><div class="box"><b>UNDERSTANDING</b><span data-state></span></div><div class="box"><b>LEARNING</b><span data-learning></span></div><div class="box"><b>VERIFICATION RUNTIME</b><span data-runtime></span></div><div class="box"><b>AUTHORITY GRANT EVIDENCE</b><span data-grant></span></div></div></details>`;
+  article.querySelector(".title").textContent=text(block.title||"Preserved Intelligence");
+  article.querySelector(".summary").textContent=lesson;
+  const pills=article.querySelectorAll(".meta span");pills[0].textContent=block.understanding_state;pills[1].textContent=block.status;pills[2].textContent=block.owner_scope;
+  article.querySelector("[data-ib]").textContent=text(block.intelligent_block_id);
+  article.querySelector("[data-event]").textContent=text(sourceEvent||"not-linked");
+  article.querySelector("[data-state]").textContent=text(block.understanding_state);
+  article.querySelector("[data-learning]").textContent=text(provenance.learning_id||"not-recorded");
+  article.querySelector("[data-runtime]").textContent=text(provenance.verification_runtime||"not-recorded");
+  article.querySelector("[data-grant]").textContent=text(provenance.authority_grant_id||"not-recorded");
+  article.querySelector("[data-copy]").addEventListener("click",async()=>{await navigator.clipboard.writeText(lesson);article.querySelector("[data-copy]").textContent="COPIED";setTimeout(()=>article.querySelector("[data-copy]").textContent="COPY LESSON",1200)});
+  return article;
+}
+
+async function renderFeed(){
+  const {data:{user}}=await client.auth.getUser();
+  if(!user){$("#feed").innerHTML='<div class="empty">OWNER SESSION REQUIRED.</div>';return false}
+  const {data:blocks,error:blockError}=await client.from("nayanet_intelligent_blocks").select("intelligent_block_id,title,status,understanding_state,owner_scope,source_event_ids,provenance,content,created_at").in("understanding_state",["VERIFIED","LEARNED"]).in("status",["DURABLE","RELEASED"]).eq("owner_scope","PRIVATE").order("created_at",{ascending:false}).limit(25);
+  if(blockError)throw blockError;
+  const allIds=[...(blocks||[])].flatMap(b=>Array.isArray(b.source_event_ids)?b.source_event_ids:[]);
+  let events=[];
+  if(allIds.length){
+    const r=await client.from("nayanet_cognition_events").select("id,event_id,title,content,receipt_id,metadata,created_at").in("id",allIds);
+    if(r.error)throw r.error;events=r.data||[];
+  }
+  const byId=new Map(events.map(e=>[e.id,e]));
+  const feed=$("#feed");feed.innerHTML="";
+  (blocks||[]).forEach(block=>feed.append(card(block,byId.get(block.source_event_ids?.[0]))));
+  $("#count").textContent=(blocks||[]).length+" ITEMS";
+  if(!blocks?.length)feed.innerHTML='<div class="empty">No verified or learned private intelligence is currently available.</div>';
+  $("#authStatus").textContent="LIVE — persisted intelligence retrieved through the canonical RLS boundary.";
+  return true;
+}
+client.auth.onAuthStateChange((_event,session)=>{if(session)renderFeed().catch(e=>{$("#feed").innerHTML='<div class="error">'+esc(e.message)+'</div>';$("#authStatus").textContent="RETRIEVAL FAILED";});});
+client.auth.getSession().then(({data:{session}})=>{if(session)renderFeed().catch(e=>{$("#feed").innerHTML='<div class="error">'+esc(e.message)+'</div>';});});
+</script>
+</body>
+</html>
