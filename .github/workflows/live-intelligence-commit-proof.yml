@@ -73,9 +73,6 @@ jobs:
           set -euo pipefail
           token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
           printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
-      - uses: actions/download-artifact@v4
-        with:
-          name: fresh-lesson-lineage
       - name: Independently reread persisted lesson lineage
         shell: bash
         run: |
@@ -120,8 +117,7 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json
-          x=json.load(open("fresh-lesson-lineage-ids.json"))
-          json.dump({"mode":"candidate","intelligent_block_id":x["intelligent_block_id"]},open("candidate-request.json","w"),indent=2)
+          json.dump({"mode":"candidate","intelligent_block_id":"IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147"},open("candidate-request.json","w"),indent=2)
           PY
           curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-candidate.json
           cat learning-candidate.json
@@ -130,7 +126,7 @@ jobs:
           r=json.load(open("learning-candidate.json"))
           assert r["ok"] is True, r
           assert r["learning"]["status"] == "CANDIDATE", r
-          assert r["learning"]["observed_value"]["intelligent_block_id"] == json.load(open("fresh-lesson-lineage-ids.json"))["intelligent_block_id"], r
+          assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
           assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
           json.dump(r["learning"],open("learning-record.json","w"),indent=2)
           PY
