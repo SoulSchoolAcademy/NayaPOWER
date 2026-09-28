@@ -28,5 +28,5 @@ def test_connect_runtime_resolves_durable_owner_binding_server_side():
 def test_connect_runtime_keeps_consequential_actions_fail_closed_without_authority():
     source = FUNCTION.read_text(encoding="utf-8")
     assert 'blocked_by: "LAW"' in source
-    assert '"executed": false' in source
-    assert '"consequential": true' in source
+    assert 'executed: false' in source
+    assert 'consequential: true' in source
