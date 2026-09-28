@@ -1,31 +1,85 @@
 {
-  "_README": "A RECORDED RUNTIME RESPONSE, not a claim. This detector compares canonical source against what was actually observed serving traffic. Entries here are evidence; absence of an entry means UNKNOWN, never MATCH.",
   "function": "nayanet-cold-runtime-proof",
   "mode": "connect",
-  "canonical_commit_observed": "620cabd748100a54438165b48e9718202ed9a7e6",
-  "observed_at": "2026-09-28T15:42:59Z",
-  "provenance": "GitHub Actions run 36445685851, job 'live-connect', which invoked the DEPLOYED function and then ran tests/verify_connect_runtime_receipt.py against its response",
-  "observation_quality": "PARTIAL - the verifier died at the first absent required field, so the fields listed below are the only ones positively confirmed present",
+  "canonical_commit_observed": "76f0360cd",
+  "observed_at": "2026-09-28T17:53:47Z",
+  "provenance": "GitHub Actions run 36461370391, job 'live-connect', artifact 'live-connect-runtime-receipt', downloaded from the run. Jobs 'live-connect' and 'independent-connect-verification' both concluded success on this commit.",
+  "observation_quality": "COMPLETE - the full runtime response was captured as a workflow artifact and downloaded. The receipt below is the artifact content itself, generated programmatically, not hand-transcribed.",
+  "artifact_digest_sha256": "19687befc4a11484bc02e193fc3506b893189c877dd49f50cdc35f11c12c5744",
   "observed_receipt": {
     "receipt_type": "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1",
     "naya_id": "NAYA-NODE-0001",
-    "block_id": "IB-NAYA-NODE-0001-0001",
-    "block_owner_match": true,
+    "owner_id": "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f",
+    "runtime_identity": "github-actions-oidc",
+    "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/main",
     "authorization_binding": {
+      "grant_id": "ab66924e-aa3b-4c57-a029-20e96a6a8afc",
+      "mission_id": "NAYA-NODE-0001-CONTINUITY",
+      "scope": {
+        "target": "NAYA-NODE-0001"
+      },
+      "actions": [
+        "naya_node_apply"
+      ],
+      "constraints": {
+        "purpose": "cold-continuity-proof"
+      },
       "status": "ACTIVE",
-      "scope": { "target": "NAYA-NODE-0001" },
-      "actions": ["naya_node_apply"]
+      "evidence": {
+        "proof": "AAA-LIVE-BRAIN-RECEIPT-001"
+      }
     },
+    "block_id": "IB-NAYA-NODE-0001-0001",
+    "block_owner_id": "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f",
+    "block_owner_match": true,
+    "block_understanding_state": "VERIFIED",
+    "relationships": [
+      {
+        "relationship_id": "7aaae255-00f8-4d9d-835e-e88e5f3b92f7",
+        "source_id": "NAYA-KERNEL-KNOW",
+        "target_id": "IB-NAYA-NODE-0001-0001",
+        "relationship_type": "PRODUCES",
+        "epistemic_state": "VERIFIED",
+        "provenance": {
+          "source": "AAA-LIVE-BRAIN"
+        }
+      },
+      {
+        "relationship_id": "82ea8862-4246-47d7-8e62-c8729b195294",
+        "source_id": "NAYA-KERNEL-PROVE",
+        "target_id": "IB-NAYA-NODE-0001-0001",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "provenance": {
+          "source": "AAA-LIVE-BRAIN"
+        }
+      }
+    ],
     "connect": {
-      "connected": true,
       "relationship_count": 2,
-      "verified_support_count": 1
-    }
+      "verified_support_count": 1,
+      "connected": true
+    },
+    "authority_boundary": {
+      "connect_grants_authority": false,
+      "consequential_actions_authorized": false,
+      "authority_source": "durable_owner_binding",
+      "authorization_binding_is_grant_evidence_only": true
+    },
+    "behavior": {
+      "consequential": true,
+      "allowed": false,
+      "executed": false,
+      "blocked_by": "LAW"
+    },
+    "production_mutation_performed": false,
+    "rls_changed": false,
+    "credentials_committed": false,
+    "token_jti": "a6b8d2b8-1f78-42bd-a3a2-a3b456d9228c",
+    "verified_at": "2026-09-28T17:54:11.703Z"
   },
-  "positively_absent": {
-    "behavior": "CONFIRMED ABSENT - tests/verify_connect_runtime_receipt.py raised KeyError: 'behavior' on this exact response, which is why job 'live-connect' concluded failure and 'independent-connect-verification' was skipped.",
-    "authority_boundary": "NOT PROBED - the verifier died at 'behavior' before reaching the authority_boundary assertions, so no observation exists. Recorded as unknown rather than assumed absent."
-  },
-  "what_this_proves": "The deployed artifact observed on 2026-09-28 did not emit the CONNECT authority-boundary evidence the canonical verifier requires. This is the drift that PR #874 corrects in SOURCE. Whether the deployed artifact now matches is UNKNOWN until a fresh observation is recorded against the current canonical commit.",
-  "how_to_refresh": "Invoke the deployed function through the OIDC-bound live workflow (read-only 'connect' mode) and record the resulting receipt shape here, setting canonical_commit_observed to the exact commit the workflow ran. Do not hand-write a conforming receipt: an observation that was not actually observed is worse than no observation, because it launders an assumption into evidence."
+  "independently_reverified": "tests/verify_connect_runtime_receipt.py accepted this exact artifact (exit 0). The deployed runtime therefore emits the CONNECT authority-boundary evidence the canonical contract requires - behaviour.blocked_by=LAW, allowed=false, executed=false, consequential=true, authority_boundary.connect_grants_authority=false.",
+  "deploy_note": "This artifact was refreshed by an UNTRACKED operator deploy - not by any automated pipeline, and not by Coder 2. The deployed function is confirmed to contain commit 4fac43e5 (PR #874), which is an ancestor of the observed commit. Contract-bearing canonical source is UNCHANGED between 76f0360c and main, so the observation is current.",
+  "workflow_caveat": "The overall run concluded FAILURE: job 'cold-graph-control-treatment' failed and 'independent-cold-graph-verification' was skipped. That is a graph-path issue, unrelated to CONNECT. The CONNECT path itself - live-connect plus independent-connect-verification - both succeeded. This entry must NOT be read as 'the whole runtime is green'.",
+  "how_to_refresh": "Download the 'live-connect-runtime-receipt' artifact from a successful 'live-connect' job and regenerate this file from that artifact. Never hand-write observed_receipt: an observation that was not observed is worse than none."
 }
