@@ -102,6 +102,25 @@ Deno.serve(async (req: Request) => {
     const learningId = String(body?.learning_id || "");
     if (!learningId) return json({ ok: false, error: "LEARNING_ID_REQUIRED" }, 400);
 
+    if (mode === "reread") {
+      const { data: retained, error: retainedError } = await admin
+        .from("learning_evidence")
+        .select("*")
+        .eq("id", learningId)
+        .eq("member_id", ownerId)
+        .maybeSingle();
+      if (retainedError) throw retainedError;
+      if (!retained) return json({ ok: false, error: "LEARNING_NOT_FOUND" }, 404);
+      return json({
+        ok: true,
+        independent_reread: true,
+        learning: retained,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      });
+    }
+
     const { data: learning, error: learningError } = await admin
       .from("learning_evidence")
       .select("*")
