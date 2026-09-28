@@ -75,8 +75,13 @@ Deno.serve(async (req: Request) => {
     if (!treatment.action.startsWith("NAYA-NODE-0001-TREATMENT-") || !control.action.startsWith("NAYA-NODE-0001-CONTROL-")) {
       return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
     }
-    if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {\n      return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);\n    }\n    if (learningId) {\n      const {data:learning,error:le} = await admin.from("learning_evidence").select("id,target_id,status,source_event_id").eq("id",learningId).eq("member_id",OWNER_ID).maybeSingle();\n      if (le) throw le;\n      if (!learning || learning.target_id !== NAYA_ID || learning.status !== "CANDIDATE") return json({ok:false,error:"LEARNING_CANDIDATE_INVALID"},409);\n    }\n\n    if (false) {
+    if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
       return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);
+    }
+    if (learningId) {
+      const {data:learning,error:le} = await admin.from("learning_evidence").select("id,target_id,status,source_event_id").eq("id",learningId).eq("member_id",OWNER_ID).maybeSingle();
+      if (le) throw le;
+      if (!learning || learning.target_id !== NAYA_ID || learning.status !== "CANDIDATE") return json({ok:false,error:"LEARNING_CANDIDATE_INVALID"},409);
     }
 
     if (mode === "verify") {
