@@ -128,10 +128,10 @@ Never collapse these:
 
 A cold Naya reads (items 1–4 are root-level files outside BRAIN/):
 
-1. **ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — immutable principles
-2. **ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
-3. **ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
-4. **ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
+1. **CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — immutable principles
+2. **GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
+3. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
+4. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
 5. **BRAIN/MASTER-MAP.md** — this map
 6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — kernel runtime
 7. **BRAIN/90-OPERATIONS/** — current reality
