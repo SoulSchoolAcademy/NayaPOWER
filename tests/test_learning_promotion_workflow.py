@@ -12,7 +12,10 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "oidc.jwt" in source
     assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in source
     assert '"evidence_refs"' in source
-    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" in source
+    assert "Create one real fresh lesson through the existing intelligence commit runtime" in source
+    assert "nayanet-intelligence-commit-runtime" in source
+    assert "fresh-causal-block-id.txt" in source
+    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" not in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
     assert "EXACT_LESSON_ALREADY_LEARNED" not in source
@@ -67,3 +70,20 @@ def test_learning_candidate_bridge_is_idempotent_and_does_not_promote():
     assert 'created: false' in source
     assert 'eq("status", "CANDIDATE")' in source
     assert 'status: "ACTIVE"' in source
+
+
+def test_fresh_learning_workflows_share_one_checkpoint_concurrency_lane():
+    causal = WORKFLOW.read_text(encoding="utf-8")
+    producer = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
+    assert "group: naya-fresh-learning-proof" in causal
+    assert "group: naya-fresh-learning-proof" in producer
+    assert "cancel-in-progress: false" in causal
+    assert "cancel-in-progress: false" in producer
+
+
+def test_causal_learning_uses_runtime_generated_block_not_historical_fixed_id():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'lesson_key = "NAYA-CAUSAL-FRESH-LESSON-" + uuid.uuid4().hex' in source
+    assert 'open("fresh-causal-block-id.txt","w").write(result["intelligent_block_id"])' in source
+    assert 'block_id=open("fresh-causal-block-id.txt").read().strip()' in source
+    assert "EXACT_LESSON_ALREADY_LEARNED" not in source
