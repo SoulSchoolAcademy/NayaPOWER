@@ -15,6 +15,8 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "f91fc48a-3d34-41aa-b51e-17b4ce89a3e2" in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
+    assert "EXACT_LESSON_ALREADY_LEARNED" in source
+    assert "5c5331c3-8b36-47d9-bf94-846806de90fb" in source
 
 
 def test_learning_promotion_does_not_relax_runtime_oidc_binding_or_mutate_sql_directly():
