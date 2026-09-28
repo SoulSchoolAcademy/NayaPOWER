@@ -9,8 +9,8 @@ const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const MISSION_ID = "NAYA-NODE-0001-CONTINUITY";
-const DEFAULT_treatmentId = "6aee287d-c47d-4667-86ed-6b53be8bd384";
-const DEFAULT_controlId = "b00ed556-d7b7-4e5e-90a0-4620b9aaef67";
+const DEFAULT_TREATMENT_ID = "6aee287d-c47d-4667-86ed-6b53be8bd384";
+const DEFAULT_CONTROL_ID = "b00ed556-d7b7-4e5e-90a0-4620b9aaef67";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
@@ -61,8 +61,8 @@ Deno.serve(async (req: Request) => {
 
     const body = await req.json().catch(() => ({}));
     const mode = String(body.mode ?? "cvo");
-    const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_treatmentId);
-    const controlId = String(body.control_receipt_id ?? DEFAULT_controlId);
+    const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_TREATMENT_ID);
+    const controlId = String(body.control_receipt_id ?? DEFAULT_CONTROL_ID);
     const learningId = body.learning_id ? String(body.learning_id) : null;
     if (mode !== "cvo" && mode !== "verify") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
 
