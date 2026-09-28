@@ -10,6 +10,7 @@ const code = stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm, ''));
 const OWNER_ID = 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f';
 const NAYA_ID = 'NAYA-NODE-0001';
 const BLOCK_ID = 'IB-NAYA-NODE-0001-0001';
+const FRESH_BLOCK_ID = 'IB-NAYA-FLOW-LESSON-FRESH-001';
 const LEARNING_ID = 'test-learning-id';
 const claims = {
   repository: 'SoulSchoolAcademy/NayaPOWER',
@@ -25,7 +26,7 @@ function runtime({ lesson = 'Preserve provenance before applying retained intell
   const learning = {
     id: LEARNING_ID, target_id: NAYA_ID, level: 'E1_UNDERSTANDS', status: 'CANDIDATE',
     claim: lesson, source_event_id: 'event-1',
-    observed_value: { intelligent_block_id: BLOCK_ID, provenance_preserved: true },
+    observed_value: { intelligent_block_id: FRESH_BLOCK_ID, provenance_preserved: true },
     verification_method: 'pending', provenance: 'OBSERVATION',
   };
   const admin = {
@@ -54,7 +55,14 @@ function runtime({ lesson = 'Preserve provenance before applying retained intell
     fetch: async (url, options = {}) => {
       const u = String(url);
       if (u.includes('/rest/v1/nayanet_intelligent_blocks?')) {
-        return new Response(JSON.stringify([{ intelligent_block_id: BLOCK_ID, owner_id: OWNER_ID, understanding_state: 'CANDIDATE', content: { lesson }, evidence_refs: [] }]), { status: 200 });
+        const fresh = u.includes(encodeURIComponent(FRESH_BLOCK_ID)) || u.includes(FRESH_BLOCK_ID);
+        return new Response(JSON.stringify([{
+          intelligent_block_id: fresh ? FRESH_BLOCK_ID : BLOCK_ID,
+          owner_id: OWNER_ID,
+          understanding_state: 'CANDIDATE',
+          content: { lesson },
+          evidence_refs: [],
+        }]), { status: 200 });
       }
       if (u.includes('/rest/v1/nayanet_authority_grants?')) {
         return new Response(JSON.stringify([{ grant_id: 'grant-1', scope: { target: NAYA_ID }, actions: ['naya_node_apply'], status: 'ACTIVE' }]), { status: 200 });
@@ -94,6 +102,9 @@ test('learning influence computes behavior and measurable outcome from one bound
   assert.equal(body.behavioral_delta.changed, true);
   assert.equal(body.outcome_delta.provenance_preserved, 1);
   assert.equal(body.counterfactual.computed_not_declared, true);
+  assert.equal(body.treatment.evidence.intelligence_id, FRESH_BLOCK_ID);
+  assert.equal(body.intelligence_applied.intelligent_block_id, FRESH_BLOCK_ID);
+  assert.equal(body.intelligence_applied.claim_matches_block, true);
 });
 
 test('learning influence refuses causal success when retrieved intelligence causes no measured change', async () => {

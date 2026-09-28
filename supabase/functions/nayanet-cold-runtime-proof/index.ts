@@ -69,7 +69,15 @@ Deno.serve(async (req: Request) => {
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.CANDIDATE&select=id,target_id,level,status,claim,source_event_id,observed_value,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "FRESH_LEARNING_CANDIDATE_NOT_FOUND" }, 409);
       const learning = learningRows[0];
-      const lesson = String(learning.claim);
+      const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
+      const sourceBlockId = String(learningObserved.intelligent_block_id || "");
+      if (!sourceBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
+      const sourceBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=eq." + encodeURIComponent(sourceBlockId) + "&owner_id=eq." + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content,evidence_refs");
+      if (!Array.isArray(sourceBlockRows) || sourceBlockRows.length !== 1) return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_UNIQUE" }, 409);
+      const sourceBlock = sourceBlockRows[0];
+      const lesson = String(sourceBlock.content?.lesson || "");
+      const claimMatchesBlock = lesson.length > 0 && String(learning.claim) === lesson;
+      if (!claimMatchesBlock) return json({ error: "LEARNING_BLOCK_CLAIM_MISMATCH" }, 409);
       // Revisions are unique per owner/project. Multiple governed runtime jobs may
       // legitimately run concurrently, so max+1 is only a starting point. On a
       // unique-key race, re-read authoritative state and retry rather than failing
@@ -131,7 +139,7 @@ Deno.serve(async (req: Request) => {
           retained_intelligence_used: true,
           learning_id: learningId,
           source_event_id: learning.source_event_id,
-          intelligence_id: BLOCK_ID,
+          intelligence_id: sourceBlockId,
           lesson,
           task_input: taskInput,
           behavior: treatmentResult.behavior,
@@ -197,6 +205,12 @@ Deno.serve(async (req: Request) => {
         learning_id: learningId,
         learning_level: learning.level,
         source_event_id: learning.source_event_id,
+        intelligence_applied: {
+          learning_id: learningId,
+          intelligent_block_id: sourceBlockId,
+          claim_matches_block: claimMatchesBlock,
+          block_understanding_state: sourceBlock.understanding_state,
+        },
         counterfactual: {
           task_id: taskId,
           computed_not_declared: true,
