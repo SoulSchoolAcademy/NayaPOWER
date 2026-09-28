@@ -42,3 +42,26 @@ def test_learning_influence_retries_unique_revision_allocation_under_concurrency
     assert "RECEIPT_REVISION_RETRY" in source
     assert "23505" in source
     assert "insertReceiptWithRetry" in source
+
+
+def test_fresh_intelligent_block_can_enter_existing_learning_candidate_path_without_dropping_provenance():
+    source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
+    assert 'mode === "candidate"' in source
+    assert 'understanding_state !== "CANDIDATE"' in source
+    assert 'NAYA-NODE-0001' in source
+    assert 'intelligent_block_id' in source
+    assert 'source_event_id' in source
+    assert 'lineage_id' in source
+    assert 'relationship_id' in source
+    assert 'index_id' in source
+    assert 'checkpoint_id' in source
+    assert 'provenance_preserved: true' in source
+    assert 'status: "CANDIDATE"' in source
+    assert 'mode === "candidate"' in source
+
+
+def test_learning_candidate_bridge_is_idempotent_and_does_not_promote():
+    source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
+    assert 'created: false' in source
+    assert 'eq("status", "CANDIDATE")' in source
+    assert 'status: "ACTIVE"' in source
