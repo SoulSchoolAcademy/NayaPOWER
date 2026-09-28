@@ -12,7 +12,12 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "oidc.jwt" in source
     assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in source
     assert '"evidence_refs"' in source
-    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" in source
+    assert "workflow_run" in source
+    assert "Live Intelligence Commit Proof" in source
+    assert "github.event.workflow_run.id" in source
+    assert "fresh-lesson-lineage" in source
+    assert "fresh-lesson-lineage-ids.json" in source
+    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" not in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
     assert "EXACT_LESSON_ALREADY_LEARNED" not in source
@@ -67,3 +72,14 @@ def test_learning_candidate_bridge_is_idempotent_and_does_not_promote():
     assert 'created: false' in source
     assert 'eq("status", "CANDIDATE")' in source
     assert 'status: "ACTIVE"' in source
+
+
+def test_learning_proof_consumes_same_head_fresh_commit_artifact_instead_of_fixed_block():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'workflows: ["Live Intelligence Commit Proof"]' in source
+    assert "actions: read" in source
+    assert "run-id: ${{ github.event.workflow_run.id }}" in source
+    assert "github-token: ${{ secrets.GITHUB_TOKEN }}" in source
+    assert 'open("fresh-lineage/fresh-lesson-lineage-ids.json")' in source
+    assert 'fresh_block_id=ids["intelligent_block_id"]' in source
+    assert 'open("fresh-block-id.txt","w").write(fresh_block_id)' in source
