@@ -149,10 +149,30 @@ Deno.serve(async (req: Request) => {
         .maybeSingle();
       if (retainedError) throw retainedError;
       if (!retained) return json({ ok: false, error: "LEARNING_NOT_FOUND" }, 404);
+      const observed = retained.observed_value && typeof retained.observed_value === "object" && !Array.isArray(retained.observed_value)
+        ? retained.observed_value
+        : {};
+      const [block, relationship, checkpoint] = await Promise.all([
+        admin.from("nayanet_intelligent_blocks").select("intelligent_block_id,understanding_state,provenance").eq("intelligent_block_id", String((observed as any).intelligent_block_id || "")).eq("owner_id", ownerId).maybeSingle(),
+        admin.from("nayanet_brain_relationships").select("relationship_id,epistemic_state,provenance").eq("relationship_id", String((observed as any).relationship_id || "")).eq("owner_id", ownerId).maybeSingle(),
+        admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("id", String((observed as any).checkpoint_id || "")).eq("user_id", ownerId).eq("project_id", "NayaNET").maybeSingle(),
+      ]);
+      if (block.error) throw block.error;
+      if (relationship.error) throw relationship.error;
+      if (checkpoint.error) throw checkpoint.error;
+      const integration = {
+        core_intelligence_updated: block.data?.understanding_state === "LEARNED",
+        progressive_intelligence_lock_in: checkpoint.data?.state?.status === "LEARNED",
+        intelligent_block_state: block.data?.understanding_state ?? null,
+        relationship_epistemic_state: relationship.data?.epistemic_state ?? null,
+        checkpoint_state_status: checkpoint.data?.state?.status ?? null,
+        checkpoint_id: checkpoint.data?.id ?? null,
+      };
       return json({
         ok: true,
         independent_reread: true,
         learning: retained,
+        integration,
         runtime_identity: "github-actions-oidc",
         workflow_ref: workflowRef,
         token_jti: payload.jti ?? null,
@@ -235,6 +255,134 @@ Deno.serve(async (req: Request) => {
       if (updateReceiptError) throw updateReceiptError;
       receipt = updatedReceipt;
     }
+
+    const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
+      ? promoted.observed_value
+      : {};
+    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
+    const relationshipId = String((observed as any).relationship_id || "");
+    const checkpointId = String((observed as any).checkpoint_id || "");
+    const lineageId = String((observed as any).lineage_id || "");
+    const indexId = String((observed as any).index_id || "");
+    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
+      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
+    }
+
+    const { data: blockBefore, error: blockReadError } = await admin
+      .from("nayanet_intelligent_blocks")
+      .select("*")
+      .eq("intelligent_block_id", intelligentBlockId)
+      .eq("owner_id", ownerId)
+      .maybeSingle();
+    if (blockReadError) throw blockReadError;
+    if (!blockBefore) return json({ ok: false, error: "INTELLIGENT_BLOCK_NOT_FOUND_FOR_LOCK_IN" }, 404);
+    if (!["CANDIDATE", "LEARNED"].includes(blockBefore.understanding_state)) {
+      return json({ ok: false, error: "INTELLIGENT_BLOCK_LOCK_IN_STATE_INVALID", state: blockBefore.understanding_state }, 409);
+    }
+
+    const verificationRefs = Array.from(new Set([
+      ...(Array.isArray(blockBefore.evidence_refs) ? blockBefore.evidence_refs : []),
+      ...refs.map((ref: string) => ({ learning_verification_ref: ref })),
+      { learning_id: promoted.id, causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null, receipt_id: receipt?.id || receiptId || null },
+    ]));
+    const blockProvenance = {
+      ...(blockBefore.provenance && typeof blockBefore.provenance === "object" ? blockBefore.provenance : {}),
+      learning_id: promoted.id,
+      learning_status: promoted.status,
+      learning_provenance: promoted.provenance,
+      verification_runtime: "github-actions-oidc",
+      verification_runtime_jti: payload.jti ?? null,
+      progressive_intelligence_lock_in: "LEARNED",
+      locked_in_at: new Date().toISOString(),
+    };
+    const { data: blockAfter, error: blockUpdateError } = await admin
+      .from("nayanet_intelligent_blocks")
+      .update({
+        understanding_state: "LEARNED",
+        evidence_refs: verificationRefs,
+        provenance: blockProvenance,
+      })
+      .eq("intelligent_block_id", intelligentBlockId)
+      .eq("owner_id", ownerId)
+      .select("*")
+      .single();
+    if (blockUpdateError) throw blockUpdateError;
+
+    const { data: relationshipBefore, error: relationshipReadError } = await admin
+      .from("nayanet_brain_relationships")
+      .select("*")
+      .eq("relationship_id", relationshipId)
+      .eq("owner_id", ownerId)
+      .maybeSingle();
+    if (relationshipReadError) throw relationshipReadError;
+    if (!relationshipBefore) return json({ ok: false, error: "RELATIONSHIP_NOT_FOUND_FOR_LOCK_IN" }, 404);
+    const relationshipProvenance = {
+      ...(relationshipBefore.provenance && typeof relationshipBefore.provenance === "object" ? relationshipBefore.provenance : {}),
+      learning_id: promoted.id,
+      learning_verification: true,
+      causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
+      verification_runtime: "github-actions-oidc",
+      verification_runtime_jti: payload.jti ?? null,
+    };
+    const { data: relationshipAfter, error: relationshipUpdateError } = await admin
+      .from("nayanet_brain_relationships")
+      .update({ epistemic_state: "VERIFIED", provenance: relationshipProvenance })
+      .eq("relationship_id", relationshipId)
+      .eq("owner_id", ownerId)
+      .select("*")
+      .single();
+    if (relationshipUpdateError) throw relationshipUpdateError;
+
+    const { data: checkpointBefore, error: checkpointReadError } = await admin
+      .from("nayanet_project_cognition_state")
+      .select("*")
+      .eq("id", checkpointId)
+      .eq("user_id", ownerId)
+      .eq("project_id", "NayaNET")
+      .maybeSingle();
+    if (checkpointReadError) throw checkpointReadError;
+    if (!checkpointBefore) return json({ ok: false, error: "CHECKPOINT_NOT_FOUND_FOR_LOCK_IN" }, 404);
+    const checkpointState = {
+      ...(checkpointBefore.state && typeof checkpointBefore.state === "object" ? checkpointBefore.state : {}),
+      status: "LEARNED",
+      learning_id: promoted.id,
+      learning_provenance: promoted.provenance,
+      intelligent_block_id: intelligentBlockId,
+      lineage_id: lineageId,
+      relationship_id: relationshipId,
+      index_id: indexId,
+      receipt_id: receipt?.id || receiptId || null,
+      causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
+      progressive_intelligence_lock_in: "LEARNED",
+      last_learning_verified_at: new Date().toISOString(),
+    };
+    const { data: checkpointAfter, error: checkpointUpdateError } = await admin
+      .from("nayanet_project_cognition_state")
+      .update({ state: checkpointState })
+      .eq("id", checkpointId)
+      .eq("user_id", ownerId)
+      .eq("project_id", "NayaNET")
+      .select("*")
+      .single();
+    if (checkpointUpdateError) throw checkpointUpdateError;
+
+    const integration = {
+      core_intelligence_updated: true,
+      progressive_intelligence_lock_in: "LEARNED",
+      learning_id: promoted.id,
+      intelligent_block: {
+        id: blockAfter.intelligent_block_id,
+        understanding_state: blockAfter.understanding_state,
+      },
+      relationship: {
+        id: relationshipAfter.relationship_id,
+        epistemic_state: relationshipAfter.epistemic_state,
+      },
+      cognitive_checkpoint: {
+        id: checkpointAfter.id,
+        state_status: checkpointAfter.state?.status,
+      },
+    };
 
     return json({
       ok: true,
