@@ -27,6 +27,17 @@ import subprocess
 import sys
 from pathlib import Path
 
+# This gate is a measurement instrument for the whole collective, including Nayas
+# running on Windows. A cp1252 console (the Windows default) makes printing the
+# report raise UnicodeEncodeError, so the instrument reports NOTHING where it is
+# needed most. Force UTF-8 with replacement so the verdict always reaches the operator.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, 'reconfigure'):
+        try:
+            _stream.reconfigure(encoding='utf-8', errors='replace')
+        except (ValueError, OSError):
+            pass
+
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_REL = 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
 MACHINE_CONTRACT_REL = 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
