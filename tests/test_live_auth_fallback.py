@@ -3,7 +3,10 @@ from unittest.mock import patch
 
 import pytest
 
-from tests.test_live_supabase_intelligent_blocks import _authenticated_session
+from tests.test_live_supabase_intelligent_blocks import (
+    EXPECTED_OWNER_ID,
+    _authenticated_session,
+)
 
 
 def test_authenticated_session_refreshes_when_access_token_is_rejected():
@@ -26,12 +29,13 @@ def test_authenticated_session_refreshes_when_access_token_is_rejected():
         calls.append((request.full_url, dict(request.headers), request.data))
         if request.full_url.endswith("/auth/v1/user"):
             from urllib.error import HTTPError
+
             raise HTTPError(request.full_url, 401, "Unauthorized", {}, None)
         return Response(
             {
                 "access_token": "fresh-access-token",
                 "refresh_token": "rotated-refresh-token",
-                "user": {"id": "owner-123"},
+                "user": {"id": EXPECTED_OWNER_ID},
             }
         )
 
@@ -43,7 +47,7 @@ def test_authenticated_session_refreshes_when_access_token_is_rejected():
             "legitimate-refresh-token",
         )
 
-    assert session["owner_id"] == "owner-123"
+    assert session["owner_id"] == EXPECTED_OWNER_ID
     assert session["access_token"] == "fresh-access-token"
     assert calls[1][0].endswith("/auth/v1/token?grant_type=refresh_token")
     assert json.loads(calls[1][2].decode()) == {
@@ -70,7 +74,6 @@ def test_authenticated_session_does_not_use_access_token_as_refresh_token():
     assert exc.value.code == 401
 
 
-
 def test_authenticated_session_refreshes_when_access_token_returns_forbidden():
     calls = []
 
@@ -82,12 +85,15 @@ def test_authenticated_session_refreshes_when_access_token_returns_forbidden():
             return False
 
         def read(self):
-            return json.dumps({"access_token": "fresh-access-token", "user": {"id": "owner-123"}}).encode()
+            return json.dumps(
+                {"access_token": "fresh-access-token", "user": {"id": EXPECTED_OWNER_ID}}
+            ).encode()
 
     def fake_urlopen(request, timeout=10):
         calls.append(request.full_url)
         if request.full_url.endswith("/auth/v1/user"):
             from urllib.error import HTTPError
+
             raise HTTPError(request.full_url, 403, "Forbidden", {}, None)
         return Response()
 
@@ -99,6 +105,6 @@ def test_authenticated_session_refreshes_when_access_token_returns_forbidden():
             "legitimate-refresh-token",
         )
 
-    assert session["owner_id"] == "owner-123"
+    assert session["owner_id"] == EXPECTED_OWNER_ID
     assert session["access_token"] == "fresh-access-token"
     assert calls[1].endswith("/auth/v1/token?grant_type=refresh_token")
