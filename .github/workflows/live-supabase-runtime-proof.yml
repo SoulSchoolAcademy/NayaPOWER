@@ -181,7 +181,7 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json
-          json.dump({"mode":"candidate","intelligent_block_id":"IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147"},open("candidate-request.json","w"),indent=2)
+          json.dump({"mode":"candidate","intelligent_block_id":"IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c"},open("candidate-request.json","w"),indent=2)
           PY
           curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -o learning-candidate.json -w "%{http_code}" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > candidate-http-status.txt
           cat learning-candidate.json
@@ -189,23 +189,11 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open("learning-candidate.json"))
-          if r.get("ok") is True:
-              assert r["learning"]["status"] == "CANDIDATE", r
-              assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
-              assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
-              open("learning-id.txt","w").write(r["learning"]["id"])
-          else:
-              assert r.get("error") == "BLOCK_NOT_CANDIDATE", r
-              # This proof is resumable: the exact lesson may already be LEARNED
-              # from an earlier successful run. Reuse the durable learning rather
-              # than creating a duplicate candidate.
-              learning_id="5c5331c3-8b36-47d9-bf94-846806de90fb"
-              open("learning-id.txt","w").write(learning_id)
-              open("reuse-retained-learning.json","w").write(json.dumps({
-                  "reused": True,
-                  "learning_id": learning_id,
-                  "reason": "EXACT_LESSON_ALREADY_LEARNED"
-              }, indent=2))
+          assert r.get("ok") is True, r
+          assert r["learning"]["status"] == "CANDIDATE", r
+          assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c", r
+          assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
+          open("learning-id.txt","w").write(r["learning"]["id"])
           PY
       - name: Execute the existing causal control-vs-treatment experiment against this exact candidate
         shell: bash
@@ -633,7 +621,7 @@ jobs:
           assert r["learning"]["provenance"] == "VERIFICATION", r
           assert r["learning"]["id"] == json.load(open("causal-learning-experiment-receipt.json"))["learning_id"], r
           observed=r["learning"]["observed_value"]
-          assert observed["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
+          assert observed["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c", r
           assert observed["provenance_preserved"] is True, r
           assert r["integration"]["core_intelligence_updated"] is True, r
           assert r["integration"]["progressive_intelligence_lock_in"] is True, r
