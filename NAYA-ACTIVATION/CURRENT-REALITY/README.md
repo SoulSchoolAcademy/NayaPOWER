@@ -1,15 +1,18 @@
 # CURRENT REALITY — State / Active Work / Proof / Blockers / Next Action
 
-This is a projection, not a competing source of truth.
+This directory is a projection and navigation layer, not a competing source of truth.
+
+Start with:
+`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`
 
 ## Current State
-Resolve from `.naya/control-plane/STATE.json`, `MAP.json`, `BLOCKS.json`, `PROOF.json`, `BATON.json`, and `.naya/project-intelligence/`.
+Resolve from ratified authority/contracts, current `main`, current GitHub issues/PRs and recent commits, plus claim-matched proof/workflow evidence. Dated state documents are snapshots and must be reconciled before use.
 
 ## Active Work
-Read current GitHub issues/PRs and canonical control-plane state. Never let an old activation receipt override live state.
+Read current GitHub issues/PRs and reconcile them against current `main`. Never let an old queue or activation receipt override newer repository evidence.
 
 ## Proof
-Use durable proof receipts and workflow evidence. A green-looking document is not evidence by itself.
+Use durable proof receipts and workflow/runtime evidence that actually match the claim and version. A green-looking document is not evidence by itself.
 
 ## Blockers
 Record BLOCKED, UNKNOWN or UNSUPPORTED with the missing capability and smallest next action.
