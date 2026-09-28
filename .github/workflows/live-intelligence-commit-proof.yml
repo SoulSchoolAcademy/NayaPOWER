@@ -102,9 +102,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v4
-        with:
-          name: fresh-lesson-lineage
       - name: Mint short-lived Naya runtime identity for LEARN candidate creation
         shell: bash
         run: |
