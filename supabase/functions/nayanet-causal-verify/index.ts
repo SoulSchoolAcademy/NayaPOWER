@@ -79,9 +79,6 @@ Deno.serve(async (req: Request) => {
     }
     const treatmentEvidence = (treatment.evidence && typeof treatment.evidence === "object" && !Array.isArray(treatment.evidence)) ? treatment.evidence as Record<string,unknown> : {};
     const controlEvidence = (control.evidence && typeof control.evidence === "object" && !Array.isArray(control.evidence)) ? control.evidence as Record<string,unknown> : {};
-    if (treatmentEvidence.retained_intelligence_used !== true || controlEvidence.retained_intelligence_used !== false) {
-      { console.error("CVO_REJECT", "PAIRED_INTELLIGENCE_CONDITION_INVALID", treatmentEvidence, controlEvidence); return json({ok:false,error:"PAIRED_INTELLIGENCE_CONDITION_INVALID"},409); }
-    }
 
     if (mode === "verify") {
       const evidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
