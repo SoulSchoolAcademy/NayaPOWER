@@ -496,10 +496,10 @@ jobs:
           name: causal-learning-experiment-receipt
       - name: Promote through the existing learning verifier
         shell: bash
-        env:
-          SUPABASE_USER_ACCESS_TOKEN: ${{ secrets.SUPABASE_USER_ACCESS_TOKEN }}
         run: |
           set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
           python - <<'PY'
           import json
           receipt=json.load(open("causal-learning-experiment-receipt.json"))
@@ -520,8 +520,7 @@ jobs:
           }
           json.dump(payload,open("promotion-request.json","w"),indent=2)
           PY
-          test -n "$SUPABASE_USER_ACCESS_TOKEN"
-          curl -fsS -X POST             -H "Authorization: Bearer $SUPABASE_USER_ACCESS_TOKEN"             -H "Content-Type: application/json"             --data-binary @promotion-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-promotion.json
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @promotion-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-promotion.json
           cat learning-promotion.json
           python - <<'PY'
           import json
