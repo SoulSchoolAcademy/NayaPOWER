@@ -4,8 +4,13 @@ on:
   pull_request:
   push:
     branches:
+      - main
       - naya/learning-influence-proof-v1
   workflow_dispatch:
+
+concurrency:
+  group: live-learning-influence-proof
+  cancel-in-progress: false
 
 jobs:
   authenticated-runtime:
