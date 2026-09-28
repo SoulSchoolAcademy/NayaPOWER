@@ -51,7 +51,6 @@ def test_fresh_session_decision_is_influenced_by_verified_learning():
     token, owner_id = authenticated_token()
     headers = {"apikey": PUBLISHABLE_KEY, "Authorization": f"Bearer {token}"}
 
-    # Verify the existing learning record through the authenticated REST boundary.
     url = (
         f"{SUPABASE_URL}/rest/v1/learning_evidence"
         "?select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method"
@@ -68,7 +67,6 @@ def test_fresh_session_decision_is_influenced_by_verified_learning():
     assert learning["observed_value"]["behavioral_change"] is True
     assert learning["observed_value"]["control_verified_value"] < learning["observed_value"]["treatment_verified_value"]
 
-    # New HTTP process / no local state: ask the canonical decision-context boundary.
     status, decision = _request(
         f"{SUPABASE_URL}/functions/v1/naya-decision-context",
         method="POST",
@@ -84,6 +82,14 @@ def test_fresh_session_decision_is_influenced_by_verified_learning():
     assert d["context"]["evidence_id"] == learning["id"]
     assert d["context"]["source_event_id"] == "NAYA-NODE-0001-APPLY"
 
+    workflow_context = {
+        "github_sha": os.environ.get("GITHUB_SHA", ""),
+        "github_run_id": os.environ.get("GITHUB_RUN_ID", ""),
+        "github_workflow": os.environ.get("GITHUB_WORKFLOW", ""),
+        "github_ref": os.environ.get("GITHUB_REF", ""),
+    }
+    assert all(workflow_context.values()), f"incomplete GitHub execution provenance: {workflow_context}"
+
     receipt = {
         "schema": "NAYANET_LEARNING_INFLUENCE_RUNTIME_V1",
         "owner_id": owner_id,
@@ -97,6 +103,7 @@ def test_fresh_session_decision_is_influenced_by_verified_learning():
         "fresh_session_decision": d["decision"],
         "influenced": d["influenced"],
         "evidence_id_from_decision": d["context"]["evidence_id"],
+        "github": workflow_context,
         "status": "PASS",
     }
     Path("learning-influence-receipt.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
