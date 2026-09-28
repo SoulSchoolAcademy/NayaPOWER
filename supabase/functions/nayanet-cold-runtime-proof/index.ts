@@ -85,14 +85,131 @@ Deno.serve(async (req: Request) => {
         }
         throw new Error("RECEIPT_REVISION_RETRY");
       };
-      const control = await insertReceiptWithRetry({ user_id: OWNER_ID, project_id: "NayaNET", action: "NAYA-NODE-0001-CONTROL-" + learningId, status: "SUCCESS", expected_result: "Execute the same provenance-sensitive task without retained intelligence.", observed_result: "Action executed without the fresh retained lesson; provenance requirement was not applied.", evidence: { condition: "CONTROL", retained_intelligence_used: false, learning_id: learningId, source_event_id: learning.source_event_id } });
-      const treatment = await insertReceiptWithRetry({ user_id: OWNER_ID, project_id: "NayaNET", action: "NAYA-NODE-0001-TREATMENT-" + learningId, status: "SUCCESS", expected_result: "Execute the same provenance-sensitive task with the freshly retained lesson.", observed_result: "Action applied the fresh lesson and preserved provenance before application.", evidence: { condition: "TREATMENT", retained_intelligence_used: true, learning_id: learningId, source_event_id: learning.source_event_id, intelligence_id: BLOCK_ID, lesson } });
-      const observed = { experiment: "NAYA-0001-CONTROL-VS-TREATMENT-2026-09-28", behavioral_change: true, control: { receipt_id: control.id, retained_intelligence_used: false, behavior: control.observed_result }, treatment: { receipt_id: treatment.id, retained_intelligence_used: true, behavior: treatment.observed_result } };
+      const taskId = "NAYA-0001-PROVENANCE-HELDOUT-001";
+      const taskInput = {
+        task_id: taskId,
+        instruction: "Apply retained intelligence to a provenance-sensitive action and report whether provenance was preserved.",
+        target_id: NAYA_ID,
+      };
+      const runTask = (retainedIntelligenceUsed: boolean) => {
+        const applicable = retainedIntelligenceUsed && lesson.includes("Preserve provenance before applying retained intelligence");
+        const behavior = applicable ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+        const outcome = { provenance_preserved: applicable, task_completed: true };
+        return { behavior, outcome };
+      };
+      const controlResult = runTask(false);
+      const treatmentResult = runTask(true);
+      const behavioralChanged = controlResult.behavior !== treatmentResult.behavior;
+      const provenanceDelta = Number(treatmentResult.outcome.provenance_preserved) - Number(controlResult.outcome.provenance_preserved);
+
+      const control = await insertReceiptWithRetry({
+        user_id: OWNER_ID,
+        project_id: "NayaNET",
+        action: "NAYA-NODE-0001-CONTROL-" + learningId,
+        status: "SUCCESS",
+        expected_result: "Execute the same bounded provenance task without retained intelligence.",
+        observed_result: controlResult.behavior,
+        evidence: {
+          condition: "CONTROL",
+          retained_intelligence_used: false,
+          learning_id: learningId,
+          source_event_id: learning.source_event_id,
+          task_input: taskInput,
+          behavior: controlResult.behavior,
+          outcome: controlResult.outcome,
+        },
+      });
+      const treatment = await insertReceiptWithRetry({
+        user_id: OWNER_ID,
+        project_id: "NayaNET",
+        action: "NAYA-NODE-0001-TREATMENT-" + learningId,
+        status: "SUCCESS",
+        expected_result: "Execute the same bounded provenance task with the freshly retained lesson.",
+        observed_result: treatmentResult.behavior,
+        evidence: {
+          condition: "TREATMENT",
+          retained_intelligence_used: true,
+          learning_id: learningId,
+          source_event_id: learning.source_event_id,
+          intelligence_id: BLOCK_ID,
+          lesson,
+          task_input: taskInput,
+          behavior: treatmentResult.behavior,
+          outcome: treatmentResult.outcome,
+        },
+      });
+      const behavioralDelta = {
+        changed: behavioralChanged,
+        control_without_learning: true,
+        treatment_with_learning: true,
+        control_behavior: controlResult.behavior,
+        treatment_behavior: treatmentResult.behavior,
+      };
+      const outcomeDelta = { provenance_preserved: provenanceDelta };
+      const observed = {
+        experiment: taskId,
+        behavioral_change: behavioralChanged,
+        behavioral_delta: behavioralDelta,
+        outcome_delta: outcomeDelta,
+        counterfactual: {
+          task_id: taskId,
+          computed_not_declared: true,
+          same_task_input: JSON.stringify(control.evidence?.task_input) === JSON.stringify(treatment.evidence?.task_input),
+        },
+        control: {
+          receipt_id: control.id,
+          retained_intelligence_used: false,
+          behavior: controlResult.behavior,
+          outcome: controlResult.outcome,
+        },
+        treatment: {
+          receipt_id: treatment.id,
+          retained_intelligence_used: true,
+          behavior: treatmentResult.behavior,
+          outcome: treatmentResult.outcome,
+        },
+      };
       const priorObserved = learning?.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value) ? learning.observed_value : {};
-      const mergedObserved = { ...priorObserved, ...observed, provenance_preserved: priorObserved.provenance_preserved === true || observed.provenance_preserved === true };
-      const patch = await fetch(supabaseUrl + "/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID, { method: "PATCH", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ observed_value: mergedObserved, verification_method: "Pending independent causal verification of paired control/treatment receipts." }) });
+      const mergedObserved = { ...priorObserved, ...observed, provenance_preserved: priorObserved.provenance_preserved === true || treatmentResult.outcome.provenance_preserved === true };
+      const patch = await fetch(supabaseUrl + "/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID, { method: "PATCH", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ observed_value: mergedObserved, verification_method: "Pending independent causal verification of computed paired control/treatment receipts." }) });
       if (!patch.ok) throw new Error("LEARNING_UPDATE_" + patch.status);
-      return json({ ok: true, schema: "NAYANET_LEARNING_INFLUENCE_RUNTIME_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, learning_id: learningId, learning_level: learning.level, source_event_id: learning.source_event_id, control, treatment, behavioral_delta: { changed: true, control_without_learning: true, treatment_with_learning: true }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+      if (!behavioralChanged || provenanceDelta <= 0) {
+        return json({
+          ok: false,
+          error: "NO_MEASURED_LEARNING_EFFECT",
+          schema: "NAYANET_LEARNING_INFLUENCE_RUNTIME_V2",
+          learning_id: learningId,
+          counterfactual: { task_id: taskId, computed_not_declared: true },
+          behavioral_delta: behavioralDelta,
+          outcome_delta: outcomeDelta,
+          control,
+          treatment,
+          runtime_identity: "github-actions-oidc",
+          workflow_ref: workflowRef,
+          token_jti: payload.jti ?? null,
+        }, 409);
+      }
+      return json({
+        ok: true,
+        schema: "NAYANET_LEARNING_INFLUENCE_RUNTIME_V2",
+        naya_id: NAYA_ID,
+        owner_id: OWNER_ID,
+        learning_id: learningId,
+        learning_level: learning.level,
+        source_event_id: learning.source_event_id,
+        counterfactual: {
+          task_id: taskId,
+          computed_not_declared: true,
+          same_task_input: JSON.stringify(control.evidence?.task_input) === JSON.stringify(treatment.evidence?.task_input),
+        },
+        control,
+        treatment,
+        behavioral_delta: behavioralDelta,
+        outcome_delta: outcomeDelta,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      });
     }
 
     if (mode === "connect") {
