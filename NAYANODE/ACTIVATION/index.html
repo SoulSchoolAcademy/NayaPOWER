@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naya Activation</title><link rel="stylesheet" href="./styles.css">
+</head>
+<body><main class="shell"><section class="card">
+<div class="orb">N</div><p class="eyebrow">NayaNET · ONE-TIME ACTIVATION</p>
+<h1>Activate Naya.</h1>
+<p class="lead">This is the ignition ceremony — not your everyday entrance to Naya.</p>
+<div id="status" class="status" role="status" aria-live="polite">Enter the email authorized for the Naya owner account.</div>
+<form id="email-form"><label for="email">Authorized email</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"><button>Send activation code</button></form>
+<form id="code-form" class="hidden"><label for="code">Six-digit activation code</label><input id="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" minlength="6" required placeholder="123456"><button>Activate Naya</button><button id="resend" type="button" class="secondary">Send a new code</button></form>
+<div id="success" class="success hidden"><div class="check">✓</div><h2>Naya is activated.</h2><p id="identity"></p><p class="small">This establishes the human authorization session. You do not activate each Naya node separately.</p></div>
+<footer>Private by default · Shared by choice · Collective by consent · Public by decision</footer>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js"></script>
+<script src="./config.js"></script><script src="./app.js"></script>
+</body></html>
