@@ -18,6 +18,9 @@ def test_cvo_runtime_requires_oidc_and_not_human_supabase_token():
 def test_cvo_runtime_derives_action_and_outcome_from_persisted_receipts():
     source = FUNCTION.read_text(encoding="utf-8")
     assert "nayanet_execution_receipts" in source
+    assert "nayanet_execution_outcomes" in source
+    assert "NAYA-NODE-0001-COLD-BEHAVIOR" in source
+    assert "TREATMENT_OUTCOME_EVIDENCE_INVALID" in source
     assert "comparison_receipt_id" in source
     assert "NAYA-NODE-0001-TREATMENT" in source
     assert "NAYA-NODE-0001-BASELINE" in source
