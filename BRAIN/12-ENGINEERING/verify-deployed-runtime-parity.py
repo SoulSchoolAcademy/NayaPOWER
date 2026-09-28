@@ -71,7 +71,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 VERIFIER = REPO / "tests" / "verify_connect_runtime_receipt.py"
-OBSERVATION = REPO / "evidence" / "deployed-runtime-observation.json"
+OBSERVATION = REPO / ".naya" / "evidence" / "deployed-runtime-observation.json"
 CANONICAL_SOURCE = REPO / "supabase" / "functions" / "nayanet-cold-runtime-proof" / "index.ts"
 
 # The DEPLOYED artifact is the function source. If it changed after the
