@@ -63,7 +63,7 @@ Deno.serve(async (req: Request) => {
     if (mode === "candidate") {
       const blockId = String(body?.intelligent_block_id || "");
       if (!blockId) return json({ ok: false, error: "INTELLIGENT_BLOCK_ID_REQUIRED" }, 400);
-      const { data: block, error: blockError } = await admin.from("nayanet_intelligent_blocks").select("id,intelligent_block_id,owner_id,owner_scope,status,understanding_state,content,evidence_refs,created_at").eq("intelligent_block_id", blockId).eq("owner_id", ownerId).maybeSingle();
+      const { data: block, error: blockError } = await admin.from("nayanet_intelligent_blocks").select("block_id,intelligent_block_id,owner_id,owner_scope,status,understanding_state,content,evidence_refs,created_at").eq("intelligent_block_id", blockId).eq("owner_id", ownerId).maybeSingle();
       if (blockError) throw blockError;
       if (!block) return json({ ok: false, error: "INTELLIGENT_BLOCK_NOT_FOUND" }, 404);
       if (block.understanding_state !== "CANDIDATE") return json({ ok: false, error: "BLOCK_NOT_CANDIDATE" }, 409);
@@ -80,7 +80,7 @@ Deno.serve(async (req: Request) => {
       const { data: relationship, error: relationshipError } = await admin.from("nayanet_brain_relationships").select("relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance").eq("target_id", blockId).eq("owner_id", ownerId).maybeSingle();
       if (relationshipError) throw relationshipError;
       if (!relationship) return json({ ok: false, error: "RELATIONSHIP_NOT_FOUND" }, 409);
-      const { data: index, error: indexError } = await admin.from("nayanet_intelligence_index").select("id,source_id,source_table,object_type,status").eq("source_id", block.id).eq("owner_id", ownerId).maybeSingle();
+      const { data: index, error: indexError } = await admin.from("nayanet_intelligence_index").select("id,source_id,source_table,object_type,status").eq("source_id", block.block_id).eq("owner_id", ownerId).maybeSingle();
       if (indexError) throw indexError;
       if (!index) return json({ ok: false, error: "INDEX_NOT_FOUND" }, 409);
       const { data: checkpointRows, error: checkpointError } = await admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("user_id", ownerId).eq("project_id", "NayaNET").order("updated_at", { ascending: false }).limit(1);
