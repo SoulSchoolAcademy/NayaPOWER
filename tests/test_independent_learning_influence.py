@@ -14,3 +14,8 @@ def test_independent_learning_influence_receipt():
     assert r["fresh_session_decision"] == "USE_VERIFIED_LEARNING_CONTEXT"
     assert r["influenced"] is True
     assert r["learning_id"] == r["evidence_id_from_decision"]
+    github = r["github"]
+    assert github["github_sha"]
+    assert github["github_run_id"]
+    assert github["github_workflow"] == "Live Learning Influence Proof"
+    assert github["github_ref"]
