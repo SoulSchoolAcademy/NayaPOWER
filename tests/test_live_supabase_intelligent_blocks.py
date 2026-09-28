@@ -8,6 +8,7 @@ from urllib.request import Request, urlopen
 import pytest
 
 from kernel.nayapower_kernel import Kernel
+from kernel.naya_identity_binding import resolve_runtime_authorization
 from kernel.supabase_intelligent_blocks import SupabaseIntelligentBlockReader
 
 BLOCK_ID = "IB-NAYA-NODE-0001-0001"
@@ -60,15 +61,9 @@ def _credential_diagnostics(access_token: str, refresh_token: str | None) -> str
 def _authenticated_session(
     url: str, access_token: str, api_key: str, refresh_token: str | None = None
 ) -> dict[str, str]:
+    # The JWT is a transport credential only. Resolve the live Auth user
+    # through the canonical Supabase Auth boundary before applying ownership.
     claims = _jwt_claims(access_token)
-    if claims and claims.get("sub") != EXPECTED_OWNER_ID:
-        raise AssertionError(
-            "live-proof credential identity mismatch: "
-            f"access token subject is {claims.get('sub')!r}, "
-            f"but canonical NAYA-NODE-0001 owner is {EXPECTED_OWNER_ID!r}. "
-            "Use a session for the canonical owner; do not change the block owner."
-        )
-
     request = Request(
         f"{url.rstrip('/')}/auth/v1/user",
         headers={
@@ -125,6 +120,18 @@ def _authenticated_session(
     owner_id = payload.get("id") or payload.get("user", {}).get("id")
     if not owner_id:
         raise AssertionError("authenticated Supabase user response has no id")
+    authorization = resolve_runtime_authorization(
+        naya_id="NAYA-NODE-0001",
+        owner_id=EXPECTED_OWNER_ID,
+        runtime_subject_id=owner_id,
+        binding_owner_id=owner_id if owner_id == EXPECTED_OWNER_ID else None,
+        session_id=claims.get("session_id", "live-supabase-session"),
+    )
+    if not authorization.authorized:
+        raise AssertionError(
+            "canonical owner binding was not established: "
+            f"{authorization.reason}; runtime_subject={owner_id!r}"
+        )
     if owner_id != EXPECTED_OWNER_ID:
         raise AssertionError(
             "authenticated Supabase user is not the canonical NAYA owner: "
