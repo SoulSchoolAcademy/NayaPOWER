@@ -1,4 +1,5 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -31,6 +32,7 @@ Deno.serve(async (req: Request) => {
     const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     if (!supabaseUrl || !serviceRole) return json({ error: "SERVER_AUTH_CONFIG_MISSING" }, 500);
     const headers = { apikey: serviceRole, Authorization: "Bearer " + serviceRole, "Content-Type": "application/json" };
+    const admin = createClient(supabaseUrl, serviceRole);
     const get = async (path: string) => { const r = await fetch(supabaseUrl + path, { headers }); if (!r.ok) throw new Error("SUPABASE_READ_" + r.status); return await r.json(); };
     const blockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=eq." + encodeURIComponent(BLOCK_ID) + "&owner_id=eq." + OWNER_ID + "&select=*");
     if (!Array.isArray(blockRows) || blockRows.length !== 1) return json({ error: "CANONICAL_BLOCK_NOT_UNIQUE" }, 409);
@@ -48,7 +50,7 @@ Deno.serve(async (req: Request) => {
       const revisionRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
       const revision = (Array.isArray(revisionRows) && revisionRows.length ? Number(revisionRows[0].revision) + 1 : 1);
       const actionUrl = supabaseUrl + "/rest/v1/nayanet_execution_receipts";
-      const insert = async (row: Record<string, unknown>) => { const r = await fetch(actionUrl, { method: "POST", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify(row) }); if (!r.ok) throw new Error("RECEIPT_WRITE_" + r.status); const rows = await r.json(); if (!Array.isArray(rows) || rows.length !== 1) throw new Error("RECEIPT_WRITE_INVALID"); return rows[0]; };
+      const insert = async (row: Record<string, unknown>) => { const { data, error } = await admin.from("nayanet_execution_receipts").insert(row).select("*").single(); if (error) throw new Error("RECEIPT_WRITE_" + error.code + ":" + error.message); return data; };
       const control = await insert({ user_id: OWNER_ID, project_id: "NayaNET", revision, action: "NAYA-NODE-0001-CONTROL-" + LEARNING_ID, status: "SUCCESS", expected_result: "Execute the same provenance-sensitive task without retained intelligence.", observed_result: "Action executed without the fresh retained lesson; provenance requirement was not applied.", evidence: { condition: "CONTROL", retained_intelligence_used: false, learning_id: LEARNING_ID, source_event_id: learning.source_event_id } });
       const treatment = await insert({ user_id: OWNER_ID, project_id: "NayaNET", action: "NAYA-NODE-0001-TREATMENT-" + LEARNING_ID, status: "SUCCESS", expected_result: "Execute the same provenance-sensitive task with the freshly retained lesson.", observed_result: "Action applied the fresh lesson and preserved provenance before application.", evidence: { condition: "TREATMENT", retained_intelligence_used: true, learning_id: LEARNING_ID, source_event_id: learning.source_event_id, intelligence_id: BLOCK_ID, lesson } });
       const observed = { experiment: "NAYA-0001-CONTROL-VS-TREATMENT-2026-09-28", behavioral_change: true, control: { receipt_id: control.id, retained_intelligence_used: false, behavior: control.observed_result }, treatment: { receipt_id: treatment.id, retained_intelligence_used: true, behavior: treatment.observed_result } };
