@@ -38,6 +38,8 @@ def test_learning_verifier_is_machine_authenticated_by_governed_oidc_not_user_se
     assert 'auth.getUser' not in source
     assert 'SUPABASE_USER_ACCESS_TOKEN' not in source
     assert "nayanet_intelligence_operations" not in source
+    assert "nayanet_intelligence_lineage" in source
+    assert "VERIFIED_LEARNING" in source
 
 
 def test_learning_influence_retries_unique_revision_allocation_under_concurrency():
