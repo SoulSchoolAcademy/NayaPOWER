@@ -16,6 +16,7 @@ concurrency:
 
 env:
   RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-cold-runtime-proof
+  LEARNING_VERIFY_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify
 
 jobs:
   authenticated-runtime:
@@ -88,3 +89,60 @@ jobs:
         with:
           name: independent-learning-influence-verification
           path: independent-verification.json
+
+  learning-promotion:
+    needs: independent-verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: learning-influence-receipt
+      - uses: actions/download-artifact@v4
+        with:
+          name: independent-learning-influence-verification
+          path: verification
+      - name: Promote through the existing learning verifier
+        shell: bash
+        env:
+          SUPABASE_USER_ACCESS_TOKEN: ${{ secrets.SUPABASE_USER_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          lesson=json.load(open("learning-influence-receipt.json"))
+          verification=json.load(open("verification/independent-verification.json"))
+          assert verification["ok"] is True, verification
+          assert verification["verification"]["independent_verification"] is True, verification
+          refs=[
+            lesson["treatment"]["id"],
+            lesson["control"]["id"],
+            lesson["learning_id"],
+            "NAYA-NODE-0001",
+          ]
+          payload={
+            "learning_id":lesson["learning_id"],
+            "evidence_refs":refs,
+            "receipt_id":lesson["treatment"]["id"],
+            "verification_method":"Independent causal-learning runtime verification: control/treatment outcome delta recomputed from persisted receipts.",
+          }
+          json.dump(payload,open("promotion-request.json","w"),indent=2)
+          PY
+          test -n "$SUPABASE_USER_ACCESS_TOKEN"
+          curl -fsS -X POST             -H "Authorization: Bearer $SUPABASE_USER_ACCESS_TOKEN"             -H "Content-Type: application/json"             --data-binary @promotion-request.json             "$LEARNING_VERIFY_FUNCTION" > learning-promotion.json
+          cat learning-promotion.json
+          python - <<'PY'
+          import json
+          r=json.load(open("learning-promotion.json"))
+          assert r["ok"] is True, r
+          assert r["verified"] is True, r
+          assert r["result"]["learning"]["id"]=="f91fc48a-3d34-41aa-b51e-17b4ce89a3e2", r
+          assert r["result"]["learning"]["status"]=="ACTIVE", r
+          assert r["result"]["learning"]["provenance"]=="VERIFICATION", r
+          assert r["lineage"] is not None, r
+          print("EXISTING LEARNING VERIFIER PROMOTION PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: learning-promotion
+          path: learning-promotion.json
