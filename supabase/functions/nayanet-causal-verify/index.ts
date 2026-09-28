@@ -122,8 +122,8 @@ Deno.serve(async (req: Request) => {
         && causal.observed_change === treatment.observed_result
         && causal.evidence?.treatment?.outcome_id === treatmentOutcome.outcome_id
         && causal.evidence?.control?.outcome_id === controlOutcome.outcome_id
-        && causal.evidence?.treatment?.provenance_present === true
-        && causal.evidence?.control?.provenance_present === false;
+        && causal.evidence?.treatment?.evidence?.provenance_present === true
+        && causal.evidence?.control?.evidence?.provenance_present === false;
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
