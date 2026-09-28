@@ -1,0 +1,13 @@
+{
+  "purpose": "Naya one-time human activation",
+  "supabase_project_ref": "dahisasgpfvziswqvmvm",
+  "client_key_type": "publishable",
+  "redirect": "the exact deployed activation URL",
+  "required_dashboard_actions": [
+    "Add the exact deployed activation URL to Supabase Auth allowed redirect URLs.",
+    "Configure the Supabase Auth email template with the verification link/token.",
+    "Do not place owner access or refresh tokens in the static site."
+  ],
+  "canonical_owner": "verified separately by the live runtime proof; do not hard-code credentials into the browser",
+  "secrets_excluded": true
+}
