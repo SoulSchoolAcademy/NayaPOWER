@@ -39,11 +39,77 @@ Deno.serve(async (req: Request) => {
   if (!blockResponse.ok) return json({ error: "BLOCK_LOOKUP_FAILED", status: blockResponse.status }, 502);
   const blocks = await blockResponse.json();
   if (!Array.isArray(blocks) || blocks.length !== 1) return json({ error: "CANONICAL_BLOCK_NOT_UNIQUE", count: Array.isArray(blocks) ? blocks.length : 0 }, 409);
-  const grantUrl = supabaseUrl + "/rest/v1/nayanet_authority_grants?issuer_id=eq." + OWNER_ID + "&subject_id=eq." + OWNER_ID + "&mission_id=eq.NAYA-NODE-0001-CONTINUITY&status=eq.ACTIVE&select=grant_id,actions,constraints,evidence";
+  const grantUrl = supabaseUrl + "/rest/v1/nayanet_authority_grants?issuer_id=eq." + OWNER_ID + "&subject_id=eq." + OWNER_ID + "&mission_id=eq.NAYA-NODE-0001-CONTINUITY&status=eq.ACTIVE&select=grant_id,mission_id,scope,actions,constraints,status,evidence";
   const grantResponse = await fetch(grantUrl, { headers });
   if (!grantResponse.ok) return json({ error: "AUTHORITY_LOOKUP_FAILED", status: grantResponse.status }, 502);
   const grants = await grantResponse.json();
   if (!Array.isArray(grants) || grants.length < 1) return json({ error: "CANONICAL_AUTHORITY_MISSING" }, 403);
+  const mode = new URL(req.url).searchParams.get("mode") ?? "cold";
+  if (mode !== "cold" && mode !== "connect") return json({ error: "UNSUPPORTED_MODE" }, 400);
+
+  if (mode === "connect") {
+    const relationshipUrl = supabaseUrl + "/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance&order=created_at.asc";
+    const relationshipResponse = await fetch(relationshipUrl, { headers });
+    if (!relationshipResponse.ok) return json({ error: "RELATIONSHIP_LOOKUP_FAILED", status: relationshipResponse.status }, 502);
+    const relationships = await relationshipResponse.json();
+    if (!Array.isArray(relationships)) return json({ error: "RELATIONSHIP_RESPONSE_INVALID" }, 502);
+
+    const binding = grants.filter((grant: Record<string, unknown>) => {
+      const scope = grant.scope as Record<string, unknown> | undefined;
+      const actions = Array.isArray(grant.actions) ? grant.actions : [];
+      return scope?.target === NAYA_ID && actions.includes("naya_node_apply");
+    });
+    if (binding.length !== 1) return json({ error: "DURABLE_NAYA_AUTHORIZATION_BINDING_INVALID", count: binding.length }, 403);
+
+    const verifiedSupport = relationships.filter((relationship: Record<string, unknown>) =>
+      relationship.epistemic_state === "VERIFIED" &&
+      relationship.relationship_type === "VERIFIED_BY"
+    );
+    const receipt = {
+      receipt_type: "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1",
+      naya_id: NAYA_ID,
+      owner_id: OWNER_ID,
+      runtime_identity: "github-actions-oidc",
+      workflow_ref: workflowRef,
+      authorization_binding: {
+        grant_id: binding[0].grant_id,
+        mission_id: binding[0].mission_id,
+        scope: binding[0].scope,
+        actions: binding[0].actions,
+        status: binding[0].status,
+      },
+      block_id: BLOCK_ID,
+      block_owner_id: block.owner_id,
+      block_owner_match: block.owner_id === OWNER_ID,
+      block_understanding_state: block.understanding_state,
+      relationships,
+      connect: {
+        relationship_count: relationships.length,
+        verified_support_count: verifiedSupport.length,
+        connected: relationships.length > 0,
+      },
+      behavior: {
+        control: "executed",
+        treatment: "executed_with_relationship_aware_intelligence",
+        retained_intelligence_applied: true,
+        consequential: true,
+        allowed: false,
+        executed: false,
+        blocked_by: "LAW",
+      },
+      authority_boundary: {
+        connect_grants_authority: false,
+        consequential_action_without_explicit_authority: "BLOCKED_BY_LAW",
+      },
+      production_mutation_performed: false,
+      rls_changed: false,
+      credentials_committed: false,
+      token_jti: payload.jti ?? null,
+      verified_at: new Date().toISOString(),
+    };
+    return json({ ok: true, receipt });
+  }
+
   const block = blocks[0];
   const lesson = block.content?.lesson;
   if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
