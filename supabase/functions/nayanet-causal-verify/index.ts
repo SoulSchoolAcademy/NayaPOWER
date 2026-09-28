@@ -89,7 +89,7 @@ Deno.serve(async (req: Request) => {
         && causal.causal_assessment === "CAUSAL_SUPPORTED"
         && causal.verification_status === "OUTCOME_VERIFIED"
         && causal.production_action_executed === true
-        && causal.observed_change === treatment.observed_result;
+        && causal.observed_change === treatment.observed_result\n        && causal.evidence?.treatment?.retained_intelligence_used === true\n        && causal.evidence?.control?.retained_intelligence_used === false;
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
@@ -125,11 +125,11 @@ Deno.serve(async (req: Request) => {
       },
       evidence: {
         refs: [treatmentId, controlId, "IB-NAYA-NODE-0001-0001"],
-        control: control.evidence,
+        control: controlEvidence,
         treatment: {
-          condition: treatment.evidence?.condition ?? "TREATMENT",
-          intelligence_id: treatment.evidence?.intelligence_id ?? "IB-NAYA-NODE-0001-0001",
-          retained_intelligence_used: treatment.evidence?.retained_intelligence_used === true,
+          condition: treatmentEvidence.condition ?? "TREATMENT",
+          intelligence_id: treatmentEvidence.intelligence_id ?? "IB-NAYA-NODE-0001-0001",
+          retained_intelligence_used: treatmentEvidence.retained_intelligence_used === true,
         },
       },
       causal_method: "CONTROLLED_INTERVENTION",
