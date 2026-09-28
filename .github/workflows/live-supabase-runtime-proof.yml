@@ -2,39 +2,98 @@ name: Live Supabase Runtime Proof
 
 on:
   push:
-    branches:
-      - "naya/node-genome-aaa-v1"
+    branches: ["naya/node-genome-aaa-v1"]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+  COLD_RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-cold-runtime-proof
+
 jobs:
-  live-proof:
+  contract:
     runs-on: ubuntu-latest
-    env:
-      # Supabase project URL is public configuration, not a credential.
-      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
-      SUPABASE_USER_ACCESS_TOKEN: ${{ secrets.SUPABASE_USER_ACCESS_TOKEN }}
-      SUPABASE_USER_REFRESH_TOKEN: ${{ secrets.SUPABASE_USER_REFRESH_TOKEN }}
-      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
+        with: {python-version: "3.12"}
       - run: python -m pip install pytest
-      - name: Require protected live-proof credentials
+      - name: Run identity binding regression
+        run: python -m pytest -q tests/test_naya_identity_owner_binding.py tests/test_github_oidc_binding.py
+
+  cold-runtime-1:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
-          missing=0
-          for name in SUPABASE_USER_ACCESS_TOKEN SUPABASE_PUBLISHABLE_KEY; do
-            if [ -z "${!name:-}" ]; then
-              echo "::error title=Missing protected secret::$name is not configured"
-              missing=1
-            fi
-          done
-          test "$missing" -eq 0
-      - name: Run authentication fallback unit proof
-        run: python -m pytest -q tests/test_live_auth_fallback.py
-      - name: Run Naya identity owner binding regression
-        run: python -m pytest -q tests/test_naya_identity_owner_binding.py
-      - name: Run live canonical retrieval proof
-        run: python -m pytest -q tests/test_live_supabase_intelligent_blocks.py
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute cold Naya runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}" > cold-runtime-1.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-runtime-1.json"))["receipt"]
+          assert r["naya_id"]=="NAYA-NODE-0001"
+          assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
+          assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
+          assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
+          print("COLD_RUNTIME_1=PASS")
+          print(json.dumps(r, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cold-runtime-1
+          path: cold-runtime-1.json
+
+  cold-runtime-2:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint fresh short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute second cold Naya runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}" > cold-runtime-2.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-runtime-2.json"))["receipt"]
+          assert r["naya_id"]=="NAYA-NODE-0001"
+          assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
+          assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
+          assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
+          print("COLD_RUNTIME_2=PASS")
+          print(json.dumps(r, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cold-runtime-2
+          path: cold-runtime-2.json
+
+  independent-verification:
+    needs: [cold-runtime-1, cold-runtime-2]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with: {name: naya-cold-runtime-1, path: receipts/one}
+      - uses: actions/download-artifact@v4
+        with: {name: naya-cold-runtime-2, path: receipts/two}
+      - name: Independently verify both cold receipts
+        run: python tests/verify_cold_runtime_receipt.py receipts/one/cold-runtime-1.json receipts/two/cold-runtime-2.json
