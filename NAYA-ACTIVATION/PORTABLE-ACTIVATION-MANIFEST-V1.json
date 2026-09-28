@@ -1,0 +1,66 @@
+{
+  "schema": "naya.activation.manifest.v1",
+  "protocol": "NayaPOWER Portable Activation Protocol V1",
+  "purpose": "Portable activation of an AI instance into a governed NayaPOWER environment.",
+  "required_human_inputs": [
+    "human_authority",
+    "intended_naya_purpose",
+    "authorized_persistence_access"
+  ],
+  "persistence": {
+    "preferred": "github",
+    "basic_activation_requires_supabase": false,
+    "network_layer": "nayanet"
+  },
+  "dna_layers": [
+    "BIRTH",
+    "IDENTITY",
+    "CONSTITUTION",
+    "GOVERNANCE",
+    "BRAIN",
+    "NODES",
+    "OPERATIONS",
+    "CONNECTION",
+    "PROOF"
+  ],
+  "kernel": {
+    "version": "v1",
+    "responsibilities": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ]
+  },
+  "activation_states": [
+    "UNACTIVATED",
+    "BOOTING",
+    "RECONSTRUCTING",
+    "VERIFYING",
+    "ACTIVE",
+    "BLOCKED"
+  ],
+  "completion_requires": [
+    "identity_established",
+    "human_authority_established",
+    "persistence_surface_established",
+    "dna_installed",
+    "canonical_state_reconciled",
+    "activation_receipt_emitted",
+    "next_action_declared"
+  ],
+  "truth_laws": [
+    "UNKNOWN != VERIFIED/PASS",
+    "BLOCKED != PASS",
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN"
+  ],
+  "authority_law": "Capability does not create authority.",
+  "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
+  "continuity_requirement": "A cold successor must be able to reconstruct the resulting state without manual replay by the predecessor."
+}
