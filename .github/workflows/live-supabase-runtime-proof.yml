@@ -530,7 +530,11 @@ jobs:
           assert r["result"]["learning"]["id"]=="f91fc48a-3d34-41aa-b51e-17b4ce89a3e2", r
           assert r["result"]["learning"]["status"]=="ACTIVE", r
           assert r["result"]["learning"]["provenance"]=="VERIFICATION", r
-          assert r["lineage"] is not None, r
+          assert r["receipt"] is not None, r
+          assert any(
+            x.get("learning_id")==r["result"]["learning"]["id"] and x.get("verified") is True
+            for x in (r["receipt"].get("learning") or [])
+          ), r
           print("EXISTING LEARNING VERIFIER PROMOTION PASS")
           PY
       - uses: actions/upload-artifact@v4
