@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: |
           missing=0
-          for name in SUPABASE_URL SUPABASE_USER_ACCESS_TOKEN SUPABASE_PUBLISHABLE_KEY; do
+          for name in SUPABASE_USER_ACCESS_TOKEN SUPABASE_PUBLISHABLE_KEY; do
             if [ -z "${!name:-}" ]; then
               echo "::error title=Missing protected secret::$name is not configured"
               missing=1
