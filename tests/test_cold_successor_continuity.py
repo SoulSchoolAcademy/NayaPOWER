@@ -154,3 +154,20 @@ def test_workflow_separates_executor_from_verifier_jobs():
     wf = WORKFLOW.read_text(encoding="utf-8")
     assert "cold-successor-successor-receipt" in wf or "cold-successor-receipt" in wf
     assert "cold-successor-verification:" in wf or "cold-successor-verification" in wf
+
+
+def test_cold_successor_is_not_gated_on_the_credential_blocked_job():
+    """Regression: gating this job on the learning-influence verification makes the
+    cold-successor proof permanently unrunnable, because that job needs a rotated
+    owner credential. The successor reads learning_evidence directly, so it must not
+    depend on it -- a proof that can never execute is not a proof."""
+    import yaml
+
+    jobs = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))["jobs"]
+    needs = jobs["cold-successor"].get("needs")
+    needs = [needs] if isinstance(needs, str) else (needs or [])
+    assert "independent-learning-influence-verification" not in needs, (
+        "cold-successor is gated on the owner-credential-blocked job and can never run"
+    )
+    # It must still depend on something real.
+    assert "live-connect" in needs, "cold-successor lost its proof prerequisite"
