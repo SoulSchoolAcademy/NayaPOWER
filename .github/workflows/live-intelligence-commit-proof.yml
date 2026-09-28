@@ -16,7 +16,7 @@ concurrency:
 
 env:
   RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-commit-runtime
-  GRANT_ID: 0e082400-de6d-485e-9ebc-51b34f5debdc
+  GRANT_ID: 0e082400-de6b-485e-9ebc-51b34f5debdc
 
 jobs:
   fresh-lesson:
@@ -53,7 +53,7 @@ jobs:
           result=r["result"]
           assert result["ok"] is True, result
           assert result["understanding_state"] == "CANDIDATE", result
-          json.dump({k:result[k] for k in ("event_id","intelligent_block_id","lineage_id","relationship_id","checkpoint_id","receipt_id")}, open("fresh-lesson-lineage-ids.json","w"), indent=2)
+          json.dump({k:result[k] for k in ("event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id","receipt_id")}, open("fresh-lesson-lineage-ids.json","w"), indent=2)
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -99,3 +99,4 @@ jobs:
         with:
           name: independent-fresh-lesson-verification
           path: independent-lineage-verification.json
+# Re-trigger canonical fresh-lesson proof after authority-target repair; execution path remains the existing Naya OIDC runtime seam.
