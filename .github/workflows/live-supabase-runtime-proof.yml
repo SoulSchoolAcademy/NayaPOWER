@@ -229,3 +229,85 @@ jobs:
         with:
           name: causal-learning-experiment-receipt
           path: causal-learning-experiment-receipt.json
+
+  cold-graph-control-treatment:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute held-out task with graph context OFF
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          python - <<'PY'
+          import json
+          r=json.load(open("graph-control.json"))
+          assert r["ok"] is True, r
+          assert r["condition"]=="OFF"
+          assert r["behavior"]=="REQUIRE_DIRECT_CANONICAL_INTELLIGENCE"
+          PY
+      - name: Execute identical held-out task with graph context ON
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          python - <<'PY'
+          import json
+          r=json.load(open("graph-treatment.json"))
+          assert r["ok"] is True, r
+          assert r["condition"]=="ON"
+          assert r["behavior"]=="APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE"
+          assert r["selected_relationships"]
+          assert all(x["epistemic_state"]=="VERIFIED" and x["provenance"] for x in r["selected_relationships"])
+          PY
+      - name: Build persisted paired receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open("graph-control.json")); t=json.load(open("graph-treatment.json"))
+          out={"schema":"NAYANET_COLD_GRAPH_BEHAVIOR_V1","task_id":c["task_id"],"control":{"receipt_id":c["receipt"]["id"],"condition":"OFF","behavior":c["behavior"]},"treatment":{"receipt_id":t["receipt"]["id"],"condition":"ON","behavior":t["behavior"],"selected_relationships":t["selected_relationships"]},"behavioral_delta":{"changed":c["behavior"]!=t["behavior"]},"runtime_identity":"github-actions-oidc"}
+          assert out["behavioral_delta"]["changed"] is True
+          json.dump(out,open("cold-graph-behavior-pair.json","w"),indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+          path: cold-graph-behavior-pair.json
+
+  independent-cold-graph-verification:
+    needs: cold-graph-control-treatment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+      - name: Mint fresh independent GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read persisted graph receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-graph-behavior-pair.json"))
+          json.dump({"control_receipt_id":r["control"]["receipt_id"],"treatment_receipt_id":r["treatment"]["receipt_id"]},open("verify-request.json","w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-request.json "${COLD_RUNTIME_FUNCTION}?mode=graph-verify" > cold-graph-independent-verification.json
+          python tests/verify_cold_graph_behavior.py cold-graph-independent-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-graph-independent-verification
+          path: cold-graph-independent-verification.json
