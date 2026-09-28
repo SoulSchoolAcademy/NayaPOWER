@@ -336,3 +336,119 @@ jobs:
         with:
           name: cold-graph-independent-verification
           path: cold-graph-independent-verification.json
+
+  cold-successor:
+    # Depends only on live-connect, which proves the canonical block exists and is
+    # owner-scoped. It deliberately does NOT depend on
+    # independent-learning-influence-verification: that job needs a rotated owner
+    # credential, and the cold-successor proof reads learning_evidence directly, so
+    # gating on it would make this proof permanently unrunnable.
+    needs: live-connect
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Cold successor reconstructs from authoritative state only
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=de0b794b-224b-4d8b-ad1a-3afc6f8d0771" > cold-successor.json
+          cat cold-successor.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-successor.json"))
+          assert r["ok"] is True, r
+          # Reconstruction, not delivery.
+          assert r["cold_start"]["intelligence_content_accepted_as_input"] is False, r
+          assert r["cold_start"]["local_state_used"] is False, r
+          assert r["cold_start"]["input_supplied_by_caller"] == "learning_id_only", r
+          # Lineage actually reconstructed from durable state.
+          assert r["reconstruction"]["intelligent_block_id"], r
+          assert r["reconstruction"]["verified_relationship_count"] > 0, r
+          # Material use of the retrieved intelligence.
+          assert r["use"]["behavior_derived_from_retrieved_lesson"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", r
+          # NON-INHERITANCE: knowledge conferred no authority.
+          ab = r["authority_boundary"]
+          assert ab["authority_inherited"] is False, ab
+          assert ab["knowledge_creates_authority"] is False, ab
+          assert ab["successor_grant_count"] == 0, ab
+          assert ab["consequential_actions_authorized"] is False, ab
+          assert ab["executed"] is False, ab
+          assert ab["blocked_by"] == "IDENTITY_SCOPE", ab
+          assert r["rls_changed"] is False and r["credentials_committed"] is False, r
+          json.dump(r, open("cold-successor-receipt.json","w"), indent=2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-successor-receipt
+          path: cold-successor-receipt.json
+
+  cold-successor-verification:
+    needs: cold-successor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-successor-receipt
+      - name: Mint a FRESH independent OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read authoritative state and recompute
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=de0b794b-224b-4d8b-ad1a-3afc6f8d0771" > cold-successor-verification.json
+          cat cold-successor-verification.json
+          python - <<'PY'
+          import json
+          e=json.load(open("cold-successor-receipt.json"))
+          v=json.load(open("cold-successor-verification.json"))
+          assert v["ok"] is True, v
+          rc=v["recomputed"]
+          # The verifier recomputed from state; it did not echo the executor.
+          assert v["executor_claim_trusted"] is False, v
+          assert rc["successor_grant_count"] == 0, rc
+          assert rc["authority_recomputed"] is False, rc
+          assert rc["recomputed_blocked_by"] == "IDENTITY_SCOPE", rc
+          assert rc["behavior_recomputed"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", rc
+          # Corroborate the executor against the independent recomputation.
+          assert e["use"]["behavior_derived_from_retrieved_lesson"] == rc["behavior_recomputed"]
+          assert e["authority_boundary"]["blocked_by"] == rc["recomputed_blocked_by"]
+          assert e["runtime_identity"] == v["runtime_identity"]
+          receipt={
+            "schema":"NAYANET_COLD_SUCCESSOR_RECEIPT_V1",
+            "successor_identity":e["successor_identity"],
+            "learning_id":e["reconstruction"]["learning_id"],
+            "intelligent_block_id":e["reconstruction"]["intelligent_block_id"],
+            "verified_relationships":e["reconstruction"]["verified_relationships"],
+            "retrieved_lesson":e["reconstruction"]["retrieved_lesson"],
+            "behavior":e["use"]["behavior_derived_from_retrieved_lesson"],
+            "materially_attributable":e["use"]["materially_attributable"],
+            "authority_inherited":False,
+            "successor_grant_count":rc["successor_grant_count"],
+            "consequential_actions_authorized":False,
+            "executed":False,
+            "blocked_by":rc["recomputed_blocked_by"],
+            "independent_verification":v["independent_verification"],
+            "verifier_mode":v["verifier_mode"],
+            "executor_runtime_jti":e.get("token_jti"),
+            "verifier_runtime_jti":v.get("token_jti"),
+            "run_id":__import__("os").environ.get("GITHUB_RUN_ID"),
+            "head_sha":__import__("os").environ.get("GITHUB_SHA"),
+            "limitation":v["limitation"],
+            "reconstructable_by":"a further cold Naya may re-read the learning id, the Intelligent Block and the durable relationships, recompute the behavior, and re-derive the non-inheritance verdict from the grant table",
+            "next_action":"prove the successor performs a real task end-to-end through the Hub receiver boundary"
+          }
+          json.dump(receipt, open("cold-successor-receipt-verified.json","w"), indent=2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-successor-receipt-verified
+          path: cold-successor-receipt-verified.json

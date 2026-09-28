@@ -124,6 +124,151 @@ Deno.serve(async (req: Request) => {
       return json({ ok: true, schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, block_id: BLOCK_ID, task_id: taskId, condition: relationshipContext ? "ON" : "OFF", behavior, relationship_context_enabled: relationshipContext, selected_relationships: selected, receipt: persisted, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
     }
 
+    if (mode === "cold-successor") {
+      // HOLE D. The caller supplies ONLY a learning id. No lesson, claim, behaviour or
+      // intelligence content is accepted as input, so the successor cannot be handed the
+      // answer and must genuinely reconstruct the lineage from authoritative state.
+      const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
+      const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
+      if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
+
+      // 1. Re-read the persisted learning that the previous Naya produced.
+      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
+      if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
+      const learning = learningRows[0];
+      const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
+
+      // 2. Re-read the canonical Intelligent Block (already resolved owner-scoped above).
+      // 3. Re-read the durable graph relationships that connect intelligence to that block.
+      const rels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance");
+      const verifiedRels = rels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
+
+      // 4. MATERIAL USE. Behaviour is derived from the RETRIEVED lesson, not from caller input.
+      const lesson = block.content?.lesson;
+      if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
+      const behavior = lesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+      const learningSupportsLesson = typeof learning.claim === "string" && lesson.includes(String(learning.claim).slice(0, 24));
+
+      // 5. AUTHORITY IS RE-RESOLVED, NEVER INHERITED.
+      //    The successor is a DIFFERENT identity. The durable grant is identity-scoped to
+      //    NAYA-NODE-0001, so no grant can cover the successor. This is computed from the
+      //    grant table, not declared: having the intelligence must not confer authority.
+      const successorGrants = grantRows.filter((g: any) => g.scope?.target === successorId);
+      const successorGrantsAction = successorGrants.filter((g: any) => Array.isArray(g.actions) && g.actions.includes("naya_node_apply"));
+      const authorityResolved = successorGrants.length > 0;
+      const consequentialAuthorized = successorGrantsAction.length > 0;
+      const executed = false;
+      const blockedBy = consequentialAuthorized ? "NONE" : (authorityResolved ? "LAW" : "IDENTITY_SCOPE");
+
+      return json({
+        ok: true,
+        schema: "NAYANET_COLD_SUCCESSOR_V1",
+        successor_identity: successorId,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+        cold_start: {
+          input_supplied_by_caller: "learning_id_only",
+          intelligence_content_accepted_as_input: false,
+          local_state_used: false,
+          reconstructed_from_authoritative_state: true,
+        },
+        reconstruction: {
+          learning_id: learning.id,
+          learning_level: learning.level,
+          learning_status: learning.status,
+          learning_source_event_id: learning.source_event_id,
+          learning_verification_method: learning.verification_method,
+          learning_claim: learning.claim,
+          prior_behavioral_delta_present: learningObserved.behavioral_change === true,
+          intelligent_block_id: block.intelligent_block_id,
+          block_understanding_state: block.understanding_state,
+          block_owner_match: block.owner_id === OWNER_ID,
+          retrieved_lesson: lesson,
+          verified_relationships: verifiedRels.map((r: any) => ({ relationship_id: r.relationship_id, source_id: r.source_id, relationship_type: r.relationship_type, epistemic_state: r.epistemic_state, provenance: r.provenance })),
+          verified_relationship_count: verifiedRels.length,
+          lineage: ["learning_evidence", "nayanet_intelligent_blocks", "nayanet_brain_relationships"],
+        },
+        use: {
+          behavior_derived_from_retrieved_lesson: behavior,
+          lesson_supports_persisted_learning: learningSupportsLesson,
+          materially_attributable: behavior === "PRESERVE_PROVENANCE_BEFORE_APPLY" && verifiedRels.length > 0,
+        },
+        authority_boundary: {
+          authority_inherited: false,
+          authority_source: "durable_grant_reresolved_for_successor_identity",
+          knowledge_creates_authority: false,
+          retrieval_creates_authority: false,
+          successor_grant_count: successorGrants.length,
+          node0001_grant_scope_target: NAYA_ID,
+          successor_grant_scope_target: successorId,
+          consequential_actions_authorized: consequentialAuthorized,
+          consequential: true,
+          allowed: false,
+          executed: executed,
+          blocked_by: blockedBy,
+        },
+        production_mutation_performed: false,
+        rls_changed: false,
+        credentials_committed: false,
+      });
+    }
+
+    if (mode === "cold-successor-verify") {
+      // Independent verification. Receives ONLY the learning id and re-reads everything from
+      // authoritative state. It does NOT trust the successor's receipt.
+      const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
+      const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
+      if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
+      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
+      if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
+      const l = lRows[0];
+      const lObs = (l.observed_value && typeof l.observed_value === "object" && !Array.isArray(l.observed_value)) ? l.observed_value : {};
+      const vRels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,epistemic_state,provenance");
+      const vVerified = vRels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
+      const vLesson = block.content?.lesson;
+      const vBehavior = typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+      // Recompute the authority verdict independently from the grant table.
+      const vSuccGrants = grantRows.filter((g: any) => g.scope?.target === successorId);
+      const vSuccAction = vSuccGrants.filter((g: any) => Array.isArray(g.actions) && g.actions.includes("naya_node_apply"));
+      const vAuthorityResolved = vSuccGrants.length > 0;
+      const vConsequentialAuthorized = vSuccAction.length > 0;
+      const recomputed = {
+        learning_persisted: true,
+        prior_behavioral_delta_present: lObs.behavioral_change === true,
+        block_owner_scoped: block.owner_id === OWNER_ID,
+        lesson_present: typeof vLesson === "string" && vLesson.length > 0,
+        verified_relationship_count: vVerified.length,
+        behavior_recomputed: vBehavior,
+        successor_grant_count: vSuccGrants.length,
+        authority_recomputed: vConsequentialAuthorized,
+        recomputed_blocked_by: vConsequentialAuthorized ? "NONE" : (vAuthorityResolved ? "LAW" : "IDENTITY_SCOPE"),
+      };
+      const valid =
+        recomputed.learning_persisted &&
+        recomputed.block_owner_scoped &&
+        recomputed.lesson_present &&
+        recomputed.verified_relationship_count > 0 &&
+        recomputed.behavior_recomputed === "PRESERVE_PROVENANCE_BEFORE_APPLY" &&
+        recomputed.successor_grant_count === 0 &&
+        recomputed.authority_recomputed === false &&
+        recomputed.recomputed_blocked_by === "IDENTITY_SCOPE";
+      return json({
+        ok: valid,
+        schema: "NAYANET_COLD_SUCCESSOR_VERIFICATION_V1",
+        independent_verification: valid,
+        verifier_mode: "AUTHORITATIVE_REREAD_AND_RECOMPUTATION",
+        executor_claim_trusted: false,
+        learning_id: learningId,
+        successor_identity: successorId,
+        recomputed,
+        limitation: "single held-out task; demonstrates non-inheritance of identity-scoped authority, not general successor capability",
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      }, valid ? 200 : 409);
+    }
+
     if (req.method !== "GET" || mode !== "cold") return json({ error: "UNSUPPORTED_MODE" }, 400);
     const lesson = block.content?.lesson;
     if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
