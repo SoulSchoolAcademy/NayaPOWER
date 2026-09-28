@@ -4,7 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-cvo-runtime-proof.yml";
+const WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml";
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -72,10 +72,10 @@ Deno.serve(async (req: Request) => {
     if (ce) throw ce;
     if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
 
-    if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
+    if (!treatment.action.startsWith("NAYA-NODE-0001-TREATMENT-") || !control.action.startsWith("NAYA-NODE-0001-CONTROL-")) {
       return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
     }
-    if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
+    if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {\n      return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);\n    }\n    if (learningId) {\n      const {data:learning,error:le} = await admin.from("learning_evidence").select("id,target_id,status,source_event_id").eq("id",learningId).eq("member_id",OWNER_ID).maybeSingle();\n      if (le) throw le;\n      if (!learning || learning.target_id !== NAYA_ID || learning.status !== "CANDIDATE") return json({ok:false,error:"LEARNING_CANDIDATE_INVALID"},409);\n    }\n\n    if (false) {
       return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);
     }
 
