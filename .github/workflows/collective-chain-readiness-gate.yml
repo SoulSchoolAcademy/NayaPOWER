@@ -98,3 +98,58 @@ jobs:
           PY
         env:
           MEASURED: ${{ steps.measure.outputs.satisfied }}
+
+      # --- Brain schema migration coherence -----------------------------------
+      # PR #881 recovered 88 migrations the 2026-09-26 reset had deleted. Recovering a
+      # file is not proving it is sound. This gate asks whether those migrations can
+      # rebuild the brain schema from empty. They cannot: 11 core tables, including the
+      # canonical event store and the Intelligent Block identity table, are created by
+      # no migration at all. Same discipline as above -- fail on regression, not on the
+      # known defect, so the count can never silently grow.
+      - name: Prove the migration gate discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py
+
+      - name: Measure brain schema migration coherence
+        id: coherence
+        run: |
+          set +e
+          python BRAIN/12-ENGINEERING/verify-migration-coherence.py | tee migration-coherence.txt
+          set -e
+          # Sum the per-class counts in the SUMMARY line. Done in python rather than
+          # with bc/paste so the gate adds no shell dependency to the runner.
+          defects=$(python - <<'PY'
+          import re, sys
+          try:
+              line = next(l for l in open('migration-coherence.txt', encoding='utf-8')
+                          if l.startswith('  SUMMARY:'))
+          except StopIteration:
+              print(0); raise SystemExit
+          print(sum(int(n) for n in re.findall(r'=(\d+)', line)))
+          PY
+          )
+          echo "defects=${defects:-0}" >> "$GITHUB_OUTPUT"
+          echo "Measured $defects migration coherence defect(s)."
+
+      - name: Enforce no regression in migration defects
+        if: always()
+        run: |
+          set +e
+          python BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py | tail -6
+          python - <<'PY'
+          import json, os, sys, pathlib
+          base_file = pathlib.Path('BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json')
+          base = json.loads(base_file.read_text(encoding='utf-8'))
+          measured = int(os.environ['MEASURED'])
+          floor = int(base['defect_floor'])
+          print(f'migration defect floor={floor}  measured={measured}')
+          if measured > floor:
+              print(f'REGRESSION: migration defect count grew above the recorded floor of {floor}.')
+              sys.exit(1)
+          if measured < floor:
+              print(f'IMPROVEMENT: {measured} defects is below the recorded floor of {floor}. '
+                    f'Lower the floor deliberately once the missing CREATE migrations land.')
+          print('No regression in migration coherence.')
+          PY
+          exit 0
+        env:
+          MEASURED: ${{ steps.coherence.outputs.defects }}
