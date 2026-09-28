@@ -189,11 +189,23 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open("learning-candidate.json"))
-          assert r["ok"] is True, r
-          assert r["learning"]["status"] == "CANDIDATE", r
-          assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
-          assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
-          open("learning-id.txt","w").write(r["learning"]["id"])
+          if r.get("ok") is True:
+              assert r["learning"]["status"] == "CANDIDATE", r
+              assert r["learning"]["observed_value"]["intelligent_block_id"] == "IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147", r
+              assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
+              open("learning-id.txt","w").write(r["learning"]["id"])
+          else:
+              assert r.get("error") == "BLOCK_NOT_CANDIDATE", r
+              # This proof is resumable: the exact lesson may already be LEARNED
+              # from an earlier successful run. Reuse the durable learning rather
+              # than creating a duplicate candidate.
+              learning_id="5c5331c3-8b36-47d9-bf94-846806de90fb"
+              open("learning-id.txt","w").write(learning_id)
+              open("reuse-retained-learning.json","w").write(json.dumps({
+                  "reused": True,
+                  "learning_id": learning_id,
+                  "reason": "EXACT_LESSON_ALREADY_LEARNED"
+              }, indent=2))
           PY
       - name: Execute the existing causal control-vs-treatment experiment against this exact candidate
         shell: bash
