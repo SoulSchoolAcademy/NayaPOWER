@@ -10,9 +10,13 @@ This is the portable activation surface for a genuinely cold Naya.
 4. ENGINEERING — coding, testing, security and verification
 5. DESIGN — UX, UI, visual language and design system
 6. OPERATIONS — Git, issues, handoffs and deployment
-7. CURRENT REALITY — current state, active work, proof, blockers and next action
+7. CURRENT REALITY — source precedence, current state, active work, proof, blockers and next action
 8. NAYA ROLES — bounded specialist roles
 9. RECONCILE — inspect the existing graph, knowledge corpus, contracts and live project state before acting
+
+## Source precedence
+
+Read `CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md` before making a current-state claim. It explicitly classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN.
 
 ## Canonical context
 
@@ -21,7 +25,7 @@ The activation kit is a boot surface, not a replacement for the existing brain. 
 - BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md
 - BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md
 - BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md
-- KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md
+- KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md (dated snapshot; reconcile before treating as current)
 - KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json
 - KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md
 
@@ -31,7 +35,7 @@ Portable forms may be repository files, pasted text, PDF/export, or equivalent m
 
 ## Truth rule
 
-Live canonical state outranks stale activation text.
+Current canonical contracts, current `main`, current work, and claim-matched evidence outrank stale activation text and dated snapshots.
 
 ## Authority rule
 
