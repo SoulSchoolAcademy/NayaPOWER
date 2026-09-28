@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
     if (ce) throw ce;
     if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
 
-    if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
+    if (!treatment.action.startsWith("NAYA-NODE-0001-TREATMENT-") || !control.action.startsWith("NAYA-NODE-0001-CONTROL-")) {
       return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
     }
     if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
