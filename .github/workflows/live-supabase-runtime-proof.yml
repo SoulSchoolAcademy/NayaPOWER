@@ -146,12 +146,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"learning_id":"f91fc48a-3d34-41aa-b51e-17b4ce89a3e2"}' "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
           python - <<'PY'
           import json
           r=json.load(open("causal-learning-experiment.json"))
           assert r["ok"] is True, r
-          assert r["learning_id"]=="de0b794b-224b-4d8b-ad1a-3afc6f8d0771"
+          assert r["learning_id"]=="f91fc48a-3d34-41aa-b51e-17b4ce89a3e2"
           assert r["control"]["evidence"]["retained_intelligence_used"] is False
           assert r["treatment"]["evidence"]["retained_intelligence_used"] is True
           assert r["control"]["observed_result"] != r["treatment"]["observed_result"]
