@@ -65,3 +65,15 @@ def test_runtime_commit_uses_direct_postgrest_rpc_boundary():
     call_commit = source.split("async function callCommit", 1)[1].split("const idColumn", 1)[0]
     assert '"/rest/v1/rpc/nayanet_intelligence_commit_runtime"' in call_commit
     assert "admin.rpc(" not in call_commit
+
+
+def test_fresh_lesson_enters_existing_learn_promote_and_independent_reread_path():
+    workflow = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
+    assert "learn-promote-fresh-lesson" in workflow
+    assert 'mode":"candidate"' in workflow
+    assert "nayanet-learning-verify" in workflow
+    assert "mode":"cvo"" in workflow
+    assert "mode":"reread"" in workflow
+    assert "independent-retained-learning-reread" in workflow
+    assert 'status"] == "ACTIVE"' in workflow
+    assert "provenance_preserved" in workflow
