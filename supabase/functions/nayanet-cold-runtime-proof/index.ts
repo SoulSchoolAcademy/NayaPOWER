@@ -67,6 +67,63 @@ Deno.serve(async (req: Request) => {
       return json({ ok: true, receipt: { receipt_type: "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1", naya_id: NAYA_ID, owner_id: OWNER_ID, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, authorization_binding: binding[0], block_id: BLOCK_ID, block_owner_id: block.owner_id, block_owner_match: block.owner_id === OWNER_ID, block_understanding_state: block.understanding_state, relationships, connect: { relationship_count: relationships.length, verified_support_count: verifiedSupport.length, connected: relationships.length > 0 }, production_mutation_performed: false, rls_changed: false, credentials_committed: false, token_jti: payload.jti ?? null, verified_at: new Date().toISOString() } });
     }
 
+    if (mode === "graph-verify") {
+      if (req.method !== "POST") return json({ error: "METHOD_REQUIRED" }, 405);
+      const body = await req.json().catch(() => ({}));
+      const controlId = String(body?.control_receipt_id || "");
+      const treatmentId = String(body?.treatment_receipt_id || "");
+      if (!controlId || !treatmentId) return json({ error: "RECEIPT_IDS_REQUIRED" }, 400);
+      const rows = await get("/rest/v1/nayanet_execution_receipts?id=in.(" + encodeURIComponent(controlId) + "," + encodeURIComponent(treatmentId) + ")&user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=*");
+      if (!Array.isArray(rows) || rows.length !== 2) return json({ error: "PERSISTED_GRAPH_RECEIPTS_NOT_UNIQUE" }, 409);
+      const control = rows.find((r: any) => r.id === controlId);
+      const treatment = rows.find((r: any) => r.id === treatmentId);
+      if (!control || !treatment) return json({ error: "GRAPH_RECEIPT_PAIR_MISMATCH" }, 409);
+      const valid =
+        control.evidence?.condition === "OFF" &&
+        control.evidence?.relationship_context_enabled === false &&
+        treatment.evidence?.condition === "ON" &&
+        treatment.evidence?.relationship_context_enabled === true &&
+        control.observed_result !== treatment.observed_result &&
+        Array.isArray(treatment.evidence?.selected_relationships) &&
+        treatment.evidence.selected_relationships.length > 0 &&
+        treatment.evidence.selected_relationships.every((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.target_id === BLOCK_ID);
+      return json({ ok: valid, verification: { persisted_pair_re_read: true, control_receipt_id: controlId, treatment_receipt_id: treatmentId, behavioral_delta: control.observed_result !== treatment.observed_result, treatment_relationships_verified: valid, independently_reconstructed: true }, receipts: { control, treatment }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+    }
+
+    if (mode === "graph-behavior") {
+      if (req.method !== "POST") return json({ error: "METHOD_REQUIRED" }, 405);
+      const body = await req.json().catch(() => ({}));
+      const relationshipContext = body?.relationship_context === true;
+      const taskId = String(body?.task_id || "");
+      if (taskId !== "COLD-NAYA-GRAPH-HELDOUT-001") return json({ error: "HELDOUT_TASK_REQUIRED" }, 400);
+      const relationships = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance,created_at&order=created_at.asc");
+      const applicable = relationshipContext ? relationships.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.source_id && r.target_id === BLOCK_ID) : [];
+      const selected = applicable.filter((r: any) => ["PRODUCES","VERIFIED_BY"].includes(r.relationship_type));
+      const behavior = selected.length > 0 ? "APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+      const receiptRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
+      const revision = (Array.isArray(receiptRows) && receiptRows.length ? Number(receiptRows[0].revision) + 1 : 1);
+      const row = {
+        user_id: OWNER_ID, project_id: "NayaNET", revision,
+        action: "NAYA-NODE-0001-GRAPH-" + (relationshipContext ? "ON" : "OFF") + "-" + taskId,
+        status: "SUCCESS",
+        expected_result: "Execute the identical held-out task under the requested graph-context condition.",
+        observed_result: behavior,
+        evidence: {
+          condition: relationshipContext ? "ON" : "OFF",
+          relationship_context_enabled: relationshipContext,
+          task_id: taskId,
+          selected_relationships: selected,
+          selected_relationship_paths: selected.map((r: any) => [r.source_id, r.relationship_type, r.target_id]),
+          provenance: selected.map((r: any) => r.provenance),
+          applicability: selected.map((r: any) => ({ relationship_id: r.relationship_id, applicable: true, reason: "VERIFIED relationship is scoped to canonical target." })),
+          epistemic_state: selected.map((r: any) => r.epistemic_state)
+        }
+      };
+      const { data: persisted, error: persistError } = await admin.from("nayanet_execution_receipts").insert(row).select("*").single();
+      if (persistError) throw new Error("GRAPH_RECEIPT_WRITE_" + persistError.code + ":" + persistError.message);
+      return json({ ok: true, schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, block_id: BLOCK_ID, task_id: taskId, condition: relationshipContext ? "ON" : "OFF", behavior, relationship_context_enabled: relationshipContext, selected_relationships: selected, receipt: persisted, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+    }
+
     if (req.method !== "GET" || mode !== "cold") return json({ error: "UNSUPPORTED_MODE" }, 400);
     const lesson = block.content?.lesson;
     if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);

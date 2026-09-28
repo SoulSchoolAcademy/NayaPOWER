@@ -6,6 +6,7 @@
 **Key references:**
 - [REAL-TREE.md](./REAL-TREE.md) — machine-verified file inventory
 - [12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md](./12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md) — AAA quality scorecard
+- [04-INTELLIGENCE/GRAPH/0004-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json](./04-INTELLIGENCE/GRAPH/0004-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json) — deterministic cold-Naya graph entry and success contract
 
 ## 1. What this map means
 
@@ -137,8 +138,9 @@ A cold Naya reads (items 1–4 are root-level files outside BRAIN/):
 7. **BRAIN/90-OPERATIONS/** — current reality
 8. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
 9. **BRAIN/06-PROOF/** — evidence and authority
-10. Current objective and next action
-11. **BRAIN/08-SUCCESSION/** — successor context
+10. **BRAIN/04-INTELLIGENCE/GRAPH/0004-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json** — graph entry gates and cold-Naya success contract
+11. Current objective and next action
+12. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
 
@@ -162,7 +164,7 @@ Current target:
 
 | # | Action | Owner | Status |
 |---|---|---|---|
-| 1 | Complete knowledge distillation from Concept #1–#13 corpus | KNOW | IN PROGRESS |
+| 1 | Complete knowledge distillation from the reconciled Concept #1–#15 corpus | KNOW | IN PROGRESS |
 | 2 | Reconcile duplicate pair (#7, #8) into single canonical object | KNOW | PENDING |
 | 3 | Promote distilled concepts to canonical Intelligent Objects | KNOW | PENDING |
 | 4 | Build graph relationships between promoted objects | INTELLIGENCE | PENDING |
@@ -171,7 +173,7 @@ Current target:
 | 7 | Cold-boot test: fresh Naya discovers and retrieves intelligence | OPERATIONS | PENDING |
 | 8 | Successor handoff test: context survives context death | SUCCESSION | PENDING |
 | 9 | Behavioral proof: successor performs better than predecessor | VERIFY | PENDING |
-| 10 | Human Director ratification of canonical architecture | HUMAN | PENDING |
+| 10 | Human Director ratification of canonical architecture and graph entry contract | HUMAN | PENDING |
 
 This map does not claim a living brain merely because its documentation exists.
 
