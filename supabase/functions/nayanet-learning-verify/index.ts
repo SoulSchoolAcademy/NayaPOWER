@@ -235,6 +235,7 @@ Deno.serve(async (req: Request) => {
     }
     return json({
       ok: true,
+      verified: true,
       result,
       verification_operation_id: null,
       receipt,
