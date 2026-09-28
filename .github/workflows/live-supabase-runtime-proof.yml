@@ -34,5 +34,7 @@ jobs:
           test "$missing" -eq 0
       - name: Run authentication fallback unit proof
         run: python -m pytest -q tests/test_live_auth_fallback.py
+      - name: Run Naya identity owner binding regression
+        run: python -m pytest -q tests/test_naya_identity_owner_binding.py
       - name: Run live canonical retrieval proof
         run: python -m pytest -q tests/test_live_supabase_intelligent_blocks.py
