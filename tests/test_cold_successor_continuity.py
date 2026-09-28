@@ -156,6 +156,17 @@ def test_workflow_separates_executor_from_verifier_jobs():
     assert "cold-successor-verification:" in wf or "cold-successor-verification" in wf
 
 
+def test_runtime_still_refuses_non_canonical_branches():
+    """The runtime binds the OIDC token's workflow_ref to refs/heads/main, so a PR
+    branch cannot invoke it. Run 36455994970 failed with WORKFLOW_BINDING_MISMATCH for
+    exactly this reason. That refusal is governance, not a bug: the proof must be
+    produced on main. Widening this would let any branch drive the runtime."""
+    src = _source()
+    assert 'const REF = "refs/heads/main"' in src
+    assert 'throw new Error("WORKFLOW_BINDING_MISMATCH")' in src
+    assert 'payload.ref !== REF' in src
+
+
 def test_cold_successor_is_not_gated_on_the_credential_blocked_job():
     """Regression: gating this job on the learning-influence verification makes the
     cold-successor proof permanently unrunnable, because that job needs a rotated
