@@ -1,5 +1,7 @@
+import base64
 import json
 import os
+import time
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
@@ -9,6 +11,7 @@ from kernel.nayapower_kernel import Kernel
 from kernel.supabase_intelligent_blocks import SupabaseIntelligentBlockReader
 
 BLOCK_ID = "IB-NAYA-NODE-0001-0001"
+EXPECTED_OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
 
 
 def _protected_config():
@@ -23,9 +26,49 @@ def _protected_config():
     return values
 
 
+def _jwt_claims(token: str) -> dict:
+    """Decode non-secret JWT claims for diagnosis; never prints the token."""
+    parts = token.split(".")
+    if len(parts) != 3:
+        return {}
+    try:
+        payload = parts[1] + "=" * (-len(parts[1]) % 4)
+        return json.loads(base64.urlsafe_b64decode(payload.encode()).decode())
+    except (ValueError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+
+
+def _credential_diagnostics(access_token: str, refresh_token: str | None) -> str:
+    claims = _jwt_claims(access_token)
+    sub = claims.get("sub")
+    exp = claims.get("exp")
+    access_state = "non-JWT/opaque"
+    if claims:
+        if isinstance(exp, (int, float)) and exp <= time.time():
+            access_state = "JWT expired"
+        else:
+            access_state = "JWT not locally expired"
+    refresh_shape = "missing"
+    if refresh_token:
+        refresh_shape = "JWT-shaped (likely wrong credential type)" if _jwt_claims(refresh_token) else "opaque"
+    return (
+        f"access_sub={sub!r}; access_state={access_state}; "
+        f"refresh_shape={refresh_shape}"
+    )
+
+
 def _authenticated_session(
     url: str, access_token: str, api_key: str, refresh_token: str | None = None
 ) -> dict[str, str]:
+    claims = _jwt_claims(access_token)
+    if claims and claims.get("sub") != EXPECTED_OWNER_ID:
+        raise AssertionError(
+            "live-proof credential identity mismatch: "
+            f"access token subject is {claims.get('sub')!r}, "
+            f"but canonical NAYA-NODE-0001 owner is {EXPECTED_OWNER_ID!r}. "
+            "Use a session for the canonical owner; do not change the block owner."
+        )
+
     request = Request(
         f"{url.rstrip('/')}/auth/v1/user",
         headers={
@@ -41,6 +84,14 @@ def _authenticated_session(
     except HTTPError as error:
         if error.code not in (401, 403) or not refresh_token:
             raise
+        if _jwt_claims(refresh_token):
+            raise AssertionError(
+                "Supabase access token was rejected and "
+                "SUPABASE_USER_REFRESH_TOKEN is JWT-shaped. "
+                "The refresh-token secret appears to contain an access JWT, "
+                "not a Supabase refresh token."
+            ) from error
+
         refresh_request = Request(
             f"{url.rstrip('/')}/auth/v1/token?grant_type=refresh_token",
             data=json.dumps({"refresh_token": refresh_token}).encode(),
@@ -64,20 +115,24 @@ def _authenticated_session(
             safe_message = error_payload.get("msg") or error_payload.get("message") or refresh_error.reason
             raise AssertionError(
                 f"Supabase refresh failed: HTTP {refresh_error.code}; "
-                f"code={safe_code!r}; message={safe_message!r}"
+                f"code={safe_code!r}; message={safe_message!r}; "
+                f"{_credential_diagnostics(access_token, refresh_token)}. "
+                "A valid refresh token is single-use/rotated by Supabase; "
+                "a previously exchanged token becomes invalid."
             ) from refresh_error
         access_token = payload.get("access_token") or ""
 
     owner_id = payload.get("id") or payload.get("user", {}).get("id")
     if not owner_id:
         raise AssertionError("authenticated Supabase user response has no id")
+    if owner_id != EXPECTED_OWNER_ID:
+        raise AssertionError(
+            "authenticated Supabase user is not the canonical NAYA owner: "
+            f"got {owner_id!r}, expected {EXPECTED_OWNER_ID!r}"
+        )
     if not access_token:
         raise AssertionError("Supabase authentication response has no access token")
     return {"owner_id": owner_id, "access_token": access_token}
-
-
-def _authenticated_owner_id(url: str, access_token: str, api_key: str) -> str:
-    return _authenticated_session(url, access_token, api_key)["owner_id"]
 
 
 def test_live_kernel_retrieves_canonical_private_verified_block():
@@ -88,7 +143,6 @@ def test_live_kernel_retrieves_canonical_private_verified_block():
         config["api_key"],
         refresh_token=config["refresh_token"],
     )
-    owner_id = session["owner_id"]
 
     kernel = Kernel()
     reader = SupabaseIntelligentBlockReader(
@@ -100,12 +154,12 @@ def test_live_kernel_retrieves_canonical_private_verified_block():
     block = kernel.retrieve_intelligent_block(
         reader,
         intelligent_block_id=BLOCK_ID,
-        owner_id=owner_id,
+        owner_id=session["owner_id"],
     )
 
     assert block is not None
     assert block.intelligent_block_id == BLOCK_ID
-    assert block.owner_id == owner_id
+    assert block.owner_id == session["owner_id"]
     assert block.owner_scope == "PRIVATE"
     assert block.provenance
     assert block.epistemic_state == "VERIFIED"
