@@ -66,7 +66,9 @@ Deno.serve(async (req: Request) => {
       const { data: block, error: blockError } = await admin.from("nayanet_intelligent_blocks").select("block_id,intelligent_block_id,owner_id,owner_scope,status,understanding_state,content,evidence_refs,created_at").eq("intelligent_block_id", blockId).eq("owner_id", ownerId).maybeSingle();
       if (blockError) throw blockError;
       if (!block) return json({ ok: false, error: "INTELLIGENT_BLOCK_NOT_FOUND" }, 404);
-      if (block.understanding_state !== "CANDIDATE") return json({ ok: false, error: "BLOCK_NOT_CANDIDATE" }, 409);
+      if (!["CANDIDATE", "LEARNED"].includes(block.understanding_state)) {
+        return json({ ok: false, error: "BLOCK_NOT_REVALIDATABLE", state: block.understanding_state }, 409);
+      }
       const evidenceRefs = Array.isArray(block.evidence_refs) ? block.evidence_refs : [];
       const sourceEventId = String(evidenceRefs[0]?.event_id || "");
       const commitReceiptId = String(evidenceRefs[0]?.receipt_id || "");
