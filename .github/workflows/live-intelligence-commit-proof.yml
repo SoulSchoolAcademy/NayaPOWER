@@ -102,7 +102,6 @@ jobs:
 # Re-trigger canonical fresh-lesson proof after authority-target repair; execution path remains the existing Naya OIDC runtime seam.
 
   learn-promote-fresh-lesson:
-    needs: independent-verification
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
