@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
     if (ce) throw ce;
     if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
 
-    if (!treatment.action.startsWith("NAYA-NODE-0001-TREATMENT-") || !control.action.startsWith("NAYA-NODE-0001-CONTROL-")) {
+    if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
       return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
     }
     if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
@@ -102,8 +102,6 @@ Deno.serve(async (req: Request) => {
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
-    const controlEvidence = (control.evidence && typeof control.evidence === "object" && !Array.isArray(control.evidence)) ? control.evidence as Record<string,unknown> : {};
-    const treatmentEvidence = (treatment.evidence && typeof treatment.evidence === "object" && !Array.isArray(treatment.evidence)) ? treatment.evidence as Record<string,unknown> : {};
 
     const causal = {
       schema: "NAYANET_CAUSAL_VERIFICATION_V1",
