@@ -12,9 +12,11 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
     assert "oidc.jwt" in source
     assert "ACTIONS_ID_TOKEN_REQUEST_TOKEN" in source
     assert '"evidence_refs"' in source
-    assert "Create one real fresh lesson through the existing intelligence commit runtime" in source
-    assert "nayanet-intelligence-commit-runtime" in source
-    assert "fresh-causal-block-id.txt" in source
+    assert "workflow_run" in source
+    assert "Live Intelligence Commit Proof" in source
+    assert "github.event.workflow_run.id" in source
+    assert "fresh-lesson-lineage" in source
+    assert "fresh-lesson-lineage-ids.json" in source
     assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" not in source
     assert "independent-learning-influence-verification" in source
     assert "needs: independent-learning-influence-verification" in source
@@ -72,18 +74,32 @@ def test_learning_candidate_bridge_is_idempotent_and_does_not_promote():
     assert 'status: "ACTIVE"' in source
 
 
-def test_fresh_learning_workflows_share_one_checkpoint_concurrency_lane():
+def test_learning_proof_consumes_same_head_fresh_commit_artifact_instead_of_fixed_block():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'workflows: ["Live Intelligence Commit Proof"]' in source
+    assert "actions: read" in source
+    assert "run-id: ${{ github.event.workflow_run.id }}" in source
+    assert "github-token: ${{ secrets.GITHUB_TOKEN }}" in source
+    assert 'open("fresh-lineage/fresh-lesson-lineage-ids.json")' in source
+    assert 'fresh_block_id=ids["intelligent_block_id"]' in source
+    assert 'open("fresh-block-id.txt","w").write(fresh_block_id)' in source
+
+
+def test_fresh_learning_handoff_is_dynamic_and_serialized():
     causal = WORKFLOW.read_text(encoding="utf-8")
     producer = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
+    assert 'workflows: ["Live Intelligence Commit Proof"]' in causal
+    assert "github.event.workflow_run.id" in causal
+    assert 'gh run download "$PRODUCER_RUN_ID"' in causal
+    assert 'ids["intelligent_block_id"]' in causal
     assert "group: naya-fresh-learning-proof" in causal
     assert "group: naya-fresh-learning-proof" in producer
     assert "cancel-in-progress: false" in causal
     assert "cancel-in-progress: false" in producer
 
 
-def test_causal_learning_uses_runtime_generated_block_not_historical_fixed_id():
+def test_causal_learning_does_not_use_historical_fixed_fresh_block():
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert 'lesson_key = "NAYA-CAUSAL-FRESH-LESSON-" + uuid.uuid4().hex' in source
-    assert 'open("fresh-causal-block-id.txt","w").write(result["intelligent_block_id"])' in source
-    assert 'block_id=open("fresh-causal-block-id.txt").read().strip()' in source
+    assert "IB-NAYA-FLOW-LESSON-3049c1cc637d41469f626c734f856c3c" not in source
     assert "EXACT_LESSON_ALREADY_LEARNED" not in source
+    assert 'block_id=open("fresh-causal-block-id.txt").read().strip()' in source
