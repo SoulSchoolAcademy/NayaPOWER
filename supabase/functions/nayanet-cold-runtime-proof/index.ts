@@ -72,5 +72,5 @@ Deno.serve(async (req: Request) => {
     if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
     const behavior = lesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "RETAINED_INTELLIGENCE_RETRIEVED";
     return json({ ok: true, receipt: { receipt_type: "NAYA-COLD-RUNTIME-RECEIPT-V1", naya_id: NAYA_ID, owner_id: OWNER_ID, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, block_id: BLOCK_ID, block_owner_id: block.owner_id, authority_grant_id: grantRows[0].grant_id, retained_lesson: lesson, behavior, source_evidence: block.evidence_refs, token_jti: payload.jti ?? null, verified_at: new Date().toISOString() } });
-  } catch (error) { return json({ ok: false, error: String((error as Error)?.message ?? error) }, 400); }
+  } catch (error) { console.error("NAYA_LEARNING_EXPERIMENT_ERROR", error); return json({ ok: false, error: String((error as Error)?.message ?? error) }, 400); }
 });
