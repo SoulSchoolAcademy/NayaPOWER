@@ -72,8 +72,8 @@ def test_fresh_lesson_enters_existing_learn_promote_and_independent_reread_path(
     assert "learn-promote-fresh-lesson" in workflow
     assert 'mode":"candidate"' in workflow
     assert "nayanet-learning-verify" in workflow
-    assert "mode":"cvo"" in workflow
-    assert "mode":"reread"" in workflow
+    assert 'mode":"cvo"' in workflow
+    assert 'mode":"reread"' in workflow
     assert "independent-retained-learning-reread" in workflow
     assert 'status"] == "ACTIVE"' in workflow
     assert "provenance_preserved" in workflow
