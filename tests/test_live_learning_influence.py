@@ -4,6 +4,21 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+import pytest
+
+
+# Module-level os.environ[...] raises KeyError at COLLECTION time, which aborts the
+# ENTIRE pytest run instead of skipping one test. Before this guard, `pytest tests`
+# executed zero tests on this branch. A live proof that cannot run must skip, not
+# break every other test in the repository. Mirrors test_live_supabase_intelligent_blocks.py.
+_MISSING = [n for n in ("SUPABASE_URL", "SUPABASE_USER_ACCESS_TOKEN", "SUPABASE_PUBLISHABLE_KEY")
+            if not os.environ.get(n)]
+if _MISSING:
+    pytest.skip(
+        "protected Supabase live-proof credentials are not present: " + ", ".join(_MISSING),
+        allow_module_level=True,
+    )
+
 
 SUPABASE_URL = os.environ["SUPABASE_URL"].rstrip("/")
 ACCESS_TOKEN = os.environ["SUPABASE_USER_ACCESS_TOKEN"]
