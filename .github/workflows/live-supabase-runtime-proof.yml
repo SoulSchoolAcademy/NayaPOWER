@@ -128,3 +128,105 @@ jobs:
           path: receipts/connect
       - name: Independently verify persisted CONNECT receipt
         run: python tests/verify_connect_runtime_receipt.py receipts/connect/live-connect-runtime-receipt.json
+
+
+
+  learning-influence-experiment:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer \${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "\${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute fresh control-vs-treatment experiment
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "\${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          assert r["ok"] is True, r
+          assert r["learning_id"]=="de0b794b-224b-4d8b-ad1a-3afc6f8d0771"
+          assert r["control"]["evidence"]["retained_intelligence_used"] is False
+          assert r["treatment"]["evidence"]["retained_intelligence_used"] is True
+          assert r["control"]["observed_result"] != r["treatment"]["observed_result"]
+          PY
+      - name: Create independently checkable CVO from persisted pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          open("cvo-request.json","w").write(json.dumps({"mode":"cvo","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
+          PY
+          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @cvo-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify" > causal-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-verification.json"))
+          assert r["ok"] is True, r
+          assert r["causal_verification"]["causal_assessment"]=="CAUSAL_SUPPORTED"
+          assert r["causal_verification"]["verification_status"]=="OUTCOME_VERIFIED"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-learning-experiment
+          path: causal-learning-experiment.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-verification
+          path: causal-verification.json
+
+  independent-learning-influence-verification:
+    needs: learning-influence-experiment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment
+      - name: Mint a fresh independent OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer \${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "\${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read persisted CVO
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          open("verify-request.json","w").write(json.dumps({"mode":"verify","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
+          PY
+          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify" > independent-verification.json
+          python - <<'PY'
+          import json
+          e=json.load(open("causal-learning-experiment.json"))
+          v=json.load(open("independent-verification.json"))
+          assert v["ok"] is True, v
+          c=v["verification"]["causal_verification"]
+          receipt={
+            "schema":"NAYANET_CAUSAL_LEARNING_EXPERIMENT_V1",
+            "target_id":"NAYA-NODE-0001",
+            "learning_id":e["learning_id"],
+            "control":{"receipt_id":e["control"]["id"],"retained_intelligence_used":False,"behavior":e["control"]["observed_result"]},
+            "treatment":{"receipt_id":e["treatment"]["id"],"retained_intelligence_used":True,"behavior":e["treatment"]["observed_result"]},
+            "causal_verification":c,
+            "independent_verification":v["verification"]["independent_verification"]
+          }
+          assert receipt["control"]["behavior"] != receipt["treatment"]["behavior"]
+          assert receipt["independent_verification"] is True
+          json.dump(receipt,open("causal-learning-experiment-receipt.json","w"),indent=2)
+          PY
+          python -m pytest -q tests/test_causal_learning_experiment_contract.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+          path: causal-learning-experiment-receipt.json
