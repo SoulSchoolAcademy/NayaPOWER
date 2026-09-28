@@ -67,6 +67,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: fresh-lesson-lineage
       - name: Mint independent short-lived Naya runtime identity
         shell: bash
         run: |
