@@ -116,8 +116,9 @@ jobs:
           import json
           json.dump({"mode":"candidate","intelligent_block_id":"IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147"},open("candidate-request.json","w"),indent=2)
           PY
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -w "\nHTTP_STATUS=%{http_code}\n" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-candidate.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -o learning-candidate.json -w "%{http_code}" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > candidate-http-status.txt
           cat learning-candidate.json
+          echo "HTTP_STATUS=$(cat candidate-http-status.txt)"
           python - <<'PY'
           import json
           r=json.load(open("learning-candidate.json"))
