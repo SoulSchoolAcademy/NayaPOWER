@@ -11,7 +11,7 @@ def verify(path: Path) -> None:
     assert receipt["block_owner_match"] is True
     assert receipt["authorization_binding"]["status"] == "ACTIVE"
     assert receipt["authorization_binding"]["scope"]["target"] == "NAYA-NODE-0001"
-    assert "naya_node_apply" in receipt["authorization_binding"]["scope"] or True
+    assert "naya_node_apply" in receipt["authorization_binding"]["actions"]
     assert receipt["connect"]["connected"] is True
     assert receipt["connect"]["relationship_count"] >= 1
     assert receipt["behavior"]["consequential"] is True
