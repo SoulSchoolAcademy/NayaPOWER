@@ -8,6 +8,11 @@ Current reality must be explicit and time-bounded.
 
 ## Contents
 
+### Intelligence Reports
+
+- `REPORTS/` — canonical Daily → Weekly → Monthly intelligence-report projections, human and machine views, and publication events.
+
+
 | File | Purpose |
 |---|---|
 | [0001-MAX-10-EXECUTION-QUEUE-V1.md](./0001-MAX-10-EXECUTION-QUEUE-V1.md) | Execution queue management |

@@ -1,0 +1,11 @@
+{
+  "schema": "naya.report-event.index.v1",
+  "events": [
+    {
+      "event_id": "RPE-2026-09-28-001",
+      "event_type": "REPORT_PUBLISHED",
+      "report_id": "DIR-2026-09-28-001",
+      "event_path": "BRAIN/90-OPERATIONS/REPORTS/EVENTS/REPORT-PUBLISHED-2026-09-28.json"
+    }
+  ]
+}

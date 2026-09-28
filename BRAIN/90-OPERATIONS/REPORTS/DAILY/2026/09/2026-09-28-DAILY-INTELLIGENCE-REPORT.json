@@ -1,0 +1,81 @@
+{
+  "schema": "naya.daily-intelligence-report.v1",
+  "report_id": "DIR-2026-09-28-001",
+  "report_type": "DAILY_INTELLIGENCE",
+  "reporting_period": "2026-09-28",
+  "status": "PUBLISHED",
+  "source_boundary": {
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "branch": "main",
+    "source_commit": "3ae1ab0875bef7ded52e1f6d9686b06b508b826e"
+  },
+  "epistemic_rule": "FACT | INTERPRETATION | UNKNOWN | PROPOSED_ACTION",
+  "executive_state": {
+    "classification": "FACT",
+    "summary": "Clean-start architecture remains authoritative; live behavioral, causal, CONNECT, and independent-verification work has materially advanced NAYA-NODE-0001. One fresh owner-session learning-influence receipt remains blocked by invalid owner credentials."
+  },
+  "what_changed": [
+    {"classification":"FACT","item":"CONNECT fail-closed authority-boundary evidence merged and live verified."},
+    {"classification":"FACT","item":"Causal verifier now recomputes control/treatment behavior from authoritative persisted state."},
+    {"classification":"FACT","item":"CVO evidence-preservation defect fixed and persisted causal receipt produced."},
+    {"classification":"FACT","item":"Daily Intelligence Report surface established under BRAIN/90-OPERATIONS/REPORTS."}
+  ],
+  "verified_evidence": [
+    {"kind":"github_actions_run","id":"36451764032","claim":"Causal live proof completed all 10 jobs."},
+    {"kind":"github_actions_run","id":"36449733072","claim":"CONNECT live proof completed all 10 jobs."},
+    {"kind":"commit","id":"3ae1ab0875bef7ded52e1f6d9686b06b508b826e","claim":"Persisted independently recomputed causal receipt."},
+    {"kind":"commit","id":"d289ff2abfd03dc65ebae3775de05b16e46848c6","claim":"Merged CONNECT authority-boundary fix."}
+  ],
+  "important_discoveries": [
+    {"classification":"FACT","item":"The earlier causal verifier could self-certify without comparing control and treatment."},
+    {"classification":"FACT","item":"The earlier CVO write could destroy treatment evidence because of an evidence-shape mismatch."},
+    {"classification":"INTERPRETATION","item":"Independent verification must recompute claims from authoritative persisted state and preserve the evidence it needs to inspect."}
+  ],
+  "current_intelligence_graph": {
+    "classification":"FACT",
+    "summary":"Nine-node semantic model remains SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE.",
+    "bounded_graph_behavioral_influence":"VERIFIED",
+    "generalized_successor_behavioral_improvement":"UNKNOWN"
+  },
+  "open_gaps": [
+    {"status":"BLOCKED","item":"Fresh owner-session learning-influence receipt; legitimate owner credentials are required."},
+    {"status":"UNKNOWN","item":"Cold-successor continuity with behavioral improvement."},
+    {"status":"UNKNOWN","item":"Full Sender → Receiver → Hub wiring in the clean-start architecture."},
+    {"status":"UNKNOWN","item":"Production runtime convergence."}
+  ],
+  "decisions_locked": [
+    "Clean-start architecture is current authority.",
+    "Reports are projections, not a second brain.",
+    "Daily → Weekly → Monthly is the canonical reporting hierarchy.",
+    "Human Markdown and machine JSON are two views of one report identity.",
+    "Published reports are immutable; corrections use supersession.",
+    "Hub and Activity Feed consume reports rather than becoming the source of truth."
+  ],
+  "top_10_priorities": [
+    "Resolve legitimate owner-session learning-influence proof boundary.",
+    "Qualify cold successor continuity without inherited authority.",
+    "Establish Sender → Receiver → Hub.",
+    "Prove canonical runtime binding.",
+    "Integrate the nine-node lifecycle.",
+    "Complete revocation/refusal/replay verification matrix.",
+    "Automate Daily report creation/publication.",
+    "Project REPORT_PUBLISHED into Activity Feed.",
+    "Add Weekly and Monthly lineage-preserving rollups.",
+    "Complete production qualification."
+  ],
+  "next_action": {
+    "classification":"PROPOSED_ACTION",
+    "exactly_one": true,
+    "text":"Rotate/refresh the legitimate Supabase owner-session credentials required by the existing cold-session learning-influence proof, then run live-learning-influence-proof.yml. Do not replace owner authority with service-role or runtime OIDC."
+  },
+  "provenance": {
+    "issue_554":"https://github.com/SoulSchoolAcademy/NayaPOWER/issues/554",
+    "evidence_basis":["GitHub main history","GitHub Actions live-proof receipts","Team Naya durable handoffs"],
+    "second_store": false
+  },
+  "publication": {
+    "event_type":"REPORT_PUBLISHED",
+    "event_path":"BRAIN/90-OPERATIONS/REPORTS/EVENTS/REPORT-PUBLISHED-2026-09-28.json",
+    "automatic_hub_projection":"NOT_YET_PROVEN"
+  }
+}

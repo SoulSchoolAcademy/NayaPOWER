@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-09-27T00:00:00Z",
+  "generated_at": "2026-09-28T00:00:00Z",
   "status": "POPULATION_IN_PROGRESS_RUNTIME_CONVERGENCE_HARDENED",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
@@ -194,5 +194,15 @@
     "living_application_runtime": "NOT_PROVEN",
     "successor_behavioral_improvement": "NOT_PROVEN",
     "production_proof": "NOT_PROVEN"
+  },
+  "intelligence_reports": {
+    "contract": "BRAIN/90-OPERATIONS/REPORTS/0001-DAILY-INTELLIGENCE-REPORT-CONTRACT-V1.md",
+    "root": "BRAIN/90-OPERATIONS/REPORTS/",
+    "daily_index": "BRAIN/90-OPERATIONS/REPORTS/DAILY/INDEX.json",
+    "latest_daily": "BRAIN/90-OPERATIONS/REPORTS/DAILY/2026/09/2026-09-28-DAILY-INTELLIGENCE-REPORT.json",
+    "publication_events": "BRAIN/90-OPERATIONS/REPORTS/EVENTS/INDEX.json",
+    "view_policy": "human_markdown_and_machine_json_are_two_views_of_one_report_identity",
+    "hierarchy": "DAILY → WEEKLY → MONTHLY",
+    "hub_projection": "NOT_YET_RUNTIME_PROVEN"
   }
 }
