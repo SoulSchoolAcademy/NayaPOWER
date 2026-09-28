@@ -1,0 +1,16 @@
+{
+  "schema": "naya.daily-report.index.v1",
+  "status": "PUBLISHED",
+  "report_type": "DAILY_INTELLIGENCE",
+  "latest_report_id": "DIR-2026-09-28-001",
+  "reports": [
+    {
+      "report_id": "DIR-2026-09-28-001",
+      "reporting_period": "2026-09-28",
+      "human_view": "BRAIN/90-OPERATIONS/REPORTS/DAILY/2026/09/2026-09-28-DAILY-INTELLIGENCE-REPORT.md",
+      "machine_view": "BRAIN/90-OPERATIONS/REPORTS/DAILY/2026/09/2026-09-28-DAILY-INTELLIGENCE-REPORT.json",
+      "status": "PUBLISHED",
+      "publication_event": "BRAIN/90-OPERATIONS/REPORTS/EVENTS/REPORT-PUBLISHED-2026-09-28.json"
+    }
+  ]
+}
