@@ -49,3 +49,19 @@ def test_fresh_lesson_intelligence_commit_uses_naya_runtime_and_persists_connect
     assert verify["status"] == "LINEAGE_VERIFIED"
     assert verify["independent_verification"] is True
     assert all(verify["checks"].values()), verify
+
+
+def test_runtime_commit_uses_direct_postgrest_rpc_boundary():
+    from pathlib import Path
+
+    source = (
+        Path(__file__).resolve().parents[1]
+        / "supabase"
+        / "functions"
+        / "nayanet-intelligence-commit-runtime"
+        / "index.ts"
+    ).read_text(encoding="utf-8")
+
+    call_commit = source.split("async function callCommit", 1)[1].split("const idColumn", 1)[0]
+    assert '"/rest/v1/rpc/nayanet_intelligence_commit_runtime"' in call_commit
+    assert "admin.rpc(" not in call_commit
