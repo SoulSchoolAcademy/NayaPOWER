@@ -1,0 +1,95 @@
+name: Governed Supabase Production Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DEPLOY to authorize a production Edge Function deployment"
+        required: true
+        default: "NO"
+        type: string
+
+permissions:
+  contents: read
+  actions: write
+
+env:
+  SUPABASE_PROJECT_ID: dahisasgpfvziswqvmvm
+  PROOF_WORKFLOW: live-supabase-runtime-proof.yml
+
+jobs:
+  deploy-and-prove:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+    steps:
+      - name: Require explicit production authorization
+        run: |
+          set -euo pipefail
+          test "${{ inputs.confirm }}" = "DEPLOY"
+          test -n "${SUPABASE_ACCESS_TOKEN}"
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - uses: supabase/setup-cli@3c2f5e2ae34c34e428e8e206e2c4d21fa2d20fbf # v2.1.1
+        with:
+          version: latest
+
+      - name: Stamp the deployed source revision in the working tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          p = Path("supabase/functions/nayanet-cold-runtime-proof/index.ts")
+          s = p.read_text(encoding="utf-8")
+          sentinel = 'const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
+          replacement = f'const DEPLOYED_SOURCE_REVISION = "{os.environ["GITHUB_SHA"]}";'
+          if s.count(sentinel) != 1:
+              raise SystemExit("expected exactly one UNSTAMPED revision sentinel")
+          p.write_text(s.replace(sentinel, replacement), encoding="utf-8")
+          print(f"stamped deployed source revision: {os.environ['GITHUB_SHA']}")
+          PY
+
+      - name: Deploy the three governed runtime functions
+        run: |
+          set -euo pipefail
+          supabase functions deploy nayanet-cold-runtime-proof --use-api --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy nayanet-intelligence-commit-runtime --use-api --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy nayanet-causal-learning-experiment --use-api --project-ref "$SUPABASE_PROJECT_ID"
+
+      - name: Dispatch the canonical live proof workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+
+      - name: Wait for the canonical proof workflow and report its result
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 60); do
+            run_json="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --limit 5 --json databaseId,headSha,status,conclusion,event,createdAt)"
+            run_id="$(python - <<'PY' "$run_json"
+          import json,sys,os
+          runs=json.loads(sys.argv[1])
+          head=os.environ["GITHUB_SHA"]
+          matches=[r for r in runs if r.get("headSha")==head and r.get("event")=="workflow_dispatch"]
+          print(max(matches,key=lambda r:r["createdAt"])["databaseId"] if matches else "")
+          PY
+            )"
+            if [ -n "$run_id" ]; then
+              gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
+              exit $?
+            fi
+            sleep 10
+          done
+          echo "Timed out waiting for canonical proof workflow dispatch"
+          exit 1
