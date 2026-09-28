@@ -30,11 +30,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .naya/evidence
-          curl -fsS -X POST \
+          curl -sS -X POST \
             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
             -H "Content-Type: application/json" \
             --data '{"mode":"cvo"}' \
             "${CVO_FUNCTION_URL}" > .naya/evidence/live-cvo-runtime-receipt.json
+          cat .naya/evidence/live-cvo-runtime-receipt.json
           python - <<'PY'
           import json
           r=json.load(open('.naya/evidence/live-cvo-runtime-receipt.json',encoding='utf-8'))
