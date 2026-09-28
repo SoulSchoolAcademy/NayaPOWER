@@ -21,6 +21,7 @@ def test_cvo_runtime_derives_action_and_outcome_from_persisted_receipts():
     assert "nayanet_execution_outcomes" in source
     assert "NAYA-NODE-0001-COLD-BEHAVIOR" in source
     assert "TREATMENT_OUTCOME_EVIDENCE_INVALID" in source
+    assert "causal.evidence?.treatment?.evidence?.provenance_present" in source
     assert "comparison_receipt_id" in source
     assert "NAYA-NODE-0001-TREATMENT" in source
     assert "NAYA-NODE-0001-BASELINE" in source
