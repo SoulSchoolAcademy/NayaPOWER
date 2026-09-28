@@ -1,0 +1,56 @@
+name: Collective Chain Readiness Gate
+
+# The Collective Intelligence Chain is the acceptance test for NayaPOWER. Until this
+# gate ran in CI it was a script nobody executed, which is how the 2026-09-26 reset
+# could delete all 88 migrations, the canonical receiver and the machine contract and
+# leave 8 of 11 links reporting BLOCKED_NO_RUNTIME for two days without detection.
+#
+# This workflow makes the instrument mandatory. It does not make the chain pass.
+# It runs the gate and its controls and fails the build on regression.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  chain-readiness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install gate dependencies
+        run: python -m pip install --quiet jsonschema
+
+      # The controls run FIRST. A gate that only ever reports one answer is worthless,
+      # so we prove the gate still discriminates before trusting a single verdict from it.
+      - name: Prove the gate still discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py
+
+      - name: Measure collective intelligence chain readiness
+        run: python BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py
+
+      - name: Record measured readiness as durable evidence
+        if: always()
+        run: |
+          python BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py \
+            > chain-readiness-report.txt 2>&1 || true
+          cat chain-readiness-report.txt
+          {
+            echo '```'
+            cat chain-readiness-report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          mkdir -p BRAIN/06-PROOF
+          cp chain-readiness-report.txt \
+            "BRAIN/06-PROOF/CHAIN-READINESS-${GITHUB_SHA::8}.txt"
+
+      - name: Commit measured readiness receipt
+        if: always()
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "evidence(chain): measured readiness receipt for ${GITHUB_SHA::8}"
+          file_pattern: "BRAIN/06-PROOF/CHAIN-READINESS-*.txt"
