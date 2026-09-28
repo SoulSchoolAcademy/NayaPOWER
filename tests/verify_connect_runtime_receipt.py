@@ -3,6 +3,21 @@ import sys
 from pathlib import Path
 
 
+REQUIRED_RECEIPT_FIELDS = (
+    "receipt_type", "naya_id", "block_id", "block_owner_match", "authorization_binding",
+    "connect", "behavior", "authority_boundary", "production_mutation_performed",
+    "rls_changed", "credentials_committed",
+)
+REQUIRED_CONNECT_FIELDS = ("connected", "relationship_count")
+REQUIRED_BEHAVIOR_FIELDS = ("consequential", "allowed", "executed", "blocked_by")
+REQUIRED_AUTHORITY_BOUNDARY_FIELDS = ("connect_grants_authority", "consequential_actions_authorized")
+
+# NOTE: this module is the single source of truth for the CONNECT receipt contract.
+# BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py imports the tuples above so
+# that source/runtime parity is checked against the SAME contract that verifies the
+# receipt. A detector with its own hand-copied field list would itself drift.
+
+
 def _require(container: object, key: str, where: str):
     if not isinstance(container, dict) or key not in container:
         raise SystemExit(
@@ -15,14 +30,14 @@ def _require(container: object, key: str, where: str):
 
 def verify(path: Path) -> None:
     receipt = json.loads(path.read_text(encoding="utf-8"))["receipt"]
-    for field in ("receipt_type", "naya_id", "block_id", "block_owner_match", "authorization_binding",
-                  "connect", "behavior", "authority_boundary", "production_mutation_performed",
-                  "rls_changed", "credentials_committed"):
+    for field in REQUIRED_RECEIPT_FIELDS:
         _require(receipt, field, "receipt")
     behavior = receipt["behavior"]
-    for field in ("consequential", "allowed", "executed", "blocked_by"):
+    for field in REQUIRED_CONNECT_FIELDS:
+        _require(receipt["connect"], field, "receipt.connect")
+    for field in REQUIRED_BEHAVIOR_FIELDS:
         _require(behavior, field, "receipt.behavior")
-    for field in ("connect_grants_authority", "consequential_actions_authorized"):
+    for field in REQUIRED_AUTHORITY_BOUNDARY_FIELDS:
         _require(receipt["authority_boundary"], field, "receipt.authority_boundary")
     assert receipt["receipt_type"] == "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1"
     assert receipt["naya_id"] == "NAYA-NODE-0001"

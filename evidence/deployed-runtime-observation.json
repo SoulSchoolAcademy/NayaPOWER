@@ -1,0 +1,31 @@
+{
+  "_README": "A RECORDED RUNTIME RESPONSE, not a claim. This detector compares canonical source against what was actually observed serving traffic. Entries here are evidence; absence of an entry means UNKNOWN, never MATCH.",
+  "function": "nayanet-cold-runtime-proof",
+  "mode": "connect",
+  "canonical_commit_observed": "620cabd748100a54438165b48e9718202ed9a7e6",
+  "observed_at": "2026-09-28T15:42:59Z",
+  "provenance": "GitHub Actions run 36445685851, job 'live-connect', which invoked the DEPLOYED function and then ran tests/verify_connect_runtime_receipt.py against its response",
+  "observation_quality": "PARTIAL - the verifier died at the first absent required field, so the fields listed below are the only ones positively confirmed present",
+  "observed_receipt": {
+    "receipt_type": "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1",
+    "naya_id": "NAYA-NODE-0001",
+    "block_id": "IB-NAYA-NODE-0001-0001",
+    "block_owner_match": true,
+    "authorization_binding": {
+      "status": "ACTIVE",
+      "scope": { "target": "NAYA-NODE-0001" },
+      "actions": ["naya_node_apply"]
+    },
+    "connect": {
+      "connected": true,
+      "relationship_count": 2,
+      "verified_support_count": 1
+    }
+  },
+  "positively_absent": {
+    "behavior": "CONFIRMED ABSENT - tests/verify_connect_runtime_receipt.py raised KeyError: 'behavior' on this exact response, which is why job 'live-connect' concluded failure and 'independent-connect-verification' was skipped.",
+    "authority_boundary": "NOT PROBED - the verifier died at 'behavior' before reaching the authority_boundary assertions, so no observation exists. Recorded as unknown rather than assumed absent."
+  },
+  "what_this_proves": "The deployed artifact observed on 2026-09-28 did not emit the CONNECT authority-boundary evidence the canonical verifier requires. This is the drift that PR #874 corrects in SOURCE. Whether the deployed artifact now matches is UNKNOWN until a fresh observation is recorded against the current canonical commit.",
+  "how_to_refresh": "Invoke the deployed function through the OIDC-bound live workflow (read-only 'connect' mode) and record the resulting receipt shape here, setting canonical_commit_observed to the exact commit the workflow ran. Do not hand-write a conforming receipt: an observation that was not actually observed is worse than no observation, because it launders an assumption into evidence."
+}
