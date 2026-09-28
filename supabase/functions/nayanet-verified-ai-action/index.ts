@@ -389,7 +389,6 @@ Deno.serve(async (req) => {
         .from("nayanet_execution_outcomes")
         .update({
           verified: true,
-          verified_value: 1,
           verification_method: "INDEPENDENT_RUNTIME_REREAD_OF_PERSISTED_AUTHORITATIVE_STATE",
         })
         .eq("outcome_id", outcome.outcome_id)
