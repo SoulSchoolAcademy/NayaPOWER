@@ -61,6 +61,8 @@ def _first_party_modules() -> set:
     nothing.
     """
     names = {"tests"}
+    # Test helper modules are first-party too; they must not be mistaken for PyPI distributions.
+    names.update(p.stem for p in TESTS.glob("*.py"))
     for entry in REPO.iterdir():
         if entry.is_dir() and (entry / "__init__.py").exists():
             names.add(entry.name)
