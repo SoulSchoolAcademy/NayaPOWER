@@ -127,6 +127,7 @@
     const NAYA_HUB_URL = 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/';
     let nayaSupabaseClient = null;
     let nayaOtpSent = false;
+    const NAYA_VERIFY_PAGE = new URL(window.location.pathname + '?verify=1', window.location.origin).href;
 
     async function nayaAuthClient() {
       if (nayaSupabaseClient) return nayaSupabaseClient;
@@ -189,7 +190,7 @@
       status.textContent = 'Sending your six-digit code…';
       try {
         const client = await nayaAuthClient();
-        const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+        const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: NAYA_VERIFY_PAGE } });
         if (error) throw error;
         sessionStorage.setItem('nayanet_auth_email', email);
         nayaOtpSent = true;
@@ -219,7 +220,22 @@
       } catch (error) { status.textContent = 'VERIFICATION FAILED — ' + String(error?.message || error); }
     }
 
-    window.addEventListener('DOMContentLoaded', nayaAuthPanel, { once: true });
+    window.addEventListener('DOMContentLoaded', () => {
+      nayaAuthPanel();
+      const verifyMode = new URLSearchParams(window.location.search).get('verify') === '1';
+      const savedEmail = sessionStorage.getItem('nayanet_auth_email') || '';
+      const emailInput = document.getElementById('nayaAuthEmail');
+      const otpRow = document.getElementById('nayaOtpRow');
+      const status = document.getElementById('nayaAuthStatus');
+      if (savedEmail) emailInput.value = savedEmail;
+      if (verifyMode) {
+        nayaOtpSent = true;
+        otpRow.style.display = 'block';
+        document.querySelector('.activate-btn').textContent = 'VERIFY CODE -> ENTER NAYANET';
+        status.textContent = 'CODE READY - enter the six digits from your NayaNET email.';
+        document.getElementById('nayaAuthOtp').focus();
+      }
+    }, { once: true });
 
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
