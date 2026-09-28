@@ -40,22 +40,39 @@ function adminClient() {
   return createClient(url, key);
 }
 
-async function callCommit(admin: ReturnType<typeof adminClient>, body: Json, jti: string) {
-  const {data, error} = await admin.rpc("nayanet_intelligence_commit_runtime", {
-    p_naya_id: NAYA_ID,
-    p_owner_id: OWNER_ID,
-    p_runtime_jti: jti,
-    p_event_id: String(body.p_event_id ?? ""),
-    p_title: String(body.p_title ?? ""),
-    p_content: String(body.p_content ?? ""),
-    p_category: String(body.p_category ?? ""),
-    p_topic: String(body.p_topic ?? ""),
-    p_target_id: String(body.p_target_id ?? NAYA_ID),
-    p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
-    p_project_id: String(body.p_project_id ?? "NayaNET"),
+async function callCommit(body: Json, jti: string) {
+  const url = Deno.env.get("SUPABASE_URL");
+  const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!url || !key) throw new Error("SERVER_AUTH_CONFIG_MISSING");
+
+  // Use the same direct PostgREST boundary proven by the existing cold-runtime
+  // functions. The previous supabase-js .rpc() path could remain pending until
+  // Supabase Edge's 150s worker resource limit terminated the request.
+  const response = await fetch(url + "/rest/v1/rpc/nayanet_intelligence_commit_runtime", {
+    method: "POST",
+    headers: {
+      apikey: key,
+      Authorization: "Bearer " + key,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify({
+      p_naya_id: NAYA_ID,
+      p_owner_id: OWNER_ID,
+      p_runtime_jti: jti,
+      p_event_id: String(body.p_event_id ?? ""),
+      p_title: String(body.p_title ?? ""),
+      p_content: String(body.p_content ?? ""),
+      p_category: String(body.p_category ?? ""),
+      p_topic: String(body.p_topic ?? ""),
+      p_target_id: String(body.p_target_id ?? NAYA_ID),
+      p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
+      p_project_id: String(body.p_project_id ?? "NayaNET"),
+    }),
   });
-  if (error) throw new Error(error.message);
-  return data as Json;
+  const text = await response.text();
+  if (!response.ok) throw new Error("COMMIT_RPC_" + response.status + ":" + text);
+  return JSON.parse(text) as Json;
 }
 
 const idColumn: Record<string,string> = {
