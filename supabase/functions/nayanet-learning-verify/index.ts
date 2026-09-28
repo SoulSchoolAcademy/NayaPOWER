@@ -71,7 +71,7 @@ Deno.serve(async (req: Request) => {
       const sourceEventId = String(evidenceRefs[0]?.event_id || "");
       const commitReceiptId = String(evidenceRefs[0]?.receipt_id || "");
       if (!sourceEventId || !commitReceiptId) return json({ ok: false, error: "BLOCK_PROVENANCE_INCOMPLETE" }, 409);
-      const { data: event, error: eventError } = await admin.from("nayanet_cognition_events").select("id,event_id,created_at,receipt_id").eq("event_id", sourceEventId).eq("receipt_id", commitReceiptId).eq("user_id", ownerId).maybeSingle();
+      const { data: event, error: eventError } = await admin.from("nayanet_cognition_events").select("id,event_id,created_at,receipt_id").eq("id", sourceEventId).eq("receipt_id", commitReceiptId).eq("user_id", ownerId).maybeSingle();
       if (eventError) throw eventError;
       if (!event) return json({ ok: false, error: "SOURCE_EVENT_NOT_FOUND" }, 409);
       const { data: lineage, error: lineageError } = await admin.from("nayanet_intelligence_lineage").select("id,source_event_id,target_event_id,relation,created_at").eq("source_event_id", event.id).maybeSingle();
