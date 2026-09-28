@@ -63,7 +63,6 @@ Deno.serve(async (req: Request) => {
     const mode = String(body.mode ?? "cvo");
     const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_TREATMENT_ID);
     const controlId = String(body.control_receipt_id ?? DEFAULT_CONTROL_ID);
-    const learningId = body.learning_id ? String(body.learning_id) : null;
     if (mode !== "cvo" && mode !== "verify") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
 
     const {data:treatment,error:te} = await admin.from("nayanet_execution_receipts").select("*").eq("id",treatmentId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
@@ -72,16 +71,11 @@ Deno.serve(async (req: Request) => {
     if (ce) throw ce;
     if (!treatment || !control) return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404);
 
-    if (!treatment.action.startsWith("NAYA-NODE-0001-TREATMENT-") || !control.action.startsWith("NAYA-NODE-0001-CONTROL-")) {
+    if (treatment.action !== "NAYA-NODE-0001-TREATMENT" || control.action !== "NAYA-NODE-0001-BASELINE") {
       return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_INVALID"},409);
     }
     if (treatment.status !== "SUCCESS" || control.status !== "SUCCESS") {
       return json({ok:false,error:"PAIRED_ACTION_OUTCOME_NOT_SUCCESS"},409);
-    }
-    if (learningId) {
-      const {data:learning,error:le} = await admin.from("learning_evidence").select("id,target_id,status,source_event_id").eq("id",learningId).eq("member_id",OWNER_ID).maybeSingle();
-      if (le) throw le;
-      if (!learning || learning.target_id !== NAYA_ID || learning.status !== "CANDIDATE") return json({ok:false,error:"LEARNING_CANDIDATE_INVALID"},409);
     }
 
     if (mode === "verify") {
@@ -168,7 +162,7 @@ Deno.serve(async (req: Request) => {
       .single();
     if (ue) throw ue;
 
-    return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:op.id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
+    return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:causal.causal_id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
   } catch (error) {
     return json({ok:false,error:String((error as Error)?.message ?? error)},400);
   }
