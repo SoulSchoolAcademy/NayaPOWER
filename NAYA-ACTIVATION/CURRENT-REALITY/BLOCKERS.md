@@ -12,4 +12,4 @@ For every blocker record:
 
 Unknown means unresolved. Do not promote it simply because other checks are green.
 
-Examples in this file are navigation guidance only. Always reconcile against current control-plane state, project-intelligence and live workflows.
+Always reconcile against current `main`, current GitHub work, ratified project-intelligence and claim-matched live/workflow evidence. Dated queues and state documents are snapshots, not automatic current truth.
