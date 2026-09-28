@@ -124,7 +124,7 @@ Deno.serve(async (req: Request) => {
       evidence: {
         refs: [TREATMENT_ID, CONTROL_ID, "IB-NAYA-NODE-0001-0001"],
         control: control.evidence,
-        treatment: treatment.evidence,
+        treatment: {\n          condition: treatment.evidence?.condition ?? "TREATMENT",\n          intelligence_id: treatment.evidence?.intelligence_id ?? "IB-NAYA-NODE-0001-0001",\n          retained_intelligence_used: treatment.evidence?.retained_intelligence_used === true,\n        },
       },
       causal_method: "CONTROLLED_INTERVENTION",
       causal_assessment: "CAUSAL_SUPPORTED",
@@ -144,7 +144,7 @@ Deno.serve(async (req: Request) => {
 
     const existingEvidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
     const updatedEvidence = [...existingEvidence.filter((item:Record<string,unknown>) => !item?.causal_verification), {causal_verification:causal}];
-    const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",TREATMENT_ID).eq("user_id",OWNER_ID).select("*").single();
+    const {data:updated,error:ue} = await admin.from("nayanet_execution_receipts").update({evidence:updatedEvidence}).eq("id",TREATMENT_ID).eq("user_id",OWNER_ID).select("id,action,status,evidence").single();
     if (ue) throw ue;
 
     return json({ok:true,schema:"NAYANET_CAUSAL_VERIFY_RUNTIME_V1",operation_id:op.id,causal_verification:causal,receipt:updated,runtime_identity:"github-actions-oidc",workflow_ref:workflowRef,token_jti:payload.jti ?? null});
