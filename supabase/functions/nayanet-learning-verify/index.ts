@@ -91,8 +91,34 @@ Deno.serve(async (req: Request) => {
       if (!lesson) return json({ ok: false, error: "LESSON_CONTENT_REQUIRED" }, 409);
       const existingRows = await admin.from("learning_evidence").select("id,status,claim,source_event_id,observed_value,verification_method,provenance,created_at").eq("member_id", ownerId).eq("target_id", "NAYA-NODE-0001").eq("status", "CANDIDATE").limit(100);
       if (existingRows.error) throw existingRows.error;
-      const existing = (existingRows.data || []).find((row: any) => row?.observed_value?.intelligent_block_id === blockId);
-      if (existing) return json({ ok: true, created: false, learning: existing, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+      const candidates = existingRows.data || [];
+      const matchingCandidates = candidates.filter(
+        (row: any) =>
+          row?.observed_value?.intelligent_block_id === blockId ||
+          (
+            typeof row?.claim === "string" &&
+            row.claim === lesson &&
+            row?.source_event_id
+          )
+      );
+      if (matchingCandidates.length > 1) {
+        return json({ ok: false, error: "AMBIGUOUS_EXISTING_LEARNING_CANDIDATES", candidate_ids: matchingCandidates.map((row: any) => row.id) }, 409);
+      }
+      const existing = matchingCandidates[0];
+      if (existing) {
+        return json({
+          ok: true,
+          created: false,
+          learning: existing,
+          source: { event, block, lineage, relationship, index, checkpoint },
+          reuse_reason: existing?.observed_value?.intelligent_block_id === blockId
+            ? "CANONICAL_BLOCK_BINDING"
+            : "EXACT_PERSISTED_LESSON_CLAIM",
+          runtime_identity: "github-actions-oidc",
+          workflow_ref: workflowRef,
+          token_jti: payload.jti ?? null,
+        });
+      }
       const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
       const { data: learning, error: createError } = await admin.from("learning_evidence").insert(candidate).select("*").single();
       if (createError) throw createError;
