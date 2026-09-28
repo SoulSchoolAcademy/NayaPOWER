@@ -126,6 +126,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p .naya/evidence
           action_receipt_id="$(python -c 'import json;print(json.load(open("evidence/authorized/authorized-action.json",encoding="utf-8"))["receipt"]["id"])')"
           refusal_receipt_id="$(python -c 'import json;print(json.load(open("evidence/refusal/authority-absent-refusal.json",encoding="utf-8"))["refusal_receipt_id"])')"
           python - <<PY
