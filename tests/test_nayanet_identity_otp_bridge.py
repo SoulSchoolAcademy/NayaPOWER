@@ -14,7 +14,7 @@ def test_identity_uses_existing_user_otp_not_anonymous_auth():
 def test_identity_transfers_authenticated_session_without_query_tokens():
     html = IDENTITY.read_text(encoding="utf-8")
     assert "#access_token=" in html
-    assert "#refresh_token=" in html
+    assert "&refresh_token=" in html
     assert "access_token=" not in html.split("#access_token=", 1)[0]
 
 
