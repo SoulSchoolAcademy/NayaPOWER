@@ -132,7 +132,11 @@ Deno.serve(async (req: Request) => {
       evidence: {
         refs: [treatmentId, controlId, "IB-NAYA-NODE-0001-0001"],
         control: control.evidence,
-        treatment: {\n          condition: treatment.evidence?.condition ?? "TREATMENT",\n          intelligence_id: treatment.evidence?.intelligence_id ?? "IB-NAYA-NODE-0001-0001",\n          retained_intelligence_used: treatment.evidence?.retained_intelligence_used === true,\n        },
+        treatment: {
+          condition: treatment.evidence?.condition ?? "TREATMENT",
+          intelligence_id: treatment.evidence?.intelligence_id ?? "IB-NAYA-NODE-0001-0001",
+          retained_intelligence_used: treatment.evidence?.retained_intelligence_used === true,
+        },
       },
       causal_method: "CONTROLLED_INTERVENTION",
       causal_assessment: "CAUSAL_SUPPORTED",
