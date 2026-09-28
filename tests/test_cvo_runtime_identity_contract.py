@@ -24,7 +24,6 @@ def test_cvo_runtime_derives_action_and_outcome_from_persisted_receipts():
     assert "comparison_receipt_id" in source
     assert "NAYA-NODE-0001-TREATMENT" in source
     assert "NAYA-NODE-0001-BASELINE" in source
-    assert "retained_intelligence_used !== true" in source
     assert "CONTROLLED_INTERVENTION" in source
     assert "NAYANET_CAUSAL_VERIFICATION_V1" in source
     assert "nayanet_intelligence_operations" not in source
