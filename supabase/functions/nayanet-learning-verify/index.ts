@@ -216,14 +216,17 @@ Deno.serve(async (req: Request) => {
         x?.schema === verificationEvidence.schema && x?.learning_id === promoted.id
       );
 
+      const existingLearning = Array.isArray(existingReceipt.learning) ? existingReceipt.learning : [];
+      const hasVerifiedLearning = existingLearning.some((x: any) =>
+        x?.learning_id === promoted.id && x?.verified === true
+      );
       const { data: updatedReceipt, error: updateReceiptError } = await admin
         .from("nayanet_execution_receipts")
         .update({
           evidence: hasVerificationEvidence ? evidence : [...evidence, verificationEvidence],
-          learning: [
-            ...(Array.isArray(existingReceipt.learning) ? existingReceipt.learning : []),
-            { learning_id: promoted.id, verification_runtime_jti: payload.jti ?? null, verified: true, lineage_id: lineage.id },
-          ],
+          learning: hasVerifiedLearning
+            ? existingLearning
+            : [...existingLearning, { learning_id: promoted.id, verification_runtime_jti: payload.jti ?? null, verified: true, lineage_id: lineage.id }],
         })
         .eq("id", receiptId)
         .eq("user_id", ownerId)
