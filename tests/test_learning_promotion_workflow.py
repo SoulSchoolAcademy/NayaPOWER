@@ -35,3 +35,10 @@ def test_learning_verifier_is_machine_authenticated_by_governed_oidc_not_user_se
     assert 'payload.ref !== REF' in source
     assert 'auth.getUser' not in source
     assert 'SUPABASE_USER_ACCESS_TOKEN' not in source
+
+
+def test_learning_influence_retries_unique_revision_allocation_under_concurrency():
+    source = (ROOT / "supabase" / "functions" / "nayanet-cold-runtime-proof" / "index.ts").read_text(encoding="utf-8")
+    assert "RECEIPT_REVISION_RETRY" in source
+    assert "23505" in source
+    assert "insertReceiptWithRetry" in source
