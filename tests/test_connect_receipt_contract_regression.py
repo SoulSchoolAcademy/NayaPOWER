@@ -43,6 +43,11 @@ def _binding():
 
 def _good_receipt():
     return {
+        # Document-level parity marker. The deployed bundle cannot be inspected from
+        # outside, so the contract now requires the runtime to declare which
+        # canonical commit it was built from. Without this, a source change that
+        # was never deployed is undetectable.
+        "deployed_source_revision": "76f0360cd3dc5e1f0b1a1b1e6f5d3b8a4c2e9f710",
         "receipt": {
             "receipt_type": "NAYA-LIVE-CONNECT-RUNTIME-RECEIPT-V1",
             "naya_id": "NAYA-NODE-0001",

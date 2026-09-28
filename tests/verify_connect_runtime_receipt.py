@@ -12,6 +12,13 @@ REQUIRED_CONNECT_FIELDS = ("connected", "relationship_count")
 REQUIRED_BEHAVIOR_FIELDS = ("consequential", "allowed", "executed", "blocked_by")
 REQUIRED_AUTHORITY_BOUNDARY_FIELDS = ("connect_grants_authority", "consequential_actions_authorized")
 
+# Checked on the RESPONSE DOCUMENT, not inside the receipt: the deployed bundle
+# cannot be inspected from outside, so the only way to know which canonical commit
+# is serving traffic is for the runtime to report it. Without this, a source change
+# that was never deployed is undetectable.
+REQUIRED_DOCUMENT_FIELDS = ("deployed_source_revision",)
+UNSTAMPED = "UNSTAMPED"
+
 # NOTE: this module is the single source of truth for the CONNECT receipt contract.
 # BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py imports the tuples above so
 # that source/runtime parity is checked against the SAME contract that verifies the
@@ -29,7 +36,21 @@ def _require(container: object, key: str, where: str):
 
 
 def verify(path: Path) -> None:
-    receipt = json.loads(path.read_text(encoding="utf-8"))["receipt"]
+    document = json.loads(path.read_text(encoding="utf-8"))
+    for field in REQUIRED_DOCUMENT_FIELDS:
+        _require(document, field, "document")
+    # An UNSTAMPED marker is not a pass. The deployed bundle cannot be inspected
+    # from outside, so a receipt that cannot name its source revision is
+    # untraceable - and an untraceable receipt must never be certified as
+    # conformant, because that is precisely how an undeployed change hides.
+    if document["deployed_source_revision"] == UNSTAMPED:
+        raise SystemExit(
+            "CONNECT_RECEIPT_UNTRACEABLE: deployed_source_revision is UNSTAMPED. The runtime cannot "
+            "declare which canonical commit is serving traffic, so this receipt cannot be tied to any "
+            "source. Whoever deploys must set DEPLOYED_SOURCE_REVISION to the commit actually "
+            "deployed and redeploy. This is an absence of evidence, not a pass."
+        )
+    receipt = document["receipt"]
     for field in REQUIRED_RECEIPT_FIELDS:
         _require(receipt, field, "receipt")
     behavior = receipt["behavior"]

@@ -112,10 +112,29 @@ jobs:
           mkdir -p .naya/evidence
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=connect" > .naya/evidence/live-connect-runtime-receipt.json
           python tests/verify_connect_runtime_receipt.py .naya/evidence/live-connect-runtime-receipt.json
+      - name: Record deployed-runtime observation from the real response
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Generated from the file the runtime actually produced. Never hand-written.
+          python BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py \
+            .naya/evidence/live-connect-runtime-receipt.json \
+            .naya/evidence/deployed-runtime-observation.json
+      - name: Fail if the deployed artifact is not the current canonical source
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This is the whole point: a canonical source change that was never
+          # deployed must turn this workflow RED, on its own, with no human
+          # prompting anything. Exit codes: 0 MATCH | 1 DRIFT/STALE/UNKNOWN.
+          # UNKNOWN is deliberately non-zero. "We cannot tell" is not "fine".
+          python BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py
       - uses: actions/upload-artifact@v4
         with:
           name: live-connect-runtime-receipt
-          path: .naya/evidence/live-connect-runtime-receipt.json
+          path: |
+            .naya/evidence/live-connect-runtime-receipt.json
+            .naya/evidence/deployed-runtime-observation.json
 
   independent-connect-verification:
     needs: live-connect

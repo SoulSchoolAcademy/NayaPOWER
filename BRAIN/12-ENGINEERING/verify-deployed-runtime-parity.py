@@ -155,7 +155,34 @@ def evaluate(observation: dict | None, source_changed_since_observation: bool | 
     if not observation.get("canonical_commit_observed"):
         return "UNKNOWN", ["observation does not record which canonical commit it was taken against"]
 
-    receipt = observation.get("observed_receipt")
+    document = observation.get("observed_document")
+    if not isinstance(document, dict):
+        return "UNKNOWN", ["observation carries no observed_document"]
+
+    # 1. CURRENCY, decided by the runtime itself. The deployed bundle reports the
+    #    commit it was built from; that is the only trustworthy drift signal,
+    #    because source moves constantly while a deployed artifact does not.
+    revision = document.get("deployed_source_revision")
+    if revision is None:
+        return "DRIFT", [
+            "DEPLOYED ARTIFACT PREDATES REVISION STAMPING: the runtime does not report "
+            "deployed_source_revision, so it is impossible to tell which canonical commit is serving "
+            "traffic. A source change that was never deployed would be undetectable."
+        ]
+    if revision == contract.UNSTAMPED:
+        return "UNKNOWN", [
+            "the deployed artifact reports deployed_source_revision=UNSTAMPED. Deployed-vs-canonical "
+            "parity is UNDECIDABLE, not verified. Whoever deploys must stamp this constant with the "
+            "commit actually deployed, then redeploy."
+        ]
+    expected = str(observation["canonical_commit_observed"])
+    if not str(revision).startswith(expected[:8]) and not expected.startswith(str(revision)[:8]):
+        return "STALE", [
+            f"the deployed artifact was built from {str(revision)[:8]} but canonical source is at "
+            f"{expected[:8]}. Canonical source has advanced past what is deployed. Redeploy."
+        ]
+
+    receipt = document.get("receipt")
     if not isinstance(receipt, dict):
         return "UNKNOWN", ["observation carries no observed_receipt object"]
 
@@ -175,9 +202,8 @@ def evaluate(observation: dict | None, source_changed_since_observation: bool | 
         ]
     if source_changed_since_observation:
         return "STALE", [
-            f"the observed runtime response conforms, but contract-bearing canonical source changed "
-            f"after commit {observation['canonical_commit_observed'][:8]}; the deployed artifact may no "
-            f"longer match current canonical source. Redeploy and re-observe."
+            f"the observed runtime response conforms, but the deployed function source changed "
+            f"after commit {observation['canonical_commit_observed'][:8]}. Redeploy and re-observe."
         ]
 
     return "MATCH", []
