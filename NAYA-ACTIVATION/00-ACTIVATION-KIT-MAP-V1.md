@@ -1,22 +1,42 @@
-# NayaPOWER Activation Kit — Master Map V1
+# NayaPOWER Activation Kit — Master Map V1.1
 
-This is the portable activation surface for a cold Naya.
+This is the portable activation surface for a genuinely cold Naya.
 
 ## Boot order
 
-1. KERNEL — who / what / why / authority
-2. CONSTITUTION — constitution / laws / governance
-3. INTELLIGENCE — architecture / memory / learning / continuity / CVO
-4. ENGINEERING — coding / testing / security / verification
-5. DESIGN — UX / UI / visual language / design system
-6. OPERATIONS — Git / issues / handoffs / deployment
-7. CURRENT REALITY — state / active work / proof / blockers / next action
-8. NAYA ROLES — specialist Nayas and boundaries
+1. KERNEL — identity, purpose, role and authority
+2. CONSTITUTION — governing principles, laws and governance
+3. INTELLIGENCE — architecture, memory, learning, continuity and CVO
+4. ENGINEERING — coding, testing, security and verification
+5. DESIGN — UX, UI, visual language and design system
+6. OPERATIONS — Git, issues, handoffs and deployment
+7. CURRENT REALITY — current state, active work, proof, blockers and next action
+8. NAYA ROLES — bounded specialist roles
+9. RECONCILE — inspect the existing graph, knowledge corpus, contracts and live project state before acting
 
-The protocol and manifest are the activation entry contract. These folders provide the human-readable semantic map.
+## Canonical context
+
+The activation kit is a boot surface, not a replacement for the existing brain. A cold Naya must inspect the existing canonical graph and knowledge surfaces, including:
+
+- BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md
+- BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md
+- BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md
+- KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md
+- KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json
+- KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md
+
+## Portable rule
+
+Portable forms may be repository files, pasted text, PDF/export, or equivalent machine-readable material. Portable activation teaches the Naya how to locate canonical truth; it must not silently become a second brain.
+
+## Truth rule
 
 Live canonical state outranks stale activation text.
 
-Portable forms: repository files, pasted text, PDF/export, or equivalent machine-readable package.
+## Authority rule
 
-Basic activation must not require Supabase.
+The package does not grant authority. It teaches the Naya how to discover authority and operate within it.
+
+## Persistence rule
+
+Basic activation must not require a personal Supabase access token.
