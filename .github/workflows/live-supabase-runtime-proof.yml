@@ -150,6 +150,13 @@ jobs:
             .naya/evidence/deployed-runtime-observation.json
 
   independent-connect-verification:
+    # Collateral-damage fix. The deployed-source parity gate lives in `live-connect`, and a
+    # missing deploy stamp makes that job fail. Without this, `needs:` would SKIP this job and
+    # we would lose independent verification evidence precisely when the system is least
+    # trustworthy. The receipt artifact is uploaded under `if: always()`, so the input exists
+    # even on failure. A DEPLOYMENT gate must not suppress a PROOF. If the artifact is
+    # genuinely absent, this job still fails - correctly.
+    if: always()
     needs: live-connect
     runs-on: ubuntu-latest
     steps:
@@ -375,6 +382,13 @@ jobs:
     # independent-learning-influence-verification: that job needs a rotated owner
     # credential, and the cold-successor proof reads learning_evidence directly, so
     # gating on it would make this proof permanently unrunnable.
+    # Collateral-damage fix. The deployed-source parity gate lives in `live-connect`, and a
+    # missing deploy stamp makes that job fail. Without this, `needs:` would SKIP this job and
+    # we would lose independent verification evidence precisely when the system is least
+    # trustworthy. The receipt artifact is uploaded under `if: always()`, so the input exists
+    # even on failure. A DEPLOYMENT gate must not suppress a PROOF. If the artifact is
+    # genuinely absent, this job still fails - correctly.
+    if: always()
     needs: live-connect
     runs-on: ubuntu-latest
     steps:
@@ -420,6 +434,13 @@ jobs:
           path: cold-successor-receipt.json
 
   cold-successor-verification:
+    # Collateral-damage fix. The deployed-source parity gate lives in `live-connect`, and a
+    # missing deploy stamp makes that job fail. Without this, `needs:` would SKIP this job and
+    # we would lose independent verification evidence precisely when the system is least
+    # trustworthy. The receipt artifact is uploaded under `if: always()`, so the input exists
+    # even on failure. A DEPLOYMENT gate must not suppress a PROOF. If the artifact is
+    # genuinely absent, this job still fails - correctly.
+    if: always()
     needs: cold-successor
     runs-on: ubuntu-latest
     steps:
