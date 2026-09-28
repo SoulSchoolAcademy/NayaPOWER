@@ -5,9 +5,8 @@ def test_authorizes_only_the_canonical_naya_proof_workflow():
         "iss": "https://token.actions.githubusercontent.com",
         "aud": "nayanet-runtime",
         "repository": "SoulSchoolAcademy/NayaPOWER",
-        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/naya/node-genome-aaa-v1",
-        "ref": "refs/heads/naya/node-genome-aaa-v1",
-        "job_workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/naya/node-genome-aaa-v1",
+        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/main",
+        "ref": "refs/heads/main",
     }
     result = authorize_github_runtime(claims)
     assert result.authorized is True
@@ -19,8 +18,8 @@ def test_rejects_a_different_workflow_as_not_naya_runtime():
         "iss": "https://token.actions.githubusercontent.com",
         "aud": "nayanet-runtime",
         "repository": "SoulSchoolAcademy/NayaPOWER",
-        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/other.yml@refs/heads/naya/node-genome-aaa-v1",
-        "ref": "refs/heads/naya/node-genome-aaa-v1",
+        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/other.yml@refs/heads/main",
+        "ref": "refs/heads/main",
     }
     result = authorize_github_runtime(claims)
     assert result.authorized is False
@@ -30,8 +29,8 @@ def test_token_rotation_is_irrelevant_to_naya_identity():
     base = {
         "iss": "https://token.actions.githubusercontent.com", "aud": "nayanet-runtime",
         "repository": "SoulSchoolAcademy/NayaPOWER",
-        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/naya/node-genome-aaa-v1",
-        "ref": "refs/heads/naya/node-genome-aaa-v1",
+        "workflow_ref": "SoulSchoolAcademy/NayaPOWER/.github/workflows/live-supabase-runtime-proof.yml@refs/heads/main",
+        "ref": "refs/heads/main",
     }
     before = authorize_github_runtime({**base, "jti": "token-a"})
     after = authorize_github_runtime({**base, "jti": "token-b"})
