@@ -39,7 +39,7 @@ Deno.serve(async (req: Request) => {
   if (!blockResponse.ok) return json({ error: "BLOCK_LOOKUP_FAILED", status: blockResponse.status }, 502);
   const blocks = await blockResponse.json();
   if (!Array.isArray(blocks) || blocks.length !== 1) return json({ error: "CANONICAL_BLOCK_NOT_UNIQUE", count: Array.isArray(blocks) ? blocks.length : 0 }, 409);
-  const grantUrl = supabaseUrl + "/rest/v1/nayanet_authority_grants?issuer_id=eq." + OWNER_ID + "&subject_id=eq." + OWNER_ID + "&mission_id=eq.NAYA-NODE-0001-CONTINUITY&status=eq.ACTIVE&select=grant_id,actions,constraints,evidence";
+  const grantUrl = supabaseUrl + "/rest/v1/nayanet_authority_grants?issuer_id=eq." + OWNER_ID + "&subject_id=eq." + OWNER_ID + "&mission_id=eq.NAYA-NODE-0001-CONTINUITY&status=eq.ACTIVE&select=grant_id,mission_id,scope,actions,constraints,status,evidence";
   const grantResponse = await fetch(grantUrl, { headers });
   if (!grantResponse.ok) return json({ error: "AUTHORITY_LOOKUP_FAILED", status: grantResponse.status }, 502);
   const grants = await grantResponse.json();
