@@ -1,12 +1,13 @@
 name: Live Supabase Runtime Proof
 
 on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Live Intelligence Commit Proof"]
+    types: [completed]
 
 permissions:
   contents: read
+  actions: read
   id-token: write
 
 concurrency:
@@ -19,9 +20,14 @@ env:
 
 jobs:
   contract:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/setup-python@v6
         with: {python-version: "3.12"}
       - run: python -m pip install pytest
@@ -33,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -62,6 +70,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Mint fresh short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -91,6 +101,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with: {name: naya-cold-runtime-1, path: receipts/one}
       - uses: actions/download-artifact@v4
@@ -103,6 +115,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Mint short-lived GitHub OIDC runtime identity for CONNECT
         shell: bash
         run: |
@@ -159,6 +173,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: live-connect-runtime-receipt
@@ -169,60 +185,50 @@ jobs:
 
 
   learning-influence-experiment:
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
     needs: contract
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Download the exact fresh lesson produced by the triggering canonical run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRODUCER_RUN_ID: ${{ github.event.workflow_run.id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh run download "$PRODUCER_RUN_ID" --repo "$GITHUB_REPOSITORY" --name fresh-lesson-lineage
+          python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lesson-lineage-ids.json"))
+          required=("event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id","receipt_id")
+          assert all(ids.get(k) for k in required), ids
+          open("fresh-causal-block-id.txt","w").write(ids["intelligent_block_id"])
+          PY
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: fresh-lesson-lineage
+          path: fresh-lineage
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
           set -euo pipefail
           token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
           printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
-      - name: Create one real fresh lesson through the existing intelligence commit runtime
-        shell: bash
-        env:
-          INTELLIGENCE_COMMIT_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-commit-runtime
-          INTELLIGENCE_COMMIT_GRANT_ID: 0e082400-de6d-485e-9ebc-51b34f5debdc
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json, os, uuid
-          lesson_key = "NAYA-CAUSAL-FRESH-LESSON-" + uuid.uuid4().hex
-          json.dump({
-            "mode":"execute",
-            "p_authority_grant_id":os.environ["INTELLIGENCE_COMMIT_GRANT_ID"],
-            "p_event_id":lesson_key,
-            "p_title":"Fresh causal continuity lesson",
-            "p_content":"Preserve provenance before applying retained intelligence to an authorized task.",
-            "p_category":"COLLECTIVE_INTELLIGENCE",
-            "p_topic":"CAUSAL_CONTINUITY",
-            "p_target_id":"NAYA-NODE-0001",
-            "p_project_id":"NayaNET"
-          }, open("fresh-causal-lesson-request.json","w"), indent=2)
-          PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @fresh-causal-lesson-request.json             "$INTELLIGENCE_COMMIT_FUNCTION" > fresh-causal-lesson.json
-          python - <<'PY'
-          import json
-          r=json.load(open("fresh-causal-lesson.json"))
-          assert r.get("ok") is True, r
-          result=r["result"]
-          assert result["ok"] is True, result
-          assert result["understanding_state"] == "CANDIDATE", result
-          keys=("event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id","receipt_id")
-          assert all(result.get(k) for k in keys), result
-          json.dump({k:result[k] for k in keys}, open("fresh-causal-lineage-ids.json","w"), indent=2)
-          open("fresh-causal-block-id.txt","w").write(result["intelligent_block_id"])
-          PY
-      - name: Bind the exact runtime-produced fresh lesson into the existing LEARN candidate lane
+      - name: Bind the exact persisted fresh lesson into the existing LEARN candidate lane
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
-          block_id=open("fresh-causal-block-id.txt").read().strip()
-          assert block_id.startswith("IB-NAYA-CAUSAL-FRESH-LESSON-"), block_id
-          json.dump({"mode":"candidate","intelligent_block_id":block_id},open("candidate-request.json","w"),indent=2)
+          ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
+          fresh_block_id=ids["intelligent_block_id"]
+          open("fresh-block-id.txt","w").write(fresh_block_id)
+          json.dump({"mode":"candidate","intelligent_block_id":fresh_block_id},open("candidate-request.json","w"),indent=2)
           PY
           curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -o learning-candidate.json -w "%{http_code}" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > candidate-http-status.txt
           cat learning-candidate.json
@@ -232,7 +238,7 @@ jobs:
           r=json.load(open("learning-candidate.json"))
           assert r.get("ok") is True, r
           assert r["learning"]["status"] == "CANDIDATE", r
-          assert r["learning"]["observed_value"]["intelligent_block_id"] == open("fresh-causal-block-id.txt").read().strip(), r
+          assert r["learning"]["observed_value"]["intelligent_block_id"] == open("fresh-block-id.txt").read().strip(), r
           assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
           open("learning-id.txt","w").write(r["learning"]["id"])
           PY
@@ -279,8 +285,7 @@ jobs:
             causal-learning-experiment.json
             learning-candidate.json
             learning-id.txt
-            fresh-causal-block-id.txt
-            fresh-causal-lineage-ids.json
+            fresh-block-id.txt
       - uses: actions/upload-artifact@v4
         with:
           name: causal-verification
@@ -290,6 +295,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment
@@ -324,6 +331,7 @@ jobs:
             "schema":"NAYANET_CAUSAL_LEARNING_EXPERIMENT_V1",
             "target_id":"NAYA-NODE-0001",
             "learning_id":e["learning_id"],
+            "intelligent_block_id":open("fresh-block-id.txt").read().strip(),
             "task_context":{"task_id":e["counterfactual"]["task_id"],"task_input":e["control"]["evidence"]["task_input"]},
             "intelligence_applied":{"learning_id":e["learning_id"],"intelligence_id":e["treatment"]["evidence"].get("intelligence_id")},
             "control":{"receipt_id":e["control"]["id"],"retained_intelligence_used":False,"behavior":e["control"]["observed_result"],"outcome":e["control"]["evidence"]["outcome"]},
@@ -372,6 +380,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -424,6 +434,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: cold-graph-behavior-pair
@@ -460,6 +472,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -506,6 +520,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: cold-successor-receipt
@@ -573,6 +589,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
@@ -635,9 +653,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment
       - name: Mint a fresh independent OIDC verifier identity
         shell: bash
         run: |
@@ -664,7 +687,8 @@ jobs:
           assert r["learning"]["provenance"] == "VERIFICATION", r
           assert r["learning"]["id"] == json.load(open("causal-learning-experiment-receipt.json"))["learning_id"], r
           observed=r["learning"]["observed_value"]
-          assert observed["intelligent_block_id"] == open("fresh-causal-block-id.txt").read().strip(), r
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert observed["intelligent_block_id"] == receipt["intelligent_block_id"], r
           assert observed["provenance_preserved"] is True, r
           assert r["integration"]["core_intelligence_updated"] is True, r
           assert r["integration"]["progressive_intelligence_lock_in"] is True, r
