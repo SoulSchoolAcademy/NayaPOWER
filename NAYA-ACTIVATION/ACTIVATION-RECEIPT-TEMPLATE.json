@@ -1,0 +1,17 @@
+{
+  "schema": "naya.activation.receipt.v1",
+  "status": "UNACTIVATED",
+  "activation_protocol": "NayaPOWER Portable Activation Protocol V1",
+  "naya_identity": null,
+  "human_director": null,
+  "authority": null,
+  "repository": null,
+  "installed_kit_version": "v1",
+  "source_of_truth": [".naya/control-plane/", ".naya/project-intelligence/", "NAYA-ACTIVATION/"],
+  "capabilities": [],
+  "authorization": [],
+  "known_limitations": [],
+  "verification": {"status": "UNKNOWN", "evidence": []},
+  "timestamp": null,
+  "next_action": null
+}
