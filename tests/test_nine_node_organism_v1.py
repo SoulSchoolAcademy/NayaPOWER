@@ -25,3 +25,18 @@ def test_law_runtime_decides_and_receipts_but_never_executes():
     assert "evaluateLaw" in src
     assert "LAW_DECIDES_ONLY_DOES_NOT_EXECUTE" in src
     assert "nayanet_intelligence_commit_runtime" not in src
+
+def test_organism_source_map_resolves_existing_seams_without_claiming_universal_binding():
+    j=json.loads((ROOT/"BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json").read_text())
+    assert j["source_assessment"]["universal_binding"] == "NOT_PROVEN"
+    assert "not a mandatory linear execution schedule" in j["order_semantics"]
+    edges=json.loads((ROOT/"BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json").read_text())["edges"]
+    for name,node in j["nodes"].items():
+        binding=node["source_binding"]
+        refs=binding["contract_refs"]+[binding["semantic_schema"]]+binding["runtime_sources"]+binding["test_sources"]+binding["workflow_refs"]
+        for ref in refs:
+            assert (ROOT/ref).is_file(), (name,ref)
+        assert binding["gap"] and binding["transition_contract"]
+        assert "NOT_PROVEN" in binding["schema_conformance"]
+        expected={e["relationship_id"] for e in edges if node["node_id"] in (e["source_id"],e["target_id"])}
+        assert set(node["relationships"]) == expected

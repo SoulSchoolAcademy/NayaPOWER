@@ -43,7 +43,8 @@
       "proof_ladder",
       "handoff_to",
       "cold_successor_obligation",
-      "success_criteria"
+      "success_criteria",
+      "source_binding"
     ]
   },
   "nodes": {
@@ -73,24 +74,24 @@
         "mission_context"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_intelligent_blocks",
+        "nayanet_project_cognition_state"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "SELF_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "SELF_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; SELF_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:LAW"
+        "REL-KERNEL-SELF-LAW",
+        "REL-KERNEL-EVOLVE-SELF"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -100,7 +101,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -116,8 +118,32 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-LAW",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "SELF performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore SELF context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "BOOT -> authenticated binding -> owner-scoped restore -> context; ambiguity blocks. Runtime source and authority are resolved anew. Independent evidence must support the declared scope; Cold OIDC identity is exercised in bounded proof; universal manifest-driven runtime convergence remains NOT_PROVEN.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+          "NAYANODE/00-SELF-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-cold-runtime-proof/index.ts",
+          "kernel/self_node.py",
+          "kernel/runtime_boot.py"
+        ],
+        "test_sources": [
+          "tests/test_self_node.py",
+          "tests/test_cold_successor_continuity.py"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "Authenticated owner/Naya/runtime binding; retrieve exact identity IB and restore scoped continuity. Local JsonContinuityStore is reference/test infrastructure, not canonical persistence.",
+        "transition_contract": "BOOT -> authenticated binding -> owner-scoped restore -> context; ambiguity blocks. Runtime source and authority are resolved anew.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Cold OIDC identity is exercised in bounded proof; universal manifest-driven runtime convergence remains NOT_PROVEN."
+      }
     },
     "LAW": {
       "node_id": "NAYA-KERNEL-LAW",
@@ -153,34 +179,38 @@
         "freshness"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_authority_grants"
       ],
       "state_writes": [
-        "LAW decision receipt only; no action-state mutation"
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "LAW_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "LAW_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; LAW_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:ACT"
+        "REL-KERNEL-SELF-LAW",
+        "REL-KERNEL-LAW-ACT",
+        "REL-KERNEL-LAW-EVOLVE"
       ],
       "authority_required": "none to evaluate; authority evidence required to return AUTHORIZED",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
-        "material conflict in owned responsibility"
+        "material conflict in owned responsibility",
+        "absent/empty scope never matches absent/empty requested project",
+        "revoked/expired grant",
+        "retrieval/successor content claiming authority"
       ],
       "observability": [
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "law_authority_decision in existing nayanet_execution_receipts"
@@ -196,8 +226,39 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-ACT",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "LAW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore LAW context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "REQUEST -> AUTHORIZED / BLOCKED / NEEDS_HUMAN_AUTHORIZATION; only AUTHORIZED is permission. Receipt creation is not action execution. Independent evidence must support the declared scope; Two bounded live cases passed; absent-project scope bypass reproduced and repaired in this change. Broader mission/constraints/time/intent validation and effect-boundary consumption remain incomplete.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md",
+          "NAYANODE/00-LAW-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/LAW-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-law-runtime/index.ts",
+          "supabase/functions/nayanet-law-runtime/law.ts",
+          "supabase/functions/nayanet-verified-ai-action/index.ts",
+          "supabase/migrations/20260928180426_fix_runtime_authority_grant_resolution_v2.sql"
+        ],
+        "test_sources": [
+          "tests/law-runtime.test.mjs",
+          "tests/law_runtime_handler_scope.test.mjs",
+          "tests/verified_ai_action_authority_lifecycle.test.mjs"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-law-proof.yml"
+        ],
+        "entrypoint_behavior": "Evaluate owner-bound proposed action/target against fresh durable grants; emit law_authority_decision only. Actual effect paths also enforce their own grant check.",
+        "transition_contract": "REQUEST -> AUTHORIZED / BLOCKED / NEEDS_HUMAN_AUTHORIZATION; only AUTHORIZED is permission. Receipt creation is not action execution.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Two bounded live cases passed; absent-project scope bypass reproduced and repaired in this change. Broader mission/constraints/time/intent validation and effect-boundary consumption remain incomplete.",
+        "status_mapping": {
+          "AUTHORIZED": "AUTHORIZED",
+          "BLOCKED": "DENIED with reason; historical semantic reason states need explicit adapter",
+          "NEEDS_HUMAN_AUTHORIZATION": "REQUIRES_CONFIRMATION; not permission"
+        }
+      }
     },
     "ACT": {
       "node_id": "NAYA-KERNEL-ACT",
@@ -218,31 +279,35 @@
         "law_decision",
         "plan",
         "selected_door",
-        "action_context"
+        "action_context",
+        "fresh durable grant re-resolution at effect boundary",
+        "expected observation and idempotency identity"
       ],
       "outputs": [
         "execution_request",
         "execution_receipt"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_authority_grants",
+        "nayanet_intelligent_blocks"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_execution_receipts",
+        "nayanet_execution_outcomes"
       ],
       "events_consumed": [
-        "ACT_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "ACT_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; ACT_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:KNOW"
+        "REL-KERNEL-LAW-ACT",
+        "REL-KERNEL-ACT-KNOW",
+        "REL-KERNEL-ACT-VERIFY"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -252,7 +317,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -268,8 +334,31 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-KNOW",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "ACT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore ACT context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision. Independent evidence must support the declared scope; Existing bounded executors exist. General LAW receipt -> selected Smart Door -> exact observed effect binding is the next Node frontier, not yet proven.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md",
+          "NAYANODE/00-ACT-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-verified-ai-action/index.ts",
+          "supabase/functions/nayanet-intelligence-commit-runtime/index.ts"
+        ],
+        "test_sources": [
+          "tests/verified_ai_action_authority_lifecycle.test.mjs",
+          "tests/intelligence_commit_handler.test.mjs"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "Execute mode resolves grant before a bounded retained-lesson application; intelligence commit delegates its atomic effect to the canonical SQL RPC. Refusals produce no execution outcome.",
+        "transition_contract": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Existing bounded executors exist. General LAW receipt -> selected Smart Door -> exact observed effect binding is the next Node frontier, not yet proven."
+      }
     },
     "KNOW": {
       "node_id": "NAYA-KERNEL-KNOW",
@@ -297,24 +386,33 @@
         "memory_context"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_intelligent_blocks",
+        "nayanet_cognition_events",
+        "nayanet_intelligence_index",
+        "nayanet_project_cognition_state"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_cognition_events",
+        "nayanet_intelligent_blocks",
+        "nayanet_intelligence_lineage",
+        "nayanet_brain_relationships",
+        "nayanet_intelligence_index",
+        "nayanet_project_cognition_state",
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "KNOW_INPUT_CONTEXT"
+        "Responsibility input/handoff; canonical nayanet_cognition_events source event"
       ],
       "events_produced": [
-        "KNOW_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; KNOW_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:PROVE"
+        "REL-KERNEL-ACT-KNOW",
+        "REL-KERNEL-KNOW-PROVE",
+        "REL-KERNEL-KNOW-CONNECT"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -324,7 +422,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -340,8 +439,32 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-PROVE",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "KNOW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore KNOW context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse. Independent evidence must support the declared scope; SN-001/SN-002 supply bounded capture/projection evidence. Arbitrary-new-IB Hub projection and general contextual retrieval remain unproven.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
+          "NAYANODE/00-KNOW-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/KNOW-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+          "supabase/functions/nayanet-learning-verify/index.ts",
+          "kernel/supabase_intelligent_blocks.py"
+        ],
+        "test_sources": [
+          "tests/intelligence_commit_handler.test.mjs",
+          "tests/test_live_fresh_lesson_intelligence_commit.py"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "execute commits via nayanet_intelligence_commit_runtime; verify independently rereads exact Event/IB/Lineage/Relationship/Index/state/Receipt identifiers.",
+        "transition_contract": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "SN-001/SN-002 supply bounded capture/projection evidence. Arbitrary-new-IB Hub projection and general contextual retrieval remain unproven."
+      }
     },
     "PROVE": {
       "node_id": "NAYA-KERNEL-PROVE",
@@ -370,24 +493,26 @@
         "claim_limits"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_execution_receipts",
+        "nayanet_intelligence_lineage",
+        "nayanet_brain_relationships",
+        "nayanet_intelligent_blocks"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "No standalone writer identified; assessment returned by existing read/verify entrypoints."
       ],
       "events_consumed": [
-        "PROVE_INPUT_CONTEXT"
+        "Responsibility input/handoff; canonical nayanet_cognition_events source event"
       ],
       "events_produced": [
-        "PROVE_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; PROVE_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:CONNECT"
+        "REL-KERNEL-KNOW-PROVE",
+        "REL-KERNEL-PROVE-VERIFY"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -397,7 +522,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -413,8 +539,31 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-CONNECT",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "PROVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore PROVE context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "Claim -> evidence/provenance assessment -> bounded claim or NOT_PROVEN; lost provenance and mismatched source revisions cannot become verified claims. Independent evidence must support the declared scope; Bounded persisted-evidence checks exist; universal semantic-schema adapters and immutable checkpoint access hardening (#978) remain open.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md",
+          "NAYANODE/00-PROVE-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/PROVE-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+          "supabase/functions/nayanet-causal-verify/index.ts"
+        ],
+        "test_sources": [
+          "tests/intelligence_commit_handler.test.mjs",
+          "tests/causal_learning_verifier.test.mjs"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "Commit verify reconstructs lineage checks; causal verifier rereads persisted pairs. Evidence preparation is separate from VERIFY verdict ownership; shared entrypoints do not imply separate brains.",
+        "transition_contract": "Claim -> evidence/provenance assessment -> bounded claim or NOT_PROVEN; lost provenance and mismatched source revisions cannot become verified claims.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Bounded persisted-evidence checks exist; universal semantic-schema adapters and immutable checkpoint access hardening (#978) remain open."
+      }
     },
     "CONNECT": {
       "node_id": "NAYA-KERNEL-CONNECT",
@@ -443,24 +592,25 @@
         "context_bundle"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_brain_relationships",
+        "nayanet_intelligent_blocks",
+        "learning_evidence"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "CONNECT_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "CONNECT_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; CONNECT_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:VERIFY"
+        "REL-KERNEL-KNOW-CONNECT",
+        "REL-KERNEL-CONNECT-VERIFY"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -470,7 +620,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -486,8 +637,31 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-VERIFY",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "CONNECT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore CONNECT context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "Query -> scoped typed relationships -> applicable context -> graph OFF/ON behavior; evidence-backed relevance does not create authority. Independent evidence must support the declared scope; Bounded graph influence seam exists; arbitrary applicability, contradiction/supersession handling and cross-owner traversal require broader proof.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md",
+          "NAYANODE/00-CONNECT-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/CONNECT-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-cold-runtime-proof/index.ts"
+        ],
+        "test_sources": [
+          "tests/verify_connect_runtime_receipt.py",
+          "tests/test_connect_receipt_contract_regression.py",
+          "tests/learning_influence_behavior.test.mjs"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "connect and graph-behavior read owner-bound canonical relationships; graph-verify reconstructs control/treatment behavior. General relationship creation remains in the existing commit river.",
+        "transition_contract": "Query -> scoped typed relationships -> applicable context -> graph OFF/ON behavior; evidence-backed relevance does not create authority.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Bounded graph influence seam exists; arbitrary applicability, contradiction/supersession handling and cross-owner traversal require broader proof."
+      }
     },
     "VERIFY": {
       "node_id": "NAYA-KERNEL-VERIFY",
@@ -515,24 +689,29 @@
         "causal_limits"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "nayanet_execution_receipts",
+        "nayanet_execution_outcomes",
+        "learning_evidence",
+        "nayanet_brain_relationships"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_execution_outcomes",
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "VERIFY_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "VERIFY_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; VERIFY_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:LEARN"
+        "REL-KERNEL-ACT-VERIFY",
+        "REL-KERNEL-PROVE-VERIFY",
+        "REL-KERNEL-CONNECT-VERIFY",
+        "REL-KERNEL-VERIFY-LEARN"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -542,7 +721,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -558,8 +738,33 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-LEARN",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "VERIFY performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore VERIFY context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "Observed pair -> independent recomputation -> VERIFIED or rejected/inconclusive; historical recovery creates both outcomes only from the exact audited absent pair then rereads. Independent evidence must support the declared scope; #810 current-source production acceptance and #975 deployed recovery remain open. Evidence ablation tests verifier discrimination, not runtime bypass resistance.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
+          "NAYANODE/00-VERIFY-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-causal-verify/index.ts",
+          "supabase/functions/nayanet-verified-ai-action/index.ts",
+          "supabase/functions/nayanet-cold-runtime-proof/index.ts"
+        ],
+        "test_sources": [
+          "tests/causal_learning_verifier.test.mjs",
+          "tests/learning_generalization_verifier.test.mjs",
+          "tests/test_nine_node_behavioral_acceptance.py"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "verify/recover-learning-outcomes and cold-successor-verify reread persisted source evidence and recompute outcomes; #810 verifier assesses the bounded artifact, not arbitrary runtime conformance.",
+        "transition_contract": "Observed pair -> independent recomputation -> VERIFIED or rejected/inconclusive; historical recovery creates both outcomes only from the exact audited absent pair then rereads.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "#810 current-source production acceptance and #975 deployed recovery remain open. Evidence ablation tests verifier discrimination, not runtime bypass resistance."
+      }
     },
     "LEARN": {
       "node_id": "NAYA-KERNEL-LEARN",
@@ -584,24 +789,33 @@
         "behavioral_update"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "learning_evidence",
+        "nayanet_cognition_events",
+        "nayanet_intelligent_blocks",
+        "nayanet_intelligence_lineage",
+        "nayanet_brain_relationships",
+        "nayanet_intelligence_index",
+        "nayanet_project_cognition_state",
+        "nayanet_execution_receipts"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "learning_evidence",
+        "nayanet_intelligent_blocks",
+        "nayanet_brain_relationships",
+        "nayanet_project_cognition_state"
       ],
       "events_consumed": [
-        "LEARN_INPUT_CONTEXT"
+        "Responsibility input/handoff; canonical nayanet_cognition_events source event"
       ],
       "events_produced": [
-        "LEARN_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; LEARN_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:EVOLVE"
+        "REL-KERNEL-VERIFY-LEARN",
+        "REL-KERNEL-LEARN-EVOLVE"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -611,7 +825,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -627,8 +842,32 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-EVOLVE",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "LEARN performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore LEARN context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "CANDIDATE -> independently verified ACTIVE learning with LEARNED integration; rejected/insufficient evidence remains unpromoted. Learning never updates authority. Independent evidence must support the declared scope; Bounded influence/generalization exists; arbitrary lessons and multi-generation compounding remain unproven.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md",
+          "NAYANODE/00-LEARN-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/LEARN-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-learning-verify/index.ts",
+          "supabase/functions/nayanet-cold-runtime-proof/index.ts"
+        ],
+        "test_sources": [
+          "tests/learning_influence_behavior.test.mjs",
+          "tests/learning_generalization_behavior.test.mjs",
+          "tests/test_learning_receipt_verifier_bites.py"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "candidate binds exact fresh chain; verification gates ACTIVE promotion and LEARNED integration; reread confirms lock-in. Held-out effect and negative transfer are separate proof requirements.",
+        "transition_contract": "CANDIDATE -> independently verified ACTIVE learning with LEARNED integration; rejected/insufficient evidence remains unpromoted. Learning never updates authority.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Bounded influence/generalization exists; arbitrary lessons and multi-generation compounding remain unproven."
+      }
     },
     "EVOLVE": {
       "node_id": "NAYA-KERNEL-EVOLVE",
@@ -654,24 +893,27 @@
         "evolution_proposal"
       ],
       "state_reads": [
-        "canonical mission/state",
-        "relevant Intelligent Blocks",
-        "authority/evidence as applicable"
+        "learning_evidence",
+        "nayanet_intelligent_blocks",
+        "nayanet_brain_relationships",
+        "nayanet_authority_grants"
       ],
       "state_writes": [
-        "only state owned by this responsibility through canonical substrate"
+        "nayanet_execution_receipts"
       ],
       "events_consumed": [
-        "EVOLVE_INPUT_CONTEXT"
+        "Responsibility input/handoff; persisted source receipt/context as applicable"
       ],
       "events_produced": [
-        "EVOLVE_DECISION_OR_HANDOFF"
+        "Existing receipt/state transition only where the mapped entrypoint emits it; EVOLVE_DECISION_OR_HANDOFF is a normative label, not a proven persisted event type."
       ],
       "relationships": [
-        "HANDOFF_TO:SELF"
+        "REL-KERNEL-LEARN-EVOLVE",
+        "REL-KERNEL-EVOLVE-SELF",
+        "REL-KERNEL-LAW-EVOLVE"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
-      "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
+      "privacy_behavior": "Owner/scope constraints apply before retrieval and disclosure; public Brain projection requires explicit publication authority, never inferred from PRIVATE runtime capture.",
       "fail_closed": [
         "missing required identity/context",
         "missing or invalid authority when action requires it",
@@ -681,7 +923,8 @@
         "structured input summary",
         "structured output",
         "reason codes",
-        "source/evidence refs"
+        "source/evidence refs",
+        "execution/receipt identity; input/output provenance; source and deployed revision when claimed; performance measurements required, universal coverage NOT_PROVEN"
       ],
       "receipts": [
         "existing canonical receipt/evidence surface; no node-specific shadow ledger"
@@ -697,8 +940,31 @@
         "SUCCESSOR"
       ],
       "handoff_to": "NAYA-KERNEL-SELF",
-      "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "EVOLVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "cold_successor_obligation": "Restore EVOLVE context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
+      "success_criteria": "Verified learning -> cold successor retrieval -> fresh authority -> related reuse/refusal -> independent successor verification; structural evolution stays proposed until authorized. Independent evidence must support the declared scope; Bounded cold-successor seam exists; A->B->C compounding, general autonomous evolution and two-owner succession are NOT_PROVEN.",
+      "source_binding": {
+        "contract_refs": [
+          "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md",
+          "NAYANODE/00-EVOLVE-MASTER-CONTRACT-V1.md"
+        ],
+        "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json",
+        "runtime_sources": [
+          "supabase/functions/nayanet-cold-runtime-proof/index.ts",
+          "NAYANODE/0033-NINE-NODE-GENOME-COLD-SUCCESSOR-PROTOCOL-V1.md"
+        ],
+        "test_sources": [
+          "tests/cold_successor_generalization.test.mjs",
+          "tests/test_cold_successor_continuity.py"
+        ],
+        "workflow_refs": [
+          ".github/workflows/live-supabase-runtime-proof.yml"
+        ],
+        "entrypoint_behavior": "cold-successor restores ACTIVE lesson from canonical persistence, tests related reuse and unrelated refusal, carries evidence and next action without inherited grants.",
+        "transition_contract": "Verified learning -> cold successor retrieval -> fresh authority -> related reuse/refusal -> independent successor verification; structural evolution stays proposed until authorized.",
+        "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
+        "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
+        "gap": "Bounded cold-successor seam exists; A->B->C compounding, general autonomous evolution and two-owner succession are NOT_PROVEN."
+      }
     }
   },
   "planning_loop": [
@@ -715,5 +981,22 @@
     "UPDATE_STATE",
     "NEXT_GAP"
   ],
-  "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence."
+  "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence.",
+  "source_assessment": {
+    "base_main": "744d9b5d694d158ac051682b62766afe6572ed77",
+    "classification": "SOURCE_MAP_NOT_RUNTIME_AUTHORITY",
+    "law_live_run_observed": 36620337089,
+    "law_live_jobs": "both completed/success via GitHub job reread",
+    "universal_binding": "NOT_PROVEN",
+    "hub_arbitrary_ib_projection": "NOT_UNIVERSALLY_PROVEN",
+    "freshness": "Resolve live main, issue state, deployed code and receipts again before execution; this snapshot is not an authority grant."
+  },
+  "order_semantics": "Responsibility enumeration, not a mandatory linear execution schedule. Applicable gates may repeat; skip only with explicit applicability rationale, never bypass a required gate.",
+  "safety_handoffs": {
+    "before_private_access": "SELF binding -> LAW/access policy -> KNOW/CONNECT; retrieval is not action authorization.",
+    "before_effect": "LAW fresh scope/expiry/revocation -> ACT exact parameters; old AUTHORIZED receipt alone is insufficient.",
+    "after_effect": "ACT receipt/observation -> PROVE evidence -> independent VERIFY -> LEARN only if justified -> EVOLVE/SELF cold continuity.",
+    "capture": "SELF -> capture/privacy authority -> existing commit river -> independent reread -> authorized Brain/Smart Link projection; LEARN/EVOLVE may be NOT_APPLICABLE_PENDING_OUTCOME.",
+    "failure": "Receipt failure means no completed verified transition; interrupted effects require reconciliation, not blind replay."
+  }
 }
