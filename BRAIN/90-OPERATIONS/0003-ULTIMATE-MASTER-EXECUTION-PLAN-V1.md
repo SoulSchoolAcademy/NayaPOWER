@@ -1,194 +1,246 @@
 # NayaPOWER — Ultimate Master Execution Plan V1
 
-**Status:** ACTIVE EXECUTION SPECIFICATION — grounded in live `main` at commit `dab9f47fc3d2bf655b0f21bf3310eaff8b4161dc`  
-**Purpose:** Convert the independent AI council's useful intelligence into one dependency-correct, continuously executable work queue.  
+**Status:** ACTIVE EXECUTION SPECIFICATION — refreshed against live `main` `faac73abf29c99fc29879f23cd39966439964251`  
+**Source synthesis:** `KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md` + live repository/runtime evidence  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
-## 1. CURRENT VERIFIED STARTING POINT
-- PR #946: **MERGED** into `main` as `dab9f47...`.
-- Issue #913: **CLOSED / completed**.
-- Issue #944: **OPEN / current experimental frontier**.
-- Smart Node protocol: **CANONICAL**.
-- Machine Smart Node object: existing `INTELLIGENT_BLOCK`.
-- Nine semantic organs remain canonical: SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE.
-- Kernel manifest: `runtime_binding.status = NOT_PROVEN`.
-- Historical #913 production proof remains bounded to its exact proven source/runtime revision; later `main` does not inherit production proof automatically.
-- Dated current-state/activation material is evidence to reconcile, not automatically current truth.
+## 1. MASTER DECISION
 
-## 2. MASTER OBJECTIVE
-Turn NayaPOWER from a system with one bounded proven intelligence specimen into a **repeatable intelligence engine** that can:
+Do not build more architecture until existing intelligence machinery proves more behavior.
 
-**admit → preserve → retrieve → recognize applicability → authorize → apply → measure → independently verify → learn → refuse inappropriate transfer → survive cold succession → compound**
+The shortest path is:
 
-without creating competing brains, authority systems, memory systems, graphs, or learning pipelines.
+**CURRENT TRUTH → APPLICABLE INTELLIGENCE → CURRENT AUTHORITY → CONTROL/TREATMENT → OBSERVED OUTCOME → INDEPENDENT VERIFICATION → LEARNING → CORRECT REFUSAL → COLD SUCCESSOR → REUSE → COMPOUND**
+
+One organism. Nine semantic organs. One intelligence river. No authority inheritance.
+
+## 2. CURRENT VERIFIED STATE
+
+### Executed / closed
+- PR #946 merged: KNOWLEDGE entry drift + Smart Node terminology repaired.
+- Issue #913 closed on one bounded production-proven Node 0001 specimen at exact revision `0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4`.
+- Concept #17 reconciled: **NO_NEW_CANDIDATE — SOURCE RECONCILED**.
+- #944 source-level generalization implemented:
+  - related held-out task;
+  - unrelated negative-transfer task;
+  - identifier-only ACTIVE-learning retrieval;
+  - independent persisted-evidence recomputation;
+  - cold-successor related reuse + unrelated refusal.
+- PR #955 merged: verifier negative matrix hardened.
+- PR #959 merged: cold-successor retrieval now filters the exact learning by owner, canonical target and ACTIVE state; Kernel Tests and Collective Chain gates passed.
+- Current repository tests for that verifier boundary were reported green before merge.
+- Human-authorized governed production promotion run `36514309554` started against exact SHA `32b7c9954988befecfbe8c850f523e59a441f44d`.
+- That run advanced the `production` branch to the exact authorized SHA.
+
+### Current live reality
+- Current `main`: `faac73abf29c99fc29879f23cd39966439964251`.
+- Current `production`: `32b7c9954988befecfbe8c850f523e59a441f44d`.
+- Therefore current `main` has advanced beyond the SHA targeted by the active production promotion.
+- Governed production run `36514309554` is waiting for a **new Supabase GitHub Integration deployment check**.
+- No code change is justified to bypass that external integration boundary.
+- Universal nine-node runtime binding remains **NOT_PROVEN**.
 
 ## 3. EXECUTION LAW
-**READ → RECONCILE → TEST/PROBE → MINIMUM CHANGE → EXECUTE → INDEPENDENTLY VERIFY → RECORD → HAND OFF**
 
-- Live canonical evidence outranks dated reports.
-- UNKNOWN ≠ PASS; BLOCKED ≠ PASS.
-- IMPLEMENTED ≠ VERIFIED ≠ PRODUCTION-PROVEN.
-- RETRIEVED ≠ AUTHORIZED.
-- Capability, intelligence, or confidence never creates authority.
-- Stop at the first broken proof rung.
-- Never add architecture merely to avoid a failure.
-- Every completed unit leaves exact evidence and one next action.
+For every work unit:
 
-## 4. P0 — DO NOW, IN ORDER
+**READ → RECONCILE → CLASSIFY → PROBE → MINIMUM CHANGE → TEST → INDEPENDENTLY VERIFY → RECORD → HAND OFF**
 
-### P0.1 — Establish executable current truth
-Reconcile current-state/activation surfaces against live `main`. Identify the actual runtime/component entrypoint used by each proof. Record source, component, artifact, deployment and runtime identity where applicable.
+Permanent laws:
+- live canonical evidence outranks dated prose;
+- UNKNOWN ≠ PASS;
+- BLOCKED ≠ PASS;
+- IMPLEMENTED ≠ VERIFIED;
+- VERIFIED ≠ PRODUCTION_PROVEN;
+- RETRIEVED ≠ AUTHORIZED;
+- intelligence/learning never creates authority;
+- successor context never inherits authority;
+- stop at the first failing proof rung;
+- do not add architecture to escape a failed proof;
+- every completed unit leaves exact evidence and one next action.
 
-**PASS:** current source/runtime identity is reconstructable without stale snapshots.
+## 4. MASTER PRIORITY ORDER
 
-### P0.2 — Finish #944 failure-first reconciliation — COMPLETE
-Concept #17 was reconciled against current canonical intelligence.
+### P0.1 — Close the current production-deployment capability boundary
+**Problem:** The governed promotion is blocked waiting for Supabase GitHub Integration evidence.
 
-**RESULT:** `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
+**Do:**
+1. complete/enable Supabase GitHub Integration for this repository/project;
+2. working directory `.`;
+3. production branch `production`;
+4. enable deploy-to-production;
+5. require the new Supabase deployment check;
+6. never substitute Vercel/Cloudflare status for the Supabase deployment proof.
 
-Do not create a duplicate Concept #17 Smart Node / Intelligent Block. The surviving value is proof pressure on existing architecture. `UNKNOWN_EFFECT` remains a contract-hardening/test target because existing ACT semantics cover timeout/observe/idempotency/inconclusive handling but do not expose that explicit effect-state enum.
+**Proof:** a new successful Supabase GitHub Integration deployment check exists for the exact promoted SHA.
 
-### P0.3 — Prove canonical candidate admission — SKIPPED FOR CONCEPT #17
-No unique candidate survived, so no new candidate object should be admitted.
+**Current status:** BLOCKED on external integration configuration.
 
-### P0.4 — Prove generalization: identifier-only reuse + applicability — NEXT
-Reuse the already ACTIVE #913 learning rather than manufacturing a new lesson.
+### P0.2 — Re-run governed promotion on the then-current `main`
+Because `main` advanced after run `36514309554` began, do not treat success on `32b7c995...` as current-main production proof.
 
-Run:
-- a **second related held-out task** where provenance preservation should help; and
-- an **unrelated task** where that learning should not change behavior.
+**Do:** after the integration works, explicitly promote the then-current `main` through the existing governed workflow.
 
-The runtime receives only the canonical learning identity/reference plus task identity/context; it must reread authoritative state.
+**Proof:** source/deployed-runtime parity for the exact current SHA.
 
-**PASS:** related held-out task selects and uses the intelligence for a reconstructable reason; unrelated task leaves behavior unchanged/refuses transfer; no answer content is injected.
+### P0.3 — Finish #944 live generalization proof
+Require the canonical runtime chain to prove:
+- ACTIVE learning retrieved by ID only;
+- second related held-out task improves;
+- unrelated task refuses transfer;
+- independent verifier rereads authoritative state and persisted receipts;
+- cold successor reuses the lesson on the related task;
+- cold successor refuses it on the unrelated task;
+- no authority is inherited.
 
-### P0.5 — Prove causal behavioral effect on the second held-out task
-Run the same **new related** bounded held-out task:
+**Proof:** one green canonical live artifact chain with exact source/runtime parity.
 
-**WITHOUT retained intelligence** vs **WITH identifier-only cold-retrieved intelligence**
+### P0.4 — Close #944 only on production evidence
+Do not close on repository tests alone.
 
-Hold task, input, authority and runtime/model constant where possible. Predeclare behavior and outcome metrics.
+**Proof:** persisted production receipts + independent recomputation + exact revision identity.
 
-**PASS:** measurable delta attributable to retained intelligence.
+### P0.5 — Bind the nine-node organism behaviorally
+Prove the nine Master Nodes are not merely loaded names.
 
-### P0.6 — Independently verify
-Reconstruct behavior/outcome from persisted evidence rather than executor assertions.
+**Do:** one black-box runtime cycle + node-level receipts + ablation.
 
-**PASS:** forged/no-effect evidence cannot produce causal PASS.
+**Ablation proof:** removing/bypassing a claimed organ must cause the expected loss of safety, context, proof, learning, or continuity. If a node's removal changes nothing, its runtime role is not proven.
 
-### P0.7 — Prove correct refusal / negative-transfer safety
-Run the predeclared unrelated task with the same retained learning available.
+### P0.6 — Prove deterministic current-truth resolution
+A cold Naya must resolve:
+- current repository revision;
+- current runtime/deployment identity;
+- ratified authority;
+- active objective;
+- applicable intelligence;
+- conflicts/supersession;
+- proof state;
+- exactly one next authorized action.
 
-**PASS:** retained intelligence does not improperly transfer outside its applicability envelope.
+Do this as a deterministic projection over existing canonical owners, **not another brain/store**.
 
-### P0.8 — Prove cold successor reuse
-Terminate predecessor context. Give successor only canonical retrieval identity/context.
+### P0.7 — Harden applicability as a first-class gate
+Before relevance ranking, reject intelligence that is:
+- wrong owner/privacy scope;
+- revoked;
+- superseded;
+- invalid/stale where validity applies;
+- contradicted beyond permitted use;
+- below epistemic threshold;
+- outside applicability conditions;
+- unauthorized for the requested action.
 
-**PASS:** successor retrieves and beneficially uses the intelligence while independently resolving authority.
+Then rank relevance.
+
+### P0.8 — Make refusal part of compounding
+Every generalization proof must include an inapplicable/unrelated negative control.
+
+**PASS:** useful transfer where appropriate + correct non-transfer where inappropriate.
 
 ## 5. P1 — NEXT CRITICAL ENGINEERING
-1. **Nine-node runtime binding + ablation** — prove invocation, contract boundaries and observable influence without splitting the nine organs into services.
-2. **Orthogonal state model** — separate storage, epistemic, learning, freshness, applicability, authority and runtime-proof state.
-3. **Governed retrieval** — hard-filter owner → privacy/consent → validity → revocation → supersession → epistemic threshold → authority → applicability → conflict → task relevance → context budget before ranking.
-4. **Checkpoint/provenance hardening** — local object/execution/version lineage; test duplicates, replay, concurrent writes and supersession races.
-5. **Adversarial intelligence handling** — poisoning, context laundering, forged graph edges, weak-evidence accumulation and verifier monoculture.
-6. **Authority lifecycle proof** — missing/wrong owner/wrong scope/expired/revoked/successor/cached-derived cases; learning never creates LAW.
 
-## 6. P2 — IMPORTANT CAPABILITY DEVELOPMENT
-- Graph OFF/ON/adversarial utility.
-- Generalization across genuinely new held-out tasks.
-- Multi-generation A → B → C compounding.
-- Component-level deployment/artifact attestation.
-- Model identity/version in behavioral receipts.
-- Proof-carrying context if existing seams require it.
-- Human-value-per-attention measurement.
-- Recovery/replay/disaster reconstruction.
-- Schema/semantic migration testing.
-- Deletion/retention lineage handling where applicable.
+1. **Authority lifecycle matrix** — missing, wrong owner, wrong scope, expired, revoked, successor, cached-derived.
+2. **Checkpoint/provenance locality** — object/execution/version-bound checkpoints; duplicate/replay/concurrency/supersession tests.
+3. **Adversarial stored intelligence** — poisoning, context laundering, weak-evidence accumulation, forged relationships.
+4. **Verifier independence** — negative matrices + verifier-monoculture challenge.
+5. **Reference-kernel semantics** — no surface may claim real execution without an executor/evidence boundary.
+6. **Graph utility** — graph OFF/ON/adversarial experiment; expand graph only if it improves measurable work.
+7. **Model/runtime identity in receipts** — preserve model/version/runtime identity when behavior is being compared.
+8. **Recovery/replay** — partial persistence, unavailable dependency, idempotent retry, disaster reconstruction.
 
-## 7. P3 — SCALE AFTER REPEATABILITY
-- Two-owner NayaNET consent/revocation proof.
-- Broader collective intelligence.
-- Self-observation.
-- Governed self-optimization.
-- Self-building.
-- Richer Hub projections.
-- Scale/performance infrastructure only when measured need exists.
+## 6. P2 — IMPORTANT AFTER P0/P1
 
-## 8. PERMANENT NEGATIVE TESTS
-**Authority:** missing, wrong action, wrong owner, expired, revoked, inherited.  
-**Intelligence:** candidate, stale, superseded, contradicted, revoked, poisoned, wrong task.  
-**Context:** answer injection, predecessor leakage, outdated snapshot, wrong project.  
-**Graph:** fabricated relationship, low-evidence causal edge, poisoned authorization edge.  
-**Proof:** executor-only claim, missing observation, tampered receipt, circular evidence, false positive/negative.  
-**Runtime:** source/artifact/deployment mismatch, dependency/config mismatch.  
-**State:** duplicate, replay, concurrent checkpoint corruption, supersession race.  
-**Continuity:** successor receives content or authority it should resolve/retrieve itself.  
-**Privacy:** consent-revocation leakage and derived/cache leakage.  
-**Availability:** canonical persistence unavailable; degrade honestly.
+- multi-generation A → B → C compounding;
+- broader held-out task families;
+- component-level deployment/artifact attestation;
+- schema/version migration proof;
+- revocation propagation through derived intelligence/caches;
+- human-value measurement: time, re-explanation, cognitive load, error prevention;
+- Hub proof projection without Hub becoming authority;
+- two-owner NayaNET consent + revocation proof.
 
-## 9. DO NOT BUILD
-Unless measured failure proves the need:
+## 7. P3 — LATER / SCALE ONLY AFTER REPEATABILITY
+
+- broader collective intelligence;
+- self-observation;
+- governed self-optimization;
+- bounded self-building;
+- performance/scale infrastructure after measured pressure exists;
+- richer NayaNET network orchestration.
+
+## 8. DO NOT BUILD
+
+Unless a measured failure proves necessity:
 - tenth Master Node;
 - second Intelligent Block family;
 - second canonical database/brain;
 - second graph;
 - second learning pipeline;
-- Hub-owned canonical intelligence;
-- nine-node microservice split;
+- second authority system;
+- Hub-owned source of truth;
 - automatic learning → LAW;
-- self-authorized constitutional change;
-- premature NayaNET scaling;
-- Neo4j/Qdrant/Kafka/NATS/Ray/Raft/PKI/OPA or equivalent infrastructure without demonstrated need;
-- documentation proliferation as a substitute for runtime proof.
+- nine-node microservice split;
+- uncontrolled self-modification;
+- Neo4j/Qdrant/Kafka/NATS/Ray/Raft/OPA/PKI or equivalent infrastructure merely because it is sophisticated;
+- more current-state documents that compete with live state;
+- broad UI work on the critical path before kernel/intelligence proofs close.
 
-## 10. MASTER ACCEPTANCE GATES
-**A Truth** — cold Naya establishes current canonical reality and conflicts.  
-**B Admission** — useful non-duplicate intelligence enters the existing river.  
-**C Retrieval** — cold ID-only retrieval works without answer injection.  
-**D Applicability** — system determines where intelligence applies and refuses where it does not.  
-**E Authority** — current authority is independently resolved; no inheritance.  
-**F Causality** — WITH vs WITHOUT produces a predeclared measurable delta.  
-**G Verification** — independent verifier reconstructs persisted evidence.  
-**H Learning** — only justified verified experience becomes learning.  
-**I Refusal** — unrelated/inapplicable tasks do not inherit the lesson.  
-**J Succession** — cold successor retrieves and reuses the improved intelligence.  
-**K Compounding** — later generation improves held-out work with attributable lineage.
+## 9. PERMANENT NEGATIVE TEST MATRIX
 
-Documentation alone cannot satisfy a gate.
+**Authority:** missing, wrong scope, wrong owner, expired, revoked, inherited.  
+**Intelligence:** candidate, stale, superseded, contradicted, revoked, poisoned, wrong task.  
+**Context:** answer injection, predecessor leakage, wrong project, outdated snapshot.  
+**Graph:** fabricated edge, weak causal edge, poisoned authorization edge.  
+**Proof:** executor-only claim, tampered receipt, missing observation, circular evidence, false positive, false negative.  
+**Runtime:** source/artifact/deployment/config mismatch.  
+**State:** duplicate, replay, concurrent overwrite, corrupted checkpoint, supersession race.  
+**Continuity:** successor receives answer content or inherited authority.  
+**Privacy:** consent-revocation leakage, derived/cache leakage.  
+**Availability:** canonical dependency unavailable; system degrades honestly.
 
-## 11. CONTINUOUS OPERATING LOOP
-After every gate:
-1. Inspect current `main`.
-2. Identify the highest-value unclosed gate.
-3. Perform the smallest safe action.
-4. Run the strongest available test.
-5. Independently inspect evidence.
-6. Record changed state.
-7. Record unknowns/blockers.
-8. Preserve new durable intelligence when warranted.
-9. Leave exactly one next executable action.
-10. Hand off to the next cold Naya.
-11. Repeat.
+## 10. MASTER DEFINITION OF DONE
 
-## 12. ULTIMATE DEFINITION OF DONE
-A genuinely cold Naya can enter from canonical evidence and, without Shawn reconstructing the project:
+A genuinely cold Naya can enter using canonical evidence alone and:
 
-**orient → resolve current truth → retrieve applicable intelligence → resolve authority → act → observe → independently verify → learn → preserve → die → successor retrieves → successor applies → successor verifies → next generation improves**
+**ORIENT → RESOLVE CURRENT TRUTH → RETRIEVE APPLICABLE INTELLIGENCE → RESOLVE AUTHORITY → ACT → OBSERVE → INDEPENDENTLY VERIFY → LEARN → PRESERVE → DIE → SUCCESSOR RETRIEVES → SUCCESSOR APPLIES → SUCCESSOR REFUSES WHERE INAPPLICABLE → SUCCESSOR VERIFIES → NEXT GENERATION IMPROVES**
 
-while correctly refusing stale, unauthorized, contradictory, inapplicable, poisoned or revoked intelligence.
+without Shawn rebuilding project context and without the system creating or inheriting unauthorized power.
 
-**One organism. Nine organs. One intelligence river. One canonical substrate. Many minds. No authority inheritance. Maximum verified value per moment.**
+## 11. EXECUTED VS REMAINING
 
-## 13. CURRENT NEXT EXECUTION — #944 PHASE 2
+### Executed now / already landed
+- council synthesis transformed into canonical Brain master plan + machine projection;
+- knowledge-entry drift corrected;
+- Concept #17 duplicate-admission avoided;
+- second-task generalization path implemented;
+- negative-transfer refusal implemented;
+- independent verifier hardened;
+- cold-successor second-task reuse path implemented;
+- governed production promotion initiated;
+- current-main cold-successor ACTIVE/target retrieval regression repaired and merged as PR #959;
+- exact production branch promotion to the authorized SHA completed.
 
-The existing production runtime is still strongly bound to the original provenance lesson/task (including specific behavior strings and task IDs). The next code change must therefore be **bounded generalization**, not a new architecture:
+### Remaining / not yet executable from GitHub alone
+1. Supabase GitHub Integration configuration/check emission.
+2. Fresh governed production promotion for the then-current `main`.
+3. #944 production generalization PASS.
+4. #944 closure on evidence.
+5. Nine-node runtime binding + ablation.
+6. Deterministic current-truth resolver/projection.
+7. Applicability hard-filter semantics.
+8. Authority lifecycle matrix.
+9. Checkpoint/concurrency/replay hardening.
+10. Poisoning/context-laundering/verifier-monoculture tests.
+11. Graph utility proof.
+12. Multi-generation compounding.
+13. Component-level artifact attestation.
+14. Human-value measurement.
+15. Two-owner NayaNET consent/revocation.
+16. Self-optimization/self-building only after preceding gates.
 
-1. inspect the existing `learning-influence`, independent verifier, and cold-successor seams;
-2. add exactly one second relevant held-out task and one unrelated task;
-3. reuse the existing ACTIVE learning by ID only;
-4. persist paired evidence;
-5. independently recompute applicability, behavior delta, outcome delta, and correct refusal;
-6. stop before production/live claims until exact source/runtime parity is established again.
+## 12. ONE NEXT ACTION
 
-**Do not create a second learning pipeline.**
+**Complete the external Supabase GitHub Integration boundary so the governed deployment workflow can emit the required deployment check; then promote the exact then-current `main` and let the canonical proof river run until the next real failing rung.**
+
+Do not patch code to work around this boundary. Do not weaken parity. Do not create a second deployment path.
