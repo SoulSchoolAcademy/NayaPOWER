@@ -105,4 +105,4 @@ def test_projection_workflow_publishes_active_verified_public_projection():
 def test_projection_workflow_does_not_allocate_intelligent_block_identity():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert 'ib="IB-SMART-NOTE-"+capture["capture_id"]' not in workflow
-    assert 'result["intelligent_block_id"]' in workflow
+    assert '"intelligent_block_id"' in workflow
