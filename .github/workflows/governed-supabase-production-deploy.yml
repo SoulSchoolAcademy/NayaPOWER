@@ -372,7 +372,8 @@ jobs:
         run: |
           set -euo pipefail
           date -u +"%Y-%m-%dT%H:%M:%SZ" > proof-dispatch-start.txt
-          gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+          producer_run_id="$(python -c 'import json; print(json.load(open("producer-run.json"))["databaseId"])')"
+          gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f source_sha="$GITHUB_SHA" -f producer_run_id="$producer_run_id"
           for i in $(seq 1 60); do
             runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch --limit 30 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
             python - <<'PY' "$runs" > proof-run.json
