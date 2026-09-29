@@ -1,0 +1,105 @@
+{
+  "schema": "naya.operations.ultimate-master-execution-plan.v1",
+  "schema_version": "1.0",
+  "status": "ACTIVE_PROJECTION",
+  "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
+  "authority_note": "This JSON is a machine-readable projection of the human-readable master plan, not a second authority source.",
+  "source_main": "b5fb89a7b5f40db15be364047b3e94697830c936",
+  "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
+  "truth_laws": [
+    "UNKNOWN != PASS",
+    "BLOCKED != PASS",
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN",
+    "RETRIEVED != AUTHORIZED",
+    "CAPABILITY DOES NOT CREATE AUTHORITY"
+  ],
+  "current_state": {
+    "pr_946": "MERGED",
+    "issue_913": {
+      "state": "CLOSED",
+      "proof": "PRODUCTION_PROVEN_BOUNDED_SPECIMEN",
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "inherited_by_later_main": false
+    },
+    "issue_944": {
+      "state": "OPEN",
+      "phase_1": "NO_NEW_CANDIDATE_SOURCE_RECONCILED",
+      "evidence": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md"
+    },
+    "smart_node_machine_object": "INTELLIGENT_BLOCK",
+    "universal_runtime_binding": "NOT_PROVEN"
+  },
+  "p0": [
+    {
+      "id": "P0.1",
+      "status": "IN_PROGRESS",
+      "name": "Executable current truth",
+      "proof": "Cold Naya reconstructs current source/runtime identity and next action without stale pointers."
+    },
+    {
+      "id": "P0.2",
+      "status": "COMPLETE_NO_NEW_CANDIDATE",
+      "name": "Concept #17 reconciliation",
+      "proof": "No duplicate Smart Node created; source proposition mappings preserved."
+    },
+    {
+      "id": "P0.3",
+      "status": "SKIPPED_NOT_APPLICABLE",
+      "name": "New candidate admission",
+      "proof": "Skipped because #944 phase 1 found no unique candidate requiring a new block."
+    },
+    {
+      "id": "P0.4",
+      "status": "NEXT",
+      "name": "Identifier-only retrieval plus applicability generalization",
+      "proof": "Existing ACTIVE intelligence improves a new related held-out task and leaves an unrelated task unaffected."
+    },
+    {
+      "id": "P0.5",
+      "status": "QUEUED",
+      "name": "Causal behavioral effect",
+      "proof": "Same task WITHOUT/WITH retained intelligence yields predeclared measurable delta."
+    },
+    {
+      "id": "P0.6",
+      "status": "QUEUED",
+      "name": "Independent verification",
+      "proof": "Verifier reconstructs persisted evidence; forged/no-effect treatment cannot pass."
+    },
+    {
+      "id": "P0.7",
+      "status": "QUEUED",
+      "name": "Correct refusal",
+      "proof": "Unrelated task does not inherit the lesson."
+    },
+    {
+      "id": "P0.8",
+      "status": "QUEUED",
+      "name": "Cold successor reuse",
+      "proof": "Successor retrieves and uses intelligence without authority inheritance."
+    }
+  ],
+  "p1": [
+    "Nine-node runtime binding and ablation",
+    "Orthogonal state semantics",
+    "Governed retrieval hard filters",
+    "Checkpoint/provenance concurrency hardening",
+    "Adversarial stored-intelligence handling",
+    "Authority lifecycle proof"
+  ],
+  "do_not_build": [
+    "tenth Master Node",
+    "second Intelligent Block family",
+    "second canonical brain/database",
+    "second graph",
+    "second learning pipeline",
+    "Hub-owned canonical intelligence",
+    "automatic learning-to-LAW",
+    "premature distributed/vector/graph infrastructure without measured need"
+  ],
+  "next_action": {
+    "issue": 944,
+    "instruction": "Use the existing ACTIVE #913 learning and existing canonical river to design the smallest second-held-out related task plus unrelated-task refusal experiment. Reuse the current learning-influence/cold-successor proof path; stop at the first hard-coded seam and repair only that seam."
+  }
+}
