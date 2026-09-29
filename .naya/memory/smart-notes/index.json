@@ -32,6 +32,12 @@
         "runtime_index_id": "62162ff4-5235-44d5-b788-9c5d877cc911",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "faa4345a-aacd-43f2-ab2f-a991b9681979"
+      },
+      "content_hash": "b8a0adf84cfb3f513bf90a450fc5b832671b98317b7a567f7696b5cb1283e108",
+      "reconciliation": {
+        "exact_identity": "REUSE_EXISTING",
+        "exact_content_hash": "REUSE_EXISTING",
+        "semantic_near_duplicate": "CANDIDATE_REVIEW_REQUIRED"
       }
     }
   ]
