@@ -48,16 +48,16 @@ Permanent truth laws:
 ## 4. TOP 10 — DEPENDENCY ORDER
 
 ### 1 — #978 checkpoint-evidence security boundary
-**Now:** proposed policy is source-verified but Human Director approval is reserved.
+**Now (2026-09-29, main `130a8ffb22e71d84b0eae6c721f6af59cbb9d35c`):** PR #980 is merged. The migration ledger still marks its production application pending, and the advisor observed RLS disabled at `2026-09-29T20:42:42.112Z`. Source merge does not prove live access enforcement.
 
 Exact proposed rule:
 
 > authenticated owners may read only rows where `user_id = auth.uid()`; anon has no table access; mutation remains privileged/server-only.
 
-**After approval:** mark PR #980 ready → merge → governed production deployment → rerun security advisor → prove owner read / cross-owner deny / anon deny / unauthorized write deny / service-role reread / immutability.
+**Next:** establish the recorded authorization for this protected access change, execute the reviewed migration through the governed path, then rerun security advisor and prove owner read / cross-owner deny / anon deny / unauthorized write deny / service-role reread / immutability.
 
 ### 2 — fresh exact-main production deployment
-Requires explicit Human Director `DEPLOY` for the exact live `main` resolved at dispatch time.
+Routine promotion is governed by ratified `STANDING-PRODUCTION-PROMOTION-V1`; each candidate must satisfy its current machine gates. Protected governance, security, privacy, and database changes still require explicit authorization. Blank validity dates and unresolved #978 currently prevent automatic promotion.
 
 **PASS:** native Supabase check success + exact source/runtime parity.
 
@@ -114,10 +114,10 @@ Do not build without measured need:
 ## 6. CURRENT BLOCKERS
 
 ### Human-reserved security decision
-PR #980 cannot safely be production-applied until the exact RLS policy is accepted.
+PR #980 is merged; its exact RLS policy still requires recorded authorization and live application/proof. The routine standing policy expressly excludes this security boundary.
 
-### Human-reserved production authorization
-A fresh exact-main production promotion requires explicit `DEPLOY`. Prior authorizations do not transfer to later main.
+### Standing authorization activation and protected changes
+The ratified standing policy replaces repeated `DEPLOY` requests for routine candidates only. Its validity dates must be bounded, and all machine gates must pass. It does not authorize the #980 security boundary or promotion of changes to its own enforcement.
 
 These are genuine boundaries. While blocked, continue independent source/test/control-plane work rather than inventing PASS.
 
@@ -131,8 +131,8 @@ with current production evidence, recovery, security, privacy/consent, and human
 
 ## 8. EXACT NEXT ACTION
 
-**Human Director accepts or rejects the PR #980 checkpoint-receipt policy boundary.**
+**Resolve recorded authorization for the merged #980 checkpoint-receipt policy and bounded standing-policy activation, then execute the authorized protected application and verify it.**
 
-If accepted, the next executable machine action is: **mark #980 ready, merge it, then wait for explicit `DEPLOY` before production application.**
+If accepted, the next executable machine action is: **recheck current source and checks, execute the accepted migration through its authorized production path, then independently verify the security boundary. Routine promotions thereafter use standing authorization when every gate passes.**
 
 If rejected, revise the policy from the stated reason without weakening privacy or evidence integrity.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -13,7 +14,10 @@ PROTECTED_PATH_PREFIXES = (
     "CONSTITUTION/",
     "GOVERNANCE/",
     ".naya/governance/",
-    ".github/workflows/governed-supabase-production-deploy.yml",
+    ".github/",
+    "tools/standing_production_promotion",
+    "tests/test_standing_",
+    "supabase/config.toml",
     "supabase/migrations/",
 )
 
@@ -24,6 +28,7 @@ REQUIRED_CONTEXT = (
     "required_ci",
     "required_tests",
     "required_security_checks",
+    "no_unresolved_production_blocker",
     "source_revision_identified",
     "deployment_artifact_provenance_bound",
     "production_target_exact",
@@ -35,7 +40,7 @@ REQUIRED_CONTEXT = (
 )
 
 
-def evaluate_policy(policy: dict[str, Any], context: dict[str, Any]) -> dict[str, Any]:
+def evaluate_policy(policy: dict[str, Any], context: dict[str, Any], now: datetime | None = None) -> dict[str, Any]:
     """Return ALLOW only when every standing-policy boundary is satisfied.
 
     Missing, false, malformed, or out-of-scope inputs are all DENY.
@@ -46,6 +51,21 @@ def evaluate_policy(policy: dict[str, Any], context: dict[str, Any]) -> dict[str
     if policy.get("policy_id") != "STANDING-PRODUCTION-PROMOTION-V1":
         return {"decision": "DENY", "reason": "wrong_policy"}
 
+    # Ratification is not a license to rely on caller-supplied expiry assertions.
+    now = now or datetime.now(timezone.utc)
+    try:
+        dates = policy.get("expiry") or {}
+        expiry = datetime.fromisoformat(dates["expires_at"].replace("Z", "+00:00"))
+        review = datetime.fromisoformat(dates["review_after"].replace("Z", "+00:00"))
+        if expiry.tzinfo is None or review.tzinfo is None or now.tzinfo is None or review > expiry:
+            raise ValueError("unbounded or ambiguous policy time")
+    except (KeyError, AttributeError, TypeError, ValueError):
+        return {"decision": "DENY", "reason": "policy_time_not_bounded"}
+    if now >= expiry:
+        return {"decision": "DENY", "reason": "policy_expired"}
+    if now >= review:
+        return {"decision": "DENY", "reason": "policy_review_due"}
+
     scope = policy.get("scope") or {}
     if context.get("repository") != scope.get("repository"):
         return {"decision": "DENY", "reason": "repository_out_of_scope"}
@@ -54,13 +74,17 @@ def evaluate_policy(policy: dict[str, Any], context: dict[str, Any]) -> dict[str
     if context.get("target_branch") != scope.get("target_branch"):
         return {"decision": "DENY", "reason": "target_branch_out_of_scope"}
 
-    changed_paths = context.get("changed_paths") or []
+    changed_paths = context.get("changed_paths")
+    if not isinstance(changed_paths, list) or any(not isinstance(p, str) or not p or p.startswith("/") or ".." in p.split("/") for p in changed_paths):
+        return {"decision": "DENY", "reason": "changed_path_evidence_missing_or_invalid"}
     if any(any(str(path).startswith(prefix) for prefix in PROTECTED_PATH_PREFIXES) for path in changed_paths):
         return {"decision": "DENY", "reason": "protected_change_requires_explicit_promotion"}
 
     source_sha = context.get("source_sha")
     if not isinstance(source_sha, str) or not SHA_RE.fullmatch(source_sha):
         return {"decision": "DENY", "reason": "source_sha_not_exact"}
+    if context.get("resolved_main_sha") != source_sha:
+        return {"decision": "DENY", "reason": "resolved_main_sha_mismatch"}
 
     if context.get("requested_operation") in {
         "MODIFY_POLICY",
@@ -70,6 +94,8 @@ def evaluate_policy(policy: dict[str, Any], context: dict[str, Any]) -> dict[str
         "MODIFY_CONSTITUTION",
     }:
         return {"decision": "DENY", "reason": "self_or_authority_modification"}
+    if context.get("requested_operation") != "PROMOTE_PRODUCTION":
+        return {"decision": "DENY", "reason": "operation_out_of_scope"}
 
     for field in REQUIRED_CONTEXT:
         if context.get(field) is not True:

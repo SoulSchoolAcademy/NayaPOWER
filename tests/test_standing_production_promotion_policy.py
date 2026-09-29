@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -11,7 +12,10 @@ POLICY_PATH = REPO / ".naya" / "governance" / "STANDING-PRODUCTION-PROMOTION-V1.
 
 
 def load_policy():
-    return json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+    policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc)
+    policy["expiry"] = {"expires_at": (now + timedelta(days=30)).isoformat(), "review_after": (now + timedelta(days=15)).isoformat(), "automatic_renewal": False}
+    return policy
 
 
 def test_valid_candidate_is_authorized_only_inside_policy_boundary():
@@ -22,6 +26,9 @@ def test_valid_candidate_is_authorized_only_inside_policy_boundary():
             "repository": "SoulSchoolAcademy/NayaPOWER",
             "source_branch": "main",
             "source_sha": "a" * 40,
+            "resolved_main_sha": "a" * 40,
+            "changed_paths": [],
+            "requested_operation": "PROMOTE_PRODUCTION",
             "target_branch": "production",
             "policy_active": True,
             "policy_not_expired": True,
@@ -68,6 +75,9 @@ def test_any_failed_precondition_fails_closed(field, value):
         "repository": "SoulSchoolAcademy/NayaPOWER",
         "source_branch": "main",
         "source_sha": "b" * 40,
+            "resolved_main_sha": "b" * 40,
+            "changed_paths": [],
+            "requested_operation": "PROMOTE_PRODUCTION",
         "target_branch": "production",
         "policy_active": True,
         "policy_not_expired": True,
@@ -104,6 +114,9 @@ def test_scope_mismatch_fails_closed(source_branch, target_branch):
         "repository": "SoulSchoolAcademy/NayaPOWER",
         "source_branch": source_branch,
         "source_sha": "c" * 40,
+            "resolved_main_sha": "c" * 40,
+            "changed_paths": [],
+            "requested_operation": "PROMOTE_PRODUCTION",
         "target_branch": target_branch,
     }
     result = evaluate_policy(policy, context)
@@ -118,6 +131,9 @@ def test_repository_mismatch_fails_closed():
             "repository": "other/repo",
             "source_branch": "main",
             "source_sha": "d" * 40,
+            "resolved_main_sha": "d" * 40,
+            "changed_paths": [],
+            "requested_operation": "PROMOTE_PRODUCTION",
             "target_branch": "production",
         },
     )
@@ -146,6 +162,8 @@ def test_policy_cannot_authorize_self_modification_or_scope_expansion():
             "repository": "SoulSchoolAcademy/NayaPOWER",
             "source_branch": "main",
             "source_sha": "e" * 40,
+            "resolved_main_sha": "e" * 40,
+            "changed_paths": [],
             "target_branch": "production",
             "requested_operation": "MODIFY_POLICY",
         },
@@ -161,6 +179,8 @@ def test_protected_repository_changes_require_explicit_promotion():
             "repository": "SoulSchoolAcademy/NayaPOWER",
             "source_branch": "main",
             "source_sha": "f" * 40,
+            "resolved_main_sha": "f" * 40,
+            "requested_operation": "PROMOTE_PRODUCTION",
             "target_branch": "production",
             "changed_paths": ["BRAIN/04-INTELLIGENCE/example.py", "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md"],
         },
