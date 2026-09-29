@@ -134,7 +134,7 @@ def update_registry(capture, verify, projection):
     }
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
-    seq_match = re.fullmatch(r"SN-(\\d+)", sn_id)
+    seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
     if seq_match:
         policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
         policy["next_sequence"] = max(int(policy.get("next_sequence", 1)), int(seq_match.group(1)) + 1)
