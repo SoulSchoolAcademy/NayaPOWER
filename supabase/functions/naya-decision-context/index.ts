@@ -20,8 +20,12 @@ Deno.serve(async(req)=>{
     if(!targetId) return json({ok:false,error:"TARGET_ID_REQUIRED"},400);
     const {data:evidence,error:evidenceError}=await supabase
       .from("learning_evidence")
-      .select("id,target_id,level,status,claim,observed_value,source_event_id,verification_method,provenance,created_at")
-      .eq("member_id",auth.user.id).eq("target_id",targetId).eq("status","ACTIVE")
+      .select("id,target_id,level,status,verification_state,effect_state,claim,observed_value,source_event_id,verification_method,provenance,created_at")
+      .eq("member_id",auth.user.id)
+      .eq("target_id",targetId)
+      .eq("status","ACTIVE")
+      .eq("verification_state","VERIFIED")
+      .eq("effect_state","OUTCOME_VERIFIED")
       .order("created_at",{ascending:false}).limit(1).maybeSingle();
     if(evidenceError) throw evidenceError;
     const influenced=!!evidence;
@@ -31,7 +35,7 @@ Deno.serve(async(req)=>{
       reason:influenced?"Active learning evidence is present in the canonical learner evidence boundary.":"No active learning evidence was found for this target.",
       context:{evidence_id:evidence?.id||null,level:evidence?.level||null,claim:evidence?.claim||null,source_event_id:evidence?.source_event_id||null,observed_value:evidence?.observed_value||null,verification_method:evidence?.verification_method||null,provenance:evidence?.provenance||null},
       authority:{changed:false,granted:false,source:"existing governance boundary"},
-      verification:{evidence_status:evidence?.status||null},
+      verification:{evidence_status:evidence?.status||null,verification_state:evidence?.verification_state||null,effect_state:evidence?.effect_state||null},
       continuity:{grounded:influenced,source:influenced?"learning_evidence":"no_learning_evidence",next_step:influenced?"APPLY_VERIFIED_LEARNING_CONTEXT":"RETRIEVE_VERIFIED_LEARNING_BEFORE_CONTINUATION"}
     }});
   }catch(error){return json({ok:false,error:"DECISION_CONTEXT_FAILED",detail:String(error)},500);}
