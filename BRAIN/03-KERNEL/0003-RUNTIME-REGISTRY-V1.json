@@ -65,9 +65,17 @@
       "entrypoint": "NAYA-NODE-0001 / existing governed runtime identity"
     },
     "LAW": {
-      "status": "IMPLEMENTED_SOURCE_PENDING_LIVE_PROOF",
+      "status": "BOUNDED_LIVE_PROVEN",
       "entrypoint": "supabase/functions/nayanet-law-runtime/index.ts",
-      "decision_receipt": "nayanet_execution_receipts.action=law_authority_decision"
+      "deployment": {
+        "function": "nayanet-law-runtime",
+        "version": 1
+      },
+      "proof_run": 36620001626,
+      "proof_source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+      "proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
+      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
+      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e"
     }
   },
   "next_node_after_law": "ACT"
