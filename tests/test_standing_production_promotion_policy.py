@@ -151,3 +151,18 @@ def test_policy_cannot_authorize_self_modification_or_scope_expansion():
         },
     )
     assert result["decision"] == "DENY"
+
+
+def test_protected_repository_changes_require_explicit_promotion():
+    policy = load_policy()
+    result = evaluate_policy(
+        policy,
+        {
+            "repository": "SoulSchoolAcademy/NayaPOWER",
+            "source_branch": "main",
+            "source_sha": "f" * 40,
+            "target_branch": "production",
+            "changed_paths": ["BRAIN/04-INTELLIGENCE/example.py", "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md"],
+        },
+    )
+    assert result["decision"] == "DENY"
