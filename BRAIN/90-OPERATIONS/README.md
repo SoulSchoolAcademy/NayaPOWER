@@ -27,8 +27,9 @@ At the latest live reconciliation used to refresh the master plan:
 - Concept #17 was reconciled as **NO_NEW_CANDIDATE — SOURCE RECONCILED**.
 - #944's second-task generalization, unrelated refusal, independent verification and cold-successor reuse paths are implemented/repository-verified.
 - PR #955 verifier negative-matrix hardening is merged.
+- PR #959 cold-successor ACTIVE + canonical-target retrieval hardening is merged with repository gates green.
 - Governed production promotion run `36514309554` targeted `32b7c9954988befecfbe8c850f523e59a441f44d`, advanced `production` to that SHA, and is waiting for a new Supabase GitHub Integration deployment check.
-- Current `main` has since advanced to `a8a7ee6999d4cfb032693689b1f14dbbc2c60a43`.
+- Current `main` has since advanced to `faac73abf29c99fc29879f23cd39966439964251`.
 - Therefore a successful old-target promotion must not be called current-main production proof.
 - Universal nine-node runtime binding remains **NOT_PROVEN**.
 
