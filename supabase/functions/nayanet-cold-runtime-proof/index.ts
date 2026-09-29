@@ -270,6 +270,7 @@ Deno.serve(async (req: Request) => {
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.ACTIVE&select=id,target_id,level,status,claim,source_event_id,observed_value,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "ACTIVE_LEARNING_NOT_FOUND" }, 409);
       const learning = learningRows[0];
+      if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
       const observedValue = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
       const sourceBlockId = String(observedValue.intelligent_block_id || "");
       if (!sourceBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
