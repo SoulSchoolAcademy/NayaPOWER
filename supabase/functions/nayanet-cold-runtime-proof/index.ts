@@ -87,7 +87,7 @@ Deno.serve(async (req: Request) => {
       if (req.method !== "POST") return json({ error: "METHOD_REQUIRED" }, 405);
       const body = await req.json().catch(() => ({}));
       const learningId = String(body?.learning_id || LEARNING_ID);
-      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.CANDIDATE&select=id,target_id,level,status,claim,source_event_id,observed_value,verification_method,provenance");
+      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.CANDIDATE&select=id,target_id,level,status,verification_state,effect_state,claim,source_event_id,observed_value,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "FRESH_LEARNING_CANDIDATE_NOT_FOUND" }, 409);
       const learning = learningRows[0];
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
@@ -209,7 +209,11 @@ Deno.serve(async (req: Request) => {
       };
       const priorObserved = learning?.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value) ? learning.observed_value : {};
       const mergedObserved = { ...priorObserved, ...observed, provenance_preserved: priorObserved.provenance_preserved === true || treatmentResult.outcome.provenance_preserved === true };
-      const patch = await fetch(supabaseUrl + "/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID, { method: "PATCH", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ observed_value: mergedObserved, verification_method: "Pending independent causal verification of computed paired control/treatment receipts." }) });
+      const patch = await fetch(supabaseUrl + "/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID, { method: "PATCH", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({
+        observed_value: mergedObserved,
+        effect_state: behavioralChanged ? "INFLUENCED" : (learning.effect_state || "UNMEASURED"),
+        verification_method: "Pending independent causal verification of computed paired control/treatment receipts."
+      }) });
       if (!patch.ok) throw new Error("LEARNING_UPDATE_" + patch.status);
       if (!behavioralChanged || provenanceDelta <= 0) {
         return json({
@@ -330,10 +334,17 @@ Deno.serve(async (req: Request) => {
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
 
       // 1. Re-read the persisted learning that the previous Naya produced.
-      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
+      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,verification_state,effect_state,claim,observed_value,source_event_id,verification_method");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const learning = learningRows[0];
-      if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
+      if (learning.status !== "ACTIVE" || learning.verification_state !== "VERIFIED" || learning.effect_state !== "OUTCOME_VERIFIED") {
+        return json({
+          error: "VERIFIED_OUTCOME_LEARNING_REQUIRED",
+          status: learning.status,
+          verification_state: learning.verification_state,
+          effect_state: learning.effect_state,
+        }, 409);
+      }
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
 
       // 2. Re-read the canonical Intelligent Block (already resolved owner-scoped above).
@@ -381,6 +392,8 @@ Deno.serve(async (req: Request) => {
           learning_id: learning.id,
           learning_level: learning.level,
           learning_status: learning.status,
+          learning_verification_state: learning.verification_state,
+          learning_effect_state: learning.effect_state,
           learning_source_event_id: learning.source_event_id,
           learning_verification_method: learning.verification_method,
           learning_claim: learning.claim,
@@ -424,10 +437,17 @@ Deno.serve(async (req: Request) => {
       const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
       const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
-      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
+      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,verification_state,effect_state,claim,observed_value,source_event_id");
       if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const l = lRows[0];
-      if (l.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: l.status }, 409);
+      if (l.status !== "ACTIVE" || l.verification_state !== "VERIFIED" || l.effect_state !== "OUTCOME_VERIFIED") {
+        return json({
+          error: "VERIFIED_OUTCOME_LEARNING_REQUIRED",
+          status: l.status,
+          verification_state: l.verification_state,
+          effect_state: l.effect_state,
+        }, 409);
+      }
       const lObs = (l.observed_value && typeof l.observed_value === "object" && !Array.isArray(l.observed_value)) ? l.observed_value : {};
       const vBlockId = String(lObs.intelligent_block_id || "");
       if (!vBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
