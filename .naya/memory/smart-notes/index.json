@@ -1,0 +1,6 @@
+{
+  "schema": "naya.smart-note-projection-index.v1",
+  "version": "1.0",
+  "source_of_truth": "runtime_intelligent_block",
+  "entries": []
+}
