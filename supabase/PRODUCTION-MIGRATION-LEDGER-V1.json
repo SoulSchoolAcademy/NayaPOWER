@@ -1304,7 +1304,17 @@
       "status": "PRODUCTION_APPLIED"
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20260929044000",
+      "name": "checkpoint_receipts_rls_v1",
+      "path": "supabase/migrations/20260929044000_checkpoint_receipts_rls_v1.sql",
+      "sha256": "b091e9580c317e049109e172c078f9b05a20ea7ccdcd316e2523c1da2ebfa360",
+      "statement_count": 8,
+      "bytes": 1026,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
