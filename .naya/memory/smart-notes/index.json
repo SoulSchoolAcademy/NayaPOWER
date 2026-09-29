@@ -5,16 +5,16 @@
   "entries": [
     {
       "intelligent_block_id": "IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
-      "title": "Smart Note as the universal governed intelligence capture command",
+      "title": "Official Smart Note Format & Lifecycle",
       "captured_at": "2026-09-29",
       "category": "SYSTEM_INTELLIGENCE",
-      "topic": "SMART_NOTE_UNIVERSAL_CAPTURE",
-      "subtopic": "CAPTURE_PROTOCOL",
+      "topic": "SMART_NOTE_SYSTEM",
+      "subtopic": "OFFICIAL_SMART_NOTE_FORMAT",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
-      "projection_status": "LIVE_PRIVATE_VIEWER",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "smart_link_status": "ACTIVE",
-      "projection_policy": "PRIVATE content MUST NOT be projected into public GitHub. Resolve through an authenticated private projection surface.",
+      "projection_policy": "Primary human Smart Link is the direct GitHub Brain Markdown when sharing/publication is explicitly authorized. Canonical runtime Block remains the machine source of truth.",
       "keywords": [
         "smart note",
         "capture",
@@ -42,14 +42,17 @@
         "exact_content_hash": "REUSE_EXISTING",
         "semantic_near_duplicate": "CANDIDATE_REVIEW_REQUIRED"
       },
-      "smart_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
-      "canonical_brain_path": ".naya/memory/smart-notes/2026/09/29/system-intelligence/smart-note-universal-capture/capture-protocol/IB-SMART-NOTE-20260929-b8f141805fa0d7ae/smart-note.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
+      "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
       "captured_at_utc": "2026-09-29T17:06:07.826513Z",
       "viewer": {
         "type": "AUTHENTICATED_PRIVATE_SMART_LINK",
         "runtime": "nayanet-smart-note-viewer",
         "deployment_version": 1
-      }
+      },
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "canonical_block_scope": "PRIVATE",
+      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae"
     }
   ]
 }
