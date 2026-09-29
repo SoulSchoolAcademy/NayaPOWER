@@ -62,3 +62,15 @@ def test_outcome_recovery_cannot_create_authority_or_trust_executor_claim():
     assert "executor_claim_trusted:false" in recovery
     assert "verified: true" in recovery
     assert "verifier_token_jti" in recovery
+
+
+def test_historical_outcome_recovery_is_manual_and_bounded_to_audited_pair():
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    assert "recover_historical_outcomes" in workflow
+    assert "historical-outcome-recovery:" in workflow
+    assert "github.event_name == 'workflow_dispatch'" in workflow
+    assert '"mode":"recover-learning-outcomes"' in workflow
+    assert "5b072812-699f-415d-b759-2ed509c36367" in workflow
+    assert "109944fc-9868-45e3-a532-f40952aea3a1" in workflow
+    assert "NAYANET_CAUSAL_OUTCOME_RECOVERY_V1" in workflow
+    assert "executor_claim_trusted" in workflow
