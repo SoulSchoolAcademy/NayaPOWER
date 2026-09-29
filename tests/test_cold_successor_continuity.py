@@ -203,5 +203,8 @@ def test_cold_successor_is_gated_on_verified_fresh_learning():
     jobs = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))["jobs"]
     needs = jobs["cold-successor"].get("needs")
     needs = [needs] if isinstance(needs, str) else (needs or [])
-    assert "independent-learning-influence-verification" in needs
+    assert "independent-retained-learning-reread" in needs
     assert "live-connect" not in needs
+    promotion_needs = jobs["learning-promotion"].get("needs")
+    promotion_needs = [promotion_needs] if isinstance(promotion_needs, str) else (promotion_needs or [])
+    assert "independent-learning-influence-verification" in promotion_needs
