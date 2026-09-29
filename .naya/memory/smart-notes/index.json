@@ -12,8 +12,8 @@
       "subtopic": "CAPTURE_PROTOCOL",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
-      "projection_status": "PENDING_PRIVATE_PROJECTION",
-      "smart_link_status": "PENDING_PRIVATE_PROJECTION",
+      "projection_status": "LIVE_PRIVATE_VIEWER",
+      "smart_link_status": "ACTIVE",
       "projection_policy": "PRIVATE content MUST NOT be projected into public GitHub. Resolve through an authenticated private projection surface.",
       "keywords": [
         "smart note",
@@ -41,6 +41,14 @@
         "exact_identity": "REUSE_EXISTING",
         "exact_content_hash": "REUSE_EXISTING",
         "semantic_near_duplicate": "CANDIDATE_REVIEW_REQUIRED"
+      },
+      "smart_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
+      "canonical_brain_path": ".naya/memory/smart-notes/2026/09/29/system-intelligence/smart-note-universal-capture/capture-protocol/IB-SMART-NOTE-20260929-b8f141805fa0d7ae/smart-note.md",
+      "captured_at_utc": "2026-09-29T17:06:07.826513Z",
+      "viewer": {
+        "type": "AUTHENTICATED_PRIVATE_SMART_LINK",
+        "runtime": "nayanet-smart-note-viewer",
+        "deployment_version": 1
       }
     }
   ]
