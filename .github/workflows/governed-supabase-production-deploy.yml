@@ -77,15 +77,21 @@ jobs:
           PY
 
           git fetch origin main
-          changed="$(git diff --name-only "${{ github.event.before }}" "$GITHUB_SHA")"
-          for path in $changed; do
-            case "$path" in
-              CONSTITUTION/*|GOVERNANCE/*|.naya/governance/*|.github/workflows/governed-supabase-production-deploy.yml|supabase/migrations/*)
-                echo "FAIL CLOSED: protected change '$path' is outside standing automatic scope."
-                exit 1
-                ;;
-            esac
-          done
+          # Compare the full undeployed delta, not merely the latest push.
+          git fetch origin production:refs/remotes/origin/production
+          git show origin/production:supabase/functions/nayanet-cold-runtime-proof/index.ts > production-runtime-source.ts
+          python - <<'PYCODE'
+          import json, os, re, subprocess
+          from pathlib import Path
+          source=Path("production-runtime-source.ts").read_text()
+          matches=re.findall(r'const DEPLOYED_SOURCE_REVISION = "([0-9a-f]{40})";', source)
+          if len(matches)!=1:
+              raise SystemExit("FAIL CLOSED: production source provenance missing; explicit bootstrap required")
+          base=matches[0]
+          subprocess.run(["git","merge-base","--is-ancestor",base,os.environ["GITHUB_SHA"]],check=True)
+          paths=subprocess.check_output(["git","diff","--name-only",base,os.environ["GITHUB_SHA"]],text=True).splitlines()
+          json.dump(paths,open("standing-changed-paths.json","w"))
+          PYCODE
 
           blocker_state="$(gh api "repos/$REPO/issues/978" --jq .state)"
           if [ "$blocker_state" != "closed" ]; then
@@ -95,24 +101,31 @@ jobs:
 
           python - <<'PY'
           import json, os, subprocess, time
-          required={"Kernel Tests","Collective Chain Readiness Gate"}
+          required={"kernel-tests.yml","collective-chain-readiness-gate.yml"}
           repo=os.environ["REPO"]
           sha=os.environ["GITHUB_SHA"]
           for attempt in range(90):
-              runs=json.loads(subprocess.check_output([
-                  "gh","api","repos/"+repo+"/commits/"+sha+"/check-runs?per_page=100"
-              ], text=True))
-              found={r.get("name"):r for r in runs.get("check_runs",[])}
+              found={}
+              for workflow in required:
+                  data=json.loads(subprocess.check_output([
+                      "gh","api",f"repos/{repo}/actions/workflows/{workflow}/runs?head_sha={sha}&event=push&per_page=100"
+                  ],text=True))
+                  matches=[r for r in data.get("workflow_runs",[]) if
+                      r.get("head_sha")==sha and r.get("head_branch")=="main" and r.get("event")=="push" and
+                      str(r.get("path","")).split("@",1)[0]==".github/workflows/"+workflow]
+                  if matches:
+                      found[workflow]=max(matches,key=lambda r:(int(r.get("id",0)),int(r.get("run_attempt",0))))
               missing=required-set(found)
-              failed={name:r.get("conclusion") for name,r in found.items() if name in required and r.get("status")=="completed" and r.get("conclusion")!="success"}
-              pending={name:r.get("status") for name,r in found.items() if name in required and r.get("status")!="completed"}
+              failed={name:r.get("conclusion") for name,r in found.items() if r.get("status")=="completed" and r.get("conclusion")!="success"}
+              pending={name:r.get("status") for name,r in found.items() if r.get("status")!="completed"}
               if failed:
-                  raise SystemExit(f"FAIL CLOSED: required check failed: {failed}")
+                  raise SystemExit(f"FAIL CLOSED: required workflow failed: {failed}")
               if not missing and not pending:
-                  print("required checks: PASS")
+                  json.dump(found,open("standing-ci-evidence.json","w"))
+                  print("required workflows for exact main: PASS")
                   break
               if attempt == 89:
-                  raise SystemExit(f"FAIL CLOSED: required checks not complete: missing={sorted(missing)} pending={pending}")
+                  raise SystemExit(f"FAIL CLOSED: required workflows not complete: missing={sorted(missing)} pending={pending}")
               time.sleep(10)
           PY
 
@@ -121,6 +134,7 @@ jobs:
             "repository": "$REPO",
             "source_branch": "main",
             "source_sha": "$GITHUB_SHA",
+            "resolved_main_sha": "$GITHUB_SHA",
             "target_branch": "production",
             "changed_paths": [],
             "requested_operation": "PROMOTE_PRODUCTION",
@@ -147,7 +161,9 @@ jobs:
           from tools.standing_production_promotion_policy import evaluate_policy
           policy=json.loads(Path(".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json").read_text(encoding="utf-8"))
           context=json.loads(Path("standing-policy-context.json").read_text(encoding="utf-8"))
+          context["changed_paths"]=json.loads(Path("standing-changed-paths.json").read_text())
           result=evaluate_policy(policy, context)
+          json.dump({"policy_id":policy["policy_id"],"policy_version":policy["version"],"context":context,"verdict":result},open("standing-authorization-verdict.json","w"),indent=2)
           print(result)
           if result["decision"] != "ALLOW":
               raise SystemExit("FAIL CLOSED: machine policy evaluator denied the automatic promotion.")
@@ -246,6 +262,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
           if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
             current="$(python -c 'import json; print(json.load(open("production-ref-before.json"))["object"]["sha"])')"
             parent="$(python -c 'import json; print(json.load(open("deployment-commit.json"))["parents"][0]["sha"])')"
@@ -478,10 +496,14 @@ jobs:
           cat production-promotion-receipt.json
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: production-promotion-receipt
           path: |
             production-promotion-receipt.json
+            standing-authorization-verdict.json
+            standing-ci-evidence.json
+            standing-changed-paths.json
             supabase-production-check.json
             producer-run.json
             proof-run.json

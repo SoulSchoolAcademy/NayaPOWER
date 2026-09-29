@@ -48,16 +48,16 @@ Permanent truth laws:
 ## 4. TOP 10 — DEPENDENCY ORDER
 
 ### 1 — #978 checkpoint-evidence security boundary
-**Now:** proposed policy is source-verified but Human Director approval is reserved.
+**Now (2026-09-29, main `130a8ffb22e71d84b0eae6c721f6af59cbb9d35c`):** PR #980 is merged. The migration ledger still marks its production application pending, and the advisor observed RLS disabled at `2026-09-29T20:42:42.112Z`. Source merge does not prove live access enforcement.
 
 Exact proposed rule:
 
 > authenticated owners may read only rows where `user_id = auth.uid()`; anon has no table access; mutation remains privileged/server-only.
 
-**After approval:** mark PR #980 ready → merge → governed production deployment → rerun security advisor → prove owner read / cross-owner deny / anon deny / unauthorized write deny / service-role reread / immutability.
+**Next:** establish the recorded authorization for this protected access change, execute the reviewed migration through the governed path, then rerun security advisor and prove owner read / cross-owner deny / anon deny / unauthorized write deny / service-role reread / immutability.
 
 ### 2 — fresh exact-main production deployment
-Requires explicit Human Director `DEPLOY` for the exact live `main` resolved at dispatch time.
+Routine promotion is governed by ratified `STANDING-PRODUCTION-PROMOTION-V1`; each candidate must satisfy its current machine gates. Protected governance, security, privacy, and database changes still require explicit authorization. Blank validity dates and unresolved #978 currently prevent automatic promotion.
 
 **PASS:** native Supabase check success + exact source/runtime parity.
 
@@ -113,13 +113,14 @@ Do not build without measured need:
 
 ## 6. CURRENT BLOCKERS
 
-### Human-reserved security decision
-PR #980 cannot safely be production-applied until the exact RLS policy is accepted.
+### Checkpoint security boundary — repaired in production
+PR #980 is merged and #978 is closed. Live RLS is enabled; canonical issue evidence records owner-only SELECT, denied cross-owner/anonymous access, privileged writes and preserved immutability. Do not reapply the migration or describe the old disabled-RLS finding as current.
 
-### Human-reserved production authorization
-A fresh exact-main production promotion requires explicit `DEPLOY`. Prior authorizations do not transfer to later main.
+### Finite standing activation and protected bootstrap
+Human continuation authorizes the concrete one-time proposal recorded in `BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ACTIVATION.md`: review October 15 and expire October 29 in America/Vancouver, no automatic renewal or scope expansion. The enforcement correction is source-tested. Its protected delta still uses the existing explicit bootstrap; do not bypass the standing lane's exclusions.
 
-These are genuine boundaries. While blocked, continue independent source/test/control-plane work rather than inventing PASS.
+### Live delivery and KNOW proof
+The deployment and child runtime proof succeeded at the inspected older source, but parent polling failed and no durable promotion receipt was produced. Preserve current quote-free polling and prove the full parent run. KNOW is deployed with matching inspected source, but contextual HIT/MISS and independent persisted reread remain unproven. Run existing proof workflows with their own OIDC identity.
 
 ## 7. DEFINITION OF DONE
 
@@ -131,8 +132,6 @@ with current production evidence, recovery, security, privacy/consent, and human
 
 ## 8. EXACT NEXT ACTION
 
-**Human Director accepts or rejects the PR #980 checkpoint-receipt policy boundary.**
+**Integrate the finite activation/enforcement correction, execute the existing governed protected bootstrap for exact current main, and verify its durable promotion receipt. Then run existing KNOW contextual and independent verification workflows.**
 
-If accepted, the next executable machine action is: **mark #980 ready, merge it, then wait for explicit `DEPLOY` before production application.**
-
-If rejected, revise the policy from the stated reason without weakening privacy or evidence integrity.
+Routine automatic delivery needs its own eligible-candidate proof afterward. Explicit bootstrap, passing CI and code parity alone do not prove standing delivery or universal organism binding.
