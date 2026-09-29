@@ -4,6 +4,16 @@ on:
   workflow_run:
     workflows: ["Live Intelligence Commit Proof"]
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: "Exact main SHA whose runtime is being proven"
+        required: true
+        type: string
+      producer_run_id:
+        description: "Live Intelligence Commit Proof run that produced the fresh lineage artifacts"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -13,15 +23,17 @@ permissions:
 env:
   SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
   COLD_RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-cold-runtime-proof
+  SOURCE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_sha }}
+  PRODUCER_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.producer_run_id }}
 
 jobs:
   contract:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/setup-python@v6
         with: {python-version: "3.12"}
       - run: python -m pip install pytest
@@ -34,7 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -65,7 +77,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - name: Mint fresh short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -96,7 +108,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with: {name: naya-cold-runtime-1, path: receipts/one}
       - uses: actions/download-artifact@v4
@@ -110,7 +122,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - name: Mint short-lived GitHub OIDC runtime identity for CONNECT
         shell: bash
         run: |
@@ -168,7 +180,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: live-connect-runtime-receipt
@@ -184,13 +196,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: smart-note-lineage
           path: fresh-lineage
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ env.PRODUCER_RUN_ID }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -274,7 +286,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment
@@ -359,7 +371,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -413,7 +425,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: cold-graph-behavior-pair
@@ -446,7 +458,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
@@ -463,7 +475,7 @@ jobs:
           learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
           printf '{"learning_id":"%s"}' "$learning_id" > generalization-request.json
           curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @generalization-request.json             "${COLD_RUNTIME_FUNCTION}?mode=learning-generalization" > active-learning-generalization.json
-          export SOURCE_SHA="${{ github.event.workflow_run.head_sha }}"
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
           import json, os
           r=json.load(open("active-learning-generalization.json"))
@@ -496,7 +508,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: active-learning-generalization
@@ -545,7 +557,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: active-learning-generalization
@@ -562,7 +574,7 @@ jobs:
           learning_id="$(python -c 'import json; print(json.load(open("active-learning-generalization.json"))["learning_id"])')"
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=NAYA-0001-PROVENANCE-HELDOUT-002" > cold-successor-related.json
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated.json
-          export SOURCE_SHA="${{ github.event.workflow_run.head_sha }}"
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
           import json, os
           r=json.load(open("cold-successor-related.json"))
@@ -597,7 +609,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: cold-successor-generalization
@@ -614,7 +626,7 @@ jobs:
           learning_id="$(python -c 'import json; print(json.load(open("cold-successor-related.json"))["reconstruction"]["learning_id"])')"
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=NAYA-0001-PROVENANCE-HELDOUT-002" > cold-successor-related-verify.json
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated-verify.json
-          export SOURCE_SHA="${{ github.event.workflow_run.head_sha }}"
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
           import json, os
           er=json.load(open("cold-successor-related.json"))
@@ -684,7 +696,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
@@ -736,7 +748,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: cold-successor-receipt
@@ -806,7 +818,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
@@ -870,7 +882,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
       - uses: actions/download-artifact@v4
         with:
           name: causal-learning-experiment-receipt
@@ -927,7 +939,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ env.SOURCE_SHA }}
 
       - uses: actions/download-artifact@v4
         with:
@@ -963,7 +975,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          export SOURCE_SHA="${{ github.event.workflow_run.head_sha }}"
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
           import json, os
           cold=json.load(open("evidence/self/cold-runtime-1.json"))
