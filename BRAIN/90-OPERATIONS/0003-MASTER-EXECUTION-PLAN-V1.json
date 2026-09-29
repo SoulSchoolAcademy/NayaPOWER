@@ -1,0 +1,168 @@
+{
+  "schema": "naya.operations.master-execution-plan.v1",
+  "schema_version": "1.0",
+  "status": "ACTIVE",
+  "authority": {
+    "human_director": "Shawn Vibert",
+    "authorization": "Execute the highest-value authorized work and preserve the remainder as an explicit queue.",
+    "constraints": [
+      "Capability does not create authority.",
+      "No second brain, graph, memory, learning, or authority path.",
+      "UNKNOWN != VERIFIED.",
+      "BLOCKED != PASS.",
+      "IMPLEMENTED != VERIFIED.",
+      "VERIFIED != PRODUCTION_PROVEN.",
+      "RETRIEVED != AUTHORIZED.",
+      "Prefer the smallest effective change."
+    ]
+  },
+  "source": {
+    "synthesis": "KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md",
+    "plan_base_main": "dab9f47fc3d2bf655b0f21bf3310eaff8b4161dc",
+    "prior_bounded_proof": {
+      "issue": 913,
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "status": "PRODUCTION_PROVEN_BOUNDED_SPECIMEN",
+      "limitation": "Exact bounded Node 0001 specimen only; proof is not inherited by later main."
+    },
+    "active_issue": 944
+  },
+  "priority_order": [
+    "dependency",
+    "proof_value",
+    "intelligence_value",
+    "continuity_value",
+    "risk_reduction",
+    "human_value",
+    "minimum_necessary_complexity"
+  ],
+  "queue": [
+    {
+      "id": "MEP-01",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "name": "Current-truth convergence",
+      "depends_on": [],
+      "action": "Keep live GitHub/runtime evidence above dated snapshots; synchronize operations queue and Brain pointers.",
+      "proof": "Cold entry resolves current main, active issue, proof boundary and one next action without conflicting canonical pointers."
+    },
+    {
+      "id": "MEP-02",
+      "priority": "P0",
+      "status": "NEXT",
+      "name": "Smart Node novelty gate",
+      "depends_on": [
+        "MEP-01"
+      ],
+      "tracker": "#944",
+      "action": "Reconcile Concept #17 against current canon. Test UNKNOWN_EFFECT first. Do not manufacture novelty.",
+      "proof": "One proposition is shown non-duplicate, or NO_NEW_CANDIDATE is recorded with canonical equivalents."
+    },
+    {
+      "id": "MEP-03",
+      "priority": "P0",
+      "status": "QUEUED",
+      "name": "Identifier-only cold retrieval",
+      "depends_on": [
+        "MEP-02"
+      ],
+      "action": "Use existing Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint river.",
+      "proof": "Cold runtime receives only reference/ID and reconstructs candidate from authoritative state."
+    },
+    {
+      "id": "MEP-04",
+      "priority": "P0",
+      "status": "QUEUED",
+      "name": "Applicability and negative transfer",
+      "depends_on": [
+        "MEP-03"
+      ],
+      "action": "Run one related held-out task and one unrelated task.",
+      "proof": "Relevant use occurs for the right reason; unrelated task refuses or remains unchanged."
+    },
+    {
+      "id": "MEP-05",
+      "priority": "P0",
+      "status": "QUEUED",
+      "name": "Counterfactual behavior and outcome",
+      "depends_on": [
+        "MEP-04"
+      ],
+      "action": "Same task WITHOUT vs WITH retained intelligence using predeclared metrics.",
+      "proof": "Persisted paired receipts show attributable behavior and outcome deltas."
+    },
+    {
+      "id": "MEP-06",
+      "priority": "P0",
+      "status": "QUEUED",
+      "name": "Independent verification and promotion",
+      "depends_on": [
+        "MEP-05"
+      ],
+      "action": "Independent verifier recomputes from persisted evidence; negative cases must fail.",
+      "proof": "Causal PASS cannot be produced by actor assertion, forged receipt, or no-effect treatment."
+    },
+    {
+      "id": "MEP-07",
+      "priority": "P0_P1",
+      "status": "QUEUED",
+      "name": "Cold successor and second held-out reuse",
+      "depends_on": [
+        "MEP-06"
+      ],
+      "action": "Kill predecessor context; successor retrieves improved intelligence and re-resolves authority.",
+      "proof": "Second held-out relevant task improves; unrelated transfer remains refused; no authority inheritance."
+    },
+    {
+      "id": "MEP-08",
+      "priority": "P1",
+      "status": "QUEUED",
+      "name": "Runtime/kernel semantic convergence",
+      "depends_on": [
+        "MEP-05",
+        "MEP-06"
+      ],
+      "action": "Bind or explicitly classify reference execution semantics; add component-level attestation for production claims.",
+      "proof": "Source → component → execution → observation → verification is traceable without simulated execution being mistaken for real execution."
+    },
+    {
+      "id": "MEP-09",
+      "priority": "P1",
+      "status": "QUEUED",
+      "name": "Truth resolution and adversarial integrity",
+      "depends_on": [
+        "MEP-01",
+        "MEP-08"
+      ],
+      "action": "Build the smallest proof-carrying current-context resolver over existing canonical owners and refusal tests.",
+      "proof": "Stale, superseded, contradicted, revoked, expired, wrong-owner, wrong-task, poisoned or unverifiable inputs cannot silently become current truth or authority."
+    },
+    {
+      "id": "MEP-10",
+      "priority": "P2_P3",
+      "status": "DEFERRED_UNTIL_REPEATABLE",
+      "name": "Human value then interface/network scale",
+      "depends_on": [
+        "MEP-07",
+        "MEP-09"
+      ],
+      "action": "Measure human value, then scale Hub/NayaNET/collective/self-building only after repeatable single-owner intelligence proof.",
+      "proof": "Measured cognitive/time/error/rework benefit without weakening governance, privacy, provenance or continuity."
+    }
+  ],
+  "do_not_build": [
+    "MN-10 or another Master Node",
+    "second Intelligent Block object family/table",
+    "second graph",
+    "second memory or learning pipeline",
+    "second authority system",
+    "automatic learned-policy authority",
+    "premature graph/vector/distributed infrastructure",
+    "network-scale collective intelligence before single-owner repeatability"
+  ],
+  "next_action": {
+    "block": "MEP-02",
+    "issue": 944,
+    "instruction": "Reconcile Concept #17 and determine whether UNKNOWN_EFFECT is a genuinely non-duplicate candidate; if yes design the smallest failure-first Smart Node experiment, otherwise record NO_NEW_CANDIDATE and continue candidate evaluation."
+  }
+}
