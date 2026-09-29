@@ -9,6 +9,10 @@ on:
         default: "NO"
         type: string
 
+concurrency:
+  group: nayapower-governed-production-promotion
+  cancel-in-progress: false
+
 permissions:
   contents: write
   actions: write
@@ -202,6 +206,20 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
+          git fetch origin main
+          current_main="$(git rev-parse origin/main)"
+          if [ "$current_main" != "$GITHUB_SHA" ]; then
+            echo "::error title=AUTHORIZED_SOURCE_MOVED::Authorized source $GITHUB_SHA is no longer current main ($current_main). Start a new human-authorized promotion for the new source."
+            exit 1
+          fi
+
+          current_production="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
+          if [ "$current_production" != "$DEPLOYMENT_SHA" ]; then
+            echo "::error title=PRODUCTION_DEPLOYMENT_MOVED::This promotion owns deployment $DEPLOYMENT_SHA but production now points to $current_production."
+            exit 1
+          fi
+
           date -u +"%Y-%m-%dT%H:%M:%SZ" > producer-dispatch-start.txt
           gh workflow run "$PRODUCER_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
           for i in $(seq 1 60); do
