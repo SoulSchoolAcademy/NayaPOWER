@@ -57,7 +57,9 @@ The following phrases express the same capture intent when context supports it:
 - “document this as intelligence”
 - “make this available to future Nayas”
 
-These phrases request **capture/preservation**. They do not by themselves change empirical proof state, authority, privacy, or applicability.
+These phrases request the **complete bounded Smart Note lifecycle** for the designated material: capture/preservation, canonical commit or reconciliation, indexing, projection, Smart Link publication/deployment, verification, and return of the Smart Link.
+
+They do not by themselves change empirical proof state, widen privacy, grant unrelated authority, or authorize unrelated production work. Shawn does not need to separately say `DEPLOY` merely to finish the same Smart Note request.
 
 If Shawn separately ratifies a policy/architecture decision, record that authority decision distinctly from evidence about whether the decision works.
 
@@ -336,6 +338,32 @@ After a verified commit, the human-readable Smart Note projection belongs at:
 
 The projection is generated from persisted intelligence and includes the canonical IB identity and proof pointers. The repository path is navigational; the Intelligent Block remains the source of truth.
 
-The canonical **Smart Link** is the independently verified direct link to that `smart-note.md`. Workflow, PR, commit, artifact, and evidence URLs are proof links, not Smart Links.
+The canonical **Smart Link** is the independently verified human-facing doorway to the Smart Note projection. For PUBLIC notes this may be a direct `smart-note.md` link. For PRIVATE notes it MUST be an authenticated viewer that rereads the canonical Intelligent Block and renders the same organized projection without exposing private content publicly.
+
+Workflow, PR, commit, artifact, and evidence URLs are proof links, not Smart Links.
 
 Machine discovery uses both the runtime intelligence index and the repository projection registry `.naya/memory/smart-notes/index.json`; directory crawling is not the primary discovery mechanism.
+
+
+## 17. Smart Note completion authority
+
+An explicit Smart Note command from Shawn is already execution authority to finish that Smart Note end-to-end within existing scope.
+
+The system MUST NOT stop after persistence and ask for a second deployment confirmation merely to publish the Smart Link for the same requested note.
+
+The bounded authority is:
+
+```
+SMART NOTE THIS
+→ capture
+→ distill
+→ reconcile
+→ commit
+→ index
+→ project
+→ deploy/publish Smart Link viewer as needed
+→ verify
+→ return Smart Link
+```
+
+This does not authorize unrelated deployments or privacy/truth-state changes.
