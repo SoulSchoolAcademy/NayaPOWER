@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live main/runtime evidence outranks this projection when newer.",
-  "source_main": "a8a7ee6999d4cfb032693689b1f14dbbc2c60a43",
+  "source_main": "faac73abf29c99fc29879f23cd39966439964251",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
     "issue_913": {
@@ -20,12 +20,13 @@
     },
     "pr_946": "MERGED",
     "pr_955": "MERGED",
-    "current_main": "a8a7ee6999d4cfb032693689b1f14dbbc2c60a43",
+    "current_main": "faac73abf29c99fc29879f23cd39966439964251",
     "production_branch": "32b7c9954988befecfbe8c850f523e59a441f44d",
     "governed_promotion_run": 36514309554,
     "governed_promotion_target": "32b7c9954988befecfbe8c850f523e59a441f44d",
     "governed_promotion_state": "WAITING_FOR_SUPABASE_GITHUB_INTEGRATION_CHECK",
-    "universal_nine_node_runtime_binding": "NOT_PROVEN"
+    "universal_nine_node_runtime_binding": "NOT_PROVEN",
+    "pr_959": "MERGED_TESTS_GREEN"
   },
   "p0": [
     {
