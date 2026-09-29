@@ -226,9 +226,12 @@
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
-    "pattern": "YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md",
+    "pattern": "YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md",
     "machine_source_of_truth": "Supabase INTELLIGENT_BLOCK",
     "projection_registry": ".naya/memory/smart-notes/index.json",
-    "primary_human_receipt": "direct GitHub Markdown Smart Link"
+    "primary_human_receipt": "direct GitHub Markdown Smart Link",
+    "human_identity": "SN-###",
+    "machine_identity": "IB-...",
+    "timestamp_role": "provenance metadata"
   }
 }
