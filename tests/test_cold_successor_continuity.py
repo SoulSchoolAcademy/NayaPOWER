@@ -115,6 +115,8 @@ def test_verifier_does_not_trust_the_successor_receipt():
     assert "AUTHORITATIVE_REREAD_AND_RECOMPUTATION" in verify
     # It must re-read the learning and the relationships itself.
     assert "rest/v1/learning_evidence?id=eq." in verify
+    assert "status=eq.ACTIVE" in verify
+    assert "target_id=eq." in verify
     assert "nayanet_brain_relationships?owner_id=eq." in verify
 
 
@@ -145,7 +147,9 @@ def test_workflow_proves_cold_successor_in_a_separate_fresh_runtime():
     wf = WORKFLOW.read_text(encoding="utf-8")
     assert "cold-successor" in wf, "the cold-successor proof is not wired into any live workflow"
     assert "cold-successor-verify" in wf, "the independent cold-successor verifier is not wired in"
-    assert "causal-learning-experiment-receipt" in wf or "cold-successor" in wf
+    assert "causal-learning-experiment-receipt" in wf
+    assert "needs: independent-retained-learning-reread" in wf
+    assert "mode=cold-successor&learning_id=" in wf
 
 
 def test_workflow_separates_executor_from_verifier_jobs():
@@ -167,7 +171,7 @@ def test_runtime_still_refuses_non_canonical_branches():
     assert 'payload.ref !== REF' in src
 
 
-def test_cold_successor_is_not_gated_on_the_credential_blocked_job():
+def test_cold_successor_is_gated_on_the_independent_active_reread():
     """Regression: gating this job on the learning-influence verification makes the
     cold-successor proof permanently unrunnable, because that job needs a rotated
     owner credential. The successor reads learning_evidence directly, so it must not
@@ -181,4 +185,4 @@ def test_cold_successor_is_not_gated_on_the_credential_blocked_job():
         "cold-successor is gated on the owner-credential-blocked job and can never run"
     )
     # It must still depend on something real.
-    assert "live-connect" in needs, "cold-successor lost its proof prerequisite"
+    assert "independent-retained-learning-reread" in needs, "cold-successor is not gated on the independently reread ACTIVE lesson"
