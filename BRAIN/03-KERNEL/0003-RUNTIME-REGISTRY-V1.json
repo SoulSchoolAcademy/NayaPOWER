@@ -93,8 +93,21 @@
       "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382"
+    },
+    "KNOW": {
+      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
+      "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts",
+      "selector": "supabase/functions/nayanet-know-runtime/know.ts",
+      "consumes": "fresh AUTHORIZED LAW receipt for bounded parent naya_node_apply context",
+      "reads": "owner-scoped public.nayanet_intelligent_blocks",
+      "writes": "nayanet_execution_receipts.action=know_context_retrieval",
+      "caller_may_supply_selected_block": false,
+      "authority_rule": "retrieval does not create authority",
+      "handoff_to": "NAYA-KERNEL-PROVE",
+      "live_proof": "PENDING"
     }
   },
   "next_node_after_law": "ACT",
-  "next_node_after_act": "KNOW"
+  "next_node_after_act": "KNOW",
+  "next_node_after_know": "PROVE"
 }
