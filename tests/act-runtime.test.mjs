@@ -38,3 +38,25 @@ test("8 retrieved intelligence cannot stand in for authority",()=>assert.equal(v
 test("9 successor context cannot reuse authority",()=>assert.equal(validateAct(req({successor_context_claims_inherited_authority:true}),law(),grant(),door(),NOW).reason,"SUCCESSOR_CONTEXT_DOES_NOT_INHERIT_AUTHORITY"));
 test("10 unregistered/unobservable path fails before effect",()=>assert.equal(validateAct(req(),law(),grant(),null,NOW).reason,"SMART_DOOR_OPERATION_NOT_REGISTERED"));
 test("revoked live grant invalidates previously authorized LAW receipt",()=>assert.equal(validateAct(req(),law(),grant({status:"REVOKED",revoked_at:"2026-09-29T19:59:30Z"}),door(),NOW).reason,"LIVE_AUTHORITY_NOT_ACTIVE"));
+
+test("freshness cannot be established from missing, malformed or future LAW evaluation time",()=>{
+  for (const value of [undefined, null, "", "not-a-date", "2026-09-29T20:00:01Z"]) {
+    const l=law(); l.evidence.law_decision.evaluated_at=value;
+    assert.equal(validateAct(req(),l,grant(),door(),NOW).reason,"LAW_RECEIPT_TIME_INVALID",String(value));
+  }
+});
+test("malformed expiry on LAW decision or live grant fails closed",()=>{
+  const l=law(); l.evidence.law_decision.expires_at="not-a-date";
+  assert.equal(validateAct(req(),l,grant(),door(),NOW).reason,"LAW_AUTHORITY_TIME_INVALID");
+  assert.equal(validateAct(req(),law(),grant({expires_at:"not-a-date"}),door(),NOW).reason,"LIVE_AUTHORITY_TIME_INVALID");
+});
+test("freshness and expiry boundaries are inclusive and unbounded expiry remains valid",()=>{
+  const l=law(); l.evidence.law_decision.evaluated_at="2026-09-29T19:45:00Z";
+  assert.equal(validateAct(req(),l,grant(),door(),NOW).status,"READY");
+  l.evidence.law_decision.evaluated_at="2026-09-29T19:44:59Z";
+  assert.equal(validateAct(req(),l,grant(),door(),NOW).reason,"LAW_RECEIPT_STALE");
+  const expired=law(); expired.evidence.law_decision.expires_at=NOW.toISOString();
+  assert.equal(validateAct(req(),expired,grant(),door(),NOW).reason,"LAW_AUTHORITY_EXPIRED");
+  assert.equal(validateAct(req(),law(),grant({expires_at:NOW.toISOString()}),door(),NOW).reason,"LIVE_AUTHORITY_EXPIRED");
+  assert.equal(validateAct(req(),law(),grant(),door(),NOW).status,"READY");
+});
