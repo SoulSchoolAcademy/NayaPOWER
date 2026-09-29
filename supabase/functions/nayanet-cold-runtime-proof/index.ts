@@ -97,13 +97,22 @@ Deno.serve(async (req: Request) => {
       const taskId = "NAYA-0001-PROVENANCE-HELDOUT-001";
       const taskInput = {
         task_id: taskId,
-        instruction: "Apply retained intelligence to a provenance-sensitive action and report whether provenance was preserved.",
+        instruction: "Apply retained intelligence to a provenance-sensitive action and preserve the authoritative source lineage before applying it.",
         target_id: NAYA_ID,
       };
       const runTask = (retainedIntelligenceUsed: boolean) => {
-        const applicable = retainedIntelligenceUsed && lesson.includes("Preserve provenance before applying retained intelligence");
-        const behavior = applicable ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
-        const outcome = { provenance_preserved: applicable, task_completed: true };
+        const applicable =
+          retainedIntelligenceUsed &&
+          lesson.includes("Preserve provenance before applying retained intelligence");
+        const behavior = applicable
+          ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+          : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+        const outcome = {
+          provenance_preserved: applicable,
+          task_completed: true,
+          source_event_bound: applicable ? learning.source_event_id : null,
+          intelligent_block_bound: applicable ? sourceBlockId : null,
+        };
         return { behavior, outcome };
       };
       const controlResult = runTask(false);
