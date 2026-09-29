@@ -2,37 +2,33 @@
   "schema": "naya.intelligent.object.v1",
   "object_id": "NAYA-KERNEL-CONNECT",
   "object_type": "NODE",
-  "version": "1.2",
+  "version": "1.3",
   "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-CONNECT",
   "scope": "NayaPOWER kernel",
   "human_view": {
     "title": "CONNECT — relationships, retrieval, applicability, reconciliation, context",
-    "essence": "CONNECT is the governed semantic responsibility for relationships, retrieval, applicability, reconciliation, context.",
+    "essence": "CONNECT has an existing bounded executable graph-context seam inside the canonical cold-runtime proof: verified, provenance-bearing relationships can change bounded decision context while remaining non-authoritative.",
     "why": "One responsibility of the single NayaPOWER brain; not an independent brain or authority.",
-    "uncertainty": "Behavioral/runtime proof remains pending unless separately evidenced."
+    "uncertainty": "A bounded graph OFF/ON behavioral effect and independent recomputation were production-supported at exact historical revision c9b31890c93f4f5f7d60bb8cd346093c11ab427f. Current-main production parity and the full CONNECT contract (general multi-hop, contradiction/supersession/freshness/cycle semantics) remain NOT_PROVEN."
   },
   "ai_view": {
-    "purpose": "relationships, retrieval, applicability, reconciliation, context",
+    "purpose": "Use the existing owner-scoped canonical relationship graph to contextualize already-selected intelligence and expose why relationship context changes the bounded decision context without granting authority.",
     "inputs": [
-      "identity",
-      "intent",
-      "state",
-      "context",
-      "authority",
-      "intelligence",
-      "evidence",
-      "relationships"
+      "selected canonical intelligence",
+      "owner-scoped nayanet_brain_relationships",
+      "task context",
+      "relationship provenance",
+      "epistemic state"
     ],
     "outputs": [
-      "understanding",
-      "decision_context",
-      "action_context",
-      "evidence_context",
-      "learning_context",
-      "successor_context"
+      "bounded relationship context",
+      "selected relationship paths",
+      "applicability explanation",
+      "graph OFF/ON behavioral comparison",
+      "independent persisted-pair verification"
     ],
-    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved",
+    "failure_mode": "fail closed when task fixture is wrong, relationships lack VERIFIED epistemic state or provenance, persisted graph receipt pair is missing/mismatched, or relationship context cannot establish a bounded effect",
     "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
   },
   "machine_view": {
@@ -43,7 +39,10 @@
     "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
     "universal_envelope": "naya.master-node-envelope.v1",
-    "neighbor_handoff": "NAYA-KERNEL-VERIFY"
+    "neighbor_handoff": "NAYA-KERNEL-VERIFY",
+    "runtime_seam": "supabase/functions/nayanet-cold-runtime-proof/index.ts?mode=graph-behavior|graph-verify",
+    "live_workflow": ".github/workflows/live-supabase-runtime-proof.yml",
+    "verifier": "tests/verify_cold_graph_behavior.py"
   },
   "provenance": {
     "derived_from": [
@@ -53,11 +52,21 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "DOCUMENTED",
-    "behavioral_status": "NOT_PROVEN",
-    "production_status": "NOT_PROVEN",
-    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
-    "organism_binding": "CONTRACT_ALIGNED_RUNTIME_NOT_PROVEN"
+    "implementation_status": "BOUNDED_EXISTING_EXECUTABLE_SEAM",
+    "behavioral_status": "PRODUCTION_SUPPORTED_EXACT_REVISION_ONLY",
+    "production_status": "HISTORICAL_EXACT_REVISION_C9_ONLY_CURRENT_MAIN_NOT_PROVEN",
+    "proof_run": 36516790588,
+    "proof_source_revision": "c9b31890c93f4f5f7d60bb8cd346093c11ab427f",
+    "proof_audit": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588.md",
+    "relationships_status": "BOUNDED OWNER-SCOPED VERIFIED+PROVENANCE RELATIONSHIPS; GENERAL CONNECT SEMANTICS NOT_PROVEN",
+    "organism_binding": "BOUNDED GRAPH CONTEXT INFLUENCE PROVEN HISTORICALLY; FULL CONNECT NODE RUNTIME CONTRACT NOT_PROVEN",
+    "limitations": [
+      "Current bounded seam uses one fixed held-out graph task and direct relationships around one canonical Intelligent Block.",
+      "General semantic/structural/relational/contextual retrieval is not proven.",
+      "General multi-hop traversal, cycle handling, freshness, contradiction and supersession reconciliation are not proven.",
+      "Historical proof does not transfer to current main without exact source/deployment parity.",
+      "CONNECT does not create authority."
+    ]
   },
   "relationships": [
     {
