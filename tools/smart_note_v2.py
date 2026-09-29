@@ -25,19 +25,25 @@ def changed_capture(paths):
         raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
     return hits[0] if hits else ""
 
-def projection_path(capture, ib):
+def projection_path(capture, ib, root=MEMORY_ROOT):
     y, m, d = str(capture["source"]["captured_at"]).split("-")
     meta = capture.get("projection", {})
     cat = meta.get("category_slug") or slug(capture.get("category", "smart-note"))
     topic = meta.get("topic_slug") or slug(capture.get("topic", "general"))
     sub = meta.get("subtopic_slug") or slug(capture.get("subtopic", "general"))
-    return MEMORY_ROOT / y / m / d / cat / topic / sub / ib / "smart-note.md"
+    return Path(root) / y / m / d / cat / topic / sub / ib / "smart-note.md"
 
-def render(capture, verify):
+def render(capture, verify, private_root=None):
     block = verify["persisted"]["block"]
     ib = block["intelligent_block_id"]
     intelligence = json.loads(block["content"]["lesson"])
-    p = projection_path(capture, ib)
+    scope = str(block.get("owner_scope", "PRIVATE")).upper()
+    if scope == "PRIVATE":
+        if not private_root:
+            raise SystemExit("PRIVATE_PROJECTION_REQUIRES_AUTHENTICATED_PRIVATE_SURFACE")
+        p = projection_path(capture, ib, Path(private_root))
+    else:
+        p = projection_path(capture, ib)
     p.parent.mkdir(parents=True, exist_ok=True)
     proof = {
         "event_id": verify["persisted"]["event"]["id"],
@@ -94,7 +100,9 @@ def update_registry(capture, verify, projection):
         "subtopic": capture.get("subtopic", ""),
         "truth_state": block["understanding_state"],
         "scope": block["owner_scope"],
-        "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/"),
+        "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
+        "projection_status": "PUBLISHED" if str(projection).startswith(str(ROOT)) else "PRIVATE_RENDER_VERIFIED",
+        "smart_link_status": "READY" if str(projection).startswith(str(ROOT)) else "PENDING_PRIVATE_PROJECTION",
         "keywords": ["smart note","capture","intelligent block","future naya","superbrain","intent","memory","reusable intelligence"],
         "provenance": {
             "event_id": verify["persisted"]["event"]["id"],
@@ -147,7 +155,7 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
-    pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True)
+    pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -155,8 +163,17 @@ def main():
         print(changed_capture(args.paths)); return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
-        p = render(cap, ver); entry = update_registry(cap, ver, p)
-        print(json.dumps({"projection_path":str(p.relative_to(ROOT)).replace("\\\\","/"),"entry":entry}, ensure_ascii=False)); return
+        p = render(cap, ver, args.private_root)
+        block = ver["persisted"]["block"]
+        published = str(p).startswith(str(ROOT)) and str(block.get("owner_scope","PRIVATE")).upper() != "PRIVATE"
+        entry = update_registry(cap, ver, p) if published else {
+            "intelligent_block_id": block["intelligent_block_id"],
+            "scope": block.get("owner_scope"),
+            "projection_status": "PRIVATE_RENDER_VERIFIED",
+            "smart_link_status": "PENDING_PRIVATE_PROJECTION",
+            "private_render_path": str(p)
+        }
+        print(json.dumps({"projection_path":str(p),"entry":entry}, ensure_ascii=False)); return
     if args.cmd == "retrieve":
         x = retrieve(args.query)
         if args.out:
