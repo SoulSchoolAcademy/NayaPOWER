@@ -94,3 +94,15 @@ def test_sequence_policy_advances_after_sn002():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     assert reg["sequence_policy"]["next_sequence"] == 3
     assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-003"
+
+
+def test_projection_workflow_publishes_active_verified_public_projection():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert 'e.get("smart_link_status") in {"ACTIVE", "READY"}' in workflow
+    assert 'e.get("smart_link_status")=="READY"' not in workflow
+
+
+def test_projection_workflow_does_not_allocate_intelligent_block_identity():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert 'ib="IB-SMART-NOTE-"+capture["capture_id"]' not in workflow
+    assert '"intelligent_block_id"' in workflow
