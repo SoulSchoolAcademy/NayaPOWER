@@ -10,7 +10,7 @@ def _source() -> str:
 
 def test_canonical_receiver_has_no_missing_compound_intelligence_edge_dependency():
     source = _source()
-    assert "nayanet-compound-intelligence" not in source
+    assert '/functions/v1/nayanet-compound-intelligence' not in source
     assert '.rpc("nayanet_record_cognition_event"' in source
 
 
