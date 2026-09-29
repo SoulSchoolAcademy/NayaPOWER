@@ -83,3 +83,10 @@ def test_learning_proof_consumes_same_head_fresh_commit_artifact_instead_of_fixe
     assert 'open("fresh-lineage/fresh-lesson-lineage-ids.json")' in source
     assert 'fresh_block_id=ids["intelligent_block_id"]' in source
     assert 'open("fresh-block-id.txt","w").write(fresh_block_id)' in source
+
+
+def test_reused_candidate_rebinds_top_level_source_event_to_fresh_event():
+    source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
+    # A reused same-claim CANDIDATE must not mix an old top-level event with
+    # fresh embedded Event → Block → Lineage provenance.
+    assert 'update({ source_event_id: event.id, observed_value: repairedObserved })' in source
