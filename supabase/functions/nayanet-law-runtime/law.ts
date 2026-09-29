@@ -61,6 +61,9 @@ const targetMatches = (g: AuthorityGrant, req: LawRequest) => {
 const isExpired = (g: AuthorityGrant, now: Date) =>
   Boolean(g.expires_at && new Date(g.expires_at).getTime() <= now.getTime());
 
+const hasInvalidExpiry = (g: AuthorityGrant) => g.expires_at != null &&
+  (typeof g.expires_at !== "string" || !g.expires_at.trim() || !Number.isFinite(Date.parse(g.expires_at)));
+
 export function evaluateLaw(req: LawRequest, grants: AuthorityGrant[], now = new Date()): LawDecision {
   const base = {
     schema: "naya.law.decision.v1" as const,
@@ -103,9 +106,9 @@ export function evaluateLaw(req: LawRequest, grants: AuthorityGrant[], now = new
 
   const sameSubject = grants.filter(g => g.subject_id === req.owner_id && g.issuer_id === req.owner_id);
   const matchingIntent = sameSubject.filter(g => (g.actions ?? []).includes(req.action) && targetMatches(g, req));
-  const invalid = matchingIntent.find(g => g.status === "REVOKED" || Boolean(g.revoked_at) || g.status === "INVALID" || isExpired(g, now));
+  const invalid = matchingIntent.find(g => g.status === "REVOKED" || Boolean(g.revoked_at) || g.status === "INVALID" || hasInvalidExpiry(g) || isExpired(g, now));
   if (invalid) {
-    const reason = (invalid.status === "REVOKED" || invalid.revoked_at) ? "GRANT_REVOKED" : isExpired(invalid, now) ? "GRANT_EXPIRED" : "GRANT_INVALID";
+    const reason = (invalid.status === "REVOKED" || invalid.revoked_at) ? "GRANT_REVOKED" : hasInvalidExpiry(invalid) ? "GRANT_TIME_INVALID" : isExpired(invalid, now) ? "GRANT_EXPIRED" : "GRANT_INVALID";
     return {...base,status:"BLOCKED",reason,authority_refs:[invalid.grant_id],expires_at:invalid.expires_at ?? null};
   }
 

@@ -63,3 +63,18 @@ test("Smart Door availability is capability not permission",()=>{
   const d=evaluateLaw(req({action:"email_send",target:"mailbox",door:{door_id:"DOOR-EMAIL",capability_available:true}}),[],now);
   assert.equal(d.status,"NEEDS_HUMAN_AUTHORIZATION"); assert.equal(d.capability_available,true);
 });
+
+test("LAW rejects malformed non-null expiry on matching authority",()=>{
+  for(const expires_at of ["not-a-date", "", "   ", 123]) {
+    const d=evaluateLaw(req(),[grant({expires_at})],now);
+    assert.equal(d.status,"BLOCKED",String(expires_at));
+    assert.equal(d.reason,"GRANT_TIME_INVALID");
+    assert.deepEqual(d.authority_refs,["g1"]);
+  }
+});
+test("LAW preserves null/absent expiry and exact valid expiry boundaries",()=>{
+  for(const expires_at of [null,undefined,"2026-09-29T19:30:01Z"])
+    assert.equal(evaluateLaw(req(),[grant({expires_at})],now).status,"AUTHORIZED");
+  assert.equal(evaluateLaw(req(),[grant({expires_at:now.toISOString()})],now).reason,"GRANT_EXPIRED");
+  assert.equal(evaluateLaw(req(),[grant({scope:{target:"OTHER"},expires_at:"not-a-date"}),grant()],now).status,"AUTHORIZED");
+});
