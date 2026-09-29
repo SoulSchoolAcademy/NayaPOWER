@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-09-29T02:10:58Z",
-  "status": "CURRENT_TRUTH_CONVERGENCE_AND_GENERALIZATION_PROOF",
+  "generated_at": "2026-09-29",
+  "status": "POST_944_SECURITY_AND_PRODUCTION_HARDENING",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
@@ -182,8 +182,8 @@
   "inventory_file_count": 77,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
-    "runtime_convergence": "BOUNDED_PRODUCTION_PROOF_EXISTS; UNIVERSAL_NINE_NODE_BINDING_NOT_PROVEN",
-    "application_entrypoint": "No single universal application entrypoint is proven. The bounded #913 proof used the existing Live Supabase Runtime Proof / nayanet-cold-runtime-proof path.",
+    "runtime_convergence": "BOUNDED_PRODUCTION_PROOF_EXISTS_AT_2f468c4; LATER_MAIN_NOT_INHERITED; UNIVERSAL_NINE_NODE_BINDING_NOT_PROVEN",
+    "application_entrypoint": "Bounded production proof uses the governed Supabase runtime/proof river. No universal application entrypoint is yet proven.",
     "competing_store_policy": "LOCAL_SQLITE_OR_IN_MEMORY_IS_TEST_INFRASTRUCTURE_ONLY"
   },
   "proof_boundary": {
@@ -195,27 +195,28 @@
     "successor_behavioral_improvement": "PROVEN_BOUNDED_SINGLE_TASK",
     "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
     "bounded_production_proof": {
-      "issue": 913,
-      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
-      "scope": "Node 0001 single bounded intelligence-river specimen",
-      "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
+      "issue": 944,
+      "source_revision": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
+      "proof_run": "36519233015_attempt_2",
+      "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
+      "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
     },
     "current_frontier": {
-      "issue": 944,
-      "phase_1": "NO_NEW_CANDIDATE_SOURCE_RECONCILED",
-      "next": "Prove applicability/generalization and correct refusal using existing ACTIVE intelligence on a second related held-out task and an unrelated task."
+      "issue": 978,
+      "state": "OPEN_SECURITY_GAP",
+      "next": "Human Director accepts/rejects checkpoint receipt owner-read / privileged-write RLS boundary in PR #980; production application remains gated by fresh exact-main DEPLOY."
     }
   },
-  "last_reconciled_main": "b5fb89a7b5f40db15be364047b3e94697830c936",
+  "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
     "master_plan": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
-    "active_issue": 944,
-    "next_proof": "Existing ACTIVE intelligence → second related held-out task + unrelated-task refusal → independent recomputation → cold successor reuse.",
-    "freshness_rule": "Re-read live main, open priority work and runtime/proof evidence before trusting dated projections."
+    "active_issue": 978,
+    "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
+    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection."
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
