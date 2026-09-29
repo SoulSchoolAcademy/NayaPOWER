@@ -1,111 +1,86 @@
 {
   "schema": "naya.operations.ultimate-master-execution-plan.v1",
-  "schema_version": "1.1",
+  "schema_version": "2.0",
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
-  "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live main/runtime evidence outranks this projection when newer.",
-  "source_main": "faac73abf29c99fc29879f23cd39966439964251",
+  "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
+  "evidence_snapshot_base": "de813e9df08af2f860601f98a56ac68562a8c095",
+  "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
-    "issue_913": {
-      "state": "CLOSED",
-      "proof": "PRODUCTION_PROVEN_BOUNDED_SPECIMEN",
-      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
-      "inherited_by_later_main": false
-    },
-    "issue_944": {
-      "state": "OPEN",
-      "source_level_generalization": "IMPLEMENTED_REPOSITORY_VERIFIED",
-      "production_generalization": "NOT_PRODUCTION_PROVEN"
-    },
-    "pr_946": "MERGED",
-    "pr_955": "MERGED",
-    "production_branch": "32b7c9954988befecfbe8c850f523e59a441f44d",
-    "governed_promotion_run": 36514309554,
-    "governed_promotion_target": "32b7c9954988befecfbe8c850f523e59a441f44d",
-    "governed_promotion_state": "FAILED_WAITING_FOR_SUPABASE_GITHUB_INTEGRATION_CHECK",
+    "issue_913": "CLOSED_BOUNDED_CAUSAL_SPECIMEN",
+    "issue_944": "CLOSED_BOUNDED_GENERALIZATION_SUCCESSOR_PROOF",
+    "issue_971": "CLOSED_NATIVE_SUPABASE_DEPLOYMENT_INCIDENT_RECOVERED",
+    "bounded_production_source": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
+    "bounded_production_proof_run": "36519233015_attempt_2_ALL_18_PASS",
+    "issue_810": "IMPLEMENTED_REPOSITORY_VERIFIED_PRODUCTION_PENDING",
+    "issue_975": "IMPLEMENTED_REPOSITORY_VERIFIED_LIVE_RECOVERY_PENDING",
+    "issue_978": "OPEN_SECURITY_GAP",
+    "pr_980": "DRAFT_REBASED_GATES_PASS_HUMAN_POLICY_ACCEPTANCE_REQUIRED",
     "universal_nine_node_runtime_binding": "NOT_PROVEN",
-    "pr_959": "MERGED_TESTS_GREEN",
-    "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
-    "projection_self_staleness_guard": "DO_NOT_TREAT_EMBEDDED_SHA_AS_CURRENT_AFTER_THIS_PROJECTION_IS_COMMITTED",
-    "governed_promotion_result": "FAILURE",
-    "governed_promotion_blocker": "NO_NEW_SUPABASE_GITHUB_INTEGRATION_DEPLOYMENT_CHECK"
+    "multi_generation_compounding": "NOT_PROVEN",
+    "two_owner_nayanet": "NOT_PROVEN"
   },
-  "p0": [
+  "top_10": [
     {
-      "id": "P0.1",
-      "name": "Close Supabase GitHub Integration boundary",
-      "status": "BLOCKED_EXTERNAL",
-      "proof": "New successful Supabase deployment check for exact promoted SHA."
+      "rank": 1,
+      "id": "#978",
+      "action": "Approve/reject checkpoint receipt owner-read / privileged-write RLS boundary",
+      "status": "HUMAN_DECISION_REQUIRED"
     },
     {
-      "id": "P0.2",
-      "name": "Promote then-current main",
-      "status": "QUEUED_AFTER_P0.1",
-      "proof": "Exact source/deployed-runtime parity for then-current main."
+      "rank": 2,
+      "action": "Fresh governed deployment for exact live main",
+      "status": "EXPLICIT_DEPLOY_REQUIRED"
     },
     {
-      "id": "P0.3",
-      "name": "Finish #944 live generalization",
-      "status": "QUEUED_AFTER_P0.2",
-      "proof": "Related held-out improvement + unrelated refusal + independent recomputation + cold successor reuse."
+      "rank": 3,
+      "id": "#975",
+      "action": "Run audited causal outcome recovery after verifier deployment",
+      "status": "DEPLOYMENT_DEPENDENT"
     },
     {
-      "id": "P0.4",
-      "name": "Close #944",
-      "status": "BLOCKED_ON_PRODUCTION_PROOF",
-      "proof": "Persisted production receipts and independent evidence."
+      "rank": 4,
+      "id": "#810",
+      "action": "Run live nine-node behavioral acceptance + ablation",
+      "status": "DEPLOYMENT_DEPENDENT"
     },
     {
-      "id": "P0.5",
-      "name": "Nine-node runtime binding + ablation",
-      "status": "QUEUED",
-      "proof": "Node-level influence and expected ablation failures."
+      "rank": 5,
+      "action": "Deterministic current-truth resolver over existing canonical owners",
+      "status": "QUEUED"
     },
     {
-      "id": "P0.6",
-      "name": "Deterministic current-truth resolution",
-      "status": "QUEUED",
-      "proof": "Cold Naya reconstructs current truth/conflicts/next action from canonical owners."
+      "rank": 6,
+      "action": "Authority lifecycle negative matrix",
+      "status": "QUEUED"
     },
     {
-      "id": "P0.7",
-      "name": "Applicability hard filters",
-      "status": "QUEUED",
-      "proof": "Inapplicable/stale/revoked/superseded/unauthorized intelligence is rejected before ranking."
+      "rank": 7,
+      "action": "Checkpoint/provenance/recovery/concurrency hardening",
+      "status": "QUEUED"
     },
     {
-      "id": "P0.8",
-      "name": "Correct refusal as compounding requirement",
-      "status": "QUEUED",
-      "proof": "Positive transfer on related tasks plus non-transfer on unrelated tasks."
+      "rank": 8,
+      "action": "Stored-intelligence adversarial suite",
+      "status": "QUEUED"
+    },
+    {
+      "rank": 9,
+      "action": "Multi-generation A→B→C compounding proof",
+      "status": "QUEUED"
+    },
+    {
+      "rank": 10,
+      "action": "Human-value measurement + two-owner NayaNET consent/revocation",
+      "status": "QUEUED"
     }
   ],
-  "p1": [
-    "Authority lifecycle matrix",
-    "Checkpoint/provenance locality and concurrency",
-    "Adversarial stored-intelligence handling",
-    "Verifier independence / monoculture challenge",
-    "Reference-kernel execution semantics",
-    "Graph utility experiment",
-    "Model/runtime identity in receipts",
-    "Recovery/replay/disaster reconstruction"
-  ],
-  "do_not_build": [
-    "tenth Master Node",
-    "second Intelligent Block family",
-    "second canonical brain/database",
-    "second graph",
-    "second learning pipeline",
-    "second authority system",
-    "Hub-owned canonical intelligence",
-    "automatic learning-to-LAW",
-    "uncontrolled self-modification",
-    "premature infrastructure without measured need"
-  ],
   "next_action": {
-    "status": "BLOCKED_EXTERNAL",
-    "instruction": "Complete/enable Supabase GitHub Integration. Then read live GitHub main at dispatch time, promote that exact SHA through the governed workflow, and follow the canonical proof river to the next failing rung."
-  },
-  "source_main_semantics": "PRE_PROJECTION_EVIDENCE_BASE_ONLY"
+    "type": "HUMAN_DECISION",
+    "issue": 978,
+    "pull_request": 980,
+    "decision": "Accept or reject: authenticated owners may SELECT only rows where user_id=auth.uid(); anon has no table access; mutation remains privileged/server-only.",
+    "after_accept": "Mark PR #980 ready and merge. Do not deploy without fresh explicit DEPLOY for exact live main."
+  }
 }
