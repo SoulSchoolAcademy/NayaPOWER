@@ -124,6 +124,16 @@ The important distinction is that persistence is not enough. A note can exist wi
 
 The real target is behavioral continuity: retained intelligence changes later authorized behavior and leaves evidence that a cold successor can inherit.
 
+## 10A. Smart Node operating command
+
+Shawn uses **“make this a Smart Node”** or **“lock this in”** to mean: preserve valuable information as reusable governed intelligence through the existing Intelligent Block lifecycle.
+
+Do not create a new Node type or memory path. Use the canonical protocol:
+
+`BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`
+
+A fresh Naya should also proactively recognize high-value **candidate** Smart Nodes during work, within current authority/privacy scope, so Shawn does not have to repeatedly instruct the system to preserve durable intelligence. Candidate capture never equals verification or new authority.
+
 ## 11. Current engineering reality
 
 Authoritative repository: SoulSchoolAcademy/NayaPOWER. Canonical engineering branch: main.
