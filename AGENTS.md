@@ -10,7 +10,7 @@ Before changing code, documentation, infrastructure, or configuration:
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
 3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
 4. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-5. Read `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`.
+5. Read `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`.
 6. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
 7. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
 8. Read ratified project intelligence from `.naya/project-intelligence/`.
@@ -46,7 +46,7 @@ Never weaken an acceptance gate to manufacture a pass.
 
 For project-specific reality, use the precedence contract in:
 
-`NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`
+`NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`
 
 Key rule: current repository state + current work/evidence outrank stale snapshots and activation projections. The nonexistent `.naya/control-plane/` path is not a source of truth and must not be invented.
 
