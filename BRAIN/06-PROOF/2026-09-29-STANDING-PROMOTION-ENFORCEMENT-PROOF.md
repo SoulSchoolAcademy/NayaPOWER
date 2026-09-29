@@ -54,3 +54,11 @@ The workflow still models several required claims as booleans, and issue closure
 ## Handoff and next action
 
 Review/CI this bounded correction. Record the finite policy window and the one-time authorization for protected bootstrap plus the exact checkpoint policy, then use the existing governed path for the resolved current SHA. Independently verify migration effects and runtime/source parity; retain receipts and workflow references before closing #978. After those gates pass, ordinary in-scope candidates use the standing path without repeated DEPLOY requests. If any next proof rung fails, preserve its exact evidence, repair the demonstrated seam, and continue unaffected work without weakening authority gates.
+
+## Later activation and live-state reconciliation
+
+The historical blank-date / open-#978 observations above are superseded by
+`2026-09-29-STANDING-PROMOTION-ACTIVATION.md`. Human continuation authorizes the
+finite proposal; #978 now has live repair evidence. Final reconciled validation:
+302 Python passed / 3 existing skips and 97 Node passed. Production promotion
+receipt and KNOW live behavior remain separate unfinished proof obligations.

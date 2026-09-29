@@ -113,13 +113,14 @@ Do not build without measured need:
 
 ## 6. CURRENT BLOCKERS
 
-### Human-reserved security decision
-PR #980 is merged; its exact RLS policy still requires recorded authorization and live application/proof. The routine standing policy expressly excludes this security boundary.
+### Checkpoint security boundary — repaired in production
+PR #980 is merged and #978 is closed. Live RLS is enabled; canonical issue evidence records owner-only SELECT, denied cross-owner/anonymous access, privileged writes and preserved immutability. Do not reapply the migration or describe the old disabled-RLS finding as current.
 
-### Standing authorization activation and protected changes
-The ratified standing policy replaces repeated `DEPLOY` requests for routine candidates only. Its validity dates must be bounded, and all machine gates must pass. It does not authorize the #980 security boundary or promotion of changes to its own enforcement.
+### Finite standing activation and protected bootstrap
+Human continuation authorizes the concrete one-time proposal recorded in `BRAIN/06-PROOF/2026-09-29-STANDING-PROMOTION-ACTIVATION.md`: review October 15 and expire October 29 in America/Vancouver, no automatic renewal or scope expansion. The enforcement correction is source-tested. Its protected delta still uses the existing explicit bootstrap; do not bypass the standing lane's exclusions.
 
-These are genuine boundaries. While blocked, continue independent source/test/control-plane work rather than inventing PASS.
+### Live delivery and KNOW proof
+The deployment and child runtime proof succeeded at the inspected older source, but parent polling failed and no durable promotion receipt was produced. Preserve current quote-free polling and prove the full parent run. KNOW is deployed with matching inspected source, but contextual HIT/MISS and independent persisted reread remain unproven. Run existing proof workflows with their own OIDC identity.
 
 ## 7. DEFINITION OF DONE
 
@@ -131,8 +132,6 @@ with current production evidence, recovery, security, privacy/consent, and human
 
 ## 8. EXACT NEXT ACTION
 
-**Resolve recorded authorization for the merged #980 checkpoint-receipt policy and bounded standing-policy activation, then execute the authorized protected application and verify it.**
+**Integrate the finite activation/enforcement correction, execute the existing governed protected bootstrap for exact current main, and verify its durable promotion receipt. Then run existing KNOW contextual and independent verification workflows.**
 
-If accepted, the next executable machine action is: **recheck current source and checks, execute the accepted migration through its authorized production path, then independently verify the security boundary. Routine promotions thereafter use standing authorization when every gate passes.**
-
-If rejected, revise the policy from the stated reason without weakening privacy or evidence integrity.
+Routine automatic delivery needs its own eligible-candidate proof afterward. Explicit bootstrap, passing CI and code parity alone do not prove standing delivery or universal organism binding.
