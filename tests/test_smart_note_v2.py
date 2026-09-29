@@ -106,3 +106,8 @@ def test_projection_workflow_does_not_allocate_intelligent_block_identity():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert 'ib="IB-SMART-NOTE-"+capture["capture_id"]' not in workflow
     assert '"intelligent_block_id"' in workflow
+
+
+def test_projection_workflow_stages_brain_projection_and_registry():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert "git add BRAIN/05-MEMORY/SMART-NOTES .naya/memory/smart-notes" in workflow
