@@ -11,6 +11,7 @@ def _manifest():
 
 def test_smart_node_is_alias_over_existing_intelligent_block_boundary():
     m = _manifest()
+    assert m["status"] == "CANONICAL"
     assert m["canonical_machine_target"] == "INTELLIGENT_BLOCK"
     assert m["creates_new_object_type"] is False
     assert m["creates_new_kernel_node"] is False

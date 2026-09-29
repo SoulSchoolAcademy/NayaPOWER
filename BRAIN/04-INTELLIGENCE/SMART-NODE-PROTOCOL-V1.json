@@ -1,7 +1,7 @@
 {
   "schema": "naya.smart-node-protocol.v1",
   "version": "1.0",
-  "status": "CANDIDATE_CANONICAL",
+  "status": "CANONICAL",
   "human_term": "Smart Node",
   "canonical_machine_target": "INTELLIGENT_BLOCK",
   "creates_new_object_type": false,
