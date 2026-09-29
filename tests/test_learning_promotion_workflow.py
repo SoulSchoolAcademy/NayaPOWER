@@ -25,9 +25,8 @@ def test_learning_promotion_uses_existing_oidc_bound_verifier_and_causal_evidenc
 
 
 def test_learning_promotion_does_not_relax_runtime_oidc_binding_or_mutate_sql_directly():
-    influence = (ROOT / ".github" / "workflows" / "live-learning-influence-proof.yml").read_text(encoding="utf-8")
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert "SUPABASE_USER_ACCESS_TOKEN" not in influence
+    assert "SUPABASE_USER_ACCESS_TOKEN" not in source
     assert "update public.learning_evidence" not in source
     assert "status: ACTIVE" not in source
 
