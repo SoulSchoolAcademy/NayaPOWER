@@ -8,7 +8,7 @@ def _live(main, *, issues=None, proof=None, runtime=None):
     return {
         "main_head": main,
         "production_branch_head": "prod-sha",
-        "issue_states": issues or {"978": "OPEN", "975": "OPEN", "810": "OPEN"},
+        "issue_states": issues or {"978": "CLOSED", "975": "CLOSED", "810": "OPEN"},
         "latest_successful_runtime_proof": proof,
         "live_runtime_source": runtime,
     }
@@ -33,10 +33,21 @@ def test_resolver_reports_current_main_not_latest_proven_source(monkeypatch):
     assert "SOURCE_RUNTIME_PARITY_MISMATCH" in codes
 
 
-def test_resolver_fails_closed_when_active_issue_is_closed():
+def test_resolver_accepts_reconciled_closed_historical_issues_with_open_frontier():
     main = "a" * 40
     result = ctr.resolve(
-        _live(main, issues={"978": "CLOSED"}, proof={"head_sha": main}, runtime=main),
+        _live(main, issues={"978": "CLOSED", "975": "CLOSED", "810": "OPEN"}, proof={"head_sha": main}, runtime=main),
+        repo_head=main,
+    )
+    assert result["status"] != "CONFLICT"
+    assert result["active_work"]["active_issue"] == 810
+    assert result["active_work"]["active_issue_state"] == "OPEN"
+
+
+def test_resolver_fails_closed_when_current_active_issue_is_closed():
+    main = "a" * 40
+    result = ctr.resolve(
+        _live(main, issues={"978": "CLOSED", "975": "CLOSED", "810": "CLOSED"}, proof={"head_sha": main}, runtime=main),
         repo_head=main,
     )
     assert result["status"] == "CONFLICT"
