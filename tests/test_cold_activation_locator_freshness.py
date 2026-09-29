@@ -22,7 +22,7 @@ def test_cold_activation_locators_point_to_current_precedence_and_not_stale_snap
 
     assert "SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md" in activation_map
     assert SUPERSEDED not in activation_map
-    assert current_ref in current_state
+    assert current.name in current_state
     assert SUPERSEDED not in current_state
 
 
