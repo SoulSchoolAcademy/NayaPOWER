@@ -43,3 +43,25 @@ def test_native_production_deployment_is_provenance_stamped_before_supabase_depl
     assert '"deployed_source_revision":os.environ["GITHUB_SHA"]' in source
     assert 'json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)' in source
     assert 'open("deployment-blob-request.json","w")' not in source
+
+
+def test_governed_promotion_serializes_authority_bearing_production_writes():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "concurrency:" in source
+    assert "group: nayapower-governed-production-promotion" in source
+    assert "cancel-in-progress: false" in source
+
+
+def test_governed_promotion_refuses_moved_authorized_source_before_producer_dispatch():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'git fetch origin main' in source
+    assert 'current_main="$(git rev-parse origin/main)"' in source
+    assert 'if [ "$current_main" != "$GITHUB_SHA" ]; then' in source
+    assert "AUTHORIZED_SOURCE_MOVED" in source
+
+
+def test_governed_promotion_refuses_moved_production_deployment_before_producer_dispatch():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'current_production="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"' in source
+    assert 'if [ "$current_production" != "$DEPLOYMENT_SHA" ]; then' in source
+    assert "PRODUCTION_DEPLOYMENT_MOVED" in source
