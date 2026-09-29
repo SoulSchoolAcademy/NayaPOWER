@@ -16,6 +16,7 @@ The current Concept #1–#13 series is preserved as provenance-bearing source ma
 | [0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md](./0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md) | Distillation audit ledger |
 | [0003-KNOWLEDGE-POPULATION-MAP-V1.json](./0003-KNOWLEDGE-POPULATION-MAP-V1.json) | Population status map |
 | [0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md](./0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md) | Representation law |
+| [MASTER-ROLES/](./MASTER-ROLES/) | Selectively retrievable Master Cognition Library and role-pack contract |
 
 ## Key Principles
 
@@ -24,3 +25,5 @@ The current Concept #1–#13 series is preserved as provenance-bearing source ma
 - Duplicates are merged with lineage
 - Contradictions are surfaced, not hidden
 - Generated projections never silently become independent truths
+- Expert cognition does not create authority
+- A role label or readable role pack does not prove mastery

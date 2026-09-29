@@ -1,0 +1,287 @@
+{
+  "schema": "naya.master-role-registry.v1",
+  "version": "1.0",
+  "status": "PROPOSED",
+  "proof_state": "STRUCTURED",
+  "canonical_home": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/",
+  "selection_policy": {
+    "default_primary_roles": 1,
+    "default_complementary_role_limit": 2,
+    "load_all_roles_by_default": false,
+    "authority_inheritance": false,
+    "selection": "task-signals + applicability + current evidence + independent authority check",
+    "composition": "preserve attributable claims and contradictions; do not average"
+  },
+  "roles": [
+    {
+      "role_key": "master-ai-systems-architect",
+      "title": "Master AI Systems Architect",
+      "domain": "SYSTEM_ARCHITECTURE",
+      "state": "SPECIMEN_PROPOSED",
+      "applicability_signals": [
+        "system boundary",
+        "architecture",
+        "integration",
+        "runtime design",
+        "cross-domain tradeoff"
+      ],
+      "pack_path": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/AI-SYSTEMS-ARCHITECT/MASTER-AI-SYSTEMS-ARCHITECT-V1.json",
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-graph-retrieval-architect",
+      "title": "Master Graph & Retrieval Architect",
+      "domain": "GRAPH_RETRIEVAL",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "graph",
+        "retrieval",
+        "semantic relationship",
+        "context assembly",
+        "ranking"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-memory-architect",
+      "title": "Master Memory Architect",
+      "domain": "MEMORY",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "memory",
+        "retention",
+        "reconciliation",
+        "temporal context",
+        "forgetting"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-security-trust-architect",
+      "title": "Master Security & Trust Architect",
+      "domain": "SECURITY_TRUST",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "identity",
+        "authentication",
+        "authorization",
+        "privacy",
+        "threat model"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-verification-causal-science-architect",
+      "title": "Master Verification & Causal Science Architect",
+      "domain": "VERIFICATION_CAUSALITY",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "proof",
+        "experiment",
+        "causality",
+        "falsification",
+        "acceptance"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-multi-agent-architect",
+      "title": "Master Multi-Agent Architect",
+      "domain": "MULTI_AGENT",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "delegation",
+        "orchestration",
+        "agent coordination",
+        "conflict",
+        "handoff"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-performance-scale-architect",
+      "title": "Master Performance & Scale Architect",
+      "domain": "PERFORMANCE_SCALE",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "latency",
+        "throughput",
+        "cost",
+        "capacity",
+        "scaling"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-learning-evolution-scientist",
+      "title": "Master Learning & Evolution Scientist",
+      "domain": "LEARNING_EVOLUTION",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "behavioral learning",
+        "promotion",
+        "adaptation",
+        "evaluation",
+        "compounding"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-continuity-succession-architect",
+      "title": "Master Continuity & Succession Architect",
+      "domain": "CONTINUITY_SUCCESSION",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "cold boot",
+        "handoff",
+        "successor",
+        "continuity",
+        "context reconstruction"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-human-systems-architect",
+      "title": "Master Human Systems Architect",
+      "domain": "HUMAN_SYSTEMS",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "human-ai system",
+        "workflow",
+        "agency",
+        "trust",
+        "usability"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-interaction-interface-architect",
+      "title": "Master Interaction & Interface Architect",
+      "domain": "INTERACTION_INTERFACE",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "interface",
+        "interaction",
+        "information hierarchy",
+        "multimodal",
+        "navigation"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-human-cognition-architect",
+      "title": "Master Human Cognition Architect",
+      "domain": "HUMAN_COGNITION",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "attention",
+        "perception",
+        "cognitive load",
+        "memory",
+        "decision process"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-software-platform-architect",
+      "title": "Master Software & Platform Architect",
+      "domain": "SOFTWARE_PLATFORM",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "code architecture",
+        "api",
+        "maintainability",
+        "modularity",
+        "platform"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-data-semantic-architect",
+      "title": "Master Data & Semantic Architect",
+      "domain": "DATA_SEMANTICS",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "schema",
+        "ontology",
+        "provenance",
+        "data quality",
+        "semantic model"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-reliability-resilience-architect",
+      "title": "Master Reliability & Resilience Architect",
+      "domain": "RELIABILITY_RESILIENCE",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "failure recovery",
+        "observability",
+        "fault tolerance",
+        "degradation",
+        "sre"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-product-human-value-architect",
+      "title": "Master Product & Human Value Architect",
+      "domain": "PRODUCT_VALUE",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "human value",
+        "product outcome",
+        "priority",
+        "adoption",
+        "value measurement"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-safety-governance-architect",
+      "title": "Master Safety & Governance Architect",
+      "domain": "SAFETY_GOVERNANCE",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "governance",
+        "consent",
+        "human control",
+        "safe capability",
+        "escalation"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    },
+    {
+      "role_key": "master-adversarial-wildcard-architect",
+      "title": "Master Adversarial / Wildcard Architect",
+      "domain": "ADVERSARIAL_WILDCARD",
+      "state": "PLANNED",
+      "applicability_signals": [
+        "assumption challenge",
+        "unknown unknown",
+        "red team",
+        "alternative architecture",
+        "failure search"
+      ],
+      "pack_path": null,
+      "canonical_object_refs": []
+    }
+  ]
+}
