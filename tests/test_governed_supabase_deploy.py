@@ -43,3 +43,20 @@ def test_native_production_deployment_is_provenance_stamped_before_supabase_depl
     assert '"deployed_source_revision":os.environ["GITHUB_SHA"]' in source
     assert 'json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)' in source
     assert 'open("deployment-blob-request.json","w")' not in source
+
+
+def test_governed_promotion_serializes_authority_bearing_execution():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "concurrency:" in source
+    assert "group: governed-production-promotion" in source
+    assert "cancel-in-progress: false" in source
+
+
+def test_governed_promotion_revalidates_authorized_source_and_deployment_before_producer():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "Revalidate authorized source and deployment ownership before producer" in source
+    assert 'test "$(git rev-parse origin/main)" = "$GITHUB_SHA"' in source
+    assert 'test "$production_now" = "$DEPLOYMENT_SHA"' in source
+    assert 'if [ "$producer_head" != "$GITHUB_SHA" ]; then' in source
+    assert 'gh run cancel "$run_id"' in source
+    assert "main moved after producer dispatch; refusing to continue." in source
