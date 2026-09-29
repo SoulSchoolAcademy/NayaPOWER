@@ -31,3 +31,11 @@ def test_nia_language_has_primary_command_and_safe_ceiling():
     assert nia["primary_capture_intent"] == "CAPTURE_DURABLE_INTELLIGENCE"
     assert nia["maximum_automatic_capture_state"] == "CANDIDATE"
     assert nia["safety"]["may_grant_authority"] is False
+
+def test_historical_checkpoint_binding_uses_object_local_receipt_semantics():
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
+    assert entry["provenance"]["checkpoint_semantics"] == "MUTABLE_PROJECT_STATE_POINTER"
+    assert entry["provenance"]["historical_checkpoint_binding"] == "EXECUTION_RECEIPT_EVIDENCE"
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert "RECEIPT_OBJECT_LOCAL_SNAPSHOT" in workflow
