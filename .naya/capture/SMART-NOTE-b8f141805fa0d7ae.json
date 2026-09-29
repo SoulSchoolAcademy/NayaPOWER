@@ -100,5 +100,13 @@
     ],
     "epistemic_state": "CANDIDATE",
     "uncertainty": "The current canonical receiver can persist this rich representation as the lesson payload, but first-class structured rich-view fields and full automatic duplicate/reconciliation/relationship inference are not yet proven as generalized runtime behavior."
+  },
+  "category": "SYSTEM_INTELLIGENCE",
+  "subtopic": "CAPTURE_PROTOCOL",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "projection": {
+    "category_slug": "system-intelligence",
+    "topic_slug": "smart-note-universal-capture",
+    "subtopic_slug": "capture-protocol"
   }
 }
