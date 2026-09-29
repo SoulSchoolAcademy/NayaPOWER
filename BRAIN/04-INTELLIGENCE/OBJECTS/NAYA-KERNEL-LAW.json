@@ -32,7 +32,8 @@
       "policy refs",
       "freshness/expiration"
     ],
-    "failure_mode": "fail closed on missing identity, revoked/expired authority, retrieval-as-authority, successor authority inheritance, privacy widening, or unresolved consequential authority"
+    "failure_mode": "fail closed on missing identity, revoked/expired authority, retrieval-as-authority, successor authority inheritance, privacy widening, or unresolved consequential authority",
+    "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
   },
   "machine_view": {
     "node_name": "LAW",
@@ -42,7 +43,9 @@
     "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
     "runtime": "supabase/functions/nayanet-law-runtime/index.ts",
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
-    "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json"
+    "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+    "universal_envelope": "naya.master-node-envelope.v1",
+    "neighbor_handoff": "NAYA-KERNEL-ACT"
   },
   "provenance": {
     "derived_from": [
@@ -55,7 +58,8 @@
     "implementation_status": "EXECUTABLE_SOURCE",
     "behavioral_status": "PENDING_LIVE_PROOF",
     "production_status": "PENDING_LIVE_PROOF",
-    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF"
   },
   "relationships": [
     {
