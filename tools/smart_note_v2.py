@@ -77,13 +77,8 @@ def render(capture, verify, private_root=None):
         "## 🟢 MACHINE NOTE", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
         "## 🟢 LEARNING LESSON", "", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next.", "",
         "## 🟡 WHAT IT MEANS", "", intelligence.get("priority", ""), "",
-        "## ⚪ WHAT'S IN IT FOR YOU", "", "Less repetition, less lost knowledge, faster comprehension, stronger continuity, and a direct Smart Link showing exactly what Naya preserved.", "",
-        "## Decisions", ""
+        "## ⚪ WHAT'S IN IT FOR YOU", "", "Less repetition, less lost knowledge, faster comprehension, stronger continuity, and a direct Smart Link showing exactly what Naya preserved.", ""
     ]
-    lines += ["- " + x for x in intelligence.get("decisions", [])]
-    lines += ["", "## Connections", ""]
-    for x in intelligence.get("connections", []):
-        lines.append("- **" + x.get("type", "RELATED_TO") + "** -> " + x.get("target", ""))
     lines += [
         "", "## 🟨 HOW TO APPLY / HOW TO USE", "", intelligence.get("human_view", {}).get("simple_rule", ""), "",
         "## 🔗 HOW IT CONNECTS", "", *["- **" + x.get("type", "RELATED_TO") + "** → " + x.get("target", "") for x in intelligence.get("connections", [])], "",
@@ -112,7 +107,9 @@ def update_registry(capture, verify, projection):
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
         "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
-        "smart_link_status": "READY" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
+        "smart_link_status": "ACTIVE" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
+        "smart_link": ("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/" + str(projection.relative_to(ROOT)).replace("\\", "/")) if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else None,
+        "publication_scope": capture.get("projection", {}).get("publication_scope", "PRIVATE"),
         "keywords": ["smart note","capture","intelligent block","future naya","superbrain","intent","memory","reusable intelligence"],
         "provenance": {
             "event_id": verify["persisted"]["event"]["id"],
@@ -140,7 +137,7 @@ def retrieve(query):
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][1]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
-    m = re.search(r"## In a nutshell\n\n(.+?)(?:\n\n##|$)", note, re.S)
+    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     explanation = m.group(1).strip() if m else ""
     return {"query":query,"retrieved":e,"explanation":explanation,"source":"repository_projection_index","original_conversation_supplied":False}
 
