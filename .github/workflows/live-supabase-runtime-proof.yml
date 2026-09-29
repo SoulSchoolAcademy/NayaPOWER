@@ -1,6 +1,7 @@
 name: Live Supabase Runtime Proof
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Live Intelligence Commit Proof"]
     types: [completed]
