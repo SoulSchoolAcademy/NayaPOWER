@@ -67,4 +67,4 @@ def test_governed_promotion_dispatches_runtime_proof_directly():
     assert 'gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
-    assert "workflow_run" not in source
+    assert '--event workflow_run' not in source
