@@ -59,9 +59,18 @@ def test_bounded_routine_candidate_is_allowed():
     assert evaluate_policy(policy, context, now=NOW) == {'decision': 'ALLOW', 'reason': 'all_policy_gates_pass'}
 
 
-def test_current_canonical_policy_refuses_unbounded_dates():
+def test_ratified_canonical_activation_is_finite_and_stops_at_review_and_expiry():
     _, context = candidate()
-    assert evaluate_policy(load_policy(), context, now=NOW) == {'decision': 'DENY', 'reason': 'policy_time_not_bounded'}
+    policy = load_policy()
+    assert policy['expiry'] == {
+        'review_after': '2026-10-15T00:00:00-07:00',
+        'expires_at': '2026-10-29T00:00:00-07:00',
+        'automatic_renewal': False,
+    }
+    assert policy['activation']['authority'] == 'HUMAN_DIRECTOR'
+    assert evaluate_policy(policy, context, now=NOW)['decision'] == 'ALLOW'
+    assert evaluate_policy(policy, context, now=datetime(2026, 10, 15, 7, tzinfo=timezone.utc))['reason'] == 'policy_review_due'
+    assert evaluate_policy(policy, context, now=datetime(2026, 10, 29, 7, tzinfo=timezone.utc))['reason'] == 'policy_expired'
 
 
 @pytest.mark.parametrize('now,reason', [
