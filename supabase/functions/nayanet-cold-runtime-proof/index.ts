@@ -328,7 +328,7 @@ Deno.serve(async (req: Request) => {
       // 3. Re-read the durable graph relationships that connect intelligence to that block.
       const successorBlockId = String(learningObserved.intelligent_block_id || "");
       if (!successorBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
-      const successorBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(successorBlockId) + "&owner_id=" + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content,evidence_refs,provenance");
+      const successorBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(successorBlockId) + "&owner_id=eq." + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content,evidence_refs,provenance");
       if (!Array.isArray(successorBlockRows) || successorBlockRows.length !== 1) return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_UNIQUE" }, 409);
       const successorBlock = successorBlockRows[0];
       if (successorBlock.understanding_state !== "LEARNED") return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_LEARNED", state: successorBlock.understanding_state }, 409);
@@ -419,7 +419,7 @@ Deno.serve(async (req: Request) => {
       const lObs = (l.observed_value && typeof l.observed_value === "object" && !Array.isArray(l.observed_value)) ? l.observed_value : {};
       const vBlockId = String(lObs.intelligent_block_id || "");
       if (!vBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
-      const vBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(vBlockId) + "&owner_id=" + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content");
+      const vBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(vBlockId) + "&owner_id=eq." + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content");
       if (!Array.isArray(vBlockRows) || vBlockRows.length !== 1) return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_UNIQUE" }, 409);
       const vBlock = vBlockRows[0];
       if (vBlock.understanding_state !== "LEARNED") return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_LEARNED", state: vBlock.understanding_state }, 409);
