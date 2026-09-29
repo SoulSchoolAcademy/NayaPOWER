@@ -475,7 +475,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=de0b794b-224b-4d8b-ad1a-3afc6f8d0771" > cold-successor-verification.json
+          learning_id="$(python -c 'import json; print(json.load(open("cold-successor-receipt.json"))["reconstruction"]["learning_id"])')"
+          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}" > cold-successor-verification.json
           cat cold-successor-verification.json
           python - <<'PY'
           import json
