@@ -1,10 +1,12 @@
 name: Governed Production Promotion
 
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch:
     inputs:
       confirm:
-        description: "Type DEPLOY to authorize promotion of the current main SHA to production"
+        description: "Type DEPLOY to authorize a protected/manual production promotion"
         required: true
         default: "NO"
         type: string
@@ -34,15 +36,88 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Require explicit human production authorization
+      - name: Resolve standing authorization mode
         shell: bash
         run: |
           set -euo pipefail
-          test "${{ inputs.confirm }}" = "DEPLOY"
           test "$GITHUB_REF" = "refs/heads/main"
           git fetch origin main
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            test "${{ inputs.confirm }}" = "DEPLOY"
+            echo "PROMOTION_MODE=EXPLICIT_HUMAN" >> "$GITHUB_ENV"
+          else
+            echo "PROMOTION_MODE=STANDING_POLICY" >> "$GITHUB_ENV"
+          fi
+
+      - name: Enforce ratified standing policy before automatic promotion
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          policy=json.loads(Path(".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json").read_text(encoding="utf-8"))
+          assert policy["status"] == "RATIFIED"
+          assert policy["policy_id"] == "STANDING-PRODUCTION-PROMOTION-V1"
+          assert policy["scope"] == {
+              "repository": "SoulSchoolAcademy/NayaPOWER",
+              "source_branch": "main",
+              "target_branch": "production",
+              "source_sha": "RESOLVE_AT_EXECUTION",
+              "target_environment": "production",
+              "mechanism": "EXISTING_GOVERNED_PRODUCTION_PROMOTION",
+          }
+          print("standing policy identity and scope: PASS")
+          PY
+
+          git fetch origin main
+          changed="$(git diff --name-only "${{ github.event.before }}" "$GITHUB_SHA")"
+          for path in $changed; do
+            case "$path" in
+              CONSTITUTION/*|GOVERNANCE/*|.naya/governance/*|.github/workflows/governed-supabase-production-deploy.yml|supabase/migrations/*)
+                echo "FAIL CLOSED: protected change '$path' is outside standing automatic scope."
+                exit 1
+                ;;
+            esac
+          done
+
+          blocker_state="$(gh api "repos/$REPO/issues/978" --jq .state)"
+          if [ "$blocker_state" != "closed" ]; then
+            echo "FAIL CLOSED: production blocker #978 is $blocker_state."
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json, os, subprocess, time
+          required={"Kernel Tests","Collective Chain Readiness Gate"}
+          repo=os.environ["REPO"]
+          sha=os.environ["GITHUB_SHA"]
+          for attempt in range(90):
+              runs=json.loads(subprocess.check_output([
+                  "gh","api","repos/"+repo+"/commits/"+sha+"/check-runs?per_page=100"
+              ], text=True))
+              found={r.get("name"):r for r in runs.get("check_runs",[])}
+              missing=required-set(found)
+              failed={name:r.get("conclusion") for name,r in found.items() if name in required and r.get("status")=="completed" and r.get("conclusion")!="success"}
+              pending={name:r.get("status") for name,r in found.items() if name in required and r.get("status")!="completed"}
+              if failed:
+                  raise SystemExit(f"FAIL CLOSED: required check failed: {failed}")
+              if not missing and not pending:
+                  print("required checks: PASS")
+                  break
+              if attempt == 89:
+                  raise SystemExit(f"FAIL CLOSED: required checks not complete: missing={sorted(missing)} pending={pending}")
+              time.sleep(10)
+          PY
+
+          echo "standing production policy preconditions: PASS"
+          echo "automatic production promotion is authorized for this candidate."
 
       - name: Build provenance-stamped production deployment commit
         env:
