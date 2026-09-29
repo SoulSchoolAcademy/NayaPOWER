@@ -1295,7 +1295,16 @@
       "status": "PRODUCTION_APPLIED"
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20260929040000",
+      "name": "immutable_checkpoint_receipts_v1",
+      "path": "supabase/migrations/20260929040000_immutable_checkpoint_receipts_v1.sql",
+      "sha256": "94aabddd053869cc86380b14e223d5a47f70e76818e9f69342930af0dd71e8b7",
+      "bytes": 3384,
+      "status": "PENDING_NOT_APPLIED"
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
