@@ -77,7 +77,7 @@ def test_learning_proof_consumes_same_head_fresh_commit_artifact_instead_of_fixe
     source = WORKFLOW.read_text(encoding="utf-8")
     assert 'workflows: ["Live Intelligence Commit Proof"]' in source
     assert "actions: read" in source
-    assert "run-id: ${{ github.event.workflow_run.id }}" in source
+    assert "run-id: ${{ env.PRODUCER_RUN_ID }}" in source
     assert "github-token: ${{ secrets.GITHUB_TOKEN }}" in source
     assert 'open("fresh-lineage/fresh-lesson-lineage-ids.json")' in source
     assert 'fresh_block_id=ids["intelligent_block_id"]' in source
@@ -120,6 +120,10 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         "nayanet-intelligence-commit-runtime",
         "nayanet-causal-learning-experiment",
         "nayanet-learning-verify",
+        "nayanet-law-runtime",
+        "nayanet-act-runtime",
+        "nayanet-know-runtime",
+        "nayanet-prove-runtime",
     }
     declared = {
         line[len("[functions."):-1]
@@ -128,3 +132,13 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
     }
     assert declared == expected
     assert config.count("verify_jwt = false") == len(expected)
+
+
+def test_runtime_proof_can_be_dispatched_with_exact_producer_context():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in source
+    assert "source_sha:" in source
+    assert "producer_run_id:" in source
+    assert "github.event_name == 'workflow_run'" in source
+    assert "SOURCE_SHA:" in source
+    assert "PRODUCER_RUN_ID:" in source
