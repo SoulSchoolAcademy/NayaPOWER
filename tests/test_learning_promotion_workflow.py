@@ -90,3 +90,41 @@ def test_reused_candidate_rebinds_top_level_source_event_to_fresh_event():
     # A reused same-claim CANDIDATE must not mix an old top-level event with
     # fresh embedded Event → Block → Lineage provenance.
     assert 'update({ source_event_id: event.id, observed_value: repairedObserved })' in source
+
+
+def test_governed_production_promotion_separates_authorization_from_authentication():
+    deploy = (ROOT / ".github" / "workflows" / "governed-supabase-production-deploy.yml").read_text(encoding="utf-8")
+    forbidden = "SUPABASE_" + "ACCESS_TOKEN"
+    assert "inputs.confirm" in deploy
+    assert "DEPLOY" in deploy
+    assert forbidden not in deploy
+    assert "supabase functions deploy" not in deploy
+    assert "SUPABASE_NATIVE_GITHUB_INTEGRATION" in deploy
+    assert "PRODUCTION_BRANCH: production" in deploy
+
+
+def test_governed_production_promotion_requires_new_supabase_deployment_evidence():
+    deploy = (ROOT / ".github" / "workflows" / "governed-supabase-production-deploy.yml").read_text(encoding="utf-8")
+    assert "supabase-check-ids-before.json" in deploy
+    assert "supabase-production-check.json" in deploy
+    assert "No successful NEW Supabase GitHub Integration check appeared" in deploy
+    assert "live-intelligence-commit-proof.yml" in deploy
+    assert "live-supabase-runtime-proof.yml" in deploy
+    assert "production-promotion-receipt.json" in deploy
+
+
+def test_supabase_config_declares_governed_runtime_functions_for_native_integration():
+    config = (ROOT / "supabase" / "config.toml").read_text(encoding="utf-8")
+    expected = {
+        "nayanet-cold-runtime-proof",
+        "nayanet-intelligence-commit-runtime",
+        "nayanet-causal-learning-experiment",
+        "nayanet-learning-verify",
+    }
+    declared = {
+        line[len("[functions."):-1]
+        for line in config.splitlines()
+        if line.startswith("[functions.") and line.endswith("]")
+    }
+    assert declared == expected
+    assert config.count("verify_jwt = false") == len(expected)
