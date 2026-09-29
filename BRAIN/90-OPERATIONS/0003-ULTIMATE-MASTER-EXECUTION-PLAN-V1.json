@@ -1,86 +1,86 @@
 {
   "schema": "naya.operations.ultimate-master-execution-plan.v1",
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "de813e9df08af2f860601f98a56ac68562a8c095",
+  "evidence_snapshot_base": "618429b1a77ceb391f179c54e40d50aedb6390f4",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
     "issue_913": "CLOSED_BOUNDED_CAUSAL_SPECIMEN",
     "issue_944": "CLOSED_BOUNDED_GENERALIZATION_SUCCESSOR_PROOF",
     "issue_971": "CLOSED_NATIVE_SUPABASE_DEPLOYMENT_INCIDENT_RECOVERED",
-    "bounded_production_source": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
-    "bounded_production_proof_run": "36519233015_attempt_2_ALL_18_PASS",
-    "issue_810": "IMPLEMENTED_REPOSITORY_VERIFIED_PRODUCTION_PENDING",
-    "issue_975": "IMPLEMENTED_REPOSITORY_VERIFIED_LIVE_RECOVERY_PENDING",
-    "issue_978": "OPEN_SECURITY_GAP",
-    "pr_980": "DRAFT_REBASED_GATES_PASS_HUMAN_POLICY_ACCEPTANCE_REQUIRED",
+    "bounded_production_source": "335bdd82568e8041d3f6921a9ee4c7bf28e2c99f",
+    "bounded_production_proof_run": "36632211367_SUCCESS",
+    "issue_810": "CLOSED_BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN",
+    "issue_975": "CLOSED_OUTCOME_RECOVERY_NORTH_STAR_V3_ACCEPTED",
+    "issue_978": "CLOSED_PRODUCTION_RLS_PROVEN",
+    "pr_980": "MERGED_PRODUCTION_VERIFIED",
     "universal_nine_node_runtime_binding": "NOT_PROVEN",
     "multi_generation_compounding": "NOT_PROVEN",
-    "two_owner_nayanet": "NOT_PROVEN"
+    "two_owner_nayanet": "NOT_PROVEN",
+    "governed_production_promotion_run": "36631960490_SUCCESS",
+    "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
+    "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
+    "current_truth_resolver": "IMPLEMENTED_FAILING_ON_STALE_CONTROL_POINTERS"
   },
   "top_10": [
     {
       "rank": 1,
-      "id": "#978",
-      "action": "Approve/reject checkpoint receipt owner-read / privileged-write RLS boundary",
-      "status": "HUMAN_DECISION_REQUIRED"
+      "id": "#66",
+      "action": "Reconcile stale current-truth control-plane pointers and prove Current Truth Resolver live",
+      "status": "ACTIVE"
     },
     {
       "rank": 2,
-      "action": "Fresh governed deployment for exact live main",
-      "status": "EXPLICIT_DEPLOY_REQUIRED"
+      "action": "Authority lifecycle negative matrix: missing/wrong owner/wrong mission/wrong target/wrong action/inactive/revoked/expired/successor/cached-derived",
+      "status": "QUEUED"
     },
     {
       "rank": 3,
-      "id": "#975",
-      "action": "Run audited causal outcome recovery after verifier deployment",
-      "status": "DEPLOYMENT_DEPENDENT"
+      "action": "Checkpoint/provenance/concurrency/recovery hardening",
+      "status": "QUEUED"
     },
     {
       "rank": 4,
-      "id": "#810",
-      "action": "Run live nine-node behavioral acceptance + ablation",
-      "status": "DEPLOYMENT_DEPENDENT"
+      "action": "Stored-intelligence adversarial suite: poisoning/context laundering/forged edges/evidence amplification",
+      "status": "QUEUED"
     },
     {
       "rank": 5,
-      "action": "Deterministic current-truth resolver over existing canonical owners",
+      "action": "Verifier independence and monoculture challenge plus model/runtime identity in receipts",
       "status": "QUEUED"
     },
     {
       "rank": 6,
-      "action": "Authority lifecycle negative matrix",
+      "action": "Multi-generation A→B→C compounding with unrelated-task refusal",
       "status": "QUEUED"
     },
     {
       "rank": 7,
-      "action": "Checkpoint/provenance/recovery/concurrency hardening",
+      "action": "Two-owner NayaNET consent/revocation and no cross-owner leakage",
       "status": "QUEUED"
     },
     {
       "rank": 8,
-      "action": "Stored-intelligence adversarial suite",
+      "action": "Human-value-per-attention measurement",
       "status": "QUEUED"
     },
     {
       "rank": 9,
-      "action": "Multi-generation A→B→C compounding proof",
+      "action": "Recovery/disaster/schema-migration/deletion-retention lineage proof",
       "status": "QUEUED"
     },
     {
       "rank": 10,
-      "action": "Human-value measurement + two-owner NayaNET consent/revocation",
-      "status": "QUEUED"
+      "action": "Scale/Hub/collective expansion only after preceding proof gates",
+      "status": "LATER"
     }
   ],
   "next_action": {
-    "type": "HUMAN_DECISION",
-    "issue": 978,
-    "pull_request": 980,
-    "decision": "Accept or reject: authenticated owners may SELECT only rows where user_id=auth.uid(); anon has no table access; mutation remains privileged/server-only.",
-    "after_accept": "Mark PR #980 ready and merge. Do not deploy without fresh explicit DEPLOY for exact live main."
+    "type": "EXECUTE",
+    "issue": 66,
+    "instruction": "Reconcile Brain/Operations control-plane pointers to live closed/open issue state, preserve resolver conflict evidence even when fail-closed, merge only with green repository gates, then require a successful main-branch Current Truth Resolver run before advancing to the authority lifecycle matrix."
   }
 }

@@ -43,4 +43,9 @@ def test_brain_index_preserves_bounded_proof_semantics():
     assert bounded["issue"] == 913
     assert bounded["source_revision"] == "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4"
     assert proof["production_proof"] == "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN"
-    assert proof["successor_behavioral_improvement"] == "PROVEN_BOUNDED_SINGLE_TASK"
+    assert proof["successor_behavioral_improvement"] == "PROVEN_BOUNDED_RELATED_HELDOUT_WITH_UNRELATED_REFUSAL"
+    nine = proof["nine_node_behavioral_acceptance"]
+    assert nine["status"] == "PRODUCTION_PROVEN_BOUNDED"
+    assert nine["source_revision"] == "335bdd82568e8041d3f6921a9ee4c7bf28e2c99f"
+    assert nine["proof_run"] == "36632211367"
+    assert "universal" in nine["limitation"].lower()

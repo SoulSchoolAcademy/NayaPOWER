@@ -17,14 +17,18 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-- #944: CLOSED.
-- #971: CLOSED.
-- Bounded production proof exists at exact source `2f468c413f4b5c6752878d94ba0f2e1fdfb60147`, proof run `36519233015` attempt 2.
-- Current main must always be resolved live; later revisions do not inherit production proof.
-- #810 is implemented/repository-verified but current-main production proof is pending.
-- #975 recovery is implemented/repository-verified but live recovery is deployment-dependent.
-- #978 is the highest-risk open seam.
-- PR #980 is the prepared checkpoint-ledger RLS hardening; repository gates PASS; Human Director policy acceptance remains required.
+At evidence snapshot `618429b1a77ceb391f179c54e40d50aedb6390f4`:
+
+- #978 is **CLOSED / production verified**.
+- #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
+- #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
+- Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
+- The next active control-plane issue is #66.
+- Current Truth Resolver run `36631904834` failed closed because stale operational projections still named closed #978 as active.
+- That failure is a correct drift finding. The next repair is to reconcile the projections and preserve the conflict artifact on failed resolver runs.
+- Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
+
+Always resolve live `main`, issue state, deployment/runtime evidence and proof receipts before acting. A later revision never inherits an older production proof automatically.
 
 ## Operating law
 
@@ -38,4 +42,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Human Director accepts or rejects PR #980's owner-read / privileged-write checkpoint RLS policy.**
+**Issue #66: reconcile stale Brain/Operations current-truth pointers, preserve/upload resolver evidence even when conflicts fail closed, merge only with green repository gates, and require a successful main-branch Current Truth Resolver run before advancing to the authority lifecycle negative matrix.**

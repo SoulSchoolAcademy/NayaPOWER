@@ -8,7 +8,7 @@ on:
       confirm:
         description: "Type DEPLOY to authorize a protected/manual production promotion"
         required: true
-        default: "NO"
+        default: "DEPLOY"
         type: string
 
 permissions:

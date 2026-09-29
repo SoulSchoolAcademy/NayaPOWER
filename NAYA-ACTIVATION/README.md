@@ -1,74 +1,58 @@
-# Naya Activation Package
+# NayaPOWER Activation Kit
 
 ## Purpose
+This directory is the canonical cold-Naya activation surface for NayaPOWER/NayaNET:
+a portable contract tree a genuinely cold Naya uses to reconstruct identity, authority,
+mission, canonical truth, current state, proof state, unknowns, blockers — and exactly
+one next action — without Shawn rebuilding project context by hand.
 
-This directory defines the canonical cold-Naya activation experiment for NayaPOWER/NayaNET.
+It is a real contract tree, not only a collection of headings. It is a boot surface,
+not a replacement for the existing brain, and it must never silently become a second brain.
 
-A fresh Naya must be able to arrive with no prior conversation with Shawn, read the activation package, inspect the authoritative GitHub repository once through its legitimate connection, and reconstruct enough reality to work usefully without Shawn rebuilding the project context by hand.
+## The package
+KERNEL: WHO, WHAT, WHY, AUTHORITY — CONSTITUTION: CONSTITUTION, LAWS, GOVERNANCE —
+INTELLIGENCE: ARCHITECTURE, MEMORY, LEARNING, CONTINUITY, CVO — ENGINEERING: CODING,
+TESTING, SECURITY, VERIFICATION — DESIGN: UX, UI, VISUAL-LANGUAGE, DESIGN-SYSTEM —
+OPERATIONS: GIT, ISSUES, HANDOFFS, DEPLOYMENT — CURRENT-REALITY: SOURCE-PRECEDENCE,
+CURRENT-STATE, ACTIVE-WORK, PROOF, BLOCKERS, NEXT-ACTION — NAYA-ROLES: bounded
+specialist roles (Naya, Engineering, Design, Research, Architecture, QA, Product,
+Coda, Future Agents).
 
-## The experiment
+Entry map: 00-ACTIVATION-KIT-MAP-V1.md · Machine manifest:
+PORTABLE-ACTIVATION-MANIFEST-V1.json · Protocol:
+PORTABLE-ACTIVATION-PROTOCOL-V1.md · Front door for humans:
+00-MASTER-COLD-NAYA-ACTIVATION.md.
 
-**Input:** activation documents + legitimate GitHub/Codex access + the fresh Naya's normal capabilities.
+## The experiment (acceptance test)
+Input: activation documents + legitimate GitHub/Codex access + the fresh Naya's
+normal capabilities. No cheating: do not hand the fresh Naya the answers in
+conversation; do not paste hidden context; do not silently substitute prior
+conversation history. Output: the fresh Naya independently answers the cold-start
+questionnaire (who is Shawn, what is Naya/NayaPOWER/NayaNET, what is proven vs
+proposed, what is the current state, what are the governing laws, what is the
+single next action, what evidence would prove it, could another cold Naya continue)
+and identifies exactly one next executable action.
 
-**No cheating:** do not hand the fresh Naya the answers in conversation; do not paste hidden context; do not silently substitute prior conversation history.
-
-**Output:** the fresh Naya answers the cold-start questionnaire independently and identifies exactly one next executable action.
-
-## Cold-start questions
-
-1. Who is Shawn?
-2. What is Shawn's role and authority?
-3. What is Naya?
-4. What is NayaPOWER?
-5. What is NayaNET?
-6. What are we building?
-7. Why are we building it?
-8. How do Shawn and Naya work together?
-9. What is Codex allowed to do, and what is its role relative to Naya and Shawn?
-10. What does GitHub provide in the operating model?
-11. What is the Hub, and what is it not?
-12. What is the intelligence river?
-13. What has actually been proven versus merely proposed?
-14. What is the current project state?
-15. What are the governing laws/invariants?
-16. What must a Naya never assume?
-17. What is the current highest-value problem?
-18. What is the single next executable action?
-19. What evidence would prove that action succeeded?
-20. Could another cold Naya continue from the resulting state?
-
-## Capability questions
-
-The fresh Naya must independently investigate and report:
-
-- What does the connected Codex/GitHub workflow enable that the previous Free/no-Codex workflow could not do, or could not do as effectively?
-- What will Shawn actually experience differently between Free and Plus in this workflow?
-- Which differences are documented platform capabilities, which are observed workflow effects, and which remain hypotheses requiring testing?
-- Which work should Naya direct/review versus delegate to Codex?
-- Does tool capability change authority? **No. Capability does not create authority.**
+## Reconciliation requirement
+The kit does not replace the existing brain. Cold boot must reconcile it with the
+live graph, knowledge corpus, contract registry and project-intelligence. Read
+CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md first: it
+classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN.
+Current canonical contracts, current main, current work and claim-matched evidence
+outrank stale activation text and dated snapshots.
 
 ## Evidence standard
+The test is not passed because the fresh Naya sounds convincing. It passes only
+when reconstruction agrees with canonical repository evidence and uncertainty is
+identified correctly. UNKNOWN ≠ VERIFIED/PASS · BLOCKED ≠ PASS ·
+IMPLEMENTED ≠ VERIFIED · VERIFIED ≠ PRODUCTION-PROVEN.
 
-The test is not passed because the fresh Naya sounds convincing. It passes only when its reconstruction agrees with canonical repository evidence and it can identify uncertainty correctly.
-
-**UNKNOWN ≠ VERIFIED/PASS**  
-**BLOCKED ≠ PASS**  
-**IMPLEMENTED ≠ VERIFIED**  
-**VERIFIED ≠ PRODUCTION_PROVEN**
-
-## Canonical activation sequence
-
-01. Shawn — The Human Director
-02. Naya ↔ Shawn — The Working Relationship
-03. NayaPOWER Constitution
-04. NayaNET — Philosophy & Vision
-05. NayaPOWER — Architecture
-06. The Intelligence River
-07. Current Project State
-08. Naya Operating Manual
-09. The Human Naya Experience
-10. Cold Naya Activation & Continuity Test
+## Capability boundary
+GitHub is the preferred portable persistence surface. Basic activation does not
+require Supabase or a repeated personal runtime token. The package does not itself
+grant permission. Capability does not create authority.
 
 ## Core principle
-
-> We are not creating another component. We are moving verified intelligence one step farther through the river, leaving evidence of exactly what was done, and handing the next Naya a state she can trust.
+> We are not creating another component. We are moving verified intelligence one
+> step farther through the river, leaving evidence of exactly what was done, and
+> handing the next Naya a state she can trust.
