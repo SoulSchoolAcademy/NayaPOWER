@@ -97,11 +97,16 @@ jobs:
           PY
 
       - name: Resolve current truth
+        shell: bash
         run: |
+          set +e
           python tools/current_truth_resolver.py             --live-evidence current-truth-live-evidence.json             --output current-truth-resolution.json             --fail-on-conflict
+          status=$?
           cat current-truth-resolution.json
+          exit "$status"
 
       - name: Upload resolution evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: current-truth-resolution

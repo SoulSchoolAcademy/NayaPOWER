@@ -8,7 +8,7 @@ def _live(main, *, issues=None, proof=None, runtime=None):
     return {
         "main_head": main,
         "production_branch_head": "prod-sha",
-        "issue_states": issues or {"978": "OPEN", "975": "OPEN", "810": "OPEN"},
+        "issue_states": issues or {"66": "OPEN", "978": "CLOSED", "975": "CLOSED", "810": "CLOSED"},
         "latest_successful_runtime_proof": proof,
         "live_runtime_source": runtime,
     }
@@ -36,7 +36,7 @@ def test_resolver_reports_current_main_not_latest_proven_source(monkeypatch):
 def test_resolver_fails_closed_when_active_issue_is_closed():
     main = "a" * 40
     result = ctr.resolve(
-        _live(main, issues={"978": "CLOSED"}, proof={"head_sha": main}, runtime=main),
+        _live(main, issues={"66": "CLOSED"}, proof={"head_sha": main}, runtime=main),
         repo_head=main,
     )
     assert result["status"] == "CONFLICT"
@@ -79,3 +79,18 @@ def test_workflow_collects_live_github_state_and_uploads_resolution():
     assert '"gh", "run", "list"' in wf
     assert "current-truth-resolution.json" in wf
     assert "--fail-on-conflict" in wf
+    assert "set +e" in wf
+    assert 'status=$?' in wf
+    assert 'exit "$status"' in wf
+    assert "if: always()" in wf
+
+
+def test_control_plane_points_to_open_current_truth_frontier():
+    root = Path(__file__).resolve().parents[1]
+    brain = json.loads((root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").read_text())
+    ops = json.loads((root / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json").read_text())
+    assert brain["operations"]["active_issue"] == 66
+    assert ops["current_state"]["issue_978"].startswith("CLOSED")
+    assert ops["current_state"]["issue_975"].startswith("CLOSED")
+    assert ops["current_state"]["issue_810"].startswith("CLOSED")
+    assert ops["top_10"][0]["id"] == "#66"
