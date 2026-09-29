@@ -162,8 +162,8 @@
     "SUCCESSOR"
   ],
   "source_corpus": {
-    "concepts": 15,
-    "concepts_note": "Updated from 13 to 15 to reflect full corpus reconciliation",
+    "concepts": 17,
+    "concepts_note": "17 numbered concepts are indexed; #16 and #17 remain source analysis/blueprint until selectively promoted through the canonical intelligence lifecycle.",
     "duplicate_pairs": [
       [
         "#7",
@@ -182,17 +182,32 @@
   "inventory_file_count": 77,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
-    "runtime_convergence": "NOT_PROVEN_ON_MAIN",
-    "application_entrypoint": "UNRESOLVED — MUST BE IDENTIFIED FROM CANONICAL RUNTIME SOURCE; DO NOT GUESS",
+    "runtime_convergence": "BOUNDED_PRODUCTION_PROOF_EXISTS; UNIVERSAL_RUNTIME_BINDING_NOT_PROVEN",
+    "application_entrypoint": "NO_SINGLE_UNIVERSAL_ENTRYPOINT_PROVEN; bounded #913 river used the existing production proof workflow and edge-function runtime.",
     "competing_store_policy": "LOCAL_SQLITE_OR_IN_MEMORY_IS_TEST_INFRASTRUCTURE_ONLY"
   },
   "proof_boundary": {
     "canonical_persistence_restored": true,
-    "cold_intelligent_block_retrieval": "EXERCISED",
-    "authority_separation": "EXERCISED",
-    "independent_outcome_specimen": "EXERCISED",
-    "living_application_runtime": "NOT_PROVEN",
-    "successor_behavioral_improvement": "NOT_PROVEN",
-    "production_proof": "NOT_PROVEN"
+    "cold_intelligent_block_retrieval": "PROVEN_BOUNDED_SPECIMEN",
+    "authority_separation": "PROVEN_BOUNDED_SPECIMEN",
+    "independent_outcome_specimen": "PROVEN_BOUNDED_SPECIMEN",
+    "living_application_runtime": "BOUNDED_PROVEN_AT_EXACT_REVISION; UNIVERSAL_BINDING_NOT_PROVEN",
+    "successor_behavioral_improvement": "PROVEN_BOUNDED_SINGLE_TASK",
+    "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
+    "bounded_production_proof": {
+      "issue": 913,
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "scope": "Node 0001 bounded intelligence-river specimen",
+      "limitation": "Does not establish universal causal effect, universal runtime binding, or production proof for later main revisions."
+    }
+  },
+  "last_reconciled_date": "2026-09-29",
+  "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
+  "operations": {
+    "human_queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
+    "machine_plan": "BRAIN/90-OPERATIONS/0003-MASTER-EXECUTION-PLAN-V1.json",
+    "synthesis_source": "KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md",
+    "active_priority_issue": 944,
+    "rule": "Re-read live main/open work/runtime evidence before trusting dated operational projections."
   }
 }
