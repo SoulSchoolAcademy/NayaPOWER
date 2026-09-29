@@ -69,6 +69,7 @@ Deno.serve(async (req: Request) => {
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.CANDIDATE&select=id,target_id,level,status,claim,source_event_id,observed_value,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "FRESH_LEARNING_CANDIDATE_NOT_FOUND" }, 409);
       const learning = learningRows[0];
+      if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
       const sourceBlockId = String(learningObserved.intelligent_block_id || "");
       if (!sourceBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
@@ -307,11 +308,17 @@ Deno.serve(async (req: Request) => {
 
       // 2. Re-read the canonical Intelligent Block (already resolved owner-scoped above).
       // 3. Re-read the durable graph relationships that connect intelligence to that block.
-      const rels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance");
+      const successorBlockId = String(learningObserved.intelligent_block_id || "");
+      if (!successorBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
+      const successorBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(successorBlockId) + "&owner_id=" + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content,evidence_refs,provenance");
+      if (!Array.isArray(successorBlockRows) || successorBlockRows.length !== 1) return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_UNIQUE" }, 409);
+      const successorBlock = successorBlockRows[0];
+      if (successorBlock.understanding_state !== "LEARNED") return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_LEARNED", state: successorBlock.understanding_state }, 409);
+      const rels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(successorBlockId) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance");
       const verifiedRels = rels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
 
       // 4. MATERIAL USE. Behaviour is derived from the RETRIEVED lesson, not from caller input.
-      const lesson = block.content?.lesson;
+      const lesson = successorBlock.content?.lesson;
       if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
       const behavior = lesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
       const learningSupportsLesson = typeof learning.claim === "string" && lesson.includes(String(learning.claim).slice(0, 24));
@@ -348,9 +355,9 @@ Deno.serve(async (req: Request) => {
           learning_verification_method: learning.verification_method,
           learning_claim: learning.claim,
           prior_behavioral_delta_present: learningObserved.behavioral_change === true,
-          intelligent_block_id: block.intelligent_block_id,
-          block_understanding_state: block.understanding_state,
-          block_owner_match: block.owner_id === OWNER_ID,
+          intelligent_block_id: successorBlock.intelligent_block_id,
+          block_understanding_state: successorBlock.understanding_state,
+          block_owner_match: successorBlock.owner_id === OWNER_ID,
           retrieved_lesson: lesson,
           verified_relationships: verifiedRels.map((r: any) => ({ relationship_id: r.relationship_id, source_id: r.source_id, relationship_type: r.relationship_type, epistemic_state: r.epistemic_state, provenance: r.provenance })),
           verified_relationship_count: verifiedRels.length,
@@ -390,10 +397,17 @@ Deno.serve(async (req: Request) => {
       const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
       if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const l = lRows[0];
+      if (l.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: l.status }, 409);
       const lObs = (l.observed_value && typeof l.observed_value === "object" && !Array.isArray(l.observed_value)) ? l.observed_value : {};
-      const vRels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,epistemic_state,provenance");
+      const vBlockId = String(lObs.intelligent_block_id || "");
+      if (!vBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
+      const vBlockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=" + encodeURIComponent(vBlockId) + "&owner_id=" + OWNER_ID + "&select=intelligent_block_id,owner_id,understanding_state,content");
+      if (!Array.isArray(vBlockRows) || vBlockRows.length !== 1) return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_UNIQUE" }, 409);
+      const vBlock = vBlockRows[0];
+      if (vBlock.understanding_state !== "LEARNED") return json({ error: "LEARNING_INTELLIGENT_BLOCK_NOT_LEARNED", state: vBlock.understanding_state }, 409);
+      const vRels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(vBlockId) + "&select=relationship_id,epistemic_state,provenance");
       const vVerified = vRels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
-      const vLesson = block.content?.lesson;
+      const vLesson = vBlock.content?.lesson;
       const vBehavior = typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
       // Recompute the authority verdict independently from the grant table.
       const vSuccGrants = grantRows.filter((g: any) => g.scope?.target === successorId);
