@@ -370,7 +370,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
           python - <<'PY'
           import json
           r=json.load(open("graph-control.json"))
@@ -382,7 +382,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
           python - <<'PY'
           import json
           r=json.load(open("graph-treatment.json"))
