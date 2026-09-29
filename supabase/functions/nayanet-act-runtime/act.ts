@@ -91,13 +91,21 @@ export function validateAct(
   if (door.authority_action !== req.action) return blocked(req,"DOOR_AUTHORITY_BROADER_THAN_LAW",lawId);
   if (door.target !== req.target) return blocked(req,"DOOR_TARGET_MISMATCH",lawId);
 
-  const evaluatedAt = decision.evaluated_at ? new Date(decision.evaluated_at) : null;
-  if (door.max_law_age_seconds && evaluatedAt) {
-    const age=(now.getTime()-evaluatedAt.getTime())/1000;
+  const nowMs = now.getTime();
+  const evaluatedMs = typeof decision.evaluated_at === "string" && decision.evaluated_at.trim()
+    ? Date.parse(decision.evaluated_at) : NaN;
+  if (!Number.isFinite(nowMs) || !Number.isFinite(evaluatedMs) || evaluatedMs > nowMs) {
+    return blocked(req,"LAW_RECEIPT_TIME_INVALID",lawId);
+  }
+  if (door.max_law_age_seconds) {
+    const age=(nowMs-evaluatedMs)/1000;
     if (age > door.max_law_age_seconds) return blocked(req,"LAW_RECEIPT_STALE",lawId);
   }
-  if (decision.expires_at && new Date(decision.expires_at).getTime() <= now.getTime()) {
-    return blocked(req,"LAW_AUTHORITY_EXPIRED",lawId);
+  if (decision.expires_at != null) {
+    const expiryMs = typeof decision.expires_at === "string" && decision.expires_at.trim()
+      ? Date.parse(decision.expires_at) : NaN;
+    if (!Number.isFinite(expiryMs)) return blocked(req,"LAW_AUTHORITY_TIME_INVALID",lawId);
+    if (expiryMs <= nowMs) return blocked(req,"LAW_AUTHORITY_EXPIRED",lawId);
   }
 
   const refs=Array.isArray(decision.authority_refs)?decision.authority_refs:[];
@@ -106,7 +114,12 @@ export function validateAct(
   if (!liveGrant || liveGrant.grant_id !== grantId) return blocked(req,"LIVE_AUTHORITY_NOT_FOUND",lawId,grantId);
   if (liveGrant.issuer_id !== req.owner_id || liveGrant.subject_id !== req.owner_id) return blocked(req,"LIVE_AUTHORITY_OWNER_MISMATCH",lawId,grantId);
   if (liveGrant.status !== "ACTIVE" || liveGrant.revoked_at) return blocked(req,"LIVE_AUTHORITY_NOT_ACTIVE",lawId,grantId);
-  if (liveGrant.expires_at && new Date(liveGrant.expires_at).getTime() <= now.getTime()) return blocked(req,"LIVE_AUTHORITY_EXPIRED",lawId,grantId);
+  if (liveGrant.expires_at != null) {
+    const expiryMs = typeof liveGrant.expires_at === "string" && liveGrant.expires_at.trim()
+      ? Date.parse(liveGrant.expires_at) : NaN;
+    if (!Number.isFinite(expiryMs)) return blocked(req,"LIVE_AUTHORITY_TIME_INVALID",lawId,grantId);
+    if (expiryMs <= nowMs) return blocked(req,"LIVE_AUTHORITY_EXPIRED",lawId,grantId);
+  }
   if (!Array.isArray(liveGrant.actions) || !liveGrant.actions.includes(req.action)) return blocked(req,"LIVE_AUTHORITY_ACTION_MISMATCH",lawId,grantId);
   if ((liveGrant.scope as any)?.target !== req.target) return blocked(req,"LIVE_AUTHORITY_TARGET_MISMATCH",lawId,grantId);
 

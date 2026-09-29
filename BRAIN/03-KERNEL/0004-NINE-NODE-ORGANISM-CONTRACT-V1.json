@@ -337,7 +337,7 @@
       ],
       "handoff_to": "NAYA-KERNEL-KNOW",
       "cold_successor_obligation": "Restore ACT context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
-      "success_criteria": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision. Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction is separate draft PR #1003, not deployed. Replay, mission/constraints, interrupted effects and universal conformance remain obligations.",
+      "success_criteria": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision. Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction #1003 is present in assessed main; corrected deployment/runtime proof not established here. Replay, mission/constraints, interrupted effects and universal conformance remain obligations.",
       "source_binding": {
         "contract_refs": [
           "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md",
@@ -364,7 +364,7 @@
         "transition_contract": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision.",
         "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
         "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
-        "gap": "Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction is separate draft PR #1003, not deployed. Replay, mission/constraints, interrupted effects and universal conformance remain obligations."
+        "gap": "Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction #1003 is present in assessed main; corrected deployment/runtime proof not established here. Replay, mission/constraints, interrupted effects and universal conformance remain obligations."
       }
     },
     "KNOW": {
@@ -397,7 +397,8 @@
         "nayanet_intelligent_blocks",
         "nayanet_cognition_events",
         "nayanet_intelligence_index",
-        "nayanet_project_cognition_state"
+        "nayanet_project_cognition_state",
+        "nayanet_authority_grants"
       ],
       "state_writes": [
         "nayanet_cognition_events",
@@ -448,7 +449,7 @@
       ],
       "handoff_to": "NAYA-KERNEL-PROVE",
       "cold_successor_obligation": "Restore KNOW context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
-      "success_criteria": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse. Bounded contextual KNOW source merged at assessed main; live verdict not established by this assessment. Guard probe accepts malformed evaluation time and empty authority refs; fresh live grant revocation is not reread. These access-boundary gaps require failure-first handler proof. Arbitrary-IB Hub projection remains NOT_PROVEN.",
+      "success_criteria": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse. Current main rereads live grants and rejects malformed times/empty refs. Remaining guard probe accepts absent/future evaluation time with matching active grant; actual-handler negative proof needed. Bounded source is not live verdict; arbitrary-IB Hub remains NOT_PROVEN.",
       "source_binding": {
         "contract_refs": [
           "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
@@ -475,7 +476,7 @@
         "transition_contract": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse.",
         "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
         "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
-        "gap": "Bounded contextual KNOW source merged at assessed main; live verdict not established by this assessment. Guard probe accepts malformed evaluation time and empty authority refs; fresh live grant revocation is not reread. These access-boundary gaps require failure-first handler proof. Arbitrary-IB Hub projection remains NOT_PROVEN."
+        "gap": "Current main rereads live grants and rejects malformed times/empty refs. Remaining guard probe accepts absent/future evaluation time with matching active grant; actual-handler negative proof needed. Bounded source is not live verdict; arbitrary-IB Hub remains NOT_PROVEN."
       }
     },
     "PROVE": {
@@ -995,7 +996,7 @@
   ],
   "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence.",
   "source_assessment": {
-    "base_main": "20d76c456110a0ed7560aef7b17399aa49db59e4",
+    "base_main": "51bf655e69412a674cd211c870c92ef152a9ca83",
     "classification": "SOURCE_MAP_NOT_RUNTIME_AUTHORITY",
     "law_live_run_observed": 36620337089,
     "law_live_jobs": "both completed/success via GitHub job reread",

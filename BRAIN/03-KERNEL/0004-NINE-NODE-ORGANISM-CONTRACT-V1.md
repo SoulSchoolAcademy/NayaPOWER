@@ -57,7 +57,7 @@ As of this contract, universal nine-node production binding remains **NOT_PROVEN
 
 ## Source-mapped executable responsibilities
 
-Assessment base: `20d76c456110a0ed7560aef7b17399aa49db59e4`. Historical results below retain their own revisions.
+Assessment base: `51bf655e69412a674cd211c870c92ef152a9ca83`. Historical results below retain their own revisions.
 The companion JSON is a machine-readable projection of this contract, not another authority or proof ledger.
 Each Node now maps contracts, semantic schema, runtime source, tests, workflow, reads/writes, transition, graph seed IDs, and remaining gap.
 The semantic schemas describe target outputs; their presence does not establish runtime conformance. LAW's three runtime statuses require an explicit adapter to the older semantic status vocabulary. This change documents that seam without silently changing either interface.
@@ -66,8 +66,8 @@ The semantic schemas describe target outputs; their presence does not establish 
 |---|---|---|
 | SELF | cold-runtime owner/Naya/OIDC binding; reference SELF/manifest boot | universal runtime convergence; local continuity files cannot become canonical memory |
 | LAW | law-runtime evaluate/receipt/recompute; executor and SQL grant gates | wrong-target/absent-project bypass repaired here; corrected deployed negative proof pending; broader request/mission/constraint validation remains open |
-| ACT | nayanet-act-runtime LAW/live-grant guard -> bounded DOOR-AI -> observed receipt; existing executor/commit paths | bounded live proof recorded; #1003 freshness correction pending; general Door, replay, mission and interrupted-effect proof |
-| KNOW | canonical capture/reread plus nayanet-know-runtime contextual selection and independent inspect | bounded source exists; live verdict not rechecked; malformed-time/empty-ref guard and revocation access proof; arbitrary IB -> dynamic Hub |
+| ACT | nayanet-act-runtime LAW/live-grant guard -> bounded DOOR-AI -> observed receipt; existing executor/commit paths | bounded live proof recorded; #1003 freshness source merged; corrected live proof pending; general Door, replay, mission and interrupted-effect proof |
+| KNOW | canonical capture/reread plus nayanet-know-runtime contextual selection and independent inspect | bounded source exists; live verdict not rechecked; absent/future evaluation-time guard proof; live-grant validation source now present; arbitrary IB -> dynamic Hub |
 | PROVE | independent commit lineage reread; causal evidence reconstruction | schema conformance; immutable checkpoint access security (#978) |
 | CONNECT | owner-scoped connect/graph-behavior/graph-verify | broader applicability, conflicts/supersession and cross-owner negative proof |
 | VERIFY | independent causal/outcome/generalization/successor recomputation | #975 exact outcome recovery; #810 live current-source acceptance |
@@ -90,7 +90,7 @@ Graph seed relationship IDs denote architectural relationships, not evidence tha
 It never executes the requested action. `ok=true` means evaluation completed, not permission; ACT must require `decision.status=AUTHORIZED`.
 `nayanet-verified-ai-action/index.ts` separately resolves an exact grant before effect and persists refusal with no execution outcome on denial.
 `nayanet-intelligence-commit-runtime/index.ts` calls the existing runtime SQL bridge; the commit RPC validates authority and writes the canonical intelligence chain transactionally.
-ACT now consumes persisted LAW decision receipts and rereads live grants for one bounded Door operation. KNOW consumes a LAW receipt before candidate access, but its current validator does not reread revoked live authority. No universal LAW consumer qualification is established.
+ACT now consumes persisted LAW decision receipts and rereads live grants for one bounded Door operation. KNOW now consumes a LAW receipt and rereads live grants before candidate access; absent/future evaluation-time validation remains incomplete. No universal LAW consumer qualification is established.
 
 ### Evidence and limits
 
@@ -118,7 +118,9 @@ Mission/constraints and same-note directive provenance remain open obligations. 
 ### Cold-successor torch
 
 Recheck current main, #1000/#1003, #810/#975/#978/#980 and deployed LAW/ACT/KNOW revisions.
-The exact next authorized action is to add a failure-first test of the actual KNOW retrieve/inspect handler proving malformed receipt freshness and revoked live grant refuse before private candidate reads. Bind to the existing authority ledger; do not invent a policy engine, grant, graph or receipt store. Preserve caller-context selection and OIDC. Review source overlap before correction; stop on unresolved authority/source conflict.
+Concurrent main update `51bf655e69412a674cd211c870c92ef152a9ca83` supersedes the preceding malformed-time/empty-ref/missing-reread findings: KNOW now rejects malformed times and empty refs and rereads live grants. The new guard probe returns ok=true for absent and future evaluation time with otherwise valid matching receipt/grant; both cases were observed and the refusal probe exited 1. #1003 ACT freshness source is now present in main, with no corrected live verdict inferred.
+
+The exact next authorized action is to add a failure-first test of the actual KNOW retrieve/inspect handler proving absent/future evaluation time refuses before private candidate reads, preserving the current revocation validation. Bind to the existing authority ledger; do not invent a policy engine, grant, graph or receipt store. Preserve caller-context selection and OIDC. Review source overlap before correction; stop on unresolved authority/source conflict.
 Production exercise still requires its applicable explicit authorization. This source change did not deploy, mutate policy or create production receipts.
 
 ### Verification receipt for this source change
@@ -137,3 +139,5 @@ Collective-chain controls: 10/10; readiness: 2/11, equal to the recorded floor; 
 Migration controls: 7/7 detector and 7/7 baseline controls; measured static findings: 0; no new debt. No empty-database rebuild was performed.
 All source-map paths and graph relationship IDs resolve; diff whitespace check passes.
 The repaired LAW source was not deployed or exercised against production. #810/#975/#978 remain open; no policy acceptance or DEPLOY is inferred.
+
+Final source reconciliation: main `51bf655e69412a674cd211c870c92ef152a9ca83`; 85 Node tests passed, 250 Python passed / 3 skipped, whitespace checks passed. Earlier counts/probes retain their historical source attribution. Latest next rung is absent/future KNOW evaluation time, not the superseded missing live-grant reread.
