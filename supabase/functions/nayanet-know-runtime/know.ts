@@ -3,6 +3,7 @@ export type KnowRequest = {
   naya_id: string;
   target: string;
   task_context: string;
+  law_receipt_id?: string;
   intelligent_block_id?: string;
   block_id?: string;
   lesson?: string;

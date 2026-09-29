@@ -88,6 +88,7 @@ function sanitizeRequest(body:Record<string,unknown>):KnowRequest{
     naya_id:NAYA_ID,
     target:String(body.target??NAYA_ID),
     task_context:String(body.task_context??""),
+    law_receipt_id:body.law_receipt_id===undefined?undefined:String(body.law_receipt_id),
     intelligent_block_id:body.intelligent_block_id===undefined?undefined:String(body.intelligent_block_id),
     block_id:body.block_id===undefined?undefined:String(body.block_id),
     lesson:body.lesson===undefined?undefined:String(body.lesson),
@@ -139,7 +140,8 @@ Deno.serve(async(req)=>{
         evidence:{
           schema:"naya.know.receipt.v1",
           node_id:"NAYA-KERNEL-KNOW",
-          request:{target:request.target,task_context:request.task_context,law_receipt_id:request.law_receipt_id??null},\n          authorization,
+          request:{target:request.target,task_context:request.task_context,law_receipt_id:request.law_receipt_id??null},
+          authorization,
           candidate_count:candidates.length,
           decision:{
             status:decision.status,
