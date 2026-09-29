@@ -13,6 +13,7 @@ const block=(overrides={})=>({
   status:"ACTIVE",
   understanding_state:"LEARNED",
   applicable_scope:{target:NAYA,capabilities:["provenance_preservation"]},
+  content:{lesson:"Preserve provenance before applying retained intelligence; retrieval never grants authority."},
   provenance:{source_event_id:"event-1",method:"canonical"},
   evidence_refs:[{id:"ev-1",source:"execution_receipt"}],
   superseded_by_block_id:null,
@@ -76,6 +77,12 @@ test("PROVE fails closed if current authority is revoked or expired",()=>{
 test("PROVE rejects stale or future KNOW evidence",()=>{
   assert.equal(assessKnowProof(OWNER,NAYA,knowReceipt({created_at:"2026-09-29T20:00:00Z"}),block(),grant(),[],NOW).failure_reason,"KNOW_RECEIPT_STALE");
   assert.equal(assessKnowProof(OWNER,NAYA,knowReceipt({created_at:"2026-09-29T20:31:00Z"}),block(),grant(),[],NOW).failure_reason,"KNOW_RECEIPT_TIME_INVALID");
+});
+
+test("PROVE independently recomputes canonical applicability instead of trusting KNOW",()=>{
+  const a=assessKnowProof(OWNER,NAYA,knowReceipt(),block({applicable_scope:{target:NAYA},content:{lesson:"Arithmetic only"}}),grant(),[],NOW);
+  assert.equal(a.failure_reason,"CANONICAL_BLOCK_CAPABILITY_MISMATCH");
+  assert.equal(a.handoff_to,null);
 });
 
 test("PROVE refuses missing or mismatched canonical evidence",()=>{
