@@ -18,13 +18,16 @@ PATTERN = re.compile(r"^(\d{14})_(.+)\.sql$")
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    text = path.read_text(encoding="utf-8")
+    canonical = text.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def test_active_migration_directory_matches_governed_ledger_manifest():
     ledger = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assert ledger["schema"] == "naya.supabase.production-migration-ledger.v1"
     assert ledger["source_project_ref"] == "dahisasgpfvziswqvmvm"
+    assert ledger["hash_semantics"] == "UTF8_TEXT_LF_NORMALIZED_SHA256"
     applied = ledger["production_applied"]
     pending = ledger["pending"]
     assert ledger["production_applied_count"] == len(applied) == 143

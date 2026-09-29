@@ -1301,572 +1301,573 @@
     {
       "original_path": "supabase/migrations/20260906081244_complete_smart_note_canonical_pipeline.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260906081244_complete_smart_note_canonical_pipeline.sql",
-      "sha256": "7c900f1afcf8ccf736beafd8f88a8c743423ff2383add6885be43140b62ce4b1",
+      "sha256": "baa43f39aab23ecdfc3e2f1527f78932fcf7f27d01bb1e0b4d042644e49ccda9",
       "bytes": 5094
     },
     {
       "original_path": "supabase/migrations/20260909222309_fix_cognition_state_status_contract.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260909222309_fix_cognition_state_status_contract.sql",
-      "sha256": "1938428563fa20e2ae1e65be6dd8410d3083965d150f5b179200cfe68ec6f4bf",
+      "sha256": "3261d22dda9e463cd2c62f5e3eaf2cd49bbf8943129bbf315cbabf9f08c09e91",
       "bytes": 3515
     },
     {
       "original_path": "supabase/migrations/20260909222325_fix_cognition_receipt_status_contract.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260909222325_fix_cognition_receipt_status_contract.sql",
-      "sha256": "a66430dbe1d0bddc05913d4d78282605708e40187bf5de71b8e1e7a86aa9e51c",
+      "sha256": "22551651c75e7ca086c70e7f80948087f0bb810534b9d25fbde2f603d27d2930",
       "bytes": 3831
     },
     {
       "original_path": "supabase/migrations/20260918150000_create_naya_dream_replays.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918150000_create_naya_dream_replays.sql",
-      "sha256": "331e4cfb5965229338ba316824862d6bff33fc48a7ec88323302f4fca9283539",
+      "sha256": "2b269c4af56c65ea228907b61588d368d18bb38f34cd924db919203ce6453121",
       "bytes": 1360
     },
     {
       "original_path": "supabase/migrations/20260918170000_authority_grant_runtime_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918170000_authority_grant_runtime_v1.sql",
-      "sha256": "a5f8020fcaf0f7da3d5643ac83ef64d12b363fd67a47dd09e248f887bdaf5803",
+      "sha256": "ee17f38a72127a14cde577be665a86f7933764394280c78553c8d2cfb807c6cf",
       "bytes": 10037
     },
     {
       "original_path": "supabase/migrations/20260918172000_lock_authority_grant_mutation_to_transactions.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918172000_lock_authority_grant_mutation_to_transactions.sql",
-      "sha256": "8c18e39facfa7706964efb3f5056018771dac7804e988674693757b7bc31d9c0",
+      "sha256": "8060d82d60440ed440f8078166d46d029f540966076703c3d7734c2da2aa060e",
       "bytes": 3375
     },
     {
       "original_path": "supabase/migrations/20260918180000_wire_authority_grant_into_commit_cognition.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918180000_wire_authority_grant_into_commit_cognition.sql",
-      "sha256": "419dcd7054592e21bc8d72c8a226056cf0763dd010a28f3d032eef294a8a36b8",
+      "sha256": "2c1f6bba12acfaf3eb1c5aac66b2100e109434594eacbd0995382fb7732d1bb5",
       "bytes": 6156
     },
     {
       "original_path": "supabase/migrations/20260918180500_harden_authority_validator_row_lock.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918180500_harden_authority_validator_row_lock.sql",
-      "sha256": "74b9c9c5cecc37e85432fb2eae02820882d1a007c4f0c75e56364f1439c021b5",
+      "sha256": "063704f2688dd831dd25081584ad3b301fbb65d51b9a3d5deb051675b30a26f9",
       "bytes": 2908
     },
     {
       "original_path": "supabase/migrations/20260918210000_p0_independent_real_outcome_value_contract_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918210000_p0_independent_real_outcome_value_contract_v1.sql",
-      "sha256": "ec7b031961594e8ed5c6ba49c4f30d2ec176c65024020f7c7639e2af3ca36377",
+      "sha256": "b7f5b8baf64c98513a63956e3f6efbc9f76e9eb64763847913d48d0b93469082",
       "bytes": 5406
     },
     {
       "original_path": "supabase/migrations/20260918211000_p0_bind_policy_comparison_to_independent_outcomes_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918211000_p0_bind_policy_comparison_to_independent_outcomes_v1.sql",
-      "sha256": "a8c7e315bc9a120eb652a57d5980ddcc0397d46335ba47f7167d23fdc2c68638",
+      "sha256": "6d76c7e62f99f97c3c89d8fc2cb0fc1487332fabe7a36114cedcefb0e6ec6a89",
       "bytes": 4680
     },
     {
       "original_path": "supabase/migrations/20260918223000_p0_smart_mail_vertical.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918223000_p0_smart_mail_vertical.sql",
-      "sha256": "24afc89ed8a2cf2c799567640b6be0d0a3730123f79c63970c853890b7b13bca",
+      "sha256": "dce72de862c602286feb28d6f0adec8234d75c301001aa9fa09fcacdd0a4f32d",
       "bytes": 1579
     },
     {
       "original_path": "supabase/migrations/20260918225000_p0_smart_mail_atomic_transaction.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918225000_p0_smart_mail_atomic_transaction.sql",
-      "sha256": "91f8b0e338c4b8d285e77eebd5b15357892a5797cbbc1a5e974a97250317a720",
+      "sha256": "3bf87f90fe18c098a00970c87229d28b32ec3d373612208c38f96cbfd0086eec",
       "bytes": 6044
     },
     {
       "original_path": "supabase/migrations/20260918230000_p0_responsible_value_contract.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260918230000_p0_responsible_value_contract.sql",
-      "sha256": "8ceeb10361bd0297f9316e59da3d5280d91dcab578dc969182388818f56ca51a",
+      "sha256": "d795b6c6e49820cb800391072983480fa45c251afa678551f25721ee3a0c59b5",
       "bytes": 5724
     },
     {
       "original_path": "supabase/migrations/20260919000000_p1_policy_holdout_governance.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919000000_p1_policy_holdout_governance.sql",
-      "sha256": "d11fa772f9edf689d8a967001b999795a0ad99a9c00a2764fcda71986121966f",
+      "sha256": "1fda8f52745d8fb7df3def270c5227bf3e145d5eaed43f10e46f8f78be9543ec",
       "bytes": 4617
     },
     {
       "original_path": "supabase/migrations/20260919000001_p1_policy_transition_runtime_fix.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919000001_p1_policy_transition_runtime_fix.sql",
-      "sha256": "051f8b0d5c958c875d6a51b31804785b04dd6ada677e4f127952d1c2fd30070a",
+      "sha256": "1ff44f83f5f49afbf278d673d23ac9c5b23835b9d96f2465788b7ee6a3b78dfb",
       "bytes": 2117
     },
     {
       "original_path": "supabase/migrations/20260919000002_p1_real_policy_outcome_comparison.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919000002_p1_real_policy_outcome_comparison.sql",
-      "sha256": "389755a13a594ef1bb3cc04e9ed2677680f4ece6c2c006f595dd7ec3c392683f",
+      "sha256": "28835f2f442b509d6692f6278697c8b46da72aea227b81048231a900febfd18c",
       "bytes": 3021
     },
     {
       "original_path": "supabase/migrations/20260919000003_p1_fix_real_policy_value_formula.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919000003_p1_fix_real_policy_value_formula.sql",
-      "sha256": "2f74b1737e174db98e86e962c436b8ca30758b0a93d97013b1d8e8dfd1100def",
+      "sha256": "bb358d4224f7ba9407f94f929136821c995a0db36e4aff5e1a3b5f6bcd456f0f",
       "bytes": 3125
     },
     {
       "original_path": "supabase/migrations/20260919002100_harden_smart_mail_and_policy_comparison_identity.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919002100_harden_smart_mail_and_policy_comparison_identity.sql",
-      "sha256": "20061c26551ac1649ef1f9a3eb7f4f211fb5be1694d1f9cb710d7826358aee72",
+      "sha256": "f637dc7ea5ab59fa6c43b2cf3df5e65e47cd8c56b6678c2f8a3c9fbef05f42e0",
       "bytes": 9246
     },
     {
       "original_path": "supabase/migrations/20260919004000_p1_policy_execution_receipt_lineage.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919004000_p1_policy_execution_receipt_lineage.sql",
-      "sha256": "0b14ea5ddd6410e066ae9083f428f4bdd5ecd6f893e153e6cf701049ecb2112a",
+      "sha256": "6e137346ce577d9a9e14c87ab8b69893ff89c50e569f26f61dcfa932c39be4c5",
       "bytes": 9397
     },
     {
       "original_path": "supabase/migrations/20260919004100_p1_policy_comparison_lineage_enforcement.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919004100_p1_policy_comparison_lineage_enforcement.sql",
-      "sha256": "9703d3a8608c5165ccfcb0115250e883c1de9c306163902c8f48264565f888e0",
+      "sha256": "ab58b0b054dc319654e82df6f2043219eeb28eda41f6e9efbb44f76449a6a0c7",
       "bytes": 4980
     },
     {
       "original_path": "supabase/migrations/20260919004500_p1_receiver_response_outcome_v2.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919004500_p1_receiver_response_outcome_v2.sql",
-      "sha256": "0b6f8f03a05b63b54397059e65e38cd901d7e5a8613a3bfe70f1b188c50d1bfc",
+      "sha256": "3b896d3689da1f9ca0d15131d0845212e2a15d1030cd2b229fd8dfb09caf2692",
       "bytes": 4586
     },
     {
       "original_path": "supabase/migrations/20260919005000_harden_smart_mail_authority_constraints_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919005000_harden_smart_mail_authority_constraints_v1.sql",
-      "sha256": "1f490402773fffe5c01ebe6be5bf1b45628aac2522cf76731d7fd063fe017769",
+      "sha256": "8ea353b1242fdb558ce845e4670a7939e3a8dcd347c9e2d55249b0b671de4934",
       "bytes": 7835
     },
     {
       "original_path": "supabase/migrations/20260919021000_smart_ledger_foundation_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919021000_smart_ledger_foundation_v1.sql",
-      "sha256": "4e0012e58b1a8b5a171a72970889940b136573526979fdc1fa2d48322daa08bc",
+      "sha256": "b3150ac5ced1840a388720fe75ec0dd28b6e9e7475bdd980c0a9f8fcf4585d13",
       "bytes": 15951
     },
     {
       "original_path": "supabase/migrations/20260919021010_fix_smart_note_uuid_for_ledger_proof.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919021010_fix_smart_note_uuid_for_ledger_proof.sql",
-      "sha256": "e603d662c7e7f8b9fe8e870c2d7ecf96b27693826492cf2a3943299c48999b96",
+      "sha256": "6d86d761e32511027bbb6014f59631fe2da3931e777c654316a4b3670da53172",
       "bytes": 4045
     },
     {
       "original_path": "supabase/migrations/20260919023000_smart_note_cognition_bridge_and_index_trigger_cleanup.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919023000_smart_note_cognition_bridge_and_index_trigger_cleanup.sql",
-      "sha256": "ccd4bbeed8b63e2871454405b37b2ff49eeab4ea043c76c8d1462694acaa521d",
+      "sha256": "c6392d8391c7fdf50f199972457840e16712c6be487c4444f19370e54cd77cc6",
       "bytes": 2454
     },
     {
       "original_path": "supabase/migrations/20260919023100_index_cognition_event_projection.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919023100_index_cognition_event_projection.sql",
-      "sha256": "8000366b4ffad756738af0378fdbace5697f7cd443542a0ac925cc3722c6792d",
+      "sha256": "0d68fdea5cdf8387480307a165eec1daf2c84bf4c865c356ce0da478b0f5435b",
       "bytes": 438
     },
     {
       "original_path": "supabase/migrations/20260919160000_smart_feed_collective_publication_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919160000_smart_feed_collective_publication_v1.sql",
-      "sha256": "bb78da90e8535c82aa78b585756d65b384525ea8e6036388c91bd64f285ad5df",
+      "sha256": "c8044e04f3398d8c170a7c7c652ce154ab3b219eb487848ec4919b9219864eab",
       "bytes": 2610
     },
     {
       "original_path": "supabase/migrations/20260919170000_nayanet_space_membership_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919170000_nayanet_space_membership_v1.sql",
-      "sha256": "5bdfae0f79e5855cbaa9344800707d61d91dbdea77e61ba6d83cbabe3bb12593",
+      "sha256": "10c246d5ae8387f133d0cfeb231bc3b3d26b19b9c2912badccb110160c1fe672",
       "bytes": 8442
     },
     {
       "original_path": "supabase/migrations/20260919170500_nayanet_space_membership_provenance_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919170500_nayanet_space_membership_provenance_v1.sql",
-      "sha256": "a6f3b16ba1f49b8475b9ef29e46471a15ceeadf29340fa3b0807e413803975d8",
+      "sha256": "03a284f7a9042bcd25a29d51c238e712cc8d0d8b95033ce64dd3df245e6eb081",
       "bytes": 354
     },
     {
       "original_path": "supabase/migrations/20260919171000_nayanet_space_membership_provenance_runtime_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919171000_nayanet_space_membership_provenance_runtime_v1.sql",
-      "sha256": "13e3baf23d95dd9ce32aec1ab4c72af857e2b92f8e39fcf1af2f1ca258c2e36d",
+      "sha256": "a6f36f4171ecbb66e81ab2f94bbab193ada62ebd86d3ce70868d589f304c392b",
       "bytes": 3236
     },
     {
       "original_path": "supabase/migrations/20260919171500_nayanet_connections_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919171500_nayanet_connections_v1.sql",
-      "sha256": "8fa51992e9ae558c95b9c3a21705140d583a05d0c6f6cf9126b71444b33dab72",
+      "sha256": "8311072f11e095f6326e650981d3b15e95934f39214208c3e4b2af52eb52542e",
       "bytes": 6497
     },
     {
       "original_path": "supabase/migrations/20260919172000_smart_list_and_mail_relationship_gate_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919172000_smart_list_and_mail_relationship_gate_v1.sql",
-      "sha256": "53dc9c84facc55a4fb5f95abe2336e372d2170eb3204c49233a45bb65cc4d26c",
+      "sha256": "d3ffcabfdfa3e8b098204a7b7422d38a73f257b0ccf2b02793d4e5d2272dfab4",
       "bytes": 7916
     },
     {
       "original_path": "supabase/migrations/20260919172100_smart_list_add_function_fix_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919172100_smart_list_add_function_fix_v1.sql",
-      "sha256": "ac66a0ff07917d7d39065856e952429299a95257d9708eab113d19caeddb1019",
+      "sha256": "92d4c8b9101b6c2def7d95957714742da2840733bc0bd3a6953f1b296b0906f9",
       "bytes": 1436
     },
     {
       "original_path": "supabase/migrations/20260919172500_smart_list_event_lineage_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919172500_smart_list_event_lineage_v1.sql",
-      "sha256": "ec3199bc70586a363b6edf8f651142888440250bb067880bbf7bf20db881a6f5",
+      "sha256": "93664832f233bbfa09d76ff1871f7db1c152e04d165e72b176689487b3c77a55",
       "bytes": 4110
     },
     {
       "original_path": "supabase/migrations/20260919172900_fix_space_members_rls_recursion.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919172900_fix_space_members_rls_recursion.sql",
-      "sha256": "1e94c6068e2a2c9fbb26a9882b690c1988a821aaa3735cb3e8ae6f4015bbbe67",
+      "sha256": "67d576ba1fd332deb0b602a771787d5472a9c50ef5421bc46855cdf0b516a951",
       "bytes": 1216
     },
     {
       "original_path": "supabase/migrations/20260919174500_lock_space_membership_helper_execute.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919174500_lock_space_membership_helper_execute.sql",
-      "sha256": "2fbdf81721e8cfd7c78b635c06e70e908ab4194e5a2a93ce48dd443da4b4df17",
+      "sha256": "18ea122213cb1bd39f19e1ee9c9e3ef1e4eb67a23d4cf334dff0609a86ab4df7",
       "bytes": 254
     },
     {
       "original_path": "supabase/migrations/20260919180500_fix_receiver_outcome_owner_binding.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919180500_fix_receiver_outcome_owner_binding.sql",
-      "sha256": "f725b8270521ca64df4696a278d6ac0122927636172e2b7d378bbd73f42bd338",
+      "sha256": "092f3e067eb0795f9f87fa7f3725d57a523a134aa8a135e050acc793b1cafb36",
       "bytes": 3713
     },
     {
       "original_path": "supabase/migrations/20260919180500_fix_receiver_verified_outcome_ownership.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919180500_fix_receiver_verified_outcome_ownership.sql",
-      "sha256": "1ec5113986904b17f9ec4ee34258385525ac64fe785ed20789d48d8c494d20ea",
+      "sha256": "17bca73ed64da6844e38c306b4afd3747b0783b18cf6261e9bc1b6c97f0d8213",
       "bytes": 3766
     },
     {
       "original_path": "supabase/migrations/20260919181500_harden_authorized_mail_policy_lineage.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919181500_harden_authorized_mail_policy_lineage.sql",
-      "sha256": "34db0baa8281055ea168e04492a334f4dd793c158207e6446e6c7baab4d8de26",
+      "sha256": "213fc197e9ab718b7566e2a89a2114d74286b89da9ba41a57589807316dcd24d",
       "bytes": 4196
     },
     {
       "original_path": "supabase/migrations/20260919182500_unique_policy_smart_mail_rpc.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919182500_unique_policy_smart_mail_rpc.sql",
-      "sha256": "5c5f8d383858619c1a85a60d4c587e42764cda26c7f074a65828ed4ffccd9b86",
+      "sha256": "049614debdb4c4f9be4073812b289558fcec7cb2ac3fc128d5cb54d1b9970b85",
       "bytes": 3823
     },
     {
       "original_path": "supabase/migrations/20260919183000_lock_cognition_receipt_revision.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919183000_lock_cognition_receipt_revision.sql",
-      "sha256": "c76867a9c2b497c8de8db63066cc71e7de16bdbcb18628938fbfc930b53e8b94",
+      "sha256": "f85fca2ddf4abd068a1f9254d58f8790c8b636d80456e5de455fc8caa2bce5b9",
       "bytes": 3050
     },
     {
       "original_path": "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
-      "sha256": "d2396dec10865d9f7d51d030c5a759f37db648ff1fa8d85dcd73154c2db73664",
+      "sha256": "5667b4f481e48f1689ed39018a5984fb7306982df8f5510ded82342d9e790778",
       "bytes": 3307
     },
     {
       "original_path": "supabase/migrations/20260920000000_repair_cognition_intelligence_index_projection_trigger.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920000000_repair_cognition_intelligence_index_projection_trigger.sql",
-      "sha256": "5430383b44edec9207773a59d6d646bda88b1c40ca8c9d41f659b145705e0104",
+      "sha256": "8ad3e078a1bd017a179e14f28092754e43332857cb2785cca47dd345512dcf01",
       "bytes": 537
     },
     {
       "original_path": "supabase/migrations/20260920030000_repair_cognition_event_receipt_lineage.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920030000_repair_cognition_event_receipt_lineage.sql",
-      "sha256": "71373529a8e4f2128b2eee2da3e072481b9edd1d3266c5668c7e0e1498a42091",
+      "sha256": "0791b95a38a2335138874694bbee56ff40282b8682e5e08f0dde8071b3e86ab6",
       "bytes": 3741
     },
     {
       "original_path": "supabase/migrations/20260920160000_align_smart_note_receiver_canonical_event_identity.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920160000_align_smart_note_receiver_canonical_event_identity.sql",
-      "sha256": "91e53ac6906114265fceb5adfff4b96d34f6fb31dabcbe9c179222db13203f27",
+      "sha256": "46f07b9d05dc054b517d60d87599b0134cf5a82e2572eda05327390638aa683a",
       "bytes": 4396
     },
     {
       "original_path": "supabase/migrations/20260920162000_enforce_smart_note_single_canonical_event_identity.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920162000_enforce_smart_note_single_canonical_event_identity.sql",
-      "sha256": "dc76e27a91a61919009cb35a04cef3c5d70b8cf3d192269d196373b21c6f748f",
+      "sha256": "9d3b7e912e3a35a919aeeda81720a5211455ac98a9ac0a973eebe88a30e50ae7",
       "bytes": 6333
     },
     {
       "original_path": "supabase/migrations/20260920170000_repair_smart_note_uuid_generation_namespace.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920170000_repair_smart_note_uuid_generation_namespace.sql",
-      "sha256": "c2199e13233c055e512dfc4a3b90463c5450e48373440d29b0d3d30315735bb5",
+      "sha256": "c017e40f0b05f1f5283f2ea4b5c0a22a11f5b4c07ae8365024205ca0fe5e97f6",
       "bytes": 6540
     },
     {
       "original_path": "supabase/migrations/20260920173000_align_smart_note_cognition_project_with_runtime_retrieval.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920173000_align_smart_note_cognition_project_with_runtime_retrieval.sql",
-      "sha256": "90d447ddf3d9b3c81dd04b6c775e19193eba2d73188cd404af74b7ee2eb0ea74",
+      "sha256": "3d29b2f7a954a143c81e14e4c4e625ec3c2d7a29963739042c2de61c44c73eb5",
       "bytes": 2295
     },
     {
       "original_path": "supabase/migrations/20260920175000_preserve_smart_note_canonical_event_identity.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920175000_preserve_smart_note_canonical_event_identity.sql",
-      "sha256": "12d1d5a32ab9dc7e5e6745d334e897c7063b33d88c999d0e336980afc7e49333",
+      "sha256": "f1e7178a554c2cf3ed4ed9915a42197e29a831889775c2c735b9d9030aae648b",
       "bytes": 2305
     },
     {
       "original_path": "supabase/migrations/20260920213000_smart_list_create_cognition_receipt.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260920213000_smart_list_create_cognition_receipt.sql",
-      "sha256": "f07582e4490c89cebbafb5f3040a07e31816c751a99344709df2b365026d9a18",
+      "sha256": "9b66e49573e161db6820864ff4db5c3001cbe92ea9337de84cfa31d2fd9ce612",
       "bytes": 1793
     },
     {
       "original_path": "supabase/migrations/20260921020000_harden_authority_issuer_source_ownership_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921020000_harden_authority_issuer_source_ownership_v1.sql",
-      "sha256": "8b48071ece214f7b9e69414cf4ff4e0023bd82c19f76256b527adafc65ba6fed",
+      "sha256": "acf9d2bc7d555362bd80887c5627cb932a8aba111cc20d53d9a7ed6a5f77e4e0",
       "bytes": 2114
     },
     {
       "original_path": "supabase/migrations/20260921023500_restore_authority_grant_definer_boundary_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921023500_restore_authority_grant_definer_boundary_v1.sql",
-      "sha256": "8ff0e6c810231d40817534bf69351dce2f85db91f23b2a5b1ee14d3133d4c24f",
+      "sha256": "674a87ae1f6540cd104546c4f33aeb7eb47ea4f8fd073b6ea93037ed73b92312",
       "bytes": 2708
     },
     {
       "original_path": "supabase/migrations/20260921033000_prepare_smart_mail_authorization_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921033000_prepare_smart_mail_authorization_v1.sql",
-      "sha256": "c9769716db9ffafb7d215c43a83569fc5dac6bb45d8ac39703ebeb6dcba1b339",
+      "sha256": "234b5a2b287260e58d2a3d19f56ea93bf85b353ef1ebb232d455da5817f60864",
       "bytes": 3781
     },
     {
       "original_path": "supabase/migrations/20260921170000_add_nayanet_intelligence_operations.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921170000_add_nayanet_intelligence_operations.sql",
-      "sha256": "7770430815c174e112298e5c3d5f8ec1d6cc9d312476270d43a46e38810cc55e",
+      "sha256": "ac54cad2566d3db65f235c13224dfd4ead334a064b4c7ae962ac92c10f387370",
       "bytes": 1284
     },
     {
       "original_path": "supabase/migrations/20260921170000_project_intelligence_receiver_owner_projection_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921170000_project_intelligence_receiver_owner_projection_v1.sql",
-      "sha256": "84ea676993b800140ad882f9c4644ebfca19abe4edb1d7604581ef132f862d0b",
+      "sha256": "af7b163d34cbd4e13d4fecaf55aaad62e18147db9872ba6e2fe34175d2fc64b5",
       "bytes": 224
     },
     {
       "original_path": "supabase/migrations/20260921183000_intelligent_block_v1_first_class_boundary.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921183000_intelligent_block_v1_first_class_boundary.sql",
-      "sha256": "8461f8d42424b74a0594f88ae0524e9ea7e198d546c3d50a900d84233369886b",
+      "sha256": "69ae570a93ed3cc8494345bedcd195ceb0bb1fb7ef49e06d9a0b1b9013b9839d",
       "bytes": 7886
     },
     {
       "original_path": "supabase/migrations/20260921221050_nayanet_intelligence_notification_bus_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921221050_nayanet_intelligence_notification_bus_v1.sql",
-      "sha256": "37bb9947c1d3e2dfb2f96e30e72a5fdef551ac23a99562530dc160299e3906d2",
+      "sha256": "2842723e66eeaa616937f7ed2e348db02d6c4d7bf19c9952cb21957178b1514f",
       "bytes": 9136
     },
     {
       "original_path": "supabase/migrations/20260921224000_restore_nayanet_intelligence_receipt_trigger.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921224000_restore_nayanet_intelligence_receipt_trigger.sql",
-      "sha256": "2daeb3513980641abb659c87dafc40905a841e87ed90cfe31733bea9f8274928",
+      "sha256": "1016ee1c6902db323ba18cfebefd432aaa880df11e029ead51d9a5bdc8f40a84",
       "bytes": 699
     },
     {
       "original_path": "supabase/migrations/20260921232000_close_smart_note_cognition_execution_receipt_boundary_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921232000_close_smart_note_cognition_execution_receipt_boundary_v1.sql",
-      "sha256": "e1a092c96f8c745f718b30158d93b47b0e9e2d8ba2b9a41203c0c5daf826581d",
+      "sha256": "1d68542fd6a87f2c8a89f5a80705f7d00de812f32fc276b2bde074e01011216a",
       "bytes": 9691
     },
     {
       "original_path": "supabase/migrations/20260921235000_finalize_intelligent_block_v1_transport_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260921235000_finalize_intelligent_block_v1_transport_v1.sql",
-      "sha256": "c69d64f7944d7d0c435eb68e145139a5eea9aa5a147ee058f1202f59c36cd639",
+      "sha256": "308b248e288014f0a4b889740b8ea0adf09e36b9bdb9b04e48106533f7e9ca37",
       "bytes": 9358
     },
     {
       "original_path": "supabase/migrations/20260922001000_preserve_intelligent_block_v1_cognition_projection.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260922001000_preserve_intelligent_block_v1_cognition_projection.sql",
-      "sha256": "44aa7d4438680a27773454164e557b28a754d7878c04cc7c1a934488feb0edeb",
+      "sha256": "36933409ef9c4ba0abd2b3b844746d659c9b89eb831e6f73b05ae89f2d124337",
       "bytes": 2508
     },
     {
       "original_path": "supabase/migrations/20260923000000_intelligent_block_supersession_lifecycle_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260923000000_intelligent_block_supersession_lifecycle_v1.sql",
-      "sha256": "2a61756633bcaf7847a96539ae9e88382549c6d36bf7298ab275d8304a307255",
+      "sha256": "d0a81dd21f0c8e5d02fe255c4a6fb014a0ed31df2187b4ae80c971eac3e21e93",
       "bytes": 3209
     },
     {
       "original_path": "supabase/migrations/20260923010000_repair_intelligent_block_index_projection_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260923010000_repair_intelligent_block_index_projection_v1.sql",
-      "sha256": "b539184cc74b2898d61f745e00908af0389c9d19404dc664fdf8bd4e0fdda6b8",
+      "sha256": "b7d76ebea9b88cd7c9f0103a0384b733792386a8a89162b730478d644b1b23e3",
       "bytes": 2961
     },
     {
       "original_path": "supabase/migrations/20260923090000_nayanet_smart_ledger_coverage_audit_rpc_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260923090000_nayanet_smart_ledger_coverage_audit_rpc_v1.sql",
-      "sha256": "46719963a707049193774e2fb4d17189a02d3a8b0fd3d1ea48d58ded78c73202",
+      "sha256": "8bf600b0e744e2c0701178d9f285aced523e06ca4b94f5b7fec508de2eb7846c",
       "bytes": 4091
     },
     {
       "original_path": "supabase/migrations/20260924100000_wire_authority_grant_into_intelligence_commit_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924100000_wire_authority_grant_into_intelligence_commit_v1.sql",
-      "sha256": "80deca94cf156ad7cf217d6f589eb290e465119e180eea41efbbd55a8b9e1d5d",
+      "sha256": "0d4149a489a0082c4d5ee889d1592e8c0f8390ec9dadbcc144f743d1f2b2717f",
       "bytes": 6043
     },
     {
       "original_path": "supabase/migrations/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql",
-      "sha256": "6cadfce408def51d962f33b69bbb1ce8cb956e258507599f608e1af4cb352b33",
+      "sha256": "6e85e08cc68c207246458346b3e7e2120f44d35ab7d753259f0411b42cb3e323",
       "bytes": 5828
     },
     {
       "original_path": "supabase/migrations/20260924123000_repair_smart_note_receipt_trigger_overload.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924123000_repair_smart_note_receipt_trigger_overload.sql",
-      "sha256": "419761bfe932072f275c28a3803312a0aa2be36936cb90d796ec381bff6414d5",
+      "sha256": "f66d851e7dbdd3835872f7d0f149a2650b827ca8c5d651a6f765214d294101b6",
       "bytes": 2707
     },
     {
       "original_path": "supabase/migrations/20260924133001_repair_smart_connect_connection_receipt_overload.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924133001_repair_smart_connect_connection_receipt_overload.sql",
-      "sha256": "2a3198d2f1cf1ec080449151acf0d1914bc649191760adc0004d49f30a2a891b",
+      "sha256": "12c3bc7167d5c7e0ab907e081f8022bbb26b78f1fb3a85bc5d484d2729962e10",
       "bytes": 5388
     },
     {
       "original_path": "supabase/migrations/20260924133002_repair_smart_connect_space_join_receipt_overload.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924133002_repair_smart_connect_space_join_receipt_overload.sql",
-      "sha256": "5f5b6e2933a6f9c0af2450753c7e8bac31cb9cac3d46330d17f7c1920f06e2a3",
+      "sha256": "062296f9fdce49059920916472a032d20af5e8d616ec28baf1e83188780a0ab4",
       "bytes": 2754
     },
     {
       "original_path": "supabase/migrations/20260924133003_repair_smart_connect_list_receipt_overloads.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924133003_repair_smart_connect_list_receipt_overloads.sql",
-      "sha256": "ee54e3148232a53c13c02e5c6476a7c8fa3d4836bfd695d3c34aa4e1d3476d43",
+      "sha256": "90ef40af71a14a421f2c2b108c1b68735b34c894613c539ace8a880e54e5e77e",
       "bytes": 6246
     },
     {
       "original_path": "supabase/migrations/20260924143000_harden_smart_connect_participation_idempotency_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924143000_harden_smart_connect_participation_idempotency_v1.sql",
-      "sha256": "554bf53f0b756717e0deb73343d2c628d5afffbd79edf51b8f58e40db9c9398b",
+      "sha256": "6a6e24c685115ba9149464550ee4e129f8db21ca7301fce1702250bd58607404",
       "bytes": 3905
     },
     {
       "original_path": "supabase/migrations/20260924200000_harden_cognition_event_replay_idempotency_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924200000_harden_cognition_event_replay_idempotency_v1.sql",
-      "sha256": "db4679bfcf2704fda123afc539a2441e29291f2ab05ae49a953a7af3b8a7329e",
+      "sha256": "36e4aef8a5c6840ff04b3b25394605e33b81fc65400ad9f1d530abbd713a3ef5",
       "bytes": 7320
     },
     {
       "original_path": "supabase/migrations/20260924221500_enable_project_intelligence_bridge_owner_read.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924221500_enable_project_intelligence_bridge_owner_read.sql",
-      "sha256": "73447705f795473d5e587026d3a3bdeb88bdf8bcbb7ac5ffb0abc5bdd8be0f27",
+      "sha256": "b81d37a5dfe1e46b94f9e7bf11334b0831f19fa2c3f84379cd9c5a5658003797",
       "bytes": 372
     },
     {
       "original_path": "supabase/migrations/20260924223000_harden_collective_publication_owner_boundary.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924223000_harden_collective_publication_owner_boundary.sql",
-      "sha256": "7a5f4db271c4f66e258cdc121c09ed1fe90701bf0d19799dc375f1e7210dfb20",
+      "sha256": "c26b0e6cf1e55181b6b04b74b1843107ff147e0975401087a107f92c8197113e",
       "bytes": 489
     },
     {
       "original_path": "supabase/migrations/20260924230000_converge_legacy_intelligence_capture_authority_v2.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924230000_converge_legacy_intelligence_capture_authority_v2.sql",
-      "sha256": "2dfc27220c059da1bebed194095f641f21805c12e14c28dac7a67a4f2abfc85f",
+      "sha256": "145715c6bfb432a74323e26a252d866f0d268e254e4877e1cb7ce15c80a5eb80",
       "bytes": 6720
     },
     {
       "original_path": "supabase/migrations/20260924230000_harden_github_app_owner_binding_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924230000_harden_github_app_owner_binding_v1.sql",
-      "sha256": "dc16dd99537ac2fdcaa97051e500df6dcec646037032bfcbee60bda594b8195f",
+      "sha256": "9a508484d8b7c69660f9c0db16eee32dc1d085101664aceae315d1015d3e00de",
       "bytes": 4223
     },
     {
       "original_path": "supabase/migrations/20260924233000_harden_github_webhook_owner_aware_canonical_persistence_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924233000_harden_github_webhook_owner_aware_canonical_persistence_v1.sql",
-      "sha256": "ddb4a8c6f23ea0c2d25b9ed41d84b1addeac5af4b7d8ebed64a285cc01369be6",
+      "sha256": "bec0d3fc8bb2525698639e4ee0303d598b2b536ca310babb44750c8f615784e0",
       "bytes": 6089
     },
     {
       "original_path": "supabase/migrations/20260924233100_repair_github_webhook_owner_aware_canonical_replay_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924233100_repair_github_webhook_owner_aware_canonical_replay_v1.sql",
-      "sha256": "bf9d2d3665665ae9aae405ef765ce4ba325d4e40d3ad5a817e09a1dbace327c4",
+      "sha256": "58d97cb039f4c31df395a1be0668c2ac802d2772b7b2faf84f2fa1e23bdc1860",
       "bytes": 6926
     },
     {
       "original_path": "supabase/migrations/20260924234500_repair_github_webhook_owner_resolver_uuid_aggregate_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260924234500_repair_github_webhook_owner_resolver_uuid_aggregate_v1.sql",
-      "sha256": "5f78b71e210481ec054f0a8acf80451c3d49fa97cc3368c5f2164b6a7c47ad17",
+      "sha256": "806539ab3dabcd4f561168f677b07f71a6decb056461017aa10f5c2424f11a4f",
       "bytes": 1626
     },
     {
       "original_path": "supabase/migrations/20260925000000_enforce_independent_outcome_learning_promotion_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925000000_enforce_independent_outcome_learning_promotion_v1.sql",
-      "sha256": "8761d44b4b4d80d18f9eac098dc5738feafb30455e9d840cbe7711ad54c1c764",
+      "sha256": "253e1ff32f5278184a44c613bb8ea41ac7dd2ce7f551699894cccbdad2612a95",
       "bytes": 2612
     },
     {
       "original_path": "supabase/migrations/20260925000000_require_human_authority_root.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925000000_require_human_authority_root.sql",
-      "sha256": "6d6a9b528082f89b6181e7512ffcd654638f4d07a195160d00f4b5dc85391fe9",
+      "sha256": "ddc704198e6a94231b0aae61fa4d0db2164a4291d64a17d390383c2a47dc954c",
       "bytes": 4839
     },
     {
       "original_path": "supabase/migrations/20260925010000_require_explicit_consensus_publication_rpc_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925010000_require_explicit_consensus_publication_rpc_v1.sql",
-      "sha256": "e862ec48d69e04dd4591c4864b3a297bd89ca37fc710c57f1270bf751a6e3561",
+      "sha256": "6cb36c655c20a20f36a21b50c9a6a30ea42e37b39ab8a3bda0ebfcc012069bb0",
       "bytes": 3848
     },
     {
       "original_path": "supabase/migrations/20260925020000_require_explicit_smart_connect_consent_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925020000_require_explicit_smart_connect_consent_v1.sql",
-      "sha256": "606ee216a96e8c5b1801eda405b19a11d910934012e786d0d2824ed09d39dbdf",
+      "sha256": "c7eca171e570df328c006248c3f129faff5a877387cf82e15e310612f028b049",
       "bytes": 6146
     },
     {
       "original_path": "supabase/migrations/20260925030000_require_server_verified_github_bindings_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925030000_require_server_verified_github_bindings_v1.sql",
-      "sha256": "da617b84f2d9b3dc903880e601f8fbc082017b43d675ad7b8e9a14a6765d0966",
+      "sha256": "1d69142d420984003424bf672ba88753d966b9cfe3387b7fddd289f4df0dff8d",
       "bytes": 5240
     },
     {
       "original_path": "supabase/migrations/20260925040000_bind_bridge_owner_to_oidc_workflow_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925040000_bind_bridge_owner_to_oidc_workflow_v1.sql",
-      "sha256": "6b4cfa60f3bddb7b32a286e592a7a9004437a454f2a8095c3961d6a3bf49b5f6",
+      "sha256": "581c46dff72f46edf3dca503364a6194ffd7fb5998a3b4e63f64bad1d1086144",
       "bytes": 4595
     },
     {
       "original_path": "supabase/migrations/20260925050000_preserve_smart_note_distilled_lifecycle_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925050000_preserve_smart_note_distilled_lifecycle_v1.sql",
-      "sha256": "1ebb062a4c79d9e2715e60efb4579dd22e84f19f5f64cb50c10003957d11ce61",
+      "sha256": "ca88d31a4e9c055bc8f336e7e59eed4cfbb56c26aa40e8594e3b3ecf43ccbc23",
       "bytes": 1129
     },
     {
       "original_path": "supabase/migrations/20260925060000_owner_bound_project_intelligence_bridge_select_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260925060000_owner_bound_project_intelligence_bridge_select_v1.sql",
-      "sha256": "1feb62067d80224e01f412dd73eab96b07a236f85a233d09c883cb68da4540fb",
+      "sha256": "ba14108d6c280a1cb28dc995a41cbde5c0add818ba03729ef081a05a2653df26",
       "bytes": 340
     },
     {
       "original_path": "supabase/migrations/20260926113000_drop_cognition_event_6param_overload_v1.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260926113000_drop_cognition_event_6param_overload_v1.sql",
-      "sha256": "dcc291d49cb91577471488e06a48603b45deb7a950b96e9d9588a114e011b309",
+      "sha256": "f2caa688f29c30a2af5b4f0d912aad1421573057135371fc21df9453dc6e6b7d",
       "bytes": 364
     },
     {
       "original_path": "supabase/migrations/20260928173000_nayanet_intelligence_commit.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928173000_nayanet_intelligence_commit.sql",
-      "sha256": "8935ac725e50f2031fac82284ad41ec1e1de6d4fd574393a731b6a7b885f6519",
+      "sha256": "d44be65b4041f795a88b15c368910a179af8e0fca6b7ed4ba335027dc8ffc205",
       "bytes": 7532
     },
     {
       "original_path": "supabase/migrations/20260928175308_fix_intelligence_commit_authority_target_scope.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928175308_fix_intelligence_commit_authority_target_scope.sql",
-      "sha256": "eb247c8427ece553502e556578029ae22de74c6c2509d58210c18e68cd061958",
+      "sha256": "391582467619303a300d5a4b43c440deaf7e54efce609b5de2f8107236826c11",
       "bytes": 7409
     },
     {
       "original_path": "supabase/migrations/20260928180200_fix_runtime_claim_propagation.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928180200_fix_runtime_claim_propagation.sql",
-      "sha256": "b08eacbdb9bb0d42bee221c867886e62b7f143a20961c6c110aa171753ad80be",
+      "sha256": "a1c150fde36d8266447c4b9954f2e39d70eb78b931c3b0eec3f64fe60f3b3e65",
       "bytes": 2522
     },
     {
       "original_path": "supabase/migrations/20260928180400_fix_runtime_authority_grant_resolution.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928180400_fix_runtime_authority_grant_resolution.sql",
-      "sha256": "10b971d4a6d2e56a7765e5dc3cc8de9bfe577bb42e7ab4782e5289cc830992f1",
+      "sha256": "9ffa93a2124e12bd0ea467c9d2c66c8134f9994aa49c888cfcca603e8aff0e9a",
       "bytes": 3183
     },
     {
       "original_path": "supabase/migrations/20260928180600_fix_intelligence_commit_digest_schema.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928180600_fix_intelligence_commit_digest_schema.sql",
-      "sha256": "5b01fd73bb2b81214d6bddc50805a367559439d9f88a697965e4985fa6b6d0d9",
+      "sha256": "c972db9e76829fd0eec42fb53564a8fd967979f31d87c283de76896b805dd59f",
       "bytes": 6887
     },
     {
       "original_path": "supabase/migrations/20260928190000_nayanet_intelligence_runtime_bridge.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928190000_nayanet_intelligence_runtime_bridge.sql",
-      "sha256": "9affa376b2bb09b9f32dcaa0c84d1ef374ef21354af45d30a33758505968e908",
+      "sha256": "911bd1fa03b1d8142752d9fd598b41348ff6c2de1678aba5d508b2ed441b3fe7",
       "bytes": 2285
     },
     {
       "original_path": "supabase/migrations/20260928190500_lock_intelligence_commit_to_runtime.sql",
       "archive_path": "supabase/history/pre-production-ledger-reconciliation-20260929/20260928190500_lock_intelligence_commit_to_runtime.sql",
-      "sha256": "ddd111ecf8ea93af0b7c34f20d02f0261714b8ddfd027c480d6e5cade934f1f3",
+      "sha256": "3a47f8ab1ba585e5761e15f1eb9f7c87f079924d9ebde644169c63d7623f095b",
       "bytes": 258
     }
-  ]
+  ],
+  "hash_semantics": "UTF8_TEXT_LF_NORMALIZED_SHA256"
 }
