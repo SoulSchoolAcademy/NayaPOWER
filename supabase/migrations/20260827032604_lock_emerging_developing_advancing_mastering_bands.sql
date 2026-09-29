@@ -1,0 +1,1 @@
+alter table public.maxess_results drop constraint if exists maxess_results_mastery_band_check; alter table public.maxess_results add constraint maxess_results_mastery_band_check check (mastery_band = any (array['emerging'::text,'developing'::text,'advancing'::text,'mastering'::text]));

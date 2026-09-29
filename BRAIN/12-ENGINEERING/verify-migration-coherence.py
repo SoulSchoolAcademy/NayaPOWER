@@ -95,6 +95,23 @@ def strip_comments(sql: str) -> str:
     return re.sub(r'--[^\n]*', ' ', sql)
 
 
+def mask_quoted_text(sql: str) -> str:
+    """Mask quoted text before relation regexes inspect SQL.
+
+    The verifier does not parse quoted identifiers, so double-quoted policy names
+    must not be interpreted as UPDATE/FROM clauses. Single-quoted strings may
+    contain dynamic SQL text (for example format('drop table ... %I')); treating a
+    truncated fragment of that string as static DDL fabricates relation names.
+    Preserve newlines/length so diagnostics stay positionally stable.
+    """
+    def mask(match: re.Match[str]) -> str:
+        return ''.join('\n' if ch == '\n' else ' ' for ch in match.group(0))
+
+    sql = re.sub(r"'(?:''|[^'])*'", mask, sql, flags=re.S)
+    sql = re.sub(r'"(?:""|[^"])*"', mask, sql, flags=re.S)
+    return sql
+
+
 def normalise(name: str) -> str:
     name = name.strip().strip('"').lower()
     return name if '.' in name else f'public.{name}'
@@ -154,7 +171,7 @@ def main() -> int:
 
     for idx, path in enumerate(files):
         raw = path.read_text(encoding='utf-8', errors='replace')
-        sql = strip_comments(raw)
+        sql = mask_quoted_text(strip_comments(raw))
         if not sql.strip():
             empty.append(path.name)
         order.append((path.name, sql))
