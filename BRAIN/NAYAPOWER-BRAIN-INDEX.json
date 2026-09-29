@@ -211,6 +211,14 @@
       "proof_run": "36519233015_attempt_2",
       "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
       "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
+    },
+    "law_node": {
+      "status": "PROVEN_BOUNDED",
+      "run": 36620001626,
+      "source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
+      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e",
+      "limitation": "Universal nine-node runtime binding remains NOT_PROVEN."
     }
   },
   "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
@@ -223,7 +231,7 @@
     "active_issue": 978,
     "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
-    "active_node_frontier": "LAW_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "active_node_frontier": "LAW_BOUNDED_LIVE_PROVEN",
     "next_node_after_law": "ACT"
   },
   "smart_note_human_projection": {
