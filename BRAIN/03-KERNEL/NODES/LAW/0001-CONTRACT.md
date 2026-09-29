@@ -1,5 +1,11 @@
 # LAW Node Contract V1
 
+Runtime expiry boundary: a matching grant with malformed non-null expiry must produce
+`BLOCKED / GRANT_TIME_INVALID`, never authorization. Null or absent expiry remains
+unbounded; expiry at the evaluation clock is expired. Canonical timestamp persistence
+and runtime validation are complementary boundaries; a mocked malformed ledger value
+does not alone establish a reachable production bypass.
+
 **ID:** NAYA-KERNEL-LAW
 
 ## Purpose

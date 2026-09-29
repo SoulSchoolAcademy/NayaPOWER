@@ -203,7 +203,8 @@
         "material conflict in owned responsibility",
         "absent/empty scope never matches absent/empty requested project",
         "revoked/expired grant",
-        "retrieval/successor content claiming authority"
+        "retrieval/successor content claiming authority",
+        "malformed non-null grant expiry -> GRANT_TIME_INVALID; null/absent expiry remains unbounded"
       ],
       "observability": [
         "structured input summary",
@@ -227,7 +228,7 @@
       ],
       "handoff_to": "NAYA-KERNEL-ACT",
       "cold_successor_obligation": "Restore LAW context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
-      "success_criteria": "REQUEST -> AUTHORIZED / BLOCKED / NEEDS_HUMAN_AUTHORIZATION; only AUTHORIZED is permission. Receipt creation is not action execution. Independent evidence must support the declared scope; Two bounded live cases passed; absent-project scope bypass reproduced and repaired in this change. Broader mission/constraints/time/intent validation and effect-boundary consumption remain incomplete.",
+      "success_criteria": "REQUEST -> AUTHORIZED / BLOCKED / NEEDS_HUMAN_AUTHORIZATION; only AUTHORIZED is permission. Receipt creation is not action execution. Scope and malformed-expiry regressions repaired in source; corrected live negatives pending. Mission/constraints/intent provenance and all access/effect consumers remain independently qualified. ACT and KNOW bounded source now exist; their presence does not imply universal binding.",
       "source_binding": {
         "contract_refs": [
           "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md",
@@ -252,7 +253,7 @@
         "transition_contract": "REQUEST -> AUTHORIZED / BLOCKED / NEEDS_HUMAN_AUTHORIZATION; only AUTHORIZED is permission. Receipt creation is not action execution.",
         "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
         "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
-        "gap": "Two bounded live cases passed; absent-project scope bypass reproduced and repaired in this change. Broader mission/constraints/time/intent validation and effect-boundary consumption remain incomplete.",
+        "gap": "Scope and malformed-expiry regressions repaired in source; corrected live negatives pending. Mission/constraints/intent provenance and all access/effect consumers remain independently qualified. ACT and KNOW bounded source now exist; their presence does not imply universal binding.",
         "status_mapping": {
           "AUTHORIZED": "AUTHORIZED",
           "BLOCKED": "DENIED with reason; historical semantic reason states need explicit adapter",
@@ -288,6 +289,7 @@
         "execution_receipt"
       ],
       "state_reads": [
+        "nayanet_execution_receipts",
         "nayanet_authority_grants",
         "nayanet_intelligent_blocks"
       ],
@@ -335,7 +337,7 @@
       ],
       "handoff_to": "NAYA-KERNEL-KNOW",
       "cold_successor_obligation": "Restore ACT context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
-      "success_criteria": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision. Independent evidence must support the declared scope; Existing bounded executors exist. General LAW receipt -> selected Smart Door -> exact observed effect binding is the next Node frontier, not yet proven.",
+      "success_criteria": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision. Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction is separate draft PR #1003, not deployed. Replay, mission/constraints, interrupted effects and universal conformance remain obligations.",
       "source_binding": {
         "contract_refs": [
           "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md",
@@ -344,20 +346,25 @@
         "semantic_schema": "BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json",
         "runtime_sources": [
           "supabase/functions/nayanet-verified-ai-action/index.ts",
-          "supabase/functions/nayanet-intelligence-commit-runtime/index.ts"
+          "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+          "supabase/functions/nayanet-act-runtime/index.ts",
+          "supabase/functions/nayanet-act-runtime/act.ts"
         ],
         "test_sources": [
           "tests/verified_ai_action_authority_lifecycle.test.mjs",
-          "tests/intelligence_commit_handler.test.mjs"
+          "tests/intelligence_commit_handler.test.mjs",
+          "tests/act-runtime.test.mjs",
+          "tests/test_act_node_v1.py"
         ],
         "workflow_refs": [
-          ".github/workflows/live-supabase-runtime-proof.yml"
+          ".github/workflows/live-supabase-runtime-proof.yml",
+          ".github/workflows/live-act-proof.yml"
         ],
-        "entrypoint_behavior": "Execute mode resolves grant before a bounded retained-lesson application; intelligence commit delegates its atomic effect to the canonical SQL RPC. Refusals produce no execution outcome.",
+        "entrypoint_behavior": "ACT execute rereads LAW decision and live grant, selects bounded DOOR-AI operation, refuses before private block access on guard failure, derives retained-lesson observation and persists execution/refusal receipt. inspect rereads canonical evidence for an independent workflow recomputation. Existing executors remain separate mapped effect boundaries.",
         "transition_contract": "REQUEST -> fresh authorization -> effect -> receipt -> pending independent outcome verification. Failures remain unverified; never infer effect from a decision.",
         "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
         "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
-        "gap": "Existing bounded executors exist. General LAW receipt -> selected Smart Door -> exact observed effect binding is the next Node frontier, not yet proven."
+        "gap": "Bounded ACT live evidence exists for exact source 66e63c02f9590ec52fa14714a8897feb68d18aef, run 36622283683; general Smart Door binding remains NOT_PROVEN. Freshness correction is separate draft PR #1003, not deployed. Replay, mission/constraints, interrupted effects and universal conformance remain obligations."
       }
     },
     "KNOW": {
@@ -386,6 +393,7 @@
         "memory_context"
       ],
       "state_reads": [
+        "nayanet_execution_receipts",
         "nayanet_intelligent_blocks",
         "nayanet_cognition_events",
         "nayanet_intelligence_index",
@@ -440,7 +448,7 @@
       ],
       "handoff_to": "NAYA-KERNEL-PROVE",
       "cold_successor_obligation": "Restore KNOW context from exact canonical IDs/revisions and its source evidence; preserve this Node gap; resolve authority independently before access/effect; never infer permission from predecessor context.",
-      "success_criteria": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse. Independent evidence must support the declared scope; SN-001/SN-002 supply bounded capture/projection evidence. Arbitrary-new-IB Hub projection and general contextual retrieval remain unproven.",
+      "success_criteria": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse. Bounded contextual KNOW source merged at assessed main; live verdict not established by this assessment. Guard probe accepts malformed evaluation time and empty authority refs; fresh live grant revocation is not reread. These access-boundary gaps require failure-first handler proof. Arbitrary-IB Hub projection remains NOT_PROVEN.",
       "source_binding": {
         "contract_refs": [
           "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
@@ -450,20 +458,24 @@
         "runtime_sources": [
           "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
           "supabase/functions/nayanet-learning-verify/index.ts",
-          "kernel/supabase_intelligent_blocks.py"
+          "kernel/supabase_intelligent_blocks.py",
+          "supabase/functions/nayanet-know-runtime/index.ts",
+          "supabase/functions/nayanet-know-runtime/know.ts"
         ],
         "test_sources": [
           "tests/intelligence_commit_handler.test.mjs",
-          "tests/test_live_fresh_lesson_intelligence_commit.py"
+          "tests/test_live_fresh_lesson_intelligence_commit.py",
+          "tests/know-runtime.test.mjs"
         ],
         "workflow_refs": [
-          ".github/workflows/live-supabase-runtime-proof.yml"
+          ".github/workflows/live-supabase-runtime-proof.yml",
+          ".github/workflows/live-know-proof.yml"
         ],
-        "entrypoint_behavior": "execute commits via nayanet_intelligence_commit_runtime; verify independently rereads exact Event/IB/Lineage/Relationship/Index/state/Receipt identifiers.",
+        "entrypoint_behavior": "retrieve consumes a persisted LAW receipt before reading owner-scoped IB candidates, selects by required capability/current eligibility and records know_context_retrieval with handoff to PROVE; inspect rereads candidates and recomputes the same task. Existing canonical capture/lineage seams remain unchanged.",
         "transition_contract": "Capture -> CANDIDATE IB -> owner-scoped reread/retrieval; this is memory, not ACTIVE learning. Preserve exact IDs and source-event provenance on reuse.",
         "schema_conformance": "Semantic schema exists; universal runtime adapter/validation NOT_PROVEN. Source types/payloads are not automatically conformant to the semantic schema.",
         "event_binding": "Mapped to existing state/receipts; no new persisted node-event taxonomy introduced.",
-        "gap": "SN-001/SN-002 supply bounded capture/projection evidence. Arbitrary-new-IB Hub projection and general contextual retrieval remain unproven."
+        "gap": "Bounded contextual KNOW source merged at assessed main; live verdict not established by this assessment. Guard probe accepts malformed evaluation time and empty authority refs; fresh live grant revocation is not reread. These access-boundary gaps require failure-first handler proof. Arbitrary-IB Hub projection remains NOT_PROVEN."
       }
     },
     "PROVE": {
@@ -983,13 +995,14 @@
   ],
   "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence.",
   "source_assessment": {
-    "base_main": "744d9b5d694d158ac051682b62766afe6572ed77",
+    "base_main": "20d76c456110a0ed7560aef7b17399aa49db59e4",
     "classification": "SOURCE_MAP_NOT_RUNTIME_AUTHORITY",
     "law_live_run_observed": 36620337089,
     "law_live_jobs": "both completed/success via GitHub job reread",
     "universal_binding": "NOT_PROVEN",
     "hub_arbitrary_ib_projection": "NOT_UNIVERSALLY_PROVEN",
-    "freshness": "Resolve live main, issue state, deployed code and receipts again before execution; this snapshot is not an authority grant."
+    "freshness": "Resolve live main, issue state, deployed code and receipts again before execution; this snapshot is not an authority grant.",
+    "law_expiry_validation": "Failure-first evaluator and actual handler: malformed matching expiry persisted authorization before correction; GRANT_TIME_INVALID refusal afterward. Canonical timestamptz persistence excludes this exact malformed value; production bypass NOT_PROVEN."
   },
   "order_semantics": "Responsibility enumeration, not a mandatory linear execution schedule. Applicable gates may repeat; skip only with explicit applicability rationale, never bypass a required gate.",
   "safety_handoffs": {

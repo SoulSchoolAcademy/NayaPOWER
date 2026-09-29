@@ -5,7 +5,7 @@ import { evaluateLaw, type LawRequest, type AuthorityGrant } from "./law.ts";
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
 const REPOSITORY="SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW=".github/workflows/live-law-proof.yml";
+const WORKFLOWS=new Set([".github/workflows/live-law-proof.yml",".github/workflows/live-act-proof.yml",".github/workflows/live-know-proof.yml"]);
 const REF="refs/heads/main";
 const OWNER_ID="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const NAYA_ID="NAYA-NODE-0001";
@@ -18,8 +18,9 @@ async function authenticate(req:Request){
   const h=req.headers.get("authorization")??"";
   if(!h.startsWith("Bearer ")) throw new Error("RUNTIME_IDENTITY_REQUIRED");
   const {payload}=await jwtVerify(h.slice(7),JWKS,{issuer:ISSUER,audience:AUDIENCE});
-  const workflowRef=REPOSITORY+"/"+WORKFLOW+"@"+REF;
-  if(payload.repository!==REPOSITORY || payload.workflow_ref!==workflowRef || payload.ref!==REF) throw new Error("WORKFLOW_BINDING_MISMATCH");
+  const workflowRef=String(payload.workflow_ref??"");
+  const expectedRefs=Array.from(WORKFLOWS).map(w=>REPOSITORY+"/"+w+"@"+REF);
+  if(payload.repository!==REPOSITORY || !expectedRefs.includes(workflowRef) || payload.ref!==REF) throw new Error("WORKFLOW_BINDING_MISMATCH");
   return {payload,workflowRef};
 }
 function adminClient(){

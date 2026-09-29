@@ -57,7 +57,7 @@ As of this contract, universal nine-node production binding remains **NOT_PROVEN
 
 ## Source-mapped executable responsibilities
 
-Assessment base: `744d9b5d694d158ac051682b62766afe6572ed77`.
+Assessment base: `20d76c456110a0ed7560aef7b17399aa49db59e4`. Historical results below retain their own revisions.
 The companion JSON is a machine-readable projection of this contract, not another authority or proof ledger.
 Each Node now maps contracts, semantic schema, runtime source, tests, workflow, reads/writes, transition, graph seed IDs, and remaining gap.
 The semantic schemas describe target outputs; their presence does not establish runtime conformance. LAW's three runtime statuses require an explicit adapter to the older semantic status vocabulary. This change documents that seam without silently changing either interface.
@@ -66,8 +66,8 @@ The semantic schemas describe target outputs; their presence does not establish 
 |---|---|---|
 | SELF | cold-runtime owner/Naya/OIDC binding; reference SELF/manifest boot | universal runtime convergence; local continuity files cannot become canonical memory |
 | LAW | law-runtime evaluate/receipt/recompute; executor and SQL grant gates | wrong-target/absent-project bypass repaired here; corrected deployed negative proof pending; broader request/mission/constraint validation remains open |
-| ACT | verified-ai-action execute; intelligence-commit-runtime -> canonical SQL RPC | exact LAW decision/request -> selected Door -> observed effect binding |
-| KNOW | Event/IB/Lineage/Relationship/Index/state/Receipt commit and reread | arbitrary IB -> dynamic Hub; general scoped retrieval |
+| ACT | nayanet-act-runtime LAW/live-grant guard -> bounded DOOR-AI -> observed receipt; existing executor/commit paths | bounded live proof recorded; #1003 freshness correction pending; general Door, replay, mission and interrupted-effect proof |
+| KNOW | canonical capture/reread plus nayanet-know-runtime contextual selection and independent inspect | bounded source exists; live verdict not rechecked; malformed-time/empty-ref guard and revocation access proof; arbitrary IB -> dynamic Hub |
 | PROVE | independent commit lineage reread; causal evidence reconstruction | schema conformance; immutable checkpoint access security (#978) |
 | CONNECT | owner-scoped connect/graph-behavior/graph-verify | broader applicability, conflicts/supersession and cross-owner negative proof |
 | VERIFY | independent causal/outcome/generalization/successor recomputation | #975 exact outcome recovery; #810 live current-source acceptance |
@@ -90,7 +90,7 @@ Graph seed relationship IDs denote architectural relationships, not evidence tha
 It never executes the requested action. `ok=true` means evaluation completed, not permission; ACT must require `decision.status=AUTHORIZED`.
 `nayanet-verified-ai-action/index.ts` separately resolves an exact grant before effect and persists refusal with no execution outcome on denial.
 `nayanet-intelligence-commit-runtime/index.ts` calls the existing runtime SQL bridge; the commit RPC validates authority and writes the canonical intelligence chain transactionally.
-No general consumer of LAW decision receipts at every effect boundary was established by this inspection.
+ACT now consumes persisted LAW decision receipts and rereads live grants for one bounded Door operation. KNOW consumes a LAW receipt before candidate access, but its current validator does not reread revoked live authority. No universal LAW consumer qualification is established.
 
 ### Evidence and limits
 
@@ -107,18 +107,28 @@ Failure-first tests also reproduced missing/empty scope authorization. The corre
 The real HTTP handler is exercised offline with mocked OIDC verification/database I/O: refusal receipt, valid authorization without action effects, wrong-workflow no privileged access, and receipt failure.
 This is behavioral source verification, not production or real-token proof.
 
-Next unclosed LAW seam: general malformed request/grant, mission/constraints and intent provenance enforcement. `LawRequest` has no mission field, invalid expiry parses to NaN, and same-note intent flags are supplied by the admitted workflow. These are not repaired by the scope correction. A separate bounded classification/test must determine the smallest correction without broadening this change.
-The invalid-expiry source probe returned AUTHORIZED for `expires_at="not-a-date"`. The actual grant column is `timestamptz` with an expiry-order check in `supabase/migrations/20260919001730_create_authority_grant_runtime_v1.sql`; therefore this probe establishes a pure-evaluator malformed-input gap, not a demonstrated production database bypass.
-The ACT handoff must not treat the existing two-case proof as general LAW qualification.
+Expiry continuation on main `20d76c456110a0ed7560aef7b17399aa49db59e4`: failure-first evaluator + actual LAW HTTP handler tests reported 18 passes / 2 failures because malformed matching expiry was authorized and persisted SUCCESS. The minimal correction rejects malformed non-null expiry with `GRANT_TIME_INVALID`; null/absent expiry and valid unexpired grants remain authorized, expiry-at-now remains expired, unrelated malformed grants cannot poison an in-scope grant. Targeted suite: 20/20 passed.
+
+Reachability classification: `supabase/migrations/20260919001730_create_authority_grant_runtime_v1.sql` and canonical persistence restoration define `expires_at timestamptz`; grant issuance takes a typed timestamp and enforces expiry ordering. Mocked adapter corruption reproduces the handler defect; it does not prove that malformed strings can enter the production ledger. No SQL schema or policy change is required by this evidence.
+
+Next failing proof rung: current KNOW `validateRetrievalAuthority` returned `{ok:true, reason:"AUTHORIZED_PARENT_ACTION_CONTEXT", authority_refs:[]}` for a purported AUTHORIZED persisted LAW receipt with `evaluated_at="not-a-date"`. A guard-only VM probe exited 1; no private production read was performed. Inspection also shows no live grant reread at KNOW's private candidate access boundary. This is separate from ACT freshness (#1003). Stop at this rung rather than claim general LAW qualification or widen this correction.
+
+Mission/constraints and same-note directive provenance remain open obligations. Captured notes cannot promote themselves to learned intelligence. Universal semantic-schema adaptation remains NOT_PROVEN.
 
 ### Cold-successor torch
 
-Recheck live main, this PR, #810/#975/#978/#980 and the actual deployed LAW revision before mutation.
-Review and integrate the source-tested scope repair; production validation requires the applicable explicit authorization.
-Next action: reproduce malformed-expiry handling in LAW with failure-first tests, reconcile it with canonical expiry semantics, then prepare the smallest fail-closed correction. Keep ACT/Hub and all existing proof gates intact until the required LAW preconditions are resolved.
-Proof: invalid expiry cannot authorize; valid unexpired grants remain usable; real handler refuses and records the reason; independent deployment proof binds the exact corrected source.
+Recheck current main, #1000/#1003, #810/#975/#978/#980 and deployed LAW/ACT/KNOW revisions.
+The exact next authorized action is to add a failure-first test of the actual KNOW retrieve/inspect handler proving malformed receipt freshness and revoked live grant refuse before private candidate reads. Bind to the existing authority ledger; do not invent a policy engine, grant, graph or receipt store. Preserve caller-context selection and OIDC. Review source overlap before correction; stop on unresolved authority/source conflict.
+Production exercise still requires its applicable explicit authorization. This source change did not deploy, mutate policy or create production receipts.
 
 ### Verification receipt for this source change
+
+Continuation verification on main `20d76c456110a0ed7560aef7b17399aa49db59e4`:
+75 Node tests passed; 250 Python tests passed / 3 skipped; `git diff --check` passed.
+Source-map paths and graph relationships resolve. LAW expiry handler proof uses mocked
+identity/database transport and persisted mock receipts, not a live runtime verdict.
+ACT/KNOW source mappings now reflect their current bounded implementations.
+The historical validation below remains attributable to its historical source.
 
 Source assessed: `744d9b5d694d158ac051682b62766afe6572ed77`; rebased without conflict onto `ff29510cf242fdc830b2d9b17dd741344143c147` (capture-only workflow guard).
 Scope regressions: RED before correction (wrong target and missing/empty scope accepted); GREEN afterward.

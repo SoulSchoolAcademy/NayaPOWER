@@ -76,7 +76,38 @@
       "proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
       "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
       "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e"
+    },
+    "ACT": {
+      "status": "BOUNDED_LIVE_PROVEN",
+      "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
+      "deployment": {
+        "function": "nayanet-act-runtime",
+        "version": 1
+      },
+      "consumes": "nayanet_execution_receipts.action=law_authority_decision",
+      "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
+      "door": "DOOR-AI/apply_retained_intelligence",
+      "proof_run": 36622283683,
+      "proof_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+      "proof": "BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json",
+      "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
+      "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
+      "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382"
+    },
+    "KNOW": {
+      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
+      "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts",
+      "selector": "supabase/functions/nayanet-know-runtime/know.ts",
+      "consumes": "fresh AUTHORIZED LAW receipt for bounded parent naya_node_apply context",
+      "reads": "owner-scoped public.nayanet_intelligent_blocks",
+      "writes": "nayanet_execution_receipts.action=know_context_retrieval",
+      "caller_may_supply_selected_block": false,
+      "authority_rule": "retrieval does not create authority",
+      "handoff_to": "NAYA-KERNEL-PROVE",
+      "live_proof": "PENDING"
     }
   },
-  "next_node_after_law": "ACT"
+  "next_node_after_law": "ACT",
+  "next_node_after_act": "KNOW",
+  "next_node_after_know": "PROVE"
 }
