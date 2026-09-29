@@ -2,7 +2,7 @@
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
   "generated_at": "2026-09-29",
-  "status": "POST_944_SECURITY_AND_PRODUCTION_HARDENING",
+  "status": "POST_NORTH_STAR_BOUNDED_ACCEPTANCE_NINE_NODE_LIVE_PROOF",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
@@ -182,8 +182,8 @@
   "inventory_file_count": 77,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
-    "runtime_convergence": "BOUNDED_PRODUCTION_PROOF_EXISTS_AT_2f468c4; LATER_MAIN_NOT_INHERITED; UNIVERSAL_NINE_NODE_BINDING_NOT_PROVEN",
-    "application_entrypoint": "Bounded production proof uses the governed Supabase runtime/proof river. No universal application entrypoint is yet proven.",
+    "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
+    "application_entrypoint": "Governed Supabase production/proof river with bounded nine-node behavioral acceptance at exact source 335bdd82568e8041d3f6921a9ee4c7bf28e2c99f.",
     "competing_store_policy": "LOCAL_SQLITE_OR_IN_MEMORY_IS_TEST_INFRASTRUCTURE_ONLY"
   },
   "proof_boundary": {
@@ -191,8 +191,8 @@
     "cold_intelligent_block_retrieval": "PROVEN_BOUNDED_SPECIMEN",
     "authority_separation": "PROVEN_BOUNDED_SPECIMEN",
     "independent_outcome_specimen": "PROVEN_BOUNDED_SPECIMEN",
-    "living_application_runtime": "BOUNDED_PROVEN_AT_EXACT_REVISION; UNIVERSAL_BINDING_NOT_PROVEN",
-    "successor_behavioral_improvement": "PROVEN_BOUNDED_SINGLE_TASK",
+    "living_application_runtime": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_EXACT_REVISION; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
+    "successor_behavioral_improvement": "PROVEN_BOUNDED_RELATED_HELDOUT_WITH_UNRELATED_REFUSAL",
     "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
     "bounded_production_proof": {
       "issue": 913,
@@ -201,9 +201,9 @@
       "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
     },
     "current_frontier": {
-      "issue": 978,
-      "state": "OPEN_SECURITY_GAP",
-      "next": "Human Director accepts/rejects checkpoint receipt owner-read / privileged-write RLS boundary in PR #980; production application remains gated by fresh exact-main DEPLOY."
+      "issue": 66,
+      "state": "OPEN_CURRENT_TRUTH_CONTROL_PLANE",
+      "next": "Reconcile stale control-plane pointers and restore fail-closed Current Truth Resolver evidence; then run the authority lifecycle negative matrix."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -228,21 +228,38 @@
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
       "limitation": "One bounded Smart Door operation; universal nine-node runtime binding remains NOT_PROVEN."
+    },
+    "nine_node_behavioral_acceptance": {
+      "status": "PRODUCTION_PROVEN_BOUNDED",
+      "source_revision": "335bdd82568e8041d3f6921a9ee4c7bf28e2c99f",
+      "proof_run": "36632211367",
+      "artifact_id": "11063875114",
+      "artifact_sha256": "f10a35c8f57ac224dfa28cd7b81305a157acf1b1da79a2a1a96dd4598b27a2bc",
+      "scope": "Node-0001 provenance lesson; one graph held-out task; one related generalization task; one unrelated refusal task",
+      "limitation": "Does not establish universal nine-node capability across every task/domain."
+    },
+    "historical_north_star_acceptance": {
+      "status": "ACCEPTED_BOUNDED_SPECIMEN",
+      "historical_run": "36516790588",
+      "audit": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V3.md",
+      "recovery_run": "36632538416",
+      "limitation": "Historical bounded specimen only; later revisions require their own production evidence."
     }
   },
-  "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
+  "last_reconciled_main": "618429b1a77ceb391f179c54e40d50aedb6390f4",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
     "master_plan": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
-    "active_issue": 978,
-    "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
+    "active_issue": 66,
+    "next_proof": "Current Truth Resolver live pass on reconciled control-plane state; then authority lifecycle negative matrix.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
-    "active_node_frontier": "ACT_BOUNDED_LIVE_PROVEN",
-    "next_node_after_law": "ACT",
-    "next_node_after_act": "KNOW"
+    "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
+    "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
+    "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
+    "next_system_frontier": "CURRENT_TRUTH_RESOLVER_THEN_AUTHORITY_LIFECYCLE_MATRIX"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
