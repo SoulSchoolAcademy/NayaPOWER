@@ -37,7 +37,7 @@ def test_law_blocks_consequential_action_without_authority():
     assert result.trace == (Node.SELF, Node.LAW)
 
 
-def test_law_allows_scoped_authority_and_kernel_executes_without_claiming_verification():
+def test_law_allows_scoped_authority_without_fabricating_execution():
     kernel = Kernel()
     context = DecisionContext(
         action="publish_change",
@@ -49,12 +49,15 @@ def test_law_allows_scoped_authority_and_kernel_executes_without_claiming_verifi
 
     assert result.allowed is True
     assert result.blocked_by is None
-    assert result.executed is True
+    assert result.executed is False
     assert result.truth_state is TruthState.UNKNOWN
-    assert result.trace == Kernel.node_order()
+    assert result.trace == (Node.SELF, Node.LAW)
+    assert result.outcome is None
+    assert result.next_state == {}
+    assert "DECISION.authorized_not_executed" in result.evidence
 
 
-def test_execution_records_observation_without_promoting_it_to_verified_outcome():
+def test_decision_does_not_masquerade_as_nine_node_runtime_or_observation():
     kernel = Kernel()
     context = DecisionContext(
         action="reversible_change",
@@ -64,9 +67,15 @@ def test_execution_records_observation_without_promoting_it_to_verified_outcome(
 
     result = kernel.decide(context)
 
-    assert result.evidence
-    assert result.outcome == "executed"
-    assert result.next_state["last_action"] == "reversible_change"
+    assert result.allowed is True
+    assert result.executed is False
+    assert result.evidence == (
+        "LAW.authority:reversible_change",
+        "DECISION.authorized_not_executed",
+    )
+    assert result.outcome is None
+    assert result.next_state == {}
+    assert result.trace == (Node.SELF, Node.LAW)
     assert result.truth_state is TruthState.UNKNOWN
 
 
