@@ -37,3 +37,28 @@ def test_cvo_runtime_persists_and_re_reads_verification():
     assert "OUTCOME_VERIFIED" in source
     assert "independent_verification" in source
     assert "production_action_executed" in source
+
+
+def test_cvo_runtime_has_bounded_independent_outcome_recovery():
+    source = FUNCTION.read_text(encoding="utf-8")
+    assert 'mode === "recover-learning-outcomes"' in source
+    assert "LEARNING_OUTCOME_RECOVERY_PAIR_INVALID" in source
+    assert "LEARNING_OUTCOME_RECOVERY_PARTIAL_STATE" in source
+    assert "INDEPENDENT_RUNTIME_RECOMPUTATION_FROM_PERSISTED_CAUSAL_RECEIPTS" in source
+    assert 'String(control.action).startsWith("NAYA-NODE-0001-CONTROL-")' in source
+    assert 'String(treatment.action).startsWith("NAYA-NODE-0001-TREATMENT-")' in source
+    assert 'taskId !== "NAYA-0001-PROVENANCE-HELDOUT-001"' in source
+    assert 'controlEvidence.outcome?.provenance_preserved === false' in source
+    assert 'treatmentEvidence.outcome?.provenance_preserved === true' in source
+    assert '.from("nayanet_execution_outcomes").insert(rows)' in source
+    assert '"CREATED_AND_REREAD"' in source
+    assert '"REPLAYED_AND_REREAD"' in source
+
+
+def test_outcome_recovery_cannot_create_authority_or_trust_executor_claim():
+    source = FUNCTION.read_text(encoding="utf-8")
+    recovery = source[source.index('if (mode === "recover-learning-outcomes")'):source.index('const {data:treatmentOutcome', source.index('if (mode === "recover-learning-outcomes")'))]
+    assert "nayanet_issue_authority_grant" not in recovery
+    assert "executor_claim_trusted:false" in recovery
+    assert "verified: true" in recovery
+    assert "verifier_token_jti" in recovery
