@@ -73,7 +73,7 @@ def test_cold_successor_accepts_only_a_learning_id():
 
 def test_cold_successor_derives_behavior_from_the_retrieved_block_not_from_input():
     block = _successor()
-    assert 'const lesson = block.content?.lesson' in block
+    assert 'const lesson = successorBlock.content?.lesson' in block
     assert "PRESERVE_PROVENANCE_BEFORE_APPLY" in block
     assert "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE" in block
 
@@ -195,18 +195,16 @@ def test_runtime_still_refuses_non_canonical_branches():
     assert 'payload.ref !== REF' in src
 
 
-def test_cold_successor_is_not_gated_on_the_credential_blocked_job():
-    """Regression: gating this job on the learning-influence verification makes the
-    cold-successor proof permanently unrunnable, because that job needs a rotated
-    owner credential. The successor reads learning_evidence directly, so it must not
-    depend on it -- a proof that can never execute is not a proof."""
+def test_cold_successor_is_gated_on_verified_fresh_learning():
+    """The successor must consume the exact learning that passed independent causal verification,
+    not a historical specimen or an unrelated CONNECT receipt."""
     import yaml
 
     jobs = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))["jobs"]
     needs = jobs["cold-successor"].get("needs")
     needs = [needs] if isinstance(needs, str) else (needs or [])
-    assert "independent-learning-influence-verification" not in needs, (
-        "cold-successor is gated on the owner-credential-blocked job and can never run"
-    )
-    # It must still depend on something real.
-    assert "live-connect" in needs, "cold-successor lost its proof prerequisite"
+    assert "independent-retained-learning-reread" in needs
+    assert "live-connect" not in needs
+    promotion_needs = jobs["learning-promotion"].get("needs")
+    promotion_needs = [promotion_needs] if isinstance(promotion_needs, str) else (promotion_needs or [])
+    assert "independent-learning-influence-verification" in promotion_needs
