@@ -354,7 +354,15 @@ jobs:
                 echo "main moved after producer dispatch; refusing to continue."
                 exit 1
               fi
-              gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
+              for j in $(seq 1 180); do
+                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq ".status+":"+(.conclusion//"")")"
+                case "$state" in
+                  completed:success) break ;;
+                  completed:*) echo "Producer run failed: $state"; exit 1 ;;
+                esac
+                if [ "$j" -eq 180 ]; then echo "Timed out waiting for producer run."; exit 1; fi
+                sleep 5
+              done
               gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,headSha,status,conclusion,event,createdAt,updatedAt,url > producer-run.json
               break
             fi
@@ -397,7 +405,15 @@ jobs:
                 echo "main moved after proof dispatch; refusing to continue."
                 exit 1
               fi
-              gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
+              for j in $(seq 1 180); do
+                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq ".status+":"+(.conclusion//"")")"
+                case "$state" in
+                  completed:success) break ;;
+                  completed:*) echo "Runtime proof run failed: $state"; exit 1 ;;
+                esac
+                if [ "$j" -eq 180 ]; then echo "Timed out waiting for runtime proof run."; exit 1; fi
+                sleep 5
+              done
               gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,headSha,status,conclusion,event,createdAt,updatedAt,url > proof-run.json
               break
             fi
