@@ -1,53 +1,41 @@
 # Operations
 
-**Status:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED
+**Status:** ACTIVE PROJECTION — LIVE EVIDENCE WINS
 
-Owns current operational state, runbooks, deployment/proof state, receipts, and operator procedures.
-
-Current reality must be explicit and time-bounded. **Live `main`, open priority work, runtime evidence, and current proof receipts outrank dated projections when they conflict.**
+This directory owns operational projections, queues, handoffs, deployment/proof state and operator procedures. It is not a second source of truth.
 
 ## Contents
 
 | File | Purpose |
 |---|---|
-| [0001-MAX-10-EXECUTION-QUEUE-V1.md](./0001-MAX-10-EXECUTION-QUEUE-V1.md) | Bounded human-readable dispatch queue; exactly one highest-value frontier at a time |
-| [0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md](./0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md) | AAA execution prompt |
-| [0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md](./0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md) | Human-readable ultimate master execution specification distilled from the multi-AI deep dive |
-| [0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json](./0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json) | Machine-readable projection of the master plan; not a second authority source |
-| [0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md](./0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md) | #944 Phase-1 reconciliation: no new Concept #17 intelligence object; surviving value is proof/test pressure |
-| [2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md](./2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md) | Dated evidence/handoff artifact; useful history, not automatic current-state authority |
+| [0001-MAX-10-EXECUTION-QUEUE-V1.md](./0001-MAX-10-EXECUTION-QUEUE-V1.md) | Current maximum-value Top 10 and exact next action |
+| [0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md](./0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md) | AAA execution protocol |
+| [0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md](./0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md) | Dependency-correct master execution specification |
+| [0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json](./0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json) | Machine projection of the master plan |
+| [0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md](./0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md) | Historical #944 Concept #17 reconciliation evidence |
+| [2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md](./2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md) | Historical dated handoff |
 
 ## Current operating pointer
 
-At the latest live reconciliation used to refresh the master plan:
-
-- #913 is closed on one bounded production-proven specimen at exact revision `0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4`; later revisions do not inherit that proof.
-- PR #946 is merged.
-- #944 remains open.
-- Concept #17 was reconciled as **NO_NEW_CANDIDATE — SOURCE RECONCILED**.
-- #944's second-task generalization, unrelated refusal, independent verification and cold-successor reuse paths are implemented/repository-verified.
-- PR #955 verifier negative-matrix hardening is merged.
-- PR #959 cold-successor ACTIVE + canonical-target retrieval hardening is merged with repository gates green.
-- Governed production promotion run `36514309554` targeted `32b7c9954988befecfbe8c850f523e59a441f44d`, advanced `production` to that SHA, then completed **FAILURE** because no new Supabase GitHub Integration deployment check appeared.
-- The plan refresh observed `faac73abf29c99fc29879f23cd39966439964251` immediately before its projection commit. That SHA is evidence history, not a permanent current-main pointer.
-- Therefore every executor must resolve live `main` from GitHub at execution time, and a successful old-target promotion must not be called current-main production proof.
-- Universal nine-node runtime binding remains **NOT_PROVEN**.
-
-Always re-read current `main` and live runtime evidence before acting.
+- #944: CLOSED.
+- #971: CLOSED.
+- Bounded production proof exists at exact source `2f468c413f4b5c6752878d94ba0f2e1fdfb60147`, proof run `36519233015` attempt 2.
+- Current main must always be resolved live; later revisions do not inherit production proof.
+- #810 is implemented/repository-verified but current-main production proof is pending.
+- #975 recovery is implemented/repository-verified but live recovery is deployment-dependent.
+- #978 is the highest-risk open seam.
+- PR #980 is the prepared checkpoint-ledger RLS hardening; repository gates PASS; Human Director policy acceptance remains required.
 
 ## Operating law
 
-- One canonical responsibility → one canonical owner.
-- Operational files are projections/pointers, not a second brain.
-- A completed proof at one revision is not inherited by later revisions.
-- `UNKNOWN ≠ VERIFIED`.
-- `BLOCKED ≠ PASS`.
-- `IMPLEMENTED ≠ VERIFIED`.
-- `VERIFIED ≠ PRODUCTION_PROVEN`.
-- `RETRIEVED ≠ AUTHORIZED`.
-- Stop at the first broken proof rung.
-- Every completed unit leaves evidence, limitations, and exactly one next executable action.
+`UNKNOWN ≠ PASS`  
+`BLOCKED ≠ PASS`  
+`IMPLEMENTED ≠ VERIFIED`  
+`VERIFIED ≠ PRODUCTION_PROVEN`  
+`RETRIEVED ≠ AUTHORIZED`
 
-## Current next action
+Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
-**Complete the Supabase GitHub Integration boundary required by the governed promotion. Then resolve live `main` from GitHub at dispatch time, promote that exact SHA, and let the canonical production proof river continue until the next real failing rung.**
+## Exact next action
+
+**Human Director accepts or rejects PR #980's owner-read / privileged-write checkpoint RLS policy.**
