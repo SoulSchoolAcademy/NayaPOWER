@@ -47,7 +47,7 @@ async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
 async function readBlock(admin:ReturnType<typeof adminClient>,id:string){
   if(!id) return null;
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
-    .select("intelligent_block_id,owner_id,status,understanding_state,applicable_scope,provenance,evidence_refs,superseded_by_block_id")
+    .select("intelligent_block_id,owner_id,status,understanding_state,applicable_scope,content,provenance,evidence_refs,superseded_by_block_id")
     .eq("intelligent_block_id",id).eq("owner_id",OWNER_ID).maybeSingle();
   if(error) throw error;
   return data as ProveBlock|null;
