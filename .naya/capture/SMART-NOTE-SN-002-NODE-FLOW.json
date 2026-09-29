@@ -17,7 +17,9 @@
     "topic_slug": "smart-note-node-operating-flow",
     "subtopic_slug": "end-to-end-protocol",
     "human_director_authorized_publication": true,
-    "publication_scope": "PUBLIC_DERIVED_VIEW"
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "verification_revision": 2,
+    "verification_note": "Re-trigger SN-002 after authorized-public-projection verifier repair."
   },
   "intelligence": {
     "essence": "A Smart Note is the human command that starts a governed intelligence lifecycle. The durable machine intelligence is an Intelligent Block. The Nine Master Nodes are processing responsibilities that interpret, govern, retrieve, prove, connect, act on, verify, learn from, and carry that intelligence forward. GitHub Brain is the human-readable memory projection; Supabase is runtime persistence; the Hub is the visual personal/collective projection. All are views or processing layers around one intelligence identity, not competing brains.",
