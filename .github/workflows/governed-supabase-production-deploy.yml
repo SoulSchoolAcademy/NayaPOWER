@@ -491,6 +491,8 @@ jobs:
           assert receipt["machine_deployment"]["supabase_check_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
+          assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
+          assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
           json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
           PY
           cat production-promotion-receipt.json
