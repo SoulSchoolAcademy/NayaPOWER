@@ -1,0 +1,163 @@
+name: Live KNOW Node Proof
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  KNOW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-know-runtime
+
+jobs:
+  contextual-retrieval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Mint governed KNOW identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Context selects canonical retained provenance intelligence
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > selected-request.json <<'JSON'
+          {
+            "mode":"retrieve",
+            "target":"NAYA-NODE-0001",
+            "task_context":"Preserve exact provenance and source lineage before using a learned record."
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @selected-request.json "$KNOW_RUNTIME" > selected.json
+          python - <<'PY'
+          import json
+          x=json.load(open("selected.json"))
+          assert x["ok"] is True, x
+          assert x["status"]=="SELECTED", x
+          assert x["authority_created"] is False, x
+          assert x["decision"]["selected"]["intelligent_block_id"], x
+          assert x["decision"]["selected"]["provenance"], x
+          assert x["decision"]["selected"]["evidence_refs"], x
+          assert x["handoff_to"]=="NAYA-KERNEL-PROVE", x
+          json.dump({"selected_receipt_id":x["receipt"]["id"]},open("ids.json","w"),indent=2)
+          PY
+
+      - name: Unrelated context returns bounded miss
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > miss-request.json <<'JSON'
+          {
+            "mode":"retrieve",
+            "target":"NAYA-NODE-0001",
+            "task_context":"Compute arithmetic total seven plus five."
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @miss-request.json "$KNOW_RUNTIME" > miss.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("miss.json"))
+          assert x["ok"] is True, x
+          assert x["status"]=="MISS", x
+          assert x["decision"]["reason"]=="NO_APPLICABLE_CANONICAL_INTELLIGENCE", x
+          assert x["authority_created"] is False, x
+          ids["miss_receipt_id"]=x["receipt"]["id"]
+          json.dump(ids,open("ids.json","w"),indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: know-primary-proof
+          path: |
+            selected-request.json
+            selected.json
+            miss-request.json
+            miss.json
+            ids.json
+
+  independent-know-verification:
+    needs: contextual-retrieval
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: know-primary-proof
+
+      - name: Mint fresh independent verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Reread canonical state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          json.dump({
+            "mode":"inspect",
+            "selected_receipt_id":ids["selected_receipt_id"],
+            "miss_receipt_id":ids["miss_receipt_id"]
+          },open("inspect-request.json","w"))
+          PY
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @inspect-request.json "$KNOW_RUNTIME" > authoritative-reread.json
+
+      - name: Independently recompute selection and miss
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'JS'
+          import fs from "node:fs";
+          import {selectKnow} from "./supabase/functions/nayanet-know-runtime/know.ts";
+          const x=JSON.parse(fs.readFileSync("authoritative-reread.json","utf8"));
+          if(!x.ok) throw new Error(JSON.stringify(x));
+          const s=x.selected_receipt, m=x.miss_receipt, candidates=x.candidates;
+          const req=(r)=>({
+            owner_id:r.user_id,
+            naya_id:"NAYA-NODE-0001",
+            target:r.evidence.request.target,
+            task_context:r.evidence.request.task_context
+          });
+          const sd=selectKnow(req(s),candidates);
+          const md=selectKnow(req(m),candidates);
+          const checks={
+            selected_recomputed:sd.status==="SELECTED" && sd.selected.intelligent_block_id===s.evidence.decision.selected_intelligent_block_id,
+            miss_recomputed:md.status==="MISS" && m.evidence.decision.selected_intelligent_block_id===null,
+            provenance_present:Boolean(sd.selected.provenance && sd.selected.evidence_refs?.length),
+            scope_preserved:sd.selected.owner_id===s.user_id,
+            authority_not_created:s.evidence.retrieval_grants_authority===false && m.evidence.retrieval_grants_authority===false,
+            independent_runtime_identity:x.token_jti!==s.evidence.runtime_jti
+          };
+          if(!Object.values(checks).every(Boolean)) throw new Error(JSON.stringify(checks));
+          fs.writeFileSync("know-live-proof.json",JSON.stringify({
+            schema:"naya.know.live-proof.v1",
+            status:"PASS",
+            node_id:"NAYA-KERNEL-KNOW",
+            checks,
+            selected_intelligent_block_id:sd.selected.intelligent_block_id,
+            independent_verification:true,
+            executor_claim_trusted_as_verification:false,
+            limits:[
+              "Bounded contextual KNOW retrieval only.",
+              "Does not prove general semantic retrieval, CONNECT, PROVE, VERIFY, LEARN, EVOLVE or universal nine-node binding."
+            ]
+          },null,2));
+          JS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: know-independent-proof
+          path: |
+            authoritative-reread.json
+            know-live-proof.json
