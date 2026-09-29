@@ -102,12 +102,15 @@ jobs:
       # --- Brain schema migration coherence -----------------------------------
       # PR #881 recovered 88 migrations the 2026-09-26 reset had deleted. Recovering a
       # file is not proving it is sound. This gate asks whether those migrations can
-      # rebuild the brain schema from empty. They cannot: 11 core tables, including the
+      # rebuild the brain schema from empty. They cannot: core tables, including the
       # canonical event store and the Intelligent Block identity table, are created by
       # no migration at all. Same discipline as above -- fail on regression, not on the
-      # known defect, so the count can never silently grow.
+      # known defect, so the debt can never silently grow.
       - name: Prove the migration gate discriminates (controls)
         run: python BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py
+
+      - name: Prove the baseline enforcement discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-baseline-controls.py
 
       - name: Measure brain schema migration coherence
         id: coherence
@@ -115,41 +118,42 @@ jobs:
           set +e
           python BRAIN/12-ENGINEERING/verify-migration-coherence.py | tee migration-coherence.txt
           set -e
-          # Sum the per-class counts in the SUMMARY line. Done in python rather than
-          # with bc/paste so the gate adds no shell dependency to the runner.
-          defects=$(python - <<'PY'
-          import re, sys
-          try:
-              line = next(l for l in open('migration-coherence.txt', encoding='utf-8')
-                          if l.startswith('  SUMMARY:'))
-          except StopIteration:
-              print(0); raise SystemExit
-          print(sum(int(n) for n in re.findall(r'=(\d+)', line)))
-          PY
-          )
-          echo "defects=${defects:-0}" >> "$GITHUB_OUTPUT"
-          echo "Measured $defects migration coherence defect(s)."
-
-      - name: Enforce no regression in migration defects
-        if: always()
-        run: |
+          # Machine-readable form, so the baseline check compares finding IDENTITIES
+          # rather than a bare count. A count cannot be regressed against safely: it
+          # says nothing about which table regressed.
+          #
+          # The gate exits 1 when it FINDS defects, which is its normal behaviour and is
+          # not itself a build failure -- the debt is expected and recorded. Only an
+          # exit above 1 means the instrument itself broke, and that must stop the build,
+          # because otherwise a broken instrument silently reports zero findings.
           set +e
-          python BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py | tail -6
-          python - <<'PY'
-          import json, os, sys, pathlib
-          base_file = pathlib.Path('BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json')
-          base = json.loads(base_file.read_text(encoding='utf-8'))
-          measured = int(os.environ['MEASURED'])
-          floor = int(base['defect_floor'])
-          print(f'migration defect floor={floor}  measured={measured}')
-          if measured > floor:
-              print(f'REGRESSION: migration defect count grew above the recorded floor of {floor}.')
-              sys.exit(1)
-          if measured < floor:
-              print(f'IMPROVEMENT: {measured} defects is below the recorded floor of {floor}. '
-                    f'Lower the floor deliberately once the missing CREATE migrations land.')
-          print('No regression in migration coherence.')
-          PY
-          exit 0
-        env:
-          MEASURED: ${{ steps.coherence.outputs.defects }}
+          python BRAIN/12-ENGINEERING/verify-migration-coherence.py --json > migration-coherence.json
+          json_rc=$?
+          set -e
+          if [ "$json_rc" -gt 1 ]; then
+            echo "FAIL: the migration gate itself errored (exit $json_rc); its measurement cannot be trusted."
+            exit "$json_rc"
+          fi
+          defects=$(python -c "import json;print(json.load(open('migration-coherence.json'))['defect_count'])")
+          echo "defects=${defects:-0}" >> "$GITHUB_OUTPUT"
+          echo "Measured $defects migration coherence defect(s) (gate exit $json_rc: defects found, as recorded)."
+
+      # This step previously began with `set +e` and ended with an unconditional
+      # `exit 0`, which made it incapable of failing. It printed a real regression
+      # ("floor=11 measured=14") on run 36501228953 and the job still succeeded, so new
+      # migration debt reached main unnoticed. There is no `set +e` and no `exit 0` here
+      # now: the script's exit status is the step's exit status.
+      - name: Enforce no unrecorded migration debt
+        if: always()
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-baseline.py . migration-coherence.json
+
+      - name: Upload migration coherence report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-coherence
+          path: |
+            migration-coherence.txt
+            migration-coherence.json
+          if-no-files-found: error
+          retention-days: 90

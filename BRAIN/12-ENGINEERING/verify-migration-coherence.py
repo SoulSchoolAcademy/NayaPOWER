@@ -134,11 +134,15 @@ def main() -> int:
     # every control silently measured the real repository instead of its fixture and
     # reported vacuous passes. A measurement instrument that cannot be pointed at a
     # fixture cannot be proven to discriminate.
-    root = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT
+    argv = [a for a in sys.argv[1:] if a != '--json']
+    as_json = '--json' in sys.argv[1:]
+    root = Path(argv[0]).resolve() if argv else ROOT
     mig_dir = root / MIGRATIONS_REL
     if not mig_dir.is_dir():
+        # Exit 2, not 1: the instrument could not measure. 1 means "defects found",
+        # which is expected and recorded, and callers must not confuse the two.
         print(f'FAIL: {MIGRATIONS_REL} is absent; the schema cannot be rebuilt.', file=sys.stderr)
-        return 1
+        return 2
 
     files = sorted(mig_dir.glob('*.sql'))
     findings: list[dict] = []
@@ -236,6 +240,24 @@ def main() -> int:
         })
 
     # --- report ---------------------------------------------------------------
+    # A count cannot be regressed against responsibly: it says nothing about WHICH
+    # table regressed, so new debt can hide inside an unchanged total. The JSON form
+    # carries the class and object of every finding so the baseline check compares
+    # identities, not magnitudes.
+    if as_json:
+        print(json.dumps({
+            'migrations_inspected': len(files),
+            'tables_created': len(created),
+            'tables_dropped': len(dropped),
+            'defect_count': len(findings),
+            'findings': sorted(
+                ({'class': f['class'], 'object': f['object'], 'detail': f['detail']}
+                 for f in findings),
+                key=lambda f: (f['class'], f['object']),
+            ),
+        }, indent=2, sort_keys=True))
+        return 1 if findings else 0
+
     print('BRAIN SCHEMA MIGRATION COHERENCE - MEASURED')
     print(f'  migrations inspected : {len(files)}')
     print(f'  tables created       : {len(created)}')
