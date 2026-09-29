@@ -107,7 +107,7 @@
       "live_proof": "PENDING"
     },
     "PROVE": {
-      "status": "IMPLEMENTED_SOURCE_CI_PENDING",
+      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
       "entrypoint": "supabase/functions/nayanet-prove-runtime/index.ts",
       "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
       "consumes": "fresh persisted nayanet_execution_receipts.action=know_context_retrieval handoff",
@@ -117,7 +117,12 @@
       "authority_rule": "proof does not create authority",
       "epistemic_rule": "claim strength never exceeds evidence strength; conflicts block promotion",
       "handoff_to": "NAYA-KERNEL-CONNECT",
-      "live_proof": "PENDING"
+      "live_proof": "PENDING",
+      "repository_tests": {
+        "kernel_tests_run": 36627017872,
+        "collective_chain_readiness_run": 36627018411,
+        "status": "PASS"
+      }
     }
   },
   "next_node_after_law": "ACT",
