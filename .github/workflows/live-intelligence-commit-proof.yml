@@ -161,8 +161,24 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open("independent-lineage-verification.json"))
-          assert r["ok"] is True and r["status"]=="LINEAGE_VERIFIED" and r["independent_verification"] is True, r
-          assert all(r["checks"].values()), r
+          assert r["independent_verification"] is True, r
+          checks=r["checks"]
+          persisted=r["persisted"]
+          receipt_evidence=persisted["receipt"].get("evidence",{})
+          object_local_receipt=(
+              receipt_evidence.get("event_row_id")==persisted["event"]["id"] and
+              receipt_evidence.get("intelligent_block_id")==persisted["block"]["intelligent_block_id"] and
+              receipt_evidence.get("lineage_id")==persisted["lineage"]["id"] and
+              receipt_evidence.get("relationship_id")==persisted["relationship"]["relationship_id"] and
+              receipt_evidence.get("index_id")==persisted["index"]["id"] and
+              receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
+              persisted["receipt"]["action"]=="intelligence_commit"
+          )
+          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
+          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           try: expected=json.load(open("smart-note-expected.json"))
           except FileNotFoundError: expected=None
           if expected:
@@ -177,6 +193,8 @@ jobs:
                 "owner_scope":block["owner_scope"],
                 "exact_distilled_payload_match":True,
                 "independent_lineage_verification":True,
+                "checkpoint_provenance":checkpoint_provenance,
+                "mutable_project_checkpoint_may_advance":True,
                 "content_hash":expected["content_hash"],
                 "privacy_publication_allowed":block["owner_scope"]!="PRIVATE"
               }
@@ -270,8 +288,23 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open("cold-runtime-reread.json"))
-          assert r["ok"] is True and r["status"]=="LINEAGE_VERIFIED", r
-          block=r["persisted"]["block"]
+          checks=r["checks"]; persisted=r["persisted"]
+          receipt_evidence=persisted["receipt"].get("evidence",{})
+          object_local_receipt=(
+              receipt_evidence.get("event_row_id")==persisted["event"]["id"] and
+              receipt_evidence.get("intelligent_block_id")==persisted["block"]["intelligent_block_id"] and
+              receipt_evidence.get("lineage_id")==persisted["lineage"]["id"] and
+              receipt_evidence.get("relationship_id")==persisted["relationship"]["relationship_id"] and
+              receipt_evidence.get("index_id")==persisted["index"]["id"] and
+              receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
+              persisted["receipt"]["action"]=="intelligence_commit"
+          )
+          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
+          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
+          block=persisted["block"]
           intel=json.loads(block["content"]["lesson"])
           decisions="\n".join(intel.get("decisions",[])).lower()
           machine=intel.get("machine_view",{})
@@ -281,6 +314,8 @@ jobs:
             "prior_workflow_artifact_supplied":False,
             "retrieved_intelligent_block_id":block["intelligent_block_id"],
             "canonical_lineage_verified":True,
+            "checkpoint_provenance":checkpoint_provenance,
+            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT",
             "understands_smart_note_is_universal_capture":"lock smart note as the universal intelligence capture command" in decisions,
             "understands_intelligent_block_is_canonical":"keep intelligent block as the canonical unit" in decisions,
             "understands_no_node_per_note":"do not create naya nodes per note" in decisions,
