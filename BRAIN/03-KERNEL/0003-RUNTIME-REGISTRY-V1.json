@@ -99,11 +99,12 @@
       "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts",
       "reads": "nayanet_intelligent_blocks",
       "writes": "nayanet_execution_receipts.action=know_node_retrieval|know_node_miss|know_node_refusal",
-      "request_contract": "task_context + target only; caller-supplied block/answer/intelligence forbidden",
+      "request_contract": "AUTHORIZED LAW receipt + task_context + target; caller-supplied block/answer/intelligence forbidden",
       "selection": "owner/scope + lifecycle eligibility + provenance + deterministic contextual applicability",
       "authority_law": "retrieval_grants_authority=false",
       "handoff_to": "NAYA-KERNEL-PROVE",
-      "proof": "PENDING_LIVE_PROOF"
+      "proof": "PENDING_LIVE_PROOF",
+      "authorization": "Fresh LAW receipt and live authority are revalidated before private canonical retrieval; retrieval itself creates no authority."
     }
   },
   "next_node_after_law": "ACT",
