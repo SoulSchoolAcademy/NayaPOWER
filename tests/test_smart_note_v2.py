@@ -22,7 +22,7 @@ def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["scope"] == "PRIVATE"
-    assert entry["smart_link_status"] == "PENDING_PRIVATE_PROJECTION"
+    assert entry["smart_link_status"] == "ACTIVE"
     assert entry["provenance"]["receipt_id"] == "faa4345a-aacd-43f2-ab2f-a991b9681979"
 
 def test_nia_language_has_primary_command_and_safe_ceiling():
