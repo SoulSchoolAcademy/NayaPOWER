@@ -116,6 +116,43 @@ jobs:
               time.sleep(10)
           PY
 
+          cat > standing-policy-context.json <<JSON
+          {
+            "repository": "$REPO",
+            "source_branch": "main",
+            "source_sha": "$GITHUB_SHA",
+            "target_branch": "production",
+            "changed_paths": [],
+            "requested_operation": "PROMOTE_PRODUCTION",
+            "policy_active": true,
+            "policy_not_expired": true,
+            "policy_not_revoked": true,
+            "required_ci": true,
+            "required_tests": true,
+            "required_security_checks": true,
+            "no_unresolved_production_blocker": true,
+            "source_revision_identified": true,
+            "deployment_artifact_provenance_bound": true,
+            "production_target_exact": true,
+            "deployment_mechanism_authorized": true,
+            "concurrency_safe": true,
+            "deployment_check_required": true,
+            "source_runtime_parity_required": true,
+            "canonical_runtime_proof_required": true
+          }
+          JSON
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from tools.standing_production_promotion_policy import evaluate_policy
+          policy=json.loads(Path(".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json").read_text(encoding="utf-8"))
+          context=json.loads(Path("standing-policy-context.json").read_text(encoding="utf-8"))
+          result=evaluate_policy(policy, context)
+          print(result)
+          if result["decision"] != "ALLOW":
+              raise SystemExit("FAIL CLOSED: machine policy evaluator denied the automatic promotion.")
+          PY
+
           echo "standing production policy preconditions: PASS"
           echo "automatic production promotion is authorized for this candidate."
 
