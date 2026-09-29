@@ -19,10 +19,11 @@ def test_live_generalization_chain_reuses_existing_runtime_and_learning_pipeline
         assert job in raw
 
     assert "?mode=learning-generalization" in raw
-    assert '"mode":"verify-generalization"' not in raw  # request is constructed by Python, not hard-coded JSON text
-    assert '"mode":"verify-generalization"' not in raw.replace(" ", "")
-    assert '"mode": "verify-generalization"' not in raw
-    assert '"mode":"candidate"' in raw.replace(" ", "") or '"mode":"candidate"' in raw
+    # The independent verifier request must explicitly select the existing verifier
+    # mode; the workflow builds this JSON via Python json.dump rather than a second
+    # verification service or pipeline.
+    assert '"mode":"verify-generalization"' in raw.replace(" ", "")
+    assert '"mode":"candidate"' in raw.replace(" ", "")
     assert "nayanet-causal-learning-experiment" in raw
     assert "nayanet-learning-verify" in raw
 
@@ -47,10 +48,7 @@ def test_live_generalization_chain_contains_related_and_unrelated_tasks():
 def test_independent_generalization_verifier_must_bite():
     raw = _workflow()
     block = raw.split("  independent-active-learning-generalization:", 1)[1].split("\n  cold-successor-generalization:", 1)[0]
-    assert '"mode":"verify-generalization"' not in block  # built via json.dump
-    assert '"mode":"verify-generalization"' not in block.replace(" ", "")
-    assert '"mode":"verify-generalization"' not in block
-    assert '"verify-generalization"' in block
+    assert '"mode":"verify-generalization"' in block.replace(" ", "")
     assert 'v["independent_verification"] is True' in block
     assert 'v["executor_claim_trusted"] is False' in block
     assert 'v["recomputed"]["related_causal_supported"] is True' in block
