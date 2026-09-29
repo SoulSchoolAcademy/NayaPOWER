@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-protocol.v2",
-  "version": "2.0",
+  "version": "2.1",
   "status": "CANONICAL",
   "human_term": "Smart Note",
   "canonical_machine_target": "INTELLIGENT_BLOCK",
@@ -116,9 +116,29 @@
   ],
   "nia_language_contract": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
   "projection": {
-    "canonical_pattern": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/subtopic/IB-.../smart-note.md",
+    "canonical_pattern": "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md",
     "source_of_truth": "INTELLIGENT_BLOCK",
-    "smart_link_target": "smart-note.md",
-    "machine_registry": ".naya/memory/smart-notes/index.json"
-  }
+    "primary_human_projection": "GITHUB_BRAIN_MARKDOWN",
+    "primary_smart_link_target": "DIRECT_GITHUB_MARKDOWN",
+    "private_fallback": "AUTHENTICATED_PRIVATE_PROJECTION",
+    "machine_registry": ".naya/memory/smart-notes/index.json",
+    "human_sections": [
+      "IN_A_NUTSHELL",
+      "HUMAN_NOTE",
+      "CHILD_NOTE",
+      "GRANDMA_NOTE",
+      "NAYA_NOTE",
+      "MACHINE_NOTE",
+      "LEARNING_LESSON",
+      "WHAT_IT_MEANS",
+      "WHATS_IN_IT_FOR_YOU",
+      "HOW_TO_APPLY",
+      "HOW_IT_CONNECTS",
+      "KEY_DECISIONS",
+      "PROOF_PROVENANCE",
+      "TRUTH_BOUNDARY",
+      "NEXT_ACTION"
+    ]
+  },
+  "smart_link_law": "Return the direct GitHub Brain Markdown link as the primary human receipt whenever publication is authorized; otherwise return an authenticated private human projection."
 }
