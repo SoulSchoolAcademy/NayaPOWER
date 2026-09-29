@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "This JSON is a machine-readable projection of the human-readable master plan, not a second authority source.",
-  "source_main": "b5fb89a7b5f40db15be364047b3e94697830c936",
+  "source_main": "18c5d53eb22ddd1ce817459e4e64c43df382b4a3",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "truth_laws": [
     "UNKNOWN != PASS",
@@ -25,7 +25,15 @@
     "issue_944": {
       "state": "OPEN",
       "phase_1": "NO_NEW_CANDIDATE_SOURCE_RECONCILED",
-      "evidence": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md"
+      "evidence": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
+      "phase_2_source": "IMPLEMENTED_REPOSITORY_VERIFIED",
+      "live_production": "NOT_YET_PROVEN",
+      "merged_prs": [
+        949,
+        950,
+        951,
+        952
+      ]
     },
     "smart_node_machine_object": "INTELLIGENT_BLOCK",
     "universal_runtime_binding": "NOT_PROVEN"
@@ -51,31 +59,31 @@
     },
     {
       "id": "P0.4",
-      "status": "NEXT",
+      "status": "IMPLEMENTED_REPOSITORY_VERIFIED",
       "name": "Identifier-only retrieval plus applicability generalization",
       "proof": "Existing ACTIVE intelligence improves a new related held-out task and leaves an unrelated task unaffected."
     },
     {
       "id": "P0.5",
-      "status": "QUEUED",
+      "status": "IMPLEMENTED_REPOSITORY_VERIFIED",
       "name": "Causal behavioral effect",
       "proof": "Same task WITHOUT/WITH retained intelligence yields predeclared measurable delta."
     },
     {
       "id": "P0.6",
-      "status": "QUEUED",
+      "status": "IMPLEMENTED_REPOSITORY_VERIFIED",
       "name": "Independent verification",
       "proof": "Verifier reconstructs persisted evidence; forged/no-effect treatment cannot pass."
     },
     {
       "id": "P0.7",
-      "status": "QUEUED",
+      "status": "IMPLEMENTED_REPOSITORY_VERIFIED",
       "name": "Correct refusal",
       "proof": "Unrelated task does not inherit the lesson."
     },
     {
       "id": "P0.8",
-      "status": "QUEUED",
+      "status": "IMPLEMENTED_REPOSITORY_VERIFIED",
       "name": "Cold successor reuse",
       "proof": "Successor retrieves and uses intelligence without authority inheritance."
     }
@@ -100,6 +108,8 @@
   ],
   "next_action": {
     "issue": 944,
-    "instruction": "Use the existing ACTIVE #913 learning and existing canonical river to design the smallest second-held-out related task plus unrelated-task refusal experiment. Reuse the current learning-influence/cold-successor proof path; stop at the first hard-coded seam and repair only that seam."
+    "requires_human_authorization": true,
+    "exact_authorization_input": "DEPLOY",
+    "instruction": "Run Governed Production Promotion for exact current main. Require a new successful Supabase GitHub Integration deployment check, canonical producer success, canonical Live Supabase Runtime Proof success, and the new bounded generalization/successor proof artifact before any production PASS."
   }
 }
