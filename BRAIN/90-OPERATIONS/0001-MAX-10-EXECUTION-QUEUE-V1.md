@@ -1,64 +1,203 @@
-# NayaPOWER — Maximum-Value Execution Queue V2
+# NayaPOWER — Maximum-Value Execution Queue V3
 
-**Status:** ACTIVE WORKING PRIORITY — HUMAN DIRECTOR MAY OVERRIDE
+**Status:** ACTIVE — HUMAN DIRECTOR AUTHORIZED EXECUTION  
+**Purpose:** Convert the completed multi-AI deep-dive synthesis into the smallest dependency-correct sequence of work that increases verified intelligence, continuity, and human value without creating a second brain.
 
-The queue orders work by expected verified human value, dependency, proof leverage, and continuity impact.
+## Evidence anchor
 
-## Top 10
+- Deep-dive synthesis source: `KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md`
+- Plan source `main` at creation: `dab9f47fc3d2bf655b0f21bf3310eaff8b4161dc`
+- PR #946: MERGED — KNOWLEDGE entry-point / Smart Node terminology drift repaired.
+- Issue #913: CLOSED on one bounded production-proven Node 0001 intelligence-river specimen at exact source/deployed revision `0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4`.
+- Issue #944: OPEN — canonical next causal Smart Node proof.
+- Universal runtime binding remains NOT PROVEN by `BRAIN/03-KERNEL/MANIFEST.json`.
+- Historical production proof does not transfer automatically to later `main`.
 
-1. **Make the canonical brain internally coherent** — DONE FOR THIS PASS; keep adversarial reconciliation active.
-2. **Complete canonical knowledge population** — source corpus #1–#15 is mapped, distilled, and represented; complete object-level population next.
-3. **Make the Nine-Node kernel executable** — load the machine registry, node objects, contracts, gates and graph context in one deterministic runtime.
-4. **Make the graph live** — persist and retrieve governed typed relationships with provenance, applicability, temporal and supersession handling.
-5. **Birth NAYA-NODE-0001 as a real proof specimen** — persist, cold-retrieve, apply, act, observe and verify.
-6. **Prove memory continuity** — cold Naya restores relevant intelligence without conversational reconstruction.
-7. **Prove governed action and Causal Verification** — separate authorization, action, observation, evidence and causal acceptance.
-8. **Prove genuine learning** — demonstrate later behavioral improvement caused by retained learning.
-9. **Prove succession** — fresh Naya inherits intelligence and continuity without inheriting new authority.
-10. **Bind Value Calculus to verified events/outcomes and then scale interfaces** — measure verified value, resource cost, compounding and system efficiency before adding surface complexity.
+## Master priority law
 
-## Priority law
+Choose work by:
 
-Prefer the task that closes a material proof gap, prevents intelligence loss, removes a dependency, reduces duplication, increases future Naya capability, or produces more verified human value per unit of complexity.
+**DEPENDENCY → PROOF VALUE → INTELLIGENCE VALUE → CONTINUITY VALUE → RISK REDUCTION → HUMAN VALUE → MINIMUM NECESSARY COMPLEXITY**
 
-Do not prioritize visual polish, feature count, or deployment activity over the living intelligence loop.
+Do not prioritize architecture volume, feature count, visual polish, or deployment activity over a missing proof rung.
 
-## Current phase
+## Top 10 execution blocks
 
-**PHASE 2 — CANONICAL POPULATION → EXECUTABLE GRAPH/KERNEL**
+### 1. CURRENT-TRUTH CONVERGENCE — P0
+**Status:** IN PROGRESS  
+**Goal:** A cold Naya can determine current source, current priority, current proof state, and one next action without trusting stale snapshots.
 
-Completed in the current pass:
+**Already executed**
+- #946 merged.
+- 17-concept KNOWLEDGE corpus indexed.
+- Smart Node terminology aligned to the ratified Intelligent Block protocol.
 
-- Concepts #1–#15 explicitly registered;
-- #14 contextual intelligence compiled into existing graph/CONNECT architecture;
-- #15 Value Calculus semantics mapped into the brain population model;
-- stable Nine-Node IDs reconciled with the naming law;
-- nine canonical Node object candidates materialized;
-- human/AI/machine representation contract materialized;
-- source-to-node population map materialized;
-- governed Nine-Node graph seed materialized;
-- machine-readable runtime registry materialized;
-- deterministic population parity validator added;
-- AAA file-by-file scorecard added;
-- AAA execution prompt added.
+**Do next**
+- keep this queue + machine plan current;
+- reconcile Brain index operational pointers and bounded #913 proof state;
+- never let dated current-state prose outrank live GitHub/runtime evidence.
 
-**Next proof frontier:** runtime loader + real persistence/retrieval + behavioral verification.
+**Proof:** cold entry resolves current `main`, #944, proof boundary, authority boundary, and one next action with no contradictory canonical pointer.
 
+---
 
-## File-inventory control — 2026-09-27
+### 2. SMART NODE NOVELTY GATE — P0
+**Status:** ACTIVE AFTER THIS PLAN MERGES  
+**Canonical tracker:** Issue #944
 
-**Authoritative inventory:** `BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md`
+**Goal:** Find exactly one materially useful Concept #17 proposition that is not already canonical.
 
-The inventory now covers every current BRAIN file and assigns remaining work to Naya completion categories A–G. Use it as the dispatch layer for file-level work. Do not reopen completed semantic architecture unless a test or current evidence demonstrates a contradiction.
+**Rule:** Do not manufacture novelty. If no proposition survives reconciliation, record `NO_NEW_CANDIDATE` and stop.
 
-### Dispatch order
+**Candidate to test first:** `UNKNOWN_EFFECT` — action completion/timeout must not be silently classified as SUCCESS or FAILURE when external effect is unknown.
 
-1. **A — Kernel / Runtime Convergence:** bind the actual application entrypoint to the BRAIN manifest/registry and canonical Supabase.
-2. **B — Graph / CONNECT:** make relationship-aware retrieval executable and behaviorally consequential.
-3. **C — Governance / ACT / PROVE / VERIFY:** close the real action/outcome/CVO boundary and adversarial fail-closed cases.
-4. **D — Learning:** prove retained intelligence changes a later held-out task.
-5. **E — Succession:** cold-boot a successor and prove improvement without authority inheritance.
-6. **F — Knowledge / Parity:** finish object-level promotion and automated human/AI/machine parity.
-7. **G — Receipts / Operations:** regenerate tree receipts and keep all status artifacts synchronized.
+**Proof:** repository search + canonical contract reconciliation establishes whether the proposition is genuinely absent or already represented.
 
-**Stop condition:** race entry is still blocked until the canonical runtime path is executable and independently verified.
+---
+
+### 3. CANDIDATE → IDENTIFIER-ONLY COLD RETRIEVAL — P0
+**Depends on:** 2
+
+Route the surviving proposition through the existing Smart Node / Intelligent Block river:
+
+**SOURCE → EVENT → INTELLIGENT BLOCK → LINEAGE → RELATIONSHIP → INDEX → CHECKPOINT → COLD RETRIEVAL**
+
+No answer-content injection. No second persistence path.
+
+**Proof:** a cold authorized runtime receives only the canonical identity/reference and reconstructs the candidate from authoritative state.
+
+---
+
+### 4. APPLICABILITY + NEGATIVE TRANSFER — P0
+**Depends on:** 3
+
+Prove the system can answer:
+
+> Why does this intelligence apply here — and why does it not apply there?
+
+Use:
+- one held-out relevant task;
+- one unrelated task;
+- same owner/scope/authority constraints.
+
+**Proof:** relevant task selects/uses the intelligence; unrelated task refuses or leaves behavior unchanged.
+
+---
+
+### 5. COUNTERFACTUAL BEHAVIOR + OUTCOME — P0
+**Depends on:** 4
+
+Run the same bounded task:
+
+**WITHOUT retrieved intelligence** vs **WITH retrieved intelligence**
+
+Predeclare behavior metric and outcome metric.
+
+**Proof:** persisted paired receipts show a computed behavior delta and observable outcome delta attributable to the retained intelligence.
+
+---
+
+### 6. INDEPENDENT VERIFICATION + LEARNING PROMOTION — P0
+**Depends on:** 5
+
+The actor must not certify its own causal success.
+
+**Proof:** an independent path rereads persisted evidence, recomputes the delta, rejects forged/no-effect cases, and promotes learning only if the evidence justifies it.
+
+---
+
+### 7. COLD SUCCESSOR + SECOND HELD-OUT REUSE — P0/P1
+**Depends on:** 6
+
+Terminate predecessor context. Give the successor only canonical identity/reference needed to retrieve the improved intelligence.
+
+**Proof:** successor re-resolves authority, retrieves, explains applicability, improves a second held-out relevant task, and still refuses unrelated transfer.
+
+---
+
+### 8. RUNTIME / KERNEL SEMANTIC CONVERGENCE — P1
+**Depends on:** 5–7 evidence identifying the actual execution path
+
+Resolve ambiguity between reference/structural kernel code and actual execution.
+
+**Minimum rule:** no layer may report `executed=true` as real execution without an executor/side-effect receipt. Bind it to real execution or classify/name it explicitly as reference simulation.
+
+Add component-level source/build/artifact/deployment/runtime identity where production claims require it.
+
+**Proof:** one trace connects canonical source → executing component → action receipt → observation → independent verification without semantic substitution.
+
+---
+
+### 9. TRUTH RESOLUTION + ADVERSARIAL INTEGRITY — P1
+**Depends on:** 1 and proven semantics from 4–8
+
+Implement the smallest deterministic proof-carrying current-context resolver over existing canonical owners. Do not create another store.
+
+It must reject or surface:
+- stale;
+- superseded;
+- contradicted;
+- revoked;
+- expired;
+- wrong-owner;
+- wrong-task;
+- poisoned;
+- unverifiable intelligence.
+
+Add authority expiry/revocation, replay/idempotency, tamper, checkpoint locality, and verifier-independence negatives.
+
+**Proof:** stale/poisoned/unauthorized inputs cannot silently become current truth, authority, learning, or success.
+
+---
+
+### 10. MEASURE HUMAN VALUE, THEN SCALE INTERFACES / NAYANET — P2/P3
+**Depends on:** repeatable 1–9
+
+Measure:
+- re-explanation avoided;
+- cognitive load reduced;
+- time saved;
+- errors prevented;
+- rework avoided;
+- retrieval precision;
+- verification cost.
+
+Only after the single-owner intelligence loop is repeatable should Hub/NayaNET/collective/self-building work become critical-path scale work.
+
+**Proof:** the system measurably improves the human moment without weakening authority, privacy, truth, or continuity.
+
+## Permanent DO-NOT-BUILD list
+
+Do not create:
+- a tenth Master Node;
+- a second Intelligent Block type/table;
+- a second graph;
+- a second memory or learning pipeline;
+- a second authority system;
+- a new canonical current-state store merely to fix stale documentation;
+- automatic conversion of learned intelligence into LAW;
+- graph/vector/distributed infrastructure without a demonstrated capacity failure;
+- collective/network scale before single-owner applicability, revocation, and successor reuse are repeatable;
+- UI polish on the critical path while a causal intelligence proof rung is open.
+
+## Completion law
+
+A block is not complete because a file exists.
+
+**IMPLEMENTED ≠ VERIFIED**  
+**VERIFIED ≠ PRODUCTION-PROVEN**  
+**RETRIEVED ≠ AUTHORIZED**  
+**APPLIED ≠ SUCCESS**  
+**CANDIDATE ≠ ACTIVE LEARNING**
+
+Each completed block must leave:
+1. source HEAD;
+2. exact change;
+3. test/proof evidence;
+4. known limitation;
+5. durable current-state update;
+6. exactly one next executable action.
+
+## ONE NEXT ACTION
+
+Execute **Block 2 / Issue #944**: reconcile Concept #17 against current canonical contracts and determine whether `UNKNOWN_EFFECT` is a genuinely novel reusable proposition. If yes, design the smallest failure-first candidate/cold-retrieval experiment. If no, record `NO_NEW_CANDIDATE` and test the next proposition.
