@@ -93,7 +93,8 @@ Deno.serve(async (req: Request) => {
         const { data, error } = await admin.from("nayanet_execution_receipts").insert({ ...row, revision }).select("*").single();
         if (!error) return data;
         if (error.code !== "23505") throw new Error("RECEIPT_WRITE_" + error.code + ":" + error.message);
-        if (attempt === 4) throw new Error("RECEIPT_REVISION_RETRY_EXHAUSTED");
+        if (attempt === 19) throw new Error("RECEIPT_REVISION_RETRY_EXHAUSTED");
+        await new Promise((resolve) => setTimeout(resolve, 25 * (attempt + 1)));
       }
       throw new Error("RECEIPT_REVISION_RETRY");
     };
