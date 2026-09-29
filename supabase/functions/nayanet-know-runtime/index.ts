@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { selectKnow, type KnowCandidate, type KnowRequest } from "./know.ts";
+import { selectKnow, validateKnowAuthorization, type KnowCandidate, type KnowRequest, type KnowGrant } from "./know.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -60,6 +60,13 @@ async function readReceipt(admin:ReturnType<typeof adminClient>,id:string){
   return data;
 }
 
+async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
+  if(!id) return null;
+  const {data,error}=await admin.from("nayanet_authority_grants").select("*").eq("grant_id",id).maybeSingle();
+  if(error) throw error;
+  return data as KnowGrant|null;
+}
+
 async function insertReceipt(admin:ReturnType<typeof adminClient>,row:Record<string,unknown>){
   for(let attempt=0;attempt<8;attempt++){
     const {data:maxRows,error:maxError}=await admin.from("nayanet_execution_receipts")
@@ -100,6 +107,24 @@ Deno.serve(async(req)=>{
 
     if(mode==="retrieve"){
       const request=sanitizeRequest(body);
+      const lawReceipt=await readReceipt(admin,String(request.law_receipt_id??""));
+      const refs=Array.isArray((lawReceipt as any)?.evidence?.law_decision?.authority_refs)?(lawReceipt as any).evidence.law_decision.authority_refs:[];
+      const liveGrant=refs.length===1?await readGrant(admin,String(refs[0])):null;
+      const authorization=validateKnowAuthorization(request,lawReceipt as any,liveGrant,new Date());
+      if(authorization.status!=="READY"){
+        const refusal=await insertReceipt(admin,{
+          user_id:OWNER_ID,project_id:PROJECT_ID,action:"know_node_refusal",status:"BLOCKED",
+          expected_result:"KNOW must not read private canonical intelligence without a valid current LAW authorization boundary.",
+          observed_result:"REFUSED:"+authorization.reason,
+          evidence:{
+            schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",
+            request:{target:request.target,task_context:request.task_context,law_receipt_id:request.law_receipt_id??null},
+            authorization,retrieval_performed:false,retrieval_grants_authority:false,
+            runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef
+          },learning:[]
+        });
+        return json({ok:false,status:"BLOCKED",authorization,refusal_receipt:refusal,authority_created:false},403);
+      }
       const candidates=await readCandidates(admin);
       const decision=selectKnow(request,candidates);
 
@@ -114,7 +139,7 @@ Deno.serve(async(req)=>{
         evidence:{
           schema:"naya.know.receipt.v1",
           node_id:"NAYA-KERNEL-KNOW",
-          request:{target:request.target,task_context:request.task_context},
+          request:{target:request.target,task_context:request.task_context,law_receipt_id:request.law_receipt_id??null},\n          authorization,
           candidate_count:candidates.length,
           decision:{
             status:decision.status,
@@ -165,6 +190,12 @@ Deno.serve(async(req)=>{
         readCandidates(admin)
       ]);
       if(!selectedReceipt||!missReceipt) return json({ok:false,error:"KNOW_RECEIPT_NOT_FOUND"},404);
+      const selectedLaw=await readReceipt(admin,String((selectedReceipt as any)?.evidence?.request?.law_receipt_id??""));
+      const missLaw=await readReceipt(admin,String((missReceipt as any)?.evidence?.request?.law_receipt_id??""));
+      const selectedRefs=Array.isArray((selectedLaw as any)?.evidence?.law_decision?.authority_refs)?(selectedLaw as any).evidence.law_decision.authority_refs:[];
+      const missRefs=Array.isArray((missLaw as any)?.evidence?.law_decision?.authority_refs)?(missLaw as any).evidence.law_decision.authority_refs:[];
+      const selectedGrant=selectedRefs.length===1?await readGrant(admin,String(selectedRefs[0])):null;
+      const missGrant=missRefs.length===1?await readGrant(admin,String(missRefs[0])):null;
       return json({
         ok:true,
         status:"AUTHORITATIVE_STATE_REREAD",
