@@ -460,8 +460,6 @@ Deno.serve(async (req: Request) => {
       const applicable = relationshipContext ? relationships.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.source_id && r.target_id === BLOCK_ID) : [];
       const selected = applicable.filter((r: any) => ["PRODUCES","VERIFIED_BY"].includes(r.relationship_type));
       const behavior = selected.length > 0 ? "APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
-      const receiptRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
-      const revision = (Array.isArray(receiptRows) && receiptRows.length ? Number(receiptRows[0].revision) + 1 : 1);
       const row = {
         user_id: OWNER_ID, project_id: "NayaNET", revision,
         action: "NAYA-NODE-0001-GRAPH-" + (relationshipContext ? "ON" : "OFF") + "-" + taskId,
@@ -479,8 +477,7 @@ Deno.serve(async (req: Request) => {
           epistemic_state: selected.map((r: any) => r.epistemic_state)
         }
       };
-      const { data: persisted, error: persistError } = await admin.from("nayanet_execution_receipts").insert(row).select("*").single();
-      if (persistError) throw new Error("GRAPH_RECEIPT_WRITE_" + persistError.code + ":" + persistError.message);
+      const persisted = await insertReceiptWithRetry(row);
       return json({ ok: true, schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, block_id: BLOCK_ID, task_id: taskId, condition: relationshipContext ? "ON" : "OFF", behavior, relationship_context_enabled: relationshipContext, selected_relationships: selected, receipt: persisted, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
     }
 
