@@ -9,7 +9,7 @@ from typing import Any
 POLICY_PATH = Path(__file__).resolve().parents[1] / ".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json"
 
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
-REQUIRED_CONTEXT = (
+PROTECTED_PATH_PREFIXES = (\n    "CONSTITUTION/",\n    "GOVERNANCE/",\n    ".naya/governance/",\n    ".github/workflows/governed-supabase-production-deploy.yml",\n    "supabase/migrations/",\n)\n\nREQUIRED_CONTEXT = (
     "policy_active",
     "policy_not_expired",
     "policy_not_revoked",
@@ -46,7 +46,7 @@ def evaluate_policy(policy: dict[str, Any], context: dict[str, Any]) -> dict[str
     if context.get("target_branch") != scope.get("target_branch"):
         return {"decision": "DENY", "reason": "target_branch_out_of_scope"}
 
-    source_sha = context.get("source_sha")
+    changed_paths = context.get("changed_paths") or []\n    if any(any(str(path).startswith(prefix) for prefix in PROTECTED_PATH_PREFIXES) for path in changed_paths):\n        return {"decision": "DENY", "reason": "protected_change_requires_explicit_promotion"}\n\n    source_sha = context.get("source_sha")
     if not isinstance(source_sha, str) or not SHA_RE.fullmatch(source_sha):
         return {"decision": "DENY", "reason": "source_sha_not_exact"}
 
