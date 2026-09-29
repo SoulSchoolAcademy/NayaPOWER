@@ -519,7 +519,8 @@ jobs:
             "receipt_ids":r["receipt_ids"],
           }, open("verify-generalization-request.json","w"))
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-generalization-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-active-learning-generalization.json
+          cat verify-generalization-request.json
+          curl -sS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-generalization-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-active-learning-generalization.json
           python - <<'PY'
           import json
           e=json.load(open("active-learning-generalization.json"))
@@ -618,6 +619,7 @@ jobs:
           import json, os
           er=json.load(open("cold-successor-related.json"))
           eu=json.load(open("cold-successor-unrelated.json"))
+          learning_id=er["reconstruction"]["learning_id"]
           vr=json.load(open("cold-successor-related-verify.json"))
           vu=json.load(open("cold-successor-unrelated-verify.json"))
           for v in (vr,vu):
