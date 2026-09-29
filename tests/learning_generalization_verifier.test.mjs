@@ -97,14 +97,34 @@ function makeReceipts({ tamperRelatedOutcome = false, forceUnrelatedTransfer = f
 
 function runtime(options = {}) {
   let handler;
-  const receipts = makeReceipts(options);
-  const grants = [{
+  const requestedReceipts = makeReceipts(options);
+  const requestedReceiptIds = requestedReceipts.map(r => r.id);
+  if (options.noRelatedEffect) {
+    const treatment = requestedReceipts[1];
+    treatment.observed_result = 'REQUIRE_DIRECT_CANONICAL_INTELLIGENCE';
+    treatment.evidence.behavior = 'REQUIRE_DIRECT_CANONICAL_INTELLIGENCE';
+    treatment.evidence.retained_intelligence_applied = false;
+    treatment.evidence.applicability.applicable = false;
+    treatment.evidence.outcome.provenance_preserved = false;
+  }
+  if (options.mismatchedRelatedTask) {
+    requestedReceipts[1].evidence.task_input = { ...relatedInput, instruction: 'Different task input.' };
+  }
+  if (options.mismatchedLearningId) requestedReceipts[1].evidence.learning_id = 'other-learning-id';
+  if (options.mismatchedBlockId) requestedReceipts[1].evidence.intelligence_id = 'IB-OTHER';
+  if (options.forgedExecutorPass) {
+    requestedReceipts[1].evidence.executor_claim = {
+      ok: true, related_causal_supported: true, negative_transfer_refused: true,
+    };
+  }
+  const receipts = options.missingReceipt ? requestedReceipts.slice(0, 3) : requestedReceipts;
+  const grants = options.missingAuthority ? [] : [{
     grant_id: 'grant-1', issuer_id: OWNER_ID, subject_id: OWNER_ID,
     mission_id: 'NAYA-NODE-0001-CONTINUITY', scope: { target: NAYA_ID },
     actions: ['naya_node_apply'], status: 'ACTIVE',
   }];
   const learning = {
-    id: LEARNING_ID, target_id: NAYA_ID, level: 'E5_CAN_TEACH', status: 'ACTIVE',
+    id: LEARNING_ID, target_id: NAYA_ID, level: 'E5_CAN_TEACH', status: options.learningStatus ?? 'ACTIVE',
     claim: LESSON, source_event_id: 'event-active-1',
     observed_value: { intelligent_block_id: BLOCK_ID, behavioral_change: true },
     verification_method: 'independent causal verification', provenance: 'OBSERVATION',
@@ -158,7 +178,7 @@ function runtime(options = {}) {
       body: JSON.stringify({
         mode: 'verify-generalization',
         learning_id: LEARNING_ID,
-        receipt_ids: receipts.map(r => r.id),
+        receipt_ids: requestedReceiptIds,
         ...body,
       }),
     })),
@@ -203,4 +223,76 @@ test('independent generalization verifier rejects answer-content injection', asy
   assert.equal(response.status, 400);
   const body = await response.json();
   assert.equal(body.error, 'INTELLIGENCE_CONTENT_INPUT_FORBIDDEN');
+});
+
+test('independent generalization verifier ignores a forged executor causal PASS when persisted outcome evidence fails', async () => {
+  const response = await runtime({ tamperRelatedOutcome: true, forgedExecutorPass: true }).invoke({
+    executor_claim: { ok: true, related_causal_supported: true, negative_transfer_refused: true },
+  });
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.ok, false);
+  assert.equal(body.independent_verification, false);
+  assert.equal(body.executor_claim_trusted, false);
+  assert.equal(body.recomputed.related_causal_supported, false);
+});
+
+test('independent generalization verifier rejects a missing persisted receipt', async () => {
+  const response = await runtime({ missingReceipt: true }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.error, 'GENERALIZATION_RECEIPTS_NOT_UNIQUE');
+  assert.equal(body.count, 3);
+});
+
+test('independent generalization verifier rejects mismatched related task inputs', async () => {
+  const response = await runtime({ mismatchedRelatedTask: true }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.ok, false);
+  assert.equal(body.recomputed.related_same_task_input, false);
+  assert.equal(body.recomputed.related_causal_supported, false);
+});
+
+test('independent generalization verifier rejects mismatched learning identity in persisted receipts', async () => {
+  const response = await runtime({ mismatchedLearningId: true }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.ok, false);
+  assert.equal(body.recomputed.all_same_learning, false);
+  assert.equal(body.recomputed.related_causal_supported, false);
+});
+
+test('independent generalization verifier rejects mismatched Intelligent Block identity', async () => {
+  const response = await runtime({ mismatchedBlockId: true }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.ok, false);
+  assert.equal(body.recomputed.related_causal_supported, false);
+});
+
+test('independent generalization verifier rejects a no-effect related treatment', async () => {
+  const response = await runtime({ noRelatedEffect: true }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.ok, false);
+  assert.equal(body.recomputed.related_behavior_delta, false);
+  assert.equal(body.recomputed.related_outcome_delta.provenance_preserved, 0);
+  assert.equal(body.recomputed.related_causal_supported, false);
+});
+
+test('independent generalization verifier fails closed for non-ACTIVE learning', async () => {
+  const response = await runtime({ learningStatus: 'CANDIDATE' }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.error, 'ACTIVE_LEARNING_REQUIRED');
+  assert.equal(body.status, 'CANDIDATE');
+});
+
+test('independent generalization verifier independently requires current authority binding', async () => {
+  const response = await runtime({ missingAuthority: true }).invoke();
+  assert.equal(response.status, 403);
+  const body = await response.json();
+  assert.equal(body.error, 'AUTHORIZATION_BINDING_INVALID');
+  assert.equal(body.count, 0);
 });
