@@ -156,6 +156,34 @@ def test_workflow_separates_executor_from_verifier_jobs():
     assert "cold-successor-verification:" in wf or "cold-successor-verification" in wf
 
 
+def test_committed_receipt_proves_non_inheritance():
+    """The committed receipt is the evidence. Guard its load-bearing claims so a later
+    edit cannot quietly turn a non-inheritance result into an inheritance one."""
+    import json
+
+    receipt = json.loads(
+        (REPO / "cold-successor-receipt-verified.json").read_text(encoding="utf-8")
+    )
+    assert receipt["schema"] == "NAYANET_COLD_SUCCESSOR_RECEIPT_V1"
+    assert receipt["authority_inherited"] is False
+    assert receipt["successor_grant_count"] == 0
+    assert receipt["consequential_actions_authorized"] is False
+    assert receipt["executed"] is False
+    assert receipt["blocked_by"] == "IDENTITY_SCOPE"
+    # Genuine reconstruction, not delivery.
+    assert receipt["learning_id"] and receipt["intelligent_block_id"]
+    assert len(receipt["verified_relationships"]) > 0
+    assert all(r["epistemic_state"] == "VERIFIED" for r in receipt["verified_relationships"])
+    assert all(r.get("provenance") for r in receipt["verified_relationships"])
+    # Material use, and an honest scope claim.
+    assert receipt["behavior"] == "PRESERVE_PROVENANCE_BEFORE_APPLY"
+    assert receipt["materially_attributable"] is True
+    assert "not general successor capability" in receipt["limitation"]
+    # Verification was independent of the executor.
+    assert receipt["independent_verification"] is True
+    assert receipt["executor_runtime_jti"] != receipt["verifier_runtime_jti"]
+
+
 def test_runtime_still_refuses_non_canonical_branches():
     """The runtime binds the OIDC token's workflow_ref to refs/heads/main, so a PR
     branch cannot invoke it. Run 36455994970 failed with WORKFLOW_BINDING_MISMATCH for
