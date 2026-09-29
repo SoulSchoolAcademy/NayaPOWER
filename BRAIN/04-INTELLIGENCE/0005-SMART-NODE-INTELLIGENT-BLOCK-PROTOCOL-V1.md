@@ -1,6 +1,6 @@
 # NayaPOWER Smart Node / Intelligent Block Protocol V1
 
-**Status:** HUMAN-DIRECTOR DIRECTED — CANDIDATE CANONICAL  
+**Status:** CANONICAL OPERATING PROTOCOL — HUMAN DIRECTOR RATIFIED 2026-09-28  
 **Authority:** Shawn Vibert — Human Director / Final Authority  
 **Canonical machine object:** `INTELLIGENT_BLOCK`  
 **Purpose:** Turn valuable information into durable, connected, governed intelligence without creating a new Node family, memory system, graph, authority layer, or unsupported truth claim.
