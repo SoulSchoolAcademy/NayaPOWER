@@ -120,7 +120,10 @@ Deno.serve(async (req: Request) => {
           checkpoint_id: checkpoint.id,
           provenance_preserved: true,
         };
-        const { data: repaired, error: repairError } = await admin.from("learning_evidence").update({ observed_value: repairedObserved }).eq("id", existing.id).eq("member_id", ownerId).select("*").single();
+        const { data: repaired, error: repairError } = await admin.from("learning_evidence").update({
+          observed_value: repairedObserved,
+          source_event_id: event.id,
+        }).eq("id", existing.id).eq("member_id", ownerId).select("*").single();
         if (repairError) throw repairError;
         return json({
           ok: true,
