@@ -56,7 +56,7 @@ def test_registered_smart_link_is_active_and_exact():
     assert entry["canonical_brain_path"].endswith("/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
 
 def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
-    entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
+    entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
     assert entry_path.exists()
     text = entry_path.read_text()
     for section in [
