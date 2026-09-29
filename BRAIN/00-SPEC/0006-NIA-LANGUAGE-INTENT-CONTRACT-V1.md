@@ -49,6 +49,22 @@ CAPTURE SOURCE
 
 Automatic capture may reach **CANDIDATE** only.
 
+### Standing Smart Note execution authority
+
+When Shawn explicitly says **“Smart Note this”** or another strong Smart Note alias, that instruction authorizes completion of the **entire bounded Smart Note lifecycle for that same material**:
+
+`DISTILL → COMMIT/RECONCILE → CONNECT → INDEX → PROJECT → PUBLISH/DEPLOY THE REQUIRED SMART LINK VIEWER → VERIFY → RETURN SMART LINK`
+
+No second `DEPLOY` confirmation is required merely to finish the Smart Note that Shawn already requested.
+
+This standing authority is narrow:
+- it applies only to the Smart Note lifecycle for the material Shawn just designated;
+- it permits the non-destructive publication/deployment needed to make that Smart Note viewable at its governed Smart Link;
+- it does **not** authorize unrelated product releases, schema changes, destructive operations, privacy widening, truth-state promotion, or general production changes;
+- privacy, scope, and owner authorization remain binding.
+
+**One command, one complete Smart Note lifecycle. No double authorization for the same note.**
+
 ## Strong aliases
 
 These phrases MAY normalize directly to `CAPTURE_DURABLE_INTELLIGENCE` when the referent is clear:
@@ -77,7 +93,7 @@ Phrases such as “remember this”, “save this”, “keep this”, “note t
 ## Intent safety
 
 Intent inference MUST NOT convert:
-- “consider deploying” into deployment authority;
+- “consider deploying” into unrelated deployment authority;
 - “remember I usually approve X” into permission to perform X;
 - “delete this idea” into destructive data deletion without scope;
 - uncertainty into a VERIFIED claim;
