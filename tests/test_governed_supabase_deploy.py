@@ -2,7 +2,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "governed-supabase-production-deploy.yml"
-CONFIG = ROOT / "supabase" / "config.toml"
+CONFIG = ROOT / "supabase" / "config.toml"\nRUNTIME_PROOF = ROOT / ".github" / "workflows" / "live-supabase-runtime-proof.yml"
 
 
 def test_governed_promotion_keeps_manual_human_gate_and_canonical_proof():
@@ -68,3 +68,9 @@ def test_governed_promotion_dispatches_runtime_proof_directly():
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
     assert '--event workflow_run' not in source
+
+
+def test_runtime_proof_keeps_workflow_run_and_adds_manual_dispatch_trigger():
+    source = RUNTIME_PROOF.read_text(encoding="utf-8")
+    assert "workflow_run:" in source
+    assert "workflow_dispatch:" in source
