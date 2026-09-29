@@ -195,16 +195,22 @@
     "successor_behavioral_improvement": "PROVEN_BOUNDED_SINGLE_TASK",
     "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
     "bounded_production_proof": {
-      "issue": 944,
-      "source_revision": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
-      "proof_run": "36519233015_attempt_2",
-      "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
-      "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
+      "issue": 913,
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "scope": "Node 0001 single bounded intelligence-river specimen",
+      "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
     },
     "current_frontier": {
       "issue": 978,
       "state": "OPEN_SECURITY_GAP",
       "next": "Human Director accepts/rejects checkpoint receipt owner-read / privileged-write RLS boundary in PR #980; production application remains gated by fresh exact-main DEPLOY."
+    },
+    "bounded_generalization_successor_proof": {
+      "issue": 944,
+      "source_revision": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
+      "proof_run": "36519233015_attempt_2",
+      "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
+      "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
     }
   },
   "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
