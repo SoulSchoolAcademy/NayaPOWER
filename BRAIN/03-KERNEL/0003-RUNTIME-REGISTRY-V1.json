@@ -123,6 +123,26 @@
         "collective_chain_readiness_run": 36627018411,
         "status": "PASS"
       }
+    },
+    "CONNECT": {
+      "status": "BOUNDED_EXISTING_SEAM_HISTORICAL_PROOF_CURRENT_LIVE_PENDING",
+      "entrypoint": "supabase/functions/nayanet-cold-runtime-proof/index.ts",
+      "modes": [
+        "graph-behavior",
+        "graph-verify"
+      ],
+      "consumes": "fixed bounded graph held-out task plus existing owner-scoped canonical relationship graph",
+      "reads": "public.nayanet_brain_relationships owner-scoped to canonical block context",
+      "writes": "nayanet_execution_receipts graph OFF/ON behavioral pair",
+      "verifier": "tests/verify_cold_graph_behavior.py",
+      "workflow": ".github/workflows/live-supabase-runtime-proof.yml",
+      "authority_rule": "relationship context never grants authority",
+      "proven_behavior": "OFF requires direct canonical intelligence; ON applies contextualized verified intelligence when provenance-bearing VERIFIED relationships are selected",
+      "proof_run": 36516790588,
+      "proof_source_revision": "c9b31890c93f4f5f7d60bb8cd346093c11ab427f",
+      "current_main_production_proof": "NOT_PROVEN",
+      "full_contract": "NOT_PROVEN",
+      "handoff_to": "NAYA-KERNEL-VERIFY"
     }
   },
   "next_node_after_law": "ACT",
