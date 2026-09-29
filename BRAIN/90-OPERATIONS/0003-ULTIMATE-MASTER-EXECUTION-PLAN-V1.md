@@ -41,25 +41,29 @@ Reconcile current-state/activation surfaces against live `main`. Identify the ac
 
 **PASS:** current source/runtime identity is reconstructable without stale snapshots.
 
-### P0.2 — Finish #944 failure-first reconciliation
-Distill Concept #17 and reconcile every candidate against existing canonical intelligence. Select exactly one genuinely non-duplicate proposition, or record `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
+### P0.2 — Finish #944 failure-first reconciliation — COMPLETE
+Concept #17 was reconciled against current canonical intelligence.
 
-**PASS:** novelty/non-novelty is evidence-backed and lineage-preserving.
+**RESULT:** `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
 
-### P0.3 — Prove canonical candidate admission
-If a unique candidate exists:
+Do not create a duplicate Concept #17 Smart Node / Intelligent Block. The surviving value is proof pressure on existing architecture. `UNKNOWN_EFFECT` remains a contract-hardening/test target because existing ACT semantics cover timeout/observe/idempotency/inconclusive handling but do not expose that explicit effect-state enum.
 
-**SOURCE → EVENT → CANDIDATE INTELLIGENT BLOCK → LINEAGE → RELATIONSHIP → INDEX → CHECKPOINT**
+### P0.3 — Prove canonical candidate admission — SKIPPED FOR CONCEPT #17
+No unique candidate survived, so no new candidate object should be admitted.
 
-Reuse the existing river. No new object family/path.
+### P0.4 — Prove generalization: identifier-only reuse + applicability — NEXT
+Reuse the already ACTIVE #913 learning rather than manufacturing a new lesson.
 
-### P0.4 — Prove identifier-only cold retrieval + applicability
-Cold runtime receives only canonical identity/reference and task context.
+Run:
+- a **second related held-out task** where provenance preservation should help; and
+- an **unrelated task** where that learning should not change behavior.
 
-**PASS:** it retrieves the intelligence itself, explains why it applies, and rejects stale/superseded/contradicted/inapplicable intelligence.
+The runtime receives only the canonical learning identity/reference plus task identity/context; it must reread authoritative state.
 
-### P0.5 — Prove causal behavioral effect
-Run the same bounded held-out task:
+**PASS:** related held-out task selects and uses the intelligence for a reconstructable reason; unrelated task leaves behavior unchanged/refuses transfer; no answer content is injected.
+
+### P0.5 — Prove causal behavioral effect on the second held-out task
+Run the same **new related** bounded held-out task:
 
 **WITHOUT retained intelligence** vs **WITH identifier-only cold-retrieved intelligence**
 
@@ -72,8 +76,8 @@ Reconstruct behavior/outcome from persisted evidence rather than executor assert
 
 **PASS:** forged/no-effect evidence cannot produce causal PASS.
 
-### P0.7 — Prove correct refusal
-Run an unrelated task.
+### P0.7 — Prove correct refusal / negative-transfer safety
+Run the predeclared unrelated task with the same retained learning available.
 
 **PASS:** retained intelligence does not improperly transfer outside its applicability envelope.
 
@@ -175,3 +179,16 @@ A genuinely cold Naya can enter from canonical evidence and, without Shawn recon
 while correctly refusing stale, unauthorized, contradictory, inapplicable, poisoned or revoked intelligence.
 
 **One organism. Nine organs. One intelligence river. One canonical substrate. Many minds. No authority inheritance. Maximum verified value per moment.**
+
+## 13. CURRENT NEXT EXECUTION — #944 PHASE 2
+
+The existing production runtime is still strongly bound to the original provenance lesson/task (including specific behavior strings and task IDs). The next code change must therefore be **bounded generalization**, not a new architecture:
+
+1. inspect the existing `learning-influence`, independent verifier, and cold-successor seams;
+2. add exactly one second relevant held-out task and one unrelated task;
+3. reuse the existing ACTIVE learning by ID only;
+4. persist paired evidence;
+5. independently recompute applicability, behavior delta, outcome delta, and correct refusal;
+6. stop before production/live claims until exact source/runtime parity is established again.
+
+**Do not create a second learning pipeline.**
