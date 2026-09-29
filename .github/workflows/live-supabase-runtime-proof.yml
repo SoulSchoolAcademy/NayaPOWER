@@ -206,7 +206,7 @@ jobs:
           ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
           fresh_block_id=ids["intelligent_block_id"]
           open("fresh-block-id.txt","w").write(fresh_block_id)
-          json.dump({"mode":"candidate","intelligent_block_id":fresh_block_id},open("candidate-request.json","w"),indent=2)
+          json.dump({"mode":"candidate","intelligent_block_id":fresh_block_id,"checkpoint_id":ids["checkpoint_id"]},open("candidate-request.json","w"),indent=2)
           PY
           curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -o learning-candidate.json -w "%{http_code}" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > candidate-http-status.txt
           cat learning-candidate.json
