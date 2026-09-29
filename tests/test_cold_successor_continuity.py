@@ -115,6 +115,8 @@ def test_verifier_does_not_trust_the_successor_receipt():
     assert "AUTHORITATIVE_REREAD_AND_RECOMPUTATION" in verify
     # It must re-read the learning and the relationships itself.
     assert "rest/v1/learning_evidence?id=eq." in verify
+    assert "status=eq.ACTIVE" in verify
+    assert "target_id=eq." in verify
     assert "nayanet_brain_relationships?owner_id=eq." in verify
 
 
@@ -145,7 +147,9 @@ def test_workflow_proves_cold_successor_in_a_separate_fresh_runtime():
     wf = WORKFLOW.read_text(encoding="utf-8")
     assert "cold-successor" in wf, "the cold-successor proof is not wired into any live workflow"
     assert "cold-successor-verify" in wf, "the independent cold-successor verifier is not wired in"
-    assert "causal-learning-experiment-receipt" in wf or "cold-successor" in wf
+    assert "causal-learning-experiment-receipt" in wf
+    assert "needs: independent-retained-learning-reread" in wf
+    assert "mode=cold-successor&learning_id=${learning_id}" in wf
 
 
 def test_workflow_separates_executor_from_verifier_jobs():
