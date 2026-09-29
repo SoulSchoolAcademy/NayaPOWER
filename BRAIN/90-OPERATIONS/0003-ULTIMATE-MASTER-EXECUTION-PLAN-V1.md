@@ -1,6 +1,6 @@
 # NayaPOWER — Ultimate Master Execution Plan V1
 
-**Status:** ACTIVE EXECUTION SPECIFICATION — refreshed against live `main` `faac73abf29c99fc29879f23cd39966439964251`  
+**Status:** ACTIVE EXECUTION SPECIFICATION — evidence snapshot anchored immediately before this projection update at `faac73abf29c99fc29879f23cd39966439964251`  
 **Source synthesis:** `KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md` + live repository/runtime evidence  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
@@ -33,7 +33,8 @@ One organism. Nine semantic organs. One intelligence river. No authority inherit
 - That run advanced the `production` branch to the exact authorized SHA.
 
 ### Current live reality
-- Current `main`: `faac73abf29c99fc29879f23cd39966439964251`.
+- **Live `main` must be resolved at execution time.** Do not treat a SHA copied into this projection as current authority.
+- Evidence snapshot used for this plan refresh: `faac73abf29c99fc29879f23cd39966439964251` (the pre-projection base revision).
 - Current `production`: `32b7c9954988befecfbe8c850f523e59a441f44d`.
 - Therefore current `main` has advanced beyond the SHA targeted by the active production promotion.
 - Governed production run `36514309554` is waiting for a **new Supabase GitHub Integration deployment check**.
@@ -77,9 +78,9 @@ Permanent laws:
 **Current status:** BLOCKED on external integration configuration.
 
 ### P0.2 — Re-run governed promotion on the then-current `main`
-Because `main` advanced after run `36514309554` began, do not treat success on `32b7c995...` as current-main production proof.
+Because `main` advanced after run `36514309554` began, do not treat success on `32b7c995...` as current-main production proof. Resolve the then-current SHA live immediately before any new governed promotion.
 
-**Do:** after the integration works, explicitly promote the then-current `main` through the existing governed workflow.
+**Do:** after the integration works, read the live GitHub `main` SHA at dispatch time and explicitly promote that exact SHA through the existing governed workflow.
 
 **Proof:** source/deployed-runtime parity for the exact current SHA.
 
