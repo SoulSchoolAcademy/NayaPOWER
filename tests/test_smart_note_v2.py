@@ -117,3 +117,8 @@ def test_sequence_policy_advances_past_sn003():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     assert reg["sequence_policy"]["next_sequence"] == 4
     assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-004"
+
+
+def test_live_intelligence_proof_is_capture_triggered_not_arbitrary_main_push():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert '".naya/capture/**"' in workflow
