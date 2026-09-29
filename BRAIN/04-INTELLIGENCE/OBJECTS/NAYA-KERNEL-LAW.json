@@ -3,7 +3,7 @@
   "object_id": "NAYA-KERNEL-LAW",
   "object_type": "NODE",
   "version": "2.0",
-  "canonical_status": "CANDIDATE",
+  "canonical_status": "VERIFIED_BOUNDED",
   "owner_id": "NAYA-KERNEL-LAW",
   "scope": "NayaPOWER kernel",
   "human_view": {
@@ -55,11 +55,15 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "EXECUTABLE_SOURCE",
-    "behavioral_status": "PENDING_LIVE_PROOF",
-    "production_status": "PENDING_LIVE_PROOF",
+    "implementation_status": "EXECUTABLE_DEPLOYED",
+    "behavioral_status": "PROVEN_BOUNDED",
+    "production_status": "PROVEN_BOUNDED_EXACT_REVISION",
     "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
-    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF"
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "live_run": 36620001626,
+    "live_source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+    "live_proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
+    "limitation": "Does not establish universal nine-node runtime binding or ACT execution proof."
   },
   "relationships": [
     {
