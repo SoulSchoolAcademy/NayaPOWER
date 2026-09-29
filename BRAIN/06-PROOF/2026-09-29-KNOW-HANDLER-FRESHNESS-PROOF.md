@@ -1,6 +1,6 @@
 # KNOW retrieve / inspect freshness proof
 
-Status: SOURCE HANDLER VERIFIED; LIVE PROOF BLOCKED.
+Status: SOURCE HANDLER VERIFIED. The historical missing-deployment observation below is superseded by the later reconciliation at the end.
 
 ## Exact sources
 
@@ -79,3 +79,19 @@ persisted receipt IDs and fresh independent authoritative reread/recomputation.
 Keep invalid-time refusals qualified as source proof until equivalent deployed evidence exists.
 Stop at absent authorization, source conflict or the next failing proof rung; never
 weaken freshness, owner scope, live-grant checks, caller-selection restrictions or proof gates.
+
+## Later live-state reconciliation — 2026-09-29
+
+KNOW is now deployed. Both the deployed entrypoint and know.ts were independently
+retrieved and exactly matched canonical 56450b3f8b4c8bfc71b99518e7ad71e80f72d511
+content. The same 17 handler tests pass against reconciled source based on
+4259f1158c8c234c56e5dca417f9024dde5f34c7. These observations supersede the historical
+missing-deployment stop above; they do not prove live contextual retrieval.
+A fresh read-only database query returned no know_context_retrieval receipts.
+
+Shawn authorizes continued bounded execution and the preceding finite activation
+proposal. The next action is the existing governed bootstrap and live-know-proof.yml,
+with its OIDC identity and independent recomputation. No recurring human credential
+is required. Source parity, live behavior and complete promotion receipt remain
+separate claims. See 2026-09-29-STANDING-PROMOTION-ACTIVATION.md on the activation
+branch for the complete current evidence and boundaries.
