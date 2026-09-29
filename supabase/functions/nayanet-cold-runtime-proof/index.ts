@@ -462,7 +462,7 @@ Deno.serve(async (req: Request) => {
       const selected = applicable.filter((r: any) => ["PRODUCES","VERIFIED_BY"].includes(r.relationship_type));
       const behavior = selected.length > 0 ? "APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
       const row = {
-        user_id: OWNER_ID, project_id: "NayaNET", revision,
+        user_id: OWNER_ID, project_id: "NayaNET",
         action: "NAYA-NODE-0001-GRAPH-" + (relationshipContext ? "ON" : "OFF") + "-" + taskId,
         status: "SUCCESS",
         expected_result: "Execute the identical held-out task under the requested graph-context condition.",
