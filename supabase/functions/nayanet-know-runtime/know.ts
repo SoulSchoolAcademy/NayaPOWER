@@ -37,6 +37,31 @@ const STOP=new Set([
   "apply","applying","action","task","retained","intelligence"
 ]);
 
+export type KnowLawReceipt = {id?:string; user_id?:string; action?:string; status?:string; evidence?:any};
+export type KnowGrant = {grant_id:string; issuer_id:string; subject_id:string; scope?:Record<string,unknown>; actions?:string[]; status?:string|null; revoked_at?:string|null; expires_at?:string|null};
+
+export function validateKnowAuthorization(req:KnowRequest, law:KnowLawReceipt|null, grant:KnowGrant|null, now=new Date()){
+  if(!law) return {status:"BLOCKED",reason:"LAW_RECEIPT_REQUIRED"};
+  const decision=law.evidence?.law_decision??{};
+  const lawReq=law.evidence?.law_request??{};
+  if(law.user_id!==req.owner_id) return {status:"BLOCKED",reason:"LAW_RECEIPT_OWNER_MISMATCH"};
+  if(law.action!=="law_authority_decision"||law.status!=="SUCCESS"||law.evidence?.node_id!=="NAYA-KERNEL-LAW") return {status:"BLOCKED",reason:"LAW_RECEIPT_INVALID"};
+  if(decision.status!=="AUTHORIZED") return {status:"BLOCKED",reason:"LAW_NOT_AUTHORIZED"};
+  if(decision.owner_id!==req.owner_id||decision.naya_id!==req.naya_id) return {status:"BLOCKED",reason:"LAW_IDENTITY_MISMATCH"};
+  if(lawReq.target!==req.target||decision.target!==req.target) return {status:"BLOCKED",reason:"AUTHORIZED_TARGET_MISMATCH"};
+  const refs=Array.isArray(decision.authority_refs)?decision.authority_refs:[];
+  if(refs.length!==1) return {status:"BLOCKED",reason:"LAW_AUTHORITY_REFERENCE_INVALID"};
+  const grantId=String(refs[0]);
+  if(!grant||grant.grant_id!==grantId) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_NOT_FOUND"};
+  if(grant.issuer_id!==req.owner_id||grant.subject_id!==req.owner_id) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_OWNER_MISMATCH"};
+  if(grant.status!=="ACTIVE"||grant.revoked_at) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_NOT_ACTIVE"};
+  if(grant.expires_at&&new Date(grant.expires_at).getTime()<=now.getTime()) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_EXPIRED"};
+  const action=String(decision.action??lawReq.action??"");
+  if(!action||!Array.isArray(grant.actions)||!grant.actions.includes(action)) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_ACTION_MISMATCH"};
+  if((grant.scope as any)?.target!==req.target) return {status:"BLOCKED",reason:"LIVE_AUTHORITY_TARGET_MISMATCH"};
+  return {status:"READY",reason:"LAW_AND_LIVE_AUTHORITY_MATCH",law_receipt_id:String(law.id??req.law_receipt_id??""),authority_grant_id:grantId,authorized_action:action};
+}
+
 function tokens(value:unknown):string[]{
   const text=typeof value==="string"?value:JSON.stringify(value??"");
   return [...new Set((text.toLowerCase().match(/[a-z0-9_]+/g)??[]).filter(x=>x.length>2&&!STOP.has(x)))];
@@ -70,7 +95,12 @@ export function selectKnow(req:KnowRequest,candidates:KnowCandidate[]):KnowDecis
   const ranked=candidates
     .filter(c=>isEligible(req,c))
     .map(c=>{
-      const hay=tokens([c.title,c.subject_id,c.content,c.applicable_scope].filter(Boolean).join(" "));
+      const hay=tokens([
+        c.title??"",
+        c.subject_id??"",
+        JSON.stringify(c.content??{}),
+        JSON.stringify(c.applicable_scope??{})
+      ].join(" "));
       const matches=q.filter(t=>hay.includes(t));
       const score=matches.length;
       return {c,score,matches};
