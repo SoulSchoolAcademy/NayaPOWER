@@ -11,6 +11,9 @@ verify_jwt = false
 [functions.nayanet-causal-learning-experiment]
 verify_jwt = false
 
+[functions.nayanet-causal-verify]
+verify_jwt = false
+
 [functions.nayanet-learning-verify]
 verify_jwt = false
 

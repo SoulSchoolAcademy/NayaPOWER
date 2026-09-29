@@ -28,6 +28,7 @@ def test_governed_promotion_preserves_existing_runtime_set_in_source_config():
         "nayanet-cold-runtime-proof",
         "nayanet-intelligence-commit-runtime",
         "nayanet-causal-learning-experiment",
+        "nayanet-causal-verify",
         "nayanet-learning-verify",
         "nayanet-law-runtime",
         "nayanet-act-runtime",
