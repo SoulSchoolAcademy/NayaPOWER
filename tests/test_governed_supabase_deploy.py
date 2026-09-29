@@ -29,6 +29,10 @@ def test_governed_promotion_preserves_existing_runtime_set_in_source_config():
         "nayanet-intelligence-commit-runtime",
         "nayanet-causal-learning-experiment",
         "nayanet-learning-verify",
+        "nayanet-law-runtime",
+        "nayanet-act-runtime",
+        "nayanet-know-runtime",
+        "nayanet-prove-runtime",
     ):
         assert f"[functions.{function_name}]" in source
 
@@ -64,7 +68,18 @@ def test_governed_promotion_revalidates_authorized_source_and_deployment_before_
 
 def test_governed_promotion_dispatches_runtime_proof_directly():
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert 'gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
+    assert 'gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f source_sha="$GITHUB_SHA" -f producer_run_id="$producer_run_id"' in source
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
     assert '--event workflow_run' not in source
+
+
+def test_runtime_proof_supports_explicit_exact_source_dispatch():
+    proof = (ROOT / ".github" / "workflows" / "live-supabase-runtime-proof.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in proof
+    assert "source_sha:" in proof
+    assert "producer_run_id:" in proof
+    assert "SOURCE_SHA:" in proof
+    assert "PRODUCER_RUN_ID:" in proof
+    assert "run-id: ${{ env.PRODUCER_RUN_ID }}" in proof
+    assert "ref: ${{ env.SOURCE_SHA }}" in proof
