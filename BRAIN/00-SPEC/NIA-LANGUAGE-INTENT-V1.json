@@ -1,0 +1,52 @@
+{
+  "schema": "naya.nia-language.intent.v1",
+  "version": "1.0",
+  "status": "CANONICAL",
+  "primary_capture_command": "Smart Note this",
+  "primary_capture_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "intent_first": true,
+  "explicit_constraints_override_inference": true,
+  "authority_inheritance": false,
+  "maximum_automatic_capture_state": "CANDIDATE",
+  "strong_capture_aliases": [
+    "smart note this",
+    "make a smart note",
+    "save this as a smart note",
+    "make this a smart node",
+    "lock this in",
+    "make this an intelligent block",
+    "save this as reusable intelligence",
+    "capture this as reusable intelligence",
+    "put this into the superbrain",
+    "put this in the brain",
+    "preserve this for the next Naya",
+    "remember this for the next Naya",
+    "don't lose this",
+    "keep this as intelligence",
+    "document this as intelligence",
+    "make this available to future Nayas"
+  ],
+  "contextual_capture_aliases": [
+    "remember this",
+    "save this",
+    "keep this",
+    "note this",
+    "make a note"
+  ],
+  "safety": {
+    "may_grant_authority": false,
+    "may_widen_privacy": false,
+    "may_promote_truth": false,
+    "may_override_explicit_prohibition": false
+  },
+  "canonical_intents": [
+    "CAPTURE_DURABLE_INTELLIGENCE",
+    "RETRIEVE_CONTEXTUAL_INTELLIGENCE",
+    "DIAGNOSE_CAUSAL_FAILURE",
+    "PROPOSE_BOUNDED_CHANGE",
+    "REQUEST_PRODUCTION_PROMOTION",
+    "VERIFY_OUTCOME",
+    "RECONCILE_CONFLICT",
+    "HANDOFF_CONTINUITY"
+  ]
+}

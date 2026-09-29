@@ -1,0 +1,44 @@
+{
+  "schema": "naya.smart-note-projection-index.v1",
+  "version": "1.0",
+  "source_of_truth": "runtime_intelligent_block",
+  "entries": [
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
+      "title": "Smart Note as the universal governed intelligence capture command",
+      "captured_at": "2026-09-29",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SMART_NOTE_UNIVERSAL_CAPTURE",
+      "subtopic": "CAPTURE_PROTOCOL",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_status": "PENDING_PRIVATE_PROJECTION",
+      "smart_link_status": "PENDING_PRIVATE_PROJECTION",
+      "projection_policy": "PRIVATE content MUST NOT be projected into public GitHub. Resolve through an authenticated private projection surface.",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "7997700d-b889-414c-8fa5-a237100611a4",
+        "lineage_id": "1fbdb284-9553-4928-a954-2f0a95584ea3",
+        "relationship_id": "c042a51f-5fe8-4722-afb6-d79162550e2e",
+        "runtime_index_id": "62162ff4-5235-44d5-b788-9c5d877cc911",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "faa4345a-aacd-43f2-ab2f-a991b9681979"
+      },
+      "content_hash": "b8a0adf84cfb3f513bf90a450fc5b832671b98317b7a567f7696b5cb1283e108",
+      "reconciliation": {
+        "exact_identity": "REUSE_EXISTING",
+        "exact_content_hash": "REUSE_EXISTING",
+        "semantic_near_duplicate": "CANDIDATE_REVIEW_REQUIRED"
+      }
+    }
+  ]
+}
