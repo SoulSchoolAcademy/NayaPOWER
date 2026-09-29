@@ -4,12 +4,14 @@
 
 | Field | Value |
 |---|---|
+| Smart Note ID | `SN-001` |
 | Intelligent Block | `IB-SMART-NOTE-20260929-b8f141805fa0d7ae` |
 | Human title | Official Smart Note Format & Lifecycle |
 | Category | SYSTEM INTELLIGENCE |
 | Topic | SMART NOTE SYSTEM |
 | Subtopic | OFFICIAL SMART NOTE FORMAT |
 | Captured | 2026-09-29 17:06:07 UTC |
+| Time token | `170607Z` = 17:06:07 UTC provenance, not the human Smart Note identity |
 | Truth state | CANDIDATE |
 | Canonical machine object | INTELLIGENT_BLOCK |
 | Runtime source of truth | Supabase / `nayanet_intelligent_blocks` |

@@ -52,7 +52,14 @@
       },
       "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
       "canonical_block_scope": "PRIVATE",
-      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae"
+      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
+      "smart_note_id": "SN-001"
     }
-  ]
+  ],
+  "sequence_policy": {
+    "human_id_format": "SN-###",
+    "purpose": "Stable human-facing Smart Note identity; independent of canonical machine Intelligent Block identity and capture timestamp.",
+    "next_sequence": 2,
+    "law": "SN-ID is for humans/navigation. IB-ID remains canonical machine identity. captured_at_utc remains provenance."
+  }
 }
