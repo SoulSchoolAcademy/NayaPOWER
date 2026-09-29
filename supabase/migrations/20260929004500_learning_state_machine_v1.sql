@@ -243,8 +243,14 @@ begin
 end
 $$;
 
-drop trigger if exists nayanet_record_learning_state_transition
+drop trigger if exists nayanet_record_learning_state_insert
   on public.learning_evidence;
-create trigger nayanet_record_learning_state_transition
-after insert or update of verification_state, effect_state on public.learning_evidence
+create trigger nayanet_record_learning_state_insert
+after insert on public.learning_evidence
+for each row execute function public.nayanet_record_learning_state_transition();
+
+drop trigger if exists nayanet_record_learning_state_update
+  on public.learning_evidence;
+create trigger nayanet_record_learning_state_update
+after update of verification_state, effect_state on public.learning_evidence
 for each row execute function public.nayanet_record_learning_state_transition();
