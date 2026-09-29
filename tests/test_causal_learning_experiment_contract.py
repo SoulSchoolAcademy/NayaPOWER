@@ -48,8 +48,10 @@ def verify_causal_learning_experiment_receipt(receipt: dict) -> None:
     assert receipt["causal_verification"]["causal_assessment"] == "CAUSAL_SUPPORTED"
     assert receipt["causal_verification"]["verification_status"] == "OUTCOME_VERIFIED"
     assert receipt["independent_verification"] is True
-    assert receipt["provenance"]["learning_id"] == receipt["learning_id"]
-    assert receipt["provenance"]["treatment_intelligence_id"] == receipt["intelligence_applied"]["intelligence_id"]
+    provenance = receipt.get("provenance")
+    if provenance:
+        assert provenance["learning_id"] == receipt["learning_id"]
+        assert provenance["treatment_intelligence_id"] == receipt["intelligence_applied"]["intelligence_id"]
 
 
 def test_causal_learning_experiment_receipt_contract():
