@@ -276,9 +276,11 @@ jobs:
           python - <<'PY'
           import json
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
-          matches=[e for e in reg["entries"] if e.get("topic")=="SMART_NOTE_UNIVERSAL_CAPTURE"]
+          matches=[e for e in reg["entries"] if e.get("smart_note_id")=="SN-001"]
           assert len(matches)==1, matches
-          e=matches[0]; p=e["provenance"]
+          e=matches[0]
+          assert e["intelligent_block_id"]=="IB-SMART-NOTE-20260929-b8f141805fa0d7ae", e
+          p=e["provenance"]
           req={
             "mode":"verify",
             "event_id":p["event_id"],"intelligent_block_id":e["intelligent_block_id"],
