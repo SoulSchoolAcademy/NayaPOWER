@@ -69,10 +69,10 @@ jobs:
           fi
 
           python - <<'PY' > deployment-blob-request.json
-          import base64, json
+          import base64, json, sys
           from pathlib import Path
           payload=Path("supabase/functions/nayanet-cold-runtime-proof/index.ts").read_bytes()
-          json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, open("deployment-blob-request.json","w"))
+          json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)
           PY
           gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" --input deployment-blob-request.json > deployment-blob.json
           blob_sha="$(python -c 'import json; print(json.load(open("deployment-blob.json"))["sha"])')"
