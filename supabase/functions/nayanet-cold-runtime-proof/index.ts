@@ -63,7 +63,19 @@ Deno.serve(async (req: Request) => {
     if (!supabaseUrl || !serviceRole) return json({ error: "SERVER_AUTH_CONFIG_MISSING" }, 500);
     const headers = { apikey: serviceRole, Authorization: "Bearer " + serviceRole, "Content-Type": "application/json" };
     const admin = createClient(supabaseUrl, serviceRole);
-    const get = async (path: string) => { const r = await fetch(supabaseUrl + path, { headers }); if (!r.ok) throw new Error("SUPABASE_READ_" + r.status); return await r.json(); };
+    // A non-2xx PostgREST read must name its own cause. "SUPABASE_READ_400" alone
+    // is an observability dead end: it forces the next Naya to redeploy just to
+    // learn which predicate was rejected. The path carries no credential (the
+    // service key travels in headers, never in the URL), and the body is the
+    // PostgREST diagnostic, truncated so a pathological response cannot bloat it.
+    const get = async (path: string) => {
+      const r = await fetch(supabaseUrl + path, { headers });
+      if (!r.ok) {
+        const detail = (await r.text()).slice(0, 400);
+        throw new Error("SUPABASE_READ_" + r.status + " " + path + " :: " + detail);
+      }
+      return await r.json();
+    };
     const blockRows = await get("/rest/v1/nayanet_intelligent_blocks?intelligent_block_id=eq." + encodeURIComponent(BLOCK_ID) + "&owner_id=eq." + OWNER_ID + "&select=*");
     if (!Array.isArray(blockRows) || blockRows.length !== 1) return json({ error: "CANONICAL_BLOCK_NOT_UNIQUE" }, 409);
     const grantRows = await get("/rest/v1/nayanet_authority_grants?issuer_id=eq." + OWNER_ID + "&subject_id=eq." + OWNER_ID + "&mission_id=eq.NAYA-NODE-0001-CONTINUITY&status=eq.ACTIVE&select=grant_id,mission_id,scope,actions,constraints,status,evidence");
