@@ -293,49 +293,82 @@ Deno.serve(async(req)=>{
 
 
   const checkpointId="smart-note-checkpoint:"+eventId;
-  const checkpointResponse=await fetch(
-    supabaseUrl+"/functions/v1/nayanet-compound-intelligence",
-    {
-      method:"POST",
-      headers:{
-        "Authorization":auth,
-        "apikey":supabaseAnonKey,
-        "Content-Type":"application/json",
-        "x-idempotency-key":checkpointId
-      },
-      body:JSON.stringify({
-        action:"checkpoint",
-        checkpoint_id:checkpointId,
-        source_event_ids:[eventId],
-        current_understanding:persistedNutshell,
-        title:"Smart Note checkpoint: "+persistedSubject,
-        confidence:1,
-        tags:["smart-note","intelligent-block","checkpoint"],
-        what_changed:"Canonical Smart Note was captured, projected as an Intelligent Block, and entered the governed learning boundary.",
-        learned:learningClaim,
-        evidence_refs:[
-          {kind:"smart_note_receipt",receipt_id:persistedReceiptId},
-          {kind:"source_event",event_id:eventId},
-          {kind:"intelligent_block_hash",sha256:persistedBlockHash},
-          {kind:"learning_evidence",evidence_id:learning.id}
-        ],
-        authority_scope:"PERSONAL_INTELLIGENCE_ONLY",
-        unknown:["Future applicability, behavior change, and outcome verification remain open."],
-        applicable_scope:body?.applicable_scope||null,
-        next_use:"Cold Naya retrieves this intelligence when the topic/context is relevant.",
-        successor_relevance:"Successor must restore the checkpoint, assess applicability, use it when valid, verify the outcome, and improve the next checkpoint.",
-        source_head:body?.source_head||null
-      })
+  const checkpointEvidence=[
+    {kind:"smart_note_receipt",receipt_id:persistedReceiptId},
+    {kind:"source_event",event_id:eventId},
+    {kind:"intelligent_block_hash",sha256:persistedBlockHash},
+    {kind:"learning_evidence",evidence_id:learning.id}
+  ];
+
+  // Keep checkpointing inside the existing authenticated cognition boundary.
+  // The prior receiver delegated this single step to the historical
+  // nayanet-compound-intelligence Edge Function, but that function is no longer
+  // present in current source/runtime. Reusing the canonical cognition RPC avoids
+  // resurrecting a second orchestration surface while preserving the same
+  // owner-scoped event/receipt semantics.
+  const checkpointSource=await supabase.from("nayanet_cognition_events")
+    .select("id,event_id")
+    .eq("event_id",eventId)
+    .eq("user_id",user.id)
+    .eq("project_id","NayaNET")
+    .maybeSingle();
+  if(checkpointSource.error)throw checkpointSource.error;
+  if(!checkpointSource.data)throw new Error("CHECKPOINT_SOURCE_EVENT_NOT_FOUND:"+eventId);
+
+  const checkpointEvent={
+    event_id:checkpointId,
+    type:"intelligence_checkpoint",
+    classification:"cognitive_checkpoint",
+    title:"Smart Note checkpoint: "+persistedSubject,
+    content:persistedNutshell,
+    source:"v7-smart-note-canonical",
+    status:"active",
+    actor:"naya",
+    confidence:1,
+    tags:["smart-note","intelligent-block","checkpoint"],
+    parent_event_id:eventId,
+    source_hash:"checkpoint:"+eventId,
+    schema_version:"NAYANET_INTELLIGENCE_CHECKPOINT_V1",
+    metadata:{
+      checkpoint_id:checkpointId,
+      source_event_ids:[eventId],
+      what_changed:"Canonical Smart Note was captured, projected as an Intelligent Block, and entered the governed learning boundary.",
+      learned:learningClaim,
+      evidence_refs:checkpointEvidence,
+      authority_scope:"PERSONAL_INTELLIGENCE_ONLY",
+      unknown:["Future applicability, behavior change, and outcome verification remain open."],
+      applicable_scope:body?.applicable_scope||null,
+      next_use:"Cold Naya retrieves this intelligence when the topic/context is relevant.",
+      successor_relevance:"Successor must restore the checkpoint, assess applicability, use it when valid, verify the outcome, and improve the next checkpoint.",
+      source_head:body?.source_head||null,
+      checkpointed_at:new Date().toISOString()
     }
-  );
-  const checkpointData=await checkpointResponse.json().catch(()=>({}));
-  const checkpoint=checkpointData?.result;
-  const checkpointReceiptId=normalizedText(checkpoint?.receipt?.id||checkpoint?.receipt?.receipt_id);
-  const checkpointEvidence=Array.isArray(checkpoint?.checkpoint?.metadata?.evidence_refs)?checkpoint.checkpoint.metadata.evidence_refs:[];
-  const checkpointEvidenceMatches=checkpointEvidence.some(ref=>ref?.kind==="smart_note_receipt"&&String(ref.receipt_id||"")===persistedReceiptId)&&checkpointEvidence.some(ref=>ref?.kind==="source_event"&&String(ref.event_id||"")===eventId)&&checkpointEvidence.some(ref=>ref?.kind==="intelligent_block_hash"&&String(ref.sha256||"")===persistedBlockHash)&&checkpointEvidence.some(ref=>ref?.kind==="learning_evidence"&&String(ref.evidence_id||"")===String(learning.id));
-  if(!checkpointResponse.ok||!checkpointData?.ok||checkpoint?.status!=="CHECKPOINT_VERIFIED"||String(checkpoint?.checkpoint?.event_id||"")!==checkpointId||!checkpointReceiptId||!checkpointEvidenceMatches){
-    throw new Error("SMART_NOTE_CHECKPOINT_FAILED:"+JSON.stringify({status:checkpoint?.status||"UNAVAILABLE",checkpoint_id:checkpoint?.checkpoint?.event_id||"UNAVAILABLE",receipt_id:checkpointReceiptId||"UNAVAILABLE"}));
+  };
+  const checkpointRpc=await supabase.rpc("nayanet_record_cognition_event",{
+    p_project_id:"NayaNET",
+    p_event:checkpointEvent,
+    p_action:"intelligence_checkpoint",
+    p_expected_result:"Cognitive checkpoint persisted",
+    p_observed_result:"Current Smart Note understanding was checkpointed against its provenance-bound source event.",
+    p_learning:[{type:"checkpoint",checkpoint_id:checkpointId,source_event_ids:[eventId]}]
+  });
+  if(checkpointRpc.error)throw checkpointRpc.error;
+  const checkpointRecord=checkpointRpc.data;
+  const persistedCheckpoint=checkpointRecord?.event;
+  const checkpointReceiptId=normalizedText(checkpointRecord?.receipt?.id||checkpointRecord?.receipt?.receipt_id);
+  const persistedCheckpointEvidence=Array.isArray(persistedCheckpoint?.metadata?.evidence_refs)?persistedCheckpoint.metadata.evidence_refs:[];
+  const checkpointEvidenceMatches=persistedCheckpointEvidence.some(ref=>ref?.kind==="smart_note_receipt"&&String(ref.receipt_id||"")===persistedReceiptId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="source_event"&&String(ref.event_id||"")===eventId)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="intelligent_block_hash"&&String(ref.sha256||"")===persistedBlockHash)&&persistedCheckpointEvidence.some(ref=>ref?.kind==="learning_evidence"&&String(ref.evidence_id||"")===String(learning.id));
+  if(String(persistedCheckpoint?.event_id||"")!==checkpointId||!checkpointReceiptId||!checkpointEvidenceMatches){
+    throw new Error("SMART_NOTE_CHECKPOINT_FAILED:"+JSON.stringify({status:"UNAVAILABLE",checkpoint_id:persistedCheckpoint?.event_id||"UNAVAILABLE",receipt_id:checkpointReceiptId||"UNAVAILABLE"}));
   }
+  const checkpoint={
+    schema:"NAYANET_INTELLIGENCE_CHECKPOINT_V1",
+    status:"CHECKPOINT_VERIFIED",
+    checkpoint:persistedCheckpoint,
+    source_events:[checkpointSource.data],
+    receipt:{id:checkpointReceiptId,receipt_id:checkpointReceiptId},
+    rule:"Checkpoint persistence does not by itself prove learning; later retrieval and behavior change are required."
+  };
 
   const transactionWithIntelligence={
     ...data,
