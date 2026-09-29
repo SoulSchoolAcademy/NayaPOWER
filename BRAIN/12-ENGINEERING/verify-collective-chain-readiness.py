@@ -16,7 +16,7 @@ exactly one of:
 
 Anti-false-positive law: missing evidence is UNKNOWN, never PASS. A locally minted
 Intelligent Block id can never satisfy L01, because identity may only be allocated
-by the canonical receiver.
+by the current governed intelligence-commit boundary.
 
 Read-only. Exits 1 when any link is not SATISFIED. Mutates nothing.
 """
@@ -43,8 +43,7 @@ CONTRACT_REL = 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.
 MACHINE_CONTRACT_REL = 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
 GOVERNED_OBJECTS_REL = 'BRAIN/04-INTELLIGENCE/OBJECTS'
 GRAPH_SEED_REL = 'BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json'
-RECEIVER_REL = 'supabase/functions/v7-smart-note-canonical/index.ts'
-RECEIVER_TABLE = 'v7_smart_note_transactions'
+RECEIVER_REL = 'supabase/functions/nayanet-intelligence-commit-runtime/index.ts'
 
 SATISFIED, NOT_SATISFIED, BLOCKED, UNKNOWN = 'SATISFIED', 'NOT_SATISFIED', 'BLOCKED_NO_RUNTIME', 'UNKNOWN'
 
@@ -116,7 +115,7 @@ def main() -> int:
         # Checkable now, without a runtime.
         if lid == 'L01':
             results.append((lid, name, NOT_SATISFIED,
-                            'no receiver-issued Intelligent Block identity exists on this branch'))
+                            'no governed intelligence-commit receipt is available to this repository-only readiness probe'))
         elif lid == 'L02':
             if not (root / MACHINE_CONTRACT_REL).is_file():
                 results.append((lid, name, NOT_SATISFIED, 'canonical machine contract absent'))

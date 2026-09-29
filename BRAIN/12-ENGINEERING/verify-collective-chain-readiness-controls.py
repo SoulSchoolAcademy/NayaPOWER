@@ -25,7 +25,7 @@ GATE = ROOT / 'BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py'
 CONTRACT = 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
 MACHINE = 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
 SEED = 'BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json'
-RECEIVER = 'supabase/functions/v7-smart-note-canonical/index.ts'
+RECEIVER = 'supabase/functions/nayanet-intelligence-commit-runtime/index.ts'
 MIGRATION = 'supabase/migrations/0001_probe.sql'
 EDGE_FN = 'supabase/functions/probe/index.ts'
 
@@ -120,4 +120,4 @@ print('VERDICT:', 'gate discriminates real state' if all(results)
       else 'GATE IS UNSOUND ΓÇö it may be hardcoding its answer')
 print()
 print('NOTE: no control simulates a satisfied Intelligent Block. L01 cannot be made to')
-print('      report SATISFIED without a receiver-issued IB id, which is correct.')
+print('      report SATISFIED without a governed intelligence-commit receipt / authoritative IB id, which is correct.')
