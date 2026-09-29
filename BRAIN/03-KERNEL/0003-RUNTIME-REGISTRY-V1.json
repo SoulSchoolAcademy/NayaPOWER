@@ -1,17 +1,41 @@
 {
-  "schema":"naya.kernel.runtime.registry.v1",
-  "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
-  "status":"CANONICAL_RUNTIME_CONTRACT_BINDING_PENDING",
-  "behavioral_proof":"PENDING",
-  "runtime_binding":{"status":"NOT_PROVEN","entrypoint":null,"source_of_truth":"Actual application runtime source; do not infer from documentation."},
-  "manifest":"BRAIN/03-KERNEL/MANIFEST.json",
-  "node_order":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],
-  "node_ids":["NAYA-KERNEL-SELF","NAYA-KERNEL-LAW","NAYA-KERNEL-ACT","NAYA-KERNEL-KNOW","NAYA-KERNEL-PROVE","NAYA-KERNEL-CONNECT","NAYA-KERNEL-VERIFY","NAYA-KERNEL-LEARN","NAYA-KERNEL-EVOLVE"],
-  "node_objects":"BRAIN/04-INTELLIGENCE/OBJECTS/",
-  "graph_seed":"BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-  "knowledge_population":"BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
-  "representation_contract":"BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
-  "gates":[
+  "schema": "naya.kernel.runtime.registry.v1",
+  "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
+  "status": "CANONICAL_RUNTIME_CONTRACT_BINDING_PENDING",
+  "behavioral_proof": "PENDING",
+  "runtime_binding": {
+    "status": "NOT_PROVEN",
+    "entrypoint": null,
+    "source_of_truth": "Actual application runtime source; do not infer from documentation."
+  },
+  "manifest": "BRAIN/03-KERNEL/MANIFEST.json",
+  "node_order": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+  ],
+  "node_ids": [
+    "NAYA-KERNEL-SELF",
+    "NAYA-KERNEL-LAW",
+    "NAYA-KERNEL-ACT",
+    "NAYA-KERNEL-KNOW",
+    "NAYA-KERNEL-PROVE",
+    "NAYA-KERNEL-CONNECT",
+    "NAYA-KERNEL-VERIFY",
+    "NAYA-KERNEL-LEARN",
+    "NAYA-KERNEL-EVOLVE"
+  ],
+  "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "knowledge_population": "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
+  "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
+  "gates": [
     "SELF:identity_and_mission",
     "LAW:authority_scope_consent",
     "ACT:authorized_execution_boundary",
@@ -22,6 +46,29 @@
     "LEARN:verified_future_behavioral_effect",
     "EVOLVE:successor_continuity_without_new_authority"
   ],
-  "fail_closed":["missing_identity","missing_authority","out_of_scope","missing_provenance","insufficient_evidence","material_conflict","missing_canonical_identity"],
-  "acceptance":"A runtime is not considered living merely because this registry exists; behavioral, outcome, causal, production and successor proof are separate gates."
+  "fail_closed": [
+    "missing_identity",
+    "missing_authority",
+    "out_of_scope",
+    "missing_provenance",
+    "insufficient_evidence",
+    "material_conflict",
+    "missing_canonical_identity"
+  ],
+  "acceptance": "A runtime is not considered living merely because this registry exists; behavioral, outcome, causal, production and successor proof are separate gates.",
+  "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+  "organism_map": "BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.json",
+  "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+  "node_runtime_bindings": {
+    "SELF": {
+      "status": "BOUNDED_EXISTING_IDENTITY_ANCHOR",
+      "entrypoint": "NAYA-NODE-0001 / existing governed runtime identity"
+    },
+    "LAW": {
+      "status": "IMPLEMENTED_SOURCE_PENDING_LIVE_PROOF",
+      "entrypoint": "supabase/functions/nayanet-law-runtime/index.ts",
+      "decision_receipt": "nayanet_execution_receipts.action=law_authority_decision"
+    }
+  },
+  "next_node_after_law": "ACT"
 }
