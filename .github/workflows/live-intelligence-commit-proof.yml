@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - name: Mint short-lived Naya runtime identity
         shell: bash
         run: |
@@ -34,14 +36,36 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, os, uuid
-          lesson_key = "NAYA-FLOW-LESSON-" + uuid.uuid4().hex
-          json.dump({
-            "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
-            "p_title":"Naya runtime flow lesson",
-            "p_content":"Preserve provenance before applying retained intelligence.",
-            "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
-            "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"}, open("lesson-request.json","w"), indent=2)
+          import json, os, subprocess, uuid
+          capture_path = ".naya/capture/SMART-NOTE-b8f141805fa0d7ae.json"
+          event = json.load(open(os.environ["GITHUB_EVENT_PATH"]))
+          before = event.get("before")
+          after = os.environ["GITHUB_SHA"]
+          changed = []
+          if before and before != "0" * 40:
+              changed = subprocess.check_output(["git","diff","--name-only",before,after], text=True).splitlines()
+          use_capture = capture_path in changed
+          if use_capture:
+              capture = json.load(open(capture_path))
+              lesson_key = "SMART-NOTE-" + capture["capture_id"]
+              distilled = json.dumps(capture["intelligence"], sort_keys=True, separators=(",",":"), ensure_ascii=False)
+              request = {
+                "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
+                "p_title":capture["title"],"p_content":distilled,
+                "p_category":"SMART_NOTE","p_topic":capture["topic"],
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
+              }
+              json.dump({"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled}, open("smart-note-expected.json","w"), ensure_ascii=False, indent=2)
+          else:
+              lesson_key = "NAYA-FLOW-LESSON-" + uuid.uuid4().hex
+              request = {
+                "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
+                "p_title":"Naya runtime flow lesson",
+                "p_content":"Preserve provenance before applying retained intelligence.",
+                "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
+              }
+          json.dump(request, open("lesson-request.json","w"), ensure_ascii=False, indent=2)
           PY
           curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json
           cat fresh-lesson-receipt.json
@@ -61,6 +85,7 @@ jobs:
           path: |
             fresh-lesson-receipt.json
             fresh-lesson-lineage-ids.json
+            smart-note-expected.json
 
   independent-verification:
     needs: fresh-lesson
@@ -94,9 +119,37 @@ jobs:
           assert r["status"] == "LINEAGE_VERIFIED", r
           assert r["independent_verification"] is True, r
           assert all(r["checks"].values()), r
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              expected=None
+          if expected:
+              persisted=r["persisted"]
+              block=persisted["block"]
+              actual=block["content"]["lesson"]
+              assert actual == expected["expected_content"], {"expected":expected["expected_content"],"actual":actual}
+              proof={
+                  "schema":"NAYA_SMART_NOTE_CAPTURE_PROOF_V1",
+                  "capture_id":expected["capture_id"],
+                  "capture_path":expected["capture_path"],
+                  "intelligent_block_id":block["intelligent_block_id"],
+                  "event_id":persisted["event"]["id"],
+                  "lineage_id":persisted["lineage"]["id"],
+                  "relationship_id":persisted["relationship"]["relationship_id"],
+                  "index_id":persisted["index"]["id"],
+                  "checkpoint_id":persisted["checkpoint"]["id"],
+                  "receipt_id":persisted["receipt"]["id"],
+                  "understanding_state":block["understanding_state"],
+                  "owner_scope":block["owner_scope"],
+                  "exact_distilled_payload_match":True,
+                  "independent_lineage_verification":True
+              }
+              json.dump(proof, open("smart-note-capture-proof.json","w"), indent=2)
           PY
       - uses: actions/upload-artifact@v4
         with:
           name: independent-fresh-lesson-verification
-          path: independent-lineage-verification.json
+          path: |
+            independent-lineage-verification.json
+            smart-note-capture-proof.json
 # Re-trigger canonical fresh-lesson proof after authority-target repair; execution path remains the existing Naya OIDC runtime seam.
