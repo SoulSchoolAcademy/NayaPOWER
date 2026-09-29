@@ -2,7 +2,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "governed-supabase-production-deploy.yml"
-CONFIG = ROOT / "supabase" / "config.toml"\nRUNTIME_PROOF = ROOT / ".github" / "workflows" / "live-supabase-runtime-proof.yml"
+CONFIG = ROOT / "supabase" / "config.toml"
+RUNTIME_PROOF = ROOT / ".github" / "workflows" / "live-supabase-runtime-proof.yml"
 
 
 def test_governed_promotion_keeps_manual_human_gate_and_canonical_proof():
