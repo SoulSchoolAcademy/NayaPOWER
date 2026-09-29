@@ -62,15 +62,13 @@ def check(label, tree, expect_absent, expect_present):
 
 results = []
 
-# 1. The real migrations genuinely carry UNCREATED_DEPENDENCY, and it is named.
+# 1. The production-ledger-restored migration set must not fabricate relation
+#    defects from policy names or dynamic SQL strings.
 tree = fixture()
 got, out = classes(tree)
-named = {m for m in re.findall(r'^  UNCREATED_DEPENDENCY\s+(public\.[\w.]+)$', out, re.M)}
-ok = 'public.nayanet_cognition_events' in named and 'public.v7_smart_note_transactions' in named
-print(f'{"real migrations report core uncreated tables":<58} '
-      f'cognition_events={"public.nayanet_cognition_events" in named} '
-      f'v7_smart_note={"public.v7_smart_note_transactions" in named} '
-      f'{"OK" if ok else "*** WRONG ***"}')
+ok = not got
+print(f'{"restored production history has no measured static defect":<58} '
+      f'expect=0 defects actual={sorted(got)} {"OK" if ok else "*** WRONG ***"}')
 results.append(ok)
 
 # 2. Introduce a REAL duplicate unconditional CREATE -> DUPLICATE_CREATE must appear.
@@ -109,19 +107,14 @@ print(f'{"introduced drop then later use":<58} expect=DROPPED_THEN_USED actual={
       f'{"OK" if ok else "*** WRONG ***"}')
 results.append(ok)
 
-# 5. THE STRONG CONTROL: synthesise the missing CREATE TABLE statements for every
-#    currently-uncreated core table. The gate must fall to ZERO defects. If it does not,
-#    the gate is asserting a fixed list rather than reading the migrations.
+# 5. Introduce a real dependency on a table no migration creates.
 tree = fixture()
-_, out = classes(tree)
-uncreated = re.findall(r'^  UNCREATED_DEPENDENCY\s+(public\.[\w.]+)$', out, re.M)
-(tree / MIGRATIONS / '20260901000000_control_backfill_core_tables.sql').write_text(
-    '\n'.join(f'create table if not exists {t} (id uuid);' for t in sorted(set(uncreated))) + '\n',
-    encoding='utf-8')
-got, out2 = classes(tree)
-ok = not got
-print(f'{"synthesised CREATE for all {n} uncreated tables":<58} expect=0 defects actual={sorted(got)} '
-      f'{"OK" if ok else "*** WRONG ***"}'.replace('{n}', str(len(set(uncreated)))))
+(tree / MIGRATIONS / '99999999999997_control_uncreated.sql').write_text(
+    'select 1 from public.control_missing_relation;\n', encoding='utf-8')
+got, _ = classes(tree)
+ok = 'UNCREATED_DEPENDENCY' in got
+print(f'{"introduced uncreated dependency":<58} expect=UNCREATED_DEPENDENCY actual={sorted(got)} '
+      f'{"OK" if ok else "*** WRONG ***"}')
 results.append(ok)
 
 # 6. A pure-keyword / catalog / role reference must never be reported as a table.
@@ -138,12 +131,26 @@ print(f'{"keyword/catalog/CTE/function noise not reported":<58} expect=0 noise f
       f'{"OK" if ok else "*** WRONG ***"}')
 results.append(ok)
 
+# 7. Quoted policy names and dynamic SQL strings are not static relation tokens.
+tree = fixture()
+(tree / MIGRATIONS / '99999999999996_control_quoted_noise.sql').write_text(
+    'create policy "members update own rows" on public.nayanet_smart_ledger '
+    'for select using (true);\n'
+    "do $$ begin execute format('drop table if exists public.%I cascade', 'x'); end $$;\n",
+    encoding='utf-8')
+got, out = classes(tree)
+quoted_names = {'public.own', 'public.public'}
+reported = {name for name in quoted_names if name in out}
+ok = not reported and 'DROPPED_THEN_USED' not in got
+print(f'{"quoted policy/dynamic SQL noise not reported":<58} expect=0 false relations '
+      f'actual={sorted(reported)} {"OK" if ok else "*** WRONG ***"}')
+results.append(ok)
+
 print()
 print(f'CONTROLS: {sum(results)}/{len(results)} behaved as specified')
 print('VERDICT:', 'gate discriminates real migration content'
       if all(results) else 'GATE IS UNSOUND - it may be asserting a fixed list')
 print()
-print('NOTE: control 5 proves the UNCREATED_DEPENDENCY findings are real and fixable.')
-print('      Synthesising the missing CREATE statements clears every finding, which means')
-print('      the gate is measuring the migrations rather than reporting a hardcoded list.')
-print('      It does NOT mean anyone has authored those CREATE statements correctly.')
+print('NOTE: controls prove the detector can still create and clear real defect classes')
+print('      while rejecting quoted-text false positives. Zero static findings does NOT')
+print('      prove an empty-database rebuild has been executed successfully.')

@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "3ed85b8ffc6586c7e71656180d5798c91512acea";
+const DEPLOYED_SOURCE_REVISION = "c5fc0387628a4e694e9be9369b685ef0889644a6";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
@@ -87,13 +87,14 @@ Deno.serve(async (req: Request) => {
     // legitimately run concurrently, so max+1 is only a starting point. On a
     // unique-key race, re-read authoritative state and retry.
     const insertReceiptWithRetry = async (row: Omit<Record<string, unknown>, "revision">) => {
-      for (let attempt = 0; attempt < 5; attempt++) {
+      for (let attempt = 0; attempt < 20; attempt++) {
         const revisionRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
         const revision = (Array.isArray(revisionRows) && revisionRows.length ? Number(revisionRows[0].revision) + 1 : 1);
         const { data, error } = await admin.from("nayanet_execution_receipts").insert({ ...row, revision }).select("*").single();
         if (!error) return data;
         if (error.code !== "23505") throw new Error("RECEIPT_WRITE_" + error.code + ":" + error.message);
-        if (attempt === 4) throw new Error("RECEIPT_REVISION_RETRY_EXHAUSTED");
+        if (attempt === 19) throw new Error("RECEIPT_REVISION_RETRY_EXHAUSTED");
+        await new Promise((resolve) => setTimeout(resolve, 25 * (attempt + 1)));
       }
       throw new Error("RECEIPT_REVISION_RETRY");
     };
@@ -460,10 +461,8 @@ Deno.serve(async (req: Request) => {
       const applicable = relationshipContext ? relationships.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.source_id && r.target_id === BLOCK_ID) : [];
       const selected = applicable.filter((r: any) => ["PRODUCES","VERIFIED_BY"].includes(r.relationship_type));
       const behavior = selected.length > 0 ? "APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
-      const receiptRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
-      const revision = (Array.isArray(receiptRows) && receiptRows.length ? Number(receiptRows[0].revision) + 1 : 1);
       const row = {
-        user_id: OWNER_ID, project_id: "NayaNET", revision,
+        user_id: OWNER_ID, project_id: "NayaNET",
         action: "NAYA-NODE-0001-GRAPH-" + (relationshipContext ? "ON" : "OFF") + "-" + taskId,
         status: "SUCCESS",
         expected_result: "Execute the identical held-out task under the requested graph-context condition.",
@@ -479,8 +478,7 @@ Deno.serve(async (req: Request) => {
           epistemic_state: selected.map((r: any) => r.epistemic_state)
         }
       };
-      const { data: persisted, error: persistError } = await admin.from("nayanet_execution_receipts").insert(row).select("*").single();
-      if (persistError) throw new Error("GRAPH_RECEIPT_WRITE_" + persistError.code + ":" + persistError.message);
+      const persisted = await insertReceiptWithRetry(row);
       return json({ ok: true, schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, block_id: BLOCK_ID, task_id: taskId, condition: relationshipContext ? "ON" : "OFF", behavior, relationship_context_enabled: relationshipContext, selected_relationships: selected, receipt: persisted, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
     }
 

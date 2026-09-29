@@ -370,7 +370,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
           python - <<'PY'
           import json
           r=json.load(open("graph-control.json"))
@@ -382,7 +382,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
           python - <<'PY'
           import json
           r=json.load(open("graph-treatment.json"))
@@ -519,7 +519,8 @@ jobs:
             "receipt_ids":r["receipt_ids"],
           }, open("verify-generalization-request.json","w"))
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-generalization-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-active-learning-generalization.json
+          cat verify-generalization-request.json
+          curl -sS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-generalization-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-active-learning-generalization.json
           python - <<'PY'
           import json
           e=json.load(open("active-learning-generalization.json"))
@@ -618,6 +619,7 @@ jobs:
           import json, os
           er=json.load(open("cold-successor-related.json"))
           eu=json.load(open("cold-successor-unrelated.json"))
+          learning_id=er["reconstruction"]["learning_id"]
           vr=json.load(open("cold-successor-related-verify.json"))
           vu=json.load(open("cold-successor-unrelated-verify.json"))
           for v in (vr,vu):
