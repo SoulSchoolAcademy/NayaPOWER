@@ -407,7 +407,8 @@ jobs:
             "source_sha":os.environ["GITHUB_SHA"],
             "production_branch":os.environ["PRODUCTION_BRANCH"],
             "human_authorization":{
-              "confirmation":"DEPLOY",
+              "type":("STANDING_POLICY" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "EXPLICIT_HUMAN"),
+              "confirmation":("STANDING-PRODUCTION-PROMOTION-V1" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "DEPLOY"),
               "actor":os.environ.get("GITHUB_ACTOR"),
               "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
             },
