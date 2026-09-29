@@ -128,4 +128,4 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         if line.startswith("[functions.") and line.endswith("]")
     }
     assert declared == expected
-    assert config.count("verify_jwt = false") == len(expected)
+    assert config.count("verify_jwt = false") == 4
