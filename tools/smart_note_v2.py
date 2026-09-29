@@ -4,8 +4,8 @@ import argparse, json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MEMORY_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
-REGISTRY = MEMORY_ROOT / "index.json"
+BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
 
 def slug(s):
     x = re.sub(r"[^a-z0-9]+", "-", str(s).lower()).strip("-")
@@ -25,20 +25,28 @@ def changed_capture(paths):
         raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
     return hits[0] if hits else ""
 
-def projection_path(capture, ib, root=MEMORY_ROOT):
-    y, m, d = str(capture["source"]["captured_at"]).split("-")
+def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
+    captured = str(capture.get("captured_at_utc") or capture.get("source", {}).get("captured_at_utc") or capture["source"]["captured_at"])
+    date = captured[:10]
+    y, m, d = date.split("-")
+    time_token = "000000Z"
+    if "T" in captured:
+        raw = captured.split("T", 1)[1].split(".", 1)[0].replace(":", "")
+        time_token = (raw[:6] if len(raw) >= 6 else raw.ljust(6, "0")) + "Z"
     meta = capture.get("projection", {})
-    cat = meta.get("category_slug") or slug(capture.get("category", "smart-note"))
-    topic = meta.get("topic_slug") or slug(capture.get("topic", "general"))
-    sub = meta.get("subtopic_slug") or slug(capture.get("subtopic", "general"))
-    return Path(root) / y / m / d / cat / topic / sub / ib / "smart-note.md"
+    cat = (meta.get("category_slug") or slug(capture.get("category", "smart-note"))).upper()
+    topic = (meta.get("topic_slug") or slug(capture.get("topic", "general"))).upper()
+    sub = (meta.get("subtopic_slug") or slug(capture.get("subtopic", "general"))).upper()
+    return Path(root) / y / m / d / cat / topic / sub / time_token / (ib + ".md")
 
 def render(capture, verify, private_root=None):
     block = verify["persisted"]["block"]
     ib = block["intelligent_block_id"]
     intelligence = json.loads(block["content"]["lesson"])
     scope = str(block.get("owner_scope", "PRIVATE")).upper()
-    if scope == "PRIVATE":
+    projection_meta = capture.get("projection", {})
+    public_authorized = bool(projection_meta.get("human_director_authorized_publication")) or str(projection_meta.get("publication_scope", "")).upper() in {"PUBLIC", "COLLECTIVE", "PUBLIC_DERIVED_VIEW"}
+    if scope == "PRIVATE" and not public_authorized:
         if not private_root:
             raise SystemExit("PRIVATE_PROJECTION_REQUIRES_AUTHENTICATED_PRIVATE_SURFACE")
         p = projection_path(capture, ib, Path(private_root))
@@ -61,14 +69,15 @@ def render(capture, verify, private_root=None):
         "**Captured:** " + str(capture["source"]["captured_at"]),
         "**Canonical intent:** " + str(capture.get("canonical_intent", "CAPTURE_DURABLE_INTELLIGENCE")), "",
         "> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.", "",
-        "## In a nutshell", "", intelligence.get("essence", ""), "",
-        "## What", "", intelligence.get("objective", ""), "",
-        "## Why it matters", "", intelligence.get("human_view", {}).get("why_it_matters", ""), "",
-        "## Human view", "", intelligence.get("human_view", {}).get("meaning", ""), "",
-        "## Child view", "", intelligence.get("simple_view", {}).get("child", ""), "",
-        "## Grandma view", "", intelligence.get("simple_view", {}).get("grandma", ""), "",
-        "## Naya view", "", intelligence.get("naya_view", {}).get("purpose", ""), "",
-        "## Machine view", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
+        "## ✦ IN A NUTSHELL", "", intelligence.get("essence", ""), "",
+        "## 🩷 HUMAN NOTE", "", intelligence.get("human_view", {}).get("meaning", ""), "", intelligence.get("human_view", {}).get("why_it_matters", ""), "",
+        "## 🟣 CHILD NOTE", "", intelligence.get("simple_view", {}).get("child", ""), "",
+        "## 🔵 GRANDMA NOTE", "", intelligence.get("simple_view", {}).get("grandma", ""), "",
+        "## 🟠 NAYA NOTE", "", intelligence.get("naya_view", {}).get("purpose", ""), "", intelligence.get("naya_view", {}).get("architectural_rule", ""), "",
+        "## 🟢 MACHINE NOTE", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
+        "## 🟢 LEARNING LESSON", "", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next.", "",
+        "## 🟡 WHAT IT MEANS", "", intelligence.get("priority", ""), "",
+        "## ⚪ WHAT'S IN IT FOR YOU", "", "Less repetition, less lost knowledge, faster comprehension, stronger continuity, and a direct Smart Link showing exactly what Naya preserved.", "",
         "## Decisions", ""
     ]
     lines += ["- " + x for x in intelligence.get("decisions", [])]
@@ -76,17 +85,18 @@ def render(capture, verify, private_root=None):
     for x in intelligence.get("connections", []):
         lines.append("- **" + x.get("type", "RELATED_TO") + "** -> " + x.get("target", ""))
     lines += [
-        "", "## How to apply", "", intelligence.get("human_view", {}).get("simple_rule", ""), "",
-        "## What we learned", "", "Capture is proven for this specimen at CANDIDATE state. Later outcome/learning promotion remains evidence-bound.", "",
-        "## Uncertainty", "", intelligence.get("uncertainty", ""), "",
-        "## Proof", "", "~~~json", json.dumps(proof, indent=2), "~~~", "",
-        "## Next action", "", "Retrieve this Block contextually in a cold successor, apply it to a held-out task, verify the behavioral effect, and only then claim later proof rungs.", ""
+        "", "## 🟨 HOW TO APPLY / HOW TO USE", "", intelligence.get("human_view", {}).get("simple_rule", ""), "",
+        "## 🔗 HOW IT CONNECTS", "", *["- **" + x.get("type", "RELATED_TO") + "** → " + x.get("target", "") for x in intelligence.get("connections", [])], "",
+        "## 🧭 KEY DECISIONS / PRINCIPLES", "", *["- " + x for x in intelligence.get("decisions", [])], "",
+        "## 🧾 PROOF / PROVENANCE", "", "~~~json", json.dumps(proof, indent=2), "~~~", "",
+        "## ⚠️ TRUTH BOUNDARY / UNCERTAINTY", "", intelligence.get("uncertainty", ""), "",
+        "## ➜ NEXT ACTION / SUCCESS CONDITION", "", "Keep this intelligence retrievable, apply it only when relevant and authorized, verify resulting outcomes, and compound only what evidence supports.", ""
     ]
     p.write_text("\n".join(lines), encoding="utf-8")
     return p
 
 def update_registry(capture, verify, projection):
-    MEMORY_ROOT.mkdir(parents=True, exist_ok=True)
+    REGISTRY.parent.mkdir(parents=True, exist_ok=True)
     registry = {"schema":"naya.smart-note-projection-index.v1","version":"1.0","source_of_truth":"runtime_intelligent_block","entries":[]}
     if REGISTRY.exists():
         registry = load_json(REGISTRY)
@@ -101,8 +111,8 @@ def update_registry(capture, verify, projection):
         "truth_state": block["understanding_state"],
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
-        "projection_status": "PUBLISHED" if str(projection).startswith(str(ROOT)) else "PRIVATE_RENDER_VERIFIED",
-        "smart_link_status": "READY" if str(projection).startswith(str(ROOT)) else "PENDING_PRIVATE_PROJECTION",
+        "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
+        "smart_link_status": "READY" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
         "keywords": ["smart note","capture","intelligent block","future naya","superbrain","intent","memory","reusable intelligence"],
         "provenance": {
             "event_id": verify["persisted"]["event"]["id"],
@@ -165,7 +175,7 @@ def main():
         cap = load_json(args.capture); ver = load_json(args.verify)
         p = render(cap, ver, args.private_root)
         block = ver["persisted"]["block"]
-        published = str(p).startswith(str(ROOT)) and str(block.get("owner_scope","PRIVATE")).upper() != "PRIVATE"
+        published = str(p).startswith(str(BRAIN_SMART_NOTE_ROOT))
         entry = update_registry(cap, ver, p) if published else {
             "intelligent_block_id": block["intelligent_block_id"],
             "scope": block.get("owner_scope"),
