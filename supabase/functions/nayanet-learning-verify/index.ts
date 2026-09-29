@@ -62,6 +62,7 @@ Deno.serve(async (req: Request) => {
 
     if (mode === "candidate") {
       const blockId = String(body?.intelligent_block_id || "");
+      const requestedCheckpointId = String(body?.checkpoint_id || "");
       if (!blockId) return json({ ok: false, error: "INTELLIGENT_BLOCK_ID_REQUIRED" }, 400);
       const { data: block, error: blockError } = await admin.from("nayanet_intelligent_blocks").select("block_id,intelligent_block_id,owner_id,owner_scope,status,understanding_state,content,evidence_refs,created_at").eq("intelligent_block_id", blockId).eq("owner_id", ownerId).maybeSingle();
       if (blockError) throw blockError;
@@ -85,7 +86,10 @@ Deno.serve(async (req: Request) => {
       const { data: index, error: indexError } = await admin.from("nayanet_intelligence_index").select("id,source_id,source_table,object_type,status").eq("source_id", block.block_id).eq("owner_id", ownerId).maybeSingle();
       if (indexError) throw indexError;
       if (!index) return json({ ok: false, error: "INDEX_NOT_FOUND" }, 409);
-      const { data: checkpointRows, error: checkpointError } = await admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("user_id", ownerId).eq("project_id", "NayaNET").order("updated_at", { ascending: false }).limit(1);
+      const checkpointQuery = admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("user_id", ownerId).eq("project_id", "NayaNET");
+      const { data: checkpointRows, error: checkpointError } = requestedCheckpointId
+        ? await checkpointQuery.eq("id", requestedCheckpointId).limit(1)
+        : await checkpointQuery.order("updated_at", { ascending: false }).limit(1);
       if (checkpointError) throw checkpointError;
       const checkpoint = checkpointRows?.[0];
       if (!checkpoint || checkpoint.state?.intelligent_block_id !== blockId || checkpoint.state?.lineage_id !== lineage.id || checkpoint.state?.relationship_id !== relationship.relationship_id || checkpoint.state?.index_id !== index.id) return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH" }, 409);
