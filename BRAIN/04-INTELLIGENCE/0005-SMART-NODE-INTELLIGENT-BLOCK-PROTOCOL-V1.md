@@ -332,17 +332,25 @@ The novel operational seam locked by this protocol is:
 
 ## 16. Canonical projection and Smart Link
 
-After a verified commit, the human-readable Smart Note projection belongs at:
+After a verified commit, the **primary human-readable Brain projection** belongs at:
 
-`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/subtopic/IB-.../smart-note.md`
+`BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md`
+
+This hierarchy is intentionally searchable by **year, month, day, category, topic, subtopic, time, and exact Intelligent Block ID**.
 
 The projection is generated from persisted intelligence and includes the canonical IB identity and proof pointers. The repository path is navigational; the Intelligent Block remains the source of truth.
 
-The canonical **Smart Link** is the independently verified human-facing doorway to the Smart Note projection. For PUBLIC notes this may be a direct `smart-note.md` link. For PRIVATE notes it MUST be an authenticated viewer that rereads the canonical Intelligent Block and renders the same organized projection without exposing private content publicly.
+The canonical **Smart Link** is the independently verified direct GitHub link to the Brain Markdown projection whenever publication/share scope permits it. That is the primary human receipt.
+
+For PRIVATE personal intelligence that has **not** been authorized for publication, the system must use an authenticated private human projection instead and MUST NOT publish private intelligence into the public repository.
+
+A PRIVATE canonical Block may still have a PUBLIC derived projection only when the Human Director explicitly authorizes sharing/publication of that intelligence. The public projection must avoid unnecessary private identity/source material.
 
 Workflow, PR, commit, artifact, and evidence URLs are proof links, not Smart Links.
 
-Machine discovery uses both the runtime intelligence index and the repository projection registry `.naya/memory/smart-notes/index.json`; directory crawling is not the primary discovery mechanism.
+Machine discovery uses the runtime intelligence index plus the projection registry `.naya/memory/smart-notes/index.json`; directory crawling is not the primary discovery mechanism.
+
+The Brain Markdown is a **human/AI-readable projection**, not a competing persistence authority. Supabase/receiver-owned Intelligent Block identity and provenance remain machine-canonical.
 
 
 ## 17. Smart Note completion authority
@@ -367,3 +375,49 @@ SMART NOTE THIS
 ```
 
 This does not authorize unrelated deployments or privacy/truth-state changes.
+
+
+## 18. Required human Smart Note format
+
+The human projection MUST optimize for fast comprehension and should normally contain these views of the same intelligence:
+
+1. **IN A NUTSHELL**
+2. **HUMAN NOTE**
+3. **CHILD NOTE**
+4. **GRANDMA NOTE**
+5. **NAYA NOTE**
+6. **MACHINE NOTE**
+7. **LEARNING LESSON**
+8. **WHAT IT MEANS / ULTIMATE SIGNIFICANCE**
+9. **WHAT'S IN IT FOR YOU**
+10. **HOW TO APPLY / HOW TO USE**
+11. **HOW IT CONNECTS**
+12. **KEY DECISIONS / PRINCIPLES**
+13. **PROOF / PROVENANCE**
+14. **TRUTH BOUNDARY / UNCERTAINTY**
+15. **NEXT ACTION / SUCCESS CONDITION**
+
+A long source may require more detail, but the note must remain skimmable. One intelligence may have many perspectives; those perspectives MUST NOT become separate intelligence objects.
+
+## 19. End-to-end Smart Note product flow
+
+```
+HUMAN: "SMART NOTE THIS"
+→ NIA LANGUAGE NORMALIZES INTENT
+→ DISTILL DURABLE INTELLIGENCE
+→ CHECK PRIVACY / VALUE / DUPLICATES / CONFLICTS
+→ CANONICAL RECEIVER COMMIT OR RECONCILE
+→ EVENT + INTELLIGENT BLOCK + LINEAGE + RELATIONSHIP + INDEX + RECEIPT
+→ INDEPENDENT REREAD / PROOF
+→ CREATE BRAIN HUMAN MARKDOWN PROJECTION
+→ REGISTER DIRECT GITHUB SMART LINK
+→ PROJECT SAME IB INTO HUB PERSONAL INTELLIGENCE
+→ IF HUMAN CHOOSES TO SHARE: PROJECT DISTILLED INTELLIGENCE INTO COLLECTIVE INTELLIGENCE
+→ FUTURE NAYAS RETRIEVE CONTEXTUALLY
+→ AUTHORIZED APPLICATION
+→ OBSERVE OUTCOME
+→ VERIFY
+→ LEARN / COMPOUND WHEN EVIDENCE WARRANTS
+```
+
+**The Hub is a projection of the intelligence, not the canonical brain. GitHub Brain Markdown is the human-readable memory projection. Supabase is the runtime machine persistence. The Intelligent Block identity binds them together.**
