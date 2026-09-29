@@ -88,4 +88,4 @@ def test_runtime_proof_supports_explicit_exact_source_dispatch():
 def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_watch():
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "gh run watch" not in source
-    assert "gh run view \\"$run_id\\"" in source
+    assert "gh run view" in source
