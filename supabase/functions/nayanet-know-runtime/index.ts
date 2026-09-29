@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { selectKnowContext, type KnowRequest } from "./know.ts";
+import { hasCallerSuppliedIntelligence, selectKnowContext, validateKnowAuthorization, type KnowAuthorityGrant, type KnowRequest } from "./know.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -37,18 +37,17 @@ async function readLawReceipt(admin:ReturnType<typeof adminClient>,id:string){
   return data;
 }
 
-function validateRetrievalAuthority(receipt:any,now=new Date()){
-  if(!receipt) return {ok:false,reason:"LAW_RECEIPT_REQUIRED"};
-  if(receipt.action!=="law_authority_decision" || receipt.status!=="SUCCESS") return {ok:false,reason:"LAW_RECEIPT_INVALID"};
-  const ev=receipt.evidence??{},dec=ev.law_decision??{},req=ev.law_request??{};
-  if(ev.node_id!=="NAYA-KERNEL-LAW" || dec.status!=="AUTHORIZED") return {ok:false,reason:"LAW_NOT_AUTHORIZED"};
-  if(dec.owner_id!==OWNER_ID || dec.naya_id!==NAYA_ID) return {ok:false,reason:"LAW_IDENTITY_MISMATCH"};
-  if(req.action!=="naya_node_apply" || dec.action!=="naya_node_apply") return {ok:false,reason:"LAW_ACTION_MISMATCH"};
-  if(req.target!==NAYA_ID || dec.target!==NAYA_ID) return {ok:false,reason:"LAW_TARGET_MISMATCH"};
-  const evaluated=dec.evaluated_at?new Date(dec.evaluated_at):null;
-  if(evaluated && (now.getTime()-evaluated.getTime())/1000>MAX_LAW_AGE_SECONDS) return {ok:false,reason:"LAW_RECEIPT_STALE"};
-  if(dec.expires_at && new Date(dec.expires_at).getTime()<=now.getTime()) return {ok:false,reason:"LAW_AUTHORITY_EXPIRED"};
-  return {ok:true,reason:"AUTHORIZED_PARENT_ACTION_CONTEXT",law_receipt_id:receipt.id,authority_refs:Array.isArray(dec.authority_refs)?dec.authority_refs:[]};
+async function readAuthorityGrant(admin:ReturnType<typeof adminClient>,id:string){
+  if(!id) return null;
+  const {data,error}=await admin.from("nayanet_authority_grants").select("*").eq("grant_id",id).maybeSingle();
+  if(error) throw error;
+  return data as KnowAuthorityGrant|null;
+}
+
+async function resolveKnowAuthorization(admin:ReturnType<typeof adminClient>,receipt:any,now=new Date()){
+  const refs=Array.isArray(receipt?.evidence?.law_decision?.authority_refs)?receipt.evidence.law_decision.authority_refs.map(String):[];
+  const grant=refs.length===1?await readAuthorityGrant(admin,refs[0]):null;
+  return validateKnowAuthorization(receipt,grant,OWNER_ID,NAYA_ID,now,MAX_LAW_AGE_SECONDS);
 }
 
 async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
@@ -79,7 +78,7 @@ async function insertReceipt(admin:ReturnType<typeof adminClient>,row:Record<str
 }
 
 function requestFrom(body:Record<string,unknown>):KnowRequest{
-  if("block_id" in body || "intelligent_block_id" in body || "answer" in body || "intelligence_content" in body) throw new Error("CALLER_SELECTED_INTELLIGENCE_FORBIDDEN");
+  if(hasCallerSuppliedIntelligence(body)) throw new Error("CALLER_SELECTED_INTELLIGENCE_FORBIDDEN");
   const task_id=String(body.task_id??"").trim();
   const task_class=String(body.task_class??"").trim();
   const required_capability=String(body.required_capability??"").trim();
@@ -98,7 +97,7 @@ Deno.serve(async(req)=>{
     if(mode==="retrieve"){
       const request=requestFrom(body);
       const lawReceipt=await readLawReceipt(admin,String(body.law_receipt_id??""));
-      const authority=validateRetrievalAuthority(lawReceipt);
+      const authority=await resolveKnowAuthorization(admin,lawReceipt);
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason,retrieval_creates_authority:false},403);
       const universe=await readEligibleUniverse(admin);
       const result=selectKnowContext(request,universe);
@@ -120,7 +119,7 @@ Deno.serve(async(req)=>{
       const receipt=await readReceipt(admin,receiptId);
       if(!receipt || receipt.action!=="know_context_retrieval") return json({ok:false,error:"KNOW_RECEIPT_NOT_FOUND"},404);
       const lawReceipt=await readLawReceipt(admin,String(receipt.evidence?.law_receipt_id??""));
-      const authority=validateRetrievalAuthority(lawReceipt);
+      const authority=await resolveKnowAuthorization(admin,lawReceipt);
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
       const recomputed=selectKnowContext(request,universe);

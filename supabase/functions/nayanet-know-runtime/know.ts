@@ -36,6 +36,51 @@ export type KnowResult = {
   handoff_to: "NAYA-KERNEL-PROVE";
 };
 
+export type KnowLawReceipt = { id?:string; user_id?:string; action?:string; status?:string; evidence?:any };
+export type KnowAuthorityGrant = {
+  grant_id:string; issuer_id:string; subject_id:string; scope?:Record<string,unknown>;
+  actions?:string[]; status?:string|null; revoked_at?:string|null; expires_at?:string|null;
+};
+
+export function hasCallerSuppliedIntelligence(body:Record<string,unknown>):boolean{
+  return ["block_id","intelligent_block_id","answer","intelligence_content","lesson","intelligence"]
+    .some((key)=>Object.prototype.hasOwnProperty.call(body,key));
+}
+
+export function validateKnowAuthorization(
+  receipt:KnowLawReceipt|null,
+  grant:KnowAuthorityGrant|null,
+  ownerId:string,
+  nayaId:string,
+  now=new Date(),
+  maxLawAgeSeconds=900
+){
+  if(!receipt) return {ok:false,reason:"LAW_RECEIPT_REQUIRED"};
+  if(receipt.user_id!==ownerId) return {ok:false,reason:"LAW_RECEIPT_OWNER_MISMATCH"};
+  if(receipt.action!=="law_authority_decision" || receipt.status!=="SUCCESS") return {ok:false,reason:"LAW_RECEIPT_INVALID"};
+  const ev=receipt.evidence??{},dec=ev.law_decision??{},req=ev.law_request??{};
+  if(ev.node_id!=="NAYA-KERNEL-LAW" || dec.status!=="AUTHORIZED") return {ok:false,reason:"LAW_NOT_AUTHORIZED"};
+  if(dec.owner_id!==ownerId || dec.naya_id!==nayaId) return {ok:false,reason:"LAW_IDENTITY_MISMATCH"};
+  if(req.action!=="naya_node_apply" || dec.action!=="naya_node_apply") return {ok:false,reason:"LAW_ACTION_MISMATCH"};
+  if(req.target!==nayaId || dec.target!==nayaId) return {ok:false,reason:"LAW_TARGET_MISMATCH"};
+  const evaluated=dec.evaluated_at?new Date(dec.evaluated_at):null;
+  if(!evaluated || Number.isNaN(evaluated.getTime())) return {ok:false,reason:"LAW_FRESHNESS_MISSING_OR_INVALID"};
+  const age=(now.getTime()-evaluated.getTime())/1000;
+  if(age<0 || age>maxLawAgeSeconds) return {ok:false,reason:"LAW_RECEIPT_STALE"};
+  const refs=Array.isArray(dec.authority_refs)?dec.authority_refs.map(String):[];
+  if(refs.length!==1) return {ok:false,reason:"LAW_AUTHORITY_REFERENCE_INVALID"};
+  if(!grant || grant.grant_id!==refs[0]) return {ok:false,reason:"LIVE_AUTHORITY_NOT_FOUND"};
+  if(grant.issuer_id!==ownerId || grant.subject_id!==ownerId) return {ok:false,reason:"LIVE_AUTHORITY_OWNER_MISMATCH"};
+  if(grant.status!=="ACTIVE" || grant.revoked_at) return {ok:false,reason:"LIVE_AUTHORITY_NOT_ACTIVE"};
+  if(grant.expires_at){
+    const expires=new Date(grant.expires_at);
+    if(Number.isNaN(expires.getTime()) || expires.getTime()<=now.getTime()) return {ok:false,reason:"LIVE_AUTHORITY_EXPIRED"};
+  }
+  if(!Array.isArray(grant.actions) || !grant.actions.includes("naya_node_apply")) return {ok:false,reason:"LIVE_AUTHORITY_ACTION_MISMATCH"};
+  if(String((grant.scope as any)?.target??"")!==nayaId) return {ok:false,reason:"LIVE_AUTHORITY_TARGET_MISMATCH"};
+  return {ok:true,reason:"LAW_AND_LIVE_AUTHORITY_MATCH",law_receipt_id:String(receipt.id??""),authority_refs:refs};
+}
+
 const SERVABLE_STATES=new Set(["VERIFIED","DISTILLED","APPLIED","LEARNED"]);
 const SERVABLE_STATUS=new Set(["ACTIVE","DURABLE","RELEASED"]);
 
@@ -61,6 +106,8 @@ export function deriveCapabilities(block:IntelligentBlock):string[]{
 export function isEligibleBlock(req:KnowRequest,block:IntelligentBlock):boolean{
   if(!block.intelligent_block_id) return false;
   if(block.owner_id!==req.owner_id) return false;
+  const scopeTarget=String(block.applicable_scope?.target??"");
+  if(scopeTarget && scopeTarget!==req.naya_id) return false;
   if(!SERVABLE_STATUS.has(String(block.status??""))) return false;
   if(!SERVABLE_STATES.has(String(block.understanding_state??""))) return false;
   if(block.superseded_by_block_id) return false;
