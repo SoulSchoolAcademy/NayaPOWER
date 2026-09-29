@@ -121,10 +121,22 @@ jobs:
           # Machine-readable form, so the baseline check compares finding IDENTITIES
           # rather than a bare count. A count cannot be regressed against safely: it
           # says nothing about which table regressed.
+          #
+          # The gate exits 1 when it FINDS defects, which is its normal behaviour and is
+          # not itself a build failure -- the debt is expected and recorded. Only an
+          # exit above 1 means the instrument itself broke, and that must stop the build,
+          # because otherwise a broken instrument silently reports zero findings.
+          set +e
           python BRAIN/12-ENGINEERING/verify-migration-coherence.py --json > migration-coherence.json
+          json_rc=$?
+          set -e
+          if [ "$json_rc" -gt 1 ]; then
+            echo "FAIL: the migration gate itself errored (exit $json_rc); its measurement cannot be trusted."
+            exit "$json_rc"
+          fi
           defects=$(python -c "import json;print(json.load(open('migration-coherence.json'))['defect_count'])")
           echo "defects=${defects:-0}" >> "$GITHUB_OUTPUT"
-          echo "Measured $defects migration coherence defect(s)."
+          echo "Measured $defects migration coherence defect(s) (gate exit $json_rc: defects found, as recorded)."
 
       # This step previously began with `set +e` and ended with an unconditional
       # `exit 0`, which made it incapable of failing. It printed a real regression

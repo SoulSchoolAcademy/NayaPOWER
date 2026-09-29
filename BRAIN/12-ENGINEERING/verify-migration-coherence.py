@@ -139,8 +139,10 @@ def main() -> int:
     root = Path(argv[0]).resolve() if argv else ROOT
     mig_dir = root / MIGRATIONS_REL
     if not mig_dir.is_dir():
+        # Exit 2, not 1: the instrument could not measure. 1 means "defects found",
+        # which is expected and recorded, and callers must not confuse the two.
         print(f'FAIL: {MIGRATIONS_REL} is absent; the schema cannot be rebuilt.', file=sys.stderr)
-        return 1
+        return 2
 
     files = sorted(mig_dir.glob('*.sql'))
     findings: list[dict] = []
