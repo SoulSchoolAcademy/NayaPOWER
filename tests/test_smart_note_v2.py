@@ -52,10 +52,11 @@ def test_registered_smart_link_is_active_and_exact():
     assert entry["smart_link_status"] == "ACTIVE"
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
     assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
-    assert entry["canonical_brain_path"].endswith("/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
+    assert entry["smart_note_id"] == "SN-001"
+    assert entry["canonical_brain_path"].endswith("/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
 
 def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
-    entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
+    entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
     assert entry_path.exists()
     text = entry_path.read_text()
     for section in [
@@ -78,3 +79,18 @@ def test_projection_generator_targets_brain_and_preserves_private_default():
     }
     p = mod.projection_path(private_capture, "IB-TEST")
     assert "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29" in str(p).replace("\\", "/")
+    assert "/SN-" in str(p).replace("\\", "/")
+
+def test_sn002_is_registered_to_live_canonical_runtime():
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    entry = next(e for e in reg["entries"] if e.get("smart_note_id") == "SN-002")
+    assert entry["intelligent_block_id"] == "IB-SMART-NOTE-20260929-sn002-smart-note-node-flow"
+    assert entry["provenance"]["receipt_id"] == "102d900e-1dc0-44ce-bde4-9d8d668f4d60"
+    assert entry["proven_relationship"]["source_id"] == "NAYA-KERNEL-KNOW"
+    assert entry["proven_relationship"]["relationship_type"] == "PRODUCES"
+    assert entry["proof_boundary"]["universal_nine_node_binding"] == "NOT_PROVEN"
+
+def test_sequence_policy_advances_after_sn002():
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    assert reg["sequence_policy"]["next_sequence"] == 3
+    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-003"
