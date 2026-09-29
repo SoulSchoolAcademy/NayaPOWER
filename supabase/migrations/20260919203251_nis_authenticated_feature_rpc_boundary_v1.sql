@@ -1,0 +1,25 @@
+-- NIS security boundary: user-facing relationship/list/space/mail RPCs are authenticated-only.
+revoke all on function public.nayanet_join_space(uuid) from public;
+grant execute on function public.nayanet_join_space(uuid) to authenticated;
+revoke all on function public.nayanet_leave_space(uuid) from public;
+grant execute on function public.nayanet_leave_space(uuid) to authenticated;
+revoke all on function public.nayanet_save_connection(uuid, uuid) from public;
+grant execute on function public.nayanet_save_connection(uuid, uuid) to authenticated;
+revoke all on function public.nayanet_revoke_connection(uuid) from public;
+grant execute on function public.nayanet_revoke_connection(uuid) to authenticated;
+revoke all on function public.nayanet_create_smart_list(text) from public;
+grant execute on function public.nayanet_create_smart_list(text) to authenticated;
+revoke all on function public.nayanet_add_connection_to_list(uuid, uuid) from public;
+grant execute on function public.nayanet_add_connection_to_list(uuid, uuid) to authenticated;
+revoke all on function public.nayanet_remove_connection_from_list(uuid, uuid) from public;
+grant execute on function public.nayanet_remove_connection_from_list(uuid, uuid) to authenticated;
+revoke all on function public.nayanet_is_space_member(uuid, uuid) from public;
+grant execute on function public.nayanet_is_space_member(uuid, uuid) to authenticated;
+revoke all on function public.nayanet_space_owner_membership() from public;
+grant execute on function public.nayanet_space_owner_membership() to authenticated;
+revoke all on function public.nayanet_send_smart_mail(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text) from public;
+grant execute on function public.nayanet_send_smart_mail(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text) to authenticated;
+revoke all on function public.nayanet_send_smart_mail_authorized(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text, uuid) from public;
+grant execute on function public.nayanet_send_smart_mail_authorized(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text, uuid) to authenticated;
+revoke all on function public.nayanet_send_smart_mail_policy_authorized(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text, uuid) from public;
+grant execute on function public.nayanet_send_smart_mail_policy_authorized(uuid, uuid, text, text, text, text, text, text, uuid, text, text, text, uuid) to authenticated;

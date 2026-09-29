@@ -1,17 +1,5 @@
-create or replace function public.nayanet_intelligence_commit(
-  p_event_id text,
-  p_title text,
-  p_content text,
-  p_category text,
-  p_topic text,
-  p_target_id text,
-  p_authority_grant_id uuid,
-  p_project_id text default 'NayaNET'
-)
-returns jsonb
-language plpgsql
-security definer
-set search_path = ''
+create or replace function public.nayanet_intelligence_commit(p_event_id text,p_title text,p_content text,p_category text,p_topic text,p_target_id text,p_authority_grant_id uuid,p_project_id text default 'NayaNET')
+returns jsonb language plpgsql security definer set search_path=''
 as $function$
 declare
   uid uuid := auth.uid();
@@ -19,7 +7,7 @@ declare
   receipt_id uuid := gen_random_uuid();
   event_row uuid := gen_random_uuid();
   block_row uuid := gen_random_uuid();
-  intelligent_id text := 'IB-' || regexp_replace(p_event_id, '[^A-Za-z0-9_-]', '-', 'g');
+  intelligent_id text := 'IB-' || regexp_replace(p_event_id,'[^A-Za-z0-9_-]','-','g');
   revision bigint;
   lineage_row uuid;
   index_row uuid;
@@ -27,30 +15,17 @@ declare
   state_row uuid;
   content_hash text;
 begin
-  if uid is null then
-    raise exception using errcode='42501', message='AUTH_REQUIRED';
-  end if;
+  if uid is null then raise exception using errcode='42501',message='AUTH_REQUIRED'; end if;
+  if coalesce(trim(p_event_id),'')='' or coalesce(trim(p_title),'')='' or coalesce(trim(p_content),'')='' or coalesce(trim(p_category),'')='' or coalesce(trim(p_topic),'')='' or coalesce(trim(p_target_id),'')='' then raise exception using errcode='22023',message='LESSON_FIELDS_REQUIRED'; end if;
 
-  if coalesce(trim(p_event_id),'') = '' or coalesce(trim(p_title),'') = '' or coalesce(trim(p_content),'') = ''
-     or coalesce(trim(p_category),'') = '' or coalesce(trim(p_topic),'') = '' or coalesce(trim(p_target_id),'') = '' then
-    raise exception using errcode='22023', message='LESSON_FIELDS_REQUIRED';
-  end if;
+  authority:=public.nayanet_validate_authority_grant(p_authority_grant_id,'intelligence_commit',p_target_id);
+  if authority->>'status' <> 'AUTHORIZED' then raise exception using errcode='42501',message='AUTHORITY_BLOCKED:'||coalesce(authority->>'reason','UNKNOWN'); end if;
+  if (authority->>'subject_id')::uuid <> uid then raise exception using errcode='42501',message='AUTHORITY_SUBJECT_MISMATCH'; end if;
 
-  authority := public.nayanet_validate_authority_grant(p_authority_grant_id, 'intelligence_commit', p_target_id);
-  if authority->>'status' <> 'AUTHORIZED' then
-    raise exception using errcode='42501', message='AUTHORITY_BLOCKED:' || coalesce(authority->>'reason','UNKNOWN');
-  end if;
+  if exists(select 1 from public.nayanet_cognition_events where user_id=uid and project_id=p_project_id and event_id=p_event_id) then raise exception using errcode='23505',message='EVENT_ID_REPLAY'; end if;
 
-  if (authority->>'subject_id')::uuid <> uid then
-    raise exception using errcode='42501', message='AUTHORITY_SUBJECT_MISMATCH';
-  end if;
-
-  if exists (
-    select 1 from public.nayanet_cognition_events
-    where user_id=uid and project_id=p_project_id and event_id=p_event_id
-  ) then
-    raise exception using errcode='23505', message='EVENT_ID_REPLAY';
-  end if;
+  -- Serialize revision allocation per governed user/project so concurrent fresh lessons cannot collide.
+  perform pg_advisory_xact_lock(hashtext(uid::text || ':' || p_project_id)::bigint);
 
   select coalesce(max(r.revision),0)+1 into revision
   from public.nayanet_execution_receipts r
@@ -63,18 +38,16 @@ begin
      'Persist one fresh lesson as connected canonical intelligence.',
      'Lesson persisted as event, Intelligent Block, lineage, relationship, index, and checkpoint.',
      'SUCCESS',
-     jsonb_build_object('event_id',p_event_id,'target_id',p_target_id,'authority_grant_id',p_authority_grant_id,
-       'authority',authority,'stage','PERSIST'),
+     jsonb_build_object('event_id',p_event_id,'target_id',p_target_id,'authority_grant_id',p_authority_grant_id,'authority',authority,'stage','PERSIST'),
      '[]'::jsonb);
 
-  content_hash := encode(digest(p_content, 'sha256'),'hex');
+  content_hash:=encode(extensions.digest(p_content,'sha256'),'hex');
 
   insert into public.nayanet_cognition_events
     (id,user_id,project_id,event_id,type,classification,title,content,source,status,actor,confidence,tags,parent_event_id,source_hash,schema_version,receipt_id,metadata)
   values
     (event_row,uid,p_project_id,p_event_id,'intelligence','teaching',p_title,p_content,'nayanet','active','human',1,
-     jsonb_build_array('fresh-lesson','intelligence_commit','canonical'),
-     null,content_hash,'1.0.0',receipt_id::text,
+     jsonb_build_array('fresh-lesson','intelligence_commit','canonical'),null,content_hash,'1.0.0',receipt_id::text,
      jsonb_build_object('target_id',p_target_id,'authority_grant_id',p_authority_grant_id,'epistemic_state','CANDIDATE'));
 
   insert into public.nayanet_intelligent_blocks
@@ -93,8 +66,8 @@ begin
   insert into public.nayanet_intelligence_lineage
     (id,project_id,user_id,source_event_id,relation,target_event_id,reason,evidence_refs)
   values
-    (gen_random_uuid(),p_project_id,uid,event_row,'CREATED_INTELLIGENT_BLOCK',block_row,
-     'Fresh lesson became a canonical Intelligent Block through intelligence_commit.', 
+    (gen_random_uuid(),p_project_id,uid,event_row,'CREATED_INTELLIGENT_BLOCK',event_row,
+     'Fresh lesson became a canonical Intelligent Block through intelligence_commit.',
      jsonb_build_array(receipt_id,event_row,block_row))
   returning id into lineage_row;
 
@@ -125,23 +98,21 @@ begin
        'lineage_id',lineage_row,'relationship_id',relationship_row,'index_id',index_row,
        'receipt_id',receipt_id,'target_id',p_target_id,'provenance_preserved',true),
      'READY')
-  on conflict (user_id,project_id) do update
+  on conflict(user_id,project_id) do update
     set revision=excluded.revision,state=excluded.state,status=excluded.status,updated_at=clock_timestamp()
   returning id into state_row;
 
   update public.nayanet_execution_receipts
-    set evidence = evidence || jsonb_build_object(
+    set evidence=evidence||jsonb_build_object(
       'event_row_id',event_row,'intelligent_block_id',intelligent_id,'block_row_id',block_row,
       'lineage_id',lineage_row,'relationship_id',relationship_row,'index_id',index_row,'checkpoint_id',state_row,
       'content_hash',content_hash)
   where id=receipt_id;
 
   return jsonb_build_object(
-    'ok',true,'schema','NAYANET_INTELLIGENCE_COMMIT_V1',
-    'receipt_id',receipt_id,'event_id',event_row,'event_key',p_event_id,
-    'intelligent_block_id',intelligent_id,'block_row_id',block_row,
-    'lineage_id',lineage_row,'relationship_id',relationship_row,'index_id',index_row,
-    'checkpoint_id',state_row,'revision',revision,'understanding_state','CANDIDATE',
+    'ok',true,'schema','NAYANET_INTELLIGENCE_COMMIT_V1','receipt_id',receipt_id,'event_id',event_row,'event_key',p_event_id,
+    'intelligent_block_id',intelligent_id,'block_row_id',block_row,'lineage_id',lineage_row,'relationship_id',relationship_row,
+    'index_id',index_row,'checkpoint_id',state_row,'revision',revision,'understanding_state','CANDIDATE',
     'authority_grant_id',p_authority_grant_id,'content_hash',content_hash);
 end;
 $function$;
