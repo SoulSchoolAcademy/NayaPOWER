@@ -24,11 +24,12 @@ The living brain is the combination of:
 
 ## 2. Canonical brain layers
 
-The CONSTITUTION sits at the repository root, above and outside the BRAIN directory. It is the immutable human-level governing document from which all other authority flows.
+The repository-level master design, CONSTITUTION, GOVERNANCE, and ARCHITECTURE surfaces sit above and outside the BRAIN directory. There is no literal `ROOT/` directory; repository-root paths below are exact.
 
 ```
-ROOT/
-├── CONSTITUTION/          ← immutable human-level principles (outside BRAIN)
+REPOSITORY ROOT/
+├── 0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md
+├── CONSTITUTION/          ← human-level principles (outside BRAIN)
 ├── GOVERNANCE/            ← authority, consent, change control (outside BRAIN)
 ├── ARCHITECTURE/          ← system design (outside BRAIN)
 └── BRAIN/
@@ -51,9 +52,9 @@ ROOT/
 
 | Address | Layer | Canonical responsibility |
 |---|---|---|
-| ROOT | CONSTITUTION | Immutable human-level governing principles |
-| ROOT | GOVERNANCE | Authority, consent, change, promotion and revocation |
-| ROOT | ARCHITECTURE | System boundaries, dependencies and composition |
+| REPO ROOT | CONSTITUTION | Human-level governing principles |
+| REPO ROOT | GOVERNANCE | Authority, consent, change, promotion and revocation |
+| REPO ROOT | ARCHITECTURE | System boundaries, dependencies and composition |
 | 00 | SPEC | Definitions, schemas, naming and representation laws |
 | 01 | GOVERNANCE | Brain-level governance contracts |
 | 02 | ARCHITECTURE | Brain-level boundaries and dependencies |
@@ -82,24 +83,15 @@ They are not nine databases, nine products, nine memories, or nine authorities.
 
 ## 4. The intelligence object model
 
-The durable unit is an **Intelligent Node**.
+The canonical persisted machine object behind the current **Smart Node** operating command is an **Intelligent Block**.
 
-A Node must be:
+“Make this a Smart Node” means route valuable material through the existing governed intelligence river. It does **not** create a tenth Master Node, another canonical object family, another graph, or another persistence path.
 
-- identifiable,
-- typed,
-- purposeful,
-- contextual,
-- provenance-bound,
-- related,
-- governed,
-- retrievable,
-- applicable,
-- verifiable,
-- learnable,
-- and inheritable.
+An Intelligent Block should remain identity-, owner/scope-, provenance-, epistemic-state-, applicability-, evidence-, relationship-, freshness-, verification-, supersession- and successor-aware.
 
-A capture artifact is not automatically a Node.
+Older source/concept material may use **Naya Node / Intelligent Node** as semantic terminology. Preserve that lineage without turning it into a competing persistence object.
+
+A capture artifact is not automatically verified intelligence.
 
 ## 5. The intelligence chain
 
@@ -126,18 +118,18 @@ Never collapse these:
 
 ## 7. Brain entry sequence for a cold Naya
 
-A cold Naya reads (items 1–4 are root-level files outside BRAIN/):
+A cold Naya reads and verifies:
 
-1. **CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — immutable principles
+1. **CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — governing principles
 2. **GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
 3. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
 4. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
 5. **BRAIN/MASTER-MAP.md** — this map
-6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — kernel runtime
-7. **BRAIN/90-OPERATIONS/** — current reality
-8. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
-9. **BRAIN/06-PROOF/** — evidence and authority
-10. Current objective and next action
+6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — declared kernel/runtime-binding state
+7. **BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md** + **0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md** — current execution projection
+8. **Live GitHub main / open priority work / current runtime and proof evidence** — fresher evidence outranks dated projections
+9. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
+10. **BRAIN/06-PROOF/** — evidence and verification
 11. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
@@ -152,28 +144,41 @@ Other representations are explicitly classified as:
 
 No projection may silently become authority.
 
-## 9. Population status
+## 9. Current proof and execution status
 
-Current target:
+NayaPOWER has one important bounded production-proven intelligence specimen, but the entire architecture is not universally production-proven.
 
-**ARCHITECTURE ESTABLISHED → KNOWLEDGE DISTILLATION IN PROGRESS → CANONICAL OBJECT POPULATION NEXT → BEHAVIORAL PROOF PENDING**
+**Issue #913 bounded proof:** exact source/deployed revision `0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4` demonstrated:
 
-### Concrete next actions
+**experience → durable intelligence → paired WITHOUT/WITH behavior delta → measurable outcome → independent recomputation → ACTIVE learning → identifier-only cold retrieval → successor reuse without inherited authority**
+
+That receipt is deliberately narrow. Later `main` does not inherit its production status, and it does not prove universal runtime binding, generalized applicability, multi-generation compounding, or NayaNET scale.
+
+**Issue #944 Phase 1:** Concept #17 reconciliation returned `NO_NEW_CANDIDATE — SOURCE RECONCILED`. Do not create a duplicate Concept #17 Smart Node. Its surviving value is behavioral test pressure on existing architecture.
+
+### Current dependency-correct queue
 
 | # | Action | Owner | Status |
 |---|---|---|---|
-| 1 | Complete knowledge distillation from Concept #1–#13 corpus | KNOW | IN PROGRESS |
-| 2 | Reconcile duplicate pair (#7, #8) into single canonical object | KNOW | PENDING |
-| 3 | Promote distilled concepts to canonical Intelligent Objects | KNOW | PENDING |
-| 4 | Build graph relationships between promoted objects | INTELLIGENCE | PENDING |
-| 5 | Write proof records for each promoted object | PROOF | PENDING |
-| 6 | Implement runtime loader consuming MANIFEST.json | ENGINEERING | PENDING |
-| 7 | Cold-boot test: fresh Naya discovers and retrieves intelligence | OPERATIONS | PENDING |
-| 8 | Successor handoff test: context survives context death | SUCCESSION | PENDING |
-| 9 | Behavioral proof: successor performs better than predecessor | VERIFY | PENDING |
-| 10 | Human Director ratification of canonical architecture | HUMAN | PENDING |
+| 1 | Keep current-truth pointers synchronized with live GitHub/runtime evidence | SELF / OPERATIONS | IN PROGRESS |
+| 2 | Concept #17 novelty reconciliation | KNOW / PROVE | COMPLETE — NO NEW CANDIDATE |
+| 3 | Prove a second related held-out task using existing ACTIVE intelligence | KNOW / CONNECT / ACT | NEXT |
+| 4 | Prove unrelated-task refusal / no negative transfer | CONNECT / VERIFY | NEXT WITH #3 |
+| 5 | Independently recompute behavior/outcome from persisted evidence | PROVE / VERIFY | QUEUED |
+| 6 | Prove cold successor reuse beyond the original single task | EVOLVE / SELF / LAW | QUEUED |
+| 7 | Bind/reference-classify nine-node runtime semantics and run ablation | KERNEL / ENGINEERING | P1 |
+| 8 | Harden current-context resolution, revocation, poisoning, replay and concurrency | LAW / CONNECT / VERIFY | P1 |
+| 9 | Measure human value | EVOLVE / INTERFACES | P2 |
+| 10 | Scale Hub/NayaNET/collective/self-building only after repeatability | INTERFACES / EVOLVE | P3 |
 
-This map does not claim a living brain merely because its documentation exists.
+Canonical execution surfaces:
+
+- `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md`
+- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
+- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json`
+- `BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md`
+
+**Do not reopen semantic architecture merely because a review proposed a sophisticated replacement. Repair the first broken proof rung.**
 
 ## 10. Acceptance
 

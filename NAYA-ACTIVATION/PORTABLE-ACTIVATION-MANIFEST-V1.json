@@ -51,7 +51,7 @@
       "NAYA-ACTIVATION/OPERATIONS/DEPLOYMENT.md"
     ],
     "CURRENT_REALITY": [
-      "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md",
       "NAYA-ACTIVATION/CURRENT-REALITY/CURRENT-STATE.md",
       "NAYA-ACTIVATION/CURRENT-REALITY/ACTIVE-WORK.md",
       "NAYA-ACTIVATION/CURRENT-REALITY/PROOF.md",
@@ -133,5 +133,5 @@
   "authority_law": "Capability does not create authority.",
   "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
   "continuity_requirement": "A cold successor must be able to reconstruct the resulting state without manual replay by the predecessor.",
-  "version": "1.1.1"
+  "version": "1.1.2"
 }

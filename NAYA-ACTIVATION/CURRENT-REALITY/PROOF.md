@@ -16,3 +16,5 @@ Failures are first-class evidence. Preserve failed runs and explain whether they
 
 ## Cold successor
 A continuity claim requires successor evidence, not merely a predecessor receipt.
+
+> Verified against main @ 2c89cadbee7b6d71f54d8d6538161a0dd2169487 on 2026-09-29; re-verify before treating as current.

@@ -18,3 +18,5 @@ Prefer the smallest causal unit that advances the North Star and reduces uncerta
 
 ## Cold successor
 A successor reads this locator, resolves current canonical state, and either executes the declared action if authorized or replaces it with a newly justified action after reconciliation.
+
+> Verified against main @ 2c89cadbee7b6d71f54d8d6538161a0dd2169487 on 2026-09-29; re-verify before treating as current.
