@@ -355,7 +355,9 @@ jobs:
                 exit 1
               fi
               for j in $(seq 1 180); do
-                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq '.status + ":" + (.conclusion // "")')"
+                status="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status --jq .status)"
+                conclusion="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json conclusion --jq .conclusion)"
+                state="${status}:${conclusion}"
                 case "$state" in
                   completed:success) break ;;
                   completed:*) echo "Producer run failed: $state"; exit 1 ;;
@@ -406,7 +408,9 @@ jobs:
                 exit 1
               fi
               for j in $(seq 1 180); do
-                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq ".status+":"+(.conclusion//"")")"
+                status="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status --jq .status)"
+                conclusion="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json conclusion --jq .conclusion)"
+                state="${status}:${conclusion}"
                 case "$state" in
                   completed:success) break ;;
                   completed:*) echo "Runtime proof run failed: $state"; exit 1 ;;
