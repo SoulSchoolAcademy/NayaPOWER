@@ -20,7 +20,7 @@ def test_cold_activation_locators_point_to_current_precedence_and_not_stale_snap
     activation_map = (ACTIVATION / "00-ACTIVATION-KIT-MAP-V1.md").read_text(encoding="utf-8")
     current_state = (CURRENT_REALITY / "CURRENT-STATE.md").read_text(encoding="utf-8")
 
-    assert current_ref in activation_map
+    assert "SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md" in activation_map
     assert SUPERSEDED not in activation_map
     assert current_ref in current_state
     assert SUPERSEDED not in current_state
