@@ -13,6 +13,7 @@ Current reality must be explicit, time-bounded, and subordinate to live canonica
 | [0001-MAX-10-EXECUTION-QUEUE-V1.md](./0001-MAX-10-EXECUTION-QUEUE-V1.md) | Human-readable maximum-value execution queue; current active sequence from the multi-AI deep-dive synthesis |
 | [0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md](./0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md) | AAA execution prompt |
 | [0003-MASTER-EXECUTION-PLAN-V1.json](./0003-MASTER-EXECUTION-PLAN-V1.json) | Machine-readable execution plan, dependencies, proof conditions, do-not-build boundaries, and exactly one next action |
+| [0004-SMART-NODE-UNKNOWN-EFFECT-CANDIDATE-EXPERIMENT-V1.md](./0004-SMART-NODE-UNKNOWN-EFFECT-CANDIDATE-EXPERIMENT-V1.md) | Issue #944 failure-first candidate experiment; candidate only, not verified/active intelligence |
 | [2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md](./2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md) | Dated evidence scorecard, bounded repair and successor handoff; history/context, not automatic current-state authority |
 
 ## Current operating pointer
