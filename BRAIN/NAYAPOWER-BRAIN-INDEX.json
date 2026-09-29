@@ -6,10 +6,10 @@
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
-  "canonical_root": "ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
-  "constitutional_root": "ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
-  "governance_root": "ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
-  "superbrain_spec": "ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+  "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+  "constitutional_root": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+  "governance_root": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+  "superbrain_spec": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
   "brain_map": "BRAIN/MASTER-MAP.md",
   "knowledge_synthesis": "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
   "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
@@ -208,6 +208,7 @@
     "machine_plan": "BRAIN/90-OPERATIONS/0003-MASTER-EXECUTION-PLAN-V1.json",
     "synthesis_source": "KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md",
     "active_priority_issue": 944,
-    "rule": "Re-read live main/open work/runtime evidence before trusting dated operational projections."
+    "rule": "Re-read live main/open work/runtime evidence before trusting dated operational projections.",
+    "navigation_repair": "Removed nonexistent ROOT/ prefixes after verifying repository root layout."
   }
 }
