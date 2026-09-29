@@ -76,7 +76,15 @@
       "proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
       "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
       "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e"
+    },
+    "ACT": {
+      "status": "IMPLEMENTED_SOURCE_PENDING_LIVE_PROOF",
+      "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
+      "consumes": "nayanet_execution_receipts.action=law_authority_decision",
+      "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
+      "door": "DOOR-AI/apply_retained_intelligence"
     }
   },
-  "next_node_after_law": "ACT"
+  "next_node_after_law": "ACT",
+  "next_node_after_act": "KNOW"
 }

@@ -231,8 +231,9 @@
     "active_issue": 978,
     "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
-    "active_node_frontier": "LAW_BOUNDED_LIVE_PROVEN",
-    "next_node_after_law": "ACT"
+    "active_node_frontier": "ACT_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "next_node_after_law": "ACT",
+    "next_node_after_act": "KNOW"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",

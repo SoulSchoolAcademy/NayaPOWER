@@ -84,7 +84,8 @@
         "reason",
         "draft",
         "classify",
-        "transform"
+        "transform",
+        "apply_retained_intelligence"
       ],
       "operations": [
         {
@@ -93,6 +94,18 @@
           "consequential": false,
           "authority_action": "ai_inference",
           "verification_required": false
+        },
+        {
+          "operation": "apply_retained_intelligence",
+          "mode": "READ_COMPUTE",
+          "target_types": [
+            "NAYA_NODE"
+          ],
+          "consequential": true,
+          "authority_action": "naya_node_apply",
+          "target": "NAYA-NODE-0001",
+          "verification_required": true,
+          "max_law_age_seconds": 900
         }
       ],
       "consequence_class": "NON_ACTION_BY_DEFAULT",
@@ -105,7 +118,7 @@
       "health": "DISCOVERABLE",
       "cost_rate_hint": "model-dependent",
       "audit": "prompt/context policy + result provenance as needed",
-      "status": "REGISTERED_CONTRACT_ONLY"
+      "status": "LIVE_BOUNDED_EXISTING_CAPABILITY"
     },
     {
       "door_id": "DOOR-DATA",
