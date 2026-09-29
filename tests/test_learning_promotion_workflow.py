@@ -30,6 +30,7 @@ def test_learning_promotion_does_not_relax_runtime_oidc_binding_or_mutate_sql_di
     assert "SUPABASE_USER_ACCESS_TOKEN" not in influence
     assert "update public.learning_evidence" not in source
     assert "status: ACTIVE" not in source
+    assert "learning_id="$(python -c" not in source
 
 
 def test_learning_verifier_is_machine_authenticated_by_governed_oidc_not_user_session():
