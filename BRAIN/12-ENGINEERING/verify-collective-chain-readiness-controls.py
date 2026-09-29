@@ -11,6 +11,15 @@ here is measurement fidelity, not chain completion.
 import json, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
+# Same Windows cp1252 reason as the gate itself: if the control report cannot print,
+# the controls cannot do their job on those nodes.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, 'reconfigure'):
+        try:
+            _stream.reconfigure(encoding='utf-8', errors='replace')
+        except (ValueError, OSError):
+            pass
+
 ROOT = Path(__file__).resolve().parents[2]
 GATE = ROOT / 'BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py'
 CONTRACT = 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
@@ -46,19 +55,17 @@ def check(label, tree, link, expect):
 
 results = []
 
-# baseline: machine contract absent, graph seed intact
+# baseline: machine contract REMOVED (it now exists in the repo, so the control must
+# delete it rather than rely on it being absent), graph seed intact
 t = fixture()
+(t / MACHINE).unlink()
 results.append(check('machine contract absent', t, 'L02', 'NOT_SATISFIED'))
 results.append(check('graph seed has typed+provenanced edges', t, 'L03', 'SATISFIED'))
 results.append(check('no runtime present', t, 'L01', 'BLOCKED_NO_RUNTIME'))
 
-# machine contract present -> L02 satisfied
+# real machine contract + real governed artifacts that genuinely validate -> L02 satisfied
 t = fixture()
-(t / 'BRAIN/00-SPEC').mkdir(parents=True, exist_ok=True)
-(t / MACHINE).write_text(json.dumps({
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "naya/brain-machine-contract/v1", "type": "object"}), encoding='utf-8')
-results.append(check('machine contract present', t, 'L02', 'SATISFIED'))
+results.append(check('real contract, real artifacts validate', t, 'L02', 'SATISFIED'))
 
 # graph seed edges stripped of provenance -> L03 not satisfied
 t = fixture()
@@ -81,6 +88,31 @@ t = fixture()
 (t / EDGE_FN).write_text('// probe\n', encoding='utf-8')
 results.append(check('runtime present, no real block minted', t, 'L01', 'NOT_SATISFIED'))
 results.append(check('runtime present unblocks runtime links', t, 'L07', 'UNKNOWN'))
+
+# --- L02 must be satisfied by VALIDATION, not by the mere presence of the schema file.
+# A control that writes a trivial {"type":"object"} schema is worthless here: such a
+# schema accepts EVERY artifact, so it proves nothing about validation. These controls
+# therefore keep the REAL contract and corrupt the REAL artifacts instead.
+
+# every governed artifact made invalid against the real contract -> L02 must fall
+t = fixture()
+obj_dir = t / 'BRAIN/04-INTELLIGENCE/OBJECTS'
+for ob in obj_dir.glob('*.json'):
+    ob.write_text(json.dumps({'schema': 'naya.intelligent.object.v1',
+                              'object_id': 'NOT-A-KERNEL-NODE'}), encoding='utf-8')
+results.append(check('real contract, all artifacts invalid', t, 'L02', 'NOT_SATISFIED'))
+
+# one artifact corrupted, the rest valid -> L02 must still hold, proving the gate
+# counts real validation results instead of all-or-nothing on file presence
+t = fixture()
+victim = sorted((t / 'BRAIN/04-INTELLIGENCE/OBJECTS').glob('*.json'))[0]
+victim.write_text(json.dumps({'schema': 'naya.intelligent.object.v1'}), encoding='utf-8')
+results.append(check('real contract, one artifact corrupt', t, 'L02', 'SATISFIED'))
+
+# no governed artifacts at all -> L02 must fall to NOT_SATISFIED
+t = fixture()
+shutil.rmtree(t / 'BRAIN/04-INTELLIGENCE/OBJECTS')
+results.append(check('real contract, no governed artifacts', t, 'L02', 'NOT_SATISFIED'))
 
 print()
 print(f'CONTROLS: {sum(results)}/{len(results)} behaved as specified')

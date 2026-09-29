@@ -27,9 +27,21 @@ import subprocess
 import sys
 from pathlib import Path
 
+# This gate is a measurement instrument for the whole collective, including Nayas
+# running on Windows. A cp1252 console (the Windows default) makes printing the
+# report raise UnicodeEncodeError, so the instrument reports NOTHING where it is
+# needed most. Force UTF-8 with replacement so the verdict always reaches the operator.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, 'reconfigure'):
+        try:
+            _stream.reconfigure(encoding='utf-8', errors='replace')
+        except (ValueError, OSError):
+            pass
+
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_REL = 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
 MACHINE_CONTRACT_REL = 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
+GOVERNED_OBJECTS_REL = 'BRAIN/04-INTELLIGENCE/OBJECTS'
 GRAPH_SEED_REL = 'BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json'
 RECEIVER_REL = 'supabase/functions/v7-smart-note-canonical/index.ts'
 RECEIVER_TABLE = 'v7_smart_note_transactions'
@@ -45,6 +57,39 @@ def tracked(rel: str) -> bool:
 def fail(msg: str) -> int:
     print('FAIL:', msg, file=sys.stderr)
     return 1
+
+
+def validate_governed_objects(root: Path, schema: dict) -> tuple[int, int, str]:
+    """Actually validate governed artifacts against the machine contract.
+
+    L02's contract requires "a passing validation result for the block". Checking
+    that the schema FILE EXISTS cannot satisfy that, and doing so is precisely the
+    false positive the anti-false-positive law forbids. This validates real
+    artifacts and reports the real result.
+
+    Fails CLOSED: if the validator is unavailable we cannot validate, so we must
+    not claim the link is satisfied. Absent evidence is UNKNOWN, never PASS.
+    """
+    try:
+        from jsonschema import Draft202012Validator
+    except ImportError:
+        return 0, 0, 'no JSON Schema validator available; validation cannot be performed (fails closed)'
+    objects_dir = root / GOVERNED_OBJECTS_REL
+    if not objects_dir.is_dir():
+        return 0, 0, f'no governed artifacts to validate at {GOVERNED_OBJECTS_REL}'
+    validator = Draft202012Validator(schema)
+    valid, invalid = 0, 0
+    for path in sorted(objects_dir.glob('*.json')):
+        try:
+            doc = json.loads(path.read_text(encoding='utf-8'))
+        except json.JSONDecodeError as exc:
+            invalid += 1
+            continue
+        if validator.is_valid(doc):
+            valid += 1
+        else:
+            invalid += 1
+    return valid, invalid, f'{valid} governed artifacts validate against the canonical machine contract, {invalid} do not'
 
 
 def main() -> int:
@@ -73,9 +118,12 @@ def main() -> int:
             results.append((lid, name, NOT_SATISFIED,
                             'no receiver-issued Intelligent Block identity exists on this branch'))
         elif lid == 'L02':
-            ok = (root / MACHINE_CONTRACT_REL).is_file()
-            results.append((lid, name, SATISFIED if ok else NOT_SATISFIED,
-                            'canonical machine contract present' if ok else 'canonical machine contract absent'))
+            if not (root / MACHINE_CONTRACT_REL).is_file():
+                results.append((lid, name, NOT_SATISFIED, 'canonical machine contract absent'))
+            else:
+                schema = json.loads((root / MACHINE_CONTRACT_REL).read_text(encoding='utf-8'))
+                valid, invalid, why = validate_governed_objects(root, schema)
+                results.append((lid, name, SATISFIED if valid else NOT_SATISFIED, why))
         elif lid == 'L03':
             seed = root / GRAPH_SEED_REL
             if not seed.is_file():
@@ -91,10 +139,31 @@ def main() -> int:
             doc = json.loads(seed.read_text(encoding='utf-8')) if seed.is_file() else {'edges': []}
             conflicts = [e for e in doc.get('edges', []) if e.get('type') == 'CONTRADICTS']
             unadjudicated = [e for e in conflicts if e.get('status') == 'CONFLICTED']
-            results.append((lid, name, SATISFIED if conflicts and not unadjudicated else
-                            (NOT_SATISFIED if conflicts else UNKNOWN),
-                            f'{len(conflicts)} declared contradictions, {len(unadjudicated)} unadjudicated; '
-                            'no contradiction is evidence of a reconciled system'))
+            # A contradiction BETWEEN GOVERNED ARTIFACTS is a reconciliation failure just
+            # as much as a declared CONTRADICTS edge is. Validate the seed against the
+            # machine contract and surface any disagreement rather than dropping it.
+            # Choosing which side is correct is a governed decision, not a gate decision,
+            # so this reports the conflict and withholds SATISFIED.
+            artifact_conflicts = []
+            if (root / MACHINE_CONTRACT_REL).is_file():
+                schema = json.loads((root / MACHINE_CONTRACT_REL).read_text(encoding='utf-8'))
+                _, _, detail = validate_governed_objects(root, schema)
+                try:
+                    from jsonschema import Draft202012Validator
+                    validator = Draft202012Validator(schema)
+                    for err in validator.iter_errors(doc):
+                        for sub in (err.context or []):
+                            artifact_conflicts.append(sub.message)
+                except ImportError:
+                    pass
+            status = SATISFIED if (conflicts and not unadjudicated and not artifact_conflicts) else (
+                NOT_SATISFIED if (conflicts or artifact_conflicts) else UNKNOWN)
+            why = (f'{len(conflicts)} declared contradictions, {len(unadjudicated)} unadjudicated, '
+                   f'{len(set(artifact_conflicts))} artifact/contract disagreements; '
+                   'no contradiction is evidence of a reconciled system')
+            if artifact_conflicts:
+                why += ' | ' + '; '.join(sorted(set(artifact_conflicts))[:2])
+            results.append((lid, name, status, why))
         else:
             results.append((lid, name, UNKNOWN,
                             'evidence for this link is runtime-produced and cannot be inspected on this branch'))

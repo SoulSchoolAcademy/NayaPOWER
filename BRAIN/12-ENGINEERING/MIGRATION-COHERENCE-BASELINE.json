@@ -1,0 +1,27 @@
+{
+  "schema": "naya.brain.schema.migration.coherence.baseline/v1",
+  "purpose": "Regression floor for migration-chain coherence. PR #881 recovered 88 migrations that the 2026-09-26 reset had deleted, and recovering a file is not the same as proving it is sound. This gate measures whether those migrations can rebuild the brain schema from empty. It currently reports 11 UNCREATED_DEPENDENCY defects, and this floor records that number so the defect count can never silently grow.",
+  "defect_floor": 11,
+  "measured_at": "2026-09-28",
+  "measured_by": "BRAIN/12-ENGINEERING/verify-migration-coherence.py",
+  "evidence": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/881",
+  "defect_classes_tracked": ["UNCREATED_DEPENDENCY", "DUPLICATE_CREATE", "DROPPED_THEN_USED", "EMPTY"],
+  "known_defects": {
+    "UNCREATED_DEPENDENCY": [
+      "public.nayanet_cognition_events",
+      "public.nayanet_execution_receipts",
+      "public.nayanet_project_cognition_state",
+      "public.nayanet_smart_connect_participation",
+      "public.nayanet_spaces",
+      "public.smart_note_artifacts",
+      "public.smart_note_events",
+      "public.smart_note_receipts",
+      "public.v7_mail_members",
+      "public.v7_mail_messages",
+      "public.v7_smart_note_transactions"
+    ]
+  },
+  "what_this_means": "The migrations depend on 11 core tables that NO migration creates, including the canonical event store (nayanet_cognition_events) and v7_smart_note_transactions, which the chain contract names as the only legal source of Intelligent Block identity. These tables predate the migration history and were created directly in the live database. Therefore master-plan item 26 (Rebuildability) and item 27 (Disaster Recovery) are NOT SATISFIED, and the brain schema cannot currently be reconstructed from source. This is a measured finding, not an opinion.",
+  "how_to_lower_this_floor": "Author the missing CREATE TABLE migrations in dependency order and re-run the gate. Lower the floor only when the gate itself reports a lower count. Never lower it to make a build green. Control 5 in verify-migration-coherence-controls.py proves that supplying the missing CREATE statements drives the count to zero, so the findings are real and mechanically fixable rather than a hardcoded list.",
+  "authority_note": "Authoring those migrations is real schema work against the canonical brain and belongs to whoever holds schema authority. This baseline records the defect; it does not decide or perform the repair."
+}
