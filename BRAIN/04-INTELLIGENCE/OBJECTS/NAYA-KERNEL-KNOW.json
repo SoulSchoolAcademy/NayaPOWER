@@ -2,7 +2,7 @@
   "schema": "naya.intelligent.object.v1",
   "object_id": "NAYA-KERNEL-KNOW",
   "object_type": "NODE",
-  "version": "1.2",
+  "version": "2.0",
   "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-KNOW",
   "scope": "NayaPOWER kernel",
@@ -10,29 +10,24 @@
     "title": "KNOW — canonical intelligence, events, memory, semantic state",
     "essence": "KNOW is the governed semantic responsibility for canonical intelligence, events, memory, semantic state.",
     "why": "One responsibility of the single NayaPOWER brain; not an independent brain or authority.",
-    "uncertainty": "Behavioral/runtime proof remains pending unless separately evidenced."
+    "uncertainty": "Contextual retrieval is implemented in source; bounded live/runtime proof remains pending."
   },
   "ai_view": {
-    "purpose": "canonical intelligence, events, memory, semantic state",
+    "purpose": "Select canonical retained intelligence from task/context while preserving owner scope, provenance and epistemic state; retrieval never creates authority.",
     "inputs": [
-      "identity",
-      "intent",
-      "state",
-      "context",
-      "authority",
-      "intelligence",
-      "evidence",
-      "relationships"
+      "owner/runtime identity",
+      "task context",
+      "target",
+      "canonical Intelligent Block state"
     ],
     "outputs": [
-      "understanding",
-      "decision_context",
-      "action_context",
-      "evidence_context",
-      "learning_context",
-      "successor_context"
+      "selected canonical intelligence or bounded miss",
+      "provenance",
+      "epistemic/lifecycle state",
+      "applicability reason",
+      "PROVE handoff"
     ],
-    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved",
+    "failure_mode": "fail closed on caller-supplied answer/block, missing context/provenance, owner/scope mismatch, superseded/ineligible intelligence, or ambiguous applicability",
     "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
   },
   "machine_view": {
@@ -43,7 +38,8 @@
     "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
     "universal_envelope": "naya.master-node-envelope.v1",
-    "neighbor_handoff": "NAYA-KERNEL-PROVE"
+    "neighbor_handoff": "NAYA-KERNEL-PROVE",
+    "runtime": "supabase/functions/nayanet-know-runtime/index.ts"
   },
   "provenance": {
     "derived_from": [
@@ -53,11 +49,12 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "DOCUMENTED",
-    "behavioral_status": "NOT_PROVEN",
+    "implementation_status": "EXECUTABLE_SOURCE",
+    "behavioral_status": "SOURCE_TESTS_PENDING_CI",
     "production_status": "NOT_PROVEN",
     "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
-    "organism_binding": "CONTRACT_ALIGNED_RUNTIME_NOT_PROVEN"
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "limitation": "Bounded contextual retrieval source only; live deployment, independent runtime recomputation, CONNECT semantics and universal nine-node binding remain NOT_PROVEN."
   },
   "relationships": [
     {
