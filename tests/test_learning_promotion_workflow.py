@@ -82,6 +82,7 @@ def test_learning_proof_consumes_same_head_fresh_commit_artifact_instead_of_fixe
     assert "github-token: ${{ secrets.GITHUB_TOKEN }}" in source
     assert 'open("fresh-lineage/fresh-lesson-lineage-ids.json")' in source
     assert 'fresh_block_id=ids["intelligent_block_id"]' in source
+    assert 'checkpoint_id=ids["checkpoint_id"]' in source
     assert 'open("fresh-block-id.txt","w").write(fresh_block_id)' in source
 
 
