@@ -193,6 +193,8 @@ Deno.serve(async (req: Request) => {
         relationship_epistemic_state: relationship.data?.epistemic_state ?? null,
         checkpoint_state_status: checkpoint.data?.state?.status ?? null,
         checkpoint_id: checkpoint.data?.id ?? null,
+        learning_verification_state: retained.verification_state ?? null,
+        learning_effect_state: retained.effect_state ?? null,
       };
       return json({
         ok: true,
@@ -214,8 +216,95 @@ Deno.serve(async (req: Request) => {
     if (learningError) throw learningError;
     if (!learning) return json({ ok: false, error: "LEARNING_NOT_FOUND" }, 404);
 
+    if (mode === "reject") {
+      const reason = String(body?.reason || "").trim();
+      const rejectionRefs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
+      if (!reason || !rejectionRefs.length) {
+        return json({ ok: false, error: "REJECTION_REASON_AND_EVIDENCE_REQUIRED" }, 400);
+      }
+      if (!["CANDIDATE", "CONTRADICTED"].includes(String(learning.verification_state || "CANDIDATE"))) {
+        return json({ ok: false, error: "LEARNING_NOT_REJECTABLE", verification_state: learning.verification_state }, 409);
+      }
+      const currentObserved = learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)
+        ? learning.observed_value
+        : {};
+      const { data: rejected, error: rejectError } = await admin
+        .from("learning_evidence")
+        .update({
+          verification_state: "REJECTED",
+          observed_value: {
+            ...currentObserved,
+            rejection_reason: reason,
+            rejection_evidence_refs: rejectionRefs,
+            rejected_at: new Date().toISOString(),
+          },
+        })
+        .eq("id", learningId)
+        .eq("member_id", ownerId)
+        .select("*")
+        .single();
+      if (rejectError) throw rejectError;
+      return json({ ok: true, operation: "REJECT", learning: rejected, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+    }
+
+    if (mode === "supersede") {
+      const replacementLearningId = String(body?.superseded_by_learning_id || "").trim();
+      const reason = String(body?.reason || "").trim();
+      const supersessionRefs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
+      if (!replacementLearningId || !reason || !supersessionRefs.length) {
+        return json({ ok: false, error: "SUPERSESSION_REPLACEMENT_REASON_AND_EVIDENCE_REQUIRED" }, 400);
+      }
+      if (replacementLearningId === learningId) {
+        return json({ ok: false, error: "LEARNING_CANNOT_SUPERSEDE_ITSELF" }, 409);
+      }
+      if (learning.verification_state !== "VERIFIED") {
+        return json({ ok: false, error: "ONLY_VERIFIED_LEARNING_CAN_BE_SUPERSEDED", verification_state: learning.verification_state }, 409);
+      }
+      const { data: replacementLearning, error: replacementError } = await admin
+        .from("learning_evidence")
+        .select("id,status,verification_state,effect_state,target_id")
+        .eq("id", replacementLearningId)
+        .eq("member_id", ownerId)
+        .eq("target_id", learning.target_id)
+        .maybeSingle();
+      if (replacementError) throw replacementError;
+      if (
+        !replacementLearning ||
+        replacementLearning.status !== "ACTIVE" ||
+        replacementLearning.verification_state !== "VERIFIED" ||
+        replacementLearning.effect_state !== "OUTCOME_VERIFIED"
+      ) {
+        return json({ ok: false, error: "VERIFIED_REPLACEMENT_LEARNING_REQUIRED" }, 409);
+      }
+      const currentObserved = learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)
+        ? learning.observed_value
+        : {};
+      const { data: superseded, error: supersedeError } = await admin
+        .from("learning_evidence")
+        .update({
+          verification_state: "SUPERSEDED",
+          observed_value: {
+            ...currentObserved,
+            superseded_by_learning_id: replacementLearningId,
+            supersession_reason: reason,
+            supersession_evidence_refs: supersessionRefs,
+            superseded_at: new Date().toISOString(),
+          },
+        })
+        .eq("id", learningId)
+        .eq("member_id", ownerId)
+        .select("*")
+        .single();
+      if (supersedeError) throw supersedeError;
+      return json({ ok: true, operation: "SUPERSEDE", learning: superseded, replacement_learning: replacementLearning, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+    }
+
     const refs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
     if (!refs.length) return json({ ok: true, verified: false, reason: "EVIDENCE_REQUIRED" });
+
+    if (!["INFLUENCED", "OUTCOME_VERIFIED"].includes(String(learning.effect_state || "UNMEASURED"))) {
+      return json({ ok: false, error: "INFLUENCED_LEARNING_REQUIRED_FOR_VERIFICATION", effect_state: learning.effect_state }, 409);
+    }
 
     const verificationMethod = String(
       body?.verification_method || learning.verification_method || "Independent runtime verification."
@@ -224,6 +313,8 @@ Deno.serve(async (req: Request) => {
       .from("learning_evidence")
       .update({
         status: "ACTIVE",
+        verification_state: "VERIFIED",
+        effect_state: "OUTCOME_VERIFIED",
         provenance: "VERIFICATION",
         verification_method: verificationMethod,
       })
@@ -315,6 +406,8 @@ Deno.serve(async (req: Request) => {
       ...(blockBefore.provenance && typeof blockBefore.provenance === "object" ? blockBefore.provenance : {}),
       learning_id: promoted.id,
       learning_status: promoted.status,
+      learning_verification_state: promoted.verification_state,
+      learning_effect_state: promoted.effect_state,
       learning_provenance: promoted.provenance,
       verification_runtime: "github-actions-oidc",
       verification_runtime_jti: payload.jti ?? null,
