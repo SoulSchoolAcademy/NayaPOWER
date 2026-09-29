@@ -31,7 +31,10 @@
         "relationship_id": "c042a51f-5fe8-4722-afb6-d79162550e2e",
         "runtime_index_id": "62162ff4-5235-44d5-b788-9c5d877cc911",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "faa4345a-aacd-43f2-ab2f-a991b9681979"
+        "receipt_id": "faa4345a-aacd-43f2-ab2f-a991b9681979",
+        "checkpoint_semantics": "MUTABLE_PROJECT_STATE_POINTER",
+        "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
+        "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding."
       },
       "content_hash": "b8a0adf84cfb3f513bf90a450fc5b832671b98317b7a567f7696b5cb1283e108",
       "reconciliation": {
