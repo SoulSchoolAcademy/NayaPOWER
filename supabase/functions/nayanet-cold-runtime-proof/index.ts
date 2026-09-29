@@ -69,7 +69,6 @@ Deno.serve(async (req: Request) => {
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.CANDIDATE&select=id,target_id,level,status,claim,source_event_id,observed_value,verification_method,provenance");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "FRESH_LEARNING_CANDIDATE_NOT_FOUND" }, 409);
       const learning = learningRows[0];
-      if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
       const sourceBlockId = String(learningObserved.intelligent_block_id || "");
       if (!sourceBlockId) return json({ error: "LEARNING_INTELLIGENT_BLOCK_REQUIRED" }, 409);
@@ -313,6 +312,7 @@ Deno.serve(async (req: Request) => {
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const learning = learningRows[0];
+      if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
       const learningObserved = (learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)) ? learning.observed_value : {};
 
       // 2. Re-read the canonical Intelligent Block (already resolved owner-scoped above).
