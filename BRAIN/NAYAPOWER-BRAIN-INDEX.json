@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-09-27T00:00:00Z",
-  "status": "POPULATION_IN_PROGRESS_RUNTIME_CONVERGENCE_HARDENED",
+  "generated_at": "2026-09-29T02:10:58Z",
+  "status": "CURRENT_TRUTH_CONVERGENCE_AND_GENERALIZATION_PROOF",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
-  "canonical_root": "ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
-  "constitutional_root": "ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
-  "governance_root": "ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
-  "superbrain_spec": "ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+  "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+  "constitutional_root": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+  "governance_root": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+  "superbrain_spec": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
   "brain_map": "BRAIN/MASTER-MAP.md",
   "knowledge_synthesis": "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
   "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
@@ -162,8 +162,8 @@
     "SUCCESSOR"
   ],
   "source_corpus": {
-    "concepts": 15,
-    "concepts_note": "Updated from 13 to 15 to reflect full corpus reconciliation",
+    "concepts": 17,
+    "concepts_note": "17 numbered concepts are indexed. #16/#17 remain source analysis/blueprint unless selectively promoted; #944 Phase 1 found no new Concept #17 intelligence object.",
     "duplicate_pairs": [
       [
         "#7",
@@ -182,17 +182,39 @@
   "inventory_file_count": 77,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
-    "runtime_convergence": "NOT_PROVEN_ON_MAIN",
-    "application_entrypoint": "UNRESOLVED — MUST BE IDENTIFIED FROM CANONICAL RUNTIME SOURCE; DO NOT GUESS",
+    "runtime_convergence": "BOUNDED_PRODUCTION_PROOF_EXISTS; UNIVERSAL_NINE_NODE_BINDING_NOT_PROVEN",
+    "application_entrypoint": "No single universal application entrypoint is proven. The bounded #913 proof used the existing Live Supabase Runtime Proof / nayanet-cold-runtime-proof path.",
     "competing_store_policy": "LOCAL_SQLITE_OR_IN_MEMORY_IS_TEST_INFRASTRUCTURE_ONLY"
   },
   "proof_boundary": {
     "canonical_persistence_restored": true,
-    "cold_intelligent_block_retrieval": "EXERCISED",
-    "authority_separation": "EXERCISED",
-    "independent_outcome_specimen": "EXERCISED",
-    "living_application_runtime": "NOT_PROVEN",
-    "successor_behavioral_improvement": "NOT_PROVEN",
-    "production_proof": "NOT_PROVEN"
+    "cold_intelligent_block_retrieval": "PROVEN_BOUNDED_SPECIMEN",
+    "authority_separation": "PROVEN_BOUNDED_SPECIMEN",
+    "independent_outcome_specimen": "PROVEN_BOUNDED_SPECIMEN",
+    "living_application_runtime": "BOUNDED_PROVEN_AT_EXACT_REVISION; UNIVERSAL_BINDING_NOT_PROVEN",
+    "successor_behavioral_improvement": "PROVEN_BOUNDED_SINGLE_TASK",
+    "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
+    "bounded_production_proof": {
+      "issue": 913,
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "scope": "Node 0001 single bounded intelligence-river specimen",
+      "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
+    },
+    "current_frontier": {
+      "issue": 944,
+      "phase_1": "NO_NEW_CANDIDATE_SOURCE_RECONCILED",
+      "next": "Prove applicability/generalization and correct refusal using existing ACTIVE intelligence on a second related held-out task and an unrelated task."
+    }
+  },
+  "last_reconciled_main": "b5fb89a7b5f40db15be364047b3e94697830c936",
+  "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
+  "operations": {
+    "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
+    "master_plan": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
+    "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
+    "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
+    "active_issue": 944,
+    "next_proof": "Existing ACTIVE intelligence → second related held-out task + unrelated-task refusal → independent recomputation → cold successor reuse.",
+    "freshness_rule": "Re-read live main, open priority work and runtime/proof evidence before trusting dated projections."
   }
 }
