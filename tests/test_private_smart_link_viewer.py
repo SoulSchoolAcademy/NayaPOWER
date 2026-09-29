@@ -4,7 +4,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = (ROOT / "supabase/functions/nayanet-smart-note-viewer/index.ts").read_text()
 
 def test_private_smart_link_requires_real_user_before_data():
-    assert "admin.auth.getUser(token)" in SOURCE
+    assert "client.auth.getUser(token)" in SOURCE
     assert "block.owner_id !== user.id" in SOURCE
     assert "SMART_NOTE_FORBIDDEN" in SOURCE
 
