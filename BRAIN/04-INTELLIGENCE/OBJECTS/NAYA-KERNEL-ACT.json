@@ -3,7 +3,7 @@
   "object_id": "NAYA-KERNEL-ACT",
   "object_type": "NODE",
   "version": "2.0",
-  "canonical_status": "CANDIDATE",
+  "canonical_status": "VERIFIED_BOUNDED",
   "owner_id": "NAYA-KERNEL-ACT",
   "scope": "NayaPOWER kernel",
   "human_view": {
@@ -49,11 +49,15 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "EXECUTABLE_SOURCE",
-    "behavioral_status": "PENDING_LIVE_PROOF",
-    "production_status": "PENDING_LIVE_PROOF",
+    "implementation_status": "EXECUTABLE_DEPLOYED",
+    "behavioral_status": "PROVEN_BOUNDED",
+    "production_status": "PROVEN_BOUNDED_EXACT_REVISION",
     "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
-    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF"
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "live_run": 36622283683,
+    "live_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+    "live_proof": "BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json",
+    "limitation": "One bounded DOOR-AI naya_node_apply operation only; arbitrary Smart Door execution and universal nine-node binding remain NOT_PROVEN."
   },
   "relationships": [
     {
