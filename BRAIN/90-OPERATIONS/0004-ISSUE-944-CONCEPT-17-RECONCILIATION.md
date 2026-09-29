@@ -24,6 +24,7 @@ The high-value propositions explicitly required by Issue #944 are already repres
 | Existing Intelligent Block boundary | Smart Node protocol + Intelligence Lifecycle | ALREADY CANONICAL |
 | Capability ≠ authority | LAW contracts + activation + Smart Node protocol | ALREADY REPRESENTED |
 | No authority inheritance | lifecycle + Smart Node + successor contracts | ALREADY REPRESENTED |
+| `UNKNOWN_EFFECT`: timeout / missing acknowledgement does not prove the side effect failed | ACT already has timeout, observe, idempotency, rollback, “never retry without new information,” plus INCONCLUSIVE/DEFERRED states | **CONTRACT-HARDENING GAP / TEST TARGET** — explicit effect-state enum is not currently canonical; this is not enough to justify a duplicate Smart Node |
 
 ## What survives as actionable intelligence
 
@@ -36,6 +37,7 @@ Its useful contribution is **reinforcement and test pressure** around existing c
 3. Prove cold-successor behavior rather than relying on successor documentation.
 4. Prove the evidence ladder behaviorally, not just structurally.
 5. Prove applicability and correct refusal as part of reuse.
+6. Harden ACT/VERIFY semantics so ambiguous external effects cannot be silently collapsed into SUCCESS or FAILURE; test timeout-after-commit and blind-retry refusal.
 
 These are **tests of existing architecture**, not new architecture.
 
@@ -45,7 +47,9 @@ Do **not** create a duplicate Concept #17 Smart Node.
 
 Advance #944 directly to the smallest existing-river proof seam:
 
-**existing canonical intelligence → identifier-only cold retrieval → applicability → authority → held-out control/treatment → independent verification → unrelated-task refusal → cold successor reuse**
+**existing ACTIVE intelligence → second related held-out task → applicability → authority → WITHOUT/WITH comparison → independent verification → unrelated-task refusal → cold successor reuse**
+
+The first reusable specimen should be the already-proven #913 learning rather than a fabricated new Concept #17 candidate. The current runtime is known to be task/lesson-specific, so stop at the first hard-coded seam and repair only that seam.
 
 If the current river cannot perform that experiment, stop at the first broken rung and repair only that seam.
 
