@@ -29,8 +29,8 @@ At the latest live reconciliation used to refresh the master plan:
 - PR #955 verifier negative-matrix hardening is merged.
 - PR #959 cold-successor ACTIVE + canonical-target retrieval hardening is merged with repository gates green.
 - Governed production promotion run `36514309554` targeted `32b7c9954988befecfbe8c850f523e59a441f44d`, advanced `production` to that SHA, and is waiting for a new Supabase GitHub Integration deployment check.
-- Current `main` has since advanced to `faac73abf29c99fc29879f23cd39966439964251`.
-- Therefore a successful old-target promotion must not be called current-main production proof.
+- The plan refresh observed `faac73abf29c99fc29879f23cd39966439964251` immediately before its projection commit. That SHA is evidence history, not a permanent current-main pointer.
+- Therefore every executor must resolve live `main` from GitHub at execution time, and a successful old-target promotion must not be called current-main production proof.
 - Universal nine-node runtime binding remains **NOT_PROVEN**.
 
 Always re-read current `main` and live runtime evidence before acting.
@@ -50,4 +50,4 @@ Always re-read current `main` and live runtime evidence before acting.
 
 ## Current next action
 
-**Complete the Supabase GitHub Integration boundary required by the governed promotion. Then promote the exact then-current `main` and let the canonical production proof river continue until the next real failing rung.**
+**Complete the Supabase GitHub Integration boundary required by the governed promotion. Then resolve live `main` from GitHub at dispatch time, promote that exact SHA, and let the canonical production proof river continue until the next real failing rung.**
