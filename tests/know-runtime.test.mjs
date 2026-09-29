@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { selectKnow } from "../supabase/functions/nayanet-know-runtime/know.ts";
+import { selectKnow, validateKnowAuthorization } from "../supabase/functions/nayanet-know-runtime/know.ts";
 
 const OWNER="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const NAYA="NAYA-NODE-0001";
@@ -91,4 +91,29 @@ test("missing context fails closed",()=>{
   const d=selectKnow(req(""),[learned()]);
   assert.equal(d.status,"BLOCKED");
   assert.equal(d.reason,"KNOW_CONTEXT_REQUIRED");
+});
+
+
+const law=(overrides={})=>({
+  id:"law1",user_id:OWNER,action:"law_authority_decision",status:"SUCCESS",
+  evidence:{
+    node_id:"NAYA-KERNEL-LAW",
+    law_request:{action:"naya_node_apply",target:NAYA},
+    law_decision:{status:"AUTHORIZED",owner_id:OWNER,naya_id:NAYA,action:"naya_node_apply",target:NAYA,authority_refs:["g1"]}
+  },
+  ...overrides
+});
+const grant=(overrides={})=>({
+  grant_id:"g1",issuer_id:OWNER,subject_id:OWNER,scope:{target:NAYA},actions:["naya_node_apply"],status:"ACTIVE",revoked_at:null,expires_at:null,...overrides
+});
+
+test("KNOW retrieval requires a valid LAW authorization boundary",()=>{
+  assert.equal(validateKnowAuthorization(req("Preserve provenance."),null,grant()).reason,"LAW_RECEIPT_REQUIRED");
+  assert.equal(validateKnowAuthorization(req("Preserve provenance."),law({status:"BLOCKED"}),grant()).reason,"LAW_RECEIPT_INVALID");
+  assert.equal(validateKnowAuthorization(req("Preserve provenance."),law(),grant()).status,"READY");
+});
+
+test("KNOW refuses revoked or wrong-scope live authority",()=>{
+  assert.equal(validateKnowAuthorization(req("Preserve provenance."),law(),grant({status:"REVOKED",revoked_at:"2026-09-29T20:00:00Z"})).reason,"LIVE_AUTHORITY_NOT_ACTIVE");
+  assert.equal(validateKnowAuthorization(req("Preserve provenance."),law(),grant({scope:{target:"OTHER"}})).reason,"LIVE_AUTHORITY_TARGET_MISMATCH");
 });
