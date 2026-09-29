@@ -517,7 +517,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment.json"))["learning_id"])' )"
+          learning_id="$(python -c 'import json; print(json.load(open("cold-successor-receipt.json"))["reconstruction"]["learning_id"])' )"
           curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}" > cold-successor-verification.json
           cat cold-successor-verification.json
           python - <<'PY'
