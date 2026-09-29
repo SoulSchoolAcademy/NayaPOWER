@@ -20,13 +20,14 @@
     },
     "pr_946": "MERGED",
     "pr_955": "MERGED",
-    "current_main": "faac73abf29c99fc29879f23cd39966439964251",
     "production_branch": "32b7c9954988befecfbe8c850f523e59a441f44d",
     "governed_promotion_run": 36514309554,
     "governed_promotion_target": "32b7c9954988befecfbe8c850f523e59a441f44d",
     "governed_promotion_state": "WAITING_FOR_SUPABASE_GITHUB_INTEGRATION_CHECK",
     "universal_nine_node_runtime_binding": "NOT_PROVEN",
-    "pr_959": "MERGED_TESTS_GREEN"
+    "pr_959": "MERGED_TESTS_GREEN",
+    "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
+    "projection_self_staleness_guard": "DO_NOT_TREAT_EMBEDDED_SHA_AS_CURRENT_AFTER_THIS_PROJECTION_IS_COMMITTED"
   },
   "p0": [
     {
@@ -102,6 +103,7 @@
   ],
   "next_action": {
     "status": "BLOCKED_EXTERNAL",
-    "instruction": "Complete/enable Supabase GitHub Integration for the NayaPOWER project/repository so the governed promotion emits a new deployment check. Then run the governed promotion for the exact then-current main and follow the canonical proof river to the next failing rung."
-  }
+    "instruction": "Complete/enable Supabase GitHub Integration. Then read live GitHub main at dispatch time, promote that exact SHA through the governed workflow, and follow the canonical proof river to the next failing rung."
+  },
+  "source_main_semantics": "PRE_PROJECTION_EVIDENCE_BASE_ONLY"
 }
