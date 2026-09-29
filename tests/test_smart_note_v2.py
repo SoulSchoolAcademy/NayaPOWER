@@ -111,3 +111,9 @@ def test_projection_workflow_does_not_allocate_intelligent_block_identity():
 def test_projection_workflow_stages_brain_projection_and_registry():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert "git add BRAIN/05-MEMORY/SMART-NOTES .naya/memory/smart-notes" in workflow
+
+
+def test_sequence_policy_advances_past_sn003():
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    assert reg["sequence_policy"]["next_sequence"] == 4
+    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-004"
