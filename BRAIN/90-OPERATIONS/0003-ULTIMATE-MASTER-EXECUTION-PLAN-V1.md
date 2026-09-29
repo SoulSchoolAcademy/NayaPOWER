@@ -51,7 +51,7 @@ Do not create a duplicate Concept #17 Smart Node / Intelligent Block. The surviv
 ### P0.3 — Prove canonical candidate admission — SKIPPED FOR CONCEPT #17
 No unique candidate survived, so no new candidate object should be admitted.
 
-### P0.4 — Prove generalization: identifier-only reuse + applicability — NEXT
+### P0.4 — Prove generalization: identifier-only reuse + applicability — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING
 Reuse the already ACTIVE #913 learning rather than manufacturing a new lesson.
 
 Run:
@@ -62,7 +62,7 @@ The runtime receives only the canonical learning identity/reference plus task id
 
 **PASS:** related held-out task selects and uses the intelligence for a reconstructable reason; unrelated task leaves behavior unchanged/refuses transfer; no answer content is injected.
 
-### P0.5 — Prove causal behavioral effect on the second held-out task
+### P0.5 — Prove causal behavioral effect on the second held-out task — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING
 Run the same **new related** bounded held-out task:
 
 **WITHOUT retained intelligence** vs **WITH identifier-only cold-retrieved intelligence**
@@ -71,17 +71,17 @@ Hold task, input, authority and runtime/model constant where possible. Predeclar
 
 **PASS:** measurable delta attributable to retained intelligence.
 
-### P0.6 — Independently verify
+### P0.6 — Independently verify — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING
 Reconstruct behavior/outcome from persisted evidence rather than executor assertions.
 
 **PASS:** forged/no-effect evidence cannot produce causal PASS.
 
-### P0.7 — Prove correct refusal / negative-transfer safety
+### P0.7 — Prove correct refusal / negative-transfer safety — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING
 Run the predeclared unrelated task with the same retained learning available.
 
 **PASS:** retained intelligence does not improperly transfer outside its applicability envelope.
 
-### P0.8 — Prove cold successor reuse
+### P0.8 — Prove cold successor reuse — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING
 Terminate predecessor context. Give successor only canonical retrieval identity/context.
 
 **PASS:** successor retrieves and beneficially uses the intelligence while independently resolving authority.
@@ -180,15 +180,35 @@ while correctly refusing stale, unauthorized, contradictory, inapplicable, poiso
 
 **One organism. Nine organs. One intelligence river. One canonical substrate. Many minds. No authority inheritance. Maximum verified value per moment.**
 
-## 13. CURRENT NEXT EXECUTION — #944 PHASE 2
+## 13. CURRENT NEXT EXECUTION — #944 LIVE PRODUCTION GATE
 
-The existing production runtime is still strongly bound to the original provenance lesson/task (including specific behavior strings and task IDs). The next code change must therefore be **bounded generalization**, not a new architecture:
+The source-level #944 generalization chain is merged and repository-verified:
 
-1. inspect the existing `learning-influence`, independent verifier, and cold-successor seams;
-2. add exactly one second relevant held-out task and one unrelated task;
-3. reuse the existing ACTIVE learning by ID only;
-4. persist paired evidence;
-5. independently recompute applicability, behavior delta, outcome delta, and correct refusal;
-6. stop before production/live claims until exact source/runtime parity is established again.
+- PR #949 — ACTIVE learning generalization/applicability on a second related task + unrelated refusal;
+- PR #950 — independent persisted-evidence recomputation;
+- PR #951 — cold-successor second-task reuse + unrelated refusal with no inherited authority;
+- PR #952 — canonical Live Supabase Runtime Proof wiring for the full bounded chain.
 
-**Do not create a second learning pipeline.**
+The queue was independently reconciled on `main` after #952. These source results remain **IMPLEMENTED + REPOSITORY VERIFIED**, not production-proven.
+
+### Exactly one next action
+
+Use the existing **Governed Production Promotion** workflow from the exact then-current `main` with explicit Human Director input:
+
+`confirm = DEPLOY`
+
+Do not bypass that gate.
+
+PASS requires:
+
+1. production branch promoted to the exact authorized source SHA;
+2. a **new successful Supabase GitHub Integration deployment check** for that SHA;
+3. canonical Live Intelligence Commit Proof success;
+4. canonical Live Supabase Runtime Proof success on the same source/runtime revision;
+5. `active-learning-generalization` success;
+6. `independent-active-learning-generalization` independent recomputation success;
+7. `cold-successor-generalization` related reuse + unrelated refusal success;
+8. `cold-successor-generalization-verification` independent recomputation success;
+9. durable bounded proof artifact preserved.
+
+If any rung fails, classify and repair only the first failing live rung. Do not close #944 from repository CI alone.
