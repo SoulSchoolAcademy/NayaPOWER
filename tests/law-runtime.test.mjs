@@ -15,6 +15,23 @@ const req=(overrides={})=>({owner_id:OWNER,naya_id:NAYA,action:"data_read",targe
 
 test("LAW authorizes same-scope read",()=>assert.equal(evaluateLaw(req(),[grant()],now).status,"AUTHORIZED"));
 test("LAW authorizes same-scope write",()=>assert.equal(evaluateLaw(req({action:"data_write"}),[grant()],now).status,"AUTHORIZED"));
+test("LAW refuses wrong target when project identifiers are both absent",()=>{
+  const d=evaluateLaw(req({target:"OTHER-NAYA"}),[grant()],now);
+  assert.equal(d.status,"NEEDS_HUMAN_AUTHORIZATION");
+  assert.deepEqual(d.authority_refs,[]);
+});
+test("LAW refuses absent or empty scope instead of matching absent project",()=>{
+  for(const scope of [undefined,{}, {project_id:""}]) {
+    const d=evaluateLaw(req({project_id:scope?.project_id}),[grant({scope})],now);
+    assert.notEqual(d.status,"AUTHORIZED");
+    assert.deepEqual(d.authority_refs,[]);
+  }
+});
+test("LAW still accepts explicit project-scoped authority",()=>{
+  assert.equal(evaluateLaw(req({target:"resource",project_id:"NayaNET"}),[grant({scope:{project_id:"NayaNET"}})],now).status,"AUTHORIZED");
+  assert.equal(evaluateLaw(req({target:"NayaNET"}),[grant({scope:{project_id:"NayaNET"}})],now).status,"AUTHORIZED");
+  assert.notEqual(evaluateLaw(req({target:"resource",project_id:"OTHER"}),[grant({scope:{project_id:"NayaNET"}})],now).status,"AUTHORIZED");
+});
 test("LAW requires human authority when missing",()=>{
   const d=evaluateLaw(req(),[],now); assert.equal(d.status,"NEEDS_HUMAN_AUTHORIZATION"); assert.equal(d.reason,"NO_MATCHING_ACTIVE_AUTHORITY");
 });
