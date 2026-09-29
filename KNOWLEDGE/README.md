@@ -1,6 +1,6 @@
 # NayaPOWER KNOWLEDGE — Canonical Entry Point
 
-**Status:** CANONICAL INDEX — MAINTAINED 2026-09-27
+**Status:** CANONICAL INDEX — MAINTAINED 2026-09-28
 **System:** NayaPOWER / NayaNET
 **Canonical repository:** `SoulSchoolAcademy/NayaPOWER`
 
@@ -25,7 +25,7 @@ to understand:
 live system wins for *current state*, and the disagreement itself must be recorded
 as a drift finding — never silently resolved.
 
-## 2. The Corpus — All 15 Files
+## 2. The Corpus — 17 Numbered Concepts
 
 | # | File | Title | One-line description | Status |
 |---|------|-------|----------------------|--------|
@@ -44,6 +44,8 @@ as a drift finding — never silently resolved.
 | 13 | [NAYA POWER CONCEPT PART #13.md](./NAYA%20POWER%20CONCEPT%20PART%20%2313.md) | Intelligent Chain & Intelligent Craft Network — Master Specification V1 | The master specification: core information model (Tree/Identity/Graph/Contract/Proof), Intelligent Chain, and universal object envelope. | CANONICAL (specification) |
 | 14 | [NAYA POWER CONCEPT PART #14.md](./NAYA%20POWER%20CONCEPT%20PART%20%2314.md) | Contextual Intelligence, Relationship Graphs & Reasoning Memory (V14) | Distilled concept for relationship-aware memory and graph-based retrieval without a second brain. | EXPLORATORY (concept) |
 | 15 | [NAYA POWER CONCEPT #15.md](./NAYA%20POWER%20CONCEPT%20%2315.md) | Execution Wave Is Live — 10-Step Maximum-Value Directive | The execution directive: 10 prioritized waves (P0-1…P0-10) with gates, issued to the Naya ↔ Coda board #554. | CANONICAL (execution) |
+| 16 | [NAYA POWER CONCEPT #16.md](./NAYA%20POWER%20CONCEPT%20%2316.md) | Graph-memory / CONNECT architecture analysis | Source analysis of shared-world graph memory, contradiction preservation, relationship-aware retrieval, and where external graph ideas fit NayaPOWER. | SOURCE (analysis; promote only through canonical intelligence lifecycle) |
+| 17 | [NAYA POWER CONCEPT PART #17.md](./NAYA%20POWER%20CONCEPT%20PART%20%2317.md) | Master Nine-Node Organism Engineering Blueprint V1 | Source blueprint for one organism / nine organs / many minds, universal execution DNA, proof standards, observability, cold succession, and the superbrain acceptance test. | SOURCE (blueprint; distilled seams require explicit promotion) |
 
 ## 3. Companion Documents (this directory)
 
@@ -54,6 +56,8 @@ as a drift finding — never silently resolved.
 | [NAYAPOWER-CURRENT-STATE-V1.md](./NAYAPOWER-CURRENT-STATE-V1.md) | What is implemented / designed / proposed, with evidence links. |
 | [NAYAPOWER-IMPLEMENTATION-PLAN-V1.md](./NAYAPOWER-IMPLEMENTATION-PLAN-V1.md) | The single canonical implementation plan (reconciles 6-wave, 10-phase, and 18-step plans). |
 | [NAYAPOWER-CONTRACT-REGISTRY-V1.json](./NAYAPOWER-CONTRACT-REGISTRY-V1.json) | Machine-readable registry of all contracts with status, authority, and dependencies. |
+| [TEAM NAYA FEEDBACK REPRORT.md](./TEAM%20NAYA%20FEEDBACK%20REPRORT.md) | Multi-perspective review/feedback source; evidence to reconcile, not automatic canon. |
+| [COPILOTS WORLD CLASS UPDATES PART #1.md](./COPILOTS%20WORLD%20CLASS%20UPDATES%20PART%20%231.md) | External/copilot improvement ideas; source material to evaluate, not automatic canon. |
 
 ## 4. Recommended Reading Order
 
@@ -61,15 +65,17 @@ as a drift finding — never silently resolved.
 
 1. This README.
 2. [NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md](./NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md) — resolve terminology first.
-3. [NAYAPOWER-CURRENT-STATE-V1.md](./NAYAPOWER-CURRENT-STATE-V1.md) — what is true right now.
+3. Verify current `main`, open priority issues, `BRAIN/90-OPERATIONS/`, and the latest proof receipts. Treat [NAYAPOWER-CURRENT-STATE-V1.md](./NAYAPOWER-CURRENT-STATE-V1.md) as a dated 2026-09-27 snapshot until reconciled.
 4. PART #6 — the ratified white paper (system-level truth).
 5. PART #4 — the ratified system model + enforceable kernel spec.
 6. PART #1 — the nine Master Node kernel in depth.
 7. PART #3 — the constitutional contract law and contract stack.
-8. PART #15 — the execution directive (what happens next).
-9. [NAYAPOWER-IMPLEMENTATION-PLAN-V1.md](./NAYAPOWER-IMPLEMENTATION-PLAN-V1.md) — the full plan.
+8. [../BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md](../BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md) — current canonical Smart Node operating law.
+9. PART #17 — current source blueprint for the nine-node organism; reconcile against canonical Brain/runtime before promotion.
+10. PART #15 — historical execution directive; verify open work before acting.
+11. [NAYAPOWER-IMPLEMENTATION-PLAN-V1.md](./NAYAPOWER-IMPLEMENTATION-PLAN-V1.md) — dated plan; use as context, not current-state authority.
 
-**For a human designer (full context):** read Parts #1 → #15 in numeric order, then the
+**For a human designer (full context):** read Parts #1 → #17 in numeric order, then the
 companion documents. Parts #2, #5, #7, #9, #11–#14 are the design-evolution record and
 can be skimmed once the ratified model (Parts #1, #3, #4, #6, #15) is understood.
 
@@ -92,10 +98,22 @@ can be skimmed once the ratified model (Parts #1, #3, #4, #6, #15) is understood
 |----------|-------|
 | CANONICAL — ratified law / architecture | #1, #2, #3, #4, #6, #12, #13 |
 | CANONICAL — design / blueprint / vision | #5, #7, #9, #10, #11 |
-| CANONICAL — execution directive | #15 |
+| CANONICAL — execution directive | #15 (historical directive; live priority must be rechecked) |
 | EXPLORATORY — concept not yet ratified | #14 |
-| Companion (this directory) | Glossary, Index, Current State, Implementation Plan, Contract Registry |
+| SOURCE — analysis / blueprint awaiting selective distillation | #16, #17 |
+| Companion (this directory) | Glossary, Index, Current State snapshot, Implementation Plan snapshot, Contract Registry, Team Naya feedback, Copilot updates |
 
 **Corpus rule:** nothing in this directory is "done" merely because it is written.
 Every claim of implementation must carry evidence (run IDs, commit SHAs, receipts).
 See [NAYAPOWER-CURRENT-STATE-V1.md](./NAYAPOWER-CURRENT-STATE-V1.md).
+
+
+## 7. Smart Node terminology lock
+
+As of 2026-09-28, **Smart Node** is a canonical **human operating command / shorthand**, not a separate object type and not a tenth kernel Node.
+
+“Make this a Smart Node” means: route valuable material through the existing governed Intelligent Block lifecycle defined in:
+
+`BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`
+
+Older concept files may use “Smart Node” as an alias for “Naya Node.” Preserve that as source-history, but do not use that older alias as current machine semantics.
