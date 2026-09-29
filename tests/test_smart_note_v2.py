@@ -92,8 +92,8 @@ def test_sn002_is_registered_to_live_canonical_runtime():
 
 def test_sequence_policy_advances_after_sn002():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
-    assert reg["sequence_policy"]["next_sequence"] == 3
-    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-003"
+    assert reg["sequence_policy"]["next_sequence"] == 4
+    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-004"
 
 
 def test_projection_workflow_publishes_active_verified_public_projection():
