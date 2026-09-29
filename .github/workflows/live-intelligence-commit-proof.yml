@@ -212,7 +212,10 @@ jobs:
           import json
           x=json.load(open("projection-result.json"))
           e=x["entry"]
-          if e.get("scope")=="PRIVATE":
+          if e.get("projection_status")=="GITHUB_BRAIN_PUBLISHED":
+              assert e["smart_link_status"]=="ACTIVE"
+              assert e.get("smart_link","").startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
+          elif e.get("scope")=="PRIVATE":
               assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"
               assert e["smart_link_status"]=="PENDING_PRIVATE_PROJECTION"
           PY
