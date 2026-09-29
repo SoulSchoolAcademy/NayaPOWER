@@ -10,7 +10,7 @@
 - **#944:** OPEN / active frontier.
 - **Concept #17:** reconciled; no duplicate candidate admitted.
 - **Generalization/cold-successor code path:** IMPLEMENTED on current `main`.
-- **Live proof result for current HEAD:** **UNKNOWN** — no GitHub Actions run exists for `18c5d53...` yet.
+- **Live proof result for the newly wired #944 chain:** **NOT YET PRODUCTION-PROVEN** — source/repository verification is green; governed deployment + exact-parity live run remains.
 - **Runtime binding:** still **NOT_PROVEN** at the nine-node universal level.
 
 ## Dispatch order
@@ -18,11 +18,11 @@
 1. **P0.1 Current truth/runtime identity — ACTIVE** — establish exact source/runtime/deployment identity from a live run.
 2. **P0.2 #944 Concept #17 reconciliation — DONE** — `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
 3. **P0.3 Candidate admission — SKIPPED** — no unique Concept #17 candidate survived reconciliation.
-4. **P0.4 Generalization/applicability — IMPLEMENTED, LIVE VERIFICATION PENDING** — existing ACTIVE learning is reused by ID for one related held-out task and one unrelated task.
-5. **P0.5 Causal control/treatment — IMPLEMENTED, LIVE VERIFICATION PENDING** — paired behavior/outcome path exists without a second learning pipeline.
-6. **P0.6 Independent verification — IMPLEMENTED, LIVE VERIFICATION PENDING** — verifier rereads authoritative state and recomputes.
-7. **P0.7 Negative transfer — IMPLEMENTED, LIVE VERIFICATION PENDING** — unrelated task must refuse retained intelligence.
-8. **P0.8 Cold successor reuse — IMPLEMENTED, LIVE VERIFICATION PENDING** — related reuse plus non-inherited authority and independent successor verification are wired.
+4. **P0.4 Generalization/applicability — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING** — existing ACTIVE learning is reused by ID for one related held-out task and one unrelated task.
+5. **P0.5 Causal control/treatment — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING** — paired behavior/outcome path exists without a second learning pipeline.
+6. **P0.6 Independent verification — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING** — verifier rereads authoritative state and recomputes.
+7. **P0.7 Negative transfer — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING** — unrelated task must refuse retained intelligence.
+8. **P0.8 Cold successor reuse — IMPLEMENTED + REPOSITORY VERIFIED; LIVE PENDING** — related reuse plus non-inherited authority and independent successor verification are wired.
 9. **P1 Nine-node runtime binding/ablation — OPEN** — not to be claimed until independently demonstrated.
 10. **P1 retrieval/state/provenance/authority hardening — OPEN** — only after the current proof chain is live and the first broken rung is known.
 
@@ -58,4 +58,4 @@ If the live chain fails, classify the first failing rung and repair only that se
 
 ## Exactly one next action
 
-**Trigger and inspect the existing Live Intelligence Commit Proof → Live Supabase Runtime Proof chain on the next canonical `main` revision, then stop at the first failing live proof rung and repair only that seam.**
+**Run the existing Governed Production Promotion for the exact then-current `main` with explicit Human Director input `confirm = DEPLOY`; require a new successful Supabase deployment check, canonical producer success, canonical Live Supabase Runtime Proof success, and the new #944 bounded generalization/successor proof artifact. Stop at the first failing live rung.**
