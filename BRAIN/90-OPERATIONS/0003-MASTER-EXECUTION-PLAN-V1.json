@@ -49,14 +49,16 @@
     {
       "id": "MEP-02",
       "priority": "P0",
-      "status": "NEXT",
+      "status": "IN_PROGRESS_CANDIDATE_DESIGNED",
       "name": "Smart Node novelty gate",
       "depends_on": [
         "MEP-01"
       ],
       "tracker": "#944",
       "action": "Reconcile Concept #17 against current canon. Test UNKNOWN_EFFECT first. Do not manufacture novelty.",
-      "proof": "One proposition is shown non-duplicate, or NO_NEW_CANDIDATE is recorded with canonical equivalents."
+      "proof": "One proposition is shown non-duplicate, or NO_NEW_CANDIDATE is recorded with canonical equivalents.",
+      "evidence": "BRAIN/90-OPERATIONS/0004-SMART-NODE-UNKNOWN-EFFECT-CANDIDATE-EXPERIMENT-V1.md",
+      "finding": "Retry/idempotency is already canonical; explicit UNKNOWN_EFFECT effect-state appears absent from inspected canonical ACT/runtime surfaces and requires independent review before promotion."
     },
     {
       "id": "MEP-03",
@@ -163,6 +165,6 @@
   "next_action": {
     "block": "MEP-02",
     "issue": 944,
-    "instruction": "Reconcile Concept #17 and determine whether UNKNOWN_EFFECT is a genuinely non-duplicate candidate; if yes design the smallest failure-first Smart Node experiment, otherwise record NO_NEW_CANDIDATE and continue candidate evaluation."
+    "instruction": "Independently review the UNKNOWN_EFFECT candidate against current ACT/PROVE/VERIFY/LEARN/runtime contracts. If novelty survives, create it through the existing Smart Node / Intelligent Block path; otherwise record NO_NEW_CANDIDATE: UNKNOWN_EFFECT."
   }
 }
