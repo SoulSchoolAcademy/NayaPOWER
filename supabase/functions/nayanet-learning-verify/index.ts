@@ -92,7 +92,27 @@ Deno.serve(async (req: Request) => {
         : await checkpointQuery.order("updated_at", { ascending: false }).limit(1);
       if (checkpointError) throw checkpointError;
       const checkpoint = checkpointRows?.[0];
-      if (!checkpoint || checkpoint.state?.intelligent_block_id !== blockId || checkpoint.state?.lineage_id !== lineage.id || checkpoint.state?.relationship_id !== relationship.relationship_id || checkpoint.state?.index_id !== index.id) return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH" }, 409);
+      if (!checkpoint) {
+        return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH", reason: "CHECKPOINT_NOT_FOUND", checkpoint_id: requestedCheckpointId || null }, 409);
+      }
+      // The checkpoint row is keyed on (user_id, project_id) and upserted by every
+      // intelligence commit, so this guard fires both when a chain was rebuilt
+      // incorrectly AND when a later commit superseded the checkpoint the artifact
+      // was bound to. Both arrive as one opaque string today, which is the same
+      // observability dead end that made SUPABASE_READ_400 unresolvable from a log.
+      // Name the link that disagrees and give both sides; ids only, no secret.
+      const rebuiltChain: Record<string, string> = {
+        intelligent_block_id: blockId,
+        lineage_id: lineage.id,
+        relationship_id: relationship.relationship_id,
+        index_id: index.id,
+      };
+      const mismatched = Object.entries(rebuiltChain)
+        .filter(([field, value]) => checkpoint.state?.[field] !== value)
+        .map(([field, value]) => ({ field, checkpoint_state: checkpoint.state?.[field] ?? null, rebuilt_chain: value }));
+      if (mismatched.length) {
+        return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH", checkpoint_id: checkpoint.id, checkpoint_revision: checkpoint.revision ?? null, mismatched }, 409);
+      }
       const lesson = String(block.content?.lesson || "").trim();
       if (!lesson) return json({ ok: false, error: "LESSON_CONTENT_REQUIRED" }, 409);
       const existingRows = await admin.from("learning_evidence").select("id,status,claim,source_event_id,observed_value,verification_method,provenance,created_at").eq("member_id", ownerId).eq("target_id", "NAYA-NODE-0001").eq("status", "CANDIDATE").limit(100);
