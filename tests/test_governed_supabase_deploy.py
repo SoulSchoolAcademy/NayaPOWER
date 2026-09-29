@@ -8,11 +8,11 @@ def test_governed_deploy_includes_learning_verifier_under_manual_gate():
     source = WORKFLOW.read_text(encoding="utf-8")
     assert 'description: "Type DEPLOY to authorize a production Edge Function deployment"' in source
     assert 'test "${{ inputs.confirm }}" = "DEPLOY"' in source
-    assert "supabase functions deploy nayanet-learning-verify --use-api" in source
+    assert '"nayanet-learning-verify"' in source
     assert 'gh workflow run "$PROOF_WORKFLOW"' in source
 
 
-def test_governed_deploy_preserves_existing_runtime_set():
+def test_governed_deploy_preserves_existing_runtime_set_in_broker_request():
     source = WORKFLOW.read_text(encoding="utf-8")
     for function_name in (
         "nayanet-cold-runtime-proof",
@@ -20,7 +20,7 @@ def test_governed_deploy_preserves_existing_runtime_set():
         "nayanet-causal-learning-experiment",
         "nayanet-learning-verify",
     ):
-        assert f"supabase functions deploy {function_name} --use-api" in source
+        assert f'"{function_name}"' in source
 
 
 def test_governed_deploy_uses_oidc_broker_not_recurring_human_supabase_token():
