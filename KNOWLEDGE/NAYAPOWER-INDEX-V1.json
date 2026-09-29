@@ -4,7 +4,7 @@
   "title": "NayaPOWER KNOWLEDGE Corpus Index",
   "system": "NayaPOWER / NayaNET",
   "canonical_repository": "SoulSchoolAcademy/NayaPOWER",
-  "last_updated": "2026-09-27",
+  "last_updated": "2026-09-28",
   "files": [
     {
       "path": "KNOWLEDGE/NAYA POWER CONCEPT PART #1.md",
@@ -145,21 +145,49 @@
       "purpose": "Machine-readable registry of all contracts with ID, canonical name, status, authority, dependencies, and source file.",
       "status": "CANONICAL",
       "last_updated": "2026-09-27"
+    },
+    {
+      "path": "KNOWLEDGE/NAYA POWER CONCEPT #16.md",
+      "title": "Graph-memory / CONNECT architecture analysis",
+      "purpose": "Source analysis of shared-world graph memory, contradiction preservation, relationship-aware retrieval, and how external graph ideas map to NayaPOWER without creating a second brain.",
+      "status": "SOURCE_ANALYSIS",
+      "last_updated": "2026-09-28"
+    },
+    {
+      "path": "KNOWLEDGE/NAYA POWER CONCEPT PART #17.md",
+      "title": "Master Nine-Node Organism Engineering Blueprint V1",
+      "purpose": "Source blueprint for one organism / nine organs / many minds, universal execution DNA, proof standards, observability, cold succession, and the superbrain acceptance test. Novel seams require explicit canonical distillation/promotion.",
+      "status": "SOURCE_BLUEPRINT",
+      "last_updated": "2026-09-28"
+    },
+    {
+      "path": "KNOWLEDGE/TEAM NAYA FEEDBACK REPRORT.md",
+      "title": "Team Naya Feedback Report",
+      "purpose": "Multi-perspective review and feedback source to reconcile against canonical evidence; existence does not promote its recommendations.",
+      "status": "SOURCE_FEEDBACK",
+      "last_updated": "2026-09-28"
+    },
+    {
+      "path": "KNOWLEDGE/COPILOTS WORLD CLASS UPDATES PART #1.md",
+      "title": "Copilots World Class Updates Part #1",
+      "purpose": "External/copilot improvement ideas and review material; evaluate through existing evidence, architecture, and promotion gates before adoption.",
+      "status": "SOURCE_FEEDBACK",
+      "last_updated": "2026-09-28"
     }
   ],
   "terminology": {
     "schema": "nayapower.terminology/v1",
     "canonical": {
-      "Naya Node": "The canonical governed intelligence unit (alias: Smart Node [historical])",
+      "Naya Node": "A reusable governed semantic intelligence unit in the source/concept model; distinct from the nine Master Node responsibilities and from the Smart Node human command.",
       "Intelligent Block": "The canonical committed object behind a Smart Note; receiver-owned immutable identity IB-XXXXXX",
       "Smart Note": "The human-readable projection of an Intelligent Block (15-section structure)",
       "Smart Link": "Evidence-bearing navigation to the canonical Smart Note artifact; doubles as human receipt",
       "Intelligent Event": "What happened; the immutable record of an occurrence (alias: Intelligence Event [historical])",
       "Experience Node": "Human/project/domain intelligence Node; first extension tier beyond the V1 kernel",
-      "Meta-Intelligence Node": "Intelligence about the system itself; feeds EVOLVE; self-improvement does not create self-authorization"
+      "Meta-Intelligence Node": "Intelligence about the system itself; feeds EVOLVE; self-improvement does not create self-authorization",
+      "Smart Node": "Canonical human operating command/shorthand meaning: preserve valuable material through the existing governed Intelligent Block lifecycle. It is not a new object type, database object, graph, authority source, or tenth kernel Node."
     },
     "historical": {
-      "Smart Node": "Naya Node",
       "Intelligence Event": "Intelligent Event",
       "Smart Door (as link)": "Smart Link",
       "Smart Share": "Smart Connect",
@@ -177,6 +205,11 @@
       "id": "CONTRACT-00-DUAL-CLAIM",
       "detail": "Two artifacts claim contract id 00- in .naya/contracts (00-CONTRACT-STACK-OPERATING-LAW.md and 00-NAYANET-CONSTITUTIONAL-CONTRACT-LAW.md). Flagged as ERROR in .naya/contract-library-integrity-report.json.",
       "resolution": "OPEN"
+    },
+    {
+      "id": "SMART-NODE-TERM-DRIFT",
+      "detail": "Older concept/glossary material used Smart Node as an alias for Naya Node. The Human Director ratified Smart Node as a human operating command mapped to the existing Intelligent Block lifecycle in PR #942/#945.",
+      "resolution": "RESOLVED_CANONICAL_PROTOCOL"
     }
   ]
 }

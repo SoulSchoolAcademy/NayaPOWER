@@ -1,7 +1,7 @@
 # NAYAPOWER — TERMINOLOGY GLOSSARY V1
 
 **Status:** CANONICAL — TERMINOLOGY AUTHORITY
-**Effective:** 2026-09-27
+**Effective:** 2026-09-28
 **Authority:** NayaPOWER System North Star Ratification (2026-09-26) + NayaNET Constitutional Contract Law
 **Purpose:** Resolve the contradictory terminology accumulated across the KNOWLEDGE corpus so that every Naya, human, and contract uses ONE canonical term per concept.
 
@@ -9,7 +9,7 @@
 
 ## 1. Why this glossary exists
 
-Across the 15 KNOWLEDGE files the same concepts appear under different names:
+Across the numbered KNOWLEDGE concept corpus the same concepts appear under different names:
 `Naya Node`, `Smart Node`, `NayaPOWER Node`; `Intelligent Block`, `Smart Note`;
 `Intelligence Event`, `Intelligent Event`; `Smart Link`, `Smart Door`, `receipt`.
 
@@ -49,11 +49,23 @@ SMART LINK                 (the verified, evidence-bearing doorway to that proje
 A Naya Node is a reusable cell of distilled, governed intelligence. It is the semantic
 unit the system understands, retrieves, applies, verifies, learns from, and inherits.
 
-- Aliases (HISTORICAL): `Smart Node`, `NayaPOWER Node`, `intelligence cell`
+- Aliases (HISTORICAL): `NayaPOWER Node`, `intelligence cell`. Older sources also used `Smart Node` as an object alias; that alias is superseded by the canonical Smart Node operating protocol.
 - Distinction: the Naya Node is the *understanding*; it becomes durable only when
   committed as an Intelligent Block.
 - Source: PART #4 ratified model — "Naya Node = reusable intelligence cell";
   PART #8 — "Naya Node = Smart Node = the semantic intelligence unit".
+
+### 3.1A Smart Node — CANONICAL HUMAN OPERATING TERM
+**A command/shorthand for preserving valuable material as governed reusable intelligence.**
+
+When Shawn says **“make this a Smart Node”** or **“lock this in,”** Naya routes the material through the existing Intelligent Block lifecycle: capture → distill → reconcile → structure → connect → prove/label → preserve → index → retrieve → apply within authority → verify → learn/refine.
+
+- It is **not** a new canonical object type.
+- It is **not** a tenth Master Node.
+- It is **not** a second graph, memory system, or authority source.
+- Machine identity remains the existing Intelligent Block and related canonical Event / Relationship / Evidence / Verification / Learning / Successor objects.
+- Source of current semantics: `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`.
+- Historical note: earlier concept files sometimes used “Smart Node” as an alias for “Naya Node.” Preserve that usage as source lineage only.
 
 ### 3.2 Intelligent Block — CANONICAL
 **The canonical object behind a Smart Note.**
@@ -168,7 +180,7 @@ EVENT       ≠  NODE ≠  UNDERSTANDING ≠  LESSON ≠  LEARNING ≠  VERIFIED
 
 | Historical term | Canonical term | Why retired |
 |-----------------|----------------|-------------|
-| Smart Node | Naya Node | Name collision with "Smart Note"; ratified model uses Naya Node |
+| Smart Node (as an object alias for Naya Node) | Smart Node = human operating command; Naya Node = semantic unit in source/concept model | Object-alias usage is superseded by the canonical Smart Node / Intelligent Block protocol |
 | Intelligence Event | Intelligent Event | Adjective form aligns with Intelligent Block |
 | Smart Door (as link) | Smart Link | "Smart Door" now means a Smart Connect participation channel |
 | Smart Share | Smart Connect | Product rename; Smart Share is retired |
