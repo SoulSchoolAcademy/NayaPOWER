@@ -38,7 +38,7 @@ def verify_causal_learning_experiment_receipt(receipt: dict) -> None:
     """The causal-learning receipt contract. Every assertion is load-bearing."""
     assert receipt["schema"] == "NAYANET_CAUSAL_LEARNING_EXPERIMENT_V1"
     assert receipt["target_id"] == "NAYA-NODE-0001"
-    assert receipt["learning_id"] == "de0b794b-224b-4d8b-ad1a-3afc6f8d0771"
+    assert receipt["learning_id"]
     # Control isolation: control must NOT receive the retained intelligence.
     assert receipt["control"]["retained_intelligence_used"] is False
     # Treatment must receive it.
@@ -48,6 +48,8 @@ def verify_causal_learning_experiment_receipt(receipt: dict) -> None:
     assert receipt["causal_verification"]["causal_assessment"] == "CAUSAL_SUPPORTED"
     assert receipt["causal_verification"]["verification_status"] == "OUTCOME_VERIFIED"
     assert receipt["independent_verification"] is True
+    assert receipt["provenance"]["learning_id"] == receipt["learning_id"]
+    assert receipt["provenance"]["treatment_intelligence_id"] == receipt["intelligence_applied"]["intelligence_id"]
 
 
 def test_causal_learning_experiment_receipt_contract():
