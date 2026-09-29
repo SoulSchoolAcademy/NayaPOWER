@@ -31,3 +31,15 @@ def test_governed_promotion_preserves_existing_runtime_set_in_source_config():
         "nayanet-learning-verify",
     ):
         assert f"[functions.{function_name}]" in source
+
+
+def test_native_production_deployment_is_provenance_stamped_before_supabase_deploys():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";' in source
+    assert "deployment-sha.txt" in source
+    assert "DEPLOYMENT_SHA=" in source
+    assert 'commits/$DEPLOYMENT_SHA/check-runs' in source
+    assert '"deployment_commit_sha":os.environ["DEPLOYMENT_SHA"]' in source
+    assert '"deployed_source_revision":os.environ["GITHUB_SHA"]' in source
+    assert 'json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)' in source
+    assert 'open("deployment-blob-request.json","w")' not in source
