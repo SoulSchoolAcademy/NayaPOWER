@@ -40,13 +40,77 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
 
-      - name: Record pre-promotion Supabase check ids
+      - name: Build provenance-stamped production deployment commit
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          gh api -H "Accept: application/vnd.github+json"             "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/check-runs?per_page=100" > checks-before.json
+          runtime_path="supabase/functions/nayanet-cold-runtime-proof/index.ts"
+          sentinel='const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          p=Path("supabase/functions/nayanet-cold-runtime-proof/index.ts")
+          source=p.read_text(encoding="utf-8")
+          sentinel='const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
+          replacement=f'const DEPLOYED_SOURCE_REVISION = "{os.environ["GITHUB_SHA"]}";'
+          if source.count(sentinel) != 1:
+              raise SystemExit("expected exactly one UNSTAMPED revision sentinel")
+          p.write_text(source.replace(sentinel, replacement), encoding="utf-8")
+          print("stamped deployment payload with source revision", os.environ["GITHUB_SHA"])
+          PY
+
+          source_tree="$(gh api "repos/$GITHUB_REPOSITORY/git/commits/$GITHUB_SHA" --jq .tree.sha)"
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
+            production_parent="$(python -c 'import json; print(json.load(open("production-ref.json"))["object"]["sha"])')"
+          else
+            production_parent="$GITHUB_SHA"
+          fi
+
+          python - <<'PY' > deployment-blob-request.json
+          import base64, json, sys
+          from pathlib import Path
+          payload=Path("supabase/functions/nayanet-cold-runtime-proof/index.ts").read_bytes()
+          json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)
+          PY
+          gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" --input deployment-blob-request.json > deployment-blob.json
+          blob_sha="$(python -c 'import json; print(json.load(open("deployment-blob.json"))["sha"])')"
+
+          python - "$source_tree" "$blob_sha" <<'PY' > deployment-tree-request.json
+          import json, sys
+          json.dump({
+            "base_tree":sys.argv[1],
+            "tree":[{
+              "path":"supabase/functions/nayanet-cold-runtime-proof/index.ts",
+              "mode":"100644",
+              "type":"blob",
+              "sha":sys.argv[2],
+            }],
+          }, sys.stdout)
+          PY
+          gh api --method POST "repos/$GITHUB_REPOSITORY/git/trees" --input deployment-tree-request.json > deployment-tree.json
+          deployment_tree="$(python -c 'import json; print(json.load(open("deployment-tree.json"))["sha"])')"
+
+          python - "$deployment_tree" "$production_parent" <<'PY' > deployment-commit-request.json
+          import json, os, sys
+          json.dump({
+            "message":f"deploy: stamp Naya runtime source {os.environ['GITHUB_SHA']}",
+            "tree":sys.argv[1],
+            "parents":[sys.argv[2]],
+          }, sys.stdout)
+          PY
+          gh api --method POST "repos/$GITHUB_REPOSITORY/git/commits" --input deployment-commit-request.json > deployment-commit.json
+          deployment_sha="$(python -c 'import json; print(json.load(open("deployment-commit.json"))["sha"])')"
+          printf '%s\n' "$deployment_sha" > deployment-sha.txt
+          {
+            echo "DEPLOYMENT_SHA=$deployment_sha"
+            echo "SOURCE_TREE_SHA=$source_tree"
+            echo "DEPLOYMENT_TREE_SHA=$deployment_tree"
+          } >> "$GITHUB_ENV"
+
+          gh api -H "Accept: application/vnd.github+json" \
+            "repos/$GITHUB_REPOSITORY/commits/$deployment_sha/check-runs?per_page=100" > checks-before.json
           python - <<'PY'
           import json
           data=json.load(open("checks-before.json"))
@@ -57,37 +121,29 @@ jobs:
               if "supabase" in label:
                   ids.append(check["id"])
           json.dump(ids, open("supabase-check-ids-before.json","w"))
-          print("existing Supabase checks:", ids)
+          print("existing Supabase checks on deployment commit:", ids)
           PY
 
-      - name: Promote exact canonical SHA to production branch
+      - name: Promote provenance-stamped deployment commit to production branch
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref.json 2>/dev/null; then
-            current="$(python -c 'import json; print(json.load(open("production-ref.json"))["object"]["sha"])')"
-            if [ "$current" != "$GITHUB_SHA" ]; then
-              git fetch origin "$PRODUCTION_BRANCH":"refs/remotes/origin/$PRODUCTION_BRANCH" || true
-              if git cat-file -e "$current^{commit}" 2>/dev/null; then
-                git merge-base --is-ancestor "$current" "$GITHUB_SHA"
-              fi
-              gh api --method PATCH "repos/$GITHUB_REPOSITORY/git/refs/heads/$PRODUCTION_BRANCH"                 -f sha="$GITHUB_SHA" -F force=false > production-ref-after.json
-            else
-              cp production-ref.json production-ref-after.json
-            fi
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" > production-ref-before.json 2>/dev/null; then
+            current="$(python -c 'import json; print(json.load(open("production-ref-before.json"))["object"]["sha"])')"
+            parent="$(python -c 'import json; print(json.load(open("deployment-commit.json"))["parents"][0]["sha"])')"
+            test "$current" = "$parent"
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/git/refs/heads/$PRODUCTION_BRANCH" \
+              -f sha="$DEPLOYMENT_SHA" -F force=false > production-ref-after.json
           else
-            gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs"               -f ref="refs/heads/$PRODUCTION_BRANCH" -f sha="$GITHUB_SHA" > production-ref-after.json
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs" \
+              -f ref="refs/heads/$PRODUCTION_BRANCH" -f sha="$DEPLOYMENT_SHA" > production-ref-after.json
           fi
-          python - <<'PY'
-          import json, os
-          ref=json.load(open("production-ref-after.json"))
-          actual=ref["object"]["sha"]
-          expected=os.environ["GITHUB_SHA"]
-          assert actual == expected, (actual, expected)
-          print("production branch now points to", actual)
-          PY
+          actual="$(python -c 'import json; print(json.load(open("production-ref-after.json"))["object"]["sha"])')"
+          test "$actual" = "$DEPLOYMENT_SHA"
+          echo "production deployment commit: $DEPLOYMENT_SHA"
+          echo "authorized source revision: $GITHUB_SHA"
 
       - name: Wait for a new Supabase GitHub Integration deployment check
         env:
@@ -100,7 +156,7 @@ jobs:
           print("baseline Supabase check ids:", json.load(open("supabase-check-ids-before.json")))
           PY
           for i in $(seq 1 90); do
-            gh api -H "Accept: application/vnd.github+json"               "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/check-runs?per_page=100" > checks-now.json
+            gh api -H "Accept: application/vnd.github+json"               "repos/$GITHUB_REPOSITORY/commits/$DEPLOYMENT_SHA/check-runs?per_page=100" > checks-now.json
             status="$(python - <<'PY'
           import json
           before=set(json.load(open("supabase-check-ids-before.json")))
@@ -221,6 +277,10 @@ jobs:
               "supabase_check_id":supabase_check.get("id"),
               "supabase_check_name":supabase_check.get("name"),
               "supabase_check_conclusion":supabase_check.get("conclusion"),
+              "deployment_commit_sha":os.environ["DEPLOYMENT_SHA"],
+              "deployed_source_revision":os.environ["GITHUB_SHA"],
+              "source_tree_sha":os.environ["SOURCE_TREE_SHA"],
+              "deployment_tree_sha":os.environ["DEPLOYMENT_TREE_SHA"],
             },
             "canonical_proof":{
               "producer_run_id":producer.get("databaseId"),

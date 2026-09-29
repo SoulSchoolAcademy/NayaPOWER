@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";
+const DEPLOYED_SOURCE_REVISION = "3ed85b8ffc6586c7e71656180d5798c91512acea";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
@@ -503,7 +503,7 @@ Deno.serve(async (req: Request) => {
       if (!successorTask) return json({ error: "HELDOUT_TASK_REQUIRED", task_id: successorTaskId }, 400);
 
       // 1. Re-read the persisted learning that the previous Naya produced.
-      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
+      const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.ACTIVE&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
       if (!Array.isArray(learningRows) || learningRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const learning = learningRows[0];
       if (learning.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: learning.status }, 409);
@@ -617,7 +617,7 @@ Deno.serve(async (req: Request) => {
       };
       const verifierTask = verifierTasks[verifierTaskId];
       if (!verifierTask) return json({ error: "HELDOUT_TASK_REQUIRED", task_id: verifierTaskId }, 400);
-      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
+      const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&target_id=eq." + NAYA_ID + "&status=eq.ACTIVE&select=id,target_id,level,status,claim,observed_value,source_event_id");
       if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const l = lRows[0];
       if (l.status !== "ACTIVE") return json({ error: "ACTIVE_LEARNING_REQUIRED", status: l.status }, 409);

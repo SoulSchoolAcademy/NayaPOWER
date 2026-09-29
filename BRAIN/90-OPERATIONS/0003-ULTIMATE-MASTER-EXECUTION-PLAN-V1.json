@@ -1,21 +1,12 @@
 {
   "schema": "naya.operations.ultimate-master-execution-plan.v1",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
-  "authority_note": "This JSON is a machine-readable projection of the human-readable master plan, not a second authority source.",
-  "source_main": "b5fb89a7b5f40db15be364047b3e94697830c936",
+  "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live main/runtime evidence outranks this projection when newer.",
+  "source_main": "faac73abf29c99fc29879f23cd39966439964251",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
-  "truth_laws": [
-    "UNKNOWN != PASS",
-    "BLOCKED != PASS",
-    "IMPLEMENTED != VERIFIED",
-    "VERIFIED != PRODUCTION_PROVEN",
-    "RETRIEVED != AUTHORIZED",
-    "CAPABILITY DOES NOT CREATE AUTHORITY"
-  ],
   "current_state": {
-    "pr_946": "MERGED",
     "issue_913": {
       "state": "CLOSED",
       "proof": "PRODUCTION_PROVEN_BOUNDED_SPECIMEN",
@@ -24,69 +15,81 @@
     },
     "issue_944": {
       "state": "OPEN",
-      "phase_1": "NO_NEW_CANDIDATE_SOURCE_RECONCILED",
-      "evidence": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md"
+      "source_level_generalization": "IMPLEMENTED_REPOSITORY_VERIFIED",
+      "production_generalization": "NOT_PRODUCTION_PROVEN"
     },
-    "smart_node_machine_object": "INTELLIGENT_BLOCK",
-    "universal_runtime_binding": "NOT_PROVEN"
+    "pr_946": "MERGED",
+    "pr_955": "MERGED",
+    "production_branch": "32b7c9954988befecfbe8c850f523e59a441f44d",
+    "governed_promotion_run": 36514309554,
+    "governed_promotion_target": "32b7c9954988befecfbe8c850f523e59a441f44d",
+    "governed_promotion_state": "FAILED_WAITING_FOR_SUPABASE_GITHUB_INTEGRATION_CHECK",
+    "universal_nine_node_runtime_binding": "NOT_PROVEN",
+    "pr_959": "MERGED_TESTS_GREEN",
+    "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
+    "projection_self_staleness_guard": "DO_NOT_TREAT_EMBEDDED_SHA_AS_CURRENT_AFTER_THIS_PROJECTION_IS_COMMITTED",
+    "governed_promotion_result": "FAILURE",
+    "governed_promotion_blocker": "NO_NEW_SUPABASE_GITHUB_INTEGRATION_DEPLOYMENT_CHECK"
   },
   "p0": [
     {
       "id": "P0.1",
-      "status": "IN_PROGRESS",
-      "name": "Executable current truth",
-      "proof": "Cold Naya reconstructs current source/runtime identity and next action without stale pointers."
+      "name": "Close Supabase GitHub Integration boundary",
+      "status": "BLOCKED_EXTERNAL",
+      "proof": "New successful Supabase deployment check for exact promoted SHA."
     },
     {
       "id": "P0.2",
-      "status": "COMPLETE_NO_NEW_CANDIDATE",
-      "name": "Concept #17 reconciliation",
-      "proof": "No duplicate Smart Node created; source proposition mappings preserved."
+      "name": "Promote then-current main",
+      "status": "QUEUED_AFTER_P0.1",
+      "proof": "Exact source/deployed-runtime parity for then-current main."
     },
     {
       "id": "P0.3",
-      "status": "SKIPPED_NOT_APPLICABLE",
-      "name": "New candidate admission",
-      "proof": "Skipped because #944 phase 1 found no unique candidate requiring a new block."
+      "name": "Finish #944 live generalization",
+      "status": "QUEUED_AFTER_P0.2",
+      "proof": "Related held-out improvement + unrelated refusal + independent recomputation + cold successor reuse."
     },
     {
       "id": "P0.4",
-      "status": "NEXT",
-      "name": "Identifier-only retrieval plus applicability generalization",
-      "proof": "Existing ACTIVE intelligence improves a new related held-out task and leaves an unrelated task unaffected."
+      "name": "Close #944",
+      "status": "BLOCKED_ON_PRODUCTION_PROOF",
+      "proof": "Persisted production receipts and independent evidence."
     },
     {
       "id": "P0.5",
+      "name": "Nine-node runtime binding + ablation",
       "status": "QUEUED",
-      "name": "Causal behavioral effect",
-      "proof": "Same task WITHOUT/WITH retained intelligence yields predeclared measurable delta."
+      "proof": "Node-level influence and expected ablation failures."
     },
     {
       "id": "P0.6",
+      "name": "Deterministic current-truth resolution",
       "status": "QUEUED",
-      "name": "Independent verification",
-      "proof": "Verifier reconstructs persisted evidence; forged/no-effect treatment cannot pass."
+      "proof": "Cold Naya reconstructs current truth/conflicts/next action from canonical owners."
     },
     {
       "id": "P0.7",
+      "name": "Applicability hard filters",
       "status": "QUEUED",
-      "name": "Correct refusal",
-      "proof": "Unrelated task does not inherit the lesson."
+      "proof": "Inapplicable/stale/revoked/superseded/unauthorized intelligence is rejected before ranking."
     },
     {
       "id": "P0.8",
+      "name": "Correct refusal as compounding requirement",
       "status": "QUEUED",
-      "name": "Cold successor reuse",
-      "proof": "Successor retrieves and uses intelligence without authority inheritance."
+      "proof": "Positive transfer on related tasks plus non-transfer on unrelated tasks."
     }
   ],
   "p1": [
-    "Nine-node runtime binding and ablation",
-    "Orthogonal state semantics",
-    "Governed retrieval hard filters",
-    "Checkpoint/provenance concurrency hardening",
+    "Authority lifecycle matrix",
+    "Checkpoint/provenance locality and concurrency",
     "Adversarial stored-intelligence handling",
-    "Authority lifecycle proof"
+    "Verifier independence / monoculture challenge",
+    "Reference-kernel execution semantics",
+    "Graph utility experiment",
+    "Model/runtime identity in receipts",
+    "Recovery/replay/disaster reconstruction"
   ],
   "do_not_build": [
     "tenth Master Node",
@@ -94,12 +97,15 @@
     "second canonical brain/database",
     "second graph",
     "second learning pipeline",
+    "second authority system",
     "Hub-owned canonical intelligence",
     "automatic learning-to-LAW",
-    "premature distributed/vector/graph infrastructure without measured need"
+    "uncontrolled self-modification",
+    "premature infrastructure without measured need"
   ],
   "next_action": {
-    "issue": 944,
-    "instruction": "Use the existing ACTIVE #913 learning and existing canonical river to design the smallest second-held-out related task plus unrelated-task refusal experiment. Reuse the current learning-influence/cold-successor proof path; stop at the first hard-coded seam and repair only that seam."
-  }
+    "status": "BLOCKED_EXTERNAL",
+    "instruction": "Complete/enable Supabase GitHub Integration. Then read live GitHub main at dispatch time, promote that exact SHA through the governed workflow, and follow the canonical proof river to the next failing rung."
+  },
+  "source_main_semantics": "PRE_PROJECTION_EVIDENCE_BASE_ONLY"
 }

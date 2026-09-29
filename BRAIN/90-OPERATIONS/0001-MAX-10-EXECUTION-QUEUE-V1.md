@@ -1,61 +1,76 @@
-# NayaPOWER — Maximum-Value Execution Queue V4
+# NayaPOWER — Maximum-Value Execution Queue V5
 
-**Status:** ACTIVE — reconciled to live `main` after PR #952  
+**Status:** ACTIVE — refreshed from a live evidence snapshot anchored at pre-projection revision `faac73abf29c99fc29879f23cd39966439964251`  
 **Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
 
-## Current source truth
+## NOW
 
-- **Current `main`:** `18c5d53eb22ddd1ce817459e4e64c43df382b4a3`
-- **Latest change:** Merge PR #952 — wire live generalization and successor proof.
-- **#944:** OPEN / active frontier.
-- **Concept #17:** reconciled; no duplicate candidate admitted.
-- **Generalization/cold-successor code path:** IMPLEMENTED on current `main`.
-- **Live proof result for current HEAD:** **UNKNOWN** — no GitHub Actions run exists for `18c5d53...` yet.
-- **Runtime binding:** still **NOT_PROVEN** at the nine-node universal level.
+### 1 — BLOCKED EXTERNAL: Supabase GitHub Integration
+Governed production run `36514309554` already:
+- passed Human Director authorization;
+- promoted `production` to `32b7c9954988befecfbe8c850f523e59a441f44d`;
+- completed FAILURE because no new Supabase GitHub Integration deployment check appeared.
 
-## Dispatch order
+**Do not change code. Do not weaken parity. Do not direct-deploy around the workflow.**
 
-1. **P0.1 Current truth/runtime identity — ACTIVE** — establish exact source/runtime/deployment identity from a live run.
-2. **P0.2 #944 Concept #17 reconciliation — DONE** — `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
-3. **P0.3 Candidate admission — SKIPPED** — no unique Concept #17 candidate survived reconciliation.
-4. **P0.4 Generalization/applicability — IMPLEMENTED, LIVE VERIFICATION PENDING** — existing ACTIVE learning is reused by ID for one related held-out task and one unrelated task.
-5. **P0.5 Causal control/treatment — IMPLEMENTED, LIVE VERIFICATION PENDING** — paired behavior/outcome path exists without a second learning pipeline.
-6. **P0.6 Independent verification — IMPLEMENTED, LIVE VERIFICATION PENDING** — verifier rereads authoritative state and recomputes.
-7. **P0.7 Negative transfer — IMPLEMENTED, LIVE VERIFICATION PENDING** — unrelated task must refuse retained intelligence.
-8. **P0.8 Cold successor reuse — IMPLEMENTED, LIVE VERIFICATION PENDING** — related reuse plus non-inherited authority and independent successor verification are wired.
-9. **P1 Nine-node runtime binding/ablation — OPEN** — not to be claimed until independently demonstrated.
-10. **P1 retrieval/state/provenance/authority hardening — OPEN** — only after the current proof chain is live and the first broken rung is known.
+### 2 — AFTER INTEGRATION: promote exact then-current main
+Live `main` is already newer than the target of run `36514309554`. Resolve the exact current SHA from GitHub at execution time; do not trust an embedded snapshot SHA as current authority.
 
-## Evidence boundary
+After Supabase integration works:
+- read the live GitHub `main` SHA immediately before dispatch;
+- explicitly run the governed promotion for that exact SHA;
+- require successful Supabase deployment evidence;
+- require exact runtime/source parity.
 
-The implementation commits do **not** prove production behavior.
+### 3 — finish #944 production proof
+Require:
+- related held-out task improvement;
+- unrelated-task refusal;
+- identifier-only ACTIVE-learning retrieval;
+- independent persisted-evidence recomputation;
+- cold-successor related-task reuse;
+- cold-successor unrelated refusal;
+- no inherited authority.
 
-Required live chain:
+Close #944 only when production evidence passes.
 
-`push to main`
-→ `Live Intelligence Commit Proof`
-→ `workflow_run`
-→ `Live Supabase Runtime Proof`
-→ fresh lesson lineage
-→ generalization
-→ causal verification
-→ independent reread
-→ cold successor related reuse
-→ unrelated refusal
-→ independent successor recomputation
-→ persisted receipts
+## NEXT 7 AFTER #944
 
-If the live chain fails, classify the first failing rung and repair only that seam.
+4. **Nine-node runtime binding + ablation** — prove each claimed organ materially affects the governed runtime.
+5. **Deterministic current-truth resolution** — canonical owners → one proof-carrying current context/next action; no new store.
+6. **Applicability hard filters** — owner/privacy/validity/revocation/supersession/epistemic state/authority/applicability/conflict before relevance.
+7. **Authority lifecycle matrix** — missing/wrong scope/wrong owner/expired/revoked/successor/cached-derived.
+8. **Checkpoint + concurrency hardening** — object/execution/version locality, replay, duplicate and race tests.
+9. **Stored-intelligence adversarial suite** — poisoning, context laundering, forged graph relationships, evidence amplification.
+10. **Graph utility + multi-generation compounding** — graph OFF/ON/adversarial; then A→B→C held-out improvement with refusal controls.
 
-## Permanent laws
+## DONE / DO NOT REDO
 
-- Do not create architecture to avoid a proof failure.
-- UNKNOWN ≠ PASS.
-- IMPLEMENTED ≠ VERIFIED ≠ PRODUCTION-PROVEN.
-- Retrieved intelligence does not create authority.
-- Successor context does not create authority.
-- Every completed unit leaves evidence and exactly one next action.
+- #913 bounded production specimen.
+- PR #946 knowledge-entry/Smart Node terminology repair.
+- Concept #17 reconciliation: `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
+- #944 second-task generalization implementation.
+- #944 unrelated negative-transfer refusal implementation.
+- independent generalization verifier.
+- cold-successor second-task reuse/refusal implementation.
+- verifier negative-matrix hardening through PR #955.
+- cold-successor ACTIVE + canonical-target retrieval hardening through PR #959.
+- governed production promotion workflow initiation against `32b7c995...`.
+
+## PERMANENT GATES
+
+`UNKNOWN ≠ PASS`  
+`BLOCKED ≠ PASS`  
+`IMPLEMENTED ≠ VERIFIED`  
+`VERIFIED ≠ PRODUCTION_PROVEN`  
+`RETRIEVED ≠ AUTHORIZED`  
+`LEARNING ≠ AUTHORITY`  
+`SUCCESSOR CONTEXT ≠ INHERITED AUTHORITY`
+
+## DO NOT BUILD
+
+No MN-10. No second brain/database/graph/learning pipeline/authority layer. No automatic learning→LAW. No premature distributed/vector/graph infrastructure. No UI expansion on the kernel critical path.
 
 ## Exactly one next action
 
-**Trigger and inspect the existing Live Intelligence Commit Proof → Live Supabase Runtime Proof chain on the next canonical `main` revision, then stop at the first failing live proof rung and repair only that seam.**
+**Complete/enable the Supabase GitHub Integration required by the already-running governed promotion. Once the deployment check exists, run the governed production promotion again for the exact then-current `main` and follow the canonical proof chain to the next failing rung.**
