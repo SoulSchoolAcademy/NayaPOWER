@@ -116,7 +116,7 @@ Deno.serve(async(req)=>{
         expected_result:"KNOW selects only owner-scoped current intelligence applicable to caller task context without caller-supplied answer/block identity.",
         observed_result:result.status+":"+(result.selected_block_id??"NONE"),
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
-          authority_refs:authority.authority_refs,caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
+          authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
