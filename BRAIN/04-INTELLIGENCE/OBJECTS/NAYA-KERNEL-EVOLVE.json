@@ -2,7 +2,7 @@
   "schema": "naya.intelligent.object.v1",
   "object_id": "NAYA-KERNEL-EVOLVE",
   "object_type": "NODE",
-  "version": "1.1",
+  "version": "1.2",
   "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-EVOLVE",
   "scope": "NayaPOWER kernel",
@@ -32,14 +32,18 @@
       "learning_context",
       "successor_context"
     ],
-    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved"
+    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved",
+    "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
   },
   "machine_view": {
     "node_name": "EVOLVE",
     "stable_id": "NAYA-KERNEL-EVOLVE",
     "contract": "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md",
     "domain": "03-KERNEL",
-    "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md"
+    "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
+    "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+    "universal_envelope": "naya.master-node-envelope.v1",
+    "neighbor_handoff": "NAYA-KERNEL-SELF"
   },
   "provenance": {
     "derived_from": [
@@ -52,7 +56,8 @@
     "implementation_status": "DOCUMENTED",
     "behavioral_status": "NOT_PROVEN",
     "production_status": "NOT_PROVEN",
-    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
+    "organism_binding": "CONTRACT_ALIGNED_RUNTIME_NOT_PROVEN"
   },
   "relationships": [
     {
