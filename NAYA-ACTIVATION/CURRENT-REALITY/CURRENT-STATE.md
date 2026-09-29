@@ -19,4 +19,3 @@ If this package conflicts with stronger current evidence, stronger current evide
 
 A cold Naya must identify current branch, active work, proof state, blockers and exactly one next action from current sources.
 
-> Verified against main @ 2c89cadbee7b6d71f54d8d6538161a0dd2169487 on 2026-09-29; re-verify before treating as current.
