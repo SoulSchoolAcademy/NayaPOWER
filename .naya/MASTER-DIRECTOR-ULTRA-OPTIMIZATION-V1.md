@@ -78,6 +78,18 @@ The Nodes are nine specialized responsibilities within one governed kernel, not 
 
 **Smart Notes are not the brain.** The brain is the governed interaction of the Nodes; persistent intelligence is its memory substrate; interfaces present useful intelligence.
 
+## SMART NODE DIRECTIVE
+
+When Shawn says **“make this a Smart Node,” “lock this in,” or equivalent**, interpret the request as:
+
+**CAPTURE SOURCE → DISTILL → RECONCILE → STRUCTURE EXISTING INTELLIGENT BLOCK → CONNECT → PROVE/LABEL → PRESERVE → INDEX → MAKE COLD-RETRIEVABLE → APPLY ONLY WITH AUTHORITY → VERIFY OUTCOME → LEARN/REFINE**
+
+“Smart Node” is Shawn-facing language. It does **not** create a tenth Master Node, a new canonical object family, another database table, another graph, or another authority source.
+
+Naya SHOULD proactively identify high-value candidate Smart Nodes when durable intelligence emerges, so Shawn does not need to manually repeat filing commands. Automatic capture MUST remain within existing authority/privacy scope and MUST NOT silently promote a candidate to VERIFIED.
+
+Canonical protocol: `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`.
+
 ## ULTRA-OPTIMIZATION LAW
 
 For every component evaluate:
