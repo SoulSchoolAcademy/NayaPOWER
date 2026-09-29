@@ -489,8 +489,18 @@ Deno.serve(async (req: Request) => {
       // intelligence content is accepted as input, so the successor cannot be handed the
       // answer and must genuinely reconstruct the lineage from authoritative state.
       const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
-      const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
+      const successorUrl = new URL(req.url);
+      const learningId = successorUrl.searchParams.get("learning_id") ?? "";
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
+      const suppliedTaskId = successorUrl.searchParams.get("task_id");
+      const successorTaskId = suppliedTaskId ?? "NAYA-0001-PROVENANCE-HELDOUT-001";
+      const successorTasks: Record<string, { task_class: string; required_capability: string }> = {
+        "NAYA-0001-PROVENANCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "provenance_preservation" },
+        "NAYA-0001-PROVENANCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "provenance_preservation" },
+        "NAYA-0001-UNRELATED-ARITHMETIC-001": { task_class: "UNRELATED_NEGATIVE_TRANSFER", required_capability: "arithmetic_only" },
+      };
+      const successorTask = successorTasks[successorTaskId];
+      if (!successorTask) return json({ error: "HELDOUT_TASK_REQUIRED", task_id: successorTaskId }, 400);
 
       // 1. Re-read the persisted learning that the previous Naya produced.
       const learningRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,target_id,level,status,claim,observed_value,source_event_id,verification_method");
@@ -513,7 +523,11 @@ Deno.serve(async (req: Request) => {
       // 4. MATERIAL USE. Behaviour is derived from the RETRIEVED lesson, not from caller input.
       const lesson = successorBlock.content?.lesson;
       if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
-      const behavior = lesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+      const lessonCapabilities = lesson.includes("Preserve provenance before applying retained intelligence") ? ["provenance_preservation"] : [];
+      const applicableToTask = lessonCapabilities.includes(successorTask.required_capability);
+      const behavior = applicableToTask
+        ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+        : (successorTask.task_class === "UNRELATED_NEGATIVE_TRANSFER" ? "NO_APPLICABLE_RETAINED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE");
       const learningSupportsLesson = typeof learning.claim === "string" && lesson.includes(String(learning.claim).slice(0, 24));
 
       // 5. AUTHORITY IS RE-RESOLVED, NEVER INHERITED.
@@ -535,7 +549,8 @@ Deno.serve(async (req: Request) => {
         workflow_ref: workflowRef,
         token_jti: payload.jti ?? null,
         cold_start: {
-          input_supplied_by_caller: "learning_id_only",
+          input_supplied_by_caller: suppliedTaskId ? "learning_id_and_task_id_only" : "learning_id_only",
+          task_context_supplied: suppliedTaskId !== null,
           intelligence_content_accepted_as_input: false,
           local_state_used: false,
           reconstructed_from_authoritative_state: true,
@@ -557,9 +572,15 @@ Deno.serve(async (req: Request) => {
           lineage: ["learning_evidence", "nayanet_intelligent_blocks", "nayanet_brain_relationships"],
         },
         use: {
+          task_id: successorTaskId,
+          task_class: successorTask.task_class,
+          required_capability: successorTask.required_capability,
+          lesson_capabilities: lessonCapabilities,
+          applicable_to_task: applicableToTask,
           behavior_derived_from_retrieved_lesson: behavior,
           lesson_supports_persisted_learning: learningSupportsLesson,
-          materially_attributable: behavior === "PRESERVE_PROVENANCE_BEFORE_APPLY" && verifiedRels.length > 0,
+          materially_attributable: applicableToTask && behavior === "PRESERVE_PROVENANCE_BEFORE_APPLY" && verifiedRels.length > 0,
+          correct_refusal: !applicableToTask && behavior === "NO_APPLICABLE_RETAINED_INTELLIGENCE",
         },
         authority_boundary: {
           authority_inherited: false,
@@ -585,8 +606,17 @@ Deno.serve(async (req: Request) => {
       // Independent verification. Receives ONLY the learning id and re-reads everything from
       // authoritative state. It does NOT trust the successor's receipt.
       const successorId = "NAYA-NODE-0001-SUCCESSOR-COLD-01";
-      const learningId = new URL(req.url).searchParams.get("learning_id") ?? "";
+      const verifierUrl = new URL(req.url);
+      const learningId = verifierUrl.searchParams.get("learning_id") ?? "";
       if (!learningId) return json({ error: "LEARNING_ID_REQUIRED" }, 400);
+      const verifierTaskId = verifierUrl.searchParams.get("task_id") ?? "NAYA-0001-PROVENANCE-HELDOUT-001";
+      const verifierTasks: Record<string, { task_class: string; required_capability: string }> = {
+        "NAYA-0001-PROVENANCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "provenance_preservation" },
+        "NAYA-0001-PROVENANCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "provenance_preservation" },
+        "NAYA-0001-UNRELATED-ARITHMETIC-001": { task_class: "UNRELATED_NEGATIVE_TRANSFER", required_capability: "arithmetic_only" },
+      };
+      const verifierTask = verifierTasks[verifierTaskId];
+      if (!verifierTask) return json({ error: "HELDOUT_TASK_REQUIRED", task_id: verifierTaskId }, 400);
       const lRows = await get("/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID + "&select=id,level,status,claim,observed_value,source_event_id");
       if (!Array.isArray(lRows) || lRows.length !== 1) return json({ error: "PERSISTED_LEARNING_NOT_UNIQUE" }, 409);
       const l = lRows[0];
@@ -601,7 +631,11 @@ Deno.serve(async (req: Request) => {
       const vRels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(vBlockId) + "&select=relationship_id,epistemic_state,provenance");
       const vVerified = vRels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
       const vLesson = vBlock.content?.lesson;
-      const vBehavior = typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence") ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
+      const vLessonCapabilities = typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence") ? ["provenance_preservation"] : [];
+      const vApplicableToTask = vLessonCapabilities.includes(verifierTask.required_capability);
+      const vBehavior = vApplicableToTask
+        ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+        : (verifierTask.task_class === "UNRELATED_NEGATIVE_TRANSFER" ? "NO_APPLICABLE_RETAINED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE");
       // Recompute the authority verdict independently from the grant table.
       const vSuccGrants = grantRows.filter((g: any) => g.scope?.target === successorId);
       const vSuccAction = vSuccGrants.filter((g: any) => Array.isArray(g.actions) && g.actions.includes("naya_node_apply"));
@@ -613,7 +647,13 @@ Deno.serve(async (req: Request) => {
         block_owner_scoped: block.owner_id === OWNER_ID,
         lesson_present: typeof vLesson === "string" && vLesson.length > 0,
         verified_relationship_count: vVerified.length,
+        task_id: verifierTaskId,
+        task_class: verifierTask.task_class,
+        required_capability: verifierTask.required_capability,
+        lesson_capabilities: vLessonCapabilities,
+        applicable_to_task: vApplicableToTask,
         behavior_recomputed: vBehavior,
+        correct_refusal: !vApplicableToTask && vBehavior === "NO_APPLICABLE_RETAINED_INTELLIGENCE",
         successor_grant_count: vSuccGrants.length,
         authority_recomputed: vConsequentialAuthorized,
         recomputed_blocked_by: vConsequentialAuthorized ? "NONE" : (vAuthorityResolved ? "LAW" : "IDENTITY_SCOPE"),
@@ -623,7 +663,8 @@ Deno.serve(async (req: Request) => {
         recomputed.block_owner_scoped &&
         recomputed.lesson_present &&
         recomputed.verified_relationship_count > 0 &&
-        recomputed.behavior_recomputed === "PRESERVE_PROVENANCE_BEFORE_APPLY" &&
+        recomputed.behavior_recomputed === vBehavior &&
+        (vApplicableToTask ? recomputed.behavior_recomputed === "PRESERVE_PROVENANCE_BEFORE_APPLY" : recomputed.correct_refusal === true) &&
         recomputed.successor_grant_count === 0 &&
         recomputed.authority_recomputed === false &&
         recomputed.recomputed_blocked_by === "IDENTITY_SCOPE";
@@ -636,7 +677,7 @@ Deno.serve(async (req: Request) => {
         learning_id: learningId,
         successor_identity: successorId,
         recomputed,
-        limitation: "single held-out task; demonstrates non-inheritance of identity-scoped authority, not general successor capability",
+        limitation: "bounded task-context recomputation across the original task, one related held-out task, and one unrelated refusal case; does not establish universal successor capability",
         runtime_identity: "github-actions-oidc",
         workflow_ref: workflowRef,
         token_jti: payload.jti ?? null,
