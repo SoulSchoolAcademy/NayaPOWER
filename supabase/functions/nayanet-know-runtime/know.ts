@@ -130,6 +130,8 @@ export function isEligibleBlock(req:KnowRequest,block:IntelligentBlock):boolean{
   if(block.superseded_by_block_id) return false;
   if(!block.provenance || Object.keys(block.provenance).length===0) return false;
   if(!Array.isArray(block.evidence_refs) || block.evidence_refs.length===0) return false;
+  const scopeTarget=String(block.applicable_scope?.target??"");
+  if(scopeTarget && scopeTarget!==req.naya_id) return false;
   return true;
 }
 
