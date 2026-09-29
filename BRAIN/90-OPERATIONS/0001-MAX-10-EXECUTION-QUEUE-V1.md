@@ -42,16 +42,20 @@ Do not prioritize architecture volume, feature count, visual polish, or deployme
 ---
 
 ### 2. SMART NODE NOVELTY GATE — P0
-**Status:** ACTIVE AFTER THIS PLAN MERGES  
+**Status:** IN PROGRESS — FAILURE-FIRST CANDIDATE DESIGN CREATED  
 **Canonical tracker:** Issue #944
 
 **Goal:** Find exactly one materially useful Concept #17 proposition that is not already canonical.
 
 **Rule:** Do not manufacture novelty. If no proposition survives reconciliation, record `NO_NEW_CANDIDATE` and stop.
 
-**Candidate to test first:** `UNKNOWN_EFFECT` — action completion/timeout must not be silently classified as SUCCESS or FAILURE when external effect is unknown.
+**Candidate under review:** `UNKNOWN_EFFECT` — action completion/timeout must not be silently classified as SUCCESS or FAILURE when external effect is unknown.
 
-**Proof:** repository search + canonical contract reconciliation establishes whether the proposition is genuinely absent or already represented.
+**Executed:** `BRAIN/90-OPERATIONS/0004-SMART-NODE-UNKNOWN-EFFECT-CANDIDATE-EXPERIMENT-V1.md` now records the novelty evidence, bounded failure-first experiment, control/treatment metrics, negative-transfer test, authority boundary, independent verification, and stop condition.
+
+**Current finding:** the retry/idempotency principle already exists canonically, while the explicit uncertain-effect state appears absent from the canonical ACT contracts/runtime surfaces inspected. This is a candidate finding, not proof.
+
+**Proof needed next:** independent review must confirm the novelty finding before any candidate capture or runtime change.
 
 ---
 
@@ -200,4 +204,4 @@ Each completed block must leave:
 
 ## ONE NEXT ACTION
 
-Execute **Block 2 / Issue #944**: reconcile Concept #17 against current canonical contracts and determine whether `UNKNOWN_EFFECT` is a genuinely novel reusable proposition. If yes, design the smallest failure-first candidate/cold-retrieval experiment. If no, record `NO_NEW_CANDIDATE` and test the next proposition.
+Execute **Block 2 / Issue #944**: independently review the `UNKNOWN_EFFECT` candidate experiment against current ACT/PROVE/VERIFY/LEARN/runtime contracts. If novelty survives, create the candidate through the existing Smart Node / Intelligent Block path. If not, record `NO_NEW_CANDIDATE: UNKNOWN_EFFECT` and evaluate the next Concept #17 proposition.
