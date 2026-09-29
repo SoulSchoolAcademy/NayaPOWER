@@ -63,8 +63,7 @@ jobs:
               capture=json.loads(pathlib.Path(capture_path).read_text())
               distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
               digest=hashlib.sha256(distilled.encode()).hexdigest()
-              ib="IB-SMART-NOTE-"+capture["capture_id"]
-              exact=next((e for e in registry.get("entries",[]) if e.get("intelligent_block_id")==ib or e.get("content_hash")==digest),None)
+              exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
               expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest}
               pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
               if exact:
@@ -81,7 +80,7 @@ jobs:
                   pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
                   pathlib.Path("reconciliation.json").write_text(json.dumps({
                     "status":"REUSED_EXISTING_CANONICAL_BLOCK",
-                    "matched_by":"intelligent_block_id_or_exact_content_hash",
+                    "matched_by":"exact_content_hash",
                     "intelligent_block_id":exact["intelligent_block_id"],
                     "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
                   },indent=2))
@@ -230,7 +229,7 @@ jobs:
           import json, pathlib
           x=json.load(open("projection-result.json"))
           e=x["entry"]
-          pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status")=="READY" else "no")
+          pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status") in {"ACTIVE", "READY"} else "no")
           PY
             if [[ "$(cat publish-ok.txt)" == "yes" ]]; then
               git config user.name "Naya Smart Note Projector"
