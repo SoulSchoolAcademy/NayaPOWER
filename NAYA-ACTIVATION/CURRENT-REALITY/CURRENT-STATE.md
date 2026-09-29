@@ -11,7 +11,7 @@ Resolve current reality in this order:
 6. Dated state/operations documents only as snapshots that require reconciliation.
 
 The full classification is:
-`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`
+`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`
 
 The previously referenced `.naya/control-plane/` location does not exist on current `main`; do not invent or restore it merely to satisfy activation text.
 
