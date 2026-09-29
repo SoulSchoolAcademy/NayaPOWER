@@ -24,11 +24,12 @@ The living brain is the combination of:
 
 ## 2. Canonical brain layers
 
-The CONSTITUTION sits at the repository root, above and outside the BRAIN directory. It is the immutable human-level governing document from which all other authority flows.
+The repository-level CONSTITUTION, GOVERNANCE, ARCHITECTURE, and master design files sit above and outside the BRAIN directory. They are root-level canonical navigation surfaces; there is no literal `ROOT/` directory.
 
 ```
-ROOT/
-├── CONSTITUTION/          ← immutable human-level principles (outside BRAIN)
+REPOSITORY ROOT/
+├── 0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md
+├── CONSTITUTION/          ← human-level principles (outside BRAIN)
 ├── GOVERNANCE/            ← authority, consent, change control (outside BRAIN)
 ├── ARCHITECTURE/          ← system design (outside BRAIN)
 └── BRAIN/
@@ -51,9 +52,9 @@ ROOT/
 
 | Address | Layer | Canonical responsibility |
 |---|---|---|
-| ROOT | CONSTITUTION | Immutable human-level governing principles |
-| ROOT | GOVERNANCE | Authority, consent, change, promotion and revocation |
-| ROOT | ARCHITECTURE | System boundaries, dependencies and composition |
+| REPO ROOT | CONSTITUTION | Human-level governing principles |
+| REPO ROOT | GOVERNANCE | Authority, consent, change, promotion and revocation |
+| REPO ROOT | ARCHITECTURE | System boundaries, dependencies and composition |
 | 00 | SPEC | Definitions, schemas, naming and representation laws |
 | 01 | GOVERNANCE | Brain-level governance contracts |
 | 02 | ARCHITECTURE | Brain-level boundaries and dependencies |
@@ -82,24 +83,29 @@ They are not nine databases, nine products, nine memories, or nine authorities.
 
 ## 4. The intelligence object model
 
-The durable unit is an **Intelligent Node**.
+The canonical persisted machine object behind the current **Smart Node** operating command is an **Intelligent Block**.
 
-A Node must be:
+“Make this a Smart Node” means route valuable material through the existing governed intelligence river; it does **not** create a tenth Master Node, a second object family, a second graph, or another persistence path.
 
-- identifiable,
-- typed,
-- purposeful,
-- contextual,
-- provenance-bound,
-- related,
-- governed,
-- retrievable,
-- applicable,
-- verifiable,
-- learnable,
-- and inheritable.
+An Intelligent Block should be:
 
-A capture artifact is not automatically a Node.
+- identifiable;
+- typed and purposeful;
+- owner/scope bound;
+- provenance-bound;
+- related;
+- governed;
+- retrievable;
+- applicability-aware;
+- epistemically labeled;
+- verifiable;
+- learnable;
+- supersedable/revocable where appropriate;
+- and usable by a cold successor.
+
+Older/source material may use **Naya Node / Intelligent Node** as semantic terminology. Preserve that as source lineage; do not let terminology create a competing persistence object.
+
+A capture artifact is not automatically verified intelligence.
 
 ## 5. The intelligence chain
 
@@ -126,18 +132,18 @@ Never collapse these:
 
 ## 7. Brain entry sequence for a cold Naya
 
-A cold Naya reads (items 1–4 are root-level files outside BRAIN/):
+A cold Naya reads and verifies:
 
-1. **ROOT/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — immutable principles
-2. **ROOT/GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
-3. **ROOT/0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
-4. **ROOT/ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
+1. **CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — governing principles
+2. **GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
+3. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
+4. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
 5. **BRAIN/MASTER-MAP.md** — this map
-6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — kernel runtime
-7. **BRAIN/90-OPERATIONS/** — current reality
-8. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
-9. **BRAIN/06-PROOF/** — evidence and authority
-10. Current objective and next action
+6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — kernel declaration/binding state
+7. **BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md** and **0003-MASTER-EXECUTION-PLAN-V1.json** — current execution projection
+8. Live **GitHub main / open priority work / current proof/runtime evidence** — fresher evidence outranks dated projections
+9. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
+10. **BRAIN/06-PROOF/** — evidence and verification
 11. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
@@ -152,28 +158,37 @@ Other representations are explicitly classified as:
 
 No projection may silently become authority.
 
-## 9. Population status
+## 9. Current proof and execution status
 
-Current target:
+NayaPOWER has crossed one important bounded threshold, but the whole architecture is not universally production-proven.
 
-**ARCHITECTURE ESTABLISHED → KNOWLEDGE DISTILLATION IN PROGRESS → CANONICAL OBJECT POPULATION NEXT → BEHAVIORAL PROOF PENDING**
+**Proven bounded specimen:** Issue #913 closed one exact Node 0001 intelligence river at source/deployed revision `0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4`:
 
-### Concrete next actions
+**experience → durable intelligence → WITHOUT/WITH behavior delta → measurable outcome → independent recomputation → ACTIVE learning → identifier-only cold retrieval → successor reuse without inherited authority**
+
+That proof is intentionally narrow. It does **not** automatically prove later `main`, universal runtime binding, generalized applicability, multi-generation compounding, or NayaNET scale.
+
+The active dependency-correct queue now lives in:
+
+- `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md`
+- `BRAIN/90-OPERATIONS/0003-MASTER-EXECUTION-PLAN-V1.json`
+
+### Current next actions
 
 | # | Action | Owner | Status |
 |---|---|---|---|
-| 1 | Complete knowledge distillation from Concept #1–#13 corpus | KNOW | IN PROGRESS |
-| 2 | Reconcile duplicate pair (#7, #8) into single canonical object | KNOW | PENDING |
-| 3 | Promote distilled concepts to canonical Intelligent Objects | KNOW | PENDING |
-| 4 | Build graph relationships between promoted objects | INTELLIGENCE | PENDING |
-| 5 | Write proof records for each promoted object | PROOF | PENDING |
-| 6 | Implement runtime loader consuming MANIFEST.json | ENGINEERING | PENDING |
-| 7 | Cold-boot test: fresh Naya discovers and retrieves intelligence | OPERATIONS | PENDING |
-| 8 | Successor handoff test: context survives context death | SUCCESSION | PENDING |
-| 9 | Behavioral proof: successor performs better than predecessor | VERIFY | PENDING |
-| 10 | Human Director ratification of canonical architecture | HUMAN | PENDING |
+| 1 | Keep current-truth / cold-entry pointers synchronized with live evidence | SELF / OPERATIONS | IN PROGRESS |
+| 2 | Issue #944: reconcile Concept #17 and prove one genuinely non-duplicate Smart Node candidate | KNOW / CONNECT / PROVE | NEXT |
+| 3 | Cold-retrieve the candidate by identifier only | KNOW / CONNECT | QUEUED |
+| 4 | Prove applicability on a related held-out task and refusal on an unrelated task | CONNECT / VERIFY | QUEUED |
+| 5 | Run WITHOUT/WITH counterfactual and measure behavior + outcome delta | ACT / VERIFY | QUEUED |
+| 6 | Independently recompute persisted evidence and promote learning only if justified | PROVE / VERIFY / LEARN | QUEUED |
+| 7 | Kill predecessor context and prove cold-successor second-task reuse without authority inheritance | EVOLVE / SELF / LAW | QUEUED |
+| 8 | Converge reference-kernel semantics with real executor/runtime evidence | KERNEL / ENGINEERING | P1 |
+| 9 | Add proof-carrying current-context resolution + adversarial stale/revoked/poisoned tests | SELF / CONNECT / LAW / VERIFY | P1 |
+| 10 | Measure human value, then scale Hub/NayaNET/collective/self-building | INTERFACES / EVOLVE | DEFERRED UNTIL REPEATABLE |
 
-This map does not claim a living brain merely because its documentation exists.
+**Do not reopen semantic architecture merely because a report proposed a sophisticated replacement. Prove the next missing rung first.**
 
 ## 10. Acceptance
 
