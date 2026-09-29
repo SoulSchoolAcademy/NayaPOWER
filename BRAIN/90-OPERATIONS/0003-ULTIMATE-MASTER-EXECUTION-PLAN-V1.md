@@ -1,6 +1,6 @@
 # NayaPOWER — Ultimate Master Execution Plan V1
 
-**Status:** ACTIVE EXECUTION SPECIFICATION — refreshed against live `main` `a8a7ee6999d4cfb032693689b1f14dbbc2c60a43`  
+**Status:** ACTIVE EXECUTION SPECIFICATION — refreshed against live `main` `faac73abf29c99fc29879f23cd39966439964251`  
 **Source synthesis:** `KNOWLEDGE/NAYA POWER DEEP DIVE REPORTS ALL AI's/completed.md` + live repository/runtime evidence  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
@@ -27,12 +27,13 @@ One organism. Nine semantic organs. One intelligence river. No authority inherit
   - independent persisted-evidence recomputation;
   - cold-successor related reuse + unrelated refusal.
 - PR #955 merged: verifier negative matrix hardened.
+- PR #959 merged: cold-successor retrieval now filters the exact learning by owner, canonical target and ACTIVE state; Kernel Tests and Collective Chain gates passed.
 - Current repository tests for that verifier boundary were reported green before merge.
 - Human-authorized governed production promotion run `36514309554` started against exact SHA `32b7c9954988befecfbe8c850f523e59a441f44d`.
 - That run advanced the `production` branch to the exact authorized SHA.
 
 ### Current live reality
-- Current `main`: `a8a7ee6999d4cfb032693689b1f14dbbc2c60a43`.
+- Current `main`: `faac73abf29c99fc29879f23cd39966439964251`.
 - Current `production`: `32b7c9954988befecfbe8c850f523e59a441f44d`.
 - Therefore current `main` has advanced beyond the SHA targeted by the active production promotion.
 - Governed production run `36514309554` is waiting for a **new Supabase GitHub Integration deployment check**.
@@ -217,6 +218,7 @@ without Shawn rebuilding project context and without the system creating or inhe
 - independent verifier hardened;
 - cold-successor second-task reuse path implemented;
 - governed production promotion initiated;
+- current-main cold-successor ACTIVE/target retrieval regression repaired and merged as PR #959;
 - exact production branch promotion to the authorized SHA completed.
 
 ### Remaining / not yet executable from GitHub alone
