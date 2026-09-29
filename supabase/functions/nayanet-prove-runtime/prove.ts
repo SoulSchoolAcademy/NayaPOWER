@@ -15,6 +15,7 @@ export type ProveBlock = {
   status?: string | null;
   understanding_state?: string | null;
   applicable_scope?: any;
+  content?: any;
   provenance?: any;
   evidence_refs?: any[];
   superseded_by_block_id?: string | null;
@@ -76,6 +77,25 @@ const parsedTime=(value:unknown):number|null=>{
 };
 
 const nonEmptyObject=(value:any)=>Boolean(value && typeof value==="object" && !Array.isArray(value) && Object.keys(value).length>0);
+
+const structuredCapabilities=(block:ProveBlock):string[]=>{
+  const scope=block.applicable_scope;
+  const direct=Array.isArray(scope?.capabilities)?scope.capabilities.map(String):[];
+  const contentCaps=Array.isArray(block.content?.capabilities)?block.content.capabilities.map(String):[];
+  return Array.from(new Set([...direct,...contentCaps]));
+};
+
+const boundedLegacyCapabilities=(block:ProveBlock):string[]=>{
+  const lesson=String(block.content?.lesson??"");
+  const caps:string[]=[];
+  if(/preserve provenance|provenance before applying retained intelligence/i.test(lesson)) caps.push("provenance_preservation");
+  return caps;
+};
+
+const deriveCapabilities=(block:ProveBlock):string[]=>{
+  const structured=structuredCapabilities(block);
+  return structured.length?structured:boundedLegacyCapabilities(block);
+};
 
 const stableJson=(value:any):string=>{
   if(Array.isArray(value)) return "["+value.map(stableJson).join(",")+"]";
@@ -163,6 +183,8 @@ export function assessKnowProof(
   }
   const scopeTarget=String(block.applicable_scope?.target??"");
   if(scopeTarget && scopeTarget!==nayaId) return blocked(receipt,"CANONICAL_BLOCK_SCOPE_MISMATCH",selectedBlockId);
+  const requiredCapability=String(request.required_capability??"").trim();
+  if(!requiredCapability || !deriveCapabilities(block).includes(requiredCapability)) return blocked(receipt,"CANONICAL_BLOCK_CAPABILITY_MISMATCH",selectedBlockId);
   if(!nonEmptyObject(block.provenance)) return blocked(receipt,"PROVENANCE_REQUIRED",selectedBlockId);
   if(!Array.isArray(block.evidence_refs) || block.evidence_refs.length===0) return blocked(receipt,"EVIDENCE_REQUIRED",selectedBlockId);
 
@@ -189,7 +211,7 @@ export function assessKnowProof(
   const claim="Canonical Intelligent Block "+selectedBlockId+" is evidence-backed and applicable to task "+taskId+" for capability "+capability+".";
 
   const evidence=(block.evidence_refs??[]).map((ref:any,index:number)=>({
-    evidence_id:String(ref?.id??ref?.evidence_id??("evidence-"+String(index+1))),
+    evidence_id:String(ref?.id??ref?.evidence_id??ref?.receipt??(typeof ref==="string"?ref:("evidence-"+String(index+1)))),
     source:String(ref?.source??ref?.type??"canonical_intelligent_block"),
     strength:"STRONG" as const
   }));
