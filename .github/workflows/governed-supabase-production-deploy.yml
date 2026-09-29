@@ -406,7 +406,7 @@ jobs:
                 exit 1
               fi
               for j in $(seq 1 180); do
-                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq ".status+":"+(.conclusion//"")")"
+                state="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status,conclusion --jq '.status + ":" + (.conclusion // "")')"
                 case "$state" in
                   completed:success) break ;;
                   completed:*) echo "Runtime proof run failed: $state"; exit 1 ;;
