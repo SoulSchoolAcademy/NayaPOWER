@@ -1,6 +1,6 @@
 # NayaPOWER — Maximum-Value Execution Queue V5
 
-**Status:** ACTIVE — refreshed from live evidence at `main=a8a7ee6999d4cfb032693689b1f14dbbc2c60a43`  
+**Status:** ACTIVE — refreshed from live evidence at `main=faac73abf29c99fc29879f23cd39966439964251`  
 **Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
 
 ## NOW
@@ -54,6 +54,7 @@ Close #944 only when production evidence passes.
 - independent generalization verifier.
 - cold-successor second-task reuse/refusal implementation.
 - verifier negative-matrix hardening through PR #955.
+- cold-successor ACTIVE + canonical-target retrieval hardening through PR #959.
 - governed production promotion workflow initiation against `32b7c995...`.
 
 ## PERMANENT GATES
