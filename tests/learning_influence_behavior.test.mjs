@@ -101,6 +101,8 @@ test('learning influence computes behavior and measurable outcome from one bound
   assert.notDeepEqual(body.control.evidence.behavior, body.treatment.evidence.behavior);
   assert.equal(body.behavioral_delta.changed, true);
   assert.equal(body.outcome_delta.provenance_preserved, 1);
+  assert.equal(body.treatment.evidence.outcome.source_event_bound, "event-1");
+  assert.equal(body.treatment.evidence.outcome.intelligent_block_bound, FRESH_BLOCK_ID);
   assert.equal(body.counterfactual.computed_not_declared, true);
   assert.equal(body.treatment.evidence.intelligence_id, FRESH_BLOCK_ID);
   assert.equal(body.intelligence_applied.intelligent_block_id, FRESH_BLOCK_ID);
