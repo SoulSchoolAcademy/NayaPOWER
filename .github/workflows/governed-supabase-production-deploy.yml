@@ -14,6 +14,10 @@ permissions:
   actions: write
   checks: read
 
+concurrency:
+  group: governed-production-promotion
+  cancel-in-progress: false
+
 env:
   PRODUCTION_BRANCH: production
   PRODUCER_WORKFLOW: live-intelligence-commit-proof.yml
@@ -196,6 +200,17 @@ jobs:
             sleep 10
           done
 
+      - name: Revalidate authorized source and deployment ownership before producer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
+          production_now="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$PRODUCTION_BRANCH" --jq .object.sha)"
+          test "$production_now" = "$DEPLOYMENT_SHA"
+
       - name: Dispatch canonical fresh-intelligence producer after deployment
         env:
           GH_TOKEN: ${{ github.token }}
@@ -206,15 +221,27 @@ jobs:
           gh workflow run "$PRODUCER_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
           for i in $(seq 1 60); do
             runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PRODUCER_WORKFLOW" --branch main --event workflow_dispatch --limit 20 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
-            python - <<'PY' "$runs" > producer-run-id.txt
-          import json,sys,os
+            python - <<'PY' "$runs"
+          import json,sys
           runs=json.loads(sys.argv[1])
           start=open("producer-dispatch-start.txt").read().strip()
-          matches=[r for r in runs if r.get("headSha")==os.environ["GITHUB_SHA"] and r.get("createdAt","")>=start]
-          print(max(matches,key=lambda r:r["createdAt"])["databaseId"] if matches else "")
+          matches=[r for r in runs if r.get("createdAt","")>=start]
+          json.dump(max(matches,key=lambda r:r["createdAt"]) if matches else {}, open("producer-run.json","w"), indent=2)
           PY
-            run_id="$(cat producer-run-id.txt)"
+            run_id="$(python -c 'import json; print(json.load(open("producer-run.json")).get("databaseId",""))')"
             if [ -n "$run_id" ]; then
+              producer_head="$(python -c 'import json; print(json.load(open("producer-run.json")).get("headSha",""))')"
+              if [ "$producer_head" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "Producer resolved to $producer_head instead of authorized source $GITHUB_SHA."
+                exit 1
+              fi
+              git fetch origin main
+              if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "main moved after producer dispatch; refusing to continue."
+                exit 1
+              fi
               gh run watch "$run_id" --repo "$GITHUB_REPOSITORY" --exit-status
               gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,headSha,status,conclusion,event,createdAt,updatedAt,url > producer-run.json
               break
