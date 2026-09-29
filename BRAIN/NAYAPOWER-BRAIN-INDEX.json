@@ -222,7 +222,9 @@
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 978,
     "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
-    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection."
+    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
+    "active_node_frontier": "LAW_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "next_node_after_law": "ACT"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
@@ -233,5 +235,12 @@
     "human_identity": "SN-###",
     "machine_identity": "IB-...",
     "timestamp_role": "provenance metadata"
+  },
+  "nine_node_organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+  "nine_node_organism_map": "BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.json",
+  "smart_doors": {
+    "contract": "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json",
+    "registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+    "law": "capability does not create authority; LAW decides, ACT invokes, VERIFY checks result"
   }
 }
