@@ -50,6 +50,31 @@ def test_registered_smart_link_is_active_and_exact():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["smart_link_status"] == "ACTIVE"
-    assert entry["projection_status"] == "LIVE_PRIVATE_VIEWER"
-    assert entry["smart_link"].endswith("nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
-    assert entry["canonical_brain_path"].endswith("/IB-SMART-NOTE-20260929-b8f141805fa0d7ae/smart-note.md")
+    assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
+    assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
+    assert entry["canonical_brain_path"].endswith("/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
+
+def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
+    entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
+    assert entry_path.exists()
+    text = entry_path.read_text()
+    for section in [
+        "IN A NUTSHELL", "HUMAN NOTE", "CHILD NOTE", "GRANDMA NOTE", "NAYA NOTE",
+        "MACHINE NOTE", "LEARNING LESSON", "WHAT IT MEANS", "WHAT'S IN IT FOR YOU",
+        "HOW TO APPLY / HOW TO USE", "HOW IT CONNECTS", "PROOF / PROVENANCE", "TRUTH BOUNDARY"
+    ]:
+        assert section in text
+    assert "IB-SMART-NOTE-20260929-b8f141805fa0d7ae" in text
+
+def test_projection_generator_targets_brain_and_preserves_private_default():
+    assert "BRAIN_SMART_NOTE_ROOT" in mod.__dict__
+    assert str(mod.BRAIN_SMART_NOTE_ROOT).endswith("BRAIN/05-MEMORY/SMART-NOTES")
+    private_capture = {
+        "source": {"captured_at": "2026-09-29"},
+        "category": "SYSTEM_INTELLIGENCE",
+        "topic": "SMART_NOTE_SYSTEM",
+        "subtopic": "OFFICIAL_FORMAT",
+        "projection": {}
+    }
+    p = mod.projection_path(private_capture, "IB-TEST")
+    assert "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29" in str(p).replace("\\", "/")
