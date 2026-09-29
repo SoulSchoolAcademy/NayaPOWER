@@ -49,7 +49,13 @@ export type LawDecision = {
 
 const targetMatches = (g: AuthorityGrant, req: LawRequest) => {
   const scope = g.scope ?? {};
-  return scope.target === req.target || scope.project_id === req.target || scope.project_id === req.project_id;
+  // Missing scope fields must never match other missing fields. Preserve exact
+  // target and explicit project grants without treating absence as permission.
+  const matches = (value: unknown, requested: unknown) =>
+    typeof value === "string" && value.trim().length > 0 &&
+    typeof requested === "string" && requested.trim().length > 0 &&
+    value === requested;
+  return matches(scope.target, req.target) || matches(scope.project_id, req.target) || matches(scope.project_id, req.project_id);
 };
 
 const isExpired = (g: AuthorityGrant, now: Date) =>

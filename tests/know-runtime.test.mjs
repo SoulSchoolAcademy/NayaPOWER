@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { selectKnowContext, isEligibleBlock, deriveCapabilities } from "../supabase/functions/nayanet-know-runtime/know.ts";
+import { selectKnowContext, isEligibleBlock, deriveCapabilities, validateKnowAuthority } from "../supabase/functions/nayanet-know-runtime/know.ts";
 
 const OWNER="owner-1";
 const req=(overrides={})=>({
@@ -80,4 +80,64 @@ test("KNOW deterministically chooses the newest eligible applicable block",()=>{
   const older=good({intelligent_block_id:"IB-OLD",updated_at:"2026-09-28T00:00:00Z"});
   const newer=good({intelligent_block_id:"IB-NEW",updated_at:"2026-09-29T00:00:00Z"});
   assert.equal(selectKnowContext(req(),[older,newer]).selected_block_id,"IB-NEW");
+});
+
+
+const NOW=new Date("2026-09-29T20:00:00Z");
+const law=(overrides={})=>({
+  id:"law-1",user_id:OWNER,action:"law_authority_decision",status:"SUCCESS",
+  evidence:{
+    node_id:"NAYA-KERNEL-LAW",
+    law_request:{action:"naya_node_apply",target:"NAYA-NODE-0001"},
+    law_decision:{
+      status:"AUTHORIZED",owner_id:OWNER,naya_id:"NAYA-NODE-0001",action:"naya_node_apply",target:"NAYA-NODE-0001",
+      authority_refs:["grant-1"],evaluated_at:"2026-09-29T19:59:00Z",expires_at:null
+    }
+  },
+  ...overrides
+});
+const grant=(overrides={})=>({
+  grant_id:"grant-1",issuer_id:OWNER,subject_id:OWNER,scope:{target:"NAYA-NODE-0001"},
+  actions:["naya_node_apply"],status:"ACTIVE",revoked_at:null,expires_at:null,...overrides
+});
+
+test("KNOW requires live authority, not only an old LAW receipt",()=>{
+  assert.equal(validateKnowAuthority(req(),null,grant(),NOW).reason,"LAW_RECEIPT_REQUIRED");
+  assert.equal(validateKnowAuthority(req(),law(),grant({status:"REVOKED",revoked_at:"2026-09-29T19:59:30Z"}),NOW).reason,"LIVE_AUTHORITY_NOT_ACTIVE");
+  assert.equal(validateKnowAuthority(req(),law(),grant(),NOW).ok,true);
+});
+
+test("KNOW rejects malformed or stale LAW time",()=>{
+  const malformed=law(); malformed.evidence.law_decision.evaluated_at="not-a-date";
+  assert.equal(validateKnowAuthority(req(),malformed,grant(),NOW).reason,"LAW_EVALUATED_AT_INVALID");
+  const stale=law(); stale.evidence.law_decision.evaluated_at="2026-09-29T19:00:00Z";
+  assert.equal(validateKnowAuthority(req(),stale,grant(),NOW).reason,"LAW_RECEIPT_STALE");
+});
+
+test("KNOW rejects wrong live grant target",()=>{
+  assert.equal(validateKnowAuthority(req(),law(),grant({scope:{target:"OTHER"}}),NOW).reason,"LIVE_AUTHORITY_TARGET_MISMATCH");
+});
+
+test("KNOW excludes capability-matching intelligence scoped to another target",()=>{
+  const wrongTarget=good({applicable_scope:{target:"OTHER",capabilities:["provenance_preservation"]}});
+  assert.equal(isEligibleBlock(req(),wrongTarget),false);
+  assert.equal(selectKnowContext(req(),[wrongTarget]).status,"MISS");
+});
+
+
+test("KNOW refuses missing or future LAW evaluated_at",()=>{
+  const missing=law();
+  delete missing.evidence.law_decision.evaluated_at;
+  assert.equal(validateKnowAuthority(req(),missing,grant(),NOW).reason,"LAW_EVALUATED_AT_INVALID");
+  const future=law();
+  future.evidence.law_decision.evaluated_at="2026-09-29T20:01:00Z";
+  assert.equal(validateKnowAuthority(req(),future,grant(),NOW).reason,"LAW_EVALUATED_AT_INVALID");
+});
+
+test("KNOW accepts only the bounded naya_node_apply parent action",()=>{
+  const wrong=law();
+  wrong.evidence.law_request.action="intelligence_commit";
+  wrong.evidence.law_decision.action="intelligence_commit";
+  const broadGrant=grant({actions:["naya_node_apply","intelligence_commit"]});
+  assert.equal(validateKnowAuthority(req(),wrong,broadGrant,NOW).reason,"LAW_ACTION_MISMATCH");
 });
