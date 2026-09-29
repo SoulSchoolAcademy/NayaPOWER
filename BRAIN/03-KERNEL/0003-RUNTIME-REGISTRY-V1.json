@@ -93,8 +93,20 @@
       "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382"
+    },
+    "KNOW": {
+      "status": "IMPLEMENTED_SOURCE_PENDING_LIVE_PROOF",
+      "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts",
+      "reads": "nayanet_intelligent_blocks",
+      "writes": "nayanet_execution_receipts.action=know_node_retrieval|know_node_miss|know_node_refusal",
+      "request_contract": "task_context + target only; caller-supplied block/answer/intelligence forbidden",
+      "selection": "owner/scope + lifecycle eligibility + provenance + deterministic contextual applicability",
+      "authority_law": "retrieval_grants_authority=false",
+      "handoff_to": "NAYA-KERNEL-PROVE",
+      "proof": "PENDING_LIVE_PROOF"
     }
   },
   "next_node_after_law": "ACT",
-  "next_node_after_act": "KNOW"
+  "next_node_after_act": "KNOW",
+  "next_node_after_know": "PROVE"
 }
