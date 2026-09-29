@@ -1,61 +1,46 @@
-# NayaPOWER — Maximum-Value Execution Queue V5
+# NayaPOWER — Maximum-Value Execution Queue V6
 
-**Status:** ACTIVE — refreshed from a live evidence snapshot anchored at pre-projection revision `faac73abf29c99fc29879f23cd39966439964251`  
+**Status:** ACTIVE PROJECTION — live GitHub/runtime evidence outranks this file  
+**Evidence snapshot base:** `38a2bd9ade375144e3ed6b1a67c4a0842d3244a1` immediately before this projection update  
 **Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
 
-## NOW
+## CURRENT TRUTH
 
-### 1 — BLOCKED EXTERNAL: Supabase GitHub Integration
-Governed production run `36514309554` already:
-- passed Human Director authorization;
-- promoted `production` to `32b7c9954988befecfbe8c850f523e59a441f44d`;
-- completed FAILURE because no new Supabase GitHub Integration deployment check appeared.
+- Issue #944: **CLOSED** on one bounded live causal/generalization/successor specimen.
+- Canonical bounded receipt: Live Supabase Runtime Proof **36516790588**, source `c9b31890c93f4f5f7d60bb8cd346093c11ab427f`, all 18 jobs PASS.
+- That proof includes cold runtime, graph OFF/ON behavioral delta, independent verification, verified learning promotion, identifier-only reuse, related held-out transfer, unrelated-task refusal, cold-successor reuse, and independent successor verification.
+- Later `main` revisions do **not** inherit that production proof automatically.
+- PR #963: **MERGED** — active migration history reconciled to the 143-entry production ledger; previous repository migrations preserved outside the active path; migration gates green before merge.
+- PR #964: **MERGED** — reference `Kernel.decide()` no longer fabricates execution/outcome or a full nine-node trace.
+- Native Supabase GitHub Integration is real and firing. It is no longer an integration-setup unknown.
+- Governed promotion run `36517356677` is an already-authorized promotion for source `c5fc0387628a4e694e9be9369b685ef0889644a6`; it is not authority for later `main`.
+- Universal nine-node runtime binding remains **NOT_PROVEN**.
+- Issue #810 is the highest-value unblocked kernel frontier.
 
-**Do not change code. Do not weaken parity. Do not direct-deploy around the workflow.**
+## TOP 10 — DEPENDENCY ORDER
 
-### 2 — AFTER INTEGRATION: promote exact then-current main
-Live `main` is already newer than the target of run `36514309554`. Resolve the exact current SHA from GitHub at execution time; do not trust an embedded snapshot SHA as current authority.
-
-After Supabase integration works:
-- read the live GitHub `main` SHA immediately before dispatch;
-- explicitly run the governed promotion for that exact SHA;
-- require successful Supabase deployment evidence;
-- require exact runtime/source parity.
-
-### 3 — finish #944 production proof
-Require:
-- related held-out task improvement;
-- unrelated-task refusal;
-- identifier-only ACTIVE-learning retrieval;
-- independent persisted-evidence recomputation;
-- cold-successor related-task reuse;
-- cold-successor unrelated refusal;
-- no inherited authority.
-
-Close #944 only when production evidence passes.
-
-## NEXT 7 AFTER #944
-
-4. **Nine-node runtime binding + ablation** — prove each claimed organ materially affects the governed runtime.
-5. **Deterministic current-truth resolution** — canonical owners → one proof-carrying current context/next action; no new store.
-6. **Applicability hard filters** — owner/privacy/validity/revocation/supersession/epistemic state/authority/applicability/conflict before relevance.
-7. **Authority lifecycle matrix** — missing/wrong scope/wrong owner/expired/revoked/successor/cached-derived.
-8. **Checkpoint + concurrency hardening** — object/execution/version locality, replay, duplicate and race tests.
-9. **Stored-intelligence adversarial suite** — poisoning, context laundering, forged graph relationships, evidence amplification.
-10. **Graph utility + multi-generation compounding** — graph OFF/ON/adversarial; then A→B→C held-out improvement with refusal controls.
+1. **#810 bounded nine-node behavioral acceptance** — map existing live proof evidence to all nine semantic responsibilities and prove the verifier fails when any load-bearing node evidence is removed or falsified. Do not call this universal binding.
+2. **Fresh exact-main governed production proof** — only after explicit Human Director `DEPLOY` for the exact then-current `main`; require native Supabase deployment + source/runtime parity.
+3. **Universal runtime entrypoint/binding investigation** — identify the actual application runtime before changing manifest/registry from `NOT_PROVEN`.
+4. **Deterministic current-truth resolution** — resolve repository/runtime/authority/intelligence/conflicts/proof/next action from existing canonical owners; no new store.
+5. **Applicability hard filters** — owner/privacy/validity/revocation/supersession/epistemic state/authority/applicability/conflict before relevance ranking.
+6. **Authority lifecycle matrix** — missing, wrong owner/scope/action, expired, revoked, successor, cached-derived.
+7. **Checkpoint/provenance/concurrency hardening** — object/execution/version locality, duplicate/replay/race/supersession tests.
+8. **Stored-intelligence adversarial suite** — poisoning, context laundering, forged relationships, weak-evidence accumulation, verifier monoculture.
+9. **Multi-generation compounding** — A→B→C held-out improvement plus unrelated refusal and attributable lineage.
+10. **Human-value + NayaNET scale proof** — measure cognitive-load/value outcomes, then prove two-owner consent/revocation before broader collective scale.
 
 ## DONE / DO NOT REDO
 
-- #913 bounded production specimen.
-- PR #946 knowledge-entry/Smart Node terminology repair.
-- Concept #17 reconciliation: `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
-- #944 second-task generalization implementation.
-- #944 unrelated negative-transfer refusal implementation.
-- independent generalization verifier.
-- cold-successor second-task reuse/refusal implementation.
-- verifier negative-matrix hardening through PR #955.
-- cold-successor ACTIVE + canonical-target retrieval hardening through PR #959.
-- governed production promotion workflow initiation against `32b7c995...`.
+- #913 bounded causal specimen.
+- #944 bounded generalization + unrelated refusal + cold successor chain.
+- Concept #17 duplicate-candidate reconciliation.
+- Smart Node → existing Intelligent Block operating law.
+- cold-successor ACTIVE/target retrieval hardening.
+- graph receipt concurrency repair.
+- production-ledger migration-history reconciliation.
+- reference-kernel false execution claim repair.
+- Supabase GitHub Integration setup as a concept: it is now observed executing.
 
 ## PERMANENT GATES
 
@@ -69,8 +54,8 @@ Close #944 only when production evidence passes.
 
 ## DO NOT BUILD
 
-No MN-10. No second brain/database/graph/learning pipeline/authority layer. No automatic learning→LAW. No premature distributed/vector/graph infrastructure. No UI expansion on the kernel critical path.
+No MN-10. No second brain/database/graph/learning pipeline/authority layer. No automatic learning→LAW. No nine-node microservice split. No new infrastructure merely to make a proof pass. No current-state prose that competes with live evidence.
 
 ## Exactly one next action
 
-**Complete/enable the Supabase GitHub Integration required by the already-running governed promotion. Once the deployment check exists, run the governed production promotion again for the exact then-current `main` and follow the canonical proof chain to the next failing rung.**
+**Execute Issue #810 as a bounded evidence-mapping + ablation-verifier experiment using the existing canonical manifest and existing live proof artifacts. Prove verifier discrimination without claiming universal runtime binding.**
