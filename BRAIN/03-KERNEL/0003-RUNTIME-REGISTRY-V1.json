@@ -105,6 +105,24 @@
       "authority_rule": "retrieval does not create authority",
       "handoff_to": "NAYA-KERNEL-PROVE",
       "live_proof": "PENDING"
+    },
+    "PROVE": {
+      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
+      "entrypoint": "supabase/functions/nayanet-prove-runtime/index.ts",
+      "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
+      "consumes": "fresh persisted nayanet_execution_receipts.action=know_context_retrieval handoff",
+      "reads": "current live authority + owner-scoped selected Intelligent Block + provenance/evidence + contradiction/invalidation relationships",
+      "writes": "nayanet_execution_receipts.action=prove_claim_assessment",
+      "caller_may_supply_claim_or_evidence": false,
+      "authority_rule": "proof does not create authority",
+      "epistemic_rule": "claim strength never exceeds evidence strength; conflicts block promotion",
+      "handoff_to": "NAYA-KERNEL-CONNECT",
+      "live_proof": "PENDING",
+      "repository_tests": {
+        "kernel_tests_run": 36627017872,
+        "collective_chain_readiness_run": 36627018411,
+        "status": "PASS"
+      }
     }
   },
   "next_node_after_law": "ACT",

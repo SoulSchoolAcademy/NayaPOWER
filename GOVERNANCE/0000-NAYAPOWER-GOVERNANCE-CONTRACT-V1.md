@@ -64,6 +64,20 @@ A failed gate blocks progression.
 ### AUTOMATIC
 Only routine actions explicitly covered by a standing policy.
 
+## 6A. RATIFIED STANDING PRODUCTION AUTHORIZATION
+
+The Human Director ratified **STANDING-PRODUCTION-AUTHORIZATION-AMENDMENT-V1** on 2026-09-29.
+
+The first ratified standing policy is **STANDING-PRODUCTION-PROMOTION-V1**.
+
+Its sole automatic production boundary is:
+
+**SoulSchoolAcademy/NayaPOWER: main → production**
+
+The policy is fail-closed, non-transferable, non-self-expanding, and independently verified. It does not authorize constitutional changes, authority-model changes, ownership changes, privacy-boundary changes, destructive operations, unrelated deployments, policy self-modification, scope expansion, or automatic renewal.
+
+Ratification establishes authority for the bounded policy; it does not manufacture deployment success, runtime parity, verification, or production proof.
+
 ## 7. REVOCATION
 
 Revocation invalidates future use of the affected authority.
