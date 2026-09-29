@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { selectKnowContext, type KnowRequest } from "./know.ts";
+import { selectKnowContext, validateKnowAuthority, type KnowRequest, type KnowGrant } from "./know.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -51,6 +51,13 @@ function validateRetrievalAuthority(receipt:any,now=new Date()){
   return {ok:true,reason:"AUTHORIZED_PARENT_ACTION_CONTEXT",law_receipt_id:receipt.id,authority_refs:Array.isArray(dec.authority_refs)?dec.authority_refs:[]};
 }
 
+async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
+  if(!id) return null;
+  const {data,error}=await admin.from("nayanet_authority_grants").select("*").eq("grant_id",id).maybeSingle();
+  if(error) throw error;
+  return data as KnowGrant|null;
+}
+
 async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
     .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at")
@@ -79,7 +86,7 @@ async function insertReceipt(admin:ReturnType<typeof adminClient>,row:Record<str
 }
 
 function requestFrom(body:Record<string,unknown>):KnowRequest{
-  if("block_id" in body || "intelligent_block_id" in body || "answer" in body || "intelligence_content" in body) throw new Error("CALLER_SELECTED_INTELLIGENCE_FORBIDDEN");
+  if("block_id" in body || "intelligent_block_id" in body || "answer" in body || "lesson" in body || "intelligence" in body || "intelligence_content" in body) throw new Error("CALLER_SELECTED_INTELLIGENCE_FORBIDDEN");
   const task_id=String(body.task_id??"").trim();
   const task_class=String(body.task_class??"").trim();
   const required_capability=String(body.required_capability??"").trim();
@@ -98,7 +105,9 @@ Deno.serve(async(req)=>{
     if(mode==="retrieve"){
       const request=requestFrom(body);
       const lawReceipt=await readLawReceipt(admin,String(body.law_receipt_id??""));
-      const authority=validateRetrievalAuthority(lawReceipt);
+      const refs=Array.isArray((lawReceipt as any)?.evidence?.law_decision?.authority_refs)?(lawReceipt as any).evidence.law_decision.authority_refs:[];
+      const liveGrant=refs.length===1?await readGrant(admin,String(refs[0])):null;
+      const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason,retrieval_creates_authority:false},403);
       const universe=await readEligibleUniverse(admin);
       const result=selectKnowContext(request,universe);
@@ -107,7 +116,7 @@ Deno.serve(async(req)=>{
         expected_result:"KNOW selects only owner-scoped current intelligence applicable to caller task context without caller-supplied answer/block identity.",
         observed_result:result.status+":"+(result.selected_block_id??"NONE"),
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
-          authority_refs:authority.authority_refs,caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
+          authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
@@ -120,7 +129,9 @@ Deno.serve(async(req)=>{
       const receipt=await readReceipt(admin,receiptId);
       if(!receipt || receipt.action!=="know_context_retrieval") return json({ok:false,error:"KNOW_RECEIPT_NOT_FOUND"},404);
       const lawReceipt=await readLawReceipt(admin,String(receipt.evidence?.law_receipt_id??""));
-      const authority=validateRetrievalAuthority(lawReceipt);
+      const refs=Array.isArray((lawReceipt as any)?.evidence?.law_decision?.authority_refs)?(lawReceipt as any).evidence.law_decision.authority_refs:[];
+      const liveGrant=refs.length===1?await readGrant(admin,String(refs[0])):null;
+      const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
       const recomputed=selectKnowContext(request,universe);
@@ -134,7 +145,7 @@ Deno.serve(async(req)=>{
         recorded.retrieval_creates_authority===false;
       return json({ok:same,status:same?"KNOW_SELECTION_VERIFIED":"KNOW_SELECTION_MISMATCH",independent_verification:same,
         executor_claim_trusted_as_verification:false,node_id:"NAYA-KERNEL-KNOW",request,recorded,recomputed,
-        authority_basis:{law_receipt_id:lawReceipt.id,retrieval_creates_authority:false},persisted_universe_reread:true,
+        authority_basis:{law_receipt_id:lawReceipt.id,authority_grant_id:authority.ok?authority.authority_grant_id:null,retrieval_creates_authority:false},persisted_universe_reread:true,
         handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",workflow_ref:workflowRef,token_jti:payload.jti??null},same?200:409);
     }
 
