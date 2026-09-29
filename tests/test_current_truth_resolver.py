@@ -75,7 +75,7 @@ def test_workflow_collects_live_github_state_and_uploads_resolution():
     assert "permissions:" in wf
     assert "actions: read" in wf
     assert "issues: read" in wf
-    assert "gh api" in wf
-    assert "gh run list" in wf
+    assert '"gh", "api"' in wf
+    assert '"gh", "run", "list"' in wf
     assert "current-truth-resolution.json" in wf
     assert "--fail-on-conflict" in wf
