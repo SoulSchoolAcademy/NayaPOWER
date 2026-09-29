@@ -619,6 +619,7 @@ jobs:
           import json, os
           er=json.load(open("cold-successor-related.json"))
           eu=json.load(open("cold-successor-unrelated.json"))
+          learning_id=er["reconstruction"]["learning_id"]
           vr=json.load(open("cold-successor-related-verify.json"))
           vu=json.load(open("cold-successor-unrelated-verify.json"))
           for v in (vr,vu):
