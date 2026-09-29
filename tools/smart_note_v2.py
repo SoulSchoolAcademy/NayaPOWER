@@ -25,19 +25,30 @@ def changed_capture(paths):
         raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
     return hits[0] if hits else ""
 
+def allocate_smart_note_id(capture, ib):
+    explicit = str(capture.get("smart_note_id") or "").strip().upper()
+    if re.fullmatch(r"SN-\\d{3,}", explicit):
+        return explicit
+    if REGISTRY.exists():
+        registry = load_json(REGISTRY)
+        existing = next((e for e in registry.get("entries", []) if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
+        if existing:
+            return existing["smart_note_id"]
+        seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
+    else:
+        seq = 1
+    return f"SN-{seq:03d}"
+
 def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
     captured = str(capture.get("captured_at_utc") or capture.get("source", {}).get("captured_at_utc") or capture["source"]["captured_at"])
     date = captured[:10]
     y, m, d = date.split("-")
-    time_token = "000000Z"
-    if "T" in captured:
-        raw = captured.split("T", 1)[1].split(".", 1)[0].replace(":", "")
-        time_token = (raw[:6] if len(raw) >= 6 else raw.ljust(6, "0")) + "Z"
     meta = capture.get("projection", {})
     cat = (meta.get("category_slug") or slug(capture.get("category", "smart-note"))).upper()
     topic = (meta.get("topic_slug") or slug(capture.get("topic", "general"))).upper()
     sub = (meta.get("subtopic_slug") or slug(capture.get("subtopic", "general"))).upper()
-    return Path(root) / y / m / d / cat / topic / sub / time_token / (ib + ".md")
+    sn_id = allocate_smart_note_id(capture, ib)
+    return Path(root) / y / m / d / cat / topic / sub / sn_id / (ib + ".md")
 
 def render(capture, verify, private_root=None):
     block = verify["persisted"]["block"]
@@ -96,7 +107,9 @@ def update_registry(capture, verify, projection):
     if REGISTRY.exists():
         registry = load_json(REGISTRY)
     block = verify["persisted"]["block"]
+    sn_id = allocate_smart_note_id(capture, block["intelligent_block_id"])
     entry = {
+        "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
         "title": capture["title"],
         "captured_at": capture["source"]["captured_at"],
@@ -120,7 +133,12 @@ def update_registry(capture, verify, projection):
         },
     }
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
-    registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("captured_at",""), x.get("intelligent_block_id","")))
+    registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
+    seq_match = re.fullmatch(r"SN-(\\d+)", sn_id)
+    if seq_match:
+        policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
+        policy["next_sequence"] = max(int(policy.get("next_sequence", 1)), int(seq_match.group(1)) + 1)
+        policy["purpose"] = "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance."
     REGISTRY.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return entry
 
