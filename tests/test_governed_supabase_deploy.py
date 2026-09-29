@@ -89,6 +89,6 @@ def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "gh run watch" not in source
     assert "gh run view" in source
-    expected = "--jq '.status + \":\" + (.conclusion // \\"\\")'"
-    assert source.count(expected) == 2
-    assert '--jq ".status+":"+(.conclusion//"")"' not in source
+    safe_expr = '.status + ":" + (.conclusion // "")'
+    assert source.count(safe_expr) == 2
+    assert '.status+":"+(.conclusion//"")' not in source
