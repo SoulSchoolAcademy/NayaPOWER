@@ -1,64 +1,32 @@
-# NayaPOWER — Maximum-Value Execution Queue V2
+# NayaPOWER — Maximum-Value Execution Queue V3
 
-**Status:** ACTIVE WORKING PRIORITY — HUMAN DIRECTOR MAY OVERRIDE
+**Status:** ACTIVE — derived from the Ultimate Master Execution Plan  
+**Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
 
-The queue orders work by expected verified human value, dependency, proof leverage, and continuity impact.
+## Dispatch order
 
-## Top 10
+1. **P0.1 Current truth/runtime identity** — reconcile stale current-state/activation surfaces and establish actual runtime/component identity.
+2. **P0.2 #944 Concept #17 reconciliation** — prove one non-duplicate proposition exists, or record `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
+3. **P0.3 Candidate admission** — if unique, reuse the existing Intelligent Block river.
+4. **P0.4 Cold retrieval + applicability** — identifier-only retrieval; applicability derived; stale/inapplicable intelligence rejected.
+5. **P0.5 Causal control/treatment** — same held-out task; retained intelligence is the intended variable.
+6. **P0.6 Independent verification** — recompute from persisted evidence.
+7. **P0.7 Negative transfer** — unrelated task must not inherit the lesson.
+8. **P0.8 Cold successor reuse** — successor retrieves and uses the intelligence without inherited authority.
+9. **P1 Nine-node runtime binding/ablation** — prove semantic-organ invocation and influence without splitting them into services.
+10. **P1 retrieval/state/provenance/authority hardening** — orthogonal state, governed retrieval, checkpoint concurrency, poisoning and revocation.
 
-1. **Make the canonical brain internally coherent** — DONE FOR THIS PASS; keep adversarial reconciliation active.
-2. **Complete canonical knowledge population** — source corpus #1–#15 is mapped, distilled, and represented; complete object-level population next.
-3. **Make the Nine-Node kernel executable** — load the machine registry, node objects, contracts, gates and graph context in one deterministic runtime.
-4. **Make the graph live** — persist and retrieve governed typed relationships with provenance, applicability, temporal and supersession handling.
-5. **Birth NAYA-NODE-0001 as a real proof specimen** — persist, cold-retrieve, apply, act, observe and verify.
-6. **Prove memory continuity** — cold Naya restores relevant intelligence without conversational reconstruction.
-7. **Prove governed action and Causal Verification** — separate authorization, action, observation, evidence and causal acceptance.
-8. **Prove genuine learning** — demonstrate later behavioral improvement caused by retained learning.
-9. **Prove succession** — fresh Naya inherits intelligence and continuity without inheriting new authority.
-10. **Bind Value Calculus to verified events/outcomes and then scale interfaces** — measure verified value, resource cost, compounding and system efficiency before adding surface complexity.
+## Completed / canonicalized
 
-## Priority law
+- **#913:** CLOSED / completed; bounded causal continuity proof remains bounded to its exact proven historical source/runtime revision.
+- **PR #946:** MERGED into current `main`.
+- **Smart Node operating law:** CANONICAL.
+- **Ultimate Master Execution Plan:** canonical in this operations folder.
 
-Prefer the task that closes a material proof gap, prevents intelligence loss, removes a dependency, reduces duplication, increases future Naya capability, or produces more verified human value per unit of complexity.
+## Dispatch law
 
-Do not prioritize visual polish, feature count, or deployment activity over the living intelligence loop.
+Do not create architecture to avoid a proof failure. Stop at the first broken rung. Evidence state must remain honest. Every action leaves evidence and exactly one next action.
 
-## Current phase
+## Current hard boundary
 
-**PHASE 2 — CANONICAL POPULATION → EXECUTABLE GRAPH/KERNEL**
-
-Completed in the current pass:
-
-- Concepts #1–#15 explicitly registered;
-- #14 contextual intelligence compiled into existing graph/CONNECT architecture;
-- #15 Value Calculus semantics mapped into the brain population model;
-- stable Nine-Node IDs reconciled with the naming law;
-- nine canonical Node object candidates materialized;
-- human/AI/machine representation contract materialized;
-- source-to-node population map materialized;
-- governed Nine-Node graph seed materialized;
-- machine-readable runtime registry materialized;
-- deterministic population parity validator added;
-- AAA file-by-file scorecard added;
-- AAA execution prompt added.
-
-**Next proof frontier:** runtime loader + real persistence/retrieval + behavioral verification.
-
-
-## File-inventory control — 2026-09-27
-
-**Authoritative inventory:** `BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md`
-
-The inventory now covers every current BRAIN file and assigns remaining work to Naya completion categories A–G. Use it as the dispatch layer for file-level work. Do not reopen completed semantic architecture unless a test or current evidence demonstrates a contradiction.
-
-### Dispatch order
-
-1. **A — Kernel / Runtime Convergence:** bind the actual application entrypoint to the BRAIN manifest/registry and canonical Supabase.
-2. **B — Graph / CONNECT:** make relationship-aware retrieval executable and behaviorally consequential.
-3. **C — Governance / ACT / PROVE / VERIFY:** close the real action/outcome/CVO boundary and adversarial fail-closed cases.
-4. **D — Learning:** prove retained intelligence changes a later held-out task.
-5. **E — Succession:** cold-boot a successor and prove improvement without authority inheritance.
-6. **F — Knowledge / Parity:** finish object-level promotion and automated human/AI/machine parity.
-7. **G — Receipts / Operations:** regenerate tree receipts and keep all status artifacts synchronized.
-
-**Stop condition:** race entry is still blocked until the canonical runtime path is executable and independently verified.
+The kernel manifest still reports `runtime_binding.status = NOT_PROVEN`. Do not claim universal nine-node production operation until runtime binding and behavioral influence are independently demonstrated.
