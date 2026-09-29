@@ -1,6 +1,6 @@
 # NayaPOWER — Maximum-Value Execution Queue V5
 
-**Status:** ACTIVE — refreshed from live evidence at `main=faac73abf29c99fc29879f23cd39966439964251`  
+**Status:** ACTIVE — refreshed from a live evidence snapshot anchored at pre-projection revision `faac73abf29c99fc29879f23cd39966439964251`  
 **Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
 
 ## NOW
@@ -14,10 +14,10 @@ Governed production run `36514309554` already:
 **Do not change code. Do not weaken parity. Do not direct-deploy around the workflow.**
 
 ### 2 — AFTER INTEGRATION: promote exact then-current main
-Current `main` is already newer than the target of run `36514309554`.
+Live `main` is already newer than the target of run `36514309554`. Resolve the exact current SHA from GitHub at execution time; do not trust an embedded snapshot SHA as current authority.
 
 After Supabase integration works:
-- re-read `main`;
+- read the live GitHub `main` SHA immediately before dispatch;
 - explicitly run the governed promotion for that exact SHA;
 - require successful Supabase deployment evidence;
 - require exact runtime/source parity.
