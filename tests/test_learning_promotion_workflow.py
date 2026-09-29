@@ -119,6 +119,7 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         "nayanet-cold-runtime-proof",
         "nayanet-intelligence-commit-runtime",
         "nayanet-causal-learning-experiment",
+        "nayanet-causal-verify",
         "nayanet-learning-verify",
         "nayanet-law-runtime",
         "nayanet-act-runtime",
