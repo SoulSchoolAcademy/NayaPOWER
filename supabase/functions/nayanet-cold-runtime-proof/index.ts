@@ -87,7 +87,7 @@ Deno.serve(async (req: Request) => {
     // legitimately run concurrently, so max+1 is only a starting point. On a
     // unique-key race, re-read authoritative state and retry.
     const insertReceiptWithRetry = async (row: Omit<Record<string, unknown>, "revision">) => {
-      for (let attempt = 0; attempt < 5; attempt++) {
+      for (let attempt = 0; attempt < 20; attempt++) {
         const revisionRows = await get("/rest/v1/nayanet_execution_receipts?user_id=eq." + OWNER_ID + "&project_id=eq.NayaNET&select=revision&order=revision.desc&limit=1");
         const revision = (Array.isArray(revisionRows) && revisionRows.length ? Number(revisionRows[0].revision) + 1 : 1);
         const { data, error } = await admin.from("nayanet_execution_receipts").insert({ ...row, revision }).select("*").single();
