@@ -1,6 +1,3 @@
--- Immutable historical checkpoint receipts.
--- This is evidence/provenance storage, not a second intelligence store.
-
 create table if not exists public.nayanet_checkpoint_receipts (
   checkpoint_id uuid primary key,
   user_id uuid not null,
@@ -60,28 +57,41 @@ select
     'relationship_id', r.evidence->>'relationship_id',
     'index_id', r.evidence->>'index_id',
     'receipt_id', r.id,
-    'learning_id', l.id,
+    'learning_id', '65b93cdb-3981-4504-badd-a38861ffb971',
     'learning_claim', l.claim,
     'learning_status', l.status,
     'learning_provenance', l.provenance,
     'provenance_preserved', true,
     'causal_verification_id', 'CVO-NAYA-NODE-0001-FRESH-LEARNING-2026-09-28'
   ),
-  r.id, l.id, (r.evidence->>'event_row_id')::uuid,
-  r.evidence->>'intelligent_block_id', (r.evidence->>'lineage_id')::uuid,
-  (r.evidence->>'relationship_id')::uuid, (r.evidence->>'index_id')::uuid,
-  encode(digest(jsonb_build_object(
-    'checkpoint_id',r.evidence->>'checkpoint_id','revision',r.revision,
-    'target_id',r.evidence->>'target_id','event_id',r.evidence->>'event_row_id',
-    'intelligent_block_id',r.evidence->>'intelligent_block_id',
-    'lineage_id',r.evidence->>'lineage_id','relationship_id',r.evidence->>'relationship_id',
-    'index_id',r.evidence->>'index_id','receipt_id',r.id,'learning_id',l.id,
-    'learning_claim',l.claim,'learning_status',l.status,'learning_provenance',l.provenance
-  )::text,'sha256'),'hex')
+  r.id,
+  l.id,
+  (r.evidence->>'event_row_id')::uuid,
+  r.evidence->>'intelligent_block_id',
+  (r.evidence->>'lineage_id')::uuid,
+  (r.evidence->>'relationship_id')::uuid,
+  (r.evidence->>'index_id')::uuid,
+  encode(digest(
+    jsonb_build_object(
+      'checkpoint_id', r.evidence->>'checkpoint_id',
+      'revision', r.revision,
+      'target_id', r.evidence->>'target_id',
+      'event_id', r.evidence->>'event_row_id',
+      'intelligent_block_id', r.evidence->>'intelligent_block_id',
+      'lineage_id', r.evidence->>'lineage_id',
+      'relationship_id', r.evidence->>'relationship_id',
+      'index_id', r.evidence->>'index_id',
+      'receipt_id', r.id,
+      'learning_id', l.id,
+      'learning_claim', l.claim,
+      'learning_status', l.status,
+      'learning_provenance', l.provenance
+    )::text, 'sha256'), 'hex')
 from public.nayanet_execution_receipts r
-join public.learning_evidence l on l.id='65b93cdb-3981-4504-badd-a38861ffb971'
-where r.id='32ff7884-e44b-46fc-84d2-682cd6f00161'
+join public.learning_evidence l
+  on l.id = '65b93cdb-3981-4504-badd-a38861ffb971'
+where r.id = '32ff7884-e44b-46fc-84d2-682cd6f00161'
 on conflict (checkpoint_id) do nothing;
 
 create index if not exists nayanet_checkpoint_receipts_learning_idx
-on public.nayanet_checkpoint_receipts(learning_id);
+  on public.nayanet_checkpoint_receipts(learning_id);
