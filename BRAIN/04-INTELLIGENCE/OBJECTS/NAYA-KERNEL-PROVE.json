@@ -10,7 +10,7 @@
     "title": "PROVE — provenance, evidence, epistemic state, lineage",
     "essence": "PROVE derives bounded evidence-backed claims from persisted KNOW output and canonical evidence, surfaces conflicts, preserves scope/limitations, and refuses unsupported promotion.",
     "why": "One responsibility of the single NayaPOWER brain; not an independent brain or authority.",
-    "uncertainty": "PROVE V1 source is implemented on this branch; repository CI and live/production proof remain pending."
+    "uncertainty": "PROVE V1 is implemented and repository-verified on this branch; live deployment and bounded live proof remain pending."
   },
   "ai_view": {
     "purpose": "Assess whether a persisted KNOW selection supports a scoped claim without caller-supplied proof content, authority creation, or outcome/causal overclaiming.",
@@ -53,12 +53,17 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "EXECUTABLE_SOURCE_CI_PENDING",
-    "behavioral_status": "NOT_LIVE_PROVEN",
+    "implementation_status": "EXECUTABLE_SOURCE_REPOSITORY_VERIFIED",
+    "behavioral_status": "REPOSITORY_PROVEN_BOUNDED_LIVE_PENDING",
     "production_status": "NOT_PROVEN",
-    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; CONFLICT_RELATIONSHIP_REREAD_IMPLEMENTED_SOURCE_CI_PENDING",
-    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_REPOSITORY_AND_LIVE_PROOF",
-    "limitation": "PROVE V1 assesses evidence/epistemic support only. It does not prove behavioral outcome or causality; VERIFY remains a separate responsibility. Universal nine-node runtime binding remains NOT_PROVEN."
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; CONFLICT_RELATIONSHIP_REREAD_REPOSITORY_VERIFIED",
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "limitation": "PROVE V1 assesses evidence/epistemic support only. It does not prove behavioral outcome or causality; VERIFY remains a separate responsibility. Universal nine-node runtime binding remains NOT_PROVEN.",
+    "repository_tests": {
+      "kernel_tests_run": 36627017872,
+      "collective_chain_readiness_run": 36627018411,
+      "status": "PASS"
+    }
   },
   "relationships": [
     {
