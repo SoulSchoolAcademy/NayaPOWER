@@ -1,8 +1,8 @@
 {
-  "schema": "naya.smart-node-protocol.v1",
-  "version": "1.0",
+  "schema": "naya.smart-note-protocol.v2",
+  "version": "2.2",
   "status": "CANONICAL",
-  "human_term": "Smart Node",
+  "human_term": "Smart Note",
   "canonical_machine_target": "INTELLIGENT_BLOCK",
   "creates_new_object_type": false,
   "creates_new_kernel_node": false,
@@ -15,12 +15,22 @@
     "may_self_promote": false
   },
   "command_aliases": [
+    "smart note this",
+    "make a smart note",
+    "save this as a smart note",
     "make this a smart node",
     "lock this in",
     "make this an intelligent block",
     "save this as reusable intelligence",
+    "capture this as reusable intelligence",
     "put this into the superbrain",
-    "preserve this for the next Naya"
+    "put this in the brain",
+    "preserve this for the next Naya",
+    "remember this for the next Naya",
+    "don't lose this",
+    "keep this as intelligence",
+    "document this as intelligence",
+    "make this available to future Nayas"
   ],
   "admission_signals": [
     "changes_future_behavior_or_decision",
@@ -93,5 +103,45 @@
     "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md",
     "kernel/supabase_intelligent_blocks.py",
     "supabase/migrations/20260921183000_intelligent_block_v1_first_class_boundary.sql"
-  ]
+  ],
+  "primary_command": "smart note this",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "legacy_human_alias": "Smart Node",
+  "contextual_aliases": [
+    "remember this",
+    "save this",
+    "keep this",
+    "note this",
+    "make a note"
+  ],
+  "nia_language_contract": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
+  "projection": {
+    "canonical_pattern": "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md",
+    "source_of_truth": "INTELLIGENT_BLOCK",
+    "primary_human_projection": "GITHUB_BRAIN_MARKDOWN",
+    "primary_smart_link_target": "DIRECT_GITHUB_MARKDOWN",
+    "private_fallback": "AUTHENTICATED_PRIVATE_PROJECTION",
+    "machine_registry": ".naya/memory/smart-notes/index.json",
+    "human_sections": [
+      "IN_A_NUTSHELL",
+      "HUMAN_NOTE",
+      "CHILD_NOTE",
+      "GRANDMA_NOTE",
+      "NAYA_NOTE",
+      "MACHINE_NOTE",
+      "LEARNING_LESSON",
+      "WHAT_IT_MEANS",
+      "WHATS_IN_IT_FOR_YOU",
+      "HOW_TO_APPLY",
+      "HOW_IT_CONNECTS",
+      "KEY_DECISIONS",
+      "PROOF_PROVENANCE",
+      "TRUTH_BOUNDARY",
+      "NEXT_ACTION"
+    ],
+    "human_identity": "SN-###",
+    "timestamp_role": "PROVENANCE_METADATA",
+    "machine_identity": "IB-..."
+  },
+  "smart_link_law": "Return the direct GitHub Brain Markdown link as the primary human receipt whenever publication is authorized; otherwise return an authenticated private human projection."
 }

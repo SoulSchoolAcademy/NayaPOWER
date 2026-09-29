@@ -29,12 +29,11 @@ EXPERIENCE
     ↓
 INTELLIGENT EVENT          (what happened — the raw occurrence)
     ↓
-NAYA NODE                  (what we understand — the governed intelligence unit)
+DISTILLATION               (what it means)
     ↓
-INTELLIGENT BLOCK          (the canonically committed form of a Naya Node,
-    │                       receiver-owned immutable identity IB-XXXXXX)
+INTELLIGENT BLOCK          (the canonical durable intelligence unit, IB-...)
     ↓
-SMART NOTE                 (the human-readable projection of an Intelligent Block)
+SMART NOTE                 (the universal capture command + human-readable projection)
     ↓
 SMART LINK                 (the verified, evidence-bearing doorway to that projection)
 ```
@@ -43,59 +42,60 @@ SMART LINK                 (the verified, evidence-bearing doorway to that proje
 
 ## 3. Definitions
 
-### 3.1 Naya Node — CANONICAL
-**The canonical governed intelligence unit.**
+### 3.1 Master Node — CANONICAL
+**A reserved processing responsibility in the Nine-Node kernel.**
 
-A Naya Node is a reusable cell of distilled, governed intelligence. It is the semantic
-unit the system understands, retrieves, applies, verifies, learns from, and inherits.
+The only canonical kernel Nodes are:
 
-- Aliases (HISTORICAL): `NayaPOWER Node`, `intelligence cell`. Older sources also used `Smart Node` as an object alias; that alias is superseded by the canonical Smart Node operating protocol.
-- Distinction: the Naya Node is the *understanding*; it becomes durable only when
-  committed as an Intelligent Block.
-- Source: PART #4 ratified model — "Naya Node = reusable intelligence cell";
-  PART #8 — "Naya Node = Smart Node = the semantic intelligence unit".
+`SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE`
 
-### 3.1A Smart Node — CANONICAL HUMAN OPERATING TERM
-**A command/shorthand for preserving valuable material as governed reusable intelligence.**
+A Master Node processes intelligence. A note or idea does **not** become a Master Node.
 
-When Shawn says **“make this a Smart Node”** or **“lock this in,”** Naya routes the material through the existing Intelligent Block lifecycle: capture → distill → reconcile → structure → connect → prove/label → preserve → index → retrieve → apply within authority → verify → learn/refine.
+- `Naya Node` is now an **ambiguous historical term**. In new work, do not use it as the name of an intelligence object.
+- If an older source says “Naya Node” and means durable intelligence, normalize to **Intelligent Block**.
+- If it means a kernel responsibility, normalize to **Master Node**.
+- If it means a separate persistent Naya identity/agent, use the explicit identity term defined by the identity contract; do not infer from this glossary.
+- This reconciliation supersedes older concept-file language that treated “Naya Node” as the canonical semantic intelligence unit.
 
-- It is **not** a new canonical object type.
-- It is **not** a tenth Master Node.
-- It is **not** a second graph, memory system, or authority source.
-- Machine identity remains the existing Intelligent Block and related canonical Event / Relationship / Evidence / Verification / Learning / Successor objects.
-- Source of current semantics: `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`.
-- Historical note: earlier concept files sometimes used “Smart Node” as an alias for “Naya Node.” Preserve that usage as source lineage only.
+### 3.1A Smart Node — ACCEPTED HISTORICAL / HUMAN ALIAS
+**A human shorthand for the Smart Note capture intent; not an object type.**
+
+“Make this a Smart Node” remains a supported phrase for compatibility. It normalizes through NIA Language to `CAPTURE_DURABLE_INTELLIGENCE`.
+
+The preferred universal command is now:
+
+> **“Smart Note this.”**
+
+Smart Node MUST NOT become a tenth Master Node, a durable object family, a database table, or a second graph.
 
 ### 3.2 Intelligent Block — CANONICAL
-**The canonical object behind a Smart Note.**
+**The canonical durable unit of governed intelligence.**
 
-An Intelligent Block is a Naya Node that has been canonically committed through the
-Receiver. It owns an immutable, receiver-allocated identity (`IB-XXXXXX`), full
-provenance, epistemic state, relationships, and lifecycle.
+An Intelligent Block is the persistent, provenance-bound object produced or refined by the governed Receiver. It owns the durable intelligence identity (`IB-...`), truth state, source lineage, applicability, relationships, evidence, and lifecycle.
 
-- Aliases (HISTORICAL): none in the corpus — but note the collapsed usage
-  "Smart Note = Intelligent Block" in early material. The collapsed usage is retired:
-  the Intelligent Block is the canonical object; the Smart Note is its projection.
-- Critical law: **repository projections never guess IB IDs.** The Receiver, not Naya,
-  not GitHub, not a script, not a registry, owns IB-number allocation.
-- Source: PART #3 — "Smart Note = Intelligent Block" (live-repository statement of
-  identity at commit scope); PART #1 — KNOW node responsibilities.
+- Intelligent Block is the object the system retains, indexes, retrieves, connects, verifies, learns from, supersedes, and passes to successors.
+- Repository projections MUST NOT become a second source of truth.
+- The Receiver owns canonical identity. Deterministic IDs are valid only where the canonical Receiver contract itself defines them.
 
-### 3.3 Smart Note — CANONICAL
-**The human-readable projection of an Intelligent Block.**
+### 3.3 Smart Note — CANONICAL UNIVERSAL CAPTURE COMMAND + PROJECTION
+**The human command for durable capture and the human/Naya-readable projection of the resulting Intelligent Block.**
 
-A Smart Note is the governed, persistent, human/Naya-readable representation of an
-Intelligent Block, stored at the canonical path
-`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
-with the ratified 15-section structure (In a nutshell / What / Why it matters /
-Human / Child / Grandma / Naya / Machine / What we learned / Connections /
-How to apply / What it ultimately means / What's in it for you/us / Next action).
+Primary command:
 
-- Aliases (HISTORICAL): none — "Smart Note" is retained as the projection name.
-- Critical law: **a Smart Note must never silently become a second source of truth.**
-  Folder structure is navigation; the IB identity is truth.
-- Source: PART #1 core distinction; PART #3 §"NAYA NODE / Smart Note and Intelligent Block".
+> **“Smart Note this.”**
+
+NIA Language normalizes that phrase to `CAPTURE_DURABLE_INTELLIGENCE`.
+
+After canonical commit, the Smart Note projection belongs at:
+
+`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/subtopic/IB-.../smart-note.md`
+
+The path is navigation, not truth. The Intelligent Block remains canonical. The projection MUST carry the IB identity and provenance pointers and MUST be generated from verified persisted intelligence.
+
+- Automatic capture may create/refine **CANDIDATE** intelligence only.
+- A Smart Note projection does not create authority and does not prove learning.
+- “Smart Node”, “lock this in”, and related phrases are aliases handled by the NIA Language contract.
+- Canonical intent contract: `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md`.
 
 ### 3.4 Smart Link — CANONICAL
 **Evidence-bearing navigation to canonical intelligence.**
@@ -116,57 +116,29 @@ doubles as the human receipt.
 ### 3.5 Intelligent Event — CANONICAL
 **What happened.**
 
-An Intelligence Event is the immutable record of an occurrence: the raw material of
-intelligence, captured at the moment something meaningful happened. Events are history;
-Naya Nodes are reusable understanding; learning is a further promotion.
+An Intelligent Event is the immutable record of an occurrence: source/history from which intelligence may be distilled.
 
-- Aliases (HISTORICAL): `Intelligence Event`, `Value Event` (a specific event type
-  defined by the value-math contract).
-- Critical law: **EVENT ≠ UNDERSTANDING ≠ LESSON ≠ LEARNING ≠ VERIFIED LEARNING.**
-- Source: PART #1 core distinction; Contract 15.
+**EVENT ≠ INTELLIGENT BLOCK ≠ SMART NOTE PROJECTION ≠ LEARNING ≠ VERIFIED LEARNING.**
 
-### 3.6 Experience Node — CANONICAL (extension tier)
-**Human, project, or domain intelligence Node.**
+### 3.6 Experience Intelligence — CANONICAL CLASSIFICATION
+Human, project, workflow, or domain intelligence represented as Intelligent Blocks and relationships. Older “Experience Node” language is historical unless a separate agent identity contract explicitly applies.
 
-An Experience Node is a Naya Node that emerged because the kernel identified a real
-new domain, project, or human context requiring independent intelligence. Experience
-Nodes are NOT part of the V1 kernel; they are the first extension tier.
-
-- Aliases (HISTORICAL): `Domain Node`, `Project Node`, `Personal Node`,
-  `Workflow Node` (from the Node Engine taxonomy in PART #11).
-- Rule: Experience Nodes MUST NOT silently alter the V1 kernel. They are added only
-  through the extension rule (responsibility → existing boundary → contract impact →
-  relationship impact → authority impact → proof requirement).
-- Source: PART #1 §20 "The 9 → 18 → 27 idea"; PART #11 Node Engine taxonomy.
-
-### 3.7 Meta-Intelligence Node — CANONICAL (extension tier)
-**Intelligence about the system itself.**
-
-A Meta-Intelligence Node is a Naya Node whose subject is NayaPOWER/NayaNET itself:
-system behavior, drift, proof gaps, self-observation, and bounded self-improvement
-candidates. EVOLVE consumes meta-intelligence; it does not itself become a competing
-authority.
-
-- Aliases (HISTORICAL): `Meta Node`.
-- Critical law: **SELF-IMPROVEMENT ≠ SELF-AUTHORIZATION.** A Meta-Intelligence Node
-  may propose, build, test, and verify improvements within its authorized boundary;
-  adoption requiring higher authority MUST stop at that boundary.
-- Source: PART #1 §19 "Self-building" and §20.
+### 3.7 Meta-Intelligence — CANONICAL CLASSIFICATION
+Intelligence about NayaPOWER/NayaNET itself: system behavior, drift, proof gaps, and bounded improvement candidates. It is represented as Intelligent Blocks and relationships. Older “Meta-Intelligence Node” terminology is historical.
 
 ---
 
 ## 4. Relationship map
 
 ```
-INTELLIGENT EVENT  ──derives──▶  NAYA NODE  ──commits (via Receiver)──▶  INTELLIGENT BLOCK
+INTELLIGENT EVENT  ──distills / derives──▶  INTELLIGENT BLOCK
                                                                     │
                                                                     ├──projects──▶  SMART NOTE
                                                                     │                    │
                                                                     └──receipts──▶  SMART LINK (to the Smart Note artifact)
 
-EXPERIENCE NODE    ──a Naya Node specialized to a human/project/domain context
-META-INTELLIGENCE NODE
-                   ──a Naya Node whose subject is the system itself
+MASTER NODES       ──process──▶  INTELLIGENT BLOCKS
+EXPERIENCE / META-INTELLIGENCE are classifications carried by Blocks/relationships
 
 SMART NOTE  ≠  INTELLIGENT BLOCK          (projection ≠ canonical object)
 SMART LINK  ≠  SMART NOTE                 (doorway ≠ content)
@@ -180,7 +152,8 @@ EVENT       ≠  NODE ≠  UNDERSTANDING ≠  LESSON ≠  LEARNING ≠  VERIFIED
 
 | Historical term | Canonical term | Why retired |
 |-----------------|----------------|-------------|
-| Smart Node (as an object alias for Naya Node) | Smart Node = human operating command; Naya Node = semantic unit in source/concept model | Object-alias usage is superseded by the canonical Smart Node / Intelligent Block protocol |
+| Naya Node (as semantic intelligence object) | Intelligent Block | Ambiguous historical term; new work reserves Node for the Nine Master Nodes unless an explicit identity contract says otherwise |
+| Smart Node | Smart Note capture alias | Supported human alias, not an object type |
 | Intelligence Event | Intelligent Event | Adjective form aligns with Intelligent Block |
 | Smart Door (as link) | Smart Link | "Smart Door" now means a Smart Connect participation channel |
 | Smart Share | Smart Connect | Product rename; Smart Share is retired |

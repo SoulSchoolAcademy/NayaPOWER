@@ -1,76 +1,51 @@
-# NayaPOWER — Maximum-Value Execution Queue V5
+# NayaPOWER — Maximum-Value Execution Queue V7
 
-**Status:** ACTIVE — refreshed from a live evidence snapshot anchored at pre-projection revision `faac73abf29c99fc29879f23cd39966439964251`  
-**Canonical master plan:** `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md`
+**Status:** ACTIVE PROJECTION — live evidence outranks this queue  
+**Evidence snapshot base:** `de813e9df08af2f860601f98a56ac68562a8c095`
 
-## NOW
+## CURRENT TRUTH
 
-### 1 — BLOCKED EXTERNAL: Supabase GitHub Integration
-Governed production run `36514309554` already:
-- passed Human Director authorization;
-- promoted `production` to `32b7c9954988befecfbe8c850f523e59a441f44d`;
-- completed FAILURE because no new Supabase GitHub Integration deployment check appeared.
+- #944: **CLOSED**.
+- #971: **CLOSED**.
+- Bounded production-proven source: `2f468c413f4b5c6752878d94ba0f2e1fdfb60147`.
+- Live bounded proof: run `36519233015`, attempt 2, **18/18 PASS**.
+- Latest main does not inherit that production proof.
+- #810: source/repository verified; live latest-main proof pending.
+- #975: recovery path source/repository verified; live rows pending deployed verifier.
+- #978: **OPEN SECURITY GAP**.
+- PR #980: DRAFT, rebased, Kernel Tests PASS, Collective Chain Readiness PASS; human policy acceptance required.
+- Smart Note V2 + official Brain Smart Link projection: merged.
+- Universal nine-node binding / multi-generation compounding / two-owner NayaNET: NOT PROVEN.
 
-**Do not change code. Do not weaken parity. Do not direct-deploy around the workflow.**
+## TOP 10
 
-### 2 — AFTER INTEGRATION: promote exact then-current main
-Live `main` is already newer than the target of run `36514309554`. Resolve the exact current SHA from GitHub at execution time; do not trust an embedded snapshot SHA as current authority.
+1. **#978 security decision** — accept/reject owner-read / privileged-write checkpoint RLS.
+2. **Fresh exact-main DEPLOY** — only with explicit Human Director `DEPLOY`.
+3. **#975 live outcome recovery** — then rerun North-Star audit.
+4. **#810 live nine-node acceptance + ablation**.
+5. **Deterministic current-truth resolver** — existing owners, no new store.
+6. **Authority lifecycle matrix** — missing/wrong/expired/revoked/successor/cached-derived.
+7. **Checkpoint provenance + concurrency + recovery**.
+8. **Poisoning/context-laundering/forged-edge/verifier-monoculture tests**.
+9. **Multi-generation A→B→C compounding + unrelated refusal**.
+10. **Human-value metrics + two-owner NayaNET consent/revocation proof**.
 
-After Supabase integration works:
-- read the live GitHub `main` SHA immediately before dispatch;
-- explicitly run the governed promotion for that exact SHA;
-- require successful Supabase deployment evidence;
-- require exact runtime/source parity.
+## BLOCKERS
 
-### 3 — finish #944 production proof
-Require:
-- related held-out task improvement;
-- unrelated-task refusal;
-- identifier-only ACTIVE-learning retrieval;
-- independent persisted-evidence recomputation;
-- cold-successor related-task reuse;
-- cold-successor unrelated refusal;
-- no inherited authority.
+### Security policy
+Human Director must decide this exact #980 rule:
 
-Close #944 only when production evidence passes.
+> authenticated owners may read only their own checkpoint receipts; anon has no access; mutation remains privileged/server-only.
 
-## NEXT 7 AFTER #944
-
-4. **Nine-node runtime binding + ablation** — prove each claimed organ materially affects the governed runtime.
-5. **Deterministic current-truth resolution** — canonical owners → one proof-carrying current context/next action; no new store.
-6. **Applicability hard filters** — owner/privacy/validity/revocation/supersession/epistemic state/authority/applicability/conflict before relevance.
-7. **Authority lifecycle matrix** — missing/wrong scope/wrong owner/expired/revoked/successor/cached-derived.
-8. **Checkpoint + concurrency hardening** — object/execution/version locality, replay, duplicate and race tests.
-9. **Stored-intelligence adversarial suite** — poisoning, context laundering, forged graph relationships, evidence amplification.
-10. **Graph utility + multi-generation compounding** — graph OFF/ON/adversarial; then A→B→C held-out improvement with refusal controls.
+### Production
+Fresh exact-main production promotion requires explicit `DEPLOY`.
 
 ## DONE / DO NOT REDO
 
-- #913 bounded production specimen.
-- PR #946 knowledge-entry/Smart Node terminology repair.
-- Concept #17 reconciliation: `NO_NEW_CANDIDATE — SOURCE RECONCILED`.
-- #944 second-task generalization implementation.
-- #944 unrelated negative-transfer refusal implementation.
-- independent generalization verifier.
-- cold-successor second-task reuse/refusal implementation.
-- verifier negative-matrix hardening through PR #955.
-- cold-successor ACTIVE + canonical-target retrieval hardening through PR #959.
-- governed production promotion workflow initiation against `32b7c995...`.
+#913 specimen; #944 generalization/successor chain; #971 Supabase integration recovery; Concept #17 duplicate reconciliation; Smart Node→Intelligent Block law; reference-kernel false execution repair; Smart Note V2 capture/retrieval/projection.
 
-## PERMANENT GATES
+## EXACT NEXT ACTION
 
-`UNKNOWN ≠ PASS`  
-`BLOCKED ≠ PASS`  
-`IMPLEMENTED ≠ VERIFIED`  
-`VERIFIED ≠ PRODUCTION_PROVEN`  
-`RETRIEVED ≠ AUTHORIZED`  
-`LEARNING ≠ AUTHORITY`  
-`SUCCESSOR CONTEXT ≠ INHERITED AUTHORITY`
+**Human Director: accept or reject PR #980's exact checkpoint RLS policy.**
 
-## DO NOT BUILD
-
-No MN-10. No second brain/database/graph/learning pipeline/authority layer. No automatic learning→LAW. No premature distributed/vector/graph infrastructure. No UI expansion on the kernel critical path.
-
-## Exactly one next action
-
-**Complete/enable the Supabase GitHub Integration required by the already-running governed promotion. Once the deployment check exists, run the governed production promotion again for the exact then-current `main` and follow the canonical proof chain to the next failing rung.**
+If accepted: mark ready → merge → await fresh exact-main `DEPLOY`.

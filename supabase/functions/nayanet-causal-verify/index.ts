@@ -63,13 +63,165 @@ Deno.serve(async (req: Request) => {
     const mode = String(body.mode ?? "cvo");
     const treatmentId = String(body.treatment_receipt_id ?? DEFAULT_TREATMENT_ID);
     const controlId = String(body.control_receipt_id ?? DEFAULT_CONTROL_ID);
-    if (mode !== "cvo" && mode !== "verify") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
+    if (mode !== "cvo" && mode !== "verify" && mode !== "recover-learning-outcomes") return json({ok:false,error:"UNSUPPORTED_MODE"},400);
 
     const {data:treatment,error:te} = await admin.from("nayanet_execution_receipts").select("*").eq("id",treatmentId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (te) throw te;
     const {data:control,error:ce} = await admin.from("nayanet_execution_receipts").select("*").eq("id",controlId).eq("user_id",OWNER_ID).eq("project_id","NayaNET").maybeSingle();
     if (ce) throw ce;
     if (!treatment || !control) { console.error("CVO_REJECT", "PAIRED_ACTION_RECEIPTS_NOT_FOUND", treatmentId, controlId); return json({ok:false,error:"PAIRED_ACTION_RECEIPTS_NOT_FOUND"},404); }
+
+    if (mode === "recover-learning-outcomes") {
+      const evidenceOf = (receipt: any) => {
+        if (Array.isArray(receipt?.evidence)) {
+          return receipt.evidence
+            .filter((item: any) => item && !item?.causal_verification)
+            .reduce((acc: any, item: any) => ({...acc, ...item}), {});
+        }
+        return receipt?.evidence && typeof receipt.evidence === "object" ? receipt.evidence : {};
+      };
+      const controlEvidence = evidenceOf(control);
+      const treatmentEvidence = evidenceOf(treatment);
+      const controlTask = controlEvidence.task_input ?? null;
+      const treatmentTask = treatmentEvidence.task_input ?? null;
+      const sameTask = controlTask !== null && JSON.stringify(controlTask) === JSON.stringify(treatmentTask);
+      const sameLearning = Boolean(controlEvidence.learning_id)
+        && controlEvidence.learning_id === treatmentEvidence.learning_id;
+      const sameSourceEvent = Boolean(controlEvidence.source_event_id)
+        && controlEvidence.source_event_id === treatmentEvidence.source_event_id;
+      const controlValid = String(control.action).startsWith("NAYA-NODE-0001-CONTROL-")
+        && control.status === "SUCCESS"
+        && controlEvidence.condition === "CONTROL"
+        && controlEvidence.retained_intelligence_used === false
+        && controlEvidence.outcome?.task_completed === true
+        && controlEvidence.outcome?.provenance_preserved === false
+        && String(control.observed_result) === String(controlEvidence.behavior ?? "");
+      const treatmentValid = String(treatment.action).startsWith("NAYA-NODE-0001-TREATMENT-")
+        && treatment.status === "SUCCESS"
+        && treatmentEvidence.condition === "TREATMENT"
+        && treatmentEvidence.retained_intelligence_used === true
+        && typeof treatmentEvidence.intelligence_id === "string"
+        && treatmentEvidence.intelligence_id.length > 0
+        && treatmentEvidence.outcome?.task_completed === true
+        && treatmentEvidence.outcome?.provenance_preserved === true
+        && treatmentEvidence.outcome?.intelligent_block_bound === treatmentEvidence.intelligence_id
+        && String(treatment.observed_result) === String(treatmentEvidence.behavior ?? "");
+      const taskId = String(controlTask?.task_id ?? "");
+      if (!sameTask || !sameLearning || !sameSourceEvent || !controlValid || !treatmentValid || taskId !== "NAYA-0001-PROVENANCE-HELDOUT-001") {
+        return json({
+          ok:false,
+          error:"LEARNING_OUTCOME_RECOVERY_PAIR_INVALID",
+          recomputed:{same_task:sameTask,same_learning:sameLearning,same_source_event:sameSourceEvent,control_valid:controlValid,treatment_valid:treatmentValid,task_id:taskId},
+        },409);
+      }
+
+      const {data: existingOutcomes, error: existingOutcomeError} = await admin
+        .from("nayanet_execution_outcomes")
+        .select("outcome_id,receipt_id,experiment_case_id,outcome_type,evidence,verified,verification_method,verified_value")
+        .in("receipt_id",[controlId,treatmentId])
+        .eq("user_id",OWNER_ID)
+        .eq("project_id","NayaNET");
+      if (existingOutcomeError) throw existingOutcomeError;
+      if ((existingOutcomes ?? []).length === 1) {
+        return json({ok:false,error:"LEARNING_OUTCOME_RECOVERY_PARTIAL_STATE",existing_outcomes:existingOutcomes},409);
+      }
+
+      const method = "INDEPENDENT_RUNTIME_RECOMPUTATION_FROM_PERSISTED_CAUSAL_RECEIPTS";
+      if ((existingOutcomes ?? []).length === 0) {
+        const rows = [
+          {
+            receipt_id: controlId,
+            user_id: OWNER_ID,
+            project_id: "NayaNET",
+            experiment_case_id: taskId,
+            outcome_type: "CAUSAL_CONTROL_OUTCOME",
+            verifier_id: OWNER_ID,
+            evidence: {
+              control_condition: true,
+              treatment_condition: false,
+              provenance_present: false,
+              learning_id: controlEvidence.learning_id,
+              source_event_id: controlEvidence.source_event_id,
+              task_input: controlTask,
+              behavior: controlEvidence.behavior,
+              observed_result: control.observed_result,
+              task_completed: true,
+              runtime_identity: "github-actions-oidc",
+              workflow_ref: workflowRef,
+              verifier_token_jti: payload.jti ?? null,
+            },
+            verified: true,
+            verification_method: method,
+          },
+          {
+            receipt_id: treatmentId,
+            user_id: OWNER_ID,
+            project_id: "NayaNET",
+            experiment_case_id: taskId,
+            outcome_type: "CAUSAL_TREATMENT_OUTCOME",
+            verifier_id: OWNER_ID,
+            evidence: {
+              control_condition: false,
+              treatment_condition: true,
+              provenance_present: true,
+              intelligence_id: treatmentEvidence.intelligence_id,
+              learning_id: treatmentEvidence.learning_id,
+              source_event_id: treatmentEvidence.source_event_id,
+              task_input: treatmentTask,
+              behavior: treatmentEvidence.behavior,
+              observed_result: treatment.observed_result,
+              task_completed: true,
+              runtime_identity: "github-actions-oidc",
+              workflow_ref: workflowRef,
+              verifier_token_jti: payload.jti ?? null,
+            },
+            verified: true,
+            verification_method: method,
+          },
+        ];
+        const {error: insertOutcomeError} = await admin.from("nayanet_execution_outcomes").insert(rows);
+        if (insertOutcomeError) throw insertOutcomeError;
+      }
+
+      const {data: recovered, error: rereadError} = await admin
+        .from("nayanet_execution_outcomes")
+        .select("outcome_id,receipt_id,experiment_case_id,outcome_type,evidence,verified,verification_method,verified_value")
+        .in("receipt_id",[controlId,treatmentId])
+        .eq("user_id",OWNER_ID)
+        .eq("project_id","NayaNET");
+      if (rereadError) throw rereadError;
+      if (!Array.isArray(recovered) || recovered.length !== 2) {
+        return json({ok:false,error:"LEARNING_OUTCOME_RECOVERY_REREAD_FAILED",count:Array.isArray(recovered)?recovered.length:0},409);
+      }
+      const byReceipt = new Map(recovered.map((row:any) => [String(row.receipt_id), row]));
+      const recoveredControl:any = byReceipt.get(controlId);
+      const recoveredTreatment:any = byReceipt.get(treatmentId);
+      const valid = recoveredControl?.verified === true
+        && recoveredTreatment?.verified === true
+        && recoveredControl?.verification_method === method
+        && recoveredTreatment?.verification_method === method
+        && recoveredControl?.experiment_case_id === taskId
+        && recoveredTreatment?.experiment_case_id === taskId
+        && recoveredControl?.evidence?.control_condition === true
+        && recoveredControl?.evidence?.provenance_present === false
+        && recoveredTreatment?.evidence?.treatment_condition === true
+        && recoveredTreatment?.evidence?.provenance_present === true
+        && recoveredTreatment?.evidence?.intelligence_id === treatmentEvidence.intelligence_id
+        && JSON.stringify(recoveredControl?.evidence?.task_input) === JSON.stringify(controlTask)
+        && JSON.stringify(recoveredTreatment?.evidence?.task_input) === JSON.stringify(treatmentTask);
+      return json({
+        ok:valid,
+        schema:"NAYANET_CAUSAL_OUTCOME_RECOVERY_V1",
+        independent_verification:valid,
+        executor_claim_trusted:false,
+        recovery_mode:(existingOutcomes ?? []).length === 0 ? "CREATED_AND_REREAD" : "REPLAYED_AND_REREAD",
+        receipt_ids:[controlId,treatmentId],
+        outcomes:recovered,
+        recomputed:{same_task:sameTask,same_learning:sameLearning,same_source_event:sameSourceEvent,control_valid:controlValid,treatment_valid:treatmentValid},
+        workflow_ref:workflowRef,
+        token_jti:payload.jti ?? null,
+      },valid?200:409);
+    }
 
     const {data:treatmentOutcome,error:toe} = await admin
       .from("nayanet_execution_outcomes")

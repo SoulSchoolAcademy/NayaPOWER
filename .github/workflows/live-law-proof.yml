@@ -1,0 +1,201 @@
+name: Live LAW Node Proof
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'supabase/functions/nayanet-law-runtime/**'
+      - 'BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.*'
+      - 'BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.*'
+      - 'BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.*'
+      - 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json'
+      - 'BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json'
+      - '.github/workflows/live-law-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  LAW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-law-runtime
+  SN002_RECEIPT_ID: 102d900e-1dc0-44ce-bde4-9d8d668f4d60
+
+jobs:
+  law-authorize-and-refuse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Mint governed LAW runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: LAW authorizes exact in-scope intelligence commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > authorized-request.json <<'JSON'
+          {
+            "mode":"evaluate",
+            "request":{
+              "action":"intelligence_commit",
+              "target":"NAYA-NODE-0001",
+              "project_id":"NayaNET",
+              "resource_scope":"OWNER_PRIVATE",
+              "privacy":"PRIVATE",
+              "door":{"door_id":"DOOR-DATA","capability_available":true,"operation":"intelligence_commit"}
+            }
+          }
+          JSON
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @authorized-request.json "$LAW_RUNTIME" > authorized-law.json
+          python - <<'PY'
+          import json
+          x=json.load(open("authorized-law.json"))
+          assert x["ok"] is True, x
+          assert x["decision"]["status"]=="AUTHORIZED", x
+          assert x["decision"]["reason"]=="ACTIVE_IN_SCOPE_GRANT", x
+          assert x["decision"]["authority_refs"]==["0e082400-de6d-485e-9ebc-51b34f5debdc"], x
+          assert x["receipt"]["action"]=="law_authority_decision", x
+          json.dump({"authorized_law_receipt_id":x["receipt"]["id"]},open("law-receipt-ids.json","w"),indent=2)
+          PY
+
+      - name: Prove existing SN-002 action used the same authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > existing-action.json <<JSON
+          {"mode":"verify_existing_action","receipt_id":"$SN002_RECEIPT_ID"}
+          JSON
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @existing-action.json "$LAW_RUNTIME" > sn002-authority-proof.json
+          python - <<'PY'
+          import json
+          x=json.load(open("sn002-authority-proof.json"))
+          assert x["ok"] is True, x
+          assert x["status"]=="EXISTING_ACTION_AUTHORITY_VERIFIED", x
+          assert x["decision"]["status"]=="AUTHORIZED", x
+          assert x["action_receipt"]["action"]=="intelligence_commit", x
+          PY
+
+      - name: LAW refuses capability without production authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > refusal-request.json <<'JSON'
+          {
+            "mode":"evaluate",
+            "request":{
+              "action":"production_deploy",
+              "target":"NayaNET",
+              "project_id":"NayaNET",
+              "resource_scope":"PRODUCTION",
+              "privacy":"PRIVATE",
+              "door":{"door_id":"DOOR-GITHUB","capability_available":true,"operation":"production_deploy_trigger"}
+            }
+          }
+          JSON
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @refusal-request.json "$LAW_RUNTIME" > refusal-law.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("law-receipt-ids.json"))
+          x=json.load(open("refusal-law.json"))
+          assert x["ok"] is True, x
+          assert x["decision"]["status"]=="NEEDS_HUMAN_AUTHORIZATION", x
+          assert x["decision"]["reason"]=="CAPABILITY_DOES_NOT_CREATE_AUTHORITY", x
+          assert x["decision"]["capability_available"] is True, x
+          assert x["receipt"]["status"]=="BLOCKED", x
+          ids["refusal_law_receipt_id"]=x["receipt"]["id"]
+          json.dump(ids,open("law-receipt-ids.json","w"),indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: law-primary-proof
+          path: |
+            authorized-law.json
+            refusal-law.json
+            sn002-authority-proof.json
+            law-receipt-ids.json
+
+  independent-law-verification:
+    needs: law-authorize-and-refuse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: law-primary-proof
+
+      - name: Mint independent governed verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Independently reread and recompute both LAW decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          ids=json.load(open("law-receipt-ids.json"))
+          for key,out in [("authorized_law_receipt_id","verify-authorized-request.json"),("refusal_law_receipt_id","verify-refusal-request.json")]:
+              json.dump({"mode":"verify","receipt_id":ids[key]},open(out,"w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-authorized-request.json "$LAW_RUNTIME" > verify-authorized.json
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-refusal-request.json "$LAW_RUNTIME" > verify-refusal.json
+          cat > verify-sn002-request.json <<JSON
+          {"mode":"verify_existing_action","receipt_id":"$SN002_RECEIPT_ID"}
+          JSON
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-sn002-request.json "$LAW_RUNTIME" > verify-sn002.json
+          python - <<'PY'
+          import json
+          a=json.load(open("verify-authorized.json"))
+          r=json.load(open("verify-refusal.json"))
+          s=json.load(open("verify-sn002.json"))
+          assert a["ok"] is True and a["status"]=="LAW_DECISION_VERIFIED", a
+          assert a["recomputed"]["status"]=="AUTHORIZED", a
+          assert r["ok"] is True and r["status"]=="LAW_DECISION_VERIFIED", r
+          assert r["recomputed"]["status"]=="NEEDS_HUMAN_AUTHORIZATION", r
+          assert r["recomputed"]["reason"]=="CAPABILITY_DOES_NOT_CREATE_AUTHORITY", r
+          assert s["ok"] is True and s["status"]=="EXISTING_ACTION_AUTHORITY_VERIFIED", s
+          proof={
+            "schema":"naya.law.live-proof.v1",
+            "status":"PASS",
+            "node_id":"NAYA-KERNEL-LAW",
+            "authorized_case":{
+              "action":"intelligence_commit",
+              "authority_grant_id":"0e082400-de6d-485e-9ebc-51b34f5debdc",
+              "existing_action_receipt_id":"102d900e-1dc0-44ce-bde4-9d8d668f4d60",
+              "decision":"AUTHORIZED"
+            },
+            "refusal_case":{
+              "action":"production_deploy",
+              "door":"DOOR-GITHUB",
+              "capability_available":True,
+              "decision":"NEEDS_HUMAN_AUTHORIZATION",
+              "reason":"CAPABILITY_DOES_NOT_CREATE_AUTHORITY"
+            },
+            "independent_recomputation":True,
+            "law_executes_actions":False,
+            "limits":[
+              "This proves a bounded LAW vertical slice, not universal nine-node runtime binding.",
+              "Issue #978 checkpoint receipt RLS remains a separate open security gap.",
+              "ACT is the next Node implementation frontier."
+            ]
+          }
+          json.dump(proof,open("law-live-proof.json","w"),indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: law-independent-proof
+          path: |
+            verify-authorized.json
+            verify-refusal.json
+            verify-sn002.json
+            law-live-proof.json

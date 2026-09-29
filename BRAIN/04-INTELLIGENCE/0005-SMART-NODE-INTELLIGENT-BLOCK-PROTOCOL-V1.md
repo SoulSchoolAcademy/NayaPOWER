@@ -1,15 +1,15 @@
-# NayaPOWER Smart Node / Intelligent Block Protocol V1
+# NayaPOWER Smart Note / Intelligent Block Protocol V2
 
-**Status:** CANONICAL OPERATING PROTOCOL — HUMAN DIRECTOR RATIFIED 2026-09-28  
+**Status:** CANONICAL OPERATING PROTOCOL — HUMAN DIRECTOR RATIFIED 2026-09-29  
 **Authority:** Shawn Vibert — Human Director / Final Authority  
 **Canonical machine object:** `INTELLIGENT_BLOCK`  
 **Purpose:** Turn valuable information into durable, connected, governed intelligence without creating a new Node family, memory system, graph, authority layer, or unsupported truth claim.
 
 ## 1. Master decision
 
-> **“Make this a Smart Node” is a human operating command, not a new canonical object type.**
+> **“Smart Note this” is the universal human intelligence-capture command. “Make this a Smart Node” remains a supported alias. Neither creates a new canonical object type.**
 
-In Shawn-facing language, a **Smart Node** means:
+In Shawn-facing language, a **Smart Note** command means:
 
 > **preserve this as a high-value reusable intelligence unit and make it discoverable, connected, applicable, provable, learnable, and inheritable.**
 
@@ -30,24 +30,36 @@ NayaPOWER already defines:
 - one canonical intelligence lifecycle;
 - an existing persisted Intelligent Block boundary.
 
-The missing human-to-machine convenience is a durable interpretation of Shawn’s command:
+The canonical NIA-language command is:
 
-`MAKE THIS A SMART NODE`
+`SMART NOTE THIS`
 
-That command now means: route the material through the existing intelligence river.
+It normalizes to `CAPTURE_DURABLE_INTELLIGENCE` and routes the material through the existing intelligence river. NIA Language is defined by `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md`.
 
-## 3. Smart Node command aliases
+## 3. Smart Note command aliases
 
 The following phrases express the same capture intent when context supports it:
 
+- “smart note this”
+- “make a smart note”
+- “save this as a smart note”
 - “make this a smart node”
 - “lock this in”
 - “make this an intelligent block”
 - “save this as reusable intelligence”
+- “capture this as reusable intelligence”
 - “put this into the superbrain”
+- “put this in the brain”
 - “preserve this for the next Naya”
+- “remember this for the next Naya”
+- “don’t lose this”
+- “keep this as intelligence”
+- “document this as intelligence”
+- “make this available to future Nayas”
 
-These phrases request **capture/preservation**. They do not by themselves change empirical proof state, authority, privacy, or applicability.
+These phrases request the **complete bounded Smart Note lifecycle** for the designated material: capture/preservation, canonical commit or reconciliation, indexing, projection, Smart Link publication/deployment, verification, and return of the Smart Link.
+
+They do not by themselves change empirical proof state, widen privacy, grant unrelated authority, or authorize unrelated production work. Shawn does not need to separately say `DEPLOY` merely to finish the same Smart Note request.
 
 If Shawn separately ratifies a policy/architecture decision, record that authority decision distinctly from evidence about whether the decision works.
 
@@ -104,7 +116,7 @@ The river may stop at any legitimate state.
 
 ## 6. Required intelligence envelope
 
-A Smart Node / Intelligent Block must be able to answer:
+A Smart Note / Intelligent Block capture must be able to answer:
 
 - **IDENTITY** — what is this?
 - **PURPOSE** — why preserve it?
@@ -130,7 +142,7 @@ Existing persistence/schema fields remain authoritative where they are more spec
 
 ## 7. Human / AI / machine / proof views
 
-One Smart Node may have multiple views of the same intelligence:
+One Smart Note projection may have multiple views of the same Intelligent Block:
 
 - **Human view:** concise, understandable, actionable.
 - **AI view:** semantics, context, constraints, applicability, conflicts, relationships.
@@ -316,3 +328,115 @@ The novel operational seam locked by this protocol is:
 > **CAPTURE LESS. PRESERVE BETTER. CONNECT WHAT MATTERS. PROVE WHAT CHANGES BEHAVIOR. MAKE THE NEXT NAYA SMARTER WITHOUT MAKING THE SYSTEM HARDER TO UNDERSTAND.**
 
 **One organism. Nine kernel organs. Many minds. One canonical intelligence substrate. Billions of future intelligence units may exist without fragmenting identity, authority, truth, or continuity.**
+
+
+## 16. Canonical projection and Smart Link
+
+After a verified commit, the **primary human-readable Brain projection** belongs at:
+
+`BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`
+
+This hierarchy is intentionally searchable by **year, month, day, category, topic, subtopic, stable Smart Note sequence, and exact Intelligent Block ID**. Exact capture time remains inside the note/provenance rather than acting as the human identity.
+
+The projection is generated from persisted intelligence and includes the canonical IB identity and proof pointers. The repository path is navigational; the Intelligent Block remains the source of truth.
+
+The canonical **Smart Link** is the independently verified direct GitHub link to the Brain Markdown projection whenever publication/share scope permits it. That is the primary human receipt.
+
+For PRIVATE personal intelligence that has **not** been authorized for publication, the system must use an authenticated private human projection instead and MUST NOT publish private intelligence into the public repository.
+
+A PRIVATE canonical Block may still have a PUBLIC derived projection only when the Human Director explicitly authorizes sharing/publication of that intelligence. The public projection must avoid unnecessary private identity/source material.
+
+Workflow, PR, commit, artifact, and evidence URLs are proof links, not Smart Links.
+
+Machine discovery uses the runtime intelligence index plus the projection registry `.naya/memory/smart-notes/index.json`; directory crawling is not the primary discovery mechanism.
+
+The Brain Markdown is a **human/AI-readable projection**, not a competing persistence authority. Supabase/receiver-owned Intelligent Block identity and provenance remain machine-canonical.
+
+
+## 17. Smart Note completion authority
+
+An explicit Smart Note command from Shawn is already execution authority to finish that Smart Note end-to-end within existing scope.
+
+The system MUST NOT stop after persistence and ask for a second deployment confirmation merely to publish the Smart Link for the same requested note.
+
+The bounded authority is:
+
+```
+SMART NOTE THIS
+→ capture
+→ distill
+→ reconcile
+→ commit
+→ index
+→ project
+→ deploy/publish Smart Link viewer as needed
+→ verify
+→ return Smart Link
+```
+
+This does not authorize unrelated deployments or privacy/truth-state changes.
+
+
+## 18. Required human Smart Note format
+
+The human projection MUST optimize for fast comprehension and should normally contain these views of the same intelligence:
+
+1. **IN A NUTSHELL**
+2. **HUMAN NOTE**
+3. **CHILD NOTE**
+4. **GRANDMA NOTE**
+5. **NAYA NOTE**
+6. **MACHINE NOTE**
+7. **LEARNING LESSON**
+8. **WHAT IT MEANS / ULTIMATE SIGNIFICANCE**
+9. **WHAT'S IN IT FOR YOU**
+10. **HOW TO APPLY / HOW TO USE**
+11. **HOW IT CONNECTS**
+12. **KEY DECISIONS / PRINCIPLES**
+13. **PROOF / PROVENANCE**
+14. **TRUTH BOUNDARY / UNCERTAINTY**
+15. **NEXT ACTION / SUCCESS CONDITION**
+
+A long source may require more detail, but the note must remain skimmable. One intelligence may have many perspectives; those perspectives MUST NOT become separate intelligence objects.
+
+## 19. End-to-end Smart Note product flow
+
+```
+HUMAN: "SMART NOTE THIS"
+→ NIA LANGUAGE NORMALIZES INTENT
+→ DISTILL DURABLE INTELLIGENCE
+→ CHECK PRIVACY / VALUE / DUPLICATES / CONFLICTS
+→ CANONICAL RECEIVER COMMIT OR RECONCILE
+→ EVENT + INTELLIGENT BLOCK + LINEAGE + RELATIONSHIP + INDEX + RECEIPT
+→ INDEPENDENT REREAD / PROOF
+→ CREATE BRAIN HUMAN MARKDOWN PROJECTION
+→ REGISTER DIRECT GITHUB SMART LINK
+→ PROJECT SAME IB INTO HUB PERSONAL INTELLIGENCE
+→ IF HUMAN CHOOSES TO SHARE: PROJECT DISTILLED INTELLIGENCE INTO COLLECTIVE INTELLIGENCE
+→ FUTURE NAYAS RETRIEVE CONTEXTUALLY
+→ AUTHORIZED APPLICATION
+→ OBSERVE OUTCOME
+→ VERIFY
+→ LEARN / COMPOUND WHEN EVIDENCE WARRANTS
+```
+
+**The Hub is a projection of the intelligence, not the canonical brain. GitHub Brain Markdown is the human-readable memory projection. Supabase is the runtime machine persistence. The Intelligent Block identity binds them together.**
+
+
+## 20. Human Smart Note identity
+
+Every projected Smart Note receives a stable human ID:
+
+`SN-001, SN-002, SN-003, ...`
+
+This ID is for human navigation and communication.
+
+It does not replace:
+- the canonical machine `IB-...` identity;
+- the Event identity;
+- the exact capture timestamp;
+- provenance or truth-state evidence.
+
+Law:
+
+> **SN-ID tells humans which Smart Note. IB-ID tells the machine which intelligence object. Timestamp tells history when it happened.**

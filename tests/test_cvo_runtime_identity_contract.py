@@ -37,3 +37,40 @@ def test_cvo_runtime_persists_and_re_reads_verification():
     assert "OUTCOME_VERIFIED" in source
     assert "independent_verification" in source
     assert "production_action_executed" in source
+
+
+def test_cvo_runtime_has_bounded_independent_outcome_recovery():
+    source = FUNCTION.read_text(encoding="utf-8")
+    assert 'mode === "recover-learning-outcomes"' in source
+    assert "LEARNING_OUTCOME_RECOVERY_PAIR_INVALID" in source
+    assert "LEARNING_OUTCOME_RECOVERY_PARTIAL_STATE" in source
+    assert "INDEPENDENT_RUNTIME_RECOMPUTATION_FROM_PERSISTED_CAUSAL_RECEIPTS" in source
+    assert 'String(control.action).startsWith("NAYA-NODE-0001-CONTROL-")' in source
+    assert 'String(treatment.action).startsWith("NAYA-NODE-0001-TREATMENT-")' in source
+    assert 'taskId !== "NAYA-0001-PROVENANCE-HELDOUT-001"' in source
+    assert 'controlEvidence.outcome?.provenance_preserved === false' in source
+    assert 'treatmentEvidence.outcome?.provenance_preserved === true' in source
+    assert '.from("nayanet_execution_outcomes").insert(rows)' in source
+    assert '"CREATED_AND_REREAD"' in source
+    assert '"REPLAYED_AND_REREAD"' in source
+
+
+def test_outcome_recovery_cannot_create_authority_or_trust_executor_claim():
+    source = FUNCTION.read_text(encoding="utf-8")
+    recovery = source[source.index('if (mode === "recover-learning-outcomes")'):source.index('const {data:treatmentOutcome', source.index('if (mode === "recover-learning-outcomes")'))]
+    assert "nayanet_issue_authority_grant" not in recovery
+    assert "executor_claim_trusted:false" in recovery
+    assert "verified: true" in recovery
+    assert "verifier_token_jti" in recovery
+
+
+def test_historical_outcome_recovery_is_manual_and_bounded_to_audited_pair():
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    assert "recover_historical_outcomes" in workflow
+    assert "historical-outcome-recovery:" in workflow
+    assert "github.event_name == 'workflow_dispatch'" in workflow
+    assert '"mode":"recover-learning-outcomes"' in workflow
+    assert "5b072812-699f-415d-b759-2ed509c36367" in workflow
+    assert "109944fc-9868-45e3-a532-f40952aea3a1" in workflow
+    assert "NAYANET_CAUSAL_OUTCOME_RECOVERY_V1" in workflow
+    assert "executor_claim_trusted" in workflow
