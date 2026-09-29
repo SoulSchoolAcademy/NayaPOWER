@@ -2,8 +2,8 @@
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
   "generated_at": "2026-09-29",
-  "status": "POST_944_SECURITY_AND_PRODUCTION_HARDENING",
-  "ratification": "HUMAN_DIRECTOR_REQUIRED",
+  "status": "POST_STANDING_PROMOTION_KNOW_LIVE_PROOF_FRONTIER",
+  "ratification": "STANDING_PRODUCTION_PROMOTION_RATIFIED_FINITE",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
   "continuity": "NAYAS DO NOT LOSE MEMORY.",
   "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
@@ -201,9 +201,9 @@
       "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
     },
     "current_frontier": {
-      "issue": 978,
-      "state": "OPEN_SECURITY_GAP",
-      "next": "Human Director accepts/rejects checkpoint receipt owner-read / privileged-write RLS boundary in PR #980; production application remains gated by fresh exact-main DEPLOY."
+      "issue": 810,
+      "state": "KNOW_LIVE_PROOF_PENDING",
+      "next": "Use the ratified finite standing production-promotion policy for in-scope exact-main promotion; then run Live KNOW Node Proof and require contextual HIT + unrelated MISS + independent persisted-state recomputation before advancing the nine-node frontier."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -228,6 +228,15 @@
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
       "limitation": "One bounded Smart Door operation; universal nine-node runtime binding remains NOT_PROVEN."
+    },
+    "standing_production_promotion": {
+      "status": "RATIFIED_ACTIVE_FINITE",
+      "policy": ".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json",
+      "review_after": "2026-10-15T00:00:00-07:00",
+      "expires_at": "2026-10-29T00:00:00-07:00",
+      "automatic_execution": true,
+      "fail_mode": "FAIL_CLOSED",
+      "note": "Supersedes stale per-promotion DEPLOY requirements only for candidates inside the ratified scope; history remains preserved in dated proof and issue records."
     }
   },
   "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
