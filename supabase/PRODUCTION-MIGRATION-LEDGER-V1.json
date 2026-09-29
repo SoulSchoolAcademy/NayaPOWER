@@ -5,7 +5,7 @@
   "source_project_ref": "dahisasgpfvziswqvmvm",
   "source_table": "supabase_migrations.schema_migrations",
   "authority_note": "Repository reconstruction from authoritative production migration history; does not mutate remote migration metadata.",
-  "production_applied_count": 143,
+  "production_applied_count": 144,
   "production_applied": [
     {
       "version": "20260827011050",
@@ -1293,18 +1293,18 @@
       "statement_count": 1,
       "bytes": 7209,
       "status": "PRODUCTION_APPLIED"
-    }
-  ],
-  "pending": [
+    },
     {
-      "version": "20260929040000",
-      "name": "immutable_checkpoint_receipts_v1",
-      "path": "supabase/migrations/20260929040000_immutable_checkpoint_receipts_v1.sql",
-      "sha256": "94aabddd053869cc86380b14e223d5a47f70e76818e9f69342930af0dd71e8b7",
-      "bytes": 3384,
-      "status": "PENDING_NOT_APPLIED"
+      "version": "20260929033624",
+      "name": "20260929040000_immutable_checkpoint_receipts_v1",
+      "path": "supabase/migrations/20260929033624_20260929040000_immutable_checkpoint_receipts_v1.sql",
+      "sha256": "e3de99ba1b7dc959355178d65d3ca766ef40e1e2d641660483af29bd51177d84",
+      "statement_count": 1,
+      "bytes": 3398,
+      "status": "PRODUCTION_APPLIED"
     }
   ],
+  "pending": [],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {

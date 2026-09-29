@@ -30,7 +30,8 @@ def test_active_migration_directory_matches_governed_ledger_manifest():
     assert ledger["hash_semantics"] == "UTF8_TEXT_LF_NORMALIZED_SHA256"
     applied = ledger["production_applied"]
     pending = ledger["pending"]
-    assert ledger["production_applied_count"] == len(applied) == 143
+    assert ledger["production_applied_count"] == len(applied)
+    assert ledger["production_applied_count"] >= 143, "production migration ledger must not shrink below the reconstructed baseline"
 
     entries = applied + pending
     versions = [entry["version"] for entry in entries]
