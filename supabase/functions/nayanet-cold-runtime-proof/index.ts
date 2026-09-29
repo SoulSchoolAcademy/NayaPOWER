@@ -41,10 +41,13 @@ async function auth(req: Request) {
   try { payload = (await jwtVerify(h.slice(7), JWKS, { issuer: ISSUER, audience: AUDIENCE })).payload as Record<string, unknown>; }
   catch { throw new Error("GITHUB_OIDC_INVALID"); }
   const workflowRef = REPOSITORY + "/" + WORKFLOW + "@" + REF;
-  const repositoryMatch = payload.repository === REPOSITORY;
-  const workflowRefMatch = payload.workflow_ref === workflowRef;
-  const refMatch = payload.ref === REF;
-  if (!repositoryMatch || !workflowRefMatch || !refMatch) {
+  const repositoryMismatch = payload.repository !== REPOSITORY;
+  const workflowRefMismatch = payload.workflow_ref !== workflowRef;
+  const refMismatch = payload.ref !== REF;
+  const repositoryMatch = !repositoryMismatch;
+  const workflowRefMatch = !workflowRefMismatch;
+  const refMatch = !refMismatch;
+  if (repositoryMismatch || workflowRefMismatch || refMismatch) {
     console.error("WORKFLOW_BINDING_MISMATCH", { repositoryMatch, workflowRefMatch, refMatch, workflow_ref: String(payload.workflow_ref ?? ""), ref: String(payload.ref ?? "") });
     throw new Error("WORKFLOW_BINDING_MISMATCH");
   }
