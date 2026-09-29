@@ -123,3 +123,21 @@ test("KNOW excludes capability-matching intelligence scoped to another target",(
   assert.equal(isEligibleBlock(req(),wrongTarget),false);
   assert.equal(selectKnowContext(req(),[wrongTarget]).status,"MISS");
 });
+
+
+test("KNOW refuses missing or future LAW evaluated_at",()=>{
+  const missing=law();
+  delete missing.evidence.law_decision.evaluated_at;
+  assert.equal(validateKnowAuthority(req(),missing,grant(),NOW).reason,"LAW_EVALUATED_AT_INVALID");
+  const future=law();
+  future.evidence.law_decision.evaluated_at="2026-09-29T20:01:00Z";
+  assert.equal(validateKnowAuthority(req(),future,grant(),NOW).reason,"LAW_EVALUATED_AT_INVALID");
+});
+
+test("KNOW accepts only the bounded naya_node_apply parent action",()=>{
+  const wrong=law();
+  wrong.evidence.law_request.action="intelligence_commit";
+  wrong.evidence.law_decision.action="intelligence_commit";
+  const broadGrant=grant({actions:["naya_node_apply","intelligence_commit"]});
+  assert.equal(validateKnowAuthority(req(),wrong,broadGrant,NOW).reason,"LAW_ACTION_MISMATCH");
+});
