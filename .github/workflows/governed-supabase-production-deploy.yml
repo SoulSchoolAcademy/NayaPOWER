@@ -56,12 +56,13 @@ jobs:
           print(f"stamped deployed source revision: {os.environ['GITHUB_SHA']}")
           PY
 
-      - name: Deploy the three governed runtime functions
+      - name: Deploy the four governed runtime functions
         run: |
           set -euo pipefail
           supabase functions deploy nayanet-cold-runtime-proof --use-api --project-ref "$SUPABASE_PROJECT_ID"
           supabase functions deploy nayanet-intelligence-commit-runtime --use-api --project-ref "$SUPABASE_PROJECT_ID"
           supabase functions deploy nayanet-causal-learning-experiment --use-api --project-ref "$SUPABASE_PROJECT_ID"
+          supabase functions deploy nayanet-learning-verify --use-api --project-ref "$SUPABASE_PROJECT_ID"
 
       - name: Dispatch the canonical live proof workflow
         env:
