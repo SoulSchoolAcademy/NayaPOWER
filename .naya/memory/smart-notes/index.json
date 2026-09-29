@@ -42,8 +42,8 @@
         "exact_content_hash": "REUSE_EXISTING",
         "semantic_near_duplicate": "CANDIDATE_REVIEW_REQUIRED"
       },
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
-      "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/170607Z/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
+      "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
       "captured_at_utc": "2026-09-29T17:06:07.826513Z",
       "viewer": {
         "type": "AUTHENTICATED_PRIVATE_SMART_LINK",
@@ -52,7 +52,103 @@
       },
       "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
       "canonical_block_scope": "PRIVATE",
-      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae"
+      "private_runtime_link": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae",
+      "smart_note_id": "SN-001",
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-002",
+      "intelligent_block_id": "IB-SMART-NOTE-20260929-sn002-smart-note-node-flow",
+      "title": "How Smart Notes, Intelligent Blocks, Master Nodes, Learning, Brain, and Hub Work Together",
+      "captured_at": "2026-09-29",
+      "captured_at_utc": "2026-09-29T18:47:45.497595Z",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SMART_NOTE_NODE_OPERATING_FLOW",
+      "subtopic": "END_TO_END_PROTOCOL",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md",
+      "content_hash": "6739866ef97369069c22f7c4ed0f7ef251cd0a0f2c842fa7e9259c24c79379a4",
+      "timestamp_role": "PROVENANCE_ONLY",
+      "keywords": [
+        "smart note",
+        "master nodes",
+        "intelligent block",
+        "learning",
+        "brain",
+        "hub",
+        "personal intelligence",
+        "collective intelligence",
+        "runtime",
+        "retrieval"
+      ],
+      "provenance": {
+        "event_id": "f0fc7adf-e69f-4b8a-bc21-f2c20e2ff2f5",
+        "event_key": "SMART-NOTE-20260929-sn002-smart-note-node-flow",
+        "block_row_id": "7490ee22-7300-4aa4-b55a-a288b296b084",
+        "lineage_id": "79d7579f-cc2e-4d47-b0db-1189f9c2507b",
+        "relationship_id": "72f0783e-fbe3-4c8f-9f1c-8967218e02be",
+        "runtime_index_id": "e91e9a0a-6f68-438b-8a98-c0df0829c194",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "102d900e-1dc0-44ce-bde4-9d8d668f4d60",
+        "runtime_identity": "naya-node-oidc",
+        "checkpoint_semantics": "MUTABLE_PROJECT_STATE_POINTER",
+        "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE"
+      },
+      "proven_relationship": {
+        "source_id": "NAYA-KERNEL-KNOW",
+        "relationship_type": "PRODUCES",
+        "target_id": "IB-SMART-NOTE-20260929-sn002-smart-note-node-flow"
+      },
+      "proof_boundary": {
+        "persisted_runtime": true,
+        "exact_intelligence_present": true,
+        "universal_nine_node_binding": "NOT_PROVEN",
+        "automatic_live_hub_projection": "NOT_UNIVERSALLY_PROVEN"
+      }
+    },
+    {
+      "smart_note_id": "SN-003",
+      "intelligent_block_id": "IB-SMART-NOTE-20260929-sn003-naya-continuation-engine",
+      "title": "Naya Continuation Engine — Reconstruct, Find Holes, Execute, Prove, Record, Reassess",
+      "captured_at": "2026-09-29",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "NAYA_CONTINUATION_ENGINE",
+      "subtopic": "ONE_NEXT_ACTION_AND_PROOF",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "0a951ee2-1e11-46c7-bfd3-142cc9b678d2",
+        "lineage_id": "5f364f86-a122-4814-be04-8bc54348fd5e",
+        "relationship_id": "63566650-db71-4eb7-8b37-b465fc314f6b",
+        "runtime_index_id": "8d51b747-4d54-4827-a618-2eafaaecabc3",
+        "receipt_id": "5402bbae-7f8d-4525-80cf-d723363d9082"
+      }
     }
-  ]
+  ],
+  "sequence_policy": {
+    "human_id_format": "SN-###",
+    "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
+    "next_sequence": 4,
+    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
+  }
 }

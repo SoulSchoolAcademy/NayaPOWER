@@ -334,9 +334,9 @@ The novel operational seam locked by this protocol is:
 
 After a verified commit, the **primary human-readable Brain projection** belongs at:
 
-`BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md`
+`BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`
 
-This hierarchy is intentionally searchable by **year, month, day, category, topic, subtopic, time, and exact Intelligent Block ID**.
+This hierarchy is intentionally searchable by **year, month, day, category, topic, subtopic, stable Smart Note sequence, and exact Intelligent Block ID**. Exact capture time remains inside the note/provenance rather than acting as the human identity.
 
 The projection is generated from persisted intelligence and includes the canonical IB identity and proof pointers. The repository path is navigational; the Intelligent Block remains the source of truth.
 
@@ -421,3 +421,22 @@ HUMAN: "SMART NOTE THIS"
 ```
 
 **The Hub is a projection of the intelligence, not the canonical brain. GitHub Brain Markdown is the human-readable memory projection. Supabase is the runtime machine persistence. The Intelligent Block identity binds them together.**
+
+
+## 20. Human Smart Note identity
+
+Every projected Smart Note receives a stable human ID:
+
+`SN-001, SN-002, SN-003, ...`
+
+This ID is for human navigation and communication.
+
+It does not replace:
+- the canonical machine `IB-...` identity;
+- the Event identity;
+- the exact capture timestamp;
+- provenance or truth-state evidence.
+
+Law:
+
+> **SN-ID tells humans which Smart Note. IB-ID tells the machine which intelligence object. Timestamp tells history when it happened.**

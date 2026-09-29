@@ -2,8 +2,8 @@
   "schema": "naya.intelligent.object.v1",
   "object_id": "NAYA-KERNEL-LAW",
   "object_type": "NODE",
-  "version": "1.1",
-  "canonical_status": "CANDIDATE",
+  "version": "2.0",
+  "canonical_status": "VERIFIED_BOUNDED",
   "owner_id": "NAYA-KERNEL-LAW",
   "scope": "NayaPOWER kernel",
   "human_view": {
@@ -13,33 +13,39 @@
     "uncertainty": "Behavioral/runtime proof remains pending unless separately evidenced."
   },
   "ai_view": {
-    "purpose": "authority, consent, scope, governance, revocation",
+    "purpose": "Decide whether a proposed use or action is permitted from identity, requested action, target, scope/privacy/consent, governing grants/policies, constraints and freshness.",
     "inputs": [
-      "identity",
-      "intent",
-      "state",
-      "context",
-      "authority",
-      "intelligence",
-      "evidence",
-      "relationships"
+      "identity_context",
+      "requested_action",
+      "target",
+      "owner_scope",
+      "privacy",
+      "consent/publication intent",
+      "authority grants",
+      "Smart Door capability metadata",
+      "retrieval/successor claims"
     ],
     "outputs": [
-      "understanding",
-      "decision_context",
-      "action_context",
-      "evidence_context",
-      "learning_context",
-      "successor_context"
+      "AUTHORIZED | BLOCKED | NEEDS_HUMAN_AUTHORIZATION",
+      "reason code",
+      "authority refs",
+      "policy refs",
+      "freshness/expiration"
     ],
-    "failure_mode": "fail closed when required context, authority, provenance, evidence, or protected boundaries are unresolved"
+    "failure_mode": "fail closed on missing identity, revoked/expired authority, retrieval-as-authority, successor authority inheritance, privacy widening, or unresolved consequential authority",
+    "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
   },
   "machine_view": {
     "node_name": "LAW",
     "stable_id": "NAYA-KERNEL-LAW",
     "contract": "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md",
     "domain": "03-KERNEL",
-    "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md"
+    "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
+    "runtime": "supabase/functions/nayanet-law-runtime/index.ts",
+    "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+    "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+    "universal_envelope": "naya.master-node-envelope.v1",
+    "neighbor_handoff": "NAYA-KERNEL-ACT"
   },
   "provenance": {
     "derived_from": [
@@ -49,10 +55,15 @@
     "source_concepts": "see population map"
   },
   "proof": {
-    "implementation_status": "DOCUMENTED",
-    "behavioral_status": "NOT_PROVEN",
-    "production_status": "NOT_PROVEN",
-    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING"
+    "implementation_status": "EXECUTABLE_DEPLOYED",
+    "behavioral_status": "PROVEN_BOUNDED",
+    "production_status": "PROVEN_BOUNDED_EXACT_REVISION",
+    "relationships_status": "ALIGNED_TO_CANONICAL_GRAPH_SEED; RUNTIME_RELATIONSHIP_PROOF_PENDING",
+    "organism_binding": "CONTRACT_ALIGNED_EXECUTABLE_SOURCE_PENDING_LIVE_PROOF",
+    "live_run": 36620001626,
+    "live_source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+    "live_proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
+    "limitation": "Does not establish universal nine-node runtime binding or ACT execution proof."
   },
   "relationships": [
     {
@@ -83,5 +94,5 @@
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
   ],
-  "successor_effect": "Preserve only the semantic state needed for future continuation; never manufacture authority."
+  "successor_effect": "Successor receives LAW decision context/evidence only; authority itself is never inherited from context."
 }

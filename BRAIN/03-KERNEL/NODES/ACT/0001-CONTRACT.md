@@ -25,6 +25,8 @@ ACT converts governed intent into safe execution. It ensures that authorized act
 ## MUST Rules
 
 - Consume authorized context before any action.
+- Validate LAW evaluation time before private intelligence access or execution: it must be present, parseable and no later than the current clock. Enforce the registered Door's maximum age. A missing or malformed timestamp cannot establish freshness.
+- Reject malformed non-null expiry on the LAW decision or current live grant. Null or absent expiry is unbounded; expiry at the current clock is expired. Reread live authority even when the LAW receipt remains fresh.
 - Select the minimum sufficient action.
 - Respect refusal, confirmation and reversibility boundaries.
 - Define expected outcome and proof before consequential execution where practical.
@@ -53,6 +55,8 @@ ACT converts governed intent into safe execution. It ensures that authorized act
 | Failure | Behavior |
 |---|---|
 | Authorization missing | Halt; do not execute |
+| LAW evaluation time missing, malformed or future | Persist `LAW_RECEIPT_TIME_INVALID` refusal before intelligence access |
+| Authority expiry malformed | Persist `LAW_AUTHORITY_TIME_INVALID` or `LIVE_AUTHORITY_TIME_INVALID` refusal before intelligence access |
 | Execution fails | Record failure; emit receipt; do not retry blindly |
 | Reversibility violated | Halt; alert; attempt rollback |
 | Proof requirement unmet | Mark outcome as UNVERIFIED |

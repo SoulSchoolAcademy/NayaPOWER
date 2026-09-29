@@ -187,7 +187,7 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/download-artifact@v4
         with:
-          name: fresh-lesson-lineage
+          name: smart-note-lineage
           path: fresh-lineage
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}

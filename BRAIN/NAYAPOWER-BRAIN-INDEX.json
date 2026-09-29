@@ -211,6 +211,23 @@
       "proof_run": "36519233015_attempt_2",
       "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
       "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
+    },
+    "law_node": {
+      "status": "PROVEN_BOUNDED",
+      "run": 36620001626,
+      "source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
+      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e",
+      "limitation": "Universal nine-node runtime binding remains NOT_PROVEN."
+    },
+    "act_node": {
+      "status": "PROVEN_BOUNDED",
+      "run": 36622283683,
+      "source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+      "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
+      "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
+      "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
+      "limitation": "One bounded Smart Door operation; universal nine-node runtime binding remains NOT_PROVEN."
     }
   },
   "last_reconciled_main": "de813e9df08af2f860601f98a56ac68562a8c095",
@@ -222,13 +239,26 @@
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 978,
     "next_proof": "Secure immutable checkpoint evidence with owner-read RLS; then fresh exact-main governed deployment → #975 recovery → #810 live nine-node acceptance.",
-    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection."
+    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
+    "active_node_frontier": "ACT_BOUNDED_LIVE_PROVEN",
+    "next_node_after_law": "ACT",
+    "next_node_after_act": "KNOW"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
-    "pattern": "YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md",
+    "pattern": "YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md",
     "machine_source_of_truth": "Supabase INTELLIGENT_BLOCK",
     "projection_registry": ".naya/memory/smart-notes/index.json",
-    "primary_human_receipt": "direct GitHub Markdown Smart Link"
+    "primary_human_receipt": "direct GitHub Markdown Smart Link",
+    "human_identity": "SN-###",
+    "machine_identity": "IB-...",
+    "timestamp_role": "provenance metadata"
+  },
+  "nine_node_organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+  "nine_node_organism_map": "BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.json",
+  "smart_doors": {
+    "contract": "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json",
+    "registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+    "law": "capability does not create authority; LAW decides, ACT invokes, VERIFY checks result"
   }
 }
