@@ -19,7 +19,7 @@ env:
   GRANT_ID: 0e082400-de6b-485e-9ebc-51b34f5debdc
 
 jobs:
-  capture-or-reconcile:
+  fresh-lesson:
     if: ${{ !contains(github.event.head_commit.message || '', '[smart-note-projection]') }}
     runs-on: ubuntu-latest
     steps:
@@ -130,8 +130,8 @@ jobs:
             smart-note-expected.json
             reconciliation.json
 
-  independent-verification-and-projection:
-    needs: capture-or-reconcile
+  independent-verification:
+    needs: fresh-lesson
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -204,24 +204,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ ! -f projection-result.json ]]; then exit 0; fi
-          python - <<'PY'
+          if [[ -f projection-result.json ]]; then
+            python - <<'PY'
           import json, pathlib
           x=json.load(open("projection-result.json"))
           e=x["entry"]
           pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status")=="READY" else "no")
           PY
-          if [[ "$(cat publish-ok.txt)" != "yes" ]]; then
-            echo "Private projection verified locally; public Smart Link intentionally not created."
-            exit 0
+            if [[ "$(cat publish-ok.txt)" == "yes" ]]; then
+              git config user.name "Naya Smart Note Projector"
+              git config user.email "actions@users.noreply.github.com"
+              git add .naya/memory/smart-notes
+              if ! git diff --cached --quiet; then
+                git commit -m "chore(smart-note): publish verified projection [smart-note-projection]"
+                git pull --rebase origin main
+                git push origin HEAD:main
+              fi
+            else
+              echo "Private projection verified locally; public Smart Link intentionally not created."
+            fi
           fi
-          git config user.name "Naya Smart Note Projector"
-          git config user.email "actions@users.noreply.github.com"
-          git add .naya/memory/smart-notes
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "chore(smart-note): publish verified projection [smart-note-projection]"
-          git pull --rebase origin main
-          git push origin HEAD:main
 
       - uses: actions/upload-artifact@v4
         with:
@@ -231,7 +233,7 @@ jobs:
             projection-result.json
 
   cold-successor-held-out:
-    needs: independent-verification-and-projection
+    needs: independent-verification
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
