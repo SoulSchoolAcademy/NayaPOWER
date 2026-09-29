@@ -12,57 +12,105 @@ on:
 permissions:
   contents: read
   actions: write
+  id-token: write
 
 env:
   SUPABASE_PROJECT_ID: dahisasgpfvziswqvmvm
   PROOF_WORKFLOW: live-supabase-runtime-proof.yml
+  DEPLOY_BROKER_URL: ${{ vars.NAYANET_DEPLOYMENT_BROKER_URL }}
 
 jobs:
   deploy-and-prove:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
     steps:
-      - name: Require explicit production authorization
+      - name: Require explicit human production authorization
+        shell: bash
         run: |
           set -euo pipefail
           test "${{ inputs.confirm }}" = "DEPLOY"
-          test -n "${SUPABASE_ACCESS_TOKEN}"
+          test -n "${DEPLOY_BROKER_URL}"
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
 
-      - uses: supabase/setup-cli@3c2f5e2ae34c34e428e8e206e2c4d21fa2d20fbf # v2.1.1
-        with:
-          version: latest
+      - name: Mint short-lived governed deployment identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS \
+            -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-production-deploy" \
+            | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          test -n "$token"
+          printf '%s' "$token" > "$RUNNER_TEMP/deploy-oidc.jwt"
 
-      - name: Stamp the deployed source revision in the working tree
+      - name: Build immutable governed deployment request
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          from pathlib import Path
-          import os
-          p = Path("supabase/functions/nayanet-cold-runtime-proof/index.ts")
-          s = p.read_text(encoding="utf-8")
-          sentinel = 'const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
-          replacement = f'const DEPLOYED_SOURCE_REVISION = "{os.environ["GITHUB_SHA"]}";'
-          if s.count(sentinel) != 1:
-              raise SystemExit("expected exactly one UNSTAMPED revision sentinel")
-          p.write_text(s.replace(sentinel, replacement), encoding="utf-8")
-          print(f"stamped deployed source revision: {os.environ['GITHUB_SHA']}")
+          import json, os
+          request = {
+              "schema": "NAYANET_GOVERNED_DEPLOYMENT_REQUEST_V1",
+              "human_authorization":"DEPLOY",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "ref": os.environ["GITHUB_REF"],
+              "source_revision":os.environ["GITHUB_SHA"],
+              "project_id": os.environ["SUPABASE_PROJECT_ID"],
+              "functions":[
+                  "nayanet-cold-runtime-proof",
+                  "nayanet-intelligence-commit-runtime",
+                  "nayanet-causal-learning-experiment",
+                  "nayanet-learning-verify",
+              ],
+              "proof_workflow": os.environ["PROOF_WORKFLOW"],
+          }
+          json.dump(request, open("deployment-request.json","w"), indent=2)
           PY
 
-      - name: Deploy the four governed runtime functions
+      - name: Execute deployment through OIDC-authenticated machine broker
+        shell: bash
         run: |
           set -euo pipefail
-          supabase functions deploy nayanet-cold-runtime-proof --use-api --project-ref "$SUPABASE_PROJECT_ID"
-          supabase functions deploy nayanet-intelligence-commit-runtime --use-api --project-ref "$SUPABASE_PROJECT_ID"
-          supabase functions deploy nayanet-causal-learning-experiment --use-api --project-ref "$SUPABASE_PROJECT_ID"
-          supabase functions deploy nayanet-learning-verify --use-api --project-ref "$SUPABASE_PROJECT_ID"
+          http_status="$(curl -sS \
+            -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/deploy-oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data-binary @deployment-request.json \
+            -o deployment-response.json \
+            -w "%{http_code}" \
+            "$DEPLOY_BROKER_URL")"
+          cat deployment-response.json
+          echo "HTTP_STATUS=$http_status"
+          test "$http_status" = "200"
+          python - <<'PY'
+          import json, os
+          response=json.load(open("deployment-response.json"))
+          expected=[
+              "nayanet-cold-runtime-proof",
+              "nayanet-intelligence-commit-runtime",
+              "nayanet-causal-learning-experiment",
+              "nayanet-learning-verify",
+          ]
+          assert response.get("ok") is True, response
+          assert response.get("runtime_identity") == "github-actions-oidc", response
+          assert response.get("source_revision") == os.environ["GITHUB_SHA"], response
+          assert response.get("project_id") == os.environ["SUPABASE_PROJECT_ID"], response
+          assert sorted(response.get("deployed_functions", [])) == sorted(expected), response
+          assert response.get("provider_authentication") != "recurring-human-token", response
+          json.dump(response, open("deployment-receipt.json","w"), indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: governed-production-deployment-receipt
+          path: |
+            deployment-request.json
+            deployment-response.json
+            deployment-receipt.json
 
       - name: Dispatch the canonical live proof workflow
         env:
