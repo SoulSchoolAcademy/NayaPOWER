@@ -60,3 +60,11 @@ def test_governed_promotion_revalidates_authorized_source_and_deployment_before_
     assert 'if [ "$producer_head" != "$GITHUB_SHA" ]; then' in source
     assert 'gh run cancel "$run_id"' in source
     assert "main moved after producer dispatch; refusing to continue." in source
+
+
+def test_governed_promotion_dispatches_runtime_proof_directly():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
+    assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
+    assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
+    assert "workflow_run" not in source
