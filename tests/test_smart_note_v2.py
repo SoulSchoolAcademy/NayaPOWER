@@ -39,3 +39,17 @@ def test_historical_checkpoint_binding_uses_object_local_receipt_semantics():
     assert entry["provenance"]["historical_checkpoint_binding"] == "EXECUTION_RECEIPT_EVIDENCE"
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert "RECEIPT_OBJECT_LOCAL_SNAPSHOT" in workflow
+
+def test_smart_note_command_is_standing_authority_for_same_note_lifecycle():
+    nia = (ROOT / "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md").read_text()
+    assert "No second `DEPLOY` confirmation is required" in nia
+    assert "One command, one complete Smart Note lifecycle" in nia
+    assert "does **not** authorize unrelated product releases" in nia
+
+def test_registered_smart_link_is_active_and_exact():
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
+    assert entry["smart_link_status"] == "ACTIVE"
+    assert entry["projection_status"] == "LIVE_PRIVATE_VIEWER"
+    assert entry["smart_link"].endswith("nayanet-smart-note-viewer?ib=IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
+    assert entry["canonical_brain_path"].endswith("/IB-SMART-NOTE-20260929-b8f141805fa0d7ae/smart-note.md")
