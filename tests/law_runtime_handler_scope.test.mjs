@@ -15,12 +15,12 @@ const claims = {
   jti: 'offline-law-scope-jti',
 };
 
-function runtime(scope, identity = claims, failReceipt = false) {
+function runtime(scope, identity = claims, failReceipt = false, expires_at = null) {
   let handler;
   const writes = [];
   const reads = [];
   const grant = { grant_id: 'g1', issuer_id: OWNER, subject_id: OWNER,
-    scope, actions: ['data_read'], status: 'ACTIVE', expires_at: null };
+    scope, actions: ['data_read'], status: 'ACTIVE', expires_at };
   const client = { from(table) {
     reads.push(table);
     assert.ok(['nayanet_authority_grants', 'nayanet_execution_receipts'].includes(table));
@@ -86,4 +86,17 @@ test('receipt failure cannot return a completed LAW evaluation', async () => {
   const body = await (await rt.invoke()).json();
   assert.equal(body.ok,false);
   assert.equal(body.error,'receipt unavailable');
+});
+
+test('actual LAW handler persists malformed matching grant expiry as refusal, never authorization', async () => {
+  for(const expiry of ['not-a-date', '', '   ', 123]) {
+    const rt=runtime({target:NAYA},claims,false,expiry);
+    const response=await rt.invoke(), body=await response.json();
+    assert.equal(response.status,200); // completed evaluation, not action permission
+    assert.equal(body.decision.status,'BLOCKED');
+    assert.equal(body.decision.reason,'GRANT_TIME_INVALID');
+    assert.equal(rt.writes.length,1);
+    assert.equal(rt.writes[0].row.status,'BLOCKED');
+    assert.equal(rt.writes[0].row.evidence.execution_boundary,'LAW_DECIDES_ONLY_DOES_NOT_EXECUTE');
+  }
 });
