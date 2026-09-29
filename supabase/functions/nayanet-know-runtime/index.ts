@@ -128,7 +128,7 @@ Deno.serve(async(req)=>{
       const candidates=await readCandidates(admin);
       const decision=selectKnow(request,candidates);
 
-      const status=decision.status==="SELECTED"?"SUCCESS":decision.status==="MISS"?"MISS":"BLOCKED";
+      const status=decision.status==="SELECTED"?"SUCCESS":decision.status==="MISS"?"SUCCESS":"BLOCKED";
       const receipt=await insertReceipt(admin,{
         user_id:OWNER_ID,
         project_id:PROJECT_ID,
