@@ -1,8 +1,8 @@
 {
-  "schema": "naya.smart-node-protocol.v1",
-  "version": "1.0",
+  "schema": "naya.smart-note-protocol.v2",
+  "version": "2.0",
   "status": "CANONICAL",
-  "human_term": "Smart Node",
+  "human_term": "Smart Note",
   "canonical_machine_target": "INTELLIGENT_BLOCK",
   "creates_new_object_type": false,
   "creates_new_kernel_node": false,
@@ -15,12 +15,22 @@
     "may_self_promote": false
   },
   "command_aliases": [
+    "smart note this",
+    "make a smart note",
+    "save this as a smart note",
     "make this a smart node",
     "lock this in",
     "make this an intelligent block",
     "save this as reusable intelligence",
+    "capture this as reusable intelligence",
     "put this into the superbrain",
-    "preserve this for the next Naya"
+    "put this in the brain",
+    "preserve this for the next Naya",
+    "remember this for the next Naya",
+    "don't lose this",
+    "keep this as intelligence",
+    "document this as intelligence",
+    "make this available to future Nayas"
   ],
   "admission_signals": [
     "changes_future_behavior_or_decision",
@@ -93,5 +103,22 @@
     "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md",
     "kernel/supabase_intelligent_blocks.py",
     "supabase/migrations/20260921183000_intelligent_block_v1_first_class_boundary.sql"
-  ]
+  ],
+  "primary_command": "smart note this",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "legacy_human_alias": "Smart Node",
+  "contextual_aliases": [
+    "remember this",
+    "save this",
+    "keep this",
+    "note this",
+    "make a note"
+  ],
+  "nia_language_contract": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
+  "projection": {
+    "canonical_pattern": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/subtopic/IB-.../smart-note.md",
+    "source_of_truth": "INTELLIGENT_BLOCK",
+    "smart_link_target": "smart-note.md",
+    "machine_registry": ".naya/memory/smart-notes/index.json"
+  }
 }
