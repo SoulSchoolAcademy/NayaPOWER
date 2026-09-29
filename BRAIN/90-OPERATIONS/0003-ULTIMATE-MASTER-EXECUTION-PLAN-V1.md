@@ -37,7 +37,7 @@ One organism. Nine semantic organs. One intelligence river. No authority inherit
 - Evidence snapshot used for this plan refresh: `faac73abf29c99fc29879f23cd39966439964251` (the pre-projection base revision).
 - Current `production`: `32b7c9954988befecfbe8c850f523e59a441f44d`.
 - Therefore current `main` has advanced beyond the SHA targeted by the active production promotion.
-- Governed production run `36514309554` is waiting for a **new Supabase GitHub Integration deployment check**.
+- Governed production run `36514309554` **completed FAILURE** after waiting for a new Supabase GitHub Integration deployment check that never appeared.
 - No code change is justified to bypass that external integration boundary.
 - Universal nine-node runtime binding remains **NOT_PROVEN**.
 
@@ -75,7 +75,7 @@ Permanent laws:
 
 **Proof:** a new successful Supabase GitHub Integration deployment check exists for the exact promoted SHA.
 
-**Current status:** BLOCKED on external integration configuration.
+**Current status:** BLOCKED on external integration configuration. Run `36514309554` timed out/failed at that exact gate; no downstream producer/runtime/generalization proof was eligible to run.
 
 ### P0.2 — Re-run governed promotion on the then-current `main`
 Because `main` advanced after run `36514309554` began, do not treat success on `32b7c995...` as current-main production proof. Resolve the then-current SHA live immediately before any new governed promotion.

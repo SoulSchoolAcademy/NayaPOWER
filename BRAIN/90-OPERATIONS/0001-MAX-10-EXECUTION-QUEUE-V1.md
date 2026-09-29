@@ -9,7 +9,7 @@
 Governed production run `36514309554` already:
 - passed Human Director authorization;
 - promoted `production` to `32b7c9954988befecfbe8c850f523e59a441f44d`;
-- is waiting for a new Supabase GitHub Integration deployment check.
+- completed FAILURE because no new Supabase GitHub Integration deployment check appeared.
 
 **Do not change code. Do not weaken parity. Do not direct-deploy around the workflow.**
 

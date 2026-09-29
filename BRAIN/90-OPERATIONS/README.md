@@ -28,7 +28,7 @@ At the latest live reconciliation used to refresh the master plan:
 - #944's second-task generalization, unrelated refusal, independent verification and cold-successor reuse paths are implemented/repository-verified.
 - PR #955 verifier negative-matrix hardening is merged.
 - PR #959 cold-successor ACTIVE + canonical-target retrieval hardening is merged with repository gates green.
-- Governed production promotion run `36514309554` targeted `32b7c9954988befecfbe8c850f523e59a441f44d`, advanced `production` to that SHA, and is waiting for a new Supabase GitHub Integration deployment check.
+- Governed production promotion run `36514309554` targeted `32b7c9954988befecfbe8c850f523e59a441f44d`, advanced `production` to that SHA, then completed **FAILURE** because no new Supabase GitHub Integration deployment check appeared.
 - The plan refresh observed `faac73abf29c99fc29879f23cd39966439964251` immediately before its projection commit. That SHA is evidence history, not a permanent current-main pointer.
 - Therefore every executor must resolve live `main` from GitHub at execution time, and a successful old-target promotion must not be called current-main production proof.
 - Universal nine-node runtime binding remains **NOT_PROVEN**.
