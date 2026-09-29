@@ -194,5 +194,14 @@
     "living_application_runtime": "NOT_PROVEN",
     "successor_behavioral_improvement": "NOT_PROVEN",
     "production_proof": "NOT_PROVEN"
+  },
+  "master_cognition_library": {
+    "home": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/",
+    "contract": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/0001-MASTER-ROLE-PACK-CONTRACT-V1.md",
+    "schema": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/MASTER-ROLE-PACK-SCHEMA-V1.json",
+    "registry": "BRAIN/11-KNOWLEDGE/MASTER-ROLES/MASTER-ROLE-REGISTRY-V1.json",
+    "status": "PROPOSED_CANONICAL_NOT_BEHAVIORALLY_PROVEN",
+    "selection": "selective_not_global",
+    "authority_inheritance": false
   }
 }
