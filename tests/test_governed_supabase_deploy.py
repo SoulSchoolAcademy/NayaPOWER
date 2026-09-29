@@ -41,3 +41,5 @@ def test_native_production_deployment_is_provenance_stamped_before_supabase_depl
     assert 'commits/$DEPLOYMENT_SHA/check-runs' in source
     assert '"deployment_commit_sha":os.environ["DEPLOYMENT_SHA"]' in source
     assert '"deployed_source_revision":os.environ["GITHUB_SHA"]' in source
+    assert 'json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)' in source
+    assert 'open("deployment-blob-request.json","w")' not in source
