@@ -1,6 +1,6 @@
 {
   "schema": "naya.smart-note-protocol.v2",
-  "version": "2.1",
+  "version": "2.2",
   "status": "CANONICAL",
   "human_term": "Smart Note",
   "canonical_machine_target": "INTELLIGENT_BLOCK",
@@ -116,7 +116,7 @@
   ],
   "nia_language_contract": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
   "projection": {
-    "canonical_pattern": "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/HHMMSSZ/IB-....md",
+    "canonical_pattern": "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md",
     "source_of_truth": "INTELLIGENT_BLOCK",
     "primary_human_projection": "GITHUB_BRAIN_MARKDOWN",
     "primary_smart_link_target": "DIRECT_GITHUB_MARKDOWN",
@@ -138,7 +138,10 @@
       "PROOF_PROVENANCE",
       "TRUTH_BOUNDARY",
       "NEXT_ACTION"
-    ]
+    ],
+    "human_identity": "SN-###",
+    "timestamp_role": "PROVENANCE_METADATA",
+    "machine_identity": "IB-..."
   },
   "smart_link_law": "Return the direct GitHub Brain Markdown link as the primary human receipt whenever publication is authorized; otherwise return an authenticated private human projection."
 }
