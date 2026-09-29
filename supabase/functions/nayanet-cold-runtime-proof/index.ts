@@ -677,7 +677,7 @@ Deno.serve(async (req: Request) => {
         learning_id: learningId,
         successor_identity: successorId,
         recomputed,
-        limitation: "bounded task-context recomputation across the original task, one related held-out task, and one unrelated refusal case; does not establish universal successor capability",
+        limitation: "bounded task-context recomputation across the original task, one related held-out task, and one unrelated refusal case; not general successor capability",
         runtime_identity: "github-actions-oidc",
         workflow_ref: workflowRef,
         token_jti: payload.jti ?? null,
