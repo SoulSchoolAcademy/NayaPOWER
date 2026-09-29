@@ -92,6 +92,11 @@ class Kernel:
         )
 
     def decide(self, context: DecisionContext) -> DecisionResult:
+        """Return a governed decision. This method does not execute the action.
+
+        Execution is a separate boundary and must be proven by an executor/runtime
+        receipt. Authority to act is not evidence that execution occurred.
+        """
         trace = (Node.SELF, Node.LAW)
 
         if context.consequential and (
@@ -106,24 +111,22 @@ class Kernel:
                 trace=trace,
             )
 
-        trace = self._NODE_ORDER
+        # This reference kernel has established only the decision/authority
+        # boundary. It must not claim ACT/KNOW/PROVE/CONNECT/VERIFY/LEARN/EVOLVE
+        # ran, and it must not manufacture an execution outcome without an
+        # injected executor plus observed evidence.
         evidence = (
             f"LAW.authority:{context.action}",
-            f"KNOW.context:{context.action}",
-            f"CONNECT.relevance:{context.action}",
-            f"PROVE.action:{context.action}",
+            "DECISION.authorized_not_executed",
         )
-
-        outcome = "executed"
-        next_state = {"last_action": context.action}
 
         return DecisionResult(
             allowed=True,
-            executed=True,
+            executed=False,
             truth_state=TruthState.UNKNOWN,
             trace=trace,
             evidence=evidence,
-            outcome=outcome,
-            next_state=next_state,
+            outcome=None,
+            next_state={},
             learning_candidate=None,
         )
