@@ -13,3 +13,6 @@ verify_jwt = false
 
 [functions.nayanet-learning-verify]
 verify_jwt = false
+
+# Human-facing decision context uses Supabase's default JWT verification.
+[functions.naya-decision-context]
