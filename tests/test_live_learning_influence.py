@@ -34,7 +34,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW = ROOT / ".github" / "workflows" / "live-learning-influence-proof.yml"
+WORKFLOW = ROOT / ".github" / "workflows" / "live-supabase-runtime-proof.yml"
 
 CANONICAL_FUNCTION = "nayanet-cold-runtime-proof"
 
