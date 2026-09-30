@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, json, re
+import argparse, hashlib, json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +50,28 @@ def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
     sn_id = allocate_smart_note_id(capture, ib)
     return Path(root) / y / m / d / cat / topic / sub / sn_id / (ib + ".md")
 
+
+def view_text(value, key, *, primary_key):
+    if isinstance(value, dict):
+        return str(value.get(key, "") or "")
+    if isinstance(value, str):
+        return value if key == primary_key else ""
+    return ""
+
+def connection_lines(values):
+    lines = []
+    for value in values or []:
+        if isinstance(value, dict):
+            rel_type = str(value.get("type") or "").strip()
+            target = str(value.get("target") or "").strip()
+            if rel_type and target:
+                lines.append(f"- **{rel_type}** → {target}")
+            elif target:
+                lines.append("- " + target)
+        elif isinstance(value, str):
+            lines.append("- " + value)
+    return lines
+
 def render(capture, verify, private_root=None):
     block = verify["persisted"]["block"]
     ib = block["intelligent_block_id"]
@@ -81,18 +103,18 @@ def render(capture, verify, private_root=None):
         "**Canonical intent:** " + str(capture.get("canonical_intent", "CAPTURE_DURABLE_INTELLIGENCE")), "",
         "> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.", "",
         "## ✦ IN A NUTSHELL", "", intelligence.get("essence", ""), "",
-        "## 🩷 HUMAN NOTE", "", intelligence.get("human_view", {}).get("meaning", ""), "", intelligence.get("human_view", {}).get("why_it_matters", ""), "",
-        "## 🟣 CHILD NOTE", "", intelligence.get("simple_view", {}).get("child", ""), "",
-        "## 🔵 GRANDMA NOTE", "", intelligence.get("simple_view", {}).get("grandma", ""), "",
-        "## 🟠 NAYA NOTE", "", intelligence.get("naya_view", {}).get("purpose", ""), "", intelligence.get("naya_view", {}).get("architectural_rule", ""), "",
+        "## 🩷 HUMAN NOTE", "", view_text(intelligence.get("human_view"), "meaning", primary_key="meaning"), "", view_text(intelligence.get("human_view"), "why_it_matters", primary_key="meaning"), "",
+        "## 🟣 CHILD NOTE", "", view_text(intelligence.get("simple_view"), "child", primary_key="child"), "",
+        "## 🔵 GRANDMA NOTE", "", view_text(intelligence.get("simple_view"), "grandma", primary_key="child"), "",
+        "## 🟠 NAYA NOTE", "", view_text(intelligence.get("naya_view"), "purpose", primary_key="purpose"), "", view_text(intelligence.get("naya_view"), "architectural_rule", primary_key="purpose"), "",
         "## 🟢 MACHINE NOTE", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
-        "## 🟢 LEARNING LESSON", "", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next.", "",
+        "## 🟢 LEARNING LESSON", "", intelligence.get("learning_lesson", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next."), "",
         "## 🟡 WHAT IT MEANS", "", intelligence.get("priority", ""), "",
         "## ⚪ WHAT'S IN IT FOR YOU", "", "Less repetition, less lost knowledge, faster comprehension, stronger continuity, and a direct Smart Link showing exactly what Naya preserved.", ""
     ]
     lines += [
-        "", "## 🟨 HOW TO APPLY / HOW TO USE", "", intelligence.get("human_view", {}).get("simple_rule", ""), "",
-        "## 🔗 HOW IT CONNECTS", "", *["- **" + x.get("type", "RELATED_TO") + "** → " + x.get("target", "") for x in intelligence.get("connections", [])], "",
+        "", "## 🟨 HOW TO APPLY / HOW TO USE", "", view_text(intelligence.get("human_view"), "simple_rule", primary_key="meaning") or intelligence.get("applicability", ""), "",
+        "## 🔗 HOW IT CONNECTS", "", *connection_lines(intelligence.get("connections", [])), "",
         "## 🧭 KEY DECISIONS / PRINCIPLES", "", *["- " + x for x in intelligence.get("decisions", [])], "",
         "## 🧾 PROOF / PROVENANCE", "", "~~~json", json.dumps(proof, indent=2), "~~~", "",
         "## ⚠️ TRUTH BOUNDARY / UNCERTAINTY", "", intelligence.get("uncertainty", ""), "",
@@ -111,6 +133,7 @@ def update_registry(capture, verify, projection):
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
+        "content_hash": hashlib.sha256(block["content"]["lesson"].encode("utf-8")).hexdigest(),
         "title": capture["title"],
         "captured_at": capture["source"]["captured_at"],
         "category": capture.get("category", "SMART_NOTE"),
@@ -129,6 +152,7 @@ def update_registry(capture, verify, projection):
             "lineage_id": verify["persisted"]["lineage"]["id"],
             "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
             "runtime_index_id": verify["persisted"]["index"]["id"],
+            "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
