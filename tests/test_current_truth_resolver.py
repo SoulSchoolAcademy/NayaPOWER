@@ -141,3 +141,99 @@ def test_workflow_collects_live_open_pull_requests():
     assert '"gh", "pr", "list"' in wf
     assert '"number,title,headRefOid,isDraft,mergeStateStatus,updatedAt"' in wf
     assert '"open_prs": open_prs' in wf
+
+
+def test_projection_only_drift_keeps_projected_action_current(monkeypatch):
+    main = "a" * 40
+    monkeypatch.setattr(
+        ctr,
+        "_projection_freshness",
+        lambda snapshot, repo_head: {
+            "status": "CURRENT",
+            "reason": "PROJECTION_ONLY_DRIFT",
+            "changed_paths": sorted(ctr.PROJECTION_OWNED_PATHS),
+            "substantive_paths": [],
+        },
+    )
+    result = ctr.resolve(
+        _live(main, proof={"head_sha": main}, runtime=main),
+        repo_head=main,
+    )
+    assert result["active_work"]["projection_freshness"] == "CURRENT"
+    assert result["active_work"]["next_action"] == result["active_work"]["projection_next_action"]
+    assert not any(x["code"] == "OPERATIONAL_PROJECTION_STALE" for x in result["warnings"])
+
+
+def test_substantive_drift_blocks_stale_projected_action(monkeypatch):
+    main = "a" * 40
+    stale_action = "DO NOT EXECUTE THIS STALE ACTION"
+
+    original_load = ctr._load
+
+    def fake_load(path):
+        payload = original_load(path)
+        if path == ctr.OPS:
+            payload = dict(payload)
+            payload["next_action"] = stale_action
+        return payload
+
+    monkeypatch.setattr(ctr, "_load", fake_load)
+    monkeypatch.setattr(
+        ctr,
+        "_projection_freshness",
+        lambda snapshot, repo_head: {
+            "status": "STALE",
+            "reason": "SUBSTANTIVE_DRIFT",
+            "changed_paths": ["supabase/functions/nayanet-causal-learning-experiment/index.ts"],
+            "substantive_paths": ["supabase/functions/nayanet-causal-learning-experiment/index.ts"],
+        },
+    )
+    result = ctr.resolve(
+        _live(main, proof={"head_sha": main}, runtime=main),
+        repo_head=main,
+    )
+    assert result["active_work"]["projection_freshness"] == "STALE"
+    assert result["active_work"]["projection_next_action"] == stale_action
+    assert result["active_work"]["next_action"].startswith("Reconcile the operational projection")
+    assert any(x["code"] == "OPERATIONAL_PROJECTION_STALE" for x in result["warnings"])
+    md = ctr.render_markdown(result)
+    assert "## Max-10 (dated projection; do not execute as current)" in md
+
+
+def test_projection_freshness_treats_only_projection_owned_paths_as_current(monkeypatch):
+    calls = []
+
+    class Completed:
+        returncode = 0
+
+    monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
+
+    def fake_check_output(args, text=True):
+        calls.append(args)
+        return (
+            "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md\n"
+            "BRAIN/NAYAPOWER-BRAIN-INDEX.json\n"
+        )
+
+    monkeypatch.setattr(ctr.subprocess, "check_output", fake_check_output)
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "CURRENT"
+    assert result["reason"] == "PROJECTION_ONLY_DRIFT"
+    assert result["substantive_paths"] == []
+    assert calls
+
+
+def test_projection_freshness_flags_substantive_path(monkeypatch):
+    class Completed:
+        returncode = 0
+
+    monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
+    monkeypatch.setattr(
+        ctr.subprocess,
+        "check_output",
+        lambda *args, **kwargs: "tools/current_truth_resolver.py\n",
+    )
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "STALE"
+    assert result["reason"] == "SUBSTANTIVE_DRIFT"
+    assert result["substantive_paths"] == ["tools/current_truth_resolver.py"]
