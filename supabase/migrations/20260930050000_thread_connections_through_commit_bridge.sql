@@ -55,6 +55,10 @@ grant execute on function public.nayanet_intelligence_commit_runtime(text,uuid,t
 -- Note: the trailing parameters after p_project_id carry defaults but
 -- later parameters (p_superseded_block_id, p_idempotency_key) do not, so
 -- callers must use named notation for those (the edge function does).
+-- Re-runnable: drop the previous bridge signature first (same pattern as §1;
+-- PostgreSQL cannot CREATE OR REPLACE across an argument-list change).
+drop function if exists public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb);
+
 create function public.nayanet_supersede_intelligent_block_runtime(
   p_naya_id text,p_owner_id uuid,p_runtime_jti text,p_authority_grant_id uuid,
   p_project_id text default 'NayaNET',
