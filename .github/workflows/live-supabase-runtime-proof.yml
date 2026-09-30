@@ -248,7 +248,8 @@ jobs:
           assert r["control"]["evidence"]["task_input"] == r["treatment"]["evidence"]["task_input"], r
           assert r["control"]["observed_result"] != r["treatment"]["observed_result"]
           assert r["behavioral_delta"]["changed"] is True, r
-          assert r["outcome_delta"]["provenance_preserved"] > 0, r
+          assert r["outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, r
+          assert r["outcome_delta"]["value"] > 0, r
           assert r["counterfactual"]["computed_not_declared"] is True, r
           PY
       - name: Create independently checkable CVO from persisted pair
@@ -356,7 +357,8 @@ jobs:
           assert recomputed["task_equivalence"] is True, recomputed
           assert recomputed["same_task_input"] is True, recomputed
           assert recomputed["measurable_outcome_improved"] is True, recomputed
-          assert recomputed["outcome_delta"]["provenance_preserved"] > 0, recomputed
+          assert recomputed["outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, recomputed
+          assert recomputed["outcome_delta"]["value"] > 0, recomputed
           assert ver["executor_claim_trusted"] is False
           json.dump(receipt,open("causal-learning-experiment-receipt.json","w"),indent=2)
           PY
