@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "f190cdacefc3e5adf136d074d22e6dfdd782b688",
+  "evidence_snapshot_base": "b1fb340a6f85e7ce2906f3eb313b511debce0f08",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -23,7 +23,7 @@
     "governed_production_promotion_run": "36659933566_SUCCESS_AT_SOURCE_2FF4207A",
     "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
     "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "PROJECTION_REFRESH_TARGET_F190CDAC; FRESH_RESOLVER_REQUIRED_AFTER_INTEGRATION",
+    "current_truth_resolver": "PROJECTION_REFRESH_TARGET_B1FB340A; FRESH_RESOLVER_REQUIRED_AFTER_INTEGRATION",
     "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F",
     "know_live_current": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
     "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT_PRESERVED; PR_1051_MERGED_4C2B8F12; PR_1056_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
@@ -43,13 +43,13 @@
     "prove_live_current": "RUN_36658635227_FAILED_BEFORE_KNOW_PROVE_AT_LAW_WORKFLOW_BINDING; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PARITY_PENDING",
     "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
     "production_deployment_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
-    "post_production_source": "1070_CONSENT_REVOCATION;1072_KNOW_PROVE_BINDING;1077_GRAPH_V2;GRAPH_PERSISTENCE_V2;ACT_REPLAY_FAIL_CLOSED;1082_SELECTOR_ACCEPTANCE;1085_RECONCILIATION_MULTI_TASK_ACCEPTANCE;ACT_IDEMPOTENCY_KEY_REQUIRED_F190CDAC"
+    "post_production_source": "1070_CONSENT_REVOCATION;1072_KNOW_PROVE_BINDING;1077_GRAPH_V2;GRAPH_PERSISTENCE_V2;ACT_REPLAY_FAIL_CLOSED;1082_SELECTOR_ACCEPTANCE;1085_RECONCILIATION_MULTI_TASK_ACCEPTANCE;ACT_IDEMPOTENCY_KEY_REQUIRED_F190CDAC;1088_SMART_CONNECT_POST_RESET_RESTORE"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Integrate projection-only reconciliation at exact f190cdac and require resolver CURRENT under projection-only drift",
+      "action": "Integrate projection-only reconciliation at exact b1fb340a and require resolver CURRENT under projection-only drift",
       "status": "ACTIVE"
     },
     {
@@ -104,6 +104,6 @@
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Integrate exact-f190cdac projection refresh and require resolver CURRENT. Then explicit Human Director DEPLOY is required for the exact resulting main; after parity run PROVE once, SN-004 causal proof, independent recomputation, #1070 production proof, cold successor, A→B→C, human-value measurement."
+    "instruction": "Integrate exact-b1fb340a projection refresh and require resolver CURRENT. Then explicit Human Director DEPLOY is required for the exact resulting main; after parity run PROVE once, SN-004 causal proof, independent recomputation, #1070 production proof, cold successor, A→B→C, human-value measurement."
   }
 }
