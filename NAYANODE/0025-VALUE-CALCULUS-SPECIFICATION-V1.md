@@ -1,6 +1,6 @@
 # NayaPOWER Decision Value Calculus Specification V2.1
 
-**Status:** HUMAN-DIRECTOR RATIFIED DIRECTION — IMPLEMENTED CANDIDATE, VERIFICATION REQUIRED  
+**Status:** HUMAN-DIRECTOR RATIFIED — CANONICAL DECISION ARCHITECTURE V1; IMPLEMENTATION VERIFICATION REQUIRED  
 **Domain:** 13 VALUE & EXPERIENCE  
 **Canonical seam retained:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
 **Implementation:** `kernel/value_calculus.py`  
@@ -331,3 +331,31 @@ not:
 The SmartLedger receipt stores a deterministic receipt hash alongside the typed payload so an independent reader can reconstruct the exact persisted receipt. Projection to `nayanet_intelligence_index` remains a derived view of the same canonical ledger event.
 
 This runtime binding is an implementation proof point, not a claim that the full V2.1 behavior is production-proven. Behavioral effectiveness, contribution calibration, anti-gaming performance, and profile fairness remain subsequent verification work under Issue #1184.
+
+
+## 18. Human-Director-ratified Decision Architecture
+
+The Human Director has ratified the canonical decision discipline in:
+
+**NAYANODE/0028-CANONICAL-DECISION-ARCHITECTURE-V1.md**
+
+This is an evolution of the existing V2.1 calculator, not a replacement engine.
+
+The canonical decision state is represented by four separate layers:
+
+1. **Hard gates / admissibility** — non-tradeable constraints.
+2. **Signed value V** — V ∈ [-10,+10].
+3. **Quality Q** — Q ∈ [0,10].
+4. **Confidence and uncertainty** — C ∈ [0,1] plus a visible deterministic uncertainty envelope.
+
+Canonical sequence:
+
+OBJECTIVE → CURRENT TRUTH → HARD GATES → OPTIONS → SIGNED VALUE → QUALITY → UNCERTAINTY → RANK → AUTHORITY → ACT / READ_MORE / ASK / REFUSE → VERIFY → LEARN
+
+The Rule of 10 → 3 → 1 is a decision-compression strategy, not a requirement to expose ten internal alternatives to the human.
+
+The machine must not use a positive score to trade away a hard stop, and it must not represent an uncertainty envelope as a statistical confidence interval.
+
+Historical V1/base-point provenance remains historical. New recognition derives from verified value evidence, never raw activity.
+
+This ratification closes the architecture decision. Remaining work is executable implementation proof and empirical calibration, not another conceptual scoring design.
