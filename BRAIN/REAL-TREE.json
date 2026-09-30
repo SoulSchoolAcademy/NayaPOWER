@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "c36a8868bb74b8820e925d7a683107e691d111db",
+  "receipt_basis_commit": "ab59207c80ec620b405c33177dff9f01aaaa5561",
   "inventory_file_count": 159,
   "domain_counts": {
     "00-SPEC": 15,
@@ -395,8 +395,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
-      "blob_sha": "f58fac27b5791f3dc03c13105445a808d7c10aed",
-      "size": 4493
+      "blob_sha": "b4a6c7f3e85067e6a851f4b881263c232662d011",
+      "size": 4666
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",

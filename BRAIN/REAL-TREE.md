@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `c36a8868bb74b8820e925d7a683107e691d111db`  
+**Receipt basis commit:** `ab59207c80ec620b405c33177dff9f01aaaa5561`  
 **Inventory file count:** 159  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -115,7 +115,7 @@
 ### 05-MEMORY — Memory
 
 - `BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md` — `1dad3e9d1c45` (1937 bytes)
-- `BRAIN/05-MEMORY/README.md` — `f58fac27b579` (4493 bytes)
+- `BRAIN/05-MEMORY/README.md` — `b4a6c7f3e850` (4666 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md` — `029a0f3e447d` (6599 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md` — `f82e011d20fa` (18984 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md` — `896b9b22c2e0` (13473 bytes)
