@@ -1,4 +1,4 @@
-﻿alter table public.nayanet_execution_receipts
+alter table public.nayanet_execution_receipts
   add column if not exists idempotency_key text;
 
 create unique index if not exists nayanet_execution_receipts_action_idempotency_uidx
