@@ -13,7 +13,7 @@ def test_collective_feed_has_safe_authenticated_read_without_raw_owner_or_proven
     sql = _sql()
     assert "revoke all on table public.nayanet_collective_wisdom from anon,authenticated" in sql
     assert "grant select (id,source_event_id,wisdom_claim,topic,epistemic_state,status,identity_visibility,source_visibility,public_publication,created_at) on public.nayanet_collective_wisdom to authenticated" in sql
-    assert "create policy nayanet_collective_wisdom_active_read on public.nayanet_collective_wisdom for select to authenticated using (status='active')" in sql
+    assert "create policy nayanet_collective_wisdom_safe_read on public.nayanet_collective_wisdom for select to authenticated using (status='active' or owner_id=auth.uid())" in sql
     assert "grant select on public.nayanet_collective_wisdom to authenticated" not in sql
 
 
@@ -32,11 +32,13 @@ def test_disconnect_revokes_derived_wisdom_only_after_last_active_explicit_parti
     assert "where owner_id=v_actor and status='active'" in sql
 
 
-def test_recontribution_does_not_silently_reactivate_revoked_wisdom():
+def test_recontribution_does_not_silently_reactivate_or_rewrite_revoked_wisdom():
     sql = _sql()
     expected = (
         "on conflict(source_event_id) do update set "
-        "wisdom_claim=excluded.wisdom_claim,topic=excluded.topic,provenance=excluded.provenance"
+        "wisdom_claim=excluded.wisdom_claim,topic=excluded.topic,provenance=excluded.provenance "
+        "where nayanet_collective_wisdom.status='active'"
     )
     assert expected in sql
+    assert "collective_wisdom_revoked_requires_new_source_event" in sql
     assert "on conflict(source_event_id) do update set status='active'" not in sql
