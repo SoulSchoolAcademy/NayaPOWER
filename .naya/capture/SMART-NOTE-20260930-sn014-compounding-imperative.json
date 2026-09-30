@@ -11,7 +11,7 @@
     "captured_at": "2026-09-30",
     "captured_at_utc": "2026-09-30T19:58:14Z",
     "source_type": "human_director_operating_doctrine",
-    "source_reference": "Shawn Vibert direct operating doctrine supplied 2026-09-30 as IB-OP-002 / The Compounding Imperative. Distilled meaning retained; raw dictation intentionally not stored."
+    "source_reference": "Shawn Vibert direct operating doctrine supplied 2026-09-30 as IB-OP-002 / The Compounding Imperative. Distilled meaning retained; raw dictation intentionally not stored. Replayed after PR #1164 to prove the current capture itself is cold-retrievable by exact content hash."
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
