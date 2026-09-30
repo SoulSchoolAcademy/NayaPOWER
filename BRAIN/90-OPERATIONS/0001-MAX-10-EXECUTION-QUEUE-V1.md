@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `cb56fd397a5034ae939937a47d39018f348cb166`
+**Evidence snapshot base:** `f190cdacefc3e5adf136d074d22e6dfdd782b688`
 
 ## CURRENT TRUTH
 
@@ -22,11 +22,14 @@
 - SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 merged at `4c2b8f12`; #1056 merged at `0fb36123`; the causal runtime is **NOT DEPLOYED AT SOURCE PARITY**.
 - Readiness fail-closed repairs #1058/#1061 and current-truth projection #1053 are merged. Semantic projection-drift guard #1067 is canonical and exact-main verified; substantive drift invalidates stale actions while projection-only drift remains current.
 - Governed promotion remains fail-closed for protected runtime changes until explicit Human Director `DEPLOY`. Live PROVE run `36658635227` failed before KNOW/PROVE because LAW's OIDC trust set omitted `live-prove-proof.yml`; #1069 source-repaired that exact binding and merged at `c6ac19c4`, but the live LAW runtime is still pre-fix until governed deployment.
+- Governed Production Promotion `36659933566`: **SUCCESS** for source `2ff4207a...`; production commit `5e6c5f51...`; receipt artifact `11074161563`. Current main is later and does not inherit that proof.
+- Current source adds #1070 consent/revocation hardening, #1072 KNOW PROVE binding, #1077 Graph V2 contract, graph persistence hardening, ACT replay fail-closed repair, #1082 selector acceptance, and #1085 reconciliation/multi-task acceptance. These remain source/test evidence until current-main production proof exists.
+- ACT consequential execution now fails closed without an idempotency key at current main `f190cdac`; replay safety is source-tested but not current-production-proven.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — refresh the existing projection against exact source-repaired main `c6ac19c4`, then require the resolver to classify the resulting merge as CURRENT under projection-only drift.
+1. **#66 current-truth convergence** — refresh the existing projection against exact current main `f190cdac`, then require the resolver to classify the resulting merge as CURRENT under projection-only drift.
 2. **Exact governed runtime deployment parity** — protected promotion is correctly blocked; explicit Human Director `DEPLOY` must deploy the exact current runtime set, including LAW's #1069 PROVE-workflow binding and the causal-runtime repairs, before any PROVE or SN-004 live rerun.
 3. **Checkpoint/provenance/replay/recovery** — Coda 2 owns exact replay, conflicting replay, response-loss, concurrency and receipt-write failure at the ACT seam.
 4. **Authority residuals #1042** — ACT denial coverage is merged; mission binding remains a Human Director authority-model decision.
@@ -43,7 +46,7 @@ Do not redo #913, #944, #971, #978, #975, or #810. Do not recreate Concept #17 i
 
 ## CURRENT FAILURE-FIRST EVIDENCE
 
-The active source repair cluster, semantic truth guard, and PROVE LAW-workflow binding are integrated through `c6ac19c4`, but **source integration is not deployed parity**.
+The active source repair cluster, semantic truth guard, and PROVE LAW-workflow binding are integrated through `f190cdac`, but **source integration is not deployed parity**.
 
 Current causal runtime source differs from production:
 - cold runtime main blob `c91556d4...` vs production `03eaaa87...`;
@@ -55,4 +58,4 @@ The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid unti
 
 ## EXACT NEXT ACTION
 
-**Issue #66: integrate this post-#1069 projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then the smallest consequential human action is explicit `DEPLOY` for the resulting exact current main through the existing governed production-promotion workflow. After deployed parity, rerun PROVE exactly once, then SN-004 causal proof. Do not weaken protected-path policy. While deployment waits, Coda 2 replay/recovery and #1062 two-owner proof work continue independently.**
+**Issue #66: integrate this exact-`f190cdac` projection refresh and require a fresh Current Truth Resolver result with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the exact resulting main. After parity: PROVE once → SN-004 causal proof → independent recomputation → #1070 production proof → cold successor → A→B→C → human-value measurement.**
