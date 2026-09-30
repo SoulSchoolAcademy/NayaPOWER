@@ -286,14 +286,52 @@ Deno.serve(async (req) => {
           .maybeSingle();
         if (replayOutcomeError) throw replayOutcomeError;
         if (!replayOutcome) {
+          const recoverOutcomeFromReceipt = async () => {
+            const evidence = (receipt.evidence ?? {}) as Json;
+            const {data: recovered, error: recoveryError} = await admin
+              .from("nayanet_execution_outcomes")
+              .insert({
+                receipt_id: receipt.id,
+                user_id: OWNER_ID,
+                project_id: "NayaNET",
+                experiment_case_id: EXPERIMENT_CASE,
+                outcome_type: "GOVERNED_ACTION_OUTCOME",
+                verifier_id: OWNER_ID,
+                evidence: {
+                  action_receipt_id: receipt.id,
+                  authority_grant_id: evidence.authority_grant_id,
+                  requested_action: evidence.requested_action,
+                  requested_target: evidence.requested_target,
+                  canonical_block_id: evidence.canonical_block_id,
+                  canonical_digest: evidence.canonical_digest,
+                  applied_behavior: evidence.applied_behavior,
+                  observed_change: "Recovered canonical outcome from the durable bound execution receipt after response/outcome persistence loss.",
+                  owner_id: OWNER_ID,
+                  runtime_identity: "github-actions-oidc",
+                  workflow_ref: workflowRef,
+                  recovery_reason: "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED",
+                },
+                benefit: 1,
+                harm: 0,
+                cost: 0,
+                risk_adjusted_loss: 0,
+                verified: false,
+                verification_method: "PENDING_INDEPENDENT_RUNTIME_VERIFICATION",
+              })
+              .select("outcome_id,receipt_id,verified,verification_method")
+              .single();
+            if (recoveryError) throw new Error("OUTCOME_RECOVERY_WRITE_" + recoveryError.code);
+            return recovered;
+          };
+          const recoveredOutcome = await recoverOutcomeFromReceipt();
           return json({
-            ok: false,
-            status: "INCONCLUSIVE",
-            error: "IDEMPOTENT_REPLAY_OUTCOME_MISSING",
+            ok: true,
+            status: "EXECUTED",
+            recovery: "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED",
             idempotent_replay: true,
             receipt,
-            outcome: null,
-          }, 409);
+            outcome: recoveredOutcome,
+          });
         }
         return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt, outcome: replayOutcome});
       }
