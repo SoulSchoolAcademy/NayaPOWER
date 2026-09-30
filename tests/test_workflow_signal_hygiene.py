@@ -46,6 +46,7 @@ def test_every_mutating_promotion_step_is_gated_after_policy_denial():
         "Dispatch canonical fresh-intelligence producer after deployment",
         "Dispatch canonical end-to-end runtime proof after producer",
         "Dispatch canonical ACT proof after deployment",
+        "Dispatch canonical CONNECT proof after deployment",
     )
     condition = "if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'"
     for name in names:
