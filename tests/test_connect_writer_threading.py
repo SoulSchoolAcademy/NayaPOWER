@@ -77,7 +77,7 @@ def test_supersede_bridge_eligible_defaults(migration_text):
 def test_bridges_service_role_only(migration_text):
     for sig, name in [
         ("text,uuid,text,text,text,text,text,text,text,uuid,text,jsonb", "nayanet_intelligence_commit_runtime"),
-        ("text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb", "nayanet_supersede_intelligent_block_runtime"),
+        ("text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb", "nayanet_supersede_intelligent_block_runtime"),
     ]:
         assert f"revoke all on function public.{name}({sig}) from public,anon,authenticated" in migration_text
         assert f"grant execute on function public.{name}({sig}) to service_role" in migration_text
