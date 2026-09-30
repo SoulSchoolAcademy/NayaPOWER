@@ -1,9 +1,11 @@
 ﻿# ACT Concurrent-Duplicate Idempotency Proof — 2026-09-30
 
 **Status:** SOURCE/TEST VERIFIED — LIVE RACE PENDING EXACT DEPLOYMENT
-**Current main:** `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`
-**PR:** #1095 — `fix(ACT): make consequential idempotency atomic`
-**Merge commit:** `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`
+**Source repair merge:** `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` (PR #1095)
+**Current canonical main:** `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc` (PR #1116 merge)
+**Source repair PR:** #1095 — `fix(ACT): make consequential idempotency atomic`
+**Live-proof PR:** #1116 — `test(ACT): prove live concurrent idempotency convergence`
+**Live-proof merge:** `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`
 
 ## Failure-first finding
 
@@ -37,6 +39,8 @@ The same tests were rerun after resetting the local clone to fresh `origin/main`
 
 ## Live-proof boundary
 
+PR #1116 is now merged to canonical main and adds the live two-request concurrent proof plus an independent `verify-idempotency` reread. That establishes that the **proof mechanism exists in source**; it does not establish that production has executed it. Production currently points to `9dba0fe210d69aa8b7307f80214b675d9ae8d66d`, whose deployment stamp names source `0d0c36ab125fd8890ceffac0cd81283c658dd468`, so the live proof remains a deployment-parity gate.
+
 A real production race must not be manufactured against the stale deployed function. Doing so could intentionally create the duplicate governed effects we are trying to prevent.
 
 Therefore the exact acceptance proof remains:
@@ -47,7 +51,7 @@ This proof is **BLOCKED until the exact current-main function and migration are 
 
 ## Canonical continuation
 
-- Current Truth Resolver run `36664954443` succeeded against main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` but correctly classified the existing operational projection as `OPERATIONAL_PROJECTION_STALE` because the ACT repair changed substantive paths.
+- Current Truth Resolver run `36664954443` succeeded against main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` and correctly classified the operational projection as `OPERATIONAL_PROJECTION_STALE`. Canonical main has since advanced again through PR #1116 to `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`; the Brain projection therefore requires another current-main reconciliation before its embedded SHA can be treated as current.
 - Canonical Brain queue/master-plan projections have been updated to the exact merge SHA and the new Max-10 frontier.
 - `LIVE_RUNTIME_SOURCE` remains **UNKNOWN**.
-- Next executable canonical action: refresh the existing projection-owned Brain files, rerun the resolver, then preserve the explicit deployment boundary before the live two-request race.
+- Next executable canonical action: reconcile the projection-owned Brain files to `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`, rerun the existing Current Truth Resolver on that exact main, then preserve the explicit deployment boundary before the live two-request race.
