@@ -156,9 +156,9 @@ jobs:
           }
           JSON
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
-          from tools.standing_production_promotion_policy import evaluate_policy
+          from tools.standing_production_promotion_policy import evaluate_policy, build_denial_receipt
           policy=json.loads(Path(".naya/governance/STANDING-PRODUCTION-PROMOTION-V1.json").read_text(encoding="utf-8"))
           context=json.loads(Path("standing-policy-context.json").read_text(encoding="utf-8"))
           context["changed_paths"]=json.loads(Path("standing-changed-paths.json").read_text())
@@ -166,7 +166,10 @@ jobs:
           json.dump({"policy_id":policy["policy_id"],"policy_version":policy["version"],"context":context,"verdict":result},open("standing-authorization-verdict.json","w"),indent=2)
           print(result)
           if result["decision"] != "ALLOW":
-              raise SystemExit("FAIL CLOSED: machine policy evaluator denied the automatic promotion.")
+              denial=build_denial_receipt(policy, context, result, {"workflow_run_id":os.environ.get("GITHUB_RUN_ID"),"actor":os.environ.get("GITHUB_ACTOR"),"event":os.environ.get("GITHUB_EVENT_NAME")})
+              json.dump(denial,open("production-promotion-denial.json","w"),indent=2)
+              print(json.dumps(denial,indent=2))
+              raise SystemExit(f"FAIL CLOSED: machine policy evaluator denied the automatic promotion: reason={result.get('reason')}")
           PY
 
           echo "standing production policy preconditions: PASS"
@@ -491,6 +494,8 @@ jobs:
           assert receipt["machine_deployment"]["supabase_check_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
+          assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
+          assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
           json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
           PY
           cat production-promotion-receipt.json
@@ -501,6 +506,7 @@ jobs:
           name: production-promotion-receipt
           path: |
             production-promotion-receipt.json
+            production-promotion-denial.json
             standing-authorization-verdict.json
             standing-ci-evidence.json
             standing-changed-paths.json

@@ -11,7 +11,7 @@ Resolve current reality in this order:
 6. Dated state/operations documents only as snapshots that require reconciliation.
 
 The full classification is:
-`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`
+`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`
 
 The previously referenced `.naya/control-plane/` location does not exist on current `main`; do not invent or restore it merely to satisfy activation text.
 
@@ -19,4 +19,3 @@ If this package conflicts with stronger current evidence, stronger current evide
 
 A cold Naya must identify current branch, active work, proof state, blockers and exactly one next action from current sources.
 
-> Verified against main @ 2c89cadbee7b6d71f54d8d6538161a0dd2169487 on 2026-09-29; re-verify before treating as current.

@@ -143,12 +143,45 @@
         "runtime_index_id": "8d51b747-4d54-4827-a618-2eafaaecabc3",
         "receipt_id": "5402bbae-7f8d-4525-80cf-d723363d9082"
       }
+    },
+    {
+      "smart_note_id": "SN-004",
+      "intelligent_block_id": "IB-SMART-NOTE-20260929-sn004-shawn-standing-law-r2",
+      "title": "Shawn's Standing Law — Act-First Autonomy, Do No Harm, Absolute Excellence",
+      "captured_at": "2026-09-29",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "NAYA_STANDING_LAW",
+      "subtopic": "ACT_FIRST_AUTONOMY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/ACT-FIRST-AUTONOMY/SN-004/IB-SMART-NOTE-20260929-sn004-shawn-standing-law-r2.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/ACT-FIRST-AUTONOMY/SN-004/IB-SMART-NOTE-20260929-sn004-shawn-standing-law-r2.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "5864311c-3d41-4474-8cfe-337660f1b145",
+        "lineage_id": "bb5a9dd5-3c76-44fc-be8d-fdc1cd40094f",
+        "relationship_id": "bdb23be1-e07c-4d04-83f9-b197866c90c5",
+        "runtime_index_id": "624a0542-75cc-420d-aa51-c0da64bc37c0",
+        "receipt_id": "18f62d1b-6fb9-4d83-89b5-75bdb87a3678"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 4,
+    "next_sequence": 5,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }

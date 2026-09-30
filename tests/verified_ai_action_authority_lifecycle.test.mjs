@@ -162,3 +162,61 @@ test('negative matrix preserves distinct authority reasons in durable refusal ev
     assert.equal(rt.insertedReceipt.evidence.authority_reason, reason);
   }
 });
+
+
+test('authority lifecycle rejects a stale cached grant after live revocation', async () => {
+  const live = { grant: canonicalGrant() };
+  const cachedGrant = { ...live.grant };
+  let handler;
+  let insertedReceipt = null;
+  function query(table) {
+    const filters = {};
+    return {
+      select() { return this; },
+      eq(key, value) { filters[key] = value; return this; },
+      order() { return this; },
+      limit() { return this; },
+      async maybeSingle() {
+        if (table === 'nayanet_authority_grants') {
+          if (filters.grant_id !== live.grant.grant_id) return { data: null, error: null };
+          return { data: live.grant, error: null };
+        }
+        if (table === 'nayanet_execution_receipts') return { data: { revision: 0 }, error: null };
+        throw new Error('unexpected maybeSingle table: ' + table);
+      },
+      insert(row) {
+        insertedReceipt = row;
+        return { select() { return { async single() { return { data: { ...row, id: 'cached-revocation-refusal' }, error: null }; } }; } };
+      },
+    };
+  }
+  vm.runInNewContext(code, {
+    URL, Request, Response, console, Date, TextEncoder, Uint8Array, crypto,
+    Deno: {
+      env: { get: key => ({ SUPABASE_URL: 'https://offline.invalid', SUPABASE_SERVICE_ROLE_KEY: 'fake-key' })[key] },
+      serve: callback => { handler = callback; },
+    },
+    createRemoteJWKSet: () => ({}),
+    jwtVerify: async () => ({ payload: claims }),
+    createClient: () => ({ from: query }),
+  });
+
+  // A caller has cached an ACTIVE grant. Live authority is then revoked.
+  live.grant = canonicalGrant({ revoked_at: '2026-09-29T00:02:00Z' });
+
+  const response = await handler(new Request('https://offline.invalid', {
+    method: 'POST',
+    headers: { authorization: 'Bearer test', 'content-type': 'application/json' },
+    body: JSON.stringify({ mode: 'execute', authority_grant_id: cachedGrant.grant_id }),
+  }));
+  assert.equal(response.status, 403);
+  const body = await response.json();
+  assert.equal(body.status, 'BLOCKED');
+  assert.equal(body.authority_reason, 'AUTHORITY_REVOKED');
+  assert.equal(body.execution_outcome_id, null);
+  assert.ok(body.refusal_receipt_id);
+  assert.equal(insertedReceipt.status, 'BLOCKED');
+  assert.equal(insertedReceipt.evidence.authority_decision, 'DENY');
+  assert.equal(insertedReceipt.evidence.action_executed, false);
+  assert.equal(insertedReceipt.evidence.outcome_created, false);
+});

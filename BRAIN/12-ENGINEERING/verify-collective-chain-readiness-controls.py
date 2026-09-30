@@ -46,6 +46,11 @@ def verdict(tree, link_id):
     return 'ABSENT'
 
 
+
+
+def exit_code(tree):
+    return subprocess.run([sys.executable, str(GATE), str(tree)], capture_output=True, text=True).returncode
+
 def check(label, tree, link, expect):
     got = verdict(tree, link)
     ok = got == expect
@@ -114,6 +119,15 @@ t = fixture()
 shutil.rmtree(t / 'BRAIN/04-INTELLIGENCE/OBJECTS')
 results.append(check('real contract, no governed artifacts', t, 'L02', 'NOT_SATISFIED'))
 
+
+
+# malformed contract must be classified as an instrument failure, not as ordinary incompleteness
+t = fixture()
+(t / CONTRACT).write_text('{not-json', encoding='utf-8')
+malformed_rc = exit_code(t)
+results.append(malformed_rc == 2)
+print(f'{"malformed contract reports instrument failure":<56} exit expect=2 actual={malformed_rc:<19} {"OK" if malformed_rc == 2 else "*** WRONG ***"}')
+
 print()
 print(f'CONTROLS: {sum(results)}/{len(results)} behaved as specified')
 print('VERDICT:', 'gate discriminates real state' if all(results)
@@ -121,3 +135,7 @@ print('VERDICT:', 'gate discriminates real state' if all(results)
 print()
 print('NOTE: no control simulates a satisfied Intelligent Block. L01 cannot be made to')
 print('      report SATISFIED without a governed intelligence-commit receipt / authoritative IB id, which is correct.')
+
+# Failed controls invalidate the measurement instrument, regardless of whether
+# the measured chain is complete. Propagate that failure to CI.
+raise SystemExit(0 if all(results) else 1)

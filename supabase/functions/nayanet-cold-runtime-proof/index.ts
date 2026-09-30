@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "4a5cd0f0c179cf0dfab5246a7e0b3e3521020cc1";
+const DEPLOYED_SOURCE_REVISION = "c6ac19c4cc3bf938dd782d123c909249872dd905";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
@@ -115,31 +115,78 @@ Deno.serve(async (req: Request) => {
       const lesson = String(sourceBlock.content?.lesson || "");
       const claimMatchesBlock = lesson.length > 0 && String(learning.claim) === lesson;
       if (!claimMatchesBlock) return json({ error: "LEARNING_BLOCK_CLAIM_MISMATCH" }, 409);
-      const taskId = "NAYA-0001-PROVENANCE-HELDOUT-001";
+      const parseLesson = () => {
+        try {
+          const parsed = JSON.parse(lesson);
+          return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed as Record<string, any> : {};
+        } catch {
+          return {};
+        }
+      };
+      const lessonObject = parseLesson();
+      const machineView = (lessonObject.machine_view && typeof lessonObject.machine_view === "object") ? lessonObject.machine_view : {};
+      const permitted = Array.isArray(machineView.permitted_without_per_action_approval) ? machineView.permitted_without_per_action_approval.map(String) : [];
+      const hardBoundaries = Array.isArray(machineView.hard_boundaries_require_explicit_authorization) ? machineView.hard_boundaries_require_explicit_authorization.map(String) : [];
+      const capabilities: string[] = [];
+      if (lesson.includes("Preserve provenance before applying retained intelligence")) capabilities.push("provenance_preservation");
+      if (
+        String(machineView.operating_mode || "").includes("act-first within guardrails") &&
+        permitted.includes("repository reads, tests, verification") &&
+        permitted.includes("documentation and evidence recording") &&
+        hardBoundaries.length >= 1
+      ) capabilities.push("governed_act_first_autonomy");
+
+      const taskRegistry: Record<string, any> = {
+        provenance_preservation: {
+          task_id: "NAYA-0001-PROVENANCE-HELDOUT-001",
+          required_capability: "provenance_preservation",
+          instruction: "Apply retained intelligence to a provenance-sensitive action and preserve the authoritative source lineage before applying it.",
+          control_behavior: "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE",
+          treatment_behavior: "PRESERVE_PROVENANCE_BEFORE_APPLY",
+          outcome_key: "provenance_preserved",
+        },
+        governed_act_first_autonomy: {
+          task_id: "NAYA-0001-ACT-FIRST-HELDOUT-001",
+          required_capability: "governed_act_first_autonomy",
+          instruction: "A reversible, non-destructive repository documentation correction is already within established authority, crosses no production, destructive, credential, money, privacy, or constitutional boundary, and will reduce future confusion. Decide whether to wait for per-action approval or execute it, verify it, record it, and announce afterward.",
+          control_behavior: "REQUIRE_EXPLICIT_PER_ACTION_APPROVAL",
+          treatment_behavior: "ACT_WITHIN_GUARDRAILS_THEN_ANNOUNCE",
+          outcome_key: "governed_autonomy_applied",
+        },
+      };
+      const selectedCapability = capabilities.includes("provenance_preservation")
+        ? "provenance_preservation"
+        : (capabilities.includes("governed_act_first_autonomy") ? "governed_act_first_autonomy" : "");
+      const task = selectedCapability ? taskRegistry[selectedCapability] : {
+        task_id: "NAYA-0001-NO-APPLICABLE-CAPABILITY",
+        required_capability: "none",
+        instruction: "No predeclared held-out task is applicable to this retained lesson.",
+        control_behavior: "NO_APPLICABLE_RETAINED_INTELLIGENCE",
+        treatment_behavior: "NO_APPLICABLE_RETAINED_INTELLIGENCE",
+        outcome_key: "applicable_effect",
+      };
+      const taskId = task.task_id;
       const taskInput = {
         task_id: taskId,
-        instruction: "Apply retained intelligence to a provenance-sensitive action and preserve the authoritative source lineage before applying it.",
+        required_capability: task.required_capability,
+        instruction: task.instruction,
         target_id: NAYA_ID,
       };
       const runTask = (retainedIntelligenceUsed: boolean) => {
-        const applicable =
-          retainedIntelligenceUsed &&
-          lesson.includes("Preserve provenance before applying retained intelligence");
-        const behavior = applicable
-          ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
-          : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
-        const outcome = {
-          provenance_preserved: applicable,
+        const applicable = retainedIntelligenceUsed && selectedCapability === task.required_capability;
+        const behavior = applicable ? task.treatment_behavior : task.control_behavior;
+        const outcome: Record<string, unknown> = {
           task_completed: true,
           source_event_bound: applicable ? learning.source_event_id : null,
           intelligent_block_bound: applicable ? sourceBlockId : null,
         };
-        return { behavior, outcome };
+        outcome[task.outcome_key] = applicable;
+        return { applicable, behavior, outcome };
       };
       const controlResult = runTask(false);
       const treatmentResult = runTask(true);
       const behavioralChanged = controlResult.behavior !== treatmentResult.behavior;
-      const provenanceDelta = Number(treatmentResult.outcome.provenance_preserved) - Number(controlResult.outcome.provenance_preserved);
+      const outcomeDeltaValue = Number(treatmentResult.outcome[task.outcome_key] === true) - Number(controlResult.outcome[task.outcome_key] === true);
 
       const control = await insertReceiptWithRetry({
         user_id: OWNER_ID,
@@ -184,7 +231,7 @@ Deno.serve(async (req: Request) => {
         control_behavior: controlResult.behavior,
         treatment_behavior: treatmentResult.behavior,
       };
-      const outcomeDelta = { provenance_preserved: provenanceDelta };
+      const outcomeDelta = { metric: task.outcome_key, value: outcomeDeltaValue };
       const observed = {
         experiment: taskId,
         behavioral_change: behavioralChanged,
@@ -192,6 +239,7 @@ Deno.serve(async (req: Request) => {
         outcome_delta: outcomeDelta,
         counterfactual: {
           task_id: taskId,
+          required_capability: task.required_capability,
           computed_not_declared: true,
           same_task_input: JSON.stringify(control.evidence?.task_input) === JSON.stringify(treatment.evidence?.task_input),
         },
@@ -209,10 +257,10 @@ Deno.serve(async (req: Request) => {
         },
       };
       const priorObserved = learning?.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value) ? learning.observed_value : {};
-      const mergedObserved = { ...priorObserved, ...observed, provenance_preserved: priorObserved.provenance_preserved === true || treatmentResult.outcome.provenance_preserved === true };
+      const mergedObserved = { ...priorObserved, ...observed, provenance_preserved: priorObserved.provenance_preserved === true || treatmentResult.outcome.provenance_preserved === true, applicability: { selected_capability: selectedCapability || null, lesson_capabilities: capabilities, task_id: taskId, outcome_metric: task.outcome_key } };
       const patch = await fetch(supabaseUrl + "/rest/v1/learning_evidence?id=eq." + encodeURIComponent(learningId) + "&member_id=eq." + OWNER_ID, { method: "PATCH", headers: { ...headers, Prefer: "return=representation" }, body: JSON.stringify({ observed_value: mergedObserved, verification_method: "Pending independent causal verification of computed paired control/treatment receipts." }) });
       if (!patch.ok) throw new Error("LEARNING_UPDATE_" + patch.status);
-      if (!behavioralChanged || provenanceDelta <= 0) {
+      if (!behavioralChanged || outcomeDeltaValue <= 0) {
         return json({
           ok: false,
           error: "NO_MEASURED_LEARNING_EFFECT",
@@ -244,6 +292,7 @@ Deno.serve(async (req: Request) => {
         },
         counterfactual: {
           task_id: taskId,
+          required_capability: task.required_capability,
           computed_not_declared: true,
           same_task_input: JSON.stringify(control.evidence?.task_input) === JSON.stringify(treatment.evidence?.task_input),
         },

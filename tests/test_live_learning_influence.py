@@ -91,3 +91,33 @@ def test_learning_influence_keeps_independent_verification_on_fresh_runtime():
     assert "independent-verification" in source
     assert "executor_claim_trusted" in source
     assert "independent_verification" in source
+
+
+def test_live_proof_python_heredocs_compile():
+    """Catch syntax errors in Python embedded in the executed workflow steps."""
+    import yaml
+
+    workflow = yaml.safe_load(_source())
+    checked = 0
+    failures = []
+    for job_id, job in workflow["jobs"].items():
+        for step in job.get("steps", []):
+            lines = step.get("run", "").splitlines()
+            index = 0
+            while index < len(lines):
+                match = re.search(r"\bpython(?:3)?\s+-\s+<<'([A-Za-z_]\w*)'", lines[index])
+                if not match:
+                    index += 1
+                    continue
+                delimiter = match.group(1)
+                end = next((i for i in range(index + 1, len(lines))
+                            if lines[i].strip() == delimiter), len(lines))
+                # Bash also terminates a heredoc at the end of its run script.
+                checked += 1
+                try:
+                    compile("\n".join(lines[index + 1:end]), f"{job_id}:{step.get('name')}", "exec")
+                except SyntaxError as error:
+                    failures.append(str(error))
+                index = end + 1
+    assert checked > 0, "No Python heredocs checked"
+    assert not failures, failures

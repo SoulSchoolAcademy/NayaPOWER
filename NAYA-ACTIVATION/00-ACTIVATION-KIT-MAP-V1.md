@@ -16,7 +16,7 @@ This is the portable activation surface for a genuinely cold Naya.
 
 ## Source precedence
 
-Read `CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md` before making a current-state claim. It explicitly classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN.
+Read the current `CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md` before making a current-state claim. It explicitly classifies competing sources as CURRENT, STALE, HISTORICAL, DERIVED or UNKNOWN. Select the newest dated reconciliation and follow its source-precedence rules.
 
 ## Canonical context
 

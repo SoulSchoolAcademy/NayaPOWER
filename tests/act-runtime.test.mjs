@@ -18,6 +18,26 @@ const grant=(x={})=>({grant_id:"g1",issuer_id:OWNER,subject_id:OWNER,scope:{targ
 const door=(x={})=>({door_id:"DOOR-AI",operation:"apply_retained_intelligence",authority_action:"naya_node_apply",target:NAYA,consequential:true,max_law_age_seconds:900,...x});
 
 test("ACT accepts exact fresh authorized LAW receipt",()=>assert.equal(validateAct(req(),law(),grant(),door(),NOW).status,"READY"));
+test("ACT revalidates the live grant behind an otherwise authorized LAW receipt",()=>{
+  const cases = [
+    ["missing", null, "LIVE_AUTHORITY_NOT_FOUND"],
+    ["different grant", grant({grant_id:"g2"}), "LIVE_AUTHORITY_NOT_FOUND"],
+    ["wrong issuer", grant({issuer_id:"other"}), "LIVE_AUTHORITY_OWNER_MISMATCH"],
+    ["wrong subject", grant({subject_id:"other"}), "LIVE_AUTHORITY_OWNER_MISMATCH"],
+    ["missing actions", grant({actions:undefined}), "LIVE_AUTHORITY_ACTION_MISMATCH"],
+    ["wrong action", grant({actions:["production_deploy"]}), "LIVE_AUTHORITY_ACTION_MISMATCH"],
+    ["missing scope", grant({scope:undefined}), "LIVE_AUTHORITY_TARGET_MISMATCH"],
+    ["wrong target", grant({scope:{target:"OTHER"}}), "LIVE_AUTHORITY_TARGET_MISMATCH"],
+  ];
+  for (const [name, liveGrant, reason] of cases) {
+    const decision = validateAct(req(),law(),liveGrant,door(),NOW);
+    assert.equal(decision.status,"BLOCKED",name);
+    assert.equal(decision.reason,reason,name);
+    assert.equal(decision.law_receipt_id,"law1",name);
+    assert.equal(decision.authority_grant_id,"g1",name);
+  }
+});
+
 test("1 missing LAW receipt fails closed",()=>assert.equal(validateAct(req({law_receipt_id:""}),null,grant(),door(),NOW).reason,"LAW_RECEIPT_REQUIRED"));
 test("2 non-authorized LAW receipt fails closed",()=>assert.equal(validateAct(req(),law({status:"BLOCKED"}),grant(),door(),NOW).reason,"LAW_NOT_AUTHORIZED"));
 test("3 wrong owner or Naya fails closed",()=>{

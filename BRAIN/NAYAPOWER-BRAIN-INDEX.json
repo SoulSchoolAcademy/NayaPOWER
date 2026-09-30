@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-09-29",
+  "generated_at": "2026-09-30",
   "status": "POST_NORTH_STAR_BOUNDED_ACCEPTANCE_NINE_NODE_LIVE_PROOF",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
@@ -202,8 +202,8 @@
     },
     "current_frontier": {
       "issue": 66,
-      "state": "OPEN_CURRENT_TRUTH_CONTROL_PLANE",
-      "next": "Reconcile stale control-plane pointers and restore fail-closed Current Truth Resolver evidence; then run the authority lifecycle negative matrix."
+      "state": "POST_SEMANTIC_DRIFT_GUARD_PROJECTION_REFRESH_PENDING",
+      "next": "Integrate the projection refresh based on 309f33a7 and require a fresh resolver result with no stale operational projection. Then explicit Human Director DEPLOY is required for the protected causal-runtime revision before SN-004 live causal rerun. Coda 2 replay/recovery and #1062 two-owner proof design remain independent."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -244,9 +244,25 @@
       "audit": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V3.md",
       "recovery_run": "36632538416",
       "limitation": "Historical bounded specimen only; later revisions require their own production evidence."
-    }
+    },
+    "current_main_authority_cache_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F_NOT_PRODUCTION_PROOF",
+    "current_main_know": "SOURCE_ORACLE_REPAIR_MERGED_C41C3A64; PRIOR_RUN_36653558611_CONTEXTUAL_HIT; FRESH_LIVE_HIT_MISS_INDEPENDENT_REREAD_PENDING",
+    "sn004_learning": "NO_MEASURED_LEARNING_EFFECT_RUN_36652694005_PRESERVED; SMART_NOTE_SOURCE_REPAIR_MERGED_4C2B8F12; APPLICABILITY_SOURCE_REPAIR_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
+    "cold_acceptance": "PROTOCOL_READY_FRESH_ENTRANT_NOT_PROVEN",
+    "current_causal_runtime_parity": {
+      "status": "MISMATCH",
+      "main_source": "0fb3612344cd28155945e0f33336aaca5b5ef31d",
+      "promotion_run": 36657956413,
+      "denial": "protected_change_requires_explicit_promotion",
+      "denial_artifact": 11072839541,
+      "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
+      "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
+      "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
+      "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b"
+    },
+    "two_owner_nayanet": "NOT_PROVEN_ISSUE_1062_SOURCE_GAPS_CLASSIFIED"
   },
-  "last_reconciled_main": "618429b1a77ceb391f179c54e40d50aedb6390f4",
+  "last_reconciled_main": "309f33a7d6543e744ba29986402b7d00d71d8534",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -254,12 +270,12 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Current Truth Resolver live pass on reconciled control-plane state; then authority lifecycle negative matrix.",
+    "next_proof": "Fresh Current Truth Resolver after post-guard projection refresh; then exact-source/deployed parity through explicit Human Director DEPLOY before SN-004 causal rerun.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
     "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
-    "next_system_frontier": "CURRENT_TRUTH_RESOLVER_THEN_AUTHORITY_LIFECYCLE_MATRIX"
+    "next_system_frontier": "CURRENT_TRUTH_SEMANTIC_FRESHNESS_THEN_EXPLICIT_DEPLOY_CAUSAL_PARITY; PARALLEL_CODA2_REPLAY_RECOVERY"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",

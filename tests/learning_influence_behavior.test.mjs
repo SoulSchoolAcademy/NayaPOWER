@@ -100,7 +100,8 @@ test('learning influence computes behavior and measurable outcome from one bound
   assert.equal(body.treatment.evidence.outcome.provenance_preserved, true);
   assert.notDeepEqual(body.control.evidence.behavior, body.treatment.evidence.behavior);
   assert.equal(body.behavioral_delta.changed, true);
-  assert.equal(body.outcome_delta.provenance_preserved, 1);
+  assert.equal(body.outcome_delta.metric, 'provenance_preserved');
+  assert.equal(body.outcome_delta.value, 1);
   assert.equal(body.treatment.evidence.outcome.source_event_bound, "event-1");
   assert.equal(body.treatment.evidence.outcome.intelligent_block_bound, FRESH_BLOCK_ID);
   assert.equal(body.counterfactual.computed_not_declared, true);
@@ -115,5 +116,69 @@ test('learning influence refuses causal success when retrieved intelligence caus
   const body = await response.json();
   assert.equal(body.error, 'NO_MEASURED_LEARNING_EFFECT');
   assert.equal(body.behavioral_delta.changed, false);
-  assert.equal(body.outcome_delta.provenance_preserved, 0);
+  assert.equal(body.outcome_delta.value, 0);
+});
+
+
+const SN004_LESSON = JSON.stringify({
+  machine_view: {
+    operating_mode: 'act-first within guardrails; announce after; document everything',
+    permitted_without_per_action_approval: [
+      'repository reads, tests, verification',
+      'documentation and evidence recording',
+    ],
+    hard_boundaries_require_explicit_authorization: [
+      'production deployment/dispatch',
+      'destructive or irreversible actions',
+      'credentials / money movement',
+      'constitutional ratification or amendment',
+    ],
+  },
+  human_view: {
+    simple_rule: 'See what needs doing, check it is safe and within guardrails, do it, then tell everyone.',
+  },
+});
+
+test('SN-004 does not pass the provenance held-out by accidental retrieval alone', async () => {
+  const response = await runtime({ lesson: JSON.stringify({ human_view: { simple_rule: 'act when useful' } }) }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.error, 'NO_MEASURED_LEARNING_EFFECT');
+  assert.equal(body.counterfactual.task_id, 'NAYA-0001-NO-APPLICABLE-CAPABILITY');
+  assert.equal(body.behavioral_delta.changed, false);
+});
+
+test('SN-004 semantics select the fixed act-first held-out task and measurable autonomy outcome', async () => {
+  const response = await runtime({ lesson: SN004_LESSON }).invoke();
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  assert.equal(body.counterfactual.task_id, 'NAYA-0001-ACT-FIRST-HELDOUT-001');
+  assert.equal(body.counterfactual.required_capability, 'governed_act_first_autonomy');
+  assert.deepEqual(body.control.evidence.task_input, body.treatment.evidence.task_input);
+  assert.equal(body.control.evidence.behavior, 'REQUIRE_EXPLICIT_PER_ACTION_APPROVAL');
+  assert.equal(body.treatment.evidence.behavior, 'ACT_WITHIN_GUARDRAILS_THEN_ANNOUNCE');
+  assert.equal(body.control.evidence.outcome.governed_autonomy_applied, false);
+  assert.equal(body.treatment.evidence.outcome.governed_autonomy_applied, true);
+  assert.equal(body.outcome_delta.metric, 'governed_autonomy_applied');
+  assert.equal(body.outcome_delta.value, 1);
+  assert.equal(body.treatment.evidence.outcome.source_event_bound, 'event-1');
+  assert.equal(body.treatment.evidence.outcome.intelligent_block_bound, FRESH_BLOCK_ID);
+});
+
+test('SN-004 classification fails closed when hard-boundary semantics are missing', async () => {
+  const weak = JSON.stringify({
+    machine_view: {
+      operating_mode: 'act-first within guardrails; announce after; document everything',
+      permitted_without_per_action_approval: [
+        'repository reads, tests, verification',
+        'documentation and evidence recording',
+      ],
+      hard_boundaries_require_explicit_authorization: [],
+    },
+  });
+  const response = await runtime({ lesson: weak }).invoke();
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.error, 'NO_MEASURED_LEARNING_EFFECT');
+  assert.equal(body.counterfactual.task_id, 'NAYA-0001-NO-APPLICABLE-CAPABILITY');
 });
