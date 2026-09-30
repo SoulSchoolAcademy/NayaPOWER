@@ -237,3 +237,14 @@ def test_projection_freshness_flags_substantive_path(monkeypatch):
     assert result["status"] == "STALE"
     assert result["reason"] == "SUBSTANTIVE_DRIFT"
     assert result["substantive_paths"] == ["tools/current_truth_resolver.py"]
+
+
+def test_current_truth_resolver_has_daily_schedule():
+    root = Path(__file__).resolve().parents[1]
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    assert "schedule:" in wf
+    assert 'cron: "17 15 * * *"' in wf
+    assert "contents: read" in wf
+    assert "actions: read" in wf
+    assert "issues: read" in wf
+    assert "pull-requests: read" in wf
