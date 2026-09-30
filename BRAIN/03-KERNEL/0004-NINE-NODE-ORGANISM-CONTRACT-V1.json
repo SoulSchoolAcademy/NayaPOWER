@@ -87,7 +87,8 @@
         "SELF_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:LAW"
+        "HANDOFF_TO:LAW",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -167,7 +168,8 @@
         "LAW_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:ACT"
+        "HANDOFF_TO:ACT",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "none to evaluate; authority evidence required to return AUTHORIZED",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -239,7 +241,8 @@
         "ACT_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:KNOW"
+        "HANDOFF_TO:KNOW",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -311,7 +314,8 @@
         "KNOW_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:PROVE"
+        "HANDOFF_TO:PROVE",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -384,7 +388,8 @@
         "PROVE_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:CONNECT"
+        "HANDOFF_TO:CONNECT",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -457,7 +462,8 @@
         "CONNECT_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:VERIFY"
+        "HANDOFF_TO:VERIFY",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -529,7 +535,8 @@
         "VERIFY_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:LEARN"
+        "HANDOFF_TO:LEARN",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -598,7 +605,8 @@
         "LEARN_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:EVOLVE"
+        "HANDOFF_TO:EVOLVE",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -668,7 +676,8 @@
         "EVOLVE_DECISION_OR_HANDOFF"
       ],
       "relationships": [
-        "HANDOFF_TO:SELF"
+        "HANDOFF_TO:SELF",
+        "APPLIES:NAYA-DECISION-VALUE-CALCULUS-V2.1"
       ],
       "authority_required": "valid LAW decision for consequential action/use where applicable",
       "privacy_behavior": "preserve owner/scope; no widening without explicit authorization",
@@ -715,5 +724,29 @@
     "UPDATE_STATE",
     "NEXT_GAP"
   ],
-  "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence."
+  "truth_boundary": "Contract existence does not prove runtime binding. Each Node requires behavioral/production evidence.",
+  "shared_decision_calculus": {
+    "object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "status": "HUMAN_DIRECTOR_RATIFIED_SOURCE_CI_VERIFIED",
+    "specification": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "executable": "kernel/value_calculus.py",
+    "outcomes": [
+      "ACT",
+      "READ_MORE",
+      "ASK",
+      "REFUSE"
+    ],
+    "law": "The calculus is shared infrastructure across the nine organs; it is not a tenth node and never creates authority.",
+    "node_roles": {
+      "SELF": "resolve declared objective, stakeholders, baseline, horizon, and current ladder state",
+      "LAW": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization",
+      "ACT": "execute only an ACT outcome that is admissible, authorized, bounded, and selected by the canonical calculus",
+      "KNOW": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence",
+      "PROVE": "preserve scoring inputs, provenance, uncertainty, gate reasons, predicted value, and decision receipt evidence",
+      "CONNECT": "retrieve and relate applicable intelligence, dependencies, affected parties, baselines, and graph context without creating truth or authority",
+      "VERIFY": "independently recompute decision/outcome claims, compare predicted vs observed value, and preserve calibration error",
+      "LEARN": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify",
+      "EVOLVE": "promote only verified and authorized recalibration versions into successor/system continuity without changing constitutional boundaries"
+    }
+  }
 }
