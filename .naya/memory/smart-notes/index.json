@@ -178,7 +178,7 @@
       }
     },
     {
-      "smart_note_id": "SN-005",
+      "smart_note_id": "SN-013",
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn013-decision-efficiency",
       "content_hash": "2a534acea3882a352ba27a3d46d42253d37d7aeb93cebe806a1bb60aee450037",
       "title": "Decision Efficiency — Evidence-Based Act / Read / Ask Doctrine",
@@ -188,10 +188,10 @@
       "subtopic": "DECISION_EFFICIENCY",
       "truth_state": "CANDIDATE",
       "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-005/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-013/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
       "smart_link_status": "ACTIVE",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-005/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-013/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
       "publication_scope": "PUBLIC_DERIVED_VIEW",
       "keywords": [
         "smart note",
@@ -216,7 +216,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 6,
+    "next_sequence": 14,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
