@@ -39,8 +39,8 @@ def test_migration_sorts_after_r1_writer_contract():
 
 def test_migration_parses_with_postgres_parser(migration_text):
     stmts = parse_sql(migration_text)
-    # drop + create + revoke + grant (commit bridge), create + revoke + grant (supersede bridge)
-    assert len(stmts) == 7, f"expected 7 statements, got {len(stmts)}"
+    # drop + create + revoke + grant for each bridge (8 statements total)
+    assert len(stmts) == 8, f"expected 8 statements, got {len(stmts)}"
 
 
 def test_commit_bridge_threads_p_connections(migration_text):
