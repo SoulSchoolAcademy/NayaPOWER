@@ -13,6 +13,7 @@ def test_governed_promotion_keeps_manual_human_gate_and_canonical_proof():
     assert "live-intelligence-commit-proof.yml" in source
     assert "live-supabase-runtime-proof.yml" in source
     assert "live-verified-ai-action-proof.yml" in source
+    assert "live-connect-proof.yml" in source
     assert "production-promotion-receipt.json" in source
 
 
@@ -81,6 +82,10 @@ def test_governed_promotion_dispatches_runtime_proof_directly():
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$act_head" != "$GITHUB_SHA" ]; then' in source
     assert '"act_proof_conclusion":act_proof.get("conclusion")' in source
+    assert 'gh workflow run "$CONNECT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
+    assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$CONNECT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
+    assert 'if [ "$connect_head" != "$GITHUB_SHA" ]; then' in source
+    assert '"connect_proof_conclusion":connect_proof.get("conclusion")' in source
     assert '--event workflow_run' not in source
 
 
@@ -99,8 +104,8 @@ def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "gh run watch" not in source
     assert "gh run view" in source
-    assert source.count("--jq .status") == 3
-    assert source.count("--jq .conclusion") == 3
+    assert source.count("--jq .status") == 4
+    assert source.count("--jq .conclusion") == 4
     assert '.status+":"+(.conclusion//"")' not in source
 
 
