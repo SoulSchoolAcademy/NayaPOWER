@@ -152,7 +152,6 @@ def update_registry(capture, verify, projection):
             "lineage_id": verify["persisted"]["lineage"]["id"],
             "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
             "runtime_index_id": verify["persisted"]["index"]["id"],
-            "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
