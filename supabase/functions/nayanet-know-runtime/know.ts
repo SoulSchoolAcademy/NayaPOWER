@@ -42,6 +42,9 @@ export type IntelligentBlock = {
     valid_until?: string | null;     // null = open-ended
     visibility?: string | null;      // PRIVATE | DERIVED_SHARED | PUBLIC_DERIVED
     consent_ref?: string | null;
+    // Runtime-derived consent state. Never persisted as authority; KNOW injects
+    // this from the canonical live consent reader before selection.
+    live_consent_active?: boolean | null;
     applicability?: { state?: string | null; task_classes?: unknown; limitations?: unknown } | null;
   }> | null;
 };
@@ -139,6 +142,7 @@ export type ParsedBlockConnection = {
   valid_until: string | null;
   visibility: string | null;
   consent_ref: string | null;
+  live_consent_active: boolean | null;
   applicability_state: string | null; // APPLICABLE | NOT_APPLICABLE | UNKNOWN | null
 };
 
@@ -173,6 +177,7 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
       valid_until: normText((c as any)?.valid_until),
       visibility: normUpper((c as any)?.visibility),
       consent_ref: normText((c as any)?.consent_ref),
+      live_consent_active: typeof (c as any)?.live_consent_active === "boolean" ? (c as any).live_consent_active : null,
       applicability_state: normUpper(
         applicability !== null && typeof applicability === "object"
           ? (applicability as any)?.state
@@ -193,8 +198,9 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
 //     not be returned as current);
 //   - not-yet-valid and expired edges never influence behavior
 //     (V2 temporal_contract: null valid_until means open-ended);
-//   - non-PRIVATE visibility without an explicit consent_ref never influences
-//     retrieval (V2 cross_owner_rule: DERIVED_SHARED requires consent_ref);
+//   - non-PRIVATE visibility requires both an explicit consent_ref and a live
+//     consent recheck from the canonical consent consumer before it can
+//     influence retrieval; stale/revoked/unknown consent fails closed;
 //   - NOT_APPLICABLE edges never influence retrieval; UNKNOWN stays UNKNOWN
 //     (V2 applicability_contract: retrieval does not imply applicability).
 // Malformed V2 values fail closed. No gate creates authority: admission is
@@ -238,8 +244,11 @@ export function v2EdgeExclusionReason(
   // the block-level owner check in isEligibleBlock already confines PRIVATE
   // edges to the requesting owner.
   if (conn.visibility !== null && !V2_ALLOWED_VISIBILITY.has(conn.visibility)) return "EDGE_VISIBILITY_UNKNOWN";
-  if (conn.visibility !== null && conn.visibility !== "PRIVATE" && conn.consent_ref === null)
-    return "EDGE_CROSS_OWNER_CONSENT_REQUIRED";
+  if (conn.visibility !== null && conn.visibility !== "PRIVATE") {
+    if (conn.consent_ref === null) return "EDGE_CROSS_OWNER_CONSENT_REQUIRED";
+    if (conn.live_consent_active === false) return "EDGE_CONSENT_REVOKED";
+    if (conn.live_consent_active !== true) return "EDGE_CONSENT_STATE_UNKNOWN";
+  }
   // Applicability tristate. Only NOT_APPLICABLE excludes; UNKNOWN is
   // admitted without being promoted — retrieval does not imply applicability.
   if (conn.applicability_state === "NOT_APPLICABLE") return "EDGE_NOT_APPLICABLE";
