@@ -1390,9 +1390,9 @@
       "version": "20260930165500",
       "name": "durable_checkpoint_receipts_v2",
       "path": "supabase/migrations/20260930165500_durable_checkpoint_receipts_v2.sql",
-      "sha256": "9ed4db7fef14a8dae481cfbeee271ede56961306d59a7f703b7492b01ed19a60",
+      "sha256": "be0e695f8408233e1e3d8a924ae8ea40d47acc8a5a6baa495d6ef9a9d8a62c81",
       "statement_count": 13,
-      "bytes": 5999,
+      "bytes": 5821,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
