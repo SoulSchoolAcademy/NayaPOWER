@@ -62,11 +62,11 @@ drop function if exists public.nayanet_supersede_intelligent_block_runtime(text,
 create function public.nayanet_supersede_intelligent_block_runtime(
   p_naya_id text,p_owner_id uuid,p_runtime_jti text,p_authority_grant_id uuid,
   p_project_id text default 'NayaNET',
-  p_superseded_block_id uuid,p_title text,p_content text,
+  p_superseded_block_id uuid default null,p_title text default null,p_content text default null,
   p_block_type text default 'GOVERNED_INTELLIGENCE',
   p_understanding_state text default 'CANDIDATE',
   p_owner_scope text default 'PRIVATE',
-  p_idempotency_key text,
+  p_idempotency_key text default null,
   p_connections jsonb default null
 ) returns jsonb language plpgsql security definer set search_path='' as $function$
 declare grant_row record; new_row public.nayanet_intelligent_blocks;
