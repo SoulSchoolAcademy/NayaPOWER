@@ -79,9 +79,15 @@ def test_short_sha_is_accepted():
     assert parity.evaluate(_obs(SHA[:8]), False)[0] == "MATCH"
 
 
-def test_source_advanced_without_redeploy_is_stale():
-    """THE headline case: canonical moved, deployed artifact did not."""
+def test_repo_advanced_but_deployable_source_unchanged_is_match():
+    """A docs/workflow-only commit must not force a no-op runtime redeploy."""
     verdict, findings = parity.evaluate(_obs(OTHER), False)
+    assert verdict == "MATCH", findings
+
+
+def test_deployable_source_advanced_without_redeploy_is_stale():
+    """If the actual deployed function source changed, stale remains fail-closed."""
+    verdict, findings = parity.evaluate(_obs(OTHER), True)
     assert verdict == "STALE"
     assert any("Redeploy" in f for f in findings)
 
