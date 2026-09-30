@@ -657,9 +657,6 @@ def evaluate_decision_architecture(
         if reserved_human_decision:
             resolution = "ASK"
             reason = "RESERVED_HUMAN_DECISION"
-        elif first["effective_stakes"] == "consequential" and not False:
-            resolution = "ASK"
-            reason = "CONSEQUENTIAL_STAKES"
         elif positive_ok and quality_ok and confidence_ok and clear_ok:
             resolution = "ACT"
             reason = "CLEAR_POSITIVE_BOUNDED_WINNER"
