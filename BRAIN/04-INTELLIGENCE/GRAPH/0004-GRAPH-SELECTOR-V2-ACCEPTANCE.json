@@ -1,0 +1,262 @@
+{
+  "schema": "naya.graph.selector.v2.acceptance",
+  "version": "1.0",
+  "task": {
+    "task_id": "GRAPH-V2-PROVENANCE-001",
+    "task_class": "provenance_sensitive",
+    "owner_id": "owner-a",
+    "target_id": "IB-1",
+    "now": "2026-09-30T03:00:00Z"
+  },
+  "invariant": "A relationship is selectable only when it is owner-scoped, ACTIVE, VERIFIED, evidenced, temporally current, not superseded/revoked, visibility-valid, consent-valid when shared, target-matched, relationship-type allowed, and explicitly APPLICABLE to the task class.",
+  "allowed_relationship_types": [
+    "PRODUCES",
+    "VERIFIED_BY"
+  ],
+  "cases": [
+    {
+      "name": "valid_private_applicable",
+      "expect_selected": true,
+      "edge": {
+        "relationship_id": "REL-OK",
+        "owner_id": "owner-a",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-29T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "provenance_sensitive"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "VERIFIED_FOR_TASK"
+        ]
+      }
+    },
+    {
+      "name": "expired_edge",
+      "expect_selected": false,
+      "expect_reason": "TEMPORALLY_INVALID",
+      "edge": {
+        "relationship_id": "REL-EXPIRED",
+        "owner_id": "owner-a",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-20T00:00:00Z",
+        "valid_until": "2026-09-29T23:59:59Z",
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "provenance_sensitive"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "EXPIRED"
+        ]
+      }
+    },
+    {
+      "name": "superseded_edge",
+      "expect_selected": false,
+      "expect_reason": "STATUS_NOT_ACTIVE",
+      "edge": {
+        "relationship_id": "REL-SUPERSEDED",
+        "owner_id": "owner-a",
+        "source_id": "SRC-OLD",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "SUPERSEDED",
+        "status": "SUPERSEDED",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-old"
+        ],
+        "evidence_refs": [
+          "ev-old"
+        ],
+        "valid_from": "2026-09-20T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "provenance_sensitive"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "SUPERSEDED"
+        ]
+      }
+    },
+    {
+      "name": "shared_without_consent",
+      "expect_selected": false,
+      "expect_reason": "CONSENT_REQUIRED",
+      "edge": {
+        "relationship_id": "REL-NO-CONSENT",
+        "owner_id": "owner-a",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "DERIVED_SHARED",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-29T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "provenance_sensitive"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "CONSENT_MISSING"
+        ]
+      }
+    },
+    {
+      "name": "unknown_applicability",
+      "expect_selected": false,
+      "expect_reason": "APPLICABILITY_UNKNOWN",
+      "edge": {
+        "relationship_id": "REL-UNKNOWN",
+        "owner_id": "owner-a",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-29T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "UNKNOWN",
+          "task_classes": [],
+          "limitations": [
+            "LEGACY_V1_UNCLASSIFIED"
+          ]
+        },
+        "reason_codes": [
+          "LEGACY_V1_EDGE"
+        ]
+      }
+    },
+    {
+      "name": "unrelated_task_class",
+      "expect_selected": false,
+      "expect_reason": "TASK_CLASS_MISMATCH",
+      "edge": {
+        "relationship_id": "REL-UNRELATED",
+        "owner_id": "owner-a",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-29T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "repository_correction"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "OTHER_TASK"
+        ]
+      }
+    },
+    {
+      "name": "wrong_owner",
+      "expect_selected": false,
+      "expect_reason": "OWNER_MISMATCH",
+      "edge": {
+        "relationship_id": "REL-OTHER-OWNER",
+        "owner_id": "owner-b",
+        "source_id": "SRC-1",
+        "target_id": "IB-1",
+        "relationship_type": "VERIFIED_BY",
+        "epistemic_state": "VERIFIED",
+        "status": "ACTIVE",
+        "visibility": "PRIVATE",
+        "provenance": [
+          "event-1"
+        ],
+        "evidence_refs": [
+          "ev-1"
+        ],
+        "valid_from": "2026-09-29T00:00:00Z",
+        "valid_until": null,
+        "supersedes_relationship_id": null,
+        "consent_ref": null,
+        "applicability": {
+          "state": "APPLICABLE",
+          "task_classes": [
+            "provenance_sensitive"
+          ],
+          "limitations": []
+        },
+        "reason_codes": [
+          "OTHER_OWNER"
+        ]
+      }
+    }
+  ]
+}

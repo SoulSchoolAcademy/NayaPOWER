@@ -94,7 +94,7 @@ function runtime({ grant = canonicalGrant(), grantExists = true } = {}) {
     invoke: (authorityGrantId = 'grant-1') => handler(new Request('https://offline.invalid', {
       method: 'POST',
       headers: { authorization: 'Bearer test', 'content-type': 'application/json' },
-      body: JSON.stringify({ mode: 'execute', authority_grant_id: authorityGrantId }),
+      body: JSON.stringify({ mode: 'execute', authority_grant_id: authorityGrantId, idempotency_key: 'authority-negative-matrix' }),
     })),
   };
 }
@@ -207,7 +207,7 @@ test('authority lifecycle rejects a stale cached grant after live revocation', a
   const response = await handler(new Request('https://offline.invalid', {
     method: 'POST',
     headers: { authorization: 'Bearer test', 'content-type': 'application/json' },
-    body: JSON.stringify({ mode: 'execute', authority_grant_id: cachedGrant.grant_id }),
+    body: JSON.stringify({ mode: 'execute', authority_grant_id: cachedGrant.grant_id, idempotency_key: 'cached-revocation' }),
   }));
   assert.equal(response.status, 403);
   const body = await response.json();

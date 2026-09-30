@@ -127,6 +127,14 @@ Deno.serve(async (req) => {
     const authorityDecision = await resolveAuthority(admin, grantId);
 
     if (mode === "execute") {
+      if (!idempotencyKey) {
+        return json({
+          ok: false,
+          status: "BLOCKED",
+          error: "IDEMPOTENCY_KEY_REQUIRED",
+          execution_outcome_id: null,
+        }, 400);
+      }
       if (!authorityDecision.allowed) {
         const receipt = await insertReceipt(admin, {
           user_id: OWNER_ID,
@@ -190,7 +198,17 @@ Deno.serve(async (req) => {
             .select("outcome_id,receipt_id,verified,verification_method")
             .eq("receipt_id", replay.id)
             .maybeSingle();
-          return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt: replay, outcome: replayOutcome ?? null});
+          if (!replayOutcome) {
+            return json({
+              ok: false,
+              status: "INCONCLUSIVE",
+              error: "IDEMPOTENT_REPLAY_OUTCOME_MISSING",
+              idempotent_replay: true,
+              receipt: replay,
+              outcome: null,
+            }, 409);
+          }
+          return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt: replay, outcome: replayOutcome});
         }
       }
 

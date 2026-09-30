@@ -1313,6 +1313,24 @@
       "statement_count": 8,
       "bytes": 1026,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930022500",
+      "name": "harden_collective_wisdom_consent_revocation_v1",
+      "path": "supabase/migrations/20260930022500_harden_collective_wisdom_consent_revocation_v1.sql",
+      "sha256": "bfa12ee3a5d9fec44ae9da3d94cb25a3f2083f90bbd8e2b635b249d5c1257c5a",
+      "statement_count": 11,
+      "bytes": 5215,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930024000",
+      "name": "harden_brain_relationship_semantics_v2",
+      "path": "supabase/migrations/20260930024000_harden_brain_relationship_semantics_v2.sql",
+      "sha256": "8b2a2715280584fa1298ca1bb56e441e3ed2cfefa6d2289456e8f7340efbeb3d",
+      "statement_count": 11,
+      "bytes": 4507,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,

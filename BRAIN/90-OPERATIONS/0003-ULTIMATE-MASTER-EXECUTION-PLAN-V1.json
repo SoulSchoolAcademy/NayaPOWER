@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "c6ac19c4cc3bf938dd782d123c909249872dd905",
+  "evidence_snapshot_base": "f190cdacefc3e5adf136d074d22e6dfdd782b688",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -20,10 +20,10 @@
     "universal_nine_node_runtime_binding": "NOT_PROVEN",
     "multi_generation_compounding": "NOT_PROVEN",
     "two_owner_nayanet": "NOT_PROVEN; ISSUE_1062_SOURCE_AUDIT_IDENTIFIED_DERIVED_SHARE_AND_REVOCATION_GAPS",
-    "governed_production_promotion_run": "36631960490_SUCCESS",
+    "governed_production_promotion_run": "36659933566_SUCCESS_AT_SOURCE_2FF4207A",
     "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
     "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "SEMANTIC_DRIFT_GUARD_1067_MERGED_AND_VERIFIED; POST_1069_PROJECTION_REFRESH_REQUIRES_FRESH_RESOLVER",
+    "current_truth_resolver": "PROJECTION_REFRESH_TARGET_F190CDAC; FRESH_RESOLVER_REQUIRED_AFTER_INTEGRATION",
     "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F",
     "know_live_current": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
     "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT_PRESERVED; PR_1051_MERGED_4C2B8F12; PR_1056_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
@@ -40,18 +40,21 @@
       "promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
       "denial_artifact": 11072839541
     },
-    "prove_live_current": "RUN_36658635227_FAILED_BEFORE_KNOW_PROVE_AT_LAW_WORKFLOW_BINDING; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PARITY_PENDING"
+    "prove_live_current": "RUN_36658635227_FAILED_BEFORE_KNOW_PROVE_AT_LAW_WORKFLOW_BINDING; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PARITY_PENDING",
+    "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
+    "production_deployment_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
+    "post_production_source": "1070_CONSENT_REVOCATION;1072_KNOW_PROVE_BINDING;1077_GRAPH_V2;GRAPH_PERSISTENCE_V2;ACT_REPLAY_FAIL_CLOSED;1082_SELECTOR_ACCEPTANCE;1085_RECONCILIATION_MULTI_TASK_ACCEPTANCE;ACT_IDEMPOTENCY_KEY_REQUIRED_F190CDAC"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Refresh Brain/Operations against exact current main c6ac19c4 after PROVE LAW-workflow binding repair and require a fresh resolver result with no stale operational projection",
+      "action": "Integrate projection-only reconciliation at exact f190cdac and require resolver CURRENT under projection-only drift",
       "status": "ACTIVE"
     },
     {
       "rank": 2,
-      "action": "Explicitly authorize governed production promotion for exact reconciled main, deploy LAW #1069 binding plus current protected runtime repairs, then prove deployed parity before PROVE/SN-004 reruns",
+      "action": "Explicitly authorize governed production promotion for exact reconciled main and prove deployed parity before PROVE/SN-004/#1070 live proof",
       "status": "BLOCKED_EXPLICIT_HUMAN_DEPLOY_AUTHORITY"
     },
     {
@@ -79,7 +82,7 @@
       "rank": 7,
       "id": "#1062",
       "action": "Prove two-owner derived collective sharing and revocation propagation without weakening private owner RLS",
-      "status": "SOURCE_GAP_CLASSIFIED_CONTRACT_AND_FAILURE_FIRST_PROOF_PENDING"
+      "status": "SOURCE_IMPLEMENTED_LIVE_PROOF_PENDING"
     },
     {
       "rank": 8,
@@ -101,6 +104,6 @@
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Integrate this post-#1069 projection refresh and require a successful Current Truth Resolver run with no stale operational projection. Then Shawn explicitly authorizes DEPLOY for the resulting exact current main through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once and then advance SN-004 causal proof. While that boundary is pending, Coda 2 reliability and #1062 bounded design/proof work remain independent."
+    "instruction": "Integrate exact-f190cdac projection refresh and require resolver CURRENT. Then explicit Human Director DEPLOY is required for the exact resulting main; after parity run PROVE once, SN-004 causal proof, independent recomputation, #1070 production proof, cold successor, A→B→C, human-value measurement."
   }
 }

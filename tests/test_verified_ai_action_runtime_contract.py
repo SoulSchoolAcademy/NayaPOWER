@@ -75,6 +75,21 @@ def test_observed_result_is_derived_from_canonical_block_not_asserted():
     assert "expectedDigest" in verify
 
 
+def test_idempotent_replay_requires_persisted_outcome():
+    source = FUNCTION.read_text(encoding="utf-8")
+    replay = source.split("const replay =", 1)[1].split("const observed =", 1)[0]
+    assert "if (!replayOutcome)" in replay
+    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in replay
+    assert 'status: "INCONCLUSIVE"' in replay
+
+
+def test_consequential_action_requires_idempotency_key():
+    source = FUNCTION.read_text(encoding="utf-8")
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    assert 'if (!idempotencyKey)' in execute
+    assert '"IDEMPOTENCY_KEY_REQUIRED"' in execute
+
+
 def test_refusal_persists_receipt_and_creates_no_outcome():
     source = FUNCTION.read_text(encoding="utf-8")
     refusal = source.split("if (!authorityDecision.allowed)")[1].split("const grant = authorityDecision.grant")[0]
