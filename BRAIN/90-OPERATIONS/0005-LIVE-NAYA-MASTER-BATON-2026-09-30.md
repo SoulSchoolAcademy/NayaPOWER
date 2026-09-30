@@ -21,7 +21,7 @@ We are building a living loop in which useful experience becomes provenance-boun
 
 ## CURRENT HEAD
 
-`d353c84ead569a072f5de00c48846536cc5689a5`
+`3205327d37a9e040fd830d29f568e2b473651dd0`
 
 Latest merged repair: **PR #1176 — AI1 migration ordering + Brain index drift guard.**
 
@@ -37,7 +37,7 @@ Current production parity:
 2. **WHAT?** One governed intelligence substrate + many doors; canonical IBs, graph, checkpoints, proof, learning and succession.
 3. **WHY?** Preserve useful understanding, reduce repeated AI work, compound verified learning and increase human value.
 4. **SUCCESS?** Cold successor reconstructs truth, retrieves applicable intelligence, respects authority, acts, verifies, learns and improves the next successor.
-5. **TRUE NOW?** Main=`d353c84ead569a072f5de00c48846536cc5689a5`; exact live parity unknown; chain is structurally strong but behaviorally incomplete.
+5. **TRUE NOW?** Main=`resolve live at boot` (basis: `3205327d37a9e040fd830d29f568e2b473651dd0`); exact live parity unknown; chain is structurally strong but behaviorally incomplete.
 6. **PROVEN?** Machine-contract validation 9/9; graph type/provenance 12/12; recent kernel/LAW/chain gates green at bounded scopes; promotion fail-closed.
 7. **UNKNOWN?** Exact production parity, universal node binding, exact SN-015 retrieval/effect, current cold successor, collective two-owner behavior, current Hub artery, human-value loop.
 8. **AUTHORITY?** Shawn final; safe reversible source/doc work may proceed within standing authority; protected production and governance decisions remain gated.
@@ -68,7 +68,7 @@ Current production parity:
 ## MATERIAL HOLES
 
 **H1 — exact source/live parity**  
-Current main is newer than the latest successful runtime proof.
+The reconciliation basis main is newer than the latest successful runtime proof.
 
 **H2 — AI1 artifact handoff**  
 The exact SN-015 proof previously stopped before retrieval because the expected artifact was not delivered to the downstream wrapper.
@@ -93,7 +93,7 @@ We do not yet have sufficiently broad verified measures for outcome utility, att
 
 ## TOP 10
 
-1. Fresh Current Truth Resolver for `d353c84ead569a072f5de00c48846536cc5689a5`.
+1. Fresh Current Truth Resolver for `3205327d37a9e040fd830d29f568e2b473651dd0`.
 2. Exact AI1/prod deployment package verification.
 3. Exact governed production parity.
 4. Live ACT concurrent-idempotency proof.

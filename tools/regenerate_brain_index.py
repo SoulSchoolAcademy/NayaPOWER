@@ -33,7 +33,7 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger):
       blob SHAs (which would make the content a moving target — the SHA changes
       every time the file is regenerated), their table entries carry
       "_self_referential": true with no blob SHA. file_count always equals the
-      true tree size (157), so the ledger's count assertions still hold.
+      true tree size (158), so the ledger's count assertions still hold.
 
 Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
            2 = usage/git error, count drift, or dangling pointer.
@@ -126,7 +126,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 23,
-    "90-OPERATIONS": 9,
+    "90-OPERATIONS": 10,
     "99-ARCHIVE": 1,
     "ROOT": 5,
 }
@@ -365,7 +365,7 @@ def patch_brain_index(root: Path, basis: str, counts: dict[str, int], today: str
     doc["inventory_file_count"] = sum(counts.values())
     doc["last_reconciled_main"] = basis
     doc["reconciliation"] = {
-        "ledger": "brain-reconciliation-ledger-f648833b.md",
+        "ledger": ".naya/project-intelligence/brain-reconciliation-ledger-f648833b.md",
         "reconciled_at": today,
         "basis_commit": basis,
         "method": "tools/regenerate_brain_index.py from the committed git tree",

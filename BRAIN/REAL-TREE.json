@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "1a3eac2a09aaa27fd39188ab5f3b21fdda6667f1",
-  "inventory_file_count": 157,
+  "receipt_basis_commit": "3205327d37a9e040fd830d29f568e2b473651dd0",
+  "inventory_file_count": 158,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -17,7 +17,7 @@
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 23,
-    "90-OPERATIONS": 9,
+    "90-OPERATIONS": 10,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -300,8 +300,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "blob_sha": "e7129c4713589b4c2070c4f8b9e0d4c94bc03fc1",
-      "size": 4729
+      "blob_sha": "7ae4eff28043b7afc62b87900b27f42128ad0141",
+      "size": 4726
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
@@ -335,8 +335,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "blob_sha": "082830896c23ea3ec6feb06e219bdde6a04557f9",
-      "size": 3939
+      "blob_sha": "a5f33c77ef69e8f18319285c6a15d019ad1166be",
+      "size": 3932
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
@@ -355,8 +355,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "blob_sha": "f8c1445cd77f11b603b3d2547ca9c5e8cc2cc994",
-      "size": 4179
+      "blob_sha": "4e98235e59e8213f3824f65c3d0fb7864d016e58",
+      "size": 4172
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
@@ -630,7 +630,7 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-      "blob_sha": "10fb5e4c9d66f23ef0e5322e1c7bdf5f7d8cfafe",
+      "blob_sha": "4c6e5fd2d52a4d279fe3409f29cf72fb372ed349",
       "size": 21106
     },
     {
@@ -647,6 +647,21 @@
       "path": "BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json",
       "blob_sha": "f5ee4130bec0facf1c0ec21f2ed8857ea0565763",
       "size": 6153
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
+      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
+      "size": 6173
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
+      "size": 21537
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
+      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
+      "size": 7561
     },
     {
       "path": "BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json",
@@ -677,21 +692,6 @@
       "path": "BRAIN/12-ENGINEERING/README.md",
       "blob_sha": "51cf103c13dd57fe68bd3d1abe826542d11a8c10",
       "size": 3540
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
-      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
-      "size": 6173
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
-      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
-      "size": 21537
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
-      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
-      "size": 7561
     },
     {
       "path": "BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py",
@@ -735,8 +735,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
-      "blob_sha": "b07d2bcd45974472143b887694a3ad6d8b15985c",
-      "size": 11353
+      "blob_sha": "61b2ba136baee7f1eb9a56a26e8541c1012cee23",
+      "size": 17145
     },
     {
       "path": "BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md",
@@ -757,6 +757,11 @@
       "path": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
       "blob_sha": "26b6355b1b44bd40dc918630ad26d6eb91851fd4",
       "size": 3830
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/0005-LIVE-NAYA-MASTER-BATON-2026-09-30.md",
+      "blob_sha": "75f3b8e72b90c727d5d35eeadbdf72d3bb9a4df6",
+      "size": 8978
     },
     {
       "path": "BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md",
