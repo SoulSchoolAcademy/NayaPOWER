@@ -1,11 +1,11 @@
 {
   "schema": "naya.supabase.production-migration-ledger.v1",
   "schema_version": "1.0",
-  "captured_date": "2026-09-29",
+  "captured_date": "2026-09-30",
   "source_project_ref": "dahisasgpfvziswqvmvm",
   "source_table": "supabase_migrations.schema_migrations",
   "authority_note": "Repository reconstruction from authoritative production migration history; does not mutate remote migration metadata.",
-  "production_applied_count": 144,
+  "production_applied_count": 157,
   "production_applied": [
     {
       "version": "20260827011050",
@@ -1302,9 +1302,7 @@
       "statement_count": 1,
       "bytes": 3398,
       "status": "PRODUCTION_APPLIED"
-    }
-  ],
-  "pending": [
+    },
     {
       "version": "20260929044000",
       "name": "checkpoint_receipts_rls_v1",
@@ -1312,7 +1310,7 @@
       "sha256": "b091e9580c317e049109e172c078f9b05a20ea7ccdcd316e2523c1da2ebfa360",
       "statement_count": 8,
       "bytes": 1026,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260929210000",
@@ -1321,7 +1319,7 @@
       "sha256": "06c287b57f885cd250b2aa8aafcd5ce3925e2ac1b474af08b50a06b11b1c2ed7",
       "statement_count": 2,
       "bytes": 303,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930022500",
@@ -1330,7 +1328,7 @@
       "sha256": "3efb2a2045f88e8b5f2851c643c3951f5a97f9a5567c4b6e80f0252c1bf3e04e",
       "statement_count": 62,
       "bytes": 12375,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930024000",
@@ -1339,7 +1337,7 @@
       "sha256": "8b2a2715280584fa1298ca1bb56e441e3ed2cfefa6d2289456e8f7340efbeb3d",
       "statement_count": 11,
       "bytes": 4507,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930031355",
@@ -1348,7 +1346,7 @@
       "sha256": "31ad9a59fd84f7acaa24817264cfcdc729f72253cbde57ead332eee12be0354c",
       "statement_count": 1,
       "bytes": 408,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930040000",
@@ -1357,7 +1355,7 @@
       "sha256": "c3a6f1f92053da1f936ca72a186ff85aabbcbf2d20ceb76905373908d8fd78fb",
       "statement_count": 20,
       "bytes": 23343,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930050000",
@@ -1366,7 +1364,7 @@
       "sha256": "f6d2d7fbe4c5ee614f1162d683ede9ffa5fd9dba03b3c4600c0d55ef6f197ddd",
       "statement_count": 8,
       "bytes": 7577,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930051000",
@@ -1375,7 +1373,7 @@
       "sha256": "f05fa5aeadde4684bc0a85a2ae84e71fd7c3221922d416d6c50565a9d31c338c",
       "statement_count": 3,
       "bytes": 559,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930120000",
@@ -1384,7 +1382,7 @@
       "sha256": "0ee23139eab5ff97c6c357ebaab31e03ea171bc3e0cc85b867e6cbc57e3c194c",
       "statement_count": 6,
       "bytes": 1761,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930165500",
@@ -1393,7 +1391,7 @@
       "sha256": "be0e695f8408233e1e3d8a924ae8ea40d47acc8a5a6baa495d6ef9a9d8a62c81",
       "statement_count": 13,
       "bytes": 5821,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930183000",
@@ -1402,7 +1400,7 @@
       "sha256": "01043cecaea3aae94dc2b203545d6a7a66ef52d5493f7daf50fa2f0e9a97fba9",
       "statement_count": 1,
       "bytes": 8273,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
       "version": "20260930184500",
@@ -1411,18 +1409,19 @@
       "sha256": "65b1413e3cc127b8264e740cbb741e26486d83b849c3e8105a2b8678aa94fb8f",
       "statement_count": 1,
       "bytes": 8222,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "status": "PRODUCTION_APPLIED"
     },
     {
-      "version": "20260930190000",
+      "version": "20260930191233",
       "name": "fix_intelligence_commit_lineage_revision_v2",
-      "path": "supabase/migrations/20260930190000_fix_intelligence_commit_lineage_revision_v2.sql",
-      "sha256": "796edc3ff617b542a17e45074a5c4099ac84ce886aebe140bfc509a9644b1df8",
+      "path": "supabase/migrations/20260930191233_fix_intelligence_commit_lineage_revision_v2.sql",
+      "sha256": "7b6017b47bfa025ae1fdf460e5dbacff0df66dff7eabc108f1cf662f968e57d4",
       "statement_count": 1,
-      "bytes": 8339,
-      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+      "bytes": 7691,
+      "status": "PRODUCTION_APPLIED"
     }
   ],
+  "pending": [],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
