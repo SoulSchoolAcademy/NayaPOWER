@@ -1421,7 +1421,17 @@
       "status": "PRODUCTION_APPLIED"
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20260930235959",
+      "name": "ai1_capability_carry_v1",
+      "path": "supabase/migrations/20260930235959_ai1_capability_carry_v1.sql",
+      "sha256": "6437954afad70d68e09434c8ce6507b5538633f8970bca7a23310da40acd7932",
+      "statement_count": 8,
+      "bytes": 15133,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
