@@ -3,6 +3,10 @@ import json
 import pytest
 
 from kernel.value_calculus import (
+    ACT,
+    ASK,
+    READ_MORE,
+    REFUSE,
     ADMISSIBLE,
     NEEDS_AUTHORITY,
     NEEDS_EVIDENCE,
@@ -14,6 +18,7 @@ from kernel.value_calculus import (
     TailRisk,
     build_contribution_receipt,
     build_decision_receipt,
+    build_recalibration_receipt,
     calibration_summary,
     contribution_points,
     contribution_value_score,
@@ -21,7 +26,9 @@ from kernel.value_calculus import (
     evaluate_candidates,
     gate_candidate,
     independent_recompute,
+    promote_recalibration,
     score_quality,
+    value_interval,
     verification_state,
 )
 
@@ -143,7 +150,7 @@ def test_pareto_and_relative_margin_select_clear_low_risk_winner(profile):
     a = cand("a", B=9)
     b = cand("b", B=7)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == "EXECUTE"
+    assert ev["decision"] == ACT
     assert ev["selected"] == "a"
     assert ev["relative_margin"] >= profile.relative_margin
 
@@ -153,7 +160,7 @@ def test_near_tie_briefs_instead_of_auto_execution(profile):
     a = cand("a", B=9.0)
     b = cand("b", B=8.8)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == "BRIEF"
+    assert ev["decision"] == READ_MORE
 
 
 def test_bad_baseline_is_rejected(profile):
@@ -338,3 +345,67 @@ def test_negative_verified_contribution_is_evidence_not_automatic_point_punishme
     )
     assert receipt["cvs"] < 0
     assert receipt["points_awarded"] == 0
+
+
+def test_explicit_value_interval_and_nonoverlap_rule(profile):
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9, uncertainty_penalty=0.2)
+    b = cand("b", B=7, uncertainty_penalty=0.2)
+    ia = value_interval(a, base, profile)
+    ib = value_interval(b, base, profile)
+    assert ia["v_low"] < ia["v_high"]
+    assert ia["v_low"] > ib["v_high"]
+    ev = evaluate_candidates([base, a, b], "base", profile)
+    assert ev["decision"] == ACT
+    assert ev["interval_gap"] > profile.interval_epsilon
+
+
+def test_overlapping_value_intervals_trigger_read_more(profile):
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9.0, uncertainty_penalty=0.5)
+    b = cand("b", B=8.8, uncertainty_penalty=0.5)
+    ev = evaluate_candidates([base, a, b], "base", profile)
+    assert ev["decision"] == READ_MORE
+    assert ev["interval_gap"] <= profile.interval_epsilon
+
+
+def test_all_prohibited_is_explicit_refuse(profile):
+    base = cand("base", baseline=True, B=5)
+    q, c = quality()
+    x = Candidate("x", q, c, pv(B=100), authorized=True, hard_violation=True)
+    ev = evaluate_candidates([base, x], "base", profile)
+    assert ev["decision"] == REFUSE
+    row = next(r for r in ev["rows"] if r["candidate_id"] == "x")
+    assert "JUDGMENT_RULE_HARD_STOP" in row["gate_reasons"]
+
+
+def test_authority_boundary_is_explicit_ask(profile):
+    base = cand("base", baseline=True, B=5)
+    q, c = quality()
+    x = Candidate("x", q, c, pv(B=9), authorized=False)
+    ev = evaluate_candidates([base, x], "base", profile)
+    assert ev["decision"] == ASK
+
+
+def test_recalibration_is_versioned_and_cannot_self_promote(profile):
+    records = [
+        {"delta_v_predicted": 8, "delta_v_actual": 2},
+        {"delta_v_predicted": 7, "delta_v_actual": 3},
+        {"delta_v_predicted": 6, "delta_v_actual": 2},
+    ]
+    receipt = build_recalibration_receipt(
+        current_profile=profile,
+        proposed_version="2.1-cal-1",
+        records=records,
+        proposed_thresholds={"interval_epsilon": 0.1},
+        evidence_refs=["ledger:1", "ledger:2", "ledger:3"],
+    )
+    assert receipt["state"] == "LEARN_CANDIDATE"
+    assert receipt["automatic_promotion"] is False
+    with pytest.raises(PermissionError):
+        promote_recalibration(receipt, profile, verified=False, authorized=True)
+    with pytest.raises(PermissionError):
+        promote_recalibration(receipt, profile, verified=True, authorized=False)
+    promoted = promote_recalibration(receipt, profile, verified=True, authorized=True)
+    assert promoted.version == "2.1-cal-1"
+    assert promoted.interval_epsilon == pytest.approx(0.1)
