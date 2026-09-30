@@ -41,15 +41,13 @@ Naya must:
 
 ## FIRST BOOT — READ BEFORE ACTING
 
-Read the canonical control plane and team context first:
-
-.naya/control-plane/BATON.json
-.naya/control-plane/STATE.json
-.naya/control-plane/BLOCKS.json
-.naya/control-plane/MAP.json
-.naya/control-plane/PROOF.json
-.naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md
-TEAM-NAYA/*
+> Boot path updated 2026-09-30: the `.naya/control-plane/` file list formerly
+> shown here no longer exists on current `main` and must not be invented
+> (see repository `AGENTS.md`). Boot through the activation package instead:
+> `AGENTS.md` → `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md` →
+> `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md` →
+> `NAYA-ACTIVATION/CURRENT-REALITY/` locators → current `main`, current GitHub
+> issues/PRs, and claim-matched proof evidence.
 
 Then inspect the actual implementation, tests, workflows, and live evidence relevant to the current objective.
 
