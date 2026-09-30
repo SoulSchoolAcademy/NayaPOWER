@@ -74,7 +74,13 @@ async function callCommit(body: Json, jti: string) {
   // here (fail fast, clean 400) and again server-side in the SQL writer (fail
   // closed). Absent/empty -> null -> the writer persists the block exactly as
   // today. Unknown/malformed -> the commit is rejected, never silently stored.
-  const capabilities = coerceCapabilities(body.p_capabilities);
+  let capabilities: string[] | null = null;
+  try {
+    capabilities = validateCapabilities(body.p_capabilities);
+  } catch (err) {
+    if (err instanceof CapabilityValidationError) throw new Error(err.code + ":" + err.detail);
+    throw err;
+  }
   const response = await fetch(url + "/rest/v1/rpc/nayanet_intelligence_commit_runtime", {
     method: "POST",
     headers: {
