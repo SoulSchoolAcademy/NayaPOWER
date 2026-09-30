@@ -36,11 +36,6 @@ NEEDS_AUTHORITY = "NEEDS_AUTHORITY"
 NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 ADMISSIBLE = "ADMISSIBLE"
 
-ACT = "ACT"
-READ_MORE = "READ_MORE"
-ASK = "ASK"
-REFUSE = "REFUSE"
-
 STAKE_ORDER = {"low": 0, "high": 1, "consequential": 2}
 
 
@@ -142,9 +137,9 @@ class QualityProfile:
     )
     min_evidence_count: int = 1
     relative_margin: float = 0.10
-    interval_epsilon: float = 0.0
     min_reversibility_for_auto: float = 7.0
     uncertainty_scale: float = 1.0
+    interval_separation_epsilon: float = 0.0
 
     def weights(self) -> dict[str, float]:
         source = self.priorities or DEFAULT_QUALITY_PRIORITIES
@@ -233,25 +228,24 @@ def conservative_value(candidate: Candidate, baseline: Candidate, profile: Quali
     )
 
 
-def value_interval(candidate: Candidate, baseline: Candidate, profile: QualityProfile) -> dict[str, float]:
-    """Explicit conservative value interval used for autonomous dominance.
+def value_interval(candidate: Candidate, baseline: Candidate, profile: QualityProfile) -> tuple[float, float]:
+    """Uncertainty interval [V_low, V_high] for baseline-relative value.
 
-    V_low is the existing conservative value. V_high preserves the same
-    declared uncertainty/tail width on the upside. This does not invent
-    confidence: callers must still satisfy the independent aggregate and
-    critical confidence floors.
+    V_low is the conservative value: the point estimate minus every declared
+    uncertainty/tail penalty. V_high mirrors those declared penalties as
+    upside, because the point estimate is the best estimate and the penalties
+    are the declared uncertainty discount.
+
+    This is the INITIAL method, not the final word. CVaR, quantile, or
+    bounded-worst-case constructions may replace it through the governed
+    LEARN -> PROMOTE path. The law outranks the method: never let overlapping
+    uncertainty silently decide a winner.
     """
     delta = delta_value(candidate, baseline, profile)
-    width = (
-        max(0.0, _finite(candidate.uncertainty_penalty, "uncertainty_penalty"))
-        + max(0.0, _finite(candidate.tail_penalty, "tail_penalty"))
+    penalty = max(0.0, _finite(candidate.uncertainty_penalty, "uncertainty_penalty")) + max(
+        0.0, _finite(candidate.tail_penalty, "tail_penalty")
     )
-    return {"v_low": delta - width, "v_high": delta + width, "interval_width": width}
-
-
-def interval_gap(first: Mapping[str, float], second: Mapping[str, float]) -> float:
-    """Positive only when the first option's lower bound clears second's upper."""
-    return _finite(first["v_low"], "first.v_low") - _finite(second["v_high"], "second.v_high")
+    return (delta - penalty, delta + penalty)
 
 
 def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: RiskPolicy) -> tuple[str, list[str], dict]:
@@ -259,7 +253,7 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
     reasons: list[str] = []
 
     if candidate.hard_violation:
-        return PROHIBITED, ["JUDGMENT_RULE_HARD_STOP"], q
+        return PROHIBITED, ["HARD_VIOLATION"], q
 
     hard_flags = {
         "LAW": candidate.lawful,
@@ -325,6 +319,22 @@ def relative_margin(first: float, second: float, epsilon: float = 1e-9) -> float
     return (first - second) / max(abs(first), epsilon)
 
 
+# Canonical machine outcomes for the decision engine. The engine's working
+# decision names map onto exactly four machine outcomes:
+#   EXECUTE  -> ACT        (winner clear, positive, bounded, authorized)
+#   RESEARCH -> READ_MORE  (uncertainty is decision-relevant; cheap evidence
+#                           could change the winner)
+#   BRIEF    -> ASK        (genuine human authority/value judgment remains)
+#   REWORK   -> ASK        (option set itself is inadequate; human reworks it)
+# REFUSE is expressed at the gate level: a PROHIBITED candidate can never win.
+MACHINE_OUTCOME = {
+    "EXECUTE": "ACT",
+    "RESEARCH": "READ_MORE",
+    "BRIEF": "ASK",
+    "REWORK": "ASK",
+}
+
+
 def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profile: QualityProfile, risk_policy: RiskPolicy = RiskPolicy()) -> dict:
     baselines = [c for c in candidates if c.candidate_id == baseline_id and c.is_baseline]
     if len(baselines) != 1:
@@ -334,7 +344,6 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
     rows = []
     for candidate in candidates:
         gate, reasons, q = gate_candidate(candidate, profile, risk_policy)
-        interval = value_interval(candidate, baseline, profile)
         rows.append({
             "candidate_id": candidate.candidate_id,
             "gate": gate,
@@ -343,9 +352,7 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
             "pv": candidate.pv.pv(profile.uncertainty_scale),
             "delta_v": delta_value(candidate, baseline, profile),
             "v_safe": conservative_value(candidate, baseline, profile),
-            "v_low": interval["v_low"],
-            "v_high": interval["v_high"],
-            "interval_width": interval["interval_width"],
+            "value_interval": value_interval(candidate, baseline, profile),
             "residual_risk": candidate.pv.effective_residual_risk(profile.uncertainty_scale),
             "effective_stakes": candidate.effective_stakes(),
             "reversible": candidate.reversible,
@@ -366,56 +373,70 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
     top3 = ranked_all[:3]
 
     if not frontier:
-        non_baseline = [r for r in rows if not r["is_baseline"]]
-        if non_baseline and all(r["gate"] == PROHIBITED for r in non_baseline):
-            decision = REFUSE
-        elif any(r["gate"] == NEEDS_EVIDENCE for r in rows):
-            decision = READ_MORE
-        elif any(r["gate"] == NEEDS_AUTHORITY for r in rows):
-            decision = ASK
-        else:
-            # Admissible candidates exist, but none yet clears Q/value.
-            decision = READ_MORE
+        decision = "RESEARCH" if any(r["gate"] == NEEDS_EVIDENCE for r in rows) else "BRIEF"
+        if not any(r["gate"] in (NEEDS_EVIDENCE, NEEDS_AUTHORITY) for r in rows):
+            decision = "REWORK"
         return {
-            "decision": decision, "selected": None, "top3": top3,
-            "rows": rows, "frontier": frontier,
-            "interval_gap": None, "relative_margin": None,
+            "decision": decision,
+            "machine_outcome": MACHINE_OUTCOME[decision],
+            "selected": None,
+            "top3": top3,
+            "rows": rows,
+            "frontier": frontier,
         }
 
     first = frontier[0]
     competing = [r for r in ranked_all if r["candidate_id"] != first["candidate_id"]]
     second = competing[0] if competing else None
     margin = 1.0 if second is None else relative_margin(first["v_safe"], second["v_safe"])
-    gap = float("inf") if second is None else interval_gap(first, second)
+    # Interval separation: Delta = LowerBound(O1) - UpperBound(O2).
+    # No competitor means nothing to overlap with: trivially separated.
+    v_low_first = first["value_interval"][0]
+    v_high_second = second["value_interval"][1] if second is not None else float("-inf")
+    interval_separated = (v_low_first - v_high_second) > profile.interval_separation_epsilon
     by_id = {c.candidate_id: c for c in candidates}
     selected_candidate = by_id[first["candidate_id"]]
-    interval_dominant = second is None or gap > profile.interval_epsilon
+    authority_ok = (
+        first["effective_stakes"] == "low"
+        and selected_candidate.reversible
+        and first["q"]["dimensions"]["reversibility"] >= profile.min_reversibility_for_auto
+    )
+    separation_ok = margin >= profile.relative_margin and interval_separated
     can_auto = (
         first["gate"] == ADMISSIBLE
         and first["q"]["Q"] >= profile.q_accept
         and first["v_safe"] > 0
         and first["q"]["confidence_aggregate"] >= profile.aggregate_confidence_floor
         and first["q"]["confidence_critical"] >= profile.critical_confidence_floor
-        and first["effective_stakes"] == "low"
-        and selected_candidate.reversible
-        and first["q"]["dimensions"]["reversibility"] >= profile.min_reversibility_for_auto
-        and margin >= profile.relative_margin
-        and interval_dominant
+        and authority_ok
+        and separation_ok
     )
+    auto_blockers = []
+    if not authority_ok:
+        auto_blockers.append("AUTHORITY_OR_STAKES")
+    if margin < profile.relative_margin:
+        auto_blockers.append("INSUFFICIENT_RELATIVE_MARGIN")
+    if not interval_separated:
+        auto_blockers.append("INTERVAL_OVERLAP")
     if can_auto:
-        decision = ACT
-    elif first["effective_stakes"] != "low" or not selected_candidate.reversible:
-        decision = ASK
+        decision = "EXECUTE"
+    elif not interval_separated:
+        # Uncertainty overlap: cheap evidence could change the winner.
+        decision = "RESEARCH"
     else:
-        decision = READ_MORE
+        # Separated but margin/authority/stakes keep it human: judgment call.
+        decision = "BRIEF"
     return {
         "decision": decision,
+        "machine_outcome": MACHINE_OUTCOME[decision],
         "selected": first["candidate_id"],
         "top3": top3,
         "rows": rows,
         "frontier": frontier,
         "relative_margin": margin,
-        "interval_gap": None if second is None else gap,
+        "interval_separated": interval_separated,
+        "interval_delta": v_low_first - v_high_second if second is not None else None,
+        "auto_blockers": auto_blockers,
     }
 
 
@@ -491,82 +512,6 @@ def calibration_summary(records: Sequence[Mapping]) -> dict:
         "overprediction_detected": n >= 3 and bias < 0,
         "confidence_multiplier": 1.0 if n == 0 else max(0.25, 1.0 / (1.0 + mae)),
     }
-
-
-def build_recalibration_receipt(
-    *,
-    current_profile: QualityProfile,
-    proposed_version: str,
-    records: Sequence[Mapping],
-    proposed_priorities: Optional[Mapping[str, float]] = None,
-    proposed_thresholds: Optional[Mapping[str, float]] = None,
-    evidence_refs: Sequence[str] = (),
-) -> dict:
-    """Create a versioned LEARN candidate; never mutates the active profile."""
-    if not proposed_version or proposed_version == current_profile.version:
-        raise ValueError("proposed_version must be a new explicit version")
-    summary = calibration_summary(records)
-    return {
-        "receipt_type": "VALUE_RECALIBRATION",
-        "schema_version": "2.1",
-        "engine_version": ENGINE_VERSION,
-        "profile_id": current_profile.profile_id,
-        "from_version": current_profile.version,
-        "proposed_version": proposed_version,
-        "objective": current_profile.objective,
-        "calibration_summary": summary,
-        "proposed_priorities": dict(proposed_priorities or current_profile.weights()),
-        "proposed_thresholds": dict(proposed_thresholds or {}),
-        "evidence_refs": list(evidence_refs),
-        "state": "LEARN_CANDIDATE",
-        "automatic_promotion": False,
-    }
-
-
-def promote_recalibration(
-    receipt: Mapping,
-    current_profile: QualityProfile,
-    *,
-    verified: bool,
-    authorized: bool,
-) -> QualityProfile:
-    """Governed LEARN→EVOLVE write-back. No silent self-ratification."""
-    if receipt.get("receipt_type") != "VALUE_RECALIBRATION":
-        raise ValueError("not a recalibration receipt")
-    if receipt.get("from_version") != current_profile.version:
-        raise ValueError("stale recalibration receipt")
-    if not verified:
-        raise PermissionError("recalibration must be verified before promotion")
-    if not authorized:
-        raise PermissionError("recalibration requires applicable authority")
-
-    thresholds = dict(receipt.get("proposed_thresholds") or {})
-    allowed_thresholds = {
-        "q_accept", "aggregate_confidence_floor", "critical_confidence_floor",
-        "min_evidence_count", "relative_margin", "interval_epsilon",
-        "min_reversibility_for_auto", "uncertainty_scale",
-    }
-    unknown = set(thresholds) - allowed_thresholds
-    if unknown:
-        raise ValueError(f"unknown recalibration thresholds: {sorted(unknown)}")
-
-    params = {
-        "profile_id": current_profile.profile_id,
-        "version": str(receipt["proposed_version"]),
-        "objective": current_profile.objective,
-        "priorities": dict(receipt.get("proposed_priorities") or current_profile.weights()),
-        "q_accept": current_profile.q_accept,
-        "aggregate_confidence_floor": current_profile.aggregate_confidence_floor,
-        "critical_confidence_floor": current_profile.critical_confidence_floor,
-        "critical_confidence_dimensions": current_profile.critical_confidence_dimensions,
-        "min_evidence_count": current_profile.min_evidence_count,
-        "relative_margin": current_profile.relative_margin,
-        "interval_epsilon": current_profile.interval_epsilon,
-        "min_reversibility_for_auto": current_profile.min_reversibility_for_auto,
-        "uncertainty_scale": current_profile.uncertainty_scale,
-    }
-    params.update(thresholds)
-    return QualityProfile(**params)
 
 
 def contribution_value_score(*, quality: float, relevance: float, verification: float, impact: float, novelty: float, verified_delta: float) -> float:

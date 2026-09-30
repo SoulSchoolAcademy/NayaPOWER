@@ -3,10 +3,6 @@ import json
 import pytest
 
 from kernel.value_calculus import (
-    ACT,
-    ASK,
-    READ_MORE,
-    REFUSE,
     ADMISSIBLE,
     NEEDS_AUTHORITY,
     NEEDS_EVIDENCE,
@@ -18,7 +14,6 @@ from kernel.value_calculus import (
     TailRisk,
     build_contribution_receipt,
     build_decision_receipt,
-    build_recalibration_receipt,
     calibration_summary,
     contribution_points,
     contribution_value_score,
@@ -26,9 +21,7 @@ from kernel.value_calculus import (
     evaluate_candidates,
     gate_candidate,
     independent_recompute,
-    promote_recalibration,
     score_quality,
-    value_interval,
     verification_state,
 )
 
@@ -150,7 +143,7 @@ def test_pareto_and_relative_margin_select_clear_low_risk_winner(profile):
     a = cand("a", B=9)
     b = cand("b", B=7)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == ACT
+    assert ev["decision"] == "EXECUTE"
     assert ev["selected"] == "a"
     assert ev["relative_margin"] >= profile.relative_margin
 
@@ -160,7 +153,7 @@ def test_near_tie_briefs_instead_of_auto_execution(profile):
     a = cand("a", B=9.0)
     b = cand("b", B=8.8)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == READ_MORE
+    assert ev["decision"] == "BRIEF"
 
 
 def test_bad_baseline_is_rejected(profile):
@@ -346,66 +339,70 @@ def test_negative_verified_contribution_is_evidence_not_automatic_point_punishme
     assert receipt["cvs"] < 0
     assert receipt["points_awarded"] == 0
 
-
-def test_explicit_value_interval_and_nonoverlap_rule(profile):
+def test_value_interval_contains_point_and_matches_v_safe(profile):
+    from kernel.value_calculus import value_interval, conservative_value
     base = cand("base", baseline=True, B=5)
-    a = cand("a", B=9, uncertainty_penalty=0.2)
-    b = cand("b", B=7, uncertainty_penalty=0.2)
-    ia = value_interval(a, base, profile)
-    ib = value_interval(b, base, profile)
-    assert ia["v_low"] < ia["v_high"]
-    assert ia["v_low"] > ib["v_high"]
+    a = cand("a", B=9, uncertainty_penalty=1.5, tail_penalty=0.5)
+    lo, hi = value_interval(a, base, profile)
+    assert lo == pytest.approx(conservative_value(a, base, profile))
+    assert lo <= delta_value(a, base, profile) <= hi
+    assert hi - lo == pytest.approx(2 * (1.5 + 0.5))
+
+
+def test_negative_value_magnitude_preserved_not_clamped(profile):
+    # The historical clamp hole: -0.8, -0.2 and 0 collapsed to the same
+    # displayed 0. V2.1 must preserve negative magnitude end to end.
+    from kernel.value_calculus import delta_value, conservative_value
+    base = cand("base", baseline=True, B=5)
+    worse = cand("worse", B=1)
+    d = delta_value(worse, base, profile)
+    assert d == pytest.approx(-4.0)
+    assert conservative_value(worse, base, profile) == pytest.approx(-4.0)
+    assert d < 0
+
+
+def test_interval_overlap_forces_read_more_not_act(profile):
+    from kernel.value_calculus import MACHINE_OUTCOME
+    base = cand("base", baseline=True, B=5)
+    # Winner on points but deeply uncertain: its lower bound falls inside
+    # the runner-up's interval, so cheap evidence could flip the winner.
+    a = cand("a", B=12, uncertainty_penalty=6.0)
+    b = cand("b", B=7)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == ACT
-    assert ev["interval_gap"] > profile.interval_epsilon
+    assert ev["interval_separated"] is False
+    assert ev["decision"] == "RESEARCH"
+    assert ev["machine_outcome"] == "READ_MORE"
+    assert ev["machine_outcome"] == MACHINE_OUTCOME["RESEARCH"]
+    assert "INTERVAL_OVERLAP" in ev["auto_blockers"]
 
 
-def test_overlapping_value_intervals_trigger_read_more(profile):
+def test_separated_intervals_allow_act(profile):
     base = cand("base", baseline=True, B=5)
-    a = cand("a", B=9.0, uncertainty_penalty=0.5)
-    b = cand("b", B=8.8, uncertainty_penalty=0.5)
+    a = cand("a", B=12, uncertainty_penalty=1.0)
+    b = cand("b", B=7)
     ev = evaluate_candidates([base, a, b], "base", profile)
-    assert ev["decision"] == READ_MORE
-    assert ev["interval_gap"] <= profile.interval_epsilon
+    assert ev["interval_separated"] is True
+    assert ev["decision"] == "EXECUTE"
+    assert ev["machine_outcome"] == "ACT"
 
 
-def test_all_prohibited_is_explicit_refuse(profile):
+def test_single_candidate_trivially_separated(profile):
     base = cand("base", baseline=True, B=5)
-    q, c = quality()
-    x = Candidate("x", q, c, pv(B=100), authorized=True, hard_violation=True)
-    ev = evaluate_candidates([base, x], "base", profile)
-    assert ev["decision"] == REFUSE
-    row = next(r for r in ev["rows"] if r["candidate_id"] == "x")
-    assert "JUDGMENT_RULE_HARD_STOP" in row["gate_reasons"]
+    a = cand("a", B=9)
+    ev = evaluate_candidates([base, a], "base", profile)
+    assert ev["interval_separated"] is True
+    assert ev["decision"] == "EXECUTE"
 
 
-def test_authority_boundary_is_explicit_ask(profile):
+def test_machine_outcome_mapping(profile):
     base = cand("base", baseline=True, B=5)
-    q, c = quality()
-    x = Candidate("x", q, c, pv(B=9), authorized=False)
-    ev = evaluate_candidates([base, x], "base", profile)
-    assert ev["decision"] == ASK
-
-
-def test_recalibration_is_versioned_and_cannot_self_promote(profile):
-    records = [
-        {"delta_v_predicted": 8, "delta_v_actual": 2},
-        {"delta_v_predicted": 7, "delta_v_actual": 3},
-        {"delta_v_predicted": 6, "delta_v_actual": 2},
-    ]
-    receipt = build_recalibration_receipt(
-        current_profile=profile,
-        proposed_version="2.1-cal-1",
-        records=records,
-        proposed_thresholds={"interval_epsilon": 0.1},
-        evidence_refs=["ledger:1", "ledger:2", "ledger:3"],
-    )
-    assert receipt["state"] == "LEARN_CANDIDATE"
-    assert receipt["automatic_promotion"] is False
-    with pytest.raises(PermissionError):
-        promote_recalibration(receipt, profile, verified=False, authorized=True)
-    with pytest.raises(PermissionError):
-        promote_recalibration(receipt, profile, verified=True, authorized=False)
-    promoted = promote_recalibration(receipt, profile, verified=True, authorized=True)
-    assert promoted.version == "2.1-cal-1"
-    assert promoted.interval_epsilon == pytest.approx(0.1)
+    a = cand("a", B=9.0)
+    b = cand("b", B=8.8)
+    ev = evaluate_candidates([base, a, b], "base", profile)
+    assert ev["decision"] == "BRIEF"
+    assert ev["machine_outcome"] == "ASK"
+    # No admissible options at all: the option set is inadequate -> ASK.
+    weak = cand("weak", B=5.5, score=5.0)
+    ev2 = evaluate_candidates([base, weak], "base", profile)
+    assert ev2["decision"] == "REWORK"
+    assert ev2["machine_outcome"] == "ASK"

@@ -5,7 +5,7 @@
 **Canonical seam retained:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
 **Implementation:** `kernel/value_calculus.py`  
 **Tests:** `tests/test_value_calculus.py`  
-**Machine schemas:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json` + `.naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json`  
+**Machine schema:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`  
 **Issue:** #1182  
 **Effective canonical version:** 2.1
 
@@ -145,18 +145,11 @@ Frontier survivors are ordered by:
 5. simplicity/efficiency;
 6. evidence confidence.
 
-Each candidate also exposes an explicit value interval:
+Autonomous dominance uses a relative margin:
 
-`V_low = ΔV − (uncertainty_penalty + tail_penalty)`  
-`V_high = ΔV + (uncertainty_penalty + tail_penalty)`
+`m=(V_safe1−V_safe2)/max(|V_safe1|, ε)`
 
-For the top two candidates, autonomous dominance requires:
-
-`Δ_interval = V_low(top1) − V_high(top2) > ε_interval`
-
-so overlapping uncertainty ranges trigger READ_MORE rather than false precision.
-
-The legacy relative margin remains recorded for backward analysis/calibration, but interval separation is the V2.1 autonomous-selection gate. `ε_interval` is versioned and calibratable.
+The default implementation threshold is 0.10 and is calibratable.
 
 ## 9. Rule of up-to-10 → top 3 → one
 
@@ -171,18 +164,11 @@ Where applicable include:
 
 Deep-check the top 3.
 
-The only decision outcomes are:
+Autonomous EXECUTE requires:
 
-- **ACT** — admissible, authorized, high-quality, positive conservative value, confidence/evidence floors pass, and interval-dominant.
-- **READ_MORE** — more evidence/reframing is needed or top value intervals overlap.
-- **ASK** — a genuine authority, consequential, irreversible, or legitimate human judgment boundary remains.
-- **REFUSE** — the candidate set is prohibited by LAW / Prime Judgment hard stops.
+`ADMISSIBLE ∧ Q≥9 ∧ V_safe>0 ∧ confidence floors pass ∧ evidence floor passes ∧ authority permits ∧ bounded/reversible enough ∧ relative dominance passes`
 
-Autonomous ACT requires:
-
-`ADMISSIBLE ∧ Q≥9 ∧ V_safe>0 ∧ confidence floors pass ∧ evidence floor passes ∧ authority permits ∧ bounded/reversible enough ∧ Δ_interval>ε_interval`
-
-If every non-baseline candidate is prohibited, the result is explicitly REFUSE; it is never silently reported as REWORK.
+Otherwise the system must BRIEF, RESEARCH, or REWORK instead of exporting unnecessary orchestration.
 
 ## 10. AskHuman law
 
@@ -242,8 +228,6 @@ Persistent bias or increasing error lowers estimator confidence and creates a LE
 
 Learning may propose weight/threshold/rubric changes; it may not silently rewrite constitutional boundaries or authority.
 
-Recalibration write-back is represented by a typed `VALUE_RECALIBRATION` receipt. It records the current profile/version, calibration evidence, proposed new version, proposed weights/thresholds, and evidence references. The active profile is not mutated when the receipt is created. Promotion requires both independent verification and applicable authority, producing a new explicit profile version with supersession lineage.
-
 ## 14. Contribution / network-value scoring
 
 The same mathematical discipline may score a **contribution**, never a human being.
@@ -294,7 +278,7 @@ V2.1 must defend or explicitly record residual risk for:
 ## 16. Nine-node placement
 
 - **SELF** — objective, stakeholders, baseline, current state.
-- **LAW** — gates, policy, rights, authority, risk class, and the Prime Judgment Rule; a known-wrong/hard-stop instruction is PROHIBITED before scoring.
+- **LAW** — gates, policy, rights, authority, risk class.
 - **KNOW** — evidence-bound facts and estimates.
 - **CONNECT** — applicability, affected parties, relationships.
 - **ACT** — selected authorized action.
@@ -350,3 +334,65 @@ The migration is source-level implementation until governed production promotion
 Required live closure:
 
 `V2.1 RECEIPT → EXISTING SOURCE EVENT → SMARTLEDGER ATTACH/PROJECTION → OWNER/PRIVACY REREAD → INDEPENDENT SAME-CALCULATION RECOMPUTE → COLD SUCCESSOR EXPLANATION`.
+
+## 19. The ratified four-layer decision protocol
+
+This section is the canonical statement of the decision architecture ratified
+from the Part #19 design conversation. It does not replace sections 1–18; it
+names the four layers every decision must pass through, in order, and the exact
+machine outcomes.
+
+**Layer 1 — Hard gates (admissibility).**
+`GATE(a) ∈ {PROHIBITED, NEEDS_AUTHORITY, NEEDS_EVIDENCE, ADMISSIBLE}`.
+The four states are kept because `UNKNOWN ≠ FAIL ≠ NEEDS HUMAN ≠ PASS`.
+A binary admissibility is only the lossy projection `G(a)=1 ⟺ ADMISSIBLE`;
+it must never replace the four states in receipts or reasoning.
+
+**Layer 2 — Signed value (above or below zero).**
+Baseline-relative `ΔV(a|b) = E[V(a)] − E[V(b)]`, so `ΔV(b|b) = 0` by
+definition. Negative magnitude is preserved end to end: no clamp may collapse
+distinct negative values to the same displayed zero. The ±9 anchors bound
+ladder credit (`D_verified := clamp(ΔV_actual, ±9)`), not the decision
+variable. Machine language is positive-value / negative-value state; the
+"heaven/hell" vocabulary is a human metaphor only, and neither may be used to
+score human worth.
+
+**Layer 3 — Quality (execution excellence).**
+`Q(a) ∈ [0,10]`, pure decision soundness, never value magnitude. Bands:
+`10.0` target, `9.5–9.99` AAA, `9.0–9.49` acceptable, `<9.0` not acceptable as
+finished work. Signed value and quality stay separate: a high-value emergency
+repair may ship at lower initial quality with a plan to raise it.
+
+**Layer 4 — Confidence and uncertainty.**
+`C(a) ∈ [0,1]` with aggregate and critical-dimension floors, plus an explicit
+uncertainty interval `V(a) ∈ [V_low, V_high]` on every scored candidate.
+`V_low` is the conservative value (all declared uncertainty/tail penalties
+applied); `V_high` mirrors those penalties as upside. This interval is the
+initial method; CVaR, quantile, or bounded-worst-case constructions may
+replace it through the governed LEARN → PROMOTE path. Fake precision is
+forbidden: a point estimate without a declared interval is not a ranking input.
+
+**The separation rule.**
+Let `Δ = LowerBound(O_1) − UpperBound(O_2)` for the top two admissible
+candidates. Autonomous action additionally requires `Δ > ε` (the
+`interval_separation_epsilon` profile parameter, default `0`) alongside the
+relative-margin dominance rule. Overlapping intervals mean cheap evidence
+could change the winner.
+
+**The four machine outcomes.**
+Every evaluation resolves to exactly one of:
+- `ACT` — winner clear, positive, bounded, authorized;
+- `READ_MORE` — uncertainty is decision-relevant and cheap evidence could
+  resolve it;
+- `ASK` — a genuine human authority/value judgment remains;
+- `REFUSE` — a hard boundary / Judgment Rule violation (expressed at the
+  gate level as `PROHIBITED`).
+
+Engine working names map onto these: `EXECUTE→ACT`, `RESEARCH→READ_MORE`,
+`BRIEF→ASK`, `REWORK→ASK`.
+
+**Scope boundary.**
+This calculus scores actions, choices, artifacts, implementations, and
+outcomes. It never scores human worth. Contribution, reliability, conduct,
+and trust are separate dimensions of the network-value model, and reputation
+never confers authority.
