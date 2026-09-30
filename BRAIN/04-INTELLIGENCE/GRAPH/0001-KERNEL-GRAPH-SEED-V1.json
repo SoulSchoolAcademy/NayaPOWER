@@ -3,7 +3,7 @@
   "status": "PROPOSED_CANONICAL",
   "purpose": "Seed the Nine-Node semantic graph with explicit, auditable relationships.",
   "relationship_contract": "BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md",
-  "epistemic_default": "UNVERIFIED",
+  "epistemic_default": "UNKNOWN",
   "edges": [
     {
       "relationship_id": "REL-KERNEL-SELF-LAW",

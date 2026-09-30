@@ -3,7 +3,7 @@
   "object_id": "NAYA-KERNEL-ACT",
   "object_type": "NODE",
   "version": "2.0",
-  "canonical_status": "VERIFIED_BOUNDED",
+  "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-ACT",
   "scope": "NayaPOWER kernel",
   "human_view": {
