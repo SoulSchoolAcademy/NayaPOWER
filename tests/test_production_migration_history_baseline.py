@@ -64,3 +64,21 @@ def test_pre_reconciliation_repository_lineage_is_preserved_exactly():
         assert _sha256(archived) == entry["sha256"], (
             f"archived source migration changed: {entry['archive_path']}"
         )
+
+
+def test_active_migrations_have_no_byte_order_mark_or_leading_invisible_characters():
+    """Supabase's migration runner rejects a UTF-8 BOM: a file starting with
+    EF BB BF fails with `syntax error at or near "alter"` and fails the
+    production deployment check closed (observed 2026-09-30 on
+    20260929210000_nayanet_action_idempotency_atomicity.sql)."""
+    offenders = []
+    for path in sorted(MIGRATIONS.glob("*.sql")):
+        raw = path.read_bytes()
+        if raw[:3] == b"\xef\xbb\xbf":
+            offenders.append(f"{path.name}: UTF-8 BOM")
+        elif raw[:1] in (b"\xff", b"\xfe", b"\x00"):
+            offenders.append(f"{path.name}: unexpected leading byte {raw[:1]!r}")
+    assert not offenders, (
+        "migrations with leading invisible characters (Supabase will reject): "
+        + "; ".join(offenders)
+    )

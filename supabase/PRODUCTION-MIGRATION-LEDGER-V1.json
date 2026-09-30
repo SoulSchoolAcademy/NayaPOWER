@@ -1318,9 +1318,9 @@
       "version": "20260929210000",
       "name": "nayanet_action_idempotency_atomicity",
       "path": "supabase/migrations/20260929210000_nayanet_action_idempotency_atomicity.sql",
-      "sha256": "aeca2ca7d6a4e798d1cde3d4cfa28ee54dd1760aa38e176fbbb61ec5e6634cf3",
+      "sha256": "06c287b57f885cd250b2aa8aafcd5ce3925e2ac1b474af08b50a06b11b1c2ed7",
       "statement_count": 2,
-      "bytes": 306,
+      "bytes": 303,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
