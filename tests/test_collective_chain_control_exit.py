@@ -14,6 +14,7 @@ def run_controls(tmp_path, gate_source):
     script.write_bytes(CONTROL.read_bytes())
     (engineering / "verify-collective-chain-readiness.py").write_text(gate_source)
     for relative, content in {
+        "BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json": "{}",
         "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json": "{}",
         "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json": '{"edges":[{"provenance":"fixture"}]}',
         "BRAIN/04-INTELLIGENCE/OBJECTS/fixture.json": '{"valid":true}',
@@ -29,6 +30,12 @@ DISCRIMINATING_STUB = '''
 import json, sys
 from pathlib import Path
 root = Path(sys.argv[1])
+contract = root / 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
+if contract.exists():
+    try:
+        json.loads(contract.read_text())
+    except json.JSONDecodeError:
+        raise SystemExit(2)
 machine = root / 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
 objects = root / 'BRAIN/04-INTELLIGENCE/OBJECTS'
 valid = any(json.loads(p.read_text()).get('valid') for p in objects.glob('*.json')) if objects.exists() else False
