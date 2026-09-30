@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file  
-**Evidence snapshot base:** `2883504b652b7e79b3ffc7c61ff086fdb4c1d7a0`  
+**Evidence snapshot base:** `0fb3612344cd28155945e0f33336aaca5b5ef31d`  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -27,52 +27,59 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 - Universal all-task/domain nine-node capability is **NOT PROVEN**.
 - Multi-generation compounding is **NOT PROVEN**.
 - Two-owner NayaNET consent/revocation is **NOT PROVEN**.
-- Cached/derived authority revocation negative: **TEST-LEVEL VERIFIED ON CURRENT MAIN**; production proof not claimed.
-- Live KNOW run `36653558611`: runtime contextual selection succeeded; proof workflow oracle failed and #1060 is source/CI verified but unintegrated.
-- Live SN-004 learning run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** for the provenance held-out task; #1056 closes the source applicability/verifier seam only, not live effect.
+- Cached/derived authority revocation negative: **TEST-LEVEL VERIFIED**; #1046 ACT denial matrix is merged at `7847680f`; production proof not claimed.
+- Live KNOW run `36653558611`: runtime contextual selection succeeded; #1060's contextual proof-oracle repair is merged at `c41c3a64`; fresh live HIT/MISS + independent reread is pending.
+- Live SN-004 learning run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 is merged at `4c2b8f12` and #1056 at `0fb36123`; merged source is not yet deployed causal-runtime parity.
+- Readiness fail-closed repairs #1058/#1061 and generated current-truth projection #1053 are merged. Resolver run `36657001373` succeeded with a generated continuation brief and live open-PR frontier.
+- Governed promotion run `36657956413` correctly denied the protected causal-runtime revision with `protected_change_requires_explicit_promotion`; denial artifact `11072839541`. Main/production causal runtime blobs are mismatched.
+- Two-owner NayaNET remains NOT PROVEN; #1062 records the current derived-sharing/revocation proof gap.
 - Cold acceptance #1044 is protocol-ready but a genuinely fresh entrant has not yet produced a PASS receipt.
 
-## 3. CURRENT FRONTIER — #66 → RELIABILITY
+## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
 
-Resolver run `36631904834` correctly failed closed on stale control-plane state; run `36633934942` later succeeded for its exact earlier revision. Current main is `2883504b652b7e79b3ffc7c61ff086fdb4c1d7a0`, so fresh resolver evidence is still required.
+The source repair cluster is integrated through current main `0fb3612344cd28155945e0f33336aaca5b5ef31d`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
 
-The cached-derived authority negative is now evidenced in repository tests. The remaining authority mission-binding semantics are explicitly unresolved and require a human contract decision before changing LAW/ACT behavior.
+Main regression evidence is green. That is **not** production parity.
 
-Source repairs #1058 (readiness fail-closed), #1060 (KNOW live-proof oracle), #1051 (Smart Note meaning) and #1056 (learning applicability + adversarial causal verifier) have exact-head green repository gates but are not current-main integrated/runtime proof.
+The causal-learning runtime currently differs from the production branch:
+- `nayanet-cold-runtime-proof/index.ts`: main blob `c91556d408520f8950de5a1e2c2b68c8755f21b3` vs production `03eaaa8731d5d3709db058aa4f8e399051dba4d2`;
+- `nayanet-causal-learning-experiment/index.ts`: main blob `5b60a6f780bc98f51407776211aa8e0f5cd1e3ec` vs production `b29d11e4bd17a4a391d98adb792fce18609a026b`.
 
-The next system reliability frontier after current-truth convergence is duplicate/replay/response-loss/concurrency/partial-failure recovery through existing canonical seams. Coda 2 owns the ACT reliability implementation lane.
+Governed Production Promotion run `36657956413` failed closed because protected paths require explicit promotion. That is correct policy behavior, not a deployment failure. Exact remediation is Human Director `DEPLOY` via the existing workflow for the resulting exact current main.
+
+Coda 2 retains replay/duplicate/response-loss reliability ownership. Mission semantics in #1042 remain a Human Director authority-model decision. #1062 owns the two-owner derived-sharing/revocation proof gap. These lanes continue independently without bypassing deployment policy.
 
 ## 4. TOP 10 — DEPENDENCY ORDER
 
-### 1 — #66 deterministic current-truth / control-plane convergence
-**PASS:** exact main, open work, deployed/proven state, owners, unknowns and one next action agree; a fresh resolver run succeeds and preserves conflict evidence on failure.
+### 1 — Post-integration current truth
+Integrate this exact projection and require a fresh Current Truth Resolver run on the resulting main. PASS requires live main, open work, proof/runtime state, warnings/unknowns and one next action to agree.
 
-### 2 — fail-closed readiness integration
-Integrate #1058 first so instrument crashes cannot masquerade as legitimate incompleteness. Refresh later PRs against the strengthened gate.
+### 2 — Exact deployed causal-runtime parity
+Protected automatic promotion is correctly denied. Shawn explicitly authorizes `DEPLOY` for the exact resulting main through the existing governed workflow. PASS requires exact source/deployment evidence before any causal rerun.
 
-### 3 — checkpoint/provenance/concurrency/recovery hardening
-Coda 2: exact replay, conflicting replay, response-loss retry, concurrency, receipt-write failure, supersession and immutable reconstruction using existing receipts/authority/Doors.
+### 3 — ACT replay/recovery reliability
+Coda 2: exact replay, conflicting replay, response-loss retry, concurrent same intent, receipt-write failure and independent reconstruction using the existing receipt ledger/authority/Doors.
 
-### 4 — residual authority lifecycle
-Cached-derived revocation is test-evidenced. Integrate #1046 denial coverage and obtain Shawn's mission-binding contract decision before changing mission semantics.
+### 4 — Residual authority lifecycle #1042
+ACT denial coverage is integrated. Decide mission binding semantics from trusted operation context before changing LAW/ACT/KNOW behavior.
 
 ### 5 — KNOW → PROVE current live qualification
-Integrate #1060, rerun bounded contextual HIT + unrelated MISS + independent reread, then consume the persisted KNOW handoff through PROVE without creating authority.
+Run the existing KNOW workflow: LAW AUTHORIZED → contextual HIT → unrelated MISS → independent persisted-universe reread. Then run existing PROVE supported/non-promotion paths + independent reread.
 
-### 6 — SN-004 faithful meaning + causal applicability
-Integrate #1051/#1056, deploy through the existing governed path, rerun the same bounded causal experiment, and independently recompute persisted receipts. No ACTIVE promotion from source tests.
+### 6 — SN-004 faithful projection + applicable causal effect
+Regenerate the existing SN-004 projection through the canonical reconciliation seam, preserving IDs/CANDIDATE/privacy. After exact deployed parity, rerun the act-first control/treatment experiment and independently recompute the outcome. Preserve a negative result if observed.
 
-### 7 — stored-intelligence adversarial suite
-Poisoning, context laundering, forged relationships, weak-evidence accumulation and stale-but-correct intelligence.
+### 7 — Two-owner NayaNET #1062
+Use the existing derived collective-wisdom seam. Prove private deny → consented derived use → revoke → future deny/invalidation without broad cross-owner access to private Intelligent Blocks/events.
 
-### 8 — true cold continuity
-Run #1044 with a genuinely fresh entrant and then a second successor. A context-rich seat cannot certify itself as cold.
+### 8 — True cold continuity #1044
+One genuinely fresh repository-only entrant and then a second successor. Context-rich seats cannot certify themselves cold.
 
-### 9 — multi-generation compounding
-A → B → C held-out improvement with attributable lineage plus unrelated-task refusal.
+### 9 — Multi-generation compounding
+A → B → C attributable improvement, unrelated-task refusal, preserved lineage and no inherited authority.
 
-### 10 — two-owner NayaNET + human value
-Prove consent/revocation/no cross-owner leakage and measure cognitive load, re-explanation, prevented error and verified value per unit attention before broader scale.
+### 10 — Human value then DREAM → EVOLVE
+Measure completed useful outcomes, attention/re-explanation/rework and prevented errors. Advance recursive optimization/network scale only after preceding trust gates.
 
 ## 5. PERMANENT EXECUTION LAW
 
@@ -123,4 +130,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Merge #1058 under Human Director authority so the readiness instrument fails closed on its own errors. Then re-resolve exact main, refresh this #66 reconciliation, require a successful main-branch Current Truth Resolver run, and hand the next executable reliability seam to Coda 2: exact replay/duplicate/response-loss behavior at the real ACT handler.**
+**Issue #66: integrate this post-source-cluster reconciliation and require a fresh successful Current Truth Resolver run on the resulting exact main. Then Shawn explicitly authorizes `DEPLOY` for that exact revision through the existing governed production-promotion workflow. Do not weaken the protected-path gate. While deployment waits, continue Coda 2 replay/recovery and #1062 bounded two-owner proof design independently.**
