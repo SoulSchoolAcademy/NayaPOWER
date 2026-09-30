@@ -1448,6 +1448,15 @@
    "statement_count": 19,
    "bytes": 3265,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
+   "version": "20261001031000",
+   "name": "smartledger_v2_1_value_receipts",
+   "path": "supabase/migrations/20261001031000_smartledger_v2_1_value_receipts.sql",
+   "sha256": "1513a423a9bc4d2d54ac98bf368776ea6d6d3f76f83af521f549eb88a1147544",
+   "statement_count": 5,
+   "bytes": 6448,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],
  "legacy_repository_snapshot_count": 95,
