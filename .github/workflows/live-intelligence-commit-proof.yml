@@ -2,6 +2,11 @@ name: Live Intelligence Commit Proof
 
 on:
   workflow_dispatch:
+    inputs:
+      expected_source_sha:
+        description: 'Exact commit SHA that refs/heads/main must resolve to before any consequential step'
+        required: true
+        type: string
   push:
     branches:
       - main
@@ -25,6 +30,25 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message || '', '[smart-note-projection]') }}
     runs-on: ubuntu-latest
     steps:
+      - name: Verify resolved source matches expected_source_sha
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          expected="${{ inputs.expected_source_sha }}"
+          if [ -z "$expected" ]; then
+            expected="${{ github.sha }}"
+          fi
+          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          printf '%s' "$resolved" > resolved-source-sha.txt
+          echo "expected_source_sha=$expected"
+          echo "resolved_main_sha=$resolved"
+          if [ "$resolved" != "$expected" ]; then
+            echo "SOURCE BINDING MISMATCH: refs/heads/main resolved to $resolved, expected $expected. Failing closed."
+            exit 1
+          fi
+          echo "Source binding verified: $resolved"
+
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -35,7 +59,7 @@ jobs:
           set -euo pipefail
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
-          if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
+          if [[ -n "$before" && "$before" != "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" ]]; then
             mapfile -t changed < <(git diff --name-only "$before" "$after")
           else
             mapfile -t changed < <(git show --pretty="" --name-only "$after")
@@ -126,6 +150,7 @@ jobs:
           name: smart-note-lineage
           path: |
             capture-path.txt
+            resolved-source-sha.txt
             fresh-lesson-receipt.json
             fresh-lesson-lineage-ids.json
             smart-note-expected.json
