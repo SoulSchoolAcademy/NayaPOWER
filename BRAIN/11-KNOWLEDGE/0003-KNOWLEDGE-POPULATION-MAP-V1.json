@@ -1,0 +1,35 @@
+{
+  "schema":"naya.knowledge.population.v1",
+  "status":"PROPOSED_CANONICAL",
+  "source_corpus":"KNOWLEDGE/",
+  "source_count":15,
+  "source_range":["#1","#2","#3","#4","#5","#6","#7","#8","#9","#10","#11","#12","#13","#14","#15"],
+  "duplicate_sources":[{"sources":["#7","#8"],"blob_sha":"435f1a682145de6973ccc4e54e624e9ca9a1bff1","disposition":"MERGE"}],
+  "population_law":"SOURCE→INVENTORY→EXTRACT→DISTILL→TYPE→RECONCILE→CONNECT→PROVE→PROMOTE→INDEX",
+  "canonical_node_ids":["NAYA-KERNEL-SELF","NAYA-KERNEL-LAW","NAYA-KERNEL-ACT","NAYA-KERNEL-KNOW","NAYA-KERNEL-PROVE","NAYA-KERNEL-CONNECT","NAYA-KERNEL-VERIFY","NAYA-KERNEL-LEARN","NAYA-KERNEL-EVOLVE"],
+  "source_mappings":[
+    {"source":"#1","primary_nodes":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["nine-node kernel","boot","runtime loop","node responsibilities"]},
+    {"source":"#2","primary_nodes":["SELF","KNOW","CONNECT","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["cold Naya","canonical receiver","continuity","Hub boundary"]},
+    {"source":"#3","primary_nodes":["LAW","PROVE","ACT","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["contract law","proof discipline","promotion","AI boot law"]},
+    {"source":"#4","primary_nodes":["KNOW","CONNECT","VERIFY","LEARN"],"disposition":"PROMOTE+MERGE","themes":["semantic compilation","runtime relationships"]},
+    {"source":"#5","primary_nodes":["KNOW","CONNECT","PROVE","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["distillation","multi-view representation","Smart Link","receiver identity"]},
+    {"source":"#6","primary_nodes":["SELF","LAW","KNOW","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["North Star","living brain","stewardship"]},
+    {"source":"#7","primary_nodes":["KNOW","CONNECT","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["NayaNET","network intelligence","Smart Note/Block/Link"]},
+    {"source":"#8","primary_nodes":["KNOW","CONNECT","EVOLVE"],"disposition":"MERGE","themes":["duplicate of #7"]},
+    {"source":"#9","primary_nodes":["PROVE","CONNECT","VERIFY","LEARN","LAW"],"disposition":"PROMOTE+MERGE","themes":["epistemic states","reconciliation","context","failure intelligence"]},
+    {"source":"#10","primary_nodes":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["capability compilation","one brain"]},
+    {"source":"#11","primary_nodes":["SELF","KNOW","LEARN","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["Node Engine","identity continuity","behavioral proof","successor"]},
+    {"source":"#12","primary_nodes":["LAW","INTERFACES","SELF","ACT"],"disposition":"PROMOTE+MERGE","themes":["One Brain Many Doors","channel governance"],"_reconciliation_note":"2026-09-30: INTERFACES is not in canonical_node_ids (9 NAYA-KERNEL-* IDs). Read as a channel-projection target of the source themes, not a tenth canonical node. Loader consumers use .get(); Human Director owns any rename decision."},
+    {"source":"#13","primary_nodes":["KNOW","CONNECT","PROVE","VERIFY","LEARN"],"disposition":"PROMOTE+MERGE","themes":["Intelligent Chain","graph","ingestion","retrieval","acceptance"]},
+    {"source":"#14","primary_nodes":["CONNECT","KNOW","PROVE","VERIFY","LEARN","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["contextual intelligence","relationship graph","reasoning memory","minimum sufficient context","temporal/supersession"]},
+    {"source":"#15","primary_nodes":["LAW","ACT","KNOW","PROVE","VERIFY","LEARN","EVOLVE"],"disposition":"PROMOTE+MERGE","themes":["execution waves","value calculus","stewardship","value vector","MVPA","MVPM","learning efficiency","compounding"]}
+  ],
+  "population_rules":[
+    "Source files remain preserved as provenance.",
+    "Canonical objects use stable identity independent of filename.",
+    "One semantic object may expose human, AI, machine, schema and proof views.",
+    "Duplicate source history does not create duplicate canonical intelligence.",
+    "Conflicting claims remain explicit until reconciled.",
+    "No object becomes VERIFIED solely because it was distilled or machine-readable."
+  ]
+}

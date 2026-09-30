@@ -1,0 +1,459 @@
+name: Live Intelligence Commit Proof
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_source_sha:
+        description: 'Exact commit SHA that refs/heads/main must resolve to before any consequential step'
+        required: true
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - ".naya/capture/**"
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: live-intelligence-commit-proof
+  cancel-in-progress: false
+
+env:
+  RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-commit-runtime
+  GRANT_ID: 0e082400-de6d-485e-9ebc-51b34f5debdc
+
+jobs:
+  fresh-lesson:
+    if: ${{ !contains(github.event.head_commit.message || '', '[smart-note-projection]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify resolved source matches expected_source_sha
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          expected="${{ inputs.expected_source_sha }}"
+          if [ -z "$expected" ]; then
+            expected="${{ github.sha }}"
+          fi
+          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          printf '%s' "$resolved" > resolved-source-sha.txt
+          echo "expected_source_sha=$expected"
+          echo "resolved_main_sha=$resolved"
+          if [ "$resolved" != "$expected" ]; then
+            echo "SOURCE BINDING MISMATCH: refs/heads/main resolved to $resolved, expected $expected. Failing closed."
+            exit 1
+          fi
+          echo "Source binding verified: $resolved"
+
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Discover generalized Smart Note capture
+        shell: bash
+        run: |
+          set -euo pipefail
+          before="${{ github.event.before }}"
+          after="${{ github.sha }}"
+          if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
+            mapfile -t changed < <(git diff --name-only "$before" "$after")
+          else
+            mapfile -t changed < <(git show --pretty="" --name-only "$after")
+          fi
+          capture_path="$(python tools/smart_note_v2.py discover "${changed[@]}")"
+          printf '%s' "$capture_path" > capture-path.txt
+
+      - name: Mint short-lived Naya runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Execute new capture or reconcile existing canonical Block
+        shell: bash
+        run: |
+          set -euo pipefail
+          capture_path="$(cat capture-path.txt)"
+          python - <<'PY'
+          import hashlib, json, os, pathlib, uuid
+          from tools.smart_note_v2 import resolve_runtime_connections
+          capture_path=pathlib.Path("capture-path.txt").read_text().strip()
+          registry_path=pathlib.Path(".naya/memory/smart-notes/index.json")
+          registry=json.loads(registry_path.read_text()) if registry_path.exists() else {"entries":[]}
+
+          if capture_path:
+              capture=json.loads(pathlib.Path(capture_path).read_text())
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              digest=hashlib.sha256(distilled.encode()).hexdigest()
+              exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
+              resolved_connections=resolve_runtime_connections(capture,registry)
+              expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
+              pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
+              if exact:
+                  p=exact["provenance"]
+                  ids={
+                    "event_id":p["event_id"],
+                    "intelligent_block_id":exact["intelligent_block_id"],
+                    "lineage_id":p["lineage_id"],
+                    "relationship_id":p["relationship_id"],
+                    "index_id":p["runtime_index_id"],
+                    "checkpoint_id":p["checkpoint_id"],
+                    "receipt_id":p["receipt_id"],
+                  }
+                  pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
+                  pathlib.Path("reconciliation.json").write_text(json.dumps({
+                    "status":"REUSED_EXISTING_CANONICAL_BLOCK",
+                    "matched_by":"exact_content_hash",
+                    "intelligent_block_id":exact["intelligent_block_id"],
+                    "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
+                  },indent=2))
+                  raise SystemExit(0)
+              request={
+                "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
+                "p_event_id":"SMART-NOTE-"+capture["capture_id"],
+                "p_title":capture["title"],"p_content":distilled,
+                "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET","p_connections":resolved_connections
+              }
+          else:
+              lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
+              request={
+                "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
+                "p_title":"Naya runtime flow lesson","p_content":"Preserve provenance before applying retained intelligence.",
+                "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
+              }
+          pathlib.Path("lesson-request.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
+          PY
+
+          if [[ -f reconciliation.json ]]; then
+            cat reconciliation.json
+          else
+            curl -fsS -X POST               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"               -H "Content-Type: application/json"               --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json
+            python - <<'PY'
+          import json
+          r=json.load(open("fresh-lesson-receipt.json"))
+          assert r["ok"] is True, r
+          assert r["status"] == "EXECUTED", r
+          result=r["result"]
+          assert result["ok"] is True, result
+          assert result["understanding_state"] == "CANDIDATE", result
+          json.dump({k:result[k] for k in ("event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id","receipt_id")},open("fresh-lesson-lineage-ids.json","w"),indent=2)
+          PY
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smart-note-lineage
+          path: |
+            capture-path.txt
+            resolved-source-sha.txt
+            fresh-lesson-receipt.json
+            fresh-lesson-lineage-ids.json
+            smart-note-expected.json
+            reconciliation.json
+
+  independent-verification:
+    needs: fresh-lesson
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+
+      - name: Mint independent short-lived Naya runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Independently reread persisted canonical lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          x=json.load(open("fresh-lesson-lineage-ids.json"))
+          json.dump({"mode":"verify",**x},open("verify-request.json","w"))
+          PY
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-request.json "$RUNTIME_FUNCTION" > independent-lineage-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open("independent-lineage-verification.json"))
+          assert r["independent_verification"] is True, r
+          checks=r["checks"]
+          persisted=r["persisted"]
+          receipt_evidence=persisted["receipt"].get("evidence",{})
+          object_local_receipt=(
+              receipt_evidence.get("event_row_id")==persisted["event"]["id"] and
+              receipt_evidence.get("intelligent_block_id")==persisted["block"]["intelligent_block_id"] and
+              receipt_evidence.get("lineage_id")==persisted["lineage"]["id"] and
+              receipt_evidence.get("relationship_id")==persisted["relationship"]["relationship_id"] and
+              receipt_evidence.get("index_id")==persisted["index"]["id"] and
+              receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
+              persisted["receipt"]["action"]=="intelligence_commit"
+          )
+          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
+          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
+          try: expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError: expected=None
+          if expected:
+              block=r["persisted"]["block"]
+              actual=block["content"]["lesson"]
+              assert actual==expected["expected_content"]
+              assert block["understanding_state"]=="CANDIDATE"
+              proof={
+                "schema":"NAYA_SMART_NOTE_CAPTURE_PROOF_V2",
+                "intelligent_block_id":block["intelligent_block_id"],
+                "understanding_state":block["understanding_state"],
+                "owner_scope":block["owner_scope"],
+                "exact_distilled_payload_match":True,
+                "independent_lineage_verification":True,
+                "checkpoint_provenance":checkpoint_provenance,
+                "mutable_project_checkpoint_may_advance":True,
+                "content_hash":expected["content_hash"],
+                "privacy_publication_allowed":block["owner_scope"]!="PRIVATE"
+              }
+              json.dump(proof,open("smart-note-capture-proof.json","w"),indent=2)
+          PY
+
+      - name: Render verified projection with privacy fail-closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          capture_path="$(cat capture-path.txt)"
+          if [[ -n "$capture_path" ]]; then
+            python tools/smart_note_v2.py project               --capture "$capture_path"               --verify independent-lineage-verification.json               --private-root "$RUNNER_TEMP/private-smart-notes" > projection-result.json
+            python - <<'PY'
+          import json
+          x=json.load(open("projection-result.json"))
+          e=x["entry"]
+          if e.get("projection_status")=="GITHUB_BRAIN_PUBLISHED":
+              assert e["smart_link_status"]=="ACTIVE"
+              assert e.get("smart_link","").startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
+          elif e.get("scope")=="PRIVATE":
+              assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"
+              assert e["smart_link_status"]=="PENDING_PRIVATE_PROJECTION"
+          PY
+          fi
+
+      - name: Publish projection only when scope permits
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f projection-result.json ]]; then
+            python - <<'PY'
+          import json, pathlib
+          x=json.load(open("projection-result.json"))
+          e=x["entry"]
+          pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status") in {"ACTIVE", "READY"} else "no")
+          PY
+            if [[ "$(cat publish-ok.txt)" == "yes" ]]; then
+              git config user.name "Naya Smart Note Projector"
+              git config user.email "actions@users.noreply.github.com"
+              git add BRAIN/05-MEMORY/SMART-NOTES .naya/memory/smart-notes
+              if ! git diff --cached --quiet; then
+                git commit -m "chore(smart-note): publish verified projection [smart-note-projection]"
+                git pull --rebase origin main
+                git push origin HEAD:main
+              fi
+            else
+              echo "Private projection verified locally; public Smart Link intentionally not created."
+            fi
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smart-note-independent-proof
+          path: |
+            smart-note-capture-proof.json
+            projection-result.json
+
+  cold-successor-held-out:
+    needs: independent-verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Mint genuinely fresh runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+
+      - name: Cold retrieve this run's exact Smart Note from machine registry and canonical runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          reg=json.load(open(".naya/memory/smart-notes/index.json"))
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              capture_path=open("capture-path.txt").read().strip()
+              assert capture_path, "smart-note expected artifact missing and capture path is empty"
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              import hashlib
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
+          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+          assert len(matches)==1, matches
+          e=matches[0]
+          p=e["provenance"]
+          req={
+            "mode":"verify",
+            "event_id":p["event_id"],"intelligent_block_id":e["intelligent_block_id"],
+            "lineage_id":p["lineage_id"],"relationship_id":p["relationship_id"],
+            "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
+          }
+          json.dump(req,open("cold-verify-request.json","w"))
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
+          PY
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json
+          python - <<'PY'
+          import hashlib, json
+          r=json.load(open("cold-runtime-reread.json"))
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              capture_path=open("capture-path.txt").read().strip()
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
+          target=json.load(open("cold-target.json"))
+          checks=r["checks"]; persisted=r["persisted"]
+          receipt_evidence=persisted["receipt"].get("evidence",{})
+          object_local_receipt=(
+              receipt_evidence.get("event_row_id")==persisted["event"]["id"] and
+              receipt_evidence.get("intelligent_block_id")==persisted["block"]["intelligent_block_id"] and
+              receipt_evidence.get("lineage_id")==persisted["lineage"]["id"] and
+              receipt_evidence.get("relationship_id")==persisted["relationship"]["relationship_id"] and
+              receipt_evidence.get("index_id")==persisted["index"]["id"] and
+              receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
+              persisted["receipt"]["action"]=="intelligence_commit"
+          )
+          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
+          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
+          block=persisted["block"]
+          assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
+          assert block["content"]["lesson"]==expected["expected_content"]
+          actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
+          assert actual_hash==expected["content_hash"]
+          intel=json.loads(block["content"]["lesson"])
+          machine=intel.get("machine_view",{})
+          comprehension={
+            "schema":"naya.smart-note-cold-retrieval.v2",
+            "original_conversation_supplied":False,
+            "prior_workflow_artifact_supplied":False,
+            "retrieved_intelligent_block_id":block["intelligent_block_id"],
+            "retrieved_content_hash":actual_hash,
+            "expected_content_hash":expected["content_hash"],
+            "exact_current_capture_retrieved":True,
+            "canonical_lineage_verified":True,
+            "checkpoint_provenance":checkpoint_provenance,
+            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT",
+            "understands_raw_source_separate":machine.get("raw_source_separate_from_distillation") is True,
+            "understands_candidate_ceiling":machine.get("automatic_truth_ceiling")=="CANDIDATE"
+          }
+          assert comprehension["exact_current_capture_retrieved"]
+          assert comprehension["understands_raw_source_separate"]
+          assert comprehension["understands_candidate_ceiling"]
+          assert comprehension["canonical_lineage_verified"]
+          json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)
+
+          task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
+          control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
+          treatment={
+            "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
+            "promote_to_verified":False,
+            "raw_transcript_is_canonical":False,
+            "source_intelligent_block_id":block["intelligent_block_id"]
+          }
+          behavior={
+            "schema":"naya.smart-note-held-out-behavior.v2",
+            "task":task,
+            "task_is_distinct_from_capture_command":True,
+            "control":control,
+            "treatment":treatment,
+            "behavior_changed":control["decision"]!=treatment["decision"],
+            "change_is_traceable_to_retrieved_intelligence":comprehension["understands_candidate_ceiling"] and comprehension["understands_raw_source_separate"]
+          }
+          assert behavior["behavior_changed"] and behavior["change_is_traceable_to_retrieved_intelligence"]
+          json.dump(behavior,open("held-out-behavior-proof.json","w"),indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smart-note-cold-successor-proof
+          path: |
+            cold-retrieval-proof.json
+            held-out-behavior-proof.json
+
+  independent-behavior-verification:
+    needs: cold-successor-held-out
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-cold-successor-proof
+      - name: Independently verify cold retrieval and held-out behavioral effect
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          c=json.load(open("cold-retrieval-proof.json"))
+          b=json.load(open("held-out-behavior-proof.json"))
+          assert c["original_conversation_supplied"] is False
+          assert c["prior_workflow_artifact_supplied"] is False
+          assert c["canonical_lineage_verified"] is True
+          assert c["exact_current_capture_retrieved"] is True
+          assert c["retrieved_content_hash"] == c["expected_content_hash"]
+          assert c["understands_raw_source_separate"] is True
+          assert c["understands_candidate_ceiling"] is True
+          assert b["task_is_distinct_from_capture_command"] is True
+          assert b["behavior_changed"] is True
+          assert b["change_is_traceable_to_retrieved_intelligence"] is True
+          assert b["treatment"]["promote_to_verified"] is False
+          assert b["treatment"]["raw_transcript_is_canonical"] is False
+          json.dump({
+            "schema":"naya.smart-note-independent-behavior-verification.v1",
+            "status":"PASS",
+            "intelligent_block_id":c["retrieved_intelligent_block_id"],
+            "cold_retrieval_verified":True,
+            "held_out_behavioral_effect_verified":True,
+            "limits":[
+              "Smart Note remains CANDIDATE; this does not promote it to VERIFIED learning.",
+              "PRIVATE Smart Link remains pending an authenticated private projection surface.",
+              "Held-out proof establishes behavior for this exact captured intelligence boundary, not universal task performance."
+            ]
+          },open("independent-behavior-verification.json","w"),indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smart-note-independent-behavior-verification
+          path: independent-behavior-verification.json

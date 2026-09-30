@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "naya.kernel.know/v1",
+  "title": "KNOW Node",
+  "type": "object",
+  "required": ["node_id", "retrieval_context", "state"],
+  "properties": {
+    "node_id": {"const": "NAYA-KERNEL-KNOW"},
+    "retrieval_context": {
+      "type": "object",
+      "properties": {
+        "query": {"type": "string"},
+        "query_type": {"enum": ["SEMANTIC", "STRUCTURAL", "RELATIONAL", "CONTEXTUAL"]},
+        "results": {"type": "array", "items": {"type": "object"}},
+        "epistemic_states": {"type": "array", "items": {"enum": ["UNKNOWN", "CLAIMED", "SUPPORTED", "VERIFIED", "CONTRADICTED", "STALE"]}},
+        "freshness_markers": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "state": {"enum": ["UNINITIALIZED", "RESTORING", "READY", "DEGRADED", "FAILED"]},
+    "index_health": {"type": "object"},
+    "substrate_status": {"enum": ["AVAILABLE", "DEGRADED", "UNAVAILABLE"]}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "naya.smart-door.contract.v1",
+  "status": "CANONICAL_CONTRACT_CANDIDATE",
+  "laws": [
+    "Door capability does not create authority.",
+    "LAW decides permitted use.",
+    "ACT invokes the capability.",
+    "VERIFY checks consequential observed results.",
+    "Doors do not own truth, intelligence, memory, policy, or identity."
+  ],
+  "required_fields": [
+    "door_id",
+    "name",
+    "provider",
+    "capabilities",
+    "operations",
+    "consequence_class",
+    "required_authority",
+    "identity_method",
+    "data_classes",
+    "health",
+    "cost_rate_hint",
+    "audit",
+    "status"
+  ],
+  "operation_fields": [
+    "operation",
+    "mode",
+    "target_types",
+    "consequential",
+    "authority_action",
+    "verification_required"
+  ]
+}

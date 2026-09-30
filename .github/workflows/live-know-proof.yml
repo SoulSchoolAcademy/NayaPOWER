@@ -1,0 +1,201 @@
+name: Live KNOW Node Proof
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  LAW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-law-runtime
+  KNOW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-know-runtime
+
+jobs:
+  contextual-retrieval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Mint governed organism identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: LAW authorizes bounded parent application context
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > law-request.json <<'JSON'
+          {
+            "mode":"evaluate",
+            "request":{
+              "action":"naya_node_apply",
+              "target":"NAYA-NODE-0001",
+              "project_id":"NayaNET",
+              "resource_scope":"KNOW_CONTEXTUAL_RETRIEVAL",
+              "privacy":"PRIVATE"
+            }
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @law-request.json "$LAW_RUNTIME" > law-authorized.json
+          python - <<'PY'
+          import json
+          x=json.load(open("law-authorized.json"))
+          assert x["ok"] is True, x
+          assert x["decision"]["status"]=="AUTHORIZED", x
+          json.dump({"law_receipt_id":x["receipt"]["id"]},open("ids.json","w"),indent=2)
+          PY
+
+      - name: KNOW selects applicable intelligence from task context only
+        shell: bash
+        run: |
+          set -euo pipefail
+          law_id="$(python -c 'import json; print(json.load(open("ids.json"))["law_receipt_id"])')"
+          cat > know-positive-request.json <<JSON
+          {
+            "mode":"retrieve",
+            "law_receipt_id":"$law_id",
+            "task_id":"KNOW-PROVENANCE-HELDOUT-001",
+            "task_class":"RELATED_HELDOUT",
+            "required_capability":"provenance_preservation"
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @know-positive-request.json "$KNOW_RUNTIME" > know-positive.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("know-positive.json"))
+          assert x["ok"] is True, x
+          r=x["result"]
+          assert r["status"]=="HIT", x
+          assert isinstance(r.get("selected_block_id"),str) and r["selected_block_id"], x
+          assert r.get("selected_epistemic_state")=="LEARNED", x
+          assert r.get("applicable") is True, x
+          assert r.get("required_capability")=="provenance_preservation", x
+          assert isinstance(r.get("selected_provenance"),dict) and r["selected_provenance"], x
+          assert isinstance(r.get("selected_evidence_refs"),list) and r["selected_evidence_refs"], x
+          assert r["retrieval_creates_authority"] is False, x
+          assert x["handoff_to"]=="NAYA-KERNEL-PROVE", x
+          ids["positive_receipt_id"]=x["receipt"]["id"]
+          ids["positive_selected_block_id"]=r["selected_block_id"]
+          json.dump(ids,open("ids.json","w"),indent=2)
+          PY
+
+      - name: KNOW returns bounded miss for unrelated context
+        shell: bash
+        run: |
+          set -euo pipefail
+          law_id="$(python -c 'import json; print(json.load(open("ids.json"))["law_receipt_id"])')"
+          cat > know-negative-request.json <<JSON
+          {
+            "mode":"retrieve",
+            "law_receipt_id":"$law_id",
+            "task_id":"KNOW-UNRELATED-ARITHMETIC-001",
+            "task_class":"UNRELATED_NEGATIVE_TRANSFER",
+            "required_capability":"arithmetic_only"
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @know-negative-request.json "$KNOW_RUNTIME" > know-negative.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("know-negative.json"))
+          assert x["ok"] is True, x
+          assert x["result"]["status"]=="MISS", x
+          assert x["result"]["selected_block_id"] is None, x
+          assert x["result"]["retrieval_creates_authority"] is False, x
+          ids["negative_receipt_id"]=x["receipt"]["id"]
+          json.dump(ids,open("ids.json","w"),indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: know-primary-proof
+          path: |
+            law-authorized.json
+            know-positive.json
+            know-negative.json
+            ids.json
+
+  independent-know-verification:
+    needs: contextual-retrieval
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: know-primary-proof
+
+      - name: Mint fresh independent verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Independently recompute positive selection from persisted universe
+        shell: bash
+        run: |
+          set -euo pipefail
+          receipt_id="$(python -c 'import json; print(json.load(open("ids.json"))["positive_receipt_id"])')"
+          cat > inspect-positive.json <<JSON
+          {
+            "mode":"inspect",
+            "retrieval_receipt_id":"$receipt_id",
+            "task_id":"KNOW-PROVENANCE-HELDOUT-001",
+            "task_class":"RELATED_HELDOUT",
+            "required_capability":"provenance_preservation"
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @inspect-positive.json "$KNOW_RUNTIME" > verified-positive.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("verified-positive.json"))
+          assert x["ok"] is True, x
+          assert x["independent_verification"] is True, x
+          assert x["executor_claim_trusted_as_verification"] is False, x
+          assert x["persisted_universe_reread"] is True, x
+          r=x["recomputed"]
+          assert r["status"]=="HIT", x
+          assert r["selected_block_id"]==ids["positive_selected_block_id"], x
+          assert r.get("selected_epistemic_state")=="LEARNED", x
+          assert r.get("applicable") is True, x
+          assert r.get("required_capability")=="provenance_preservation", x
+          assert isinstance(r.get("selected_provenance"),dict) and r["selected_provenance"], x
+          assert isinstance(r.get("selected_evidence_refs"),list) and r["selected_evidence_refs"], x
+          assert r["retrieval_creates_authority"] is False, x
+          PY
+
+      - name: Independently recompute unrelated bounded miss
+        shell: bash
+        run: |
+          set -euo pipefail
+          receipt_id="$(python -c 'import json; print(json.load(open("ids.json"))["negative_receipt_id"])')"
+          cat > inspect-negative.json <<JSON
+          {
+            "mode":"inspect",
+            "retrieval_receipt_id":"$receipt_id",
+            "task_id":"KNOW-UNRELATED-ARITHMETIC-001",
+            "task_class":"UNRELATED_NEGATIVE_TRANSFER",
+            "required_capability":"arithmetic_only"
+          }
+          JSON
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @inspect-negative.json "$KNOW_RUNTIME" > verified-negative.json
+          python - <<'PY'
+          import json
+          x=json.load(open("verified-negative.json"))
+          assert x["ok"] is True, x
+          assert x["independent_verification"] is True, x
+          assert x["recomputed"]["status"]=="MISS", x
+          assert x["recomputed"]["selected_block_id"] is None, x
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: know-independent-proof
+          path: |
+            verified-positive.json
+            verified-negative.json

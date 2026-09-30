@@ -1,0 +1,34 @@
+# Source-controlled function configuration for Supabase native GitHub deployment.
+# These functions implement their own governed GitHub OIDC verification, so
+# Supabase's legacy JWT gate remains disabled exactly as in the current live project.
+
+[functions.nayanet-cold-runtime-proof]
+verify_jwt = false
+
+[functions.nayanet-intelligence-commit-runtime]
+verify_jwt = false
+
+[functions.nayanet-causal-learning-experiment]
+verify_jwt = false
+
+[functions.nayanet-causal-verify]
+verify_jwt = false
+
+[functions.nayanet-learning-verify]
+verify_jwt = false
+
+[functions.nayanet-law-runtime]
+verify_jwt = false
+
+[functions.nayanet-act-runtime]
+verify_jwt = false
+
+[functions.nayanet-know-runtime]
+verify_jwt = false
+
+[functions.nayanet-prove-runtime]
+verify_jwt = false
+
+
+[functions.nayanet-verified-ai-action]
+verify_jwt = false

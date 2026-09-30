@@ -1,0 +1,137 @@
+{
+  "schema": "naya.activation.manifest.v1",
+  "protocol": "NayaPOWER Portable Activation Protocol V1",
+  "purpose": "Portable activation of an AI instance into a governed NayaPOWER environment.",
+  "required_human_inputs": [
+    "human_authority",
+    "intended_naya_purpose",
+    "authorized_persistence_access"
+  ],
+  "persistence": {
+    "preferred": "github",
+    "basic_activation_requires_supabase": false,
+    "network_layer": "nayanet"
+  },
+  "package_entrypoint": "NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md",
+  "package_structure": {
+    "KERNEL": [
+      "NAYA-ACTIVATION/KERNEL/WHO.md",
+      "NAYA-ACTIVATION/KERNEL/WHAT.md",
+      "NAYA-ACTIVATION/KERNEL/WHY.md",
+      "NAYA-ACTIVATION/KERNEL/AUTHORITY.md"
+    ],
+    "CONSTITUTION": [
+      "NAYA-ACTIVATION/CONSTITUTION/CONSTITUTION.md",
+      "NAYA-ACTIVATION/CONSTITUTION/LAWS.md",
+      "NAYA-ACTIVATION/CONSTITUTION/GOVERNANCE.md"
+    ],
+    "INTELLIGENCE": [
+      "NAYA-ACTIVATION/INTELLIGENCE/ARCHITECTURE.md",
+      "NAYA-ACTIVATION/INTELLIGENCE/MEMORY.md",
+      "NAYA-ACTIVATION/INTELLIGENCE/LEARNING.md",
+      "NAYA-ACTIVATION/INTELLIGENCE/CONTINUITY.md",
+      "NAYA-ACTIVATION/INTELLIGENCE/CVO.md"
+    ],
+    "ENGINEERING": [
+      "NAYA-ACTIVATION/ENGINEERING/CODING.md",
+      "NAYA-ACTIVATION/ENGINEERING/TESTING.md",
+      "NAYA-ACTIVATION/ENGINEERING/SECURITY.md",
+      "NAYA-ACTIVATION/ENGINEERING/VERIFICATION.md"
+    ],
+    "DESIGN": [
+      "NAYA-ACTIVATION/DESIGN/UX.md",
+      "NAYA-ACTIVATION/DESIGN/UI.md",
+      "NAYA-ACTIVATION/DESIGN/VISUAL-LANGUAGE.md",
+      "NAYA-ACTIVATION/DESIGN/DESIGN-SYSTEM.md"
+    ],
+    "OPERATIONS": [
+      "NAYA-ACTIVATION/OPERATIONS/GIT.md",
+      "NAYA-ACTIVATION/OPERATIONS/ISSUES.md",
+      "NAYA-ACTIVATION/OPERATIONS/HANDOFFS.md",
+      "NAYA-ACTIVATION/OPERATIONS/DEPLOYMENT.md"
+    ],
+    "CURRENT_REALITY": [
+      "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/CURRENT-STATE.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/ACTIVE-WORK.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/PROOF.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/BLOCKERS.md",
+      "NAYA-ACTIVATION/CURRENT-REALITY/NEXT-ACTION.md"
+    ],
+    "NAYA_ROLES": [
+      "NAYA-ACTIVATION/NAYA-ROLES/README.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/ENGINEERING-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/DESIGN-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/RESEARCH-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/ARCHITECTURE-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/QA-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/PRODUCT-NAYA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/CODA.md",
+      "NAYA-ACTIVATION/NAYA-ROLES/FUTURE-AGENTS.md"
+    ],
+    "RECEIPT": [
+      "NAYA-ACTIVATION/ACTIVATION-RECEIPT-TEMPLATE.json"
+    ],
+    "EXTRA_CANONICAL_CONTEXT": [
+      "BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md",
+      "BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md",
+      "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
+      "KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md",
+      "KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json",
+      "KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md"
+    ]
+  },
+  "dna_layers": [
+    "BIRTH",
+    "IDENTITY",
+    "CONSTITUTION",
+    "GOVERNANCE",
+    "BRAIN",
+    "NODES",
+    "OPERATIONS",
+    "CONNECTION",
+    "PROOF"
+  ],
+  "kernel": {
+    "version": "v1",
+    "responsibilities": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ]
+  },
+  "activation_states": [
+    "UNACTIVATED",
+    "BOOTING",
+    "RECONSTRUCTING",
+    "VERIFYING",
+    "ACTIVE",
+    "BLOCKED"
+  ],
+  "completion_requires": [
+    "identity_established",
+    "human_authority_established",
+    "persistence_surface_established",
+    "dna_installed",
+    "canonical_state_reconciled",
+    "activation_receipt_emitted",
+    "next_action_declared"
+  ],
+  "truth_laws": [
+    "UNKNOWN != VERIFIED/PASS",
+    "BLOCKED != PASS",
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN"
+  ],
+  "authority_law": "Capability does not create authority.",
+  "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
+  "continuity_requirement": "A cold successor must be able to reconstruct the resulting state without manual replay by the predecessor.",
+  "version": "1.1.2"
+}

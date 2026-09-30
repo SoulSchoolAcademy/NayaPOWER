@@ -1,0 +1,169 @@
+{
+  "schema": "naya.smart-note.capture-request/v1",
+  "capture_id": "20260929-sn002-smart-note-node-flow",
+  "smart_note_id": "SN-002",
+  "title": "How Smart Notes, Intelligent Blocks, Master Nodes, Learning, Brain, and Hub Work Together",
+  "topic": "SMART_NOTE_NODE_OPERATING_FLOW",
+  "category": "SYSTEM_INTELLIGENCE",
+  "subtopic": "END_TO_END_PROTOCOL",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "type": "chatgpt_conversation",
+    "captured_at": "2026-09-29",
+    "human_directive": "Create an official Smart Note that explains, in the simplest possible terms, how Smart Notes relate to Intelligent Blocks and the Nine Naya Master Nodes; the exact operational trigger/event flow; what each stage does and means; what the system learns; how GitHub Brain, Supabase, retrieval, learning, Personal Intelligence and Collective Intelligence connect; what we achieve and benefit from; and make it the reference future Nayas can use."
+  },
+  "projection": {
+    "category_slug": "system-intelligence",
+    "topic_slug": "smart-note-node-operating-flow",
+    "subtopic_slug": "end-to-end-protocol",
+    "human_director_authorized_publication": true,
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "verification_revision": 2,
+    "verification_note": "Re-trigger SN-002 after authorized-public-projection verifier repair."
+  },
+  "intelligence": {
+    "essence": "A Smart Note is the human command that starts a governed intelligence lifecycle. The durable machine intelligence is an Intelligent Block. The Nine Master Nodes are processing responsibilities that interpret, govern, retrieve, prove, connect, act on, verify, learn from, and carry that intelligence forward. GitHub Brain is the human-readable memory projection; Supabase is runtime persistence; the Hub is the visual personal/collective projection. All are views or processing layers around one intelligence identity, not competing brains.",
+    "human_view": {
+      "meaning": "Say 'Smart Note this' when something is valuable enough that Naya and future Nayas should understand it later without asking you to explain it again. Naya should do the filing, machine persistence, connection, proof, human-readable Brain page, and Smart Link automatically.",
+      "why_it_matters": "The system becomes cumulative instead of conversationally forgetful. Important lessons survive, can be found when relevant, can change later decisions, and can become verified learning rather than disappearing when the chat ends.",
+      "simple_rule": "Smart Note it once → turn it into one Intelligent Block → make it findable and understandable → use it when relevant → verify what happens → learn only from evidence."
+    },
+    "simple_view": {
+      "child": "You tell Naya, 'keep this important lesson.' Naya saves the smart part, gives it a name, puts it in the right brain folder, tells the other parts of her brain where to find it, and later uses it when it helps.",
+      "grandma": "Think of a very organized assistant. You say something important once. She writes a clear summary, files it properly, records where it came from, connects it to related matters, and later pulls it out when it is useful. If using it works, she records that lesson too."
+    },
+    "naya_view": {
+      "purpose": "Convert high-value human or system experience into governed, provenance-bound intelligence that future authorized Nayas can retrieve and apply without human reconstruction.",
+      "architectural_rule": "Master Nodes are processing organs; Intelligent Blocks are durable intelligence objects. A Smart Note does not become a tenth Node and does not create a second brain.",
+      "node_flow": {
+        "SELF": "Establish whose context, mission, and continuity this intelligence belongs to.",
+        "LAW": "Check privacy, consent, scope, authority, publication, and permitted use.",
+        "ACT": "Carry out only authorized actions or applications of the intelligence.",
+        "KNOW": "Persist/retrieve the canonical intelligence and reconstruct what it means.",
+        "PROVE": "Check provenance, evidence, lineage, truth state, and what may legitimately be claimed.",
+        "CONNECT": "Reconcile duplicates/conflicts, infer relationships, determine applicability, and route relevant Blocks into context.",
+        "VERIFY": "Observe outcomes and determine whether application actually succeeded.",
+        "LEARN": "Convert verified outcomes into future behavioral change; never promote from labels alone.",
+        "EVOLVE": "Carry proven improvements into successors and system evolution without creating new authority."
+      },
+      "capture_truth": "A Smart Note capture does not prove that all nine Master Nodes executed dynamically in production for that one capture. Current bounded runtime proves parts of the intelligence river and later cold use. Universal nine-node runtime binding remains a separate proof obligation.",
+      "retrieval_rule": "Awareness means every authorized Naya can discover relevant Blocks through the shared index/graph when context calls for them; it does not mean load every Block into every prompt.",
+      "learning_rule": "Capture creates or reuses CANDIDATE intelligence. Learning requires application, observed outcome, verification, and demonstrated future behavioral effect."
+    },
+    "machine_view": {
+      "human_command": "SMART_NOTE_THIS",
+      "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "master_nodes": [
+        "SELF",
+        "LAW",
+        "ACT",
+        "KNOW",
+        "PROVE",
+        "CONNECT",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE"
+      ],
+      "capture_runtime": "nayanet-intelligence-commit-runtime",
+      "runtime_persistence": "Supabase",
+      "human_memory_projection": "GitHub BRAIN/05-MEMORY/SMART-NOTES",
+      "human_receipt": "direct GitHub Smart Link",
+      "hub_projection": {
+        "personal": "PRIVATE_BY_DEFAULT",
+        "collective": "BY_CONSENT_OR_PUBLICATION_DECISION"
+      },
+      "required_capture_river": [
+        "EVENT",
+        "INTELLIGENT_BLOCK",
+        "LINEAGE",
+        "RELATIONSHIP",
+        "INDEX",
+        "CHECKPOINT_OR_CURRENT_STATE_POINTER",
+        "RECEIPT"
+      ],
+      "truth_ceiling_at_capture": "CANDIDATE",
+      "learning_requires": [
+        "RETRIEVAL",
+        "APPLICABILITY",
+        "AUTHORITY",
+        "APPLICATION",
+        "OUTCOME",
+        "VERIFICATION",
+        "FUTURE_BEHAVIOR_CHANGE"
+      ],
+      "raw_source_is_not_distilled_intelligence": true,
+      "one_intelligence_many_views": true
+    },
+    "learning_lesson": "Memory becomes intelligence when retained meaning can change what happens next. Intelligence becomes learning only when the resulting change is observed and verified, then alters future behavior.",
+    "what_it_means": "NayaPOWER should behave less like a pile of documents and more like an organism: humans create experience, Smart Notes distill what matters, Intelligent Blocks hold durable meaning, Nodes process it, the graph connects it, the index finds it, the Hub shows it, verification tests it, learning improves future behavior, and successors inherit the improvement.",
+    "human_value": "The benefit is simple: say important things once. Get less repetition, less lost knowledge, faster onboarding for future Nayas, clearer human visibility, safer authority/privacy handling, and a system that can actually get better from verified experience.",
+    "operational_flow": [
+      "1. HUMAN says 'Smart Note this.'",
+      "2. NIA Language normalizes that phrase to CAPTURE_DURABLE_INTELLIGENCE.",
+      "3. Naya distills the durable meaning instead of dumping the transcript.",
+      "4. LAW-relevant checks preserve privacy, scope, consent, and publication intent.",
+      "5. Reconciliation checks whether the intelligence already exists, conflicts, or should refine an existing Block.",
+      "6. The canonical receiver creates/reuses the Event + Intelligent Block identity and persists provenance-bound content.",
+      "7. PROVE-relevant evidence objects bind lineage, receipt, truth state, and source.",
+      "8. CONNECT-relevant indexing/relationships make the Block discoverable and contextually applicable.",
+      "9. GitHub Brain receives the human-readable multi-perspective Markdown projection and returns the Smart Link.",
+      "10. The Hub should project the same IB into Personal Intelligence; Collective Intelligence appears only when sharing/publication is authorized.",
+      "11. A future Naya encounters a related task and retrieves the Block through the shared index/graph.",
+      "12. LAW checks whether the Naya may use it; ACT applies it only when authorized.",
+      "13. VERIFY observes the result and checks whether using the intelligence actually helped.",
+      "14. LEARN updates future behavior only from verified outcomes.",
+      "15. EVOLVE/succession carries the proven improvement to later Nayas."
+    ],
+    "decisions": [
+      "Use SN-### as the stable human Smart Note sequence; keep IB-ID as canonical machine identity and timestamp as provenance.",
+      "Reserve the Nine Master Nodes for processing responsibilities; do not create a new Node for each Smart Note.",
+      "Treat Smart Note as the trigger command, Intelligent Block as the durable machine object, GitHub Brain Markdown as the primary human memory projection, and Hub cards as visual projections.",
+      "Keep Supabase as runtime machine persistence and GitHub Brain as human/AI-readable durable projection; neither should silently replace the other.",
+      "Personal Intelligence is private by default; Collective Intelligence requires consent/publication choice.",
+      "Do not claim a capture is learning. Learning requires verified behavioral change.",
+      "Do not claim all nine Nodes dynamically fire on every Smart Note until universal runtime binding is proven.",
+      "Return the direct GitHub Brain Smart Link as the primary human receipt for published/shared Smart Notes."
+    ],
+    "connections": [
+      {
+        "type": "GOVERNED_BY",
+        "target": "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md"
+      },
+      {
+        "type": "IMPLEMENTS",
+        "target": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md"
+      },
+      {
+        "type": "USES",
+        "target": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json"
+      },
+      {
+        "type": "USES",
+        "target": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts"
+      },
+      {
+        "type": "PROJECTS_TO",
+        "target": "BRAIN/05-MEMORY/SMART-NOTES/"
+      },
+      {
+        "type": "PROJECTS_TO",
+        "target": "NayaNET Hub Personal Intelligence"
+      },
+      {
+        "type": "MAY_PROJECT_TO",
+        "target": "NayaNET Hub Collective Intelligence when consent/publication allows"
+      }
+    ],
+    "proof_required": [
+      "Canonical runtime persists the new Event/Block lineage and receipt.",
+      "Machine registry records SN-002 and exact IB identity.",
+      "Human-readable Brain Markdown is generated in the dated/category/topic hierarchy.",
+      "Direct GitHub Smart Link opens the actual note.",
+      "A later cold Naya can retrieve this intelligence without receiving this conversation.",
+      "Do not claim universal nine-node execution or automatic Hub rendering unless independently proven."
+    ],
+    "epistemic_state": "CANDIDATE",
+    "uncertainty": "The architecture clearly assigns roles to all nine Master Nodes, but the current runtime registry explicitly says universal nine-node behavioral/runtime binding is NOT_PROVEN. Automatic arbitrary-new-IB → live Hub card rendering is also not yet universally production-proven."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "naya.collective.intelligence.chain.readiness/v1",
+  "title": "Collective Intelligence Chain ΓÇö Link Readiness Contract V1",
+  "purpose": "The Collective Intelligence Chain is the acceptance test for NayaPOWER: if a taught lesson can become a validated Intelligent Block, connect, integrate, checkpoint, be cold-retrieved, recognized as applicable, acted on, verified, and improve collective intelligence, then the system is intelligence rather than storage. This file declares each link and the evidence that must exist for it to be satisfied. It declares NO status. Status is measured by BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py against the real repository.",
+  "authority_boundary": "This contract measures readiness. It cannot create an Intelligent Block, allocate canonical identity, or satisfy its own links. A link is satisfied only by independently inspectable evidence.",
+  "canonical_identity_rule": "An Intelligent Block identity may only be allocated by the current canonical governed intelligence-commit boundary. A locally minted id is not an Intelligent Block and can never satisfy L01.",
+  "links": [
+    {
+      "id": "L01",
+      "name": "LESSON -> INTELLIGENT BLOCK",
+      "requires": "A canonical Intelligent Block exists whose identity was allocated by the current governed intelligence-commit runtime for a specific taught lesson.",
+      "identity_allocator": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+      "runtime_required": true,
+      "evidence": [
+        "an intelligence-commit runtime receipt containing the authoritative intelligent_block_id",
+        "an owner-scoped persisted nayanet_intelligent_blocks row for that id",
+        "source Event → Intelligent Block lineage preserved in canonical persistence"
+      ]
+    },
+    {
+      "id": "L02",
+      "name": "VALIDATE",
+      "requires": "The Intelligent Block validates against the canonical machine contract before it may influence anything.",
+      "evidence": [
+        "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
+        "a passing validation result for the block"
+      ],
+      "runtime_required": false
+    },
+    {
+      "id": "L03",
+      "name": "CONNECT",
+      "requires": "The block carries explicit, provenance-bearing relationships to existing intelligence rather than existing only as a record.",
+      "evidence": [
+        "graph relationships with a canonical relationship type",
+        "relationship provenance paths that resolve"
+      ],
+      "runtime_required": false
+    },
+    {
+      "id": "L04",
+      "name": "RECONCILE",
+      "requires": "No unresolved contradiction stands between the new block and existing intelligence. Contradiction is surfaced, never silently dropped.",
+      "evidence": [
+        "zero unresolved CONTRADICTS relationships lacking adjudication",
+        "an explicit conflict record where conflict exists"
+      ],
+      "runtime_required": false
+    },
+    {
+      "id": "L05",
+      "name": "INTEGRATE INTO CORE INTELLIGENCE",
+      "requires": "The block changes the current integrated understanding, not merely the historical record.",
+      "evidence": [
+        "a Core Intelligence projection that includes the block",
+        "a before/after difference in the current understanding"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L06",
+      "name": "CHECKPOINT",
+      "requires": "A cognitive checkpoint is emitted capturing state, evidence, learning and next action, so a successor can continue.",
+      "evidence": [
+        "a checkpoint record with a receipt",
+        "checkpoint status CHECKPOINT_VERIFIED",
+        "successor context present"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L07",
+      "name": "COLD RETRIEVE",
+      "requires": "A reader with no conversation history retrieves the block from the canonical boundary using canonical identity alone.",
+      "evidence": [
+        "a retrieval by IB id with no session context",
+        "retrieval evidence recording the query and result"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L08",
+      "name": "RECOGNIZE APPLICABILITY",
+      "requires": "Retrieval distinguishes what applies from what merely resembles, and states why.",
+      "evidence": [
+        "an applicability decision with reasons",
+        "exclusions recorded, not silently dropped"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L09",
+      "name": "ACT WITHIN AUTHORITY",
+      "requires": "Action is taken, and RETRIEVE did not grant the authority to take it. Authority is re-validated independently after retrieval.",
+      "evidence": [
+        "an action record",
+        "an independent authority check with its own evidence",
+        "proof that authority was not inherited from the retrieval"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L10",
+      "name": "VERIFY",
+      "requires": "The outcome is independently verified. A successful call is not verification, and a receipt proves only the operation the receipt represents.",
+      "evidence": [
+        "a separate verification record",
+        "a Causal Verification Object bound to real event/outcome lineage"
+      ],
+      "runtime_required": true
+    },
+    {
+      "id": "L11",
+      "name": "IMPROVE COLLECTIVE INTELLIGENCE",
+      "requires": "Verified learning is promoted above CANDIDATE and measurably improves a later held-out task, and the next checkpoint reflects it.",
+      "evidence": [
+        "learning promoted above CANDIDATE with evidence",
+        "a held-out task showing measured improvement",
+        "a later checkpoint that differs because of the learning"
+      ],
+      "runtime_required": true
+    }
+  ],
+  "win_definition": "Retained intelligence from Naya A causes independently verified, valuable improvement in Naya B's held-out behaviour, without transferring unauthorised power.",
+  "anti_false_positive_law": "A link may only be reported SATISFIED by inspected evidence. Missing evidence is UNKNOWN, never PASS. Simulation, local id minting, and self-report are not evidence."
+}

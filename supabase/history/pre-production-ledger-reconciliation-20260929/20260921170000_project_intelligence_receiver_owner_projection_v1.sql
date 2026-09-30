@@ -1,0 +1,2 @@
+alter table public.nayanet_project_intelligence_bridge add column if not exists owner_id uuid;
+create index if not exists nayanet_pi_bridge_owner_idx on public.nayanet_project_intelligence_bridge(owner_id,accepted_at desc);

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://naya.power/schemas/authority-tuple-v1.json",
+  "title": "Authority Tuple",
+  "description": "Defines the structure for authority tuples that govern who may cause what change under what conditions.",
+  "type": "object",
+  "required": ["actor", "action", "scope", "authority_type", "granted_by", "granted_at", "expires_at", "status"],
+  "properties": {
+    "actor": {
+      "type": "string",
+      "description": "The entity (human, Naya, system) that holds this authority"
+    },
+    "action": {
+      "type": "string",
+      "description": "The specific action this authority permits"
+    },
+    "scope": {
+      "type": "string",
+      "description": "The boundary within which this authority is valid"
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": ["CONSTITUTIONAL", "DELEGATED", "OPERATIONAL", "TEMPORARY", "EMERGENCY"],
+      "description": "The category of authority"
+    },
+    "granted_by": {
+      "type": "string",
+      "description": "The entity that granted this authority"
+    },
+    "granted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this authority was granted"
+    },
+    "expires_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When this authority expires, null for non-expiring"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "EXPIRED", "REVOKED", "SUSPENDED"],
+      "description": "Current status of this authority"
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Additional constraints on the use of this authority"
+    },
+    "revocation_record": {
+      "type": ["object", "null"],
+      "description": "Record of revocation if applicable"
+    }
+  },
+  "additionalProperties": false
+}

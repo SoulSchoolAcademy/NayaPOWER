@@ -1,0 +1,1192 @@
+name: Live Supabase Runtime Proof
+
+on:
+  workflow_run:
+    workflows: ["Live Intelligence Commit Proof"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: "Exact main SHA whose runtime is being proven"
+        required: true
+        type: string
+      producer_run_id:
+        description: "Live Intelligence Commit Proof run that produced the fresh lineage artifacts"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+
+env:
+  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+  COLD_RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-cold-runtime-proof
+  SOURCE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_sha }}
+  PRODUCER_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.producer_run_id }}
+
+jobs:
+  contract:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.12"}
+      - run: python -m pip install pytest
+      - name: Run identity binding regression
+        run: python -m pytest -q tests/test_naya_identity_owner_binding.py tests/test_github_oidc_binding.py
+
+  cold-runtime-1:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute cold Naya runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}" > cold-runtime-1.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-runtime-1.json"))["receipt"]
+          assert r["naya_id"]=="NAYA-NODE-0001"
+          assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
+          assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
+          assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cold-runtime-1
+          path: cold-runtime-1.json
+
+  cold-runtime-2:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - name: Mint fresh short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute second cold Naya runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}" > cold-runtime-2.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-runtime-2.json"))["receipt"]
+          assert r["naya_id"]=="NAYA-NODE-0001"
+          assert r["owner_id"]=="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f"
+          assert r["block_id"]=="IB-NAYA-NODE-0001-0001"
+          assert r["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cold-runtime-2
+          path: cold-runtime-2.json
+
+  independent-verification:
+    needs: [cold-runtime-1, cold-runtime-2]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with: {name: naya-cold-runtime-1, path: receipts/one}
+      - uses: actions/download-artifact@v4
+        with: {name: naya-cold-runtime-2, path: receipts/two}
+      - name: Independently verify both cold receipts
+        run: python tests/verify_cold_runtime_receipt.py receipts/one/cold-runtime-1.json receipts/two/cold-runtime-2.json
+
+  live-connect:
+    needs: [cold-runtime-1, cold-runtime-2]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - name: Mint short-lived GitHub OIDC runtime identity for CONNECT
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute governed CONNECT runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=connect" > .naya/evidence/live-connect-runtime-receipt.json
+      - name: Record deployed-runtime observation from the real response
+        # Runs BEFORE verification, and unconditionally. If the deployed artifact
+        # is untraceable the verification steps below will fail - and a failing run
+        # that captured no evidence is a failing run nobody can diagnose. The
+        # observation is the evidence, so it is taken first.
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Generated from the file the runtime actually produced. Never hand-written.
+          python BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py \
+            .naya/evidence/live-connect-runtime-receipt.json \
+            .naya/evidence/deployed-runtime-observation.json
+      - name: Verify CONNECT receipt contract
+        if: always()
+        run: python tests/verify_connect_runtime_receipt.py .naya/evidence/live-connect-runtime-receipt.json
+      - name: Fail if the deployed artifact is not the current canonical source
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This is the whole point: a canonical source change that was never
+          # deployed must turn this workflow RED, on its own, with no human
+          # prompting anything. Exit codes: 0 MATCH | 1 DRIFT/STALE/UNKNOWN.
+          # UNKNOWN is deliberately non-zero. "We cannot tell" is not "fine".
+          #
+          # Both this and the contract check above run under `if: always()` so a
+          # single red run reports BOTH the contract verdict and the parity
+          # verdict, instead of only whichever one happened to run first.
+          python BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-connect-runtime-receipt
+          path: |
+            .naya/evidence/live-connect-runtime-receipt.json
+            .naya/evidence/deployed-runtime-observation.json
+
+  independent-connect-verification:
+    if: ${{ always() }}
+    needs: live-connect
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: live-connect-runtime-receipt
+          path: receipts/connect
+      - name: Independently verify persisted CONNECT receipt
+        run: python tests/verify_connect_runtime_receipt.py receipts/connect/live-connect-runtime-receipt.json
+
+
+
+  learning-influence-experiment:
+    needs: contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+          path: fresh-lineage
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.PRODUCER_RUN_ID }}
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Bind the exact persisted fresh lesson into the existing LEARN candidate lane
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
+          fresh_block_id=ids["intelligent_block_id"]
+          open("fresh-block-id.txt","w").write(fresh_block_id)
+          json.dump({"mode":"candidate","intelligent_block_id":fresh_block_id,"checkpoint_id":ids["checkpoint_id"]},open("candidate-request.json","w"),indent=2)
+          PY
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @candidate-request.json -o learning-candidate.json -w "%{http_code}" "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > candidate-http-status.txt
+          cat learning-candidate.json
+          echo "HTTP_STATUS=$(cat candidate-http-status.txt)"
+          python - <<'PY'
+          import json
+          r=json.load(open("learning-candidate.json"))
+          assert r.get("ok") is True, r
+          assert r["learning"]["status"] == "CANDIDATE", r
+          assert r["learning"]["observed_value"]["intelligent_block_id"] == open("fresh-block-id.txt").read().strip(), r
+          assert r["learning"]["observed_value"]["provenance_preserved"] is True, r
+          open("learning-id.txt","w").write(r["learning"]["id"])
+          PY
+      - name: Execute the existing causal control-vs-treatment experiment against this exact candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(cat learning-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"learning_id\":\"$learning_id\"}" "${COLD_RUNTIME_FUNCTION}?mode=learning-influence" > causal-learning-experiment.json
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          assert r["ok"] is True, r
+          assert r["learning_id"] == open("learning-id.txt").read().strip(), r
+          assert r["control"]["evidence"]["retained_intelligence_used"] is False
+          assert r["treatment"]["evidence"]["retained_intelligence_used"] is True
+          assert r["control"]["evidence"]["task_input"] == r["treatment"]["evidence"]["task_input"], r
+          assert r["control"]["observed_result"] != r["treatment"]["observed_result"]
+          assert r["behavioral_delta"]["changed"] is True, r
+          assert r["outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, r
+          assert r["outcome_delta"]["value"] > 0, r
+          assert r["counterfactual"]["computed_not_declared"] is True, r
+          PY
+      - name: Create independently checkable CVO from persisted pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          open("cvo-request.json","w").write(json.dumps({"mode":"cvo","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
+          PY
+          curl -fsS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @cvo-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > causal-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-verification.json"))
+          assert r["ok"] is True, r
+          assert r["causal_verification"]["causal_assessment"]=="CAUSAL_SUPPORTED"
+          assert r["causal_verification"]["verification_status"]=="OUTCOME_VERIFIED"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-learning-experiment
+          path: |
+            causal-learning-experiment.json
+            learning-candidate.json
+            learning-id.txt
+            fresh-block-id.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-verification
+          path: causal-verification.json
+  independent-learning-influence-verification:
+    needs: learning-influence-experiment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment
+      - name: Mint a fresh independent OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read persisted CVO
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("causal-learning-experiment.json"))
+          open("verify-request.json","w").write(json.dumps({"mode":"verify","learning_id":r["learning_id"],"treatment_receipt_id":r["treatment"]["id"],"control_receipt_id":r["control"]["id"]}))
+          PY
+          curl -sS -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" --data-binary @verify-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-verification.json
+          echo "--- independent verification response (HTTP body, retained on failure) ---"
+          cat independent-verification.json
+          python - <<'PY'
+          import json
+          import json, os
+          e=json.load(open("causal-learning-experiment.json"))
+          v=json.load(open("independent-verification.json"))
+          assert v["ok"] is True, v
+          c=v["verification"]["causal_verification"]
+          ver=v["verification"]
+          recomputed=ver["recomputed"]
+          receipt={
+            "schema":"NAYANET_CAUSAL_LEARNING_EXPERIMENT_V1",
+            "target_id":"NAYA-NODE-0001",
+            "learning_id":e["learning_id"],
+            "intelligent_block_id":open("fresh-block-id.txt").read().strip(),
+            "task_context":{"task_id":e["counterfactual"]["task_id"],"task_input":e["control"]["evidence"]["task_input"]},
+            "intelligence_applied":{"learning_id":e["learning_id"],"intelligence_id":e["treatment"]["evidence"].get("intelligence_id")},
+            "control":{"receipt_id":e["control"]["id"],"retained_intelligence_used":False,"behavior":e["control"]["observed_result"],"outcome":e["control"]["evidence"]["outcome"]},
+            "treatment":{"receipt_id":e["treatment"]["id"],"retained_intelligence_used":True,"behavior":e["treatment"]["observed_result"],"outcome":e["treatment"]["evidence"]["outcome"]},
+            "behavioral_delta":e["behavioral_delta"],
+            "outcome_delta":e["outcome_delta"],
+            "provenance":{"source_event_id":e["source_event_id"],"learning_id":e["learning_id"],"treatment_intelligence_id":e["treatment"]["evidence"].get("intelligence_id")},
+            "causal_verification":c,
+            "independent_verification":ver["independent_verification"],
+            "independent_verification_basis":{
+              "verifier_mode":ver["verifier_mode"],
+              "executor_claim_trusted":ver["executor_claim_trusted"],
+              "recomputed_from_authoritative_state":recomputed,
+              "declared_matches_recomputation":ver["declared_matches_recomputation"],
+              "observations_match":ver["observations_match"],
+              "limitations_present":ver["limitations_present"]
+            },
+            "limitations":c.get("limitations",[]),
+            "executor_runtime_jti":e.get("token_jti"),
+            "verifier_runtime_jti":ver.get("token_jti"),
+            "run_id":os.environ.get("GITHUB_RUN_ID"),
+            "source_revision":os.environ.get("GITHUB_SHA"),
+            "deployment_revision":e.get("deployed_source_revision"),
+            "reconstructable_by":"a cold successor may re-read both receipts by id and recompute the delta; no local state is required",
+            "next_action":"prove cold-successor retrieval of this learning and confirm the successor does not inherit authority from it"
+          }
+          assert receipt["control"]["behavior"] != receipt["treatment"]["behavior"]
+          assert receipt["independent_verification"] is True
+          # The receipt may only claim success if the verifier independently recomputed it.
+          assert recomputed["recomputed_causal_assessment"]=="CAUSAL_SUPPORTED", recomputed
+          assert recomputed["behavioral_delta_present"] is True, recomputed
+          assert recomputed["task_equivalence"] is True, recomputed
+          assert recomputed["same_task_input"] is True, recomputed
+          assert recomputed["measurable_outcome_improved"] is True, recomputed
+          assert recomputed["outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, recomputed
+          assert recomputed["outcome_delta"]["value"] > 0, recomputed
+          assert ver["executor_claim_trusted"] is False
+          json.dump(receipt,open("causal-learning-experiment-receipt.json","w"),indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+          path: causal-learning-experiment-receipt.json
+
+  cold-graph-control-treatment:
+    needs: learning-promotion
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+          path: fresh-lineage
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.PRODUCER_RUN_ID }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: learning-promotion
+      - name: Bind graph proof to exact fresh verified block
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
+          block_id=ids["intelligent_block_id"]
+          assert block_id
+          promotion=json.load(open("learning-promotion.json"))
+          claim=promotion["result"]["learning"]["claim"]
+          if "Persistence alone is memory, not proof of active intelligence." in claim and "Retrieved intelligence does not grant authority" in claim:
+            task_id="COLD-NAYA-GRAPH-ACTIVE-INTELLIGENCE-001"
+            task_class="active_intelligence_sensitive"
+          else:
+            task_id="COLD-NAYA-GRAPH-HELDOUT-001"
+            task_class="provenance_sensitive"
+          open("graph-block-id.txt","w").write(block_id)
+          open("graph-task-id.txt","w").write(task_id)
+          open("graph-task-class.txt","w").write(task_class)
+          PY
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute held-out task with graph context OFF
+        shell: bash
+        run: |
+          set -euo pipefail
+          block_id="$(cat graph-block-id.txt)"
+          task_id="$(cat graph-task-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"$task_id\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":false}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          python - <<'PY'
+          import json
+          r=json.load(open("graph-control.json"))
+          assert r["ok"] is True, r
+          assert r["condition"]=="OFF"
+          assert r["schema"]=="NAYANET_COLD_GRAPH_BEHAVIOR_V2", r
+          assert r["block_id"]==open("graph-block-id.txt").read().strip(), r
+          assert r["task_class"]=="provenance_sensitive", r
+          assert r["behavior"]=="REQUIRE_DIRECT_CANONICAL_INTELLIGENCE"
+          PY
+      - name: Execute identical held-out task with graph context ON
+        shell: bash
+        run: |
+          set -euo pipefail
+          block_id="$(cat graph-block-id.txt)"
+          task_id="$(cat graph-task-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"$task_id\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":true}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          python - <<'PY'
+          import json
+          r=json.load(open("graph-treatment.json"))
+          assert r["ok"] is True, r
+          assert r["condition"]=="ON"
+          assert r["schema"]=="NAYANET_COLD_GRAPH_BEHAVIOR_V2", r
+          assert r["block_id"]==open("graph-block-id.txt").read().strip(), r
+          assert r["task_class"]=="provenance_sensitive", r
+          assert r["behavior"]=="APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE"
+          assert r["selected_relationships"]
+          assert all(
+            x["epistemic_state"]=="VERIFIED"
+            and x["status"]=="ACTIVE"
+            and x["provenance"]
+            and x["evidence_refs"]
+            and x["applicability"]["state"]=="APPLICABLE"
+            and "provenance_sensitive" in x["applicability"]["task_classes"]
+            for x in r["selected_relationships"]
+          ), r
+          PY
+      - name: Build persisted paired receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open("graph-control.json")); t=json.load(open("graph-treatment.json"))
+          assert c["block_id"] == t["block_id"], (c,t)
+          assert c["task_class"] == t["task_class"] == open("graph-task-class.txt").read().strip(), (c,t)
+          out={"schema":"NAYANET_COLD_GRAPH_BEHAVIOR_V2","task_id":c["task_id"],"task_class":c["task_class"],"intelligent_block_id":c["block_id"],"control":{"receipt_id":c["receipt"]["id"],"condition":"OFF","behavior":c["behavior"]},"treatment":{"receipt_id":t["receipt"]["id"],"condition":"ON","behavior":t["behavior"],"selected_relationships":t["selected_relationships"]},"behavioral_delta":{"changed":c["behavior"]!=t["behavior"]},"runtime_identity":"github-actions-oidc"}
+          assert out["behavioral_delta"]["changed"] is True
+          json.dump(out,open("cold-graph-behavior-pair.json","w"),indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+          path: cold-graph-behavior-pair.json
+
+  independent-cold-graph-verification:
+    needs: cold-graph-control-treatment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+      - name: Mint fresh independent GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read persisted graph receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-graph-behavior-pair.json"))
+          json.dump({"control_receipt_id":r["control"]["receipt_id"],"treatment_receipt_id":r["treatment"]["receipt_id"]},open("verify-request.json","w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-request.json "${COLD_RUNTIME_FUNCTION}?mode=graph-verify" > cold-graph-independent-verification.json
+          python tests/verify_cold_graph_behavior.py cold-graph-independent-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-graph-independent-verification
+          path: cold-graph-independent-verification.json
+
+
+  active-learning-generalization:
+    needs: [independent-retained-learning-reread, live-connect]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+      - name: Mint fresh OIDC runtime identity for ACTIVE-learning generalization
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Prove second held-out transfer and unrelated refusal from ACTIVE intelligence
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
+          printf '{"learning_id":"%s"}' "$learning_id" > generalization-request.json
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @generalization-request.json             "${COLD_RUNTIME_FUNCTION}?mode=learning-generalization" > active-learning-generalization.json
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json, os
+          r=json.load(open("active-learning-generalization.json"))
+          assert r["ok"] is True, r
+          assert r["deployed_source_revision"] == os.environ["SOURCE_SHA"], r
+          assert r["learning_status"] == "ACTIVE", r
+          assert r["input_boundary"]["caller_supplied"] == ["learning_id"], r
+          assert r["input_boundary"]["intelligence_content_accepted_as_input"] is False, r
+          assert r["result"]["related_heldout_improved"] is True, r
+          assert r["result"]["unrelated_negative_transfer_refused"] is True, r
+          assert r["result"]["independent_verification_required"] is True, r
+          assert r["result"]["executor_claim_trusted_as_verification"] is False, r
+          related_items=[(k,v) for k,v in r["tasks"].items() if v["task_class"]=="RELATED_HELDOUT"]
+          assert len(related_items)==1, related_items
+          related_id,related=related_items[0]
+          unrelated=r["tasks"]["NAYA-0001-UNRELATED-ARITHMETIC-001"]
+          assert related["applicability"] is True and related["behavioral_delta"] is True, related
+          metric=related["outcome_key"]
+          assert related["control_outcome"][metric] is False, related
+          assert related["treatment_outcome"][metric] is True, related
+          assert related["treatment_behavior"] == related["treatment_behavior_expected"], related
+          open("related-task-id.txt","w").write(related_id)
+          assert unrelated["applicability"] is False and unrelated["behavioral_delta"] is False, unrelated
+          assert unrelated["control_outcome"]["answer"] == unrelated["treatment_outcome"]["answer"] == 12, unrelated
+          assert len(r["receipt_ids"]) == 4, r
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: active-learning-generalization
+          path: |
+            active-learning-generalization.json
+            related-task-id.txt
+
+  independent-active-learning-generalization:
+    needs: active-learning-generalization
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: active-learning-generalization
+      - name: Mint fresh independent OIDC verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently reread and recompute generalization receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r=json.load(open("active-learning-generalization.json"))
+          json.dump({
+            "mode":"verify-generalization",
+            "learning_id":r["learning_id"],
+            "receipt_ids":r["receipt_ids"],
+          }, open("verify-generalization-request.json","w"))
+          PY
+          cat verify-generalization-request.json
+          curl -sS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-generalization-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-learning-experiment" > independent-active-learning-generalization.json
+          python - <<'PY'
+          import json
+          e=json.load(open("active-learning-generalization.json"))
+          v=json.load(open("independent-active-learning-generalization.json"))
+          assert v["ok"] is True, v
+          assert v["independent_verification"] is True, v
+          assert v["executor_claim_trusted"] is False, v
+          assert v["recomputed"]["related_causal_supported"] is True, v
+          assert v["recomputed"]["related_outcome_delta"]["value"] == 1, v
+          assert v["recomputed"]["related_outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, v
+          assert v["recomputed"]["negative_transfer_refused"] is True, v
+          assert v["recomputed"]["unrelated_behavior_delta"] is False, v
+          assert v["token_jti"] != e.get("token_jti"), (e.get("token_jti"), v["token_jti"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-active-learning-generalization
+          path: independent-active-learning-generalization.json
+
+  cold-successor-generalization:
+    needs: independent-active-learning-generalization
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: active-learning-generalization
+      - name: Mint fresh cold-successor OIDC identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Cold successor reuses related intelligence and refuses unrelated transfer
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("active-learning-generalization.json"))["learning_id"])')"
+          related_task_id="$(cat related-task-id.txt)"
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=${related_task_id}" > cold-successor-related.json
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated.json
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json, os
+          r=json.load(open("cold-successor-related.json"))
+          u=json.load(open("cold-successor-unrelated.json"))
+          for x in (r,u):
+            assert x["ok"] is True, x
+            assert x["deployed_source_revision"] == os.environ["SOURCE_SHA"], x
+            assert x["cold_start"]["intelligence_content_accepted_as_input"] is False, x
+            assert x["authority_boundary"]["authority_inherited"] is False, x
+            assert x["authority_boundary"]["successor_grant_count"] == 0, x
+            assert x["authority_boundary"]["executed"] is False, x
+            assert x["authority_boundary"]["blocked_by"] == "IDENTITY_SCOPE", x
+          related_task_id=open("related-task-id.txt").read().strip()
+          expected_behavior={
+            "NAYA-0001-PROVENANCE-HELDOUT-002":"PRESERVE_PROVENANCE_BEFORE_APPLY",
+            "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002":"REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+          }[related_task_id]
+          assert r["use"]["task_id"] == related_task_id, r
+          assert r["use"]["applicable_to_task"] is True, r
+          assert r["use"]["behavior_derived_from_retrieved_lesson"] == expected_behavior, r
+          assert r["use"]["materially_attributable"] is True, r
+          assert u["use"]["task_id"] == "NAYA-0001-UNRELATED-ARITHMETIC-001", u
+          assert u["use"]["applicable_to_task"] is False, u
+          assert u["use"]["behavior_derived_from_retrieved_lesson"] == "NO_APPLICABLE_RETAINED_INTELLIGENCE", u
+          assert u["use"]["correct_refusal"] is True, u
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-successor-generalization
+          path: |
+            cold-successor-related.json
+            cold-successor-unrelated.json
+
+  cold-successor-generalization-verification:
+    needs: cold-successor-generalization
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-successor-generalization
+      - name: Mint fresh independent successor-verifier OIDC identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently recompute related reuse and unrelated refusal
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("cold-successor-related.json"))["reconstruction"]["learning_id"])')"
+          related_task_id="$(python -c 'import json; print(json.load(open("cold-successor-related.json"))["use"]["task_id"])')"
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=${related_task_id}" > cold-successor-related-verify.json
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated-verify.json
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json, os
+          er=json.load(open("cold-successor-related.json"))
+          eu=json.load(open("cold-successor-unrelated.json"))
+          learning_id=er["reconstruction"]["learning_id"]
+          vr=json.load(open("cold-successor-related-verify.json"))
+          vu=json.load(open("cold-successor-unrelated-verify.json"))
+          for v in (vr,vu):
+            assert v["ok"] is True, v
+            assert v["independent_verification"] is True, v
+            assert v["executor_claim_trusted"] is False, v
+            assert v["deployed_source_revision"] == os.environ["SOURCE_SHA"], v
+            assert v["recomputed"]["successor_grant_count"] == 0, v
+            assert v["recomputed"]["authority_recomputed"] is False, v
+            assert v["recomputed"]["recomputed_blocked_by"] == "IDENTITY_SCOPE", v
+          related_task_id=er["use"]["task_id"]
+          expected_behavior={
+            "NAYA-0001-PROVENANCE-HELDOUT-002":"PRESERVE_PROVENANCE_BEFORE_APPLY",
+            "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002":"REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+          }[related_task_id]
+          assert vr["recomputed"]["task_id"] == related_task_id, vr
+          assert vr["recomputed"]["applicable_to_task"] is True, vr
+          assert vr["recomputed"]["behavior_recomputed"] == expected_behavior, vr
+          assert vu["recomputed"]["task_id"] == "NAYA-0001-UNRELATED-ARITHMETIC-001", vu
+          assert vu["recomputed"]["applicable_to_task"] is False, vu
+          assert vu["recomputed"]["correct_refusal"] is True, vu
+          assert vu["recomputed"]["behavior_recomputed"] == "NO_APPLICABLE_RETAINED_INTELLIGENCE", vu
+          assert vr["token_jti"] != er.get("token_jti"), (er.get("token_jti"), vr["token_jti"])
+          receipt={
+            "schema":"NAYANET_ACTIVE_LEARNING_GENERALIZATION_SUCCESSOR_PROOF_V1",
+            "source_revision":os.environ["SOURCE_SHA"],
+            "learning_id":learning_id,
+            "related_task":{
+              "task_id":vr["recomputed"]["task_id"],
+              "applicable":vr["recomputed"]["applicable_to_task"],
+              "behavior":vr["recomputed"]["behavior_recomputed"],
+              "materially_attributable":er["use"]["materially_attributable"],
+            },
+            "unrelated_task":{
+              "task_id":vu["recomputed"]["task_id"],
+              "applicable":vu["recomputed"]["applicable_to_task"],
+              "behavior":vu["recomputed"]["behavior_recomputed"],
+              "correct_refusal":vu["recomputed"]["correct_refusal"],
+            },
+            "authority_inherited":False,
+            "successor_grant_count":0,
+            "executed":False,
+            "independent_verification":True,
+            "limitations":[
+              "one ACTIVE applicable lesson",
+              "one second related held-out task",
+              "one unrelated arithmetic refusal case",
+              "does not establish universal generalization"
+            ]
+          }
+          json.dump(receipt, open("active-learning-generalization-successor-proof.json","w"), indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: active-learning-generalization-successor-proof
+          path: active-learning-generalization-successor-proof.json
+
+  cold-successor:
+    if: ${{ always() }}
+    # Depends only on live-connect, which proves the canonical block exists and is
+    # owner-scoped. It deliberately does NOT depend on
+    # independent-learning-influence-verification: that job needs a rotated owner
+    # credential, and the cold-successor proof reads learning_evidence directly, so
+    # gating on it would make this proof permanently unrunnable.
+    needs: independent-retained-learning-reread
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Cold successor reconstructs from authoritative state only
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
+          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}" > cold-successor.json
+          cat cold-successor.json
+          python - <<'PY'
+          import json
+          r=json.load(open("cold-successor.json"))
+          assert r["ok"] is True, r
+          # Reconstruction, not delivery.
+          assert r["cold_start"]["intelligence_content_accepted_as_input"] is False, r
+          assert r["cold_start"]["local_state_used"] is False, r
+          assert r["cold_start"]["input_supplied_by_caller"] == "learning_id_only", r
+          # Lineage actually reconstructed from durable state.
+          assert r["reconstruction"]["intelligent_block_id"], r
+          assert r["reconstruction"]["verified_relationship_count"] > 0, r
+          # Material use of the retrieved intelligence.
+          assert r["use"]["behavior_derived_from_retrieved_lesson"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", r
+          # NON-INHERITANCE: knowledge conferred no authority.
+          ab = r["authority_boundary"]
+          assert ab["authority_inherited"] is False, ab
+          assert ab["knowledge_creates_authority"] is False, ab
+          assert ab["successor_grant_count"] == 0, ab
+          assert ab["consequential_actions_authorized"] is False, ab
+          assert ab["executed"] is False, ab
+          assert ab["blocked_by"] == "IDENTITY_SCOPE", ab
+          assert r["rls_changed"] is False and r["credentials_committed"] is False, r
+          json.dump(r, open("cold-successor-receipt.json","w"), indent=2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-successor-receipt
+          path: cold-successor-receipt.json
+
+  cold-successor-verification:
+    if: ${{ always() }}
+    needs: cold-successor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-successor-receipt
+      - name: Mint a FRESH independent OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently re-read authoritative state and recompute
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("cold-successor-receipt.json"))["reconstruction"]["learning_id"])')"
+          curl -sS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}" > cold-successor-verification.json
+          cat cold-successor-verification.json
+          python - <<'PY'
+          import json
+          e=json.load(open("cold-successor-receipt.json"))
+          v=json.load(open("cold-successor-verification.json"))
+          assert v["ok"] is True, v
+          rc=v["recomputed"]
+          # The verifier recomputed from state; it did not echo the executor.
+          assert v["executor_claim_trusted"] is False, v
+          assert rc["successor_grant_count"] == 0, rc
+          assert rc["authority_recomputed"] is False, rc
+          assert rc["recomputed_blocked_by"] == "IDENTITY_SCOPE", rc
+          assert rc["behavior_recomputed"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", rc
+          # Corroborate the executor against the independent recomputation.
+          assert e["use"]["behavior_derived_from_retrieved_lesson"] == rc["behavior_recomputed"]
+          assert e["authority_boundary"]["blocked_by"] == rc["recomputed_blocked_by"]
+          assert e["runtime_identity"] == v["runtime_identity"]
+          receipt={
+            "schema":"NAYANET_COLD_SUCCESSOR_RECEIPT_V1",
+            "successor_identity":e["successor_identity"],
+            "learning_id":e["reconstruction"]["learning_id"],
+            "intelligent_block_id":e["reconstruction"]["intelligent_block_id"],
+            "verified_relationships":e["reconstruction"]["verified_relationships"],
+            "retrieved_lesson":e["reconstruction"]["retrieved_lesson"],
+            "behavior":e["use"]["behavior_derived_from_retrieved_lesson"],
+            "materially_attributable":e["use"]["materially_attributable"],
+            "authority_inherited":False,
+            "successor_grant_count":rc["successor_grant_count"],
+            "consequential_actions_authorized":False,
+            "executed":False,
+            "blocked_by":rc["recomputed_blocked_by"],
+            "independent_verification":v["independent_verification"],
+            "verifier_mode":v["verifier_mode"],
+            "executor_runtime_jti":e.get("token_jti"),
+            "verifier_runtime_jti":v.get("token_jti"),
+            "run_id":__import__("os").environ.get("GITHUB_RUN_ID"),
+            "head_sha":__import__("os").environ.get("GITHUB_SHA"),
+            "limitation":v["limitation"],
+            "reconstructable_by":"a further cold Naya may re-read the learning id, the Intelligent Block and the durable relationships, recompute the behavior, and re-derive the non-inheritance verdict from the grant table",
+            "next_action":"prove the successor performs a real task end-to-end through the Hub receiver boundary"
+          }
+          json.dump(receipt, open("cold-successor-receipt-verified.json","w"), indent=2)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-successor-receipt-verified
+          path: cold-successor-receipt-verified.json
+
+
+  learning-promotion:
+    needs: independent-learning-influence-verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+      - name: Promote through the existing learning verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+          python - <<'PY'
+          import json
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert receipt["independent_verification"] is True, receipt
+          learning_id=receipt["learning_id"]
+          refs=[
+            receipt["treatment"]["receipt_id"],
+            receipt["control"]["receipt_id"],
+            learning_id,
+            receipt["causal_verification"]["causal_id"],
+            "NAYA-NODE-0001",
+          ]
+          payload={
+            "learning_id":learning_id,
+            "evidence_refs":refs,
+            "receipt_id":receipt["treatment"]["receipt_id"],
+            "verification_method":"Independent causal-learning runtime verification: control/treatment outcome delta recomputed from persisted receipts.",
+          }
+          json.dump(payload,open("promotion-request.json","w"),indent=2)
+          PY
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @promotion-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-promotion.json
+          cat learning-promotion.json
+          python - <<'PY'
+          import json
+          r=json.load(open("learning-promotion.json"))
+          assert r["ok"] is True, r
+          assert r["verification_record"]["verified"] is True, r
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert r["result"]["learning"]["id"]==receipt["learning_id"], r
+          assert r["result"]["learning"]["status"]=="ACTIVE", r
+          assert r["result"]["learning"]["provenance"]=="VERIFICATION", r
+          assert r["receipt"] is not None, r
+          assert any(
+            x.get("learning_id")==r["result"]["learning"]["id"] and x.get("verified") is True
+            for x in (r["receipt"].get("learning") or [])
+          ), r
+          assert r["integration"]["core_intelligence_updated"] is True, r
+          assert r["integration"]["progressive_intelligence_lock_in"] == "LEARNED", r
+          assert r["integration"]["intelligent_block"]["understanding_state"] == "LEARNED", r
+          assert r["integration"]["relationship"]["epistemic_state"] == "VERIFIED", r
+          checkpoint_state=r["integration"]["cognitive_checkpoint"]["state_status"]
+          assert checkpoint_state in {"LEARNED","LEARNED_VIA_IMMUTABLE_RECEIPT"}, r
+          if checkpoint_state == "LEARNED_VIA_IMMUTABLE_RECEIPT":
+            assert r["integration"]["cognitive_checkpoint"]["checkpoint_provenance"] == "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT", r
+            assert r["historical_commit_receipt"] is not None, r
+            assert any(
+              x.get("learning_id")==r["result"]["learning"]["id"] and x.get("verified") is True
+              for x in (r["historical_commit_receipt"].get("learning") or [])
+            ), r
+          print("PROGRESSIVE INTELLIGENCE LOCK-IN PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: learning-promotion
+          path: learning-promotion.json
+
+  independent-retained-learning-reread:
+    needs: learning-promotion
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: causal-learning-experiment-receipt
+      - name: Mint a fresh independent OIDC verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Independently reread retained learning from authoritative state
+        shell: bash
+        run: |
+          set -euo pipefail
+          learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
+          python - <<PY
+          import json
+          json.dump({"mode":"reread","learning_id":"$learning_id"},open("reread-request.json","w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @reread-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > retained-learning-reread.json
+          cat retained-learning-reread.json
+          python - <<'PY'
+          import json
+          r=json.load(open("retained-learning-reread.json"))
+          assert r["ok"] is True, r
+          assert r["independent_reread"] is True, r
+          assert r["learning"]["status"] == "ACTIVE", r
+          assert r["learning"]["provenance"] == "VERIFICATION", r
+          assert r["learning"]["id"] == json.load(open("causal-learning-experiment-receipt.json"))["learning_id"], r
+          observed=r["learning"]["observed_value"]
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert observed["intelligent_block_id"] == receipt["intelligent_block_id"], r
+          assert observed["provenance_preserved"] is True, r
+          assert r["integration"]["core_intelligence_updated"] is True, r
+          assert r["integration"]["progressive_intelligence_lock_in"] is True, r
+          assert r["integration"]["intelligent_block_state"] == "LEARNED", r
+          assert r["integration"]["relationship_epistemic_state"] == "VERIFIED", r
+          assert r["integration"]["checkpoint_state_status"] == "LEARNED", r
+          print("FRESH LESSON RETAINED + CORE INTELLIGENCE LOCK-IN REREAD PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-retained-learning-reread
+          path: retained-learning-reread.json
+
+
+  nine-node-behavioral-acceptance:
+    needs:
+      - cold-runtime-1
+      - independent-cold-graph-verification
+      - learning-promotion
+      - independent-retained-learning-reread
+      - cold-successor-generalization-verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: naya-cold-runtime-1
+          path: evidence/self
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+          path: evidence/connect
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-independent-verification
+          path: evidence/verify-connect
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: learning-promotion
+          path: evidence/learn
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: independent-retained-learning-reread
+          path: evidence/learn-reread
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: active-learning-generalization-successor-proof
+          path: evidence/evolve
+
+      - name: Build bounded nine-node behavioral acceptance receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json, os
+          cold=json.load(open("evidence/self/cold-runtime-1.json"))
+          graph=json.load(open("evidence/connect/cold-graph-behavior-pair.json"))
+          graph_verify=json.load(open("evidence/verify-connect/cold-graph-independent-verification.json"))
+          promotion=json.load(open("evidence/learn/learning-promotion.json"))
+          reread=json.load(open("evidence/learn-reread/retained-learning-reread.json"))
+          evolve=json.load(open("evidence/evolve/active-learning-generalization-successor-proof.json"))
+
+          source=os.environ["SOURCE_SHA"]
+          assert cold["deployed_source_revision"] == source, (cold.get("deployed_source_revision"), source)
+          assert graph["behavioral_delta"]["changed"] is True, graph
+          assert graph_verify["ok"] is True, graph_verify
+          assert graph_verify["verification"]["independently_reconstructed"] is True, graph_verify
+          assert promotion["result"]["learning"]["status"] == "ACTIVE", promotion
+          assert promotion["verification_record"]["verified"] is True, promotion
+          assert reread["independent_reread"] is True, reread
+          assert reread["learning"]["status"] == "ACTIVE", reread
+          assert evolve["independent_verification"] is True, evolve
+          assert evolve["authority_inherited"] is False, evolve
+          assert evolve["unrelated_task"]["correct_refusal"] is True, evolve
+
+          receipt={
+            "schema":"NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1",
+            "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
+            "source_revision":source,
+            "deployment_revision":cold["deployed_source_revision"],
+            "source_runtime_parity":cold["deployed_source_revision"] == source,
+            "node_order":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],
+            "nodes":{
+              "SELF":{
+                "status":"SATISFIED",
+                "evidence":[
+                  cold["receipt"]["naya_id"],
+                  cold["receipt"]["owner_id"],
+                  cold["receipt"]["runtime_identity"],
+                  cold["receipt"]["workflow_ref"],
+                ],
+              },
+              "LAW":{
+                "status":"SATISFIED",
+                "evidence":[
+                  "successor authority re-resolved",
+                  "successor grant count = 0",
+                  "consequential action refused by identity scope",
+                ],
+              },
+              "ACT":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph["treatment"]["receipt_id"],
+                  graph["treatment"]["behavior"],
+                ],
+              },
+              "KNOW":{
+                "status":"SATISFIED",
+                "evidence":[
+                  reread["learning"]["id"],
+                  reread["integration"]["intelligent_block_state"],
+                ],
+              },
+              "PROVE":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph_verify["verification"]["persisted_pair_re_read"],
+                  graph_verify["verification"]["treatment_relationships_verified"],
+                ],
+              },
+              "CONNECT":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph["control"]["behavior"],
+                  graph["treatment"]["behavior"],
+                  graph["behavioral_delta"]["changed"],
+                ],
+              },
+              "VERIFY":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph_verify["verification"]["independently_reconstructed"],
+                  evolve["independent_verification"],
+                ],
+              },
+              "LEARN":{
+                "status":"SATISFIED",
+                "evidence":[
+                  promotion["result"]["learning"]["id"],
+                  promotion["result"]["learning"]["status"],
+                  promotion["integration"]["progressive_intelligence_lock_in"],
+                ],
+              },
+              "EVOLVE":{
+                "status":"SATISFIED",
+                "evidence":[
+                  evolve["related_task"]["behavior"],
+                  evolve["unrelated_task"]["behavior"],
+                  "authority inherited = false",
+                ],
+              },
+            },
+            "independent_verification": True,
+            "authority_inherited": evolve["authority_inherited"],
+            "unrelated_transfer_refused": evolve["unrelated_task"]["correct_refusal"],
+            "limitations":[
+              "bounded Node 0001 provenance lesson",
+              "one graph held-out task",
+              "one related generalization task",
+              "one unrelated refusal task",
+              "does not establish universal nine-node capability",
+            ],
+          }
+          json.dump(receipt,open("nine-node-behavioral-acceptance.json","w"),indent=2)
+          PY
+
+      - name: Verify nine-node receipt and ablation discrimination
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/verify_nine_node_behavioral_acceptance.py nine-node-behavioral-acceptance.json
+          python - <<'PY'
+          import copy, json
+          from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
+          receipt=json.load(open("nine-node-behavioral-acceptance.json"))
+          for node in ORDER:
+            ablated=copy.deepcopy(receipt)
+            del ablated["nodes"][node]
+            assert verify_receipt(ablated), node
+          print("ABLATION DISCRIMINATION PASS: removing any node evidence fails closed")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nine-node-behavioral-acceptance
+          path: nine-node-behavioral-acceptance.json

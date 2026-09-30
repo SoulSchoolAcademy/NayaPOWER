@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NayaNET — Smart Identity Activation</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#a855f7">
+  <style>
+    :root {
+      --bg-obsidian: #010103; --text-main: #ffffff; --text-muted: #cbd5e1;
+      --purple-electric: #a855f7; --purple-border: rgba(168, 85, 247, 0.85); --purple-aura: rgba(168, 85, 247, 0.45);
+      --readiness-green: #10b981; --readiness-green-glow: rgba(16, 185, 129, 0.6);
+      --dark-emerald: #064e3b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; background-color: var(--bg-obsidian); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { display: flex; flex-direction: column; justify-content: space-between; align-items: center; min-height: 100vh; overflow-x: hidden; overflow-y: auto; padding-bottom: 40px; }
+
+    .top-system-bar { width: 100%; height: 68px; background: rgba(5, 6, 10, 0.94); border-bottom: 1.5px solid rgba(168, 85, 247, 0.4); box-shadow: 0 8px 32px rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: space-between; padding: 0 min(28px, 5vw); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(18px); }
+    .brand-logo-group { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+    .brand-logo-group img { width: 42px; height: 42px; border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, 0.8); box-shadow: 0 0 20px var(--purple-aura); object-fit: contain; }
+    .brand-logo-title { font-size: min(1.2rem, 4vw); font-weight: 900; letter-spacing: 0.22em; color: #ffffff; text-transform: uppercase; }
+
+    .primo-btn { position: relative; background: radial-gradient(circle at 50% 0%, #221c40 0%, #05060a 100%); border: 2px solid var(--purple-electric); border-radius: 32px; padding: 12px 24px; color: #ffffff; font-size: 0.88rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; box-shadow: 0 8px 25px var(--purple-aura), inset 0 1px 2px rgba(255, 255, 255, 0.3); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; }
+    .primo-btn:hover { transform: translateY(-3px) scale(1.02); border-color: #ffffff; background: var(--dark-emerald); box-shadow: 0 12px 35px var(--readiness-green-glow), inset 0 1px 3px rgba(255, 255, 255, 0.6); color: #ffffff; }
+
+    .activation-stage { width: 100%; max-width: 860px; margin: 30px auto; padding: 0 20px; text-align: center; }
+    .identity-pro-card { background: radial-gradient(circle at 50% 0%, #181c2e 0%, #040508 94%); border: 2.5px solid var(--purple-electric); border-radius: 36px; padding: 42px 32px; box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px var(--purple-aura); position: relative; }
+
+    .logo-hero { width: 96px; height: 96px; border-radius: 24px; border: 2px solid #ffffff; box-shadow: 0 0 35px var(--purple-aura); margin-bottom: 20px; object-fit: contain; background: #000; }
+
+    .card-title { font-size: min(2.1rem, 6vw); font-weight: 900; color: #ffffff; margin-bottom: 10px; letter-spacing: 0.04em; }
+    .card-subtitle { font-size: min(1.1rem, 3.8vw); color: var(--text-muted); margin-bottom: 28px; font-weight: 500; line-height: 1.5; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+    .alias-input-box { width: 100%; max-width: 520px; margin: 0 auto 28px auto; text-align: left; }
+    .alias-label { font-size: 0.8rem; font-weight: 900; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: block; }
+    .alias-field-wrapper { display: flex; align-items: center; background: #06070a; border: 2px solid var(--purple-electric); border-radius: 20px; padding: 10px 18px; box-shadow: 0 0 20px var(--purple-aura); }
+    .alias-field-input { flex: 1; background: transparent; border: none; outline: none; color: #ffffff; font-size: 1.25rem; font-weight: 800; font-family: inherit; }
+
+    .identity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 28px; text-align: left; }
+    .id-box { background: rgba(12, 15, 24, 0.85); border: 1.5px solid rgba(168, 85, 247, 0.5); border-radius: 20px; padding: 18px 20px; }
+    .id-box-label { font-size: 0.75rem; font-weight: 900; letter-spacing: 0.25em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+    .id-box-value { font-size: 1.15rem; font-weight: 800; color: var(--readiness-green); word-break: break-all; }
+
+    .app-install-banner { background: linear-gradient(180deg, rgba(168, 85, 247, 0.15) 0%, rgba(124, 58, 237, 0.08) 100%); border: 2px dashed var(--purple-electric); border-radius: 24px; padding: 22px; margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; text-align: left; }
+    .install-info { flex: 1; min-width: 220px; }
+    .install-title { font-size: 1.05rem; font-weight: 900; color: #ffffff; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .install-desc { font-size: 0.88rem; color: var(--text-muted); font-weight: 500; }
+
+    .status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.15); border: 1.5px solid var(--readiness-green); padding: 8px 18px; border-radius: 20px; font-size: 0.88rem; font-weight: 800; color: #ffffff; margin-bottom: 28px; box-shadow: 0 0 15px var(--readiness-green-glow); }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--readiness-green); box-shadow: 0 0 10px var(--readiness-green); }
+
+    .activate-btn { width: 100%; padding: 22px 28px; background: radial-gradient(circle at 50% 0%, #10b981 0%, #047857 100%); color: #ffffff; border: 2px solid #a7f3d0; border-radius: 32px; font-size: min(1.25rem, 4vw); font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: all 0.35s ease; box-shadow: 0 0 35px var(--readiness-green-glow); }
+    .activate-btn:hover { transform: translateY(-3px) scale(1.01); background: var(--dark-emerald); box-shadow: 0 0 60px var(--readiness-green); border-color: #ffffff; color: #ffffff; }
+
+    .bottom-system-bar { width: 100%; height: 50px; background: rgba(5, 6, 10, 0.94); border-top: 1.5px solid rgba(168, 85, 247, 0.4); display: flex; align-items: center; justify-content: space-between; padding: 0 min(28px, 5vw); font-size: 0.88rem; font-weight: 800; color: #ffffff; letter-spacing: 0.12em; backdrop-filter: blur(14px); margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <header class="top-system-bar">
+    <div class="brand-logo-group" onclick="window.location.href='index.html'">
+      <img src="icon-192.png" alt="NayaNET Crystal Logo" />
+      <span class="brand-logo-title">Sovereign Identity</span>
+    </div>
+    <button type="button" class="primo-btn" onclick="window.location.href='hub.html'">🎧 Naya Player</button>
+  </header>
+
+  <main class="activation-stage">
+    <div class="identity-pro-card">
+      <img src="icon-512.png" alt="NayaNET Crystal Logo" class="logo-hero" />
+      <h1 class="card-title">Official Smart Identity Ready</h1>
+      <p class="card-subtitle">Type your custom alias below to configure your Smart Link and Secure Smart Mail ID, then authenticate your existing NayaNET identity to enter the governed Naya runtime.</p>
+
+      <div class="alias-input-box">
+        <label class="alias-label" for="aliasInput">Type Your Custom Smart Alias</label>
+        <div class="alias-field-wrapper">
+          <input type="text" id="aliasInput" class="alias-field-input" placeholder="pioneer" autocomplete="off" oninput="updateSmartCredentials()" />
+        </div>
+      </div>
+
+      <div class="status-badge"><span class="status-dot"></span> Real Supabase Identity — OTP Protected</div>
+
+      <div class="identity-grid">
+        <div class="id-box">
+          <div class="id-box-label">Smart Name</div>
+          <div class="id-box-value" id="displayName">Pioneer</div>
+        </div>
+        <div class="id-box">
+          <div class="id-box-label">Sovereign Smart Alias</div>
+          <div class="id-box-value" id="displayAlias">pioneer</div>
+        </div>
+        <div class="id-box">
+          <div class="id-box-label">Smart Link</div>
+          <div class="id-box-value" id="displayLink">pioneer.nayanet.app</div>
+        </div>
+        <div class="id-box">
+          <div class="id-box-label">Secure Smart Mail</div>
+          <div class="id-box-value" id="displayMail">pioneer</div>
+        </div>
+      </div>
+
+      <div class="app-install-banner">
+        <div class="install-info">
+          <div class="install-title">📲 Install NayaNET App</div>
+          <div class="install-desc">Add NayaNET to your Home Screen with official NayaNET Crystal Icon.</div>
+        </div>
+        <button type="button" class="primo-btn" id="installBtn" onclick="triggerAppInstall()">Add to Home Screen</button>
+      </div>
+
+      <button type="button" class="activate-btn" onclick="activateAndRedirect()">☀️ Enter NayaNET →</button>
+    </div>
+  </main>
+
+  <footer class="bottom-system-bar">NayaNET Private Network — Authenticated Identity Boundary</footer>
+
+  <script>
+    /* NAYA-REAL-IDENTITY-OTP-BRIDGE-V1
+       Existing-user Supabase OTP. No anonymous sign-in. No token in query string.
+       Do not change the Intelligent Block owner.
+       After verification, the authenticated session crosses to the Hub in the URL fragment;
+       Supabase's detectSessionInUrl consumes it and persists the session on the Hub origin.
+    */
+    const NAYA_SUPABASE_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
+    const NAYA_SUPABASE_KEY = 'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
+    const NAYA_HUB_URL = 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/';
+    let nayaSupabaseClient = null;
+    let nayaOtpSent = false;
+    const NAYA_VERIFY_PAGE = new URL(window.location.pathname + '?verify=1', window.location.origin).href;
+
+    async function nayaAuthClient() {
+      if (nayaSupabaseClient) return nayaSupabaseClient;
+      if (!window.supabase?.createClient) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+          s.onload = resolve;
+          s.onerror = () => reject(new Error('Unable to load the Supabase client.'));
+          document.head.appendChild(s);
+        });
+      }
+      nayaSupabaseClient = window.supabase.createClient(NAYA_SUPABASE_URL, NAYA_SUPABASE_KEY, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storage: window.localStorage, storageKey: 'nayanet.supabase.auth' }
+      });
+      return nayaSupabaseClient;
+    }
+
+    function nayaAuthPanel() {
+      if (document.getElementById('nayaAuthPanel')) return;
+      const panel = document.createElement('div');
+      panel.id = 'nayaAuthPanel';
+      panel.innerHTML = '<div style="margin:0 auto 24px;max-width:520px;text-align:left">'
+        + '<label class="alias-label" for="nayaAuthEmail">SECURE NAYANET EMAIL</label>'
+        + '<div class="alias-field-wrapper"><input id="nayaAuthEmail" class="alias-field-input" type="email" autocomplete="email" placeholder="Enter your existing NayaNET email"></div>'
+        + '<p id="nayaAuthHelp" style="margin-top:9px;color:#94a3b8;font-size:.82rem;line-height:1.5">Use the email account that owns the NayaNET identity. We will not create a new account.</p>'
+        + '<div id="nayaOtpRow" style="display:none;margin-top:16px"><label class="alias-label" for="nayaAuthOtp">SIX-DIGIT VERIFICATION CODE</label><div class="alias-field-wrapper"><input id="nayaAuthOtp" class="alias-field-input" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="123456"></div></div>'
+        + '<div id="nayaAuthStatus" style="margin-top:12px;min-height:22px;color:#cbd5e1;font-size:.82rem"></div></div>';
+      const aliasBox = document.querySelector('.alias-input-box');
+      aliasBox?.parentNode?.insertBefore(panel, aliasBox);
+    }
+
+    async function nayaProvisionSession(client, user) {
+      const smartName = rawName.trim().replace(/\\s+/g, ' ').slice(0, 120);
+      const smartAlias = (aliasInput.value || rawName).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48) || 'pioneer';
+      const { error: metadataError } = await client.auth.updateUser({ data: { display_name: smartName, full_name: smartName, smart_name: smartName, smart_alias: smartAlias, nayanet_identity_version: 'name-first-v1' } });
+      if (metadataError) throw metadataError;
+      const { error: memberError } = await client.from('members').upsert({ id: user.id, display_name: smartName }, { onConflict: 'id' });
+      if (memberError) throw memberError;
+      const { error: profileError } = await client.from('nayanet_profiles').upsert({ member_id: user.id, smart_id: smartAlias, public_alias: smartAlias, recovery_ready: false }, { onConflict: 'member_id' });
+      if (profileError) throw profileError;
+      return { smartName, smartAlias };
+    }
+
+    async function nayaEnterAuthenticatedHub(session) {
+      if (!session?.access_token || !session?.refresh_token) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+      const finalAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '') || 'pioneer';
+      localStorage.setItem('nayanet_smart_alias', finalAlias);
+      localStorage.setItem('nayanet_smart_name', rawName);
+      sessionStorage.setItem('nayanet_user_name', rawName);
+      const fragment = '#access_token=' + encodeURIComponent(session.access_token) + '&refresh_token=' + encodeURIComponent(session.refresh_token) + '&token_type=bearer&type=email';
+      window.location.replace(NAYA_HUB_URL + '?name=' + encodeURIComponent(rawName) + '&alias=' + encodeURIComponent(finalAlias) + fragment);
+    }
+
+    async function nayaSendOtp() {
+      nayaAuthPanel();
+      const email = document.getElementById('nayaAuthEmail').value.trim().toLowerCase();
+      const status = document.getElementById('nayaAuthStatus');
+      if (!email || !email.includes('@')) { status.textContent = 'Enter a valid email address.'; return; }
+      status.textContent = 'Sending your six-digit code…';
+      try {
+        const client = await nayaAuthClient();
+        const { error } = await client.auth.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: NAYA_VERIFY_PAGE } });
+        if (error) throw error;
+        sessionStorage.setItem('nayanet_auth_email', email);
+        nayaOtpSent = true;
+        document.getElementById('nayaOtpRow').style.display = 'block';
+        document.getElementById('nayaAuthOtp').focus();
+        document.getElementById('nayaAuthHelp').textContent = 'Code sent. Enter the six digits from the newest NayaNET email.';
+        status.textContent = 'CODE SENT — check your email.';
+        document.querySelector('.activate-btn').textContent = 'VERIFY CODE → ENTER NAYANET';
+      } catch (error) { status.textContent = 'AUTHENTICATION FAILED — ' + String(error?.message || error); }
+    }
+
+    async function nayaVerifyOtp() {
+      const email = document.getElementById('nayaAuthEmail').value.trim().toLowerCase();
+      const token = document.getElementById('nayaAuthOtp').value.replace(/\\D/g, '').slice(0, 6);
+      const status = document.getElementById('nayaAuthStatus');
+      if (!nayaOtpSent || !email || !/^\\d{6}$/.test(token)) { status.textContent = 'Enter the six-digit code from your email.'; return; }
+      status.textContent = 'Verifying identity…';
+      try {
+        const client = await nayaAuthClient();
+        const { data, error } = await client.auth.verifyOtp({ email, token, type: 'email' });
+        if (error) throw error;
+        const session = data?.session;
+        if (!session?.user?.id) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+        await nayaProvisionSession(client, session.user);
+        status.textContent = 'IDENTITY VERIFIED — opening authenticated NayaNET…';
+        await nayaEnterAuthenticatedHub(session);
+      } catch (error) { status.textContent = 'VERIFICATION FAILED — ' + String(error?.message || error); }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      nayaAuthPanel();
+      const verifyMode = new URLSearchParams(window.location.search).get('verify') === '1';
+      const savedEmail = sessionStorage.getItem('nayanet_auth_email') || '';
+      const emailInput = document.getElementById('nayaAuthEmail');
+      const otpRow = document.getElementById('nayaOtpRow');
+      const status = document.getElementById('nayaAuthStatus');
+      if (savedEmail) emailInput.value = savedEmail;
+      if (verifyMode) {
+        nayaOtpSent = true;
+        otpRow.style.display = 'block';
+        document.querySelector('.activate-btn').textContent = 'VERIFY CODE -> ENTER NAYANET';
+        status.textContent = 'CODE READY - enter the six digits from your NayaNET email.';
+        document.getElementById('nayaAuthOtp').focus();
+      }
+    }, { once: true });
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').style.display = 'block';
+    });
+
+    function triggerAppInstall() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => { deferredPrompt = null; });
+      } else {
+        alert('To install: Tap your browser share/menu button and select "Add to Home Screen".');
+      }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawName = urlParams.get('name') || sessionStorage.getItem('nayanet_user_name') || 'Pioneer';
+    const cleanDefaultAlias = rawName.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    document.getElementById('displayName').textContent = rawName;
+    const aliasInput = document.getElementById('aliasInput');
+    aliasInput.value = cleanDefaultAlias || 'pioneer';
+
+    function updateSmartCredentials() {
+      const currentAlias = aliasInput.value.toLowerCase().replace(/[^a-z0-9]/g, '') || 'pioneer';
+      document.getElementById('displayAlias').textContent = currentAlias;
+      document.getElementById('displayLink').textContent = currentAlias + '.nayanet.app';
+      document.getElementById('displayMail').textContent = currentAlias;
+    }
+
+    updateSmartCredentials();
+
+    window.activateAndRedirect = function() {
+      if (!nayaOtpSent) return nayaSendOtp();
+      return nayaVerifyOtp();
+    };
+  </script>
+</body>
+</html>
+

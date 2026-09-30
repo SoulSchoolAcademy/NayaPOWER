@@ -1,0 +1,48 @@
+{
+  "schema": "naya.act.live-proof.v1",
+  "status": "PASS",
+  "source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+  "run_id": 36622283683,
+  "run_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/36622283683",
+  "edge_function": {
+    "slug": "nayanet-act-runtime",
+    "version": 1,
+    "status": "ACTIVE"
+  },
+  "law_runtime": {
+    "slug": "nayanet-law-runtime",
+    "version": 2,
+    "status": "ACTIVE"
+  },
+  "authorized_case": {
+    "law_receipt_id": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
+    "authority_grant_id": "ab66924e-aa3b-4c57-a029-20e96a6a8afc",
+    "act_receipt_id": "675cac2c-5091-4e18-9b7a-61664f688c10",
+    "action": "naya_node_apply",
+    "target": "NAYA-NODE-0001",
+    "door_id": "DOOR-AI",
+    "operation": "apply_retained_intelligence",
+    "observed_result": "PRESERVE_PROVENANCE_BEFORE_APPLY",
+    "canonical_block_id": "IB-NAYA-NODE-0001-0001",
+    "handoff_to": "NAYA-KERNEL-VERIFY"
+  },
+  "refused_case": {
+    "act_refusal_receipt_id": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
+    "reason": "LAW_RECEIPT_REQUIRED",
+    "door_id": "DOOR-AI",
+    "capability_available": true,
+    "action_executed": false,
+    "observed": false
+  },
+  "independent_verification": true,
+  "artifacts": {
+    "primary": 11058971178,
+    "independent": 11058921763
+  },
+  "limits": [
+    "Bounded ACT vertical slice only; universal nine-node runtime binding remains NOT_PROVEN.",
+    "This proof uses a bounded existing naya_node_apply capability and does not establish arbitrary Smart Door execution.",
+    "The independent verifier rereads/recomputes ACT evidence but this pass does not claim the general VERIFY Node is implemented.",
+    "KNOW is the next Master Node implementation frontier."
+  ]
+}

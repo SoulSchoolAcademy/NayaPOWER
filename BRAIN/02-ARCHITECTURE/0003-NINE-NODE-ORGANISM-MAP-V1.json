@@ -1,0 +1,81 @@
+{
+  "schema": "naya.organism.map.v1",
+  "mission_flow": [
+    "MISSION",
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE",
+    "CONTINUE"
+  ],
+  "continuation_loop": [
+    "MISSION",
+    "CURRENT_VERIFIED_STATE",
+    "GAP",
+    "PRIORITY",
+    "RELEVANT_INTELLIGENCE",
+    "AUTHORITY",
+    "ACTION",
+    "OBSERVATION",
+    "VERIFY",
+    "LEARN",
+    "UPDATE_STATE",
+    "NEXT_GAP"
+  ],
+  "layers": {
+    "human_director": {
+      "role": "mission, intent, goals, authority, values, judgment, corrections",
+      "final_authority": true
+    },
+    "master_nodes": {
+      "role": "nine processing responsibilities of one organism",
+      "objects": [
+        "SELF",
+        "LAW",
+        "ACT",
+        "KNOW",
+        "PROVE",
+        "CONNECT",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE"
+      ]
+    },
+    "intelligence_substrate": {
+      "canonical_machine_object": "INTELLIGENT_BLOCK",
+      "runtime_persistence": "Supabase",
+      "graph": "canonical NayaPOWER graph/index",
+      "human_projection": "GitHub Brain Markdown"
+    },
+    "smart_doors": {
+      "role": "capability discovery/invocation interfaces",
+      "authority_owner": false,
+      "truth_owner": false
+    },
+    "hub": {
+      "role": "human visual projection",
+      "personal": "private by default",
+      "collective": "by consent/publication decision"
+    },
+    "smart_note": {
+      "role": "human command for durable intelligence capture; not a Node or second brain"
+    }
+  },
+  "invariant_links": [
+    "SELF identity context feeds LAW",
+    "LAW decision gates ACT",
+    "ACT may use Smart Doors",
+    "KNOW/CONNECT provide relevant intelligence/context but never authority",
+    "PROVE constrains claims",
+    "VERIFY observes outcomes",
+    "LEARN requires verified evidence",
+    "EVOLVE preserves improvement but not authority"
+  ],
+  "next_node_after_law": "ACT",
+  "proof_boundary": "Map is architecture. Only runtime receipts establish which Nodes actually executed."
+}

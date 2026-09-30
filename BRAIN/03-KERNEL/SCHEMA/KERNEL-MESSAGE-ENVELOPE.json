@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "naya.kernel.message-envelope/v1",
+  "title": "Kernel Message Envelope",
+  "type": "object",
+  "required": ["message_id", "source_node", "target_node", "timestamp", "context"],
+  "properties": {
+    "message_id": {"type": "string", "format": "uuid"},
+    "source_node": {"enum": ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]},
+    "target_node": {"enum": ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "context": {"type": "object"},
+    "authority_context": {"type": "object"},
+    "provenance": {"type": "object"}
+  },
+  "additionalProperties": false
+}

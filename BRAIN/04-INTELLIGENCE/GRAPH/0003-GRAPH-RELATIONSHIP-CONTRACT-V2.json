@@ -1,0 +1,129 @@
+{
+  "schema": "naya.graph.relationship.contract.v2",
+  "version": "2.0",
+  "status": "CANDIDATE_CONTRACT",
+  "purpose": "Machine-validatable quality contract for consequential Intelligent Graph relationships. Extends the existing graph overlay; does not create authority or a second graph store.",
+  "source_of_truth_rule": "Relationships remain a derived semantic overlay on canonical objects. Persistence location does not promote truth.",
+  "required_fields": [
+    "relationship_id",
+    "source_id",
+    "target_id",
+    "relationship_type",
+    "owner_scope",
+    "epistemic_state",
+    "status",
+    "provenance",
+    "evidence_refs",
+    "created_at",
+    "observed_at",
+    "valid_from",
+    "valid_until",
+    "supersedes_relationship_id",
+    "consent_ref",
+    "applicability",
+    "reason_codes"
+  ],
+  "allowed_relationship_types": [
+    "DERIVED_FROM",
+    "SUPPORTS",
+    "CONTRADICTS",
+    "DEPENDS_ON",
+    "IMPLEMENTS",
+    "GOVERNS",
+    "AUTHORIZED_BY",
+    "USED_BY",
+    "CAUSED",
+    "RESULTED_IN",
+    "VERIFIED_BY",
+    "LEARNED_FROM",
+    "SUPERSEDES",
+    "SUCCEEDS",
+    "RELATED_TO",
+    "CONTEXTUALIZES",
+    "INVALIDATES",
+    "REFINES",
+    "CORRECTS",
+    "ENABLES",
+    "PRODUCES",
+    "APPLIES_TO"
+  ],
+  "allowed_epistemic_states": [
+    "UNKNOWN",
+    "CANDIDATE",
+    "SUPPORTED",
+    "CONTRADICTED",
+    "SUPERSEDED",
+    "INVALIDATED",
+    "LEARNED",
+    "VERIFIED"
+  ],
+  "allowed_status": [
+    "ACTIVE",
+    "REVOKED",
+    "SUPERSEDED",
+    "INVALIDATED"
+  ],
+  "owner_scope_contract": {
+    "required": [
+      "owner_id",
+      "visibility"
+    ],
+    "allowed_visibility": [
+      "PRIVATE",
+      "DERIVED_SHARED",
+      "PUBLIC_DERIVED"
+    ],
+    "cross_owner_rule": "DERIVED_SHARED requires explicit consent_ref and must not expose a private canonical source object."
+  },
+  "provenance_contract": {
+    "rule": "Every edge is a claim and requires non-empty provenance.",
+    "verified_rule": "VERIFIED additionally requires at least one evidence_ref."
+  },
+  "temporal_contract": {
+    "rule": "valid_from <= valid_until when both are present; null valid_until means open-ended.",
+    "historical_truth_rule": "Expired or superseded relationships must not be returned as current."
+  },
+  "supersession_contract": {
+    "rule": "supersedes_relationship_id may be null; if present it must not equal relationship_id and must resolve to a prior relationship."
+  },
+  "applicability_contract": {
+    "required": [
+      "state",
+      "task_classes",
+      "limitations"
+    ],
+    "allowed_states": [
+      "APPLICABLE",
+      "NOT_APPLICABLE",
+      "UNKNOWN"
+    ],
+    "rule": "Retrieval does not imply applicability; UNKNOWN must stay UNKNOWN."
+  },
+  "authority_boundary": {
+    "graph_grants_authority": false,
+    "forbidden_inference": [
+      "relationship_exists=>authorized",
+      "retrieved=>authorized",
+      "AUTHORIZED_BY_edge=>current_authorization",
+      "successor_context=>authority"
+    ]
+  },
+  "validator_reason_codes": [
+    "RELATIONSHIP_ID_REQUIRED",
+    "SOURCE_ID_REQUIRED",
+    "TARGET_ID_REQUIRED",
+    "UNKNOWN_RELATIONSHIP_TYPE",
+    "OWNER_SCOPE_REQUIRED",
+    "INVALID_VISIBILITY",
+    "CROSS_OWNER_CONSENT_REQUIRED",
+    "INVALID_EPISTEMIC_STATE",
+    "INVALID_STATUS",
+    "PROVENANCE_REQUIRED",
+    "VERIFIED_EVIDENCE_REQUIRED",
+    "INVALID_TEMPORAL_INTERVAL",
+    "INVALID_SUPERSESSION",
+    "INVALID_APPLICABILITY",
+    "REASON_CODES_REQUIRED"
+  ],
+  "migration_boundary": "This contract does not require immediate persistence-column expansion. A schema change is justified only after representation analysis proves canonical JSON/provenance fields cannot safely carry the required semantics."
+}

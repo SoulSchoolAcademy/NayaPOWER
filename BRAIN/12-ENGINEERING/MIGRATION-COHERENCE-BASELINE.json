@@ -1,0 +1,39 @@
+{
+  "schema": "naya.brain.schema.migration.coherence.baseline/v2",
+  "purpose": "Named regression ledger for static migration-chain coherence after restoring supabase/migrations from the authoritative production migration ledger.",
+  "defect_floor": 0,
+  "measured_at": "2026-09-29",
+  "measured_by": "BRAIN/12-ENGINEERING/verify-migration-coherence.py",
+  "evidence": [
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/881",
+    "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/36501228953"
+  ],
+  "floor_history": [
+    {
+      "date": "2026-09-28",
+      "defect_floor": 11,
+      "reason": "Initial ledger recorded after PR #881 restored the migrations and proved a rebuild from empty is impossible. 11 core tables used by migrations, created by none."
+    },
+    {
+      "date": "2026-09-29",
+      "defect_floor": 14,
+      "reason": "Raised ONLY because three further uncreated tables appeared on main. The ledger was 11, the measurement became 14, and the original enforcement PRINTED the regression and then passed anyway, because its shell step ended with an unconditional `exit 0`. Run 36501228953 shows `floor=11 measured=14` on a successful job. The three added tables were introduced by the intelligence-commit migrations on main, each of which references a table nobody has ever created. The rise is recorded debt, not an accepted risk: see authority_note."
+    },
+    {
+      "date": "2026-09-29",
+      "defect_floor": 0,
+      "reason": "Production ledger restoration recovered exact applied migration versions and retained SQL statements from supabase_migrations.schema_migrations. The prior 14 UNCREATED_DEPENDENCY findings are no longer measured. Two apparent new findings (public.public and public.own) were proven parser false positives from dynamic SQL strings and quoted policy names and fixed in the detector rather than accepted as debt."
+    }
+  ],
+  "defect_classes_tracked": [
+    "UNCREATED_DEPENDENCY",
+    "DUPLICATE_CREATE",
+    "DROPPED_THEN_USED",
+    "EMPTY"
+  ],
+  "known_defects": {},
+  "what_this_means": "The current static coherence detector reports no named defect in the restored production-applied migration history. This is source/ledger reconciliation, not an executed empty-database rebuild and not disaster-recovery proof.",
+  "recoverability_of_the_definitions": "RESTORED FROM AUTHORITATIVE PRODUCTION MIGRATION LEDGER. Production retained version, name, and SQL statements for all 143 applied migrations; the repository now preserves those exact applied records plus the pre-reconciliation repository lineage outside the active migration path.",
+  "how_to_lower_this_ledger": "The ledger is currently zero. Any future measured finding is a regression unless independently classified as a detector false positive and fixed at the detector. Do not widen known_defects merely to make CI green.",
+  "authority_note": "This ledger records static source coherence only. It does not authorize schema changes and does not claim that a clean database rebuild has been executed."
+}

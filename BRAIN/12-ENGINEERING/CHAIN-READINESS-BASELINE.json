@@ -1,0 +1,18 @@
+{
+  "schema": "naya.collective.chain.readiness.baseline/v1",
+  "purpose": "Regression floor for the Collective Intelligence Chain. This is NOT a target and NOT a claim of completion. The gate fails the build when measured readiness falls BELOW this floor, so the chain cannot silently rot the way it did after the 2026-09-26 reset. It never fails the build merely for being incomplete, because a permanently red gate gets ignored, which is the same failure mode as no gate at all.",
+  "satisfied_links_floor": 2,
+  "measured_at": "2026-09-28",
+  "measured_by": "BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py",
+  "evidence": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/881",
+  "satisfied_links": [
+    "L02",
+    "L03"
+  ],
+  "why_not_higher": [
+    "L01 requires an authoritative Intelligent Block identity and receipt from the governed nayanet-intelligence-commit-runtime boundary. A locally minted id can never satisfy it.",
+    "L04 is NOT_SATISFIED: the kernel graph seed declares epistemic_default 'UNVERIFIED', which is not in the canonical epistemicState enum. Which side is correct is a governed decision, so the gate surfaces the conflict instead of choosing.",
+    "L05-L11 are UNKNOWN: their evidence is runtime-produced and cannot be inspected on this branch. UNKNOWN is not evidence. Per the anti-false-positive law, missing evidence is never PASS."
+  ],
+  "how_to_raise_this_floor": "Raise it only when a link moves to SATISFIED on independently inspectable evidence, and record which link and what evidence justified it. Never raise it to make a build green."
+}

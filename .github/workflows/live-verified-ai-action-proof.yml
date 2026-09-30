@@ -1,0 +1,291 @@
+name: Live Verified AI Action Proof
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: live-verified-ai-action-proof
+  cancel-in-progress: false
+
+env:
+  FUNCTION_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-verified-ai-action
+  AUDIENCE: nayanet-runtime
+  GRANT_ID: ab66924e-aa3b-4c57-a029-20e96a6a8afc
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      eligible: ${{ steps.classify.outputs.eligible }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: classify source/runtime proof eligibility
+        id: classify
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          git fetch origin production:refs/remotes/origin/production
+          runtime_source="$(git show origin/production:supabase/functions/nayanet-verified-ai-action/index.ts)"
+          deployed_source="$(printf '%s' "$runtime_source" | python -c 'import re,sys; s=sys.stdin.read(); m=re.findall(r"const DEPLOYED_SOURCE_REVISION = \"([0-9a-f]{40})\";",s); print(m[0] if len(m)==1 else "UNKNOWN")')"
+          if [ "$deployed_source" = "$GITHUB_SHA" ]; then
+            status="PARITY_ELIGIBLE"
+            eligible="true"
+          else
+            status="BLOCKED_BY_PARITY"
+            eligible="false"
+          fi
+          python - "$status" "$deployed_source" "$GITHUB_SHA" <<'PY'
+          import json,sys
+          status,deployed,source=sys.argv[1:]
+          json.dump({
+            "status":status,
+            "source_sha":source,
+            "production_stamped_source_revision":deployed,
+            "behavioral_proof_executed":False,
+            "reason":None if status=="PARITY_ELIGIBLE" else "Production does not yet advertise the exact main source; parity-dependent behavioral proof is intentionally skipped.",
+          },open(".naya/evidence/live-proof-preflight.json","w"),indent=2)
+          PY
+          echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
+          if [ "$eligible" = "false" ]; then
+            echo "::notice title=Live proof blocked by parity::main=$GITHUB_SHA production_source=$deployed_source; behavior jobs skipped without converting BLOCKED into FAILED."
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-proof-preflight
+          path: .naya/evidence/live-proof-preflight.json
+
+  authorized-action:
+    needs: preflight
+    if: needs.preflight.outputs.eligible == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: fulfill fresh GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: execute authorized governed action
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          resp="$(curl -sS -w '\n%{http_code}' -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data "{\"mode\":\"execute\",\"authority_grant_id\":\"${GRANT_ID}\",\"idempotency_key\":\"${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}\"}" \
+            "${FUNCTION_URL}")"
+          code="${resp##*$'\n'}"
+          body="${resp%$'\n'*}"
+          printf '%s' "$body" > .naya/evidence/authorized-action.json
+          echo "http_code=$code"
+          cat .naya/evidence/authorized-action.json
+          python - <<'PY'
+          import json
+          r = json.load(open('.naya/evidence/authorized-action.json', encoding='utf-8'))
+          assert r['ok'] is True, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
+          assert r['status'] == 'EXECUTED', r
+          assert r['authority_decision'] == 'ALLOW', r
+          assert r['receipt']['action'] == 'NAYA-NODE-0001-VERIFIED-AI-ACTION', r
+          assert r['receipt']['status'] == 'SUCCESS', r
+          assert r['outcome']['verified'] is False, r
+          assert r['outcome']['verification_method'] == 'PENDING_INDEPENDENT_RUNTIME_VERIFICATION', r
+          assert r['canonical_digest'], r
+          print('AUTHORIZED ACTION EXECUTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: authorized-action-receipt
+          path: .naya/evidence/authorized-action.json
+
+  authority-absent-refusal:
+    needs: preflight
+    if: needs.preflight.outputs.eligible == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: obtain fresh GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: attempt governed action with absent authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          resp="$(curl -sS -w '\n%{http_code}' -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data "{\"mode\":\"execute\",\"authority_grant_id\":\"00000000-0000-0000-0000-000000000000\",\"idempotency_key\":\"refusal-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}\"}" \
+            "${FUNCTION_URL}")"
+          code="${resp##*$'\n'}"
+          body="${resp%$'\n'*}"
+          printf '%s' "$body" > .naya/evidence/authority-absent-refusal.json
+          echo "http_code=$code"
+          cat .naya/evidence/authority-absent-refusal.json
+          python - <<'PY'
+          import json
+          r = json.load(open('.naya/evidence/authority-absent-refusal.json', encoding='utf-8'))
+          assert r['ok'] is False, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
+          assert r['status'] == 'BLOCKED', r
+          assert r['error'] == 'AUTHORITY_ABSENT', r
+          assert r['refusal_receipt_id'], r
+          assert r['execution_outcome_id'] is None, r
+          print('AUTHORITY-ABSENT REFUSAL PERSISTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: authority-absent-refusal-receipt
+          path: .naya/evidence/authority-absent-refusal.json
+
+  concurrent-idempotency-proof:
+    needs: preflight
+    if: needs.preflight.outputs.eligible == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: obtain fresh GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: issue two identical authorized requests concurrently
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          key="concurrent-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          printf '%s' "$key" > .naya/evidence/idempotency-key.txt
+          payload="{\"mode\":\"execute\",\"authority_grant_id\":\"${GRANT_ID}\",\"idempotency_key\":\"$key\"}"
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "$payload" "${FUNCTION_URL}" > .naya/evidence/concurrent-a.json &
+          p1=$!
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "$payload" "${FUNCTION_URL}" > .naya/evidence/concurrent-b.json &
+          p2=$!
+          wait "$p1"
+          wait "$p2"
+          cat .naya/evidence/concurrent-a.json
+          cat .naya/evidence/concurrent-b.json
+          python - <<'PY'
+          import json
+          a=json.load(open(".naya/evidence/concurrent-a.json"))
+          b=json.load(open(".naya/evidence/concurrent-b.json"))
+          import os
+          for x in (a,b):
+              assert x["ok"] is True, x
+              assert x["deployed_source_revision"] == os.environ["GITHUB_SHA"], x
+              assert x["status"] == "EXECUTED", x
+              assert x["receipt"]["status"] == "SUCCESS", x
+              assert x["outcome"]["receipt_id"] == x["receipt"]["id"], x
+          assert a["receipt"]["id"] == b["receipt"]["id"], (a,b)
+          assert a["outcome"]["outcome_id"] == b["outcome"]["outcome_id"], (a,b)
+          assert a.get("idempotent_replay") is True or b.get("idempotent_replay") is True, (a,b)
+          print("CONCURRENT EXECUTORS CONVERGED")
+          PY
+      - name: independently reread one receipt and one outcome for the shared key
+        shell: bash
+        run: |
+          set -euo pipefail
+          key="$(cat .naya/evidence/idempotency-key.txt)"
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data "{\"mode\":\"verify-idempotency\",\"idempotency_key\":\"$key\"}"             "${FUNCTION_URL}" > .naya/evidence/concurrency-verification.json
+          cat .naya/evidence/concurrency-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open(".naya/evidence/concurrency-verification.json"))
+          import os
+          assert r["ok"] is True, r
+          assert r["deployed_source_revision"] == os.environ["GITHUB_SHA"], r
+          assert r["status"] == "IDEMPOTENCY_CONCURRENCY_VERIFIED", r
+          assert r["independent_verification"] is True, r
+          assert r["executor_claim_trusted_as_verification"] is False, r
+          assert r["receipt_count"] == 1, r
+          assert r["outcome_count"] == 1, r
+          assert all(r["checks"].values()), r
+          print("LIVE ACT CONCURRENCY INDEPENDENTLY VERIFIED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: act-concurrent-idempotency-proof
+          path: |
+            .naya/evidence/idempotency-key.txt
+            .naya/evidence/concurrent-a.json
+            .naya/evidence/concurrent-b.json
+            .naya/evidence/concurrency-verification.json
+
+  independent-verification:
+    needs: [authorized-action, authority-absent-refusal]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: obtain independent fresh GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: authorized-action-receipt
+          path: evidence/authorized
+      - uses: actions/download-artifact@v4
+        with:
+          name: authority-absent-refusal-receipt
+          path: evidence/refusal
+      - name: independently reread persisted authority and refusal from Supabase
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          action_receipt_id="$(python -c 'import json;print(json.load(open("evidence/authorized/authorized-action.json",encoding="utf-8"))["receipt"]["id"])')"
+          refusal_receipt_id="$(python -c 'import json;print(json.load(open("evidence/refusal/authority-absent-refusal.json",encoding="utf-8"))["refusal_receipt_id"])')"
+          python - <<PY
+          import json
+          body = {
+            "mode": "verify",
+            "action_receipt_id": "$action_receipt_id",
+            "refusal_receipt_id": "$refusal_receipt_id",
+          }
+          print(json.dumps(body))
+          PY
+          curl -sS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data "{\"mode\":\"verify\",\"action_receipt_id\":\"${action_receipt_id}\",\"refusal_receipt_id\":\"${refusal_receipt_id}\"}" \
+            "${FUNCTION_URL}" > .naya/evidence/independent-verification.json
+          cat .naya/evidence/independent-verification.json
+          python - <<'PY'
+          import json
+          r = json.load(open('.naya/evidence/independent-verification.json', encoding='utf-8'))
+          assert r['ok'] is True, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
+          assert r['status'] == 'OUTCOME_VERIFIED', r
+          assert r['independent_verification'] is True, r
+          v = r['independent_checks']
+          for key in ('runtime_identity_bound', 'owner_scoped', 'durable_binding_valid', 'authority_actively_granted', 'action_authorized_for_target', 'action_receipt_exists', 'action_receipt_success', 'execution_outcome_exists', 'outcome_matches_receipt', 'observed_result_exists', 'observed_result_matches_live_canonical_state', 'canonical_digest_recomputed'):
+            assert v[key] is True, (key, v)
+          rc = r['refusal_checks']
+          for key in ('refusal_receipt_present', 'refusal_status_blocked', 'refusal_authority_denied', 'refusal_authority_absent', 'refusal_action_not_executed', 'refusal_outcome_absent'):
+            assert rc[key] is True, (key, rc)
+          assert rc['unauthorized_outcome_exists'] is False, rc
+          assert rc['receipt_mutated_after_refusal'] is False, rc
+          print('INDEPENDENT VERIFICATION PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-verification
+          path: .naya/evidence/independent-verification.json

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "naya.kernel.evolve/v1",
+  "title": "EVOLVE Node",
+  "type": "object",
+  "required": ["node_id", "evolution_context", "state"],
+  "properties": {
+    "node_id": {"const": "NAYA-KERNEL-EVOLVE"},
+    "evolution_context": {
+      "type": "object",
+      "required": ["successor_package", "improvement_proposals", "authority_verification"],
+      "properties": {
+        "successor_package": {
+          "type": "object",
+          "required": ["identity", "current_truth", "applicable_intelligence", "authority_context", "blockers", "next_action"],
+          "properties": {
+            "identity": {"type": "object"},
+            "current_truth": {"type": "object"},
+            "applicable_intelligence": {"type": "array", "items": {"type": "object"}},
+            "authority_context": {"type": "object"},
+            "blockers": {"type": "array", "items": {"type": "object"}},
+            "next_action": {"type": "string"}
+          }
+        },
+        "improvement_proposals": {"type": "array", "items": {"type": "object"}},
+        "authority_verification": {"type": "object"},
+        "continuity_check": {"type": "object"}
+      }
+    },
+    "state": {"enum": ["UNINITIALIZED", "CONSTRUCTING", "READY", "ESCALATED", "FAILED"]},
+    "evolution_state": {"type": "object"}
+  },
+  "additionalProperties": false
+}

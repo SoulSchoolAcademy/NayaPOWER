@@ -1,0 +1,323 @@
+{
+  "schema": "naya.brain.index.v1",
+  "schema_version": "1.0",
+  "generated_at": "2026-09-30",
+  "status": "POST_NORTH_STAR_BOUNDED_ACCEPTANCE_NINE_NODE_LIVE_PROOF",
+  "ratification": "HUMAN_DIRECTOR_REQUIRED",
+  "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
+  "continuity": "NAYAS DO NOT LOSE MEMORY.",
+  "canonical_root": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+  "constitutional_root": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+  "governance_root": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+  "superbrain_spec": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+  "brain_map": "BRAIN/MASTER-MAP.md",
+  "knowledge_synthesis": "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
+  "knowledge_ledger": "BRAIN/11-KNOWLEDGE/0002-KNOWLEDGE-BANK-DISTILLATION-LEDGER-V1.md",
+  "nine_nodes": [
+    {
+      "id": "NAYA-KERNEL-SELF",
+      "name": "SELF",
+      "owns": [
+        "identity",
+        "mission",
+        "continuity"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-LAW",
+      "name": "LAW",
+      "owns": [
+        "authority",
+        "consent",
+        "governance",
+        "revocation"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-ACT",
+      "name": "ACT",
+      "owns": [
+        "authorized_execution",
+        "safe_agency"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-KNOW",
+      "name": "KNOW",
+      "owns": [
+        "canonical_intelligence",
+        "events",
+        "memory"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-PROVE",
+      "name": "PROVE",
+      "owns": [
+        "provenance",
+        "evidence",
+        "truth_state",
+        "lineage"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-CONNECT",
+      "name": "CONNECT",
+      "owns": [
+        "relationships",
+        "retrieval",
+        "reconciliation",
+        "context"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-VERIFY",
+      "name": "VERIFY",
+      "owns": [
+        "outcomes",
+        "acceptance",
+        "causality"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-LEARN",
+      "name": "LEARN",
+      "owns": [
+        "verified_learning",
+        "future_behavior"
+      ]
+    },
+    {
+      "id": "NAYA-KERNEL-EVOLVE",
+      "name": "EVOLVE",
+      "owns": [
+        "succession",
+        "governed_evolution",
+        "self_optimization"
+      ]
+    }
+  ],
+  "core_objects": [
+    "NODE",
+    "EVENT",
+    "RELATIONSHIP",
+    "EVIDENCE",
+    "OUTCOME",
+    "VERIFICATION",
+    "LEARNING",
+    "SUCCESSOR",
+    "STATE"
+  ],
+  "core_relationships": [
+    "DERIVED_FROM",
+    "SUPPORTS",
+    "CONTRADICTS",
+    "DEPENDS_ON",
+    "IMPLEMENTS",
+    "GOVERNS",
+    "AUTHORIZED_BY",
+    "USED_BY",
+    "CAUSED",
+    "RESULTED_IN",
+    "VERIFIED_BY",
+    "LEARNED_FROM",
+    "SUPERSEDES",
+    "SUCCEEDS",
+    "RELATED_TO",
+    "CONTEXTUALIZES",
+    "INVALIDATES",
+    "REFINES",
+    "CORRECTS",
+    "ENABLES",
+    "PRODUCES",
+    "APPLIES_TO"
+  ],
+  "lifecycle": [
+    "EXPERIENCE",
+    "CAPTURE",
+    "DISTILL",
+    "STRUCTURE",
+    "CONNECT",
+    "PROVE",
+    "PRESERVE",
+    "RETRIEVE",
+    "APPLY",
+    "ACT",
+    "OUTCOME",
+    "VERIFY",
+    "LEARN",
+    "COMPOUND",
+    "SUCCESSOR",
+    "EVOLVE"
+  ],
+  "acceptance": [
+    "STRUCTURAL",
+    "CONTRACT",
+    "UNIT",
+    "INTEGRATION",
+    "BEHAVIORAL",
+    "OUTCOME",
+    "CAUSAL",
+    "PRODUCTION",
+    "SUCCESSOR"
+  ],
+  "source_corpus": {
+    "concepts": 17,
+    "concepts_note": "17 numbered concepts are indexed. #16/#17 remain source analysis/blueprint unless selectively promoted; #944 Phase 1 found no new Concept #17 intelligence object.",
+    "duplicate_pairs": [
+      [
+        "#7",
+        "#8"
+      ]
+    ],
+    "rule": "source preserved; durable intelligence distilled; duplicates merged; contradictions surfaced; no wholesale copy"
+  },
+  "kernel_runtime_registry": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
+  "knowledge_population_map": "BRAIN/11-KNOWLEDGE/0003-KNOWLEDGE-POPULATION-MAP-V1.json",
+  "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
+  "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
+  "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
+  "inventory_file_count": 157,
+  "current_runtime_boundary": {
+    "canonical_persistence": "Supabase",
+    "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
+    "application_entrypoint": "Governed Supabase production/proof river with bounded nine-node behavioral acceptance at exact source 335bdd82568e8041d3f6921a9ee4c7bf28e2c99f.",
+    "competing_store_policy": "LOCAL_SQLITE_OR_IN_MEMORY_IS_TEST_INFRASTRUCTURE_ONLY"
+  },
+  "proof_boundary": {
+    "canonical_persistence_restored": true,
+    "cold_intelligent_block_retrieval": "PROVEN_BOUNDED_SPECIMEN",
+    "authority_separation": "PROVEN_BOUNDED_SPECIMEN",
+    "independent_outcome_specimen": "PROVEN_BOUNDED_SPECIMEN",
+    "living_application_runtime": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_EXACT_REVISION; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
+    "successor_behavioral_improvement": "PROVEN_BOUNDED_RELATED_HELDOUT_WITH_UNRELATED_REFUSAL",
+    "production_proof": "PROVEN_BOUNDED_EXACT_REVISION_NOT_INHERITED_BY_LATER_MAIN",
+    "bounded_production_proof": {
+      "issue": 913,
+      "source_revision": "0dcff9b815039d20a7c4c06e05da3a8d9fab5ba4",
+      "scope": "Node 0001 single bounded intelligence-river specimen",
+      "limitation": "Does not establish universal causal effect, generalized applicability, multi-generation compounding, universal nine-node runtime binding, or production proof for later main."
+    },
+    "current_frontier": {
+      "issue": 66,
+      "state": "POST_1095_ACT_IDEMPOTENCY_ATOMICITY_PROJECTION_RECONCILIATION",
+      "next": "Refresh the existing projection against exact 8bc2430517fc52a5722ad2a75ce036f9d8e7152e; then explicit governed deployment for exact resulting main before live two-request ACT concurrency proof, PROVE, SN-004, and #1070 production proof."
+    },
+    "bounded_generalization_successor_proof": {
+      "issue": 944,
+      "source_revision": "2f468c413f4b5c6752878d94ba0f2e1fdfb60147",
+      "proof_run": "36519233015_attempt_2",
+      "scope": "bounded causal/generalization/negative-transfer/cold-successor chain",
+      "limitation": "Does not prove latest-main parity, universal nine-node binding, multi-generation compounding, or two-owner NayaNET."
+    },
+    "law_node": {
+      "status": "PROVEN_BOUNDED",
+      "run": 36620001626,
+      "source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
+      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e",
+      "limitation": "Universal nine-node runtime binding remains NOT_PROVEN."
+    },
+    "act_node": {
+      "status": "PROVEN_BOUNDED",
+      "run": 36622283683,
+      "source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+      "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
+      "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
+      "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
+      "limitation": "One bounded Smart Door operation; universal nine-node runtime binding remains NOT_PROVEN."
+    },
+    "nine_node_behavioral_acceptance": {
+      "status": "PRODUCTION_PROVEN_BOUNDED",
+      "source_revision": "335bdd82568e8041d3f6921a9ee4c7bf28e2c99f",
+      "proof_run": "36632211367",
+      "artifact_id": "11063875114",
+      "artifact_sha256": "f10a35c8f57ac224dfa28cd7b81305a157acf1b1da79a2a1a96dd4598b27a2bc",
+      "scope": "Node-0001 provenance lesson; one graph held-out task; one related generalization task; one unrelated refusal task",
+      "limitation": "Does not establish universal nine-node capability across every task/domain."
+    },
+    "historical_north_star_acceptance": {
+      "status": "ACCEPTED_BOUNDED_SPECIMEN",
+      "historical_run": "36516790588",
+      "audit": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V3.md",
+      "recovery_run": "36632538416",
+      "limitation": "Historical bounded specimen only; later revisions require their own production evidence."
+    },
+    "current_main_authority_cache_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F_NOT_PRODUCTION_PROOF",
+    "current_main_know": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
+    "sn004_learning": "NO_MEASURED_LEARNING_EFFECT_RUN_36652694005_PRESERVED; SMART_NOTE_SOURCE_REPAIR_MERGED_4C2B8F12; APPLICABILITY_SOURCE_REPAIR_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
+    "cold_acceptance": "PROTOCOL_READY_FRESH_ENTRANT_NOT_PROVEN",
+    "current_causal_runtime_parity": {
+      "status": "MISMATCH_LATER_MAIN_NOT_PRODUCTION_PROVEN",
+      "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
+      "production_branch_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
+      "promotion_run": 36659933566,
+      "promotion_artifact": 11074161563,
+      "current_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
+      "act_concurrency_repair": "PR_1095_MERGED_SOURCE_TEST_VERIFIED_LIVE_RACE_PENDING_EXACT_DEPLOYMENT"
+    },
+    "two_owner_nayanet": "PR_1070_SOURCE_INTEGRATED_NOT_PRODUCTION_PROVEN",
+    "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
+    "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
+  },
+  "last_reconciled_main": "1a3eac2a09aaa27fd39188ab5f3b21fdda6667f1",
+  "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
+  "operations": {
+    "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
+    "master_plan": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
+    "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
+    "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
+    "active_issue": 66,
+    "next_proof": "Rerun Current Truth Resolver against exact 3abe1ba74a9a86411221ca0b4778f49c79059556; then explicit governed deployment for exact resulting main; then live two-request ACT concurrency proof exactly once and independent reread.",
+    "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
+    "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
+    "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
+    "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
+    "next_system_frontier": "PROJECTION_CONVERGENCE_THEN_EXPLICIT_DEPLOY; PROVE; SN004_CAUSAL; 1070_PRODUCTION_PROOF; COLD_SUCCESSOR; MULTIGEN; HUMAN_VALUE"
+  },
+  "smart_note_human_projection": {
+    "root": "BRAIN/05-MEMORY/SMART-NOTES/",
+    "pattern": "YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md",
+    "machine_source_of_truth": "Supabase INTELLIGENT_BLOCK",
+    "projection_registry": ".naya/memory/smart-notes/index.json",
+    "primary_human_receipt": "direct GitHub Markdown Smart Link",
+    "human_identity": "SN-###",
+    "machine_identity": "IB-...",
+    "timestamp_role": "provenance metadata"
+  },
+  "nine_node_organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+  "nine_node_organism_map": "BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.json",
+  "smart_doors": {
+    "contract": "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json",
+    "registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+    "law": "capability does not create authority; LAW decides, ACT invokes, VERIFY checks result"
+  },
+  "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json",
+  "reconciliation": {
+    "ledger": "brain-reconciliation-ledger-f648833b.md",
+    "reconciled_at": "2026-09-30",
+    "basis_commit": "1a3eac2a09aaa27fd39188ab5f3b21fdda6667f1",
+    "method": "tools/regenerate_brain_index.py from the committed git tree",
+    "domain_counts": {
+      "00-SPEC": 15,
+      "01-GOVERNANCE": 3,
+      "02-ARCHITECTURE": 5,
+      "03-KERNEL": 27,
+      "04-INTELLIGENCE": 23,
+      "05-MEMORY": 18,
+      "06-PROOF": 10,
+      "07-LEARNING": 2,
+      "08-SUCCESSION": 2,
+      "09-EVOLUTION": 2,
+      "10-INTERFACES": 5,
+      "11-KNOWLEDGE": 7,
+      "12-ENGINEERING": 23,
+      "90-OPERATIONS": 9,
+      "99-ARCHIVE": 1,
+      "ROOT": 5
+    },
+    "note": "Counts are machine-verified against the Git tree. Semantic sections (nine_nodes, proof_boundary, operations, ...) are preserved untouched; only generated_at, inventory_file_count, last_reconciled_main and this section are mechanical."
+  }
+}

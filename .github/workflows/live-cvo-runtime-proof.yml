@@ -1,0 +1,154 @@
+name: Live CVO Runtime Proof
+
+on:
+  workflow_dispatch:
+    inputs:
+      recover_historical_outcomes:
+        description: "Recover the exact audited North-Star causal outcome pair"
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: live-cvo-runtime-proof
+  cancel-in-progress: false
+
+jobs:
+  cvo-runtime:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.recover_historical_outcomes != true }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: Execute persisted CVO derivation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          curl -sS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data '{"mode":"cvo"}' \
+            "${CVO_FUNCTION_URL}" > .naya/evidence/live-cvo-runtime-receipt.json
+          cat .naya/evidence/live-cvo-runtime-receipt.json
+          python - <<'PY'
+          import json
+          r=json.load(open('.naya/evidence/live-cvo-runtime-receipt.json',encoding='utf-8'))
+          assert r['ok'] is True
+          c=r['causal_verification']
+          assert c['schema']=='NAYANET_CAUSAL_VERIFICATION_V1'
+          assert c['causal_assessment']=='CAUSAL_SUPPORTED'
+          assert c['verification_status']=='OUTCOME_VERIFIED'
+          assert c['production_action_executed'] is True
+          print('CVO runtime proof PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-cvo-runtime-receipt
+          path: .naya/evidence/live-cvo-runtime-receipt.json
+    env:
+      CVO_FUNCTION_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify
+
+  independent-verification:
+    needs: cvo-runtime
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Mint independent short-lived GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - uses: actions/download-artifact@v4
+        with:
+          name: live-cvo-runtime-receipt
+          path: receipts/cvo
+      - name: Independently reread persisted CVO from Supabase
+        shell: bash
+        run: |
+          set -euo pipefail
+          response="$(curl -fsS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data '{"mode":"verify"}' \
+            "${CVO_FUNCTION_URL}")"
+          printf '%s' "$response" > receipts/cvo/independent-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open('receipts/cvo/independent-verification.json',encoding='utf-8'))
+          assert r['ok'] is True, r
+          v=r['verification']
+          assert v['independent_verification'] is True
+          assert v['causal_verification']['verification_status']=='OUTCOME_VERIFIED'
+          assert v['causal_verification']['causal_assessment']=='CAUSAL_SUPPORTED'
+          print('Independent CVO verification PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-cvo-verification
+          path: receipts/cvo/independent-verification.json
+    env:
+      CVO_FUNCTION_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify
+
+
+  historical-outcome-recovery:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.recover_historical_outcomes == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Mint independent short-lived GitHub OIDC verifier identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+
+      - name: Recover audited causal outcomes through independent verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          response="$(curl -fsS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data '{"mode":"recover-learning-outcomes","control_receipt_id":"5b072812-699f-415d-b759-2ed509c36367","treatment_receipt_id":"109944fc-9868-45e3-a532-f40952aea3a1"}' \
+            "${CVO_FUNCTION_URL}")"
+          printf '%s' "$response" > .naya/evidence/north-star-outcome-recovery.json
+          cat .naya/evidence/north-star-outcome-recovery.json
+          python - <<'PY'
+          import json
+          p='.naya/evidence/north-star-outcome-recovery.json'
+          r=json.load(open(p,encoding='utf-8'))
+          assert r['ok'] is True, r
+          assert r['schema']=='NAYANET_CAUSAL_OUTCOME_RECOVERY_V1', r
+          assert r['independent_verification'] is True, r
+          assert r['executor_claim_trusted'] is False, r
+          assert set(r['receipt_ids'])=={
+              '5b072812-699f-415d-b759-2ed509c36367',
+              '109944fc-9868-45e3-a532-f40952aea3a1',
+          }, r
+          assert len(r['outcomes'])==2, r
+          assert r['recovery_mode'] in {'CREATED_AND_REREAD','REPLAYED_AND_REREAD'}, r
+          print('North-Star causal outcome recovery PASS')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: north-star-causal-outcome-recovery
+          path: .naya/evidence/north-star-outcome-recovery.json
+    env:
+      CVO_FUNCTION_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-causal-verify

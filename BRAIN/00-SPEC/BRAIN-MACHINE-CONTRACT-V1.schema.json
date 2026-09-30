@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya/brain-machine-contract/v1",
+  "title": "NayaPOWER Brain Canonical Machine Contract V1",
+  "description": "Canonical machine schema for BRAIN/ governed artifacts. Before this file existed, 17 machine-readable artifacts were validated only by hand-written Python and by convention. This makes the machine contract authoritative: any artifact claiming a 'schema' id governed here is validated against this file, and artifacts that disagree with it are wrong. It does not create a second brain; it governs the artifacts that already are the brain.",
+  "$defs": {
+    "epistemicState": {
+      "description": "Never collapse these. UNKNOWN is not SUPPORTED.",
+      "enum": ["UNKNOWN", "CANDIDATE", "SUPPORTED", "VERIFIED", "CONFLICTED", "REFUTED"]
+    },
+    "canonicalStatus": {
+      "enum": ["CANDIDATE", "ACTIVE", "SUPERSEDED", "RETIRED", "CONFLICTED"]
+    },
+    "relationshipType": {
+      "description": "The single canonical relationship vocabulary. The North Star and earlier revisions used other spellings (DERIVES_FROM, PRODUCED, REQUIRES, EXEMPLIFIES); those are NOT canonical. Adding a type is a governed change, not an edit.",
+      "enum": [
+        "DERIVED_FROM", "SUPPORTS", "CONTRADICTS", "DEPENDS_ON", "IMPLEMENTS",
+        "GOVERNS", "AUTHORIZED_BY", "USED_BY", "CAUSED", "RESULTED_IN",
+        "VERIFIED_BY", "LEARNED_FROM", "SUPERSEDES", "SUCCEEDS", "RELATED_TO",
+        "CONTEXTUALIZES", "INVALIDATES", "REFINES", "CORRECTS", "ENABLES",
+        "PRODUCES", "APPLIES_TO"
+      ]
+    },
+    "provenanceList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "humanView": {
+      "type": "object",
+      "required": ["title", "essence", "why", "uncertainty"],
+      "properties": {
+        "title": { "type": "string", "minLength": 3 },
+        "essence": { "type": "string", "minLength": 10 },
+        "why": { "type": "string", "minLength": 5 },
+        "uncertainty": { "type": "string", "minLength": 3 }
+      }
+    },
+    "aiView": {
+      "type": "object",
+      "required": ["purpose", "inputs", "outputs", "failure_mode"],
+      "properties": {
+        "purpose": { "type": "string", "minLength": 3 },
+        "inputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "outputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "failure_mode": { "type": "string", "minLength": 5 }
+      }
+    },
+    "machineView": {
+      "type": "object",
+      "required": ["node_name", "stable_id", "contract", "domain"],
+      "properties": {
+        "node_name": { "enum": ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"] },
+        "stable_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
+        "contract": { "type": "string", "minLength": 3 },
+        "domain": { "type": "string", "minLength": 2 },
+        "representation_contract": { "type": "string" }
+      }
+    },
+    "intelligentObject": {
+      "type": "object",
+      "required": [
+        "schema", "object_id", "object_type", "version", "canonical_status",
+        "owner_id", "scope", "human_view", "ai_view", "machine_view",
+        "provenance", "proof", "relationships", "successor_effect"
+      ],
+      "properties": {
+        "schema": { "const": "naya.intelligent.object.v1" },
+        "object_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
+        "object_type": { "const": "NODE" },
+        "version": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)*$" },
+        "canonical_status": { "$ref": "#/$defs/canonicalStatus" },
+        "owner_id": { "type": "string", "minLength": 3 },
+        "scope": { "type": "string", "minLength": 3 },
+        "human_view": { "$ref": "#/$defs/humanView" },
+        "ai_view": { "$ref": "#/$defs/aiView" },
+        "machine_view": { "$ref": "#/$defs/machineView" },
+        "provenance": {
+          "type": "object",
+          "required": ["derived_from"],
+          "properties": { "derived_from": { "$ref": "#/$defs/provenanceList" } }
+        },
+        "proof": { "type": "object" },
+        "relationships": { "type": "array" },
+        "successor_effect": { "type": ["object", "string", "null"] }
+      }
+    },
+    "graphEdge": {
+      "type": "object",
+      "required": ["relationship_id", "source_id", "target_id", "type", "status", "provenance", "epistemic_state"],
+      "properties": {
+        "relationship_id": { "type": "string", "pattern": "^REL-[A-Z0-9-]+$" },
+        "source_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
+        "target_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
+        "type": { "$ref": "#/$defs/relationshipType" },
+        "status": { "$ref": "#/$defs/canonicalStatus" },
+        "provenance": { "$ref": "#/$defs/provenanceList" },
+        "epistemic_state": { "$ref": "#/$defs/epistemicState" }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "title": "IntelligentObject",
+      "type": "object",
+      "required": ["object_id", "object_type"],
+      "properties": { "object_type": { "const": "NODE" } },
+      "allOf": [{ "$ref": "#/$defs/intelligentObject" }]
+    },
+    {
+      "title": "GraphSeed",
+      "type": "object",
+      "required": ["edges", "allowed_vocabulary", "epistemic_default"],
+      "properties": {
+        "edges": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/graphEdge" } },
+        "allowed_vocabulary": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relationshipType" }
+        },
+        "epistemic_default": { "$ref": "#/$defs/epistemicState" }
+      }
+    }
+  ]
+}

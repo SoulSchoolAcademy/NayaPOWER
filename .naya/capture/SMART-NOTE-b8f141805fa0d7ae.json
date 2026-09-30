@@ -1,0 +1,112 @@
+{
+  "schema": "naya.smart-note.capture-request/v1",
+  "capture_id": "20260929-b8f141805fa0d7ae",
+  "title": "Smart Note as the universal governed intelligence capture command",
+  "topic": "SMART_NOTE_UNIVERSAL_CAPTURE",
+  "source": {
+    "type": "chatgpt_conversation",
+    "captured_at": "2026-09-29",
+    "source_hash_prefix": "b8f141805fa0d7ae",
+    "human_directive": "SMART NOTE THIS AND SEND ME THE SMART LINKS SHOWING THE PROOF IT WAS DONE AND INPUT CORRECTLY SO IT WORKS SUCCESSFULLY!"
+  },
+  "intelligence": {
+    "essence": "Smart Note is the universal human command for turning valuable conversation or experience into durable governed intelligence. The canonical unit remains the Intelligent Block; Smart Note must route through the existing NayaPOWER intelligence river rather than create a new Node family or parallel memory system.",
+    "human_view": {
+      "meaning": "Say 'Smart Note this' when something matters enough that Shawn should not have to explain it again.",
+      "why_it_matters": "Important intelligence should survive the conversation, remain organized, and be available to future authorized Nayas without turning Shawn into the filing system.",
+      "simple_rule": "Understand it, distill it, connect it, preserve it, retrieve it when relevant, learn from verified outcomes."
+    },
+    "naya_view": {
+      "purpose": "Make conversational intelligence reusable, provenance-bound, contextually retrievable, and capable of later learning/compounding.",
+      "architectural_rule": "Intelligent Blocks are the durable intelligence units. SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, and EVOLVE process those units; a note does not create another Naya Node.",
+      "retrieval_rule": "All authorized Nayas should share one contextual retrieval interface over the canonical intelligence index; awareness means discoverability when applicable, not loading all intelligence into every prompt.",
+      "learning_rule": "Capture may automatically reach CANDIDATE only. Evidence, application, observed outcomes, and verification determine later promotion."
+    },
+    "simple_view": {
+      "child": "Naya keeps the smart part of an important conversation so the next Naya can find it and use it.",
+      "grandma": "If we learn something worth keeping, Naya files the useful meaning in the right place, keeps where it came from, and does not pretend an idea is proven until experience proves it."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "canonical_receiver": "nayanet-intelligence-commit-runtime",
+      "required_river": [
+        "EVENT",
+        "INTELLIGENT_BLOCK",
+        "LINEAGE",
+        "RELATIONSHIP",
+        "INDEX",
+        "CHECKPOINT",
+        "RECEIPT"
+      ],
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true,
+      "duplicate_reconciliation_required": true,
+      "contextual_retrieval_required": true,
+      "outcome_feedback_required": true
+    },
+    "decisions": [
+      "Lock Smart Note as the universal intelligence capture command.",
+      "Keep Intelligent Block as the canonical unit; do not create Naya Nodes per note.",
+      "Extend the current canonical nayanet-intelligence-commit-runtime envelope to accept rich Smart Note representations.",
+      "Preserve raw source separately from distilled intelligence; transcript is not intelligence.",
+      "Add duplicate and contradiction reconciliation before blindly creating Blocks.",
+      "Have CONNECT infer candidate relationships automatically.",
+      "Make every authorized Naya use one contextual retrieval interface against the same intelligence index.",
+      "Keep proactive/automatic captures at CANDIDATE maximum; evidence promotes them.",
+      "Add Smart Note to application to outcome to learning feedback.",
+      "Make capture nearly invisible to Shawn while preserving the explicit command."
+    ],
+    "priority": "Unify the rich Smart Note contract with the current canonical intelligence-commit river before adding more Nodes or another Smart Note system.",
+    "objective": "Build and prove Smart Note Capture V2 on the existing nayanet-intelligence-commit-runtime so natural conversation can be distilled into one or more CANDIDATE Intelligent Blocks with multiple views, provenance, applicability and relationships, persisted through Event → Block → Lineage → Relationship → Index → Checkpoint, then cold-retrieved without the original conversation.",
+    "applicability": {
+      "applies_to": [
+        "ChatGPT",
+        "Codex",
+        "Hub",
+        "NayaNET",
+        "Voice",
+        "Email",
+        "GitHub",
+        "Mobile",
+        "future authorized Nayas"
+      ],
+      "non_goal": "Do not create a second brain, duplicate graph, new authority system, or one Naya Node per note."
+    },
+    "connections": [
+      {
+        "type": "IMPLEMENTS",
+        "target": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md"
+      },
+      {
+        "type": "USES",
+        "target": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts"
+      },
+      {
+        "type": "ENABLES",
+        "target": "cold-successor continuity and contextual retrieval"
+      },
+      {
+        "type": "REFINES",
+        "target": "proactive candidate capture"
+      }
+    ],
+    "proof_required": [
+      "Canonical Event, Intelligent Block, Lineage, Relationship, Index, Checkpoint and Receipt persist.",
+      "Independent verifier rereads the persisted objects.",
+      "Persisted block content exactly matches the distilled Smart Note payload.",
+      "Understanding state remains CANDIDATE.",
+      "Owner scope remains PRIVATE.",
+      "A later cold Naya can retrieve and correctly use the intelligence without receiving the original conversation."
+    ],
+    "epistemic_state": "CANDIDATE",
+    "uncertainty": "The current canonical receiver can persist this rich representation as the lesson payload, but first-class structured rich-view fields and full automatic duplicate/reconciliation/relationship inference are not yet proven as generalized runtime behavior."
+  },
+  "category": "SYSTEM_INTELLIGENCE",
+  "subtopic": "CAPTURE_PROTOCOL",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "projection": {
+    "category_slug": "system-intelligence",
+    "topic_slug": "smart-note-universal-capture",
+    "subtopic_slug": "capture-protocol"
+  }
+}

@@ -1,0 +1,163 @@
+name: Collective Chain Readiness Gate
+
+# The Collective Intelligence Chain is the acceptance test for NayaPOWER. Until this
+# gate ran in CI it was a script nobody executed, which is how the 2026-09-26 reset
+# could delete all 88 migrations, the canonical receiver and the machine contract and
+# leave 8 of 11 links reporting BLOCKED_NO_RUNTIME for two days without detection.
+#
+# This workflow makes the instrument mandatory WITHOUT making the chain pass.
+#
+# Enforcement rule: this build fails on REGRESSION, not on incompleteness.
+# The chain is 2/11 today. A gate that is red forever blocks every merge and is
+# therefore ignored, which is the same failure mode as no gate at all. So the gate
+# measures, records durable evidence, and fails ONLY if the measured number drops
+# below the committed baseline in BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json.
+# Closing the remaining 9 links raises the baseline; it never fakes one.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  chain-readiness-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install gate dependencies
+        run: python -m pip install --quiet jsonschema
+
+      # Controls run FIRST. A gate that can only ever report one answer is worthless,
+      # so we prove the gate still discriminates BEFORE trusting any verdict from it.
+      - name: Prove the gate still discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py
+
+      - name: Measure collective intelligence chain readiness
+        id: measure
+        run: |
+          set +e
+          python BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py \
+            | tee chain-readiness-report.txt
+          status=${PIPESTATUS[0]}
+          set -e
+          if [ "$status" -gt 1 ]; then
+            echo "FAIL: collective readiness measurement instrument errored (exit $status)."
+            exit "$status"
+          fi
+          satisfied=$(grep -oE '[0-9]+/11 links SATISFIED' chain-readiness-report.txt \
+            | grep -oE '^[0-9]+' || echo 0)
+          echo "satisfied=$satisfied" >> "$GITHUB_OUTPUT"
+          echo "gate_exit=$status" >> "$GITHUB_OUTPUT"
+          echo "Measured $satisfied/11 chain links SATISFIED (gate exit $status)."
+
+      # Evidence is published as a workflow artifact, not committed by a bot.
+      # github-actions[bot] has no push permission on this repository, and granting
+      # it is a human authority decision, not a workflow's to make. A failing
+      # auto-commit step would also mask the real verdict behind a permissions error.
+      - name: Publish measured readiness as durable evidence
+        if: always()
+        run: |
+          {
+            echo '### Collective Intelligence Chain - measured readiness'
+            echo ''
+            echo '```'
+            cat chain-readiness-report.txt 2>/dev/null || echo 'no report captured'
+            echo '```'
+            echo ''
+            echo "HEAD \`$GITHUB_SHA\` | measured ${{ steps.measure.outputs.satisfied }}/11 SATISFIED"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload readiness report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chain-readiness-${{ github.sha }}
+          path: chain-readiness-report.txt
+          if-no-files-found: error
+
+      # The only step allowed to turn the build red.
+      - name: Enforce no regression against committed baseline
+        run: |
+          python - <<'PY'
+          import json, os, sys, pathlib
+          base_file = pathlib.Path('BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json')
+          base = json.loads(base_file.read_text(encoding='utf-8')) if base_file.is_file() else None
+          measured = int(os.environ['MEASURED'])
+          if base is None:
+              print(f'No baseline recorded. First measurement: {measured}/11. Recording as baseline.')
+              sys.exit(0)
+          floor = int(base['satisfied_links_floor'])
+          print(f'baseline floor={floor}/11   measured={measured}/11')
+          if measured < floor:
+              print(f'REGRESSION: chain readiness fell below the committed floor of {floor}/11.')
+              sys.exit(1)
+          if measured > floor:
+              print(f'IMPROVEMENT: {measured}/11 exceeds floor {floor}/11. '
+                    f'Record the new floor deliberately; do not let it drift silently.')
+          print('No regression. The chain is not required to be complete for this build to pass.')
+          PY
+        env:
+          MEASURED: ${{ steps.measure.outputs.satisfied }}
+
+      # --- Brain schema migration coherence -----------------------------------
+      # PR #881 recovered 88 migrations the 2026-09-26 reset had deleted. Recovering a
+      # file is not proving it is sound. This gate asks whether those migrations can
+      # rebuild the brain schema from empty. They cannot: core tables, including the
+      # canonical event store and the Intelligent Block identity table, are created by
+      # no migration at all. Same discipline as above -- fail on regression, not on the
+      # known defect, so the debt can never silently grow.
+      - name: Prove the migration gate discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py
+
+      - name: Prove the baseline enforcement discriminates (controls)
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-baseline-controls.py
+
+      - name: Measure brain schema migration coherence
+        id: coherence
+        run: |
+          set +e
+          python BRAIN/12-ENGINEERING/verify-migration-coherence.py | tee migration-coherence.txt
+          set -e
+          # Machine-readable form, so the baseline check compares finding IDENTITIES
+          # rather than a bare count. A count cannot be regressed against safely: it
+          # says nothing about which table regressed.
+          #
+          # The gate exits 1 when it FINDS defects, which is its normal behaviour and is
+          # not itself a build failure -- the debt is expected and recorded. Only an
+          # exit above 1 means the instrument itself broke, and that must stop the build,
+          # because otherwise a broken instrument silently reports zero findings.
+          set +e
+          python BRAIN/12-ENGINEERING/verify-migration-coherence.py --json > migration-coherence.json
+          json_rc=$?
+          set -e
+          if [ "$json_rc" -gt 1 ]; then
+            echo "FAIL: the migration gate itself errored (exit $json_rc); its measurement cannot be trusted."
+            exit "$json_rc"
+          fi
+          defects=$(python -c "import json;print(json.load(open('migration-coherence.json'))['defect_count'])")
+          echo "defects=${defects:-0}" >> "$GITHUB_OUTPUT"
+          echo "Measured $defects migration coherence defect(s) (gate exit $json_rc: defects found, as recorded)."
+
+      # This step previously began with `set +e` and ended with an unconditional
+      # `exit 0`, which made it incapable of failing. It printed a real regression
+      # ("floor=11 measured=14") on run 36501228953 and the job still succeeded, so new
+      # migration debt reached main unnoticed. There is no `set +e` and no `exit 0` here
+      # now: the script's exit status is the step's exit status.
+      - name: Enforce no unrecorded migration debt
+        if: always()
+        run: python BRAIN/12-ENGINEERING/verify-migration-coherence-baseline.py . migration-coherence.json
+
+      - name: Upload migration coherence report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-coherence
+          path: |
+            migration-coherence.txt
+            migration-coherence.json
+          if-no-files-found: error
+          retention-days: 90
