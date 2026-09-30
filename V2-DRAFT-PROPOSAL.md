@@ -26,9 +26,14 @@ are carried unchanged.
 2. **Content hash (registry scheme, as v1):**
    `sha256(canonical_json(content))` with `sort_keys=True`,
    `separators=(',',':')`, `ensure_ascii=False`.
+   **Do not confuse this registry content-object hash with the runtime receipt
+   field named `content_hash`: the current commit runtime's `content_hash`
+   remains the SHA-256 of the raw lesson text (`p_content`) for historical
+   compatibility. v2 MUST recompute its block-content hash from an independent
+   reread of the persisted `nayanet_intelligent_blocks.content` object.**
 3. **Capability delta:** adding the validated `capabilities` array is the ONLY
-   content change vs the v1 revision; the hash delta is deterministic and
-   attributable solely to that key.
+   content change vs the v1 revision; the registry hash delta is deterministic
+   and attributable solely to that key.
 
 ### Worked fixture example (illustrative, not real blocks)
 
@@ -64,11 +69,39 @@ v1 frozen references (carried, not recomputed here):
 - negative-transfer: `IB-SMART-NOTE-20260930-sn014-compounding-imperative` /
   `318b7a0682f6a5b9d3fe41531c01773d00fae653c2e49d3170fa23a5838a0441`
 
+## Production revision rule (hole closed before execution)
+
+For **active-intelligence-001**, the v2 experiment blocks MUST be created by the
+full canonical intelligence-commit path so they carry Event → Block → Lineage →
+Relationship → Index → Checkpoint → receipt evidence required by
+`nayanet-learning-verify`.
+
+The existing block-only supersession writer does not create that full chain and
+therefore MUST NOT be used as a substitute for the v2 experiment commit. The
+follow-up integrity repair preserves capability metadata when generic
+supersession is used, but that does not upgrade supersession into a learning
+commit.
+
+For this experiment, the safe sequence is therefore:
+
+1. governed fresh re-commit of SN-013/SN-014 with the new capability metadata;
+2. independent reread of the persisted full chain;
+3. recompute v2 block-content hashes from persisted `content`;
+4. promote only the v2 blocks through `nayanet-learning-verify`;
+5. leave the v1 persisted rows unchanged during the experiment. They carry no
+   new capability metadata and therefore cannot satisfy the v2 capability
+   queries. The immutable v1→v2 predecessor relation is recorded in the frozen
+   v2 artifact.
+
+Graph-level supersession of those historical v1 rows is a separate cleanup
+operation and MUST NOT be allowed to create a second successor or replace the
+full-chain v2 block. If/when performed, it requires a proven link-to-existing
+successor seam or an atomic revision-capable commit seam.
+
 ## Explicit non-goals
 
 - No v2 witnessing happens on this branch.
 - No re-commit of SN-013/SN-014 (production data change — separate governed phase).
 - No promotion, no state change, no execution authorization.
-- The supersede RPC is the governed revision path for production, but it is
-  **not invoked** during this branch build (repair now, production revision
-  later — separate phases).
+- No block-only supersession is used to manufacture the v2 experimental
+  successor.
