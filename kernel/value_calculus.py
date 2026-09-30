@@ -387,7 +387,33 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
     if delta_v_actual is not None:
         actual = _finite(delta_v_actual, "delta_v_actual")
         error = abs(predicted - actual) if predicted is not None else None
-        d_verified = max(-9.0, min(9.0, actual))
+        d_verified = max(-10.0, min(10.0, actual))
+    return {
+        "receipt_type": "ALIGNMENT_DECISION",
+        "schema_version": "2.1",
+        "engine_version": ENGINE_VERSION,
+        "decision_id": decision_id,
+        "objective": objective,
+        "baseline_id": baseline_id,
+        "stakeholders": list(stakeholders),
+        "horizon": horizon,
+        "evaluation": dict(evaluation),
+        "authority_basis": authority_basis,
+        "evidence_refs": list(evidence_refs),
+        "observation_window": dict(observation_window),
+        "verification": verification,
+        "delta_v_predicted": predicted,
+        "delta_v_actual": delta_v_actual,
+        "d_verified": d_verified,
+    legacy_to_canonical = {
+        "EXECUTE": "ACT",
+        "RESEARCH": "READ_MORE",
+        "BRIEF": "ASK",
+        "REWORK": "REFUSE",
+    }
+    resolution = evaluation.get("resolution")
+    if resolution is None:
+        resolution = legacy_to_canonical.get(evaluation.get("decision"), "ASK")
     return {
         "receipt_type": "ALIGNMENT_DECISION",
         "schema_version": "2.1",
@@ -406,6 +432,11 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
         "delta_v_actual": delta_v_actual,
         "d_verified": d_verified,
         "calibration_error": error,
+        "decision_resolution": resolution,
+        "signed_value": evaluation.get("selected_signed_value"),
+        "quality": evaluation.get("selected_quality"),
+        "confidence": evaluation.get("selected_confidence"),
+        "value_interval": evaluation.get("selected_value_interval"),
     }
 
 
@@ -531,3 +562,6 @@ def build_contribution_receipt(
         "evidence_refs": list(evidence_refs),
         "verification": verification,
     }
+
+
+
