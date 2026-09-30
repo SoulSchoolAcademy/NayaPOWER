@@ -160,6 +160,19 @@ def test_idempotent_replay_recovers_missing_outcome_from_bound_receipt():
     assert execute.count('from("nayanet_execution_outcomes")') >= 2
 
 
+def test_concurrent_outcome_writers_converge_on_unique_receipt_outcome():
+    source = FUNCTION.read_text(encoding="utf-8")
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    # Both the recovery writer and original writer must treat receipt_id uniqueness
+    # as convergence, not as a fatal write error.
+    assert 'recoveryError.code !== "23505"' in execute
+    assert 'outcomeError.code !== "23505"' in execute
+    assert "OUTCOME_RECOVERY_RACE_UNRESOLVED" in execute
+    assert "OUTCOME_WRITE_RACE_UNRESOLVED" in execute
+    assert execute.count('.eq("receipt_id", receipt.id)') >= 3
+    assert 'from("nayanet_execution_outcomes")' in execute
+
+
 def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
     source = FUNCTION.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
