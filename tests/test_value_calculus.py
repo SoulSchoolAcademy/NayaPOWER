@@ -409,3 +409,21 @@ def test_recalibration_is_versioned_and_cannot_self_promote(profile):
     promoted = promote_recalibration(receipt, profile, verified=True, authorized=True)
     assert promoted.version == "2.1-cal-1"
     assert promoted.interval_epsilon == pytest.approx(0.1)
+
+
+@pytest.mark.parametrize("actual", [-10.0, 10.0])
+def test_verified_receipt_preserves_full_signed_value_boundary(actual):
+    receipt = build_decision_receipt(
+        decision_id="D-boundary",
+        objective="preserve signed value",
+        baseline_id="base",
+        stakeholders=[],
+        horizon="test",
+        evaluation={"selected": None, "decision": REFUSE, "rows": []},
+        authority_basis="test-only",
+        evidence_refs=["test:boundary"],
+        observation_window={},
+        verification="VERIFIED_PASS",
+        delta_v_actual=actual,
+    )
+    assert receipt["d_verified"] == pytest.approx(actual)
