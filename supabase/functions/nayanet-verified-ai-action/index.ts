@@ -320,7 +320,17 @@ Deno.serve(async (req) => {
               })
               .select("outcome_id,receipt_id,verified,verification_method")
               .single();
-            if (recoveryError) throw new Error("OUTCOME_RECOVERY_WRITE_" + recoveryError.code);
+            if (recoveryError) {
+              if (recoveryError.code !== "23505") throw new Error("OUTCOME_RECOVERY_WRITE_" + recoveryError.code);
+              const {data: concurrentOutcome, error: concurrentReadError} = await admin
+                .from("nayanet_execution_outcomes")
+                .select("outcome_id,receipt_id,verified,verification_method")
+                .eq("receipt_id", receipt.id)
+                .maybeSingle();
+              if (concurrentReadError) throw concurrentReadError;
+              if (!concurrentOutcome) throw new Error("OUTCOME_RECOVERY_RACE_UNRESOLVED");
+              return concurrentOutcome;
+            }
             return recovered;
           };
           const recoveredOutcome = await recoverOutcomeFromReceipt();
@@ -336,7 +346,7 @@ Deno.serve(async (req) => {
         return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt, outcome: replayOutcome});
       }
 
-      const {data: outcome, error: outcomeError} = await admin
+      const {data: insertedOutcome, error: outcomeError} = await admin
         .from("nayanet_execution_outcomes")
         .insert({
           receipt_id: receipt.id,
@@ -368,7 +378,19 @@ Deno.serve(async (req) => {
         })
         .select("*")
         .single();
-      if (outcomeError) throw new Error("OUTCOME_WRITE_" + outcomeError.code);
+
+      let outcome = insertedOutcome;
+      if (outcomeError) {
+        if (outcomeError.code !== "23505") throw new Error("OUTCOME_WRITE_" + outcomeError.code);
+        const {data: concurrentOutcome, error: concurrentReadError} = await admin
+          .from("nayanet_execution_outcomes")
+          .select("*")
+          .eq("receipt_id", receipt.id)
+          .maybeSingle();
+        if (concurrentReadError) throw concurrentReadError;
+        if (!concurrentOutcome) throw new Error("OUTCOME_WRITE_RACE_UNRESOLVED");
+        outcome = concurrentOutcome;
+      }
 
       return json({
         ok: true,
