@@ -46,12 +46,19 @@ def test_every_mutating_promotion_step_is_gated_after_policy_denial():
         "Dispatch canonical fresh-intelligence producer after deployment",
         "Dispatch canonical end-to-end runtime proof after producer",
         "Dispatch canonical ACT proof after deployment",
-        "Write durable production promotion receipt",
     )
     condition = "if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'"
     for name in names:
         pattern = rf"- name: {re.escape(name)}\n        {re.escape(condition)}"
         assert re.search(pattern, text), f"{name} must not run after a standing-policy denial"
+
+
+def test_blocked_standing_policy_emits_durable_non_deployment_receipt():
+    text = _text(PROMOTION)
+    assert '"status":"BLOCKED"' in text
+    assert '"machine_deployment":{"attempted":False}' in text
+    assert '"canonical_proof":{"executed":False}' in text
+    assert "production-promotion-denial.json" in text
 
 
 def test_explicit_wrong_sha_still_fails_closed():
