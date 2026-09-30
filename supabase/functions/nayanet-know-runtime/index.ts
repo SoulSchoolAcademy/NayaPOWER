@@ -142,7 +142,12 @@ Deno.serve(async(req)=>{
       const liveConsentRequired=universeNeedsLiveConsent(universe);
       const liveConsent=liveConsentRequired?await readLiveConsent(admin,OWNER_ID):null;
       const consentAwareUniverse=withLiveConsent(universe,liveConsent);
-      const result=selectKnowContext(request,consentAwareUniverse);
+      // Selection-time is pinned and recorded: temporal gates are evaluated
+      // as-of this moment, and delayed-inspect must replay the same now
+      // (PROVE time-bomb class: H1 / PR #1120 — never recompute historical
+      // decisions with wall-clock now).
+      const selectionNow=new Date();
+      const result=selectKnowContext(request,consentAwareUniverse,selectionNow);
       const receipt=await insertReceipt(admin,{
         user_id:OWNER_ID,project_id:PROJECT_ID,action:"know_context_retrieval",status:"SUCCESS",
         expected_result:"KNOW selects only owner-scoped current intelligence applicable to caller task context without caller-supplied answer/block identity.",
@@ -150,6 +155,7 @@ Deno.serve(async(req)=>{
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
           authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
           live_consent_checked:liveConsentRequired,live_consent_active:liveConsent,
+          selection_now:selectionNow.toISOString(),
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
@@ -170,7 +176,15 @@ Deno.serve(async(req)=>{
       const liveConsentRequired=universeNeedsLiveConsent(universe);
       const liveConsent=liveConsentRequired?await readLiveConsent(admin,OWNER_ID):null;
       const consentAwareUniverse=withLiveConsent(universe,liveConsent);
-      const recomputed=selectKnowContext(request,consentAwareUniverse);
+      // Replay the selection-time, never wall-clock now: temporal gates must
+      // be evaluated exactly as they were at selection. Consent stays live
+      // (present-tense, fail-closed) by design — only the temporal now is
+      // replayed. Fallback chain: recorded selection_now → receipt created_at
+      // (legacy receipts, pre-V2 wiring) → wall clock as last resort.
+      const recordedNowRaw=receipt.evidence?.selection_now??receipt.created_at??null;
+      const recordedNowMs=recordedNowRaw!==null?Date.parse(String(recordedNowRaw)):NaN;
+      const inspectNow=Number.isFinite(recordedNowMs)?new Date(recordedNowMs):new Date();
+      const recomputed=selectKnowContext(request,consentAwareUniverse,inspectNow);
       const recorded=receipt.evidence?.result??{};
       const sameTask=receipt.evidence?.request?.task_id===request.task_id &&
         receipt.evidence?.request?.task_class===request.task_class &&

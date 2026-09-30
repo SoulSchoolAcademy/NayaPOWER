@@ -229,3 +229,68 @@ test("V2-N10: unrecognized status fails closed", () => {
   const attack = sel(universe(edge));
   assert.deepEqual(relatedIds(attack), []);
 });
+
+// ---------------------------------------------------------------------------
+// V2-N11 / V2-N12: delayed-inspect must replay the selection-time now.
+// The handler records selection_now at retrieve and replays it at inspect;
+// recomputing with wall-clock now is the H1/PROVE time-bomb class. A
+// SUPERSEDES edge whose valid_until lies between selection and inspect must
+// still redirect the chase under replay (V2-N11), and wall-clock recompute
+// without replay must NOT agree (V2-N12 proves the gate is non-vacuous).
+// ---------------------------------------------------------------------------
+
+test("V2-N11: inspect replaying selection-now agrees across a temporal boundary", () => {
+  const T_SELECT = new Date("2026-09-30T12:00:00Z");
+  const T_INSPECT = new Date("2026-09-30T14:00:00Z"); // edge expired here
+  const newer = block({ intelligent_block_id: "IB-NEWER", updated_at: "2026-09-28T00:00:00Z" });
+  const older = block({
+    intelligent_block_id: "IB-OLDER",
+    connections: [
+      {
+        target_block_id: "IB-NEWER",
+        relationship_type: "SUPERSEDES",
+        status: "ACTIVE",
+        valid_from: "2026-09-29T00:00:00Z",
+        valid_until: "2026-09-30T13:00:00Z", // live at selection, expired at inspect
+      },
+    ],
+  });
+  const blocks = [older, newer];
+  // retrieve at T_SELECT (records selection_now)
+  const selected = selectKnowContext(req(), blocks, T_SELECT);
+  assert.equal(selected.status, "HIT");
+  assert.equal(selected.selected_block_id, "IB-NEWER");
+  assert.match(selected.reason, /SUPERSEDES_EDGE_FOLLOWED/);
+  // inspect at T_INSPECT, replaying the recorded selection now
+  const recomputed = selectKnowContext(req(), blocks, T_SELECT);
+  assert.equal(recomputed.status, selected.status);
+  assert.equal(recomputed.selected_block_id, selected.selected_block_id);
+  assert.equal(recomputed.applicable, selected.applicable);
+  assert.equal(recomputed.reason, selected.reason);
+});
+
+test("V2-N12: wall-clock inspect without replay disagrees (the bug V2-N11 guards)", () => {
+  const T_SELECT = new Date("2026-09-30T12:00:00Z");
+  const T_INSPECT = new Date("2026-09-30T14:00:00Z");
+  const newer = block({ intelligent_block_id: "IB-NEWER", updated_at: "2026-09-28T00:00:00Z" });
+  const older = block({
+    intelligent_block_id: "IB-OLDER",
+    connections: [
+      {
+        target_block_id: "IB-NEWER",
+        relationship_type: "SUPERSEDES",
+        status: "ACTIVE",
+        valid_from: "2026-09-29T00:00:00Z",
+        valid_until: "2026-09-30T13:00:00Z",
+      },
+    ],
+  });
+  const blocks = [older, newer];
+  const selected = selectKnowContext(req(), blocks, T_SELECT);
+  assert.equal(selected.selected_block_id, "IB-NEWER");
+  // Without replay — the pre-repair handler behavior — the expired chase is
+  // not followed: false KNOW_SELECTION_MISMATCH on a correct selection.
+  const drifted = selectKnowContext(req(), blocks, T_INSPECT);
+  assert.equal(drifted.selected_block_id, "IB-OLDER");
+  assert.notEqual(drifted.selected_block_id, selected.selected_block_id);
+});
