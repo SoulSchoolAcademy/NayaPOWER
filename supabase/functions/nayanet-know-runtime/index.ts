@@ -59,6 +59,26 @@ async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
   return data as KnowGrant|null;
 }
 
+async function readLiveConsent(admin:ReturnType<typeof adminClient>,ownerId:string){
+  // Canonical runtime consent consumer. UNKNOWN/error must fail closed.
+  const {data,error}=await admin.rpc("nayanet_consent_is_active",{p_owner_id:ownerId});
+  if(error) return false;
+  return data===true;
+}
+
+function withLiveConsent(universe:any[],active:boolean){
+  return universe.map((block:any)=>({
+    ...block,
+    connections:Array.isArray(block?.connections)
+      ? block.connections.map((conn:any)=>{
+          const visibility=String(conn?.visibility??"").trim().toUpperCase();
+          if(!visibility || visibility==="PRIVATE") return conn;
+          return {...conn,live_consent_active:active};
+        })
+      : block?.connections
+  }));
+}
+
 async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
     .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at,connections")
@@ -111,13 +131,16 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason,retrieval_creates_authority:false},403);
       const universe=await readEligibleUniverse(admin);
-      const result=selectKnowContext(request,universe);
+      const liveConsent=await readLiveConsent(admin,OWNER_ID);
+      const consentAwareUniverse=withLiveConsent(universe,liveConsent);
+      const result=selectKnowContext(request,consentAwareUniverse);
       const receipt=await insertReceipt(admin,{
         user_id:OWNER_ID,project_id:PROJECT_ID,action:"know_context_retrieval",status:"SUCCESS",
         expected_result:"KNOW selects only owner-scoped current intelligence applicable to caller task context without caller-supplied answer/block identity.",
         observed_result:result.status+":"+(result.selected_block_id??"NONE"),
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
           authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
+          live_consent_checked:true,live_consent_active:liveConsent,
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
@@ -135,7 +158,9 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
-      const recomputed=selectKnowContext(request,universe);
+      const liveConsent=await readLiveConsent(admin,OWNER_ID);
+      const consentAwareUniverse=withLiveConsent(universe,liveConsent);
+      const recomputed=selectKnowContext(request,consentAwareUniverse);
       const recorded=receipt.evidence?.result??{};
       const sameTask=receipt.evidence?.request?.task_id===request.task_id &&
         receipt.evidence?.request?.task_class===request.task_class &&
@@ -147,6 +172,7 @@ Deno.serve(async(req)=>{
       return json({ok:same,status:same?"KNOW_SELECTION_VERIFIED":"KNOW_SELECTION_MISMATCH",independent_verification:same,
         executor_claim_trusted_as_verification:false,node_id:"NAYA-KERNEL-KNOW",request,recorded,recomputed,
         authority_basis:{law_receipt_id:lawReceipt.id,authority_grant_id:authority.ok?authority.authority_grant_id:null,retrieval_creates_authority:false},persisted_universe_reread:true,
+        live_consent_checked:true,live_consent_active:liveConsent,
         handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",workflow_ref:workflowRef,token_jti:payload.jti??null},same?200:409);
     }
 
