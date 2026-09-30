@@ -6,7 +6,10 @@ MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective
 
 def _sql() -> str:
     assert MIGRATION.exists(), "collective-wisdom consent/revocation hardening migration is required"
-    return " ".join(MIGRATION.read_text(encoding="utf-8").split()).lower()
+    sql = " ".join(MIGRATION.read_text(encoding="utf-8").split()).lower()
+    for token in ("(", ")", ",", "="):
+        sql = sql.replace(" " + token, token).replace(token + " ", token)
+    return sql
 
 
 def test_collective_feed_has_safe_authenticated_read_without_raw_owner_or_provenance_grant():
