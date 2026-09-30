@@ -203,7 +203,7 @@
     "current_frontier": {
       "issue": 66,
       "state": "POST_PROVE_LAW_KNOW_BINDING_AND_TWO_OWNER_SOURCE_HARDENING_DEPLOYMENT_BLOCKED",
-      "next": "Refresh the existing Brain/Operations projection against exact main fa5c0a06 and require a fresh Current Truth Resolver result. Then explicit Human Director DEPLOY is required for exact protected LAW/KNOW/causal runtime and pending #1070 migration parity. After deployed parity, rerun PROVE exactly once; two-owner live consent/revocation proof, Coda 2 replay/recovery, #1042 mission semantics and #1044 fresh successors remain distinct gates."
+      "next": "Integrate the existing Brain/Operations projection refresh against exact main a07728a4 and require a fresh Current Truth Resolver result. Then explicit Human Director DEPLOY is required for exact protected LAW/KNOW/causal runtime and pending #1070 migration parity. After deployed parity, rerun PROVE exactly once; graph V2 remains source-contract hardening only until runtime/held-out proof."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -261,9 +261,10 @@
       "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b"
     },
     "two_owner_nayanet": "SOURCE_HARDENING_MERGED_AF065BB4; MIGRATION_20260930022500_PENDING_NOT_PRODUCTION_APPLIED; LIVE_TWO_OWNER_CONSENT_READ_REVOKE_FUTURE_DENY_NOT_PROVEN",
-    "current_main_prove": "RUN_36658635227_FAILED_BEFORE_PROVE_AT_WORKFLOW_BINDING; PR_1069_LAW_BINDING_MERGED_C6AC19C4; PR_1072_KNOW_BINDING_MERGED_FA5C0A06; LIVE_DEPLOYMENT_PARITY_AND_FRESH_PROVE_RERUN_PENDING"
+    "current_main_prove": "RUN_36658635227_FAILED_BEFORE_PROVE_AT_WORKFLOW_BINDING; PR_1069_LAW_BINDING_MERGED_C6AC19C4; PR_1072_KNOW_BINDING_MERGED_FA5C0A06; LIVE_DEPLOYMENT_PARITY_AND_FRESH_PROVE_RERUN_PENDING",
+    "graph_v2_contract": "PR_1077_MERGED_A07728A4; MACHINE_VALIDATABLE_RELATIONSHIP_CONTRACT_AND_FAIL_CLOSED_VALIDATOR_SOURCE_ONLY; RUNTIME_CONNECT_GENERALIZATION_NOT_PROVEN"
   },
-  "last_reconciled_main": "fa5c0a063c55badb6960c452dbf8291aad390355",
+  "last_reconciled_main": "a07728a456ffb8d662f83b48e9f625ea3dc9779e",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -271,12 +272,12 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Fresh Current Truth Resolver after post-#1070/#1072 projection refresh; then explicit Human Director DEPLOY for exact protected runtime/migration parity; then one fresh PROVE rerun.",
+    "next_proof": "Fresh Current Truth Resolver after exact-main a07728a4 projection refresh; then explicit Human Director DEPLOY for protected runtime/migration parity; then one fresh PROVE rerun.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
     "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
-    "next_system_frontier": "CURRENT_TRUTH_REFRESH_THEN_EXPLICIT_DEPLOY_PROVE_CAUSAL_AND_TWO_OWNER_PARITY; PARALLEL_CODA2_REPLAY_RECOVERY; HUMAN_1042; FRESH_1044"
+    "next_system_frontier": "CURRENT_TRUTH_REFRESH_THEN_EXPLICIT_DEPLOY_PROVE_CAUSAL_AND_TWO_OWNER_PARITY; GRAPH_V2_SOURCE_CONTRACT_INTEGRATED_RUNTIME_PROOF_PENDING; PARALLEL_CODA2_REPLAY_RECOVERY"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
