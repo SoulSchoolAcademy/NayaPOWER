@@ -1,4 +1,5 @@
 import json
+import re
 import importlib.util
 from pathlib import Path
 
@@ -90,10 +91,17 @@ def test_sn002_is_registered_to_live_canonical_runtime():
     assert entry["proven_relationship"]["relationship_type"] == "PRODUCES"
     assert entry["proof_boundary"]["universal_nine_node_binding"] == "NOT_PROVEN"
 
-def test_sequence_policy_advances_after_sn002():
+def _max_allocated_sn_number():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
-    assert reg["sequence_policy"]["next_sequence"] == 4
-    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-004"
+    nums = [int(m.group(1)) for e in reg.get("entries", [])
+            for m in [re.fullmatch(r"SN-(\d+)", str(e.get("smart_note_id", "")))] if m]
+    return reg, max(nums) if nums else 0
+
+
+def test_sequence_policy_advances_after_sn002():
+    reg, maxn = _max_allocated_sn_number()
+    assert reg["sequence_policy"]["next_sequence"] == maxn + 1
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
 
 
 def test_projection_workflow_publishes_active_verified_public_projection():
@@ -114,15 +122,14 @@ def test_projection_workflow_stages_brain_projection_and_registry():
 
 
 def test_sequence_policy_advances_past_sn003():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
-    assert reg["sequence_policy"]["next_sequence"] == 4
-    assert mod.allocate_smart_note_id({"source":{"captured_at":"2026-09-29"}}, "IB-NEW") == "SN-004"
+    reg, maxn = _max_allocated_sn_number()
+    assert reg["sequence_policy"]["next_sequence"] == maxn + 1
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
 
 
 def test_live_intelligence_proof_is_capture_triggered_not_arbitrary_main_push():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert '".naya/capture/**"' in workflow
-
 
 def _verify_for_lesson(lesson, block_id="IB-SN004-TEST"):
     return {
