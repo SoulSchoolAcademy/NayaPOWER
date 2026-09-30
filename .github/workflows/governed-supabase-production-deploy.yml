@@ -204,8 +204,8 @@ jobs:
             {
               echo "### Automatic production promotion: BLOCKED"
               echo
-              echo "- source: `$GITHUB_SHA`"
-              echo "- reason: `$reason`"
+              printf -- '- source: `%s`\n' "$GITHUB_SHA"
+              printf -- '- reason: `%s`\n' "$reason"
               echo "- result: no production mutation attempted"
             } >> "$GITHUB_STEP_SUMMARY"
           else

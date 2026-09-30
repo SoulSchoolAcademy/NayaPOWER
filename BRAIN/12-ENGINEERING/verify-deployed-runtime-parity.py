@@ -176,11 +176,20 @@ def evaluate(observation: dict | None, source_changed_since_observation: bool | 
             "commit actually deployed, then redeploy."
         ]
     expected = str(observation["canonical_commit_observed"])
-    if not str(revision).startswith(expected[:8]) and not expected.startswith(str(revision)[:8]):
-        return "STALE", [
-            f"the deployed artifact was built from {str(revision)[:8]} but canonical source is at "
-            f"{expected[:8]}. Canonical source has advanced past what is deployed. Redeploy."
-        ]
+    same_revision = str(revision).startswith(expected[:8]) or expected.startswith(str(revision)[:8])
+    if not same_revision:
+        if source_changed_since_observation is None:
+            return "UNKNOWN", [
+                "the runtime revision differs from the observed canonical commit, but deployable source "
+                "equivalence could not be established"
+            ]
+        if source_changed_since_observation:
+            return "STALE", [
+                f"the deployed artifact was built from {str(revision)[:8]} and deployable function source "
+                f"differs at canonical {expected[:8]}. Redeploy."
+            ]
+        # Repository history moved, but the deployable function source is byte-equivalent.
+        # Treat this as source-equivalent rather than forcing a no-op redeploy.
 
     receipt = document.get("receipt")
     if not isinstance(receipt, dict):
@@ -218,7 +227,10 @@ def main() -> int:
     if OBSERVATION.exists():
         observation = json.loads(OBSERVATION.read_text(encoding="utf-8"))
 
-    changed = deployed_source_changed_since((observation or {}).get("canonical_commit_observed", ""))
+    observation_commit = (observation or {}).get("canonical_commit_observed", "")
+    runtime_revision = str(((observation or {}).get("observed_document") or {}).get("deployed_source_revision") or "")
+    comparison_base = runtime_revision if runtime_revision and runtime_revision != contract.UNSTAMPED else observation_commit
+    changed = deployed_source_changed_since(comparison_base)
     contract_edited = contract_changed_since((observation or {}).get("canonical_commit_observed", ""))
     verdict, findings = evaluate(observation, changed)
 
@@ -233,7 +245,7 @@ def main() -> int:
         print(f"provenance      : {observation.get('provenance', 'unrecorded')}")
         if observation.get("artifact_digest_sha256"):
             print(f"artifact sha256 : {observation['artifact_digest_sha256'][:32]}...")
-    print(f"deployed source moved : {changed}")
+    print(f"deployed source differs from runtime revision : {changed}")
     print(f"contract edited since : {contract_edited}  (informational only)")
     print(f"VERDICT         : {verdict}")
     for f in findings:

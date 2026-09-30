@@ -1,9 +1,3 @@
--- Repair canonical intelligence lineage and revision serialization regressions.
--- Failure evidence: producer run 36760517794 reached the writer after authority
--- and digest succeeded, then failed SQLSTATE 23503 because target_event_id received
--- the Intelligent Block UUID instead of a cognition-event UUID. Historical migration
--- 20260928180632 already established target_event_id=event_row and advisory locking.
-
 create or replace function public.nayanet_intelligence_commit(
   p_event_id text, p_title text, p_content text, p_category text, p_topic text, p_target_id text,
   p_authority_grant_id uuid, p_project_id text default 'NayaNET', p_connections jsonb default null)
@@ -46,27 +40,14 @@ begin
   insert into public.nayanet_brain_relationships(relationship_id,owner_id,source_id,target_id,relationship_type,provenance,epistemic_state)
   values(gen_random_uuid(),uid,'NAYA-KERNEL-KNOW',intelligent_id,'PRODUCES',jsonb_build_object('source_event_id',event_row,'lineage_id',lineage_row,'receipt_id',receipt_id,'authority_grant_id',p_authority_grant_id,'reason','Canonical KNOW ownership of the persisted lesson.'),'CANDIDATE')
   returning relationship_id into relationship_row;
-
-  -- CONNECT closure: persist every normalized caller-supplied edge in the
-  -- ONE canonical graph store. block.connections remains a projection.
   for v_elem in select * from jsonb_array_elements(v_connections)
   loop
     insert into public.nayanet_brain_relationships(
       relationship_id,owner_id,source_id,target_id,relationship_type,provenance,epistemic_state
     )
     values(
-      gen_random_uuid(),
-      uid,
-      intelligent_id,
-      v_elem->>'target_block_id',
-      upper(v_elem->>'relationship_type'),
-      jsonb_build_object(
-        'source_event_id',event_row,
-        'block_row_id',block_row,
-        'receipt_id',receipt_id,
-        'authority_grant_id',p_authority_grant_id,
-        'writer','nayanet_intelligence_commit:R1_CONNECTION'
-      ),
+      gen_random_uuid(),uid,intelligent_id,v_elem->>'target_block_id',upper(v_elem->>'relationship_type'),
+      jsonb_build_object('source_event_id',event_row,'block_row_id',block_row,'receipt_id',receipt_id,'authority_grant_id',p_authority_grant_id,'writer','nayanet_intelligence_commit:R1_CONNECTION'),
       'CANDIDATE'
     )
     on conflict (owner_id,source_id,target_id,relationship_type) do nothing;

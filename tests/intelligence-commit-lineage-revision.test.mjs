@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const path = 'supabase/migrations/20260930190000_fix_intelligence_commit_lineage_revision_v2.sql';
+const path = 'supabase/migrations/20260930191233_fix_intelligence_commit_lineage_revision_v2.sql';
 const sql = fs.readFileSync(path, 'utf8');
 
 test('intelligence commit lineage targets a cognition event, not block row', () => {
