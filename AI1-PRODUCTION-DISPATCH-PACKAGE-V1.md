@@ -1,12 +1,12 @@
 # AI1 Production Dispatch Package V1
 
 **Status:** PREPARED / NOT EXECUTED  
-**Prepared from canonical main:** `0af1a157f3df7bf961d85f87ae401ab5f9800b35`  
+**Prepared from canonical main:** `0567ee053c5fb64624bbce2f9c346f780f05222a`  
 **Important:** do **not** promote that SHA for AI1. This preparation pass found a real migration dependency inversion on main. The production candidate must be the exact main SHA **after** the repair in this package is merged and all required gates are green.
 
 ## Why the prior exact SHA is no longer the deploy candidate
 
-The earlier package target `6b4a429472113bdd5b5186d0b9222f44463b273d` is no longer current main. Main advanced to `0af1a157...` with the Brain index regeneration.
+The earlier package target `6b4a429472113bdd5b5186d0b9222f44463b273d` is no longer current main. Main advanced through the Brain index regeneration and its mechanical receipt refresh to `0567ee053c5fb64624bbce2f9c346f780f05222a`.
 
 During dispatch preparation, the two pending AI1 migrations were found in this filename order:
 
