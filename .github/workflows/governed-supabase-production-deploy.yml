@@ -73,6 +73,7 @@ jobs:
           fi
 
       - name: Enforce ratified standing policy before automatic promotion
+        id: standing_policy
         if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -80,6 +81,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          echo "allowed=false" >> "$GITHUB_OUTPUT"
           python - <<'PY'
           import json
           from pathlib import Path
@@ -190,13 +192,30 @@ jobs:
               denial=build_denial_receipt(policy, context, result, {"workflow_run_id":os.environ.get("GITHUB_RUN_ID"),"actor":os.environ.get("GITHUB_ACTOR"),"event":os.environ.get("GITHUB_EVENT_NAME")})
               json.dump(denial,open("production-promotion-denial.json","w"),indent=2)
               print(json.dumps(denial,indent=2))
-              raise SystemExit(f"FAIL CLOSED: machine policy evaluator denied the automatic promotion: reason={result.get('reason')}")
           PY
 
-          echo "standing production policy preconditions: PASS"
-          echo "automatic production promotion is authorized for this candidate."
+          decision="$(python -c 'import json; print(json.load(open("standing-authorization-verdict.json"))["verdict"]["decision"])')"
+          reason="$(python -c 'import json; print(json.load(open("standing-authorization-verdict.json"))["verdict"].get("reason",""))')"
+          if [ "$decision" != "ALLOW" ]; then
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            echo "PROMOTION_ALLOWED=false" >> "$GITHUB_ENV"
+            echo "::notice title=Automatic promotion blocked::$reason. No production mutation attempted."
+            {
+              echo "### Automatic production promotion: BLOCKED"
+              echo
+              echo "- source: `$GITHUB_SHA`"
+              echo "- reason: `$reason`"
+              echo "- result: no production mutation attempted"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "allowed=true" >> "$GITHUB_OUTPUT"
+            echo "PROMOTION_ALLOWED=true" >> "$GITHUB_ENV"
+            echo "standing production policy preconditions: PASS"
+            echo "automatic production promotion is authorized for this candidate."
+          fi
 
       - name: Build provenance-stamped production deployment commit
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -284,6 +303,7 @@ jobs:
           PY
 
       - name: Promote provenance-stamped deployment commit to production branch
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -307,6 +327,7 @@ jobs:
           echo "authorized source revision: $GITHUB_SHA"
 
       - name: Wait for a new Supabase GitHub Integration deployment check
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -358,6 +379,7 @@ jobs:
           done
 
       - name: Revalidate authorized source and deployment ownership before producer
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -369,6 +391,7 @@ jobs:
           test "$production_now" = "$DEPLOYMENT_SHA"
 
       - name: Dispatch canonical fresh-intelligence producer after deployment
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -421,6 +444,7 @@ jobs:
           done
 
       - name: Dispatch canonical end-to-end runtime proof after producer
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -474,6 +498,7 @@ jobs:
           done
 
       - name: Dispatch canonical ACT proof after deployment
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -531,55 +556,77 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json, os
-          supabase_check=json.load(open("supabase-production-check.json"))
-          producer=json.load(open("producer-run.json"))
-          proof=json.load(open("proof-run.json"))
-          act_proof=json.load(open("act-proof-run.json"))
-          receipt={
-            "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
-            "source_sha":os.environ["GITHUB_SHA"],
-            "production_branch":os.environ["PRODUCTION_BRANCH"],
-            "human_authorization":{
-              "type":("STANDING_POLICY" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "EXPLICIT_HUMAN"),
-              "confirmation":("STANDING-PRODUCTION-PROMOTION-V1" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "DEPLOY"),
-              "authorized_source_sha":(os.environ.get("GITHUB_SHA") if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else os.environ.get("AUTHORIZED_SOURCE_SHA")),
-              "actor":os.environ.get("GITHUB_ACTOR"),
-              "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
-            },
-            "machine_deployment":{
-              "mechanism":"SUPABASE_NATIVE_GITHUB_INTEGRATION",
-              "supabase_check_id":supabase_check.get("id"),
-              "supabase_check_name":supabase_check.get("name"),
-              "supabase_check_conclusion":supabase_check.get("conclusion"),
-              "deployment_commit_sha":os.environ["DEPLOYMENT_SHA"],
-              "deployed_source_revision":os.environ["GITHUB_SHA"],
-              "source_tree_sha":os.environ["SOURCE_TREE_SHA"],
-              "deployment_tree_sha":os.environ["DEPLOYMENT_TREE_SHA"],
-              "attested_components":["nayanet-cold-runtime-proof","nayanet-verified-ai-action"],
-              "parity_scope":"ATTESTED_COMPONENTS_ONLY",
-            },
-            "canonical_proof":{
-              "producer_run_id":producer.get("databaseId"),
-              "producer_conclusion":producer.get("conclusion"),
-              "runtime_proof_run_id":proof.get("databaseId"),
-              "runtime_proof_conclusion":proof.get("conclusion"),
-              "act_proof_run_id":act_proof.get("databaseId"),
-              "act_proof_conclusion":act_proof.get("conclusion"),
-            },
-            "authority_boundary":{
-              "human_authorization_is_deployment_decision":True,
-              "machine_authentication_is_supabase_github_integration":True,
-              "learning_runtime_identity_remains_github_oidc":True,
-              "supabase_personal_access_token_in_workflow":False,
-            },
-          }
-          assert receipt["machine_deployment"]["supabase_check_conclusion"]=="success", receipt
-          assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
-          assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
-          assert receipt["canonical_proof"]["act_proof_conclusion"]=="success", receipt
-          assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
-          assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
-          assert act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
+
+          if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" and os.environ.get("PROMOTION_ALLOWED")=="false":
+              denial=json.load(open("production-promotion-denial.json"))
+              receipt={
+                "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
+                "status":"BLOCKED",
+                "source_sha":os.environ["GITHUB_SHA"],
+                "production_branch":os.environ["PRODUCTION_BRANCH"],
+                "human_authorization":{
+                  "type":"STANDING_POLICY",
+                  "confirmation":"STANDING-PRODUCTION-PROMOTION-V1",
+                  "authorized_source_sha":os.environ["GITHUB_SHA"],
+                  "actor":os.environ.get("GITHUB_ACTOR"),
+                  "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
+                },
+                "machine_deployment":{"attempted":False},
+                "canonical_proof":{"executed":False},
+                "denial":denial,
+              }
+          else:
+              supabase_check=json.load(open("supabase-production-check.json"))
+              producer=json.load(open("producer-run.json"))
+              proof=json.load(open("proof-run.json"))
+              act_proof=json.load(open("act-proof-run.json"))
+              receipt={
+                "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
+                "status":"PROMOTED_AND_PROVEN",
+                "source_sha":os.environ["GITHUB_SHA"],
+                "production_branch":os.environ["PRODUCTION_BRANCH"],
+                "human_authorization":{
+                  "type":("STANDING_POLICY" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "EXPLICIT_HUMAN"),
+                  "confirmation":("STANDING-PRODUCTION-PROMOTION-V1" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "DEPLOY"),
+                  "authorized_source_sha":(os.environ.get("GITHUB_SHA") if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else os.environ.get("AUTHORIZED_SOURCE_SHA")),
+                  "actor":os.environ.get("GITHUB_ACTOR"),
+                  "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
+                },
+                "machine_deployment":{
+                  "mechanism":"SUPABASE_NATIVE_GITHUB_INTEGRATION",
+                  "supabase_check_id":supabase_check.get("id"),
+                  "supabase_check_name":supabase_check.get("name"),
+                  "supabase_check_conclusion":supabase_check.get("conclusion"),
+                  "deployment_commit_sha":os.environ["DEPLOYMENT_SHA"],
+                  "deployed_source_revision":os.environ["GITHUB_SHA"],
+                  "source_tree_sha":os.environ["SOURCE_TREE_SHA"],
+                  "deployment_tree_sha":os.environ["DEPLOYMENT_TREE_SHA"],
+                  "attested_components":["nayanet-cold-runtime-proof","nayanet-verified-ai-action"],
+                  "parity_scope":"ATTESTED_COMPONENTS_ONLY",
+                },
+                "canonical_proof":{
+                  "producer_run_id":producer.get("databaseId"),
+                  "producer_conclusion":producer.get("conclusion"),
+                  "runtime_proof_run_id":proof.get("databaseId"),
+                  "runtime_proof_conclusion":proof.get("conclusion"),
+                  "act_proof_run_id":act_proof.get("databaseId"),
+                  "act_proof_conclusion":act_proof.get("conclusion"),
+                },
+                "authority_boundary":{
+                  "human_authorization_is_deployment_decision":True,
+                  "machine_authentication_is_supabase_github_integration":True,
+                  "learning_runtime_identity_remains_github_oidc":True,
+                  "supabase_personal_access_token_in_workflow":False,
+                },
+              }
+              assert receipt["machine_deployment"]["supabase_check_conclusion"]=="success", receipt
+              assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
+              assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
+              assert receipt["canonical_proof"]["act_proof_conclusion"]=="success", receipt
+              assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
+              assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
+              assert act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
+
           json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
           PY
           cat production-promotion-receipt.json
