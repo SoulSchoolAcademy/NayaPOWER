@@ -1367,6 +1367,15 @@
       "statement_count": 3,
       "bytes": 559,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930120000",
+      "name": "nayanet_github_dispatch_receipts_v1",
+      "path": "supabase/migrations/20260930120000_nayanet_github_dispatch_receipts_v1.sql",
+      "sha256": "0ee23139eab5ff97c6c357ebaab31e03ea171bc3e0cc85b867e6cbc57e3c194c",
+      "statement_count": 6,
+      "bytes": 1761,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
