@@ -127,6 +127,14 @@ Deno.serve(async (req) => {
     const authorityDecision = await resolveAuthority(admin, grantId);
 
     if (mode === "execute") {
+      if (!idempotencyKey) {
+        return json({
+          ok: false,
+          status: "BLOCKED",
+          error: "IDEMPOTENCY_KEY_REQUIRED",
+          execution_outcome_id: null,
+        }, 400);
+      }
       if (!authorityDecision.allowed) {
         const receipt = await insertReceipt(admin, {
           user_id: OWNER_ID,
