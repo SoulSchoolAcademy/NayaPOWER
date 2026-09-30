@@ -399,6 +399,7 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
         and first["effective_stakes"] == "low"
         and selected_candidate.reversible
         and first["q"]["dimensions"]["reversibility"] >= profile.min_reversibility_for_auto
+        and margin >= profile.relative_margin
         and interval_dominant
     )
     if can_auto:
