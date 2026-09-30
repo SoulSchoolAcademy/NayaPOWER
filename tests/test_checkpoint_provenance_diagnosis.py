@@ -40,8 +40,12 @@ def _source() -> str:
 def test_checkpoint_mismatch_still_rejects_with_409():
     source = _source()
     assert 'error: "CHECKPOINT_PROVENANCE_MISMATCH"' in source
-    # The guard must not be softened into a pass while we improve its message.
-    assert source.count('"CHECKPOINT_PROVENANCE_MISMATCH", checkpoint_id') >= 1
+    # The guard may accept an advanced mutable checkpoint only when the immutable
+    # intelligence_commit receipt reconstructs the exact historical chain.
+    # If that reconstruction fails, it must still return 409.
+    assert 'error: "CHECKPOINT_PROVENANCE_MISMATCH"' in source
+    assert "immutable_receipt_reconstruction: false" in source
+    assert "receiptMatchesHistoricalChain" in source
     assert ", 409)" in source
     assert "CHECKPOINT_NOT_FOUND" in source
 
@@ -67,3 +71,21 @@ def test_checkpoint_mismatch_message_carries_no_credential():
     assert "Deno.env.get(\"SUPABASE_SERVICE_ROLE_KEY\")" in source
     body = source[source.index("const rebuiltChain"):source.index('if (mismatched.length)')]
     assert "env.get" not in body, "the diagnostic payload must be built from ids, not environment"
+
+
+def test_advanced_checkpoint_requires_exact_immutable_receipt_chain():
+    source = _source()
+    assert 'commitReceipt?.action === "intelligence_commit"' in source
+    assert 'ev.checkpoint_id === checkpoint.id' in source
+    assert 'ev.event_row_id === event.id' in source
+    assert 'ev.intelligent_block_id === blockId' in source
+    assert 'ev.lineage_id === lineage.id' in source
+    assert 'ev.relationship_id === relationship.relationship_id' in source
+    assert 'ev.index_id === index.id' in source
+
+
+def test_historical_lock_in_does_not_overwrite_current_project_checkpoint():
+    source = _source()
+    assert 'historicalCheckpoint' in source
+    assert 'if (!historicalCheckpoint)' in source
+    assert 'LEARNED_VIA_IMMUTABLE_RECEIPT' in source

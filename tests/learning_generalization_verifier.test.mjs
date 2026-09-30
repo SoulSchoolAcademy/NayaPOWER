@@ -194,7 +194,8 @@ test('independent generalization verifier recomputes related improvement and unr
   assert.equal(body.executor_claim_trusted, false);
   assert.equal(body.recomputed.related_causal_supported, true);
   assert.equal(body.recomputed.related_behavior_delta, true);
-  assert.equal(body.recomputed.related_outcome_delta.provenance_preserved, 1);
+  assert.equal(body.recomputed.related_outcome_delta.metric, 'provenance_preserved');
+  assert.equal(body.recomputed.related_outcome_delta.value, 1);
   assert.equal(body.recomputed.negative_transfer_refused, true);
   assert.equal(body.recomputed.unrelated_behavior_delta, false);
   assert.equal(body.recomputed.unrelated_outcome_stable, true);
@@ -206,7 +207,7 @@ test('independent generalization verifier rejects a related causal claim with no
   const body = await response.json();
   assert.equal(body.ok, false);
   assert.equal(body.recomputed.related_causal_supported, false);
-  assert.equal(body.recomputed.related_outcome_delta.provenance_preserved, 0);
+  assert.equal(body.recomputed.related_outcome_delta.value, 0);
 });
 
 test('independent generalization verifier rejects negative transfer into an unrelated task', async () => {
@@ -277,7 +278,7 @@ test('independent generalization verifier rejects a no-effect related treatment'
   const body = await response.json();
   assert.equal(body.ok, false);
   assert.equal(body.recomputed.related_behavior_delta, false);
-  assert.equal(body.recomputed.related_outcome_delta.provenance_preserved, 0);
+  assert.equal(body.recomputed.related_outcome_delta.value, 0);
   assert.equal(body.recomputed.related_causal_supported, false);
 });
 

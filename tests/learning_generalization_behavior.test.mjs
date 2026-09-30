@@ -161,10 +161,8 @@ test('generalization fails closed unless persisted learning is ACTIVE', async ()
 });
 
 test('generalization cannot claim improvement when the retained lesson has no applicable capability', async () => {
-  const response = await runtime({ lesson: 'A lesson unrelated to provenance.' }).invoke();
+  const response = await runtime({ lesson: 'A lesson unrelated to any predeclared capability.' }).invoke();
   assert.equal(response.status, 409);
   const body = await response.json();
-  assert.equal(body.ok, false);
-  assert.equal(body.result.related_heldout_improved, false);
-  assert.equal(body.result.unrelated_negative_transfer_refused, true);
+  assert.equal(body.error, 'NO_PREDECLARED_APPLICABLE_GENERALIZATION_TASK');
 });
