@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective_wisdom_consent_revocation_v1.sql"
@@ -7,8 +8,10 @@ MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective
 def _sql() -> str:
     assert MIGRATION.exists(), "collective-wisdom consent/revocation hardening migration is required"
     sql = " ".join(MIGRATION.read_text(encoding="utf-8").split()).lower()
-    for token in ("(", ")", ",", "="):
-        sql = sql.replace(" " + token, token).replace(token + " ", token)
+    sql = re.sub(r"\\s*,\\s*", ",", sql)
+    sql = re.sub(r"\\s*=\\s*", "=", sql)
+    sql = re.sub(r"\\(\\s+", "(", sql)
+    sql = re.sub(r"\\s+\\)", ")", sql)
     return sql
 
 
