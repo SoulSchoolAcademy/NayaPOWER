@@ -40,6 +40,20 @@ function adminClient() {
   return createClient(url, key);
 }
 
+// H3 writer-seam passthrough (2026-09-30): accept an optional p_connections
+// candidate-edge array in the request body and forward it to the runtime
+// bridge RPC. Null/omitted preserves the pre-existing behavior (blocks stamp
+// '[]'). Non-arrays are rejected with 400 before any RPC is issued. The
+// bridge (post-R1-migration §9) forwards it to nayanet_intelligence_commit,
+// where nayanet_normalize_block_connections (§2) vocabulary-checks,
+// owner-scopes, and deduplicates it -- malformed candidates can never become
+// edges, even if supplied.
+function coerceConnections(value: unknown): unknown[] | null {
+  if (value === undefined || value === null) return null;
+  if (!Array.isArray(value)) throw new Error("P_CONNECTIONS_MUST_BE_ARRAY");
+  return value;
+}
+
 async function callCommit(body: Json, jti: string) {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -48,6 +62,9 @@ async function callCommit(body: Json, jti: string) {
   // Use the same direct PostgREST boundary proven by the existing cold-runtime
   // functions. The previous supabase-js .rpc() path could remain pending until
   // Supabase Edge's 150s worker resource limit terminated the request.
+  // H3: forward caller-proposed candidate edges (array) or null when omitted.
+  // Throws (→ 400) on non-array p_connections before any RPC is issued.
+  const pConnections = coerceConnections(body.p_connections);
   const response = await fetch(url + "/rest/v1/rpc/nayanet_intelligence_commit_runtime", {
     method: "POST",
     headers: {
@@ -68,6 +85,7 @@ async function callCommit(body: Json, jti: string) {
       p_target_id: String(body.p_target_id ?? NAYA_ID),
       p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
       p_project_id: String(body.p_project_id ?? "NayaNET"),
+      p_connections: pConnections,
     }),
   });
   const text = await response.text();

@@ -344,3 +344,50 @@ revoke all on function public.nayanet_normalize_block_connections(jsonb,uuid) fr
 revoke all on function public.nayanet_supersede_intelligent_block(uuid,uuid,uuid,text,text,text,text,text,uuid[],jsonb,jsonb,jsonb,jsonb,jsonb,text,text,text,jsonb) from public, anon, authenticated;
 grant execute on function public.nayanet_normalize_block_connections(jsonb,uuid) to service_role;
 grant execute on function public.nayanet_supersede_intelligent_block(uuid,uuid,uuid,text,text,text,text,text,uuid[],jsonb,jsonb,jsonb,jsonb,jsonb,text,text,text,jsonb) to service_role;
+
+-- §9. H3 writer-seam repair: open the connections channel through the
+-- runtime bridge.
+--
+-- FIRST BROKEN EDGE (H3, verified 2026-09-30): nayanet_intelligence_commit_runtime
+-- (defined in 20260928174822_nayanet_intelligence_runtime_bridge.sql) invoked
+-- nayanet_intelligence_commit with 8 positional args, so the p_connections
+-- parameter added in §5 was always NULL and every committed block stamped '[]'.
+-- The repair widens the BRIDGE signature only: a new optional trailing
+-- p_connections (default null) is forwarded as the 9th argument to the §5
+-- commit defined earlier in this migration. The Edge Function RPC calls the
+-- bridge by named params; omitting p_connections preserves byte-for-byte old
+-- behavior ('[]'), so this is fully backward compatible. Caller-proposed
+-- candidate edges are vocabulary-checked, owner-scoped, and deduplicated by
+-- nayanet_normalize_block_connections (§2); the guard trigger (§3) rejects
+-- malformed projections as a backstop.
+--
+-- DEPENDS ON §5: requires the 9-arg nayanet_intelligence_commit with
+-- p_connections jsonb defined earlier in this migration. Nothing else in
+-- this migration's §§1-8 semantics is changed by this section.
+--
+-- NO PRODUCER YET: nothing in the executable chain derives candidate edges
+-- from block content. The producer that proposes p_connections values is the
+-- named next seam; this section only opens the channel.
+drop function if exists public.nayanet_intelligence_commit_runtime(text,uuid,text,text,text,text,text,text,text,uuid,text);
+create function public.nayanet_intelligence_commit_runtime(
+  p_naya_id text,p_owner_id uuid,p_runtime_jti text,p_event_id text,p_title text,p_content text,p_category text,p_topic text,p_target_id text,p_authority_grant_id uuid,p_project_id text default 'NayaNET',p_connections jsonb default null
+) returns jsonb language plpgsql security definer set search_path='' as $function$
+declare grant_row record; result jsonb; receipt_id uuid;
+begin
+ if p_naya_id <> 'NAYA-NODE-0001' then raise exception using errcode='42501',message='NAYA_ID_NOT_AUTHORIZED'; end if;
+ if coalesce(trim(p_runtime_jti),'')='' then raise exception using errcode='22023',message='RUNTIME_JTI_REQUIRED'; end if;
+ select * into grant_row from public.nayanet_authority_grants
+ where grant_id=p_authority_grant_id and issuer_id=p_owner_id and subject_id=p_owner_id and status='ACTIVE' and revoked_at is null
+ and (expires_at is null or expires_at>clock_timestamp()) and scope->>'target'=p_naya_id and actions @> '["intelligence_commit"]'::jsonb;
+ if not found then raise exception using errcode='42501',message='AUTHORITY_BLOCKED'; end if;
+ perform set_config('request.jwt.claim.sub',p_owner_id::text,true);
+ result:=public.nayanet_intelligence_commit(p_event_id,p_title,p_content,p_category,p_topic,p_target_id,p_authority_grant_id,p_project_id,p_connections);
+ receipt_id:=(result->>'receipt_id')::uuid;
+ update public.nayanet_execution_receipts set evidence=evidence||jsonb_build_object('runtime_identity','naya-node-oidc','naya_id',p_naya_id,'runtime_jti',p_runtime_jti,'owner_id',p_owner_id) where id=receipt_id;
+ return result||jsonb_build_object('runtime_identity','naya-node-oidc','naya_id',p_naya_id,'runtime_jti',p_runtime_jti,'owner_id',p_owner_id);
+end;$function$;
+
+-- Re-assert the original grant posture on the new signature (the DROP above
+-- removed the grant attached to the old 11-arg signature).
+revoke all on function public.nayanet_intelligence_commit_runtime(text,uuid,text,text,text,text,text,text,text,uuid,text,jsonb) from public,anon,authenticated;
+grant execute on function public.nayanet_intelligence_commit_runtime(text,uuid,text,text,text,text,text,text,text,uuid,text,jsonb) to service_role;
