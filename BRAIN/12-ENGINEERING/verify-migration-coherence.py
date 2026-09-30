@@ -232,6 +232,93 @@ def main() -> int:
                 re.finditer(r'(?:\bwith\b|,)\s+(?:recursive\s+)?([a-z_][\w$]*)\s+as\s*\(', sql, re.I)}
         for kind, pattern in USAGE_PATTERNS:
             for m in pattern.finditer(sql):
+                # PostgreSQL's expression `IS [NOT] DISTINCT FROM <expr>` contains
+                # the word FROM but does not consume a relation. The static relation
+                # regex must not manufacture dependencies from that operator.
+                if kind == 'FROM' and re.search(
+                    r'\bis\s+(?:not\s+)?distinct\s*
+                if tbl in known or tbl in ctes or is_platform(tbl) or is_catalog(tbl):
+                    continue
+                if not plausible_table(tbl):
+                    continue
+                # A relation immediately followed by `(` is a function call, not a table.
+                tail = m.end(1)
+                if sql[tail:tail + 1] == '(':
+                    continue
+                uncreated.setdefault(tbl, [])
+                if name not in uncreated[tbl]:
+                    uncreated[tbl].append(name)
+    for table, users in sorted(uncreated.items()):
+        findings.append({
+            'class': 'UNCREATED_DEPENDENCY', 'object': table, 'migrations': users,
+            'detail': 'used by these migrations but no migration creates it; a rebuild from empty would fail',
+        })
+
+    for name in empty:
+        findings.append({
+            'class': 'EMPTY', 'object': name, 'migrations': [name],
+            'detail': 'migration file contains no statements',
+        })
+
+    # --- report ---------------------------------------------------------------
+    # A count cannot be regressed against responsibly: it says nothing about WHICH
+    # table regressed, so new debt can hide inside an unchanged total. The JSON form
+    # carries the class and object of every finding so the baseline check compares
+    # identities, not magnitudes.
+    if as_json:
+        print(json.dumps({
+            'migrations_inspected': len(files),
+            'tables_created': len(created),
+            'tables_dropped': len(dropped),
+            'defect_count': len(findings),
+            'findings': sorted(
+                ({'class': f['class'], 'object': f['object'], 'detail': f['detail']}
+                 for f in findings),
+                key=lambda f: (f['class'], f['object']),
+            ),
+        }, indent=2, sort_keys=True))
+        return 1 if findings else 0
+
+    print('BRAIN SCHEMA MIGRATION COHERENCE - MEASURED')
+    print(f'  migrations inspected : {len(files)}')
+    print(f'  tables created       : {len(created)}')
+    print(f'  tables dropped       : {len(dropped)}')
+    print()
+    by_class: dict[str, int] = {}
+    for f in findings:
+        by_class[f['class']] = by_class.get(f['class'], 0) + 1
+    if not findings:
+        print('  NO DEFECTS FOUND: the migration chain is internally coherent.')
+        print('  This does NOT prove parity with any live database. It is not evidence')
+        print('  that a rebuild has ever been executed. UNKNOWN is not PASS.')
+        print()
+        print('PASS: migration chain is internally coherent')
+        return 0
+
+    width = max(len(f['class']) for f in findings)
+    for f in findings:
+        print(f'  {f["class"]:<{width}}  {f["object"]}')
+        print(f'  {"":<{width}}  {f["detail"]}')
+        print(f'  {"":<{width}}  migrations: {", ".join(f["migrations"][:6])}'
+              + (' ...' if len(f['migrations']) > 6 else ''))
+    print()
+    print('  SUMMARY: ' + ', '.join(f'{k}={v}' for k, v in sorted(by_class.items())))
+    print()
+    print('  This is NOT a pass/fail judgement on the schema. It is the list of places')
+    print('  where a rebuild from empty is known to break. Each finding must be either')
+    print('  fixed or explicitly recorded as never-having-been-rebuildable.')
+    print()
+    print(f'FAIL: {len(findings)} migration coherence defect(s)', file=sys.stderr)
+    return 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
+,
+                    sql[max(0, m.start() - 40):m.start()],
+                    re.I,
+                ):
+                    continue
                 tbl = normalise(m.group(1))
                 if tbl in known or tbl in ctes or is_platform(tbl) or is_catalog(tbl):
                     continue
