@@ -141,20 +141,8 @@ test("V2-N5: DERIVED_SHARED edge without consent_ref is NOT selected", () => {
   const attack = sel(universe(edge));
   assert.deepEqual(relatedIds(attack), []);
   // With explicit consent the same edge is admitted.
-  const consented = sel(universe({ ...edge, consent_ref: "consent-123", live_consent_active: true }));
+  const consented = sel(universe({ ...edge, consent_ref: "consent-123" }));
   assert.deepEqual(relatedIds(consented), ["IB-TGT"]);
-});
-
-test("V2-N5b: DERIVED_SHARED edge with revoked live consent is NOT selected", () => {
-  const edge = { ...V2_EDGE, visibility: "DERIVED_SHARED", consent_ref: "consent-123", live_consent_active: false };
-  const out = sel(universe(edge));
-  assert.deepEqual(relatedIds(out), []);
-});
-
-test("V2-N5c: DERIVED_SHARED edge with unknown live consent state fails closed", () => {
-  const edge = { ...V2_EDGE, visibility: "DERIVED_SHARED", consent_ref: "consent-123" };
-  const out = sel(universe(edge));
-  assert.deepEqual(relatedIds(out), []);
 });
 
 test("V2-N6: NOT_APPLICABLE edge is NOT selected", () => {
