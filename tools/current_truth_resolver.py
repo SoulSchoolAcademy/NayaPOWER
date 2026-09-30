@@ -122,6 +122,24 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             linked_issue_states[issue_id] = issue_states.get(issue_id, "UNKNOWN")
 
     snapshot = ops.get("evidence_snapshot_base") or ops.get("source_main")
+    projection_is_current = bool(main_head and snapshot == main_head)
+    if main_head and snapshot and not projection_is_current:
+        warnings.append(
+            {
+                "code": "OPERATIONAL_PROJECTION_STALE",
+                "main_head": main_head,
+                "projection_snapshot_base": snapshot,
+            }
+        )
+
+    projection_next_action = ops.get("next_action")
+    next_action = projection_next_action
+    if main_head and snapshot and not projection_is_current:
+        next_action = (
+            "Reconcile the operational projection against live main before "
+            "executing downstream queue items."
+        )
+
     status = (
         "CONFLICT"
         if hard_conflicts
@@ -149,7 +167,7 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             "checkout_matches_live_main": bool(main_head and repo_head == main_head),
             "production_branch_head": production_branch_head,
             "projection_snapshot_base": snapshot,
-            "snapshot_is_current_main": bool(main_head and snapshot == main_head),
+            "snapshot_is_current_main": projection_is_current,
         },
         "proof": {
             "bounded_production_source": ops.get("current_state", {}).get(
@@ -166,7 +184,9 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             "active_issue_state": active_issue_state,
             "linked_issue_states": linked_issue_states,
             "open_prs": open_prs,
-            "next_action": ops.get("next_action"),
+            "next_action": next_action,
+            "projection_next_action": projection_next_action,
+            "projection_is_current_main": projection_is_current,
             "top_10": top_10,
         },
         "hard_conflicts": hard_conflicts,
@@ -215,7 +235,8 @@ def render_markdown(result: dict[str, Any]) -> str:
             lines.append(f"- #{pr.get('number', '?')} {pr.get('title', 'UNKNOWN')} — head `{pr.get('head_sha') or 'UNKNOWN'}` — draft={pr.get('draft')} — merge={pr.get('merge_state') or 'UNKNOWN'}")
     else:
         lines.append("- None reported by live collector.")
-    lines += ["", "## Max-10", ""]
+    max10_title = "## Max-10" if work.get("projection_is_current_main") else "## Max-10 (dated projection; do not execute as current)"
+    lines += ["", max10_title, ""]
     for item in work.get("top_10") or []:
         lines.append(f"- {item.get('id', '?')}: {item.get('action', 'UNKNOWN')} [{item.get('status', 'UNKNOWN')}]")
     lines += ["", "> Projection only. Live GitHub/runtime evidence outranks this generated brief when newer.", ""]
