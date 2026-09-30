@@ -351,3 +351,89 @@ def test_build_receipt_uses_signed_ten_point_verified_value():
     assert receipt["confidence"] == pytest.approx(0.96)
     assert receipt["value_interval"] == pytest.approx((-10.0, -9.1))
     assert receipt["d_verified"] == pytest.approx(-10.0)
+
+
+def test_uncertain_ordering_reads_more_when_cheap_evidence_can_change_winner(profile):
+    from kernel.value_calculus import SignedValueProfile, evaluate_decision_architecture
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {
+        "base": {d: 0.0 for d in vp.weights()},
+        "a": {d: 0.0 for d in vp.weights()},
+        "b": {d: 0.0 for d in vp.weights()},
+    }
+    dims["a"]["objective_alignment"] = 0.60
+    dims["b"]["objective_alignment"] = 0.59
+    conf = {cid: {d: 0.95 for d in vp.weights()} for cid in dims}
+    conf["a"]["objective_alignment"] = 0.50
+    conf["b"]["objective_alignment"] = 0.50
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9, conf=0.50)
+    b = cand("b", B=9, conf=0.50)
+    result = evaluate_decision_architecture(
+        [base, a, b], "base", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+        cheap_evidence_available=True,
+    )
+    assert result["resolution"] == "READ_MORE"
+
+
+def test_missing_authority_escalates_to_ask(profile):
+    from kernel.value_calculus import SignedValueProfile, evaluate_decision_architecture
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {"a": {d: 1.0 for d in vp.weights()}}
+    conf = {"a": {d: 0.95 for d in vp.weights()}}
+    a = Candidate(
+        "a", quality()["0"] if False else quality(9.5)[0],
+        quality(9.5)[1], pv(B=9, conf=0.95), authorized=False,
+    )
+    result = evaluate_decision_architecture(
+        [a], "a", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    assert result["resolution"] == "ASK"
+    assert result["resolution_reason"] == "AUTHORITY_REQUIRED"
+
+
+def test_independent_canonical_recompute_matches_receipt(profile):
+    from kernel.value_calculus import (
+        SignedValueProfile,
+        build_decision_receipt,
+        evaluate_decision_architecture,
+        independent_recompute_decision_architecture,
+    )
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {
+        "base": {d: 0.0 for d in vp.weights()},
+        "a": {d: 0.0 for d in vp.weights()},
+    }
+    dims["a"]["objective_alignment"] = 1.0
+    conf = {cid: {d: 0.95 for d in vp.weights()} for cid in dims}
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9)
+    ev = evaluate_decision_architecture(
+        [base, a], "base", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    receipt = build_decision_receipt(
+        decision_id="canonical-recompute-1",
+        objective=profile.objective,
+        baseline_id="base",
+        stakeholders=["human-director"],
+        horizon="bounded",
+        evaluation=ev,
+        authority_basis="standing",
+        evidence_refs=["test:canonical-recompute"],
+        observation_window={"status": "open"},
+        verification="UNVERIFIED",
+    )
+    reread = independent_recompute_decision_architecture(
+        receipt, [base, a], profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    assert reread["matches_resolution"]
+    assert reread["matches_selected"]
+    assert reread["matches_signed_value"]
+    assert reread["matches_quality"]
