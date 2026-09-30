@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file  
-**Evidence snapshot base:** `c6ac19c4cc3bf938dd782d123c909249872dd905`  
+**Evidence snapshot base:** `fa5c0a063c55badb6960c452dbf8291aad390355`  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -10,7 +10,7 @@ Ship a real governed intelligence system that can:
 
 **ORIENT → RESOLVE CURRENT TRUTH → RETRIEVE APPLICABLE INTELLIGENCE → RESOLVE AUTHORITY → ACT → OBSERVE → VERIFY → LEARN → PRESERVE → COLD SUCCESSOR → REUSE → COMPOUND**
 
-Do not build a second brain, graph, learning pipeline, authority system, or state store to make a proof pass.
+Do not build a second brain, graph, learning pipeline, authority system, receipt ledger, deployment lane, or state store to make a proof pass.
 
 ## 2. CURRENT VERIFIED TRUTH
 
@@ -18,72 +18,93 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 - #944: **CLOSED** — bounded generalization + unrelated-task refusal + cold-successor reuse.
 - #971: **CLOSED** — native Supabase deployment incident recovered.
 - #978: **CLOSED / PRODUCTION VERIFIED** — checkpoint receipt owner-read / privileged-write RLS boundary.
-- #975: **CLOSED** — exact audited causal control/treatment outcome rows recovered by the existing independent verifier; North-Star audit v3 accepts the bounded historical specimen.
+- #975: **CLOSED** — exact audited historical causal outcome pair recovered; North-Star audit v3 accepts the bounded specimen.
 - #810: **CLOSED** — bounded nine-node black-box behavioral acceptance + ablation proven live.
-- Governed production promotion `36631960490`: **SUCCESS**.
-- Canonical Live Supabase Runtime Proof `36632211367`: **SUCCESS** at exact source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
-- Nine-node acceptance artifact `11063875114`, SHA-256 `f10a35c8f57ac224dfa28cd7b81305a157acf1b1da79a2a1a96dd4598b27a2bc`.
-- #975 recovery run `36632538416`: **SUCCESS**; authoritative outcome reread = **2/2**.
-- Universal all-task/domain nine-node capability is **NOT PROVEN**.
-- Multi-generation compounding is **NOT PROVEN**.
-- Two-owner NayaNET consent/revocation is **NOT PROVEN**.
-- Cached/derived authority revocation negative: **TEST-LEVEL VERIFIED**; #1046 ACT denial matrix is merged at `7847680f`; production proof not claimed.
-- KNOW bounded live qualification is now **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe reread after #1060's proof-oracle repair.
-- Live SN-004 learning run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 is merged at `4c2b8f12` and #1056 at `0fb36123`; merged source is not yet deployed causal-runtime parity.
-- Readiness fail-closed repairs #1058/#1061 and generated current-truth projection #1053 are merged. Resolver run `36657001373` succeeded with a generated continuation brief and live open-PR frontier. #1067 semantic drift guard is merged at `309f33a7`; substantive drift invalidates stale projected actions while projection-only drift remains current.
-- Governed promotion remains fail-closed for protected runtime changes pending explicit Human Director `DEPLOY`. Live PROVE run `36658635227` failed before KNOW/PROVE because LAW's OIDC allowlist omitted `live-prove-proof.yml`; #1069 source-repaired that exact workflow trust binding and merged at `c6ac19c4`, but live LAW remains pre-fix until governed deployment.
-- Two-owner NayaNET remains NOT PROVEN; #1062 records the current derived-sharing/revocation proof gap.
-- Cold acceptance #1044 is protocol-ready but a genuinely fresh entrant has not yet produced a PASS receipt.
+- Bounded production proof remains exact-revision evidence at source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`; later source does not inherit it.
+- Readiness fail-closed repairs #1058/#1061 and current-truth resolver/brief #1053 are integrated.
+- #1067 semantic projection-drift guard is integrated; substantive source drift invalidates stale projected actions.
+- Cached/live authority revocation negatives and #1046 ACT denial matrix are integrated at test/source scope; universal production authority lifecycle is not claimed.
+- KNOW bounded live qualification is **PASS**: run `36658860694` completed contextual HIT + unrelated MISS + independent persisted-universe reread.
+- Live PROVE run `36658635227` failed before PROVE at workflow identity. #1069 now trusts the exact `live-prove-proof.yml` identity in LAW; #1072 trusts that same exact workflow in KNOW. Both remain source changes until governed deployment.
+- Smart Note faithful rendering/exact-content reuse source is integrated. Live SN-004 run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT** until current applicability-aware causal runtime is deployed and rerun.
+- #1056 applicability-aware causal source is integrated; deployed causal-runtime parity remains **MISMATCH**.
+- #1070 collective-wisdom source hardening is integrated at `af065bb4`: explicit Smart Connect consent, source-owner binding, safe-column collective reads, revocation propagation after last explicit participation, and immutable revoked-history semantics. Migration `20260930022500` is **PENDING_REVIEW_NOT_PRODUCTION_APPLIED**.
+- Current main `fa5c0a063c55badb6960c452dbf8291aad390355` has green Kernel `36660385887`, Collective `36660385828`, Live Verified AI Action `36660385842`, and Live CVO `36660385815`.
+- Governed Production Promotion `36660385812` correctly failed closed with `protected_change_requires_explicit_promotion`; receipt artifact `11074056938`, SHA-256 `71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a`.
+- #1042 mission binding semantics remain a Human Director authority-model decision.
+- Coda 2 retains ACT replay/response-loss/concurrency/recovery ownership.
+- #1044 is protocol-ready but a genuinely fresh entrant + second successor have not produced a PASS receipt.
+- Universal all-task/domain nine-node capability, live two-owner NayaNET, multi-generation A→B→C compounding, and measured human-value-per-attention remain **NOT PROVEN**.
 
-## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
+## 3. CURRENT FRONTIER — SOURCE COMPLETE ENOUGH TO DEPLOY, PRODUCTION PROOF STILL BLOCKED
 
-The source repair cluster is integrated through current main `0fb3612344cd28155945e0f33336aaca5b5ef31d`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
+The important source cluster is now integrated through `fa5c0a06`:
 
-Main regression evidence is green. That is **not** production parity.
+- readiness failure discrimination;
+- current-truth machine + human continuation projection;
+- semantic stale-projection guard;
+- contextual KNOW proof oracle;
+- ACT denial matrix;
+- Smart Note faithful rendering/reuse metadata;
+- applicability-aware causal learning;
+- PROVE workflow identity trust in LAW (#1069);
+- PROVE workflow identity trust in KNOW (#1072);
+- collective-wisdom consent/revocation hardening (#1070, migration pending).
 
-The causal-learning runtime currently differs from the production branch:
-- `nayanet-cold-runtime-proof/index.ts`: main blob `c91556d408520f8950de5a1e2c2b68c8755f21b3` vs production `03eaaa8731d5d3709db058aa4f8e399051dba4d2`;
-- `nayanet-causal-learning-experiment/index.ts`: main blob `5b60a6f780bc98f51407776211aa8e0f5cd1e3ec` vs production `b29d11e4bd17a4a391d98adb792fce18609a026b`.
+This is **source integration**, not production parity.
 
-Governed Production Promotion run `36657956413` failed closed because protected paths require explicit promotion. That is correct policy behavior, not a deployment failure. Exact remediation is Human Director `DEPLOY` via the existing workflow for the resulting exact current main.
+Latest governed automatic promotion:
+- run `36660385812`;
+- exact source `fa5c0a063c55badb6960c452dbf8291aad390355`;
+- verdict **DENY**;
+- reason `protected_change_requires_explicit_promotion`;
+- artifact `11074056938`;
+- artifact SHA-256 `71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a`.
 
-Coda 2 retains replay/duplicate/response-loss reliability ownership. Mission semantics in #1042 remain a Human Director authority-model decision. #1062 owns the two-owner derived-sharing/revocation proof gap. These lanes continue independently without bypassing deployment policy.
+That denial is the correct governance behavior. The next consequential crossing is explicit Human Director **`DEPLOY`** for the exact reconciled revision through the existing governed workflow.
 
 ## 4. TOP 10 — DEPENDENCY ORDER
 
-### 1 — Current-truth convergence after PROVE LAW-binding repair
-Refresh the existing projection against exact current main `c6ac19c4`, integrate only projection-owned files, and require a fresh Current Truth Resolver run. PASS requires the resolver to classify the resulting projection as CURRENT (projection-only drift), with live main, open work, proof/runtime state, warnings/unknowns and one next action agreeing.
+### 1 — Current-truth convergence
+Integrate this exact `fa5c0a06` five-surface projection refresh and require a fresh Current Truth Resolver result. PASS requires exact live main, source/runtime state, open work, warnings/unknowns, one next action and Max-10 to agree without stale operational projection.
 
-### 2 — Exact governed runtime parity
-Protected automatic promotion is correctly denied. Shawn explicitly authorizes `DEPLOY` for the exact resulting main through the existing governed workflow. PASS requires exact deployed parity for LAW's #1069 PROVE workflow binding plus current protected causal-runtime repairs before any PROVE or causal rerun.
+### 2 — Exact governed production parity
+Shawn explicitly authorizes **`DEPLOY`** for the exact reconciled main. Deploy only through the existing governed lane. PASS requires exact deployed parity for:
+- LAW #1069 PROVE-workflow binding;
+- KNOW #1072 PROVE-workflow binding;
+- current protected causal runtimes;
+- pending #1070 collective-wisdom migration.
+
+No runtime proof may inherit source-merge success.
 
 ### 3 — ACT replay/recovery reliability
-Coda 2: exact replay, conflicting replay, response-loss retry, concurrent same intent, receipt-write failure and independent reconstruction using the existing receipt ledger/authority/Doors.
+Coda 2 owns exact replay, conflicting reuse, persisted-success/response-loss retry, concurrent same intent, receipt-write failure and independent reconstruction using the existing receipt ledger/LAW/Door architecture.
 
-### 4 — Residual authority lifecycle #1042
-ACT denial coverage is integrated. Decide mission binding semantics from trusted operation context before changing LAW/ACT/KNOW behavior.
+### 4 — Residual authority semantics #1042
+Decide mission-binding semantics from trusted operation context before changing LAW/ACT/KNOW. This is an authority-model decision, not a coding guess.
 
 ### 5 — PROVE current live qualification
-KNOW is bounded-live proven in run `36658860694`. After deployed LAW parity, run the existing PROVE supported/non-promotion paths + independent reread exactly once. Do not retry while live LAW still lacks the #1069 workflow trust binding.
+KNOW is live-proven. After LAW + KNOW deployed parity, run the existing PROVE positive/negative + independent reread exactly once. Do not rerun against pre-fix deployed runtime.
 
 ### 6 — SN-004 faithful projection + applicable causal effect
-Regenerate the existing SN-004 projection through the canonical reconciliation seam, preserving IDs/CANDIDATE/privacy. After exact deployed parity, rerun the act-first control/treatment experiment and independently recompute the outcome. Preserve a negative result if observed.
+After exact causal-runtime parity, regenerate the existing SN-004 projection through canonical reconciliation, preserving IDs/CANDIDATE/privacy. Run the act-first control/treatment experiment with identical task input and independent persisted recomputation. Preserve a negative result if observed.
 
 ### 7 — Two-owner NayaNET #1062
-Use the existing derived collective-wisdom seam. Prove private deny → consented derived use → revoke → future deny/invalidation without broad cross-owner access to private Intelligent Blocks/events.
+After migration `20260930022500` is production-applied, prove:
+**private deny → explicit-consent derived read/use → revoke → future deny/invalidation**, with source private intelligence intact and zero authority transfer.
 
 ### 8 — True cold continuity #1044
-One genuinely fresh repository-only entrant and then a second successor. Context-rich seats cannot certify themselves cold.
+Run one genuinely fresh repository-only entrant, then a second genuinely fresh successor. Context-rich seats cannot certify themselves cold.
 
 ### 9 — Multi-generation compounding
-A → B → C attributable improvement, unrelated-task refusal, preserved lineage and no inherited authority.
+Prove A → B → C attributable behavioral/outcome improvement with preserved lineage, unrelated-task refusal, and no inherited authority.
 
 ### 10 — Human value then DREAM → EVOLVE
-Measure completed useful outcomes, attention/re-explanation/rework and prevented errors. Advance recursive optimization/network scale only after preceding trust gates.
+Measure completed useful outcomes, time-to-correct-state/action, re-explanation, interventions, rework, prevented errors and takeover cost. Advance broader recursive optimization/network scale only after trust gates.
 
 ## 5. PERMANENT EXECUTION LAW
 
-**RECONSTRUCT → CLASSIFY → CHOOSE HIGHEST VALUE → EXECUTE → TEST → INDEPENDENTLY VERIFY → RECORD → REASSESS**
+**RECONSTRUCT → CLASSIFY → CHOOSE HIGHEST VALUE → AUTHORIZE → EXECUTE → TEST → OBSERVE → INDEPENDENTLY VERIFY → RECORD → REASSESS**
 
 - `UNKNOWN ≠ PASS`
 - `BLOCKED ≠ PASS`
@@ -92,10 +113,10 @@ Measure completed useful outcomes, attention/re-explanation/rework and prevented
 - `RETRIEVED ≠ AUTHORIZED`
 - `LEARNING ≠ AUTHORITY`
 - successor context does not inherit authority
-- stop at the first failing proof rung
 - preserve failure evidence
-- do not bypass a human/security/production boundary
-- a later source revision does not inherit an earlier production proof
+- do not bypass a human/security/privacy/production boundary
+- a later source revision does not inherit earlier production proof
+- when one consequential lane blocks, continue independent authorized work
 
 ## 6. DONE / DO NOT REDO
 
@@ -106,16 +127,20 @@ Do not redo:
 - #978 checkpoint RLS production repair;
 - #975 historical outcome recovery;
 - #810 bounded nine-node black-box acceptance;
-- Concept #17 duplicate admission;
-- reference-kernel false execution repair;
-- Smart Note V2 capture/retrieval/projection.
+- KNOW bounded live HIT/MISS + independent reread;
+- readiness fail-closed repair;
+- Smart Note V2 faithful renderer/reuse source repair;
+- ACT denial matrix;
+- PROVE LAW/KNOW workflow identity source repairs;
+- #1070 two-owner source hardening.
 
 Do not build without measured need:
-- MN-10;
 - second Intelligent Block family;
 - second canonical database/brain;
 - second graph;
 - second learning pipeline;
+- second receipt ledger;
+- second deployment lane;
 - automatic learning → LAW;
 - nine-node microservice split;
 - new infrastructure merely to make a proof green.
@@ -130,4 +155,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: integrate this post-#1069 projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then Shawn explicitly authorizes `DEPLOY` for that exact revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal proof. Do not weaken the protected-path gate. While deployment waits, continue Coda 2 replay/recovery and #1062 bounded two-owner proof design independently.**
+**Issue #66: integrate this exact-main `fa5c0a06` projection refresh and require a fresh successful Current Truth Resolver run. Then Shawn explicitly says `DEPLOY` for that exact reconciled revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal and #1062 live two-owner proof. Do not weaken the protected-path gate. Coda 2 replay/recovery continues independently while deployment waits.**
