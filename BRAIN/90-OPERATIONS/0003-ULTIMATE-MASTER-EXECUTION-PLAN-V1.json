@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "c6ac19c4cc3bf938dd782d123c909249872dd905",
+  "evidence_snapshot_base": "fa5c0a063c55badb6960c452dbf8291aad390355",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -19,11 +19,11 @@
     "pr_980": "MERGED_PRODUCTION_VERIFIED",
     "universal_nine_node_runtime_binding": "NOT_PROVEN",
     "multi_generation_compounding": "NOT_PROVEN",
-    "two_owner_nayanet": "NOT_PROVEN; ISSUE_1062_SOURCE_AUDIT_IDENTIFIED_DERIVED_SHARE_AND_REVOCATION_GAPS",
+    "two_owner_nayanet": "SOURCE_HARDENING_MERGED_AF065BB4; MIGRATION_PENDING_NOT_PRODUCTION_APPLIED; LIVE_TWO_OWNER_PROOF_NOT_PROVEN",
     "governed_production_promotion_run": "36631960490_SUCCESS",
     "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
     "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "SEMANTIC_DRIFT_GUARD_1067_MERGED_AND_VERIFIED; POST_1069_PROJECTION_REFRESH_REQUIRES_FRESH_RESOLVER",
+    "current_truth_resolver": "SEMANTIC_DRIFT_GUARD_1067_MERGED_AND_VERIFIED; POST_1070_1072_PROJECTION_REFRESH_REQUIRES_FRESH_RESOLVER",
     "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F",
     "know_live_current": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
     "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT_PRESERVED; PR_1051_MERGED_4C2B8F12; PR_1056_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
@@ -31,33 +31,38 @@
     "readiness_instrument": "PR_1058_AND_1061_MERGED; MAIN_GATES_GREEN; INSTRUMENT_ERROR_AND_CONTROL_FAILURE_FAIL_CLOSED",
     "causal_runtime_parity": {
       "status": "MISMATCH",
-      "source_revision": "c6ac19c4cc3bf938dd782d123c909249872dd905",
+      "source_revision": "fa5c0a063c55badb6960c452dbf8291aad390355",
       "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
       "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
       "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
       "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b",
       "promotion_run": 36657956413,
       "promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
-      "denial_artifact": 11072839541
+      "denial_artifact": 11072839541,
+      "latest_protected_promotion_run": 36660385812,
+      "latest_promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
+      "latest_denial_artifact": 11074056938,
+      "latest_denial_artifact_sha256": "71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a"
     },
-    "prove_live_current": "RUN_36658635227_FAILED_BEFORE_KNOW_PROVE_AT_LAW_WORKFLOW_BINDING; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PARITY_PENDING"
+    "prove_live_current": "RUN_36658635227_FAILED_BEFORE_PROVE_AT_WORKFLOW_BINDING; PR_1069_LAW_BINDING_MERGED_C6AC19C4; PR_1072_KNOW_BINDING_MERGED_FA5C0A06; LIVE_DEPLOYMENT_PARITY_PENDING",
+    "collective_wisdom_source_hardening": "PR_1070_MERGED_AF065BB4; PENDING_MIGRATION_BFA12EE3; NOT_PRODUCTION_APPLIED"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Refresh Brain/Operations against exact current main c6ac19c4 after PROVE LAW-workflow binding repair and require a fresh resolver result with no stale operational projection",
+      "action": "Integrate this exact-main fa5c0a06 Brain/Operations refresh and require a fresh Current Truth Resolver result with no stale operational projection",
       "status": "ACTIVE"
     },
     {
       "rank": 2,
-      "action": "Explicitly authorize governed production promotion for exact reconciled main, deploy LAW #1069 binding plus current protected runtime repairs, then prove deployed parity before PROVE/SN-004 reruns",
+      "action": "Explicitly authorize governed DEPLOY for exact reconciled main so #1069 LAW binding, #1072 KNOW binding, current causal runtimes and pending #1070 migration can reach production parity; verify exact deployment before any live claim",
       "status": "BLOCKED_EXPLICIT_HUMAN_DEPLOY_AUTHORITY"
     },
     {
       "rank": 3,
       "action": "Checkpoint/provenance/concurrency/recovery: exact replay, conflicting replay, response-loss, concurrent invocation and receipt-write failure",
-      "status": "ASSIGNED_CODA2_REFRESHED_AT_C6AC19C4"
+      "status": "ASSIGNED_CODA2"
     },
     {
       "rank": 4,
@@ -67,19 +72,19 @@
     },
     {
       "rank": 5,
-      "action": "After deployed LAW parity, rerun existing live PROVE positive/negative + independent reread exactly once; KNOW is already live-proven in run 36658860694",
-      "status": "BLOCKED_DEPLOYED_LAW_PARITY"
+      "action": "After deployed LAW+KNOW parity, rerun existing live PROVE positive/negative + independent reread exactly once; KNOW remains live-proven in run 36658860694",
+      "status": "BLOCKED_DEPLOYED_LAW_KNOW_PARITY"
     },
     {
       "rank": 6,
-      "action": "Regenerate faithful existing SN-004 projection and rerun applicable act-first causal experiment only after exact deployed parity",
+      "action": "After exact deployed causal parity, regenerate faithful existing SN-004 projection and rerun the applicable act-first causal experiment with independent recomputation",
       "status": "BLOCKED_DEPLOYMENT_THEN_RUNTIME_PROOF"
     },
     {
       "rank": 7,
       "id": "#1062",
-      "action": "Prove two-owner derived collective sharing and revocation propagation without weakening private owner RLS",
-      "status": "SOURCE_GAP_CLASSIFIED_CONTRACT_AND_FAILURE_FIRST_PROOF_PENDING"
+      "action": "After #1070 migration is production-applied, prove private deny → consented derived read/use → revoke → future deny/invalidation with zero authority transfer",
+      "status": "SOURCE_HARDENED_BLOCKED_PRODUCTION_MIGRATION_AND_LIVE_TWO_OWNER_PROOF"
     },
     {
       "rank": 8,
@@ -90,7 +95,7 @@
     {
       "rank": 9,
       "action": "Prove multi-generation A→B→C compounding with attributable lineage, unrelated refusal and no inherited authority",
-      "status": "QUEUED_AFTER_COLD_AND_CAUSAL_PROOF"
+      "status": "QUEUED_AFTER_CAUSAL_AND_COLD_PROOF"
     },
     {
       "rank": 10,
@@ -101,6 +106,6 @@
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Integrate this post-#1069 projection refresh and require a successful Current Truth Resolver run with no stale operational projection. Then Shawn explicitly authorizes DEPLOY for the resulting exact current main through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once and then advance SN-004 causal proof. While that boundary is pending, Coda 2 reliability and #1062 bounded design/proof work remain independent."
+    "instruction": "Integrate this fa5c0a06 projection refresh and require a fresh successful Current Truth Resolver result. Then Shawn explicitly authorizes DEPLOY for that exact reconciled revision through the existing governed production-promotion workflow. Verify exact deployed parity before rerunning PROVE once, then causal and two-owner runtime proofs. Do not weaken the protected-path gate; Coda 2 reliability work continues independently."
   }
 }
