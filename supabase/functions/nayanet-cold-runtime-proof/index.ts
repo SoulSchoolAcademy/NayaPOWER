@@ -154,6 +154,10 @@ Deno.serve(async (req: Request) => {
       const capabilities: string[] = [];
       if (lesson.includes("Preserve provenance before applying retained intelligence")) capabilities.push("provenance_preservation");
       if (
+        lesson.includes("Persistence alone is memory, not proof of active intelligence.") &&
+        lesson.includes("Retrieved intelligence does not grant authority")
+      ) capabilities.push("active_intelligence_discipline");
+      if (
         String(machineView.operating_mode || "").includes("act-first within guardrails") &&
         permitted.includes("repository reads, tests, verification") &&
         permitted.includes("documentation and evidence recording") &&
