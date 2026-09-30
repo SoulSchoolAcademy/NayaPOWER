@@ -12,6 +12,7 @@ from kernel.value_calculus import (
     QualityProfile,
     RiskPolicy,
     TailRisk,
+    build_contribution_receipt,
     build_decision_receipt,
     calibration_summary,
     contribution_points,
@@ -231,3 +232,109 @@ def test_weight_manipulation_cannot_add_unknown_dimensions():
     bad = QualityProfile("x", "2.1", "o", priorities={"objective_fit": 1, "pet_option": 999})
     with pytest.raises(ValueError):
         bad.weights()
+
+
+def test_contribution_receipt_unverified_activity_gets_no_reward():
+    receipt = build_contribution_receipt(
+        contribution_id="C-raw-like",
+        action_class="REACTION",
+        provenance={"source": "feed"},
+        privacy={"classification": "PRIVATE"},
+        raw_activity={"reaction": "LIKE"},
+        quality=0.9,
+        relevance=0.9,
+        verification_strength=0.9,
+        impact=0.9,
+        novelty=0.9,
+        verified_delta=10,
+        scoring_profile_id="NETWORK-VALUE-CANDIDATE",
+        scoring_profile_version="0.1",
+        points_per_unit=100,
+        repeat_decay=1,
+        evidence_refs=["event:1"],
+        explanation="Activity is recorded but not verified contribution.",
+        verification="UNVERIFIED",
+    )
+    assert receipt["receipt_type"] == "CONTRIBUTION_VALUE"
+    assert receipt["cvs"] == 0
+    assert receipt["points_awarded"] == 0
+    json.dumps(receipt, allow_nan=False)
+
+
+def test_verified_contribution_receipt_is_deterministic_and_rewardable():
+    args = dict(
+        contribution_id="C-verified-help",
+        action_class="VERIFIED_HELP",
+        provenance={"source": "smart-note"},
+        privacy={"classification": "SHARED", "consent_state": "ACTIVE"},
+        raw_activity={"kind": "answer"},
+        quality=0.9,
+        relevance=0.95,
+        verification_strength=1.0,
+        impact=0.8,
+        novelty=0.85,
+        verified_delta=5,
+        scoring_profile_id="NETWORK-VALUE-CANDIDATE",
+        scoring_profile_version="0.1",
+        points_per_unit=100,
+        repeat_decay=1,
+        evidence_refs=["outcome:1"],
+        explanation="Verified useful outcome.",
+        verification="VERIFIED",
+    )
+    a = build_contribution_receipt(**args)
+    b = build_contribution_receipt(**args)
+    assert a == b
+    assert a["cvs"] > 0
+    assert a["points_awarded"] > 0
+    assert a["scoring_profile"]["version"] == "0.1"
+
+
+def test_repeat_decay_prevents_repetitive_activity_from_farming_points():
+    common = dict(
+        contribution_id="C-repeat",
+        action_class="VERIFIED_HELP",
+        provenance={"source": "feed"},
+        privacy={"classification": "PUBLIC"},
+        raw_activity={"kind": "reply"},
+        quality=1,
+        relevance=1,
+        verification_strength=1,
+        impact=1,
+        novelty=1,
+        verified_delta=1,
+        scoring_profile_id="NETWORK-VALUE-CANDIDATE",
+        scoring_profile_version="0.1",
+        points_per_unit=100,
+        evidence_refs=["outcome:2"],
+        explanation="Repeat-decay test.",
+        verification="VERIFIED",
+    )
+    first = build_contribution_receipt(**common, repeat_decay=1)
+    repeated = build_contribution_receipt(**common, repeat_decay=0.1)
+    assert repeated["points_awarded"] == pytest.approx(first["points_awarded"] * 0.1)
+
+
+def test_negative_verified_contribution_is_evidence_not_automatic_point_punishment():
+    receipt = build_contribution_receipt(
+        contribution_id="C-negative",
+        action_class="CORRECTION_CASE",
+        provenance={"source": "review"},
+        privacy={"classification": "PRIVATE"},
+        raw_activity={"kind": "submission"},
+        quality=1,
+        relevance=1,
+        verification_strength=1,
+        impact=1,
+        novelty=1,
+        verified_delta=-2,
+        scoring_profile_id="NETWORK-VALUE-CANDIDATE",
+        scoring_profile_version="0.1",
+        points_per_unit=100,
+        repeat_decay=1,
+        evidence_refs=["outcome:negative"],
+        explanation="Negative outcome is preserved as evidence.",
+        verification="VERIFIED",
+    )
+    assert receipt["cvs"] < 0
+    assert receipt["points_awarded"] == 0
