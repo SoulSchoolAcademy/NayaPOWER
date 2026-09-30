@@ -1360,6 +1360,15 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20260930050000",
+      "name": "thread_connections_through_commit_bridge",
+      "path": "supabase/migrations/20260930050000_thread_connections_through_commit_bridge.sql",
+      "sha256": "50b9f805345edfdd593e3a36a3a38c738f82b9992c53ce8df5365cf73992034f",
+      "statement_count": 8,
+      "bytes": 7577,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20260930051000",
       "name": "harden_trigger_only_function_execution_v1",
       "path": "supabase/migrations/20260930051000_harden_trigger_only_function_execution_v1.sql",
