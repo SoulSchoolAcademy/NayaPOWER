@@ -211,12 +211,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "db11981e-27b2-4b18-abb0-14e1d581668d"
       }
+    },
+    {
+      "smart_note_id": "SN-014",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn014-compounding-imperative",
+      "content_hash": "318b7a0682f6a5b9d3fe41531c01773d00fae653c2e49d3170fa23a5838a0441",
+      "title": "The Compounding Imperative — Everything Teaches; Only the Captured Compounds",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "COMPOUNDING_INTELLIGENCE",
+      "subtopic": "CAPTURE_RETAIN_SIMPLIFY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-014/IB-SMART-NOTE-20260930-sn014-compounding-imperative.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-014/IB-SMART-NOTE-20260930-sn014-compounding-imperative.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "9566f618-518f-4932-a733-b790b1849201",
+        "lineage_id": "ce1f13a6-5a60-414f-af41-59c1183bcf22",
+        "relationship_id": "abecf0cb-6756-4c4a-9b33-e3ef79cdc7d0",
+        "runtime_index_id": "865a3385-0cd8-4351-8d5e-acea59dda558",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "b65f1cd2-5d22-4a86-a1f1-61445452a508"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 14,
+    "next_sequence": 15,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
