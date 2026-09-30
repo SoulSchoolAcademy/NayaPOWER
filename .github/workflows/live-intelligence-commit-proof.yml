@@ -132,7 +132,13 @@ jobs:
           if [[ -f reconciliation.json ]]; then
             cat reconciliation.json
           else
-            curl -fsS -X POST               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"               -H "Content-Type: application/json"               --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json
+            http_code="$(curl -sS -w "%{http_code}" -o fresh-lesson-receipt.json -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION")"
+            echo "runtime HTTP status: $http_code"
+            cat fresh-lesson-receipt.json
+            if [ "$http_code" != "200" ]; then
+              echo "RUNTIME_POST_FAILED status=$http_code"
+              exit 1
+            fi
             python - <<'PY'
           import json
           r=json.load(open("fresh-lesson-receipt.json"))
