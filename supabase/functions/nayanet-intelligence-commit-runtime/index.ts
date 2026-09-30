@@ -113,7 +113,7 @@ async function callSupersede(body: Json, jti: string) {
       p_understanding_state: String(body.p_understanding_state ?? "CANDIDATE"),
       p_owner_scope: String(body.p_owner_scope ?? "PRIVATE"),
       p_idempotency_key: String(body.p_idempotency_key ?? ""),
-      p_connections: (body.p_connections ?? null) as Json["p_connections"],
+      p_connections: coerceConnections(body.p_connections),
     }),
   });
   const text = await response.text();
