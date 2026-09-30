@@ -20,7 +20,8 @@ def test_historical_checkpoint_reconstructs_from_immutable_commit_receipt():
 
 def test_historical_learning_does_not_clobber_current_mutable_checkpoint():
     source = LEARN.read_text(encoding="utf-8")
-    assert 'const historicalCheckpoint = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT"' in source
+    assert 'const historicalCheckpoint = historicalCheckpointProvenance;' in source
+    assert 'historicalCheckpointProvenance = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT"' in source
     assert "if (!historicalCheckpoint)" in source
     assert '"LEARNED_VIA_IMMUTABLE_RECEIPT"' in source
     assert "historical_receipt_lock_in" in source
