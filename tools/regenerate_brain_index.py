@@ -22,6 +22,11 @@ edited file) still fails the check.
 Reconciliation rules (2026-09-30 brain-reconciliation ledger):
     - Per-domain counts must match the ledger's classification table (asserted;
       any drift fails the run instead of silently rewriting the table).
+    - Pointer integrity: every declared pointer-bearing field in the index
+      layer (POINTER_FIELDS) must resolve against the git tree at HEAD. A
+      generic backstop scan catches path-like strings in the same files that
+      are not declared and not documented non-pointers. Any dangling pointer
+      fails the run with exit 2, naming the file, field, and bad target.
     - Never invent or alter semantic/contract claims — counts, file lists,
       pointers and dated banners only.
     - The three index files are self-referential: instead of listing their own
@@ -30,7 +35,8 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger):
       "_self_referential": true with no blob SHA. file_count always equals the
       true tree size (157), so the ledger's count assertions still hold.
 
-Exit codes: 0 = ok (or --check passed); 1 = --check found drift; 2 = usage/git error.
+Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
+           2 = usage/git error, count drift, or dangling pointer.
 """
 
 from __future__ import annotations
@@ -50,6 +56,60 @@ RECEIPT_PATHS = {
     "BRAIN/REAL-TREE.md",
     "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
 }
+
+# Pointer-bearing fields in the index layer, as (file, dotted field path, kind).
+# kind "blob" = must resolve to a file in the git tree at HEAD;
+# kind "tree" = must resolve to a directory prefix present in the git tree.
+# This is the declared set. A generic path-like string scan of the same files
+# runs as a backstop so a newly added pointer field cannot slip through.
+POINTER_FIELDS = [
+    # BRAIN/NAYAPOWER-BRAIN-INDEX.json (touched/patched by this tool)
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "canonical_root", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "constitutional_root", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "governance_root", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "superbrain_spec", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "brain_map", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "knowledge_synthesis", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "knowledge_ledger", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "kernel_runtime_registry", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "knowledge_population_map", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "representation_contract", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "graph_seed", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "knowledge_node_map", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "node_objects", "tree"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "inventory", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+     "proof_boundary.historical_north_star_acceptance.audit", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "smart_node_protocol", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "operations.queue", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "operations.master_plan", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "operations.master_plan_machine_projection", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "operations.issue_944_reconciliation", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "smart_note_human_projection.root", "tree"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "smart_note_human_projection.projection_registry", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "nine_node_organism_contract", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "nine_node_organism_map", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "smart_doors.contract", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "smart_doors.registry", "blob"),
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json", "graph_relationship_contract_v2", "blob"),
+    # BRAIN/04-INTELLIGENCE/MASTER-INDEX.json — the defect class that started
+    # Battle 1 (object_contract pointed at a nonexistent 0001-...md).
+    ("BRAIN/04-INTELLIGENCE/MASTER-INDEX.json", "tree", "blob"),
+    ("BRAIN/04-INTELLIGENCE/MASTER-INDEX.json", "graph_contract", "blob"),
+    ("BRAIN/04-INTELLIGENCE/MASTER-INDEX.json", "object_contract", "blob"),
+]
+
+# Path-looking strings that are NOT pointers (documented exclusions from the
+# generic backstop scan).
+NON_POINTER_STRINGS = {
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+     "smart_note_human_projection.pattern"): "glob pattern, not a resolvable path",
+    ("BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+     "reconciliation.ledger"): "workspace-local reference (~/workspace/naya/), not a repo path",
+}
+
+# A string value is treated as a repo path pointer if it matches this.
+PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.naya/|0000-)")
 
 # Ledger classification table: domain -> file count (includes each domain's README).
 EXPECTED_DOMAIN_COUNTS = {
@@ -140,6 +200,99 @@ def domain_counts(files: list[dict]) -> dict[str, int]:
         d = domain_of(f["path"])
         counts[d] = counts.get(d, 0) + 1
     return counts
+
+
+def get_field(doc: dict, dotted: str):
+    cur = doc
+    for part in dotted.split("."):
+        if not isinstance(cur, dict) or part not in cur:
+            return None
+        cur = cur[part]
+    return cur
+
+
+def show_file(root: Path, path: str) -> str:
+    """Read a file from the committed git tree at HEAD (never the working tree)."""
+    return git(["show", f"HEAD:{path}"], root)
+
+
+def tree_path_sets(root: Path) -> tuple[set[str], set[str]]:
+    """Return (blob_paths, dir_prefixes) for the full git tree at HEAD."""
+    out = git(["ls-tree", "-r", "--name-only", "HEAD"], root)
+    blobs = set(out.splitlines())
+    dirs: set[str] = set()
+    for p in blobs:
+        parts = p.split("/")[:-1]
+        for i in range(1, len(parts) + 1):
+            dirs.add("/".join(parts[:i]) + "/")
+    return blobs, dirs
+
+
+def iter_path_like_strings(doc, prefix: str = ""):
+    """Yield (dotted_field_path, value) for every path-like string in a JSON doc."""
+    if isinstance(doc, dict):
+        for k, v in doc.items():
+            p = f"{prefix}.{k}" if prefix else k
+            if isinstance(v, str) and PATH_LIKE_RE.match(v):
+                yield p, v
+            else:
+                yield from iter_path_like_strings(v, p)
+    elif isinstance(doc, list):
+        for i, v in enumerate(doc):
+            yield from iter_path_like_strings(v, f"{prefix}[{i}]")
+
+
+def validate_pointers(root: Path) -> list[str]:
+    """Assert every declared pointer in the index layer resolves in the git tree.
+
+    Returns a list of error strings (empty = all resolve). Covers the declared
+    POINTER_FIELDS plus a generic backstop scan for path-like strings in the
+    same files, so a newly added pointer field cannot slip through.
+    """
+    errors: list[str] = []
+    blobs, dirs = tree_path_sets(root)
+    declared = {(f, fp) for f, fp, _ in POINTER_FIELDS}
+
+    def check_one(path: str, field: str, target: str, kind: str, declared_field: bool):
+        if kind == "blob":
+            ok = target in blobs
+        else:
+            ok = (target.rstrip("/") + "/" in dirs) or (target in blobs)
+        if not ok:
+            origin = "declared" if declared_field else "backstop scan"
+            errors.append(
+                f"dangling pointer ({origin}): {path} field '{field}' -> '{target}' "
+                f"(not in git tree at HEAD)"
+            )
+
+    for path, field, kind in POINTER_FIELDS:
+        try:
+            doc = json.loads(show_file(root, path))
+        except RuntimeError as exc:
+            errors.append(f"pointer source unreadable: {path}: {exc}")
+            continue
+        target = get_field(doc, field)
+        if target is None:
+            errors.append(f"pointer field missing: {path} field '{field}' not present")
+        elif not isinstance(target, str):
+            errors.append(f"pointer field not a string: {path} field '{field}'")
+        else:
+            check_one(path, field, target, kind, True)
+
+    # Backstop: any path-like string in the same files that is neither declared
+    # nor a documented non-pointer must resolve.
+    for path in {f for f, _, _ in POINTER_FIELDS}:
+        try:
+            doc = json.loads(show_file(root, path))
+        except RuntimeError:
+            continue  # already reported above
+        for field, target in iter_path_like_strings(doc):
+            if (path, field) in declared or (path, field) in NON_POINTER_STRINGS:
+                continue
+            kind = "tree" if target.endswith("/") else "blob"
+            check_one(path, field, target, kind, False)
+
+    return errors
 
 
 def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], today: str) -> str:
@@ -257,6 +410,14 @@ def check(root: Path) -> int:
     problems = []
     if counts != EXPECTED_DOMAIN_COUNTS:
         problems.append(f"domain counts drifted: {counts} != ledger {EXPECTED_DOMAIN_COUNTS}")
+    pointer_errors = validate_pointers(root)
+    if pointer_errors:
+        print("error: pointer integrity check failed:", file=sys.stderr)
+        for e in pointer_errors:
+            print(f"  {e}", file=sys.stderr)
+        print("A dangling pointer in the index layer fails the run — fix the pointer, do not force.",
+              file=sys.stderr)
+        return 2
     basis = basis_commit(root)
     today = datetime.date.today().isoformat()
     want = {
@@ -315,6 +476,15 @@ def main() -> int:
         print(f"  git:    {counts}", file=sys.stderr)
         print(f"  ledger: {EXPECTED_DOMAIN_COUNTS}", file=sys.stderr)
         print("A real BRAIN/ change landed — update EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
+        return 2
+
+    pointer_errors = validate_pointers(root)
+    if pointer_errors:
+        print("error: pointer integrity check failed:", file=sys.stderr)
+        for e in pointer_errors:
+            print(f"  {e}", file=sys.stderr)
+        print("A dangling pointer in the index layer fails the run — fix the pointer, do not force.",
+              file=sys.stderr)
         return 2
 
     if args.check:
