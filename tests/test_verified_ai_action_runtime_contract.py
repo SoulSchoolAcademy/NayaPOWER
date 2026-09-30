@@ -134,6 +134,18 @@ def test_concurrent_duplicate_requests_have_an_atomic_idempotency_claim():
     assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in execute
 
 
+def test_idempotency_key_is_bound_to_exact_request_context():
+    source = FUNCTION.read_text(encoding="utf-8")
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    assert "idempotency_request_fingerprint" in execute
+    assert "IDEMPOTENCY_KEY_REUSE_CONFLICT" in execute
+    assert 'status: "BLOCKED"' in execute
+    assert "idempotentReplay" in execute
+    # A reused key must be compared with the persisted original request context before replay.
+    assert "persistedFingerprint" in execute
+    assert "requestFingerprint" in execute
+
+
 def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
     source = FUNCTION.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
