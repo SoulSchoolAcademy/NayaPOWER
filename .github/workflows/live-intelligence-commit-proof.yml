@@ -18,7 +18,7 @@ concurrency:
 
 env:
   RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-commit-runtime
-  GRANT_ID: 0e082400-de6b-485e-9ebc-51b34f5debdc
+  GRANT_ID: 0e082400-de6d-485e-9ebc-51b34f5debdc
 
 jobs:
   fresh-lesson:
