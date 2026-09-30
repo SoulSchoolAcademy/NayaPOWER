@@ -1448,6 +1448,15 @@
    "statement_count": 19,
    "bytes": 3265,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
+   "version": "20261001040000",
+   "name": "nayanet_value_receipts_v21_v1",
+   "path": "supabase/migrations/20261001040000_nayanet_value_receipts_v21_v1.sql",
+   "sha256": "aa32cc88a3915170d770ced4801f6ff510df56c474268e3dbb15a7c111b24e08",
+   "statement_count": 7,
+   "bytes": 11390,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],
  "legacy_repository_snapshot_count": 95,
