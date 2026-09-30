@@ -42,6 +42,7 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
         str(k).lstrip("#"): str(v).upper()
         for k, v in (live.get("issue_states") or {}).items()
     }
+    open_prs = live.get("open_prs") or []
     active_issue = str(brain["operations"]["active_issue"])
     active_issue_state = issue_states.get(active_issue, "UNKNOWN")
 
@@ -164,6 +165,7 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             "active_issue": int(active_issue),
             "active_issue_state": active_issue_state,
             "linked_issue_states": linked_issue_states,
+            "open_prs": open_prs,
             "next_action": ops.get("next_action"),
             "top_10": top_10,
         },
@@ -173,10 +175,57 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
     }
 
 
+
+def render_markdown(result: dict[str, Any]) -> str:
+    repo = result.get("repository", {})
+    proof = result.get("proof", {})
+    work = result.get("active_work", {})
+    lines = [
+        "# NayaPOWER Current Truth — Generated Continuation Brief",
+        "",
+        f"**Resolver status:** {result.get('status', 'UNKNOWN')}",
+        f"**Live main:** `{repo.get('live_main_head') or 'UNKNOWN'}`",
+        f"**Checkout:** `{repo.get('checkout_head') or 'UNKNOWN'}`",
+        f"**Active issue:** #{work.get('active_issue', 'UNKNOWN')} ({work.get('active_issue_state', 'UNKNOWN')})",
+        f"**Runtime/source parity:** {proof.get('source_runtime_parity', 'UNKNOWN')}",
+        f"**Latest successful runtime proof source:** `{((proof.get('latest_successful_runtime_proof') or {}).get('head_sha')) or 'UNKNOWN'}`",
+        "",
+        "## One next action",
+        "",
+        str(work.get("next_action") or "UNKNOWN"),
+        "",
+        "## Warnings / unknowns",
+        "",
+    ]
+    warnings = result.get("warnings") or []
+    unknowns = result.get("unknowns") or []
+    conflicts = result.get("hard_conflicts") or []
+    if not warnings and not unknowns and not conflicts:
+        lines.append("- None observed by this resolver.")
+    else:
+        for item in conflicts:
+            lines.append(f"- **CONFLICT:** {item.get('code', 'UNKNOWN')} — `{json.dumps(item, sort_keys=True)}`")
+        for item in warnings:
+            lines.append(f"- **WARNING:** {item.get('code', 'UNKNOWN')} — `{json.dumps(item, sort_keys=True)}`")
+        for item in unknowns:
+            lines.append(f"- **UNKNOWN:** {item}")
+    lines += ["", "## Open pull requests", ""]
+    if work.get("open_prs"):
+        for pr in work.get("open_prs") or []:
+            lines.append(f"- #{pr.get('number', '?')} {pr.get('title', 'UNKNOWN')} — head `{pr.get('head_sha') or 'UNKNOWN'}` — draft={pr.get('draft')} — merge={pr.get('merge_state') or 'UNKNOWN'}")
+    else:
+        lines.append("- None reported by live collector.")
+    lines += ["", "## Max-10", ""]
+    for item in work.get("top_10") or []:
+        lines.append(f"- {item.get('id', '?')}: {item.get('action', 'UNKNOWN')} [{item.get('status', 'UNKNOWN')}]")
+    lines += ["", "> Projection only. Live GitHub/runtime evidence outranks this generated brief when newer.", ""]
+    return "\n".join(lines)
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--live-evidence", type=Path, required=True)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--markdown-output", type=Path)
     parser.add_argument("--fail-on-conflict", action="store_true")
     args = parser.parse_args()
 
@@ -188,6 +237,8 @@ def main() -> int:
         args.output.write_text(payload, encoding="utf-8")
     else:
         print(payload, end="")
+    if args.markdown_output:
+        args.markdown_output.write_text(render_markdown(result), encoding="utf-8")
 
     if args.fail_on_conflict and result["hard_conflicts"]:
         return 2
