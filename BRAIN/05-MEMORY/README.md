@@ -6,13 +6,13 @@ Owns durable retention, indexing, retrieval, reconciliation, freshness, and cont
 
 Memory stores and retrieves intelligence; it does not decide truth or authority by itself.
 
-## Contents (17 files + this README = 18)
+## Contents (18 files + this README = 19)
 
 | File | Purpose |
 |---|---|
 | [0001-MEMORY-CONTINUITY-CONTRACT-V1.md](./0001-MEMORY-CONTINUITY-CONTRACT-V1.md) | Core memory and continuity rules |
 
-### Smart Notes (16)
+### Smart Notes (17)
 
 | Smart Note | Topic |
 |---|---|
@@ -20,6 +20,7 @@ Memory stores and retrieves intelligence; it does not decide truth or authority 
 | [SN-002](./SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md) | 20260929-sn002-smart-note-node-flow |
 | [SN-001](./SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md) | 20260929-b8f141805fa0d7ae |
 | [SN-015](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-015/IB-SMART-NOTE-20260930-sn015-active-intelligence-rule.md) | 20260930-sn015-active-intelligence-rule |
+| [SN-016](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md) | 20260930-sn016-prime-judgment-rule |
 | [SN-014](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-014/IB-SMART-NOTE-20260930-sn014-compounding-imperative.md) | 20260930-sn014-compounding-imperative |
 | [SN-006](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-006/IB-SMART-NOTE-20260930-sn006-earned-intelligence.md) | 20260930-sn006-earned-intelligence |
 | [SN-012](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-012/IB-SMART-NOTE-20260930-sn012-consent-granularity.md) | 20260930-sn012-consent-granularity |
