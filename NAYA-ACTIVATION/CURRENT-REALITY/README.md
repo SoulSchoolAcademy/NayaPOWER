@@ -2,8 +2,8 @@
 
 This directory is a projection and navigation layer, not a competing source of truth.
 
-Start with:
-`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md`
+Start with the current dated reconciliation:
+`SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md` (select the newest dated file; a superseded pin must not be used as current truth)
 
 ## Current State
 Resolve from ratified authority/contracts, current `main`, current GitHub issues/PRs and recent commits, plus claim-matched proof/workflow evidence. Dated state documents are snapshots and must be reconciled before use.
