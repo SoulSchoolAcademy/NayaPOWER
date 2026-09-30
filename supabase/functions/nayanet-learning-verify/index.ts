@@ -63,6 +63,13 @@ function deriveGraphApplicability(block: any) {
       limitations: ["Does not create authority; LAW must independently authorize consequential action."],
     };
   }
+  if (/persistence alone is memory, not proof of active intelligence|retrieved intelligence does not grant authority/i.test(lesson)) {
+    return {
+      state: "APPLICABLE",
+      task_classes: ["active_intelligence_sensitive", "learning_reuse", "contextual_retrieval"],
+      limitations: ["Persistence and retrieval never create verification or authority; truth and LAW boundaries remain mandatory."],
+    };
+  }
   return {
     state: "UNKNOWN",
     task_classes: [],
@@ -365,6 +372,47 @@ Deno.serve(async (req: Request) => {
     const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
       ? promoted.observed_value
       : {};
+    let historicalCommitReceipt = null;
+    const historicalCommitReceiptId = String((observed as any).commit_receipt_id || "");
+    const historicalCheckpointProvenance = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT";
+    if (historicalCheckpointProvenance) {
+      if (!historicalCommitReceiptId) {
+        return json({ ok: false, error: "HISTORICAL_COMMIT_RECEIPT_REQUIRED" }, 409);
+      }
+      const { data: originalReceipt, error: originalReceiptError } = await admin
+        .from("nayanet_execution_receipts")
+        .select("*")
+        .eq("id", historicalCommitReceiptId)
+        .eq("user_id", ownerId)
+        .eq("project_id", "NayaNET")
+        .maybeSingle();
+      if (originalReceiptError) throw originalReceiptError;
+      if (!originalReceipt || originalReceipt.action !== "intelligence_commit") {
+        return json({ ok: false, error: "HISTORICAL_COMMIT_RECEIPT_NOT_FOUND" }, 409);
+      }
+      const immutableLearning = Array.isArray(originalReceipt.learning) ? originalReceipt.learning : [];
+      const immutableVerificationRecord = {
+        learning_id: promoted.id,
+        verified: true,
+        verification_method: verificationMethod,
+        verification_runtime: "github-actions-oidc",
+        verification_runtime_jti: payload.jti ?? null,
+        verified_at: new Date().toISOString(),
+        historical_checkpoint_provenance: "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT",
+      };
+      const immutableAlreadyRecorded = immutableLearning.some(
+        (entry: any) => entry?.learning_id === promoted.id && entry?.verified === true
+      );
+      const { data: updatedOriginalReceipt, error: originalReceiptUpdateError } = await admin
+        .from("nayanet_execution_receipts")
+        .update({ learning: immutableAlreadyRecorded ? immutableLearning : [...immutableLearning, immutableVerificationRecord] })
+        .eq("id", historicalCommitReceiptId)
+        .eq("user_id", ownerId)
+        .select("*")
+        .single();
+      if (originalReceiptUpdateError) throw originalReceiptUpdateError;
+      historicalCommitReceipt = updatedOriginalReceipt;
+    }
     const intelligentBlockId = String((observed as any).intelligent_block_id || "");
     const relationshipId = String((observed as any).relationship_id || "");
     const checkpointId = String((observed as any).checkpoint_id || "");
@@ -452,7 +500,7 @@ Deno.serve(async (req: Request) => {
       .single();
     if (relationshipUpdateError) throw relationshipUpdateError;
 
-    const historicalCheckpoint = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT";
+    const historicalCheckpoint = historicalCheckpointProvenance;
     const { data: checkpointBefore, error: checkpointReadError } = await admin
       .from("nayanet_project_cognition_state")
       .select("*")
@@ -517,6 +565,7 @@ Deno.serve(async (req: Request) => {
         ? (receipt.learning || []).find((entry: any) => entry?.learning_id === promoted.id && entry?.verified === true) ?? null
         : null,
       receipt,
+      historical_commit_receipt: historicalCommitReceipt,
       integration,
       runtime_identity: "github-actions-oidc",
       workflow_ref: workflowRef,
