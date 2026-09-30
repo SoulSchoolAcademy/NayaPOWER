@@ -64,9 +64,11 @@ def quality(score=9.5, conf=0.95, **overrides):
 
 def cand(cid, *, baseline=False, B=8, score=9.5, conf=0.95, **kwargs):
     q, c = quality(score, conf)
+    hard = dict(lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True)
+    hard.update({k: kwargs.pop(k) for k in list(kwargs) if k in hard})
     return Candidate(
         cid, q, c, pv(B=B, conf=conf), authorized=True, reversible=True,
-        human_authorized=False, is_baseline=baseline, **kwargs
+        human_authorized=False, is_baseline=baseline, **hard, **kwargs
     )
 
 
@@ -89,13 +91,13 @@ def test_four_state_gates(profile):
     assert gate_candidate(Candidate("x", q, c, pv(), authorized=True, hard_violation=True), profile, RiskPolicy())[0] == PROHIBITED
     assert gate_candidate(Candidate("x", q, c, pv(), authorized=False), profile, RiskPolicy())[0] == NEEDS_AUTHORITY
     assert gate_candidate(Candidate("x", q, c, pv(evidence_count=0), authorized=True), profile, RiskPolicy())[0] == NEEDS_EVIDENCE
-    assert gate_candidate(Candidate("x", q, c, pv(), authorized=True), profile, RiskPolicy())[0] == ADMISSIBLE
+    assert gate_candidate(Candidate("x", q, c, pv(), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True), profile, RiskPolicy())[0] == ADMISSIBLE
 
 
 def test_critical_confidence_cannot_be_averaged_away(profile):
     q, c = quality()
     c["robustness"] = 0.1
-    x = Candidate("x", q, c, pv(), authorized=True)
+    x = Candidate("x", q, c, pv(), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True)
     gate, reasons, _ = gate_candidate(x, profile, RiskPolicy())
     assert gate == NEEDS_EVIDENCE
     assert "CRITICAL_CONFIDENCE_FLOOR" in reasons
@@ -103,7 +105,7 @@ def test_critical_confidence_cannot_be_averaged_away(profile):
 
 def test_component_confidence_floor_blocks_uncertainty_laundering(profile):
     q, c = quality()
-    x = Candidate("x", q, c, pv(conf=0.4), authorized=True)
+    x = Candidate("x", q, c, pv(conf=0.4), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True)
     gate, reasons, _ = gate_candidate(x, profile, RiskPolicy())
     assert gate == NEEDS_EVIDENCE
     assert "PV_COMPONENT_CONFIDENCE_FLOOR" in reasons
@@ -112,7 +114,7 @@ def test_component_confidence_floor_blocks_uncertainty_laundering(profile):
 def test_tail_risk_cannot_be_outscored(profile):
     q, c = quality(10, 1)
     x = Candidate(
-        "x", q, c, pv(B=100, conf=1), authorized=True,
+        "x", q, c, pv(B=100, conf=1), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         tails=(TailRisk(10, 0.10, "catastrophic"),),
     )
     assert gate_candidate(x, profile, RiskPolicy())[0] == PROHIBITED
@@ -121,7 +123,7 @@ def test_tail_risk_cannot_be_outscored(profile):
 def test_action_splitting_inherits_plan_stakes(profile):
     q, c = quality()
     step = Candidate(
-        "step", q, c, pv(), authorized=True, stakes="low", plan_stakes="consequential",
+        "step", q, c, pv(), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True, stakes="low", plan_stakes="consequential",
         human_authorized=False,
     )
     gate, reasons, _ = gate_candidate(step, profile, RiskPolicy())
@@ -132,7 +134,7 @@ def test_action_splitting_inherits_plan_stakes(profile):
 def test_distributional_harm_beats_aggregate_value(profile):
     q, c = quality()
     x = Candidate(
-        "x", q, c, pv(B=100), authorized=True,
+        "x", q, c, pv(B=100), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True,
         stakeholder_harms={"minority": 9.5},
     )
     assert gate_candidate(x, profile, RiskPolicy(max_stakeholder_harm=9))[0] == PROHIBITED
@@ -141,7 +143,7 @@ def test_distributional_harm_beats_aggregate_value(profile):
 @pytest.mark.parametrize("flag", ["principal_conflict", "coordination_conflict", "jurisdiction_conflict"])
 def test_multi_principal_ai_and_jurisdiction_conflicts_escalate(profile, flag):
     q, c = quality()
-    x = Candidate("x", q, c, pv(), authorized=True, **{flag: True})
+    x = Candidate("x", q, c, pv(), authorized=True, lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True, **{flag: True})
     assert gate_candidate(x, profile, RiskPolicy())[0] == NEEDS_AUTHORITY
 
 
@@ -409,3 +411,45 @@ def test_recalibration_is_versioned_and_cannot_self_promote(profile):
     promoted = promote_recalibration(receipt, profile, verified=True, authorized=True)
     assert promoted.version == "2.1-cal-1"
     assert promoted.interval_epsilon == pytest.approx(0.1)
+
+
+def test_unknown_hard_flags_never_silently_pass(profile):
+    # Spec: "UNKNOWN never silently becomes PASS". A candidate whose hard
+    # flags were never assessed must route to NEEDS_EVIDENCE, not ADMISSIBLE.
+    q, c = quality()
+    x = Candidate("x", q, c, pv(), authorized=True)
+    gate, reasons, _ = gate_candidate(x, profile, RiskPolicy())
+    assert gate == NEEDS_EVIDENCE
+    assert "HARD_GATE_UNKNOWN" in reasons
+    for flag in ("UNKNOWN_LAW", "UNKNOWN_RIGHTS", "UNKNOWN_PRIVACY", "UNKNOWN_SAFETY"):
+        assert flag in reasons
+
+
+def test_hard_flag_defaults_are_unknown_not_true():
+    # The insecure default (True) is gone: constructing without flags leaves
+    # them unassessed instead of silently passing.
+    q, c = quality()
+    x = Candidate("x", q, c, pv(), authorized=True)
+    assert x.lawful is None
+    assert x.rights_safe is None
+    assert x.privacy_safe is None
+    assert x.safety_safe is None
+
+
+@pytest.mark.parametrize("flag", ["lawful", "rights_safe", "privacy_safe", "safety_safe"])
+def test_explicit_false_hard_flag_prohibits(profile, flag):
+    q, c = quality()
+    kwargs = dict(lawful=True, rights_safe=True, privacy_safe=True, safety_safe=True)
+    kwargs[flag] = False
+    x = Candidate("x", q, c, pv(), authorized=True, **kwargs)
+    assert gate_candidate(x, profile, RiskPolicy())[0] == PROHIBITED
+
+
+def test_unknown_hard_flags_yield_to_authority_routing(profile):
+    # Gate precedence is preserved: an unauthorized candidate routes to
+    # NEEDS_AUTHORITY even when hard flags are also unassessed.
+    q, c = quality()
+    x = Candidate("x", q, c, pv(), authorized=False)
+    gate, reasons, _ = gate_candidate(x, profile, RiskPolicy())
+    assert gate == NEEDS_AUTHORITY
+    assert "AUTHORITY_MISSING" in reasons
