@@ -36,7 +36,10 @@ def test_learning_verifier_is_machine_authenticated_by_governed_oidc_not_user_se
     assert "createRemoteJWKSet" in source
     assert "jwtVerify" in source
     assert 'audience: AUDIENCE' in source
-    assert 'payload.workflow_ref !== workflowRef' in source
+    assert 'const WORKFLOWS = new Set([' in source
+    assert '".github/workflows/live-supabase-runtime-proof.yml"' in source
+    assert '".github/workflows/live-self-proof.yml"' in source
+    assert '!expectedRefs.includes(workflowRef)' in source
     assert 'payload.repository !== REPOSITORY' in source
     assert 'payload.ref !== REF' in source
     assert 'auth.getUser' not in source

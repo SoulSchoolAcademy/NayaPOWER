@@ -4,7 +4,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-intelligence-commit-proof.yml";
+const WORKFLOWS = new Set([".github/workflows/live-intelligence-commit-proof.yml", ".github/workflows/live-self-proof.yml"]);
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -26,8 +26,9 @@ async function authenticate(req: Request) {
   } catch {
     throw new Error("GITHUB_OIDC_INVALID");
   }
-  const workflowRef = REPOSITORY + "/" + WORKFLOW + "@" + REF;
-  if (payload.repository !== REPOSITORY || payload.workflow_ref !== workflowRef || payload.ref !== REF) {
+  const workflowRef = String(payload.workflow_ref ?? "");
+  const expectedRefs = Array.from(WORKFLOWS).map(w => REPOSITORY + "/" + w + "@" + REF);
+  if (payload.repository !== REPOSITORY || !expectedRefs.includes(workflowRef) || payload.ref !== REF) {
     throw new Error("WORKFLOW_BINDING_MISMATCH");
   }
   return {payload, workflowRef};
