@@ -3,6 +3,10 @@ import { readFileSync } from 'node:fs';
 import { stripTypeScriptTypes } from 'node:module';
 import { test } from 'node:test';
 import vm from 'node:vm';
+import {
+  CapabilityValidationError,
+  validateCapabilities,
+} from '../supabase/functions/nayanet-intelligence-commit-runtime/capability-vocabulary.ts';
 
 // Execute the real handler offline. Only external services and the Deno host
 // are substituted; authentication decisions and RPC serialization remain real.
@@ -19,6 +23,9 @@ function runtime({ payload = claims, rpcStatus = 200 } = {}) {
   const calls = [];
   vm.runInNewContext(code, {
     URL, Request, Response,
+    // The handler's import lines are stripped for offline execution; the real
+    // vocabulary module is injected so capability validation stays real.
+    validateCapabilities, CapabilityValidationError,
     Deno: {
       env: { get: key => ({ SUPABASE_URL: 'https://offline.invalid', SUPABASE_SERVICE_ROLE_KEY: 'fake-server-key' })[key] },
       serve: callback => { handler = callback; },
@@ -44,7 +51,7 @@ test('execute carries lesson fields and authenticated token ID across the RPC bo
   assert.equal((await response.json()).result.receipt_id, 'test-receipt');
   assert.equal(r.calls.length, 1);
   const { mode, p_runtime_jti, p_owner_id, p_naya_id, ...fields } = lesson;
-  assert.deepEqual(r.calls[0].body, { ...fields, p_connections: null, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001' });
+  assert.deepEqual(r.calls[0].body, { ...fields, p_connections: null, p_capabilities: null, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001' });
   assert.equal(r.calls[0].url, 'https://offline.invalid/rest/v1/rpc/nayanet_intelligence_commit_runtime');
 });
 
@@ -55,6 +62,33 @@ test('execute threads caller-supplied p_connections across the RPC boundary', as
   assert.equal(response.status, 200);
   assert.equal(r.calls.length, 1);
   assert.deepEqual(r.calls[0].body.p_connections, [{ type: 'SUPPORTS', target: 'IB-000001' }]);
+});
+
+test('execute threads validated p_capabilities across the RPC boundary (normalized, deduped)', async () => {
+  const r = runtime();
+  const lesson = { mode: 'execute', p_event_id: 'fresh-event', p_title: 'Lesson', p_content: 'Useful intelligence', p_category: 'KNOWLEDGE', p_topic: 'CONTINUITY', p_target_id: 'NAYA-NODE-0001', p_authority_grant_id: 'test-grant', p_project_id: 'NayaNET', p_capabilities: [' Governance_Triage ', 'compounding_capture', 'governance_triage'] };
+  const response = await r.invoke(lesson);
+  assert.equal(response.status, 200);
+  assert.equal(r.calls.length, 1);
+  assert.deepEqual(r.calls[0].body.p_capabilities, ['compounding_capture', 'governance_triage']);
+});
+
+test('execute fails closed on unknown capability before reaching the RPC', async () => {
+  const r = runtime();
+  const lesson = { mode: 'execute', p_event_id: 'fresh-event', p_title: 'Lesson', p_content: 'Useful intelligence', p_category: 'KNOWLEDGE', p_topic: 'CONTINUITY', p_target_id: 'NAYA-NODE-0001', p_authority_grant_id: 'test-grant', p_project_id: 'NayaNET', p_capabilities: ['mind_control'] };
+  const response = await r.invoke(lesson);
+  assert.equal(response.status, 400);
+  assert.match((await response.json()).error, /^CAPABILITY_UNKNOWN:mind_control/);
+  assert.equal(r.calls.length, 0, 'rejected captures must never reach the RPC');
+});
+
+test('execute fails closed on malformed capabilities before reaching the RPC', async () => {
+  const r = runtime();
+  const lesson = { mode: 'execute', p_event_id: 'fresh-event', p_title: 'Lesson', p_content: 'Useful intelligence', p_category: 'KNOWLEDGE', p_topic: 'CONTINUITY', p_target_id: 'NAYA-NODE-0001', p_authority_grant_id: 'test-grant', p_project_id: 'NayaNET', p_capabilities: 'governance_triage' };
+  const response = await r.invoke(lesson);
+  assert.equal(response.status, 400);
+  assert.match((await response.json()).error, /^CAPABILITY_MALFORMED/);
+  assert.equal(r.calls.length, 0);
 });
 
 test('supersede mode calls the supersede bridge with identity and p_connections', async () => {
