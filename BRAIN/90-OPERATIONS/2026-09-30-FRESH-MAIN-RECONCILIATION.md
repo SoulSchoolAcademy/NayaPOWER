@@ -1,4 +1,6 @@
 # NayaPOWER — Fresh Main Reconciliation & AAA Frontier
+> **Supersession note (2026-09-30 ~07:00 PDT, Naya 2):** this reconciliation inspected main `aaa373bd` / production `9dba0fe2`. Current state: main `0e9a98588`, production `49c60714` (source `0e7711ba`, deployed 05:29:41 UTC). This document is preserved as historical evidence; do not treat its SHAs as current. See `0001-MAX-10-EXECUTION-QUEUE-V1.md` for the refreshed snapshot.
+
 
 **Verification time:** 2026-09-30
 **Canonical main inspected:** `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`
