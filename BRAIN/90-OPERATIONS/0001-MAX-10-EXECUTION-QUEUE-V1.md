@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `a07728a456ffb8d662f83b48e9f625ea3dc9779e`
+**Evidence snapshot base:** `52f866d0741eb65f4030b173afc9dbf4b5da382a`
 
 ## CURRENT TRUTH
 
@@ -19,23 +19,25 @@
 - Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
 - #66 cached-derived authority boundary: **TEST-LEVEL VERIFIED**; ACT live-grant denial matrix #1046 is now merged at `7847680f`; this is still not production proof.
 - Live KNOW proof is now bounded-live **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe verification after #1060's stale-oracle repair.
-- SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 merged at `4c2b8f12`; #1056 merged at `0fb36123`; the causal runtime is **NOT DEPLOYED AT SOURCE PARITY**.
+- SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the last causal verdict. The applicability-aware causal runtime source was included in production-proven source `2ff4207a` via governed promotion `36659933566`; no causal-runtime file changed from `2ff4207a` to current `52f866d0`. A fresh applicable causal experiment is still required before any improved-effect claim.
 - Readiness fail-closed repairs #1058/#1061 and current-truth projection #1053 are merged. Semantic projection-drift guard #1067 is canonical and exact-main verified; substantive drift invalidates stale actions while projection-only drift remains current.
-- Governed promotion remains fail-closed for protected runtime changes until explicit Human Director `DEPLOY`. Live PROVE run `36658635227` failed before KNOW/PROVE because LAW's OIDC trust set omitted `live-prove-proof.yml`; #1069 source-repaired that exact binding and merged at `c6ac19c4`, but the live LAW runtime is still pre-fix until governed deployment.
+- Governed promotion `36659933566` fully deployed/proved source `2ff4207a` (artifact `11074161563`), so LAW's #1069 PROVE-workflow binding is deployed. Later #1072 adds the same canonical PROVE workflow to KNOW's OIDC allowlist and #1076 preserves the positive/negative handler regression, but KNOW is newer than deployed/proven source and therefore live PROVE must not be retried until a new explicit `DEPLOY` brings KNOW to parity.
+- #1062 source hardening is merged via #1070: safe derived-column reads, explicit consent, source-owner binding, last-participation revocation and no silent revoked-row reactivation. Migration `20260930022500` is pending/not production-applied; live two-owner acceptance remains **NOT PROVEN**.
+- #1077 graph V2 contract/validator/tests are merged and green. #1078 adds the pending additive V2 persistence migration `20260930024000` on the existing graph table with conservative legacy defaults and no RLS widening. The migration is **NOT PRODUCTION-APPLIED** and CONNECT edge consumption/multi-hop behavior remain **NOT PROVEN**.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — refresh the existing projection against exact source-repaired main `c6ac19c4`, then require the resolver to classify the resulting merge as CURRENT under projection-only drift.
-2. **Exact governed runtime deployment parity** — protected promotion is correctly blocked; explicit Human Director `DEPLOY` must deploy the exact current runtime set, including LAW's #1069 PROVE-workflow binding and the causal-runtime repairs, before any PROVE or SN-004 live rerun.
+1. **#66 current-truth convergence** — refresh the existing projection against exact current main `52f866d0`, with production-proven source `2ff4207a` and all post-production deltas classified, then require the resolver to classify the projection merge as CURRENT under projection-only drift.
+2. **Exact governed runtime/migration parity** — production-proven source is `2ff4207a`. Explicit Human Director `DEPLOY` must promote the exact reconciled current main so KNOW #1072 and pending collective-wisdom migration #1070 reach production before PROVE/two-owner live proof. Causal runtime code itself has not changed since `2ff4207a`.
 3. **Checkpoint/provenance/replay/recovery** — Coda 2 owns exact replay, conflicting replay, response-loss, concurrency and receipt-write failure at the ACT seam.
 4. **Authority residuals #1042** — ACT denial coverage is merged; mission binding remains a Human Director authority-model decision.
-5. **PROVE live qualification** — KNOW is live-proven. PROVE's first run exposed a LAW workflow-trust omission; #1069 is source-fixed/merged but live PROVE rerun is BLOCKED until deployed LAW parity.
-6. **SN-004 faithful projection + applicable causal effect** — source repairs are merged; regenerate faithful existing projection and rerun act-first causal experiment only after exact deployed parity.
-7. **Two-owner NayaNET #1062** — prove derived collective sharing and revocation propagation without weakening owner-only private intelligence RLS.
-8. **True cold continuity #1044** — one genuinely fresh repository-only entrant, then a second successor; no simulated cold seat.
-9. **Multi-generation A→B→C** — attributable improvement, unrelated refusal, lineage, and no inherited authority.
-10. **Human value then DREAM→EVOLVE** — measure useful outcomes/attention and only then expand recursive optimization or network scale.
+5. **PROVE live qualification** — KNOW's standalone proof is live-proven. PROVE's LAW binding is deployed at `2ff4207a`; KNOW's PROVE-workflow binding (#1072) is source-fixed with #1076 durable regression but not deployed, so the fresh PROVE rerun is BLOCKED on deployed KNOW parity.
+6. **SN-004 faithful projection + applicable causal effect** — causal runtime source is deployed/proven at `2ff4207a` and unchanged in current main; run one fresh applicable act-first causal experiment only after current-head deployment reconciliation avoids mixing source/runtime revisions.
+7. **Two-owner NayaNET #1062** — #1070 source contract is green/merged; deploy the pending migration under governed authority, then prove PRIVATE DENY → consented derived use → revoke → future deny/invalidate without weakening owner-only private intelligence RLS.
+8. **Graph V2 persistence → CONNECT consumption** — #1077 contract + #1078 pending persistence semantics are source-integrated; deploy the governed migration before runtime claims, then prove the existing CONNECT path actually consumes eligible edges with applicability/temporal/supersession semantics.
+9. **True cold continuity #1044** — one genuinely fresh repository-only entrant, then a second successor; no simulated cold seat.
+10. **Multi-generation A→B→C** — attributable improvement, unrelated refusal, lineage, and no inherited authority.
 
 ## DONE / DO NOT REDO
 
@@ -43,16 +45,18 @@ Do not redo #913, #944, #971, #978, #975, or #810. Do not recreate Concept #17 i
 
 ## CURRENT FAILURE-FIRST EVIDENCE
 
-The active source repair cluster, semantic truth guard, and PROVE LAW-workflow binding are integrated through `c6ac19c4`, but **source integration is not deployed parity**.
+Governed promotion `36659933566` fully succeeded for source `2ff4207a` with artifact `11074161563`. Current main `52f866d0` is newer and therefore does not inherit whole-head production proof.
 
-Current causal runtime source differs from production:
-- cold runtime main blob `c91556d4...` vs production `03eaaa87...`;
-- causal experiment main blob `5b60a6f7...` vs production `b29d11e...`.
+Exact post-production delta from production-proven source `2ff4207a` to current `52f866d0` contains only:
+- #1070 collective-wisdom migration/ledger/tests (migration pending, not production-applied);
+- #1072 KNOW runtime OIDC binding for canonical PROVE workflow;
+- #1076 KNOW handler regression (test only);
+- #1077 Graph Relationship Contract V2 + validator/tests (contract level only).
 
-Governed Production Promotion run `36657956413` correctly failed closed with `protected_change_requires_explicit_promotion` and preserved artifact `11072839541`. Do not bypass this denial.
+No causal-runtime source file changed across that delta, so causal-runtime code parity survives at the file level. Current whole-head production parity does not.
 
-The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid until the merged applicability-aware runtime is actually deployed and independently rerun. KNOW now has fresh bounded live HIT/MISS + independent verification in run `36658860694`. PROVE must not be retried before LAW source/deployed parity.
+The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains the last observed causal outcome until a fresh applicable experiment is run. KNOW standalone live proof remains PASS at `36658860694`. PROVE must not be retried until #1072 KNOW runtime binding is deployed.
 
 ## EXACT NEXT ACTION
 
-**Issue #66: integrate this post-#1069 projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then the smallest consequential human action is explicit `DEPLOY` for the resulting exact current main through the existing governed production-promotion workflow. After deployed parity, rerun PROVE exactly once, then SN-004 causal proof. Do not weaken protected-path policy. While deployment waits, Coda 2 replay/recovery and #1062 two-owner proof work continue independently.**
+**Issue #66: integrate this `52f866d0` current-truth reconciliation and require a fresh successful Current Truth Resolver run with no substantive-drift stale warning. Then the smallest consequential human action is explicit `DEPLOY` for that exact reconciled main through the existing governed promotion lane. After parity, rerun PROVE exactly once, execute the bounded #1062 two-owner live experiment, and run one fresh applicable SN-004 causal experiment. Do not weaken protected-path policy. Coda 2 ACT replay/recovery remains independently owned.**
