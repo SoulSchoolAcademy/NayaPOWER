@@ -1,3 +1,36 @@
+# Smart Ledger Core Math — Concept Part #19
+
+**Status:** RATIFIED SOURCE / CONSENSUS PROVENANCE — 2026-09-30  
+**Human Director:** Shawn Vibert  
+**Canonical operational contract:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
+**Machine schemas:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json` and `.naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json`  
+**Executable reference:** `kernel/value_calculus.py`  
+**Runtime binding:** `supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql`
+
+> This file is the authoritative **design conversation and consensus provenance** for the Smart Ledger / Decision Value Calculus direction. It intentionally preserves superseded ideas, objections, red-team findings, and the convergence path. Where historical statements in this transcript conflict with the final V2.1 machine contract, the canonical V2.1 specification and schemas govern runtime behavior.
+
+## Ratified system
+
+`RESOLVE → GATE → SCORE → COMPARE → SELECT → ACT/ESCALATE → OBSERVE → VERIFY → LEDGER → LEARN → RECALIBRATE`
+
+Permanent boundaries:
+
+- hard boundaries before optimization;
+- evidence determines what is known;
+- Q measures decision soundness, not prize size;
+- ΔV is baseline-relative;
+- risk/tails cannot be hidden by averages;
+- authority determines what may execute;
+- SmartLedger preserves typed decision/contribution evidence;
+- verified outcome corrects prediction;
+- learning may calibrate weights but may not silently rewrite constitutional boundaries;
+- activity is not value;
+- score is not truth;
+- reputation is not human worth;
+- reputation is not authority.
+
+---
+
 There are several important defects we should fix before calling it official.
 The biggest mathematical one is double counting. Its quality formula includes Expected value = 25% inside \(Q\), but the architecture separately has \(V(a)\).     value-calculus-v1-2026-09-30 (1)
 That means an option's upside influences both:

@@ -1448,6 +1448,15 @@
    "statement_count": 19,
    "bytes": 3265,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
+   "version": "20261001032000",
+   "name": "decision_value_smart_ledger_v2_1",
+   "path": "supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql",
+   "sha256": "a1561082734b1467e3f66a3bef1b7fa9430dd33b0bb33a8ec1b16e82b7b05dd6",
+   "statement_count": 18,
+   "bytes": 14729,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],
  "legacy_repository_snapshot_count": 95,

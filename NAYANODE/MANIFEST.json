@@ -6,17 +6,56 @@
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY",
   "kernel": {
     "id": "NAYAPOWER-MASTER-KERNEL-V1",
-    "nodes": ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],
+    "nodes": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ],
     "status": "ARCHITECTURE_READY_BEHAVIORAL_PROOF_PENDING"
   },
   "domains": [
-    "IDENTITY","PURPOSE","CONSTITUTION","SYSTEM_MODEL","SUPERBRAIN","NIO","KERNEL","EXECUTION",
-    "MEMORY","RETRIEVAL","PROOF","LEARNING","VALUE","CURRENT_REALITY","NAYANET","ENGINEERING",
-    "GOVERNANCE","SUCCESSION","SELF_OPTIMIZATION"
+    "IDENTITY",
+    "PURPOSE",
+    "CONSTITUTION",
+    "SYSTEM_MODEL",
+    "SUPERBRAIN",
+    "NIO",
+    "KERNEL",
+    "EXECUTION",
+    "MEMORY",
+    "RETRIEVAL",
+    "PROOF",
+    "LEARNING",
+    "VALUE",
+    "CURRENT_REALITY",
+    "NAYANET",
+    "ENGINEERING",
+    "GOVERNANCE",
+    "SUCCESSION",
+    "SELF_OPTIMIZATION"
   ],
   "flow": [
-    "EXPERIENCE","CAPTURE","DISTILL","STRUCTURE","PROVE","PRESERVE","INDEX","RETRIEVE","APPLY",
-    "OUTCOME","VERIFY","LEARN","COMPOUND","SUCCESSOR","EVOLVE"
+    "EXPERIENCE",
+    "CAPTURE",
+    "DISTILL",
+    "STRUCTURE",
+    "PROVE",
+    "PRESERVE",
+    "INDEX",
+    "RETRIEVE",
+    "APPLY",
+    "OUTCOME",
+    "VERIFY",
+    "LEARN",
+    "COMPOUND",
+    "SUCCESSOR",
+    "EVOLVE"
   ],
   "truth_invariants": [
     "UNKNOWN_IS_NOT_VERIFIED",
@@ -55,6 +94,7 @@
     ".naya/project-intelligence/NAYAPOWER-SYSTEM-NORTH-STAR-RATIFICATION-2026-09-26.md",
     ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md",
     ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json",
+    ".naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json",
     "NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md",
     "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
     "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md"
@@ -74,7 +114,13 @@
     "tests": "tests/test_value_calculus.py",
     "gap_analysis": "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md",
     "version": "2.1",
-    "status": "HUMAN_DIRECTOR_RATIFIED_DIRECTION_IMPLEMENTED_CANDIDATE_PENDING_INDEPENDENT_RUNTIME_PROOF",
-    "ratified_direction_at": "2026-09-30"
+    "status": "HUMAN_DIRECTOR_RATIFIED_CORE_V2_1_SOURCE_IMPLEMENTED_CI_VERIFIED_PRODUCTION_PROOF_PENDING",
+    "ratified_direction_at": "2026-09-30",
+    "contribution_schema": ".naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json",
+    "runtime_migration": "supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql",
+    "runtime_status": "SOURCE_BINDING_IMPLEMENTED_PENDING_PRODUCTION_APPLY_AND_LIVE_REREAD",
+    "legacy_value_policy": "PRESERVE_NayaNET_V1_STARTING_MODEL_HISTORY_DO_NOT_REINTERPRET",
+    "ratified_at": "2026-09-30",
+    "provenance": "KNOWLEDGE/SMART LEDGER CORE MATH CONCEPT PART #19.md"
   }
 }
