@@ -1358,6 +1358,15 @@
       "statement_count": 20,
       "bytes": 23343,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930051000",
+      "name": "harden_trigger_only_function_execution_v1",
+      "path": "supabase/migrations/20260930051000_harden_trigger_only_function_execution_v1.sql",
+      "sha256": "f05fa5aeadde4684bc0a85a2ae84e71fd7c3221922d416d6c50565a9d31c338c",
+      "statement_count": 3,
+      "bytes": 559,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
