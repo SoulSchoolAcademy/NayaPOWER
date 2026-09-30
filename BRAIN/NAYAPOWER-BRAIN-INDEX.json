@@ -203,7 +203,7 @@
     "current_frontier": {
       "issue": 66,
       "state": "POST_PROVE_BINDINGS_TWO_OWNER_AND_GRAPH_V2_SOURCE_HARDENING_DEPLOYMENT_BLOCKED",
-      "next": "Integrate this exact-main 52f866d0 Brain/Operations refresh and require a fresh Current Truth Resolver result with projection_freshness CURRENT. Then explicit Human Director DEPLOY is required for protected LAW/KNOW/causal runtime plus pending collective-wisdom and graph V2 migrations. After deployed parity, rerun PROVE exactly once; then causal, two-owner and runtime graph qualification."
+      "next": "Integrate this exact-main cb56fd39 Brain/Operations refresh and require a fresh Current Truth Resolver result with projection_freshness CURRENT. Then explicit Human Director DEPLOY is required for protected LAW/KNOW/causal runtime plus pending collective-wisdom and graph V2 migrations. #1080 closes the false-success replay-with-missing-outcome defect at source scope only; the broader replay/response-loss/concurrency matrix remains open."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -262,9 +262,10 @@
     },
     "two_owner_nayanet": "SOURCE_HARDENING_MERGED_AF065BB4; MIGRATION_20260930022500_PENDING_NOT_PRODUCTION_APPLIED; LIVE_TWO_OWNER_CONSENT_READ_REVOKE_FUTURE_DENY_NOT_PROVEN",
     "current_main_prove": "RUN_36658635227_FAILED_BEFORE_PROVE_AT_WORKFLOW_BINDING; PR_1069_LAW_BINDING_MERGED_C6AC19C4; PR_1072_KNOW_BINDING_MERGED_FA5C0A06; LIVE_DEPLOYMENT_PARITY_AND_FRESH_PROVE_RERUN_PENDING",
-    "graph_v2_contract": "PR_1077_CONTRACT_VALIDATOR_MERGED_A07728A4; PR_1078_PERSISTENCE_MIGRATION_MERGED_52F866D0_BUT_LEDGER_PENDING_NOT_PRODUCTION_APPLIED; NO_RUNTIME_GRAPH_MIGRATION_OR_GENERALIZED_CONNECT_PROOF"
+    "graph_v2_contract": "PR_1077_CONTRACT_VALIDATOR_MERGED_A07728A4; PR_1078_PERSISTENCE_MIGRATION_MERGED_52F866D0_BUT_LEDGER_PENDING_NOT_PRODUCTION_APPLIED; NO_RUNTIME_GRAPH_MIGRATION_OR_GENERALIZED_CONNECT_PROOF",
+    "act_reliability": "PR_1080_MERGED_CB56FD39; IDEMPOTENT_REPLAY_WITH_SUCCESS_RECEIPT_BUT_MISSING_OUTCOME_FAILS_CLOSED_INCONCLUSIVE_409; FULL_REPLAY_RESPONSE_LOSS_CONCURRENCY_RECEIPT_FAILURE_MATRIX_NOT_PROVEN"
   },
-  "last_reconciled_main": "52f866d0741eb65f4030b173afc9dbf4b5da382a",
+  "last_reconciled_main": "cb56fd397a5034ae939937a47d39018f348cb166",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -272,7 +273,7 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Fresh Current Truth Resolver after exact-main 52f866d0 projection refresh; then explicit Human Director DEPLOY for protected runtime and pending migration parity; then one fresh PROVE rerun.",
+    "next_proof": "Fresh Current Truth Resolver after exact-main cb56fd39 projection refresh; then explicit Human Director DEPLOY for protected runtime and pending migration parity; then one fresh PROVE rerun. Continue remaining Coda2 replay/concurrency cases independently.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
