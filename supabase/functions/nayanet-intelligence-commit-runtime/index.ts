@@ -51,6 +51,15 @@ function coerceConnections(value: unknown): unknown[] | null {
   return value;
 }
 
+function coerceCapabilities(value: unknown): string[] | null {
+  try {
+    return validateCapabilities(value);
+  } catch (err) {
+    if (err instanceof CapabilityValidationError) throw new Error(err.code + ":" + err.detail);
+    throw err;
+  }
+}
+
 async function callCommit(body: Json, jti: string) {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -106,6 +115,12 @@ async function callSupersede(body: Json, jti: string) {
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!url || !key) throw new Error("SERVER_AUTH_CONFIG_MISSING");
 
+  // Supersession is a second canonical writer surface. Capability metadata
+  // must not disappear when a block is revised through it. Reuse the exact
+  // same bounded validator as callCommit; unknown/malformed values fail
+  // before the RPC and SQL validates again.
+  const capabilities = coerceCapabilities(body.p_capabilities);
+
   // Same direct PostgREST boundary as callCommit.
   const response = await fetch(url + "/rest/v1/rpc/nayanet_supersede_intelligent_block_runtime", {
     method: "POST",
@@ -129,6 +144,9 @@ async function callSupersede(body: Json, jti: string) {
       p_owner_scope: String(body.p_owner_scope ?? "PRIVATE"),
       p_idempotency_key: String(body.p_idempotency_key ?? ""),
       p_connections: coerceConnections(body.p_connections),
+      p_topic: body.p_topic === undefined || body.p_topic === null ? null : String(body.p_topic),
+      p_category: body.p_category === undefined || body.p_category === null ? null : String(body.p_category),
+      p_capabilities: capabilities,
     }),
   });
   const text = await response.text();
