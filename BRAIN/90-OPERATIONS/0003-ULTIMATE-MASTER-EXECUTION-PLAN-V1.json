@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "0fb3612344cd28155945e0f33336aaca5b5ef31d",
+  "evidence_snapshot_base": "309f33a7d6543e744ba29986402b7d00d71d8534",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -23,7 +23,7 @@
     "governed_production_promotion_run": "36631960490_SUCCESS",
     "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
     "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "RUN_36657001373_SUCCESS_AT_9ab4923d_WITH_GENERATED_BRIEF_AND_LIVE_OPEN_PRS; CURRENT_MAIN_0fb36123_REQUIRES_POST_CLUSTER_RESOLVER",
+    "current_truth_resolver": "SEMANTIC_DRIFT_GUARD_1067_MERGED_309F33A7; PRIOR_RUN_36657001373_SUCCESS; POST_GUARD_PROJECTION_REFRESH_REQUIRES_FRESH_RESOLVER",
     "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F",
     "know_live_current": "RUN_36653558611_CONTEXTUAL_HIT_OBSERVED; PR_1060_MERGED_C41C3A64; FRESH_LIVE_HIT_MISS_INDEPENDENT_REREAD_PENDING",
     "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT_PRESERVED; PR_1051_MERGED_4C2B8F12; PR_1056_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
@@ -45,7 +45,7 @@
     {
       "rank": 1,
       "id": "#66",
-      "action": "Refresh Brain/Operations to the integrated proof cluster and require a fresh Current Truth Resolver run on resulting exact main",
+      "action": "Refresh the existing Brain/Operations projection against exact post-guard main 309f33a7 and require a fresh resolver result with no substantive-drift stale warning",
       "status": "ACTIVE"
     },
     {
@@ -100,6 +100,6 @@
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Integrate this exact-current projection and require a successful Current Truth Resolver run. Then Shawn explicitly authorizes DEPLOY for the resulting exact current main through the existing governed production-promotion workflow; do not weaken protected-path policy. While that boundary is pending, Coda 2 reliability and #1062 bounded design/proof work remain independent."
+    "instruction": "Integrate this post-guard projection refresh and require a successful Current Truth Resolver run with no stale operational projection. Then Shawn explicitly authorizes DEPLOY for the resulting exact current main through the existing governed production-promotion workflow; do not weaken protected-path policy. While that boundary is pending, Coda 2 reliability and #1062 bounded design/proof work remain independent."
   }
 }
