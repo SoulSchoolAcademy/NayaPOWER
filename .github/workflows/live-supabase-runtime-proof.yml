@@ -380,6 +380,9 @@ jobs:
           path: fresh-lineage
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ env.PRODUCER_RUN_ID }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: learning-promotion
       - name: Bind graph proof to exact fresh verified block
         shell: bash
         run: |
@@ -389,7 +392,17 @@ jobs:
           ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
           block_id=ids["intelligent_block_id"]
           assert block_id
+          promotion=json.load(open("learning-promotion.json"))
+          claim=promotion["result"]["learning"]["claim"]
+          if "Persistence alone is memory, not proof of active intelligence." in claim and "Retrieved intelligence does not grant authority" in claim:
+            task_id="COLD-NAYA-GRAPH-ACTIVE-INTELLIGENCE-001"
+            task_class="active_intelligence_sensitive"
+          else:
+            task_id="COLD-NAYA-GRAPH-HELDOUT-001"
+            task_class="provenance_sensitive"
           open("graph-block-id.txt","w").write(block_id)
+          open("graph-task-id.txt","w").write(task_id)
+          open("graph-task-class.txt","w").write(task_class)
           PY
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
@@ -402,7 +415,8 @@ jobs:
         run: |
           set -euo pipefail
           block_id="$(cat graph-block-id.txt)"
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"COLD-NAYA-GRAPH-HELDOUT-001\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":false}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          task_id="$(cat graph-task-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"$task_id\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":false}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
           python - <<'PY'
           import json
           r=json.load(open("graph-control.json"))
@@ -418,7 +432,8 @@ jobs:
         run: |
           set -euo pipefail
           block_id="$(cat graph-block-id.txt)"
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"COLD-NAYA-GRAPH-HELDOUT-001\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":true}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          task_id="$(cat graph-task-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"$task_id\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":true}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
           python - <<'PY'
           import json
           r=json.load(open("graph-treatment.json"))
@@ -446,7 +461,7 @@ jobs:
           import json
           c=json.load(open("graph-control.json")); t=json.load(open("graph-treatment.json"))
           assert c["block_id"] == t["block_id"], (c,t)
-          assert c["task_class"] == t["task_class"] == "provenance_sensitive", (c,t)
+          assert c["task_class"] == t["task_class"] == open("graph-task-class.txt").read().strip(), (c,t)
           out={"schema":"NAYANET_COLD_GRAPH_BEHAVIOR_V2","task_id":c["task_id"],"task_class":c["task_class"],"intelligent_block_id":c["block_id"],"control":{"receipt_id":c["receipt"]["id"],"condition":"OFF","behavior":c["behavior"]},"treatment":{"receipt_id":t["receipt"]["id"],"condition":"ON","behavior":t["behavior"],"selected_relationships":t["selected_relationships"]},"behavioral_delta":{"changed":c["behavior"]!=t["behavior"]},"runtime_identity":"github-actions-oidc"}
           assert out["behavioral_delta"]["changed"] is True
           json.dump(out,open("cold-graph-behavior-pair.json","w"),indent=2)
@@ -525,11 +540,16 @@ jobs:
           assert r["result"]["unrelated_negative_transfer_refused"] is True, r
           assert r["result"]["independent_verification_required"] is True, r
           assert r["result"]["executor_claim_trusted_as_verification"] is False, r
-          related=r["tasks"]["NAYA-0001-PROVENANCE-HELDOUT-002"]
+          related_items=[(k,v) for k,v in r["tasks"].items() if v["task_class"]=="RELATED_HELDOUT"]
+          assert len(related_items)==1, related_items
+          related_id,related=related_items[0]
           unrelated=r["tasks"]["NAYA-0001-UNRELATED-ARITHMETIC-001"]
           assert related["applicability"] is True and related["behavioral_delta"] is True, related
-          assert related["control_outcome"]["provenance_preserved"] is False, related
-          assert related["treatment_outcome"]["provenance_preserved"] is True, related
+          metric=related["outcome_key"]
+          assert related["control_outcome"][metric] is False, related
+          assert related["treatment_outcome"][metric] is True, related
+          assert related["treatment_behavior"] == related["treatment_behavior_expected"], related
+          open("related-task-id.txt","w").write(related_id)
           assert unrelated["applicability"] is False and unrelated["behavioral_delta"] is False, unrelated
           assert unrelated["control_outcome"]["answer"] == unrelated["treatment_outcome"]["answer"] == 12, unrelated
           assert len(r["receipt_ids"]) == 4, r
@@ -537,7 +557,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: active-learning-generalization
-          path: active-learning-generalization.json
+          path: |
+            active-learning-generalization.json
+            related-task-id.txt
 
   independent-active-learning-generalization:
     needs: active-learning-generalization
@@ -578,7 +600,8 @@ jobs:
           assert v["independent_verification"] is True, v
           assert v["executor_claim_trusted"] is False, v
           assert v["recomputed"]["related_causal_supported"] is True, v
-          assert v["recomputed"]["related_outcome_delta"]["provenance_preserved"] == 1, v
+          assert v["recomputed"]["related_outcome_delta"]["value"] == 1, v
+          assert v["recomputed"]["related_outcome_delta"]["metric"] in {"provenance_preserved","governed_autonomy_applied"}, v
           assert v["recomputed"]["negative_transfer_refused"] is True, v
           assert v["recomputed"]["unrelated_behavior_delta"] is False, v
           assert v["token_jti"] != e.get("token_jti"), (e.get("token_jti"), v["token_jti"])
@@ -609,7 +632,8 @@ jobs:
         run: |
           set -euo pipefail
           learning_id="$(python -c 'import json; print(json.load(open("active-learning-generalization.json"))["learning_id"])')"
-          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=NAYA-0001-PROVENANCE-HELDOUT-002" > cold-successor-related.json
+          related_task_id="$(cat related-task-id.txt)"
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=${related_task_id}" > cold-successor-related.json
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated.json
           export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
@@ -624,9 +648,14 @@ jobs:
             assert x["authority_boundary"]["successor_grant_count"] == 0, x
             assert x["authority_boundary"]["executed"] is False, x
             assert x["authority_boundary"]["blocked_by"] == "IDENTITY_SCOPE", x
-          assert r["use"]["task_id"] == "NAYA-0001-PROVENANCE-HELDOUT-002", r
+          related_task_id=open("related-task-id.txt").read().strip()
+          expected_behavior={
+            "NAYA-0001-PROVENANCE-HELDOUT-002":"PRESERVE_PROVENANCE_BEFORE_APPLY",
+            "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002":"REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+          }[related_task_id]
+          assert r["use"]["task_id"] == related_task_id, r
           assert r["use"]["applicable_to_task"] is True, r
-          assert r["use"]["behavior_derived_from_retrieved_lesson"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", r
+          assert r["use"]["behavior_derived_from_retrieved_lesson"] == expected_behavior, r
           assert r["use"]["materially_attributable"] is True, r
           assert u["use"]["task_id"] == "NAYA-0001-UNRELATED-ARITHMETIC-001", u
           assert u["use"]["applicable_to_task"] is False, u
@@ -661,7 +690,8 @@ jobs:
         run: |
           set -euo pipefail
           learning_id="$(python -c 'import json; print(json.load(open("cold-successor-related.json"))["reconstruction"]["learning_id"])')"
-          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=NAYA-0001-PROVENANCE-HELDOUT-002" > cold-successor-related-verify.json
+          related_task_id="$(python -c 'import json; print(json.load(open("cold-successor-related.json"))["use"]["task_id"])')"
+          curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=${related_task_id}" > cold-successor-related-verify.json
           curl -fsS -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             "${COLD_RUNTIME_FUNCTION}?mode=cold-successor-verify&learning_id=${learning_id}&task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" > cold-successor-unrelated-verify.json
           export SOURCE_SHA="${{ env.SOURCE_SHA }}"
           python - <<'PY'
@@ -679,9 +709,14 @@ jobs:
             assert v["recomputed"]["successor_grant_count"] == 0, v
             assert v["recomputed"]["authority_recomputed"] is False, v
             assert v["recomputed"]["recomputed_blocked_by"] == "IDENTITY_SCOPE", v
-          assert vr["recomputed"]["task_id"] == "NAYA-0001-PROVENANCE-HELDOUT-002", vr
+          related_task_id=er["use"]["task_id"]
+          expected_behavior={
+            "NAYA-0001-PROVENANCE-HELDOUT-002":"PRESERVE_PROVENANCE_BEFORE_APPLY",
+            "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002":"REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+          }[related_task_id]
+          assert vr["recomputed"]["task_id"] == related_task_id, vr
           assert vr["recomputed"]["applicable_to_task"] is True, vr
-          assert vr["recomputed"]["behavior_recomputed"] == "PRESERVE_PROVENANCE_BEFORE_APPLY", vr
+          assert vr["recomputed"]["behavior_recomputed"] == expected_behavior, vr
           assert vu["recomputed"]["task_id"] == "NAYA-0001-UNRELATED-ARITHMETIC-001", vu
           assert vu["recomputed"]["applicable_to_task"] is False, vu
           assert vu["recomputed"]["correct_refusal"] is True, vu
@@ -708,7 +743,7 @@ jobs:
             "executed":False,
             "independent_verification":True,
             "limitations":[
-              "one ACTIVE provenance lesson",
+              "one ACTIVE applicable lesson",
               "one second related held-out task",
               "one unrelated arithmetic refusal case",
               "does not establish universal generalization"
@@ -905,7 +940,15 @@ jobs:
           assert r["integration"]["progressive_intelligence_lock_in"] == "LEARNED", r
           assert r["integration"]["intelligent_block"]["understanding_state"] == "LEARNED", r
           assert r["integration"]["relationship"]["epistemic_state"] == "VERIFIED", r
-          assert r["integration"]["cognitive_checkpoint"]["state_status"] == "LEARNED", r
+          checkpoint_state=r["integration"]["cognitive_checkpoint"]["state_status"]
+          assert checkpoint_state in {"LEARNED","LEARNED_VIA_IMMUTABLE_RECEIPT"}, r
+          if checkpoint_state == "LEARNED_VIA_IMMUTABLE_RECEIPT":
+            assert r["integration"]["cognitive_checkpoint"]["checkpoint_provenance"] == "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT", r
+            assert r["historical_commit_receipt"] is not None, r
+            assert any(
+              x.get("learning_id")==r["result"]["learning"]["id"] and x.get("verified") is True
+              for x in (r["historical_commit_receipt"].get("learning") or [])
+            ), r
           print("PROGRESSIVE INTELLIGENCE LOCK-IN PASS")
           PY
       - uses: actions/upload-artifact@v4
