@@ -123,6 +123,25 @@ def render(capture, verify, private_root=None):
     p.write_text("\n".join(lines), encoding="utf-8")
     return p
 
+def _canonical_content_hash(lesson: str) -> str:
+    """Hash the canonical JSON form of the lesson, matching the workflow reader.
+
+    The live-intelligence-commit-proof workflow recomputes
+    sha256(json.dumps(capture["intelligence"], sort_keys=True,
+    separators=(",", ":"), ensure_ascii=False)). The persisted lesson string
+    is JSON encoding the same intelligence object, but the database may store
+    it with different key order or spacing. Canonicalizing before hashing
+    makes the writer's content_hash invariant to serialization differences,
+    so exact-match reconciliation works regardless of how the lesson string
+    was serialized. Non-JSON lessons (plain strings) hash as-is.
+    """
+    try:
+        canonical = json.dumps(json.loads(lesson), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    except (ValueError, TypeError):
+        canonical = lesson
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def update_registry(capture, verify, projection):
     REGISTRY.parent.mkdir(parents=True, exist_ok=True)
     registry = {"schema":"naya.smart-note-projection-index.v1","version":"1.0","source_of_truth":"runtime_intelligent_block","entries":[]}
@@ -133,7 +152,7 @@ def update_registry(capture, verify, projection):
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
-        "content_hash": hashlib.sha256(block["content"]["lesson"].encode("utf-8")).hexdigest(),
+        "content_hash": _canonical_content_hash(block["content"]["lesson"]),
         "title": capture["title"],
         "captured_at": capture["source"]["captured_at"],
         "category": capture.get("category", "SMART_NOTE"),

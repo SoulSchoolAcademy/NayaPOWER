@@ -251,3 +251,50 @@ def test_registry_reconciles_exact_persisted_lesson_with_complete_runtime_refs(t
     assert exact["truth_state"] == "CANDIDATE"
     changed_digest = hashlib.sha256((lesson + " ").encode()).hexdigest()
     assert all(entry.get("content_hash") != changed_digest for entry in registry["entries"])
+
+
+def test_registry_hash_survives_noncanonical_lesson_serialization(tmp_path, monkeypatch):
+    """The writer's content_hash must match the workflow reader's digest even when
+    the persisted lesson string is valid JSON with different key order/spacing
+    than the canonical form (e.g. as re-serialized by the database)."""
+    import hashlib
+
+    capture = _private_sn004_capture()
+    intelligence = {"essence": "Retain exact meaning", "human_view": "Read before acting"}
+    # Deliberately non-canonical: reversed key order + spaces, same object.
+    lesson = json.dumps(intelligence, sort_keys=False, separators=(", ", ": "), ensure_ascii=False)
+    assert lesson != json.dumps(intelligence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    verify = _verify_for_lesson(intelligence, "IB-NONCANONICAL")
+    verify["persisted"]["block"]["content"]["lesson"] = lesson
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", tmp_path / "index.json")
+    monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
+    projection = tmp_path / "BRAIN" / "note.md"
+    mod.update_registry(capture, verify, projection)
+    registry = json.loads(mod.REGISTRY.read_text())
+    # The workflow reader's formula: canonical JSON of capture["intelligence"].
+    reader_digest = hashlib.sha256(
+        json.dumps(intelligence, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    ).hexdigest()
+    exact = next((entry for entry in registry["entries"]
+                  if entry.get("content_hash") == reader_digest), None)
+    assert exact is not None, "content_hash must equal the reader's canonical digest"
+    assert exact["intelligent_block_id"] == "IB-NONCANONICAL"
+
+
+def test_registry_hash_plain_string_lesson_is_stable(tmp_path, monkeypatch):
+    """Non-JSON lessons (plain strings) hash as-is and remain stable."""
+    import hashlib
+
+    capture = _private_sn004_capture()
+    verify = _verify_for_lesson({"x": 1}, "IB-PLAIN")
+    verify["persisted"]["block"]["content"]["lesson"] = "Preserve provenance before applying retained intelligence."
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", tmp_path / "index.json")
+    monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
+    projection = tmp_path / "BRAIN" / "note.md"
+    mod.update_registry(capture, verify, projection)
+    registry = json.loads(mod.REGISTRY.read_text())
+    expected = hashlib.sha256(
+        "Preserve provenance before applying retained intelligence.".encode()).hexdigest()
+    assert registry["entries"][0]["content_hash"] == expected
