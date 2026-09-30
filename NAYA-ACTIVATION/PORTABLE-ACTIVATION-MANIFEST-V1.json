@@ -79,7 +79,10 @@
       "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md",
       "KNOWLEDGE/NAYAPOWER-CURRENT-STATE-V1.md",
       "KNOWLEDGE/NAYAPOWER-CONTRACT-REGISTRY-V1.json",
-      "KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md"
+      "KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md",
+      "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+      ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json",
+      ".naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json"
     ]
   },
   "dna_layers": [
@@ -133,5 +136,5 @@
   "authority_law": "Capability does not create authority.",
   "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
   "continuity_requirement": "A cold successor must be able to reconstruct the resulting state without manual replay by the predecessor.",
-  "version": "1.1.2"
+  "version": "1.1.3"
 }

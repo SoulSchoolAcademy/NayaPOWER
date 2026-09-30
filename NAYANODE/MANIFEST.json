@@ -95,6 +95,7 @@
     ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md",
     ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json",
     ".naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json",
+    ".naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json",
     "NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md",
     "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
     "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md"
@@ -121,6 +122,15 @@
     "runtime_status": "SOURCE_BINDING_IMPLEMENTED_PENDING_PRODUCTION_APPLY_AND_LIVE_REREAD",
     "legacy_value_policy": "PRESERVE_NayaNET_V1_STARTING_MODEL_HISTORY_DO_NOT_REINTERPRET",
     "ratified_at": "2026-09-30",
-    "provenance": "KNOWLEDGE/SMART LEDGER CORE MATH CONCEPT PART #19.md"
+    "provenance": "KNOWLEDGE/SMART LEDGER CORE MATH CONCEPT PART #19.md",
+    "recalibration_schema": ".naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json",
+    "decision_outcomes": [
+      "ACT",
+      "READ_MORE",
+      "ASK",
+      "REFUSE"
+    ],
+    "autonomous_selection": "HARD_GATES -> Q>=9 -> V_SAFE>0 -> CONFIDENCE/EVIDENCE -> RELATIVE_MARGIN -> VALUE_INTERVAL_NONOVERLAP -> AUTHORITY -> ACT",
+    "learning_writeback": "VALUE_RECALIBRATION_LEARN_CANDIDATE -> INDEPENDENT_VERIFY -> APPLICABLE_AUTHORITY -> NEW_VERSION"
   }
 }
