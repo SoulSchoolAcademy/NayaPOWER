@@ -255,14 +255,14 @@
       "production_branch_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
       "promotion_run": 36659933566,
       "promotion_artifact": 11074161563,
-      "current_main": "8bc2430517fc52a5722ad2a75ce036f9d8e7152e",
+      "current_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
       "act_concurrency_repair": "PR_1095_MERGED_SOURCE_TEST_VERIFIED_LIVE_RACE_PENDING_EXACT_DEPLOYMENT"
     },
     "two_owner_nayanet": "PR_1070_SOURCE_INTEGRATED_NOT_PRODUCTION_PROVEN",
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
   },
-  "last_reconciled_main": "c25d5dedb65eaa95515f7eefc487d1dc4401d342",
+  "last_reconciled_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -270,7 +270,7 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Rerun Current Truth Resolver against exact c25d5dedb65eaa95515f7eefc487d1dc4401d342; then explicit governed deployment for exact resulting main; then live two-request ACT concurrency proof exactly once and independent reread.",
+    "next_proof": "Rerun Current Truth Resolver against exact 3abe1ba74a9a86411221ca0b4778f49c79059556; then explicit governed deployment for exact resulting main; then live two-request ACT concurrency proof exactly once and independent reread.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
