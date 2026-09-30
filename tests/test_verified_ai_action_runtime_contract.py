@@ -79,8 +79,9 @@ def test_idempotent_replay_requires_persisted_outcome():
     source = FUNCTION.read_text(encoding="utf-8")
     replay = source.split("if (idempotentReplay)", 1)[1].split("const {data: outcome", 1)[0]
     assert "if (!replayOutcome)" in replay
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in replay
-    assert 'status: "INCONCLUSIVE"' in replay
+    assert "recoverOutcomeFromReceipt" in replay
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in replay
+    assert "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" in replay
 
 
 def test_consequential_action_requires_idempotency_key():
@@ -125,7 +126,8 @@ def test_concurrent_duplicate_requests_have_an_atomic_idempotency_claim():
     assert "unique" in migrations.lower()
     assert "nayanet_execution_receipts" in migrations
     assert "23505" in source
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in source
+    assert "IDEMPOTENCY_KEY_REUSE_CONFLICT" in source
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in source
     # The idempotency key must be persisted at the receipt boundary, not only encoded in prose.
     assert "idempotency_key: idempotencyKey" in source
     # A concurrent loser must resolve the already-claimed receipt rather than execute again.
