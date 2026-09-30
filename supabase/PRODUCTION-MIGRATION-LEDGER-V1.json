@@ -1432,9 +1432,9 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
-      "version": "20260930214500",
+      "version": "20261001000100",
       "name": "ai1_supersede_capability_integrity_v1",
-      "path": "supabase/migrations/20260930214500_ai1_supersede_capability_integrity_v1.sql",
+      "path": "supabase/migrations/20261001000100_ai1_supersede_capability_integrity_v1.sql",
       "sha256": "5c419e92b6047bd0dac0d715789d7cf5c7f28519ea9eadb0c2d37852645d161b",
       "statement_count": 4,
       "bytes": 5998,
