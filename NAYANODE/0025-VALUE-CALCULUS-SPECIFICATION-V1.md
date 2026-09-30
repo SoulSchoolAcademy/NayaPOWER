@@ -1,13 +1,13 @@
 # NayaPOWER Decision Value Calculus Specification V2.1
 
-**Status:** HUMAN-DIRECTOR RATIFIED DIRECTION — IMPLEMENTED CANDIDATE, VERIFICATION REQUIRED  
+**Status:** HUMAN-DIRECTOR RATIFIED CORE SYSTEM V2.1 — SOURCE IMPLEMENTED + CI VERIFIED; PRODUCTION PROOF PENDING  
 **Domain:** 13 VALUE & EXPERIENCE  
 **Canonical seam retained:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
 **Implementation:** `kernel/value_calculus.py`  
 **Tests:** `tests/test_value_calculus.py`  
 **Machine schema:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`  
 **Issue:** #1182  
-**Effective working version:** 2.1
+**Effective canonical version:** 2.1
 
 > This file keeps the established canonical path to avoid a second value brain. V2.1 supersedes the internal V1 scoring semantics while preserving the V1 provenance in Git history.
 
