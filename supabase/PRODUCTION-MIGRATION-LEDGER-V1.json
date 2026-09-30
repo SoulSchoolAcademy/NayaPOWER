@@ -1349,6 +1349,15 @@
       "statement_count": 1,
       "bytes": 408,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930040000",
+      "name": "r1_writer_connections_v1",
+      "path": "supabase/migrations/20260930040000_r1_writer_connections_v1.sql",
+      "sha256": "b3813ac786b863f3a87e25f8650ca0d77aa5b2ceb94f904779f241275b4f38b3",
+      "statement_count": 21,
+      "bytes": 26874,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
