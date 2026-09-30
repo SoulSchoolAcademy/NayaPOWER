@@ -202,8 +202,8 @@
     },
     "current_frontier": {
       "issue": 66,
-      "state": "POST_GRAPH_RECONCILIATION_ACCEPTANCE_PROJECTION_RECONCILIATION",
-      "next": "Integrate exact-adc238f4 projection refresh; then explicit Human Director DEPLOY for exact resulting main before PROVE/SN-004/#1070 production proof."
+      "state": "POST_ACT_IDEMPOTENCY_HARDENING_PROJECTION_RECONCILIATION",
+      "next": "Integrate exact-f190cdac projection refresh; then explicit Human Director DEPLOY for exact resulting main before PROVE/SN-004/#1070 production proof."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -255,13 +255,13 @@
       "production_branch_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
       "promotion_run": 36659933566,
       "promotion_artifact": 11074161563,
-      "current_main": "adc238f41e660a7d116f28c1daa4e3443de67f50"
+      "current_main": "f190cdacefc3e5adf136d074d22e6dfdd782b688"
     },
     "two_owner_nayanet": "PR_1070_SOURCE_INTEGRATED_NOT_PRODUCTION_PROVEN",
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
   },
-  "last_reconciled_main": "adc238f41e660a7d116f28c1daa4e3443de67f50",
+  "last_reconciled_main": "f190cdacefc3e5adf136d074d22e6dfdd782b688",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -269,7 +269,7 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Fresh Current Truth Resolver after exact-adc238f4 projection merge; then explicit Human Director DEPLOY for exact resulting main; then PROVE exactly once.",
+    "next_proof": "Fresh Current Truth Resolver after exact-f190cdac projection merge; then explicit Human Director DEPLOY for exact resulting main; then PROVE exactly once.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",

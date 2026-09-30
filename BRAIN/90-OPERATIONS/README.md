@@ -17,7 +17,7 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `adc238f41e660a7d116f28c1daa4e3443de67f50`:
+At evidence snapshot `f190cdacefc3e5adf136d074d22e6dfdd782b688`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
@@ -47,4 +47,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: integrate this exact-`adc238f4` projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the exact resulting main. After parity: PROVE once → SN-004 causal proof → independent recomputation → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: integrate this exact-`f190cdac` projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the exact resulting main. After parity: PROVE once → SN-004 causal proof → independent recomputation → #1070 production proof → cold successor → A→B→C → human-value measurement.**
