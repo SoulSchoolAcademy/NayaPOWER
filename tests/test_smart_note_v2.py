@@ -304,3 +304,27 @@ def test_registry_hash_plain_string_lesson_is_stable(tmp_path, monkeypatch):
     expected = hashlib.sha256(
         "Preserve provenance before applying retained intelligence.".encode()).hexdigest()
     assert registry["entries"][0]["content_hash"] == expected
+
+
+def test_resolve_runtime_connections_maps_smart_note_ids_to_canonical_blocks():
+    registry = {"entries": [
+        {"smart_note_id": "SN-003", "intelligent_block_id": "IB-CONTINUATION"},
+        {"smart_note_id": "SN-014", "intelligent_block_id": "IB-COMPOUNDING"},
+    ]}
+    capture = {"intelligence": {"connections": [
+        {"type": "SUPPORTS", "target": "SN-014 — The Compounding Imperative"},
+        {"type": "REFINES", "target": "SN-003 — Continuation Engine"},
+        {"type": "MADE_UP_EDGE", "target": "SN-014"},
+        {"type": "SUPPORTS", "target": "unresolved prose"},
+        {"type": "SUPPORTS", "target": "SN-014 — duplicate"},
+    ]}}
+    assert mod.resolve_runtime_connections(capture, registry) == [
+        {"target_block_id": "IB-COMPOUNDING", "relationship_type": "SUPPORTS"},
+        {"target_block_id": "IB-CONTINUATION", "relationship_type": "REFINES"},
+    ]
+
+
+def test_live_capture_threads_only_resolved_connections_to_writer():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert "resolve_runtime_connections(capture,registry)" in workflow
+    assert '"p_connections":resolved_connections' in workflow
