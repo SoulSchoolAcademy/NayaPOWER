@@ -133,21 +133,14 @@ def test_supersession_writes_canonical_relationship_row(migration_text):
         "ONE GRAPH: the canonical edge row must be written atomically with the projection"
 
 
-def test_upsert_writer_persists_connections(migration_text):
-    m = re.search(
-        r"create or replace function public\.nayanet_upsert_intelligent_block_from_smart_note\(.*?\)"
-        r"\s*returns.*?as \$function\$(.*?)\$function\$;",
-        migration_text, re.S,
+def test_migration_has_no_legacy_smart_note_rowtype_dependency(migration_text):
+    code = _strip_sql_comments(migration_text)
+    assert "v7_smart_note_transactions" not in code, (
+        "new R1 migration must not hard-depend on the retired Smart Note row type"
     )
-    assert m, "upsert writer replacement must exist"
-    body = m.group(1)
-    assert "v_connections" in body
-    assert re.search(r"insert into public\.nayanet_intelligent_blocks\((.*?)\)", body, re.S).group(1).count(",") >= 16
-    insert_cols = re.search(r"insert into public\.nayanet_intelligent_blocks\((.*?)\)", body, re.S).group(1)
-    assert "connections" in [c.strip() for c in insert_cols.split(",")]
-    assert "connections=excluded.connections" in body.replace(" ", ""), \
-        "re-upsert must refresh the projection, not keep the stale one"
-
+    assert "nayanet_upsert_intelligent_block_from_smart_note" not in code, (
+        "R1 migration must extend the current canonical writer, not resurrect the legacy Smart Note writer"
+    )
 
 def test_commit_writer_persists_connections(migration_text):
     assert "p_connections jsonb default null" in migration_text.replace("  ", " "), \

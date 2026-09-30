@@ -131,62 +131,11 @@ create trigger nayanet_intelligent_blocks_connections_guard_trg
   before insert or update of connections on public.nayanet_intelligent_blocks
   for each row execute function public.nayanet_intelligent_blocks_connections_guard();
 
--- §4. Smart-note writer: stamp normalized connections from the transaction
--- payload. Reads v_block.connections (row shape) then falls back to
--- v_block.intelligence.connections (capture shape); both are normalized.
-create or replace function public.nayanet_upsert_intelligent_block_from_smart_note(p_transaction public.v7_smart_note_transactions)
-returns public.nayanet_intelligent_blocks
-language plpgsql security definer set search_path = public, extensions
-as $function$
-declare
-  v_event_id uuid;
-  v_block_id uuid;
-  v_intelligent_block_id text;
-  v_block jsonb:=coalesce(p_transaction.intelligent_block,'{}'::jsonb);
-  v_evidence jsonb:=coalesce(p_transaction.evidence,'{}'::jsonb);
-  v_connections jsonb;
-  v_row public.nayanet_intelligent_blocks;
-  v_event_status text;
-begin
-  v_event_id:=nullif(coalesce(v_evidence->>'event_id',v_block->>'block_id',''),'')::uuid;
-  if v_event_id is null then raise exception 'INTELLIGENT_BLOCK_SOURCE_EVENT_REQUIRED'; end if;
-  v_block_id:=nullif(coalesce(v_block->>'block_id',v_event_id::text),'')::uuid;
-  if v_block_id is null then raise exception 'INTELLIGENT_BLOCK_ID_REQUIRED'; end if;
-  v_intelligent_block_id:=nullif(coalesce(v_block->>'intelligent_block_id',v_block->'identity'->>'object_id'),'');
-  v_connections:=public.nayanet_normalize_block_connections(
-    coalesce(v_block->'connections', v_block->'intelligence'->'connections', '[]'::jsonb),
-    p_transaction.user_id
-  );
-  select status into v_event_status from public.smart_note_events where id=v_event_id;
-  insert into public.nayanet_intelligent_blocks(
-    block_id,intelligent_block_id,owner_id,subject_id,title,block_type,version,status,understanding_state,owner_scope,
-    source_event_ids,evidence_refs,provenance,value_context,applicable_scope,content,connections,created_at,updated_at,schema_version)
-  values(
-    v_block_id,v_intelligent_block_id,p_transaction.user_id,
-    coalesce(nullif(v_block->>'subject',''),'Smart Note'),
-    coalesce(nullif(v_block->>'subject',''),'Intelligent Block'),
-    coalesce(nullif(v_block->>'type',''),'OTHER_GOVERNED'),1,
-    case when lower(coalesce(v_block->>'status',''))='preserved' then 'DURABLE' else 'ACTIVE' end,
-    case when v_event_status='VERIFIED' then 'VERIFIED' else 'CANDIDATE' end,
-    coalesce(nullif(v_block->>'privacy',''),'PRIVATE'),array[v_event_id],
-    jsonb_build_array(jsonb_build_object('source_table','smart_note_events','source_id',v_event_id::text,'receipt_id',v_evidence->>'receipt_id','verified_at',v_evidence->>'verified_at','chain',coalesce(v_evidence->'chain','[]'::jsonb))),
-    jsonb_build_object('source','smart_note','idempotency_key',p_transaction.idempotency_key,'canonical_event_id',v_event_id,'created_from','v7_create_smart_note'),
-    jsonb_build_object('usefulness','reusable understanding','confidence',case when v_event_status='VERIFIED' then 1 else 0 end),
-    jsonb_build_object('privacy',coalesce(v_block->>'privacy','PRIVATE')),v_block,v_connections,
-    coalesce(nullif(v_block->>'created_at','')::timestamptz,now()),now(),'INTELLIGENT_BLOCK_V1')
-  on conflict(block_id) do update set
-    owner_id=excluded.owner_id,subject_id=excluded.subject_id,title=excluded.title,block_type=excluded.block_type,
-    status=excluded.status,understanding_state=excluded.understanding_state,owner_scope=excluded.owner_scope,
-    source_event_ids=excluded.source_event_ids,evidence_refs=excluded.evidence_refs,provenance=excluded.provenance,
-    value_context=excluded.value_context,applicable_scope=excluded.applicable_scope,content=excluded.content,
-    connections=excluded.connections,
-    updated_at=now(),schema_version='INTELLIGENT_BLOCK_V1',
-    intelligent_block_id=coalesce(excluded.intelligent_block_id,nayanet_intelligent_blocks.intelligent_block_id)
-  returning * into v_row;
-  return v_row;
-end;
-$function$;
-
+-- §4. Legacy Smart Note compatibility is intentionally not modified here.
+-- The current canonical write seam is nayanet_intelligence_commit; this
+-- migration must not depend on the retired v7_smart_note_transactions row
+-- type. Existing legacy objects, where present, remain untouched.
+--
 -- §5. Commit writer: stamp normalized connections. New optional trailing
 -- parameter keeps the existing 8-argument call sites (incl. the runtime
 -- bridge) working unchanged.
