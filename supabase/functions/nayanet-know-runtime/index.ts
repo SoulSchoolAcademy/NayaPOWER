@@ -66,7 +66,15 @@ async function readLiveConsent(admin:ReturnType<typeof adminClient>,ownerId:stri
   return data===true;
 }
 
-function withLiveConsent(universe:any[],active:boolean){
+function universeNeedsLiveConsent(universe:any[]){
+  return universe.some((block:any)=>Array.isArray(block?.connections) &&
+    block.connections.some((conn:any)=>{
+      const visibility=String(conn?.visibility??"").trim().toUpperCase();
+      return visibility!=="" && visibility!=="PRIVATE";
+    }));
+}
+
+function withLiveConsent(universe:any[],active:boolean|null){
   return universe.map((block:any)=>({
     ...block,
     connections:Array.isArray(block?.connections)
@@ -131,7 +139,8 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason,retrieval_creates_authority:false},403);
       const universe=await readEligibleUniverse(admin);
-      const liveConsent=await readLiveConsent(admin,OWNER_ID);
+      const liveConsentRequired=universeNeedsLiveConsent(universe);
+      const liveConsent=liveConsentRequired?await readLiveConsent(admin,OWNER_ID):null;
       const consentAwareUniverse=withLiveConsent(universe,liveConsent);
       const result=selectKnowContext(request,consentAwareUniverse);
       const receipt=await insertReceipt(admin,{
@@ -140,7 +149,7 @@ Deno.serve(async(req)=>{
         observed_result:result.status+":"+(result.selected_block_id??"NONE"),
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
           authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
-          live_consent_checked:true,live_consent_active:liveConsent,
+          live_consent_checked:liveConsentRequired,live_consent_active:liveConsent,
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
@@ -158,7 +167,8 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
-      const liveConsent=await readLiveConsent(admin,OWNER_ID);
+      const liveConsentRequired=universeNeedsLiveConsent(universe);
+      const liveConsent=liveConsentRequired?await readLiveConsent(admin,OWNER_ID):null;
       const consentAwareUniverse=withLiveConsent(universe,liveConsent);
       const recomputed=selectKnowContext(request,consentAwareUniverse);
       const recorded=receipt.evidence?.result??{};
@@ -172,7 +182,7 @@ Deno.serve(async(req)=>{
       return json({ok:same,status:same?"KNOW_SELECTION_VERIFIED":"KNOW_SELECTION_MISMATCH",independent_verification:same,
         executor_claim_trusted_as_verification:false,node_id:"NAYA-KERNEL-KNOW",request,recorded,recomputed,
         authority_basis:{law_receipt_id:lawReceipt.id,authority_grant_id:authority.ok?authority.authority_grant_id:null,retrieval_creates_authority:false},persisted_universe_reread:true,
-        live_consent_checked:true,live_consent_active:liveConsent,
+        live_consent_checked:liveConsentRequired,live_consent_active:liveConsent,
         handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",workflow_ref:workflowRef,token_jti:payload.jti??null},same?200:409);
     }
 
