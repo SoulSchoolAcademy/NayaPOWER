@@ -1,7 +1,7 @@
 {
   "schema": "naya.graph.relationship.contract.v2",
   "version": "2.0",
-  "status": "CANDIDATE_CONTRACT",
+  "status": "RATIFIED",
   "purpose": "Machine-validatable quality contract for consequential Intelligent Graph relationships. Extends the existing graph overlay; does not create authority or a second graph store.",
   "source_of_truth_rule": "Relationships remain a derived semantic overlay on canonical objects. Persistence location does not promote truth.",
   "required_fields": [
@@ -125,5 +125,14 @@
     "INVALID_APPLICABILITY",
     "REASON_CODES_REQUIRED"
   ],
-  "migration_boundary": "This contract does not require immediate persistence-column expansion. A schema change is justified only after representation analysis proves canonical JSON/provenance fields cannot safely carry the required semantics."
+  "migration_boundary": "This contract does not require immediate persistence-column expansion. A schema change is justified only after representation analysis proves canonical JSON/provenance fields cannot safely carry the required semantics.",
+  "ratification": {
+    "authority": "Human Director Shawn Vibert",
+    "date": "2026-09-30",
+    "basis": "Director directive 2026-09-30 16:56 PDT: \"get the intelligent graph fully done... 10 out of 10... take the lead... just go\" \u2014 delegated execution authority for the full chain, recorded by Naya 4",
+    "scope": "Machine contract governing Graph V2 relationship semantics (fields, epistemic states, statuses, temporal/supersession/applicability/consent contracts, authority boundary). Does not redesign the graph, create authority, or authorize CONNECT/A\u2192B\u2192C/two-owner.",
+    "unblocks": "PR #1125 (V2 selector gates into retrieval)",
+    "reviewable": true,
+    "supersedes": "CANDIDATE_CONTRACT status"
+  }
 }
