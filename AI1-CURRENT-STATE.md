@@ -1,12 +1,13 @@
 # AI1 capability-carry — current state after PR #1171
 
-**Observed main:** `fe513be784a673bfbea41cda415a0306e6d6932b`  
+**Observed main:** `db8a847e990d55fce07015f2f8fb7df070a528a5`  
 **Date:** 2026-09-30  
 **Purpose:** reconcile the original branch-only repair receipt with live repository truth.
 
 ## Current truth
 
 - PR #1171 is closed and its repair commits are present on current `main`.
+- Current main additionally pins the four-case dual-field selector contract and deterministic disagreement behavior in `db8a847e` (AI1-FIELD-01..05); this follow-up preserves that coverage.
 - The source repair is therefore **MERGED / IMPLEMENTED IN REPOSITORY**.
 - Migration `20260930235959_ai1_capability_carry_v1.sql` is registered as
   `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`.
