@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
-**Evidence snapshot base:** `c25d5dedb65eaa95515f7eefc487d1dc4401d342`
+**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -53,7 +53,7 @@ Coda 2 retains replay/duplicate/response-loss reliability ownership. The demonst
 ## 4. TOP 10 — DEPENDENCY ORDER
 
 ### 1 — Current-truth convergence after ACT concurrency repair
-Rerun Current Truth Resolver against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342`. Run `36665431396` correctly classified the proof-document addition as substantive drift; the snapshot now includes that document, so this is the final resolver check for this rung.
+Rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`. Run `36665708305` correctly classified #1098/#1100 substantive source changes; this snapshot includes those changes, so this is the next resolver check for this rung.
 
 ### 2 — Exact governed runtime parity
 After projection convergence, explicit Human Director `DEPLOY` remains required for the exact resulting main. The function and migration must be deployed together; no stale production race test is acceptable.
@@ -131,4 +131,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342` and require no `OPERATIONAL_PROJECTION_STALE` classification. After convergence, explicit Human Director `DEPLOY` is required for the exact resulting main. Once parity exists: run the two-request concurrent ACT proof once → independent reread → ACT recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After convergence, explicit Human Director `DEPLOY` is required for the exact resulting main. Once parity exists: run the two-request concurrent ACT proof once → independent reread → ACT recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**

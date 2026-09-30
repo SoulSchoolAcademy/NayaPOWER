@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `c25d5dedb65eaa95515f7eefc487d1dc4401d342`
+**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
 
 ## CURRENT TRUTH
 
@@ -27,11 +27,12 @@
 - ACT consequential execution now fails closed without an idempotency key, and #1095 (`8bc2430517fc52a5722ad2a75ce036f9d8e7152e`) closes the demonstrated concurrent-duplicate seam with a persisted `idempotency_key` plus a partial unique receipt index; source-level replay/outcome safety is verified, but live production race proof remains pending deployment parity.
 - #1088 merged at `d033cefb`: pending #1070 migration now restores the Smart Connect/collective-wisdom prerequisites removed by the canonical reset before applying consent/revocation hardening. Source/test verified; redeployment proof pending.
 - #1090 merged at `d033cefb`: Graph V2 keeps temporal NOT NULL constraints and now provides insertion-time defaults for new canonical relationships, closing producer run `36663323348` failure `observed_at NULL`. Source/test verified; redeployment proof pending.
+- #1098/#1100 are now on main: ACT idempotency migration is registered in the production ledger as `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`; Graph V2 fresh-selector and cold-graph proof contracts are source/test hardened. These changes do not alter the ACT live-race gate: exact deployment parity is still required before the two-request production proof.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342`; the fresh resolver run `36665431396` correctly classified the proof-document addition as substantive drift. **NEXT: rerun the resolver after this snapshot commit.**
+1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`; resolver `36665708305` correctly identified the later #1098/#1100 source changes as substantive drift. **NEXT: rerun the resolver against this stable main snapshot.**
 2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for the exact current main, including the new ACT migration/function. No production mutation is authorized by this queue.
 3. **Live concurrent-duplicate proof** — once the exact #1095 function + migration are deployed, issue two identical authorized requests concurrently with one fresh key and prove one receipt/outcome, one governed effect, coherent replay, and independent reread. **BLOCKED_BY_DEPLOYED_PARITY.**
 4. **Checkpoint/provenance/recovery residuals** — prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction without introducing a second persistence path.
@@ -62,4 +63,4 @@ The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid unti
 
 ## EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
