@@ -299,3 +299,38 @@ IMPLEMENTED ≠ VERIFIED.
 VERIFIED ≠ PRODUCTION-PROVEN.
 
 A 10/10 claim is unavailable until runtime integration, independent verification, and production evidence prove the declared scope.
+
+
+## 18. SmartLedger runtime binding V2.1
+
+The repository runtime seam is the existing `public.nayanet_smart_ledger.value` field and existing source-event projections.
+
+Machine schemas:
+- `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json` — `ALIGNMENT_DECISION`;
+- `.naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json` — `CONTRIBUTION_VALUE`.
+
+Canonical assessment states for future projected value are:
+- **UNASSESSED** — activity/event exists but no V2.1 value assessment has been established;
+- **ASSESSED** — a valid V2.1 receipt exists, but verified real-world value is not yet established;
+- **VERIFIED_VALUE** — the receipt has the required verified outcome/delta for its stream.
+
+The forward migration seam is:
+`supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql`.
+
+Its contract is:
+1. validate typed V2.1 receipts before SmartLedger attachment;
+2. owner-scope every attachment to the pre-existing source row;
+3. preserve the source row's privacy classification;
+4. make exact replay idempotent;
+5. fail closed on conflicting replacement;
+6. project future execution-receipt value through the V2.1 assessment-state contract;
+7. stop issuing new Smart Note/Smart Space starter `base_points`;
+8. preserve all historical `NayaNET_V1_STARTING_MODEL` rows and values exactly as provenance;
+9. require verified contribution before positive contribution points;
+10. expose the privileged writer only to `service_role`, never directly to ordinary clients.
+
+The migration is source-level implementation until governed production promotion applies it. A repository PASS MUST NOT be reported as live SmartLedger proof before deployment and independent reread.
+
+Required live closure:
+
+`V2.1 RECEIPT → EXISTING SOURCE EVENT → SMARTLEDGER ATTACH/PROJECTION → OWNER/PRIVACY REREAD → INDEPENDENT SAME-CALCULATION RECOMPUTE → COLD SUCCESSOR EXPLANATION`.
