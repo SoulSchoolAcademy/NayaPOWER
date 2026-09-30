@@ -44,6 +44,10 @@ jobs:
             | tee chain-readiness-report.txt
           status=${PIPESTATUS[0]}
           set -e
+          if [ "$status" -gt 1 ]; then
+            echo "FAIL: collective readiness measurement instrument errored (exit $status)."
+            exit "$status"
+          fi
           satisfied=$(grep -oE '[0-9]+/11 links SATISFIED' chain-readiness-report.txt \
             | grep -oE '^[0-9]+' || echo 0)
           echo "satisfied=$satisfied" >> "$GITHUB_OUTPUT"
