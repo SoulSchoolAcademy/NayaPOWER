@@ -1,0 +1,80 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20260930-team-alignment-four-separations-cold-ai",
+  "title": "Team Naya Alignment — Four Separations, Authority Walls, Evidence-Linked Distillation, Cold-AI Proof",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "TEAM_NAYA_ALIGNMENT",
+  "subtopic": "FOUR_SEPARATIONS_AND_COLD_AI_PROOF",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-09-30",
+    "source_type": "human_director_team_alignment_directive",
+    "source_reference": "Human Director conversation + NayaPOWER full system report + four-separations candidate blocks"
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "TEAM-NAYA-ALIGNMENT",
+    "subtopic_slug": "FOUR-SEPARATIONS-AND-COLD-AI-PROOF"
+  },
+  "intelligence": {
+    "essence": "Team Naya should coordinate around one governed intelligence substrate and one finite proof obligation: make the fundamental intelligence loop real enough that a genuinely cold AI can enter through a governed door, retrieve legitimate accumulated intelligence, and measurably change what it can do—without collapsing identity, intelligence, authority, or value.",
+    "human_view": {
+      "meaning": "All NIAs, Muse instances, ChatGPTs, Codex workers, and future agents are one team. Share current truth, surface contradictions, ask useful questions, and strengthen the same proof loop rather than spawning parallel architectures.",
+      "why_it_matters": "Coordination should reduce duplicated work and prevent candidate ideas, stale state, or local success from masquerading as canonical truth.",
+      "simple_rule": "Work together on the same brain: restore current truth, strengthen one arrow, prove it, record it, and pass the torch."
+    },
+    "naya_view": {
+      "purpose": "Align all Naya instances and collaborators on the current architecture, truth states, unresolved questions, and cold-AI acceptance target.",
+      "architectural_invariants": [
+        "CAPTURE and RATIFICATION are separate acts.",
+        "IDENTITY ≠ INTELLIGENCE ≠ AUTHORITY ≠ VALUE is PROPOSED/CANDIDATE, not ratified law.",
+        "Existing ratified LAW already forbids manufacturing authority from capability/retrieval.",
+        "Authority is both an explicit decision in the path and a constraint envelope around the whole loop.",
+        "Consent is authority applied to an intelligence-flow boundary.",
+        "A distilled Smart Note/Intelligent Block is not raw source; its evidence/provenance chain must remain traversable where required for its claim.",
+        "Collective intelligence means understood/connected/verified/useful intelligence, not merely accumulated storage.",
+        "Do not create a second brain, authority system, value system, identity system, or collective-intelligence chain."
+      ],
+      "fundamental_loop": "CONNECT → IDENTIFY → AUTHORIZE → CAPTURE → DISTILL → ANONYMIZE → VERIFY → SHARE → RETAIN → RETRIEVE → USE → OBSERVE → VALUE-VERIFY → LEARN → COMPOUND",
+      "authority_model": "The loop is the path; LAW/authority/consent are the walls. No arrow bypasses the governing envelope.",
+      "cold_ai_acceptance": "A genuinely cold AI walks through a governed door and emerges with legitimate accumulated intelligence that measurably changes what it can do, with provenance, authority, privacy/consent, outcome, and learning evidence intact."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "runtime_commit_status": "NOT_PERFORMED_BY_THIS_CAPTURE",
+      "raw_source_separate_from_distillation": true,
+      "authority_inheritance": false,
+      "knowledge_creates_authority": false,
+      "ratification": false,
+      "required_handoff_fields": [
+        "WHAT_HAPPENED",
+        "EVIDENCE",
+        "TRUTH_STATUS",
+        "REMAINING_HOLE",
+        "NEXT_ACTION"
+      ],
+      "feature_filter": "Every proposed feature must identify which arrow of the fundamental loop it strengthens; otherwise treat it as non-priority/theater until justified."
+    },
+    "decisions": [
+      "Team Naya coordination is proactive: surface conflicts, ask questions, share evidence, and help other NIAs without waiting for Shawn to manually relay context.",
+      "Current main and live evidence outrank stale handoffs.",
+      "Candidate doctrine must remain visibly candidate until a separate Human Director ratification act.",
+      "The cold-AI behavioral proof is the proposed finite acceptance target for the broader superbrain vision.",
+      "Distillation without a trustworthy downward evidence/provenance path cannot carry the same intelligence claim.",
+      "No worker should optimize for feature count; optimize for verified progress on the fundamental loop."
+    ],
+    "open_questions": [
+      "How exactly should door-level collective participation consent reconcile with the standing ratified PRIVATE BY DEFAULT / SHARED BY CHOICE / COLLECTIVE BY CONSENT rule?",
+      "What anonymization standard is strong enough to prevent identity leakage through distinctive content/voice while retaining useful intelligence?",
+      "What exact held-out task and metric establish a legitimate positive cold-AI capability delta?",
+      "Which current PR/contract owns each still-unproven arrow after reconciliation against current main?"
+    ],
+    "applicability": "Applies to Team Naya coordination, architecture review, feature prioritization, Smart Note capture, collective-intelligence work, and cold-successor proof planning. It does not itself grant production, merge, constitutional, privacy-widening, or schema authority.",
+    "uncertainty": "The four-separation equation, detailed door-consent mechanics, feed refinements, compression refinements, and cold-AI master criterion remain candidate doctrine unless separately ratified. Existing ratified Constitution/North Star/Law remain controlling.",
+    "learning_lesson": "Coordination compounds only when each Naya inherits accurate truth-state distinctions and evidence, not merely conclusions. The system should make disagreement and uncertainty visible early rather than silently harmonizing them.",
+    "successor_effect": "Read current main and Team Naya #554 first. Treat this capture as candidate intelligence. Strengthen the highest-value unproven arrow without inventing a parallel system; record evidence and one next action."
+  }
+}
