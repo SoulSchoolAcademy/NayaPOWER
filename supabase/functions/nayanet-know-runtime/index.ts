@@ -61,7 +61,7 @@ async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
 
 async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
-    .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at")
+    .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at,connections")
     .eq("owner_id",OWNER_ID);
   if(error) throw error;
   return data??[];
