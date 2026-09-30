@@ -17,18 +17,18 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `309f33a7d6543e744ba29986402b7d00d71d8534`:
+At evidence snapshot `c6ac19c4cc3bf938dd782d123c909249872dd905`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
 - #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
 - Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
 - The next active control-plane issue is #66.
-- Current Truth Resolver run `36657001373` succeeded at `9ab4923d` and published the generated continuation brief + live open-PR frontier. #1067 semantic drift guard is merged at `309f33a7`; this projection refresh must now be validated by a fresh resolver run that reports no substantive-drift stale warning.
+- #1067 semantic drift guard is merged and exact-main verified. #1068 proved projection-only convergence. Because #1069 then changed substantive LAW source, this refresh is intentionally anchored to `c6ac19c4` and must be validated by a fresh resolver run with no stale operational projection.
 - Cached-derived authority revocation is **TEST-LEVEL VERIFIED** and #1046 ACT denial coverage is merged at `7847680f`; mission semantics remain unresolved.
-- Live KNOW run `36653558611` selected valid current intelligence; #1060's contextual proof-oracle repair is merged at `c41c3a64`. Fresh HIT/MISS + independent reread remains pending.
+- KNOW bounded live proof `36658860694` is **SUCCESS** with contextual HIT, unrelated MISS, and independent persisted-universe verification.
 - SN-004 learning run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT**. #1051 and #1056 source repairs are merged, but the causal runtime is not deployed at source parity.
-- Readiness repairs #1058/#1061 are merged. Governed promotion `36657956413` correctly denied the protected causal-runtime revision; explicit Human Director `DEPLOY` is required for the exact reconciled main before causal rerun.
+- Readiness repairs #1058/#1061 are merged. Live PROVE run `36658635227` exposed a missing LAW trust binding for `live-prove-proof.yml`; #1069 source-fixed it at `c6ac19c4`. Live LAW and causal runtime parity still require explicit Human Director `DEPLOY` before PROVE or causal rerun.
 - #1062 records the two-owner consent/revocation source gap; owner-only private RLS remains protected.
 - #1044 cold acceptance is ready but has no genuinely fresh PASS receipt.
 - Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
@@ -47,4 +47,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: integrate this post-guard projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the resulting exact main before the causal runtime can claim source/deployed parity. Coda 2 replay/recovery and #1062 two-owner proof work continue independently while that consequential boundary waits.**
+**Issue #66: integrate this post-#1069 projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the resulting exact main before live LAW/PROVE and causal runtime can claim source/deployed parity. After parity, rerun PROVE exactly once. Coda 2 replay/recovery and #1062 two-owner proof work continue independently while that consequential boundary waits.**

@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `309f33a7d6543e744ba29986402b7d00d71d8534`
+**Evidence snapshot base:** `c6ac19c4cc3bf938dd782d123c909249872dd905`
 
 ## CURRENT TRUTH
 
@@ -18,19 +18,19 @@
 - #975 recovery: `36632538416` — **SUCCESS**; exact outcome rows = **2/2**.
 - Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
 - #66 cached-derived authority boundary: **TEST-LEVEL VERIFIED**; ACT live-grant denial matrix #1046 is now merged at `7847680f`; this is still not production proof.
-- Live KNOW run `36653558611`: runtime produced a valid contextual HIT. The stale fixed-ID proof oracle is repaired and merged via #1060 at `c41c3a64`; fresh HIT/MISS + independent reread is still pending.
+- Live KNOW proof is now bounded-live **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe verification after #1060's stale-oracle repair.
 - SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 merged at `4c2b8f12`; #1056 merged at `0fb36123`; the causal runtime is **NOT DEPLOYED AT SOURCE PARITY**.
-- Readiness fail-closed repairs #1058/#1061 and current-truth projection #1053 are merged; resolver run `36657001373` succeeded with generated continuation brief and live open-PR frontier. Semantic projection-drift guard #1067 is merged at `309f33a7`; substantive drift now invalidates stale actions while projection-only drift remains current.
-- Governed promotion run `36657956413` denied the current protected causal-runtime revision with `protected_change_requires_explicit_promotion`; denial artifact `11072839541`. Both causal runtime blobs differ between main and production.
+- Readiness fail-closed repairs #1058/#1061 and current-truth projection #1053 are merged. Semantic projection-drift guard #1067 is canonical and exact-main verified; substantive drift invalidates stale actions while projection-only drift remains current.
+- Governed promotion remains fail-closed for protected runtime changes until explicit Human Director `DEPLOY`. Live PROVE run `36658635227` failed before KNOW/PROVE because LAW's OIDC trust set omitted `live-prove-proof.yml`; #1069 source-repaired that exact binding and merged at `c6ac19c4`, but the live LAW runtime is still pre-fix until governed deployment.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — refresh the existing projection against exact post-guard main `309f33a7`, then require the resolver to classify the resulting projection as CURRENT under projection-only drift.
-2. **Exact causal-runtime deployment parity** — protected promotion is correctly blocked; Shawn must explicitly authorize `DEPLOY` for the resulting exact main through the existing governed workflow before causal rerun.
+1. **#66 current-truth convergence** — refresh the existing projection against exact source-repaired main `c6ac19c4`, then require the resolver to classify the resulting merge as CURRENT under projection-only drift.
+2. **Exact governed runtime deployment parity** — protected promotion is correctly blocked; explicit Human Director `DEPLOY` must deploy the exact current runtime set, including LAW's #1069 PROVE-workflow binding and the causal-runtime repairs, before any PROVE or SN-004 live rerun.
 3. **Checkpoint/provenance/replay/recovery** — Coda 2 owns exact replay, conflicting replay, response-loss, concurrency and receipt-write failure at the ACT seam.
 4. **Authority residuals #1042** — ACT denial coverage is merged; mission binding remains a Human Director authority-model decision.
-5. **KNOW → PROVE live qualification** — source oracle repair is merged; run existing KNOW HIT/MISS + independent reread, then existing PROVE positive/negative + independent reread.
+5. **PROVE live qualification** — KNOW is live-proven. PROVE's first run exposed a LAW workflow-trust omission; #1069 is source-fixed/merged but live PROVE rerun is BLOCKED until deployed LAW parity.
 6. **SN-004 faithful projection + applicable causal effect** — source repairs are merged; regenerate faithful existing projection and rerun act-first causal experiment only after exact deployed parity.
 7. **Two-owner NayaNET #1062** — prove derived collective sharing and revocation propagation without weakening owner-only private intelligence RLS.
 8. **True cold continuity #1044** — one genuinely fresh repository-only entrant, then a second successor; no simulated cold seat.
@@ -43,7 +43,7 @@ Do not redo #913, #944, #971, #978, #975, or #810. Do not recreate Concept #17 i
 
 ## CURRENT FAILURE-FIRST EVIDENCE
 
-The active source repair cluster is now integrated. Main regression gates are green at `0fb36123`, but **source integration is not deployed parity**.
+The active source repair cluster, semantic truth guard, and PROVE LAW-workflow binding are integrated through `c6ac19c4`, but **source integration is not deployed parity**.
 
 Current causal runtime source differs from production:
 - cold runtime main blob `c91556d4...` vs production `03eaaa87...`;
@@ -51,8 +51,8 @@ Current causal runtime source differs from production:
 
 Governed Production Promotion run `36657956413` correctly failed closed with `protected_change_requires_explicit_promotion` and preserved artifact `11072839541`. Do not bypass this denial.
 
-The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid until the merged applicability-aware runtime is actually deployed and independently rerun. Live KNOW's prior contextual HIT remains evidence of runtime selection, not a substitute for the fresh repaired HIT/MISS/independent workflow.
+The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid until the merged applicability-aware runtime is actually deployed and independently rerun. KNOW now has fresh bounded live HIT/MISS + independent verification in run `36658860694`. PROVE must not be retried before LAW source/deployed parity.
 
 ## EXACT NEXT ACTION
 
-**Issue #66: integrate this post-guard projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then the smallest consequential human action is explicit `DEPLOY` for the resulting exact current main through the existing governed production-promotion workflow. Do not weaken protected-path policy. While that boundary is pending, Coda 2 replay/recovery and #1062 two-owner proof work continue independently.**
+**Issue #66: integrate this post-#1069 projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then the smallest consequential human action is explicit `DEPLOY` for the resulting exact current main through the existing governed production-promotion workflow. After deployed parity, rerun PROVE exactly once, then SN-004 causal proof. Do not weaken protected-path policy. While deployment waits, Coda 2 replay/recovery and #1062 two-owner proof work continue independently.**
