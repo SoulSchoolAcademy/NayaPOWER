@@ -49,6 +49,7 @@ jobs:
           import json
           r = json.load(open('.naya/evidence/authorized-action.json', encoding='utf-8'))
           assert r['ok'] is True, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
           assert r['status'] == 'EXECUTED', r
           assert r['authority_decision'] == 'ALLOW', r
           assert r['receipt']['action'] == 'NAYA-NODE-0001-VERIFIED-AI-ACTION', r
@@ -92,6 +93,7 @@ jobs:
           import json
           r = json.load(open('.naya/evidence/authority-absent-refusal.json', encoding='utf-8'))
           assert r['ok'] is False, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
           assert r['status'] == 'BLOCKED', r
           assert r['error'] == 'AUTHORITY_ABSENT', r
           assert r['refusal_receipt_id'], r
@@ -133,8 +135,10 @@ jobs:
           import json
           a=json.load(open(".naya/evidence/concurrent-a.json"))
           b=json.load(open(".naya/evidence/concurrent-b.json"))
+          import os
           for x in (a,b):
               assert x["ok"] is True, x
+              assert x["deployed_source_revision"] == os.environ["GITHUB_SHA"], x
               assert x["status"] == "EXECUTED", x
               assert x["receipt"]["status"] == "SUCCESS", x
               assert x["outcome"]["receipt_id"] == x["receipt"]["id"], x
@@ -153,7 +157,9 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open(".naya/evidence/concurrency-verification.json"))
+          import os
           assert r["ok"] is True, r
+          assert r["deployed_source_revision"] == os.environ["GITHUB_SHA"], r
           assert r["status"] == "IDEMPOTENCY_CONCURRENCY_VERIFIED", r
           assert r["independent_verification"] is True, r
           assert r["executor_claim_trusted_as_verification"] is False, r
@@ -216,6 +222,7 @@ jobs:
           import json
           r = json.load(open('.naya/evidence/independent-verification.json', encoding='utf-8'))
           assert r['ok'] is True, r
+          assert r['deployed_source_revision'] == __import__('os').environ['GITHUB_SHA'], r
           assert r['status'] == 'OUTCOME_VERIFIED', r
           assert r['independent_verification'] is True, r
           v = r['independent_checks']
