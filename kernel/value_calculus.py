@@ -343,7 +343,7 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
     first = frontier[0]
     competing = [r for r in ranked_all if r["candidate_id"] != first["candidate_id"]]
     second = competing[0] if competing else None
-    margin = math.inf if second is None else relative_margin(first["v_safe"], second["v_safe"])
+    margin = 1.0 if second is None else relative_margin(first["v_safe"], second["v_safe"])
     by_id = {c.candidate_id: c for c in candidates}
     selected_candidate = by_id[first["candidate_id"]]
     can_auto = (

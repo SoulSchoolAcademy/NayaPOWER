@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from kernel.value_calculus import (
@@ -168,6 +170,7 @@ def test_decision_receipt_and_independent_recompute(profile):
     base = cand("base", baseline=True, B=5)
     a = cand("a", B=9)
     ev = evaluate_candidates([base, a], "base", profile)
+    assert ev["relative_margin"] == pytest.approx(1.0)
     receipt = build_decision_receipt(
         decision_id="D-1",
         objective=profile.objective,
@@ -181,6 +184,7 @@ def test_decision_receipt_and_independent_recompute(profile):
         verification="PASS_PENDING_WINDOW",
     )
     assert receipt["receipt_type"] == "ALIGNMENT_DECISION"
+    json.dumps(receipt, allow_nan=False)
     reread = independent_recompute(receipt, [base, a], profile)
     assert reread["matches_decision"]
     assert reread["matches_selected"]
