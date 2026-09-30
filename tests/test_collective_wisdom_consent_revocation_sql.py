@@ -8,10 +8,10 @@ MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective
 def _sql() -> str:
     assert MIGRATION.exists(), "collective-wisdom consent/revocation hardening migration is required"
     sql = " ".join(MIGRATION.read_text(encoding="utf-8").split()).lower()
-    sql = re.sub(r"\\s*,\\s*", ",", sql)
-    sql = re.sub(r"\\s*=\\s*", "=", sql)
-    sql = re.sub(r"\\(\\s+", "(", sql)
-    sql = re.sub(r"\\s+\\)", ")", sql)
+    sql = re.sub(r"\s*,\s*", ",", sql)
+    sql = re.sub(r"\s*=\s*", "=", sql)
+    sql = re.sub(r"\(\s+", "(", sql)
+    sql = re.sub(r"\s+\)", ")", sql)
     return sql
 
 
