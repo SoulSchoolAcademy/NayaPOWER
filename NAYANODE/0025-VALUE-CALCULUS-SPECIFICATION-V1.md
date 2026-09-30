@@ -5,7 +5,7 @@
 **Canonical seam retained:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
 **Implementation:** `kernel/value_calculus.py`  
 **Tests:** `tests/test_value_calculus.py`  
-**Machine schema:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`  
+**Machine schemas:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json` + `.naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json`  
 **Issue:** #1182  
 **Effective canonical version:** 2.1
 
@@ -145,11 +145,18 @@ Frontier survivors are ordered by:
 5. simplicity/efficiency;
 6. evidence confidence.
 
-Autonomous dominance uses a relative margin:
+Each candidate also exposes an explicit value interval:
 
-`m=(V_safe1−V_safe2)/max(|V_safe1|, ε)`
+`V_low = ΔV − (uncertainty_penalty + tail_penalty)`  
+`V_high = ΔV + (uncertainty_penalty + tail_penalty)`
 
-The default implementation threshold is 0.10 and is calibratable.
+For the top two candidates, autonomous dominance requires:
+
+`Δ_interval = V_low(top1) − V_high(top2) > ε_interval`
+
+so overlapping uncertainty ranges trigger READ_MORE rather than false precision.
+
+The legacy relative margin remains recorded for backward analysis/calibration, but interval separation is the V2.1 autonomous-selection gate. `ε_interval` is versioned and calibratable.
 
 ## 9. Rule of up-to-10 → top 3 → one
 
@@ -164,11 +171,18 @@ Where applicable include:
 
 Deep-check the top 3.
 
-Autonomous EXECUTE requires:
+The only decision outcomes are:
 
-`ADMISSIBLE ∧ Q≥9 ∧ V_safe>0 ∧ confidence floors pass ∧ evidence floor passes ∧ authority permits ∧ bounded/reversible enough ∧ relative dominance passes`
+- **ACT** — admissible, authorized, high-quality, positive conservative value, confidence/evidence floors pass, and interval-dominant.
+- **READ_MORE** — more evidence/reframing is needed or top value intervals overlap.
+- **ASK** — a genuine authority, consequential, irreversible, or legitimate human judgment boundary remains.
+- **REFUSE** — the candidate set is prohibited by LAW / Prime Judgment hard stops.
 
-Otherwise the system must BRIEF, RESEARCH, or REWORK instead of exporting unnecessary orchestration.
+Autonomous ACT requires:
+
+`ADMISSIBLE ∧ Q≥9 ∧ V_safe>0 ∧ confidence floors pass ∧ evidence floor passes ∧ authority permits ∧ bounded/reversible enough ∧ Δ_interval>ε_interval`
+
+If every non-baseline candidate is prohibited, the result is explicitly REFUSE; it is never silently reported as REWORK.
 
 ## 10. AskHuman law
 
@@ -228,6 +242,8 @@ Persistent bias or increasing error lowers estimator confidence and creates a LE
 
 Learning may propose weight/threshold/rubric changes; it may not silently rewrite constitutional boundaries or authority.
 
+Recalibration write-back is represented by a typed `VALUE_RECALIBRATION` receipt. It records the current profile/version, calibration evidence, proposed new version, proposed weights/thresholds, and evidence references. The active profile is not mutated when the receipt is created. Promotion requires both independent verification and applicable authority, producing a new explicit profile version with supersession lineage.
+
 ## 14. Contribution / network-value scoring
 
 The same mathematical discipline may score a **contribution**, never a human being.
@@ -278,7 +294,7 @@ V2.1 must defend or explicitly record residual risk for:
 ## 16. Nine-node placement
 
 - **SELF** — objective, stakeholders, baseline, current state.
-- **LAW** — gates, policy, rights, authority, risk class.
+- **LAW** — gates, policy, rights, authority, risk class, and the Prime Judgment Rule; a known-wrong/hard-stop instruction is PROHIBITED before scoring.
 - **KNOW** — evidence-bound facts and estimates.
 - **CONNECT** — applicability, affected parties, relationships.
 - **ACT** — selected authorized action.
