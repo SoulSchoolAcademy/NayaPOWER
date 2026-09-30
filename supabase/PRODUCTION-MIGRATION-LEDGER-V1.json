@@ -1354,9 +1354,36 @@
       "version": "20260930040000",
       "name": "r1_writer_connections_v1",
       "path": "supabase/migrations/20260930040000_r1_writer_connections_v1.sql",
-      "sha256": "ddf11be4ada6439c94fbf85093b54494dc8ef4ef895a55fd1c7da74fe54298dc",
+      "sha256": "c3a6f1f92053da1f936ca72a186ff85aabbcbf2d20ceb76905373908d8fd78fb",
       "statement_count": 20,
       "bytes": 23343,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930050000",
+      "name": "thread_connections_through_commit_bridge",
+      "path": "supabase/migrations/20260930050000_thread_connections_through_commit_bridge.sql",
+      "sha256": "52a240b570f7079d3f6f53b4507e3d8b5bc753c8fbe46cd9b347b36c2490dc92",
+      "statement_count": 8,
+      "bytes": 7577,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930051000",
+      "name": "harden_trigger_only_function_execution_v1",
+      "path": "supabase/migrations/20260930051000_harden_trigger_only_function_execution_v1.sql",
+      "sha256": "f05fa5aeadde4684bc0a85a2ae84e71fd7c3221922d416d6c50565a9d31c338c",
+      "statement_count": 3,
+      "bytes": 559,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930120000",
+      "name": "nayanet_github_dispatch_receipts_v1",
+      "path": "supabase/migrations/20260930120000_nayanet_github_dispatch_receipts_v1.sql",
+      "sha256": "0ee23139eab5ff97c6c357ebaab31e03ea171bc3e0cc85b867e6cbc57e3c194c",
+      "statement_count": 6,
+      "bytes": 1761,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],

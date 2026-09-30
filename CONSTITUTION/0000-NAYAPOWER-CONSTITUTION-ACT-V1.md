@@ -1,8 +1,14 @@
 # 🔱 NayaPOWER — Constitution Act V1
 
-**STATUS:** PROPOSED CONSTITUTIONAL LAW — HUMAN DIRECTOR RATIFICATION REQUIRED  
+**STATUS:** RATIFIED — HUMAN DIRECTOR RATIFICATION RECORDED 2026-09-30  
 **AUTHORITY:** Human Director  
 **SCOPE:** All NayaPOWER/NayaNET intelligence, agents, runtimes, interfaces, data, automation, and successors.
+
+## RATIFICATION RECORD
+
+- Ratified by the Human Director (Shawn Vibert) on 2026-09-30.
+- The Standing Production Authorization Amendment (0001, ratified 2026-09-29) predates this ratification; its prior ratification stands and is confirmed by this act.
+- The Governance Contract (GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md) remains PROPOSED pending separate Human Director ratification.
 
 ## PREAMBLE
 

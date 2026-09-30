@@ -1,9 +1,11 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `c3aca5c94c6b51071c768692a7220d3d88722174`
+**Evidence snapshot base:** `0e9a985883217ac6187d63c43c7b029da06b87b9` (refreshed 2026-09-30 ~07:00 PDT by Naya 2; prior base `c3aca5c9` preserved in history below)
 
 ## CURRENT TRUTH
+
+- **2026-09-30 ~07:00 PDT refresh (Naya 2):** snapshot base → `0e9a98588`; production → `49c60714`/`0e7711ba`. Constitution RATIFIED (PR #1128); SELF V1/V2 layering canonical on main (`0e9a98588`, #1127 superseded); Governance Contract still PROPOSED (#1130). Cold test 14/14 answerable (Q8 conflict closed); resolver `RESOLVED_WITH_UNKNOWNS`, 0 hard conflicts. PROVE/VERIFY live proofs RED (runs 36667345646, 36722669783) — migrations still unapplied. promote-and-prove on latest main: DENY by design (`protected_change_requires_explicit_promotion`), verified by local policy-evaluator run.
 
 - #913: **CLOSED** — bounded causal specimen.
 - #944: **CLOSED** — bounded generalization + successor reuse/refusal.
@@ -30,7 +32,7 @@
 - #1098/#1100 are now on main: ACT idempotency migration is registered in the production ledger as `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`; Graph V2 fresh-selector and cold-graph proof contracts are source/test hardened. These changes do not alter the ACT live-race gate: exact deployment parity is still required before the two-request production proof.
 - PR #1116 merged at `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`: live ACT concurrency proof mechanism is now in canonical main; live production execution remains deployment-gated.
 - Fresh main `c3aca5c94c6b51071c768692a7220d3d88722174` was reconciled into Brain by PR #1117; Current Truth Resolver run `36668304786` succeeded with `RESOLVED_WITH_UNKNOWNS`, preserving `LIVE_RUNTIME_SOURCE` as UNKNOWN and flagging substantive projection drift against the prior snapshot. The resolver artifact digest is `sha256:f69e91fdc1bb5d9799ced1ed878270eace71bdad7d20d374bfed538ce40c1768`.
-- Production branch remains `9dba0fe210d69aa8b7307f80214b675d9ae8d66d`, deployment-stamped to source `0d0c36ab125fd8890ceffac0cd81283c658dd468`; current main is not production-proven.
+- Production branch is `49c60714f4fa7c70ed50258dcbbd2d3fa554abe5`, deployment-stamped to source `0e7711ba3601a4b249a340806405791a62526196` (deployed 2026-09-30 05:29:41 UTC); main `0e9a98588` is 2 docs-only commits ahead (Constitution ratification + SELF V1/V2 layering) — parity statements must cite delta content, not SHAs alone. (Refreshed 2026-09-30 ~07:00 PDT; prior pins preserved in history below.)
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
@@ -56,7 +58,7 @@ The ACT concurrency seam was attacked failure-first on fresh pre-fix main: idemp
 
 This is **source/test verified, not production proven**. The live two-request authorized race must not be manufactured against stale production because that could intentionally create duplicate governed effects. The exact live proof therefore remains blocked until the governed deployment path applies the function + migration to the exact current main.
 
-Current deployed runtime is older than canonical main. Production branch `9dba0fe210d69aa8b7307f80214b675d9ae8d66d` is stamped to source `0d0c36ab125fd8890ceffac0cd81283c658dd468`. Current main `c3aca5c94c6b51071c768692a7220d3d88722174` is therefore not production-proven.
+Production branch `49c60714f4fa7c70ed50258dcbbd2d3fa554abe5` is stamped to source `0e7711ba3601a4b249a340806405791a62526196` (deployed 2026-09-30 05:29:41 UTC). Current main `0e9a98588` is 2 docs-only commits ahead of deployed source; the exact live ACT two-request proof remains blocked until the governed deployment path applies the function + migration (6/6 migrations still `PENDING_REVIEW_NOT_PRODUCTION_APPLIED` in the ledger). (Refreshed 2026-09-30 ~07:00 PDT.)
 
 Historical causal runtime source differences:
 - cold runtime main blob `c91556d4...` vs production `03eaaa87...`;

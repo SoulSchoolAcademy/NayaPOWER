@@ -1,5 +1,7 @@
 ﻿# ACT Concurrent-Duplicate Idempotency Proof — 2026-09-30
 
+
+> **Currency note (2026-09-30 ~07:00 PDT, Naya 2):** this proof record was written against main `aaa373bd`. Current main is `0e9a98588`; production is `49c60714` (source `0e7711ba`). The proof's status (source/test verified, live race pending) is unchanged — the intervening commits are docs-only.
 **Status:** SOURCE/TEST VERIFIED — LIVE RACE PENDING EXACT DEPLOYMENT
 **Source repair merge:** `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` (PR #1095)
 **Current canonical main:** `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc` (PR #1116 merge)
