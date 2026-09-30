@@ -11,7 +11,7 @@
     "captured_at": "2026-09-30",
     "captured_at_utc": "2026-09-30T19:48:52Z",
     "source_type": "human_director_operating_directive",
-    "source_reference": "Direct Human Director conversation on 2026-09-30; already projected in AGENTS.md and Brain as SN-013, now being reconciled into the canonical runtime Intelligent Block river."
+    "source_reference": "Direct Human Director conversation on 2026-09-30; already projected in AGENTS.md and Brain as SN-013, now being reconciled into the canonical runtime Intelligent Block river. Replayed after allocator fix PR #1160 to reconcile the human projection/registry to explicit SN-013 without creating a second canonical block."
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
