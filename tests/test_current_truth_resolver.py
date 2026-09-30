@@ -141,3 +141,34 @@ def test_workflow_collects_live_open_pull_requests():
     assert '"gh", "pr", "list"' in wf
     assert '"number,title,headRefOid,isDraft,mergeStateStatus,updatedAt"' in wf
     assert '"open_prs": open_prs' in wf
+
+
+def test_resolver_does_not_present_stale_projection_next_action_as_current(monkeypatch):
+    main = "a" * 40
+    stale = "b" * 40
+
+    def fake_load(path):
+        if path == ctr.OPS:
+            return {
+                "evidence_snapshot_base": stale,
+                "next_action": "STALE ACTION MUST NOT EXECUTE",
+                "top_10": [{"id": "#66", "action": "stale", "status": "ACTIVE"}],
+                "current_state": {},
+            }
+        if path == ctr.BRAIN:
+            return {"operations": {"active_issue": 66}}
+        return {"runtime_binding": {"status": "PROVEN"}}
+
+    monkeypatch.setattr(ctr, "_load", fake_load)
+    result = ctr.resolve(
+        _live(main, proof={"head_sha": main}, runtime=main),
+        repo_head=main,
+    )
+
+    assert result["repository"]["snapshot_is_current_main"] is False
+    assert result["active_work"]["projection_is_current_main"] is False
+    assert result["active_work"]["projection_next_action"] == "STALE ACTION MUST NOT EXECUTE"
+    assert result["active_work"]["next_action"].startswith("Reconcile the operational projection")
+    assert any(x["code"] == "OPERATIONAL_PROJECTION_STALE" for x in result["warnings"])
+    md = ctr.render_markdown(result)
+    assert "## Max-10 (dated projection; do not execute as current)" in md
