@@ -3,6 +3,8 @@
 Status: CANONICAL ENGINEERING TARGET
 Node: NAYA-KERNEL-SELF
 
+**Relationship to V1:** This document does not replace `0001-CONTRACT.md`. V1 is the binding semantic contract (identity, mission, objective, continuity semantics); V2 is the canonical engineering target — the north-star behavior loop, responsibilities, invariants, and testable-implementation criteria that operationalize V1. V2's invariants govern where the two appear to differ. Neither document is retired; they layer.
+
 ## Purpose
 
 SELF is the continuity center of one governed intelligence kernel. It is not an independent authority, and persistent state is not a claim of consciousness.
