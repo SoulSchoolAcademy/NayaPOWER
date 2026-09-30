@@ -1367,6 +1367,15 @@
       "statement_count": 3,
       "bytes": 559,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930052000",
+      "name": "consent_runtime_consumer_v1",
+      "path": "supabase/migrations/20260930052000_consent_runtime_consumer_v1.sql",
+      "sha256": "a7660ab4a6f2338bf2b9cbc4436793fc5ec13ac601257ff601dccc7c1c45f09c",
+      "statement_count": 42,
+      "bytes": 6300,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
