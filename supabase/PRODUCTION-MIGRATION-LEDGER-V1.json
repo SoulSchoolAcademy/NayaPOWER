@@ -1354,9 +1354,9 @@
       "version": "20260930040000",
       "name": "r1_writer_connections_v1",
       "path": "supabase/migrations/20260930040000_r1_writer_connections_v1.sql",
-      "sha256": "b3813ac786b863f3a87e25f8650ca0d77aa5b2ceb94f904779f241275b4f38b3",
-      "statement_count": 21,
-      "bytes": 26874,
+      "sha256": "ddf11be4ada6439c94fbf85093b54494dc8ef4ef895a55fd1c7da74fe54298dc",
+      "statement_count": 20,
+      "bytes": 23343,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],

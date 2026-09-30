@@ -28,6 +28,7 @@ env:
   PRODUCTION_BRANCH: production
   PRODUCER_WORKFLOW: live-intelligence-commit-proof.yml
   PROOF_WORKFLOW: live-supabase-runtime-proof.yml
+  ACT_PROOF_WORKFLOW: live-verified-ai-action-proof.yml
 
 jobs:
   promote-and-prove:
@@ -201,19 +202,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          runtime_path="supabase/functions/nayanet-cold-runtime-proof/index.ts"
-          sentinel='const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
           python - <<'PY'
           from pathlib import Path
           import os
-          p=Path("supabase/functions/nayanet-cold-runtime-proof/index.ts")
-          source=p.read_text(encoding="utf-8")
+          paths=[
+              Path("supabase/functions/nayanet-cold-runtime-proof/index.ts"),
+              Path("supabase/functions/nayanet-verified-ai-action/index.ts"),
+          ]
           sentinel='const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";'
           replacement=f'const DEPLOYED_SOURCE_REVISION = "{os.environ["GITHUB_SHA"]}";'
-          if source.count(sentinel) != 1:
-              raise SystemExit("expected exactly one UNSTAMPED revision sentinel")
-          p.write_text(source.replace(sentinel, replacement), encoding="utf-8")
-          print("stamped deployment payload with source revision", os.environ["GITHUB_SHA"])
+          for p in paths:
+              source=p.read_text(encoding="utf-8")
+              if source.count(sentinel) != 1:
+                  raise SystemExit(f"expected exactly one UNSTAMPED revision sentinel in {p}")
+              p.write_text(source.replace(sentinel, replacement), encoding="utf-8")
+              print("stamped", p, "with source revision", os.environ["GITHUB_SHA"])
           PY
 
           source_tree="$(gh api "repos/$GITHUB_REPOSITORY/git/commits/$GITHUB_SHA" --jq .tree.sha)"
@@ -223,26 +226,27 @@ jobs:
             production_parent="$GITHUB_SHA"
           fi
 
-          python - <<'PY' > deployment-blob-request.json
+          : > deployment-tree-entries.jsonl
+          for runtime_path in             supabase/functions/nayanet-cold-runtime-proof/index.ts             supabase/functions/nayanet-verified-ai-action/index.ts
+          do
+            python - "$runtime_path" <<'PY' > deployment-blob-request.json
           import base64, json, sys
           from pathlib import Path
-          payload=Path("supabase/functions/nayanet-cold-runtime-proof/index.ts").read_bytes()
+          payload=Path(sys.argv[1]).read_bytes()
           json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)
           PY
-          gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" --input deployment-blob-request.json > deployment-blob.json
-          blob_sha="$(python -c 'import json; print(json.load(open("deployment-blob.json"))["sha"])')"
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" --input deployment-blob-request.json > deployment-blob.json
+            blob_sha="$(python -c 'import json; print(json.load(open("deployment-blob.json"))["sha"])')"
+            python - "$runtime_path" "$blob_sha" <<'PY' >> deployment-tree-entries.jsonl
+          import json,sys
+          print(json.dumps({"path":sys.argv[1],"mode":"100644","type":"blob","sha":sys.argv[2]}))
+          PY
+          done
 
-          python - "$source_tree" "$blob_sha" <<'PY' > deployment-tree-request.json
-          import json, sys
-          json.dump({
-            "base_tree":sys.argv[1],
-            "tree":[{
-              "path":"supabase/functions/nayanet-cold-runtime-proof/index.ts",
-              "mode":"100644",
-              "type":"blob",
-              "sha":sys.argv[2],
-            }],
-          }, sys.stdout)
+          python - "$source_tree" <<'PY' > deployment-tree-request.json
+          import json,sys
+          entries=[json.loads(line) for line in open("deployment-tree-entries.jsonl") if line.strip()]
+          json.dump({"base_tree":sys.argv[1],"tree":entries}, sys.stdout)
           PY
           gh api --method POST "repos/$GITHUB_REPOSITORY/git/trees" --input deployment-tree-request.json > deployment-tree.json
           deployment_tree="$(python -c 'import json; print(json.load(open("deployment-tree.json"))["sha"])')"
@@ -469,6 +473,58 @@ jobs:
             sleep 5
           done
 
+      - name: Dispatch canonical ACT proof after deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > act-proof-dispatch-start.txt
+          gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+          for i in $(seq 1 60); do
+            runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch --limit 30 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
+            python - <<'PY' "$runs"
+          import json,sys
+          runs=json.loads(sys.argv[1])
+          start=open("act-proof-dispatch-start.txt").read().strip()
+          matches=[r for r in runs if r.get("createdAt","")>=start]
+          json.dump(max(matches,key=lambda r:r["createdAt"]) if matches else {}, open("act-proof-run.json","w"), indent=2)
+          PY
+            run_id="$(python -c 'import json; print(json.load(open("act-proof-run.json")).get("databaseId",""))')"
+            if [ -n "$run_id" ]; then
+              act_head="$(python -c 'import json; print(json.load(open("act-proof-run.json")).get("headSha",""))')"
+              if [ "$act_head" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "ACT proof resolved to $act_head instead of authorized source $GITHUB_SHA."
+                exit 1
+              fi
+              git fetch origin main
+              if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "main moved after ACT proof dispatch; refusing to continue."
+                exit 1
+              fi
+              for j in $(seq 1 180); do
+                status="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status --jq .status)"
+                conclusion="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json conclusion --jq .conclusion)"
+                state="${status}:${conclusion}"
+                case "$state" in
+                  completed:success) break ;;
+                  completed:*) echo "ACT proof run failed: $state"; exit 1 ;;
+                esac
+                if [ "$j" -eq 180 ]; then echo "Timed out waiting for ACT proof run."; exit 1; fi
+                sleep 5
+              done
+              gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,headSha,status,conclusion,event,createdAt,updatedAt,url > act-proof-run.json
+              break
+            fi
+            if [ "$i" -eq 60 ]; then
+              echo "Timed out locating canonical ACT proof run."
+              exit 1
+            fi
+            sleep 5
+          done
+
       - name: Write durable production promotion receipt
         shell: bash
         run: |
@@ -478,6 +534,7 @@ jobs:
           supabase_check=json.load(open("supabase-production-check.json"))
           producer=json.load(open("producer-run.json"))
           proof=json.load(open("proof-run.json"))
+          act_proof=json.load(open("act-proof-run.json"))
           receipt={
             "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
             "source_sha":os.environ["GITHUB_SHA"],
@@ -498,12 +555,16 @@ jobs:
               "deployed_source_revision":os.environ["GITHUB_SHA"],
               "source_tree_sha":os.environ["SOURCE_TREE_SHA"],
               "deployment_tree_sha":os.environ["DEPLOYMENT_TREE_SHA"],
+              "attested_components":["nayanet-cold-runtime-proof","nayanet-verified-ai-action"],
+              "parity_scope":"ATTESTED_COMPONENTS_ONLY",
             },
             "canonical_proof":{
               "producer_run_id":producer.get("databaseId"),
               "producer_conclusion":producer.get("conclusion"),
               "runtime_proof_run_id":proof.get("databaseId"),
               "runtime_proof_conclusion":proof.get("conclusion"),
+              "act_proof_run_id":act_proof.get("databaseId"),
+              "act_proof_conclusion":act_proof.get("conclusion"),
             },
             "authority_boundary":{
               "human_authorization_is_deployment_decision":True,
@@ -515,8 +576,10 @@ jobs:
           assert receipt["machine_deployment"]["supabase_check_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
           assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
+          assert receipt["canonical_proof"]["act_proof_conclusion"]=="success", receipt
           assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
           assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
+          assert act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
           json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
           PY
           cat production-promotion-receipt.json
@@ -534,3 +597,4 @@ jobs:
             supabase-production-check.json
             producer-run.json
             proof-run.json
+            act-proof-run.json

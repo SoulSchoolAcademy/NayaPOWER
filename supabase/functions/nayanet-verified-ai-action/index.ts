@@ -12,9 +12,10 @@ const BLOCK_ID = "IB-NAYA-NODE-0001-0001";
 const MISSION_ID = "NAYA-NODE-0001-CONTINUITY";
 const ACTION = "naya_node_apply";
 const EXPERIMENT_CASE = "NAYA-0001-VERIFIED-AI-ACTION";
+const DEPLOYED_SOURCE_REVISION = "0e7711ba3601a4b249a340806405791a62526196";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 
-const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
+const json = (body: unknown, status = 200) => new Response(JSON.stringify({deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object)}), {
   status,
   headers: {"content-type": "application/json", "cache-control": "no-store"},
 });

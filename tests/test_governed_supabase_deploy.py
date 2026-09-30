@@ -12,6 +12,7 @@ def test_governed_promotion_keeps_manual_human_gate_and_canonical_proof():
     assert "PRODUCTION_BRANCH: production" in source
     assert "live-intelligence-commit-proof.yml" in source
     assert "live-supabase-runtime-proof.yml" in source
+    assert "live-verified-ai-action-proof.yml" in source
     assert "production-promotion-receipt.json" in source
 
 
@@ -34,6 +35,7 @@ def test_governed_promotion_preserves_existing_runtime_set_in_source_config():
         "nayanet-act-runtime",
         "nayanet-know-runtime",
         "nayanet-prove-runtime",
+        "nayanet-verified-ai-action",
     ):
         assert f"[functions.{function_name}]" in source
 
@@ -47,6 +49,9 @@ def test_native_production_deployment_is_provenance_stamped_before_supabase_depl
     assert '"deployment_commit_sha":os.environ["DEPLOYMENT_SHA"]' in source
     assert '"deployed_source_revision":os.environ["GITHUB_SHA"]' in source
     assert 'json.dump({"content":base64.b64encode(payload).decode("ascii"),"encoding":"base64"}, sys.stdout)' in source
+    assert 'supabase/functions/nayanet-verified-ai-action/index.ts' in source
+    assert '"attested_components":["nayanet-cold-runtime-proof","nayanet-verified-ai-action"]' in source
+    assert '"parity_scope":"ATTESTED_COMPONENTS_ONLY"' in source
     assert 'open("deployment-blob-request.json","w")' not in source
 
 
@@ -72,6 +77,10 @@ def test_governed_promotion_dispatches_runtime_proof_directly():
     assert 'gh workflow run "$PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f source_sha="$GITHUB_SHA" -f producer_run_id="$producer_run_id"' in source
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
+    assert 'gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
+    assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
+    assert 'if [ "$act_head" != "$GITHUB_SHA" ]; then' in source
+    assert '"act_proof_conclusion":act_proof.get("conclusion")' in source
     assert '--event workflow_run' not in source
 
 
@@ -90,8 +99,8 @@ def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "gh run watch" not in source
     assert "gh run view" in source
-    assert source.count("--jq .status") == 2
-    assert source.count("--jq .conclusion") == 2
+    assert source.count("--jq .status") == 3
+    assert source.count("--jq .conclusion") == 3
     assert '.status+":"+(.conclusion//"")' not in source
 
 
