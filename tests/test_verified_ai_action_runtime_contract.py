@@ -77,7 +77,7 @@ def test_observed_result_is_derived_from_canonical_block_not_asserted():
 
 def test_idempotent_replay_requires_persisted_outcome():
     source = FUNCTION.read_text(encoding="utf-8")
-    replay = source.split("const replay =", 1)[1].split("const observed =", 1)[0]
+    replay = source.split("if (idempotentReplay)", 1)[1].split("const {data: outcome", 1)[0]
     assert "if (!replayOutcome)" in replay
     assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in replay
     assert 'status: "INCONCLUSIVE"' in replay
@@ -114,6 +114,24 @@ def test_workflow_uses_three_separate_fresh_runtimes():
         assert job in workflow
     assert "id-token: write" in workflow
     assert "contents: read" in workflow
+
+
+def test_concurrent_duplicate_requests_have_an_atomic_idempotency_claim():
+    source = FUNCTION.read_text(encoding="utf-8")
+    migration_dir = ROOT / "supabase" / "migrations"
+    migrations = "\n".join(p.read_text(encoding="utf-8") for p in migration_dir.glob("*.sql"))
+    assert "idempotency_key" in source
+    assert "idempotency_key" in migrations
+    assert "unique" in migrations.lower()
+    assert "nayanet_execution_receipts" in migrations
+    assert "23505" in source
+    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in source
+    # The idempotency key must be persisted at the receipt boundary, not only encoded in prose.
+    assert "idempotency_key: idempotencyKey" in source
+    # A concurrent loser must resolve the already-claimed receipt rather than execute again.
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    assert "idempotentReplay" in execute
+    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in execute
 
 
 def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
