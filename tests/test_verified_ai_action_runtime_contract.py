@@ -133,7 +133,8 @@ def test_concurrent_duplicate_requests_have_an_atomic_idempotency_claim():
     # A concurrent loser must resolve the already-claimed receipt rather than execute again.
     execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
     assert "idempotentReplay" in execute
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in execute
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in execute
+    assert "IDEMPOTENCY_KEY_REUSE_CONFLICT" in execute
 
 
 def test_idempotency_key_is_bound_to_exact_request_context():
