@@ -284,20 +284,20 @@
   },
   {
    "smart_note_id": "SN-016",
-   "intelligent_block_id": "IB-SMART-NOTE-20260930-sn016-judgment-rule",
-   "content_hash": "fc10614b5d60a2f03c4269e56bcba9d639276b265cb0f86ad2bdb0091dacf3d1",
-   "title": "The Judgment Rule — Loyalty to Informed Will Over Obedience to Literal Instruction",
+   "intelligent_block_id": "IB-SMART-NOTE-20260930-sn016-prime-judgment-rule",
+   "content_hash": "a857a80d1e20cc01c39f3377045df88c92914c5db035983bdfaf7c5997a62050",
+   "title": "The Judgment Rule — Judgment Before Blind Obedience",
    "captured_at": "2026-09-30",
    "category": "SYSTEM_INTELLIGENCE",
-   "topic": "JUDGMENT_RULE",
-   "subtopic": "PRIME_DIRECTIVE",
+   "topic": "GOVERNANCE",
+   "subtopic": "PRIME_JUDGMENT",
    "truth_state": "RATIFIED",
    "scope": "PRIVATE",
-   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/JUDGMENT-RULE/PRIME-DIRECTIVE/SN-016/IB-SMART-NOTE-20260930-sn016-judgment-rule.md",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
    "smart_link_status": "ACTIVE",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/JUDGMENT-RULE/PRIME-DIRECTIVE/SN-016/IB-SMART-NOTE-20260930-sn016-judgment-rule.md",
-   "publication_scope": "PRIVATE",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
+   "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "judgment rule",
     "prime directive",
@@ -306,22 +306,23 @@
     "obedience",
     "hard stops",
     "constitutional law",
-    "loyalty"
+    "loyalty",
+    "blind obedience"
    ],
    "provenance": {
-    "event_id": "0403b6f1-3d3a-4c78-a323-899b28b0bc7c",
-    "lineage_id": "fda367ae-78be-4c08-8f0b-ad098a2b2062",
-    "relationship_id": "a26b6858-826f-4a74-a2de-51d23055305d",
-    "runtime_index_id": "49b63aef-41a5-4c80-8fe2-7cf2bd730b32",
-    "checkpoint_id": "f0f0b9fc-4444-441b-a6be-7efa4ea8af4e",
-    "receipt_id": "d0417676-433e-43dd-a6fe-215e43e3f4f9"
+    "event_id": "d2fd94e1-7c4f-43fd-8a5b-5b623a05bf4e",
+    "lineage_id": "d60ce3a0-aa10-438e-9484-0127fd97a629",
+    "relationship_id": "3f23e02f-7b55-4409-9477-a0b3c1b776a4",
+    "runtime_index_id": "bafe64e0-c262-4424-b0d4-ceef696ca7e8",
+    "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+    "receipt_id": "c6cb2f2a-9eb7-48a1-be68-33763d1df390"
    }
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 16,
+  "next_sequence": 17,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  }
 }

@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "dd8604e6e4757cebb0a31b9ac3f7026d82e2e231",
+  "receipt_basis_commit": "c36a8868bb74b8820e925d7a683107e691d111db",
   "inventory_file_count": 159,
   "domain_counts": {
     "00-SPEC": 15,
@@ -295,8 +295,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
-      "blob_sha": "ce8e140035e2f913fdad7d061d32d1a08b750466",
-      "size": 20364
+      "blob_sha": "6c6b28a98708b71616b2b2da3a2be33490fa009a",
+      "size": 22105
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
@@ -434,6 +434,11 @@
       "size": 6830
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
+      "blob_sha": "f9d64da3f0e0537cbf271a62f8d6587ce7babaeb",
+      "size": 10790
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/NO-RECONSTRUCTION/SN-008/IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure.md",
       "blob_sha": "6ed9f9ffcb3998ea1a76fe26f84b7aa25622a028",
       "size": 4618
@@ -447,11 +452,6 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTERNAL-MORALITY/EARNED-CONSCIENCE/SN-005/IB-SMART-NOTE-20260930-sn005-internal-morality.md",
       "blob_sha": "e334408b3bc157d995405915244d1c9037906090",
       "size": 8557
-    },
-    {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/JUDGMENT-RULE/PRIME-DIRECTIVE/SN-016/IB-SMART-NOTE-20260930-sn016-judgment-rule.md",
-      "blob_sha": "39ae54a7cf68ac0c252d29faa554d217f8e238d3",
-      "size": 9994
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
