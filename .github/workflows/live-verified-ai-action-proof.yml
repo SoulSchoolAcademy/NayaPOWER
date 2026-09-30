@@ -103,6 +103,74 @@ jobs:
           name: authority-absent-refusal-receipt
           path: .naya/evidence/authority-absent-refusal.json
 
+  concurrent-idempotency-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: obtain fresh GitHub OIDC runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${AUDIENCE}" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
+      - name: issue two identical authorized requests concurrently
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          key="concurrent-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          printf '%s' "$key" > .naya/evidence/idempotency-key.txt
+          payload="{\"mode\":\"execute\",\"authority_grant_id\":\"${GRANT_ID}\",\"idempotency_key\":\"$key\"}"
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "$payload" "${FUNCTION_URL}" > .naya/evidence/concurrent-a.json &
+          p1=$!
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "$payload" "${FUNCTION_URL}" > .naya/evidence/concurrent-b.json &
+          p2=$!
+          wait "$p1"
+          wait "$p2"
+          cat .naya/evidence/concurrent-a.json
+          cat .naya/evidence/concurrent-b.json
+          python - <<'PY'
+          import json
+          a=json.load(open(".naya/evidence/concurrent-a.json"))
+          b=json.load(open(".naya/evidence/concurrent-b.json"))
+          for x in (a,b):
+              assert x["ok"] is True, x
+              assert x["status"] == "EXECUTED", x
+              assert x["receipt"]["status"] == "SUCCESS", x
+              assert x["outcome"]["receipt_id"] == x["receipt"]["id"], x
+          assert a["receipt"]["id"] == b["receipt"]["id"], (a,b)
+          assert a["outcome"]["outcome_id"] == b["outcome"]["outcome_id"], (a,b)
+          assert a.get("idempotent_replay") is True or b.get("idempotent_replay") is True, (a,b)
+          print("CONCURRENT EXECUTORS CONVERGED")
+          PY
+      - name: independently reread one receipt and one outcome for the shared key
+        shell: bash
+        run: |
+          set -euo pipefail
+          key="$(cat .naya/evidence/idempotency-key.txt)"
+          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data "{\"mode\":\"verify-idempotency\",\"idempotency_key\":\"$key\"}"             "${FUNCTION_URL}" > .naya/evidence/concurrency-verification.json
+          cat .naya/evidence/concurrency-verification.json
+          python - <<'PY'
+          import json
+          r=json.load(open(".naya/evidence/concurrency-verification.json"))
+          assert r["ok"] is True, r
+          assert r["status"] == "IDEMPOTENCY_CONCURRENCY_VERIFIED", r
+          assert r["independent_verification"] is True, r
+          assert r["executor_claim_trusted_as_verification"] is False, r
+          assert r["receipt_count"] == 1, r
+          assert r["outcome_count"] == 1, r
+          assert all(r["checks"].values()), r
+          print("LIVE ACT CONCURRENCY INDEPENDENTLY VERIFIED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: act-concurrent-idempotency-proof
+          path: |
+            .naya/evidence/idempotency-key.txt
+            .naya/evidence/concurrent-a.json
+            .naya/evidence/concurrent-b.json
+            .naya/evidence/concurrency-verification.json
+
   independent-verification:
     needs: [authorized-action, authority-absent-refusal]
     runs-on: ubuntu-latest

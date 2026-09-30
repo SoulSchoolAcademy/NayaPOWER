@@ -138,3 +138,28 @@ test("PROVE independent verifier compares persisted JSONB semantically, not obje
   assert.doesNotMatch(source,/JSON\.stringify\(recorded\.provenance_chain/);
   assert.doesNotMatch(source,/JSON\.stringify\(recorded\.conflicts/);
 });
+
+test("PROVE inspect recomputes as-of assess time, not wall-clock now (KNOW freshness time-bomb)",()=>{
+  // A KNOW receipt fresh at assess time must still verify when inspect runs later.
+  // Before the fix, inspect used new Date(), so any workflow taking >15 min between
+  // assess and inspect recomputed BLOCKED(KNOW_RECEIPT_STALE) vs recorded SUPPORTED.
+  const assessTime=new Date("2026-09-29T20:30:00Z");
+  const lateInspectTime=new Date(assessTime.getTime()+20*60*1000); // 20 min later
+  const freshAtAssess=knowReceipt({created_at:"2026-09-29T20:29:00Z"});
+  const aAtAssess=assessKnowProof(OWNER,NAYA,freshAtAssess,block(),grant(),[],assessTime);
+  assert.equal(aAtAssess.epistemic_state,"SUPPORTED");
+  // Old behavior: recompute with wall-clock now -> stale
+  const aLate=assessKnowProof(OWNER,NAYA,freshAtAssess,block(),grant(),[],lateInspectTime);
+  assert.equal(aLate.state,"FAILED");
+  assert.equal(aLate.epistemic_state,"UNVERIFIED");
+  assert.equal(aLate.failure_reason,"KNOW_RECEIPT_STALE");
+  // Fixed behavior: recompute as-of the PROVE receipt's created_at -> matches
+  const aFixed=assessKnowProof(OWNER,NAYA,freshAtAssess,block(),grant(),[],assessTime);
+  assert.equal(aFixed.epistemic_state,aAtAssess.epistemic_state);
+  assert.equal(aFixed.state,aAtAssess.state);
+});
+
+test("runtime inspect mode derives recompute time from the PROVE receipt, not wall-clock",()=>{
+  const source=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/index.ts",import.meta.url),"utf8");
+  assert.match(source,/proveReceipt\.created_at\?new Date\(proveReceipt\.created_at\):new Date\(\)/);
+});

@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
+**Evidence snapshot base:** `c3aca5c94c6b51071c768692a7220d3d88722174`
 
 ## CURRENT TRUTH
 
@@ -28,12 +28,15 @@
 - #1088 merged at `d033cefb`: pending #1070 migration now restores the Smart Connect/collective-wisdom prerequisites removed by the canonical reset before applying consent/revocation hardening. Source/test verified; redeployment proof pending.
 - #1090 merged at `d033cefb`: Graph V2 keeps temporal NOT NULL constraints and now provides insertion-time defaults for new canonical relationships, closing producer run `36663323348` failure `observed_at NULL`. Source/test verified; redeployment proof pending.
 - #1098/#1100 are now on main: ACT idempotency migration is registered in the production ledger as `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`; Graph V2 fresh-selector and cold-graph proof contracts are source/test hardened. These changes do not alter the ACT live-race gate: exact deployment parity is still required before the two-request production proof.
+- PR #1116 merged at `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`: live ACT concurrency proof mechanism is now in canonical main; live production execution remains deployment-gated.
+- Fresh main `c3aca5c94c6b51071c768692a7220d3d88722174` was reconciled into Brain by PR #1117; Current Truth Resolver run `36668304786` succeeded with `RESOLVED_WITH_UNKNOWNS`, preserving `LIVE_RUNTIME_SOURCE` as UNKNOWN and flagging substantive projection drift against the prior snapshot. The resolver artifact digest is `sha256:f69e91fdc1bb5d9799ced1ed878270eace71bdad7d20d374bfed538ce40c1768`.
+- Production branch remains `9dba0fe210d69aa8b7307f80214b675d9ae8d66d`, deployment-stamped to source `0d0c36ab125fd8890ceffac0cd81283c658dd468`; current main is not production-proven.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`; resolver `36665708305` correctly identified the later #1098/#1100 source changes as substantive drift. **NEXT: rerun the resolver against this stable main snapshot.**
-2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for the exact current main, including the new ACT migration/function. No production mutation is authorized by this queue.
+1. **Exact-main projection convergence** — Current Truth Resolver `36668304786` has now run against `c3aca5c94c6b51071c768692a7220d3d88722174` and returned `RESOLVED_WITH_UNKNOWNS`; preserve `LIVE_RUNTIME_SOURCE=UNKNOWN` and reconcile any newly identified substantive projection drift before treating the queue as current.
+2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for exact current main `c3aca5c94c6b51071c768692a7220d3d88722174`, including ACT function + migration and the current LAW/KNOW/PROVE source set. No production mutation is authorized by this queue.
 3. **Live concurrent-duplicate proof** — once the exact #1095 function + migration are deployed, issue two identical authorized requests concurrently with one fresh key and prove one receipt/outcome, one governed effect, coherent replay, and independent reread. **BLOCKED_BY_DEPLOYED_PARITY.**
 4. **Checkpoint/provenance/recovery residuals** — prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction without introducing a second persistence path.
 5. **Authority residuals #1042** — resolve mission-binding semantics from trusted operation context; this remains a Human Director authority-model decision.
@@ -49,11 +52,13 @@ Do not redo #913, #944, #971, #978, #975, or #810. Do not recreate Concept #17 i
 
 ## CURRENT FAILURE-FIRST EVIDENCE
 
-The ACT concurrency seam was attacked failure-first on fresh pre-fix main: idempotency existed only as a search through prior `observed_result` text, so two concurrent requests had no atomic durable claim. #1095 repairs only that demonstrated causal gap by persisting `idempotency_key` and enforcing a partial unique index at the receipt boundary; the unique-key loser rereads the winner receipt and requires its persisted outcome before replaying. Fresh post-merge main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` passes 14/14 runtime-contract tests, 10/10 authority lifecycle tests, and 28/28 runtime+cold-successor tests.
+The ACT concurrency seam was attacked failure-first on fresh pre-fix main: idempotency existed only as a search through prior `observed_result` text, so two concurrent requests had no atomic durable claim. #1095 repairs only that demonstrated causal gap by persisting `idempotency_key` and enforcing a partial unique index at the receipt boundary; the unique-key loser rereads the winner receipt and requires its persisted outcome before replaying. Fresh post-repair main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` passed 14/14 runtime-contract tests, 10/10 authority lifecycle tests, and 28/28 runtime+cold-successor tests; PR #1116 then added the live concurrent two-request proof mechanism and merged to current main.
 
 This is **source/test verified, not production proven**. The live two-request authorized race must not be manufactured against stale production because that could intentionally create duplicate governed effects. The exact live proof therefore remains blocked until the governed deployment path applies the function + migration to the exact current main.
 
-Current causal runtime source differs from production:
+Current deployed runtime is older than canonical main. Production branch `9dba0fe210d69aa8b7307f80214b675d9ae8d66d` is stamped to source `0d0c36ab125fd8890ceffac0cd81283c658dd468`. Current main `c3aca5c94c6b51071c768692a7220d3d88722174` is therefore not production-proven.
+
+Historical causal runtime source differences:
 - cold runtime main blob `c91556d4...` vs production `03eaaa87...`;
 - causal experiment main blob `5b60a6f7...` vs production `b29d11e...`.
 
@@ -63,4 +68,4 @@ The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid unti
 
 ## EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: treat Current Truth Resolver run `36668304786` as the current evidence snapshot; preserve its `RESOLVED_WITH_UNKNOWNS` / `LIVE_RUNTIME_SOURCE=UNKNOWN` result. The next executable production frontier is exact-main governed deployment; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**

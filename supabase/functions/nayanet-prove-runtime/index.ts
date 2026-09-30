@@ -130,7 +130,13 @@ Deno.serve(async(req)=>{
       const knowReceiptId=String(proveReceipt.evidence?.know_receipt_id??"");
       const knowReceipt=await readReceipt(admin,knowReceiptId) as ProveKnowReceipt|null;
       const {grant,block,relationships}=await inputsFromKnow(admin,knowReceipt);
-      const recomputed=assessKnowProof(OWNER_ID,NAYA_ID,knowReceipt,block,grant,relationships,new Date());
+      // Recompute as-of the original assessment time so independent verification is
+      // time-stable: it answers "was the assessment correct when made?", not "is the
+      // KNOW receipt still fresh now?". Using wall-clock now here turns the 900s KNOW
+      // freshness check into a time-bomb for any workflow that takes >15 min between
+      // assess and inspect.
+      const assessTime=proveReceipt.created_at?new Date(proveReceipt.created_at):new Date();
+      const recomputed=assessKnowProof(OWNER_ID,NAYA_ID,knowReceipt,block,grant,relationships,assessTime);
       const recorded=proveReceipt.evidence?.assessment??{};
       const same=
         recorded.schema===recomputed.schema &&

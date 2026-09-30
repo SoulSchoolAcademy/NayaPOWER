@@ -179,3 +179,18 @@ def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
     assert "SUPABASE_SERVICE_ROLE_KEY" not in workflow
     assert "SUPABASE_SERVICE_ROLE_KEY" in source
     assert "SUPABASE_ACCESS_TOKEN" not in workflow
+
+def test_live_workflow_proves_concurrent_idempotent_convergence_in_existing_river():
+    source = FUNCTION.read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    assert 'mode === "verify-idempotency"' in source
+    assert '"IDEMPOTENCY_CONCURRENCY_VERIFIED"' in source
+    assert "exactly_one_receipt" in source
+    assert "exactly_one_outcome" in source
+    assert "request_fingerprint_matches" in source
+    assert "executor_claim_trusted_as_verification: false" in source
+    assert "concurrent-idempotency-proof:" in workflow
+    assert "issue two identical authorized requests concurrently" in workflow
+    assert "CONCURRENT EXECUTORS CONVERGED" in workflow
+    assert "LIVE ACT CONCURRENCY INDEPENDENTLY VERIFIED" in workflow
+    assert "receipt_count" in workflow and "outcome_count" in workflow

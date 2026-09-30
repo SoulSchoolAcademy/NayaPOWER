@@ -125,6 +125,7 @@ def test_supabase_config_declares_governed_runtime_functions_for_native_integrat
         "nayanet-act-runtime",
         "nayanet-know-runtime",
         "nayanet-prove-runtime",
+        "nayanet-verified-ai-action",
     }
     declared = {
         line[len("[functions."):-1]

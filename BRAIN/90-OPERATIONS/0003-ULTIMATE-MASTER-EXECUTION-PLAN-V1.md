@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
-**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
+**Evidence snapshot base:** `ce3a2735f57bd1754790efbee994a3b9ba6fc999`
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -38,7 +38,7 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 
 ## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
 
-The source repair cluster is integrated through current main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), applicability-aware causal learning (#1056), and ACT atomic idempotency repair (#1095).
+The source repair cluster is integrated through current main lineage; PR #1116 then added the live ACT concurrent proof mechanism and merged to `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`, followed by Brain reconciliation commit `c3aca5c94c6b51071c768692a7220d3d88722174` and fresh queue reconciliation.: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), applicability-aware causal learning (#1056), and ACT atomic idempotency repair (#1095).
 
 Main regression evidence is green. That is **not** production parity.
 
@@ -56,7 +56,7 @@ Coda 2 retains replay/duplicate/response-loss reliability ownership. The demonst
 Rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`. Run `36665708305` correctly classified #1098/#1100 substantive source changes; this snapshot includes those changes, so this is the next resolver check for this rung.
 
 ### 2 — Exact governed runtime parity
-After projection convergence, explicit Human Director `DEPLOY` remains required for the exact resulting main. The function and migration must be deployed together; no stale production race test is acceptable.
+After projection convergence, explicit Human Director `DEPLOY` remains required for exact current main. The ACT function and migration must be deployed together with the required LAW/KNOW/PROVE source set; no stale production race test is acceptable.
 
 ### 3 — Live ACT concurrent-duplicate proof
 Once exact-main parity exists, issue two identical authorized requests concurrently with one fresh idempotency key. Acceptance: exactly one durable success receipt, exactly one outcome/effect, loser replays the same persisted receipt/outcome, and an independent reread reconstructs the final state.
@@ -131,4 +131,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After convergence, explicit Human Director `DEPLOY` is required for the exact resulting main. Once parity exists: run the two-request concurrent ACT proof once → independent reread → ACT recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: preserve Current Truth Resolver run `36668304786` as the current evidence snapshot, reconcile any remaining projection drift to the exact live main, then prepare the governed exact-main deployment set. Production deployment remains an explicit authority boundary. Once parity exists: run the two-request concurrent ACT proof once → independent reread → ACT recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**

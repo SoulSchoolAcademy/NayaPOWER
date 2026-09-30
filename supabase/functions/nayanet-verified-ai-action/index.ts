@@ -405,6 +405,74 @@ Deno.serve(async (req) => {
       });
     }
 
+    if (mode === "verify-idempotency") {
+      if (!idempotencyKey) return json({ok: false, error: "IDEMPOTENCY_KEY_REQUIRED"}, 400);
+
+      const {data: receipts, error: receiptsError} = await admin
+        .from("nayanet_execution_receipts")
+        .select("id,user_id,project_id,action,status,observed_result,evidence,idempotency_key")
+        .eq("user_id", OWNER_ID)
+        .eq("project_id", "NayaNET")
+        .eq("action", "NAYA-NODE-0001-VERIFIED-AI-ACTION")
+        .eq("idempotency_key", idempotencyKey);
+      if (receiptsError) throw receiptsError;
+
+      const receiptIds = (receipts ?? []).map((r: any) => r.id);
+      const {data: outcomes, error: outcomesError} = receiptIds.length === 0
+        ? {data: [], error: null}
+        : await admin
+            .from("nayanet_execution_outcomes")
+            .select("outcome_id,receipt_id,user_id,project_id,verified,verification_method,evidence")
+            .in("receipt_id", receiptIds)
+            .eq("user_id", OWNER_ID)
+            .eq("project_id", "NayaNET");
+      if (outcomesError) throw outcomesError;
+
+      const receipt = (receipts ?? [])[0] ?? null;
+      const outcome = (outcomes ?? [])[0] ?? null;
+      const grantId = String(receipt?.evidence?.authority_grant_id ?? "");
+      const independentAuthority = await resolveAuthority(admin, grantId);
+      const block = await readCanonicalBlock(admin);
+      const lesson = String((block.content as Json | undefined)?.lesson ?? "");
+      const digest = await canonicalDigest(lesson, block.evidence_refs);
+      const expectedFingerprint = independentAuthority.allowed
+        ? await idempotencyRequestFingerprint({
+            authority_grant_id: independentAuthority.grant?.grant_id,
+            mission_id: MISSION_ID,
+            action: ACTION,
+            target: NAYA_ID,
+            canonical_block_id: BLOCK_ID,
+            canonical_digest: digest,
+          })
+        : "";
+
+      const checks = {
+        exactly_one_receipt: (receipts ?? []).length === 1,
+        exactly_one_outcome: (outcomes ?? []).length === 1,
+        receipt_success: receipt?.status === "SUCCESS",
+        outcome_matches_receipt: outcome?.receipt_id === receipt?.id,
+        request_fingerprint_matches: String(receipt?.evidence?.idempotency_request_fingerprint ?? "") === expectedFingerprint,
+        authority_still_valid: independentAuthority.allowed === true,
+        canonical_digest_matches: String(outcome?.evidence?.canonical_digest ?? "") === digest,
+      };
+      const passed = Object.values(checks).every((v) => v === true);
+      return json({
+        ok: passed,
+        status: passed ? "IDEMPOTENCY_CONCURRENCY_VERIFIED" : "IDEMPOTENCY_CONCURRENCY_INCONCLUSIVE",
+        independent_verification: passed,
+        executor_claim_trusted_as_verification: false,
+        idempotency_key: idempotencyKey,
+        receipt_count: (receipts ?? []).length,
+        outcome_count: (outcomes ?? []).length,
+        receipt_id: receipt?.id ?? null,
+        outcome_id: outcome?.outcome_id ?? null,
+        checks,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      }, passed ? 200 : 409);
+    }
+
     if (mode === "verify") {
       const receiptId = String(body.action_receipt_id ?? "").trim();
       const refusalId = String(body.refusal_receipt_id ?? "").trim();
