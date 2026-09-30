@@ -1,26 +1,23 @@
--- P4 — Consent runtime consumer: the missing live reader for the consent seam.
+-- P4 — Consent runtime consumer reconciled to ratified #1136.
 --
--- PROPOSED / SOURCE-ONLY. Not applied to production. Not merged. Opened-but-unmerged PR.
+-- PROPOSED / SOURCE-ONLY. Not applied to production. Not merged.
 --
--- Context (H10-1, report: workspace/h10-1-verification.md; design: P4-consent-consumer-design):
--- migration 20260930022500 created the consent/revocation schema but no runtime
--- consumer — post-promotion the schema exists while every read path trusts
--- point-in-time stamps instead of LIVE participation. This migration supplies the
--- one consumer every current read path must call:
---   public.nayanet_consent_is_active(p_owner_id uuid) -> boolean
--- and hardens the collective_wisdom read policy (R2) to require live
--- participation, not row status alone. The graph selector read path (R1) must
--- call the same function per edge owner at read time — wired in PR #1125
--- (naya/know-v2-selector-gates), not here.
+-- RATIFIED SEMANTIC BOUNDARY (#1136):
+--   * live explicit participation gates FUTURE collective contribution;
+--   * disconnect/revocation stops future contribution/access governed by participation;
+--   * already accepted identity-safe derived collective wisdom is NOT automatically
+--     retracted merely because the contributor disconnects;
+--   * raw/private source material remains owner-protected;
+--   * collective/retrieved intelligence never creates authority.
 --
--- Ordering: runs strictly AFTER 20260930022500 (consent schema) and
--- 20260930040000 (R1 writer). No production object is modified: the
--- superseded objects below were created by an UNAPPLIED pending migration.
+-- This corrective migration preserves nayanet_consent_is_active(uuid) as the
+-- canonical CURRENT-PARTICIPATION reader for contribution-time checks and future
+-- participation-gated surfaces. It deliberately does NOT use current participation
+-- to retroactively suppress already accepted derived collective wisdom.
 --
--- Constitutional basis: Art. XI (PRIVATE BY DEFAULT; SHARED BY CHOICE;
--- COLLECTIVE BY CONSENT), Art. V.4 (revocation must prevent further
--- consequential use), Art. XIV (fail closed on authority/consent uncertainty).
-
+-- It also overrides the pending disconnect function from 20260930022500 so that
+-- disconnect no longer mass-revokes prior collective wisdom.
+--
 -- =========================================================================
 -- 1. The live-consent consumer.
 --    TRUE  iff the owner holds >= 1 participation row with
@@ -59,31 +56,22 @@ end;
 $$;
 
 comment on function public.nayanet_consent_is_active(uuid) is
-  'P4 consent runtime consumer. Live explicit-consent check. TRUE iff owner has >= 1 '
-  'participation row (status=active AND consent_state=explicit). FALSE on every other '
-  'state and on any error — fail closed (Art. XIV). Every cross-owner read path '
-  '(graph selector R1, collective_wisdom RLS R2, future Spaces/connectors R3) must '
-  'call this per owner at read time. PROPOSED — not applied to production.';
+  'P4 current-participation reader reconciled to ratified #1136. TRUE iff owner has >= 1 '
+  'active explicit participation row. Use to gate future contribution/participation-gated '
+  'operations. Do not use current participation to retroactively retract accepted identity-safe '
+  'derived collective wisdom. FALSE on uncertainty/error; intelligence never creates authority.';
 
 -- Least privilege: callable by the runtime paths that need it; not by the public.
 revoke all on function public.nayanet_consent_is_active(uuid) from public, anon;
 grant execute on function public.nayanet_consent_is_active(uuid) to authenticated, service_role;
 
 -- =========================================================================
--- 2. Harden the collective_wisdom read path (R2).
---    The pending policy from 20260930022500 trusted the row's status alone:
---      using (status='ACTIVE' or owner_id = auth.uid())
---    A row can be ACTIVE while the owner's participation is revoked (direct
---    write, missed revocation path). Require LIVE participation for
---    non-owners. Owners always read their own rows.
+-- 2. Reconcile collective_wisdom read semantics to ratified #1136.
+--    Already accepted identity-safe derived wisdom remains available while ACTIVE.
+--    Current participation is NOT a retroactive read gate.
+--    Raw source tables/blocks retain their separate owner/RLS protections.
 -- =========================================================================
 
--- The authenticated read policy below can only fire if the role holds the
--- table privilege: RLS is evaluated AFTER the GRANT check. Without this
--- grant every authenticated read fails with "permission denied for table"
--- before any policy runs (proven by executing the verify script: P2 failed
--- at the grant check, not the policy). The security_invoker feed view does
--- not bypass this — the invoker still needs the base-table privilege.
 grant select on public.nayanet_collective_wisdom to authenticated;
 
 drop policy if exists nayanet_collective_wisdom_safe_read
@@ -92,12 +80,73 @@ drop policy if exists nayanet_collective_wisdom_safe_read
 create policy nayanet_collective_wisdom_safe_read
   on public.nayanet_collective_wisdom
   for select to authenticated
-  using (
-    (status = 'ACTIVE' and public.nayanet_consent_is_active(owner_id))
-    or owner_id = auth.uid()
-  );
+  using (status = 'ACTIVE' or owner_id = auth.uid());
 
 comment on policy nayanet_collective_wisdom_safe_read
   on public.nayanet_collective_wisdom is
-  'P4: read requires LIVE explicit participation for non-owners (not row status '
-  'alone). Owners always read their own rows. PROPOSED — not applied to production.';
+  'Ratified #1136: accepted identity-safe derived collective wisdom remains readable while ACTIVE; '
+  'disconnect does not itself retract history. Raw/private source access remains separately protected.';
+
+-- =========================================================================
+-- 3. Override disconnect semantics from 20260930022500.
+--    Disconnect stops future participation but does not mass-revoke accepted
+--    identity-safe derived collective wisdom.
+-- =========================================================================
+
+create or replace function public.nayanet_smart_disconnect(p_door text)
+returns jsonb
+language plpgsql
+security definer
+set search_path=''
+as $$
+declare
+  v_actor uuid := auth.uid();
+  v_door text := lower(trim(p_door));
+  v_row public.nayanet_smart_connect_participation;
+begin
+  if v_actor is null then raise exception 'AUTH_REQUIRED'; end if;
+  if v_door not in ('github_app','mcp','rest_openapi','webhooks','sdk','a2a','mcp_apps') then
+    raise exception 'SMART_CONNECT_DOOR_INVALID';
+  end if;
+
+  select * into v_row
+  from public.nayanet_smart_connect_participation
+  where member_id=v_actor and door=v_door
+  for update;
+
+  if v_row.id is null then raise exception 'SMART_CONNECT_PARTICIPATION_NOT_FOUND'; end if;
+
+  if v_row.status='revoked' then
+    return jsonb_build_object(
+      'schema','NAYANET_SMART_CONNECT_PARTICIPATION_V1',
+      'status','ALREADY_DISCONNECTED',
+      'participation',to_jsonb(v_row),
+      'authority','UNCHANGED',
+      'future_collective_contribution','DENIED',
+      'prior_identity_safe_collective_wisdom','UNCHANGED'
+    );
+  end if;
+
+  update public.nayanet_smart_connect_participation
+  set status='revoked',consent_state='revoked',revoked_at=now(),updated_at=now()
+  where id=v_row.id
+  returning * into v_row;
+
+  return jsonb_build_object(
+    'schema','NAYANET_SMART_CONNECT_PARTICIPATION_V1',
+    'status','DISCONNECTED',
+    'participation',to_jsonb(v_row),
+    'authority','UNCHANGED',
+    'future_collective_contribution','DENIED',
+    'prior_identity_safe_collective_wisdom','UNCHANGED',
+    'public_publication','NOT_GRANTED'
+  );
+end;
+$$;
+
+revoke all on function public.nayanet_smart_disconnect(text) from public,anon;
+grant execute on function public.nayanet_smart_disconnect(text) to authenticated;
+
+comment on function public.nayanet_smart_disconnect(text) is
+  'Ratified #1136: disconnect ends future participation/contribution. It does not automatically '
+  'revoke prior accepted identity-safe derived collective wisdom. Authority remains unchanged.';
