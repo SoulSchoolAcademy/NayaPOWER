@@ -1360,12 +1360,12 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
-      "version": "20260930051000",
+      "version": "20260930052000",
       "name": "consent_runtime_consumer_v1",
-      "path": "supabase/migrations/20260930051000_consent_runtime_consumer_v1.sql",
-      "sha256": "8f3c7fb8924f16d6c1b0a73b3f04fc2ef72fde89d1dc3776105d64920179c801",
-      "statement_count": 7,
-      "bytes": 4312,
+      "path": "supabase/migrations/20260930052000_consent_runtime_consumer_v1.sql",
+      "sha256": "d64a5a05c20c9a7cbc2d5faaa2d541b3cae277f5250480031efba92914c3881b",
+      "statement_count": 20,
+      "bytes": 4828,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
