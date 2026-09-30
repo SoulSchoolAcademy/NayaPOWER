@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `998dc31d49a4d892976b908902faffd2c9140268`  
-**Inventory file count:** 159  
+**Receipt basis commit:** `28df1d9ae84f13fbddcaca84b6d9e442f30f73af`  
+**Inventory file count:** 160  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -14,7 +14,7 @@
 | 01-GOVERNANCE | 3 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 27 |
-| 04-INTELLIGENCE | 23 |
+| 04-INTELLIGENCE | 24 |
 | 05-MEMORY | 19 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
@@ -36,10 +36,10 @@
 - `BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md` — `bd599702c291` (948 bytes)
 - `BRAIN/00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md` — `28dae6fc731f` (2743 bytes)
 - `BRAIN/00-SPEC/0005-TREE-V1.md` — `edc4fdb44334` (1622 bytes)
-- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `c7b34af4b206` (5681 bytes)
+- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `66da2eed3bad` (4331 bytes)
 - `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `18e886b7038e` (2864 bytes)
 - `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `1fb0f6c8421d` (5737 bytes)
-- `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
+- `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `e4bc38752863` (1495 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
 - `BRAIN/00-SPEC/SCHEMA/AUTHORITY-TUPLE-SCHEMA.json` — `2bda55ecd64b` (1882 bytes)
 - `BRAIN/00-SPEC/SCHEMA/GRAPH-QUERY-SCHEMA.json` — `0d91c07f97fb` (2746 bytes)
@@ -94,6 +94,7 @@
 - `BRAIN/04-INTELLIGENCE/0003-INTELLIGENCE-LIFECYCLE-V1.md` — `cc076d974a0e` (1605 bytes)
 - `BRAIN/04-INTELLIGENCE/0004-INTELLIGENT-OBJECT-CONTRACT-V1.md` — `13e5ace230c8` (444 bytes)
 - `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md` — `6c6b28a98708` (22105 bytes)
+- `BRAIN/04-INTELLIGENCE/0006-DECISION-VALUE-CALCULUS-V2.1-CANDIDATE-SPEC.md` — `dc680a345064` (8961 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json` — `7ae4eff28043` (4726 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json` — `b9c63f7d3067` (798 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json` — `d26e2e27c8b1` (3686 bytes)
@@ -110,7 +111,7 @@
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json` — `91c73c44f657` (4199 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json` — `edd795cdfe72` (3064 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json` — `50009f3ab7dc` (3795 bytes)
-- `BRAIN/04-INTELLIGENCE/README.md` — `db2d99022e5e` (3578 bytes)
+- `BRAIN/04-INTELLIGENCE/README.md` — `c1dda36bd74f` (3844 bytes)
 - `BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json` — `8e70ac3fac7e` (4661 bytes)
 ### 05-MEMORY — Memory
 

@@ -1,14 +1,14 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "998dc31d49a4d892976b908902faffd2c9140268",
-  "inventory_file_count": 159,
+  "receipt_basis_commit": "28df1d9ae84f13fbddcaca84b6d9e442f30f73af",
+  "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
-    "04-INTELLIGENCE": 23,
+    "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,
     "06-PROOF": 10,
     "07-LEARNING": 2,
@@ -50,8 +50,8 @@
     },
     {
       "path": "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md",
-      "blob_sha": "c7b34af4b206f9c54e3db0c3032970a046d4baba",
-      "size": 5681
+      "blob_sha": "66da2eed3bada576022ed33972241984bf428bf2",
+      "size": 4331
     },
     {
       "path": "BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md",
@@ -65,8 +65,8 @@
     },
     {
       "path": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
-      "blob_sha": "a40095e2113f881473dcd3954fc67e38578d4eb8",
-      "size": 2068
+      "blob_sha": "e4bc387528639603d7b9fad5b9a1a4ccadd2137c",
+      "size": 1495
     },
     {
       "path": "BRAIN/00-SPEC/README.md",
@@ -299,6 +299,11 @@
       "size": 22105
     },
     {
+      "path": "BRAIN/04-INTELLIGENCE/0006-DECISION-VALUE-CALCULUS-V2.1-CANDIDATE-SPEC.md",
+      "blob_sha": "dc680a345064d3a9f1b6eb378e55eb2d21178280",
+      "size": 8961
+    },
+    {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
       "blob_sha": "7ae4eff28043b7afc62b87900b27f42128ad0141",
       "size": 4726
@@ -380,8 +385,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
-      "blob_sha": "db2d99022e5e7591a56ec6e212395bbf4085dcf8",
-      "size": 3578
+      "blob_sha": "c1dda36bd74f5e79c5328c7c533507c63a31519e",
+      "size": 3844
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json",
