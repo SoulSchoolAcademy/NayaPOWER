@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "481964590e79a85847cf7565d44ef83ccbec14fc",
-  "inventory_file_count": 158,
+  "receipt_basis_commit": "dd8604e6e4757cebb0a31b9ac3f7026d82e2e231",
+  "inventory_file_count": 159,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
     "04-INTELLIGENCE": 23,
-    "05-MEMORY": 18,
+    "05-MEMORY": 19,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -295,8 +295,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
-      "blob_sha": "6c6b28a98708b71616b2b2da3a2be33490fa009a",
-      "size": 22105
+      "blob_sha": "ce8e140035e2f913fdad7d061d32d1a08b750466",
+      "size": 20364
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
@@ -447,6 +447,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTERNAL-MORALITY/EARNED-CONSCIENCE/SN-005/IB-SMART-NOTE-20260930-sn005-internal-morality.md",
       "blob_sha": "e334408b3bc157d995405915244d1c9037906090",
       "size": 8557
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/JUDGMENT-RULE/PRIME-DIRECTIVE/SN-016/IB-SMART-NOTE-20260930-sn016-judgment-rule.md",
+      "blob_sha": "39ae54a7cf68ac0c252d29faa554d217f8e238d3",
+      "size": 9994
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",

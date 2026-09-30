@@ -118,7 +118,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
     "04-INTELLIGENCE": 23,
-    "05-MEMORY": 18,
+    "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
