@@ -27,7 +27,7 @@ def changed_capture(paths):
 
 def allocate_smart_note_id(capture, ib):
     explicit = str(capture.get("smart_note_id") or "").strip().upper()
-    if re.fullmatch(r"SN-\\d{3,}", explicit):
+    if re.fullmatch(r"SN-\d{3,}", explicit):
         return explicit
     if REGISTRY.exists():
         registry = load_json(REGISTRY)

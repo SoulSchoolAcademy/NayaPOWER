@@ -98,6 +98,12 @@ def _max_allocated_sn_number():
     return reg, max(nums) if nums else 0
 
 
+
+
+def test_explicit_smart_note_id_is_honored():
+    capture = {"smart_note_id": "SN-013", "source": {"captured_at": "2026-09-30"}}
+    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-013"
+
 def test_sequence_policy_advances_after_sn002():
     reg, maxn = _max_allocated_sn_number()
     assert reg["sequence_policy"]["next_sequence"] == maxn + 1
