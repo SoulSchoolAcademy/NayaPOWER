@@ -73,6 +73,7 @@ jobs:
           fi
 
       - name: Enforce ratified standing policy before automatic promotion
+        id: standing_policy
         if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -80,6 +81,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          echo "allowed=false" >> "$GITHUB_OUTPUT"
           python - <<'PY'
           import json
           from pathlib import Path
@@ -190,13 +192,28 @@ jobs:
               denial=build_denial_receipt(policy, context, result, {"workflow_run_id":os.environ.get("GITHUB_RUN_ID"),"actor":os.environ.get("GITHUB_ACTOR"),"event":os.environ.get("GITHUB_EVENT_NAME")})
               json.dump(denial,open("production-promotion-denial.json","w"),indent=2)
               print(json.dumps(denial,indent=2))
-              raise SystemExit(f"FAIL CLOSED: machine policy evaluator denied the automatic promotion: reason={result.get('reason')}")
           PY
 
+          decision="$(python -c 'import json; print(json.load(open("standing-authorization-verdict.json"))["verdict"]["decision"])')"
+          reason="$(python -c 'import json; print(json.load(open("standing-authorization-verdict.json"))["verdict"].get("reason",""))')"
+          if [ "$decision" != "ALLOW" ]; then
+            echo "allowed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Automatic promotion blocked::$reason. No production mutation attempted."
+            {
+              echo "### Automatic production promotion: BLOCKED"
+              echo
+              echo "- source: `$GITHUB_SHA`"
+              echo "- reason: `$reason`"
+              echo "- result: no production mutation attempted"
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "allowed=true" >> "$GITHUB_OUTPUT"
           echo "standing production policy preconditions: PASS"
           echo "automatic production promotion is authorized for this candidate."
 
       - name: Build provenance-stamped production deployment commit
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -284,6 +301,7 @@ jobs:
           PY
 
       - name: Promote provenance-stamped deployment commit to production branch
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -307,6 +325,7 @@ jobs:
           echo "authorized source revision: $GITHUB_SHA"
 
       - name: Wait for a new Supabase GitHub Integration deployment check
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -358,6 +377,7 @@ jobs:
           done
 
       - name: Revalidate authorized source and deployment ownership before producer
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -369,6 +389,7 @@ jobs:
           test "$production_now" = "$DEPLOYMENT_SHA"
 
       - name: Dispatch canonical fresh-intelligence producer after deployment
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -421,6 +442,7 @@ jobs:
           done
 
       - name: Dispatch canonical end-to-end runtime proof after producer
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -474,6 +496,7 @@ jobs:
           done
 
       - name: Dispatch canonical ACT proof after deployment
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -526,6 +549,7 @@ jobs:
           done
 
       - name: Write durable production promotion receipt
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         shell: bash
         run: |
           set -euo pipefail
