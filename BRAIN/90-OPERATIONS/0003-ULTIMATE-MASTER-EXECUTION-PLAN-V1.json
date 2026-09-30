@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "52f866d0741eb65f4030b173afc9dbf4b5da382a",
+  "evidence_snapshot_base": "cb56fd397a5034ae939937a47d39018f348cb166",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -31,7 +31,7 @@
     "readiness_instrument": "PR_1058_AND_1061_MERGED; MAIN_GATES_GREEN; INSTRUMENT_ERROR_AND_CONTROL_FAILURE_FAIL_CLOSED",
     "causal_runtime_parity": {
       "status": "MISMATCH",
-      "source_revision": "52f866d0741eb65f4030b173afc9dbf4b5da382a",
+      "source_revision": "cb56fd397a5034ae939937a47d39018f348cb166",
       "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
       "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
       "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
@@ -39,20 +39,21 @@
       "promotion_run": 36657956413,
       "promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
       "denial_artifact": 11072839541,
-      "latest_protected_promotion_run": 36660868786,
+      "latest_protected_promotion_run": 36661081150,
       "latest_promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
-      "latest_denial_artifact": 11074635235,
-      "latest_denial_artifact_sha256": "f00345822967bdd27595123d880e277a4ee36d8282a97053adbe2ed08a0c6e9e"
+      "latest_denial_artifact": 11074775218,
+      "latest_denial_artifact_sha256": "085bf7e48af831c48e2c22084c6154d3430501418b1748f78e71b1cac7c5b045"
     },
     "prove_live_current": "RUN_36658635227_FAILED_BEFORE_PROVE_AT_WORKFLOW_BINDING; PR_1069_LAW_BINDING_MERGED_C6AC19C4; PR_1072_KNOW_BINDING_MERGED_FA5C0A06; LIVE_DEPLOYMENT_PARITY_PENDING",
     "collective_wisdom_source_hardening": "PR_1070_MERGED_AF065BB4; PENDING_MIGRATION_BFA12EE3; NOT_PRODUCTION_APPLIED",
-    "graph_v2": "PR_1077_CONTRACT_VALIDATOR_MERGED_A07728A4; PR_1078_PENDING_V2_PERSISTENCE_MIGRATION_MERGED_52F866D0; NO_PRODUCTION_MIGRATION_OR_RUNTIME_CONNECT_PROOF"
+    "graph_v2": "PR_1077_CONTRACT_VALIDATOR_MERGED_A07728A4; PR_1078_PENDING_V2_PERSISTENCE_MIGRATION_MERGED_52F866D0; NO_PRODUCTION_MIGRATION_OR_RUNTIME_CONNECT_PROOF",
+    "act_reliability": "PR_1080_MERGED_CB56FD39; INCOMPLETE_IDEMPOTENT_REPLAY_FAILS_CLOSED_INCONCLUSIVE_409; EXACT_REPLAY_RESPONSE_LOSS_CONCURRENCY_MATRIX_REMAINS_PARTIAL"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Integrate this exact-main 52f866d0 Brain/Operations refresh and require a fresh Current Truth Resolver result with projection_freshness CURRENT",
+      "action": "Integrate this exact-main cb56fd39 Brain/Operations refresh and require a fresh Current Truth Resolver result with projection_freshness CURRENT",
       "status": "ACTIVE"
     },
     {
@@ -62,8 +63,8 @@
     },
     {
       "rank": 3,
-      "action": "Checkpoint/provenance/concurrency/recovery: exact replay, conflicting replay, response-loss, concurrent invocation and receipt-write failure",
-      "status": "ASSIGNED_CODA2"
+      "action": "Continue ACT reliability after #1080: prove exact replay, conflicting replay, persisted-success response-loss retry, concurrent same intent, receipt-write failure and independent reconstruction",
+      "status": "PARTIAL_PR_1080_MERGED_CODA2_REMAINDER_OPEN"
     },
     {
       "rank": 4,
@@ -107,6 +108,6 @@
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Integrate this 52f866d0 projection refresh and require a fresh successful Current Truth Resolver result with projection_freshness CURRENT. Then Shawn explicitly authorizes DEPLOY for that exact reconciled revision through the existing governed production-promotion workflow. Verify exact deployed parity before rerunning PROVE once, then causal, two-owner and graph runtime proofs. Do not weaken the protected-path gate; Coda 2 reliability work continues independently."
+    "instruction": "Integrate this cb56fd39 projection refresh and require a fresh successful Current Truth Resolver result with projection_freshness CURRENT. Then Shawn explicitly authorizes DEPLOY for that exact reconciled revision through the existing governed production-promotion workflow. Verify exact deployed parity before rerunning PROVE once, then causal, two-owner and graph runtime proofs. #1080 is only a bounded ACT reliability closure; Coda 2 continues the remaining matrix."
   }
 }
