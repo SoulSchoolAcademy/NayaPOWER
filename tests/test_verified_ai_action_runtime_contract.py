@@ -165,7 +165,8 @@ def test_concurrent_outcome_writers_converge_on_unique_receipt_outcome():
     execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
     # Both the recovery writer and original writer must treat receipt_id uniqueness
     # as convergence, not as a fatal write error.
-    assert execute.count('error.code !== "23505"') >= 2
+    assert 'recoveryError.code !== "23505"' in execute
+    assert 'outcomeError.code !== "23505"' in execute
     assert "OUTCOME_RECOVERY_RACE_UNRESOLVED" in execute
     assert "OUTCOME_WRITE_RACE_UNRESOLVED" in execute
     assert execute.count('.eq("receipt_id", receipt.id)') >= 3
