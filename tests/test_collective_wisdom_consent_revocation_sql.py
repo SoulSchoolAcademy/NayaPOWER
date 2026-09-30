@@ -67,10 +67,10 @@ def test_ratified_1136_disconnect_stops_future_contribution_without_retroactive_
 
 def test_ratified_1136_collective_read_is_not_gated_by_current_participation():
     sql = _corrective_sql()
-    assert "using (status = 'active' or owner_id = auth.uid())" in sql
-    assert "status = 'active' and public.nayanet_consent_is_active(owner_id)" not in sql
+    assert "using (status='active' or owner_id=auth.uid())" in sql
+    assert "status='active' and public.nayanet_consent_is_active(owner_id)" not in sql
 
 def test_live_consent_reader_remains_for_current_participation_checks():
     sql = _corrective_sql()
     assert "create or replace function public.nayanet_consent_is_active" in sql
-    assert "status = 'active'" in sql and "consent_state = 'explicit'" in sql
+    assert "status='active'" in sql and "consent_state='explicit'" in sql
