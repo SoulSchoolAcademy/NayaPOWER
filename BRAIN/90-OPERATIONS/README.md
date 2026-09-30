@@ -17,7 +17,7 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `fa5c0a063c55badb6960c452dbf8291aad390355`:
+At evidence snapshot `a07728a456ffb8d662f83b48e9f625ea3dc9779e`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
@@ -27,8 +27,8 @@ At evidence snapshot `fa5c0a063c55badb6960c452dbf8291aad390355`:
 - #1069 and #1072 source-bind the existing `live-prove-proof.yml` identity into LAW and KNOW respectively while preserving repo/workflow/main trust boundaries. Live runtime still needs governed deployment before a fresh PROVE rerun is meaningful.
 - #1070 collective-wisdom source hardening is integrated. Migration `20260930022500` is **PENDING_REVIEW_NOT_PRODUCTION_APPLIED**; owner-only private RLS is preserved and live two-owner proof is still pending.
 - SN-004 run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT**. Applicable causal source is integrated but not deployed at source parity.
-- Current main Kernel `36660385887`, Collective `36660385828`, Live Verified AI Action `36660385842`, and Live CVO `36660385815` are **SUCCESS**.
-- Governed Production Promotion `36660385812` correctly denied automatic protected promotion: `protected_change_requires_explicit_promotion`. Receipt artifact `11074056938`, SHA-256 `71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a`.
+- Current main Kernel `36660618943`, Collective `36660618958`, Live Verified AI Action `36660618982`, and Live CVO `36660619078` are **SUCCESS**.
+- Governed Production Promotion `36660618920` correctly denied automatic protected promotion: `protected_change_requires_explicit_promotion`. Receipt artifact `11073514533`, SHA-256 `4b0904f126fc411b3658871728c08a19116a6d1d48ba05e7f23135925d59f546`.
 - #1042 mission semantics remain a Human Director authority-model decision.
 - Coda 2 retains ACT replay/response-loss/concurrency/recovery ownership.
 - #1044 cold acceptance has no genuinely fresh two-successor PASS.
@@ -48,4 +48,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: integrate this `fa5c0a06` projection refresh and require a fresh resolver result. Then explicit Human Director `DEPLOY` is required for that exact reconciled main before LAW/KNOW/PROVE, causal runtime, and pending #1070 migration can claim production parity. After parity, rerun PROVE exactly once, then causal and two-owner live proofs. Coda 2 replay/recovery continues independently.**
+**Issue #66: integrate this `a07728a4` projection refresh and require a fresh resolver result. Then explicit Human Director `DEPLOY` is required for that exact reconciled main before LAW/KNOW/PROVE, causal runtime, and pending #1070 migration can claim production parity. After parity, rerun PROVE exactly once, then causal and two-owner live proofs. Coda 2 replay/recovery continues independently.**
