@@ -17,7 +17,10 @@ def test_live_connect_runtime_uses_oidc_not_human_supabase_token():
 def test_connect_runtime_resolves_durable_owner_binding_server_side():
     source = FUNCTION.read_text(encoding="utf-8")
     assert 'payload.repository !== REPOSITORY' in source
-    assert 'payload.workflow_ref !== workflowRef' in source
+    assert 'const WORKFLOWS = new Set([' in source
+    assert '".github/workflows/live-supabase-runtime-proof.yml"' in source
+    assert '".github/workflows/live-self-proof.yml"' in source
+    assert 'const workflowRefMismatch = !expectedRefs.includes(workflowRef)' in source
     assert 'mode === "connect"' in source
     assert "nayanet_brain_relationships" in source
     assert "nayanet_authority_grants" in source
