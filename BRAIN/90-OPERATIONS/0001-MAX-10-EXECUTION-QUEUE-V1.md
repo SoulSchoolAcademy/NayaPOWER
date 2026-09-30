@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`
+**Evidence snapshot base:** `c25d5dedb65eaa95515f7eefc487d1dc4401d342`
 
 ## CURRENT TRUTH
 
@@ -31,7 +31,7 @@
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`; the fresh resolver run `36664954443` correctly classified the projection as stale because the ACT idempotency seam changed. **NEXT: refresh only the existing projection-owned Brain files, then rerun the resolver.**
+1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342`; the fresh resolver run `36665431396` correctly classified the proof-document addition as substantive drift. **NEXT: rerun the resolver after this snapshot commit.**
 2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for the exact current main, including the new ACT migration/function. No production mutation is authorized by this queue.
 3. **Live concurrent-duplicate proof** — once the exact #1095 function + migration are deployed, issue two identical authorized requests concurrently with one fresh key and prove one receipt/outcome, one governed effect, coherent replay, and independent reread. **BLOCKED_BY_DEPLOYED_PARITY.**
 4. **Checkpoint/provenance/recovery residuals** — prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction without introducing a second persistence path.
@@ -62,4 +62,4 @@ The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid unti
 
 ## EXACT NEXT ACTION
 
-**Issue #66: refresh the existing operational projection against exact current main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`, then rerun Current Truth Resolver `36664954443` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: rerun Current Truth Resolver against exact current main `c25d5dedb65eaa95515f7eefc487d1dc4401d342` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
