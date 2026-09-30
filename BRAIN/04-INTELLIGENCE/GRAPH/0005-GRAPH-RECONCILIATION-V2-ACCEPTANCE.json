@@ -1,0 +1,509 @@
+{
+  "schema": "naya.graph.reconciliation.v2.acceptance",
+  "version": "1.0",
+  "task_classes": [
+    "provenance_sensitive",
+    "repository_correction",
+    "learning_reuse",
+    "conflict_resolution",
+    "contextual_retrieval"
+  ],
+  "unrelated_task_class": "arithmetic_only",
+  "reconciliation_rules": {
+    "contradiction_types": [
+      "CONTRADICTS",
+      "INVALIDATES"
+    ],
+    "supersession_rule": "An ACTIVE current edge that explicitly supersedes an older edge excludes the older edge from current selection but preserves it for history.",
+    "temporal_rule": "Expired or future-effective edges are excluded from current selection.",
+    "unresolved_conflict_rule": "If two current VERIFIED evidenced edges conflict and neither supersedes/invalidates the other, current selection returns UNRESOLVED_CONFLICT rather than choosing a winner.",
+    "unrelated_rule": "No edge is selected when the task class is absent from explicit APPLICABLE.task_classes."
+  },
+  "cases": [
+    {
+      "name": "superseding_edge_wins_current_without_deleting_history",
+      "task_class": "learning_reuse",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-NEW"
+      ],
+      "expect_excluded": [
+        "REL-OLD"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-OLD",
+          "relationship_type": "SUPPORTS",
+          "status": "SUPERSEDED",
+          "epistemic_state": "SUPERSEDED",
+          "valid_from": "2026-09-20T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "learning_reuse"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-old"
+          ],
+          "evidence_refs": [
+            "e-old"
+          ]
+        },
+        {
+          "relationship_id": "REL-NEW",
+          "relationship_type": "REFINES",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": "REL-OLD",
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "learning_reuse"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-new"
+          ],
+          "evidence_refs": [
+            "e-new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "expired_edge_excluded",
+      "task_class": "contextual_retrieval",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-CURRENT"
+      ],
+      "expect_excluded": [
+        "REL-EXPIRED"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-EXPIRED",
+          "relationship_type": "SUPPORTS",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-20T00:00:00Z",
+          "valid_until": "2026-09-29T23:00:00Z",
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "contextual_retrieval"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p1"
+          ],
+          "evidence_refs": [
+            "e1"
+          ]
+        },
+        {
+          "relationship_id": "REL-CURRENT",
+          "relationship_type": "SUPPORTS",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-30T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "contextual_retrieval"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p2"
+          ],
+          "evidence_refs": [
+            "e2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unresolved_current_contradiction_surfaces_conflict",
+      "task_class": "conflict_resolution",
+      "expect_status": "UNRESOLVED_CONFLICT",
+      "expect_selected": [],
+      "expect_excluded": [],
+      "edges": [
+        {
+          "relationship_id": "REL-A",
+          "relationship_type": "SUPPORTS",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "conflict_resolution"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-a"
+          ],
+          "evidence_refs": [
+            "e-a"
+          ]
+        },
+        {
+          "relationship_id": "REL-B",
+          "relationship_type": "CONTRADICTS",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "conflict_resolution"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-b"
+          ],
+          "evidence_refs": [
+            "e-b"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "explicit_invalidation_resolves_conflict",
+      "task_class": "conflict_resolution",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-INVALIDATES"
+      ],
+      "expect_excluded": [
+        "REL-OLD-CLAIM"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-OLD-CLAIM",
+          "relationship_type": "SUPPORTS",
+          "status": "INVALIDATED",
+          "epistemic_state": "INVALIDATED",
+          "valid_from": "2026-09-20T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "conflict_resolution"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-old"
+          ],
+          "evidence_refs": [
+            "e-old"
+          ]
+        },
+        {
+          "relationship_id": "REL-INVALIDATES",
+          "relationship_type": "INVALIDATES",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-30T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": "REL-OLD-CLAIM",
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "conflict_resolution"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-new"
+          ],
+          "evidence_refs": [
+            "e-new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "task_class_provenance_sensitive_selects_only_matching_edge",
+      "task_class": "provenance_sensitive",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-1"
+      ],
+      "expect_excluded": [
+        "REL-UNRELATED"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-1",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "provenance_sensitive"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-1"
+          ],
+          "evidence_refs": [
+            "e-1"
+          ]
+        },
+        {
+          "relationship_id": "REL-UNRELATED",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "arithmetic_only"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-u"
+          ],
+          "evidence_refs": [
+            "e-u"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "task_class_repository_correction_selects_only_matching_edge",
+      "task_class": "repository_correction",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-2"
+      ],
+      "expect_excluded": [
+        "REL-UNRELATED"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-2",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "repository_correction"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-2"
+          ],
+          "evidence_refs": [
+            "e-2"
+          ]
+        },
+        {
+          "relationship_id": "REL-UNRELATED",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "arithmetic_only"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-u"
+          ],
+          "evidence_refs": [
+            "e-u"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "task_class_learning_reuse_selects_only_matching_edge",
+      "task_class": "learning_reuse",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-3"
+      ],
+      "expect_excluded": [
+        "REL-UNRELATED"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-3",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "learning_reuse"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-3"
+          ],
+          "evidence_refs": [
+            "e-3"
+          ]
+        },
+        {
+          "relationship_id": "REL-UNRELATED",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "arithmetic_only"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-u"
+          ],
+          "evidence_refs": [
+            "e-u"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "task_class_contextual_retrieval_selects_only_matching_edge",
+      "task_class": "contextual_retrieval",
+      "expect_status": "RESOLVED",
+      "expect_selected": [
+        "REL-4"
+      ],
+      "expect_excluded": [
+        "REL-UNRELATED"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-4",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "contextual_retrieval"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-4"
+          ],
+          "evidence_refs": [
+            "e-4"
+          ]
+        },
+        {
+          "relationship_id": "REL-UNRELATED",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "arithmetic_only"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p-u"
+          ],
+          "evidence_refs": [
+            "e-u"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unrelated_arithmetic_refuses_graph_transfer",
+      "task_class": "arithmetic_only",
+      "expect_status": "NO_APPLICABLE_CONTEXT",
+      "expect_selected": [],
+      "expect_excluded": [
+        "REL-PROV"
+      ],
+      "edges": [
+        {
+          "relationship_id": "REL-PROV",
+          "relationship_type": "APPLIES_TO",
+          "status": "ACTIVE",
+          "epistemic_state": "VERIFIED",
+          "valid_from": "2026-09-29T00:00:00Z",
+          "valid_until": null,
+          "supersedes_relationship_id": null,
+          "applicability": {
+            "state": "APPLICABLE",
+            "task_classes": [
+              "provenance_sensitive"
+            ],
+            "limitations": []
+          },
+          "provenance": [
+            "p"
+          ],
+          "evidence_refs": [
+            "e"
+          ]
+        }
+      ]
+    }
+  ]
+}
