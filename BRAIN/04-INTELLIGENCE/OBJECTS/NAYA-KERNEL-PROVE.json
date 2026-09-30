@@ -43,7 +43,9 @@
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-CONNECT",
     "runtime": "supabase/functions/nayanet-prove-runtime/index.ts",
-    "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts"
+    "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
+    "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "decision_calculus_role": "preserve scoring inputs, provenance, uncertainty, gate reasons, predicted value, and decision receipt evidence"
   },
   "provenance": {
     "derived_from": [
@@ -81,6 +83,15 @@
       "type": "SUPPORTS",
       "source_object_id": "NAYA-KERNEL-PROVE",
       "target_object_id": "NAYA-KERNEL-VERIFY",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-PROVE",
+      "direction": "IN",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-PROVE",
       "epistemic_state": "VERIFIED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
