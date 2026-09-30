@@ -384,10 +384,8 @@ def test_missing_authority_escalates_to_ask(profile):
     vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
     dims = {"a": {d: 1.0 for d in vp.weights()}}
     conf = {"a": {d: 0.95 for d in vp.weights()}}
-    a = Candidate(
-        "a", quality()["0"] if False else quality(9.5)[0],
-        quality(9.5)[1], pv(B=9, conf=0.95), authorized=False,
-    )
+    q, c = quality(9.5, 0.95)
+    a = Candidate("a", q, c, pv(B=9, conf=0.95), authorized=False)
     result = evaluate_decision_architecture(
         [a], "a", profile, vp,
         value_dimensions=dims, value_confidence=conf,
