@@ -159,8 +159,8 @@ def test_commit_writer_persists_connections(migration_text):
 def test_commit_writer_closes_projection_into_canonical_graph(migration_text):
     """A projected connection must also exist in the ONE canonical graph store."""
     m = re.search(
-        r"create function public\\.nayanet_intelligence_commit\\(.*?\\)"
-        r"\\s*returns.*?as \\$function\\$(.*?)\\$function\\$;",
+        r"create function public\.nayanet_intelligence_commit\(.*?\)"
+        r"\s*returns.*?as \$function\$(.*?)\$function\$;",
         migration_text, re.S,
     )
     assert m, "R1 commit writer must exist"
