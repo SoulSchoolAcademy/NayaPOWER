@@ -6,7 +6,7 @@ The canonical semantic object layer. Contains addressable Nodes, Events, Decisio
 
 The intelligence layer answers: **What do we know, what does it mean, and how is it connected?**
 
-## Contents (22 files + this README = 23)
+## Contents (23 files + this README = 24)
 
 | File | Purpose |
 |---|---|
@@ -15,6 +15,7 @@ The intelligence layer answers: **What do we know, what does it mean, and how is
 | [0003-INTELLIGENCE-LIFECYCLE-V1.md](./0003-INTELLIGENCE-LIFECYCLE-V1.md) | Lifecycle stages for intelligence objects |
 | [0004-INTELLIGENT-OBJECT-CONTRACT-V1.md](./0004-INTELLIGENT-OBJECT-CONTRACT-V1.md) | Defines what makes an object intelligent |
 | [0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md](./0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md) | Human "Smart Node" command mapped to the canonical Intelligent Block lifecycle |
+| [0006-DECISION-VALUE-CALCULUS-V2.1-CANDIDATE-SPEC.md](./0006-DECISION-VALUE-CALCULUS-V2.1-CANDIDATE-SPEC.md) | Decision Value Calculus V2.1 canonical candidate spec (decision + evidence + network-value math; reference implementation kernel/value_calculus_v2.py) |
 | [GRAPH/0001-KERNEL-GRAPH-SEED-V1.json](./GRAPH/0001-KERNEL-GRAPH-SEED-V1.json) | Kernel graph seed |
 | [GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json](./GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json) | Knowledge-to-node mapping |
 | [GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Graph relationship contract (candidate) |

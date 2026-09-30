@@ -117,7 +117,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
-    "04-INTELLIGENCE": 23,
+    "04-INTELLIGENCE": 24,  # 23 -> 24 deliberate: 0006 Decision Value Calculus V2.1 candidate spec added 2026-09-30
     "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,
     "07-LEARNING": 2,
