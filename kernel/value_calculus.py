@@ -381,30 +381,13 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
     predicted = None
     if evaluation.get("selected"):
         selected = next(r for r in evaluation["rows"] if r["candidate_id"] == evaluation["selected"])
-        predicted = selected["delta_v"]
+        predicted = selected.get("signed_value", {}).get("value", selected["delta_v"])
     error = None
     d_verified = None
     if delta_v_actual is not None:
         actual = _finite(delta_v_actual, "delta_v_actual")
         error = abs(predicted - actual) if predicted is not None else None
         d_verified = max(-10.0, min(10.0, actual))
-    return {
-        "receipt_type": "ALIGNMENT_DECISION",
-        "schema_version": "2.1",
-        "engine_version": ENGINE_VERSION,
-        "decision_id": decision_id,
-        "objective": objective,
-        "baseline_id": baseline_id,
-        "stakeholders": list(stakeholders),
-        "horizon": horizon,
-        "evaluation": dict(evaluation),
-        "authority_basis": authority_basis,
-        "evidence_refs": list(evidence_refs),
-        "observation_window": dict(observation_window),
-        "verification": verification,
-        "delta_v_predicted": predicted,
-        "delta_v_actual": delta_v_actual,
-        "d_verified": d_verified,
     legacy_to_canonical = {
         "EXECUTE": "ACT",
         "RESEARCH": "READ_MORE",
@@ -563,5 +546,277 @@ def build_contribution_receipt(
         "verification": verification,
     }
 
+# Canonical Decision Architecture V2.1 signed-value layer.
+DECISION_OUTCOMES = ("ACT", "READ_MORE", "ASK", "REFUSE")
+SIGNED_VALUE_DIMENSIONS = (
+    "objective_alignment",
+    "expected_effectiveness",
+    "evidence_proof",
+    "reliability",
+    "leverage",
+    "compounding_value",
+    "time_efficiency",
+    "reversibility",
+    "human_value",
+    "complexity",
+    "blast_radius",
+    "downside_harm",
+)
+DEFAULT_SIGNED_VALUE_WEIGHTS = {
+    "objective_alignment": 0.15,
+    "expected_effectiveness": 0.12,
+    "evidence_proof": 0.10,
+    "reliability": 0.08,
+    "leverage": 0.08,
+    "compounding_value": 0.10,
+    "time_efficiency": 0.08,
+    "reversibility": 0.07,
+    "human_value": 0.10,
+    "complexity": 0.04,
+    "blast_radius": 0.04,
+    "downside_harm": 0.04,
+}
 
 
+@dataclass(frozen=True)
+class SignedValueProfile:
+    """Versioned objective-relative signed value profile.
+
+    Dimension values are semantic assessments in [-1, +1].
+    The weighted result is V in [-10, +10].
+    Confidence is an epistemic signal, not a probability of correctness.
+    """
+
+    profile_id: str
+    version: str
+    objective: str
+    weights: Mapping[str, float] = None
+    epsilon: float = 0.10
+
+    def normalized_weights(self) -> dict[str, float]:
+        source = self.weights or DEFAULT_SIGNED_VALUE_WEIGHTS
+        unknown = set(source) - set(SIGNED_VALUE_DIMENSIONS)
+        if unknown:
+            raise ValueError(f"unknown signed-value dimensions: {sorted(unknown)}")
+        values = {
+            d: max(0.0, _finite(source.get(d, 0.0), f"signed_weight[{d}]"))
+            for d in SIGNED_VALUE_DIMENSIONS
+        }
+        total = sum(values.values())
+        if total <= 0:
+            raise ValueError("signed value profile requires positive weight mass")
+        return {d: v / total for d, v in values.items()}
+
+    def weights(self) -> dict[str, float]:
+        return self.normalized_weights()
+
+
+def score_signed_value(
+    dimensions: Mapping[str, float],
+    confidences: Mapping[str, float],
+    profile: SignedValueProfile,
+) -> dict:
+    """Compute the canonical signed value plus a deterministic uncertainty envelope.
+
+    This is deliberately not a statistical confidence interval. The interval is a
+    transparent uncertainty envelope derived from per-dimension confidence:
+        V = 10 * sum(w_i * x_i)
+        radius = 10 * sum(w_i * (1 - confidence_i))
+        interval = [V-radius, V+radius], clipped to [-10,+10]
+    """
+
+    weights = profile.normalized_weights()
+    dims: dict[str, float] = {}
+    conf: dict[str, float] = {}
+    missing: list[str] = []
+    for d in SIGNED_VALUE_DIMENSIONS:
+        raw = dimensions.get(d)
+        if raw is None:
+            dims[d] = 0.0
+            missing.append(d)
+        else:
+            dims[d] = max(-1.0, min(1.0, _finite(raw, f"signed_value[{d}]")))
+        c = confidences.get(d)
+        conf[d] = 0.0 if c is None else _clamp(c)
+
+    value = 10.0 * sum(weights[d] * dims[d] for d in SIGNED_VALUE_DIMENSIONS)
+    confidence = sum(weights[d] * conf[d] for d in SIGNED_VALUE_DIMENSIONS)
+    radius = 10.0 * sum(weights[d] * (1.0 - conf[d]) for d in SIGNED_VALUE_DIMENSIONS)
+    low = max(-10.0, value - radius)
+    high = min(10.0, value + radius)
+
+    return {
+        "value": value,
+        "confidence": confidence,
+        "value_interval": (low, high),
+        "interval_method": "weighted_uncertainty_envelope_v1",
+        "dimensions": dims,
+        "confidences": conf,
+        "missing_dimensions": missing,
+        "weights": weights,
+        "stable_sign": low > 0 or high < 0,
+    }
+
+
+def evaluate_decision_architecture(
+    candidates: Sequence[Candidate],
+    baseline_id: str,
+    profile: QualityProfile,
+    signed_profile: SignedValueProfile,
+    *,
+    value_dimensions: Mapping[str, Mapping[str, float]],
+    value_confidence: Mapping[str, Mapping[str, float]],
+    cheap_evidence_available: bool = False,
+    reserved_human_decision: bool = False,
+    risk_policy: RiskPolicy = RiskPolicy(),
+) -> dict:
+    """Resolve the canonical four-outcome decision discipline.
+
+    Existing evaluate_candidates remains intact for compatibility. This function
+    adds the official signed-value, uncertainty, and Decision Compression layer
+    inside the same engine.
+    """
+
+    legacy = evaluate_candidates(candidates, baseline_id, profile, risk_policy)
+    rows: list[dict] = []
+
+    for row in legacy["rows"]:
+        cid = row["candidate_id"]
+        sv = score_signed_value(
+            value_dimensions.get(cid, {}),
+            value_confidence.get(cid, {}),
+            signed_profile,
+        )
+        enriched = dict(row)
+        enriched["signed_value"] = sv
+        rows.append(enriched)
+
+    ordered = sorted(
+        (r for r in rows if r["gate"] == ADMISSIBLE),
+        key=lambda r: (
+            -r["signed_value"]["value"],
+            -r["signed_value"]["value_interval"][0],
+            -r["q"]["Q"],
+            r["residual_risk"],
+            r["candidate_id"],
+        ),
+    )
+    top10 = ordered[:10]
+    top3 = top10[:3]
+
+    prohibited = [r for r in rows if r["gate"] == PROHIBITED]
+    authority_needed = [r for r in rows if r["gate"] == NEEDS_AUTHORITY]
+    evidence_needed = [r for r in rows if r["gate"] == NEEDS_EVIDENCE]
+
+    first = top10[0] if top10 else None
+    second = top10[1] if len(top10) > 1 else None
+    ordering_margin = None
+    if first is not None and second is not None:
+        ordering_margin = first["signed_value"]["value_interval"][0] - second["signed_value"]["value_interval"][1]
+    elif first is not None:
+        ordering_margin = first["signed_value"]["value_interval"][0]
+
+    resolution = "ASK"
+    reason = "NO_CLEAR_DOMINANT_OPTION"
+
+    if not top10:
+        if prohibited and not authority_needed and not evidence_needed:
+            resolution = "REFUSE"
+            reason = "NO_ADMISSIBLE_OPTION"
+        elif authority_needed:
+            resolution = "ASK"
+            reason = "AUTHORITY_REQUIRED"
+        elif evidence_needed and cheap_evidence_available:
+            resolution = "READ_MORE"
+            reason = "EVIDENCE_MAY_CHANGE_DECISION"
+        elif evidence_needed:
+            resolution = "ASK"
+            reason = "MATERIAL_UNCERTAINTY_WITHOUT_CHEAP_EVIDENCE"
+        else:
+            resolution = "REFUSE"
+            reason = "NO_ADMISSIBLE_OPTION"
+    elif first is not None:
+        signed = first["signed_value"]
+        quality_ok = first["q"]["Q"] >= profile.q_accept
+        confidence_ok = (
+            signed["confidence"] >= profile.aggregate_confidence_floor
+            and first["q"]["confidence_critical"] >= profile.critical_confidence_floor
+        )
+        positive_ok = signed["value"] > 0
+        clear_ok = second is None or ordering_margin > signed_profile.epsilon
+
+        if reserved_human_decision:
+            resolution = "ASK"
+            reason = "RESERVED_HUMAN_DECISION"
+        elif positive_ok and quality_ok and confidence_ok and clear_ok:
+            resolution = "ACT"
+            reason = "CLEAR_POSITIVE_BOUNDED_WINNER"
+        elif evidence_needed and cheap_evidence_available:
+            resolution = "READ_MORE"
+            reason = "UNCERTAINTY_CAN_CHANGE_ORDERING"
+        elif authority_needed:
+            resolution = "ASK"
+            reason = "AUTHORITY_REQUIRED"
+        elif not positive_ok:
+            resolution = "ASK"
+            reason = "NO_POSITIVE_VALUE_WINNER"
+        else:
+            resolution = "ASK"
+            reason = "NO_CLEAR_DOMINANT_OPTION"
+
+    selected = first["candidate_id"] if first is not None and resolution == "ACT" else None
+    return {
+        "resolution": resolution,
+        "resolution_reason": reason,
+        "selected": selected,
+        "top10": top10,
+        "top3": top3,
+        "rows": rows,
+        "ordering_margin": ordering_margin,
+        "selected_signed_value": None if first is None else first["signed_value"]["value"],
+        "selected_quality": None if first is None else first["q"]["Q"],
+        "selected_confidence": None if first is None else first["signed_value"]["confidence"],
+        "selected_value_interval": None if first is None else first["signed_value"]["value_interval"],
+        "legacy_decision": legacy.get("decision"),
+    }
+
+
+def independent_recompute_decision_architecture(
+    receipt: Mapping,
+    candidates: Sequence[Candidate],
+    profile: QualityProfile,
+    signed_profile: SignedValueProfile,
+    *,
+    value_dimensions: Mapping[str, Mapping[str, float]],
+    value_confidence: Mapping[str, Mapping[str, float]],
+    cheap_evidence_available: bool = False,
+    reserved_human_decision: bool = False,
+    risk_policy: RiskPolicy = RiskPolicy(),
+) -> dict:
+    """Independently recompute the canonical four-outcome architecture."""
+    evaluation = evaluate_decision_architecture(
+        candidates,
+        receipt["baseline_id"],
+        profile,
+        signed_profile,
+        value_dimensions=value_dimensions,
+        value_confidence=value_confidence,
+        cheap_evidence_available=cheap_evidence_available,
+        reserved_human_decision=reserved_human_decision,
+        risk_policy=risk_policy,
+    )
+    return {
+        "matches_resolution": evaluation["resolution"] == receipt.get("decision_resolution"),
+        "matches_selected": evaluation["selected"] == receipt.get("evaluation", {}).get("selected"),
+        "matches_signed_value": (
+            evaluation["selected_signed_value"] == receipt.get("signed_value")
+            if receipt.get("signed_value") is not None
+            else True
+        ),
+        "matches_quality": (
+            evaluation["selected_quality"] == receipt.get("quality")
+            if receipt.get("quality") is not None
+            else True
+        ),
+        "recomputed": evaluation,
+    }
