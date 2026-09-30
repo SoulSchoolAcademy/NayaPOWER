@@ -79,8 +79,9 @@ def test_idempotent_replay_requires_persisted_outcome():
     source = FUNCTION.read_text(encoding="utf-8")
     replay = source.split("if (idempotentReplay)", 1)[1].split("const {data: outcome", 1)[0]
     assert "if (!replayOutcome)" in replay
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in replay
-    assert 'status: "INCONCLUSIVE"' in replay
+    assert "recoverOutcomeFromReceipt" in replay
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in replay
+    assert "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" in replay
 
 
 def test_consequential_action_requires_idempotency_key():
@@ -125,13 +126,15 @@ def test_concurrent_duplicate_requests_have_an_atomic_idempotency_claim():
     assert "unique" in migrations.lower()
     assert "nayanet_execution_receipts" in migrations
     assert "23505" in source
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in source
+    assert "IDEMPOTENCY_KEY_REUSE_CONFLICT" in source
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in source
     # The idempotency key must be persisted at the receipt boundary, not only encoded in prose.
     assert "idempotency_key: idempotencyKey" in source
     # A concurrent loser must resolve the already-claimed receipt rather than execute again.
     execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
     assert "idempotentReplay" in execute
-    assert "IDEMPOTENT_REPLAY_OUTCOME_MISSING" in execute
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in execute
+    assert "IDEMPOTENCY_KEY_REUSE_CONFLICT" in execute
 
 
 def test_idempotency_key_is_bound_to_exact_request_context():
@@ -144,6 +147,17 @@ def test_idempotency_key_is_bound_to_exact_request_context():
     # A reused key must be compared with the persisted original request context before replay.
     assert "persistedFingerprint" in execute
     assert "requestFingerprint" in execute
+
+
+def test_idempotent_replay_recovers_missing_outcome_from_bound_receipt():
+    source = FUNCTION.read_text(encoding="utf-8")
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    assert "recoverOutcomeFromReceipt" in execute
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in execute
+    assert "idempotency_request_fingerprint" in execute
+    assert "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" in execute
+    # Recovery must use the existing canonical outcome table, not invent a second recovery ledger.
+    assert execute.count('from("nayanet_execution_outcomes")') >= 2
 
 
 def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
