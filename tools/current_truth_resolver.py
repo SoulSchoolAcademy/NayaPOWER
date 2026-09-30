@@ -18,6 +18,13 @@ ROOT = Path(__file__).resolve().parents[1]
 OPS = ROOT / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json"
 BRAIN = ROOT / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json"
 MANIFEST = ROOT / "BRAIN" / "03-KERNEL" / "MANIFEST.json"
+PROJECTION_OWNED_PATHS = {
+    "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
+    "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
+    "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
+    "BRAIN/90-OPERATIONS/README.md",
+    "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -28,6 +35,57 @@ def _git_head(root: Path = ROOT) -> str:
     return subprocess.check_output(
         ["git", "-C", str(root), "rev-parse", "HEAD"], text=True
     ).strip()
+
+
+def _projection_freshness(snapshot: str | None, repo_head: str | None, root: Path = ROOT) -> dict[str, Any]:
+    if not snapshot or not repo_head:
+        return {
+            "status": "UNKNOWN",
+            "reason": "SNAPSHOT_OR_HEAD_MISSING",
+            "changed_paths": [],
+            "substantive_paths": [],
+        }
+    try:
+        ancestor = subprocess.run(
+            ["git", "-C", str(root), "merge-base", "--is-ancestor", snapshot, repo_head],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if ancestor.returncode != 0:
+            return {
+                "status": "STALE",
+                "reason": "SNAPSHOT_NOT_ANCESTOR",
+                "changed_paths": [],
+                "substantive_paths": [],
+            }
+        changed = subprocess.check_output(
+            ["git", "-C", str(root), "diff", "--name-only", f"{snapshot}..{repo_head}"],
+            text=True,
+        ).splitlines()
+    except (OSError, subprocess.CalledProcessError) as exc:
+        return {
+            "status": "UNKNOWN",
+            "reason": "GIT_EVIDENCE_UNAVAILABLE",
+            "error": str(exc),
+            "changed_paths": [],
+            "substantive_paths": [],
+        }
+
+    changed = [path for path in changed if path]
+    substantive = [path for path in changed if path not in PROJECTION_OWNED_PATHS]
+    return {
+        "status": "CURRENT" if not substantive else "STALE",
+        "reason": (
+            "PROJECTION_ONLY_DRIFT"
+            if changed and not substantive
+            else "EXACT"
+            if not changed
+            else "SUBSTANTIVE_DRIFT"
+        ),
+        "changed_paths": changed,
+        "substantive_paths": substantive,
+    }
 
 
 def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any]:
@@ -122,6 +180,28 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             linked_issue_states[issue_id] = issue_states.get(issue_id, "UNKNOWN")
 
     snapshot = ops.get("evidence_snapshot_base") or ops.get("source_main")
+    projection_freshness = _projection_freshness(snapshot, repo_head)
+    if projection_freshness["status"] == "UNKNOWN":
+        unknowns.append("OPERATIONAL_PROJECTION_FRESHNESS")
+    elif projection_freshness["status"] == "STALE":
+        warnings.append(
+            {
+                "code": "OPERATIONAL_PROJECTION_STALE",
+                "reason": projection_freshness["reason"],
+                "projection_snapshot_base": snapshot,
+                "repo_head": repo_head,
+                "substantive_paths": projection_freshness["substantive_paths"],
+            }
+        )
+
+    projection_next_action = ops.get("next_action")
+    next_action = projection_next_action
+    if projection_freshness["status"] == "STALE":
+        next_action = (
+            "Reconcile the operational projection against live main before "
+            "executing downstream queue items."
+        )
+
     status = (
         "CONFLICT"
         if hard_conflicts
@@ -150,6 +230,7 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             "production_branch_head": production_branch_head,
             "projection_snapshot_base": snapshot,
             "snapshot_is_current_main": bool(main_head and snapshot == main_head),
+            "projection_freshness": projection_freshness,
         },
         "proof": {
             "bounded_production_source": ops.get("current_state", {}).get(
@@ -166,7 +247,9 @@ def resolve(live: dict[str, Any], repo_head: str | None = None) -> dict[str, Any
             "active_issue_state": active_issue_state,
             "linked_issue_states": linked_issue_states,
             "open_prs": open_prs,
-            "next_action": ops.get("next_action"),
+            "next_action": next_action,
+            "projection_next_action": projection_next_action,
+            "projection_freshness": projection_freshness["status"],
             "top_10": top_10,
         },
         "hard_conflicts": hard_conflicts,
@@ -215,7 +298,12 @@ def render_markdown(result: dict[str, Any]) -> str:
             lines.append(f"- #{pr.get('number', '?')} {pr.get('title', 'UNKNOWN')} — head `{pr.get('head_sha') or 'UNKNOWN'}` — draft={pr.get('draft')} — merge={pr.get('merge_state') or 'UNKNOWN'}")
     else:
         lines.append("- None reported by live collector.")
-    lines += ["", "## Max-10", ""]
+    max10_title = (
+        "## Max-10 (dated projection; do not execute as current)"
+        if work.get("projection_freshness") == "STALE"
+        else "## Max-10"
+    )
+    lines += ["", max10_title, ""]
     for item in work.get("top_10") or []:
         lines.append(f"- {item.get('id', '?')}: {item.get('action', 'UNKNOWN')} [{item.get('status', 'UNKNOWN')}]")
     lines += ["", "> Projection only. Live GitHub/runtime evidence outranks this generated brief when newer.", ""]
