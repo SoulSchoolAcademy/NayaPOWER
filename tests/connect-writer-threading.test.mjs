@@ -99,8 +99,10 @@ test("CONNECT: bridges stay service_role-only (edge functions invoke, never dire
   );
 });
 
-test("CONNECT: commit-runtime edge function passes p_connections in execute mode", () => {
-  assert.match(commitRuntime, /p_connections:\s*\(body\.p_connections \?\? null\)/);
+test("CONNECT: commit-runtime validates and passes p_connections in execute mode", () => {
+  assert.ok(commitRuntime.includes("function coerceConnections"), "edge validates candidate shape before RPC");
+  assert.ok(commitRuntime.includes("P_CONNECTIONS_MUST_BE_ARRAY"), "non-array candidates fail before RPC");
+  assert.match(commitRuntime, /p_connections:\s*coerceConnections\(body\.p_connections\)/);
 });
 
 test("CONNECT: commit-runtime edge function exposes a supersede mode threading p_connections", () => {
