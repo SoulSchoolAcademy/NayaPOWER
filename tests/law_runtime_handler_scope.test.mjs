@@ -100,3 +100,19 @@ test('actual LAW handler persists malformed matching grant expiry as refusal, ne
     assert.equal(rt.writes[0].row.evidence.execution_boundary,'LAW_DECIDES_ONLY_DOES_NOT_EXECUTE');
   }
 });
+
+
+test('live PROVE workflow is explicitly trusted without widening arbitrary workflow access', async () => {
+  const proveClaims = {
+    ...claims,
+    workflow_ref: 'SoulSchoolAcademy/NayaPOWER/.github/workflows/live-prove-proof.yml@refs/heads/main',
+  };
+  const rt = runtime({target:NAYA}, proveClaims);
+  const response = await rt.invoke();
+  const body = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(body.ok, true);
+  assert.equal(body.decision.status, 'AUTHORIZED');
+  assert.deepEqual(body.decision.authority_refs, ['g1']);
+  assert.equal(rt.writes.length, 1);
+});
