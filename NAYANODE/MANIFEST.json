@@ -114,11 +114,13 @@
     "tests": "tests/test_value_calculus.py",
     "gap_analysis": "NAYANODE/0026-MASTER-100-ITEM-GAP-ANALYSIS-V1.md",
     "version": "2.1",
-    "status": "HUMAN_DIRECTOR_RATIFIED_DIRECTION_IMPLEMENTED_CANDIDATE_PENDING_INDEPENDENT_RUNTIME_PROOF",
+    "status": "HUMAN_DIRECTOR_RATIFIED_CORE_V2_1_SOURCE_IMPLEMENTED_CI_VERIFIED_PRODUCTION_PROOF_PENDING",
     "ratified_direction_at": "2026-09-30",
     "contribution_schema": ".naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json",
     "runtime_migration": "supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql",
-    "runtime_status": "SOURCE_BINDING_CANDIDATE_PENDING_PRODUCTION_APPLY_AND_LIVE_REREAD",
-    "legacy_value_policy": "PRESERVE_NayaNET_V1_STARTING_MODEL_HISTORY_DO_NOT_REINTERPRET"
+    "runtime_status": "SOURCE_BINDING_IMPLEMENTED_PENDING_PRODUCTION_APPLY_AND_LIVE_REREAD",
+    "legacy_value_policy": "PRESERVE_NayaNET_V1_STARTING_MODEL_HISTORY_DO_NOT_REINTERPRET",
+    "ratified_at": "2026-09-30",
+    "provenance": "KNOWLEDGE/SMART LEDGER CORE MATH CONCEPT PART #19.md"
   }
 }
