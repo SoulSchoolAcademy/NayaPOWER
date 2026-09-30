@@ -135,3 +135,7 @@ print('VERDICT:', 'gate discriminates real state' if all(results)
 print()
 print('NOTE: no control simulates a satisfied Intelligent Block. L01 cannot be made to')
 print('      report SATISFIED without a governed intelligence-commit receipt / authoritative IB id, which is correct.')
+
+# Failed controls invalidate the measurement instrument, regardless of whether
+# the measured chain is complete. Propagate that failure to CI.
+raise SystemExit(0 if all(results) else 1)
