@@ -190,7 +190,17 @@ Deno.serve(async (req) => {
             .select("outcome_id,receipt_id,verified,verification_method")
             .eq("receipt_id", replay.id)
             .maybeSingle();
-          return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt: replay, outcome: replayOutcome ?? null});
+          if (!replayOutcome) {
+            return json({
+              ok: false,
+              status: "INCONCLUSIVE",
+              error: "IDEMPOTENT_REPLAY_OUTCOME_MISSING",
+              idempotent_replay: true,
+              receipt: replay,
+              outcome: null,
+            }, 409);
+          }
+          return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt: replay, outcome: replayOutcome});
         }
       }
 
