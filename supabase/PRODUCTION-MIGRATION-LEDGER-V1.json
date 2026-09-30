@@ -1358,6 +1358,15 @@
       "statement_count": 21,
       "bytes": 26874,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930050000",
+      "name": "thread_connections_through_commit_bridge",
+      "path": "supabase/migrations/20260930050000_thread_connections_through_commit_bridge.sql",
+      "sha256": "5257f25b6b7555113c6c3ebc4beb7b57e07cdce0e809d5d8bd3a188c4dab2287",
+      "statement_count": 7,
+      "bytes": 7282,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
