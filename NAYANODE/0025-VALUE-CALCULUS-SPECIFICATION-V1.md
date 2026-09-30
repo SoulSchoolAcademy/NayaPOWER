@@ -299,3 +299,35 @@ IMPLEMENTED ≠ VERIFIED.
 VERIFIED ≠ PRODUCTION-PROVEN.
 
 A 10/10 claim is unavailable until runtime integration, independent verification, and production evidence prove the declared scope.
+
+
+## 18. Runtime binding — V2.1 value receipts
+
+The production seam is intentionally additive.
+
+Every new execution receipt that enters the canonical SmartLedger path receives an explicit assessment state:
+
+- **UNASSESSED** — no value assessment has been established.
+- **ASSESSED** — V2.1 value has been calculated, but verification is not yet sufficient for verified-value recognition.
+- **VERIFIED_VALUE** — the receipt carries a verified outcome and independently checkable value result.
+
+Typed V2.1 receipts are carried in the existing SmartLedger `value` field and classified in SmartLedger metadata. The canonical event substrate remains one ledger; no second value ledger is introduced.
+
+Supported typed receipt families at the runtime boundary are:
+
+- `ALIGNMENT_DECISION` — validated against the V2.1 decision engine/schema identity.
+- `CONTRIBUTION_VALUE` — validated as a V2.1 contribution receipt and unable to claim positive points without verified value.
+
+The legacy `NayaNET_V1_STARTING_MODEL` is provenance, not modern verified value. Historical `base_points=5/10` records are not rewritten or reinterpreted. New runtime records using that legacy marker remain explicitly legacy/unassessed and cannot silently become V2.1 verified value.
+
+Positive recognition must therefore follow:
+
+`evidence → assessment → verification → value receipt → derived recognition`
+
+not:
+
+`activity → points`
+
+The SmartLedger receipt stores a deterministic receipt hash alongside the typed payload so an independent reader can reconstruct the exact persisted receipt. Projection to `nayanet_intelligence_index` remains a derived view of the same canonical ledger event.
+
+This runtime binding is an implementation proof point, not a claim that the full V2.1 behavior is production-proven. Behavioral effectiveness, contribution calibration, anti-gaming performance, and profile fairness remain subsequent verification work under Issue #1184.
