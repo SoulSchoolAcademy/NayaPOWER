@@ -50,6 +50,19 @@ async function canonicalDigest(lesson: string, provenance: unknown): Promise<str
   return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+async function idempotencyRequestFingerprint(input: Json): Promise<string> {
+  const canonical = JSON.stringify({
+    authority_grant_id: String(input.authority_grant_id ?? ""),
+    mission_id: String(input.mission_id ?? ""),
+    action: String(input.action ?? ""),
+    target: String(input.target ?? ""),
+    canonical_block_id: String(input.canonical_block_id ?? ""),
+    canonical_digest: String(input.canonical_digest ?? ""),
+  });
+  const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonical));
+  return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
 async function resolveAuthority(admin: ReturnType<typeof adminClient>, grantId: string) {
   if (!grantId) {
     return {allowed: false, reason: "AUTHORITY_ABSENT", grant: null};
@@ -209,6 +222,15 @@ Deno.serve(async (req) => {
       if (!lesson) return json({ok: false, error: "RETAINED_LESSON_MISSING"}, 409);
       const digest = await canonicalDigest(lesson, block.evidence_refs);
 
+      const requestFingerprint = await idempotencyRequestFingerprint({
+        authority_grant_id: grant.grant_id,
+        mission_id: MISSION_ID,
+        action: ACTION,
+        target: NAYA_ID,
+        canonical_block_id: BLOCK_ID,
+        canonical_digest: digest,
+      });
+
       const observed = lesson.includes("Preserve provenance before applying retained intelligence")
         ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
         : "RETAINED_INTELLIGENCE_RETRIEVED";
@@ -222,6 +244,7 @@ Deno.serve(async (req) => {
         evidence: {
           stage: "execution",
           authority_decision: "ALLOW",
+          idempotency_request_fingerprint: requestFingerprint,
           authority_grant_id: grant.grant_id,
           authority_status: grant.status,
           authority_mission: grant.mission_id,
@@ -246,6 +269,16 @@ Deno.serve(async (req) => {
       });
 
       if (idempotentReplay) {
+        const persistedFingerprint = String(((receipt.evidence ?? {}) as Json).idempotency_request_fingerprint ?? "");
+        if (!persistedFingerprint || persistedFingerprint !== requestFingerprint) {
+          return json({
+            ok: false,
+            status: "BLOCKED",
+            error: "IDEMPOTENCY_KEY_REUSE_CONFLICT",
+            idempotent_replay: false,
+            receipt_id: receipt.id,
+          }, 409);
+        }
         const {data: replayOutcome, error: replayOutcomeError} = await admin
           .from("nayanet_execution_outcomes")
           .select("outcome_id,receipt_id,verified,verification_method")
