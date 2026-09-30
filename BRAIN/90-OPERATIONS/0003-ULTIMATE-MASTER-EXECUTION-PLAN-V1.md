@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
-**Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file  
-**Evidence snapshot base:** `cb56fd397a5034ae939937a47d39018f348cb166`  
+**Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
+**Evidence snapshot base:** `adc238f41e660a7d116f28c1daa4e3443de67f50`
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -37,7 +37,7 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 
 ## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
 
-The source repair cluster is integrated through current main `0fb3612344cd28155945e0f33336aaca5b5ef31d`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
+The source repair cluster is integrated through current main `adc238f41e660a7d116f28c1daa4e3443de67f50`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
 
 Main regression evidence is green. That is **not** production parity.
 
@@ -52,7 +52,7 @@ Coda 2 retains replay/duplicate/response-loss reliability ownership. Mission sem
 ## 4. TOP 10 — DEPENDENCY ORDER
 
 ### 1 — Current-truth convergence after PROVE LAW-binding repair
-Refresh the existing projection against exact current main `c6ac19c4`, integrate only projection-owned files, and require a fresh Current Truth Resolver run. PASS requires the resolver to classify the resulting projection as CURRENT (projection-only drift), with live main, open work, proof/runtime state, warnings/unknowns and one next action agreeing.
+Refresh the existing projection against exact current main `adc238f4`, integrate only projection-owned files, and require a fresh Current Truth Resolver run. PASS requires the resolver to classify the resulting projection as CURRENT (projection-only drift), with live main, open work, proof/runtime state, warnings/unknowns and one next action agreeing.
 
 ### 2 — Exact governed runtime parity
 Protected automatic promotion is correctly denied. Shawn explicitly authorizes `DEPLOY` for the exact resulting main through the existing governed workflow. PASS requires exact deployed parity for LAW's #1069 PROVE workflow binding plus current protected causal-runtime repairs before any PROVE or causal rerun.
@@ -130,4 +130,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: integrate this post-#1069 projection refresh and require a fresh successful Current Truth Resolver run that reports no stale operational projection. Then Shawn explicitly authorizes `DEPLOY` for that exact revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal proof. Do not weaken the protected-path gate. While deployment waits, continue Coda 2 replay/recovery and #1062 bounded two-owner proof design independently.**
+**Issue #66: integrate this exact-`adc238f4` projection refresh and require a fresh Current Truth Resolver result with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the exact resulting main. After parity: PROVE once → SN-004 causal proof → independent recomputation → #1070 production proof → cold successor → A→B→C → human-value measurement.**

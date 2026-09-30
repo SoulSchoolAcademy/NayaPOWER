@@ -202,8 +202,8 @@
     },
     "current_frontier": {
       "issue": 66,
-      "state": "POST_PROVE_LAW_BINDING_SOURCE_FIX_DEPLOYMENT_BLOCKED",
-      "next": "Integrate the projection refresh based on c6ac19c4 and require a fresh resolver result with no stale operational projection. Then explicit Human Director DEPLOY is required for exact live LAW + protected runtime parity. After parity, rerun PROVE exactly once. Coda 2 replay/recovery and #1062 two-owner proof remain independent."
+      "state": "POST_GRAPH_RECONCILIATION_ACCEPTANCE_PROJECTION_RECONCILIATION",
+      "next": "Integrate exact-adc238f4 projection refresh; then explicit Human Director DEPLOY for exact resulting main before PROVE/SN-004/#1070 production proof."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -250,20 +250,18 @@
     "sn004_learning": "NO_MEASURED_LEARNING_EFFECT_RUN_36652694005_PRESERVED; SMART_NOTE_SOURCE_REPAIR_MERGED_4C2B8F12; APPLICABILITY_SOURCE_REPAIR_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
     "cold_acceptance": "PROTOCOL_READY_FRESH_ENTRANT_NOT_PROVEN",
     "current_causal_runtime_parity": {
-      "status": "MISMATCH",
-      "main_source": "0fb3612344cd28155945e0f33336aaca5b5ef31d",
-      "promotion_run": 36657956413,
-      "denial": "protected_change_requires_explicit_promotion",
-      "denial_artifact": 11072839541,
-      "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
-      "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
-      "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
-      "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b"
+      "status": "MISMATCH_LATER_MAIN_NOT_PRODUCTION_PROVEN",
+      "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
+      "production_branch_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
+      "promotion_run": 36659933566,
+      "promotion_artifact": 11074161563,
+      "current_main": "adc238f41e660a7d116f28c1daa4e3443de67f50"
     },
-    "two_owner_nayanet": "NOT_PROVEN_ISSUE_1062_SOURCE_IMPLEMENTED_LIVE_PROOF_PENDING",
-    "current_main_prove": "RUN_36658635227_FAILED_AT_LAW_WORKFLOW_BINDING_BEFORE_PROVE; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PENDING"
+    "two_owner_nayanet": "PR_1070_SOURCE_INTEGRATED_NOT_PRODUCTION_PROVEN",
+    "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
+    "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
   },
-  "last_reconciled_main": "cb56fd397a5034ae939937a47d39018f348cb166",
+  "last_reconciled_main": "adc238f41e660a7d116f28c1daa4e3443de67f50",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -271,12 +269,12 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Fresh Current Truth Resolver after post-#1069 projection refresh; then explicit Human Director DEPLOY for exact live LAW/protected runtime parity; then one PROVE rerun.",
+    "next_proof": "Fresh Current Truth Resolver after exact-adc238f4 projection merge; then explicit Human Director DEPLOY for exact resulting main; then PROVE exactly once.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
     "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
-    "next_system_frontier": "CURRENT_TRUTH_REFRESH_THEN_EXPLICIT_DEPLOY_LAW_AND_CAUSAL_PARITY; PARALLEL_CODA2_REPLAY_RECOVERY_AND_TWO_OWNER"
+    "next_system_frontier": "PROJECTION_CONVERGENCE_THEN_EXPLICIT_DEPLOY; PROVE; SN004_CAUSAL; 1070_PRODUCTION_PROOF; COLD_SUCCESSOR; MULTIGEN; HUMAN_VALUE"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
@@ -294,5 +292,6 @@
     "contract": "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json",
     "registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
     "law": "capability does not create authority; LAW decides, ACT invokes, VERIFY checks result"
-  }
+  },
+  "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json"
 }
