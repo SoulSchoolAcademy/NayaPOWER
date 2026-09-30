@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
+**Evidence snapshot base:** `eb3d018743ccdc89005600a73c99dd5885f8fdca`
 
 ## CURRENT TRUTH
 
@@ -16,7 +16,7 @@
 - Canonical runtime proof: `36632211367` — **SUCCESS**.
 - Nine-node acceptance artifact: `11063875114`, SHA-256 `f10a35c8f57ac224dfa28cd7b81305a157acf1b1da79a2a1a96dd4598b27a2bc`.
 - #975 recovery: `36632538416` — **SUCCESS**; exact outcome rows = **2/2**.
-- Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
+- Universal all-task nine-node capability and multi-generation compounding remain **NOT PROVEN**. Two-owner collective-derived consent/revocation is now production-observed at bounded scope (PRIVATE DENY → consented derived read → REVOKE → future derived deny); recipient-specific purpose grants remain outside that proof.
 - #66 cached-derived authority boundary: **TEST-LEVEL VERIFIED**; ACT live-grant denial matrix #1046 is now merged at `7847680f`; this is still not production proof.
 - Live KNOW proof is now bounded-live **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe verification after #1060's stale-oracle repair.
 - SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 merged at `4c2b8f12`; #1056 merged at `0fb36123`; the causal runtime is **NOT DEPLOYED AT SOURCE PARITY**.
@@ -27,15 +27,15 @@
 - ACT consequential execution now fails closed without an idempotency key, and #1095 (`8bc2430517fc52a5722ad2a75ce036f9d8e7152e`) closes the demonstrated concurrent-duplicate seam with a persisted `idempotency_key` plus a partial unique receipt index; source-level replay/outcome safety is verified, but live production race proof remains pending deployment parity.
 - #1088 merged at `d033cefb`: pending #1070 migration now restores the Smart Connect/collective-wisdom prerequisites removed by the canonical reset before applying consent/revocation hardening. Source/test verified; redeployment proof pending.
 - #1090 merged at `d033cefb`: Graph V2 keeps temporal NOT NULL constraints and now provides insertion-time defaults for new canonical relationships, closing producer run `36663323348` failure `observed_at NULL`. Source/test verified; redeployment proof pending.
-- #1098/#1100 are now on main: ACT idempotency migration is registered in the production ledger as `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`; Graph V2 fresh-selector and cold-graph proof contracts are source/test hardened. These changes do not alter the ACT live-race gate: exact deployment parity is still required before the two-request production proof.
+- #1098/#1100 are on main: ACT idempotency migration is ledger-registered pending deployment; Graph V2 fresh-selector/cold-graph contracts are source/test hardened. #1094 then made KNOW retrieval graph-aware through same-snapshot eligible edges, SUPERSEDES chasing, bounded related context and explicit conflict surfacing. #1104 binds idempotent replay to the exact authority/mission/action/target/block/digest fingerprint and fails closed on conflicting key reuse. Exact deployment parity is still required for current-runtime production claims.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 current-truth convergence** — reconcile the operational projection against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`; resolver `36665708305` correctly identified the later #1098/#1100 source changes as substantive drift. **NEXT: rerun the resolver against this stable main snapshot.**
+1. **#66 current-truth convergence** — this projection is reconciled to exact main `eb3d018743ccdc89005600a73c99dd5885f8fdca`, including #1094 graph-aware KNOW and #1104 request-bound idempotency. **NEXT: run Current Truth Resolver on the resulting projection-only merge and require CURRENT / PROJECTION_ONLY_DRIFT.**
 2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for the exact current main, including the new ACT migration/function. No production mutation is authorized by this queue.
 3. **Live concurrent-duplicate proof** — once the exact #1095 function + migration are deployed, issue two identical authorized requests concurrently with one fresh key and prove one receipt/outcome, one governed effect, coherent replay, and independent reread. **BLOCKED_BY_DEPLOYED_PARITY.**
-4. **Checkpoint/provenance/recovery residuals** — prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction without introducing a second persistence path.
+4. **Checkpoint/provenance/recovery residuals** — conflicting-key reuse is now source fail-closed via #1104; next prove response-loss recovery, receipt/outcome partial-write handling and independent reconstruction without another persistence path.
 5. **Authority residuals #1042** — resolve mission-binding semantics from trusted operation context; this remains a Human Director authority-model decision.
 6. **PROVE live qualification** — after deployed LAW parity, run the existing PROVE positive/negative proof once and independently reread it; do not retry while the deployed trust set is stale.
 7. **SN-004 faithful projection + applicable causal effect** — regenerate the existing projection and rerun the act-first causal experiment only after exact deployed parity; preserve a negative result if observed.
@@ -63,4 +63,4 @@ The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid unti
 
 ## EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After that, the only live ACT race proof is the governed exact-main deployment gate; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: merge this exact-`eb3d018743ccdc89005600a73c99dd5885f8fdca` projection-only reconciliation and require Current Truth Resolver = CURRENT / PROJECTION_ONLY_DRIFT. Then exact-current production deployment remains a Human Director boundary. Parallel safe work: close ACT response-loss/partial-write recovery at source/test level. After parity: live ACT concurrency → independent reread → PROVE → graph/SN-004 causal proofs → genuine cold successor → A→B→C → measured human value.**
