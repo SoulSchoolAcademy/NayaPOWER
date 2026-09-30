@@ -450,3 +450,72 @@ test("AI1-PILOT-03: pilots are independent (cross-capability isolation)", () => 
   assert.equal(out.status, "HIT");
   assert.equal(out.selected_block_id, "IB-AI1-X-GT");
 });
+
+// ---------------------------------------------------------------------------
+// 5. Dual-field contract: four cases + disagreement.
+//
+// The selector unions applicable_scope.capabilities (legacy compatibility
+// path) with content.capabilities (canonical writer field) via
+// structuredCapabilities(). These tests PIN the current deterministic
+// behavior of the ACTUAL know.ts — they do not design new semantics.
+// A future contract decision (union vs canonical-precedence vs fail-closed)
+// changes code + tests together; until then, silence is replaced by pinned,
+// deterministic, observed behavior.
+// ---------------------------------------------------------------------------
+
+const fieldRow = (contentCaps, scopeCaps) =>
+  writerRow({
+    intelligent_block_id: "IB-AI1-FIELD",
+    content: {
+      lesson: "l",
+      topic: "t",
+      category: "c",
+      ...(contentCaps ? { capabilities: contentCaps } : {}),
+    },
+    applicable_scope: {
+      target: NAYA_ID,
+      project_id: "NayaNET",
+      ...(scopeCaps ? { capabilities: scopeCaps } : {}),
+    },
+  });
+
+const hitFor = (capability, block) =>
+  selectKnowContext(knowReq({ task_id: `AI1-FIELD-${capability}`, required_capability: capability }), [block]).status;
+
+test("AI1-FIELD-01: canonical-only -> derived has canonical; canonical query HITs, other MISSes", () => {
+  const b = fieldRow(["governance_triage"], null);
+  assert.deepEqual(deriveCapabilities(b), ["governance_triage"]);
+  assert.equal(hitFor("governance_triage", b), "HIT");
+  assert.equal(hitFor("compounding_capture", b), "MISS");
+});
+
+test("AI1-FIELD-02: alternate-only -> legacy compatibility path still serves; alternate query HITs", () => {
+  const b = fieldRow(null, ["compounding_capture"]);
+  assert.deepEqual(deriveCapabilities(b), ["compounding_capture"]);
+  assert.equal(hitFor("compounding_capture", b), "HIT");
+  assert.equal(hitFor("governance_triage", b), "MISS");
+});
+
+test("AI1-FIELD-03: both fields -> deterministic union; either query HITs", () => {
+  const b = fieldRow(["governance_triage"], ["compounding_capture"]);
+  assert.deepEqual(deriveCapabilities(b).sort(), ["compounding_capture", "governance_triage"]);
+  assert.equal(hitFor("governance_triage", b), "HIT");
+  assert.equal(hitFor("compounding_capture", b), "HIT");
+});
+
+test("AI1-FIELD-04: neither field -> no capability derived; both queries MISS", () => {
+  const b = fieldRow(null, null);
+  assert.deepEqual(deriveCapabilities(b), []);
+  assert.equal(hitFor("governance_triage", b), "MISS");
+  assert.equal(hitFor("compounding_capture", b), "MISS");
+});
+
+test("AI1-FIELD-05: disagreement (canonical vs alternate conflict) -> deterministic union, never nondeterministic", () => {
+  const b = fieldRow(["governance_triage"], ["compounding_capture"]);
+  const first = deriveCapabilities(b).sort();
+  // Repeated derivation is identical: no nondeterminism across calls.
+  for (let i = 0; i < 3; i++) assert.deepEqual(deriveCapabilities(b).sort(), first);
+  assert.deepEqual(first, ["compounding_capture", "governance_triage"]);
+  assert.equal(hitFor("governance_triage", b), "HIT");
+  assert.equal(hitFor("compounding_capture", b), "HIT");
+});
