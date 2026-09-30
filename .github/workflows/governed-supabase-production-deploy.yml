@@ -556,9 +556,10 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json, os
+
           if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" and os.environ.get("PROMOTION_ALLOWED")=="false":
               denial=json.load(open("production-promotion-denial.json"))
-              blocked={
+              receipt={
                 "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
                 "status":"BLOCKED",
                 "source_sha":os.environ["GITHUB_SHA"],
@@ -574,14 +575,14 @@ jobs:
                 "canonical_proof":{"executed":False},
                 "denial":denial,
               }
-              json.dump(blocked, open("production-promotion-receipt.json","w"), indent=2)
           else:
-                  supabase_check=json.load(open("supabase-production-check.json"))
+              supabase_check=json.load(open("supabase-production-check.json"))
               producer=json.load(open("producer-run.json"))
               proof=json.load(open("proof-run.json"))
               act_proof=json.load(open("act-proof-run.json"))
               receipt={
                 "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
+                "status":"PROMOTED_AND_PROVEN",
                 "source_sha":os.environ["GITHUB_SHA"],
                 "production_branch":os.environ["PRODUCTION_BRANCH"],
                 "human_authorization":{
@@ -625,7 +626,8 @@ jobs:
               assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
               assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
               assert act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
-              json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
+
+          json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
           PY
           cat production-promotion-receipt.json
 
