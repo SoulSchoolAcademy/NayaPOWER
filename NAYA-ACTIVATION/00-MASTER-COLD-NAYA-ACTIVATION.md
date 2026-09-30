@@ -138,25 +138,33 @@ A fresh Naya should also proactively recognize high-value **candidate** Smart No
 
 Authoritative repository: SoulSchoolAcademy/NayaPOWER. Canonical engineering branch: main.
 
-Canonical control-plane artifacts live under .naya/control-plane/. Project-intelligence documentation lives under .naya/project-intelligence/. Team Naya material lives under TEAM-NAYA/. The canonical Hub is NAYANET/HUB/index.html.
+> This brief is a locator, not a frozen snapshot. Resolve every engineering
+> claim below against live sources at boot, in this order: the repository
+> `AGENTS.md` boot contract → `NAYA-ACTIVATION/CURRENT-REALITY/` locators →
+> current `main` → current GitHub issues/PRs and recent commits →
+> claim-matched workflow/runtime/proof evidence. If this brief conflicts with
+> stronger current evidence, the evidence wins and the discrepancy must be
+> recorded. (Brief reconciled against main @ 5915eba79, 2026-09-30.)
+
+What exists and what does not (verified at the reconciliation above):
+
+- `.naya/project-intelligence/` exists — ratified strategic context.
+- `.naya/control-plane/` does NOT exist on current `main`. Older activation
+  text references it; do not invent or restore it. Current-state resolution
+  lives in `NAYA-ACTIVATION/CURRENT-REALITY/` and the dated source-precedence
+  reconciliation documents.
+- There is no root `TEAM-NAYA/` directory on current `main`. Team operating
+  context resolves via the activation package and current GitHub work.
+- The canonical Hub path must be resolved at boot from current `main`
+  (older text named `NAYANET/HUB/index.html`; verify before relying on it).
+
+Never boot from a cached ID in this brief:
+
+- Active learning IDs and retained Intelligent Block IDs rotate. Resolve the
+  current ones from claim-matched proof evidence at boot.
+- Dated PR references are history, not current state.
 
 A major prior live proof run established substantial portions of the retained-intelligence lifecycle, including cold runtime, graph control/treatment, learning influence, causal verification, learning promotion, retained-learning reread, CONNECT, and cold-successor verification.
-
-Current active learning ID:
-
-22f22db8-c3fb-40a5-b516-7547f6dc66f7
-
-Current exact retained Intelligent Block:
-
-IB-NAYA-FLOW-LESSON-39dff23d824f47df96343b778e595147
-
-Do not substitute an older learning ID without reconciling it against canonical state.
-
-PR #912 reconciled stale regression guards with the current runtime and merged into main at 4c503e5a95920dbc133a1cf09fa4626f10148d36.
-
-After that merge, required checks exposed three runtime HTTP 400 failures and one correctly detected production-parity failure. OIDC acquisition succeeded in the three HTTP-400 workflows. The correct next investigation is the exact runtime/request response contract, beginning with workflow and runtime source. Do not deploy merely to conceal the failures.
-
-PR #900 was inspected and determined superseded by the evolution of main; it must not be blindly merged.
 
 An earlier historical set of 88 unlinked cognition events was classified HISTORICAL_ONLY. No database repair was authorized merely to make historical records appear newly linked.
 
