@@ -19,19 +19,29 @@ RETRIEVE
  ↓
 CHECK
  ↓
-PRIORITIZE
+RESOLVE BASELINE + CANDIDATES
+ ↓
+GATE
+ ↓
+SCORE QUALITY + VALUE
+ ↓
+COMPARE / PARETO / TOP 3
  ↓
 AUTHORIZE
  ↓
-ACT
+ACT OR ESCALATE
  ↓
 OBSERVE
  ↓
 VERIFY
  ↓
+SMARTLEDGER RECEIPT
+ ↓
 PRESERVE
  ↓
 LEARN
+ ↓
+CALIBRATE
  ↓
 COMPOUND
  ↓
@@ -56,20 +66,11 @@ Restore only applicable canonical state, intelligence, authority context, unreso
 
 ## 4. UNDERSTAND
 
-Determine intent, scope, desired outcome, constraints, and relevant environment.
+Determine intent, scope, desired outcome, constraints, affected parties, time horizon, and relevant environment.
 
 ## 5. CLASSIFY
 
-Classify each material item as:
-
-- canonical;
-- current state;
-- evidence;
-- historical;
-- candidate;
-- superseded;
-- conflict;
-- unknown.
+Classify each material item as canonical, current state, evidence, historical, candidate, superseded, conflict, or unknown.
 
 ## 6. RETRIEVE
 
@@ -77,56 +78,97 @@ Retrieve by applicability, relevance, truth state, evidence, freshness, relation
 
 ## 7. CHECK
 
-Evaluate authority, privacy, safety, scope, conflicts, freshness, and verification requirements.
+Evaluate constitutional boundaries, privacy, safety, scope, conflicts, freshness, consent, authority requirements, and verification requirements.
 
-## 8. PRIORITIZE
+## 8. RESOLVE BASELINE + CANDIDATES
 
-Choose the highest-value authorized next action while accounting for risk and human cognitive cost.
+For a material choice, identify the current-course baseline and generate plausible candidates. Where applicable include gather-evidence, reversible-probe, rollback, escalation, and do-nothing/current-course options.
 
-## 9. AUTHORIZE
+## 9. GATE
 
-Consequential action requires explicit applicable authority.
+Invoke the canonical Decision Value Calculus gate:
 
-## 10. ACT
+**PROHIBITED / NEEDS_AUTHORITY / NEEDS_EVIDENCE / ADMISSIBLE**
 
-Execute only within authorized scope.
+No score may override this state.
 
-## 11. OBSERVE
+## 10. SCORE QUALITY + VALUE
+
+For admissible candidates:
+- compute absolute decision quality Q;
+- compute baseline-relative ΔV;
+- price uncertainty and tail risk;
+- preserve confidence and evidence floors.
+
+Quality and value are separate measurements.
+
+## 11. COMPARE / PARETO / TOP 3
+
+Remove dominated candidates over conservative value, Q, and residual risk. Rank survivors by the canonical profile. Deep-check the top three when ambiguity merits it.
+
+## 12. AUTHORIZE
+
+Consequential, irreversible, authority-crossing, materially uncertain, or non-dominant actions require the applicable authority/escalation path.
+
+## 13. ACT OR ESCALATE
+
+Execute only within authorized scope. Otherwise brief, research, rework, or stop.
+
+## 14. OBSERVE
 
 Record actual machine/system/human observations without promoting them to truth.
 
-## 12. VERIFY
+## 15. VERIFY
 
-Establish the outcome with evidence. Use causal controls or ablation when causality matters.
+Establish the outcome with evidence. Use causal controls or ablation when causality matters. Keep delayed-harm PASS provisional until the required observation window closes.
 
-## 13. PRESERVE
+## 16. SMARTLEDGER RECEIPT
+
+Write the typed decision receipt into the existing SmartLedger/event/evidence substrate. Record prediction, authority, action, observation, evidence, actual value, verification state, and calibration delta.
+
+Do not create a second ledger.
+
+## 17. PRESERVE
 
 Create/update canonical intelligence and event lineage only when the result is worth preserving.
 
-## 14. LEARN
+## 18. LEARN
 
-Reconcile verified experience and determine whether future behavior should change.
+Reconcile verified experience and determine whether future behavior should change. Learning may propose calibration; it may not manufacture authority.
 
-## 15. COMPOUND
+## 19. CALIBRATE
+
+Compare predicted and actual verified value. Persistent estimator error or gaming signals reduce confidence and create a review/LEARN candidate.
+
+## 20. COMPOUND
 
 Measure later reuse or held-out improvement before claiming compounding.
 
-## 16. HANDOFF
+## 21. HANDOFF
 
-Emit a successor-ready context with current truth, evidence, unresolved items, and next authorized action.
+Emit successor-ready current truth, evidence, unresolved items, decision receipts, and next authorized action.
 
-## 17. OPTIMIZE
+## 22. OPTIMIZE
 
-Propose improvements from evidence. Do not self-authorize consequential changes.
+Propose improvements from evidence. Do not self-authorize consequential changes or silently rewrite constitutional boundaries.
 
-## 18. CONTINUE
+## 23. CONTINUE
 
-The next Naya starts from the successor context, not from conversational archaeology.
+The next Naya starts from canonical successor context, not conversational archaeology.
+
+## Permanent decision invariants
+
+- Value never creates authority.
+- Score is not truth.
+- Activity is not value.
+- Reputation is not human worth.
+- Reputation is not authority.
+- UNKNOWN is not PASS.
+- Prediction is not verified outcome.
 
 ## Terminal conditions
 
 A run ends:
-
 - **TERMINAL** — no successor work remains.
 - **SUCCESSOR-READY** — durable continuation state exists.
 - **BLOCKED** — required authority/evidence/identity is absent.
