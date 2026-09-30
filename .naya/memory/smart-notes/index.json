@@ -176,12 +176,47 @@
         "runtime_index_id": "624a0542-75cc-420d-aa51-c0da64bc37c0",
         "receipt_id": "18f62d1b-6fb9-4d83-89b5-75bdb87a3678"
       }
+    },
+    {
+      "smart_note_id": "SN-005",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn013-decision-efficiency",
+      "content_hash": "2a534acea3882a352ba27a3d46d42253d37d7aeb93cebe806a1bb60aee450037",
+      "title": "Decision Efficiency — Evidence-Based Act / Read / Ask Doctrine",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "OPERATING_MODE",
+      "subtopic": "DECISION_EFFICIENCY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-005/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-005/IB-SMART-NOTE-20260930-sn013-decision-efficiency.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "48be3dc0-26d6-42fe-b0c4-e13361052db8",
+        "lineage_id": "fe643a09-156d-4fe2-b4f6-15ea400d3777",
+        "relationship_id": "54fa1d13-9431-4e26-a7e7-f352941f2ba0",
+        "runtime_index_id": "7a39f97a-1f29-4456-98cd-920086d36957",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "db11981e-27b2-4b18-abb0-14e1d581668d"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 5,
+    "next_sequence": 6,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
