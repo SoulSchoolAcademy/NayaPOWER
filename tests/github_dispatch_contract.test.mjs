@@ -42,7 +42,13 @@ const GRANT_ROW = {
 };
 
 function runtime(opts = {}) {
-  const { token = 'gh-test-token', grant = GRANT_ROW, tx = TX_ROW, receipt = null } = opts;
+  const {
+    token = 'gh-test-token',
+    app = null,
+    grant = GRANT_ROW,
+    tx = TX_ROW,
+    receipt = null,
+  } = opts;
   let handler;
   const receipts = new Map();
   const blobs = new Map();
@@ -134,9 +140,29 @@ function runtime(opts = {}) {
           SUPABASE_ANON_KEY: 'anon-key',
           SUPABASE_SERVICE_ROLE_KEY: 'service-key',
           GITHUB_TOKEN: token,
+          GITHUB_APP_ID: app?.id || '',
+          GITHUB_APP_INSTALLATION_ID: app?.installationId || '',
+          GITHUB_APP_PRIVATE_KEY: app?.privateKey || '',
         }[key] || ''),
       },
       serve: (cb) => { handler = cb; },
+    },
+    importPKCS8: async (pem, alg) => {
+      assert.equal(alg, 'RS256');
+      assert.ok(pem);
+      return { kind: 'mock-key' };
+    },
+    SignJWT: class {
+      setProtectedHeader(value) { this.header = value; return this; }
+      setIssuedAt(value) { this.iat = value; return this; }
+      setExpirationTime(value) { this.exp = value; return this; }
+      setIssuer(value) { this.iss = value; return this; }
+      async sign(key) {
+        assert.equal(this.header.alg, 'RS256');
+        assert.ok(this.exp > this.iat);
+        assert.equal(key.kind, 'mock-key');
+        return 'mock-app-jwt';
+      }
     },
     createClient: (url, key) => key === 'service-key'
       ? { from: table }
@@ -145,8 +171,17 @@ function runtime(opts = {}) {
           from: table,
         },
     fetch: async (url, init = {}) => {
-      githubCalls.push({ url: String(url), method: init.method || 'GET' });
+      githubCalls.push({
+        url: String(url),
+        method: init.method || 'GET',
+        authorization: init?.headers?.Authorization || init?.headers?.authorization || null,
+      });
       const u = String(url);
+      if (u.startsWith('https://api.github.com/app/installations/')) {
+        assert.equal(init.method, 'POST');
+        assert.equal(init.headers.Authorization, 'Bearer mock-app-jwt');
+        return new Response(JSON.stringify({ token: 'short-lived-installation-token' }), { status: 201 });
+      }
       if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/')) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
@@ -219,14 +254,39 @@ test('refuses when grant is scoped to another transaction', async () => {
   assert.equal(body.error, 'PROJECTION_AUTHORITY_REFUSED');
 });
 
-test('fail-closed 503 when GITHUB_TOKEN is not configured', async () => {
-  const { post, receipts, githubCalls } = runtime({ token: '' });
+test('fail-closed 503 when no GitHub credential source is configured', async () => {
+  const { post, receipts, githubCalls } = runtime({ token: '', app: null });
   const { status, body } = await post(validBody());
   assert.equal(status, 503);
   assert.equal(body.error, 'GITHUB_CREDENTIAL_NOT_CONFIGURED');
   assert.equal(body.pipeline, 'PROJECTION_BLOCKED');
   assert.equal(githubCalls.length, 0, 'no GitHub call without credential');
   assert.equal(receipts.get(IDEM).status, 'blocked');
+});
+
+test('prefers short-lived GitHub App installation token over static fallback', async () => {
+  const { post, githubCalls } = runtime({
+    token: 'legacy-token-should-not-be-used',
+    app: { id: '12345', installationId: '67890', privateKey: '-----BEGIN PRIVATE KEY-----\\nTEST\\n-----END PRIVATE KEY-----' },
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 200);
+  assert.equal(body.ok, true);
+  assert.equal(body.projection_verification.credential_mode, 'GITHUB_APP_INSTALLATION_TOKEN');
+  const mint = githubCalls.find((c) => c.url.includes('/app/installations/67890/access_tokens'));
+  assert.ok(mint, 'installation token must be minted per projection');
+  const contentCalls = githubCalls.filter((c) => c.url.includes('/contents/'));
+  assert.ok(contentCalls.length >= 2);
+  for (const call of contentCalls) {
+    assert.equal(call.authorization, 'Bearer short-lived-installation-token');
+  }
+});
+
+test('legacy static token remains a deprecated compatibility fallback', async () => {
+  const { post } = runtime({ token: 'legacy-token', app: null });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 200);
+  assert.equal(body.projection_verification.credential_mode, 'STATIC_GITHUB_TOKEN_DEPRECATED');
 });
 
 test('happy path returns PROJECTION_VERIFIED with caller-compatible smart_link', async () => {
