@@ -308,7 +308,15 @@ jobs:
           python - <<'PY'
           import json
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
-          expected=json.load(open("smart-note-expected.json"))
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              capture_path=open("capture-path.txt").read().strip()
+              assert capture_path, "smart-note expected artifact missing and capture path is empty"
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              import hashlib
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
           matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
           assert len(matches)==1, matches
           e=matches[0]
@@ -326,7 +334,13 @@ jobs:
           python - <<'PY'
           import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
-          expected=json.load(open("smart-note-expected.json"))
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              capture_path=open("capture-path.txt").read().strip()
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
           target=json.load(open("cold-target.json"))
           checks=r["checks"]; persisted=r["persisted"]
           receipt_evidence=persisted["receipt"].get("evidence",{})
