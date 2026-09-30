@@ -146,6 +146,17 @@ def test_idempotency_key_is_bound_to_exact_request_context():
     assert "requestFingerprint" in execute
 
 
+def test_idempotent_replay_recovers_missing_outcome_from_bound_receipt():
+    source = FUNCTION.read_text(encoding="utf-8")
+    execute = source.split('if (mode === "execute")', 1)[1].split('if (mode === "verify")', 1)[0]
+    assert "recoverOutcomeFromReceipt" in execute
+    assert "IDEMPOTENT_REPLAY_OUTCOME_RECOVERED" in execute
+    assert "idempotency_request_fingerprint" in execute
+    assert "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" in execute
+    # Recovery must use the existing canonical outcome table, not invent a second recovery ledger.
+    assert execute.count('from("nayanet_execution_outcomes")') >= 2
+
+
 def test_no_service_role_or_owner_bypass_is_exposed_to_the_runtime():
     source = FUNCTION.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
