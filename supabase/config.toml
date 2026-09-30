@@ -29,3 +29,6 @@ verify_jwt = false
 [functions.nayanet-prove-runtime]
 verify_jwt = false
 
+
+[functions.nayanet-verified-ai-action]
+verify_jwt = false
