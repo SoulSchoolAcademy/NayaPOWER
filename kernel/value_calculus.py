@@ -406,6 +406,21 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
         "delta_v_actual": delta_v_actual,
         "d_verified": d_verified,
         "calibration_error": error,
+        "decision_resolution": {
+            "EXECUTE": "ACT",
+            "RESEARCH": "READ_MORE",
+            "BRIEF": "ASK",
+            "REWORK": "REFUSE",
+        }.get(evaluation.get("resolution"), evaluation.get("resolution", {
+            "EXECUTE": "ACT",
+            "RESEARCH": "READ_MORE",
+            "BRIEF": "ASK",
+            "REWORK": "REFUSE",
+        }.get(evaluation.get("decision"), "ASK")),
+        "signed_value": evaluation.get("selected_signed_value"),
+        "quality": evaluation.get("selected_quality"),
+        "confidence": evaluation.get("selected_confidence"),
+        "value_interval": evaluation.get("selected_value_interval"),
     }
 
 
