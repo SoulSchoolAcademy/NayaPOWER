@@ -127,3 +127,14 @@ test("runtime persists PROVE assessments in existing execution receipt ledger an
   assert.match(source,/NAYA-KERNEL-CONNECT/);
   assert.doesNotMatch(source,/nayanet_proof_receipts/);
 });
+
+
+test("PROVE independent verifier compares persisted JSONB semantically, not object key order",()=>{
+  const source=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/index.ts",import.meta.url),"utf8");
+  assert.match(source,/stableJson\(recorded\.evidence\?\?\[\]\)===stableJson\(recomputed\.evidence\?\?\[\]\)/);
+  assert.match(source,/stableJson\(recorded\.provenance_chain\?\?\[\]\)===stableJson\(recomputed\.provenance_chain\?\?\[\]\)/);
+  assert.match(source,/stableJson\(recorded\.conflicts\?\?\[\]\)===stableJson\(recomputed\.conflicts\?\?\[\]\)/);
+  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.evidence/);
+  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.provenance_chain/);
+  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.conflicts/);
+});
