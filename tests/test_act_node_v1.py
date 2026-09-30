@@ -25,6 +25,8 @@ def test_act_hands_observation_to_verify_but_does_not_self_verify():
     r=json.loads((ROOT/"BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json").read_text())
     src=(ROOT/r["node_runtime_bindings"]["ACT"]["entrypoint"]).read_text()
     compact=src.replace(" ","").lower()
+    assert 'verified:false' in compact
     assert 'verification_method:"pending_independent_runtime_verification"' in compact
-    assert "verified:true" not in compact
+    assert 'if(mode==="verify")' in compact
+    assert 'verification_method:"independent_runtime_reread_of_persisted_authoritative_state"' in compact
     assert "learning_evidence" not in src
