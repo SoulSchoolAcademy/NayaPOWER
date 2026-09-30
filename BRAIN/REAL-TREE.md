@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `6b4a429472113bdd5b5186d0b9222f44463b273d`  
+**Receipt basis commit:** `1a3eac2a09aaa27fd39188ab5f3b21fdda6667f1`  
 **Inventory file count:** 157  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -31,7 +31,7 @@
 
 ### 00-SPEC — Specification
 
-- `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `0efba212ce12` (12637 bytes)
+- `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `5dcb8d072850` (12637 bytes)
 - `BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md` — `95938c6ed342` (2751 bytes)
 - `BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md` — `bd599702c291` (948 bytes)
 - `BRAIN/00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md` — `28dae6fc731f` (2743 bytes)
@@ -79,7 +79,7 @@
 - `BRAIN/03-KERNEL/README.md` — `03dd562d8591` (1402 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json` — `842a394d4ad9` (1143 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/CONNECT-NODE-SCHEMA.json` — `fa4a9ea066fe` (1001 bytes)
-- `BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json` — `f089b6800e08` (1380 bytes)
+- `BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json` — `687e904b9edf` (1380 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/KERNEL-MESSAGE-ENVELOPE.json` — `061a57dacfbf` (737 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/KNOW-NODE-SCHEMA.json` — `922dad289d1c` (990 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/LAW-NODE-SCHEMA.json` — `00fe92675820` (1117 bytes)

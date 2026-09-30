@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "6b4a429472113bdd5b5186d0b9222f44463b273d",
+  "receipt_basis_commit": "1a3eac2a09aaa27fd39188ab5f3b21fdda6667f1",
   "inventory_file_count": 157,
   "domain_counts": {
     "00-SPEC": 15,
@@ -25,7 +25,7 @@
   "files": [
     {
       "path": "BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md",
-      "blob_sha": "0efba212ce124b9154e3fb6e6e1a3b8d4bc271ad",
+      "blob_sha": "5dcb8d07285079a5701b31fe1a18fafb278cfe22",
       "size": 12637
     },
     {
@@ -235,7 +235,7 @@
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json",
-      "blob_sha": "f089b6800e0853dd3ea6684324869a5409bbb49f",
+      "blob_sha": "687e904b9edffbec8b210b6f8aa03a61719f3662",
       "size": 1380
     },
     {
