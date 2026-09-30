@@ -104,6 +104,90 @@ def evaluate_policy(policy: dict[str, Any], context: dict[str, Any], now: dateti
     return {"decision": "ALLOW", "reason": "all_policy_gates_pass"}
 
 
+DENIAL_RECEIPT_SCHEMA = "NAYAPOWER_PRODUCTION_PROMOTION_DENIAL_V1"
+
+_PROTECTED_PATH_REMEDIATION = (
+    "This revision touches protected paths, so the automatic standing-policy path "
+    "cannot promote it. Re-run via workflow_dispatch with confirm=DEPLOY for explicit "
+    "human authorization of this exact revision. Do not weaken the protected-path gate."
+)
+
+_GENERIC_REMEDIATION_TEMPLATE = (
+    "Automatic promotion denied ({reason}). Address the cited precondition and re-run; "
+    "do not bypass the standing-policy gate."
+)
+
+
+def _matched_protected_paths(changed_paths: Any) -> list[str]:
+    """Return the changed paths that triggered the protected-path rule.
+
+    Pure reporting helper: it never influences the verdict. The gate in
+    evaluate_policy() is the sole authority for the decision.
+    """
+    if not isinstance(changed_paths, list):
+        return []
+    return [
+        path
+        for path in changed_paths
+        if isinstance(path, str)
+        and any(path.startswith(prefix) for prefix in PROTECTED_PATH_PREFIXES)
+    ]
+
+
+def build_denial_receipt(
+    policy: dict[str, Any],
+    context: dict[str, Any],
+    verdict: dict[str, Any],
+    run_context: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Build a machine-readable receipt explaining a DENY verdict.
+
+    GAP F (gate legibility): a correctly denied promotion attempt must explain
+    itself. This function changes nothing about the decision — evaluate_policy()
+    remains the sole authority, and this builder refuses to emit anything but
+    DENY receipts, so the legibility layer can never mint an ALLOW.
+
+    The receipt is written BEFORE the workflow step exits non-zero, and the
+    workflow uploads it with `if: always()`, so the reason survives the failure.
+    """
+    if not isinstance(verdict, dict) or verdict.get("decision") != "DENY":
+        raise ValueError(
+            "build_denial_receipt only emits DENY receipts; "
+            f"refusing verdict: {verdict!r}"
+        )
+
+    run_context = run_context or {}
+    reason = verdict.get("reason") or "unknown"
+    changed_paths = context.get("changed_paths")
+    matched = _matched_protected_paths(changed_paths)
+
+    if reason == "protected_change_requires_explicit_promotion":
+        remediation = _PROTECTED_PATH_REMEDIATION
+    else:
+        remediation = _GENERIC_REMEDIATION_TEMPLATE.format(reason=reason)
+
+    return {
+        "schema": DENIAL_RECEIPT_SCHEMA,
+        "decision": "DENY",
+        "reason": reason,
+        "fail_closed": True,
+        "policy_id": policy.get("policy_id"),
+        "policy_version": policy.get("version"),
+        "repository": context.get("repository"),
+        "source_branch": context.get("source_branch"),
+        "target_branch": context.get("target_branch"),
+        "source_sha": context.get("source_sha"),
+        "requested_operation": context.get("requested_operation"),
+        "changed_paths": changed_paths if isinstance(changed_paths, list) else [],
+        "matched_protected_paths": matched,
+        "remediation": remediation,
+        "workflow_run_id": run_context.get("workflow_run_id"),
+        "actor": run_context.get("actor"),
+        "event": run_context.get("event"),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
 def load_policy() -> dict[str, Any]:
     import json
 
