@@ -78,18 +78,19 @@
       "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e"
     },
     "ACT": {
-      "status": "BOUNDED_LIVE_PROVEN",
-      "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
+      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
+      "entrypoint": "supabase/functions/nayanet-verified-ai-action/index.ts",
       "deployment": {
-        "function": "nayanet-act-runtime",
+        "function": "nayanet-verified-ai-action",
         "version": 1
       },
       "consumes": "nayanet_execution_receipts.action=law_authority_decision",
       "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
       "door": "DOOR-AI/apply_retained_intelligence",
-      "proof_run": 36622283683,
-      "proof_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
-      "proof": "BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json",
+      "proof_run": 36664954443,
+      "proof_source_main": "8bc2430517fc52a5722ad2a75ce036f9d8e7152e",
+      "proof": "BRAIN/06-PROOF/2026-09-30-ACT-CONCURRENT-IDEMPOTENCY-PROOF.md",
+      "supersedes": "nayanet-act-runtime binding (entrypoint supabase/functions/nayanet-act-runtime/index.ts; proof_run 36622283683 at 66e63c02f9590ec52fa14714a8897feb68d18aef — pre-idempotency semantics; historical binding preserved, not deleted)",
       "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382"

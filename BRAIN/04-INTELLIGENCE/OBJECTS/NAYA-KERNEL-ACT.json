@@ -38,7 +38,7 @@
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-KNOW",
-    "runtime": "supabase/functions/nayanet-act-runtime/index.ts",
+    "runtime": "supabase/functions/nayanet-verified-ai-action/index.ts",
     "smart_door_operation": "DOOR-AI/apply_retained_intelligence"
   },
   "provenance": {
