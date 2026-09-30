@@ -36,6 +36,11 @@ NEEDS_AUTHORITY = "NEEDS_AUTHORITY"
 NEEDS_EVIDENCE = "NEEDS_EVIDENCE"
 ADMISSIBLE = "ADMISSIBLE"
 
+ACT = "ACT"
+READ_MORE = "READ_MORE"
+ASK = "ASK"
+REFUSE = "REFUSE"
+
 STAKE_ORDER = {"low": 0, "high": 1, "consequential": 2}
 
 
@@ -137,6 +142,7 @@ class QualityProfile:
     )
     min_evidence_count: int = 1
     relative_margin: float = 0.10
+    interval_epsilon: float = 0.0
     min_reversibility_for_auto: float = 7.0
     uncertainty_scale: float = 1.0
 
@@ -227,12 +233,33 @@ def conservative_value(candidate: Candidate, baseline: Candidate, profile: Quali
     )
 
 
+def value_interval(candidate: Candidate, baseline: Candidate, profile: QualityProfile) -> dict[str, float]:
+    """Explicit conservative value interval used for autonomous dominance.
+
+    V_low is the existing conservative value. V_high preserves the same
+    declared uncertainty/tail width on the upside. This does not invent
+    confidence: callers must still satisfy the independent aggregate and
+    critical confidence floors.
+    """
+    delta = delta_value(candidate, baseline, profile)
+    width = (
+        max(0.0, _finite(candidate.uncertainty_penalty, "uncertainty_penalty"))
+        + max(0.0, _finite(candidate.tail_penalty, "tail_penalty"))
+    )
+    return {"v_low": delta - width, "v_high": delta + width, "interval_width": width}
+
+
+def interval_gap(first: Mapping[str, float], second: Mapping[str, float]) -> float:
+    """Positive only when the first option's lower bound clears second's upper."""
+    return _finite(first["v_low"], "first.v_low") - _finite(second["v_high"], "second.v_high")
+
+
 def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: RiskPolicy) -> tuple[str, list[str], dict]:
     q = score_quality(candidate, profile)
     reasons: list[str] = []
 
     if candidate.hard_violation:
-        return PROHIBITED, ["HARD_VIOLATION"], q
+        return PROHIBITED, ["JUDGMENT_RULE_HARD_STOP"], q
 
     hard_flags = {
         "LAW": candidate.lawful,
@@ -307,6 +334,7 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
     rows = []
     for candidate in candidates:
         gate, reasons, q = gate_candidate(candidate, profile, risk_policy)
+        interval = value_interval(candidate, baseline, profile)
         rows.append({
             "candidate_id": candidate.candidate_id,
             "gate": gate,
@@ -315,6 +343,9 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
             "pv": candidate.pv.pv(profile.uncertainty_scale),
             "delta_v": delta_value(candidate, baseline, profile),
             "v_safe": conservative_value(candidate, baseline, profile),
+            "v_low": interval["v_low"],
+            "v_high": interval["v_high"],
+            "interval_width": interval["interval_width"],
             "residual_risk": candidate.pv.effective_residual_risk(profile.uncertainty_scale),
             "effective_stakes": candidate.effective_stakes(),
             "reversible": candidate.reversible,
@@ -335,17 +366,30 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
     top3 = ranked_all[:3]
 
     if not frontier:
-        decision = "RESEARCH" if any(r["gate"] == NEEDS_EVIDENCE for r in rows) else "BRIEF"
-        if not any(r["gate"] in (NEEDS_EVIDENCE, NEEDS_AUTHORITY) for r in rows):
-            decision = "REWORK"
-        return {"decision": decision, "selected": None, "top3": top3, "rows": rows, "frontier": frontier}
+        non_baseline = [r for r in rows if not r["is_baseline"]]
+        if non_baseline and all(r["gate"] == PROHIBITED for r in non_baseline):
+            decision = REFUSE
+        elif any(r["gate"] == NEEDS_EVIDENCE for r in rows):
+            decision = READ_MORE
+        elif any(r["gate"] == NEEDS_AUTHORITY for r in rows):
+            decision = ASK
+        else:
+            # Admissible candidates exist, but none yet clears Q/value.
+            decision = READ_MORE
+        return {
+            "decision": decision, "selected": None, "top3": top3,
+            "rows": rows, "frontier": frontier,
+            "interval_gap": None, "relative_margin": None,
+        }
 
     first = frontier[0]
     competing = [r for r in ranked_all if r["candidate_id"] != first["candidate_id"]]
     second = competing[0] if competing else None
     margin = 1.0 if second is None else relative_margin(first["v_safe"], second["v_safe"])
+    gap = float("inf") if second is None else interval_gap(first, second)
     by_id = {c.candidate_id: c for c in candidates}
     selected_candidate = by_id[first["candidate_id"]]
+    interval_dominant = second is None or gap > profile.interval_epsilon
     can_auto = (
         first["gate"] == ADMISSIBLE
         and first["q"]["Q"] >= profile.q_accept
@@ -355,15 +399,22 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
         and first["effective_stakes"] == "low"
         and selected_candidate.reversible
         and first["q"]["dimensions"]["reversibility"] >= profile.min_reversibility_for_auto
-        and margin >= profile.relative_margin
+        and interval_dominant
     )
+    if can_auto:
+        decision = ACT
+    elif first["effective_stakes"] != "low" or not selected_candidate.reversible:
+        decision = ASK
+    else:
+        decision = READ_MORE
     return {
-        "decision": "EXECUTE" if can_auto else "BRIEF",
+        "decision": decision,
         "selected": first["candidate_id"],
         "top3": top3,
         "rows": rows,
         "frontier": frontier,
         "relative_margin": margin,
+        "interval_gap": None if second is None else gap,
     }
 
 
@@ -439,6 +490,82 @@ def calibration_summary(records: Sequence[Mapping]) -> dict:
         "overprediction_detected": n >= 3 and bias < 0,
         "confidence_multiplier": 1.0 if n == 0 else max(0.25, 1.0 / (1.0 + mae)),
     }
+
+
+def build_recalibration_receipt(
+    *,
+    current_profile: QualityProfile,
+    proposed_version: str,
+    records: Sequence[Mapping],
+    proposed_priorities: Optional[Mapping[str, float]] = None,
+    proposed_thresholds: Optional[Mapping[str, float]] = None,
+    evidence_refs: Sequence[str] = (),
+) -> dict:
+    """Create a versioned LEARN candidate; never mutates the active profile."""
+    if not proposed_version or proposed_version == current_profile.version:
+        raise ValueError("proposed_version must be a new explicit version")
+    summary = calibration_summary(records)
+    return {
+        "receipt_type": "VALUE_RECALIBRATION",
+        "schema_version": "2.1",
+        "engine_version": ENGINE_VERSION,
+        "profile_id": current_profile.profile_id,
+        "from_version": current_profile.version,
+        "proposed_version": proposed_version,
+        "objective": current_profile.objective,
+        "calibration_summary": summary,
+        "proposed_priorities": dict(proposed_priorities or current_profile.weights()),
+        "proposed_thresholds": dict(proposed_thresholds or {}),
+        "evidence_refs": list(evidence_refs),
+        "state": "LEARN_CANDIDATE",
+        "automatic_promotion": False,
+    }
+
+
+def promote_recalibration(
+    receipt: Mapping,
+    current_profile: QualityProfile,
+    *,
+    verified: bool,
+    authorized: bool,
+) -> QualityProfile:
+    """Governed LEARN→EVOLVE write-back. No silent self-ratification."""
+    if receipt.get("receipt_type") != "VALUE_RECALIBRATION":
+        raise ValueError("not a recalibration receipt")
+    if receipt.get("from_version") != current_profile.version:
+        raise ValueError("stale recalibration receipt")
+    if not verified:
+        raise PermissionError("recalibration must be verified before promotion")
+    if not authorized:
+        raise PermissionError("recalibration requires applicable authority")
+
+    thresholds = dict(receipt.get("proposed_thresholds") or {})
+    allowed_thresholds = {
+        "q_accept", "aggregate_confidence_floor", "critical_confidence_floor",
+        "min_evidence_count", "relative_margin", "interval_epsilon",
+        "min_reversibility_for_auto", "uncertainty_scale",
+    }
+    unknown = set(thresholds) - allowed_thresholds
+    if unknown:
+        raise ValueError(f"unknown recalibration thresholds: {sorted(unknown)}")
+
+    params = {
+        "profile_id": current_profile.profile_id,
+        "version": str(receipt["proposed_version"]),
+        "objective": current_profile.objective,
+        "priorities": dict(receipt.get("proposed_priorities") or current_profile.weights()),
+        "q_accept": current_profile.q_accept,
+        "aggregate_confidence_floor": current_profile.aggregate_confidence_floor,
+        "critical_confidence_floor": current_profile.critical_confidence_floor,
+        "critical_confidence_dimensions": current_profile.critical_confidence_dimensions,
+        "min_evidence_count": current_profile.min_evidence_count,
+        "relative_margin": current_profile.relative_margin,
+        "interval_epsilon": current_profile.interval_epsilon,
+        "min_reversibility_for_auto": current_profile.min_reversibility_for_auto,
+        "uncertainty_scale": current_profile.uncertainty_scale,
+    }
+    params.update(thresholds)
+    return QualityProfile(**params)
 
 
 def contribution_value_score(*, quality: float, relevance: float, verification: float, impact: float, novelty: float, verified_delta: float) -> float:
