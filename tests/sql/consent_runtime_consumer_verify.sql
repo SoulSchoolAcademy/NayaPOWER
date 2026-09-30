@@ -2,7 +2,7 @@
 -- P4 consent runtime consumer — verification script.
 --
 -- Runs the REAL migration files (pending 20260930022500 + PROPOSED
--- 20260930050000) against a FRESH, EMPTY database, then executes
+-- 20260930051000) against a FRESH, EMPTY database, then executes
 -- positive and negative controls. Any failed assertion raises an
 -- exception and aborts. Zero output on success = ALL PASS.
 --
@@ -57,7 +57,7 @@ end $$;
 -- 1. Apply the REAL migrations under test, in deploy order.
 -- ---------------------------------------------------------------------
 \ir ../../supabase/migrations/20260930022500_harden_collective_wisdom_consent_revocation_v1.sql
-\ir ../../supabase/migrations/20260930050000_consent_runtime_consumer_v1.sql
+\ir ../../supabase/migrations/20260930051000_consent_runtime_consumer_v1.sql
 
 -- ---------------------------------------------------------------------
 -- 2. Fixtures: three members, three participation states, one wisdom row.
