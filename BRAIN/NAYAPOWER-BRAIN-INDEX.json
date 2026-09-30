@@ -202,8 +202,12 @@
     },
     "current_frontier": {
       "issue": 66,
-      "state": "POST_PROVE_LAW_BINDING_SOURCE_FIX_DEPLOYMENT_BLOCKED",
-      "next": "Integrate the projection refresh based on c6ac19c4 and require a fresh resolver result with no stale operational projection. Then explicit Human Director DEPLOY is required for exact live LAW + protected runtime parity. After parity, rerun PROVE exactly once. Coda 2 replay/recovery and #1062 two-owner proof remain independent."
+      "state": "52F_CURRENT_SOURCE_AHEAD_OF_PRODUCTION_2FF",
+      "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
+      "production_promotion_run": 36659933566,
+      "production_artifact": 11074161563,
+      "next": "Integrate this 52f866d0 projection refresh and require a fresh resolver result with no substantive-drift stale warning. Then explicit Human Director DEPLOY is required for exact current-head parity, primarily KNOW #1072 and #1070 pending collective + graph migrations. After parity, rerun PROVE once, run #1062 bounded two-owner live proof, and run one fresh applicable SN-004 causal experiment.",
+      "current_main": "52f866d0741eb65f4030b173afc9dbf4b5da382a"
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -246,24 +250,23 @@
       "limitation": "Historical bounded specimen only; later revisions require their own production evidence."
     },
     "current_main_authority_cache_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F_NOT_PRODUCTION_PROOF",
-    "current_main_know": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
-    "sn004_learning": "NO_MEASURED_LEARNING_EFFECT_RUN_36652694005_PRESERVED; SMART_NOTE_SOURCE_REPAIR_MERGED_4C2B8F12; APPLICABILITY_SOURCE_REPAIR_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
+    "current_main_know": "RUN_36658860694_STANDALONE_PASS; PROVE_WORKFLOW_BINDING_PR_1072_MERGED_FA5C0A06_AND_HANDLER_REGRESSION_1076_MERGED_5D26A0DB; DEPLOYED_KNOW_PARITY_PENDING",
+    "sn004_learning": "LAST_LIVE_RESULT_NO_MEASURED_LEARNING_EFFECT_RUN_36652694005; APPLICABILITY_AWARE_CAUSAL_RUNTIME_INCLUDED_IN_PRODUCTION_SOURCE_2FF4207A_AND_UNCHANGED_AFTER; FRESH_APPLICABLE_RUN_PENDING",
     "cold_acceptance": "PROTOCOL_READY_FRESH_ENTRANT_NOT_PROVEN",
     "current_causal_runtime_parity": {
-      "status": "MISMATCH",
-      "main_source": "0fb3612344cd28155945e0f33336aaca5b5ef31d",
-      "promotion_run": 36657956413,
-      "denial": "protected_change_requires_explicit_promotion",
-      "denial_artifact": 11072839541,
-      "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
-      "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
-      "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
-      "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b"
+      "status": "FILE_LEVEL_MATCH_TO_PRODUCTION_PROVEN_SOURCE_2FF4207A",
+      "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
+      "promotion_run": 36659933566,
+      "proof_artifact": 11074161563,
+      "current_main": "52f866d0741eb65f4030b173afc9dbf4b5da382a",
+      "causal_runtime_changed_after_proven_source": false,
+      "limitation": "Whole current HEAD is not production-proven; latest observed causal outcome remains NO_MEASURED_LEARNING_EFFECT."
     },
-    "two_owner_nayanet": "NOT_PROVEN_ISSUE_1062_SOURCE_GAPS_CLASSIFIED",
-    "current_main_prove": "RUN_36658635227_FAILED_AT_LAW_WORKFLOW_BINDING_BEFORE_PROVE; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PENDING"
+    "two_owner_nayanet": "NOT_PROVEN; PR_1070_SOURCE_HARDENING_MERGED_AF065BB4; MIGRATION_20260930022500_PENDING_NOT_PRODUCTION_APPLIED; LIVE_TWO_OWNER_EXPERIMENT_PENDING",
+    "current_main_prove": "RUN_36658635227_FAILED_PRE_PROVE; LAW_BINDING_DEPLOYED_IN_PRODUCTION_SOURCE_2FF4207A; KNOW_BINDING_SOURCE_FIXED_NOT_DEPLOYED; RERUN_BLOCKED_DEPLOYED_KNOW_PARITY",
+    "graph_v2": "PR_1077_CONTRACT_VALIDATOR_TESTS_MERGED_A07728A; PR_1078_PENDING_PERSISTENCE_MIGRATION_20260930024000_MERGED_52F866D0_NOT_PRODUCTION_APPLIED; NO_CONNECT_EDGE_CONSUMPTION_RUNTIME_PROOF"
   },
-  "last_reconciled_main": "a07728a456ffb8d662f83b48e9f625ea3dc9779e",
+  "last_reconciled_main": "52f866d0741eb65f4030b173afc9dbf4b5da382a",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -271,12 +274,12 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Fresh Current Truth Resolver after post-#1069 projection refresh; then explicit Human Director DEPLOY for exact live LAW/protected runtime parity; then one PROVE rerun.",
+    "next_proof": "Fresh Current Truth Resolver after 52f866d0 projection refresh; then explicit Human Director DEPLOY for exact current-head KNOW/migration parity; then one PROVE rerun, #1062 two-owner live proof, and one fresh applicable SN-004 causal experiment.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
     "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
-    "next_system_frontier": "CURRENT_TRUTH_REFRESH_THEN_EXPLICIT_DEPLOY_LAW_AND_CAUSAL_PARITY; PARALLEL_CODA2_REPLAY_RECOVERY_AND_TWO_OWNER"
+    "next_system_frontier": "CURRENT_TRUTH_52F_CONVERGENCE_THEN_EXPLICIT_DEPLOY_KNOW_COLLECTIVE_AND_GRAPH_PENDING_MIGRATIONS; PARALLEL_CODA2_ACT_RELIABILITY; THEN_CONNECT_EDGE_CONSUMPTION_PROOF"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",
