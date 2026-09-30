@@ -246,12 +246,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "b65f1cd2-5d22-4a86-a1f1-61445452a508"
       }
+    },
+    {
+      "smart_note_id": "SN-015",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn015-active-intelligence-rule",
+      "content_hash": "15051f226d9619285b4633876df52fd73b56f36f0a5146d732739f1a9b0f736a",
+      "title": "Active Intelligence Rule — Stored Knowledge Must Become Connected, Retrievable, Usable Intelligence",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "ACTIVE_INTELLIGENCE",
+      "subtopic": "UNDERSTAND_CONNECT_RETRIEVE_APPLY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-015/IB-SMART-NOTE-20260930-sn015-active-intelligence-rule.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-015/IB-SMART-NOTE-20260930-sn015-active-intelligence-rule.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "6b0ed9fb-80e4-47aa-a1eb-f36efada5d02",
+        "lineage_id": "7a39f798-de09-495d-be23-ef39be53e146",
+        "relationship_id": "c3ed4835-53fa-4d00-85d1-e6481b8ad5b2",
+        "runtime_index_id": "dce32d18-553c-4e11-bc3e-d68a39d8a0e1",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "0e092e90-e208-406a-9627-4c45a77f93cc"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 15,
+    "next_sequence": 16,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
