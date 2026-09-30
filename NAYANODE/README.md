@@ -58,3 +58,6 @@ The executable kernel is still only a minimal scaffold.
 The live nine-node substrate exists, but legitimate runtime identity continuity and behavioral Node influence remain to be proven.
 
 **Current P0: legitimate identity continuity → kernel inheritance → behavioral proof.**
+
+
+24. **0028 — Canonical Decision Architecture**: Human-Director-ratified four-layer decision discipline.
