@@ -52,10 +52,10 @@ def test_controls_fail_process_when_verdicts_do_not_discriminate(tmp_path):
     result = run_controls(tmp_path, "print('L01 UNKNOWN')\n")
     assert '*** WRONG ***' in result.stdout
     assert 'GATE IS UNSOUND' in result.stdout
-    assert result.returncode != 0
+    assert result.returncode == 1, result.stdout + result.stderr
 
 
 def test_controls_fail_process_when_gate_crashes_without_verdicts(tmp_path):
     result = run_controls(tmp_path, "raise RuntimeError('injected instrument failure')\n")
     assert 'actual=ABSENT' in result.stdout
-    assert result.returncode != 0
+    assert result.returncode == 1, result.stdout + result.stderr
