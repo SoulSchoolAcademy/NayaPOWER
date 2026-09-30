@@ -202,8 +202,8 @@
     },
     "current_frontier": {
       "issue": 66,
-      "state": "POST_1095_ACT_IDEMPOTENCY_ATOMICITY_PROJECTION_RECONCILIATION",
-      "next": "Refresh the existing projection against exact 8bc2430517fc52a5722ad2a75ce036f9d8e7152e; then explicit governed deployment for exact resulting main before live two-request ACT concurrency proof, PROVE, SN-004, and #1070 production proof."
+      "state": "POST_1104_ACT_REQUEST_BOUND_IDEMPOTENCY_PROJECTION_RECONCILIATION",
+      "next": "Merge projection-only reconciliation at eb3d018743ccdc89005600a73c99dd5885f8fdca; rerun resolver for CURRENT / PROJECTION_ONLY_DRIFT; continue ACT response-loss/partial-write source proof while production deployment remains explicit Human Director authority."
     },
     "bounded_generalization_successor_proof": {
       "issue": 944,
@@ -255,14 +255,14 @@
       "production_branch_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
       "promotion_run": 36659933566,
       "promotion_artifact": 11074161563,
-      "current_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
-      "act_concurrency_repair": "PR_1095_MERGED_SOURCE_TEST_VERIFIED_LIVE_RACE_PENDING_EXACT_DEPLOYMENT"
+      "current_main": "eb3d018743ccdc89005600a73c99dd5885f8fdca",
+      "act_concurrency_repair": "PR_1095_ATOMIC_IDEMPOTENCY_PLUS_PR_1104_REQUEST_FINGERPRINT_SOURCE_TEST_VERIFIED_LIVE_RACE_PENDING_EXACT_DEPLOYMENT"
     },
-    "two_owner_nayanet": "PR_1070_SOURCE_INTEGRATED_NOT_PRODUCTION_PROVEN",
+    "two_owner_nayanet": "PRODUCTION_OBSERVED_BOUNDED_PRIVATE_DENY_CONSENTED_DERIVED_READ_REVOKE_FUTURE_DENY; RECIPIENT_PURPOSE_BINDING_NOT_PROVEN",
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
-    "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
+    "graph_relationship_contract_v2": "SOURCE_INTEGRATED; GRAPH_SELECTOR_AND_KNOW_EDGE_AWARE_RUNTIME_SOURCE_TESTED; CURRENT_MAIN_PRODUCTION_PARITY_NOT_PROVEN"
   },
-  "last_reconciled_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
+  "last_reconciled_main": "eb3d018743ccdc89005600a73c99dd5885f8fdca",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -270,12 +270,12 @@
     "master_plan_machine_projection": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
     "issue_944_reconciliation": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
     "active_issue": 66,
-    "next_proof": "Rerun Current Truth Resolver against exact 3abe1ba74a9a86411221ca0b4778f49c79059556; then explicit governed deployment for exact resulting main; then live two-request ACT concurrency proof exactly once and independent reread.",
+    "next_proof": "Merge exact-eb3d018743ccdc89005600a73c99dd5885f8fdca projection-only reconciliation; rerun Current Truth Resolver for CURRENT / PROJECTION_ONLY_DRIFT; continue ACT response-loss/partial-write source proof; production deployment remains explicit Human Director authority.",
     "freshness_rule": "Resolve live main, open work, runtime/deployment state, security state and proof receipts before trusting any embedded SHA or dated projection.",
     "active_node_frontier": "NINE_NODE_BOUNDED_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "next_node_after_law": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
     "next_node_after_act": "N/A_BOUNDED_NINE_NODE_CHAIN_PROVEN",
-    "next_system_frontier": "PROJECTION_CONVERGENCE_THEN_EXPLICIT_DEPLOY; PROVE; SN004_CAUSAL; 1070_PRODUCTION_PROOF; COLD_SUCCESSOR; MULTIGEN; HUMAN_VALUE"
+    "next_system_frontier": "PROJECTION_CONVERGENCE; ACT_RECOVERY_SOURCE_PROOF; EXPLICIT_DEPLOY; LIVE_CONCURRENCY; PROVE; GRAPH/SN004_CAUSAL; COLD_SUCCESSOR; MULTIGEN; HUMAN_VALUE"
   },
   "smart_note_human_projection": {
     "root": "BRAIN/05-MEMORY/SMART-NOTES/",

@@ -17,21 +17,17 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `d033cefb3f57d53987ebeba438f8a5ff28975c23`:
+At evidence snapshot `eb3d018743ccdc89005600a73c99dd5885f8fdca`:
 
-- #978 is **CLOSED / production verified**.
-- #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
-- #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
-- Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
-- The next active control-plane issue is #66.
-- #1067 semantic drift guard is merged and exact-main verified. #1068 proved projection-only convergence. Because #1069 then changed substantive LAW source, this refresh is intentionally anchored to `c6ac19c4` and must be validated by a fresh resolver run with no stale operational projection.
-- Cached-derived authority revocation is **TEST-LEVEL VERIFIED** and #1046 ACT denial coverage is merged at `7847680f`; mission semantics remain unresolved.
-- KNOW bounded live proof `36658860694` is **SUCCESS** with contextual HIT, unrelated MISS, and independent persisted-universe verification.
-- SN-004 learning run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT**. #1051 and #1056 source repairs are merged, but the causal runtime is not deployed at source parity.
-- Readiness repairs #1058/#1061 are merged. Live PROVE run `36658635227` exposed a missing LAW trust binding for `live-prove-proof.yml`; #1069 source-fixed it at `c6ac19c4`. Live LAW and causal runtime parity still require explicit Human Director `DEPLOY` before PROVE or causal rerun.
-- #1062 records the two-owner consent/revocation source gap; owner-only private RLS remains protected.
-- #1044 cold acceptance is ready but has no genuinely fresh PASS receipt.
-- Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
+- #913, #944, #971, #978, #975 and #810 remain closed/proven only within their declared bounded scopes.
+- Current Truth Resolver run `36666104446` succeeded on exact `eb3d018743ccdc89005600a73c99dd5885f8fdca` and correctly classified the prior projection as STALE because #1094/#1104 were substantive source changes.
+- #1094 makes KNOW retrieval graph-aware using same-snapshot eligible edges, bounded SUPERSEDES chasing, related-context admission and explicit conflict surfacing.
+- #1104 binds idempotent replay to exact request context and fails closed with `IDEMPOTENCY_KEY_REUSE_CONFLICT` on mismatched reuse.
+- #1095 atomic idempotency remains source/test verified; live two-request race still requires exact deployed parity.
+- Bounded two-owner collective-derived consent/revocation is production-observed: private deny → consented derived read → revoke → future derived deny; recipient-specific purpose grants are not proven.
+- KNOW prior bounded live HIT/MISS remains proven at its exact revision; current main does not inherit production parity automatically.
+- Current runtime source remains UNKNOWN to the truth resolver until the governed deployment/runtime evidence establishes exact parity.
+- Genuine external cold entrant, true A→B→C compounding and measured human-value/MVPM remain open.
 
 Always resolve live `main`, issue state, deployment/runtime evidence and proof receipts before acting. A later revision never inherits an older production proof automatically.
 
@@ -47,4 +43,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: integrate this exact-`f190cdac` projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the exact resulting main. After parity: PROVE once → SN-004 causal proof → independent recomputation → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Merge the exact-`eb3d018743ccdc89005600a73c99dd5885f8fdca` projection-only reconciliation and require a fresh resolver result of CURRENT / PROJECTION_ONLY_DRIFT. Continue safe ACT response-loss/partial-write recovery work in parallel. Production deployment remains an explicit Human Director boundary.**

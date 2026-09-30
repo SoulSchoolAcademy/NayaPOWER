@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
-**Evidence snapshot base:** `3abe1ba74a9a86411221ca0b4778f49c79059556`
+**Evidence snapshot base:** `eb3d018743ccdc89005600a73c99dd5885f8fdca`
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -26,9 +26,9 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 - #975 recovery run `36632538416`: **SUCCESS**; authoritative outcome reread = **2/2**.
 - Universal all-task/domain nine-node capability is **NOT PROVEN**.
 - Multi-generation compounding is **NOT PROVEN**.
-- Two-owner NayaNET consent/revocation is **NOT PROVEN**.
+- Two-owner collective-derived consent/revocation is **PRODUCTION-OBSERVED AT BOUNDED SCOPE**; recipient-specific purpose grants are not proven.
 - Cached/derived authority revocation negative: **TEST-LEVEL VERIFIED**; #1046 ACT denial matrix is merged at `7847680f`; production proof not claimed.
-- #1095 is merged at `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`: the demonstrated concurrent duplicate ACT seam is repaired by persisting `idempotency_key` and enforcing a partial unique receipt index; fresh-main source tests pass, but the live concurrent race remains **NOT PRODUCTION PROVEN** until exact-main deployment parity.
+- #1095 is merged at `eb3d018743ccdc89005600a73c99dd5885f8fdca`: the demonstrated concurrent duplicate ACT seam is repaired by persisting `idempotency_key` and enforcing a partial unique receipt index; fresh-main source tests pass, but the live concurrent race remains **NOT PRODUCTION PROVEN** until exact-main deployment parity.
 - KNOW bounded live qualification is now **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe reread after #1060's proof-oracle repair.
 - Live SN-004 learning run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 is merged at `4c2b8f12` and #1056 at `0fb36123`; merged source is not yet deployed causal-runtime parity.
 - Readiness fail-closed repairs #1058/#1061 and generated current-truth projection #1053 are merged. Resolver run `36657001373` succeeded with a generated continuation brief and live open-PR frontier. #1067 semantic drift guard is merged at `309f33a7`; substantive drift invalidates stale projected actions while projection-only drift remains current.
@@ -38,7 +38,7 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 
 ## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
 
-The source repair cluster is integrated through current main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), applicability-aware causal learning (#1056), and ACT atomic idempotency repair (#1095).
+The source repair cluster is integrated through current main `eb3d018743ccdc89005600a73c99dd5885f8fdca`: readiness (#1058/#1061), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), applicability-aware causal learning (#1056), ACT atomic idempotency (#1095), graph-aware KNOW retrieval (#1094), Graph V2 fresh-selector proof wiring (#1100), and exact-request idempotency conflict binding (#1104).
 
 Main regression evidence is green. That is **not** production parity.
 
@@ -52,8 +52,8 @@ Coda 2 retains replay/duplicate/response-loss reliability ownership. The demonst
 
 ## 4. TOP 10 — DEPENDENCY ORDER
 
-### 1 — Current-truth convergence after ACT concurrency repair
-Rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556`. Run `36665708305` correctly classified #1098/#1100 substantive source changes; this snapshot includes those changes, so this is the next resolver check for this rung.
+### 1 — Current-truth convergence after graph-aware KNOW + ACT conflict binding
+Merge this projection-only reconciliation anchored to `eb3d018743ccdc89005600a73c99dd5885f8fdca`, then rerun Current Truth Resolver. PASS requires `CURRENT / PROJECTION_ONLY_DRIFT`; substantive main movement restarts this rung.
 
 ### 2 — Exact governed runtime parity
 After projection convergence, explicit Human Director `DEPLOY` remains required for the exact resulting main. The function and migration must be deployed together; no stale production race test is acceptable.
@@ -62,7 +62,7 @@ After projection convergence, explicit Human Director `DEPLOY` remains required 
 Once exact-main parity exists, issue two identical authorized requests concurrently with one fresh idempotency key. Acceptance: exactly one durable success receipt, exactly one outcome/effect, loser replays the same persisted receipt/outcome, and an independent reread reconstructs the final state.
 
 ### 4 — ACT residual recovery
-Prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction through the existing receipt ledger. Do not create another idempotency store.
+#1104 now fails closed on conflicting idempotency-key reuse by binding replay to exact request context. Next prove response-loss recovery, receipt/outcome partial-write behavior and independent reconstruction through the existing ledger; do not create another idempotency store.
 
 ### 5 — Residual authority lifecycle #1042
 Resolve mission binding semantics from trusted operation context before changing LAW/ACT/KNOW behavior. This remains a Human Director authority-model decision.
@@ -74,7 +74,7 @@ After deployed LAW parity, run the existing PROVE positive/negative proof once a
 Regenerate the existing SN-004 projection and rerun the act-first causal experiment only after exact deployed parity; preserve a negative result if observed.
 
 ### 8 — Two-owner NayaNET #1062
-Use the existing derived collective-wisdom seam. Prove private deny → consented derived use → revoke → future deny/invalidation without weakening owner-private RLS.
+Bounded production chain is observed: private deny → consented derived read → revoke → future derived deny, with owner-only private RLS preserved. Remaining expansion is recipient-specific purpose binding and broader derived/cached invalidation, not repetition of the bounded proof.
 
 ### 9 — True cold continuity + A→B→C
 One genuinely fresh repository-only entrant, then a second successor; prove attributable improvement, unrelated refusal, preserved lineage and no inherited authority.
@@ -131,4 +131,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: rerun Current Truth Resolver against exact current main `3abe1ba74a9a86411221ca0b4778f49c79059556` and require no `OPERATIONAL_PROJECTION_STALE` classification. After convergence, explicit Human Director `DEPLOY` is required for the exact resulting main. Once parity exists: run the two-request concurrent ACT proof once → independent reread → ACT recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Issue #66: merge this exact-`eb3d018743ccdc89005600a73c99dd5885f8fdca` projection-only reconciliation and require Current Truth Resolver = CURRENT / PROJECTION_ONLY_DRIFT. Continue safe ACT response-loss/partial-write recovery work in parallel. Exact-current production deployment remains a Human Director boundary; after parity run ACT concurrency once → independent reread → PROVE → Graph V2/SN-004 causal proof → genuine cold successor → A→B→C → human-value measurement.**
