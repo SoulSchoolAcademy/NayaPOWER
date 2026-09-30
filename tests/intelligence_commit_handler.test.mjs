@@ -44,7 +44,7 @@ test('execute carries lesson fields and authenticated token ID across the RPC bo
   assert.equal((await response.json()).result.receipt_id, 'test-receipt');
   assert.equal(r.calls.length, 1);
   const { mode, p_runtime_jti, p_owner_id, p_naya_id, ...fields } = lesson;
-  assert.deepEqual(r.calls[0].body, { ...fields, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001' });
+  assert.deepEqual(r.calls[0].body, { ...fields, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001', p_connections: null });
   assert.equal(r.calls[0].url, 'https://offline.invalid/rest/v1/rpc/nayanet_intelligence_commit_runtime');
 });
 
