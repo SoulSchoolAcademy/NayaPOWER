@@ -381,7 +381,7 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
     predicted = None
     if evaluation.get("selected"):
         selected = next(r for r in evaluation["rows"] if r["candidate_id"] == evaluation["selected"])
-        predicted = selected["delta_v"]
+        predicted = selected.get("signed_value", {}).get("value", selected["delta_v"])
     error = None
     d_verified = None
     if delta_v_actual is not None:
@@ -514,11 +514,11 @@ class SignedValueProfile:
     profile_id: str
     version: str
     objective: str
-    weights: Mapping[str, float] = None
+    weight_overrides: Mapping[str, float] = None
     epsilon: float = 0.10
 
     def normalized_weights(self) -> dict[str, float]:
-        source = self.weights or DEFAULT_SIGNED_VALUE_WEIGHTS
+        source = self.weight_overrides or DEFAULT_SIGNED_VALUE_WEIGHTS
         unknown = set(source) - set(SIGNED_VALUE_DIMENSIONS)
         if unknown:
             raise ValueError(f"unknown signed-value dimensions: {sorted(unknown)}")
