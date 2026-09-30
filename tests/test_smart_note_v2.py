@@ -328,3 +328,20 @@ def test_live_capture_threads_only_resolved_connections_to_writer():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
     assert "resolve_runtime_connections(capture,registry)" in workflow
     assert '"p_connections":resolved_connections' in workflow
+
+
+def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture():
+    agents = (ROOT / "AGENTS.md").read_text()
+    master = (ROOT / ".naya/MASTER-DIRECTOR-ULTRA-OPTIMIZATION-V1.md").read_text()
+    protocol = (ROOT / "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md").read_text()
+    cold = (ROOT / "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md").read_text()
+    capture = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260930-sn016-prime-judgment-rule.json").read_text())
+    assert "PRIME JUDGMENT LAW — JUDGMENT BEFORE BLIND OBEDIENCE" in agents
+    assert "I was told to" in agents
+    assert "Prime Judgment Rule — Judgment Before Blind Obedience" in master
+    assert "## 22. Prime Judgment Law — Judgment Before Blind Obedience" in protocol
+    assert "instruction is not proof of correctness" in cold.lower()
+    assert capture["smart_note_id"] == "SN-016"
+    assert capture["intelligence"]["machine_view"]["instruction_is_proof"] is False
+    assert capture["intelligence"]["machine_view"]["human_authority_preserved"] is True
+    assert capture["intelligence"]["machine_view"]["automatic_truth_ceiling"] == "CANDIDATE"
