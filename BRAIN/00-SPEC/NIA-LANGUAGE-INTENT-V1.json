@@ -1,6 +1,6 @@
 {
   "schema": "naya.nia-language.intent.v1",
-  "version": "1.0",
+  "version": "1.1",
   "status": "CANONICAL",
   "primary_capture_command": "Smart Note this",
   "primary_capture_intent": "CAPTURE_DURABLE_INTELLIGENCE",
@@ -8,6 +8,18 @@
   "explicit_constraints_override_inference": true,
   "authority_inheritance": false,
   "maximum_automatic_capture_state": "CANDIDATE",
+  "decision_value_calculus": {
+    "intent": "EVALUATE_RESPONSIBLE_VALUE",
+    "engine": "DECISION-VALUE-CALCULUS-V2.1",
+    "flow": ["RESOLVE","GATE","SCORE_Q","CALCULATE_DELTA_V","PARETO","RANK","TOP_3","EXECUTE_OR_ESCALATE"],
+    "value_creates_authority": false
+  },
+  "contribution_value": {
+    "intent": "RECORD_VERIFIED_CONTRIBUTION_VALUE",
+    "raw_activity_equals_value": false,
+    "reputation_equals_human_worth": false,
+    "reputation_equals_authority": false
+  },
   "strong_capture_aliases": [
     "smart note this",
     "make a smart note",
@@ -26,18 +38,13 @@
     "document this as intelligence",
     "make this available to future Nayas"
   ],
-  "contextual_capture_aliases": [
-    "remember this",
-    "save this",
-    "keep this",
-    "note this",
-    "make a note"
-  ],
+  "contextual_capture_aliases": ["remember this","save this","keep this","note this","make a note"],
   "safety": {
     "may_grant_authority": false,
     "may_widen_privacy": false,
     "may_promote_truth": false,
-    "may_override_explicit_prohibition": false
+    "may_override_explicit_prohibition": false,
+    "may_convert_score_to_authority": false
   },
   "canonical_intents": [
     "CAPTURE_DURABLE_INTELLIGENCE",
@@ -47,6 +54,8 @@
     "REQUEST_PRODUCTION_PROMOTION",
     "VERIFY_OUTCOME",
     "RECONCILE_CONFLICT",
-    "HANDOFF_CONTINUITY"
+    "HANDOFF_CONTINUITY",
+    "EVALUATE_RESPONSIBLE_VALUE",
+    "RECORD_VERIFIED_CONTRIBUTION_VALUE"
   ]
 }
