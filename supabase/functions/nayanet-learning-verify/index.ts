@@ -4,7 +4,10 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml";
+const WORKFLOWS = new Set([
+  ".github/workflows/live-supabase-runtime-proof.yml",
+  ".github/workflows/live-learn-proof.yml",
+]);
 const REF = "refs/heads/main";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
@@ -34,10 +37,11 @@ async function authenticateRuntime(req: Request) {
     throw new Error("GITHUB_OIDC_INVALID");
   }
 
-  const workflowRef = REPOSITORY + "/" + WORKFLOW + "@" + REF;
+  const workflowRef = String(payload.workflow_ref ?? "");
+  const expectedRefs = Array.from(WORKFLOWS).map((w) => REPOSITORY + "/" + w + "@" + REF);
   if (
     payload.repository !== REPOSITORY ||
-    payload.workflow_ref !== workflowRef ||
+    !expectedRefs.includes(workflowRef) ||
     payload.ref !== REF
   ) {
     throw new Error("WORKFLOW_BINDING_MISMATCH");

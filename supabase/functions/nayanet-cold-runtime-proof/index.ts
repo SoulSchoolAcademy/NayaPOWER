@@ -4,7 +4,10 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-supabase-runtime-proof.yml";
+const WORKFLOWS = new Set([
+  ".github/workflows/live-supabase-runtime-proof.yml",
+  ".github/workflows/live-learn-proof.yml",
+]);
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -40,9 +43,10 @@ async function auth(req: Request) {
   let payload: Record<string, unknown>;
   try { payload = (await jwtVerify(h.slice(7), JWKS, { issuer: ISSUER, audience: AUDIENCE })).payload as Record<string, unknown>; }
   catch { throw new Error("GITHUB_OIDC_INVALID"); }
-  const workflowRef = REPOSITORY + "/" + WORKFLOW + "@" + REF;
+  const workflowRef = String(payload.workflow_ref ?? "");
+  const expectedRefs = Array.from(WORKFLOWS).map((w) => REPOSITORY + "/" + w + "@" + REF);
   const repositoryMismatch = payload.repository !== REPOSITORY;
-  const workflowRefMismatch = payload.workflow_ref !== workflowRef;
+  const workflowRefMismatch = !expectedRefs.includes(workflowRef);
   const refMismatch = payload.ref !== REF;
   const repositoryMatch = !repositoryMismatch;
   const workflowRefMatch = !workflowRefMismatch;
