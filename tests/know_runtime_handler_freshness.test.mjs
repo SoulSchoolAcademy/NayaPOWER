@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {stripTypeScriptTypes} from 'node:module';
 import vm from 'node:vm';
-import {selectKnowContext,validateKnowAuthority} from '../supabase/functions/nayanet-know-runtime/know.ts';
+import {selectKnowContext,validateKnowAuthority,enrichConnectionsWithCanonical} from '../supabase/functions/nayanet-know-runtime/know.ts';
 
 const source=readFileSync(new URL('../supabase/functions/nayanet-know-runtime/index.ts',import.meta.url),'utf8');
 const code=stripTypeScriptTypes(source.replace(/^import .*;\r?\n/gm,''));
@@ -56,7 +56,7 @@ function runtime({time='2026-09-29T19:59:00Z',omitTime=false,grantPatch={},ident
       }
     };
   }};
-  vm.runInNewContext(code,{URL,Request,Response,Date:Clock,console,selectKnowContext,validateKnowAuthority,
+  vm.runInNewContext(code,{URL,Request,Response,Date:Clock,console,selectKnowContext,validateKnowAuthority,enrichConnectionsWithCanonical,
     Deno:{env:{get:key=>({SUPABASE_URL:'https://offline.invalid',SUPABASE_SERVICE_ROLE_KEY:'offline-key'})[key]},
       serve:callback=>{handler=callback;}},createRemoteJWKSet:()=>({}),
     jwtVerify:async(token,key,options)=>{authOptions.push(options);return {payload:identity};},createClient:()=>client});

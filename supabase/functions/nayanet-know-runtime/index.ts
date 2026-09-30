@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { selectKnowContext, validateKnowAuthority, type KnowRequest, type KnowGrant } from "./know.ts";
+import { selectKnowContext, validateKnowAuthority, enrichConnectionsWithCanonical, type KnowRequest, type KnowGrant, type CanonicalRelationship } from "./know.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -64,7 +64,16 @@ async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
     .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at,connections")
     .eq("owner_id",OWNER_ID);
   if(error) throw error;
-  return data??[];
+  const blocks=data??[];
+  // ONE GRAPH: join the canonical relationship rows (system of record) onto
+  // the block projection's connections BEFORE selection, so the V2 edge
+  // invariant is enforced on the same pre-selection snapshot. No re-fetch
+  // between choosing a block and reading its edges.
+  const rel=await admin.from("nayanet_brain_relationships")
+    .select("source_id,target_id,relationship_type,status,epistemic_state,visibility,consent_ref,valid_from,valid_until,applicability")
+    .eq("owner_id",OWNER_ID);
+  if(rel.error) throw rel.error;
+  return enrichConnectionsWithCanonical(blocks,((rel.data??[]) as CanonicalRelationship[]));
 }
 
 async function readReceipt(admin:ReturnType<typeof adminClient>,id:string){

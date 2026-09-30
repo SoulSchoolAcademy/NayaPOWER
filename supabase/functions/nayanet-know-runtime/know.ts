@@ -6,6 +6,30 @@ export type KnowRequest = {
   required_capability: string;
 };
 
+// A denormalized outbound graph edge, stamped by the block writer at write
+// time and read from the same row/snapshot as the block itself (no TOCTOU
+// re-fetch). The V2 fields mirror the Graph Relationship Contract V2 edge
+// semantics (see BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json
+// and 0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json). They are optional so edges
+// written before the writer stamped them keep working: the selector enforces
+// whichever V2 fields an edge declares, and the block-level eligibility gates
+// (isEligibleBlock) remain the backstop. Once the writer stamps full V2
+// metadata on every new edge, the null-tolerance below can be tightened.
+export type BlockConnection = {
+  target_block_id?: string | null;
+  relationship_type?: string | null;
+  status?: string | null;
+  epistemic_state?: string | null;
+  visibility?: string | null;
+  consent_ref?: string | null;
+  valid_from?: string | null;
+  valid_until?: string | null;
+  applicability?: {
+    state?: string | null;
+    task_classes?: string[] | null;
+  } | null;
+};
+
 export type IntelligentBlock = {
   intelligent_block_id?: string | null;
   owner_id?: string | null;
@@ -21,8 +45,11 @@ export type IntelligentBlock = {
   updated_at?: string | null;
   // Outbound graph edges, written by the block writer at write time and read
   // from the same row/snapshot as the block itself. Retrieval consumes these
-  // edges: the graph is load-bearing, not decorative.
-  connections?: Array<{ target_block_id?: string | null; relationship_type?: string | null }> | null;
+  // edges: the graph is load-bearing, not decorative. The live read path
+  // (index.ts readEligibleUniverse) enriches each connection with the V2 edge
+  // metadata from the canonical nayanet_brain_relationships row before
+  // selection, so the selector enforces the contract on the system of record.
+  connections?: BlockConnection[] | null;
 };
 
 export type RelatedContextEntry = {
@@ -103,18 +130,128 @@ const SUPERSESSION_EDGE="SUPERSEDES";
 const MAX_RELATED=5;
 const MAX_SUPERSESSION_HOPS=3;
 
-function blockConnections(block:IntelligentBlock):Array<{target_block_id:string;relationship_type:string}>{
+function blockConnections(block:IntelligentBlock):BlockConnection[]{
   const raw=block.connections;
   if(!Array.isArray(raw)) return [];
-  const out:Array<{target_block_id:string;relationship_type:string}>=[];
+  const out:BlockConnection[]=[];
   for(const c of raw){
-    const target=String((c as any)?.target_block_id??"").trim();
-    const rel=String((c as any)?.relationship_type??"").trim().toUpperCase();
+    const o=c as any;
+    const target=String(o?.target_block_id??"").trim();
+    const rel=String(o?.relationship_type??"").trim().toUpperCase();
     if(!target) continue;
     if(!EDGE_VOCABULARY.has(rel)) continue;
-    out.push({target_block_id:target,relationship_type:rel});
+    // Preserve the V2 edge metadata when the writer or the read-path
+    // enrichment stamped it; absence means "not declared", not "invalid".
+    const conn:BlockConnection={target_block_id:target,relationship_type:rel};
+    for(const k of ["status","epistemic_state","visibility","consent_ref","valid_from","valid_until"] as const){
+      if(o?.[k]!==undefined&&o?.[k]!==null) conn[k]=o[k];
+    }
+    const app=o?.applicability;
+    if(app&&typeof app==="object"&&!Array.isArray(app)) conn.applicability=app;
+    out.push(conn);
   }
   return out;
+}
+
+// Graph Relationship Contract V2 edge-selection invariant, adapted for the
+// live retrieval path. Mirrors the acceptance spec
+// (BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json) and the
+// proof-harness predicate graphRelationshipEligible in
+// nayanet-cold-runtime-proof, with one deliberate policy difference:
+//
+// POLICY (reviewable; D1 may tighten): an edge is judged on what it declares.
+// Clauses whose metadata is absent fall back to the block-level gates in
+// isEligibleBlock. In particular, applicability.state === "UNKNOWN" (the
+// writer's default for unclassified edges) does NOT exclude: classification
+// is the LEARN node's job (deriveGraphApplicability), and excluding
+// unclassified edges would halt all edge-driven retrieval until the
+// classifier runs. NOT_APPLICABLE always excludes; APPLICABLE requires the
+// request's task class. Consent follows the standing law: PRIVATE BY DEFAULT,
+// SHARED BY CHOICE — DERIVED_SHARED without a consent_ref is excluded.
+export function isSelectableEdge(
+  conn:BlockConnection,
+  req:KnowRequest,
+  now:Date=new Date()
+):{ok:boolean;reason:string}{
+  const no=(reason:string)=>({ok:false as const,reason});
+  const nowMs=now.getTime();
+  // Temporal validity: not-yet-valid and expired edges cannot steer retrieval.
+  if(conn.valid_from!==undefined&&conn.valid_from!==null&&conn.valid_from!==""){
+    const from=parsedTime(conn.valid_from);
+    if(from===null||!Number.isFinite(from)) return no("EDGE_VALID_FROM_MALFORMED");
+    if(from>nowMs) return no("EDGE_NOT_YET_VALID");
+  }
+  if(conn.valid_until!==undefined&&conn.valid_until!==null&&conn.valid_until!==""){
+    const until=parsedTime(conn.valid_until);
+    if(until===null||!Number.isFinite(until)) return no("EDGE_VALID_UNTIL_MALFORMED");
+    if(until<nowMs) return no("EDGE_EXPIRED");
+  }
+  // Status: a non-ACTIVE edge is not current truth.
+  if(conn.status!==undefined&&conn.status!==null&&String(conn.status).toUpperCase()!=="ACTIVE")
+    return no("EDGE_STATUS_NOT_ACTIVE");
+  // Epistemic: denylist, not allowlist. The writer stamps CANDIDATE; the edge
+  // graduates through verification. Only terminal states exclude.
+  const epi=String(conn.epistemic_state??"").toUpperCase();
+  if(epi&&["SUPERSEDED","INVALIDATED","REVOKED","REJECTED"].includes(epi))
+    return no("EDGE_EPISTEMIC_TERMINAL");
+  // Consent: shared visibility without a consent reference is excluded.
+  if(String(conn.visibility??"").toUpperCase()==="DERIVED_SHARED"&&!conn.consent_ref)
+    return no("EDGE_SHARED_WITHOUT_CONSENT");
+  // Applicability: explicit classification is enforced; UNKNOWN is unclassified.
+  const app=conn.applicability;
+  if(app&&typeof app==="object"&&!Array.isArray(app)){
+    const state=String((app as any).state??"").toUpperCase();
+    if(state==="NOT_APPLICABLE") return no("EDGE_NOT_APPLICABLE");
+    if(state==="APPLICABLE"){
+      const classes=Array.isArray((app as any).task_classes)?(app as any).task_classes.map(String):[];
+      if(!classes.includes(req.task_class)) return no("EDGE_TASK_CLASS_MISMATCH");
+    }
+  }
+  return {ok:true as const,reason:"EDGE_V2_SELECTABLE"};
+}
+
+// Join canonical relationship rows (the ONE GRAPH system of record) onto the
+// block projection's connections before selection. Pure and unit-testable;
+// the live path calls it in readEligibleUniverse so selection and edge
+// metadata resolve from the same pre-selection snapshot (no TOCTOU re-fetch
+// between choosing a block and reading its edges).
+export type CanonicalRelationship={
+  source_id?: string | null;
+  target_id?: string | null;
+  relationship_type?: string | null;
+  status?: string | null;
+  epistemic_state?: string | null;
+  visibility?: string | null;
+  consent_ref?: string | null;
+  valid_from?: string | null;
+  valid_until?: string | null;
+  applicability?: any;
+};
+export function enrichConnectionsWithCanonical(
+  blocks:IntelligentBlock[],
+  relationships:CanonicalRelationship[]
+):IntelligentBlock[]{
+  const byEdge=new Map<string,CanonicalRelationship>();
+  for(const r of relationships??[]){
+    const key=String(r.source_id??"")+"|"+String(r.target_id??"")+"|"+String(r.relationship_type??"").toUpperCase();
+    if(!byEdge.has(key)) byEdge.set(key,r);
+  }
+  return (blocks??[]).map((b)=>{
+    const id=String(b.intelligent_block_id??"");
+    const conns=Array.isArray(b.connections)?b.connections:[];
+    const enriched=conns.map((c)=>{
+      const o={...(c as any)};
+      const key=id+"|"+String(o.target_block_id??"")+"|"+String(o.relationship_type??"").toUpperCase();
+      const r=byEdge.get(key);
+      if(!r) return o;
+      for(const k of ["status","epistemic_state","visibility","consent_ref","valid_from","valid_until"] as const){
+        if((r as any)[k]!==undefined&&(r as any)[k]!==null) o[k]=(r as any)[k];
+      }
+      if(r.applicability&&typeof r.applicability==="object") o.applicability=r.applicability;
+      return o;
+    });
+    return {...b,connections:enriched};
+  });
 }
 
 // Follow SUPERSEDES edges from the primary selection toward the current truth.
@@ -124,24 +261,32 @@ function blockConnections(block:IntelligentBlock):Array<{target_block_id:string;
 function chaseSupersession(
   req:KnowRequest,
   selected:IntelligentBlock,
-  byId:Map<string,IntelligentBlock>
-):{block:IntelligentBlock;followed:string[]}{
+  byId:Map<string,IntelligentBlock>,
+  now:Date=new Date()
+):{block:IntelligentBlock;followed:string[];blocked:string[]}{
   let current=selected;
   const followed:string[]=[];
+  const blocked:string[]=[];
   const visited=new Set<string>([String(current.intelligent_block_id)]);
   for(let hop=0;hop<MAX_SUPERSESSION_HOPS;hop++){
     const edge=blockConnections(current).find((c)=>c.relationship_type===SUPERSESSION_EDGE);
     if(!edge) break;
-    if(visited.has(edge.target_block_id)) break;
-    const target=byId.get(edge.target_block_id);
+    const tid=String(edge.target_block_id??"");
+    if(visited.has(tid)) break;
+    // V2 edge invariant: a supersession edge that is expired, not yet valid,
+    // non-ACTIVE, terminal, shared-without-consent, or not applicable cannot
+    // move selection. The walk stops at the last selectable truth.
+    const sel=isSelectableEdge(edge,req,now);
+    if(!sel.ok){ blocked.push(tid+":"+sel.reason); break; }
+    const target=byId.get(tid);
     if(!target) break;
     if(!isEligibleBlock(req,target)) break;
     if(!deriveCapabilities(target).includes(req.required_capability)) break;
-    visited.add(edge.target_block_id);
-    followed.push(edge.target_block_id);
+    visited.add(tid);
+    followed.push(tid);
     current=target;
   }
-  return {block:current,followed};
+  return {block:current,followed,blocked};
 }
 
 // One-hop related context from the selected block's outbound edges.
@@ -152,15 +297,20 @@ function chaseSupersession(
 function relatedContext(
   req:KnowRequest,
   selected:IntelligentBlock,
-  byId:Map<string,IntelligentBlock>
+  byId:Map<string,IntelligentBlock>,
+  now:Date=new Date()
 ):{entries:RelatedContextEntry[];conflict:boolean}{
   const selectedId=String(selected.intelligent_block_id);
   const seen=new Set<string>();
   const scored:Array<{entry:RelatedContextEntry;rank:number;updated:number;id:string}>=[];
   for(const conn of blockConnections(selected)){
-    const tid=conn.target_block_id;
+    const tid=String(conn.target_block_id??"");
     if(tid===selectedId||seen.has(tid)) continue;
     seen.add(tid);
+    // V2 edge invariant: expired, not-yet-valid, non-ACTIVE, terminal,
+    // shared-without-consent, or not-applicable edges cannot annotate the
+    // result, even when the target block itself is eligible.
+    if(!isSelectableEdge(conn,req,now).ok) continue;
     const target=byId.get(tid);
     if(!target) continue;
     if(!isEligibleBlock(req,target)) continue;
@@ -263,7 +413,7 @@ export function isEligibleBlock(req:KnowRequest,block:IntelligentBlock):boolean{
   return true;
 }
 
-export function selectKnowContext(req:KnowRequest,blocks:IntelligentBlock[]):KnowResult{
+export function selectKnowContext(req:KnowRequest,blocks:IntelligentBlock[],now:Date=new Date()):KnowResult{
   const miss=(reason:string):KnowResult=>({
     schema:"naya.know.context-result.v1",status:"MISS",task_id:req.task_id,required_capability:req.required_capability,
     selected_block_id:null,selected_epistemic_state:null,selected_provenance:null,selected_evidence_refs:[],
@@ -293,12 +443,14 @@ export function selectKnowContext(req:KnowRequest,blocks:IntelligentBlock[]):Kno
   }
 
   const primary=eligible[0].block;
-  const chased=chaseSupersession(req,primary,byId);
+  const chased=chaseSupersession(req,primary,byId,now);
   const selected=chased.block;
-  const related=relatedContext(req,selected,byId);
+  const related=relatedContext(req,selected,byId,now);
   const reason=chased.followed.length>0
     ? `SUPERSEDES_EDGE_FOLLOWED:${chased.followed.join(">")}`
-    : "OWNER_SCOPED_CURRENT_BLOCK_MATCHES_REQUIRED_CAPABILITY";
+    : chased.blocked.length>0
+      ? `SUPERSEDES_EDGE_BLOCKED:${chased.blocked.join(",")}`
+      : "OWNER_SCOPED_CURRENT_BLOCK_MATCHES_REQUIRED_CAPABILITY";
 
   return {
     schema:"naya.know.context-result.v1",status:"HIT",task_id:req.task_id,required_capability:req.required_capability,
