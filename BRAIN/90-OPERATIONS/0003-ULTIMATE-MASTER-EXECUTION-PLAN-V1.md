@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file  
-**Evidence snapshot base:** `fa5c0a063c55badb6960c452dbf8291aad390355`  
+**Evidence snapshot base:** `a07728a456ffb8d662f83b48e9f625ea3dc9779e`  
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -29,8 +29,9 @@ Do not build a second brain, graph, learning pipeline, authority system, receipt
 - Smart Note faithful rendering/exact-content reuse source is integrated. Live SN-004 run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT** until current applicability-aware causal runtime is deployed and rerun.
 - #1056 applicability-aware causal source is integrated; deployed causal-runtime parity remains **MISMATCH**.
 - #1070 collective-wisdom source hardening is integrated at `af065bb4`: explicit Smart Connect consent, source-owner binding, safe-column collective reads, revocation propagation after last explicit participation, and immutable revoked-history semantics. Migration `20260930022500` is **PENDING_REVIEW_NOT_PRODUCTION_APPLIED**.
-- Current main `fa5c0a063c55badb6960c452dbf8291aad390355` has green Kernel `36660385887`, Collective `36660385828`, Live Verified AI Action `36660385842`, and Live CVO `36660385815`.
-- Governed Production Promotion `36660385812` correctly failed closed with `protected_change_requires_explicit_promotion`; receipt artifact `11074056938`, SHA-256 `71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a`.
+- Current main `a07728a456ffb8d662f83b48e9f625ea3dc9779e` has green Kernel `36660618943`, Collective `36660618958`, Live Verified AI Action `36660618982`, and Live CVO `36660619078`.
+- Governed Production Promotion `36660618920` correctly failed closed with `protected_change_requires_explicit_promotion`; receipt artifact `11073514533`, SHA-256 `4b0904f126fc411b3658871728c08a19116a6d1d48ba05e7f23135925d59f546`.
+- #1077 relationship contract V2 is integrated at `a07728a4`: machine-validatable edge quality, evidence, visibility, consent metadata, temporal/applicability/supersession validation and V1-upgrade classification are source-proven only. No production graph migration or generalized CONNECT runtime claim is made.
 - #1042 mission binding semantics remain a Human Director authority-model decision.
 - Coda 2 retains ACT replay/response-loss/concurrency/recovery ownership.
 - #1044 is protocol-ready but a genuinely fresh entrant + second successor have not produced a PASS receipt.
@@ -38,7 +39,7 @@ Do not build a second brain, graph, learning pipeline, authority system, receipt
 
 ## 3. CURRENT FRONTIER — SOURCE COMPLETE ENOUGH TO DEPLOY, PRODUCTION PROOF STILL BLOCKED
 
-The important source cluster is now integrated through `fa5c0a06`:
+The important source cluster is now integrated through `a07728a4`:
 
 - readiness failure discrimination;
 - current-truth machine + human continuation projection;
@@ -54,19 +55,19 @@ The important source cluster is now integrated through `fa5c0a06`:
 This is **source integration**, not production parity.
 
 Latest governed automatic promotion:
-- run `36660385812`;
-- exact source `fa5c0a063c55badb6960c452dbf8291aad390355`;
+- run `36660618920`;
+- exact source `a07728a456ffb8d662f83b48e9f625ea3dc9779e`;
 - verdict **DENY**;
 - reason `protected_change_requires_explicit_promotion`;
-- artifact `11074056938`;
-- artifact SHA-256 `71cc0d28993abd8905ec2360430b090b48a2fc75cec145418a794c5f79630c5a`.
+- artifact `11073514533`;
+- artifact SHA-256 `4b0904f126fc411b3658871728c08a19116a6d1d48ba05e7f23135925d59f546`.
 
 That denial is the correct governance behavior. The next consequential crossing is explicit Human Director **`DEPLOY`** for the exact reconciled revision through the existing governed workflow.
 
 ## 4. TOP 10 — DEPENDENCY ORDER
 
 ### 1 — Current-truth convergence
-Integrate this exact `fa5c0a06` five-surface projection refresh and require a fresh Current Truth Resolver result. PASS requires exact live main, source/runtime state, open work, warnings/unknowns, one next action and Max-10 to agree without stale operational projection.
+Integrate this exact `a07728a4` five-surface projection refresh and require a fresh Current Truth Resolver result. PASS requires exact live main, source/runtime state, open work, warnings/unknowns, one next action and Max-10 to agree without stale operational projection.
 
 ### 2 — Exact governed production parity
 Shawn explicitly authorizes **`DEPLOY`** for the exact reconciled main. Deploy only through the existing governed lane. PASS requires exact deployed parity for:
@@ -155,4 +156,4 @@ with current production evidence, recovery, security, privacy/consent and measur
 
 ## 8. EXACT NEXT ACTION
 
-**Issue #66: integrate this exact-main `fa5c0a06` projection refresh and require a fresh successful Current Truth Resolver run. Then Shawn explicitly says `DEPLOY` for that exact reconciled revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal and #1062 live two-owner proof. Do not weaken the protected-path gate. Coda 2 replay/recovery continues independently while deployment waits.**
+**Issue #66: integrate this exact-main `a07728a4` projection refresh and require a fresh successful Current Truth Resolver run. Then Shawn explicitly says `DEPLOY` for that exact reconciled revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal and #1062 live two-owner proof. Do not weaken the protected-path gate. Coda 2 replay/recovery continues independently while deployment waits.**
