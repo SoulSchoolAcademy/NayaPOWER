@@ -59,7 +59,7 @@ jobs:
           set -euo pipefail
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
-          if [[ -n "$before" && "$before" != "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" ]]; then
+          if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
             mapfile -t changed < <(git diff --name-only "$before" "$after")
           else
             mapfile -t changed < <(git show --pretty="" --name-only "$after")
