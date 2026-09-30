@@ -1313,6 +1313,15 @@
       "statement_count": 8,
       "bytes": 1026,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930023000",
+      "name": "collective_wisdom_revocation_projection_v1",
+      "path": "supabase/migrations/20260930023000_collective_wisdom_revocation_projection_v1.sql",
+      "sha256": "b85069465b302ef2256daa3743636b6b3d574c3fccd31312b0fbce7383044ff3",
+      "statement_count": 23,
+      "bytes": 2922,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
