@@ -1,0 +1,123 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-014",
+  "capture_id": "20260930-sn014-compounding-imperative",
+  "title": "The Compounding Imperative — Everything Teaches; Only the Captured Compounds",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "COMPOUNDING_INTELLIGENCE",
+  "subtopic": "CAPTURE_RETAIN_SIMPLIFY",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-09-30",
+    "captured_at_utc": "2026-09-30T19:58:14Z",
+    "source_type": "human_director_operating_doctrine",
+    "source_reference": "Shawn Vibert direct operating doctrine supplied 2026-09-30 as IB-OP-002 / The Compounding Imperative. Distilled meaning retained; raw dictation intentionally not stored."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "COMPOUNDING-INTELLIGENCE",
+    "subtopic_slug": "CAPTURE-RETAIN-SIMPLIFY"
+  },
+  "intelligence": {
+    "essence": "Every substantive action, output, success, failure, refusal, recovery, and result can teach the system, but only distilled, documented, connected, retrievable learning can compound. The standing obligation is to capture the valuable delta, understand it, retain it, organize it, share it with the team, simplify what it makes obsolete, and make the next action smarter.",
+    "human_view": {
+      "meaning": "Nothing useful we learn should die with the moment. If something worked, preserve why. If it failed, preserve what it taught. If a lesson makes the system faster, smarter, safer, or simpler, turn that lesson into reusable intelligence so the next Naya starts ahead instead of relearning it.",
+      "why_it_matters": "Without retained learning, activity is single-use motion. With disciplined capture and reuse, each cycle lowers future reconstruction cost and increases capability.",
+      "simple_rule": "Before closing substantive work ask: what did this teach, where is the durable lesson, can the next Naya retrieve it, and what can now be simplified?"
+    },
+    "simple_view": {
+      "child": "Save the useful lesson from every important job so the next teammate does not have to learn it all over again.",
+      "grandma": "Keep the wisdom, not the clutter. Write down the useful lesson, put it where the next person can find it, and remove old steps that the new lesson makes unnecessary."
+    },
+    "naya_view": {
+      "purpose": "Make verified experience compound across Nayas instead of evaporating between execution cycles.",
+      "architectural_rule": "Use the existing Event → Intelligent Block → Lineage → Relationship → Index → Receipt → retrieval/verification path. Do not create a second memory system, raw transcript archive, or parallel learning authority.",
+      "operating_loop": "ACT → OBSERVE → DISTILL → RECONCILE → CAPTURE → CONNECT → RETAIN → RETRIEVE → APPLY → VERIFY → LEARN → SIMPLIFY → SUCCESSOR",
+      "completion_rule": "Substantive work is not fully closed until its durable lesson is either captured/reconciled into existing intelligence or explicitly classified as not worth permanent retention."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "standing_loop": [
+        "CAPTURE_OUTCOME_AND_EVIDENCE",
+        "DISTILL_MINIMUM_DURABLE_LESSON",
+        "RECONCILE_EXISTING_BLOCKS",
+        "RETAIN_CANONICALLY",
+        "CONNECT_AND_INDEX",
+        "MAKE_RETRIEVABLE",
+        "SIMPLIFY_OBSOLETE_PROCESS",
+        "HAND_OFF_TO_SUCCESSOR"
+      ],
+      "admission_gate": [
+        "future_behavior_value",
+        "uniqueness",
+        "provenance",
+        "owner_scope",
+        "applicability",
+        "conflict",
+        "future_use"
+      ],
+      "exclude": [
+        "ephemeral_chatter",
+        "transient_machine_output",
+        "raw_transcript_as_brain_memory",
+        "duplicate_low_value_notes"
+      ],
+      "closure_questions": [
+        "what_did_this_teach",
+        "where_is_it_retained",
+        "can_successor_retrieve_it",
+        "what_became_obsolete"
+      ],
+      "reuse_metric": "measurable reduction in repeated reconstruction/repeated mistakes caused by retained intelligence",
+      "review_question": "Is retained intelligence actually being reused to improve future behavior?"
+    },
+    "decisions": [
+      "Everything is potential learning evidence, but not everything deserves permanent memory.",
+      "Capture the smallest durable lesson that can improve future behavior; preserve provenance and evidence.",
+      "Successful outcomes, failures, refusals, recoveries, negative results, and repeated human corrections can all produce valuable learning.",
+      "Undocumented or unretrievable learning does not compound.",
+      "A lesson retained by one seat but invisible to the team does not fully compound.",
+      "Prefer reconciliation with existing canonical intelligence over creating duplicates.",
+      "Prefer simplifying or removing obsolete process after a lesson is learned instead of endlessly adding machinery.",
+      "Repeated human reconstruction is evidence that capture, retrieval, or handoff failed.",
+      "Capture is not learning theater: retained intelligence must later be retrieved and behaviorally useful.",
+      "AUTO-CAPTURE does not imply AUTO-RATIFY; epistemic state and authority remain explicit."
+    ],
+    "priority": "This doctrine operationalizes the LEARN stage as daily working behavior and is the mechanism by which NayaPOWER becomes more capable from experience rather than merely more active.",
+    "connections": [
+      {
+        "type": "REFINES",
+        "target": "SN-013 — Decision Efficiency / Intelligent Autonomy"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-003 — Naya Continuation Engine"
+      },
+      {
+        "type": "REFINES",
+        "target": "SN-004 — Act-First Autonomy"
+      },
+      {
+        "type": "IMPLEMENTS",
+        "target": "Master Director — COMPOUNDING CAPTURE LAW"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NayaPOWER North Star — Nayas do not lose memory"
+      },
+      {
+        "type": "FEEDS",
+        "target": "LEARN → EVOLVE → cold-successor continuity"
+      }
+    ],
+    "uncertainty": "The exact optimal cadence for auditing whether retained intelligence is being reused is not yet empirically established. The doctrine is DIRECTOR-STATED operating guidance and remains CANDIDATE as machine intelligence until repeated real outcomes justify stronger epistemic promotion.",
+    "applicability": "All substantive diagnoses, repairs, decisions, doctrines, failures, successes, recoveries, deployments, refusals, proofs, and surprising results. Excludes ephemeral chatter, raw transcript storage, and transient machine exhaust that fails the Smart Note admission gate.",
+    "learning_lesson": "Compounding requires both retention and reuse. Capturing more information without retrieval, applicability, behavior change, and simplification creates memory volume, not intelligence.",
+    "successor_effect": "Before ending meaningful work, determine the durable lesson, reconcile it with existing intelligence, preserve evidence, make it retrievable, and leave the next Naya starting from that stronger state. If no durable lesson exists, explicitly leave nothing rather than manufacturing noise."
+  }
+}
