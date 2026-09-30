@@ -17,14 +17,14 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `0fb3612344cd28155945e0f33336aaca5b5ef31d`:
+At evidence snapshot `309f33a7d6543e744ba29986402b7d00d71d8534`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
 - #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
 - Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
 - The next active control-plane issue is #66.
-- Current Truth Resolver run `36657001373` succeeded at `9ab4923d` and published the generated continuation brief + live open-PR frontier. Current main is newer; this reconciliation requires a fresh resolver run after integration.
+- Current Truth Resolver run `36657001373` succeeded at `9ab4923d` and published the generated continuation brief + live open-PR frontier. #1067 semantic drift guard is merged at `309f33a7`; this projection refresh must now be validated by a fresh resolver run that reports no substantive-drift stale warning.
 - Cached-derived authority revocation is **TEST-LEVEL VERIFIED** and #1046 ACT denial coverage is merged at `7847680f`; mission semantics remain unresolved.
 - Live KNOW run `36653558611` selected valid current intelligence; #1060's contextual proof-oracle repair is merged at `c41c3a64`. Fresh HIT/MISS + independent reread remains pending.
 - SN-004 learning run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT**. #1051 and #1056 source repairs are merged, but the causal runtime is not deployed at source parity.
@@ -47,4 +47,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: integrate the post-cluster current-truth reconciliation and require a fresh resolver run. Then explicit Human Director `DEPLOY` is required for the resulting exact main before the causal runtime can claim source/deployed parity. Coda 2 replay/recovery and #1062 two-owner proof work continue independently while that consequential boundary waits.**
+**Issue #66: integrate this post-guard projection refresh and require a fresh resolver run with no stale operational projection. Then explicit Human Director `DEPLOY` is required for the resulting exact main before the causal runtime can claim source/deployed parity. Coda 2 replay/recovery and #1062 two-owner proof work continue independently while that consequential boundary waits.**
