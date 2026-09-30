@@ -1315,6 +1315,15 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20260929210000",
+      "name": "nayanet_action_idempotency_atomicity",
+      "path": "supabase/migrations/20260929210000_nayanet_action_idempotency_atomicity.sql",
+      "sha256": "aeca2ca7d6a4e798d1cde3d4cfa28ee54dd1760aa38e176fbbb61ec5e6634cf3",
+      "statement_count": 2,
+      "bytes": 306,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20260930022500",
       "name": "harden_collective_wisdom_consent_revocation_v1",
       "path": "supabase/migrations/20260930022500_harden_collective_wisdom_consent_revocation_v1.sql",
