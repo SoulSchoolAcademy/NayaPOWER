@@ -338,3 +338,206 @@ def test_negative_verified_contribution_is_evidence_not_automatic_point_punishme
     )
     assert receipt["cvs"] < 0
     assert receipt["points_awarded"] == 0
+
+def test_canonical_signed_value_preserves_negative_magnitude(profile):
+    from kernel.value_calculus import SignedValueProfile, score_signed_value
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {d: 0.0 for d in vp.weights()}
+    dims["objective_alignment"] = -0.8
+    conf = {d: 1.0 for d in vp.weights()}
+    result = score_signed_value(dims, conf, vp)
+    assert result["value"] == pytest.approx(-10.0 * 0.8 * vp.weights()["objective_alignment"], rel=1e-9)
+    assert result["value"] < 0
+    assert result["value_interval"][0] == pytest.approx(result["value"])
+    assert result["value_interval"][1] == pytest.approx(result["value"])
+
+
+def test_canonical_signed_value_zero_is_not_forced_positive(profile):
+    from kernel.value_calculus import SignedValueProfile, score_signed_value
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {d: 0.0 for d in vp.weights()}
+    conf = {d: 1.0 for d in vp.weights()}
+    result = score_signed_value(dims, conf, vp)
+    assert result["value"] == pytest.approx(0.0)
+    assert result["value_interval"] == pytest.approx((0.0, 0.0))
+
+
+def test_uncertainty_is_visible_and_not_fake_precision(profile):
+    from kernel.value_calculus import SignedValueProfile, score_signed_value
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {d: 0.0 for d in vp.weights()}
+    dims["objective_alignment"] = 0.92
+    conf = {d: 0.35 for d in vp.weights()}
+    result = score_signed_value(dims, conf, vp)
+    assert 0 < result["value"] <= 10
+    assert result["confidence"] == pytest.approx(0.35)
+    assert result["value_interval"][0] < result["value"] < result["value_interval"][1]
+    assert result["interval_method"] == "weighted_uncertainty_envelope_v1"
+
+
+def test_canonical_resolution_has_four_machine_outcomes(profile):
+    from kernel.value_calculus import (
+        DECISION_OUTCOMES,
+        SignedValueProfile,
+        evaluate_decision_architecture,
+    )
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {
+        "base": {d: 0.0 for d in vp.weights()},
+        "a": {d: 0.0 for d in vp.weights()},
+        "b": {d: 0.0 for d in vp.weights()},
+    }
+    dims["a"]["objective_alignment"] = 1.0
+    dims["b"]["objective_alignment"] = 0.7
+    conf = {cid: {d: 0.95 for d in vp.weights()} for cid in dims}
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9)
+    b = cand("b", B=8)
+    result = evaluate_decision_architecture(
+        [base, a, b],
+        "base",
+        profile,
+        vp,
+        value_dimensions=dims,
+        value_confidence=conf,
+    )
+    assert result["resolution"] == "ACT"
+    assert result["selected"] == "a"
+    assert len(result["top10"]) == 3
+    assert len(result["top3"]) == 3
+    assert set(DECISION_OUTCOMES) == {"ACT", "READ_MORE", "ASK", "REFUSE"}
+
+
+def test_hard_gate_precedes_high_signed_value(profile):
+    from kernel.value_calculus import SignedValueProfile, evaluate_decision_architecture
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = { "bad": {d: 1.0 for d in vp.weights()} }
+    conf = { "bad": {d: 1.0 for d in vp.weights()} }
+    bad = cand("bad", B=100, hard_violation=True)
+    result = evaluate_decision_architecture([bad], "bad", profile, vp, value_dimensions=dims, value_confidence=conf)
+    assert result["resolution"] == "REFUSE"
+    assert result["selected"] is None
+
+
+def test_build_receipt_uses_signed_ten_point_verified_value():
+    from kernel.value_calculus import build_decision_receipt
+
+    receipt = build_decision_receipt(
+        decision_id="signed-d-1",
+        objective="test",
+        baseline_id="base",
+        stakeholders=["human-director"],
+        horizon="bounded",
+        evaluation={
+            "decision": "EXECUTE",
+            "resolution": "ACT",
+            "selected": "a",
+            "rows": [],
+            "top3": [],
+            "frontier": [],
+            "selected_signed_value": -10.0,
+            "selected_quality": 9.5,
+            "selected_confidence": 0.96,
+            "selected_value_interval": (-10.0, -9.1),
+        },
+        authority_basis="standing",
+        evidence_refs=["test:e"],
+        observation_window={"status": "closed"},
+        verification="VERIFIED_PASS",
+        delta_v_actual=-10.0,
+    )
+    assert receipt["decision_resolution"] == "ACT"
+    assert receipt["signed_value"] == pytest.approx(-10.0)
+    assert receipt["quality"] == pytest.approx(9.5)
+    assert receipt["confidence"] == pytest.approx(0.96)
+    assert receipt["value_interval"] == pytest.approx((-10.0, -9.1))
+    assert receipt["d_verified"] == pytest.approx(-10.0)
+
+
+def test_uncertain_ordering_reads_more_when_cheap_evidence_can_change_winner(profile):
+    from kernel.value_calculus import SignedValueProfile, evaluate_decision_architecture
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {
+        "base": {d: 0.0 for d in vp.weights()},
+        "a": {d: 0.0 for d in vp.weights()},
+        "b": {d: 0.0 for d in vp.weights()},
+    }
+    dims["a"]["objective_alignment"] = 0.60
+    dims["b"]["objective_alignment"] = 0.59
+    conf = {cid: {d: 0.95 for d in vp.weights()} for cid in dims}
+    conf["a"]["objective_alignment"] = 0.50
+    conf["b"]["objective_alignment"] = 0.50
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9, conf=0.50)
+    b = cand("b", B=9, conf=0.50)
+    result = evaluate_decision_architecture(
+        [base, a, b], "base", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+        cheap_evidence_available=True,
+    )
+    assert result["resolution"] == "READ_MORE"
+
+
+def test_missing_authority_escalates_to_ask(profile):
+    from kernel.value_calculus import SignedValueProfile, evaluate_decision_architecture
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {"a": {d: 1.0 for d in vp.weights()}}
+    conf = {"a": {d: 0.95 for d in vp.weights()}}
+    q, c = quality(9.5, 0.95)
+    a = Candidate("a", q, c, pv(B=9, conf=0.95), authorized=False)
+    result = evaluate_decision_architecture(
+        [a], "a", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    assert result["resolution"] == "ASK"
+    assert result["resolution_reason"] == "AUTHORITY_REQUIRED"
+
+
+def test_independent_canonical_recompute_matches_receipt(profile):
+    from kernel.value_calculus import (
+        SignedValueProfile,
+        build_decision_receipt,
+        evaluate_decision_architecture,
+        independent_recompute_decision_architecture,
+    )
+
+    vp = SignedValueProfile(profile_id="signed-test", version="2.1", objective=profile.objective)
+    dims = {
+        "base": {d: 0.0 for d in vp.weights()},
+        "a": {d: 0.0 for d in vp.weights()},
+    }
+    dims["a"]["objective_alignment"] = 1.0
+    conf = {cid: {d: 0.95 for d in vp.weights()} for cid in dims}
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9)
+    ev = evaluate_decision_architecture(
+        [base, a], "base", profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    receipt = build_decision_receipt(
+        decision_id="canonical-recompute-1",
+        objective=profile.objective,
+        baseline_id="base",
+        stakeholders=["human-director"],
+        horizon="bounded",
+        evaluation=ev,
+        authority_basis="standing",
+        evidence_refs=["test:canonical-recompute"],
+        observation_window={"status": "open"},
+        verification="UNVERIFIED",
+    )
+    reread = independent_recompute_decision_architecture(
+        receipt, [base, a], profile, vp,
+        value_dimensions=dims, value_confidence=conf,
+    )
+    assert reread["matches_resolution"]
+    assert reread["matches_selected"]
+    assert reread["matches_signed_value"]
+    assert reread["matches_quality"]
