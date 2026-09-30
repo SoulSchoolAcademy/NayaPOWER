@@ -4,7 +4,10 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
 const REPOSITORY = "SoulSchoolAcademy/NayaPOWER";
-const WORKFLOW = ".github/workflows/live-intelligence-commit-proof.yml";
+const WORKFLOWS = new Set([
+  ".github/workflows/live-intelligence-commit-proof.yml",
+  ".github/workflows/live-connect-proof.yml",
+]);
 const REF = "refs/heads/main";
 const NAYA_ID = "NAYA-NODE-0001";
 const OWNER_ID = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
@@ -26,8 +29,9 @@ async function authenticate(req: Request) {
   } catch {
     throw new Error("GITHUB_OIDC_INVALID");
   }
-  const workflowRef = REPOSITORY + "/" + WORKFLOW + "@" + REF;
-  if (payload.repository !== REPOSITORY || payload.workflow_ref !== workflowRef || payload.ref !== REF) {
+  const workflowRef = String(payload.workflow_ref ?? "");
+  const expectedRefs = Array.from(WORKFLOWS).map((w) => REPOSITORY + "/" + w + "@" + REF);
+  if (payload.repository !== REPOSITORY || !expectedRefs.includes(workflowRef) || payload.ref !== REF) {
     throw new Error("WORKFLOW_BINDING_MISMATCH");
   }
   return {payload, workflowRef};
@@ -68,10 +72,46 @@ async function callCommit(body: Json, jti: string) {
       p_target_id: String(body.p_target_id ?? NAYA_ID),
       p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
       p_project_id: String(body.p_project_id ?? "NayaNET"),
+      p_connections: (body.p_connections ?? null) as Json["p_connections"],
     }),
   });
   const text = await response.text();
   if (!response.ok) throw new Error("COMMIT_RPC_" + response.status + ":" + text);
+  return JSON.parse(text) as Json;
+}
+
+async function callSupersede(body: Json, jti: string) {
+  const url = Deno.env.get("SUPABASE_URL");
+  const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!url || !key) throw new Error("SERVER_AUTH_CONFIG_MISSING");
+
+  // Same direct PostgREST boundary as callCommit.
+  const response = await fetch(url + "/rest/v1/rpc/nayanet_supersede_intelligent_block_runtime", {
+    method: "POST",
+    headers: {
+      apikey: key,
+      Authorization: "Bearer " + key,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify({
+      p_naya_id: NAYA_ID,
+      p_owner_id: OWNER_ID,
+      p_runtime_jti: jti,
+      p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
+      p_project_id: String(body.p_project_id ?? "NayaNET"),
+      p_superseded_block_id: String(body.p_superseded_block_id ?? ""),
+      p_title: String(body.p_title ?? ""),
+      p_content: String(body.p_content ?? ""),
+      p_block_type: String(body.p_block_type ?? "GOVERNED_INTELLIGENCE"),
+      p_understanding_state: String(body.p_understanding_state ?? "CANDIDATE"),
+      p_owner_scope: String(body.p_owner_scope ?? "PRIVATE"),
+      p_idempotency_key: String(body.p_idempotency_key ?? ""),
+      p_connections: (body.p_connections ?? null) as Json["p_connections"],
+    }),
+  });
+  const text = await response.text();
+  if (!response.ok) throw new Error("SUPERSEDE_RPC_" + response.status + ":" + text);
   return JSON.parse(text) as Json;
 }
 
@@ -104,6 +144,24 @@ Deno.serve(async (req) => {
       return json({
         ok: result?.ok === true,
         status: "EXECUTED",
+        result,
+        runtime_identity: "naya-node-oidc",
+        naya_id: NAYA_ID,
+        owner_id: OWNER_ID,
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+      });
+    }
+
+    if (mode === "supersede") {
+      const required = ["p_superseded_block_id", "p_title", "p_content", "p_authority_grant_id", "p_idempotency_key"];
+      for (const key of required) {
+        if (!String(body[key] ?? "").trim()) return json({ok:false,error:"SUPERSEDE_FIELDS_REQUIRED:" + key},400);
+      }
+      const result = await callSupersede(body, String(payload.jti ?? ""));
+      return json({
+        ok: true,
+        status: "SUPERSEDED",
         result,
         runtime_identity: "naya-node-oidc",
         naya_id: NAYA_ID,
