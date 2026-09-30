@@ -156,6 +156,25 @@ def test_commit_writer_persists_connections(migration_text):
         "the old 8-arg signature must be dropped or the bridge keeps resolving to the stale overload"
 
 
+def test_commit_writer_closes_projection_into_canonical_graph(migration_text):
+    """A projected connection must also exist in the ONE canonical graph store."""
+    m = re.search(
+        r"create function public\\.nayanet_intelligence_commit\\(.*?\\)"
+        r"\\s*returns.*?as \\$function\\$(.*?)\\$function\\$;",
+        migration_text, re.S,
+    )
+    assert m, "R1 commit writer must exist"
+    body = m.group(1)
+    assert "for v_elem in select * from jsonb_array_elements(v_connections)" in body, \
+        "normalized caller connections must be iterated for canonical persistence"
+    assert "insert into public.nayanet_brain_relationships" in body, \
+        "caller-supplied graph edges must be persisted in the canonical relationship table"
+    assert "source_id,target_id,relationship_type" in body.replace(" ", ""), \
+        "canonical edge insert must identify source, target, and relationship type"
+    assert "v_elem->>'target_block_id'" in body and "v_elem->>'relationship_type'" in body, \
+        "canonical edge must be derived from the normalized projection"
+
+
 def test_no_self_supersede_and_linear_chain_hardening(migration_text):
     assert "nayanet_intelligent_blocks_no_self_supersede" in migration_text
     assert "nayanet_intelligent_blocks_one_superseder_idx" in migration_text
