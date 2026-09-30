@@ -1,14 +1,14 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "8dae0ca7dc509ba0639b64742a0915e17c884954",
-  "inventory_file_count": 159,
+  "receipt_basis_commit": "79b294965e6efb62d6f46ddb5767b5ff4d182d9e",
+  "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
-    "04-INTELLIGENCE": 23,
+    "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,
     "06-PROOF": 10,
     "07-LEARNING": 2,
@@ -155,8 +155,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
-      "blob_sha": "20cd4154f02e26b3a829dd84c63ff437add118e2",
-      "size": 21866
+      "blob_sha": "7953bbc48e2173839178ab485f085aca2f71a6e9",
+      "size": 24029
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md",
@@ -295,13 +295,13 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
-      "blob_sha": "6c6b28a98708b71616b2b2da3a2be33490fa009a",
-      "size": 22105
+      "blob_sha": "400f06afc9b5c21c1c7c40482f9f15840627e59e",
+      "size": 24215
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "blob_sha": "7ae4eff28043b7afc62b87900b27f42128ad0141",
-      "size": 4726
+      "blob_sha": "6f4cdd2f69ef6b2f6c7680a3075054ec1741a6aa",
+      "size": 8502
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
@@ -330,58 +330,63 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/MASTER-INDEX.json",
-      "blob_sha": "f9873deb370f75a71c0b5c2b81207f77168f8db2",
-      "size": 597
+      "blob_sha": "01ae91cda99301479ab609b763aadd1aa678ff92",
+      "size": 1273
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json",
+      "blob_sha": "3b927e0cfeda1ce66ec1fd7349f825909886dadb",
+      "size": 7446
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "blob_sha": "a5f33c77ef69e8f18319285c6a15d019ad1166be",
-      "size": 3932
+      "blob_sha": "9da295d13eb135adc9dbb62134dd3325a970be87",
+      "size": 4483
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
-      "blob_sha": "743feff748054e49578a7a7970731a305f3ff42d",
-      "size": 3188
+      "blob_sha": "d7fd513735f72b53e6f0c0ef0accabd1198bf720",
+      "size": 3781
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json",
-      "blob_sha": "022c2fe146b3fa2cc84245b9a12e74fe69d0f3f8",
-      "size": 3450
+      "blob_sha": "a1adf92ff9a88290c691f8c525ee0fb0c79bf2d7",
+      "size": 4035
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json",
-      "blob_sha": "ac5ad116a7a4a0ca7b457afeb0cccdd72350b5aa",
-      "size": 4705
+      "blob_sha": "900ae469d951dcd6e4d5c0038bf4acbaefe40ee0",
+      "size": 5260
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "blob_sha": "4e98235e59e8213f3824f65c3d0fb7864d016e58",
-      "size": 4172
+      "blob_sha": "be01de8a3a7959d3ac7afb794c799f09b2813544",
+      "size": 4717
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
-      "blob_sha": "05d70b3876b5d4573fd99f133b3e63866dcc57d4",
-      "size": 3105
+      "blob_sha": "268730edaba567c9a6373df60541e3b4c0cf03db",
+      "size": 3658
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json",
-      "blob_sha": "91c73c44f65762fbf70a2218da5bef696e37b3d9",
-      "size": 4199
+      "blob_sha": "a4ba759315dc547f4a4892b7f858d1c237d9ffcc",
+      "size": 4757
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json",
-      "blob_sha": "edd795cdfe72ddb8901b16a46fd3d3815bb56bab",
-      "size": 3064
+      "blob_sha": "733ca0c3712d8167bea88742f3f86db5eaff5869",
+      "size": 3595
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
-      "blob_sha": "50009f3ab7dc9593940848b081490c61de9a37d5",
-      "size": 3795
+      "blob_sha": "76031c71d8ba756bfb7bbba4f3c5cb61c61b9300",
+      "size": 4361
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
-      "blob_sha": "db2d99022e5e7591a56ec6e212395bbf4085dcf8",
-      "size": 3578
+      "blob_sha": "28d76d567ac94f9e7941db912506d067245239a8",
+      "size": 3770
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json",

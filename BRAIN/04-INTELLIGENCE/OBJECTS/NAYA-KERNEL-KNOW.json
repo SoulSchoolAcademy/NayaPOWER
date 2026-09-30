@@ -41,7 +41,9 @@
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-PROVE",
     "runtime": "supabase/functions/nayanet-know-runtime/index.ts",
-    "selector": "supabase/functions/nayanet-know-runtime/know.ts"
+    "selector": "supabase/functions/nayanet-know-runtime/know.ts",
+    "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "decision_calculus_role": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence"
   },
   "provenance": {
     "derived_from": [
@@ -96,6 +98,15 @@
       "source_object_id": "NAYA-KERNEL-KNOW",
       "target_object_id": "NAYA-KERNEL-CONNECT",
       "epistemic_state": "SUPPORTED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-KNOW",
+      "direction": "IN",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-KNOW",
+      "epistemic_state": "VERIFIED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
   ],

@@ -1,0 +1,153 @@
+{
+  "schema": "naya.intelligent.object.v1",
+  "object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+  "object_type": "DECISION_SYSTEM",
+  "version": "2.1",
+  "canonical_status": "RATIFIED",
+  "owner_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+  "scope": "NayaPOWER governed decision optimization",
+  "human_view": {
+    "title": "Decision Value Calculus V2.1 — canonical decision math",
+    "essence": "One shared calculus for filtering inadmissible actions, scoring admissible options, compressing ambiguity, selecting ACT / READ_MORE / ASK / REFUSE, verifying outcomes, and learning through versioned recalibration.",
+    "why": "Reduce unnecessary human orchestration while increasing decision quality without allowing value scores to create authority, truth, consent, or safety exceptions.",
+    "uncertainty": "Source and CI behavior are verified; universal production runtime use and production graph-mediated behavior remain pending proof."
+  },
+  "ai_view": {
+    "operating_flow": "OBJECTIVE → CURRENT_TRUTH → GATES → QUALITY → CONSERVATIVE_VALUE+INTERVAL → CONFIDENCE/EVIDENCE → TOP3 → AUTHORITY → ACT|READ_MORE|ASK|REFUSE → OBSERVE → VERIFY → LEDGER → LEARN → VERSIONED_RECALIBRATION",
+    "hard_invariants": [
+      "VALUE != AUTHORITY",
+      "SCORE != TRUTH",
+      "UNKNOWN != PASS",
+      "JUDGMENT_RULE_HARD_STOP precedes optimization",
+      "human worth is never scored",
+      "recalibration cannot silently self-promote"
+    ],
+    "nine_node_roles": {
+      "SELF": "resolve declared objective, stakeholders, baseline, horizon, and current ladder state",
+      "LAW": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization",
+      "ACT": "execute only an ACT outcome that is admissible, authorized, bounded, and selected by the canonical calculus",
+      "KNOW": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence",
+      "PROVE": "preserve scoring inputs, provenance, uncertainty, gate reasons, predicted value, and decision receipt evidence",
+      "CONNECT": "retrieve and relate applicable intelligence, dependencies, affected parties, baselines, and graph context without creating truth or authority",
+      "VERIFY": "independently recompute decision/outcome claims, compare predicted vs observed value, and preserve calibration error",
+      "LEARN": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify",
+      "EVOLVE": "promote only verified and authorized recalibration versions into successor/system continuity without changing constitutional boundaries"
+    }
+  },
+  "machine_view": {
+    "specification": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "executable": "kernel/value_calculus.py",
+    "decision_schema": ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json",
+    "contribution_schema": ".naya/specifications/NAYA-CONTRIBUTION-VALUE-V2.1.schema.json",
+    "recalibration_schema": ".naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json",
+    "tests": "tests/test_value_calculus.py",
+    "graph_contract": "BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md",
+    "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+    "decision_outcomes": [
+      "ACT",
+      "READ_MORE",
+      "ASK",
+      "REFUSE"
+    ]
+  },
+  "provenance": {
+    "derived_from": [
+      "KNOWLEDGE/SMART LEDGER CORE MATH CONCEPT PART #19.md",
+      "NAYANODE/0024-FOUNDATIONAL-VALUE-AND-STEWARDSHIP-LAW-V1.md",
+      "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md"
+    ],
+    "ratified_by": "Human Director",
+    "ratified_at": "2026-09-30"
+  },
+  "proof": {
+    "implementation_status": "EXECUTABLE_SOURCE",
+    "source_status": "CI_VERIFIED",
+    "graph_binding_status": "SOURCE_GRAPH_BINDING",
+    "production_status": "NOT_PRODUCTION_PROVEN",
+    "limitation": "Graph edges encode canonical semantic applicability only. They do not prove live graph traversal changes runtime behavior."
+  },
+  "relationships": [
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-SELF",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-SELF",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LAW",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-LAW",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-ACT",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-ACT",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-KNOW",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-KNOW",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-PROVE",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-PROVE",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-CONNECT",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-CONNECT",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-VERIFY",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-VERIFY",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LEARN",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-LEARN",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-EVOLVE",
+      "direction": "OUT",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-EVOLVE",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    }
+  ],
+  "successor_effect": "A cold successor can reconstruct the same decision method, recompute material decisions, and distinguish ACT, READ_MORE, ASK, and REFUSE without inheriting authority."
+}

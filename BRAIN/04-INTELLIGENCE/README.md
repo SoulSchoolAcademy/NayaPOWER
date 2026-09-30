@@ -6,7 +6,7 @@ The canonical semantic object layer. Contains addressable Nodes, Events, Decisio
 
 The intelligence layer answers: **What do we know, what does it mean, and how is it connected?**
 
-## Contents (22 files + this README = 23)
+## Contents (23 files + this README = 24)
 
 | File | Purpose |
 |---|---|
@@ -22,6 +22,7 @@ The intelligence layer answers: **What do we know, what does it mean, and how is
 | [GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json](./GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json) | Graph reconciliation acceptance cases |
 | [GRAPH/README.md](./GRAPH/README.md) | Graph directory navigation |
 | [MASTER-INDEX.json](./MASTER-INDEX.json) | Machine index of intelligence pointers (object_contract verified 2026-09-30) |
+| [OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json](./OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json) | Ratified decision/value calculus intelligent object; graph-bound across all nine Nodes |
 | [OBJECTS/NAYA-KERNEL-ACT.json](./OBJECTS/NAYA-KERNEL-ACT.json) | Canonical ACT node object instance |
 | [OBJECTS/NAYA-KERNEL-CONNECT.json](./OBJECTS/NAYA-KERNEL-CONNECT.json) | Canonical CONNECT node object instance |
 | [OBJECTS/NAYA-KERNEL-EVOLVE.json](./OBJECTS/NAYA-KERNEL-EVOLVE.json) | Canonical EVOLVE node object instance |
