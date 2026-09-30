@@ -31,6 +31,11 @@ name: Live CONNECT Graph Proof
 
 on:
   workflow_dispatch:
+    inputs:
+      expected_source_sha:
+        description: 'Exact commit SHA that refs/heads/main must resolve to before consequential CONNECT proof steps'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -49,6 +54,26 @@ jobs:
   connect-graph-proof:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify resolved source matches expected_source_sha
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          expected="${{ inputs.expected_source_sha }}"
+          if [ -z "$expected" ]; then
+            echo "expected_source_sha is required"
+            exit 1
+          fi
+          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          printf '%s' "$resolved" > resolved-source-sha.txt
+          echo "expected_source_sha=$expected"
+          echo "resolved_main_sha=$resolved"
+          if [ "$expected" != "$resolved" ]; then
+            echo "SOURCE_SHA_MISMATCH expected=$expected resolved=$resolved"
+            exit 1
+          fi
+          echo "SOURCE_SHA_MATCH=PASS"
+
       - uses: actions/checkout@v5
 
       - name: Mint governed organism identity
