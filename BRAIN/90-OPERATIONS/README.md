@@ -17,15 +17,18 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `618429b1a77ceb391f179c54e40d50aedb6390f4`:
+At evidence snapshot `2883504b652b7e79b3ffc7c61ff086fdb4c1d7a0`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
 - #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
 - Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
 - The next active control-plane issue is #66.
-- Current Truth Resolver run `36631904834` failed closed because stale operational projections still named closed #978 as active.
-- That failure is a correct drift finding. The next repair is to reconcile the projections and preserve the conflict artifact on failed resolver runs.
+- Current Truth Resolver run `36633934942` succeeded for an earlier exact revision. This snapshot is newer; fresh resolver proof is required and never inherited.
+- Cached-derived authority revocation is **TEST-LEVEL VERIFIED** on this main; mission semantics remain unresolved.
+- Live KNOW run `36653558611` selected valid current intelligence but failed its stale fixed-ID proof oracle; #1060 is source/CI verified, not integrated.
+- SN-004 learning run `36652694005` returned **NO_MEASURED_LEARNING_EFFECT**; #1056 source repairs are green but not live/deployed.
+- #1044 cold acceptance is ready but has no genuinely fresh PASS receipt.
 - Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
 
 Always resolve live `main`, issue state, deployment/runtime evidence and proof receipts before acting. A later revision never inherits an older production proof automatically.
@@ -42,4 +45,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: reconcile stale Brain/Operations current-truth pointers, preserve/upload resolver evidence even when conflicts fail closed, merge only with green repository gates, and require a successful main-branch Current Truth Resolver run before advancing to the authority lifecycle negative matrix.**
+**Issue #66: merge #1058 under Human Director authority, refresh this reconciliation on the resulting exact main, require a fresh successful Current Truth Resolver run, then execute the Coda 2 replay/duplicate/response-loss reliability seam.**

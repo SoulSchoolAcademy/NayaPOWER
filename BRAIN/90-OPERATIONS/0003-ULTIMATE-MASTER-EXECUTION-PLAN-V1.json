@@ -4,7 +4,7 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "618429b1a77ceb391f179c54e40d50aedb6390f4",
+  "evidence_snapshot_base": "2883504b652b7e79b3ffc7c61ff086fdb4c1d7a0",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
@@ -23,64 +23,71 @@
     "governed_production_promotion_run": "36631960490_SUCCESS",
     "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
     "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "IMPLEMENTED_FAILING_ON_STALE_CONTROL_POINTERS"
+    "current_truth_resolver": "VERIFIED_BOUNDED_RUN_36633934942; CURRENT_MAIN_2883504_REQUIRES_FRESH_RESOLVER",
+    "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_CURRENT_MAIN_COMMENT_5902002779",
+    "know_live_current": "RUN_36653558611_RUNTIME_HIT_PROOF_ORACLE_FAILED; PR_1060_SOURCE_CI_VERIFIED_NOT_INTEGRATED",
+    "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT; PR_1056_SOURCE_CI_VERIFIED_NOT_INTEGRATED",
+    "cold_acceptance": "READY_PROTOCOL_FRESH_ENTRANT_NOT_PROVEN"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Reconcile stale current-truth control-plane pointers and prove Current Truth Resolver live",
+      "action": "Refresh Brain/Operations current truth on exact main and require a fresh successful Current Truth Resolver run",
       "status": "ACTIVE"
     },
     {
       "rank": 2,
-      "action": "Authority lifecycle negative matrix: missing/wrong owner/wrong mission/wrong target/wrong action/inactive/revoked/expired/successor/cached-derived",
-      "status": "QUEUED"
+      "id": "#1058",
+      "action": "Integrate fail-closed readiness instrument before relying on later proof PRs",
+      "status": "SOURCE_CI_VERIFIED_HUMAN_MERGE_REQUIRED"
     },
     {
       "rank": 3,
-      "action": "Checkpoint/provenance/concurrency/recovery hardening",
-      "status": "QUEUED"
+      "action": "Checkpoint/provenance/concurrency/recovery: replay, duplicate, response-loss, race, partial-failure, supersession, reconstruction",
+      "status": "ASSIGNED_CODA2"
     },
     {
       "rank": 4,
-      "action": "Stored-intelligence adversarial suite: poisoning/context laundering/forged edges/evidence amplification",
-      "status": "QUEUED"
+      "id": "#1042",
+      "action": "Close residual authority semantics: integrate ACT denial tests; obtain human mission-contract decision",
+      "status": "PARTIAL_BLOCKED_HUMAN_CONTRACT"
     },
     {
       "rank": 5,
-      "action": "Verifier independence and monoculture challenge plus model/runtime identity in receipts",
-      "status": "QUEUED"
+      "action": "Integrate #1060 and run current KNOW HIT/MISS + independent reread, then bounded PROVE qualification",
+      "status": "SOURCE_CI_VERIFIED_PENDING_INTEGRATION"
     },
     {
       "rank": 6,
+      "action": "Integrate #1051/#1056, deploy existing learning seam, rerun SN-004 causal experiment and independent recomputation",
+      "status": "SOURCE_CI_VERIFIED_PENDING_INTEGRATION_DEPLOYMENT"
+    },
+    {
+      "rank": 7,
+      "action": "Stored-intelligence adversarial suite: poisoning/context laundering/forged edges/evidence amplification",
+      "status": "ASSIGNED_CODA1"
+    },
+    {
+      "rank": 8,
+      "id": "#1044",
+      "action": "Run two genuinely fresh cold successors; no simulated cold context",
+      "status": "READY_EXTERNAL_FRESH_SEAT_REQUIRED"
+    },
+    {
+      "rank": 9,
       "action": "Multi-generation A→B→C compounding with unrelated-task refusal",
       "status": "QUEUED"
     },
     {
-      "rank": 7,
-      "action": "Two-owner NayaNET consent/revocation and no cross-owner leakage",
-      "status": "QUEUED"
-    },
-    {
-      "rank": 8,
-      "action": "Human-value-per-attention measurement",
-      "status": "QUEUED"
-    },
-    {
-      "rank": 9,
-      "action": "Recovery/disaster/schema-migration/deletion-retention lineage proof",
-      "status": "QUEUED"
-    },
-    {
       "rank": 10,
-      "action": "Scale/Hub/collective expansion only after preceding proof gates",
-      "status": "LATER"
+      "action": "Two-owner NayaNET consent/revocation plus human-value-per-attention measurement",
+      "status": "QUEUED"
     }
   ],
   "next_action": {
-    "type": "EXECUTE",
+    "type": "HUMAN_MERGE_THEN_EXECUTE",
     "issue": 66,
-    "instruction": "Reconcile Brain/Operations control-plane pointers to live closed/open issue state, preserve resolver conflict evidence even when fail-closed, merge only with green repository gates, then require a successful main-branch Current Truth Resolver run before advancing to the authority lifecycle matrix."
+    "instruction": "Merge fail-closed readiness PR #1058 first. Re-resolve exact main, refresh this current-truth reconciliation, require a successful main-branch resolver run, then execute Coda 2 replay/duplicate/response-loss reliability work."
   }
 }

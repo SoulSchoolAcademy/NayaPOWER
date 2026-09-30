@@ -14,6 +14,7 @@ permissions:
   contents: read
   actions: read
   issues: read
+  pull-requests: read
 
 jobs:
   resolve-current-truth:
@@ -62,6 +63,25 @@ jobs:
               payload = json.loads(out("gh", "api", f"repos/{repo}/issues/{issue_id}"))
               issue_states[issue_id] = payload["state"].upper()
 
+          prs = json.loads(out(
+              "gh", "pr", "list",
+              "--repo", repo,
+              "--state", "open",
+              "--limit", "100",
+              "--json", "number,title,headRefOid,isDraft,mergeStateStatus,updatedAt",
+          ))
+          open_prs = [
+              {
+                  "number": p["number"],
+                  "title": p["title"],
+                  "head_sha": p["headRefOid"],
+                  "draft": p.get("isDraft"),
+                  "merge_state": p.get("mergeStateStatus"),
+                  "updated_at": p.get("updatedAt"),
+              }
+              for p in prs
+          ]
+
           runs_raw = out(
               "gh", "run", "list",
               "--workflow", "live-supabase-runtime-proof.yml",
@@ -85,6 +105,7 @@ jobs:
               "main_head": main_head,
               "production_branch_head": production,
               "issue_states": issue_states,
+              "open_prs": open_prs,
               "latest_successful_runtime_proof": latest,
               # Current runtime identity is intentionally UNKNOWN here. The existing
               # runtime OIDC boundary is not widened for this resolver.
@@ -100,10 +121,20 @@ jobs:
         shell: bash
         run: |
           set +e
-          python tools/current_truth_resolver.py             --live-evidence current-truth-live-evidence.json             --output current-truth-resolution.json             --fail-on-conflict
+          python tools/current_truth_resolver.py             --live-evidence current-truth-live-evidence.json             --output current-truth-resolution.json             --markdown-output current-truth-brief.md             --fail-on-conflict
           status=$?
           cat current-truth-resolution.json
           exit "$status"
+
+      - name: Publish continuation brief to job summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f current-truth-brief.md ]; then
+            cat current-truth-brief.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Current-truth brief was not generated." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Upload resolution evidence
         if: always()
@@ -113,3 +144,4 @@ jobs:
           path: |
             current-truth-live-evidence.json
             current-truth-resolution.json
+            current-truth-brief.md
