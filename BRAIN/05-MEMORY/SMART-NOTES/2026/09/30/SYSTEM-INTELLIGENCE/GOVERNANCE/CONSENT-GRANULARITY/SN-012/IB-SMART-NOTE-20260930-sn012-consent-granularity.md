@@ -1,5 +1,7 @@
 # IB-SMART-NOTE-20260930-sn012-consent-granularity
 
+> **ID disambiguation (2026-09-30):** a second, unrelated note also carries the ID `SN-012`: `SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md` (NayaPOWER operating model). This file is the **consent-granularity** note. The IDs were not renumbered — the Human Director owns the ID decision.
+
 ## IDENTITY
 
 - **Smart Note ID:** SN-012

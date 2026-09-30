@@ -179,7 +179,7 @@
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-  "inventory_file_count": 77,
+  "inventory_file_count": 157,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
     "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
@@ -262,7 +262,7 @@
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "CANDIDATE_SOURCE_INTEGRATED_WITH_PERSISTENCE_SELECTOR_AND_RECONCILIATION_ACCEPTANCE_NOT_PRODUCTION_PROVEN"
   },
-  "last_reconciled_main": "3abe1ba74a9a86411221ca0b4778f49c79059556",
+  "last_reconciled_main": "6b4a429472113bdd5b5186d0b9222f44463b273d",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -294,5 +294,30 @@
     "registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
     "law": "capability does not create authority; LAW decides, ACT invokes, VERIFY checks result"
   },
-  "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json"
+  "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json",
+  "reconciliation": {
+    "ledger": "brain-reconciliation-ledger-f648833b.md",
+    "reconciled_at": "2026-09-30",
+    "basis_commit": "6b4a429472113bdd5b5186d0b9222f44463b273d",
+    "method": "tools/regenerate_brain_index.py from the committed git tree",
+    "domain_counts": {
+      "00-SPEC": 15,
+      "01-GOVERNANCE": 3,
+      "02-ARCHITECTURE": 5,
+      "03-KERNEL": 27,
+      "04-INTELLIGENCE": 23,
+      "05-MEMORY": 18,
+      "06-PROOF": 10,
+      "07-LEARNING": 2,
+      "08-SUCCESSION": 2,
+      "09-EVOLUTION": 2,
+      "10-INTERFACES": 5,
+      "11-KNOWLEDGE": 7,
+      "12-ENGINEERING": 23,
+      "90-OPERATIONS": 9,
+      "99-ARCHIVE": 1,
+      "ROOT": 5
+    },
+    "note": "Counts are machine-verified against the Git tree. Semantic sections (nine_nodes, proof_boundary, operations, ...) are preserved untouched; only generated_at, inventory_file_count, last_reconciled_main and this section are mechanical."
+  }
 }

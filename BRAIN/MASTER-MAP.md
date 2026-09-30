@@ -3,6 +3,8 @@
 **Status:** PROPOSED CANONICAL — HUMAN DIRECTOR RATIFICATION REQUIRED  
 **Purpose:** The single human/AI-readable map of the NayaPOWER brain.
 
+> **Reconciliation note (2026-09-30):** Brain-level status is PROPOSED pending Human-Director ratification. Individual files carry their own status declarations (see file headers); where a file claims CANONICAL and this map says PROPOSED, both statements are preserved as written — the Human Director owns the ratification decision, not this map.
+
 **Key references:**
 - [REAL-TREE.md](./REAL-TREE.md) — machine-verified file inventory
 - [12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md](./12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md) — AAA quality scorecard
@@ -158,18 +160,7 @@ That receipt is deliberately narrow. Later `main` does not inherit its productio
 
 ### Current dependency-correct queue
 
-| # | Action | Owner | Status |
-|---|---|---|---|
-| 1 | Keep current-truth pointers synchronized with live GitHub/runtime evidence | SELF / OPERATIONS | IN PROGRESS |
-| 2 | Concept #17 novelty reconciliation | KNOW / PROVE | COMPLETE — NO NEW CANDIDATE |
-| 3 | Prove a second related held-out task using existing ACTIVE intelligence | KNOW / CONNECT / ACT | NEXT |
-| 4 | Prove unrelated-task refusal / no negative transfer | CONNECT / VERIFY | NEXT WITH #3 |
-| 5 | Independently recompute behavior/outcome from persisted evidence | PROVE / VERIFY | QUEUED |
-| 6 | Prove cold successor reuse beyond the original single task | EVOLVE / SELF / LAW | QUEUED |
-| 7 | Bind/reference-classify nine-node runtime semantics and run ablation | KERNEL / ENGINEERING | P1 |
-| 8 | Harden current-context resolution, revocation, poisoning, replay and concurrency | LAW / CONNECT / VERIFY | P1 |
-| 9 | Measure human value | EVOLVE / INTERFACES | P2 |
-| 10 | Scale Hub/NayaNET/collective/self-building only after repeatability | INTERFACES / EVOLVE | P3 |
+> **Reconciliation note (2026-09-30):** the embedded queue table that lived here dated from the September 2026 hardening era and was superseded by the refreshed queue. It has been removed to prevent cold-start confusion; its history is preserved in Git. The current queue is `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md` — always resolve that live file, never an embedded copy.
 
 Canonical execution surfaces:
 

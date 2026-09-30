@@ -1,9 +1,11 @@
 # NayaPOWER Brain — File Inventory & Race Readiness V1
 
+> **Reconciliation banner (2026-09-30):** this document is the **2026-09-27 hardening-pass inventory (77-file world)**. It is preserved as historical evidence — its per-file table, readiness percentages, and the 8.4/10-adjacent scoring below describe that pass, not the current tree. The current machine-verified inventory is **157 files** across 15 domains + ROOT (see `BRAIN/REAL-TREE.json`, regenerated from live Git by `tools/regenerate_brain_index.py`). Do not read the table below as a current file list.
+
 **Review date:** 2026-09-27 — hardening pass 2  
 **Repository:** SoulSchoolAcademy/NayaPOWER  
 **Scope:** `BRAIN/` on `main`  
-**Inventory count:** 77 files currently present in the BRAIN tree (directories excluded).  
+**Inventory count at time of writing:** 77 files in the BRAIN tree at the 2026-09-27 pass (directories excluded). Current count: **157** (see reconciliation banner above).  
 **Purpose:** Turn the Brain into an executable work inventory: what exists, what is ready, what is blocked by proof, what needs hardening, and what another Naya should do next.
 
 ## Readiness law

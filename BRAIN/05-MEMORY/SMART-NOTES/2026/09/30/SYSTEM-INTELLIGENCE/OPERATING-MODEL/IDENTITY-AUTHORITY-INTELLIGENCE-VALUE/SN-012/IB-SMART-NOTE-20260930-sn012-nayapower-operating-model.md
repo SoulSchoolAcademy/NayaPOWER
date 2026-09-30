@@ -1,5 +1,7 @@
 # 🔱 Smart Note SN-012 — NayaPOWER Operating Model: Identity ≠ Intelligence ≠ Authority ≠ Value
 
+> **ID disambiguation (2026-09-30):** a second, unrelated note also carries the ID `SN-012`: `SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-012/IB-SMART-NOTE-20260930-sn012-consent-granularity.md` (consent-granularity reconciliation). This file is the **operating-model** note. The IDs were not renumbered — the Human Director owns the ID decision.
+
 **Status:** CANDIDATE — SYSTEM-LEVEL INTELLIGENCE ALIGNMENT NOTE  
 **Effective context:** 2026-09-30  
 **Canonical machine object:** `INTELLIGENT_BLOCK`  
