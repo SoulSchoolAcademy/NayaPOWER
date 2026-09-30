@@ -703,3 +703,44 @@ def evaluate_decision_architecture(
         "selected_value_interval": None if first is None else first["signed_value"]["value_interval"],
         "legacy_decision": legacy.get("decision"),
     }
+
+
+def independent_recompute_decision_architecture(
+    receipt: Mapping,
+    candidates: Sequence[Candidate],
+    profile: QualityProfile,
+    signed_profile: SignedValueProfile,
+    *,
+    value_dimensions: Mapping[str, Mapping[str, float]],
+    value_confidence: Mapping[str, Mapping[str, float]],
+    cheap_evidence_available: bool = False,
+    reserved_human_decision: bool = False,
+    risk_policy: RiskPolicy = RiskPolicy(),
+) -> dict:
+    """Independently recompute the canonical four-outcome architecture."""
+    evaluation = evaluate_decision_architecture(
+        candidates,
+        receipt["baseline_id"],
+        profile,
+        signed_profile,
+        value_dimensions=value_dimensions,
+        value_confidence=value_confidence,
+        cheap_evidence_available=cheap_evidence_available,
+        reserved_human_decision=reserved_human_decision,
+        risk_policy=risk_policy,
+    )
+    return {
+        "matches_resolution": evaluation["resolution"] == receipt.get("decision_resolution"),
+        "matches_selected": evaluation["selected"] == receipt.get("evaluation", {}).get("selected"),
+        "matches_signed_value": (
+            evaluation["selected_signed_value"] == receipt.get("signed_value")
+            if receipt.get("signed_value") is not None
+            else True
+        ),
+        "matches_quality": (
+            evaluation["selected_quality"] == receipt.get("quality")
+            if receipt.get("quality") is not None
+            else True
+        ),
+        "recomputed": evaluation,
+    }
