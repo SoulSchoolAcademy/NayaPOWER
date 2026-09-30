@@ -2,7 +2,7 @@
 
 **Branch:** `repair/ai1-capability-carry`
 **Base SHA (origin/main):** `f648833b9e0a38296a3e13233058fe25ffc81082`
-**Repair commit:** `<filled at commit time>`
+**Repair commit:** `4fc65ef724ce51c771881c7686a8d5f31717a76e` (pushed 2026-09-30, branch `repair/ai1-capability-carry`)
 **Date:** 2026-09-30
 **Scope authorized:** code + tests + static verification ONLY.
 **Explicitly NOT authorized / NOT done:** merge, deploy, production data
