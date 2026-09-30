@@ -10,6 +10,10 @@ on:
         required: true
         default: "DEPLOY"
         type: string
+      source_sha:
+        description: "Exact 40-hex main SHA authorized by the Human Director"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -46,6 +50,22 @@ jobs:
           test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             test "${{ inputs.confirm }}" = "DEPLOY"
+            authorized_sha="${{ inputs.source_sha }}"
+            if ! printf '%s' "$authorized_sha" | grep -Eq '^[0-9a-f]{40}$'; then
+              echo "FAIL CLOSED: source_sha must be exactly 40 lowercase hex characters."
+              exit 1
+            fi
+            if [ "$authorized_sha" != "$GITHUB_SHA" ]; then
+              echo "FAIL CLOSED: authorized source_sha $authorized_sha does not equal workflow source $GITHUB_SHA. Re-authorize the exact current main SHA."
+              exit 1
+            fi
+            git fetch origin main
+            resolved_main="$(git rev-parse origin/main)"
+            if [ "$authorized_sha" != "$resolved_main" ]; then
+              echo "FAIL CLOSED: main moved to $resolved_main after authorization of $authorized_sha. Re-authorize the exact current main SHA."
+              exit 1
+            fi
+            echo "AUTHORIZED_SOURCE_SHA=$authorized_sha" >> "$GITHUB_ENV"
             echo "PROMOTION_MODE=EXPLICIT_HUMAN" >> "$GITHUB_ENV"
           else
             echo "PROMOTION_MODE=STANDING_POLICY" >> "$GITHUB_ENV"
@@ -465,6 +485,7 @@ jobs:
             "human_authorization":{
               "type":("STANDING_POLICY" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "EXPLICIT_HUMAN"),
               "confirmation":("STANDING-PRODUCTION-PROMOTION-V1" if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else "DEPLOY"),
+              "authorized_source_sha":(os.environ.get("GITHUB_SHA") if os.environ.get("PROMOTION_MODE")=="STANDING_POLICY" else os.environ.get("AUTHORIZED_SOURCE_SHA")),
               "actor":os.environ.get("GITHUB_ACTOR"),
               "workflow_run_id":os.environ.get("GITHUB_RUN_ID"),
             },
