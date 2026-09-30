@@ -17,17 +17,19 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `2883504b652b7e79b3ffc7c61ff086fdb4c1d7a0`:
+At evidence snapshot `0fb3612344cd28155945e0f33336aaca5b5ef31d`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.
 - #810 is **CLOSED** after live bounded nine-node behavioral acceptance + ablation in run `36632211367`.
 - Governed production promotion `36631960490` is **SUCCESS** for bounded source `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
 - The next active control-plane issue is #66.
-- Current Truth Resolver run `36633934942` succeeded for an earlier exact revision. This snapshot is newer; fresh resolver proof is required and never inherited.
-- Cached-derived authority revocation is **TEST-LEVEL VERIFIED** on this main; mission semantics remain unresolved.
-- Live KNOW run `36653558611` selected valid current intelligence but failed its stale fixed-ID proof oracle; #1060 is source/CI verified, not integrated.
-- SN-004 learning run `36652694005` returned **NO_MEASURED_LEARNING_EFFECT**; #1056 source repairs are green but not live/deployed.
+- Current Truth Resolver run `36657001373` succeeded at `9ab4923d` and published the generated continuation brief + live open-PR frontier. Current main is newer; this reconciliation requires a fresh resolver run after integration.
+- Cached-derived authority revocation is **TEST-LEVEL VERIFIED** and #1046 ACT denial coverage is merged at `7847680f`; mission semantics remain unresolved.
+- Live KNOW run `36653558611` selected valid current intelligence; #1060's contextual proof-oracle repair is merged at `c41c3a64`. Fresh HIT/MISS + independent reread remains pending.
+- SN-004 learning run `36652694005` remains **NO_MEASURED_LEARNING_EFFECT**. #1051 and #1056 source repairs are merged, but the causal runtime is not deployed at source parity.
+- Readiness repairs #1058/#1061 are merged. Governed promotion `36657956413` correctly denied the protected causal-runtime revision; explicit Human Director `DEPLOY` is required for the exact reconciled main before causal rerun.
+- #1062 records the two-owner consent/revocation source gap; owner-only private RLS remains protected.
 - #1044 cold acceptance is ready but has no genuinely fresh PASS receipt.
 - Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
 
@@ -45,4 +47,4 @@ Every executor must re-read live GitHub/runtime/Supabase evidence before acting.
 
 ## Exact next action
 
-**Issue #66: merge #1058 under Human Director authority, refresh this reconciliation on the resulting exact main, require a fresh successful Current Truth Resolver run, then execute the Coda 2 replay/duplicate/response-loss reliability seam.**
+**Issue #66: integrate the post-cluster current-truth reconciliation and require a fresh resolver run. Then explicit Human Director `DEPLOY` is required for the resulting exact main before the causal runtime can claim source/deployed parity. Coda 2 replay/recovery and #1062 two-owner proof work continue independently while that consequential boundary waits.**
