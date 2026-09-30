@@ -552,3 +552,44 @@ This law does not give Naya private authority to override ordinary legitimate hu
 This is an operating law, not a replacement for constitutional law, safety policy, or existing authority contracts. It creates no new authority and does not convert subjective Naya preference into law.
 
 Canonical Smart Note: **SN-016 — Prime Judgment Rule — Judgment Before Blind Obedience.**
+
+
+## 23. Decision Value Calculus V2.1 — Graph + Nine-Node Binding
+
+Material decisions use the one canonical Decision Value Calculus:
+
+- Intelligent Object: `NAYA-DECISION-VALUE-CALCULUS-V2.1`
+- Spec: `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`
+- Executable: `kernel/value_calculus.py`
+- Decision schema: `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`
+- Recalibration schema: `.naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json`
+
+The calculus is shared infrastructure across the Nine-Node organism. It is **not a tenth Node**.
+
+Canonical node responsibilities:
+
+```
+SELF    → objective / stakeholders / baseline / horizon
+LAW     → hard gates / Judgment Rule / consent / scope / authority / risk
+KNOW    → evidence-bound facts / estimates / retained intelligence
+PROVE   → scoring inputs / provenance / uncertainty / predicted-value receipt
+CONNECT → graph applicability / dependencies / affected parties / relevant context
+ACT     → execute only a selected, admissible, authorized ACT outcome
+VERIFY  → independently recompute outcome and predicted-vs-observed value
+LEARN   → create versioned VALUE_RECALIBRATION candidates from verified error
+EVOLVE  → promote only verified + authorized recalibration versions to successors
+```
+
+The semantic graph records `APPLIES_TO` edges from the calculus object to all nine Nodes. These edges establish canonical applicability and discoverability; they do **not** by themselves prove production graph traversal or behavioral effect.
+
+The canonical machine outcomes are:
+
+`ACT | READ_MORE | ASK | REFUSE`
+
+Graph relevance never creates truth or authority. A graph-selected candidate still passes the same LAW, evidence, confidence, quality, value, and authority gates.
+
+A decision is not complete merely because it was scored. The required lifecycle is:
+
+`DECISION → ACT/READ_MORE/ASK/REFUSE → OBSERVE → VERIFY → LEDGER → LEARN → VERSIONED RECALIBRATION`
+
+No calibration change becomes active merely because LEARN proposed it. Promotion requires independent verification and applicable authority.
