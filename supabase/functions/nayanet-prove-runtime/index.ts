@@ -139,9 +139,9 @@ Deno.serve(async(req)=>{
         recorded.epistemic_state===recomputed.epistemic_state &&
         recorded.claim_strength===recomputed.claim_strength &&
         recorded.evidence_strength===recomputed.evidence_strength &&
-        JSON.stringify(recorded.evidence??[])===JSON.stringify(recomputed.evidence??[]) &&
-        JSON.stringify(recorded.provenance_chain??[])===JSON.stringify(recomputed.provenance_chain??[]) &&
-        JSON.stringify(recorded.conflicts??[])===JSON.stringify(recomputed.conflicts??[]) &&
+        stableJson(recorded.evidence??[])===stableJson(recomputed.evidence??[]) &&
+        stableJson(recorded.provenance_chain??[])===stableJson(recomputed.provenance_chain??[]) &&
+        stableJson(recorded.conflicts??[])===stableJson(recomputed.conflicts??[]) &&
         (recorded.selected_block_id??null)===(recomputed.selected_block_id??null) &&
         (recorded.failure_reason??null)===(recomputed.failure_reason??null) &&
         (recorded.handoff_to??null)===(recomputed.handoff_to??null) &&
