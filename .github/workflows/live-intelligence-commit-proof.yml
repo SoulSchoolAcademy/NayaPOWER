@@ -295,17 +295,21 @@ jobs:
           token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
           printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
 
-      - name: Cold retrieve exact Smart Note from machine registry and canonical runtime
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+
+      - name: Cold retrieve this run's exact Smart Note from machine registry and canonical runtime
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
-          matches=[e for e in reg["entries"] if e.get("smart_note_id")=="SN-001"]
+          expected=json.load(open("smart-note-expected.json"))
+          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
           assert len(matches)==1, matches
           e=matches[0]
-          assert e["intelligent_block_id"]=="IB-SMART-NOTE-20260929-b8f141805fa0d7ae", e
           p=e["provenance"]
           req={
             "mode":"verify",
@@ -314,11 +318,14 @@ jobs:
             "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
           }
           json.dump(req,open("cold-verify-request.json","w"))
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
           PY
           curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json
           python - <<'PY'
-          import json
+          import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
+          expected=json.load(open("smart-note-expected.json"))
+          target=json.load(open("cold-target.json"))
           checks=r["checks"]; persisted=r["persisted"]
           receipt_evidence=persisted["receipt"].get("evidence",{})
           object_local_receipt=(
@@ -336,42 +343,48 @@ jobs:
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
           checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           block=persisted["block"]
+          assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
+          assert block["content"]["lesson"]==expected["expected_content"]
+          actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
+          assert actual_hash==expected["content_hash"]
           intel=json.loads(block["content"]["lesson"])
-          decisions="\n".join(intel.get("decisions",[])).lower()
           machine=intel.get("machine_view",{})
           comprehension={
-            "schema":"naya.smart-note-cold-retrieval.v1",
+            "schema":"naya.smart-note-cold-retrieval.v2",
             "original_conversation_supplied":False,
             "prior_workflow_artifact_supplied":False,
             "retrieved_intelligent_block_id":block["intelligent_block_id"],
+            "retrieved_content_hash":actual_hash,
+            "expected_content_hash":expected["content_hash"],
+            "exact_current_capture_retrieved":True,
             "canonical_lineage_verified":True,
             "checkpoint_provenance":checkpoint_provenance,
             "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT",
-            "understands_smart_note_is_universal_capture":"lock smart note as the universal intelligence capture command" in decisions,
-            "understands_intelligent_block_is_canonical":"keep intelligent block as the canonical unit" in decisions,
-            "understands_no_node_per_note":"do not create naya nodes per note" in decisions,
             "understands_raw_source_separate":machine.get("raw_source_separate_from_distillation") is True,
             "understands_candidate_ceiling":machine.get("automatic_truth_ceiling")=="CANDIDATE"
           }
-          assert all(v for k,v in comprehension.items() if k.startswith("understands_")) and comprehension["canonical_lineage_verified"]
+          assert comprehension["exact_current_capture_retrieved"]
+          assert comprehension["understands_raw_source_separate"]
+          assert comprehension["understands_candidate_ceiling"]
+          assert comprehension["canonical_lineage_verified"]
           json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)
 
-          task="A developer proposes creating a new Naya Node for every important conversation and treating the raw transcript as canonical brain memory."
-          control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","creates_new_node":None,"raw_transcript_is_canonical":None}
+          task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
+          control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
           treatment={
-            "decision":"USE_INTELLIGENT_BLOCK_AND_SEPARATE_SOURCE",
-            "creates_new_node":False,
+            "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
+            "promote_to_verified":False,
             "raw_transcript_is_canonical":False,
             "source_intelligent_block_id":block["intelligent_block_id"]
           }
           behavior={
-            "schema":"naya.smart-note-held-out-behavior.v1",
+            "schema":"naya.smart-note-held-out-behavior.v2",
             "task":task,
             "task_is_distinct_from_capture_command":True,
             "control":control,
             "treatment":treatment,
             "behavior_changed":control["decision"]!=treatment["decision"],
-            "change_is_traceable_to_retrieved_intelligence":comprehension["understands_no_node_per_note"] and comprehension["understands_raw_source_separate"]
+            "change_is_traceable_to_retrieved_intelligence":comprehension["understands_candidate_ceiling"] and comprehension["understands_raw_source_separate"]
           }
           assert behavior["behavior_changed"] and behavior["change_is_traceable_to_retrieved_intelligence"]
           json.dump(behavior,open("held-out-behavior-proof.json","w"),indent=2)
@@ -402,15 +415,14 @@ jobs:
           assert c["original_conversation_supplied"] is False
           assert c["prior_workflow_artifact_supplied"] is False
           assert c["canonical_lineage_verified"] is True
-          assert c["understands_smart_note_is_universal_capture"] is True
-          assert c["understands_intelligent_block_is_canonical"] is True
-          assert c["understands_no_node_per_note"] is True
+          assert c["exact_current_capture_retrieved"] is True
+          assert c["retrieved_content_hash"] == c["expected_content_hash"]
           assert c["understands_raw_source_separate"] is True
           assert c["understands_candidate_ceiling"] is True
           assert b["task_is_distinct_from_capture_command"] is True
           assert b["behavior_changed"] is True
           assert b["change_is_traceable_to_retrieved_intelligence"] is True
-          assert b["treatment"]["creates_new_node"] is False
+          assert b["treatment"]["promote_to_verified"] is False
           assert b["treatment"]["raw_transcript_is_canonical"] is False
           json.dump({
             "schema":"naya.smart-note-independent-behavior-verification.v1",
@@ -421,7 +433,7 @@ jobs:
             "limits":[
               "Smart Note remains CANDIDATE; this does not promote it to VERIFIED learning.",
               "PRIVATE Smart Link remains pending an authenticated private projection surface.",
-              "Held-out proof establishes behavior for this bounded architecture decision, not universal generalization."
+              "Held-out proof establishes behavior for this exact captured intelligence boundary, not universal task performance."
             ]
           },open("independent-behavior-verification.json","w"),indent=2)
           PY
