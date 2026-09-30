@@ -281,12 +281,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "0e092e90-e208-406a-9627-4c45a77f93cc"
       }
+    },
+    {
+      "smart_note_id": "SN-016",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn016-prime-judgment-rule",
+      "content_hash": "a5e14500c31b635425f2ef5e6d25e187512a8477c2e33f64e7492568e2ee36cd",
+      "title": "Prime Judgment Rule — Judgment Before Blind Obedience",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PRIME_JUDGMENT",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "d2fd94e1-7c4f-43fd-8a5b-5b623a05bf4e",
+        "lineage_id": "d60ce3a0-aa10-438e-9484-0127fd97a629",
+        "relationship_id": "3f23e02f-7b55-4409-9477-a0b3c1b776a4",
+        "runtime_index_id": "bafe64e0-c262-4424-b0d4-ceef696ca7e8",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "c6cb2f2a-9eb7-48a1-be68-33763d1df390"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 16,
+    "next_sequence": 17,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
