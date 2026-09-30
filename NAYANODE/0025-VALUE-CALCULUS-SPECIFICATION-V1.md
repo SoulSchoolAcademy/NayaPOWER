@@ -1,290 +1,301 @@
-# NayaPOWER Value Calculus Specification V1
+# NayaPOWER Decision Value Calculus Specification V2.1
 
-**Status:** CANONICAL SPECIFICATION — RUNTIME IMPLEMENTATION REQUIRED  
+**Status:** HUMAN-DIRECTOR RATIFIED DIRECTION — IMPLEMENTED CANDIDATE, VERIFICATION REQUIRED  
 **Domain:** 13 VALUE & EXPERIENCE  
+**Canonical seam retained:** `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`  
 **Implementation:** `kernel/value_calculus.py`  
-**Tests:** `tests/test_value_calculus.py`
+**Tests:** `tests/test_value_calculus.py`  
+**Machine schema:** `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`  
+**Issue:** #1182  
+**Effective working version:** 2.1
 
-## 1. Purpose
+> This file keeps the established canonical path to avoid a second value brain. V2.1 supersedes the internal V1 scoring semantics while preserving the V1 provenance in Git history.
 
-The Value Calculus is NayaPOWER's deterministic measurement capability for comparing meaningful alternatives against a declared objective.
+## 1. Root operating law
 
-It is designed to score software, architecture, designs, text, decisions, workflows, actions, intelligence, and outcomes without pretending that one universal number is intrinsic truth.
+NayaPOWER uses one reusable decision pattern:
 
-## 2. Canonical value vector
+`RESOLVE → GATE → SCORE → COMPARE → SELECT → ACT/ESCALATE → OBSERVE → VERIFY → LEDGER → LEARN → RECALIBRATE`
 
-For item (x):
+Hard boundaries precede optimization. Value never creates authority. UNKNOWN never silently becomes PASS.
 
-`V(x) = (U,R,A,E,C,Re,L,K,T,H)`
+## 2. Four-state gate
 
-| Symbol | Dimension | Meaning |
-|---|---|---|
-| U | Utility | usefulness toward the declared objective |
-| R | Reliability | demonstrated consistency/correctness |
-| A | Applicability | fit to the declared context |
-| E | Evidence | strength of supporting evidence |
-| C | Consequence | observed or expected outcome significance |
-| Re | Reusability | justified downstream reuse |
-| L | Learning | useful learning yield |
-| K | Compounding | later improvement enabled |
-| T | Efficiency | value relative to resource use |
-| H | Harm | error, harm, misuse, or downside |
+For every candidate action `a`:
 
-All positive dimensions are represented on a normalized **0..1** scale. Harm is also 0..1 and is applied as an explicit penalty.
+`G(a) ∈ {PROHIBITED, NEEDS_AUTHORITY, NEEDS_EVIDENCE, ADMISSIBLE}`
 
-## 3. Score profile
+- **PROHIBITED** → refuse.
+- **NEEDS_AUTHORITY** → obtain the legitimate authority source.
+- **NEEDS_EVIDENCE** → research, probe, narrow scope, wait, or escalate.
+- **ADMISSIBLE** → eligible for quality/value comparison.
 
-A profile declares:
+Truth, rights, privacy, safety, security, law/policy, consent, and authority are not scalarized into preference weights.
 
+## 3. Decision quality Q
+
+Quality answers: **How sound is this decision?**
+
+`Q(a)=Σ w_i d_i(a)`, where `d_i∈[0,10]` and `Σw_i=1`.
+
+Default V2.1 dimensions:
+
+| Dimension | Default weight | Meaning |
+|---|---:|---|
+| objective_fit | 0.20 | directly advances the declared legitimate objective |
+| evidence_sufficiency | 0.20 | evidence supports the decision rather than a guess |
+| applicability | 0.15 | evidence/context actually applies here |
+| robustness | 0.15 | plausible failure modes are controlled |
+| reversibility | 0.10 | action can be stopped/recovered where appropriate |
+| blast_containment | 0.10 | effects are bounded |
+| simplicity | 0.10 | smallest effective path / least unnecessary burden |
+
+**Value magnitude is not a Q dimension.**
+
+Bands:
+- **9.5–10.0 DELIGHT**
+- **9.0–<9.5 ACCEPT**
+- **7.0–<9.0 BELOW STANDARD**
+- **<7.0 REJECT / REWORK**
+
+A critical proof gap may cap autonomy regardless of average Q.
+
+## 4. Positive value and baseline-relative delta
+
+For an action:
+
+`PV(a)=B(a)-H(a)-C(a)-R(a)`
+
+where:
+- `B` = evidence-bound expected benefit;
+- `H` = expected harm;
+- `C` = necessary cost/resources/opportunity cost;
+- `R` = residual uncertainty/risk penalty.
+
+Decision value is relative to a declared baseline `b`:
+
+`ΔV(a|b)=PV(a)-PV(b)`
+
+Therefore `ΔV(b|b)=0` by definition, while the absolute consequences of inaction may be nonzero.
+
+The familiar `−9 … 0 … +9` is a semantic display anchor, not a ceiling on raw real-world value. Verified display direction may use:
+
+`D_verified = clamp(Normalize(ΔV_actual), -9, +9)`
+
+The raw delta remains preserved.
+
+## 5. Confidence and evidence floors
+
+Confidence cannot be averaged into false certainty.
+
+The engine requires both:
+
+`C_agg = Σw_i c_i`
+
+and:
+
+`C_critical = min(c_i for critical dimensions)`.
+
+Initial low-risk autonomous defaults:
+- `C_agg ≥ 0.80`
+- `C_critical ≥ 0.75`
+- PV component confidence `≥ 0.75`
+- evidence count `≥ k_scope` (default implementation: 1; profiles may raise it)
+
+If the data floor is not met, the state is **NEEDS_EVIDENCE**, not PASS.
+
+Residual uncertainty is mechanically priced into `R`; low component confidence creates a minimum residual-risk floor.
+
+## 6. Risk and unacceptable tails
+
+Expected value may not average away catastrophic or otherwise unacceptable tail risk.
+
+Each governed domain provides a versioned risk policy:
+
+`τ_scope = {harm_class, severity_threshold, probability_threshold, stakeholder_harm_limit, response}`
+
+If the threshold is crossed, the result is PROHIBITED or NEEDS_AUTHORITY according to the approved policy.
+
+Risk thresholds are versioned hypotheses unless constitutional law fixes a stricter boundary.
+
+## 7. Plan-level stakes and anti-laundering
+
+A consequential plan cannot be split into apparently low-stakes steps to escape authority.
+
+`effective_stakes(step)=max(step_stakes, plan_stakes)`
+
+Consequential or irreversible action requires explicit human authority unless a separate standing-authority contract explicitly covers that exact scope.
+
+## 8. Pareto and ranking
+
+After gates, only candidates with `Q≥9` and positive conservative value may enter the autonomous selection set.
+
+Pareto frontier objectives:
+- maximize `V_safe`;
+- maximize `Q`;
+- minimize residual risk.
+
+A candidate is dominated when another is at least as good on all three and strictly better on at least one.
+
+Frontier survivors are ordered by:
+1. conservative value;
+2. dependency unlock when relevant;
+3. reversibility/recoverability;
+4. lower human burden;
+5. simplicity/efficiency;
+6. evidence confidence.
+
+Autonomous dominance uses a relative margin:
+
+`m=(V_safe1−V_safe2)/max(|V_safe1|, ε)`
+
+The default implementation threshold is 0.10 and is calibratable.
+
+## 9. Rule of up-to-10 → top 3 → one
+
+When ambiguity merits breadth, generate up to 10 plausible candidates.
+
+Where applicable include:
+- current course / do-nothing baseline;
+- gather evidence;
+- reversible probe;
+- rollback/revert;
+- human escalation.
+
+Deep-check the top 3.
+
+Autonomous EXECUTE requires:
+
+`ADMISSIBLE ∧ Q≥9 ∧ V_safe>0 ∧ confidence floors pass ∧ evidence floor passes ∧ authority permits ∧ bounded/reversible enough ∧ relative dominance passes`
+
+Otherwise the system must BRIEF, RESEARCH, or REWORK instead of exporting unnecessary orchestration.
+
+## 10. AskHuman law
+
+`AskHuman = AuthorityRequired ∨ MaterialIntentAmbiguity ∨ ConsequentialIrreversibility ∨ MaterialUncertainty ∨ NoClearDominantOption`
+
+If none apply and the action is within standing authority, the machine should absorb orchestration complexity and act.
+
+## 11. Observation, verification, and delayed harm
+
+Prediction is not achievement.
+
+Verification states include:
+- UNVERIFIED;
+- PASS_PENDING_WINDOW;
+- VERIFIED_PASS;
+- FAIL;
+- ESCALATE.
+
+Where delayed harm is material, a PASS remains provisional until its domain-specific observation window closes. Later contradictory evidence may reopen a prior PASS.
+
+## 12. SmartLedger decision receipt
+
+The calculus emits a typed `ALIGNMENT_DECISION` receipt suitable for the existing SmartLedger/event/evidence substrate.
+
+Required fields include:
+- decision ID;
+- engine/schema version;
 - objective;
-- dimension priorities;
-- critical dimensions/gates;
-- evidence requirements;
-- risk tolerance;
-- resource model;
-- sensitivity delta.
-
-Weights are derived from the declared priorities and normalized:
-
-[
-w_i = rac{p_i}{sum_j p_j}
-]
-
-where (p_i ge 0).
-
-The profile, not the artifact being scored, determines the weighting policy.
-
-## 4. Base score
-
-For positive dimensions (D):
-
-[
-B = sum_{iin D} w_i d_i
-]
-
-Harm is explicit:
-
-[
-S_{raw}=B-H
-]
-
-The normalized score is:
-
-[
-S = clamp(S_{raw},0,1)
-]
-
-The display score is:
-
-[
-S_{10}=10S
-]
-
-A score of zero is valid. A zero does not mean that the underlying artifact has no existence or historical significance.
-
-## 5. Evidence-aware value states
-
-The engine reports separate values:
-
-- estimated;
-- observed;
-- verified.
-
-The same numeric score must not silently change truth state.
-
-Verification is a gate/state transition, not a cosmetic multiplier.
-
-## 6. Critical gates
-
-A profile may declare critical dimensions and minimum thresholds.
-
-If any critical gate is not satisfied, the result is **BLOCKED** regardless of the arithmetic average.
-
-Examples:
-
-- required evidence below threshold;
-- reliability below threshold;
-- applicability below threshold;
-- declared safety/risk gate failure.
-
-This prevents a high average from masking a critical defect.
-
-## 7. Missing data
-
-Missing dimensions are never treated as perfect.
-
-By default, an absent positive dimension contributes zero and is recorded in the receipt.
-
-Profiles may explicitly declare a dimension as not applicable; that dimension is removed from the denominator and recorded as N/A.
-
-## 8. Resource efficiency
-
-Resource costs are explicit and separate from the value vector.
-
-For resource vector (q):
-
-[
-Cost(q)=sum_k a_k q_k
-]
-
-with declared normalized coefficients (a_k).
-
-### Maximum Verified Value Per Action
-
-[
-MVPA=rac{Verified Value Produced}{Resource Cost}
-]
-
-If cost is zero, MVPA is undefined rather than infinite.
-
-### Maximum Verified Value Per Moment
-
-[
-MVPM=rac{Verified Human Value}{Human Attention + Time + System Cost}
-]
-
-A zero denominator is undefined.
-
-## 9. Learning efficiency
-
-[
-LearningEfficiency =
-rac{Useful Understanding Acquired}
-{Attention + Time}
-]
-
-Again, zero denominator is undefined.
-
-## 10. Compression and meaning preservation
-
-[
-CompressionRatio =
-rac{Source Information}{Operational Intelligence}
-]
-
-Compression ratio alone is not a value metric.
-
-Required meaning preservation is:
-
-[
-MeaningPreservation =
-rac{Required Meaning Preserved}{Required Meaning}
-]
-
-A compression result that destroys required meaning fails the preservation gate.
-
-## 11. Sensitivity analysis
-
-For each approved profile, perturb eligible weights by ±delta while preserving non-negativity and normalization.
-
-Recompute the score for each scenario.
-
-Report:
-
-- baseline score;
-- minimum score;
-- maximum score;
-- spread;
-- score stability;
-- gate stability.
-
-Sensitivity exposes whether a conclusion depends heavily on a fragile weighting choice.
-
-It must not be used to choose whichever weights produce the preferred answer.
-
-## 12. Fairness / reproducibility contract
-
-For identical:
-
-- item inputs;
-- profile;
-- evidence state;
-- resource costs;
-- engine version;
-
-the engine must return the same receipt and score.
-
-A different legitimate objective may produce a different score. That is expected and must be visible.
-
-## 13. Anti-gaming requirements
-
-The engine must:
-
-1. never infer missing evidence as positive;
-2. never double-count duplicate evidence;
-3. never allow engagement to substitute for proof;
-4. never let a non-critical dimension erase a critical failure;
-5. never mutate the objective from the item being scored;
-6. preserve the exact profile and engine version in the receipt;
-7. distinguish estimated from observed and verified values.
-
-## 14. Canonical receipt
-
-Every calculation returns a machine-readable receipt containing:
-
-- item identifier;
-- profile identifier/version;
-- engine version;
-- objective;
-- normalized weights;
-- input dimensions;
-- missing/N/A dimensions;
-- base score;
-- harm;
-- raw and normalized score;
-- display score;
-- gates;
+- baseline;
+- stakeholders;
+- time horizon;
+- complete candidate evaluations;
+- gate reasons;
+- Q dimensions/weights/confidence;
+- PV and ΔV;
+- risk/tail policy outcome;
+- authority basis;
+- selected action/decision state;
+- evidence refs;
+- observation window;
 - verification state;
-- resource costs;
-- MVPA/MVPM when defined;
-- sensitivity summary when requested.
+- predicted and actual ΔV;
+- display `D_verified`;
+- calibration error.
 
-## 15. Canonical algorithm
+**No second ledger is created.** The receipt maps to the existing SmartLedger's typed event/value/verification/outcome/metadata fields.
 
-```
-DECLARE OBJECTIVE
-→ SELECT APPROVED PROFILE
-→ VALIDATE INPUTS
-→ DERIVE NORMALIZED WEIGHTS
-→ EVALUATE DIMENSIONS
-→ APPLY MISSING/N-A RULES
-→ APPLY CRITICAL GATES
-→ CALCULATE BASE VALUE
-→ SUBTRACT HARM
-→ NORMALIZE
-→ CALCULATE RESOURCE EFFICIENCY
-→ RUN SENSITIVITY
-→ EMIT RECEIPT
-→ PRESERVE EVIDENCE
-→ LEARN ONLY FROM VERIFIED OUTCOMES
-```
+## 13. Independent recomputation and calibration
 
-## 16. Node placement
+A cold verifier must be able to recompute the decision from the preserved candidates, profile, baseline, risk policy, and evidence state.
 
-Value is a cross-cutting measurement capability.
+Calibration:
 
-Primary semantic home: **EVOLVE** measures improvement and optimization.
+`error_V = |ΔV_predicted − ΔV_actual|`
 
-Supporting nodes:
+Persistent bias or increasing error lowers estimator confidence and creates a LEARN candidate.
 
-- **SELF** — identity of the scored subject/run;
-- **LAW** — permitted scoring profile and boundaries;
-- **ACT** — action/resource consumption;
-- **KNOW** — source intelligence and dimensions;
-- **PROVE** — evidence for claims;
-- **CONNECT** — applicability and downstream relationships;
-- **VERIFY** — observed/verified outcomes;
-- **LEARN** — learning yield;
-- **EVOLVE** — optimization, compounding, and value efficiency.
+Learning may propose weight/threshold/rubric changes; it may not silently rewrite constitutional boundaries or authority.
 
-No separate “Value Node” is created.
+## 14. Contribution / network-value scoring
 
-## 17. Constitutional boundary
+The same mathematical discipline may score a **contribution**, never a human being.
 
-Value does not create authority.
+Initial contribution score:
 
-A high score cannot authorize an action.
+`CVS = sign(ΔV_verified) × 9 × (Quality × Relevance × Verification × Impact × Novelty)^(1/5)`
 
-A low score does not erase a person's rights, authority, or intrinsic worth.
+where each factor is normalized to `[0,1]`.
 
-The Value Calculus is a decision-support and optimization instrument bounded by NayaPOWER governance.
+Properties:
+- no verified value → no positive credit;
+- low novelty discounts repetitive/spam-like activity;
+- raw activity count is not value;
+- negative CVS is evidence, not automatic punishment;
+- positive recognition points may be derived from positive CVS using a versioned domain profile and repeat-decay factor;
+- authority is never derived from reputation.
+
+Human/profile state remains multidimensional:
+- **Contribution** — verified value created;
+- **Reliability** — accuracy/usefulness over time;
+- **Conduct** — governance/rule compliance;
+- **Trust** — contextual inference from verified history, provenance, recency, and domain.
+
+`Activity ≠ Value`  
+`Reputation ≠ Human Worth`  
+`Reputation ≠ Authority`
+
+Exact level names, point thresholds, and social-action weights remain a configurable NayaNET profile until empirical calibration establishes a fair baseline.
+
+## 15. Anti-gaming / adversarial requirements
+
+V2.1 must defend or explicitly record residual risk for:
+- prediction inflation;
+- B/H/C/R component gaming;
+- action splitting / authority laundering;
+- delayed harm;
+- collective vs individual harm;
+- conflicting principals;
+- malicious-user value asymmetry;
+- reward/ledger gaming;
+- uncertainty laundering;
+- AI-to-AI resource/value conflict;
+- jurisdiction conflict;
+- bad baseline selection;
+- weight/rubric manipulation.
+
+## 16. Nine-node placement
+
+- **SELF** — objective, stakeholders, baseline, current state.
+- **LAW** — gates, policy, rights, authority, risk class.
+- **KNOW** — evidence-bound facts and estimates.
+- **CONNECT** — applicability, affected parties, relationships.
+- **ACT** — selected authorized action.
+- **PROVE** — decision, execution, observation receipts in SmartLedger.
+- **VERIFY** — independent outcome/value recomputation.
+- **LEARN** — calibrated estimator/rubric proposals from verified outcomes.
+- **EVOLVE** — versioned promotion and cold-successor continuity.
+
+No separate Value Node, authority engine, truth model, ledger, or learning path is created.
+
+## 17. Proof law
+
+The required chain is:
+
+`SPEC → SCHEMA → DETERMINISTIC CODE → PROPERTY TESTS → ADVERSARIAL TESTS → DECISION RECEIPT → INDEPENDENT RECOMPUTATION → COLD SUCCESSOR`
+
+IMPLEMENTED ≠ VERIFIED.  
+VERIFIED ≠ PRODUCTION-PROVEN.
+
+A 10/10 claim is unavailable until runtime integration, independent verification, and production evidence prove the declared scope.

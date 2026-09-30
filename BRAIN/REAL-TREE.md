@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `ab59207c80ec620b405c33177dff9f01aaaa5561`  
+**Receipt basis commit:** `998dc31d49a4d892976b908902faffd2c9140268`  
 **Inventory file count:** 159  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -36,10 +36,10 @@
 - `BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md` — `bd599702c291` (948 bytes)
 - `BRAIN/00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md` — `28dae6fc731f` (2743 bytes)
 - `BRAIN/00-SPEC/0005-TREE-V1.md` — `edc4fdb44334` (1622 bytes)
-- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `66da2eed3bad` (4331 bytes)
+- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `c7b34af4b206` (5681 bytes)
 - `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `18e886b7038e` (2864 bytes)
 - `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `1fb0f6c8421d` (5737 bytes)
-- `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `e4bc38752863` (1495 bytes)
+- `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
 - `BRAIN/00-SPEC/SCHEMA/AUTHORITY-TUPLE-SCHEMA.json` — `2bda55ecd64b` (1882 bytes)
 - `BRAIN/00-SPEC/SCHEMA/GRAPH-QUERY-SCHEMA.json` — `0d91c07f97fb` (2746 bytes)
