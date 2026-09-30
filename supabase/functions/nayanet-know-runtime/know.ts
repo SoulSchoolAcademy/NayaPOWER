@@ -145,10 +145,10 @@ function chaseSupersession(
 }
 
 // One-hop related context from the selected block's outbound edges.
-// Every admitted target passes isEligibleBlock: stale, forged, irrelevant,
-// private, or revoked edges cannot influence the result. Order is
-// deterministic (conflicts first, then recency, then id) and capped so edge
-// volume cannot game the result.
+// Every admitted target passes isEligibleBlock AND serves the requested
+// capability: stale, forged, irrelevant, private, or revoked edges cannot
+// influence the result. Order is deterministic (conflicts first, then
+// recency, then id) and capped so edge volume cannot game the result.
 function relatedContext(
   req:KnowRequest,
   selected:IntelligentBlock,
@@ -164,6 +164,10 @@ function relatedContext(
     const target=byId.get(tid);
     if(!target) continue;
     if(!isEligibleBlock(req,target)) continue;
+    // Irrelevant edges must not annotate the result: a related block that
+    // does not serve the requested capability is excluded, even when it is
+    // otherwise eligible. (NEG N3 guard.)
+    if(!deriveCapabilities(target).includes(req.required_capability)) continue;
     const isConflict=CONFLICT_EDGE_TYPES.has(conn.relationship_type);
     if(!isConflict&&!CONTEXT_EDGE_ALLOWLIST.has(conn.relationship_type)) continue;
     scored.push({
