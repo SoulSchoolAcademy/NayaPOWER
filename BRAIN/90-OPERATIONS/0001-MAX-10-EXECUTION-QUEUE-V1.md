@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `a07728a456ffb8d662f83b48e9f625ea3dc9779e`
+**Evidence snapshot base:** `52f866d0741eb65f4030b173afc9dbf4b5da382a`
 
 ## CURRENT TRUTH
 
@@ -19,16 +19,16 @@
 - #1056 applicability-aware causal-learning source is integrated, but current causal runtime remains **not deployed at source parity**.
 - Live PROVE run `36658635227` failed before PROVE at workflow identity. #1069 now binds `live-prove-proof.yml` into LAW; #1072 binds that same exact workflow into KNOW. Both remain source-only until governed deployment.
 - #1070 two-owner/collective-wisdom source hardening is integrated at `af065bb4`. Migration `20260930022500` is registered **PENDING_REVIEW_NOT_PRODUCTION_APPLIED**; live two-owner consent→read/use→revoke→future-deny remains **NOT PROVEN**.
-- Current main `a07728a456ffb8d662f83b48e9f625ea3dc9779e` has green Kernel, Collective, Live Verified AI Action and Live CVO proof runs.
-- Governed Production Promotion run `36660618920` correctly **DENIED** automatic promotion with `protected_change_requires_explicit_promotion`; receipt artifact `11073514533`, SHA-256 `4b0904f126fc411b3658871728c08a19116a6d1d48ba05e7f23135925d59f546`.
+- Current main `52f866d0741eb65f4030b173afc9dbf4b5da382a` has green Kernel, Collective, Live Verified AI Action and Live CVO proof runs.
+- Governed Production Promotion run `36660868786` correctly **DENIED** automatic promotion with `protected_change_requires_explicit_promotion`; receipt artifact `11074635235`, SHA-256 `f00345822967bdd27595123d880e277a4ee36d8282a97053adbe2ed08a0c6e9e`.
 - #1042 mission-binding semantics remain a Human Director authority-model decision.
 - #1044 cold acceptance remains protocol-ready without a genuinely fresh two-successor PASS.
 - Universal all-task nine-node capability, multi-generation A→B→C compounding, live two-owner NayaNET, and measured human-value-per-attention remain **NOT PROVEN**.
 
 ## TOP 10
 
-1. **#66 exact-current truth convergence** — integrate this `a07728a4` projection refresh and require Current Truth Resolver to report no stale operational projection.
-2. **Exact governed production parity** — Shawn explicitly authorizes **`DEPLOY`** for the exact reconciled current main. Deploy #1069 LAW binding, #1072 KNOW binding, current causal runtimes, and pending #1070 migration only through the existing governed lane; verify exact source/deployed parity.
+1. **#66 exact-current truth convergence** — integrate this `52f866d0` projection refresh and require Current Truth Resolver to report no stale operational projection.
+2. **Exact governed production parity** — Shawn explicitly authorizes **`DEPLOY`** for the exact reconciled current main. Deploy #1069 LAW binding, #1072 KNOW binding, current causal runtimes, and pending #1070 collective-wisdom and #1078 graph V2 migrations only through the existing governed lane; verify exact source/deployed parity.
 3. **ACT replay/recovery reliability** — Coda 2 owns exact replay, conflicting replay, response-loss retry, concurrent same intent, receipt-write failure and independent reconstruction.
 4. **Authority residuals #1042** — decide mission-binding semantics from trusted operation context; do not invent policy.
 5. **PROVE live qualification** — after LAW+KNOW deployed parity, run the existing positive/negative PROVE workflow exactly once and independently reread/recompute.
@@ -49,15 +49,15 @@ Do not recreate Concept #17 intelligence, a second graph, a second learning path
 Current source is ahead of deployed production at several protected seams. Source merge is not deployed proof.
 
 Latest automatic promotion attempt:
-- source: `a07728a456ffb8d662f83b48e9f625ea3dc9779e`
-- run: `36660618920`
+- source: `52f866d0741eb65f4030b173afc9dbf4b5da382a`
+- run: `36660868786`
 - decision: **DENY**
 - reason: `protected_change_requires_explicit_promotion`
-- artifact: `11073514533`
-- artifact SHA-256: `4b0904f126fc411b3658871728c08a19116a6d1d48ba05e7f23135925d59f546`
+- artifact: `11074635235`
+- artifact SHA-256: `f00345822967bdd27595123d880e277a4ee36d8282a97053adbe2ed08a0c6e9e`
 
 The denial is the correct policy result. Do not bypass or weaken it.
 
 ## EXACT NEXT ACTION
 
-**Issue #66: integrate this exact-main `a07728a4` projection refresh and require a fresh successful Current Truth Resolver run. Then the smallest consequential human action is Shawn saying `DEPLOY` for that exact reconciled revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal and #1062 live two-owner proof. Coda 2 reliability work continues independently while the deployment boundary waits.**
+**Issue #66: integrate this exact-main `52f866d0` projection refresh and require a fresh successful Current Truth Resolver run. Then the smallest consequential human action is Shawn saying `DEPLOY` for that exact reconciled revision through the existing governed production-promotion workflow. After exact deployed parity, rerun PROVE exactly once, then advance SN-004 causal and #1062 live two-owner proof. Coda 2 reliability work continues independently while the deployment boundary waits.**
