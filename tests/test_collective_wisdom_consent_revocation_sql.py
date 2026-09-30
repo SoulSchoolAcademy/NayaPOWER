@@ -3,16 +3,26 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective_wisdom_consent_revocation_v1.sql"
+# #1136 Reading A (ratified 2026-09-30): disconnect stops future, does not erase past.
+READING_A_MIGRATION = ROOT / "supabase" / "migrations" / "20261001030000_disconnect_stop_future_v1.sql"
 
 
-def _sql() -> str:
-    assert MIGRATION.exists(), "collective-wisdom consent/revocation hardening migration is required"
-    sql = " ".join(MIGRATION.read_text(encoding="utf-8").split()).lower()
+def _normalize(path: Path) -> str:
+    assert path.exists(), f"required migration missing: {path.name}"
+    sql = " ".join(path.read_text(encoding="utf-8").split()).lower()
     sql = re.sub(r"\s*,\s*", ",", sql)
     sql = re.sub(r"\s*=\s*", "=", sql)
     sql = re.sub(r"\(\s+", "(", sql)
     sql = re.sub(r"\s+\)", ")", sql)
     return sql
+
+
+def _sql() -> str:
+    return _normalize(MIGRATION)
+
+
+def _sql_reading_a() -> str:
+    return _normalize(READING_A_MIGRATION)
 
 
 def test_collective_feed_has_safe_authenticated_read_without_raw_owner_or_provenance_grant():
@@ -30,12 +40,26 @@ def test_collective_contribution_requires_explicit_consent_and_source_owner_bind
     assert "collective_wisdom_source_owner_mismatch" in sql
 
 
-def test_disconnect_revokes_derived_wisdom_only_after_last_active_explicit_participation():
-    sql = _sql()
-    assert "not exists(select 1 from public.nayanet_smart_connect_participation" in sql
-    assert "member_id=v_actor and status='active' and consent_state='explicit'" in sql
-    assert "update public.nayanet_collective_wisdom set status='revoked'" in sql
-    assert "where owner_id=v_actor and status='active'" in sql
+def test_disconnect_revokes_participation_without_touching_prior_wisdom():
+    # #1136 Reading A: disconnect revokes the participation row (which blocks
+    # future capture/contribution) and MUST NOT mass-revoke prior derived wisdom.
+    sql = _sql_reading_a()
+    assert "update public.nayanet_smart_connect_participation" in sql
+    assert "set status='revoked',consent_state='revoked',revoked_at=now(),updated_at=now()" in sql
+    assert "update public.nayanet_collective_wisdom" not in sql
+
+
+def test_disconnect_receipt_declares_prior_rows_retained():
+    sql = _sql_reading_a()
+    assert "'collective_wisdom_prior_rows','retained_anonymized'" in sql
+    assert "'collective_wisdom_future_capture','blocked_while_disconnected'" in sql
+    assert "revoked_when_last_explicit_participation_ends" not in sql
+
+
+def test_disconnect_remains_prospective_no_history_rewrite():
+    # Rows already REVOKED by past disconnects are not resurrected.
+    sql = _sql_reading_a()
+    assert "set status='active'" not in sql
 
 
 def test_recontribution_does_not_silently_reactivate_or_rewrite_revoked_wisdom():
