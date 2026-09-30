@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.local/schemas/NAYA-VALUE-RECALIBRATION-V2.1.schema.json",
+  "title": "NayaPOWER Value Recalibration V2.1 Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_type",
+    "schema_version",
+    "engine_version",
+    "profile_id",
+    "from_version",
+    "proposed_version",
+    "objective",
+    "calibration_summary",
+    "proposed_priorities",
+    "proposed_thresholds",
+    "evidence_refs",
+    "state",
+    "automatic_promotion"
+  ],
+  "properties": {
+    "receipt_type": {
+      "const": "VALUE_RECALIBRATION"
+    },
+    "schema_version": {
+      "const": "2.1"
+    },
+    "engine_version": {
+      "const": "DECISION-VALUE-CALCULUS-V2.1"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "from_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposed_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "calibration_summary": {
+      "type": "object"
+    },
+    "proposed_priorities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "proposed_thresholds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "state": {
+      "const": "LEARN_CANDIDATE"
+    },
+    "automatic_promotion": {
+      "const": false
+    }
+  }
+}
