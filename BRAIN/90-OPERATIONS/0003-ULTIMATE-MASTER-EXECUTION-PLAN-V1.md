@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
-**Evidence snapshot base:** `f190cdacefc3e5adf136d074d22e6dfdd782b688`
+**Evidence snapshot base:** `b1fb340a6f85e7ce2906f3eb313b511debce0f08`
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE
@@ -37,7 +37,7 @@ Do not build a second brain, graph, learning pipeline, authority system, or stat
 
 ## 3. CURRENT FRONTIER — SOURCE INTEGRATED → DEPLOYED PARITY → LIVE PROOF
 
-The source repair cluster is integrated through current main `f190cdacefc3e5adf136d074d22e6dfdd782b688`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
+The source repair cluster is integrated through current main `b1fb340a6f85e7ce2906f3eb313b511debce0f08`: readiness (#1058/#1061), current-truth projection (#1053), KNOW proof oracle (#1060), ACT denial coverage (#1046), Smart Note faithful rendering/reuse metadata (#1051), and applicability-aware causal learning (#1056).
 
 Main regression evidence is green. That is **not** production parity.
 

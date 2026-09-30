@@ -17,7 +17,7 @@ This directory owns operational projections, queues, handoffs, deployment/proof 
 
 ## Current operating pointer
 
-At evidence snapshot `f190cdacefc3e5adf136d074d22e6dfdd782b688`:
+At evidence snapshot `b1fb340a6f85e7ce2906f3eb313b511debce0f08`:
 
 - #978 is **CLOSED / production verified**.
 - #975 is **CLOSED** after independent outcome recovery run `36632538416`; North-Star audit v3 accepts the bounded historical specimen.

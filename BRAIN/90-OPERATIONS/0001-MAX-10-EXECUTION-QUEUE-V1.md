@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `f190cdacefc3e5adf136d074d22e6dfdd782b688`
+**Evidence snapshot base:** `b1fb340a6f85e7ce2906f3eb313b511debce0f08`
 
 ## CURRENT TRUTH
 
@@ -25,6 +25,7 @@
 - Governed Production Promotion `36659933566`: **SUCCESS** for source `2ff4207a...`; production commit `5e6c5f51...`; receipt artifact `11074161563`. Current main is later and does not inherit that proof.
 - Current source adds #1070 consent/revocation hardening, #1072 KNOW PROVE binding, #1077 Graph V2 contract, graph persistence hardening, ACT replay fail-closed repair, #1082 selector acceptance, and #1085 reconciliation/multi-task acceptance. These remain source/test evidence until current-main production proof exists.
 - ACT consequential execution now fails closed without an idempotency key at current main `f190cdac`; replay safety is source-tested but not current-production-proven.
+- #1088 merged at `b1fb340a`: pending #1070 migration now restores the Smart Connect/collective-wisdom prerequisites removed by the canonical reset before applying consent/revocation hardening. Source/test verified; redeployment proof pending.
 - Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
 
 ## TOP 10
