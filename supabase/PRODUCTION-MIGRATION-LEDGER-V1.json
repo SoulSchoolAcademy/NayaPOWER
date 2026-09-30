@@ -1394,6 +1394,15 @@
       "statement_count": 13,
       "bytes": 5821,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930183000",
+      "name": "fix_intelligence_commit_target_scope_v1",
+      "path": "supabase/migrations/20260930183000_fix_intelligence_commit_target_scope_v1.sql",
+      "sha256": "01043cecaea3aae94dc2b203545d6a7a66ef52d5493f7daf50fa2f0e9a97fba9",
+      "statement_count": 1,
+      "bytes": 8273,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
