@@ -52,21 +52,21 @@ grant execute on function public.nayanet_intelligence_commit_runtime(text,uuid,t
 -- checks that the commit bridge applies, then calls the writer with
 -- sensible governed defaults for the remaining parameters.
 --
--- Note: the trailing parameters after p_project_id carry defaults but
--- later parameters (p_superseded_block_id, p_idempotency_key) do not, so
--- callers must use named notation for those (the edge function does).
+-- PostgreSQL requires every input parameter after the first defaulted one
+-- to also have a default. Keep all required parameters first, then defaults.
+-- The edge function calls the RPC by named argument, so this ordering is
+-- compatible while remaining valid PostgreSQL.
 -- Re-runnable: drop the previous bridge signature first (same pattern as §1;
 -- PostgreSQL cannot CREATE OR REPLACE across an argument-list change).
-drop function if exists public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb);
+drop function if exists public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb);
 
 create function public.nayanet_supersede_intelligent_block_runtime(
   p_naya_id text,p_owner_id uuid,p_runtime_jti text,p_authority_grant_id uuid,
+  p_superseded_block_id uuid,p_title text,p_content text,p_idempotency_key text,
   p_project_id text default 'NayaNET',
-  p_superseded_block_id uuid,p_title text,p_content text,
   p_block_type text default 'GOVERNED_INTELLIGENCE',
   p_understanding_state text default 'CANDIDATE',
   p_owner_scope text default 'PRIVATE',
-  p_idempotency_key text,
   p_connections jsonb default null
 ) returns jsonb language plpgsql security definer set search_path='' as $function$
 declare grant_row record; new_row public.nayanet_intelligent_blocks;
@@ -105,5 +105,5 @@ begin
  );
  return row_to_json(new_row)||jsonb_build_object('runtime_identity','naya-node-oidc','naya_id',p_naya_id,'runtime_jti',p_runtime_jti,'owner_id',p_owner_id);
 end;$function$;
-revoke all on function public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb) from public,anon,authenticated;
-grant execute on function public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb) to service_role;
+revoke all on function public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb) from public,anon,authenticated;
+grant execute on function public.nayanet_supersede_intelligent_block_runtime(text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb) to service_role;
