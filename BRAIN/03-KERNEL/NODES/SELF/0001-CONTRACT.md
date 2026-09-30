@@ -2,6 +2,8 @@
 
 **ID:** NAYA-KERNEL-SELF
 
+**Relationship to V2:** `0002-ELITE-SELF-CONTRACT-V2.md` (Status: CANONICAL ENGINEERING TARGET) operationalizes this contract — it defines the testable criteria a complete SELF implementation must demonstrate. V1 remains the binding semantic contract. Where the two appear to differ, V2's invariants govern implementation; V1's MUST/MUST NOT rules remain binding. Neither document is retired; they layer.
+
 ## Purpose
 
 SELF establishes the identity, mission, objective, scope, current state and continuity context of the active Naya execution. It is the foundation upon which all other kernel operations depend.
