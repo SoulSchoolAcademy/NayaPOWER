@@ -81,3 +81,20 @@ def test_bridges_service_role_only(migration_text):
     ]:
         assert f"revoke all on function public.{name}({sig}) from public,anon,authenticated" in migration_text
         assert f"grant execute on function public.{name}({sig}) to service_role" in migration_text
+
+
+def test_supersede_bridge_required_parameters_precede_defaults(migration_text):
+    m = re.search(
+        r"create function public\.nayanet_supersede_intelligent_block_runtime\((.*?)\) returns jsonb",
+        migration_text,
+        re.DOTALL | re.IGNORECASE,
+    )
+    assert m, "supersede runtime bridge signature must exist"
+    signature = m.group(1)
+    assert signature.index("p_idempotency_key text") < signature.index("p_project_id text default"), (
+        "all required parameters must precede the first defaulted parameter; "
+        "PostgreSQL rejects default-before-required signatures with SQLSTATE 42P13"
+    )
+    assert "p_superseded_block_id uuid,p_title text,p_content text,p_idempotency_key text" in signature.replace("\n", " "), (
+        "required supersede inputs must stay required rather than being hidden behind nullable defaults"
+    )
