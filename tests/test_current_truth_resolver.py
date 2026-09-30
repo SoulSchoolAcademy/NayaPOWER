@@ -11,6 +11,7 @@ def _live(main, *, issues=None, proof=None, runtime=None):
         "issue_states": issues or {"66": "OPEN", "978": "CLOSED", "975": "CLOSED", "810": "CLOSED"},
         "latest_successful_runtime_proof": proof,
         "live_runtime_source": runtime,
+        "open_prs": [{"number": 1053, "title": "Current truth", "head_sha": "pr-head", "draft": False, "merge_state": "CLEAN"}],
     }
 
 
@@ -94,3 +95,49 @@ def test_control_plane_points_to_open_current_truth_frontier():
     assert ops["current_state"]["issue_975"].startswith("CLOSED")
     assert ops["current_state"]["issue_810"].startswith("CLOSED")
     assert ops["top_10"][0]["id"] == "#66"
+
+
+def test_generated_markdown_continuation_brief_contains_operational_handoff():
+    main = "a" * 40
+    result = ctr.resolve(
+        _live(main, proof={"run_id": 123, "head_sha": main, "conclusion": "success"}, runtime=None),
+        repo_head=main,
+    )
+    md = ctr.render_markdown(result)
+    assert "# NayaPOWER Current Truth" in md
+    assert f"`{main}`" in md
+    assert "**Active issue:** #66 (OPEN)" in md
+    assert "## One next action" in md
+    assert "## Warnings / unknowns" in md
+    assert "LIVE_RUNTIME_SOURCE" in md
+    assert "## Max-10" in md
+    assert "Projection only" in md
+
+
+def test_workflow_publishes_and_uploads_generated_continuation_brief():
+    root = Path(__file__).resolve().parents[1]
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    assert "--markdown-output current-truth-brief.md" in wf
+    assert "current-truth-brief.md" in wf
+    assert "GITHUB_STEP_SUMMARY" in wf
+
+
+def test_resolver_carries_live_open_pr_frontier():
+    main = "a" * 40
+    result = ctr.resolve(_live(main, proof={"head_sha": main}, runtime=main), repo_head=main)
+    prs = result["active_work"]["open_prs"]
+    assert prs[0]["number"] == 1053
+    assert prs[0]["head_sha"] == "pr-head"
+    md = ctr.render_markdown(result)
+    assert "## Open pull requests" in md
+    assert "#1053 Current truth" in md
+    assert "`pr-head`" in md
+
+
+def test_workflow_collects_live_open_pull_requests():
+    root = Path(__file__).resolve().parents[1]
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    assert "pull-requests: read" in wf
+    assert '"gh", "pr", "list"' in wf
+    assert '"number,title,headRefOid,isDraft,mergeStateStatus,updatedAt"' in wf
+    assert '"open_prs": open_prs' in wf
