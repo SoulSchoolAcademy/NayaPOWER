@@ -1331,6 +1331,15 @@
       "statement_count": 11,
       "bytes": 4507,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930031355",
+      "name": "repair_graph_v2_temporal_insert_defaults",
+      "path": "supabase/migrations/20260930031355_repair_graph_v2_temporal_insert_defaults.sql",
+      "sha256": "31ad9a59fd84f7acaa24817264cfcdc729f72253cbde57ead332eee12be0354c",
+      "statement_count": 1,
+      "bytes": 408,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
