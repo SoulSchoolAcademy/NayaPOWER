@@ -368,12 +368,29 @@ jobs:
           path: causal-learning-experiment-receipt.json
 
   cold-graph-control-treatment:
-    needs: contract
+    needs: learning-promotion
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
           ref: ${{ env.SOURCE_SHA }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+          path: fresh-lineage
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.PRODUCER_RUN_ID }}
+      - name: Bind graph proof to exact fresh verified block
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lineage/fresh-lesson-lineage-ids.json"))
+          block_id=ids["intelligent_block_id"]
+          assert block_id
+          open("graph-block-id.txt","w").write(block_id)
+          PY
       - name: Mint short-lived GitHub OIDC runtime identity
         shell: bash
         run: |
@@ -384,27 +401,43 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":false}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
+          block_id="$(cat graph-block-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"COLD-NAYA-GRAPH-HELDOUT-001\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":false}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-control.json
           python - <<'PY'
           import json
           r=json.load(open("graph-control.json"))
           assert r["ok"] is True, r
           assert r["condition"]=="OFF"
+          assert r["schema"]=="NAYANET_COLD_GRAPH_BEHAVIOR_V2", r
+          assert r["block_id"]==open("graph-block-id.txt").read().strip(), r
+          assert r["task_class"]=="provenance_sensitive", r
           assert r["behavior"]=="REQUIRE_DIRECT_CANONICAL_INTELLIGENCE"
           PY
       - name: Execute identical held-out task with graph context ON
         shell: bash
         run: |
           set -euo pipefail
-          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data '{"task_id":"COLD-NAYA-GRAPH-HELDOUT-001","relationship_context":true}' "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
+          block_id="$(cat graph-block-id.txt)"
+          curl -sS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data "{\"task_id\":\"COLD-NAYA-GRAPH-HELDOUT-001\",\"intelligent_block_id\":\"$block_id\",\"relationship_context\":true}" "${COLD_RUNTIME_FUNCTION}?mode=graph-behavior" > graph-treatment.json
           python - <<'PY'
           import json
           r=json.load(open("graph-treatment.json"))
           assert r["ok"] is True, r
           assert r["condition"]=="ON"
+          assert r["schema"]=="NAYANET_COLD_GRAPH_BEHAVIOR_V2", r
+          assert r["block_id"]==open("graph-block-id.txt").read().strip(), r
+          assert r["task_class"]=="provenance_sensitive", r
           assert r["behavior"]=="APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE"
           assert r["selected_relationships"]
-          assert all(x["epistemic_state"]=="VERIFIED" and x["provenance"] for x in r["selected_relationships"])
+          assert all(
+            x["epistemic_state"]=="VERIFIED"
+            and x["status"]=="ACTIVE"
+            and x["provenance"]
+            and x["evidence_refs"]
+            and x["applicability"]["state"]=="APPLICABLE"
+            and "provenance_sensitive" in x["applicability"]["task_classes"]
+            for x in r["selected_relationships"]
+          ), r
           PY
       - name: Build persisted paired receipt
         shell: bash
@@ -412,7 +445,9 @@ jobs:
           python - <<'PY'
           import json
           c=json.load(open("graph-control.json")); t=json.load(open("graph-treatment.json"))
-          out={"schema":"NAYANET_COLD_GRAPH_BEHAVIOR_V1","task_id":c["task_id"],"control":{"receipt_id":c["receipt"]["id"],"condition":"OFF","behavior":c["behavior"]},"treatment":{"receipt_id":t["receipt"]["id"],"condition":"ON","behavior":t["behavior"],"selected_relationships":t["selected_relationships"]},"behavioral_delta":{"changed":c["behavior"]!=t["behavior"]},"runtime_identity":"github-actions-oidc"}
+          assert c["block_id"] == t["block_id"], (c,t)
+          assert c["task_class"] == t["task_class"] == "provenance_sensitive", (c,t)
+          out={"schema":"NAYANET_COLD_GRAPH_BEHAVIOR_V2","task_id":c["task_id"],"task_class":c["task_class"],"intelligent_block_id":c["block_id"],"control":{"receipt_id":c["receipt"]["id"],"condition":"OFF","behavior":c["behavior"]},"treatment":{"receipt_id":t["receipt"]["id"],"condition":"ON","behavior":t["behavior"],"selected_relationships":t["selected_relationships"]},"behavioral_delta":{"changed":c["behavior"]!=t["behavior"]},"runtime_identity":"github-actions-oidc"}
           assert out["behavioral_delta"]["changed"] is True
           json.dump(out,open("cold-graph-behavior-pair.json","w"),indent=2)
           PY

@@ -50,6 +50,19 @@ async function canonicalDigest(lesson: string, provenance: unknown): Promise<str
   return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+async function idempotencyRequestFingerprint(input: Json): Promise<string> {
+  const canonical = JSON.stringify({
+    authority_grant_id: String(input.authority_grant_id ?? ""),
+    mission_id: String(input.mission_id ?? ""),
+    action: String(input.action ?? ""),
+    target: String(input.target ?? ""),
+    canonical_block_id: String(input.canonical_block_id ?? ""),
+    canonical_digest: String(input.canonical_digest ?? ""),
+  });
+  const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonical));
+  return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
 async function resolveAuthority(admin: ReturnType<typeof adminClient>, grantId: string) {
   if (!grantId) {
     return {allowed: false, reason: "AUTHORITY_ABSENT", grant: null};
@@ -113,6 +126,35 @@ async function insertReceipt(admin: ReturnType<typeof adminClient>, row: Json) {
     if (error.code !== "23505") throw new Error("RECEIPT_WRITE_" + error.code);
   }
   throw new Error("RECEIPT_REVISION_RETRY_EXHAUSTED");
+}
+
+async function insertIdempotentActionReceipt(
+  admin: ReturnType<typeof adminClient>,
+  row: Json,
+  idempotencyKey: string,
+) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const revision = await nextRevision(admin);
+    const {data, error} = await admin
+      .from("nayanet_execution_receipts")
+      .insert({...row, revision, idempotency_key: idempotencyKey})
+      .select("*")
+      .single();
+    if (!error) return {receipt: data, replayed: false};
+    if (error.code !== "23505") throw new Error("RECEIPT_WRITE_" + error.code);
+
+    const {data: existing, error: existingError} = await admin
+      .from("nayanet_execution_receipts")
+      .select("*")
+      .eq("user_id", OWNER_ID)
+      .eq("project_id", "NayaNET")
+      .eq("action", "NAYA-NODE-0001-VERIFIED-AI-ACTION")
+      .eq("idempotency_key", idempotencyKey)
+      .maybeSingle();
+    if (existingError) throw existingError;
+    if (existing) return {receipt: existing, replayed: true};
+  }
+  throw new Error("RECEIPT_IDEMPOTENCY_RETRY_EXHAUSTED");
 }
 
 Deno.serve(async (req) => {
@@ -180,42 +222,19 @@ Deno.serve(async (req) => {
       if (!lesson) return json({ok: false, error: "RETAINED_LESSON_MISSING"}, 409);
       const digest = await canonicalDigest(lesson, block.evidence_refs);
 
-      if (idempotencyKey) {
-        const {data: prior, error: priorError} = await admin
-          .from("nayanet_execution_receipts")
-          .select("id,action,status,observed_result")
-          .eq("user_id", OWNER_ID)
-          .eq("project_id", "NayaNET")
-          .eq("action", "NAYA-NODE-0001-VERIFIED-AI-ACTION")
-          .eq("status", "SUCCESS")
-          .order("revision", {ascending: false})
-          .limit(25);
-        if (priorError) throw priorError;
-        const replay = (prior ?? []).find((row) => (row.observed_result ?? "").includes(`idempotency:${idempotencyKey}`));
-        if (replay) {
-          const {data: replayOutcome} = await admin
-            .from("nayanet_execution_outcomes")
-            .select("outcome_id,receipt_id,verified,verification_method")
-            .eq("receipt_id", replay.id)
-            .maybeSingle();
-          if (!replayOutcome) {
-            return json({
-              ok: false,
-              status: "INCONCLUSIVE",
-              error: "IDEMPOTENT_REPLAY_OUTCOME_MISSING",
-              idempotent_replay: true,
-              receipt: replay,
-              outcome: null,
-            }, 409);
-          }
-          return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt: replay, outcome: replayOutcome});
-        }
-      }
+      const requestFingerprint = await idempotencyRequestFingerprint({
+        authority_grant_id: grant.grant_id,
+        mission_id: MISSION_ID,
+        action: ACTION,
+        target: NAYA_ID,
+        canonical_block_id: BLOCK_ID,
+        canonical_digest: digest,
+      });
 
       const observed = lesson.includes("Preserve provenance before applying retained intelligence")
         ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
         : "RETAINED_INTELLIGENCE_RETRIEVED";
-      const receipt = await insertReceipt(admin, {
+      const {receipt, replayed: idempotentReplay} = await insertIdempotentActionReceipt(admin, {
         user_id: OWNER_ID,
         project_id: "NayaNET",
         action: "NAYA-NODE-0001-VERIFIED-AI-ACTION",
@@ -225,6 +244,7 @@ Deno.serve(async (req) => {
         evidence: {
           stage: "execution",
           authority_decision: "ALLOW",
+          idempotency_request_fingerprint: requestFingerprint,
           authority_grant_id: grant.grant_id,
           authority_status: grant.status,
           authority_mission: grant.mission_id,
@@ -247,6 +267,36 @@ Deno.serve(async (req) => {
         },
         learning: ["Authorized action is distinct from capability. Authority is resolved from the durable grant before any governed effect."],
       });
+
+      if (idempotentReplay) {
+        const persistedFingerprint = String(((receipt.evidence ?? {}) as Json).idempotency_request_fingerprint ?? "");
+        if (!persistedFingerprint || persistedFingerprint !== requestFingerprint) {
+          return json({
+            ok: false,
+            status: "BLOCKED",
+            error: "IDEMPOTENCY_KEY_REUSE_CONFLICT",
+            idempotent_replay: false,
+            receipt_id: receipt.id,
+          }, 409);
+        }
+        const {data: replayOutcome, error: replayOutcomeError} = await admin
+          .from("nayanet_execution_outcomes")
+          .select("outcome_id,receipt_id,verified,verification_method")
+          .eq("receipt_id", receipt.id)
+          .maybeSingle();
+        if (replayOutcomeError) throw replayOutcomeError;
+        if (!replayOutcome) {
+          return json({
+            ok: false,
+            status: "INCONCLUSIVE",
+            error: "IDEMPOTENT_REPLAY_OUTCOME_MISSING",
+            idempotent_replay: true,
+            receipt,
+            outcome: null,
+          }, 409);
+        }
+        return json({ok: true, status: "EXECUTED", idempotent_replay: true, receipt, outcome: replayOutcome});
+      }
 
       const {data: outcome, error: outcomeError} = await admin
         .from("nayanet_execution_outcomes")

@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "b9e0a3de72de387045ecde33dee9d427f64f7cfd";
+const DEPLOYED_SOURCE_REVISION = "eb3d018743ccdc89005600a73c99dd5885f8fdca";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
@@ -53,6 +53,30 @@ async function auth(req: Request) {
   }
   return { payload, workflowRef };
 }
+
+
+const GRAPH_TASKS: Record<string, { task_class: string }> = {
+  "COLD-NAYA-GRAPH-HELDOUT-001": { task_class: "provenance_sensitive" },
+};
+
+const graphRelationshipEligible = (r: any, taskClass: string, blockId: string, now: Date, supersededIds: Set<string>) => {
+  if (!r || r.target_id !== blockId) return false;
+  if (r.status !== "ACTIVE") return false;
+  if (r.epistemic_state !== "VERIFIED") return false;
+  if (!r.source_id || !r.provenance) return false;
+  if (!Array.isArray(r.evidence_refs) || r.evidence_refs.length === 0) return false;
+  if (supersededIds.has(String(r.relationship_id))) return false;
+  const from = r.valid_from ? Date.parse(String(r.valid_from)) : NaN;
+  const until = r.valid_until ? Date.parse(String(r.valid_until)) : null;
+  if (!Number.isFinite(from) || from > now.getTime()) return false;
+  if (until !== null && (!Number.isFinite(until) || until < now.getTime())) return false;
+  if (r.visibility === "DERIVED_SHARED" && !r.consent_ref) return false;
+  if (!["PRIVATE", "DERIVED_SHARED", "PUBLIC_DERIVED"].includes(String(r.visibility || ""))) return false;
+  const app = r.applicability && typeof r.applicability === "object" && !Array.isArray(r.applicability) ? r.applicability : {};
+  if (app.state !== "APPLICABLE") return false;
+  if (!Array.isArray(app.task_classes) || !app.task_classes.includes(taskClass)) return false;
+  return true;
+};
 
 Deno.serve(async (req: Request) => {
   try {
@@ -488,16 +512,48 @@ Deno.serve(async (req: Request) => {
       const control = rows.find((r: any) => r.id === controlId);
       const treatment = rows.find((r: any) => r.id === treatmentId);
       if (!control || !treatment) return json({ error: "GRAPH_RECEIPT_PAIR_MISMATCH" }, 409);
+      const taskId = String(treatment.evidence?.task_id || "");
+      const task = GRAPH_TASKS[taskId];
+      const blockId = String(treatment.evidence?.intelligent_block_id || "");
+      if (!task || !blockId) return json({ error: "GRAPH_TASK_BINDING_MISSING" }, 409);
+      if (control.evidence?.task_id !== taskId || control.evidence?.intelligent_block_id !== blockId) {
+        return json({ error: "GRAPH_CONTROL_TREATMENT_INPUT_MISMATCH" }, 409);
+      }
+      const selectedIds = Array.isArray(treatment.evidence?.selected_relationships)
+        ? treatment.evidence.selected_relationships.map((r: any) => String(r.relationship_id || "")).filter(Boolean)
+        : [];
+      if (selectedIds.length === 0) return json({ error: "GRAPH_SELECTED_RELATIONSHIPS_REQUIRED" }, 409);
+      const relationships = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(blockId) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,status,visibility,provenance,evidence_refs,valid_from,valid_until,supersedes_relationship_id,consent_ref,applicability,reason_codes,created_at&order=created_at.asc");
+      const supersededIds = new Set<string>(relationships.filter((r: any) => r.status === "ACTIVE" && r.supersedes_relationship_id).map((r: any) => String(r.supersedes_relationship_id)));
+      const now = new Date();
+      const rereadSelected = relationships.filter((r: any) => selectedIds.includes(String(r.relationship_id)));
       const valid =
         control.evidence?.condition === "OFF" &&
         control.evidence?.relationship_context_enabled === false &&
         treatment.evidence?.condition === "ON" &&
         treatment.evidence?.relationship_context_enabled === true &&
         control.observed_result !== treatment.observed_result &&
-        Array.isArray(treatment.evidence?.selected_relationships) &&
-        treatment.evidence.selected_relationships.length > 0 &&
-        treatment.evidence.selected_relationships.every((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.target_id === BLOCK_ID);
-      return json({ ok: valid, verification: { persisted_pair_re_read: true, control_receipt_id: controlId, treatment_receipt_id: treatmentId, behavioral_delta: control.observed_result !== treatment.observed_result, treatment_relationships_verified: valid, independently_reconstructed: true }, receipts: { control, treatment }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+        rereadSelected.length === selectedIds.length &&
+        rereadSelected.every((r: any) => graphRelationshipEligible(r, task.task_class, blockId, now, supersededIds));
+      return json({
+        ok: valid,
+        verification: {
+          persisted_pair_re_read: true,
+          relationship_rows_re_read: true,
+          control_receipt_id: controlId,
+          treatment_receipt_id: treatmentId,
+          behavioral_delta: control.observed_result !== treatment.observed_result,
+          treatment_relationships_verified: valid,
+          task_class: task.task_class,
+          intelligent_block_id: blockId,
+          independently_reconstructed: true
+        },
+        receipts: { control, treatment },
+        relationships: rereadSelected,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null
+      });
     }
 
     if (mode === "graph-behavior") {
@@ -505,10 +561,23 @@ Deno.serve(async (req: Request) => {
       const body = await req.json().catch(() => ({}));
       const relationshipContext = body?.relationship_context === true;
       const taskId = String(body?.task_id || "");
-      if (taskId !== "COLD-NAYA-GRAPH-HELDOUT-001") return json({ error: "HELDOUT_TASK_REQUIRED" }, 400);
-      const relationships = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(BLOCK_ID) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,provenance,created_at&order=created_at.asc");
-      const applicable = relationshipContext ? relationships.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance && r.source_id && r.target_id === BLOCK_ID) : [];
-      const selected = applicable.filter((r: any) => ["PRODUCES","VERIFIED_BY"].includes(r.relationship_type));
+      const task = GRAPH_TASKS[taskId];
+      if (!task) return json({ error: "HELDOUT_TASK_REQUIRED" }, 400);
+      const blockId = String(body?.intelligent_block_id || "");
+      if (!blockId) return json({ error: "INTELLIGENT_BLOCK_ID_REQUIRED" }, 400);
+      const blocks = await get("/rest/v1/nayanet_intelligent_blocks?owner_id=eq." + OWNER_ID + "&intelligent_block_id=eq." + encodeURIComponent(blockId) + "&select=intelligent_block_id,owner_id,understanding_state,evidence_refs,provenance");
+      if (!Array.isArray(blocks) || blocks.length !== 1) return json({ error: "GRAPH_BLOCK_NOT_UNIQUE" }, 409);
+      const block = blocks[0];
+      if (block.understanding_state !== "LEARNED" || !Array.isArray(block.evidence_refs) || block.evidence_refs.length === 0) {
+        return json({ error: "GRAPH_BLOCK_NOT_VERIFIED_LEARNED" }, 409);
+      }
+      const relationships = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(blockId) + "&select=relationship_id,source_id,target_id,relationship_type,epistemic_state,status,visibility,provenance,evidence_refs,valid_from,valid_until,supersedes_relationship_id,consent_ref,applicability,reason_codes,created_at&order=created_at.asc");
+      const supersededIds = new Set<string>(relationships.filter((r: any) => r.status === "ACTIVE" && r.supersedes_relationship_id).map((r: any) => String(r.supersedes_relationship_id)));
+      const now = new Date();
+      const applicable = relationshipContext
+        ? relationships.filter((r: any) => graphRelationshipEligible(r, task.task_class, blockId, now, supersededIds))
+        : [];
+      const selected = applicable.filter((r: any) => ["PRODUCES", "VERIFIED_BY", "APPLIES_TO", "REFINES"].includes(r.relationship_type));
       const behavior = selected.length > 0 ? "APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE";
       const row = {
         user_id: OWNER_ID, project_id: "NayaNET",
@@ -520,15 +589,39 @@ Deno.serve(async (req: Request) => {
           condition: relationshipContext ? "ON" : "OFF",
           relationship_context_enabled: relationshipContext,
           task_id: taskId,
+          task_class: task.task_class,
+          intelligent_block_id: blockId,
           selected_relationships: selected,
           selected_relationship_paths: selected.map((r: any) => [r.source_id, r.relationship_type, r.target_id]),
           provenance: selected.map((r: any) => r.provenance),
-          applicability: selected.map((r: any) => ({ relationship_id: r.relationship_id, applicable: true, reason: "VERIFIED relationship is scoped to canonical target." })),
+          applicability: selected.map((r: any) => ({
+            relationship_id: r.relationship_id,
+            applicable: true,
+            state: r.applicability?.state,
+            task_classes: r.applicability?.task_classes,
+            reason: "ACTIVE current evidenced relationship explicitly applies to held-out task class."
+          })),
           epistemic_state: selected.map((r: any) => r.epistemic_state)
         }
       };
       const persisted = await insertReceiptWithRetry(row);
-      return json({ ok: true, schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V1", naya_id: NAYA_ID, owner_id: OWNER_ID, block_id: BLOCK_ID, task_id: taskId, condition: relationshipContext ? "ON" : "OFF", behavior, relationship_context_enabled: relationshipContext, selected_relationships: selected, receipt: persisted, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
+      return json({
+        ok: true,
+        schema: "NAYANET_COLD_GRAPH_BEHAVIOR_V2",
+        naya_id: NAYA_ID,
+        owner_id: OWNER_ID,
+        block_id: blockId,
+        task_id: taskId,
+        task_class: task.task_class,
+        condition: relationshipContext ? "ON" : "OFF",
+        behavior,
+        relationship_context_enabled: relationshipContext,
+        selected_relationships: selected,
+        receipt: persisted,
+        runtime_identity: "github-actions-oidc",
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null
+      });
     }
 
     if (mode === "cold-successor") {

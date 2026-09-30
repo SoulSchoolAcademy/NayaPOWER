@@ -46,6 +46,30 @@ async function authenticateRuntime(req: Request) {
   return { payload, workflowRef, ownerId: OWNER_ID };
 }
 
+
+function deriveGraphApplicability(block: any) {
+  const lesson = String(block?.content?.lesson ?? "");
+  if (/preserve provenance|provenance before applying retained intelligence/i.test(lesson)) {
+    return {
+      state: "APPLICABLE",
+      task_classes: ["provenance_sensitive", "learning_reuse", "contextual_retrieval"],
+      limitations: ["Only use where provenance preservation is materially relevant."],
+    };
+  }
+  if (/act-first within guardrails|asking permission and acting|within the guardrails and adds value/i.test(lesson)) {
+    return {
+      state: "APPLICABLE",
+      task_classes: ["repository_correction", "learning_reuse", "contextual_retrieval"],
+      limitations: ["Does not create authority; LAW must independently authorize consequential action."],
+    };
+  }
+  return {
+    state: "UNKNOWN",
+    task_classes: [],
+    limitations: ["NO_PREDECLARED_TASK_CLASS"],
+  };
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return json({ ok: true });
   if (req.method !== "POST") return json({ ok: false, error: "METHOD_NOT_ALLOWED" }, 405);
@@ -350,9 +374,22 @@ Deno.serve(async (req: Request) => {
       verification_runtime: "github-actions-oidc",
       verification_runtime_jti: payload.jti ?? null,
     };
+    const graphApplicability = deriveGraphApplicability(blockAfter);
+    const relationshipEvidenceRefs = verificationRefs;
+    const relationshipReasonCodes = graphApplicability.state === "APPLICABLE"
+      ? ["INDEPENDENT_CAUSAL_VERIFICATION", "LEARNING_VERIFIED", "TASK_APPLICABILITY_DERIVED_FROM_VERIFIED_LESSON"]
+      : ["INDEPENDENT_CAUSAL_VERIFICATION", "LEARNING_VERIFIED", "APPLICABILITY_UNCLASSIFIED"];
     const { data: relationshipAfter, error: relationshipUpdateError } = await admin
       .from("nayanet_brain_relationships")
-      .update({ epistemic_state: "VERIFIED", provenance: relationshipProvenance })
+      .update({
+        epistemic_state: "VERIFIED",
+        status: "ACTIVE",
+        visibility: "PRIVATE",
+        provenance: relationshipProvenance,
+        evidence_refs: relationshipEvidenceRefs,
+        applicability: graphApplicability,
+        reason_codes: relationshipReasonCodes,
+      })
       .eq("relationship_id", relationshipId)
       .eq("owner_id", ownerId)
       .select("*")
