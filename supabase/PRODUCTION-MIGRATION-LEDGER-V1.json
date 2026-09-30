@@ -1363,9 +1363,9 @@
       "version": "20260930050000",
       "name": "thread_connections_through_commit_bridge",
       "path": "supabase/migrations/20260930050000_thread_connections_through_commit_bridge.sql",
-      "sha256": "5257f25b6b7555113c6c3ebc4beb7b57e07cdce0e809d5d8bd3a188c4dab2287",
-      "statement_count": 7,
-      "bytes": 7282,
+      "sha256": "50b9f805345edfdd593e3a36a3a38c738f82b9992c53ce8df5365cf73992034f",
+      "statement_count": 8,
+      "bytes": 7577,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
