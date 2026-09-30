@@ -1318,9 +1318,9 @@
       "version": "20260930022500",
       "name": "harden_collective_wisdom_consent_revocation_v1",
       "path": "supabase/migrations/20260930022500_harden_collective_wisdom_consent_revocation_v1.sql",
-      "sha256": "bfa12ee3a5d9fec44ae9da3d94cb25a3f2083f90bbd8e2b635b249d5c1257c5a",
-      "statement_count": 11,
-      "bytes": 5215,
+      "sha256": "3efb2a2045f88e8b5f2851c643c3951f5a97f9a5567c4b6e80f0252c1bf3e04e",
+      "statement_count": 62,
+      "bytes": 12375,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
