@@ -1412,6 +1412,15 @@
       "statement_count": 1,
       "bytes": 8222,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20260930190000",
+      "name": "fix_intelligence_commit_lineage_revision_v2",
+      "path": "supabase/migrations/20260930190000_fix_intelligence_commit_lineage_revision_v2.sql",
+      "sha256": "796edc3ff617b542a17e45074a5c4099ac84ce886aebe140bfc509a9644b1df8",
+      "statement_count": 1,
+      "bytes": 8339,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
