@@ -23,8 +23,7 @@ def _function_body(name: str) -> str:
     text = source()
     marker = f"create or replace function public.{name}"
     start = text.index(marker)
-    end = text.index("
-$$;", start) + 4
+    end = text.index("\n$;", start) + 4
     return text[start:end]
 
 
