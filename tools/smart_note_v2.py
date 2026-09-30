@@ -25,6 +25,48 @@ def changed_capture(paths):
         raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
     return hits[0] if hits else ""
 
+
+EDGE_VOCABULARY = {
+    "DERIVED_FROM","SUPPORTS","CONTRADICTS","DEPENDS_ON","IMPLEMENTS","GOVERNS",
+    "AUTHORIZED_BY","USED_BY","CAUSED","RESULTED_IN","VERIFIED_BY","LEARNED_FROM",
+    "SUPERSEDES","SUCCEEDS","RELATED_TO","CONTEXTUALIZES","INVALIDATES","REFINES",
+    "CORRECTS","ENABLES","PRODUCES","APPLIES_TO",
+}
+
+
+def resolve_runtime_connections(capture, registry):
+    """Resolve declared Smart Note relationships to canonical owner-scoped IB IDs.
+
+    Human-facing targets may begin with a stable Smart Note ID (for example
+    "SN-014 — The Compounding Imperative") or name an exact Intelligent Block ID.
+    Unresolved prose and unknown relationship types fail closed by omission.
+    """
+    by_sn = {str(e.get("smart_note_id", "")).upper(): e.get("intelligent_block_id")
+             for e in registry.get("entries", []) if e.get("smart_note_id") and e.get("intelligent_block_id")}
+    known_ib = {str(e.get("intelligent_block_id")) for e in registry.get("entries", []) if e.get("intelligent_block_id")}
+    out = []
+    seen = set()
+    for raw in capture.get("intelligence", {}).get("connections", []) or []:
+        if not isinstance(raw, dict):
+            continue
+        rel = str(raw.get("relationship_type") or raw.get("type") or "").strip().upper()
+        target = str(raw.get("target_block_id") or raw.get("target") or "").strip()
+        if rel not in EDGE_VOCABULARY or not target:
+            continue
+        resolved = target if target in known_ib else None
+        if resolved is None:
+            m = re.match(r"^(SN-\d{3,})\b", target, flags=re.IGNORECASE)
+            if m:
+                resolved = by_sn.get(m.group(1).upper())
+        if not resolved:
+            continue
+        key = (resolved, rel)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({"target_block_id": resolved, "relationship_type": rel})
+    return out
+
 def allocate_smart_note_id(capture, ib):
     explicit = str(capture.get("smart_note_id") or "").strip().upper()
     if re.fullmatch(r"SN-\d{3,}", explicit):

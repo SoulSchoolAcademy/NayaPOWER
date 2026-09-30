@@ -81,6 +81,7 @@ jobs:
           capture_path="$(cat capture-path.txt)"
           python - <<'PY'
           import hashlib, json, os, pathlib, uuid
+          from tools.smart_note_v2 import resolve_runtime_connections
           capture_path=pathlib.Path("capture-path.txt").read_text().strip()
           registry_path=pathlib.Path(".naya/memory/smart-notes/index.json")
           registry=json.loads(registry_path.read_text()) if registry_path.exists() else {"entries":[]}
@@ -90,7 +91,8 @@ jobs:
               distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
               digest=hashlib.sha256(distilled.encode()).hexdigest()
               exact=next((e for e in registry.get("entries",[]) if e.get("content_hash")==digest),None)
-              expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest}
+              resolved_connections=resolve_runtime_connections(capture,registry)
+              expected={"capture_path":capture_path,"capture_id":capture["capture_id"],"expected_content":distilled,"content_hash":digest,"resolved_connections":resolved_connections}
               pathlib.Path("smart-note-expected.json").write_text(json.dumps(expected,indent=2,ensure_ascii=False))
               if exact:
                   p=exact["provenance"]
@@ -116,7 +118,7 @@ jobs:
                 "p_event_id":"SMART-NOTE-"+capture["capture_id"],
                 "p_title":capture["title"],"p_content":distilled,
                 "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
-                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET","p_connections":resolved_connections
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
