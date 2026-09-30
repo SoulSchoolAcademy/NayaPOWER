@@ -21,6 +21,7 @@
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { SignJWT, importPKCS8 } from "https://esm.sh/jose@6.0.10";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -68,6 +69,57 @@ function ghHeaders(token: string): Record<string, string> {
     "X-GitHub-Api-Version": "2022-11-28",
     "Content-Type": "application/json",
   };
+}
+
+
+type GitHubCredential = {
+  token: string;
+  mode: "GITHUB_APP_INSTALLATION_TOKEN" | "STATIC_GITHUB_TOKEN_DEPRECATED";
+};
+
+async function resolveGitHubCredential(): Promise<GitHubCredential> {
+  const appId = normalizedText(Deno.env.get("GITHUB_APP_ID"));
+  const installationId = normalizedText(Deno.env.get("GITHUB_APP_INSTALLATION_ID"));
+  const privateKeyRaw = Deno.env.get("GITHUB_APP_PRIVATE_KEY") || "";
+  const legacyToken = Deno.env.get("GITHUB_TOKEN") || "";
+
+  if (appId && installationId && privateKeyRaw) {
+    const privateKey = privateKeyRaw.includes("\\n") ? privateKeyRaw.replace(/\\n/g, "\n") : privateKeyRaw;
+    const key = await importPKCS8(privateKey, "RS256");
+    const now = Math.floor(Date.now() / 1000);
+    const appJwt = await new SignJWT({})
+      .setProtectedHeader({ alg: "RS256" })
+      .setIssuedAt(now - 60)
+      .setExpirationTime(now + 540)
+      .setIssuer(appId)
+      .sign(key);
+
+    const tokenRes = await fetch(
+      `https://api.github.com/app/installations/${encodeURIComponent(installationId)}/access_tokens`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + appJwt,
+          Accept: "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ repositories: [REPO_NAME], permissions: { contents: "write" } }),
+      },
+    );
+    const tokenJson: any = await tokenRes.json().catch(() => ({}));
+    const token = normalizedText(tokenJson?.token);
+    if (!tokenRes.ok || !token) {
+      throw new Error("GITHUB_APP_TOKEN_MINT_FAILED:" + tokenRes.status);
+    }
+    return { token, mode: "GITHUB_APP_INSTALLATION_TOKEN" };
+  }
+
+  if (legacyToken) {
+    return { token: legacyToken, mode: "STATIC_GITHUB_TOKEN_DEPRECATED" };
+  }
+
+  throw new Error("GITHUB_CREDENTIAL_NOT_CONFIGURED");
 }
 
 async function sha256Hex(text: string): Promise<string> {
@@ -137,7 +189,6 @@ Deno.serve(async (req) => {
     const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     if (!supabaseUrl || !supabaseAnonKey || !serviceKey) throw new Error("SUPABASE_RUNTIME_NOT_CONFIGURED");
-    const githubToken = Deno.env.get("GITHUB_TOKEN") || "";
 
     const auth = req.headers.get("Authorization");
     if (!auth) return json({ ok: false, error: "AUTHORIZATION_REQUIRED" }, 401);
@@ -195,6 +246,7 @@ Deno.serve(async (req) => {
           completed_at: claimRow.completed_at,
           run_url: null,
           commit_sha: claimRow.commit_sha || null,
+          credential_mode: null,
         },
       });
     }
@@ -256,13 +308,17 @@ Deno.serve(async (req) => {
     const smartLink = `https://github.com/${REPO}/blob/main/${repoPath}`;
     if (!LINK_RE.test(smartLink)) throw new Error("SMART_LINK_CONTRACT_VIOLATION");
 
-    if (!githubToken) {
-      // Fail closed and receipted: the one human step is setting the
-      // GITHUB_TOKEN Supabase secret. Replay with the same idempotency key.
+    let githubCredential: GitHubCredential;
+    try {
+      githubCredential = await resolveGitHubCredential();
+    } catch (credentialError) {
+      const credentialFailure = String((credentialError as Error)?.message || credentialError);
+      const isMissing = credentialFailure === "GITHUB_CREDENTIAL_NOT_CONFIGURED";
+      const failure = isMissing ? "GITHUB_CREDENTIAL_NOT_CONFIGURED" : credentialFailure;
       const upd = await receipts
         .update({
-          status: "blocked",
-          failure: "GITHUB_CREDENTIAL_NOT_CONFIGURED",
+          status: isMissing ? "blocked" : "failed",
+          failure,
           authority_grant_id: grantId,
           intelligent_block_id: ibId,
           repo_path: repoPath,
@@ -273,14 +329,17 @@ Deno.serve(async (req) => {
       return json(
         {
           ok: false,
-          pipeline: "PROJECTION_BLOCKED",
-          error: "GITHUB_CREDENTIAL_NOT_CONFIGURED",
-          detail: "Set the GITHUB_TOKEN Supabase secret, then replay with the same idempotency key.",
+          pipeline: isMissing ? "PROJECTION_BLOCKED" : "PROJECTION_FAILED",
+          error: isMissing ? "GITHUB_CREDENTIAL_NOT_CONFIGURED" : "GITHUB_APP_TOKEN_MINT_FAILED",
+          detail: isMissing
+            ? "Configure a repo-scoped GitHub App (preferred) or temporary legacy GITHUB_TOKEN, then replay the same idempotency key."
+            : credentialFailure,
           transaction_id: transactionId,
         },
-        503
+        isMissing ? 503 : 502,
       );
     }
+    const githubToken = githubCredential.token;
 
     const projectedAt = new Date().toISOString();
     const markdown = renderSmartNoteMarkdown({
@@ -367,7 +426,12 @@ Deno.serve(async (req) => {
       pipeline: "PROJECTION_VERIFIED",
       smart_link: smartLink,
       receipt: { id: doneUpd.data.id },
-      projection_verification: { completed_at: completedAt, run_url: null, commit_sha: commitSha },
+      projection_verification: {
+        completed_at: completedAt,
+        run_url: null,
+        commit_sha: commitSha,
+        credential_mode: githubCredential.mode,
+      },
     });
   } catch (error) {
     console.error(error);

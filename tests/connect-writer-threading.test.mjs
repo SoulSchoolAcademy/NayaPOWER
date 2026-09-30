@@ -91,11 +91,11 @@ test("CONNECT: bridges stay service_role-only (edge functions invoke, never dire
   );
   assert.match(
     migration,
-    /revoke all on function public\.nayanet_supersede_intelligent_block_runtime\(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb\) from public,anon,authenticated/
+    /revoke all on function public\.nayanet_supersede_intelligent_block_runtime\(text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb\) from public,anon,authenticated/
   );
   assert.match(
     migration,
-    /grant execute on function public\.nayanet_supersede_intelligent_block_runtime\(text,uuid,text,uuid,text,uuid,text,text,text,text,text,text,jsonb\) to service_role/
+    /grant execute on function public\.nayanet_supersede_intelligent_block_runtime\(text,uuid,text,uuid,uuid,text,text,text,text,text,text,text,jsonb\) to service_role/
   );
 });
 
