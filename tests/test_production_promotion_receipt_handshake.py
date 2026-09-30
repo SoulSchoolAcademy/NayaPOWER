@@ -27,7 +27,7 @@ def receipt_program():
     return dedent(body[start:end])
 
 
-def run_receipt(tmp_path, source_sha="a" * 40, producer_sha=None, proof_sha=None, producer_conclusion="success", proof_conclusion="success", act_sha=None, act_conclusion="success"):
+def run_receipt(tmp_path, source_sha="a" * 40, producer_sha=None, proof_sha=None, producer_conclusion="success", proof_conclusion="success", act_sha=None, act_conclusion="success", connect_sha=None, connect_conclusion="success"):
     (tmp_path / "supabase-production-check.json").write_text(
         json.dumps({"id": 10, "name": "Supabase", "conclusion": "success"})
     )
@@ -39,6 +39,9 @@ def run_receipt(tmp_path, source_sha="a" * 40, producer_sha=None, proof_sha=None
     )
     (tmp_path / "act-proof-run.json").write_text(
         json.dumps({"databaseId": 35, "conclusion": act_conclusion, "headSha": act_sha or source_sha})
+    )
+    (tmp_path / "connect-proof-run.json").write_text(
+        json.dumps({"databaseId": 36, "conclusion": connect_conclusion, "headSha": connect_sha or source_sha})
     )
     env = {
         "GITHUB_SHA": source_sha,
@@ -66,16 +69,17 @@ def test_parent_receipt_binds_both_child_proofs_to_authorized_source(tmp_path):
     assert receipt["canonical_proof"]["producer_run_id"] == 20
     assert receipt["canonical_proof"]["runtime_proof_run_id"] == 30
     assert receipt["canonical_proof"]["act_proof_run_id"] == 35
+    assert receipt["canonical_proof"]["connect_proof_run_id"] == 36
 
 
-@pytest.mark.parametrize("bad", ["producer", "proof", "act"])
+@pytest.mark.parametrize("bad", ["producer", "proof", "act", "connect"])
 def test_parent_receipt_fails_closed_on_child_source_mismatch(tmp_path, bad):
-    kwargs = ({"producer_sha": "z" * 40} if bad == "producer" else {"proof_sha": "z" * 40} if bad == "proof" else {"act_sha": "z" * 40})
+    kwargs = ({"producer_sha": "z" * 40} if bad == "producer" else {"proof_sha": "z" * 40} if bad == "proof" else {"act_sha": "z" * 40} if bad == "act" else {"connect_sha": "z" * 40})
     with pytest.raises(AssertionError):
         run_receipt(tmp_path, **kwargs)
 
 
-@pytest.mark.parametrize("bad", ["producer", "proof", "act"])
+@pytest.mark.parametrize("bad", ["producer", "proof", "act", "connect"])
 def test_parent_receipt_fails_closed_when_a_child_is_not_successful(tmp_path, bad):
     kwargs = ({f"{bad}_conclusion": "failure"})
     with pytest.raises(AssertionError):
