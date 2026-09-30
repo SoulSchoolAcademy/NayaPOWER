@@ -156,6 +156,7 @@ declare
   block_row uuid := gen_random_uuid(); intelligent_id text := 'IB-' || regexp_replace(p_event_id, '[^A-Za-z0-9_-]', '-', 'g');
   revision bigint; lineage_row uuid; index_row uuid; relationship_row uuid; state_row uuid; content_hash text;
   v_connections jsonb;
+  v_elem jsonb;
 begin
   if uid is null then raise exception using errcode='42501', message='AUTH_REQUIRED'; end if;
   if coalesce(trim(p_event_id),'')='' or coalesce(trim(p_title),'')='' or coalesce(trim(p_content),'')='' or coalesce(trim(p_category),'')='' or coalesce(trim(p_topic),'')='' or coalesce(trim(p_target_id),'')='' then
@@ -186,6 +187,31 @@ begin
   insert into public.nayanet_brain_relationships(relationship_id,owner_id,source_id,target_id,relationship_type,provenance,epistemic_state)
   values(gen_random_uuid(),uid,'NAYA-KERNEL-KNOW',intelligent_id,'PRODUCES',jsonb_build_object('source_event_id',event_row,'lineage_id',lineage_row,'receipt_id',receipt_id,'authority_grant_id',p_authority_grant_id,'reason','Canonical KNOW ownership of the persisted lesson.'),'CANDIDATE')
   returning relationship_id into relationship_row;
+
+  -- CONNECT closure: persist every normalized caller-supplied edge in the
+  -- ONE canonical graph store. block.connections remains a projection.
+  for v_elem in select * from jsonb_array_elements(v_connections)
+  loop
+    insert into public.nayanet_brain_relationships(
+      relationship_id,owner_id,source_id,target_id,relationship_type,provenance,epistemic_state
+    )
+    values(
+      gen_random_uuid(),
+      uid,
+      intelligent_id,
+      v_elem->>'target_block_id',
+      upper(v_elem->>'relationship_type'),
+      jsonb_build_object(
+        'source_event_id',event_row,
+        'block_row_id',block_row,
+        'receipt_id',receipt_id,
+        'authority_grant_id',p_authority_grant_id,
+        'writer','nayanet_intelligence_commit:R1_CONNECTION'
+      ),
+      'CANDIDATE'
+    )
+    on conflict (owner_id,source_id,target_id,relationship_type) do nothing;
+  end loop;
   insert into public.nayanet_intelligence_index(id,owner_id,source_table,source_id,object_type,title,event_time,status,project_id,revision,metadata)
   values(gen_random_uuid(),uid,'nayanet_intelligent_blocks',block_row,'INTELLIGENT_BLOCK',p_title,clock_timestamp(),'DURABLE',p_project_id,revision,jsonb_build_object('event_id',event_row,'intelligent_block_id',intelligent_id,'lineage_id',lineage_row,'relationship_id',relationship_row,'understanding_state','CANDIDATE','receipt_id',receipt_id))
   returning id into index_row;

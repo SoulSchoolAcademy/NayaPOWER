@@ -5,7 +5,7 @@ import { selectKnowContext, validateKnowAuthority, type KnowRequest, type KnowGr
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
 const REPOSITORY="SoulSchoolAcademy/NayaPOWER";
-const WORKFLOWS=new Set([".github/workflows/live-know-proof.yml",".github/workflows/live-prove-proof.yml"]);
+const WORKFLOWS=new Set([".github/workflows/live-know-proof.yml",".github/workflows/live-prove-proof.yml",".github/workflows/live-connect-proof.yml"]);
 const REF="refs/heads/main";
 const OWNER_ID="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const NAYA_ID="NAYA-NODE-0001";
