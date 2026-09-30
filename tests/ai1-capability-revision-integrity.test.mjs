@@ -11,7 +11,7 @@ const edge = readFileSync(new URL(
   import.meta.url,
 ), "utf8");
 const migration = readFileSync(new URL(
-  "../supabase/migrations/20260930214500_ai1_supersede_capability_integrity_v1.sql",
+  "../supabase/migrations/20261001000100_ai1_supersede_capability_integrity_v1.sql",
   import.meta.url,
 ), "utf8");
 
