@@ -93,3 +93,30 @@ def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_
     assert source.count("--jq .status") == 2
     assert source.count("--jq .conclusion") == 2
     assert '.status+":"+(.conclusion//"")' not in source
+
+
+def test_manual_production_authorization_is_bound_to_exact_source_sha():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert "source_sha:" in source
+    assert 'description: "Exact 40-hex main SHA authorized by the Human Director"' in source
+    assert "required: true" in source
+    assert "AUTHORIZED_SOURCE_SHA" in source
+    assert "^[0-9a-f]{40}$" in source
+    assert 'if [ "$authorized_sha" != "$GITHUB_SHA" ]; then' in source
+    assert 'resolved_main="$(git rev-parse origin/main)"' in source
+    assert 'if [ "$authorized_sha" != "$resolved_main" ]; then' in source
+    assert "Re-authorize the exact current main SHA." in source
+
+
+def test_sha_binding_happens_before_any_production_branch_mutation():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    bind = source.index('authorized_sha="${{ inputs.source_sha }}"')
+    build = source.index("- name: Build provenance-stamped production deployment commit")
+    promote = source.index("- name: Promote provenance-stamped deployment commit to production branch")
+    assert bind < build < promote
+
+
+def test_durable_receipt_records_exact_human_authorized_source_sha():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert '"authorized_source_sha":' in source
+    assert 'os.environ.get("AUTHORIZED_SOURCE_SHA")' in source
