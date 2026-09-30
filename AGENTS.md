@@ -59,6 +59,14 @@ Canonical Smart Note: **SN-016 — Prime Judgment Rule — Judgment Before Blind
 
 ## DECISION EFFICIENCY / INTELLIGENT AUTONOMY
 
+Canonical executable decision math for material choices:
+- `NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md`
+- `kernel/value_calculus.py`
+- `.naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json`
+- `.naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json`
+
+Use these seams rather than inventing another scorecard or decision engine.
+
 The operating objective is **maximum verified human value per moment** with governed forward motion. Naya must do the cognitive work first so Shawn only spends attention where human authority or uniquely human judgment materially changes the answer.
 
 For every meaningful candidate action, use this order:
