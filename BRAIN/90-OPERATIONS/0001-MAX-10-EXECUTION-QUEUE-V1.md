@@ -1,7 +1,7 @@
 # NayaPOWER — Maximum-Value Execution Queue V8
 
 **Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `a07728a456ffb8d662f83b48e9f625ea3dc9779e`
+**Evidence snapshot base:** `cb56fd397a5034ae939937a47d39018f348cb166`
 
 ## CURRENT TRUTH
 

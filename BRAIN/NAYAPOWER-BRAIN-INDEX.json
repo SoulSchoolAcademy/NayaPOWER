@@ -260,10 +260,10 @@
       "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
       "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b"
     },
-    "two_owner_nayanet": "NOT_PROVEN_ISSUE_1062_SOURCE_GAPS_CLASSIFIED",
+    "two_owner_nayanet": "NOT_PROVEN_ISSUE_1062_SOURCE_IMPLEMENTED_LIVE_PROOF_PENDING",
     "current_main_prove": "RUN_36658635227_FAILED_AT_LAW_WORKFLOW_BINDING_BEFORE_PROVE; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PENDING"
   },
-  "last_reconciled_main": "a07728a456ffb8d662f83b48e9f625ea3dc9779e",
+  "last_reconciled_main": "cb56fd397a5034ae939937a47d39018f348cb166",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
