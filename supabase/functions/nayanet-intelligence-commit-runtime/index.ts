@@ -44,6 +44,12 @@ function adminClient() {
   return createClient(url, key);
 }
 
+function coerceConnections(value: unknown): unknown[] | null {
+  if (value === undefined || value === null) return null;
+  if (!Array.isArray(value)) throw new Error("P_CONNECTIONS_MUST_BE_ARRAY");
+  return value;
+}
+
 async function callCommit(body: Json, jti: string) {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -72,7 +78,7 @@ async function callCommit(body: Json, jti: string) {
       p_target_id: String(body.p_target_id ?? NAYA_ID),
       p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
       p_project_id: String(body.p_project_id ?? "NayaNET"),
-      p_connections: (body.p_connections ?? null) as Json["p_connections"],
+      p_connections: coerceConnections(body.p_connections),
     }),
   });
   const text = await response.text();
