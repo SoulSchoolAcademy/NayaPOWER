@@ -16,6 +16,6 @@ def test_producer_runtime_failure_preserves_http_status_and_response_body():
 def test_producer_keeps_fail_closed_semantics_after_observation():
     workflow = WORKFLOW.read_text(encoding="utf-8")
 
-    assert '[ "$http_code" = "200" ]' in workflow
+    assert '[ "$http_code" != "200" ]' in workflow
     assert "exit 1" in workflow
     assert "fresh-lesson-receipt.json" in workflow
