@@ -453,3 +453,81 @@ def contribution_value_score(*, quality: float, relevance: float, verification: 
 def contribution_points(cvs: float, points_per_unit: float, repeat_decay: float = 1.0) -> float:
     """Positive recognition points only; negative CVS is evidence, never automatic punishment."""
     return max(0.0, _finite(cvs, "cvs")) * max(0.0, _finite(points_per_unit, "points_per_unit")) * _clamp(repeat_decay)
+
+
+def build_contribution_receipt(
+    *,
+    contribution_id: str,
+    action_class: str,
+    provenance: Mapping,
+    privacy: Mapping,
+    raw_activity: Mapping,
+    quality: float,
+    relevance: float,
+    verification_strength: float,
+    impact: float,
+    novelty: float,
+    verified_delta: Optional[float],
+    scoring_profile_id: str,
+    scoring_profile_version: str,
+    points_per_unit: float,
+    repeat_decay: float,
+    evidence_refs: Sequence[str],
+    explanation: str,
+    verification: str = "UNVERIFIED",
+) -> dict:
+    """Build the canonical CONTRIBUTION_VALUE receipt.
+
+    Positive recognition requires VERIFIED contribution evidence. Unverified or
+    merely observed activity can be recorded, but receives no positive CVS/points.
+    This receipt never represents human worth and never grants authority.
+    """
+    if verification not in ("UNVERIFIED", "OBSERVED", "VERIFIED", "FAIL", "ESCALATE"):
+        raise ValueError("invalid contribution verification state")
+    if not contribution_id or not action_class:
+        raise ValueError("contribution_id and action_class are required")
+    if not scoring_profile_id or not scoring_profile_version:
+        raise ValueError("scoring profile id/version are required")
+
+    factors = {
+        "quality": _clamp(quality),
+        "relevance": _clamp(relevance),
+        "verification_strength": _clamp(verification_strength),
+        "impact": _clamp(impact),
+        "novelty": _clamp(novelty),
+    }
+    actual_delta = None if verified_delta is None else _finite(verified_delta, "verified_delta")
+    credit_verification = factors["verification_strength"] if verification == "VERIFIED" and actual_delta is not None else 0.0
+    cvs = contribution_value_score(
+        quality=factors["quality"],
+        relevance=factors["relevance"],
+        verification=credit_verification,
+        impact=factors["impact"],
+        novelty=factors["novelty"],
+        verified_delta=actual_delta or 0.0,
+    )
+    points = contribution_points(cvs, points_per_unit, repeat_decay) if verification == "VERIFIED" else 0.0
+
+    return {
+        "receipt_type": "CONTRIBUTION_VALUE",
+        "schema_version": "2.1",
+        "engine_version": ENGINE_VERSION,
+        "contribution_id": contribution_id,
+        "action_class": action_class,
+        "provenance": dict(provenance),
+        "privacy": dict(privacy),
+        "raw_activity": dict(raw_activity),
+        "factors": factors,
+        "verified_delta": actual_delta,
+        "cvs": cvs,
+        "scoring_profile": {
+            "id": scoring_profile_id,
+            "version": scoring_profile_version,
+            "points_per_unit": max(0.0, _finite(points_per_unit, "points_per_unit")),
+            "repeat_decay": _clamp(repeat_decay),
+        },
+        "points_awarded": points,
+        "explanation": explanation,
+        "evidence_refs": list(evidence_refs),
+        "verification": verification,
+    }
