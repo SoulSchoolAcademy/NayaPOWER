@@ -27,7 +27,7 @@
         "continuity_check": {"type": "object"}
       }
     },
-    "state": {"enum": ["UNINITIALized", "CONSTRUCTING", "READY", "ESCALATED", "FAILED"]},
+    "state": {"enum": ["UNINITIALIZED", "CONSTRUCTING", "READY", "ESCALATED", "FAILED"]},
     "evolution_state": {"type": "object"}
   },
   "additionalProperties": false

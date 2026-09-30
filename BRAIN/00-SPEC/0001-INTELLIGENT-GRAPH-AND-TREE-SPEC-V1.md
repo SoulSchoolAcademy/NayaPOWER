@@ -224,7 +224,7 @@ Never collapse confidence into truth.
 
 ## 9. Graph relationship vocabulary
 
-The canonical controlled relationship vocabulary (21 types):
+The canonical controlled relationship vocabulary (22 types):
 
 ```
 DERIVED_FROM
