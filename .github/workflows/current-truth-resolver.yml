@@ -2,6 +2,11 @@ name: Current Truth Resolver
 
 on:
   workflow_dispatch:
+  # Daily cold-truth pulse. Scheduled evidence collection must remain read-only:
+  # it resolves current truth and publishes artifacts; it does not deploy,
+  # promote learning, or create authority.
+  schedule:
+    - cron: "17 15 * * *"
   push:
     branches: [main]
     paths:
