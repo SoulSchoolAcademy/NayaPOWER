@@ -12,6 +12,7 @@ from pglast import parse_sql
 
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATION = ROOT / "supabase" / "migrations" / "20261001032000_decision_value_smart_ledger_v2_1.sql"
+DECISION_SCHEMA = ROOT / ".naya" / "specifications" / "NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
 CONTRIBUTION_SCHEMA = ROOT / ".naya" / "specifications" / "NAYA-CONTRIBUTION-VALUE-V2.1.schema.json"
 
 
@@ -128,3 +129,17 @@ def test_pending_migration_ledger_declares_not_production_applied():
     assert entry["name"] == "decision_value_smart_ledger_v2_1"
     assert entry["status"] == "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     assert entry["statement_count"] == 18
+
+
+def test_alignment_decision_signed_boundary_is_ten_and_sql_mirrors_it():
+    schema = json.loads(DECISION_SCHEMA.read_text(encoding="utf-8"))
+    d = schema["properties"]["d_verified"]
+    assert d["minimum"] == -10
+    assert d["maximum"] == 10
+
+    body = _function_body("nayanet_value_receipt_v2_1_state")
+    assert "ALIGNMENT_DECISION_D_VERIFIED_RANGE" in body
+    assert "ALIGNMENT_DECISION_VERIFIED_REQUIRES_D_VERIFIED" in body
+    assert "ALIGNMENT_DECISION_D_VERIFIED_MISMATCH" in body
+    assert "v_verified < -10 or v_verified > 10" in body
+    assert "greatest(-10::numeric, least(10::numeric, v_actual))" in body
