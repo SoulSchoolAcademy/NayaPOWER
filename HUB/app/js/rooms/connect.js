@@ -14,7 +14,7 @@ function ConnectRoom() {
     lift: false,
   });
   intro.body.innerHTML = `
-    <p style="color:var(--muted);font-size:13px;max-width:640px">
+    <p style="color:var(--muted);font-size:14px;max-width:640px">
       A door is a <b style="color:var(--ink)">channel</b>, not an architecture. Behind every door below sits
       NayaPOWER — the same memory, the same judgment, the same receipts.
       The server enforces identity, scope, and authorization for every authenticated door.
@@ -46,11 +46,11 @@ function ConnectRoom() {
       ${R.DOOR_ROADMAP.map(r => `
         <div style="display:flex;gap:12px;align-items:baseline;padding:11px 4px;border-bottom:1px solid var(--line-soft)">
           <span class="pill soon"><span class="dot"></span>IDEA</span>
-          <div><b style="font-size:13.5px">${r.name}</b>
-          <div style="color:var(--muted);font-size:12.5px;margin-top:2px">${r.desc}</div></div>
+          <div><b style="font-size:15px">${r.name}</b>
+          <div style="color:var(--muted);font-size:14px;margin-top:2px">${r.desc}</div></div>
         </div>`).join('')}
     </div>
-    <p style="color:var(--muted);font-size:12.5px;margin:14px 0 0">
+    <p style="color:var(--muted);font-size:14px;margin:14px 0 0">
       These are ideas with working agreements forming. The Hub will not pretend they are
       live — or even contracted — until the canonical door registry says so.
     </p>`;
@@ -65,14 +65,14 @@ function ConnectRoom() {
     lift: false,
   });
   law.body.innerHTML = `
-    <ul style="margin:0;padding-left:18px;color:var(--ink-dim);font-size:13px;display:grid;gap:8px">
+    <ul style="margin:0;padding-left:18px;color:var(--ink-dim);font-size:14px;display:grid;gap:8px">
       <li>Doors expose what Naya <b style="color:var(--ink)">can</b> do. LAW decides what Naya <b style="color:var(--ink)">may</b> do. ACT does it. VERIFY checks what happened.</li>
       <li><b style="color:var(--ink)">CONNECTED ≠ AUTHORIZED.</b> Connection never silently creates permission.</li>
       <li>No agent connects directly to the underlying store — every door passes through governance.</li>
       <li>Every crossing leaves a receipt. Anonymous doors do not exist.</li>
       <li>A door that isn't live says so — on the door itself, not in fine print.</li>
     </ul>
-    <p style="color:var(--muted);font-size:11.5px;letter-spacing:.06em;margin:14px 0 0">
+    <p style="color:var(--muted);font-size:14px;letter-spacing:.06em;margin:14px 0 0">
       DOOR INVENTORY MIRRORS THE CANONICAL REGISTRY ·
       BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json
     </p>`;
