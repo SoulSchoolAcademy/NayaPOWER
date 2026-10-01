@@ -52,13 +52,17 @@ STDLIB = set(sys.stdlib_module_names)
 
 
 def _first_party_modules() -> set:
-    """Top-level names that are part of THIS repository, not PyPI.
+    """Every module name that belongs to THIS repository, not to PyPI.
 
-    Without this the guard reports its own false positives: the suite imports
-    project modules such as `kernel` and `intelligence`, which are directories in
-    the repo and are obviously not pip-installable distributions. A guard that
-    cries wolf about first-party imports gets ignored, and then it protects
-    nothing.
+    Without this the guard reports its own false positives. It has now produced
+    two distinct classes, both caught only after it was merged and made `main` red:
+
+      * `kernel` and `intelligence` - top-level directories in the repo.
+      * `verify_connect_runtime_receipt` - a sibling helper module inside tests/,
+        imported by another test via sys.path manipulation.
+
+    A guard that cries wolf about first-party imports gets ignored, and then it
+    protects nothing - so it has to be right about the boundary, not nearly right.
     """
     names = {"tests"}
     # Test helper modules are first-party too; they must not be mistaken for PyPI distributions.
@@ -70,6 +74,10 @@ def _first_party_modules() -> set:
             names.add(entry.name)
         elif entry.is_file() and entry.suffix == ".py":
             names.add(entry.stem)
+    # Sibling helper modules that live inside tests/ and are imported by other
+    # tests after a sys.path insert. These are first-party by definition.
+    for module in TESTS.glob("*.py"):
+        names.add(module.stem)
     return names
 
 
