@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
-  "inventory_file_count": 163,
+  "generated_at": "2026-10-01",
+  "receipt_basis_commit": "a726a8376559609a3620f948ec7bfcabdba50abb",
+  "inventory_file_count": 164,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
+    "03-KERNEL": 29,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 20,
     "06-PROOF": 10,
@@ -217,6 +217,11 @@
       "path": "BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md",
       "blob_sha": "850ed8a6615ba53469048d08e7ce16cde09e9b4d",
       "size": 2630
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/SELF/0003-SELF-MACHINE-CONTRACT-V1.json",
+      "blob_sha": "f3ea9f7c5f386c9448faadd2861ca99412e7238a",
+      "size": 11300
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",

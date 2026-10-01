@@ -116,7 +116,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
+    "03-KERNEL": 29,  # 28 + 0003-SELF-MACHINE-CONTRACT-V1.json (SELF organ machine contract)
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 20,  # includes the nine-node Smart Note build manifest added in this lock preparation
     "06-PROOF": 10,
