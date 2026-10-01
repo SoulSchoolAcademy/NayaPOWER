@@ -1966,12 +1966,19 @@ proves an artifact exists, not that it is verified.
 > not ratified, not merged to main. Each must be applied (or explicitly rejected
 > with written reason) before any lock of this spec.
 
-### A-CONNECT-8 [N4-C2 — stale V2.1 caveat]
+### A-CONNECT-8 [N4-C2 — V2.1 binding explicitness] (CORRECTED 2026-09-30 ~22:15 PDT)
 
-Re-base: the §3 caveat "V2.1 is CANDIDATE (#1185), not ratified law — all
-calculus references in this spec are aspirational until ratification" is
-STALE. V2.1 was ratified via #1186/#1190/#1192, verified against live main.
-All calculus references in this spec now bind the ratified V2.1.
+Correction: the §3 "V2.1 is CANDIDATE (#1185)" caveat cited in the original
+draft of this amendment does NOT exist in the CONNECT 0002 at #1224 head
+19abcf2f — verified live against the file (Naya 2 connect-qualify finding,
+board #554). The original citation was asserted without verification and is
+withdrawn. (Lesson: SN-020 — asserted ≠ verified.)
+
+Restated intent: §45 states "CONNECT uses the shared Value Calculus V2.1"
+without binding which ratification instrument. Bind explicitly: the ratified
+Decision Value Calculus V2.1 (PRs #1186/#1190/#1192, verified against live
+main @ a726a837). All calculus references in this spec bind the ratified
+V2.1, not the #1185 candidate draft.
 
 ### A-CONNECT-9 [N4 — Ultimate Lock cross-reference]
 
