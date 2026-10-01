@@ -71,6 +71,9 @@ def main() -> int:
                     help="sandbox root; the executor writes under <root>/demo-staging/")
     args = ap.parse_args()
     root = Path(args.root)
+    # The executor requires an existing trusted root; the demo
+    # explicitly establishes it here rather than implying it.
+    root.mkdir(parents=True, exist_ok=True)
 
     # 1. Capability declaration comes from the canonical registry.
     registry = smart_door.staging_tool_registry()
@@ -110,12 +113,32 @@ def main() -> int:
         return 1
 
     # 4. Persist the execution receipt (local stand-in for the durable seam).
+    # Append-safe, idempotent: the filename IS the content-addressed
+    # execution_id, so the first receipt is canonical evidence and a
+    # replay never overwrites it. (A replay's receipt carries fresh
+    # wall-clock fields, so seal comparison would false-positive; the
+    # identity that matters here is the execution_id key itself.)
     receipts_dir = root / "demo-staging" / "receipts"
     receipts_dir.mkdir(parents=True, exist_ok=True)
     receipt_path = receipts_dir / (handoff["execution_id"] + ".json")
-    receipt_path.write_text(
-        json.dumps(handoff["receipt"], indent=2, sort_keys=True),
-        encoding="utf-8")
+    if receipt_path.exists():
+        try:
+            prior = json.loads(receipt_path.read_text(encoding="utf-8"))
+            same_key = (prior.get("execution_id") == handoff["execution_id"])
+        except (OSError, ValueError):
+            same_key = False
+        if same_key:
+            print("receipt already persisted at", receipt_path,
+                  "— replay does not overwrite canonical evidence")
+        else:
+            print("REFUSED to overwrite", receipt_path,
+                  "— existing file is not a receipt for",
+                  handoff["execution_id"], "; canonical evidence preserved")
+            return 1
+    else:
+        receipt_path.write_text(
+            json.dumps(handoff["receipt"], indent=2, sort_keys=True),
+            encoding="utf-8")
 
     artifact = root / "demo-staging" / FILENAME
     digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
