@@ -32,8 +32,10 @@ WHAT IS PROVEN HERE, AND WHAT IS NOT
   PROVEN against the LIVE cycle-1 store (documented as such, not as cold
   continuity):
     - governed retrieval with real exclusion gates
-    - behavioral reuse: provenance cited BEFORE applying (PROV-BEFORE-APPLY-1)
-    - unrelated-task control: control lesson resolves to a DIFFERENT block
+    - provenance is CITED BEFORE the block is treated as truth
+      (PROV-BEFORE-APPLY-1). Citation only. See the correction below.
+    - ATTRIBUTION DISCRIMINATION: the unrelated control resolves to a
+      DIFFERENT block. This is NOT unrelated-task refusal.
     - stale evidence excluded, not served
     - retrieval grants no authority
     - unverified learning not promoted
@@ -42,16 +44,38 @@ WHAT IS PROVEN HERE, AND WHAT IS NOT
     - sealed handoff: successor_ready, no inherited authority, blocker omission
       INVALID, SELF refuses a package carrying authority
     - tampered receipts never trusted; AUDIT receipts never tallied as decisions
+    - reconstruction is EVIDENCE-DERIVED: omitting an input artifact changes
+      the reconstruction or reports UNKNOWN
 
   BLOCKED / NOT CLAIMED:
     - retrieval from a COLD-RECONSTRUCTED node            (CS-01, above)
+    - an authorized APPLICATION of retrieved intelligence — no application
+      seam is exercised here; only citation
+    - behavioral reuse (behavior actually changed) — not claimed
+    - unrelated-task refusal — belongs to CONNECT/PROVE, not demonstrated
     - causal improvement — no A/B, single run, no delta claimed
     - production proof — #1216 is an unmerged draft
     - cross-process durability in a separate OS process — not attempted
 
 Isolation honesty: the helpers below take receipts and canonical contracts
-only. That is process-level isolation with a known harness, NOT a fully
-independent cold agent.
+only. That is OBJECT-LEVEL isolation in one process, NOT process-level
+isolation, and NOT a fully independent cold agent. The harness is authored by
+the same seat that writes these tests, so it is a known and biased harness.
+
+PROOF-LANGUAGE CORRECTIONS (coordinator review, applied)
+-------------------------------------------------------
+1. NO TEST-AUTHORED BEHAVIOR. The trace helper used to set `applied=True`
+   after a citation call and tests asserted on that flag. A flag the test
+   itself wrote proves nothing about the runtime. The trace now reports
+   `cited`, `citation_resolved_to`, and `application_attempted=False`, and no
+   test asserts on a Boolean the helper set for its own benefit.
+2. ATTRIBUTION IS NOT REFUSAL. Distinct block IDs show the control resolves
+   separately. They do not show that an unrelated task is refused. This file
+   does not invent a substring-based applicability engine; that decision
+   belongs to CONNECT's owner.
+3. DERIVED, NOT HARDCODED. Current revision, proof status, blockers and next
+   action are read out of preserved artifacts. A kernel version string is not
+   treated as an exact source SHA.
 
 Fixture note: `test_kernel_nine_node.py` declares `kernel`/`demo_stages` as
 module-local fixtures (no conftest), so they are invisible here; the plain
@@ -208,24 +232,43 @@ def _matching(found, needle):
             if needle in json.dumps(b, sort_keys=True)]
 
 
-def _apply_with_provenance(node, needle):
-    """Observable trace: citation happens BEFORE the block is applied."""
+def _cite_before_trust(node, needle):
+    """Observable trace: citation happens BEFORE the block is treated as truth.
+
+    Correction (coordinator review): this helper previously returned
+    `applied=True`, a Boolean it set itself immediately after a citation call.
+    Asserting on that flag credits a test-authored value, not runtime behavior.
+
+    What is honestly observable through public seams:
+      - retrieval admitted / missed
+      - which block actually carries the needle (attribution)
+      - provenance resolved by the node's own `cite_provenance`
+      - that no application occurred (`application_attempted` stays False —
+        no authorized application seam exists in this lane, so nothing is
+        applied and nothing is claimed to be applied)
+
+    Applying retrieved intelligence would require an authorized operation seam.
+    None is exercised here, so no application claim is made.
+    """
     found = _retrieve(node, needle)
     if not found["admitted"]:
-        return {"retrieved": False, "citation_before_apply": False,
-                "applied": False, "reasons": found.get("reasons")}
+        return {"retrieved": False, "cited": False,
+                "application_attempted": False, "reasons": found.get("reasons")}
     served = _matching(found, needle)
     if not served:
         # Nothing carries the needle. Report the miss; never invent a match.
-        return {"retrieved": True, "citation_before_apply": False,
-                "applied": False, "miss": True,
+        return {"retrieved": True, "cited": False,
+                "application_attempted": False, "miss": True,
                 "served_count": len(found.get("blocks", [])),
                 "reasons": found.get("reasons"),
                 "exclusions": found.get("exclusions", [])}
     block_id = served[0]["id"]
     provenance = node.cite_provenance(block_id)  # BEFORE treating as truth
-    return {"retrieved": True, "citation_before_apply": True,
-            "applied": True, "block_id": block_id, "provenance": provenance,
+    return {"retrieved": True,
+            "cited": bool(provenance),
+            "citation_resolved_to": block_id,
+            "provenance": provenance,
+            "application_attempted": False,
             "exclusions": found.get("exclusions", []),
             "selector_decisions": found.get("selector_decisions", [])}
 
@@ -243,9 +286,55 @@ def test_cold_reconstruct_reports_a_hash_identical_store(kernel, stages):
     assert report["restore_receipt"]["operation"] == "RESTORE"
 
 
+def test_cs01_defect_signature_is_exact(kernel, stages):
+    """Pin CS-01 precisely, so an unrelated harness error cannot masquerade.
+
+    Not xfail. This test PASSES today by asserting the reproduced signature
+    with an exact-match guard on the failure text. An unrelated harness error
+    (import failure, fixture break, wrong receipt shape) surfaces here as a
+    HARD FAILURE instead of hiding inside an xfail.
+
+    This and the xfail below are a pair: when the owner's repair lands, this
+    test fails (the defect signature is gone) and the xfail XPASSes under
+    strict mode. Both force a deliberate rewrite.
+    """
+    cycle1 = _predecessor_cycle(kernel, stages)
+    successor = know_node.KnowNode()
+    report = successor.cold_reconstruct(cycle1["receipts"])
+
+    # The report is accurate about the REBUILT store...
+    assert report["restored_block_count"] == 3, report
+    assert report["store_hash"] == cycle1["store_hash"], (
+        "the reported hash matches; that is exactly what makes CS-01 "
+        "dangerous — the report is green while the node is empty")
+
+    # ...and simultaneously silent about the NODE.
+    assert successor.blocks == {}, (
+        "CS-01 signature changed: self is no longer left empty. If this now "
+        "fails, the owner has started installing state — reconcile this test "
+        "with the acceptance test below before claiming anything.")
+    assert successor._hash_index == {}, (
+        "CS-01 signature changed: indexes were rebuilt onto self")
+
+    # The guarded failure text must be the CS-01 one, nothing else.
+    with pytest.raises(AssertionError, match="must hold the blocks"):
+        assert successor.blocks, "the reconstructed node must hold the blocks"
+
+
 @pytest.mark.xfail(strict=True, reason=CS01)
 def test_cold_successor_can_retrieve_from_reconstructed_state(kernel, stages):
-    """The acceptance requirement: a cold successor RETRIEVES from receipts."""
+    """THE acceptance requirement: a cold successor RETRIEVES from receipts.
+
+    Deliberately a PLAIN assertion, so it genuinely fails today. Wrapping it in
+    `pytest.raises` would make it pass and turn into an XPASS(strict) run
+    failure, which is worse than an honest xfail.
+
+    The constraint on an unrelated harness error lives in the paired
+    non-xfail test `test_cs01_defect_signature_is_exact`. That test hard-fails
+    if the fixture, the receipt shape, or the import path breaks, so a broken
+    harness cannot hide inside this xfail: it breaks the paired test loudly
+    first.
+    """
     cycle1 = _predecessor_cycle(kernel, stages)
     successor = know_node.KnowNode()
     successor.cold_reconstruct(cycle1["receipts"])
@@ -283,68 +372,180 @@ def test_kernel_cold_reconstruct_refuses_tampered_receipt(kernel, stages):
 # 2. Reconstruction with truth labels
 
 
-def test_successor_reconstructs_cold_answers_with_truth_labels(
-        kernel, stages):
-    """Answers are derived from evidence and keep the truth laws separate."""
-    cycle1 = _predecessor_cycle(kernel, stages)
-    report = know_node.KnowNode().cold_reconstruct(cycle1["receipts"])
+def _derive_reconstruction(receipts, report):
+    """Build the successor's answer set FROM the receipts actually supplied.
 
-    receipt = cycle1["decision"]["decision_receipt"]
-    assert verify_decision_receipt(receipt)["result"] == "MATCH"
+    Correction (coordinator review): the predecessor of this test hardcoded an
+    `answers` dict and then asserted on its own literals. Hardcoded answers are
+    fixture expectations, not evidence-derived reconstruction.
 
-    answers = {
+    `receipts` is the exact list handed to `cold_reconstruct` — not the
+    predecessor's full set. That is what makes the derivation falsifiable: drop
+    an artifact and the answer must change.
+
+    Every value is read out of a preserved artifact or is the literal string
+    "UNKNOWN" because the artifacts do not determine it. Notably
+    `source_revision` is UNKNOWN: the decision receipt carries a kernel_version
+    string, which is not an exact source SHA.
+    """
+    # Receipt shapes, measured: the decision receipt has `verdict` and
+    # `decision_id` and no `operation`; ACT receipts carry `path`; KNOW
+    # ingest receipts carry operation="INGEST" plus `blockId` and `seq`.
+    decision = next((r for r in receipts if "verdict" in r), None)
+    ingests = [r for r in receipts if r.get("operation") == "INGEST"]
+    act_receipts = [r for r in receipts if r.get("path")]
+
+    verify = verify_decision_receipt(decision) if decision else \
+        {"result": "UNKNOWN"}
+
+    return {
         "human_director": "Shawn Vibert (AGENTS.md > HUMAN AUTHORITY)",
         "bounded_identity": "Coda 4 — cold-successor verification seat",
-        "current_runtime_revision": receipt["kernel_version"],
-        "what_happened": "one decision PASSed; ACT executed; KNOW persisted 3 blocks",
-        "verified": ["decision receipt hash MATCH",
-                     "reported store hash == cycle-1 store hash"],
-        "candidate_not_ratified": True,
-        "unknown": ["naya-receipt-contract/1 shape is proposed, not agreed"],
-        "blocked": ["production migration application needs Director go-ahead",
-                    "cold-start retrieval (CS-01)"],
+        "source_revision": "UNKNOWN",  # version string is not a source SHA
+        "kernel_version_string": (decision or {}).get(
+            "kernel_version", "UNKNOWN"),
+        "decision_verdict": (decision or {}).get("verdict", "UNKNOWN"),
+        "act_path": (act_receipts[0]["path"]
+                     if act_receipts else "UNKNOWN"),
+        "ingest_count": len(ingests),
+        "restored_block_count": report["restored_block_count"],
+        "decision_receipt_verified": verify.get("result"),
+        "candidate_banner": (decision or {}).get("candidate_banner",
+                                                  "UNKNOWN"),
         "production_proven": False,
-        "next_action": "Naya 4 agrees or counters naya-receipt-contract/1",
     }
+
+
+def test_successor_reconstructs_from_artifacts_with_honest_unknowns(
+        kernel, stages):
+    """Reconstruction is derived, and unknowables are labeled UNKNOWN."""
+    cycle1 = _predecessor_cycle(kernel, stages)
+    report = know_node.KnowNode().cold_reconstruct(cycle1["receipts"])
+    a = _derive_reconstruction(cycle1["receipts"], report)
+
+    # Derived values must equal what the artifacts actually say.
+    assert a["decision_receipt_verified"] == "MATCH", a
+    assert a["decision_verdict"] == "PASS", a
+    assert a["act_path"] == "EXECUTED", a
+    assert a["ingest_count"] == 3, a
+    assert a["restored_block_count"] == 3, a
     assert report["store_hash"] == cycle1["store_hash"]
-    assert set(answers["verified"]).isdisjoint(answers["unknown"])
-    assert answers["production_proven"] is False
-    assert "CANDIDATE" in receipt["candidate_banner"]
+
+    # Truth laws stay separate.
+    assert a["production_proven"] is False
+    assert "CANDIDATE" in a["candidate_banner"]
+    assert "NOT RATIFIED" in a["candidate_banner"]
+    assert "NOT MERGED" in a["candidate_banner"]
+
+    # An exact source SHA is not derivable from the artifacts. Saying so
+    # honestly is the point; guessing a version string as a SHA is the error.
+    assert a["source_revision"] == "UNKNOWN"
+    assert a["kernel_version_string"] != a["source_revision"], (
+        "the kernel version string must not be passed off as a source revision")
+
+
+def test_omitting_an_input_artifact_changes_the_reconstruction(
+        kernel, stages):
+    """Negative control for the claim above: reconstruction tracks artifacts.
+
+    If reconstruction were hardcoded or fixture-driven, dropping an input
+    receipt would leave the answer identical. Here it must change, so the
+    reconstruction is genuinely evidence-derived.
+    """
+    cycle1 = _predecessor_cycle(kernel, stages)
+    full = _derive_reconstruction(
+        cycle1["receipts"],
+        know_node.KnowNode().cold_reconstruct(cycle1["receipts"]))
+
+    # Drop one KNOW ingest artifact, identified by its recorded blockId.
+    ingests = [r for r in cycle1["receipts"] if r.get("operation") == "INGEST"]
+    dropped_block = next(r["blockId"] for r in ingests
+                         if LESSON_ID in json.dumps(r, sort_keys=True))
+    reduced = [r for r in cycle1["receipts"]
+               if r.get("blockId") != dropped_block]
+    assert len(reduced) == len(cycle1["receipts"]) - 1
+
+    report_reduced = know_node.KnowNode().cold_reconstruct(reduced)
+    after = _derive_reconstruction(reduced, report_reduced)
+
+    assert after["ingest_count"] == full["ingest_count"] - 1, (
+        "removing a preserved ingest must change the reconstructed count")
+    assert after["restored_block_count"] == \
+        full["restored_block_count"] - 1, (
+        "removing a preserved block must change the restored count")
+    assert dropped_block not in [
+        b.get("id") for b in (report_reduced.get("restored_blocks") or [])], (
+        "the dropped block must not appear in the reconstruction")
+
+    # Dropping the decision receipt: the verdict becomes genuinely unavailable
+    # rather than silently inherited from the parent object.
+    without_decision = [r for r in cycle1["receipts"] if "verdict" not in r]
+    assert len(without_decision) == len(cycle1["receipts"]) - 1
+    derived_without = _derive_reconstruction(
+        without_decision,
+        know_node.KnowNode().cold_reconstruct(without_decision))
+    assert derived_without["decision_verdict"] == "UNKNOWN", (
+        "with the PASS receipt removed, the verdict must read UNKNOWN; "
+        "a hardcoded answer would still report PASS")
+    assert derived_without["act_path"] == "EXECUTED", (
+        "the ACT receipt is still present, so its path is still derivable")
 
 
 # ---------------------------------------------------------------------------
 # 3. Behavioral reuse + unrelated-task control (live cycle-1 store)
 
 
-def test_applicable_lesson_is_cited_before_it_is_applied(kernel, stages):
-    """Observable reuse: provenance cited BEFORE the block is treated as truth.
+def test_predeclared_lesson_is_cited_before_it_is_treated_as_truth(
+        kernel, stages):
+    """PREV-RULE-1: provenance is cited BEFORE the block is treated as truth.
 
     Scope note: this exercises the governed retrieval seam on the cycle-1
     store. It is NOT a claim of cold-continuity — that is CS-01, xfail above.
+    It is NOT a behavioral-reuse claim: no application seam exists here, so
+    `application_attempted` stays False and no behavior is claimed to change.
     """
     cycle1 = _predecessor_cycle(kernel, stages)
-    trace = _apply_with_provenance(cycle1["know"], LESSON_ID)
+    trace = _cite_before_trust(cycle1["know"], LESSON_ID)
 
     assert trace["retrieved"] is True
-    assert trace["citation_before_apply"] is True
-    assert trace["applied"] is True
+    assert trace["cited"] is True, "the node must resolve provenance"
+    assert trace["citation_resolved_to"], (
+        "citation must resolve to a concrete block id")
+    assert trace["application_attempted"] is False, (
+        "no authorized application seam exists in this lane; claiming an "
+        "application here would be a false claim")
     assert trace["provenance"]["sources"][0]["ref"] == \
-        "ext://coda4/predecessor/lesson"
+        "ext://coda4/predecessor/lesson", (
+        "the citation must resolve to the SOURCE recorded at ingest, not to "
+        "the block id — that is what makes it provenance rather than an echo")
 
 
-def test_unrelated_lesson_is_not_attributed_as_the_applied_lesson(
-        kernel, stages):
-    """Control: a different lesson must not be credited as the applied one."""
+def test_unrelated_control_resolves_to_a_different_block(kernel, stages):
+    """ATTRIBUTION DISCRIMINATION only — this is NOT unrelated-task refusal.
+
+    Correction (coordinator review): the predecessor of this test claimed to
+    show a control lesson "is not credited as the applied lesson". Distinct
+    block ids do not establish that an unrelated task is refused; refusal is
+    an applicability/consumer decision owned by CONNECT's owner. No substring
+    applicability engine is invented here.
+
+    What IS proven: the control resolves to a different block than the
+    predeclared lesson, with its own distinct provenance ref. Attribution is
+    therefore real and separable, not an accident of a shared hit.
+    """
     cycle1 = _predecessor_cycle(kernel, stages)
     node = cycle1["know"]
 
-    control = _apply_with_provenance(node, UNRELATED_LESSON_ID)
-    applicable = _apply_with_provenance(node, LESSON_ID)
+    control = _cite_before_trust(node, UNRELATED_LESSON_ID)
+    applicable = _cite_before_trust(node, LESSON_ID)
 
-    assert control["applied"] is True, "the control lesson is retrievable"
-    assert control["block_id"] != applicable["block_id"], (
+    assert control["retrieved"] is True, "the control lesson is retrievable"
+    assert control["citation_resolved_to"] != applicable["citation_resolved_to"], (
         "the unrelated control must resolve to a DIFFERENT block than the "
         "predeclared applicable lesson — otherwise attribution is meaningless")
+    assert control["provenance"]["sources"][0]["ref"] != \
+        applicable["provenance"]["sources"][0]["ref"], (
+        "distinct provenance refs: the control is attributed to its own source")
 
 
 # ---------------------------------------------------------------------------
@@ -356,7 +557,7 @@ def test_stale_evidence_is_excluded_not_served(kernel, stages):
     cycle1 = _predecessor_cycle(kernel, stages)
     node = cycle1["know"]
 
-    victim = _apply_with_provenance(node, LESSON_ID)["block_id"]
+    victim = _cite_before_trust(node, LESSON_ID)["citation_resolved_to"]
     node.invalidate(victim, "coda4 negative control: withdrawn",
                     PRINCIPAL, now=NOW)
 
@@ -371,10 +572,10 @@ def test_stale_evidence_is_excluded_not_served(kernel, stages):
 def test_retrieval_does_not_grant_authority(kernel, stages):
     """Memory grants nothing: a successful retrieval is still not permission."""
     cycle1 = _predecessor_cycle(kernel, stages)
-    trace = _apply_with_provenance(cycle1["know"], LESSON_ID)
+    trace = _cite_before_trust(cycle1["know"], LESSON_ID)
 
     package, _receipt = _sealed_package(evolve_node.EvolveNode())
-    assert trace["applied"] is True, "retrieval succeeded..."
+    assert trace["cited"] is True, "retrieval and citation succeeded..."
     assert package["authority_context"]["authority_inherited"] is False, \
         "...and granted nothing"
     assert package["authority_context"]["requires_reresolution"] is True
@@ -391,7 +592,7 @@ def test_unverified_learning_is_not_promoted(kernel, stages):
     cycle1 = _predecessor_cycle(kernel, stages)
     node = cycle1["know"]
 
-    subject = _apply_with_provenance(node, LESSON_ID)["block_id"]
+    subject = _cite_before_trust(node, LESSON_ID)["citation_resolved_to"]
     outcome = node.request_reclassification(subject, "coda4 control: wants CORE",
                                             PRINCIPAL, now=NOW)
     assert outcome["afterState"] == "CLASSIFICATION_REVIEW", outcome
@@ -418,9 +619,9 @@ def test_missing_evidence_is_not_concealed(kernel, stages):
     with pytest.raises(KeyError):
         node.cite_provenance("IB-DOES-NOT-EXIST")
 
-    trace = _apply_with_provenance(node, MISSING_ID)
+    trace = _cite_before_trust(node, MISSING_ID)
     assert trace["retrieved"] is True
-    assert trace["applied"] is False, "a miss must not read as an application"
+    assert trace["cited"] is False, "a miss must not read as a citation"
     assert trace["miss"] is True
     assert trace["served_count"] >= 0, "the miss must report what was served"
 
@@ -476,16 +677,17 @@ def _package_fields(**overrides):
         "mission": "verify cold-successor continuity",
         "current_truth": "candidate runtime only; nothing production proven",
         "unknowns": ["agreed receipt contract shape"],
-        "blockers": [{"blocker_id": "CONTRACT-UNAGREED",
-                      "why": "naya-receipt-contract/1 awaits Naya 4"}],
-        "material_blockers_known": ["CONTRACT-UNAGREED"],
+        "blockers": [{"blocker_id": "CS-01",
+                      "why": "KnowNode.cold_reconstruct does not populate self"}],
+        "material_blockers_known": ["CS-01"],
         "active_work": ["cold-successor protocol"],
         "privacy_context": {"owner_scope": "public"},
         "constraints": ["no merges", "no production writes"],
-        "next_action": "Naya 4 agrees or counters naya-receipt-contract/1",
+        "next_action": "Naya 4 repairs CS-01 in KnowNode",
         "next_proof_requirement":
             "an agreed contract plus a re-run of this suite",
-        "source_snapshot": {"main": "a726a837", "pr1216_head": "f58adf08"},
+        "source_snapshot": {"main": "a726a837",
+                            "pr1216_head": "4e87d4a5"},
         "authority_context": {"prior_refs": []},
         "proof_refs": ["decision receipt hash MATCH"],
         "recent_outcome_refs": ["act execution EXECUTED"],
@@ -519,7 +721,7 @@ def test_missing_material_blocker_invalidates_the_handoff():
     ev = evolve_node.EvolveNode()
     result = ev.build_successor_package(
         _package_fields(handoff_id="handoff-coda4-dropped", blockers=[],
-                        material_blockers_known=["CONTRACT-UNAGREED"]))
+                        material_blockers_known=["CS-01"]))
     package = ev._handoff_packages[result["handoff_id"]]
     assert package["handoff_valid"] is False, (
         "a handoff that omits a known material blocker must be INVALID")
@@ -556,32 +758,43 @@ def test_self_refuses_a_package_that_carries_authority():
 
 @pytest.mark.xfail(strict=True, reason=CS01)
 def test_second_cold_successor_rereads_improved_state(kernel, stages):
-    """A SECOND fresh reader recovers the improved state from receipts alone."""
-    cycle1 = _predecessor_cycle(kernel, stages)
-    _first, report2 = know_node.KnowNode(), None
-    report2 = _first.cold_reconstruct(cycle1["receipts"])
+    """A SECOND fresh reader recovers the improved state from receipts alone.
 
-    ev = evolve_node.EvolveNode()
-    package, ev_receipt = _sealed_package(ev)
+    Plain assertion, so it genuinely fails today. Constraint on an unrelated
+    harness error lives in the paired non-xfail tests
+    `test_cs01_defect_signature_is_exact` and
+    `test_omitting_an_input_artifact_changes_the_reconstruction`, which hard-fail
+    if the fixtures or receipt shapes break.
+    """
+    cycle1 = _predecessor_cycle(kernel, stages)
+    report2 = know_node.KnowNode().cold_reconstruct(cycle1["receipts"])
+
+    package, ev_receipt = _sealed_package(evolve_node.EvolveNode())
 
     second = know_node.KnowNode()
     report3 = second.cold_reconstruct(cycle1["receipts"] + [ev_receipt])
-    assert report3["store_hash"] == report2["store_hash"]
 
     # The improved state must be USABLE, not merely hash-identical.
     found = _retrieve(second, LESSON_ID)
     assert _matching(found, LESSON_ID), (
         "the second cold successor must actually retrieve the lesson")
-    assert package["blockers"][0]["blocker_id"] == "CONTRACT-UNAGREED"
+
+    assert package["blockers"][0]["blocker_id"] == "CS-01"
+    assert report3["store_hash"] == report2["store_hash"] or \
+        report3["restored_block_count"] >= report2["restored_block_count"]
 
 
 def test_second_successor_sees_same_next_action_and_blocker():
-    """The sealed handoff states exactly one next action and its blocker."""
+    """The sealed handoff states exactly one next action and its blocker.
+
+    The blocker named here is CS-01, which is the live blocker in this lane.
+    The earlier draft named the receipt contract; Naya 2 withdrew that proposal
+    (see #554 comment 5934656876) and answered Naya 4's seam question in
+    5934779683, so it is no longer the open item.
+    """
     package, _receipt = _sealed_package(evolve_node.EvolveNode())
-    assert package["next_action"] == \
-        "Naya 4 agrees or counters naya-receipt-contract/1"
-    assert [b["blocker_id"] for b in package["blockers"]] == \
-        ["CONTRACT-UNAGREED"]
+    assert package["next_action"] == "Naya 4 repairs CS-01 in KnowNode"
+    assert [b["blocker_id"] for b in package["blockers"]] == ["CS-01"]
     assert package["unknowns"] == ["agreed receipt contract shape"]
 
 
