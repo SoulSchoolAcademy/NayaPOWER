@@ -74,14 +74,26 @@ Gold is the scarcest tone. Rules: never body text; never large text blocks; neve
 - Icon: `color: var(--tone)`, 24–26px SVG, stroke 1.7–1.8.
 - Shadows: `inset 0 1px #fff4, 0 10px 26px #0009, 0 0 22px tone@22%`.
 
-### 2.4 Layer anatomy
-- Container: `2px solid color-mix(tone 24%, #fff 5%)`, radius 15px, `background #08080c`, `inset 0 1px #fff2`, `0 12px 28px #0007`.
-- Summary row: tone dot (9px, glow), label (10px/800/.18em), state (right, 9px, faint), chevron (tone, rotates 180° on open).
-- Body: `14px/1.7`, `#c9c3ce`, `<strong>` → `#fff`.
-- Max 3 layers per board. Each layer answers ONE question: why here / the proof / what next.
+### 2.4 The canonical layer stack (smart-board system)
+Restored from the frozen concept, ordered per the director. The nutshell (§2.2.6) is the visible well; these layers live beneath it, collapsed by default. Every board carries the FULL stack — "every board would be a little bit different" is achieved through tone + content emphasis, never by dropping layers.
+
+| # | Layer | Dot color | State label | Answers |
+|---|---|---|---|---|
+| 1 | HUMAN NOTE | `#9d75ff` purple | HUMAN INPUT | the human perspective |
+| 2 | CHILD NOTE | `#6675ff` indigo | SIMPLIFIED | explain it to a child |
+| 3 | GRANDMA NOTE | `#55b9ee` blue | WHY LOOK | explain it to a grandma — warmth, plain words |
+| 4 | NAYA NOTE | `#55e39a` green | INTERPRETATION | Naya's own read, first person |
+| 5 | MACHINE NOTE | `#26c875` green | EVIDENCE BOUNDARY | exactly what is proven, scoped, frozen |
+| 6 | LEARNING LESSON | `#b8ee57` lime | LEARNING | what this teaches |
+| 7 | WHAT IT MEANS | `#f1d75a` yellow | SIGNIFICANCE | the ultimate meaning — what it all means |
+| 8 | WHAT'S IN IT FOR YOU? | `#e8c766` gold | HUMAN VALUE | the payoff, plainly |
+| 9 | HOW TO USE | `#55b9ee` blue | ACTION GUIDANCE | the action — always second-to-last |
+| 10 | HOW IT ALL CONNECTS | board's `--tone` | CONNECTIONS | how this board connects to the rest — always last |
+
+Layer anatomy: container border = board tone (22%); the layer's DOT wears the layer's canonical color with glow; on open, container border shifts to the layer color (45%). Summary row: dot + name (10px/800/.18em) + state label (right, 9px faint) + chevron (layer color, rotates 180° on open). Body: 14px/1.7, `#c9c3ce`, `<strong>` → `#fff`. The child and grandma layers are load-bearing: if a truth can't be explained simply, it isn't understood yet.
 
 ### 2.5 Text budget per board
-Headline (≤12 words) + meta (≤12 words) + nutshell (≤60 words) + layers (collapsed by default). If the board needs more visible text, split it into two boards.
+Headline (≤12 words) + meta (≤12 words) + nutshell (≤60 words) + 10 layers (collapsed by default, 1–3 sentences each). The visible surface stays light; the depth is the full stack, one click deep.
 
 ## 3. LAW 3 — BUTTON LAW
 

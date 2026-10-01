@@ -36,7 +36,7 @@ A board is a full-bleed section of the room with its own atmosphere. It is never
 2. A **wash of that color** — barely there, 7–8% — tints the board's air.
 3. An **identity row**: a jewel-like glyph in the board's color, the board's kind, and its truth seal.
 4. A **headline** — big, tight, confident. 30 to 50 pixels.
-5. **One** nutshell paragraph. Not three. The depth lives in collapsible layers beneath it.
+5. **One** nutshell paragraph. Not three. The depth lives in the full layer stack beneath it — human note, child note, grandma note, Naya's note, machine note (the evidence boundary), learning lesson, what it means, what's in it for you, how to use it, and how it all connects. Every board carries the whole journey; every board tells it a little differently.
 6. **Actions** — buttons with real depth (see Button Law).
 7. A **provenance footer** — where this came from, when, and what backs it.
 
