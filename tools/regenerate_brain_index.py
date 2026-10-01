@@ -20,8 +20,10 @@ SHAs only need to be well-formed. Any real BRAIN/ change (added, removed, or
 edited file) still fails the check.
 
 Reconciliation rules (2026-09-30 brain-reconciliation ledger):
-    - Per-domain counts must match the ledger's classification table (asserted;
-      any drift fails the run instead of silently rewriting the table).
+    - Per-domain counts must match the ledger's fixed classification table,
+      except the governed INTELLIGENCE-REPORTS subtree, whose committed file
+      count is added mechanically to the 05-MEMORY baseline. Any other drift
+      fails the run instead of silently rewriting the table.
     - Pointer integrity: every declared pointer-bearing field in the index
       layer (POINTER_FIELDS) must resolve against the git tree at HEAD. A
       generic backstop scan catches path-like strings in the same files that
@@ -111,14 +113,20 @@ NON_POINTER_STRINGS = {
 # A string value is treated as a repo path pointer if it matches this.
 PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.naya/|0000-)")
 
-# Ledger classification table: domain -> file count (includes each domain's README).
-EXPECTED_DOMAIN_COUNTS = {
+# Ledger classification table: fixed domain baselines.
+#
+# INTELLIGENCE-REPORTS is an append-only governed memory subtree. Daily/weekly/
+# monthly/yearly reports must be able to accumulate without requiring a manual
+# ledger-count edit every day. We therefore keep the 05-MEMORY baseline fixed
+# at the count that excludes BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/, then add
+# the current report-subtree file count mechanically from git truth.
+BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 23,  # includes SN-017 plus canonical intelligence-report program + 2026-10-01 daily report
+    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -130,6 +138,24 @@ EXPECTED_DOMAIN_COUNTS = {
     "99-ARCHIVE": 1,
     "ROOT": 5,
 }
+
+INTELLIGENCE_REPORT_PREFIX = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/"
+DOMAIN_ORDER = tuple(BASE_EXPECTED_DOMAIN_COUNTS.keys())
+
+
+def expected_domain_counts(files: list[dict]) -> dict[str, int]:
+    """Return expected counts, allowing only the governed report subtree to grow.
+
+    Every non-report Brain domain remains fixed against the reconciliation
+    ledger. 05-MEMORY may exceed its baseline only by the exact number of
+    committed files beneath INTELLIGENCE_REPORT_PREFIX. This preserves the
+    count-skew tripwire while making daily report accumulation append-safe.
+    """
+    expected = dict(BASE_EXPECTED_DOMAIN_COUNTS)
+    report_files = sum(1 for f in files if f["path"].startswith(INTELLIGENCE_REPORT_PREFIX))
+    expected["05-MEMORY"] += report_files
+    return expected
+
 
 DOMAIN_TITLES = {
     "00-SPEC": "00-SPEC — Specification",
@@ -311,7 +337,7 @@ def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], 
         "domain_counts": counts,
         "ledger_assertion": (
             "Per-domain counts asserted against the 2026-09-30 brain-reconciliation "
-            "ledger classification table. Any drift fails regeneration instead of "
+            "Any other drift fails regeneration instead of "
             "silently rewriting the table."
         ),
         "files": entries,
@@ -328,7 +354,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         f"**Inventory file count:** {len(files)}  ",
         "",
         "> Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. "
-        "Per-domain counts are asserted against the 2026-09-30 brain-reconciliation "
+        "Per-domain counts are asserted against the fixed brain-reconciliation baseline plus the committed intelligence-report subtree count. "
         "ledger classification table. "
         "The three index files are self-referential (their blob SHAs are omitted by "
         "design); every other file lists its exact blob SHA at the basis commit.",
@@ -338,7 +364,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         "| Domain | Files |",
         "|---|---|",
     ]
-    for domain in EXPECTED_DOMAIN_COUNTS:
+    for domain in DOMAIN_ORDER:
         lines.append(f"| {domain} | {counts.get(domain, 0)} |")
     lines += ["", "## Files", ""]
     current_domain = None
@@ -408,8 +434,9 @@ def check(root: Path) -> int:
     files = inventory(root)
     counts = domain_counts(files)
     problems = []
-    if counts != EXPECTED_DOMAIN_COUNTS:
-        problems.append(f"domain counts drifted: {counts} != ledger {EXPECTED_DOMAIN_COUNTS}")
+    expected = expected_domain_counts(files)
+    if counts != expected:
+        problems.append(f"domain counts drifted: {counts} != ledger+reports {expected}")
     pointer_errors = validate_pointers(root)
     if pointer_errors:
         print("error: pointer integrity check failed:", file=sys.stderr)
@@ -471,11 +498,12 @@ def main() -> int:
         return 2
 
     counts = domain_counts(files)
-    if counts != EXPECTED_DOMAIN_COUNTS:
-        print("error: domain counts do not match the reconciliation ledger table:", file=sys.stderr)
-        print(f"  git:    {counts}", file=sys.stderr)
-        print(f"  ledger: {EXPECTED_DOMAIN_COUNTS}", file=sys.stderr)
-        print("A real BRAIN/ change landed — update EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
+    expected = expected_domain_counts(files)
+    if counts != expected:
+        print("error: domain counts do not match the reconciliation ledger + report subtree:", file=sys.stderr)
+        print(f"  git:      {counts}", file=sys.stderr)
+        print(f"  expected: {expected}", file=sys.stderr)
+        print("A real non-report BRAIN/ count change landed — update BASE_EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
         return 2
 
     pointer_errors = validate_pointers(root)
