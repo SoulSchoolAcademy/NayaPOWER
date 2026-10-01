@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
-  "inventory_file_count": 163,
+  "generated_at": "2026-10-01",
+  "receipt_basis_commit": "008b7815ad21626eb23b49d7b29885247ddf330a",
+  "inventory_file_count": 164,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -13,7 +13,7 @@
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
-    "09-EVOLUTION": 2,
+    "09-EVOLUTION": 3,
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
@@ -572,6 +572,11 @@
       "path": "BRAIN/09-EVOLUTION/0001-SELF-BUILDING-CONTRACT-V1.md",
       "blob_sha": "93884ffe145bc135885c5161a7ce857c15f633fc",
       "size": 1977
+    },
+    {
+      "path": "BRAIN/09-EVOLUTION/0002-EVOLUTION-SELF-OPTIMIZATION-V1.json",
+      "blob_sha": "cfed6991e66b06ec900047aca7a98c62b74883de",
+      "size": 12434
     },
     {
       "path": "BRAIN/09-EVOLUTION/README.md",

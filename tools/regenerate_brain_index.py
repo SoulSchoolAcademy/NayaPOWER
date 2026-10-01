@@ -33,7 +33,7 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger):
       blob SHAs (which would make the content a moving target — the SHA changes
       every time the file is regenerated), their table entries carry
       "_self_referential": true with no blob SHA. file_count always equals the
-      true tree size (163), so the ledger's count assertions still hold.
+      true tree size (164), so the ledger's count assertions still hold.
 
 Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
            2 = usage/git error, count drift, or dangling pointer.
@@ -122,7 +122,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
-    "09-EVOLUTION": 2,
+    "09-EVOLUTION": 3,  # 2 -> 3 deliberate: 0002-EVOLUTION-SELF-OPTIMIZATION-V1.json added (evolution-self-optimization, 2026-10-01)
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
