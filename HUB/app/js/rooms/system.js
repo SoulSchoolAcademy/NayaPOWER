@@ -27,9 +27,9 @@ function SystemRoom() {
   });
   const rows = dims.map(([name, s, note]) => `
     <div style="display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:12px 0;border-bottom:1px solid var(--line-soft)">
-      <div style="font-weight:800;font-size:13.5px">${name}</div>
+      <div style="font-weight:800;font-size:15px">${name}</div>
       <div style="font-weight:800;font-size:15px;color:${s >= 9 ? 'var(--green)' : s >= 7 ? 'var(--gold)' : 'var(--orange)'}">${s.toFixed(1)}</div>
-      <div style="grid-column:1/-1;color:var(--muted);font-size:12px">${note}</div>
+      <div style="grid-column:1/-1;color:var(--muted);font-size:14px">${note}</div>
       <div style="grid-column:1/-1;height:6px;border-radius:6px;background:#ffffff10;overflow:hidden">
         <div style="width:${s * 10}%;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold),var(--orange));box-shadow:0 0 10px #e8c76666"></div>
       </div>
@@ -38,7 +38,7 @@ function SystemRoom() {
   score.body.innerHTML = `
     <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
       <span style="font-size:44px;font-weight:800;background:linear-gradient(120deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">${avg}</span>
-      <span style="color:var(--muted);font-size:12px;letter-spacing:.14em">CURRENT COMPOSITE · BAR IS 9.0</span>
+      <span style="color:var(--muted);font-size:14px;letter-spacing:.14em">CURRENT COMPOSITE · BAR IS 9.0</span>
     </div>${rows}`;
   wrap.appendChild(score);
   wrap.appendChild(el('div', '', '<hr class="hr">'));
@@ -55,8 +55,8 @@ function SystemRoom() {
   road.body.innerHTML = phases.map(([t, s, d]) => `
     <div style="display:flex;gap:14px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line-soft)">
       <div style="padding-top:2px">${Pill(s)}</div>
-      <div><div style="font-weight:800;font-size:13.5px">${t}</div>
-      <div style="color:var(--muted);font-size:12px">${d}</div></div>
+      <div><div style="font-weight:800;font-size:15px">${t}</div>
+      <div style="color:var(--muted);font-size:14px">${d}</div></div>
     </div>`).join('');
   wrap.appendChild(road);
   wrap.appendChild(el('div', '', '<hr class="hr">'));
@@ -68,7 +68,7 @@ function SystemRoom() {
       ${R.DOORS.map(d => `
         <div style="display:flex;align-items:center;gap:12px;padding:9px 4px;border-bottom:1px solid var(--line-soft)">
           <span style="width:10px;height:10px;border-radius:50%;background:${d.accent};box-shadow:0 0 10px ${d.accent};flex:none"></span>
-          <span style="font-weight:700;font-size:13px;min-width:170px">${d.name}</span>
+          <span style="font-weight:700;font-size:14px;min-width:170px">${d.name}</span>
           <span style="flex:1">${Pill(d.status)}</span>
         </div>`).join('')}
     </div>`;
@@ -78,11 +78,11 @@ function SystemRoom() {
   /* ——— Spec reference ——— */
   const spec = Board({ accent: ACC, icon: 'library', title: 'Build law', sub: 'The canonical spec this app is built against', lift: false });
   spec.body.innerHTML = `
-    <p style="color:var(--muted);font-size:13px;margin-bottom:12px">
+    <p style="color:var(--muted);font-size:14px;margin-bottom:12px">
       <b style="color:var(--ink)">HUB/app/SPEC.md</b> — project intelligence V2: the eight dimensions,
       the phased plan, the door inventory, the visual law. Versioned in the repository, next to the code it governs.
     </p>
-    <p style="color:var(--muted);font-size:12px">Runtime adapter <b style="color:var(--ink)">v${R.version}</b> · spec ref <b style="color:var(--ink)">${R.specRef}</b></p>`;
+    <p style="color:var(--muted);font-size:14px">Runtime adapter <b style="color:var(--ink)">v${R.version}</b> · spec ref <b style="color:var(--ink)">${R.specRef}</b></p>`;
   wrap.appendChild(spec);
 
   return wrap;
