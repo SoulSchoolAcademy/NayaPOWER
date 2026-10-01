@@ -131,7 +131,21 @@ def main() -> int:
               handoff["receipt"].get("outcome"))
         return 1
 
-    # 4. Persist the execution receipt (local stand-in for the durable seam).
+    # 4. Persist the full receipt chain (local stand-in for the durable seam).
+    # Three files, each content-addressed by its own id: the LAW gate
+    # receipt (why ADMISSIBLE), the decision receipt (what was authorized),
+    # and the execution receipt (what happened). The frozen evidence
+    # package collects all three; the durable seam will carry them onward.
+    receipts_dir = root / "demo-staging" / "receipts"
+    receipts_dir.mkdir(parents=True, exist_ok=True)
+    (receipts_dir / ("law-gate-" + authz["gate_receipt_id"] + ".json")).write_text(
+        json.dumps(authz["gate_receipt"], indent=2, sort_keys=True),
+        encoding="utf-8")
+    (receipts_dir / ("decision-" + receipt["receipt_id"] + ".json")).write_text(
+        json.dumps(receipt, indent=2, sort_keys=True),
+        encoding="utf-8")
+    print("law gate receipt:", authz["gate_receipt_id"])
+    print("decision receipt:", receipt["receipt_id"])
     # Append-safe, idempotent: the filename IS the content-addressed
     # execution_id, so the first receipt is canonical evidence and a
     # replay never overwrites it. (A replay's receipt carries fresh

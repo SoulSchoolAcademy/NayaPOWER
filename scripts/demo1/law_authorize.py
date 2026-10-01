@@ -159,6 +159,7 @@ def authorize(filename: str, content: bytes,
     envelope = receipt.get("envelope") or {}
     return {
         "envelope": envelope,
+        "gate_receipt": receipt,
         "gate_receipt_id": receipt.get("receipt_id"),
         "authority_basis": {
             "kind": "director_order",
