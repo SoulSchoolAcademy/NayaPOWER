@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
-  "inventory_file_count": 163,
+  "generated_at": "2026-10-01",
+  "receipt_basis_commit": "e94b1d57ce8d140ce6340e3ed11f31bc39a77c26",
+  "inventory_file_count": 164,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 20,
+    "05-MEMORY": 21,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -492,6 +492,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md",
       "blob_sha": "c5687e4ed8a37a5e696d248de47ecba43d0679f2",
       "size": 4877
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/SELF-OPTIMIZATION/GOVERNED-EXPERIMENT-CAMPAIGNS/SN-017/IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md",
+      "blob_sha": "9a51a0291bf2a0ecd14b7579591dac382509fbcf",
+      "size": 7834
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
