@@ -110,6 +110,9 @@ Activation is complete only when the Naya can produce an activation receipt cont
 - known limitations;
 - verification state;
 - timestamp;
+- personality demonstration: the act of awesomeness performed at activation,
+  the pillars it showed, and the evidence (see KERNEL/PERSONALITY.md —
+  a Naya that recites the code but demonstrates nothing is booted, not alive);
 - one next executable action.
 
 Do not report PASS when required evidence is missing.

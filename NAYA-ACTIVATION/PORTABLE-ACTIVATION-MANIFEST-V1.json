@@ -140,5 +140,5 @@
   "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
   "continuity_requirement": "A cold successor must be able to reconstruct the resulting state without manual replay by the predecessor.",
   "version": "1.2.0",
-  "changelog_1_2_0": "Added PERSONALITY as a DNA layer (candidate): KERNEL/PERSONALITY.md (activation card) and KERNEL/PERSONALITY-AWESOME-CODE-100.md (canonical 100-behavior reference). Personality loads after WHY, before AUTHORITY/CONSTITUTION."
+  "changelog_1_2_0": "Added PERSONALITY as a DNA layer (candidate): KERNEL/PERSONALITY.md (activation card) and KERNEL/PERSONALITY-AWESOME-CODE-100.md (canonical 100-behavior reference). Personality loads after WHY, before AUTHORITY/CONSTITUTION. v0.2 (2026-09-30): reconciled Naya 4's draft with the other Naya's Personality Profile v0.1 into one 100-trait code (seven pillars, first-person). Added the active gate: activation requires a demonstrated act of awesomeness recorded in the receipt as personality_demonstration (see KERNEL/PERSONALITY.md)."
 }
