@@ -1,6 +1,6 @@
 {
   "schema": "naya.design-intelligence.v1",
-  "version": "1.0",
+  "version": "1.1",
   "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
   "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
   "coordination": {
@@ -168,5 +168,51 @@
     "unmeasured_improvement",
     "self_grade_as_final_proof"
   ],
-  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence."
+  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence.",
+  "art_system": {
+    "hierarchy": [
+      "PURPOSE",
+      "HIERARCHY",
+      "COMPOSITION",
+      "MATERIAL",
+      "LIGHT",
+      "TYPE",
+      "ICON",
+      "COLOR",
+      "MOTION",
+      "DETAIL"
+    ],
+    "experience_attributes": [
+      "beautiful",
+      "alive",
+      "calm",
+      "deep",
+      "precise",
+      "luminous",
+      "trustworthy",
+      "effortless"
+    ],
+    "emotional_arc": [
+      "CURIOSITY",
+      "RECOGNITION",
+      "TRUST",
+      "ORIENTATION",
+      "COMMAND",
+      "FLOW",
+      "MASTERY",
+      "CONTINUITY"
+    ],
+    "divine_design_project_meaning": [
+      "purpose",
+      "proportion",
+      "harmony",
+      "truth",
+      "beauty",
+      "usefulness",
+      "restraint",
+      "nothing_arbitrary"
+    ],
+    "anti_generic_requirement": true,
+    "restraint_rule": "More intelligence, less burden. More depth, less clutter."
+  }
 }
