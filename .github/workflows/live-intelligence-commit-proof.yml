@@ -356,16 +356,17 @@ jobs:
           json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
           PY
           for attempt in 1 2 3; do
-            if curl -fsS --connect-timeout 10 --max-time 30 -X POST \
+            if curl --silent --show-error --fail-with-body --connect-timeout 10 --max-time 30 -X POST \
               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
               -H "Content-Type: application/json" \
-              --data-binary @cold-verify-request.json "$COLD_RUNTIME_FUNCTION" > cold-runtime-reread.json; then
+              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json; then
               if [[ -s cold-runtime-reread.json ]]; then
                 break
               fi
             fi
             if [[ "$attempt" -eq 3 ]]; then
-              echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: three bounded attempts produced no JSON body"
+              echo "COLD_RUNTIME_VERIFY_REQUEST_FAILED: three bounded attempts failed; retained response body follows:"
+              cat cold-runtime-reread.json || true
               exit 1
             fi
             sleep 2
