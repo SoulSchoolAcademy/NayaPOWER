@@ -30,8 +30,9 @@ Gate input contract (`state` dict keys; all reads explicit, nothing inferred):
   grants: [{grant_ref, grantor, grantee, scope: [...], bounds,
             expiry: iso-str|None, revoked: bool, chain: [...]}]
   evidence: {n: int, confidence: float}
-  evidence_floor_k: int   (CANDIDATE default 3 — the calculus is unratified;
-                           the gate structure is constitutional, the floor is not)
+  evidence_floor_k: int   (config default 3 — the decision calculus is RATIFIED
+                           V2.1 (FLAG-001 step 4); the floor threshold value is
+                           config, the gate structure is constitutional)
   seen_proposal_hashes: {proposal_hash: gate}   (verdict-shopping detection)
   proposal_hash_claimed: str | None             (tamper detection)
 
@@ -386,8 +387,9 @@ class LawNode(NodeBase):
                  "(§4)"],
                 extra={"awaits_grant_edge": True})
 
-        # §3.4 step 5: evidence floor. The floor is CANDIDATE machinery
-        # (calculus unratified); the *gate* is constitutional.
+        # §3.4 step 5: evidence floor. The floor threshold is config
+        # (calculus RATIFIED V2.1, FLAG-001 step 4); the *gate* is
+        # constitutional.
         evidence = inputs.get("evidence") or {"n": 0, "confidence": 0.0}
         k = int(inputs.get("evidence_floor_k", DEFAULT_EVIDENCE_FLOOR_K))
         floor_met = evidence.get("n", 0) >= k and evidence.get(
@@ -395,7 +397,7 @@ class LawNode(NodeBase):
         if not floor_met:
             return verdict(
                 "NEEDS_EVIDENCE", [], [], basis, None,
-                [f"evidence floor not met (candidate floor k={k}, "
+                [f"evidence floor not met (config floor k={k}, "
                  f"n={evidence.get('n', 0)}, "
                  f"confidence={evidence.get('confidence', 0.0)}); re-evaluate "
                  "after the floor is met (§6.2)"],

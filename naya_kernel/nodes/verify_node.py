@@ -50,7 +50,9 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from naya_kernel.node_base import GateResult, GateVerdict, ManifestEntry, NodeBase
+from naya_kernel.node_base import (GateResult, GateVerdict, ManifestEntry,
+                                  NodeBase, CALCULUS_V21_VERSION,
+                                  CALCULUS_V21_SPEC_HASH)
 
 NODE_ID = "NAYA-KERNEL-VERIFY"
 NODE_VERSION = "0.1.0-candidate"
@@ -1145,8 +1147,9 @@ class VerifyNode(NodeBase):
         CalibrationError = |ΔV_predicted − ΔV_actual|. Outcome verification
         and value verification remain distinct dimensions (PDF §60).
 
-        Candidate caveat: all V2.1-derived states are aspirational until the
-        decision calculus is ratified; the receipt says so explicitly.
+        The Decision Value Calculus V2.1 is RATIFIED law (bound into main via
+        #1186/#1190/#1192, FLAG-001 step 4); V2.1-derived value states are
+        no longer aspirational. The receipt binds the ratified config hash.
         """
         receipt = self._require_live(receipt_id)
         calibration = None
@@ -1156,7 +1159,9 @@ class VerifyNode(NodeBase):
             "predicted_delta_v": predicted_delta_v,
             "actual_delta_v": actual_delta_v,
             "calibration_error": calibration,
-            "aspirational": True,  # V2.1 calculus unratified (§7 caveat)
+            "aspirational": False,
+            "calculusVersion": CALCULUS_V21_VERSION,
+            "configHash": CALCULUS_V21_SPEC_HASH,
             "recorded_at": _now_iso(now),
         }
         return receipt["value"]

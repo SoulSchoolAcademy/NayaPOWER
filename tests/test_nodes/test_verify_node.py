@@ -656,14 +656,16 @@ def test_build_cvo_requires_all_slots():
     assert set(cvo) >= set(verify_node.CVO_SLOTS)
 
 
-# -- §7 value calculus (aspirational) ---------------------------------------------
+# -- §7 value calculus (ratified V2.1) ----------------------------------------------
 
-def test_record_value_computes_calibration_error_and_marks_aspirational():
+def test_record_value_computes_calibration_error_and_binds_ratified_calculus():
     node = VerifyNode()
     rid = node.submit(_request())["receipt_id"]
     value = node.record_value(rid, 5.0, 3.0, now=T0)
     assert value["calibration_error"] == 2.0
-    assert value["aspirational"] is True
+    assert value["aspirational"] is False
+    assert value["calculusVersion"] == "V2.1"
+    assert value["configHash"] == verify_node.CALCULUS_V21_SPEC_HASH
 
 
 # -- §8 intelligence-class preservation -------------------------------------------
