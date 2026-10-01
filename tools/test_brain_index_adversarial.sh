@@ -11,7 +11,14 @@
 # the real working tree. The script prints the generator's captured output
 # for each case as evidence and exits nonzero if any expectation is unmet.
 #
+# Exit codes: 0 = all cases pass; 1 = at least one case failed (the generator
+# verdict); 3 = harness/environment failure (a scratch clone could not be
+# created) — never a generator verdict. A dead clone must fail LOUDLY and
+# abort the run; it must never surface as misleading per-case FAILs that
+# blame the generator.
+#
 # Usage: bash tools/test_brain_index_adversarial.sh
+# Env: BRAIN_ADVERSARIAL_TMPDIR overrides the scratch base dir (default /tmp).
 
 set -u
 
@@ -19,7 +26,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GEN="$SCRIPT_DIR/regenerate_brain_index.py"
 REPO="$SCRIPT_DIR/.."   # the repo this script lives in
 
-T="$(mktemp -d /tmp/brain-index-adversarial-XXXXXX)"
+SCRATCH_BASE="${BRAIN_ADVERSARIAL_TMPDIR:-/tmp}"
+T="$(mktemp -d "$SCRATCH_BASE/brain-index-adversarial-XXXXXX")"
 trap 'rm -rf "$T"' EXIT
 
 PASS=0
@@ -31,15 +39,34 @@ report() { # $1=name $2=ok(1/0) $3=detail
   echo "---"
 }
 
+# A failed scratch clone is an ENVIRONMENT failure, never a generator
+# verdict. Fail LOUDLY (exit 3, named FATAL) and abort the run instead of
+# letting later steps run against a missing dir and produce misleading
+# case FAILs. (2026-10-01: /tmp exhaustion once made this script report
+# 3/5 with case FAILs that blamed the generator for a dead clone.)
+need_clone() { # $1=target dir, $2=case name
+  local err="$T/clone-$2.err"
+  if ! git clone -q "$REPO" "$1" 2>"$err"; then
+    echo "FATAL: scratch clone for case '$2' FAILED — the harness cannot test the generator."
+    echo "--- git clone stderr ---"
+    cat "$err"
+    echo "---"
+    echo "This is an ENVIRONMENT failure (disk space? permissions? unreadable source?), NOT a generator verdict."
+    echo "Fix the environment and rerun."
+    exit 3
+  fi
+  rm -f "$err"
+}
+
 # ---------------------------------------------------------------- positive control
 echo "### CASE 0: positive control — clean tree must pass"
-git clone -q "$REPO" "$T/clean" 2>/dev/null
+need_clone "$T/clean" "clean"
 out="$(python3 "$GEN" --root "$T/clean" --check 2>&1)"; code=$?
 if [ $code -eq 0 ]; then report "clean tree --check exits 0" 1 "$out"; else report "clean tree --check exits 0" 0 "exit=$code :: $out"; fi
 
 # ------------------------------------------------- case A: dangling pointer
 echo "### CASE A: dangling pointer in MASTER-INDEX.json must fail exit 2"
-git clone -q "$REPO" "$T/a" 2>/dev/null
+need_clone "$T/a" "a"
 python3 - "$T/a" <<'EOF'
 import json, sys
 p = sys.argv[1] + "/BRAIN/04-INTELLIGENCE/MASTER-INDEX.json"
@@ -70,7 +97,7 @@ fi
 
 # ------------------------------------------------- case B: count skew
 echo "### CASE B: skewed domain count must fail exit 2"
-git clone -q "$REPO" "$T/b" 2>/dev/null
+need_clone "$T/b" "b"
 git -C "$T/b" -c user.name=adv -c user.email=adv@local rm -q "BRAIN/99-ARCHIVE/README.md"
 git -C "$T/b" -c user.name=adv -c user.email=adv@local commit -qm "sabotage: delete 99-ARCHIVE README (count skew)"
 out="$(python3 "$GEN" --root "$T/b" 2>&1)"; code=$?
@@ -83,7 +110,7 @@ fi
 
 # --------------------------------- case C: undeclared pointer (backstop)
 echo "### CASE C: undeclared new pointer field must fail via backstop scan"
-git clone -q "$REPO" "$T/c" 2>/dev/null
+need_clone "$T/c" "c"
 python3 - "$T/c" <<'EOF'
 import json, sys
 p = sys.argv[1] + "/BRAIN/NAYAPOWER-BRAIN-INDEX.json"
@@ -106,7 +133,7 @@ fi
 
 # -------------------------------- case D: governed report append is allowed
 echo "### CASE D: append-only intelligence-report growth must remain valid"
-git clone -q "$REPO" "$T/d" 2>/dev/null
+need_clone "$T/d" "d"
 mkdir -p "$T/d/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2099/01/01"
 cat > "$T/d/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2099/01/01/IB-DIR-TEST-20990101-001.md" <<'EOF'
 # Test Daily Intelligence Report
