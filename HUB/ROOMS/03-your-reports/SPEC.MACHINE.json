@@ -1,0 +1,87 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "reports",
+  "name": "Your Reports",
+  "route": "/reports",
+  "metaphor": "THE_FILM_ROOM / TIME_MACHINE",
+  "theme": "Indigo — comprehension, depth, cross-time synthesis",
+  "human_question": "What does my intelligence mean over time?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "period, Space, report type, freshness and verification",
+    "state": "current synthesized period plus completeness/coverage",
+    "intelligence": "story, patterns, trends, unresolved questions and Naya synthesis",
+    "action": "change period, compare, ask, inspect evidence, save/share/export where real",
+    "proof": "every conclusion links to underlying canonical evidence and report-generation provenance"
+  },
+  "signature_instrument": "CROSS_TIME_INTELLIGENCE_SYNTHESIS",
+  "primary_views": [
+    "DAY",
+    "WEEK",
+    "MONTH",
+    "YEAR",
+    "CUSTOM_THEME",
+    "COMPARE",
+    "EVIDENCE"
+  ],
+  "primary_actions": [
+    "OPEN_REPORT",
+    "CHANGE_PERIOD",
+    "ASK_NAYA",
+    "COMPARE_PERIODS",
+    "INSPECT_EVIDENCE",
+    "SAVE_ADD_TO_LIST",
+    "SHARE_IF_AUTHORIZED",
+    "EXPORT_IF_SUPPORTED",
+    "GENERATE_REFRESH_IF_RUNTIME"
+  ],
+  "data_owner": "derived canonical intelligence/report pipeline",
+  "handoffs": [
+    "today",
+    "feed",
+    "library",
+    "ledger",
+    "connections",
+    "mail",
+    "spaces",
+    "lists"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "DAY/WEEK/MONTH/YEAR materially change structure",
+    "weekly is not seven pasted dailies",
+    "report conclusions have evidence",
+    "comparison criteria are explicit",
+    "unsupported causal language is avoided",
+    "evidence opens canonical sources"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}
