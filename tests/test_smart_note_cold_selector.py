@@ -58,11 +58,12 @@ def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
 
 
 
-def test_cold_successor_uses_canonical_cold_runtime_and_pinned_source():
+def test_cold_successor_lineage_uses_intelligence_commit_verifier_door():
     wf = WORKFLOW.read_text(encoding="utf-8")
     start = wf.index("  cold-successor-held-out:")
     end = wf.index("  independent-behavior-verification:", start)
     block = wf[start:end]
-    assert "ref: ${{ env.SOURCE_SHA }}" in block
-    assert '"$COLD_RUNTIME_FUNCTION"' in block
-    assert '"$RUNTIME_FUNCTION"' not in block
+    assert '"$RUNTIME_FUNCTION"' in block
+    assert '"$COLD_RUNTIME_FUNCTION"' not in block
+    assert "--fail-with-body" in block
+    assert 'cat cold-runtime-reread.json' in block
