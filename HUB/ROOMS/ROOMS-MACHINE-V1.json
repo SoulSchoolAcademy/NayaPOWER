@@ -1,6 +1,6 @@
 {
   "schema": "nayanet.hub.rooms.v1",
-  "version": "1.0",
+  "version": "1.1",
   "status": "PROPOSED_CANONICAL_FUNCTIONAL_SPEC",
   "authority": "Shawn Vibert, Human Director",
   "parent_contracts": [
@@ -152,7 +152,8 @@
         "provenance_inspectable",
         "cross_room_reference_preserves_id",
         "scroll_context_restores"
-      ]
+      ],
+      "package": "HUB/ROOMS/01-smart-feed"
     },
     {
       "id": "today",
@@ -197,7 +198,8 @@
         "evidence_inspectable",
         "open_loops_visible",
         "quiet_day_not_fabricated"
-      ]
+      ],
+      "package": "HUB/ROOMS/02-your-intelligence-today"
     },
     {
       "id": "reports",
@@ -243,7 +245,8 @@
         "conclusions_have_evidence",
         "compare_preserves_criteria",
         "evidence_links_to_canonical_objects"
-      ]
+      ],
+      "package": "HUB/ROOMS/03-your-reports"
     },
     {
       "id": "library",
@@ -286,7 +289,8 @@
         "provenance_visible",
         "relations_openable",
         "no_filesystem_as_default"
-      ]
+      ],
+      "package": "HUB/ROOMS/04-intelligent-library"
     },
     {
       "id": "connect",
@@ -321,7 +325,8 @@
         "connected_not_authorized",
         "authority_visible",
         "receipt_visibility"
-      ]
+      ],
+      "package": "HUB/ROOMS/05-smart-connect"
     },
     {
       "id": "ledger",
@@ -363,7 +368,8 @@
         "outcome_visible",
         "independent_verification_visible",
         "no_executor_output_as_proof"
-      ]
+      ],
+      "package": "HUB/ROOMS/06-smart-ledger"
     },
     {
       "id": "connections",
@@ -407,7 +413,8 @@
         "consent_state_visible",
         "revoke_safe",
         "list_equivalent_for_accessibility"
-      ]
+      ],
+      "package": "HUB/ROOMS/07-your-connections"
     },
     {
       "id": "lists",
@@ -449,7 +456,8 @@
         "reorder_accessible_not_drag_only",
         "rules_explainable",
         "reopen_persists"
-      ]
+      ],
+      "package": "HUB/ROOMS/08-smart-lists"
     },
     {
       "id": "mail",
@@ -496,7 +504,8 @@
         "naya_draft_not_auto_send_without_authority",
         "thread_context_visible",
         "message_to_intelligence_path_real"
-      ]
+      ],
+      "package": "HUB/ROOMS/09-smart-mail"
     },
     {
       "id": "spaces",
@@ -535,7 +544,8 @@
         "privacy_labels_match_enforcement",
         "switch_space_safe",
         "no_second_data_store"
-      ]
+      ],
+      "package": "HUB/ROOMS/10-smart-spaces"
     },
     {
       "id": "settings",
@@ -578,7 +588,45 @@
         "sensitive_changes_confirmed",
         "system_health_secondary",
         "human_language_not_backend_jargon"
-      ]
+      ],
+      "package": "HUB/ROOMS/11-settings"
     }
+  ],
+  "source_notes": [
+    "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md"
+  ],
+  "consensus": {
+    "protocol": "HUB/ROOMS/CONSENSUS-PROTOCOL.md",
+    "status": "HUB/ROOMS/CONSENSUS-STATUS.md",
+    "review_pr": 1290,
+    "coordination_issue": 554,
+    "overall": "TEAM_REVIEW_OPEN"
+  },
+  "room_packages": {
+    "feed": "HUB/ROOMS/01-smart-feed",
+    "today": "HUB/ROOMS/02-your-intelligence-today",
+    "reports": "HUB/ROOMS/03-your-reports",
+    "library": "HUB/ROOMS/04-intelligent-library",
+    "connect": "HUB/ROOMS/05-smart-connect",
+    "ledger": "HUB/ROOMS/06-smart-ledger",
+    "connections": "HUB/ROOMS/07-your-connections",
+    "lists": "HUB/ROOMS/08-smart-lists",
+    "mail": "HUB/ROOMS/09-smart-mail",
+    "spaces": "HUB/ROOMS/10-smart-spaces",
+    "settings": "HUB/ROOMS/11-settings"
+  },
+  "shared_five_layer_grammar": [
+    "ORIENTATION",
+    "CURRENT_STATE",
+    "INTELLIGENCE",
+    "ACTION",
+    "PROOF"
+  ],
+  "visual_translation": [
+    "HERO",
+    "INTELLIGENCE_WALL",
+    "ACTION_DECK",
+    "EVIDENCE_LAYER",
+    "NAYA_LAYER"
   ]
 }
