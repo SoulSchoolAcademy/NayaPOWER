@@ -1,0 +1,23 @@
+[
+  "tests/test_nodes/test_act_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_act_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_connect_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_connect_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_evolve_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_evolve_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_kernel.py::test_decide_is_scaffold_stub",
+  "tests/test_nodes/test_kernel.py::test_gate_order_covers_all_nine_nodes",
+  "tests/test_nodes/test_kernel.py::test_kernel_instantiates_all_nine_nodes",
+  "tests/test_nodes/test_know_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_know_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_law_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_law_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_learn_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_learn_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_prove_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_prove_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_self_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_self_node.py::test_stub_methods_raise_not_implemented",
+  "tests/test_nodes/test_verify_node.py::test_module_exposes_node_class",
+  "tests/test_nodes/test_verify_node.py::test_stub_methods_raise_not_implemented"
+]

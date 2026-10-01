@@ -1,0 +1,77 @@
+{
+  "name": "naya-nine-node-kernel",
+  "version": "0.1.0-candidate",
+  "status": "SCAFFOLD",
+  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
+  "gap_a": "Closure target: Kernel.decide() must exercise all nine nodes' gates; manifest + gate script were missing.",
+  "gate_order": [
+    {
+      "name": "SELF",
+      "node_id": "NAYA-KERNEL-SELF",
+      "pipeline_position": 1
+    },
+    {
+      "name": "LAW",
+      "node_id": "NAYA-KERNEL-LAW",
+      "pipeline_position": 2
+    },
+    {
+      "name": "ACT",
+      "node_id": "NAYA-KERNEL-ACT",
+      "pipeline_position": 3
+    },
+    {
+      "name": "KNOW",
+      "node_id": "NAYA-KERNEL-KNOW",
+      "pipeline_position": 4
+    },
+    {
+      "name": "PROVE",
+      "node_id": "NAYA-KERNEL-PROVE",
+      "pipeline_position": 5
+    },
+    {
+      "name": "CONNECT",
+      "node_id": "NAYA-KERNEL-CONNECT",
+      "pipeline_position": 6
+    },
+    {
+      "name": "VERIFY",
+      "node_id": "NAYA-KERNEL-VERIFY",
+      "pipeline_position": 7
+    },
+    {
+      "name": "LEARN",
+      "node_id": "NAYA-KERNEL-LEARN",
+      "pipeline_position": 9,
+      "note": "Spec declares itself ninth; eighth slot unassigned (open question)."
+    },
+    {
+      "name": "EVOLVE",
+      "node_id": "NAYA-KERNEL-EVOLVE",
+      "pipeline_position": "last"
+    }
+  ],
+  "node_versions": {
+    "SELF": "0.1.0-candidate",
+    "LAW": "0.1.0-candidate",
+    "ACT": "0.1.0-candidate",
+    "KNOW": "0.1.0-candidate",
+    "PROVE": "0.1.0-candidate",
+    "CONNECT": "0.1.0-candidate",
+    "VERIFY": "0.1.0-candidate",
+    "LEARN": "0.1.0-candidate",
+    "EVOLVE": "0.1.0-candidate"
+  },
+  "spec_sources": {
+    "SELF": "~/workspace/nine-node-specs/SELF-NODE-SPEC-CANDIDATE.md",
+    "LAW": "~/workspace/nine-node-specs/LAW-NODE-SPEC-CANDIDATE.md",
+    "ACT": "~/workspace/nine-node-specs/ACT-NODE-SPEC-CANDIDATE.md",
+    "KNOW": "~/workspace/nine-node-specs/KNOW-NODE-SPEC-CANDIDATE.md",
+    "PROVE": "~/workspace/nine-node-specs/PROVE-NODE-SPEC-CANDIDATE.md",
+    "CONNECT": "~/workspace/nine-node-specs/CONNECT-NODE-SPEC-CANDIDATE.md",
+    "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md",
+    "LEARN": "~/workspace/nine-node-specs/LEARN-NODE-SPEC-CANDIDATE.md",
+    "EVOLVE": "~/workspace/nine-node-specs/EVOLVE-NODE-SPEC-CANDIDATE.md"
+  }
+}
