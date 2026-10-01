@@ -811,6 +811,29 @@ class EvolveNode(NodeBase):
                     "succession": "STALE"}
         score = self._score_candidate(candidate)
         candidate["gate_score"] = score
+        # P2 (2026-10-01): the shared calculator's gate CONSTRAINS routing —
+        # called is not enough. A non-PASS calculator gate closes the
+        # autonomous path: FAIL is a decided NO (REFUSED, receipted);
+        # NEEDS_EVIDENCE / HARD_GATE_UNKNOWN route BRIEF so the director
+        # decides with the calculator's reasons in hand. Envelope
+        # membership never substitutes for a calculator PASS, and missing
+        # hard flags remain non-PASS.
+        calc_gate = score.get("gate")
+        calc_gate_reasons = list(score.get("gate_reasons") or [])
+        if calc_gate == "FAIL":
+            self._transition(candidate, "proposal", "REJECTED",
+                             reason="EVALUATE — shared calculator gate FAIL")
+            receipt = self._emit(
+                "GATE_REFUSED", evolution_id=evolution_id,
+                refusal_code="CALCULATOR_GATE_FAIL",
+                gate_score=score,
+                reason="§3 — the shared V2.1 calculator gated FAIL "
+                       "(%s); a calculator NO is not routable"
+                       % "; ".join(calc_gate_reasons))
+            return {"decision": "REFUSED",
+                    "receipt_id": receipt["receipt_id"],
+                    "refusal_code": receipt["refusal_code"],
+                    "gate_score": score}
         # evaluate() is re-entrant: REBASE / RE-EVALUATE is the stale rule's
         # second half (§4, A6). First run walks PROPOSED→SCORED; a
         # re-evaluation re-runs the gate without re-walking the transition.
@@ -839,14 +862,30 @@ class EvolveNode(NodeBase):
         if candidate.get("route") == "BRIEF":
             route = "BRIEF"   # §8.9 personality boundary — always brief
             reasons = ["personality-trait evolution is always BRIEF-class (§8.9)"]
-        elif not envelope_ok:
-            route = "BRIEF"
-            reasons = envelope_reasons
         else:
-            route = "AUTONOMOUS"
-            reasons = ["within the director-set autonomous envelope (§7.1); "
-                       "calculus V2.1 ratified"]
-        if candidate["proposal"] != "GATED":
+            # P2 (2026-10-01): every applicable BRIEF trigger is recorded —
+            # the calculator's non-PASS gate and an envelope breach are
+            # independent facts, and both close the autonomous path.
+            brief_triggers: List[str] = []
+            if calc_gate != "PASS":
+                brief_triggers.append(
+                    "shared calculator gate %s — autonomous path closed; "
+                    "the calculator's decision constrains routing"
+                    % calc_gate)
+                brief_triggers.extend(calc_gate_reasons)
+            if not envelope_ok:
+                brief_triggers.extend(envelope_reasons)
+            if brief_triggers:
+                route = "BRIEF"
+                reasons = brief_triggers
+            else:
+                route = "AUTONOMOUS"
+                reasons = ["within the director-set autonomous envelope "
+                           "(§7.1); calculus V2.1 ratified"]
+        if candidate["proposal"] not in ("GATED", "BRIEFED"):
+            # Re-evaluation from BRIEFED stays BRIEFED: briefing is a
+            # one-way escalation on the proposal axis, and the §3 gate
+            # receipt is still emitted below.
             self._transition(candidate, "proposal", "GATED",
                              reason="EVALUATE — route resolved: " + route)
         receipt = self._emit("GATED", evolution_id=evolution_id,
@@ -1586,6 +1625,16 @@ class EvolveNode(NodeBase):
             if result["decision"] == "STALE_PROPOSAL":
                 return GateResult(GateVerdict.NEED_EVIDENCE,
                                   ["STALE_PROPOSAL", "REBASE_REQUIRED"])
+            if result["decision"] == "REFUSED":
+                # P2 (2026-10-01): a refused evaluation (rollback-plan or
+                # calculator FAIL) is a kernel-graph FAIL with the refusal
+                # code and the calculator's reasons — never an accidental
+                # exception, never a silent PASS.
+                calc_reasons = (result.get("gate_score") or {}).get(
+                    "gate_reasons", [])
+                return GateResult(GateVerdict.FAIL,
+                                  [result.get("refusal_code", "REFUSED")]
+                                  + list(calc_reasons))
             if result["route"] == "BRIEF":
                 return GateResult(GateVerdict.NEED_EVIDENCE,
                                   ["BRIEF_REQUIRED"] + result["reasons"])

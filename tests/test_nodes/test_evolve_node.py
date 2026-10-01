@@ -137,21 +137,50 @@ class TestBaseAcceptance:
         assert res["decision"] == "REFUSED"
         assert "GATE_STRUCTURE" in res["touched_surface"]
 
-    def test_ratified_calculus_autonomous_path_admitted(self):
-        # FLAG-001 step 4: V2.1 RATIFIED — the SPEC-ONLY (unratified-math)
-        # branches are gone. An in-envelope proposal evaluates to the
-        # AUTONOMOUS route; the gate no longer refuses on calculus grounds.
+    def test_calculator_gate_routes_brief_not_autonomous(self):
+        # P2 (2026-10-01), supersedes the old AUTONOMOUS expectation: the
+        # ratified V2.1 calculator gates NEEDS_EVIDENCE here
+        # (HARD_GATE_UNKNOWN — the schema carries no lawful/rights/
+        # privacy/safety facts), so the candidate routes BRIEF, not
+        # AUTONOMOUS. The calculator's gate constrains routing; envelope
+        # membership alone never opens the autonomous path. The director
+        # can still authorize from BRIEFED — briefing is escalation,
+        # not a dead end.
         node = EvolveNode()  # default config: calculus V2.1 RATIFIED
         eid = node.propose(_proposal())["evolution_id"]
         out = node.evaluate(eid)
-        assert out["route"] == "AUTONOMOUS"
-        assert not node._brief_outbox  # not briefed; autonomous path open
+        assert out["route"] == "BRIEF"
+        assert node._brief_outbox  # briefed; director decides
         auth = node.authorize(eid, {"issuer": "HUMAN_DIRECTOR",
                                     "scope": "evolve"})
         assert auth["decision"] == "AUTHORIZED"
         g = node.gate({"action": "apply", "evolution_id": eid})
         assert g.verdict is GateVerdict.NEED_EVIDENCE
         assert "AUTHORITY_VALIDATION_REQUIRED" in g.reasons
+
+    def test_calculator_nonpass_gate_blocks_autonomous_route(self):
+        # P2 (coordinator 2026-10-01): called is not enough — the shared
+        # calculator's gate must CONSTRAIN routing. The EVOLVE schema
+        # carries no lawful/rights/privacy/safety facts, so the mapping
+        # (evolve-v21map-v1) honestly yields HARD_GATE_UNKNOWN and the
+        # calculator gates NEEDS_EVIDENCE. Such a candidate must NOT
+        # route AUTONOMOUS: it routes BRIEF with the calculator's gate
+        # reasons, so the director decides. Missing hard flags remain
+        # non-PASS — envelope membership never substitutes for them.
+        node = EvolveNode()  # default config: calculus V2.1 RATIFIED
+        eid = node.propose(_proposal())["evolution_id"]
+        out = node.evaluate(eid)
+        assert out["gate_score"]["gate"] == "NEEDS_EVIDENCE", out["gate_score"]
+        assert out["route"] == "BRIEF", (
+            "a calculator non-PASS must not take the autonomous path; "
+            "got route %r" % out["route"])
+        assert any("HARD_GATE_UNKNOWN" in r or "UNKNOWN_" in r
+                   for r in out["reasons"]), out["reasons"]
+        assert node._brief_outbox, "the director must be briefed"
+        # And the kernel-graph gate must not PASS it either.
+        g = node.gate({"action": "evaluate", "evolution_id": eid})
+        assert g.verdict is GateVerdict.NEED_EVIDENCE, g.reasons
+        assert "BRIEF_REQUIRED" in g.reasons
 
     def test_bundle_split_detected_on_crafted_split(self):
         node = EvolveNode()
@@ -536,8 +565,10 @@ class TestProperties:
         res = node.propose(_proposal(expected_value=999.0))
         eid = res["evolution_id"]
         out = node.evaluate(eid)
-        # A sky-high score still routes through authority validation.
-        assert out["route"] == "AUTONOMOUS"
+        # A sky-high score still routes through authority validation —
+        # and P2 (2026-10-01): a calculator non-PASS (HARD_GATE_UNKNOWN
+        # here) closes the autonomous path regardless of score.
+        assert out["route"] == "BRIEF"
         auth = node.authorize(eid, {"issuer": "EVOLVE_SELF", "scope": "all"})
         assert auth["decision"] == "REFUSED"
         assert auth["refusal_code"] == REFUSAL_AUTHORITY
@@ -650,12 +681,12 @@ class TestMetrics:
             out = node.record_continuity_metric(name, 0.5)
             assert out["decision"] == "RECORDED"
         assert set(node.metrics()) == set(CONTINUITY_METRICS)
-        # Metrics do not change any gate decision. (FLAG-001 step 4: with
-        # V2.1 RATIFIED the in-envelope proposal routes AUTONOMOUS —
-        # metrics are still diagnostics, never gates.)
+        # Metrics do not change any gate decision. (P2, 2026-10-01: the
+        # calculator's HARD_GATE_UNKNOWN routes the in-envelope proposal
+        # BRIEF — metrics are still diagnostics, never gates.)
         eid = node.propose(_proposal())["evolution_id"]
         out = node.evaluate(eid)
-        assert out["route"] == "AUTONOMOUS"
+        assert out["route"] == "BRIEF"
 
     def test_unknown_metric_refused(self):
         node = EvolveNode()
@@ -722,7 +753,12 @@ class TestConformance:
         assert g.verdict is GateVerdict.FAIL
         assert REFUSAL_NO_FUTURE_BEHAVIOR in g.reasons
 
-    def test_gate_evaluate_in_envelope_passes_when_ratified(self):
+    def test_gate_evaluate_in_envelope_briefs_when_calculator_nonpass(self):
+        # P2 (2026-10-01): ratification alone does not admit the
+        # autonomous path. The calculator gates NEEDS_EVIDENCE here
+        # (HARD_GATE_UNKNOWN), so the kernel-graph gate returns
+        # NEED_EVIDENCE with BRIEF_REQUIRED — the calculator's gate
+        # constrains the kernel gate too.
         node = EvolveNode({"calculusVersion": "V2.1", "calculusRatified": True,
                            "kernelRevision": "kr-0", "currentVersion": "v0.0.0",
                            "envelope": {
@@ -733,7 +769,8 @@ class TestConformance:
         eid = node.propose(_proposal())["evolution_id"]
         node.evaluate(eid)
         g = node.gate({"action": "evaluate", "evolution_id": eid})
-        assert g.verdict is GateVerdict.PASS
+        assert g.verdict is GateVerdict.NEED_EVIDENCE
+        assert "BRIEF_REQUIRED" in g.reasons
 
     def test_gate_apply_ratified_requires_authority_validation(self):
         # FLAG-001 step 4: V2.1 RATIFIED — no unratified-math refusal.
