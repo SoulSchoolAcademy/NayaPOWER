@@ -1,5 +1,5 @@
 {
-  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
+  "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
   "gap_a": "Closure target: Kernel.decide() must exercise all nine nodes' gates; manifest + gate script were missing.",
   "gate_order": [
     {
@@ -52,7 +52,7 @@
   "implementation_status": {
     "ACT": "implemented-candidate",
     "CONNECT": "implemented-candidate",
-    "EVOLVE": "stub",
+    "EVOLVE": "implemented-candidate",
     "KNOW": "implemented-candidate",
     "LAW": "implemented-candidate",
     "LEARN": "implemented-candidate",
