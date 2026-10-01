@@ -337,7 +337,7 @@ def build_real_tree_json(basis: str, files: list[dict], counts: dict[str, int], 
         "domain_counts": counts,
         "ledger_assertion": (
             "Per-domain counts asserted against the 2026-09-30 brain-reconciliation "
-            "Any other drift fails regeneration instead of "
+            "ledger classification table. Any drift fails regeneration instead of "
             "silently rewriting the table."
         ),
         "files": entries,
@@ -354,7 +354,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         f"**Inventory file count:** {len(files)}  ",
         "",
         "> Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. "
-        "Per-domain counts are asserted against the fixed brain-reconciliation baseline plus the committed intelligence-report subtree count. "
+        "Per-domain counts are asserted against the 2026-09-30 brain-reconciliation "
         "ledger classification table. "
         "The three index files are self-referential (their blob SHAs are omitted by "
         "design); every other file lists its exact blob SHA at the basis commit.",
