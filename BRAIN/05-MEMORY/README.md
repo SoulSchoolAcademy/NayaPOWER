@@ -6,13 +6,13 @@ Owns durable retention, indexing, retrieval, reconciliation, freshness, and cont
 
 Memory stores and retrieves intelligence; it does not decide truth or authority by itself.
 
-## Contents (18 files + this README = 19)
+## Contents (22 files + this README = 23)
 
 | File | Purpose |
 |---|---|
-| [0001-MEMORY-CONTINUITY-CONTRACT-V1.md](./0001-MEMORY-CONTINUITY-CONTRACT-V1.md) | Core memory and continuity rules |
+| [0001-MEMORY-CONTINUITY-CONTRACT-V1.md](./0001-MEMORY-CONTINUITY-CONTRACT-V1.md) | Core memory and continuity rules |\n| [INTELLIGENCE-REPORTS/README.md](./INTELLIGENCE-REPORTS/README.md) | Canonical Daily / Weekly / Monthly / Yearly intelligence-report program |\n| [2026-10-01 Daily Intelligence Report](./INTELLIGENCE-REPORTS/DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md) | Canonical daily report snapshot — IB-DIR-NAYAPOWER-20261001-001 |
 
-### Smart Notes (17)
+### Smart Notes (19)
 
 | Smart Note | Topic |
 |---|---|
@@ -34,7 +34,7 @@ Memory stores and retrieves intelligence; it does not decide truth or authority 
 | [SN-011](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md) | 20260930-sn011-intelligence-classes |
 | [SN-010](./SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md) | 20260930-sn010-internal-rigor-external-simplicity |
 
-> **Note (2026-09-30):** two distinct notes share the ID `SN-012` (consent-granularity and operating-model). Each file carries a disambiguation header cross-referencing the other. Do not renumber unilaterally — the Human Director owns the ID decision.
+| [SN-017](./SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/SELF-OPTIMIZATION/GOVERNED-EXPERIMENT-CAMPAIGNS/SN-017/IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md) | 20261001-sn017-autoresearch-harness-lessons |\n| [Nine-Node Smart Note Build Manifest](./SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md) | Smart Note build/continuity manifest |\n\n> **Note (2026-09-30):** two distinct notes share the ID `SN-012` (consent-granularity and operating-model). Each file carries a disambiguation header cross-referencing the other. Do not renumber unilaterally — the Human Director owns the ID decision.
 
 ## Key Principles
 
