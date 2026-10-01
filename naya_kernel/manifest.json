@@ -13,13 +13,13 @@
    "pipeline_position": 2
   },
   {
-   "name": "ACT",
-   "node_id": "NAYA-KERNEL-ACT",
+   "name": "KNOW",
+   "node_id": "NAYA-KERNEL-KNOW",
    "pipeline_position": 3
   },
   {
-   "name": "KNOW",
-   "node_id": "NAYA-KERNEL-KNOW",
+   "name": "ACT",
+   "node_id": "NAYA-KERNEL-ACT",
    "pipeline_position": 4
   },
   {
@@ -40,13 +40,12 @@
   {
    "name": "LEARN",
    "node_id": "NAYA-KERNEL-LEARN",
-   "note": "Spec declares itself ninth; eighth slot unassigned (open question).",
-   "pipeline_position": 9
+   "pipeline_position": 8
   },
   {
    "name": "EVOLVE",
    "node_id": "NAYA-KERNEL-EVOLVE",
-   "pipeline_position": "last"
+   "pipeline_position": 9
   }
  ],
  "implementation_status": {

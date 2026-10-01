@@ -9,10 +9,12 @@ The nine-node decision graph closing **GAP-A**: `Kernel.decide()`
 traverses the canonical 13-edge runtime graph (per the Ultimate Lock;
 executable communication is not one mandatory linear call stack),
 exercising all nine nodes' gates with per-edge fail-fast/fail-closed
-semantics
-(SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE),
-with the nine-node manifest present. The first non-PASS gate short-circuits
-(fail-fast); `gate_all()` evaluates every gate without short-circuit for
+semantics in the topological evaluation order
+(SELF → LAW → KNOW → ACT → PROVE → CONNECT → VERIFY → LEARN → EVOLVE),
+with the nine-node manifest present. A FAILing gate halts the whole decision
+globally; a NEED_EVIDENCE gate edge-blocks only its downstream edges while
+independent branches continue; `gate_all()` evaluates every gate without
+short-circuit for
 full audit visibility.
 
 ## Layout
@@ -43,8 +45,11 @@ full audit visibility.
    recorded in the goal workspace (`hidden_files/node-build-demo-receipt.json`).
 4. Nothing here merges to main or deploys without Shawn's explicit word.
 
-## Open question
+## Slot numbering — resolved
 
-LEARN's spec declares itself the *ninth* pipeline responsibility and EVOLVE the
-*last*, leaving the eighth slot unassigned. The overnight review should resolve
-whether slot 8 is reserved, unnamed, or a spec numbering error.
+The manifest's old scaffold-era ordering left slot 8 unassigned (LEARN at 9,
+EVOLVE at "last"). The slot gap was scaffold numbering drift, not a spec
+claim — no LEARN/EVOLVE spec text declares pipeline-responsibility
+numbering. Resolved: the manifest's `gate_order` now mirrors the kernel's
+canonical `EVALUATION_ORDER` exactly — LEARN = 8, EVOLVE = 9, slots 1–9
+contiguous (guard test in `tests/test_nodes/test_manifest_state.py`).
