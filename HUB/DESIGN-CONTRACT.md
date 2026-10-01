@@ -597,6 +597,8 @@ They decompose this parent contract into specialized laws for:
 - Accessibility / Responsive / Performance
 - Naya Presence / Input / Search
 - AAA Visual QA & Acceptance
+- Token / Component Implementation
+- World-Champion Interface Review
 
 **Authority rule:** these are normative sublaws of this contract, not independent design systems. Current Human Director direction and this parent contract win on conflict.
 
