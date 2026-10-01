@@ -1219,6 +1219,26 @@ class LearnNode(NodeBase):
         for step in order[order.index(learning["state"]) + 1:]:
             self._transition(learning, step, f"promotion path: -> {step}")
             gates_passed.extend(earned.get(step, []))
+        # A-LEARN-5 note — the epistemic VERIFIED transition. This is the
+        # sole place in the module where learning_state reaches VERIFIED
+        # (it starts CANDIDATE in _new_learning and no other assignment
+        # promotes it). The epistemic axis has no _transition equivalent
+        # because the amendment mechanism here IS the §16 promotion path
+        # executed above: the learning was proposed (as a candidate), with
+        # evidence (the earned gates named per step: reconciliation,
+        # applicability + causal requirement, source-outcome verification,
+        # holdout passes, provenance, independent recomputation, no
+        # material regression), reviewed (the promotion conjuncts
+        # V∧P∧R∧A∧B∧N∧C evaluated in promote(); governance-proposal and
+        # identity-touching learnings route to BRIEF and never reach
+        # this line), and recorded (a receipted _transition for every
+        # machine step, the PROMOTION receipt naming all gates passed,
+        # and the promotion package handed to EVOLVE). This assignment
+        # executes atomically inside promote() only after every conjunct
+        # held — it cannot fire on a direct call that skipped the review.
+        # If a future caller needs the epistemic transition without
+        # promotion, it must go through an explicit amendment proposal
+        # (proposal flag + record + review gate), not a direct assignment.
         learning["learning_state"] = "VERIFIED"
         learning["adoption_state"] = "ACTIVE"
         learning["verified_at"] = learning["verified_at"] or self._now()

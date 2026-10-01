@@ -217,19 +217,25 @@ def test_shared_calculator_scores_evolve_candidates():
     assert scored["score_engine_executable_blob_sha"] == \
         _blob_sha_of_calculator() == CALCULUS_V21_EXECUTABLE_HASH
 
-    # Independent recomputation through the same engine must MATCH.
-    v21_candidate = node._to_v21_candidate(candidate)
-    profile = QualityProfile_for_test()
-    baseline = V21Candidate(
-        candidate_id="EVOLVE-NO-CHANGE-BASELINE",
-        quality={}, confidence={},
-        pv=V21PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={},
-                         evidence_count=0),
-        stakes="low", reversible=True, authorized=True,
-        human_authorized=False, hard_violation=False, is_baseline=True)
+    # Independent recomputation through the same engine must MATCH —
+    # rebuilt MECHANICALLY from the receipt's bound calculator_inputs
+    # (no re-running the mapping, no hand-built baseline): the score IS
+    # the calculator's output.
+    inputs = scored["calculator_inputs"]
+
+    def _candidate_from(d):
+        d = dict(d)
+        d["pv"] = V21PVEstimate(**d["pv"])
+        return V21Candidate(**d)
+
+    v21_candidate = _candidate_from(inputs["candidate"])
+    baseline = _candidate_from(inputs["baseline"])
+    profile = V21QualityProfile(**inputs["quality_profile"])
+    policy = V21RiskPolicy(**inputs["risk_policy"])
+    assert profile.profile_id == "EVOLVE-SHARED-CALCULATOR-V1"
     evaluation = v21_evaluate_candidates(
-        [baseline, v21_candidate], baseline.candidate_id,
-        profile, V21RiskPolicy())
+        [baseline, v21_candidate], inputs["baseline_candidate_id"],
+        profile, policy)
     row = next(r for r in evaluation["rows"]
                if r["candidate_id"] == v21_candidate.candidate_id)
     assert scored["score"] == row["v_safe"]
@@ -241,13 +247,6 @@ def test_shared_calculator_scores_evolve_candidates():
     fresh = node._score_candidate(candidate)
     assert fresh["score"] == scored["score"]
     assert fresh["gate"] == scored["gate"]
-
-
-def QualityProfile_for_test():
-    return V21QualityProfile(
-        profile_id="EVOLVE-SHARED-CALCULATOR-V1",
-        version="V2.1",
-        objective="score evolution candidate under current config C")
 
 
 def test_shared_calculator_hard_stops_immutable_touch():

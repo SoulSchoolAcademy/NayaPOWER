@@ -54,3 +54,27 @@ claim — no LEARN/EVOLVE spec text declares pipeline-responsibility
 numbering. Resolved: the manifest's `gate_order` now mirrors the kernel's
 canonical `EVALUATION_ORDER` exactly — LEARN = 8, EVOLVE = 9, slots 1–9
 contiguous (guard test in `tests/test_nodes/test_manifest_state.py`).
+
+## Layering boundary — ACT deliberation vs execution (A-ACT-4)
+
+The kernel implements the **execution half** of the ACT contract, not the
+deliberative half. The five deliberative functions named in the master
+contract — `plan_action`, `select_minimum_sufficient_action`,
+`define_expected_outcome`, `define_proof_requirements`, `observe` (as a
+deliberative callable) — have **no kernel implementation, by design**.
+Deliberation lives in the agent layer: the layer that produces the
+decision receipt's `winner` (tool_id, params, bounds) has already planned,
+selected, and defined the expected outcome and proof requirements before
+ACT is ever consulted. The kernel's ACT consumes that receipt — it
+admits the decision verb, claims the execution under an idempotency key,
+invokes only registered tools within the granted authority envelope,
+observes the effects, and emits a hash-bound receipt a cold successor
+can trust. ACT never re-scores, never overrides the verb, never grants
+authority (`authority_checks()` declares validations only).
+
+Do not read the spec's function list as claiming kernel implementations
+that exist nowhere: the deliberative five are agent-layer
+responsibilities; the kernel owns execution. If spec wording implies
+otherwise, that is a spec-side wording issue for the spec lane, not a
+kernel gap — the boundary is recorded here so neither side silently
+assumes the other implements them.

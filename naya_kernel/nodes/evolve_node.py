@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from dataclasses import asdict
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -496,11 +497,32 @@ class EvolveNode(NodeBase):
           recorded in the same receipt. The calculator grants nothing.
         - hard_violation = immutable-surface touch (the spec's MUST-NEVER
           surface becomes the calculator's JUDGMENT_RULE_HARD_STOP).
-        - Everything the candidate does not carry (lawful/rights/privacy/
-          safety flags, per-dimension confidence, tail risks) stays None /
-          empty: the calculator's gate machinery names the unknowns
-          (HARD_GATE_UNKNOWN, QUALITY_DIMENSION_MISSING, confidence
-          floors) instead of this method inventing them.
+        - human_authorized = False always: EVOLVE never claims human
+          authorization for the merit score; human authorization is a
+          separate routing fact recorded by the envelope/brief path.
+
+        Explicit non-mappings (no constant-stuffing without a stated
+        reason):
+        - Quality dims the candidate does not carry (objective_fit,
+          applicability, robustness, simplicity) are ABSENT (None), not
+          zeroed: the calculator's QUALITY_DIMENSION_MISSING machinery
+          names them instead of this method inventing values.
+        - pv.H = 0.0 and pv.C = 0.0 are explicit NON-ESTIMATES, not
+          measured zeros: the EVOLVE candidate schema carries a single
+          expected_value figure with no decomposed harm/cost terms, so
+          there is nothing faithful to map. Residual risk flows through
+          R. If the schema gains harm/cost fields, they must be mapped
+          here — these zeros must not be mistaken for "no harm / no cost".
+        - confidence = {} (candidate and pv): the candidate carries no
+          per-dimension confidence; the calculator applies its own
+          confidence floors (CONFIDENCE_FLOOR) rather than this method
+          inventing certainty.
+        - tail risks: left at the dataclass default (empty) — the
+          candidate schema carries no tail-risk model; the calculator's
+          tail_penalty path therefore contributes nothing, honestly.
+        - Lawful/rights/privacy/safety flags: absent (None) → the
+          calculator's HARD_GATE_UNKNOWN names them; an EVOLVE candidate
+          that cannot evidence them gates NEEDS_EVIDENCE, never PASS.
         """
         evolution_id = str(candidate.get("evolution_id") or "unknown")
         reversibility = float(candidate.get("reversibility") or 0.0)
@@ -547,9 +569,12 @@ class EvolveNode(NodeBase):
         CURRENT CONFIG C (never under the proposed config, §3.3). The
         receipt binds the shared executable's blob SHA so a verifier can
         confirm WHICH executable scored; score_engine is
-        "shared_calculator", never implied. An independent recomputation
-        under C with mapping evolve-v21map-v1 must MATCH, or the adoption
-        is void (§3.3).
+        "shared_calculator", never implied. calculator_inputs binds the
+        exact V2.1 Candidate dicts (proposal + baseline), the quality
+        profile, and the risk policy, so an independent recomputation —
+        rebuild the two Candidates, the profile, and the policy from
+        calculator_inputs and call evaluate_candidates — must MATCH the
+        receipt's v_safe, or the adoption is void (§3.3).
         """
         if not _V21_STATUS["match"]:
             raise RuntimeError(
@@ -567,6 +592,17 @@ class EvolveNode(NodeBase):
         calculus_chain = ("RESOLVE", "GATE", "SCORE", "COMPARE", "SELECT",
                           "ACT/ESCALATE", "OBSERVE", "VERIFY", "LEDGER",
                           "LEARN", "RECALIBRATE")
+        # Green-bar condition 2: bind the calculator inputs so the score
+        # is independently recomputable from the receipt alone — no
+        # re-running the mapping. dataclasses.asdict captures the full
+        # constructed Candidates (mapped fields + every default).
+        calculator_inputs = {
+            "candidate": asdict(v21_candidate),
+            "baseline": asdict(baseline),
+            "baseline_candidate_id": baseline.candidate_id,
+            "quality_profile": asdict(_V21_PROFILE),
+            "risk_policy": asdict(V21RiskPolicy()),
+        }
         return {
             "calculus_chain": calculus_chain,
             "score_engine": "shared_calculator",
@@ -574,6 +610,7 @@ class EvolveNode(NodeBase):
             "score_engine_executable_blob_sha":
                 _V21_STATUS["actual_blob_sha"],
             "v21_mapping": "evolve-v21map-v1",
+            "calculator_inputs": calculator_inputs,
             "expected_value": float(candidate.get("expected_value") or 0.0),
             "v_safe": row["v_safe"],
             "score": row["v_safe"],
