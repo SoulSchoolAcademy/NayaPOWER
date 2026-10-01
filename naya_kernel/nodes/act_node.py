@@ -189,6 +189,7 @@ class ActNode(NodeBase):
     # NodeBase interface
     # ------------------------------------------------------------------
     def manifest_entry(self) -> ManifestEntry:
+        """Node identity + responsibilities (spec §8.1)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,
@@ -218,10 +219,12 @@ class ActNode(NodeBase):
         return GateResult(verdict=verdict, reasons=reasons)
 
     def persisted_transitions(self) -> List[str]:
+        """Legal §7.2 state-machine edges in 'FROM -> TO' form (spec §8.1)."""
         return [f"{frm} -> {to}" for frm, tos in LEGAL_TRANSITIONS.items()
                 for to in sorted(tos)]
 
     def evidence_hooks(self) -> List[str]:
+        """SmartLedger evidence streams this node writes (spec §8.1)."""
         return [
             "smartledger.execution (ExecutionReceipt stream, proposed)",
             "tool.effects_observed (per-tool evidence_capture declaration)",
@@ -231,6 +234,7 @@ class ActNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Authority declarations — declared only, never granted (spec §8.1)."""
         return [
             "decision receipt recompute under bound configHash (§4.1)",
             "receipt freshness: valid_until, config hash, authority revocation (§4.2)",
