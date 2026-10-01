@@ -575,6 +575,35 @@ Architecture (frozen): **Hub = cockpit. NayaPOWER = governed intelligence substr
 
 ---
 
+## NORMATIVE SUBLAW COMPILATION
+
+The detailed implementation laws are maintained under:
+
+`HUB/DESIGN-LAWS/`
+
+They decompose this parent contract into specialized laws for:
+
+- Master Design
+- Visual Bliss
+- Typography & Readability
+- Component Physics
+- Power Buttons
+- Intelligence Boards
+- Semantic Spectrum
+- Intelligence Glyphs
+- Motion & Liveness
+- Layout / Navigation / Composition
+- Truth / State / Interaction
+- Accessibility / Responsive / Performance
+- Naya Presence / Input / Search
+- AAA Visual QA & Acceptance
+
+**Authority rule:** these are normative sublaws of this contract, not independent design systems. Current Human Director direction and this parent contract win on conflict.
+
+**Builder rule:** no one may implement only the "pretty" laws. Visual excellence is accepted only with readability, causality, truth, accessibility, performance and proof.
+
+---
+
 ## PART 7 — THE FINISHED CONTRACT (V1.0 §§14–29)
 
 *Completing the Elite Interface & Application Design Contract V1.0, cut off at §13. Same voice, same law. Verified against the canonical docs — net-new content only where the existing contract was silent.*
