@@ -1,108 +1,13 @@
-# 11 — Settings
+# Settings — moved to canonical room package
 
-**Metaphor:** THE CONTROL DECK  
-**Route:** `/settings`  
-**Theme:** neutral / silver  
-**Human question:** **How should NayaNET work for me?**
+This compatibility pointer preserves earlier links while preventing duplicate room truth.
 
-## Human promise
+Canonical package: [11-settings/](./11-settings/)
 
-Give the human clear control over their relationship with NayaNET without exposing unnecessary implementation machinery.
+- [Functional Spec](./11-settings/FUNCTIONAL-SPEC.md)
+- [Design Contract](./11-settings/DESIGN-CONTRACT.md)
+- [Human Projection](./11-settings/SPEC.HUMAN.md)
+- [AI Builder Projection](./11-settings/SPEC.AI.md)
+- [Machine Projection](./11-settings/SPEC.MACHINE.json)
 
-Settings should feel calm, precise and trustworthy — not like a developer console.
-
-## Signature visual
-
-A premium **control deck** organized by human concerns.
-
-Primary categories:
-
-### Identity & Account
-- Smart Name / alias
-- authentication/session
-- account details
-- device/session visibility where supported
-
-### Privacy & Consent
-- sharing defaults
-- collective/public choices
-- consent and revocation controls
-- visibility preferences
-
-### Connections & Doors
-- connected channels
-- door health
-- authentication
-- disconnect/revoke where supported
-
-### Naya Preferences
-- communication preferences
-- proactive assistance preferences
-- reminder/notification behavior where supported
-
-### Appearance & Accessibility
-- motion preference
-- text/contrast preferences
-- display density/theme options where supported
-- accessibility controls
-
-### Notifications
-- channels
-- priority
-- quiet modes
-- Space-specific preferences
-
-### Trust & Data
-- data export where supported
-- provenance/trust information
-- account/data controls available to the human
-
-### System Health — advanced
-This is where the secondary **System** surface should normally live:
-- runtime status;
-- app version/build;
-- source/deployment status where available;
-- door health;
-- diagnostics;
-- scorecard/spec links for authorized/advanced users.
-
-Do not promote engineering diagnostics into the main human rail by default.
-
-## Primary actions
-
-Context-dependent:
-- **Save**
-- **Connect / Disconnect**
-- **Revoke**
-- **Sign out**
-- **Manage consent**
-- **Export**
-- **Open System Health**
-- **Ask Naya what this setting means**
-
-Sensitive controls require clear confirmation and correct authority.
-
-## State honesty
-
-Settings must distinguish:
-- local preference;
-- account-backed setting;
-- governed runtime setting;
-- unavailable/unsupported setting.
-
-Never make a local toggle look like a server-enforced privacy guarantee.
-
-## Cross-room handoffs
-
-Connections/Doors → Connect  
-People/privacy → Connections  
-Space defaults → Spaces  
-Activity/proof → Ledger
-
-## Mobile
-
-Category list → focused setting detail. Avoid a giant scrolling control dump.
-
-## Acceptance journey
-
-A human can find a privacy or identity setting by human language, understand its actual scope, change it when authorized, see confirmation where needed, and reverse the choice when the product supports it.
+Review on **PR #1290**. Material not-right findings go to **Issue #554** with evidence.
