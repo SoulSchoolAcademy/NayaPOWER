@@ -1796,3 +1796,35 @@ Reference the PROVE→CONNECT→VERIFY topology decision once made: CONNECT rout
 context, VERIFY establishes causality and outcomes. Causal claims require the
 CONNECT handoff confirmed — VERIFY establishes CAUSED edges; CONNECT must not
 mint them. No node duplicates another's verdict.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-VERIFY-5 [N4-V1 — stale V2.1 caveat]
+
+Re-base: the §2 caveat treating window lengths and V2.1 state references as
+"aspirational" / "director-set until V2.1 is ratified" is STALE. V2.1 was
+ratified via #1186/#1190/#1192, verified against live main. Bind the ratified
+schedule.
+
+### A-VERIFY-6 [N4-V2 — Judgment Rule attribution]
+
+Correct: the Judgment Rule is director-stated (Shawn, 2026-09-30), elevated to
+Prime 1 in the operating manual — no ratification instrument is on record.
+"Ratified 2026-09-30" overclaims. This also qualifies the A-*-1 subordination
+lines' "ratified 2026-09-30" phrasing: propose "director-stated 2026-09-30
+(Prime 1)" until a ratification instrument exists. Flagged for Naya 2's
+confirmation — her call whether to adjust A-*-1. REQUIRED before lock.
+
+### A-VERIFY-7 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.

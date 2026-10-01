@@ -1989,3 +1989,19 @@ routes applicable context; VERIFY establishes outcomes and causality. No node
 may duplicate another's verdict. PROVE's verdict is a bounded epistemic
 assessment — it never creates authority and never substitutes for VERIFY's
 causal establishment.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-PROVE-5 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.

@@ -1591,3 +1591,37 @@ until a verified lesson traverses LEARN_CANDIDATE (automatic_promotion=false)
 through verified + authorized promotion into a live recalibration, the seam is
 UNPROVEN — not failed, not passed. LEARN may not claim the bridge works on
 the strength of the design alone.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-LEARN-5 [N4-L1 — epistemic axis needs the F01 amendment-proposal flag]
+
+Add: the four-axis epistemic state (CANDIDATE / TESTING / SUPPORTED / VERIFIED /
+CONTRADICTED / REJECTED / SUPERSEDED) introduces new enum values over the
+ratified V2 contract. Per F01 discipline, each new value is a constitutional
+touch and must carry the amendment-proposal flag — adopted here as candidate
+terminology, not ratified vocabulary. Also resolve the SUPPORTED overlap with
+PROVE's ceiling semantics (PROVE-F01: PROVE's ceiling is SUPPORTED) before lock.
+REQUIRED before lock.
+
+### A-LEARN-6 [N4 — evidence floor + calculus binding]
+
+Add: LEARN's admission gate binds the V2.1 evidence floor (k=5/20) — no
+learning candidate advances without meeting it. Every candidate is scored as a
+calculus candidate under the ratified V2.1 config, with the deciding config hash
+bound into the receipt. Machine-check the floor before lock; aspirational text
+is not a gate.
+
+### A-LEARN-7 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.

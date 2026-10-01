@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-01  
-**Receipt basis commit:** `ee41dbc9e612c3ece3dca69dbbb20d569a9da00a`  
-**Inventory file count:** 160  
+**Receipt basis commit:** `f9310ecba400472174e05cd5c76fd127b6956717`  
+**Inventory file count:** 169  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -13,7 +13,7 @@
 | 00-SPEC | 15 |
 | 01-GOVERNANCE | 3 |
 | 02-ARCHITECTURE | 5 |
-| 03-KERNEL | 27 |
+| 03-KERNEL | 36 |
 | 04-INTELLIGENCE | 24 |
 | 05-MEMORY | 19 |
 | 06-PROOF | 10 |
@@ -65,17 +65,26 @@
 - `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `51b0d2685de8` (9395 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `7953bbc48e21` (24029 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
+- `BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md` — `345b5dfbf120` (12685 bytes)
 - `BRAIN/03-KERNEL/MANIFEST.json` — `305124036fff` (1394 bytes)
 - `BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md` — `8b067739b60b` (2507 bytes)
+- `BRAIN/03-KERNEL/NODES/ACT/0002-MASTER-SPEC-V1.md` — `f5cfadddcfc1` (40662 bytes)
 - `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` — `1fa8bc043197` (2007 bytes)
+- `BRAIN/03-KERNEL/NODES/CONNECT/0002-MASTER-SPEC-V1.md` — `8c938e982444` (51132 bytes)
 - `BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md` — `4926599cc45c` (1982 bytes)
+- `BRAIN/03-KERNEL/NODES/EVOLVE/0002-MASTER-SPEC-V1.md` — `bcab258e8d4a` (60092 bytes)
 - `BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md` — `17d60031abf1` (1829 bytes)
+- `BRAIN/03-KERNEL/NODES/KNOW/0002-MASTER-SPEC-V1.md` — `43bd15a58cf6` (39895 bytes)
 - `BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md` — `41b2462a3d3c` (1832 bytes)
+- `BRAIN/03-KERNEL/NODES/LAW/0002-MASTER-SPEC-V1.md` — `99b6949811e6` (41980 bytes)
 - `BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md` — `e1a02f3e7ebd` (2092 bytes)
+- `BRAIN/03-KERNEL/NODES/LEARN/0002-MASTER-SPEC-V1.md` — `6aa04ecb0692` (49660 bytes)
 - `BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md` — `b2b6a1442bec` (1816 bytes)
+- `BRAIN/03-KERNEL/NODES/PROVE/0002-MASTER-SPEC-V1.md` — `e05ad32b1c58` (50704 bytes)
 - `BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md` — `cdb415628f7d` (2194 bytes)
 - `BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md` — `850ed8a6615b` (2630 bytes)
 - `BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md` — `207b37d63e36` (1846 bytes)
+- `BRAIN/03-KERNEL/NODES/VERIFY/0002-MASTER-SPEC-V1.md` — `79b4a909aa7e` (47788 bytes)
 - `BRAIN/03-KERNEL/README.md` — `03dd562d8591` (1402 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json` — `842a394d4ad9` (1143 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/CONNECT-NODE-SCHEMA.json` — `fa4a9ea066fe` (1001 bytes)
