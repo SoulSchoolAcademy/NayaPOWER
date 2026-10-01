@@ -1,8 +1,10 @@
 # NayaPOWER CONNECT — Master Node Contract V1
 
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` (MN-06 CONNECT, Human Director locked 2026-09-30). Where older semantic wording conflicts, the Ultimate Lock governs intended responsibility; runtime/proof status still comes from live evidence.
+
 **STATUS:** CANONICAL ENGINEERING TARGET — AAA
 **NODE:** NAYA-KERNEL-CONNECT
-**RESPONSIBILITY:** relationships, graph context
+**RESPONSIBILITY:** relationships, applicability, contextual retrieval, graph reasoning, supersession, contradiction routing and dependencies
 
 ## 1. Purpose
 What is connected, why is the connection valid, and what context becomes relevant because of it?
@@ -46,6 +48,9 @@ What is connected, why is the connection valid, and what context becomes relevan
 ## 6. Invariants
 - Never create trust from proximity or semantic similarity alone
 - Relationship semantics require evidence.
+- RELATED ≠ RELEVANT ≠ APPLICABLE ≠ TRUE ≠ AUTHORIZED.
+- UNKNOWN applicability may be visible non-steering context but MUST NOT steer consequential behavior.
+- Steering requires explicit APPLICABLE state plus matching task class or a valid broader applicability contract.
 
 ## 7. State machine
 PROPOSED → VALIDATED → ACTIVE → SUPERSEDED/INVALID

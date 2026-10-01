@@ -1,6 +1,7 @@
 # NayaPOWER Nine-Node Genome — Canonical Master Index V2
 **Status:** CANONICAL GENOME MAP • **Target:** AAA / 10-star
-**Branch:** `naya/node-genome-aaa-v1`
+**Canonical source branch:** `main`  
+**Ultimate semantic lock:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md`
 
 ## North Star
 Build the smallest coherent kernel capable of **durable intelligence, governed action, verified outcomes, learning, compounding, and safe succession**—with the highest possible human value and no hidden authority.
@@ -65,7 +66,9 @@ SPECIFIED → IMPLEMENTED → LOADED → INVOKED → INFLUENTIAL → APPLIED →
 | EVOLVE | [EVOLVE Naya/AI V2](./AI-EVOLVE-CONTRACT-V2.md) | operating cognition |
 
 ## Canonicality rule
-V2 genome contracts supersede generic or duplicate summaries for the same layer. Older documents remain historical unless this index explicitly points to them. Implementation status must be read from proof receipts and CI, never from document existence.
+The Human Director-approved Ultimate Lock at `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` governs the intended semantic responsibility of all nine nodes. Master/Machine/AI contracts and Brain contracts are implementation projections and MUST conform to that lock. V2 genome contracts supersede generic or duplicate summaries for the same implementation layer. Older documents remain historical unless this index explicitly points to them.
+
+Implementation status must be read from current source/runtime/proof receipts and CI, never from document existence.
 
 ## AAA audit
 A 10/10 score requires all nine nodes to have complete semantic + machine + AI contracts, inter-node interfaces, persistence mapping, threat model, traceability, tests, live invocation, independent verification, and—where applicable—behavioral influence, learning, compounding, and successor proof. Missing evidence lowers **proof maturity**, even if the contract itself is complete.
@@ -82,3 +85,10 @@ A 10/10 score requires all nine nodes to have complete semantic + machine + AI c
 
 ## Non-negotiable
 No credentials in source. No production-data mutation for proof. No authority inferred from context. No claim of birth from documentation alone.
+
+
+## 2026-09-30 lock/readiness artifacts
+- Ultimate semantic lock: `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md`
+- Brain note readiness: `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md`
+- Nine-node effectiveness scorecard: `BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md`
+- Smart Note build manifest: `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md`

@@ -1,14 +1,16 @@
 # NayaPOWER LEARN — Master Node Contract V1
 
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` (MN-08 LEARN, Human Director locked 2026-09-30). Where older semantic wording conflicts, the Ultimate Lock governs intended responsibility; runtime/proof status still comes from live evidence.
+
 **STATUS:** CANONICAL ENGINEERING TARGET — AAA
 **NODE:** NAYA-KERNEL-LEARN
-**RESPONSIBILITY:** reconciliation, learning, compounding
+**RESPONSIBILITY:** learning, reconciliation, promotion/demotion, applicability refinement, behavioral change, calibration and compounding
 
 ## 1. Purpose
-What should change because of a verified outcome, under what applicability conditions, and how will future behavior change be measured?
+What lesson, if any, should be captured from experience; what qualifying verified evidence earns promotion; where does the lesson apply; and can future behavioral improvement be demonstrated?
 
 ## 2. Six-language definition
-- **Human:** What should change because of a verified outcome, under what applicability conditions, and how will future behavior change be measured?
+- **Human:** What lesson, if any, should be captured from experience; what qualifying verified evidence earns promotion; where does the lesson apply; and can future behavioral improvement be demonstrated?
 - **Child:** This part of Naya makes sure the right thing happens for the right reason.
 - **Grandma:** It keeps this part of Naya honest about what it knows, what it may do, and what really happened.
 - **Naya:** I must know my exact job, trusted inputs, current state, authority boundary, evidence, unknowns, downstream requirement, refusal condition, and receipt.
@@ -31,11 +33,12 @@ What should change because of a verified outcome, under what applicability condi
 - rollback_learning
 
 ## 4. Inputs
-- verified outcome
-- prior knowledge
+- observation or verified outcome
+- canonical VERIFY/CVO/outcome evidence when promotion is requested
+- prior knowledge / learning state
 - candidate learning
-- applicability
-- baseline/control
+- explicit applicability
+- baseline/control where behavioral learning is claimed
 
 ## 5. Outputs
 - candidate learning
@@ -44,16 +47,18 @@ What should change because of a verified outcome, under what applicability condi
 - lineage
 
 ## 6. Invariants
-- Never promote from one unverified anecdote
+- STORED ≠ LEARNED; VERIFIED OUTCOME ≠ VERIFIED LEARNING; ACTIVE ≠ UNIVERSAL
+- Candidate capture may precede verification, but promotion must not
 - Never overwrite contradictory knowledge
-- Never claim learning without future behavioral change.
+- Never claim behavioral learning without demonstrated future behavioral effect
+- Learning never creates authority.
 
 ## 7. State machine
 CANDIDATE → TESTING → PROMOTED/REJECTED/CONTRADICTED/SUPERSEDED
 Every transition records before-state, after-state, transition reason, execution ID, evidence references, and timestamp. Invalid transitions fail closed.
 
 ## 8. Inter-node contract
-VERIFY is prerequisite. KNOW preserves promoted learning. EVOLVE uses only verified applicability.
+VERIFY is prerequisite for promotion, not for candidate capture. KNOW preserves promoted learning. EVOLVE consumes only the verified/applicable learning state justified by evidence.
 
 ## 9. Acceptance battery
 1. valid input reaches intended state;

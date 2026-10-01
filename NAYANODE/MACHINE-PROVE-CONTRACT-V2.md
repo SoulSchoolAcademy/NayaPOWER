@@ -1,5 +1,7 @@
 # MACHINE-PROVE-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — PROVE semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** CANONICAL MACHINE CONTRACT — implementation qualification layer. Runtime proof is separate.
 
 ## Role
@@ -48,3 +50,9 @@ Prefer deterministic bounded work; expose latency, retrieval count, evidence cou
 
 ## Acceptance
 Unit tests cover happy and negative paths. Integration tests prove node-to-node contracts. Runtime tests must use legitimate authenticated identity and real substrate. Independent verification is required for VERIFIED. Production proof is a separate gate.
+
+
+## Ultimate-lock boundary
+- CLAIM STRENGTH ≤ EVIDENCE STRENGTH.
+- UNKNOWN ≠ VERIFIED; IMPLEMENTED ≠ VERIFIED; VERIFIED ≠ PRODUCTION_PROVEN.
+- PROVE does not determine causal outcome success and does not grant authority.
