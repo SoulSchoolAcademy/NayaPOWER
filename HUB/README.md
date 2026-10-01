@@ -10,6 +10,15 @@ The Hub has **one canonical meaning** and purpose-built representations.
 1. [PROJECT-INTELLIGENCE.md](./PROJECT-INTELLIGENCE.md) — build law, roadmap, scorecard, phases and gates.
 2. [DESIGN-CONTRACT.md](./DESIGN-CONTRACT.md) — visual/experience law and protected design DNA.
 
+### Detailed room functionality
+
+- [ROOMS/README.md](./ROOMS/README.md) — human-first map of the 11 primary intelligent environments.
+- [ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md](./ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md) — shared functional/causal room law.
+- [ROOMS/ROOMS-MACHINE-V1.json](./ROOMS/ROOMS-MACHINE-V1.json) — deterministic room/action/handoff contract.
+- [ROOMS/ROOM-SPEC-SCORECARD.md](./ROOMS/ROOM-SPEC-SCORECARD.md) — specification maturity audit.
+
+Each room has its own detailed spec under `HUB/ROOMS/`.
+
 ### Projections of that same meaning
 - [PROJECT-INTELLIGENCE.HUMAN.md](./PROJECT-INTELLIGENCE.HUMAN.md) — human meaning and desired experience.
 - [PROJECT-INTELLIGENCE.NAYA.md](./PROJECT-INTELLIGENCE.NAYA.md) — Naya/NIA intent, judgment, integration and continuity.
