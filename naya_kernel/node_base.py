@@ -2,7 +2,10 @@
 
 Every kernel node module MUST subclass NodeBase and implement every method.
 Small and strict by design: the interface is the contract surface the
-overnight build loop will fill in per the ratified spec of each node.
+overnight build loop filled in — all nine nodes (SELF, LAW, ACT, KNOW, PROVE,
+CONNECT, VERIFY, LEARN, EVOLVE) are implemented as CANDIDATE code against
+their candidate specs, and Kernel.decide() evaluates the canonical 13-edge
+runtime graph. NOT RATIFIED, NOT MERGED, NOT DEPLOYED.
 """
 
 from __future__ import annotations
