@@ -240,62 +240,86 @@
   {
    "hex": "#9d75ff",
    "name": "purple",
-   "token": "--naya-purple"
+   "token": "--naya-purple",
+   "dominance_class": "dominant",
+   "meaning": "Primary brand energy; Naya presence; primary actions."
   },
   {
    "hex": "#6675ff",
    "name": "indigo",
-   "token": "--naya-indigo"
+   "token": "--naya-indigo",
+   "dominance_class": "complementary",
+   "meaning": "Deep structure; navigation depth."
   },
   {
    "hex": "#55b9ee",
    "name": "sapphire",
-   "token": "--naya-sapphire"
+   "token": "--naya-sapphire",
+   "dominance_class": "complementary",
+   "meaning": "Clarity; information; links."
   },
   {
    "hex": "#4fe0c3",
    "name": "teal",
-   "token": "--naya-teal"
+   "token": "--naya-teal",
+   "dominance_class": "complementary",
+   "meaning": "Flow; connectivity; live movement."
   },
   {
    "hex": "#55e39a",
    "name": "emerald",
-   "token": "--naya-emerald"
+   "token": "--naya-emerald",
+   "dominance_class": "complementary",
+   "meaning": "Health; growth; verified-good states."
   },
   {
    "hex": "#b8ee57",
    "name": "lime",
-   "token": "--naya-lime"
+   "token": "--naya-lime",
+   "dominance_class": "complementary",
+   "meaning": "Fresh signal; new activity."
   },
   {
    "hex": "#f1d75a",
    "name": "yellow",
-   "token": "--naya-yellow"
+   "token": "--naya-yellow",
+   "dominance_class": "restrained",
+   "meaning": "Caution; attention signal. Small accents only — never text, never dominant."
   },
   {
    "hex": "#e8b64c",
    "name": "gold",
-   "token": "--naya-gold"
+   "token": "--naya-gold",
+   "dominance_class": "restrained",
+   "meaning": "Value; premium highlight; achievement. Small accents only — never text, never dominant."
   },
   {
    "hex": "#ff9a5a",
    "name": "orange",
-   "token": "--naya-orange"
+   "token": "--naya-orange",
+   "dominance_class": "complementary",
+   "meaning": "Warmth; activity; processing."
   },
   {
    "hex": "#ff7a3c",
    "name": "rich-orange",
-   "token": "--naya-rich-orange"
+   "token": "--naya-rich-orange",
+   "dominance_class": "complementary",
+   "meaning": "Energy; urgency without alarm."
   },
   {
    "hex": "#ff5a6e",
    "name": "red",
-   "token": "--naya-red"
+   "token": "--naya-red",
+   "dominance_class": "complementary",
+   "meaning": "Error; destructive; blocked states."
   },
   {
    "hex": "#d86cff",
    "name": "magenta",
-   "token": "--naya-magenta"
+   "token": "--naya-magenta",
+   "dominance_class": "complementary",
+   "meaning": "Creativity; intelligence spark; insight."
   }
  ],
  "states": [
@@ -307,7 +331,7 @@
   "VERIFIED",
   "ERROR"
  ],
- "version": "2.2.0",
+ "version": "2.3.0",
  "doors_canonical": [
   {
    "door_id": "DOOR-GITHUB",
@@ -440,7 +464,8 @@
    "FLOW",
    "MASTERY",
    "CONTINUITY"
-  ]
+  ],
+  "canonical_verbatim": "NayaNET is the human interface to a living intelligence. It is not a dashboard, a database, a chatbot, or a collection of features. It is a beautiful, trustworthy, deeply dimensional way for a human to enter, understand, use, connect to, and benefit from governed intelligence. One intelligence. Many doors. One governed substrate. Many views. One human at the center. No unnecessary burden. The interface should feel alive because the intelligence behind it is alive — never because animation pretends that something is happening. Beauty is not decoration. Depth is not spectacle. Color is not ornament. Interaction is not theater. Every visual decision communicates meaning. Every state tells the truth. Every action has a consequence. Every consequence has an observable result. Every important result can be understood and, where required, proven. The human should feel: I know where I am. I know what matters. I understand what this means. I know what is true. I know what I can do. I know what happened. I know what Naya learned. I can continue tomorrow without rebuilding the world. Naya's representation: intent → purpose → intelligence → authority → capability → observation → truth → outcome → learning → continuity. The machine represents the same meaning deterministically. The proof layer demonstrates what actually happened. These are not different systems. They are different expressions of one intelligence. The highest standard is therefore not \"the most impressive interface.\" It is: Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human. And make the experience so coherent that the human no longer feels like they are operating software. They feel like they have entered an intelligent environment."
  },
  "art_direction": {
   "attributes": [
@@ -513,8 +538,15 @@
    "readable_metadata",
    "consistent_rhythm",
    "single_coherent_type_system",
-   "sustained_reading_line_length"
-  ]
+   "sustained_reading_line_length",
+   "generous_type_by_default_nothing_under_11px"
+  ],
+  "type_minima_px": {
+   "body": 15,
+   "small": 13,
+   "micro": 11.5,
+   "absolute_minimum": 11
+  }
  },
  "motion_classes": {
   "MICRO": "hover_focus_press_toggle_reveal",
@@ -549,5 +581,36 @@
   "RESTRAINT",
   "HUMAN_VALUE",
   "INDEPENDENT_REVIEW"
- ]
+ ],
+ "visual_bliss_law": {
+  "precedence": "supreme — outranks spectrum, depth, and motion choices",
+  "test": "Using the interface must feel effortless on the eyes: contrast, clarity, cleanliness.",
+  "rules": {
+   "VB-1": "Contrast first. If a glow, accent, depth effect, or background treatment makes anything harder to read, the treatment loses — remove or redesign it. No exceptions.",
+   "VB-2": "Generous type by default. Most people cannot see small print. When in doubt, go bigger.",
+   "VB-3": "One clear hierarchy per surface. A glance must answer: what is this, what matters most, what can I do.",
+   "VB-4": "Cleanliness. Every element earns its place.",
+   "VB-5": "Clarity over cleverness. A plain readable screen beats a spectacular confusing one."
+  },
+  "type_minima_px": {
+   "body": 15,
+   "small": 13,
+   "micro": 11.5,
+   "absolute_minimum": 11
+  }
+ },
+ "color_dominance": {
+  "dominant": [
+   "purple",
+   "black",
+   "white"
+  ],
+  "complementary": "the twelve-color spectrum — semantic, supporting, never dominating",
+  "rules": {
+   "CD-1": "Purple, black, and white carry the visual weight: surfaces, primary text, primary actions, brand presence.",
+   "CD-2": "The spectrum is complementary — it communicates meaning (room identity, board energy, state), never dominates.",
+   "CD-3": "Yellow and gold are the most restrained accents: small semantic markers only (hairline, dot, status tick). Never body text. Never large surfaces. Never more prominent than purple/black/white.",
+   "CD-4": "Meaning before decoration, always. A color that does not communicate something true is decoration — remove it."
+  }
+ }
 }

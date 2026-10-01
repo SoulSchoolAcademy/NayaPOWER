@@ -6,6 +6,87 @@
 
 ---
 
+## §0. CANONICAL DESIGN NORTH STAR (supreme — outranks everything below)
+
+*Shawn's words, verbatim, 2026-10-01. This is the design constitution. §30 (Creative North Star) is the art-direction elaboration beneath it — same truth, different altitude.*
+
+NayaNET is the human interface to a living intelligence.
+
+It is not a dashboard, a database, a chatbot, or a collection of features.
+
+It is a beautiful, trustworthy, deeply dimensional way for a human to enter, understand, use, connect to, and benefit from governed intelligence.
+
+One intelligence. Many doors.
+One governed substrate. Many views.
+One human at the center. No unnecessary burden.
+
+The interface should feel alive because the intelligence behind it is alive — never because animation pretends that something is happening.
+
+Beauty is not decoration.
+Depth is not spectacle.
+Color is not ornament.
+Interaction is not theater.
+
+Every visual decision communicates meaning.
+Every state tells the truth.
+Every action has a consequence.
+Every consequence has an observable result.
+Every important result can be understood and, where required, proven.
+
+The human should feel:
+
+I know where I am.
+I know what matters.
+I understand what this means.
+I know what is true.
+I know what I can do.
+I know what happened.
+I know what Naya learned.
+I can continue tomorrow without rebuilding the world.
+
+Naya should be able to understand the same system through a different representation:
+
+intent → purpose → intelligence → authority → capability → observation → truth → outcome → learning → continuity.
+
+The machine should be able to represent the same meaning deterministically.
+
+The proof layer should be able to demonstrate what actually happened.
+
+These are not different systems.
+
+They are different expressions of one intelligence.
+
+The highest standard is therefore not "the most impressive interface."
+
+It is:
+
+Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.
+
+And make the experience so coherent that the human no longer feels like they are operating software.
+
+They feel like they have entered an intelligent environment.
+
+### §0.1 VISUAL BLISS — THE SUPREME LAW
+
+Above the spectrum. Above the depth work. Above motion. The test of every screen:
+
+**Using the interface must feel effortless on the eyes.**
+
+- **VB-1 — Contrast first.** Primary text is always high-contrast against its surface. If a glow, accent, depth effect, or background treatment makes anything harder to read, the treatment loses — remove it or redesign it. No exceptions.
+- **VB-2 — Generous type by default.** Most people cannot see small print. Body text minimum 15px; small 13px; micro 11.5px; nothing under 11px anywhere, ever. When in doubt, go bigger.
+- **VB-3 — One clear hierarchy.** A glance must answer: what is this, what matters most, what can I do. If two elements compete for attention, one of them is wrong.
+- **VB-4 — Cleanliness.** Every element earns its place. Remove anything that does not communicate meaning, state, or action.
+- **VB-5 — Clarity over cleverness.** A plain readable screen beats a spectacular confusing one, every time.
+
+### §0.2 COLOR DOMINANCE HIERARCHY
+
+- **CD-1 — Purple, black, and white are the dominant colors.** They carry the visual weight of the interface: surfaces, primary text, primary actions, brand presence.
+- **CD-2 — The spectrum is complementary.** The twelve spectral colors exist to communicate meaning (room identity, board energy, state) — they support, never dominate.
+- **CD-3 — Yellow and gold are the most restrained accents.** Small semantic accents only (a hairline, a dot, a status tick). Never body text. Never large surfaces. Never more prominent than purple, black, or white.
+- **CD-4 — Meaning before decoration, always.** A color that does not communicate something true is decoration — remove it.
+
+---
+
 ## HOW TO USE THIS DOCUMENT
 
 Shawn's standing complaint is real and verified: every attempt to take the Hub "to the next level" has gone backward — the design got flatter, more generic, more SaaS-dashboard. That happens because builders unconsciously interpret "production-ready" as "rebuild the UI cleanly."

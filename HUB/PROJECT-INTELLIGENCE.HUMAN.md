@@ -36,6 +36,16 @@ We score it — eight dimensions, honestly, in the open — and we keep building
 
 The design you already love is the floor. We can make it better. We can never make it blander.
 
+## Above everything: visual bliss
+
+Shawn's top law is simple: it's not about the colors. It's about how it presents — the contrast, the clarity, the cleanliness. Using NayaNET should feel effortless on the eyes.
+
+That means: text you can actually read (generous sizes, always high contrast — most people can't see small print). One clear hierarchy on every screen. No glow, no color, no depth effect is ever allowed to make anything harder to read. If something beautiful makes something unreadable, the beauty loses.
+
+Purple, black, and white lead the visual weight. The rest of the spectrum supports — each color meaning something, never just decorating. Yellow and gold stay quiet: tiny accents, never shouting.
+
+And the North Star above it all: NayaNET is the human interface to a living intelligence. Not a dashboard, not a chatbot, not a pile of features. One intelligence, many doors. The highest standard isn't the most impressive interface — it's making sophisticated intelligence feel simple, beautiful, trustworthy, alive, and useful. So coherent you stop feeling like you're operating software, and start feeling like you've entered an intelligent environment.
+
 ## The experience we are actually creating
 
 This is bigger than “a beautiful dashboard.”

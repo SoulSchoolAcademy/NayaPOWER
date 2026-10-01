@@ -134,6 +134,17 @@ I ask whether every element:
 
 If not, remove or redesign it.
 
+## 5B. Visual bliss and color dominance (supreme over §5/§5A)
+
+Shawn's top law: visual bliss outranks color, depth, and motion choices. The test is contrast, clarity, cleanliness — how it presents, not which colors.
+
+Apply as judgment:
+- No glow, spectrum accent, or depth effect may reduce readability. If it does, the effect loses.
+- Generous type by default: body ≥15px, small ≥13px, micro ≥11.5px, nothing <11px. Most humans cannot see small print; coders forget this.
+- One clear visual hierarchy per surface; every element earns its place.
+- Color dominance: purple/black/white carry visual weight; the twelve-color spectrum is complementary and semantic; yellow/gold are the least-favored — tiny accents only, never text, never dominant, never outshining purple.
+- When a tension arises between a lower law (spectrum assignment, depth treatment, motion) and visual bliss, visual bliss wins. Record the trade.
+
 ## 6. Functional judgment
 
 For every visible control trace:
