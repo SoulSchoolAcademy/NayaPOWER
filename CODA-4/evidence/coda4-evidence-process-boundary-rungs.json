@@ -1,0 +1,27 @@
+{
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "9e7d99e2406adb9ec9fc1e58c5327c844437ae909f56cb17c4cab020c91bdfc0",
+  "interpretation": "Static rung status for the process-boundary ladder, without running the children.",
+  "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
+  "observed": {
+    "command": "python CODA-4\\process_boundary_harness.py --rungs",
+    "exit_code": 0,
+    "stderr_tail": [],
+    "stdout_tail": [
+      "KnowNode.cold_reconstruct installs state on self: False",
+      "",
+      "[REACHABLE] A           Process A persists receipts and exits                      runnable today",
+      "[BLOCKED  ] B-RESTORE   Process B reconstructs usable state from receipts          BLOCKED by CS-01",
+      "[BLOCKED  ] B-RETRIEVE  Process B RETRIEVES from the restored node                 BLOCKED by CS-01",
+      "[REACHABLE] B-NO-AUTH   Process B inherits no authority                            retrieval grants nothing; verified independently of CS-01",
+      "[REACHABLE] B-TAMPER    Tampered evidence yields the governing failure             runnable today",
+      "[REACHABLE] B-MISSING   Missing evidence yields the governing failure              runnable today",
+      "[BLOCKED  ] C           Process C recovers a NEW result written by B               BLOCKED by CS-01"
+    ]
+  },
+  "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
+  "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
+  "receipt_id": "coda4-evidence-process-boundary-rungs",
+  "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
+}

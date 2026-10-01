@@ -1,20 +1,20 @@
 {
-  "base_main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
-  "body_sha256": "eb3e2e6644062fddb69d4b6031d23f99f4dd84120bd01964e87823cb3a2d54c7",
-  "interpretation": "Cold-successor protocol suite. 2 xfail are CS-01; the xfails ARE the acceptance signal, so a green total does not mean acceptance.",
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "32445daa75bc2a447b948623fa8ed7b415c85983dca2b12b1816afab40a2163c",
+  "interpretation": "Cold-successor protocol suite. 3 xfail are CS-01 x2 and CS-02 x1; the xfails ARE the acceptance signal, so a green total does not mean acceptance.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
     "command": "python -m pytest tests/test_nodes/test_coda4_cold_successor.py -q",
     "exit_code": 0,
     "stderr_tail": [],
     "stdout_tail": [
-      "..x................x..                                                   [100%]",
-      "20 passed, 2 xfailed in 0.21s"
+      "..x................x........x.                                           [100%]",
+      "27 passed, 3 xfailed in 0.25s"
     ]
   },
   "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-focused-suite",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "1fbb5338fba49eb5933ab08fd3e0fe84da62ac22"
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
 }

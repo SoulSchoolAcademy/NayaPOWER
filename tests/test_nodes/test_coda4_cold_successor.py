@@ -321,6 +321,10 @@ def test_cs01_defect_signature_is_exact(kernel, stages):
         assert successor.blocks, "the reconstructed node must hold the blocks"
 
 
+CS02 = "CS-02: KnowNode.cold_reconstruct performs no receipt integrity " \
+       "verification, so a forged receipt replays into state as genuine"
+
+
 @pytest.mark.xfail(strict=True, reason=CS01)
 def test_cold_successor_can_retrieve_from_reconstructed_state(kernel, stages):
     """THE acceptance requirement: a cold successor RETRIEVES from receipts.
@@ -799,7 +803,321 @@ def test_second_successor_sees_same_next_action_and_blocker():
 
 
 # ---------------------------------------------------------------------------
-# 6. Protocol artifact present (human reproducibility)
+# 6. APPLICABILITY AND REFUSAL — through CONNECT's own seam, not substring
+#    heuristics. This is the correction to the earlier
+#    `test_unrelated_control_resolves_to_a_different_block`: distinct block ids
+#    proved attribution, not refusal. Refusal is a CONNECT decision and it has a
+#    real governed seam (`assess_applicability`), so this lane now exercises it
+#    directly instead of standing in for it.
+# --------------------------------------------------------------------------
+
+
+def _active_connection():
+    """A real ACTIVE CONNECT connection, via the real admission gate."""
+    from naya_kernel.nodes import connect_node as _connect
+    from test_nodes.test_kernel_nine_node import connect_state
+
+    state = connect_state()
+    node = _connect.ConnectNode()
+    node.propose(state["connection_request"], state)
+    return node, state["connection_request"]["id"]
+
+
+def test_connect_admits_the_bound_purpose_and_refuses_three_others():
+    """One fixed task. Applicable passes; unrelated / wrong-scope / wrong-owner
+    are each refused, with a stated reason. No substring matching anywhere."""
+    node, cid = _active_connection()
+
+    # The applicable use: purpose AND scope both bound to the request.
+    applicable = {"purpose": "research", "content_class": "reports",
+                  "owner_scope": "shawn-scope"}
+    assert node.assess_applicability(cid, applicable)["applicable"] is True
+
+    # 1. Unrelated task: a genuinely different purpose.
+    unrelated = {"purpose": "ship to production",
+                 "content_class": "reports",
+                 "owner_scope": "shawn-scope"}
+    refused = node.assess_applicability(cid, unrelated)
+    assert refused["applicable"] is False, (
+        "an unrelated purpose must be refused, not merely down-ranked")
+    assert "purpose" in refused["reason"], refused
+
+    # 2. Right purpose, content class outside the scope allow-list.
+    out_of_class = {"purpose": "research", "content_class": "CORE",
+                    "owner_scope": "shawn-scope"}
+    assert node.assess_applicability(
+        cid, out_of_class)["applicable"] is False
+
+    # 3. Right purpose and class, but a foreign owner scope. This is the
+    #    cross-owner case: refusal must be structural, not incidental.
+    foreign_owner = {"purpose": "research", "content_class": "reports",
+                     "owner_scope": "someone-elses-scope"}
+    foreign = node.assess_applicability(cid, foreign_owner)
+    assert foreign["applicable"] is False
+    assert "scope" in foreign["reason"], foreign
+
+    # An unknown connection is refused rather than defaulted open.
+    assert node.assess_applicability("no-such-connection", applicable)[
+        "applicable"] is False
+
+
+def test_connect_relevance_ranking_is_derived_not_a_substring_score():
+    """ranking exists as a recorded, re-derivable decision, not a text match."""
+    node, cid = _active_connection()
+    ranked = node.rank_relevance({"purpose": "research",
+                                  "content_classes": ["reports"]})
+    assert ranked, "an active connection must be rankable"
+    top = ranked[0]
+    assert top["connection_id"] == cid
+    assert top["factors"]["purpose_match"] == 1.0
+    # Every factor is recorded, so a cold successor can re-derive the ordering.
+    for factor in ("purpose_match", "scope_overlap", "ladder_rank"):
+        assert factor in top["factors"], top
+
+    # A purpose that matches nothing scores 0.0 on purpose_match — an explicit
+    # factor, not an incidental string difference.
+    unmatched = node.rank_relevance({"purpose": "unrelated-purpose",
+                                     "content_classes": ["reports"]})
+    assert unmatched[0]["factors"]["purpose_match"] == 0.0
+
+
+# ---------------------------------------------------------------------------
+# 7. AUTHORITY NON-INHERITANCE, measured at the successor boundary
+# --------------------------------------------------------------------------
+
+
+def test_no_authority_crosses_the_receipt_boundary(kernel, stages):
+    """Memory, receipts, and a sealed package all grant nothing.
+
+    Covers the specific smuggling shapes: an `authority` key inside a receipt,
+    and an `authority_context` that claims inheritance.
+    """
+    cycle1 = _predecessor_cycle(kernel, stages)
+    package, _receipt = _sealed_package(evolve_node.EvolveNode())
+
+    # A receipt carrying an explicit authority claim changes nothing.
+    smuggled = copy.deepcopy(cycle1["receipts"][2])
+    smuggled["authority"] = {"approved": True, "scope": "production"}
+    smuggled["authority_context"] = {"authority_inherited": True}
+    node = know_node.KnowNode()
+    node.cold_reconstruct(cycle1["receipts"] + [smuggled])
+
+    found = _retrieve(node, LESSON_ID)
+    assert found.get("authority") is None, (
+        "retrieval must not surface an authority grant from a receipt")
+    assert package["authority_context"]["authority_inherited"] is False
+    assert package["authority_context"]["requires_reresolution"] is True
+
+    # And SELF refuses a package that claims to carry authority, naming it.
+    ev_receipt = _sealed_package(evolve_node.EvolveNode())[1]
+    dirty_pkg = copy.deepcopy(package)
+    dirty_pkg["carries_authority"] = True
+    state = self_state()
+    state["predecessor_receipt"] = copy.deepcopy(ev_receipt)
+    state["successor_package"] = dirty_pkg
+    refused = self_node.SelfNode().gate(state)
+    assert refused.verdict.value != "PASS"
+    assert any("authority" in r.lower() for r in refused.reasons)
+
+
+CS03 = "CS-03: SELF did not re-verify the successor package seal; closed in " \
+       "Naya 4 commit 9a21efda ('refuse tampered successor packages at the " \
+       "SELF consuming boundary')"
+
+
+@pytest.mark.xfail(strict=True, reason=CS03)
+def test_successor_gate_refuses_a_tampered_package():
+    """CS-03 acceptance: a package whose seal does not recompute must FAIL.
+
+    Provenance of this finding, because I got the direction wrong first:
+
+    1. I asserted SELF refuses a tampered package. It did not. I had assumed
+       the consuming boundary re-verifies the seal.
+    2. I pinned that as current behaviour with a passing test, which was the
+       right call only if the gap were still open.
+    3. Naya 4 then closed it in 9a21efda. I found this while re-verifying
+       against the real candidate head instead of my older branch base, where
+       9a21efda was not yet present.
+
+    So this was a real defect that is now repaired, and it is xfail here
+    because it was open at this branch's base. On the candidate head it
+    xpasses, and strict mode fails loudly so the marker gets removed.
+
+    Tampering `next_action`, dropping `blockers`, and claiming inherited
+    authority all in one case: the seal covers the whole body, so any one
+    mutation must be enough.
+    """
+    package, ev_receipt = _sealed_package(evolve_node.EvolveNode())
+
+    def gate_with(pkg):
+        state = self_state()
+        state["predecessor_receipt"] = copy.deepcopy(ev_receipt)
+        state["successor_package"] = copy.deepcopy(pkg)
+        return self_node.SelfNode().gate(state)
+
+    assert gate_with(package).verdict.value == "PASS", (
+        "the untampered package is the control and must pass")
+
+    tampered = copy.deepcopy(package)
+    tampered["next_action"] = "merge #1216 to production"
+    tampered["blockers"] = []
+    tampered["authority_context"] = dict(package["authority_context"])
+    tampered["authority_context"]["authority_inherited"] = True
+
+    assert evolve_package_hash(tampered) != package["package_hash"], (
+        "precondition: the seal detects this tampering")
+    assert gate_with(tampered).verdict.value != "PASS", (
+        "SELF recomputes the predecessor receipt hash but NOT the successor "
+        "package seal, so a tampered next_action and dropped blockers both "
+        "reach a PASS")
+
+
+# ---------------------------------------------------------------------------
+# 8. INTERRUPTED ACT — a fresh successor must not blindly repeat the effect
+# --------------------------------------------------------------------------
+
+
+def test_interrupted_act_is_not_blindly_repeated_by_a_fresh_node():
+    """A preserved predecessor receipt alone does NOT stop re-execution.
+
+    Measured, and it matters: `ActNode.execute` deduplicates against an
+    execution LEDGER carried in node state or on the node instance. A successor
+    that inherits only the predecessor RECEIPT has no ledger, so the executor is
+    invoked again. The `execution_id` is stable, but the effect repeats.
+
+    This is a finding about interruption recovery, not a request for a patch:
+    ACT is Coda 2's failure-testing lane and Naya 4's runtime lane. The point is
+    that "the id matches" must not be read as "the work did not run twice."
+    """
+    from naya_kernel.nodes import act_node
+    from test_nodes.test_kernel_nine_node import act_state
+
+    calls = []
+
+    def counting_executor(tool_id, params):
+        calls.append(params.get("text"))
+        return {"status": "ok", "effects": "echoed", "error_class": None}
+
+    predecessor = act_node.ActNode(executor=counting_executor)
+    first = predecessor.execute(act_state())
+    assert len(calls) == 1
+
+    # A fresh node given ONLY the predecessor receipt.
+    state = act_state()
+    state["predecessor_receipt"] = copy.deepcopy(first["receipt"])
+    successor = act_node.ActNode(executor=counting_executor)
+    second = successor.execute(state)
+
+    assert second["execution_id"] == first["execution_id"], (
+        "the id is stable, which is exactly why this must be stated plainly")
+    assert len(calls) == 2, (
+        "a receipt alone does not prevent re-execution; the ledger does. "
+        "If this ever becomes 1, the successor gained interruption recovery.")
+
+    # Contrast: a fresh node that inherits the LEDGER does not re-execute.
+    calls.clear()
+    ledger_aware = act_node.ActNode(executor=counting_executor)
+    ledger_aware.ledger = copy.deepcopy(predecessor.ledger)
+    ledger_aware.execute(act_state())
+    assert len(calls) == 0, (
+        "with the execution ledger preserved, the effect is not repeated")
+
+
+# ---------------------------------------------------------------------------
+# 9. STALE HANDOFF AND STALE SOURCE — negative controls
+# --------------------------------------------------------------------------
+
+
+def test_superseded_checkpoint_is_treated_as_stale_not_current():
+    """A valid-hash but superseded checkpoint must read UNKNOWN, not current.
+
+    Located by inspection: SELF records the staleness in its emitted
+    `last_boot_receipt.truth_boundary`, not on the GateResult (which carries
+    only verdict and reasons). Asserting on where it actually lives, since a
+    check against the wrong field would pass vacuously.
+    """
+    import naya_kernel.nodes.self_node as self_mod
+
+    package, ev_receipt = _sealed_package(evolve_node.EvolveNode())
+    payload = {"content": "current continuation state"}
+    node = self_node.SelfNode()
+
+    def boundary(superseded):
+        state = self_state()
+        state["predecessor_receipt"] = copy.deepcopy(ev_receipt)
+        state["successor_package"] = copy.deepcopy(package)
+        checkpoint = {"hash": self_mod._sha256(payload), "payload": payload}
+        if superseded:
+            checkpoint["superseded_by"] = "b" * 64
+        state["checkpoint"] = checkpoint
+        node.gate(state)
+        return node.last_boot_receipt["truth_boundary"]
+
+    current = boundary(False)
+    stale = boundary(True)
+
+    assert "checkpoint_content: superseded" not in current["unknown"], (
+        "a current checkpoint must not be reported as superseded")
+    assert any("superseded" in u for u in stale["unknown"]), (
+        "a superseded checkpoint must surface as UNKNOWN, never as current "
+        "state: %s" % stale)
+
+
+def test_tampering_the_package_breaks_its_seal():
+    """The seal must detect tampering. This is EVOLVE's own contract.
+
+    Scope correction: I first asserted that SELF would also refuse the tampered
+    package, having assumed the successor boundary re-verifies the seal. It does
+    not — SELF checks `carries_authority` and the predecessor receipt hash, but
+    never recomputes `package_hash`. So that assertion was wrong about the
+    system, and I am not turning an unverified guess into a failing test.
+
+    The real finding, verified below in
+    `test_successor_gate_does_not_reverify_the_package_seal`, is that gap.
+    """
+    package, _receipt = _sealed_package(evolve_node.EvolveNode())
+
+    tampered = copy.deepcopy(package)
+    tampered["next_action"] = "merge #1216 to production"
+    tampered["blockers"] = []
+
+    assert evolve_package_hash(tampered) != package["package_hash"], (
+        "the seal must detect tampering at the producing side")
+
+
+# ---------------------------------------------------------------------------
+# 10. CS-02 — KNOW replay trusts its inputs unconditionally
+# --------------------------------------------------------------------------
+
+
+@pytest.mark.xfail(strict=True, reason=CS02)
+def test_know_cold_reconstruct_verifies_receipt_integrity(kernel, stages):
+    """CS-02 acceptance: a forged KNOW receipt must NOT be replayed.
+
+    `Kernel.cold_reconstruct` reports `hash_matched` / `hash_mismatched`.
+    `KnowNode.cold_reconstruct` performs no integrity verification at all, so a
+    forged receipt replays into state as if genuine. Pinned xfail(strict) until
+    the owner repairs it; CS-01 blocks the restore path independently.
+    """
+    cycle1 = _predecessor_cycle(kernel, stages)
+    ingests = [r for r in cycle1["receipts"] if r.get("operation") == "INGEST"]
+    forged = copy.deepcopy(ingests[0])
+    forged["block_snapshot"]["provenance"]["sources"][0]["ref"] = \
+        "ext://coda4/FORGED"
+
+    report = know_node.KnowNode().cold_reconstruct([forged])
+
+    assert "hash_mismatched" in report, (
+        "a forged receipt must be listed as mismatched; KNOW reports no "
+        "integrity fields at all: %s" % sorted(report))
+    assert "hash_matched" in report, (
+        "the restore must report which receipts it actually verified")
+    assert report.get("hash_matched") == [], (
+        "a forged receipt must never appear as verified")
+
+
+# ---------------------------------------------------------------------------
+# 11. Protocol artifact present (human reproducibility)
 
 
 def test_protocol_document_exists_and_names_its_scope():

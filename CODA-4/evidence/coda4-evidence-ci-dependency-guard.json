@@ -1,6 +1,6 @@
 {
-  "base_main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
-  "body_sha256": "7d64113984efbbcdacfd04d278e92a45034e23cb7b4d46ab68c75ce847a5b0b0",
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "8647b8259802f07a5943f59333bf207e85b16eb3205222c3370c4e11fc8beac1",
   "interpretation": "Confirms the test relocation to tests/test_nodes/ did not break the CI dependency guard.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -9,12 +9,12 @@
     "stderr_tail": [],
     "stdout_tail": [
       "...                                                                      [100%]",
-      "3 passed in 0.22s"
+      "3 passed in 0.23s"
     ]
   },
   "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-ci-dependency-guard",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "1fbb5338fba49eb5933ab08fd3e0fe84da62ac22"
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
 }

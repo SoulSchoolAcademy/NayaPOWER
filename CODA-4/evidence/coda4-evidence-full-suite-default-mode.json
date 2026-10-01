@@ -1,6 +1,6 @@
 {
-  "base_main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
-  "body_sha256": "5b8099342051ada8e0e27ef6ad1d77a5f828e231718164ed10ef7548af893168",
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "e51f3b086fd16b75bc6d8275af032229ef6b8d3d10f162e70e131e00b46ae71b",
   "interpretation": "Whole suite, default encoding. 7 failures on Windows.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -29,7 +29,7 @@
       "           ^^^^^^^^",
       "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
       "",
-      "self = <encodings.cp1252.IncrementalDecoder object at 0x0000018D5E3D2D50>",
+      "self = <encodings.cp1252.IncrementalDecoder object at 0x0000024F75EA67B0>",
       "input = b\"# AGENTS.md \\xe2\\x80\\x94 NayaPOWER Agent Boot Contract\\n\\n## STOP \\xe2\\x80\\x94 BOOT BEFORE WORK\\n\\nAny AI agent ente...retend. Do not guess. Do not manufacture proof. Reconstruct, act within authority, verify, preserve, and hand off.**\\n\"",
       "final = True",
       "",
@@ -47,12 +47,12 @@
       "FAILED tests/test_smart_note_v2.py::test_renderer_accepts_persisted_sn004_string_views_without_inventing_relationship_types",
       "FAILED tests/test_smart_note_v2.py::test_renderer_preserves_current_structured_sn004_shape",
       "FAILED tests/test_smart_note_v2.py::test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture",
-      "7 failed, 1034 passed, 3 skipped, 2 xfailed in 8.35s"
+      "7 failed, 1041 passed, 3 skipped, 3 xfailed in 7.86s"
     ]
   },
   "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-full-suite-default-mode",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "1fbb5338fba49eb5933ab08fd3e0fe84da62ac22"
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
 }

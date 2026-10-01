@@ -1,0 +1,35 @@
+{
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "28d1d1904fd81fb205de17f24f6b33815bba10bf62089bf8ba99ef09c2f93436",
+  "interpretation": "Real A -> B -> C process boundary. Records the first missing rung. exit 0 is NOT success: the ladder is expected to report BLOCKED on B-RESTORE while CS-01 is open.",
+  "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
+  "observed": {
+    "command": "python CODA-4\\process_boundary_harness.py",
+    "exit_code": 0,
+    "stderr_tail": [],
+    "stdout_tail": [
+      "A  pid=34672 receipts=2 artifact_sha256=220148bac5986a06",
+      "   Process A has EXITED. No memory carries forward.",
+      "",
+      "B  pid=35908 (A was 34672)",
+      "   reported restored=2  hash_match=True",
+      "   ACTUAL blocks on node=0  retrieved=0",
+      "   provenance refs=[]",
+      "   authority_inherited=False",
+      "",
+      "B+ pid=53684 preserved its own receipt",
+      "",
+      "C  pid=46012 restored=2 new_results_recovered=0",
+      "B- tampered  NO FAILURE RAISED \u00e2\u20ac\u201d restored=2 hash_match=True forged_accepted=True",
+      "B- missing   governing failure raised (correct)",
+      "",
+      "first missing rung: B-RESTORE",
+      "CS-01 present: True"
+    ]
+  },
+  "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
+  "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
+  "receipt_id": "coda4-evidence-process-boundary-harness",
+  "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
+}

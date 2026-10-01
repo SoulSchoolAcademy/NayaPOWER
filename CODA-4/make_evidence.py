@@ -48,8 +48,9 @@ def _body_hash(body):
 
 CASES = [
     ("focused-suite",
-     "Cold-successor protocol suite. 2 xfail are CS-01; the xfails ARE the "
-     "acceptance signal, so a green total does not mean acceptance.",
+     "Cold-successor protocol suite. 3 xfail are CS-01 x2 and CS-02 x1; the "
+     "xfails ARE the acceptance signal, so a green total does not mean "
+     "acceptance.",
      ["python", "-m", "pytest",
       "tests/test_nodes/test_coda4_cold_successor.py", "-q"]),
     ("ci-dependency-guard",
@@ -61,6 +62,20 @@ CASES = [
      "Standalone CS-01 reproducer. exit 1 means the defect is PRESENT, "
      "exit 0 means it was repaired.",
      ["python", os.path.join("CODA-4", "repro_cs01.py")]),
+    ("cs02-reproducer",
+     "Standalone CS-02 reproducer: KNOW replay performs no receipt integrity "
+     "verification. exit 1 means PRESENT.",
+     ["python", os.path.join("CODA-4", "repro_cs02.py")]),
+    ("process-boundary-harness",
+     "Real A -> B -> C process boundary. Records the first missing rung. "
+     "exit 0 is NOT success: the ladder is expected to report BLOCKED on "
+     "B-RESTORE while CS-01 is open.",
+     ["python", os.path.join("CODA-4", "process_boundary_harness.py")]),
+    ("process-boundary-rungs",
+     "Static rung status for the process-boundary ladder, without running the "
+     "children.",
+     ["python", os.path.join("CODA-4", "process_boundary_harness.py"),
+      "--rungs"]),
     ("kernel-handoff-existing",
      "The pre-existing handoff test. It asserts the store hash but never "
      "retrieves from the reconstructed node, which is why CS-01 was invisible.",

@@ -1,0 +1,36 @@
+{
+  "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
+  "body_sha256": "9313742e0c400cebaeacde9ebe0b9c2f7b9afd25a5e8b6c14d9ee9c8311842f7",
+  "interpretation": "Standalone CS-02 reproducer: KNOW replay performs no receipt integrity verification. exit 1 means PRESENT.",
+  "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
+  "observed": {
+    "command": "python CODA-4\\repro_cs02.py",
+    "exit_code": 1,
+    "stderr_tail": [],
+    "stdout_tail": [
+      "== A: forge the provenance ref inside block_snapshot ==",
+      "   forged receipt replayed  : True",
+      "   integrity keys in report: ['store_hash']",
+      "",
+      "== B: forge ownerScope from public to private ==",
+      "   private-scope block accepted: True",
+      "",
+      "== C: contrast with Kernel.cold_reconstruct, which DOES verify ==",
+      "   Kernel reports hash_matched     True",
+      "   KNOW   reports hash_matched     False",
+      "   Kernel reports hash_mismatched  True",
+      "   KNOW   reports hash_mismatched  False",
+      "",
+      "== D: a genuinely malformed lifecycle state IS fail-closed ==",
+      "   ValueError (fail-closed): cold_reconstruct: unknown operation 'INGEST'; cannot replay",
+      "",
+      "CS-02 PRESENT: True",
+      "EXIT 1 means the defect is present; EXIT 0 means it was repaired."
+    ]
+  },
+  "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
+  "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
+  "receipt_id": "coda4-evidence-cs02-reproducer",
+  "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
+  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
+}
