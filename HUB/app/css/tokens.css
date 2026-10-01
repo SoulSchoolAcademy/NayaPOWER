@@ -69,11 +69,13 @@
   /* ——— Type ——— */
   --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --fs-hero: clamp(30px, 4.6vw, 52px);
-  --fs-title: 21px;
-  --fs-head: 15px;
-  --fs-body: 13.5px;
-  --fs-small: 11.5px;
-  --fs-micro: 10px;
+  --fs-title: 23px;
+  --fs-head: 18px;
+  --fs-body: 17px;
+  --fs-small: 14px;
+  --fs-micro: 13px;
+  --fs-control: 16px;
+  --fs-meta: 13.5px;
 
   /* ——— The living field behind everything ——— */
   --field:
