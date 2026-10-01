@@ -146,7 +146,7 @@ NON_GATE_EDGES = {
 }
 
 NODE_ID = "NAYA-KERNEL"
-KERNEL_VERSION = "0.2.0-candidate"
+KERNEL_VERSION = "0.3.0-candidate"
 GRAPH_SEED_REF = ("BRAIN/04-INTELLIGENCE/GRAPH/"
                   "0001-KERNEL-GRAPH-SEED-V1.json")
 LOCK_REF = ("BRAIN/03-KERNEL/"
@@ -262,13 +262,22 @@ class Kernel:
                           edge_trace: List[Dict[str, Any]],
                           verdict: GateVerdict,
                           stopped_at: str | None,
-                          unexpected_gate_keys: List[str] | None = None) -> Dict[str, Any]:
+                          unexpected_gate_keys: List[str] | None = None,
+                          first_non_pass: GateVerdict | None = None,
+                          first_non_pass_at: str | None = None
+                          ) -> Dict[str, Any]:
         """Hash-bound decision receipt.
 
         ``unexpected_gate_keys`` names any ``state["gates"]`` keys that are
         not node names: they were recorded here, never consulted by any
         gate, and never steered the decision. Evidence-law honesty: a
         dropped input must be visible, not silent.
+
+        ``first_non_pass`` / ``first_non_pass_at`` preserve the diagnostic
+        record of the first gate that did not PASS, even when a later
+        halting FAIL dominates the verdict (FAIL dominance, Brief 3,
+        2026-10-01): the verdict answers "did it pass?", the preserved
+        fields answer "where did it first wobble?".
         """
         body: Dict[str, Any] = {
             "receipt_id": f"decision-{decision_id}",
@@ -281,6 +290,8 @@ class Kernel:
             "evaluation_order": list(EVALUATION_ORDER),
             "verdict": verdict.value,
             "stopped_at": stopped_at,
+            "first_non_pass": first_non_pass.value if first_non_pass else None,
+            "first_non_pass_at": first_non_pass_at,
             "gates": gates,
             "edge_trace": edge_trace,
             "unexpected_gate_keys": list(unexpected_gate_keys or []),
@@ -331,7 +342,11 @@ class Kernel:
         node name (e.g. ``state["gates"]["LAW"]``). A node is evaluated only
         when every required upstream PASSed; otherwise it is recorded
         NEED_EVIDENCE naming the blocking upstream. A FAIL verdict halts the
-        whole decision immediately (global fail-fast). Returns the decision
+        whole decision immediately (global fail-fast) and dominates the
+        decision verdict: the verdict names the halting FAIL even when an
+        earlier gate returned NEED_EVIDENCE (Brief 3, 2026-10-01) — the
+        first non-PASS is preserved in ``first_non_pass`` /
+        ``first_non_pass_at`` for diagnostics. Returns the decision
         verdict, per-node results, where the decision stopped, the per-edge
         trace, and a hash-bound decision receipt.
         """
@@ -348,6 +363,8 @@ class Kernel:
         evaluated: Dict[str, bool] = {}
         verdict = GateVerdict.PASS
         stopped_at: str | None = None
+        first_non_pass: GateVerdict | None = None
+        first_non_pass_at: str | None = None
         halted = False
         for position, name in enumerate(EVALUATION_ORDER, start=1):
             blocked_by = [u for u in GATE_REQUIREMENTS[name]
@@ -375,20 +392,36 @@ class Kernel:
                 "reasons": list(result.reasons),
                 "blocked_by": blocked_by,
             })
-            if result.verdict != GateVerdict.PASS and verdict == GateVerdict.PASS:
-                verdict = result.verdict
-                stopped_at = name
+            if result.verdict != GateVerdict.PASS and first_non_pass is None:
+                # Diagnostic record: the first gate that did not PASS, kept
+                # even when a later halting FAIL dominates the verdict.
+                first_non_pass = result.verdict
+                first_non_pass_at = name
             if result.verdict == GateVerdict.FAIL:
                 halted = True
+                # FAIL dominance (Brief 3, decided 2026-10-01 under the
+                # Decision Protocol): a halting FAIL is the decision-relevant
+                # fact, so the verdict names the FAIL — never an earlier
+                # NEED_EVIDENCE. A naive consumer must not misread a decided
+                # NO as "couldn't decide".
+                verdict = GateVerdict.FAIL
+                stopped_at = name
                 break  # fail-fast: a FAIL halts the whole decision
+            if verdict == GateVerdict.PASS and result.verdict != GateVerdict.PASS:
+                verdict = result.verdict
+                stopped_at = name
         edge_trace = self._edge_trace(verdicts, evaluated)
         receipt = self._decision_receipt(
             decision_id, gates, edge_trace, verdict, stopped_at,
-            unexpected_gate_keys)
+            unexpected_gate_keys,
+            first_non_pass=first_non_pass,
+            first_non_pass_at=first_non_pass_at)
         return {
             "decision_id": decision_id,
             "verdict": verdict.value,
             "stopped_at": stopped_at,
+            "first_non_pass": first_non_pass.value if first_non_pass else None,
+            "first_non_pass_at": first_non_pass_at,
             "halted_on_fail": halted,
             "gates": gates,
             "edge_trace": edge_trace,

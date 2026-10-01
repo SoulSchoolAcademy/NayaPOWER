@@ -582,14 +582,16 @@ def test_decide_with_no_state_is_fail_closed(kernel):
 # ------------------------------------------------- harden: routing edge cases (tick 22)
 
 
-def test_fail_after_earlier_need_evidence_keeps_first_non_pass_verdict(
+def test_fail_after_earlier_need_evidence_fail_dominates_verdict(
         kernel, demo_stages):
     """Verdict-semantics edge: PROVE returns NEED_EVIDENCE (position 5), then
-    CONNECT FAILs (position 6). The decision verdict and stopped_at name the
-    FIRST non-PASS (PROVE / NEED_EVIDENCE); the FAIL still halts the whole
-    decision globally (halted_on_fail True). Pinned as the current approved
-    semantics — whether a FAIL should dominate the verdict is an OPEN design
-    question for the director; nothing changed here."""
+    CONNECT FAILs (position 6). FAIL dominance (Brief 3, decided 2026-10-01
+    under the Decision Protocol): the decision verdict and stopped_at name
+    the halting FAIL (CONNECT / FAIL) — a naive consumer must never misread
+    a decided NO as "couldn't decide". The first non-PASS is preserved in
+    first_non_pass / first_non_pass_at (PROVE / NEED_EVIDENCE) and inside the
+    receipt. The FAIL still halts the whole decision globally
+    (halted_on_fail True)."""
     kernel.nodes["PROVE"].gate = lambda _s: GateResult(
         GateVerdict.NEED_EVIDENCE, ["demo forced: claim unproven"])
     kernel.nodes["CONNECT"].gate = lambda _s: GateResult(
@@ -602,10 +604,16 @@ def test_fail_after_earlier_need_evidence_keeps_first_non_pass_verdict(
     # the FAIL halted the pass: later nodes never evaluated
     assert [g["node"] for g in out["gates"]] == [
         "SELF", "LAW", "KNOW", "ACT", "PROVE", "CONNECT"]
-    assert out["verdict"] == "NEED_EVIDENCE"
-    assert out["stopped_at"] == "PROVE"
+    assert out["verdict"] == "FAIL"
+    assert out["stopped_at"] == "CONNECT"
+    assert out["first_non_pass"] == "NEED_EVIDENCE"
+    assert out["first_non_pass_at"] == "PROVE"
     assert out["halted_on_fail"] is True
     receipt = out["decision_receipt"]
+    assert receipt["verdict"] == "FAIL"
+    assert receipt["stopped_at"] == "CONNECT"
+    assert receipt["first_non_pass"] == "NEED_EVIDENCE"
+    assert receipt["first_non_pass_at"] == "PROVE"
     assert verify_decision_receipt(receipt)["result"] == "MATCH"
 
 
