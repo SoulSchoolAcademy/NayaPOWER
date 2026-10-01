@@ -1,0 +1,1 @@
+Trigger synchronization for the authorized MAXESS surgical repair runner. The workflow removes this file after successful execution.

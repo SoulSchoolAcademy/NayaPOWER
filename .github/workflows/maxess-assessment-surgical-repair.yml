@@ -1,0 +1,231 @@
+name: MAXESS Assessment Surgical 3-Point Repair
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Apply exact assessment repairs
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          p = Path('AIScoreMAXESS code')
+          s = p.read_text(encoding='utf-8')
+
+          # 1. Remove only the interest-selection experience and its direct support code.
+          s, n = re.subn(r'\n/\* =========================================================\n   AI INTEREST EXPERIENCE\n========================================================= \*/.*?(?=\n/\* =========================================================\n   RESULTS)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('Interest CSS block not found; refusing edit.')
+
+          s, n = re.subn(r'\n<!-- ======================================================\n     AI INTEREST SELECTION\n====================================================== -->.*?(?=\n<!-- ======================================================\n     RESULTS\n====================================================== -->)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('Interest HTML stage not found; refusing edit.')
+
+          s, n = re.subn(r'\n  <!-- ==================================================\n       AI INTERESTS\n  ================================================== -->.*?(?=\n\n  <!-- ==================================================\n       FINAL CTA)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('Interest report section not found; refusing edit.')
+
+          s, n = re.subn(r'\n/\* =========================================================\n   ALL 18 AI AREAS\n========================================================= \*/.*?(?=\n/\* =========================================================\n   STATE)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('AI areas configuration not found; refusing edit.')
+
+          # Remove DOM references that only supported the removed stage.
+          for block in [
+              '  interestsView:\n    document.getElementById("interestsView"),\n\n  interestContinue:\n    document.getElementById("interestContinue"),\n\n  interestSkip:\n    document.getElementById("interestSkip"),\n\n',
+              '  selectedInterests:\n    document.getElementById("selectedInterests"),\n\n  interestReportIntro:\n    document.getElementById("interestReportIntro"),\n\n  interestReportSection:\n    document.getElementById("interestReportSection"),\n\n'
+          ]:
+              if block not in s: raise SystemExit('Expected interest DOM block missing; refusing edit.')
+              s = s.replace(block, '', 1)
+
+          # Final Question 15 must publish directly to the authoritative Results handoff.
+          old = '''  if(final){
+
+    state.status="interest_selection";
+
+    state.transitioning=false;
+
+    showInterestSelection();
+
+    return;
+
+  }'''
+          new = '''  if(final){
+
+    state.status="completed";
+
+    state.completedAt=new Date().toISOString();
+
+    state.transitioning=false;
+
+    publishFinalResult();
+
+    return;
+
+  }'''
+          if old not in s: raise SystemExit('Question 15 completion block not found; refusing edit.')
+          s = s.replace(old, new, 1)
+
+          # Remove interest-stage functions and replace completion action with one direct publisher.
+          s, n = re.subn(r'\n/\* =========================================================\n   INTEREST BOARDS\n========================================================= \*/.*?(?=\n/\* =========================================================\n   RESULTS)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('Interest function block not found; refusing edit.')
+
+          old = '''function finishInterestSelection(){
+
+  if(window.MAXESS_RESULT_BRIDGE && typeof window.MAXESS_RESULT_BRIDGE.publish === "function"){
+    window.MAXESS_RESULT_BRIDGE.publish();
+    return;
+  }
+
+  throw new Error("MAXESS_RESULT_BRIDGE unavailable; refusing legacy Results renderer.");
+
+}'''
+          new = '''function publishFinalResult(){
+
+  if(window.MAXESS_RESULT_BRIDGE && typeof window.MAXESS_RESULT_BRIDGE.publish === "function"){
+    const published=window.MAXESS_RESULT_BRIDGE.publish();
+    if(!published){
+      state.status="result_error";
+      console.error("MAXESS_RESULT_V1 publication failed; Results navigation refused.");
+    }
+    return published;
+  }
+
+  state.status="result_error";
+  throw new Error("MAXESS_RESULT_BRIDGE unavailable; refusing Results navigation.");
+
+}'''
+          if old not in s: raise SystemExit('Legacy completion function not found; refusing edit.')
+          s = s.replace(old, new, 1)
+
+          # Remove the obsolete interest renderer.
+          s, n = re.subn(r'\n/\* =========================================================\n   RENDER INTERESTS\n========================================================= \*/.*?(?=\n/\* =========================================================\n   RENDER RESULTS)', '\n', s, count=1, flags=re.S)
+          if n != 1: raise SystemExit('Interest renderer function not found; refusing edit.')
+          s = s.replace('\n  renderInterests();\n', '\n', 1)
+
+          # Remove obsolete interest event listeners.
+          s = s.replace('''\n\nDOM.interestContinue.addEventListener(\n  "click",\n  finishInterestSelection\n);\n\n\nDOM.interestSkip.addEventListener(\n  "click",\n  finishInterestSelection\n);''', '', 1)
+
+          # Initialization must not build an experience that no longer exists.
+          s = s.replace('  buildInterestBoards();\n\n', '', 1)
+
+          # Bridge must not recreate the removed completion function.
+          old = '''  // Retire the old Results renderer by replacing its completion action.
+  // Do not hide the DOM at assessment load; the assessment UI must remain untouched.
+  window.finishInterestSelection = function(){ publish(); };
+'''
+          if old not in s: raise SystemExit('Bridge completion override not found; refusing edit.')
+          s = s.replace(old, '', 1)
+
+          # 2. Replace the redundant purple teaching-cloud orb with Naya's approved image.
+          old = '''    .maxess-naya-teacher-image{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.92);box-shadow:0 0 0 5px rgba(155,99,255,.14),0 0 28px rgba(155,99,255,.24)}'''
+          new = '''    .maxess-naya-teacher-image{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.92);box-shadow:0 0 0 5px rgba(155,99,255,.14),0 0 28px rgba(155,99,255,.24)}'''
+          if old not in s: raise SystemExit('Naya image style target not found; refusing edit.')
+          s = s.replace(old, new, 1)
+          old = '''      @media(max-width:600px){.maxess-naya-teacher{gap:11px}.maxess-naya-teacher-image{width:52px;height:52px}}'''
+          new = '''      @media(max-width:600px){.maxess-naya-teacher{gap:11px}.maxess-naya-teacher-image{width:72px;height:72px}}'''
+          if old not in s: raise SystemExit('Naya mobile image style target not found; refusing edit.')
+          s = s.replace(old, new, 1)
+          old = '''    const eyebrow = cloud.querySelector('.cloud-eyebrow');
+    cloud.insertBefore(teacher, eyebrow || cloud.firstChild);
+'''
+          new = '''    const orb = cloud.querySelector('.cloud-icon');
+    if(orb) orb.remove();
+    const eyebrow = cloud.querySelector('.cloud-eyebrow');
+    cloud.insertBefore(teacher, eyebrow || cloud.firstChild);
+'''
+          if old not in s: raise SystemExit('Teaching cloud insertion target not found; refusing edit.')
+          s = s.replace(old, new, 1)
+
+          # 3. Fix the authoritative Results endpoint and enrich the V1 contract with explicit dimension aliases.
+          s = s.replace("const RESULTS_URL = 'https://results.nayanet.app/';", "const RESULTS_URL = 'https://results.nayanet.xyz/';", 1)
+          old = '''      strongestCapability: {
+        id: strongest.id,
+        name: strongest.name,
+        score: strongest.score
+      },
+      highestLeverageOpportunity: {
+        id: opportunity.id,
+        name: opportunity.name,
+        score: opportunity.score
+      },'''
+          new = '''      strongestDimension: {
+        id: strongest.id,
+        name: strongest.name,
+        score: strongest.score,
+        level: strongest.level
+      },
+      opportunityDimension: {
+        id: opportunity.id,
+        name: opportunity.name,
+        score: opportunity.score,
+        level: opportunity.level
+      },
+      strongestCapability: {
+        id: strongest.id,
+        name: strongest.name,
+        score: strongest.score
+      },
+      highestLeverageOpportunity: {
+        id: opportunity.id,
+        name: opportunity.name,
+        score: opportunity.score
+      },'''
+          if old not in s: raise SystemExit('Contract capability block not found; refusing edit.')
+          s = s.replace(old, new, 1)
+
+          # Stronger contract validation: exactly 15 responses and five dimensions, all score-bearing.
+          old = '''    if(!Array.isArray(contract.responses) || contract.responses.length !== 15) return false;
+    return true;'''
+          new = '''    if(!Array.isArray(contract.responses) || contract.responses.length !== 15) return false;
+    if(!contract.strongestDimension || !contract.opportunityDimension) return false;
+    if(contract.dimensions.some(d => !d || !Number.isFinite(Number(d.score)))) return false;
+    const responseIds = new Set(contract.responses.map(r => r && r.questionId));
+    if(responseIds.size !== 15) return false;
+    return true;'''
+          if old not in s: raise SystemExit('Contract validation target not found; refusing edit.')
+          s = s.replace(old, new, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+      - name: Verify exact surgical outcome
+        shell: bash
+        run: |
+          test -s 'AIScoreMAXESS code'
+          grep -q "const RESULTS_URL = 'https://results.nayanet.xyz/'" 'AIScoreMAXESS code'
+          grep -q 'function publishFinalResult' 'AIScoreMAXESS code'
+          grep -q 'state.completedAt=new Date().toISOString()' 'AIScoreMAXESS code'
+          grep -q 'strongestDimension:' 'AIScoreMAXESS code'
+          grep -q 'opportunityDimension:' 'AIScoreMAXESS code'
+          grep -q '.maxess-naya-teacher-image{width:84px;height:84px' 'AIScoreMAXESS code'
+          grep -q 'if(orb) orb.remove()' 'AIScoreMAXESS code'
+          ! grep -q 'state.status="interest_selection"' 'AIScoreMAXESS code'
+          ! grep -q 'Where do you want AI to become more useful to you?' 'AIScoreMAXESS code'
+          ! grep -q 'Continue to My Report' 'AIScoreMAXESS code'
+          ! grep -q 'Skip this step' 'AIScoreMAXESS code'
+          ! grep -q 'window.finishInterestSelection' 'AIScoreMAXESS code'
+          git diff --check
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('AIScoreMAXESS code').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script[^>]*>(.*?)</script>',s,re.S|re.I)
+          Path('/tmp/maxess-assessment.js').write_text('\n'.join(scripts),encoding='utf-8')
+          print('assessment bytes',len(s.encode()),'lines',len(s.splitlines()),'scripts',len(scripts))
+          PY
+          node --check /tmp/maxess-assessment.js
+
+      - name: Commit repair and remove temporary runner
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'AIScoreMAXESS code'
+          git rm -- '.github/workflows/maxess-assessment-surgical-repair.yml'
+          git commit -m 'fix: complete MAXESS Q15 direct Results handoff'
+          git push
