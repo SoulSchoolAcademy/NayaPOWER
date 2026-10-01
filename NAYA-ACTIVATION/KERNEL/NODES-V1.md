@@ -12,15 +12,15 @@ builders don't self-certify; read-only verification of `naya4/*`).
 
 | Responsibility | Node ID | Branch | Verified SHA | Suite | Result | Verified |
 |---|---|---|---|---|---|---|
-| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~21:55 PDT |
-| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~21:55 PDT |
-| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~21:55 PDT |
-| KNOW | NAYA-KERNEL-KNOW | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_know_node.py | 53/53 pass | 2026-09-30 ~21:55 PDT |
-| PROVE | NAYA-KERNEL-PROVE | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_prove_node.py | 34/34 pass | 2026-09-30 ~21:55 PDT |
-| CONNECT | NAYA-KERNEL-CONNECT | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_connect_node.py | 49/49 pass | 2026-09-30 ~21:55 PDT |
-| VERIFY | NAYA-KERNEL-VERIFY | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_verify_node.py | 75/75 pass | 2026-09-30 ~21:55 PDT |
-| LEARN | NAYA-KERNEL-LEARN | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_learn_node.py | 58/58 pass | 2026-09-30 ~21:55 PDT |
-| EVOLVE | NAYA-KERNEL-EVOLVE | naya4/nine-node-kernel-v1 | 7e72b2737bb22956b3b83ca9a8a2acb1553ab216 | tests/test_nodes/test_evolve_node.py | 63/63 pass | 2026-09-30 ~21:55 PDT |
+| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~22:22 PDT |
+| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~22:22 PDT |
+| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~22:22 PDT |
+| KNOW | NAYA-KERNEL-KNOW | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_know_node.py | 53/53 pass | 2026-09-30 ~22:22 PDT |
+| PROVE | NAYA-KERNEL-PROVE | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_prove_node.py | 34/34 pass | 2026-09-30 ~22:22 PDT |
+| CONNECT | NAYA-KERNEL-CONNECT | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_connect_node.py | 49/49 pass | 2026-09-30 ~22:22 PDT |
+| VERIFY | NAYA-KERNEL-VERIFY | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_verify_node.py | 75/75 pass | 2026-09-30 ~22:22 PDT |
+| LEARN | NAYA-KERNEL-LEARN | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_learn_node.py | 58/58 pass | 2026-09-30 ~22:22 PDT |
+| EVOLVE | NAYA-KERNEL-EVOLVE | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_evolve_node.py | 63/63 pass | 2026-09-30 ~22:22 PDT |
 
 Kernel-wide at that SHA: `tests/test_nodes/` **450/450 pass** (was 440/440 at
 842af91c). Kernel nine-node integration battery
@@ -69,10 +69,19 @@ reconciliation commits are spec-faithful —
   never the final truth authority. Matches the Ultimate Lock and
   `00-KNOW-MASTER-CONTRACT-V1.md` invariants ("Never promote final truth
   or task-level applicability; PROVE and CONNECT own those
-  responsibilities"). **No discrepancy found at this depth.** Deeper
-  semantic qualification belongs to the dedicated qualification lane, not
-  this watch. All code is CANDIDATE — not ratified, not merged, not
-  deployed.
+  responsibilities"). **No discrepancy found at this depth.** Re-verified
+  2026-09-30 ~22:22 PDT at `94340120ad6bae091a33a6111a88e429cc6ab9a4`
+  ("HARDEN: remove remaining stale 'calculus unratified' premises
+  (LAW/VERIFY)" — FLAG-001 step 4): diff is tightly scoped to removing
+  stale CANDIDATE-calculus premises across connect/evolve/law/learn/verify
+  nodes + node_base.py + manifest.json and binding the RATIFIED Decision
+  Value Calculus V2.1 (CALCULUS_V21_SPEC_HASH pinned); the hard-coded spec
+  blob SHA was independently checked against live main at a726a837 —
+  exact match. LEARN/EVOLVE now allow autonomous promotion under the
+  ratified calculus (condition 0 satisfied by ratification — intended
+  ratified-law behavior, not a weakened gate). Deeper semantic
+  qualification belongs to the dedicated qualification lane, not this
+  watch. All code is CANDIDATE — not ratified, not merged, not deployed.
 
 ## Pending nodes
 
