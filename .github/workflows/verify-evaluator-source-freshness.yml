@@ -1,0 +1,41 @@
+name: Verify Evaluator Source Freshness
+
+on:
+  pull_request:
+    paths:
+      - "scripts/verify_evaluator_source.py"
+      - "tests/test_evaluator_source_freshness.py"
+      - ".github/workflows/verify-evaluator-source-freshness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verify_evaluator_source.py"
+      - "tests/test_evaluator_source_freshness.py"
+      - ".github/workflows/verify-evaluator-source-freshness.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python3 -m unittest -v tests/test_evaluator_source_freshness.py
+
+  current-main:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python3 -m unittest -v tests/test_evaluator_source_freshness.py
+      - run: python3 scripts/verify_evaluator_source.py
