@@ -1,0 +1,74 @@
+{
+  "proposal_id": "SNP-20260926-0001",
+  "proposal_version": 1,
+  "event_at": "2026-09-26T20:20:27Z",
+  "agent": {
+    "agent_id": "NAYA",
+    "agent_session_id": "contract-continuity-lane-2026-09-26",
+    "model_ref": "opencode/big-pickle"
+  },
+  "recognition": {
+    "signal_type": "architecture",
+    "why_valuable": "The Human Director has articulated the semantic contract of the Smart Note, Intelligent Block, and Smart Link, and identified the single hardest unresolved rule in the system: that 'Smart Note this' means DISTILL, not STORE. That rule currently exists only as prose. Until it is machine-enforced at the receiver, a future agent can satisfy the letter of the contract by persisting a raw transcript and still be wrong. This proposal carries the distilled definition plus the missing enforcement requirement so the rule can be ratified and bound to the receiver.",
+    "value_dimensions": [
+      "reusable_pattern",
+      "novel_insight",
+      "decision_rule",
+      "meaningful_correction",
+      "cross_project_applicability",
+      "avoided_rework"
+    ],
+    "confidence": 0.92,
+    "proposed_future_use": "Bind 'DISTILL, not STORE' as an enforced precondition at the canonical Smart Note receiver, and use the perspective set (Human / AI / Simple / Language / Machine / Evidence / Provenance / Governance) as the required shape of every projected Smart Note. Also apply the same distillation discipline to NayaNET-facing output so the Super Brain does not accumulate bloat."
+  },
+  "source": {
+    "source_type": "conversation",
+    "source_refs": [
+      "Human Director conversation, 2026-09-26, Smart Note / Intelligent Block / Smart Link definition and ultimate-system design request",
+      "companion artifact: .naya/smart-note-proposals/SNP-20260926-0001.proposal.md"
+    ],
+    "provenance_hash": "not-computed-no-canonical-hash-authority-available"
+  },
+  "candidate": {
+    "title": "Smart Note means DISTILL, not STORE; the Smart Link is the completion proof",
+    "lesson": "A Smart Note is a distilled, multi-perspective Intelligent Block, not a transcript. A Smart Link is the evidence-bearing hyperlink returned only after the intelligence is actually committed and projected, so 'no verified Smart Link' means 'no completed user-facing operation'. Unenforced, this becomes a bloat engine: the Super Brain accumulates raw output, retrieval degrades, and nobody reads the notes.",
+    "content": "Distilled definition: Smart Note = distilled intelligence made reusable. Intelligent Block = the governed canonical object containing that intelligence with its perspectives, provenance, relationships, and evidence; a unit of cognition that survives its original conversation. Smart Link = the clickable, independently inspectable proof returned in-conversation after commit and projection, converting 'claim -> trust' into 'claim -> inspectable evidence'. The governing rule is that 'Smart Note this' means DISTILL, not STORE, executed as SYNERGIZE -> OPTIMIZE -> MAXIMIZE -> EQUALIZE -> ORGANIZE -> DISTILL, compressing until precise rather than until vague. Required perspectives: Human (preserves the original contribution and prevents the AI rewriting history), AI/Naya (synthesis, kept distinguishable from the human's words), Simple/Child (the honesty test for genuine understanding), Language/Grammar (canonical expression, not proofreading), Machine (identity, scope, authority, provenance, lineage - what makes intelligence operational), Evidence and Provenance, and Governance. Completion contract: CREATE -> PERSIST -> IDENTIFY -> PROJECT -> VERIFY -> SMART LINK -> RECEIPT, where no verified Smart Link equals no completed user-facing operation and BLOCKED_NOT_EXPLANATION is a legitimate honest outcome. The identity is allocated by the canonical receiver, never by the repository or the agent.",
+    "evidence_status": "TESTED",
+    "uncertainties": [
+      "Capture could not be executed: this agent has no access to the v7-smart-note-canonical receiver (no Supabase credentials in environment, no MCP server configured, no Supabase CLI, no local receiver service on 54321/3000/8080). smart_note_transaction.execute() fails closed by design, so no Intelligent Block and no verified Smart Link exist for this proposal.",
+      "The SMART_NOTE_PROPOSAL contract defines no physical storage path for proposals and forbids a competing memory store, so the location .naya/smart-note-proposals/ is a proposal pending Director ruling, not a ratified location.",
+      "It is unconfirmed whether 'DISTILL, not STORE' is intended as a hard machine-enforced receiver precondition or as guiding prose. This proposal assumes it should be enforceable; that is a Director decision.",
+      "The threshold for which outputs require distillation is undefined, which currently makes the rule unenforceable in practice.",
+      "The related contracts governing this domain (SMART_LINK_CONTRACT, MEMBER-LEVEL-CONTRACT, and their root/schemas pairs) were found by the constitutional claim audit to be divergent and multi-defined; this proposal does not resolve that and must not be read as doing so.",
+      "evidence_status is TESTED rather than VERIFIED because the receiver has not been exercised against this proposal, so no end-to-end proof of the completion contract exists for it."
+    ],
+    "related_intelligence_refs": [
+      ".naya/contracts/SMART-NOTE-PROPOSAL-CONTRACT-V1.json",
+      ".naya/runtime/smart_note_transaction.py",
+      ".naya/runtime/smart_note_candidate.py",
+      ".naya/contracts/PRIMARY-INTELLIGENCE-SYSTEM-CONTRACT-V1.json",
+      "PR #801 constitutional authority self-declaration audit"
+    ]
+  },
+  "privacy": {
+    "classification": "PRIVATE"
+  },
+  "requested_action": "CAPTURE_IF_AUTHORIZED",
+  "governance_evaluation": {
+    "evaluated_by": "NAYA",
+    "outcome": "BLOCKED",
+    "reason": "CANONICAL_CAPTURE_PATH_UNAVAILABLE_TO_THIS_AGENT",
+    "detail": "The proposal is structurally valid and its provenance, privacy classification, and uncertainties are preserved. It cannot advance past VALUE_RECOGNIZED / PROPOSAL_VALIDATED because the only entity permitted to allocate an intelligent_block_id is the canonical receiver, which this agent cannot reach. Per the contract, BLOCKED is never promoted to ACCEPT_CAPTURE without new evidence or authority.",
+    "required_to_unblock": [
+      "Grant this agent a scoped path to the v7-smart-note-canonical receiver (MCP tool, or SUPABASE_ACCESS_TOKEN plus SUPABASE_PUBLISHABLE_KEY as repository secrets), or",
+      "Have an authorized operator submit this proposal through the receiver and return the resulting Smart Link"
+    ],
+    "not_claimed": [
+      "No Intelligent Block was created",
+      "No intelligent_block_id was assigned or inferred",
+      "No Smart Note exists at any canonical path",
+      "No Smart Link is verified",
+      "No authority, ratification, or capture authorization is asserted by this proposal"
+    ]
+  }
+}
