@@ -307,7 +307,7 @@
   "VERIFIED",
   "ERROR"
  ],
- "version": "2.1.0",
+ "version": "2.2.0",
  "doors_canonical": [
   {
    "door_id": "DOOR-GITHUB",
@@ -426,5 +426,128 @@
   "issue": 554,
   "finding_rule": "materially_not_right => post_with_evidence",
   "posting_grants_authority": false
- }
+ },
+ "experience_north_star": {
+  "phrase": "Make intelligence beautiful to experience.",
+  "product_metaphor": "living_intelligence_environment",
+  "reject_metaphor": "generic_enterprise_dashboard",
+  "emotional_arc": [
+   "CURIOSITY",
+   "RECOGNITION",
+   "TRUST",
+   "ORIENTATION",
+   "COMMAND",
+   "FLOW",
+   "MASTERY",
+   "CONTINUITY"
+  ]
+ },
+ "art_direction": {
+  "attributes": [
+   "beautiful",
+   "alive",
+   "calm",
+   "deep",
+   "precise",
+   "luminous",
+   "intimate",
+   "expansive",
+   "trustworthy",
+   "effortless"
+  ],
+  "hierarchy": [
+   "PURPOSE",
+   "HIERARCHY",
+   "COMPOSITION",
+   "MATERIAL",
+   "LIGHT",
+   "TYPE",
+   "ICON",
+   "COLOR",
+   "MOTION",
+   "MICRO_DETAIL"
+  ],
+  "three_second_questions": [
+   "WHERE_AM_I",
+   "WHAT_MATTERS",
+   "WHAT_CAN_I_DO_NEXT"
+  ],
+  "anti_generic_test": "If branding disappeared, the experience must remain unmistakably NayaNET.",
+  "restraint_law": "More intelligence, less burden. More depth, less clutter.",
+  "divine_design_project_meaning": [
+   "purpose",
+   "proportion",
+   "harmony",
+   "truth",
+   "beauty",
+   "usefulness",
+   "nothing_arbitrary"
+  ]
+ },
+ "lighting_law": {
+  "layers": [
+   "MATERIAL_CORE",
+   "EDGE_LIGHT",
+   "SPECULAR_HIGHLIGHT",
+   "CAST_SHADOW",
+   "SEMANTIC_AURA",
+   "STATE_AMPLIFICATION"
+  ],
+  "rule": "depth_first_light_second_glow_last",
+  "prohibit": [
+   "uniform_neon_edges",
+   "giant_blur_clouds",
+   "glow_over_readability",
+   "glow_as_geometry_substitute"
+  ]
+ },
+ "typography_law": {
+  "primary": "high_contrast_neutral",
+  "muted": "clearly_legible",
+  "prohibit_primary_body": [
+   "pale_lavender",
+   "low_contrast_light_purple"
+  ],
+  "rules": [
+   "concise_titles",
+   "readable_metadata",
+   "consistent_rhythm",
+   "single_coherent_type_system",
+   "sustained_reading_line_length"
+  ]
+ },
+ "motion_classes": {
+  "MICRO": "hover_focus_press_toggle_reveal",
+  "STATE": "loading_processing_connecting_verification_success_failure",
+  "SCENE": "welcome_identity_hub_and_room_continuity"
+ },
+ "motion_rules": [
+  "motion_must_preserve_meaning",
+  "state_motion_only_while_state_is_true",
+  "scene_motion_preserves_orientation",
+  "reduced_motion_preserves_semantics",
+  "performance_over_decorative_motion"
+ ],
+ "experience_qualification": [
+  "IDENTITY",
+  "PURPOSE",
+  "ORIENTATION",
+  "HIERARCHY",
+  "MATERIAL_CRAFT",
+  "SPECTRUM_SEMANTICS",
+  "ICON_COHERENCE",
+  "INTERACTION_TACTILITY",
+  "STATE_HONESTY",
+  "CAUSAL_COMPLETENESS",
+  "INTELLIGENCE",
+  "PROVENANCE_TRUST",
+  "ACCESSIBILITY",
+  "RESPONSIVE_QUALITY",
+  "PERFORMANCE",
+  "CONTINUITY",
+  "ERROR_CRAFT",
+  "RESTRAINT",
+  "HUMAN_VALUE",
+  "INDEPENDENT_REVIEW"
+ ]
 }
