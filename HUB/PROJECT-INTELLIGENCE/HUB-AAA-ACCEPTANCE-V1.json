@@ -1,0 +1,98 @@
+{
+  "schema": "nayanet.hub.aaa-acceptance.v1",
+  "status": "NOT_VERIFIED",
+  "evidence_law": [
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN",
+    "UNKNOWN != PASS",
+    "BLOCKED != PASS"
+  ],
+  "gates": [
+    {
+      "id": "G01",
+      "name": "visual_baseline",
+      "status": "NOT_VERIFIED",
+      "pass": "Reference screenshots exist and new app meets/exceeds them for composition, living depth, buttons, boards, typography and icon quality."
+    },
+    {
+      "id": "G02",
+      "name": "welcome_identity_hub_journey",
+      "status": "NOT_VERIFIED",
+      "pass": "Welcome → Identity → Intelligent Hub succeeds without routing to Academy/Powercast."
+    },
+    {
+      "id": "G03",
+      "name": "identity_governance",
+      "status": "NOT_VERIFIED",
+      "pass": "Identity/session is established through the governed identity seam; local presentation cache is not treated as authority."
+    },
+    {
+      "id": "G04",
+      "name": "canonical_navigation",
+      "status": "NOT_VERIFIED",
+      "pass": "One room registry drives rail/routes/themes; Smart Connect replaces historical Smart Share."
+    },
+    {
+      "id": "G05",
+      "name": "button_causality",
+      "status": "NOT_VERIFIED",
+      "pass": "Every visible interactive control has a real causal path or explicit unavailable/blocked state."
+    },
+    {
+      "id": "G06",
+      "name": "smart_connect_doors",
+      "status": "NOT_VERIFIED",
+      "pass": "Smart Connect reads the canonical Smart Door model; connection/capability never mints authority."
+    },
+    {
+      "id": "G07",
+      "name": "truth_states",
+      "status": "NOT_VERIFIED",
+      "pass": "Loading, empty, blocked, unauthorized, unknown, error and success states are designed and honest."
+    },
+    {
+      "id": "G08",
+      "name": "canonical_data",
+      "status": "NOT_VERIFIED",
+      "pass": "Hub consumes governed runtime/canonical intelligence and creates no second front-end brain/store."
+    },
+    {
+      "id": "G09",
+      "name": "responsive_quality",
+      "status": "NOT_VERIFIED",
+      "pass": "Desktop/tablet/mobile preserve hierarchy, depth, semantic spectrum, tactile controls and readable intelligence."
+    },
+    {
+      "id": "G10",
+      "name": "accessibility",
+      "status": "NOT_VERIFIED",
+      "pass": "Keyboard, visible focus, semantic labels, contrast, touch targets and reduced-motion behavior pass."
+    },
+    {
+      "id": "G11",
+      "name": "performance",
+      "status": "NOT_VERIFIED",
+      "pass": "Realistic feed volume remains responsive without uncontrolled observers/polling/layout-thrashing animation."
+    },
+    {
+      "id": "G12",
+      "name": "browser_app_behavior",
+      "status": "NOT_VERIFIED",
+      "pass": "Deep links, back/forward, refresh recovery and route guards behave coherently."
+    },
+    {
+      "id": "G13",
+      "name": "runtime_proof",
+      "status": "NOT_VERIFIED",
+      "pass": "At least one real room completes identity → retrieval → action/refusal → observation → persisted/verified result through production-equivalent runtime."
+    },
+    {
+      "id": "G14",
+      "name": "human_director_visual_review",
+      "status": "NOT_VERIFIED",
+      "pass": "Human Director confirms the result did not regress from the approved living-depth design floor."
+    }
+  ],
+  "overall": "NOT_VERIFIED",
+  "next_action": "Use these gates as the acceptance contract for Issue #1270; close the first failing gate without weakening any prior gate."
+}
