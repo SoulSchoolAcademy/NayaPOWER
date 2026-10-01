@@ -54,6 +54,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 from naya_kernel.node_base import GateResult, GateVerdict, ManifestEntry, NodeBase
+from naya_kernel.nodes.evolve_node import package_hash as _successor_seal
 
 NODE_ID = "NAYA-KERNEL-SELF"
 NODE_VERSION = "0.1.0-candidate"
@@ -258,6 +259,25 @@ class SelfNode(NodeBase):
                     f"{label} belongs to owner_scope {src_owner!r}, "
                     f"instance serves {owner_scope!r}; owner boundaries "
                     f"are identity boundaries — notify")
+
+        # §5.2/A5: successor package seal integrity. EVOLVE seals the
+        # package with package_hash = H_S over the canonical body; a
+        # material mutation creates a new version, never a silent edit.
+        # The seal must recompute before any package content is trusted
+        # downstream: a tampered (or seal-less) package is refused as
+        # predecessor intelligence, never booted on. Placed after §4.5/§4.8
+        # so their existing refusal reasons are preserved; every mutation
+        # breaks the seal, so the seal is the backstop either way. A
+        # missing package (genesis or package-less boot) is unaffected.
+        if package is not None:
+            sealed = package.get("package_hash")
+            if not sealed or _successor_seal(package) != sealed:
+                return refuse(
+                    "successor package seal failure (§5.2/A5)",
+                    "package_hash does not recompute over the package body; "
+                    "the package was mutated after sealing (or carries no "
+                    "seal) — refused as predecessor intelligence, never "
+                    "booted on")
 
         # §4.3: checkpoint integrity. Hash mismatch → refused, never degraded.
         checkpoint = inputs.get("checkpoint")

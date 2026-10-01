@@ -429,32 +429,44 @@ def test_handoff_refused_on_missing_evidence(kernel, demo_stages):
 
 
 def test_broken_successor_package_fails_loudly(kernel, demo_stages):
-    """A tampered successor package fails its seal — loudly, at the seam."""
+    """A tampered successor package is REFUSED by the runtime — not merely
+    noticed by the test.
+
+    RED case for the tamper-acceptance hole (coordinator P1, 2026-10-01):
+    SELF.gate() is the consuming boundary for EVOLVE's sealed successor
+    package (successor contract §5.2/A5 — the seal must verify before any
+    package content is trusted). A package whose seal does not recompute
+    must be refused as predecessor intelligence: FAIL verdict, the refusal
+    receipted, and no boot proceeding on the tampered content. The test
+    observes the runtime's own outcome — it never computes a hash itself.
+    """
     decision = kernel.decide({"gates": demo_stages})
     assert decision["verdict"] == "PASS"
 
     harness = HandoffHarness()
     package, evolve_receipt = harness.build_evolve_handoff(
         decision, _successor_fields())
-    original_hash = package["package_hash"]
 
-    # Material mutation between cycles: the seal breaks, and the break is
-    # detected — never a silent edit (§5.2 / A5).
+    # Material mutation between cycles: the seal is broken.
     tampered = copy.deepcopy(package)
     tampered["successor_readiness"] = False
-    assert evolve_package_hash(tampered) != original_hash, (
-        "a material mutation MUST create a new version, never a silent edit")
 
-    # A successor that boots on the tampered copy binds the tampered
-    # receipt's hash — which does NOT match the true package hash. The
-    # mismatch against the true package hash is the loud signal.
     st = self_state()
     st["predecessor_receipt"] = copy.deepcopy(evolve_receipt)
     st["successor_package"] = tampered
     successor_self = self_node.SelfNode()
     gate_result = successor_self.gate(st)
-    assert gate_result.verdict.value == "PASS", gate_result.reasons
-    carried = successor_self.last_boot_receipt["inputs"]["successor_package"]
-    assert evolve_package_hash(carried) != original_hash, (
-        "the tampered package's seal differs from the true package hash "
-        "— the break is visible, not hidden")
+
+    # Runtime refusal: the tampered package is not accepted as valid
+    # predecessor intelligence.
+    assert gate_result.verdict.value == "FAIL", (
+        "a tampered successor package must be REFUSED by SELF.gate(), "
+        "not accepted and noticed later; got %r: %r"
+        % (gate_result.verdict.value, gate_result.reasons))
+    assert "seal" in gate_result.reasons[0].lower(), gate_result.reasons
+    # The failure is receipted.
+    assert successor_self.last_boot_receipt is not None, (
+        "the refusal must leave a boot receipt")
+    assert successor_self.last_boot_receipt["boot_state"] == "FAILED", (
+        "the boot receipt must record FAILED, not a boot on tampered "
+        "content")
