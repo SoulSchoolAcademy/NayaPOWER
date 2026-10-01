@@ -76,3 +76,5 @@ def test_cold_successor_lineage_uses_intelligence_commit_verifier_door():
     block = wf[start:end]
     assert '"$RUNTIME_FUNCTION"' in block
     assert '"$COLD_RUNTIME_FUNCTION"' not in block
+    assert "--fail-with-body" in block
+    assert 'cat cold-runtime-reread.json' in block
