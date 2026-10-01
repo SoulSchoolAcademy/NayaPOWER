@@ -32,7 +32,20 @@
       "VERIFY": "independently recompute decision/outcome claims, compare predicted vs observed value, and preserve calibration error",
       "LEARN": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify",
       "EVOLVE": "promote only verified and authorized recalibration versions into successor/system continuity without changing constitutional boundaries"
-    }
+    },
+    "purpose": "Calculate governed decisions through the one canonical Value Calculus.",
+    "inputs": [
+      "declared objective and baseline",
+      "candidate actions and current evidence",
+      "versioned quality and risk profiles",
+      "applicable authority"
+    ],
+    "outputs": [
+      "ACT / READ_MORE / ASK / REFUSE",
+      "typed decision receipt and preserved scoring inputs",
+      "verified calibration evidence and versioned recalibration candidate"
+    ],
+    "failure_mode": "Fail closed on prohibited actions, missing authority, critical unknowns, and insufficient evidence; never infer production proof from source integration."
   },
   "machine_view": {
     "specification": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",

@@ -23,7 +23,7 @@ def run_controls(tmp_path, gate_source):
         path = tmp_path / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
-    return subprocess.run([sys.executable, str(script)], text=True, capture_output=True)
+    return subprocess.run([sys.executable, str(script), "--instrument-only"], text=True, capture_output=True)
 
 
 DISCRIMINATING_STUB = '''
