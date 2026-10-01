@@ -48,9 +48,19 @@ class ActivationContext:
             "tenant_project_id": self.tenant_project_id,
             "network_scope": self.network_scope,
         }
-        missing = [name for name, value in required.items() if not str(value).strip()]
+        missing = [
+            name
+            for name, value in required.items()
+            if not isinstance(value, str) or not value.strip()
+        ]
         if missing:
             raise ValueError("ACTIVATION_CONTEXT_REQUIRED:" + ",".join(sorted(missing)))
+
+        try:
+            mode = self.mode if isinstance(self.mode, ActivationMode) else ActivationMode(self.mode)
+        except (TypeError, ValueError):
+            raise ValueError("ACTIVATION_MODE_INVALID") from None
+        object.__setattr__(self, "mode", mode)
 
         if not _REPO_RE.fullmatch(self.owner_repo):
             raise ValueError("OWNER_REPO_INVALID")

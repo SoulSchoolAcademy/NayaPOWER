@@ -1,3 +1,5 @@
+import pytest
+
 from kernel.activation_context import ActivationContext, ActivationMode
 
 
@@ -35,31 +37,38 @@ def test_independent_bootstrap_converges_into_same_context_shape():
     assert ctx.upstream_repo == "SoulSchoolAcademy/NayaPOWER"
 
 
+@pytest.mark.parametrize("field", ["human_owner_id", "naya_id", "owner_repo", "upstream_repo", "tenant_project_id", "network_scope"])
+@pytest.mark.parametrize("value", [None, "", "   ", 17])
+def test_required_identifiers_reject_null_blank_and_non_string_values(field, value):
+    with pytest.raises(ValueError, match="ACTIVATION_CONTEXT_REQUIRED"):
+        context(**{field: value}).validate()
+
+
 def test_missing_owner_identity_fails_closed():
-    try:
+    with pytest.raises(ValueError, match="human_owner_id"):
         context(human_owner_id="").validate()
-    except ValueError as exc:
-        assert "human_owner_id" in str(exc)
-    else:
-        raise AssertionError("missing owner identity must fail closed")
 
 
-def test_owner_repo_cannot_be_the_upstream_repo():
-    try:
-        context(owner_repo="SoulSchoolAcademy/NayaPOWER").validate()
-    except ValueError as exc:
-        assert str(exc) == "OWNER_REPO_MUST_BE_DISTINCT_FROM_UPSTREAM"
-    else:
-        raise AssertionError("owner repo must be distinct from upstream")
+@pytest.mark.parametrize("owner_repo", [
+    "SoulSchoolAcademy/NayaPOWER",
+    "soulschoolacademy/nayapower",
+    "SOULSCHOOLACADEMY/NAYAPOWER",
+])
+def test_owner_repo_cannot_be_the_upstream_repo_case_insensitively(owner_repo):
+    with pytest.raises(ValueError, match="OWNER_REPO_MUST_BE_DISTINCT_FROM_UPSTREAM"):
+        context(owner_repo=owner_repo).validate()
 
 
-def test_owner_repo_case_variant_cannot_masquerade_as_distinct_from_upstream():
-    try:
-        context(owner_repo="soulschoolacademy/nayapower").validate()
-    except ValueError as exc:
-        assert str(exc) == "OWNER_REPO_MUST_BE_DISTINCT_FROM_UPSTREAM"
-    else:
-        raise AssertionError("GitHub repository identity comparison must be case-insensitive")
+@pytest.mark.parametrize("mode", [None, "", "UNSUPPORTED", 17])
+def test_missing_or_unsupported_activation_mode_fails_closed(mode):
+    with pytest.raises(ValueError, match="ACTIVATION_MODE_INVALID"):
+        context(mode=mode).validate()
+
+
+@pytest.mark.parametrize("mode", ["FORK_FIRST", "INDEPENDENT_BOOTSTRAP"])
+def test_supported_string_mode_is_normalized_to_enum(mode):
+    validated = context(mode=mode).validate()
+    assert validated.mode is ActivationMode(mode)
 
 
 def test_two_owners_resolve_to_distinct_projection_targets():
