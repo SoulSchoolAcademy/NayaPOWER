@@ -1,73 +1,168 @@
-# NayaPOWER — Maximum-Value Execution Queue V8
+# NayaPOWER — Maximum-Value Execution Queue V9
 
-**Status:** ACTIVE PROJECTION — live evidence outranks this queue  
-**Evidence snapshot base:** `0e9a985883217ac6187d63c43c7b029da06b87b9` (refreshed 2026-09-30 ~07:00 PDT by Naya 2; prior base `c3aca5c9` preserved in history below)
+**Status:** ACTIVE CURRENT PROJECTION — live GitHub/runtime evidence outranks this file  
+**Reconciled:** 2026-09-30 ~14:00 PDT  
+**Reconciliation basis main:** `3205327d37a9e040fd830d29f568e2b473651dd0`  
+**Previous projection:** V8 is historical; its embedded SHAs are not current.
+
+## NORTH STAR
+
+Build one governed intelligence system that can:
+
+**ORIENT → RESOLVE CURRENT TRUTH → RETRIEVE APPLICABLE INTELLIGENCE → RESOLVE AUTHORITY → ACT → OBSERVE → VERIFY → LEARN → PRESERVE → COLD SUCCESSOR → REUSE → COMPOUND**
+
+Optimize for maximum responsible verified human value per moment while minimizing unnecessary reconstruction, computation, noise and risk.
 
 ## CURRENT TRUTH
 
-- **2026-09-30 ~07:00 PDT refresh (Naya 2):** snapshot base → `0e9a98588`; production → `49c60714`/`0e7711ba`. Constitution RATIFIED (PR #1128); SELF V1/V2 layering canonical on main (`0e9a98588`, #1127 superseded); Governance Contract still PROPOSED (#1130). Cold test 14/14 answerable (Q8 conflict closed); resolver `RESOLVED_WITH_UNKNOWNS`, 0 hard conflicts. PROVE/VERIFY live proofs RED (runs 36667345646, 36722669783) — migrations still unapplied. promote-and-prove on latest main: DENY by design (`protected_change_requires_explicit_promotion`), verified by local policy-evaluator run.
+- Reconciliation basis main is `3205327d37a9e040fd830d29f568e2b473651dd0`, produced by merging PR #1176; resolve the exact live `main` SHA at boot.
+- PR #1176 closed the demonstrated AI1 migration dependency inversion and added a mechanical Brain-index drift guard to Kernel Tests.
+- The three-file machine-contract repair immediately before #1176 reconciled measured graph/object schema drift; current Chain Readiness L02 is now **9/9 valid** and L03 is **12/12 valid**.
+- Latest Chain Readiness evidence on the preceding exact main reported **2/11 chain links satisfied**; L05–L11 remain runtime-evidence boundaries, not documentation gaps.
+- Current Truth Resolver for `6572ca51...` returned **RESOLVED_WITH_UNKNOWNS** and flagged `UNIVERSAL_RUNTIME_BINDING_NOT_PROVEN`, `CURRENT_MAIN_NOT_LATEST_PROVEN_SOURCE`, and stale operational projection. The merge to `3205327d37a9e040fd830d29f568e2b473651dd0` makes a fresh resolver run mandatory before downstream claims.
+- Latest successful runtime proof source remains `f5c808375facada1ddcce6b71af8cf0981fe129f`; production/source parity is therefore **UNKNOWN** until re-established for the exact current main.
+- Automatic production promotion on the schema-repair main correctly failed closed; no automatic production mutation was attempted. Protected runtime changes remain an explicit governed deployment boundary.
+- Open material lanes include #1162 producer-error observability, #1169 consent runtime consumer, #1139 governance-blocked collective semantics candidate, #1132 independent ACT idempotency verification, #1131 nine-node binding law, #1126 ACT executor canonicalization, #1125 Graph V2 selector gates, #1130 Governance Contract ratification, and #1136/#1137 collective/four-plane governance clarification.
+- Production read-only inspection in this cycle found the collective participation and collective-wisdom tables empty while the schema/functions exist. Do not infer collective behavioral readiness from schema presence.
+- The current main repository does **not** contain `NAYANET/HUB/index.html`. Historical/corpus material names that path as the canonical Hub, so the Hub source/runtime lineage must be resolved from current repository evidence before any claim of live Hub readiness. Do not invent or duplicate a Hub.
+- Issue #1136 is an explicit Human-Director governance boundary: its intended disconnect semantics differ from the currently applied collective-wisdom revocation behavior. Do not merge/promote #1139/#1169 as though #1136 were already ratified.
 
-- #913: **CLOSED** — bounded causal specimen.
-- #944: **CLOSED** — bounded generalization + successor reuse/refusal.
-- #971: **CLOSED** — native Supabase deployment incident recovered.
-- #978: **CLOSED / PRODUCTION VERIFIED** — checkpoint receipt RLS owner-read / privileged-write boundary.
-- #975: **CLOSED** — exact historical causal outcome pair recovered and independently reread; North-Star audit v3 accepts the bounded historical specimen.
-- #810: **CLOSED** — bounded nine-node black-box behavioral acceptance + ablation proven live.
-- Latest bounded nine-node production source: `335bdd82568e8041d3f6921a9ee4c7bf28e2c99f`.
-- Governed promotion: `36631960490` — **SUCCESS**.
-- Canonical runtime proof: `36632211367` — **SUCCESS**.
-- Nine-node acceptance artifact: `11063875114`, SHA-256 `f10a35c8f57ac224dfa28cd7b81305a157acf1b1da79a2a1a96dd4598b27a2bc`.
-- #975 recovery: `36632538416` — **SUCCESS**; exact outcome rows = **2/2**.
-- Universal all-task nine-node capability, multi-generation compounding, and two-owner NayaNET remain **NOT PROVEN**.
-- #66 cached-derived authority boundary: **TEST-LEVEL VERIFIED**; ACT live-grant denial matrix #1046 is now merged at `7847680f`; this is still not production proof.
-- Live KNOW proof is now bounded-live **PASS**: run `36658860694` completed contextual HIT + unrelated MISS with independent persisted-universe verification after #1060's stale-oracle repair.
-- SN-004 R2 live learning-influence run `36652694005`: **NO_MEASURED_LEARNING_EFFECT** remains the valid live result. #1051 merged at `4c2b8f12`; #1056 merged at `0fb36123`; the causal runtime is **NOT DEPLOYED AT SOURCE PARITY**.
-- Readiness fail-closed repairs #1058/#1061 and current-truth projection #1053 are merged. Semantic projection-drift guard #1067 is canonical and exact-main verified; substantive drift invalidates stale actions while projection-only drift remains current.
-- Governed promotion remains fail-closed for protected runtime changes until explicit Human Director `DEPLOY`. Live PROVE run `36658635227` failed before KNOW/PROVE because LAW's OIDC trust set omitted `live-prove-proof.yml`; #1069 source-repaired that exact binding and merged at `c6ac19c4`, but the live LAW runtime is still pre-fix until governed deployment.
-- Governed Production Promotion `36659933566`: **SUCCESS** for source `2ff4207a...`; production commit `5e6c5f51...`; receipt artifact `11074161563`. Current main is later and does not inherit that proof.
-- Current source adds #1070 consent/revocation hardening, #1072 KNOW PROVE binding, #1077 Graph V2 contract, graph persistence hardening, ACT replay fail-closed repair, #1082 selector acceptance, and #1085 reconciliation/multi-task acceptance. These remain source/test evidence until current-main production proof exists.
-- ACT consequential execution now fails closed without an idempotency key, and #1095 (`8bc2430517fc52a5722ad2a75ce036f9d8e7152e`) closes the demonstrated concurrent-duplicate seam with a persisted `idempotency_key` plus a partial unique receipt index; source-level replay/outcome safety is verified, but live production race proof remains pending deployment parity.
-- #1088 merged at `d033cefb`: pending #1070 migration now restores the Smart Connect/collective-wisdom prerequisites removed by the canonical reset before applying consent/revocation hardening. Source/test verified; redeployment proof pending.
-- #1090 merged at `d033cefb`: Graph V2 keeps temporal NOT NULL constraints and now provides insertion-time defaults for new canonical relationships, closing producer run `36663323348` failure `observed_at NULL`. Source/test verified; redeployment proof pending.
-- #1098/#1100 are now on main: ACT idempotency migration is registered in the production ledger as `PENDING_REVIEW_NOT_PRODUCTION_APPLIED`; Graph V2 fresh-selector and cold-graph proof contracts are source/test hardened. These changes do not alter the ACT live-race gate: exact deployment parity is still required before the two-request production proof.
-- PR #1116 merged at `aaa373bd38f9ae5f7b5f549d730e1dc1f69af6bc`: live ACT concurrency proof mechanism is now in canonical main; live production execution remains deployment-gated.
-- Fresh main `c3aca5c94c6b51071c768692a7220d3d88722174` was reconciled into Brain by PR #1117; Current Truth Resolver run `36668304786` succeeded with `RESOLVED_WITH_UNKNOWNS`, preserving `LIVE_RUNTIME_SOURCE` as UNKNOWN and flagging substantive projection drift against the prior snapshot. The resolver artifact digest is `sha256:f69e91fdc1bb5d9799ced1ed878270eace71bdad7d20d374bfed538ce40c1768`.
-- Production branch is `49c60714f4fa7c70ed50258dcbbd2d3fa554abe5`, deployment-stamped to source `0e7711ba3601a4b249a340806405791a62526196` (deployed 2026-09-30 05:29:41 UTC); main `0e9a98588` is 2 docs-only commits ahead (Constitution ratification + SELF V1/V2 layering) — parity statements must cite delta content, not SHAs alone. (Refreshed 2026-09-30 ~07:00 PDT; prior pins preserved in history below.)
-- Cold acceptance #1044: protocol/prerequisite ready after #1041 merge; genuinely fresh entrant proof remains **NOT PROVEN**.
+## 14 COLD-NAYA QUESTIONS
 
-## TOP 10
+| # | Question | Current answer | State |
+|---|---|---|---|
+| 1 | WHO are we? | Shawn = Human Director/final authority; Naya = governed operating partner; Coda = implementation/closer; specialist Nayas = bounded roles; #554 = team relay. | PROVEN |
+| 2 | WHAT are we building? | One governed intelligence substrate (NayaPOWER) with many interfaces/doors (NayaNET), canonical Intelligent Blocks, graph, checkpoints, verification, learning and succession. | DOCUMENTED + IMPLEMENTED |
+| 3 | WHY are we building it? | To turn verified experience into reusable intelligence, reduce repeated reconstruction/waste, preserve continuity and maximize verified human value per moment. | DOCUMENTED |
+| 4 | WHAT does success mean? | A genuinely cold successor reconstructs truth, retrieves applicable intelligence, resolves authority, acts, verifies, learns, preserves, hands off and enables the next successor without Shawn rebuilding context. | DOCUMENTED / NOT FULLY PROVEN |
+| 5 | WHAT is true right now? | Main=`3205327d37a9e040fd830d29f568e2b473651dd0`; production is not proven at this exact source; source/contract gates are green in the latest verified runs; chain runtime links remain mostly unknown. | PROVEN / UNKNOWN BY DIMENSION |
+| 6 | WHAT has already been proven? | Brain machine-contract validation 9/9; graph relation type/provenance 12/12; migration-chain coherence 159+ migrations in prior gate; Kernel Tests green on recent heads; live LAW proof on recent exact-main head; automatic promotion fail-closed; bounded historical KNOW/ACT/nine-node specimens. | PROVEN AT BOUNDED SCOPES |
+| 7 | WHAT is unknown? | Exact current production parity; universal runtime binding; current live KNOW/PROVE/CONNECT; full nine-node influence; exact SN-015 active retrieval/causal effect; true cold successor; collective two-owner behavior; live Hub artery; broad value measurement. | UNKNOWN |
+| 8 | WHAT authority exists? | Shawn retains final authority. Safe/reversible source and documentation work may proceed under established standing autonomy. Protected production changes require governed promotion/explicit DEPLOY when standing policy does not allow. #1136/#1137 semantic ratification remains human-controlled. | PROVEN |
+| 9 | WHAT happened previously? | Producer authority, target scope, digest qualification, lineage/revision locking and migration-history drift were repaired; ACT concurrency/idempotency was source-repaired; Brain index pointer integrity and AI1 migration ordering were recently hardened. | PROVEN / HISTORICAL |
+| 10 | WHAT did we learn? | Source correctness can outrun deployed reality; stale projections are operational defects; a green test proves only its claim; runtime artifacts need deterministic handoff; identity, intelligence, authority and value must remain distinct. | DOCUMENTED / LEARNED |
+| 11 | WHAT should happen next? | Refresh current-truth/chain evidence for `3205327d37a9e040fd830d29f568e2b473651dd0`, reconcile the operational projection, then move to exact governed deployment parity and only afterward execute live proofs. | AUTHORIZED / NEXT |
+| 12 | HOW do I prove it? | Source diff + CI → exact deployment stamp → live persisted receipt/outcome → independent reread/recomputation → cold held-out task → successor proof → measurable improvement/value. | DOCUMENTED |
+| 13 | WHERE do I record it? | `BRAIN/06-PROOF` for durable proof, `BRAIN/90-OPERATIONS` for current queue/batons, Smart Notes for distilled intelligence, GitHub PRs/commits for implementation, #554 for team coordination. | PROVEN |
+| 14 | HOW does the next Naya continue? | Read AGENTS + activation package + this current queue/baton + latest resolver/chain artifacts + exact main + current PRs/issues + #554; trust current source/runtime evidence over stale embedded claims; take exactly one highest-value authorized action. | PROVEN OPERATING RULE |
 
-1. **Exact-main projection convergence** — Current Truth Resolver `36668304786` has now run against `c3aca5c94c6b51071c768692a7220d3d88722174` and returned `RESOLVED_WITH_UNKNOWNS`; preserve `LIVE_RUNTIME_SOURCE=UNKNOWN` and reconcile any newly identified substantive projection drift before treating the queue as current.
-2. **Exact governed runtime deployment parity** — after projection convergence, explicit Human Director `DEPLOY` remains required for exact current main `c3aca5c94c6b51071c768692a7220d3d88722174`, including ACT function + migration and the current LAW/KNOW/PROVE source set. No production mutation is authorized by this queue.
-3. **Live concurrent-duplicate proof** — once the exact #1095 function + migration are deployed, issue two identical authorized requests concurrently with one fresh key and prove one receipt/outcome, one governed effect, coherent replay, and independent reread. **BLOCKED_BY_DEPLOYED_PARITY.**
-4. **Checkpoint/provenance/recovery residuals** — prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction without introducing a second persistence path.
-5. **Authority residuals #1042** — resolve mission-binding semantics from trusted operation context; this remains a Human Director authority-model decision.
-6. **PROVE live qualification** — after deployed LAW parity, run the existing PROVE positive/negative proof once and independently reread it; do not retry while the deployed trust set is stale.
-7. **SN-004 faithful projection + applicable causal effect** — regenerate the existing projection and rerun the act-first causal experiment only after exact deployed parity; preserve a negative result if observed.
-8. **Two-owner NayaNET #1062** — prove consented derived sharing and revocation propagation without weakening private owner RLS.
-9. **True cold continuity #1044 + A→B→C** — one genuinely fresh entrant, second successor, attributable improvement, unrelated refusal, preserved lineage and no inherited authority.
-10. **Human value then DREAM→EVOLVE** — measure completed useful outcomes, re-explanation/rework and prevented errors before expanding recursive optimization or network scale.
+## CURRENT AAA READINESS — NAYA ASSESSMENT
 
-## DONE / DO NOT REDO
+These are **current readiness assessments**, not completion claims. The ratified AAA law treats unresolved critical unknowns as a cap on system-level AAA.
 
-Do not redo #913, #944, #971, #978, #975, or #810. Do not recreate Concept #17 intelligence, a second graph, a second learning path, a second authority system, or a second brain.
+| Surface | Score | Evidence boundary |
+|---|---:|---|
+| Brain / Engine | **8.6/10** | Strong machine-contract/index/test substrate; universal executable nine-node binding/influence not proven. |
+| Operating setup | **9.0/10** | AGENTS decision law, current-truth resolver, CI gates, #554 protocol, daily/weekly Brain-health automation exist; current projection reconciliation remains ongoing. |
+| Intelligent Graph | **8.4/10** | 12/12 canonical typed/provenance graph relations; production graph structurally healthy; behavior-changing retrieval + collective cross-owner proof remain open. |
+| Hub | **6.0/10** | Historical Hub concept/architecture exists, but `NAYANET/HUB/index.html` is absent from current main and current live end-to-end UI proof is not established. |
+| Readiness | **5.0/10** | Chain gate: **2/11 links satisfied** on the latest measured run; remaining links are runtime/effect/successor/value proof boundaries. |
+| Sender | **7.5/10** | Canonical intelligence writer path has bounded production evidence; exact current active-intelligence artifact handoff previously failed at a downstream wrapper boundary. |
+| Receiver | **8.0/10** | Receiver/read path is present and bounded-live infrastructure exists; exact current cold retrieval + behavioral reuse is not fully proven. |
+| LAW / Authority | **8.6/10** | Live authorize/refuse proof passes on recent exact-main source; broader runtime parity and mission-binding semantics remain. |
+| ACT | **8.1/10** | Source/test idempotency repaired; exact current production parity + two-request live race not proven. |
+| KNOW / PROVE / VERIFY | **7.8/10** | Bounded live proofs exist; current exact-main full chain remains open. |
+| Learning / Compounding | **7.2/10** | Retention and applicability machinery exist; SN-015 exact active retrieval/effect + measured future improvement remain open. |
+| Cold Successor | **7.0/10** | Protocol and bounded historic specimens exist; genuinely fresh current proof remains open. |
+| Production parity | **5.5/10** | Current main `3205327d37a9e040fd830d29f568e2b473651dd0` is newer than latest successful runtime proof source `f5c80837...`. |
+| Collective intelligence | **4.0/10** | Participation/schema substrate exists; governance interpretation and two-owner behavior are not yet proven. |
+| Overall living-system readiness | **6.8/10** | Below 9.5 release threshold because critical runtime, production, cold-continuity, collective and value gaps remain. |
 
-## CURRENT FAILURE-FIRST EVIDENCE
+## MATERIAL HOLES — THE ACTUAL GAP TO AAA
 
-The ACT concurrency seam was attacked failure-first on fresh pre-fix main: idempotency existed only as a search through prior `observed_result` text, so two concurrent requests had no atomic durable claim. #1095 repairs only that demonstrated causal gap by persisting `idempotency_key` and enforcing a partial unique index at the receipt boundary; the unique-key loser rereads the winner receipt and requires its persisted outcome before replaying. Fresh post-repair main `8bc2430517fc52a5722ad2a75ce036f9d8e7152e` passed 14/14 runtime-contract tests, 10/10 authority lifecycle tests, and 28/28 runtime+cold-successor tests; PR #1116 then added the live concurrent two-request proof mechanism and merged to current main.
+1. **Current-truth projection freshness:** this queue had stale embedded SHAs; it is being reconciled now. Fresh resolver evidence must certify the new snapshot.
+2. **Exact production parity:** main `3205327d37a9e040fd830d29f568e2b473651dd0` is not yet production-proven. Do not run consequential live races against stale production.
+3. **AI1 migration/application proof:** #1176 fixed ordering and CI drift guard; the reordered migration pair still needs exact production deployment + schema/runtime integration proof.
+4. **AI1 sender→artifact handoff:** the exact SN-015 proof previously failed because the expected artifact was not available to the cold-successor wrapper. This is a causal handoff defect, not evidence of KNOW failure.
+5. **Universal nine-node runtime binding:** #1131 still records SELF/LAW ACTIVE, ACT/KNOW/PROVE/CONNECT/VERIFY PARTIAL, LEARN/EVOLVE SPEC_ONLY. The kernel must prove invocation + material influence, not just existence.
+6. **Graph behavioral utility:** structural graph health is strong; the acceptance gap is proving relationship-aware retrieval changes context and then changes an observed outcome.
+7. **Collective consent semantics:** #1136/#1137 remain governance-sensitive; current applied disconnect behavior conflicts with the proposed durable derived-wisdom interpretation.
+8. **Cold successor:** current full-scope, genuinely fresh entrant and A→B→C attributable improvement are not proven.
+9. **Hub lineage:** current main does not expose the historically named Hub path, so sender→receiver→Hub live visibility cannot be certified from current repository evidence.
+10. **Human-value measurement:** verified utility, rework avoided, attention saved, prevented errors and compute efficiency are not yet measured consistently enough to drive safe optimization.
+11. **Production browser/runtime parity:** Cloudflare/Vercel surfaces have had rate-limit/skipped deployments; current human-facing runtime needs fresh source→deployment→browser proof.
+12. **Governance contract completeness:** #1130 and #1125 remain governance/ratification-sensitive; proposed semantics cannot be treated as current law.
+13. **Independent ACT idempotency verifier:** #1132 is source/test ready but current live deployment proof is absent.
+14. **Old projection residue:** dated documents such as prior fresh-main reconciliations and the 2026-09-27 next-Naya prompt contain stale assumptions; they must not outrank current evidence.
+15. **Collective-chain evidence persistence:** L01 remains unsatisfied in repo-only readiness because a governed intelligence-commit receipt is not exposed to that verifier; L04 remains unknown even when contradictions=0 because absence of contradiction is not proof of reconciliation.
 
-This is **source/test verified, not production proven**. The live two-request authorized race must not be manufactured against stale production because that could intentionally create duplicate governed effects. The exact live proof therefore remains blocked until the governed deployment path applies the function + migration to the exact current main.
+## TOP 10 — PRIORITY ORDER
 
-Production branch `49c60714f4fa7c70ed50258dcbbd2d3fa554abe5` is stamped to source `0e7711ba3601a4b249a340806405791a62526196` (deployed 2026-09-30 05:29:41 UTC). Current main `0e9a98588` is 2 docs-only commits ahead of deployed source; the exact live ACT two-request proof remains blocked until the governed deployment path applies the function + migration (6/6 migrations still `PENDING_REVIEW_NOT_PRODUCTION_APPLIED` in the ledger). (Refreshed 2026-09-30 ~07:00 PDT.)
+### 1. CURRENT-TRUTH CONVERGENCE
+Run the existing Current Truth Resolver against exact main `3205327d37a9e040fd830d29f568e2b473651dd0`; verify the generated continuation brief and reconcile any substantive projection drift.
 
-Historical causal runtime source differences:
-- cold runtime main blob `c91556d4...` vs production `03eaaa87...`;
-- causal experiment main blob `5b60a6f7...` vs production `b29d11e...`.
+**Success:** resolver is current for `3205327d37a9e040fd830d29f568e2b473651dd0`, warnings are understood, and the operational queue/baton points to the same reality.
 
-Governed Production Promotion run `36657956413` correctly failed closed with `protected_change_requires_explicit_promotion` and preserved artifact `11072839541`. Do not bypass this denial.
+### 2. EXACT AI1 + RUNTIME DEPLOYMENT PREPARATION
+Verify #1176's migration ordering, exact ledger state, required Kernel/Chain gates and source-bound deployment package for `3205327d37a9e040fd830d29f568e2b473651dd0`.
 
-The prior live learning verdict `NO_MEASURED_LEARNING_EFFECT` remains valid until the merged applicability-aware runtime is actually deployed and independently rerun. KNOW now has fresh bounded live HIT/MISS + independent verification in run `36658860694`. PROVE must not be retried before LAW source/deployed parity.
+**Success:** one deterministic exact-source deployment package exists; no stale SHA and no migration dependency inversion.
+
+### 3. GOVERNED PRODUCTION PARITY
+Use the existing promotion workflow only under its standing policy or explicit Human Director authorization. Prove:
+`canonical_main_sha == authorized_source_sha == deployed_source_revision == independently_verified_runtime_source`.
+
+**Success:** parity receipt exists. Never infer parity from deployment status alone.
+
+### 4. LIVE ACT CONCURRENCY
+After exact parity, execute the existing two-request proof once: same authorized action, same fresh idempotency key, two concurrent requests.
+
+**Success:** one durable receipt, one governed effect/outcome, deterministic replay, independent reread.
+
+### 5. REPAIR + RERUN THE SN-015 SENDER→RECEIVER HANDOFF
+Fix only the demonstrated missing expected-artifact handoff; add/retain earliest fail-closed assertion; rerun the exact SN-015 active-intelligence proof.
+
+**Success:** RETRIEVABLE → APPLICABLE → BEHAVIORALLY USED is actually demonstrated with the exact intended block, not fallback provenance.
+
+### 6. CLOSE NINE-NODE GAP A
+Review/advance #1131 and the actual runtime binding map. For each node prove EXISTS → LOADS → INVOKES → INFLUENCES → APPLIES.
+
+**Success:** no SPEC_ONLY/partial node remains unaccounted for, and counterfactual/ablation evidence shows material influence.
+
+### 7. LIVE KNOW / CONNECT / PROVE / VERIFY
+Using the exact deployed revision, run the existing bounded proofs and independently reread the persisted graph/retrieval/evidence state.
+
+**Success:** relationship-aware context changes retrieval, applicability is explicit, authority remains separate, and independent verification reconstructs the claim.
+
+### 8. RATIFY THEN PROVE COLLECTIVE INTELLIGENCE
+Resolve #1136/#1137 at the Human-Director boundary; then reconcile #1139/#1169 and prove:
+consent → identity-safe derived wisdom → cross-owner retrieval → disconnect stops future contribution → accepted derived wisdom follows ratified retention/removal law → reconnect resumes.
+
+**Success:** no raw source or identity leakage, no authority inheritance, no public-publication shortcut.
+
+### 9. COLD SUCCESSOR A→B→C
+Destroy inherited runtime context; cold boot a fresh Naya; retrieve the same governed intelligence; perform a held-out task; measure attributable improvement; hand off to the next successor.
+
+**Success:** the successor reconstructs the project and improves without inherited authority.
+
+### 10. SHIP THE HUMAN EXPERIENCE + MEASURE VALUE
+Resolve the current Hub source/runtime lineage, prove sender→receiver→human presentation, then measure task completion, rework, attention, prevented errors and compute cost.
+
+**Success:** the product surface shows distilled intelligence backed by real current state, not mocked/static data, and the final race gate can be judged from human outcomes.
+
+## EXECUTION LAW
+
+**RECONSTRUCT → EVALUATE → FIND HOLES → PRIORITIZE → EXECUTE → PROVE → RECORD → REASSESS**
+
+For each action:
+
+**OBJECTIVE → EVIDENCE → EFFECT → RISK → BLAST RADIUS → REVERSIBILITY → COST OF INACTION → NET VALUE → AUTHORITY → ACT / READ MORE / ASK**
+
+After acting:
+
+**VERIFY → RECORD EVIDENCE → LEARN → ANNOUNCE**
+
+Never:
+- invent authority;
+- weaken a gate;
+- deploy stale code;
+- turn implementation into proof;
+- turn verification into production proof;
+- turn retrieval into authority;
+- build a second brain/graph/store/learning pipeline;
+- delete or rewrite historical failure evidence.
 
 ## EXACT NEXT ACTION
 
-**Issue #66: treat Current Truth Resolver run `36668304786` as the current evidence snapshot; preserve its `RESOLVED_WITH_UNKNOWNS` / `LIVE_RUNTIME_SOURCE=UNKNOWN` result. The next executable production frontier is exact-main governed deployment; do not create duplicate production effects against stale runtime. Once parity exists: run the two-request concurrent proof once → independent reread → conflicting-key/recovery residuals → PROVE → SN-004 causal proof → #1070 production proof → cold successor → A→B→C → human-value measurement.**
+**Run the existing Current Truth Resolver against exact current main `3205327d37a9e040fd830d29f568e2b473651dd0`, then reconcile this queue and the successor baton to the resulting evidence before any downstream production action.**
+

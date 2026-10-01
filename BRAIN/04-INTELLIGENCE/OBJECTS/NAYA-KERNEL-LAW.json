@@ -3,7 +3,7 @@
   "object_id": "NAYA-KERNEL-LAW",
   "object_type": "NODE",
   "version": "2.0",
-  "canonical_status": "VERIFIED_BOUNDED",
+  "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-LAW",
   "scope": "NayaPOWER kernel",
   "human_view": {
@@ -45,7 +45,9 @@
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
     "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
     "universal_envelope": "naya.master-node-envelope.v1",
-    "neighbor_handoff": "NAYA-KERNEL-ACT"
+    "neighbor_handoff": "NAYA-KERNEL-ACT",
+    "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "decision_calculus_role": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization"
   },
   "provenance": {
     "derived_from": [
@@ -90,6 +92,15 @@
       "type": "GOVERNS",
       "source_object_id": "NAYA-KERNEL-LAW",
       "target_object_id": "NAYA-KERNEL-EVOLVE",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LAW",
+      "direction": "IN",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-LAW",
       "epistemic_state": "VERIFIED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }

@@ -399,7 +399,7 @@ jobs:
         run: |
           set -euo pipefail
           date -u +"%Y-%m-%dT%H:%M:%SZ" > producer-dispatch-start.txt
-          gh workflow run "$PRODUCER_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+          gh workflow run "$PRODUCER_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"
           for i in $(seq 1 60); do
             runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$PRODUCER_WORKFLOW" --branch main --event workflow_dispatch --limit 20 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
             python - <<'PY' "$runs"

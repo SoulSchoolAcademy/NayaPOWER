@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { CapabilityValidationError, validateCapabilities } from "./capability-vocabulary.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -50,6 +51,15 @@ function coerceConnections(value: unknown): unknown[] | null {
   return value;
 }
 
+function coerceCapabilities(value: unknown): string[] | null {
+  try {
+    return validateCapabilities(value);
+  } catch (err) {
+    if (err instanceof CapabilityValidationError) throw new Error(err.code + ":" + err.detail);
+    throw err;
+  }
+}
+
 async function callCommit(body: Json, jti: string) {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -58,6 +68,19 @@ async function callCommit(body: Json, jti: string) {
   // Use the same direct PostgREST boundary proven by the existing cold-runtime
   // functions. The previous supabase-js .rpc() path could remain pending until
   // Supabase Edge's 150s worker resource limit terminated the request.
+  //
+  // AI1 capability carry (repair/ai1-capability-carry): `p_capabilities` is the
+  // ONLY channel by which capability metadata enters a block. It is validated
+  // here (fail fast, clean 400) and again server-side in the SQL writer (fail
+  // closed). Absent/empty -> null -> the writer persists the block exactly as
+  // today. Unknown/malformed -> the commit is rejected, never silently stored.
+  let capabilities: string[] | null = null;
+  try {
+    capabilities = validateCapabilities(body.p_capabilities);
+  } catch (err) {
+    if (err instanceof CapabilityValidationError) throw new Error(err.code + ":" + err.detail);
+    throw err;
+  }
   const response = await fetch(url + "/rest/v1/rpc/nayanet_intelligence_commit_runtime", {
     method: "POST",
     headers: {
@@ -79,6 +102,7 @@ async function callCommit(body: Json, jti: string) {
       p_authority_grant_id: String(body.p_authority_grant_id ?? ""),
       p_project_id: String(body.p_project_id ?? "NayaNET"),
       p_connections: coerceConnections(body.p_connections),
+      p_capabilities: capabilities,
     }),
   });
   const text = await response.text();
@@ -90,6 +114,12 @@ async function callSupersede(body: Json, jti: string) {
   const url = Deno.env.get("SUPABASE_URL");
   const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   if (!url || !key) throw new Error("SERVER_AUTH_CONFIG_MISSING");
+
+  // Supersession is a second canonical writer surface. Capability metadata
+  // must not disappear when a block is revised through it. Reuse the exact
+  // same bounded validator as callCommit; unknown/malformed values fail
+  // before the RPC and SQL validates again.
+  const capabilities = coerceCapabilities(body.p_capabilities);
 
   // Same direct PostgREST boundary as callCommit.
   const response = await fetch(url + "/rest/v1/rpc/nayanet_supersede_intelligent_block_runtime", {
@@ -114,6 +144,9 @@ async function callSupersede(body: Json, jti: string) {
       p_owner_scope: String(body.p_owner_scope ?? "PRIVATE"),
       p_idempotency_key: String(body.p_idempotency_key ?? ""),
       p_connections: coerceConnections(body.p_connections),
+      p_topic: body.p_topic === undefined || body.p_topic === null ? null : String(body.p_topic),
+      p_category: body.p_category === undefined || body.p_category === null ? null : String(body.p_category),
+      p_capabilities: capabilities,
     }),
   });
   const text = await response.text();

@@ -3,7 +3,7 @@
   "status": "PROPOSED_CANONICAL",
   "purpose": "Seed the Nine-Node semantic graph with explicit, auditable relationships.",
   "relationship_contract": "BRAIN/04-INTELLIGENCE/0002-GRAPH-CONTRACT-V1.md",
-  "epistemic_default": "UNVERIFIED",
+  "epistemic_default": "UNKNOWN",
   "edges": [
     {
       "relationship_id": "REL-KERNEL-SELF-LAW",
@@ -135,6 +135,114 @@
       "status": "ACTIVE",
       "provenance": [
         "BRAIN/01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-SELF",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-SELF",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LAW",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-LAW",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-ACT",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-ACT",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-KNOW",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-KNOW",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-PROVE",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-PROVE",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-CONNECT",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-CONNECT",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-VERIFY",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-VERIFY",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LEARN",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-LEARN",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-EVOLVE",
+      "source_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_id": "NAYA-KERNEL-EVOLVE",
+      "type": "APPLIES_TO",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+        ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json"
       ],
       "epistemic_state": "VERIFIED"
     }

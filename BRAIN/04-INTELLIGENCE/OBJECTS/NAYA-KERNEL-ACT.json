@@ -3,7 +3,7 @@
   "object_id": "NAYA-KERNEL-ACT",
   "object_type": "NODE",
   "version": "2.0",
-  "canonical_status": "VERIFIED_BOUNDED",
+  "canonical_status": "CANDIDATE",
   "owner_id": "NAYA-KERNEL-ACT",
   "scope": "NayaPOWER kernel",
   "human_view": {
@@ -39,7 +39,9 @@
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-KNOW",
     "runtime": "supabase/functions/nayanet-act-runtime/index.ts",
-    "smart_door_operation": "DOOR-AI/apply_retained_intelligence"
+    "smart_door_operation": "DOOR-AI/apply_retained_intelligence",
+    "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "decision_calculus_role": "execute only an ACT outcome that is admissible, authorized, bounded, and selected by the canonical calculus"
   },
   "provenance": {
     "derived_from": [
@@ -84,6 +86,15 @@
       "type": "VERIFIED_BY",
       "source_object_id": "NAYA-KERNEL-ACT",
       "target_object_id": "NAYA-KERNEL-VERIFY",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-ACT",
+      "direction": "IN",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-ACT",
       "epistemic_state": "VERIFIED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }

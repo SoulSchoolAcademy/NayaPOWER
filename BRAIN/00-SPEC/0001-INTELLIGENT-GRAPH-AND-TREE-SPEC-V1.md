@@ -224,7 +224,7 @@ Never collapse confidence into truth.
 
 ## 9. Graph relationship vocabulary
 
-The canonical controlled relationship vocabulary (21 types):
+The canonical controlled relationship vocabulary (22 types):
 
 ```
 DERIVED_FROM
@@ -305,6 +305,8 @@ A database row is persistence, not automatically intelligence.
 ## 12. Knowledge-bank rule
 
 The existing `KNOWLEDGE/NAYA POWER CONCEPT PART #1..#13.md` series is a **source corpus and design-history record**.
+
+> **Reconciliation note (2026-09-30):** this pointer was flagged as possibly absent; verified present — the `KNOWLEDGE/` source corpus exists at repository root (e.g. `KNOWLEDGE/NAYA POWER CONCEPT PART #1.md`). It is a source-history record, not a BRAIN/ address; do not treat it as canonical brain content.
 
 It must not be copied wholesale into the permanent brain.
 

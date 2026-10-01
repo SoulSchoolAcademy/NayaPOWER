@@ -1,5 +1,7 @@
 # NayaPOWER Brain — AAA File-by-File Scorecard V1
 
+> **Reconciliation banner (2026-09-30):** this scorecard is an **assessment of the 2026-09-27 hardening pass (77-file index)**. It is **NOT a current living-intelligence score**. The 8.4/10 below measures artifact/readiness of that pass; "current living-intelligence proof" was and remains NOT ESTABLISHED. Do not cite 8.4 as today's intelligence score.
+
 **Review target:** current BRAIN lineage on `main`, reconciled against the file inventory created 2026-09-27.  
 **Scoring:** 0–10 architecture/usability/readiness review; **not** runtime proof.  
 **Dimensions:** E=effectiveness, H=human understandability, A=AI understandability, M=machine readiness, P=proof readiness.

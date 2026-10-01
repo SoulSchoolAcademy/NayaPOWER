@@ -43,7 +43,9 @@
     "representation_contract": "BRAIN/11-KNOWLEDGE/0004-HUMAN-AI-MACHINE-REPRESENTATION-V1.md",
     "organism_contract": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
     "universal_envelope": "naya.master-node-envelope.v1",
-    "neighbor_handoff": "NAYA-KERNEL-EVOLVE"
+    "neighbor_handoff": "NAYA-KERNEL-EVOLVE",
+    "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+    "decision_calculus_role": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify"
   },
   "provenance": {
     "derived_from": [
@@ -76,6 +78,15 @@
       "source_object_id": "NAYA-KERNEL-LEARN",
       "target_object_id": "NAYA-KERNEL-EVOLVE",
       "epistemic_state": "SUPPORTED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
+      "relationship_id": "REL-VALUE-CALCULUS-LEARN",
+      "direction": "IN",
+      "type": "APPLIES_TO",
+      "source_object_id": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
+      "target_object_id": "NAYA-KERNEL-LEARN",
+      "epistemic_state": "VERIFIED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     }
   ],

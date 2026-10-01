@@ -63,6 +63,13 @@ function deriveGraphApplicability(block: any) {
       limitations: ["Does not create authority; LAW must independently authorize consequential action."],
     };
   }
+  if (/persistence alone is memory, not proof of active intelligence|retrieved intelligence does not grant authority/i.test(lesson)) {
+    return {
+      state: "APPLICABLE",
+      task_classes: ["active_intelligence_sensitive", "learning_reuse", "contextual_retrieval"],
+      limitations: ["Persistence and retrieval never create verification or authority; truth and LAW boundaries remain mandatory."],
+    };
+  }
   return {
     state: "UNKNOWN",
     task_classes: [],
@@ -134,8 +141,54 @@ Deno.serve(async (req: Request) => {
       const mismatched = Object.entries(rebuiltChain)
         .filter(([field, value]) => checkpoint.state?.[field] !== value)
         .map(([field, value]) => ({ field, checkpoint_state: checkpoint.state?.[field] ?? null, rebuilt_chain: value }));
+
+      let checkpointProvenance = "CURRENT_STATE_MATCH";
+      let immutableCheckpointEvidence: any = null;
       if (mismatched.length) {
-        return json({ ok: false, error: "CHECKPOINT_PROVENANCE_MISMATCH", checkpoint_id: checkpoint.id, checkpoint_revision: checkpoint.revision ?? null, mismatched }, 409);
+        // nayanet_project_cognition_state is intentionally one mutable row per
+        // (owner, project). A later intelligence commit may advance it beyond an
+        // older block. Historical learning must therefore reconstruct the old
+        // checkpoint from the immutable intelligence_commit receipt rather than
+        // clobbering or trusting the current mutable row.
+        const { data: commitReceipt, error: commitReceiptError } = await admin
+          .from("nayanet_execution_receipts")
+          .select("id,action,evidence,created_at")
+          .eq("id", commitReceiptId)
+          .eq("user_id", ownerId)
+          .eq("project_id", "NayaNET")
+          .maybeSingle();
+        if (commitReceiptError) throw commitReceiptError;
+        const ev = commitReceipt?.evidence && typeof commitReceipt.evidence === "object" ? commitReceipt.evidence : {};
+        const receiptMatchesHistoricalChain =
+          commitReceipt?.action === "intelligence_commit" &&
+          ev.checkpoint_id === checkpoint.id &&
+          ev.event_row_id === event.id &&
+          ev.intelligent_block_id === blockId &&
+          ev.lineage_id === lineage.id &&
+          ev.relationship_id === relationship.relationship_id &&
+          ev.index_id === index.id;
+        if (!receiptMatchesHistoricalChain) {
+          return json({
+            ok: false,
+            error: "CHECKPOINT_PROVENANCE_MISMATCH",
+            checkpoint_id: checkpoint.id,
+            checkpoint_revision: checkpoint.revision ?? null,
+            mismatched,
+            immutable_receipt_reconstruction: false,
+          }, 409);
+        }
+        checkpointProvenance = "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT";
+        immutableCheckpointEvidence = {
+          receipt_id: commitReceipt.id,
+          checkpoint_id: ev.checkpoint_id,
+          event_id: ev.event_row_id,
+          intelligent_block_id: ev.intelligent_block_id,
+          lineage_id: ev.lineage_id,
+          relationship_id: ev.relationship_id,
+          index_id: ev.index_id,
+          content_hash: ev.content_hash ?? null,
+          authority_grant_id: ev.authority_grant_id ?? null,
+        };
       }
       const lesson = String(block.content?.lesson || "").trim();
       if (!lesson) return json({ ok: false, error: "LESSON_CONTENT_REQUIRED" }, 409);
@@ -166,6 +219,8 @@ Deno.serve(async (req: Request) => {
           relationship_id: relationship.relationship_id,
           index_id: index.id,
           checkpoint_id: checkpoint.id,
+          checkpoint_provenance: checkpointProvenance,
+          immutable_checkpoint_evidence: immutableCheckpointEvidence,
           provenance_preserved: true,
         };
         const { data: repaired, error: repairError } = await admin.from("learning_evidence").update({ source_event_id: event.id, observed_value: repairedObserved }).eq("id", existing.id).eq("member_id", ownerId).select("*").single();
@@ -181,7 +236,7 @@ Deno.serve(async (req: Request) => {
           token_jti: payload.jti ?? null,
         });
       }
-      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
+      const candidate = { member_id: ownerId, target_id: "NAYA-NODE-0001", level: "E1_UNDERSTANDS", provenance: "OBSERVATION", status: "CANDIDATE", claim: lesson, observed_value: { intelligent_block_id: blockId, source_event_id: event.id, source_event_key: event.event_id, commit_receipt_id: commitReceiptId, lineage_id: lineage.id, relationship_id: relationship.relationship_id, index_id: index.id, checkpoint_id: checkpoint.id, checkpoint_provenance: checkpointProvenance, immutable_checkpoint_evidence: immutableCheckpointEvidence, provenance_preserved: true }, verification_method: "Pending independent causal verification of the persisted Event → Intelligent Block → Lineage → Relationship → Index → Checkpoint chain.", source_event_id: event.id };
       const { data: learning, error: createError } = await admin.from("learning_evidence").insert(candidate).select("*").single();
       if (createError) throw createError;
       return json({ ok: true, created: true, learning, source: { event, block, lineage, relationship, index, checkpoint }, runtime_identity: "github-actions-oidc", workflow_ref: workflowRef, token_jti: payload.jti ?? null });
@@ -202,21 +257,29 @@ Deno.serve(async (req: Request) => {
       const observed = retained.observed_value && typeof retained.observed_value === "object" && !Array.isArray(retained.observed_value)
         ? retained.observed_value
         : {};
-      const [block, relationship, checkpoint] = await Promise.all([
+      const [block, relationship, checkpoint, commitReceipt] = await Promise.all([
         admin.from("nayanet_intelligent_blocks").select("intelligent_block_id,understanding_state,provenance").eq("intelligent_block_id", String((observed as any).intelligent_block_id || "")).eq("owner_id", ownerId).maybeSingle(),
         admin.from("nayanet_brain_relationships").select("relationship_id,epistemic_state,provenance").eq("relationship_id", String((observed as any).relationship_id || "")).eq("owner_id", ownerId).maybeSingle(),
         admin.from("nayanet_project_cognition_state").select("id,state,status,revision,updated_at").eq("id", String((observed as any).checkpoint_id || "")).eq("user_id", ownerId).eq("project_id", "NayaNET").maybeSingle(),
+        admin.from("nayanet_execution_receipts").select("id,action,evidence,learning").eq("id", String((observed as any).commit_receipt_id || "")).eq("user_id", ownerId).eq("project_id", "NayaNET").maybeSingle(),
       ]);
       if (block.error) throw block.error;
       if (relationship.error) throw relationship.error;
       if (checkpoint.error) throw checkpoint.error;
+      if (commitReceipt.error) throw commitReceipt.error;
+      const historicalReceiptLockIn =
+        (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT" &&
+        Array.isArray(commitReceipt.data?.learning) &&
+        commitReceipt.data.learning.some((entry: any) => entry?.learning_id === retained.id && entry?.verified === true);
       const integration = {
         core_intelligence_updated: block.data?.understanding_state === "LEARNED",
-        progressive_intelligence_lock_in: checkpoint.data?.state?.status === "LEARNED",
+        progressive_intelligence_lock_in: checkpoint.data?.state?.status === "LEARNED" || historicalReceiptLockIn,
         intelligent_block_state: block.data?.understanding_state ?? null,
         relationship_epistemic_state: relationship.data?.epistemic_state ?? null,
         checkpoint_state_status: checkpoint.data?.state?.status ?? null,
         checkpoint_id: checkpoint.data?.id ?? null,
+        checkpoint_provenance: (observed as any).checkpoint_provenance || "CURRENT_STATE_MATCH",
+        historical_receipt_lock_in: historicalReceiptLockIn,
       };
       return json({
         ok: true,
@@ -309,6 +372,47 @@ Deno.serve(async (req: Request) => {
     const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
       ? promoted.observed_value
       : {};
+    let historicalCommitReceipt = null;
+    const historicalCommitReceiptId = String((observed as any).commit_receipt_id || "");
+    const historicalCheckpointProvenance = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT";
+    if (historicalCheckpointProvenance) {
+      if (!historicalCommitReceiptId) {
+        return json({ ok: false, error: "HISTORICAL_COMMIT_RECEIPT_REQUIRED" }, 409);
+      }
+      const { data: originalReceipt, error: originalReceiptError } = await admin
+        .from("nayanet_execution_receipts")
+        .select("*")
+        .eq("id", historicalCommitReceiptId)
+        .eq("user_id", ownerId)
+        .eq("project_id", "NayaNET")
+        .maybeSingle();
+      if (originalReceiptError) throw originalReceiptError;
+      if (!originalReceipt || originalReceipt.action !== "intelligence_commit") {
+        return json({ ok: false, error: "HISTORICAL_COMMIT_RECEIPT_NOT_FOUND" }, 409);
+      }
+      const immutableLearning = Array.isArray(originalReceipt.learning) ? originalReceipt.learning : [];
+      const immutableVerificationRecord = {
+        learning_id: promoted.id,
+        verified: true,
+        verification_method: verificationMethod,
+        verification_runtime: "github-actions-oidc",
+        verification_runtime_jti: payload.jti ?? null,
+        verified_at: new Date().toISOString(),
+        historical_checkpoint_provenance: "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT",
+      };
+      const immutableAlreadyRecorded = immutableLearning.some(
+        (entry: any) => entry?.learning_id === promoted.id && entry?.verified === true
+      );
+      const { data: updatedOriginalReceipt, error: originalReceiptUpdateError } = await admin
+        .from("nayanet_execution_receipts")
+        .update({ learning: immutableAlreadyRecorded ? immutableLearning : [...immutableLearning, immutableVerificationRecord] })
+        .eq("id", historicalCommitReceiptId)
+        .eq("user_id", ownerId)
+        .select("*")
+        .single();
+      if (originalReceiptUpdateError) throw originalReceiptUpdateError;
+      historicalCommitReceipt = updatedOriginalReceipt;
+    }
     const intelligentBlockId = String((observed as any).intelligent_block_id || "");
     const relationshipId = String((observed as any).relationship_id || "");
     const checkpointId = String((observed as any).checkpoint_id || "");
@@ -396,6 +500,7 @@ Deno.serve(async (req: Request) => {
       .single();
     if (relationshipUpdateError) throw relationshipUpdateError;
 
+    const historicalCheckpoint = historicalCheckpointProvenance;
     const { data: checkpointBefore, error: checkpointReadError } = await admin
       .from("nayanet_project_cognition_state")
       .select("*")
@@ -405,29 +510,34 @@ Deno.serve(async (req: Request) => {
       .maybeSingle();
     if (checkpointReadError) throw checkpointReadError;
     if (!checkpointBefore) return json({ ok: false, error: "CHECKPOINT_NOT_FOUND_FOR_LOCK_IN" }, 404);
-    const checkpointState = {
-      ...(checkpointBefore.state && typeof checkpointBefore.state === "object" ? checkpointBefore.state : {}),
-      status: "LEARNED",
-      learning_id: promoted.id,
-      learning_provenance: promoted.provenance,
-      intelligent_block_id: intelligentBlockId,
-      lineage_id: lineageId,
-      relationship_id: relationshipId,
-      index_id: indexId,
-      receipt_id: receipt?.id || receiptId || null,
-      causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
-      progressive_intelligence_lock_in: "LEARNED",
-      last_learning_verified_at: new Date().toISOString(),
-    };
-    const { data: checkpointAfter, error: checkpointUpdateError } = await admin
-      .from("nayanet_project_cognition_state")
-      .update({ state: checkpointState })
-      .eq("id", checkpointId)
-      .eq("user_id", ownerId)
-      .eq("project_id", "NayaNET")
-      .select("*")
-      .single();
-    if (checkpointUpdateError) throw checkpointUpdateError;
+
+    let checkpointAfter = checkpointBefore;
+    if (!historicalCheckpoint) {
+      const checkpointState = {
+        ...(checkpointBefore.state && typeof checkpointBefore.state === "object" ? checkpointBefore.state : {}),
+        status: "LEARNED",
+        learning_id: promoted.id,
+        learning_provenance: promoted.provenance,
+        intelligent_block_id: intelligentBlockId,
+        lineage_id: lineageId,
+        relationship_id: relationshipId,
+        index_id: indexId,
+        receipt_id: receipt?.id || receiptId || null,
+        causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
+        progressive_intelligence_lock_in: "LEARNED",
+        last_learning_verified_at: new Date().toISOString(),
+      };
+      const checkpointUpdate = await admin
+        .from("nayanet_project_cognition_state")
+        .update({ state: checkpointState })
+        .eq("id", checkpointId)
+        .eq("user_id", ownerId)
+        .eq("project_id", "NayaNET")
+        .select("*")
+        .single();
+      if (checkpointUpdate.error) throw checkpointUpdate.error;
+      checkpointAfter = checkpointUpdate.data;
+    }
 
     const integration = {
       core_intelligence_updated: true,
@@ -443,7 +553,8 @@ Deno.serve(async (req: Request) => {
       },
       cognitive_checkpoint: {
         id: checkpointAfter.id,
-        state_status: checkpointAfter.state?.status,
+        state_status: historicalCheckpoint ? "LEARNED_VIA_IMMUTABLE_RECEIPT" : checkpointAfter.state?.status,
+        checkpoint_provenance: historicalCheckpoint ? "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT" : "CURRENT_STATE_MATCH",
       },
     };
 
@@ -454,6 +565,7 @@ Deno.serve(async (req: Request) => {
         ? (receipt.learning || []).find((entry: any) => entry?.learning_id === promoted.id && entry?.verified === true) ?? null
         : null,
       receipt,
+      historical_commit_receipt: historicalCommitReceipt,
       integration,
       runtime_identity: "github-actions-oidc",
       workflow_ref: workflowRef,

@@ -1,7 +1,7 @@
 # NayaPOWER — Ultimate Master Execution Plan
 
 **Status:** ACTIVE PROJECTION — live GitHub/runtime evidence always outranks this file
-**Evidence snapshot base:** `ce3a2735f57bd1754790efbee994a3b9ba6fc999`
+**Evidence snapshot base:** `ce3a2735f57bd1754790efbee994a3b9ba6fc999` (at time of writing; see live main for current)
 **North Star:** Maximum Verified Human Value per Moment through durable, applicable, causally verified, successor-reusable intelligence.
 
 ## 1. MASTER OBJECTIVE

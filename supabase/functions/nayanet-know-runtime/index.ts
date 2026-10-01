@@ -59,6 +59,7 @@ async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
   return data as KnowGrant|null;
 }
 
+
 async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
     .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at,connections")
@@ -111,13 +112,19 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason,retrieval_creates_authority:false},403);
       const universe=await readEligibleUniverse(admin);
-      const result=selectKnowContext(request,universe);
+      // Selection-time is pinned and recorded: temporal gates are evaluated
+      // as-of this moment, and delayed-inspect must replay the same now
+      // (PROVE time-bomb class: H1 / PR #1120 — never recompute historical
+      // decisions with wall-clock now).
+      const selectionNow=new Date();
+      const result=selectKnowContext(request,universe,selectionNow);
       const receipt=await insertReceipt(admin,{
         user_id:OWNER_ID,project_id:PROJECT_ID,action:"know_context_retrieval",status:"SUCCESS",
         expected_result:"KNOW selects only owner-scoped current intelligence applicable to caller task context without caller-supplied answer/block identity.",
         observed_result:result.status+":"+(result.selected_block_id??"NONE"),
         evidence:{schema:"naya.know.receipt.v1",node_id:"NAYA-KERNEL-KNOW",request,result,law_receipt_id:authority.law_receipt_id,
           authority_refs:[authority.authority_grant_id],caller_selected_block:false,retrieval_creates_authority:false,candidate_count:universe.length,
+          selection_now:selectionNow.toISOString(),
           handoff_to:"NAYA-KERNEL-PROVE",runtime_identity:"naya-node-oidc",runtime_jti:payload.jti??null,workflow_ref:workflowRef},
         learning:[]
       });
@@ -135,7 +142,16 @@ Deno.serve(async(req)=>{
       const authority=validateKnowAuthority(request,lawReceipt as any,liveGrant,new Date());
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
-      const recomputed=selectKnowContext(request,universe);
+      // Replay the selection-time, never wall-clock now: temporal gates must
+      // be evaluated exactly as they were at selection. Ratified #1136 makes
+      // current participation distinct from historical acceptance of derived
+      // intelligence, so temporal replay does not perform a retroactive
+      // participation check. Fallback: recorded selection_now → receipt created_at
+      // (legacy receipts, pre-V2 wiring) → wall clock as last resort.
+      const recordedNowRaw=receipt.evidence?.selection_now??receipt.created_at??null;
+      const recordedNowMs=recordedNowRaw!==null?Date.parse(String(recordedNowRaw)):NaN;
+      const inspectNow=Number.isFinite(recordedNowMs)?new Date(recordedNowMs):new Date();
+      const recomputed=selectKnowContext(request,universe,inspectNow);
       const recorded=receipt.evidence?.result??{};
       const sameTask=receipt.evidence?.request?.task_id===request.task_id &&
         receipt.evidence?.request?.task_class===request.task_class &&

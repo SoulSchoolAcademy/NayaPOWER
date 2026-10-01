@@ -122,9 +122,18 @@ jobs:
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
+              lesson_content="Preserve provenance before applying retained intelligence."
+              digest=hashlib.sha256(lesson_content.encode()).hexdigest()
+              pathlib.Path("smart-note-expected.json").write_text(json.dumps({
+                "capture_path":"",
+                "capture_id":None,
+                "expected_content":lesson_content,
+                "content_hash":digest,
+                "resolved_connections":[]
+              },indent=2,ensure_ascii=False))
               request={
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
-                "p_title":"Naya runtime flow lesson","p_content":"Preserve provenance before applying retained intelligence.",
+                "p_title":"Naya runtime flow lesson","p_content":lesson_content,
                 "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
                 "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
               }
@@ -308,11 +317,33 @@ jobs:
           python - <<'PY'
           import json
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
-          expected=json.load(open("smart-note-expected.json"))
-          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
-          assert len(matches)==1, matches
-          e=matches[0]
-          p=e["provenance"]
+          capture_path=open("capture-path.txt").read().strip()
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              assert capture_path, "smart-note expected artifact missing and capture path is empty"
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              import hashlib
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
+
+          if capture_path:
+              matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+              assert len(matches)==1, matches
+              e=matches[0]
+              p=e["provenance"]
+          else:
+              ids=json.load(open("fresh-lesson-lineage-ids.json"))
+              e={"intelligent_block_id":ids["intelligent_block_id"]}
+              p={
+                "event_id":ids["event_id"],
+                "lineage_id":ids["lineage_id"],
+                "relationship_id":ids["relationship_id"],
+                "runtime_index_id":ids["index_id"],
+                "checkpoint_id":ids["checkpoint_id"],
+                "receipt_id":ids["receipt_id"],
+              }
+
           req={
             "mode":"verify",
             "event_id":p["event_id"],"intelligent_block_id":e["intelligent_block_id"],
@@ -322,11 +353,31 @@ jobs:
           json.dump(req,open("cold-verify-request.json","w"))
           json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json
+          for attempt in 1 2 3; do
+            if curl -fsS --connect-timeout 10 --max-time 30 -X POST \
+              -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+              -H "Content-Type: application/json" \
+              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json; then
+              if [[ -s cold-runtime-reread.json ]]; then
+                break
+              fi
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: three bounded attempts produced no JSON body"
+              exit 1
+            fi
+            sleep 2
+          done
           python - <<'PY'
           import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
-          expected=json.load(open("smart-note-expected.json"))
+          try:
+              expected=json.load(open("smart-note-expected.json"))
+          except FileNotFoundError:
+              capture_path=open("capture-path.txt").read().strip()
+              capture=json.load(open(capture_path))
+              distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
+              expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
           target=json.load(open("cold-target.json"))
           checks=r["checks"]; persisted=r["persisted"]
           receipt_evidence=persisted["receipt"].get("evidence",{})

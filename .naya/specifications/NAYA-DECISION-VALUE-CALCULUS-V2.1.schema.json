@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.local/schemas/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json",
+  "title": "NayaPOWER Decision Value Calculus V2.1 Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_type",
+    "schema_version",
+    "engine_version",
+    "decision_id",
+    "objective",
+    "baseline_id",
+    "stakeholders",
+    "horizon",
+    "evaluation",
+    "authority_basis",
+    "evidence_refs",
+    "observation_window",
+    "verification",
+    "delta_v_predicted",
+    "delta_v_actual",
+    "d_verified",
+    "calibration_error"
+  ],
+  "properties": {
+    "receipt_type": {
+      "const": "ALIGNMENT_DECISION"
+    },
+    "schema_version": {
+      "const": "2.1"
+    },
+    "engine_version": {
+      "const": "DECISION-VALUE-CALCULUS-V2.1"
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "horizon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "decision",
+        "selected",
+        "top3",
+        "rows",
+        "frontier"
+      ],
+      "properties": {
+        "decision": {
+          "enum": [
+            "ACT",
+            "READ_MORE",
+            "ASK",
+            "REFUSE"
+          ]
+        },
+        "selected": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relative_margin": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "top3": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/evaluationRow"
+          }
+        },
+        "frontier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evaluationRow"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evaluationRow"
+          }
+        },
+        "interval_gap": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "authority_basis": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "observation_window": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "starts_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ends_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "verification": {
+      "enum": [
+        "UNVERIFIED",
+        "PASS_PENDING_WINDOW",
+        "VERIFIED_PASS",
+        "FAIL",
+        "ESCALATE"
+      ]
+    },
+    "delta_v_predicted": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "delta_v_actual": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "d_verified": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": -10,
+      "maximum": 10
+    },
+    "calibration_error": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    }
+  },
+  "$defs": {
+    "evaluationRow": {
+      "type": "object",
+      "required": [
+        "candidate_id",
+        "gate",
+        "gate_reasons",
+        "q",
+        "pv",
+        "delta_v",
+        "v_safe",
+        "residual_risk",
+        "effective_stakes",
+        "reversible",
+        "dependency_unlock",
+        "human_burden",
+        "is_baseline",
+        "v_low",
+        "v_high",
+        "interval_width"
+      ],
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gate": {
+          "enum": [
+            "PROHIBITED",
+            "NEEDS_AUTHORITY",
+            "NEEDS_EVIDENCE",
+            "ADMISSIBLE"
+          ]
+        },
+        "gate_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "q": {
+          "type": "object",
+          "required": [
+            "Q",
+            "confidence_aggregate",
+            "confidence_critical",
+            "critical_confidences",
+            "dimensions",
+            "confidences",
+            "missing_dimensions",
+            "weights"
+          ],
+          "properties": {
+            "Q": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "confidence_aggregate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "confidence_critical": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "critical_confidences": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "dimensions": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              }
+            },
+            "confidences": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "missing_dimensions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "weights": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "pv": {
+          "type": "number"
+        },
+        "delta_v": {
+          "type": "number"
+        },
+        "v_safe": {
+          "type": "number"
+        },
+        "residual_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "effective_stakes": {
+          "enum": [
+            "low",
+            "high",
+            "consequential"
+          ]
+        },
+        "reversible": {
+          "type": "boolean"
+        },
+        "dependency_unlock": {
+          "type": "number"
+        },
+        "human_burden": {
+          "type": "number",
+          "minimum": 0
+        },
+        "is_baseline": {
+          "type": "boolean"
+        },
+        "v_low": {
+          "type": "number"
+        },
+        "v_high": {
+          "type": "number"
+        },
+        "interval_width": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

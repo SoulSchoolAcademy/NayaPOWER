@@ -61,7 +61,10 @@ def test_cold_successor_generalization_preserves_non_inheritance_and_refusal():
     raw = _workflow()
     block = raw.split("  cold-successor-generalization:", 1)[1].split("\n  cold-successor-generalization-verification:", 1)[0]
     assert "mode=cold-successor&learning_id=" in block
-    assert "task_id=NAYA-0001-PROVENANCE-HELDOUT-002" in block
+    assert "related_task_id=" in block
+    assert "task_id=${related_task_id}" in block
+    assert "NAYA-0001-PROVENANCE-HELDOUT-002" in block
+    assert "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002" in block
     assert "task_id=NAYA-0001-UNRELATED-ARITHMETIC-001" in block
     assert 'x["authority_boundary"]["authority_inherited"] is False' in block
     assert 'x["authority_boundary"]["successor_grant_count"] == 0' in block

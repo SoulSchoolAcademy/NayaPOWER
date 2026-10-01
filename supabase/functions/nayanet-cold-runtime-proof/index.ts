@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "f5c808375facada1ddcce6b71af8cf0981fe129f";
+const DEPLOYED_SOURCE_REVISION = "a0a666ab56691eaeecb61e3c15eda7976004b582";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),
@@ -57,6 +57,7 @@ async function auth(req: Request) {
 
 const GRAPH_TASKS: Record<string, { task_class: string }> = {
   "COLD-NAYA-GRAPH-HELDOUT-001": { task_class: "provenance_sensitive" },
+  "COLD-NAYA-GRAPH-ACTIVE-INTELLIGENCE-001": { task_class: "active_intelligence_sensitive" },
 };
 
 const graphRelationshipEligible = (r: any, taskClass: string, blockId: string, now: Date, supersededIds: Set<string>) => {
@@ -374,42 +375,67 @@ Deno.serve(async (req: Request) => {
       const binding = grantRows.filter((g: any) => g.scope?.target === NAYA_ID && Array.isArray(g.actions) && g.actions.includes("naya_node_apply"));
       if (binding.length < 1) return json({ error: "DURABLE_NAYA_AUTHORIZATION_BINDING_INVALID" }, 403);
 
-      const learningCapabilities = lesson.includes("Preserve provenance before applying retained intelligence")
-        ? ["provenance_preservation"]
-        : [];
+      const learningCapabilities: string[] = [];
+      if (lesson.includes("Preserve provenance before applying retained intelligence")) {
+        learningCapabilities.push("provenance_preservation");
+      }
+      if (
+        lesson.includes("Persistence alone is memory, not proof of active intelligence.") &&
+        lesson.includes("Retrieved intelligence does not grant authority")
+      ) {
+        learningCapabilities.push("active_intelligence_discipline");
+      }
+      const relatedTask = learningCapabilities.includes("provenance_preservation")
+        ? {
+            task_id: "NAYA-0001-PROVENANCE-HELDOUT-002",
+            task_class: "RELATED_HELDOUT",
+            required_capability: "provenance_preservation",
+            instruction: "Transform a retained intelligence record for a successor handoff while preserving the exact authoritative source lineage.",
+            treatment_behavior: "PRESERVE_PROVENANCE_BEFORE_APPLY",
+            outcome_key: "provenance_preserved",
+          }
+        : learningCapabilities.includes("active_intelligence_discipline")
+          ? {
+              task_id: "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002",
+              task_class: "RELATED_HELDOUT",
+              required_capability: "active_intelligence_discipline",
+              instruction: "Reuse retained intelligence on a second governance-sensitive decision while preserving truth and authority boundaries.",
+              treatment_behavior: "REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+              outcome_key: "governed_autonomy_applied",
+            }
+          : null;
+      if (!relatedTask) return json({ error: "NO_PREDECLARED_APPLICABLE_GENERALIZATION_TASK" }, 409);
       const tasks = [
-        {
-          task_id: "NAYA-0001-PROVENANCE-HELDOUT-002",
-          task_class: "RELATED_HELDOUT",
-          required_capability: "provenance_preservation",
-          instruction: "Transform a retained intelligence record for a successor handoff while preserving the exact authoritative source lineage.",
-        },
+        relatedTask,
         {
           task_id: "NAYA-0001-UNRELATED-ARITHMETIC-001",
           task_class: "UNRELATED_NEGATIVE_TRANSFER",
           required_capability: "arithmetic_only",
           instruction: "Compute 7 + 5 and report the result.",
+          treatment_behavior: "NO_APPLICABLE_RETAINED_INTELLIGENCE",
+          outcome_key: "answer",
         },
       ];
 
       const runTask = (task: any, retainedAvailable: boolean) => {
         const applicable = retainedAvailable && learningCapabilities.includes(task.required_capability);
         if (task.task_class === "RELATED_HELDOUT") {
+          const outcome: any = {
+            task_completed: true,
+            source_event_bound: applicable ? learning.source_event_id : null,
+            intelligent_block_bound: applicable ? sourceBlockId : null,
+          };
+          outcome[task.outcome_key] = applicable;
           return {
             applicable,
-            behavior: applicable ? "PRESERVE_PROVENANCE_BEFORE_APPLY" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE",
-            outcome: {
-              task_completed: true,
-              provenance_preserved: applicable,
-              source_event_bound: applicable ? learning.source_event_id : null,
-              intelligent_block_bound: applicable ? sourceBlockId : null,
-            },
+            behavior: applicable ? task.treatment_behavior : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE",
+            outcome,
           };
         }
         return {
           applicable,
           behavior: "NO_APPLICABLE_RETAINED_INTELLIGENCE",
-          outcome: { task_completed: true, answer: 12, provenance_preserved: null },
+          outcome: { task_completed: true, answer: 12 },
         };
       };
 
@@ -463,6 +489,9 @@ Deno.serve(async (req: Request) => {
         persisted.push(control, treatment);
         summaries[task.task_id] = {
           task_class: task.task_class,
+          required_capability: task.required_capability,
+          treatment_behavior_expected: task.treatment_behavior,
+          outcome_key: task.outcome_key,
           control_receipt_id: control.id,
           treatment_receipt_id: treatment.id,
           control_behavior: controlResult.behavior,
@@ -474,12 +503,13 @@ Deno.serve(async (req: Request) => {
         };
       }
 
-      const related = summaries["NAYA-0001-PROVENANCE-HELDOUT-002"];
+      const related = summaries[relatedTask.task_id];
       const unrelated = summaries["NAYA-0001-UNRELATED-ARITHMETIC-001"];
       const relatedImproved =
         related.behavioral_delta === true &&
-        related.control_outcome.provenance_preserved === false &&
-        related.treatment_outcome.provenance_preserved === true;
+        related.applicability === true &&
+        related.control_outcome[relatedTask.outcome_key] === false &&
+        related.treatment_outcome[relatedTask.outcome_key] === true;
       const negativeTransferRefused =
         unrelated.behavioral_delta === false &&
         unrelated.applicability === false &&
@@ -653,6 +683,8 @@ Deno.serve(async (req: Request) => {
       const successorTasks: Record<string, { task_class: string; required_capability: string }> = {
         "NAYA-0001-PROVENANCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "provenance_preservation" },
         "NAYA-0001-PROVENANCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "provenance_preservation" },
+        "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "active_intelligence_discipline" },
+        "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "active_intelligence_discipline" },
         "NAYA-0001-UNRELATED-ARITHMETIC-001": { task_class: "UNRELATED_NEGATIVE_TRANSFER", required_capability: "arithmetic_only" },
       };
       const successorTask = successorTasks[successorTaskId];
@@ -679,10 +711,17 @@ Deno.serve(async (req: Request) => {
       // 4. MATERIAL USE. Behaviour is derived from the RETRIEVED lesson, not from caller input.
       const lesson = successorBlock.content?.lesson;
       if (typeof lesson !== "string" || !lesson) return json({ error: "RETAINED_LESSON_MISSING" }, 409);
-      const lessonCapabilities = lesson.includes("Preserve provenance before applying retained intelligence") ? ["provenance_preservation"] : [];
+      const lessonCapabilities: string[] = [];
+      if (lesson.includes("Preserve provenance before applying retained intelligence")) lessonCapabilities.push("provenance_preservation");
+      if (
+        lesson.includes("Persistence alone is memory, not proof of active intelligence.") &&
+        lesson.includes("Retrieved intelligence does not grant authority")
+      ) lessonCapabilities.push("active_intelligence_discipline");
       const applicableToTask = lessonCapabilities.includes(successorTask.required_capability);
       const behavior = applicableToTask
-        ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+        ? (successorTask.required_capability === "provenance_preservation"
+            ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+            : "REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY")
         : (successorTask.task_class === "UNRELATED_NEGATIVE_TRANSFER" ? "NO_APPLICABLE_RETAINED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE");
       const learningSupportsLesson = typeof learning.claim === "string" && lesson.includes(String(learning.claim).slice(0, 24));
 
@@ -735,7 +774,7 @@ Deno.serve(async (req: Request) => {
           applicable_to_task: applicableToTask,
           behavior_derived_from_retrieved_lesson: behavior,
           lesson_supports_persisted_learning: learningSupportsLesson,
-          materially_attributable: applicableToTask && behavior === "PRESERVE_PROVENANCE_BEFORE_APPLY" && verifiedRels.length > 0,
+          materially_attributable: applicableToTask && behavior !== "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE" && verifiedRels.length > 0,
           correct_refusal: !applicableToTask && behavior === "NO_APPLICABLE_RETAINED_INTELLIGENCE",
         },
         authority_boundary: {
@@ -769,6 +808,8 @@ Deno.serve(async (req: Request) => {
       const verifierTasks: Record<string, { task_class: string; required_capability: string }> = {
         "NAYA-0001-PROVENANCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "provenance_preservation" },
         "NAYA-0001-PROVENANCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "provenance_preservation" },
+        "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-001": { task_class: "ORIGINAL_BOUNDED", required_capability: "active_intelligence_discipline" },
+        "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-002": { task_class: "RELATED_HELDOUT", required_capability: "active_intelligence_discipline" },
         "NAYA-0001-UNRELATED-ARITHMETIC-001": { task_class: "UNRELATED_NEGATIVE_TRANSFER", required_capability: "arithmetic_only" },
       };
       const verifierTask = verifierTasks[verifierTaskId];
@@ -787,10 +828,18 @@ Deno.serve(async (req: Request) => {
       const vRels = await get("/rest/v1/nayanet_brain_relationships?owner_id=eq." + OWNER_ID + "&target_id=eq." + encodeURIComponent(vBlockId) + "&select=relationship_id,epistemic_state,provenance");
       const vVerified = vRels.filter((r: any) => r.epistemic_state === "VERIFIED" && r.provenance);
       const vLesson = vBlock.content?.lesson;
-      const vLessonCapabilities = typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence") ? ["provenance_preservation"] : [];
+      const vLessonCapabilities: string[] = [];
+      if (typeof vLesson === "string" && vLesson.includes("Preserve provenance before applying retained intelligence")) vLessonCapabilities.push("provenance_preservation");
+      if (
+        typeof vLesson === "string" &&
+        vLesson.includes("Persistence alone is memory, not proof of active intelligence.") &&
+        vLesson.includes("Retrieved intelligence does not grant authority")
+      ) vLessonCapabilities.push("active_intelligence_discipline");
       const vApplicableToTask = vLessonCapabilities.includes(verifierTask.required_capability);
       const vBehavior = vApplicableToTask
-        ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+        ? (verifierTask.required_capability === "provenance_preservation"
+            ? "PRESERVE_PROVENANCE_BEFORE_APPLY"
+            : "REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY")
         : (verifierTask.task_class === "UNRELATED_NEGATIVE_TRANSFER" ? "NO_APPLICABLE_RETAINED_INTELLIGENCE" : "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE");
       // Recompute the authority verdict independently from the grant table.
       const vSuccGrants = grantRows.filter((g: any) => g.scope?.target === successorId);

@@ -20,3 +20,38 @@ def test_cold_successor_behavior_preserves_truth_and_distillation_boundaries():
     assert '"raw_transcript_is_canonical":False' in wf
     assert 'machine.get("automatic_truth_ceiling")=="CANDIDATE"' in wf
     assert 'machine.get("raw_source_separate_from_distillation") is True' in wf
+
+
+def test_dispatch_fallback_persists_expected_content_for_cold_successor():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    fallback = wf[wf.index("          else:\n              lesson_key="):]
+    fallback = fallback[:fallback.index("          pathlib.Path(\"lesson-request.json\")")]
+    assert 'lesson_content="Preserve provenance before applying retained intelligence."' in fallback
+    assert 'digest=hashlib.sha256(lesson_content.encode()).hexdigest()' in fallback
+    assert 'pathlib.Path("smart-note-expected.json").write_text' in fallback
+    assert '"expected_content":lesson_content' in fallback
+    assert '"content_hash":digest' in fallback
+
+
+def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exists():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    marker = '          capture_path=open("capture-path.txt").read().strip()'
+    start = wf.index(marker)
+    end = wf.index('          python - <<\'PY\'', start)
+    block = wf[start:end]
+    assert 'if capture_path:' in block
+    assert 'fresh-lesson-lineage-ids.json' in block
+    assert 'intelligent_block_id' in block
+    assert 'reg["entries"]' in block
+
+
+def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    start = wf.index('          for attempt in 1 2 3; do', wf.index('cold-verify-request.json'))
+    end = wf.index('          python - <<\'PY\'', start)
+    block = wf[start:end]
+    assert 'for attempt in 1 2 3; do' in block
+    assert 'cold-runtime-reread.json' in block
+    assert 'if [[ -s cold-runtime-reread.json ]]' in block
+    assert 'sleep 2' in block
+    assert 'exit 1' in block
