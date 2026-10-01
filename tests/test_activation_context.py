@@ -53,6 +53,15 @@ def test_owner_repo_cannot_be_the_upstream_repo():
         raise AssertionError("owner repo must be distinct from upstream")
 
 
+def test_owner_repo_case_variant_cannot_masquerade_as_distinct_from_upstream():
+    try:
+        context(owner_repo="soulschoolacademy/nayapower").validate()
+    except ValueError as exc:
+        assert str(exc) == "OWNER_REPO_MUST_BE_DISTINCT_FROM_UPSTREAM"
+    else:
+        raise AssertionError("GitHub repository identity comparison must be case-insensitive")
+
+
 def test_two_owners_resolve_to_distinct_projection_targets():
     a = context().validate()
     b = context(
