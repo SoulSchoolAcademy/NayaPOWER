@@ -1539,3 +1539,56 @@ finished, all nine specifications fit together mathematically and mechanically a
 organism.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (K1, X1, X2, X9, X10, X11) map to the
+> scorecard's correction list.
+
+### A-KNOW-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-KNOW-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; KNOW's provenance and temporal-state duties do not depend on call
+position.
+
+### A-KNOW-3 [K1 + X11 — migration boundary]
+
+Add a "migration boundary" section: (a) what happens to pre-Graph-V2
+Intelligent Blocks — they are carried as UNMIGRATED, never silently promoted;
+(b) who re-certifies them — re-certification requires provenance re-validation
+under the V2 schema, recorded per block; (c) what UNKNOWN means for unmigrated
+content — visible but non-steering (see A-KNOW-4). Live KNOW is currently
+stale against the Graph V2 source (flagged by CONNECT's own discrepancy list);
+the spec must acknowledge the migration boundary rather than describe a
+steady state that does not yet exist.
+
+### A-KNOW-4 [X9 + X10 — UNKNOWN applicability and Graph V2 vocabulary]
+
+UNKNOWN applicability must remain VISIBLE_NON_STEERING: NOT_APPLICABLE →
+EXCLUDED; UNKNOWN → VISIBLE_NON_STEERING (visible, never steering);
+APPLICABLE + matching task class → STEERING_ELIGIBLE. UNKNOWN must never be
+silently promoted to applicable. Additionally: reconcile the spec's
+vocabulary/seed against ratified Graph V2's 22 relationship types and required
+fields; where the V1 vocabulary differs, the reconciliation is an explicit
+mapping, not a silent rename.
+
+### A-KNOW-5 [scorecard KNOW "Gaps / conflicts" — open seam, builder's lane]
+
+The Intelligent Block machine schema vs existing Supabase tables needs a
+reconciliation note. Recorded as OPEN seam owned by the builder's lane; the
+spec marks the seam, the implementation resolves it, PROVE verifies the
+resolution.

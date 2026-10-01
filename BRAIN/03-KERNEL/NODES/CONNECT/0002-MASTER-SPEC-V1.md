@@ -1890,3 +1890,68 @@ that simply remembers more, but a system that understands which intelligence mat
 together at the exact moment it is useful.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (C1, X1, X2, X3, X7, X8, X9, X10) map to
+> the scorecard's correction list.
+
+### A-CONNECT-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-CONNECT-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; CONNECT's routing duties do not depend on call position.
+
+### A-CONNECT-3 [X3 + X7 — topology and causality]
+
+Record the topology reconciliation: PROVE bounds belief; CONNECT selects and
+routes applicable context; VERIFY establishes outcomes and causality. No node
+may duplicate another's verdict. In particular: CAUSED edges are
+VERIFY-established — CONNECT MUST NOT mint CAUSED relationships. CONNECT may
+propose candidate causal links for VERIFY to test; only VERIFY's establishment
+makes them causal.
+
+### A-CONNECT-4 [X8 — SUPERSEDES direction, machine-exact]
+
+Add one machine-exact definition of the SUPERSEDES direction (which endpoint is
+the superseder, which is the superseded, and what traversal must do on
+encounter). The spec's discrepancy list already flags this as open; this
+amendment requires the direction sentence be written before lock so
+implementations cannot choose opposite conventions.
+
+### A-CONNECT-5 [X9 — UNKNOWN applicability]
+
+Adopt the reconciliation as normative: NOT_APPLICABLE → EXCLUDED; UNKNOWN →
+VISIBLE_NON_STEERING (visible in results, never steering selection); APPLICABLE
++ matching task class → STEERING_ELIGIBLE. UNKNOWN must never be silently
+promoted. Unenforced task_classes remain an open builder seam until enforced.
+
+### A-CONNECT-6 [X10 — Graph V2 reconciliation]
+
+Reconcile the spec's schema vocabulary/seed against ratified Graph V2's 22
+relationship types and required fields, as an explicit mapping. V1 seed gaps
+stay flagged until the mapping is complete; no silent vocabulary drift.
+
+### A-CONNECT-7 [C1 — Smart Links index]
+
+Fold into the spec's Contract 08 scope: the Smart Links index
+(NAYANODE/SMART-LINKS-NAYA-BIRTH-V1.md) pinned a stale HEAD (4533489d vs live
+01a410df, checked 2026-10-01), violating its own freshness rule. A Smart Link
+index that pins a stale revision is a stale doorway: per the spec's own law it
+must be re-pinned or marked STALE, never silently trusted. Its older
+kernel_behavior_engine.py references must also be reconciled against the
+current naya_kernel implementation. The doc's deeper point stands: a link
+proves an artifact exists, not that it is verified.

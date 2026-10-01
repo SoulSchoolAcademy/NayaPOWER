@@ -1949,3 +1949,68 @@ That gives NayaPOWER a mechanism to become progressively more capable without lo
 human governance as capability grows.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (E1, X1, X2, X4, X5, X6, X12) map to the
+> scorecard's correction list.
+
+### A-EVOLVE-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-EVOLVE-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; EVOLVE's proposal-only duties do not depend on call position.
+
+### A-EVOLVE-3 [X4 — proposal-only limits]
+
+EVOLVE is proposal-only and cannot ratify, authorize, deploy, verify, or
+promote itself — "never let the thing being changed be the judge of its own
+change." Add this as an explicit normative limit: every EVOLVE output is a
+proposal requiring independent verification and authorized adoption; the
+six-stage chain (down to production-proven, never constitutional authority)
+is a ceiling, not a ladder EVOLVE climbs by itself.
+
+### A-EVOLVE-4 [E1 — fence the lock language]
+
+The spec's "Final Organ Lock" language must be fenced as normative-target
+lock, never read as constitutional or EVOLVE-charter ratification. The EVOLVE
+charter is unratified and charter ratification is a human-only gate. Add the
+fence explicitly wherever lock language appears.
+
+### A-EVOLVE-5 [X6 — registry phantom]
+
+Resolve the registry phantom one way or the other: the registry references a
+nayanet-successor-handoff runtime path that was absent on main at review time.
+Either restore the runtime path or correct the registry. A phantom canonical
+entrypoint is exactly the kind of drift EVOLVE itself would flag — it must not
+ship inside the spec's own references.
+
+### A-EVOLVE-6 [X5 — Contract 19 reconciliation]
+
+Contract 19 canonicalization must reconcile the four existing succession
+documents (BRAIN/08-SUCCESSION/0001, NAYANODE/0018, NAYANODE/0022,
+NAYANODE/0003) — as an explicit mapping, not a fifth independent successor
+contract. Add the mapping (or the explicit open-seam marker with owner) before
+lock; the missing .naya/contracts/10-CONTINUITY-SUCCESSOR.md pointer hole
+stays flagged until the reconciliation lands.
+
+### A-EVOLVE-7 [X12 — bridge receive side]
+
+EVOLVE is the receive side of the unproven LEARN→EVOLVE live recalibration
+write-back. EVOLVE must not accept recalibration payloads as live until the
+seam's acceptance test passes (see LEARN A-LEARN-4): promotion requires
+verified + authorized, and multi-generation compounding remains unproven —
+stated as UNPROVEN, never implied as working.

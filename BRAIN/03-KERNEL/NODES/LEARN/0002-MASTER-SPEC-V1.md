@@ -1549,3 +1549,45 @@ Legacy inference can remain as a bounded compatibility mechanism, but verified s
 applicability should become the real machine contract.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (L2, X1, X2, X12) map to the scorecard's
+> correction list.
+
+### A-LEARN-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-LEARN-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; LEARN's scoping and no-silent-transfer duties do not depend on call
+position.
+
+### A-LEARN-3 [L2 — negative-transfer detection, machine-exact]
+
+Specify the negative-transfer detection measurement and window: what metric,
+measured over what window, triggers the negative-transfer flag, and what
+happens on trigger (quarantine of the lesson, never silent application).
+Negative-transfer evidence is first-class; its detection criteria must be
+machine-exact before lock.
+
+### A-LEARN-4 [X12 — LEARN→EVOLVE seam acceptance]
+
+The LEARN→EVOLVE live recalibration write-back is not proven end-to-end on
+current main. Mark the live write-back as the acceptance test for the seam:
+until a verified lesson traverses LEARN_CANDIDATE (automatic_promotion=false)
+through verified + authorized promotion into a live recalibration, the seam is
+UNPROVEN — not failed, not passed. LEARN may not claim the bridge works on
+the strength of the design alone.

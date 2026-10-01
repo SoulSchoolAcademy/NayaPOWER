@@ -2175,3 +2175,41 @@ Intelligence does not create authority.​
 Only legitimate governance creates authority.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (L1, X1, X2) map to the scorecard's
+> correction list.
+
+### A-LAW-1 [X1 / scorecard LAW "Corrections before lock"]
+
+Add the following subordination line to the spec's governance front matter:
+
+"This spec operates under Amendment 0002 (Prime 1, the Judgment Rule, ratified
+2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+
+Rationale (scorecard): the spec's four-state gate structure is consistent with
+the ratified model (four-state kept over binary), but the reconciliation must be
+one written line, not an inference. REQUIRED before lock.
+
+### A-LAW-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence. Nobody may "fix" the runtime to match the diagram, and nobody may
+read the diagram as a mandatory literal call order.
+
+### A-LAW-3 [scorecard LAW "Gaps / conflicts" — open seam, builder's lane]
+
+Machine-exact schema for the admissibility states vs the naya_kernel LAW
+interface is still to be confirmed by the builder. This amendment records the
+seam as OPEN; the spec remains normative on the four admissibility states
+(AUTHORIZED / DENIED / REQUIRES_CONFIRMATION / AMBIGUOUS, plus EXPIRED /
+REVOKED / OUT_OF_SCOPE outcomes) regardless of the interface mapping.

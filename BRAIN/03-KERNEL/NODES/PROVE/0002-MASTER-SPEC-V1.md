@@ -1946,3 +1946,46 @@ KNOW — What durable intelligence do we have?​
 PROVE — What are we actually justified in believing?
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (P1, X1, X2, X3) map to the scorecard's
+> correction list.
+
+### A-PROVE-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-PROVE-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; PROVE bounds belief before and after action regardless of call
+position.
+
+### A-PROVE-3 [P1 — the PR #1120 lesson, structural]
+
+The runtime PROVE carried an inspect-time defect (fixed by PR #1120): it passed
+at import/inspect time and degraded at run time. Add an adversarial acceptance
+test to the spec: "A PROVE implementation that passes at import/inspect time
+but degrades at run time MUST FAIL acceptance." The inspect-time/run-time
+boundary must be named explicitly in the spec so no future implementation can
+reintroduce a time-bomb by accident. This makes the #1120 lesson structural,
+not historical.
+
+### A-PROVE-4 [X3 — PROVE→CONNECT→VERIFY topology]
+
+Record the topology reconciliation: PROVE bounds belief; CONNECT selects and
+routes applicable context; VERIFY establishes outcomes and causality. No node
+may duplicate another's verdict. PROVE's verdict is a bounded epistemic
+assessment — it never creates authority and never substitutes for VERIFY's
+causal establishment.

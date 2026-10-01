@@ -2276,3 +2276,37 @@ One organism. One intelligence substrate. One governed system.
 EVOLVE → SELF
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (A1, X1, X2) map to the scorecard's
+> correction list.
+
+### A-ACT-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-ACT-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; ACT executes only from exact LAW authorization regardless of call
+position.
+
+### A-ACT-3 [A1 — escalation path and Door vocabulary]
+
+Name the escalation path explicitly: retry-exhaustion → VERIFY (declares the
+outcome: exhausted-retry vs regression) → LEARN (extracts the verified lesson).
+ACT may not declare its own outcome verified — "an execution receipt is not
+verified success." Additionally: bind the Door vocabulary to the canonical
+registry revision; the taxonomy must be canonicalized against the existing
+runtime registry (open seam, builder's lane to confirm the revision pin).

@@ -1755,3 +1755,44 @@ That resolves several current semantic seams while preserving all of the existin
 machinery.
 
 
+---
+
+## CANDIDATE AMENDMENTS — Naya 2 scorecard corrections (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 2 independent-review lane from
+> BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md (2026-10-01, mean
+> score 8.8/10). These amendments are CANDIDATE — not ratified, not merged to
+> main. Each must be applied (or explicitly rejected with written reason) before
+> any lock of this spec. Nothing above this line was altered: the verbatim PDF
+> text is preserved intact. References (V1, X1, X2, X3, X7) map to the
+> scorecard's correction list.
+
+### A-VERIFY-1 [X1 — Prime 1 / Amendment 0002 subordination]
+
+Add: "This spec operates under Amendment 0002 (Prime 1, the Judgment Rule,
+ratified 2026-09-30); where this spec and Prime 1 conflict, Prime 1 governs."
+REQUIRED before lock.
+
+### A-VERIFY-2 [X2 — semantic order vs runtime call order]
+
+Add an explicit order-mapping note: the organism order
+SELF→LAW→ACT→KNOW→PROVE→CONNECT→VERIFY→LEARN→EVOLVE→SELF is responsibility
+order, not invocation order. Kernel.decide() will call nodes in a different
+sequence; VERIFY's independence duties do not depend on call position.
+
+### A-VERIFY-3 [V1 — independence criterion as acceptance test]
+
+Write the independence criterion as a machine-checkable acceptance test, not
+prose: the verifier must have (a) a distinct identity from the claimant, (b) a
+distinct evidence path, and (c) no shared mutable state with the claimant's
+execution. A verification run that fails any of the three FAILS acceptance —
+no self-verification, no shared-state verification. Tonight's builder/verifier
+seat separation satisfies this in practice; the spec must demand it in
+principle.
+
+### A-VERIFY-4 [X3 + X7 — topology and the CONNECT handoff]
+
+Reference the PROVE→CONNECT→VERIFY topology decision once made: CONNECT routes
+context, VERIFY establishes causality and outcomes. Causal claims require the
+CONNECT handoff confirmed — VERIFY establishes CAUSED edges; CONNECT must not
+mint them. No node duplicates another's verdict.
