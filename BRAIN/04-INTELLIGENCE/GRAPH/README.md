@@ -12,7 +12,7 @@ It does not replace the tree.
 |---|---|
 | [0001-KERNEL-GRAPH-SEED-V1.json](./0001-KERNEL-GRAPH-SEED-V1.json) | Kernel graph seed (proposed canonical) |
 | [0002-KNOWLEDGE-TO-NODE-MAP-V1.json](./0002-KNOWLEDGE-TO-NODE-MAP-V1.json) | Knowledge-to-node mapping (proposed canonical) |
-| [0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Full relationship vocabulary, provenance and supersession contract (candidate) |
+| [0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Full relationship vocabulary, provenance, temporal, consent, applicability and supersession contract (RATIFIED; production parity pending) |
 | [0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json](./0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json) | Selector acceptance cases (timeless fixtures) |
 | [0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json](./0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json) | Reconciliation acceptance cases (timeless fixtures) |
 
