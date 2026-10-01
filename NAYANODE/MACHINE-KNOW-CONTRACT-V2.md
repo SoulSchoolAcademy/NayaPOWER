@@ -1,5 +1,7 @@
 # MACHINE-KNOW-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — KNOW semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** CANONICAL MACHINE CONTRACT — implementation qualification layer. Runtime proof is separate.
 
 ## Role
@@ -50,3 +52,9 @@ Prefer deterministic bounded work; expose latency, retrieval count, evidence cou
 
 ## Acceptance
 Unit tests cover happy and negative paths. Integration tests prove node-to-node contracts. Runtime tests must use legitimate authenticated identity and real substrate. Independent verification is required for VERIFIED. Production proof is a separate gate.
+
+
+## Ultimate-lock boundary
+- KNOW owns canonical intelligence-object identity, durable meaning, provenance, lifecycle/temporal state and reconstruction.
+- KNOW does **not** own final epistemic proof or task-level applicability. PROVE owns claim/evidence assessment; CONNECT owns task/context applicability.
+- Retrieval may emit candidate relationship/applicability metadata but MUST NOT silently promote it to steering context.
