@@ -79,3 +79,7 @@ A cold builder passes only if it can answer from this index and linked sources:
 10. What must be left for the next Naya?
 
 If Shawn has to rebuild this context, the project intelligence is incomplete.
+
+## Executable application
+
+The current executable Hub implementation lives in [`APP/`](./APP/) and is the implementation lane consuming the canonical design-law stack.
