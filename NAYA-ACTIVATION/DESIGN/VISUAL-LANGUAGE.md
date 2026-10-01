@@ -10,7 +10,8 @@ NayaNET should feel premium, high-tech, dimensional, alive and coherent rather t
 - Jewel-like intelligent objects.
 - Intentional depth and dimensional hierarchy.
 - No pale pink or light-purple text as a primary reading treatment.
-- No yellow or gold accents in the established system.
+- Full controlled spectral accents are permitted when they carry semantic theme/state, including yellow and gold.
+- For the Hub, `HUB/DESIGN-CONTRACT.md` is the project-specific visual authority; its spectral direction supersedes older Hub guidance that prohibited yellow/gold.
 
 ## Meaning over decoration
 Depth, glow, motion and iconography should communicate state, relationship, importance or interaction. Decorative effects must not compete with readable intelligence.
