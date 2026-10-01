@@ -50,7 +50,7 @@ def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
     start = wf.index('          curl -fsS -X POST', wf.index('cold-verify-request.json'))
     end = wf.index('          python - <<\'PY\'', start)
     block = wf[start:end]
-    assert 'for attempt in range(1, 4):' in block
+    assert 'for attempt in 1 2 3; do' in block
     assert 'cold-runtime-reread.json' in block
     assert 'if [[ -s cold-runtime-reread.json ]]' in block
     assert 'sleep 2' in block
