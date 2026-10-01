@@ -177,7 +177,7 @@ Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard,
 
 ---
 
-## 9. TURN-ON READINESS — EXECUTION CONTRACT
+## 8. TURN-ON READINESS — EXECUTION CONTRACT
 
 The project objective is now expressed as an executable sequence rather than another design exercise.
 
@@ -198,7 +198,7 @@ The Hub is ready for human experience only when all of these are true on the sam
 
 The complete room-functionality registry is:
 
-` .naya/project-intelligence/HUB-ROOM-REGISTRY-V1.json `
+`.naya/project-intelligence/HUB-ROOM-REGISTRY-V1.json`
 
 It is the machine-readable projection of the room consensus candidate and contains, for every room:
 
@@ -258,34 +258,3 @@ These are implementation findings, not speculative defects.
 ### 9.6 No-more-speculation rule
 
 Do not create another competing room document.
-
-Next implementation work should consume:
-
-- `HUB/PROJECT-INTELLIGENCE.md` — build law;
-- `HUB/DESIGN-CONTRACT.md` — visual law;
-- `.naya/project-intelligence/HUB-ROOM-FUNCTIONALITY-CONSENSUS-V1.md` — functional human baseline;
-- `.naya/project-intelligence/HUB-ROOM-REGISTRY-V1.json` — deterministic room contract;
-- `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json` + registry — connection semantics;
-- canonical runtime/source evidence — actual capability and status.
-
-The next coding slice is therefore:
-
-**APP SHELL + ROUTER + SHARED INTELLIGENCE BOARD + REAL SMART FEED VERTICAL SLICE**
-
-and not another visual concept.
-
-### 9.7 Completion language
-
-Use these terms literally:
-
-- **SPECIFIED** — contract exists.
-- **IMPLEMENTED** — code exists.
-- **TESTED** — automated/manual test passed.
-- **INDEPENDENTLY VERIFIED** — separate verification seat passed from evidence.
-- **DEPLOYED** — production artifact is deployed.
-- **LIVE OBSERVED** — behavior observed on the live surface.
-- **PRODUCTION-PROVEN** — the required production proof has been captured.
-- **ACCEPTED** — Human Director accepts the evidence.
-
-Never collapse these states into "done."
-
