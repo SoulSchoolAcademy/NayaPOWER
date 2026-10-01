@@ -1,6 +1,6 @@
 {
   "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
-  "body_sha256": "af0ac1ae6d54d03bfd07d91403ce522766d9f289f80623247136ad1c9a9c9cb9",
+  "body_sha256": "e89fd478c685242d61ea21122102ec1e4894b3cd70eace62dfa36c85b47edc9a",
   "interpretation": "The pre-existing handoff test. It asserts the store hash but never retrieves from the reconstructed node, which is why CS-01 was invisible.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -16,5 +16,5 @@
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-kernel-handoff-existing",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "355b455469538e598b4bf56c7d1bb5bbcf3bb574"
+  "tested_head_sha": "5764a4d8d10e25a539326080e65e3c3f3ddba73d"
 }

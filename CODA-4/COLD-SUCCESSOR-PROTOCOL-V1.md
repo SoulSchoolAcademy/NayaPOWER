@@ -10,17 +10,36 @@ migrations, calculator conformance (Coda 1), execution/handoff failure testing
 
 | Ref | SHA | State |
 |---|---|---|
-| `main` | `a726a8376559609a3620f948ec7bfcabdba50abb` | current |
-| PR #1216 base | `a726a8376559609a3620f948ec7bfcabdba50abb` | current |
+| `main` | `42c8f59457eb996bd3099a2a57e49cfe383d779d` | current at time of writing |
+| PR #1216 base | `a726a8376559609a3620f948ec7bfcabdba50abb` | superseded; merged, then main advanced |
 | PR #1216 head (CS-01 first published against) | `f58adf0826e0ea2c96d6e4a781b5191d2f4b8d5b` | superseded |
-| PR #1216 head (CS-01 re-reproduced at) | `4e87d4a5810f6b0b5b72e254f3d37ddf69826c87` | **draft, unmerged — current tested** |
+| PR #1216 head (CS-01 re-reproduced at) | `4e87d4a5810f6b0b5b72e254f3d37ddf69826c87` | superseded |
+| PR #1216 head (CS-01/CS-02 re-reproduced at) | `4768636fb9c2ac640bf23faa6dc10ece1376cf90` | **draft, unmerged** |
+| PR #1216 head (this branch is rebased onto) | `fe86deb2c` | **draft, unmerged** |
+| this verifier branch (4 commits on that head) | `5764a4d8d10e` | local, unpushed |
 
 #1216 is an open **draft**. Nothing here is production proof.
 
-The four commits added between those two heads (`a78227d8`, `9a21efda`,
-`71c14f0a`, `4e87d4a5`) are the red→green hardening, the SELF tamper refusal,
-the EVOLVE calculator gate, and the `inputs_hash` binding. CS-01 was
-re-reproduced in a clean worktree at `4e87d4a5`, so it is not stale.
+`main` moved from `a726a837` to `42c8f594` (smart-note commits) while this work
+was in flight; none of those touched `know_node.py`, `kernel.py`, or
+`self_node.py`. #1216 head itself advanced twice, most recently to `fe86deb2c`
+(H2 hardening). **This branch is now rebased onto `fe86deb2c`**, not onto
+`main`, and that choice is deliberate:
+
+- `main` has **none** of `KnowNode.cold_reconstruct`, `SelfNode.gate`'s
+  successor-package handling, or `ConnectNode.assess_applicability`. Rebasing
+  onto `main` would delete the runtime this protocol exists to verify, and the
+  suite would fail on missing symbols rather than on real behaviour.
+- My 10 files are **file-disjoint** from every file #1216 changed after my
+  original base `f58adf08`. The verifier cannot silently overwrite owner work.
+- Consequence, stated plainly: this branch is a **stacked verifier PR**, not a
+  `main`-targeted one. It carries 4 commits, not the earlier 55-file diff.
+
+Rebasing had a real payoff beyond tidiness. The CS-03 marker XPASSed against
+`fe86deb2c`, which is the strict-xfail signal that Naya 4's `9a21efda` had
+already closed that defect on the candidate head. Pinned to my older base it
+was a true xfail; against the real target it is a plain passing test. Keeping
+the marker would have asserted an open defect that is no longer open.
 
 **Receipt contract status.** Naya 2's `naya-receipt-contract/1` proposal was
 **withdrawn** in #554 comment `5934656876` as a competing format, after the
@@ -109,10 +128,51 @@ public operations — `retrieve`, `cite_provenance`, `provenance_audit`,
 Ingest one block in a producer, `cold_reconstruct([receipt])` in a successor,
 print `report["restored_block_count"]` against `len(successor.blocks)`.
 
+Re-verified at `4768636fb9` and again at the branch base `fe86deb2c`: still
+present, `know_node.py` untouched by #1216 since `f58adf08`.
+
 **Not fixed here.** `naya_kernel/` is Naya 4's lane. Two dictionaries may or may
 not be sufficient: receipt sequencing, lifecycle state, supersession links,
 contradiction lists and integrity indexes all have to be reconciled by the
 owner. The repair acceptance list is in the #1216 handoff.
+
+## 3b. Defect CS-02 — KNOW replay trusts its receipts unconditionally
+
+**Found by me on `4768636fb9`, still present at `fe86deb2c`.** Distinct from
+CS-01: CS-01 is "restored state is never installed"; CS-02 is "the replay never
+checks whether the receipt is genuine."
+
+`Kernel.cold_reconstruct` verifies receipt hashes and reports `hash_matched` /
+`hash_mismatched`. `KnowNode.cold_reconstruct` performs **no** integrity
+verification — `receipt_hash` appears there only inside error message strings.
+`repro_cs02.py` measures it: forking a receipt's
+`block_snapshot.provenance.sources[0].ref`, or changing `ownerScope` from
+`public` to `private`, is accepted into restored state, and the report contains
+only `store_hash`, no integrity keys.
+
+Scope, stated plainly so this is not read as an exploit claim: this is an
+integrity gap in the KNOW replay path. No production path was exercised, no
+database touched, no deployment served forged content.
+
+Also confirmed **fail-closed where it should be:** a receipt with a malformed
+lifecycle state raises `ValueError: unknown operation 'INGEST'` rather than
+replaying. So the gap is integrity, not error handling.
+
+**Not fixed here**, and not trivially fixable by me: verifying `receipt_hash`
+would detect in-transit tampering of the whole receipt, but whether
+`block_snapshot` is also consistent *with* that hash is the owner's call. Owner:
+Naya 4.
+
+## 3c. CS-03 — found, then closed by the owner
+
+I found that SELF did not re-verify the successor package seal, and initially
+pinned it as a passing test of current behaviour. That was a **false-green
+risk**: the pinned test would have asserted a gap as correct, so closing the gap
+would have broken my own suite. Rebasing onto the real candidate head made the
+strict xfail XPASS, which is the signal that `9a21efda` had already closed it.
+The test now runs as a plain passing test with no marker. Recorded because the
+sequence is the lesson: pin the *desired* behaviour, let the owner close the
+gap, and let strict xfail tell you when to remove the marker.
 
 **Naya 4's existing `test_act_to_know_handoff_write_and_retrieve` asserts the
 hash but never retrieves from the reconstructed node** — an untested seam, not a
@@ -174,10 +234,59 @@ Corrections applied to this protocol and its tests:
 
 Steps 3, 4 and 8 depend on CS-01 and are **blocked**, not met.
 
-## 7. Cross-process restoration (next, after CS-01 closes)
+## 7. Cross-process restoration — harness built, blocked at `B-RESTORE`
 
-- **Process A** — producer operations + receipt serialization → a safe temp
-  evidence bundle, with hashes and exact source recorded; then exit.
+`CODA-4/process_boundary_harness.py` implements all three processes. It reports:
+
+```
+A  pid=37608 receipts=2 artifact_sha256=220148bac5986a06
+   Process A has EXITED. No memory carries forward.
+B  pid=28344 (A was 37608)
+   reported restored=2  hash_match=True
+   ACTUAL blocks on node=0  retrieved=0
+   provenance refs=[]
+   SELF authority probe: verdict=PASS carries_authority_flag=False
+   authority-bearing keys in boot receipt: []
+   boot receipt receives authority: False
+B+ pid=9696 wrote successor receipt 306e4046ecb4eb8e
+    (its own restored A-blocks: 0 — still blocked by CS-01)
+C  pid=38092 restored=3 new_results_recovered=0
+B- tampered  NO FAILURE RAISED — restored=2 hash_match=True forged_accepted=True
+B- missing   governing failure raised (correct)
+
+first missing rung: B-RESTORE
+```
+
+The A process really does exit and C really is a third interpreter. **Distinct
+pids are recorded because that is the claim being made, not decoration.**
+
+What that output proves today:
+
+- **PROVEN** — A exits leaving only receipts; C replays evidence; missing
+  evidence yields a governing failure; no authority crosses the boundary.
+- **NOT PROVEN** — restoration, retrieval, provenance, C's recovery of B's new
+  block. All blocked at `B-RESTORE` by CS-01.
+- **FAILS** — tampered evidence is silently accepted. That is CS-02.
+
+Three corrections I had to make to this harness, each because my first version
+would have produced a flattering lie:
+
+1. **`missing` deleted the artifact after reading it**, so it proved nothing.
+   It now hands B a path that was never created.
+2. **`tampered` rewrote an unused field.** It now forges
+   `block_snapshot.provenance.sources[0].ref` — which is exactly what makes it
+   fail, and the failure is CS-02, not a harness bug.
+3. **`authority_inherited=False` was hardcoded by me.** It now asks the real
+   SELF gate and reports what the boot receipt actually contains. My first
+   version of that probe searched nested values and found the string
+   `"inputs"` echoing the package — a false positive, since it mentioned
+   authority without granting any. It now inspects top-level receipt keys only.
+
+One thing this harness deliberately does **not** claim to be: durable storage.
+A writes a JSON file into a temp directory, which is convenient test plumbing,
+**not** the canonical persistence seam. That binding is Naya 2's to define
+(`NAYANODE/0101-PERSISTENCE-CONTRACT-V1.md`), and until they do, object-level
+restoration across processes is the honest ceiling.
 - **Process B** — separate interpreter, same frozen candidate source. Receives
   the artifact path and canonical source pointers only — no predecessor node
   objects, no hidden answers. Restores, retrieves, validates through public
@@ -198,34 +307,47 @@ improvement.
 |---|---|---|
 | Document recovery | successor reads files | PROVEN |
 | Object-level restoration | fresh objects rebuilt from receipts, hash-verified | **PARTIAL — CS-01 blocks usable state** |
-| Process-level continuity | separate OS process, public interfaces only | **NOT BUILT** (§7) |
+| Process-level continuity | separate OS process, public interfaces only | **HARNESS BUILT, STILL BLOCKED at `B-RESTORE`** (§7) |
 | Behavioral reuse | preserved lesson changes observable behavior | NOT CLAIMED — see §4 |
 | Causal improvement | controlled A/B, only intelligence varies | **NOT CLAIMED** |
 | Production proof | ratified, merged, deployed, runtime-observed | **NOT CLAIMED** |
 
 ## 9. Reproduce
 
+This branch is **stacked on PR #1216's head, not on `main`**, so fetch that ref
+first or the symbols will be missing:
+
 ```powershell
-git clone --branch coda4/cold-successor-continuity https://github.com/SoulSchoolAcademy/NayaPOWER.git
+git clone https://github.com/SoulSchoolAcademy/NayaPOWER.git
 cd NayaPOWER
 git config core.autocrlf false       # required; see W-1
+git fetch origin pull/1216/head
+git checkout -q coda4/cold-successor-continuity
 git checkout -q -- .                 # required: core.autocrlf alone does NOT
                                      # rewrite already-checked-out files
 python -m pytest tests/test_nodes/test_coda4_cold_successor.py -q
 python -m pytest tests/test_ci_declares_test_dependencies.py -q
 python CODA-4/repro_cs01.py          # exit 1 == CS-01 present, 0 == repaired
+python CODA-4/repro_cs02.py          # exit 1 == CS-02 present, 0 == repaired
+python CODA-4/process_boundary_harness.py          # A -> B -> C ladder
+python CODA-4/process_boundary_harness.py --rungs  # predicted first gap only
 python CODA-4/make_evidence.py       # write evidence receipts
 python CODA-4/make_evidence.py --verify   # re-verify their self-consistency
 ```
+
+Expected on the current candidate: focused suite `27 passed, 3 xfailed`; both
+reproducers exit 1; the ladder's first missing rung is `B-RESTORE`.
 
 Artifacts:
 
 | File | Role |
 |---|---|
-| `tests/test_nodes/test_coda4_cold_successor.py` | 22 cases: 20 pass, 2 xfail |
-| `CODA-4/repro_cs01.py` | standalone minimal CS-01 reproducer |
+| `tests/test_nodes/test_coda4_cold_successor.py` | 30 cases: 27 pass, 3 xfail |
+| `CODA-4/repro_cs01.py` | standalone minimal CS-01 reproducer, exit 1 = present |
+| `CODA-4/repro_cs02.py` | standalone CS-02 reproducer, exit 1 = present |
+| `CODA-4/process_boundary_harness.py` | real A→B→C process boundary ladder |
 | `CODA-4/make_evidence.py` | evidence-receipt writer / verifier |
-| `CODA-4/evidence/*.json` | 6 receipts, each SHA-256 sealed over its own body |
+| `CODA-4/evidence/*.json` | 9 receipts, each SHA-256 sealed over its own body |
 
 The receipts record the tested SHA, command, stdout tail, and exit code. A receipt
 whose body was edited to claim success is caught: I rewrote the CS-01 receipt's
@@ -234,17 +356,25 @@ that matters here — a receipt in this lane must not be able to claim a green
 restore, which is the exact failure CS-01 demonstrates.
 
 **Not full acceptance.** On the current candidate the expected result is
-**20 passed, 2 xfailed**, and both xfails are CS-01. A green-looking total here
-means CS-01 is still open — the pass count is not the acceptance signal, the
-xfails are. They will XPASS (and fail the run under `strict=True`) once the
-repair lands, at which point the markers must be removed and §7 started.
+**27 passed, 3 xfailed** — two CS-01, one CS-02. A green-looking total here
+means the defects are still open: the pass count is not the acceptance signal,
+the xfails are. They XPASS (and fail the run under `strict=True`) once the
+repairs land, at which point the markers must be removed and §7 started.
 
-The count changed from an earlier **16**, then **18**, to **20** as the
-proof-language corrections of §5 added cases. The reconciliation: the original
-16 passed; renaming the trace helper and splitting derivation added one; the
-omission/UNKNOWN control added one; the exact CS-01 signature pin added one;
-and the reconstruction test was split into a derivation test plus a falsifiability
-control. Only the current **20 / 2 xfail** is claimed.
+The count moved **16 → 18 → 20 → 27** as proof-language corrections and new
+findings added cases. Only the current **27 / 3 xfail** is claimed.
+
+**Two of my own assertions were wrong before they became tests, and the
+corrections matter more than the passing cases:**
+
+| I asserted | Reality | How found |
+|---|---|---|
+| SELF refuses a tampered package | It did not — then Naya 4 closed it in `9a21efda` | asserted, watched it PASS, inspected `gate` |
+| superseded checkpoint surfaces on `GateResult.unknown` | `GateResult` has only `verdict`/`reasons`; SELF records it in `last_boot_receipt.truth_boundary` | `AttributeError`, then read `gate` |
+| receipt contract shape is an open unknown | Naya 2 withdrew `naya-receipt-contract/1`; native kernel receipt + `NAYANODE/0101` are canonical | #554 comments `5934656876`, `5934779683` |
+
+A check against a field that does not exist would have passed vacuously, so
+each correction now asserts against where the behaviour actually lives.
 
 **The xfails are constrained, not blanket.** `pytest.raises(AssertionError,
 match=...)` guards pin the exact failure text in the non-xfail signature test,
@@ -315,10 +445,17 @@ re-checkout is required, as measured above.
 Not dismissed as pre-existing, and not all the same cause. Measured on the Coda 4
 branch, same interpreter, same worktree, two modes:
 
-| Run | Result |
-|---|---|
-| `python -m pytest -q` | **7 failed, 1034 passed, 3 skipped, 2 xfailed** |
-| `python -X utf8 -m pytest -q` | **2 failed, 1039 passed, 3 skipped, 2 xfailed** |
+| Run | This branch | Candidate head `fe86deb2c`, no Coda 4 files |
+|---|---|---|
+| `python -m pytest -q` | **29 failed, 1070 passed, 3 skipped, 3 xfailed, 5 errors** | **29 failed, 1043 passed, 3 skipped, 5 errors** |
+| `python -X utf8 -m pytest -q` | **24 failed, 1075 passed, 3 skipped, 3 xfailed, 5 errors** | (not separately measured) |
+
+The two columns are the honest comparison: **identical failure and error counts**.
+My 27 passing cases and 3 xfails are additive; this lane introduces **no** new
+suite failure. The counts are much larger than the earlier `7 / 1034` I recorded
+against base `f58adf08` because #1216's own H2 work added failing demo tests
+(`test_demo1_fresh_verify_v3.py` and friends) that exist on the candidate head
+independently of me. Those belong to Naya 4 and are reported, not patched.
 
 **Cause A — environment encoding, 5 of the 7 (fixed by `-X utf8`).**
 `tests/test_smart_note_v2.py` reads repository files with

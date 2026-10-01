@@ -28,11 +28,27 @@ ROOT = os.path.dirname(HERE)
 EVIDENCE = os.path.join(HERE, "evidence")
 
 
+def _decode(raw):
+    """Decode child output as UTF-8 with replacement, never raising.
+
+    I first used text=True, which decodes with the Windows locale codec
+    (cp1252). Evidence capture then crashed on a byte cp1252 cannot map, losing
+    the observation entirely. Capture bytes and replace what cannot be decoded,
+    recording that it happened so the loss is visible rather than silent.
+    """
+    text = raw.decode("utf-8", errors="replace")
+    return {"text": text, "had_undecodable": text.count("�") > 0}
+
+
 def _run(argv):
-    p = subprocess.run(argv, cwd=ROOT, capture_output=True, text=True)
-    return {"command": " ".join(argv), "exit_code": p.returncode,
-            "stdout_tail": p.stdout.strip().splitlines()[-40:],
-            "stderr_tail": p.stderr.strip().splitlines()[-20:]}
+    p = subprocess.run(argv, cwd=ROOT, capture_output=True)
+    out, err = _decode(p.stdout), _decode(p.stderr)
+    record = {"command": " ".join(argv), "exit_code": p.returncode,
+              "stdout_tail": out["text"].strip().splitlines()[-40:],
+              "stderr_tail": err["text"].strip().splitlines()[-20:]}
+    if out["had_undecodable"] or err["had_undecodable"]:
+        record["undecodable_output"] = True
+    return record
 
 
 def _rev(rev):
@@ -94,10 +110,40 @@ HEAD_SHA = "UNKNOWN"
 MAIN_SHA = "UNKNOWN"
 
 
+def _dirty():
+    """Return (is_dirty, diff_fingerprint) for the worktree.
+
+    A receipt naming a head SHA while running against uncommitted edits would
+    be a lie: the SHA would not identify the code that produced the observation.
+    So a dirty tree is either recorded or refused, never papered over.
+    """
+    p = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT,
+                       capture_output=True)
+    entries = [l for l in p.stdout.decode("utf-8", "replace").splitlines()
+               if l.strip()]
+    if not entries:
+        return False, ""
+    d = subprocess.run(["git", "diff", "HEAD", "--binary"], cwd=ROOT,
+                       capture_output=True).stdout
+    return True, hashlib.sha256(d).hexdigest()
+
+
 def build():
     global HEAD_SHA, MAIN_SHA
     HEAD_SHA = _rev("HEAD")
     MAIN_SHA = _rev("origin/main")
+
+    dirty, fingerprint = _dirty()
+    if dirty:
+        print("REFUSING to write evidence against a dirty worktree.")
+        print("  A receipt would name head %s while the run used uncommitted"
+              " edits," % HEAD_SHA[:12])
+        print("  so the SHA would not identify the code observed.")
+        print("  commit first, or pass --allow-dirty to record")
+        print("  worktree_dirty + worktree_diff_sha256 instead.")
+        if "--allow-dirty" not in sys.argv:
+            return None
+        print("  proceeding with --allow-dirty; receipts will say so.")
 
     receipts = []
     for name, interpretation, argv in CASES:
@@ -113,8 +159,11 @@ def build():
             "interpretation": interpretation,
             "tested_head_sha": HEAD_SHA,
             "base_main_sha": MAIN_SHA,
+            "worktree_dirty": dirty,
             "observed": observed,
         }
+        if dirty:
+            body["worktree_diff_sha256"] = fingerprint
         body["body_sha256"] = _body_hash(body)
         receipts.append(body)
     return receipts
@@ -135,9 +184,10 @@ def verify():
         state = "OK " if claimed == recomputed else "TAMPERED"
         if claimed != recomputed:
             ok = False
-        print("%s  %s  exit=%s  tested_head=%s"
+        print("%s  %s  exit=%s  tested_head=%s%s"
               % (state, name, body["observed"]["exit_code"],
-                 body["tested_head_sha"][:12]))
+                 body["tested_head_sha"][:12],
+                 "  DIRTY" if body.get("worktree_dirty") else ""))
     print("ALL RECEIPTS SELF-CONSISTENT" if ok else "RECEIPT VERIFICATION FAILED")
     return 0 if ok else 1
 
@@ -148,6 +198,8 @@ def main():
 
     os.makedirs(EVIDENCE, exist_ok=True)
     receipts = build()
+    if receipts is None:
+        return 1
     for body in receipts:
         path = os.path.join(EVIDENCE, "%s.json" % body["receipt_id"])
         with open(path, "w", encoding="utf-8") as fh:

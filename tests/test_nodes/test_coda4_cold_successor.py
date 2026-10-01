@@ -920,12 +920,6 @@ def test_no_authority_crosses_the_receipt_boundary(kernel, stages):
     assert any("authority" in r.lower() for r in refused.reasons)
 
 
-CS03 = "CS-03: SELF did not re-verify the successor package seal; closed in " \
-       "Naya 4 commit 9a21efda ('refuse tampered successor packages at the " \
-       "SELF consuming boundary')"
-
-
-@pytest.mark.xfail(strict=True, reason=CS03)
 def test_successor_gate_refuses_a_tampered_package():
     """CS-03 acceptance: a package whose seal does not recompute must FAIL.
 
@@ -939,9 +933,10 @@ def test_successor_gate_refuses_a_tampered_package():
        against the real candidate head instead of my older branch base, where
        9a21efda was not yet present.
 
-    So this was a real defect that is now repaired, and it is xfail here
-    because it was open at this branch's base. On the candidate head it
-    xpasses, and strict mode fails loudly so the marker gets removed.
+    So this was a real defect that is now repaired. It runs as a plain test
+    with no xfail: I rebased this branch onto the candidate head and the
+    strict xfail XPASSed, which is exactly the signal that the marker no
+    longer describes the code it sits on.
 
     Tampering `next_action`, dropping `blockers`, and claiming inherited
     authority all in one case: the seal covers the whole body, so any one

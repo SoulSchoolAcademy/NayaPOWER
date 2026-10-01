@@ -173,11 +173,13 @@ result = {
         p.get("ref")
         for b in matched
         for p in (b.get("provenance") or {}).get("sources", [])],
-    "authority_inherited": False,
-    "successor_wrote_receipt": None,
+    "successor_receipt": None,
+    "authority_probe": None,
 }
 if mode == "produce":
-    # B preserves its own observed result through the real ingest seam.
+    # B preserves its own observed result through the real ingest seam, and
+    # hands C the RECEIPT, not this process's summary. C must replay evidence,
+    # not a report about evidence.
     r = node.ingest({
         "content": json.dumps({"kind": "successor_observation",
                                "derived_from": "process-boundary-B"},
@@ -191,7 +193,64 @@ if mode == "produce":
         "identity_binding": {"verified": True},
         "owner_scope": "public", "epistemic_state": "INGESTED"},
         PRINCIPAL, now=NOW)
-    result["successor_wrote_receipt"] = r.get("receipt_hash")
+    result["successor_receipt"] = r
+
+# Authority probe: ask the real SELF boundary whether a package carrying this
+# boundary's own evidence confers any authority. Derived from the runtime, never
+# asserted by the harness.
+from naya_kernel.nodes import self_node, evolve_node
+_ev = evolve_node.EvolveNode()
+_built = _ev.build_successor_package({
+    "next_action": "verify boundary continuity",
+    "blockers": [], "version": 1,
+    "authority_context": {"authority_inherited": False},
+    "provenance": {"sources": [
+        {"kind": "EXTERNAL", "ref": "ext://coda4/boundary",
+         "capturedAt": NOW, "capturedBy": "coda4-process-boundary"}]},
+    "rationale": "boundary authority probe"})
+pkg = _ev._handoff_packages[_built["handoff_id"]]
+
+# Identity must arrive authenticated or SELF refuses before any authority
+# question is reached, so mirror the shape the real SELF seam accepts.
+_ck_payload = {"boot_count": 1, "owner_scope": "coda4-boundary"}
+_ck_hash = self_node._sha256(_ck_payload)
+_pred = {"predecessor_hash": None, "checkpoint_hash": _ck_hash,
+         "config_hash": "config-boundary", "identity_binding": "bind-coda4"}
+_pred["receipt_hash"] = self_node._sha256(
+    {k: v for k, v in _pred.items() if k != "receipt_hash"})
+
+_probe = self_node.SelfNode()
+_gate = _probe.gate({
+    "execution_id": "exec-boundary-1", "seen_execution_ids": [],
+    "identity_claim": {"type": "CODA4"},
+    "identity_binding": {"binding_ref": "bind-coda4", "verified": True,
+                         "actor_type": "CODA4"},
+    "mission_ref": "mission:ratified-v1", "scope_ref": "scope:ratified-v1",
+    "ratified_sources": {
+        "mission:ratified-v1": {"text": "serve Shawn as Naya"},
+        "scope:ratified-v1": {"actions": ["read", "summarize"]}},
+    "owner_scope": "coda4-boundary", "kernel_revision": "boundary-probe",
+    "checkpoint": {"hash": _ck_hash, "payload": _ck_payload,
+                   "owner_scope": "coda4-boundary"},
+    "successor_package": pkg,
+    "predecessor_receipt": _pred,
+    "known": [], "unknown": [], "blocked": [],
+})
+_boot = _probe.last_boot_receipt or {}
+# Authority, if any exists, must appear in the boot receipt. Search the whole
+# receipt rather than a key I guessed, then report exactly what was found.
+_auth_hits = sorted(k for k in _boot
+                    if "authorit" in k.lower())
+result["authority_probe"] = {
+    "verdict": _gate.verdict.value,
+    "reasons": _gate.reasons,
+    "carries_authority_flag": bool(pkg.get("carries_authority")),
+    # Only top-level receipt keys count. I first searched nested values too and
+    # got a false positive: "inputs" echoes the package, so it mentioned
+    # authority without granting any.
+    "authority_bearing_keys": _auth_hits,
+    "boot_receipt_receives_authority": bool(_auth_hits),
+}
 
 print(json.dumps(result))
 '''
@@ -241,28 +300,40 @@ def _child(src, *args):
 # --------------------------------------------------------------------------
 
 def rung_status():
-    """Report the ladder without running anything heavy."""
+    """Report the ladder statically, before running any child process.
+
+    The `installs` probe reads KnowNode.cold_reconstruct's source for a write
+    to self. That is a shortcut, not proof: an implementation could install via
+    a helper, or via setattr, and this would miss it. It is used only to
+    predict the first blocked rung so a reader can see the expected shape
+    cheaply. The authoritative answer comes from running the ladder, which
+    measures actual block counts and retrieval.
+    """
     if ROOT not in sys.path:
         sys.path.insert(0, ROOT)
     from naya_kernel.nodes import know_node
     import inspect
     src = inspect.getsource(know_node.KnowNode.cold_reconstruct)
     installs = "self.blocks" in src or "self.__dict__" in src
+    blocked = "BLOCKED by CS-01 (predicted)" if not installs \
+        else "predicted reachable; run to confirm"
     rungs = [
         ("A", "Process A persists receipts and exits",
          True, "runnable today"),
         ("B-RESTORE", "Process B reconstructs usable state from receipts",
-         installs, "BLOCKED by CS-01" if not installs else "ready to verify"),
+         installs, blocked),
         ("B-RETRIEVE", "Process B RETRIEVES from the restored node",
-         installs, "BLOCKED by CS-01" if not installs else "ready to verify"),
+         installs, blocked),
+        ("B-PROVENANCE", "Restored provenance matches what A ingested",
+         installs, blocked),
         ("B-NO-AUTH", "Process B inherits no authority",
-         True, "retrieval grants nothing; verified independently of CS-01"),
+         True, "independent of CS-01; probed through the real SELF gate"),
         ("B-TAMPER", "Tampered evidence yields the governing failure",
-         True, "runnable today"),
+         True, "runnable today; FAILS today, see CS-02"),
         ("B-MISSING", "Missing evidence yields the governing failure",
-         True, "runnable today"),
+         True, "runnable today; passes today"),
         ("C", "Process C recovers a NEW result written by B",
-         installs, "BLOCKED by CS-01" if not installs else "ready to verify"),
+         installs, blocked),
     ]
     return installs, rungs
 
@@ -303,12 +374,23 @@ def main():
     print("   ACTUAL blocks on node=%s  retrieved=%s"
           % (b_read["actual_blocks_on_node"], b_read["retrieved_matching"]))
     print("   provenance refs=%s" % b_read["provenance_refs"])
-    print("   authority_inherited=%s\n" % b_read["authority_inherited"])
+    probe = b_read["authority_probe"]
+    print("   SELF authority probe: verdict=%s carries_authority_flag=%s"
+          % (probe.get("verdict"), probe.get("carries_authority_flag")))
+    print("   authority-bearing keys in boot receipt: %s"
+          % probe.get("authority_bearing_keys"))
+    print("   boot receipt receives authority: %s\n"
+          % probe.get("boot_receipt_receives_authority"))
 
+    # B+ hands C its own INGEST RECEIPT, so C replays evidence rather than a
+    # report about evidence.
     b_prod = json.loads(_child(CHILD_B % fmt, artifact, "produce"))
     with open(b_out, "w", encoding="utf-8") as fh:
-        json.dump([b_prod], fh)
-    print("B+ pid=%s preserved its own receipt\n" % b_prod["pid"])
+        json.dump([b_prod["successor_receipt"]], fh)
+    print("B+ pid=%s wrote successor receipt %s"
+          % (b_prod["pid"], b_prod["successor_receipt"]["receipt_hash"][:16]))
+    print("    (its own restored A-blocks: %s — still blocked by CS-01)\n"
+          % b_prod["actual_blocks_on_node"])
 
     c_out = json.loads(_child(CHILD_C % fmt, artifact, b_out))
     print("C  pid=%s restored=%s new_results_recovered=%s"
