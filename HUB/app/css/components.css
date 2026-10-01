@@ -55,7 +55,7 @@
     color-mix(in srgb, var(--btn-accent) 26%, #1a1424),
     color-mix(in srgb, var(--btn-accent) 10%, #0b0a10));
   color: var(--ink);
-  font-size: 12.5px; font-weight: 800; letter-spacing: .06em;
+  font-size: var(--fs-control); font-weight: 800; letter-spacing: .04em;
   box-shadow: var(--depth-hi), 0 10px 26px #000a,
               0 0 22px color-mix(in srgb, var(--btn-accent) 26%, transparent);
   transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-med) var(--ease),
@@ -116,7 +116,7 @@
               0 0 22px color-mix(in srgb, var(--door-accent) 38%, transparent);
 }
 .door-icon svg { width: 23px; height: 23px; }
-.door-name { font-size: 15px; font-weight: 800; }
+.door-name { font-size: var(--fs-head); font-weight: 800; }
 .door-for { color: var(--muted); font-size: var(--fs-small); }
 .door-desc { color: var(--ink-dim); font-size: var(--fs-body); flex: 1; }
 .door-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -143,7 +143,7 @@
 /* ——— State badge (the honesty system, inline) ——— */
 .state-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 10px; font-weight: 800; letter-spacing: .16em;
+  font-size: var(--fs-meta); font-weight: 800; letter-spacing: .08em;
   padding: 6px 13px; border-radius: var(--radius-pill);
   border: 1px dashed color-mix(in srgb, var(--room-accent, var(--magenta)) 50%, transparent);
   color: var(--room-accent, var(--magenta));
