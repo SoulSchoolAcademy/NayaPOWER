@@ -125,7 +125,7 @@
 .pill {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 5px 12px; border-radius: var(--radius-pill);
-  font-size: 9.5px; font-weight: 800; letter-spacing: .14em;
+  font-size: var(--fs-meta); font-weight: 800; letter-spacing: .08em;
   border: 1px solid var(--line);
   background: #ffffff08;
   color: var(--muted);
@@ -135,7 +135,7 @@
 .pill.live   { color: var(--green);  border-color: #55e39a55; background: #55e39a12; }
 .pill.live .dot { box-shadow: 0 0 8px var(--green); animation: pulse 2.4s infinite; }
 .pill.ready  { color: var(--blue);   border-color: #55b9ee55; background: #55b9ee12; }
-.pill.soon   { color: var(--gold);   border-color: #e8c76655; background: #e8c76612; }
+.pill.soon   { color: var(--ink);   border-color: #e8c76655; background: #e8c76612; }
 .pill.contract { color: #b9a8e8; border-color: #9d75ff44; background: #9d75ff0d; }
 .pill.spec   { color: var(--muted); }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
