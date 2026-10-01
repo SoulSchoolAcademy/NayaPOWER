@@ -73,6 +73,7 @@ _VERIFY_INTAKE_COMPARE_FIELDS = (
     "reopened_by",
     "evidence_refs",
     "verify_key",
+    "receipt_hash",
 )
 
 # C6 — structural fields every genuine VERIFY receipt carries (emitted by

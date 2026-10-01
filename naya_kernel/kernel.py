@@ -190,7 +190,19 @@ class Kernel:
 
     def __init__(self, config: Dict[str, Any] | None = None) -> None:
         self.config = dict(config or {})
-        self.nodes = {name: NODE_CLASSES[name]() for name in EVALUATION_ORDER}
+        self.nodes = {}
+        for name in EVALUATION_ORDER:
+            if name == "LEARN":
+                # Runtime VERIFY -> LEARN composition (P9 seam): LEARN's
+                # intake resolver is construction-owned and bound to this
+                # kernel's VERIFY node. No fixture path, no caller-supplied
+                # resolver, no setter.
+                verify_node = self.nodes["VERIFY"]
+                self.nodes[name] = learn_node.LearnNode(
+                    verify_resolver=learn_node.LearnNode.reference_resolver(
+                        verify_node))
+            else:
+                self.nodes[name] = NODE_CLASSES[name]()
 
     # -- graph traversal -------------------------------------------------
 
