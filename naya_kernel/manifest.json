@@ -1,8 +1,5 @@
 {
-  "name": "naya-nine-node-kernel",
-  "version": "0.1.0-candidate",
-  "status": "SCAFFOLD",
-  "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
+  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
   "gap_a": "Closure target: Kernel.decide() must exercise all nine nodes' gates; manifest + gate script were missing.",
   "gate_order": [
     {
@@ -43,8 +40,8 @@
     {
       "name": "LEARN",
       "node_id": "NAYA-KERNEL-LEARN",
-      "pipeline_position": 9,
-      "note": "Spec declares itself ninth; eighth slot unassigned (open question)."
+      "note": "Spec declares itself ninth; eighth slot unassigned (open question).",
+      "pipeline_position": 9
     },
     {
       "name": "EVOLVE",
@@ -52,38 +49,41 @@
       "pipeline_position": "last"
     }
   ],
-  "node_versions": {
-    "SELF": "0.1.0-candidate",
-    "LAW": "0.1.0-candidate",
-    "ACT": "0.1.0-candidate",
-    "KNOW": "0.1.0-candidate",
-    "PROVE": "0.1.0-candidate",
-    "CONNECT": "0.1.0-candidate",
-    "VERIFY": "0.1.0-candidate",
-    "LEARN": "0.1.0-candidate",
-    "EVOLVE": "0.1.0-candidate"
-  },
   "implementation_status": {
-    "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed).",
-    "SELF": "implemented-candidate",
-    "LAW": "implemented-candidate",
     "ACT": "implemented-candidate",
-    "KNOW": "implemented-candidate",
-    "PROVE": "implemented-candidate",
     "CONNECT": "implemented-candidate",
-    "VERIFY": "stub",
+    "EVOLVE": "stub",
+    "KNOW": "implemented-candidate",
+    "LAW": "implemented-candidate",
     "LEARN": "stub",
-    "EVOLVE": "stub"
+    "PROVE": "implemented-candidate",
+    "SELF": "implemented-candidate",
+    "VERIFY": "implemented-candidate",
+    "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed)."
+  },
+  "name": "naya-nine-node-kernel",
+  "node_versions": {
+    "ACT": "0.1.0-candidate",
+    "CONNECT": "0.1.0-candidate",
+    "EVOLVE": "0.1.0-candidate",
+    "KNOW": "0.1.0-candidate",
+    "LAW": "0.1.0-candidate",
+    "LEARN": "0.1.0-candidate",
+    "PROVE": "0.1.0-candidate",
+    "SELF": "0.1.0-candidate",
+    "VERIFY": "0.1.0-candidate"
   },
   "spec_sources": {
-    "SELF": "~/workspace/nine-node-specs/SELF-NODE-SPEC-CANDIDATE.md",
-    "LAW": "~/workspace/nine-node-specs/LAW-NODE-SPEC-CANDIDATE.md",
     "ACT": "~/workspace/nine-node-specs/ACT-NODE-SPEC-CANDIDATE.md",
-    "KNOW": "~/workspace/nine-node-specs/KNOW-NODE-SPEC-CANDIDATE.md",
-    "PROVE": "~/workspace/nine-node-specs/PROVE-NODE-SPEC-CANDIDATE.md",
     "CONNECT": "~/workspace/nine-node-specs/CONNECT-NODE-SPEC-CANDIDATE.md",
-    "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md",
+    "EVOLVE": "~/workspace/nine-node-specs/EVOLVE-NODE-SPEC-CANDIDATE.md",
+    "KNOW": "~/workspace/nine-node-specs/KNOW-NODE-SPEC-CANDIDATE.md",
+    "LAW": "~/workspace/nine-node-specs/LAW-NODE-SPEC-CANDIDATE.md",
     "LEARN": "~/workspace/nine-node-specs/LEARN-NODE-SPEC-CANDIDATE.md",
-    "EVOLVE": "~/workspace/nine-node-specs/EVOLVE-NODE-SPEC-CANDIDATE.md"
-  }
+    "PROVE": "~/workspace/nine-node-specs/PROVE-NODE-SPEC-CANDIDATE.md",
+    "SELF": "~/workspace/nine-node-specs/SELF-NODE-SPEC-CANDIDATE.md",
+    "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md"
+  },
+  "status": "SCAFFOLD",
+  "version": "0.1.0-candidate"
 }
