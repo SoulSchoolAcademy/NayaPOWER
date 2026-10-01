@@ -1955,3 +1955,26 @@ must be re-pinned or marked STALE, never silently trusted. Its older
 kernel_behavior_engine.py references must also be reconciled against the
 current naya_kernel implementation. The doc's deeper point stands: a link
 proves an artifact exists, not that it is verified.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-CONNECT-8 [N4-C2 — stale V2.1 caveat]
+
+Re-base: the §3 caveat "V2.1 is CANDIDATE (#1185), not ratified law — all
+calculus references in this spec are aspirational until ratification" is
+STALE. V2.1 was ratified via #1186/#1190/#1192, verified against live main.
+All calculus references in this spec now bind the ratified V2.1.
+
+### A-CONNECT-9 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.

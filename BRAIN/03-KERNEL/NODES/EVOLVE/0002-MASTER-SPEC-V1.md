@@ -2014,3 +2014,44 @@ write-back. EVOLVE must not accept recalibration payloads as live until the
 seam's acceptance test passes (see LEARN A-LEARN-4): promotion requires
 verified + authorized, and multi-generation compounding remains unproven —
 stated as UNPROVEN, never implied as working.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-EVOLVE-8 [N4-E1 — unverifiable review claim]
+
+Strike or flag: the "red-teamed and fully reconciled (6 findings FIXED,
+8.5/10)" claim. No EVOLVE-findings.md artifact exists; per evidence law the
+score is UNVERIFIED from artifacts and must not be inherited at lock.
+Re-verify with a persisted findings artifact, or remove the claim before lock.
+REQUIRED before lock.
+
+### A-EVOLVE-9 [N4-E2 — stale V2.1 caveat]
+
+Re-base: every "SPEC-ONLY until V2.1 is ratified" / "aspirational until
+ratification" caveat is STALE. V2.1 was ratified via #1186 (82793cc) +
+#1190 (ade50c06), verified against live main. All calculus references in this
+spec now bind the ratified V2.1.
+
+### A-EVOLVE-10 [N4 — autonomous envelope + deciding-config hash]
+
+Add: the autonomous envelope bounds — exactly what EVOLVE may change without
+asking, and the hard MAY / MUST-NEVER table (never constitutional law,
+authority model, identity, provenance requirements, gate structure, or
+hard-stop flags). Every self-modification is scored as a calculus candidate
+under the OLD config with the deciding config hash bound into the receipt.
+Mandatory autonomous rollback on harm detection stands even for
+director-approved changes ("you approved the change, not the harm").
+
+### A-EVOLVE-11 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.

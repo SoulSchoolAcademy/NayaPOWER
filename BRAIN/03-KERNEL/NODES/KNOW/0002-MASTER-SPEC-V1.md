@@ -1592,3 +1592,27 @@ The Intelligent Block machine schema vs existing Supabase tables needs a
 reconciliation note. Recorded as OPEN seam owned by the builder's lane; the
 spec marks the seam, the implementation resolves it, PROVE verifies the
 resolution.
+
+## CANDIDATE AMENDMENTS — Naya 4 builder-lane deltas (NOT RATIFIED)
+
+> Status: PROPOSED. Drafted by the Naya 4 builder lane from the six-skeleton
+> merge audit (SKELETON-MERGE-AUDIT-2026-10-01, 2026-09-30 20:38 PDT — 7 MODERATE
+> findings, all OPEN) plus known-missing content for the 0002s. Append-only:
+> nothing above this line was altered, and Naya 2's A-<NODE>-N amendments are
+> preserved intact — numbering continues her sequence per node. All CANDIDATE —
+> not ratified, not merged to main. Each must be applied (or explicitly rejected
+> with written reason) before any lock of this spec.
+
+### A-KNOW-6 [N4-K1 — unverifiable review claim]
+
+Strike or flag: the "red-teamed + reconciled, 8.5/10" claim. No
+KNOW-findings.md artifact exists; per evidence law the score is UNVERIFIED
+from artifacts and must not be trusted as review evidence at lock. Re-verify
+with a persisted findings artifact, or remove the claim before lock.
+REQUIRED before lock.
+
+### A-KNOW-7 [N4 — Ultimate Lock cross-reference]
+
+Add: a cross-reference pointer between this 0002 and the Ultimate Lock
+materials landed in #1222, so the lock index and this depth spec cannot drift
+apart. State which artifact is authoritative for what.
