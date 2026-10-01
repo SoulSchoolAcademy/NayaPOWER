@@ -6,7 +6,7 @@ The graph is the relationship layer over canonical objects.
 
 It does not replace the tree.
 
-## Contents (5 files + this README = 6)
+## Contents (6 files + this README = 7)
 
 | File | Purpose |
 |---|---|
@@ -15,6 +15,7 @@ It does not replace the tree.
 | [0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Full relationship vocabulary, provenance, temporal, consent, applicability and supersession contract (RATIFIED; production parity pending) |
 | [0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json](./0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json) | Selector acceptance cases (timeless fixtures) |
 | [0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json](./0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json) | Reconciliation acceptance cases (timeless fixtures) |
+| [0006-GRAPH-PATH-V2-ACCEPTANCE.json](./0006-GRAPH-PATH-V2-ACCEPTANCE.json) | Multi-hop path quality-gate acceptance cases (timeless fixtures) |
 
 ## Edge vocabulary
 
