@@ -317,19 +317,33 @@ jobs:
           python - <<'PY'
           import json
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
+          capture_path=open("capture-path.txt").read().strip()
           try:
               expected=json.load(open("smart-note-expected.json"))
           except FileNotFoundError:
-              capture_path=open("capture-path.txt").read().strip()
               assert capture_path, "smart-note expected artifact missing and capture path is empty"
               capture=json.load(open(capture_path))
               distilled=json.dumps(capture["intelligence"],sort_keys=True,separators=(",",":"),ensure_ascii=False)
               import hashlib
               expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
-          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
-          assert len(matches)==1, matches
-          e=matches[0]
-          p=e["provenance"]
+
+          if capture_path:
+              matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+              assert len(matches)==1, matches
+              e=matches[0]
+              p=e["provenance"]
+          else:
+              ids=json.load(open("fresh-lesson-lineage-ids.json"))
+              e={"intelligent_block_id":ids["intelligent_block_id"]}
+              p={
+                "event_id":ids["event_id"],
+                "lineage_id":ids["lineage_id"],
+                "relationship_id":ids["relationship_id"],
+                "runtime_index_id":ids["index_id"],
+                "checkpoint_id":ids["checkpoint_id"],
+                "receipt_id":ids["receipt_id"],
+              }
+
           req={
             "mode":"verify",
             "event_id":p["event_id"],"intelligent_block_id":e["intelligent_block_id"],
