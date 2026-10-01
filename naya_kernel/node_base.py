@@ -61,13 +61,29 @@ CALCULUS_V21_EXECUTABLE_HASH = "cac79b6595ca651d8a110b71f25fff9fe50e67bc"
 CALCULUS_V21_RATIFIED_AT_MAIN = "a726a837"
 
 
+def _git_blob_sha(content: bytes) -> str:
+    """Return the git-blob SHA for checkout bytes after CRLF normalization.
+
+    The ratified pin names Git's canonical blob, while a Windows checkout may
+    materialize that LF blob as CRLF under core.autocrlf. Treat that checkout
+    conversion as representation-only, not semantic mutation. Any other byte
+    change still changes the digest and fails closed.
+    """
+    import hashlib
+
+    canonical = content.replace(b"\r\n", b"\n")
+    return hashlib.sha1(
+        b"blob %d\0" % len(canonical) + canonical
+    ).hexdigest()
+
+
 def v21_executable_status() -> Dict[str, Any]:
     """Verify the shared executable calculator on disk against the ratified pin.
 
     Returns {"expected_blob_sha", "actual_blob_sha", "match", "reason"}.
-    The blob SHA is the git blob hash ("blob <len>\\0" + content), matching
-    CALCULUS_V21_EXECUTABLE_HASH, so any verifier can re-derive it with
-    `git hash-object kernel/value_calculus.py`.
+    The blob SHA is computed over canonical git-blob content. A checkout-only
+    CRLF conversion is normalized back to LF before hashing so Windows and
+    POSIX verifiers agree on the same ratified artifact.
 
     Nodes that score through the shared calculator MUST consult this and
     fail closed on "MISMATCH" (the executable on disk is not the ratified
@@ -75,7 +91,6 @@ def v21_executable_status() -> Dict[str, Any]:
     found from this install layout) is reported in the receipt, never
     hidden.
     """
-    import hashlib
     import os
 
     expected = CALCULUS_V21_EXECUTABLE_HASH
@@ -87,7 +102,7 @@ def v21_executable_status() -> Dict[str, Any]:
                 "match": False, "reason": "UNVERIFIABLE: not found at " + path}
     with open(path, "rb") as fh:
         content = fh.read()
-    actual = hashlib.sha1(b"blob %d\0" % len(content) + content).hexdigest()
+    actual = _git_blob_sha(content)
     if actual != expected:
         return {"expected_blob_sha": expected, "actual_blob_sha": actual,
                 "match": False, "reason": "MISMATCH: on-disk executable "
