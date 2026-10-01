@@ -33,7 +33,7 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger):
       blob SHAs (which would make the content a moving target — the SHA changes
       every time the file is regenerated), their table entries carry
       "_self_referential": true with no blob SHA. file_count always equals the
-      true tree size (158), so the ledger's count assertions still hold.
+      true tree size (163), so the ledger's count assertions still hold.
 
 Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
            2 = usage/git error, count drift, or dangling pointer.
@@ -116,16 +116,16 @@ EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
+    "05-MEMORY": 20,  # includes the nine-node Smart Note build manifest added in this lock preparation
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 23,
+    "12-ENGINEERING": 24,
     "90-OPERATIONS": 10,
     "99-ARCHIVE": 1,
     "ROOT": 5,
