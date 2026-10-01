@@ -1,0 +1,84 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "today",
+  "name": "Your Intelligence Today",
+  "route": "/today",
+  "metaphor": "THE HIGHLIGHT REEL",
+  "theme": "Magenta — human significance, daily synthesis, reflected meaning",
+  "human_question": "What mattered today?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "date, Space, freshness and 'your intelligence as it exists right now'",
+    "state": "Today Pulse plus actual day activity",
+    "intelligence": "What Changed highlights and evidence-grounded Naya Reflection",
+    "action": "explore day, open origin, ask, save/list, follow-up note, day Ledger",
+    "proof": "every highlight and pulse number traces to canonical evidence"
+  },
+  "signature_instrument": "DAILY_HIGHLIGHT_REEL",
+  "primary_views": [
+    "TODAY_STORY",
+    "COLLECTIVE",
+    "PERSONAL",
+    "ACTIVITY",
+    "EVIDENCE"
+  ],
+  "primary_actions": [
+    "EXPLORE_TODAY",
+    "ASK_NAYA",
+    "OPEN_IN_FEED",
+    "OPEN_EVIDENCE",
+    "SAVE_FAVORITE",
+    "ADD_TO_LIST",
+    "CAPTURE_FOLLOWUP",
+    "VIEW_DAY_LEDGER",
+    "VIEW_WEEK_REPORT"
+  ],
+  "data_owner": "canonical intelligence + verified events + current context",
+  "handoffs": [
+    "feed",
+    "reports",
+    "library",
+    "ledger",
+    "connections",
+    "lists"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "human understands the day within ~10 seconds",
+    "pulse numbers recompute from canonical data",
+    "every highlight explains why it was selected",
+    "highlight opens original canonical object",
+    "Naya Reflection is evidence-grounded",
+    "quiet day does not manufacture content",
+    "open loops/tomorrow carry-forward are visible"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}
