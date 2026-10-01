@@ -1,5 +1,7 @@
 # AI-PROVE-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — PROVE semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** Naya cognitive operating contract — executable behavior specification.
 
 ## Purpose
@@ -46,3 +48,9 @@ Hand forward canonical state, evidence, unknowns, blockers, decisions, receipts,
 
 ## Acceptance
 A node qualifies only when its machine contract, implementation, tests, runtime receipts, and independent evidence agree. Behavior must be inspectable and replayable.
+
+
+## Ultimate-lock boundary
+- CLAIM STRENGTH ≤ EVIDENCE STRENGTH.
+- UNKNOWN ≠ VERIFIED; IMPLEMENTED ≠ VERIFIED; VERIFIED ≠ PRODUCTION_PROVEN.
+- PROVE does not determine causal outcome success and does not grant authority.
