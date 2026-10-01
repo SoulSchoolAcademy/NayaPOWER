@@ -199,8 +199,7 @@ class Kernel:
                 # resolver, no setter.
                 verify_node = self.nodes["VERIFY"]
                 self.nodes[name] = learn_node.LearnNode(
-                    verify_resolver=learn_node.LearnNode.reference_resolver(
-                        verify_node))
+                    verify_resolver=verify_node.reference_resolver())
             else:
                 self.nodes[name] = NODE_CLASSES[name]()
 

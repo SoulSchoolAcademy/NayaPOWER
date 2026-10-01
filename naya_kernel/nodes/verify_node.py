@@ -48,7 +48,7 @@ from __future__ import annotations
 import hashlib
 import json
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 from naya_kernel.node_base import (GateResult, GateVerdict, ManifestEntry,
                                   NodeBase, CALCULUS_V21_VERSION,
@@ -1105,6 +1105,19 @@ class VerifyNode(NodeBase):
         if not receipt.get("sealed"):
             raise ValueError("learn_baton requires a sealed (closed) receipt")
         return receipt.get("learn_baton", {})
+
+    def reference_resolver(self) -> Callable[[str], Optional[Dict[str, Any]]]:
+        """VERIFY-owned reference resolver for the VERIFY→LEARN trust seam.
+
+        Returns a callable mapping receipt_id -> this VERIFY node's receipt
+        dict, or None when no receipt is held under that id. This is the
+        composition accessor Coda 1 prescribed (#554/5939132042): the
+        trusted lookup LEARN's repair depends on, owned by VERIFY.
+
+        Deliberately a plain store lookup: VERIFY-ownership is proved by
+        LEARN's C6 structural proof, not by the resolver.
+        """
+        return lambda rid: self._receipts.get(rid)
 
     def _failure_propagation_fields(self, receipt: Dict[str, Any]) -> Dict[str, Any]:
         """§6 / N4 §8 failure propagation: FAIL → LEARN (pattern only, not
