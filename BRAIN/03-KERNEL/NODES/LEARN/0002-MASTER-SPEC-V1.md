@@ -1591,3 +1591,30 @@ until a verified lesson traverses LEARN_CANDIDATE (automatic_promotion=false)
 through verified + authorized promotion into a live recalibration, the seam is
 UNPROVEN — not failed, not passed. LEARN may not claim the bridge works on
 the strength of the design alone.
+
+
+### A-LEARN-5 [L-1 — MODERATE — amendment-proposal flag on VERIFIED]
+
+Add: (1) No learning transitions to VERIFIED on the "Learning epistemic
+state" axis (§6) except through the amendment mechanism — a VERIFIED state is
+proposed with evidence, reviewed, and recorded; it is never silently
+asserted, including by satisfying §16's promotion formula alone. This is
+consistent with §16 PROMOTION MUST BE EARNED (which defines promotion
+eligibility: qualifying VERIFY result V, provenance P, reconciliation R,
+applicability A, behavioral effect B, negative-transfer boundary N,
+contradiction handling C) and §18 NO CALLER-SUPPLIED VERIFIED: §16 sets the
+bar, this rule sets the transition discipline — eligibility does not
+self-assign the state. Checked against §16: no contradiction. (2)
+PROVE-overlap note: PROVE's epistemic claim axis (§27) and LEARN's learning
+epistemic axis (§6) both contain VERIFIED/SUPPORTED. They must not
+double-mint verification: PROVE's VERIFIED is a claim about evidence for a
+proposition; LEARN's VERIFIED is a state of an adopted learning. A learning
+is VERIFIED only when its supporting claims are PROVE-VERIFIED (or
+equivalently evidenced) AND the amendment-proposal flag is set; neither organ
+may assert the other's state.
+
+Rationale: adopting VERIFIED as a persistent learning state without the
+proposal flag is an F01-class regression; LEARN and PROVE must not disagree
+on who gets to say "verified."
+Acceptance: §6 carries the flag requirement; the PROVE-overlap note is
+present. REQUIRED before lock.

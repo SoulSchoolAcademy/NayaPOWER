@@ -2310,3 +2310,95 @@ ACT may not declare its own outcome verified — "an execution receipt is not
 verified success." Additionally: bind the Door vocabulary to the canonical
 registry revision; the taxonomy must be canonicalized against the existing
 runtime registry (open seam, builder's lane to confirm the revision pin).
+
+
+### A-ACT-4 [M01 — MAJOR — 13-function master-binding table]
+
+Add: the binding table mapping all 13 functions of
+`NAYANODE/00-ACT-MASTER-CONTRACT-V1.md` to the 0002 sections that implement
+each. Verified against the contract file's function list (lines 19-31):
+
+| Master function | 0002 implementation |
+|---|---|
+| plan_action | §3 (step 1 VALIDATE / step 2 BOUND), §61 ACTION DECOMPOSITION |
+| validate_action | §3 (step 1 VALIDATE), §28 PRECONDITIONS |
+| select_minimum_sufficient_action | §12 ACTION EFFICIENCY, §3 (step 2 BOUND) |
+| bind_authority | §49 OWNER BINDING, §18 LIVE AUTHORITY RECHECK |
+| define_expected_outcome | §30 EXPECTED OUTCOME |
+| define_proof_requirements | §31 PROOF REQUIREMENTS |
+| execute | §3 (step 3 EXECUTE), §27 EXECUTION STATE MACHINE |
+| timeout | §35 TIMEOUT LAW |
+| retry | §33 RETRY LAW, §34 RETRY POLICY |
+| rollback | §38 ROLLBACK |
+| observe | §3 (step 4 OBSERVE), §32 OBSERVATION ≠ VERIFICATION |
+| emit_receipt | §26 PRE-EFFECT RECEIPT, §51 CANONICAL EXECUTION RECEIPT |
+| idempotency_check | §22 IDEMPOTENCY, §23 ATOMIC IDEMPOTENCY LAW |
+
+Rationale: the entire substance of the draft-F01 fix — evidence that the 13
+master functions are bound, not just asserted.
+Acceptance: all 13 functions present with a cited implementing 0002 section.
+REQUIRED before lock.
+
+### A-ACT-5 [M02 — MAJOR — decision_lineage_id + traversal_count; READ_MORE k-bound]
+
+Add: (1) `decision_lineage_id` and `traversal_count` to the §8 decision-context
+schema and the §51 canonical execution receipt schema; (2) the READ_MORE
+k-bound rule: at most k traversals per decision lineage; k default 3,
+CANDIDATE (governance-ratified value pending).
+Enforcement: LAW at intake — a proposal whose decision_lineage_id carries
+traversal_count ≥ k is refused further traversal (receipted, reason
+TRAVERSAL_BOUND_EXCEEDED). ACT is the recorder: it stamps both fields on
+every §51 receipt. The kernel's decide() edge trace is the runtime counter's
+source of truth.
+
+Rationale: without the fields the k-bound is unenforceable — the exact defect
+draft-F07 was raised to fix.
+Acceptance: both fields in both schemas; k-bound stated with named enforcer.
+REQUIRED before lock.
+
+### A-ACT-6 [M03 — MODERATE — predicate-language open question]
+
+Add to the OPEN QUESTIONS record: "Name the deterministic predicate language
+over the fixed context schema." Status: OPEN (carried from merged-spec §10
+Q10 / draft-F10).
+
+Rationale: an explicitly OPEN finding must be parked in the spec, not silently
+dropped.
+Acceptance: question stated verbatim, marked OPEN.
+
+### A-ACT-7 [M04 — MODERATE — retry-token authority]
+
+Add to §34 RETRY POLICY: the retry token is issued by ACT, but its authority
+derives solely from the originating LAW GateReceipt — a retry is lawful only
+within the scope, constraints, and expiry of that receipt. A retry that would
+exceed that scope, or whose receipt has expired or been revoked, requires a
+fresh LAW decision. Any self-initiated retry outside an existing authorization
+routes through ASK (per §60); §1 ("I do not invent permission") forbids
+self-initiated execution, and a retry is an execution.
+
+Rationale: a probe/retry is an execution — under whose permission it runs must
+be on the page.
+Acceptance: §34 states token issuer + authority basis, or ASK routing.
+REQUIRED before lock.
+
+### A-ACT-8 [M06 — MINOR — concurrent-loser cancel authority]
+
+Add (to §23 / §37): "A concurrent loser holds a read-view of the winner's
+lease with no cancel authority; cancel authority stays with the claim owner."
+
+Rationale: the actual fix the F08 reconciliation claimed — without it, a loser
+could cancel the winner's execution.
+Acceptance: sentence present in §23 or §37.
+
+### A-ACT-9 [M07 — MINOR — ACT organ operator] — OPEN QUESTION
+
+Record as OPEN: "Name the accountable owner/principal for ACT's operation
+(governance-held role or human office)." §49 OWNER BINDING covers action-owner
+identity, not the organ's accountable operator. No party is named here because
+no governance record establishes one — inventing an operator would be the same
+defect class as the finding.
+
+Rationale: GAP-A ownership — no named party is accountable for ACT running
+correctly.
+Acceptance: open question recorded (owner to be named by governance, not
+inferred).

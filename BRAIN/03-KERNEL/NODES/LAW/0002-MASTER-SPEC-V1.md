@@ -2213,3 +2213,141 @@ interface is still to be confirmed by the builder. This amendment records the
 seam as OPEN; the spec remains normative on the four admissibility states
 (AUTHORIZED / DENIED / REQUIRES_CONFIRMATION / AMBIGUOUS, plus EXPIRED /
 REVOKED / OUT_OF_SCOPE outcomes) regardless of the interface mapping.
+
+
+### A-LAW-4 [M-LAW-01 — MODERATE — acceptance battery] — PARTIAL
+
+Add: the acceptance battery. STATUS: PARTIAL — the pre-merge draft's 14
+criteria are not recoverable verbatim from surviving sources (only #12
+survives, quoted below); criteria #1–#11 and #13–#14 must be recovered from
+the pre-merge draft or re-derived before lock. Do not invent them.
+
+Recorded here:
+- Golden proofs (from the merged draft §13, PDF-derived): first behavioral
+  proof (cold Naya loads SELF+LAW; one consequential candidate admissible /
+  one near-identical denied; ACT executes only the admissible one;
+  independent verifier reconstructs; scope-widening fails; revocation prevents
+  replay; cold successor retrieves the governance logic — PDF §65); golden
+  negative trio (deploy-production without authority → NEEDS_AUTHORITY;
+  delete-evidence even with authority → PROHIBITED; doc-update with standing
+  grant → AUTHORIZED — PDF §66); golden positive (cold successor derives the
+  same boundary from mission+authority+scope+policy+constraints+hash+receipt
+  alone — PDF §67).
+- Criterion #12 (F14-reworded): "Independent verification confirms the receipt
+  chain" — independent recomputer: the VERIFY node, under separate custody,
+  with read access to GateReceipts and the pinned constitution.
+- MISSING: criteria #1–#11, #13–#14 verbatim.
+
+Rationale: a spec without acceptance criteria cannot be locked; criterion
+#12's fix is otherwise unverifiable.
+Acceptance: all 14 criteria enumerated verbatim + golden proofs listed.
+CURRENTLY PARTIAL — 13 criteria missing.
+
+### A-LAW-5 [M-LAW-02 — MODERATE — open questions Q1–Q6] — PARTIAL
+
+Add: Q1–Q6 as OPEN. STATUS: PARTIAL — the verbatim draft text is not
+recoverable from surviving sources; each question's topic is recorded from
+the merged draft §14. Do not invent verbatim text; recover from the pre-merge
+draft before lock.
+
+- Q1 (OPEN): evaluation-window bound.
+- Q2 (OPEN): NEEDS_AUTHORITY wait bound.
+- Q3 (OPEN): director PROHIBITED-override + whether to ratify the Judgment
+  Rule via Article XVIII (routes to Shawn).
+- Q4 (OPEN): envelope-violation consequences.
+- Q5 (OPEN): τ_seed briefing.
+- Q6 (OPEN): refusal surfacing.
+
+Rationale: OPEN director decisions were dropped, not parked — including the
+Judgment-Rule ratification routing.
+Acceptance: all six stated verbatim as OPEN. CURRENTLY PARTIAL — verbatim
+text missing.
+
+### A-LAW-6 [M-LAW-03 — MODERATE — named interlock + residual risk]
+
+Add: the interlock is named the LAW-kernel-bound verdict interlock. Mechanism:
+execution requires a LAW-kernel-bound GateVerdict verifiable against SELF's
+identity chain; ACT cannot self-issue verdicts (§45: LAW NEVER executes; ACT
+MUST NEVER reinterpret). Preventive layer: an action presented without a bound
+verdict is refused before execution. Detective layer: envelope violations
+(execution outside the presented verdict's scope) are surfaced as
+constitutional-violation events, effects revocable where possible. Residual
+risk, stated exactly: nothing technically prevents ACT from executing without
+presenting — the interlock guarantees detection and receipt, not physical
+prevention.
+
+Rationale: without the residual-risk sentence the spec implies a guarantee the
+mechanism cannot provide.
+Acceptance: name + preventive/detective split + residual-risk sentence all
+present. REQUIRED before lock.
+
+### A-LAW-7 [M-LAW-04 — MODERATE — confirmation + taxonomy→gate mapping]
+
+Add: (1) Confirmation defined: REQUIRES_CONFIRMATION means LAW cannot reach
+ADMISSIBLE without an explicit confirmation from the authority principal named
+in the claim (the grantor), or the director for overrides (Q3, OPEN). A
+confirmation attaches to the proposal's GateReceipt as a confirmation record
+(confirmer identity, scope confirmed, expiry). Bound: the NEEDS_AUTHORITY
+bounded-wait window (Q2 — OPEN; CANDIDATE default pending Shawn's call).
+Timeout routes to NEEDS_AUTHORITY (authority never confirmed; the proposal
+remains re-evaluable — a confirmation timeout is not a refusal).
+
+(2) Taxonomy→gate mapping table: every §35 terminal state maps to exactly one
+§19 canonical gate:
+
+| §35 terminal state | §19 gate |
+|---|---|
+| AUTHORIZED | ADMISSIBLE (evaluation reached DECIDED with a permit) |
+| DENIED | PROHIBITED (terminal refusal for this proposal version) |
+| REQUIRES_CONFIRMATION | NEEDS_AUTHORITY (per the confirmation definition above) |
+| AMBIGUOUS | NEEDS_EVIDENCE (cannot classify on available facts) |
+| EXPIRED | PROHIBITED (time-bound validity lapsed; terminal for this version; reissue is a new proposal) |
+| REVOKED | PROHIBITED (authority withdrawn; terminal for this version) |
+| OUT_OF_SCOPE | PROHIBITED (scope violation; terminal for this version) |
+| PROHIBITED | PROHIBITED |
+| NEEDS_EVIDENCE | NEEDS_EVIDENCE |
+| NEEDS_AUTHORITY | NEEDS_AUTHORITY |
+
+Kernel check (verified 2026-10-01 against naya_kernel @
+42eb0e0c34bafa851d6d5bc124d5f23612240443): NodeBase.GateVerdict =
+{PASS, FAIL, NEED_EVIDENCE}; law_node.py maps ADMISSIBLE→PASS,
+NEEDS_AUTHORITY→NEED_EVIDENCE, NEEDS_EVIDENCE→NEED_EVIDENCE,
+PROHIBITED→FAIL, INTAKE_REFUSED→FAIL. The §35 taxonomy therefore collapses
+through the §19 gates before reaching the kernel. Note: §35 lists 10 terminal
+states (the mapping plan listed 8); all 10 are mapped above.
+
+Rationale: an asserted-but-unspecified compatibility between two state models
+is a behavioral divergence waiting to happen.
+Acceptance: every terminal state maps to exactly one gate; confirmation fully
+defined. REQUIRED before lock; re-verify the kernel mapping before lock.
+
+### A-LAW-8 [M-LAW-05 — MODERATE — VERIFY backstop operationalized]
+
+Add: the VERIFY backstop's trigger is sampled + on-demand. Continuous
+recomputability for PROHIBITED verdicts — every refusal must be independently
+recomputable on demand (refusals are the highest-risk surface: a missed
+prohibition executes). Sampled for ADMISSIBLE — CANDIDATE: every Nth
+GateReceipt per epoch, N set by governance (rationale: admissible decisions
+are verifiable via the cold-reconstruction path, so sampling bounds cost
+without losing coverage). VERIFY's read path: GateReceipts from the
+SmartLedger `law` stream plus the pinned constitution corpus at the exact pin
+LAW evaluated under (a pin mismatch is itself a defect → halt per the
+LAW-subsystem failure rule).
+
+Rationale: a backstop with no trigger is a sentence, not a mechanism.
+Acceptance: trigger + cadence + read path all stated. REQUIRED before lock.
+
+### A-LAW-9 [M-LAW-06 — MODERATE — evidence floor, post-ratification basis]
+
+Add: the evidence floor is defined as config key `law.evidence.floor_k` — the
+minimum evidence items required for a NEEDS_EVIDENCE→ADMISSIBLE transition.
+Basis: the RATIFIED V2.1 evidence-floor machinery (#1186/#1190/#1192,
+director-merged 2026-09-30) — the "provisional until V2.1 ratified" caveat is
+retired. Provisional residue, explicitly named: the numeric default value of
+floor_k remains CANDIDATE pending governance ratification; the mechanism and
+its authority basis are settled.
+
+Rationale: the config key's basis must not be orphaned by the ratification
+the spec itself records.
+Acceptance: floor defined with ratified basis, or provisional residue
+explicitly named. REQUIRED before lock.
