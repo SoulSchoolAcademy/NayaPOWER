@@ -248,3 +248,44 @@ def test_current_truth_resolver_has_daily_schedule():
     assert "actions: read" in wf
     assert "issues: read" in wf
     assert "pull-requests: read" in wf
+
+
+def test_projection_freshness_ignores_generated_brain_receipts_but_not_source(monkeypatch):
+    class Completed:
+        returncode = 0
+
+    monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
+    monkeypatch.setattr(
+        ctr.subprocess,
+        "check_output",
+        lambda *args, **kwargs: (
+            "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md\n"
+            "BRAIN/NAYAPOWER-BRAIN-INDEX.json\n"
+            "BRAIN/REAL-TREE.json\n"
+            "BRAIN/REAL-TREE.md\n"
+        ),
+    )
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "CURRENT"
+    assert result["reason"] == "PROJECTION_ONLY_DRIFT"
+    assert result["substantive_paths"] == []
+
+
+def test_projection_freshness_still_flags_real_brain_source_with_generated_receipts(monkeypatch):
+    class Completed:
+        returncode = 0
+
+    monkeypatch.setattr(ctr.subprocess, "run", lambda *args, **kwargs: Completed())
+    monkeypatch.setattr(
+        ctr.subprocess,
+        "check_output",
+        lambda *args, **kwargs: (
+            "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json\n"
+            "BRAIN/REAL-TREE.json\n"
+            "BRAIN/REAL-TREE.md\n"
+        ),
+    )
+    result = ctr._projection_freshness("a" * 40, "b" * 40)
+    assert result["status"] == "STALE"
+    assert result["reason"] == "SUBSTANTIVE_DRIFT"
+    assert result["substantive_paths"] == ["BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json"]
