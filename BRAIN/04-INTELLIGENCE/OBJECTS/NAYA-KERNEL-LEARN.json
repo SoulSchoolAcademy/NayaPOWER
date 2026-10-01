@@ -45,7 +45,11 @@
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-EVOLVE",
     "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
-    "decision_calculus_role": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify"
+    "decision_calculus_role": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify",
+    "neighbor_handoff_semantics": "semantic/display neighbor only; executable routing is runtime_handoffs and the inter-node wire contract",
+    "runtime_handoffs": [
+      "NAYA-KERNEL-EVOLVE"
+    ]
   },
   "provenance": {
     "derived_from": [
