@@ -118,7 +118,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # 20 -> 21 deliberate: SN-018 CI exit-2 triage smart note added 2026-10-01
+    "05-MEMORY": 21,  # 20 -> 21 deliberate: SN-021 CI exit-2 triage smart note added 2026-10-01
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
