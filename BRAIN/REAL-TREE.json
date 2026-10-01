@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "ee41dbc9e612c3ece3dca69dbbb20d569a9da00a",
+  "receipt_basis_commit": "397911caed24b80fad21c2025d8719e7848ae00f",
   "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
@@ -175,8 +175,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md",
-      "blob_sha": "1fa8bc04319774abf88cfe7b193da7d7da3bf6e8",
-      "size": 2007
+      "blob_sha": "202d9289e13765c0296feb21b1b00319cf054fdd",
+      "size": 3754
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md",

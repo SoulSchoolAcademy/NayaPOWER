@@ -57,3 +57,41 @@ CONNECT turns isolated intelligence into relevant, situated intelligence. It res
 | Supersession detected | Serve superseding object; mark superseded |
 | Relevance cannot be established | Exclude from results; log reason |
 | Provenance missing | Mark as UNVERIFIED; do not serve as canonical |
+
+## Bounded runtime seam (proven, exact-revision)
+
+The aspiration above is bounded by the one canonical executable seam on main.
+CONNECT has exactly one canonical runtime seam; there is no second graph path.
+
+**The seam (present on main):**
+
+- `supabase/functions/nayanet-cold-runtime-proof/index.ts` — `mode === "graph-behavior"`
+  (relationship-context treatment: graph ON → `APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE`)
+  and `mode === "graph-verify"` (control/treatment receipt-pair verification)
+- `.github/workflows/live-supabase-runtime-proof.yml` — invokes the seam
+- `tests/verify_cold_graph_behavior.py` — behavioral verification of the seam
+
+**Exact historical proof (exact-revision only):** acceptance run `36516790588`
+(recorded in issue #1021) at commit `c9b31890c93f4f5f7d60bb8cd346093c11ab427f`
+independently supported:
+
+- graph OFF → `REQUIRE_DIRECT_CANONICAL_INTELLIGENCE`
+- graph ON → `APPLY_CONTEXTUALIZED_VERIFIED_INTELLIGENCE`
+
+with persisted OFF/ON receipts, VERIFIED provenance-bearing relationships, and
+independent pair reread/recomputation. The proof is exact-revision only: it does
+not transfer to other commits without a new acceptance run.
+
+**NOT PROVEN (explicit limits — claiming any of these is an overclaim):**
+
+- current-main production parity of this proof
+- general multi-hop traversal
+- cycle handling
+- freshness semantics
+- contradiction / supersession reconciliation
+- generalized semantic / structural / relational retrieval
+- universal CONNECT behavior
+
+**Canonical-seam rule:** No new graph. No new persistence. No new authority.
+No runtime behavior change. Any future CONNECT runtime work extends this seam
+or records a new exact-revision proof; it does not create a parallel graph path.
