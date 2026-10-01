@@ -560,6 +560,7 @@ Deno.serve(async (req: Request) => {
 
     return json({
       ok: true,
+      verified: true,
       result,
       verification_record: receipt
         ? (receipt.learning || []).find((entry: any) => entry?.learning_id === promoted.id && entry?.verified === true) ?? null
