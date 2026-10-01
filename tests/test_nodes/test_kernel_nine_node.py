@@ -679,3 +679,46 @@ def test_non_gate_edges_partition_closed():
         {n: GateVerdict.PASS for n in EVALUATION_ORDER}, {})}
     for rid in NON_GATE_EDGES:
         assert trace[rid]["status"] not in ("SATISFIED", "DISPOSITION_UNDEFINED"), rid
+
+
+# ------------------------------------------------- harden: receive path (tick 25)
+
+
+def test_unexpected_gate_keys_are_recorded_not_silently_dropped(
+        kernel, demo_stages):
+    """A caller typo in state["gates"] keys (the tick-10 "harmFlag" class of
+    bug) must be visible, never silently dropped: decide() records the
+    unknown key in the receipt and the result; no gate is consulted with it
+    and the decision outcome is unchanged."""
+    stages = dict(demo_stages)
+    stages["LAWX"] = {"some": "payload"}
+    out = kernel.decide({"gates": stages})
+    assert out["unexpected_gate_keys"] == ["LAWX"]
+    receipt = out["decision_receipt"]
+    assert receipt["unexpected_gate_keys"] == ["LAWX"]
+    assert verify_decision_receipt(receipt)["result"] == "MATCH"
+    # identical decision as without the stray key
+    plain = kernel.decide({"gates": demo_stages})
+    assert out["verdict"] == plain["verdict"]
+    assert [g["verdict"] for g in out["gates"]] == \
+        [g["verdict"] for g in plain["gates"]]
+
+
+def test_decide_tolerates_non_dict_gates_container(kernel):
+    """A malformed state["gates"] (not a dict) is treated as absent —
+    fail-closed, never an AttributeError crash."""
+    out = kernel.decide({"gates": ["not", "a", "dict"]})
+    assert out["verdict"] in ("FAIL", "NEED_EVIDENCE")
+    assert out["stopped_at"] == "SELF"
+    assert out["unexpected_gate_keys"] == []
+    assert verify_decision_receipt(out["decision_receipt"])["result"] == "MATCH"
+
+
+def test_gate_all_tolerates_non_dict_gates_container(kernel):
+    """gate_all evaluates all nine gates (each on an empty sub-state) even
+    when state["gates"] is malformed."""
+    out = kernel.gate_all({"gates": "not-a-dict"})
+    assert len(out) == 9
+    assert [g["node"] for g in out] == [
+        "SELF", "LAW", "KNOW", "ACT", "PROVE", "CONNECT",
+        "VERIFY", "LEARN", "EVOLVE"]

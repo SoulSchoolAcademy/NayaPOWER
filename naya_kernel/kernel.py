@@ -164,6 +164,16 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _gate_states(state: Dict[str, Any]) -> Dict[str, Any]:
+    """Return the per-node sub-states mapping, fail-closed on a malformed
+    container: a non-dict ``state["gates"]`` is treated as absent (no gate
+    is consulted with it) instead of crashing the kernel."""
+    sub_states = (state or {}).get("gates") or {}
+    if not isinstance(sub_states, dict):
+        return {}
+    return sub_states
+
+
 def verify_decision_receipt(receipt: Dict[str, Any]) -> Dict[str, Any]:
     """Re-derive receipt_hash over the canonical body; return MATCH/MISMATCH."""
     stored = receipt.get("receipt_hash")
@@ -249,7 +259,15 @@ class Kernel:
     def _decision_receipt(self, decision_id: str, gates: List[Dict[str, Any]],
                           edge_trace: List[Dict[str, Any]],
                           verdict: GateVerdict,
-                          stopped_at: str | None) -> Dict[str, Any]:
+                          stopped_at: str | None,
+                          unexpected_gate_keys: List[str] | None = None) -> Dict[str, Any]:
+        """Hash-bound decision receipt.
+
+        ``unexpected_gate_keys`` names any ``state["gates"]`` keys that are
+        not node names: they were recorded here, never consulted by any
+        gate, and never steered the decision. Evidence-law honesty: a
+        dropped input must be visible, not silent.
+        """
         body: Dict[str, Any] = {
             "receipt_id": f"decision-{decision_id}",
             "node_id": NODE_ID,
@@ -263,6 +281,7 @@ class Kernel:
             "stopped_at": stopped_at,
             "gates": gates,
             "edge_trace": edge_trace,
+            "unexpected_gate_keys": list(unexpected_gate_keys or []),
             "issued_at": _now_iso(),
             "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
         }
@@ -282,7 +301,12 @@ class Kernel:
         """
         state = state or {}
         decision_id = state.get("decision_id") or f"d-{_sha256(state)[:12]}"
-        sub_states = state.get("gates") or {}
+        sub_states = _gate_states(state)
+        # Fail-visible (not fail-silent): caller-supplied gate keys that are
+        # not node names are recorded in the receipt. They were NOT consulted
+        # by any gate and never steered the decision.
+        unexpected_gate_keys = sorted(
+            k for k in sub_states if k not in EVALUATION_ORDER)
         gates: List[Dict[str, Any]] = []
         verdicts: Dict[str, GateVerdict] = {}
         evaluated: Dict[str, bool] = {}
@@ -323,7 +347,8 @@ class Kernel:
                 break  # fail-fast: a FAIL halts the whole decision
         edge_trace = self._edge_trace(verdicts, evaluated)
         receipt = self._decision_receipt(
-            decision_id, gates, edge_trace, verdict, stopped_at)
+            decision_id, gates, edge_trace, verdict, stopped_at,
+            unexpected_gate_keys)
         return {
             "decision_id": decision_id,
             "verdict": verdict.value,
@@ -331,13 +356,13 @@ class Kernel:
             "halted_on_fail": halted,
             "gates": gates,
             "edge_trace": edge_trace,
+            "unexpected_gate_keys": unexpected_gate_keys,
             "decision_receipt": receipt,
         }
 
     def gate_all(self, state: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Evaluate every gate without edge blocking; full audit visibility."""
-        state = state or {}
-        sub_states = state.get("gates") or {}
+        sub_states = _gate_states(state)
         out: List[Dict[str, Any]] = []
         for position, name in enumerate(EVALUATION_ORDER, start=1):
             result = self._run_gate(name, sub_states.get(name))
