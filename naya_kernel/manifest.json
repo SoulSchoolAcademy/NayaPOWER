@@ -1,0 +1,114 @@
+{
+ "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
+ "gap_a": "CLOSED on this branch: Kernel.decide() traverses the canonical 13-edge runtime graph (FLAG-001 step 2; seed-faithful, lock minimum routes as required subset; per-edge fail-fast/fail-closed; FAIL halts globally). Branch-only candidate code \u2014 NOT ratified, NOT merged, NOT deployed.",
+ "gate_order": [
+  {
+   "name": "SELF",
+   "node_id": "NAYA-KERNEL-SELF",
+   "pipeline_position": 1
+  },
+  {
+   "name": "LAW",
+   "node_id": "NAYA-KERNEL-LAW",
+   "pipeline_position": 2
+  },
+  {
+   "name": "KNOW",
+   "node_id": "NAYA-KERNEL-KNOW",
+   "pipeline_position": 3
+  },
+  {
+   "name": "ACT",
+   "node_id": "NAYA-KERNEL-ACT",
+   "pipeline_position": 4
+  },
+  {
+   "name": "PROVE",
+   "node_id": "NAYA-KERNEL-PROVE",
+   "pipeline_position": 5
+  },
+  {
+   "name": "CONNECT",
+   "node_id": "NAYA-KERNEL-CONNECT",
+   "pipeline_position": 6
+  },
+  {
+   "name": "VERIFY",
+   "node_id": "NAYA-KERNEL-VERIFY",
+   "pipeline_position": 7
+  },
+  {
+   "name": "LEARN",
+   "node_id": "NAYA-KERNEL-LEARN",
+   "pipeline_position": 8
+  },
+  {
+   "name": "EVOLVE",
+   "node_id": "NAYA-KERNEL-EVOLVE",
+   "pipeline_position": 9
+  }
+ ],
+ "implementation_status": {
+  "ACT": "implemented-candidate",
+  "CONNECT": "implemented-candidate",
+  "EVOLVE": "implemented-candidate",
+  "KERNEL": "kernel-integrated-graph",
+  "KNOW": "implemented-candidate",
+  "LAW": "implemented-candidate",
+  "LEARN": "implemented-candidate",
+  "PROVE": "implemented-candidate",
+  "SELF": "implemented-candidate",
+  "VERIFY": "implemented-candidate",
+  "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed). 'kernel-integrated-graph' = Kernel.decide() traverses the canonical 13-edge runtime graph on this branch (tested; NOT ratified/merged/deployed)."
+ },
+ "name": "naya-nine-node-kernel",
+ "node_versions": {
+  "ACT": "0.1.0-candidate",
+  "CONNECT": "0.1.0-candidate",
+  "EVOLVE": "0.1.0-candidate",
+  "KNOW": "0.1.0-candidate",
+  "LAW": "0.1.0-candidate",
+  "LEARN": "0.1.0-candidate",
+  "PROVE": "0.1.0-candidate",
+  "SELF": "0.1.0-candidate",
+  "VERIFY": "0.1.0-candidate"
+ },
+ "spec_sources": {
+  "ACT": "~/workspace/nine-node-specs/ACT-NODE-SPEC-CANDIDATE.md",
+  "CONNECT": "~/workspace/nine-node-specs/CONNECT-NODE-SPEC-CANDIDATE.md",
+  "EVOLVE": "~/workspace/nine-node-specs/EVOLVE-NODE-SPEC-CANDIDATE.md",
+  "KNOW": "~/workspace/nine-node-specs/KNOW-NODE-SPEC-CANDIDATE.md",
+  "LAW": "~/workspace/nine-node-specs/LAW-NODE-SPEC-CANDIDATE.md",
+  "LEARN": "~/workspace/nine-node-specs/LEARN-NODE-SPEC-CANDIDATE.md",
+  "PROVE": "~/workspace/nine-node-specs/PROVE-NODE-SPEC-CANDIDATE.md",
+  "SELF": "~/workspace/nine-node-specs/SELF-NODE-SPEC-CANDIDATE.md",
+  "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md"
+ },
+ "status": "CANDIDATE",
+ "topology": {
+  "edges": 13,
+  "evaluation_order": [
+   "SELF",
+   "LAW",
+   "KNOW",
+   "ACT",
+   "PROVE",
+   "CONNECT",
+   "VERIFY",
+   "LEARN",
+   "EVOLVE"
+  ],
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "kind": "canonical-runtime-graph-v1",
+  "lock": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
+  "lock_minimum_routes": 11,
+  "note": "Semantic/display order unchanged per the lock; executable communication is the graph, not a linear call stack.",
+  "semantics": "per-edge fail-fast/fail-closed: a gate is consulted only when every required upstream PASSed; FAIL halts the whole decision globally; ACT->KNOW is the PRODUCES write edge; EVOLVE->SELF is the next-cycle edge, not traversed in one pass."
+ },
+ "lock_reconciliation": {
+  "graph_topology": "tick 14: Kernel.decide() re-topologized onto the canonical 13-edge runtime graph (Ultimate Lock).",
+  "KNOW": "tick 15: reconciled to the Ultimate Lock — applicability decisions removed (applicability_note rides as non-steering metadata; CONNECT owns the steering decision); epistemic claim/evidence assessment moved to PROVE (SUPPORTED/LEARNED/VERIFIED ingest claims and REUSABLE promotion require a PROVE receipt reference; KNOW binds it as provenance, never assesses); truth-state language removed (canonical-state deltas).",
+  "calculus": "tick 16: RATIFIED Decision Value Calculus V2.1 bound (PRs #1186/#1190/#1192, Human Director 2026-09-30). CALCULUS_NOT_RATIFIED / REFUSAL_CALCULUS_UNRATIFIED / 'calculus-not-ratified' paths removed from learn/evolve/connect; LEARN/EVOLVE receipts bind calculusConfigHash=bc9edc9092436481be7255c00f099d69bd2a95e7 (git blob SHA of NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md at main a726a837; executable kernel/value_calculus.py=cac79b6595ca651d8a110b71f25fff9fe50e67bc). Shared binding in naya_kernel/node_base.py."
+ },
+ "version": "0.1.0-candidate"
+}

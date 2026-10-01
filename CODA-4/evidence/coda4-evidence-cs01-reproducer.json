@@ -1,0 +1,28 @@
+{
+  "base_main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
+  "body_sha256": "eaaeddb3d64c37dbb8ea0bb14eeaf0724e5bcd716896a286c82072c0739e0ef5",
+  "interpretation": "Standalone CS-01 reproducer. exit 1 means the defect is PRESENT, exit 0 means it was repaired.",
+  "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
+  "observed": {
+    "command": "python CODA-4\\repro_cs01.py",
+    "exit_code": 1,
+    "stderr_tail": [],
+    "stdout_tail": [
+      "REPORTED restored_block_count : 1",
+      "REPORTED store_hash           : 71d1ce8361027a81",
+      "PRODUCER live _store_hash()   : 71d1ce8361027a81",
+      "hashes equal                  : True",
+      "ACTUAL successor.blocks       : 0",
+      "ACTUAL successor._hash_index  : 0",
+      "ACTUAL retrieve() blocks      : []",
+      "",
+      "CS-01 PRESENT: True",
+      "EXIT 1 means the defect is present; EXIT 0 means it was repaired."
+    ]
+  },
+  "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
+  "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
+  "receipt_id": "coda4-evidence-cs01-reproducer",
+  "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
+  "tested_head_sha": "1fbb5338fba49eb5933ab08fd3e0fe84da62ac22"
+}
