@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "ee41dbc9e612c3ece3dca69dbbb20d569a9da00a",
-  "inventory_file_count": 160,
+  "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
+  "inventory_file_count": 161,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,
     "06-PROOF": 10,
@@ -162,6 +162,11 @@
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md",
       "blob_sha": "900f3d525938c8ab315e871baca891196f6b52de",
       "size": 3347
+    },
+    {
+      "path": "BRAIN/03-KERNEL/0005-AWESOME-CODE-PROFILE-POINTER-V1.json",
+      "blob_sha": "a45f5eeec3b66c336784f75f705f392f531ea0e6",
+      "size": 2093
     },
     {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",

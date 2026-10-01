@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-01  
-**Receipt basis commit:** `ee41dbc9e612c3ece3dca69dbbb20d569a9da00a`  
-**Inventory file count:** 160  
+**Receipt basis commit:** `507d34213333a38708912d343537985e619938ac`  
+**Inventory file count:** 161  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -13,7 +13,7 @@
 | 00-SPEC | 15 |
 | 01-GOVERNANCE | 3 |
 | 02-ARCHITECTURE | 5 |
-| 03-KERNEL | 27 |
+| 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
 | 05-MEMORY | 19 |
 | 06-PROOF | 10 |
@@ -65,6 +65,7 @@
 - `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `51b0d2685de8` (9395 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `7953bbc48e21` (24029 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
+- `BRAIN/03-KERNEL/0005-AWESOME-CODE-PROFILE-POINTER-V1.json` — `a45f5eeec3b6` (2093 bytes)
 - `BRAIN/03-KERNEL/MANIFEST.json` — `305124036fff` (1394 bytes)
 - `BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md` — `8b067739b60b` (2507 bytes)
 - `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` — `1fa8bc043197` (2007 bytes)
