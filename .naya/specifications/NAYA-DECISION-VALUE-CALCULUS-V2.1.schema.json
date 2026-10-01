@@ -171,8 +171,8 @@
         "number",
         "null"
       ],
-      "minimum": -9,
-      "maximum": 9
+      "minimum": -10,
+      "maximum": 10
     },
     "calibration_error": {
       "type": [
