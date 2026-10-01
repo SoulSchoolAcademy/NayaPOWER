@@ -46,6 +46,12 @@ Connecting never means permission to do things. A door gets you in the building;
 
 We score it — eight dimensions, honestly, in the open — and we keep building until every dimension scores 9 or higher out of 10, with the visuals at a perfect 10. The score can go down if we regress. Nothing is "done" until it scores.
 
+## What world-class means here
+
+We are not chasing effects for their own sake. The standard is that every visible object feels intentionally engineered: text is generous and easy to read, spacing feels calm, buttons feel physical, boards feel like intelligent destinations, color means something, motion tells the truth, and nothing looks accidental or generic.
+
+The detailed rules now live in `HUB/DESIGN-LAWS/`, so every Naya and builder receives the same design taste instead of re-inventing it.
+
 ## The one rule
 
 The design you already love is the floor. We can make it better. We can never make it blander.
