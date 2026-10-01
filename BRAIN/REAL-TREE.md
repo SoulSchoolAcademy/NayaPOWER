@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-01  
-**Receipt basis commit:** `ee41dbc9e612c3ece3dca69dbbb20d569a9da00a`  
-**Inventory file count:** 160  
+**Receipt basis commit:** `25d414f5cf748b24ebf71b09a28b563af1e3f143`  
+**Inventory file count:** 161  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -14,7 +14,7 @@
 | 01-GOVERNANCE | 3 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 27 |
-| 04-INTELLIGENCE | 24 |
+| 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 19 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
@@ -99,6 +99,7 @@
 - `BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json` — `867c74c4c7d9` (4408 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json` — `757534ba9b97` (7066 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json` — `9905a38819c1` (13932 bytes)
+- `BRAIN/04-INTELLIGENCE/GRAPH/0006-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json` — `947e8b83be49` (3360 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `095cfe500bc4` (1356 bytes)
 - `BRAIN/04-INTELLIGENCE/MASTER-INDEX.json` — `01ae91cda993` (1273 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `28f74bd818d8` (8099 bytes)
@@ -216,7 +217,7 @@
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/MASTER-MAP.md` — `33bdec2f6743` (9412 bytes)
+- `BRAIN/MASTER-MAP.md` — `e2d74822e2b9` (9745 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
 - `BRAIN/REAL-TREE.json` — _(self-referential index file; blob SHA omitted)_
