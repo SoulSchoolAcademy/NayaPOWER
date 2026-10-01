@@ -12,6 +12,20 @@ The most beautiful, most intelligent app anyone has ever used.
 
 It's your personal cockpit into your own intelligence — a place where everything you know, everything you're working on, and everything you're connected to lives in one stunning, living interface. It remembers. It learns. It shows its work. It never lies to you about what it knows.
 
+## The first design law
+
+**Visual bliss comes first.**
+
+That means contrast, clarity, cleanliness, generous readable text, breathing room and obvious hierarchy.
+
+The colors, glow, jewels and living depth are there to make the intelligence easier and more beautiful to understand — never harder to read.
+
+If an effect makes the words less clear, the effect loses.
+
+If a layout only works by shrinking the text, the layout changes.
+
+You should be able to use NayaNET comfortably without squinting.
+
 ## What 10 out of 10 feels like
 
 - **It looks unreal.** Every button feels like a physical jewel — lit from within, with real depth. Nothing flat, nothing cheap, nothing generic.
