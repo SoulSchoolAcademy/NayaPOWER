@@ -1,0 +1,1579 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+
+<meta name="theme-color" content="#a855f7">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="manifest" href="manifest.webmanifest">
+
+<title>NayaNET — Sovereign Entrance</title>
+
+<style>
+
+:root{
+  --bg:#010103;
+  --white:#fff;
+  --muted:#94a3b8;
+  --purple:#a855f7;
+  --purple2:#c084fc;
+  --green:#10b981;
+  --dark:#064e3b;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--white);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+body{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  isolation:isolate;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:-40%;
+  z-index:-1;
+  background:radial-gradient(
+    circle,
+    rgba(168,85,247,.12),
+    transparent 55%
+  );
+  animation:ambient 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambient{
+  from{
+    transform:scale(.9);
+    opacity:.55;
+  }
+  to{
+    transform:scale(1.08);
+    opacity:1;
+  }
+}
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar{
+  height:62px;
+  flex:0 0 62px;
+  width:100%;
+  padding:0 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(5,6,10,.9);
+  border-bottom:1px solid rgba(168,85,247,.35);
+  backdrop-filter:blur(18px);
+  z-index:20;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.crystal{
+  width:37px;
+  height:37px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.75);
+  display:grid;
+  place-items:center;
+  background:radial-gradient(
+    circle at 35% 25%,
+    #e9d5ff,
+    #a855f7 35%,
+    #160b27 72%
+  );
+  box-shadow:0 0 20px rgba(168,85,247,.5);
+  font-size:20px;
+}
+
+.brand span{
+  font-size:.83rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+
+.auto{
+  border:1px solid rgba(168,85,247,.75);
+  background:rgba(168,85,247,.08);
+  color:white;
+  border-radius:24px;
+  padding:9px 13px;
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:
+    background .3s ease,
+    box-shadow .3s ease,
+    transform .2s ease;
+}
+
+.auto:hover{
+  background:rgba(168,85,247,.18);
+  box-shadow:0 0 20px rgba(168,85,247,.28);
+}
+
+.auto:active{
+  transform:scale(.96);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:10px 12px 6px;
+  position:relative;
+  z-index:2;
+}
+
+.intro{
+  flex:0 0 auto;
+  position:relative;
+  z-index:10;
+}
+
+.intro h1{
+  font-size:clamp(1.18rem,6vw,1.75rem);
+  font-weight:950;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  line-height:1.15;
+}
+
+.tag{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:clamp(.76rem,3.4vw,1rem);
+  font-weight:700;
+  line-height:1.25;
+}
+
+.tag strong{
+  color:white;
+}
+
+/* =========================================================
+   PORTAL STAGE
+   ========================================================= */
+
+.stage{
+  flex:1;
+  min-height:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1200px;
+  position:relative;
+  overflow:visible;
+}
+
+/* =========================================================
+   NAYANET ORBITAL ART
+   ---------------------------------------------------------
+   Visual layer only.
+
+   The orbit is intentionally aligned 8px upward so its
+   center follows the silver vault, whose own center is
+   translated upward by approximately 7–8px.
+
+   The color ring contains 108 precision jewels.
+   ========================================================= */
+
+.naya-orbit{
+  position:absolute;
+  left:50%;
+  top:calc(50% - 8px);
+  width:min(98vw,560px);
+  height:min(98vw,560px);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:0;
+  overflow:visible;
+}
+
+.naya-color-orbit{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  transform-origin:center;
+  animation:nayaSpectrum 78s linear infinite;
+  will-change:transform;
+}
+
+/* =========================================================
+   INDIVIDUAL LUXURY JEWEL
+   ---------------------------------------------------------
+   Faceted crystal / diamond silhouette.
+
+   The design deliberately avoids cheap circular
+   "Christmas-light" styling and instead reads as
+   tiny precision-cut gemstones.
+   ========================================================= */
+
+.naya-jewel{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:var(--size);
+  height:var(--size);
+  margin-left:calc(var(--size) / -2);
+  margin-top:calc(var(--size) / -2);
+  clip-path:polygon(
+    50% 0%,
+    86% 28%,
+    74% 82%,
+    50% 100%,
+    26% 82%,
+    14% 28%
+  );
+  background:
+    radial-gradient(
+      circle at 31% 20%,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,.88) 10%,
+      rgba(255,255,255,.18) 25%,
+      rgba(255,255,255,0) 38%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.98) 0%,
+      var(--jewel) 25%,
+      var(--jewel) 58%,
+      rgba(255,255,255,.16) 73%,
+      rgba(0,0,0,.32) 100%
+    );
+  box-shadow:
+    0 0 2px rgba(255,255,255,.85),
+    0 0 5px var(--jewel),
+    0 0 10px var(--jewel),
+    0 0 16px color-mix(
+      in srgb,
+      var(--jewel) 42%,
+      transparent
+    );
+  transform:
+    rotate(var(--angle))
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(calc(var(--angle) * -1))
+    scale(var(--scale));
+  transform-origin:center;
+  opacity:var(--opacity);
+  will-change:transform;
+}
+
+/* Fine-cut facet highlight */
+
+.naya-jewel:before{
+  content:"";
+  position:absolute;
+  left:15%;
+  top:11%;
+  width:35%;
+  height:34%;
+  clip-path:polygon(
+    50% 0%,
+    100% 25%,
+    65% 100%,
+    0% 68%
+  );
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,1),
+    rgba(255,255,255,.28),
+    rgba(255,255,255,0)
+  );
+  opacity:.88;
+}
+
+/* Tiny polished specular point */
+
+.naya-jewel:after{
+  content:"";
+  position:absolute;
+  width:25%;
+  height:25%;
+  left:22%;
+  top:18%;
+  border-radius:50%;
+  background:#fff;
+  filter:blur(.3px);
+  opacity:.78;
+  box-shadow:
+    0 0 3px rgba(255,255,255,.9);
+}
+
+/* =========================================================
+   COUNTERCLOCKWISE COLOR MOVEMENT
+   ========================================================= */
+
+@keyframes nayaSpectrum{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(-360deg);
+  }
+}
+
+/* =========================================================
+   WHITE UNITY LIGHT
+   ---------------------------------------------------------
+   One pure-white light travels clockwise around the
+   outer edge of the colored jewel circle.
+
+   It remains a single light rather than becoming
+   another visible ring.
+   ========================================================= */
+
+.naya-white-orbit{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:nayaWhite 31s linear infinite;
+  will-change:transform;
+}
+
+.naya-white-light{
+  position:absolute;
+  left:50%;
+  top:2.6%;
+  width:7px;
+  height:7px;
+  margin-left:-3.5px;
+  margin-top:-3.5px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:
+    0 0 4px #fff,
+    0 0 10px rgba(255,255,255,.95),
+    0 0 21px rgba(255,255,255,.7),
+    0 0 42px rgba(255,255,255,.24);
+}
+
+.naya-white-light:after{
+  content:"";
+  position:absolute;
+  width:34px;
+  height:3px;
+  right:3px;
+  top:2px;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.24)
+  );
+  filter:blur(2px);
+  transform:rotate(-7deg);
+  transform-origin:right center;
+}
+
+@keyframes nayaWhite{
+  from{
+    transform:translate(-50%,-50%) rotate(0deg);
+  }
+  to{
+    transform:translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ENTERING STATE
+   ========================================================= */
+
+body.entering .naya-color-orbit{
+  animation-duration:18s;
+}
+
+body.entering .naya-white-orbit{
+  animation-duration:8s;
+}
+
+body.entering .naya-jewel{
+  filter:brightness(1.28);
+}
+
+body.entering .naya-white-light{
+  box-shadow:
+    0 0 6px #fff,
+    0 0 15px rgba(255,255,255,1),
+    0 0 30px rgba(255,255,255,.85),
+    0 0 55px rgba(255,255,255,.4);
+}
+
+/* =========================================================
+   PORTAL
+   ========================================================= */
+
+.portal{
+  width:min(86vw,520px);
+  height:min(86vw,520px);
+  max-width:calc(100svh - 285px);
+  max-height:calc(100svh - 285px);
+  min-width:270px;
+  min-height:270px;
+  position:relative;
+  border-radius:50%;
+  padding:12px;
+  background:conic-gradient(
+    from 0deg,
+    #101218,
+    #94a3b8,
+    #1e2230,
+    #fff,
+    #1e2230,
+    #64748b,
+    #101218,
+    #94a3b8,
+    #1e2230,
+    #fff,
+    #1e2230,
+    #64748b,
+    #101218
+  );
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.65),
+    0 25px 70px #000;
+  transition:
+    transform 1s cubic-bezier(.16,1,.3,1),
+    filter 1s ease,
+    box-shadow 1s ease;
+  transform-style:preserve-3d;
+  transform:translateY(-7px);
+}
+
+.portal:before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  border-radius:50%;
+  z-index:-1;
+  background:radial-gradient(
+    circle,
+    rgba(168,85,247,.34),
+    transparent 63%
+  );
+  filter:blur(15px);
+  opacity:.55;
+  transition:all 1s ease;
+}
+
+.core{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:radial-gradient(
+    circle at 35% 30%,
+    #171a29 0%,
+    #07080d 48%,
+    #010102 100%
+  );
+  border:1px solid rgba(255,255,255,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+}
+
+.core:after{
+  content:"";
+  position:absolute;
+  inset:8%;
+  border-radius:50%;
+  border:1px solid rgba(168,85,247,.12);
+  box-shadow:inset 0 0 55px rgba(168,85,247,.08);
+}
+
+.content{
+  width:82%;
+  position:relative;
+  z-index:5;
+}
+
+.presence{
+  font-size:clamp(.75rem,3.4vw,1rem);
+  font-weight:950;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:13px;
+  transition:.5s;
+}
+
+.presence:before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 14px var(--green);
+  margin:0 9px 1px 0;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.35;
+    transform:scale(.72);
+  }
+}
+
+.input{
+  width:100%;
+  height:55px;
+  border-radius:30px;
+  padding:0 20px;
+  background:linear-gradient(
+    180deg,
+    #141725,
+    #05060a
+  );
+  border:1.5px solid rgba(255,255,255,.55);
+  color:white;
+  text-align:center;
+  font-size:clamp(.94rem,4.4vw,1.2rem);
+  font-weight:750;
+  outline:none;
+  box-shadow:inset 0 2px 8px #000;
+  transition:.35s;
+}
+
+.input::placeholder{
+  color:#aab3c2;
+}
+
+.input:focus{
+  border-color:var(--purple);
+  box-shadow:
+    0 0 28px rgba(168,85,247,.45),
+    inset 0 2px 5px #000;
+}
+
+.enter{
+  margin-top:11px;
+  width:100%;
+  height:55px;
+  border-radius:30px;
+  border:1.5px solid var(--purple);
+  color:white;
+  background:radial-gradient(
+    circle at 50% 0%,
+    #302054,
+    #05060a
+  );
+  font-size:clamp(.84rem,3.6vw,1rem);
+  font-weight:950;
+  letter-spacing:.18em;
+  box-shadow:
+    0 0 28px rgba(168,85,247,.35);
+  cursor:pointer;
+  transition:
+    transform .2s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+}
+
+.enter:hover{
+  box-shadow:
+    0 0 35px rgba(168,85,247,.55),
+    inset 0 0 20px rgba(168,85,247,.08);
+}
+
+.enter:active{
+  transform:scale(.97);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation-stack{
+  flex:0 0 auto;
+  width:min(92vw,520px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  position:relative;
+  z-index:15;
+  margin-top:0;
+}
+
+.nav-button{
+  width:min(92vw,430px);
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:10px 18px;
+  border-radius:28px;
+  text-decoration:none;
+  color:white;
+  font-size:.68rem;
+  font-weight:950;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  transition:
+    transform .25s ease,
+    box-shadow .3s ease,
+    background .3s ease,
+    border-color .3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.nav-button:hover{
+  transform:translateY(-2px);
+}
+
+.nav-button:active{
+  transform:scale(.98);
+}
+
+.nav-icon{
+  font-size:.9rem;
+  line-height:1;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-button{
+  border:1px solid rgba(168,85,247,.9);
+  background:linear-gradient(
+    180deg,
+    rgba(168,85,247,.25),
+    rgba(50,20,75,.35)
+  );
+  box-shadow:
+    0 0 22px rgba(168,85,247,.24),
+    inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+.about-button:hover{
+  border-color:var(--purple2);
+  background:linear-gradient(
+    180deg,
+    rgba(168,85,247,.35),
+    rgba(50,20,75,.5)
+  );
+  box-shadow:
+    0 0 32px rgba(168,85,247,.4),
+    inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+/* =========================================================
+   WHITE PAPER
+   ========================================================= */
+
+.whitepaper-button{
+  border:1px solid rgba(255,255,255,.72);
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.13),
+    rgba(80,80,95,.14)
+  );
+  box-shadow:
+    0 0 18px rgba(255,255,255,.1),
+    inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+.whitepaper-button:hover{
+  border-color:white;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.2),
+    rgba(80,80,95,.2)
+  );
+  box-shadow:
+    0 0 28px rgba(255,255,255,.2),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+/* =========================================================
+   POWERCASTS
+   ========================================================= */
+
+.player{
+  border:1px solid var(--green);
+  background:linear-gradient(
+    180deg,
+    rgba(16,185,129,.22),
+    rgba(6,78,59,.32)
+  );
+  color:white;
+  border-radius:28px;
+  padding:10px 18px;
+  font-weight:950;
+  font-size:.68rem;
+  letter-spacing:.13em;
+  box-shadow:
+    0 0 22px rgba(16,185,129,.28),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.player:hover{
+  border-color:#34d399;
+  background:linear-gradient(
+    180deg,
+    rgba(16,185,129,.32),
+    rgba(6,78,59,.45)
+  );
+  box-shadow:
+    0 0 34px rgba(16,185,129,.42),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+  flex:0 0 44px;
+  height:44px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-top:1px solid rgba(168,85,247,.28);
+  background:rgba(5,6,10,.9);
+  color:white;
+  font-size:.66rem;
+  font-weight:850;
+  letter-spacing:.1em;
+  text-align:center;
+  padding:0 10px;
+  z-index:20;
+  backdrop-filter:blur(15px);
+}
+
+/* =========================================================
+   ENTER ANIMATION
+   ========================================================= */
+
+body.entering .portal{
+  transform:
+    translateY(-7px)
+    translateZ(230px)
+    scale(1.18);
+  filter:brightness(1.4);
+  box-shadow:
+    0 0 90px rgba(168,85,247,.9),
+    0 0 190px rgba(168,85,247,.42),
+    0 25px 70px #000;
+}
+
+body.entering .portal:before{
+  inset:-95px;
+  opacity:1;
+  filter:blur(27px);
+  background:radial-gradient(
+    circle,
+    rgba(168,85,247,.82),
+    transparent 62%
+  );
+}
+
+body.entering main{
+  animation:
+    wholeForward
+    1.35s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+@keyframes wholeForward{
+  0%{
+    transform:translateZ(0) scale(1);
+  }
+  38%{
+    transform:translateZ(160px) scale(1.035);
+  }
+  100%{
+    transform:translateZ(0) scale(.985);
+    opacity:.72;
+  }
+}
+
+body.entering .presence{
+  color:var(--purple2);
+  text-shadow:0 0 22px var(--purple);
+  letter-spacing:.34em;
+}
+
+/* =========================================================
+   MOBILE / SHORT SCREENS
+   ========================================================= */
+
+@media(max-height:760px){
+
+  .topbar{
+    height:58px;
+    flex-basis:58px;
+  }
+
+  main{
+    padding-top:7px;
+  }
+
+  .portal{
+    max-width:calc(100svh - 295px);
+    max-height:calc(100svh - 295px);
+    transform:translateY(-8px);
+  }
+
+  .navigation-stack{
+    gap:5px;
+  }
+
+  .nav-button{
+    min-height:39px;
+    padding:8px 16px;
+  }
+
+  .footer{
+    height:42px;
+    flex-basis:42px;
+  }
+
+  .naya-orbit{
+    width:min(108vw,540px);
+    height:min(108vw,540px);
+  }
+}
+
+@media(max-height:700px){
+
+  .topbar{
+    height:54px;
+    flex-basis:54px;
+  }
+
+  .crystal{
+    width:34px;
+    height:34px;
+  }
+
+  main{
+    padding-top:5px;
+  }
+
+  .intro h1{
+    font-size:clamp(1.05rem,5.5vw,1.35rem);
+  }
+
+  .tag{
+    font-size:.72rem;
+    margin-top:2px;
+  }
+
+  .portal{
+    max-width:calc(100svh - 278px);
+    max-height:calc(100svh - 278px);
+    min-width:250px;
+    min-height:250px;
+    padding:10px;
+    transform:translateY(-8px);
+  }
+
+  .presence{
+    margin-bottom:9px;
+    letter-spacing:.22em;
+  }
+
+  .input{
+    height:48px;
+  }
+
+  .enter{
+    height:48px;
+    margin-top:8px;
+  }
+
+  .nav-button{
+    min-height:36px;
+    padding:7px 14px;
+    font-size:.62rem;
+  }
+
+  .footer{
+    height:39px;
+    flex-basis:39px;
+    font-size:.61rem;
+  }
+
+  .naya-orbit{
+    width:min(112vw,500px);
+    height:min(112vw,500px);
+  }
+
+  .naya-jewel{
+    box-shadow:
+      0 0 2px rgba(255,255,255,.62),
+      0 0 5px var(--jewel),
+      0 0 9px var(--jewel);
+  }
+}
+
+@media(max-width:380px){
+
+  .topbar{
+    padding:0 11px;
+  }
+
+  .brand{
+    gap:8px;
+  }
+
+  .brand span{
+    font-size:.73rem;
+  }
+
+  .auto{
+    padding:8px 10px;
+    font-size:.59rem;
+  }
+
+  main{
+    padding-left:9px;
+    padding-right:9px;
+  }
+
+  .portal{
+    max-width:calc(100svh - 270px);
+    max-height:calc(100svh - 270px);
+    min-width:235px;
+    min-height:235px;
+  }
+
+  .content{
+    width:84%;
+  }
+
+  .presence{
+    font-size:.67rem;
+  }
+
+  .input{
+    font-size:.88rem;
+  }
+
+  .enter{
+    font-size:.76rem;
+    letter-spacing:.13em;
+  }
+
+  .navigation-stack{
+    width:96vw;
+  }
+
+  .nav-button{
+    width:96vw;
+    font-size:.58rem;
+  }
+
+  .footer{
+    font-size:.56rem;
+  }
+
+  .naya-orbit{
+    width:116vw;
+    height:116vw;
+  }
+
+  .naya-jewel{
+    width:var(--size-mobile);
+    height:var(--size-mobile);
+  }
+
+  .naya-white-light{
+    width:6px;
+    height:6px;
+    margin-left:-3px;
+    margin-top:-3px;
+  }
+}
+
+/* =========================================================
+   DESKTOP / TABLET
+   ========================================================= */
+
+@media(min-width:700px){
+
+  main{
+    padding-top:18px;
+  }
+
+  .portal{
+    width:460px;
+    height:460px;
+    max-width:none;
+    max-height:none;
+    transform:translateY(-8px);
+  }
+
+  .navigation-stack{
+    width:500px;
+    gap:8px;
+  }
+
+  .nav-button{
+    width:430px;
+  }
+
+  .naya-orbit{
+    width:550px;
+    height:550px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="brand">
+
+```
+<div class="crystal">◇</div>
+
+<span>NAYANET.APP</span>
+```
+
+  </div>
+
+<button
+class="auto"
+type="button"
+onclick="checkAutoLogin()"
+
+>
+
+```
+Auto-Login
+```
+
+  </button>
+
+</header>
+
+<main>
+
+  <section class="intro">
+
+```
+<h1>Welcome to NayaNET</h1>
+
+<p class="tag">
+  Create. Connect. Grow <strong>with US.</strong>
+</p>
+```
+
+  </section>
+
+  <section class="stage">
+
+```
+<div
+  class="naya-orbit"
+  aria-hidden="true"
+>
+
+  <div
+    class="naya-color-orbit"
+    id="nayaColorOrbit"
+  ></div>
+
+  <div class="naya-white-orbit">
+
+    <span class="naya-white-light"></span>
+
+  </div>
+
+</div>
+
+<div class="portal">
+
+  <div class="core">
+
+    <div class="content">
+
+      <div class="presence" id="presence">
+        Naya Listening
+      </div>
+
+      <form id="entryForm">
+
+        <input
+          id="userName"
+          class="input"
+          type="text"
+          placeholder="Enter Your Name"
+          autocomplete="name"
+          autocapitalize="words"
+          required
+        >
+
+        <button
+          class="enter"
+          type="submit"
+        >
+          Enter NayaNET →
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <nav
+    class="navigation-stack"
+    aria-label="NayaNET navigation"
+  >
+
+```
+<a
+  class="nav-button about-button"
+  href="https://nayanet.groovepages.com/aboutus"
+>
+
+  <span class="nav-icon">✦</span>
+  ABOUT US
+
+</a>
+
+<a
+  class="nav-button whitepaper-button"
+  href="https://nayanet.groovepages.com/whitepaper"
+>
+
+  <span class="nav-icon">◈</span>
+  WHITE PAPER
+
+</a>
+
+<a
+  class="nav-button player"
+  href="hub.html"
+  target="_self"
+  aria-label="Open NayaNET Powercasts"
+>
+
+  <span class="nav-icon">🎧</span>
+  POWERCASTS
+
+</a>
+```
+
+  </nav>
+
+</main>
+
+<footer class="footer">
+
+Create. Connect. Grow with US.
+
+</footer>
+
+<script>
+
+/* =========================================================
+   NAYANET ORBITAL JEWEL GENERATOR
+   ---------------------------------------------------------
+   12 color families × 3 shades × 3 repetitions
+   = 108 individually colored luxury crystal jewels.
+   ========================================================= */
+
+(function(){
+
+  const orbit =
+    document.getElementById('nayaColorOrbit');
+
+  const orbitFrame =
+    document.querySelector('.naya-orbit');
+
+  if(!orbit || !orbitFrame){
+    return;
+  }
+
+  /* =======================================================
+     FULL SPECTRUM
+     ======================================================= */
+
+  const palette = [
+
+    /* 01 — PEARL / WHITE */
+    '#ffffff',
+    '#fff5fb',
+    '#ffe7f3',
+
+    /* 02 — ROSE */
+    '#ffb6d9',
+    '#ff78bb',
+    '#ff3f9f',
+
+    /* 03 — MAGENTA */
+    '#ff36c8',
+    '#e91caf',
+    '#c91a9e',
+
+    /* 04 — PURPLE */
+    '#c56bff',
+    '#a94dff',
+    '#8735e8',
+
+    /* 05 — VIOLET */
+    '#7b4dff',
+    '#6634e6',
+    '#5125bd',
+
+    /* 06 — INDIGO */
+    '#4c3bd4',
+    '#3f42b9',
+    '#343b98',
+
+    /* 07 — BLUE */
+    '#3f68e8',
+    '#3d8cff',
+    '#55adff',
+
+    /* 08 — CYAN / TEAL */
+    '#54d9ff',
+    '#45d5d2',
+    '#38c5b4',
+
+    /* 09 — GREEN */
+    '#40cf91',
+    '#49d878',
+    '#63df61',
+
+    /* 10 — LIME / YELLOW */
+    '#91e94f',
+    '#c4ee4b',
+    '#e9ed55',
+
+    /* 11 — GOLD / ORANGE */
+    '#f4d14e',
+    '#f5ad45',
+    '#f48a3e',
+
+    /* 12 — RED */
+    '#f05a46',
+    '#ed3d50',
+    '#d82f61'
+
+  ];
+
+  /*
+    Three complete passes through the spectrum.
+
+    This does not merely add random dots.
+    It deliberately creates three full color cycles
+    around the ring so every range of the spectrum is
+    represented evenly.
+
+    36 colors × 3 passes = 108 jewels.
+  */
+
+  const repeats = 3;
+
+  const total =
+    palette.length * repeats;
+
+  /*
+    All jewels remain tightly controlled in scale.
+    The visual hierarchy comes from:
+
+      - facet geometry
+      - spectral color
+      - white highlights
+      - restrained glow
+      - density
+      - continuous motion
+
+    Not from cheap random blinking or oversized lights.
+  */
+
+  const jewelSize = 4.9;
+
+  /*
+    The radius is calculated in real pixels.
+    The orbit has been moved upward 8px to follow
+    the vault center.
+
+    44% keeps the jewel ring just outside the
+    silver vault while preserving the elegant
+    separation toward the white unity light.
+  */
+
+  function positionJewels(){
+
+    const orbitSize =
+      orbitFrame.getBoundingClientRect().width;
+
+    const radius =
+      orbitSize * .44;
+
+    orbit.style.setProperty(
+      '--computed-orbit-radius',
+      radius + 'px'
+    );
+
+    const jewels =
+      orbit.querySelectorAll('.naya-jewel');
+
+    jewels.forEach(function(jewel){
+
+      jewel.style.setProperty(
+        '--orbit-radius',
+        radius + 'px'
+      );
+
+    });
+
+  }
+
+  /*
+    Generate all 108 jewels.
+  */
+
+  for(let i = 0; i < total; i++){
+
+    const jewel =
+      document.createElement('span');
+
+    /*
+      Every jewel receives an exact position around
+      the 360-degree circle.
+
+      108 jewels means approximately 3.33 degrees
+      between each jewel — a much more continuous,
+      finely crafted ring.
+    */
+
+    const angle =
+      (360 / total) * i;
+
+    const colorIndex =
+      i % palette.length;
+
+    jewel.className =
+      'naya-jewel';
+
+    jewel.style.setProperty(
+      '--jewel',
+      palette[colorIndex]
+    );
+
+    jewel.style.setProperty(
+      '--angle',
+      angle + 'deg'
+    );
+
+    jewel.style.setProperty(
+      '--size',
+      jewelSize + 'px'
+    );
+
+    jewel.style.setProperty(
+      '--size-mobile',
+      '4.25px'
+    );
+
+    /*
+      Consistent scale creates the appearance of
+      precision-cut fine jewelry rather than
+      decorative random particles.
+    */
+
+    jewel.style.setProperty(
+      '--scale',
+      '1'
+    );
+
+    jewel.style.setProperty(
+      '--opacity',
+      '.9'
+    );
+
+    orbit.appendChild(jewel);
+
+  }
+
+  /*
+    Position after the jewels exist and the browser
+    has rendered the responsive orbit dimensions.
+  */
+
+  positionJewels();
+
+  window.addEventListener(
+    'resize',
+    positionJewels,
+    {passive:true}
+  );
+
+})();
+
+
+
+/* =========================================================
+   EXISTING AUTO LOGIN
+   ========================================================= */
+
+function checkAutoLogin(){
+
+  if(
+
+    localStorage.getItem(
+      'nayanet_smart_alias'
+    )
+
+  ){
+
+    location.href='identity.html';
+
+  }else{
+
+    alert(
+      'No saved key found. Enter your name to generate your NayaNET key.'
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   EXISTING ENTRY FLOW
+   ========================================================= */
+
+document
+  .getElementById('entryForm')
+  .addEventListener(
+    'submit',
+    function(e){
+
+      e.preventDefault();
+
+      const input =
+        document.getElementById('userName');
+
+      const name =
+        input.value.trim();
+
+      if(!name){
+        return;
+      }
+
+      sessionStorage.setItem(
+        'nayanet_user_name',
+        name
+      );
+
+      document.body.classList.add(
+        'entering'
+      );
+
+      document
+        .getElementById('presence')
+        .textContent =
+        'Naya Responding';
+
+      input.blur();
+
+      setTimeout(
+        function(){
+
+          location.href =
+            'identity.html?name=' +
+            encodeURIComponent(name);
+
+        },
+        1350
+      );
+
+    }
+  );
+
+</script>
+
+</body>
+
+</html>
