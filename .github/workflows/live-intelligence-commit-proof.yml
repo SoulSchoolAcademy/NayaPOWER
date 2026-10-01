@@ -122,9 +122,18 @@ jobs:
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
+              lesson_content="Preserve provenance before applying retained intelligence."
+              digest=hashlib.sha256(lesson_content.encode()).hexdigest()
+              pathlib.Path("smart-note-expected.json").write_text(json.dumps({
+                "capture_path":"",
+                "capture_id":None,
+                "expected_content":lesson_content,
+                "content_hash":digest,
+                "resolved_connections":[]
+              },indent=2,ensure_ascii=False))
               request={
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
-                "p_title":"Naya runtime flow lesson","p_content":"Preserve provenance before applying retained intelligence.",
+                "p_title":"Naya runtime flow lesson","p_content":lesson_content,
                 "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
                 "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
               }

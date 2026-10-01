@@ -20,3 +20,14 @@ def test_cold_successor_behavior_preserves_truth_and_distillation_boundaries():
     assert '"raw_transcript_is_canonical":False' in wf
     assert 'machine.get("automatic_truth_ceiling")=="CANDIDATE"' in wf
     assert 'machine.get("raw_source_separate_from_distillation") is True' in wf
+
+
+def test_dispatch_fallback_persists_expected_content_for_cold_successor():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    fallback = wf[wf.index("          else:\n              lesson_key="):]
+    fallback = fallback[:fallback.index("          pathlib.Path(\"lesson-request.json\")")]
+    assert 'lesson_content="Preserve provenance before applying retained intelligence."' in fallback
+    assert 'digest=hashlib.sha256(lesson_content.encode()).hexdigest()' in fallback
+    assert 'pathlib.Path("smart-note-expected.json").write_text' in fallback
+    assert '"expected_content":lesson_content' in fallback
+    assert '"content_hash":digest' in fallback
