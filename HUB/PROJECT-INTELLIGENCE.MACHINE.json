@@ -10,60 +10,60 @@
  "date": "2026-10-01",
  "dimensions": [
   {
-   "bar": 9.0,
+   "bar": 9,
    "current": 8.7,
    "id": "D1",
    "name": "Visual Excellence",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
+   "bar": 9,
    "current": 3.9,
    "id": "D2",
    "name": "Functional Completeness",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
+   "bar": 9,
    "current": 2.7,
    "id": "D3",
    "name": "Intelligence",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
-   "current": 7.0,
+   "bar": 9,
+   "current": 7,
    "id": "D4",
    "name": "Honesty",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
-   "current": 5.0,
+   "bar": 9,
+   "current": 5,
    "id": "D5",
    "name": "Performance",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
-   "current": 6.0,
+   "bar": 9,
+   "current": 6,
    "id": "D6",
    "name": "Reliability & Continuity",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
-   "current": 4.0,
+   "bar": 9,
+   "current": 4,
    "id": "D7",
    "name": "Accessibility",
-   "target": 10.0
+   "target": 10
   },
   {
-   "bar": 9.0,
+   "bar": 9,
    "current": 6.5,
    "id": "D8",
    "name": "Craft",
-   "target": 10.0
+   "target": 10
   }
  ],
  "door_law": "connection_does_not_imply_permission_to_act",
@@ -119,27 +119,27 @@
    "name": "Room-by-Room Activation"
   },
   {
-   "gate": "welcome\u2192identity\u2192hub end-to-end; identity page D1 \u2265 9.0",
+   "gate": "welcome→identity→hub end-to-end; identity page D1 ≥ 9.0",
    "id": 5,
    "name": "Identity Rebuild"
   },
   {
-   "gate": "D3 \u2265 9.0 with behavioral evidence",
+   "gate": "D3 ≥ 9.0 with behavioral evidence",
    "id": 6,
    "name": "Intelligence Layer"
   },
   {
-   "gate": "D5, D7, D8 \u2265 9.0",
+   "gate": "D5, D7, D8 ≥ 9.0",
    "id": 7,
    "name": "Hardening"
   },
   {
-   "gate": "all dimensions \u2265 9.0 and D1 = 10; independent re-score",
+   "gate": "all dimensions ≥ 9.0 and D1 = 10; independent re-score",
    "id": 8,
    "name": "The 10/10 Gate"
   }
  ],
- "privacy_footer": "PRIVATE BY DEFAULT \u2014 Shared by choice \u00b7 Collective by consent \u00b7 Public by decision",
+ "privacy_footer": "PRIVATE BY DEFAULT — Shared by choice · Collective by consent · Public by decision",
  "projection_of": [
   "HUB/PROJECT-INTELLIGENCE.md",
   "HUB/DESIGN-CONTRACT.md"
@@ -231,7 +231,7 @@
  ],
  "scorecard_instrument": {
   "independent_rescore_required": true,
-  "not_ready_below": 9.0,
+  "not_ready_below": 9,
   "scores_may_decrease": true,
   "self_score_never_closes_gate": true,
   "self_score_with_evidence": true
@@ -307,7 +307,7 @@
   "VERIFIED",
   "ERROR"
  ],
- "version": "2.0.0",
+ "version": "2.1.0",
  "doors_canonical": [
   {
    "door_id": "DOOR-GITHUB",
@@ -404,10 +404,27 @@
   {
    "name": "Browser / Web Hub",
    "status": "THIS_APP",
-   "who": "Humans \u2014 the Hub itself is a door"
+   "who": "Humans — the Hub itself is a door"
   }
  ],
  "door_registry_source": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json @ main",
  "door_honesty_rule": "The Hub must never present a REGISTERED_CONTRACT_ONLY or ROADMAP door as live. Status shown per door, always.",
- "door_authority_law": "Doors expose what Naya can do. LAW decides what Naya may do. ACT does it. VERIFY checks what happened. CONNECTED != AUTHORIZED."
+ "door_authority_law": "Doors expose what Naya can do. LAW decides what Naya may do. ACT does it. VERIFY checks what happened. CONNECTED != AUTHORIZED.",
+ "representations": {
+  "human": "HUB/PROJECT-INTELLIGENCE.HUMAN.md",
+  "naya": "HUB/PROJECT-INTELLIGENCE.NAYA.md",
+  "ai": "HUB/PROJECT-INTELLIGENCE.AI.md",
+  "machine": "HUB/PROJECT-INTELLIGENCE.MACHINE.json",
+  "proof": "HUB/PROJECT-INTELLIGENCE.PROOF.md"
+ },
+ "feature_matrix": "HUB/PROJECT-INTELLIGENCE.FEATURES.json",
+ "global_design_intelligence": {
+  "standard": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md",
+  "machine_contract": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-V1.json"
+ },
+ "coordination": {
+  "issue": 554,
+  "finding_rule": "materially_not_right => post_with_evidence",
+  "posting_grants_authority": false
+ }
 }
