@@ -60,8 +60,8 @@
     },
     {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
-      "blob_sha": "1fb0f6c8421d1be055999c4222ce58c41691316d",
-      "size": 5737
+      "blob_sha": "75200ca1f5cec5476d43f6647b72623b13c4cace",
+      "size": 7778
     },
     {
       "path": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
@@ -335,8 +335,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json",
-      "blob_sha": "3b927e0cfeda1ce66ec1fd7349f825909886dadb",
-      "size": 7446
+      "blob_sha": "28f74bd818d82eaf5d3b35340803077f7f562f30",
+      "size": 8099
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
@@ -710,8 +710,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py",
-      "blob_sha": "a9d13675bf72ac82850c46b619215066200e69b8",
-      "size": 6375
+      "blob_sha": "775c647f6925c6876e69d85993ec7ae256ddd2e5",
+      "size": 9418
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py",
