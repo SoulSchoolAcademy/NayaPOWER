@@ -35,7 +35,7 @@ def test_dispatch_fallback_persists_expected_content_for_cold_successor():
 
 def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exists():
     wf = WORKFLOW.read_text(encoding="utf-8")
-    marker = '          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]'
+    marker = '          capture_path=open("capture-path.txt").read().strip()'
     start = wf.index(marker)
     end = wf.index('          curl -fsS -X POST', start)
     block = wf[start:end]
