@@ -108,9 +108,11 @@ _STAGING_ACT_PROFILE: Dict[str, Any] = {
     "idempotent": True,
     "max_timeout_ms": 5000,
     "retry_policy": {"attempts": 0, "backoff": "none"},
-    # The registry's "LAW decision per operation" is satisfied, for the
-    # director-run demo, by a LAW-shaped receipt carrying a director_order
-    # basis — the kernel's LAW gate authorizes the demo decision.
+    # The registry's "LAW decision per operation" is satisfied by a real
+    # LawNode.gate() evaluation: scripts/demo1/law_authorize.py builds the
+    # proposal from the demo intent + the director-transcribed grant
+    # (demo_grant.json) and only an ADMISSIBLE envelope reaches ACT.
+    # ActNode._admit re-validates the grant and envelope at invocation time.
     "required_authority": "director_order",
     "compensating_tool": None,
     "evidence_capture": "return_value",

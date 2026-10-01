@@ -50,6 +50,7 @@ validations only.
 
 from __future__ import annotations
 
+import fnmatch
 import hashlib
 import json
 from datetime import datetime, timedelta, timezone
@@ -335,7 +336,8 @@ class ActNode(NodeBase):
             ledger = self.ledger
         now = state.get("now") or _now_iso()
 
-        gate_verdict, gate_reasons = self._admit(receipt_in, registry, now)
+        gate_verdict, gate_reasons = self._admit(
+            receipt_in, registry, now, grants=state.get("grants"))
         decision = receipt_in.get("decision")
         decision_ref = receipt_in.get("receipt_id") or "unknown"
 
@@ -364,7 +366,8 @@ class ActNode(NodeBase):
     # Admission (§4) — refuses before anything can happen
     # ------------------------------------------------------------------
     def _admit(self, receipt: Dict[str, Any], registry: Dict[str, Any],
-               now: str) -> Tuple[GateVerdict, List[str]]:
+               now: str, grants: Optional[List[Dict[str, Any]]] = None
+               ) -> Tuple[GateVerdict, List[str]]:
         reasons: List[str] = []
 
         # §4.6 hard stops run before everything else: no scoring, no appeal.
@@ -451,6 +454,70 @@ class ActNode(NodeBase):
         if self._breaker_open(tool_id, now):
             reasons.append(f"REFUSE §7.3: circuit breaker OPEN for tool {tool_id} — fail fast with receipt")
             return GateVerdict.FAIL, reasons
+
+        # LAW-envelope path (additive): when the decision receipt carries a
+        # LAW-issued envelope, ACT re-validates the grant and the envelope
+        # coverage at invocation time — the real clock gates the executor,
+        # and a receipt tampered after LAW's verdict cannot broaden it.
+        # Receipts without an envelope keep the checks above (fixture/test
+        # path, explicitly labelled where used).
+        envelope = receipt.get("law_envelope")
+        if envelope is not None:
+            grant_ref = (receipt.get("authority_basis") or {}).get("ref")
+            grant = {g.get("grant_ref"): g for g in (grants or [])}.get(grant_ref)
+            if grant is None:
+                reasons.append(
+                    f"REFUSE §8: authority basis ref {grant_ref!r} resolves "
+                    "to no grant — absent grant; LAW never issued this")
+                return GateVerdict.FAIL, reasons
+            if grant.get("revoked"):
+                reasons.append(
+                    f"REFUSE §8: grant {grant_ref!r} is revoked — "
+                    "revocation binds at invocation time")
+                return GateVerdict.FAIL, reasons
+            expiry = grant.get("expiry")
+            if expiry and now > expiry:
+                reasons.append(
+                    f"REFUSE §8: grant {grant_ref!r} expired at {expiry} "
+                    f"(now {now}) — the real clock gates the executor")
+                return GateVerdict.FAIL, reasons
+            if envelope.get("scope_tag") not in (grant.get("scope") or []):
+                reasons.append(
+                    f"REFUSE §8: envelope scope_tag "
+                    f"{envelope.get('scope_tag')!r} not in grant scope "
+                    f"{grant.get('scope')} — grant does not cover this envelope")
+                return GateVerdict.FAIL, reasons
+            if tool_id != envelope.get("action"):
+                reasons.append(
+                    f"REFUSE §7: winner tool {tool_id!r} != envelope action "
+                    f"{envelope.get('action')!r} — wrong action")
+                return GateVerdict.FAIL, reasons
+            if reg.get("target") not in (envelope.get("targets") or []):
+                reasons.append(
+                    f"REFUSE §7: registry target {reg.get('target')!r} not in "
+                    f"envelope targets {envelope.get('targets')} — wrong target")
+                return GateVerdict.FAIL, reasons
+            bounds = envelope.get("bounds") or {}
+            params = winner.get("params") or {}
+            pattern = bounds.get("filename")
+            filename = params.get("filename", "")
+            if pattern and not fnmatch.fnmatch(filename, pattern):
+                reasons.append(
+                    f"REFUSE §7: filename {filename!r} outside envelope "
+                    f"pattern {pattern!r} — broader scope")
+                return GateVerdict.FAIL, reasons
+            max_bytes = bounds.get("max_bytes")
+            content = params.get("content", "")
+            size = len(content.encode("utf-8") if isinstance(content, str)
+                        else bytes(content))
+            if max_bytes is not None and size > max_bytes:
+                reasons.append(
+                    f"REFUSE §7: content {size} bytes exceeds envelope "
+                    f"max_bytes {max_bytes} — broader scope")
+                return GateVerdict.FAIL, reasons
+            reasons.append(
+                f"ENVELOPE-BOUND: grant {grant_ref!r} valid, envelope covers "
+                f"{tool_id} within declared bounds")
 
         reasons.append(f"ADMITTED: ACT path, tool {tool_id}@{reg.get('version')}")
         return GateVerdict.PASS, reasons

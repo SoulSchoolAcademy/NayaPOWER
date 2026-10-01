@@ -3,17 +3,19 @@
 
 Wires the REAL staging.write_file executor behind ActNode's seam,
 projects the tool entry from the CANONICAL Smart Door registry (no
-parallel registry), executes one LAW-shaped decision, writes the
+parallel registry), authorizes via the REAL LawNode.gate() against a
+director-transcribed grant (scripts/demo1/demo_grant.json — the
+director's written orders encoded, not created), executes, writes the
 artifact, and persists the execution receipt as JSON.
 
-Stated boundary: the ACT-verb decision receipt is built with the
-suite's make_decision_receipt helper carrying authority_basis
-director_order — the receipt shape the LAW runtime mints. Full
-LAW-side minting inside the Python kernel is a named follow-up gap.
-
-The receipt JSON persisted here is a LOCAL stand-in for the durable
-seam (nayanet_execution_receipts via the persistence adapter), not the
-seam itself.
+Authorization (real, not fixture): law_authorize.authorize() builds the
+LAW proposal from the demo intent + grant and runs LawNode.gate(); only
+an ADMISSIBLE envelope becomes the decision receipt's authority.
+ActNode._admit re-validates the grant (absent/expired/revoked) and the
+envelope coverage (action/target/bounds) at invocation time against the
+real clock. The receipt JSON persisted here is a LOCAL stand-in for the
+durable seam (nayanet_execution_receipts via the persistence adapter),
+not the seam itself.
 
 Usage:
     python3 scripts/demo1/act_run.py [--root DIR]
@@ -27,6 +29,7 @@ import argparse
 import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -34,6 +37,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from naya_kernel import smart_door
 from naya_kernel.nodes import act_node
+from scripts.demo1 import law_authorize
 
 NOTE_CONTENT = """# Smart Note candidate — Demo-1 first governed effect (CANDIDATE — NOT RATIFIED)
 
@@ -81,25 +85,40 @@ def main() -> int:
     print("door: DOOR-LOCAL-STAGING | status:", entry["registry_status"])
     print("tool: staging.write_file | class:", entry["authority_class"])
 
-    # 2. LAW-shaped decision receipt (boundary stated in module docstring).
+    # 2. REAL LAW authorization: proposal -> LawNode.gate() -> envelope.
+    # The grant is transcribed from the director's written orders
+    # (demo_grant.json provenance); the gate runs on the real clock.
+    # Refusal here means: no authority, no execution. Ever.
+    now = datetime.now(timezone.utc).isoformat()
+    try:
+        authz = law_authorize.authorize(FILENAME, NOTE_CONTENT.encode("utf-8"))
+    except law_authorize.AuthorizationRefused as e:
+        print("LAW REFUSED — no authority, no execution:", e)
+        return 1
+    print("LAW ADMISSIBLE: gate_receipt=%s" % authz["gate_receipt_id"])
+    print("grant:", authz["authority_basis"]["ref"],
+          "| constitution:", authz["constitution_hash"][:12])
+
+    # 3. Decision receipt carrying the LAW envelope (not a fixture basis).
     receipt = act_node.make_decision_receipt(
         receipt_id="dec-demo1-live-001",
-        issued_at="2026-10-01T15:55:00+00:00",
-        valid_until="2026-10-02T00:00:00+00:00",
+        issued_at=now,
+        valid_until=authz["grant"]["expiry"],
         winner={"tool_id": "staging.write_file", "version": "1.0",
                 "params": {"filename": FILENAME, "content": NOTE_CONTENT}},
-        authority_basis={"kind": "director_order", "ref": "order-demo-1",
-                         "revoked": False},
+        authority_basis=authz["authority_basis"],
+        law_envelope=authz["envelope"],
     )
 
-    # 3. ACT executes with the REAL bounded executor.
+    # 4. ACT executes with the REAL bounded executor.
     node = act_node.ActNode(
         executor=smart_door.make_staging_executor(str(root)))
     state = {
         "decision_receipt": receipt,
         "tool_registry": registry,
+        "grants": [authz["grant"]],
         "execution_ledger": {},
-        "now": "2026-10-01T15:55:00+00:00",
+        "now": now,
     }
     handoff = node.execute(state)
     print("path:", handoff["path"])
