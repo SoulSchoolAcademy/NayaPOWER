@@ -104,5 +104,30 @@ else
   report "undeclared pointer fails exit 2 via backstop scan" 0 "exit=$code (expected 2)"
 fi
 
+# -------------------------------- case D: governed report append is allowed
+echo "### CASE D: append-only intelligence-report growth must remain valid"
+git clone -q "$REPO" "$T/d" 2>/dev/null
+mkdir -p "$T/d/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2099/01/01"
+cat > "$T/d/BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2099/01/01/IB-DIR-TEST-20990101-001.md" <<'EOF'
+# Test Daily Intelligence Report
+Object: governed append-only report fixture.
+EOF
+git -C "$T/d" -c user.name=adv -c user.email=adv@local add -A
+git -C "$T/d" -c user.name=adv -c user.email=adv@local commit -qm "test: append governed daily intelligence report"
+out="$(python3 "$GEN" --root "$T/d" 2>&1)"; code=$?
+echo "$out"
+if [ $code -eq 0 ]; then
+  git -C "$T/d" -c user.name=adv -c user.email=adv@local add BRAIN/REAL-TREE.json BRAIN/REAL-TREE.md BRAIN/NAYAPOWER-BRAIN-INDEX.json
+  git -C "$T/d" -c user.name=adv -c user.email=adv@local commit -qm "test: regenerate report-aware indexes"
+  out2="$(python3 "$GEN" --root "$T/d" --check 2>&1)"; code2=$?
+  if [ $code2 -eq 0 ]; then
+    report "governed report append regenerates and --check passes" 1 "$out2"
+  else
+    report "governed report append regenerates and --check passes" 0 "check exit=$code2 :: $out2"
+  fi
+else
+  report "governed report append regenerates and --check passes" 0 "regen exit=$code :: $out"
+fi
+
 echo "=== RESULT: $PASS passed, $FAIL failed ==="
 [ $FAIL -eq 0 ]
