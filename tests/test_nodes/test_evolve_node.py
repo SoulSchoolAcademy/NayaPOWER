@@ -494,11 +494,15 @@ class TestGolden:
         p2 = node._handoff_packages[hid2]
         assert p1["next_action"] == p2["next_action"]
         # Independent replayability: handoff ID + sources + snapshot ⇒
-        # materially equivalent context.
-        from naya_kernel.nodes.evolve_node import SUCCESSOR_PACKAGE_FIELDS
-        canonical = {f: p1[f] for f in SUCCESSOR_PACKAGE_FIELDS
-                     if f != "package_hash"}
-        assert p1["package_hash"] == package_hash(canonical)
+        # materially equivalent context. The seal covers the FULL package
+        # body (every field except package_hash itself) — including the
+        # validity verdict and readiness, which are sealed LAST so flipping
+        # handoff_valid post-seal breaks the seal instead of passing
+        # silently (§5.2 / A5). Recompute over the same body the sealer
+        # used, not over the SUCCESSOR_PACKAGE_FIELDS subset.
+        from naya_kernel.nodes.evolve_node import package_hash as _ph
+        canonical = {k: v for k, v in p1.items() if k != "package_hash"}
+        assert p1["package_hash"] == _ph(canonical)
 
     def test_completeness_not_an_average(self):
         node = EvolveNode()

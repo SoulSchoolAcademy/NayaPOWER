@@ -61,6 +61,41 @@ CALCULUS_V21_EXECUTABLE_HASH = "cac79b6595ca651d8a110b71f25fff9fe50e67bc"
 CALCULUS_V21_RATIFIED_AT_MAIN = "a726a837"
 
 
+def v21_executable_status() -> Dict[str, Any]:
+    """Verify the shared executable calculator on disk against the ratified pin.
+
+    Returns {"expected_blob_sha", "actual_blob_sha", "match", "reason"}.
+    The blob SHA is the git blob hash ("blob <len>\\0" + content), matching
+    CALCULUS_V21_EXECUTABLE_HASH, so any verifier can re-derive it with
+    `git hash-object kernel/value_calculus.py`.
+
+    Nodes that score through the shared calculator MUST consult this and
+    fail closed on "MISMATCH" (the executable on disk is not the ratified
+    one — scoring must not proceed silently). "UNVERIFIABLE" (file not
+    found from this install layout) is reported in the receipt, never
+    hidden.
+    """
+    import hashlib
+    import os
+
+    expected = CALCULUS_V21_EXECUTABLE_HASH
+    here = os.path.dirname(os.path.abspath(__file__))
+    root = os.path.dirname(here)
+    path = os.path.join(root, "kernel", "value_calculus.py")
+    if not os.path.isfile(path):
+        return {"expected_blob_sha": expected, "actual_blob_sha": None,
+                "match": False, "reason": "UNVERIFIABLE: not found at " + path}
+    with open(path, "rb") as fh:
+        content = fh.read()
+    actual = hashlib.sha1(b"blob %d\0" % len(content) + content).hexdigest()
+    if actual != expected:
+        return {"expected_blob_sha": expected, "actual_blob_sha": actual,
+                "match": False, "reason": "MISMATCH: on-disk executable "
+                "differs from the ratified pin"}
+    return {"expected_blob_sha": expected, "actual_blob_sha": actual,
+            "match": True, "reason": "MATCH"}
+
+
 class NodeBase(ABC):
     """Strict interface every kernel node must implement."""
 

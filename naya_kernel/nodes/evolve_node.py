@@ -39,6 +39,21 @@ from typing import Any, Dict, List, Optional, Tuple
 from naya_kernel.node_base import (
     NodeBase, GateResult, GateVerdict, ManifestEntry,
     CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+    v21_executable_status,
+)
+
+# The shared executable Decision Value Calculus V2.1 — the ratified
+# engine. EVOLVE scores through this module, never through a local
+# formula (spec §16: NO SECOND EVOLUTION SCORE). Imported as a MODULE
+# (not from-imports) so the wiring stays observable: spies and patches
+# on kernel.value_calculus see every call the node makes.
+import kernel.value_calculus as v21_shared
+from kernel.value_calculus import (
+    ENGINE_VERSION as V21_ENGINE_VERSION,
+    Candidate as V21Candidate,
+    PVEstimate as V21PVEstimate,
+    QualityProfile as V21QualityProfile,
+    RiskPolicy as V21RiskPolicy,
 )
 
 
@@ -73,6 +88,60 @@ BLAST_RADIUS = (
     "LOCAL", "COMPONENT", "CROSS_NODE", "SYSTEM", "PRODUCTION", "CONSTITUTIONAL",
 )
 _BLAST_ORDER = {name: i for i, name in enumerate(BLAST_RADIUS)}
+
+# ---------------------------------------------------------------------------
+# Shared-calculator wiring (§3.1 / §16 — NO SECOND EVOLUTION SCORE).
+#
+# EVOLVE scores evolution candidates through the shared executable
+# Decision Value Calculus V2.1 (kernel/value_calculus.py), never through a
+# local formula. The mapping below (evolve-v21map-v1) translates an EVOLVE
+# candidate dict into the calculator's Candidate schema with explicit
+# rules; anything the candidate does not carry stays UNKNOWN (None) so the
+# calculator's own gate machinery (HARD_GATE_UNKNOWN,
+# QUALITY_DIMENSION_MISSING, confidence floors) handles it — nothing is
+# invented to make a gate pass.
+#
+# The QualityProfile uses the V2.1 executable's own ratified defaults;
+# EVOLVE invents no scoring parameters. Any change to scoring parameters
+# must go through the calculus, not around it.
+# ---------------------------------------------------------------------------
+_V21_PROFILE = V21QualityProfile(
+    profile_id="EVOLVE-SHARED-CALCULATOR-V1",
+    version=CALCULUS_V21_VERSION,
+    objective="score evolution candidate under current config C "
+              "(spec §3.1, §16)",
+)
+
+# Blast radius → V2.1 stakes (STAKE_ORDER: low < high < consequential).
+_V21_STAKES_BY_BLAST = {
+    "LOCAL": "low",
+    "COMPONENT": "high",
+    "CROSS_NODE": "high",
+    "SYSTEM": "consequential",
+    "PRODUCTION": "consequential",
+    "CONSTITUTIONAL": "consequential",
+}
+
+# Import-time integrity check: the shared executable on disk must be the
+# ratified one. _score_candidate fails closed on MISMATCH.
+_V21_STATUS = v21_executable_status()
+
+
+def _v21_no_change_baseline() -> V21Candidate:
+    """The 'do not evolve' baseline the shared calculator requires."""
+    return V21Candidate(
+        candidate_id="EVOLVE-NO-CHANGE-BASELINE",
+        quality={},
+        confidence={},
+        pv=V21PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={},
+                         evidence_count=0),
+        stakes="low",
+        reversible=True,
+        authorized=True,
+        human_authorized=False,
+        hard_violation=False,
+        is_baseline=True,
+    )
 
 # §4 — three state axes, NEVER collapsed into one ambiguous flag.
 SUCCESSION_STATES = (
@@ -410,33 +479,107 @@ class EvolveNode(NodeBase):
             touched.append("MISSION")
         return sorted(touched)
 
-    def _score_candidate(self, candidate: Dict[str, Any]) -> Dict[str, Any]:
-        """§3.1 — no second evolution score. Score as a Candidate through the
-        Decision Value Calculus V2.1, on the specified chain, UNDER THE
-        CURRENT CONFIG C (never under the proposed config, §3.3).
+    def _to_v21_candidate(self, candidate: Dict[str, Any]) -> V21Candidate:
+        """Translate an EVOLVE candidate dict into the shared V2.1 Candidate.
 
-        This is the SPEC-ONLY mechanical form: the score is a deterministic,
-        hash-bound evaluation recorded in the receipt. It binds
-        deciding_config_hash so an independent recomputation under C must
-        MATCH, or the adoption is void (§3.3).
+        Mapping evolve-v21map-v1 — explicit and versioned. Rules:
+        - reversibility (0-1) → quality "reversibility" (0-10 scale).
+        - blast radius → quality "blast_containment" (inverse, 0-10) and
+          V2.1 stakes (LOCAL→low … CONSTITUTIONAL→consequential).
+        - evidence_refs count → quality "evidence_sufficiency"
+          (min(10, 2 per ref), the same rule CONNECT uses).
+        - expected_value → present value benefit B; the residual-risk term R
+          is blast × (1 − reversibility), the risk the old local form used.
+        - authorized = the §7.1 envelope verdict: the director-set envelope
+          is the authorization basis for the merit score; authority routing
+          (AUTONOMOUS vs BRIEF) is decided by the envelope separately and
+          recorded in the same receipt. The calculator grants nothing.
+        - hard_violation = immutable-surface touch (the spec's MUST-NEVER
+          surface becomes the calculator's JUDGMENT_RULE_HARD_STOP).
+        - Everything the candidate does not carry (lawful/rights/privacy/
+          safety flags, per-dimension confidence, tail risks) stays None /
+          empty: the calculator's gate machinery names the unknowns
+          (HARD_GATE_UNKNOWN, QUALITY_DIMENSION_MISSING, confidence
+          floors) instead of this method inventing them.
         """
-        value = float(candidate.get("expected_value") or 0.0)
-        blast = _BLAST_ORDER.get(candidate.get("blast_radius", "LOCAL"), 0)
+        evolution_id = str(candidate.get("evolution_id") or "unknown")
         reversibility = float(candidate.get("reversibility") or 0.0)
-        # The calculus chain, specified as configured (§3.1). V2.1 is
-        # RATIFIED (FLAG-001 step 4) — the receipt binds the ratified config
-        # hash and says so explicitly; nothing is hidden.
+        blast = _BLAST_ORDER.get(candidate.get("blast_radius", "LOCAL"), 0)
+        blast_frac = blast / (len(BLAST_RADIUS) - 1)
+        evidence_refs = candidate.get("evidence_refs") or []
+        envelope_ok, _ = self._in_envelope(candidate)
+        floor = float(self._config.get("envelope", {}).get(
+            "reversibility_floor", 0.8))
+        return V21Candidate(
+            candidate_id=evolution_id,
+            quality={
+                "reversibility": reversibility * 10.0,
+                "blast_containment": (1.0 - blast_frac) * 10.0,
+                "evidence_sufficiency": min(10.0, len(evidence_refs) * 2.0),
+            },
+            confidence={},
+            pv=V21PVEstimate(
+                B=float(candidate.get("expected_value") or 0.0),
+                H=0.0,
+                C=0.0,
+                R=blast_frac * (1.0 - reversibility),
+                confidence={},
+                evidence_count=len(evidence_refs),
+            ),
+            stakes=_V21_STAKES_BY_BLAST.get(
+                candidate.get("blast_radius", "LOCAL"), "low"),
+            reversible=reversibility >= floor,
+            authorized=envelope_ok,
+            human_authorized=False,
+            hard_violation=bool(self._immutable_touch(candidate)),
+        )
+
+    def _score_candidate(self, candidate: Dict[str, Any]) -> Dict[str, Any]:
+        """§3.1 / §16 — NO SECOND EVOLUTION SCORE.
+
+        The candidate is scored by the shared executable Decision Value
+        Calculus V2.1 (kernel/value_calculus.py) — the ratified engine.
+        EVOLVE consumes the calculus's outputs (gate, v_safe, quality);
+        it does not replace them with a local formula.
+
+        The score is the proposal row's conservative value (v_safe) from
+        evaluate_candidates run against the no-change baseline under the
+        CURRENT CONFIG C (never under the proposed config, §3.3). The
+        receipt binds the shared executable's blob SHA so a verifier can
+        confirm WHICH executable scored; score_engine is
+        "shared_calculator", never implied. An independent recomputation
+        under C with mapping evolve-v21map-v1 must MATCH, or the adoption
+        is void (§3.3).
+        """
+        if not _V21_STATUS["match"]:
+            raise RuntimeError(
+                "EVOLVE refuses to score: shared calculator integrity "
+                f"{_V21_STATUS['reason']} "
+                f"(expected {_V21_STATUS['expected_blob_sha']}, "
+                f"actual {_V21_STATUS['actual_blob_sha']})")
+        v21_candidate = self._to_v21_candidate(candidate)
+        baseline = _v21_no_change_baseline()
+        evaluation = v21_shared.evaluate_candidates(
+            [baseline, v21_candidate], baseline.candidate_id,
+            _V21_PROFILE, V21RiskPolicy())
+        row = next(r for r in evaluation["rows"]
+                   if r["candidate_id"] == v21_candidate.candidate_id)
         calculus_chain = ("RESOLVE", "GATE", "SCORE", "COMPARE", "SELECT",
                           "ACT/ESCALATE", "OBSERVE", "VERIFY", "LEDGER",
                           "LEARN", "RECALIBRATE")
-        # Risk penalty grows with blast radius and shrinks with reversibility.
-        risk = (blast / (len(BLAST_RADIUS) - 1)) * (1.0 - reversibility)
-        score = value - risk
         return {
             "calculus_chain": calculus_chain,
-            "expected_value": value,
-            "risk_penalty": risk,
-            "score": score,
+            "score_engine": "shared_calculator",
+            "score_engine_version": V21_ENGINE_VERSION,
+            "score_engine_executable_blob_sha":
+                _V21_STATUS["actual_blob_sha"],
+            "v21_mapping": "evolve-v21map-v1",
+            "expected_value": float(candidate.get("expected_value") or 0.0),
+            "v_safe": row["v_safe"],
+            "score": row["v_safe"],
+            "gate": row["gate"],
+            "gate_reasons": list(row["gate_reasons"]),
+            "quality_Q": row["q"]["Q"],
             "deciding_config_hash": self._config["configHash"],
             "calculusConfigHash": CALCULUS_V21_SPEC_HASH,
             "calculus_spec_status": "RATIFIED",
@@ -1131,18 +1274,7 @@ class EvolveNode(NodeBase):
         # silent edit (§5.2).
         package["handoff_id"] = fields.get("handoff_id") or (
             f"handoff-{_hash([package[k] for k in sorted(package)])[:12]}")
-        package["package_hash"] = package_hash(package)
         handoff_id = package["handoff_id"]
-        receipt = self._emit(
-            "SUCCESSOR_PACKAGE", evolution_id=None,
-            handoff_id=handoff_id,
-            successor_ready=successor_ready,
-            missing_obligations=missing,
-            omitted_material_blockers=omitted,
-            core_intelligence_blocked=core_blocked,
-            package_hash=package["package_hash"],
-            reason="§8 — successor package; completeness not an average; "
-                   "omitted blockers invalidate")
         if omitted:
             invalid = self._emit(
                 "HANDOFF_INVALID", evolution_id=None,
@@ -1155,6 +1287,21 @@ class EvolveNode(NodeBase):
         else:
             package["handoff_valid"] = True
         package["successor_ready"] = successor_ready
+        # Seal LAST: the hash covers every material field INCLUDING the
+        # validity verdict. Sealing before handoff_valid/successor_ready
+        # are set would let a later flip of handoff_valid pass the seal
+        # silently — exactly what §5.2 / A5 forbids.
+        package["package_hash"] = package_hash(package)
+        receipt = self._emit(
+            "SUCCESSOR_PACKAGE", evolution_id=None,
+            handoff_id=handoff_id,
+            successor_ready=successor_ready,
+            missing_obligations=missing,
+            omitted_material_blockers=omitted,
+            core_intelligence_blocked=core_blocked,
+            package_hash=package["package_hash"],
+            reason="§8 — successor package; completeness not an average; "
+                   "omitted blockers invalidate")
         self._handoff_packages[handoff_id] = package
         return {
             "decision": "INVALID" if omitted else "PACKAGED",

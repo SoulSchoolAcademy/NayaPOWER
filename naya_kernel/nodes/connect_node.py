@@ -54,6 +54,21 @@ from typing import Any, Dict, List, Optional, Tuple
 from naya_kernel.node_base import (
     GateResult, GateVerdict, ManifestEntry, NodeBase,
     CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+    v21_executable_status,
+)
+
+# The shared executable Decision Value Calculus V2.1 — the ratified
+# engine. CONNECT's §9 posture is computed by this module's gate_candidate,
+# never by local proxy formulas. Imported as a MODULE (not from-imports)
+# so the wiring stays observable: spies and patches on
+# kernel.value_calculus see every call the node makes.
+import kernel.value_calculus as v21_shared
+from kernel.value_calculus import (
+    ENGINE_VERSION as V21_ENGINE_VERSION,
+    Candidate as V21Candidate,
+    PVEstimate as V21PVEstimate,
+    QualityProfile as V21QualityProfile,
+    RiskPolicy as V21RiskPolicy,
 )
 
 NODE_ID = "NAYA-KERNEL-CONNECT"
@@ -154,10 +169,34 @@ EDGE_INVALIDATES = "INVALIDATES"
 CALCULUS_RATIFIED_NOTE = (
     "Decision Value Calculus V2.1 is RATIFIED law (Human Director, 2026-09-30; "
     "PRs #1186/#1190/#1192; spec hash "
-    "bc9edc9092436481be7255c00f099d69bd2a95e7). Scores recorded on receipts "
-    "are local proxies for inspectability, not the canonical engine's "
-    "scores; the mechanical section-4 gates above are what refuse."
+    "bc9edc9092436481be7255c00f099d69bd2a95e7). The §9 posture's gate, "
+    "reasons, and Q are the shared executable calculator's outputs "
+    "(score_engine=shared_calculator); the mechanical section-4 gates "
+    "above are what refuse."
 )
+
+# ---------------------------------------------------------------------------
+# Shared-calculator wiring (§9 — the posture is the canonical engine's).
+#
+# _calculus_posture calls kernel.value_calculus.gate_candidate on the
+# request mapped to a V2.1 Candidate (connect-v21map-v1). The gate, reasons,
+# and Q on the receipt are the shared calculator's outputs — the old local
+# proxies (q_proxy/v_safe_proxy) are retired. The posture authorizes
+# nothing: hard refusals (§4.2/§4.4/§2.3) are PROHIBITED by the mechanical
+# gates regardless of any score, and authorization itself is decided by
+# those gates, not here (authorized=True in the mapping for that reason —
+# the posture shows the evidence/quality gate, it does not re-decide
+# authority).
+# ---------------------------------------------------------------------------
+_V21_CONNECT_PROFILE = V21QualityProfile(
+    profile_id="CONNECT-SHARED-CALCULATOR-V1",
+    version=CALCULUS_V21_VERSION,
+    objective="connection-request calculus gate posture (spec §9.2)",
+)
+
+# Import-time integrity check: the shared executable on disk must be the
+# ratified one. _calculus_posture fails closed on MISMATCH.
+_V21_STATUS = v21_executable_status()
 
 
 def _canonical(obj: Any) -> str:
@@ -1680,40 +1719,76 @@ class ConnectNode(NodeBase):
     # ------------------------------------------------------------------
     # §9 — calculus gate posture (V2.1 RATIFIED — FLAG-001 step 4)
     # ------------------------------------------------------------------
-    def _calculus_posture(self, request: Dict[str, Any]) -> Dict[str, Any]:
-        """Records the §9.2 posture without letting a score authorize.
+    def _to_v21_candidate(self, request: Dict[str, Any]) -> V21Candidate:
+        """Translate a connection request into the shared V2.1 Candidate.
 
-        Hard refusals (§4.2/§4.4/§2.3) are PROHIBITED regardless of any
-        score. Cross-owner connections additionally require ADMISSIBLE ∧
-        Q ≥ 9.0 ∧ V_safe > 0 ∧ reversibility ≥ 7 — computed here so the
-        posture is inspectable. V2.1 is RATIFIED law (FLAG-001 step 4), so
-        the posture binds the ratified config hash; the q/v figures remain
-        local proxies, honestly labeled, never the canonical engine's
-        scores.
+        Mapping connect-v21map-v1 — explicit and versioned. The request
+        carries evidence refs and a reversibility figure (0-10 scale);
+        everything else the request does not carry stays UNKNOWN (None) so
+        the calculator's gate machinery names the unknowns instead of this
+        method inventing them. authorized=True because the mechanical §4
+        gates own authorization — the posture shows the evidence/quality
+        gate; it never re-decides authority.
         """
         owners = {str(p.get("owner_scope")) for p in
                   request.get("parties") or []}
         cross_owner = len(owners) > 1
         ladder = request.get("consentLadder") or LADDER_SHARED
-        reversibility = float(request.get("reversibility") or 0)
-        evidence_count = len(request.get("evidenceRefs") or [])
-        # Proxy quality inputs (explicit, bounded; not a substitute for Q).
-        evidence_sufficiency = min(10.0, evidence_count * 2.0)
-        q_proxy = round((evidence_sufficiency + reversibility) / 2, 2)
-        v_safe_proxy = round(
-            (1.0 if ladder in (LADDER_PRIVATE, LADDER_SHARED) else 0.5)
-            - (0.5 if cross_owner else 0.0), 2)
-        admissible = q_proxy >= 9.0 and v_safe_proxy > 0 and \
-            reversibility >= 7 if cross_owner else True
+        evidence_refs = request.get("evidenceRefs") or []
+        return V21Candidate(
+            candidate_id=str(request.get("id") or "unknown"),
+            quality={
+                "evidence_sufficiency": min(10.0, len(evidence_refs) * 2.0),
+                "reversibility": float(request.get("reversibility") or 0.0),
+            },
+            confidence={},
+            pv=V21PVEstimate(
+                B=1.0 if ladder in (LADDER_PRIVATE, LADDER_SHARED) else 0.5,
+                H=0.0,
+                C=0.0,
+                R=0.5 if cross_owner else 0.0,
+                confidence={},
+                evidence_count=len(evidence_refs),
+            ),
+            stakes="high" if cross_owner else "low",
+            reversible=True,  # connections are revocable (revoked_at)
+            authorized=True,
+            human_authorized=False,
+            hard_violation=False,
+        )
+
+    def _calculus_posture(self, request: Dict[str, Any]) -> Dict[str, Any]:
+        """Records the §9.2 posture — computed by the shared calculator.
+
+        The gate, gate_reasons, and Q are kernel.value_calculus
+        outputs for the request mapped via connect-v21map-v1
+        (score_engine="shared_calculator"). Hard refusals
+        (§4.2/§4.4/§2.3) are PROHIBITED regardless of any score.
+        """
+        if not _V21_STATUS["match"]:
+            raise RuntimeError(
+                "CONNECT refuses the posture: shared calculator integrity "
+                f"{_V21_STATUS['reason']}")
+        owners = {str(p.get("owner_scope")) for p in
+                  request.get("parties") or []}
+        cross_owner = len(owners) > 1
+        gate, reasons, q = v21_shared.gate_candidate(
+            self._to_v21_candidate(request), _V21_CONNECT_PROFILE,
+            V21RiskPolicy())
         return {
             "calculusVersion": CALCULUS_V21_VERSION,
             "configHash": CALCULUS_V21_SPEC_HASH,
+            "score_engine": "shared_calculator",
+            "score_engine_version": V21_ENGINE_VERSION,
+            "score_engine_executable_blob_sha":
+                _V21_STATUS["actual_blob_sha"],
+            "v21_mapping": "connect-v21map-v1",
             "aspirational": False,
             "note": CALCULUS_RATIFIED_NOTE,
             "cross_owner": cross_owner,
-            "q_proxy": q_proxy,
-            "v_safe_proxy": v_safe_proxy,
-            "gate": "ADMISSIBLE" if admissible else "NEEDS_EVIDENCE",
+            "gate": gate,
+            "gate_reasons": list(reasons),
+            "quality_Q": q["Q"],
         }
 
     # ------------------------------------------------------------------
