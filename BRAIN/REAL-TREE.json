@@ -2,14 +2,14 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
   "receipt_basis_commit": "a726a8376559609a3620f948ec7bfcabdba50abb",
-  "inventory_file_count": 164,
+  "inventory_file_count": 166,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,
+    "05-MEMORY": 23,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -494,9 +494,19 @@
       "size": 4877
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/CHAIN-EVIDENCE-20261001-steps05-12.json",
+      "blob_sha": "ca0b64b43d3066b8b1b83ef4b17f11521daa1f39",
+      "size": 12996
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md",
-      "blob_sha": "76d162726c52d5c37bb6adc1b54dd8803e7d495d",
-      "size": 6468
+      "blob_sha": "b3085d02c70478466b7672b57301512ed792a66a",
+      "size": 7546
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/NINE-NODE-EXPERIENCE-PLAN-REFINED-20261001.md",
+      "blob_sha": "eaa54ff1cb38609ed7cffb951257bcdfc312da76",
+      "size": 5383
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",

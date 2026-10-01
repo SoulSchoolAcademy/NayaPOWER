@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-01  
 **Receipt basis commit:** `a726a8376559609a3620f948ec7bfcabdba50abb`  
-**Inventory file count:** 164  
+**Inventory file count:** 166  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 21 |
+| 05-MEMORY | 23 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -135,7 +135,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md` — `b11503343dcf` (11786 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md` — `52394cfaac40` (6797 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md` — `c5687e4ed8a3` (4877 bytes)
-- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md` — `76d162726c52` (6468 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/CHAIN-EVIDENCE-20261001-steps05-12.json` — `ca0b64b43d30` (12996 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md` — `b3085d02c704` (7546 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/NINE-NODE-EXPERIENCE-PLAN-REFINED-20261001.md` — `eaa54ff1cb38` (5383 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 
