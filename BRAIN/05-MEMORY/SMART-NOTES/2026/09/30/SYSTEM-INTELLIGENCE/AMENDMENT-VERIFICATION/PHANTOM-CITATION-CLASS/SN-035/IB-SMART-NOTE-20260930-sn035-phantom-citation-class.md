@@ -1,10 +1,11 @@
 # Phantom Citation Tokens — the Systematic Amendment Defect Class (extends SN-027)
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn030-phantom-citation-class
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn035-phantom-citation-class
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-09-30
 **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** Renumbered from SN-030 → SN-035 (2026-10-01 UTC). Naya 2's SN-030 (SN-012→SN-030 renumber, PR #1237, announced #554 @ 05:41 UTC) predates this lane's SN-030 (staged @ 05:50 UTC). First-claim rule: her number stands.
 
 > Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
 
