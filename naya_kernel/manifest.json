@@ -55,7 +55,7 @@
     "EVOLVE": "stub",
     "KNOW": "implemented-candidate",
     "LAW": "implemented-candidate",
-    "LEARN": "stub",
+    "LEARN": "implemented-candidate",
     "PROVE": "implemented-candidate",
     "SELF": "implemented-candidate",
     "VERIFY": "implemented-candidate",
