@@ -686,6 +686,96 @@ def test_cold_successor_restores_identical_store():
     assert report["restore_receipt"]["receipt_hash"]
 
 
+def test_cold_successor_public_retrieval_uses_restored_state():
+    """CS-01: reconstruction must restore the receiving node, not a throwaway."""
+    producer = KnowNode()
+    ingested = producer.ingest(make_candidate("cold public retrieval"), PRINCIPAL, now=NOW)
+
+    successor = KnowNode()
+    report = successor.cold_reconstruct(producer.receipts)
+
+    assert report["restored_block_count"] == 1
+    result = successor.retrieve(make_query(), PRINCIPAL, now=NOW)
+    assert [b["id"] for b in result["blocks"]] == [ingested["blockId"]]
+    assert successor.cite_provenance(ingested["blockId"])["sources"]
+    assert successor.receipts[-2]["operation"] == "RESTORE"
+    assert successor.receipts[-2]["receipt_hash"] == report["restore_receipt"]["receipt_hash"]
+
+
+def test_second_cold_successor_rereads_restored_and_improved_state():
+    """A restored node can ingest again and a later cold successor sees both states."""
+    first = KnowNode()
+    first_block = first.ingest(make_candidate("cold generation one"), PRINCIPAL, now=NOW)
+
+    second = KnowNode()
+    second.cold_reconstruct(first.receipts)
+    second_block = second.ingest(make_candidate("cold generation two"), PRINCIPAL, now=NOW)
+
+    seqs = [r["seq"] for r in second.receipts if isinstance(r.get("seq"), int)]
+    assert seqs == sorted(seqs)
+    assert len(seqs) == len(set(seqs))
+
+    third = KnowNode()
+    third.cold_reconstruct(second.receipts)
+    result = third.retrieve(make_query(), PRINCIPAL, now=NOW)
+    ids = {b["id"] for b in result["blocks"]}
+    assert first_block["blockId"] in ids
+    assert second_block["blockId"] in ids
+
+
+def test_cold_successor_preserves_lifecycle_exclusions_conflicts_and_history():
+    producer = KnowNode()
+    old = producer.ingest(make_candidate("cold superseded old"), PRINCIPAL, now=NOW)
+    new = producer.ingest(
+        make_candidate("cold superseding new", supersedes=old["blockId"]),
+        PRINCIPAL, now=NOW,
+    )
+    invalid = producer.ingest(make_candidate("cold invalidated"), PRINCIPAL, now=NOW)
+    producer.invalidate(invalid["blockId"], "held-out disproof", PRINCIPAL, now=NOW)
+    left = producer.ingest(make_candidate("cold contradiction left"), PRINCIPAL, now=NOW)
+    right = producer.ingest(make_candidate("cold contradiction right"), PRINCIPAL, now=NOW)
+    producer.contradict(left["blockId"], right["blockId"], PRINCIPAL, now=NOW)
+    expired = producer.ingest(
+        make_candidate("cold expired", valid_until="2026-09-30T00:00:00+00:00"),
+        PRINCIPAL, now=NOW,
+    )
+    producer.expire_sweep(now=NOW)
+
+    successor = KnowNode()
+    successor.cold_reconstruct(producer.receipts)
+    result = successor.retrieve(make_query(), PRINCIPAL, now=NOW)
+    served = {b["id"]: b for b in result["blocks"]}
+
+    assert old["blockId"] not in served
+    assert invalid["blockId"] not in served
+    assert expired["blockId"] not in served
+    assert new["blockId"] in served
+    assert left["blockId"] in served and right["blockId"] in served
+    assert right["blockId"] in served[left["blockId"]]["contradicts"]
+    assert left["blockId"] in served[right["blockId"]]["contradicts"]
+
+    assert successor.blocks[old["blockId"]]["state"] == "SUPERSEDED"
+    assert any(t["to"] == "SUPERSEDED"
+               for t in successor.blocks[old["blockId"]]["transitions"])
+    assert successor.blocks[invalid["blockId"]]["state"] == "INVALIDATED"
+    assert any(t["to"] == "INVALIDATED"
+               for t in successor.blocks[invalid["blockId"]]["transitions"])
+    assert successor.blocks[expired["blockId"]]["state"] == "EXPIRED"
+    assert any(t["to"] == "EXPIRED"
+               for t in successor.blocks[expired["blockId"]]["transitions"])
+
+
+def test_cold_reconstruct_rejects_tampered_receipt_hash():
+    producer = KnowNode()
+    receipt = producer.ingest(make_candidate("cold tamper hash"), PRINCIPAL, now=NOW)
+    tampered = dict(receipt)
+    tampered["block_snapshot"] = dict(receipt["block_snapshot"])
+    tampered["block_snapshot"]["content"] = "tampered after persistence"
+
+    with pytest.raises(ValueError, match="receipt hash"):
+        KnowNode().cold_reconstruct([tampered])
+
+
 def test_cold_reconstruct_defective_receipt_fails_loudly():
     node = KnowNode()
     receipt = node.ingest(make_candidate("defective"), PRINCIPAL, now=NOW)
