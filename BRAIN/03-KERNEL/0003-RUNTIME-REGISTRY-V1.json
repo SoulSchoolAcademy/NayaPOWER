@@ -69,24 +69,68 @@
     "LAW": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-law-runtime/index.ts",
+      "deployment": {
+        "function": "nayanet-law-runtime",
+        "version": 1
+      },
+      "proof_run": 36620001626,
+      "proof_source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
+      "proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
+      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
+      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e",
       "persisted_transitions": "nayanet_authority_grants + nayanet_execution_receipts",
       "proof_boundary": "Deployed Edge source equals current repository source; prior bounded authorize/refuse proof exists. Latest-main end-to-end chain still requires fresh production proof."
     },
     "ACT": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
+      "deployment": {
+        "function": "nayanet-act-runtime",
+        "version": 1
+      },
+      "consumes": "nayanet_execution_receipts.action=law_authority_decision",
+      "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
+      "door": "DOOR-AI/apply_retained_intelligence",
+      "proof_run": 36622283683,
+      "proof_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
+      "proof": "BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json",
+      "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
+      "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
+      "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
       "persisted_transitions": "nayanet_execution_receipts + governed execution outcomes",
       "proof_boundary": "Deployed Edge source equals current repository source; bounded live ACT proof exists. Exact-current multi-request/idempotency proof remains a separate rung."
     },
     "KNOW": {
       "status": "SOURCE_GRAPH_V2_MERGED_LIVE_RUNTIME_STALE_TO_CURRENT_MAIN",
       "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts + know.ts",
+      "selector": "supabase/functions/nayanet-know-runtime/know.ts",
+      "consumes": "fresh AUTHORIZED LAW receipt for bounded parent naya_node_apply context",
+      "reads": "owner-scoped public.nayanet_intelligent_blocks",
+      "writes": "nayanet_execution_receipts.action=know_context_retrieval",
+      "caller_may_supply_selected_block": false,
+      "authority_rule": "retrieval does not create authority",
+      "handoff_to": "NAYA-KERNEL-PROVE",
+      "live_proof": "PENDING",
       "persisted_transitions": "nayanet_intelligent_blocks + graph connections + nayanet_execution_receipts",
       "proof_boundary": "Live function is active but deployed source does not equal current Graph V2 repository source. Do not claim current-main Graph V2 production behavior."
     },
     "PROVE": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-prove-runtime/index.ts",
+      "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
+      "consumes": "fresh persisted nayanet_execution_receipts.action=know_context_retrieval handoff",
+      "reads": "current live authority + owner-scoped selected Intelligent Block + provenance/evidence + contradiction/invalidation relationships",
+      "writes": "nayanet_execution_receipts.action=prove_claim_assessment",
+      "caller_may_supply_claim_or_evidence": false,
+      "authority_rule": "proof does not create authority",
+      "epistemic_rule": "claim strength never exceeds evidence strength; conflicts block promotion",
+      "handoff_to": "NAYA-KERNEL-CONNECT",
+      "live_proof": "PENDING",
+      "repository_tests": {
+        "kernel_tests_run": 36627017872,
+        "collective_chain_readiness_run": 36627018411,
+        "status": "PASS"
+      },
       "persisted_transitions": "nayanet_execution_receipts + evidence/provenance assessment state",
       "proof_boundary": "Deployed Edge source equals current repository source; bounded proof exists, but current full-chain outcome remains separately gated."
     },
