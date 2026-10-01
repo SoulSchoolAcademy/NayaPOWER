@@ -1,0 +1,191 @@
+{
+  "schema": "nayanet.hub.interface-manifest.v1",
+  "status": "PROPOSED_ON_PR_1271",
+  "generated_from": {
+    "baseline_main_sha": "ffedda203b058f009bf01926bdc65eb4ae83206d",
+    "experience_pr": 1271,
+    "implementation_issue": 1270
+  },
+  "canonical_design_contract": "NAYA-ACTIVATION/DESIGN/NAYANET-HUB-EXPERIENCE-CONTRACT-V1.md",
+  "smart_door_contract": "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md",
+  "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
+  "current_artifacts": [
+    {
+      "path": "HUB/NAYANET WELCOME PAGE.html",
+      "sha": "b434cdf6016a546a43cb4f0d4d5da6c18542c6f5",
+      "size_bytes": 27206,
+      "classification": "VISUAL_CONCEPT_ENTRANCE"
+    },
+    {
+      "path": "HUB/NAYANET INDENITY PAGE.html",
+      "sha": "715eb77061a79b90d38283727a2a3120286437cb",
+      "size_bytes": 11543,
+      "classification": "IDENTITY_CONCEPT_NEEDS_REBUILD"
+    },
+    {
+      "path": "HUB/NAYANET INTERFACE CONCEPT.html",
+      "sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50",
+      "size_bytes": 843432,
+      "classification": "VISUAL_BASELINE_NOT_PRODUCTION_ARCHITECTURE"
+    },
+    {
+      "path": "HUB/hub.html",
+      "sha": "6269dc2778a09ddb67f62c9d7cef58fb6246440b",
+      "size_bytes": 28571,
+      "classification": "POWERCAST_NOT_INTELLIGENT_HUB"
+    }
+  ],
+  "journey": {
+    "canonical": [
+      "WELCOME",
+      "IDENTITY",
+      "INTELLIGENT_HUB"
+    ],
+    "default_success_destination": "INTELLIGENT_HUB",
+    "non_default_ecosystem_destinations": [
+      "ACADEMY",
+      "POWERCAST",
+      "WHITE_PAPER",
+      "ABOUT_US"
+    ]
+  },
+  "primary_navigation": [
+    {
+      "id": "smart-feed",
+      "label": "Smart Feed",
+      "theme": "gold_orange"
+    },
+    {
+      "id": "intelligence-today",
+      "label": "Your Intelligence Today",
+      "theme": "sapphire_blue"
+    },
+    {
+      "id": "reports",
+      "label": "Your Reports",
+      "theme": "emerald"
+    },
+    {
+      "id": "library",
+      "label": "Intelligent Library",
+      "theme": "lime"
+    },
+    {
+      "id": "smart-connect",
+      "label": "Smart Connect",
+      "theme": "teal_emerald"
+    },
+    {
+      "id": "ledger",
+      "label": "Smart Ledger",
+      "theme": "gold"
+    },
+    {
+      "id": "connections",
+      "label": "Your Connections",
+      "theme": "rich_orange"
+    },
+    {
+      "id": "lists",
+      "label": "Smart Lists",
+      "theme": "violet"
+    },
+    {
+      "id": "mail",
+      "label": "Smart Mail",
+      "theme": "sapphire_blue"
+    },
+    {
+      "id": "spaces",
+      "label": "Smart Spaces",
+      "theme": "lime"
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "theme": "neutral"
+    }
+  ],
+  "feed_modes": [
+    "PERSONAL",
+    "COLLECTIVE",
+    "ACTIVITY"
+  ],
+  "boards": [
+    {
+      "order": 1,
+      "id": "what-is-nayapower",
+      "title": "WHAT IS NAYA POWER?",
+      "theme": "magenta"
+    },
+    {
+      "order": 2,
+      "id": "what-is-naya",
+      "title": "WHAT IS NAYA?",
+      "theme": "purple"
+    },
+    {
+      "order": 3,
+      "id": "what-are-smart-notes",
+      "title": "WHAT ARE SMART NOTES?",
+      "theme": "indigo"
+    },
+    {
+      "order": 4,
+      "id": "intelligence-today",
+      "title": "YOUR INTELLIGENCE TODAY",
+      "theme": "sapphire_blue"
+    },
+    {
+      "order": 5,
+      "id": "intelligence-reports",
+      "title": "INTELLIGENCE REPORTS",
+      "theme": "emerald"
+    },
+    {
+      "order": 6,
+      "id": "intelligent-library",
+      "title": "WHAT IS THE INTELLIGENT LIBRARY?",
+      "theme": "lime"
+    },
+    {
+      "order": 7,
+      "id": "smart-lists",
+      "title": "SMART LISTS",
+      "theme": "yellow"
+    },
+    {
+      "order": 8,
+      "id": "smart-feed",
+      "title": "INTELLIGENT FEED / SMART FEED",
+      "theme": "gold_orange"
+    },
+    {
+      "order": 9,
+      "id": "smart-tabs",
+      "title": "SMART TABS",
+      "theme": "red"
+    }
+  ],
+  "intelligence_views": [
+    "HUMAN_NOTE",
+    "SIMPLIFIED",
+    "WHY_NOTICE",
+    "NAYA_INTERPRETATION",
+    "MACHINE_EVIDENCE_BOUNDARY",
+    "ADAPTIVE_LEARNING",
+    "SIGNIFICANCE",
+    "HUMAN_VALUE"
+  ],
+  "invariants": [
+    "Hub is a projection, not a second brain.",
+    "Current visual concept is the minimum visual-quality baseline.",
+    "Smart Connect is the canonical room name; Smart Share is historical.",
+    "Connection/capability never creates authority.",
+    "Every live-looking control has a real causal path or an honest unavailable state.",
+    "Unknown remains unknown; blocked remains blocked.",
+    "Welcome → Identity → Intelligent Hub is the canonical onboarding journey.",
+    "No visual cleanup may silently reduce living depth, spectral theming, button tactility, search prominence, or source/truth visibility."
+  ],
+  "next_action": "Build/confirm the componentized App Shell + canonical navigation and routing, then migrate Your Intelligence Today end-to-end."
+}
