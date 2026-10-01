@@ -185,24 +185,11 @@ def test_no_fixture_nine_organ_cycle():
     assert learn._allow_fixture_intake is False
     learning_id = _promotable_learning_from_genuine(learn, genuine)
 
-    # -- LEARN -> EVOLVE: real learning state, public seam --------------
-    # Naya 2 (#554/5939370485): EVOLVE.observe() has no callers in
-    # naya_kernel/; Kernel.decide() moves no data. This test drives the
-    # bridge explicitly as the composition step — the architectural
-    # question of who owns the bridge remains open.
-    evolve = k.nodes["EVOLVE"]
-    learning = learn._get(learning_id)
-    gap = {
-        "gap_id": f"gap-{learning_id}",
-        "source": "LEARN",
-        "learning_id": learning_id,
-        "lesson": learning.get("lesson"),
-        "scope": learning.get("scope"),
-        "verification_receipt_refs": learning.get(
-            "verification_receipt_refs"),
-        "observed_at": T0,
-    }
-    observed = evolve.observe(gap)
+    # -- LEARN -> EVOLVE: via the explicit Kernel bridge -----------------
+    # Naya 2 (#554/5939370485): EVOLVE.observe() had no callers;
+    # Kernel.decide() moves no data. Kernel.promote_learning_to_evolution()
+    # is the deliberate bridge — composition root moves the data.
+    observed = k.promote_learning_to_evolution(learning_id)
     assert observed.get("evolution_id"), observed
 
     # -- composition proven: data handoffs with real outputs --------------

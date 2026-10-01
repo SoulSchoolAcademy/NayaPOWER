@@ -356,6 +356,38 @@ class Kernel:
         body["receipt_hash"] = _sha256(body)
         return body
 
+    def promote_learning_to_evolution(
+        self, learning_id: str
+    ) -> Dict[str, Any]:
+        """LEARN→EVOLVE bridge (Naya 2 #554/5939370485).
+
+        The composition root explicitly moves a LEARN learning into
+        EVOLVE as an observed gap. This is the deliberate bridge —
+        Kernel.decide() orders gates but moves no data; this method
+        moves the data.
+
+        A learning is a candidate for evolution when it names a verified
+        change to future behavior. Whether every learning qualifies as a
+        "gap" is a semantic question for the caller; this bridge does not
+        decide — it transports.
+
+        Returns EVOLVE.observe() result with evolution_id.
+        """
+        learn = self.nodes["LEARN"]
+        evolve = self.nodes["EVOLVE"]
+        learning = learn._get(learning_id)
+        gap = {
+            "gap_id": f"gap-{learning_id}",
+            "source": "LEARN",
+            "learning_id": learning_id,
+            "lesson": learning.get("lesson"),
+            "scope": learning.get("scope"),
+            "verification_receipt_refs": learning.get(
+                "verification_receipt_refs"),
+            "observed_at": _now_iso(),
+        }
+        return evolve.observe(gap)
+
     def decide(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """Traverse the runtime graph; per-edge fail-fast, fail-closed.
 
