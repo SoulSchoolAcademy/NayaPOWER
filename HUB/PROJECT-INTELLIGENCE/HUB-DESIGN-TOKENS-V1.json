@@ -1,0 +1,142 @@
+{
+  "schema": "nayanet.hub.design-tokens.v1",
+  "status": "PROPOSED_MACHINE_DESIGN_CONTRACT",
+  "foundation": {
+    "bg": "#050507",
+    "surface": "#08080c",
+    "surfaceRaised": "#12111a",
+    "ink": "#f8f7fb",
+    "muted": "#aaa4b1",
+    "subtleLine": "#ffffff18"
+  },
+  "spectrum": {
+    "magenta": "#d86cff",
+    "purple": "#9d75ff",
+    "violet": "#8b63ff",
+    "indigo": "#6675ff",
+    "sapphire": "#55b9ee",
+    "cyan": "#4fd8ff",
+    "teal": "#4fd8c8",
+    "emerald": "#55e39a",
+    "lime": "#b8ee57",
+    "yellow": "#f1d75a",
+    "gold": "#e8c766",
+    "orange": "#ff9a5a",
+    "richOrange": "#ff7a45",
+    "red": "#ff5e6c"
+  },
+  "reference_layout": {
+    "desktop_left_rail_px": 230,
+    "desktop_right_companion_px": 250,
+    "top_bar_reference_px": 72,
+    "search_min_height_px": 58,
+    "rail_button_min_height_px": 43
+  },
+  "radii": {
+    "small_px": 10,
+    "button_px": 12,
+    "rail_px": 13,
+    "jewel_px": 14,
+    "panel_px": 18,
+    "board_px": 22,
+    "portal_px": 26
+  },
+  "living_depth": {
+    "rest": {
+      "translate_y_px": 0,
+      "description": "Elevated dark material with precise luminous edge, inset highlight and cast shadow."
+    },
+    "hover": {
+      "translate_y_px_range": [
+        -4,
+        -2
+      ],
+      "description": "Lift, brighten edge/aura, strengthen icon/specular response."
+    },
+    "pressed": {
+      "translate_y_px_range": [
+        0,
+        1
+      ],
+      "description": "Compress toward surface, reduce cast shadow, deepen core."
+    },
+    "selected": {
+      "description": "Retain elevation with sustained semantic illumination/state marker."
+    },
+    "disabled": {
+      "description": "Visibly non-live; no hover promise; capability/state explanation available."
+    }
+  },
+  "motion": {
+    "primary_transition_ms_range": [
+      150,
+      250
+    ],
+    "reference_ease": "cubic-bezier(.16,.84,.22,1)",
+    "rules": [
+      "Motion communicates state or consequence.",
+      "No constant decorative animation that competes with reading.",
+      "Respect prefers-reduced-motion.",
+      "Use transform/opacity where possible."
+    ]
+  },
+  "typography": {
+    "reference_family": "Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+    "primary_text": "high-contrast white/light neutral",
+    "rules": [
+      "No pale low-contrast text for primary reading.",
+      "Hierarchy must remain obvious before color.",
+      "Metadata may be compact but must remain legible."
+    ]
+  },
+  "objects": {
+    "power_button": [
+      "material",
+      "edge",
+      "inset_highlight",
+      "lower_depth",
+      "cast_shadow",
+      "semantic_energy",
+      "icon_depth",
+      "hover_lift",
+      "press",
+      "focus",
+      "selected",
+      "disabled_loading"
+    ],
+    "intelligence_board": [
+      "identity",
+      "theme",
+      "jewel",
+      "truth_state",
+      "nutshell",
+      "layers",
+      "actions",
+      "provenance_footer"
+    ],
+    "identity_portal": [
+      "obsidian_core",
+      "precision_edge",
+      "identity_state",
+      "focus_response",
+      "privacy_state",
+      "success_transition"
+    ],
+    "intelligence_icon": [
+      "coherent_geometry",
+      "optical_balance",
+      "facets_or_depth",
+      "semantic_state",
+      "consistent_weight"
+    ]
+  },
+  "anti_patterns": [
+    "generic SaaS white/gray card grid",
+    "flat controls with no hierarchy",
+    "random emoji as final primary icon system",
+    "glow used instead of depth",
+    "motion implying backend success",
+    "multiple competing color systems",
+    "visual cleanup that removes the distinctive NayaNET identity"
+  ]
+}
