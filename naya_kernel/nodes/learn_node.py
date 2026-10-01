@@ -785,7 +785,9 @@ class LearnNode(NodeBase):
 
     def record_outcome_evidence(self, learning_id: str, delta_outcome: float,
                                 metric: Optional[str] = None) -> Dict[str, Any]:
-        """Beneficial claims require outcome evidence (P20)."""
+        """Beneficial claims require outcome evidence (P20).
+
+        Spec §3.7 — held-out and negative-transfer law."""
         learning = self._get(learning_id)
         record = {"delta_outcome": delta_outcome, "metric": metric,
                   "timestamp": self._now()}
@@ -802,7 +804,9 @@ class LearnNode(NodeBase):
                            description: str) -> Dict[str, Any]:
         """Record a delayed-harm observation window. Promotion is refused
         while a material window is open (tail severity >= configured physical
-        severity threshold). Patience is a safety property."""
+        severity threshold). Patience is a safety property.
+
+        Spec §4 — hard refusal 5 (open harm windows)."""
         learning = self._get(learning_id)
         window = {"severity": severity, "description": description,
                   "open": True, "timestamp": self._now()}
@@ -898,7 +902,9 @@ class LearnNode(NodeBase):
     def record_compounding(self, earlier_id: str, later_id: str,
                            answers: Dict[str, Any]) -> Dict[str, Any]:
         """A compounding claim must answer the questionnaire (A8). Chronology
-        is not compounding."""
+        is not compounding.
+
+        Spec §8 — lifecycle maturity L7/L8 (compounding requires measured later behavior)."""
         required = ("which_earlier_used", "which_later_depended",
                     "what_changed", "outcome_improved", "attribution_amount",
                     "unrelated_stable", "successor_retained")
@@ -1273,7 +1279,9 @@ class LearnNode(NodeBase):
         """Typed PromotionPackage — verified lesson, exact scope, behavioral
         and outcome evidence, generalization evidence, negative-transfer
         evidence, limitations, regression guard, value/calibration evidence,
-        source lineage, promotion status, required authority."""
+        source lineage, promotion status, required authority.
+
+        Spec §3.4 — the promotion rule; §5 provenance/promotion seam."""
         learning = self._get(learning_id)
         self._seq += 1
         package = {
@@ -1427,7 +1435,9 @@ class LearnNode(NodeBase):
     def design_governance_proposal(self, learning_id: str) -> Dict[str, Any]:
         """A verified lesson of the form 'policy X caused recurring friction'
         may produce a *governance change proposal*; only the proper authority
-        ratifies a new policy. Lessons never silently rewrite governance."""
+        ratifies a new policy. Lessons never silently rewrite governance.
+
+        Spec §4.3 — governance/identity proposals route to BRIEF, never autonomous promotion."""
         learning = self._get(learning_id)
         if learning["learning_type"] != "GOVERNANCE_PROPOSAL":
             raise ValueError("not a GOVERNANCE_PROPOSAL learning")
@@ -1472,7 +1482,9 @@ class LearnNode(NodeBase):
               task_ref: Optional[str] = None) -> Dict[str, Any]:
         """A learning in TESTING or ACTIVE phase is servable within its
         declared scope. Patience remains a safety property: an open delayed-
-        harm window refuses serving. Stale learning cannot silently steer."""
+        harm window refuses serving. Stale learning cannot silently steer.
+
+        Spec §6 — graph, reconciliation, and serving."""
         learning = self._get(learning_id)
         if learning["internal_only"]:
             return {"served": False, "reason_code": "INVESTIGATION_PLACEHOLDER_INERT"}

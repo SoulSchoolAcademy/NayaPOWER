@@ -1191,7 +1191,9 @@ class ConnectNode(NodeBase):
 
     def clear_review(self, connection_id: str, execution_id: str,
                      reviewer: str) -> Dict[str, Any]:
-        """SUSPENDED → ACTIVE after human review clears the finding."""
+        """SUSPENDED → ACTIVE after human review clears the finding.
+
+        Spec §3.2 — closed-world scope allow-list review."""
         return self.apply_transition(
             connection_id, C_ACTIVE,
             f"review cleared by {reviewer}; scope unchanged "
@@ -1233,7 +1235,9 @@ class ConnectNode(NodeBase):
         REVOKED/SUSPENDED/INVALID connections are INVISIBLE to retrieval
         (fail-closed to the selector) while remaining visible as lineage —
         the connection ledger keeps every receipt.
-        """
+        
+
+        Spec §15 — retrieval is not semantic search (deterministic recorded selection)."""
         record = self.connections.get(connection_id)
         if record is None:
             return None
@@ -1250,7 +1254,9 @@ class ConnectNode(NodeBase):
         }
 
     def lineage(self, connection_id: str) -> Optional[Dict[str, Any]]:
-        """Everything, including terminal states — lineage is evidence."""
+        """Everything, including terminal states — lineage is evidence.
+
+        Spec §26 — context receipt, exclusion reasons, replay; lineage is evidence."""
         record = self.connections.get(connection_id)
         if record is None:
             return None
@@ -1330,7 +1336,9 @@ class ConnectNode(NodeBase):
 
     def traverse(self, start_identity: str, max_hops: int = 3,
                  purpose: Optional[str] = None) -> List[Dict[str, Any]]:
-        """Bounded, deterministic traversal over ACTIVE connections only."""
+        """Bounded, deterministic traversal over ACTIVE connections only.
+
+        Spec §16 — traversal, composition, cycles (bounded, deterministic)."""
         adjacency: Dict[str, List[str]] = {}
         for record in self.connections.values():
             if record["state"] != C_ACTIVE:
@@ -1390,7 +1398,9 @@ class ConnectNode(NodeBase):
 
     def assess_applicability(self, connection_id: str,
                              use: Dict[str, Any]) -> Dict[str, Any]:
-        """Are the applicability conditions satisfied for this use?"""
+        """Are the applicability conditions satisfied for this use?
+
+        Spec §12 — applicability is first-class (UNKNOWN is non-steering); owned by CONNECT per the Ultimate Lock KNOW/PROVE/CONNECT boundary."""
         record = self.connections.get(connection_id)
         if record is None:
             return {"applicable": False, "reason": "unknown connection"}
@@ -1600,7 +1610,9 @@ class ConnectNode(NodeBase):
 
     def dissolve_space(self, space_id: str, execution_id: str) -> Dict[str,
                                                                        Any]:
-        """DISSOLVED: no new crossing; the shared ledger remains as lineage."""
+        """DISSOLVED: no new crossing; the shared ledger remains as lineage.
+
+        Spec Appendix A — connection spaces are a candidate extension (chartered entry/exit/dissolution), not normative master-contract law."""
         space = self.spaces.get(space_id)
         if space is None:
             raise KeyError(f"unknown space {space_id}")

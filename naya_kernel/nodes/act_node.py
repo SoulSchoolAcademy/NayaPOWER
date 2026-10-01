@@ -956,7 +956,9 @@ class ActNode(NodeBase):
         return _sha256(body) == claimed
 
     def recompute(self, receipt: Dict[str, Any]) -> str:
-        """Cold check: MATCH when the receipt recomputes, else MISMATCH."""
+        """Cold check: MATCH when the receipt recomputes, else MISMATCH.
+
+        Spec §8 — deterministic cold-reconstruction plan."""
         return "MATCH" if self._recompute_ok(receipt) else "MISMATCH"
 
 

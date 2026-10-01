@@ -749,7 +749,9 @@ class EvolveNode(NodeBase):
                   ) -> Dict[str, Any]:
         """Authority resolution. EVOLVE performs the check and grants
         nothing: the authority arrives from LAW/Director and is validated,
-        never minted here. Only GATED/BRIEFED candidates can be authorized."""
+        never minted here. Only GATED/BRIEFED candidates can be authorized.
+
+        Spec §3 — the decision gate (ratification-conditioned; deciding config hash bound)."""
         candidate = self._get(evolution_id)
         if candidate["proposal"] not in ("GATED", "BRIEFED"):
             receipt = self._emit(
@@ -1269,7 +1271,9 @@ class EvolveNode(NodeBase):
     # ------------------------------------------------------------------
 
     def metrics(self) -> Dict[str, List[float]]:
-        """Continuity metrics recorded so far — diagnostics, never gates."""
+        """Continuity metrics recorded so far — diagnostics, never gates.
+
+        Spec §11 — acceptance battery; metrics are recorded, never gates."""
         return {k: list(v) for k, v in self._metrics.items()}
 
     def brief_outbox(self) -> List[Dict[str, Any]]:
@@ -1440,7 +1444,9 @@ class EvolveNode(NodeBase):
         fired and why, which successor packages shipped with what
         readiness, and which revocations executed. A cold successor does not
         inherit authority — it reconstructs evidence and re-resolves.
-        """
+        
+
+        Spec §8 — succession: the cold successor (§8.6 Cold-14)."""
         ordered = sorted(receipts or [], key=lambda r: r.get("timestamp", ""))
         state: Dict[str, Any] = {
             "candidates": {},

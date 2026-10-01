@@ -581,7 +581,9 @@ class VerifyNode(NodeBase):
         Director — and receipt the pressure as evidence.
 
         "I was told to" never justifies a false verification (Judgment Rule).
-        """
+        
+
+        Spec §7.4 — downgrade pressure refused from ANY seat, Director included (Judgment Rule)."""
         instruction = dict(instruction or {})
         now_iso = _now_iso(instruction.get("now"))
         itype = instruction.get("type")
@@ -1016,7 +1018,9 @@ class VerifyNode(NodeBase):
     def recompute(self, receipt_id: str) -> str:
         """Re-derive the verdict from (CanonicalEvidence, ExpectedOutcome,
         AcceptanceCriteria). Mismatch → VERIFICATION_MISMATCH: never trust the
-        earlier receipt."""
+        earlier receipt.
+
+        Spec §2 — recomputation law (Verdict' = f(canonical evidence, expected outcome, acceptance criteria))."""
         receipt = self._receipts.get(receipt_id)
         if receipt is None:
             return "UNKNOWN_RECEIPT"

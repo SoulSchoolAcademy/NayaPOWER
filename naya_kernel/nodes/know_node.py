@@ -309,7 +309,9 @@ class KnowNode(NodeBase):
 
     def authority_checks(self) -> List[str]:
         """Declared — never granted. Every string here names a check; no
-        string affirms granting authority (see test_authority_checks_grant_nothing)."""
+        string affirms granting authority (see test_authority_checks_grant_nothing).
+
+        Spec §7.4 — authority-smuggling refusal (KNOW declares, never grants)."""
         return [
             "ingest requires authenticated identity binding; caller-supplied identity alone not trusted — no_authority_grant_performed",
             "CORE classification requires a director authority receipt naming the block — no_authority_grant_performed",
@@ -352,7 +354,9 @@ class KnowNode(NodeBase):
     def ingest(self, candidate: Dict[str, Any], principal: Dict[str, Any],
                now: Optional[str] = None) -> Dict[str, Any]:
         """Run the atomic ingestion gate on one candidate. Any step failing
-        → the candidate is REFUSED with a receipt; nothing is half-stored."""
+        → the candidate is REFUSED with a receipt; nothing is half-stored.
+
+        Spec §5 — ingestion: atomic gate (canonicalize→provenance_bind→classify→consent_check→persist→index)."""
         now = now or _now_iso()
         candidate = _deepcopy_json(candidate)
         principal = _deepcopy_json(principal)
@@ -1201,7 +1205,9 @@ class KnowNode(NodeBase):
                          now: Optional[str] = None) -> Dict[str, Any]:
         """Poisoning signals (bulk anomalies, source shifts) → the whole
         batch is quarantined and refused; the attempt itself is persisted as
-        a security event. No partial ingestion."""
+        a security event. No partial ingestion.
+
+        Spec §7.7/§9 — quarantine on poisoning signals (bulk anomalies, source shifts)."""
         now = now or _now_iso()
         event = {
             "kind": "INGESTION_QUARANTINE",

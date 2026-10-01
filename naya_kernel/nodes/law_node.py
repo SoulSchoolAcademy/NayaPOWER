@@ -454,7 +454,9 @@ class LawNode(NodeBase):
         PROHIBITED (or INTAKE_REFUSED) is terminal for this proposal version:
         the transition fails closed, state does not change, the attempt is
         receipted as a violation.
-        """
+        
+
+        Spec §6.2 — monotonic re-evaluation (GRANT_ARRIVED / EVIDENCE_FLOOR_MET; PROHIBITED terminal)."""
         prior = (self.last_receipt or {}).get("gate")
         proposal_id = (self.last_receipt or {}).get("proposal_id")
         if prior in ("PROHIBITED", "INTAKE_REFUSED"):
@@ -546,7 +548,9 @@ class LawNode(NodeBase):
         return "MATCH" if reached == recorded else "MISMATCH"
 
     def persisted_transitions(self) -> List[str]:
-        """Every state transition this node persists (receipted)."""
+        """Every state transition this node persists (receipted).
+
+        Spec §7 — every state transition persisted and receipted."""
         return [
             "INTAKE_REFUSED",                 # §10.1 refusal at intake
             "PROHIBITED",                     # terminal for the version
@@ -560,7 +564,9 @@ class LawNode(NodeBase):
         ]
 
     def evidence_hooks(self) -> List[str]:
-        """Evidence sources this node reads/writes."""
+        """Evidence sources this node reads/writes.
+
+        Spec §7 — gate receipts carry triggering facts (Judgment Rule reconstructable)."""
         return [
             "constitutional_corpus_store",  # read: pinned version by hash
             "authority_grant_registry",     # read: grant chain validation

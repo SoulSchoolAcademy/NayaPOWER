@@ -361,7 +361,9 @@ class SelfNode(NodeBase):
         return GateResult(verdict=GateVerdict.PASS, reasons=reasons)
 
     def persisted_transitions(self) -> List[str]:
-        """Every state transition this node persists (receipted)."""
+        """Every state transition this node persists (receipted).
+
+        Spec §5 — typed boot receipt transition log."""
         return [
             "UNINITIALIZED->BOOTING",
             "BOOTING->READY",
@@ -374,7 +376,9 @@ class SelfNode(NodeBase):
         ]
 
     def evidence_hooks(self) -> List[str]:
-        """Evidence sources this node reads/writes."""
+        """Evidence sources this node reads/writes.
+
+        Spec §5 — boot receipt evidence bindings."""
         return [
             "identity_binding_registry",   # read: authenticate_identity
             "ratified_source_store",       # read: establish_mission/scope
