@@ -106,5 +106,10 @@
   "note": "Semantic/display order unchanged per the lock; executable communication is the graph, not a linear call stack.",
   "semantics": "per-edge fail-fast/fail-closed: a gate is consulted only when every required upstream PASSed; FAIL halts the whole decision globally; ACT->KNOW is the PRODUCES write edge; EVOLVE->SELF is the next-cycle edge, not traversed in one pass."
  },
+ "lock_reconciliation": {
+  "graph_topology": "tick 14: Kernel.decide() re-topologized onto the canonical 13-edge runtime graph (Ultimate Lock).",
+  "KNOW": "tick 15: reconciled to the Ultimate Lock — applicability decisions removed (applicability_note rides as non-steering metadata; CONNECT owns the steering decision); epistemic claim/evidence assessment moved to PROVE (SUPPORTED/LEARNED/VERIFIED ingest claims and REUSABLE promotion require a PROVE receipt reference; KNOW binds it as provenance, never assesses); truth-state language removed (canonical-state deltas).",
+  "calculus": "pending (FLAG-001 step 4): bind the RATIFIED Decision Value Calculus V2.1 config hash into LEARN/EVOLVE receipts; remove CALCULUS_NOT_RATIFIED paths."
+ },
  "version": "0.1.0-candidate"
 }

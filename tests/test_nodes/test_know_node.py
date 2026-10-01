@@ -35,6 +35,9 @@ def make_candidate(content="The quick brown fox", **overrides):
     return cand
 
 
+PROVE_REF = {"node_id": "NAYA-KERNEL-PROVE", "receipt_id": "prove-receipt-1"}
+
+
 def make_query(**overrides):
     q = {
         "identity_binding": {"verified": True},
@@ -250,10 +253,40 @@ def test_provenance_forgery_refused():
     assert node.blocks[first["blockId"]]["state"] == "ACTIVE"
 
 
-def test_epistemic_upgrade_without_evidence_refused():
-    """§7.6 — output must not upgrade epistemic state without evidence."""
+def test_epistemic_claim_without_prove_receipt_refused():
+    """§7.6 (Ultimate Lock): evidence refs are citations, not assessments —
+    KNOW refuses an epistemic claim without a PROVE assessment receipt."""
     node = KnowNode()
-    receipt = node.ingest(make_candidate(epistemic_state="VERIFIED"), PRINCIPAL, now=NOW)
+    receipt = node.ingest(
+        make_candidate(epistemic_state="VERIFIED",
+                       evidence_refs=["ev://1"]), PRINCIPAL, now=NOW)
+    assert receipt["operation"] == "REFUSE"
+    assert any("7.6" in r for r in receipt["reasons"])
+
+
+def test_epistemic_claim_with_prove_receipt_ingests_and_binds():
+    """§7.6 (Ultimate Lock): with a PROVE assessment receipt, KNOW records
+    PROVE's assessed state by reference — provenance-bound, never self-
+    assessed."""
+    node = KnowNode()
+    receipt = node.ingest(
+        make_candidate(epistemic_state="SUPPORTED",
+                       evidence_refs=["ev://1"],
+                       prove_receipt_ref=PROVE_REF), PRINCIPAL, now=NOW)
+    assert receipt["operation"] == "INGEST"
+    block = node.blocks[receipt["blockId"]]
+    assert block["epistemicState"] == "SUPPORTED"
+    assert block["provenance"]["proveReceiptRef"] == PROVE_REF
+
+
+def test_prove_receipt_naming_wrong_node_refused():
+    """KNOW binds only references that name PROVE — a VERIFY (or other)
+    receipt id does not satisfy the §7.6 epistemic requirement."""
+    node = KnowNode()
+    bad = {"node_id": "NAYA-KERNEL-VERIFY", "receipt_id": "v-r-1"}
+    receipt = node.ingest(
+        make_candidate(epistemic_state="SUPPORTED",
+                       prove_receipt_ref=bad), PRINCIPAL, now=NOW)
     assert receipt["operation"] == "REFUSE"
     assert any("7.6" in r for r in receipt["reasons"])
 
@@ -261,7 +294,8 @@ def test_epistemic_upgrade_without_evidence_refused():
 def test_unknown_source_caps_epistemic_at_ingested():
     """§5 — unknown provenance is recorded honestly; state caps at INGESTED."""
     node = KnowNode()
-    cand = make_candidate(epistemic_state="SUPPORTED", evidence_refs=["ev://1"])
+    cand = make_candidate(epistemic_state="SUPPORTED", evidence_refs=["ev://1"],
+                          prove_receipt_ref=PROVE_REF)
     cand["provenance"]["sources"][0]["kind"] = "UNKNOWN"
     receipt = node.ingest(cand, PRINCIPAL, now=NOW)
     assert receipt["operation"] == "INGEST"
@@ -330,6 +364,37 @@ def test_refuse_receipt_recomputes_to_match():
 # §6 serving — selector gates, conflicts, empty sets
 # ------------------------------------------------------------------
 
+def test_applicability_is_non_steering_metadata_not_a_gate():
+    """Ultimate Lock (KNOW vs PROVE vs CONNECT): KNOW never decides
+    applicability. The declared applicability rides through as non-steering
+    metadata; CONNECT owns the steering decision."""
+    node = KnowNode()
+    a = node.ingest(make_candidate("onboarding checklist",
+                                   applicability={"contexts": ["onboarding"]}),
+                    PRINCIPAL, now=NOW)
+    b = node.ingest(make_candidate("billing faq",
+                                   applicability={"contexts": ["billing"]}),
+                    PRINCIPAL, now=NOW)
+    assert a["operation"] == "INGEST" and b["operation"] == "INGEST"
+    result = node.retrieve(make_query(context="onboarding"), PRINCIPAL, now=NOW)
+    by_id = {blk["id"]: blk for blk in result["blocks"]}
+    # Neither block is excluded on applicability grounds — the decision is
+    # CONNECT's, not KNOW's.
+    assert a["blockId"] in by_id and b["blockId"] in by_id
+    assert not any(x["gate"] == "applicability" for x in result["exclusions"])
+    note_on = by_id[a["blockId"]]["applicability_note"]
+    note_off = by_id[b["blockId"]]["applicability_note"]
+    assert note_on["within_declared"] is True
+    assert note_off["within_declared"] is False
+    for note in (note_on, note_off):
+        assert note["steering_decision"] is False
+        assert note["decided_by"] == "NAYA-KERNEL-CONNECT"
+    assert any("APPLICABILITY-NOTE" in d
+               for d in result["selector_decisions"])
+    assert any("APPLICABILITY-NOTE" in d
+               for d in result["receipt"]["selectorDecisions"])
+
+
 def test_query_without_binding_fails_closed():
     """§1.1 — a query without authenticated identity/scope binding fails closed."""
     node = KnowNode()
@@ -387,9 +452,9 @@ def test_contradictions_served_not_hidden():
     assert a["blockId"] in by_id and b["blockId"] in by_id
     assert b["blockId"] in by_id[a["blockId"]]["contradicts"]
     assert by_id[a["blockId"]]["epistemicState"] == "CONTRADICTED"
-    # truth-state deltas recorded for downstream (§1.2)
+    # canonical-state deltas recorded for downstream (§1.2)
     assert any(d["block_id"] == a["blockId"] and d["after"] == "CONTRADICTED"
-               for d in node.truth_deltas)
+               for d in node.state_deltas)
 
 
 def test_similarity_score_is_metadata_not_evidence():
@@ -409,7 +474,8 @@ def test_ranking_is_deterministic_and_recorded():
     node.ingest(make_candidate("zebra fact", epistemic_state="INGESTED",
                                evidence_refs=["ev://1"]), PRINCIPAL, now=NOW)
     node.ingest(make_candidate("alpha fact", epistemic_state="SUPPORTED",
-                               evidence_refs=["ev://2"]), PRINCIPAL, now=NOW)
+                               evidence_refs=["ev://2"],
+                               prove_receipt_ref=PROVE_REF), PRINCIPAL, now=NOW)
     r1 = node.retrieve(make_query(), PRINCIPAL, now=NOW)
     r2 = node.retrieve(make_query(), PRINCIPAL, now=NOW)
     assert [b["id"] for b in r1["blocks"]] == [b["id"] for b in r2["blocks"]]
@@ -444,13 +510,14 @@ def test_supersession_keeps_old_traceable():
     ids = [b["id"] for b in result["blocks"]]
     assert new["blockId"] in ids
     assert old["blockId"] not in ids
-    assert any(d["after"] == "SUPERSEDED" for d in node.truth_deltas)
+    assert any(d["after"] == "SUPERSEDED" for d in node.state_deltas)
 
 
 def test_invalidation_is_itself_a_block():
     node = KnowNode()
     receipt = node.ingest(make_candidate("disproven claim", epistemic_state="SUPPORTED",
-                                         evidence_refs=["ev://x"]), PRINCIPAL, now=NOW)
+                                         evidence_refs=["ev://x"],
+                                         prove_receipt_ref=PROVE_REF), PRINCIPAL, now=NOW)
     inv = node.invalidate(receipt["blockId"], "counter-evidence ev://y", PRINCIPAL, now=NOW)
     assert node.blocks[receipt["blockId"]]["state"] == "INVALIDATED"
     inv_block = node.blocks.get(inv["invalidation_block"])
@@ -495,11 +562,17 @@ def test_promotion_requires_target_class_gate():
                       {"supporting": True, "refs": ["ev://s"]}, PRINCIPAL, now=NOW)
     assert ok["afterState"] == "CONTEXT"
     assert node.blocks[eph["blockId"]]["class"] == "CONTEXT"
-    # CONTEXT→REUSABLE needs verification
+    # CONTEXT→REUSABLE needs a PROVE assessment receipt (Ultimate Lock:
+    # KNOW does not assess verification evidence itself)
     with pytest.raises(ValueError):
         node.promote(eph["blockId"], "REUSABLE", {"supporting": True}, PRINCIPAL, now=NOW)
+    with pytest.raises(ValueError):
+        node.promote(eph["blockId"], "REUSABLE",
+                     {"kind": "verification", "refs": ["ev://v"]},
+                     PRINCIPAL, now=NOW)
     ok2 = node.promote(eph["blockId"], "REUSABLE",
-                       {"kind": "verification", "refs": ["ev://v"]}, PRINCIPAL, now=NOW)
+                       {"prove_receipt_ref": PROVE_REF, "refs": ["ev://v"]},
+                       PRINCIPAL, now=NOW)
     assert node.blocks[eph["blockId"]]["class"] == "REUSABLE"
     # CORE never reachable by promotion
     with pytest.raises(ValueError):
@@ -511,7 +584,8 @@ def test_reclassification_review_holds_block():
     node = KnowNode()
     receipt = node.ingest(make_candidate("suspect reusable", proposed_class="REUSABLE",
                                          epistemic_state="SUPPORTED",
-                                         evidence_refs=["ev://w"]),
+                                         evidence_refs=["ev://w"],
+                                         prove_receipt_ref=PROVE_REF),
                           PRINCIPAL, now=NOW)
     bid = receipt["blockId"]
     node.request_reclassification(bid, "PROVE found it unsupported", PRINCIPAL, now=NOW)

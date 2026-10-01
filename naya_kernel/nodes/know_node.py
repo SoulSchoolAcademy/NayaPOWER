@@ -4,11 +4,18 @@ Implements the KNOW node contract from KNOW-NODE-SPEC-CANDIDATE.md (draft)
 against the NodeBase interface. Candidate code on a feature branch: it proves
 the spec is implementable; it grants nothing, merges nothing, deploys nothing.
 
-Contractual responsibility (spec §0): KNOW is the memory organ — it decides
-what durable information exists, what is current, what applies, what is
-supported, and what is relevant, and it proves every one of those claims with
-provenance. KNOW is the only node permitted to persist knowledge into the
-intelligent graph.
+Contractual responsibility (spec §0, reconciled to the Ultimate Lock
+BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md):
+KNOW is the memory organ — it decides what durable information exists and
+what is current: canonical intelligence-object identity, meaning,
+lifecycle, provenance, and durable intelligence. It proves every one of
+those claims with provenance. KNOW is the only node permitted to persist
+knowledge into the intelligent graph.
+KNOW does NOT decide applicability (owned by CONNECT — the KNOW→CONNECT
+edge is CONTEXTUALIZES; applicability metadata crosses as non-steering
+context) and does NOT assess epistemic claims or evidence (owned by PROVE —
+KNOW records PROVE's assessed state by receipt reference, never by judging
+evidence itself). KNOW is never the final truth authority.
 
 Gate input contract (`state` dict keys; all reads are explicit):
   candidate           ingestion candidate (see INGEST_CANDIDATE contract below)
@@ -154,6 +161,36 @@ def _tokens(text: str) -> List[str]:
     return sorted(set(re.findall(r"[a-z0-9]{3,}", text.lower())))
 
 
+def _valid_prove_ref(ref: Any) -> bool:
+    """A PROVE assessment citation is well-formed: it names PROVE's node id
+    and a non-empty receipt id. KNOW binds the reference as provenance; it
+    does not assess the evidence behind it (Ultimate Lock: epistemic
+    claim/evidence assessment belongs to PROVE, never to KNOW)."""
+    return (isinstance(ref, dict)
+            and ref.get("node_id") == "NAYA-KERNEL-PROVE"
+            and isinstance(ref.get("receipt_id"), str)
+            and bool(ref.get("receipt_id")))
+
+
+def _applicability_note(applicability: Any, query_context: Any) -> Dict[str, Any]:
+    """Non-steering applicability annotation for CONNECT.
+
+    Ultimate Lock (KNOW vs PROVE vs CONNECT): CONNECT owns task/context
+    applicability decisions. KNOW records the declared applicability and
+    reports the match honestly, but the annotation is non-steering —
+    KNOW never excludes or includes on applicability grounds."""
+    declared = applicability or {}
+    contexts = declared.get("contexts")
+    within = (not contexts) or (not query_context) or (query_context in contexts)
+    return {
+        "declared": _deepcopy_json(declared),
+        "query_context": query_context,
+        "within_declared": within,
+        "steering_decision": False,
+        "decided_by": "NAYA-KERNEL-CONNECT",
+    }
+
+
 class KnowNode(NodeBase):
     """NAYA-KERNEL-KNOW. The memory organ: gated ingestion, provenanced
     storage, selector-gated retrieval. Candidate implementation."""
@@ -169,9 +206,10 @@ class KnowNode(NodeBase):
         self.receipts: List[Dict[str, Any]] = []
         self.ingestion_log: List[Dict[str, Any]] = []
         self.intake_queue: deque = deque()
-        # §1.2 truth-state deltas: downstream consumers are owed the news
-        # when a block's epistemic state changes.
-        self.truth_deltas: List[Dict[str, Any]] = []
+        # §1.2 canonical-state deltas: downstream consumers are owed the news
+        # when a block's canonical state changes. KNOW records state; it is
+        # not the truth authority (Ultimate Lock: KNOW vs PROVE vs CONNECT).
+        self.state_deltas: List[Dict[str, Any]] = []
         # §7.2 / §7.3 / §7.7 security events.
         self.security_events: List[Dict[str, Any]] = []
         self.checkpoints: List[Dict[str, Any]] = []
@@ -264,7 +302,7 @@ class KnowNode(NodeBase):
             "classifier signals + policy version per CLASSIFY receipt",
             "security events (§7.2 CORE attempts, §7.3 scope breaches, §7.7 quarantine)",
             "checkpoints + RESTORE receipts (cold-reconstruction backbone)",
-            "truth-state deltas (downstream notification ledger)",
+            "canonical-state deltas (downstream notification ledger)",
         ]
 
     def authority_checks(self) -> List[str]:
@@ -277,7 +315,7 @@ class KnowNode(NodeBase):
             "consent_ref required for non-public owner scopes; consent recorded, never manufactured here",
             "retrieval admission requires authenticated identity/scope binding; cross-scope retrieval refused — no_authority_grant_performed",
             "§7.4 content implying a permission, authorization, or governance change is refused as knowledge; authority is declared by LAW, never by a block — no_authority_grant_performed",
-            "epistemic upgrades require evidence; this node never upgrades state on request — no_authority_grant_performed",
+            "epistemic upgrades require a PROVE assessment receipt reference; this node never assesses evidence or upgrades state on request — no_authority_grant_performed",
         ]
 
     # ------------------------------------------------------------------
@@ -485,17 +523,21 @@ class KnowNode(NodeBase):
                 "proposal, never into the store as fact. patterns: %s"
                 % ", ".join(smuggled)], "content_hash": content_hash}
 
-        # --- epistemic upgrade without evidence (§7.6)
+        # --- epistemic claims require a PROVE assessment (§7.6, reconciled to
+        # the Ultimate Lock): epistemic claim/evidence assessment belongs to
+        # PROVE. KNOW records PROVE's assessed state by receipt reference —
+        # it never assesses evidence itself. evidence_refs are citations,
+        # not assessments, and no longer suffice on their own.
         claimed = candidate.get("epistemic_state", "INGESTED")
         if claimed not in EPISTEMIC_STATES:
             return {"verdict": "REFUSE", "reasons": [
                 "§2: epistemic state %r not recognized" % (claimed,)]}
-        evidence_refs = candidate.get("evidence_refs") or []
-        if claimed in ("SUPPORTED", "LEARNED", "VERIFIED") and not evidence_refs:
+        if claimed in ("SUPPORTED", "LEARNED", "VERIFIED") \
+                and not _valid_prove_ref(candidate.get("prove_receipt_ref")):
             return {"verdict": "REFUSE", "reasons": [
-                "§7.6: epistemic upgrade refused — %r claimed without "
-                "evidence; output must not upgrade epistemic state without "
-                "evidence" % claimed]}
+                "§7.6 (Ultimate Lock): epistemic state %r requires a PROVE "
+                "assessment receipt reference (prove_receipt_ref naming "
+                "NAYA-KERNEL-PROVE); KNOW does not assess evidence" % claimed]}
         if unknown_source and claimed != "INGESTED":
             # §5 rule: unknown provenance caps at INGESTED — recorded, not silent.
             capped = True
@@ -540,6 +582,11 @@ class KnowNode(NodeBase):
         provenance = _deepcopy_json(candidate["provenance"])
         provenance.setdefault("evidenceRefs", candidate.get("evidence_refs") or [])
         provenance.setdefault("upstreamReceipt", candidate.get("upstream_receipt"))
+        # Ultimate Lock: PROVE's assessment is cited by reference. KNOW binds
+        # the receipt as provenance without assessing the evidence behind it.
+        if candidate.get("prove_receipt_ref"):
+            provenance["proveReceiptRef"] = _deepcopy_json(
+                candidate["prove_receipt_ref"])
         provenance["boundAt"] = now
         provenance["boundBy"] = "node_id=%s" % NODE_ID
         ttl = candidate.get("ttl_seconds")
@@ -769,8 +816,10 @@ class KnowNode(NodeBase):
                  now: Optional[str] = None) -> Dict[str, Any]:
         """Serve a typed retrieval set through the V2 selector gates.
 
-        Never pads, never silences exclusions, never serves truth it does
-        not have. Conflicts are served with CONTRADICTS linkage visible.
+        Never pads, never silences exclusions, never presents stored content
+        as assessed truth — epistemic assessment belongs to PROVE, and
+        applicability decisions belong to CONNECT (Ultimate Lock). Conflicts
+        are served with CONTRADICTS linkage visible.
         Similarity scores are metadata, never evidence (§1.3, invariant 1).
         """
         now = now or _now_iso()
@@ -817,14 +866,11 @@ class KnowNode(NodeBase):
                                    "reason": "ownerScope %r not requested" % block["ownerScope"]})
                 selector_decisions.append("EXCLUDE %s consent:not-requested" % bid)
                 continue
-            # Gate 5 — applicability: CONTEXT blocks bound to their clause.
-            appl = block.get("applicability") or {}
-            contexts = appl.get("contexts")
-            if contexts and query_context and query_context not in contexts:
-                exclusions.append({"block_id": bid, "gate": "applicability",
-                                   "reason": "context %r outside block applicability" % query_context})
-                selector_decisions.append("EXCLUDE %s applicability:context" % bid)
-                continue
+            # KNOW does not decide applicability. Ultimate Lock
+            # (KNOW vs PROVE vs CONNECT): CONNECT owns task/context
+            # applicability decisions; the declared applicability rides along
+            # as non-steering metadata for CONNECT to decide on.
+            # (applicability exclusion removed — lock reconciliation)
             # Gate 6 — supersession: older versions excluded, newer named.
             if block.get("supersededBy"):
                 exclusions.append({"block_id": bid, "gate": "supersession",
@@ -838,7 +884,12 @@ class KnowNode(NodeBase):
                 selector_decisions.append("EXCLUDE %s class_filter" % bid)
                 continue
             selector_decisions.append("ADMIT %s" % bid)
-            served.append(block)
+            note = _applicability_note(block.get("applicability"), query_context)
+            selector_decisions.append(
+                "APPLICABILITY-NOTE %s %s (non-steering; CONNECT decides)"
+                % (bid, "within-declared" if note["within_declared"]
+                   else "outside-declared-noted"))
+            served.append((block, note))
 
         # Deterministic ranking (§6): inputs recorded — ranking is evidence.
         rank_inputs = {
@@ -847,7 +898,8 @@ class KnowNode(NodeBase):
             "tiebreak": "issuedAt desc, id asc",
             "query_tokens": sorted(qtokens) if "semantic" in modes else [],
         }
-        def rank_key(b: Dict[str, Any]):
+        def rank_key(pair):
+            b = pair[0]
             sim = 0.0
             if qtokens and "semantic" in modes:
                 btokens = set(_tokens(b["content"]))
@@ -857,7 +909,7 @@ class KnowNode(NodeBase):
         served.sort(key=rank_key)
 
         out_blocks = []
-        for b in served:
+        for b, note in served:
             conflicts = [cid for cid in b.get("contradicts", [])
                          if cid in self.blocks]
             entry = {
@@ -868,6 +920,11 @@ class KnowNode(NodeBase):
                 "state": b["state"],
                 "ownerScope": b["ownerScope"],
                 "applicability": b["applicability"],
+                # Non-steering annotation for CONNECT (Ultimate Lock): KNOW
+                # reports the declared applicability and whether the query
+                # context falls within it; it never decides steering
+                # eligibility — that decision belongs to CONNECT.
+                "applicability_note": note,
                 "freshness": b["freshness"],
                 "contradicts": conflicts,
                 "provenance_summary": {
@@ -938,7 +995,7 @@ class KnowNode(NodeBase):
                               "superseded by %s; lineage intact" % new_id, now)
         old["supersededBy"] = new_id
         old["epistemicState"] = "SUPERSEDED"
-        self._truth_delta(old_id, "ACTIVE", "SUPERSEDED",
+        self._state_delta(old_id, "ACTIVE", "SUPERSEDED",
                           "superseded by %s" % new_id, principal, now)
         self._receipt("SUPERSEDE", old_id, tr["from"], tr["to"],
                       ["supersession: %s -> %s; old record traceable" % (old_id, new_id)],
@@ -967,7 +1024,7 @@ class KnowNode(NodeBase):
                 self._transition(blk, "CONTRADICTED",
                                  "contradicted by %s; both preserved" % other["id"], now)
                 blk["epistemicState"] = "CONTRADICTED"
-                self._truth_delta(blk["id"], before, "CONTRADICTED",
+                self._state_delta(blk["id"], before, "CONTRADICTED",
                                   "conflict with %s" % other["id"], principal, now)
         return self._receipt(
             "CONTRADICT", block_id, "ACTIVE", "CONTRADICTED",
@@ -985,7 +1042,7 @@ class KnowNode(NodeBase):
             raise KeyError("invalidate: unknown block %r" % (block_id,))
         tr = self._transition(block, "INVALIDATED", "invalidated: %s" % reason, now)
         block["epistemicState"] = "INVALIDATED"
-        self._truth_delta(block_id, tr["from"], "INVALIDATED", reason, principal, now)
+        self._state_delta(block_id, tr["from"], "INVALIDATED", reason, principal, now)
         inv_candidate = {
             "content": "INVALIDATION of %s: %s" % (block_id, reason),
             "proposed_class": "REFERENCE",
@@ -1008,11 +1065,11 @@ class KnowNode(NodeBase):
             {"reasons": []}, {"evidence_refs": []}, principal, now,
             invalidation_block=inv_receipt.get("blockId"))
 
-    def _truth_delta(self, block_id: str, before: str, after: str, reason: str,
+    def _state_delta(self, block_id: str, before: str, after: str, reason: str,
                      principal: Dict[str, Any], now: str) -> None:
         """§1.2 — downstream consumers of a block are owed the news when its
         epistemic state changes. Knowledge is a ledger, not a snapshot."""
-        self.truth_deltas.append({
+        self.state_deltas.append({
             "block_id": block_id, "before": before, "after": after,
             "reason": reason, "at": now,
             "issuedBy": principal.get("identity"),
@@ -1027,7 +1084,10 @@ class KnowNode(NodeBase):
                 evidence: Dict[str, Any], principal: Dict[str, Any],
                 now: Optional[str] = None) -> Dict[str, Any]:
         """Promotion between classes requires the target class's gate:
-        supporting evidence for CONTEXT, verification for REUSABLE. A
+        supporting evidence cited for CONTEXT (presence recorded; KNOW does
+        not assess its sufficiency), a PROVE assessment receipt for REUSABLE
+        (Ultimate Lock: epistemic claim/evidence assessment belongs to
+        PROVE — KNOW binds the receipt, never judges the evidence). A
         versioned transition with lineage, never a silent field edit."""
         now = now or _now_iso()
         block = self.blocks.get(block_id)
@@ -1045,8 +1105,12 @@ class KnowNode(NodeBase):
                              % current)
         if target_class == "CONTEXT" and not (evidence.get("supporting") or block["evidenceRefs"]):
             raise ValueError("promote: CONTEXT requires supporting evidence")
-        if target_class == "REUSABLE" and evidence.get("kind") != "verification":
-            raise ValueError("promote: REUSABLE requires verification evidence")
+        if target_class == "REUSABLE" and not _valid_prove_ref(
+                evidence.get("prove_receipt_ref")):
+            raise ValueError(
+                "promote: REUSABLE requires a PROVE assessment receipt "
+                "(prove_receipt_ref naming NAYA-KERNEL-PROVE); KNOW does not "
+                "assess verification evidence itself (Ultimate Lock)")
         before = current
         block["class"] = target_class
         block["transitions"].append({"from": before, "to": target_class, "at": now,
@@ -1071,7 +1135,7 @@ class KnowNode(NodeBase):
             raise KeyError("request_reclassification: unknown block %r" % (block_id,))
         tr = self._transition(block, "CLASSIFICATION_REVIEW",
                               "reclassification review: %s" % reason, now)
-        self._truth_delta(block_id, tr["from"], tr["to"], reason, principal, now)
+        self._state_delta(block_id, tr["from"], tr["to"], reason, principal, now)
         return self._receipt("RECLASSIFY", block_id, tr["from"], tr["to"],
                              ["held for reclassification review: %s" % reason],
                              {"reasons": []}, {"evidence_refs": []}, principal, now)
@@ -1175,7 +1239,7 @@ class KnowNode(NodeBase):
                     try:
                         self._transition(block, "PROVENANCE_REVIEW",
                                          "provenance audit: %s" % "; ".join(problems), now)
-                        self._truth_delta(block["id"], frm, "PROVENANCE_REVIEW",
+                        self._state_delta(block["id"], frm, "PROVENANCE_REVIEW",
                                           "; ".join(problems),
                                           {"identity": "NAYA-KERNEL-KNOW/audit"}, now)
                     except ValueError:
@@ -1224,7 +1288,7 @@ class KnowNode(NodeBase):
         if self._chain_problems(block):
             raise ValueError("repaired chain still does not resolve")
         tr = self._transition(block, "ACTIVE", "provenance repaired and re-verified", now)
-        self._truth_delta(block_id, tr["from"], tr["to"], "provenance repaired",
+        self._state_delta(block_id, tr["from"], tr["to"], "provenance repaired",
                           principal, now)
         return self._receipt("RECLASSIFY", block_id, tr["from"], tr["to"],
                              ["provenance repaired; block returned to serving"],
@@ -1244,7 +1308,7 @@ class KnowNode(NodeBase):
                 self._transition(block, "EXPIRED",
                                  "ttl/validity window ended; tombstone retained", now)
                 block["epistemicState"] = "EXPIRED"
-                self._truth_delta(block["id"], frm, "EXPIRED", "ttl/validity ended",
+                self._state_delta(block["id"], frm, "EXPIRED", "ttl/validity ended",
                                   {"identity": "NAYA-KERNEL-KNOW/sweep"}, now)
                 expired.append(block["id"])
                 self._receipt("EXPIRE", block["id"], frm, "EXPIRED",
