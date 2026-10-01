@@ -134,6 +134,10 @@ NODE_CLASSES = {
 }
 
 #: Relationship ids whose handoff is NOT a gate input for decide().
+#: Also the partition key for the per-edge trace: every member must have a
+#: recorded disposition in _edge_trace. A member with no recorded
+#: disposition is labeled DISPOSITION_UNDEFINED, never silently
+#: re-classified as a gate edge (guarded by test_non_gate_edges_partition_closed).
 NON_GATE_EDGES = {
     "REL-KERNEL-ACT-KNOW",    # PRODUCES write edge — recorded, not re-gated
     "REL-KERNEL-EVOLVE-SELF",  # SUCCEEDS next-cycle edge — recorded, not traversed
@@ -200,23 +204,32 @@ class Kernel:
         """Per-edge handoff status for the receipt.
 
         A gate edge is SATISFIED when its source PASSed; otherwise BLOCKED
-        with the source's verdict named. The two non-gate edges are recorded
-        with their honest disposition (write path / next cycle).
+        with the source's verdict named. The non-gate edges (NON_GATE_EDGES,
+        the single source of truth for the partition) are recorded with
+        their honest disposition (write path / next cycle).
         """
         trace: List[Dict[str, Any]] = []
         for rel_id, source, target, rel_type in RUNTIME_EDGES:
             src_verdict = verdicts.get(source)
-            if rel_id == "REL-KERNEL-ACT-KNOW":
-                status = ("SATISFIED_WRITE_PATH"
-                          if src_verdict == GateVerdict.PASS
-                          else "BLOCKED")
-                note = ("ACT outcomes produced into KNOW's store; KNOW's gate "
-                        "is not re-run in this pass (ingest is KNOW's own "
-                        "intake path)")
-            elif rel_id == "REL-KERNEL-EVOLVE-SELF":
-                status = "NEXT_CYCLE"
-                note = ("closes the loop to the next decide() call; not "
-                        "traversed inside one pass")
+            if rel_id in NON_GATE_EDGES:
+                if rel_id == "REL-KERNEL-ACT-KNOW":
+                    status = ("SATISFIED_WRITE_PATH"
+                              if src_verdict == GateVerdict.PASS
+                              else "BLOCKED")
+                    note = ("ACT outcomes produced into KNOW's store; KNOW's gate "
+                            "is not re-run in this pass (ingest is KNOW's own "
+                            "intake path)")
+                elif rel_id == "REL-KERNEL-EVOLVE-SELF":
+                    status = "NEXT_CYCLE"
+                    note = ("closes the loop to the next decide() call; not "
+                            "traversed inside one pass")
+                else:
+                    # Fail-closed labeling: a partition member with no
+                    # recorded disposition must never be silently treated
+                    # as a gate edge.
+                    status = "DISPOSITION_UNDEFINED"
+                    note = (f"non-gate edge {rel_id} has no recorded "
+                            "disposition; not treated as a gate edge")
             elif src_verdict == GateVerdict.PASS:
                 status = "SATISFIED"
                 note = (f"{source} PASSed; {target} "

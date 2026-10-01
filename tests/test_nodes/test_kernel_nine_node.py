@@ -658,3 +658,24 @@ def test_need_evidence_blocks_downstream_without_halting(kernel, demo_stages):
     assert trace["REL-KERNEL-PROVE-VERIFY"]["status"] == "BLOCKED"
     assert verify_decision_receipt(
         out["decision_receipt"])["result"] == "MATCH"
+
+
+def test_non_gate_edges_partition_closed():
+    """NON_GATE_EDGES is exactly the non-gate subset of the seed's rel ids:
+    every member is a seed rel id; every seed rel id that is not a gate
+    input (per GATE_REQUIREMENTS) is a member; and the per-edge trace labels
+    (never silently gate-classifies) every member — DISPOSITION_UNDEFINED
+    is the honest fallback, plain SATISFIED must never appear on a
+    non-gate edge."""
+    seed_ids = {rid for rid, _s, _t, _typ in RUNTIME_EDGES}
+    assert NON_GATE_EDGES <= seed_ids, "non-gate id not in the seed"
+    req_pairs = {(u, n) for n, reqs in GATE_REQUIREMENTS.items() for u in reqs}
+    gate_ids = {rid for rid, s, t, _typ in RUNTIME_EDGES if (s, t) in req_pairs}
+    assert gate_ids | NON_GATE_EDGES == seed_ids, "partition does not cover the seed"
+    assert gate_ids & NON_GATE_EDGES == set(), "overlap between gate and non-gate"
+    # Full-PASS trace: non-gate edges carry their honest dispositions, never
+    # a gate edge's plain SATISFIED and never the undefined fallback.
+    trace = {e["relationship_id"]: e for e in Kernel()._edge_trace(
+        {n: GateVerdict.PASS for n in EVALUATION_ORDER}, {})}
+    for rid in NON_GATE_EDGES:
+        assert trace[rid]["status"] not in ("SATISFIED", "DISPOSITION_UNDEFINED"), rid
