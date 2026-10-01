@@ -84,6 +84,10 @@ def _gate_states():
     sys.path.insert(0, str(REPO_ROOT / "tests"))
     import test_nodes.test_kernel_nine_node as T
     k = Kernel()
+    # Same explicit test-scope opt-in as test_kernel_nine_node.kernel():
+    # this helper drives LEARN with synthetic receipts.
+    from naya_kernel.nodes import learn_node as _learn_node
+    k.nodes["LEARN"] = _learn_node.LearnNode(allow_fixture_intake=True)
     return k, {
         "SELF": T.self_state(), "LAW": T.law_state(), "ACT": T.act_state(),
         "PROVE": T.prove_state(k), "CONNECT": T.connect_state(),

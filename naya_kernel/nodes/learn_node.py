@@ -30,8 +30,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from naya_kernel.node_base import (
     NodeBase, GateResult, GateVerdict, ManifestEntry,
@@ -42,6 +43,58 @@ from naya_kernel.node_base import (
 NODE_ID = "NAYA-KERNEL-LEARN"
 NODE_MN = "MN-08"
 NO_AUTHORITY_GRANT = "no_authority_granted_by_learn"
+
+# The VERIFY node identity LEARN trusts. Imported nowhere — this is a literal
+# because learn_node must not import verify_node (no cross-node import; the
+# resolver is injected by runtime composition).
+VERIFY_NODE_ID = "NAYA-KERNEL-VERIFY"
+
+# ---------------------------------------------------------------------------
+# VERIFY→LEARN trust seam (Coda 1 design verdict #554/5937954809, C1–C6).
+#
+# SECURITY INVARIANT: LEARN can consume verification. It can never create,
+# infer, or manufacture it — including when the caller asserts the object
+# came from VERIFY.
+# ---------------------------------------------------------------------------
+
+# C3 — explicit allowlist of security-relevant fields compared between the
+# caller-presented receipt and the VERIFY-resolved receipt. Whole-dict
+# equality is brittle and fails open on new keys; fields outside this list
+# are never trusted for the intake decision.
+_VERIFY_INTAKE_COMPARE_FIELDS = (
+    "id",
+    "node_id",
+    "verification_state",
+    "outcome_status",
+    "acceptance_decision",
+    "causal_status",
+    "subject_ref",
+    "supersedes",
+    "reopened_by",
+    "evidence_refs",
+    "verify_key",
+)
+
+# C6 — structural fields every genuine VERIFY receipt carries (emitted by
+# VerifyNode._new_receipt). A direct dict-write forgery into VERIFY's store
+# typically omits or mistypes these; the ownership proof below refuses it.
+_VERIFY_RECEIPT_STRUCTURE_FIELDS = (
+    "node_version",
+    "verify_key",
+    "verify_version",
+    "kind",
+    "subject_ref",
+    "outcome_status",
+    "acceptance_decision",
+    "causal_status",
+    "verification_state",
+    "issued_at",
+    "issued_by",
+)
+
+# Genuine VERIFY receipt IDs are content commitments:
+# "vr-" + 16 hex chars (hash of [verify_key, seq]).
+_VERIFY_RECEIPT_ID_RE = re.compile(r"^vr-[0-9a-f]{16}$")
 
 # ---------------------------------------------------------------------------
 # Vocabulary (spec §2, §8, §6.3, §9)
@@ -220,13 +273,25 @@ class LearnNode(NodeBase):
     authority validations and grants nothing (see authority_checks()).
     """
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+    def __init__(self, config: Optional[Dict[str, Any]] = None,
+                 verify_resolver: Optional[Callable[[str], Optional[Dict[str, Any]]]] = None,
+                 allow_fixture_intake: bool = False) -> None:
         self._config: Dict[str, Any] = json.loads(json.dumps(
             config if config is not None else DEFAULT_CONFIG))
         self._config["configHash"] = _config_hash(self._config)
         self._config_snapshots: Dict[str, Dict[str, Any]] = {
             self._config["configHash"]: json.loads(json.dumps(self._config)),
         }
+        # VERIFY→LEARN trust seam (C2, C5 — Coda 1 verdict #554/5937954809).
+        # verify_resolver: runtime-owned callable mapping receipt_id ->
+        #   VERIFY's receipt dict (or None). Set at construction by runtime
+        #   composition; never an event-payload parameter; never replaced
+        #   after construction (no setter exists by design).
+        # allow_fixture_intake: explicit test-only scope. Default False —
+        #   ordinary construction is fail-closed. Not flippable after
+        #   construction (no setter exists by design).
+        self._verify_resolver = verify_resolver
+        self._allow_fixture_intake = bool(allow_fixture_intake)
         # Evidence registries (§1 baton; §5 provenance; §17 seam rule)
         self._verify_receipts: Dict[str, Dict[str, Any]] = {}   # VERIFY PASS receipts
         self._cvo: Dict[str, Dict[str, Any]] = {}               # CVO records
@@ -402,7 +467,16 @@ class LearnNode(NodeBase):
         Only VERIFIED_PASS receipts from NAYA-KERNEL-VERIFY qualify as
         learning evidence (§1.1 — "If VERIFY has not spoken, LEARN has
         nothing to read").
+
+        This is an explicitly test-scoped fixture seam: it refuses unless
+        the node was constructed with allow_fixture_intake=True. Runtime
+        intake goes through ingest_verify_receipt with a wired resolver.
         """
+        if not self._allow_fixture_intake:
+            raise ValueError(
+                "register_verify_receipt is a test-scoped fixture seam; "
+                "refused without allow_fixture_intake=True "
+                "(VERIFY_ORIGIN_UNESTABLISHED)")
         rid = receipt.get("receipt_id") or receipt.get("id")
         if not rid:
             raise ValueError("verify receipt must carry a receipt_id")
@@ -411,7 +485,7 @@ class LearnNode(NodeBase):
 
     def _is_qualifying_verify(self, receipt: Dict[str, Any]) -> bool:
         return (
-            receipt.get("node_id") == "NAYA-KERNEL-VERIFY"
+            receipt.get("node_id") == VERIFY_NODE_ID
             and receipt.get("verification_state") == "VERIFIED_PASS"
         )
 
@@ -435,10 +509,25 @@ class LearnNode(NodeBase):
     def ingest_verify_receipt(self, receipt: Dict[str, Any]) -> Dict[str, Any]:
         """Intake a verified receipt (event-driven, §1.5).
 
-        Non-verified inputs are refused (VERIFY_RESULT_REQUIRED) — LEARN never
-        consumes raw outcomes, chat messages, plans, memories, or its own
-        initiative. Pool capacity is bounded: overflow emits
-        LEARN_INTAKE_BACKPRESSURE and pauses intake, never silently drops.
+        Three-path dispatch (Coda 1 verdict #554/5937954809):
+
+        1. Runtime path (resolver wired): the receipt_id is resolved through
+           the runtime-owned resolver; the RESOLVED receipt is ownership-
+           proved (C6), allowlist-compared against the presented object
+           (C3), staleness-checked (C4), and — only then — consumed. The
+           caller's object is never trusted (C1).
+        2. Fixture path (allow_fixture_intake=True, no resolver): explicit
+           test scope; label check only.
+        3. Fail-closed default (no resolver, no fixture privilege): refused
+           with VERIFY_ORIGIN_UNESTABLISHED. Positive learning stays blocked
+           until an authentic VERIFY evidence path is wired.
+
+        The resolver is construction-owned (C2): it is never an
+        event-payload parameter, and no "resolver"-like key in the receipt
+        payload can substitute it — such keys are ignored.
+
+        Pool capacity is bounded: overflow emits LEARN_INTAKE_BACKPRESSURE
+        and pauses intake, never silently drops.
         """
         rid = receipt.get("receipt_id") or receipt.get("id") or "unknown"
         if rid in self._verify_receipts:
@@ -454,18 +543,176 @@ class LearnNode(NodeBase):
             )
             return {"accepted": False, "backpressure": True,
                     "backpressure_receipt": bp["receipt_id"]}
+        # C2: resolver is construction-owned; the stricter runtime path wins
+        # whenever a resolver is wired, even if fixture privilege was also set.
+        if self._verify_resolver is not None:
+            return self._ingest_via_resolver(receipt, rid)
+        if self._allow_fixture_intake:
+            return self._ingest_fixture(receipt, rid)
+        return self._refuse(
+            rid, "VERIFY_ORIGIN_UNESTABLISHED",
+            "no VERIFY resolver wired and no fixture privilege; origin "
+            "cannot be established — LEARN consumes only verified receipts (§1.1)")
+
+    def _refuse(self, rid: str, reason_code: str, reason: str) -> Dict[str, Any]:
+        """Emit INTAKE_REFUSED and return the refusal shape."""
+        refusal = self._emit(
+            "INTAKE_REFUSED", receipt_id_ref=rid,
+            reason_code=reason_code, reason=reason,
+        )
+        return {"accepted": False, "reason_code": reason_code,
+                "receipt_id": refusal["receipt_id"]}
+
+    @staticmethod
+    def reference_resolver(verify_node: Any
+                           ) -> Callable[[str], Optional[Dict[str, Any]]]:
+        """Reference runtime wiring for the VERIFY→LEARN resolver (C2).
+
+        Returns a callable mapping receipt_id -> VERIFY's receipt dict, or
+        None when VERIFY has no *current* receipt under that id. "Current"
+        excludes superseded receipts (a newer receipt carries
+        supersedes=<id>); those resolve to None → VERIFY_RECEIPT_UNKNOWN.
+
+        Deliberately a plain store lookup: VERIFY-ownership is proved by
+        LEARN's C6 structural proof (_prove_verify_ownership), not by the
+        resolver. A resolver that silently filtered forgeries would turn
+        the C6 direct-write case into VERIFY_RECEIPT_UNKNOWN; returning
+        what the store holds lets C6 refuse it precisely with
+        VERIFY_ORIGIN_UNESTABLISHED.
+
+        Residual risk (documented honestly): a same-process holder of the
+        VerifyNode that replicates VERIFY's full emission (valid id format,
+        complete structure, sealed state) can forge a receipt this proof
+        accepts. The bar is raised from "two caller-controlled labels" to
+        "replicate VERIFY's emission logic"; a holder that thorough owns
+        the process, not just the seam.
+        """
+        def resolve(receipt_id: str) -> Optional[Dict[str, Any]]:
+            store = getattr(verify_node, "_receipts", None)
+            if not isinstance(store, dict):
+                return None
+            receipt = store.get(receipt_id)
+            if receipt is None:
+                return None
+            for other in store.values():
+                if isinstance(other, dict) and other.get("supersedes") == receipt_id:
+                    return None
+            return receipt
+        return resolve
+
+    def _ingest_fixture(self, receipt: Dict[str, Any], rid: str) -> Dict[str, Any]:
+        """Explicit test-scoped intake (allow_fixture_intake=True, no resolver).
+
+        Label check only — never a production path. The "fixture": True
+        marker keeps the privilege visible in the result.
+        """
         if not self._is_qualifying_verify(receipt):
-            refusal = self._emit(
-                "INTAKE_REFUSED", receipt_id_ref=rid,
-                reason_code="VERIFY_RESULT_REQUIRED",
-                reason="LEARN consumes only verified receipts (§1.1)",
-            )
-            return {"accepted": False, "reason_code": "VERIFY_RESULT_REQUIRED",
-                    "receipt_id": refusal["receipt_id"]}
+            return self._refuse(
+                rid, "VERIFY_RESULT_REQUIRED",
+                "LEARN consumes only verified receipts (§1.1)")
         self.register_verify_receipt(receipt)
         self._emit("INTAKE_ACCEPTED", receipt_id_ref=rid,
-                   reason="qualifying VERIFY baton received")
+                   reason="fixture intake (explicit test scope only)")
+        return {"accepted": True, "receipt_id": rid, "fixture": True}
+
+    def _ingest_via_resolver(self, receipt: Dict[str, Any], rid: str
+                             ) -> Dict[str, Any]:
+        """Runtime intake: resolve, prove origin, detect tampering, then consume.
+
+        C1 — the RESOLVED receipt is consumed; the caller's object is
+        compared only to detect tampering, never read for the decision.
+        """
+        try:
+            resolved = self._verify_resolver(rid)
+        except Exception:
+            resolved = None
+        if resolved is None:
+            return self._refuse(
+                rid, "VERIFY_RECEIPT_UNKNOWN",
+                f"VERIFY has no current receipt '{rid}'")
+        # C6 — prove VERIFY ownership before trusting anything resolved.
+        if not self._prove_verify_ownership(resolved):
+            return self._refuse(
+                rid, "VERIFY_ORIGIN_UNESTABLISHED",
+                "resolved receipt fails VERIFY-ownership proof (id format, "
+                "issuer, or structure inconsistent with VERIFY emission)")
+        # C3 — tamper detection over the explicit security allowlist.
+        if not self._allowlist_match(receipt, resolved):
+            return self._refuse(
+                rid, "VERIFY_RECEIPT_TAMPERED",
+                "caller-presented receipt differs from the VERIFY-resolved "
+                "receipt on security-relevant fields")
+        # C4 — staleness: reopened receipts are dead; the identity binding
+        # must be present. (Superseded receipts are filtered by the
+        # reference resolver, which returns None → VERIFY_RECEIPT_UNKNOWN.)
+        if resolved.get("verification_state") == "REOPENED":
+            return self._refuse(
+                rid, "VERIFY_RECEIPT_REOPENED",
+                "receipt was reopened; the re-examination supersedes this version")
+        if not isinstance(resolved.get("subject_ref"), dict):
+            return self._refuse(
+                rid, "VERIFY_ORIGIN_UNESTABLISHED",
+                "resolved receipt lacks the subject_ref identity binding")
+        # C1 — qualify and consume the RESOLVED receipt, never the caller's.
+        if not self._is_qualifying_verify(resolved):
+            return self._refuse(
+                rid, "VERIFY_RESULT_REQUIRED",
+                "LEARN consumes only verified receipts (§1.1)")
+        self._verify_receipts[rid] = resolved
+        self._emit("INTAKE_ACCEPTED", receipt_id_ref=rid,
+                   reason="qualifying VERIFY baton resolved and verified")
         return {"accepted": True, "receipt_id": rid}
+
+    @staticmethod
+    def _prove_verify_ownership(resolved: Dict[str, Any]) -> bool:
+        """C6: prove the resolved receipt is VERIFY-owned.
+
+        A resolver pointed at VERIFY's live store can be poisoned by a
+        same-process direct dict write (append-only is a method, not an
+        invariant). This proof checks what VERIFY's own emission guarantees
+        but a naive forgery gets wrong: the content-commitment id format,
+        the issuer, structural completeness, and state consistency. A forgery
+        that replicates all of VERIFY's emission logic has done VERIFY's
+        work; a two-label forgery is refused here.
+        """
+        rid = resolved.get("id")
+        if not isinstance(rid, str) or not _VERIFY_RECEIPT_ID_RE.match(rid):
+            return False
+        if resolved.get("node_id") != VERIFY_NODE_ID:
+            return False
+        for field in _VERIFY_RECEIPT_STRUCTURE_FIELDS:
+            if field not in resolved:
+                return False
+        if not resolved.get("verify_key"):
+            return False
+        if not isinstance(resolved.get("subject_ref"), dict):
+            return False
+        if resolved.get("verification_state") == "VERIFIED_PASS":
+            # VERIFY seals receipts on close; an unsealed "PASS" was not
+            # emitted by VERIFY's state machine.
+            if "receipt_hash" not in resolved:
+                return False
+        return True
+
+    @staticmethod
+    def _allowlist_match(presented: Dict[str, Any],
+                         resolved: Dict[str, Any]) -> bool:
+        """C3: tamper detection over the explicit security-relevant allowlist.
+
+        The presented object may carry the id as "receipt_id" (event shape)
+        where the resolved receipt carries "id"; that alias is normalized.
+        Every allowlisted field must match exactly — including subject_ref,
+        so a genuine receipt for another task/owner/scope cannot be
+        redirected by presenting an altered copy (C4).
+        """
+        for field in _VERIFY_INTAKE_COMPARE_FIELDS:
+            expected = resolved.get(field)
+            actual = presented.get(field)
+            if field == "id" and actual is None:
+                actual = presented.get("receipt_id")
+            if actual != expected:
+                return False
+        return True
 
     def note_investigation(self, experience: Dict[str, Any]) -> Dict[str, Any]:
         """A12: pre-verification investigation placeholder — inert, unscored,

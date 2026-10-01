@@ -47,7 +47,11 @@ def verify_receipt(rid, lesson="check provenance first",
 
 
 def make_node(config=None):
-    return LearnNode(config=config)
+    # Explicit test-scope opt-in: these tests exercise LEARN's pipeline with
+    # synthetic receipts, not the VERIFY→LEARN trust seam (covered by
+    # test_learn_intake_trust_seam.py). The fixture flag is the documented
+    # test seam; default construction stays fail-closed.
+    return LearnNode(config=config, allow_fixture_intake=True)
 
 
 def ingest_and_extract(node, n, lesson="check provenance first",

@@ -257,7 +257,12 @@ def learn_state(kernel):
 
 @pytest.fixture()
 def kernel():
-    return Kernel()
+    k = Kernel()
+    # This test drives LEARN with synthetic receipts (not the VERIFY→LEARN
+    # trust seam). Explicit test-scope opt-in; default construction stays
+    # fail-closed (see test_learn_intake_trust_seam.py for the seam tests).
+    k.nodes["LEARN"] = learn_node.LearnNode(allow_fixture_intake=True)
+    return k
 
 
 @pytest.fixture()
