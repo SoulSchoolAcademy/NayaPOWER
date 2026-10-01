@@ -135,9 +135,10 @@ INDEPENDENCE_DIMS = (
     "own_authenticated_issued_by",
 )
 
-# §2 — observation windows. Candidate caveat: window lengths follow the
-# CANDIDATE calculus schedule (24h/7d/30d/90d) — director-set until V2.1 is
-# ratified; all V2.1 state references in this spec are aspirational.
+# §2 — observation windows. The 24h/7d/30d/90d schedule is the RATIFIED
+# V2.1 observation-window schedule (FLAG-001 step 4, PRs #1186/#1190/#1192,
+# bound in node_base.py). The director-set caveat applies only while the
+# calculus was candidate — it is now ratified.
 WINDOW_SCHEDULE_SECONDS = {
     "24h": 24 * 3600,
     "7d": 7 * 24 * 3600,
@@ -252,7 +253,8 @@ def _parse_ts(value: Optional[str]) -> Optional[datetime]:
 #   reproducer_seat       {"identity": str, ...}  must differ from deciding seat
 #   deciding_seat         {"identity": str, ...}
 #   delayed_harm_horizon  "24h"|"7d"|"30d"|"90d"|None  → window hold if set
-#   predicted_delta_v     float|None  §7 (aspirational until V2.1 ratified)
+#   predicted_delta_v     float|None  §7 (ratified V2.1 — value states bind
+#                                  calculusConfigHash, see record_value)
 #   causal_claim          dict|None   §5 CVO inputs when causality is claimed
 # ---------------------------------------------------------------------------
 
