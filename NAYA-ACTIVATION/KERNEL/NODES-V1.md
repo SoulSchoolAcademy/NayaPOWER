@@ -12,22 +12,22 @@ builders don't self-certify; read-only verification of `naya4/*`).
 
 | Responsibility | Node ID | Branch | Verified SHA | Suite | Result | Verified |
 |---|---|---|---|---|---|---|
-| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~22:22 PDT |
-| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~22:22 PDT |
-| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~22:22 PDT |
-| KNOW | NAYA-KERNEL-KNOW | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_know_node.py | 53/53 pass | 2026-09-30 ~22:22 PDT |
-| PROVE | NAYA-KERNEL-PROVE | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_prove_node.py | 34/34 pass | 2026-09-30 ~22:22 PDT |
-| CONNECT | NAYA-KERNEL-CONNECT | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_connect_node.py | 49/49 pass | 2026-09-30 ~22:22 PDT |
-| VERIFY | NAYA-KERNEL-VERIFY | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_verify_node.py | 75/75 pass | 2026-09-30 ~22:22 PDT |
-| LEARN | NAYA-KERNEL-LEARN | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_learn_node.py | 58/58 pass | 2026-09-30 ~22:22 PDT |
-| EVOLVE | NAYA-KERNEL-EVOLVE | naya4/nine-node-kernel-v1 | 94340120ad6bae091a33a6111a88e429cc6ab9a4 | tests/test_nodes/test_evolve_node.py | 63/63 pass | 2026-09-30 ~22:22 PDT |
+| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~22:52 PDT |
+| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~22:52 PDT |
+| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~22:52 PDT |
+| KNOW | NAYA-KERNEL-KNOW | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_know_node.py | 53/53 pass | 2026-09-30 ~22:52 PDT |
+| PROVE | NAYA-KERNEL-PROVE | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_prove_node.py | 34/34 pass | 2026-09-30 ~22:52 PDT |
+| CONNECT | NAYA-KERNEL-CONNECT | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_connect_node.py | 49/49 pass | 2026-09-30 ~22:52 PDT |
+| VERIFY | NAYA-KERNEL-VERIFY | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_verify_node.py | 75/75 pass | 2026-09-30 ~22:52 PDT |
+| LEARN | NAYA-KERNEL-LEARN | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_learn_node.py | 58/58 pass | 2026-09-30 ~22:52 PDT |
+| EVOLVE | NAYA-KERNEL-EVOLVE | naya4/nine-node-kernel-v1 | 31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194 | tests/test_nodes/test_evolve_node.py | 63/63 pass | 2026-09-30 ~22:52 PDT |
 
-Kernel-wide at that SHA: `tests/test_nodes/` **450/450 pass** (was 440/440 at
-842af91c). Kernel nine-node integration battery
+Kernel-wide at that SHA: `tests/test_nodes/` **457/457 pass** (was 450/450 at
+94340120ad). Kernel nine-node integration battery
 (`tests/test_nodes/test_kernel_nine_node.py`): **22/22 pass** — covers the
 13-edge runtime-graph traversal, per-edge fail-fast/fail-closed, LOCK minimum
 routes as required subset, in-code table ↔ seed-file drift guard, and
-hash-bound decision receipts. Full collectible repo suite: **957 passed, 3
+hash-bound decision receipts. Full collectible repo suite: **964 passed, 3
 skipped** (4 test files fail collection on the missing undeclared `pglast`
 dependency — pre-existing environment gap, unrelated to `naya_kernel`).
 Verified in an ephemeral /tmp worktree (clean public clone at the exact SHA,
@@ -82,6 +82,18 @@ reconciliation commits are spec-faithful —
   ratified-law behavior, not a weakened gate). Deeper semantic
   qualification belongs to the dedicated qualification lane, not this
   watch. All code is CANDIDATE — not ratified, not merged, not deployed.
+
+Re-verified 2026-09-30 ~22:52 PDT at `31864c25d46ce8ccbe0cfa47ca66e7c9c9bca194`
+("HARDEN: spec-cited docstrings for public non-interface ops (LEARN
+register_cvo/register_evidence/clear_harm_window/regress, KNOW expire_sweep,
+CONNECT apply_transition) (candidate)"): the three new commits since
+94340120ad are docstring-only — all 8 changed node source files are
+AST-identical to 94340120ad ignoring docstrings (independently checked by
+AST strip-and-compare), plus `manifest.json` status `SCAFFOLD` → `CANDIDATE`
+and README state-accuracy. The 7 new `test_manifest_state.py` guard tests
+assert the CANDIDATE status with the NOT RATIFIED / NOT MERGED banner —
+evidence-law honesty, no behavioral change. decide() 13-edge topology
+unchanged. All code is CANDIDATE — not ratified, not merged, not deployed.
 
 ## Pending nodes
 
