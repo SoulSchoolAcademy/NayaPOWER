@@ -33,7 +33,8 @@ KERNEL_SHA = "f58adf0826e0ea2c96d6e4a781b5191d2f4b8d5b"
 PARENT = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 
-def make_receipt(decision_id="dec-001", verdict="PASS", tamper=False):
+def make_receipt(decision_id="dec-001", verdict="PASS", tamper=False,
+                 with_inputs=False, inputs_state=None):
     body = {
         "receipt_id": f"decision-{decision_id}",
         "node_id": "naya-node-0001",
@@ -48,7 +49,10 @@ def make_receipt(decision_id="dec-001", verdict="PASS", tamper=False):
         "issued_at": "2026-10-01T15:30:00+00:00",
         "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
     }
-    body["receipt_hash"] = _sha256(body)
+    if with_inputs:
+        state = inputs_state if inputs_state is not None else {"gates": {"SELF": {}}}
+        body["inputs_hash"] = _sha256(state)
+    body["receipt_hash"] = _sha256({k: v for k, v in body.items()})
     if tamper:
         body["verdict"] = "FAIL"  # mutate after hashing
     return body
@@ -174,12 +178,35 @@ def test_contract_record_validation():
     print("  ok [contract record validation]")
 
 
+def test_inputs_hash_verified():
+    # Kernel binds inputs_hash; adapter recomputes over the submitted state.
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    p = project_kernel_receipt(r, owner_id=OWNER, kernel_sha=KERNEL_SHA,
+                               inputs_state=state)
+    assert p["p_value"]["inputs_hash"] == _sha256(state)
+    print("  ok [inputs_hash recomputed MATCH]")
+
+
+def test_inputs_hash_mismatch_rejected():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    expect_value_error(
+        lambda: project_kernel_receipt(r, owner_id=OWNER, kernel_sha=KERNEL_SHA,
+                                       inputs_state={"gates": {"SELF": {"input": 2}}}),
+        "inputs_hash mismatch")
+    expect_value_error(
+        lambda: project_kernel_receipt(r, owner_id=OWNER, kernel_sha=KERNEL_SHA),
+        "inputs_hash without submitted state")
+
+
 def main():
     tests = [test_1_valid_payload, test_2_missing_metadata, test_3_invalid_types,
              test_4_hash_mismatch, test_5_source_config_mismatch, test_6_wrong_ownership,
              test_7_no_verified_at_insert, test_8_bad_successor_authority,
              test_9_lineage_consistency, test_10_duplicate_idempotency,
-             test_contract_record_validation]
+             test_contract_record_validation, test_inputs_hash_verified,
+             test_inputs_hash_mismatch_rejected]
     for t in tests:
         print(f"case: {t.__name__}")
         t()

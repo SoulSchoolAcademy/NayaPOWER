@@ -79,6 +79,7 @@ def project_kernel_receipt(
     owner_scope: str = "PRIVATE",
     config_hash: Optional[str] = None,
     parent_ledger_event_id: Optional[str] = None,
+    inputs_state: Optional[Dict[str, Any]] = None,
     verify: Callable[[Dict[str, Any]], Dict[str, Any]] = verify_kernel_receipt,
 ) -> Dict[str, Any]:
     """Build the ``nayanet_record_ledger_event`` parameters for a kernel receipt.
@@ -86,14 +87,15 @@ def project_kernel_receipt(
     Raises ``ValueError`` on any boundary violation (the caller must not
     swallow these into a silent default). Field responsibilities:
     - kernel: receipt content, ``receipt_hash``, ``issued_at``, ``decision_id``,
-      ``node_id``, ``kernel_version``.
+      ``node_id``, ``kernel_version``, ``inputs_hash`` (the kernel produces it;
+      the adapter recomputes it over ``inputs_state`` and rejects mismatch).
     - seam (this function): ``owner_id`` (from auth context arg), ``owner_scope``,
       provenance envelope, verification ``UNVERIFIED``, idempotency identity.
     - database: ``object_id`` (ledger_event_id), ``created_at``, ``event_hash``,
       ``schema_version='1.0.0'``.
     """
     violations = _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
-                                  parent_ledger_event_id, verify)
+                                  parent_ledger_event_id, inputs_state, verify)
     if violations:
         raise ValueError("seam boundary violations: " + "; ".join(violations))
 
@@ -140,7 +142,7 @@ def idempotency_key(owner_id: str, source_id: str) -> str:
 
 
 def _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
-                     parent_ledger_event_id, verify) -> List[str]:
+                     parent_ledger_event_id, inputs_state, verify) -> List[str]:
     v: List[str] = []
     if not isinstance(receipt, dict):
         return ["receipt must be a JSON object"]
@@ -154,6 +156,17 @@ def _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
         r = verify(receipt)
         if r.get("result") != "MATCH":
             v.append("receipt_hash MISMATCH — receipt failed independent recomputation")
+    # 4b. inputs_hash: the kernel produces it; the adapter recomputes it over
+    # the submitted state and rejects mismatch. Neither side invents it.
+    claimed_inputs_hash = receipt.get("inputs_hash")
+    if claimed_inputs_hash is not None:
+        if not isinstance(claimed_inputs_hash, str) or \
+                not re.fullmatch(r"[0-9a-f]{64}", claimed_inputs_hash):
+            v.append("inputs_hash must be 64-char lowercase hex when present")
+        elif inputs_state is None:
+            v.append("inputs_hash present but no inputs_state submitted for recomputation")
+        elif _sha256(inputs_state) != claimed_inputs_hash:
+            v.append("inputs_hash MISMATCH — submitted state does not reproduce the kernel's hash")
     # 5. source/configuration mismatch
     if not isinstance(kernel_sha, str) or len(kernel_sha) != 40 or \
             not re.fullmatch(r"[0-9a-f]{40}", kernel_sha):
