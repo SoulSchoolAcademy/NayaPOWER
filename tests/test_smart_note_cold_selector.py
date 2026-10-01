@@ -42,4 +42,4 @@ def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exist
     assert 'if capture_path:' in block
     assert 'fresh-lesson-lineage-ids.json' in block
     assert 'intelligent_block_id' in block
-    assert 'registry' in block
+    assert 'reg["entries"]' in block
