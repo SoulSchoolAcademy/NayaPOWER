@@ -536,3 +536,280 @@ The contract is satisfied only through the eight-dimension scorecard (PROJECT-IN
 ---
 
 *Verified against live main 2026-10-01 by Naya 4. PART 7 (contract §§14–29) added 2026-10-01 to complete the cut-off V1.0 contract — net-new content only; all existing sections unchanged.*
+
+---
+
+## PART 8 — EXPERIENCE ART DIRECTION: BEAUTIFUL INTELLIGENCE AS A NEW MEDIUM
+
+### §30. CREATIVE NORTH STAR
+
+NayaNET is not trying to make a better dashboard.
+
+It is trying to make **intelligence itself beautiful to use**.
+
+The experience should feel like the internet has crossed a threshold:
+
+> **from pages → to presence**  
+> **from software → to relationship**  
+> **from data → to intelligence**  
+> **from navigation → to flow**  
+> **from flat interface → to living instrument**
+
+The highest standard is not “impressive UI.” It is **coherent digital art that also works perfectly**.
+
+“Divine design” is project shorthand for the creative standard: nothing arbitrary, nothing wasteful, nothing fake; purpose, proportion, harmony, truth, beauty and usefulness reinforcing one another.
+
+### §31. THE EXPERIENCE MUST FEEL
+
+- **beautiful** — the human wants to return;
+- **alive** — because real state and intelligence are present;
+- **calm** — power without visual anxiety;
+- **deep** — dimensional material and layered meaning;
+- **precise** — every edge, interval, state and word intentional;
+- **luminous** — controlled energy, not neon fog;
+- **intimate** — the system recognizes the person and their context;
+- **expansive** — it feels connected to a larger intelligence network;
+- **trustworthy** — truth state, source and authority remain visible;
+- **effortless** — sophistication disappears behind obvious action.
+
+If a screen is spectacular but cognitively exhausting, it fails.
+
+If a screen is easy but generic, it fails.
+
+The target is **extraordinary + obvious**.
+
+### §32. EMOTIONAL ARC
+
+The complete journey should intentionally move through:
+
+**CURIOSITY → RECOGNITION → TRUST → ORIENTATION → COMMAND → FLOW → MASTERY → CONTINUITY**
+
+- **Welcome:** curiosity and invitation.
+- **Identity:** recognition and trust.
+- **Hub entry:** orientation and command.
+- **Rooms:** flow and useful intelligence.
+- **Ledger / proof:** trust and accountability.
+- **Return session:** continuity — “it remembers me and where we were.”
+
+This arc is part of the experience contract, not marketing copy.
+
+### §33. COMPOSITION LAW
+
+Every major view must answer within seconds:
+
+1. **Where am I?**
+2. **What matters now?**
+3. **What can I do next?**
+
+Composition rules:
+- one dominant focal hierarchy per view;
+- intelligence before chrome;
+- asymmetry may create energy, but balance must remain calm;
+- negative space is an active material;
+- dense information must still have breathing rhythm;
+- avoid KPI-grid thinking unless the human task genuinely requires comparison;
+- do not fill empty space merely because it exists;
+- large surfaces should have one primary purpose and a limited set of supporting actions.
+
+### §34. OPTICAL HIERARCHY LAW
+
+Hierarchy must survive if all accent color is mentally removed.
+
+Use:
+- scale;
+- weight;
+- spacing;
+- surface elevation;
+- contrast;
+- grouping;
+- alignment;
+- disclosure;
+- then semantic color.
+
+Color strengthens hierarchy. It does not create hierarchy by itself.
+
+### §35. LIGHTING LAW
+
+NayaNET light behaves like physical energy, not decoration.
+
+Use a controlled stack:
+1. **material core** — the object's dark body;
+2. **edge light** — exact illuminated boundary;
+3. **specular highlight** — restrained upper-surface response;
+4. **cast shadow** — believable separation;
+5. **semantic aura** — low-opacity theme energy;
+6. **state amplification** — only when hover/active/processing/verified meaning warrants it.
+
+Avoid:
+- uniformly glowing every edge;
+- giant blurred neon clouds;
+- glow that reduces text contrast;
+- glow used to disguise weak geometry.
+
+**Depth first. Light second. Glow last.**
+
+### §36. TYPOGRAPHY LAW
+
+Typography carries authority and calm.
+
+- Primary reading text: high-contrast neutral/white.
+- Muted text remains clearly legible.
+- No pale lavender/light-purple body copy as a substitute for hierarchy.
+- Titles are concise and strong, never marketing-banner oversized inside working rooms.
+- Metadata is compact but not microscopic.
+- Numeric/status typography aligns cleanly for scanability.
+- Line length and line height prioritize sustained reading.
+- One coherent type system; avoid decorative font switching.
+- Typographic rhythm must be consistent across Welcome, Identity and Hub.
+
+### §37. ICON / OBJECT ART DIRECTION
+
+Icons are not clip art attached to buttons. They are **small identity sculptures**.
+
+Each production icon should share:
+- coherent silhouette logic;
+- facet geometry;
+- edge treatment;
+- highlight direction;
+- optical weight;
+- core/shade system;
+- semantic spectrum response.
+
+A room should be recognizable from its jewel before the label is read.
+
+### §38. MOTION CHOREOGRAPHY LAW
+
+Motion creates continuity, not spectacle.
+
+Three classes:
+
+**MICRO** — hover, focus, press, toggle, reveal. Fast and physical.
+
+**STATE** — loading, processing, connecting, verification, success/failure. Runs only while the underlying state is true.
+
+**SCENE** — Welcome → Identity → Hub and room transitions. Used to preserve spatial/mental continuity so the product feels like one environment, not disconnected pages.
+
+Rules:
+- entering should feel like moving deeper into the same world;
+- leaving a room should preserve orientation;
+- avoid arbitrary spins, bounces and particle effects;
+- avoid simultaneous motion in multiple unrelated regions;
+- reduced-motion mode must preserve meaning without the animation;
+- performance always wins over decorative motion.
+
+### §39. SENSORY EXTENSION LAW
+
+Sound and haptics MAY be used only when they improve state recognition or delight and the platform supports opt-in/appropriate user control.
+
+Examples:
+- subtle confirmation tone;
+- gentle identity-recognition cue;
+- lightweight haptic on meaningful state confirmation.
+
+Never require sound/haptics for understanding. Never create a noisy arcade.
+
+### §40. COPY / LANGUAGE LAW
+
+The interface speaks like an intelligent companion, not an enterprise backend.
+
+Prefer:
+- plain human language;
+- compact confidence;
+- meaningful verbs;
+- explicit truth state;
+- “what this means” over infrastructure jargon.
+
+Avoid:
+- fake certainty;
+- technical leakage as primary UX;
+- generic AI filler;
+- cute copy that weakens trust;
+- over-explaining obvious controls.
+
+Naya's presence should make the interface feel more intelligent, not more verbose.
+
+### §41. INTELLIGENT BEAUTY LAW
+
+Beauty is not a separate layer applied after functionality.
+
+For NayaNET:
+
+**BEAUTY = PURPOSE + PROPORTION + MATERIAL + LIGHT + STATE + MEANING + RESPONSE + TRUTH**
+
+A beautiful state is one whose form accurately expresses what the system is and what is happening.
+
+### §42. ANTI-GENERIC TEST
+
+Before accepting a design, ask:
+
+> If the NayaNET logo and words disappeared, would this still be unmistakably ours?
+
+If the answer is no, the interface has drifted toward generic software.
+
+Reject any change that makes the product easier to confuse with:
+- admin dashboards;
+- generic AI workspaces;
+- ordinary SaaS;
+- KPI portals;
+- glass-card template kits.
+
+### §43. RESTRAINT LAW
+
+Elite design is often subtraction.
+
+Do not add:
+- another card when hierarchy solves it;
+- another glow when edge precision solves it;
+- another label when grouping solves it;
+- another animation when state already communicates;
+- another panel when progressive disclosure solves it.
+
+**More intelligence, less burden. More depth, less clutter.**
+
+### §44. 10/10 EXPERIENCE QUALIFICATION
+
+A visual implementation cannot self-declare 10/10.
+
+For a surface to qualify, evidence must support:
+
+1. Identity — unmistakably NayaNET.
+2. Purpose — the human knows why the surface exists.
+3. Orientation — the human knows where they are.
+4. Hierarchy — what matters is obvious.
+5. Material craft — surfaces, edges, lighting and elevation are coherent.
+6. Spectrum semantics — color carries meaning.
+7. Icon coherence — one jewel family.
+8. Interaction tactility — hover/press/focus/active states feel physical.
+9. State honesty — visuals match real system state.
+10. Causal completeness — every live control does something real.
+11. Intelligence — canonical intelligence is actually present where claimed.
+12. Provenance/trust — source, evidence and uncertainty are inspectable where needed.
+13. Accessibility — keyboard, semantics, contrast and reduced motion pass.
+14. Responsive quality — identity survives desktop/tablet/mobile.
+15. Performance — visual richness does not make the experience sluggish.
+16. Continuity — return/reload/back-forward behavior stays coherent.
+17. Error craft — failures are clear, calm and actionable.
+18. Restraint — no visual noise or gratuitous complexity.
+19. Human value — the interface reduces effort and increases understanding/action.
+20. Independent review — someone other than the builder verifies the evidence.
+
+If a dimension is unknown, the score is not 10.
+
+### §45. CONTINUOUS DESIGN-INTELLIGENCE LOOP
+
+NayaNET design may improve beyond this contract, but not by taste drift.
+
+`OBSERVE EXPERIENCE → IDENTIFY FRICTION / DELIGHT → CAPTURE EVIDENCE → PROPOSE DESIGN LESSON → TEST → INDEPENDENTLY VERIFY → PROMOTE / REJECT → UPDATE TOKENS / PATTERNS / CONTRACT → COLD SUCCESSOR REUSES IT`
+
+A lesson becomes durable design intelligence only when its scope and evidence are known.
+
+### §46. FINAL DESIGN COMMAND
+
+> **Do not merely make software. Make intelligence beautiful to experience.**
+
+Preserve what is already extraordinary. Remove what is arbitrary. Make every object purposeful, every state truthful, every interaction tactile, every transition coherent, every room useful, and every return visit feel remembered.
+
+The production Hub should feel less like using a website and more like entering a living, trustworthy intelligence environment.
+
+That is the bar.
+
