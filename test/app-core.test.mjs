@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{BOARDS,MODES,NAV_ITEMS,initialState,reduce,roomFor,searchAll}from'../app-core.mjs';
+test('canonical rail contains eleven rooms',()=>{assert.equal(NAV_ITEMS.length,11);assert.deepEqual(NAV_ITEMS.map(x=>x.id),['feed','today','reports','library','connect','ledger','connections','lists','mail','spaces','settings'])});
+test('unknown room fails closed to Today',()=>assert.equal(roomFor('unknown').id,'today'));
+test('mode changes actual state',()=>assert.equal(reduce(initialState(),{type:'MODE',mode:'activity'}).mode,'activity'));
+test('favorite and save are independent',()=>{let s=initialState();s=reduce(s,{type:'TOGGLE_FAVORITE',id:BOARDS[0].id});s=reduce(s,{type:'TOGGLE_SAVE',id:BOARDS[0].id});assert.deepEqual(s.favorites,[BOARDS[0].id]);assert.deepEqual(s.saved,[BOARDS[0].id])});
+test('toggles return to baseline',()=>{let s=reduce(initialState(),{type:'TOGGLE_FAVORITE',id:'naya'});s=reduce(s,{type:'TOGGLE_FAVORITE',id:'naya'});assert.deepEqual(s.favorites,[])});
+test('search spans intelligence layers',()=>{assert.equal(searchAll('canonical').length,2);assert.equal(searchAll('not present').length,0);assert.equal(MODES.personal.label,'Personal')});
