@@ -1,23 +1,27 @@
-# naya_kernel — nine-node kernel scaffold
+# naya_kernel — nine-node kernel
 
-**CANDIDATE — NOT RATIFIED — NOT MERGED.** Stubs only; no node is implemented.
+**CANDIDATE — NOT RATIFIED — NOT MERGED.** Tested candidate code on this
+branch only; NOT production, NOT merged, NOT ratified.
 
 ## What this is
 
-The structural target for closing **GAP-A**: `Kernel.decide()` must exercise all
-nine nodes' gates in pipeline order (SELF → LAW → ACT → KNOW → PROVE → CONNECT
-→ VERIFY → LEARN → EVOLVE), with the nine-node manifest and gate script present.
-Today the kernel exercises SELF+LAW only; this package is the shape the full
-kernel will fill.
+The nine-node decision pipeline closing **GAP-A**: `Kernel.decide()`
+exercises all nine nodes' gates in pipeline order
+(SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE),
+with the nine-node manifest present. The first non-PASS gate short-circuits
+(fail-fast); `gate_all()` evaluates every gate without short-circuit for
+full audit visibility.
 
 ## Layout
 
 - `node_base.py` — the strict interface every node implements: `manifest_entry()`,
   `gate()` (PASS/FAIL/NEED_EVIDENCE), `persisted_transitions()`, `evidence_hooks()`,
   `authority_checks()`, `cold_reconstruct()`.
-- `nodes/` — nine stub modules, each quoting its spec's contractual responsibility
-  in the docstring; every method raises `NotImplementedError`.
-- `kernel.py` — `Kernel.decide()` skeleton (GAP-A closure point).
+- `nodes/` — the nine implemented node modules, each built against its
+  candidate spec; every gate is covered by `tests/test_nodes/test_<node>.py`.
+- `kernel.py` — `Kernel.decide()` (GAP-A closure: all nine gates in pipeline
+  order, first non-PASS short-circuits, hash-bound decision receipt) and
+  `Kernel.gate_all()` (every gate, no short-circuit).
 - `manifest.json` — nine-node manifest skeleton, all versions `0.1.0-candidate`.
 
 ## How the overnight build loop fills it in
