@@ -24,6 +24,11 @@ PROJECTION_OWNED_PATHS = {
     "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
     "BRAIN/90-OPERATIONS/README.md",
     "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+    # Generated fixed-point receipts necessarily change when any BRAIN projection
+    # changes. They carry inventory/provenance only; a substantive source path
+    # still remains visible independently and therefore still marks STALE.
+    "BRAIN/REAL-TREE.json",
+    "BRAIN/REAL-TREE.md",
 }
 
 
