@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "ee41dbc9e612c3ece3dca69dbbb20d569a9da00a",
-  "inventory_file_count": 160,
+  "receipt_basis_commit": "f9310ecba400472174e05cd5c76fd127b6956717",
+  "inventory_file_count": 169,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 36,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,
     "06-PROOF": 10,
@@ -164,6 +164,11 @@
       "size": 3347
     },
     {
+      "path": "BRAIN/03-KERNEL/0006-NODE-SPECS-INDEPENDENT-SCORECARD-V1.md",
+      "blob_sha": "345b5dfbf120726d7fc512c5b7e99e18e1b766c5",
+      "size": 12685
+    },
+    {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
       "blob_sha": "305124036fff58e2885ac8032fb3625d2e19b7a9",
       "size": 1394
@@ -174,9 +179,19 @@
       "size": 2507
     },
     {
+      "path": "BRAIN/03-KERNEL/NODES/ACT/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "f5cfadddcfc1e17b46405fcb1a3f15aa3577b2ea",
+      "size": 40662
+    },
+    {
       "path": "BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md",
       "blob_sha": "1fa8bc04319774abf88cfe7b193da7d7da3bf6e8",
       "size": 2007
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/CONNECT/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "8c938e982444f1cc44515d15359304d036f736c0",
+      "size": 51132
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md",
@@ -184,9 +199,19 @@
       "size": 1982
     },
     {
+      "path": "BRAIN/03-KERNEL/NODES/EVOLVE/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "bcab258e8d4af906493a84d4cbbb87ae5d3793b0",
+      "size": 60092
+    },
+    {
       "path": "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
       "blob_sha": "17d60031abf12c4f0f68ce50275d0b0a89f0f6bd",
       "size": 1829
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/KNOW/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "43bd15a58cf662f726a8d794dae7ed8b4cdcd7a0",
+      "size": 39895
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md",
@@ -194,14 +219,29 @@
       "size": 1832
     },
     {
+      "path": "BRAIN/03-KERNEL/NODES/LAW/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "99b6949811e6a0c96c26a627897ec77a6f658b15",
+      "size": 41980
+    },
+    {
       "path": "BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md",
       "blob_sha": "e1a02f3e7ebde00a208393b4f83ef2e0f6671827",
       "size": 2092
     },
     {
+      "path": "BRAIN/03-KERNEL/NODES/LEARN/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "6aa04ecb0692296caebd5e397663b6baedb9c54d",
+      "size": 49660
+    },
+    {
       "path": "BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md",
       "blob_sha": "b2b6a1442bec1da9edbb357c53ee12b5e6596c74",
       "size": 1816
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/PROVE/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "e05ad32b1c58f8ed6e59d4f442a7253b46e43d30",
+      "size": 50704
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
@@ -217,6 +257,11 @@
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
       "blob_sha": "207b37d63e36b4566eae17c545f203e17334c7ed",
       "size": 1846
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/VERIFY/0002-MASTER-SPEC-V1.md",
+      "blob_sha": "79b4a909aa7e67a1918beee621fddd691838415f",
+      "size": 47788
     },
     {
       "path": "BRAIN/03-KERNEL/README.md",
