@@ -70,7 +70,7 @@
     "ACT": "implemented-candidate",
     "KNOW": "implemented-candidate",
     "PROVE": "implemented-candidate",
-    "CONNECT": "stub",
+    "CONNECT": "implemented-candidate",
     "VERIFY": "stub",
     "LEARN": "stub",
     "EVOLVE": "stub"
