@@ -5,8 +5,11 @@ branch only; NOT production, NOT merged, NOT ratified.
 
 ## What this is
 
-The nine-node decision pipeline closing **GAP-A**: `Kernel.decide()`
-exercises all nine nodes' gates in pipeline order
+The nine-node decision graph closing **GAP-A**: `Kernel.decide()`
+traverses the canonical 13-edge runtime graph (per the Ultimate Lock;
+executable communication is not one mandatory linear call stack),
+exercising all nine nodes' gates with per-edge fail-fast/fail-closed
+semantics
 (SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE),
 with the nine-node manifest present. The first non-PASS gate short-circuits
 (fail-fast); `gate_all()` evaluates every gate without short-circuit for
@@ -19,7 +22,8 @@ full audit visibility.
   `authority_checks()`, `cold_reconstruct()`.
 - `nodes/` — the nine implemented node modules, each built against its
   candidate spec; every gate is covered by `tests/test_nodes/test_<node>.py`.
-- `kernel.py` — `Kernel.decide()` (GAP-A closure: all nine gates in pipeline
+- `kernel.py` — `Kernel.decide()` (GAP-A closure: all nine gates traversed
+  on the canonical 13-edge runtime graph, per-edge fail-fast/fail-closed;
   order, first non-PASS short-circuits, hash-bound decision receipt) and
   `Kernel.gate_all()` (every gate, no short-circuit).
 - `manifest.json` — nine-node manifest skeleton, all versions `0.1.0-candidate`.

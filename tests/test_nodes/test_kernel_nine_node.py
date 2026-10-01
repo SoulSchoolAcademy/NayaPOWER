@@ -1,22 +1,38 @@
-"""Integration: Kernel.decide() exercises all nine nodes (GAP-A closure).
+"""Integration: Kernel.decide() traverses the nine-node runtime graph.
 
-CANDIDATE — NOT RATIFIED — NOT MERGED. This file replaces the scaffold
-smoke test (test_kernel.py): decide()/gate_all() are real now.
+FLAG-001 reconciliation (CANDIDATE — NOT RATIFIED — NOT MERGED): decide()
+no longer runs a forced linear call stack. The executable topology is the
+canonical 13-edge runtime graph from
+BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json, with the lock's
+11 minimum runtime routes as the required subset. Per-edge fail-fast and
+fail-closed semantics are asserted below — no gate is weakened.
 """
 import copy
 import json
 import hashlib
+import os
 from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from naya_kernel.kernel import GATE_ORDER, Kernel, verify_decision_receipt
-from naya_kernel.node_base import NodeBase, GateVerdict
+from naya_kernel.kernel import (
+    EVALUATION_ORDER,
+    GATE_REQUIREMENTS,
+    NON_GATE_EDGES,
+    LOCK_MINIMUM_ROUTES,
+    RUNTIME_EDGES,
+    Kernel,
+    verify_decision_receipt,
+)
+from naya_kernel.node_base import NodeBase, GateResult, GateVerdict
 from naya_kernel.nodes import act_node, connect_node, learn_node, prove_node, verify_node
 
 
 NOW = "2026-10-01T04:00:00+00:00"
 PINNED = "constitution-v1-hash"
+SEED_PATH = os.path.join(
+    os.path.dirname(__file__), "..", "..",
+    "BRAIN", "04-INTELLIGENCE", "GRAPH", "0001-KERNEL-GRAPH-SEED-V1.json")
 
 
 def _h(obj):
@@ -259,13 +275,59 @@ def demo_stages(kernel):
     }
 
 
-# ------------------------------------------------------------------ tests
+# ------------------------------------------------- graph authority / drift
 
 
-def test_gate_order_covers_all_nine_nodes():
-    names = [name for name, _ in GATE_ORDER]
-    assert names == ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT",
-                     "VERIFY", "LEARN", "EVOLVE"]
+def _seed_kernel_edges():
+    with open(SEED_PATH, encoding="utf-8") as fh:
+        seed = json.load(fh)
+    edges = []
+    for e in seed["edges"]:
+        if e["source_id"].startswith("NAYA-KERNEL-") and \
+           e["target_id"].startswith("NAYA-KERNEL-"):
+            src = e["source_id"].replace("NAYA-KERNEL-", "")
+            tgt = e["target_id"].replace("NAYA-KERNEL-", "")
+            edges.append((e["relationship_id"], src, tgt, e["type"]))
+    return edges
+
+
+def test_runtime_edges_match_canonical_seed():
+    """Drift guard: the in-code 13-edge table is byte-faithful to the
+    canonical seed file. The seed is authoritative — the code follows it."""
+    assert _seed_kernel_edges() == list(RUNTIME_EDGES)
+
+
+def test_lock_minimum_routes_are_required_subset():
+    """The lock's 11 minimum runtime routes are all present in the 13-edge
+    seed (the seed adds ACT→KNOW PRODUCES and LAW→EVOLVE GOVERNS)."""
+    pairs = {(s, t) for _rid, s, t, _typ in RUNTIME_EDGES}
+    for route in LOCK_MINIMUM_ROUTES:
+        assert route in pairs, f"lock minimum route {route} missing"
+    assert len(RUNTIME_EDGES) == 13
+
+
+def test_evaluation_order_is_topological_over_gate_requirements():
+    """Every node is evaluated only after its required upstreams — the
+    evaluation order respects every gate edge of the runtime graph."""
+    position = {name: i for i, name in enumerate(EVALUATION_ORDER)}
+    assert set(EVALUATION_ORDER) == set(GATE_REQUIREMENTS)
+    for node, reqs in GATE_REQUIREMENTS.items():
+        for req in reqs:
+            assert position[req] < position[node], \
+                f"{node} evaluated before its required upstream {req}"
+
+
+def test_gate_requirements_derive_from_seed_gate_edges():
+    """GATE_REQUIREMENTS is exactly the gate-edge subset of the seed: every
+    edge except the ACT→KNOW write edge and the EVOLVE→SELF next-cycle edge
+    is a gate input."""
+    gate_pairs = {(s, t) for rid, s, t, _typ in RUNTIME_EDGES
+                  if rid not in NON_GATE_EDGES}
+    req_pairs = {(u, n) for n, reqs in GATE_REQUIREMENTS.items() for u in reqs}
+    assert req_pairs == gate_pairs
+
+
+# ------------------------------------------------------------------- tests
 
 
 def test_kernel_instantiates_all_nine_nodes(kernel):
@@ -273,30 +335,32 @@ def test_kernel_instantiates_all_nine_nodes(kernel):
     assert all(isinstance(n, NodeBase) for n in kernel.nodes.values())
 
 
-def test_decide_short_circuits_at_learn_by_design(kernel, demo_stages):
-    """With V2.1 unratified, LEARN honestly refuses autonomous promotion.
-
-    8 gates PASS; LEARN returns NEED_EVIDENCE with CALCULUS_NOT_RATIFIED
-    and the learning is routed to BRIEF. decide() stops there by design —
-    the kernel will not autonomously learn on unratified math.
-    """
+def test_decide_blocks_evolve_not_halts_on_learn_need_evidence(kernel,
+                                                               demo_stages):
+    """Graph fail-fast is PER EDGE: with V2.1 unratified, LEARN honestly
+    refuses autonomous promotion (NEED_EVIDENCE[CALCULUS_NOT_RATIFIED]).
+    EVOLVE is then edge-blocked (it requires LEARN) — recorded
+    NEED_EVIDENCE naming LEARN, never an invented PASS, never silently
+    skipped. The decision verdict is LEARN's NEED_EVIDENCE; stopped_at is
+    LEARN (first non-PASS in evaluation order)."""
     out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
     assert out["verdict"] == GateVerdict.NEED_EVIDENCE.value
     assert out["stopped_at"] == "LEARN"
-    assert [g["node"] for g in out["gates"]] == [
-        "SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN"]
-    assert all(g["verdict"] == "PASS" for g in out["gates"][:-1])
-    learn_gate = out["gates"][-1]
+    assert [g["node"] for g in out["gates"]] == list(EVALUATION_ORDER)
+    assert all(g["verdict"] == "PASS" for g in out["gates"][:-2])
+    learn_gate = out["gates"][-2]
     assert learn_gate["verdict"] == "NEED_EVIDENCE"
     assert any("CALCULUS_NOT_RATIFIED" in r for r in learn_gate["reasons"])
-    # EVOLVE not reached in decide() — the pipeline stopped by design.
+    evolve_gate = out["gates"][-1]
+    assert evolve_gate["verdict"] == "NEED_EVIDENCE"
+    assert evolve_gate["evaluated"] is False
+    assert evolve_gate["blocked_by"] == ["LEARN"]
+    assert any("LEARN" in r for r in evolve_gate["reasons"])
 
 
 def test_gate_all_exercises_all_nine_nodes(kernel, demo_stages):
     out = kernel.gate_all({"decision_id": "demo-001", "gates": demo_stages})
-    assert [g["node"] for g in out] == [
-        "SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY",
-        "LEARN", "EVOLVE"]
+    assert [g["node"] for g in out] == list(EVALUATION_ORDER)
     assert [g["verdict"] for g in out] == [
         "PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS",
         "NEED_EVIDENCE", "PASS"]
@@ -310,7 +374,11 @@ def test_decision_receipt_is_hash_bound_and_verifiable(kernel, demo_stages):
     assert receipt["receipt_id"] == "decision-demo-001"
     assert receipt["verdict"] == "NEED_EVIDENCE"
     assert receipt["stopped_at"] == "LEARN"
-    assert receipt["gate_order"] == [n for n, _ in GATE_ORDER]
+    assert receipt["evaluation_order"] == list(EVALUATION_ORDER)
+    assert receipt["topology"] == "canonical-runtime-graph-v1"
+    assert receipt["graph_seed"].endswith(
+        "0001-KERNEL-GRAPH-SEED-V1.json")
+    assert len(receipt["edge_trace"]) == 13
     check = verify_decision_receipt(receipt)
     assert check["result"] == "MATCH"
     tampered = dict(receipt, verdict="PASS")
@@ -318,7 +386,9 @@ def test_decision_receipt_is_hash_bound_and_verifiable(kernel, demo_stages):
 
 
 def test_decide_fail_closed_on_law_prohibited(kernel, demo_stages):
-    """A PROHIBITED LAW gate stops the pipeline before ACT/KNOW run."""
+    """A PROHIBITED LAW gate halts the whole decision: FAIL is global
+    fail-fast. Only SELF and LAW are evaluated; ACT is never consulted
+    (LAW→ACT GOVERNS blocks it)."""
     stages = dict(demo_stages)
     bad = law_state()
     bad["proposal"]["flags"] = {"harm_flag": True,
@@ -327,7 +397,77 @@ def test_decide_fail_closed_on_law_prohibited(kernel, demo_stages):
     out = kernel.decide({"gates": stages})
     assert out["verdict"] == "FAIL"
     assert out["stopped_at"] == "LAW"
+    assert out["halted_on_fail"] is True
     assert [g["node"] for g in out["gates"]] == ["SELF", "LAW"]
+    trace = {e["relationship_id"]: e for e in out["edge_trace"]}
+    assert trace["REL-KERNEL-LAW-ACT"]["status"] == "BLOCKED"
+    assert trace["REL-KERNEL-LAW-EVOLVE"]["status"] == "BLOCKED"
+
+
+def test_law_need_evidence_blocks_act_but_know_branch_continues(kernel,
+                                                                demo_stages):
+    """Per-edge fail-fast: LAW NEED_EVIDENCE blocks ACT (LAW→ACT) and EVOLVE
+    (LAW→EVOLVE), but the independent SELF→KNOW→PROVE/CONNECT branch still
+    evaluates. VERIFY is then edge-blocked because its ACT input never
+    PASSed — VERIFY's own gate is not consulted without its upstreams."""
+    stages = dict(demo_stages)
+    thin = law_state()
+    thin["evidence"] = {"n": 1, "confidence": 0.9}  # below floor k=3
+    stages["LAW"] = thin
+    out = kernel.decide({"gates": stages})
+    by_node = {g["node"]: g for g in out["gates"]}
+    assert by_node["LAW"]["verdict"] == "NEED_EVIDENCE"
+    assert by_node["ACT"]["evaluated"] is False
+    assert by_node["ACT"]["blocked_by"] == ["LAW"]
+    # independent branch still ran
+    assert by_node["KNOW"]["evaluated"] is True
+    assert by_node["KNOW"]["verdict"] == "PASS"
+    assert by_node["PROVE"]["verdict"] == "PASS"
+    assert by_node["CONNECT"]["verdict"] == "PASS"
+    # VERIFY requires ACT+PROVE+CONNECT — ACT missing, so not consulted
+    assert by_node["VERIFY"]["evaluated"] is False
+    assert by_node["VERIFY"]["blocked_by"] == ["ACT"]
+    assert by_node["VERIFY"]["verdict"] == "NEED_EVIDENCE"
+    assert any("ACT" in r for r in by_node["VERIFY"]["reasons"])
+    assert by_node["LEARN"]["blocked_by"] == ["VERIFY"]
+    assert set(by_node["EVOLVE"]["blocked_by"]) == {"LAW", "LEARN"}
+    assert out["verdict"] == "NEED_EVIDENCE"
+    assert out["stopped_at"] == "LAW"
+
+
+def test_verify_not_consulted_when_prove_needs_evidence(kernel, demo_stages):
+    """VERIFY still requires its upstream PROVE/CONNECT/ACT inputs: when
+    PROVE cannot reach PASS, VERIFY's gate is withheld (fail-closed) and
+    the receipt names PROVE as the blocker."""
+    kernel.nodes["PROVE"].gate = lambda _s: GateResult(
+        GateVerdict.NEED_EVIDENCE, ["demo forced: claim unproven"])
+    out = kernel.decide({"gates": demo_stages})
+    by_node = {g["node"]: g for g in out["gates"]}
+    assert by_node["PROVE"]["verdict"] == "NEED_EVIDENCE"
+    assert by_node["VERIFY"]["evaluated"] is False
+    assert by_node["VERIFY"]["blocked_by"] == ["PROVE"]
+    assert out["verdict"] == "NEED_EVIDENCE"
+    assert out["stopped_at"] == "PROVE"
+
+
+def test_edge_trace_records_special_edges(kernel, demo_stages):
+    """The two non-gate edges are recorded honestly: ACT→KNOW as the
+    PRODUCES write path (not a re-gate), EVOLVE→SELF as the next-cycle
+    edge (not traversed inside one pass)."""
+    out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
+    trace = {e["relationship_id"]: e for e in out["edge_trace"]}
+    write_edge = trace["REL-KERNEL-ACT-KNOW"]
+    assert write_edge["status"] == "SATISFIED_WRITE_PATH"
+    assert "not re-run" in write_edge["note"]
+    cycle_edge = trace["REL-KERNEL-EVOLVE-SELF"]
+    assert cycle_edge["status"] == "NEXT_CYCLE"
+    assert "not traversed" in cycle_edge["note"]
+    # gate edges satisfied by PASSed sources
+    assert trace["REL-KERNEL-SELF-LAW"]["status"] == "SATISFIED"
+    assert trace["REL-KERNEL-KNOW-PROVE"]["status"] == "SATISFIED"
+    assert trace["REL-KERNEL-VERIFY-LEARN"]["status"] == "SATISFIED"
+    # LEARN→EVOLVE blocked because LEARN did not PASS
+    assert trace["REL-KERNEL-LEARN-EVOLVE"]["status"] == "BLOCKED"
 
 
 def test_gate_exception_is_fail_closed_not_skipped(kernel, demo_stages):
@@ -338,6 +478,19 @@ def test_gate_exception_is_fail_closed_not_skipped(kernel, demo_stages):
     know = next(g for g in out if g["node"] == "KNOW")
     assert know["verdict"] == "FAIL"
     assert any("GATE EXCEPTION" in r for r in know["reasons"])
+
+
+def test_gate_exception_halts_decision_globally(kernel, demo_stages):
+    """A crashing gate is a FAIL — and FAIL is global fail-fast: the
+    decision halts at KNOW and downstream gates are never evaluated."""
+    def boom(_state):
+        raise RuntimeError("simulated gate crash")
+    kernel.nodes["KNOW"].gate = boom
+    out = kernel.decide({"gates": demo_stages})
+    assert out["verdict"] == "FAIL"
+    assert out["stopped_at"] == "KNOW"
+    assert out["halted_on_fail"] is True
+    assert [g["node"] for g in out["gates"]] == ["SELF", "LAW", "KNOW"]
 
 
 def test_missing_sub_state_fails_closed(kernel):
@@ -379,7 +532,7 @@ def test_gate_non_gateresult_return_is_contract_violation_fail(kernel,
 
 def test_gate_all_continues_past_early_failure(kernel, demo_stages):
     """Audit visibility: gate_all evaluates every gate even when an early
-    gate FAILs — unlike decide()'s fail-fast short-circuit."""
+    gate FAILs — unlike decide()'s global fail-fast on FAIL."""
     stages = dict(demo_stages)
     bad = law_state()
     bad["proposal"]["flags"] = {"harm_flag": True,
@@ -387,10 +540,10 @@ def test_gate_all_continues_past_early_failure(kernel, demo_stages):
     stages["LAW"] = bad
     out = kernel.gate_all({"gates": stages})
     assert len(out) == 9
-    assert [g["node"] for g in out] == [n for n, _ in GATE_ORDER]
+    assert [g["node"] for g in out] == list(EVALUATION_ORDER)
     law_gate = out[1]
     assert law_gate["verdict"] == "FAIL"
-    # the decided pipeline would stop at LAW; the audit path does not
+    # the decided graph traversal halts at LAW; the audit path does not
     decided = kernel.decide({"gates": stages})
     assert len(decided["gates"]) == 2
 

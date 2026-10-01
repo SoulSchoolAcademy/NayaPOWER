@@ -1,6 +1,6 @@
 {
  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
- "gap_a": "CLOSED on this branch: Kernel.decide() exercises all nine nodes' gates in pipeline order (first non-PASS short-circuits; gate_all() evaluates all without short-circuit). Branch-only candidate code \u2014 NOT ratified, NOT merged, NOT deployed.",
+ "gap_a": "CLOSED on this branch: Kernel.decide() traverses the canonical 13-edge runtime graph (FLAG-001 step 2; seed-faithful, lock minimum routes as required subset; per-edge fail-fast/fail-closed; FAIL halts globally). Branch-only candidate code \u2014 NOT ratified, NOT merged, NOT deployed.",
  "gate_order": [
   {
    "name": "SELF",
@@ -53,14 +53,14 @@
   "ACT": "implemented-candidate",
   "CONNECT": "implemented-candidate",
   "EVOLVE": "implemented-candidate",
-  "KERNEL": "kernel-integrated",
+  "KERNEL": "kernel-integrated-graph",
   "KNOW": "implemented-candidate",
   "LAW": "implemented-candidate",
   "LEARN": "implemented-candidate",
   "PROVE": "implemented-candidate",
   "SELF": "implemented-candidate",
   "VERIFY": "implemented-candidate",
-  "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed). 'kernel-integrated' = Kernel.decide() wires all nine gates on this branch (tested; NOT ratified/merged/deployed)."
+  "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed). 'kernel-integrated-graph' = Kernel.decide() traverses the canonical 13-edge runtime graph on this branch (tested; NOT ratified/merged/deployed)."
  },
  "name": "naya-nine-node-kernel",
  "node_versions": {
@@ -86,5 +86,25 @@
   "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md"
  },
  "status": "SCAFFOLD",
+ "topology": {
+  "edges": 13,
+  "evaluation_order": [
+   "SELF",
+   "LAW",
+   "KNOW",
+   "ACT",
+   "PROVE",
+   "CONNECT",
+   "VERIFY",
+   "LEARN",
+   "EVOLVE"
+  ],
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "kind": "canonical-runtime-graph-v1",
+  "lock": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
+  "lock_minimum_routes": 11,
+  "note": "Semantic/display order unchanged per the lock; executable communication is the graph, not a linear call stack.",
+  "semantics": "per-edge fail-fast/fail-closed: a gate is consulted only when every required upstream PASSed; FAIL halts the whole decision globally; ACT->KNOW is the PRODUCES write edge; EVOLVE->SELF is the next-cycle edge, not traversed in one pass."
+ },
  "version": "0.1.0-candidate"
 }
