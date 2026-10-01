@@ -58,3 +58,18 @@ EVOLVE preserves continuity and enables governed improvement of Naya and NayaPOW
 | Continuity verification fails | Halt; alert; do not proceed |
 | Improvement unverified | Reject adoption; retain proposal |
 | Governance violation detected | Halt; alert; preserve evidence |
+
+
+## Ultimate lock state axes
+
+EVOLVE MUST keep these dimensions separate:
+- succession state: DRAFT / VALIDATING / READY / ACCEPTED / STALE / INCOMPLETE / REJECTED / SUPERSEDED;
+- evolution proposal state: OBSERVED_GAP / PROPOSED / ANALYZED / NEEDS_EVIDENCE / NEEDS_AUTHORITY / AUTHORIZED / IMPLEMENTED / VERIFIED / ADOPTED / REJECTED / ROLLED_BACK / SUPERSEDED;
+- production maturity: SOURCE_ONLY / TESTED / DEPLOYMENT_AUTHORIZED / DEPLOYED / PARITY_VERIFIED / BEHAVIOR_VERIFIED / PRODUCTION_PROVEN.
+
+Permanent boundaries:
+- CONTINUITY ≠ AUTHORITY.
+- PROPOSAL ≠ ADOPTION.
+- DEPLOYED ≠ PRODUCTION_PROVEN.
+- SELF_BUILDING ≠ SELF_AUTHORIZATION.
+- Current canonical truth outranks stale handoff text.

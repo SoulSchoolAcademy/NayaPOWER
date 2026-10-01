@@ -26,7 +26,8 @@ CONNECT turns isolated intelligence into relevant, situated intelligence. It res
 - Resolve typed relationships accurately.
 - Retrieve by semantic, structural, relational and contextual relevance.
 - Detect contradiction, supersession and dependency.
-- Explain why retrieved intelligence applies.
+- Explain why retrieved intelligence is related, relevant and—when proven—applicable.
+- Treat UNKNOWN applicability as non-steering context; consequential steering requires explicit APPLICABLE state plus task-class match or a valid broader applicability contract.
 - Maintain relationship provenance.
 - Surface conflicts rather than resolving silently.
 
@@ -52,8 +53,9 @@ CONNECT turns isolated intelligence into relevant, situated intelligence. It res
 
 | Failure | Behavior |
 |---|---|
-| Relationship type unknown | Mark as RELATED_TO; flag for classification |
+| Relationship type unknown | Keep UNKNOWN/CANDIDATE and exclude from consequential steering; do not invent RELATED_TO |
 | Contradiction detected | Surface both claims; do not choose |
 | Supersession detected | Serve superseding object; mark superseded |
-| Relevance cannot be established | Exclude from results; log reason |
+| Relevance cannot be established | Exclude from steering results; log reason |
+| Applicability UNKNOWN | May remain visible non-steering when other gates permit; MUST NOT steer |
 | Provenance missing | Mark as UNVERIFIED; do not serve as canonical |

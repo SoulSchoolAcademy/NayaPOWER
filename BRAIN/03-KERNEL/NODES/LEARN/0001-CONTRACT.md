@@ -4,12 +4,12 @@
 
 ## Purpose
 
-LEARN converts verified experience into future behavioral improvement. It ensures that the system compounds intelligence over time while maintaining strict boundaries between observation, candidate learning, and verified learning.
+LEARN converts experience into governed learning candidates and qualifying verified experience into future behavioral improvement. Candidate capture may precede verification; promotion may not.
 
 ## Inputs
 
-- Verified outcomes from VERIFY
-- Observations and measurements
+- Observations and measurements for candidate capture
+- Canonical qualifying outcomes/verification evidence from VERIFY when promotion is requested
 - Existing intelligence and learning records
 - Contradiction reports
 - Applicability conditions
@@ -25,7 +25,7 @@ LEARN converts verified experience into future behavioral improvement. It ensure
 ## MUST Rules
 
 - Reconcile candidate lessons with existing intelligence.
-- Verify before promotion where required.
+- Resolve and validate canonical VERIFY/CVO/outcome evidence before promotion; caller-supplied evidence-reference presence is never sufficient by itself.
 - Preserve rejected and contradicted learning states.
 - Make future applicability explicit.
 - Measure future behavioral effect when claiming compounding.
@@ -42,7 +42,7 @@ LEARN converts verified experience into future behavioral improvement. It ensure
 
 ## Acceptance Criteria
 
-- Every learning candidate traces to a verified outcome.
+- Every promoted learning traces to a qualifying verified outcome; pre-verification candidates may exist but remain CANDIDATE/DEFERRED.
 - Promoted learnings have explicit applicability conditions.
 - Contradicted learnings are preserved and marked.
 - Compounding claims include behavioral effect measurements.
@@ -53,7 +53,7 @@ LEARN converts verified experience into future behavioral improvement. It ensure
 
 | Failure | Behavior |
 |---|---|
-| Unverified outcome | Reject as learning; retain as candidate |
+| Unverified outcome | Candidate may be retained, but block promotion to VERIFIED/ACTIVE/LEARNED |
 | Contradicts existing verified learning | Surface conflict; mark as CONTRADICTED |
 | No measurable behavioral effect | Mark as UNVERIFIED; do not compound |
 | Authority boundary violation | Reject; learning never changes authority |
