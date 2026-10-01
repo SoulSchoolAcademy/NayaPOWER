@@ -1457,6 +1457,15 @@
    "statement_count": 18,
    "bytes": 15720,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
+   "version": "20261001204000",
+   "name": "owner_scoped_github_projection_target_v1",
+   "path": "supabase/migrations/20261001204000_owner_scoped_github_projection_target_v1.sql",
+   "sha256": "490e23ea8f1a3d6debe4092704781559e10c19de82110c4351dc455b98f77469",
+   "statement_count": 3,
+   "bytes": 2226,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],
  "legacy_repository_snapshot_count": 95,
