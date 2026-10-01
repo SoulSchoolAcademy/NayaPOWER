@@ -16,6 +16,8 @@ declare
   v_key text;
   v_number numeric;
   v_points numeric;
+  v_actual numeric;
+  v_verified numeric;
 begin
   if coalesce(jsonb_typeof(p_receipt),'') <> 'object' then
     raise exception 'VALUE_RECEIPT_MUST_BE_OBJECT' using errcode='22023';
@@ -56,8 +58,27 @@ begin
       raise exception 'ALIGNMENT_DECISION_VERIFICATION' using errcode='22023';
     end if;
 
+    if p_receipt ? 'd_verified'
+      and coalesce(jsonb_typeof(p_receipt->'d_verified'),'null') not in ('number','null') then
+      raise exception 'ALIGNMENT_DECISION_D_VERIFIED_TYPE' using errcode='22023';
+    end if;
+
+    if coalesce(jsonb_typeof(p_receipt->'d_verified'),'null') = 'number' then
+      v_verified := (p_receipt->>'d_verified')::numeric;
+      if v_verified < -10 or v_verified > 10 then
+        raise exception 'ALIGNMENT_DECISION_D_VERIFIED_RANGE' using errcode='22023';
+      end if;
+    end if;
+
     if v_verification = 'VERIFIED_PASS'
       and coalesce(jsonb_typeof(p_receipt->'delta_v_actual'),'') = 'number' then
+      v_actual := (p_receipt->>'delta_v_actual')::numeric;
+      if coalesce(jsonb_typeof(p_receipt->'d_verified'),'') <> 'number' then
+        raise exception 'ALIGNMENT_DECISION_VERIFIED_REQUIRES_D_VERIFIED' using errcode='22023';
+      end if;
+      if v_verified <> greatest(-10::numeric, least(10::numeric, v_actual)) then
+        raise exception 'ALIGNMENT_DECISION_D_VERIFIED_MISMATCH' using errcode='22023';
+      end if;
       return 'VERIFIED_VALUE';
     end if;
     return 'ASSESSED';
