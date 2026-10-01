@@ -1,6 +1,6 @@
 # Asserted ≠ Verified — Inference Is Not Evidence
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn017-asserted-not-verified
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn020-asserted-not-verified
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-09-30
