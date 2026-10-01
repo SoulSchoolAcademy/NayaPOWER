@@ -118,7 +118,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # includes the nine-node Smart Note build manifest + SN-053 collective-chain first-test note (PR #1239)
+    "05-MEMORY": 23,  # + SN-053 chain evidence JSON + refined experience plan (chain steps 5-12, PR #1239)
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,

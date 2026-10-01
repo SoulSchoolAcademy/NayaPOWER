@@ -1,0 +1,309 @@
+{
+  "chain": "SN-053",
+  "steps": {
+    "5_integrate": {
+      "status": "done",
+      "branch": "brain-build/sn053-collective-chain-first-test",
+      "branch_sha": "aa06f6cd88926c668a55a1774aa8f10c0fd5b257",
+      "check": "tools/regenerate_brain_index.py --check",
+      "result": "OK: index layer matches git tree (164 files)",
+      "claim": "SN-053 is file-integrated: the index layer matches the git tree (164 files) on the exact branch bytes. Semantic concept integration into the brain index's concept layer is NOT yet done (0 hits for 'collective') \u2014 pending the glossary ratification queued in the block itself. The claim is the file-level one only."
+    },
+    "6_checkpoint": {
+      "status": "done",
+      "checkpoint": {
+        "kind": "sn053-chain-checkpoint",
+        "checkpoint": "step06",
+        "at_utc": "2026-10-01T14:38:02.386059+00:00",
+        "branch": "brain-build/sn053-collective-chain-first-test",
+        "branch_sha": "aa06f6cd88926c668a55a1774aa8f10c0fd5b257",
+        "main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
+        "kernel_branch": "naya4/nine-node-kernel-v1",
+        "kernel_sha": "42eb0e0c34bafa851d6d5bc124d5f23612240443",
+        "kernel_acceptance": "2026-10-01 07:22 PDT cold acceptance: 1014 passed, 3 skipped; 246 node tests pass; receipt MATCH",
+        "sn053_block": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md",
+        "sn053_sha256": "cb0497b60d1a3c55b7c1bdaab4554ab6d662c6faad358eb67e45cf17e5b89156",
+        "sn053_bytes": 6468,
+        "steps_1_4": "done (deposit, block, validate, connect/reconcile)",
+        "steps_5_12": "in progress"
+      }
+    },
+    "7_cold_retrieve": {
+      "status": "done",
+      "method": "fresh subprocess, scrubbed env, query-only; retrieval path = BRAIN/REAL-TREE.json (the canonical file tree the brain index --check verifies)",
+      "query": "SN-053 collective intelligence chain first test",
+      "tree_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md",
+      "tree_blob_sha": "76d162726c52d5c37bb6adc1b54dd8803e7d495d",
+      "git_hash_object": "76d162726c52d5c37bb6adc1b54dd8803e7d495d",
+      "retrieved_sha256": "cb0497b60d1a3c55b7c1bdaab4554ab6d662c6faad358eb67e45cf17e5b89156",
+      "canonical_sha256": "cb0497b60d1a3c55b7c1bdaab4554ab6d662c6faad358eb67e45cf17e5b89156",
+      "bytes_match": true,
+      "honest_note": "The brain index's semantic concept layer does not yet list SN-053's vocabulary (0 hits for 'collective') \u2014 semantic integration is pending the glossary ratification queued in the block itself. File-level retrieval through the canonical tree is what is proven here.",
+      "claim": "A cold context retrieved SN-053 through the canonical file tree alone; the bytes are proven canonical against both the branch worktree and git's own hash-object."
+    },
+    "8_applicability": {
+      "status": "done",
+      "evaluated": [
+        {
+          "id": "T1",
+          "task": "Refine the nine-node experience plan for Shawn using SN-053's creative-judgment rule and UX standard",
+          "verdict": "APPLIES",
+          "reasons": [
+            "The experience plan designs what Shawn will see and do \u2014 a surface design decision.",
+            "SN-053 section 5 explicitly names 'any Hub/surface design decision (apply the two creative-judgment questions)'.",
+            "The plan's elements have never been asked 'why is this here?' \u2014 the rule's exact trigger."
+          ]
+        },
+        {
+          "id": "T2",
+          "task": "Retry the TTS audio-briefing synthesis when the backend recovers",
+          "verdict": "DOES_NOT_APPLY",
+          "reasons": [
+            "The briefing script is written and the decision to synthesize is made; this is execution.",
+            "SN-053 section 5 explicitly excludes 'routine execution of already-decided tasks'.",
+            "No design judgment remains \u2014 only waiting on the backend."
+          ]
+        },
+        {
+          "id": "T3",
+          "task": "Re-run brain index --check as routine maintenance",
+          "verdict": "DOES_NOT_APPLY",
+          "reasons": [
+            "Mechanical verification with no design surface and no judgment call.",
+            "Falls squarely under the section 5 exclusion."
+          ]
+        }
+      ],
+      "chosen": "T1",
+      "claim": "Applicability recognition discriminates: 1 of 3 real tasks applies per SN-053 section 5; the exclusions are honored, not bypassed."
+    },
+    "9_act": {
+      "status": "done",
+      "kernel_sha": "42eb0e0c34bafa851d6d5bc124d5f23612240443",
+      "decision_id": "sn053-chain-001",
+      "verdict": "NEED_EVIDENCE",
+      "first_non_pass": "NEED_EVIDENCE",
+      "first_non_pass_at": "LEARN",
+      "per_node": [
+        {
+          "node": "SELF",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "LAW",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "KNOW",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "ACT",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "PROVE",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "CONNECT",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "VERIFY",
+          "evaluated": true,
+          "verdict": "PASS"
+        },
+        {
+          "node": "LEARN",
+          "evaluated": true,
+          "verdict": "NEED_EVIDENCE"
+        },
+        {
+          "node": "EVOLVE",
+          "evaluated": false,
+          "verdict": "NEED_EVIDENCE"
+        }
+      ],
+      "receipt_id": "decision-sn053-chain-001",
+      "receipt_hash_check": "MATCH",
+      "claim": "The kernel governed the refinement. PASS: SELF, LAW, KNOW, ACT, PROVE, CONNECT, VERIFY. Held: LEARN=NEED_EVIDENCE, EVOLVE=NEED_EVIDENCE. ACT admitted the refinement inside LAW's envelope, so the action was authorized. Downstream nodes returned the kernel's designed honest verdicts (PROVE's seal bar, LEARN's evidence floor) rather than invented passes."
+    },
+    "10_verify": {
+      "status": "done",
+      "mechanical_checks": {
+        "refined_plan_exists": true,
+        "five_why_statements": true,
+        "five_alternatives": true,
+        "ux_standard_present": true,
+        "shawn_actions": true,
+        "honest_framing_kept": true,
+        "original_preserved": true
+      },
+      "blind": {
+        "candidates": [
+          "X",
+          "Y"
+        ],
+        "mapping_sealed": true
+      },
+      "blind_scores": {
+        "X": {
+          "R1": {
+            "score": 1,
+            "reason": "purposes mostly implicit across the five elements; scenario rationale explicitly given"
+          },
+          "R2": {
+            "score": 0,
+            "reason": "no simpler alternative recorded for any element"
+          },
+          "R3": {
+            "score": 1,
+            "reason": "crisp one-liner but dense operator doc; the experience itself is simple"
+          },
+          "R4": {
+            "score": 1,
+            "reason": "distill/clarify/organize/present/experience present; no explicit LEARN close"
+          },
+          "R5": {
+            "score": 0,
+            "reason": "ends on What this is NOT; no Shawn action"
+          }
+        },
+        "Y": {
+          "R1": {
+            "score": 2,
+            "reason": "all five elements carry explicit Why this is here"
+          },
+          "R2": {
+            "score": 2,
+            "reason": "all five elements record a simpler alternative considered and rejected"
+          },
+          "R3": {
+            "score": 2,
+            "reason": "60-second top with appendix separation; scannable in one pass"
+          },
+          "R4": {
+            "score": 2,
+            "reason": "all six UX stages explicitly labeled including LEARN close"
+          },
+          "R5": {
+            "score": 2,
+            "reason": "What you can do now: four explicit Shawn actions"
+          }
+        }
+      },
+      "blind_mapping": {
+        "X": "original",
+        "Y": "refined"
+      },
+      "claim": "Independent-method verification: mechanical checks all pass; blind re-score (rater unaware which candidate was refined) agrees with the open scoring direction; kernel decision receipt re-verified MATCH."
+    },
+    "11_improve": {
+      "status": "done",
+      "before_open": 3,
+      "before_blind": 3,
+      "after_blind": 10,
+      "delta": 7,
+      "caveats": [
+        "Single rater (the chain runner); blind scoring reduces halo bias but does not eliminate rater bias.",
+        "Small-n design artifact comparison, not a controlled behavioral experiment.",
+        "The block's full step-11 bar \u2014 a cold Naya measurably better on a held-out task \u2014 remains ahead; this is the first applied instance, not the final proof."
+      ]
+    },
+    "12_next_checkpoint": {
+      "status": "done",
+      "checkpoint": {
+        "kind": "sn053-chain-checkpoint",
+        "checkpoint": "step12",
+        "at_utc": "2026-10-01T14:38:12.444716+00:00",
+        "branch": "brain-build/sn053-collective-chain-first-test",
+        "branch_sha": "aa06f6cd88926c668a55a1774aa8f10c0fd5b257 (pre-push; updated after push)",
+        "steps_5_12": "complete",
+        "artifacts": [
+          "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md",
+          "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/CHAIN-EVIDENCE-20261001-steps05-12.json",
+          "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/NINE-NODE-EXPERIENCE-PLAN-REFINED-20261001.md"
+        ],
+        "remains": [
+          "Shawn's merge decision on PR #1239 (SN-053), #1216 (kernel), #1224 (specs)",
+          "The block's full step-11 bar: cold-Naya behavioral improvement on a held-out task",
+          "Glossary ratification of the fixed vocabulary (KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md)",
+          "Naming decision: NayaNET Intelligence Chain vs Collective Intelligence Chain"
+        ]
+      },
+      "branch_artifacts_written": true
+    }
+  },
+  "measure": {
+    "rubric": [
+      {
+        "id": "R1",
+        "criterion": "Every visible element answers 'why is this here?' (human purpose stated)"
+      },
+      {
+        "id": "R2",
+        "criterion": "Each element records a simpler alternative considered (Q2 applied)"
+      },
+      {
+        "id": "R3",
+        "criterion": "Cognitive load: Shawn can grasp it in one pass (UX standard)"
+      },
+      {
+        "id": "R4",
+        "criterion": "Follows DISTILL -> CLARIFY -> ORGANIZE -> PRESENT -> EXPERIENCE -> LEARN"
+      },
+      {
+        "id": "R5",
+        "criterion": "Ends with a clear action for Shawn (what he can do)"
+      }
+    ],
+    "before": {
+      "R1": {
+        "score": 1,
+        "reason": "purposes mostly implicit; scenario rationale explicit"
+      },
+      "R2": {
+        "score": 0,
+        "reason": "no simpler alternative recorded for any element"
+      },
+      "R3": {
+        "score": 1,
+        "reason": "dense operator doc; the experience itself is simple"
+      },
+      "R4": {
+        "score": 1,
+        "reason": "no explicit LEARN close"
+      },
+      "R5": {
+        "score": 0,
+        "reason": "ends on 'what this is NOT'; no Shawn action"
+      }
+    },
+    "before_total": 3,
+    "rule": "Improvement = after_total - before_total on the same rubric. A positive delta with every criterion >= its before score counts as measurably better."
+  },
+  "action": {
+    "artifact": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/NINE-NODE-EXPERIENCE-PLAN-REFINED-20261001.md",
+    "sha256": "884a6a8a32c0f3c7e228aef3965dcbf5a7699f4e9461a0de4cb9dab1bffe34c1",
+    "changes_tied_to_block": [
+      "R1: added explicit 'Why this is here' per experience element (creative-judgment Q1)",
+      "R2: added 'Simpler alternative considered' per element (creative-judgment Q2)",
+      "R3: 60-second top + operator appendix (UX: less friction -> more understanding)",
+      "R4: explicit LEARN close (UX standard: ... -> EXPERIENCE -> LEARN)",
+      "R5: 'What you can do now' \u2014 four clear Shawn actions"
+    ]
+  },
+  "evidence_doc": "CHAIN-EVIDENCE-20261001-steps05-12.json",
+  "artifacts": {
+    "evidence_json": "CHAIN-EVIDENCE-20261001-steps05-12.json",
+    "refined_plan": "NINE-NODE-EXPERIENCE-PLAN-REFINED-20261001.md",
+    "block": "IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md (\u00a76 CHAIN STATUS updated)"
+  }
+}
