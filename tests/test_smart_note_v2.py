@@ -70,7 +70,7 @@ def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
 
 def test_projection_generator_targets_brain_and_preserves_private_default():
     assert "BRAIN_SMART_NOTE_ROOT" in mod.__dict__
-    assert str(mod.BRAIN_SMART_NOTE_ROOT).endswith("BRAIN/05-MEMORY/SMART-NOTES")
+    assert str(mod.BRAIN_SMART_NOTE_ROOT).replace("\\", "/").endswith("BRAIN/05-MEMORY/SMART-NOTES")
     private_capture = {
         "source": {"captured_at": "2026-09-29"},
         "category": "SYSTEM_INTELLIGENCE",
