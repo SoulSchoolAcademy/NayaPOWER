@@ -39,9 +39,9 @@
   animation: sheen 7s linear infinite;
 }
 @keyframes sheen { to { background-position: 220% center; } }
-.welcome .lede { color: var(--muted); font-size: 16px; max-width: 520px; margin-bottom: 34px; }
+.welcome .lede { color: var(--muted); font-size: var(--fs-body); max-width: 520px; margin-bottom: 34px; }
 .welcome .cta-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-.welcome .foot { margin-top: 46px; color: var(--muted); font-size: 10px; letter-spacing: .2em; }
+.welcome .foot { margin-top: 46px; color: var(--muted); font-size: var(--fs-meta); letter-spacing: .08em; max-width: 760px; line-height: 1.6; }
 
 /* ——— Identity: the bridge, rebuilt in the premium material language ——— */
 .identity {
@@ -71,13 +71,13 @@
 }
 .identity-emblem:hover { transform: scale(1.05) rotate(2deg); }
 .identity-card h1 { font-size: 30px; margin-bottom: 8px; }
-.identity-card .lede { color: var(--muted); font-size: 14px; margin-bottom: 26px; }
+.identity-card .lede { color: var(--muted); font-size: var(--fs-body); margin-bottom: 26px; }
 .alias-preview {
   display: flex; align-items: center; justify-content: center; gap: 12px;
   padding: 14px 18px; margin-bottom: 22px;
   border: 1px solid var(--line); border-radius: var(--radius-md);
   background: #ffffff06;
-  font-size: 13px; color: var(--ink-dim);
+  font-size: var(--fs-control); color: var(--ink-dim);
 }
 .alias-preview .avatar {
   width: 34px; height: 34px; border-radius: 50%; flex: none;
@@ -89,4 +89,4 @@
   margin: 22px 0; padding-top: 20px; border-top: 1px solid var(--line-soft);
 }
 .identity-card .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.identity-card .btn { min-height: 50px; padding: 0 34px; font-size: 14px; }
+.identity-card .btn { min-height: 50px; padding: 0 34px; font-size: var(--fs-control); }
