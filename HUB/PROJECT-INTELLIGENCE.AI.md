@@ -29,6 +29,10 @@ You are building the human cockpit into a living intelligence system. Your job i
 
 This section programs your judgment. When the spec is silent, these decide.
 
+**Visual bliss outranks the effects stack.** Before spectrum, depth, glow or motion: contrast, clarity, cleanliness, hierarchy, readable type, spacing and restraint. No visual effect may reduce legibility or comprehension. If effect and readability conflict, readability wins.
+
+**Generous text by default.** Primary body 17–18px target / 16px hard floor without documented justification; controls 15–16px; support text 14px+; metadata normally 13–14px. Critical truth/state/privacy/authority/action text is never microtype. The concept's 7–10px labels are not production typography. Never shrink text to rescue layout — fix the layout.
+
 **Color is energy, not decoration.** The 12-color spectrum in fixed order — purple → indigo → sapphire → teal → emerald → lime → yellow → gold → orange → rich orange → red → magenta — each assigned semantically per room/board/state via tokens. Never flat decorative fills. Never overpower reading content. Primary text stays high-contrast. Full token table: MACHINE projection, `spectrum[]`.
 
 **Depth is physical.** Every interactive object: dense obsidian/graphite surface, precise illuminated edge, subtle upper highlight, deep elevation shadow, controlled theme-colored halo. Hover: lift 2px, brighten, sharpen glow. Press: compress, darken, shrink shadow. Active: keep elevation, raise semantic energy. This is the Living Depth law — fake retro 3D and glassmorphism are both banned.
