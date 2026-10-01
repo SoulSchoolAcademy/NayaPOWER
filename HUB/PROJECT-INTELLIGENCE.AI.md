@@ -54,14 +54,21 @@ Gates per phase: canonical §4. Hard dependency: Phase 3+ waits on PR #1243 (per
 
 ## 5. THE DOORS (Smart Connect room)
 
-One brain. Many doors. Each door: themed elevated object, what it is, who it's for, live status, connect action with real causal path. **Connection ≠ permission to act** — architectural law. Door table (10 doors, MCP priority 1): MACHINE projection `doors[]`, human words in the HUMAN projection.
+One brain. Many doors. Each door: themed elevated object, what it is, who it's for, **live status shown truthfully**, connect action with real causal path.
+
+**Door honesty (hard rule):** the canonical registry is `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json`. Only 2 doors are LIVE (AI Connect bounded, Supabase/Data bounded); 7 are REGISTERED_CONTRACT_ONLY. The Hub must never present a contract-only or roadmap door as live. Status per door, always — see MACHINE projection `doors_canonical[]` / `doors_roadmap[]`.
+
+**Door authority law:** Doors expose what Naya can do. LAW decides what Naya may do. ACT does it. VERIFY checks what happened. **CONNECTED ≠ AUTHORIZED.** Connection never implies permission to act.
 
 ## 6. WORKING AGREEMENTS
 
 - Coordinate on issue #554. Never rewrite another lane's in-flight work.
 - Smallest effective change. Componentize; don't redesign the visual language.
+- **Before shipping any Hub change, inventory:** PURPOSE → REQUIREMENTS → EXISTING FEATURES → PRESERVATION → INTERACTIONS → DATA → AUTHORITY → STATES → ACCESSIBILITY → RESPONSIVE → PERFORMANCE → PROOF. Then classify every existing element: **KEEP / IMPROVE / REPLACE / REMOVE.** No replacement merely because it is newer or cleaner — it must be superior in purpose, UX, visual craft, and system coherence.
+- **Cold-Naya rule:** a cold Naya must be able to enter `HUB/`, understand the objective, identify what is preserved, know what is broken, and execute the next authorized step without Shawn reconstructing the vision. If not, the intelligence is incomplete.
 - One shell, many rooms, one substrate. No second brains, no second databases.
 - Routing law: WELCOME → IDENTITY → INTELLIGENT HUB. Identity page rebuilds in the design system; the workers.dev redirect dies.
+- **Recommended first room (Phase 4): Your Intelligence Today** — it forces every meaningful seam to compose: identity → retrieval → truth state → Naya interpretation → action → honest refusal when evidence is absent.
 
 ## 7. WHEN THE SPEC IS SILENT (judgment protocol)
 
