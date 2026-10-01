@@ -1,0 +1,100 @@
+# Deploy + verify the Compound Intelligence orchestrator (one-click, manual only).
+#
+# WHY THIS EXISTS: Supabase deployments were manual/invisible — the dashboard showed
+# whatever someone deployed from their laptop, with no team-visible proof. This workflow
+# makes deployment an explicit, witnessed, verified event.
+#
+# TRIGGER: Actions tab → "Deploy Compound Intelligence" → Run workflow. NOTHING runs
+# automatically (no push/pull_request triggers by design — deployment is authorized
+# side effect, per DEPLOYMENT-GOVERNANCE default DENY).
+#
+# SECRETS REQUIRED (repo Settings → Secrets → Actions; values never enter chat/code):
+#   SUPABASE_ACCESS_TOKEN — personal access token with function-deploy scope.
+#   SUPABASE_DB_PASSWORD  — only if migrations must run (this workflow does NOT run
+#                           migrations; schema changes ship separately with review).
+#
+# PROOF IT PRODUCES (this is the whole point):
+#   1. Deploy exit code + CLI output in the run log (function version + timestamp).
+#   2. NEGATIVE proof: anonymous POST to the function MUST return 401 (JWT gate live).
+#      A 401 here is a PASS — it proves the surface is deployed AND governed.
+#   3. Authenticated restore call is Shawn's (or a test-user secret's) one manual step;
+#      this workflow prints the exact curl so no one has to reconstruct it.
+#   4. Run log + uploaded deployment log = the receipt. Link the run URL in the
+#      activity feed; do not paste secrets.
+name: Deploy Compound Intelligence
+
+on:
+  workflow_dispatch:
+    inputs:
+      function:
+        description: "Edge Function directory under supabase/functions"
+        required: false
+        default: "nayanet-compound-intelligence"
+      ref:
+        description: "Git ref to deploy from (default: workflow run SHA)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  SUPABASE_PROJECT_REF: dahisasgpfvziswqvmvm
+
+jobs:
+  deploy-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+
+      - name: Show what will deploy (evidence, not trust)
+        run: |
+          echo "REF=${{ inputs.ref || github.sha }}"
+          test -f "supabase/functions/${{ inputs.function }}/index.ts" \
+            || { echo "FUNCTION_SOURCE_MISSING: supabase/functions/${{ inputs.function }}/index.ts"; exit 1; }
+          sha256sum "supabase/functions/${{ inputs.function }}/index.ts"
+          wc -l "supabase/functions/${{ inputs.function }}/index.ts"
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Deploy function (the authorized side effect)
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          test -n "$SUPABASE_ACCESS_TOKEN" || { echo "SECRET_MISSING: SUPABASE_ACCESS_TOKEN"; exit 1; }
+          supabase functions deploy "${{ inputs.function }}" --project-ref "$SUPABASE_PROJECT_REF"
+
+      - name: Verify JWT gate is live (anonymous MUST get 401 — a 401 is a PASS)
+        run: |
+          CODE=$(curl -s -o /tmp/gate_body.txt -w "%{http_code}" -X POST \
+            "https://$SUPABASE_PROJECT_REF.supabase.co/functions/v1/${{ inputs.function }}" \
+            -H "apikey: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"action":"restore","project_id":"NayaNET"}')
+          echo "ANONYMOUS_STATUS=$CODE"
+          cat /tmp/gate_body.txt
+          test "$CODE" = "401" || { echo "GATE_FAILURE: expected 401, got $CODE"; exit 1; }
+          echo "GATE_PROOF=PASS function is deployed and refuses anonymous callers"
+
+      - name: Print authenticated proof step (one manual call, no reconstruction)
+        run: |
+          echo "Run this once with a real user JWT to complete runtime proof:"
+          echo "curl -X POST https://$SUPABASE_PROJECT_REF.supabase.co/functions/v1/${{ inputs.function }} \\"
+          echo "  -H \"Authorization: Bearer <USER_JWT>\" -H apikey:'<PUBLISHABLE_KEY>' -H 'Content-Type: application/json'"
+          echo "  -d '{\"action\":\"restore\",\"project_id\":\"NayaNET\"}'"
+          echo "Expect: schema NAYANET_PROJECT_INTELLIGENCE_RESTORE_V1 with YOU_ARE_HERE/CURRENT_STATE/PROVEN/UNKNOWN/BLOCKED/PROTECTED/CURRENT_NEXT_ACTION."
+
+      - name: Upload deployment log (the receipt)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compound-intelligence-deploy-log
+          path: /tmp/gate_body.txt
+          if-no-files-found: warn
