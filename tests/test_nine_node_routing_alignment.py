@@ -74,3 +74,15 @@ def test_know_to_prove_direction_is_consistent_everywhere():
     assert prel["direction"] == "IN"
     assert prel["source_object_id"] == "NAYA-KERNEL-KNOW"
     assert prel["target_object_id"] == "NAYA-KERNEL-PROVE"
+
+
+def test_seed_edge_semantics_do_not_invert_governance_or_data_flow():
+    graph = load("BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json")
+    by_id = {e["relationship_id"]: e for e in graph["edges"]}
+
+    # SELF supplies identity/mission/current-state context; it does not govern LAW.
+    assert by_id["REL-KERNEL-SELF-LAW"]["type"] == "CONTEXTUALIZES"
+
+    # ACT can produce execution observations/events consumed by intelligence;
+    # the edge must not read as KNOW owning/using ACT authority.
+    assert by_id["REL-KERNEL-ACT-KNOW"]["type"] == "PRODUCES"
