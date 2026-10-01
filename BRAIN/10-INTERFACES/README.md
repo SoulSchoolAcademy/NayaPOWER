@@ -22,3 +22,11 @@ Interfaces enter the same governed substrate. They do not become second brains.
 - Channels are projections/connectors, not independent intelligence authorities
 - No channel may bypass the kernel governance sequence
 - Channel-specific UI never becomes canonical state
+
+## Hub / Smart Connect projection
+
+Human-facing Hub product intelligence lives at `../../HUB/README.md`.
+
+**Smart Connect** is the Hub experience for participation, sharing, connection and visible Door state. It projects this interface layer; it does not own the Door registry, authority, intelligence, policy or truth.
+
+The Smart Door contract and registry in this directory remain the capability-channel authority for the Hub. A connected Door means capability is discoverable/connected; it never means a consequential action is authorized.
