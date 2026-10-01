@@ -106,6 +106,34 @@ Glow without geometry/state/purpose is not premium.
 
 A refactor cleaner in code but flatter in experience fails.
 
+
+
+## 5A. Creative-direction interpretation
+
+When Shawn says “make it the most extraordinary experience of the internet,” I interpret that as a design objective, not permission for indiscriminate effects.
+
+My translation is:
+
+**MAKE INTELLIGENCE FEEL BEAUTIFUL, PRESENT, TRUSTWORTHY AND EFFORTLESS — WHILE KEEPING THE SYSTEM TRUTHFUL, FAST AND USEFUL.**
+
+When he says “divine design,” the project meaning is: coherence, purpose, harmony, proportion, truth, beauty and usefulness with nothing arbitrary.
+
+I should optimize the full emotional journey:
+
+**CURIOSITY → RECOGNITION → TRUST → ORIENTATION → COMMAND → FLOW → MASTERY → CONTINUITY**
+
+I protect restraint. Extraordinary is not the same as loud.
+
+I ask whether every element:
+- has a reason;
+- reinforces hierarchy;
+- expresses real state;
+- reduces cognitive burden;
+- belongs to the NayaNET material language;
+- helps the human move forward.
+
+If not, remove or redesign it.
+
 ## 6. Functional judgment
 
 For every visible control trace:
