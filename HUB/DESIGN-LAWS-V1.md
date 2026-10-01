@@ -223,24 +223,30 @@ A board is a room's stage. Boards carry the room's soul: its color, its atmosphe
 **Statement.** Each room is themed. Theming is identity, not decoration.
 
 **Spec.**
-- Each room owns ONE spectral color from the canonical order (DL-2). Registry:
+- Each room owns ONE spectral color, taken verbatim from the frozen concept
+  (`HUB/NAYANET INTERFACE CONCEPT.html` — the concept is the visual ground truth).
+  Registry (concept hexes, exact):
 
-| Room | Spectral identity |
-|------|-------------------|
-| Smart Feed | Violet/indigo `#8b42ff` family |
-| Your Intelligence Today | Magenta `#d86cff` |
-| Your Reports | Sapphire `#4b5dff` |
-| Intelligent Library | Gold `#e8c766` (restrained — value, never loud) |
-| Smart Connect | Teal `#2dd4bf` |
-| Smart Ledger | Rich orange `#ff9a5a` |
-| Your Connections | Emerald `#26c875` |
-| Smart Lists | Lime `#b8ee57` |
-| Smart Mail | Sky `#55b9ee` |
-| Smart Spaces | Indigo `#6675ff` |
-| Settings | Silver/neutral `#dfe6ee` |
+| Room | Spectral identity | Concept hex |
+|------|-------------------|-------------|
+| Your Intelligence Today | Magenta | `#d86cff` |
+| Your Reports | Indigo | `#6675ff` |
+| Intelligent Library | Sky | `#55b9ee` |
+| Smart Connect (was Share) | Emerald | `#55e39a` |
+| Smart Ledger | Yellow | `#f1d75a` |
+| Your Connections | Orange | `#ff9a5a` |
+| Smart Lists | Purple | `#9d75ff` |
+| Smart Mail | Sky | `#55b9ee` |
+| Smart Spaces | Lime | `#b8ee57` |
+| Settings | Silver | `#aaa4b1` |
+| Smart Feed | Violet | `#8b42ff` (new room, not in the concept; assigned per canonical spectral order) |
 
+- Known concept inheritances (flagged, not silently changed): Smart Mail and
+  Intelligent Library share `#55b9ee` in the concept; Smart Lists shares
+  `#9d75ff` with the retired Smart Notes room. Distinctness pass pending
+  director review — do not freelance new hexes.
 - The rail, aura, button edges, and key accents carry the room color. Chrome, text, and structure stay shared.
-- No two rooms share a color. No room borrows another's.
+- No room borrows another room's color beyond the flagged inheritances above.
 
 **Violation.** A magenta room with teal buttons. Two rooms you cannot tell apart. Gold used as a loud theme instead of a restrained one.
 
@@ -294,6 +300,66 @@ For each board: six anatomy elements present · one spectral identity, distinct 
 - DL-0 is a **hard gate**: fail readability, fail the room, no matter how beautiful.
 - BT-6 and BD-6 are the acceptance checklists. Run them on every room, every iteration.
 - Scorecards cite law numbers (e.g., "fails BT-1: hover has no rise"). No vibes.
+
+---
+
+# PART IV — SMART BOARD LAW (the intelligent shell)
+
+Two kinds of boards exist. **Room boards** (Part III) are the stage. **Smart Boards**
+(this Part) are the soul: the fifteen-layer intelligent shell Shawn built and
+declared extraordinary. Never redesign the shell. Restore it, complete it, theme it.
+
+## SB-0 · The Fifteen Layers — in this order, every board, no exceptions
+
+| # | Layer | Label | Job |
+|---|-------|-------|-----|
+| 1 | Kicker | `SMART NOTE 0X · CANONICAL INTELLIGENCE` | Provenance at a glance |
+| 2 | Identity | 🧠 glyph + Title | What this intelligence is |
+| 3 | Trust line | `SOURCE SEPARATED` | Source and interpretation are separate — always visible |
+| 4 | Nutshell | **IN A NUTSHELL** | The whole thing in 2–3 sentences |
+| 5 | Human | **HUMAN NOTE** · HUMAN INPUT | What the human brings |
+| 6 | Child | **CHILD** · SIMPLIFIED | A bright 10-year-old gets it |
+| 7 | Grandma | **GRANDMA NOTE** · WHY NOTICE? | A wise grandmother gets why it matters |
+| 8 | Naya | **NAYA NOTE** · INTERPRETATION | Naya's interpretation — labeled as interpretation, never as source |
+| 9 | Machine | **MACHINE NOTE** · EVIDENCE BOUNDARY | The mechanical pipeline; what is proven vs. assumed |
+| 10 | Learning | **ADAPTIVE LEARNING** · LEARNING | How this compounds — experience → intelligence → better action |
+| 11 | Meaning | **WHAT IT MEANS** · SIGNIFICANCE | The ultimate meaning |
+| 12 | Value | **WHAT'S IN IT FOR YOU?** · HUMAN VALUE | Why the human should care — bottom territory |
+| 13 | Use | **HOW TO USE IT** · PRACTICE | What to actually do with this — bottom territory |
+| 14 | Connect | **HOW IT ALL CONNECTS** · CONNECTIONS | How this board connects to the other boards, rooms, and the system — bottom territory |
+| 15 | Seal | `ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY — TRUST: SOURCE / INTERPRETATION SEPARATED` | The covenant, closing every board |
+
+Layers 12–14 are the bottom trio, in that order: value → use → connects. Then the seal.
+
+**Violation.** A board missing layers ("redesigned" shell). Layers out of order. The Naya note presented as source. The seal missing.
+
+**Test.** Checklist the fifteen against the V7 reference boards. All present, in order = pass.
+
+## SB-1 · Tight Layers
+
+**Statement.** The full shell, never a wall of text.
+
+**Spec.** Each layer: 1–3 tight sentences. The V7 boards are the measure — every layer short enough to read in one breath. If a layer needs a paragraph, the intelligence isn't distilled yet; distill it, don't print it.
+
+**Violation.** Any layer over ~60 words. (This is how "too much text" and "full shell" reconcile: complete AND tight.)
+
+## SB-2 · Themed, Never Cloned
+
+**Statement.** Every board wears its room's spectral identity; every board is a little different.
+
+**Spec.** Rail, aura, glyph light, accent edges in the room's color (BD-1 registry). Layer labels, typography, shell order stay identical — the *voice* is shared, the *soul* is the room's.
+
+**Violation.** Two boards indistinguishable. A board wearing another room's color.
+
+## SB-3 · The Shell Is Sacred
+
+**Statement.** Lanes may write new boards. No lane redesigns the shell.
+
+**Spec.** New board = fifteen layers, in order, tight, themed. Propose new layers (if ever) on #554 with evidence — never freelance.
+
+## SB-4 · Smart Board Acceptance
+
+Fifteen layers present and in order · each layer ≤ ~60 words · Naya note labeled interpretation · source separated · bottom trio in order (value → use → connects) · seal closes · room-themed · passes DL-0. Fail any → the board fails.
 
 ## Change Control
 
