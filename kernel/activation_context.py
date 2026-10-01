@@ -56,7 +56,7 @@ class ActivationContext:
             raise ValueError("OWNER_REPO_INVALID")
         if not _REPO_RE.fullmatch(self.upstream_repo):
             raise ValueError("UPSTREAM_REPO_INVALID")
-        if self.owner_repo == self.upstream_repo:
+        if self.owner_repo.casefold() == self.upstream_repo.casefold():
             raise ValueError("OWNER_REPO_MUST_BE_DISTINCT_FROM_UPSTREAM")
         if not isinstance(self.authority_context, Mapping):
             raise ValueError("AUTHORITY_CONTEXT_INVALID")
