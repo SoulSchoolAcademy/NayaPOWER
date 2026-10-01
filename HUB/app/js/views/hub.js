@@ -28,7 +28,7 @@ function HubView(params) {
     rail.appendChild(b);
   });
   const priv = el('div', 'rail-privacy',
-    'PRIVATE BY DEFAULT.<br>SHARED BY CHOICE.<br>COLLECTIVE BY CONSENT.');
+    'PRIVATE BY DEFAULT.<br>SHARED BY CHOICE.<br>COLLECTIVE BY CONSENT.<br>PUBLIC BY DECISION.');
   rail.appendChild(priv);
 
   /* ——— Topbar ——— */
