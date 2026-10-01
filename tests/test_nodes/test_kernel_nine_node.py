@@ -359,10 +359,10 @@ def test_decide_full_pass_under_ratified_calculus(kernel, demo_stages):
 
 def test_gate_all_exercises_all_nine_nodes(kernel, demo_stages):
     out = kernel.gate_all({"decision_id": "demo-001", "gates": demo_stages})
-    assert [g["node"] for g in out] == list(EVALUATION_ORDER)
+    assert [g["node"] for g in out["gates"]] == list(EVALUATION_ORDER)
     # FLAG-001 step 4: V2.1 RATIFIED — LEARN passes, so all nine PASS.
-    assert [g["verdict"] for g in out] == ["PASS"] * 9
-    positions = [g["position"] for g in out]
+    assert [g["verdict"] for g in out["gates"]] == ["PASS"] * 9
+    positions = [g["position"] for g in out["gates"]]
     assert positions == list(range(1, 10))
 
 
@@ -475,7 +475,7 @@ def test_gate_exception_is_fail_closed_not_skipped(kernel, demo_stages):
         raise RuntimeError("simulated gate crash")
     kernel.nodes["KNOW"].gate = boom
     out = kernel.gate_all({"gates": demo_stages})
-    know = next(g for g in out if g["node"] == "KNOW")
+    know = next(g for g in out["gates"] if g["node"] == "KNOW")
     assert know["verdict"] == "FAIL"
     assert any("GATE EXCEPTION" in r for r in know["reasons"])
 
@@ -514,7 +514,7 @@ def test_cold_reconstruct_verifies_receipts(kernel, demo_stages):
 
 def test_gate_results_name_reasons(kernel, demo_stages):
     out = kernel.gate_all({"gates": demo_stages})
-    for g in out:
+    for g in out["gates"]:
         assert g["reasons"], f"{g['node']} returned no reasons"
         assert isinstance(g["reasons"], list)
 
@@ -525,7 +525,7 @@ def test_gate_non_gateresult_return_is_contract_violation_fail(kernel,
     never an interpreted PASS."""
     kernel.nodes["KNOW"].gate = lambda _state: {"verdict": "PASS"}
     out = kernel.gate_all({"gates": demo_stages})
-    know = next(g for g in out if g["node"] == "KNOW")
+    know = next(g for g in out["gates"] if g["node"] == "KNOW")
     assert know["verdict"] == "FAIL"
     assert any("CONTRACT VIOLATION" in r for r in know["reasons"])
 
@@ -539,9 +539,9 @@ def test_gate_all_continues_past_early_failure(kernel, demo_stages):
                                 "harm_facts": ["demo harm case"]}
     stages["LAW"] = bad
     out = kernel.gate_all({"gates": stages})
-    assert len(out) == 9
-    assert [g["node"] for g in out] == list(EVALUATION_ORDER)
-    law_gate = out[1]
+    assert len(out["gates"]) == 9
+    assert [g["node"] for g in out["gates"]] == list(EVALUATION_ORDER)
+    law_gate = out["gates"][1]
     assert law_gate["verdict"] == "FAIL"
     # the decided graph traversal halts at LAW; the audit path does not
     decided = kernel.decide({"gates": stages})
@@ -718,7 +718,46 @@ def test_gate_all_tolerates_non_dict_gates_container(kernel):
     """gate_all evaluates all nine gates (each on an empty sub-state) even
     when state["gates"] is malformed."""
     out = kernel.gate_all({"gates": "not-a-dict"})
-    assert len(out) == 9
-    assert [g["node"] for g in out] == [
+    assert len(out["gates"]) == 9
+    assert [g["node"] for g in out["gates"]] == [
         "SELF", "LAW", "KNOW", "ACT", "PROVE", "CONNECT",
         "VERIFY", "LEARN", "EVOLVE"]
+
+
+def test_gate_all_emits_hash_bound_audit_receipt(kernel, demo_stages):
+    """The module docstring's promise: every gate_all() call emits a
+    hash-bound receipt — an AUDIT receipt, distinct from a decision."""
+    out = kernel.gate_all({"decision_id": "demo-001", "gates": demo_stages})
+    receipt = out["audit_receipt"]
+    assert receipt["receipt_id"] == "audit-demo-001"
+    assert receipt["mode"] == "AUDIT"
+    assert receipt["verdict"] == "PASS"  # demo chain passes all nine
+    assert receipt["candidate_banner"] == "CANDIDATE — NOT RATIFIED — NOT MERGED"
+    check = verify_decision_receipt(receipt)
+    assert check["result"] == "MATCH"
+
+
+def test_gate_all_reports_unexpected_gate_keys(kernel, demo_stages):
+    """gate_all() is fail-visible on stray keys, like decide(): the tick-25
+    'harmFlag' typo class surfaces in the audit output AND the receipt,
+    never consulted by any gate."""
+    stages = dict(demo_stages)
+    stages["harmFlag"] = {"typo": True}  # not a node name
+    out = kernel.gate_all({"gates": stages})
+    assert out["unexpected_gate_keys"] == ["harmFlag"]
+    assert out["audit_receipt"]["unexpected_gate_keys"] == ["harmFlag"]
+    assert verify_decision_receipt(out["audit_receipt"])["result"] == "MATCH"
+
+
+def test_cold_reconstruct_separates_audit_receipts(kernel, demo_stages):
+    """An AUDIT receipt's verdict is not a decision verdict: it is verified
+    and listed separately, never counted in the decision tally."""
+    decided = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
+    audited = kernel.gate_all({"decision_id": "demo-001", "gates": demo_stages})
+    recon = kernel.cold_reconstruct(
+        [decided["decision_receipt"], audited["audit_receipt"]])
+    assert recon["receipts_checked"] == 2
+    assert recon["hash_matched"] == ["decision-demo-001"]
+    assert recon["audit_receipts_verified"] == ["audit-demo-001"]
+    assert recon["audit_receipts_mismatched"] == []
+    assert recon["verdicts"] == {"PASS": 1}  # audit verdict not counted

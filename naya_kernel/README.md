@@ -27,7 +27,8 @@ full audit visibility.
 - `kernel.py` — `Kernel.decide()` (GAP-A closure: all nine gates traversed
   on the canonical 13-edge runtime graph, per-edge fail-fast/fail-closed;
   order, first non-PASS short-circuits, hash-bound decision receipt) and
-  `Kernel.gate_all()` (every gate, no short-circuit).
+  `Kernel.gate_all()` (every gate, no short-circuit; emits a hash-bound
+  AUDIT receipt — verifiable, but never counted as a decision verdict).
 - `manifest.json` — nine-node manifest: per-node implementation status,
   the 13-edge runtime graph topology, the Ultimate Lock reconciliation
   record, and the ratified V2.1 calculus binding; all versions

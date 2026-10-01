@@ -44,9 +44,11 @@ Verdict law: UNKNOWN, BLOCKED, and IMPLEMENTED never count as PASS — any
 gate that cannot reach PASS on the evidence in `state` must return
 FAIL or NEED_EVIDENCE and name its reasons.
 
-Every decide()/gate_all() call emits a hash-bound decision receipt
+Every decide()/gate_all() call emits a hash-bound receipt
 (receipt_hash = SHA256 over the canonicalized body), so a cold successor
-can re-verify what the graph decided and why.
+can re-verify what the graph decided and why. decide() emits a decision
+receipt; gate_all() emits an AUDIT receipt (``audit-`` prefix, mode AUDIT)
+that is verified but never counted as a decision verdict.
 """
 
 from __future__ import annotations
@@ -288,6 +290,40 @@ class Kernel:
         body["receipt_hash"] = _sha256(body)
         return body
 
+    def _audit_receipt(self, decision_id: str, gates: List[Dict[str, Any]],
+                       verdict: GateVerdict,
+                       unexpected_gate_keys: List[str] | None = None
+                       ) -> Dict[str, Any]:
+        """Hash-bound audit receipt for gate_all().
+
+        Distinguished from decide()'s decision receipts by ``mode: "AUDIT"``
+        and the ``audit-`` receipt_id prefix: the audit verdict aggregates an
+        all-gates-consulted view (no fail-fast, no edge blocking) and must
+        never be counted as a decision verdict — see cold_reconstruct().
+        ``unexpected_gate_keys`` names any ``state["gates"]`` keys that are
+        not node names: recorded here, never consulted by any gate, never
+        steering the audit. Evidence-law honesty: a dropped input must be
+        visible, not silent.
+        """
+        body: Dict[str, Any] = {
+            "receipt_id": f"audit-{decision_id}",
+            "node_id": NODE_ID,
+            "kernel_version": KERNEL_VERSION,
+            "mode": "AUDIT",
+            "topology": "canonical-runtime-graph-v1",
+            "graph_seed": GRAPH_SEED_REF,
+            "lock_ref": LOCK_REF,
+            "decision_id": decision_id,
+            "evaluation_order": list(EVALUATION_ORDER),
+            "verdict": verdict.value,
+            "gates": gates,
+            "unexpected_gate_keys": list(unexpected_gate_keys or []),
+            "issued_at": _now_iso(),
+            "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
+        }
+        body["receipt_hash"] = _sha256(body)
+        return body
+
     def decide(self, state: Dict[str, Any]) -> Dict[str, Any]:
         """Traverse the runtime graph; per-edge fail-fast, fail-closed.
 
@@ -360,12 +396,33 @@ class Kernel:
             "decision_receipt": receipt,
         }
 
-    def gate_all(self, state: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Evaluate every gate without edge blocking; full audit visibility."""
+    def gate_all(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """Evaluate every gate without edge blocking; full audit visibility.
+
+        Unlike decide() there is no fail-fast and no edge blocking: every
+        gate is consulted on its own sub-state. Returns the per-gate
+        results, any unexpected gate keys (fail-visible: recorded here,
+        never consulted, never steering), the audit verdict (first non-PASS
+        in evaluation order, mirroring decide()'s naming rule — marked
+        AUDIT, not a decision), and a hash-bound AUDIT receipt (verifiable
+        with verify_decision_receipt(); kept out of cold_reconstruct()'s
+        decision-verdict tallies by the ``audit-`` receipt_id prefix).
+        """
+        state = state or {}
+        decision_id = state.get("decision_id") or f"d-{_sha256(state)[:12]}"
         sub_states = _gate_states(state)
+        # Fail-visible (not fail-silent): caller-supplied gate keys that are
+        # not node names are recorded in the receipt. They were NOT consulted
+        # by any gate and never steered the audit.
+        unexpected_gate_keys = sorted(
+            k for k in sub_states if k not in EVALUATION_ORDER)
         out: List[Dict[str, Any]] = []
+        verdict = GateVerdict.PASS
         for position, name in enumerate(EVALUATION_ORDER, start=1):
             result = self._run_gate(name, sub_states.get(name))
+            if result.verdict != GateVerdict.PASS \
+                    and verdict == GateVerdict.PASS:
+                verdict = result.verdict
             out.append({
                 "node": name,
                 "position": position,
@@ -374,7 +431,15 @@ class Kernel:
                 "reasons": list(result.reasons),
                 "blocked_by": [],
             })
-        return out
+        receipt = self._audit_receipt(
+            decision_id, out, verdict, unexpected_gate_keys)
+        return {
+            "decision_id": decision_id,
+            "verdict": verdict.value,
+            "gates": out,
+            "unexpected_gate_keys": unexpected_gate_keys,
+            "audit_receipt": receipt,
+        }
 
     # -- cold reconstruction -------------------------------------------
 
@@ -383,22 +448,34 @@ class Kernel:
 
         Verifies each decision receipt's hash, counts verdicts, and reports
         any receipt that fails verification (never trusted, always listed).
+        gate_all() AUDIT receipts (``audit-`` receipt_id prefix) are hash-
+        verified and reported separately — an audit verdict aggregates an
+        all-gates-consulted view, not a decision, so it must never feed the
+        decision-verdict tallies.
         """
         matched, mismatched = [], []
+        audit_matched, audit_mismatched = [], []
         verdicts: Dict[str, int] = {}
         for receipt in receipts or []:
             check = verify_decision_receipt(receipt)
+            rid = check["receipt_id"]
+            is_audit = str(rid).startswith("audit-")
             if check["result"] == "MATCH":
-                matched.append(check["receipt_id"])
-                verdict = receipt.get("verdict", "UNKNOWN")
-                verdicts[verdict] = verdicts.get(verdict, 0) + 1
+                if is_audit:
+                    audit_matched.append(rid)
+                else:
+                    matched.append(rid)
+                    verdict = receipt.get("verdict", "UNKNOWN")
+                    verdicts[verdict] = verdicts.get(verdict, 0) + 1
             else:
                 # Mismatched receipts are listed, never trusted: their
                 # verdict field is unauthenticated and must not feed counts.
-                mismatched.append(check["receipt_id"])
+                (audit_mismatched if is_audit else mismatched).append(rid)
         return {
             "receipts_checked": len(receipts or []),
             "hash_matched": matched,
             "hash_mismatched": mismatched,
+            "audit_receipts_verified": audit_matched,
+            "audit_receipts_mismatched": audit_mismatched,
             "verdicts": verdicts,
         }
