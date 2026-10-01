@@ -99,7 +99,7 @@
   margin-top: auto;
   padding: 12px 8px 2px;
   color: var(--muted);
-  font-size: 9px; letter-spacing: .12em; line-height: 1.7;
+  font-size: var(--fs-meta); letter-spacing: .04em; line-height: 1.55;
   border-top: 1px solid var(--line-soft);
 }
 
@@ -115,7 +115,7 @@
 }
 
 .jewel-search {
-  flex: 1; max-width: 560px;
+  flex: 1; max-width: none; min-height: 58px;
   display: flex; align-items: center; gap: 10px;
   background: linear-gradient(145deg, #14101bee, #0b0a10ee);
   border: 1px solid var(--line);
@@ -131,7 +131,7 @@
 .jewel-search svg { width: 16px; height: 16px; color: var(--muted); flex: none; }
 .jewel-search input {
   flex: 1; background: none; border: none; outline: none;
-  color: var(--ink); font-size: 13px;
+  color: var(--ink); font-size: var(--fs-control);
 }
 .jewel-search input::placeholder { color: var(--muted); }
 
@@ -143,7 +143,7 @@
   border-radius: var(--radius-pill);
   background: linear-gradient(145deg, #14101b, #0b0a10);
   box-shadow: var(--depth-hi), 0 8px 20px #0009;
-  font-size: 11.5px; font-weight: 700;
+  font-size: var(--fs-meta); font-weight: 700;
 }
 .identity-chip .avatar {
   width: 28px; height: 28px; border-radius: 50%;
@@ -164,7 +164,7 @@
 .room-head { margin-bottom: 22px; }
 .kicker {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: var(--fs-micro); font-weight: 800; letter-spacing: .24em;
+  font-size: var(--fs-meta); font-weight: 800; letter-spacing: .18em;
   color: var(--room-accent, var(--magenta));
   margin-bottom: 8px;
 }
