@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "a33b33d7d541875a9cbaef6bd7db4c18d2f2145b",
-  "inventory_file_count": 163,
+  "receipt_basis_commit": "fe140669410701b24368b33e625e10bbee893806",
+  "inventory_file_count": 164,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -11,7 +11,7 @@
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 20,
     "06-PROOF": 10,
-    "07-LEARNING": 2,
+    "07-LEARNING": 3,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,
@@ -552,6 +552,11 @@
       "path": "BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md",
       "blob_sha": "7380da90eb74aa2420a62a090dddb39316fd7439",
       "size": 2052
+    },
+    {
+      "path": "BRAIN/07-LEARNING/0002-ABC-COMPOUNDING-PROOF-DESIGN-V1.json",
+      "blob_sha": "999f0327484f8b789b0659a76cbedbe177a6dd22",
+      "size": 10998
     },
     {
       "path": "BRAIN/07-LEARNING/README.md",

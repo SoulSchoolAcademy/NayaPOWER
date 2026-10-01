@@ -120,7 +120,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 20,  # includes the nine-node Smart Note build manifest added in this lock preparation
     "06-PROOF": 10,
-    "07-LEARNING": 2,
+    "07-LEARNING": 3,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,

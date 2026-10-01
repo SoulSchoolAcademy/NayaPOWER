@@ -6,6 +6,7 @@ receipts proves compounding.
 """
 import copy
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -198,10 +199,16 @@ def test_validator_cli_reports_refused_exit_code():
 
 
 def test_design_pins_exact_main_sha(design):
-    r = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True,
-                       text=True, cwd=str(ROOT))
-    assert r.returncode == 0
-    assert design["as_of"] == r.stdout.strip()
+    # The design must pin the EXACT main SHA it was authored against: 40 hex
+    # chars, not an abbreviation. It is intentionally NOT compared to current
+    # HEAD — on a PR branch HEAD is the branch head while the pin predates the
+    # branch commit by construction, so an equality check can never pass there
+    # (it only passed pre-commit when HEAD was still the base). Resolvability
+    # via git is not asserted either: CI checks out a shallow clone, so the
+    # pinned commit may not be present locally.
+    sha = design["as_of"]
+    assert isinstance(sha, str) and re.fullmatch(r"[0-9a-f]{40}", sha), \
+        f"as_of must pin the exact 40-char main SHA, got {sha!r}"
 
 
 def test_graph_contract_v2_vocab_alignment(design):
