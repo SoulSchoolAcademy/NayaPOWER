@@ -577,3 +577,84 @@ def test_decide_with_no_state_is_fail_closed(kernel):
     assert out["verdict"] in ("FAIL", "NEED_EVIDENCE")
     assert out["stopped_at"] == "SELF"
     assert verify_decision_receipt(out["decision_receipt"])["result"] == "MATCH"
+
+
+# ------------------------------------------------- harden: routing edge cases (tick 22)
+
+
+def test_fail_after_earlier_need_evidence_keeps_first_non_pass_verdict(
+        kernel, demo_stages):
+    """Verdict-semantics edge: PROVE returns NEED_EVIDENCE (position 5), then
+    CONNECT FAILs (position 6). The decision verdict and stopped_at name the
+    FIRST non-PASS (PROVE / NEED_EVIDENCE); the FAIL still halts the whole
+    decision globally (halted_on_fail True). Pinned as the current approved
+    semantics — whether a FAIL should dominate the verdict is an OPEN design
+    question for the director; nothing changed here."""
+    kernel.nodes["PROVE"].gate = lambda _s: GateResult(
+        GateVerdict.NEED_EVIDENCE, ["demo forced: claim unproven"])
+    kernel.nodes["CONNECT"].gate = lambda _s: GateResult(
+        GateVerdict.FAIL, ["demo forced: boundary breach"])
+    out = kernel.decide({"gates": demo_stages})
+    by_node = {g["node"]: g for g in out["gates"]}
+    assert by_node["PROVE"]["verdict"] == "NEED_EVIDENCE"
+    assert by_node["CONNECT"]["evaluated"] is True
+    assert by_node["CONNECT"]["verdict"] == "FAIL"
+    # the FAIL halted the pass: later nodes never evaluated
+    assert [g["node"] for g in out["gates"]] == [
+        "SELF", "LAW", "KNOW", "ACT", "PROVE", "CONNECT"]
+    assert out["verdict"] == "NEED_EVIDENCE"
+    assert out["stopped_at"] == "PROVE"
+    assert out["halted_on_fail"] is True
+    receipt = out["decision_receipt"]
+    assert verify_decision_receipt(receipt)["result"] == "MATCH"
+
+
+def test_decision_id_deterministic_when_omitted(kernel, demo_stages):
+    """decision_id derives from the state hash when the caller omits it —
+    two identical passes produce the identical id (replay-detectable)."""
+    out1 = kernel.decide({"gates": copy.deepcopy(demo_stages)})
+    out2 = kernel.decide({"gates": copy.deepcopy(demo_stages)})
+    assert out1["decision_id"] == out2["decision_id"]
+    assert out1["decision_id"].startswith("d-")
+    assert out1["verdict"] == out2["verdict"] == "PASS"
+    assert verify_decision_receipt(out1["decision_receipt"])["result"] == "MATCH"
+
+
+def test_know_gate_consulted_exactly_once_per_pass(kernel, demo_stages):
+    """ACT→KNOW is the PRODUCES write edge: KNOW's gate runs exactly once
+    per pass — the write edge must not trigger a second consultation of
+    KNOW's gate in the same pass."""
+    calls = []
+    orig = kernel.nodes["KNOW"].gate
+
+    def counting(sub_state):
+        calls.append(1)
+        return orig(sub_state)
+
+    kernel.nodes["KNOW"].gate = counting
+    out = kernel.decide({"gates": demo_stages})
+    assert len(calls) == 1, calls
+    trace = {e["relationship_id"]: e for e in out["edge_trace"]}
+    assert trace["REL-KERNEL-ACT-KNOW"]["status"] == "SATISFIED_WRITE_PATH"
+
+
+def test_need_evidence_blocks_downstream_without_halting(kernel, demo_stages):
+    """NEED_EVIDENCE is not a FAIL: PROVE's hold does not halt the decision
+    (halted_on_fail False). The edge trace is source-centric by design: the
+    KNOW->PROVE edge is SATISFIED (KNOW PASSed its handoff; PROVE's gate was
+    consulted and returned NEED_EVIDENCE itself), while the downstream
+    PROVE->VERIFY edge is BLOCKED (PROVE did not PASS its handoff)."""
+    kernel.nodes["PROVE"].gate = lambda _s: GateResult(
+        GateVerdict.NEED_EVIDENCE, ["demo forced: claim unproven"])
+    out = kernel.decide({"gates": demo_stages})
+    assert out["verdict"] == "NEED_EVIDENCE"
+    assert out["halted_on_fail"] is False
+    by_node = {g["node"]: g for g in out["gates"]}
+    assert by_node["PROVE"]["evaluated"] is True
+    assert by_node["PROVE"]["verdict"] == "NEED_EVIDENCE"
+    trace = {e["relationship_id"]: e for e in out["edge_trace"]}
+    assert trace["REL-KERNEL-SELF-KNOW"]["status"] == "SATISFIED"
+    assert trace["REL-KERNEL-KNOW-PROVE"]["status"] == "SATISFIED"
+    assert trace["REL-KERNEL-PROVE-VERIFY"]["status"] == "BLOCKED"
+    assert verify_decision_receipt(
+        out["decision_receipt"])["result"] == "MATCH"
