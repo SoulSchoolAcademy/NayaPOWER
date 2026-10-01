@@ -70,7 +70,7 @@ def _act_state(receipt, tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_staging_write_declared_in_canonical_smart_door_registry():
-    raw = json.loads(REGISTRY_PATH.read_text())
+    raw = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
     assert raw["source_of_truth"] == \
         "BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json"
     door = next(d for d in raw["doors"] if d["door_id"] == DOOR_ID)

@@ -27,7 +27,7 @@ def test_write_changes_metadata_not_status(monkeypatch, tmp_path):
     ledger.write_text(json.dumps({"pending":[{"version":"1","path":"m.sql","sha256":"bad","bytes":0,"statement_count":0,"status":"PENDING_REVIEW_NOT_PRODUCTION_APPLIED"}]}), encoding="utf-8")
     monkeypatch.setattr(mod, "ROOT", tmp_path); monkeypatch.setattr(mod, "LEDGER", ledger)
     assert mod.reconcile(True) == 0
-    out=json.loads(ledger.read_text())
+    out=json.loads(ledger.read_text(encoding="utf-8"))
     assert out["pending"][0]["status"] == "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     assert out["pending"][0]["statement_count"] == 1
 

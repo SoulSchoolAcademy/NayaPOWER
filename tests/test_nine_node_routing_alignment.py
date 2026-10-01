@@ -31,7 +31,7 @@ EXPECTED_ROUTES = [
 
 
 def load(path):
-    return json.loads((ROOT / path).read_text())
+    return json.loads((ROOT / path).read_text(encoding="utf-8"))
 
 
 def test_organism_declares_exact_minimum_runtime_routes():

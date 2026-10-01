@@ -53,7 +53,7 @@ def test_p3_plan_document_exists():
     """The L2 evidence plan is a preserved artifact."""
     plan = Path(__file__).resolve().parents[2] / "evidence" / "demo1" / "L2-EVIDENCE-PLAN.md"
     assert plan.is_file(), "L2 evidence plan must be preserved"
-    text = plan.read_text()
+    text = plan.read_text(encoding="utf-8")
     assert "G2" in text and "oracle" in text
     assert "DATA_FLOOR_OBSERVATIONS" in text or "5" in text
     assert "Coda 2" in text  # coordination specified

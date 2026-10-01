@@ -138,7 +138,7 @@ class TestStagingRootContainment:
         res = ex("staging.write_file",
                  {"filename": FILENAME, "content": CONTENT})
         assert res["status"] == "ok", res
-        assert (tmp_path / "demo-staging" / FILENAME).read_text() == CONTENT
+        assert (tmp_path / "demo-staging" / FILENAME).read_text(encoding="utf-8") == CONTENT
 
 
 # ---------------------------------------------------------------------------
@@ -148,7 +148,7 @@ class TestStagingRootContainment:
 class TestDeclarationBindsRuntime:
     def _tight_registry(self, tmp_path, **param_overrides):
         reg = json.loads((REPO_ROOT / "BRAIN/10-INTERFACES"
-                          / "0002-SMART-DOOR-REGISTRY-V1.json").read_text())
+                          / "0002-SMART-DOOR-REGISTRY-V1.json").read_text(encoding="utf-8"))
         for door in reg["doors"]:
             if door["door_id"] == "DOOR-LOCAL-STAGING":
                 for op in door["operations"]:
@@ -174,7 +174,7 @@ class TestDeclarationBindsRuntime:
 
     def test_incompatible_declaration_fails_closed(self, tmp_path):
         reg = json.loads((REPO_ROOT / "BRAIN/10-INTERFACES"
-                          / "0002-SMART-DOOR-REGISTRY-V1.json").read_text())
+                          / "0002-SMART-DOOR-REGISTRY-V1.json").read_text(encoding="utf-8"))
         for door in reg["doors"]:
             if door["door_id"] == "DOOR-LOCAL-STAGING":
                 for op in door["operations"]:
@@ -229,7 +229,7 @@ class TestConcurrentWrites:
         statuses = sorted(r["status"] for r in results.values())
         assert statuses == ["error", "ok"], (
             "expected exactly one winner and one refusal, got %r" % (results,))
-        on_disk = (tmp_path / "demo-staging" / FILENAME).read_text()
+        on_disk = (tmp_path / "demo-staging" / FILENAME).read_text(encoding="utf-8")
         winner = "a" if results["a"]["status"] == "ok" else "b"
         assert on_disk == ("content-from-A\n" if winner == "a"
                            else "content-from-B\n"), (
