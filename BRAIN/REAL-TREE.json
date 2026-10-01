@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "79b294965e6efb62d6f46ddb5767b5ff4d182d9e",
+  "receipt_basis_commit": "c32720865986000ecded5830f1ddd4dd754f2d08",
   "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
@@ -310,8 +310,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json",
-      "blob_sha": "d26e2e27c8b1c3d3d555f7965d84cc504cef5b7a",
-      "size": 3686
+      "blob_sha": "867c74c4c7d9f7f10c5963717a5ee02b1ecccf68",
+      "size": 4408
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json",
