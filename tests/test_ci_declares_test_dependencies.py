@@ -63,6 +63,12 @@ def _first_party_modules() -> set:
     names = {"tests"}
     # Test helper modules are first-party too; they must not be mistaken for PyPI distributions.
     names.update(p.stem for p in TESTS.glob("*.py"))
+    # tools/ holds first-party scripts the suite imports via sys.path (e.g.
+    # generate_organ_health_matrix). They are repo modules, not PyPI
+    # distributions; without this the guard cries wolf on every tools import.
+    _tools = REPO / "tools"
+    if _tools.is_dir():
+        names.update(p.stem for p in _tools.glob("*.py"))
     for entry in REPO.iterdir():
         if entry.is_dir() and (entry / "__init__.py").exists():
             names.add(entry.name)
