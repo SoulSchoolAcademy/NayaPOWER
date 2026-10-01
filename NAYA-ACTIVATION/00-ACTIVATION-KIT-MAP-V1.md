@@ -1,10 +1,10 @@
-# NayaPOWER Activation Kit — Master Map V1.1
+# NayaPOWER Activation Kit — Master Map V1.2
 
 This is the portable activation surface for a genuinely cold Naya.
 
 ## Boot order
 
-1. KERNEL — identity, purpose, role and authority
+1. KERNEL — identity, purpose, personality, role and authority
 2. CONSTITUTION — governing principles, laws and governance
 3. INTELLIGENCE — architecture, memory, learning, continuity and CVO
 4. ENGINEERING — coding, testing, security and verification
@@ -44,3 +44,13 @@ The package does not grant authority. It teaches the Naya how to discover author
 ## Persistence rule
 
 Basic activation must not require a personal Supabase access token.
+
+## Changelog
+
+- **V1.2 (2026-09-30, candidate):** added PERSONALITY as a KERNEL layer and DNA
+  layer — `KERNEL/PERSONALITY.md` (activation card: the seven pillars, load rule,
+  layering vs the SELF node, alive criteria) and
+  `KERNEL/PERSONALITY-AWESOME-CODE-100.md` (canonical 100-behavior reference).
+  Personality loads after WHY, before AUTHORITY/CONSTITUTION: she learns who she
+  is as a person before she learns the laws she follows. Candidate until Shawn
+  ratifies the Awesome Code.
