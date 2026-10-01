@@ -1,0 +1,183 @@
+{
+ "as_of": "507d34213333a38708912d343537985e619938ac",
+ "authority": "Issue #864 (Nine-Node Activation project structure); organism contract BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json defines the proof ladder rungs STRUCTURAL->SUCCESSOR per node.",
+ "evidence_law": "UNKNOWN != PASS. BLOCKED != PASS. IMPLEMENTED != VERIFIED. VERIFIED != PRODUCTION-PROVEN. A rung claim without the evidence its tier requires is a false claim and fails validation.",
+ "node_order": [
+  "SELF",
+  "LAW",
+  "ACT",
+  "KNOW",
+  "PROVE",
+  "CONNECT",
+  "VERIFY",
+  "LEARN",
+  "EVOLVE"
+ ],
+ "nodes": {
+  "SELF": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+     "BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/SELF/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named SELF unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-SELF"
+  },
+  "LAW": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/LAW/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named LAW unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-LAW"
+  },
+  "ACT": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/ACT/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named ACT unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-ACT"
+  },
+  "KNOW": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/KNOW/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named KNOW unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-KNOW"
+  },
+  "PROVE": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/PROVE/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named PROVE unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-PROVE"
+  },
+  "CONNECT": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/CONNECT/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named CONNECT unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-CONNECT"
+  },
+  "VERIFY": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/VERIFY/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named VERIFY unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-VERIFY"
+  },
+  "LEARN": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/LEARN/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named LEARN unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-LEARN"
+  },
+  "EVOLVE": {
+   "current_rung": "CONTRACT",
+   "evidence": {
+    "CONTRACT": [
+     "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md"
+    ],
+    "STRUCTURAL": [
+     "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+     "BRAIN/03-KERNEL/NODES/EVOLVE/"
+    ]
+   },
+   "missing_rung": "UNIT",
+   "next_proof": "Named EVOLVE unit battery passing on the exact pinned SHA with a receipt; until then the rung stays CONTRACT.",
+   "node_id": "NAYA-KERNEL-EVOLVE"
+  }
+ },
+ "not_claimed": [
+  "No node is claimed above CONTRACT on this pin: runtime, behavioral, production, and successor claims all require receipts that do not yet exist on main (see items dispatch, migrations-apply, know-hit-proof in the build list).",
+  "The other seat's naya_kernel runtime lane holds its own per-revision qualification; this tracker does not re-score that lane and never merges with it.",
+  "This file becoming CANONICAL requires human-director ratification (issue #864); validator rejects any other status."
+ ],
+ "proof_ladder": [
+  "STRUCTURAL",
+  "CONTRACT",
+  "UNIT",
+  "INTEGRATION",
+  "BEHAVIORAL",
+  "OUTCOME",
+  "PRODUCTION",
+  "SUCCESSOR"
+ ],
+ "purpose": "Make per-node proof-ladder rung state visible and machine-checkable (not tribal). This file is the repository-side rung tracker feeding the #864 GitHub Project's Evidence State field. It records ONLY rungs justified by named evidence on the pinned commit. Missing evidence -> the rung stays where the evidence stops, never where the ambition goes.",
+ "rung_evidence_tiers": {
+  "BEHAVIORAL": "exact-revision runtime proof: named workflow run id on the exact pinned commit SHA demonstrating the node's governed behavior; INTEGRATION evidence retained",
+  "CONTRACT": "organism contract binds the node role + per-node contract accepted; STRUCTURAL evidence retained",
+  "INTEGRATION": "named multi-node handoff/chain tests pass on the exact pinned SHA with receipt; UNIT evidence retained",
+  "OUTCOME": "observed outcome receipts in nayanet_execution_receipts (or named canonical receipt table) attributable to this node; BEHAVIORAL evidence retained",
+  "PRODUCTION": "governed production promotion dispatch receipt on the exact SHA (human dispatch) + post-deploy migration-application verification; OUTCOME evidence retained",
+  "STRUCTURAL": "node identity + dedicated home directory + at least one contract artifact present in the pinned tree",
+  "SUCCESSOR": "cold successor handoff verification receipt: a fresh seat restores and acts from this node's persisted state without replayed context; PRODUCTION evidence retained",
+  "UNIT": "named unit tests under tests/ pass on the EXACT pinned SHA with no exclusions (or a named pytest battery on the exact bytes), receipts named"
+ },
+ "schema": "naya.nine-node-activation-ladder.v1",
+ "status": "PROPOSED_CANONICAL",
+ "update_policy": "Bump as_of to the exact SHA being rated; re-rate every node against the rung_evidence_tiers; run tools/validate_nine_node_activation_ladder.py; a promotion without new named evidence is rejected."
+}
