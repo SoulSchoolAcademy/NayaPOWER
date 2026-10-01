@@ -12,29 +12,40 @@ A room is complete only when all three are true:
 
 A room is not complete because its shell renders.
 
-## 2. The room anatomy
+## 2. The five-layer room law
 
 Do not force every room into the same layout. Reuse components, not compositions.
 
-Every room should contain some equivalent of:
+Every room MUST express the Human Director's five semantic layers:
 
-### A. Arrival / scene
-Room identity, current context, essential state and one-line human promise.
+### 1. ORIENTATION — Where am I?
+Room identity, current context, Space, essential truth state and one-line human promise.
 
-### B. Signature instrument
-The unique reason this room exists — live stream, highlight reel, report reader, semantic vault, portal map, receipt chain, relationship constellation, list canvas, message center, space world, or control deck.
+### 2. CURRENT STATE — What is happening here right now?
+Real numbers, states, intelligence, relationships or events appropriate to this room. No decorative metrics.
 
-### C. Progressive detail
-The human can open deeper information without drowning the initial view.
+### 3. INTELLIGENCE — What does Naya understand?
+Interpretation, synthesis, relevance, relationships, gaps and uncertainty — not merely raw records.
 
-### D. Action cluster
-A small number of primary actions, context-aware secondary actions, and honest disabled/blocked states.
+### 4. ACTION — What can I actually do?
+A small number of real primary actions, context-aware secondary actions and honest disabled/blocked states.
 
-### E. Naya intelligence layer
-Naya explains significance, answers questions, suggests next moves and exposes uncertainty without taking over the room.
+### 5. PROOF — Why should I trust it?
+Source, timestamp, provenance, status, evidence, consent/authority and receipts where relevant.
 
-### F. Trust layer
-Source, provenance, authority, consent, verification and receipts where relevant.
+### Visual translation
+
+A room MAY express these layers through a common visual grammar:
+
+**HERO → INTELLIGENCE WALL → ACTION DECK → EVIDENCE LAYER → NAYA LAYER**
+
+but the composition must remain room-specific.
+
+### Signature instrument
+
+Each room also has one unique primary instrument — live stream, highlight reel, report/time machine, semantic vault, portal bay, receipt chain, relationship constellation, mission table, signal console, context world or control deck.
+
+The signature instrument is the reason the room exists.
 
 ## 3. Universal control rules
 
