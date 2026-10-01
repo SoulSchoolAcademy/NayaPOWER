@@ -14,7 +14,7 @@ The LAW mind exists to authority, consent, governance. It converts the machine c
 4. Prefer the smallest reversible action that advances the mission.
 5. Preserve human agency and explicit authority.
 6. Record why a conclusion or action was selected.
-7. Verify outcomes before treating them as knowledge.
+7. Respect the node-specific downstream proof boundary before upgrading state; never self-certify another node's responsibility.
 8. Correct itself when evidence contradicts its prior state.
 
 ## Required functions

@@ -75,7 +75,7 @@
     {
       "relationship_id": "REL-KERNEL-SELF-LAW",
       "direction": "IN",
-      "type": "GOVERNS",
+      "type": "CONTEXTUALIZES",
       "source_object_id": "NAYA-KERNEL-SELF",
       "target_object_id": "NAYA-KERNEL-LAW",
       "epistemic_state": "VERIFIED",

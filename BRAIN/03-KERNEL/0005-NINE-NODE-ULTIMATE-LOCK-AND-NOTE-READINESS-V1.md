@@ -85,7 +85,7 @@ The overnight reconciliation repairs the previously reversed `REL-KERNEL-KNOW-PR
 ## Relationship seed intent
 
 Use the existing relationship vocabulary and graph. At minimum, preserve:
-`SELF ENABLES/GOVERNS-context LAW`
+`SELF CONTEXTUALIZES LAW`
 `LAW GOVERNS ACT`
 `ACT PRODUCES VERIFY-observable execution`
 `KNOW ENABLES PROVE`

@@ -9,10 +9,12 @@
       "relationship_id": "REL-KERNEL-SELF-LAW",
       "source_id": "NAYA-KERNEL-SELF",
       "target_id": "NAYA-KERNEL-LAW",
-      "type": "GOVERNS",
+      "type": "CONTEXTUALIZES",
       "status": "ACTIVE",
       "provenance": [
-        "BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md"
+        "NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md",
+        "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md"
       ],
       "epistemic_state": "VERIFIED"
     },
@@ -44,10 +46,11 @@
       "relationship_id": "REL-KERNEL-ACT-KNOW",
       "source_id": "NAYA-KERNEL-ACT",
       "target_id": "NAYA-KERNEL-KNOW",
-      "type": "USED_BY",
+      "type": "PRODUCES",
       "status": "ACTIVE",
       "provenance": [
-        "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md"
+        "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md"
       ],
       "epistemic_state": "SUPPORTED"
     },
