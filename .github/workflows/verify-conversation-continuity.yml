@@ -1,0 +1,30 @@
+﻿name: Verify Conversation Continuity Contract
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  continuity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Every runtime-read path must be tracked
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=.naya/memory/projects/CURRENT-DAILY-PROJECT.json
+          if ! git cat-file -e "HEAD:$p" 2>/dev/null; then
+            echo "RUNTIME_READS_UNTRACKED_PATH:$p"; exit 1
+          fi
+          echo "RUNTIME_PATHS_TRACKED"
+      - name: Conversation continuity contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/runtime/test_conversation_continuity.py

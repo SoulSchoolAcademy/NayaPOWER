@@ -1,0 +1,64 @@
+﻿name: Set the Ball for the Next Naya
+
+# The highest-return Naya action is not doing the work; it is setting the next
+# Naya up so she wins. That discipline fails when it lives only in conversation,
+# so it is enforced as code.
+#
+# This gate proves the setter exists, runs, and degrades honestly: it must never
+# invent a frontier, and when the control plane is unreadable it must say so and
+# still emit exactly ONE action.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  setter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Setter must run and emit exactly one action
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B .naya/runtime/next_naya_setter.py > ball.json
+          python - <<'PY'
+          import json
+          b = json.load(open("ball.json", encoding="utf-8"))
+          assert b["schema"] == "naya/next-naya-setter/v1", b["schema"]
+          # EXACTLY ONE action. A list is a failure of the setter.
+          assert isinstance(b["one_next_action"], str) and b["one_next_action"].strip()
+          assert isinstance(b["success_criterion"], str) and b["success_criterion"].strip()
+          assert b["readiness"]["ready"] is False, "ready must not be claimed casually"
+          assert b["law"].startswith("One action")
+          print("ONE_ACTION_OK:", b["one_next_action"][:90])
+          print("READINESS:", b["readiness"]["proven"], "BLOCKING:", len(b["readiness"]["blocking"]))
+          PY
+      - name: Setter must detect a stale frontier, not pass it along
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp=$(mktemp -d)
+          cp -r .naya "$tmp/.naya"; cp -r .github "$tmp/.github"
+          cp -r supabase "$tmp/supabase" 2>/dev/null || true
+          cp -r NAYANET "$tmp/NAYANET" 2>/dev/null || true
+          cp -r tests "$tmp/tests" 2>/dev/null || true
+          # Present a completed Hub front-door action as the canonical frontier.
+          cat > "$tmp/.naya/control-plane/STATE.json" <<'JSON'
+          {"single_next_action":"Give a new human a working front door on the canonical Hub: expose a minimal sign-in surface","next_actions":["x"],"next_action_count":1}
+          JSON
+          out=$(python -B "$tmp/.naya/runtime/next_naya_setter.py" 2>&1)
+          echo "$out" | python -c "import json,sys; b=json.load(sys.stdin); print('STALE_DETECTED=', b['action_staleness']['stale'])"
+          echo "$out" | grep -q '"stale": true'
+          echo "ADVERSARIAL_STALE_FRONTIER_DETECTION_PROVEN"
+      - name: Emit the ball
+        if: always()
+        shell: bash
+        run: |
+          python -B .naya/runtime/next_naya_setter.py --emit || true
+          cat .naya/control-plane/NEXT-NAYA-SETTER-BALL.md 2>/dev/null | head -40 || true

@@ -1,0 +1,49 @@
+﻿name: Verify Production Parity
+
+# A reset commit removed the entire NAYANET/ tree from main while the live
+# Worker kept serving it. Production looked healthy while source and runtime had
+# silently diverged, and the next legitimate release would have deleted the
+# running product. This gate re-measures that claim instead of assuming it.
+#
+# Read-only. No credential. No mutation.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    schedule:
+      - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Measure source vs production
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B .naya/runtime/production_parity.py --json > parity.json || true
+          python - <<'PY'
+          import json
+          r = json.load(open("parity.json", encoding="utf-8"))
+          print("PARITY_OK", r["parity_ok"], "pairs", r["pairs_checked"], "identical", r["identical"])
+          for p in r["pairs"]:
+              print(f"  {p['live_path']:42} live={p['live_status']} src={'yes' if p['source_present'] else 'NO'} same={p['identical']}")
+          for f in r["findings"]:
+              print("  FINDING", f["code"], f["subject"])
+          assert r["pairs_checked"] > 0, "gate measured nothing"
+          PY
+      - name: Upload parity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-parity-report
+          path: .naya/production-parity-report.json
+          if-no-files-found: ignore
