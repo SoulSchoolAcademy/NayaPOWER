@@ -13,6 +13,9 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Detailed room functionality
 
 - [ROOMS/README.md](./ROOMS/README.md) — human-first map of the 11 primary intelligent environments.
+- [ROOMS/CONSENSUS-PROTOCOL.md](./ROOMS/CONSENSUS-PROTOCOL.md) — Team Naya review / consensus / lock workflow.
+- [ROOMS/CONSENSUS-STATUS.md](./ROOMS/CONSENSUS-STATUS.md) — current room-by-room consensus state.
+- [ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md](./ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md) — preserved Human Director room source notes.
 - [ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md](./ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md) — shared functional/causal room law.
 - [ROOMS/ROOMS-MACHINE-V1.json](./ROOMS/ROOMS-MACHINE-V1.json) — deterministic room/action/handoff contract.
 - [ROOMS/ROOM-SPEC-SCORECARD.md](./ROOMS/ROOM-SPEC-SCORECARD.md) — specification maturity audit.
