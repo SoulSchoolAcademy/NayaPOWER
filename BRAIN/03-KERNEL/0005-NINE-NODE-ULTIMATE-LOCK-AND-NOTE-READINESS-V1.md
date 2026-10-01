@@ -1,7 +1,7 @@
 # Nine-Node Ultimate Lock & Smart Note Readiness V1
 
 **Status:** SOURCE-ALIGNED BUILD READINESS  
-**Baseline:** `507d34213333a38708912d343537985e619938ac`  
+**Reconciliation start basis:** `a33b33d7d541875a9cbaef6bd7db4c18d2f2145b`  
 **Semantic lock:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md`
 
 ## Objective
@@ -15,11 +15,11 @@ Prepare the Brain for nine Master Node Smart Notes without creating another memo
 | SELF | `NAYANODE/00-SELF-MASTER-CONTRACT-V1.md` + SELF Elite V2 | `BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md` | `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json` | 01/02/20-class continuity dependencies | READY WITH SELF V2 SOURCE |
 | LAW | `NAYANODE/00-LAW-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md` | `NAYA-KERNEL-LAW.json` | governance/authority | READY |
 | ACT | `NAYANODE/00-ACT-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md` | `NAYA-KERNEL-ACT.json` | action/execution | READY |
-| KNOW | `NAYANODE/00-KNOW-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md` | `NAYA-KERNEL-KNOW.json` | 05/06/15 | READY AFTER BOUNDARY NORMALIZATION |
+| KNOW | `NAYANODE/00-KNOW-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md` | `NAYA-KERNEL-KNOW.json` | 05/06/15 | READY — boundary normalized |
 | PROVE | `NAYANODE/00-PROVE-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md` | `NAYA-KERNEL-PROVE.json` | 07/10/16 | READY |
-| CONNECT | `NAYANODE/00-CONNECT-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` | `NAYA-KERNEL-CONNECT.json` | 08/09/21 | READY AFTER UNKNOWN-APPLICABILITY NORMALIZATION |
+| CONNECT | `NAYANODE/00-CONNECT-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` | `NAYA-KERNEL-CONNECT.json` | 08/09/21 | READY — UNKNOWN applicability is non-steering |
 | VERIFY | `NAYANODE/00-VERIFY-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md` | `NAYA-KERNEL-VERIFY.json` | 11/23/25 | READY; RUNTIME PROOF BOUNDED |
-| LEARN | `NAYANODE/00-LEARN-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md` | `NAYA-KERNEL-LEARN.json` | 17/18/22 | READY AFTER PROMOTION WORDING NORMALIZATION |
+| LEARN | `NAYANODE/00-LEARN-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md` | `NAYA-KERNEL-LEARN.json` | 17/18/22 | READY — candidate/promotion boundary normalized |
 | EVOLVE | `NAYANODE/00-EVOLVE-MASTER-CONTRACT-V1.md` | `BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md` | `NAYA-KERNEL-EVOLVE.json` | 19/20/24 | READY; CONTRACT/RUNTIME POINTERS RECONCILED IN THIS CHANGESET |
 
 ## Resolved semantic collisions for note construction
@@ -72,6 +72,15 @@ A note must preserve:
 9. proof maturity;
 10. current gaps;
 11. exact next proof rung.
+
+## Runtime-routing reconciliation
+
+The semantic/display order remains `SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF`, but executable node communication is not one mandatory linear call stack.
+
+The minimum runtime routes are:
+`SELF→LAW; SELF→KNOW; LAW→ACT; ACT→VERIFY; KNOW→PROVE; KNOW→CONNECT; PROVE→VERIFY; CONNECT→VERIFY; VERIFY→LEARN; LEARN→EVOLVE; EVOLVE→SELF`.
+
+The overnight reconciliation repairs the previously reversed `REL-KERNEL-KNOW-PROVE` seed direction and makes semantic-neighbor versus runtime-handoff semantics explicit in node objects and the organism contract.
 
 ## Relationship seed intent
 

@@ -1,5 +1,7 @@
 # AI-KNOW-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — KNOW semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** Naya cognitive operating contract — executable behavior specification.
 
 ## Purpose
@@ -48,3 +50,9 @@ Hand forward canonical state, evidence, unknowns, blockers, decisions, receipts,
 
 ## Acceptance
 A node qualifies only when its machine contract, implementation, tests, runtime receipts, and independent evidence agree. Behavior must be inspectable and replayable.
+
+
+## Ultimate-lock boundary
+- KNOW owns canonical intelligence-object identity, durable meaning, provenance, lifecycle/temporal state and reconstruction.
+- KNOW does **not** own final epistemic proof or task-level applicability. PROVE owns claim/evidence assessment; CONNECT owns task/context applicability.
+- Retrieval may emit candidate relationship/applicability metadata but MUST NOT silently promote it to steering context.

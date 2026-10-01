@@ -13,7 +13,7 @@
     "uncertainty": "KNOW V1 is implemented and repository-verified, but live deployment and bounded live behavioral proof remain pending."
   },
   "ai_view": {
-    "purpose": "Select owner-scoped canonical retained intelligence from bounded task context, preserve provenance and epistemic state, and hand it to PROVE without creating authority.",
+    "purpose": "Preserve/select owner-scoped canonical retained intelligence, lifecycle, meaning and provenance; hand evidence-bearing intelligence to PROVE and relationship/applicability candidates to CONNECT without creating truth or authority.",
     "inputs": [
       "governed runtime identity",
       "fresh bounded LAW context",
@@ -26,7 +26,8 @@
       "selected canonical block identity",
       "provenance/evidence",
       "epistemic state",
-      "PROVE handoff"
+      "PROVE handoff",
+      "CONNECT applicability/relationship candidate handoff"
     ],
     "failure_mode": "fail closed on missing/stale/malformed LAW context, invalid or revoked live authority, cross-owner/wrong-target/ineligible/superseded intelligence, missing provenance/evidence, caller-supplied answer/block identity, or unresolved applicability",
     "non_responsibility_law": "Do not silently absorb responsibilities owned by another Master Node."
@@ -43,7 +44,12 @@
     "runtime": "supabase/functions/nayanet-know-runtime/index.ts",
     "selector": "supabase/functions/nayanet-know-runtime/know.ts",
     "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
-    "decision_calculus_role": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence"
+    "decision_calculus_role": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence",
+    "neighbor_handoff_semantics": "semantic/display neighbor only; executable routing is runtime_handoffs and the inter-node wire contract",
+    "runtime_handoffs": [
+      "NAYA-KERNEL-PROVE",
+      "NAYA-KERNEL-CONNECT"
+    ]
   },
   "provenance": {
     "derived_from": [
@@ -74,6 +80,15 @@
   },
   "relationships": [
     {
+      "relationship_id": "REL-KERNEL-SELF-KNOW",
+      "direction": "IN",
+      "type": "CONTEXTUALIZES",
+      "source_object_id": "NAYA-KERNEL-SELF",
+      "target_object_id": "NAYA-KERNEL-KNOW",
+      "epistemic_state": "VERIFIED",
+      "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
+    },
+    {
       "relationship_id": "REL-KERNEL-ACT-KNOW",
       "direction": "IN",
       "type": "USED_BY",
@@ -84,10 +99,10 @@
     },
     {
       "relationship_id": "REL-KERNEL-KNOW-PROVE",
-      "direction": "IN",
+      "direction": "OUT",
       "type": "SUPPORTS",
-      "source_object_id": "NAYA-KERNEL-PROVE",
-      "target_object_id": "NAYA-KERNEL-KNOW",
+      "source_object_id": "NAYA-KERNEL-KNOW",
+      "target_object_id": "NAYA-KERNEL-PROVE",
       "epistemic_state": "SUPPORTED",
       "source_of_truth": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json"
     },

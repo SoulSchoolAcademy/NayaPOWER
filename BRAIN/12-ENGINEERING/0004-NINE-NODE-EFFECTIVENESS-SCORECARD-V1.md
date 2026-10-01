@@ -1,56 +1,99 @@
-# NayaPOWER Nine-Node Effectiveness Scorecard V1
+# NayaPOWER Nine-Node Effectiveness & Overnight Readiness Scorecard V1
 
-**Baseline:** `507d34213333a38708912d343537985e619938ac`  
+**Current reconciliation basis:** `a33b33d7d541875a9cbaef6bd7db4c18d2f2145b`  
 **Scoring target:** AAA = 9.5–10.0; 9.0–9.49 = strong but not accepted; below 9.0 = material gap.
 
-## Method
+## Two scores, never one
 
-Current effectiveness is not the beauty of the specification alone. It is the weighted combination:
+**Build readiness** asks: can Team Naya build/capture/implement the node tonight from unambiguous canonical contracts without inventing semantics?
+
+**Living effectiveness** asks: does the current source/runtime/evidence chain actually demonstrate the claimed behavior?
+
+Do not average these into a false production claim. A 10/10 design can coexist with an unproven runtime.
+
+## Living-effectiveness method
 
 `E = 0.30S + 0.20B + 0.20R + 0.20P + 0.10C`
 
-Where:
-- **S — Semantic quality:** purpose, ownership, invariants, state model.
-- **B — Boundary integrity:** clean separation from neighboring nodes; no second brain/authority/value/ledger path.
-- **R — Runtime binding:** actual current source/runtime seam and parity.
-- **P — Proof maturity:** live invocation, negative cases, independent verification and bounded production evidence.
-- **C — Continuity/integration:** typed handoffs, successor reconstruction and organism compatibility.
+- **S — Semantic quality**
+- **B — Boundary integrity**
+- **R — Runtime binding / exact-source parity**
+- **P — Proof maturity**
+- **C — Continuity / organism integration**
 
-The score is deliberately capped by runtime/proof gaps. A 10/10 document cannot make an unproven runtime 10/10.
+## Nine-node scorecard
 
-## Scorecard
+| Node | Build readiness | Living effectiveness | Overnight status | Exact next value frontier |
+|---|---:|---:|---|---|
+| SELF | **9.4** | **8.7** | BUILD-READY / proof bounded | Give SELF the same full Ultimate-Master treatment eventually; prove cold current-state restoration and influence |
+| LAW | **9.9** | **9.7** | **AAA bounded** | Preserve current gates while widening exact-current full-chain coverage |
+| ACT | **9.9** | **9.5** | **AAA bounded** | Exact-current idempotency/recovery across broader registered Doors |
+| KNOW | **9.8** | **8.6** | BUILD-READY / runtime parity gap | Deploy/prove current Graph V2 KNOW source; preserve KNOW≠PROVE≠CONNECT boundary |
+| PROVE | **9.8** | **9.3** | BUILD-READY / strong | Complete current PROVE→VERIFY influence and declared production scope |
+| CONNECT | **9.8** | **8.6** | BUILD-READY / runtime parity gap | Exact-current Graph V2 applicability steering, contradiction/supersession and unrelated refusal |
+| VERIFY | **9.8** | **9.0** | BUILD-READY / strong | Normalize canonical CVO axes and complete negative/NOT_PROVEN/causal battery |
+| LEARN | **9.8** | **8.7** | BUILD-READY / promotion gap | Resolve canonical VERIFY evidence at promotion; related transfer + unrelated refusal + regression |
+| EVOLVE | **9.8** | **8.8** | BUILD-READY / successor gap | Exact-current cold successor → A→B→C → bounded self-building with rollback |
 
-| Node | S | B | R | P | C | Current effectiveness | AAA status | Primary gap |
-|---|---:|---:|---:|---:|---:|---:|---|---|
-| SELF | 9.3 | 9.4 | 8.2 | 7.8 | 8.6 | **8.7** | NOT ACCEPTED | Full cold identity/current-state restoration and bounded behavioral influence need fresh proof |
-| LAW | 9.9 | 9.9 | 9.6 | 9.3 | 9.5 | **9.7** | AAA | Extend bounded proof across current full-chain/standing-authority cases without weakening gates |
-| ACT | 9.9 | 9.8 | 9.5 | 9.1 | 9.3 | **9.5** | AAA / lower edge | Exact-current concurrent idempotency, missing-outcome recovery and broader Door proof |
-| KNOW | 9.8 | 9.6 | 7.6 | 7.3 | 8.5 | **8.6** | NOT ACCEPTED | Current Graph V2/runtime parity + canonical Receiver behavioral proof |
-| PROVE | 9.8 | 9.7 | 9.3 | 8.7 | 8.9 | **9.3** | STRONG / NOT AAA | Full PROVE→CONNECT behavioral influence and complete declared production scope |
-| CONNECT | 9.8 | 9.7 | 7.5 | 7.4 | 8.4 | **8.6** | NOT ACCEPTED | Exact-current Graph V2 production parity and explicit applicability steering proof |
-| VERIFY | 9.8 | 9.7 | 8.5 | 8.4 | 8.8 | **9.0** | STRONG / NOT AAA | Canonical CVO normalization, mixed parity, complete negative/NOT_PROVEN/causal battery |
-| LEARN | 9.8 | 9.7 | 7.9 | 7.6 | 8.5 | **8.7** | NOT ACCEPTED | Promotion must resolve canonical VERIFY evidence; explicit applicability + transfer/regression proof |
-| EVOLVE | 9.9 | 9.8 | 7.7 | 7.6 | 8.8 | **8.8** | NOT ACCEPTED | Contract/runtime pointer reconciliation, exact-current cold successor, A→B→C and self-building proof |
+**Average build readiness: 9.78 / 10.**  
+**Equal-node living-effectiveness average: 8.99 / 10.**
 
-**Equal-node organism average: 8.99 / 10.00.**
+The nodes are ready to be **built/captured tonight**. They are not all ready to be called universally activated or production-proven.
 
-That is a strong architecture but not yet an AAA living organism. The limiting factor is not conceptual design. It is current runtime/evidence convergence.
+## Intelligent / Context Graph scorecard
 
-## Spec-quality view
+| Dimension | Score | Current truth |
+|---|---:|---|
+| Graph V2 semantic contract | **9.8** | RATIFIED; owner/scope/provenance/evidence/temporal/supersession/consent/applicability/authority boundaries defined |
+| Failure-first validators | **9.8** | V2 edge validation + UNKNOWN applicability refusal exist |
+| Selector/reconciliation logic | **9.7** | applicability/task-class, supersession, temporal and unresolved-conflict cases are machine tested |
+| Nine-node routing coherence | **9.7** | Overnight reconciliation makes semantic order distinct from runtime routing and repairs KNOW→PROVE direction |
+| Exact-current runtime/source parity | **7.5** | live KNOW/CONNECT Graph V2 source remains stale/pending relative to current source |
+| Live generalized behavioral influence | **7.4** | bounded historical graph influence exists; broad current behavior remains unproven |
+| Multi-generation / two-owner proof | **6.8** | A→B→C and two-owner consent→revoke remain explicit proof frontiers |
 
-The Human Director-approved Node 2–9 Ultimate specifications are all **9.7–9.9 design quality** after the semantic lock because they clearly define ownership, non-ownership, machine states, hard invariants, proof boundaries, negative cases, successor continuity and one-organism rules. Node 1 remains strong but should eventually receive the same full Ultimate Master treatment for symmetry.
+**Graph source/build readiness: ~9.7 / 10.**  
+**Living Intelligent/Context Graph: ~8.6 / 10.**
 
-## Highest-value closure order
+The graph's main weakness is not relationship semantics. It is **exact-current deployed influence plus generalized causal/continuity evidence**.
 
-1. **KNOW + CONNECT parity/applicability** — restores the cognition substrate actually used by downstream proof.
-2. **VERIFY canonical CVO/state normalization** — prevents outcome/acceptance/causal-state drift.
-3. **LEARN promotion gate** — closes the dangerous caller-supplied evidence-reference promotion seam.
-4. **EVOLVE exact-current successor path** — closes continuity and return-to-SELF.
-5. **A→B→C compounding** — proves learning persists across generations without authority inheritance.
-6. **Bounded self-building** — only after the preceding chain is live, verified and rollback-capable.
+## Brain scorecard
+
+| Dimension | Score | Current truth |
+|---|---:|---|
+| Structural organization / generated inventory | **9.7** | generated REAL-TREE/index drift gate exists; structural changes fail CI until reconciled |
+| Nine-node semantic coherence | **9.8** | Ultimate Lock governs; Machine/AI and Brain projections are being aligned to it |
+| Node/graph/wire coherence | **9.7** | routing conflict repaired on overnight-prep branch; regression test added |
+| Current-truth discipline | **9.4** | live source/runtime evidence outranks documents; generated projections are non-authoritative |
+| Runtime convergence | **8.0** | node-specific mixed parity remains the largest systems gap |
+| Learning/succession compounding | **8.4** | bounded evidence exists, but exact-current multi-generation proof is incomplete |
+
+**Brain build/engineering readiness: ~9.6 / 10.**  
+**Living whole-Brain effectiveness: ~9.0 / 10.**
+
+## Why tonight can succeed
+
+The limiting risk has shifted from “we do not know what the nodes mean” to execution discipline:
+
+`LOCKED SEMANTICS → CURRENT-MAIN REBASE → ONE CANONICAL SEAM → TEST → RUNTIME/PARITY → OBSERVE → INDEPENDENT VERIFY → HANDOFF`
+
+The agents should spend almost no time redesigning the nine responsibilities. Spend time converging existing source and earning evidence.
+
+## Highest-value overnight closure order
+
+1. Rebase/reconcile all active node/graph branches to current main and the Ultimate Lock.
+2. Finish nine Smart Notes through the canonical Receiver without preallocating Intelligent Block IDs.
+3. Merge only non-duplicative node implementation value; reject parallel-kernel semantics.
+4. Close exact-current KNOW/CONNECT Graph V2 source/runtime parity.
+5. Normalize VERIFY canonical outcome/CVO axes and negative cases.
+6. Close LEARN promotion against canonical VERIFY evidence and explicit applicability.
+7. Prove exact-current cold successor with no authority inheritance and unrelated refusal.
+8. Then attempt A→B→C; only after that attempt bounded self-building.
 
 ## Acceptance law
 
-A node reaches 9.5+ only when the claimed scope has:
+A node reaches 9.5+ living effectiveness only when its claimed scope has:
+
 `CONTRACT → OWNER → CODE → TEST → RUNTIME → OBSERVATION → INDEPENDENT VERIFICATION → SUCCESSOR RECONSTRUCTION`
-with causal/learning/production extensions where the node's claim requires them.
+
+with causal, learning, compounding and production extensions wherever the claim requires them.

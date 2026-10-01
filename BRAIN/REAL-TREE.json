@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
+  "receipt_basis_commit": "a33b33d7d541875a9cbaef6bd7db4c18d2f2145b",
   "inventory_file_count": 163,
   "domain_counts": {
     "00-SPEC": 15,
@@ -155,8 +155,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
-      "blob_sha": "7953bbc48e2173839178ab485f085aca2f71a6e9",
-      "size": 24029
+      "blob_sha": "bb9868d5aea0bee6cf41b9d0161deb3aa10b18ea",
+      "size": 25514
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md",
@@ -165,8 +165,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
-      "blob_sha": "eea4465a9b28bee13bbcbef0b0bbb077932386c3",
-      "size": 5611
+      "blob_sha": "3add4c355570186bdfdbe2d7ed1bfe1c8cb7d6a6",
+      "size": 6281
     },
     {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
@@ -305,8 +305,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "blob_sha": "6f4cdd2f69ef6b2f6c7680a3075054ec1741a6aa",
-      "size": 8502
+      "blob_sha": "61bae7768caacce585a0321cedbd247b1fb8f896",
+      "size": 9087
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
@@ -345,48 +345,48 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "blob_sha": "9da295d13eb135adc9dbb62134dd3325a970be87",
-      "size": 4483
+      "blob_sha": "96a89355320000af88820bbbd21d852a44b3cc62",
+      "size": 4684
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
-      "blob_sha": "d7fd513735f72b53e6f0c0ef0accabd1198bf720",
-      "size": 3781
+      "blob_sha": "d9a8078b22e975236ead7fa892c10e5b3db7a683",
+      "size": 3982
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json",
-      "blob_sha": "a1adf92ff9a88290c691f8c525ee0fb0c79bf2d7",
-      "size": 4035
+      "blob_sha": "9e634a6cda27ce5e9422268ade17090d2233341a",
+      "size": 4234
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json",
-      "blob_sha": "900ae469d951dcd6e4d5c0038bf4acbaefe40ee0",
-      "size": 5260
+      "blob_sha": "3254e17cb23fdfa65d320e995bd5c30625169495",
+      "size": 5948
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "blob_sha": "be01de8a3a7959d3ac7afb794c799f09b2813544",
-      "size": 4717
+      "blob_sha": "25e5aa518bd460b420269426af1f399b75af4430",
+      "size": 4915
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
-      "blob_sha": "268730edaba567c9a6373df60541e3b4c0cf03db",
-      "size": 3658
+      "blob_sha": "4bb157986508e2eda475a2b586434da0b086e931",
+      "size": 3859
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json",
-      "blob_sha": "a4ba759315dc547f4a4892b7f858d1c237d9ffcc",
-      "size": 4757
+      "blob_sha": "e51ffebafe62a7aff6c9ec0c7f0243c8f779a623",
+      "size": 4957
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json",
-      "blob_sha": "733ca0c3712d8167bea88742f3f86db5eaff5869",
-      "size": 3595
+      "blob_sha": "6712321d8a4127b9b22e32566e3e8fc12473c420",
+      "size": 4154
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
-      "blob_sha": "76031c71d8ba756bfb7bbba4f3c5cb61c61b9300",
-      "size": 4361
+      "blob_sha": "2739d6b853808e1668020dc052d0cbc55f7e60c5",
+      "size": 4561
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -495,8 +495,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
-      "blob_sha": "74da9806174f92c6ef32957b7f38bff9b029300a",
-      "size": 3399
+      "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
+      "size": 4958
     },
     {
       "path": "BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md",
@@ -660,8 +660,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md",
-      "blob_sha": "92c711805ff18b23474d8066920d02463cf9900e",
-      "size": 4081
+      "blob_sha": "0c3592b50b3e4ea96ca1027711e0a7cd6d6a8cff",
+      "size": 6242
     },
     {
       "path": "BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json",
