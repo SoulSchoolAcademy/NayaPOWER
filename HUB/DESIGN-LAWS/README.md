@@ -33,7 +33,9 @@ with truth, accessibility, causality, and performance constraining all four.
 12. `11-ACCESSIBILITY-RESPONSIVE-PERFORMANCE-LAW.md`
 13. `12-NAYA-PRESENCE-INPUT-SEARCH-LAW.md`
 14. `13-AAA-VISUAL-QA-ACCEPTANCE-LAW.md`
-15. `NAYANET-DESIGN-LAWS-V1.json` — machine-readable compilation
+15. `14-TOKEN-COMPONENT-IMPLEMENTATION-LAW.md`
+16. `15-WORLD-CHAMPION-REVIEW-LAW.md`
+17. `NAYANET-DESIGN-LAWS-V1.json` — machine-readable compilation
 
 ## Builder rule
 
