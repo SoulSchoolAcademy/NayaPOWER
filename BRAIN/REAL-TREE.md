@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-09-30  
-**Receipt basis commit:** `3d0216134dfd733445a14a77413d1b40e5f202b2`  
+**Generated:** 2026-10-01  
+**Receipt basis commit:** `ee41dbc9e612c3ece3dca69dbbb20d569a9da00a`  
 **Inventory file count:** 160  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -38,7 +38,7 @@
 - `BRAIN/00-SPEC/0005-TREE-V1.md` — `edc4fdb44334` (1622 bytes)
 - `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `c7b34af4b206` (5681 bytes)
 - `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `18e886b7038e` (2864 bytes)
-- `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `1fb0f6c8421d` (5737 bytes)
+- `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `75200ca1f5ce` (7778 bytes)
 - `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
 - `BRAIN/00-SPEC/SCHEMA/AUTHORITY-TUPLE-SCHEMA.json` — `2bda55ecd64b` (1882 bytes)
@@ -101,7 +101,7 @@
 - `BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json` — `9905a38819c1` (13932 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `095cfe500bc4` (1356 bytes)
 - `BRAIN/04-INTELLIGENCE/MASTER-INDEX.json` — `01ae91cda993` (1273 bytes)
-- `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `3b927e0cfeda` (7446 bytes)
+- `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `28f74bd818d8` (8099 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json` — `9da295d13eb1` (4483 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json` — `d7fd513735f7` (3781 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json` — `a1adf92ff9a8` (4035 bytes)
@@ -192,7 +192,7 @@
 - `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `9101f2452e1a` (21537 bytes)
 - `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — `83e52c824b5e` (7561 bytes)
 - `BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py` — `765c0bf9f410` (3850 bytes)
-- `BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py` — `a9d13675bf72` (6375 bytes)
+- `BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py` — `775c647f6925` (9418 bytes)
 - `BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py` — `810b26cbb589` (9939 bytes)
 - `BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py` — `bd4e5340a34f` (12680 bytes)
 - `BRAIN/12-ENGINEERING/verify-migration-coherence-baseline-controls.py` — `413f5a54ad50` (4157 bytes)

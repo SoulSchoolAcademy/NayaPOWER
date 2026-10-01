@@ -85,12 +85,43 @@
         "successor_effect": { "type": ["object", "string", "null"] }
       }
     },
+    "decisionSystem": {
+      "description": "The single ratified shared calculus is a decision system, never a tenth kernel Node.",
+      "type": "object",
+      "required": ["schema", "object_id", "object_type", "version", "canonical_status", "owner_id", "scope", "human_view", "ai_view", "machine_view", "provenance", "proof", "relationships", "successor_effect"],
+      "properties": {
+        "schema": { "const": "naya.intelligent.object.v1" },
+        "object_id": { "const": "NAYA-DECISION-VALUE-CALCULUS-V2.1" },
+        "object_type": { "const": "DECISION_SYSTEM" },
+        "version": { "const": "2.1" },
+        "canonical_status": { "const": "RATIFIED" },
+        "owner_id": { "type": "string", "minLength": 3 },
+        "scope": { "type": "string", "minLength": 3 },
+        "human_view": { "$ref": "#/$defs/humanView" },
+        "ai_view": { "$ref": "#/$defs/aiView" },
+        "machine_view": {
+          "type": "object",
+          "required": ["specification", "executable", "decision_schema", "recalibration_schema", "decision_outcomes"],
+          "properties": {
+            "specification": { "const": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md" },
+            "executable": { "const": "kernel/value_calculus.py" },
+            "decision_schema": { "const": ".naya/specifications/NAYA-DECISION-VALUE-CALCULUS-V2.1.schema.json" },
+            "recalibration_schema": { "const": ".naya/specifications/NAYA-VALUE-RECALIBRATION-V2.1.schema.json" },
+            "decision_outcomes": { "const": ["ACT", "READ_MORE", "ASK", "REFUSE"] }
+          }
+        },
+        "provenance": { "type": "object", "required": ["derived_from"], "properties": { "derived_from": { "$ref": "#/$defs/provenanceList" } } },
+        "proof": { "type": "object" },
+        "relationships": { "type": "array" },
+        "successor_effect": { "type": ["object", "string", "null"] }
+      }
+    },
     "graphEdge": {
       "type": "object",
       "required": ["relationship_id", "source_id", "target_id", "type", "status", "provenance", "epistemic_state"],
       "properties": {
         "relationship_id": { "type": "string", "pattern": "^REL-[A-Z0-9-]+$" },
-        "source_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
+        "source_id": { "type": "string", "pattern": "^(NAYA-KERNEL-[A-Z]+|NAYA-DECISION-VALUE-CALCULUS-V2\\.1)$" },
         "target_id": { "type": "string", "pattern": "^NAYA-KERNEL-[A-Z]+$" },
         "type": { "$ref": "#/$defs/relationshipType" },
         "status": { "$ref": "#/$defs/canonicalStatus" },
@@ -100,6 +131,10 @@
     }
   },
   "oneOf": [
+    {
+      "title": "SharedDecisionSystem",
+      "allOf": [{ "$ref": "#/$defs/decisionSystem" }]
+    },
     {
       "title": "IntelligentObject",
       "type": "object",
