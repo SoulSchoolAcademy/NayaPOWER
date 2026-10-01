@@ -48,7 +48,7 @@
   --accent-mail:        var(--blue);
   --accent-spaces:      var(--lime);
   --accent-settings:    var(--muted);
-  --accent-system:      var(--gold);
+  --accent-system:      var(--purple);
 
   /* ——— Living depth (the material grammar) ——— */
   --depth-hi:  inset 0 1px #fff6;
