@@ -464,5 +464,11 @@
   "critical_information_microtype_forbidden": true,
   "shrink_text_to_fit_layout_forbidden": true,
   "browser_zoom_and_os_text_scaling_must_be_respected": true
+ },
+ "design_lawbook": {
+  "read_first": "HUB/DESIGN-LAWS/README.md",
+  "machine_contract": "HUB/DESIGN-LAWS/NAYANET-DESIGN-LAWS-V1.json",
+  "parent": "HUB/DESIGN-CONTRACT.md",
+  "authority_rule": "lawbook_is_normative_decomposition_not_competing_design_authority"
  }
 }
