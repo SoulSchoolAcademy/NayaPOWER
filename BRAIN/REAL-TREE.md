@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `c32720865986000ecded5830f1ddd4dd754f2d08`  
+**Receipt basis commit:** `50103510caa6f5fc6b3cd409c7388f154acd58f6`  
 **Inventory file count:** 160  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -62,7 +62,7 @@
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
 - `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
-- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `d32d9ea4526a` (5401 bytes)
+- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `51b0d2685de8` (9395 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `7953bbc48e21` (24029 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
 - `BRAIN/03-KERNEL/MANIFEST.json` — `305124036fff` (1394 bytes)
@@ -99,7 +99,7 @@
 - `BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json` — `867c74c4c7d9` (4408 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json` — `757534ba9b97` (7066 bytes)
 - `BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json` — `9905a38819c1` (13932 bytes)
-- `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `6026ef5a484e` (1296 bytes)
+- `BRAIN/04-INTELLIGENCE/GRAPH/README.md` — `095cfe500bc4` (1356 bytes)
 - `BRAIN/04-INTELLIGENCE/MASTER-INDEX.json` — `01ae91cda993` (1273 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json` — `3b927e0cfeda` (7446 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json` — `9da295d13eb1` (4483 bytes)
@@ -111,7 +111,7 @@
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json` — `a4ba759315dc` (4757 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json` — `733ca0c3712d` (3595 bytes)
 - `BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json` — `76031c71d8ba` (4361 bytes)
-- `BRAIN/04-INTELLIGENCE/README.md` — `28d76d567ac9` (3770 bytes)
+- `BRAIN/04-INTELLIGENCE/README.md` — `6bd1a6ab1572` (3827 bytes)
 - `BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json` — `8e70ac3fac7e` (4661 bytes)
 ### 05-MEMORY — Memory
 

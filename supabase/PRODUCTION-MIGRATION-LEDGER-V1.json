@@ -1453,9 +1453,9 @@
    "version": "20261001032000",
    "name": "decision_value_smart_ledger_v2_1",
    "path": "supabase/migrations/20261001032000_decision_value_smart_ledger_v2_1.sql",
-   "sha256": "a1561082734b1467e3f66a3bef1b7fa9430dd33b0bb33a8ec1b16e82b7b05dd6",
+   "sha256": "1c9c14632636e884883fa565cfabdece05b592199c94ba29599542d11eb0c889",
    "statement_count": 18,
-   "bytes": 14729,
+   "bytes": 15720,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],

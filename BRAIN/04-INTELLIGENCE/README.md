@@ -17,7 +17,7 @@ The intelligence layer answers: **What do we know, what does it mean, and how is
 | [0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md](./0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md) | Human "Smart Node" command mapped to the canonical Intelligent Block lifecycle |
 | [GRAPH/0001-KERNEL-GRAPH-SEED-V1.json](./GRAPH/0001-KERNEL-GRAPH-SEED-V1.json) | Kernel graph seed |
 | [GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json](./GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json) | Knowledge-to-node mapping |
-| [GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Graph relationship contract (candidate) |
+| [GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json](./GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json) | Graph relationship contract (RATIFIED; selector V2 source-integrated; production parity pending) |
 | [GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json](./GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json) | Graph selector acceptance cases |
 | [GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json](./GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json) | Graph reconciliation acceptance cases |
 | [GRAPH/README.md](./GRAPH/README.md) | Graph directory navigation |

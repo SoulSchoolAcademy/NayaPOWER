@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "c32720865986000ecded5830f1ddd4dd754f2d08",
+  "receipt_basis_commit": "50103510caa6f5fc6b3cd409c7388f154acd58f6",
   "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
@@ -150,8 +150,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "d32d9ea4526afa0c9c6fe7675f0139d6723f7d86",
-      "size": 5401
+      "blob_sha": "51b0d2685de8a0993b34eff7f406db423e1ab010",
+      "size": 9395
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
@@ -325,8 +325,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/README.md",
-      "blob_sha": "6026ef5a484e5656306f2a933539a7587e074975",
-      "size": 1296
+      "blob_sha": "095cfe500bc41c1228719ce877be7835be3a0860",
+      "size": 1356
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/MASTER-INDEX.json",
@@ -385,8 +385,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
-      "blob_sha": "28d76d567ac94f9e7941db912506d067245239a8",
-      "size": 3770
+      "blob_sha": "6bd1a6ab1572cc6f9b87ec423bc7749dd7527813",
+      "size": 3827
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/SMART-NODE-PROTOCOL-V1.json",
