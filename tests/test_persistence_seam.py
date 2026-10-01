@@ -262,9 +262,11 @@ def test_contract_record_validation():
     good = {
         "object_id": PARENT, "owner_id": OWNER, "owner_scope": "PRIVATE",
         "created_at": "2026-10-01T15:30:00+00:00", "updated_at": "2026-10-01T15:30:00+00:00",
-        "schema_version": "1.0.0", "provenance": {"node_id": "x"},
-        "truth_state": "CANDIDATE", "status": "RECORDED", "superseded_by": None,
-        "lineage": {"parent": None}, "content_hash": "a" * 64,
+        "schema_version": "1.0.0",
+        "provenance": {"source_table": "naya_kernel_decision",
+                       "source_id": "dec-001"},
+        "truth_state": "UNASSESSED", "status": "RECORDED", "superseded_by": None,
+        "lineage": {"parent_ledger_event_id": None, "chain_seq": 1}, "content_hash": "a" * 64,
     }
     assert validate_contract_record(good) == []
     bad = dict(good)
@@ -272,3 +274,154 @@ def test_contract_record_validation():
     assert any("owner_id" in x for x in validate_contract_record(bad))
     bad2 = dict(good, content_hash="zzz")
     assert any("content_hash" in x for x in validate_contract_record(bad2))
+
+
+# ---------------------------------------------------------------------------
+# RED-2: snapshot aliasing (coordinator-reproduced, 2026-10-01).
+# The projection must preserve DETACHED snapshots: caller mutation after
+# projection must not alter already-validated projected evidence.
+# ---------------------------------------------------------------------------
+
+def test_projection_detaches_inputs_state():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    p = proj(r, inputs_state=state)
+    # Caller mutates the input state AFTER projection.
+    state["gates"]["SELF"]["input"] = 999
+    state["new_key"] = "injected"
+    snap = p["p_metadata"]["inputs_state"]
+    assert snap == {"gates": {"SELF": {"input": 1}}}, \
+        f"projected inputs_state aliased caller mutation: {snap}"
+    # The preserved snapshot still reproduces the kernel's claimed hash.
+    assert _sha256(snap) == p["p_value"]["inputs_hash"]
+
+
+def test_projection_detaches_receipt_nested():
+    r = make_receipt(with_inputs=True, inputs_state={"a": 1})
+    p = proj(r, inputs_state={"a": 1})
+    # Caller mutates NESTED receipt content AFTER projection.
+    r["gates"].append({"forged": True})
+    r["evaluation_order"].append("FORGED")
+    assert verify_kernel_receipt(p["p_value"])["result"] == "MATCH", \
+        "projected p_value aliased caller mutation (seal broken)"
+    assert p["p_value"]["gates"] == []
+    assert p["p_value"]["evaluation_order"] == ["SELF", "LAW"]
+
+
+def test_projection_mutation_does_not_alter_producer_evidence():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    before_receipt = _canon(r)
+    before_state = _canon(state)
+    p = proj(r, inputs_state=state)
+    # Mutating the RETURNED projection must not reach back into the
+    # caller's objects.
+    p["p_value"]["gates"].append({"x": 1})
+    p["p_metadata"]["inputs_state"]["gates"]["SELF"]["input"] = 2
+    assert _canon(r) == before_receipt
+    assert _canon(state) == before_state
+
+
+def test_projection_rejects_non_json_inputs_state():
+    r = make_receipt(with_inputs=True, inputs_state={"a": 1})
+    # NaN is not valid JSON; a set is not JSON-native at all.
+    for bad in ({"v": float("nan")}, {"v": {1, 2}}):
+        try:
+            proj(r, inputs_state=bad)
+        except ValueError as e:
+            assert "JSON" in str(e) or "snapshot" in str(e), str(e)
+        else:
+            raise AssertionError(f"non-JSON inputs_state accepted: {bad!r}")
+
+
+# ---------------------------------------------------------------------------
+# RED-3: substantive contract-record validation (coordinator-reproduced).
+# validate_contract_record() must check field MEANINGS, not just presence.
+# ---------------------------------------------------------------------------
+
+def _good_record(**overrides):
+    rec = {
+        "object_id": PARENT, "owner_id": OWNER, "owner_scope": "PRIVATE",
+        "created_at": "2026-10-01T15:30:00+00:00",
+        "updated_at": "2026-10-01T15:30:00+00:00",
+        "schema_version": "1.0.0",
+        "provenance": {"source_table": "naya_kernel_decision",
+                       "source_id": "dec-001"},
+        "truth_state": "UNASSESSED", "status": "RECORDED",
+        "superseded_by": None,
+        "lineage": {"parent_ledger_event_id": None, "chain_seq": 1},
+        "content_hash": "a" * 64,
+    }
+    rec.update(overrides)
+    return rec
+
+
+def test_contract_record_rejects_coordinator_repro():
+    # The exact record the coordinator supplied: every bad field must be
+    # flagged. Previously this returned [].
+    bad = _good_record(
+        created_at="banana",
+        updated_at=[],
+        schema_version=123,
+        truth_state="MADE_UP",
+        status="MADE_UP",
+        superseded_by="not-a-uuid",
+    )
+    vs = validate_contract_record(bad)
+    for field in ("created_at", "updated_at", "schema_version",
+                  "truth_state", "status", "superseded_by"):
+        assert any(field in x for x in vs), \
+            f"no violation for {field}: {vs}"
+    assert validate_contract_record(_good_record()) == []
+
+
+def test_contract_record_timestamp_boundary():
+    # Date-only is not a timestamp; naive (tz-less) is not the producer's
+    # contract (kernel emits tz-aware; ledger stores timestamptz).
+    for bad_ts in ("2026-10-01", "2026-10-01T15:30:00", "", None, 12345):
+        vs = validate_contract_record(_good_record(created_at=bad_ts))
+        assert any("created_at" in x for x in vs), \
+            f"created_at={bad_ts!r} accepted: {vs}"
+    # issued_at boundary: the adapter's own timestamp parser must agree.
+    r = make_receipt()
+    r["issued_at"] = "2026-10-01"  # date-only
+    r["receipt_hash"] = _sha256({k: v for k, v in r.items()
+                                 if k != "receipt_hash"})
+    try:
+        proj(r)
+    except ValueError as e:
+        assert "issued_at" in str(e)
+    else:
+        raise AssertionError("date-only issued_at accepted by adapter")
+
+
+def test_contract_record_vocabularies():
+    # status: the V1 migration's check-constraint vocabulary.
+    for bad in ("MADE_UP", "PENDING", "", None):
+        vs = validate_contract_record(_good_record(status=bad))
+        assert any("status" in x for x in vs), f"status={bad!r}: {vs}"
+    for good_status in ("RECORDED", "VERIFIED", "QUALIFIED",
+                        "SUPERSEDED", "BLOCKED", "FAILED"):
+        assert validate_contract_record(
+            _good_record(status=good_status)) == [], good_status
+    # truth_state: the V2.1 assessment vocabulary (the ledger's native
+    # truth/assessment states).
+    for bad in ("MADE_UP", "CANDIDATE", "", None):
+        vs = validate_contract_record(_good_record(truth_state=bad))
+        assert any("truth_state" in x for x in vs), \
+            f"truth_state={bad!r}: {vs}"
+    for good_ts in ("UNASSESSED", "ASSESSED", "VERIFIED_VALUE", "REJECTED"):
+        assert validate_contract_record(
+            _good_record(truth_state=good_ts)) == [], good_ts
+
+
+def test_contract_record_lineage_and_provenance():
+    vs = validate_contract_record(_good_record(
+        lineage={"parent_ledger_event_id": "not-a-uuid", "chain_seq": "x"}))
+    assert any("lineage" in x for x in vs), vs
+    vs = validate_contract_record(_good_record(provenance={"node_id": "x"}))
+    assert any("provenance" in x for x in vs), vs
+    # Valid parent linkage passes.
+    ok = _good_record(lineage={"parent_ledger_event_id": PARENT,
+                               "chain_seq": 7})
+    assert validate_contract_record(ok) == []

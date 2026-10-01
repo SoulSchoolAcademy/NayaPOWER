@@ -129,3 +129,38 @@ published on PR #1243 before the fix (comment 5935447995).
    `from kernel.persistence_seam import ...` instead of a `sys.path` hack —
    the dependency guard no longer misclassifies `persistence_seam` as an
    undeclared third-party distribution. Guard not weakened.
+
+## 8. v3 hardening (2026-10-01, coordinator review — master directive moves 3–4)
+
+Independent review reproduced two more defect classes. Both fixed in
+`persistence-seam-v3`; RED tests published before the fix.
+
+6. **Snapshot aliasing (RED-2).** `dict(receipt)` was a shallow copy and
+   `p_metadata["inputs_state"]` aliased the caller's object: mutating the
+   caller's `inputs_state` after projection changed the projected state, and
+   mutating nested receipt content broke the projected seal. v3 detaches
+   BOTH through strict canonical JSON (`_detached_snapshot`) BEFORE
+   validation — validation and hashing run on the snapshots, the exact
+   objects that will be serialized. Caller mutation after projection cannot
+   invalidate already-validated evidence; projection mutation cannot reach
+   back into producer objects. Non-JSON-native values (sets, bytes,
+   NaN/Infinity) are REJECTED at the boundary, not silently stringified.
+   Canonical hashing rules (`_canon`/`_sha256`) are unchanged.
+7. **Substantive contract validation (RED-3).** `validate_contract_record()`
+   checked presence only — `created_at="banana"`, `schema_version=123`,
+   `truth_state="MADE_UP"`, `status="MADE_UP"`, `superseded_by="not-a-uuid"`
+   returned zero violations. v3 validates meanings against the canonical
+   contracts: tz-aware ISO-8601 timestamps with time (date-only and naive
+   rejected — the producer emits tz-aware; the ledger stores timestamptz);
+   `schema_version` semver; `status` ∈ the V1 migration's check-constraint
+   vocabulary (RECORDED, VERIFIED, QUALIFIED, SUPERSEDED, BLOCKED, FAILED);
+   `truth_state` ∈ the V2.1 assessment vocabulary (UNASSESSED, ASSESSED,
+   VERIFIED_VALUE, REJECTED); `superseded_by` null-or-uuid; lineage shape
+   (parent null-or-uuid, chain_seq null-or-int, previous_chain_hash
+   null-or-64hex); provenance requires `source_table` + `source_id`.
+   Explicit limitation: shape-valid `content_hash` is not recomputation
+   evidence — recomputation is proven by the write→fresh-read path.
+8. **Timestamp boundary.** `_parse_timestamp` now enforces the producer's
+   contract: a date-only value such as `2026-10-01` is rejected as
+   `issued_at`, as are naive datetimes. This applies to adapter input and
+   to `created_at`/`updated_at` in contract records.

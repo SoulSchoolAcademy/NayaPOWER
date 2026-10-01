@@ -9,7 +9,7 @@ All commands are read-only except where marked. No credentials are in this packa
 python -m pytest tests/test_persistence_seam.py -q
 ```
 
-Expected: all 15 tests pass (pytest-discoverable; also runs under the repo's
+Expected: all 24 tests pass (pytest-discoverable; also runs under the repo's
 normal `python -m pytest -q`). Covers: valid payload, missing metadata,
 invalid types, hash-mismatch tamper, source/config shape, ownership shape,
 forced UNVERIFIED at insert, successor parent shape, lineage threading,
@@ -17,7 +17,9 @@ idempotency-key shape, seal validation (numeric/null/malformed receipt_hash
 rejected), receipt vocabulary (verdict/timestamp/decision_id types),
 input-commitment (inputs_hash recomputation; legacy labeled absent-legacy),
 interop against Naya 4's real `seam-verify-001` receipt
-(tests/fixtures/seam-verify-001.json), contract-record validation.
+(tests/fixtures/seam-verify-001.json), detached snapshots (caller mutation
+cannot invalidate projected evidence; non-JSON values rejected), substantive
+contract-record validation (timestamps, vocabularies, lineage, provenance).
 
 ## 2. Boundary validator (ad-hoc)
 
@@ -31,50 +33,38 @@ print(params['p_source_id'], params['p_verification'])
 EOF
 ```
 
-## 3. Isolated database exercise (NOT run by Naya 2 — no local Postgres here)
+## 3. Isolated database exercise (EXECUTED 2026-10-01 — 14/14 PASS)
 
-Reproducible setup, using only repo files:
+The full runnable handoff lives in `docs/PERSISTENCE-HANDOFF/` (README,
+schema, proof runner, reconstruction code). Summary of the executed run:
 
 ```bash
-# 1. Start Postgres 16 with pgcrypto available
-docker run -d --name naya-seam-test -e POSTGRES_PASSWORD=test -p 5433:5432 postgres:16
-
-# 2. Prepare the database
-psql -h localhost -p 5433 -U postgres -c "CREATE SCHEMA extensions;"
-psql -h localhost -p 5433 -U postgres -c "CREATE EXTENSION pgcrypto WITH SCHEMA extensions;"
-
-# 3. Apply all migrations in order (pinned SHA: a726a8376559609a3620f948ec7bfcabdba50abb)
-for f in $(ls supabase/migrations/*.sql | sort); do
-  psql -h localhost -p 5433 -U postgres -d postgres -v ON_ERROR_STOP=1 -f "$f"
-done
-# NOTE: the two external history versions (20260930233038, 20260930233137) have no
-# repo files; their SQL is recoverable from production
-# supabase_migrations.schema_migrations.statements (read-only) if needed.
-
-# 4. Exercise the seam function (as service_role equivalent = postgres superuser here)
-psql -h localhost -p 5433 -U postgres -d postgres <<'EOF'
--- owner isolation: authenticated callers are checked via auth.uid();
--- here we call as superuser (auth.uid() IS NULL, like service_role).
-SELECT ledger_event_id, event_hash, status
-FROM public.nayanet_record_ledger_event(
-  '12345678-1234-1234-1234-123456789abc',  -- p_owner_id (must be a real auth.users id in prod)
-  'DECISION', 'naya_kernel_decision', 'dec-001',
-  now(), NULL, 'PRIVATE', 'RECORDED', '[]'::jsonb, '{"state":"UNVERIFIED"}'::jsonb,
-  '{"decision_id":"dec-001"}'::jsonb, '{}'::jsonb, '[]'::jsonb, '{}'::jsonb, NULL
-);
--- duplicate write returns the SAME row (idempotency), no second row:
-SELECT count(*) FROM public.nayanet_smart_ledger
-WHERE owner_id='12345678-1234-1234-1234-123456789abc' AND source_id='dec-001';
-EOF
-
-# 5. Tear down
-docker rm -f naya-seam-test
+# 1. Disposable local Postgres 16; two login roles (rt_owner_a, rt_owner_b)
+# 2. Target-identity check: inet_server_addr()=127.0.0.1, db=naya_isolated_rt
+# 3. Schema: docs/PERSISTENCE-HANDOFF/isolated-schema.sql
+#    (ledger subset of 20260919015207, ON_ERROR_STOP=1; p_learning_refs
+#    default normalized [] — the migration's {} is a jsonb type error)
+psql -U postgres -d naya_isolated_rt -v ON_ERROR_STOP=1 \
+  -f docs/PERSISTENCE-HANDOFF/isolated-schema.sql
+# 4. Boundary proof (write → terminate producer → fresh process → read):
+python3 docs/PERSISTENCE-HANDOFF/isolated_roundtrip.py
+# Expected: exit 0, "14/14 checks passed"
 ```
 
-**Limitation (stated, not hidden):** Naya 2 has no local Postgres and no authorized
-disposable cloud environment, so step 3–4 above is published but not executed by Naya 2.
-Static schema/constraint mapping is documented in `docs/PERSISTENCE-SEAM-SPEC-V1.md`
-and is not represented as DB integration. Any seat with Docker can run it.
+**Evidence (2026-10-01):** receipt seal MATCH; projection accepted;
+verification honestly UNVERIFIED; no invented timestamps; canonical writer;
+chain hash; identical replay → same row; conflicting payload → no overwrite;
+fresh-process read; 12-field reconstruction 0 violations; receipt_hash and
+inputs_hash recompute MATCH from the row alone; owner B sees 0 rows.
+Proof log: `roundtrip-proof-2026-10-01.txt` (sha256
+`7dcd265ecb4eb137b2b57f3b9667a62651bd5328915b3800a1a1673f4773013f`);
+written ledger row `79404825-97a5-407c-a350-5820e51f50f3`.
+
+**Limitations (stated, not hidden):** the disposable schema is the ledger
+writer subset (V2.1 typed-receipt functions exercised separately); the proof
+used the `demo-001` kernel receipt, not the Demo-1 ACT receipt (different
+family, honestly refused pending a joint contract extension); owner isolation
+proven at RLS policy level with two login roles.
 
 ## 4. What "done" looks like for the DB exercise
 

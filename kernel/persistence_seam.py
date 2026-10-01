@@ -24,7 +24,7 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional
 
-ADAPTER_VERSION = "persistence-seam-v2"
+ADAPTER_VERSION = "persistence-seam-v3"
 CONTRACT_REF = "NAYANODE/0101-PERSISTENCE-CONTRACT-V1.md"
 SCHEMA_VERSION = "1.0.0"  # matches the ledger function's hardcoded schema_version
 
@@ -44,15 +44,26 @@ _HEX40_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 def _parse_timestamp(value: Any) -> bool:
-    """True iff value is a parseable ISO-8601 timestamp string."""
+    """True iff value is an ISO-8601 timestamp with a time and a timezone.
+
+    The producer (kernel) emits tz-aware datetimes; the ledger stores
+    timestamptz. Date-only values ("2026-10-01") and naive datetimes are
+    REJECTED — they do not satisfy the producer's timestamp contract.
+    """
     if not isinstance(value, str) or not value.strip():
         return False
     text = value.strip().replace("Z", "+00:00")
     try:
-        datetime.fromisoformat(text)
-        return True
+        dt = datetime.fromisoformat(text)
     except ValueError:
         return False
+    if not isinstance(dt, datetime):
+        return False
+    # fromisoformat("2026-10-01") yields midnight — require an explicit time
+    # component in the original text (T or space separator, HH:MM).
+    if not re.search(r"[T ]\d{2}:\d{2}", text):
+        return False
+    return dt.tzinfo is not None
 
 
 # ---------------------------------------------------------------------------
@@ -67,6 +78,28 @@ def _canon(obj: Any) -> str:
 
 def _sha256(obj: Any) -> str:
     return hashlib.sha256(_canon(obj).encode("utf-8")).hexdigest()
+
+
+def _detached_snapshot(obj: Any, *, what: str) -> Any:
+    """Detached JSON-domain snapshot of ``obj``.
+
+    The snapshot is a deep copy through strict canonical JSON: the caller
+    can mutate the original afterwards without affecting already-validated
+    projected evidence, and mutation of the projection cannot reach back
+    into the caller's objects.
+
+    Strictness: ``allow_nan=False`` and no ``default=str`` coercion — values
+    that are not JSON-native (sets, bytes, NaN/Infinity, arbitrary objects)
+    are REJECTED as boundary violations, not silently stringified. The
+    canonical hashing rules (``_canon``/``_sha256``) are unchanged; this only
+    governs what may enter the projected snapshot.
+    """
+    try:
+        text = json.dumps(obj, sort_keys=True, separators=(",", ":"),
+                          ensure_ascii=True, allow_nan=False)
+    except (TypeError, ValueError) as e:
+        raise ValueError(f"{what} is not strict JSON-native: {e}")
+    return json.loads(text)
 
 
 def verify_kernel_receipt(receipt: Dict[str, Any]) -> Dict[str, Any]:
@@ -111,7 +144,24 @@ def project_kernel_receipt(
       provenance envelope, verification ``UNVERIFIED``, idempotency identity.
     - database: ``object_id`` (ledger_event_id), ``created_at``, ``event_hash``,
       ``schema_version='1.0.0'``.
+
+    Snapshot semantics (RED-2): the receipt and ``inputs_state`` are detached
+    into JSON-domain snapshots BEFORE validation. Validation and hashing run
+    on the snapshots — the exact objects that will be serialized — so caller
+    mutation after projection cannot invalidate already-validated evidence.
     """
+    # 1. Detach first: validate and hash the snapshots, not the caller's
+    #    live objects.
+    try:
+        receipt = _detached_snapshot(receipt, what="receipt")
+    except ValueError as e:
+        raise ValueError(f"seam boundary violations: {e}")
+    if inputs_state is not None:
+        try:
+            inputs_state = _detached_snapshot(inputs_state, what="inputs_state")
+        except ValueError as e:
+            raise ValueError(f"seam boundary violations: {e}")
+    # 2. Validate the snapshots (same objects that will be serialized).
     violations = _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
                                   config_hash, parent_ledger_event_id,
                                   inputs_state, verify)
@@ -144,6 +194,8 @@ def project_kernel_receipt(
     # re-verify. States are small decision inputs; privacy posture is unchanged
     # (row is already PRIVATE to the owner, receipt already stored verbatim).
     if inputs_state is not None:
+        # Already a detached snapshot (see step 1); the caller's live object
+        # cannot alias the projected evidence.
         provenance["inputs_state"] = inputs_state
 
     return {
@@ -159,8 +211,9 @@ def project_kernel_receipt(
         "p_evidence_refs": [],
         "p_verification": {"state": "UNVERIFIED", "verified_by": None,
                            "verified_at": None},
-        # Execution evidence: the kernel receipt, verbatim.
-        "p_value": dict(receipt),
+        # Execution evidence: the kernel receipt, verbatim. Already a detached
+        # snapshot (see step 1) — no shallow copy, no aliasing.
+        "p_value": receipt,
         # No observed outcome at insert time. Ever.
         "p_outcome": {},
         "p_learning_refs": [],
@@ -245,12 +298,31 @@ CONTRACT_FIELDS = (
 )
 
 
+# Canonical vocabularies for contract-record validation. These come from the
+# migrations, not from the adapter:
+# - status: the V1 ledger check constraint
+#   (20260919015207_smart_ledger_foundation_v1.sql).
+# - truth_state: the V2.1 assessment_state vocabulary
+#   (20261001032000_decision_value_smart_ledger_v2_1.sql) — the ledger's
+#   native truth/assessment states, which the 12-field reconstruction maps
+#   to the contract's truth_state.
+_STATUS_VOCAB = ("RECORDED", "VERIFIED", "QUALIFIED", "SUPERSEDED",
+                 "BLOCKED", "FAILED")
+_TRUTH_VOCAB = ("UNASSESSED", "ASSESSED", "VERIFIED_VALUE", "REJECTED")
+_SCHEMA_VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
+
+
 def validate_contract_record(record: Dict[str, Any]) -> List[str]:
     """Validate a 12-field contract record. Returns violations (empty = valid).
 
-    Known accepted gaps (documented, not hidden): ``updated_at`` may live in
-    provenance/metadata; ``truth_state`` is carried by status+verification;
-    ``superseded_by`` is reverse-derivable and may be null.
+    Every field's meaning is checked against the canonical contracts:
+    timestamp types and timezone semantics, schema-version shape, the
+    status and truth-state vocabularies, supersession identity, lineage
+    shape, provenance requirements, and content-hash shape.
+
+    Explicit limitation: a shape-valid ``content_hash`` is NOT evidence the
+    content recomputes — recomputation needs the source row and is proven
+    by the write→fresh-read path, not by this validator.
     """
     v: List[str] = []
     if not isinstance(record, dict):
@@ -265,10 +337,43 @@ def validate_contract_record(record: Dict[str, Any]) -> List[str]:
             v.append(f"{f} must be a uuid")
     if record["owner_scope"] not in _OWNER_SCOPES:
         v.append("owner_scope must be PRIVATE/SHARED/COLLECTIVE/PUBLIC")
-    if not isinstance(record.get("provenance"), dict):
+    for f in ("created_at", "updated_at"):
+        if not _parse_timestamp(record.get(f)):
+            v.append(f"{f} must be a tz-aware ISO-8601 timestamp with time "
+                     f"(date-only and naive values rejected)")
+    sv = record.get("schema_version")
+    if not isinstance(sv, str) or not _SCHEMA_VERSION_RE.match(sv):
+        v.append("schema_version must be a semver string (e.g. '1.0.0')")
+    prov = record.get("provenance")
+    if not isinstance(prov, dict):
         v.append("provenance must be an object")
-    if not isinstance(record.get("lineage"), dict):
+    else:
+        for pf in ("source_table", "source_id"):
+            if not isinstance(prov.get(pf), str) or not prov[pf].strip():
+                v.append(f"provenance.{pf} must be a non-empty string")
+    if record.get("truth_state") not in _TRUTH_VOCAB:
+        v.append(f"truth_state must be one of {list(_TRUTH_VOCAB)} "
+                f"(V2.1 assessment vocabulary)")
+    if record.get("status") not in _STATUS_VOCAB:
+        v.append(f"status must be one of {list(_STATUS_VOCAB)} "
+                f"(V1 ledger check constraint)")
+    sup = record.get("superseded_by")
+    if sup is not None and (not isinstance(sup, str) or not _UUID_RE.match(sup)):
+        v.append("superseded_by must be null or a uuid")
+    lin = record.get("lineage")
+    if not isinstance(lin, dict):
         v.append("lineage must be an object")
+    else:
+        par = lin.get("parent_ledger_event_id")
+        if par is not None and (not isinstance(par, str) or not _UUID_RE.match(par)):
+            v.append("lineage.parent_ledger_event_id must be null or a uuid")
+        seq = lin.get("chain_seq")
+        if seq is not None and not isinstance(seq, int):
+            v.append("lineage.chain_seq must be null or an integer")
+        pch = lin.get("previous_chain_hash")
+        if pch is not None and (not isinstance(pch, str)
+                                or not re.fullmatch(r"[0-9a-f]{64}", pch)):
+            v.append("lineage.previous_chain_hash must be null or 64-char hex")
     ch = record.get("content_hash")
     if not isinstance(ch, str) or not re.fullmatch(r"[0-9a-f]{64}", ch):
         v.append("content_hash must be 64-char lowercase hex")
