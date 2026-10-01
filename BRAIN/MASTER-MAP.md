@@ -8,6 +8,7 @@
 **Key references:**
 - [REAL-TREE.md](./REAL-TREE.md) — machine-verified file inventory
 - [12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md](./12-ENGINEERING/0002-BRAIN-AAA-SCORECARD-V1.md) — AAA quality scorecard
+- [04-INTELLIGENCE/GRAPH/0006-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json](./04-INTELLIGENCE/GRAPH/0006-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json) — deterministic cold-Naya graph entry and success contract
 
 ## 1. What this map means
 
@@ -131,8 +132,9 @@ A cold Naya reads and verifies:
 7. **BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md** + **0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md** — current execution projection
 8. **Live GitHub main / open priority work / current runtime and proof evidence** — fresher evidence outranks dated projections
 9. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
-10. **BRAIN/06-PROOF/** — evidence and verification
-11. **BRAIN/08-SUCCESSION/** — successor context
+10. **BRAIN/04-INTELLIGENCE/GRAPH/0006-COLD-NAYA-GRAPH-ENTRY-CONTRACT-V1.json** — graph entry gates and cold-Naya success contract
+11. **BRAIN/06-PROOF/** — evidence and verification
+12. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
 

@@ -1,0 +1,122 @@
+{
+  "schema": "naya.cold-graph-entry-contract.v1",
+  "status": "PROPOSED_CANONICAL",
+  "purpose": "Give any authorized cold Naya one deterministic, source-of-truth-preserving route into the NayaPOWER intelligence graph and one explicit success contract.",
+  "source_of_truth": {
+    "law": "ROOT/CONSTITUTION/",
+    "governance": "ROOT/GOVERNANCE/",
+    "system_design": "ROOT/ARCHITECTURE/",
+    "brain_navigation": "BRAIN/MASTER-MAP.md",
+    "brain_index": "BRAIN/NAYAPOWER-BRAIN-INDEX.json",
+    "operations": "BRAIN/90-OPERATIONS/",
+    "canonical_intelligence": "BRAIN/04-INTELLIGENCE/",
+    "proof": "BRAIN/06-PROOF/",
+    "runtime": "NayaPOWER runtime/control plane",
+    "hub": "human-facing projection only"
+  },
+  "cold_entry_order": [
+    "CONSTITUTION",
+    "GOVERNANCE",
+    "MASTER_DESIGN",
+    "SUPERBRAIN_SPEC",
+    "BRAIN_MASTER_MAP",
+    "BRAIN_INDEX",
+    "KERNEL_MANIFEST_AND_NODE_CONTRACTS",
+    "CURRENT_OPERATIONS",
+    "RELEVANT_CANONICAL_INTELLIGENCE",
+    "GRAPH_CONTEXT",
+    "PROOF_AND_AUTHORITY",
+    "CURRENT_OBJECTIVE",
+    "NEXT_ACTION",
+    "SUCCESSION_CONTEXT"
+  ],
+  "graph_entry_gates": [
+    "IDENTITY",
+    "OWNER_SCOPE",
+    "AUTHORITY",
+    "PRIVACY_CONSENT",
+    "PROVENANCE",
+    "EPISTEMIC_STATE",
+    "TEMPORAL_VALIDITY",
+    "SUPERSESSION_CONFLICT",
+    "APPLICABILITY",
+    "CONTEXT_BUDGET"
+  ],
+  "edge_requirements": [
+    "relationship_id",
+    "relationship_type",
+    "source_id",
+    "target_id",
+    "status",
+    "epistemic_state",
+    "provenance"
+  ],
+  "runtime_edge_requirements": [
+    "created_at",
+    "updated_at"
+  ],
+  "allowed_relationship_types": [
+    "DERIVED_FROM",
+    "SUPPORTS",
+    "CONTRADICTS",
+    "DEPENDS_ON",
+    "IMPLEMENTS",
+    "GOVERNS",
+    "AUTHORIZED_BY",
+    "USED_BY",
+    "CAUSED",
+    "RESULTED_IN",
+    "VERIFIED_BY",
+    "LEARNED_FROM",
+    "SUPERSEDES",
+    "SUCCEEDS",
+    "RELATED_TO",
+    "CONTEXTUALIZES",
+    "INVALIDATES",
+    "REFINES",
+    "CORRECTS",
+    "ENABLES",
+    "PRODUCES",
+    "APPLIES_TO"
+  ],
+  "retrieval_result_requirements": [
+    "object_id",
+    "why_selected",
+    "relationship_path",
+    "provenance",
+    "epistemic_state",
+    "applicability",
+    "freshness",
+    "conflicts_or_exclusions"
+  ],
+  "cold_naya_success": [
+    "DISCOVER",
+    "RESTORE",
+    "RETRIEVE",
+    "UNDERSTAND",
+    "AUTHORIZE",
+    "APPLY",
+    "ACT",
+    "OBSERVE",
+    "VERIFY",
+    "LEARN",
+    "HANDOFF",
+    "CONTINUE"
+  ],
+  "proof_law": {
+    "architecture_contract": "does not equal runtime proof",
+    "graph_retrieval": "does not equal behavioral influence",
+    "behavioral_influence": "does not equal causal proof",
+    "verification": "does not equal production proof"
+  },
+  "failure_behavior": {
+    "unknown": "remain UNKNOWN",
+    "missing_provenance": "exclude_or_block",
+    "failed_scope": "exclude_or_block",
+    "failed_authority": "block",
+    "conflict": "surface_and_apply_supersession_policy",
+    "stale_context": "exclude_or_mark_stale",
+    "budget_exceeded": "stop_expansion_and_record_exclusion"
+  },
+  "acceptance": "A cold authorized Naya can deterministically discover the canonical graph, traverse only governed relationships, explain why context was selected, preserve provenance and epistemic state, apply authorized intelligence, and leave a durable handoff. Runtime and behavioral claims require separate live evidence."
+}
