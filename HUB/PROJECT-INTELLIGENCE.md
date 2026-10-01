@@ -75,7 +75,7 @@ Turn the Hub concept into a real, working, intelligent application that scores 1
 ## 4. THE PHASED BUILD PLAN
 
 ### Phase 0 · Hygiene (NOW)
-- Rename `HUB/hub.html` → the Powercast player name (**OPEN DECISION §7** — PR #1272 vs #1273)
+- ✅ Rename completed on main: `HUB/hub.html` → `HUB/powercast-player.html` via merged PR #1273
 - Fix `NAYANET INDENITY PAGE.html` filename typo (→ `NAYANET IDENTITY PAGE.html`)
 - Snapshot the frozen baseline (visual reference capture per Design Contract)
 - Resolve Smart Share → Smart Connect naming in the concept file
@@ -142,7 +142,15 @@ Full scorecard, independent re-score, Shawn experiences it end-to-end: welcome �
 | Intelligence (Phase 6) | Capture pipeline, search, learning | Nine-node kernel; Smart Note pipeline |
 | **Scorecard keeper** | **Independent re-score every phase** | **Must NOT be the builder of the phase being scored** |
 
-All lanes coordinate on issue #554. No lane rewrites another lane's in-flight work. **All lanes are invited to bring a wiser, more powerful, more extraordinary approach to the table** — the spec is the floor, not the ceiling. If you can beat the concept's look, do it — but the scorecard decides, not taste.
+All lanes coordinate on issue #554. No lane rewrites another lane's in-flight work.
+
+### Team Naya standing finding law
+
+**ANY MATERIAL NOT-RIGHT FINDING → ISSUE #554 + EVIDENCE.**
+
+Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard, architecturally divergent or regression-risk findings must not disappear inside one agent's context. Record the surface, evidence/truth state, remaining hole and highest-value next action. Posting is coordination, not execution authority.
+
+ **All lanes are invited to bring a wiser, more powerful, more extraordinary approach to the table** — the spec is the floor, not the ceiling. If you can beat the concept's look, do it — but the scorecard decides, not taste.
 
 ---
 
@@ -160,9 +168,8 @@ All lanes coordinate on issue #554. No lane rewrites another lane's in-flight wo
 
 ## 7. OPEN DECISIONS (SHAWN'S)
 
-1. **Powercast player filename:** `powercast.html` (PR #1272, Naya 2's lane) vs `powercast-player.html` (PR #1273, Naya 4's lane). Same rename, 56 seconds apart — one survives.
-2. **Tech approach:** framework app vs disciplined vanilla componentization. (Naya 4 recommends framework — the 843KB file is proof vanilla doesn't self-organize at this scale.)
-3. **Merge order** for Phase 0/1 PRs.
+1. **Tech approach:** framework app vs disciplined vanilla componentization. Recommendation: framework/component architecture — the 843KB laboratory proves the current monolith does not self-organize at this scale.
+2. **Merge/order and implementation ownership** for Phase 0/1 work should be reconciled against current live main before execution.
 
 ---
 
