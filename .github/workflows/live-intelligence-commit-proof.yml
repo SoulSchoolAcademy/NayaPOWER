@@ -329,13 +329,17 @@ jobs:
               import hashlib
               expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
 
-          if capture_path:
-              matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
-              assert len(matches)==1, matches
+          ids=json.load(open("fresh-lesson-lineage-ids.json"))
+          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]] if capture_path else []
+          if len(matches)==1:
               e=matches[0]
               p=e["provenance"]
           else:
-              ids=json.load(open("fresh-lesson-lineage-ids.json"))
+              # A new Smart Note projection is committed by the prior job *after* SOURCE_SHA.
+              # The cold successor intentionally checks out SOURCE_SHA, so its registry may not
+              # contain the just-created projection yet. Reconstruct from this run's immutable
+              # lineage artifact instead of failing on that expected publication race.
+              assert len(matches)==0, matches
               e={"intelligent_block_id":ids["intelligent_block_id"]}
               p={
                 "event_id":ids["event_id"],
