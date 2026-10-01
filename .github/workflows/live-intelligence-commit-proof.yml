@@ -329,17 +329,29 @@ jobs:
               import hashlib
               expected={"expected_content":distilled,"content_hash":hashlib.sha256(distilled.encode()).hexdigest()}
 
-          ids=json.load(open("fresh-lesson-lineage-ids.json"))
-          matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]] if capture_path else []
-          if len(matches)==1:
-              e=matches[0]
-              p=e["provenance"]
+          if capture_path:
+              matches=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+              if len(matches)==1:
+                  e=matches[0]
+                  p=e["provenance"]
+              else:
+                  # A new Smart Note projection is committed by the prior job *after* SOURCE_SHA.
+                  # The cold successor intentionally checks out SOURCE_SHA, so its registry may not
+                  # contain the just-created projection yet. Reconstruct from this run's immutable
+                  # lineage artifact instead of failing on that expected publication race.
+                  assert len(matches)==0, matches
+                  ids=json.load(open("fresh-lesson-lineage-ids.json"))
+                  e={"intelligent_block_id":ids["intelligent_block_id"]}
+                  p={
+                    "event_id":ids["event_id"],
+                    "lineage_id":ids["lineage_id"],
+                    "relationship_id":ids["relationship_id"],
+                    "runtime_index_id":ids["index_id"],
+                    "checkpoint_id":ids["checkpoint_id"],
+                    "receipt_id":ids["receipt_id"],
+                  }
           else:
-              # A new Smart Note projection is committed by the prior job *after* SOURCE_SHA.
-              # The cold successor intentionally checks out SOURCE_SHA, so its registry may not
-              # contain the just-created projection yet. Reconstruct from this run's immutable
-              # lineage artifact instead of failing on that expected publication race.
-              assert len(matches)==0, matches
+              ids=json.load(open("fresh-lesson-lineage-ids.json"))
               e={"intelligent_block_id":ids["intelligent_block_id"]}
               p={
                 "event_id":ids["event_id"],
