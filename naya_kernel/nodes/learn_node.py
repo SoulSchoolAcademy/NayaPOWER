@@ -416,6 +416,9 @@ class LearnNode(NodeBase):
         )
 
     def register_cvo(self, cvo: Dict[str, Any]) -> Dict[str, Any]:
+        """Register a CVO record into the provenance store (§5 — CVO refs are
+        part of a learning's provenance; §3.4/§11.1 promotion law blocks
+        promotion on a fake CVO ref, P12)."""
         cid = cvo.get("cvo_id") or cvo.get("id")
         if not cid:
             raise ValueError("CVO record must carry an id")
@@ -423,6 +426,9 @@ class LearnNode(NodeBase):
         return {"registered": cid}
 
     def register_evidence(self, ref: str, evidence: Dict[str, Any]) -> Dict[str, Any]:
+        """Register an evidence record under its ref (§5 provenance record:
+        evidence refs; evidence lives in provenance, never substitutes for a
+        VERIFY receipt)."""
         self._evidence[ref] = evidence
         return {"registered": ref}
 
@@ -806,6 +812,9 @@ class LearnNode(NodeBase):
         return {"reported": True, "receipt_id": receipt["receipt_id"]}
 
     def clear_harm_window(self, learning_id: str, index: int = 0) -> Dict[str, Any]:
+        """Close a reported harm window (receipted) — an open window at or
+        above the physical-severity threshold blocks promotion and serving
+        (§4 hard refusal 5; §11.1 promotionEligible open-harm-window check)."""
         learning = self._get(learning_id)
         learning["harm_windows"][index]["open"] = False
         learning["harm_windows"][index]["closed_at"] = self._now()
@@ -844,6 +853,8 @@ class LearnNode(NodeBase):
         return {"stale": False}
 
     def regress(self, learning_id: str, reason: str) -> Dict[str, Any]:
+        """Transition a learning to REGRESSED (§8 lifecycle branch state;
+        §7 failure handling — regression can demote/retire, P28)."""
         learning = self._get(learning_id)
         self._transition(learning, "REGRESSED", reason)
         return {"state": "REGRESSED"}

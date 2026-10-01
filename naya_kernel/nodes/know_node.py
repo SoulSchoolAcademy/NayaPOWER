@@ -1300,6 +1300,10 @@ class KnowNode(NodeBase):
     # expiry sweep (§8 ttl/context end → EXPIRED + tombstone receipt)
     # ------------------------------------------------------------------
     def expire_sweep(self, now: Optional[str] = None) -> Dict[str, Any]:
+        """Sweep ACTIVE/CONTRADICTED blocks whose validUntil/ttl has lapsed
+        into EXPIRED (§7 temporal law: CURRENT(o,t) ⟺ valid_from ≤ t <
+        valid_until; expired blocks keep their tombstone, never silent
+        erasure per §15 lifecycle)."""
         now = now or _now_iso()
         expired = []
         for block in self.blocks.values():

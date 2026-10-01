@@ -914,6 +914,9 @@ class ConnectNode(NodeBase):
                          reason: str, execution_id: str,
                          evidence_refs: Optional[List[str]] = None
                          ) -> Dict[str, Any]:
+        """Move a connection between lifecycle states (§8.1 state machine:
+        every move recorded, illegal moves fail closed — REJECTED/INVALID
+        terminal)."""
         record = self.connections.get(connection_id)
         if record is None:
             raise KeyError(f"unknown connection {connection_id}")
