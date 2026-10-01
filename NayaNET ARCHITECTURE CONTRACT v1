@@ -1,0 +1,746 @@
+# 🔱☀️ NayaNET Architecture Contract v1
+
+**Status:** ARCHITECTURE / PRODUCT / SECURITY CONTRACT  
+**Authority:** NayaNET product direction; subordinate to explicit security and implementation evidence  
+**Purpose:** Define the technical truth behind NayaNET Identity, Recovery, Presence, Discovery, Intelligent Spaces, Permissions, Smart Notes, Collective Chain Technology, Consolidated Wisdom, Compounding Intelligence and Naya's role.
+
+---
+
+## 0. NORTH STAR
+
+> **NayaNET is a private intelligent network where humans and AI can connect, collaborate, communicate, learn, and deliberately share wisdom so useful intelligence can compound.**
+
+The experience is:
+
+**Push-button simple. Deeply intelligent underneath.**
+
+The network optimizes for:
+
+- maximum useful value per action
+- exceptional work and service
+- privacy by default
+- consent by design
+- human agency
+- useful intelligence over unnecessary data volume
+- progressive refinement instead of uncontrolled accumulation
+
+NayaNET is a network where **intelligence can find intelligence**.
+
+---
+
+## 1. ARCHITECTURAL BOUNDARIES
+
+NayaNET separates five concerns that must never be conflated:
+
+1. **Private identity** — account/security identity held by the platform.
+2. **Network identity** — Smart ID / alias presented to other participants.
+3. **Conversation identity** — identity shown inside a specific Intelligent Space.
+4. **Private intelligence** — a person's Naya / Super Brain context.
+5. **Shared wisdom** — information deliberately authorized for a defined sharing purpose.
+
+Adding an email, social account, phone number, passkey, or recovery factor is an **account-service capability**, not permission to inspect or connect to a person's Super Brain.
+
+A communication channel is not an intelligence system merely because it can carry information.
+
+---
+
+## 2. IDENTITY MODEL
+
+### 2.1 Smart Name
+
+A user-selected display name. It may be a real name, chosen name, or other name. NayaNET does not require a real-world name for basic participation.
+
+### 2.2 Smart ID
+
+A stable network identifier / alias. It is the primary identity other participants use inside the network unless the user intentionally reveals additional information.
+
+### 2.3 Smart Link
+
+A routable personal network address associated with the user's Smart ID.
+
+### 2.4 Smart Mail
+
+A private network communication channel. It does not imply public disclosure of an email address.
+
+### 2.5 Account identity
+
+The security principal used by the authentication system. It may be linked to recovery factors and optional external identifiers while remaining separate from public network identity.
+
+### 2.6 Rule
+
+**Never automatically equate Smart Name, Smart ID, account identity, public alias, legal identity, email address, or physical location.**
+
+---
+
+## 3. ACCOUNT CREATION
+
+The minimum intended onboarding path is:
+
+**Name → Smart ID → Account → Activation → Permanent credential**
+
+Email is optional for basic account creation.
+
+If a temporary activation credential is used, it must be:
+
+- cryptographically random
+- short-lived
+- single-use
+- scoped only to activation
+- stored only as a secure verifier/hash where persistence is required
+- invalidated immediately after activation
+- rate-limited and abuse-protected
+
+The platform must never store a user's permanent password in plaintext.
+
+---
+
+## 4. AUTHENTICATION / PASSKEYS / RECOVERY
+
+### 4.1 Passwords
+
+Use a modern password hashing scheme with unique salts and appropriate work factors. Password verification occurs server-side or through an equivalent trusted authentication provider.
+
+### 4.2 Sessions
+
+NayaNET remembers a **secure session**, not the user's password.
+
+Use secure, HttpOnly, SameSite-aware session cookies or an equivalent secure session mechanism. Never place long-lived password material in browser storage.
+
+### 4.3 Passkeys
+
+Passkeys / WebAuthn are the preferred high-security convenience factor where supported.
+
+They provide phishing-resistant authentication without requiring NayaNET to receive or store a biometric. Platform biometrics unlock the device-held credential; NayaNET receives cryptographic authentication proof, not the user's fingerprint or face data.
+
+### 4.4 Optional recovery channels
+
+Users may voluntarily add:
+
+- email
+- phone where appropriate
+- passkey / platform authenticator
+- recovery code / recovery bundle
+- other future recovery factors
+
+Adding one does **not** grant access to private intelligence.
+
+### 4.5 Recovery rule
+
+No administrator should be able to retrieve a user's permanent password.
+
+Recovery should establish a new authenticated credential or restore an authorized account factor; it should not reveal the old password.
+
+### 4.6 Recovery UX
+
+During onboarding, encourage users to establish at least one recovery method. The system should clearly explain the tradeoff: more recovery options improve recoverability but can increase the number of account attack surfaces.
+
+---
+
+## 5. PRESENCE
+
+NayaNET may maintain ephemeral presence information needed to operate the network.
+
+Presence should answer operational questions such as:
+
+- Is this account currently connected?
+- Is the participant available in this Intelligent Space?
+- When was the account last active, subject to the user's privacy settings?
+
+Presence is **not** a location-tracking system.
+
+Default principles:
+
+- do not expose IP addresses to other members
+- do not expose physical location unless voluntarily shared for a defined purpose
+- do not retain precise presence history longer than operationally necessary
+- separate presence service data from Super Brain data
+- allow privacy controls for availability visibility where practical
+
+A user can leave a space, disconnect, block, or stop receiving invitations without exposing a real-world identity.
+
+---
+
+## 6. DISCOVERY
+
+Discovery is a matching problem, not a public-directory problem.
+
+Users may voluntarily publish or privately provide discovery signals such as:
+
+- subjects
+- interests
+- knowledge areas
+- questions
+- goals
+- capabilities
+- optional geography
+- collaboration preferences
+
+The system should store only the minimum information necessary for the selected discovery purpose.
+
+### Discovery flow
+
+**User chooses what to reveal → system creates discovery representation → matching logic evaluates candidates → user reviews/approves connection → Intelligent Space is created.**
+
+The system must not reveal private profile attributes merely because they improve a match.
+
+---
+
+## 7. NAYA'S ROLE
+
+Naya is the intelligence layer / companion / orchestrator that can help a person understand, create, organize, discover, communicate and act.
+
+Naya is not:
+
+- an unrestricted surveillance layer
+- an invisible observer of private conversations
+- the owner of a user's Super Brain
+- an automatic recipient of every private conversation
+- a substitute for human consent
+
+### Important architectural distinction
+
+A **hub / communication service** may route messages, events, permissions or artifacts without itself being an AI.
+
+An **AI service** may analyze only the context it is explicitly authorized and technically able to receive.
+
+The platform must make these boundaries explicit in service permissions.
+
+---
+
+## 8. INTELLIGENT SPACES
+
+An Intelligent Space is a private collaboration boundary.
+
+Possible compositions include:
+
+- one human + Naya
+- one human + multiple AIs
+- multiple humans + Naya
+- multiple humans + multiple AIs
+- humans without AI
+
+A space owns its participant membership, messages, artifacts and permission state.
+
+Initial communication primitives:
+
+- text
+- voice/audio
+
+The architecture must remain extensible for:
+
+- files
+- documents
+- shared artifacts
+- richer media
+- collaborative workspaces
+
+### Space safety
+
+Participants must have direct controls to:
+
+- leave
+- block another participant
+- mute / stop receiving where supported
+- report abuse
+- manage invitations
+
+A user does not need to reveal their legal identity to use these controls.
+
+---
+
+## 9. PERMISSIONS / CONSENT
+
+Consent is a first-class system event, not a checkbox buried in a UI.
+
+A permission event should be represented with enough metadata to answer:
+
+- **WHO** granted permission?
+- **WHAT** was authorized?
+- **WITH WHOM**?
+- **FOR WHAT PURPOSE**?
+- **WHEN** was it granted?
+- **FOR HOW LONG**, if applicable?
+- **CAN IT BE REVOKED**?
+- **WHAT VERSION / SCOPE** was accepted?
+
+Permission should be explicit for:
+
+- sharing a Smart Note
+- contributing to collective intelligence
+- exposing discovery attributes
+- inviting a participant into a private space
+- allowing an AI to process a defined artifact or context
+
+### Revocation
+
+Revocation must prevent future use of the affected permission wherever technically possible. Previously generated derivatives may require lineage-aware handling, deletion, suppression, or reprocessing depending on what was produced and the stated sharing purpose.
+
+### Core rule
+
+**Private by default. Shared by deliberate permission.**
+
+---
+
+## 10. SMART NOTES
+
+Smart Notes are structured units of useful learning.
+
+Supported note classes include:
+
+- insight
+- lesson
+- breakthrough
+- decision
+- mistake
+- question
+- goal
+- opportunity
+- discovery
+- wisdom
+
+A Smart Note should carry provenance and scope sufficient to distinguish:
+
+- who created it
+- where it came from
+- whether it is private
+- whether it is shared
+- what permission governs sharing
+- what intelligence system may use it
+
+A Smart Note is not automatically collective knowledge.
+
+---
+
+## 11. COLLECTIVE CHAIN TECHNOLOGY (CTC)
+
+**Collective Chain Technology** is the NayaNET conceptual and eventual technical pattern for moving deliberately shared learning through a controlled intelligence pipeline.
+
+Canonical flow:
+
+**PRIVATE EXPERIENCE**
+
+→ **SMART NOTE**
+
+→ **CONSENT**
+
+→ **SHARED WISDOM**
+
+→ **COLLECTIVE INTELLIGENCE**
+
+The chain must preserve provenance and permission boundaries.
+
+The term “chain” describes the flow and lineage of intelligence; it must not be presented as a blockchain unless a blockchain is actually used.
+
+No private conversation is automatically promoted into collective knowledge.
+
+---
+
+## 12. CONSOLIDATED WISDOM
+
+The system should optimize for **useful intelligence, not maximum storage volume**.
+
+Where appropriate, consolidation can identify:
+
+- duplicate knowledge
+- repeated lessons
+- overlapping insights
+- superseded information
+- stronger versions of existing knowledge
+
+The objective is:
+
+**many experiences → fewer, clearer, more useful lessons**
+
+The system must preserve provenance and avoid destructive merging when distinctions matter.
+
+A consolidated lesson should be traceable to its permitted source lineage.
+
+---
+
+## 13. COMPOUNDING INTELLIGENCE SYSTEM (CIS)
+
+CIS is the refinement cycle through which useful intelligence becomes progressively more valuable over time.
+
+Canonical temporal layers:
+
+**MOMENT → DAY → WEEK → MONTH → YEAR → LIFETIME**
+
+The system should not blindly retain every intermediate representation forever.
+
+Instead, each layer should extract and preserve the highest-value learning needed by the next layer, while retaining lineage and auditability where required.
+
+Examples:
+
+- daily intelligence extracts the day's useful signal
+- weekly intelligence consolidates the week's strongest learning
+- monthly intelligence identifies durable patterns
+- yearly intelligence identifies long-horizon lessons
+- lifetime intelligence preserves enduring wisdom
+
+This is an optimization problem: **maximum useful intelligence at the moment it matters with minimum unnecessary duplication.**
+
+---
+
+## 14. PRIMARY INTELLIGENCE SYSTEM (PIS)
+
+PIS is the individual intelligence layer responsible for a person's private context, memory, goals and useful personalization.
+
+PIS must remain logically and permissionally separate from collective intelligence.
+
+A collective system may receive a permitted Smart Note without receiving the user's entire Super Brain.
+
+Likewise, an Intelligent Space may receive only the artifacts and context needed for its purpose.
+
+---
+
+## 15. DATA SEPARATION
+
+At minimum, the eventual implementation should maintain logical separation between:
+
+1. account/authentication records
+2. network identity records
+3. presence records
+4. discovery representation
+5. Intelligent Space membership
+6. space communications
+7. private Super Brain / PIS data
+8. Smart Notes
+9. consent / permission events
+10. collective intelligence representations
+11. consolidated wisdom lineage
+12. CIS summaries
+
+Access should be granted by service and purpose, not by broad database visibility.
+
+---
+
+## 16. SECURITY MODEL
+
+The system should be built around least privilege, defense in depth and explicit trust boundaries.
+
+Required principles include:
+
+- server-side authorization
+- object-level access checks
+- encrypted transport
+- encryption at rest where supported/appropriate
+- secure credential hashing
+- rate limiting
+- abuse prevention
+- audit events for sensitive actions
+- CSRF protections where applicable
+- XSS-safe rendering
+- safe file handling when files are introduced
+- secret management outside source code
+- no client-side trust for permissions
+
+The UI may communicate privacy principles, but the backend must enforce them.
+
+---
+
+## 17. BLOCK / LEAVE / REPORT
+
+Safety does not depend on knowing someone's real identity.
+
+The minimum interaction model is:
+
+**Do not want this interaction? → Leave.**
+
+**Do not want this person? → Block.**
+
+**Harmful or abusive behavior? → Report.**
+
+These actions should be enforced by the service layer and reflected immediately in the user's experience.
+
+The network principle is:
+
+> **Do no harm to one another.**
+
+This is a product behavior contract, not merely a slogan.
+
+---
+
+## 18. NOT A FULLY DECENTRALIZED CLAIM YET
+
+NayaNET may evolve toward decentralized trust, identity or infrastructure patterns.
+
+Until those mechanisms are actually implemented and independently verified, product language should say **private intelligent network** or **designed for privacy / distributed trust**, rather than claiming a fully decentralized architecture.
+
+Likewise, Collective Chain Technology must not be marketed as blockchain unless blockchain infrastructure is actually part of the implementation.
+
+Truthful architecture is part of the product.
+
+---
+
+## 19. IMPLEMENTATION STACK — PREFERRED SHAPE
+
+The exact vendor choices may evolve, but the architecture should remain compatible with a practical web stack:
+
+**Frontend** → Next.js / React  
+**Authentication** → secure password + WebAuthn/passkeys + optional recovery providers  
+**Session** → secure server-managed/session-token model  
+**Database** → relational store with row/object-level authorization  
+**Realtime** → WebSocket / realtime provider for space messaging and presence  
+**AI** → Naya / approved model gateway with explicit context scopes  
+**Storage** → private object storage for future files  
+**Search / discovery** → structured filters first; embeddings/ranking only where they add value  
+**Hosting** → Vercel or equivalent managed infrastructure  
+
+Open-source components may be used wherever they improve control, cost, portability or transparency.
+
+No special “NayaNET API” is required to make the core architecture work. The intelligence comes from ordinary secure systems engineering plus AI services where actual inference is needed.
+
+---
+
+## 20. WHAT REQUIRES AI VS. WHAT DOES NOT
+
+### Deterministic software should handle:
+
+- account creation
+- password verification
+- passkey verification
+- sessions
+- permissions
+- membership
+- blocking
+- leaving spaces
+- presence
+- routing
+- notification rules
+- structured discovery filters
+- consent records
+- data lineage
+- retention rules
+- consolidation bookkeeping
+
+### AI should handle where useful:
+
+- interpreting natural-language goals
+- summarizing permitted content
+- extracting lessons from permitted content
+- semantic matching where keyword/rule systems are insufficient
+- generating personalized explanations
+- assisting discovery
+- helping turn experiences into Smart Notes
+- identifying patterns across authorized knowledge
+
+**Do not use an LLM where deterministic logic is sufficient.**
+
+---
+
+## 21. DISCOVERY ENGINE PRINCIPLE
+
+The network does not require a central AI that “knows everyone.”
+
+A discovery service can operate as a deterministic pipeline:
+
+**declared interests → normalized topics → candidate index → eligibility/permission filters → ranking → invitation**
+
+AI can optionally improve normalization or semantic ranking, but the privacy boundary and authorization checks remain deterministic.
+
+The same principle applies to presence: the software knows who is online because authenticated clients emit presence events, not because an AI watches people.
+
+---
+
+## 22. NETWORK INTELLIGENCE PRINCIPLE
+
+Naya can be the intelligent interpreter and orchestrator of the network without owning all network intelligence.
+
+A person can ask:
+
+> “Naya, help me find someone who understands this.”
+
+The system can then:
+
+1. interpret the request
+2. derive the minimum discovery criteria
+3. query authorized discovery data
+4. rank eligible matches
+5. present choices to the user
+6. obtain permission/invitation
+7. create an Intelligent Space
+8. keep unrelated personal data private
+
+This is the preferred pattern: **AI interprets; software enforces.**
+
+---
+
+## 23. PRODUCT EXPERIENCE CONTRACT
+
+The user experience is:
+
+**ARRIVE → IDENTIFY → ENTER → MEET NAYA → EXPLORE → CREATE → CONNECT → LEARN → SHARE WISDOM → GROW → BECOME WISER**
+
+The Intelligent Hub is the first visual expression of this architecture.
+
+Its design law is:
+
+> **SHOW → REVEAL → EXPLAIN → INVITE**
+
+The Hub should show the architecture as a living spatial field instead of presenting a conventional dashboard.
+
+---
+
+## 24. FRONT DOOR CONTRACT
+
+The Front Door remains intentionally minimal:
+
+**INTELLIGENT INTERNET BEGINS HERE**
+
+# NayaNET
+
+*A living intelligent network where humans and AI connect, create, and grow together.*
+
+**YOUR SMART ID**
+
+`Enter your name`
+
+**ENTER NayaNET →**
+
+The Front Door does not explain the full architecture. The Hub reveals it progressively.
+
+---
+
+## 25. INTELLIGENT HUB V1 CONTRACT
+
+The Hub contains **12 interactive intelligence elements around Naya**:
+
+1. Smart Identity
+2. Super Brain
+3. Intelligent Spaces
+4. Naya Power
+5. Smart Notes
+6. Collective Chain
+7. Consolidated Wisdom
+8. Compounding Intelligence
+9. MAXESS
+10. Five-Day Challenge
+11. Mission & Laws
+12. Your Network
+
+Each element must answer:
+
+- What is it?
+- Why does it matter?
+- What does it do for me?
+- What can I do?
+
+The two primary first actions are:
+
+**DISCOVER YOUR AI SCORE**  
+**START THE 5-DAY CHALLENGE**
+
+---
+
+## 26. MOBILE-FIRST INTERACTION
+
+Mobile is the primary composition.
+
+The constellation must recompose rather than merely shrink.
+
+Touch targets must remain confident and readable.
+
+Desktop expands the spatial field without changing the underlying information architecture.
+
+Accessibility requirements remain mandatory:
+
+- semantic controls
+- keyboard navigation
+- visible focus
+- reduced motion
+- sufficient contrast
+- no motion-only meaning
+
+---
+
+## 27. TRUTH CONTRACT
+
+The system must distinguish:
+
+**IMPLEMENTED**  
+**CONCEPT**  
+**COMING LATER**
+
+Never fabricate users, network activity, collective learning, security guarantees or AI behavior.
+
+The interface may reveal the future architecture, but claims must match implementation evidence.
+
+---
+
+## 28. BUILD ORDER
+
+The architecture should be implemented in this order:
+
+1. identity and authentication foundation
+2. secure sessions and recovery
+3. private user profile / Smart Identity
+4. Intelligent Spaces and membership
+5. realtime messaging and presence
+6. blocking / leaving / reporting
+7. Smart Notes and provenance
+8. consent / permission events
+9. discovery index and matching
+10. Naya orchestration over authorized context
+11. Collective Chain pipeline
+12. consolidation / lineage
+13. CIS temporal refinement
+14. analytics and operational observability
+15. decentralized components only where they create measurable value
+
+Do not build distributed complexity before the simple private network works.
+
+---
+
+## 29. ARCHITECTURAL TEST
+
+A feature is not complete because the UI looks right.
+
+It is complete when:
+
+**UI → authorization → service → data boundary → result → audit/verification**
+
+all agree.
+
+For every sensitive operation, ask:
+
+> **Can the server enforce this rule even if the client is malicious?**
+
+If not, the architecture is incomplete.
+
+---
+
+## 30. FINAL LAW
+
+NayaNET exists to make useful intelligence easier to create, preserve, connect, share deliberately and compound.
+
+It does not require people to surrender their identities.
+
+It does not require private conversations to become collective knowledge.
+
+It does not require an AI to control every part of the network.
+
+The strongest architecture is:
+
+**deterministic where rules matter**
+
+**intelligent where interpretation matters**
+
+**private where privacy matters**
+
+**consensual where sharing matters**
+
+**simple where humans interact**
+
+**deep where the system does the work**
+
+### North Star
+
+> **Maximum value per action. Exceptional work. Exceptional service.**
+>
+> **Private by default. Consent by design.**
+>
+> **Intelligence that compounds.**
+>
+> **A network where intelligence can find intelligence.**
+>
+> **Naya at the center.**
