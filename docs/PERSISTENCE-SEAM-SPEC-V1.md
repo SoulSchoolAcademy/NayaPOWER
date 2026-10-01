@@ -1,0 +1,90 @@
+# Persistence Seam Spec V1 — kernel receipts → governed ledger
+
+**Status:** PROPOSED (Naya 2, 2026-10-01). For Naya 4's agreement before wiring.
+**Canonical authority:** `NAYANODE/0101-PERSISTENCE-CONTRACT-V1.md` (12 required fields). This spec
+implements the seam *under* that contract. It does not replace it.
+**Withdrawn:** Naya 2's earlier `naya-receipt-contract/1` draft (#554/5934427074) is withdrawn as a
+competing format. Its lineage/verification content is folded here as seam convention.
+
+## 1. The three layers (do not conflate)
+
+| Layer | What | Producer | Where it lives |
+|---|---|---|---|
+| Common persistence metadata | The 12 contract fields | Seam | `nayanet_smart_ledger` columns |
+| Execution evidence | Kernel decision receipt | `naya_kernel` | `value` jsonb |
+| Typed value receipt | V2.1 `ALIGNMENT_DECISION` / `CONTRIBUTION_VALUE` | Calculator / assessor | `value` jsonb, validated by `nayanet_validate_v2_1_value_receipt` on every write |
+
+## 2. Existing write path (verified live 2026-10-01 — extend, don't duplicate)
+
+```
+kernel receipt (dict)
+  → kernel/persistence_seam.py :: project_kernel_receipt()   [NEW, this package]
+  → nayanet_record_ledger_event(...)                          [EXISTS, SECURITY DEFINER]
+  → nayanet_smart_ledger row                                  [EXISTS]
+```
+
+Alternative existing path: `INSERT INTO nayanet_execution_receipts` → trigger
+`nayanet_execution_receipt_to_smart_ledger` → same function. Kernel decision receipts use the
+direct function path (`source_table='naya_kernel_decision'`), not the execution-receipts table.
+
+## 3. Field map — contract → producer → validation → storage
+
+| # | Contract field | Meaning | Type | Producer | Validation | Ledger storage |
+|---|---|---|---|---|---|---|
+| 1 | `object_id` | Durable identity | uuid | Seam (DB `gen_random_uuid()`) | PK | `ledger_event_id` |
+| 2 | `owner_id` | Data owner (auth identity) | uuid | Seam from `auth.uid()`; **never the kernel** | `LEDGER_OWNER_MISMATCH` in function; FK `auth.users`; RLS read `auth.uid()=owner_id` | `owner_id` |
+| 3 | `owner_scope` | Visibility | enum | Seam from request context (default `PRIVATE`) | CHECK `PRIVATE/SHARED/COLLECTIVE/PUBLIC` | `privacy_classification` |
+| 4 | `created_at` | Record creation | timestamptz | DB `now()` | NOT NULL | `created_at` |
+| 5 | `updated_at` | Last mutation | timestamptz | — | **GAP:** no column (append-only). Convention: `metadata.updated_at` | `metadata` |
+| 6 | `schema_version` | Contract version | text | DB hardcoded | NOT NULL | `schema_version` = `'1.0.0'` |
+| 7 | `provenance` | How this came to be | jsonb object | Kernel supplies `{node_id, kernel_version, kernel_sha, config_hash}`; seam adds `{received_at, adapter_version}` | must be object | `metadata` (+ function adds `assessment_state`, `value_receipt_type`, `value_receipt_hash`) |
+| 8 | `truth_state` | Epistemic state | enum | — | **GAP:** no column. Carried by `status` + `verification` jsonb | `status`, `verification` |
+| 9 | `status` | Lifecycle | enum | Seam (initial `RECORDED`) | CHECK `RECORDED/VERIFIED/QUALIFIED/SUPERSEDED/BLOCKED/FAILED` | `status` |
+| 10 | `superseded_by` | Forward supersession pointer | uuid/null | — | **GAP:** no forward column. Derivable: `SELECT … WHERE supersedes_ledger_event_id = X` | (reverse query) |
+| 11 | `lineage` | Backward chain | object | Seam: `p_parent_ledger_event_id`; DB resolves `previous_chain_hash` | self-FK; hash chain | `parent_ledger_event_id`, `previous_chain_hash`, `event_hash` |
+| 12 | `content_hash` | Integrity of content | hex(64) | DB: `nayanet_smart_ledger_hash(...)` | recomputed in-function | `event_hash` |
+
+Seam-managed extras: `event_type='DECISION'`, `source_table='naya_kernel_decision'`,
+`source_id` = kernel `decision_id`, `event_at` = kernel `issued_at`, `evidence_refs=[]`,
+`verification={'state':'UNVERIFIED'}`, `outcome={}`, `learning_refs=[]`.
+
+## 4. Boundary answers (Naya 4's question, 5934391765)
+
+- **Who assigns `object_id`?** The seam/database (`ledger_event_id`, `gen_random_uuid()` at insert).
+  The kernel's `receipt_id` / `decision_id` travel as `source_id`, never as `object_id`.
+- **Who assigns `owner_id`?** The seam, from `auth.uid()` of the authenticated caller, passed as
+  `p_owner_id`. The function raises `LEDGER_OWNER_MISMATCH` if they differ. The kernel never sees
+  owner identity. Seat labels ("naya-2") are worker descriptions, not security identities.
+- **Does the kernel emit `inputs_hash`?** No (verified at kernel `f58adf08`). It emits `receipt_hash`
+  (SHA-256 over the canonical body *including* `issued_at`) and `issued_at`.
+- **Does the kernel emit `executed_at`?** Not by that name. `issued_at` is the execution timestamp
+  (receipt created at the end of `decide()`). The seam records `received_at` in provenance; it must
+  not invent `executed_at` or `observed_at`.
+- **Direct emission vs adapter wrapping?** **Adapter wrapping.** The kernel emits its native receipt
+  unchanged; the seam validates `receipt_hash` with the kernel's own canonicalization, then projects
+  onto the function parameters. No kernel changes required.
+
+## 5. Enforcement evidence (all verified live against production, read-only, 2026-10-01)
+
+| Claim | Evidence | Verdict |
+|---|---|---|
+| Idempotent writes | Pre-insert SELECT + `unique_violation` handler returning existing row + `UNIQUE(owner_id, source_table, source_id)` | **DB-ENFORCED** (triple) |
+| Owner-isolated reads | RLS policy `nayanet_smart_ledger_select_own`: `auth.uid() = owner_id` (SELECT, authenticated) | **DB-ENFORCED** |
+| Owner-isolated writes | `LEDGER_OWNER_MISMATCH` raised in `nayanet_record_ledger_event` when `auth.uid()` ≠ `p_owner_id` | **DB-ENFORCED** (service_role bypasses by design — `auth.uid()` is null) |
+| Value-receipt validation | `nayanet_validate_v2_1_value_receipt(p_value)` called on every write | **DB-ENFORCED** |
+| Hash-chain integrity | `nayanet_smart_ledger_hash(...)` computed in-function; `previous_chain_hash` linked | **DB-ENFORCED** |
+| Status / privacy vocabularies | CHECK constraints | **DB-ENFORCED** |
+| Lineage referential integrity | Self-FKs on `parent_ledger_event_id`, `supersedes_ledger_event_id`, `qualified_by_ledger_event_id` | **DB-ENFORCED** |
+| Source identity (`repo_sha` = actual) | — | **SEAM CHECK ONLY**, not DB-enforced |
+| `updated_at`, `truth_state`, `superseded_by` columns | — | **GAPS** (conventions documented above) |
+
+## 6. Corrections to earlier Naya 2 claims
+
+1. `naya-receipt-contract/1` — withdrawn as a competing format (this spec replaces it).
+2. "owner_id is the RLS boundary" — true for reads; writes are enforced by `LEDGER_OWNER_MISMATCH`
+   inside the SECURITY DEFINER function, not by an INSERT RLS policy (none exists; authenticated
+   writes go through the function, which checks).
+3. "Database-enforced outcome rules" — the V2.1 *receipt validation* is enforced on every write;
+   the UNVERIFIED→VERIFIED_PASS *lifecycle* is seam convention in `verification` jsonb, not a CHECK.
+4. Static schema mapping is not DB integration — stated as such; the DB setup for live exercise is
+   in `docs/PERSISTENCE-REPRODUCE.md`.
