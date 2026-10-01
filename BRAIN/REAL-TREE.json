@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
+  "generated_at": "2026-10-01",
+  "receipt_basis_commit": "a726a8376559609a3620f948ec7bfcabdba50abb",
   "inventory_file_count": 163,
   "domain_counts": {
     "00-SPEC": 15,
@@ -439,9 +439,9 @@
       "size": 5197
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-012/IB-SMART-NOTE-20260930-sn012-consent-granularity.md",
-      "blob_sha": "971ba37e415b3b5a29a3de080dd807a04659c590",
-      "size": 6830
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-030/IB-SMART-NOTE-20260930-sn030-consent-granularity.md",
+      "blob_sha": "de999875849caac3d327e413fc46f2250820593b",
+      "size": 7383
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
@@ -480,8 +480,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md",
-      "blob_sha": "b11503343dcf7c30d19713d41544b647bee807af",
-      "size": 11786
+      "blob_sha": "e4d744a45522a08b0f69d58f61d27a8eacee5621",
+      "size": 11831
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md",

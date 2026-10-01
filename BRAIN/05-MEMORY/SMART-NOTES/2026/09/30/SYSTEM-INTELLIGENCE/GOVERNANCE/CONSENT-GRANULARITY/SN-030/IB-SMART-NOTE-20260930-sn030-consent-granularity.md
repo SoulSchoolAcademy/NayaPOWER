@@ -1,10 +1,10 @@
-# IB-SMART-NOTE-20260930-sn012-consent-granularity
+# IB-SMART-NOTE-20260930-sn030-consent-granularity
 
-> **ID disambiguation (2026-09-30):** a second, unrelated note also carries the ID `SN-012`: `SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md` (NayaPOWER operating model). This file is the **consent-granularity** note. The IDs were not renumbered — the Human Director owns the ID decision.
+> **ID renumber receipt (2026-10-01):** this note was claimed as `SN-012` at 2026-09-30T14:41Z (commit 2295b0ea), six minutes AFTER the unrelated NayaPOWER operating-model note claimed `SN-012` at 2026-09-30T14:35Z (commit c6a62d14). Both numbers merged into main — a broken collision-registry invariant (two notes, one ID). Per the seat-level rule — verify max SN on main + scan open SN PRs before claiming; later claimer renumbers (precedent: naya4 #1229 renumbered SN-017→SN-020 2026-10-01T04:01Z; this lane #1233 renumbered SN-018→SN-021) — this note moves `SN-012` → `SN-030` (SN-030 verified free vs main max SN-016 and open-SN PR claims 017/018/019/020/021/022/023/024/025/026/027/028/029). The earlier-claiming operating-model note keeps `SN-012`. Old path: `SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-012/IB-SMART-NOTE-20260930-sn012-consent-granularity.md` (blob 971ba37e). Content otherwise unchanged.
 
 ## IDENTITY
 
-- **Smart Note ID:** SN-012
+- **Smart Note ID:** SN-030
 - **Title:** Consent-Granularity Reconciliation — Entry Consent Satisfies "Collective by Consent"
 - **Class:** REUSABLE INTELLIGENCE
 - **Capture type:** Discovery / Principle
