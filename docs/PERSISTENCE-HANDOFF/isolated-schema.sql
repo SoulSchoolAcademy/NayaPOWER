@@ -107,7 +107,20 @@ exception when unique_violation then
  select * into v_existing from public.nayanet_smart_ledger where owner_id=p_owner_id and source_table=p_source_table and source_id=p_source_id limit 1;
  if found then return v_existing; end if; raise;
 end; $$;
+-- Grants: mirror Supabase's role model. The anon/authenticated roles must
+-- exist before the REVOKE (a REVOKE naming a nonexistent role fails the
+-- whole statement, silently leaving PUBLIC with EXECUTE).
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='anon') THEN
+    CREATE ROLE anon NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='authenticated') THEN
+    CREATE ROLE authenticated NOLOGIN;
+  END IF;
+END $$;
 revoke execute on function public.nayanet_record_ledger_event(uuid,text,text,text,timestamptz,uuid,text,text,jsonb,jsonb,jsonb,jsonb,jsonb,jsonb,uuid) from public,anon,authenticated;
+-- The writer is SECURITY DEFINER; authenticated callers reach it by grant.
+grant execute on function public.nayanet_record_ledger_event(uuid,text,text,text,timestamptz,uuid,text,text,jsonb,jsonb,jsonb,jsonb,jsonb,jsonb,uuid) to authenticated;
 
 -- Test-harness grants: the harness connects as the owner roles for SELECT
 -- (RLS applies) and as postgres for the writer (security definer, as in prod).
