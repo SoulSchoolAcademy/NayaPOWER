@@ -2,9 +2,22 @@
 
 **Projection of:** `HUB/PROJECT-INTELLIGENCE.md` + `HUB/DESIGN-CONTRACT.md` (canonical — they win on conflict).
 **Audience:** Naya seats and builder agents. **Optimize for:** a cold builder becoming an elite Hub designer on first read.
-**Standard:** every project intelligence ships three projections — HUMAN (humans), AI (this file, builders), MACHINE (`PROJECT-INTELLIGENCE.MACHINE.json`, parsers).
+**Standard:** one project meaning, purpose-built views — HUMAN, NAYA/NIA, AI BUILDER, MACHINE and PROOF. These are projections, not separate truth systems.
 
 ---
+
+## INHERITED DESIGN INTELLIGENCE
+
+Read `NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md` before substantive Hub design/build work.
+
+Companion projections:
+- `PROJECT-INTELLIGENCE.HUMAN.md`
+- `PROJECT-INTELLIGENCE.NAYA.md`
+- `PROJECT-INTELLIGENCE.MACHINE.json`
+- `PROJECT-INTELLIGENCE.FEATURES.json`
+- `PROJECT-INTELLIGENCE.PROOF.md`
+
+**Standing Team Naya law:** if you see something materially not-right, post it on Issue #554 with evidence. Do not silently bury the finding or broaden an unrelated PR to fix it without coordination.
 
 ## 0. READ THIS FIRST
 
