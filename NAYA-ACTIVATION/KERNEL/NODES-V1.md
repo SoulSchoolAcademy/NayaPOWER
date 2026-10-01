@@ -12,37 +12,54 @@ builders don't self-certify; read-only verification of `naya4/*`).
 
 | Responsibility | Node ID | Branch | Verified SHA | Suite | Result | Verified |
 |---|---|---|---|---|---|---|
-| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | 245fe52e8a8d17b7a670cace2a5c8ff358d6d184 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~19:55 PDT |
-| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | 245fe52e8a8d17b7a670cace2a5c8ff358d6d184 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~19:55 PDT |
-| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | 245fe52e8a8d17b7a670cace2a5c8ff358d6d184 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~19:55 PDT |
+| SELF | NAYA-KERNEL-SELF | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_self_node.py | 37/37 pass | 2026-09-30 ~20:55 PDT |
+| LAW | NAYA-KERNEL-LAW | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_law_node.py | 27/27 pass | 2026-09-30 ~20:55 PDT |
+| ACT | NAYA-KERNEL-ACT | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_act_node.py | 32/32 pass | 2026-09-30 ~20:55 PDT |
+| KNOW | NAYA-KERNEL-KNOW | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_know_node.py | 50/50 pass | 2026-09-30 ~20:55 PDT |
+| PROVE | NAYA-KERNEL-PROVE | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_prove_node.py | 34/34 pass | 2026-09-30 ~20:55 PDT |
+| CONNECT | NAYA-KERNEL-CONNECT | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_connect_node.py | 49/49 pass | 2026-09-30 ~20:55 PDT |
+| VERIFY | NAYA-KERNEL-VERIFY | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_verify_node.py | 75/75 pass | 2026-09-30 ~20:55 PDT |
+| LEARN | NAYA-KERNEL-LEARN | naya4/nine-node-kernel-v1 | d5353d8f2ac321d20ddfd04aae54ca81dbfe27c0 | tests/test_nodes/test_learn_node.py | 58/58 pass | 2026-09-30 ~20:55 PDT |
 
-Kernel-wide at that SHA: `tests/test_nodes/` 111/111 pass, `tests/test_kernel.py`
-5/5 pass. Verified in an ephemeral /tmp worktree (clean public clone, no seat
+Kernel-wide at that SHA: `tests/test_nodes/` 367/367 pass. Verified in an
+ephemeral /tmp worktree (clean public clone at the exact SHA, no seat
 credentials), read-only; worktree removed after the run.
+
+Spec-fidelity spot-review (adversarial, LEARN this run): LEARN implements the
+reconciled `specs/LEARN-NODE-SPEC-CANDIDATE.md` (Naya 4's merge of the
+NODE_8 LEARN PDF — builder sign-in on #554, 2026-09-30 ~20:35 PDT). Verified
+present in code: VERIFIED_PASS-only bounded intake, LearningKey dedupe,
+duplicate + contradiction reconciliation, promotionEligible V^P^R^A^B^N^C +
+condition-0 calculusVersion gating, seven hard refusals, self-dealing block,
+CORE-class/governance/identity → BRIEF routing, propose-only calibration,
+hash-bound receipts, validity envelopes, generalization ceiling,
+holdout-contamination fields, inert investigation placeholders. The node is
+CANDIDATE code — not ratified, not merged, not deployed.
 
 ## Pending nodes (scaffold stubs)
 
-KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE — 2 acceptance tests each on the
-scaffold baseline; not yet implemented as candidates. `Kernel.decide()` raises
-`NotImplementedError` until all nine gates are built. No wiring for a stub:
-activation binds only verified-green nodes.
+EVOLVE — 2 stub acceptance tests only; not yet implemented as a candidate.
+No wiring for a stub: activation binds only verified-green nodes.
+
+`Kernel.decide()` exists at this SHA but exercises only the SELF and ACT
+gates — full nine-node wiring (GAP-A closure) is the builder's sequenced-next
+unit tonight, per their #554 sign-in. No activation binding on decide() until
+it is verified to run all nine gates.
 
 ## Standing open questions (carried, not decided here)
 
 - Pipeline slot 8 is unassigned (manifest: LEARN claims 9th, EVOLVE is "last").
-- Spec fidelity beyond each node's own documented contract is UNVERIFIED:
-  no node-spec PDFs have landed in `~/workspace/user/files/` as of 19:55 PDT,
-  and no reconciled spec is named on #554 — code matches its stated contract
-  (1017-line ACT implementation, 32 genuine acceptance tests), not an
-  independently published spec.
+- All eight verified nodes are CANDIDATE implementations of candidate specs;
+  ratification is Shawn's, human-only.
 
 ## What this unlocks
 
-- Morning cold-acceptance receipt can instantiate SELF, LAW, ACT today;
-  the full nine-node receipt awaits KNOW/PROVE/CONNECT/VERIFY/LEARN/EVOLVE.
-- When a node lands and verifies green, append its row here on the next
-  `activation/nine-node-wiring` revision (before 05:00 PDT per the watch);
-  after that, wire in the morning report instead of new PRs.
+- Morning cold-acceptance receipt can instantiate SELF, LAW, ACT, KNOW, PROVE,
+  CONNECT, VERIFY, LEARN; EVOLVE awaits implementation.
+- The full nine-node acceptance receipt awaits EVOLVE implementation plus the
+  `Kernel.decide()` nine-gate wiring.
+- Further revisions land on this branch before 05:00 PDT per the watch; after
+  that, wiring batches into the morning report.
 
 Lane: `activation/*` only. No touch on `naya_kernel/`, `naya4/*`, or main.
 Sign-in/out on issue #554.
