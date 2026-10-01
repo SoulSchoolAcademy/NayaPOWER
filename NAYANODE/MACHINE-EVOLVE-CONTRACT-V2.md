@@ -1,5 +1,7 @@
 # MACHINE-EVOLVE-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — EVOLVE semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** CANONICAL MACHINE CONTRACT — implementation qualification layer. Runtime proof is separate.
 
 ## Role
@@ -49,3 +51,10 @@ Prefer deterministic bounded work; expose latency, retrieval count, evidence cou
 
 ## Acceptance
 Unit tests cover happy and negative paths. Integration tests prove node-to-node contracts. Runtime tests must use legitimate authenticated identity and real substrate. Independent verification is required for VERIFIED. Production proof is a separate gate.
+
+
+## Ultimate-lock evolution boundary
+- Keep succession state, evolution-proposal state and production-maturity state separate.
+- Current canonical truth outranks stale successor packages.
+- CONTINUITY ≠ AUTHORITY; PROPOSAL ≠ ADOPTION; DEPLOYED ≠ PRODUCTION_PROVEN; SELF_BUILDING ≠ SELF_AUTHORIZATION.
+- EVOLVE proposes/version-controls change; consequential mutation flows through existing LAW → ACT → VERIFY rather than direct EVOLVE mutation.
