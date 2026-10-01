@@ -1,5 +1,7 @@
 # MACHINE-CONNECT-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — CONNECT semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** CANONICAL MACHINE CONTRACT — implementation qualification layer. Runtime proof is separate.
 
 ## Role
@@ -50,3 +52,10 @@ Prefer deterministic bounded work; expose latency, retrieval count, evidence cou
 
 ## Acceptance
 Unit tests cover happy and negative paths. Integration tests prove node-to-node contracts. Runtime tests must use legitimate authenticated identity and real substrate. Independent verification is required for VERIFIED. Production proof is a separate gate.
+
+
+## Ultimate-lock boundary
+- RELATED ≠ RELEVANT ≠ APPLICABLE ≠ TRUE ≠ AUTHORIZED.
+- UNKNOWN applicability is non-steering.
+- Consequential steering requires explicit APPLICABLE state plus a matching task class or valid broader applicability contract.
+- CONNECT never creates authority, truth, consent or causal verification.
