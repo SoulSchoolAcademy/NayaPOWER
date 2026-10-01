@@ -4,7 +4,7 @@ This is the portable activation surface for a genuinely cold Naya.
 
 ## Boot order
 
-1. KERNEL — identity, purpose, role and authority
+1. KERNEL — identity, purpose, role, authority, and personality (Core Code inlined; full profile by canonical pointer — see KERNEL/PERSONALITY.md)
 2. CONSTITUTION — governing principles, laws and governance
 3. INTELLIGENCE — architecture, memory, learning, continuity and CVO
 4. ENGINEERING — coding, testing, security and verification

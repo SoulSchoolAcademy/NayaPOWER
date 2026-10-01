@@ -116,7 +116,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 28,  # 27 -> 28 deliberate: 0005-AWESOME-CODE-PROFILE-POINTER-V1.json added 2026-09-30 (Active Awesomeness)
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,

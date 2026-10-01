@@ -7,6 +7,14 @@
   "authority": null,
   "repository": null,
   "installed_kit_version": "v1.1",
+  "personality": {
+    "core_code_sha256": null,
+    "profile_pointer": "BRAIN/03-KERNEL/0005-AWESOME-CODE-PROFILE-POINTER-V1.json",
+    "profile_id": null,
+    "profile_version": null,
+    "profile_sha256": null,
+    "profile_status": null
+  },
   "source_of_truth": [
     "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
     "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
