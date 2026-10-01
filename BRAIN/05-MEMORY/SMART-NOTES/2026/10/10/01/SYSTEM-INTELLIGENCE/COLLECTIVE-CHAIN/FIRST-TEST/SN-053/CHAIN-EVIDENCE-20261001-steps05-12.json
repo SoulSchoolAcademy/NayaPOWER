@@ -224,7 +224,7 @@
         "checkpoint": "step12",
         "at_utc": "2026-10-01T14:38:12.444716+00:00",
         "branch": "brain-build/sn053-collective-chain-first-test",
-        "branch_sha": "aa06f6cd88926c668a55a1774aa8f10c0fd5b257 (pre-push; updated after push)",
+        "branch_sha": "768874c565db009db4da302580a5c47ce5f068a4",
         "steps_5_12": "complete",
         "artifacts": [
           "BRAIN/05-MEMORY/SMART-NOTES/2026/10/10/01/SYSTEM-INTELLIGENCE/COLLECTIVE-CHAIN/FIRST-TEST/SN-053/IB-SMART-NOTE-20261001-sn053-collective-chain-first-test.md",
@@ -236,7 +236,20 @@
           "The block's full step-11 bar: cold-Naya behavioral improvement on a held-out task",
           "Glossary ratification of the fixed vocabulary (KNOWLEDGE/NAYAPOWER-TERMINOLOGY-GLOSSARY-V1.md)",
           "Naming decision: NayaNET Intelligence Chain vs Collective Intelligence Chain"
-        ]
+        ],
+        "push": {
+          "commit1": "6e0ec47847b3bd5956d8fea1d00dd67ea8714fe9",
+          "commit1_contents": "evidence JSON + refined plan + SN-053 \u00a76 update + index pin 21->23",
+          "commit2": "768874c565db009db4da302580a5c47ce5f068a4",
+          "commit2_contents": "regenerated brain index layer (166 files)",
+          "method": "gh-api Git Data API (no CI trigger \u2014 local battery on exact bytes is the gate)"
+        },
+        "final_verification": {
+          "worktree": "fresh detached worktree at 768874c5, clean (git diff empty)",
+          "pytest": "545 passed, 3 skipped, 0 failed",
+          "brain_index_check": "OK: index layer matches git tree (166 files)",
+          "note": "545 is this branch's suite; the 1014 number belongs to the kernel branch cold acceptance (unchanged, kernel untouched read-only)"
+        }
       },
       "branch_artifacts_written": true
     }
