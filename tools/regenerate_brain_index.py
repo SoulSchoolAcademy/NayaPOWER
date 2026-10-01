@@ -118,7 +118,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 20,  # includes the nine-node Smart Note build manifest added in this lock preparation
+    "05-MEMORY": 21,  # includes the nine-node Smart Note build manifest added in this lock preparation + SN-027 amendment-premise-verification (deliberate)
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
