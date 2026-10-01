@@ -8,10 +8,15 @@ from kernel.value_calculus import (
     READ_MORE,
     REFUSE,
     ADMISSIBLE,
+    ELIGIBLE_BLOCKED,
+    ELIGIBLE_FAIL,
+    ELIGIBLE_PASS,
+    ELIGIBLE_UNKNOWN,
     NEEDS_AUTHORITY,
     NEEDS_EVIDENCE,
     PROHIBITED,
     Candidate,
+    OperationRequest,
     PVEstimate,
     QualityProfile,
     RiskPolicy,
@@ -20,6 +25,7 @@ from kernel.value_calculus import (
     build_decision_receipt,
     build_recalibration_receipt,
     calibration_summary,
+    consequential_use_eligible,
     contribution_points,
     contribution_value_score,
     delta_value,
@@ -27,6 +33,7 @@ from kernel.value_calculus import (
     gate_candidate,
     independent_recompute,
     promote_recalibration,
+    retrieval_eligible,
     score_quality,
     value_interval,
     verification_state,
@@ -467,3 +474,158 @@ def test_verified_receipt_preserves_full_signed_value_boundary(actual):
         delta_v_actual=actual,
     )
     assert receipt["d_verified"] == pytest.approx(actual)
+# ---------------------------------------------------------------------------
+# RETRIEVAL_ELIGIBLE / CONSEQUENTIAL_USE_ELIGIBLE
+# ---------------------------------------------------------------------------
+
+def _full_flags():
+    return {"LAW": True, "RIGHTS": True, "PRIVACY": True, "SAFETY": True}
+
+
+def _retrieval_request(**overrides):
+    base = dict(
+        operation_id="op-1",
+        requester_id="r-1",
+        requester_scope="owner:a",
+        object_scope="owner:a",
+        source_canonical=True,
+        authority_basis="consent:1",
+        hard_flags=_full_flags(),
+        evidence_refs=["ev:1"],
+    )
+    base.update(overrides)
+    return OperationRequest(**base)
+
+
+def test_retrieval_unauthenticated_is_blocked():
+    rec = retrieval_eligible(_retrieval_request(requester_id=None))
+    assert rec["state"] == ELIGIBLE_BLOCKED
+    assert "UNAUTHENTICATED_REQUESTER" in rec["reasons"]
+
+
+def test_retrieval_hard_violation_is_blocked():
+    rec = retrieval_eligible(_retrieval_request(hard_violation=True))
+    assert rec["state"] == ELIGIBLE_BLOCKED
+    assert "JUDGMENT_RULE_HARD_STOP" in rec["reasons"]
+
+
+def test_retrieval_explicit_flag_violation_is_blocked():
+    flags = _full_flags(); flags["SAFETY"] = False
+    rec = retrieval_eligible(_retrieval_request(hard_flags=flags))
+    assert rec["state"] == ELIGIBLE_BLOCKED
+    assert "SAFETY_VIOLATION" in rec["reasons"]
+
+
+def test_retrieval_cross_scope_is_fail_not_blocked():
+    # FAIL (not BLOCKED): it may become eligible if cross-scope authority
+    # is granted; the evidence is complete and determinate.
+    rec = retrieval_eligible(_retrieval_request(object_scope="owner:b"))
+    assert rec["state"] == ELIGIBLE_FAIL
+    assert "CROSS_SCOPE" in rec["reasons"]
+
+
+def test_retrieval_non_canonical_source_is_fail():
+    rec = retrieval_eligible(_retrieval_request(source_canonical=False))
+    assert rec["state"] == ELIGIBLE_FAIL
+    assert "NON_CANONICAL_SOURCE" in rec["reasons"]
+
+
+@pytest.mark.parametrize("field", ["requester_scope", "object_scope", "source_canonical", "authority_basis"])
+def test_retrieval_unknown_evidence_never_passes(field):
+    rec = retrieval_eligible(_retrieval_request(**{field: None}))
+    assert rec["state"] == ELIGIBLE_UNKNOWN
+    assert rec["state"] != ELIGIBLE_PASS
+
+
+def test_retrieval_unknown_hard_flag_never_passes():
+    flags = _full_flags(); flags["PRIVACY"] = None
+    rec = retrieval_eligible(_retrieval_request(hard_flags=flags))
+    assert rec["state"] == ELIGIBLE_UNKNOWN
+    assert "UNKNOWN_PRIVACY" in rec["reasons"]
+
+
+def test_retrieval_all_clear_passes_with_evidence_refs():
+    rec = retrieval_eligible(_retrieval_request())
+    assert rec["state"] == ELIGIBLE_PASS
+    assert rec["reasons"] == []
+    assert rec["evidence_refs"] == ["ev:1"]
+    assert rec["predicate"] == "RETRIEVAL_ELIGIBLE"
+
+
+def _consequential_request(**overrides):
+    base = dict(
+        operation_id="op-2",
+        requester_id="r-1",
+        consequential=True,
+        irreversible=False,
+        human_authorized=True,
+        hard_flags=_full_flags(),
+        confidence_aggregate=0.95,
+        confidence_critical=0.95,
+    )
+    base.update(overrides)
+    return OperationRequest(**base)
+
+
+def test_consequential_hard_violation_is_blocked(profile):
+    rec = consequential_use_eligible(_consequential_request(hard_violation=True), profile)
+    assert rec["state"] == ELIGIBLE_BLOCKED
+
+
+def test_consequential_unknown_flag_never_passes(profile):
+    flags = _full_flags(); flags["LAW"] = None
+    rec = consequential_use_eligible(_consequential_request(hard_flags=flags), profile)
+    assert rec["state"] == ELIGIBLE_UNKNOWN
+    assert "UNKNOWN_LAW" in rec["reasons"]
+
+
+def test_consequential_unknown_confidence_never_passes(profile):
+    rec = consequential_use_eligible(_consequential_request(confidence_critical=None), profile)
+    assert rec["state"] == ELIGIBLE_UNKNOWN
+    assert "CONFIDENCE_UNKNOWN" in rec["reasons"]
+
+
+def test_consequential_missing_human_authority_is_fail(profile):
+    rec = consequential_use_eligible(_consequential_request(human_authorized=False), profile)
+    assert rec["state"] == ELIGIBLE_FAIL
+    assert "HUMAN_AUTHORITY_REQUIRED" in rec["reasons"]
+
+
+def test_consequential_low_confidence_is_fail(profile):
+    rec = consequential_use_eligible(_consequential_request(confidence_aggregate=0.1), profile)
+    assert rec["state"] == ELIGIBLE_FAIL
+    assert "AGGREGATE_CONFIDENCE_FLOOR" in rec["reasons"]
+
+
+def test_consequential_low_stakes_reversible_needs_no_human_auth(profile):
+    req = _consequential_request(consequential=False, irreversible=False, human_authorized=False)
+    rec = consequential_use_eligible(req, profile)
+    assert rec["state"] == ELIGIBLE_PASS
+
+
+def test_consequential_all_clear_passes(profile):
+    rec = consequential_use_eligible(_consequential_request(), profile)
+    assert rec["state"] == ELIGIBLE_PASS
+    assert rec["predicate"] == "CONSEQUENTIAL_USE_ELIGIBLE"
+
+
+def test_unknown_never_becomes_pass_property(profile):
+    # Property: PASS is reachable only when every UNKNOWN-triggering field
+    # carries determinate evidence. Flip each unknown-source to None and
+    # PASS must be unreachable.
+    unknown_sources = [
+        dict(hard_flags={k: (None if k == "LAW" else True) for k in ("LAW", "RIGHTS", "PRIVACY", "SAFETY")}),
+        dict(confidence_aggregate=None),
+        dict(confidence_critical=None),
+    ]
+    for src in unknown_sources:
+        rec = consequential_use_eligible(_consequential_request(**src), profile)
+        assert rec["state"] != ELIGIBLE_PASS, src
+    r_unknowns = [
+        dict(requester_scope=None), dict(object_scope=None),
+        dict(source_canonical=None), dict(authority_basis=None),
+        dict(hard_flags={k: (None if k == "SAFETY" else True) for k in ("LAW", "RIGHTS", "PRIVACY", "SAFETY")}),
+    ]
+    for src in r_unknowns:
+        rec = retrieval_eligible(_retrieval_request(**src))
+        assert rec["state"] != ELIGIBLE_PASS, src
