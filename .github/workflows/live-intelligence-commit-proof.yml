@@ -23,7 +23,6 @@ concurrency:
 
 env:
   RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-intelligence-commit-runtime
-  COLD_RUNTIME_FUNCTION: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-cold-runtime-proof
   SOURCE_SHA: ${{ github.event_name == 'workflow_dispatch' && inputs.expected_source_sha || github.sha }}
   GRANT_ID: 0e082400-de6d-485e-9ebc-51b34f5debdc
 
@@ -375,7 +374,7 @@ jobs:
             if curl -fsS --connect-timeout 10 --max-time 30 -X POST \
               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
               -H "Content-Type: application/json" \
-              --data-binary @cold-verify-request.json "$COLD_RUNTIME_FUNCTION" > cold-runtime-reread.json; then
+              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json; then
               if [[ -s cold-runtime-reread.json ]]; then
                 break
               fi
