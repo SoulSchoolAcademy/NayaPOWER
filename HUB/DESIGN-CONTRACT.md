@@ -6,6 +6,120 @@
 
 ---
 
+## 0. CANONICAL DESIGN NORTH STAR — HUMAN DIRECTOR
+
+**NayaNET is the human interface to a living intelligence.**
+
+It is not a dashboard, a database, a chatbot, or a collection of features.
+
+It is a beautiful, trustworthy, deeply dimensional way for a human to enter, understand, use, connect to, and benefit from governed intelligence.
+
+**One intelligence. Many doors.**  
+**One governed substrate. Many views.**  
+**One human at the center. No unnecessary burden.**
+
+The interface should feel alive because the intelligence behind it is alive — never because animation pretends that something is happening.
+
+Beauty is not decoration.  
+Depth is not spectacle.  
+Color is not ornament.  
+Interaction is not theater.
+
+Every visual decision communicates meaning.  
+Every state tells the truth.  
+Every action has a consequence.  
+Every consequence has an observable result.  
+Every important result can be understood and, where required, proven.
+
+The human should feel:
+
+- I know where I am.
+- I know what matters.
+- I understand what this means.
+- I know what is true.
+- I know what I can do.
+- I know what happened.
+- I know what Naya learned.
+- I can continue tomorrow without rebuilding the world.
+
+Naya should be able to understand the same system through a different representation:
+
+**intent → purpose → intelligence → authority → capability → observation → truth → outcome → learning → continuity.**
+
+The machine should be able to represent the same meaning deterministically.
+
+The proof layer should be able to demonstrate what actually happened.
+
+These are not different systems.
+
+They are different expressions of one intelligence.
+
+The highest standard is therefore not “the most impressive interface.”
+
+It is:
+
+> **MAKE SOPHISTICATED INTELLIGENCE FEEL SIMPLE, BEAUTIFUL, TRUSTWORTHY, ALIVE AND USEFUL TO THE HUMAN.**
+
+And make the experience so coherent that the human no longer feels like they are operating software.
+
+**They feel like they have entered an intelligent environment.**
+
+### 0.1 TOP VISUAL LAW — VISUAL BLISS THROUGH CLARITY
+
+**VISUAL BLISS is the law above spectrum, glow, depth, motion and ornament.**
+
+Visual bliss means the interface feels effortless to look at and effortless to understand because **contrast, clarity, cleanliness, hierarchy, spacing, typography and restraint are right.**
+
+Hard rule:
+
+> **NO GLOW, ACCENT, COLOR, GRADIENT, SHADOW, REFLECTION, TEXTURE, DEPTH EFFECT, MOTION OR DECORATIVE TREATMENT MAY MAKE ANYTHING HARDER TO READ, LOCATE OR UNDERSTAND.**
+
+If visual spectacle and readability conflict, **readability wins**.
+
+If depth and clarity conflict, **clarity wins**.
+
+If color and hierarchy conflict, **hierarchy wins**.
+
+If motion and comprehension conflict, **comprehension wins**.
+
+Depth, spectrum and liveness exist to improve meaning, state, hierarchy, tactile confidence and delight. They are subordinate to visual bliss.
+
+### 0.2 GENEROUS TYPOGRAPHY LAW
+
+**Readable text is the default, not an accessibility afterthought.**
+
+Most humans should not need to squint, zoom, lean toward the screen, or decode tiny interface labels to use NayaNET.
+
+Production defaults:
+
+- Primary reading/body text SHOULD normally be **17–18px** at default browser scaling and MUST NOT fall below **16px** without a documented, user-tested reason.
+- Navigation and interactive control labels SHOULD normally be **15–16px** and MUST remain immediately legible.
+- Secondary/supporting text SHOULD normally be **14px or larger**.
+- Metadata MAY be smaller only when genuinely secondary, but SHOULD normally remain **13–14px**.
+- Critical state, action, truth, warning, privacy and authority information MUST NOT be hidden in microtype.
+- The current concept's 7–10px labels are **prototype styling, not the production typography baseline**.
+- Respect browser zoom, OS text scaling, responsive reflow and user accessibility settings.
+- Generous line-height and spacing are part of legibility; larger text must not be packed into cramped surfaces.
+
+**Coders do not get to shrink text to make a layout fit. The layout adapts to the human.**
+
+### 0.3 VISUAL BLISS TEST
+
+Before approving any screen or component, ask:
+
+1. Can I read it comfortably at a normal viewing distance?
+2. Is the most important thing obvious within seconds?
+3. Does the eye know where to go next?
+4. Does any glow, color or shadow reduce text edge clarity?
+5. Does depth strengthen hierarchy rather than compete with it?
+6. Is the interface clean enough that important intelligence has room to breathe?
+7. Can a person with weaker vision still operate it comfortably?
+8. Does it still feel premium with motion reduced or disabled?
+9. If every decorative effect disappeared, would the information architecture still be excellent?
+10. When the effects return, do they make meaning better rather than merely louder?
+
+**Visual Bliss → Spectrum → Living Depth → Motion. Never the reverse.**
+
 ## HOW TO USE THIS DOCUMENT
 
 Shawn's standing complaint is real and verified: every attempt to take the Hub "to the next level" has gone backward — the design got flatter, more generic, more SaaS-dashboard. That happens because builders unconsciously interpret "production-ready" as "rebuild the UI cleanly."
