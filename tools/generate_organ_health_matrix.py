@@ -27,9 +27,11 @@ rather than emit a matrix when
     was not passed.
 
 A rung is PROVEN only on primary, green evidence on the exact stamped SHA.
-Missing evidence -> UNKNOWN. Failing required CI (kernel-tests,
-chain-readiness-gate, current-truth-resolver) caps every organ at CONTRACT
-(CAPPED_BY_CI). PRODUCTION/SUCCESSOR are human-gated: UNKNOWN_NOT_DISPATCHED /
+Missing evidence -> UNKNOWN. The organ's claim is a ladder prefix: a rung
+above a missing rung is recorded in rung_evidence but never claimed
+(spec §4.6 "missing_rung is the very next rung not proven"). Failing required
+CI (kernel-tests, chain-readiness-gate, current-truth-resolver) caps every
+organ at CONTRACT (CAPPED_BY_CI). PRODUCTION/SUCCESSOR are human-gated: UNKNOWN_NOT_DISPATCHED /
 UNKNOWN_NOT_QUALIFIED unless valid receipts are supplied. CI alone can never
 claim them.
 
@@ -138,8 +140,11 @@ def live_proof_run(runs: list[dict], organ: str, sha: str) -> dict | None:
 
 
 def _run_gh(gh_api: str, method: str, path: str) -> dict:
-    out = subprocess.run([gh_api, method, path], capture_output=True, text=True,
-                         check=False, timeout=120)
+    try:
+        out = subprocess.run([gh_api, method, path], capture_output=True, text=True,
+                             check=False, timeout=120)
+    except OSError as e:
+        raise Refused(f"live evidence helper failed to execute ({method} {path}): {e}")
     if out.returncode != 0:
         raise Refused(f"live evidence fetch failed ({method} {path}): {out.stderr.strip()[:300]}")
     try:
@@ -159,7 +164,7 @@ def fetch_live(gh_api: str, sha: str, allow_stale: bool) -> tuple[list, list, li
             "(spec §4.7 — re-evaluate before any decision use; pass --allow-stale "
             "to emit a stale-marked matrix)"
         )
-    checks = _run_gh(gh_api, "GET", f"/repos/{REPO}/commits/{sha}/check-runs").get("check_runs", [])
+    checks = _run_gh(gh_api, "GET", f"/repos/{REPO}/commits/{sha}/check-runs?per_page=100").get("check_runs", [])
     runs = _run_gh(
         gh_api, "GET",
         f"/repos/{REPO}/actions/runs?branch=main&head_sha={sha}&per_page=100",
@@ -325,7 +330,10 @@ def _run(args, repo: Path) -> int:
             rung_evidence.append({"rung": "UNIT", "status": "UNKNOWN", "refs": []})
             unit_proven = False
         elif u.get("conclusion") != "success":
-            rung_evidence.append({"rung": "UNIT", "status": "CAPPED_BY_CI",
+            # Present but not green and not a failing conclusion (e.g.
+            # "skipped", "in_progress"): missing evidence of success, not a
+            # cap. UNKNOWN, consistent with the INTEGRATION branch.
+            rung_evidence.append({"rung": "UNIT", "status": "UNKNOWN",
                                   "refs": [f"check_run:{u.get('id')}:{u.get('name')}={u.get('conclusion')}"]})
             unit_proven = False
         else:
@@ -437,8 +445,20 @@ def _run(args, repo: Path) -> int:
             rung_evidence.append({"rung": "SUCCESSOR", "status": "UNKNOWN_NOT_QUALIFIED", "refs": []})
             successor_proven = False
 
-        proven = [re_item["rung"] for re_item in rung_evidence if re_item["status"] == "PROVEN"]
-        current_rung = proven[-1] if proven else "UNKNOWN"
+        # Spec §4.6 / §2 "highest-first claim order": the organ's claim is a
+        # PREFIX of the ladder. current_rung is the highest rung with every
+        # rung below it PROVEN; missing_rung is the very next rung not
+        # proven. Evidence for rungs above a gap stays recorded honestly in
+        # rung_evidence but cannot be claimed until the gap closes — a green
+        # INTEGRATION never hides a missing UNIT.
+        prefix: list[str] = []
+        for rung in RUNGS:
+            status = next(e["status"] for e in rung_evidence if e["rung"] == rung)
+            if status == "PROVEN":
+                prefix.append(rung)
+            else:
+                break
+        current_rung = prefix[-1] if prefix else "UNKNOWN"
         idx = RUNGS.index(current_rung) if current_rung in RUNGS else -1
         missing_rung = RUNGS[idx + 1] if idx + 1 < len(RUNGS) else None
         next_proof = (NEXT_PROOF[missing_rung].format(sha=sha, organ=organ, o=organ.lower())

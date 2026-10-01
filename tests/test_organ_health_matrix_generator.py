@@ -79,10 +79,12 @@ def test_unit_proven_only_where_organ_tests_exist(repo_root, tmp_path):
     assert know_unit["status"] == "PROVEN"
     assert self_unit["status"] == "PROVEN"
     assert law_unit["status"] == "UNKNOWN"  # no organ-scoped tests -> never PASS
-    # INTEGRATION is still claimed (chain gate covers all organs); the UNIT
-    # hole stays visible in rung_evidence — highest-proven, not hidden.
-    assert by_organ["LAW"]["current_rung"] == "INTEGRATION"
-    assert by_organ["LAW"]["missing_rung"] == "BEHAVIORAL"
+    # INTEGRATION is still assessed on its own evidence (chain gate covers
+    # all organs) but it is NOT claimed: the organ's claim is a ladder
+    # prefix (spec §4.6), so the UNIT hole caps LAW's claim at CONTRACT and
+    # names UNIT as the missing rung — the hole stays visible, never hidden.
+    assert by_organ["LAW"]["current_rung"] == "CONTRACT"
+    assert by_organ["LAW"]["missing_rung"] == "UNIT"
 
 
 def test_integration_proven_from_chain_gate(repo_root, tmp_path):
