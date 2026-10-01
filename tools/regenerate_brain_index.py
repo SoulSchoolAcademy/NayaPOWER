@@ -120,7 +120,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,
-    "07-LEARNING": 2,
+    "07-LEARNING": 3,  # 2 -> 3 deliberate: 0002-LEARNING-RECORD-LIFECYCLE-V1.json added (learn-record-lifecycle, 2026-10-01)
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,
