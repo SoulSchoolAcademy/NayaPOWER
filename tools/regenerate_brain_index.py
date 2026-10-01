@@ -121,7 +121,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,
     "07-LEARNING": 2,
-    "08-SUCCESSION": 2,
+    "08-SUCCESSION": 3,  # 2 -> 3 deliberate: 0002-SUCCESSOR-HANDOFF-VERIFICATION-V1.json added (succession-handoff-verification, 2026-10-01)
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,

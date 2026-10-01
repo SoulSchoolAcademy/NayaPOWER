@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-01  
-**Receipt basis commit:** `ee41dbc9e612c3ece3dca69dbbb20d569a9da00a`  
-**Inventory file count:** 160  
+**Receipt basis commit:** `507d34213333a38708912d343537985e619938ac`  
+**Inventory file count:** 161  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -18,7 +18,7 @@
 | 05-MEMORY | 19 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
-| 08-SUCCESSION | 2 |
+| 08-SUCCESSION | 3 |
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 5 |
 | 11-KNOWLEDGE | 7 |
@@ -153,6 +153,7 @@
 ### 08-SUCCESSION — Succession
 
 - `BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md` — `315b3cdd3c80` (2105 bytes)
+- `BRAIN/08-SUCCESSION/0002-SUCCESSOR-HANDOFF-VERIFICATION-V1.json` — `a78a8865958c` (14191 bytes)
 - `BRAIN/08-SUCCESSION/README.md` — `b102cc09c60d` (892 bytes)
 ### 09-EVOLUTION — Evolution
 

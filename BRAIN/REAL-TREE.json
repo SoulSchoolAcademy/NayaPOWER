@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "ee41dbc9e612c3ece3dca69dbbb20d569a9da00a",
-  "inventory_file_count": 160,
+  "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
+  "inventory_file_count": 161,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -12,7 +12,7 @@
     "05-MEMORY": 19,
     "06-PROOF": 10,
     "07-LEARNING": 2,
-    "08-SUCCESSION": 2,
+    "08-SUCCESSION": 3,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
@@ -552,6 +552,11 @@
       "path": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
       "blob_sha": "315b3cdd3c807723a054311551e7dee39855631f",
       "size": 2105
+    },
+    {
+      "path": "BRAIN/08-SUCCESSION/0002-SUCCESSOR-HANDOFF-VERIFICATION-V1.json",
+      "blob_sha": "a78a8865958cfcdbfafe6e35ef1e9cdcafcce7ff",
+      "size": 14191
     },
     {
       "path": "BRAIN/08-SUCCESSION/README.md",
