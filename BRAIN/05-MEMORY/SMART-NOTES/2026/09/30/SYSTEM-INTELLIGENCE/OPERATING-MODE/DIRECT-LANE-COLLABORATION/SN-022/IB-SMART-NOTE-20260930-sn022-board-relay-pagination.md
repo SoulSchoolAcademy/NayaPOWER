@@ -1,6 +1,6 @@
 # Board-Relay Pagination — GitHub Comments Endpoint Ignores `direction=desc`
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn021-board-relay-pagination
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn022-board-relay-pagination
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-09-30
