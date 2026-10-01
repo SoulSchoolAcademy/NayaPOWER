@@ -14,5 +14,7 @@ Use the canonical master design contract and existing tokens/components rather t
 
 Canonical entry: `../../0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md`
 
+Hub-specific experience contract: `NAYANET-HUB-EXPERIENCE-CONTRACT-V1.md`
+
 ## Acceptance
 A screen is not complete because it looks good. Controls, states and data must connect to real capability.
