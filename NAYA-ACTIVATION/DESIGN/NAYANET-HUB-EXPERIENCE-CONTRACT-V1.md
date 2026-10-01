@@ -174,7 +174,7 @@ Persistent navigation and identity orientation:
 - Your Intelligence Today;
 - Your Reports;
 - Intelligent Library;
-- Smart Share;
+- Smart Connect;
 - Smart Ledger;
 - Your Connections;
 - Smart Lists;
@@ -234,9 +234,37 @@ with drill-down to underlying Smart Notes/evidence.
 Search/browse/navigation layer for canonical intelligence.
 It should answer “what is this, why does it matter, how does it work, how do I use it, where is the source, what is related?”
 
-### Smart Share
-Consent-scoped sharing of intelligence.
-Sharing MUST preserve ownership, provenance, privacy state and revocation semantics.
+### Smart Connect
+The human-facing participation, connection, sharing and consent surface.
+
+Smart Connect SHOULD make it simple for the human to:
+- understand what is private;
+- choose what may be shared;
+- inspect relevant people/Naya/space relationships;
+- see which governed capabilities/Doors are available;
+- understand whether a Door is connected, blocked, authorization-required, unavailable or unknown;
+- deliberately contribute eligible intelligence to collective contexts where consent permits;
+- revoke or change sharing/participation state where the governing runtime supports it.
+
+Sharing MUST preserve ownership, provenance, privacy state, consent lineage and revocation semantics.
+
+**Smart Connect does not grant execution authority.**
+
+#### Smart Doors inside Smart Connect
+
+Smart Connect is the human experience layer. **Smart Doors** are governed capability channels owned by `BRAIN/10-INTERFACES/`.
+
+The governing law is:
+
+> **Doors expose what Naya can do. LAW decides what Naya may do. ACT does it. VERIFY checks what happened.**
+
+The current Smart Door contract/registry, not the visual Hub, determines which Doors exist and their truth state.
+
+A connected or technically available Door MUST NOT be presented as authorization to perform a consequential operation.
+
+Canonical Door flow:
+
+`NEED → CONNECT discovers Door → LAW evaluates permission → ACT invokes Door → OBSERVE → VERIFY`
 
 ### Smart Ledger
 Human-readable value/receipt/activity surface over governed records.
@@ -444,7 +472,8 @@ When rebuilding the app, preserve before replacing:
 - Collective / Personal / Activity distinction;
 - Naya as trusted thinking partner;
 - obsidian foundation;
-- privacy language.
+- privacy language;
+- Smart Connect / Smart Door truth and capability≠authority separation.
 
 A redesign MUST demonstrate a measurable UX/design improvement before discarding these characteristics.
 
