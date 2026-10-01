@@ -49,7 +49,7 @@ def delta_program():
 
 def test_full_undeployed_delta_includes_protected_changes_from_earlier_pushes():
     base = 'b'*40
-    Path('production-runtime-source.ts').write_text('const DEPLOYED_SOURCE_REVISION = "'+base+'";')
+    Path('production-runtime-source.ts').write_text('const DEPLOYED_SOURCE_REVISION = "'+base+'";', encoding="utf-8")
     with patch('subprocess.run') as ancestry, patch('subprocess.check_output', return_value='supabase/migrations/security.sql\nsupabase/functions/example/index.ts\n') as diff, patch.dict(os.environ, GITHUB_SHA=SHA):
         exec(compile(delta_program(), 'governed-workflow-delta', 'exec'), {})
     ancestry.assert_called_once_with(['git','merge-base','--is-ancestor',base,SHA], check=True)
@@ -59,7 +59,7 @@ def test_full_undeployed_delta_includes_protected_changes_from_earlier_pushes():
 
 @pytest.mark.parametrize('source', ['const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";', ''])
 def test_missing_production_provenance_refuses_before_diff(source):
-    Path('production-runtime-source.ts').write_text(source)
+    Path('production-runtime-source.ts').write_text(source, encoding="utf-8")
     with patch('subprocess.check_output') as diff, pytest.raises(SystemExit, match='provenance missing'):
         exec(compile(delta_program(), 'governed-workflow-delta', 'exec'), {})
     diff.assert_not_called()

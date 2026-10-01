@@ -12,7 +12,7 @@ def run_controls(tmp_path, gate_source):
     engineering.mkdir(parents=True)
     script = engineering / CONTROL.name
     script.write_bytes(CONTROL.read_bytes())
-    (engineering / "verify-collective-chain-readiness.py").write_text(gate_source)
+    (engineering / "verify-collective-chain-readiness.py").write_text(gate_source, encoding="utf-8")
     for relative, content in {
         "BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json": "{}",
         "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json": "{}",
@@ -22,7 +22,7 @@ def run_controls(tmp_path, gate_source):
     }.items():
         path = tmp_path / relative
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content)
+        path.write_text(content, encoding="utf-8")
     return subprocess.run([sys.executable, str(script), "--instrument-only"], text=True, capture_output=True)
 
 

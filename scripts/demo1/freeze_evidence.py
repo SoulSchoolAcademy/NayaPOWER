@@ -122,7 +122,7 @@ def main() -> int:
         shutil.rmtree(run_root)
     # Claim ownership of the (fresh or cleared) directory.
     run_root.mkdir(parents=True, exist_ok=True)
-    (run_root / OWNER_MARKER).write_text(uuid.uuid4().hex)
+    (run_root / OWNER_MARKER).write_text(uuid.uuid4().hex, encoding="utf-8")
 
     # 1. The one real run.
     p = run([sys.executable, "scripts/demo1/act_run.py",

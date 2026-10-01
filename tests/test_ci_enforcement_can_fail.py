@@ -99,12 +99,12 @@ def test_baseline_enforcement_rejects_an_unrecorded_table():
         (base / 'BRAIN/12-ENGINEERING').mkdir(parents=True)
         src = REPO / 'BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json'
         (base / 'BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json').write_text(
-            json.dumps(ledger), encoding='utf-8')
+            json.dumps(ledger), encoding='utf-8', encoding="utf-8")
         report = base / 'report.json'
         report.write_text(json.dumps({'findings': [
             {'class': 'UNCREATED_DEPENDENCY', 'object': 'public.alpha'},
             {'class': 'UNCREATED_DEPENDENCY', 'object': 'public.unrecorded'},
-        ]}), encoding='utf-8')
+        ]}), encoding='utf-8', encoding="utf-8")
         r = subprocess.run(
             [sys.executable, str(target), str(base), str(report)],
             capture_output=True, text=True)

@@ -199,7 +199,7 @@ def test_p2_invalid_seal_changes_result(tmp_path):
     for key in ("seal", "package_seal", "sha256"):
         if key in seal_data:
             seal_data[key] = "0" * 64
-    (pkg / "package_seal.json").write_text(json.dumps(seal_data))
+    (pkg / "package_seal.json").write_text(json.dumps(seal_data), encoding="utf-8")
     with pytest.raises(ValueError, match="invalid.*seal"):
         acquire_package_evidence(pkg)
 
@@ -210,7 +210,7 @@ def test_p2_substituted_manifest_changes_result(tmp_path):
     shutil.copytree(PACKAGE_DIR, pkg)
     manifest = json.loads((pkg / "MANIFEST.json").read_bytes())
     manifest["files"][0]["sha256"] = "f" * 64
-    (pkg / "MANIFEST.json").write_text(json.dumps(manifest))
+    (pkg / "MANIFEST.json").write_text(json.dumps(manifest), encoding="utf-8")
     with pytest.raises(ValueError, match="invalid.*hash mismatch"):
         acquire_package_evidence(pkg)
 

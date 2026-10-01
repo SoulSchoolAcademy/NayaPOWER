@@ -29,20 +29,20 @@ def receipt_program():
 
 def run_receipt(tmp_path, source_sha="a" * 40, producer_sha=None, proof_sha=None, producer_conclusion="success", proof_conclusion="success", act_sha=None, act_conclusion="success", connect_sha=None, connect_conclusion="success"):
     (tmp_path / "supabase-production-check.json").write_text(
-        json.dumps({"id": 10, "name": "Supabase", "conclusion": "success"})
-    )
+        json.dumps({"id": 10, "name": "Supabase", "conclusion": "success"}),
+        encoding="utf-8")
     (tmp_path / "producer-run.json").write_text(
-        json.dumps({"databaseId": 20, "conclusion": producer_conclusion, "headSha": producer_sha or source_sha})
-    )
+        json.dumps({"databaseId": 20, "conclusion": producer_conclusion, "headSha": producer_sha or source_sha}),
+        encoding="utf-8")
     (tmp_path / "proof-run.json").write_text(
-        json.dumps({"databaseId": 30, "conclusion": proof_conclusion, "headSha": proof_sha or source_sha})
-    )
+        json.dumps({"databaseId": 30, "conclusion": proof_conclusion, "headSha": proof_sha or source_sha}),
+        encoding="utf-8")
     (tmp_path / "act-proof-run.json").write_text(
-        json.dumps({"databaseId": 35, "conclusion": act_conclusion, "headSha": act_sha or source_sha})
-    )
+        json.dumps({"databaseId": 35, "conclusion": act_conclusion, "headSha": act_sha or source_sha}),
+        encoding="utf-8")
     (tmp_path / "connect-proof-run.json").write_text(
-        json.dumps({"databaseId": 36, "conclusion": connect_conclusion, "headSha": connect_sha or source_sha})
-    )
+        json.dumps({"databaseId": 36, "conclusion": connect_conclusion, "headSha": connect_sha or source_sha}),
+        encoding="utf-8")
     env = {
         "GITHUB_SHA": source_sha,
         "PRODUCTION_BRANCH": "production",

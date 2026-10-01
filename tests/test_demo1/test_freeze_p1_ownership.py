@@ -48,7 +48,7 @@ def test_p1_refuses_unrelated_existing_dir(tmp_path):
     """An existing dir without our ownership marker must be refused."""
     victim = tmp_path / "other-worker-scratch"
     victim.mkdir()
-    (victim / "important.txt").write_text("do not delete")
+    (victim / "important.txt").write_text("do not delete", encoding="utf-8")
     out = REPO_ROOT / "evidence" / "demo1" / "test-p1-unrelated"
     rc, output = _run_freeze(
         "--run-root", str(victim),
