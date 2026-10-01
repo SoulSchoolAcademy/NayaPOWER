@@ -155,6 +155,16 @@ That includes broken/stale/contradictory state, missing proof, unsafe behavior, 
 
 Do not silently hide it. Do not broaden an unrelated implementation just to fix it. Record, classify, route, then fix under applicable authority.
 
+## NayaNET Hub lawbook
+
+For NayaNET Hub work, the project-specific lawbook is:
+
+`HUB/DESIGN-LAWS/README.md`
+
+It is a specialized normative decomposition of `HUB/DESIGN-CONTRACT.md` and includes Visual Bliss, generous typography, component physics, Power Button, Intelligence Board, semantic spectrum, glyph, motion, layout, truth/state, accessibility/performance, Naya presence, token implementation, and final visual-QA laws.
+
+Use the project-specific lawbook rather than re-inventing Hub taste from this global standard.
+
 ## Elite-builder default outputs
 
 For a substantive app/interface task, retrieve or create:
