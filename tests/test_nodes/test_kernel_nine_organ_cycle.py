@@ -38,6 +38,10 @@ def _genuine_verify_receipt(verify, verify_key, connect_proposal_id):
 
     The claim under verification references CONNECT's real proposal output,
     so CONNECT's public output is contextual input to the VERIFY chain.
+
+    Coda 1 Option A (#554/5939450892): actor authors the outcome at
+    submit(); VERIFY seals it at close(). The outcome scope is subset of
+    subject scope (C4).
     """
     out = verify.submit({
         "verify_key": verify_key,
@@ -53,6 +57,12 @@ def _genuine_verify_receipt(verify, verify_key, connect_proposal_id):
             "gaps": [],
             # CONNECT's real output as downstream context:
             "connection_context": {"proposal_id": connect_proposal_id},
+        },
+        # Actor-authored outcome, sealed by VERIFY at close():
+        "outcome": {
+            "lesson": "verified: provenance-check-before-summary",
+            "scope": {"task_classes": ["triage"], "owner": OWNER,
+                     "task": TASK},
         },
         "evidence_refs": [{"address": "ev1", "retrievable": True,
                            "class": "REFERENCE"}],
@@ -90,23 +100,23 @@ def _promotable_learning_from_genuine(learn, genuine_receipt):
     pipeline (extract -> reconcile -> holdout -> evidence) to a promotable
     learning. Returns the learning_id.
 
-    2026-10-01: extract() now derives the lesson from VERIFY-owned facts
-    (learn_baton eligibility + subject.claim) per Naya 2's diagnostic
-    (#554/5939362590). Authorship in LEARN, trust in VERIFY's seal.
+    2026-10-01: Coda 1 Option A (#554/5939450892) — actor authors the
+    outcome at submit(), VERIFY seals it at close(), LEARN extracts the
+    sealed outcome.lesson. Seal covers the outcome.
     """
     presented = copy.deepcopy(genuine_receipt)
     res = learn.ingest_verify_receipt(presented)
     assert res["accepted"], res
     rid = genuine_receipt["id"]
 
-    # Real LEARN pipeline on the ingested evidence. The lesson is derived
-    # from the verified claim (not a fixture outcome.lesson).
+    # Real LEARN pipeline on the ingested evidence. The lesson is the
+    # actor-authored, VERIFY-sealed outcome.lesson.
     extracted = learn.extract([rid])
     assert extracted["candidates"], extracted
     cid = extracted["candidates"][0]
-    # The derived lesson should reference the verified claim.
+    # The extracted lesson should be the sealed outcome.
     learning = learn._get(cid)
-    assert "verified:" in learning["lesson"], learning["lesson"]
+    assert "provenance-check-before-summary" in learning["lesson"], learning["lesson"]
 
     reconciled = learn.reconcile(cid)
     canonical = (reconciled["refs"][0]

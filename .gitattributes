@@ -1,0 +1,13 @@
+# Enforce LF line endings for all text files.
+# Prevents Windows autocrlf from breaking hash-based tests.
+# (Coda 1 requalification 2026-10-01: 31 failures traced to CRLF conversion)
+
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.sh text eol=lf
+*.txt text eol=lf

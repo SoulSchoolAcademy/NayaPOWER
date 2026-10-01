@@ -490,38 +490,6 @@ class LearnNode(NodeBase):
             and receipt.get("verification_state") == "VERIFIED_PASS"
         )
 
-    def _derive_lesson_from_baton(
-        self, receipt: Dict[str, Any], rid: str
-    ) -> tuple:
-        """Derive a lesson from VERIFY-owned facts (Naya 2 #554/5939362590).
-
-        VERIFY speaks learn_baton; it does not author lessons. LEARN derives
-        the lesson from the verified fact (subject_ref.claim) when the baton
-        marks the receipt eligible for learning (may_use non-empty =
-        VERIFIED_PASS). Authorship of the derivation is LEARN's; trust in
-        the fact is VERIFY's seal.
-
-        Returns (lesson, scope). Returns (None, {}) if no lesson is
-        derivable (baton ineligible or no claim) — the caller then refuses.
-        """
-        baton = receipt.get("learn_baton") or {}
-        # Eligibility: VERIFIED_PASS receipts land on may_use; anything
-        # else (FAIL, REOPENED) lands on must_not_generalize.
-        if not baton.get("may_use"):
-            return None, {}
-        # VERIFY stores the verified subject fields under subject_ref
-        # (BATON_REQUIRED_FIELDS for the baton kind), including claim.
-        subject_ref = receipt.get("subject_ref") or {}
-        claim = subject_ref.get("claim")
-        if not claim or not isinstance(claim, str):
-            return None, {}
-        # The lesson is the verified fact, stated as LEARN's derivation.
-        # The learning pipeline (reconcile → holdout → evidence) determines
-        # whether it actually changes future behavior.
-        lesson = f"verified: {claim}"
-        scope = dict(subject_ref.get("scope") or {})
-        return lesson, scope
-
     def register_cvo(self, cvo: Dict[str, Any]) -> Dict[str, Any]:
         """Register a CVO record into the provenance store (§5 — CVO refs are
         part of a learning's provenance; §3.4/§11.1 promotion law blocks
@@ -795,13 +763,6 @@ class LearnNode(NodeBase):
             outcome = receipt.get("outcome", {})
             lesson = outcome.get("lesson") or receipt.get("claimed_lesson")
             scope = {}
-            if not lesson:
-                # Naya 2 diagnostic (#554/5939362590): VERIFY speaks
-                # learn_baton, extract listened for outcome.lesson. Derive
-                # the lesson from VERIFY-owned facts instead of requiring a
-                # pre-formed lesson. Authorship stays in LEARN (derivation),
-                # trust stays in VERIFY's seal. VERIFY never invents lessons.
-                lesson, scope = self._derive_lesson_from_baton(receipt, rid)
             if not lesson:
                 raise ValueError(
                     f"extract refuses receipt {rid}: no lesson extractable")

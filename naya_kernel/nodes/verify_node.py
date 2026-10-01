@@ -1208,6 +1208,24 @@ class VerifyNode(NodeBase):
                 "re-examination is a new receipt (§3)")
         return receipt
 
+    @staticmethod
+    def _scope_subset(claimed: Dict[str, Any],
+                      verified: Dict[str, Any]) -> bool:
+        """C4: claimed scope must be subset of verified scope.
+        Prevents verified behavior from widening into unverified territory.
+        """
+        for key, cval in claimed.items():
+            vval = verified.get(key)
+            if isinstance(cval, list) and isinstance(vval, list):
+                if not set(cval) <= set(vval):
+                    return False
+            elif isinstance(cval, dict) and isinstance(vval, dict):
+                if not VerifyNode._scope_subset(cval, vval):
+                    return False
+            elif cval != vval:
+                return False
+        return True
+
     def _new_receipt(self, request: Dict[str, Any], now_iso: str) -> Dict[str, Any]:
         kind = request.get("kind")
         if kind not in BATON_KINDS:
@@ -1221,6 +1239,21 @@ class VerifyNode(NodeBase):
         request = dict(request)
         self._seq += 1
         evidence_refs = request.get("evidence_refs") or []
+        subject_ref = {k: subject.get(k) for k in BATON_REQUIRED_FIELDS[kind]}
+        # Coda 1 Option A (#554/5939450892): actor authors the outcome at
+        # submit(); VERIFY seals it at close(). The outcome must land BEFORE
+        # close() seals receipt_hash. C4: outcome scope must not exceed
+        # subject_ref scope — verified behavior cannot widen into
+        # unverified territory.
+        outcome = request.get("outcome") or {}
+        if outcome:
+            outcome_scope = outcome.get("scope") or {}
+            subject_scope = subject_ref.get("scope") or {}
+            if not self._scope_subset(outcome_scope, subject_scope):
+                raise ValueError(
+                    "outcome scope exceeds verified subject_ref scope "
+                    "(C4: SCOPE_MISMATCH) — VERIFY refuses to seal "
+                    "unverified widening")
         receipt = {
             "id": f"vr-{_hash([request.get('verify_key'), self._seq])[:16]}",
             "node_id": NODE_ID,
@@ -1230,8 +1263,9 @@ class VerifyNode(NodeBase):
             "supersedes": None,
             "reopened_by": None,
             "kind": kind,
-            "subject_ref": {k: subject.get(k) for k in BATON_REQUIRED_FIELDS[kind]},
+            "subject_ref": subject_ref,
             "expected_outcome": request.get("expected_outcome") or {},
+            "outcome": dict(outcome),  # sealed at close(); LEARN extracts
             "acceptance_criteria": list(request.get("acceptance_criteria") or []),
             "outcome_status": "NOT_PROVEN",
             "acceptance_decision": "PENDING",

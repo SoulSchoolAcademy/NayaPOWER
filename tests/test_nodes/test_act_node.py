@@ -435,7 +435,7 @@ def test_authority_checks_declare_only():
     node = ActNode()
     checks = node.authority_checks()
     assert any("never grant" in c or "Declared" in c or "grant" in c for c in checks)
-    src = open(__import__("naya_kernel.nodes.act_node", fromlist=["x"]).__file__).read()
+    src = open(__import__("naya_kernel.nodes.act_node", fromlist=["x"]).__file__, encoding="utf-8").read()
     assert "grant(" not in src
 
 
