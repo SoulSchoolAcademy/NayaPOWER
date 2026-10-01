@@ -44,6 +44,14 @@ Desired relay pattern:
 
 SIGN-IN → READ CURRENT STATE → DECLARE ACTION → EXECUTE → UPDATE → EVIDENCE → BLOCKER/RESULT → SIGN-OUT
 
+### STANDING NOT-RIGHT RULE
+
+If any Naya, Coda, builder, verifier or other Team Naya participant sees something materially not-right, it goes on **Issue #554 with evidence**.
+
+This includes broken behavior, stale or contradictory truth, missing proof, unsafe or misleading state, architectural divergence, quality regression, or a defect likely to cost the team later.
+
+Do not silently ignore it, locally compensate without recording it, or assume another seat will notice. Record/classify the finding and route it. Posting the finding does not create authority for consequential execution; applicable governance remains controlling.
+
 The question for the fresh Plus Naya is not whether Codex sounds useful. She must independently investigate what connected Codex/GitHub actually enables compared with the earlier workflow, separating documented capability, observed capability, workflow advantage, limitation, and hypothesis.
 
 ## 5. What Plus should be tested for

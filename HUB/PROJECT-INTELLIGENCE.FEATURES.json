@@ -1,0 +1,197 @@
+{
+  "schema": "nayanet.hub.feature-matrix.v1",
+  "status": "TARGET_CONTRACT_NOT_RUNTIME_PROOF",
+  "authority": "Shawn Vibert, Human Director",
+  "canonical_sources": [
+    "HUB/PROJECT-INTELLIGENCE.md",
+    "HUB/DESIGN-CONTRACT.md"
+  ],
+  "coordination_issue": 554,
+  "finding_rule": "Any materially not-right observation must be posted to issue #554 with evidence; posting does not grant execution authority.",
+  "invariants": [
+    "Hub is a projection, not a second brain.",
+    "Welcome → Identity → Intelligent Hub is the successful journey.",
+    "Every visible control has a real causal path or an honest unavailable state.",
+    "Connection/capability never creates authority.",
+    "No fake data, activity, mail, receipt, verification or learning.",
+    "Current visual Hub is the minimum visual-quality floor."
+  ],
+  "global_surfaces": [
+    {
+      "id": "welcome",
+      "purpose": "Premium invitation/recognition and entry into NayaNET.",
+      "primary_action": "ENTER_NAYANET",
+      "next": "identity"
+    },
+    {
+      "id": "identity",
+      "purpose": "Governed activation/session bridge.",
+      "primary_action": "ENTER_INTELLIGENT_HUB",
+      "next": "hub"
+    },
+    {
+      "id": "app-shell",
+      "purpose": "Persistent orientation and room host.",
+      "components": [
+        "left_rail",
+        "top_system_bar",
+        "search",
+        "main_workspace",
+        "naya_companion"
+      ]
+    },
+    {
+      "id": "search",
+      "purpose": "Retrieve canonical intelligence by relevance/context with provenance."
+    },
+    {
+      "id": "naya-companion",
+      "purpose": "Interpretation and contextual help without becoming a second dashboard."
+    }
+  ],
+  "rooms": [
+    {
+      "id": "feed",
+      "name": "Smart Feed",
+      "route": "/feed",
+      "human_question": "What useful intelligence/activity should I see now?",
+      "modes": [
+        "PERSONAL",
+        "COLLECTIVE",
+        "ACTIVITY"
+      ],
+      "owner": "canonical intelligence/events via governed runtime"
+    },
+    {
+      "id": "today",
+      "name": "Your Intelligence Today",
+      "route": "/today",
+      "human_question": "Given everything the system knows, what matters to me right now?",
+      "owner": "canonical intelligence/current state/verified events"
+    },
+    {
+      "id": "reports",
+      "name": "Your Reports",
+      "route": "/reports",
+      "human_question": "What does accumulated intelligence mean across time?",
+      "time_scopes": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly",
+        "thematic"
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Intelligent Library",
+      "route": "/library",
+      "human_question": "What do we know and how can I find, trust and use it?"
+    },
+    {
+      "id": "connect",
+      "name": "Smart Connect",
+      "aka": "Smart Doors",
+      "route": "/connect",
+      "human_question": "How can an authorized human/system connect to NayaPOWER?",
+      "owner": "BRAIN/10-INTERFACES contract/registry + governed runtime"
+    },
+    {
+      "id": "ledger",
+      "name": "Smart Ledger",
+      "route": "/ledger",
+      "human_question": "What happened and what proves it?",
+      "fields": [
+        "action",
+        "actor",
+        "time",
+        "authority",
+        "receipt",
+        "evidence",
+        "outcome",
+        "verification"
+      ]
+    },
+    {
+      "id": "connections",
+      "name": "Your Connections",
+      "route": "/connections",
+      "human_question": "What governed relationships exist?"
+    },
+    {
+      "id": "lists",
+      "name": "Smart Lists",
+      "route": "/lists",
+      "human_question": "How do I organize useful intelligence for action?"
+    },
+    {
+      "id": "mail",
+      "name": "Smart Mail",
+      "route": "/mail",
+      "human_question": "How do I communicate through governed real messaging?"
+    },
+    {
+      "id": "spaces",
+      "name": "Smart Spaces",
+      "route": "/spaces",
+      "human_question": "What context am I working in and who/what belongs here?"
+    },
+    {
+      "id": "settings",
+      "name": "Settings",
+      "route": "/settings",
+      "human_question": "What is my relationship with NayaNET and what can I control?"
+    }
+  ],
+  "intelligent_board": {
+    "required_parts": [
+      "identity_jewel",
+      "title",
+      "provenance_metadata",
+      "truth_state",
+      "nutshell",
+      "intelligence_layers",
+      "actions",
+      "trust_footer"
+    ],
+    "optional_views": [
+      "HUMAN_NOTE",
+      "SIMPLIFIED",
+      "WHY_NOTICE",
+      "NAYA_NOTE",
+      "MACHINE_NOTE",
+      "ADAPTIVE_LEARNING",
+      "SIGNIFICANCE",
+      "HUMAN_VALUE"
+    ],
+    "rule": "One canonical intelligence identity; views are projections."
+  },
+  "universal_states": [
+    "REST",
+    "HOVER",
+    "FOCUS",
+    "SELECTED",
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "causal_path_contract": [
+    "CONTROL",
+    "INTENT",
+    "AUTHORITY_SCOPE",
+    "RUNTIME_OPERATION",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE_OR_RECEIPT_WHERE_REQUIRED"
+  ],
+  "runtime_truth_rule": "This target matrix is not evidence that any room/capability is live. Audit runtime separately.",
+  "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end."
+}
