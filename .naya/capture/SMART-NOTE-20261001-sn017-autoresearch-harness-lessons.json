@@ -12,7 +12,7 @@
   "captured_at_utc": "2026-10-01T16:30:00Z",
   "source_type": "external_research_reconciled_with_nayapower",
   "source_reference": "Human Director requested a deep-dive and durable capture of the useful intelligence from Andrej Karpathy's AutoResearch project. Primary sources inspected: https://github.com/karpathy/autoresearch (snapshot 228791fb499afffb54b46200aca536f79142f117), README.md, program.md, prepare.py, train.py, and https://autoresearch.lol/#how-it-works. Community issues #179, #284, #613, #396 and #261 were reviewed as non-canonical operating evidence. Full reconciled report: KNOWLEDGE/AUTORESEARCH HARNESS DEEP DIVE AND NAYAPOWER LESSONS 2026-10-01.md.",
-  "lifecycle_reverification": "2026-10-01: metadata-only retrigger after PR #1250 repaired the cold-successor source-SHA/projection-index race. Intelligence payload unchanged; exact-content reconciliation must reuse the existing canonical IB."
+  "lifecycle_reverification": "2026-10-01 final metadata-only retrigger after PR #1250 repaired source-SHA projection race and PR #1253 bound cold Smart Note reread to the canonical intelligence verifier. Intelligence payload unchanged; exact-content reconciliation must reuse the existing canonical IB."
  },
  "projection": {
   "publication_scope": "PUBLIC_DERIVED_VIEW",
