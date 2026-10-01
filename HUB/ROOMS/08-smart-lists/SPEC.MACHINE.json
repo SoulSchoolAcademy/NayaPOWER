@@ -1,0 +1,90 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "lists",
+  "name": "Smart Lists",
+  "route": "/lists",
+  "metaphor": "THE MISSION TABLE",
+  "theme": "Purple — intelligence organized for action and development",
+  "human_question": "What matters now, what comes next, and what am I deliberately tracking?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "active list/lane, purpose, Space and ownership",
+    "state": "current intelligent items, blockers, questions, opportunities and completion",
+    "intelligence": "Naya explains why an item belongs here, priority/context and rule-driven membership",
+    "action": "create, add/remove, move/pin/reorder, set smart rule, ask Naya, open item, share if governed",
+    "proof": "item source/canonical identity, smart-rule explanation, changes and sharing state"
+  },
+  "signature_instrument": "INTELLIGENT_ACTION_LANES_AND_LISTS",
+  "primary_views": [
+    "NOW",
+    "NEXT",
+    "WAITING",
+    "QUESTIONS",
+    "IDEAS",
+    "OPPORTUNITIES",
+    "COMPLETED",
+    "MANUAL",
+    "SMART",
+    "HYBRID"
+  ],
+  "primary_actions": [
+    "CREATE_LIST",
+    "ADD_ITEM",
+    "REMOVE_ITEM",
+    "MOVE_LANE",
+    "PIN_REORDER",
+    "SET_SMART_RULE",
+    "ASK_NAYA_ORGANIZE",
+    "OPEN_ITEM",
+    "SHARE_IF_AUTHORIZED",
+    "CONVERT_IF_REAL_OPERATION"
+  ],
+  "data_owner": "list definitions/references to canonical intelligence",
+  "handoffs": [
+    "feed",
+    "today",
+    "library",
+    "reports",
+    "mail",
+    "spaces",
+    "ledger"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "NOW/NEXT/WAITING/QUESTIONS/IDEAS/OPPORTUNITIES/COMPLETED behave distinctly",
+    "WHY THIS IS HERE is available",
+    "smart-rule membership is explainable",
+    "same canonical object retains identity",
+    "reorder works without drag",
+    "completed items remain inspectable"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}
