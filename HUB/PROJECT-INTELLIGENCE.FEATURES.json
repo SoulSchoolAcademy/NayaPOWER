@@ -194,14 +194,37 @@
   ],
   "runtime_truth_rule": "This target matrix is not evidence that any room/capability is live. Audit runtime separately.",
   "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end.",
-  "version": "1.1",
+  "version": "1.2",
   "room_specification": {
     "index": "HUB/ROOMS/README.md",
     "shared_contract": "HUB/ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md",
     "machine_contract": "HUB/ROOMS/ROOMS-MACHINE-V1.json",
     "scorecard": "HUB/ROOMS/ROOM-SPEC-SCORECARD.md",
     "primary_room_count": 11,
-    "rule": "Each primary room is a distinct intelligent environment with a unique signature experience, shared canonical object identity, explicit causal actions, honest states, runtime ownership, cross-room handoffs and acceptance proof."
+    "rule": "Each primary room is a distinct intelligent environment with a unique signature experience, shared canonical object identity, explicit causal actions, honest states, runtime ownership, cross-room handoffs and acceptance proof.",
+    "source_notes": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+    "consensus_protocol": "HUB/ROOMS/CONSENSUS-PROTOCOL.md",
+    "consensus_status": "HUB/ROOMS/CONSENSUS-STATUS.md",
+    "room_packages": {
+      "feed": "HUB/ROOMS/01-smart-feed",
+      "today": "HUB/ROOMS/02-your-intelligence-today",
+      "reports": "HUB/ROOMS/03-your-reports",
+      "library": "HUB/ROOMS/04-intelligent-library",
+      "connect": "HUB/ROOMS/05-smart-connect",
+      "ledger": "HUB/ROOMS/06-smart-ledger",
+      "connections": "HUB/ROOMS/07-your-connections",
+      "lists": "HUB/ROOMS/08-smart-lists",
+      "mail": "HUB/ROOMS/09-smart-mail",
+      "spaces": "HUB/ROOMS/10-smart-spaces",
+      "settings": "HUB/ROOMS/11-settings"
+    },
+    "shared_five_layer_grammar": [
+      "ORIENTATION",
+      "CURRENT_STATE",
+      "INTELLIGENCE",
+      "ACTION",
+      "PROOF"
+    ]
   },
   "primary_room_boundary": {
     "rooms": [
