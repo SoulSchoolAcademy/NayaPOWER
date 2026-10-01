@@ -1,0 +1,88 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "library",
+  "name": "Intelligent Library",
+  "route": "/library",
+  "metaphor": "THE VAULT / WALKING INTO YOUR OWN MIND",
+  "theme": "Sapphire — knowledge, retrieval, comprehension",
+  "human_question": "What do we know, what are we learning, and what remains unresolved?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "Library identity, current Space and search focus",
+    "state": "featured intelligence, domain counts/status and recently changed knowledge",
+    "intelligence": "semantic relevance, knowledge gaps, uncertainty and domain synthesis",
+    "action": "search, open, ask, save/list, inspect source, explore relationships/domain",
+    "proof": "provenance, truth state, last meaningful update and source relationships"
+  },
+  "signature_instrument": "SEMANTIC_VAULT_AND_DOMAIN_EXPLORER",
+  "primary_views": [
+    "SEARCH",
+    "FEATURED",
+    "DOMAINS",
+    "DOMAIN_DETAIL",
+    "SAVED",
+    "RECENT",
+    "RELATIONSHIPS"
+  ],
+  "primary_actions": [
+    "SEARCH",
+    "OPEN_INTELLIGENCE",
+    "OPEN_DOMAIN",
+    "ASK_NAYA",
+    "SAVE_FAVORITE",
+    "ADD_TO_LIST",
+    "OPEN_SOURCE",
+    "SEE_RELATIONSHIPS",
+    "OPEN_ORIGIN",
+    "SHARE_IF_AUTHORIZED"
+  ],
+  "data_owner": "canonical retained intelligence index/retrieval",
+  "handoffs": [
+    "feed",
+    "today",
+    "reports",
+    "lists",
+    "spaces",
+    "connections",
+    "ledger"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "semantic search returns real results",
+    "why-match is explainable",
+    "featured sections use real ranking/state",
+    "domain counts recompute from canonical data",
+    "uncertainty is visible",
+    "domain entry preserves shell/context",
+    "source/provenance is inspectable"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}
