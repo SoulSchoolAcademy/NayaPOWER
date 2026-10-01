@@ -10,6 +10,8 @@
 
 Read `NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md` before substantive Hub design/build work.
 
+Then read `HUB/DESIGN-LAWS/README.md` and the applicable sublaws before touching production components. The lawbook is the detailed builder-level compilation of `HUB/DESIGN-CONTRACT.md`; it does not create a second design authority.
+
 Companion projections:
 - `PROJECT-INTELLIGENCE.HUMAN.md`
 - `PROJECT-INTELLIGENCE.NAYA.md`
