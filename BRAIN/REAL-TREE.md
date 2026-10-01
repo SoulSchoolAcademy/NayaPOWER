@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-09-30  
-**Receipt basis commit:** `ded09a9ef85017b7bb2be91442aea6fa051f8ba5`  
+**Generated:** 2026-10-01  
+**Receipt basis commit:** `a726a8376559609a3620f948ec7bfcabdba50abb`  
 **Inventory file count:** 163  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -165,7 +165,7 @@
 - `BRAIN/10-INTERFACES/0001-CHANNEL-CONTRACT-V1.md` — `c237abfba785` (2031 bytes)
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.json` — `303e55989213` (768 bytes)
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md` — `f7c31dc624eb` (1092 bytes)
-- `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `ec4123eea3df` (8959 bytes)
+- `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `50685b5f40f8` (10067 bytes)
 - `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
 ### 11-KNOWLEDGE — Knowledge
 

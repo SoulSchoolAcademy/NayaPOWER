@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
+  "generated_at": "2026-10-01",
+  "receipt_basis_commit": "a726a8376559609a3620f948ec7bfcabdba50abb",
   "inventory_file_count": 163,
   "domain_counts": {
     "00-SPEC": 15,
@@ -595,8 +595,8 @@
     },
     {
       "path": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
-      "blob_sha": "ec4123eea3dfbbef587b19348d46fe08dee19445",
-      "size": 8959
+      "blob_sha": "50685b5f40f8607bd7ad0d96526cd43cddf8f616",
+      "size": 10067
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
