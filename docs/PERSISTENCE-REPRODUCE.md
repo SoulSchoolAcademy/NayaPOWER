@@ -6,21 +6,24 @@ All commands are read-only except where marked. No credentials are in this packa
 
 ```bash
 # from the repo root at the package commit
-python3 tests/persistence_seam.test.py
+python -m pytest tests/test_persistence_seam.py -q
 ```
 
-Expected: all 11 boundary cases pass. Covers: valid payload, missing metadata,
-invalid types, hash-mismatch tamper, source/config mismatch, wrong ownership,
-forced UNVERIFIED at insert, bad successor authority, lineage threading,
-idempotency-key determinism, contract-record validation.
+Expected: all 15 tests pass (pytest-discoverable; also runs under the repo's
+normal `python -m pytest -q`). Covers: valid payload, missing metadata,
+invalid types, hash-mismatch tamper, source/config shape, ownership shape,
+forced UNVERIFIED at insert, successor parent shape, lineage threading,
+idempotency-key shape, seal validation (numeric/null/malformed receipt_hash
+rejected), receipt vocabulary (verdict/timestamp/decision_id types),
+input-commitment (inputs_hash recomputation; legacy labeled absent-legacy),
+interop against Naya 4's real `seam-verify-001` receipt
+(tests/fixtures/seam-verify-001.json), contract-record validation.
 
 ## 2. Boundary validator (ad-hoc)
 
 ```bash
 python3 - <<'EOF'
-import sys
-sys.path.insert(0, 'kernel')
-from persistence_seam import project_kernel_receipt, verify_kernel_receipt
+from kernel.persistence_seam import project_kernel_receipt, verify_kernel_receipt
 # receipt: any dict produced by naya_kernel Kernel.decide()
 # owner_id: the authenticated user's uuid (auth.uid())
 params = project_kernel_receipt(receipt, owner_id='<uuid>', kernel_sha='<40-hex>')

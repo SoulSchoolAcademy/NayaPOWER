@@ -55,8 +55,12 @@ Seam-managed extras: `event_type='DECISION'`, `source_table='naya_kernel_decisio
 - **Who assigns `owner_id`?** The seam, from `auth.uid()` of the authenticated caller, passed as
   `p_owner_id`. The function raises `LEDGER_OWNER_MISMATCH` if they differ. The kernel never sees
   owner identity. Seat labels ("naya-2") are worker descriptions, not security identities.
-- **Does the kernel emit `inputs_hash`?** No (verified at kernel `f58adf08`). It emits `receipt_hash`
-  (SHA-256 over the canonical body *including* `issued_at`) and `issued_at`.
+- **Does the kernel emit `inputs_hash`?** **Yes** (current kernel `123fc98e`;
+  earlier `4e87d4a` introduced it, `seal()` line 370 hashes the full evaluated
+  state). It emits `receipt_hash` (SHA-256 over the canonical receipt body
+  *including* `issued_at` and `inputs_hash`) and `issued_at`. Legacy receipts
+  without `inputs_hash` are labeled `input_commitment: "absent-legacy"` and
+  never receive the recomputation qualification.
 - **Does the kernel emit `executed_at`?** Not by that name. `issued_at` is the execution timestamp
   (receipt created at the end of `decide()`). The seam records `received_at` in provenance; it must
   not invent `executed_at` or `observed_at`.
@@ -88,3 +92,34 @@ Seam-managed extras: `event_type='DECISION'`, `source_table='naya_kernel_decisio
    the UNVERIFIED→VERIFIED_PASS *lifecycle* is seam convention in `verification` jsonb, not a CHECK.
 4. Static schema mapping is not DB integration — stated as such; the DB setup for live exercise is
    in `docs/PERSISTENCE-REPRODUCE.md`.
+
+## 7. v2 hardening (2026-10-01, after independent review)
+
+Independent review of the v1 package reproduced four seal/boundary bypasses
+and one CI failure. All are fixed in `persistence-seam-v2`; RED evidence was
+published on PR #1243 before the fix (comment 5935447995).
+
+1. **Seal bypass (RED-1).** v1 invoked the verifier only when `receipt_hash`
+   was a string, so `receipt_hash=123` skipped verification entirely. v2
+   rejects missing/null/non-string/malformed hashes and ALWAYS verifies a
+   well-formed hash (must be 64-char lowercase hex).
+2. **Receipt vocabulary (RED-2/3/4).** v1 accepted resealed receipts with
+   `verdict="BOGUS"`, `issued_at="banana"`, `decision_id=123`. v2 enforces:
+   `verdict` ∈ {PASS, FAIL, NEED_EVIDENCE} (canonical `GateVerdict` from
+   `naya_kernel/node_base.py`); `issued_at` must parse as ISO-8601;
+   `receipt_id`/`decision_id`/`kernel_version` must be non-empty strings.
+3. **Input commitment.** Receipts without `inputs_hash` are labeled
+   `input_commitment: "absent-legacy"` in provenance; verified receipts carry
+   `"recomputed-match"`. A legacy receipt never receives the recomputation
+   qualification.
+4. **Provenance honesty.** `kernel_sha`/`config_hash` are shape-checked
+   caller-supplied LABELS, preserved in provenance as claims — never as
+   independently established source/config provenance. Shape is not isolation:
+   `owner_id` uuid format ≠ owner isolation; idempotency-key determinism ≠
+   safe replay; parent uuid format ≠ lineage authorization. Those are
+   database properties, proven only by DB evidence.
+5. **CI.** Test file renamed `tests/persistence_seam.test.py` →
+   `tests/test_persistence_seam.py` (pytest discovery) and imports via
+   `from kernel.persistence_seam import ...` instead of a `sys.path` hack —
+   the dependency guard no longer misclassifies `persistence_seam` as an
+   undeclared third-party distribution. Guard not weakened.

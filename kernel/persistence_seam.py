@@ -24,17 +24,35 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional
 
-ADAPTER_VERSION = "persistence-seam-v1"
+ADAPTER_VERSION = "persistence-seam-v2"
 CONTRACT_REF = "NAYANODE/0101-PERSISTENCE-CONTRACT-V1.md"
 SCHEMA_VERSION = "1.0.0"  # matches the ledger function's hardcoded schema_version
 
 SOURCE_TABLE = "naya_kernel_decision"
 EVENT_TYPE = "DECISION"
 
+# Canonical verdict vocabulary: naya_kernel/node_base.py::GateVerdict.
+# The adapter enforces the producer's own vocabulary; it invents none.
+_VERDICTS = ("PASS", "FAIL", "NEED_EVIDENCE")
+
 _OWNER_SCOPES = ("PRIVATE", "SHARED", "COLLECTIVE", "PUBLIC")
 _UUID_RE = re.compile(
     r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.I
 )
+_HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
+_HEX40_RE = re.compile(r"^[0-9a-f]{40}$")
+
+
+def _parse_timestamp(value: Any) -> bool:
+    """True iff value is a parseable ISO-8601 timestamp string."""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    text = value.strip().replace("Z", "+00:00")
+    try:
+        datetime.fromisoformat(text)
+        return True
+    except ValueError:
+        return False
 
 
 # ---------------------------------------------------------------------------
@@ -95,11 +113,17 @@ def project_kernel_receipt(
       ``schema_version='1.0.0'``.
     """
     violations = _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
-                                  parent_ledger_event_id, inputs_state, verify)
+                                  config_hash, parent_ledger_event_id,
+                                  inputs_state, verify)
     if violations:
         raise ValueError("seam boundary violations: " + "; ".join(violations))
 
     decision_id = receipt["decision_id"]
+    # Input-commitment qualification: a receipt WITHOUT inputs_hash is a
+    # legacy receipt — it must never carry the recomputation qualification.
+    inputs_hash = receipt.get("inputs_hash")
+    input_commitment = ("recomputed-match" if isinstance(inputs_hash, str)
+                        and _HEX64_RE.match(inputs_hash) else "absent-legacy")
     provenance = {
         "node_id": receipt.get("node_id"),
         "kernel_version": receipt.get("kernel_version"),
@@ -108,6 +132,7 @@ def project_kernel_receipt(
         "received_at": datetime.now(timezone.utc).isoformat(),
         "adapter_version": ADAPTER_VERSION,
         "contract_ref": CONTRACT_REF,
+        "input_commitment": input_commitment,
     }
     # Strip None provenance entries the kernel did not supply; keep the seam's.
     provenance = {k: v for k, v in provenance.items()
@@ -141,42 +166,60 @@ def idempotency_key(owner_id: str, source_id: str) -> str:
     return f"{owner_id}|{SOURCE_TABLE}|{source_id}"
 
 
-def _validate_inputs(receipt, owner_id, kernel_sha, owner_scope,
+def _validate_inputs(receipt, owner_id, kernel_sha, owner_scope, config_hash,
                      parent_ledger_event_id, inputs_state, verify) -> List[str]:
     v: List[str] = []
     if not isinstance(receipt, dict):
         return ["receipt must be a JSON object"]
-    # 2. missing required metadata
-    for f in ("receipt_hash", "receipt_id", "decision_id", "issued_at",
-              "kernel_version", "verdict"):
-        if receipt.get(f) in (None, ""):
-            v.append(f"receipt missing required field: {f}")
-    # 4. hash mismatch (tamper / non-kernel canonicalization)
-    if isinstance(receipt.get("receipt_hash"), str):
+    # 2. required receipt metadata: presence, type, and vocabulary.
+    for f in ("receipt_id", "decision_id", "kernel_version"):
+        val = receipt.get(f)
+        if not isinstance(val, str) or not val.strip():
+            v.append(f"receipt field {f} must be a non-empty string")
+    verdict = receipt.get("verdict")
+    if verdict not in _VERDICTS:
+        v.append(f"verdict must be one of {_VERDICTS} (canonical GateVerdict)")
+    if not _parse_timestamp(receipt.get("issued_at")):
+        v.append("issued_at must be a parseable ISO-8601 timestamp")
+    # 3. seal validation: the seal is ALWAYS checked. Missing, null,
+    #    non-string, or malformed receipt_hash is rejected — a hash the
+    #    verifier never sees is not a verified hash.
+    stored = receipt.get("receipt_hash")
+    if not isinstance(stored, str):
+        v.append("receipt_hash must be a string (missing/null/numeric rejected)")
+    elif not _HEX64_RE.match(stored):
+        v.append("receipt_hash must be 64-char lowercase hex")
+    else:
         r = verify(receipt)
         if r.get("result") != "MATCH":
             v.append("receipt_hash MISMATCH — receipt failed independent recomputation")
-    # 4b. inputs_hash: the kernel produces it; the adapter recomputes it over
+    # 4. inputs_hash: the kernel produces it; the adapter recomputes it over
     # the submitted state and rejects mismatch. Neither side invents it.
     claimed_inputs_hash = receipt.get("inputs_hash")
     if claimed_inputs_hash is not None:
         if not isinstance(claimed_inputs_hash, str) or \
-                not re.fullmatch(r"[0-9a-f]{64}", claimed_inputs_hash):
+                not _HEX64_RE.match(claimed_inputs_hash):
             v.append("inputs_hash must be 64-char lowercase hex when present")
         elif inputs_state is None:
             v.append("inputs_hash present but no inputs_state submitted for recomputation")
         elif _sha256(inputs_state) != claimed_inputs_hash:
             v.append("inputs_hash MISMATCH — submitted state does not reproduce the kernel's hash")
-    # 5. source/configuration mismatch
-    if not isinstance(kernel_sha, str) or len(kernel_sha) != 40 or \
-            not re.fullmatch(r"[0-9a-f]{40}", kernel_sha):
+    # 5. source/configuration: shape-checked labels, NOT provenance.
+    # A 40-hex kernel_sha proves nothing about which revision produced the
+    # receipt; config_hash is a caller-supplied claim. Both are preserved
+    # as claims in provenance, never as established facts.
+    if not isinstance(kernel_sha, str) or not _HEX40_RE.match(kernel_sha):
         v.append("kernel_sha must be a 40-char lowercase hex SHA")
-    # 6. wrong ownership / scope
+    if config_hash is not None and \
+            (not isinstance(config_hash, str) or not config_hash.strip()):
+        v.append("config_hash must be a non-empty string when supplied")
+    # 6. ownership / scope: uuid shape only. Shape is not isolation —
+    # isolation is enforced by the database (LEDGER_OWNER_MISMATCH, RLS).
     if not isinstance(owner_id, str) or not _UUID_RE.match(owner_id):
         v.append("owner_id must be a uuid (auth identity)")
     if owner_scope not in _OWNER_SCOPES:
         v.append(f"owner_scope must be one of {_OWNER_SCOPES}")
-    # 8. successor authority shape
+    # 8. successor authority shape (shape only — not lineage authorization).
     if parent_ledger_event_id is not None and \
             not _UUID_RE.match(str(parent_ledger_event_id)):
         v.append("parent_ledger_event_id must be a uuid or null")
