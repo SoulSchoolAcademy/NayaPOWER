@@ -1,0 +1,172 @@
+{
+  "schema": "naya.design-intelligence.v1",
+  "version": "1.0",
+  "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
+  "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
+  "coordination": {
+    "issue": 554,
+    "finding_rule": "Any materially not-right observation must be posted with evidence; posting does not itself grant authority."
+  },
+  "inherited_contracts": [
+    "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+    "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md",
+    "BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md"
+  ],
+  "required_views": {
+    "HUMAN": [
+      "essence",
+      "human_value",
+      "experience",
+      "what_to_remember",
+      "next_action"
+    ],
+    "NAYA": [
+      "intent",
+      "outcome",
+      "preserve",
+      "ambiguity",
+      "authority_privacy",
+      "best_next_move",
+      "proof",
+      "successor_relevance"
+    ],
+    "AI": [
+      "requirements",
+      "architecture",
+      "dependencies",
+      "components",
+      "states",
+      "causal_paths",
+      "constraints",
+      "failure_behavior",
+      "acceptance",
+      "non_goals"
+    ],
+    "MACHINE": [
+      "ids",
+      "enums",
+      "routes",
+      "tokens",
+      "state_machines",
+      "dependencies",
+      "gates",
+      "schema_refs",
+      "version",
+      "status"
+    ],
+    "PROOF": [
+      "claim",
+      "evidence",
+      "method",
+      "verifier",
+      "scope",
+      "result",
+      "limitations",
+      "unresolved_gaps"
+    ]
+  },
+  "workflow": [
+    "RESTORE",
+    "UNDERSTAND_INTENT",
+    "DISTILL_OUTCOME",
+    "INVENTORY",
+    "IDENTIFY_CANONICAL_OWNERS",
+    "PRESERVE",
+    "CLASSIFY_CHANGE",
+    "MODEL_EXPERIENCE",
+    "DEFINE_CAUSAL_PATHS",
+    "DESIGN_SYSTEM",
+    "SIMULATE_STATES",
+    "SCORE",
+    "BUILD_BOUNDED_SLICE",
+    "TEST",
+    "OBSERVE",
+    "INDEPENDENT_VERIFY",
+    "LEARN",
+    "PROMOTE_OR_SUPERSEDE",
+    "SUCCESSOR"
+  ],
+  "change_classification": [
+    "KEEP",
+    "IMPROVE",
+    "REPLACE",
+    "REMOVE"
+  ],
+  "quality_axes": [
+    "purpose",
+    "human_value",
+    "clarity",
+    "visual_craft",
+    "interaction",
+    "intelligence",
+    "truth",
+    "governance",
+    "accessibility",
+    "responsive_quality",
+    "performance",
+    "reliability",
+    "maintainability",
+    "continuity",
+    "learning"
+  ],
+  "causal_path": [
+    "CONTROL",
+    "INTENT",
+    "SCOPE_AUTHORITY",
+    "CAPABILITY",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE_WHERE_REQUIRED"
+  ],
+  "learning": {
+    "maximum_automatic_state": "CANDIDATE",
+    "evidence_sources": [
+      "human_director_preference",
+      "repeated_user_outcome",
+      "task_completion",
+      "error_reduction",
+      "accessibility_gain",
+      "performance_gain",
+      "accepted_visual_comparison",
+      "reuse_success"
+    ],
+    "ai_preference_alone_can_promote": false,
+    "requires_applicability": true,
+    "requires_provenance": true,
+    "supersession_supported": true
+  },
+  "automatic_builder_outputs": [
+    "human_outcome",
+    "experience_model",
+    "existing_state_inventory",
+    "preservation_map",
+    "information_architecture",
+    "feature_function_map",
+    "component_architecture",
+    "state_matrix",
+    "causal_path_matrix",
+    "visual_token_system",
+    "responsive_accessibility_performance_contract",
+    "project_scorecard",
+    "roadmap_dependencies",
+    "proof_plan",
+    "successor_handoff"
+  ],
+  "anti_patterns": [
+    "generic_dashboard_conversion",
+    "identity_erasure",
+    "style_without_function",
+    "fake_liveness",
+    "fake_data",
+    "random_color",
+    "mixed_placeholder_icons",
+    "glow_without_depth",
+    "spectacle_over_readability",
+    "client_truth_as_canonical",
+    "competing_design_systems",
+    "one_off_css_accumulation",
+    "unmeasured_improvement",
+    "self_grade_as_final_proof"
+  ],
+  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence."
+}
