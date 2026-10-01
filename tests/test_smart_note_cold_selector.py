@@ -37,9 +37,21 @@ def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exist
     wf = WORKFLOW.read_text(encoding="utf-8")
     marker = '          capture_path=open("capture-path.txt").read().strip()'
     start = wf.index(marker)
-    end = wf.index('          curl -fsS -X POST', start)
+    end = wf.index('          python - <<\'PY\'', start)
     block = wf[start:end]
     assert 'if capture_path:' in block
     assert 'fresh-lesson-lineage-ids.json' in block
     assert 'intelligent_block_id' in block
     assert 'reg["entries"]' in block
+
+
+def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    start = wf.index('          for attempt in 1 2 3; do', wf.index('cold-verify-request.json'))
+    end = wf.index('          python - <<\'PY\'', start)
+    block = wf[start:end]
+    assert 'for attempt in 1 2 3; do' in block
+    assert 'cold-runtime-reread.json' in block
+    assert 'if [[ -s cold-runtime-reread.json ]]' in block
+    assert 'sleep 2' in block
+    assert 'exit 1' in block
