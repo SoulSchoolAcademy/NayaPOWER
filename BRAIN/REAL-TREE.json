@@ -2,12 +2,12 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
   "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
-  "inventory_file_count": 160,
+  "inventory_file_count": 163,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 30,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,
     "06-PROOF": 10,
@@ -164,6 +164,16 @@
       "size": 3347
     },
     {
+      "path": "BRAIN/03-KERNEL/0005-NINE-ORGAN-HEALTH-MATRIX-SPEC-V1.md",
+      "blob_sha": "c99b6dd55e5b1e3c8c0a26368ccda02a679e0abd",
+      "size": 8755
+    },
+    {
+      "path": "BRAIN/03-KERNEL/0006-ORGAN-HEALTH-MATRIX-V1.json",
+      "blob_sha": "754bd46d823d07bcf5044b5d7a0653973c97b22f",
+      "size": 18389
+    },
+    {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
       "blob_sha": "305124036fff58e2885ac8032fb3625d2e19b7a9",
       "size": 1394
@@ -257,6 +267,11 @@
       "path": "BRAIN/03-KERNEL/SCHEMA/LEARN-NODE-SCHEMA.json",
       "blob_sha": "865d254f5be902ac50e3258402c91e97c97f770e",
       "size": 1004
+    },
+    {
+      "path": "BRAIN/03-KERNEL/SCHEMA/ORGAN-HEALTH-MATRIX-SCHEMA.json",
+      "blob_sha": "9196778c4d92296f321d02db4dc5f361acb3d2e0",
+      "size": 2799
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/PROVE-NODE-SCHEMA.json",

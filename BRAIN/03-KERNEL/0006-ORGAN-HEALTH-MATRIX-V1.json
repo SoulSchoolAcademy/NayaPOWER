@@ -1,0 +1,746 @@
+{
+ "schema": "naya/organ-health-matrix/v1",
+ "spec_version": "1",
+ "stamped_sha": "507d34213333a38708912d343537985e619938ac",
+ "evaluated_at": "2026-10-01T02:09:11.000436Z",
+ "evaluator": "naya-2-build-loop",
+ "generator_version": "1.0.0",
+ "ci_state_at_stamp": {
+  "test": "success",
+  "chain-readiness-gate": "success",
+  "resolve-current-truth": "success"
+ },
+ "gate_coverage": [
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  },
+  {
+   "gate": "chain-readiness-gate",
+   "check_run_id": 110165473410,
+   "covers": [
+    "SELF",
+    "LAW",
+    "ACT",
+    "KNOW",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+   ]
+  }
+ ],
+ "stale_stamp": false,
+ "organs": [
+  {
+   "organ": "SELF",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-self-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-self-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.SELF@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.SELF+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/test_self_node.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "LAW",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-law-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-law-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.LAW@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.LAW+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/law-runtime.test.mjs@507d3421",
+      "repo:tests/law_runtime_handler_scope.test.mjs@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "ACT",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-act-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-act-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.ACT@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.ACT+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/act-runtime.test.mjs@507d3421",
+      "repo:tests/act_runtime_handler_time.test.mjs@507d3421",
+      "repo:tests/test_act_node_v1.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "KNOW",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-know-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-know-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.KNOW@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.KNOW+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/know-edge-context.test.mjs@507d3421",
+      "repo:tests/know-negative-battery.test.mjs@507d3421",
+      "repo:tests/know-runtime.test.mjs@507d3421",
+      "repo:tests/know-v2-selector.test.mjs@507d3421",
+      "repo:tests/know-writer-roundtrip.test.mjs@507d3421",
+      "repo:tests/know_runtime_handler_freshness.test.mjs@507d3421",
+      "repo:tests/test_live_know_proof_contract.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "PROVE",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-prove-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-prove-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.PROVE@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.PROVE+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/prove-runtime.test.mjs@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "CONNECT",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-connect-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-connect-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.CONNECT@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.CONNECT+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/connect-writer-threading.test.mjs@507d3421",
+      "repo:tests/test_connect_receipt_contract_regression.py@507d3421",
+      "repo:tests/test_connect_runtime_identity_contract.py@507d3421",
+      "repo:tests/test_connect_writer_threading.py@507d3421",
+      "repo:tests/test_live_connect_proof_workflow.py@507d3421",
+      "repo:tests/test_smart_connect_post_reset_restoration.py@507d3421",
+      "repo:tests/verify_connect_runtime_receipt.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "VERIFY",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-verify-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-verify-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.VERIFY@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.VERIFY+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/verify_cold_graph_behavior.py@507d3421",
+      "repo:tests/verify_cold_runtime_receipt.py@507d3421",
+      "repo:tests/verify_connect_runtime_receipt.py@507d3421",
+      "repo:tests/verify_nine_node_behavioral_acceptance.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "LEARN",
+   "current_rung": "CONTRACT",
+   "missing_rung": "UNIT",
+   "next_proof": "kernel-tests check run success on 507d34213333a38708912d343537985e619938ac with organ-scoped tests for LEARN",
+   "blockers": [
+    "no organ-scoped test evidence for LEARN on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.LEARN@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.LEARN+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  },
+  {
+   "organ": "EVOLVE",
+   "current_rung": "INTEGRATION",
+   "missing_rung": "BEHAVIORAL",
+   "next_proof": "live-evolve-proof workflow run success on 507d34213333a38708912d343537985e619938ac (bounded runtime, organ contract scope)",
+   "blockers": [
+    "no live-evolve-proof workflow run on stamped SHA"
+   ],
+   "rung_evidence": [
+    {
+     "rung": "STRUCTURAL",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.EVOLVE@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#node_order@507d3421"
+     ]
+    },
+    {
+     "rung": "CONTRACT",
+     "status": "PROVEN",
+     "refs": [
+      "repo:BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json#nodes.EVOLVE+universal_envelope.required_fields@507d3421"
+     ]
+    },
+    {
+     "rung": "UNIT",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473840:test=success@507d3421",
+      "repo:tests/test_evolve_cold_start_precondition.py@507d3421"
+     ]
+    },
+    {
+     "rung": "INTEGRATION",
+     "status": "PROVEN",
+     "refs": [
+      "check_run:110165473410:chain-readiness-gate=success@507d3421",
+      "repo:BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json#next_node_after_*@507d3421"
+     ]
+    },
+    {
+     "rung": "BEHAVIORAL",
+     "status": "UNKNOWN",
+     "refs": []
+    },
+    {
+     "rung": "OUTCOME",
+     "status": "UNKNOWN",
+     "refs": [
+      "check_run:110165522556:independent-verification=success"
+     ]
+    },
+    {
+     "rung": "PRODUCTION",
+     "status": "UNKNOWN_NOT_DISPATCHED",
+     "refs": []
+    },
+    {
+     "rung": "SUCCESSOR",
+     "status": "UNKNOWN_NOT_QUALIFIED",
+     "refs": []
+    }
+   ]
+  }
+ ]
+}

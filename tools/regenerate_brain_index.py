@@ -116,7 +116,7 @@ EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 30,  # 27 -> 30 deliberate 2026-10-01: 0005 spec + ORGAN-HEALTH-MATRIX-SCHEMA.json were missing from the index listing (regen now includes them) + 0006 health-matrix artifact added
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
     "06-PROOF": 10,
