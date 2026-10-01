@@ -1,0 +1,146 @@
+{
+  "schema": "NAYA_PROJECT_QUESTIONS_V1",
+  "purpose": "Force the next Naya to understand before executing.",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "What is Naya in one sentence?",
+      "required": true
+    },
+    {
+      "id": "Q02",
+      "question": "What is NayaPOWER in one sentence?",
+      "required": true
+    },
+    {
+      "id": "Q03",
+      "question": "What is NayaNET in one sentence?",
+      "required": true
+    },
+    {
+      "id": "Q04",
+      "question": "What human outcome is being optimized?",
+      "required": true
+    },
+    {
+      "id": "Q05",
+      "question": "What does highest responsible verified value mean here?",
+      "required": true
+    },
+    {
+      "id": "Q06",
+      "question": "Who is the legitimate human authority?",
+      "required": true
+    },
+    {
+      "id": "Q07",
+      "question": "What authority is explicitly absent?",
+      "required": true
+    },
+    {
+      "id": "Q08",
+      "question": "What is the canonical source of truth?",
+      "required": true
+    },
+    {
+      "id": "Q09",
+      "question": "Which artifacts are derived views?",
+      "required": true
+    },
+    {
+      "id": "Q10",
+      "question": "What is actually deployed right now?",
+      "required": true
+    },
+    {
+      "id": "Q11",
+      "question": "What has been runtime-proven?",
+      "required": true
+    },
+    {
+      "id": "Q12",
+      "question": "What has only been implemented or intended?",
+      "required": true
+    },
+    {
+      "id": "Q13",
+      "question": "What has failed and at what first boundary?",
+      "required": true
+    },
+    {
+      "id": "Q14",
+      "question": "What remains unknown?",
+      "required": true
+    },
+    {
+      "id": "Q15",
+      "question": "What is stale, superseded, or conflicted?",
+      "required": true
+    },
+    {
+      "id": "Q16",
+      "question": "What is the current human operating path?",
+      "required": true
+    },
+    {
+      "id": "Q17",
+      "question": "Where does UI action become runtime action?",
+      "required": true
+    },
+    {
+      "id": "Q18",
+      "question": "Where does runtime action become persistence?",
+      "required": true
+    },
+    {
+      "id": "Q19",
+      "question": "How does reload prove persistence?",
+      "required": true
+    },
+    {
+      "id": "Q20",
+      "question": "How does authorization get proven?",
+      "required": true
+    },
+    {
+      "id": "Q21",
+      "question": "How is privacy enforced?",
+      "required": true
+    },
+    {
+      "id": "Q22",
+      "question": "How are receipts recorded?",
+      "required": true
+    },
+    {
+      "id": "Q23",
+      "question": "How does intelligence become retrievable project context?",
+      "required": true
+    },
+    {
+      "id": "Q24",
+      "question": "How does a fresh Naya restore continuity?",
+      "required": true
+    },
+    {
+      "id": "Q25",
+      "question": "What is the single highest-value incomplete human boundary?",
+      "required": true
+    },
+    {
+      "id": "Q26",
+      "question": "What proof must exist before that boundary is promoted?",
+      "required": true
+    },
+    {
+      "id": "Q27",
+      "question": "What must never be changed merely to make a test pass?",
+      "required": true
+    },
+    {
+      "id": "Q28",
+      "question": "What must the next Naya know if this Naya disappears immediately?",
+      "required": true
+    }
+  ]
+}
