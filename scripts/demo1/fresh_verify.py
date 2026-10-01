@@ -20,14 +20,18 @@ historical verification must never be mistaken for fresh permission):
       reference, and EXECUTED path are present. Semantic validation
       runs even when the hash matches — a freshly resealed
       contradictory receipt cannot pass on hash equality alone.
-  VERDICT 3 — current authorization for another action: the
-      authority_basis kind satisfies the tool's required_authority, the
-      basis is not revoked, and the grant is fresh against the real
-      clock. This verdict is about PERMISSION NOW, not about what
-      happened.
+  VERDICT 3 — current authorization for another action: resolve the
+      referenced DECISION receipt and the CURRENT grant file — never the
+      execution receipt's frozen authority_basis, which is history, not
+      permission. The basis kind must satisfy the tool's required_authority,
+      the live grant must match the decision's basis ref, not be revoked,
+      and be fresh against the real clock (typed, tz-aware). Missing
+      dependencies yield UNKNOWN; failed authority yields FAIL (fail
+      closed). A V3 PASS means the grant is live — it does NOT authorize
+      reuse of this receipt; a new action needs a fresh LAW decision.
 
 Usage:
-    python3 scripts/demo1/fresh_verify.py <receipt-json>
+    python3 scripts/demo1/fresh_verify.py <receipt-json> [--grant-path PATH]
 """
 
 from __future__ import annotations
@@ -46,15 +50,31 @@ from naya_kernel import smart_door
 from naya_kernel.nodes import act_node
 
 
-def main() -> int:
-    if len(sys.argv) != 2:
-        print("usage: fresh_verify.py <receipt-json>", file=sys.stderr)
+def main(argv=None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    grant_path = REPO_ROOT / "scripts" / "demo1" / "demo_grant.json"
+    rest = []
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--grant-path" and i + 1 < len(argv):
+            grant_path = Path(argv[i + 1])
+            i += 2
+        else:
+            rest.append(argv[i])
+            i += 1
+    if len(rest) != 1:
+        print("usage: fresh_verify.py <receipt-json> [--grant-path PATH]",
+              file=sys.stderr)
         return 2
-    receipt_path = Path(sys.argv[1])
+    receipt_path = Path(rest[0])
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
 
-    # Per-verdict failure collectors; exit 0 iff all three verdicts pass.
+    # Per-verdict failure collectors and unknown-dependency collectors.
+    # Exit 0 iff V1 and V2 pass — the historical verification. V3 answers
+    # the separate question "is another action authorized now?" and never
+    # affects the exit code; its verdict is explicit in the output.
     failures = {"V1": [], "V2": [], "V3": []}
+    unknown = {"V1": [], "V2": [], "V3": []}
 
     def chk(bucket: str, name: str, cond: bool, detail: str = ""):
         print(("PASS " if cond else "FAIL ") + f"[{bucket}] " + name
@@ -62,6 +82,11 @@ def main() -> int:
         if not cond:
             failures[bucket].append(name)
         return cond
+
+    def unk(bucket: str, name: str, detail: str = ""):
+        print("UNKNOWN [" + bucket + "] " + name
+              + (f" — {detail}" if detail else ""))
+        unknown[bucket].append(name)
 
     # ---- VERDICT 1 — receipt integrity ---------------------------------
     body = {k: v for k, v in receipt.items() if k != "receipt_hash"}
@@ -117,6 +142,15 @@ def main() -> int:
         f"decision_ref={receipt.get('decision_ref')!r}")
     chk("V2", "execution path was EXECUTED",
         receipt.get("path") == "EXECUTED", f"path={receipt.get('path')!r}")
+    # Semantic validation beyond hash equality: an EXECUTED receipt whose
+    # own authority_basis claims revoked=True is contradictory — ACT §4.2
+    # refuses revoked bases, so no honest execution can produce it. This is
+    # about the receipt's story cohering with the admission rules, not
+    # about current authorization (that's V3's separate question).
+    chk("V2", "authority basis not revoked at execution time",
+        (receipt.get("authority_basis") or {}).get("revoked") is not True,
+        "EXECUTED with a revoked authority basis is contradictory — "
+        "ACT §4.2 would have refused it")
 
     effects = str(receipt.get("effects_observed", ""))
     m = re.search(r"demo-staging/(\S+\.md)", effects)
@@ -140,52 +174,101 @@ def main() -> int:
                 f"receipt={h.group(1)[:12]}… disk={actual[:12]}…")
 
     # ---- VERDICT 3 — current authorization for another action ----------
-    basis = receipt.get("authority_basis") or {}
-    if entry is not None:
-        chk("V3", "authority basis kind satisfies required_authority",
-            basis.get("kind") == entry["required_authority"],
-            f"basis={basis.get('kind')!r} "
-            f"required={entry['required_authority']!r}")
+    # V3 answers ONLY "is another action authorized NOW?" It resolves the
+    # referenced DECISION receipt and the CURRENT grant file — never the
+    # execution receipt's frozen authority_basis, which is history, not
+    # permission. A historical receipt stays valid after the grant lapses;
+    # it can never authorize another action. Missing dependencies yield
+    # UNKNOWN; failed authority yields FAIL (fail closed). A V3 PASS means
+    # the grant is live — it does NOT authorize reuse of this receipt.
+    decision_ref = receipt.get("decision_ref")
+    decision = None
+    if isinstance(decision_ref, str) and decision_ref:
+        candidate = receipt_path.parent / f"decision-{decision_ref}.json"
+        if candidate.is_file():
+            try:
+                decision = json.loads(candidate.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError) as exc:
+                unk("V3", "decision receipt unreadable", str(exc))
+        else:
+            unk("V3", "decision receipt not found",
+                f"{candidate.name} — cannot resolve current authority")
     else:
-        chk("V3", "authority basis kind satisfies required_authority",
-            False, "tool not declared — no authority requirement to satisfy")
-    chk("V3", "authority basis not revoked",
-        basis.get("revoked") is not True,
-        f"authority_basis={basis!r}")
-    # Freshness honesty: the execution receipt binds issued_at and the
-    # decision reference, but the grant's validity window lives on the
-    # DECISION receipt. A validity window is not invented here — its
-    # absence is reported as a limitation, never as a PASS.
-    valid_until = receipt.get("valid_until")
-    if valid_until is None:
-        print("NOTE [V3] grant validity window not bound in this execution "
-              "receipt — freshness against the real clock requires the "
-              f"decision receipt {receipt.get('decision_ref')!r}; "
-              "not claimed here")
-    else:
-        now = datetime.now(timezone.utc)
-        try:
-            fresh = datetime.fromisoformat(valid_until) > now
-        except (ValueError, TypeError):
-            fresh = False
-        chk("V3", "grant fresh against the real clock",
-            fresh, f"valid_until={valid_until!r} now={now.isoformat()}")
+        unk("V3", "no decision_ref bound",
+            "cannot resolve the authorizing decision")
+
+    if decision is not None:
+        basis = decision.get("authority_basis") or {}
+        if entry is not None:
+            chk("V3", "authority basis kind satisfies required_authority",
+                basis.get("kind") == entry["required_authority"],
+                f"basis={basis.get('kind')!r} "
+                f"required={entry['required_authority']!r}")
+        else:
+            chk("V3", "authority basis kind satisfies required_authority",
+                False,
+                "tool not declared — no authority requirement to satisfy")
+
+        grant = None
+        if grant_path.is_file():
+            try:
+                grant = json.loads(grant_path.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError) as exc:
+                chk("V3", "current grant readable", False, str(exc))
+        else:
+            chk("V3", "current grant file present", False,
+                f"{grant_path} absent — no current authority evidence; "
+                "fail closed")
+        if grant is not None:
+            chk("V3", "current grant matches the decision's basis ref",
+                grant.get("grant_ref") == basis.get("ref"),
+                f"grant={grant.get('grant_ref')!r} "
+                f"basis ref={basis.get('ref')!r}")
+            chk("V3", "current grant not revoked",
+                grant.get("revoked") is not True,
+                f"grant {grant.get('grant_ref')!r} is revoked — "
+                "no new action is authorized")
+            exp_moment = act_node._parse_moment(grant.get("expiry"))
+            now_real = datetime.now(timezone.utc)
+            if exp_moment is None:
+                chk("V3", "grant expiry is a tz-aware ISO-8601 moment",
+                    False,
+                    f"expiry={grant.get('expiry')!r} — fail closed, "
+                    "never unlimited")
+            else:
+                chk("V3", "grant fresh against the real clock",
+                    exp_moment > now_real,
+                    f"expiry={grant.get('expiry')!r} "
+                    f"now={now_real.isoformat()}")
 
     print()
+    verdict_state = {}
     for verdict, label in (("V1", "receipt integrity"),
                            ("V2", "historical outcome verification"),
                            ("V3", "current authorization for another action")):
-        state = "PASS" if not failures[verdict] else "FAIL"
+        if failures[verdict]:
+            state = "FAIL"
+        elif unknown[verdict]:
+            state = "UNKNOWN"
+        else:
+            state = "PASS"
+        verdict_state[verdict] = state
         print(f"VERDICT {verdict} ({label}): {state}")
-    overall = not any(failures.values())
     print()
-    print("FRESH VERIFY:",
-          "PASS — observation confirmed independently; "
-          "historical proof is NOT fresh permission"
-          if overall else
-          "FAIL — see above (a failed V3 means: history may stand, "
-          "but no new action is authorized)")
-    return 0 if overall else 1
+    print("VERDICTS:", json.dumps(verdict_state, sort_keys=True))
+    print()
+    historical_ok = (verdict_state["V1"] == "PASS"
+                     and verdict_state["V2"] == "PASS")
+    if historical_ok:
+        print("FRESH VERIFY: PASS — observation confirmed independently.")
+    else:
+        print("FRESH VERIFY: FAIL — historical proof incomplete; see above.")
+    print("V3 NOTE: a V3 PASS means the grant is currently live — it does "
+          "NOT authorize reuse of this receipt; a new action needs a fresh "
+          "LAW decision. A V3 FAIL means history may stand but no new "
+          "action is authorized. A V3 UNKNOWN means current authority "
+          "could not be resolved.")
+    return 0 if historical_ok else 1
 
 
 if __name__ == "__main__":

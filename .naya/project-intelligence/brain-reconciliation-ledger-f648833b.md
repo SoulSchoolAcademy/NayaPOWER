@@ -14,7 +14,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 20 |
+| 05-MEMORY | 21 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -25,11 +25,13 @@
 | 90-OPERATIONS | 10 |
 | 99-ARCHIVE | 1 |
 | ROOT | 5 |
-| **TOTAL** | **163** |
+| **TOTAL** | **164** |
 
 ## Reconciliation note
 
 The classification now includes the deliberate nine-node lock preparation artifacts: one 03-KERNEL readiness file, one 05-MEMORY Smart Note build manifest, and one 12-ENGINEERING effectiveness scorecard. 04-INTELLIGENCE was already at 24 and 05-MEMORY already included SN-016 before this lock. Structural changes are reflected deliberately rather than silently normalized.
+
+2026-10-01: 05-MEMORY 20 → 21 for the SN-017 autoresearch-harness Smart Note (`BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/.../SN-017/IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md`), merged to main as part of the Naya 2 smart-note lane and reconciled into the nine-node branch so the generated index matches the PR merge tree. TOTAL 163 → 164.
 
 The ledger is a classification baseline, not a semantic authority source. It does not promote proof state, authority, or production status. Live evidence and constitutional governance remain authoritative.
 

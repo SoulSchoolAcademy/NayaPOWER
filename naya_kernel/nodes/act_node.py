@@ -53,6 +53,7 @@ from __future__ import annotations
 import fnmatch
 import hashlib
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
@@ -154,6 +155,53 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _parse_moment(value: Any) -> Optional[datetime]:
+    """Parse an ISO-8601 moment into a tz-aware datetime.
+
+    Returns None for anything unparseable or tz-naive — the caller fails
+    closed. String comparison of timestamps is never authority-grade:
+    differing offsets and fractional seconds break lexicographic order.
+    """
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        moment = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if moment.tzinfo is None:
+        return None
+    return moment
+
+
+_BASIS_RE = re.compile(r"^grant '([^']+)': ([^→]+)→([^,]+), scope=(.+)$")
+
+
+def _parse_law_basis(basis: Any) -> Optional[Dict[str, str]]:
+    """Parse LAW's canonical authority_basis string.
+
+    LawNode mints: "grant 'ref': GRANTOR→GRANTEE, scope=tag". This is LAW's
+    own voice describing the grant it evaluated — ACT uses it to detect a
+    grant swapped between LAW admission and ACT invocation. Unparseable or
+    non-string -> None -> the caller refuses (fail closed).
+    """
+    if not isinstance(basis, str):
+        return None
+    match = _BASIS_RE.match(basis.strip())
+    if not match:
+        return None
+    return {
+        "grant_ref": match.group(1),
+        "grantor": match.group(2),
+        "grantee": match.group(3),
+        "scope_tag": match.group(4),
+    }
+
+
+def _valid_bound_int(value: Any) -> bool:
+    """A bound integer: a real non-negative int, never a bool, never None."""
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
+
+
 def _deepcopy_json(obj: Any) -> Any:
     return json.loads(_canonical(obj))
 
@@ -168,6 +216,8 @@ class ActNode(NodeBase):
     def __init__(
         self,
         executor: Optional[Callable[[str, Dict[str, Any]], Dict[str, Any]]] = None,
+        require_law_envelope: bool = False,
+        clock: Optional[Callable[[], str]] = None,
     ) -> None:
         """`executor(tool_id, params)` invokes the tool and returns a dict:
         {status: "ok"|"error"|"timeout"|"harm_signal"|"refused",
@@ -176,8 +226,22 @@ class ActNode(NodeBase):
         tool-call seam; in tests it is a stub. ACT never invents effects:
         with no executor the ACT path refuses under §4.7 (evidence capture
         impossible — ACT cannot observe what it cannot invoke observably).
+
+        `require_law_envelope`: when True, an ACT decision is refused unless
+        the receipt carries a LAW-issued law_envelope — a stripped or absent
+        envelope never silently falls back to fixture admission. The
+        executable demo path sets this; test harnesses leave it False
+        explicitly (their fixture receipts are documented stand-ins, and
+        the demo never uses that construction).
+
+        `clock`: () -> tz-aware ISO-8601 now, for the invocation-boundary
+        authority check (grant expiry). Defaults to the real clock. The
+        caller-supplied state["now"] never substitutes for it — a replayed
+        state cannot backdate authority.
         """
         self._executor = executor
+        self._require_law_envelope = require_law_envelope
+        self._clock = clock
         self.last_receipt: Optional[Dict[str, Any]] = None
         # Persisted execution ledger mirror: key -> execution record.
         # In production this is the SmartLedger `execution` stream (§10.6);
@@ -365,6 +429,16 @@ class ActNode(NodeBase):
     # ------------------------------------------------------------------
     # Admission (§4) — refuses before anything can happen
     # ------------------------------------------------------------------
+    def _authority_now(self) -> Optional[datetime]:
+        """The invocation-boundary clock: real time unless a test injects one.
+
+        Grant expiry/revocation resolve against THIS, never against the
+        caller-supplied state["now"]. None when the clock itself is broken —
+        the caller fails closed.
+        """
+        raw = self._clock() if self._clock is not None else _now_iso()
+        return _parse_moment(raw)
+
     def _admit(self, receipt: Dict[str, Any], registry: Dict[str, Any],
                now: str, grants: Optional[List[Dict[str, Any]]] = None
                ) -> Tuple[GateVerdict, List[str]]:
@@ -390,11 +464,22 @@ class ActNode(NodeBase):
             reasons.append("REFUSE §4.1: receipt fails recompute() under bound configHash")
             return GateVerdict.FAIL, reasons
 
-        # §4.2 stale or superseded receipt.
+        # §4.2 stale or superseded receipt — typed, timezone-aware: string
+        # comparison of timestamps is never authority-grade.
         valid_until = receipt.get("valid_until")
-        if valid_until and now > valid_until:
-            reasons.append(f"REFUSE §4.2: stale receipt (now {now} > valid_until {valid_until})")
-            return GateVerdict.FAIL, reasons
+        if valid_until:
+            valid_moment = _parse_moment(valid_until)
+            now_moment = _parse_moment(now)
+            if valid_moment is None or now_moment is None:
+                reasons.append(
+                    "REFUSE §4.2: valid_until or now is not a tz-aware "
+                    "ISO-8601 moment — fail closed")
+                return GateVerdict.FAIL, reasons
+            if now_moment > valid_moment:
+                reasons.append(
+                    f"REFUSE §4.2: stale receipt (now {now} > valid_until "
+                    f"{valid_until})")
+                return GateVerdict.FAIL, reasons
         if (receipt.get("configHash") and receipt.get("configHashCurrent")
                 and receipt["configHash"] != receipt["configHashCurrent"]):
             reasons.append("REFUSE §4.2: config hash moved since issuance — superseded receipt")
@@ -455,13 +540,21 @@ class ActNode(NodeBase):
             reasons.append(f"REFUSE §7.3: circuit breaker OPEN for tool {tool_id} — fail fast with receipt")
             return GateVerdict.FAIL, reasons
 
-        # LAW-envelope path (additive): when the decision receipt carries a
-        # LAW-issued envelope, ACT re-validates the grant and the envelope
-        # coverage at invocation time — the real clock gates the executor,
-        # and a receipt tampered after LAW's verdict cannot broaden it.
-        # Receipts without an envelope keep the checks above (fixture/test
-        # path, explicitly labelled where used).
+        # LAW-envelope path: when the decision receipt carries a LAW-issued
+        # envelope, ACT re-validates the grant and the envelope coverage at
+        # invocation time — the real clock gates the executor, and a receipt
+        # tampered after LAW's verdict cannot broaden it. When this instance
+        # requires the envelope (the executable demo path), a stripped or
+        # absent envelope never silently falls back to fixture admission.
+        # Receipts without an envelope otherwise keep the checks above
+        # (fixture/test path, explicitly labelled where used).
         envelope = receipt.get("law_envelope")
+        if envelope is None and self._require_law_envelope:
+            reasons.append(
+                "REFUSE §8: decision receipt carries no law_envelope — this "
+                "ACT instance requires a LAW-issued envelope; a stripped or "
+                "absent envelope never falls back to fixture admission")
+            return GateVerdict.FAIL, reasons
         if envelope is not None:
             grant_ref = (receipt.get("authority_basis") or {}).get("ref")
             grant = {g.get("grant_ref"): g for g in (grants or [])}.get(grant_ref)
@@ -475,11 +568,46 @@ class ActNode(NodeBase):
                     f"REFUSE §8: grant {grant_ref!r} is revoked — "
                     "revocation binds at invocation time")
                 return GateVerdict.FAIL, reasons
+            # Expiry resolves against the node's own clock — typed and
+            # tz-aware — never against caller-supplied state["now"], which a
+            # replayed state could backdate. Unparseable is not "no expiry".
+            authority_now = self._authority_now()
             expiry = grant.get("expiry")
-            if expiry and now > expiry:
+            expires_at = _parse_moment(expiry)
+            if authority_now is None or expires_at is None:
+                reasons.append(
+                    "REFUSE §8: grant expiry or the authority clock is not a "
+                    "tz-aware ISO-8601 moment — fail closed, never unlimited")
+                return GateVerdict.FAIL, reasons
+            if authority_now > expires_at:
                 reasons.append(
                     f"REFUSE §8: grant {grant_ref!r} expired at {expiry} "
-                    f"(now {now}) — the real clock gates the executor")
+                    f"(authority now {authority_now.isoformat()}) — the real "
+                    "clock gates the executor")
+                return GateVerdict.FAIL, reasons
+            # The grant at invocation time must be the grant LAW evaluated.
+            # LAW's authority_basis is LAW's own voice
+            # ("grant 'ref': GRANTOR→GRANTEE, scope=tag"): a grant swapped —
+            # narrowed, re-granteed, re-scoped — between LAW admission and
+            # ACT invocation refuses here.
+            basis_terms = _parse_law_basis(envelope.get("authority_basis"))
+            if basis_terms is None:
+                reasons.append(
+                    "REFUSE §8: LAW authority_basis is not the canonical "
+                    "'grant ...' form — fail closed")
+                return GateVerdict.FAIL, reasons
+            if basis_terms["grant_ref"] != grant.get("grant_ref"):
+                reasons.append(
+                    f"REFUSE §8: envelope authorizes grant "
+                    f"{basis_terms['grant_ref']!r}, not "
+                    f"{grant.get('grant_ref')!r} — wrong grant")
+                return GateVerdict.FAIL, reasons
+            if basis_terms["grantee"] != grant.get("grantee"):
+                reasons.append(
+                    f"REFUSE §8: grant grantee {grant.get('grantee')!r} != "
+                    f"LAW-authorized principal {basis_terms['grantee']!r} — "
+                    "authority changed between LAW admission and ACT "
+                    "invocation")
                 return GateVerdict.FAIL, reasons
             if envelope.get("scope_tag") not in (grant.get("scope") or []):
                 reasons.append(
@@ -492,28 +620,62 @@ class ActNode(NodeBase):
                     f"REFUSE §7: winner tool {tool_id!r} != envelope action "
                     f"{envelope.get('action')!r} — wrong action")
                 return GateVerdict.FAIL, reasons
-            if reg.get("target") not in (envelope.get("targets") or []):
-                reasons.append(
-                    f"REFUSE §7: registry target {reg.get('target')!r} not in "
-                    f"envelope targets {envelope.get('targets')} — wrong target")
-                return GateVerdict.FAIL, reasons
-            bounds = envelope.get("bounds") or {}
+            # Bounds intersection: canonical registry limits ∩ current grant
+            # ∩ LAW envelope, checked against the actual request. The
+            # envelope may narrow a grant; it can never widen one. Missing
+            # or malformed mandatory bounds fail closed — never unlimited.
+            grant_bounds = grant.get("bounds") or {}
+            env_bounds = envelope.get("bounds") or {}
             params = winner.get("params") or {}
-            pattern = bounds.get("filename")
-            filename = params.get("filename", "")
-            if pattern and not fnmatch.fnmatch(filename, pattern):
+
+            reg_target = reg.get("target")
+            grant_target = grant_bounds.get("target")
+            if not isinstance(grant_target, str) or not grant_target:
                 reasons.append(
-                    f"REFUSE §7: filename {filename!r} outside envelope "
-                    f"pattern {pattern!r} — broader scope")
+                    "REFUSE §7: grant names no target bound — fail closed")
                 return GateVerdict.FAIL, reasons
-            max_bytes = bounds.get("max_bytes")
+            if (reg_target not in (envelope.get("targets") or [])
+                    or reg_target != grant_target):
+                reasons.append(
+                    f"REFUSE §7: registry target {reg_target!r} not covered "
+                    f"by both envelope targets {envelope.get('targets')} and "
+                    f"grant target {grant_target!r} — wrong target")
+                return GateVerdict.FAIL, reasons
+
+            filename = params.get("filename", "")
+            grant_pattern = grant_bounds.get("filename")
+            env_pattern = env_bounds.get("filename")
+            if not grant_pattern or not env_pattern:
+                reasons.append(
+                    "REFUSE §7: filename bound missing on grant or envelope "
+                    "— fail closed, never unlimited")
+                return GateVerdict.FAIL, reasons
+            if not (fnmatch.fnmatch(filename, grant_pattern)
+                    and fnmatch.fnmatch(filename, env_pattern)):
+                reasons.append(
+                    f"REFUSE §7: filename {filename!r} outside the "
+                    f"grant∩envelope patterns ({grant_pattern!r} ∩ "
+                    f"{env_pattern!r}) — broader scope")
+                return GateVerdict.FAIL, reasons
+
+            reg_max = reg.get("max_bytes")
+            grant_max = grant_bounds.get("max_bytes")
+            env_max = env_bounds.get("max_bytes")
+            if not (_valid_bound_int(reg_max) and _valid_bound_int(grant_max)
+                    and _valid_bound_int(env_max)):
+                reasons.append(
+                    "REFUSE §7: max_bytes bound missing or malformed on "
+                    "registry, grant, or envelope — bounds are never unlimited")
+                return GateVerdict.FAIL, reasons
+            effective_max = min(reg_max, grant_max, env_max)
             content = params.get("content", "")
             size = len(content.encode("utf-8") if isinstance(content, str)
                         else bytes(content))
-            if max_bytes is not None and size > max_bytes:
+            if size > effective_max:
                 reasons.append(
-                    f"REFUSE §7: content {size} bytes exceeds envelope "
-                    f"max_bytes {max_bytes} — broader scope")
+                    f"REFUSE §7: content {size} bytes exceeds the effective "
+                    f"max_bytes {effective_max} (registry {reg_max} ∩ grant "
+                    f"{grant_max} ∩ envelope {env_max}) — broader scope")
                 return GateVerdict.FAIL, reasons
             reasons.append(
                 f"ENVELOPE-BOUND: grant {grant_ref!r} valid, envelope covers "

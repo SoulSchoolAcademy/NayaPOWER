@@ -110,9 +110,14 @@ def main() -> int:
         law_envelope=authz["envelope"],
     )
 
-    # 4. ACT executes with the REAL bounded executor.
+    # 4. ACT executes with the REAL bounded executor. The demo requires the
+    # LAW envelope: a stripped or absent envelope never falls back to
+    # fixture admission on this path. The grant expiry check uses the real
+    # clock (no injected clock) — the invocation boundary resolves current
+    # authority, not LAW's memory of it.
     node = act_node.ActNode(
-        executor=smart_door.make_staging_executor(str(root)))
+        executor=smart_door.make_staging_executor(str(root)),
+        require_law_envelope=True)
     state = {
         "decision_receipt": receipt,
         "tool_registry": registry,
