@@ -24,6 +24,9 @@ const Icons = (() => {
     sdk:     '<path d="M6 3h12v18H6z"/><path d="M9 8l-2 4 2 4M15 8l2 4-2 4"/>',
     a2a:     '<circle cx="6" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8 8l8 8M18 6a2.6 2.6 0 01-5.2 0M6 18a2.6 2.6 0 015.2 0"/>',
     browser: '<rect x="4" y="5" width="16" height="14" rx="2.5"/><path d="M4 9.5h16"/><circle cx="7" cy="7.2" r=".9" fill="currentColor"/><circle cx="10" cy="7.2" r=".9" fill="currentColor"/>',
+    db:      '<ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.6 3.1 2.8 7 2.8s7-1.2 7-2.8V6"/><path d="M5 12c0 1.6 3.1 2.8 7 2.8s7-1.2 7-2.8"/>',
+    mic:     '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21"/>',
+    cal:     '<rect x="4" y="6" width="16" height="14" rx="2.5"/><path d="M4 10.5h16M8.5 3.5v4M15.5 3.5v4"/>',
     shield:  '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l2 2 3.5-4"/>',
     tunnel:  '<path d="M4 12h6M14 12h6"/><rect x="10" y="8" width="4" height="8" rx="2"/><path d="M6 6v12M18 6v12"/>',
     search:  '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
@@ -83,7 +86,7 @@ function StatePanel({ accent, icon, title, body, actions = [] }) {
 function DoorCard(door, onConnect) {
   const d = el('article', 'door');
   d.style.setProperty('--door-accent', door.accent);
-  const statusLabel = { live: 'LIVE', ready: 'READY', soon: 'SOON', specialized: 'SPECIALIZED' }[door.status];
+  const statusLabel = { live: 'LIVE', contract: 'CONTRACT' }[door.status];
   d.innerHTML = `
     <div class="door-top">
       <div class="door-icon">${Icons.icon(door.icon)}</div>
@@ -101,8 +104,8 @@ function DoorCard(door, onConnect) {
   } else {
     const btn = el('button', 'btn btn-ghost');
     btn.style.setProperty('--btn-accent', door.accent);
-    const label = door.status === 'ready' ? 'Connect' : door.status === 'soon' ? 'Roadmap' : 'Request access';
-    btn.innerHTML = `${Icons.icon('arrow')}<span>${label}</span>`;
+    btn.innerHTML = `${Icons.icon('arrow')}<span>Contract</span>`;
+    btn.setAttribute('aria-label', `${door.name}: view contract state`);
     btn.addEventListener('click', () => onConnect(door));
     foot.appendChild(btn);
   }

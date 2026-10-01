@@ -22,39 +22,63 @@ const Runtime = (() => {
     { id: 'system',      name: 'System',              kicker: 'THE HUB KNOWS ITSELF', accent: 'var(--accent-system)', icon: 'core' },
   ];
 
-  // ——— The ten Smart Doors. One brain. Many doors. ———
-  // status: live | ready | soon | specialized
+  // ——— The Smart Doors. One brain. Many doors. ———
+  // Source of truth: BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json
+  // (canonical registry). This array mirrors it; `registry` carries the
+  // registry's own state so the Hub never invents door liveness.
+  // status: live | contract   (contract = REGISTERED_CONTRACT_ONLY)
   const DOORS = [
-    { id: 'mcp',        name: 'MCP',               for: 'AI agents → NayaPOWER tools & context',
-      desc: 'Any MCP-capable agent connects, authorizes, and NayaPOWER tools appear inside its own context. The server enforces identity, scopes, and authorization on every request.',
-      accent: '#d86cff', icon: 'mcp',     status: 'ready', priority: 1 },
-    { id: 'rest',       name: 'REST / OpenAPI',    for: 'Apps & agents → NayaPOWER',
-      desc: 'A clean HTTP API for applications and agents that speak REST. Same governance, same intelligence, no special SDK required.',
-      accent: '#6675ff', icon: 'api',     status: 'ready', priority: 2 },
-    { id: 'github',     name: 'GitHub App',        for: 'Coding & repository agents',
-      desc: 'The NayaPOWER GitHub App — coding agents work with the repository and the intelligence together, under governed permissions.',
-      accent: '#55b9ee', icon: 'github',  status: 'ready', priority: 3 },
-    { id: 'webhooks',   name: 'Webhooks',          for: 'System → NayaPOWER events',
-      desc: 'External systems push events into NayaPOWER. Intelligence reacts to the world instead of waiting to be asked.',
-      accent: '#9d75ff', icon: 'webhook', status: 'ready', priority: 4 },
-    { id: 'sdk',        name: 'SDK',               for: 'Developers embed NayaPOWER',
-      desc: 'Embed the intelligence inside your own product. Your app, NayaPOWER\'s memory and judgment underneath.',
-      accent: '#55e39a', icon: 'sdk',     status: 'ready', priority: 5 },
-    { id: 'a2a',        name: 'Agent to Agent',     for: 'Agent ↔ agent collaboration',
-      desc: 'AI agents connect to each other through NayaPOWER — shared context, governed handoffs, collective work.',
-      accent: '#b8ee57', icon: 'a2a',     status: 'ready', priority: 6 },
-    { id: 'browser',    name: 'Browser / Web Hub', for: 'Humans — the Hub itself is a door',
+    { id: 'browser', name: 'Browser / Web Hub', for: 'Humans — the Hub itself is a door',
       desc: 'You are here. The Hub is the human door into the same intelligence every other door reaches.',
-      accent: '#f1d75a', icon: 'browser', status: 'live' },
-    { id: 'messaging',  name: 'Email / Messaging', for: 'Human & network communication',
-      desc: 'Reach NayaPOWER through email and messaging adapters. The intelligence meets people where they already are.',
-      accent: '#ff9a5a', icon: 'mail',    status: 'ready' },
-    { id: 'enterprise', name: 'Enterprise Identity', for: 'Organization-level authorization',
-      desc: 'Organizations connect with their own identity and authorization boundaries. Collective intelligence with corporate-grade control.',
-      accent: '#aaa4b1', icon: 'shield',  status: 'soon' },
-    { id: 'tunnel',     name: 'Private MCP Tunnel', for: 'Private / on-prem agent access',
-      desc: 'A private tunnel for agents that must never touch the public internet. Same doors, your own walls.',
-      accent: '#e8c766', icon: 'tunnel',  status: 'specialized' },
+      accent: '#e8c766', icon: 'browser', status: 'live', priority: 0,
+      registry: 'SESSION_DOOR' },
+    { id: 'ai', name: 'AI Connect', for: 'Reasoning over retained intelligence',
+      desc: 'Model inference over what Naya retains — the registry marks this door live and bounded.',
+      accent: '#9d75ff', icon: 'spark', status: 'live', priority: 1,
+      registry: 'LIVE_BOUNDED_EXISTING_CAPABILITY' },
+    { id: 'data', name: 'Supabase / Data Connect', for: 'The governed data substrate',
+      desc: 'Reads and writes against the data layer pass through governance. Live and bounded, per the registry.',
+      accent: '#55e39a', icon: 'db', status: 'live', priority: 2,
+      registry: 'LIVE_BOUNDED' },
+    { id: 'github', name: 'GitHub Connect', for: 'Coding & repository agents',
+      desc: 'The governed channel for repository work — code, issues, pull requests. Writes are consequential: LAW decides, VERIFY checks.',
+      accent: '#55b9ee', icon: 'github', status: 'contract', priority: 3,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'mcp', name: 'MCP Connect', for: 'AI agents → provider tools',
+      desc: 'Any MCP-capable agent reaches provider tools through one governed door. Invocation is consequential and receipted.',
+      accent: '#d86cff', icon: 'mcp', status: 'contract', priority: 4,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'naya', name: 'Naya-to-Naya Connect', for: 'Seat ↔ seat collaboration',
+      desc: 'Nayas reach each other through governed doors — shared context, receipts on every crossing.',
+      accent: '#b8ee57', icon: 'a2a', status: 'contract', priority: 5,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'email', name: 'Email Connect', for: 'Human & network communication',
+      desc: 'Reach NayaPOWER through email adapters. The intelligence meets people where they already are.',
+      accent: '#ff9a5a', icon: 'mail', status: 'contract', priority: 6,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'calendar', name: 'Calendar Connect', for: 'Schedules & time',
+      desc: 'Calendars connect as a governed door — time becomes something the intelligence can reason about.',
+      accent: '#f1d75a', icon: 'cal', status: 'contract', priority: 7,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'voice', name: 'Voice Connect', for: 'Spoken interaction',
+      desc: 'Voice in and voice out, through the same governed intelligence.',
+      accent: '#ff5e6c', icon: 'mic', status: 'contract', priority: 8,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+    { id: 'web', name: 'Web Connect', for: 'The open web, governed',
+      desc: 'Web sources and actions through one door — retrieval with provenance, never silent browsing.',
+      accent: '#6675ff', icon: 'connect', status: 'contract', priority: 9,
+      registry: 'REGISTERED_CONTRACT_ONLY' },
+  ];
+
+  // Future door ideas with working agreements forming — NOT in the canonical
+  // registry. Shown on the roadmap, never as live or contracted doors.
+  const DOOR_ROADMAP = [
+    { name: 'REST / OpenAPI', desc: 'A clean HTTP API for applications and agents that speak REST.' },
+    { name: 'Webhooks',      desc: 'External systems push events in — intelligence reacts instead of waiting to be asked.' },
+    { name: 'SDK',           desc: 'Embed the intelligence inside your own product.' },
+    { name: 'Agent-to-Agent protocol', desc: 'A standing protocol for agent ↔ agent collaboration.' },
+    { name: 'Enterprise Identity',      desc: 'Organization-level identity and authorization boundaries.' },
+    { name: 'Private MCP Tunnel',      desc: 'On-prem agent access that never touches the public internet.' },
   ];
 
   // ——— Honest state per room.
@@ -77,14 +101,11 @@ const Runtime = (() => {
     if (door.status === 'live') {
       return { ok: true, message: `${door.name} is already live — you are using it.` };
     }
-    if (door.status === 'soon' || door.status === 'specialized') {
-      return { ok: false, message: `${door.name} is ${door.status === 'soon' ? 'on the roadmap' : 'a specialized door'} — not connectable from this Hub yet.` };
-    }
-    // 'ready' doors: the handshake begins, but the backend isn't live —
-    // so we say exactly that instead of faking a connection.
+    // 'contract' doors: the canonical registry holds the contract, but the
+    // door is not live. We say exactly that instead of faking a handshake.
     return {
       ok: false,
-      message: `${door.name} handshake prepared. The governed endpoint isn't live yet — this door will light up the moment the runtime connects. Nothing was faked.`,
+      message: `${door.name}: contract registered (${door.registry}), not live yet. Connection never silently creates permission — this door lights up when the runtime opens it. Nothing was faked.`,
     };
   }
 
@@ -118,10 +139,10 @@ const Runtime = (() => {
   }
 
   return {
-    ROOMS, DOORS, stateFor, NOT_VERIFIED_COPY,
+    ROOMS, DOORS, DOOR_ROADMAP, stateFor, NOT_VERIFIED_COPY,
     connectDoor, search, captureNote, draftNotes,
     version: '1.0.0',
-    specRef: 'HUB/app/SPEC.md',
+    doorRegistryRef: 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json',
   };
 })();
 

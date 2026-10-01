@@ -47,7 +47,7 @@ function SystemRoom() {
   const phases = [
     ['Phase 1 — Foundation', 'live', 'App shell, router, tokens, component system, honest states. This build.'],
     ['Phase 2 — Rooms come alive', 'soon', 'Each room earns its controls against the component system; no room ships a dead control.'],
-    ['Phase 3 — Doors open', 'soon', 'MCP → REST → GitHub App handshakes go live against the governed runtime.'],
+    ['Phase 3 — Doors open', 'soon', 'Canonical door contracts go live against the governed runtime, in registry order.'],
     ['Phase 4 — Intelligence in', 'soon', 'Search, feed, and notes read the canonical substrate with provenance.'],
     ['Phase 5 — Polish to 10', 'soon', 'Motion audit, accessibility audit, performance budget — every dimension to 9.0+.'],
   ];
