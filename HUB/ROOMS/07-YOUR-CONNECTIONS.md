@@ -1,82 +1,13 @@
-# 07 — Your Connections
+# Your Connections — moved to canonical room package
 
-**Metaphor:** THE CONSTELLATION  
-**Route:** `/connections`  
-**Theme:** orange  
-**Human question:** **Who and what am I connected to, and on what terms?**
+This compatibility pointer preserves earlier links while preventing duplicate room truth.
 
-## Human promise
+Canonical package: [07-your-connections/](./07-your-connections/)
 
-Show governed relationships as something understandable and alive: people, Nayas, organizations, Spaces and shared-intelligence relationships.
+- [Functional Spec](./07-your-connections/FUNCTIONAL-SPEC.md)
+- [Design Contract](./07-your-connections/DESIGN-CONTRACT.md)
+- [Human Projection](./07-your-connections/SPEC.HUMAN.md)
+- [AI Builder Projection](./07-your-connections/SPEC.AI.md)
+- [Machine Projection](./07-your-connections/SPEC.MACHINE.json)
 
-Connection never silently equals access or authority.
-
-## Signature visual
-
-A **relationship constellation** centered on the current human/identity.
-
-Nodes can represent:
-- humans;
-- Nayas/agents;
-- organizations;
-- Spaces;
-- optionally systems/doors when relationship context matters.
-
-Connection lines encode relationship type/state — never hidden permissions.
-
-A list view is always available for accessibility and dense work.
-
-## Primary views
-
-- **Constellation**
-- **People**
-- **Nayas / agents**
-- **Organizations**
-- **Shared Spaces**
-- **Requests / pending**
-
-## Relationship detail
-
-Open a connection to see:
-- identity;
-- relationship type;
-- shared Spaces;
-- shared intelligence scope;
-- consent/privacy state;
-- connected since;
-- recent relevant interaction;
-- applicable door/channel;
-- permissions/authority boundary where relevant.
-
-## Primary actions
-
-- **Open connection**
-- **Message**
-- **Open shared Space**
-- **View shared intelligence**
-- **Adjust sharing / consent** when authorized
-- **Disconnect / revoke** with appropriate confirmation
-- **Invite / connect**
-- **Ask Naya about this relationship**
-
-## Cross-room handoffs
-
-- communicate → Mail;
-- shared context → Spaces;
-- proof/history → Ledger;
-- shared intelligence → Feed/Library;
-- technical channel → Connect.
-
-## Empty state
-
-“No governed connections in this scope.”
-
-Do not invent suggested people unless a legitimate discovery system exists and its basis is shown.
-
-## Mobile
-
-List-first with optional constellation visualization. Relationship detail full-screen.
-
-## Acceptance journey
-
-A human can understand one connection's identity, context, sharing state and available actions, change/revoke allowed sharing safely, and inspect resulting proof.
+Review on **PR #1290**. Material not-right findings go to **Issue #554** with evidence.
