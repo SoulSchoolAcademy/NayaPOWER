@@ -74,6 +74,7 @@ _VERIFY_INTAKE_COMPARE_FIELDS = (
     "evidence_refs",
     "verify_key",
     "receipt_hash",
+    "owner_id",  # prevents cross-owner receipt redirect (C4)
 )
 
 # C6 — structural fields every genuine VERIFY receipt carries (emitted by

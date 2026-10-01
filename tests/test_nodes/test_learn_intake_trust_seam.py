@@ -387,13 +387,26 @@ def test_c1_caller_object_never_consumed(wired):
     rid = genuine["id"]
     presented = copy.deepcopy(genuine)
     presented["caller_note"] = "not part of VERIFY emission"
-    presented["owner_id"] = "spoofed-owner"  # outside the allowlist
+    # owner_id IS in the allowlist (C3) — spoofing it is tampering, refused.
+    # Use a non-allowlisted field to test the "ignored" behavior.
+    presented["caller_metadata"] = {"note": "not security-relevant"}
     result = n.ingest_verify_receipt(presented)
     assert result["accepted"] is True
     stored = n._verify_receipts[rid]
     assert stored is v._receipts[rid]
     assert "caller_note" not in stored
-    assert stored.get("subject_ref") == genuine["subject_ref"]
+    assert "caller_metadata" not in stored
+
+
+def test_c1_spoofed_owner_id_refused(wired):
+    """Spoofing owner_id is tampering — C3 allowlist includes owner_id."""
+    v, n = wired
+    genuine = _genuine_pass(v, "c1-002")
+    presented = copy.deepcopy(genuine)
+    presented["owner_id"] = "spoofed-owner"
+    result = n.ingest_verify_receipt(presented)
+    assert result["accepted"] is False
+    assert result["reason_code"] == "VERIFY_RECEIPT_TAMPERED"
 
 
 def test_duplicate_intake_still_idempotent(wired):

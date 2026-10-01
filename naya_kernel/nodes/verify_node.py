@@ -1285,6 +1285,8 @@ class VerifyNode(NodeBase):
             "learn_baton": {"may_use": [], "must_not_generalize": []},
             "propagation": {},
             "deciding_seat_identity": (request.get("deciding_seat") or {}).get("identity"),
+            "requesting_owner": request.get("requesting_owner"),
+            "owner_id": request.get("requesting_owner"),  # LEARN provenance (§3.3)
             "request_snapshot": {k: v for k, v in request.items()
                                  if k != "downgrade_instruction"},
             "config_hash": request.get("config_hash"),
