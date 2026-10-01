@@ -25,15 +25,19 @@ import json
 import shutil
 import subprocess
 import sys
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-RUN_ROOT = Path("/tmp/demo1-frozen-pkg")
+# Default is a template; the actual run_root gets a unique suffix per run.
+RUN_ROOT_BASE = Path("/tmp/demo1-freeze")
 PACKAGE_DIR = REPO_ROOT / "evidence" / "demo1" / "frozen-2026-10-01"
 # Containment roots: --out must stay under EVIDENCE_ROOT; --run-root under /tmp.
 EVIDENCE_ROOT = (REPO_ROOT / "evidence").resolve()
 TMP_ROOT = Path("/tmp").resolve()
+# Ownership marker: proves a directory was created by freeze_evidence.py.
+OWNER_MARKER = ".naya-freeze-owner"
 
 
 def sha256_file(path: Path) -> str:
@@ -57,7 +61,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--code-head", required=True,
                     help="published code head the run must execute against")
-    ap.add_argument("--run-root", default=str(RUN_ROOT))
+    ap.add_argument("--run-root", default=None,
+                    help="Dedicated scratch directory. If omitted, a fresh "
+                         "unique directory is allocated under /tmp. If given "
+                         "and it exists, it must contain the ownership marker "
+                         "from a previous freeze run.")
     ap.add_argument("--out", default=str(PACKAGE_DIR))
     args = ap.parse_args()
 
@@ -72,7 +80,24 @@ def main() -> int:
         return 1
     print("worktree == code head", head, "(clean)")
 
-    run_root = Path(args.run_root)
+    # P1: scratch-directory ownership. Never delete what we don't own.
+    # - Default: allocate a fresh unique directory (no collision possible).
+    # - Explicit --run-root: must not be /tmp itself, must not be a symlink,
+    #   and if it exists must carry our ownership marker.
+    if args.run_root is None:
+        run_root = RUN_ROOT_BASE.parent / f"{RUN_ROOT_BASE.name}-{uuid.uuid4().hex[:12]}"
+    else:
+        run_root = Path(args.run_root)
+        # Refuse the containment root itself.
+        if run_root.resolve() == TMP_ROOT:
+            print(f"REFUSED: --run-root {run_root} is the containment root "
+                  f"{TMP_ROOT} itself — refusing to delete /tmp.")
+            return 1
+        # Refuse symlinks (unsafe: target identity unclear).
+        if run_root.is_symlink():
+            print(f"REFUSED: --run-root {run_root} is a symlink — refusing "
+                  f"unsafe target.")
+            return 1
     if not contained(run_root, TMP_ROOT):
         print(f"REFUSED: --run-root {run_root} escapes {TMP_ROOT}")
         return 1
@@ -86,8 +111,18 @@ def main() -> int:
               f"is immutable; choose a new --out or remove it by hand with "
               f"an explicit, reviewed action.")
         return 1
+    # Ownership check: only delete a directory we created.
     if run_root.exists():
+        marker = run_root / OWNER_MARKER
+        if not marker.is_file():
+            print(f"REFUSED: --run-root {run_root} exists but lacks ownership "
+                  f"marker {OWNER_MARKER} — not ours to delete. Remove it by "
+                  f"hand or choose a fresh directory.")
+            return 1
         shutil.rmtree(run_root)
+    # Claim ownership of the (fresh or cleared) directory.
+    run_root.mkdir(parents=True, exist_ok=True)
+    (run_root / OWNER_MARKER).write_text(uuid.uuid4().hex)
 
     # 1. The one real run.
     p = run([sys.executable, "scripts/demo1/act_run.py",
