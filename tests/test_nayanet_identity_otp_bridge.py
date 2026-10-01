@@ -1,6 +1,6 @@
 from pathlib import Path
 
-IDENTITY = Path("NAYANET BRIDGE INDENITY CODE.html")
+IDENTITY = Path("NAYANET BRIDGE IDENTITY CODE.html")
 
 
 def test_identity_uses_existing_user_otp_not_anonymous_auth():
