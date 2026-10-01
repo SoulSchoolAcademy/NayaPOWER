@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/governed-intelligence-identity-v1",
+  "title": "NayaNET Governed Intelligence Identity Envelope V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "identity_id",
+    "actor_class",
+    "who_created_or_delegated",
+    "knowledge",
+    "capabilities",
+    "authority",
+    "authorized_by",
+    "received_artifacts",
+    "provenance",
+    "delegation",
+    "actual_actions",
+    "outcomes",
+    "learning"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "identity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor_class": {
+      "enum": [
+        "HUMAN",
+        "NAYA",
+        "AGENT",
+        "MACHINE",
+        "SYSTEM",
+        "COLLECTIVE",
+        "UNKNOWN"
+      ]
+    },
+    "who_created_or_delegated": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creator_ref",
+        "delegator_ref",
+        "lineage_state"
+      ],
+      "properties": {
+        "creator_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "delegator_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lineage_state": {
+          "enum": [
+            "ROOT",
+            "CREATED",
+            "DELEGATED",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "knowledge": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "knowledge_id",
+          "claim",
+          "source_refs",
+          "epistemic_state"
+        ],
+        "properties": {
+          "knowledge_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "epistemic_state": {
+            "enum": [
+              "KNOWN",
+              "OBSERVED",
+              "VERIFIED",
+              "INFERRED",
+              "ASSUMED",
+              "UNKNOWN"
+            ]
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_ids"
+      ],
+      "properties": {
+        "authority_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "authorized_by": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "authority_id",
+          "authorizer_ref"
+        ],
+        "properties": {
+          "authority_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authorizer_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "received_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_id",
+          "artifact_type",
+          "source_ref",
+          "received_at"
+        ],
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "received_at": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "subject_id",
+          "source_ref",
+          "relation"
+        ],
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "delegation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "can_delegate",
+        "delegation_scope",
+        "chain"
+      ],
+      "properties": {
+        "can_delegate": {
+          "type": "boolean"
+        },
+        "delegation_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "chain": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "actual_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "execution_id",
+          "action_ref",
+          "receipt_ref"
+        ],
+        "properties": {
+          "execution_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "receipt_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "execution_id",
+          "outcome_ref",
+          "evidence_refs",
+          "verification_state"
+        ],
+        "properties": {
+          "execution_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "verification_state": {
+            "enum": [
+              "UNVERIFIED",
+              "OBSERVED",
+              "VERIFIED"
+            ]
+          }
+        }
+      }
+    },
+    "learning": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "learning_id",
+          "claim",
+          "source_refs",
+          "derivation_state"
+        ],
+        "properties": {
+          "learning_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "derivation_state": {
+            "enum": [
+              "PROPOSED",
+              "SUPPORTED",
+              "VERIFIED"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
