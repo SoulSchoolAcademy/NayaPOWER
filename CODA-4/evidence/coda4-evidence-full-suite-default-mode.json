@@ -1,6 +1,6 @@
 {
   "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
-  "body_sha256": "12f2a60d8d05b3e8b4522cd292cae6eea89d7291f26f926fe39b2805a0432871",
+  "body_sha256": "83f65da4639ff36f93fe645512b3e5babba23e123900a80f7e5298b5491a5fdf",
   "interpretation": "Whole suite, default encoding. 7 failures on Windows.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -47,12 +47,13 @@
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_expired_grant_v3_fails",
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_missing_grant_file_v3_fails_closed",
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_missing_decision_receipt_v3_unknown",
-      "29 failed, 1070 passed, 3 skipped, 3 xfailed, 5 errors in 8.73s"
+      "29 failed, 1070 passed, 3 skipped, 3 xfailed, 5 errors in 8.45s"
     ]
   },
   "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-full-suite-default-mode",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "5764a4d8d10e25a539326080e65e3c3f3ddba73d"
+  "tested_head_sha": "71d70d14a861a99bbc1c139e4a81481250eb68f8",
+  "worktree_dirty": false
 }

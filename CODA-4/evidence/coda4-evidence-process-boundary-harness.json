@@ -1,6 +1,6 @@
 {
   "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
-  "body_sha256": "58d7946946957b0fe5f304a11c5a24321433c9c845df717cb20c51a6298c0ad1",
+  "body_sha256": "d31f7ea5e26949dba72f0f7806cfc852090f12c8f6302735d003e9a06ca4f891",
   "interpretation": "Real A -> B -> C process boundary. Records the first missing rung. exit 0 is NOT success: the ladder is expected to report BLOCKED on B-RESTORE while CS-01 is open.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -8,10 +8,10 @@
     "exit_code": 0,
     "stderr_tail": [],
     "stdout_tail": [
-      "A  pid=29160 receipts=2 artifact_sha256=220148bac5986a06",
+      "A  pid=9684 receipts=2 artifact_sha256=220148bac5986a06",
       "   Process A has EXITED. No memory carries forward.",
       "",
-      "B  pid=12608 (A was 29160)",
+      "B  pid=40092 (A was 9684)",
       "   reported restored=2  hash_match=True",
       "   ACTUAL blocks on node=0  retrieved=0",
       "   provenance refs=[]",
@@ -19,10 +19,10 @@
       "   authority-bearing keys in boot receipt: []",
       "   boot receipt receives authority: False",
       "",
-      "B+ pid=42428 wrote successor receipt 306e4046ecb4eb8e",
+      "B+ pid=55004 wrote successor receipt 306e4046ecb4eb8e",
       "    (its own restored A-blocks: 0 \u2014 still blocked by CS-01)",
       "",
-      "C  pid=30252 restored=3 new_results_recovered=0",
+      "C  pid=49656 restored=3 new_results_recovered=0",
       "B- tampered  NO FAILURE RAISED \u2014 restored=2 hash_match=True forged_accepted=True",
       "B- missing   governing failure raised (correct)",
       "",
@@ -34,5 +34,6 @@
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-process-boundary-harness",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "5764a4d8d10e25a539326080e65e3c3f3ddba73d"
+  "tested_head_sha": "71d70d14a861a99bbc1c139e4a81481250eb68f8",
+  "worktree_dirty": false
 }

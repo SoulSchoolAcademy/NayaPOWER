@@ -1,6 +1,6 @@
 {
   "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
-  "body_sha256": "478b83d6712bb28aaa2b4d31c000cafcc69a54d96621e1a0909087208e793592",
+  "body_sha256": "0cfad76bf3f0724ccb4446e98800ef01b7d21546c0e4d52dd9a1467435ed6c76",
   "interpretation": "Standalone CS-02 reproducer: KNOW replay performs no receipt integrity verification. exit 1 means PRESENT.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -32,5 +32,6 @@
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-cs02-reproducer",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "5764a4d8d10e25a539326080e65e3c3f3ddba73d"
+  "tested_head_sha": "71d70d14a861a99bbc1c139e4a81481250eb68f8",
+  "worktree_dirty": false
 }

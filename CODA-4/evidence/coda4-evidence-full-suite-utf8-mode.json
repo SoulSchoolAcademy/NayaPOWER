@@ -1,6 +1,6 @@
 {
   "base_main_sha": "42c8f59457eb996bd3099a2a57e49cfe383d779d",
-  "body_sha256": "b00b6bd1430c2a639e13edb0bb2a4866b75102ad2d942d52c6a10391be1de7e5",
+  "body_sha256": "4efe1267ef095472ed1f84f59f9a735affe8fa18ce819141999d8f66e6e1375a",
   "interpretation": "Whole suite under -X utf8, to separate environment encoding from behavior. 2 failures survive; those are genuine Windows path issues.",
   "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
   "observed": {
@@ -11,8 +11,8 @@
       "        assert \"BRAIN_SMART_NOTE_ROOT\" in mod.__dict__",
       ">       assert str(mod.BRAIN_SMART_NOTE_ROOT).endswith(\"BRAIN/05-MEMORY/SMART-NOTES\")",
       "E       AssertionError: assert False",
-      "E        +  where False = <built-in method endswith of str object at 0x000001DEC817DC30>('BRAIN/05-MEMORY/SMART-NOTES')",
-      "E        +    where <built-in method endswith of str object at 0x000001DEC817DC30> = 'C:\\\\Users\\\\Admin\\\\naya-coda4-20261001\\\\BRAIN\\\\05-MEMORY\\\\SMART-NOTES'.endswith",
+      "E        +  where False = <built-in method endswith of str object at 0x000002147CD0DC30>('BRAIN/05-MEMORY/SMART-NOTES')",
+      "E        +    where <built-in method endswith of str object at 0x000002147CD0DC30> = 'C:\\\\Users\\\\Admin\\\\naya-coda4-20261001\\\\BRAIN\\\\05-MEMORY\\\\SMART-NOTES'.endswith",
       "E        +      where 'C:\\\\Users\\\\Admin\\\\naya-coda4-20261001\\\\BRAIN\\\\05-MEMORY\\\\SMART-NOTES' = str(WindowsPath('C:/Users/Admin/naya-coda4-20261001/BRAIN/05-MEMORY/SMART-NOTES'))",
       "E        +        where WindowsPath('C:/Users/Admin/naya-coda4-20261001/BRAIN/05-MEMORY/SMART-NOTES') = mod.BRAIN_SMART_NOTE_ROOT",
       "",
@@ -47,12 +47,13 @@
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_expired_grant_v3_fails",
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_missing_grant_file_v3_fails_closed",
       "ERROR tests/test_nodes/test_demo1_fresh_verify_v3.py::test_missing_decision_receipt_v3_unknown",
-      "24 failed, 1075 passed, 3 skipped, 3 xfailed, 5 errors in 8.36s"
+      "24 failed, 1075 passed, 3 skipped, 3 xfailed, 5 errors in 8.22s"
     ]
   },
   "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
   "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
   "receipt_id": "coda4-evidence-full-suite-utf8-mode",
   "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
-  "tested_head_sha": "5764a4d8d10e25a539326080e65e3c3f3ddba73d"
+  "tested_head_sha": "71d70d14a861a99bbc1c139e4a81481250eb68f8",
+  "worktree_dirty": false
 }
