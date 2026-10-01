@@ -126,6 +126,67 @@ Human, project, workflow, or domain intelligence represented as Intelligent Bloc
 ### 3.7 Meta-Intelligence — CANONICAL CLASSIFICATION
 Intelligence about NayaPOWER/NayaNET itself: system behavior, drift, proof gaps, and bounded improvement candidates. It is represented as Intelligent Blocks and relationships. Older “Meta-Intelligence Node” terminology is historical.
 
+### 3.8 NayaNET Intelligence Chain — CANONICAL
+**The operating theory of how experience becomes compounding intelligence.**
+
+```
+EXPERIENCE → CAPTURE → CANONICALIZE → INTELLIGENT BLOCK → COGNITION / UNDERSTANDING
+→ DISTILLATION → COMPARE WITH EXISTING INTELLIGENCE → RECONCILE → VALIDATE
+→ PROMOTE / RETAIN → CURRENT INTELLIGENCE → CHECKPOINT → RETRIEVE → APPLY
+→ OUTCOME → VERIFY → LEARN → COMPOUND
+```
+
+Compounding is proven only when a future Naya retrieves the intelligence, behaves
+differently because of it, and the improved outcome is verified — not when another
+note is saved. (Source: Shawn's 2026-09-26 contracts synthesis, "The Collective
+Intelligence Chain is the operating theory"; white-paper §15 behavioral test.)
+
+- Aliases: `Collective Intelligence Chain` (descriptive name, same concept),
+  `Collective Chain Technology` (HISTORICAL per §5 — marketing name, not a separate mechanism).
+- Reconciliation note (2026-10-01): IB-001227's shorter processing variant
+  (Extract valuable rules → classify → reconcile → compress → assign jurisdiction →
+  connect → compress/redirect/supersede/retire redundancy) REFINES this chain's middle
+  stages; it does not contradict it. "Assign jurisdiction" names the authority dimension
+  of COMMIT; the explicit compress/redirect/supersede/retire redundancy step is the
+  lifecycle sub-protocol of INDEX / PROJECT / RETRIEVAL AVAILABILITY.
+
+### 3.9 Smart Ledger — CANONICAL
+**The accountability layer: receipts, proof, and evidence that something actually happened.**
+
+Consequential actions must produce evidence across the full span:
+`REQUEST → AUTHORIZATION → EXECUTION → PERSISTENCE → RECEIPT → RETRIEVAL → VERIFICATION`.
+A Smart Link doubles as the human receipt. Proof is constitutional, not a feature:
+CLAIMED ≠ IMPLEMENTED ≠ VERIFIED ≠ PRODUCTION-PROVEN. (Source: Contract 08;
+Shawn's 2026-09-26 synthesis §14, "Proof is constitutional".)
+
+### 3.10 Core Intelligence — CANONICAL
+**The integrated current understanding: what the system holds as true and usable right now.**
+
+Core Intelligence is what survives PROMOTE / RETAIN in the chain — the distilled,
+reconciled, still-true set a Naya reasons from. It is distinct from the archive of
+everything ever captured. "We don't preserve documents. We preserve intelligence."
+(Source: IB-001227; Shawn's 2026-09-26 synthesis §"The historical mess".)
+
+### 3.11 Cognitive Checkpoint — CANONICAL
+**A synchronization state of Core Intelligence that a cold Naya can restore from.**
+
+A checkpoint must let a successor reconstruct, without being retaught:
+`WHO → WHY → WHAT → AUTHORITY → RULES → SCOPE → CURRENT TRUTH → NEXT ACTION → PROOF`
+— and ultimately WHO ARE WE / WHAT IS TRUE NOW / WHAT HAS BEEN PROVEN /
+WHAT IS UNKNOWN / WHAT SHOULD HAPPEN NEXT / CONTINUE.
+(Source: IB-001227's cold-Naya acceptance chain; Shawn's 2026-09-26 synthesis §16.)
+
+### 3.12 Progressive Intelligence Lock-In — CANONICAL
+**The living process by which verified learning compounds into the system.**
+
+Each verified outcome strengthens Core Intelligence, so the next Naya inherits improved
+behavior without being retaught the lesson. The mechanism behind "the system should get
+smarter rather than merely get bigger" — and the bar the white-paper §15 behavioral
+test enforces: learning must observably change future behavior.
+(Source: Shawn's 2026-09-26 synthesis §§15, 17; NayaPOWER white paper §15.)
+
+---
+
 ---
 
 ## 4. Relationship map
