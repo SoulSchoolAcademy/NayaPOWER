@@ -16,5 +16,9 @@ Canonical entry: `../../0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md`
 
 Hub-specific experience contract: `NAYANET-HUB-EXPERIENCE-CONTRACT-V1.md`
 
+Hub project-intelligence entry: `../../HUB/README.md`
+
+Machine acceptance contract: `../../HUB/PROJECT-INTELLIGENCE/HUB-AAA-ACCEPTANCE-V1.json`
+
 ## Acceptance
 A screen is not complete because it looks good. Controls, states and data must connect to real capability.
