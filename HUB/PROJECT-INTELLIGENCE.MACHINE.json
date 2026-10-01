@@ -72,6 +72,8 @@
   "file": "HUB/NAYANET INTERFACE CONCEPT.html"
  },
  "frozen_laws": [
+  "visual_bliss_top_law",
+  "generous_typography_law",
   "baseline_is_the_floor",
   "spectrum_law",
   "living_depth_law",
@@ -426,5 +428,41 @@
   "issue": 554,
   "finding_rule": "materially_not_right => post_with_evidence",
   "posting_grants_authority": false
+ },
+ "design_north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
+ "top_visual_law": {
+  "id": "VISUAL_BLISS",
+  "precedence": [
+   "visual_bliss",
+   "spectrum",
+   "living_depth",
+   "motion"
+  ],
+  "definition": "Contrast, clarity, cleanliness, hierarchy, generous typography, breathing room and restraint make the interface effortless to see and understand.",
+  "hard_rule": "No glow, accent, color, gradient, shadow, reflection, texture, depth effect, motion or decorative treatment may make anything harder to read, locate or understand.",
+  "conflict_resolution": {
+   "spectacle_vs_readability": "readability_wins",
+   "depth_vs_clarity": "clarity_wins",
+   "motion_vs_comprehension": "comprehension_wins"
+  }
+ },
+ "typography_law": {
+  "primary_body_target_px": [
+   17,
+   18
+  ],
+  "primary_body_min_px": 16,
+  "control_label_target_px": [
+   15,
+   16
+  ],
+  "support_text_min_px": 14,
+  "metadata_target_px": [
+   13,
+   14
+  ],
+  "critical_information_microtype_forbidden": true,
+  "shrink_text_to_fit_layout_forbidden": true,
+  "browser_zoom_and_os_text_scaling_must_be_respected": true
  }
 }
