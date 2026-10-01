@@ -172,10 +172,10 @@ class Candidate:
     authorized: bool = False
     human_authorized: bool = False
     hard_violation: bool = False
-    lawful: Optional[bool] = True
-    rights_safe: Optional[bool] = True
-    privacy_safe: Optional[bool] = True
-    safety_safe: Optional[bool] = True
+    lawful: Optional[bool] = None
+    rights_safe: Optional[bool] = None
+    privacy_safe: Optional[bool] = None
+    safety_safe: Optional[bool] = None
     stakes: str = "low"
     plan_stakes: str = "low"
     reversible: bool = True
@@ -291,8 +291,10 @@ def gate_candidate(candidate: Candidate, profile: QualityProfile, risk_policy: R
     if (effective_stakes == "consequential" or not candidate.reversible) and not candidate.human_authorized:
         return NEEDS_AUTHORITY, ["CONSEQUENTIAL_OR_IRREVERSIBLE"], q
 
-    if any(v is None for v in hard_flags.values()):
+    unknown_flags = [k for k, v in hard_flags.items() if v is None]
+    if unknown_flags:
         reasons.append("HARD_GATE_UNKNOWN")
+        reasons.extend(f"UNKNOWN_{k}" for k in unknown_flags)
     if candidate.pv.normalized().evidence_count < profile.min_evidence_count:
         reasons.append("EVIDENCE_FLOOR")
     if q["missing_dimensions"]:
@@ -439,7 +441,7 @@ def build_decision_receipt(*, decision_id: str, objective: str, baseline_id: str
     if delta_v_actual is not None:
         actual = _finite(delta_v_actual, "delta_v_actual")
         error = abs(predicted - actual) if predicted is not None else None
-        d_verified = max(-9.0, min(9.0, actual))
+        d_verified = max(-10.0, min(10.0, actual))
     return {
         "receipt_type": "ALIGNMENT_DECISION",
         "schema_version": "2.1",
