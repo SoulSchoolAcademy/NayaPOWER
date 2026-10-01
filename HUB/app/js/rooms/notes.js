@@ -20,7 +20,7 @@ function NotesRoom() {
              color:var(--ink);padding:14px 16px;font-size:14px;resize:vertical;outline:none"></textarea>
     <div style="display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap">
       <button class="btn" id="note-keep" style="--btn-accent:${ACC}">${Icons.icon('plus')}<span>Keep it</span></button>
-      <span style="color:var(--muted);font-size:11px;letter-spacing:.08em">LOCAL DRAFT · FLOWS TO THE GOVERNED PIPELINE WHEN IT CONNECTS</span>
+      <span style="color:var(--muted);font-size:14px;letter-spacing:.08em">LOCAL DRAFT · FLOWS TO THE GOVERNED PIPELINE WHEN IT CONNECTS</span>
     </div>`;
   wrap.appendChild(cap);
 
@@ -48,10 +48,10 @@ function NotesRoom() {
       item.style.cssText = 'padding:13px 4px;border-bottom:1px solid var(--line-soft)';
       const d = new Date(n.at);
       item.innerHTML = `
-        <div style="font-size:13.5px;margin-bottom:5px">${escapeHtml(n.text)}</div>
+        <div style="font-size:15px;margin-bottom:5px">${escapeHtml(n.text)}</div>
         <div style="display:flex;gap:10px;align-items:center">
           <span class="pill soon"><span class="dot"></span>LOCAL DRAFT</span>
-          <span style="color:var(--muted);font-size:11px">${d.toLocaleString()}</span>
+          <span style="color:var(--muted);font-size:14px">${d.toLocaleString()}</span>
         </div>`;
       listEl.appendChild(item);
     });
