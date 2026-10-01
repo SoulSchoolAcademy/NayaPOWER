@@ -31,3 +31,15 @@ def test_dispatch_fallback_persists_expected_content_for_cold_successor():
     assert 'pathlib.Path("smart-note-expected.json").write_text' in fallback
     assert '"expected_content":lesson_content' in fallback
     assert '"content_hash":digest' in fallback
+
+
+def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exists():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    marker = '          capture_path=open("capture-path.txt").read().strip()'
+    start = wf.index(marker)
+    end = wf.index('          curl -fsS -X POST', start)
+    block = wf[start:end]
+    assert 'if capture_path:' in block
+    assert 'fresh-lesson-lineage-ids.json' in block
+    assert 'intelligent_block_id' in block
+    assert 'reg["entries"]' in block
