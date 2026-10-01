@@ -364,3 +364,63 @@ def test_gate_results_name_reasons(kernel, demo_stages):
     for g in out:
         assert g["reasons"], f"{g['node']} returned no reasons"
         assert isinstance(g["reasons"], list)
+
+
+def test_gate_non_gateresult_return_is_contract_violation_fail(kernel,
+                                                               demo_stages):
+    """A gate returning a non-GateResult is a contract violation — FAIL,
+    never an interpreted PASS."""
+    kernel.nodes["KNOW"].gate = lambda _state: {"verdict": "PASS"}
+    out = kernel.gate_all({"gates": demo_stages})
+    know = next(g for g in out if g["node"] == "KNOW")
+    assert know["verdict"] == "FAIL"
+    assert any("CONTRACT VIOLATION" in r for r in know["reasons"])
+
+
+def test_gate_all_continues_past_early_failure(kernel, demo_stages):
+    """Audit visibility: gate_all evaluates every gate even when an early
+    gate FAILs — unlike decide()'s fail-fast short-circuit."""
+    stages = dict(demo_stages)
+    bad = law_state()
+    bad["proposal"]["flags"] = {"harm_flag": True,
+                                "harm_facts": ["demo harm case"]}
+    stages["LAW"] = bad
+    out = kernel.gate_all({"gates": stages})
+    assert len(out) == 9
+    assert [g["node"] for g in out] == [n for n, _ in GATE_ORDER]
+    law_gate = out[1]
+    assert law_gate["verdict"] == "FAIL"
+    # the decided pipeline would stop at LAW; the audit path does not
+    decided = kernel.decide({"gates": stages})
+    assert len(decided["gates"]) == 2
+
+
+def test_cold_reconstruct_never_trusts_mismatched_verdicts(kernel,
+                                                           demo_stages):
+    """A forged receipt's verdict field is unauthenticated: it is listed
+    under hash_mismatched and must not appear in the verdict counts."""
+    out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
+    good = out["decision_receipt"]
+    bad = dict(good, verdict="PASS")  # hash no longer matches
+    recon = kernel.cold_reconstruct([good, bad])
+    assert recon["hash_mismatched"] == [bad["receipt_id"]]
+    assert recon["verdicts"] == {"NEED_EVIDENCE": 1}
+    assert "PASS" not in recon["verdicts"]
+
+
+def test_decision_receipt_carries_candidate_banner(kernel, demo_stages):
+    """Every decision receipt labels itself candidate — never an implied
+    ratification or merge claim."""
+    out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
+    receipt = out["decision_receipt"]
+    assert receipt["candidate_banner"] == "CANDIDATE — NOT RATIFIED — NOT MERGED"
+    assert receipt["kernel_version"]
+
+
+def test_decide_with_no_state_is_fail_closed(kernel):
+    """decide(None): SELF cannot boot on nothing — fail-closed, never an
+    invented PASS."""
+    out = kernel.decide(None)
+    assert out["verdict"] in ("FAIL", "NEED_EVIDENCE")
+    assert out["stopped_at"] == "SELF"
+    assert verify_decision_receipt(out["decision_receipt"])["result"] == "MATCH"

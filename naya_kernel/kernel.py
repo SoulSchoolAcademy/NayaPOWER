@@ -183,10 +183,14 @@ class Kernel:
         verdicts: Dict[str, int] = {}
         for receipt in receipts or []:
             check = verify_decision_receipt(receipt)
-            (matched if check["result"] == "MATCH" else mismatched).append(
-                check["receipt_id"])
-            verdicts[receipt.get("verdict", "UNKNOWN")] = \
-                verdicts.get(receipt.get("verdict", "UNKNOWN"), 0) + 1
+            if check["result"] == "MATCH":
+                matched.append(check["receipt_id"])
+                verdict = receipt.get("verdict", "UNKNOWN")
+                verdicts[verdict] = verdicts.get(verdict, 0) + 1
+            else:
+                # Mismatched receipts are listed, never trusted: their
+                # verdict field is unauthenticated and must not feed counts.
+                mismatched.append(check["receipt_id"])
         return {
             "receipts_checked": len(receipts or []),
             "hash_matched": matched,
