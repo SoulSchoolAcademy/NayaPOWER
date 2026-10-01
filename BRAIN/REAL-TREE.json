@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "50103510caa6f5fc6b3cd409c7388f154acd58f6",
+  "receipt_basis_commit": "3d0216134dfd733445a14a77413d1b40e5f202b2",
   "inventory_file_count": 160,
   "domain_counts": {
     "00-SPEC": 15,
@@ -745,8 +745,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
-      "blob_sha": "61b2ba136baee7f1eb9a56a26e8541c1012cee23",
-      "size": 17145
+      "blob_sha": "225e10ba334f51a0e0e3e8fa2301663b33551f9f",
+      "size": 5757
     },
     {
       "path": "BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md",
@@ -755,13 +755,13 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
-      "blob_sha": "f846eb8763426a319b5267dab409f42e4825ae56",
-      "size": 6732
+      "blob_sha": "512100cc2f42052c77fb1460a5bad9e7804ee49e",
+      "size": 6028
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
-      "blob_sha": "0deeef63e18c3ddf4f007038b9b2c0b19cf295ed",
-      "size": 10363
+      "blob_sha": "197c13af29fbac7bac7b2316b3233a7a33e42c8b",
+      "size": 3936
     },
     {
       "path": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
@@ -790,8 +790,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
-      "blob_sha": "6c88370c0b9d6bf202b85740884a28960c8a456b",
-      "size": 4572
+      "blob_sha": "c9c2abaff6488d74e840ac7ea42ad2ac66468821",
+      "size": 2077
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

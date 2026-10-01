@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-09-30  
-**Receipt basis commit:** `50103510caa6f5fc6b3cd409c7388f154acd58f6`  
+**Receipt basis commit:** `3d0216134dfd733445a14a77413d1b40e5f202b2`  
 **Inventory file count:** 160  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -201,16 +201,16 @@
 - `BRAIN/12-ENGINEERING/verify-migration-coherence.py` — `5f69a322eab3` (14461 bytes)
 ### 90-OPERATIONS — Operations
 
-- `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md` — `61b2ba136bae` (17145 bytes)
+- `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md` — `225e10ba334f` (5757 bytes)
 - `BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md` — `5eb2c3ed81cf` (8894 bytes)
-- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json` — `f846eb876342` (6732 bytes)
-- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md` — `0deeef63e18c` (10363 bytes)
+- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json` — `512100cc2f42` (6028 bytes)
+- `BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md` — `197c13af29fb` (3936 bytes)
 - `BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md` — `26b6355b1b44` (3830 bytes)
 - `BRAIN/90-OPERATIONS/0005-LIVE-NAYA-MASTER-BATON-2026-09-30.md` — `75f3b8e72b90` (8978 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-28-ACTIVATION-REALITY-AND-HANDOFF.md` — `b577802c0bde` (13216 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-29-LAW-ACT-FRESHNESS-HANDOFF.md` — `589364c5cd30` (11027 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md` — `73d6eddebcec` (9953 bytes)
-- `BRAIN/90-OPERATIONS/README.md` — `6c88370c0b9d` (4572 bytes)
+- `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 ### 99-ARCHIVE — Archive
 
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
