@@ -39,6 +39,25 @@ class ManifestEntry:
     responsibilities: List[str]
 
 
+# ---------------------------------------------------------------------------
+# Ratified Decision Value Calculus V2.1 binding (FLAG-001 step 4).
+#
+# V2.1 was ratified 2026-09-30 by the Human Director (PR #1186 82793cc,
+# PR #1190 ade50c06, PR #1192 79b29496 — verified against live main). The
+# binding identifies the ratified artifacts by git blob SHA at main
+# a726a837, so any verifier with the repo can re-derive the exact content:
+#   git cat-file -p bc9edc9092436481be7255c00f099d69bd2a95e7  # spec
+#   git cat-file -p cac79b6595ca651d8a110b71f25fff9fe50e67bc  # executable
+# LEARN/EVOLVE receipts and CONNECT's calculus posture bind
+# CALCULUS_V21_SPEC_HASH as the ratified V2.1 config hash. The kernel
+# modules remain CANDIDATE code; the calculus they bind is RATIFIED law.
+# ---------------------------------------------------------------------------
+CALCULUS_V21_VERSION = "V2.1"
+CALCULUS_V21_SPEC_HASH = "bc9edc9092436481be7255c00f099d69bd2a95e7"
+CALCULUS_V21_EXECUTABLE_HASH = "cac79b6595ca651d8a110b71f25fff9fe50e67bc"
+CALCULUS_V21_RATIFIED_AT_MAIN = "a726a837"
+
+
 class NodeBase(ABC):
     """Strict interface every kernel node must implement."""
 

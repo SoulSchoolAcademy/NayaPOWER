@@ -51,7 +51,10 @@ import json
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
-from naya_kernel.node_base import GateResult, GateVerdict, ManifestEntry, NodeBase
+from naya_kernel.node_base import (
+    GateResult, GateVerdict, ManifestEntry, NodeBase,
+    CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+)
 
 NODE_ID = "NAYA-KERNEL-CONNECT"
 NODE_VERSION = "0.1.0-candidate"
@@ -148,10 +151,12 @@ EDGE_CONTRADICTS = "CONTRADICTS"
 EDGE_SUPERSEDES = "SUPERSEDES"
 EDGE_INVALIDATES = "INVALIDATES"
 
-CALCULUS_CANDIDATE_NOTE = (
-    "Decision Value Calculus V2.1 is CANDIDATE (draft PR #1185), not ratified "
-    "law. Scores recorded on receipts are aspirational; the mechanical §4 "
-    "gates above are what refuse."
+CALCULUS_RATIFIED_NOTE = (
+    "Decision Value Calculus V2.1 is RATIFIED law (Human Director, 2026-09-30; "
+    "PRs #1186/#1190/#1192; spec hash "
+    "bc9edc9092436481be7255c00f099d69bd2a95e7). Scores recorded on receipts "
+    "are local proxies for inspectability, not the canonical engine's "
+    "scores; the mechanical section-4 gates above are what refuse."
 )
 
 
@@ -1654,7 +1659,7 @@ class ConnectNode(NodeBase):
                                            "by rule"}
 
     # ------------------------------------------------------------------
-    # §9 — calculus gate posture (aspirational; the math is CANDIDATE)
+    # §9 — calculus gate posture (V2.1 RATIFIED — FLAG-001 step 4)
     # ------------------------------------------------------------------
     def _calculus_posture(self, request: Dict[str, Any]) -> Dict[str, Any]:
         """Records the §9.2 posture without letting a score authorize.
@@ -1662,8 +1667,10 @@ class ConnectNode(NodeBase):
         Hard refusals (§4.2/§4.4/§2.3) are PROHIBITED regardless of any
         score. Cross-owner connections additionally require ADMISSIBLE ∧
         Q ≥ 9.0 ∧ V_safe > 0 ∧ reversibility ≥ 7 — computed here so the
-        posture is inspectable, but marked aspirational until the calculus
-        is ratified.
+        posture is inspectable. V2.1 is RATIFIED law (FLAG-001 step 4), so
+        the posture binds the ratified config hash; the q/v figures remain
+        local proxies, honestly labeled, never the canonical engine's
+        scores.
         """
         owners = {str(p.get("owner_scope")) for p in
                   request.get("parties") or []}
@@ -1680,10 +1687,10 @@ class ConnectNode(NodeBase):
         admissible = q_proxy >= 9.0 and v_safe_proxy > 0 and \
             reversibility >= 7 if cross_owner else True
         return {
-            "calculusVersion": "v2.1-CANDIDATE",
-            "configHash": "calculus-not-ratified",
-            "aspirational": True,
-            "note": CALCULUS_CANDIDATE_NOTE,
+            "calculusVersion": CALCULUS_V21_VERSION,
+            "configHash": CALCULUS_V21_SPEC_HASH,
+            "aspirational": False,
+            "note": CALCULUS_RATIFIED_NOTE,
             "cross_owner": cross_owner,
             "q_proxy": q_proxy,
             "v_safe_proxy": v_safe_proxy,

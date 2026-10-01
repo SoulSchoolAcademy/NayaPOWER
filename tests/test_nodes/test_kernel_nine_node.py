@@ -335,35 +335,33 @@ def test_kernel_instantiates_all_nine_nodes(kernel):
     assert all(isinstance(n, NodeBase) for n in kernel.nodes.values())
 
 
-def test_decide_blocks_evolve_not_halts_on_learn_need_evidence(kernel,
-                                                               demo_stages):
-    """Graph fail-fast is PER EDGE: with V2.1 unratified, LEARN honestly
-    refuses autonomous promotion (NEED_EVIDENCE[CALCULUS_NOT_RATIFIED]).
-    EVOLVE is then edge-blocked (it requires LEARN) — recorded
-    NEED_EVIDENCE naming LEARN, never an invented PASS, never silently
-    skipped. The decision verdict is LEARN's NEED_EVIDENCE; stopped_at is
-    LEARN (first non-PASS in evaluation order)."""
+def test_decide_full_pass_under_ratified_calculus(kernel, demo_stages):
+    """FLAG-001 step 4: with V2.1 RATIFIED, LEARN's promote gate honestly
+    PASSes (no stale CALCULUS_NOT_RATIFIED refusal), so the LEARN->EVOLVE
+    edge is satisfied and EVOLVE evaluates too. The decision verdict is
+    PASS across all nine gates; stopped_at is None. This is the governance
+    working on true premises: the ratified calculus is what lets learning
+    proceed, stated in every receipt via calculusConfigHash."""
     out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
-    assert out["verdict"] == GateVerdict.NEED_EVIDENCE.value
-    assert out["stopped_at"] == "LEARN"
+    assert out["verdict"] == GateVerdict.PASS.value
+    assert out["stopped_at"] is None
     assert [g["node"] for g in out["gates"]] == list(EVALUATION_ORDER)
-    assert all(g["verdict"] == "PASS" for g in out["gates"][:-2])
+    assert all(g["verdict"] == "PASS" for g in out["gates"])
+    assert all(g["evaluated"] for g in out["gates"])
     learn_gate = out["gates"][-2]
-    assert learn_gate["verdict"] == "NEED_EVIDENCE"
-    assert any("CALCULUS_NOT_RATIFIED" in r for r in learn_gate["reasons"])
+    assert learn_gate["node"] == "LEARN"
+    assert not any("CALCULUS_NOT_RATIFIED" in r
+                   for r in learn_gate["reasons"])
     evolve_gate = out["gates"][-1]
-    assert evolve_gate["verdict"] == "NEED_EVIDENCE"
-    assert evolve_gate["evaluated"] is False
-    assert evolve_gate["blocked_by"] == ["LEARN"]
-    assert any("LEARN" in r for r in evolve_gate["reasons"])
+    assert evolve_gate["node"] == "EVOLVE"
+    assert evolve_gate["verdict"] == "PASS"
 
 
 def test_gate_all_exercises_all_nine_nodes(kernel, demo_stages):
     out = kernel.gate_all({"decision_id": "demo-001", "gates": demo_stages})
     assert [g["node"] for g in out] == list(EVALUATION_ORDER)
-    assert [g["verdict"] for g in out] == [
-        "PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS",
-        "NEED_EVIDENCE", "PASS"]
+    # FLAG-001 step 4: V2.1 RATIFIED — LEARN passes, so all nine PASS.
+    assert [g["verdict"] for g in out] == ["PASS"] * 9
     positions = [g["position"] for g in out]
     assert positions == list(range(1, 10))
 
@@ -372,8 +370,9 @@ def test_decision_receipt_is_hash_bound_and_verifiable(kernel, demo_stages):
     out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
     receipt = out["decision_receipt"]
     assert receipt["receipt_id"] == "decision-demo-001"
-    assert receipt["verdict"] == "NEED_EVIDENCE"
-    assert receipt["stopped_at"] == "LEARN"
+    # FLAG-001 step 4: V2.1 RATIFIED — the full chain passes.
+    assert receipt["verdict"] == "PASS"
+    assert receipt["stopped_at"] is None
     assert receipt["evaluation_order"] == list(EVALUATION_ORDER)
     assert receipt["topology"] == "canonical-runtime-graph-v1"
     assert receipt["graph_seed"].endswith(
@@ -381,7 +380,7 @@ def test_decision_receipt_is_hash_bound_and_verifiable(kernel, demo_stages):
     assert len(receipt["edge_trace"]) == 13
     check = verify_decision_receipt(receipt)
     assert check["result"] == "MATCH"
-    tampered = dict(receipt, verdict="PASS")
+    tampered = dict(receipt, verdict="FAIL")
     assert verify_decision_receipt(tampered)["result"] == "MISMATCH"
 
 
@@ -466,8 +465,9 @@ def test_edge_trace_records_special_edges(kernel, demo_stages):
     assert trace["REL-KERNEL-SELF-LAW"]["status"] == "SATISFIED"
     assert trace["REL-KERNEL-KNOW-PROVE"]["status"] == "SATISFIED"
     assert trace["REL-KERNEL-VERIFY-LEARN"]["status"] == "SATISFIED"
-    # LEARN→EVOLVE blocked because LEARN did not PASS
-    assert trace["REL-KERNEL-LEARN-EVOLVE"]["status"] == "BLOCKED"
+    # LEARN->EVOLVE satisfied: LEARN passed under the ratified calculus
+    # (FLAG-001 step 4), so EVOLVE's required upstream is met.
+    assert trace["REL-KERNEL-LEARN-EVOLVE"]["status"] == "SATISFIED"
 
 
 def test_gate_exception_is_fail_closed_not_skipped(kernel, demo_stages):
@@ -504,12 +504,12 @@ def test_missing_sub_state_fails_closed(kernel):
 def test_cold_reconstruct_verifies_receipts(kernel, demo_stages):
     out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
     good = out["decision_receipt"]
-    bad = dict(good, verdict="PASS")  # hash no longer matches
+    bad = dict(good, verdict="FAIL")  # hash no longer matches
     recon = kernel.cold_reconstruct([good, bad])
     assert recon["receipts_checked"] == 2
     assert recon["hash_matched"] == [good["receipt_id"]]
     assert recon["hash_mismatched"] == [bad["receipt_id"]]
-    assert recon["verdicts"]["NEED_EVIDENCE"] == 1
+    assert recon["verdicts"]["PASS"] == 1
 
 
 def test_gate_results_name_reasons(kernel, demo_stages):
@@ -554,11 +554,11 @@ def test_cold_reconstruct_never_trusts_mismatched_verdicts(kernel,
     under hash_mismatched and must not appear in the verdict counts."""
     out = kernel.decide({"decision_id": "demo-001", "gates": demo_stages})
     good = out["decision_receipt"]
-    bad = dict(good, verdict="PASS")  # hash no longer matches
+    bad = dict(good, verdict="FAIL")  # forged verdict; hash no longer matches
     recon = kernel.cold_reconstruct([good, bad])
     assert recon["hash_mismatched"] == [bad["receipt_id"]]
-    assert recon["verdicts"] == {"NEED_EVIDENCE": 1}
-    assert "PASS" not in recon["verdicts"]
+    assert recon["verdicts"] == {"PASS": 1}
+    assert "FAIL" not in recon["verdicts"]
 
 
 def test_decision_receipt_carries_candidate_banner(kernel, demo_stages):

@@ -10,11 +10,9 @@ from naya_kernel.nodes.learn_node import (
 )
 
 
-RATIFIED_CONFIG = {
-    **json.loads(json.dumps(DEFAULT_CONFIG)),
-    "calculusVersion": "V2.1-RATIFIED",
-    "calculusRatified": True,
-}
+RATIFIED_CONFIG = json.loads(json.dumps(DEFAULT_CONFIG))
+# DEFAULT_CONFIG is the ratified V2.1 config (FLAG-001 step 4), so the
+# fixture is just a deep copy with an explicit name for readability.
 
 BEHAVIOR = {"description": "prefer provenance-check before summarising",
             "metric": "accuracy"}
@@ -83,7 +81,7 @@ def ingest_and_extract(node, n, lesson="check provenance first",
 
 def make_promotable(node, n=20, lesson="check provenance first",
                     task_classes=("triage",)):
-    """Drive a learning to the point where every conjunct but condition 0 is met."""
+    """Drive a learning to the point where every promotion conjunct is met."""
     lid, rids = ingest_and_extract(node, n, lesson=lesson,
                                    task_classes=task_classes)
     learning = node._get(lid)
@@ -579,19 +577,20 @@ def test_regression_can_demote_and_retire():
     assert node._get(lid)["adoption_state"] == "RETIRED"
 
 
-# --------------------------------------- condition 0 → BRIEF
+# --------------------------------------- condition 0 satisfied (V2.1 RATIFIED)
 
-def test_calculus_candidate_routes_promotion_to_brief():
-    node = make_node()  # default config: calculus CANDIDATE
+def test_ratified_calculus_promotion_eligible_and_promotes():
+    # FLAG-001 step 4: V2.1 is RATIFIED, so the default config no longer
+    # raises CALCULUS_NOT_RATIFIED -- a fully-eligible learning promotes
+    # autonomously instead of routing to BRIEF.
+    node = make_node()  # default config: calculus V2.1 RATIFIED
     lid = make_promotable(node)
     eligible, codes = node.promotionEligible(lid)
-    assert not eligible
-    assert "CALCULUS_NOT_RATIFIED" in codes
+    assert "CALCULUS_NOT_RATIFIED" not in codes
+    assert eligible, codes
     result = node.promote(lid)
-    assert result["routed_to_brief"] is True
-    assert node._get(lid)["state"] == "DEFERRED"
-    assert result["package_id"] in [
-        p["package_id"] for p in node._brief_outbox]
+    assert result["promoted"] is True
+    assert node._get(lid)["state"] == "ACTIVE"
 
 
 def test_core_class_learning_never_autonomously_promotes():
@@ -639,12 +638,15 @@ def test_calibration_within_tolerance_creates_nothing():
 
 
 def test_gate_recalibrate_needs_authority():
+    # FLAG-001 step 4: V2.1 RATIFIED -- no CALCULUS_NOT_RATIFIED code.
+    # Recalibration still proposes only; authority must apply (§3.5).
     node = make_node()
     lid, _ = ingest_and_extract(node, 1, learning_type="RECALIBRATION",
                                 expected_behavior=dict(BEHAVIOR))
     gate = node.gate({"action": "recalibrate", "learning_id": lid})
     assert gate.verdict == GateVerdict.NEED_EVIDENCE
-    assert "CALCULUS_NOT_RATIFIED" in gate.reasons
+    assert "CALCULUS_NOT_RATIFIED" not in gate.reasons
+    assert "AUTHORITY_BOUNDARY_VIOLATION" in gate.reasons
 
 
 # --------------------------------------- §4.3 / §10 Q7 routing

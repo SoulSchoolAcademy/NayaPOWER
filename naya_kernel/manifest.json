@@ -109,7 +109,7 @@
  "lock_reconciliation": {
   "graph_topology": "tick 14: Kernel.decide() re-topologized onto the canonical 13-edge runtime graph (Ultimate Lock).",
   "KNOW": "tick 15: reconciled to the Ultimate Lock — applicability decisions removed (applicability_note rides as non-steering metadata; CONNECT owns the steering decision); epistemic claim/evidence assessment moved to PROVE (SUPPORTED/LEARNED/VERIFIED ingest claims and REUSABLE promotion require a PROVE receipt reference; KNOW binds it as provenance, never assesses); truth-state language removed (canonical-state deltas).",
-  "calculus": "pending (FLAG-001 step 4): bind the RATIFIED Decision Value Calculus V2.1 config hash into LEARN/EVOLVE receipts; remove CALCULUS_NOT_RATIFIED paths."
+  "calculus": "tick 16: RATIFIED Decision Value Calculus V2.1 bound (PRs #1186/#1190/#1192, Human Director 2026-09-30). CALCULUS_NOT_RATIFIED / REFUSAL_CALCULUS_UNRATIFIED / 'calculus-not-ratified' paths removed from learn/evolve/connect; LEARN/EVOLVE receipts bind calculusConfigHash=bc9edc9092436481be7255c00f099d69bd2a95e7 (git blob SHA of NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md at main a726a837; executable kernel/value_calculus.py=cac79b6595ca651d8a110b71f25fff9fe50e67bc). Shared binding in naya_kernel/node_base.py."
  },
  "version": "0.1.0-candidate"
 }

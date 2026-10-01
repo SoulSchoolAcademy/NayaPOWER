@@ -14,7 +14,9 @@ Plus NodeBase conformance and cold-reconstruct units.
 """
 import pytest
 
-from naya_kernel.node_base import NodeBase, GateVerdict
+from naya_kernel.node_base import (
+    NodeBase, GateVerdict, CALCULUS_V21_SPEC_HASH,
+)
 from naya_kernel.nodes import evolve_node
 from naya_kernel.nodes.evolve_node import (
     EvolveNode,
@@ -30,7 +32,6 @@ from naya_kernel.nodes.evolve_node import (
     INTELLIGENCE_CLASSES,
     ORDERING_LAW,
     REFUSAL_IMMUTABLE_SURFACE,
-    REFUSAL_CALCULUS_UNRATIFIED,
     REFUSAL_CONFIG_MISMATCH,
     REFUSAL_BUNDLE_SPLIT,
     REFUSAL_ENVELOPE,
@@ -99,8 +100,10 @@ class TestBaseAcceptance:
         out = node.evaluate(eid)
         score = out["gate_score"]
         assert score["deciding_config_hash"] == node._config["configHash"]
-        # §3.2 — the receipt says the calculus is aspirational, not hidden.
-        assert score["calculus_spec_status"] == "CANDIDATE_SPEC_ONLY"
+        # FLAG-001 step 4 — V2.1 RATIFIED: the receipt binds the ratified
+        # config hash and says RATIFIED, not hidden.
+        assert score["calculus_spec_status"] == "RATIFIED"
+        assert score["calculusConfigHash"] == CALCULUS_V21_SPEC_HASH
         assert "RESOLVE" in score["calculus_chain"]
 
     def test_rollback_armed_and_tested_before_apply(self):
@@ -134,17 +137,21 @@ class TestBaseAcceptance:
         assert res["decision"] == "REFUSED"
         assert "GATE_STRUCTURE" in res["touched_surface"]
 
-    def test_unratified_calculus_adoptions_blocked_spec_only(self):
-        node = EvolveNode()  # calculusRatified=False
-        res = node.propose(_proposal())
-        out = node.evaluate(res["evolution_id"])
-        assert out["route"] == "BRIEF"
-        assert node._brief_outbox  # scored and briefed, never adopted
-        # gate-level: autonomous adoption refused even if everything else
-        # passes — the refusal is explicit.
-        g = node.gate({"action": "apply", "evolution_id": res["evolution_id"]})
+    def test_ratified_calculus_autonomous_path_admitted(self):
+        # FLAG-001 step 4: V2.1 RATIFIED — the SPEC-ONLY (unratified-math)
+        # branches are gone. An in-envelope proposal evaluates to the
+        # AUTONOMOUS route; the gate no longer refuses on calculus grounds.
+        node = EvolveNode()  # default config: calculus V2.1 RATIFIED
+        eid = node.propose(_proposal())["evolution_id"]
+        out = node.evaluate(eid)
+        assert out["route"] == "AUTONOMOUS"
+        assert not node._brief_outbox  # not briefed; autonomous path open
+        auth = node.authorize(eid, {"issuer": "HUMAN_DIRECTOR",
+                                    "scope": "evolve"})
+        assert auth["decision"] == "AUTHORIZED"
+        g = node.gate({"action": "apply", "evolution_id": eid})
         assert g.verdict is GateVerdict.NEED_EVIDENCE
-        assert REFUSAL_CALCULUS_UNRATIFIED in g.reasons
+        assert "AUTHORITY_VALIDATION_REQUIRED" in g.reasons
 
     def test_bundle_split_detected_on_crafted_split(self):
         node = EvolveNode()
@@ -639,10 +646,12 @@ class TestMetrics:
             out = node.record_continuity_metric(name, 0.5)
             assert out["decision"] == "RECORDED"
         assert set(node.metrics()) == set(CONTINUITY_METRICS)
-        # Metrics do not change any gate decision.
+        # Metrics do not change any gate decision. (FLAG-001 step 4: with
+        # V2.1 RATIFIED the in-envelope proposal routes AUTONOMOUS —
+        # metrics are still diagnostics, never gates.)
         eid = node.propose(_proposal())["evolution_id"]
         out = node.evaluate(eid)
-        assert out["route"] == "BRIEF"  # SPEC-ONLY — metrics changed nothing
+        assert out["route"] == "AUTONOMOUS"
 
     def test_unknown_metric_refused(self):
         node = EvolveNode()
@@ -722,12 +731,14 @@ class TestConformance:
         g = node.gate({"action": "evaluate", "evolution_id": eid})
         assert g.verdict is GateVerdict.PASS
 
-    def test_gate_apply_unratified_refuses_autonomous(self):
+    def test_gate_apply_ratified_requires_authority_validation(self):
+        # FLAG-001 step 4: V2.1 RATIFIED — no unratified-math refusal.
+        # apply still requires authority validation (EVOLVE grants none).
         node = EvolveNode()
         eid = _authorized(node)
         g = node.gate({"action": "apply", "evolution_id": eid})
         assert g.verdict is GateVerdict.NEED_EVIDENCE
-        assert REFUSAL_CALCULUS_UNRATIFIED in g.reasons
+        assert "AUTHORITY_VALIDATION_REQUIRED" in g.reasons
 
     def test_gate_handoff_needs_completeness_check(self):
         g = EvolveNode().gate({"action": "handoff"})
@@ -748,6 +759,8 @@ class TestConformance:
             assert receipt["receipt_hash"] == _hash(body), receipt["receipt_type"]
             assert receipt["authority_created"] is False
             assert "calculusVersion" in receipt and "calculusRatified" in receipt
+            # FLAG-001 step 4: the ratified V2.1 config hash is bound.
+            assert receipt.get("calculusConfigHash") == CALCULUS_V21_SPEC_HASH
 
     def test_evolution_and_successor_receipts_kept_separate(self):
         node = EvolveNode()

@@ -17,8 +17,10 @@ Contractual responsibility, from LEARN-NODE-SPEC-CANDIDATE.md §0:
 Implemented from the reconciled LEARN spec (branch specs/
 LEARN-NODE-SPEC-CANDIDATE.md + the full base text in
 hidden_files/specs-final/LEARN-NODE-SPEC-CANDIDATE.md). All math that depends
-on the Decision Value Calculus is computed under the pinned config; while the
-calculus is CANDIDATE, all promotions route to BRIEF (condition 0).
+on the Decision Value Calculus is computed under the pinned config; the
+calculus is RATIFIED V2.1 (condition 0 satisfied — see the binding in
+naya_kernel.node_base), so a fully-eligible learning may promote
+autonomously; the receipt says exactly which calculus config hash decided.
 
 This module is candidate code on the naya4/nine-node-kernel-v1 branch. It is
 NOT ratified, NOT merged, NOT deployed.
@@ -31,7 +33,10 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
-from naya_kernel.node_base import NodeBase, GateResult, GateVerdict, ManifestEntry
+from naya_kernel.node_base import (
+    NodeBase, GateResult, GateVerdict, ManifestEntry,
+    CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+)
 
 
 NODE_ID = "NAYA-KERNEL-LEARN"
@@ -115,14 +120,16 @@ HARD_REFUSALS = (
     REFUSAL_SELF_MODIFICATION, REFUSAL_SELF_DEALING,
 )
 
-# The 15 reason-coded non-promotions (§9) + calculus condition 0.
+# The 14 reason-coded non-promotions (§9). (The former 15th code,
+# CALCULUS_NOT_RATIFIED — condition 0 — was removed by FLAG-001 step 4:
+# Decision Value Calculus V2.1 is RATIFIED, so condition 0 is satisfied.)
 NON_PROMOTION_CODES = (
     "VERIFY_RESULT_REQUIRED", "OUTCOME_NOT_ACCEPTED", "CAUSAL_SUPPORT_REQUIRED",
     "PROVENANCE_INCOMPLETE", "CONTRADICTS_ACTIVE_LEARNING",
     "APPLICABILITY_UNKNOWN", "HELDOUT_REQUIRED", "NO_BEHAVIORAL_DELTA",
     "NO_OUTCOME_DELTA", "NEGATIVE_TRANSFER_FAILED", "REGRESSION_DETECTED",
     "EVIDENCE_REFERENCE_UNRESOLVED", "SCOPE_MISMATCH",
-    "AUTHORITY_BOUNDARY_VIOLATION", "CALCULUS_NOT_RATIFIED",
+    "AUTHORITY_BOUNDARY_VIOLATION",
 )
 EXTRA_CODES = (
     "EVIDENCE_FLOOR_NOT_MET", "INSUFFICIENT_INDEPENDENT_EVIDENCE",
@@ -158,8 +165,11 @@ GRAPH_AMENDMENT_PROPOSALS = (
 GRAPH_AMENDMENT_EPISTEMIC = ("LEARNED", "CONTRADICTED", "SUPERSEDED", "INVALIDATED")
 
 DEFAULT_CONFIG = {
-    "calculusVersion": "V2.1-CANDIDATE",
-    "calculusRatified": False,
+    # Decision Value Calculus V2.1 — RATIFIED 2026-09-30 (PRs #1186/#1190/
+    # #1192). Condition 0 (§3.4) is satisfied; the ratified config hash is
+    # bound into every receipt (see naya_kernel.node_base).
+    "calculusVersion": CALCULUS_V21_VERSION,
+    "calculusRatified": True,
     "evidenceFloor": {"critical": 5, "standard": 20},
     "autonomy": {"qMin": 9.0, "reversibilityMin": 7, "marginMin": 0.25},
     "confidence": {"aggregateMin": 0.80, "criticalMin": 0.75},
@@ -260,6 +270,10 @@ class LearnNode(NodeBase):
             "learning_id": learning_id,
             "configHash": self._config["configHash"],
             "calculusVersion": self._config["calculusVersion"],
+            # FLAG-001 step 4: the ratified V2.1 config hash, bound into
+            # every receipt (content hash of the ratified spec — see
+            # naya_kernel.node_base).
+            "calculusConfigHash": CALCULUS_V21_SPEC_HASH,
             "authority_created": False,   # invariant: LEARN never creates authority
             "timestamp": self._now(),
             "issued_at": self._now(),
@@ -945,9 +959,11 @@ class LearnNode(NodeBase):
 
     def promotionEligible(self, learning_id: str
                           ) -> Tuple[bool, List[str]]:
-        """PromotionEligible(L) = V ∧ P ∧ R ∧ A ∧ B ∧ N ∧ C, plus condition 0
-        (ratified calculusVersion) and the seven hard refusals. Pure,
-        deterministic, config-pinned (§11.1)."""
+        """PromotionEligible(L) = V ∧ P ∧ R ∧ A ∧ B ∧ N ∧ C, plus the seven
+        hard refusals. Condition 0 (§3.4 — ratified calculusVersion) is
+        satisfied: Decision Value Calculus V2.1 was ratified 2026-09-30
+        (FLAG-001 step 4), so no CALCULUS_NOT_RATIFIED code is ever raised.
+        Pure, deterministic, config-pinned (§11.1)."""
         learning = self._get(learning_id)
         codes: List[str] = []
         hard: List[str] = []
@@ -1086,11 +1102,9 @@ class LearnNode(NodeBase):
         if learning.get("stale"):
             codes.append("REGRESSION_DETECTED")
 
-        # Condition 0 (§3.4): autonomous promotion requires a RATIFIED
-        # calculusVersion. While V2.1 is CANDIDATE, all promotions route to
-        # BRIEF regardless of the other conjuncts.
-        if not self._config.get("calculusRatified"):
-            codes.append("CALCULUS_NOT_RATIFIED")
+        # Condition 0 (§3.4): satisfied — Decision Value Calculus V2.1 is
+        # RATIFIED (FLAG-001 step 4; binding in naya_kernel.node_base). No
+        # stale NOT_RATIFIED code is raised here anymore.
 
         # §2.1: CORE-class learnings route to BRIEF, never autonomous.
         if learning.get("learning_class") == "CORE":
@@ -1107,9 +1121,11 @@ class LearnNode(NodeBase):
 
     def promote(self, learning_id: str) -> Dict[str, Any]:
         """Advance a learning through the machine to ACTIVE — or refuse with
-        reason codes, or route to BRIEF when condition 0 (calculus) or the
-        CORE-class rule blocks autonomous promotion. Idempotent: promotion
-        converges on one canonical state (§9 P32/P33)."""
+        reason codes, or route to BRIEF when the CORE-class rule (or the
+        §4.3/identity routes) blocks autonomous promotion. The calculus
+        condition-0 BRIEF route was removed by FLAG-001 step 4 (V2.1
+        ratified). Idempotent: promotion converges on one canonical state
+        (§9 P32/P33)."""
         learning = self._get(learning_id)
         if learning["internal_only"]:
             raise ValueError("investigation placeholders may not be promoted "
@@ -1133,8 +1149,7 @@ class LearnNode(NodeBase):
             return {"promoted": False, "refused": True, "reason_codes": hard,
                     "receipt_id": receipt["receipt_id"]}
         brief_route = [c for c in codes
-                       if c in ("CALCULUS_NOT_RATIFIED",
-                                "CORE_CLASS_REQUIRES_DIRECTOR",
+                       if c in ("CORE_CLASS_REQUIRES_DIRECTOR",
                                 "VERIFY_SOURCE_DISTRUST",
                                 "GOVERNANCE_PROPOSAL_ROUTED_TO_BRIEF",
                                 "IDENTITY_LEARNING_ROUTED_TO_BRIEF")]
@@ -1281,6 +1296,7 @@ class LearnNode(NodeBase):
             "authority_created": False,
             "configHash": learning["config_hash"],
             "calculusVersion": self._config["calculusVersion"],
+            "calculusConfigHash": CALCULUS_V21_SPEC_HASH,
             "package_hash": None,
             "timestamp": self._now(),
         }
@@ -1604,11 +1620,8 @@ class LearnNode(NodeBase):
             if learning["learning_type"] != "RECALIBRATION":
                 return GateResult(GateVerdict.FAIL,
                                   ["not a RECALIBRATION candidate"])
-            if not self._config.get("calculusRatified"):
-                return GateResult(GateVerdict.NEED_EVIDENCE,
-                                  ["CALCULUS_NOT_RATIFIED",
-                                   "recalibration requires verification + "
-                                   "authority (§3.5)"])
+            # V2.1 is ratified (FLAG-001 step 4) — no CALCULUS_NOT_RATIFIED
+            # branch. Recalibration still proposes only; authority applies.
             return GateResult(GateVerdict.NEED_EVIDENCE,
                               ["AUTHORITY_BOUNDARY_VIOLATION",
                                "recalibration candidate; authority must apply"])

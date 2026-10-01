@@ -11,7 +11,9 @@ import copy
 
 import pytest
 
-from naya_kernel.node_base import GateVerdict, NodeBase
+from naya_kernel.node_base import (
+    GateVerdict, NodeBase, CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+)
 from naya_kernel.nodes import connect_node
 from naya_kernel.nodes.connect_node import ConnectNode
 
@@ -694,12 +696,15 @@ def test_explain_connection_answers_five_questions(node):
     assert explanation["transitions"]
 
 
-def test_calculus_posture_is_aspirational(node):
+def test_calculus_posture_binds_ratified_v21(node):
+    # FLAG-001 step 4: V2.1 RATIFIED — the posture binds the ratified
+    # config hash instead of the stale "calculus-not-ratified" marker.
     ctx = make_context(make_consents())
     result = node.propose(make_edge_request(), ctx, execution_id="tcp-1")
     calculus = result["receipt"]["payload"]["calculus"]
-    assert calculus["aspirational"] is True
-    assert calculus["calculusVersion"] == "v2.1-CANDIDATE"
+    assert calculus["aspirational"] is False
+    assert calculus["calculusVersion"] == CALCULUS_V21_VERSION == "V2.1"
+    assert calculus["configHash"] == CALCULUS_V21_SPEC_HASH
 
 
 # --- spaces (§6) -------------------------------------------------------

@@ -19,10 +19,11 @@ EVOLVE-NODE-SPEC-CANDIDATE.md — the 15 PDF amendments and 5 contradiction
 resolutions — on the full base text in hidden_files/specs-final/
 EVOLVE-NODE-SPEC-CANDIDATE.md, reconstructed with Appendix C honesty note).
 The branch merge doc is the authority on the deltas; the reconstruction is
-the authority on the base machinery they modify. While the Decision Value
-Calculus V2.1 spec remains CANDIDATE, the calculus-scored autonomous path
-is SPEC-ONLY: proposals may be prepared, scored, and briefed, but no
-autonomous adoption may execute on unratified math (§3.2).
+the authority on the base machinery they modify. The Decision Value Calculus
+V2.1 is RATIFIED (FLAG-001 step 4 — binding in naya_kernel.node_base), so
+the §3 gate scores under the ratified config and the ratified config hash
+is bound into every gate-referencing receipt; the old SPEC-ONLY
+(unratified-math) branches were removed with the stale premise.
 
 This module is candidate code on the naya4/nine-node-kernel-v1 branch. It is
 NOT ratified, NOT merged, NOT deployed.
@@ -35,7 +36,10 @@ import json
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
-from naya_kernel.node_base import NodeBase, GateResult, GateVerdict, ManifestEntry
+from naya_kernel.node_base import (
+    NodeBase, GateResult, GateVerdict, ManifestEntry,
+    CALCULUS_V21_VERSION, CALCULUS_V21_SPEC_HASH,
+)
 
 
 NODE_ID = "NAYA-KERNEL-EVOLVE"
@@ -167,9 +171,10 @@ INTELLIGENCE_CLASSES = ("CORE", "REUSABLE", "CONTEXT", "REFERENCE", "EPHEMERAL")
 # §2 ordering law — optimization is subordinate to purpose.
 ORDERING_LAW = ("MISSION", "LAW", "SAFETY", "TRUTH", "VALUE")
 
-# §10 refusal codes.
+# §10 refusal codes. (REFUSAL_CALCULUS_UNRATIFIED was removed by FLAG-001
+# step 4: Decision Value Calculus V2.1 is RATIFIED — there is no
+# unratified-math autonomous path left to refuse.)
 REFUSAL_IMMUTABLE_SURFACE = "IMMUTABLE_SURFACE_TOUCH"
-REFUSAL_CALCULUS_UNRATIFIED = "CALCULUS_NOT_RATIFIED_AUTONOMOUS"
 REFUSAL_CONFIG_MISMATCH = "DECIDING_CONFIG_MISMATCH"
 REFUSAL_BUNDLE_SPLIT = "BUNDLE_SPLIT_DETECTED"
 REFUSAL_ENVELOPE = "ENVELOPE_EXCEEDED_UNBRIEFED"
@@ -196,8 +201,12 @@ CONTINUITY_METRICS = (
 )
 
 DEFAULT_CONFIG: Dict[str, Any] = {
-    "calculusVersion": "V2.1",
-    "calculusRatified": False,          # §3.2 — SPEC-ONLY until ratified
+    # Decision Value Calculus V2.1 — RATIFIED 2026-09-30 (PRs #1186/#1190/
+    # #1192). §3.2's SPEC-ONLY conditioning is satisfied; the ratified
+    # config hash is bound into every gate-referencing receipt (see
+    # naya_kernel.node_base).
+    "calculusVersion": CALCULUS_V21_VERSION,
+    "calculusRatified": True,
     "kernelRevision": "kr-0",
     "currentVersion": "v0.0.0",
     # §7.1 — director-set autonomous envelope. Changed only by the Director
@@ -329,10 +338,12 @@ class EvolveNode(NodeBase):
             "configHash": self._config["configHash"],
             # §3.3 — the adoption decision is computed under config C and
             # binds C's hash; §3.2 — calculus version AND ratification
-            # status are bound into every gate-referencing receipt.
+            # status are bound into every gate-referencing receipt, plus the
+            # ratified V2.1 config hash (FLAG-001 step 4).
             "deciding_config_hash": self._config["configHash"],
             "calculusVersion": self._config["calculusVersion"],
             "calculusRatified": bool(self._config.get("calculusRatified")),
+            "calculusConfigHash": CALCULUS_V21_SPEC_HASH,
             "authority_created": False,  # invariant: EVOLVE never creates authority
             "timestamp": self._now(),
             "issued_at": self._now(),
@@ -412,9 +423,9 @@ class EvolveNode(NodeBase):
         value = float(candidate.get("expected_value") or 0.0)
         blast = _BLAST_ORDER.get(candidate.get("blast_radius", "LOCAL"), 0)
         reversibility = float(candidate.get("reversibility") or 0.0)
-        # The calculus chain, specified as configured (§3.1). The math is
-        # aspirational until the V2.1 spec is ratified (§3.2) — the receipt
-        # says so explicitly; nothing is hidden.
+        # The calculus chain, specified as configured (§3.1). V2.1 is
+        # RATIFIED (FLAG-001 step 4) — the receipt binds the ratified config
+        # hash and says so explicitly; nothing is hidden.
         calculus_chain = ("RESOLVE", "GATE", "SCORE", "COMPARE", "SELECT",
                           "ACT/ESCALATE", "OBSERVE", "VERIFY", "LEDGER",
                           "LEARN", "RECALIBRATE")
@@ -427,9 +438,8 @@ class EvolveNode(NodeBase):
             "risk_penalty": risk,
             "score": score,
             "deciding_config_hash": self._config["configHash"],
-            "calculus_spec_status": (
-                "RATIFIED" if self._config.get("calculusRatified")
-                else "CANDIDATE_SPEC_ONLY"),
+            "calculusConfigHash": CALCULUS_V21_SPEC_HASH,
+            "calculus_spec_status": "RATIFIED",
         }
 
     def _in_envelope(self, candidate: Dict[str, Any]) -> Tuple[bool, List[str]]:
@@ -598,8 +608,9 @@ class EvolveNode(NodeBase):
                 "touched_surface": [], "route": candidate.get("route", "GATE")}
 
     def evaluate(self, evolution_id: str) -> Dict[str, Any]:
-        """EVALUATE: run the §3 gate — ratification-conditioned calculus
-        scoring under the CURRENT config, bundle-split check, blast-radius
+        """EVALUATE: run the §3 gate — calculus scoring under the CURRENT
+        config (V2.1 RATIFIED — FLAG-001 step 4; the ratified config hash is
+        bound into the GATED receipt), bundle-split check, blast-radius
         and reversibility assessment, authority-requirement resolution.
         Stale-proposal rule: Base(E) != CurrentVersion → STALE_PROPOSAL →
         REBASE / RE-EVALUATE, never automatic promotion."""
@@ -639,26 +650,22 @@ class EvolveNode(NodeBase):
                 refusal_code="ROLLBACK_PLAN_INCOMPLETE", reason=plan_reason)
             return {"decision": "REFUSED", "receipt_id": receipt["receipt_id"],
                     "refusal_code": receipt["refusal_code"]}
-        # §3.2 ratification conditioning — the mechanical core of SPEC-ONLY.
+        # §3 gate routing. V2.1 is RATIFIED (FLAG-001 step 4): the old
+        # SPEC-ONLY branch (unratified math → forced BRIEF) was removed with
+        # the stale premise. calculus_ok stays bound into the receipt.
         calculus_ok = bool(self._config.get("calculusRatified"))
         envelope_ok, envelope_reasons = self._in_envelope(candidate)
         route: str
         if candidate.get("route") == "BRIEF":
             route = "BRIEF"   # §8.9 personality boundary — always brief
             reasons = ["personality-trait evolution is always BRIEF-class (§8.9)"]
-        elif not calculus_ok:
-            # SPEC-ONLY: may be prepared, scored, and briefed — autonomous
-            # adoption on unratified math is refused, stated not hidden.
-            route = "BRIEF"
-            reasons = ["calculus V2.1 is CANDIDATE — SPEC-ONLY (§3.2); "
-                       "scored and briefed, autonomous adoption refused"]
         elif not envelope_ok:
             route = "BRIEF"
             reasons = envelope_reasons
         else:
             route = "AUTONOMOUS"
             reasons = ["within the director-set autonomous envelope (§7.1); "
-                       "calculus ratified"]
+                       "calculus V2.1 ratified"]
         if candidate["proposal"] != "GATED":
             self._transition(candidate, "proposal", "GATED",
                              reason="EVALUATE — route resolved: " + route)
@@ -1344,9 +1351,9 @@ class EvolveNode(NodeBase):
 
     def gate(self, state: Dict[str, Any]) -> GateResult:
         """EVOLVE's gate: evaluate an evolution request. Immutable touch →
-        FAIL (PROHIBITED); unratified-calculus autonomous adoption → the
-        request routes to BRIEF (SPEC-ONLY, NEED_EVIDENCE); anything
-        unproven is NEED_EVIDENCE with reason codes. Never invent PASS."""
+        FAIL (PROHIBITED); anything unproven is NEED_EVIDENCE with reason
+        codes. The calculus is RATIFIED V2.1 (FLAG-001 step 4) — there is no
+        unratified-math SPEC-ONLY branch anymore. Never invent PASS."""
         action = (state or {}).get("action")
         if action not in ("propose", "evaluate", "authorize", "apply",
                           "handoff", "metrics"):
@@ -1394,13 +1401,9 @@ class EvolveNode(NodeBase):
                               ["in-envelope; calculus ratified; "
                                "autonomous path admitted (§7.1)"])
         if action in ("authorize", "apply"):
-            # §3.2 — autonomous adoption on unratified math is refused even
-            # when every other condition passes; the refusal is explicit.
-            if not self._config.get("calculusRatified"):
-                return GateResult(GateVerdict.NEED_EVIDENCE,
-                                  [REFUSAL_CALCULUS_UNRATIFIED,
-                                   "SPEC-ONLY: scored and briefed; no "
-                                   "autonomous adoption on unratified math"])
+            # V2.1 is RATIFIED (FLAG-001 step 4) - the old SPEC-ONLY refusal
+            # (REFUSAL_CALCULUS_UNRATIFIED) was removed with the stale
+            # premise. Authorization/adoption still require authority.
             if action == "apply" and candidate["proposal"] != "AUTHORIZED":
                 return GateResult(GateVerdict.FAIL,
                                   [REFUSAL_AUTHORITY,
