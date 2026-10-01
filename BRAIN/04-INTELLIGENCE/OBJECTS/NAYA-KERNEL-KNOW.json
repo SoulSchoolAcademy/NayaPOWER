@@ -91,7 +91,7 @@
     {
       "relationship_id": "REL-KERNEL-ACT-KNOW",
       "direction": "IN",
-      "type": "USED_BY",
+      "type": "PRODUCES",
       "source_object_id": "NAYA-KERNEL-ACT",
       "target_object_id": "NAYA-KERNEL-KNOW",
       "epistemic_state": "SUPPORTED",
