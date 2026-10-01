@@ -1,14 +1,14 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-01",
-  "receipt_basis_commit": "507d34213333a38708912d343537985e619938ac",
-  "inventory_file_count": 160,
+  "receipt_basis_commit": "2b66d6bc2549175b2badbaf1a8441fdcdbfd3228",
+  "inventory_file_count": 161,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 27,
-    "04-INTELLIGENCE": 24,
+    "04-INTELLIGENCE": 25,
     "05-MEMORY": 19,
     "06-PROOF": 10,
     "07-LEARNING": 2,
@@ -324,9 +324,14 @@
       "size": 13932
     },
     {
+      "path": "BRAIN/04-INTELLIGENCE/GRAPH/0006-GRAPH-PATH-V2-ACCEPTANCE.json",
+      "blob_sha": "f298a31a9fa98b168ab6440080d980df7631fda6",
+      "size": 10036
+    },
+    {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/README.md",
-      "blob_sha": "095cfe500bc41c1228719ce877be7835be3a0860",
-      "size": 1356
+      "blob_sha": "97b99ba5d134df92059a783aa11cce815c009bbf",
+      "size": 1502
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/MASTER-INDEX.json",
