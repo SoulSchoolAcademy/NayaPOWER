@@ -51,11 +51,25 @@ checked read-only 2026-10-01).
 
 ## 5. Governed application mechanism
 
-Application is a **human-executed** step (no agent seat may apply migrations). The applier:
-1. Applies #1→#4 in order, one at a time, stopping on any error.
-2. After EACH migration, re-queries `supabase_migrations.schema_migrations` for that exact
-   version before proceeding (non-atomicity rule: a failed migration may leave partial state).
-3. On failure: stop, preserve the error, do not retry blindly — diagnose before re-attempt.
+Application is a **human-executed** step (no agent seat may apply migrations).
+The concrete route:
+
+1. **Where:** Supabase Dashboard → SQL Editor on project
+   `supabase-red-cable`, **or** `psql` with the project's connection string.
+   Not via the GitHub promotion workflow (it does not apply migrations) and
+   not via branch promotion while the branch reports `MIGRATIONS_FAILED`.
+2. **How:** paste each migration file's SQL in version order (#1→#4), one at
+   a time, executing as the project owner. Stop on any error.
+3. **After EACH migration:** re-query
+   `supabase_migrations.schema_migrations` for that exact version before
+   proceeding (non-atomicity rule: a failed migration may leave partial
+   state).
+4. **On failure:** stop, preserve the error, do not retry blindly —
+   diagnose before re-attempt. Do not assume promotion resolves it.
+
+**MIGRATIONS_FAILED note:** the production branch reports this status since
+2026-09-29. Do not promote-and-pray: verify each migration's history row
+and function signatures (§7) independently after application.
 
 ## 6. Partial-failure handling
 
@@ -94,21 +108,31 @@ WHERE version > '20261001032000';
 -- expect: 0
 ```
 
-## 8. Rollback (code-only recovery — verified safe)
+## 8. Rollback (code-only recovery — NOT verified; claim withdrawn)
 
-All four migrations change only function definitions. No table DDL, no data mutation.
-Rollback = restore prior definitions (captured read-only from production before application):
+**Correction 2026-10-01:** the earlier "verified safe" label is withdrawn.
+The rollback has not been exercised, and the prior definitions claimed as
+"captured 2026-10-01; held with the packet" are not present in this package
+— that claim was unverified. What is established:
 
-- #1/#2 targets: prior definitions of `nayanet_intelligence_commit`,
-  `nayanet_intelligence_commit_runtime`, `nayanet_supersede_intelligent_block_runtime`
-  (captured 2026-10-01; held with the packet).
-- #3 target: prior definition of `nayanet_smart_disconnect(text)` (captured 2026-10-01).
-- #4 targets: `DROP FUNCTION IF EXISTS` on the 6 new functions (they do not exist
-  pre-application, so rollback is pure removal).
+- All four migrations change only function definitions (no table DDL, no
+  data mutation) — verified by reading the SQL.
+- #4's 6 functions do not exist in production pre-application (verified via
+  `pg_proc` read-only 2026-10-01) — rollback is pure removal via
+  `DROP FUNCTION IF EXISTS` **with exact signatures** (signature check, not
+  name-only, required before any drop).
+- #1/#2/#3 replace existing functions. Rollback requires the prior
+  definitions captured read-only BEFORE application — not yet captured.
+  `CREATE OR REPLACE` does not establish safe droppability; grants and
+  dependencies on the replaced functions must be checked pre-application.
 
-**Irreversible effects:** none from the migrations themselves. Ledger rows written by the
-new functions after application are append-only by design (write law) and are not "rolled
-back" — they remain as history, which is correct behavior, not a failure.
+**Rollback is therefore a plan, not a proven recovery.** It must be
+exercised in a disposable environment before being called safe.
+
+**Irreversible effects:** none from the migrations themselves. Ledger rows
+written by the new functions after application are append-only by design
+(write law) and are not "rolled back" — they remain as history, which is
+correct behavior, not a failure.
 
 ## 9. CI wording correction
 

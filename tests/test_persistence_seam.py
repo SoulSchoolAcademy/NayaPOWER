@@ -425,3 +425,48 @@ def test_contract_record_lineage_and_provenance():
     ok = _good_record(lineage={"parent_ledger_event_id": PARENT,
                                "chain_seq": 7})
     assert validate_contract_record(ok) == []
+
+
+# ---------------------------------------------------------------------------
+# Privacy qualification (move 7): input-state retention vs sharing scope.
+# Governing: Constitution Art XI (PRIVATE BY DEFAULT; SHARED BY CHOICE;
+# COLLECTIVE BY CONSENT; PUBLIC BY DECISION) and Art XIV (fail closed on
+# scope uncertainty). The adapter cannot classify content and cannot verify
+# consent — scope is the CALLER's claim, recorded auditable. The adapter's
+# boundary: default PRIVATE, never widen, never invent.
+# ---------------------------------------------------------------------------
+
+def test_privacy_default_is_private_fail_closed():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    p = proj(r, inputs_state=state)  # no scope given
+    assert p["p_privacy_classification"] == "PRIVATE"
+    # Full inputs preserved AND scope private: recomputation possible
+    # without broadening exposure.
+    assert p["p_metadata"]["inputs_state"] == state
+
+
+def test_privacy_explicit_scope_is_caller_claim():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    # The caller may claim a broader scope; the adapter records the claim
+    # verbatim — it does not verify the underlying choice/consent/decision.
+    p = proj(r, inputs_state=state, owner_scope="PUBLIC")
+    assert p["p_privacy_classification"] == "PUBLIC"
+    assert p["p_metadata"]["inputs_state"] == state
+
+
+def test_privacy_adapter_never_widens_scope():
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    # Even with rich input material, the adapter does not escalate.
+    for scope in ("PRIVATE", "SHARED", "COLLECTIVE", "PUBLIC"):
+        p = proj(r, inputs_state=state, owner_scope=scope)
+        assert p["p_privacy_classification"] == scope
+    # Invalid scopes are rejected, not coerced to a default.
+    try:
+        proj(r, inputs_state=state, owner_scope="WORLD")
+    except ValueError as e:
+        assert "owner_scope" in str(e)
+    else:
+        raise AssertionError("invalid scope accepted")
