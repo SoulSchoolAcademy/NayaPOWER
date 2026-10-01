@@ -212,15 +212,26 @@ git config core.autocrlf false       # required; see W-1
 git checkout -q -- .                 # required: core.autocrlf alone does NOT
                                      # rewrite already-checked-out files
 python -m pytest tests/test_nodes/test_coda4_cold_successor.py -q
+python -m pytest tests/test_ci_declares_test_dependencies.py -q
 python CODA-4/repro_cs01.py          # exit 1 == CS-01 present, 0 == repaired
+python CODA-4/make_evidence.py       # write evidence receipts
+python CODA-4/make_evidence.py --verify   # re-verify their self-consistency
 ```
 
-Test and protocol files:
+Artifacts:
 
 | File | Role |
 |---|---|
 | `tests/test_nodes/test_coda4_cold_successor.py` | 22 cases: 20 pass, 2 xfail |
 | `CODA-4/repro_cs01.py` | standalone minimal CS-01 reproducer |
+| `CODA-4/make_evidence.py` | evidence-receipt writer / verifier |
+| `CODA-4/evidence/*.json` | 6 receipts, each SHA-256 sealed over its own body |
+
+The receipts record the tested SHA, command, stdout tail, and exit code. A receipt
+whose body was edited to claim success is caught: I rewrote the CS-01 receipt's
+`exit_code` to `0` and `--verify` reported `TAMPERED`, exit 1. That is the property
+that matters here — a receipt in this lane must not be able to claim a green
+restore, which is the exact failure CS-01 demonstrates.
 
 **Not full acceptance.** On the current candidate the expected result is
 **20 passed, 2 xfailed**, and both xfails are CS-01. A green-looking total here
@@ -247,15 +258,28 @@ than hiding inside an xfail:
 
 ## 10. Human reading of the demonstration
 
+Scope this carefully, because "preserved" is doing a lot of work. **No receipt
+has been written to disk in this protocol yet.** Receipts exist as the runtime's
+own in-memory objects, produced and consumed through the real seams in one
+process. Serializing them to a file is §7 and is **not built**. So this is
+*object-level* restoration of preserved receipts, not durable restoration.
+
 > **The task.** One cold successor must recover preserved work.
-> **What Naya used.** Receipts on disk; nothing else.
-> **What she did.** Rebuilt state from receipts, hash-checked it, then tried to
-> retrieve through the governed seam.
-> **The verified result.** The report is green and the hash matches — and the
-> node is empty. Nothing was retrievable.
-> **What the next Naya recovered.** The blocker itself, which is the most
-> useful thing this protocol produced. A receipt that reports success over an
-> unusable store is worse than a failure, because it is believed.
+> **What Naya used.** Receipts from the real ingest seam, in memory. Nothing
+> else — no builder conclusions, no successor-package answers, no hidden state.
+> **What she did.** Rebuilt state from those receipts, hash-checked it, then
+> tried to retrieve through the governed seam.
+> **The verified result.** The report is green and the hash matches the
+> predecessor exactly — and the node is empty. Nothing was retrievable.
+> **What the next Naya recovered.** The blocker itself, which is the most useful
+> thing this protocol produced. A receipt that reports success over an unusable
+> store is worse than a failure, because it is believed.
+
+**Evidence receipts.** `CODA-4/evidence/` holds machine-checkable JSON produced by
+`CODA-4/make_evidence.py`. Each receipt records the exact tested SHA, the command,
+the captured stdout, the exit code, and a SHA-256 over its own body, so a later
+reader can re-derive rather than trust. They are **observations of this run**, not
+a substitute for §7 and not a durability claim.
 
 ## 11. Windows findings
 

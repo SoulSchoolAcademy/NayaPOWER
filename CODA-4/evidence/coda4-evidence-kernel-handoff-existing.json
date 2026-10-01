@@ -1,0 +1,20 @@
+{
+  "base_main_sha": "a726a8376559609a3620f948ec7bfcabdba50abb",
+  "body_sha256": "dbe6b02c4269a4dd22ec09c0f2aa2ba2a85223b61f48617b01a28b95066ffc76",
+  "interpretation": "The pre-existing handoff test. It asserts the store hash but never retrieves from the reconstructed node, which is why CS-01 was invisible.",
+  "lane": "Coda 4 \u2014 cold-successor restoration / applicability / reconstruction",
+  "observed": {
+    "command": "python -m pytest tests/test_nodes/test_kernel_handoff_integration.py -q",
+    "exit_code": 0,
+    "stderr_tail": [],
+    "stdout_tail": [
+      ".......                                                                  [100%]",
+      "7 passed in 0.09s"
+    ]
+  },
+  "owner_of_repair_for_cs01": "Naya 4 (naya_kernel/)",
+  "protocol": "CODA-4/COLD-SUCCESSOR-PROTOCOL-V1.md",
+  "receipt_id": "coda4-evidence-kernel-handoff-existing",
+  "scope_label": "OBSERVATION OF THIS RUN \u2014 not durability, not cross-process continuity, not production proof",
+  "tested_head_sha": "1fbb5338fba49eb5933ab08fd3e0fe84da62ac22"
+}
