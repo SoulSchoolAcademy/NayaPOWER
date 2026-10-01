@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-09-30  
-**Receipt basis commit:** `ded09a9ef85017b7bb2be91442aea6fa051f8ba5`  
-**Inventory file count:** 163  
+**Generated:** 2026-10-01  
+**Receipt basis commit:** `ed6ea5574c9214a445df07940fc48a7cbb9c6b74`  
+**Inventory file count:** 164  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 20 |
+| 05-MEMORY | 21 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -135,6 +135,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md` — `b11503343dcf` (11786 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md` — `52394cfaac40` (6797 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md` — `c5687e4ed8a3` (4877 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/PREMISE-CHECK/SN-027/IB-SMART-NOTE-20261001-sn027-amendment-premise-verification.md` — `dfcca462be63` (8821 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 
