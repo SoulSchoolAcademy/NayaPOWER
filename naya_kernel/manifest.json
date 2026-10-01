@@ -2,7 +2,7 @@
   "name": "naya-nine-node-kernel",
   "version": "0.1.0-candidate",
   "status": "SCAFFOLD",
-  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
+  "candidate_banner": "CANDIDATE — NOT RATIFIED — NOT MERGED",
   "gap_a": "Closure target: Kernel.decide() must exercise all nine nodes' gates; manifest + gate script were missing.",
   "gate_order": [
     {
@@ -68,7 +68,7 @@
     "SELF": "implemented-candidate",
     "LAW": "implemented-candidate",
     "ACT": "implemented-candidate",
-    "KNOW": "stub",
+    "KNOW": "implemented-candidate",
     "PROVE": "stub",
     "CONNECT": "stub",
     "VERIFY": "stub",
