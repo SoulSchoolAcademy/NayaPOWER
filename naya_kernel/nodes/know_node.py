@@ -219,6 +219,7 @@ class KnowNode(NodeBase):
     # NodeBase interface
     # ------------------------------------------------------------------
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §12 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,
@@ -294,6 +295,7 @@ class KnowNode(NodeBase):
         ]
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §12 acceptance battery)."""
         return [
             "provenance chains (cite_provenance; recomputed by provenance_audit)",
             "KnowledgeReceipt stream (hash-bound, independently re-derivable)",

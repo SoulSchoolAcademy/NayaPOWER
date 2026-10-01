@@ -221,6 +221,7 @@ class ProveNode(NodeBase):
     # -- NodeBase interface ------------------------------------------------
 
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §9 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,
@@ -265,9 +266,11 @@ class ProveNode(NodeBase):
         return GateResult(GateVerdict.NEED_EVIDENCE, gaps)
 
     def persisted_transitions(self) -> List[str]:
+        """List the receipt transitions this node persists (candidate spec, §9 acceptance battery)."""
         return list(_PIPELINE_TRANSITIONS) + list(_SIDE_TRANSITIONS)
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §9 acceptance battery)."""
         return [
             "proof_claims",          # intake registry (claimId → claim snapshot)
             "proof_receipts",        # hash-bound receipts (§5)
@@ -282,6 +285,7 @@ class ProveNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Declare this node's authority checks; declares, never grants (candidate spec, §9 acceptance battery)."""
         # PROVE performs these validations and grants nothing. The first entry
         # is the negation convention tests assert (§1.4).
         return [

@@ -215,6 +215,7 @@ class ConnectNode(NodeBase):
     # NodeBase interface
     # ------------------------------------------------------------------
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §14 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,
@@ -249,6 +250,7 @@ class ConnectNode(NodeBase):
         return GateResult(verdict=verdict, reasons=reasons)
 
     def persisted_transitions(self) -> List[str]:
+        """List the receipt transitions this node persists (candidate spec, §14 acceptance battery)."""
         base = [f"{frm} -> {to}" for frm, tos in LEGAL_TRANSITIONS.items()
                 for to in sorted(tos)]
         return base + [
@@ -258,6 +260,7 @@ class ConnectNode(NodeBase):
         ]
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §14 acceptance battery)."""
         return [
             "smartledger.connections (ConnectionReceipt stream, proposed)",
             "consent receipts (content-addressed, re-derivable)",
@@ -268,6 +271,7 @@ class ConnectNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Declare this node's authority checks; declares, never grants (candidate spec, §14 acceptance battery)."""
         return [
             "identity authenticated binding per party (§4.3)",
             "consent receipt validity per party, per purpose, per scope (§4.2)",

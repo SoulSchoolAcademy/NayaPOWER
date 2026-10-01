@@ -1282,6 +1282,7 @@ class EvolveNode(NodeBase):
     # ------------------------------------------------------------------
 
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §11 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version="V1-CANDIDATE",
@@ -1313,6 +1314,7 @@ class EvolveNode(NodeBase):
         )
 
     def persisted_transitions(self) -> List[str]:
+        """List the receipt transitions this node persists (candidate spec, §11 acceptance battery)."""
         out: List[str] = []
         for table in (LEGAL_PROPOSAL_TRANSITIONS, LEGAL_MATURITY_TRANSITIONS,
                       LEGAL_SUCCESSION_TRANSITIONS):
@@ -1321,6 +1323,7 @@ class EvolveNode(NodeBase):
         return out
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §11 acceptance battery)."""
         return [
             "evolution_candidate_registry",
             "gate_score_ledger",
@@ -1335,6 +1338,7 @@ class EvolveNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Declare this node's authority checks; declares, never grants (candidate spec, §11 acceptance battery)."""
         # EVOLVE performs these validations and grants nothing. The first
         # entry is the negation convention tests assert.
         return [

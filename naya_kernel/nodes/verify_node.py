@@ -263,6 +263,7 @@ class VerifyNode(NodeBase):
     # -- NodeBase interface ------------------------------------------------
 
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §9 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,
@@ -353,6 +354,7 @@ class VerifyNode(NodeBase):
         )
 
     def persisted_transitions(self) -> List[str]:
+        """List the receipt transitions this node persists (candidate spec, §9 acceptance battery)."""
         return list(TRANSITIONS.keys()) + [
             "lineage_correction",      # corrections create a NEW receipt (V1 persists)
             "battery_broken_reopen",   # negative control passing → REOPEN all PASS
@@ -360,6 +362,7 @@ class VerifyNode(NodeBase):
         ]
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §9 acceptance battery)."""
         return [
             "verification_requests",   # intake registry (verify_key → receipt)
             "verified_receipts",       # hash-bound receipts with the four axes (§1)
@@ -375,6 +378,7 @@ class VerifyNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Declare this node's authority checks; declares, never grants (candidate spec, §9 acceptance battery)."""
         # VERIFY performs these validations and grants nothing. The first entry
         # is the negation convention tests assert.
         return [

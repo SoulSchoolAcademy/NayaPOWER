@@ -148,6 +148,7 @@ class LawNode(NodeBase):
     # NodeBase interface
     # ------------------------------------------------------------------
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §13 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version=NODE_VERSION,

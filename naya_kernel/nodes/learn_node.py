@@ -1524,6 +1524,7 @@ class LearnNode(NodeBase):
     # ------------------------------------------------------------------
 
     def manifest_entry(self) -> ManifestEntry:
+        """Return this node's manifest entry (candidate spec, §9 acceptance battery)."""
         return ManifestEntry(
             node_id=NODE_ID,
             version="V1-CANDIDATE",
@@ -1542,10 +1543,12 @@ class LearnNode(NodeBase):
         )
 
     def persisted_transitions(self) -> List[str]:
+        """List the receipt transitions this node persists (candidate spec, §9 acceptance battery)."""
         return [f"{frm}->{to}"
                 for frm, tos in LEGAL_TRANSITIONS.items() for to in tos]
 
     def evidence_hooks(self) -> List[str]:
+        """List the evidence hooks this node exposes (candidate spec, §9 acceptance battery)."""
         return [
             "verify_receipt_registry",
             "cvo_registry",
@@ -1559,6 +1562,7 @@ class LearnNode(NodeBase):
         ]
 
     def authority_checks(self) -> List[str]:
+        """Declare this node's authority checks; declares, never grants (candidate spec, §9 acceptance battery)."""
         # LEARN performs these validations and grants nothing. The first entry
         # is the negation convention tests assert.
         return [
