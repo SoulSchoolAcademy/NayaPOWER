@@ -1,0 +1,53 @@
+{
+  "authority_basis": {
+    "kind": "director_order",
+    "ref": "grant-demo1-director-20261001",
+    "revoked": false
+  },
+  "calculusVersion": "V2.1",
+  "configHash": "c0b5f62048110319c2cc4880b0ca15cc60039cff28e620a0ccf2654b8af30fc8",
+  "configHashCurrent": "c0b5f62048110319c2cc4880b0ca15cc60039cff28e620a0ccf2654b8af30fc8",
+  "decision": "ACT",
+  "execution_budget": {
+    "max_retries": 2,
+    "read_more_loop": 0,
+    "timeout_ms": 5000
+  },
+  "flags": {},
+  "inputs_hash": "d0f0532cae05cb41f5acce7fa01d7048b157c08be137bf85eb6db0f01e8c04b4",
+  "issued_at": "2026-10-01T17:28:35.821332+00:00",
+  "issued_by": "NAYA-KERNEL-LAW",
+  "law_envelope": {
+    "action": "staging.write_file",
+    "authority_basis": "grant 'grant-demo1-director-20261001': DIRECTOR\u2192naya4-demo-runner, scope=staging_write_demo",
+    "bounds": {
+      "filename": "sn-candidate-*.md",
+      "max_bytes": 65536,
+      "overwrite": false,
+      "requested_bytes": 1082,
+      "requested_filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+      "target": "demo-staging/"
+    },
+    "issued_at": "2026-10-01T17:28:35.824954+00:00",
+    "note": "envelope discipline (\u00a77): execution outside this envelope is a constitutional violation",
+    "proposal_id": "prop-demo1-grant-demo1-director-20261001",
+    "scope_tag": "staging_write_demo",
+    "targets": [
+      "demo-staging/"
+    ]
+  },
+  "names_irreversibility": false,
+  "receipt_hash": "9956bcb029a042af159f8f268f95e7f93f5a0da2675c18f75bd9d32bbfb43a01",
+  "receipt_id": "dec-demo1-live-001",
+  "reversibility": 1.0,
+  "stakes": "low",
+  "valid_until": "2026-10-08T00:00:00+00:00",
+  "winner": {
+    "params": {
+      "content": "# Smart Note candidate \u2014 Demo-1 first governed effect (CANDIDATE \u2014 NOT RATIFIED)\n\nDate: 2026-10-01\nSource: Demo-1 P1 acceptance run, Naya 4 lane\n\n## What happened\nThe first real bounded operation ran behind ACT's executor seam:\n`staging.write_file` wrote this file to `demo-staging/`.\n\n## Why it matters\nBefore this run, ACT's acceptance path used an echo/test executor \u2014 the\nseam existed but no real operation stood behind it. Now:\n\n- the capability is declared in the canonical Smart Door registry\n  (DOOR-LOCAL-STAGING, status REGISTERED_DEMO \u2014 not production-live);\n- the kernel projects that declaration into ACT's admission; no parallel\n  registry was created;\n- the executor enforces its bounds before any filesystem mutation\n  (sandboxed path, name pattern, 64 KiB max, never overwrites);\n- replay cannot produce a second effect (idempotency key + content hash);\n- the execution receipt binds the artifact's sha256, so VERIFY can\n  independently re-read and confirm what happened.\n\n## Status\nCANDIDATE. Auto-capture is not auto-ratification \u2014 only Shawn ratifies.\n",
+      "filename": "sn-candidate-demo1-first-effect-2026-10-01.md"
+    },
+    "tool_id": "staging.write_file",
+    "version": "1.0"
+  }
+}

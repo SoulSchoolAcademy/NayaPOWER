@@ -1,0 +1,86 @@
+{
+  "branch": "naya4/nine-node-kernel-v1",
+  "code_head": "11f4ac447b93750fa47849584add54f9420e1cbf",
+  "code_head_is_published": true,
+  "code_tree": "357ca2175f8ce7acb6f9ff0996312cf028a02ff2",
+  "created_at": "2026-10-01T17:28:42.711178+00:00",
+  "executing_code_sha": "11f4ac447b93750fa47849584add54f9420e1cbf",
+  "files": [
+    {
+      "object_type": "demo_artifact",
+      "path": "artifact.md",
+      "sha256": "54e359a564ceb1236a17dc067eb3e0f3ac613a89b1afef01c5ac47d0bda11367"
+    },
+    {
+      "object_type": "decision_receipt",
+      "path": "decision_receipt.json",
+      "sha256": "941bf8f9ca1359b74371f801a7f6ae40c25c09bda122438a7b708c71024cf8c9"
+    },
+    {
+      "object_type": "authority_grant",
+      "path": "demo_grant.json",
+      "sha256": "00f61a8bfafe02dd236cabb11c540012f09949a9d8d48e7a42c83cbd7e5a3bec"
+    },
+    {
+      "object_type": "execution_receipt",
+      "path": "execution_receipt.json",
+      "sha256": "a3dac5f3b78af7fd0d15c66359ba75444753689ec27885f63d62dd764938a38f"
+    },
+    {
+      "object_type": "verification_report",
+      "path": "fresh_verify_report.txt",
+      "sha256": "3b8ffb550b2ada22efd851124f47f7d26078466c571631ca321631328d297edb"
+    },
+    {
+      "object_type": "grant_provenance",
+      "path": "grant_provenance.json",
+      "sha256": "dc775386c2938aae0412b73ea39a917221545843b90b65ab4ab76ebdea67aede"
+    },
+    {
+      "object_type": "input_state",
+      "path": "input_state.json",
+      "sha256": "68ff0377e75c77a82fe5e724a0b163dfdebef290efd1e64c4c8eefeef2bf787c"
+    },
+    {
+      "object_type": "law_gate_receipt",
+      "path": "law_gate_receipt.json",
+      "sha256": "176ebc38538a0bc624051919eafa2d07e178b6029e78e74e678f98fd833edde8"
+    },
+    {
+      "object_type": "law_proposal",
+      "path": "proposal.json",
+      "sha256": "ef8312934bf96a75b8c99592c5c78fb848cc4e3c0a7ac4d4483b240fb2b84d64"
+    },
+    {
+      "object_type": "registry_reference",
+      "path": "registry_ref.json",
+      "sha256": "35bd4690fedc8d179d52c565c1b6c3461628b521b45411f1dbedd00723b6e22a"
+    },
+    {
+      "object_type": "test_evidence",
+      "path": "test_evidence.txt",
+      "sha256": "4e839fd5851ae4041551857a180635d264af6deb94f2ff79e2fbfa7913f10895"
+    }
+  ],
+  "freeze_note": "The freeze identifier is the commit SHA carrying this package (parent == code_head). The executing code SHA (above) and the package commit SHA (filled by the committer) are distinct by construction.",
+  "grant_ref": "grant-demo1-director-20261001",
+  "package_commit_sha": null,
+  "package_id": "demo1-frozen-2026-10-01",
+  "relationships": {
+    "artifact.sha256": "54e359a564ceb1236a17dc067eb3e0f3ac613a89b1afef01c5ac47d0bda11367",
+    "decision_receipt.authority_basis_ref": "grant-demo1-director-20261001",
+    "decision_receipt.inputs_hash": "d0f0532cae05cb41f5acce7fa01d7048b157c08be137bf85eb6db0f01e8c04b4",
+    "decision_receipt.law_gate_receipt_id": "gate-prop-demo1-grant-demo1-director-20261001-6e9a76283b56",
+    "execution_receipt.decision_receipt_id": "dec-demo1-live-001",
+    "execution_receipt.execution_id": "exec-c13bfd8d64a49878",
+    "input_state.inputs_hash_matches_decision": true,
+    "proposal.proposal_id_binds_to_law_gate": "prop-demo1-grant-demo1-director-20261001"
+  },
+  "run": {
+    "artifact_sha256": "54e359a564ceb1236a17dc067eb3e0f3ac613a89b1afef01c5ac47d0bda11367",
+    "decision_receipt_id": "dec-demo1-live-001",
+    "execution_id": "exec-c13bfd8d64a49878",
+    "fresh_verify": "PASS (V1/V2/V3)",
+    "law_gate_receipt_id": "gate-prop-demo1-grant-demo1-director-20261001-6e9a76283b56"
+  }
+}

@@ -168,4 +168,5 @@ def authorize(filename: str, content: bytes,
         },
         "grant": grant,
         "constitution_hash": pin["pinned_hash"],
+        "proposal": proposal,
     }

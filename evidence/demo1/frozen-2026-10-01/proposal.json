@@ -1,0 +1,42 @@
+{
+  "object_type": "law_proposal",
+  "proposal": {
+    "action": {
+      "action_class": "WRITE_SCOPED",
+      "bounds": {
+        "filename": "sn-candidate-*.md",
+        "max_bytes": 65536,
+        "overwrite": false,
+        "requested_bytes": 1082,
+        "requested_filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+        "target": "demo-staging/"
+      },
+      "scope_tag": "staging_write_demo",
+      "targets": [
+        "demo-staging/"
+      ],
+      "type": "staging.write_file"
+    },
+    "authorityClaim": {
+      "grant_ref": "grant-demo1-director-20261001",
+      "grantor": "DIRECTOR"
+    },
+    "constitutionHash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+    "evidenceRefs": [
+      "demo_grant.json (transcribed director order)",
+      "canonical Smart Door registry: DOOR-LOCAL-STAGING/staging.write_file",
+      "director's written orders (master directive 2026-10-01; dispatch 2026-10-01 09:32 PDT)"
+    ],
+    "flags": {},
+    "identityContext": {
+      "lane": "naya4",
+      "runner": "naya4-demo-runner"
+    },
+    "intent": "Demo-1 real-effect: write one Smart Note candidate file into the bounded staging area, observed and receipted.",
+    "material_facts_version": 1,
+    "proposalId": "prop-demo1-grant-demo1-director-20261001",
+    "proposedBy": "naya4-demo-runner",
+    "reversibility": 1.0,
+    "stakes": "low"
+  }
+}

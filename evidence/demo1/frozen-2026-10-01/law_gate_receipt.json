@@ -1,0 +1,186 @@
+{
+  "articles_applied": [
+    "Art. I"
+  ],
+  "authority_basis": "grant 'grant-demo1-director-20261001': DIRECTOR\u2192naya4-demo-runner, scope=staging_write_demo",
+  "authority_claim": {
+    "grant_ref": "grant-demo1-director-20261001",
+    "grantor": "DIRECTOR"
+  },
+  "constitution_hash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+  "constitution_skew": false,
+  "envelope": {
+    "action": "staging.write_file",
+    "authority_basis": "grant 'grant-demo1-director-20261001': DIRECTOR\u2192naya4-demo-runner, scope=staging_write_demo",
+    "bounds": {
+      "filename": "sn-candidate-*.md",
+      "max_bytes": 65536,
+      "overwrite": false,
+      "requested_bytes": 1082,
+      "requested_filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+      "target": "demo-staging/"
+    },
+    "issued_at": "2026-10-01T17:28:35.824954+00:00",
+    "note": "envelope discipline (\u00a77): execution outside this envelope is a constitutional violation",
+    "proposal_id": "prop-demo1-grant-demo1-director-20261001",
+    "scope_tag": "staging_write_demo",
+    "targets": [
+      "demo-staging/"
+    ]
+  },
+  "evidence_summary": {
+    "confidence": 0.9,
+    "floor_is_candidate": true,
+    "floor_k": 3,
+    "floor_met": true,
+    "n": 3
+  },
+  "gate": "ADMISSIBLE",
+  "hard_stops_fired": [],
+  "inputs": {
+    "constitution_store": {
+      "corpus": {
+        "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034": "/home/hatch/workspace/kernel-ak/CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md"
+      },
+      "pinned_hash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+      "reachable": true
+    },
+    "evidence": {
+      "confidence": 0.9,
+      "n": 3
+    },
+    "evidence_floor_k": 3,
+    "grants": [
+      {
+        "bounds": {
+          "filename": "sn-candidate-*.md",
+          "max_bytes": 65536,
+          "overwrite": false,
+          "target": "demo-staging/"
+        },
+        "chain": [],
+        "expiry": "2026-10-08T00:00:00+00:00",
+        "grant_ref": "grant-demo1-director-20261001",
+        "grantee": "naya4-demo-runner",
+        "grantor": "DIRECTOR",
+        "provenance": {
+          "authority_derives_from": "Shawn Vibert (DIRECTOR), via the written orders above. This file encodes his authority in the machine-readable form LAW requires; it confers nothing he did not order.",
+          "demo_scope": "This grant authorizes exactly one demo operation (staging.write_file into demo-staging/, sn-candidate-*.md, 64 KiB, no overwrite). It is not a production grant and confers no other capability.",
+          "nature": "TRANSCRIBED \u2014 not created. Naya 4 creates no authority.",
+          "revocation": "Shawn may revoke at any time by setting revoked=true or deleting this file. Expiry is absolute: the real clock refuses execution past it.",
+          "source_orders": [
+            "2026-10-01 master directive, move 2: 'Replace the fixture authorization with an actual LAW decision path'",
+            "2026-10-01 09:32 PDT dispatch: 'establish the smallest bounded Demo-1 real-effect path ... No new architecture. Make the existing organism touch reality.'",
+            "Standing: 'Just keep going. Don't stop.' / 'Full speed ahead.'"
+          ]
+        },
+        "revoked": false,
+        "scope": [
+          "staging_write_demo"
+        ]
+      }
+    ],
+    "proposal": {
+      "action": {
+        "action_class": "WRITE_SCOPED",
+        "bounds": {
+          "filename": "sn-candidate-*.md",
+          "max_bytes": 65536,
+          "overwrite": false,
+          "requested_bytes": 1082,
+          "requested_filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+          "target": "demo-staging/"
+        },
+        "scope_tag": "staging_write_demo",
+        "targets": [
+          "demo-staging/"
+        ],
+        "type": "staging.write_file"
+      },
+      "authorityClaim": {
+        "grant_ref": "grant-demo1-director-20261001",
+        "grantor": "DIRECTOR"
+      },
+      "constitutionHash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+      "evidenceRefs": [
+        "demo_grant.json (transcribed director order)",
+        "canonical Smart Door registry: DOOR-LOCAL-STAGING/staging.write_file",
+        "director's written orders (master directive 2026-10-01; dispatch 2026-10-01 09:32 PDT)"
+      ],
+      "flags": {},
+      "identityContext": {
+        "lane": "naya4",
+        "runner": "naya4-demo-runner"
+      },
+      "intent": "Demo-1 real-effect: write one Smart Note candidate file into the bounded staging area, observed and receipted.",
+      "material_facts_version": 1,
+      "proposalId": "prop-demo1-grant-demo1-director-20261001",
+      "proposedBy": "naya4-demo-runner",
+      "reversibility": 1.0,
+      "stakes": "low"
+    },
+    "seen_proposal_hashes": {}
+  },
+  "issued_at": "2026-10-01T17:28:35.824994+00:00",
+  "issued_by": "node_id=NAYA-KERNEL-LAW (kernel binding)",
+  "law_contract_version": "0.1.0-candidate",
+  "ledger": "smartledger",
+  "material_facts_version": 1,
+  "node_id": "NAYA-KERNEL-LAW",
+  "node_version": "0.1.0-candidate",
+  "proposal": {
+    "action": {
+      "action_class": "WRITE_SCOPED",
+      "bounds": {
+        "filename": "sn-candidate-*.md",
+        "max_bytes": 65536,
+        "overwrite": false,
+        "requested_bytes": 1082,
+        "requested_filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+        "target": "demo-staging/"
+      },
+      "scope_tag": "staging_write_demo",
+      "targets": [
+        "demo-staging/"
+      ],
+      "type": "staging.write_file"
+    },
+    "authorityClaim": {
+      "grant_ref": "grant-demo1-director-20261001",
+      "grantor": "DIRECTOR"
+    },
+    "constitutionHash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+    "evidenceRefs": [
+      "demo_grant.json (transcribed director order)",
+      "canonical Smart Door registry: DOOR-LOCAL-STAGING/staging.write_file",
+      "director's written orders (master directive 2026-10-01; dispatch 2026-10-01 09:32 PDT)"
+    ],
+    "flags": {},
+    "identityContext": {
+      "lane": "naya4",
+      "runner": "naya4-demo-runner"
+    },
+    "intent": "Demo-1 real-effect: write one Smart Note candidate file into the bounded staging area, observed and receipted.",
+    "material_facts_version": 1,
+    "proposalId": "prop-demo1-grant-demo1-director-20261001",
+    "proposedBy": "naya4-demo-runner",
+    "reversibility": 1.0,
+    "stakes": "low"
+  },
+  "proposal_hash": "6e9a76283b566025e3dc5fccc3397c5e076f06c2246a918f720f8f667ff658f2",
+  "proposal_id": "prop-demo1-grant-demo1-director-20261001",
+  "proposed_by": "naya4-demo-runner",
+  "reasons": [
+    "ADMISSIBLE: lawful, authorized (grant 'grant-demo1-director-20261001': DIRECTOR\u2192naya4-demo-runner, scope=staging_write_demo), evidenced (n=3>=k=3) \u2014 envelope issued; ACT executes only within it (\u00a77)"
+  ],
+  "receipt_hash": "2c8ffa804c0c1e20dbd71e6980c72e353ad70a77b64aac5c4ecc1a17e2f42107",
+  "receipt_id": "gate-prop-demo1-grant-demo1-director-20261001-6e9a76283b56",
+  "stream": "law",
+  "transitions": [
+    {
+      "at": "2026-10-01T17:28:35.824964+00:00",
+      "gate": "ADMISSIBLE",
+      "reason": "ADMISSIBLE: lawful, authorized (grant 'grant-demo1-director-20261001': DIRECTOR\u2192naya4-demo-runner, scope=staging_write_demo), evidenced (n=3>=k=3) \u2014 envelope issued; ACT executes only within it (\u00a77)"
+    }
+  ]
+}

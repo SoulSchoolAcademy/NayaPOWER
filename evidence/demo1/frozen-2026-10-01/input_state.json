@@ -1,0 +1,11 @@
+{
+  "config_canonical": "{\"authority_basis\": {\"kind\": \"director_order\", \"ref\": \"grant-demo1-director-20261001\", \"revoked\": false}, \"bounds\": {}, \"grant_ref\": \"grant-demo1-director-20261001\", \"tool_id\": \"staging.write_file\", \"tool_version\": \"1.0\"}",
+  "config_hash": "c0b5f62048110319c2cc4880b0ca15cc60039cff28e620a0ccf2654b8af30fc8",
+  "content_sha256": "54e359a564ceb1236a17dc067eb3e0f3ac613a89b1afef01c5ac47d0bda11367",
+  "filename": "sn-candidate-demo1-first-effect-2026-10-01.md",
+  "inputs_canonical": "{\"content_sha256\": \"54e359a564ceb1236a17dc067eb3e0f3ac613a89b1afef01c5ac47d0bda11367\", \"filename\": \"sn-candidate-demo1-first-effect-2026-10-01.md\", \"params\": {\"content\": \"# Smart Note candidate \\u2014 Demo-1 first governed effect (CANDIDATE \\u2014 NOT RATIFIED)\\n\\nDate: 2026-10-01\\nSource: Demo-1 P1 acceptance run, Naya 4 lane\\n\\n## What happened\\nThe first real bounded operation ran behind ACT's executor seam:\\n`staging.write_file` wrote this file to `demo-staging/`.\\n\\n## Why it matters\\nBefore this run, ACT's acceptance path used an echo/test executor \\u2014 the\\nseam existed but no real operation stood behind it. Now:\\n\\n- the capability is declared in the canonical Smart Door registry\\n  (DOOR-LOCAL-STAGING, status REGISTERED_DEMO \\u2014 not production-live);\\n- the kernel projects that declaration into ACT's admission; no parallel\\n  registry was created;\\n- the executor enforces its bounds before any filesystem mutation\\n  (sandboxed path, name pattern, 64 KiB max, never overwrites);\\n- replay cannot produce a second effect (idempotency key + content hash);\\n- the execution receipt binds the artifact's sha256, so VERIFY can\\n  independently re-read and confirm what happened.\\n\\n## Status\\nCANDIDATE. Auto-capture is not auto-ratification \\u2014 only Shawn ratifies.\\n\", \"filename\": \"sn-candidate-demo1-first-effect-2026-10-01.md\"}, \"tool_id\": \"staging.write_file\"}",
+  "inputs_hash": "d0f0532cae05cb41f5acce7fa01d7048b157c08be137bf85eb6db0f01e8c04b4",
+  "object_type": "input_state",
+  "registry_entry_id": "DOOR-LOCAL-STAGING",
+  "tool_id": "staging.write_file"
+}

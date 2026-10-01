@@ -1,0 +1,8 @@
+{
+  "authority_class": "WRITE_SCOPED",
+  "constitution_hash": "4cd97571d7da31740e9196245879cb0f825133eaa79409dbaabfea023b2fc034",
+  "object_type": "registry_reference",
+  "registry_id": "DOOR-LOCAL-STAGING",
+  "registry_status": "REGISTERED_DEMO",
+  "tool_id": "staging.write_file"
+}

@@ -1,0 +1,2 @@
+law-auth boundary tests: 9 passed in 0.08s
+full suite: 1077 passed, 3 skipped in 5.85s

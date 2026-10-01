@@ -36,6 +36,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
 from naya_kernel import smart_door
+from naya_kernel.node_base import CALCULUS_V21_VERSION
 from naya_kernel.nodes import act_node
 from scripts.demo1 import law_authorize
 
@@ -100,6 +101,29 @@ def main() -> int:
           "| constitution:", authz["constitution_hash"][:12])
 
     # 3. Decision receipt carrying the LAW envelope (not a fixture basis).
+    # Real values throughout: calculusVersion is the ratified V2.1
+    # (not the test helper's "v2.1-candidate" placeholder); configHash
+    # binds the canonical decision inputs and is recomputable by any
+    # verifier (not the "cfg-aaa" placeholder).
+    config_canonical = json.dumps({
+        "tool_id": "staging.write_file",
+        "tool_version": "1.0",
+        "bounds": entry.get("bounds", {}),
+        "grant_ref": authz["grant"]["grant_ref"],
+        "authority_basis": authz["authority_basis"],
+    }, sort_keys=True)
+    config_hash = hashlib.sha256(config_canonical.encode("utf-8")).hexdigest()
+    # inputs_hash binds the canonical input state (P3) — the exact bytes
+    # the execution will consume. A verifier recomputes it from
+    # input_state.json; a mismatch means the receipt and the inputs differ.
+    content_sha = hashlib.sha256(NOTE_CONTENT.encode("utf-8")).hexdigest()
+    inputs_canonical = json.dumps({
+        "filename": FILENAME,
+        "content_sha256": content_sha,
+        "tool_id": "staging.write_file",
+        "params": {"filename": FILENAME, "content": NOTE_CONTENT},
+    }, sort_keys=True)
+    inputs_hash = hashlib.sha256(inputs_canonical.encode("utf-8")).hexdigest()
     receipt = act_node.make_decision_receipt(
         receipt_id="dec-demo1-live-001",
         issued_at=now,
@@ -108,6 +132,10 @@ def main() -> int:
                 "params": {"filename": FILENAME, "content": NOTE_CONTENT}},
         authority_basis=authz["authority_basis"],
         law_envelope=authz["envelope"],
+        calculusVersion=CALCULUS_V21_VERSION,
+        configHash=config_hash,
+        configHashCurrent=config_hash,
+        inputs_hash=inputs_hash,
     )
 
     # 4. ACT executes with the REAL bounded executor. The demo requires the
@@ -183,6 +211,53 @@ def main() -> int:
     print("artifact:", artifact)
     print("artifact sha256:", digest)
     print("receipt:", receipt_path)
+
+    # 5. Persist the run context for the evidence package: the exact
+    # proposal LAW admitted, the input state the decision bound, the
+    # grant's provenance (transcribed from the director's orders, read
+    # at invocation time), and the registry/constitution references.
+    # Each file carries an explicit object_type; the frozen package
+    # binds them by sha256 and records their relationships.
+    context_files = {
+        "proposal.json": {
+            "object_type": "law_proposal",
+            "proposal": authz["proposal"],
+        },
+        "input_state.json": {
+            "object_type": "input_state",
+            "filename": FILENAME,
+            "content_sha256": content_sha,
+            "tool_id": "staging.write_file",
+            "registry_entry_id": "DOOR-LOCAL-STAGING",
+            "config_hash": config_hash,
+            "config_canonical": config_canonical,
+            "inputs_hash": inputs_hash,
+            "inputs_canonical": inputs_canonical,
+        },
+        "grant_provenance.json": {
+            "object_type": "grant_provenance",
+            "grant_ref": authz["grant"]["grant_ref"],
+            "grant_path": str(law_authorize.GRANT_PATH),
+            "grant_sha256": hashlib.sha256(
+                law_authorize.GRANT_PATH.read_bytes()).hexdigest(),
+            "read_at": now,
+            "transcribed_from": "director's written orders (Demo-1 dispatch)",
+            "note": "Naya 4 creates no authority; the grant is transcribed, "
+                    "revocable, and expires 2026-10-08T00:00:00+00:00.",
+        },
+        "registry_ref.json": {
+            "object_type": "registry_reference",
+            "registry_id": "DOOR-LOCAL-STAGING",
+            "tool_id": "staging.write_file",
+            "registry_status": entry["registry_status"],
+            "authority_class": entry["authority_class"],
+            "constitution_hash": authz["constitution_hash"],
+        },
+    }
+    for name, payload in context_files.items():
+        (receipts_dir / name).write_text(
+            json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+        print("context:", receipts_dir / name)
     print()
     print("Next: run scripts/demo1/fresh_verify.py", receipt_path,
           "in a fresh process.")

@@ -1,0 +1,27 @@
+PASS [V1] receipt_hash recomputes
+PASS [V2] receipt binds a tool_id
+PASS [V2] receipt tool is declared in the canonical registry
+PASS [V2] receipt version matches the declared version
+PASS [V2] registry status is honest (not production-live)
+PASS [V2] verification_required
+PASS [V2] params_hash committed
+PASS [V2] decision_ref present
+PASS [V2] execution path was EXECUTED
+PASS [V2] authority basis not revoked at execution time
+PASS [V2] receipt binds an artifact + sha256
+PASS [V2] artifact filename matches the declared pattern
+PASS [V2] artifact exists on disk
+PASS [V2] artifact sha256 matches receipt binding
+PASS [V3] authority basis kind satisfies required_authority
+PASS [V3] current grant matches the decision's basis ref
+PASS [V3] current grant not revoked
+PASS [V3] grant fresh against the real clock
+
+VERDICT V1 (receipt integrity): PASS
+VERDICT V2 (historical outcome verification): PASS
+VERDICT V3 (current authorization for another action): PASS
+
+VERDICTS: {"V1": "PASS", "V2": "PASS", "V3": "PASS"}
+
+FRESH VERIFY: PASS — observation confirmed independently.
+V3 NOTE: a V3 PASS means the grant is currently live — it does NOT authorize reuse of this receipt; a new action needs a fresh LAW decision. A V3 FAIL means history may stand but no new action is authorized. A V3 UNKNOWN means current authority could not be resolved.
