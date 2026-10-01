@@ -384,6 +384,39 @@ def test_decision_receipt_is_hash_bound_and_verifiable(kernel, demo_stages):
     assert verify_decision_receipt(tampered)["result"] == "MISMATCH"
 
 
+def _independent_inputs_hash(state):
+    """Recompute inputs_hash the way the persistence adapter does: full
+    SHA-256 over the canonical (sorted-keys, compact) evaluated input
+    state. Deliberately does NOT use the kernel's _sha256 helper."""
+    return hashlib.sha256(
+        json.dumps(state, sort_keys=True, separators=(",", ":"),
+                   ensure_ascii=True).encode("utf-8")).hexdigest()
+
+
+def test_decision_receipt_carries_inputs_hash(kernel, demo_stages):
+    # P3 (naya-receipt-contract/1, 2026-10-01): the kernel binds the full
+    # SHA-256 over the canonical evaluated input state into the receipt,
+    # BEFORE receipt_hash is computed, so the receipt hash covers it.
+    state = {"decision_id": "demo-001", "gates": demo_stages}
+    receipt = kernel.decide(state)["decision_receipt"]
+    assert receipt["inputs_hash"] == _independent_inputs_hash(state)
+    assert verify_decision_receipt(receipt)["result"] == "MATCH"
+    # inputs_hash participates in the receipt seal: tampering it breaks
+    # the hash binding.
+    tampered = dict(receipt, inputs_hash="0" * 64)
+    assert verify_decision_receipt(tampered)["result"] == "MISMATCH"
+    # Deterministic per input state: same state -> same inputs_hash even
+    # though issued_at (and hence receipt_hash) differs between runs.
+    again = kernel.decide(state)["decision_receipt"]
+    assert again["inputs_hash"] == receipt["inputs_hash"]
+    assert again["receipt_hash"] != receipt["receipt_hash"]
+    # Sensitive to the input state: a different state hashes differently.
+    other = kernel.decide(
+        {"decision_id": "demo-002", "gates": demo_stages}
+    )["decision_receipt"]
+    assert other["inputs_hash"] != receipt["inputs_hash"]
+
+
 def test_decide_fail_closed_on_law_prohibited(kernel, demo_stages):
     """A PROHIBITED LAW gate halts the whole decision: FAIL is global
     fail-fast. Only SELF and LAW are evaluated; ACT is never consulted

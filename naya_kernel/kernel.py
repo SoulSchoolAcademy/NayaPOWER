@@ -264,7 +264,8 @@ class Kernel:
                           stopped_at: str | None,
                           unexpected_gate_keys: List[str] | None = None,
                           first_non_pass: GateVerdict | None = None,
-                          first_non_pass_at: str | None = None
+                          first_non_pass_at: str | None = None,
+                          inputs_hash: str | None = None
                           ) -> Dict[str, Any]:
         """Hash-bound decision receipt.
 
@@ -278,6 +279,14 @@ class Kernel:
         halting FAIL dominates the verdict (FAIL dominance, Brief 3,
         2026-10-01): the verdict answers "did it pass?", the preserved
         fields answer "where did it first wobble?".
+
+        ``inputs_hash`` is the full SHA-256 over the canonical evaluated
+        input state (the decide() input), bound into the body BEFORE
+        receipt_hash is computed, so receipt_hash covers it. The
+        persistence adapter independently recomputes this over the
+        submitted state and rejects mismatch (naya-receipt-contract/1):
+        the kernel produces it; the adapter verifies it; neither side
+        invents it.
         """
         body: Dict[str, Any] = {
             "receipt_id": f"decision-{decision_id}",
@@ -287,6 +296,7 @@ class Kernel:
             "graph_seed": GRAPH_SEED_REF,
             "lock_ref": LOCK_REF,
             "decision_id": decision_id,
+            "inputs_hash": inputs_hash,
             "evaluation_order": list(EVALUATION_ORDER),
             "verdict": verdict.value,
             "stopped_at": stopped_at,
@@ -352,6 +362,12 @@ class Kernel:
         """
         state = state or {}
         decision_id = state.get("decision_id") or f"d-{_sha256(state)[:12]}"
+        # P3 (naya-receipt-contract/1, 2026-10-01): the kernel binds the
+        # full SHA-256 over the canonical evaluated input state into the
+        # decision receipt. The persistence adapter independently
+        # recomputes this over the state it submitted and rejects
+        # mismatch; the kernel produces it, the adapter verifies it.
+        inputs_hash = _sha256(state)
         sub_states = _gate_states(state)
         # Fail-visible (not fail-silent): caller-supplied gate keys that are
         # not node names are recorded in the receipt. They were NOT consulted
@@ -415,7 +431,8 @@ class Kernel:
             decision_id, gates, edge_trace, verdict, stopped_at,
             unexpected_gate_keys,
             first_non_pass=first_non_pass,
-            first_non_pass_at=first_non_pass_at)
+            first_non_pass_at=first_non_pass_at,
+            inputs_hash=inputs_hash)
         return {
             "decision_id": decision_id,
             "verdict": verdict.value,
