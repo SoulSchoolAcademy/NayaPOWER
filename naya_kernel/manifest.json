@@ -67,7 +67,7 @@
     "_note": "Bookkeeping for the overnight build loop. 'implemented-candidate' = tested candidate code on this branch (NOT ratified, NOT merged, NOT deployed).",
     "SELF": "implemented-candidate",
     "LAW": "implemented-candidate",
-    "ACT": "stub",
+    "ACT": "implemented-candidate",
     "KNOW": "stub",
     "PROVE": "stub",
     "CONNECT": "stub",
