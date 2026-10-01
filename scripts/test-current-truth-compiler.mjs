@@ -1,0 +1,10 @@
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import assert from "node:assert/strict";
+const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"naya-current-truth-"));
+fs.mkdirSync(path.join(tmp,".naya","control-plane"),{recursive:true});
+for (const name of ["MAP.json","STATE.json","BLOCKS.json","PROOF.json","BATON.json"]) fs.writeFileSync(path.join(tmp,".naya","control-plane",name),"{}");
+assert.equal(fs.readdirSync(path.join(tmp,".naya","control-plane")).length,5);
+fs.rmSync(tmp,{recursive:true,force:true});
+console.log("current-truth-compiler smoke test PASS");
