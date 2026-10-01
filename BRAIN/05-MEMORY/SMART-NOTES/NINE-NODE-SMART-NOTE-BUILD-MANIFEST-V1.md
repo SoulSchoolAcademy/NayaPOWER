@@ -13,11 +13,11 @@ Each Smart Note begins as a human-facing capture/projection of the locked semant
 
 | Order | Candidate title | Node | Key law to preserve | Primary downstream relationship |
 |---|---|---|---|---|
-| 1 | NayaPOWER Master Node — SELF | MN-01 | identity/continuity never creates authority | SELF → LAW |
+| 1 | NayaPOWER Master Node — SELF | MN-01 | identity/continuity never creates authority | SELF → LAW / KNOW |
 | 2 | NayaPOWER Master Node — LAW | MN-02 | capability/value/retrieval never creates authority | LAW → ACT |
 | 3 | NayaPOWER Master Node — ACT | MN-03 | exact authorized effect; execution ≠ verified outcome | ACT → VERIFY |
 | 4 | NayaPOWER Master Node — KNOW | MN-04 | storage ≠ intelligence ≠ truth ≠ authority | KNOW → PROVE / CONNECT |
-| 5 | NayaPOWER Master Node — PROVE | MN-05 | claim strength ≤ evidence strength | PROVE → VERIFY / CONNECT |
+| 5 | NayaPOWER Master Node — PROVE | MN-05 | claim strength ≤ evidence strength | PROVE → VERIFY |
 | 6 | NayaPOWER Master Node — CONNECT | MN-06 | related ≠ applicable ≠ true ≠ authorized | CONNECT → VERIFY |
 | 7 | NayaPOWER Master Node — VERIFY | MN-07 | execution ≠ outcome; correlation ≠ causation | VERIFY → LEARN |
 | 8 | NayaPOWER Master Node — LEARN | MN-08 | stored/observed ≠ learned; learning ≠ authority | LEARN → EVOLVE |
@@ -54,6 +54,12 @@ Build notes in organism order, but do not imply a rigid software call stack:
 
 The note builder should preserve cross-links as semantic relationships and leave actual current authority, proof state and runtime state to their canonical sources.
 
+The organism order is not a rigid runtime stack. The canonical minimum runtime routes are:
+
+`SELF→LAW; SELF→KNOW; LAW→ACT; ACT→VERIFY; KNOW→PROVE; KNOW→CONNECT; PROVE→VERIFY; CONNECT→VERIFY; VERIFY→LEARN; LEARN→EVOLVE; EVOLVE→SELF`.
+
+Use `NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md` as the routing authority.
+
 ## First note-quality gate
 
 Before sending any of the nine notes through the canonical Receiver, verify:
@@ -67,3 +73,32 @@ Before sending any of the nine notes through the canonical Receiver, verify:
 8. Node 9 strips inherited authority and distinguishes proposal/adoption/deployment/production proof.
 
 When all eight checks pass, the note is ready for CANDIDATE capture.
+
+
+## Overnight execution procedure
+
+For each note, the working Naya must:
+1. restore exact current main before capture;
+2. reread the Ultimate Lock and the node's current Master/Machine/AI/Brain contracts;
+3. reconcile, never duplicate, any existing node object or graph relationship;
+4. create/capture the note as CANDIDATE through the existing Receiver;
+5. record the Receiver-allocated Intelligent Block ID and canonical provenance;
+6. validate the node's required graph relationships under Graph V2 semantics;
+7. run the relevant unit/integration gates;
+8. record current proof maturity and the next genuine proof rung.
+
+If the Receiver or production runtime is unavailable, do not fabricate identity or success. Preserve the source-ready note/capture, name the exact unavailable boundary, and continue to the next unblocked node.
+
+## Morning completeness receipt
+
+A complete overnight report must show, for every node:
+- Smart Note status;
+- canonical Intelligent Block ID if actually allocated;
+- source/provenance;
+- graph relationships created/reconciled;
+- tests run;
+- runtime/proof rung;
+- blockers;
+- next action.
+
+Nine markdown files without Receiver identity/provenance do not count as nine activated Smart Notes.
