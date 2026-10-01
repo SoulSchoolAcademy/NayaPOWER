@@ -137,6 +137,14 @@ def project_kernel_receipt(
     # Strip None provenance entries the kernel did not supply; keep the seam's.
     provenance = {k: v for k, v in provenance.items()
                   if v is not None or k in ("received_at", "adapter_version", "contract_ref")}
+    # Cold-recomputation closure: the exact evaluated input state is preserved
+    # verbatim (like the receipt) so a fresh consumer retrieving this row can
+    # independently recompute inputs_hash. Without it, only the write-time
+    # "recomputed-match" commitment would survive — the consumer could not
+    # re-verify. States are small decision inputs; privacy posture is unchanged
+    # (row is already PRIVATE to the owner, receipt already stored verbatim).
+    if inputs_state is not None:
+        provenance["inputs_state"] = inputs_state
 
     return {
         "p_owner_id": owner_id,

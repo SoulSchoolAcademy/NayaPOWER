@@ -241,6 +241,23 @@ def test_14_interop_real_kernel_receipt():
     expect_value_error(lambda: proj(r), "inputs_hash without state")
 
 
+def test_15_inputs_state_preserved_for_cold_recompute():
+    # Cold-successor closure: the exact evaluated input state must survive
+    # in the projection so a fresh consumer can independently recompute
+    # inputs_hash from the retrieved row alone.
+    state = {"gates": {"SELF": {"input": 1}}}
+    r = make_receipt(with_inputs=True, inputs_state=state)
+    p = proj(r, inputs_state=state)
+    assert p["p_metadata"]["inputs_state"] == state
+    # The cold consumer's recomputation path, from the row only:
+    cold_state = p["p_metadata"]["inputs_state"]
+    assert _sha256(cold_state) == p["p_value"]["inputs_hash"]
+    assert verify_kernel_receipt(p["p_value"])["result"] == "MATCH"
+    # Legacy receipts (no inputs_hash) carry no state key at all.
+    p2 = proj(make_receipt())
+    assert "inputs_state" not in p2["p_metadata"]
+
+
 def test_contract_record_validation():
     good = {
         "object_id": PARENT, "owner_id": OWNER, "owner_scope": "PRIVATE",

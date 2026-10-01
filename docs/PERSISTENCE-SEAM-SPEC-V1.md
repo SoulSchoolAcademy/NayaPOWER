@@ -111,7 +111,13 @@ published on PR #1243 before the fix (comment 5935447995).
 3. **Input commitment.** Receipts without `inputs_hash` are labeled
    `input_commitment: "absent-legacy"` in provenance; verified receipts carry
    `"recomputed-match"`. A legacy receipt never receives the recomputation
-   qualification.
+   qualification. **Cold-recomputation closure (v3):** when `inputs_state` is
+   submitted, the exact evaluated state is preserved verbatim in
+   `p_metadata.inputs_state` alongside the receipt — so a fresh consumer
+   retrieving the row can independently recompute `inputs_hash` from the row
+   alone. Without this, only the write-time commitment would survive and the
+   consumer could not re-verify. Privacy posture is unchanged (row already
+   PRIVATE to the owner; receipt already stored verbatim).
 4. **Provenance honesty.** `kernel_sha`/`config_hash` are shape-checked
    caller-supplied LABELS, preserved in provenance as claims — never as
    independently established source/config provenance. Shape is not isolation:
