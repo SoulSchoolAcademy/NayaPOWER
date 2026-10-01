@@ -4,107 +4,88 @@
   "status": "ACTIVE_PROJECTION",
   "projection_of": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
   "authority_note": "Machine-readable projection of the human-readable master plan; not a second authority source. Live GitHub, runtime, Supabase state, authority, and proof evidence outrank this file.",
-  "evidence_snapshot_base": "55fec09aabe43d68182cfc58d1e8872b002472ac",
-  "evidence_snapshot_note": "Snapshot base at time of writing; see live main for current. This file is a machine projection of 0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md, not a second authority.",
+  "evidence_snapshot_base": "3d0216134dfd733445a14a77413d1b40e5f202b2",
+  "evidence_snapshot_note": "Reconciled after Graph V2 ratification, Decision Value Calculus V2.1 source convergence, nine-node binding reconciliation, and current-truth receipt-awareness repair. Projection-only drift after this snapshot is allowed; substantive drift makes this projection stale.",
   "current_main_resolution": "READ_LIVE_GITHUB_AT_EXECUTION_TIME",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT THROUGH DURABLE, APPLICABLE, CAUSALLY VERIFIED, SUCCESSOR-REUSABLE INTELLIGENCE.",
   "current_state": {
-    "issue_913": "CLOSED_BOUNDED_CAUSAL_SPECIMEN",
-    "issue_944": "CLOSED_BOUNDED_GENERALIZATION_SUCCESSOR_PROOF",
-    "issue_971": "CLOSED_NATIVE_SUPABASE_DEPLOYMENT_INCIDENT_RECOVERED",
-    "bounded_production_source": "335bdd82568e8041d3f6921a9ee4c7bf28e2c99f",
-    "bounded_production_proof_run": "36632211367_SUCCESS",
+    "issue_66": "OPEN_CURRENT_CONTROL_PLANE_FRONTIER",
+    "graph_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED",
+    "decision_value_calculus_v2_1": "RATIFIED_EXECUTABLE_SOURCE_CI_VERIFIED_GRAPH_BOUND_ALL_NINE_NODES",
+    "nine_node_binding_registry": "9_OF_9_STRUCTURALLY_BOUND_WITH_PERSISTED_TRANSITIONS_AND_PROOF_BOUNDARIES",
+    "current_truth_receipt_awareness": "MERGED_77F3702D_GENERATED_BRAIN_RECEIPTS_NO_LONGER_CREATE_FALSE_STALE_LOOP",
+    "latest_source_convergence": "A0A666AB_GRAPH_V2_NINE_NODE_VALUE_RUNTIME_CONTRACT",
+    "live_know_runtime": "ACTIVE_BUT_STALE_TO_CURRENT_GRAPH_V2_SOURCE",
+    "value_smartledger_migration": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED",
+    "ai1_capability_migration": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED",
+    "production_promotion_a0a": "BLOCKED_CORRECTLY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
+    "production_parity": "NOT_PROVEN_FOR_CURRENT_MAIN",
+    "live_value_calculus_graph_block": "NOT_YET_PERSISTED",
+    "live_alignment_decision_receipt": "NOT_YET_PROVEN",
+    "cold_successor_current": "CURRENT_MAIN_SOURCE_REPAIRED_CANONICAL_RUNTIME_ROUTING; LIVE_EXACT_CURRENT_PROOF_PENDING",
+    "human_value_measurement": "PARTIAL_NOT_YET_SUFFICIENT_FOR_AUTONOMOUS_OPTIMIZATION",
     "issue_810": "CLOSED_BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN",
     "issue_975": "CLOSED_OUTCOME_RECOVERY_NORTH_STAR_V3_ACCEPTED",
     "issue_978": "CLOSED_PRODUCTION_RLS_PROVEN",
-    "pr_980": "MERGED_PRODUCTION_VERIFIED",
-    "universal_nine_node_runtime_binding": "NOT_PROVEN",
-    "multi_generation_compounding": "NOT_PROVEN",
-    "two_owner_nayanet": "NOT_PROVEN; ISSUE_1062_SOURCE_AUDIT_IDENTIFIED_DERIVED_SHARE_AND_REVOCATION_GAPS",
-    "governed_production_promotion_run": "36659933566_SUCCESS_AT_SOURCE_2FF4207A",
-    "historical_north_star_acceptance": "ACCEPTED_BOUNDED_SPECIMEN",
-    "bounded_nine_node_behavioral_acceptance": "PRODUCTION_PROVEN_EXACT_REVISION",
-    "current_truth_resolver": "RUN_36664954443_SUCCESS_AT_MAIN_8BC24305; OPERATIONAL_PROJECTION_STALE_FROM_SUBSTANTIVE_ACT_IDEMPOTENCY_DRIFT; REFRESH_REQUIRED",
-    "authority_cached_derived_negative": "TEST_LEVEL_VERIFIED_AND_ACT_DENIAL_MATRIX_MERGED_7847680F",
-    "know_live_current": "RUN_36658860694_SUCCESS_CONTEXTUAL_HIT_MISS_INDEPENDENT_REREAD",
-    "sn004_learning_effect": "RUN_36652694005_NO_MEASURED_LEARNING_EFFECT_PRESERVED; PR_1051_MERGED_4C2B8F12; PR_1056_MERGED_0FB36123; PRODUCTION_RUNTIME_PARITY_MISMATCH",
-    "cold_acceptance": "READY_PROTOCOL_FRESH_ENTRANT_NOT_PROVEN",
-    "readiness_instrument": "PR_1058_AND_1061_MERGED; MAIN_GATES_GREEN; INSTRUMENT_ERROR_AND_CONTROL_FAILURE_FAIL_CLOSED",
-    "causal_runtime_parity": {
-      "status": "MISMATCH",
-      "source_revision": "c6ac19c4cc3bf938dd782d123c909249872dd905",
-      "cold_runtime_main_blob": "c91556d408520f8950de5a1e2c2b68c8755f21b3",
-      "cold_runtime_production_blob": "03eaaa8731d5d3709db058aa4f8e399051dba4d2",
-      "causal_experiment_main_blob": "5b60a6f780bc98f51407776211aa8e0f5cd1e3ec",
-      "causal_experiment_production_blob": "b29d11e4bd17a4a391d98adb792fce18609a026b",
-      "promotion_run": 36657956413,
-      "promotion_result": "DENY_PROTECTED_CHANGE_REQUIRES_EXPLICIT_PROMOTION",
-      "denial_artifact": 11072839541
-    },
-    "prove_live_current": "RUN_36658635227_FAILED_BEFORE_KNOW_PROVE_AT_LAW_WORKFLOW_BINDING; PR_1069_SOURCE_FIX_MERGED_C6AC19C4; LIVE_LAW_DEPLOYMENT_PARITY_PENDING",
-    "production_proven_source": "2ff4207a5376e3db2acafa29dd3961127725f1f6",
-    "production_deployment_commit": "5e6c5f5125c8efd44c8188cca9162d92c7faa878",
-    "post_production_source": "1070_CONSENT_REVOCATION;1072_KNOW_PROVE_BINDING;1077_GRAPH_V2;GRAPH_PERSISTENCE_V2;ACT_REPLAY_FAIL_CLOSED;1082_SELECTOR_ACCEPTANCE;1085_RECONCILIATION_MULTI_TASK_ACCEPTANCE;ACT_IDEMPOTENCY_KEY_REQUIRED;1088_SMART_CONNECT_POST_RESET_RESTORE;1090_GRAPH_V2_TEMPORAL_INSERT_DEFAULTS;1095_ACT_IDEMPOTENCY_ATOMICITY"
+    "issue_913": "CLOSED_BOUNDED_CAUSAL_SPECIMEN",
+    "issue_944": "CLOSED_BOUNDED_GENERALIZATION_SUCCESSOR_PROOF"
   },
   "top_10": [
     {
       "rank": 1,
       "id": "#66",
-      "action": "Rerun Current Truth Resolver against exact current main 3abe1ba74a9a86411221ca0b4778f49c79059556 and require OPERATIONAL_PROJECTION_STALE to be cleared",
+      "action": "Rerun Current Truth Resolver after this projection-only reconciliation and require operational projection freshness CURRENT; preserve remaining runtime unknowns honestly.",
       "status": "ACTIVE"
     },
     {
       "rank": 2,
-      "action": "Deploy the exact reconciled main through the governed production path; function and ACT idempotency migration must move together",
+      "action": "Promote the exact resolved current main through the existing governed production workflow. Because the undeployed delta contains protected migrations/workflows/constitutional changes, standing policy must fail closed and explicit Human Director DEPLOY is required for the exact SHA.",
       "status": "BLOCKED_EXPLICIT_HUMAN_DEPLOY_AUTHORITY"
     },
     {
       "rank": 3,
-      "action": "Run the live two-request ACT concurrent-duplicate proof once exact-main parity exists: one key, one durable success receipt/outcome, coherent replay, independent reread",
+      "action": "After promotion, independently verify pending migration order, capability-aware intelligence commit RPC, Decision Value V2.1 SmartLedger functions, Edge source parity, and exact deployed-source revision.",
       "status": "BLOCKED_DEPLOYED_PARITY"
     },
     {
       "rank": 4,
-      "action": "Prove conflicting-key reuse, response-loss recovery, receipt-write failure and independent reconstruction through the existing receipt ledger",
-      "status": "QUEUED_AFTER_LIVE_CONCURRENCY"
+      "action": "Run live Graph V2 KNOW/CONNECT proof from persisted intelligence: applicability, supersession, temporal/consent gates, conflict surfacing, unrelated refusal, and independent reread.",
+      "status": "BLOCKED_DEPLOYED_GRAPH_V2_PARITY"
     },
     {
       "rank": 5,
-      "id": "#1042",
-      "action": "Resolve mission binding semantics for LAW/ACT/KNOW from trusted operation context; do not invent policy",
-      "status": "BLOCKED_HUMAN_AUTHORITY_MODEL_DECISION"
+      "action": "Create the canonical runtime Decision Value Calculus Intelligent Block through the existing governed writer, connect it through the existing graph channel, promote only through governed learning, and require a live KNOW HIT.",
+      "status": "BLOCKED_AI1_MIGRATION_AND_PARITY"
     },
     {
       "rank": 6,
-      "action": "After deployed LAW parity, rerun existing live PROVE positive/negative plus independent reread exactly once",
-      "status": "BLOCKED_DEPLOYED_LAW_PARITY"
+      "action": "Produce one real ALIGNMENT_DECISION through V2.1, attach it to the existing SmartLedger, independently reread and recompute signed value/quality/confidence/gates, then observe the real outcome.",
+      "status": "BLOCKED_VALUE_RUNTIME_PARITY"
     },
     {
       "rank": 7,
-      "action": "Regenerate faithful SN-004 projection and rerun the applicable act-first causal experiment only after exact deployed parity",
-      "status": "BLOCKED_DEPLOYMENT_THEN_RUNTIME_PROOF"
+      "action": "Run the existing live two-request ACT concurrent-duplicate proof on exact deployed parity and independently prove one key, one durable receipt, one effect/outcome, and coherent replay.",
+      "status": "BLOCKED_DEPLOYED_PARITY"
     },
     {
       "rank": 8,
-      "id": "#1062",
-      "action": "Prove two-owner derived collective sharing and revocation propagation without weakening private owner RLS",
-      "status": "SOURCE_IMPLEMENTED_LIVE_PROOF_PENDING"
+      "action": "Close VERIFY→LEARN→EVOLVE with observed prediction error, a typed VALUE_RECALIBRATION LEARN_CANDIDATE, independent verification, governed version promotion, and no silent self-ratification.",
+      "status": "QUEUED_AFTER_LIVE_VALUE_RECEIPT"
     },
     {
       "rank": 9,
-      "id": "#1044",
-      "action": "Run a genuinely fresh repository-only cold entrant, then a second successor and A→B→C attributable continuation",
-      "status": "READY_EXTERNAL_FRESH_SEAT_REQUIRED"
+      "action": "Run genuinely cold successor reconstruction of the same graph/value rules from canonical state only; prove no authority inheritance and reproduce a held-out governed decision.",
+      "status": "QUEUED_AFTER_CURRENT_RUNTIME_PROOF"
     },
     {
       "rank": 10,
-      "action": "Measure real human value per attention and only then advance DREAM→EVOLVE / broader NayaNET scale",
+      "action": "Measure useful outcomes, attention saved, rework avoided, prevented errors, calibration error and compute cost; feed only verified evidence into future scorecard calibration.",
       "status": "QUEUED"
     }
   ],
   "next_action": {
     "type": "RECONCILE_THEN_EXPLICIT_DEPLOY",
     "issue": 66,
-    "instruction": "Rerun Current Truth Resolver against exact 3abe1ba74a9a86411221ca0b4778f49c79059556, then require explicit Human Director DEPLOY for the exact reconciled main. After parity run the live two-request ACT concurrency proof once, independently reread it, then continue ACT recovery residuals, PROVE, SN-004 causal proof, #1070 production proof, cold successor, A→B→C, and human-value measurement."
+    "instruction": "Rerun Current Truth Resolver after this projection-only reconciliation. If projection freshness is CURRENT and exact current main remains stable, the next consequential boundary is explicit Human Director DEPLOY for that exact SHA through the existing governed workflow; do not weaken the protected-path gate. After parity, execute Graph V2 + Decision Value live proof in dependency order."
   }
 }
