@@ -1362,12 +1362,15 @@ class KnowNode(NodeBase):
     def cold_reconstruct(self, receipts: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Rebuild this node's durable state from receipts alone (cold start).
 
-        §10 procedure: restore from latest checkpoint → replay the receipt
-        log forward → re-derive indexes → provenance_audit → RESTORE receipt
-        naming the checkpoint, replayed range, withheld blocks, and the
-        resulting store hash. If any step cannot be completed from persisted
-        artifacts alone, persistence is defective — that surfaces here as a
-        failure, not a silent gap.
+        §10 procedure: validate persisted receipt integrity → replay the
+        receipt log → re-derive indexes → provenance_audit → install the
+        reconstructed state on THIS node → emit a hash-bound RESTORE receipt.
+
+        A reconstruction report is not sufficient if the receiving node stays
+        empty. Public operations after this method returns must operate on the
+        restored state. If any persisted artifact is malformed, tampered, or
+        cannot be replayed coherently, fail loudly rather than return a
+        green-looking receipt over unusable state.
         """
         fresh = KnowNode()
         mine = [r for r in (_deepcopy_json(receipts))
@@ -1375,99 +1378,226 @@ class KnowNode(NodeBase):
         mine.sort(key=lambda r: (r.get("seq", 0), r.get("issuedAt", "")))
         replayed = 0
         checkpoint_ref = None
+        max_seq = 0
+
+        def replay_transition(block: Optional[Dict[str, Any]], to_state: str,
+                              receipt: Dict[str, Any], reason: str) -> None:
+            if block is None:
+                raise ValueError(
+                    "cold_reconstruct: %s references missing block %r"
+                    % (receipt.get("operation"), receipt.get("blockId")))
+            before = block.get("state")
+            if before == to_state:
+                return
+            block["state"] = to_state
+            block.setdefault("transitions", []).append({
+                "from": before,
+                "to": to_state,
+                "at": receipt.get("issuedAt") or receipt.get("at") or _now_iso(),
+                "reason": reason,
+            })
+
         for r in mine:
+            claimed_hash = r.get("receipt_hash")
+            if not claimed_hash:
+                raise ValueError(
+                    "cold_reconstruct: persisted KNOW receipt lacks receipt hash")
+            body = {k: v for k, v in r.items() if k != "receipt_hash"}
+            if claimed_hash != _sha256(body):
+                raise ValueError(
+                    "cold_reconstruct: receipt hash mismatch for %s"
+                    % claimed_hash[:12])
+
+            seq = r.get("seq")
+            if isinstance(seq, int):
+                if seq < 0:
+                    raise ValueError("cold_reconstruct: negative receipt seq")
+                max_seq = max(max_seq, seq)
+
             op = r.get("operation")
             if op in ("CHECKPOINT", "RESTORE"):
                 if op == "CHECKPOINT":
                     checkpoint_ref = r.get("checkpoint_hash")
                 continue  # no store effect; noted, not replayed
-            if op == "INGEST" and r.get("afterState") in ("ACTIVE",):
+
+            if op == "INGEST" and r.get("afterState") == "ACTIVE":
                 if r.get("duplicate_of"):
                     replayed += 1  # dedupe reference; no store effect
                     continue
                 snap = r.get("block_snapshot")
                 if snap is None:
-                    raise ValueError("cold_reconstruct: INGEST receipt %s lacks block_snapshot; "
-                                     "persistence defective" % r.get("receipt_hash", "?")[:12])
-                fresh.blocks[snap["id"]] = snap
-                fresh._hash_index[snap["contentHash"]] = snap["id"]
+                    raise ValueError(
+                        "cold_reconstruct: INGEST receipt %s lacks block_snapshot; "
+                        "persistence defective" % claimed_hash[:12])
+                bid = snap.get("id")
+                content_hash = snap.get("contentHash")
+                if not bid or not content_hash:
+                    raise ValueError(
+                        "cold_reconstruct: INGEST snapshot lacks identity/hash")
+                if bid in fresh.blocks and fresh.blocks[bid] != snap:
+                    raise ValueError(
+                        "cold_reconstruct: conflicting snapshot for block %s" % bid)
+                indexed = fresh._hash_index.get(content_hash)
+                if indexed is not None and indexed != bid:
+                    raise ValueError(
+                        "cold_reconstruct: content hash %s maps to conflicting blocks"
+                        % content_hash[:12])
+                fresh.blocks[bid] = snap
+                fresh._hash_index[content_hash] = bid
                 replayed += 1
-            elif op == "CLASSIFY" and r.get("afterState") == "CLASSIFICATION_PENDING":
-                snap = r.get("block_snapshot")
-                if snap is None:
-                    raise ValueError("cold_reconstruct: CLASSIFY receipt lacks block_snapshot")
-                fresh.blocks[snap["id"]] = snap
-                fresh._hash_index[snap["contentHash"]] = snap["id"]
+
+            elif op == "CLASSIFY":
+                after = r.get("afterState")
+                if after == "CLASSIFICATION_PENDING":
+                    snap = r.get("block_snapshot")
+                    if snap is None:
+                        raise ValueError(
+                            "cold_reconstruct: CLASSIFY receipt lacks block_snapshot")
+                    bid = snap.get("id")
+                    content_hash = snap.get("contentHash")
+                    if not bid or not content_hash:
+                        raise ValueError(
+                            "cold_reconstruct: CLASSIFY snapshot lacks identity/hash")
+                    fresh.blocks[bid] = snap
+                    fresh._hash_index[content_hash] = bid
+                elif after in ("ACTIVE", "REFUSED"):
+                    blk = fresh.blocks.get(r.get("blockId"))
+                    replay_transition(
+                        blk, after, r,
+                        "cold replay of director classification decision")
+                else:
+                    raise ValueError(
+                        "cold_reconstruct: unsupported CLASSIFY afterState %r" % after)
                 replayed += 1
+
             elif op == "SUPERSEDE":
                 old = fresh.blocks.get(r.get("blockId"))
-                if old is not None:
-                    old["state"] = "SUPERSEDED"
-                    old["supersededBy"] = r.get("superseded_by")
-                    old["epistemicState"] = "SUPERSEDED"
+                replay_transition(
+                    old, "SUPERSEDED", r,
+                    "cold replay: superseded by %s" % r.get("superseded_by"))
+                old["supersededBy"] = r.get("superseded_by")
+                old["epistemicState"] = "SUPERSEDED"
                 replayed += 1
+
             elif op == "CONTRADICT":
-                for bid in (r.get("blockId"), r.get("contradicts_with")):
+                primary = r.get("blockId")
+                other = r.get("contradicts_with")
+                for bid, peer in ((primary, other), (other, primary)):
                     blk = fresh.blocks.get(bid)
-                    if blk is not None:
-                        blk["state"] = "CONTRADICTED"
-                        blk["epistemicState"] = "CONTRADICTED"
-                        if bid == r.get("contradicts_with") and r.get("blockId") not in blk["contradicts"]:
-                            blk["contradicts"].append(r.get("blockId"))
-                        if bid == r.get("blockId") and r.get("contradicts_with") not in blk["contradicts"]:
-                            blk["contradicts"].append(r.get("contradicts_with"))
+                    replay_transition(
+                        blk, "CONTRADICTED", r,
+                        "cold replay: contradicted by %s" % peer)
+                    blk["epistemicState"] = "CONTRADICTED"
+                    blk.setdefault("contradicts", [])
+                    if peer not in blk["contradicts"]:
+                        blk["contradicts"].append(peer)
                 replayed += 1
+
             elif op == "INVALIDATE":
                 blk = fresh.blocks.get(r.get("blockId"))
-                if blk is not None:
-                    blk["state"] = "INVALIDATED"
-                    blk["epistemicState"] = "INVALIDATED"
-                inv = r.get("invalidation_block")
-                # the invalidation block itself arrives via its own INGEST receipt
+                replay_transition(
+                    blk, "INVALIDATED", r, "cold replay: invalidated")
+                blk["epistemicState"] = "INVALIDATED"
+                # The invalidation block itself arrives via its own INGEST receipt.
                 replayed += 1
+
             elif op == "EXPIRE":
                 blk = fresh.blocks.get(r.get("blockId"))
-                if blk is not None:
-                    blk["state"] = "EXPIRED"
-                    blk["epistemicState"] = "EXPIRED"
+                replay_transition(blk, "EXPIRED", r, "cold replay: expired")
+                blk["epistemicState"] = "EXPIRED"
                 replayed += 1
+
             elif op == "RECLASSIFY":
                 blk = fresh.blocks.get(r.get("blockId"))
-                if blk is not None:
-                    if r.get("promotion_evidence"):
-                        # promote(): afterState IS the target class; lifecycle
-                        # state stays ACTIVE.
-                        blk["class"] = r.get("afterState")
-                    elif r.get("class_after"):
-                        blk["class"] = r["class_after"]
-                        blk["state"] = r.get("afterState", blk["state"])
-                    else:
-                        blk["state"] = r.get("afterState", blk["state"])
+                if blk is None:
+                    raise ValueError(
+                        "cold_reconstruct: RECLASSIFY references missing block %r"
+                        % r.get("blockId"))
+                if r.get("promotion_evidence"):
+                    before_class = blk.get("class")
+                    after_class = r.get("afterState")
+                    blk["class"] = after_class
+                    blk.setdefault("transitions", []).append({
+                        "from": before_class,
+                        "to": after_class,
+                        "at": r.get("issuedAt") or _now_iso(),
+                        "reason": "cold replay: class promotion",
+                    })
+                elif r.get("class_after"):
+                    before_class = blk.get("class")
+                    after_class = r.get("class_after")
+                    blk["class"] = after_class
+                    if before_class != after_class:
+                        blk.setdefault("transitions", []).append({
+                            "from": before_class,
+                            "to": after_class,
+                            "at": r.get("issuedAt") or _now_iso(),
+                            "reason": "cold replay: reclassification",
+                        })
+                    replay_transition(
+                        blk, r.get("afterState", blk.get("state")), r,
+                        "cold replay: reclassification resolved")
+                else:
+                    replay_transition(
+                        blk, r.get("afterState", blk.get("state")), r,
+                        "cold replay: lifecycle reclassification")
                 replayed += 1
-            elif op in ("REFUSE", "QUARANTINE", "SERVE"):
+
+            elif op == "REFUSE":
+                # Most refusals have no store effect. A director refusal of a
+                # previously persisted CLASSIFICATION_PENDING block does.
+                bid = r.get("blockId")
+                if bid and bid in fresh.blocks and r.get("afterState") == "REFUSED":
+                    replay_transition(
+                        fresh.blocks[bid], "REFUSED", r,
+                        "cold replay: persisted classification refused")
+                replayed += 1
+
+            elif op in ("QUARANTINE", "SERVE"):
                 replayed += 1  # no store effect; counted for the audit trail
+
             else:
-                raise ValueError("cold_reconstruct: unknown operation %r; cannot replay" % op)
+                raise ValueError(
+                    "cold_reconstruct: unknown operation %r; cannot replay" % op)
+
         audit = fresh.provenance_audit()
         withheld = [w["block_id"] for w in audit["withheld"]]
         store_hash = fresh._store_hash()
-        restore = {
-            "node_id": NODE_ID,
-            "operation": "RESTORE",
-            "at": _now_iso(),
-            "checkpoint_ref": checkpoint_ref,
-            "replayed": replayed,
-            "restored_blocks": len(fresh.blocks),
-            "withheld": withheld,
-            "store_hash": store_hash,
-        }
-        restore["receipt_hash"] = _sha256({k: v for k, v in restore.items()
-                                           if k != "receipt_hash"})
+
+        # CS-01 repair: install the reconstructed durable state on the actual
+        # receiving node. A report over a throwaway local object is not
+        # continuity. Restore the replay log and sequence as well so later
+        # authorized writes cannot collide with predecessor receipt ordering.
+        self.blocks = _deepcopy_json(fresh.blocks)
+        self._hash_index = dict(fresh._hash_index)
+        self.receipts = _deepcopy_json(mine)
+        self.ingestion_log = []
+        self.intake_queue = deque()
+        self.state_deltas = _deepcopy_json(fresh.state_deltas)
+        self.security_events = []
+        self.checkpoints = []
+        self._seq = max_seq
+
+        restore_at = _now_iso()
+        restore = self._receipt(
+            "RESTORE", None, None, "RESTORED",
+            ["cold reconstruction installed on receiving KNOW node",
+             "replayed %d persisted receipts; restored %d blocks"
+             % (replayed, len(self.blocks))],
+            {"reasons": []}, {"evidence_refs": []},
+            {"identity": "NAYA-KERNEL-KNOW/restore"}, restore_at,
+            checkpoint_ref=checkpoint_ref,
+            replayed=replayed,
+            restored_block_count=len(self.blocks),
+            withheld_blocks=withheld,
+            store_hash=store_hash,
+        )
+
         return {"node_id": NODE_ID,
-                "restored_block_count": len(fresh.blocks),
+                "restored_block_count": len(self.blocks),
                 "replayed_receipts": replayed,
                 "checkpoint_ref": checkpoint_ref,
                 "withheld_blocks": withheld,
                 "store_hash": store_hash,
                 "restore_receipt": restore,
-                "block_ids": sorted(fresh.blocks)}
+                "block_ids": sorted(self.blocks)}
