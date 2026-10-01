@@ -313,6 +313,43 @@
       "cost_rate_hint": "internal",
       "audit": "handoff receipt",
       "status": "REGISTERED_CONTRACT_ONLY"
+    },
+    {
+      "door_id": "DOOR-LOCAL-STAGING",
+      "name": "Local Staging File Write (Demo-1)",
+      "provider": "Local runtime",
+      "capabilities": [
+        "staging_write"
+      ],
+      "operations": [
+        {
+          "operation": "staging.write_file",
+          "mode": "WRITE",
+          "consequential": true,
+          "authority_action": "staging_write",
+          "target_types": [
+            "STAGING_PATH"
+          ],
+          "target": "demo-staging/",
+          "params": {
+            "filename": "sn-candidate-*.md",
+            "max_bytes": 65536,
+            "overwrite": false,
+            "idempotency": "content-sha256"
+          },
+          "verification_required": true
+        }
+      ],
+      "consequence_class": "BOUNDED_REVERSIBLE",
+      "required_authority": "LAW decision per operation",
+      "identity_method": "local runtime identity",
+      "data_classes": [
+        "DEMO"
+      ],
+      "health": "REGISTERED_DEMO",
+      "cost_rate_hint": "none",
+      "audit": "canonical execution receipt + file artifact on disk",
+      "status": "REGISTERED_DEMO"
     }
   ]
 }
