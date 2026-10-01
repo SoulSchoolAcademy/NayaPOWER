@@ -1,0 +1,245 @@
+{
+  "known_findings": [
+    {
+      "detail": "12 artifacts self-declare as simultaneously in-force canonical/constitutional law with no supersession chain resolving precedence: .naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md, .naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md, SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md, SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md, .naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md, SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md",
+      "fingerprint": "24aec776d518978a",
+      "kind": "CONCURRENT_SUPREME_CLAIM",
+      "locations": [
+        ".naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md",
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md",
+        ".naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md",
+        "SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md",
+        "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md",
+        "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "2e5196f3e5e43aa7",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "36e61f9e530de835",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md self-declares as in-force constitutional authority ('** CANONICAL / ARCHITECTURAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "6a5cdec02fdc2ed2",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "73c3f7a7732e7465",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md self-declares as in-force constitutional authority ('** CANONICAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "7f2b89cd87270b1f",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        "SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "8e10e2bc9f286b6c",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md self-declares as in-force constitutional authority ('** ACTIVE / CANONICAL / MANDATORY') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "95f64b7dd495802a",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "ca506ea4d8525ba9",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md self-declares as in-force constitutional authority ('** CANONICAL / ACTIVE / MANDATORY') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "e0f52cc7ef86ed73",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md self-declares as in-force constitutional authority ('** CANONICAL / CONSTITUTIONAL / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "f8375beef08bf28a",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md self-declares as in-force constitutional authority ('** CANONICAL POINTER / ACTIVE') while rival constitutional claims exist, and names no artifact it supersedes; it cannot be ordered against them",
+      "fingerprint": "fb1fce8daeb8e728",
+      "kind": "MISSING_SUPERSESSION",
+      "locations": [
+        "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "10c2b562b6a21511",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-10-STAR-SERVICE-AUTONOMOUS-EXECUTION.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "18fef3b890c2e5ea",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md",
+        "SUPERBRAIN/MASTER-NOTES/SN-20260921-NAYANET-CHANNEL-CONSTITUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "613126e4746eb321",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md",
+        "SUPERBRAIN/ARCHITECTURE/DEPLOYMENT-GOVERNANCE.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "704bcb8d37b0c210",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-MISSION-STATE-RUNTIME-GATES.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "7361237ad27694ad",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-EXCELLENCE-BY-DEFAULT.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "8cf0f62c0d41be68",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "97b6b9bde998b446",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "a54d282addb47742",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "c9b65bfda5891a25",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md",
+        "SUPERBRAIN/MASTER-NOTES/NAYANET-CHANNEL-CONSTITUTION.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "c9d30ccc550869f9",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "e71cb81810fd297b",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NAYA-OWNS-THE-TORCH.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    },
+    {
+      "detail": ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md self-declares as in-force constitutional authority ({claim['value']!r}) but is not mapped in .naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md; precedence between competing constitutional claims is not machine-decidable",
+      "fingerprint": "ecf8b57823ddf08f",
+      "kind": "UNMAPPED_AUTHORITY_CLAIM",
+      "locations": [
+        ".naya/codex/CONSTITUTIONAL-AMENDMENT-NIA-BUILDER-REVIEWER-QMAX-LOOP.md",
+        ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md"
+      ],
+      "severity": "ERROR"
+    }
+  ],
+  "registry": ".naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md",
+  "scan_max_lines": 120
+}

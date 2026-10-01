@@ -1,0 +1,84 @@
+name: Verify Constitutional Authority Claims
+
+# A constitution that cannot detect a rival constitution is not governing anything.
+#
+# The contract library integrity gate and the registry conformance gate are both
+# scoped, by design, to the contract library and the registry. Neither can see an
+# artifact that declares itself canonical constitutional law from anywhere else in
+# the tree. Before this gate, an artifact could live under .naya/codex/ or
+# SUPERBRAIN/, assert "CANONICAL / CONSTITUTIONAL / ACTIVE", and leave every other
+# gate reporting green.
+#
+# As of 2026-09-26 this is not hypothetical: 12 artifacts on the governance surface
+# self-declare as simultaneously in-force constitutional law, and 12 of them are
+# unmapped in the canonical contract registry. This gate makes that visible and
+# makes it impossible to add a tenth rival quietly.
+#
+# It detects, deterministically:
+#   - two or more artifacts self-declaring as in-force canonical/constitutional
+#     law with no supersession chain resolving precedence
+#   - a supreme claim that names no artifact it supersedes while rivals exist
+#   - a supreme constitutional claim absent from the canonical contract registry
+#     (Contract 00 V2 section 2.1 mapping obligation)
+#   - a supreme claim whose status word is outside the section 16 vocabulary
+#   - an absent or unreachable registry, which fails closed
+#
+# BASELINE MODEL: identical to the contract library integrity gate. Findings are
+# reduced to stable fingerprints and compared to
+# .naya/CONSTITUTIONAL-CLAIM-AUDIT-BASELINE.json. New drift fails; recorded debt
+# is reported but does not block. The report always states that known debt is not
+# a pass, so this gate can never be read as a clean bill of health on
+# constitutional authority.
+#
+# This gate grants no authority, ratifies nothing, and supersedes nothing. It
+# cannot decide which claimant is correct. That is a Human Director decision, and
+# the findings are the evidence required to make it.
+#
+# The baseline is intentionally stored outside .naya/contracts/ so that this
+# gate's own machine artifacts are not counted as contracts by the contract
+# library integrity gate.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '**/*.markdown'
+      - '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+      - '.naya/CONSTITUTIONAL-CLAIM-AUDIT-BASELINE.json'
+      - '.naya/runtime/constitutional_claim_audit.py'
+      - '.naya/tests/test_constitutional_claim_audit.py'
+      - '.github/workflows/verify-constitutional-authority-claims.yml'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.markdown'
+      - '.naya/control-plane/CANONICAL-CONTRACT-REGISTRY.md'
+      - '.naya/CONSTITUTIONAL-CLAIM-AUDIT-BASELINE.json'
+      - '.naya/runtime/constitutional_claim_audit.py'
+      - '.naya/tests/test_constitutional_claim_audit.py'
+      - '.github/workflows/verify-constitutional-authority-claims.yml'
+permissions: {contents: read}
+jobs:
+  constitutional-authority:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install test dependency
+        run: pip install --quiet "pytest>=8.0,<9"
+      - name: Prove the audit itself still detects a rival constitution
+        run: python -B -m pytest .naya/tests/test_constitutional_claim_audit.py -q
+      - name: Fail on new self-declared constitutional authority
+        run: python -B .naya/runtime/constitutional_claim_audit.py
+      - name: Archive machine-readable authority claim report
+        if: always()
+        run: |
+          python -B .naya/runtime/constitutional_claim_audit.py --json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constitutional-authority-claim-report
+          path: .naya/constitutional-claim-audit-report.json
+          if-no-files-found: warn
