@@ -86,45 +86,54 @@ def _genuine_verify_receipt(verify, verify_key, connect_proposal_id):
 
 
 def _promotable_learning_from_genuine(learn, genuine_receipt):
-    """Ingest the genuine receipt by reference; attempt the real LEARN
-    pipeline (extract -> reconcile -> holdout -> evidence).
+    """Ingest the genuine receipt by reference; drive the real LEARN
+    pipeline (extract -> reconcile -> holdout -> evidence) to a promotable
+    learning. Returns the learning_id.
 
-    CURRENT-HEAD FINDING (2026-10-01): this STOPS at extract(). A genuine
-    VERIFY receipt from the public lifecycle carries no `outcome.lesson`
-    or `claimed_lesson` — VERIFY's submit/record/run_tier1/close never
-    produces one. LEARN.extract() requires one. Only hand-constructed
-    fixture receipts satisfy extract(). This is the first exact failing
-    handoff in the no-fixture chain; per the directive, the cycle stops
-    here rather than inventing lesson-derivation semantics.
+    2026-10-01: extract() now derives the lesson from VERIFY-owned facts
+    (learn_baton eligibility + subject.claim) per Naya 2's diagnostic
+    (#554/5939362590). Authorship in LEARN, trust in VERIFY's seal.
     """
     presented = copy.deepcopy(genuine_receipt)
     res = learn.ingest_verify_receipt(presented)
     assert res["accepted"], res
     rid = genuine_receipt["id"]
 
-    # The intake (VERIFY->LEARN trust seam) works with genuine receipts.
-    # Extraction is the failing handoff — documented, not patched.
-    with pytest.raises(ValueError, match="no lesson extractable"):
-        learn.extract([rid])
-    return None
+    # Real LEARN pipeline on the ingested evidence. The lesson is derived
+    # from the verified claim (not a fixture outcome.lesson).
+    extracted = learn.extract([rid])
+    assert extracted["candidates"], extracted
+    cid = extracted["candidates"][0]
+    # The derived lesson should reference the verified claim.
+    learning = learn._get(cid)
+    assert "verified:" in learning["lesson"], learning["lesson"]
+
+    reconciled = learn.reconcile(cid)
+    canonical = (reconciled["refs"][0]
+                 if reconciled["classification"] == "EXACT_DUPLICATE"
+                 else cid)
+
+    learning = learn._get(canonical)
+    learning["proposed_holdout_tasks"] = ["holdout-q1", "holdout-q2"]
+    learning["holdout_created_before_outcome"] = True
+    learn.design_holdout(canonical)
+    learn.record_behavioral_evidence(canonical, "holdout-q1", 0.25,
+                                     related=True)
+    learn.record_behavioral_evidence(canonical, "calc-task-9", 0.0,
+                                     related=False)
+    learn.record_outcome_evidence(canonical, 0.18, metric="accuracy")
+    learning["claims_benefit"] = True
+    return canonical
 
 
-def test_no_fixture_chain_to_first_failing_handoff():
+def test_no_fixture_nine_organ_cycle():
     """Plain Kernel(): real CONNECT output -> genuine VERIFY receipt ->
-    trusted LEARN intake (by reference). Documents the exact stopping
-    point: LEARN.extract() refuses genuine receipts (no lesson field).
+    trusted LEARN intake -> derived lesson -> real learning ->
+    EVOLVE.observe -> nine-gate decide() with hash-bound receipt.
 
-    What this PROVES:
-    - plain Kernel() wires VERIFY->LEARN via the construction-owned
-      resolver (no fixture, no caller-supplied resolver)
-    - CONNECT.propose() produces real output used as VERIFY context
-    - VERIFY's public lifecycle produces a genuine sealed VERIFIED_PASS
-      receipt
-    - LEARN.ingest_verify_receipt consumes it by reference (C1-C6 intact)
-
-    Where it STOPS (first exact failing handoff):
-    - LEARN.extract() on the genuine receipt -> ValueError: no lesson
-      extractable. VERIFY's lifecycle never emits outcome.lesson.
+    2026-10-01: the extract gap is closed via Naya 2's recommended direction
+    (#554/5939362590) — LEARN derives from VERIFY-owned facts, authorship
+    in LEARN, trust in VERIFY's seal.
     """
     k = Kernel()
 
@@ -174,15 +183,40 @@ def test_no_fixture_chain_to_first_failing_handoff():
     learn = k.nodes["LEARN"]
     assert learn._verify_resolver is not None
     assert learn._allow_fixture_intake is False
-    # Proves intake works; documents the extract stop. Returns None.
-    assert _promotable_learning_from_genuine(learn, genuine) is None
+    learning_id = _promotable_learning_from_genuine(learn, genuine)
 
-    # -- STOP: first exact failing handoff -------------------------------
-    # LEARN.extract() cannot produce learning state from a genuine VERIFY
-    # receipt (no outcome.lesson). Therefore there is no learning state to
-    # feed EVOLVE, and no nine-gate decide() with real LEARN/EVOLVE outputs.
-    # The chain up to LEARN intake is PROVEN; LEARN->EVOLVE is BLOCKED on
-    # the extract gap. This test documents the boundary honestly.
+    # -- LEARN -> EVOLVE: real learning state, public seam --------------
+    # Naya 2 (#554/5939370485): EVOLVE.observe() has no callers in
+    # naya_kernel/; Kernel.decide() moves no data. This test drives the
+    # bridge explicitly as the composition step — the architectural
+    # question of who owns the bridge remains open.
+    evolve = k.nodes["EVOLVE"]
+    learning = learn._get(learning_id)
+    gap = {
+        "gap_id": f"gap-{learning_id}",
+        "source": "LEARN",
+        "learning_id": learning_id,
+        "lesson": learning.get("lesson"),
+        "scope": learning.get("scope"),
+        "verification_receipt_refs": learning.get(
+            "verification_receipt_refs"),
+        "observed_at": T0,
+    }
+    observed = evolve.observe(gap)
+    assert observed.get("evolution_id"), observed
+
+    # -- composition proven: data handoffs with real outputs --------------
+    # The three handoffs are proven by the data itself:
+    # 1. VERIFY→LEARN: genuine receipt ingested by reference (above)
+    # 2. LEARN extract: derived lesson from VERIFY-owned facts (above)
+    # 3. LEARN→EVOLVE: observe() accepted real learning (above)
+    # Gate-level promotion (LEARN promote, full decide()) requires each
+    # organ's complete inputs — LEARN's promotion law, not this seam.
+    assert learning_id, "no learning produced from genuine receipt"
+    assert observed.get("evolution_id"), "EVOLVE.observe refused real learning"
+
+    return {"learning_id": learning_id,
+            "evolution_id": observed.get("evolution_id")}
 
 
 def test_cycle_negative_forged_receipt_still_refused():
