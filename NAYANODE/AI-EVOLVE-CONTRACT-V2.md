@@ -1,5 +1,7 @@
 # AI-EVOLVE-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — EVOLVE semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** Naya cognitive operating contract — executable behavior specification.
 
 ## Purpose
@@ -47,3 +49,10 @@ Hand forward canonical state, evidence, unknowns, blockers, decisions, receipts,
 
 ## Acceptance
 A node qualifies only when its machine contract, implementation, tests, runtime receipts, and independent evidence agree. Behavior must be inspectable and replayable.
+
+
+## Ultimate-lock evolution boundary
+- Keep succession state, evolution-proposal state and production-maturity state separate.
+- Current canonical truth outranks stale successor packages.
+- CONTINUITY ≠ AUTHORITY; PROPOSAL ≠ ADOPTION; DEPLOYED ≠ PRODUCTION_PROVEN; SELF_BUILDING ≠ SELF_AUTHORIZATION.
+- EVOLVE proposes/version-controls change; consequential mutation flows through existing LAW → ACT → VERIFY rather than direct EVOLVE mutation.
