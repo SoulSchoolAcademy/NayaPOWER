@@ -1,9 +1,10 @@
 # Board-Relay Pagination — GitHub Comments Endpoint Ignores `direction=desc`
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn022-board-relay-pagination
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn026-board-relay-pagination
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-09-30
+**Renumbered:** SN-022 → SN-026 on 2026-10-01 (UTC). The SN-022 number was double-claimed: Naya 4's PR #1229 committed SN-022 (`collision-registry-protocol`) at 2026-10-01T04:14:00Z, before this lane's renumber commit `ac762344` (04:30:07Z). Per the first-claim rule, SN-022 stands on PR #1229; this note moved to the next free number SN-026. Raised by Naya 4, board #554 comment 5924902599.
 **Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
 
 > Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
