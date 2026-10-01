@@ -353,7 +353,21 @@ jobs:
           json.dump(req,open("cold-verify-request.json","w"))
           json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json
+          for attempt in 1 2 3; do
+            if curl -fsS --connect-timeout 10 --max-time 30 -X POST \
+              -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+              -H "Content-Type: application/json" \
+              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json; then
+              if [[ -s cold-runtime-reread.json ]]; then
+                break
+              fi
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: three bounded attempts produced no JSON body"
+              exit 1
+            fi
+            sleep 2
+          done
           python - <<'PY'
           import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
