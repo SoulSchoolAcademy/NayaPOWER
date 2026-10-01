@@ -461,4 +461,78 @@ Architecture (frozen): **Hub = cockpit. NayaPOWER = governed intelligence substr
 
 ---
 
-*Verified against live main 2026-10-01 by Naya 4. Every file size, token value, CSS rule, button label, color hex, and redirect in this document was read from the actual repository — not from descriptions of it.*
+## PART 7 — THE FINISHED CONTRACT (V1.0 §§14–29)
+
+*Completing the Elite Interface & Application Design Contract V1.0, cut off at §13. Same voice, same law. Verified against the canonical docs — net-new content only where the existing contract was silent.*
+
+### §14. FEED MODES
+
+Three modes: **COLLECTIVE** (shared intelligence) · **PERSONAL** (the user's own) · **ACTIVITY** (what happened in the system). The tab must change **actual data and state** — never merely recolor itself. A mode switch with no data change is a lie told in UI.
+
+### §15. INTELLIGENCE BOARDS
+
+The nine boards are the conceptual structure of the Hub, not marketing cards: What Is Naya Power? · What Is Naya? · What Are Smart Notes? · Your Intelligence Today · Intelligence Reports · Intelligent Library · Smart Lists · Intelligent Feed / Smart Feed · Smart Tabs. Each obeys the Board Law (§6): identity, theme, icon, state, material, depth, energy, hierarchy, provenance, actions.
+
+### §16. INTELLIGENCE LAYERS
+
+One intelligence object, multiple cognitive levels — never competing copies of truth. The eight layers: HUMAN NOTE · CHILD (simplified) · GRANDMA NOTE (why notice) · NAYA NOTE (interpretation) · MACHINE NOTE (evidence boundary) · ADAPTIVE LEARNING · WHAT IT MEANS (significance) · WHAT'S IN IT FOR YOU (human value). Render as **nested intelligence**, not repeated sections. Each layer keeps its colored border, illuminated sphere, and faceted icon from the concept.
+
+### §17. NAYA PRESENCE
+
+The Naya card means **"Naya is here"** — interpretation and human assistance (insight, "Ask Naya," "What should I know?", trust state). It must never become a competing dashboard, a second rail, or a chatbot that swallows the Hub.
+
+### §18. HERO / GREETING
+
+The greeting ("Good evening, Shawn") is the human→system bridge: personal without being a chatbot. The production version derives identity dynamically. Keep the concept; never turn it into a headline.
+
+### §19. WELCOME
+
+Welcome's job is **invitation, not explanation**. Keep the orbital jewels, spectral field, portal, black environment, and restrained entrance movement. Do not turn it into an explainer page. The system noticing you — "Naya Responding," the portal pushing forward — is the metaphor. Preserve it.
+
+### §20. IDENTITY
+
+Identity is the bridge and the current weak link. It must feel like the system saying *"I know who you are allowed to be here as — your intelligence environment is ready"* → **ENTER NAYANET** → the real Hub. Requirements: jewel identity emblem, obsidian board, elevated identity card, live NayaNET namespace preview, privacy statement, governed session identity, NayaPOWER connection state, loading/establishing state, **fail-closed** error state, success transition. Rebuilt in the design system — never a utility form, never a redirect to an external worker.
+
+### §21. ROOM STATE MODEL
+
+Every room implements the seven states — LOADING · EMPTY · READY · BLOCKED · NOT_VERIFIED · VERIFIED · ERROR — with standardized visuals (see §2.8). No room is exempt. No state is faked.
+
+### §22. JOURNEY
+
+**WELCOME → IDENTITY → INTELLIGENT HUB.** Canonical, governed, no exceptions. Not to the Academy, not to Powercast, not to an external worker. (Routing Law, §12 frozen laws.)
+
+### §23. RESPONSIVE
+
+Mobile preserves identity — rail becomes an elite bottom bar or gesture nav, boards keep depth and theme. Never collapse into boring cards. The Hub must feel like the same instrument at every size.
+
+### §24. ACCESSIBILITY
+
+Visible elegant focus · full keyboard operation · `prefers-reduced-motion` honored (living depth survives without motion) · semantic landmarks · readable hierarchy before color. Beauty that excludes is not elite.
+
+### §25. PERFORMANCE
+
+Instant response. Animate transform/opacity. No layout thrash. The 843 KB laboratory's weight must not ship — the production app earns its depth without its bulk.
+
+### §26. HONESTY
+
+No fake capability, ever. No sample data, no simulated activity, no animated aliveness without a live backend. NOT_VERIFIED over fake content. RUNTIME UNAVAILABLE over sample data. A false impression costs more than an empty state. (Honesty Law, §12 frozen laws.)
+
+### §27. WHAT NOT TO ADD
+
+"Next level" never means: more cards · more KPI stats · more rounded rectangles · more glass · gradients inside gradients · giant marketing headlines · pale lavender interfaces · generic sidebar icons · random emoji · gratuitous particles · competing right rails · duplicated navigation. **More depth, not more clutter.**
+
+### §28. THE DEFINITION OF ELITE
+
+Elite does not mean flashy. **Elite means every visual decision feels intentional.** A premium button is premium because the geometry is exact, the edge precise, the shadow believable, the highlight restrained, the hover physical, the state meaningful, the typography right, the icon integrated, the color meaningful — not because it glows.
+
+### §29. ACCEPTANCE
+
+The contract is satisfied only through the eight-dimension scorecard (PROJECT-INTELLIGENCE.md §2): every dimension ≥ 9.0, Visual Excellence at 10, scored by the builder **and** an independent seat, with evidence. Below 9.0 is not ready. Scores may decrease.
+
+---
+
+*PART 7 completes the V1.0 contract. The full contract (§§1–29) is now expressed in three projections: HUMAN (plain words), AI (builder programming), MACHINE (spec as data) — see `HUB/PROJECT-INTELLIGENCE.HUMAN.md`, `.AI.md`, `.MACHINE.json` (PR #1276).*
+
+---
+
+*Verified against live main 2026-10-01 by Naya 4. PART 7 (contract §§14–29) added 2026-10-01 to complete the cut-off V1.0 contract — net-new content only; all existing sections unchanged.*
