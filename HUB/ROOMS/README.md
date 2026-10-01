@@ -1,117 +1,111 @@
 # 🔱 NayaNET Intelligent Hub — Room System
 
-**Status:** FUNCTIONAL SPECIFICATION V1 — proposed canonical subordinate contract  
-**Authority:** Shawn Vibert, Human Director  
-**Parent contracts:** `HUB/PROJECT-INTELLIGENCE.md` + `HUB/DESIGN-CONTRACT.md`  
-**Implementation owner:** Issue #1270  
-**Coordination:** Issue #554
+**Status:** PROPOSED FUNCTIONAL / DESIGN CONTRACTS · TEAM CONSENSUS REVIEW OPEN  
+**Review PR:** #1290  
+**Coordination board:** #554  
+**Implementation owner:** #1270
 
-## The idea
+## One shell. Eleven masterpieces. One Naya. One governed substrate.
 
-The Hub is not one giant dashboard. It is **eleven intelligent environments inside one living system**.
+The sidebar is navigation. **The center workspace is the room.**
 
-Each room is a masterpiece with its own purpose, visual identity, signature interaction and real causal function — while sharing one shell, one intelligence substrate, one truth model and one Naya.
+Clicking a room does not replace the Hub with another disconnected page. The same shell, sidebar, Naya presence and global context remain while the center becomes a different intelligent software experience.
 
-A person should feel that they are entering a different instrument, not opening another recolored card page.
+## Read first
 
-## The 11 primary rooms
+1. [Human Director Google Drive source notes](./SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md)
+2. [Consensus & Review Protocol](./CONSENSUS-PROTOCOL.md)
+3. [Consensus Status](./CONSENSUS-STATUS.md)
+4. [Room Package Standard](./_STANDARD/ROOM-PACKAGE-STANDARD.md)
+5. [Room Review Checklist](./_STANDARD/ROOM-REVIEW-CHECKLIST.md)
+6. [Shared Room Functional Contract](./ROOM-FUNCTIONAL-CONTRACT-V1.md)
+7. [Aggregate Machine Contract](./ROOMS-MACHINE-V1.json)
+8. [Room Specification Scorecard](./ROOM-SPEC-SCORECARD.md)
 
-| Room | Human metaphor | Core question | Signature experience |
-|---|---|---|---|
-| Smart Feed | **The game** | What is happening now? | Live intelligence stream |
-| Your Intelligence Today | **The highlight reel** | What mattered today? | Beautiful daily story / snapshot |
-| Your Reports | **The film room** | What does it mean over time? | Synthesis, trends, decisions |
-| Intelligent Library | **The vault** | What do we know? | Searchable intelligence archive |
-| Smart Connect | **The portal bay** | How can people/systems connect? | Governed doors into one intelligence |
-| Smart Ledger | **The black box / proof room** | What happened and what proves it? | Receipts, authority, evidence, outcomes |
-| Your Connections | **The constellation** | Who/what am I connected to? | Governed relationship map |
-| Smart Lists | **The mission table** | What am I tracking or organizing? | Living collections powered by intelligence |
-| Smart Mail | **The signal room** | What communication matters? | Intelligent message triage and action |
-| Smart Spaces | **The worlds** | What context am I inside? | Context environments for projects/people/life |
-| Settings | **The control deck** | How should NayaNET work for me? | Identity, privacy, preferences, trust, system controls |
+## Canonical room packages
 
-## Universal capabilities — not extra primary rooms
+| # | Room | Mental model | Package |
+|---:|---|---|---|
+| 01 | Smart Feed | **The Game** | [01-smart-feed/](./01-smart-feed/) |
+| 02 | Your Intelligence Today | **The Highlight Reel** | [02-your-intelligence-today/](./02-your-intelligence-today/) |
+| 03 | Your Reports | **The Film Room / Time Machine** | [03-your-reports/](./03-your-reports/) |
+| 04 | Intelligent Library | **The Vault / Your Mind** | [04-intelligent-library/](./04-intelligent-library/) |
+| 05 | Smart Connect | **The Portal Bay** | [05-smart-connect/](./05-smart-connect/) |
+| 06 | Smart Ledger | **The Black Box / Proof Room** | [06-smart-ledger/](./06-smart-ledger/) |
+| 07 | Your Connections | **The Constellation** | [07-your-connections/](./07-your-connections/) |
+| 08 | Smart Lists | **The Mission Table** | [08-smart-lists/](./08-smart-lists/) |
+| 09 | Smart Mail | **The Signal Room** | [09-smart-mail/](./09-smart-mail/) |
+| 10 | Smart Spaces | **The Worlds / Context Environments** | [10-smart-spaces/](./10-smart-spaces/) |
+| 11 | Settings | **The Control Deck** | [11-settings/](./11-settings/) |
 
-These should be available throughout the Hub:
+Every package contains:
 
-- **Search Intelligence** — global retrieval with provenance.
-- **Ask Naya** — interpretation in current context.
-- **Smart Note / Capture** — capture from anywhere; not required to occupy a permanent primary rail slot.
-- **Save / Favorite / Add to List** — organize canonical intelligence.
-- **Inspect Source / Evidence** — trust and provenance.
-- **Space context** — current context is visible and switchable.
-- **Truth state** — LOADING / EMPTY / READY / BLOCKED / UNAUTHORIZED / NOT_VERIFIED / VERIFIED / ERROR / OFFLINE / UNKNOWN / DISABLED.
+`README.md · FUNCTIONAL-SPEC.md · DESIGN-CONTRACT.md · SPEC.HUMAN.md · SPEC.AI.md · SPEC.MACHINE.json`
 
-### IA reconciliation note
+## Five-layer room law
 
-Open PR #1278 currently adds **Smart Notes** and **System** as primary rail rooms, producing 13 rooms. The canonical product model remains 11 primary rooms until deliberately changed.
+Every room must express the Human Director's five layers:
 
-Recommended placement:
-- **Smart Notes** = universal capture capability + optional focused capture view.
-- **System** = advanced diagnostics / status under Settings or another explicitly secondary surface.
+1. **ORIENTATION** — Where am I?
+2. **CURRENT STATE** — What is happening here right now?
+3. **INTELLIGENCE** — What does Naya understand?
+4. **ACTION** — What can I actually do?
+5. **PROOF** — Why should I trust it?
 
-Do not silently expand the primary rail.
+Visual grammar can express this as:
 
-## Room design grammar
+**HERO → INTELLIGENCE WALL → ACTION DECK → EVIDENCE LAYER → NAYA LAYER**
 
-Every room gets a unique composition, but every room must answer in the first few seconds:
+but each room composes those pieces differently.
 
-1. **Where am I?**
-2. **What matters here?**
-3. **What can I do next?**
+## Shared product hierarchy
 
-Each room specifies:
-- human promise;
-- signature visual concept;
-- information hierarchy;
-- primary instrument;
-- controls;
-- data/runtime owner;
-- cross-room handoffs;
-- states;
-- mobile behavior;
-- evidence/authority boundary;
-- acceptance proof.
+**Smart Feed = the game.**  
+**Your Intelligence Today = the daily highlight reel.**  
+**Reports = meaning across time.**  
+**Library = retained knowledge and retrieval.**  
+**Ledger = proof beneath consequential activity.**  
+**Connections / Mail / Spaces / Lists = relationships, communication, context and organization.**  
+**Smart Connect = the governed connection layer into the wider world.**  
+**Settings = human control over the relationship with NayaNET.**
 
-## Cross-room flow
+## Universal capabilities, not extra primary rooms
 
-The rooms are not isolated apps.
+- Search Intelligence
+- Ask Naya
+- Smart Note / Capture
+- Save / Favorite
+- Add to List
+- Inspect Source / Evidence
+- current Space context
+- truth state
 
-```
-SMART FEED  → raw/current flow
-     ↓
-TODAY       → daily highlights
-     ↓
-REPORTS     → cross-time meaning
-     ↓
-LIBRARY     → durable retrieval
+### IA reconciliation
 
-CONNECT     → channels into the intelligence
-CONNECTIONS → governed relationships created/observed through those channels
-SPACES      → context boundary for people + intelligence + activity
-MAIL        → communications entering/leaving those contexts
-LISTS       → human-curated/actionable organization
+Open PR #1278 currently exposes **Smart Notes** and **System** as additional primary rail rooms.
 
-LEDGER      → proof layer beneath all consequential activity
-SETTINGS    → human control over identity/privacy/preferences/runtime relationship
-```
+Current proposal:
+- **Smart Notes** → universal capture capability + optional focused capture surface.
+- **System** → `Settings → System Health` advanced surface.
 
-Every room may hand an object to another room without copying canonical truth. Example: Feed item → Add to List; Mail → Capture Smart Note; Today highlight → Open in Feed; Report insight → Open evidence in Ledger; Connection → Open shared Space.
+The functionality is preserved; the primary navigation stays simple unless consensus explicitly changes it.
 
-## Experience law
+## Consensus law
 
-**One shell. Eleven masterpieces. One Naya. One governed intelligence substrate.**
+These files are **reviewable project intelligence**, not immutable scripture.
 
-The room spec may change layout. It may not create a second brain, second authority system, second ledger, or second canonical data store.
+If a reviewer sees a better approach:
+1. comment on PR #1290;
+2. post material not-right findings to #554 with evidence;
+3. propose an improved contract;
+4. score the impact;
+5. reconcile rather than silently fork;
+6. lock only after consensus/ratification.
 
-## Read order
+## Build sequence
 
-1. `ROOM-FUNCTIONAL-CONTRACT-V1.md`
-2. the relevant room spec
-3. `ROOMS-MACHINE-V1.json`
-4. parent Hub build/design contracts
-5. current runtime evidence
+Do not half-build eleven rooms.
 
-## Exactly one next action
+**YOUR INTELLIGENCE TODAY → exact states → exact data → interaction → implement → browser test → runtime test → persistence test → proof → then next room.**
 
-Use these room contracts to reconcile the app foundation and then implement **Your Intelligence Today** first as the full end-to-end exemplar: identity → canonical retrieval → highlights → provenance → Naya interpretation → actions → honest refusal/error states.
+The Today room is the reference masterpiece because it forces identity, retrieval, synthesis, evidence, Naya interpretation and cross-room action to work together.
