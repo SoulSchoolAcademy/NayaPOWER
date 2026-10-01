@@ -69,7 +69,7 @@
     "LAW": "implemented-candidate",
     "ACT": "implemented-candidate",
     "KNOW": "implemented-candidate",
-    "PROVE": "stub",
+    "PROVE": "implemented-candidate",
     "CONNECT": "stub",
     "VERIFY": "stub",
     "LEARN": "stub",
