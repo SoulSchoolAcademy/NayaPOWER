@@ -26,14 +26,21 @@ full audit visibility.
   on the canonical 13-edge runtime graph, per-edge fail-fast/fail-closed;
   order, first non-PASS short-circuits, hash-bound decision receipt) and
   `Kernel.gate_all()` (every gate, no short-circuit).
-- `manifest.json` — nine-node manifest skeleton, all versions `0.1.0-candidate`.
+- `manifest.json` — nine-node manifest: per-node implementation status,
+  the 13-edge runtime graph topology, the Ultimate Lock reconciliation
+  record, and the ratified V2.1 calculus binding; all versions
+  `0.1.0-candidate`.
 
-## How the overnight build loop fills it in
+## How the overnight build loop filled it in
 
-1. Ratify each node spec (morning package → Shawn's decision).
-2. Implement each stub against its ratified spec; the smoke tests in
-   `tests/test_nodes/` turn red→green as each node lands.
-3. Implement `Kernel.decide()` to iterate all nine gates and emit decision receipts.
+1. Each node spec reached the CANDIDATE bar overnight; ratification is
+   Shawn's word (morning package).
+2. All nine node modules implemented against their candidate specs; the
+   per-node tests in `tests/test_nodes/` are green (NOT ratified/merged/
+   deployed — tested candidate code on this branch only).
+3. `Kernel.decide()` traverses the canonical 13-edge runtime graph and
+   emits hash-bound decision receipts; the 9/9-green demo receipt is
+   recorded in the goal workspace (`hidden_files/node-build-demo-receipt.json`).
 4. Nothing here merges to main or deploys without Shawn's explicit word.
 
 ## Open question

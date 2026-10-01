@@ -85,7 +85,7 @@
   "SELF": "~/workspace/nine-node-specs/SELF-NODE-SPEC-CANDIDATE.md",
   "VERIFY": "~/workspace/nine-node-specs/VERIFY-NODE-SPEC-CANDIDATE.md"
  },
- "status": "SCAFFOLD",
+ "status": "CANDIDATE",
  "topology": {
   "edges": 13,
   "evaluation_order": [
