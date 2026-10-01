@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-09-30",
-  "receipt_basis_commit": "a33b33d7d541875a9cbaef6bd7db4c18d2f2145b",
+  "receipt_basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
   "inventory_file_count": 163,
   "domain_counts": {
     "00-SPEC": 15,
@@ -165,8 +165,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
-      "blob_sha": "3add4c355570186bdfdbe2d7ed1bfe1c8cb7d6a6",
-      "size": 6281
+      "blob_sha": "a71ae7e732e1da0132ce1cb968160ebc018e1d37",
+      "size": 6272
     },
     {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
@@ -305,8 +305,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "blob_sha": "61bae7768caacce585a0321cedbd247b1fb8f896",
-      "size": 9087
+      "blob_sha": "695f81578467c0928269c0edd05cc84e48c80147",
+      "size": 9261
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
@@ -345,8 +345,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "blob_sha": "96a89355320000af88820bbbd21d852a44b3cc62",
-      "size": 4684
+      "blob_sha": "076ae6c00f068f0dea4457ac4db4c904ae70ec8d",
+      "size": 4685
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
@@ -360,13 +360,13 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json",
-      "blob_sha": "3254e17cb23fdfa65d320e995bd5c30625169495",
-      "size": 5948
+      "blob_sha": "51f527f44273c0205859499e29c2fee35b061f2f",
+      "size": 5949
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "blob_sha": "25e5aa518bd460b420269426af1f399b75af4430",
-      "size": 4915
+      "blob_sha": "a9c9f8a8457173732965a41e5e8151cc1b8357bb",
+      "size": 4922
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
@@ -380,8 +380,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json",
-      "blob_sha": "6712321d8a4127b9b22e32566e3e8fc12473c420",
-      "size": 4154
+      "blob_sha": "47a611e41ba3ca2f3d7e6e39ab03ef199fd7d4d4",
+      "size": 4161
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
