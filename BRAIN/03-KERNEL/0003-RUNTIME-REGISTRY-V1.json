@@ -1,12 +1,12 @@
 {
   "schema": "naya.kernel.runtime.registry.v1",
   "kernel_id": "NAYAPOWER-MASTER-KERNEL-V1",
-  "status": "CANONICAL_RUNTIME_CONTRACT_BINDING_PENDING",
-  "behavioral_proof": "PENDING",
+  "status": "CANONICAL_RUNTIME_BINDINGS_RECONCILED",
+  "behavioral_proof": "BOUNDED_NINE_NODE_PROOF_EXISTS; CURRENT_MAIN_RUNTIME_PARITY_IS_MIXED",
   "runtime_binding": {
-    "status": "NOT_PROVEN",
-    "entrypoint": null,
-    "source_of_truth": "Actual application runtime source; do not infer from documentation."
+    "status": "PARTIAL_CURRENT_MAIN_PARITY",
+    "entrypoint": "Nine-node organism uses bounded node-specific runtimes; no monolithic second kernel runtime.",
+    "source_of_truth": "Repository source + deployed Supabase Edge source + persisted proof receipts; exact-current parity is node-specific and must be reread."
   },
   "manifest": "BRAIN/03-KERNEL/MANIFEST.json",
   "node_order": [
@@ -61,71 +61,67 @@
   "smart_door_registry": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
   "node_runtime_bindings": {
     "SELF": {
-      "status": "BOUNDED_EXISTING_IDENTITY_ANCHOR",
-      "entrypoint": "NAYA-NODE-0001 / existing governed runtime identity"
+      "status": "BOUNDED_IDENTITY_ANCHOR",
+      "entrypoint": "NAYA-NODE-0001 / existing governed runtime identity",
+      "persisted_transitions": "canonical identity/authority context + execution receipts",
+      "proof_boundary": "Identity anchor exists; universal SELF behavioral influence across every task is not claimed."
     },
     "LAW": {
-      "status": "BOUNDED_LIVE_PROVEN",
+      "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-law-runtime/index.ts",
-      "deployment": {
-        "function": "nayanet-law-runtime",
-        "version": 1
-      },
-      "proof_run": 36620001626,
-      "proof_source_main": "bf26fccf9d3a29348a509f6c32ab46cb7e940053",
-      "proof": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
-      "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
-      "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e"
+      "persisted_transitions": "nayanet_authority_grants + nayanet_execution_receipts",
+      "proof_boundary": "Deployed Edge source equals current repository source; prior bounded authorize/refuse proof exists. Latest-main end-to-end chain still requires fresh production proof."
     },
     "ACT": {
-      "status": "BOUNDED_LIVE_PROVEN",
+      "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
-      "deployment": {
-        "function": "nayanet-act-runtime",
-        "version": 1
-      },
-      "consumes": "nayanet_execution_receipts.action=law_authority_decision",
-      "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
-      "door": "DOOR-AI/apply_retained_intelligence",
-      "proof_run": 36622283683,
-      "proof_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
-      "proof": "BRAIN/06-PROOF/0007-ACT-LIVE-PROOF-36622283683-V1.json",
-      "law_receipt": "8812e1d2-1ebd-4067-b2be-e04112eab7ec",
-      "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
-      "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382"
+      "persisted_transitions": "nayanet_execution_receipts + governed execution outcomes",
+      "proof_boundary": "Deployed Edge source equals current repository source; bounded live ACT proof exists. Exact-current multi-request/idempotency proof remains a separate rung."
     },
     "KNOW": {
-      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
-      "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts",
-      "selector": "supabase/functions/nayanet-know-runtime/know.ts",
-      "consumes": "fresh AUTHORIZED LAW receipt for bounded parent naya_node_apply context",
-      "reads": "owner-scoped public.nayanet_intelligent_blocks",
-      "writes": "nayanet_execution_receipts.action=know_context_retrieval",
-      "caller_may_supply_selected_block": false,
-      "authority_rule": "retrieval does not create authority",
-      "handoff_to": "NAYA-KERNEL-PROVE",
-      "live_proof": "PENDING"
+      "status": "SOURCE_GRAPH_V2_MERGED_LIVE_RUNTIME_STALE_TO_CURRENT_MAIN",
+      "entrypoint": "supabase/functions/nayanet-know-runtime/index.ts + know.ts",
+      "persisted_transitions": "nayanet_intelligent_blocks + graph connections + nayanet_execution_receipts",
+      "proof_boundary": "Live function is active but deployed source does not equal current Graph V2 repository source. Do not claim current-main Graph V2 production behavior."
     },
     "PROVE": {
-      "status": "IMPLEMENTED_REPOSITORY_PROOF_PENDING_LIVE",
+      "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
       "entrypoint": "supabase/functions/nayanet-prove-runtime/index.ts",
-      "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
-      "consumes": "fresh persisted nayanet_execution_receipts.action=know_context_retrieval handoff",
-      "reads": "current live authority + owner-scoped selected Intelligent Block + provenance/evidence + contradiction/invalidation relationships",
-      "writes": "nayanet_execution_receipts.action=prove_claim_assessment",
-      "caller_may_supply_claim_or_evidence": false,
-      "authority_rule": "proof does not create authority",
-      "epistemic_rule": "claim strength never exceeds evidence strength; conflicts block promotion",
-      "handoff_to": "NAYA-KERNEL-CONNECT",
-      "live_proof": "PENDING",
-      "repository_tests": {
-        "kernel_tests_run": 36627017872,
-        "collective_chain_readiness_run": 36627018411,
-        "status": "PASS"
-      }
+      "persisted_transitions": "nayanet_execution_receipts + evidence/provenance assessment state",
+      "proof_boundary": "Deployed Edge source equals current repository source; bounded proof exists, but current full-chain outcome remains separately gated."
+    },
+    "CONNECT": {
+      "status": "SOURCE_GRAPH_V2_MERGED_PRODUCTION_PARITY_PENDING",
+      "entrypoint": "Graph V2 selector/reconciliation inside supabase/functions/nayanet-know-runtime/know.ts",
+      "persisted_transitions": "nayanet_intelligent_blocks.connections + relationship-aware retrieval receipts",
+      "proof_boundary": "Graph V2 contract is ratified and selector source merged. Live KNOW is stale to current source, so current Graph V2 influence is not production-proven."
+    },
+    "VERIFY": {
+      "status": "MIXED_PARITY_BOUNDED_LIVE_COMPONENTS",
+      "entrypoint": "supabase/functions/nayanet-causal-verify + nayanet-learning-verify",
+      "persisted_transitions": "nayanet_execution_outcomes + verification/execution receipts",
+      "proof_boundary": "nayanet-causal-verify deployed source equals current repo; nayanet-learning-verify does not. Verification capability is bounded, not universal current-main proof."
+    },
+    "LEARN": {
+      "status": "LIVE_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
+      "entrypoint": "supabase/functions/nayanet-learning-verify + nayanet-causal-learning-experiment",
+      "persisted_transitions": "learning candidates + Intelligent Blocks + checkpoint/verification receipts",
+      "proof_boundary": "Live components exist, but current repository sources are not fully deployed. Learning claims still require verified future behavioral effect."
+    },
+    "EVOLVE": {
+      "status": "BOUNDED_SUCCESSOR_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
+      "entrypoint": "supabase/functions/nayanet-cold-runtime-proof + nayanet-successor-handoff",
+      "persisted_transitions": "checkpoint/successor handoff evidence + execution receipts",
+      "proof_boundary": "Bounded cold-successor evidence exists historically; current source parity is not fully established and no universal successor claim is made."
     }
   },
   "next_node_after_law": "ACT",
   "next_node_after_act": "KNOW",
-  "next_node_after_know": "PROVE"
+  "next_node_after_know": "PROVE",
+  "binding_truth_rule": "Every one of the nine nodes must have exactly one canonical binding entry with an executable, persisted transition surface, and an explicit proof boundary. Binding existence is not proof of current-main production parity or universal behavioral influence.",
+  "next_node_after_prove": "CONNECT",
+  "next_node_after_connect": "VERIFY",
+  "next_node_after_verify": "LEARN",
+  "next_node_after_learn": "EVOLVE",
+  "next_node_after_evolve": "SELF"
 }
