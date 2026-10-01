@@ -169,7 +169,7 @@ Score each dimension 0–10. **Below 9.0 overall is not ready.**
 Deductions: gold violation (−2), flat button (−2 per instance), text under 10px (−2), two tones on one board (−1), missing provenance (−1 per board).
 
 ## 9. REFERENCE IMPLEMENTATION
-`~/workspace/your_files/smart-feed-blueprint/smart-feed.html` (v2) — the build these laws were extracted from. New rooms are built by cloning its board grammar and re-toning.
+`~/workspace/your_files/smart-feed-blueprint/smart-feed.html` — a faithful restoration of the canonical V7 page (9 canonical blocks, full 10-layer stack per board, original placements), NOT a redesign. New rooms are built by restoring their canonical content into this grammar. Redesigns require the director's explicit word.
 
 ## 10. AMENDMENT PROTOCOL
 These laws are v1. Amend by evidence: when a room scores below 9.0, the scorecard must name which law failed and propose the amendment. Amendments land as PRs against this directory with the scorecard attached. Never amend by taste — only by scored evidence.

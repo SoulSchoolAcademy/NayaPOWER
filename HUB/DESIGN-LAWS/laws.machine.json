@@ -129,7 +129,7 @@
     "design-laws-v1",
     "room-specs"
   ],
-  "reference_implementation": "workspace/your_files/smart-feed-blueprint/smart-feed.html (v2)",
+  "reference_implementation": "workspace/your_files/smart-feed-blueprint/smart-feed.html \u2014 faithful restoration of the canonical V7 page (9 canonical blocks, 10-layer stack), NOT a redesign; redesigns require the director's explicit word",
   "schema": "nayanet.design-laws.v1",
   "scorecard": {
     "bar": 9.0,
@@ -258,7 +258,7 @@
       "weight": 800
     }
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "layers": {
     "order": [
       "human",

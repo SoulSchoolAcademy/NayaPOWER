@@ -79,4 +79,4 @@ No claim appears without its seal. No board ends without provenance: what this i
 
 Every room is scorecarded against these laws on eight dimensions, each out of ten: theming, buttons, color flow, text density, board elevation, room completeness, Naya presence, proof. **Below 9.0 is not ready.** The reference implementation — the build these laws were extracted from — is the Smart Feed visual blueprint (v2).
 
-*These laws are not finished. They are version one of a constitution meant to be amended by evidence — every time a room scores below 9, the laws learn why.*
+*These laws are not finished. They are version one of a constitution meant to be amended by evidence — every time a room scores below 9, the laws learn why. The reference implementation is the Smart Feed blueprint: a faithful restoration of the canonical page, not a redesign.*
