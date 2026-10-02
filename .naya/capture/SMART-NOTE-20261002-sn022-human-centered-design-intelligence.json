@@ -59,7 +59,8 @@
         "measured_human_cognitive_burden_and_task_outcomes"
       ],
       "operating_loop": "RESTORE → UNDERSTAND HUMAN OUTCOME → DISTILL → PRIORITIZE → SELECT APPLICABLE PATTERNS → MODEL STATES/FAILURES → DESIGN HIERARCHY/INTERACTION → APPLY NAYA VISUAL CRAFT → BUILD → RENDER → USE → TEST HUMAN FACTORS → VERIFY → LEARN → SUPERSEDE/REUSE",
-      "anti_pattern": "Do not confuse premium visual effects with user experience. Do not copy benchmark interfaces. Extract principles, preserve applicability, and express them through Naya's own coherent design language."
+      "anti_pattern": "Do not confuse premium visual effects with user experience. Do not copy benchmark interfaces. Extract principles, preserve applicability, and express them through Naya's own coherent design language.",
+      "benchmark_to_beyond": "Research strong exemplars, decompose why they work, cross-reference against canonical Naya intelligence, preserve what Naya already does better, synthesize compatible strengths, generate a beyond-benchmark option, test it, and preserve only verified improvement."
     },
     "ai_view": {
       "instruction": "Before producing UI, resolve objective, user context, information priority, action hierarchy, interaction state, failure/recovery, accessibility, responsive behavior and proof criteria. Retrieve canonical design laws and applicable patterns. Generate visual treatment only after the experience model is coherent.",
@@ -78,7 +79,8 @@
         "performance",
         "continuity"
       ],
-      "design_pattern_rule": "Patterns are reusable intelligence with applicability conditions, not templates to copy blindly."
+      "design_pattern_rule": "Patterns are reusable intelligence with applicability conditions, not templates to copy blindly.",
+      "benchmark_instruction": "Benchmarking is not imitation. Use multiple strong exemplars as evidence inputs, extract causal principles and tradeoffs, preserve proven Naya strengths, synthesize, then test a credible beyond-benchmark alternative."
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
@@ -86,7 +88,7 @@
       "human_director_design_doctrine_status": "RATIFIED_ADOPTED_2026-10-02",
       "authority_inheritance": false,
       "design_standard": "NAYA-DESIGN-INTELLIGENCE-STANDARD-V1",
-      "design_standard_version": "1.2",
+      "design_standard_version": "1.3",
       "optimization_target": "MAXIMUM_RESPONSIBLE_HUMAN_VALUE_WITH_MINIMUM_NECESSARY_COGNITIVE_BURDEN",
       "laws": [
         "PURPOSE_BEFORE_INTERFACE",
@@ -130,7 +132,21 @@
         "OUTCOME",
         "SUPERSESSION"
       ],
-      "gate_rule": "Visual quality alone cannot pass UX. A design is incomplete when the human cannot understand, act, recover, trust the state or complete the intended outcome."
+      "gate_rule": "Visual quality alone cannot pass UX. A design is incomplete when the human cannot understand, act, recover, trust the state or complete the intended outcome.",
+      "benchmark_loop": [
+        "RESEARCH_FRONTIER",
+        "DECOMPOSE",
+        "CROSS_REFERENCE",
+        "PRESERVE",
+        "SYNTHESIZE",
+        "SURPASS",
+        "TEST",
+        "VERIFY",
+        "LEARN",
+        "REUSE"
+      ],
+      "ten_x_semantics": "ASPIRATIONAL_STEP_CHANGE_TARGET_UNLESS_MEASURED",
+      "superiority_claim_requires_evidence": true
     },
     "decisions": [
       "Adopt the cross-referenced human-centered design intelligence as a standing Naya Design operating method.",
@@ -142,7 +158,11 @@
       "Require human-experience evidence in addition to visual review for promoted design learning.",
       "Keep accessibility, truth, privacy, authority, performance and causal completeness as hard constraints.",
       "Store reusable design patterns with applicability, evidence, failure modes and supersession rather than as static templates.",
-      "A future Naya should begin from these laws automatically instead of requiring Shawn to restate them."
+      "A future Naya should begin from these laws automatically instead of requiring Shawn to restate them.",
+      "Benchmarking exists to learn and synthesize, not to crown or copy a winner.",
+      "Preserve any current Naya design capability that is already stronger than the external benchmark.",
+      "Generate a beyond-benchmark alternative on material design work and verify the improvement before promoting it.",
+      "Treat 10× better as a step-change ambition unless a real metric supports the numerical factor."
     ],
     "connections": [
       {
@@ -172,7 +192,7 @@
     ],
     "uncertainty": "The cross-reference strongly supports the current Naya design direction, but exact quantitative UX thresholds, device-specific motor targets, benchmark weights and long-term human outcome effects require iterative evidence from real NayaNET users. Adoption means these principles govern design reasoning now; it does not claim every principle has already been production-proven in NayaNET.",
     "applicability": "Applies to NayaPOWER/NayaNET interfaces, apps, rooms, onboarding, controls, navigation, data/intelligence presentation, design systems and AI-generated UI. Project-specific contracts may specialize expression but should not weaken the human-experience laws without evidence and Human Director authority.",
-    "learning_lesson": "The external benchmark corpus did not overturn Naya's design philosophy; it validated it and exposed the missing explicit cognitive layer. The highest-leverage upgrade is to fuse Naya's distinctive visual/material craft with rigorous human psychology and usability so increasingly powerful intelligence creates an increasingly simple human experience.",
-    "successor_effect": "A cold Naya should retrieve this doctrine before substantive interface work, preserve existing signature strengths, apply the human-experience laws, test the resulting experience, and leave verified design learning for the next Naya."
+    "learning_lesson": "The external benchmark corpus validated Naya's direction and exposed explicit human-factors gaps. The refined lesson is stronger: benchmark to extract intelligence, preserve what is already better, synthesize the strongest compatible principles, then deliberately advance beyond the current frontier and retain only verified improvement.",
+    "successor_effect": "A cold Naya should retrieve this doctrine before substantive interface work, research the frontier when material, preserve existing signature strengths, synthesize applicable external lessons, generate a better hypothesis, test it, and leave verified design learning for the next Naya."
   }
 }
