@@ -1,18 +1,30 @@
 /* ═══════════════════════════════════════════════════════════════════
-   YOUR INTELLIGENCE TODAY — THE HIGHLIGHT REEL · v2
-   Director ruling (2026-10-02): the sidebar's "Your Intelligence Today"
-   is its own page — the day's hockey highlights. Scroll and see
-   everything going on in your world, in-a-nutshells, quick view.
-   No modes. No builder-world. No manufactured noise.
+   YOUR INTELLIGENCE TODAY — v3 · built against the Master Directive v1
+   (INTELLIGENCE-TODAY-MASTER-DIRECTIVE-V1.md, repo root).
 
-   10-star thinking — the page's real job isn't showing highlights,
-   it's building tomorrow's starting lineup:
-   - THE SCORELINE: the day at a glance, one quiet line.
-   - THE TOP PLAYS: ranked by what changed the game. Each play: rank,
-     time anchor, the announcer's call, the nutshell. Tap → the play
-     opens into its full Smart Note depth.
-   - CARRY FORWARD: mark the plays that deserve to survive. They
-     collect into tomorrow's lineup — continuity you can touch.
+   Composition per the contract hierarchy:
+   ORIENT → NOW → NEXT → WATCH → LEARNED → WAITING → REMEMBER → PROOF.
+
+   - ORIENT: date, time-aware line (morning/midday/evening — clock-true,
+     never faked personalization), the day at a glance.
+   - NOW: what changed — ranked plays, biggest first. Each play: rank,
+     time anchor, the announcer's call, the nutshell. Tap → full Smart
+     Note depth (GLANCE → UNDERSTAND → INSPECT → PROVE).
+   - NEXT: the top next move — THE primary action, verb-first, purple.
+     State-driven around what the human has carried forward.
+   - WATCH: plays not yet opened — derived from real interaction state,
+     never manufactured.
+   - LEARNED: where today climbed the ladder
+     INFORMATION → UNDERSTANDING → CHANGE → DECISION → KNOWLEDGE.
+   - WAITING: open loops — honest empty state when there are none.
+   - REMEMBER: tomorrow's lineup — continuity the human can touch.
+   - PROOF: evidence drawer per play (SOURCE → EVENT → STATE).
+
+   Color jobs (every pixel named): magenta #d86cff signs the ROOM
+   (human significance — eyebrows, scoreline, header edge); per-play
+   edge tone = the object's stable identity; gold = turning points and
+   carried-forward (consequence/value); purple = the primary action
+   (Naya's signature). No modes. No builder-world. No manufactured noise.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
@@ -29,9 +41,12 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
+  const RUNGS=['INFORMATION','UNDERSTANDING','CHANGE','DECISION','KNOWLEDGE'];
+
   const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
 
   const carried=[];
+  const seenPlays=new Set();
   let allPlays=[];
   let openPlayId=null;
 
@@ -39,9 +54,6 @@
     const {el}=window.NayaUI, K=window.NayaRoomKit;
     const stage=el('section','today-stage');
     stage.setAttribute('aria-label','Your Intelligence Today — the highlight reel');
-    const line=el('div','score-line'); stage.appendChild(line);
-    const river=el('div','plays-river'); stage.appendChild(river);
-    const lineup=el('div','lineup'); stage.appendChild(lineup);
     stage.appendChild(evDrawer(el));
 
     K.load(stage,'today',{date:new Date().toISOString().slice(0,10)},(payload,list,out)=>{
@@ -57,28 +69,59 @@
   }
 
   function renderAll(el,stage){
-    renderScoreline(el,stage);
-    renderRiver(el,stage);
-    renderLineup(el,stage);
+    const drawer=stage.querySelector('.ev-wrap');
+    stage.innerHTML='';
+    if(drawer)stage.appendChild(drawer);
+    stage.appendChild(orient(el));
+    stage.appendChild(section(el,'NOW','What changed',nowRiver(el)));
+    stage.appendChild(section(el,'NEXT','Your top next move',nextCard(el)));
+    stage.appendChild(section(el,'WATCH','Still unopened',watchList(el)));
+    stage.appendChild(section(el,'LEARNED','What today taught',learnedList(el)));
+    stage.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
+    const lineup=rememberLineup(el);
+    if(lineup)stage.appendChild(section(el,'REMEMBER','Tomorrow\u2019s lineup',lineup));
   }
 
-  /* ——— THE SCORELINE: the day at a glance ——— */
-  function renderScoreline(el,stage){
-    const line=stage.querySelector('.score-line');
-    line.innerHTML='';
+  function section(el,eyebrow,title,body){
+    const s=el('section','tsection');
+    const h=el('div','tsection-head');
+    const e=el('p','tsection-eyebrow',''); e.textContent=eyebrow;
+    const t=el('h2','tsection-title',''); t.textContent=title;
+    h.appendChild(e); h.appendChild(t);
+    s.appendChild(h); s.appendChild(body);
+    return s;
+  }
+
+  /* ——— ORIENT: the day at a glance ——— */
+  function orient(el){
+    const o=el('div','orient');
+    const now=new Date(), h=now.getHours();
+    const line=h>=5&&h<11
+      ?'Good morning. Today\u2019s intelligence is still arriving \u2014 here\u2019s what\u2019s here so far.'
+      :h>=11&&h<17
+      ?'Good afternoon. Here\u2019s what today holds so far.'
+      :h>=17&&h<22
+      ?'Good evening. Here\u2019s what today became.'
+      :'Late night. Here\u2019s today, distilled.';
+    const d=el('p','orient-date','');
+    d.textContent=now.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    const l=el('p','orient-line',''); l.textContent=line;
+    o.appendChild(d); o.appendChild(l);
+
     const n=allPlays.length;
     const tp=allPlays.filter(p=>p.turning).length;
-    const s=el('p','');
-    s.innerHTML='<strong>'+n+'</strong> PLAYS&nbsp;&nbsp;·&nbsp;&nbsp;<strong>'+tp+'</strong> TURNING POINT'+(tp===1?'':'S')
-      +'&nbsp;&nbsp;·&nbsp;&nbsp;<strong>'+carried.length+'</strong> CARRIED FORWARD';
-    line.appendChild(s);
+    const s=el('p','score-line');
+    s.innerHTML='<strong>'+n+'</strong> PLAYS&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+tp+'</strong> TURNING POINT'+(tp===1?'':'S')
+      +'&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+carried.length+'</strong> CARRIED FORWARD';
+    o.appendChild(s);
+    return o;
   }
 
-  /* ——— THE TOP PLAYS ——— */
-  function renderRiver(el,stage){
-    const river=stage.querySelector('.plays-river');
-    river.innerHTML='';
+  /* ——— NOW: what changed ——— */
+  function nowRiver(el){
+    const river=el('div','plays-river');
     allPlays.forEach((p,i)=>river.appendChild(play(el,p,i)));
+    return river;
   }
 
   function play(el,p,rank){
@@ -107,7 +150,6 @@
       a.appendChild(n);
     }
 
-    /* The play opens into its full Smart Note depth. */
     const opened=p.id===openPlayId;
     if(opened){
       const deep=el('div','play-depth');
@@ -127,7 +169,7 @@
     const carry=el('button','carry-toggle'+(isOn?' on':''),'');
     carry.type='button';
     carry.setAttribute('aria-pressed',isOn?'true':'false');
-    carry.setAttribute('aria-label',(isOn?'Remove from tomorrow’s lineup: ':'Carry into tomorrow: ')+p.title);
+    carry.setAttribute('aria-label',(isOn?'Remove from tomorrow\u2019s lineup: ':'Carry into tomorrow: ')+p.title);
     const dot=el('span','carry-dot',''); carry.appendChild(dot);
     const clab=el('span','',''); clab.textContent=isOn?'Carried forward':'Carry forward';
     carry.appendChild(clab);
@@ -145,6 +187,7 @@
 
     const toggle=()=>{
       openPlayId=opened?null:p.id;
+      if(!opened)seenPlays.add(p.id);
       const stage=a.closest('.today-stage');
       renderAll(el,stage);
       if(!opened){
@@ -160,15 +203,110 @@
     return a;
   }
 
-  /* ——— TOMORROW'S LINEUP: continuity you can touch ——— */
-  function renderLineup(el,stage){
-    const box=stage.querySelector('.lineup');
-    box.innerHTML='';
-    if(!carried.length)return;
-    const h=el('h3','',''); h.textContent='Tomorrow’s lineup';
+  /* ——— NEXT: the top next move — the primary action ——— */
+  function nextCard(el){
+    const card=el('div','next-card');
+    const n=carried.length;
+    const t=el('h3','');
+    const b=el('p','next-body','');
+    const btn=el('button','next-action',''); btn.type='button';
+    if(n===0){
+      t.textContent='Decide what today means';
+      b.textContent='Nothing is carried forward yet. Mark the plays worth remembering \u2014 tomorrow\u2019s briefing starts with your call.';
+      btn.textContent='Choose the first play';
+      btn.addEventListener('click',()=>{
+        const first=document.getElementById('play-'+CSS.escape(allPlays[0].id));
+        if(first){first.scrollIntoView({block:'center',behavior:'smooth'});first.focus({preventScroll:true});}
+      });
+    }else{
+      t.textContent='Tomorrow\u2019s briefing is taking shape';
+      b.textContent=n+' play'+(n===1?'':'s')+' carried forward. Review the lineup before the day ends.';
+      btn.textContent='Review tomorrow\u2019s lineup';
+      btn.addEventListener('click',()=>{
+        const lu=document.querySelector('.lineup');
+        if(lu)lu.scrollIntoView({block:'center',behavior:'smooth'});
+      });
+    }
+    card.appendChild(t); card.appendChild(b); card.appendChild(btn);
+    return card;
+  }
+
+  /* ——— WATCH: still unopened — derived from real state ——— */
+  function watchList(el){
+    const wrap=el('div','watch-list');
+    const unseen=allPlays.filter(p=>!seenPlays.has(p.id));
+    if(!unseen.length){
+      const q=el('p','quiet-note','');
+      q.textContent='You\u2019ve opened every play. Nothing is waiting on your attention.';
+      wrap.appendChild(q); return wrap;
+    }
+    const ul=el('ul','');
+    unseen.forEach(p=>{
+      const li=el('li','');
+      const dot=el('span','watch-dot',''); dot.style.setProperty('--tone',toneFor(p));
+      const span=el('span','',''); span.textContent=p.title;
+      const open=el('button','','Open'); open.type='button';
+      open.setAttribute('aria-label','Open: '+p.title);
+      open.addEventListener('click',()=>{
+        openPlayId=p.id; seenPlays.add(p.id);
+        const stage=wrap.closest('.today-stage');
+        renderAll(el,stage);
+        const t2=document.getElementById('play-'+CSS.escape(p.id));
+        if(t2)t2.scrollIntoView({block:'center',behavior:'smooth'});
+      });
+      li.appendChild(dot); li.appendChild(span); li.appendChild(open); ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
+  /* ——— LEARNED: where today climbed the ladder ——— */
+  function learnedList(el){
+    const wrap=el('div','learned-list');
+    const items=allPlays.filter(p=>p.rung);
+    if(!items.length){
+      const q=el('p','quiet-note','');
+      q.textContent='Nothing has been marked as learned yet today.';
+      wrap.appendChild(q); return wrap;
+    }
+    const ul=el('ul','');
+    items.forEach(p=>{
+      const li=el('li','');
+      const rung=el('span','rung-tag',''); rung.textContent=p.rung;
+      const span=el('span','',''); span.textContent=p.title;
+      li.appendChild(rung); li.appendChild(span); ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
+  /* ——— WAITING: open loops — honest when empty ——— */
+  function waitingList(el){
+    const wrap=el('div','waiting-list');
+    const items=allPlays.filter(p=>Array.isArray(p.waiting)&&p.waiting.length);
+    if(!items.length){
+      const q=el('p','quiet-note','');
+      q.textContent='Nothing is waiting on you. A quiet day can stay quiet.';
+      wrap.appendChild(q); return wrap;
+    }
+    const ul=el('ul','');
+    items.forEach(p=>p.waiting.forEach(w=>{
+      const li=el('li','');
+      const span=el('span','',''); span.textContent=w;
+      const src=el('span','waiting-src',''); src.textContent=p.title;
+      li.appendChild(span); li.appendChild(src); ul.appendChild(li);
+    }));
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
+  /* ——— REMEMBER: tomorrow's lineup ——— */
+  function rememberLineup(el){
+    if(!carried.length)return null;
+    const box=el('div','lineup');
     const sub=el('p','lineup-sub','');
-    sub.textContent='Tomorrow’s briefing starts here — '+carried.length+' play'+(carried.length===1?'':'s')+' you chose to carry forward.';
-    box.appendChild(h); box.appendChild(sub);
+    sub.textContent='Tomorrow\u2019s briefing starts here \u2014 '+carried.length+' play'+(carried.length===1?'':'s')+' you chose to carry forward.';
+    box.appendChild(sub);
     const ul=el('ul','');
     carried.forEach(id=>{
       const p=allPlays.find(x=>x.id===id); if(!p)return;
@@ -179,11 +317,13 @@
       rm.setAttribute('aria-label','Remove from lineup: '+p.title);
       rm.addEventListener('click',()=>{
         const ix=carried.indexOf(id); if(ix>=0)carried.splice(ix,1);
+        const stage=box.closest('.today-stage');
         renderAll(el,stage);
       });
       li.appendChild(dot); li.appendChild(span); li.appendChild(rm); ul.appendChild(li);
     });
     box.appendChild(ul);
+    return box;
   }
 
   function makeLayer(el,key,text){
@@ -212,6 +352,7 @@
     if(!layers.machine) layers.machine=evidenceLine(o);
     const state=(o.truth_state||o.state||'').toString().toUpperCase();
     const srcName=typeof o.source==='string'?o.source:(o.source&&o.source.name)||'';
+    const rung=(o.rung||'').toString().toUpperCase();
     return {
       id:String(o.intelligent_block_id||o.id||('play-'+Math.abs(hashCode(o.title||'')))),
       title:K.title(o,'Untitled play'),
@@ -221,8 +362,9 @@
       when:(o.when||'').toString().toUpperCase(),
       call:o.call||'',
       turning:!!o.turning_point||!!o.turning,
-      layers,
-      related:Array.isArray(o.related)?o.related:[]
+      rung:RUNGS.includes(rung)?rung:'',
+      waiting:Array.isArray(o.waiting)?o.waiting.filter(w=>typeof w==='string'&&w.trim()):[],
+      layers
     };
   }
 
@@ -239,7 +381,7 @@
     if(t) bits.push('Time: '+t);
     const id=o.intelligent_block_id||o.id;
     if(id) bits.push('ID: '+id);
-    return bits.length?bits.join(' — ')
+    return bits.length?bits.join(' \u2014 ')
       :'No provenance is attached to this object, so no evidence boundary can be stated.';
   }
 
@@ -257,14 +399,14 @@
     const dr=document.getElementById('ev-drawer-today'), bd=document.getElementById('ev-backdrop-today');
     if(!dr||!bd)return;
     dr.innerHTML='';
-    const k=el('p','ev-kicker',''); k.textContent='EVIDENCE · '+(b.truth_state||'STATE UNSTATED');
+    const k=el('p','ev-kicker',''); k.textContent='EVIDENCE \u00B7 '+(b.truth_state||'STATE UNSTATED');
     const h=el('h3','',''); h.textContent=b.title;
     dr.appendChild(k); dr.appendChild(h);
     const ul=el('ul','ev-chain');
     [
-      ['SOURCE',(b.source||'Unnamed source')+' — origin of this intelligence. Source and interpretation stay separate.'],
+      ['SOURCE',(b.source||'Unnamed source')+' \u2014 origin of this intelligence. Source and interpretation stay separate.'],
       ['EVENT','Recorded '+(b.created_at||'at an unstated time')+'. Object ID: '+b.id+'.'],
-      ['STATE',(b.truth_state||'UNSTATED')+' — '+(b.truth_state==='VERIFIED'||b.truth_state==='CANONICAL'?'backed by evidence.':'not yet verified; treat accordingly.')]
+      ['STATE',(b.truth_state||'UNSTATED')+' \u2014 '+(b.truth_state==='VERIFIED'||b.truth_state==='CANONICAL'?'backed by evidence.':'not yet verified; treat accordingly.')]
     ].forEach(r=>{
       const li=el('li',''); li.innerHTML='<strong>'+esc(r[0])+'</strong>';
       const sp=el('span','',''); sp.textContent=r[1]; li.appendChild(sp); ul.appendChild(li);
