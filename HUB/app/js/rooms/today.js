@@ -11,21 +11,11 @@
 
     const now=new Date();
     const dateKey=now.toISOString().slice(0,10);
-    const intro=K.board(
-      r.accent,
-      'spark',
-      'Your intelligence, distilled',
-      now.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'})
-    );
-    intro.classList.add('today-intro');
-    intro.body.innerHTML=
-      '<p class="today-intro-copy">Naya sorts the day before asking you to sort it. '+
-      'Start with what matters now, take the next useful move, and open evidence only when you need depth.</p>';
-    wrap.appendChild(intro);
-
     const status=el('div','room-toolbar between today-toolbar');
     const stamp=el('div','room-status-line',
-      '<span class="led" aria-hidden="true"></span><span>TODAY · CANONICAL INTELLIGENCE ONLY</span>');
+      '<span class="led" aria-hidden="true"></span><span>'+
+      K.safe(now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'}).toUpperCase())+
+      ' · CANONICAL INTELLIGENCE ONLY</span>');
     const refresh=el('button','btn btn-ghost today-refresh',Icons.icon('arrow')+'<span>Refresh</span>');
     refresh.type='button';
     refresh.style.setProperty('--btn-accent',r.accent);
