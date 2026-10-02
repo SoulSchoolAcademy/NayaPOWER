@@ -9,6 +9,8 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Canonical semantic/build sources
 1. [PROJECT-INTELLIGENCE.md](./PROJECT-INTELLIGENCE.md) — build law, roadmap, scorecard, phases and gates.
 2. [DESIGN-CONTRACT.md](./DESIGN-CONTRACT.md) — visual/experience law and protected design DNA.
+3. [BREAKING-THE-SHELL-BARRIER-V1.md](./BREAKING-THE-SHELL-BARRIER-V1.md) — whole-app completion doctrine: render/observe/verify loops, completion matrix, regression ratchet and independent eye.
+4. [INTERFACE-COMPLETION-HARNESS-V1.json](./INTERFACE-COMPLETION-HARNESS-V1.json) — machine-readable anti-shell completion contract.
 
 ### Projections of that same meaning
 - [PROJECT-INTELLIGENCE.HUMAN.md](./PROJECT-INTELLIGENCE.HUMAN.md) — human meaning and desired experience.
@@ -48,9 +50,19 @@ The existing concept is the visual-quality floor. A cleaner implementation that 
 
 ## Build law
 
-**ONE SHELL · ELEVEN ROOMS · ONE GOVERNED SUBSTRATE · HONEST STATE · REAL CAUSAL PATHS**
+**ONE SHELL · ELEVEN ROOMS · ONE GOVERNED SUBSTRATE · HONEST STATE · REAL CAUSAL PATHS · NO FALSE COMPLETION**
 
 Every visible control must perform a real operation, navigate somewhere real, or honestly communicate unavailable/blocked/unknown state.
+
+## Shell-barrier law
+
+A route, shell, first vertical slice, pretty screen or placeholder room is not the application.
+
+Builders must follow:
+
+**PLAN THE WHOLE → BUILD THE WHOLE → LOOK AT THE WHOLE → PROVE THE WHOLE → KEEP THE WHOLE.**
+
+Verified surfaces become non-regression baselines. The Human Director is not the manual missing-work detector.
 
 ## Team Naya standing detection rule
 
