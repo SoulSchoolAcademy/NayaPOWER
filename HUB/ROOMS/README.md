@@ -7,6 +7,22 @@
 
 ## One shell. Eleven masterpieces. One Naya. One governed substrate.
 
+## Blueprint-before-build law
+
+Before production implementation of any room, read:
+
+`ROOM-BLUEPRINT-STANDARD-V1.md`
+
+and that room's:
+
+`VISUAL-INTERACTION-BLUEPRINT.md`
+
+The Functional Spec defines **what the room means and does**.
+
+The Visual / Interaction Blueprint defines **what the builder should actually put on the screen, where it goes, why it goes there, what controls exist, how mobile transforms, what data enters, and what proves completion**.
+
+Cold builders should not invent basic page composition from scratch.
+
 ## Hub input / output law
 
 **The Hub is output.** Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports are produced upstream and projected into the Hub automatically.
