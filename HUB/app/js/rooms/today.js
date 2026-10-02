@@ -137,15 +137,26 @@
   function orient(el){
     const o=el('div','orient');
     const now=new Date(), h=now.getHours();
-    const line=h>=5&&h<11
-      ?'Good morning. Today\u2019s intelligence is still arriving \u2014 here\u2019s what\u2019s here so far.'
-      :h>=11&&h<17
-      ?'Good afternoon. Here\u2019s what today holds so far.'
-      :h>=17&&h<22
-      ?'Good evening. Here\u2019s what today became.'
-      :'Late night. Here\u2019s today, distilled.';
+    let dateStr, line;
+    if(activeTab==='yesterday'){
+      const y=new Date(now); y.setDate(y.getDate()-1);
+      dateStr=y.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      line='Yesterday\u2019s intelligence, distilled. What mattered, what changed, what was learned.';
+    }else if(activeTab==='week'){
+      dateStr='The week so far';
+      line='Last week\u2019s highlights. The intelligence that mattered most.';
+    }else{
+      dateStr=now.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      line=h>=5&&h<11
+        ?'Good morning. Today\u2019s intelligence is still arriving \u2014 here\u2019s what\u2019s here so far.'
+        :h>=11&&h<17
+        ?'Good afternoon. Here\u2019s what today holds so far.'
+        :h>=17&&h<22
+        ?'Good evening. Here\u2019s what today became.'
+        :'Late night. Here\u2019s today, distilled.';
+    }
     const d=el('p','orient-date','');
-    d.textContent=now.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    d.textContent=dateStr;
     const l=el('p','orient-line',''); l.textContent=line;
     o.appendChild(d); o.appendChild(l);
 
