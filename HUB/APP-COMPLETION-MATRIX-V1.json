@@ -2,7 +2,7 @@
   "schema": "nayanet.hub.app-completion.v1",
   "version": "1.0",
   "app_id": "NAYANET_INTELLIGENT_HUB",
-  "doctrine": "SN-019 \u2014 Complete the App Doctrine \u2014 Finish the House, Not the Shell",
+  "doctrine": "SN-019 — Complete the App Doctrine — Finish the House, Not the Shell",
   "base_main_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
   "branch": "naya/hub-complete-app-v1",
   "overall_state": "IN_PROGRESS",
@@ -102,10 +102,11 @@
     "canonical_room_contract": {
       "state": "TESTED",
       "evidence": [
+        "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
         "HUB/app/js/room-contract.js",
         "HUB/app/tests/browser-smoke.mjs"
       ],
-      "remaining": "Independent review and canonical shell/Home authority reconciliation remain."
+      "remaining": "Independent review and canonical shell/Home authority reconciliation remain; runtime adapter fails closed if canonical identity/order/state model drifts."
     },
     "canonical_room_socket": {
       "state": "TESTED",
@@ -358,7 +359,7 @@
   "whole_app_journeys": [
     {
       "id": "J01",
-      "name": "Welcome \u2192 Identity \u2192 Hub",
+      "name": "Welcome → Identity → Hub",
       "state": "IMPLEMENTED",
       "proof": []
     },
@@ -370,14 +371,14 @@
     },
     {
       "id": "J03",
-      "name": "Ask Naya/search \u2192 canonical answer \u2192 provenance",
+      "name": "Ask Naya/search → canonical answer → provenance",
       "state": "IMPLEMENTED",
       "proof": [],
       "remaining": "live runtime proof"
     },
     {
       "id": "J04",
-      "name": "Smart Note outside Hub \u2192 persistence \u2192 Feed \u2192 Today \u2192 Library",
+      "name": "Smart Note outside Hub → persistence → Feed → Today → Library",
       "state": "NOT_STARTED",
       "proof": []
     },
@@ -389,7 +390,7 @@
     },
     {
       "id": "J06",
-      "name": "Smart Connect registry \u2192 authority boundary \u2192 proof",
+      "name": "Smart Connect registry → authority boundary → proof",
       "state": "NOT_STARTED",
       "proof": []
     },

@@ -1,7 +1,9 @@
-/* CANONICAL ROOM CONTRACT — one machine-readable socket for every Hub room.
-   Projection only: this describes how rooms consume governed intelligence; it is not a truth store. */
+/* ROOM CONTRACT ADAPTER - runtime projection of the canonical machine room contract.
+   Canonical identity/route/theme/job/composition comes from HUB/NAYANET-SMART-APP-ROOMS-V1.json.
+   This adapter adds UI consumption metadata; it is not a second room registry or truth store. */
 (function(){
   'use strict';
+  const SOURCE='../NAYANET-SMART-APP-ROOMS-V1.json';
   const STATE_MODEL=['loading','empty','ready','blocked','unauthorized','not_verified','verified','error','offline','disabled','unknown'];
   const BASE={
     state_model:STATE_MODEL,
@@ -16,19 +18,6 @@
     accessibility_requirements:'keyboard operable; visible focus; semantic controls; reduced-motion safe',
     continuity_behavior:'route + canonical object identity + context survive room navigation where applicable',
     proof_requirements:['runtime truth','failure states','browser render','keyboard/mobile','cross-room identity','independent review']
-  };
-  const CANONICAL={
-    feed:{route:'/feed',theme:'emerald',job:'See useful intelligence/activity now',primary:'OPEN_OR_ACT_ON_HIGHEST_VALUE_ITEM',composition:['PERSONAL_COLLECTIVE_ACTIVITY','FOCUS','INTELLIGENCE_STREAM','WHY_NOW']},
-    today:{route:'/today',theme:'magenta',job:'Know what matters right now',primary:'ACT_ON_TOP_NEXT_MOVE',composition:['NOW','NEXT','WATCH','LEARNED','WAITING','RECENT_PROOF']},
-    reports:{route:'/reports',theme:'indigo',job:'Understand meaning across time',primary:'INSPECT_OR_ACT_ON_KEY_FINDING',composition:['MEANING','EVIDENCE','CHANGE_OVER_TIME','DRIVERS','UNCERTAINTY','NEXT_MOVES','PROOF']},
-    library:{route:'/library',theme:'sapphire',job:'Find, trust and reuse intelligence',primary:'SEARCH_OR_OPEN_INTELLIGENCE',composition:['SEARCH','FILTERS','RELEVANT','RESULTS','OBJECT_DETAIL']},
-    connect:{route:'/connect',theme:'emerald',job:'Understand and configure connection doors',primary:'CONNECT_OR_CONFIGURE_DOOR',composition:['DOORS','REAL_STATUS','CAPABILITIES','SETUP','AUTHORITY_NOTE']},
-    ledger:{route:'/ledger',theme:'gold',job:'Inspect what happened and what proves it',primary:'INSPECT_EVENT_PROOF',composition:['TRUST_SUMMARY','RECEIPT_STREAM','FILTERS','RECEIPT_INSPECTOR']},
-    connections:{route:'/connections',theme:'orange',job:'Understand governed relationships',primary:'INSPECT_OR_MANAGE_CONNECTION',composition:['RELATIONSHIP_LIST','SCOPE','CONSENT','ACTIVITY','OPTIONAL_MAP']},
-    lists:{route:'/lists',theme:'purple',job:'Organize intelligence for action without duplication',primary:'OPEN_OR_CREATE_LIST',composition:['LISTS','QUALIFICATION_RULES','ITEMS','ACTIONS']},
-    mail:{route:'/mail',theme:'sapphire',job:'Prioritize and respond to real communication',primary:'OPEN_HIGHEST_VALUE_CONVERSATION',composition:['PRIORITY_INBOX','CONVERSATIONS','DETAIL','NAYA_ASSIST','CONNECTION_STATE']},
-    spaces:{route:'/spaces',theme:'lime',job:'Enter or resume a durable context',primary:'ENTER_OR_RESUME_SPACE',composition:['SPACE_IDENTITY','PURPOSE','MEMBERS','SCOPE','RECENT_INTELLIGENCE','CURRENT_STATE']},
-    settings:{route:'/settings',theme:'neutral',job:'Control the relationship with NayaNET',primary:'CONTEXTUAL_BY_CATEGORY',composition:['IDENTITY','PRIVACY','AUTHORITY','CONNECTIONS','PERSONALIZATION','NOTIFICATIONS','APPEARANCE','ACCESSIBILITY']}
   };
   const SPECS=[
     {id:'feed',name:'Smart Feed',kicker:'STREAM',accent:'var(--accent-feed)',icon:'feed',
@@ -89,17 +78,10 @@
       contextual_naya_contribution:'Explain settings consequences before change.',semantic_color:'var(--accent-settings)',design_object_composition:['Identity Portal','Power Object','Intelligence Surface']}
   ];
   function appRoute(id){return '/hub/'+id;}
-  const contracts=SPECS.map(spec=>{
-    const canon=CANONICAL[spec.id];
-    if(!canon) throw new Error('Missing canonical registry entry for '+spec.id);
-    return Object.freeze({...BASE,...spec,
-      route:canon.route,canonical_route:canon.route,app_route:appRoute(spec.id),
-      canonical_theme:canon.theme,canonical_job:canon.job,primary_action:canon.primary,
-      canonical_composition:Object.freeze([...canon.composition]),
-      canonical_source:'HUB/NAYANET-SMART-APP-ROOMS-V1.json@1.0.2'
-    });
-  });
-  const byId=Object.freeze(Object.fromEntries(contracts.map(c=>[c.id,c])));
+  let contracts=[];
+  let byId=Object.freeze({});
+  let sourceMeta=Object.freeze({state:'not_loaded',path:SOURCE});
+
   function validate(contract){
     const required=['id','route','human_purpose','human_question_answered','canonical_intelligence_object_types','source_of_truth','dependencies','allowed_actions',
       'authority_requirements','primary_intelligence_query','state_model','loading_state','empty_state','unavailable_state','blocked_unauthorized_state',
@@ -108,12 +90,63 @@
     const missing=required.filter(key=>contract?.[key]===undefined||contract?.[key]===null||contract?.[key]==='');
     return {ok:missing.length===0,missing};
   }
-  const invalid=contracts.map(c=>({id:c.id,...validate(c)})).filter(x=>!x.ok);
-  if(invalid.length) throw new Error('Invalid NayaNET room contract: '+JSON.stringify(invalid));
+
+  async function load(){
+    if(contracts.length) return contracts;
+    const res=await fetch(SOURCE,{cache:'no-store'});
+    if(!res.ok) throw new Error('Canonical room contract unavailable: HTTP '+res.status);
+    const canonical=await res.json();
+    if(canonical?.schema!=='nayanet.smart-app.rooms.v1') throw new Error('Unexpected canonical room schema: '+String(canonical?.schema||'missing'));
+    const canonicalRooms=Array.isArray(canonical.rooms)?canonical.rooms:[];
+    const detailById=Object.fromEntries(SPECS.map(spec=>[spec.id,spec]));
+    const canonicalIds=canonicalRooms.map(room=>room.id);
+    const detailIds=SPECS.map(spec=>spec.id);
+    if(JSON.stringify(canonicalIds)!==JSON.stringify(detailIds)){
+      throw new Error('Canonical room identity/order differs from the Hub adapter. canonical='+JSON.stringify(canonicalIds)+' adapter='+JSON.stringify(detailIds));
+    }
+    const canonicalStates=(canonical.states||[]).map(state=>String(state).toLowerCase());
+    if(JSON.stringify(canonicalStates)!==JSON.stringify(STATE_MODEL)){
+      throw new Error('Canonical room state model differs from the Hub adapter.');
+    }
+
+    contracts=canonicalRooms.map(canon=>{
+      const spec=detailById[canon.id];
+      return Object.freeze({...BASE,...spec,
+        id:canon.id,
+        name:canon.name,
+        route:canon.route,
+        canonical_route:canon.route,
+        app_route:appRoute(canon.id),
+        canonical_theme:canon.theme,
+        canonical_job:canon.job,
+        primary_action:canon.primary,
+        canonical_composition:Object.freeze([...(canon.composition||[])]),
+        canonical_source:'HUB/NAYANET-SMART-APP-ROOMS-V1.json@'+String(canonical.version||'unknown')
+      });
+    });
+    const invalid=contracts.map(c=>({id:c.id,...validate(c)})).filter(x=>!x.ok);
+    if(invalid.length) throw new Error('Invalid NayaNET room contract adapter: '+JSON.stringify(invalid));
+    contracts=Object.freeze(contracts);
+    byId=Object.freeze(Object.fromEntries(contracts.map(c=>[c.id,c])));
+    sourceMeta=Object.freeze({
+      state:'ready',
+      path:SOURCE,
+      schema:canonical.schema,
+      version:canonical.version,
+      status:canonical.status,
+      runtime_truth:canonical.runtime_truth,
+      shell:canonical.shell||null,
+      hub_home:canonical.hub_home||null
+    });
+    return contracts;
+  }
+
   window.NayaRoomContract=Object.freeze({
-    schema:'nayanet.hub.room-contract.v1',
-    version:'1.0.0',
+    schema:'nayanet.hub.room-contract-adapter.v1',
+    version:'1.1.0',
     states:Object.freeze([...STATE_MODEL]),
+    source:()=>sourceMeta,
+    load,
     list:()=>contracts,
     get:id=>byId[id]||null,
     validate

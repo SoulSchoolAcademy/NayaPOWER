@@ -188,13 +188,17 @@ async function assertMainShow(page,label){
 
   const socketProof=await page.evaluate(()=>({
     contractSchema:window.NayaRoomContract?.schema||'',
+    source:window.NayaRoomContract?.source?.()||null,
     socketSchema:window.NayaRoomSocket?.schema||'',
     count:window.NayaRoomSocket?.registry?.().length||0,
     active:window.NayaRoomSocket?.active?.()?.room_id||'',
     feed:window.NayaRoomSocket?.contract?.('feed')||null,
     trace:window.NayaRoomSocket?.trace?.()||[]
   }));
-  if(socketProof.contractSchema!=='nayanet.hub.room-contract.v1') fail(label+': canonical room contract missing');
+  if(socketProof.contractSchema!=='nayanet.hub.room-contract-adapter.v1') fail(label+': room contract adapter missing');
+  if(socketProof.source?.schema!=='nayanet.smart-app.rooms.v1'||socketProof.source?.version!=='1.0.2'){
+    fail(label+': canonical machine room contract was not loaded from the expected source');
+  }
   if(socketProof.socketSchema!=='nayanet.hub.room-socket.v1') fail(label+': canonical room socket missing');
   if(socketProof.count!==11) fail(label+': expected 11 room contracts, got '+socketProof.count);
   if(socketProof.active!=='feed') fail(label+': room lifecycle did not enter feed');

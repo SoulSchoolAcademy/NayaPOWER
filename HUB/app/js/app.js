@@ -1,8 +1,17 @@
 /* APP — boot. WELCOME → IDENTITY → INTELLIGENT HUB. */
 
-(function () {
+(async function () {
   const R = window.NayaRuntime;
   const Router = window.NayaRouter;
+
+  try {
+    await R.ready;
+  } catch (err) {
+    const outlet = document.getElementById('app');
+    outlet.innerHTML = '<main class="main"><section class="state-panel"><h1>Hub contract unavailable</h1><p>The canonical room contract could not be loaded. Nothing was guessed.</p></section></main>';
+    console.error(err);
+    return;
+  }
 
   Router.on('welcome', () => window.WelcomeView());
   Router.on('identity', () => window.IdentityView());

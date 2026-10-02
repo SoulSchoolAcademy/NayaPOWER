@@ -81,6 +81,17 @@ def main() -> int:
         if journey_incomplete:
             fail(f"overall cannot be complete; journeys below PRODUCTION_PROVEN: {journey_incomplete}", errors)
 
+    canonical_room_path = ROOT / "HUB" / "NAYANET-SMART-APP-ROOMS-V1.json"
+    if not canonical_room_path.is_file():
+        fail("canonical machine room contract is missing", errors)
+    else:
+        canonical_room_data = json.loads(canonical_room_path.read_text())
+        if canonical_room_data.get("schema") != "nayanet.smart-app.rooms.v1":
+            fail(f"unexpected canonical room schema: {canonical_room_data.get('schema')!r}", errors)
+        canonical_ids = [r.get("id") for r in canonical_room_data.get("rooms", [])]
+        if canonical_ids != REQUIRED_ROOMS:
+            fail(f"canonical room contract identities/order mismatch: {canonical_ids}", errors)
+
     index = (ROOT / "HUB" / "app" / "index.html").read_text()
     required_scripts = [
         "js/room-contract.js","js/runtime-live.js","js/room-socket.js","js/rooms/shared.js",

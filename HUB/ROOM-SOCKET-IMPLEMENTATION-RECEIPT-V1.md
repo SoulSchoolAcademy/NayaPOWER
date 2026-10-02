@@ -15,20 +15,21 @@ The Hub remains a projection over governed NayaPOWER intelligence.
 
 ## What changed
 
-1. Added `HUB/app/js/room-contract.js`.
-2. Removed the duplicate hard-coded room registry from `runtime.js`; runtime navigation identity now derives from the room contract.
-3. Added `HUB/app/js/room-socket.js` as the single UI projection seam.
-4. Routed shared room loads through `roomSocket.query(...)`.
-5. Routed Library search through `roomSocket.search(...)`.
-6. Routed Feed/Main Show query, search, canonical retrieval, and governed action through the same socket.
-7. Bound Hub room lifecycle to `roomSocket.enter(...)`.
-8. Exposed read-only contract/socket introspection through `window.NayaHub`.
-9. Added browser assertions proving the contract, socket, eleven-room registry, Feed lifecycle, canonical/app route distinction, and Feed query path exist on rendered bytes.
+1. Imported exact current-main `HUB/NAYANET-SMART-APP-ROOMS-V1.json` as the canonical machine room contract for this app lane.
+2. Added `HUB/app/js/room-contract.js` as a runtime adapter that loads that canonical JSON and adds UI consumption metadata; it is not a second room identity registry.
+3. Removed the duplicate hard-coded room registry from `runtime.js`; runtime navigation identity now derives from the loaded canonical contract.
+4. Added `HUB/app/js/room-socket.js` as the single UI projection seam.
+5. Routed shared room loads through `roomSocket.query(...)`.
+6. Routed Library search through `roomSocket.search(...)`.
+7. Routed Feed/Main Show query, search, canonical retrieval, and governed action through the same socket.
+8. Bound Hub room lifecycle to `roomSocket.enter(...)`.
+9. Exposed read-only contract/socket introspection through `window.NayaHub`.
+10. Added browser assertions proving the canonical JSON source, adapter, socket, eleven-room registry, Feed lifecycle, canonical/app route distinction, and Feed query path exist on rendered bytes.
 ## Canonical contract fields
 
 Every room contract exposes identity, route, human purpose/question, canonical object types, source of truth, dependencies, allowed actions, authority, primary query, universal state model, evidence/provenance, contextual Naya, semantic color, composition, responsive behavior, accessibility, continuity, and proof.
 
-The contract records current-main machine-room metadata from `HUB/NAYANET-SMART-APP-ROOMS-V1.json@1.0.2`.
+The canonical machine contract is `HUB/NAYANET-SMART-APP-ROOMS-V1.json@1.0.2`, copied byte-for-byte from the current-main Hub source. The browser adapter fetches that file before the app boots and refuses identity/order/state-model drift rather than guessing.
 
 The implementation deliberately records both `canonical_route` (for example `/feed`) and `app_route` (for example `/hub/feed`). That distinction is evidence, not a silent reconciliation.
 

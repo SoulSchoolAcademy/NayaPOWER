@@ -5,12 +5,17 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 const Runtime = (() => {
-  // ——— The eleven rooms come from the canonical room contract. ———
+  // ——— The eleven rooms load from the canonical machine room contract. ———
   const roomContract = window.NayaRoomContract;
   if (!roomContract) throw new Error('NayaRoomContract must load before runtime.js');
-  const ROOMS = roomContract.list().map(c => ({
-    id:c.id, name:c.name, kicker:c.kicker, accent:c.accent, icon:c.icon, route:c.app_route, canonical_route:c.canonical_route
-  }));
+  const ROOMS = [];
+  const ready = roomContract.load().then(() => {
+    ROOMS.splice(0, ROOMS.length, ...roomContract.list().map(c => ({
+      id:c.id, name:c.name, kicker:c.kicker, accent:c.accent, icon:c.icon,
+      route:c.app_route, canonical_route:c.canonical_route
+    })));
+    return true;
+  });
   // NOTE (input/output law, HUB/PROJECT-INTELLIGENCE.md §6 Law 1): no Smart Notes room,
   // no capture surface in Hub chrome. Capture is input; the Hub is output.
   // System diagnostics live under Settings → System Health.
@@ -134,7 +139,7 @@ const Runtime = (() => {
 
 
   return {
-    ROOMS, MODES, get mode(){ return mode; }, setMode,
+    ROOMS, ready, MODES, get mode(){ return mode; }, setMode,
     DOORS, DOOR_ROADMAP, stateFor, NOT_VERIFIED_COPY,
     connectDoor, search,
     version: '1.0.0',
