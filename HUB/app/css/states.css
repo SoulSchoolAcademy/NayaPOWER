@@ -1,0 +1,63 @@
+/* ═══════════════════════════════════════════════════════════════════
+   STATES — the honesty system. Every room renders one of these;
+   nothing ever fakes data.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.state-panel {
+  --room-accent: var(--magenta);
+  border: 1px dashed color-mix(in srgb, var(--room-accent) 34%, var(--line));
+  border-radius: var(--radius-lg);
+  padding: 44px 30px;
+  text-align: center;
+  background:
+    radial-gradient(400px 200px at 50% 0%, color-mix(in srgb, var(--room-accent) 9%, transparent), transparent 70%),
+    #0b0a1099;
+  max-width: 620px;
+  margin: 26px auto;
+}
+.state-panel .state-icon {
+  width: 58px; height: 58px; border-radius: 19px; margin: 0 auto 16px;
+  display: grid; place-items: center;
+  color: var(--room-accent);
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--room-accent) 20%, #ffffff08), transparent);
+  border: 1px solid color-mix(in srgb, var(--room-accent) 38%, transparent);
+  box-shadow: var(--depth-hi),
+              0 0 26px color-mix(in srgb, var(--room-accent) 30%, transparent);
+}
+.state-panel .state-icon svg { width: 27px; height: 27px; }
+.state-panel h3 { font-size: 17px; margin-bottom: 8px; }
+.state-panel p { color: var(--muted); font-size: var(--fs-body); max-width: 440px; margin: 0 auto 18px; }
+.state-panel .state-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+/* Loading shimmer in the room's accent */
+.shimmer-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.shimmer {
+  --room-accent: var(--magenta);
+  height: 190px; border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(100deg, #0d0c12 30%, #171224 46%,
+    color-mix(in srgb, var(--room-accent) 12%, #171224) 50%, #171224 54%, #0d0c12 70%);
+  background-size: 220% 100%;
+  animation: shimmer 1.6s var(--ease) infinite;
+}
+@keyframes shimmer { from { background-position: 180% 0; } to { background-position: -40% 0; } }
+
+/* Toast */
+.toast-stack {
+  position: fixed; bottom: 26px; right: 26px; z-index: 100;
+  display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+}
+.toast {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-radius: var(--radius-pill);
+  background: linear-gradient(145deg, #1a1424f5, #0b0a10f5);
+  border: 1px solid color-mix(in srgb, var(--toast-accent, var(--magenta)) 40%, transparent);
+  box-shadow: var(--depth-hi), 0 14px 34px #000c,
+              0 0 24px color-mix(in srgb, var(--toast-accent, var(--magenta)) 22%, transparent);
+  font-size: 12.5px; font-weight: 700;
+  animation: toast-in .35s var(--ease);
+  max-width: min(420px, 90vw);
+}
+@keyframes toast-in { from { opacity: 0; transform: translateY(12px) scale(.97); } }
+.toast.out { opacity: 0; transform: translateY(8px); transition: all .3s var(--ease); }
