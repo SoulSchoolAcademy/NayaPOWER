@@ -16,7 +16,7 @@ The master specification defines the common laws.
 
 The machine contract defines deterministic room identity and build metadata.
 
-**These living room records define how each individual room should actually be understood, composed, designed, interacted with, tested, scored and evolved.**
+**These living records define how the Hub Home and each individual room should actually be understood, composed, designed, interacted with, tested, scored and evolved.**
 
 They are not production proof. A room document can be complete while the corresponding interface is still unimplemented or runtime-unverified.
 
@@ -24,6 +24,7 @@ They are not production proof. A room document can be complete while the corresp
 
 | # | Room | Route | Contract |
 |---|---|---|---|
+| 00 | **Intelligent Hub Home / Main Show** | `/hub` | [Hub Home](./00-HUB-HOME.md) |
 | 01 | **Smart Feed** | `/feed` | [Smart Feed](./01-FEED.md) |
 | 02 | **Your Intelligence Today** | `/today` | [Your Intelligence Today](./02-TODAY.md) |
 | 03 | **Your Reports** | `/reports` | [Your Reports](./03-REPORTS.md) |
@@ -61,4 +62,4 @@ When a room changes, update the room record with:
 
 The current dependency-aware build sequence remains governed by the master room specification. Room documents do not independently reorder the product unless evidence changes the dependency graph.
 
-> **One house. Eleven rooms. One intelligence. Eleven living contracts.**
+> **One house. One Main Show. Eleven rooms. One intelligence. Twelve living contracts.**
