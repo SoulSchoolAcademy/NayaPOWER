@@ -121,22 +121,22 @@
       river.appendChild(p); return;
     }
     const [hero,...rest]=items;
-    heroZone.appendChild(block(el,hero,0,true));
+    heroZone.appendChild(block(el,hero,true));
     if(rest.length){
       const k=el('p','river-kicker','');
       k.innerHTML='<span>'+rest.length+'</span>&nbsp;&nbsp;MORE TODAY';
       river.appendChild(k);
-      rest.forEach((b,i)=>{
-        if(b.id===expandedId) river.appendChild(expandedBlock(el,b,i+1));
-        else river.appendChild(snapshot(el,b,i+1));
+      rest.forEach((b)=>{
+        if(b.id===expandedId) river.appendChild(expandedBlock(el,b));
+        else river.appendChild(snapshot(el,b));
       });
     }
   }
 
   /* Subordinate snapshot: the in-a-nutshell of the node. One calm line. */
-  function snapshot(el,b,idx){
+  function snapshot(el,b){
     const s=el('button','snap',''); s.type='button';
-    s.style.setProperty('--tone',TONES[idx%TONES.length]);
+    s.style.setProperty('--tone',toneFor(b));
     s.setAttribute('aria-expanded','false');
     const dot=el('span','snap-jewel',''); dot.setAttribute('aria-hidden','true'); dot.innerHTML=JEWEL;
     const main=el('span','snap-main','');
@@ -156,9 +156,9 @@
     return s;
   }
 
-  function expandedBlock(el,b,idx){
+  function expandedBlock(el,b){
     const wrap=el('div','snap-open');
-    wrap.appendChild(block(el,b,idx,false));
+    wrap.appendChild(block(el,b,false));
     const less=el('button','snap-less',''); less.type='button';
     less.innerHTML='<span>Show less</span><span class="chev">▴</span>';
     less.addEventListener('click',()=>{
@@ -212,6 +212,11 @@
 
   function hashCode(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return h;}
 
+  /* Color law: a tone's job is the object's stable color identity — the same
+     intelligence is always this color, in every mode and every session.
+     Never derived from list position (that is decoration, DONT-14). */
+  function toneFor(b){ return TONES[Math.abs(hashCode('tone:'+b.id)) % TONES.length]; }
+
   function evidenceLine(o){
     const bits=[];
     const src=typeof o.source==='string'?o.source:(o.source&&o.source.name);
@@ -228,10 +233,10 @@
   }
 
   /* ——— Full block: hero or expanded snapshot. Depth lives here, on demand. ——— */
-  function block(el,b,idx,lead){
+  function block(el,b,lead){
     const a=el('article','iblock'+(lead?' iblock-lead':''));
     a.id='block-'+b.id;
-    a.style.setProperty('--tone', TONES[idx % TONES.length]);
+    a.style.setProperty('--tone', toneFor(b));
     const head=el('div','iblock-head');
     const jewel=el('div','iblock-jewel'); jewel.innerHTML=JEWEL;
     const htext=el('div','iblock-htext');
