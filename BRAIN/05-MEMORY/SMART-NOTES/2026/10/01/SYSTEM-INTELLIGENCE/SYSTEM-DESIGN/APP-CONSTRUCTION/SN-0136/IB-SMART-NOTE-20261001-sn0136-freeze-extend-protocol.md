@@ -184,6 +184,45 @@ machine can execute — tests, schemas, registries, guards — or don't call the
 
 ---
 
+## DIRECTOR'S CORRECTION — WHAT FREEZING ALONE DOESN'T SOLVE (2026-10-01 ~19:20 PDT)
+
+Shawn's pushback: freezing is necessary but not sufficient. He kept a build frozen for
+weeks — stasis, not progress. The real failure modes freezing never touched: edits leak
+across the whole app ("you'll change the whole thing or change the whole design"); the
+builder disobeys "don't change it"; sessions do it one way one time and another way the
+next. Freeze prevents backward. It doesn't compel forward, and it doesn't fix edit leakage.
+
+The fuller stack — director's additions marked ★:
+
+1. ★ **Locked component registry.** A design contract per component (buttons, boards, cards,
+   tabs, inputs): exact tokens, states, behaviors. Rooms compose locked components; they
+   never redesign them. Bounded vocabulary — the industry's term for what he described.
+2. ★ **Visual blueprint per room, locked.** Generate the room's visual blueprint FIRST and
+   lock it. The picture is the contract. Building becomes a matching task, not open-ended
+   generation. This converts "build me a room" from invention into fidelity.
+3. **Room contract as behavioral tests.** Given this state, clicking X does Y; data persists;
+   empty/error/loading states exist. A shell cannot pass.
+4. **Frozen foundation + regression suite.** Shell, store, router, tokens — read-only,
+   machine-checked.
+5. **Diff-only edits.** The builder makes surgical exact-match edits and verifies the diff
+   is minimal before committing. No rewrites. The builder constrains its own tooling —
+   "be your own judge" at the edit level.
+6. ★ **Builder's gate before handoff.** The builder runs the full gate itself: tests green,
+   behavioral pass against the live build, visual diff vs the locked blueprint within
+   tolerance. Nothing reaches the director or the independent verifier unpassed. The
+   director's eyes are the last 5%, not the first 95%.
+7. **Independent verification.** Naya 2: separate eyes, separate verdict. Producer
+   self-check ≠ qualification — the builder is the first judge, never the last.
+8. ★ **Completion engine + metric.** One room per cycle; each cycle ends with a verified
+   room or a named blocker. Metric: rooms-completed-per-week. Zero completions means the
+   protocol is failing and gets revised — the process is instrumented, not hoped. Room too
+   big for a bounded cycle → split the room.
+
+**Empirical commitment:** run the 8-layer stack on Today (the reference room) and measure.
+The answer to "does it work" is a completed room, not more theory.
+
+---
+
 ## WHAT IT ULTIMATELY MEANS
 
 The fifth floor is not a capability ceiling — it's the point where unguarded iteration
