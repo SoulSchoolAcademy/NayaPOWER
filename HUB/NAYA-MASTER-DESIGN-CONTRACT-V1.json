@@ -1,0 +1,317 @@
+{
+ "schema": "nayadesign.master-contract/v1",
+ "version": "1.0",
+ "status": "PROPOSED-HUMAN-DIRECTOR-DIRECTED",
+ "created": "2026-10-02",
+ "supersedes_note": "Converges v1.4 canon (folded verbatim), Field Manual V1, 00-HUB-HOME baseline, Standard v1.3, 40-block canon.",
+ "open_director_questions": [
+  "Body type target: 17-18px vs 16px floor",
+  "Room accent token collisions: Feed/Connect both emerald, Library/Mail both sapphire \u2014 differentiate by icon glyph until director rules"
+ ],
+ "laws_ranked": [
+  {
+   "id": "LAW-0",
+   "name": "readability_supremacy",
+   "statement": "No glow, depth effect, color choice, or animation may ever reduce readability."
+  },
+  {
+   "id": "LAW-01",
+   "name": "purpose_before_interface"
+  },
+  {
+   "id": "LAW-02",
+   "name": "distill_before_display"
+  },
+  {
+   "id": "LAW-03",
+   "name": "recognition_before_recall"
+  },
+  {
+   "id": "LAW-04",
+   "name": "one_obvious_next_action"
+  },
+  {
+   "id": "LAW-05",
+   "name": "state_must_be_perceptible"
+  },
+  {
+   "id": "LAW-06",
+   "name": "beauty_is_function"
+  },
+  {
+   "id": "LAW-07",
+   "name": "complexity_in_the_machine"
+  },
+  {
+   "id": "LAW-08",
+   "name": "design_systems_are_memory"
+  },
+  {
+   "id": "LAW-09",
+   "name": "one_thing"
+  },
+  {
+   "id": "LAW-10",
+   "name": "design_must_learn"
+  }
+ ],
+ "posture_L0": "canon is floor not ceiling; study the best, extract principle, 10x better; ambition 10x, claims only evidenced",
+ "colors": {
+  "obsidian": {
+   "world": "#0B0D12",
+   "raised": "#12151D",
+   "elevated": "#171B25",
+   "edge": "#252B39"
+  },
+  "text": {
+   "primary": "#F5F7FB",
+   "secondary": "#AAB2BF"
+  },
+  "semantic": {
+   "emerald": {
+    "hex": "#55e39a",
+    "job": "active_available_healthy"
+   },
+   "gold": {
+    "hex": "#e8b64c",
+    "job": "consequence_value_rarest"
+   },
+   "red": {
+    "hex": "#ff5a6e",
+    "job": "blocked_failed_never_decorative"
+   },
+   "purple": {
+    "hex": "#9d75ff",
+    "job": "naya_signature_primary_action"
+   },
+   "magenta": {
+    "hex": "#d86cff",
+    "job": "human_significance"
+   },
+   "sapphire": {
+    "hex": "#55b9ee",
+    "job": "knowledge"
+   }
+  },
+  "room_themes": {
+   "feed": "#55e39a",
+   "today": "#d86cff",
+   "reports": "#6675ff",
+   "library": "#55b9ee",
+   "connect": "#55e39a",
+   "ledger": "#f1d75a",
+   "connections": "#ff9a5a",
+   "lists": "#9d75ff",
+   "mail": "#55b9ee",
+   "spaces": "#b8ee57",
+   "settings": "#aaa4b1"
+  },
+  "flows": {
+   "hierarchy": [
+    "text_white",
+    "room_theme",
+    "semantic_state",
+    "gold_extraordinary"
+   ],
+   "state": [
+    "rest_muted",
+    "hover_bright_lifted",
+    "press_compressed",
+    "processing_theme_pulse",
+    "success_emerald_brief",
+    "failure_red_with_reason"
+   ],
+   "theme": "enter_at_threshold_recede_to_accents_return_at_actions_never_flood"
+  }
+ },
+ "type": {
+  "family": "Inter, system fallback",
+  "scale": {
+   "hero": "clamp(30px,4.6vw,52px)",
+   "title": "23px",
+   "head": "17px",
+   "body": "16px floor, 17-18px target",
+   "secondary": "14-15px",
+   "label": "11px min uppercase tracked"
+  },
+  "line_height_body": "1.5-1.6",
+  "forbidden": [
+   "pale_purple_body_copy",
+   "body_below_16px",
+   "label_below_11px"
+  ]
+ },
+ "spacing": {
+  "scale": [
+   4,
+   8,
+   12,
+   16,
+   24,
+   32,
+   48,
+   64,
+   96
+  ],
+  "rules": {
+   "section_rhythm": "48-64",
+   "card_padding": 24,
+   "related_groups": 16,
+   "micro_gaps": 8
+  },
+  "forbidden": [
+   "arbitrary_values"
+  ]
+ },
+ "depth": {
+  "law": "material_core > edge_light > specular_restrained > cast_shadow > semantic_aura > state_amplification",
+  "order": "depth_first_light_second_glow_last"
+ },
+ "buttons": {
+  "primary": {
+   "padding": "14px 28px",
+   "min_height": "48px",
+   "radius": "999px_or_13px",
+   "font": "17px/800",
+   "text": "#FFFFFF",
+   "bg": "#9d75ff",
+   "label": "verb_first"
+  },
+  "secondary": {
+   "bg": "#12151D",
+   "border": "2px accent_tinted",
+   "text": "#F5F7FB"
+  },
+  "states": [
+   "rest",
+   "hover_aware",
+   "focus_ring",
+   "press",
+   "processing",
+   "success",
+   "failure"
+  ],
+  "focus_ring": "2px outline offset 2px"
+ },
+ "icons": {
+  "system": "HUB/app/js/icons.js",
+  "setA": "jewel_marks_identity",
+  "setB": "action_glyphs_controls",
+  "scale_steps": [
+   32,
+   48,
+   64,
+   96
+  ],
+  "forbidden": [
+   "flat",
+   "emoji",
+   "stock",
+   "stretched"
+  ]
+ },
+ "motion": {
+  "only": "truthful_state",
+  "durations": {
+   "fast": ".18s",
+   "medium": ".28s",
+   "slow": ".5s"
+  },
+  "easing": "cubic-bezier(.16,.84,.22,1)",
+  "properties": [
+   "transform",
+   "opacity"
+  ],
+  "reduced_motion": "required_equivalent",
+  "forbidden": [
+   "decorative_motion",
+   "autoplay_carousels"
+  ]
+ },
+ "shell": {
+  "corner_controls": 2,
+  "left_drawer": "rooms_no_smart_feed",
+  "right_drawer": "nav_8_entries",
+  "home": "feed_full_bleed",
+  "sticky": "one_coordinated_zone"
+ },
+ "dos": [
+  "DO-01",
+  "DO-02",
+  "DO-03",
+  "DO-04",
+  "DO-05",
+  "DO-06",
+  "DO-07",
+  "DO-08",
+  "DO-09",
+  "DO-10",
+  "DO-11",
+  "DO-12",
+  "DO-13",
+  "DO-14",
+  "DO-15",
+  "DO-16",
+  "DO-17",
+  "DO-18",
+  "DO-19",
+  "DO-20",
+  "DO-21",
+  "DO-22",
+  "DO-23",
+  "DO-24",
+  "DO-25"
+ ],
+ "donts": [
+  "DONT-01",
+  "DONT-02",
+  "DONT-03",
+  "DONT-04",
+  "DONT-05",
+  "DONT-06",
+  "DONT-07",
+  "DONT-08",
+  "DONT-09",
+  "DONT-10",
+  "DONT-11",
+  "DONT-12",
+  "DONT-13",
+  "DONT-14",
+  "DONT-15",
+  "DONT-16",
+  "DONT-17",
+  "DONT-18",
+  "DONT-19",
+  "DONT-20",
+  "DONT-21",
+  "DONT-22",
+  "DONT-23"
+ ],
+ "self_evaluation": {
+  "steps": [
+   "render_frozen_commit_fullscreen",
+   "four_tests_1s_3s_30s_squint",
+   "measure_against_spec",
+   "ten_point_checklist",
+   "score_D1_D8_with_evidence",
+   "gate_check"
+  ],
+  "gate": "all_hard_gates_pass AND D1>=9.5 (10 for signature) AND omissions_named",
+  "honesty_law": "self_score_is_diagnostic_not_pass; Naya1 judges independently"
+ },
+ "auto_reject": [
+  "kpi_grid_first",
+  "fake_personalization",
+  "five_loud_cards",
+  "pale_purple_body",
+  "tiny_type",
+  "flat_bordered_depth",
+  "glow_everywhere",
+  "autoplay",
+  "decorative_red",
+  "casual_gold",
+  "lying_controls",
+  "undecodable_nav"
+ ],
+ "machine_ref": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-V1.json v1.4 (folded)"
+}
