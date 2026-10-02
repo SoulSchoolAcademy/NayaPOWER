@@ -109,8 +109,19 @@
 .ask-step .ask-k{ font-size: 11px; letter-spacing: 0.22em; color: var(--purple); font-weight: 700; margin: 0 0 6px; }
 .ask-step .ask-v{ font-size: 16px; line-height: 1.7; color: var(--ink-dim); margin: 0; }
 .ask-hit{ display: block; margin: 6px 0; font-size: 16px; color: var(--ink-dim); }
-.ask-hit button{ background: none; border: none; cursor: pointer; color: var(--green); font-size: 16px; padding: 0; text-align: left; }
-.ask-hit button:hover{ text-decoration: underline; }
+.ask-hit button{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--green);
+  font-size:16px;
+  padding:0;
+  text-align:left;
+}
+.ask-hit button:hover{ text-decoration:underline; }
 .ask-boundary{ font-size: 16px; line-height: 1.7; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 14px; margin: 18px 0 0; }
 
 /* ——— Evidence drawer ——— */
