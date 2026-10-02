@@ -1,30 +1,18 @@
 /* ═══════════════════════════════════════════════════════════════════
-   YOUR INTELLIGENCE TODAY — v3 · built against the Master Directive v1
-   (INTELLIGENCE-TODAY-MASTER-DIRECTIVE-V1.md, repo root).
-
-   Composition per the contract hierarchy:
-   ORIENT → NOW → NEXT → WATCH → LEARNED → WAITING → REMEMBER → PROOF.
-
-   - ORIENT: date, time-aware line (morning/midday/evening — clock-true,
-     never faked personalization), the day at a glance.
-   - NOW: what changed — ranked plays, biggest first. Each play: rank,
-     time anchor, the announcer's call, the nutshell. Tap → full Smart
-     Note depth (GLANCE → UNDERSTAND → INSPECT → PROVE).
-   - NEXT: the top next move — THE primary action, verb-first, purple.
-     State-driven around what the human has carried forward.
-   - WATCH: plays not yet opened — derived from real interaction state,
-     never manufactured.
-   - LEARNED: where today climbed the ladder
-     INFORMATION → UNDERSTANDING → CHANGE → DECISION → KNOWLEDGE.
-   - WAITING: open loops — honest empty state when there are none.
-   - REMEMBER: tomorrow's lineup — continuity the human can touch.
-   - PROOF: evidence drawer per play (SOURCE → EVENT → STATE).
+   YOUR INTELLIGENCE TODAY — v4 · director's correction (2026-10-02)
+   - No manufactured primary action. The ranking IS the intelligence:
+     the system ranks the day's intelligence by value and declares #1
+     TOP INTELLIGENCE. No purple button.
+   - No decorative sections. Anything that duplicates another section or
+     does nothing when clicked is cut.
+   - Search: filter the day's plays by title, call, nutshell.
+   Composition: ORIENT → SEARCH → NOW → WATCH → WAITING → REMEMBER → PROOF.
 
    Color jobs (every pixel named): magenta #d86cff signs the ROOM
-   (human significance — eyebrows, scoreline, header edge); per-play
-   edge tone = the object's stable identity; gold = turning points and
-   carried-forward (consequence/value); purple = the primary action
-   (Naya's signature). No modes. No builder-world. No manufactured noise.
+   (human significance — eyebrows, scoreline, orient edge, TOP tag);
+   per-play edge tone = the object's stable identity; gold = turning
+   points and carried-forward (consequence/value). No modes. No faked
+   content. Every control does something real.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
@@ -41,14 +29,13 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
-  const RUNGS=['INFORMATION','UNDERSTANDING','CHANGE','DECISION','KNOWLEDGE'];
-
   const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
 
   const carried=[];
   const seenPlays=new Set();
   let allPlays=[];
   let openPlayId=null;
+  let query='';
 
   function TodayRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit;
@@ -73,10 +60,9 @@
     stage.innerHTML='';
     if(drawer)stage.appendChild(drawer);
     stage.appendChild(orient(el));
-    stage.appendChild(section(el,'NOW','What changed',nowRiver(el)));
-    stage.appendChild(section(el,'NEXT','Your top next move',nextCard(el)));
+    stage.appendChild(searchBar(el));
+    stage.appendChild(section(el,'NOW','What changed',nowBlock(el)));
     stage.appendChild(section(el,'WATCH','Still unopened',watchList(el)));
-    stage.appendChild(section(el,'LEARNED','What today taught',learnedList(el)));
     stage.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
     const lineup=rememberLineup(el);
     if(lineup)stage.appendChild(section(el,'REMEMBER','Tomorrow\u2019s lineup',lineup));
@@ -117,11 +103,63 @@
     return o;
   }
 
-  /* ——— NOW: what changed ——— */
-  function nowRiver(el){
-    const river=el('div','plays-river');
-    allPlays.forEach((p,i)=>river.appendChild(play(el,p,i)));
-    return river;
+  /* ——— SEARCH: filter the day's plays ——— */
+  function searchBar(el){
+    const wrap=el('div','search-wrap');
+    const input=el('input','search-input','');
+    input.type='search';
+    input.setAttribute('aria-label','Search today\u2019s intelligence');
+    input.placeholder='Search today\u2019s intelligence\u2026';
+    input.value=query;
+    input.addEventListener('input',()=>{
+      query=input.value;
+      const stage=input.closest('.today-stage');
+      renderRiver(el,stage);
+    });
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  function matches(p){
+    const q=query.trim().toLowerCase();
+    if(!q)return true;
+    return (p.title+' '+(p.call||'')+' '+(p.layers.nutshell||'')).toLowerCase().includes(q);
+  }
+
+  /* ——— NOW: what changed — ranked by value, #1 declared ——— */
+  function nowBlock(el){
+    const block=el('div','now-block');
+    const matchLine=el('p','match-line',''); matchLine.id='today-match-line';
+    const river=el('div','plays-river'); river.id='today-river';
+    block.appendChild(matchLine); block.appendChild(river);
+    renderRiverInto(el,matchLine,river);
+    return block;
+  }
+
+  function renderRiver(el,stage){
+    const matchLine=stage.querySelector('#today-match-line');
+    const river=stage.querySelector('#today-river');
+    if(matchLine&&river)renderRiverInto(el,matchLine,river);
+  }
+
+  function renderRiverInto(el,matchLine,river){
+    river.innerHTML='';
+    const hits=allPlays.map((p,i)=>({p,i})).filter(x=>matches(x.p));
+    const q=query.trim();
+    if(q){
+      if(hits.length){
+        matchLine.textContent=hits.length+' of '+allPlays.length+' plays match \u201C'+q+'\u201D';
+      }else{
+        matchLine.textContent='';
+        const note=el('p','quiet-note','');
+        note.textContent='No intelligence matches \u201C'+q+'\u201D today.';
+        river.appendChild(note);
+        return;
+      }
+    }else{
+      matchLine.textContent='';
+    }
+    hits.forEach(x=>river.appendChild(play(el,x.p,x.i)));
   }
 
   function play(el,p,rank){
@@ -133,6 +171,10 @@
     const rankEl=el('span','play-rank',''); rankEl.textContent=String(rank+1).padStart(2,'0');
     const when=el('span','play-when',''); when.textContent=p.when||'TODAY';
     brow.appendChild(rankEl); brow.appendChild(when);
+    if(rank===0){
+      const top=el('span','top-tag',''); top.textContent='TOP INTELLIGENCE';
+      brow.appendChild(top);
+    }
     if(p.turning){
       const tag=el('span','play-turning-tag',''); tag.textContent='TURNING POINT';
       brow.appendChild(tag);
@@ -203,34 +245,6 @@
     return a;
   }
 
-  /* ——— NEXT: the top next move — the primary action ——— */
-  function nextCard(el){
-    const card=el('div','next-card');
-    const n=carried.length;
-    const t=el('h3','');
-    const b=el('p','next-body','');
-    const btn=el('button','next-action',''); btn.type='button';
-    if(n===0){
-      t.textContent='Decide what today means';
-      b.textContent='Nothing is carried forward yet. Mark the plays worth remembering \u2014 tomorrow\u2019s briefing starts with your call.';
-      btn.textContent='Choose the first play';
-      btn.addEventListener('click',()=>{
-        const first=document.getElementById('play-'+CSS.escape(allPlays[0].id));
-        if(first){first.scrollIntoView({block:'center',behavior:'smooth'});first.focus({preventScroll:true});}
-      });
-    }else{
-      t.textContent='Tomorrow\u2019s briefing is taking shape';
-      b.textContent=n+' play'+(n===1?'':'s')+' carried forward. Review the lineup before the day ends.';
-      btn.textContent='Review tomorrow\u2019s lineup';
-      btn.addEventListener('click',()=>{
-        const lu=document.querySelector('.lineup');
-        if(lu)lu.scrollIntoView({block:'center',behavior:'smooth'});
-      });
-    }
-    card.appendChild(t); card.appendChild(b); card.appendChild(btn);
-    return card;
-  }
-
   /* ——— WATCH: still unopened — derived from real state ——— */
   function watchList(el){
     const wrap=el('div','watch-list');
@@ -255,26 +269,6 @@
         if(t2)t2.scrollIntoView({block:'center',behavior:'smooth'});
       });
       li.appendChild(dot); li.appendChild(span); li.appendChild(open); ul.appendChild(li);
-    });
-    wrap.appendChild(ul);
-    return wrap;
-  }
-
-  /* ——— LEARNED: where today climbed the ladder ——— */
-  function learnedList(el){
-    const wrap=el('div','learned-list');
-    const items=allPlays.filter(p=>p.rung);
-    if(!items.length){
-      const q=el('p','quiet-note','');
-      q.textContent='Nothing has been marked as learned yet today.';
-      wrap.appendChild(q); return wrap;
-    }
-    const ul=el('ul','');
-    items.forEach(p=>{
-      const li=el('li','');
-      const rung=el('span','rung-tag',''); rung.textContent=p.rung;
-      const span=el('span','',''); span.textContent=p.title;
-      li.appendChild(rung); li.appendChild(span); ul.appendChild(li);
     });
     wrap.appendChild(ul);
     return wrap;
@@ -352,7 +346,6 @@
     if(!layers.machine) layers.machine=evidenceLine(o);
     const state=(o.truth_state||o.state||'').toString().toUpperCase();
     const srcName=typeof o.source==='string'?o.source:(o.source&&o.source.name)||'';
-    const rung=(o.rung||'').toString().toUpperCase();
     return {
       id:String(o.intelligent_block_id||o.id||('play-'+Math.abs(hashCode(o.title||'')))),
       title:K.title(o,'Untitled play'),
@@ -362,7 +355,6 @@
       when:(o.when||'').toString().toUpperCase(),
       call:o.call||'',
       turning:!!o.turning_point||!!o.turning,
-      rung:RUNGS.includes(rung)?rung:'',
       waiting:Array.isArray(o.waiting)?o.waiting.filter(w=>typeof w==='string'&&w.trim()):[],
       layers
     };
