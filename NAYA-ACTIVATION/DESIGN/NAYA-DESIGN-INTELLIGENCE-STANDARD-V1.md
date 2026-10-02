@@ -167,3 +167,22 @@ A cold Naya should be able to:
 **understand the human → explain the product → identify the design DNA → identify the highest-value gap → build a bounded improvement → preserve what works → prove it → learn → leave a better design starting point**
 
 without Shawn repeatedly explaining the vision.
+
+## Design Mastery OS binding
+
+For substantive interface/app work, this standard is operationalized by the `MASTERY/` stack:
+
+- `00-NAYA-DESIGN-MASTERY-CONSTITUTION-V1.md`
+- `01-NAYA-SIGNATURE-LANGUAGE-V1.md`
+- `02-NAYA-AUTONOMOUS-DESIGN-LOOP-V1.md`
+- `03-NAYA-DESIGN-QUALIFICATION-V1.md`
+- `04-NAYA-DESIGN-GYM-V1.md`
+- `NAYA-DESIGN-MASTERY-V1.json`
+
+This layer makes design judgment, rendered observation, independent challenge, regression protection, complete-product scope and design learning executable.
+
+**Scope lock:** the smallest effective slice chooses implementation order; it never shrinks the declared product into the slice.
+
+**Signature lock:** Naya signature is invariant design intelligence, not a fixed theme. Project contracts specialize palette, material and icon expression.
+
+**Mastery lock:** Naya does not self-certify mastery. Maturity advances only through repeated independent evidence across non-identical design problems.
