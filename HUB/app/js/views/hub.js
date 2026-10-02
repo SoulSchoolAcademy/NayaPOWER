@@ -15,7 +15,12 @@ function HubView(params) {
   const R = window.NayaRuntime;
   const C = window.NayaContent || null;
   const activeRoom = params.room || 'feed';
-  const room = R.ROOMS.find(r => r.id === activeRoom) || R.ROOMS[0];
+  /* Feed streams ride the room param: feed (collective), feed-personal, feed-activity.
+     All three resolve to the feed room; the stream selects the lens. */
+  const feedStream = activeRoom === 'feed-personal' ? 'personal'
+    : activeRoom === 'feed-activity' ? 'activity' : (activeRoom === 'feed' ? 'collective' : null);
+  const roomId = feedStream ? 'feed' : activeRoom;
+  const room = R.ROOMS.find(r => r.id === roomId) || R.ROOMS[0];
 
   const shell = el('div', 'shell');
 
@@ -41,15 +46,16 @@ function HubView(params) {
   const main = el('main', 'main');
   main.setAttribute('aria-label', room.name);
 
-  /* Topbar: rooms-plus (mobile) · title · source status · ecosystem plus menu */
+  /* Topbar: rooms-plus (mobile) · title · ecosystem plus menu (top-right).
+     The SOURCE·VISIBLE pill is gone — the top-right corner belongs to the menu. */
   const top = el('header', 'top');
   const roomsPlus = el('button', 'rooms-plus', Icons.icon('plus'));
   roomsPlus.setAttribute('aria-label', 'Open room navigation');
   roomsPlus.setAttribute('aria-expanded', 'false');
   roomsPlus.addEventListener('click', () => (shell.classList.contains('drawer-open') ? closeDrawer() : openDrawer()));
   const title = el('div', 'top-title', '<b>INTELLIGENT HUB</b>');
-  const status = el('div', 'top-status', '<span class="led" aria-hidden="true"></span><span>SOURCE · VISIBLE</span>');
-  status.setAttribute('role', 'status');
+  const spacer = el('div', 'top-spacer');
+  spacer.setAttribute('aria-hidden', 'true');
   const pluswrap = el('div', 'pluswrap');
   const plusBtn = el('button', 'plus-btn', Icons.icon('plus'));
   plusBtn.setAttribute('aria-label', 'Ecosystem destinations');
@@ -67,7 +73,7 @@ function HubView(params) {
   });
   plusBtn.addEventListener('click', e => { e.stopPropagation(); toggleMenu(); });
   pluswrap.append(plusBtn, plusMenu);
-  top.append(roomsPlus, title, status, pluswrap);
+  top.append(roomsPlus, title, spacer, pluswrap);
 
   /* Ask Naya — chassis-level retrieval. One contextual-Naya interface. */
   const searchWrap = el('section', 'searchWrap');
@@ -92,9 +98,10 @@ function HubView(params) {
   const lensSlot = el('div', 'shell-lens');
   lensSlot.hidden = true;
 
-  /* Room outlet */
+  /* Room outlet — the feed room IS the Main Show: hero, full-width lens,
+     layered intelligence boards. Other rooms render their head + renderer. */
   const outlet = el('div', 'room-outlet');
-  if (room.id === 'feed') outlet.appendChild(mainShowHero(room, C));
+  if (room.id === 'feed') outlet.appendChild(mainShow(room, C, feedStream || 'collective'));
   else {
     const head = el('div', 'room-head');
     head.style.setProperty('--room-accent', room.accent);
@@ -185,27 +192,155 @@ function HubView(params) {
     });
   }
 
-  function mainShowHero(rm, content) {
+  /* ═══ THE MAIN SHOW — hero, full-width lens, layered intelligence boards ═══ */
+  function mainShow(rm, content, stream) {
+    const wrap = el('div', 'main-show');
+
+    /* — Hero — */
     const hour = new Date().getHours();
     const greet = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
     // Identity comes from the canonical chassis identity model — never a hardcoded name.
-    // When the governed runtime is not connected, no name is claimed.
     let who = '';
     try {
       const id = R.identitySnapshot && R.identitySnapshot();
       if (id && id.display_name && id.display_name !== 'You') who = ', ' + id.display_name;
     } catch (e) { /* identity unavailable — fall back to neutral greeting */ }
-    const now = content && content.today && content.today.now && content.today.now[0]
-      ? content.today.now[0]
-      : 'Your intelligence, as it exists now.';
-    const h = el('section', 'hero');
-    h.style.setProperty('--room-accent', rm.accent);
-    h.innerHTML =
+    const hero = el('section', 'hero');
+    hero.style.setProperty('--room-accent', rm.accent);
+    hero.innerHTML =
       '<div class="eyebrow">NAYANET · HUMAN-FACING INTELLIGENCE</div>' +
       '<h1>' + greet + esc(who) + '.</h1>' +
-      '<p class="hero-sub">' + esc(now) + '</p>' +
-      '<p class="hero-prov">Repository snapshot · main 10190133 · captured 2026-10-02 · nothing fabricated</p>';
-    return h;
+      '<p class="hero-sub">Your intelligence, as it exists now — newest understanding first.</p>' +
+      '<p class="hero-prov">Snapshot projection · main 10190133 · nothing fabricated</p>';
+    wrap.appendChild(hero);
+
+    /* — Lens: three equal columns, full feed width, real navigation — */
+    const lens = el('nav', 'lens-tabs');
+    lens.setAttribute('aria-label', 'Feed lens');
+    const tabs = [
+      ['collective', 'COLLECTIVE', 'The shared intelligence stream', '/hub/feed'],
+      ['personal', 'PERSONAL', 'What is yours — your directives, your philosophy', '/hub/feed-personal'],
+      ['activity', 'ACTIVITY', 'What is happening — chronological', '/hub/feed-activity'],
+    ];
+    tabs.forEach(([key, label, sub, path]) => {
+      const b = el('button', 'lens-tab' + (stream === key ? ' active' : ''));
+      b.setAttribute('aria-current', stream === key ? 'true' : 'false');
+      b.innerHTML = '<b>' + label + '</b><small>' + esc(sub) + '</small>';
+      b.addEventListener('click', () => window.NayaRouter.navigate(path));
+      lens.appendChild(b);
+    });
+    wrap.appendChild(lens);
+
+    /* — Boards — */
+    const feed = el('div', 'show-feed');
+    const FI = window.NayaFeedIntelligence;
+    if (!FI || !FI.notes || !FI.notes.length) {
+      feed.appendChild(el('div', 'empty-instrument',
+        '<strong>The Main Show is not connected.</strong><p>Layered feed intelligence is unavailable in this package.</p>'));
+    } else if (stream === 'activity') {
+      feed.appendChild(activityStream(content));
+    } else {
+      const notes = stream === 'personal' ? FI.notes.filter(n => n.personal) : FI.notes;
+      if (!notes.length) {
+        feed.appendChild(el('div', 'empty-instrument',
+          '<strong>Nothing here yet.</strong><p>No personal intelligence is marked in this snapshot.</p>'));
+      }
+      notes.forEach((n, i) => feed.appendChild(intelBoard(n, i)));
+      const prov = el('p', 'show-prov',
+        'Boards project the Smart Note snapshot at main 10190133 · fetched 2026-10-02 · ' +
+        'canonical source: BRAIN/05-MEMORY/SMART-NOTES in the NayaPOWER repo');
+      feed.appendChild(prov);
+    }
+    wrap.appendChild(feed);
+    return wrap;
+  }
+
+  /* — Activity stream: chronological, from the snapshot's derived Today items — */
+  function activityStream(content) {
+    const wrap = el('div', 'activity-stream');
+    const items = (content && content.today && (content.today.now || []).concat(content.today.next || [])) || [];
+    if (!items.length) {
+      wrap.appendChild(el('div', 'empty-instrument',
+        '<strong>No activity recorded.</strong><p>This snapshot carries no activity items.</p>'));
+      return wrap;
+    }
+    items.forEach((t, i) => {
+      const row = el('div', 'activity-row');
+      row.innerHTML =
+        '<span class="activity-dot" aria-hidden="true"></span>' +
+        '<div><b>' + esc(t.title || t.text || 'Activity') + '</b>' +
+        (t.detail ? '<p>' + esc(t.detail) + '</p>' : '') + '</div>';
+      wrap.appendChild(row);
+    });
+    return wrap;
+  }
+
+  /* — One intelligence board: rotating board tone, per-layer colors, elevated — */
+  function intelBoard(note, idx) {
+    const b = el('article', 'intel-board tone-' + note.tone);
+    b.setAttribute('aria-label', 'Smart Note ' + note.id);
+
+    const head = el('div', 'ib-head');
+    head.innerHTML =
+      '<span class="ib-jewel" aria-hidden="true"></span>' +
+      '<span class="ib-kind">SMART NOTE</span>' +
+      '<span class="ib-id">' + esc(note.id) + '</span>' +
+      '<span class="ib-truth">CANDIDATE</span>';
+    b.appendChild(head);
+
+    const title = el('h2', 'ib-title', esc(note.title));
+    b.appendChild(title);
+
+    const layers = el('div', 'ib-layers');
+    note.layers.forEach(L => {
+      const layer = el('div', 'ib-layer layer-' + L.color + (L.tier === 'deeper' ? ' is-deeper' : ''));
+      const lh = el('button', 'ib-layer-head');
+      lh.setAttribute('aria-expanded', L.tier === 'primary' ? 'true' : 'false');
+      lh.innerHTML =
+        '<span class="ib-dot" aria-hidden="true"></span>' +
+        '<b>' + esc(L.name) + '</b>' +
+        '<span class="ib-chev" aria-hidden="true">▾</span>';
+      const lb = el('div', 'ib-layer-body');
+      lb.innerHTML = md(L.body);
+      if (L.tier !== 'primary') lb.hidden = true;
+      else lh.classList.add('open');
+      lh.addEventListener('click', () => {
+        const open = lb.hidden;
+        lb.hidden = !open;
+        lh.classList.toggle('open', open);
+        lh.setAttribute('aria-expanded', String(open));
+      });
+      layer.append(lh, lb);
+      layers.appendChild(layer);
+    });
+    b.appendChild(layers);
+
+    const foot = el('div', 'ib-foot');
+    foot.innerHTML = '<span>' + esc(note.source) + '</span>';
+    b.appendChild(foot);
+    return b;
+  }
+
+  /* Minimal markdown: escape first, then bold/italic/lists/breaks. */
+  function md(text) {
+    let t = esc(text);
+    t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/(^|\W)\*([^*\n]+)\*/g, '$1<em>$2</em>');
+    t = t.replace(/`([^`]+)`/g, '<code>$1</code>');
+    const lines = t.split('\n');
+    let html = '', inList = false;
+    lines.forEach(line => {
+      const m = line.match(/^\s*[-•]\s+(.*)/);
+      if (m) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += '<li>' + m[1] + '</li>';
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        if (line.trim()) html += '<p>' + line.trim() + '</p>';
+      }
+    });
+    if (inList) html += '</ul>';
+    return html || '<p></p>';
   }
 
   function nayaCard() {

@@ -279,3 +279,184 @@
 
 /* ——— Focus visibility ——— */
 :focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   THE MAIN SHOW — Shawn's visual language (2026-10-02).
+   Boards cycle purple → blue → green down the feed. Within a board,
+   each layer carries its own color: nutshell white, human purple,
+   child blue, grandma green, naya yellow, machine gold, learning
+   orange, meaning red, value rose. Boards are elevated; text is
+   white and generous. Nothing sticky at the bottom.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Topbar: spacer pushes the ecosystem plus menu to the top-right corner. */
+.top-spacer { flex: 1 1 auto; }
+
+/* ——— Lens tabs: three equal columns, full feed width, real navigation ——— */
+.lens-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 26px 0 8px;
+}
+.lens-tab {
+  appearance: none; border: 2px solid #ffffff22; border-radius: 16px;
+  background: linear-gradient(145deg, #14141c, #0a0a0e);
+  color: #fff; cursor: pointer; text-align: center;
+  padding: 16px 10px 14px;
+  box-shadow: inset 0 1px #ffffff14, 0 10px 24px #00000090;
+  transition: transform .18s cubic-bezier(.16,.84,.22,1), border-color .18s, box-shadow .18s;
+}
+.lens-tab b { display: block; font-size: 17px; letter-spacing: .08em; }
+.lens-tab small { display: block; margin-top: 6px; font-size: 13px; line-height: 1.4; color: #cfc9d6; }
+.lens-tab:hover { transform: translateY(-2px); border-color: #ffffff44; }
+.lens-tab.active {
+  border-color: var(--purple); color: #fff;
+  box-shadow: inset 0 1px #ffffff22, 0 10px 28px #000000a0, 0 0 24px #9d75ff2e;
+  background: linear-gradient(145deg, #1b1530, #0c0a12);
+}
+.lens-tab.active small { color: #e8e2f0; }
+
+/* ——— Intelligence boards ——— */
+.show-feed { display: flex; flex-direction: column; gap: 26px; margin-top: 18px; }
+.show-prov { color: #8f8898; font-size: 13px; line-height: 1.5; text-align: center; margin: 6px 0 0; }
+
+.intel-board {
+  --tone: #9d75ff;
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--tone) 55%, #fff 14%);
+  border-radius: 26px;
+  padding: 30px 30px 24px;
+  background:
+    radial-gradient(720px 240px at 50% -8%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 72%),
+    linear-gradient(145deg, #0d0c13, #060608);
+  box-shadow:
+    inset 0 1px #ffffff2e,
+    0 28px 64px #000000c0,
+    0 0 44px color-mix(in srgb, var(--tone) 18%, transparent);
+  overflow: hidden;
+}
+/* Board theme rotation: purple → blue → green */
+.intel-board.tone-purple { --tone: #9d75ff; }
+.intel-board.tone-blue   { --tone: #5aa9ff; }
+.intel-board.tone-green  { --tone: #55e39a; }
+/* Elevated edge light */
+.intel-board::before {
+  content: ""; position: absolute; left: 10px; top: 18px; bottom: 18px; width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 70%, #fff 12%), var(--tone));
+  box-shadow: 0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+  pointer-events: none;
+}
+.intel-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(180deg, #ffffff08, transparent 22%);
+}
+
+.ib-head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.ib-jewel {
+  width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 32% 28%, #ffffffee, color-mix(in srgb, var(--tone) 82%, #fff 8%) 58%, color-mix(in srgb, var(--tone) 55%, #000 30%));
+  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 65%, transparent), inset 0 1px #ffffff88;
+}
+.ib-kind { font-size: 13px; font-weight: 800; letter-spacing: .14em; color: var(--tone); }
+.ib-id { font-size: 13px; color: #b9b2c2; letter-spacing: .06em; }
+.ib-truth {
+  margin-left: auto; font-size: 12px; font-weight: 800; letter-spacing: .1em;
+  color: #d8ffe7; border: 1px solid #55e39a66; background: #55e39a14;
+  padding: 7px 11px; border-radius: 999px;
+}
+.ib-title {
+  color: #fff; font-size: clamp(26px, 3.2vw, 44px); line-height: 1.08;
+  letter-spacing: -0.01em; margin: 0 0 20px; font-weight: 800;
+  text-wrap: balance;
+}
+
+.ib-layers { display: flex; flex-direction: column; gap: 12px; }
+.ib-layer {
+  --lc: #fff;
+  border: 2px solid color-mix(in srgb, var(--lc) 42%, #fff 8%);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #101017, #08080c);
+  box-shadow: inset 0 1px #ffffff1c, 0 14px 30px #00000090,
+    0 0 20px color-mix(in srgb, var(--lc) 10%, transparent);
+  overflow: hidden;
+}
+/* Per-layer colors — Shawn's visual language */
+.ib-layer.layer-white  { --lc: #f4f2f8; }
+.ib-layer.layer-purple { --lc: #9d75ff; }
+.ib-layer.layer-blue   { --lc: #5aa9ff; }
+.ib-layer.layer-green  { --lc: #55e39a; }
+.ib-layer.layer-yellow { --lc: #ffd94d; }
+.ib-layer.layer-gold   { --lc: #f0b429; }
+.ib-layer.layer-orange { --lc: #ff8c42; }
+.ib-layer.layer-red    { --lc: #ff5e6c; }
+.ib-layer.layer-rose   { --lc: #f15bd6; }
+.ib-layer.layer-magenta { --lc: #d86cff; }
+.ib-layer.layer-slate   { --lc: #8e8aa0; }
+
+.ib-layer-head {
+  width: 100%; appearance: none; background: none; border: 0; cursor: pointer;
+  display: flex; align-items: center; gap: 12px; text-align: left;
+  padding: 15px 18px; color: #fff;
+}
+.ib-dot {
+  width: 12px; height: 12px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--lc) 70%);
+  box-shadow: 0 0 14px var(--lc);
+}
+.ib-layer-head b { font-size: 18px; letter-spacing: .07em; color: #fff; }
+.ib-layer-head .ib-chev {
+  margin-left: auto; color: var(--lc); font-size: 16px;
+  transition: transform .2s cubic-bezier(.16,.84,.22,1);
+}
+.ib-layer-head.open .ib-chev { transform: rotate(180deg); }
+.ib-layer-body { padding: 4px 20px 20px; }
+.ib-layer-body p { color: #f2eef6; font-size: 17px; line-height: 1.7; margin: 0 0 12px; }
+.ib-layer-body p:last-child { margin-bottom: 0; }
+.ib-layer-body ul { margin: 0 0 12px; padding-left: 22px; color: #f2eef6; font-size: 16px; line-height: 1.7; }
+.ib-layer-body li { margin-bottom: 6px; }
+.ib-layer-body strong { color: #fff; }
+.ib-layer-body code {
+  font-family: ui-monospace, monospace; font-size: 14px; color: #ffe9a8;
+  background: #ffffff10; padding: 2px 7px; border-radius: 6px;
+}
+/* Deeper layers sit quieter until opened */
+.ib-layer.is-deeper .ib-layer-head b { font-size: 16px; color: #e8e3ee; }
+
+.ib-foot {
+  margin-top: 18px; padding-top: 14px; border-top: 2px solid #ffffff16;
+  color: #8f8898; font-size: 12.5px; line-height: 1.5; word-break: break-all;
+}
+
+/* ——— Activity stream ——— */
+.activity-stream { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.activity-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 6px; border-bottom: 1px solid #ffffff12;
+}
+.activity-dot {
+  width: 11px; height: 11px; border-radius: 50%; flex: none; margin-top: 6px;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--purple) 70%);
+  box-shadow: 0 0 12px var(--purple);
+}
+.activity-row b { color: #fff; font-size: 17px; display: block; margin-bottom: 4px; }
+.activity-row p { color: #cfc9d6; font-size: 15px; line-height: 1.6; margin: 0; }
+
+/* Main Show wrapper */
+.main-show .hero { margin-bottom: 4px; }
+
+/* Nothing sticky at the bottom of the Main Show — the feed ends cleanly. */
+
+@media (max-width: 640px) {
+  .lens-tabs { gap: 8px; }
+  .lens-tab { padding: 12px 6px 10px; }
+  .lens-tab b { font-size: 14px; }
+  .lens-tab small { font-size: 11px; }
+  .intel-board { padding: 22px 18px 18px; border-radius: 20px; }
+  .ib-title { font-size: clamp(24px, 6.4vw, 32px); }
+  .ib-layer-body p { font-size: 16px; }
+}
