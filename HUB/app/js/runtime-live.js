@@ -78,6 +78,29 @@
     return {state:'not_verified',display_name:'You',detail:'Identity available only through the governed runtime'};
   };
 
+  R.loadDoorRegistry=async function(){
+    const ref='../../BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json';
+    try{
+      const res=await fetch(ref,{cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const json=await res.json();
+      return {ok:true,state:'ready',data:json,source:ref};
+    }catch(err){
+      return {ok:false,state:'not_verified',message:'Canonical Smart Door registry could not be loaded from this deployment: '+(err?.message||'unknown error'),source:ref};
+    }
+  };
+
+  R.loadCompletionMatrix=async function(){
+    const ref='../APP-COMPLETION-MATRIX-V1.json';
+    try{
+      const res=await fetch(ref,{cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      return {ok:true,state:'ready',data:await res.json(),source:ref};
+    }catch(err){
+      return {ok:false,state:'not_verified',message:'Completion matrix is unavailable from this deployment: '+(err?.message||'unknown error'),source:ref};
+    }
+  };
+
   R.runtimeStatus=function(){
     const b=bridge();
     return {connected:!!b,available_methods:methodNames(),adapter_version:'2.0.0'};
