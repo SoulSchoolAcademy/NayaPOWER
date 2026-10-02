@@ -4,8 +4,13 @@ Branch: `naya4/room-02-reports-v2` @ HEAD.
 Director direction (2026-10-02): the ledger is the heartbeat of the system —
 a living graph dashboard, not receipt boards. Demo content authorized for
 design review and system testing; the live stream replaces it at launch.
-Verified: jsdom — 15 pass, 0 fail (5 views, 28 demo beats, smart-id modal,
-copy, raw view, 0 errors).
+Verified: jsdom — 15 pass + 9 pass restyle checks, 0 fail (5 views, 28 demo beats,
+per-view tab colors, count-up counters, live dot, glass panels, smart-id modal, 0 errors).
+
+Visual restyle (director, 2026-10-02): gold reduced to the ledger's identity accents;
+each view owns a stable color (Heartbeat red, Value green, Nodes cyan, Proof violet,
+Receipts gold); tabs silver at rest like Connect; demo banner slimmed to an outlined
+pill; glass panels; living count-up numbers with a pulsing live dot.
 
 ## Score: 9.4/10
 

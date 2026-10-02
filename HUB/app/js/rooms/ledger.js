@@ -18,6 +18,8 @@
     ['proof','Proof'],
     ['receipts','Receipts']
   ];
+  /* stable identity color per view — color belongs to the object, never the position */
+  var VIEW_COLORS = {heartbeat:'#ef4444', value:'#4ade80', nodes:'#22d3ee', proof:'#a371f7', receipts:'#d4a017'};
   var LADDER = ['UNKNOWN','IMPLEMENTED','VERIFIED','PRODUCTION-PROVEN'];
   var STAGES = [
     ['GATES','Every action passes the gates first'],
@@ -70,6 +72,7 @@
     VIEWS.forEach(function(v){
       var b = el('button','lg-tab'+(v[0]===state.view?' on':''), v[1].toUpperCase());
       b.type='button'; b.setAttribute('role','tab');
+      b.style.setProperty('--tab-c', VIEW_COLORS[v[0]]);
       b.setAttribute('aria-selected', v[0]===state.view ? 'true':'false');
       b.addEventListener('click', function(){
         state.view = v[0];
@@ -140,11 +143,26 @@
     var out = entries.filter(function(e){ return e.kind==='execution'; }).length;
     var ver = entries.filter(function(e){ return e.proofState==='VERIFIED'||e.proofState==='PRODUCTION-PROVEN'; }).length;
     var ref = entries.filter(function(e){ return e.outcome==='REFUSE'; }).length;
-    [['ACTIONS IN',inn],['ACTIONS OUT',out],['VERIFIED',ver],['REFUSED',ref]].forEach(function(c){
+    [['ACTIONS IN',inn,true],['ACTIONS OUT',out],['VERIFIED',ver],['REFUSED',ref]].forEach(function(c){
       var d = el('div','lg-counter');
-      var n = el('span','lg-counter-n',''); n.textContent=c[1]; d.appendChild(n);
-      d.appendChild(el('span','lg-counter-l',c[0]));
+      var n = el('span','lg-counter-n',''); n.textContent='0'; d.appendChild(n);
+      var lab = el('span','lg-counter-l');
+      if(c[2]){ var dot=el('span','lg-live-dot',''); lab.appendChild(dot); }
+      var t = el('span','',''); t.textContent=c[0]; lab.appendChild(t);
+      d.appendChild(lab);
       wrap.appendChild(d);
+      /* living numbers: count up on load */
+      (function(node, target){
+        var t0=null, dur=900;
+        function step(ts){
+          if(t0===null)t0=ts;
+          var k=Math.min(1,(ts-t0)/dur), ease=1-Math.pow(1-k,3);
+          node.textContent=Math.round(target*ease);
+          if(k<1) requestAnimationFrame(step);
+        }
+        if(typeof requestAnimationFrame==='function') requestAnimationFrame(step);
+        else node.textContent=target;
+      })(n, c[1]);
     });
     return wrap;
   }
@@ -205,7 +223,9 @@
     sweep.setAttribute('class','lg-sweep'); svg.appendChild(sweep);
     pw.appendChild(svg);
     var pl = el('p','lg-pulse-label','');
-    pl.textContent = entries.length + ' recorded actions \u00B7 newest on the right \u00B7 click any action to inspect its smart id';
+    var dot = el('span','lg-live-dot',''); pl.appendChild(dot);
+    var ptx = el('span','',''); ptx.textContent = ' LIVE \u00B7 ' + entries.length + ' recorded actions \u00B7 newest on the right \u00B7 click any action to inspect its smart id';
+    pl.appendChild(ptx);
     pw.appendChild(pl);
     v.appendChild(pw);
     /* ticker */
