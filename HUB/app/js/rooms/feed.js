@@ -32,6 +32,8 @@
   let allItems=[];
   let currentMode=normalizeMode(window.NayaRuntime?.mode||'collective');
   let evidenceReturnFocus=null;
+  let riverReturnContext=null;
+  let activeAskContext=null;
 
   function FeedRoom(){
     const {el}=window.NayaUI;
@@ -57,6 +59,7 @@
     ask.type='button';
     const panel=askPanel(el);
     ask.addEventListener('click',()=>{
+      if(!panel.classList.contains('open')) activeAskContext=null;
       panel.classList.toggle('open');
       if(panel.classList.contains('open')){
         const input=panel.querySelector('.ask-input');
@@ -138,6 +141,7 @@
     board.style.setProperty('--state-tone',stateTone(b.truth_state));
     board.setAttribute('tabindex','0');
     board.setAttribute('role','button');
+    board.dataset.intelligenceId=b.id;
     board.setAttribute('aria-label','Open intelligence: '+b.title);
 
     const orb=el('div','sb-orb');
@@ -179,8 +183,12 @@
 
     const open=()=>{
       const stage=board.closest('.feed-stage');
+      riverReturnContext={id:b.id,scrollY:window.scrollY};
       renderNote(el,stage,b);
-      stage.scrollIntoView({block:'start'});
+      stage.scrollIntoView({block:'start',behavior:'auto'});
+      requestAnimationFrame(()=>{
+        stage.querySelector('.note-back')?.focus({preventScroll:true});
+      });
     };
     board.addEventListener('click',open);
     board.addEventListener('keydown',event=>{
@@ -207,8 +215,17 @@
     back.type='button';
     back.setAttribute('aria-label','Back to the '+currentMode+' intelligence river');
     back.addEventListener('click',()=>{
+      const restore=riverReturnContext;
       renderRiver(el,stage);
-      stage.scrollIntoView({block:'start'});
+      requestAnimationFrame(()=>{
+        if(restore){
+          window.scrollTo({top:restore.scrollY,left:0,behavior:'auto'});
+          const target=[...stage.querySelectorAll('.snap-board')]
+            .find(node=>node.dataset.intelligenceId===restore.id);
+          target?.focus({preventScroll:true});
+        }
+        riverReturnContext=null;
+      });
     });
     note.appendChild(back);
 
@@ -544,7 +561,16 @@
 
       let runtime;
       try{
-        runtime=await window.NayaRuntime.search?.(question,{room:'feed',mode:currentMode});
+        runtime=await window.NayaRuntime.search?.(question,{
+          room:'feed',
+          mode:currentMode,
+          intelligent_block_id:activeAskContext?.id||null,
+          context:activeAskContext?{
+            intelligent_block_id:activeAskContext.id,
+            title:activeAskContext.title,
+            mode:activeAskContext.mode
+          }:null
+        });
       }catch(err){
         runtime={ok:false,state:'error',message:err?.message||'Runtime search failed.'};
       }
@@ -603,12 +629,18 @@
     }
 
     const boundary=el('p','ask-boundary','');
-    boundary.textContent='Source: governed runtime'+(runtime.method?' · '+runtime.method:'')+'. The interface does not upgrade the returned truth state.';
+    boundary.textContent='Source: governed runtime'+(runtime.method?' · '+runtime.method:'')+
+      (activeAskContext?' · Canonical context: '+activeAskContext.id:'')+
+      '. The interface does not upgrade the returned truth state.';
     result.appendChild(boundary);
   }
 
   function renderStageFallback(el,result,question,runtime){
-    const hits=localRetrieve(question);
+    const localHits=localRetrieve(question);
+    const focused=activeAskContext&&allItems.find(item=>item.id===activeAskContext.id);
+    const hits=focused
+      ? [{b:focused,score:Number.MAX_SAFE_INTEGER},...localHits.filter(hit=>hit.b.id!==focused.id)]
+      : localHits;
     const group=el('div','ask-step');
     const label=el('p','ask-k','');
     label.textContent='ON-SCREEN RETRIEVAL · '+hits.length;
@@ -646,19 +678,23 @@
     result.appendChild(group);
 
     const boundary=el('p','ask-boundary','');
-    boundary.textContent='Governed retrieval was unavailable'+(runtime?.message?' — '+runtime.message:'')+'. This fallback searches only intelligence already visible to this browser session. Nothing was invented or written.';
+    boundary.textContent='Governed retrieval was unavailable'+(runtime?.message?' — '+runtime.message:'')+
+      (activeAskContext?' Canonical context requested: '+activeAskContext.id+'.':'')+
+      ' This fallback searches only intelligence already visible to this browser session. Nothing was invented or written.';
     result.appendChild(boundary);
   }
 
   function openAskForBlock(stage,b){
-    renderRiver(window.NayaUI.el,stage);
     const panel=stage.querySelector('.ask-panel');
     if(!panel) return;
+    activeAskContext={id:b.id,title:b.title,mode:modeOf(b)};
+    panel.dataset.intelligenceId=b.id;
     panel.classList.add('open');
     const input=panel.querySelector('.ask-input');
     if(input){
-      input.value='About "'+b.title+'": ';
-      input.focus();
+      input.value='What should I understand or do next about this?';
+      input.focus({preventScroll:true});
+      input.select();
     }
     panel.scrollIntoView({behavior:prefersReduced()?'auto':'smooth',block:'center'});
   }
