@@ -207,6 +207,56 @@ def test_decision_receipt_and_independent_recompute(profile):
     assert reread["matches_selected"]
 
 
+def test_independent_recompute_accepts_persisted_baseline_name(profile):
+    # Interop: runtime-persisted receipts carry "baseline_candidate_id"
+    # (Coda 1, #1247). The verifier must recompute from that name too.
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9)
+    ev = evaluate_candidates([base, a], "base", profile)
+    receipt = build_decision_receipt(
+        decision_id="D-2",
+        objective=profile.objective,
+        baseline_id="base",
+        stakeholders=["human-director"],
+        horizon="bounded-run",
+        evaluation=ev,
+        authority_basis="standing low-risk authority",
+        evidence_refs=["test:e2"],
+        observation_window={"status": "open", "ends_at": None},
+        verification="PASS_PENDING_WINDOW",
+    )
+    persisted = dict(receipt)
+    del persisted["baseline_id"]
+    persisted["baseline_candidate_id"] = "base"
+    reread = independent_recompute(persisted, [base, a], profile)
+    assert reread["matches_decision"]
+    assert reread["matches_selected"]
+
+
+def test_independent_recompute_refuses_missing_baseline_closed(profile):
+    # Fail closed, not KeyError: a receipt with no baseline identifier at
+    # all must be refused explicitly. Fails (KeyError) on the pre-fix code.
+    base = cand("base", baseline=True, B=5)
+    a = cand("a", B=9)
+    ev = evaluate_candidates([base, a], "base", profile)
+    receipt = build_decision_receipt(
+        decision_id="D-3",
+        objective=profile.objective,
+        baseline_id="base",
+        stakeholders=["human-director"],
+        horizon="bounded-run",
+        evaluation=ev,
+        authority_basis="standing low-risk authority",
+        evidence_refs=["test:e3"],
+        observation_window={"status": "open", "ends_at": None},
+        verification="PASS_PENDING_WINDOW",
+    )
+    broken = dict(receipt)
+    del broken["baseline_id"]
+    with pytest.raises(ValueError, match="refusing to recompute"):
+        independent_recompute(broken, [base, a], profile)
+
+
 def test_prediction_inflation_detected_after_sampled_records():
     records = [
         {"delta_v_predicted": 8, "delta_v_actual": 2},
