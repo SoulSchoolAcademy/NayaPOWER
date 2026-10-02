@@ -92,7 +92,7 @@ The Hub inventory includes at minimum:
 - Naya companion
 - active Space/context
 - truth/provenance affordances
-- global capture / Smart Note
+- automatic Smart Note / Intelligent Block projection receiver
 - browser navigation/history/deep links
 
 ### Eleven primary rooms
@@ -111,7 +111,7 @@ The Hub inventory includes at minimum:
 ### Shared runtime capabilities
 - identity/session
 - governed retrieval
-- Smart Note capture
+- Smart Note / Intelligent Block projection from upstream Naya/runtime
 - canonical Intelligent Block retrieval
 - search/relevance
 - feed streams
@@ -149,9 +149,10 @@ A canonical intelligence object keeps one identity while appearing in Feed, Toda
 Cross-room behavior must be intentional:
 
 ```
-CAPTURE
-→ CANONICAL INTELLIGENCE
-→ RETRIEVE
+UPSTREAM NAYA / WORK PRODUCES SMART NOTE · ACTIVITY · REPORT
+→ CANONICAL INTELLIGENCE / EVENT
+→ INDEX / RECEIPT / PROJECTION EVENT
+→ HUB RETRIEVES
 → FEED / TODAY / REPORT / LIBRARY PROJECTIONS
 → ORGANIZE / CONNECT / COMMUNICATE / ACT
 → RECEIPT / VERIFY
@@ -209,7 +210,7 @@ At minimum prove:
 2. Return-session / auto-login path.
 3. Hub route/back/forward/reload continuity.
 4. Search → result → canonical source/evidence.
-5. Capture Smart Note → persist → retrieve → Feed/Library visibility.
+5. Upstream Naya creates Smart Note → canonical IB persists → Hub automatically projects the same IB into Feed/Library without manual Hub entry.
 6. Personal / Collective / Activity are materially distinct.
 7. Today synthesizes real daily evidence without manufactured content.
 8. Reports change meaningfully by period.
@@ -390,7 +391,7 @@ Primary room routes:
 - `/settings` — Settings
 
 Secondary/focused capabilities:
-- Smart Note capture = global capture action, available from context; optional focused surface if useful.
+- Smart Notes = upstream Naya intelligence-production process. The Hub receives/project Smart Notes; it does not own a capture control.
 - System Health = `Settings → System Health`, not a permanent primary rail room.
 - Evidence/source inspector = object-level drawer/sheet/detail view, not a new primary room.
 - Ask Naya = contextual global capability, not a primary room.
@@ -431,8 +432,14 @@ Global, prominent, near top of center canvas.
 ## Space selector
 Global when Space materially changes retrieval/context. Place near room/context orientation, not buried in Settings.
 
-## Capture / Smart Note
-Global high-value action. A "+" may be used only when paired with an accessible label/tooltip and unmistakable meaning. On desktop, prefer a visible "Capture" / "Smart Note" action where space permits.
+## Smart Note / intelligence-production boundary
+There is **no Hub-owned Capture Smart Note button**.
+
+Smart Notes are created upstream by Naya / connected AI through the governed intelligence pipeline. The Hub waits for the canonical IB/event and projects it automatically.
+
+A "+" icon must not be repurposed as intelligence capture. If "+" is used for navigation or a drawer, label it accessibly and keep that meaning stable.
+
+Contextual Ask Naya may explain projected intelligence or hand an explicit creation request to the upstream Naya runtime, but the Hub client does not create canonical intelligence locally.
 
 ## Ask Naya
 Global/contextual. Entry may live near search/top context and within objects where asking about that object is useful.
@@ -511,7 +518,7 @@ Must support:
 - why-am-I-seeing-this;
 - open object;
 - Ask Naya;
-- capture follow-up;
+
 - save/favorite;
 - add to list;
 - evidence/source;
@@ -759,11 +766,11 @@ The visual idea is ahead of the functioning product.
 
 1. **Declare one production implementation lane.** End `HUB/app/` vs `HUB/APP/` divergence by selecting one and absorbing the best bounded work.
 2. **Fix the mobile navigation defect first.** Exactly one drawer/rail; zero double sidebar; zero black gutter; preserve scroll.
-3. **Reconcile to current main and canonical 11-room IA.** Re-home Smart Notes and System without losing their functionality.
-4. **Finish the real App Shell.** Router, shell, global search, Space/context, identity utilities, capture, contextual Naya, state framework.
+3. **Reconcile to current main and canonical 11-room IA.** Remove Smart Notes as a Hub capture room/control; preserve the upstream Smart Note pipeline and automatic projection. Keep System under Settings → System Health.
+4. **Finish the real App Shell.** Router, shell, global search, Space/context, identity utilities, contextual Naya, projection receiver, state framework.
 5. **Make Welcome → governed Identity → Today work end-to-end.** No worker redirect, duplicate identity gate or local identity pretending to be governed.
 6. **Build Your Intelligence Today to completion as the first masterpiece vertical slice.** Real retrieval → synthesis → evidence → actions → persistence → cross-room links.
-7. **Prove the cross-room intelligence identity path.** Capture → canonical intelligence → Feed/Today/Library → Lists/Space → Ledger evidence without copies.
+7. **Prove the cross-room intelligence identity path.** Upstream Smart Note / Activity / Report → canonical object/event → automatic Hub projection → Feed/Today/Library → Lists/Space → Ledger evidence without copies.
 8. **Connect search to governed retrieval.** Search results must come from canonical intelligence with provenance, not DOM text.
 9. **Activate the remaining rooms in dependency/value order**, completing each room before moving on rather than spreading placeholders.
 10. **Run AAA browser proof.** Desktop/tablet/mobile + zoom + keyboard + reduced motion + performance + negative states + independent D1–D8 score; keep fixing until target.
