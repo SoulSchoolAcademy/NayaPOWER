@@ -21,6 +21,23 @@ Companion projections:
 
 ## 0. READ THIS FIRST
 
+### Non-negotiable architecture correction
+
+**THE HUB IS OUTPUT, NOT THE CANONICAL INPUT OF INTELLIGENCE.**
+
+Do not put Smart Note capture, report generation, or manual activity publishing into the Hub merely because the interface needs an action.
+
+The three primary upstream projection classes are:
+1. Smart Notes / canonical Intelligent Blocks;
+2. Activity / observed operational events;
+3. Intelligence Reports.
+
+These arrive through canonical runtime/event/index seams and are projected automatically.
+
+Read `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md` before implementing Feed, Today, Reports, Library, runtime adapter, privacy/collective behavior, or Smart Tabs.
+
+A client-local card inserted into the Feed is not intelligence capture. A localStorage note is not a Smart Note. A demo report is not a report. A fake activity item is not activity.
+
 You are building the human cockpit into a living intelligence system. Your job is not to make screens — it is to make **the most elite interface anyone has ever experienced**, where every pixel earns trust and every control does something real. The frozen visual baseline (`HUB/NAYANET INTERFACE CONCEPT.html` @ `ffedda20`) is the floor. Improve it or match it. Never flatten it.
 
 ---
