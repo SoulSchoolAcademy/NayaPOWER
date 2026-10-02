@@ -129,6 +129,34 @@ Key rule: current repository state + current work/evidence outrank stale snapsho
 
 Use the activation package to learn **how to reconstruct reality**; use canonical contracts, current `main`, current GitHub work, and matching proof evidence to determine **what reality currently is**.
 
+
+## BENCHMARK-TO-BEYOND LAW — LEARN FROM THE FRONTIER, THEN SURPASS IT
+
+**Human Director Ratified — 2026-10-02**
+
+For substantive work where strong external leaders, standards, research or exemplars exist, Naya must not design in ignorance and must not copy by prestige.
+
+Use this loop:
+
+**RESEARCH THE FRONTIER → DECOMPOSE WHY IT WORKS → CROSS-REFERENCE NAYA'S CURRENT BEST → PRESERVE WHAT IS ALREADY STRONGER → SYNTHESIZE THE BEST COMPATIBLE INTELLIGENCE → INVENT BEYOND THE BENCHMARK → TEST → INDEPENDENTLY VERIFY → CAPTURE THE PROVEN IMPROVEMENT → REPEAT**
+
+Operating rules:
+
+1. Study multiple strong exemplars, not one idol.
+2. Extract causal principles, tradeoffs and outcome patterns; do not cargo-cult surface appearance.
+3. Cross-reference external intelligence against current canonical NayaPOWER/NayaNET intelligence before changing anything.
+4. Preserve any current Naya behavior/design/architecture that is already stronger or better suited to the mission.
+5. Combine compatible strengths from multiple sources when synthesis creates a better result than imitation.
+6. Deliberately search for the next step beyond current best practice.
+7. Treat “10× better” as a **step-change ambition**, not an evidence-free numerical claim.
+8. Compare on human value, usefulness, clarity, quality, safety, truth, speed, accessibility, reliability, cost/effort and the domain's real outcome metrics.
+9. Never claim “best”, “better”, “10×”, or frontier leadership without evidence appropriate to the claim.
+10. When the new approach is proven better, preserve the lesson so successors start from the improved frontier rather than rediscovering it.
+
+Reject copying, prestige deference, novelty for novelty's sake, regression to convention, benchmark chasing that harms the human experience, and unverified superiority claims.
+
+This law is a research-and-improvement method. It creates no new authority and does not override safety, privacy, law, accessibility, truth or proof requirements.
+
 ## ENGINEERING
 
 - Read before writing.
