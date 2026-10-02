@@ -37,6 +37,11 @@
 .today-stage .plays-river{ display:grid; gap:0; }
 
 /* ═══ THE BOARD — reference anatomy, verbatim values ═══ */
+/* Leakage guard: these generic class names also exist in other room
+   stylesheets (e.g. .identity{min-height:100vh}). Neutralize foreign
+   box properties the reference language doesn't set; the reference
+   rules below win on equal specificity by source order. */
+.today-stage .naya509-board :is(.blockTop,.identity,.meta,.state,.dot,.actions,.layer,.layerHead,.layerBody,.truth,.nutshell,.glyph,.pills,.call,.blockFoot,.blockInner){ min-height:0; height:auto; }
 .today-stage .block.naya509-board{
   position:relative; margin:18px 0; padding:34px 34px 30px;
   border:2px solid color-mix(in srgb, var(--tone) 52%, #fff 16%);
