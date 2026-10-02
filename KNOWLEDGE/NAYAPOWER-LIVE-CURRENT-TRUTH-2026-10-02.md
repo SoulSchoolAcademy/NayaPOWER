@@ -2,7 +2,7 @@
 
 **Snapshot date:** 2026-10-02
 **Snapshot source:** current `main` + live Supabase + current GitHub coordination/proof state
-**Current main:** `10190133505f4ba03cd029d18cf6f650affeeb9c`
+**Current main at update:** `d9e6b32fa097a9abd026523652a5e423a7e08d06`
 **Status:** CURRENT DERIVED OPERATIONS SNAPSHOT — not constitutional law and not a replacement for live evidence
 
 > **Source precedence:** explicit Human Director instruction → current `main` → current GitHub issues/PRs → claim-matched runtime/proof evidence → dated snapshots. This document is a navigation and handoff aid. Live source/evidence outranks it.
@@ -15,12 +15,12 @@
 | 2 | WHAT are we building? | **PROVEN** | A governed compounding-intelligence system built around Intelligent Blocks, one semantic graph, governed retrieval, proof, learning, succession, and many interfaces. | North Star; Cold-14; Graph V2 contract; canonical tree |
 | 3 | WHY are we building it? | **PROVEN** | To maximize responsible verified human value per moment by turning useful experience into durable, connected, verified, reusable intelligence that compounds. | North Star white paper + ratification |
 | 4 | WHAT does success mean? | **PROVEN** | 10/10 only when the declared scope is independently verified, current, complete, and free of material unresolved proof gaps; critical unknowns/blockers prevent AAA. | AAA Scorecard V1 |
-| 5 | WHAT is true right now? | **CONFLICTED** | Main is moving rapidly. Production currently has 134 Intelligent Blocks and 152 graph relationships. The graph is structurally intact but heavily dominated by PRODUCES edges; collective disconnect semantics differ between source migration and live function. | Live Supabase read; current main; migration ledger |
+| 5 | WHAT is true right now? | **CONFLICTED** | Main moved to `d9e6b32fa097a9abd026523652a5e423a7e08d06` after the Brain-index reconciliation merge. Production currently has 134 Intelligent Blocks and 152 graph relationships. The graph is structurally intact but heavily dominated by PRODUCES edges; the collective-disconnect candidate is not production-applied. | Live Supabase read; current main; migration ledger |
 | 6 | WHAT has already been proven? | **PROVEN** | Canonical Receiver chain has been proven at selected scopes; multiple ACT/PROVE/KNOW/learning/cold-successor tests pass; Graph V2 selector/validator behavior is extensively test-covered. | Historical verified runs + current Kernel/Collective Chain CI |
 | 7 | WHAT is unknown? | **PROVEN** | Broad nine-node runtime influence; universal law compilation; general relationship-driven reasoning; universal learning-to-behavior; measured value-per-moment; collective two-owner behavior; full Sender→Receiver→Hub production proof. | AAA Scorecard + current runtime evidence |
 | 8 | WHAT authority exists? | **PROVEN** | Human Director is final authority; capability/retrieval/intelligence never creates authority; production/constitutional boundaries remain protected. Current execution may act only within verified scope. | AGENTS.md; Nine Node spec; #554 protocol |
 | 9 | WHAT happened previously? | **PROVEN** | The project moved from receiver/runtime foundation through production lineage repairs, graph V2 gates, decision-efficiency/autonomy doctrine, Hub convergence work, and collective-consent experiments. Earlier claims are historical unless re-proven. | Git history; #554; PR history |
-| 10 | WHAT did we learn? | **PROVEN** | A major lesson is that structural proof and behavioral proof are separate. Migration immutability, graph integrity, authority separation, and evidence-bound claims are functioning as guardrails. Collective consent/revocation must not be inferred from source presence alone. | Current CI failures/successes; production reads; #1136 record |
+| 10 | WHAT did we learn? | **PROVEN** | A major lesson is that structural proof and behavioral proof are separate. Migration immutability, graph integrity, authority separation, and evidence-bound claims are functioning as guardrails. Collective consent/revocation must not be inferred from source presence or a stale coordination comment alone; the latest #1136 state is reopened and the earlier ratification claim was explicitly retracted. | Current CI failures/successes; production reads; #1136 record |
 | 11 | WHAT should happen next? | **PROVEN** | First reconcile the collective-consent semantic boundary and source→ledger→production parity; in parallel, move the graph from structural topology toward measured relationship-driven reasoning and then prove cold successor behavior. | Current gap analysis |
 | 12 | HOW do I prove it? | **PROVEN** | Use source → focused test → runtime evidence → persisted evidence → independent reconstruction; for behavioral claims use control/treatment or held-out evidence and fail closed on missing proof. | Nine Node spec; Cold-14; AAA Scorecard; test protocol |
 | 13 | WHERE do I record it? | **PROVEN** | Canonical Event → Intelligent Block → graph relationship system of record → index/checkpoint → Smart Ledger/receipts → relevant Smart Note/operations evidence → #554 communication. | Smart Note protocol; Graph V2; runtime schema |
@@ -117,8 +117,8 @@
 
 ## One next executable action
 
-**NEXT ACTION:** Reconcile #1136 into one authoritative semantic contract and run a read-only source→production parity proof for `nayanet_smart_disconnect(text)`; **do not change production** until the semantic authority is singular and verified.
+**NEXT ACTION:** Reconcile the latest #1136 record into one authoritative semantic contract state, then run a read-only source→ledger→production parity proof for `nayanet_smart_disconnect(text)`; **do not change production** until the semantic authority and exact migration target are both singularly verified.
 
 ## Handoff
 
-The next Naya must begin from current `main @ 10190133505f4ba03cd029d18cf6f650affeeb9c`, read this snapshot as navigation only, verify live evidence again, and continue from the single NEXT ACTION above. #554 is the coordination record; every consequential update must SIGN-IN → state objective/evidence/status/blocker/authority/one next action → SIGN-OUT.
+At handoff, the next Naya must re-resolve `refs/heads/main` (this snapshot is dated and never overrides live truth). The verified main at this update is `d9e6b32fa097a9abd026523652a5e423a7e08d06`, read this snapshot as navigation only, verify live evidence again, and continue from the single NEXT ACTION above. #554 is the coordination record; every consequential update must SIGN-IN → state objective/evidence/status/blocker/authority/one next action → SIGN-OUT.
