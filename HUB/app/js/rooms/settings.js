@@ -1,104 +1,61 @@
-/* SETTINGS — the Control Deck.
-   Identity, privacy, authority, connections, notifications, data, security,
-   appearance — plus System Health (diagnostics live here, never as a primary room).
-   Governed settings are honest NOT_VERIFIED until the runtime connects. */
+/* SETTINGS — THE CONTROL DECK.
+   Human controls first; diagnostics are secondary and read from current artifacts. */
+function SettingsRoom(){
+  const {el,Board,Pill}=window.NayaUI,R=window.NayaRuntime;
+  const wrap=el('div','room-scene'), ACC='var(--accent-settings)';
+  wrap.style.setProperty('--room-accent',ACC);
 
-function SettingsRoom() {
-  const { el, Board, Pill } = window.NayaUI;
-  const R = window.NayaRuntime;
-  const wrap = el('div');
-  const ACC = 'var(--accent-settings)';
+  const human=Board({accent:ACC,icon:'gear',title:'Your intelligence, your rules',sub:'Identity · Privacy · Authority · Connections · Notifications · Data · Security · Appearance',lift:false});
+  const cats=['Identity','Privacy','Authority','Connections','Notifications','Data & Security','Appearance'];
+  human.body.innerHTML='<p style="color:var(--ink-dim);font-size:13.5px;line-height:1.6;max-width:720px">A setting is only real when its persistence/enforcement scope is known. Local presentation preferences must never masquerade as governed privacy or authority controls.</p>'+
+    '<div class="domain-grid" style="margin-top:16px">'+cats.map(x=>'<div class="domain"><strong>'+esc(x)+'</strong><p>Governed control surface · exact runtime scope must be verified before modification is enabled.</p></div>').join('')+'</div>';
+  wrap.appendChild(human);
 
-  /* ——— Governed settings (honest: pending runtime) ——— */
-  const gov = Board({
-    accent: ACC, icon: 'gear',
-    title: 'Your intelligence, your rules',
-    sub: 'Identity · Privacy · Authority · Connections · Notifications · Data · Security · Appearance',
-    lift: false,
-  });
-  const c = R.NOT_VERIFIED_COPY;
-  gov.body.innerHTML = `
-    <p style="color:var(--muted);font-size:13.5px;max-width:640px;margin-bottom:14px">
-      ${c.body}</p>
-    <div style="display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
-      ${['Identity', 'Privacy', 'Authority', 'Connections', 'Notifications', 'Data & Security', 'Appearance']
-        .map(t => `<div style="padding:12px 14px;border:1px solid var(--line-soft);border-radius:12px;
-          display:flex;justify-content:space-between;align-items:center;gap:10px">
-          <span style="font-weight:700;font-size:13px">${t}</span>${Pill('not_verified')}</div>`).join('')}
-    </div>`;
-  wrap.appendChild(gov);
-  wrap.appendChild(el('div', '', '<hr class="hr">'));
+  const ownership=Board({accent:ACC,icon:'shield',title:'Your Intelligence',sub:'Private by default · shared by choice · collective by consent',lift:false});
+  ownership.body.innerHTML='<div class="metric-ribbon">'+
+    '<div class="metric"><b>YOURS</b><span>INTELLIGENCE</span></div>'+
+    '<div class="metric"><b>CHOICE</b><span>SHARING</span></div>'+
+    '<div class="metric"><b>LAW</b><span>AUTHORITY</span></div>'+
+    '<div class="metric"><b>PROOF</b><span>CONSEQUENCE</span></div></div>';
+  wrap.appendChild(ownership);
 
-  /* ——— System Health (migrated from the former System room) ——— */
-  const dims = [
-    ['Visual Excellence', 8.3, 'Strong identity and concept; responsive polish, typography, icon maturity, and mobile shell defects remain.'],
-    ['Functional Completeness', 4.8, 'Too many rooms are shells or honest NOT_VERIFIED presentations — not complete causal software yet.'],
-    ['Intelligence', 4.2, 'Runtime hooks exist; rooms do not yet fulfill their intelligence promise end-to-end.'],
-    ['Honesty', 8.3, 'Newer implementations refuse to fabricate data. Some stale terminology remains.'],
-    ['Performance', 3.8, 'Production performance has not been independently demonstrated.'],
-    ['Reliability & Continuity', 4.8, 'Local state, runtime gaps, and source/deployment uncertainty remain.'],
-    ['Accessibility', 5.5, 'Some keyboard/reduced-motion thinking; complete proof does not exist yet.'],
-    ['Craft & Finish', 5.8, 'Great ingredients; duplicate lanes, shell defects, and incomplete rooms still feel unfinished.'],
-  ];
-  const health = Board({
-    accent: ACC, icon: 'core',
-    title: 'System Health — the honest scorecard',
-    sub: 'Last published independent audit · Naya 3 · 2026-10-01 · the useful score, not the flattering one',
-    lift: false,
-  });
-  const rows = dims.map(([name, s, note]) => `
-    <div style="display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:12px 0;border-bottom:1px solid var(--line-soft)">
-      <div style="font-weight:800;font-size:15px">${name}</div>
-      <div style="font-weight:800;font-size:16px;color:${s >= 9 ? 'var(--green)' : s >= 7 ? '#ffffff' : 'var(--orange)'}">${s.toFixed(1)}</div>
-      <div style="grid-column:1/-1;color:var(--muted);font-size:13px">${note}</div>
-      <div style="grid-column:1/-1;height:6px;border-radius:6px;background:#ffffff10;overflow:hidden">
-        <div style="width:${s * 10}%;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--magenta));box-shadow:0 0 10px #9d75ff66"></div>
-      </div>
-    </div>`).join('');
-  const avg = (dims.reduce((a, d) => a + d[1], 0) / dims.length).toFixed(1);
-  health.body.innerHTML = `
-    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-      <span style="font-size:44px;font-weight:800;background:linear-gradient(120deg,#ffffff,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent">${avg}</span>
-      <span style="color:var(--muted);font-size:13px;letter-spacing:.14em">COMPOSITE · BAR IS 9.0</span>
-    </div>${rows}
-    <p style="color:var(--muted);font-size:12px;margin-top:12px">Scores move when the evidence moves — up or down. The builder's self-score never closes a gate; independent re-score required.</p>`;
+  const health=Board({accent:ACC,icon:'core',title:'System Health',sub:'Advanced · current build truth, not flattering static scores',lift:false});
+  health.body.innerHTML='<div class="empty-instrument"><strong>Loading completion truth…</strong><p>The control deck reads the branch completion matrix instead of hardcoding a stale score.</p></div>';
   wrap.appendChild(health);
-  wrap.appendChild(el('div', '', '<hr class="hr">'));
 
-  /* ——— Roadmap ——— */
-  const phases = [
-    ['Phase 1 — Foundation', 'live', 'App shell, router, tokens, component system, honest states. This build.'],
-    ['Phase 2 — Shell proven', 'soon', 'One navigation surface per viewport; the mobile drawer law; the full QA matrix green.'],
-    ['Phase 3 — Today, complete', 'soon', 'Your Intelligence Today end-to-end as the reference masterpiece room.'],
-    ['Phase 4 — Compound', 'soon', 'Rooms come alive one by one on the proven architecture; doors open against the governed runtime.'],
-    ['Phase 5 — Polish to 10', 'soon', 'Motion audit, accessibility audit, performance budget — every dimension to 9.0+.'],
-  ];
-  const road = Board({ accent: ACC, icon: 'report', title: 'Roadmap', sub: 'Where this Hub is going', lift: false });
-  road.body.innerHTML = phases.map(([t, s, d]) => `
-    <div style="display:flex;gap:14px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line-soft)">
-      <div style="padding-top:2px">${Pill(s)}</div>
-      <div><div style="font-weight:800;font-size:13.5px">${t}</div>
-      <div style="color:var(--muted);font-size:12px">${d}</div></div>
-    </div>`).join('');
-  wrap.appendChild(road);
-  wrap.appendChild(el('div', '', '<hr class="hr">'));
+  const registry=Board({accent:ACC,icon:'connect',title:'Door registry',sub:'Canonical capability inventory',lift:false});
+  registry.body.innerHTML='<div class="empty-instrument"><strong>Loading Smart Door registry…</strong><p>Connection status comes from the canonical registry artifact when this deployment can load it.</p></div>';
+  wrap.appendChild(registry);
 
-  /* ——— Door registry mirror ——— */
-  const reg = Board({ accent: ACC, icon: 'connect', title: 'Door registry', sub: 'The doors, as the runtime sees them', lift: false });
-  reg.body.innerHTML = `
-    <div style="display:grid;gap:8px">
-      ${R.DOORS.map(d => `
-        <div style="display:flex;align-items:center;gap:12px;padding:9px 4px;border-bottom:1px solid var(--line-soft)">
-          <span style="width:10px;height:10px;border-radius:50%;background:${d.accent};box-shadow:0 0 10px ${d.accent};flex:none"></span>
-          <span style="font-weight:700;font-size:13px;min-width:170px">${d.name}</span>
-          <span style="flex:1">${Pill(d.status)}</span>
-        </div>`).join('')}
-    </div>
-    <p style="color:var(--muted);font-size:12px;margin-top:10px">Source of truth: <b style="color:var(--ink)">${R.doorRegistryRef}</b> · runtime adapter <b style="color:var(--ink)">v${R.version}</b></p>`;
-  wrap.appendChild(reg);
-
+  hydrate();
   return wrap;
-}
 
-window.NayaRooms = window.NayaRooms || {};
-window.NayaRooms.settings = SettingsRoom;
+  async function hydrate(){
+    const matrix=await R.loadCompletionMatrix();
+    if(matrix.ok){
+      const m=matrix.data, rooms=m.rooms||{}, journeys=m.whole_app_journeys||[];
+      const counts={};
+      Object.values(rooms).forEach(x=>counts[x.state]=(counts[x.state]||0)+1);
+      health.body.innerHTML='<div class="metric-ribbon">'+
+        metric(Object.keys(rooms).length,'ROOMS DECLARED')+
+        metric(counts.IMPLEMENTED||0,'IMPLEMENTED')+
+        metric(counts.PRODUCTION_PROVEN||0,'PRODUCTION PROVEN')+
+        metric(journeys.filter(x=>x.state==='PRODUCTION_PROVEN').length+'/'+journeys.length,'JOURNEYS PROVEN')+
+        '</div><div class="intelligence-list" style="margin-top:16px">'+
+        Object.entries(rooms).map(([id,x])=>'<div class="intel-row"><div class="intel-type">'+esc(id)+'</div><div class="intel-title">'+esc(x.metaphor||id)+'</div><div class="meta-row"><span>'+esc(x.state)+'</span><span>RUNTIME '+esc(x.runtime||'—')+'</span></div></div>').join('')+
+        '</div><p style="color:var(--muted);font-size:12px;margin-top:14px">Overall: <b style="color:var(--ink)">'+esc(m.overall_state)+'</b> · target '+esc(m.quality_target?.target||'10')+' · IMPLEMENTED is not DONE.</p>';
+    }else{
+      health.body.innerHTML='<div class="empty-instrument"><strong>Completion matrix unavailable</strong><p>'+esc(matrix.message)+'</p></div>';
+    }
+
+    const reg=await R.loadDoorRegistry();
+    if(reg.ok){
+      registry.body.innerHTML='<div class="intelligence-list">'+(reg.data.doors||[]).map(d=>
+        '<div class="intel-row"><div class="intel-title">'+esc(d.name)+'</div><div class="meta-row"><span>'+esc(d.status)+'</span><span>'+esc(d.health)+'</span><span>'+esc((d.capabilities||[]).join(' · '))+'</span></div></div>'
+      ).join('')+'</div><p style="color:var(--muted);font-size:12px;margin-top:12px">Source: '+esc(reg.source)+'</p>';
+    }else registry.body.innerHTML='<div class="empty-instrument"><strong>Canonical registry unavailable</strong><p>'+esc(reg.message)+'</p></div>';
+  }
+  function metric(v,l){return '<div class="metric"><b>'+esc(v)+'</b><span>'+esc(l)+'</span></div>';}
+  function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+}
+window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
