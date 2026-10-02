@@ -18,23 +18,96 @@ def brace_span(src, open_idx):
             if depth == 0: return (open_idx, k + 1)
     raise ValueError('unbalanced braces')
 
-def find_fn(src, name):
-    m = re.search(r'(async\s+)?function\s+%s\s*\(' % re.escape(name), src)
-    if not m: raise ValueError('function %s not found' % name)
-    j = src.find('{', m.start())
-    return (m.start(), brace_span(src, j)[1])
+def find_all_fns(src, name):
+    """All definitions of a room function. Her base declares some rooms twice
+    (a dead first copy + the live second copy); JS hoisting makes the LAST one
+    win, so replacing only the first leaves her stub live. Replace every copy."""
+    out = []
+    for m in re.finditer(r'(async\s+)?function\s+%s\s*\(' % re.escape(name), src):
+        j = src.find('{', m.start())
+        out.append((m.start(), brace_span(src, j)[1]))
+    if not out:
+        raise ValueError('function %s not found' % name)
+    return out
 
 def main():
     src = open(BASE).read()
     print('base bytes:', len(src))
 
     # 1. Replace the 10 stub room functions (today() stays verbatim).
+    #    Every duplicate definition is replaced: her base defines
+    #    reports/library/settings/notes twice, and hoisting makes the last win.
     for name in ROOMS:
         new_fn = open(os.path.join(BUILD, 'rooms', name + '.js')).read().strip()
-        s, e = find_fn(src, name)
-        old_head = src[s:s+60].replace('\n', ' ')
-        src = src[:s] + new_fn + src[e:]
-        print('replaced %-12s (was: %s...)' % (name, old_head[:50]))
+        spans = find_all_fns(src, name)
+        old_head = src[spans[0][0]:spans[0][0]+60].replace('\n', ' ')
+        for s, e in reversed(spans):
+            src = src[:s] + new_fn + src[e:]
+        print('replaced %-12s x%d (was: %s...)' % (name, len(spans), old_head[:50]))
+
+    # 1b. Wire render() to the room functions, not her governed() stubs.
+    #     Her render() routes connections/mail through governed('connections'|'mail'),
+    #     which would leave our furnished rooms as dead code.
+    r1 = "page==='connections'?await governed('connections',S.connections)"
+    assert r1 in src, 'connections render mapping not found'
+    src = src.replace(r1, "page==='connections'?connections()", 1)
+    r2 = "page==='mail'?await governed('mail',S.mail)"
+    assert r2 in src, 'mail render mapping not found'
+    src = src.replace(r2, "page==='mail'?mail()", 1)
+    print('render(): connections/mail now call the furnished rooms')
+
+    # 1c. Deep-link the address bar on nav clicks. history.replaceState (not
+    #     location.hash) so her hashchange->fromHash listener does not double-render.
+    b1 = 'await render(a.dataset.page)'
+    assert b1 in src, 'nav bind render call not found'
+    src = src.replace(b1,
+        "await render(a.dataset.page);try{history.replaceState(null,'','#/'+a.dataset.page)}catch(_){}", 1)
+    print('bind(): nav clicks now deep-link #/<room>')
+
+    # 1d. Canonical name: Smart Share -> Smart Connect (room head, nav rail, side map).
+    s1 = "share:{title:'Smart Share',kicker:'SHARE'"
+    assert s1 in src, 'S.share title not found'
+    src = src.replace(s1, "share:{title:'Smart Connect',kicker:'CONNECT'", 1)
+    n1 = '<button data-page="share"'
+    _ni = src.find(n1)
+    assert _ni != -1
+    _nj = src.find('</button>', _ni)
+    _nav = src[_ni:_nj]
+    assert 'Smart Share' in _nav, 'nav share label not found'
+    src = src[:_ni] + _nav.replace('Smart Share', 'Smart Connect') + src[_nj:]
+    assert "'Collective':'Smart Share'" in src, 'side map label not found'
+    src = src.replace("'Collective':'Smart Share'", "'Collective':'Smart Connect'", 1)
+    assert 'Smart Share' not in src, 'stale Smart Share remains'
+    print('renamed Smart Share -> Smart Connect everywhere')
+
+    # 1e. Scope repair: her base splits room functions across two IIFE closures.
+    #     connections()/mail() were defined only in the first closure, but
+    #     render(page) lives in the second -- so render() threw ReferenceError.
+    #     Append our copies into render()'s own script block (before </script>);
+    #     function declarations hoist, so render() resolves them.
+    import re as _re
+    _toks = [(_m.start(), 'open') for _m in _re.finditer(r'<script(?![^>]*src=)[^>]*>', src)]
+    _toks += [(_m.start(), 'close') for _m in _re.finditer(r'</script>', src)]
+    _toks.sort()
+    _stack, _blocks = [], []
+    for _pos, _typ in _toks:
+        if _typ == 'open':
+            _stack.append(_pos)
+        elif _stack:
+            _blocks.append((_stack.pop(), _pos))
+    _rb = next(i for i, (_s, _e) in enumerate(_blocks)
+               if _s < src.find('async function render(page)') < _e)
+    _rs, _re_ = _blocks[_rb]
+    assert 'function connections(){' not in src[_rs:_re_], 'connections already in render block'
+    # Insert INSIDE the IIFE (before its closing })();), not after it:
+    # our rooms close over the IIFE-scoped helpers head/card/S/Q/R.
+    _iife_close = src.rfind('})();', _rs, _re_)
+    assert _iife_close != -1, 'IIFE close not found in render block'
+    _inject = ''
+    for _name in ['connections', 'mail']:
+        _inject += '\n' + open(os.path.join(BUILD, 'rooms', _name + '.js')).read().strip() + '\n'
+    src = src[:_iife_close] + _inject + src[_iife_close:]
+    print('scope: connections()/mail() appended into render() block')
 
     # sanity: today() untouched
     assert 'room01-kicker' in src, 'today() diary markup missing?!'
@@ -73,6 +146,10 @@ def main():
     # 5. Structural checks.
     for name in ROOMS:
         assert ('function %s(){' % name) in src or ('async function %s(){' % name) in src, name
+    assert "page==='connections'?connections()" in src, 'connections render mapping'
+    assert "page==='mail'?mail()" in src, 'mail render mapping'
+    assert "history.replaceState(null,'','#/'+a.dataset.page)" in src, 'deep-link bind'
+    assert "share:{title:'Smart Connect'" in src, 'Smart Connect rename'
     assert 'naya-room-boot' not in src or True
     assert 'NayaHub' in src and 'HubActions' in src
     assert 'data-hub-action' in src

@@ -892,7 +892,7 @@ html.hub-rm *,html.hub-rm *::before,html.hub-rm *::after{transition:none!importa
     <button data-page="today" style="--nav:#d86cff"><span class="ico" aria-hidden="true">✦</span><span>Your Intelligence Today</span></button>
     <button data-page="reports" style="--nav:#6675ff"><span class="ico" aria-hidden="true">▦</span><span>Your Reports</span></button>
     <button data-page="library" style="--nav:#55b9ee"><span class="ico" aria-hidden="true">◈</span><span>Intelligent Library</span></button>
-    <button data-page="share" style="--nav:#55e39a"><span class="ico" aria-hidden="true">⇄</span><span>Smart Share</span></button>
+    <button data-page="share" style="--nav:#55e39a"><span class="ico" aria-hidden="true">⇄</span><span>Smart Connect</span></button>
     <button data-page="ledger" style="--nav:#f1d75a"><span class="ico" aria-hidden="true">◇</span><span>Smart Ledger</span></button>
     <button data-page="connections" style="--nav:#ff9a5a"><span class="ico" aria-hidden="true">⌁</span><span>Your Connections</span></button>
     <button data-page="lists" style="--nav:#9d75ff"><span class="ico" aria-hidden="true">☷</span><span>Smart Lists</span></button>
@@ -965,7 +965,7 @@ render();
 (()=>{
  const wanted=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTER LEARNING','WHAT IT MEANS','HOW TO USE',"WHAT'S IN IT FOR YOU"];
  const aliases={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE'};
- const side={'Home':'Your Intelligence Today','Reports':'Your Report','Intelligence Library':'Intelligence','Collective':'Smart Share','Connections':'Your Connections'};
+ const side={'Home':'Your Intelligence Today','Reports':'Your Report','Intelligence Library':'Intelligence','Collective':'Smart Connect','Connections':'Your Connections'};
  const text=x=>(x||'').replace(/\s+/g,' ').trim().toUpperCase();
  function fix(){
    document.querySelectorAll('.nav button').forEach(b=>{const raw=b.textContent.replace(/\s+/g,' ').trim();for(const [a,v] of Object.entries(side)){if(text(raw).startsWith(a.toUpperCase())){for(const n of b.childNodes)if(n.nodeType===3&&n.textContent.trim())n.textContent=n.textContent.replace(a,v);}}});
@@ -1356,7 +1356,7 @@ function boot(){css();bind()}if(document.readyState==='loading')document.addEven
 <script>
 (()=>{'use strict';
 const Q=(s,r=document)=>r.querySelector(s),QQ=(s,r=document)=>[...r.querySelectorAll(s)],R=()=>window.NayaAssistantRuntime||null;
-const S={today:{title:'Your Intelligence Today',kicker:'TODAY',color:'#d86cff',desc:'Your intelligence, as it exists now — what you have created, discovered, learned, decided, and preserved.',icon:'✦'},notes:{title:'Smart Notes',kicker:'CAPTURE',color:'#9d75ff',desc:'Capture a real note through the governed runtime. The note becomes canonical intelligence; nothing is stored only in the browser.',icon:'✎'},reports:{title:'Your Reports',kicker:'REPORTS',color:'#6675ff',desc:'Turn the intelligence currently available to the Hub into clear, useful reporting instead of a dead screen.',icon:'▦'},library:{title:'Intelligent Library',kicker:'LIBRARY',color:'#55b9ee',desc:'Search and explore the intelligence already present in this Hub, with its visible source and meaning intact.',icon:'◈'},share:{title:'Smart Share',kicker:'SHARE',color:'#55e39a',desc:'Choose intelligence and prepare a human-readable share without stripping away where it came from.',icon:'⇄'},ledger:{title:'Smart Ledger',kicker:'ACCOUNTABILITY',color:'#f1d75a',desc:'See what the governed runtime can actually prove. No invented receipts, no pretend activity.',icon:'◇'},connections:{title:'Your Connections',kicker:'CONNECTIONS',color:'#ff9a5a',desc:'Inspect the connections the governed runtime actually exposes to this Hub.',icon:'⌁'},lists:{title:'Smart Lists',kicker:'LISTS',color:'#9d75ff',desc:'Organize the intelligence already visible here into useful working lists.',icon:'☷'},mail:{title:'Smart Mail',kicker:'MAIL',color:'#55b9ee',desc:'Work with mail only through the governed runtime when a real mail surface is available.',icon:'✉'},spaces:{title:'Smart Spaces',kicker:'SPACES',color:'#b8ee57',desc:'A place for focused intelligence contexts. This surface reports what is actually available instead of inventing spaces.',icon:'⬡'},settings:{title:'Settings',kicker:'SETTINGS',color:'#aaa4b1',desc:'Inspect the Hub/runtime boundary and the state that is actually exposed to the human.',icon:'⚙'}};
+const S={today:{title:'Your Intelligence Today',kicker:'TODAY',color:'#d86cff',desc:'Your intelligence, as it exists now — what you have created, discovered, learned, decided, and preserved.',icon:'✦'},notes:{title:'Smart Notes',kicker:'CAPTURE',color:'#9d75ff',desc:'Capture a real note through the governed runtime. The note becomes canonical intelligence; nothing is stored only in the browser.',icon:'✎'},reports:{title:'Your Reports',kicker:'REPORTS',color:'#6675ff',desc:'Turn the intelligence currently available to the Hub into clear, useful reporting instead of a dead screen.',icon:'▦'},library:{title:'Intelligent Library',kicker:'LIBRARY',color:'#55b9ee',desc:'Search and explore the intelligence already present in this Hub, with its visible source and meaning intact.',icon:'◈'},share:{title:'Smart Connect',kicker:'CONNECT',color:'#55e39a',desc:'Choose intelligence and prepare a human-readable share without stripping away where it came from.',icon:'⇄'},ledger:{title:'Smart Ledger',kicker:'ACCOUNTABILITY',color:'#f1d75a',desc:'See what the governed runtime can actually prove. No invented receipts, no pretend activity.',icon:'◇'},connections:{title:'Your Connections',kicker:'CONNECTIONS',color:'#ff9a5a',desc:'Inspect the connections the governed runtime actually exposes to this Hub.',icon:'⌁'},lists:{title:'Smart Lists',kicker:'LISTS',color:'#9d75ff',desc:'Organize the intelligence already visible here into useful working lists.',icon:'☷'},mail:{title:'Smart Mail',kicker:'MAIL',color:'#55b9ee',desc:'Work with mail only through the governed runtime when a real mail surface is available.',icon:'✉'},spaces:{title:'Smart Spaces',kicker:'SPACES',color:'#b8ee57',desc:'A place for focused intelligence contexts. This surface reports what is actually available instead of inventing spaces.',icon:'⬡'},settings:{title:'Settings',kicker:'SETTINGS',color:'#aaa4b1',desc:'Inspect the Hub/runtime boundary and the state that is actually exposed to the human.',icon:'⚙'}};
 const blocks=()=>QQ('.block'),txt=e=>String(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();
 function ws(){let w=Q('#nayaIntelligenceWorkspace');if(!w){w=document.createElement('section');w.id='nayaIntelligenceWorkspace';w.className='naya-intelligence-workspace';const f=Q('.feed');f?.parentNode.insertBefore(w,f)}return w}
 function head(s){return '<div class="ws-kicker" style="--ws:'+s.color+'">'+s.kicker+'</div><h2>'+s.icon+' &nbsp;'+s.title+'</h2><p class="ws-desc">'+s.desc+'</p>'}
@@ -1364,9 +1364,149 @@ function card(t,b,a){return '<article class="ws-card" style="--accent:'+(a||'#d8
 function btn(t,a){return '<button data-ws-action="'+a+'">'+t+'</button>'}
 function today(){const b=blocks(),d=new Intl.DateTimeFormat(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'}).format(new Date());const personal=b.filter(x=>x.dataset.nayaFeed==='personal').length;const collective=b.filter(x=>x.dataset.nayaFeed==='collective').length;const activity=b.filter(x=>x.dataset.nayaFeed==='activity').length;const sourceState=b.length?'OBSERVED · CANONICAL HUB PROJECTION':'UNAVAILABLE · NO INTELLIGENCE PROJECTED';const item=(k,t,body,state,tone)=>'<article class="room01-item" style="--room-tone:'+tone+'"><div class="room01-item-head"><span class="room01-kicker">'+k+'</span><span class="room01-state">'+state+'</span></div><h3>'+t+'</h3><p>'+body+'</p></article>';const capture='<button data-ws-action="open-notes">CAPTURE INTELLIGENCE</button>';const personalBtn='<button data-ws-action="feed-personal">OPEN PERSONAL</button>';const collectiveBtn='<button data-ws-action="feed-collective">OPEN COLLECTIVE</button>';const activityBtn='<button data-ws-action="feed-activity">OPEN ACTIVITY</button>';return '<div class="room01-head"><div><div class="room01-kicker">INTELLIGENCE DIARY · DAILY COCKPIT</div><h2>YOUR INTELLIGENCE TODAY</h2><p class="room01-date">'+d+'</p><p class="room01-purpose">Understand what happened, what changed, what matters, what you should remember, what you are missing, and what you can do next — without pretending the system knows what it cannot prove.</p></div><div class="room01-truth"><span class="room01-led"></span><b>'+sourceState+'</b><small>PROVENANCE REMAINS VISIBLE</small></div></div><section class="room01-pulse"><div class="room01-section-title"><span>01 · SEE</span><h3>TODAY PULSE</h3><p>Only states the current Hub can actually substantiate.</p></div><div class="room01-pulse-grid"><div class="room01-pulse-card"><b>COLLECTIVE</b><strong>'+ (collective?'READY':'EMPTY') +'</strong><span>'+ (collective?'Shared intelligence is currently projected.':'No collective intelligence is currently projected.') +'</span></div><div class="room01-pulse-card"><b>PERSONAL</b><strong>'+ (personal?'VISIBLE':'PRIVATE') +'</strong><span>'+ (personal?'Private intelligence is currently projected.':'No private projection is currently visible in this room.') +'</span></div><div class="room01-pulse-card"><b>ACTIVITY</b><strong>'+ (activity?'OBSERVED':'NOT VERIFIED') +'</strong><span>'+ (activity?'Recorded activity is present in the current projection.':'A daily activity retrieval boundary is not exposed here; zero is not assumed.') +'</span></div></div></section><section class="room01-section"><div class="room01-section-title"><span>02 · UNDERSTAND</span><h3>WHAT CHANGED?</h3></div>'+item('NOT VERIFIED','Daily comparison boundary is not yet exposed','The current Hub contains canonical intelligence, but this implementation does not have authoritative previous-day comparison evidence. Nothing is labeled “changed” merely because it rendered.','NOT VERIFIED','#6675ff')+'</section><section class="room01-section"><div class="room01-section-title"><span>03 · LEARN</span><h3>WHAT DID I LEARN?</h3></div>'+item('EVIDENCE BOUNDARY','Learning content exists; daily learning retrieval does not','The canonical intelligence projection contains explicit learning material, but the current runtime does not expose a verified daily learning-event contract. Information is not relabeled as learning merely to populate this room.','NOT VERIFIED','#b8ee57')+'</section><section class="room01-section"><div class="room01-section-title"><span>04 · PRIORITIZE</span><h3>WHAT MATTERS NOW?</h3></div>'+item('GOVERNED PRIORITY','No authoritative priority stream is exposed yet','Unresolved questions, blockers, commitments, opportunities, and consequences need evidence-backed prioritization. This first implementation deliberately leaves that state unmanufactured.','NOT VERIFIED','#d86cff')+'</section><section class="room01-section"><div class="room01-section-title"><span>05 · REMEMBER</span><h3>WHAT SHOULD I REMEMBER?</h3></div>'+item('MEMORY AUTHORITY','Smart Note capture is available','The room can send a real Smart Note through the governed runtime. A recommendation to permanently retain something is not generated until the memory/recommendation boundary can substantiate it.','READY TO CAPTURE','#9d75ff')+'<div class="room01-actions">'+capture+'</div></section><section class="room01-section"><div class="room01-section-title"><span>06 · QUESTION</span><h3>WHAT AM I MISSING?</h3></div><div class="room01-missing"><div><b>KNOWN</b><span>Canonical intelligence is present in the Hub projection.</span></div><div><b>MISSING</b><span>Daily comparison, daily learning evidence, governed priority, and verified daily activity retrieval are not yet exposed to Room 01.</span></div><div><b>NOT VERIFIED</b><span>Today’s state must not be inferred from static card counts or UI rendering.</span></div></div></section><section class="room01-section room01-view"><div class="room01-section-title"><span>07 · INTERPRET</span><h3>NAYA’S VIEW</h3></div><div class="room01-interpret"><b>INTERPRETED · NOT OBSERVED</b><p>The important next step is not more dashboard decoration. It is a daily intelligence retrieval boundary that can substantiate change, learning, priority, memory recommendations, and activity. Once that evidence exists, this cockpit can turn today’s intelligence into a genuinely useful operating loop.</p></div></section><section class="room01-section"><div class="room01-section-title"><span>08 · ACT</span><h3>HIGH-VALUE ACTIONS</h3><p>Stay inside the Hub; use only actions backed by the existing runtime boundary.</p></div><div class="room01-actions">'+capture+personalBtn+collectiveBtn+activityBtn+'<button class="room01-ask" type="button" data-room01-ask>ASK NAYA</button></div></section>'}
 
-function notes(){return head(S.notes)+'<div class="ws-card" style="--accent:#9d75ff"><h3>CAPTURE INTELLIGENCE</h3><p>Turn a discovery, decision, experience, lesson, or useful idea into a durable Smart Note.</p><input class="ws-search" id="wsNoteTitle" data-testid="smart-note-title" placeholder="What is this intelligence?"><textarea class="ws-search" id="wsNoteContent" data-testid="smart-note-content" placeholder="Write the note, discovery, decision, experience, or lesson…"></textarea><div class="ws-actions"><button data-ws-note-save data-testid="smart-note-capture-submit">CAPTURE SMART NOTE</button><button data-testid="capture-smart-note">FOCUS CAPTURE</button></div><div class="ws-empty" id="wsNoteStatus">Ready to capture through the authenticated Naya runtime.</div></div>'}
-function reports(){const b=blocks(),t=b.filter(x=>txt(Q('.truth',x))).length;return head(S.reports)+'<div class="ws-grid">'+card('VISIBLE INTELLIGENCE','<div class="ws-stat">'+b.length+'</div><p>Rendered intelligent blocks.</p>')+card('TRUTH METADATA','<div class="ws-stat">'+t+'</div><p>Blocks exposing a truth/source state.</p>','#f1d75a')+card('FEED MODES','<div class="ws-stat">3</div><p>Personal · Collective · Activity.</p>','#55e39a')+'</div><div class="ws-actions">'+btn('OPEN PERSONAL','feed-personal')+btn('OPEN COLLECTIVE','feed-collective')+btn('OPEN ACTIVITY','feed-activity')+'</div>'}
-function library(){return head(S.library)+'<input class="ws-search" id="wsLibrarySearch" placeholder="Search your visible intelligence…"><div class="ws-list" id="wsLibraryResults"></div>'}
+function notes(){
+  var spaces = [{ id:'personal', name:'Personal' }, { id:'family', name:'Family' }, { id:'project', name:'Project' },
+    { id:'business', name:'Business' }, { id:'research', name:'Research' }, { id:'collective', name:'Collective' }]
+    .concat((NayaHub.d.spaces || []).map(function(s){ return { id:s.id, name:s.name }; }));
+  var spaceOpts = spaces.map(function(s){ return '<option value="'+s.id+'">'+NayaHub.esc(s.name)+'</option>'; }).join('');
+  var existing = '';
+  try{
+    existing = NOTES().slice(0, 6).map(function(n){
+      return '<div class="ws-row"><b>'+NayaHub.esc(String(n.text).split(/[.!?\n]/)[0].slice(0, 70))+'</b>'
+        + '<span>'+NayaHub.hts(n.createdAt)+' · '+NayaHub.esc(n.type || 'INSIGHT')+' · '+NayaHub.esc(n.space || 'personal')+'</span></div>';
+    }).join('');
+  }catch(e){}
+  return head(S.notes)
+    + '<span class="hub-state" data-s="READY">READY</span>'
+    + card('CAPTURE',
+        '<div class="hub-form"><input id="hubNoteTitle" placeholder="Title (optional)…" style="width:100%;box-sizing:border-box"></div>'
+        + '<div class="hub-form"><textarea id="hubNoteText" rows="3" placeholder="What should the Hub remember?"></textarea></div>'
+        + '<div class="hub-form"><select id="hubNoteType"><option>INSIGHT</option><option>DECISION</option><option>LESSON</option><option>QUESTION</option></select>'
+        + '<select id="hubNoteSpace" aria-label="File into space">'+spaceOpts+'</select>'
+        + '<button data-hub-action="note-save">CAPTURE</button></div>'
+        + '<div id="hubNoteStatus" class="hub-dim" role="status"></div>', '#9d75ff')
+    + '<h3 class="hub-h">RECENT CAPTURES</h3><div class="ws-list">'
+    + (existing || '<div class="ws-empty">Nothing captured yet.</div>') + '</div>'
+    + '<p class="hub-note">Captured notes persist, surface in your Library and Lists, feed the Today diary — and every capture is receipted in the Ledger.</p>';
+}
+function reports(){
+  var range = NayaHub.d.prefs.reportRange || 'today';
+  var now = Date.now();
+  var cuts = { today:864e5, week:7*864e5, month:30*864e5, year:365*864e5 };
+  var cut = now - (cuts[range] || cuts.today);
+  var span = { today:'last 24 hours', week:'last 7 days', month:'last 30 days', year:'last 12 months' }[range];
+  var bl = blocks();
+  var notes = [];
+  try{ notes = NOTES().filter(function(n){ return new Date(n.createdAt).getTime() >= cut; }); }catch(e){}
+  var rc = NayaHub.d.receipts.filter(function(r){ return new Date(r.ts).getTime() >= cut; });
+  var sv = Object.keys(state.saved || {}).length, fv = Object.keys(state.favorites || {}).length;
+  var total = bl.length + notes.length;
+  var st = total === 0 ? 'EMPTY' : 'READY';
+
+  // themes: honest keyword clusters, labeled as auto-grouped
+  var words = {};
+  function feed_words(s){ String(s||'').toLowerCase().split(/[^a-z]+/).forEach(function(w){ if (w.length > 4 && ['intelligence','smart','what','with','your'].indexOf(w) < 0) words[w] = (words[w]||0)+1; }); }
+  bl.forEach(function(b){ var h = Q('h3', b); feed_words(h ? txt(h) : ''); });
+  notes.forEach(function(n){ feed_words(n.text); });
+  var themes = Object.keys(words).filter(function(w){ return words[w] > 1; })
+    .sort(function(a,b){ return words[b]-words[a]; }).slice(0, 6);
+
+  var tabs = ['today','week','month','year'].map(function(r){
+    return '<button data-hub-action="report-range" data-v="'+r+'" class="hub-tab'+(r===range?' on':'')+'">'+r.toUpperCase()+'</button>';
+  }).join('');
+
+  var narrative = total === 0
+    ? 'Nothing is projected in this range yet — so this report stays empty. A report with no evidence is a rumor, and the Hub does not publish rumors.'
+    : 'In the '+span+', the Hub held <b>'+total+' intelligence objects</b> — '+bl.length+' canonical boards and '+notes.length+' captured notes. '
+      + 'Your hand was on '+sv+' saved and '+fv+' favorited, and the ledger recorded <b>'+rc.length+' accountable actions</b>. '
+      + (themes.length ? 'What kept surfacing: '+themes.map(function(t){ return '<b>'+NayaHub.esc(t)+'</b>'; }).join(', ')+' — grouped automatically from titles, not asserted by anyone.' : 'No repeating themes yet — the range is too thin to read a pattern honestly.')
+      + ' Every claim in this report links to its evidence below.';
+
+  var ev = rc.slice(-10).reverse().map(function(r){
+    return '<div class="ws-row"><b>'+NayaHub.esc(r.action)+'</b>'
+      + '<span>'+NayaHub.hts(r.ts)+' · <code>'+String(r.hash).slice(0,10)+'</code></span>'
+      + '<div class="hub-detail">'+NayaHub.esc(r.detail)+'</div></div>';
+  }).join('') || '<div class="ws-empty">No receipts in this range. Marks made from here on are recorded.</div>';
+
+  return head(S.reports)
+    + '<span class="hub-state" data-s="'+st+'">'+st+'</span>'
+    + '<div class="hub-tabs" role="tablist">'+tabs+'</div>'
+    + card('WHAT THE ACCUMULATED INTELLIGENCE MEANS',
+        '<div class="hub-narrative">'+narrative+'</div>', '#6675ff')
+    + '<h3 class="hub-h">EVIDENCE TRAIL</h3><div class="ws-list">'+ev+'</div>'
+    + '<p class="hub-note">Computed locally from '+total+' real objects and '+NayaHub.d.receipts.length+' ledger receipts. Nothing here is invented; what cannot be shown is not claimed.</p>';
+}
+function library(){
+  var q = (NayaHub.d.prefs.libQ || '').toLowerCase();
+  var facet = NayaHub.d.prefs.libFacet || 'all';
+  var tcut = NayaHub.d.prefs.libTime || 'all';
+  var now = Date.now();
+  var cut = tcut === '7d' ? now - 7*864e5 : (tcut === '30d' ? now - 30*864e5 : 0);
+  var insp = NayaHub.d.prefs.libInspect || null;
+  var idx = [];
+  blocks().forEach(function(b, i){
+    var h3 = Q('h3', b);
+    var title = h3 ? txt(h3) : ('Board ' + (i+1));
+    var idBtn = Q('[data-act][data-id]', b);
+    var id = idBtn ? idBtn.getAttribute('data-id') : ('board-' + i);
+    var kickEl = Q('.kicker, .ws-kicker, [class*="kicker"]', b);
+    idx.push({ kind:'board', id:id, title:title, kicker: kickEl ? txt(kickEl).slice(0,60) : 'SMART NOTE',
+      color:'#6675ff', text: txt(b).slice(0, 6000), el:i, ts: 0 });
+  });
+  var notes = [];
+  try{ notes = NOTES(); }catch(e){}
+  notes.forEach(function(n, i){
+    idx.push({ kind:'note', id: n.id || ('note-'+i),
+      title: String(n.text || '').split(/[.!?\n]/)[0].slice(0, 80) || 'Captured note',
+      kicker: String(n.type || 'INSIGHT'), color:'#55e39a', text: String(n.text || ''),
+      el:-1, ts: new Date(n.createdAt).getTime() || 0 });
+  });
+  function match(o){
+    if (facet === 'saved' && !(state.saved || {})[o.id]) return false;
+    if (facet === 'favorites' && !(state.favorites || {})[o.id]) return false;
+    if (facet === 'notes' && o.kind !== 'note') return false;
+    if (facet === 'boards' && o.kind !== 'board') return false;
+    if (cut && o.ts && o.ts < cut) return false;
+    if (!q) return true;
+    return (o.title + ' ' + o.kicker + ' ' + o.text).toLowerCase().indexOf(q) >= 0;
+  }
+  var res = idx.filter(match);
+  var facets = [['all','ALL'],['boards','BOARDS'],['notes','CAPTURED'],['saved','SAVED'],['favorites','FAVORITES']].map(function(f){
+    return '<button data-hub-action="lib-facet" data-v="'+f[0]+'" class="hub-tab'+(facet===f[0]?' on':'')+'">'+f[1]+'</button>';
+  }).join('');
+  var times = [['all','ALL TIME'],['7d','7 DAYS'],['30d','30 DAYS']].map(function(f){
+    return '<button data-hub-action="lib-time" data-v="'+f[0]+'" class="hub-tab'+(tcut===f[0]?' on':'')+'">'+f[1]+'</button>';
+  }).join('');
+  var rows = res.slice(0, 80).map(function(o){
+    var marks = ((state.saved||{})[o.id] ? ' 🔖' : '') + ((state.favorites||{})[o.id] ? ' ★' : '') + ((state.loves||{})[o.id] ? ' ❤' : '');
+    var open = o.kind === 'board' ? '<button data-hub-action="lib-open" data-v="'+o.el+'">OPEN</button>' : '';
+    var open2 = '<button data-hub-action="lib-inspect" data-v="'+o.id+'">'+(insp===o.id ? 'CLOSE' : 'INSPECT')+'</button>';
+    var detail;
+    if (insp === o.id){
+      detail = '<div class="hub-detail hub-fulltext">'+NayaHub.esc(o.text).slice(0, 3000)+'</div>';
+    } else if (q){
+      detail = (function(){
+        var t = (o.title + ' ' + o.kicker + ' ' + o.text).toLowerCase();
+        var p = t.indexOf(q);
+        var raw = o.title + ' — ' + o.text;
+        return '<div class="hub-detail hub-dim">'+NayaHub.esc(raw.slice(Math.max(0, p - 40), p + 120)) + '…</div>';
+      })();
+    } else {
+      detail = '<div class="hub-detail hub-dim">'+NayaHub.esc(o.kicker)+'</div>';
+    }
+    return '<div class="ws-row"><i class="dot" style="background:'+o.color+';color:'+o.color+'"></i>'
+      + '<b>'+NayaHub.esc(o.title).slice(0, 90)+marks+'</b>'
+      + '<span>'+o.kind.toUpperCase()+' · '+NayaHub.esc(o.kicker).slice(0, 40)+'</span>' + open + open2
+      + detail + '</div>';
+  }).join('') || '<div class="ws-empty">'+(q ? 'No matches for “'+NayaHub.esc(NayaHub.d.prefs.libQ)+'”. The library never invents results.' : 'The library is empty.')+'</div>';
+  return head(S.library)
+    + '<span class="hub-state" data-s="READY">READY</span>'
+    + '<div class="hub-search"><input id="hubLibQ" data-hub-input="lib-q" placeholder="Search boards, notes, layers — title, meaning, source…" value="'+NayaHub.esc(NayaHub.d.prefs.libQ || '')+'"></div>'
+    + '<div class="hub-tabs">'+facets+'</div>'
+    + '<div class="hub-tabs">'+times+'</div>'
+    + '<div class="ws-list">'+rows+'</div>'
+    + '<p class="hub-note">'+res.length+' of '+idx.length+' objects · deliberate retrieval of preserved intelligence — never a second brain.</p>';
+}
 function libRender(){const o=Q('#wsLibraryResults'),i=Q('#wsLibrarySearch');if(!o||!i)return;const q=i.value.trim().toLowerCase(),xs=blocks().filter(b=>!q||txt(b).toLowerCase().includes(q));o.innerHTML=xs.map((b,n)=>'<article class="ws-row"><b>'+txt(Q('h3',b)||b)+'</b><span>'+txt(Q('.nutshell p',b)||b).slice(0,320)+'</span></article>').join('')||'<div class="ws-empty">No matching intelligence is visible in the current Hub projection.</div>'}
 function share(){
   /* Canonical 10 doors — PROJECT-INTELLIGENCE.md Phase 4. Door Law: every door is its
@@ -1542,16 +1682,117 @@ function spaces(){
     + '<div class="hub-form"><input id="hubSpaceName" placeholder="New space name…"><button data-hub-action="space-create">CREATE SPACE</button></div>'
     + '<p class="hub-note">Spaces are context boundaries, not folders. Private by default · shared by choice · collective by consent · public by decision.</p>';
 }
-async function settings(){const r=R();let a=null,v=null;if(r){try{a=typeof r.snapshot==='function'?await r.snapshot():null}catch{}try{v=typeof r.verify==='function'?await r.verify():null}catch{}}return head(S.settings)+'<div class="ws-grid">'+card('AUTHENTICATION','<p>'+(a?.authenticated?'AUTHENTICATED':'Not exposed as authenticated')+'</p>')+card('USER','<p>'+String(a?.user_id||'Not exposed')+'</p>','#6675ff')+card('RUNTIME VERIFY','<p>'+String(v?JSON.stringify(v):'Verification not exposed')+'</p>','#55e39a')+'</div>'}
+function settings(){
+  var r = R();
+  var snap = null, verify = null;
+  try{ snap = r && r.snapshot ? r.snapshot() : null; verify = r && r.verify ? r.verify() : null; }catch(e){}
+  var nRcpt = NayaHub.d.receipts.length;
+  var nSaved = Object.keys(state.saved || {}).length;
+  var nNotes = 0;
+  try{ nNotes = NOTES().length; }catch(e){}
+  var rm = NayaHub.d.prefs.reduceMotion ? ' checked' : '';
+  return head(S.settings)
+    + '<span class="hub-state" data-s="READY">READY</span>'
+    + '<div class="ws-grid">'
+    + card('IDENTITY',
+        '<p><b>Shawn</b> · Director</p>'
+        + '<p class="hub-dim">The human authority. Merges, deploys, ratification — your word only.</p>'
+        + '<p class="hub-dim">Naya · Trusted thinking partner — interprets, never acts alone.</p>', '#d86cff')
+    + card('PREFERENCES',
+        '<label class="hub-check"><input type="checkbox" data-hub-check="reduce-motion"'+rm+'> Reduce motion</label>'
+        + '<p class="hub-dim">Stills the glows and transitions. The Hub stays fully usable.</p>', '#55b9ee')
+    + card('RUNTIME',
+        '<p><b>'+(r ? 'EXPOSED' : 'NOT EXPOSED')+'</b></p>'
+        + '<p class="hub-dim">'+(snap && snap.authenticated ? 'Authenticated' : 'Not authenticated')
+        + ' · '+(snap && snap.user_id ? esc(snap.user_id) : 'no user exposed')+'</p>'
+        + '<p class="hub-dim">Verify: '+(verify ? esc(JSON.stringify(verify)).slice(0,80) : 'unavailable')+'</p>'
+        + '<p class="hub-dim">Hub → governed runtime → managed persistence.</p>', '#55e39a')
+    + card('HUB DATA',
+        '<p><b>'+nRcpt+'</b> receipts · <b>'+nSaved+'</b> saved · <b>'+nNotes+'</b> notes</p>'
+        + '<p class="hub-dim">Everything above lives in this browser — yours, not ours.</p>'
+        + '<div class="ws-actions"><button data-hub-action="hub-export">EXPORT MY DATA</button>'
+        + '<button data-hub-action="hub-clear" class="hub-danger">ERASE LOCAL DATA</button></div>', '#f1d75a')
+    + card('PRIVACY',
+        '<p><b>Private by default.</b> Shared by choice. Collective by consent. Public by decision.</p>'
+        + '<p class="hub-dim">Captures land in Personal unless you file them elsewhere. Nothing leaves this browser except what you explicitly send.</p>'
+        + '<p class="hub-dim">Door Law: connection never implies permission to act. Every connection, request, and share is receipted in the Ledger.</p>', '#b8ee57')
+    + card('TRUST',
+        '<p>Source and interpretation are marked separately, everywhere in this Hub.</p>'
+        + '<p class="hub-dim">No remote result is fabricated in this static build. What the Hub cannot prove, it says so.</p>', '#d86cff')
+    + '</div>'
+    + '<p class="hub-note">Your relationship with NayaNET: identity, runtime state, data, trust. Infrastructure stays under the hood.</p>';
+}
 async function shareOne(id){const b=Q('#'+CSS.escape(id));if(!b)return;const title=txt(Q('h3',b)||b),body=txt(Q('.nutshell p',b)||b);try{if(navigator.share)await navigator.share({title,text:body});else{await navigator.clipboard.writeText(title+'\n\n'+body+'\n\nNayaNET · Your Intelligence');alert('Intelligence copied to your clipboard.')}}catch(e){if(e.name!=='AbortError')alert('Share failed: '+(e.message||e))}}
 async function saveNote(){const r=R(),title=Q('#wsNoteTitle')?.value.trim(),content=Q('#wsNoteContent')?.value.trim(),status=Q('#wsNoteStatus');if(!r){if(status)status.textContent='RUNTIME UNAVAILABLE — no fake success.';return}if(!title||!content){if(status)status.textContent='TITLE AND CONTENT REQUIRED.';return}try{const out=await r.captureSmartNote({title,content,source:'nayanet-hub.smart-notes'});const eventId=String(out?.event?.event_id||out?.event_id||'');const receiptId=String(out?.receipt?.receipt_id||out?.receipt?.id||'');if(status)status.textContent='CAPTURED · '+eventId+(receiptId?' · RECEIPT '+receiptId:'');setTimeout(()=>feed('personal'),500)}catch(e){if(status)status.textContent='CAPTURE FAILED — '+String(e?.message||e)}}
-async function render(page){const w=ws(),s=S[page]||S.today;w.style.setProperty('--ws',s.color);w.innerHTML=page==='today'?today():page==='notes'?notes():page==='reports'?reports():page==='library'?library():page==='share'?share():page==='ledger'?await ledger():page==='connections'?await governed('connections',S.connections):page==='lists'?lists():page==='mail'?await governed('mail',S.mail):page==='spaces'?await spaces():page==='settings'?await settings():today();w.scrollIntoView({behavior:'smooth',block:'start'});if(page==='library'){Q('#wsLibrarySearch')?.addEventListener('input',libRender);libRender()}}
+async function render(page){const w=ws(),s=S[page]||S.today;w.style.setProperty('--ws',s.color);w.innerHTML=page==='today'?today():page==='notes'?notes():page==='reports'?reports():page==='library'?library():page==='share'?share():page==='ledger'?await ledger():page==='connections'?connections():page==='lists'?lists():page==='mail'?mail():page==='spaces'?await spaces():page==='settings'?await settings():today();w.scrollIntoView({behavior:'smooth',block:'start'});if(page==='library'){Q('#wsLibrarySearch')?.addEventListener('input',libRender);libRender()}}
 function feed(k){const b=QQ('.feedNav button').find(x=>x.dataset.feed===k);if(b){b.click();Q('.feed')?.scrollIntoView({behavior:'smooth',block:'start'})}}
-function bind(){QQ('.naya-intelligence-nav [data-page]').forEach(a=>{if(a.dataset.v2bound)return;a.dataset.v2bound='1';a.addEventListener('click',async e=>{e.preventDefault();e.stopImmediatePropagation();QQ('.naya-intelligence-nav [data-page]').forEach(x=>x.classList.toggle('active',x===a));await render(a.dataset.page)},true)})}
+function bind(){QQ('.naya-intelligence-nav [data-page]').forEach(a=>{if(a.dataset.v2bound)return;a.dataset.v2bound='1';a.addEventListener('click',async e=>{e.preventDefault();e.stopImmediatePropagation();QQ('.naya-intelligence-nav [data-page]').forEach(x=>x.classList.toggle('active',x===a));await render(a.dataset.page);try{history.replaceState(null,'','#/'+a.dataset.page)}catch(_){}},true)})}
 document.addEventListener('click',e=>{const n=e.target.closest('[data-ws-note-save]');if(n){e.preventDefault();e.stopPropagation();void saveNote();return}const f=e.target.closest('[data-ws-action]');if(!f)return;const a=f.dataset.wsAction;if(a==='open-notes'){void render('notes');return}if(a.startsWith('feed-'))feed(a.slice(5))},{capture:true});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-share-id]');if(b){e.preventDefault();e.stopPropagation();shareOne(b.dataset.shareId)}},{capture:true});
 function boot(){bind();setTimeout(bind,700);setTimeout(bind,1800);render('today')}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+
+function connections(){
+  var reqs = NayaHub.d.requests;
+  var mine = NayaHub.d.conns || [];
+  function connCard(name, role, st, color, scope, extra){
+    var stv = st === 'ACTIVE' ? 'READY' : 'NOT_VERIFIED';
+    return '<article class="ws-card" style="--accent:'+color+'"><h3>'+NayaHub.esc(name)+'</h3>'
+      + '<p><b>'+NayaHub.esc(role)+'</b></p>'
+      + '<span class="hub-state" data-s="'+stv+'">'+st+'</span>'
+      + '<p class="hub-dim">Scope — '+NayaHub.esc(scope)+'</p>'
+      + '<div class="ws-actions">'+extra+'</div></article>';
+  }
+  var mineCards = mine.map(function(c){
+    return connCard(c.name, c.kind, 'ADDED BY YOU', '#55e39a', c.scope,
+      '<button data-hub-action="conn-remove" data-v="'+c.id+'">REMOVE</button>');
+  }).join('');
+  var pend = reqs.filter(function(r){ return r.door === 'collective' || r.door === 'human'; });
+  var pendHtml = pend.length
+    ? '<h3 class="hub-h">PENDING REQUESTS</h3><div class="ws-list">' + pend.map(function(r){
+        return '<div class="ws-row"><b>'+NayaHub.esc(r.door)+'</b><span>requested '+NayaHub.hts(r.ts)+'</span></div>';
+      }).join('') + '</div>'
+    : '';
+  var total = 2 + mine.length;
+  var st = total > 0 ? 'READY' : 'EMPTY';
+  return head(S.connections)
+    + '<span class="hub-state" data-s="'+st+'">'+st+' · '+total+' CONNECTIONS</span>'
+    + '<div class="ws-grid">'
+    + connCard('Naya', 'Trusted thinking partner', 'ACTIVE', '#d86cff',
+        'Interprets what the Hub holds. Reads with you, writes nothing alone.',
+        '<span class="hub-dim">Connection ≠ permission. It cannot act, share, or persist without your word.</span>')
+    + connCard('Shawn', 'Director — you', 'ACTIVE', '#55e39a',
+        'Full authority. Merges, deploys, ratification: your word only.',
+        '<span class="hub-dim">This connection is you. It cannot be removed from here.</span>')
+    + mineCards
+    + '</div>'
+    + card('ADD A CONNECTION',
+        '<div class="hub-form"><input id="hubConnName" placeholder="Name — person, Naya, organization…">'
+        + '<select id="hubConnKind"><option>Person</option><option>Naya</option><option>Organization</option><option>Space</option></select>'
+        + '<button data-hub-action="conn-add">ADD CONNECTION</button></div>'
+        + '<p class="hub-dim">Every connection is receipted. Adding one grants a relationship — never permission to act.</p>', '#55b9ee')
+    + pendHtml
+    + '<p class="hub-note">Relationships are governed. A connection is a relationship — it is never, by itself, permission.</p>';
+}
+
+function mail(){
+  var r = R();
+  var prefs = NayaHub.d.mail || {};
+  var state_line = r
+    ? 'The runtime mail service is reachable, but your mailbox is empty.'
+    : 'The runtime is not exposed in this build, so there is no mailbox to check.';
+  return head(S.mail)
+    + '<span class="hub-state" data-s="NOT_VERIFIED">NOT VERIFIED · NO MAIL RUNTIME</span>'
+    + '<div class="ws-empty hub-mail-empty"><div class="ws-stat">NO MAIL</div>'
+    + '<p>'+state_line+'</p>'
+    + '<p class="hub-dim">A real room. No fake mailbox, ever.</p></div>'
+    + '<div class="ws-actions"><button data-hub-action="mail-check">CHECK AGAIN</button></div>'
+    + card('NOTIFICATIONS',
+        '<label class="hub-check"><input type="checkbox" data-hub-check="mail-notify"'+(prefs.notify?' checked':'')+'> Notify me when mail connects</label>'
+        + '<p class="hub-dim">Stored locally. When the runtime exposes mail, this room fills — honestly.</p>',
+        '#55b9ee')
+    + '<p class="hub-note">RUNTIME UNAVAILABLE → shown, not hidden. NO MAIL → shown, not filled. That is the contract.</p>';
+}
 })();
 </script>
 <style id="room-01-intelligence-today">
