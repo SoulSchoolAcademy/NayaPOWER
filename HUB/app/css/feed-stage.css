@@ -7,12 +7,15 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 .feed-stage{
-  /* Smart Feed tone = the jewel tone (specimen V1: #55e39a), not generic emerald. */
-  --feed-accent: #55e39a;
+  /* Per-block tone flow (V7): each intelligent block takes the next tone.
+     --tone is set per block by the renderer. Room identity stays neutral. */
   max-width: 920px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px) 96px;
   color: var(--ink);
+  background:
+    radial-gradient(1000px 650px at 55% -12%, #6675ff18, transparent 68%),
+    radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%);
 }
 
 /* ——— Stage header ——— */
@@ -32,7 +35,7 @@
   color: var(--muted);
   margin: 0 0 18px;
 }
-.feed-dateline .feed-dot{ color: var(--feed-accent); padding: 0 10px; }
+.feed-dateline .feed-dot{ color: var(--tone); padding: 0 10px; }
 .feed-daystate{
   font-size: clamp(1.02rem, 2.4vw, 1.3rem);
   line-height: 1.55;
@@ -49,10 +52,11 @@
   padding-top: 22px;
   border-top: 1px solid var(--line-soft);
 }
-.feed-countline strong{ color: var(--feed-accent); font-weight: 600; }
+.feed-countline strong{ color: var(--ink); font-weight: 600; }
 
 /* ——— Intelligent block ——— */
 .iblock{
+  --tone: #55e39a;
   padding: clamp(30px, 5vw, 54px) 0;
   border-bottom: 1px solid var(--line-soft);
 }
@@ -72,13 +76,19 @@
     radial-gradient(circle at 38% 30%,
       rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 12%, rgba(255,255,255,0) 30%),
     radial-gradient(circle at 38% 30%,
-      #eafff3 0%, #55e39a 32%, #1e8f5f 58%, #0b2b1e 82%, #040805 100%);
-  border: 1.5px solid rgba(85,227,154,.75);
-  box-shadow: 0 0 12px rgba(85,227,154,.45), inset 0 1px 2px rgba(255,255,255,.35);
+      color-mix(in srgb, var(--tone) 30%, white) 0%,
+      var(--tone) 34%,
+      color-mix(in srgb, var(--tone) 52%, black) 60%,
+      color-mix(in srgb, var(--tone) 20%, black) 82%,
+      #04060a 100%);
+  border: 1.5px solid color-mix(in srgb, var(--tone) 72%, white);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--tone) 45%, transparent),
+              inset 0 1px 2px rgba(255,255,255,.35);
 }
 /* Glow = meaning: the lead block carries the stronger glow. */
 .iblock-lead .iblock-jewel{
-  box-shadow: 0 0 22px rgba(85,227,154,.65), inset 0 1px 2px rgba(255,255,255,.4);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 65%, transparent),
+              inset 0 1px 2px rgba(255,255,255,.4);
 }
 .iblock-jewel svg{
   position: absolute; inset: 0; margin: auto;
@@ -103,7 +113,7 @@
   color: var(--muted);
   margin: 0 0 12px;
 }
-.iblock-kicker .k-accent{ color: var(--feed-accent); }
+.iblock-kicker .k-accent{ color: var(--tone); }
 .iblock-source{
   display: inline-flex;
   align-items: center;
@@ -118,8 +128,8 @@
 }
 .iblock-source .led{
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--feed-accent);
-  box-shadow: 0 0 8px var(--feed-accent);
+  background: var(--tone);
+  box-shadow: 0 0 8px var(--tone);
 }
 
 /* ——— Layers ——— */
@@ -147,11 +157,11 @@
   background: none; border: none; cursor: pointer;
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--feed-accent);
+  color: var(--tone);
   padding: 12px 0; margin-top: 6px;
 }
 .feed-deeper::after{
-  content: ""; width: 28px; height: 1px; background: var(--feed-accent);
+  content: ""; width: 28px; height: 1px; background: var(--tone);
   transition: width .3s ease;
 }
 .feed-deeper:hover::after{ width: 44px; }
@@ -169,22 +179,22 @@
   color: var(--muted); margin: 0 0 8px;
 }
 .iblock-foot p:last-child{ margin-bottom: 0; color: var(--faint); }
-.iblock-foot .trust{ color: var(--feed-accent); }
+.iblock-foot .trust{ color: var(--tone); }
 
 /* ——— Block action ——— */
 .iblock-action{ margin-top: 22px; }
 .feed-btn{
   appearance: none; cursor: pointer;
   background: transparent;
-  border: 1px solid var(--feed-accent);
-  color: var(--feed-accent);
+  border: 1px solid var(--tone);
+  color: var(--tone);
   border-radius: var(--radius-pill);
   font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
   padding: 13px 28px;
   transition: background .25s ease, color .25s ease, box-shadow .25s ease;
 }
 .feed-btn:hover{
-  background: var(--feed-accent); color: #06110c;
+  background: var(--tone); color: #06110c;
   box-shadow: 0 8px 28px rgba(53,224,161,.28);
 }
 
@@ -194,8 +204,8 @@
 }
 .feed-ask{
   appearance: none; cursor: pointer;
-  background: linear-gradient(135deg, rgba(53,224,161,.16), rgba(53,224,161,.05));
-  border: 1px solid rgba(53,224,161,.4);
+  background: linear-gradient(135deg, #12151d, #0b0d12);
+  border: 1px solid #252b39;
   color: var(--ink);
   border-radius: var(--radius-pill);
   font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
@@ -203,8 +213,8 @@
   transition: box-shadow .3s ease, border-color .3s ease;
 }
 .feed-ask:hover{
-  border-color: var(--feed-accent);
-  box-shadow: 0 12px 40px rgba(53,224,161,.22);
+  border-color: var(--ink-dim);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
 }
 
 /* ——— Honest states inherit the stage voice ——— */

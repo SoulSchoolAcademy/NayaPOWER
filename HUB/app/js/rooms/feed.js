@@ -26,6 +26,11 @@
 
   /* The Smart Feed glyph: white wave-lines, geometric, 40% of diameter,
      centered — set by the specimen V1. The orb itself is CSS anatomy. */
+  /* The V7 tone flow: each board takes the next tone in sequence.
+     Pink → purple → indigo → blue → green → lime → yellow → orange → red,
+     then it cycles. One color, one block — never monochrome wallpaper. */
+  const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#f8f7fb','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
+
   const JEWEL='<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">'
     +'<path d="M4 8.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/>'
     +'<path d="M4 13.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/>'
@@ -42,14 +47,14 @@
     const ask=el('button','feed-ask','<span>Ask Naya about today</span>');
     ask.type='button';
     ask.addEventListener('click',()=>{
-      window.NayaUI.toast('Ask Naya about today — the governed ask seam lands here. Nothing is answered from thin air.', '#55e39a');
+      window.NayaUI.toast('Ask Naya about today — the governed ask seam lands here. Nothing is answered from thin air.', '#f8f7fb');
     });
     foot.appendChild(ask);
     stage.appendChild(foot);
 
     K.load(zone,'feed',{limit:25},(payload,list,out)=>{
       out.appendChild(countLine(el,K,list.length));
-      list.forEach((o,i)=>out.appendChild(block(el,K,normalize(o,K),i===0)));
+      list.forEach((o,i)=>out.appendChild(block(el,K,normalize(o,K),i,i===0)));
     },{
       title:'The stage is quiet',
       body:'There is no qualifying intelligence right now. When something matters, it appears here — ordered for you, never manufactured to fill the space.'
@@ -122,8 +127,9 @@
   }
 
   /* ——— Block renderer ——— */
-  function block(el,K,b,lead){
+  function block(el,K,b,idx,lead){
     const a=el('article','iblock'+(lead?' iblock-lead':''));
+    a.style.setProperty('--tone', TONES[idx % TONES.length]);
     const head=el('div','iblock-head');
     const jewel=el('div','iblock-jewel'); jewel.innerHTML=JEWEL;
     const htext=el('div','iblock-htext');
@@ -167,7 +173,7 @@
       const btn=el('button','feed-btn',''); btn.type='button'; btn.textContent=b.action.label;
       btn.addEventListener('click',()=>{
         if(typeof b.action.run==='function'){ b.action.run(); return; }
-        window.NayaUI.toast('This action runs through the governed runtime — never from the feed alone.', '#55e39a');
+        window.NayaUI.toast('This action runs through the governed runtime — never from the feed alone.', '#f8f7fb');
       });
       aw.appendChild(btn); a.appendChild(aw);
     }
