@@ -6,7 +6,13 @@
   "human_director": null,
   "authority": null,
   "repository": null,
-  "installed_kit_version": "v1.1",
+  "installed_kit_version": "v1.2",
+  "personality_version": null,
+  "personality_demonstration": {
+    "act": null,
+    "pillars_shown": [],
+    "evidence": null
+  },
   "source_of_truth": [
     "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
     "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
