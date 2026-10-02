@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════════════════════
+   COMPONENTS — boards, buttons, door cards, badges
+   Every component inherits its room's accent via --room-accent.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ——— Board: the intelligent object ——— */
+.board {
+  --room-accent: var(--magenta);
+  position: relative;
+  background: linear-gradient(145deg, #151021f2, #0b0a10f2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--depth-hi), var(--depth-drop),
+              0 0 26px color-mix(in srgb, var(--room-accent) 14%, transparent);
+  backdrop-filter: blur(8px);
+  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+}
+.board.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--depth-hi), var(--depth-deep),
+              0 0 40px color-mix(in srgb, var(--room-accent) 24%, transparent);
+}
+.board-head {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.board-icon {
+  width: 38px; height: 38px; border-radius: 13px; flex: none;
+  display: grid; place-items: center;
+  color: var(--room-accent);
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--room-accent) 22%, #ffffff08),
+    color-mix(in srgb, var(--room-accent) 6%, transparent));
+  border: 1px solid color-mix(in srgb, var(--room-accent) 35%, transparent);
+  box-shadow: var(--depth-hi),
+              0 0 18px color-mix(in srgb, var(--room-accent) 30%, transparent);
+}
+.board-icon svg { width: 19px; height: 19px; }
+.board-title { font-size: var(--fs-head); font-weight: 800; }
+.board-sub { color: var(--muted); font-size: var(--fs-small); }
+
+.board-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* ——— Buttons ——— */
+.btn {
+  --btn-accent: var(--room-accent, var(--magenta));
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 42px; padding: 0 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--btn-accent) 45%, transparent);
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--btn-accent) 26%, #1a1424),
+    color-mix(in srgb, var(--btn-accent) 10%, #0b0a10));
+  color: var(--ink);
+  font-size: 12.5px; font-weight: 800; letter-spacing: .06em;
+  box-shadow: var(--depth-hi), 0 10px 26px #000a,
+              0 0 22px color-mix(in srgb, var(--btn-accent) 26%, transparent);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-med) var(--ease),
+              filter var(--dur-fast) var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  box-shadow: var(--depth-hi), 0 16px 36px #000b,
+              0 0 34px color-mix(in srgb, var(--btn-accent) 40%, transparent);
+}
+.btn:active { transform: translateY(0) scale(.985); }
+.btn svg { width: 15px; height: 15px; }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  box-shadow: var(--depth-hi);
+  color: var(--ink-dim);
+}
+.btn-ghost:hover { border-color: color-mix(in srgb, var(--btn-accent) 40%, transparent); }
+
+.btn[disabled] {
+  opacity: .45; cursor: not-allowed; transform: none; filter: none;
+}
+
+/* ——— Door card: one brain, many doors ——— */
+.door {
+  --door-accent: var(--green);
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  background:
+    radial-gradient(220px 130px at 85% -20%, color-mix(in srgb, var(--door-accent) 16%, transparent), transparent 70%),
+    linear-gradient(145deg, #151021f2, #0b0a10f2);
+  border: 1px solid color-mix(in srgb, var(--door-accent) 30%, var(--line));
+  box-shadow: var(--depth-hi), var(--depth-drop),
+              0 0 30px color-mix(in srgb, var(--door-accent) 16%, transparent);
+  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+  overflow: hidden;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.door:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--depth-hi), var(--depth-deep),
+              0 0 46px color-mix(in srgb, var(--door-accent) 30%, transparent);
+}
+.door-top { display: flex; align-items: center; gap: 13px; }
+.door-icon {
+  width: 46px; height: 46px; border-radius: 15px; flex: none;
+  display: grid; place-items: center;
+  color: var(--door-accent);
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--door-accent) 26%, #ffffff10),
+    color-mix(in srgb, var(--door-accent) 8%, transparent));
+  border: 1px solid color-mix(in srgb, var(--door-accent) 42%, transparent);
+  box-shadow: var(--depth-hi),
+              0 0 22px color-mix(in srgb, var(--door-accent) 38%, transparent);
+}
+.door-icon svg { width: 23px; height: 23px; }
+.door-name { font-size: 15px; font-weight: 800; }
+.door-for { color: var(--muted); font-size: var(--fs-small); }
+.door-desc { color: var(--ink-dim); font-size: var(--fs-body); flex: 1; }
+.door-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+/* ——— Status pill ——— */
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px; border-radius: var(--radius-pill);
+  font-size: 11px; font-weight: 800; letter-spacing: .14em;
+  border: 1px solid var(--line);
+  background: #ffffff08;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill.live   { color: var(--green);  border-color: #55e39a55; background: #55e39a12; }
+.pill.live .dot { box-shadow: 0 0 8px var(--green); animation: pulse 2.4s infinite; }
+.pill.ready  { color: var(--blue);   border-color: #55b9ee55; background: #55b9ee12; }
+.pill.soon   { color: #ffffff;   border-color: #e8c76655; background: #e8c76612; }
+.pill.contract { color: #b9a8e8; border-color: #9d75ff44; background: #9d75ff0d; }
+.pill.spec   { color: var(--muted); }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+
+/* ——— State badge (the honesty system, inline) ——— */
+.state-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 800; letter-spacing: .16em;
+  padding: 6px 13px; border-radius: var(--radius-pill);
+  border: 1px dashed color-mix(in srgb, var(--room-accent, var(--magenta)) 50%, transparent);
+  color: var(--room-accent, var(--magenta));
+  background: color-mix(in srgb, var(--room-accent, var(--magenta)) 8%, transparent);
+}
+
+/* ——— Divider ——— */
+.hr {
+  height: 1px; margin: 20px 0;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  border: none;
+}
