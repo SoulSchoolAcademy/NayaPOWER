@@ -268,6 +268,20 @@ async function assertMainShow(page,label){
   });
   if(bodySizes.length) fail(label+': body copy below 16px floor '+JSON.stringify(bodySizes));
 
+  const related=page.locator('.note-related .note-tool').filter({hasText:'Related'});
+  if(await related.count()){
+    await related.first().click();
+    await page.waitForFunction(
+      () => document.querySelector('.note-title')?.textContent.includes('Hub is a projection')
+    );
+    await page.locator('.note-back').click();
+    await page.waitForSelector('.feed-river:not([hidden])');
+    await page.locator('.snap-board').first().click();
+    await page.waitForSelector('.note-view:not([hidden])');
+  }else{
+    fail(label+': fixture related intelligence was not rendered');
+  }
+
   const action=page.locator('.note-tool-primary');
   if(await action.count()){
     await action.click();
