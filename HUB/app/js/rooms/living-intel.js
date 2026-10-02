@@ -101,10 +101,11 @@
     var stats = el('div','li-stats');
     var sources = {};
     items.forEach(function(i){ sources[i.source]=(sources[i.source]||0)+1; });
-    [['ITEMS FLOWING', items.length],['SOURCES ALIVE', Object.keys(sources).length],
-     ['NEWEST', items.length? timeAgo(items[0].ts):'\u2014']].forEach(function(s){
+    [['ITEMS FLOWING', items.length, null],['SOURCES ALIVE', Object.keys(sources).length, null],
+     ['NEWEST', items.length? timeAgo(items[0].ts):'\u2014', items.length? items[0].ts : null]].forEach(function(s){
       var c = el('div','li-stat');
       var n = el('span','li-stat-n',''); n.textContent=s[1]; c.appendChild(n);
+      if(s[2]){ n.setAttribute('data-ts', s[2]); n.classList.add('li-tick'); }
       c.appendChild(el('span','li-stat-l',s[0]));
       stats.appendChild(c);
     });
@@ -244,7 +245,7 @@
     /* live time-ago ticker */
     var timer = setInterval(function(){
       if(!document.contains(stage)){ clearInterval(timer); return; }
-      stream.querySelectorAll('[data-ts]').forEach(function(n){
+      stage.querySelectorAll('[data-ts]').forEach(function(n){
         n.textContent = timeAgo(+n.getAttribute('data-ts'));
       });
     }, 30000);

@@ -40,3 +40,23 @@ demo chips, identity colors, 0 errors).
 
 - **-0.2 — ledger stream is demo** (production read path is shell work).
 - **-0.1 — visual confirmation pending** (screenshot pipeline still down).
+
+## Effectiveness / Realism / Awesomeness (director review, 2026-10-02)
+
+| Axis | Score | Read |
+|------|-------|------|
+| Effectiveness | 9 | The stream unifies 4 sources / 51 items; filters, tap-for-heartbeat, live time-ago all work. Every board opens its numbers. |
+| Realism | 8 | EKG hero, breathing boards, pulsing jewels, ticking stamps — it feels alive. Honest ceiling: the demo stream doesn't grow on its own yet; that needs the production read path. |
+| Awesomeness | 9 | The spectrum flow + heartbeat modals are the showstopper. Small polish items (below) were the only drag. |
+| **Overall** | **8.7** | |
+
+What I love: the spectrum flow down the stream; tap-any-board heartbeat graphs with
+real numbers; the hero EKG with its traveling pulse.
+What I'd fix: the flat DEMO chips (done — now glowing glass pills), dim time-ago
+stamps (done — near-white), graph-less modals for notes/connect (done — word-count
+and capability bars from real data), static hero NEWEST stat (done — ticks live).
+
+## Why not 10
+
+- **-0.8 — the stream is demo-fed.** Real items are real; the ledger flow is illustrative until the shell wires the production read path.
+- **-0.5 — aliveness ceiling.** Nothing new arrives on its own yet; true "living" needs the live stream.

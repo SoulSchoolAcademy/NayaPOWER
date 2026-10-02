@@ -70,7 +70,7 @@
         meta: (n.truth||'CANDIDATE') + ' \u00B7 SMART-NOTE',
         demo:false,
         stats: [['Truth', n.truth||'CANDIDATE'], ['Words', n.words||'\u2014']],
-        graph: null,
+        graph: n.words ? {kind:'bars', bars:[['Words', n.words, 1200]]} : null,
         explain: EXPLAIN.note
       });
     });
@@ -89,7 +89,8 @@
         demo:false,
         stats: [['Status', String(d.status||'').replace(/_/g,' ')],
                 ['Capabilities', (d.capabilities||[]).length]],
-        graph: null,
+        graph: (d.capabilities&&d.capabilities.length)
+          ? {kind:'bars', bars:[['Capabilities', d.capabilities.length, 8]]} : null,
         explain: EXPLAIN.connect + (caps ? ' This door\u2019s capabilities: ' + caps + '.' : '')
       });
     });
