@@ -1,0 +1,87 @@
+{
+  "schema": "nayanet.hub.intelligence_projection.v1",
+  "version": "1.0",
+  "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
+  "authority": "Shawn Vibert, Human Director",
+  "principle": "HUB_IS_OUTPUT_PROJECTION_NOT_CANONICAL_INTELLIGENCE_INPUT",
+  "upstream_sources": [
+    {
+      "type": "SMART_NOTE",
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "brain_root": "BRAIN/05-MEMORY/SMART-NOTES/",
+      "hub_behavior": "automatic_projection"
+    },
+    {
+      "type": "ACTIVITY",
+      "canonical_object": "EVENT_OR_OBSERVED_ACTIVITY",
+      "hub_behavior": "automatic_projection"
+    },
+    {
+      "type": "REPORT",
+      "classes": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "YEARLY"
+      ],
+      "brain_root": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/",
+      "hub_behavior": "automatic_projection"
+    }
+  ],
+  "feed_modes": {
+    "PERSONAL": "owner-scoped intelligence projection",
+    "COLLECTIVE": "eligible distilled anonymized intelligence under entry consent",
+    "ACTIVITY": "current/observed operational intelligence events"
+  },
+  "smart_tabs": [
+    "ALL",
+    "SMART_NOTES",
+    "REPORTS",
+    "HIGHLIGHTS",
+    "LEARNING",
+    "DECISIONS",
+    "DISCOVERIES",
+    "PROJECTS"
+  ],
+  "forbidden_hub_producer_controls": [
+    "CAPTURE_SMART_NOTE",
+    "CAPTURE_FOLLOWUP_SMART_NOTE",
+    "GENERATE_CANONICAL_REPORT",
+    "POST_ACTIVITY",
+    "CLIENT_SIDE_CANONICAL_IB_CREATE"
+  ],
+  "allowed_projection_controls": [
+    "NAVIGATE",
+    "SEARCH",
+    "FILTER",
+    "CHANGE_FEED_VIEW",
+    "SAVE_FAVORITE_REFERENCE",
+    "ADD_TO_LIST_REFERENCE",
+    "OPEN_SOURCE_EVIDENCE",
+    "SELECT_SPACE_CONTEXT",
+    "MANAGE_DISPLAY_PREFERENCES",
+    "MANAGE_GOVERNED_CONSENT",
+    "ASK_NAYA_INTERPRET_PROJECTED_INTELLIGENCE"
+  ],
+  "object_identity_rule": "ONE_CANONICAL_OBJECT_MANY_PROJECTIONS_NO_CONTENT_COPY_AS_NEW_TRUTH",
+  "collective_entry_consent": {
+    "required": true,
+    "scope": "eligible_distilled_wisdom",
+    "identity": "SEALED_NOT_DISPLAYED",
+    "raw_private_source": "FORBIDDEN",
+    "non_wisdom_personal": "PRIVATE",
+    "revocation": "GOVERNED_FUTURE_PROJECTION_MUST_RESPECT_REVOCATION"
+  },
+  "smart_note_acceptance": [
+    "UPSTREAM_NAYA_COMMAND",
+    "CANONICAL_IB_PERSISTED",
+    "BRAIN_PROJECTION_EXISTS",
+    "EVENT_OR_INDEX_OBSERVABLE",
+    "PERSONAL_FEED_AUTO_PROJECTS_SAME_IB",
+    "SMART_TAB_CLASSIFICATION_FROM_CANONICAL_METADATA",
+    "LIBRARY_RETRIEVES_SAME_IB",
+    "COLLECTIVE_PROJECTS_ONLY_IF_ENTRY_CONSENT_AND_ELIGIBLE",
+    "COLLECTIVE_IDENTITY_NOT_EXPOSED"
+  ],
+  "truth_boundary": "TARGET_CONTRACT_NOT_PRODUCTION_PROOF"
+}
