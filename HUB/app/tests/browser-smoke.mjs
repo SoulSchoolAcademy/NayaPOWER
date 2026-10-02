@@ -180,8 +180,9 @@ async function assertMainShow(page,label){
   const productLinks=await page.locator('.drawer-right a[href]').count();
   if(productLinks!==8) fail(label+': expected 8 real product destinations, got '+productLinks);
 
-  const modeBars=await page.locator('.feed-modebar').count();
-  if(modeBars!==1) fail(label+': expected one quiet mode zone, got '+modeBars);
+  const modeZones=await page.locator('.mode-zone').count();
+  if(modeZones!==1) fail(label+': expected one shell-owned mode zone, got '+modeZones);
+  if(await page.locator('.feed-modebar').count()) fail(label+': duplicate feed-owned mode chrome exists');
 
   const startScroll=await page.evaluate(()=>Math.round(window.scrollY));
   if(startScroll>2) fail(label+': page moved without the user on first load, scrollY='+startScroll);
@@ -197,6 +198,9 @@ async function assertMainShow(page,label){
     fail(label+': verified fixture identity was not recognized in greeting: '+greeting);
   }
 
+  if(await page.locator('.snap-hero').count()!==1) fail(label+': expected exactly one dominant intelligence object');
+  if(!(await page.locator('.snap-board').first().evaluate(el=>el.classList.contains('snap-hero')))) fail(label+': first ranked intelligence is not the focal object');
+
   const personalTone=await page.locator('.snap-board').first().evaluate(
     el=>el.style.getPropertyValue('--tone').trim()
   );
@@ -204,7 +208,7 @@ async function assertMainShow(page,label){
     fail(label+': personal decision should use human/magenta semantics, got '+personalTone);
   }
 
-  await page.locator('.feed-mode[data-mode="collective"]').click();
+  await page.locator('.mode-btn[data-mode="collective"]').click();
   await page.waitForFunction(
     () => document.querySelector('.sb-title')?.textContent.includes('Collective intelligence')
   );
@@ -215,7 +219,7 @@ async function assertMainShow(page,label){
     fail(label+': collective/network intelligence should use connection/teal semantics, got '+collectiveTone);
   }
 
-  await page.locator('.feed-mode[data-mode="activity"]').click();
+  await page.locator('.mode-btn[data-mode="activity"]').click();
   await page.waitForFunction(
     () => document.querySelector('.sb-title')?.textContent.includes('Hub convergence')
   );
@@ -226,12 +230,12 @@ async function assertMainShow(page,label){
     fail(label+': active event should use living/green semantics, got '+activityTone);
   }
 
-  await page.locator('.feed-mode[data-mode="personal"]').click();
+  await page.locator('.mode-btn[data-mode="personal"]').click();
   await page.locator('.snap-board').first().click();
   await page.waitForSelector('.note-view:not([hidden])');
 
-  if(await page.locator('.feed-modebar:visible').count()){
-    fail(label+': mode chrome should recede while reading one intelligence object');
+  if(await page.locator('.mode-zone:visible').count()){
+    fail(label+': shell mode zone should recede while reading one intelligence object');
   }
 
   const bodySizes=await page.evaluate(()=>{
