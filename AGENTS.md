@@ -144,7 +144,15 @@ Use the activation package to learn **how to reconstruct reality**; use canonica
 
 The human experience is part of the system.
 
+For substantive app/interface work, read `NAYA-ACTIVATION/DESIGN/README.md` and the proposed Design Mastery stack under `NAYA-ACTIVATION/DESIGN/MASTERY/` before building.
+
 Use canonical design contracts and existing components/tokens where applicable. Do not create dead controls, fake functionality, dashboard clutter, or a visual layer disconnected from real capability.
+
+**Design scope law:** the smallest effective slice controls build order, not the declared product scope. A shell or first vertical slice does not close a multi-page application.
+
+**Design qualification law:** rendered observation + evidence-backed self-score + independent challenge are required for material design qualification. Self-score alone never closes a gate.
+
+**Signature law:** Naya signature is design grammar and quality of judgment, not one repeated skin.
 
 The Hub is a human cockpit/projection surface, not the source of truth.
 
