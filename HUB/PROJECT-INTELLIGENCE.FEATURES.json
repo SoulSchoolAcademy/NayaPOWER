@@ -4,12 +4,15 @@
   "authority": "Shawn Vibert, Human Director",
   "canonical_sources": [
     "HUB/PROJECT-INTELLIGENCE.md",
-    "HUB/DESIGN-CONTRACT.md"
+    "HUB/DESIGN-CONTRACT.md",
+    "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md"
   ],
   "coordination_issue": 554,
   "finding_rule": "Any materially not-right observation must be posted to issue #554 with evidence; posting does not grant execution authority.",
   "invariants": [
-    "Hub is a projection, not a second brain.",
+    "Hub is the output/projection of canonical intelligence, not a second brain or intelligence-production surface.",
+    "Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports are produced upstream and automatically projected into the Hub.",
+    "One canonical intelligence object may appear in many Hub views without being copied into new truth objects.",
     "Welcome → Identity → Intelligent Hub is the successful journey.",
     "Every visible control has a real causal path or an honest unavailable state.",
     "Connection/capability never creates authority.",
@@ -194,7 +197,7 @@
   ],
   "runtime_truth_rule": "This target matrix is not evidence that any room/capability is live. Audit runtime separately.",
   "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end.",
-  "version": "1.2",
+  "version": "1.3",
   "room_specification": {
     "index": "HUB/ROOMS/README.md",
     "shared_contract": "HUB/ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md",
@@ -240,7 +243,7 @@
       "spaces",
       "settings"
     ],
-    "smart_notes": "universal_capture_capability_optional_focused_surface_not_primary_by_default",
+    "smart_notes": "upstream_naya_intelligence_process_projected_into_hub_not_hub_capture_capability",
     "system": "advanced_settings_system_health_surface_not_primary_by_default",
     "change_rule": "Primary rail expansion requires explicit product reconciliation and canonical contract update."
   },
@@ -267,5 +270,31 @@
     "target": 10,
     "human_director_near_perfect_bar": 9.5,
     "below_9_5": "CONTINUE_IMPROVING_UNLESS_TRUE_AUTHORITY_OR_EXTERNAL_BLOCKER"
+  },
+  "projection_contract": {
+    "human": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md",
+    "machine": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.json",
+    "upstream_types": [
+      "SMART_NOTE_INTELLIGENT_BLOCK",
+      "ACTIVITY",
+      "INTELLIGENCE_REPORT"
+    ],
+    "hub_is_output": true,
+    "hub_canonical_capture": false,
+    "feed_modes": [
+      "PERSONAL",
+      "COLLECTIVE",
+      "ACTIVITY"
+    ],
+    "smart_tabs": [
+      "ALL",
+      "SMART_NOTES",
+      "REPORTS",
+      "HIGHLIGHTS",
+      "LEARNING",
+      "DECISIONS",
+      "DISCOVERIES",
+      "PROJECTS"
+    ]
   }
 }
