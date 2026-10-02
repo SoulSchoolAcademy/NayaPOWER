@@ -42,7 +42,6 @@ Each message preview may show:
 - **Archive**
 - **Mark / prioritize**
 - **Ask Naya**
-- **Capture as Smart Note**
 - **Add to List**
 - **Attach/link to Space**
 - **Open sender in Connections**
@@ -71,11 +70,15 @@ Naya must not send consequential messages without applicable user authorization.
 
 Never show sample messages to make the room feel populated.
 
+## Intelligence-production boundary
+
+Mail may surface a message as useful context and may hand context to Naya, but the Hub/Mail client does not create a canonical Smart Note locally. If the human asks Naya to Smart Note a message, that request goes through the upstream governed Smart Note pipeline; the resulting IB later projects back into the Hub.
+
 ## Cross-room handoffs
 
 Sender → Connections  
 Thread/project → Space  
-Insight → Library/Smart Note  
+Insight → Library / originating canonical intelligence  
 Action → List  
 Receipts → Ledger
 
@@ -96,5 +99,5 @@ The Drive notes specify top modes **IMPORTANT / RESPOND / FOLLOW UP / DRAFTS / S
 - **ORIENTATION:** mail identity, account/channel/Space and current triage mode
 - **CURRENT STATE:** real message counts/threads and availability/access state
 - **INTELLIGENCE:** importance, response need, relationship context, commitments, related intelligence and Naya summary
-- **ACTION:** open, reply/draft, compose, archive, prioritize, follow up, capture/list/link Space
+- **ACTION:** open, reply/draft, compose, archive, prioritize, follow up, list/link Space; Smart Note creation remains upstream
 - **PROOF:** real sender/thread provenance, send authority, message state and receipted action where applicable
