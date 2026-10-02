@@ -1,39 +1,44 @@
 /* ═══════════════════════════════════════════════════════════════════
    NAYANET HUB — DESIGN TOKENS
-   Extracted from the frozen baseline: HUB/NAYANET INTERFACE CONCEPT.html
-   @ main ffedda20. These values ARE the visual law — change them only
-   when demonstrably better, never merely easier.
+   Law source: KNOWLEDGE/DESIGN LAW CONCEPT PART #25.md (Design Law v2,
+   on main) — Volume 2, the visual language. Values below are law-exact;
+   change them only by Human Director amendment, never by convenience.
+   Supersedes the earlier frozen-baseline extraction (ffedda20) where
+   values differed: surfaces → obsidian stack, gold/red/emerald/sapphire
+   → v2 exact hexes.
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ——— Surfaces ——— */
-  --bg:        #050507;
-  --bg-raise:  #0b0a10;
-  --bg-panel:  #0d0c12;
-  --bg-card:   #14101b;
-  --ink:       #f8f7fb;
-  --ink-dim:   #ddd9e4;
-  --muted:     #aaa4b1;
-  --muted-2:   #a8a1af;
+  /* ——— The obsidian stack — the only neutrals (Law v2 §2.2) ——— */
+  --bg:        #0B0D12;  /* World — the canvas. Everything sits on this. */
+  --bg-raise:  #12151D;  /* Raised — cards, panels, drawers. */
+  --bg-panel:  #12151D;  /* (alias of Raised) */
+  --bg-card:   #171B25;  /* Elevated — popovers, modals, the topmost layer. */
+  --bg-elev:   #171B25;  /* Elevated (explicit name). */
+  --edge:      #252B39;  /* Precision edge — 1px edges on raised surfaces. */
+  --ink:       #F5F7FB;  /* Primary text. Always. */
+  --ink-dim:   #F5F7FB;  /* (primary text, dimmed contexts — use --muted below it) */
+  --muted:     #AAB2BF;  /* Secondary text. Never for primary content. */
+  --muted-2:   #AAB2BF;
   --faint:     #c9c3ce;
   --line:      #ffffff18;
   --line-soft: #ffffff0d;
 
-  /* ——— The 12-color living spectrum (Shawn's Spectrum Law, 2026-10-01) ——— */
-  --purple:     #9d75ff;
-  --indigo:     #6675ff;
-  --sapphire:   #4f8ff7;
-  --blue:       #55b9ee;
-  --teal:       #40d3bb;
-  --emerald:    #35e0a1;
-  --green:      #55e39a;
-  --lime:       #b8ee57;
-  --yellow:     #f1d75a;
-  --gold:       #e8c766;
-  --orange:     #ff9a5a;
-  --rich-orange:#ff7a3d;
-  --red:        #ff5e6c;
-  --magenta:    #d86cff;
+  /* ——— The semantic spectrum — one color, one job (Law v2 §2.3) ——— */
+  --purple:     #9d75ff;  /* Naya's signature. Primary actions, Naya presence. */
+  --indigo:     #6675ff;  /* Comprehension / depth / reports. */
+  --sapphire:   #55b9ee;  /* Knowledge. Calm, deep, at rest. */
+  --blue:       #55b9ee;  /* (alias of sapphire — the working blue) */
+  --teal:       #40d3bb;  /* Connection / flow. */
+  --emerald:    #55e39a;  /* Alive and well. Working, true, now. */
+  --green:      #55e39a;  /* (alias of emerald — the working green) */
+  --lime:       #b8ee57;  /* Learning / growth. */
+  --yellow:     #f1d75a;  /* Attention / signal. */
+  --gold:       #e8b64c;  /* Extraordinary. The rarest word. */
+  --orange:     #ff9a5a;  /* Action / movement. */
+  --rich-orange:#ff7a3d;  /* Transition / momentum. */
+  --red:        #ff5a6e;  /* Blocked / failed. The alarm. Never decorative. */
+  --magenta:    #d86cff;  /* Human significance. The human's own things. */
 
   /* ——— Room accents (one color per room, inherited by everything inside) ——— */
   --accent-feed:        var(--green);
