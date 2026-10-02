@@ -95,14 +95,18 @@ async function installRuntime(page){
         state:'ready',
         data:{items:fixtures}
       }),
-      searchIntelligence: async ({query}) => ({
-        state:'ready',
-        data:{
-          answer:'The highest-value item is the decision currently blocking the next verified build step.',
-          items:[fixtures[0]],
-          query
-        }
-      }),
+      searchIntelligence: async payload => {
+        window.__lastSearchPayload=payload;
+        return {
+          state:'ready',
+          data:{
+            answer:'The highest-value item is the decision currently blocking the next verified build step.',
+            items:[fixtures[0]],
+            query:payload.query,
+            intelligent_block_id:payload.intelligent_block_id||null
+          }
+        };
+      },
       performIntelligenceAction: async payload => ({
         state:'ready',
         data:{
@@ -252,7 +256,11 @@ async function assertMainShow(page,label){
   }
 
   await page.locator('.mode-btn[data-mode="personal"]').click();
-  await page.locator('.snap-board').first().click();
+  const origin=page.locator('.snap-board').first();
+  await origin.focus();
+  await page.evaluate(()=>window.scrollTo(0,240));
+  const originScroll=await page.evaluate(()=>Math.round(window.scrollY));
+  await origin.click();
   await page.waitForSelector('.note-view:not([hidden])');
 
   if(await page.locator('.mode-zone:visible').count()){
@@ -282,6 +290,22 @@ async function assertMainShow(page,label){
     fail(label+': fixture related intelligence was not rendered');
   }
 
+  const askBlock=page.locator('.note-tool').filter({hasText:'Ask Naya'});
+  await askBlock.click();
+  await page.waitForSelector('.ask-panel.open');
+  const askContextId=await page.locator('.ask-panel').getAttribute('data-intelligence-id');
+  if(askContextId!=='ib-personal-1') fail(label+': block Ask Naya lost canonical context id '+askContextId);
+  await page.locator('.ask-input').fill('What should I do next?');
+  await page.locator('.ask-go').click();
+  await page.waitForFunction(()=>window.__lastSearchPayload?.intelligent_block_id==='ib-personal-1');
+  const searchPayload=await page.evaluate(()=>window.__lastSearchPayload);
+  if(searchPayload?.context?.intelligent_block_id!=='ib-personal-1'){
+    fail(label+': governed search did not receive canonical block context '+JSON.stringify(searchPayload));
+  }
+  const contextBoundary=(await page.locator('.ask-boundary').innerText()).toLowerCase();
+  if(!contextBoundary.includes('ib-personal-1')) fail(label+': Ask Naya did not expose canonical context boundary');
+  await page.evaluate(()=>document.querySelector('.ask-panel')?.classList.remove('open'));
+
   const action=page.locator('.note-tool-primary');
   if(await action.count()){
     await action.click();
@@ -302,6 +326,15 @@ async function assertMainShow(page,label){
 
   await page.locator('.note-back').click();
   await page.waitForSelector('.feed-river:not([hidden])');
+  await page.waitForTimeout(50);
+  const restoredScroll=await page.evaluate(()=>Math.round(window.scrollY));
+  if(Math.abs(restoredScroll-originScroll)>2){
+    fail(label+': returning from canonical object lost river scroll context '+originScroll+' -> '+restoredScroll);
+  }
+  const restoredId=await page.evaluate(()=>document.activeElement?.dataset?.intelligenceId||'');
+  if(restoredId!=='ib-personal-1'){
+    fail(label+': returning from canonical object did not restore focus to origin, got '+restoredId);
+  }
 
   await page.locator('.feed-ask').click();
   await page.locator('.ask-input').fill('What needs my attention?');
