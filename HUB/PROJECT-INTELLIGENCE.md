@@ -10,6 +10,12 @@
 
 ---
 
+## 0.1 HUB INPUT / OUTPUT LAW
+
+**The Hub is the output/projection layer of intelligence.** Smart Notes, Activity, and Intelligence Reports are produced upstream by Naya / connected AI / governed work. The Hub receives and presents those canonical objects/events. Do not add client-local Smart Note capture, report generation, or activity publishing as Hub-owned intelligence sources. See `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
+
+---
+
 ## 1. THE MISSION IN ONE PARAGRAPH
 
 Turn the Hub concept into a real, working, intelligent application that scores 10/10 on every dimension that matters — visual, functional, intelligent, honest, fast, reliable, accessible, crafted — without ever regressing the visual quality Shawn already loves. We measure with the scorecard in §3, in the open, every phase. Nothing is "done" until it scores.
@@ -29,8 +35,8 @@ Turn the Hub concept into a real, working, intelligent application that scores 1
 **Current: 3.9** — the controls exist; the causal paths don't yet.
 
 ### D3 · Intelligence — "it actually thinks with NayaPOWER"
-**10 looks like:** The Hub retrieves real intelligence from the canonical substrate. Search returns real results with provenance. "Your Intelligence Today" answers from real data. Smart Note capture flows through the real pipeline. Relevance improves with use. It feels alive because it IS connected to something alive.
-**9.0:** Core retrieval + capture paths live; learning loop demonstrably improving.
+**10 looks like:** The Hub automatically projects real canonical intelligence from upstream Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports. Search returns real results with provenance. "Your Intelligence Today" answers from real data. A Smart Note created through Naya appears in the Hub without manual Hub entry. Relevance improves with use. It feels alive because it IS connected to something alive.
+**9.0:** Core automatic projection + retrieval paths live; learning loop demonstrably improving.
 **Current: 2.7** — the nine-node kernel took its first breath; the Hub is not yet connected to it.
 
 ### D4 · Honesty — "it never lies about what it knows"
@@ -118,7 +124,7 @@ The bridge page: jewel identity emblem, obsidian board, live alias preview, priv
 **Gate:** end-to-end flow works; identity page scores ≥9.0 on D1.
 
 ### Phase 6 · Intelligence Layer
-Smart Note capture → real pipeline. Search → real substrate with provenance. "Your Intelligence Today" from real retrieval. Learning loop: relevance measurably improves.
+Upstream Smart Note / Intelligent Block → automatic Hub projection. Activity events → Activity projection. Intelligence Reports → Reports/Feed/Today projection. Search → real substrate with provenance. "Your Intelligence Today" from real retrieval. Learning loop: relevance measurably improves.
 **Gate:** D3 ≥ 9.0 with behavioral evidence (not just wiring).
 
 ### Phase 7 · Hardening
@@ -126,7 +132,7 @@ Accessibility audit + fixes. Performance pass (code-split, 60fps). Mobile respon
 **Gate:** D5, D7, D8 ≥ 9.0.
 
 ### Phase 8 · The 10/10 Gate
-Full scorecard, independent re-score, Shawn experiences it end-to-end: welcome → identity → hub → search → capture → ledger → close → return tomorrow → it remembers.
+Full scorecard, independent re-score, Shawn experiences it end-to-end: create intelligence through Naya upstream → automatic Hub projection → search/open/evidence → cross-room views → close → return tomorrow → continuity remains.
 **Gate:** all eight dimensions ≥ 9.0, D1 = 10. Then we keep measuring — 10/10 is a floor, not a ceiling.
 
 ---
@@ -139,7 +145,7 @@ Full scorecard, independent re-score, Shawn experiences it end-to-end: welcome �
 | Runtime adapter (Phase 3) | Hub↔substrate seam | PR #1243 merged; kernel on main |
 | Room builders (Phase 4) | 11 rooms, parallelizable | Adapter; room contracts (Design Contract Part 4) |
 | Identity (Phase 5) | Bridge page rebuild | Design Contract; flow contract |
-| Intelligence (Phase 6) | Capture pipeline, search, learning | Nine-node kernel; Smart Note pipeline |
+| Intelligence (Phase 6) | Automatic projection of upstream Smart Notes, Activity and Reports; search; learning-aware retrieval | Nine-node kernel; Smart Note/report/activity event pipelines |
 | **Scorecard keeper** | **Independent re-score every phase** | **Must NOT be the builder of the phase being scored** |
 
 All lanes coordinate on issue #554. No lane rewrites another lane's in-flight work.
