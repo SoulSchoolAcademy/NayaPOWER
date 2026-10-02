@@ -59,13 +59,24 @@
              0 0 30px color-mix(in srgb, var(--door) 14%, transparent);
 }
 .connect-stage .cn-door-top{ display:flex; align-items:flex-start; gap:16px; margin-bottom:12px; }
-.connect-stage .cn-jewel{
-  font-size:22px; line-height:1.4; color:var(--door);
-  text-shadow:0 0 16px var(--door); flex:none;
-  transition:color .22s ease, text-shadow .25s ease, opacity .22s ease;
+.connect-stage .cn-gem{
+  --gem:var(--door);
+  width:48px; height:48px; flex:none; border-radius:14px;
+  display:grid; place-items:center;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.9), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--gem), color-mix(in srgb, var(--gem) 45%, #000) 78%);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 0 18px var(--gem);
+  transition:box-shadow .25s ease;
 }
-.connect-stage .cn-door.design .cn-jewel{ color:#dfe3e8; text-shadow:none; opacity:.65; }
-.connect-stage .cn-door.design:hover .cn-jewel{ color:var(--door); text-shadow:0 0 16px var(--door); opacity:1; }
+.connect-stage .cn-gem-glyph{
+  font-size:21px; font-weight:900; color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+/* unlit: a white jewel; it ignites in the door's color on hover */
+.connect-stage .cn-door.design .cn-gem{ --gem:#e8eaee; box-shadow:0 0 12px rgba(255,255,255,.35); }
+.connect-stage .cn-door.design:hover .cn-gem{ --gem:var(--door); box-shadow:0 0 20px var(--door); }
 .connect-stage .cn-namewrap{ flex:1; min-width:0; }
 .connect-stage .cn-name{ font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.01em; margin:0 0 4px; color:#fff; }
 .connect-stage .cn-tagline{ font-size:13px; color:var(--door); margin:0; font-weight:600; transition:color .22s ease; }

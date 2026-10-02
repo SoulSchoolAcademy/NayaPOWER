@@ -25,9 +25,9 @@
       authority: 'LAW plus the tool\u2019s own scope, decided per use.'
     },
     'DOOR-AI': {
-      tagline: 'The thinking itself.',
-      plain: 'Reasoning, drafting, classifying, transforming \u2014 the AI mind, live now and bounded. It can think, but thinking never grants authority.',
-      authority: 'Thinking is free; acting still needs a door and LAW\u2019s word.'
+      tagline: 'Agent to agent.',
+      plain: 'One AI talking to another through the A2A protocol \u2014 context can move between minds so intelligence compounds. Authority never transfers.',
+      authority: 'LAW governs scope and privacy; authority never crosses the door.'
     },
     'DOOR-DATA': {
       tagline: 'Your database, connected.',
@@ -66,18 +66,37 @@
   }
 
   /* color language: each door owns a stable color (keyed by door id, never by
-     list index). Live doors burn in their color; doors in design stay white. */
+     list index). Director palette 2026-10-02. Live doors burn in their color;
+     doors in design rest white and ignite on hover. */
   var DOOR_COLORS = {
-    'DOOR-GITHUB':   '#a371f7',
-    'DOOR-MCP':      '#fb8500',
-    'DOOR-AI':       '#f72585',
-    'DOOR-DATA':     '#3ecf8e',
-    'DOOR-EMAIL':    '#4cc9f0',
-    'DOOR-CALENDAR': '#ef476f',
-    'DOOR-VOICE':    '#2dd4bf',
-    'DOOR-WEB':      '#60a5fa',
-    'DOOR-NAYA':     '#ffd166'
+    'DOOR-GITHUB':   '#a371f7',  /* purple */
+    'DOOR-MCP':      '#6366f1',  /* indigo blue */
+    'DOOR-AI':       '#2f7bff',  /* sapphire blue — A2A */
+    'DOOR-DATA':     '#22d3ee',  /* cyan (director correction 2026-10-02: cyan, not beige) */
+    'DOOR-EMAIL':    '#a3e635',  /* lime green */
+    'DOOR-CALENDAR': '#facc15',  /* yellow */
+    'DOOR-VOICE':    '#d4a017',  /* gold */
+    'DOOR-WEB':      '#fb923c',  /* orange */
+    'DOOR-NAYA':     '#ef4444'   /* red */
   };
+
+  /* each door's own jewel glyph */
+  var DOOR_GLYPHS = {
+    'DOOR-GITHUB':   '\u25C6',
+    'DOOR-MCP':      '\u2B22',
+    'DOOR-AI':       '\u2726',
+    'DOOR-DATA':     '\u25C8',
+    'DOOR-EMAIL':    '\u2709',
+    'DOOR-CALENDAR': '\u25B2',
+    'DOOR-VOICE':    '\u25CF',
+    'DOOR-WEB':      '\u25A0',
+    'DOOR-NAYA':     '\u2727'
+  };
+
+  /* display-name overrides. DOOR-AI presents as A2A per director 2026-10-02
+     ("agent-to-agent — there's actually a real thing"); the canonical
+     registry still records "AI Connect" until his A2A material lands. */
+  var DOOR_NAMES = { 'DOOR-AI': 'A2A Connect' };
 
   function capLabel(c){
     return String(c||'').replace(/_/g,' ').toUpperCase();
@@ -129,14 +148,17 @@
   function doorBoard(el, d, onConnect){
     var copy = copyFor(d.id);
     var board = el('article','cn-door '+d.statusKind);
+    var dispName = DOOR_NAMES[d.id] || d.name;
     /* the door's own stable color; design doors rest white and ignite on hover */
     board.style.setProperty('--door', DOOR_COLORS[d.id] || '#34d399');
 
     var top = el('div','cn-door-top');
-    var jewel = el('span','cn-jewel',''); jewel.textContent = d.statusKind==='live' ? '\u25CF' : '\u25CB';
-    top.appendChild(jewel);
+    var gem = el('span','cn-gem','');
+    var glyph = el('span','cn-gem-glyph',''); glyph.textContent = DOOR_GLYPHS[d.id] || '\u25C6';
+    gem.appendChild(glyph);
+    top.appendChild(gem);
     var nameWrap = el('div','cn-namewrap');
-    var nm = el('h2','cn-name',''); nm.textContent = d.name;
+    var nm = el('h2','cn-name',''); nm.textContent = DOOR_NAMES[d.id] || d.name;
     nameWrap.appendChild(nm);
     var tag = el('p','cn-tagline',''); tag.textContent = copy.tagline;
     nameWrap.appendChild(tag);
@@ -166,7 +188,7 @@
     var row = el('div','cn-actions');
     var btn = el('button','cn-connect'+(d.statusKind==='live'?' live':''), d.statusKind==='live' ? 'MANAGE CONNECTION' : 'CONNECT');
     btn.type = 'button';
-    btn.setAttribute('aria-label', (d.statusKind==='live' ? 'Manage connection: ' : 'Connect: ') + d.name);
+    btn.setAttribute('aria-label', (d.statusKind==='live' ? 'Manage connection: ' : 'Connect: ') + dispName);
     btn.addEventListener('click', function(){
       /* dismiss any open notice on this board first */
       var old = board.querySelector('.cn-notice'); if(old) old.remove();
@@ -178,7 +200,7 @@
       var p = el('p','cn-notice-text','');
       p.textContent = d.statusKind==='live'
         ? 'This door is live in the registry. The Hub\u2019s connection manager will open here when the shell wires it \u2014 nothing was changed.'
-        : 'The ' + d.name + ' door is registered in the Brain\u2019s door registry, but its connection flow is still being built. This button will start the real connection when the Hub wires it \u2014 nothing was changed.';
+        : 'The ' + dispName + ' door is registered in the Brain\u2019s door registry, but its connection flow is still being built. This button will start the real connection when the Hub wires it \u2014 nothing was changed.';
       n.appendChild(p);
       var x = el('button','cn-notice-close','GOT IT'); x.type='button';
       x.addEventListener('click', function(){ n.remove(); btn.focus(); });

@@ -6,16 +6,21 @@ Branch: `naya4/room-02-reports-v2` @ `d84c8fb`. Source: canonical
 Verified: jsdom — 9 boards, 2 live / 7 design, 9 buttons, honest notices,
 0 errors. Palette keyed by door id (stable identity, never list index).
 
-## Score: 9.2/10
+## Score: 9.4/10
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
 | 1 | Canonical grounding | 10 | All 9 doors, exact IDs, statuses, capabilities. Nothing invented. |
 | 2 | Honesty | 10 | LIVE vs IN DESIGN shown truthfully; no fake connect buttons — the notice tells the truth. |
-| 3 | Color language | 9 | Each door owns its color (GitHub purple, MCP orange, AI magenta, Data green, Email sky, Calendar coral, Voice teal, Web blue, Naya gold). Live lit; design rests white, ignites on hover. |
+| 3 | Color language | 10 | Each door owns its stable color AND its own jewel glyph beside the name (director palette 2026-10-02: GitHub purple, MCP indigo, A2A sapphire, Data cyan, Email lime, Calendar yellow, Voice gold, Web orange, Naya red). Live lit; design rests white, ignites on hover. |
 | 4 | Simplicity | 9 | Door → plain words → unlocks → authority → one button. Nothing else. |
 | 5 | Button law | 10 | Silver-white at rest, the door's own color on highlight. |
 | 6 | Completeness | 8 | The room presents doors; real connection flows (OAuth) belong to the Hub shell via `ctx.onConnect`. |
+
+## Director corrections applied (2026-10-02)
+
+- "AI Connect" was wrong: renamed to **A2A Connect** (agent-to-agent); canonical registry still says AI Connect until his A2A material lands.
+- Data door: **cyan**, not beige (dictation correction). Forest green dropped unless he wants it as depth tone.
 
 ## Why not 10
 
