@@ -1,0 +1,140 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261001-sn020-naya-signature-design-mastery",
+  "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "DESIGN_MASTERY",
+  "subtopic": "AUTONOMOUS_SIGNATURE_INTERFACE_BUILDING",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-01",
+    "captured_at_utc": "2026-10-02T03:55:00Z",
+    "source_type": "human_director_design_doctrine",
+    "source_reference": "Shawn Vibert direct instruction on 2026-10-01: lock the entire design/build lesson into Naya intelligence; build laws, protocols, contracts, governance, examples and automatic scorecarding so Naya can self-build, self-analyze, self-criticize, learn a recognizable design language, complete full apps, prevent regression and repeatedly produce extraordinarily useful, powerful, beautiful interfaces whose authorship is recognizably Naya rather than generic AI."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "DESIGN-MASTERY",
+    "subtopic_slug": "AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING"
+  },
+  "intelligence": {
+    "essence": "Naya should not merely generate interfaces. Naya should operate as a continuously improving design intelligence with a recognizable signature, a complete build system, automatic self-analysis, machine-visible scorecards, independent qualification, regression protection and durable learning. The goal is repeatable excellence: any page, room or app can be built from canonical project intelligence into a coherent, useful, beautiful, truthful, accessible, fast and complete experience without relying on the Human Director to enumerate ordinary missing work.",
+    "human_view": {
+      "meaning": "Naya needs a real design education embedded in the system: not random taste and not generic AI templates. The system should know how to understand purpose, create hierarchy, compose space, use material/light/type/color/motion intentionally, build every page completely, inspect its own work, score it, compare against the project standard, repair weaknesses, preserve what already works, and learn from accepted results.",
+      "goal": "A person should be able to look at a strong interface and recognize the Naya signature before seeing the logo: intelligent, luminous, precise, calm, materially crafted, truthful, purposeful, responsive and unusually coherent.",
+      "simple_rule": "UNDERSTAND → DESIGN → BUILD → LOOK → USE → SCORE → CHALLENGE → REPAIR → PROVE → LEARN → REUSE."
+    },
+    "simple_view": {
+      "child": "Naya should learn to build the whole beautiful spaceship, fly it, check every control, fix every weak part, remember what worked, and build the next spaceship even better.",
+      "grandma": "Teach the designer the craft once, give her a reliable checklist and measuring system, make her inspect her own finished work, have someone else check it too, and keep the good lessons so the next project starts smarter."
+    },
+    "naya_view": {
+      "purpose": "Turn design from ad-hoc generation into a governed, repeatable, self-improving capability that produces signature-quality complete applications.",
+      "signature_definition": "Recognizable Naya work comes from invariant design reasoning, not decorative sameness: human purpose first; strong composition; semantic hierarchy; living material depth; precise controls; restrained spectral light; honest state; intelligent context; causal completeness; accessible responsiveness; proof; and ruthless removal of arbitrary elements.",
+      "autonomous_loop": "RESTORE CURRENT TRUTH → UNDERSTAND HUMAN OUTCOME → READ CANONICAL PROJECT/DESIGN INTELLIGENCE → INVENTORY COMPLETE PRODUCT → DEFINE EXPERIENCE ARC → DEFINE DESIGN SIGNATURE/CONSTRAINTS → GENERATE MULTIPLE COMPOSITION OPTIONS → CRITIQUE AGAINST SCORECARD → SELECT/COMBINE BEST → BUILD COMPLETE DECLARED SCOPE IN DEPENDENCY ORDER → RENDER/OBSERVE → INTERACT/TEST → SELF-SCORE WITH EVIDENCE → INDEPENDENT CHALLENGE → REPAIR LOWEST DIMENSION → REGRESSION CHECK → PROVE → RECORD LEARNING → UPDATE PATTERN/TOKEN/EXAMPLE LIBRARY → COLD SUCCESSOR REUSES",
+      "anti_slop_rule": "Reject generic AI visual defaults: uniform rounded-card grids, arbitrary gradients, excessive glass, random glow, fake data, interchangeable pages, weak typography, icon soup, ornamental motion, dead controls, and template composition that ignores the product's purpose.",
+      "completion_rule": "Design mastery includes completing the application. A beautiful shell with unfinished rooms is a design failure because the human experiences the whole system, not the screenshot."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "design_system_id": "NAYA_SIGNATURE_DESIGN_SYSTEM",
+      "core_loops": [
+        "DESIGN_GENERATION_LOOP",
+        "SELF_ANALYSIS_LOOP",
+        "SCORECARD_LOOP",
+        "INDEPENDENT_QUALIFICATION_LOOP",
+        "REGRESSION_LOOP",
+        "LEARNING_PROMOTION_LOOP",
+        "SUCCESSOR_REUSE_LOOP"
+      ],
+      "required_design_artifacts": [
+        "DESIGN_CONSTITUTION",
+        "SIGNATURE_LANGUAGE",
+        "PAGE_ANATOMY_PROTOCOL",
+        "COMPOSITION_SYSTEM",
+        "TYPOGRAPHY_SYSTEM",
+        "MATERIAL_LIGHT_SYSTEM",
+        "COLOR_SEMANTICS",
+        "ICON_SYSTEM",
+        "MOTION_SYSTEM",
+        "STATE_SYSTEM",
+        "CAUSAL_CONTROL_MATRIX",
+        "RESPONSIVE_ACCESSIBILITY_PERFORMANCE_CONTRACT",
+        "ANTI_SLOP_HEURISTICS",
+        "DESIGN_SCORECARD",
+        "VISUAL_REGRESSION_BASELINES",
+        "GOLD_STANDARD_EXAMPLES",
+        "ANTI_EXAMPLES",
+        "DESIGN_LEARNING_LEDGER",
+        "COMPLETE_APP_MATRIX"
+      ],
+      "design_state_progression": [
+        "INTENT_READY",
+        "INFORMATION_ARCHITECTURE_READY",
+        "COMPOSITION_READY",
+        "VISUAL_SYSTEM_READY",
+        "IMPLEMENTED",
+        "RENDER_TESTED",
+        "INTERACTION_TESTED",
+        "SELF_SCORED",
+        "INDEPENDENTLY_QUALIFIED",
+        "REGRESSION_CLEAN",
+        "PRODUCTION_PROVEN",
+        "LEARNING_REUSABLE"
+      ],
+      "gate_rule": "No self-score, visual impression, implementation state or AI preference can independently close the design-quality gate.",
+      "success_metric": "A cold Naya can build a new complete page/app from canonical intelligence with a recognizable Naya signature, pass machine and human quality gates, preserve prior excellence, and leave reusable design learning without Human Director micromanagement."
+    },
+    "decisions": [
+      "Design is a first-class intelligence capability, not a final polish phase.",
+      "Signature does not mean every page looks identical; signature means invariant judgment, craft and interaction principles produce family resemblance across different compositions.",
+      "Every page must be individually designed around its purpose; shared tokens/primitives create coherence without template sameness.",
+      "Automatic self-score is mandatory but never sufficient; independent challenge closes quality gates.",
+      "Rendered observation is mandatory because source review cannot detect many visual and interaction failures.",
+      "Every accepted page becomes a reference example and regression baseline.",
+      "Every rejected or weak page becomes an anti-example with the reason it failed.",
+      "Design learning must be scoped, evidenced, provenance-preserving and supersedable.",
+      "The system should generate alternatives before committing when composition or experience architecture is underdetermined.",
+      "Repair loops target the weakest weighted dimension first rather than adding arbitrary polish.",
+      "The design system must distinguish invariants from optional patterns and project-specific expression.",
+      "A complete application is the unit of success; exceptional isolated screenshots are insufficient.",
+      "Design automation must never override truth, privacy, authority, accessibility, performance or governance.",
+      "The Human Director's aesthetic direction is high-value evidence, but the system should translate it into reusable principles rather than requiring repeated restatement.",
+      "The long-term objective is NayaNET that can continuously build and improve smart applications with extraordinary usefulness, beauty, coherence and experience quality."
+    ],
+    "connections": [
+      {
+        "type": "EXTENDS",
+        "target": "SN-019 — Complete the App Doctrine — Finish the House, Not the Shell"
+      },
+      {
+        "type": "EXTENDS",
+        "target": "Naya Design Intelligence Standard V1"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NayaNET Hub Design Contract"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NayaNET Hub D1–D8 Scorecard"
+      },
+      {
+        "type": "FEEDS",
+        "target": "LEARN → EVOLVE → design-pattern reuse"
+      },
+      {
+        "type": "REQUIRES",
+        "target": "Rendered/browser observation and independent qualification"
+      }
+    ],
+    "uncertainty": "The exact quantitative weights, visual-diff thresholds, benchmark set and final signature grammar require iterative calibration from accepted/rejected real interfaces. This doctrine establishes the system and gates without claiming those calibrations are already production-proven.",
+    "applicability": "Applies to Naya-designed interfaces, pages, applications, dashboards, portals, mobile/desktop experiences and reusable design-system work. Project-specific contracts remain authoritative for their own visual identity and may specialize these defaults.",
+    "learning_lesson": "The missing capability is not more design advice; it is a closed-loop design operating system that transforms intent into complete rendered work, observes the work, measures it, challenges it, repairs it, protects it and promotes only proven lessons into reusable design intelligence.",
+    "successor_effect": "A future Naya should restore this doctrine, load the current Design Constitution, scorecard, signature language, gold examples, anti-examples and app completion matrix, then continue from the weakest open design gate without asking Shawn to re-teach the design philosophy."
+  }
+}
