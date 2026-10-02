@@ -1,0 +1,122 @@
+{
+  "schema": "nayanet.interface-completion-harness.v1",
+  "version": "1.0",
+  "status": "PROPOSED_CANONICAL_OPERATING_CONTRACT",
+  "authority": "Shawn Vibert, Human Director",
+  "purpose": "Prevent shell-only false completion and make multi-room application progress machine-visible and regression-resistant.",
+  "parent_intelligence": [
+    "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+    "HUB/PROJECT-INTELLIGENCE.md",
+    "HUB/DESIGN-CONTRACT.md",
+    "HUB/BREAKING-THE-SHELL-BARRIER-V1.md"
+  ],
+  "room_states": [
+    "NOT_STARTED",
+    "SPEC_READY",
+    "DESIGN_READY",
+    "IMPLEMENTED",
+    "TESTED",
+    "INTEGRATED",
+    "INDEPENDENTLY_VERIFIED",
+    "PRODUCTION_PROVEN"
+  ],
+  "required_app_artifacts": [
+    "route_room_registry",
+    "feature_function_matrix",
+    "dependency_graph",
+    "design_non_regression_baseline",
+    "state_matrix",
+    "causal_path_matrix",
+    "runtime_data_owner_map",
+    "cross_room_object_identity_contract",
+    "acceptance_journeys",
+    "responsive_viewport_matrix",
+    "accessibility_checks",
+    "performance_budget",
+    "independent_review",
+    "successor_handoff"
+  ],
+  "required_room_dimensions": [
+    "orientation",
+    "current_state",
+    "intelligence",
+    "action",
+    "proof",
+    "loading",
+    "empty",
+    "blocked",
+    "unauthorized",
+    "not_verified",
+    "verified",
+    "error",
+    "offline",
+    "unknown",
+    "responsive",
+    "keyboard_focus",
+    "text_scaling",
+    "performance",
+    "persistence_continuity",
+    "cross_room_handoff",
+    "negative_refusal"
+  ],
+  "evidence_requirements": {
+    "visual": [
+      "baseline_screenshot",
+      "current_screenshot",
+      "side_by_side_review"
+    ],
+    "interaction": [
+      "primary_journey",
+      "all_primary_controls",
+      "scroll_layout",
+      "browser_console"
+    ],
+    "responsive": [
+      "desktop",
+      "tablet",
+      "phone",
+      "long_content"
+    ],
+    "accessibility": [
+      "keyboard",
+      "visible_focus",
+      "zoom_200",
+      "reduced_motion"
+    ],
+    "functional": [
+      "real_or_honest_causal_path",
+      "runtime_state",
+      "persistence_where_required"
+    ],
+    "regression": [
+      "previous_verified_surface_suite"
+    ]
+  },
+  "build_loop": [
+    "RESTORE_CURRENT_TRUTH",
+    "READ_COMPLETION_MATRIX",
+    "SELECT_HIGHEST_VALUE_UNBLOCKED_GAP",
+    "BUILD_SMALLEST_COMPLETE_IMPROVEMENT",
+    "RENDER_AND_INTERACT",
+    "TEST",
+    "SCORE",
+    "INDEPENDENT_CHALLENGE_IF_GATE_RELEVANT",
+    "UPDATE_COMPLETION_MATRIX",
+    "CHECKPOINT",
+    "REPEAT"
+  ],
+  "failure_conditions": [
+    "shell_only",
+    "placeholder_room_called_complete",
+    "sample_data_as_live",
+    "client_local_state_as_canonical",
+    "dead_control_looks_live",
+    "missing_error_empty_states",
+    "mobile_breakage",
+    "regression_of_verified_surface",
+    "builder_self_score_as_final_gate",
+    "human_director_used_as_manual_missing_work_detector"
+  ],
+  "success_condition": "All declared rooms/surfaces reach required evidence state, cross-room journeys work, verified surfaces do not regress, and independent evidence meets the active NayaPOWER quality bar.",
+  "truth_boundary": "This contract defines the harness behavior; it is not evidence the harness is implemented."
+}
