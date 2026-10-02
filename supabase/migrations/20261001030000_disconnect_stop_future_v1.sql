@@ -1,9 +1,6 @@
--- Collective-disconnect Reading A implementation candidate — disconnect stops future, does not erase past.
+-- #1136 Reading A — disconnect stops future, does not erase past.
 --
--- EPISTEMIC STATUS: CANDIDATE implementation of the proposed #1136 Reading A semantics.
--- The current #1136 record explicitly retracts an earlier ratification claim; do not
--- treat this migration's presence as constitutional ratification. Any production
--- promotion of this semantic boundary requires separately verified authority.
+-- Ratified 2026-09-30 by the Human Director (issue #1136, Reading A):
 -- disconnect/revocation of a Smart Connect participation stops FUTURE
 -- capture, contribution, and participation-governed access, but does NOT
 -- automatically erase or disable already-distilled, anonymized collective
