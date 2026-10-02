@@ -771,3 +771,31 @@
   .snap-hero .sb-nut{font-size:17px}
   .snap-board:not(.snap-hero){padding:20px 18px}
 }
+
+
+/* MOBILE OVERFLOW HARDENING — exact 390px browser finding: document was 84px wider. */
+.feed-stage,
+.feed-river,
+.snap-board,
+.sb-main,
+.note-view,
+.ask-panel{
+  min-width:0;
+  max-width:100%;
+}
+.feed-stage{overflow-x:clip}
+.sb-title,
+.sb-nut,
+.sb-why span,
+.note-title,
+.nlayer-text,
+.ask-v,
+.ask-boundary{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+@media(max-width:560px){
+  .sb-why{align-items:flex-start;flex-wrap:wrap}
+  .sb-why span{flex:1 1 100%;min-width:0}
+  .snap-board{width:100%;box-sizing:border-box}
+}
