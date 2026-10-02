@@ -140,6 +140,21 @@ Three modes, and **the tab must change actual data and state, never just recolor
 - **PERSONAL** — the user's own intelligence
 - **ACTIVITY** — what has happened in the intelligence system
 
+### 1.9a Hub input / output law
+
+**The Hub receives intelligence; it does not canonically create it.**
+
+Upstream Naya / connected AI / governed work produces:
+- Smart Notes / Intelligent Blocks;
+- Activity events;
+- Intelligence Reports.
+
+The Hub automatically projects those objects/events into Personal, Collective and Activity views according to scope/consent.
+
+No production Hub-owned **Capture Smart Note**, **Generate Report**, or **Post Activity** control is permitted. Contextual Ask Naya may interpret the current projection or hand an explicit creation intent upstream, but the client does not mint canonical intelligence locally.
+
+See `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
+
 ### 1.10 The nine intelligence boards
 
 Each board is a **distinct intelligent object with its own theme** — not a card in a grid:
@@ -395,13 +410,13 @@ The jewel portal (108 generated jewels across a 12-family spectrum palette, orbi
 
 ## PART 4 — FUNCTIONAL CONTRACT: WHAT EACH ROOM MUST DO
 
-Architecture (frozen): **Hub = cockpit. NayaPOWER = governed intelligence substrate.** The Hub presents intelligence from the canonical substrate; it is never a second brain, second database, or shadow memory.
+Architecture (frozen): **Hub = visual projection/cockpit. NayaPOWER = governed intelligence substrate.** The Hub presents intelligence from the canonical substrate; it is never a second brain, second database, shadow memory, Smart Note author, report generator, or manual activity publisher. Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports are produced upstream and projected into the Hub automatically.
 
 **Data path:** Hub → Runtime Adapter → Governed Runtime → Canonical Intelligence. Never Hub → raw database query.
 
 ### The 11 rail rooms
 
-**🏠 Smart Feed** — the primary human-facing intelligence stream. Shows relevant intelligence, Smart Notes/Intelligent Blocks, current context, provenance, actions (open, save, favorite, rank, share, capture). Three modes (Collective/Personal/Activity) must change **actual data**. It is the projection layer, not another database.
+**🏠 Smart Feed** — the primary human-facing intelligence stream. Shows automatically projected Smart Notes/Intelligent Blocks, Reports, Activity, current context and provenance, with consumption/organization actions (open, ask/explain, save, favorite, add to list, evidence, governed connect/share). Three modes (Collective/Personal/Activity) must change **actual data**. It is the projection layer, not another database or capture surface.
 
 **✦ Your Intelligence Today** — answers: what happened, what changed, what did I learn, what matters now, what should I remember, what am I missing, what does Naya think, what can I do next. Marks **NOT VERIFIED** wherever retrieval isn't live — that honesty is the standard.
 

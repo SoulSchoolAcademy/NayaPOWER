@@ -4,12 +4,15 @@
   "authority": "Shawn Vibert, Human Director",
   "canonical_sources": [
     "HUB/PROJECT-INTELLIGENCE.md",
-    "HUB/DESIGN-CONTRACT.md"
+    "HUB/DESIGN-CONTRACT.md",
+    "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md"
   ],
   "coordination_issue": 554,
   "finding_rule": "Any materially not-right observation must be posted to issue #554 with evidence; posting does not grant execution authority.",
   "invariants": [
-    "Hub is a projection, not a second brain.",
+    "Hub is the output/projection of canonical intelligence, not a second brain or intelligence-production surface.",
+    "Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports are produced upstream and automatically projected into the Hub.",
+    "One canonical intelligence object may appear in many Hub views without being copied into new truth objects.",
     "Welcome → Identity → Intelligent Hub is the successful journey.",
     "Every visible control has a real causal path or an honest unavailable state.",
     "Connection/capability never creates authority.",
@@ -193,5 +196,105 @@
     "EVIDENCE_OR_RECEIPT_WHERE_REQUIRED"
   ],
   "runtime_truth_rule": "This target matrix is not evidence that any room/capability is live. Audit runtime separately.",
-  "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end."
+  "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end.",
+  "version": "1.3",
+  "room_specification": {
+    "index": "HUB/ROOMS/README.md",
+    "shared_contract": "HUB/ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md",
+    "machine_contract": "HUB/ROOMS/ROOMS-MACHINE-V1.json",
+    "scorecard": "HUB/ROOMS/ROOM-SPEC-SCORECARD.md",
+    "primary_room_count": 11,
+    "rule": "Each primary room is a distinct intelligent environment with a unique signature experience, shared canonical object identity, explicit causal actions, honest states, runtime ownership, cross-room handoffs and acceptance proof.",
+    "source_notes": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+    "consensus_protocol": "HUB/ROOMS/CONSENSUS-PROTOCOL.md",
+    "consensus_status": "HUB/ROOMS/CONSENSUS-STATUS.md",
+    "room_packages": {
+      "feed": "HUB/ROOMS/01-smart-feed",
+      "today": "HUB/ROOMS/02-your-intelligence-today",
+      "reports": "HUB/ROOMS/03-your-reports",
+      "library": "HUB/ROOMS/04-intelligent-library",
+      "connect": "HUB/ROOMS/05-smart-connect",
+      "ledger": "HUB/ROOMS/06-smart-ledger",
+      "connections": "HUB/ROOMS/07-your-connections",
+      "lists": "HUB/ROOMS/08-smart-lists",
+      "mail": "HUB/ROOMS/09-smart-mail",
+      "spaces": "HUB/ROOMS/10-smart-spaces",
+      "settings": "HUB/ROOMS/11-settings"
+    },
+    "shared_five_layer_grammar": [
+      "ORIENTATION",
+      "CURRENT_STATE",
+      "INTELLIGENCE",
+      "ACTION",
+      "PROOF"
+    ]
+  },
+  "primary_room_boundary": {
+    "rooms": [
+      "feed",
+      "today",
+      "reports",
+      "library",
+      "connect",
+      "ledger",
+      "connections",
+      "lists",
+      "mail",
+      "spaces",
+      "settings"
+    ],
+    "smart_notes": "upstream_naya_intelligence_process_projected_into_hub_not_hub_capture_capability",
+    "system": "advanced_settings_system_health_surface_not_primary_by_default",
+    "change_rule": "Primary rail expansion requires explicit product reconciliation and canonical contract update."
+  },
+  "execution_law": "HUB/SMART-APP-10-10-EXECUTION-LAW.md",
+  "current_implementation_inventory": {
+    "human": "HUB/CURRENT-IMPLEMENTATION-INVENTORY.md",
+    "machine": "HUB/CURRENT-IMPLEMENTATION-INVENTORY.json",
+    "status": "DATED_OBSERVATION_NOT_TARGET_CONTRACT"
+  },
+  "builder_operating_loop": [
+    "RESTORE_CURRENT_TRUTH",
+    "READ_PROJECT_INTELLIGENCE",
+    "INVENTORY_WHOLE_RELEVANT_APP",
+    "MAP_DEPENDENCIES_AND_CROSS_FUNCTION_FLOWS",
+    "SCORE_D1_D8",
+    "BUILD_COMPLETE_VERTICAL_SLICE",
+    "TEST_BROWSER_RUNTIME_PERSISTENCE_FAILURE",
+    "RESCORE",
+    "FIX_UNTIL_NEAR_PERFECT",
+    "INDEPENDENT_RESCORE",
+    "PRESERVE_LEARNING_AND_HANDOFF"
+  ],
+  "quality_target": {
+    "target": 10,
+    "human_director_near_perfect_bar": 9.5,
+    "below_9_5": "CONTINUE_IMPROVING_UNLESS_TRUE_AUTHORITY_OR_EXTERNAL_BLOCKER"
+  },
+  "projection_contract": {
+    "human": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md",
+    "machine": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.json",
+    "upstream_types": [
+      "SMART_NOTE_INTELLIGENT_BLOCK",
+      "ACTIVITY",
+      "INTELLIGENCE_REPORT"
+    ],
+    "hub_is_output": true,
+    "hub_canonical_capture": false,
+    "feed_modes": [
+      "PERSONAL",
+      "COLLECTIVE",
+      "ACTIVITY"
+    ],
+    "smart_tabs": [
+      "ALL",
+      "SMART_NOTES",
+      "REPORTS",
+      "HIGHLIGHTS",
+      "LEARNING",
+      "DECISIONS",
+      "DISCOVERIES",
+      "PROJECTS"
+    ]
+  }
 }

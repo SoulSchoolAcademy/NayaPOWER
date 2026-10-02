@@ -1,0 +1,87 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "ledger",
+  "name": "Smart Ledger",
+  "route": "/ledger",
+  "metaphor": "THE BLACK BOX / PROOF ROOM",
+  "theme": "Yellow / Gold — evidence, consequence, durable proof",
+  "human_question": "What happened, under whose authority, and what proves it?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "Ledger scope, Space/identity, time and trust health",
+    "state": "live/selected timeline plus filter and verification status",
+    "intelligence": "Naya explains causal chains and unresolved verification without rewriting evidence",
+    "action": "inspect receipt/evidence, open actor/object, filter, export if supported, governed recovery if explicitly available",
+    "proof": "the room itself is the proof projection: authority, receipts, observation, outcome and verification"
+  },
+  "signature_instrument": "CAUSAL_TIMELINE_RECEIPT_CHAIN",
+  "primary_views": [
+    "TIMELINE",
+    "ALL",
+    "ACTIONS",
+    "DECISIONS",
+    "SHARES",
+    "CONNECTIONS",
+    "SYSTEM",
+    "RECEIPTS",
+    "NEEDS_ATTENTION"
+  ],
+  "primary_actions": [
+    "FILTER",
+    "INSPECT_RECEIPT",
+    "VIEW_EVIDENCE",
+    "OPEN_RELATED_INTELLIGENCE",
+    "OPEN_ACTOR",
+    "ASK_NAYA",
+    "EXPORT_PROOF_IF_SUPPORTED",
+    "RECOVER_IF_EXPLICITLY_AUTHORIZED"
+  ],
+  "data_owner": "canonical receipts/outcomes/verification evidence",
+  "handoffs": [
+    "feed",
+    "library",
+    "connections",
+    "spaces",
+    "mail",
+    "connect",
+    "settings"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "known action is findable",
+    "actor/time/authority/result visible",
+    "RECEIVED/AUTHORIZED/EXECUTED/VERIFIED remain distinct",
+    "verification source is independent where required",
+    "failed/unverified activity remains visible",
+    "receipt/evidence links work"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}

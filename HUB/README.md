@@ -9,6 +9,20 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Canonical semantic/build sources
 1. [PROJECT-INTELLIGENCE.md](./PROJECT-INTELLIGENCE.md) — build law, roadmap, scorecard, phases and gates.
 2. [DESIGN-CONTRACT.md](./DESIGN-CONTRACT.md) — visual/experience law and protected design DNA.
+3. [INTELLIGENCE-PROJECTION-CONTRACT-V1.md](./INTELLIGENCE-PROJECTION-CONTRACT-V1.md) — Hub output/projection architecture: Smart Notes, Activity, Reports → automatic Hub projection.
+4. [SMART-APP-10-10-EXECUTION-LAW.md](./SMART-APP-10-10-EXECUTION-LAW.md) — Human Director burden-transfer / whole-app ownership loop.
+
+### Detailed room functionality
+
+- [ROOMS/README.md](./ROOMS/README.md) — human-first map of the 11 primary intelligent environments.
+- [ROOMS/CONSENSUS-PROTOCOL.md](./ROOMS/CONSENSUS-PROTOCOL.md) — Team Naya review / consensus / lock workflow.
+- [ROOMS/CONSENSUS-STATUS.md](./ROOMS/CONSENSUS-STATUS.md) — current room-by-room consensus state.
+- [ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md](./ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md) — preserved Human Director room source notes.
+- [ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md](./ROOMS/ROOM-FUNCTIONAL-CONTRACT-V1.md) — shared functional/causal room law.
+- [ROOMS/ROOMS-MACHINE-V1.json](./ROOMS/ROOMS-MACHINE-V1.json) — deterministic room/action/handoff contract.
+- [ROOMS/ROOM-SPEC-SCORECARD.md](./ROOMS/ROOM-SPEC-SCORECARD.md) — specification maturity audit.
+
+Each room has its own detailed spec under `HUB/ROOMS/`.
 
 ### Projections of that same meaning
 - [PROJECT-INTELLIGENCE.HUMAN.md](./PROJECT-INTELLIGENCE.HUMAN.md) — human meaning and desired experience.
@@ -17,6 +31,9 @@ The Hub has **one canonical meaning** and purpose-built representations.
 - [PROJECT-INTELLIGENCE.MACHINE.json](./PROJECT-INTELLIGENCE.MACHINE.json) — deterministic machine representation.
 - [PROJECT-INTELLIGENCE.FEATURES.json](./PROJECT-INTELLIGENCE.FEATURES.json) — machine-readable feature/room contract.
 - [PROJECT-INTELLIGENCE.PROOF.md](./PROJECT-INTELLIGENCE.PROOF.md) — evidence and scorecard closure rules.
+- [CURRENT-IMPLEMENTATION-INVENTORY.md](./CURRENT-IMPLEMENTATION-INVENTORY.md) — dated observed reality; target and implementation are kept separate.
+- [CURRENT-IMPLEMENTATION-INVENTORY.json](./CURRENT-IMPLEMENTATION-INVENTORY.json) — machine-readable dated implementation snapshot.
+- [ROOMS/README.md](./ROOMS/README.md) — 11-room functional/design/Human/AI/Machine contracts.
 
 **Invariant:** these are projections, not separate truth systems. They MUST NOT disagree silently.
 
@@ -38,7 +55,9 @@ Successful onboarding does not default to Academy or Powercast.
 
 ## Product law
 
-The Hub is the human cockpit over NayaPOWER. It is not a second brain, database, authority system, learning system, or source of truth.
+The Hub is the human visual projection over NayaPOWER. **It is output, not the canonical input of intelligence.** It is not a second brain, database, authority system, learning system, capture system, report-authoring system, activity-publishing system, or source of truth.
+
+Primary upstream projection classes are **Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports**. The Hub receives and presents them automatically through governed projection/runtime seams.
 
 ## Design law
 

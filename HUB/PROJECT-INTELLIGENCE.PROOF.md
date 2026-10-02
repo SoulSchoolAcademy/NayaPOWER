@@ -28,7 +28,10 @@ No lower state may be described as a higher state.
 ### Intelligence
 - canonical retrieval receipts;
 - provenance rendered;
-- Smart Note capture → retrieval proof;
+- upstream Smart Note command → canonical IB persistence → automatic Hub Personal Feed projection → Library retrieval proof;
+- Activity event → Hub Activity projection proof;
+- upstream Intelligence Report → automatic Reports/Feed/Today projection proof;
+- Collective projection → entry-consent + identity-separation proof;
 - learning influence evidence;
 - return-session continuity proof.
 

@@ -1,0 +1,134 @@
+# 01 — Smart Feed
+
+**Metaphor:** THE GAME  
+**Route:** `/feed`  
+**Theme:** emerald  
+**Human question:** **What is happening now?**
+
+## Human promise
+
+Open the Feed and immediately understand the living flow of your intelligence: what appeared, changed, connected, mattered or requires attention.
+
+The Feed is the game itself. **Your Intelligence Today is the highlight reel of this game.**
+
+## Signature visual
+
+A cinematic **living intelligence stream**, not a social-media clone.
+
+The room opens with a slim live-context header and three large mode controls:
+
+**PERSONAL · COLLECTIVE · ACTIVITY**
+
+Below it, intelligence moves through a vertically continuous stream with strong rhythm and depth. Important objects rise visually through relevance, not through arbitrary size.
+
+Each stream object shows:
+- jewel identity / type;
+- title or distilled essence;
+- why it is here;
+- source/provenance;
+- truth state;
+- time;
+- current Space;
+- relationships/tags only when useful;
+- concise actions.
+
+A subtle “new intelligence” seam may appear when fresh verified objects arrive. No fake live animation.
+
+## Core modes
+
+### Personal
+Your captured, learned, received and relevant intelligence.
+
+### Collective
+Intelligence legitimately shared into your scope through consent/permissions.
+
+### Activity
+What is happening / what changed: upstream project/runtime activity, updates, connections, messages, verified actions, new learning, report events and Space events. Activity is received from observed work; it is not manually posted from the Hub.
+
+**Presentation note:** the exact final visual composition of Activity remains open for design refinement. The semantic contract—real observed current work/state, truthful provenance, no fabricated liveness—is fixed.
+
+## Primary actions
+
+- **Open**
+- **Ask Naya**
+- **Save / Favorite**
+- **Add to List**
+- **Open Source / Evidence**
+- **Share / Connect** where authorized
+
+The Feed does **not** create Smart Notes. Smart Notes are created upstream through Naya / connected AI and arrive here automatically as projected canonical intelligence.
+
+## Smart Tabs / feed views
+
+Within the selected projection scope, Smart Tabs may organize the same canonical intelligence without copying it. Initial views: **ALL · SMART NOTES · REPORTS · HIGHLIGHTS · LEARNING · DECISIONS · DISCOVERIES · PROJECTS**. Categories may evolve from canonical metadata and user usefulness.
+
+## Feed controls
+
+Top-level:
+- Personal / Collective / Activity
+- Space selector
+- intelligent search/filter
+- “New since last visit” jump
+
+Optional filter sheet:
+- type;
+- people/connections;
+- source;
+- time;
+- verified state;
+- importance/relevance.
+
+Do not permanently clutter the main canvas with filters.
+
+## Intelligence behavior
+
+Ranking should answer:
+**Why is this useful to me now?**
+
+The Feed may use relevance, recency, current Space, active goals, relationships and verified learning — but must never hide provenance or pretend an unexplained ranking is objective truth.
+
+A “Why am I seeing this?” action should be available.
+
+## Cross-room handoffs
+
+- item → **Today** when selected as a daily highlight;
+- item → **Library** for durable inspection;
+- item → **Lists** to organize;
+- item → **Ledger** for action/receipt proof;
+- person/relationship → **Connections**;
+- message-origin item → **Mail**;
+- Space-origin item → **Spaces**.
+
+## Empty state
+
+“The stream is quiet.” Explain whether no qualifying intelligence exists, the selected Space is empty, or runtime is unavailable.
+
+Never populate fake content.
+
+## Mobile
+
+One-column full-width stream. Mode controls stay reachable. Actions collapse into a bottom action sheet. Object identity/provenance remain visible.
+
+## Acceptance journey
+
+A human can:
+1. enter Feed;
+2. switch Personal → Collective → Activity and see actual data change;
+3. open an intelligence object;
+4. understand why it appeared;
+5. inspect provenance;
+6. save/add to list;
+7. follow it to another room;
+8. return without losing scroll/context.
+
+## Human Director source-note reconciliation
+
+The Drive notes clarify the product hierarchy: **Smart Feed is the game**, while **Your Intelligence Today synthesizes the game into highlights**. The three modes are not cosmetic tabs: **COLLECTIVE = network intelligence, PERSONAL = private intelligence, ACTIVITY = operational truth**. Where a default is needed, Collective remains the Human Director's preferred default. The room lives in the center workspace; sidebar and Naya presence remain.
+
+## Shared five-layer mapping
+
+- **ORIENTATION:** room title, current Space, feed mode and freshness
+- **CURRENT STATE:** real incoming/current intelligence and mode-specific activity
+- **INTELLIGENCE:** Naya explains relevance, relationships and why an object appears
+- **ACTION:** open, ask/explain, save, list, evidence, governed share/connect; intelligence creation remains upstream
+- **PROOF:** source, time, provenance, truth state and relevant receipts

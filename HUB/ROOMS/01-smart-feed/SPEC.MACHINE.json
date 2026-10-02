@@ -1,0 +1,81 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "feed",
+  "name": "Smart Feed",
+  "route": "/feed",
+  "metaphor": "THE GAME",
+  "theme": "Emerald — live flow, healthy activity, current intelligence",
+  "human_question": "What is happening now?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "room title, current Space, feed mode and freshness",
+    "state": "real incoming/current intelligence and mode-specific activity",
+    "intelligence": "Naya explains relevance, relationships and why an object appears",
+    "action": "open, ask, capture, save, list, evidence, governed share/connect",
+    "proof": "source, time, provenance, truth state and relevant receipts"
+  },
+  "signature_instrument": "LIVE_INTELLIGENCE_STREAM",
+  "primary_views": [
+    "COLLECTIVE",
+    "PERSONAL",
+    "ACTIVITY"
+  ],
+  "primary_actions": [
+    "OPEN",
+    "ASK_NAYA",
+    "CAPTURE_SMART_NOTE",
+    "SAVE_FAVORITE",
+    "ADD_TO_LIST",
+    "OPEN_EVIDENCE",
+    "SHARE_CONNECT_IF_AUTHORIZED"
+  ],
+  "data_owner": "canonical intelligence/events through governed runtime",
+  "handoffs": [
+    "today",
+    "reports",
+    "library",
+    "ledger",
+    "connections",
+    "lists",
+    "mail",
+    "spaces"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "switching COLLECTIVE/PERSONAL/ACTIVITY changes real data",
+    "why-am-I-seeing-this is explainable",
+    "provenance is inspectable",
+    "object handoffs preserve canonical ID",
+    "scroll/return context restores",
+    "quiet/empty/offline states remain honest"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}

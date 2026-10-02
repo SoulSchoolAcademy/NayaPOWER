@@ -1,0 +1,95 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "spaces",
+  "name": "Smart Spaces",
+  "route": "/spaces",
+  "metaphor": "THE WORLDS / CONTEXT ENVIRONMENTS",
+  "theme": "Lime — context growth, active worlds, scoped intelligence",
+  "human_question": "What context am I in, and what belongs together here?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "active Space identity, purpose, privacy/share scope and current objectives",
+    "state": "recent intelligence/activity, members/connections, goals/open loops and connected context",
+    "intelligence": "Naya summarizes what matters in this Space and how its intelligence is changing",
+    "action": "enter/create, invite/connect, link intelligence, open scoped feed/report/lists/mail, set sharing, archive/leave",
+    "proof": "Space membership, scope, consent/privacy, source intelligence and governed state changes"
+  },
+  "signature_instrument": "CONTEXT_WORLD_AND_HUB_LENS",
+  "primary_views": [
+    "SPACE_GALLERY",
+    "SPACE_HOME",
+    "INTELLIGENCE",
+    "PEOPLE",
+    "PROJECTS",
+    "NOTES",
+    "LISTS",
+    "ACTIVITY",
+    "GOALS",
+    "RULES",
+    "CONNECTIONS"
+  ],
+  "primary_actions": [
+    "ENTER_SPACE",
+    "CREATE_SPACE",
+    "INVITE_CONNECT",
+    "SET_PRIVACY_SHARING",
+    "LINK_INTELLIGENCE",
+    "OPEN_SPACE_FEED",
+    "OPEN_SPACE_REPORT",
+    "OPEN_SPACE_LISTS",
+    "OPEN_SPACE_MAIL",
+    "OPEN_MEMBERS",
+    "ASK_NAYA_IN_SPACE",
+    "ARCHIVE_LEAVE_IF_GOVERNED"
+  ],
+  "data_owner": "canonical context/Space membership + scoped intelligence",
+  "handoffs": [
+    "feed",
+    "today",
+    "reports",
+    "library",
+    "lists",
+    "mail",
+    "connections",
+    "ledger",
+    "settings"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "active Space changes real scoped results",
+    "Space context persists across room navigation",
+    "identity/Space scope remains visible",
+    "privacy/share labels match enforcement",
+    "same object IDs survive context views",
+    "switching/leave/archive behaves safely"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}

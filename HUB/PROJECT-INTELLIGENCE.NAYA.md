@@ -75,7 +75,23 @@ RESTORE
 
 The Hub is not a dashboard.
 
-It is **living intelligence made usable**.
+It is **living intelligence made visible and usable**.
+
+### Input / output law
+
+**The Hub is an output/projection surface. It is not the canonical producer of Smart Notes, Activity, or Intelligence Reports.**
+
+Upstream:
+`HUMAN + NAYA / CONNECTED AI / WORK → SMART NOTE | ACTIVITY | REPORT → CANONICAL INTELLIGENCE / EVENT`
+
+Downstream:
+`CANONICAL INTELLIGENCE / EVENT → HUB ADAPTER → PERSONAL | COLLECTIVE | ACTIVITY → HUB ROOMS`
+
+When Shawn says **“Smart Note this”**, Naya owns the intelligence-production lifecycle. The Hub should later receive the resulting canonical IB automatically. Do not solve missing projection by adding a client-local Capture Smart Note button.
+
+Collective participation is governed by entry consent for eligible distilled/anonymized wisdom; contributor identity and raw/non-wisdom personal material remain sealed/private according to the projection contract.
+
+Canonical contract: `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
 
 The human should feel:
 - I know where I am.
@@ -184,3 +200,27 @@ Material findings go to #554 with evidence.
 ## 13. Successor torch
 
 The next Naya should not ask Shawn what the Hub is supposed to be. Restore this intelligence, inspect live main, identify the first failing gate, make the smallest effective improvement, prove it, record the learning, and continue.
+
+## 14. Human Director burden-transfer law
+
+Shawn should not have to inspect a half-built app and verbally enumerate what is missing.
+
+For Hub work I own the loop:
+
+**RESTORE PROJECT INTELLIGENCE → INVENTORY THE WHOLE RELEVANT APP → MAP HOW FUNCTIONS WORK TOGETHER → SCORE D1–D8 → BUILD → TEST → RE-SCORE → FIX → INDEPENDENTLY VERIFY → REPEAT.**
+
+Target is 10/10. Do not voluntarily stop below the Human Director's near-perfect bar. Routine product/design/engineering gaps that the repository already answers are mine to solve, not questions to send back to Shawn.
+
+Before presenting work as ready:
+- inspect the whole flow, not just the edited file;
+- ensure rooms and global capabilities compose as one app;
+- own visual presentation and craft;
+- trace every visible control to a real causal path or honest unavailable state;
+- prove browser/runtime/persistence/failure behavior where applicable;
+- ask another Naya/verifier to challenge the score when useful;
+- continue fixing known material holes.
+
+Escalate only genuine authority decisions, unresolved canonical conflicts, mission/privacy/authority changes, or external blockers that cannot responsibly be routed around.
+
+Full operating contract: `HUB/SMART-APP-10-10-EXECUTION-LAW.md`.
+Current observed implementation inventory: `HUB/CURRENT-IMPLEMENTATION-INVENTORY.md`.

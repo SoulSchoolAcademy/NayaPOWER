@@ -1,0 +1,646 @@
+{
+  "schema": "nayanet.hub.rooms.v1",
+  "version": "1.2",
+  "status": "PROPOSED_CANONICAL_FUNCTIONAL_SPEC",
+  "authority": "Shawn Vibert, Human Director",
+  "parent_contracts": [
+    "HUB/PROJECT-INTELLIGENCE.md",
+    "HUB/DESIGN-CONTRACT.md",
+    "HUB/PROJECT-INTELLIGENCE.FEATURES.json",
+    "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md"
+  ],
+  "coordination_issue": 554,
+  "implementation_issue": 1270,
+  "primary_room_count": 11,
+  "primary_room_ids": [
+    "feed",
+    "today",
+    "reports",
+    "library",
+    "connect",
+    "ledger",
+    "connections",
+    "lists",
+    "mail",
+    "spaces",
+    "settings"
+  ],
+  "universal_capabilities": [
+    {
+      "id": "search",
+      "name": "Search Intelligence",
+      "role": "global_retrieval_with_provenance"
+    },
+    {
+      "id": "ask_naya",
+      "name": "Ask Naya",
+      "role": "contextual_interpretation"
+    },
+    {
+      "id": "save_favorite",
+      "name": "Save / Favorite",
+      "role": "organization_reference"
+    },
+    {
+      "id": "add_to_list",
+      "name": "Add to List",
+      "role": "human_organization"
+    },
+    {
+      "id": "inspect_evidence",
+      "name": "Inspect Source / Evidence",
+      "role": "trust_provenance"
+    },
+    {
+      "id": "space_context",
+      "name": "Space Context",
+      "role": "context_scope"
+    },
+    {
+      "id": "truth_state",
+      "name": "Truth State",
+      "role": "honest_runtime_state"
+    }
+  ],
+  "secondary_surfaces": [
+    {
+      "id": "system_health",
+      "name": "System Health",
+      "placement": "Settings > advanced",
+      "primary_rail": false
+    }
+  ],
+  "universal_states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "room_contract": {
+    "required_fields": [
+      "id",
+      "name",
+      "route",
+      "metaphor",
+      "human_question",
+      "human_promise",
+      "signature_experience",
+      "primary_actions",
+      "data_owner",
+      "handoffs",
+      "states",
+      "acceptance"
+    ],
+    "object_identity_rule": "same canonical object id across room projections",
+    "no_dead_controls": true,
+    "no_fake_data": true,
+    "connection_does_not_grant_authority": true
+  },
+  "rooms": [
+    {
+      "id": "feed",
+      "name": "Smart Feed",
+      "route": "/feed",
+      "theme": "emerald",
+      "metaphor": "THE_GAME",
+      "human_question": "What is happening now?",
+      "signature_experience": "living intelligence stream",
+      "modes": [
+        "PERSONAL",
+        "COLLECTIVE",
+        "ACTIVITY"
+      ],
+      "primary_actions": [
+        "OPEN",
+        "ASK_NAYA",
+        "SAVE_FAVORITE",
+        "ADD_TO_LIST",
+        "OPEN_EVIDENCE",
+        "SHARE_CONNECT_IF_AUTHORIZED"
+      ],
+      "data_owner": "canonical intelligence/events through governed runtime",
+      "handoffs": [
+        "today",
+        "library",
+        "lists",
+        "ledger",
+        "connections",
+        "mail",
+        "spaces"
+      ],
+      "acceptance": [
+        "mode_switch_changes_real_data",
+        "object_has_why_visible",
+        "provenance_inspectable",
+        "cross_room_reference_preserves_id",
+        "scroll_context_restores"
+      ],
+      "package": "HUB/ROOMS/01-smart-feed",
+      "smart_tabs": [
+        "ALL",
+        "SMART_NOTES",
+        "REPORTS",
+        "HIGHLIGHTS",
+        "LEARNING",
+        "DECISIONS",
+        "DISCOVERIES",
+        "PROJECTS"
+      ],
+      "input_rule": "RECEIVE_PROJECTED_CANONICAL_INTELLIGENCE_ONLY"
+    },
+    {
+      "id": "today",
+      "name": "Your Intelligence Today",
+      "route": "/today",
+      "theme": "magenta",
+      "metaphor": "THE_HIGHLIGHT_REEL",
+      "human_question": "What mattered today?",
+      "signature_experience": "daily intelligence story / highlight reel",
+      "sections": [
+        "TODAY_NUTSHELL",
+        "HIGHLIGHTS",
+        "BIGGEST_CHANGE",
+        "BEST_LEARNING",
+        "DECISIONS",
+        "PEOPLE_CONNECTIONS",
+        "OPEN_LOOPS",
+        "TOMORROW_CARRY_FORWARD"
+      ],
+      "primary_actions": [
+        "EXPLORE_TODAY",
+        "ASK_NAYA",
+        "OPEN_IN_FEED",
+        "OPEN_EVIDENCE",
+        "SAVE_ADD_TO_LIST",
+        "VIEW_DAY_LEDGER"
+      ],
+      "data_owner": "canonical intelligence + verified events + current context",
+      "handoffs": [
+        "feed",
+        "reports",
+        "library",
+        "ledger",
+        "connections",
+        "lists"
+      ],
+      "acceptance": [
+        "understand_day_in_10_seconds",
+        "highlight_reason_explainable",
+        "origin_openable",
+        "evidence_inspectable",
+        "open_loops_visible",
+        "quiet_day_not_fabricated"
+      ],
+      "package": "HUB/ROOMS/02-your-intelligence-today",
+      "input_rule": "SYNTHESIZE_PROJECTED_CANONICAL_INTELLIGENCE_ONLY"
+    },
+    {
+      "id": "reports",
+      "name": "Your Reports",
+      "route": "/reports",
+      "theme": "indigo",
+      "metaphor": "THE_FILM_ROOM",
+      "human_question": "What does all of this mean over time?",
+      "signature_experience": "premium synthesis and analysis studio",
+      "report_types": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY",
+        "YEARLY",
+        "SPACE_PROJECT",
+        "DECISION",
+        "LEARNING",
+        "RELATIONSHIP",
+        "CUSTOM_THEME"
+      ],
+      "primary_actions": [
+        "OPEN_REPORT",
+        "ASK_NAYA",
+        "COMPARE_PERIODS",
+        "INSPECT_EVIDENCE",
+        "SAVE_ADD_TO_LIST",
+        "SHARE_IF_AUTHORIZED",
+        "EXPORT_IF_SUPPORTED"
+      ],
+      "data_owner": "derived canonical intelligence/report pipeline",
+      "handoffs": [
+        "library",
+        "feed",
+        "ledger",
+        "connections",
+        "mail",
+        "spaces",
+        "lists"
+      ],
+      "acceptance": [
+        "summary_has_meaning_not_counts",
+        "conclusions_have_evidence",
+        "compare_preserves_criteria",
+        "evidence_links_to_canonical_objects"
+      ],
+      "package": "HUB/ROOMS/03-your-reports",
+      "input_rule": "PROJECT_UPSTREAM_CANONICAL_REPORTS_ONLY"
+    },
+    {
+      "id": "library",
+      "name": "Intelligent Library",
+      "route": "/library",
+      "theme": "sapphire",
+      "metaphor": "THE_VAULT",
+      "human_question": "What do we know, and how can I find it?",
+      "signature_experience": "semantic vault / intelligence gallery",
+      "views": [
+        "SEARCH",
+        "BROWSE",
+        "SAVED",
+        "RECENT",
+        "RELATIONSHIP_MAP_OPTIONAL"
+      ],
+      "primary_actions": [
+        "OPEN_INTELLIGENCE",
+        "ASK_NAYA",
+        "SAVE_FAVORITE",
+        "ADD_TO_LIST",
+        "OPEN_SOURCE",
+        "SEE_RELATIONSHIPS",
+        "OPEN_ORIGIN",
+        "SHARE_IF_AUTHORIZED"
+      ],
+      "data_owner": "canonical retained intelligence index/retrieval",
+      "handoffs": [
+        "feed",
+        "today",
+        "reports",
+        "lists",
+        "spaces",
+        "connections",
+        "ledger"
+      ],
+      "acceptance": [
+        "semantic_search_real",
+        "why_match_explainable",
+        "provenance_visible",
+        "relations_openable",
+        "no_filesystem_as_default"
+      ],
+      "package": "HUB/ROOMS/04-intelligent-library"
+    },
+    {
+      "id": "connect",
+      "name": "Smart Connect",
+      "aka": "Smart Doors",
+      "route": "/connect",
+      "theme": "teal_emerald",
+      "metaphor": "THE_PORTAL_BAY",
+      "human_question": "How can I or another system connect to this intelligence?",
+      "signature_experience": "NayaPOWER core surrounded by governed connection doors",
+      "primary_actions": [
+        "CONNECT_AUTHENTICATE",
+        "CONFIGURE",
+        "VIEW_CAPABILITIES",
+        "VIEW_REQUIRED_AUTHORITY",
+        "TEST_IF_SUPPORTED",
+        "DISCONNECT_REVOKE_IF_ALLOWED",
+        "VIEW_RECEIPTS",
+        "ASK_NAYA_WHICH_DOOR"
+      ],
+      "data_owner": "BRAIN/10-INTERFACES contracts + registry + governed runtime",
+      "handoffs": [
+        "connections",
+        "spaces",
+        "ledger",
+        "mail",
+        "settings"
+      ],
+      "acceptance": [
+        "door_status_from_registry_runtime",
+        "registered_not_shown_live",
+        "connected_not_authorized",
+        "authority_visible",
+        "receipt_visibility"
+      ],
+      "package": "HUB/ROOMS/05-smart-connect"
+    },
+    {
+      "id": "ledger",
+      "name": "Smart Ledger",
+      "route": "/ledger",
+      "theme": "yellow_gold",
+      "metaphor": "THE_BLACK_BOX_PROOF_ROOM",
+      "human_question": "What happened, under whose authority, and what proves it?",
+      "signature_experience": "causal timeline / receipt chain",
+      "views": [
+        "TIMELINE",
+        "RECEIPTS",
+        "BY_ACTION",
+        "BY_ACTOR",
+        "BY_SPACE",
+        "NEEDS_ATTENTION"
+      ],
+      "primary_actions": [
+        "INSPECT_RECEIPT",
+        "VIEW_EVIDENCE",
+        "OPEN_RELATED_INTELLIGENCE",
+        "OPEN_ACTOR",
+        "ASK_NAYA",
+        "EXPORT_PROOF_IF_SUPPORTED",
+        "RECOVER_IF_EXPLICITLY_AUTHORIZED"
+      ],
+      "data_owner": "canonical receipts/outcomes/verification evidence",
+      "handoffs": [
+        "feed",
+        "library",
+        "connections",
+        "spaces",
+        "mail",
+        "connect"
+      ],
+      "acceptance": [
+        "requested_authorized_executed_verified_distinct",
+        "actor_authority_visible",
+        "outcome_visible",
+        "independent_verification_visible",
+        "no_executor_output_as_proof"
+      ],
+      "package": "HUB/ROOMS/06-smart-ledger"
+    },
+    {
+      "id": "connections",
+      "name": "Your Connections",
+      "route": "/connections",
+      "theme": "orange",
+      "metaphor": "THE_CONSTELLATION",
+      "human_question": "Who and what am I connected to, and on what terms?",
+      "signature_experience": "governed relationship constellation + accessible list",
+      "views": [
+        "CONSTELLATION",
+        "PEOPLE",
+        "NAYAS_AGENTS",
+        "ORGANIZATIONS",
+        "SHARED_SPACES",
+        "REQUESTS_PENDING"
+      ],
+      "primary_actions": [
+        "OPEN_CONNECTION",
+        "MESSAGE",
+        "OPEN_SHARED_SPACE",
+        "VIEW_SHARED_INTELLIGENCE",
+        "ADJUST_SHARING_IF_AUTHORIZED",
+        "DISCONNECT_REVOKE",
+        "INVITE_CONNECT",
+        "ASK_NAYA"
+      ],
+      "data_owner": "canonical governed relationships/consent/identity context",
+      "handoffs": [
+        "mail",
+        "spaces",
+        "ledger",
+        "feed",
+        "library",
+        "connect"
+      ],
+      "acceptance": [
+        "identity_clear",
+        "relationship_type_clear",
+        "sharing_scope_visible",
+        "consent_state_visible",
+        "revoke_safe",
+        "list_equivalent_for_accessibility"
+      ],
+      "package": "HUB/ROOMS/07-your-connections"
+    },
+    {
+      "id": "lists",
+      "name": "Smart Lists",
+      "route": "/lists",
+      "theme": "purple",
+      "metaphor": "THE_MISSION_TABLE",
+      "human_question": "What am I deliberately organizing, tracking or returning to?",
+      "signature_experience": "living human-controlled collections of canonical intelligence",
+      "list_types": [
+        "MANUAL",
+        "SMART",
+        "HYBRID"
+      ],
+      "primary_actions": [
+        "CREATE_LIST",
+        "ADD_ITEM",
+        "REMOVE_ITEM",
+        "PIN_REORDER",
+        "SET_SMART_RULE",
+        "ASK_NAYA_ORGANIZE",
+        "OPEN_ITEM",
+        "SHARE_IF_AUTHORIZED",
+        "CONVERT_IF_REAL_OPERATION"
+      ],
+      "data_owner": "list definitions/references to canonical intelligence",
+      "handoffs": [
+        "feed",
+        "today",
+        "library",
+        "reports",
+        "mail",
+        "spaces",
+        "ledger"
+      ],
+      "acceptance": [
+        "canonical_ids_not_copied",
+        "manual_and_smart_behavior_distinct",
+        "reorder_accessible_not_drag_only",
+        "rules_explainable",
+        "reopen_persists"
+      ],
+      "package": "HUB/ROOMS/08-smart-lists"
+    },
+    {
+      "id": "mail",
+      "name": "Smart Mail",
+      "route": "/mail",
+      "theme": "sapphire_cyan",
+      "metaphor": "THE_SIGNAL_ROOM",
+      "human_question": "What communication needs my attention, and what does it mean?",
+      "signature_experience": "meaning-first real-message signal console",
+      "views": [
+        "NEEDS_RESPONSE",
+        "IMPORTANT",
+        "WAITING",
+        "FYI",
+        "ACTIVE_SPACE",
+        "CHRONOLOGICAL",
+        "SENT",
+        "DRAFTS"
+      ],
+      "primary_actions": [
+        "OPEN",
+        "REPLY",
+        "COMPOSE",
+        "ARCHIVE",
+        "PRIORITIZE",
+        "ASK_NAYA",
+        "ADD_TO_LIST",
+        "LINK_TO_SPACE",
+        "OPEN_SENDER",
+        "VIEW_ACTIVITY_PROOF"
+      ],
+      "data_owner": "governed mail/messaging door runtime",
+      "handoffs": [
+        "connections",
+        "spaces",
+        "library",
+        "lists",
+        "ledger"
+      ],
+      "acceptance": [
+        "no_fake_mail",
+        "runtime_unavailable_honest",
+        "naya_draft_not_auto_send_without_authority",
+        "thread_context_visible",
+        "message_to_intelligence_path_real"
+      ],
+      "package": "HUB/ROOMS/09-smart-mail"
+    },
+    {
+      "id": "spaces",
+      "name": "Smart Spaces",
+      "route": "/spaces",
+      "theme": "lime",
+      "metaphor": "THE_WORLDS",
+      "human_question": "What context am I in, and what belongs together here?",
+      "signature_experience": "context worlds / portals that lens the entire Hub",
+      "primary_actions": [
+        "ENTER_SPACE",
+        "CREATE_SPACE",
+        "INVITE_CONNECT",
+        "SET_PRIVACY_SHARING",
+        "LINK_INTELLIGENCE",
+        "OPEN_SPACE_FEED",
+        "OPEN_SPACE_REPORT",
+        "OPEN_MEMBERS",
+        "ASK_NAYA_IN_SPACE",
+        "ARCHIVE_LEAVE_IF_GOVERNED"
+      ],
+      "data_owner": "canonical context/space membership + scoped intelligence",
+      "handoffs": [
+        "feed",
+        "today",
+        "reports",
+        "library",
+        "lists",
+        "mail",
+        "connections",
+        "ledger"
+      ],
+      "acceptance": [
+        "space_context_persists_across_rooms",
+        "scope_changes_real_results",
+        "privacy_labels_match_enforcement",
+        "switch_space_safe",
+        "no_second_data_store"
+      ],
+      "package": "HUB/ROOMS/10-smart-spaces"
+    },
+    {
+      "id": "settings",
+      "name": "Settings",
+      "route": "/settings",
+      "theme": "neutral_silver",
+      "metaphor": "THE_CONTROL_DECK",
+      "human_question": "How should NayaNET work for me?",
+      "signature_experience": "calm human-centered control deck",
+      "categories": [
+        "IDENTITY_ACCOUNT",
+        "PRIVACY_CONSENT",
+        "CONNECTIONS_DOORS",
+        "NAYA_PREFERENCES",
+        "APPEARANCE_ACCESSIBILITY",
+        "NOTIFICATIONS",
+        "TRUST_DATA",
+        "SYSTEM_HEALTH_ADVANCED"
+      ],
+      "primary_actions": [
+        "SAVE",
+        "CONNECT_DISCONNECT",
+        "REVOKE",
+        "SIGN_OUT",
+        "MANAGE_CONSENT",
+        "EXPORT_IF_SUPPORTED",
+        "OPEN_SYSTEM_HEALTH",
+        "ASK_NAYA"
+      ],
+      "data_owner": "identity/account/preferences + governed settings runtime",
+      "handoffs": [
+        "connect",
+        "connections",
+        "spaces",
+        "ledger"
+      ],
+      "acceptance": [
+        "setting_scope_explicit",
+        "local_vs_server_backed_clear",
+        "sensitive_changes_confirmed",
+        "system_health_secondary",
+        "human_language_not_backend_jargon"
+      ],
+      "package": "HUB/ROOMS/11-settings"
+    }
+  ],
+  "source_notes": [
+    "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md"
+  ],
+  "consensus": {
+    "protocol": "HUB/ROOMS/CONSENSUS-PROTOCOL.md",
+    "status": "HUB/ROOMS/CONSENSUS-STATUS.md",
+    "review_pr": 1290,
+    "coordination_issue": 554,
+    "overall": "TEAM_REVIEW_OPEN"
+  },
+  "room_packages": {
+    "feed": "HUB/ROOMS/01-smart-feed",
+    "today": "HUB/ROOMS/02-your-intelligence-today",
+    "reports": "HUB/ROOMS/03-your-reports",
+    "library": "HUB/ROOMS/04-intelligent-library",
+    "connect": "HUB/ROOMS/05-smart-connect",
+    "ledger": "HUB/ROOMS/06-smart-ledger",
+    "connections": "HUB/ROOMS/07-your-connections",
+    "lists": "HUB/ROOMS/08-smart-lists",
+    "mail": "HUB/ROOMS/09-smart-mail",
+    "spaces": "HUB/ROOMS/10-smart-spaces",
+    "settings": "HUB/ROOMS/11-settings"
+  },
+  "shared_five_layer_grammar": [
+    "ORIENTATION",
+    "CURRENT_STATE",
+    "INTELLIGENCE",
+    "ACTION",
+    "PROOF"
+  ],
+  "visual_translation": [
+    "HERO",
+    "INTELLIGENCE_WALL",
+    "ACTION_DECK",
+    "EVIDENCE_LAYER",
+    "NAYA_LAYER"
+  ],
+  "projection_boundary": {
+    "hub_role": "OUTPUT_PROJECTION",
+    "upstream_types": [
+      "SMART_NOTE_INTELLIGENT_BLOCK",
+      "ACTIVITY",
+      "INTELLIGENCE_REPORT"
+    ],
+    "forbidden_hub_owned_intelligence_actions": [
+      "CAPTURE_SMART_NOTE",
+      "CAPTURE_FOLLOWUP",
+      "GENERATE_CANONICAL_REPORT",
+      "POST_ACTIVITY"
+    ],
+    "object_identity_rule": "ONE_CANONICAL_OBJECT_MANY_PROJECTIONS"
+  }
+}

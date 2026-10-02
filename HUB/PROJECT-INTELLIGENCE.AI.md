@@ -21,6 +21,23 @@ Companion projections:
 
 ## 0. READ THIS FIRST
 
+### Non-negotiable architecture correction
+
+**THE HUB IS OUTPUT, NOT THE CANONICAL INPUT OF INTELLIGENCE.**
+
+Do not put Smart Note capture, report generation, or manual activity publishing into the Hub merely because the interface needs an action.
+
+The three primary upstream projection classes are:
+1. Smart Notes / canonical Intelligent Blocks;
+2. Activity / observed operational events;
+3. Intelligence Reports.
+
+These arrive through canonical runtime/event/index seams and are projected automatically.
+
+Read `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md` before implementing Feed, Today, Reports, Library, runtime adapter, privacy/collective behavior, or Smart Tabs.
+
+A client-local card inserted into the Feed is not intelligence capture. A localStorage note is not a Smart Note. A demo report is not a report. A fake activity item is not activity.
+
 You are building the human cockpit into a living intelligence system. Your job is not to make screens — it is to make **the most elite interface anyone has ever experienced**, where every pixel earns trust and every control does something real. The frozen visual baseline (`HUB/NAYANET INTERFACE CONCEPT.html` @ `ffedda20`) is the floor. Improve it or match it. Never flatten it.
 
 ---
@@ -90,3 +107,26 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 3. **Escalate with options + recommendation,** never bare questions.
 4. Protected gates are Shawn's word only: merges, production deploys, ratification, destructive changes, privacy/consent/security/authority changes.
 5. **Bring better ideas.** The spec is the floor. If you see a wiser, more powerful, more extraordinary approach — table it on #554 with reasoning. The scorecard decides, not taste. If you can beat the concept's look, do it — and prove it scores.
+
+## 8. Full-app ownership gate
+
+Do not optimize for “my ticket is done.”
+
+A Hub builder is responsible for the effect of its work on the complete smart app.
+
+Before declaring readiness:
+
+1. restore current canonical project intelligence;
+2. read the applicable room contracts;
+3. inspect current implementation and deployment evidence;
+4. inventory dependencies and cross-room handoffs;
+5. self-score D1–D8 with evidence;
+6. implement the highest-value coherent slice;
+7. test browser/runtime/persistence/error/responsive/accessibility/performance behavior as applicable;
+8. re-score and keep fixing known material gaps;
+9. obtain independent challenge/re-score;
+10. present only near-perfect work or one exact authority/external blocker.
+
+**Target 10.0. Human Director near-perfect acceptance bar 9.5. 9.0–9.49 means continue improving rather than asking Shawn to finish the QA mentally.**
+
+Use `HUB/SMART-APP-10-10-EXECUTION-LAW.md` as the execution protocol and `HUB/CURRENT-IMPLEMENTATION-INVENTORY.md` as the dated reality snapshot. Target contract and observed implementation must never be confused.

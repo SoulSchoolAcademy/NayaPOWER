@@ -83,7 +83,8 @@
   "routing_law",
   "rail_law",
   "honesty_law",
-  "cockpit_law"
+  "cockpit_law",
+  "hub_output_projection_law"
  ],
  "open_decisions": [
   "framework vs vanilla componentization (recommendation: framework)"
@@ -142,7 +143,8 @@
  "privacy_footer": "PRIVATE BY DEFAULT — Shared by choice · Collective by consent · Public by decision",
  "projection_of": [
   "HUB/PROJECT-INTELLIGENCE.md",
-  "HUB/DESIGN-CONTRACT.md"
+  "HUB/DESIGN-CONTRACT.md",
+  "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md"
  ],
  "rooms": [
   {
@@ -307,7 +309,7 @@
   "VERIFIED",
   "ERROR"
  ],
- "version": "2.1.0",
+ "version": "2.2.0",
  "doors_canonical": [
   {
    "door_id": "DOOR-GITHUB",
@@ -426,5 +428,26 @@
   "issue": 554,
   "finding_rule": "materially_not_right => post_with_evidence",
   "posting_grants_authority": false
+ },
+ "intelligence_projection": {
+  "role": "OUTPUT_ONLY_FOR_CANONICAL_INTELLIGENCE_PRODUCTION",
+  "upstream_types": [
+   "SMART_NOTE_INTELLIGENT_BLOCK",
+   "ACTIVITY",
+   "INTELLIGENCE_REPORT"
+  ],
+  "feed_modes": [
+   "PERSONAL",
+   "COLLECTIVE",
+   "ACTIVITY"
+  ],
+  "entry_consent_collective_scope": "ELIGIBLE_DISTILLED_ANONYMIZED_WISDOM",
+  "contributor_identity_in_collective": "SEALED",
+  "hub_owned_capture": false,
+  "hub_owned_report_generation": false,
+  "hub_owned_activity_posting": false,
+  "object_identity": "ONE_CANONICAL_OBJECT_MANY_PROJECTIONS",
+  "human_contract": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md",
+  "machine_contract": "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.json"
  }
 }

@@ -1,0 +1,84 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "connect",
+  "name": "Smart Connect",
+  "route": "/connect",
+  "metaphor": "THE PORTAL BAY",
+  "theme": "Teal / Emerald — connection, flow, health",
+  "human_question": "How can I connect my intelligence to people, AIs, machines and systems?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "Connect identity, privacy promise and system connection health",
+    "state": "real door inventory/status, authentication and health",
+    "intelligence": "Naya explains which door fits and what capability/authority means",
+    "action": "connect/authenticate, configure, test, revoke/disconnect, inspect capabilities/receipts",
+    "proof": "door registry source, auth state, authority state, health and receipts"
+  },
+  "signature_instrument": "GOVERNED_CONNECTION_PORTAL_BAY",
+  "primary_views": [
+    "REGISTERED_DOORS",
+    "LIVE_STATUS",
+    "CAPABILITIES",
+    "AUTHORITY",
+    "HEALTH",
+    "ROADMAP",
+    "RECEIPTS"
+  ],
+  "primary_actions": [
+    "CONNECT_AUTHENTICATE",
+    "CONFIGURE",
+    "VIEW_CAPABILITIES",
+    "VIEW_REQUIRED_AUTHORITY",
+    "TEST_IF_SUPPORTED",
+    "VERIFY_CONNECTION",
+    "DISCONNECT_REVOKE_IF_ALLOWED",
+    "VIEW_RECEIPTS",
+    "ASK_NAYA_WHICH_DOOR"
+  ],
+  "data_owner": "BRAIN/10-INTERFACES contracts + registry + governed runtime",
+  "handoffs": [
+    "connections",
+    "spaces",
+    "ledger",
+    "mail",
+    "settings"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "door inventory matches canonical registry",
+    "contract-only/roadmap never appear live",
+    "connected/authenticated/authorized/healthy are distinct",
+    "connect actions are real or honestly unavailable",
+    "receipts/health are inspectable",
+    "accessible list matches portal view"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}

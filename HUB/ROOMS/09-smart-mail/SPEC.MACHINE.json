@@ -1,0 +1,91 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "mail",
+  "name": "Smart Mail",
+  "route": "/mail",
+  "metaphor": "THE SIGNAL ROOM",
+  "theme": "Sapphire / Cyan — communication, signal, context",
+  "human_question": "What communication needs my attention, and what does it mean?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "mail identity, account/channel/Space and current triage mode",
+    "state": "real message counts/threads and availability/access state",
+    "intelligence": "importance, response need, relationship context, commitments, related intelligence and Naya summary",
+    "action": "open, reply/draft, compose, archive, prioritize, follow up, capture/list/link Space",
+    "proof": "real sender/thread provenance, send authority, message state and receipted action where applicable"
+  },
+  "signature_instrument": "COMMUNICATION_SIGNAL_AND_CONTEXT_CONSOLE",
+  "primary_views": [
+    "IMPORTANT",
+    "RESPOND",
+    "FOLLOW_UP",
+    "DRAFTS",
+    "SENT",
+    "CHRONOLOGICAL",
+    "THREAD",
+    "CONTEXT"
+  ],
+  "primary_actions": [
+    "OPEN",
+    "REPLY",
+    "DRAFT_RESPONSE",
+    "COMPOSE",
+    "ARCHIVE",
+    "PRIORITIZE",
+    "FOLLOW_UP",
+    "ASK_NAYA",
+    "CAPTURE_SMART_NOTE",
+    "ADD_TO_LIST",
+    "LINK_TO_SPACE",
+    "OPEN_SENDER",
+    "SEND_IF_AUTHORIZED",
+    "VIEW_ACTIVITY_PROOF"
+  ],
+  "data_owner": "governed mail/messaging door runtime",
+  "handoffs": [
+    "connections",
+    "spaces",
+    "library",
+    "lists",
+    "ledger",
+    "feed"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "no fake mail",
+    "IMPORTANT/RESPOND/FOLLOW_UP/DRAFTS/SENT change real data",
+    "context comes from real relationship/intelligence",
+    "Naya draft does not auto-send",
+    "send authority is explicit",
+    "thread→note/list/space handoffs work"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}

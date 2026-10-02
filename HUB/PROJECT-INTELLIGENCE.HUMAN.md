@@ -10,6 +10,20 @@ Audience: humans. No jargon, no code.
 
 The most beautiful, most intelligent app anyone has ever used.
 
+### The simplest way to understand the Hub
+
+**The Hub is where you SEE your intelligence. Naya and your real work are where the intelligence gets CREATED.**
+
+During the day you may tell Naya “Smart Note this,” work on projects, or ask for an intelligence report. NayaPOWER preserves those things canonically. The Hub then reflects them back automatically as:
+- your Personal intelligence;
+- eligible anonymized Collective intelligence when you have consented to collective participation;
+- current Activity;
+- highlights, reports, library results and other useful views.
+
+You should never have to re-enter the intelligence into the Hub.
+
+**One intelligence object. Many beautiful views.**
+
 It's your personal cockpit into your own intelligence — a place where everything you know, everything you're working on, and everything you're connected to lives in one stunning, living interface. It remembers. It learns. It shows its work. It never lies to you about what it knows.
 
 ## What 10 out of 10 feels like

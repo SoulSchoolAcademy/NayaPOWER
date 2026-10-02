@@ -1,0 +1,85 @@
+{
+  "schema": "nayanet.hub.room.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REVIEW_OPEN",
+  "room_id": "connections",
+  "name": "Your Connections",
+  "route": "/connections",
+  "metaphor": "THE CONSTELLATION",
+  "theme": "Orange — relationship movement, collaboration, human/system connection",
+  "human_question": "Who and what am I connected to, and on what terms?",
+  "source_note": "HUB/ROOMS/SOURCES/2026-10-01-HUMAN-DIRECTOR-GOOGLE-DRIVE-ROOM-NOTES.md",
+  "canonical": [
+    "FUNCTIONAL-SPEC.md",
+    "DESIGN-CONTRACT.md"
+  ],
+  "projections": [
+    "SPEC.HUMAN.md",
+    "SPEC.AI.md",
+    "SPEC.MACHINE.json"
+  ],
+  "five_layers": {
+    "orientation": "relationship category, Space and selected connection",
+    "state": "real governed relationships, pending requests and consent/share states",
+    "intelligence": "shared context, recent interaction, important connection meaning and next relevant action",
+    "action": "open, message, shared Space/intelligence, invite, adjust sharing, disconnect/revoke when authorized",
+    "proof": "identity, consent/privacy state, relationship provenance, applicable authority and activity evidence"
+  },
+  "signature_instrument": "RELATIONSHIP_CONSTELLATION_AND_CONTEXT_INSPECTOR",
+  "primary_views": [
+    "PEOPLE",
+    "AGENTS",
+    "SYSTEMS",
+    "ORGANIZATIONS",
+    "PROJECTS_SPACES",
+    "REQUESTS_PENDING",
+    "SELECTED_CONNECTION"
+  ],
+  "primary_actions": [
+    "OPEN_CONNECTION",
+    "MESSAGE",
+    "OPEN_SHARED_SPACE",
+    "VIEW_SHARED_INTELLIGENCE",
+    "ADJUST_SHARING_IF_AUTHORIZED",
+    "DISCONNECT_REVOKE",
+    "INVITE_CONNECT",
+    "ASK_NAYA"
+  ],
+  "data_owner": "canonical governed relationships/consent/identity context",
+  "handoffs": [
+    "mail",
+    "spaces",
+    "ledger",
+    "feed",
+    "library",
+    "connect",
+    "settings"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "UNKNOWN",
+    "DISABLED"
+  ],
+  "acceptance": [
+    "connection identity/type is clear",
+    "shared scope and consent state visible",
+    "selected panel shows recent/contextual intelligence",
+    "graph has accessible list equivalent",
+    "revoke/change flow is governed",
+    "no unsupported relationship suggestion appears"
+  ],
+  "review": {
+    "pr": 1290,
+    "coordination_issue": 554,
+    "consensus": "OPEN",
+    "ratified": false
+  }
+}
