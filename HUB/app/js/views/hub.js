@@ -58,13 +58,17 @@ function HubView(params) {
     <div class="kicker">${room.kicker}</div>
     <h2 class="room-title">${room.name}</h2>
     <p class="room-desc">${roomDesc(room.id)}</p>`;
-  main.appendChild(head);
-
   const body = el('div', 'room-body');
   body.style.setProperty('--room-accent', room.accent);
   const renderer = window.NayaRooms && window.NayaRooms[room.id];
-  if (renderer) body.appendChild(renderer());
-  else body.appendChild(notVerifiedPanel(room));
+  if (renderer) {
+    // A room whose hero IS its orientation (e.g. Today) owns the head.
+    if (!renderer.ownsHead) main.appendChild(head);
+    body.appendChild(renderer());
+  } else {
+    main.appendChild(head);
+    body.appendChild(notVerifiedPanel(room));
+  }
   main.appendChild(body);
 
   /* ——— Drawer law: exactly one nav surface. Backdrop, Escape, scroll lock. ——— */
