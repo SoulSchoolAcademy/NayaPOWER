@@ -129,27 +129,11 @@
 }
 .board-kicker .k-dot{ padding: 0 6px; }
 .board-kicker .k-state{ color: var(--tone); }
-.board-side{ text-align: right; flex: none; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-.board-theme{
-  font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
-  color: var(--tone); font-weight: 700; margin: 0;
-}
-.board-explore{
-  appearance: none; cursor: pointer;
-  background: transparent;
-  border: 1px solid color-mix(in srgb, var(--tone) 50%, transparent);
-  color: var(--ink-dim);
-  border-radius: var(--radius-pill);
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 700;
-  padding: 10px 22px;
-  transition: border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .16s var(--ease);
-}
-.board-explore:hover{
-  color: #fff; border-color: var(--tone);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 45%, transparent);
-  transform: translateY(-1px);
-}
-.board-explore[aria-expanded="true"]{ color: #fff; border-color: var(--tone); background: color-mix(in srgb, var(--tone) 22%, transparent); }
+
+
+
+
+
 
 /* ——— Divider ——— */
 .board-rule{
@@ -174,55 +158,29 @@
 .board-hero .board-nut{ font-size: 19px; }
 
 /* ——— Entered depth ——— */
-.board-depth{ margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line-soft); animation: board-in .45s var(--ease); }
-@keyframes board-in{ from{ opacity: 0; transform: translateY(10px);} to{ opacity: 1; transform: none;} }
-.blayer{ margin: 0 0 20px; max-width: 760px; }
-.blayer:last-child{ margin-bottom: 0; }
-.blayer-label{ display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px; }
-.blayer-label strong{ font-size: 11px; letter-spacing: 0.24em; color: var(--tone); font-weight: 700; }
-.blayer-label span{ font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
-.blayer-text{ font-size: 16px; line-height: 1.7; color: var(--ink-dim); margin: 0; }
+
+ to{ opacity: 1; transform: none;} }
+
+
+
+
+
+
 
 /* ——— Working tools: everything here does something real ——— */
-.board-tools{ display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 6px; }
-.board-tool{
-  appearance: none; cursor: pointer;
-  border: 1px solid color-mix(in srgb, var(--tone) 55%, #000);
-  border-radius: var(--radius-pill);
-  color: #fff;
-  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
-  padding: 13px 26px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 46%),
-    linear-gradient(180deg,
-      color-mix(in srgb, var(--tone) 72%, #fff),
-      color-mix(in srgb, var(--tone) 48%, #000));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    inset 0 -3px 8px rgba(0,0,0,.38),
-    0 10px 26px rgba(0,0,0,.5),
-    0 0 22px color-mix(in srgb, var(--tone) 32%, transparent);
-  text-shadow: 0 1px 3px rgba(0,0,0,.45);
-  transition: transform .16s var(--ease), box-shadow .25s ease, filter .25s ease;
-}
-.board-tool:hover{ transform: translateY(-2px); filter: brightness(1.1); }
-.board-tool:active{ transform: translateY(1px); }
-.board-tool:focus-visible{ outline: 2px solid var(--tone); outline-offset: 3px; }
+
+
+
+
+
 
 /* ——— Cross-references ——— */
-.board-refs{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.board-ref{
-  appearance: none; cursor: pointer; background: none;
-  border: 1px solid var(--line-soft); color: var(--muted);
-  border-radius: var(--radius-pill);
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 9px 17px;
-  transition: border-color .2s ease, color .2s ease;
-}
-.board-ref:hover{ border-color: var(--tone); color: var(--ink); }
-.board-ref.static{ cursor: default; }
-.board-ref.static:hover{ border-color: var(--line-soft); color: var(--muted); }
-.board-ref .who{ color: var(--tone); }
+
+
+
+
+
+
 
 /* ——— Board foot: source separation, quiet ——— */
 .board-foot{
@@ -350,7 +308,166 @@
   .board-orb{ width: 58px; height: 58px; }
   .board-hero .board-orb{ width: 68px; height: 68px; }
   .board-orb svg{ width: 28px; height: 28px; }
-  .board-side{ flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
+  
   .ask-row{ flex-direction: column; }
   .ask-go{ padding: 14px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   v7 — THE RIVER: quiet snapshots. Tap → the Smart Note.
+   Learned from the live V7 page: restraint. The intelligence speaks.
+   ═══════════════════════════════════════════════════════════════════ */
+.river-kicker{
+  font-size: 11px; letter-spacing: 0.26em; color: var(--muted);
+  margin: 0 0 4px; font-weight: 700;
+}
+.river-kicker span{ color: var(--ink); }
+.snap-board{
+  --tone: #9d75ff;
+  display: flex; gap: 22px; align-items: flex-start;
+  border-radius: 20px;
+  padding: 28px 30px;
+  margin: 0 0 18px;
+  cursor: pointer;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.01) 60%, rgba(0,0,0,.10)),
+    #0b0c12;
+  border: 1px solid color-mix(in srgb, var(--tone) 34%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 18px 44px rgba(0,0,0,.5),
+    0 0 34px color-mix(in srgb, var(--tone) 16%, transparent);
+  transition: transform .22s var(--ease), box-shadow .28s ease, border-color .28s ease;
+}
+.snap-board:hover, .snap-board:focus-visible{
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--tone) 58%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 26px 60px rgba(0,0,0,.55),
+    0 0 54px color-mix(in srgb, var(--tone) 30%, transparent);
+  outline: none;
+}
+.sb-orb{
+  width: 60px; height: 60px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.95), transparent 44%),
+    radial-gradient(circle at 50% 62%,
+      color-mix(in srgb, var(--tone) 78%, #fff),
+      color-mix(in srgb, var(--tone) 38%, #000) 80%);
+  box-shadow:
+    inset 0 2px 6px rgba(255,255,255,.55),
+    inset 0 -8px 18px rgba(0,0,0,.5),
+    0 8px 24px rgba(0,0,0,.55),
+    0 0 28px color-mix(in srgb, var(--tone) 55%, transparent);
+}
+.sb-orb svg{ width: 28px; height: 28px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.5)); }
+.sb-main{ flex: 1; min-width: 0; }
+.sb-theme{
+  font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--tone); font-weight: 700; margin: 0 0 8px;
+}
+.sb-title{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400; font-size: 24px; line-height: 1.2;
+  color: var(--ink); margin: 0 0 10px; text-wrap: balance;
+}
+.sb-nut{ font-size: 16px; line-height: 1.65; color: var(--ink-dim); margin: 0; max-width: 700px; }
+.sb-why{
+  display: flex; gap: 10px; align-items: baseline;
+  margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted);
+}
+.sb-why strong{
+  font-size: 11px; letter-spacing: 0.22em; color: var(--tone);
+  font-weight: 700; white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   THE SMART NOTE — the full block, live-page language.
+   ═══════════════════════════════════════════════════════════════════ */
+.note-view{ animation: board-in .4s var(--ease); }
+@keyframes board-in{ from{ opacity: 0; transform: translateY(12px);} to{ opacity: 1; transform: none;} }
+.note-back{
+  appearance: none; cursor: pointer; background: none; border: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--muted); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700;
+  padding: 8px 0; margin-bottom: 26px;
+}
+.note-back:hover{ color: var(--ink); }
+.note-head{ display: flex; align-items: center; gap: 26px; margin-bottom: 20px; }
+.note-orb{
+  width: 84px; height: 84px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.95), transparent 44%),
+    radial-gradient(circle at 50% 62%,
+      color-mix(in srgb, var(--tone) 78%, #fff),
+      color-mix(in srgb, var(--tone) 38%, #000) 80%);
+  box-shadow:
+    inset 0 2px 8px rgba(255,255,255,.55),
+    inset 0 -10px 22px rgba(0,0,0,.55),
+    0 12px 30px rgba(0,0,0,.6),
+    0 0 38px color-mix(in srgb, var(--tone) 60%, transparent);
+}
+.note-orb svg{ width: 38px; height: 38px; filter: drop-shadow(0 2px 5px rgba(0,0,0,.5)); }
+.note-title{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400; font-size: clamp(1.8rem, 4.4vw, 2.6rem); line-height: 1.12;
+  color: var(--ink); margin: 0; text-wrap: balance;
+}
+.note-canon{
+  font-size: 11px; letter-spacing: 0.26em; color: var(--tone); font-weight: 700;
+  margin: 0 0 6px;
+}
+.note-source{
+  font-size: 11px; letter-spacing: 0.26em; color: var(--muted);
+  margin: 0 0 30px;
+}
+.note-layers{ border-top: 1px solid var(--line-soft); padding-top: 8px; }
+.nlayer{ margin: 0 0 26px; max-width: 780px; }
+.nlayer-label{ display: flex; align-items: baseline; gap: 12px; margin: 0 0 8px; }
+.nlayer-label strong{ font-size: 12px; letter-spacing: 0.24em; color: var(--ink); font-weight: 800; }
+.nlayer-label span{ font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.nlayer-text{ font-size: 16px; line-height: 1.75; color: var(--ink-dim); margin: 0; }
+.note-tools{ display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 10px; }
+.note-tool{
+  appearance: none; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--tone) 55%, #000);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+  padding: 13px 26px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 46%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--tone) 72%, #fff),
+      color-mix(in srgb, var(--tone) 48%, #000));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -3px 8px rgba(0,0,0,.38),
+    0 10px 26px rgba(0,0,0,.5),
+    0 0 22px color-mix(in srgb, var(--tone) 32%, transparent);
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
+  transition: transform .16s var(--ease), filter .25s ease;
+}
+.note-tool:hover{ transform: translateY(-2px); filter: brightness(1.1); }
+.note-tool:active{ transform: translateY(1px); }
+.note-foot{
+  margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line-soft);
+  text-align: center;
+}
+.note-foot p{
+  font-size: 11px; letter-spacing: 0.24em; color: var(--muted); margin: 0 0 6px;
+}
+@media (max-width: 560px){
+  .snap-board{ padding: 22px 20px; gap: 16px; }
+  .sb-orb{ width: 48px; height: 48px; }
+  .sb-orb svg{ width: 22px; height: 22px; }
+  .sb-title{ font-size: 20px; }
+  .note-orb{ width: 64px; height: 64px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .snap-board, .note-tool{ transition: none; }
+  .note-view{ animation: none; }
 }

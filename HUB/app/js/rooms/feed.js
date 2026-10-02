@@ -1,16 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ROOM 01 — SMART FEED · THE MAIN SHOW · v6
-   The board language, learned from the main interface concept
-   (HUB/NAYANET INTERFACE CONCEPT.html):
-   - Every intelligence is a BOARD: elevated, theme-edged, glass orb with
-     glyph, title + theme label, divider, generous body. One color, one
-     board — each board its own theme.
-   - A board is a destination you ENTER. EXPLORE is its one obvious
-     action and it works: the board opens into its full depth.
-   - No fake governance buttons. Inside an entered board, only working
-     tools: Evidence, Save to Today, Ask Naya about this.
-   - No mode dock in the Main Show (director decision, 2026-10-02 — the
-     feed is today's intelligence, one river).
+   ROOM 01 — SMART FEED · THE MAIN SHOW · v7
+   Learned from the live V7 page (deep dive 2026-10-02):
+   - The feed is a RIVER of quiet snapshots. The full intelligent block
+     lives on its own Smart Note surface — the two are never mashed
+     together.
+   - Restraint: orb · title · nutshell · why-now. No buttons, no modes,
+     no chrome shouting over the intelligence.
+   - USER-WORLD ONLY. Builder-world (PRs, contracts, lanes, ratify) is
+     back-end lane work and never appears as a user feed action.
+   - Tap a snapshot → the Smart Note: full layers in the live page's
+     calm language, with only working tools (Evidence, Save, Ask).
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
@@ -29,18 +28,16 @@
 
   const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
 
-  /* Orb glyphs — one per intelligence kind, geometric, white. */
   const GLYPHS={
     decision:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>',
     intelligence:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 8.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/><path d="M4 13.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/><path d="M4 18.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/></svg>',
     signal:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="#fff" stroke="none"/><circle cx="12" cy="12" r="7.5"/></svg>',
     event:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13.5h6L11 21l8-10.5h-6L13 3z"/></svg>'
   };
-  const THEMES={decision:'DECISION',intelligence:'INTELLIGENCE',signal:'SIGNAL',event:'MOMENT'};
 
   const savedList=[];
   let allItems=[];
-  let enteredId=null;
+  let openNoteId=null;
 
   function FeedRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit;
@@ -49,6 +46,8 @@
     stage.appendChild(greeting(el));
     const river=el('div','feed-river');
     stage.appendChild(river);
+    const note=el('div','note-view'); note.hidden=true;
+    stage.appendChild(note);
     stage.appendChild(todayListBox(el));
     const foot=el('div','feed-stage-foot');
     const ask=el('button','feed-ask','<span>Ask Naya about today</span>');
@@ -80,177 +79,138 @@
     const g=el('h1','feed-greeting',''); g.textContent=who?part+', '+who:part;
     const d=el('p','feed-dateline','');
     d.innerHTML='<span>'+esc(date.toUpperCase())+'</span><span class="feed-dot">·</span><span>YOUR INTELLIGENCE TODAY</span>';
-    wrap.appendChild(g); wrap.appendChild(d);
+    const s=el('p','feed-daystate','');
+    s.textContent='Your intelligence has a place to be understood, explored, remembered, and acted on — without making you manage the architecture.';
+    wrap.appendChild(g); wrap.appendChild(d); wrap.appendChild(s);
     return wrap;
   }
 
+  /* ——— THE RIVER: quiet snapshots. Tap → the Smart Note. ——— */
   function renderRiver(el,stage){
     const river=stage.querySelector('.feed-river');
+    const note=stage.querySelector('.note-view');
+    note.hidden=true; river.hidden=false;
     river.innerHTML='';
     if(!allItems.length){
       const p=el('p','feed-daystate','');
       p.textContent='Nothing today yet. When something matters, it appears here — never manufactured to fill the space.';
       river.appendChild(p); return;
     }
-    allItems.forEach((b,i)=>river.appendChild(board(el,b,i===0)));
+    const k=el('p','river-kicker','');
+    k.innerHTML='<span>'+allItems.length+'</span>&nbsp;&nbsp;INTELLIGENCE BLOCK'+(allItems.length===1?'':'S')+' · TODAY';
+    river.appendChild(k);
+    allItems.forEach(b=>river.appendChild(snapshot(el,b)));
   }
 
-  /* ——— THE BOARD ——— */
-  function board(el,b,hero){
-    const a=el('article','board'+(hero?' board-hero':''));
-    a.id='board-'+b.id;
+  function snapshot(el,b){
+    const a=el('article','snap-board');
     a.style.setProperty('--tone',toneFor(b));
-    const entered=b.id===enteredId;
-
-    /* Head: orb + title + theme + explore */
-    const head=el('div','board-head');
-    const orb=el('div','board-orb'); orb.innerHTML=glyphFor(b); orb.setAttribute('aria-hidden','true');
-    const titles=el('div','board-titles');
-    const t=el('h2','board-title',''); t.textContent=b.title;
-    const k=el('p','board-kicker','');
-    k.innerHTML='<span>'+esc(kindOf(b))+'</span>'+(b.truth_state?' <span class="k-dot">·</span> <span class="k-state">'+esc(b.truth_state)+'</span>':'');
-    titles.appendChild(t); titles.appendChild(k);
-    const side=el('div','board-side');
-    const theme=el('p','board-theme',''); theme.textContent=themeFor(b);
-    const explore=el('button','board-explore',''); explore.type='button';
-    explore.setAttribute('aria-expanded',entered?'true':'false');
-    explore.innerHTML='<span>'+(entered?'CLOSE':'EXPLORE')+'</span>';
-    explore.setAttribute('aria-label',(entered?'Close ':'Explore ')+b.title);
-    explore.addEventListener('click',()=>{
-      enteredId=entered?null:b.id;
-      const stage=a.closest('.feed-stage');
-      renderRiver(el,stage);
-      if(!entered) jumpTo(b.id);
-    });
-    side.appendChild(theme); side.appendChild(explore);
-    head.appendChild(orb); head.appendChild(titles); head.appendChild(side);
-    a.appendChild(head);
-    a.appendChild(el('div','board-rule'));
-
-    /* Body: why now + nutshell */
-    const body=el('div','board-body');
+    a.setAttribute('tabindex','0');
+    a.setAttribute('role','button');
+    a.setAttribute('aria-label','Open: '+b.title);
+    const orb=el('div','sb-orb'); orb.innerHTML=glyphFor(b); orb.setAttribute('aria-hidden','true');
+    const main=el('div','sb-main');
+    const th=el('p','sb-theme',''); th.textContent=themeFor(b);
+    const t=el('h2','sb-title',''); t.textContent=b.title;
+    const n=el('p','sb-nut',''); n.textContent=b.layers.nutshell||'';
+    main.appendChild(th); main.appendChild(t); main.appendChild(n);
     if(b.whyNow){
-      const w=el('p','board-whynow','');
+      const w=el('p','sb-why','');
       w.innerHTML='<strong>WHY NOW</strong><span>'+esc(b.whyNow)+'</span>';
-      body.appendChild(w);
+      main.appendChild(w);
     }
-    if(b.layers.nutshell){
-      const n=el('p','board-nut',''); n.textContent=b.layers.nutshell;
-      body.appendChild(n);
-    }
-    a.appendChild(body);
-
-    /* Entered depth: layers, working tools, cross-references */
-    if(entered){
-      const deep=el('div','board-depth');
-      const deepKeys=LAYERS.map(l=>l[0]).filter(k2=>k2!=='nutshell'&&b.layers[k2]);
-      if(deepKeys.length){
-        const lw=el('div','board-layers');
-        deepKeys.forEach(k2=>lw.appendChild(makeLayer(el,k2,b.layers[k2])));
-        deep.appendChild(lw);
-      }
-      deep.appendChild(toolsRow(el,b));
-      deep.appendChild(refsRow(el,b));
-      a.appendChild(deep);
-    }
-
-    /* Foot: source separation, quiet */
-    const foot=el('footer','board-foot');
-    foot.innerHTML='<span class="led"></span><span>SOURCE SEPARATED — '+esc((b.source||'UNSTATED').toUpperCase())+'</span>';
-    a.appendChild(foot);
+    a.appendChild(orb); a.appendChild(main);
+    const open=()=>{
+      openNoteId=b.id;
+      const stage=a.closest('.feed-stage');
+      renderNote(el,stage,b);
+      stage.scrollIntoView({block:'start'});
+    };
+    a.addEventListener('click',open);
+    a.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }});
     return a;
   }
 
-  function kindOf(b){
-    const t=(b.kicker.split(' · ')[0]||'INTELLIGENCE').toLowerCase();
-    return THEMES[t]?'INTELLIGENCE':t.toUpperCase();
-  }
   function themeFor(b){
-    const t=(b.kicker.split(' · ')[0]||'').toLowerCase();
-    return THEMES[t]||'INTELLIGENCE';
+    const t=(b.kicker.split(' · ')[0]||'INTELLIGENCE').toUpperCase();
+    return t;
   }
   function glyphFor(b){
     const t=(b.kicker.split(' · ')[0]||'').toLowerCase();
     return GLYPHS[t]||GLYPHS.intelligence;
   }
 
-  /* Working tools only — everything here does something real. */
-  function toolsRow(el,b){
-    const row=el('div','board-tools');
-    const ev=toolBtn(el,'Evidence',()=>openEvidence(b));
-    const sv=toolBtn(el,savedList.includes(b.id)?'Saved ✓':'Save to Today',()=>{
-      if(!savedList.includes(b.id))savedList.push(b.id);
-      renderTodayList();
-      ev2refresh(el,b);
+  /* ——— THE SMART NOTE: the full block, live-page language ——— */
+  function renderNote(el,stage,b){
+    const river=stage.querySelector('.feed-river');
+    const note=stage.querySelector('.note-view');
+    river.hidden=true; note.hidden=false; note.innerHTML='';
+    note.style.setProperty('--tone',toneFor(b));
+
+    const back=el('button','note-back',''); back.type='button';
+    back.innerHTML='<span>←</span><span>Today</span>';
+    back.setAttribute('aria-label','Back to today’s river');
+    back.addEventListener('click',()=>renderRiver(el,stage));
+    note.appendChild(back);
+
+    const head=el('div','note-head');
+    const orb=el('div','note-orb'); orb.innerHTML=glyphFor(b); orb.setAttribute('aria-hidden','true');
+    const t=el('h2','note-title',''); t.textContent=b.title;
+    head.appendChild(orb); head.appendChild(t);
+    note.appendChild(head);
+
+    const canon=el('p','note-canon',''); canon.textContent='CANONICAL INTELLIGENCE';
+    const src=el('p','note-source',''); src.textContent='SOURCE SEPARATED';
+    note.appendChild(canon); note.appendChild(src);
+
+    const layers=el('div','note-layers');
+    LAYERS.forEach(([key])=>{
+      if(b.layers[key]) layers.appendChild(makeLayer(el,key,b.layers[key]));
     });
-    const ask=toolBtn(el,'Ask Naya',()=>{
+    note.appendChild(layers);
+
+    /* Only working tools. Everything here does something real. */
+    const tools=el('div','note-tools');
+    tools.appendChild(toolBtn(el,'Evidence',()=>openEvidence(b)));
+    tools.appendChild(toolBtn(el,savedList.includes(b.id)?'Saved ✓':'Save to Today',()=>{
+      if(!savedList.includes(b.id))savedList.push(b.id);
+      renderTodayList(); renderNote(el,stage,b);
+    }));
+    tools.appendChild(toolBtn(el,'Ask Naya',()=>{
       const panel=document.querySelector('.ask-panel');
       if(panel){panel.classList.add('open');
         const i=panel.querySelector('.ask-input');
-        if(i){i.value='About "'+b.title+'": ';i.focus();}}
+        if(i){i.value='About "'+b.title+'": ';}}
+      renderRiver(el,stage);
       const foot=document.querySelector('.feed-stage-foot');
       if(foot)foot.scrollIntoView({behavior:'smooth',block:'center'});
-    });
-    row.appendChild(ev); row.appendChild(sv); row.appendChild(ask);
-    return row;
+      const inp=document.querySelector('.ask-input'); if(inp)inp.focus();
+    }));
+    note.appendChild(tools);
+
+    const foot=el('footer','note-foot');
+    foot.innerHTML='<p>ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY</p><p>TRUST: SOURCE / INTERPRETATION SEPARATED</p>';
+    note.appendChild(foot);
   }
-  function ev2refresh(el,b){
-    const a=document.getElementById('board-'+CSS.escape(b.id));
-    if(a){const stage=a.closest('.feed-stage'); renderRiver(el,stage);}
-  }
+
   function toolBtn(el,label,fn){
-    const x=el('button','board-tool',''); x.type='button'; x.textContent=label;
+    const x=el('button','note-tool',''); x.type='button'; x.textContent=label;
     x.addEventListener('click',fn); return x;
-  }
-
-  function refsRow(el,b){
-    const refs=el('div','board-refs');
-    b.related.forEach(rid=>{
-      const target=allItems.find(x=>x.id===String(rid));
-      if(target){
-        const c=el('button','board-ref',''); c.type='button';
-        c.textContent='Related: '+shortTitle(target.title);
-        c.addEventListener('click',()=>{ enteredId=target.id; const stage=refs.closest('.feed-stage'); renderRiver(el,stage); jumpTo(target.id); });
-        refs.appendChild(c);
-      }
-    });
-    b.people.forEach(pn=>{
-      const c=el('span','board-ref static','');
-      c.innerHTML='Person: <span class="who">'+esc(pn)+'</span>';
-      refs.appendChild(c);
-    });
-    const ctx=b.context||{};
-    ['list','space','report'].forEach(kk=>{
-      if(ctx[kk]){
-        const c2=el('span','board-ref static','');
-        c2.innerHTML=esc(kk.charAt(0).toUpperCase()+kk.slice(1))+': <span class="who">'+esc(ctx[kk])+'</span>';
-        refs.appendChild(c2);
-      }
-    });
-    if(ctx.prior){const pr=el('span','board-ref static','');pr.innerHTML='Prior: <span class="who">'+esc(ctx.prior)+'</span>';refs.appendChild(pr);}
-    if(ctx.next){const nx=el('span','board-ref static','');nx.innerHTML='Next: <span class="who">'+esc(ctx.next)+'</span>';refs.appendChild(nx);}
-    return refs;
-  }
-
-  function shortTitle(t){t=String(t||'');return t.length>30?t.slice(0,30)+'…':t;}
-  function jumpTo(rid){
-    const t=document.querySelector('#board-'+CSS.escape(rid));
-    if(t){t.scrollIntoView({behavior:'smooth',block:'center'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');}
   }
 
   function makeLayer(el,key,text){
     const found=LAYERS.find(l=>l[0]===key);
     const label=found?found[1]:key.toUpperCase();
     const sub=found?found[2]:'';
-    const d=el('div','blayer');
-    const lab=el('p','blayer-label','');
+    const d=el('div','nlayer');
+    const lab=el('p','nlayer-label','');
     lab.innerHTML='<strong>'+esc(label)+'</strong>'+(sub?'<span>'+esc(sub)+'</span>':'');
-    const txt=el('p','blayer-text',''); txt.textContent=text;
+    const txt=el('p','nlayer-text',''); txt.textContent=text;
     d.appendChild(lab); d.appendChild(txt);
     return d;
   }
 
-  /* ——— Object → board data. Only real fields; nothing invented. ——— */
+  /* ——— Object → snapshot. Only real fields; nothing invented. ——— */
   function normalize(o,K){
     const src=o.layers||o.intelligent_block||o.content||{};
     const layers={};
@@ -382,7 +342,7 @@
       res.appendChild(askStep(el,'INTENT','You asked: “'+q+'”'));
       const hits=retrieve(q);
       const hv=el('div','ask-step');
-      const hk=el('p','ask-k',''); hk.textContent='RETRIEVAL — '+hits.length+' relevant board'+(hits.length===1?'':'s');
+      const hk=el('p','ask-k',''); hk.textContent='RETRIEVAL — '+hits.length+' relevant'+(hits.length===1?'':'s');
       hv.appendChild(hk);
       if(!hits.length){
         const none=el('p','ask-v',''); none.textContent='Nothing loaded on this stage matches. Naya will not invent an answer — try different words.';
@@ -391,7 +351,7 @@
       hits.forEach(hit=>{
         const line=el('div','ask-hit','');
         const bb=el('button','',''); bb.type='button'; bb.textContent=hit.b.title;
-        bb.addEventListener('click',()=>{ enteredId=hit.b.id; renderRiver(el,p.closest('.feed-stage')); jumpTo(hit.b.id); });
+        bb.addEventListener('click',()=>{ const stage=p.closest('.feed-stage'); renderNote(el,stage,hit.b); stage.scrollIntoView({block:'start'}); });
         line.appendChild(bb);
         const why=el('span','',''); why.textContent=' — '+(hit.b.whyNow||'on this stage');
         line.appendChild(why); hv.appendChild(line);
@@ -399,7 +359,7 @@
       res.appendChild(hv);
       if(hits.length){
         const synth=hits.slice(0,3).map(hit=>hit.b.layers.nutshell||'').filter(Boolean).join(' ');
-        res.appendChild(askStep(el,'SYNTHESIS — assembled only from the boards above',synth.slice(0,420)+(synth.length>420?'…':'')));
+        res.appendChild(askStep(el,'SYNTHESIS — assembled only from the above',synth.slice(0,420)+(synth.length>420?'…':'')));
       }
       const bound=el('p','ask-boundary','');
       bound.textContent='Boundary, stated plainly: this answers from what is loaded on this stage. In production the same surface queries the governed runtime. Nothing here is sent anywhere.';
