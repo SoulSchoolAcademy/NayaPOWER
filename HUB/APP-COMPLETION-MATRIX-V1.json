@@ -98,6 +98,26 @@
       "state": "NOT_STARTED",
       "evidence": [],
       "remaining": "No deployment from this branch; parity must be proven at release."
+    },
+    "canonical_room_contract": {
+      "state": "TESTED",
+      "evidence": [
+        "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
+        "HUB/app/js/room-contract.js",
+        "HUB/app/tests/browser-smoke.mjs"
+      ],
+      "remaining": "Independent review remains; adapter fails closed if canonical identity/order/state model drifts."
+    },
+    "canonical_room_socket": {
+      "state": "TESTED",
+      "evidence": [
+        "HUB/app/js/room-socket.js",
+        "HUB/app/js/rooms/shared.js",
+        "HUB/app/js/rooms/feed.js",
+        "HUB/app/js/rooms/library.js",
+        "HUB/app/tests/browser-smoke.mjs"
+      ],
+      "remaining": "Exact live governed backend contract and independent review remain."
     }
   },
   "surfaces": {
@@ -418,42 +438,43 @@
     "builder self-score cannot close the release gate",
     "remaining work stays machine-visible until evidence closes it"
   ],
-  "next_failing_gate": "Bind the exact governed runtime contract and prove one canonical intelligence object end-to-end across Feed → Today → Library → Lists/Spaces → Ledger, then continue room runtime closure without regressing browser-tested surfaces.",
+  "next_failing_gate": "Independently challenge the canonical contract/socket, then prove one canonical intelligence object and context across Feed -> Today through the shared room socket.",
   "latest_validation": {
-    "head_sha": "7a65d11b957f3a0dfcd3cd613cb088d26f8975cc",
+    "head_sha": "43225c58c51a8d455c0303647c608454d9a5f25f",
     "hub_completion_gate": {
-      "run_id": 36955199586,
+      "run_id": 37037730392,
       "result": "SUCCESS"
     },
     "collective_chain_readiness": {
-      "run_id": 36955199590,
+      "run_id": 37037730371,
       "result": "SUCCESS"
     },
     "kernel_tests": {
-      "run_id": 36955199623,
-      "result": "FAIL_SHARED_BRAIN_INDEX_DRIFT_ONLY",
-      "node_tests": "246 passed / 0 failed",
-      "pytest": "546 passed / 3 skipped / 0 failed",
+      "run_id": 37037730493,
+      "result": "FAIL_STALE_PARENT_BRAIN_INDEX_DRIFT_ONLY",
+      "node_tests": "PASS",
+      "pytest": "PASS",
       "failing_step": "tools/regenerate_brain_index.py --check",
-      "observed": "05-MEMORY actual 26 vs expected 23",
-      "routed_to": "PR #1301"
+      "observed": "05-MEMORY actual 26 vs expected 23 on stacked parent ancestry",
+      "current_main_resolution": "d9e6b32fa097a9abd026523652a5e423a7e08d06 repairs the canonical Brain index; Hub PR remains stacked on stale parent and does not import unrelated repair bytes."
     },
     "browser_qa": {
-      "run_id": 36955195833,
+      "run_id": 37037730392,
       "result": "SUCCESS",
-      "artifact_id": 11205951815,
+      "artifact_id": 11240443104,
       "artifact_name": "hub-browser-qa",
-      "artifact_digest": "sha256:84e96cc417281e7ef9189d2bcaf484a7e89788cf8ee1d57d7c42cd824c3fcd7b",
-      "coverage": [
-        "welcome",
-        "identity",
-        "all_11_desktop_rooms",
-        "all_11_mobile_rooms",
-        "mobile_drawer",
-        "horizontal_overflow",
-        "reduced_motion_context",
-        "108_welcome_jewels"
-      ]
+      "artifact_digest": "sha256:f1a0f6cb8f234bbd3e3ed356656631d59291ea35ee7d874c254f15181cc55af2"
     }
+  },
+  "source_reconciliation": {
+    "canonical_main_sha": "d9e6b32fa097a9abd026523652a5e423a7e08d06",
+    "implementation_parent_sha": "babae0b42009dbae847b21dcc1de5e56922d1964",
+    "merge_base_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
+    "relationship": "DIVERGED",
+    "authority_conflict": "RESOLVED: latest Human Director source directs #1328 calm Main Show, Feed-as-home, two corner drawers, and explicitly rejects importing 509 permanent rails.",
+    "receipt": "HUB/ROOM-SOCKET-IMPLEMENTATION-RECEIPT-V1.md",
+    "implementation_start_main_sha": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+    "repin_result": "Main advanced only through the canonical Brain-index repair; no HUB files changed between the implementation-start pin and this repin.",
+    "machine_contract_resolution": "HUB/NAYANET-SMART-APP-ROOMS-V1.json advanced to 1.0.3 on this PR to remove stale persistent-rail shell metadata while preserving the same 11 canonical rooms."
   }
 }

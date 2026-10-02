@@ -66,7 +66,7 @@
     for(let i=0;i<3;i++){const s=el('div','shimmer');s.style.setProperty('--room-accent',r.accent);shimmer.appendChild(s)}
     container.appendChild(shimmer);
     let res;
-    try{res=await window.NayaRuntime.roomData(id,request||{});}catch(err){res={ok:false,state:'error',message:err?.message||'The room could not load.'};}
+    try{res=await window.NayaRuntime.roomSocket.query(id,request||{});}catch(err){res={ok:false,state:'error',message:err?.message||'The room could not load.'};}
     container.setAttribute('aria-busy','false');
     if(!res?.ok){
       if(res?.state==='empty') empty(container,id,emptyCopy?.title||'Nothing here yet',emptyCopy?.body||'There is no qualifying intelligence in this scope.');

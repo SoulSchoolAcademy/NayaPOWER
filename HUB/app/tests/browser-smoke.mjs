@@ -186,6 +186,35 @@ async function assertTouchTargets(page,label){
 async function assertMainShow(page,label){
   await page.waitForSelector('.snap-board');
 
+  const socketProof=await page.evaluate(()=>({
+    contractSchema:window.NayaRoomContract?.schema||'',
+    source:window.NayaRoomContract?.source?.()||null,
+    socketSchema:window.NayaRoomSocket?.schema||'',
+    count:window.NayaRoomSocket?.registry?.().length||0,
+    active:window.NayaRoomSocket?.active?.()?.room_id||'',
+    feed:window.NayaRoomSocket?.contract?.('feed')||null,
+    trace:window.NayaRoomSocket?.trace?.()||[]
+  }));
+  if(socketProof.contractSchema!=='nayanet.hub.room-contract-adapter.v1') fail(label+': room contract adapter missing');
+  if(socketProof.source?.schema!=='nayanet.smart-app.rooms.v1'||socketProof.source?.version!=='1.0.3'){
+    fail(label+': canonical machine room contract was not loaded from the expected source');
+  }
+  if(socketProof.source?.shell?.persistent_rail!==false||socketProof.source?.shell?.main_show!=='feed'){
+    fail(label+': resolved Main Show/two-drawer shell law is not present');
+  }
+  if(socketProof.source?.hub_home?.projects_room!=='feed'){
+    fail(label+': Hub Home is not projecting the single Feed/Main Show implementation');
+  }
+  if(socketProof.socketSchema!=='nayanet.hub.room-socket.v1') fail(label+': canonical room socket missing');
+  if(socketProof.count!==11) fail(label+': expected 11 room contracts, got '+socketProof.count);
+  if(socketProof.active!=='feed') fail(label+': room lifecycle did not enter feed');
+  if(socketProof.feed?.canonical_route!=='/feed'||socketProof.feed?.app_route!=='/hub/feed'){
+    fail(label+': canonical/app route distinction is not explicit');
+  }
+  if(!socketProof.trace.some(x=>x.op==='query'&&x.room_id==='feed')){
+    fail(label+': Main Show did not load through the room socket');
+  }
+
   if(await page.locator('nav.rail').count()) fail(label+': legacy persistent rail exists');
 
   const corners=await page.locator('.corner-btn').count();

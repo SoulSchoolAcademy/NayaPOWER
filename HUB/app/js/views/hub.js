@@ -11,8 +11,11 @@ function HubView(params) {
   const activeRoom = params.room || 'feed';
   const room = R.ROOMS.find(r => r.id === activeRoom) || R.ROOMS[0];
   const isMainShow = room.id === 'feed';
+  const socket = R.roomSocket;
+  const roomSession = socket.enter(room.id, { route: location.hash });
 
   const shell = el('div', 'shell');
+  shell.dataset.roomContract = roomSession.contract.id;
 
   const top = el('header', 'topbar');
 
@@ -223,7 +226,7 @@ function HubView(params) {
     head.innerHTML =
       '<div class="kicker">' + room.kicker + '</div>' +
       '<h2 class="room-title">' + room.name + '</h2>' +
-      '<p class="room-desc">' + roomDesc(room.id) + '</p>';
+      '<p class="room-desc">' + socket.contract(room.id).human_purpose + '</p>';
     main.appendChild(head);
   }
 
