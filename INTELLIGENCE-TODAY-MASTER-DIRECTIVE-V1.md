@@ -206,6 +206,7 @@ affected section is amended. Taste becomes law through the loop, never
 through lectures. No seat amends this directive on its own authority.
 
 **Amendment log**
+- 2026-10-02 — v1.0.1 (director correction). A manufactured primary action is worse than none: the v3 NEXT button was cut — it did nothing real. The ranking IS the directive: the system ranks the day's intelligence by value and declares #1 (TOP INTELLIGENCE tag). Decorative sections that duplicate NOW or do nothing on click are cut (LEARNED removed). Search added: filter the day's plays by title/call/nutshell.
 - 2026-10-02 — v1.0 created. Fused from the seven KNOWLEDGE documents.
   Open: the modes question (contract 14B.1 vs. director's spoken
   direction) — asked of the director 2026-10-02, ruling pending.
