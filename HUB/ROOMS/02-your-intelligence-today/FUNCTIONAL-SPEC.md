@@ -68,8 +68,9 @@ Naya should be able to explain **why each item made the highlights**.
 - **Open in Feed**
 - **Open Source / Evidence**
 - **Save / Add to List**
-- **Capture follow-up note**
 - **View day in Ledger** for consequential activity
+
+Today is a projection/synthesis of intelligence produced upstream. It does not own Smart Note creation or report generation.
 
 “Play” means guided presentation; it does not imply video.
 
@@ -120,5 +121,5 @@ The Drive notes add required structure: a **TODAY PULSE** using only real canoni
 - **ORIENTATION:** date, Space, freshness and 'your intelligence as it exists right now'
 - **CURRENT STATE:** Today Pulse plus actual day activity
 - **INTELLIGENCE:** What Changed highlights and evidence-grounded Naya Reflection
-- **ACTION:** explore day, open origin, ask, save/list, follow-up note, day Ledger
+- **ACTION:** explore day, open origin, ask/explain, save/list, day Ledger; new intelligence creation remains upstream
 - **PROOF:** every highlight and pulse number traces to canonical evidence
