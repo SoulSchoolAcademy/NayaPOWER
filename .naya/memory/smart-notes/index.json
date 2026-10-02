@@ -389,12 +389,47 @@
         "collective intelligence"
       ],
       "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-019",
+      "intelligent_block_id": "IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine",
+      "content_hash": "5ad28db9cec2300c430c5938d9a9fc01a156f3c151349f5158981208001e05d7",
+      "title": "Complete the App Doctrine — Finish the House, Not the Shell",
+      "captured_at": "2026-10-01",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "APPLICATION_COMPLETION",
+      "subtopic": "END_TO_END_INTERFACE_EXECUTION",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "7a845a78-0a85-4bfc-80d9-eea29d535972",
+        "lineage_id": "5c7abfff-4e01-4ecb-abc5-5f30852a507e",
+        "relationship_id": "f5cd3094-0d24-4614-8284-27ce2e7946eb",
+        "runtime_index_id": "59522558-c4ee-434e-a8c2-25e4625a4a27",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "52f0187a-052f-438f-b802-ed56f997974e"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 19,
+    "next_sequence": 20,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
