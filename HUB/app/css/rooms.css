@@ -103,3 +103,71 @@
 @media(prefers-reduced-motion:reduce){
   .segmented button,.intel-row{transition:none}
 }
+
+/* ---- ROOM 01 · SMART FEED v2 (living contract HUB/ROOMS/01-FEED.md) ----
+   Rebuild to Shawn's quality bar (5954238366). Supersedes the v1 block from closed PR #1325:
+   the structure was kept, the visual execution was rebuilt.
+   Depth baseline: HUB/ROOMS/00-HUB-HOME.md §3 — exact obsidian stack:
+   #0B0D12 world · #12151D raised · #171B25 elevated · #252B39 precision edge.
+   Depth law: material core -> edge light -> restrained specular -> cast shadow ->
+   semantic aura -> state amplification. Depth first. Light second. Glow last.
+   Type: primary 17-18px, secondary 14-15px, labels >= 11px. Emerald #55e39a lives
+   on edges, jewels and state — with intent, never wallpaper.
+   Truth physics: color reinforces meaning; the badge text always carries it. */
+.feed-scene{--obs-0:#0B0D12;--obs-1:#12151D;--obs-2:#171B25;--edge:#252B39;--em:#55e39a}
+.feed-scene .feed-toolbar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,#0B0D12 88%,transparent);backdrop-filter:blur(10px);padding:14px 2px}
+.feed-scene .feed-naya-line{display:flex;gap:10px;align-items:center;margin:14px 0 4px;font-size:15px;line-height:1.55;color:var(--ink)}
+.feed-scene .feed-naya-jewel{color:var(--em);font-size:18px;flex:none}
+.feed-scene .room-orient{font-size:14px;color:var(--muted);margin:4px 0 20px;line-height:1.6;max-width:820px}
+/* THE FOCAL REGION: one dominant hierarchy. Everything else is subordinate. */
+.feed-focus-zone{margin:6px 0 26px}
+.feed-scene .intel-focus{position:relative;padding:36px 40px;border-radius:20px;border:1px solid var(--edge);
+  background:linear-gradient(150deg,#1B2130 0%,#12151D 52%,#0C0E15 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),inset 1px 0 0 rgba(255,255,255,.02),inset -1px 0 0 rgba(0,0,0,.28),
+    0 26px 64px rgba(0,0,0,.6),0 0 46px rgba(85,227,154,.075)}
+/* Emerald with intent: the focus seam marks the highest-value object, nothing else. */
+.feed-scene .intel-focus::before{content:"";position:absolute;top:0;left:34px;right:34px;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,transparent,var(--em),transparent);opacity:.9}
+.feed-scene .intel-focus-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.feed-scene .intel-focus-jewel{color:var(--em);font-size:26px;line-height:1;filter:drop-shadow(0 0 10px rgba(85,227,154,.5))}
+.feed-scene .intel-type{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.feed-scene .intel-focus-title{font-size:21px;line-height:1.35;font-weight:800;color:#F5F7FB;margin:0 0 12px;letter-spacing:-.01em}
+.feed-scene .intel-focus-summary{font-size:15px;line-height:1.65;color:#AAB2BF;max-width:70ch}
+/* THE RIVER: subordinate cards. Real depth, smaller voice. */
+.feed-scene .feed-river .intel-row{position:relative;padding:22px 24px;border-radius:14px;border:1px solid var(--edge);
+  background:linear-gradient(150deg,#141924 0%,#0E1119 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 14px 34px rgba(0,0,0,.45)}
+.feed-scene .feed-river .intel-row:hover{border-color:color-mix(in srgb,var(--em) 34%,var(--edge))}
+.feed-scene .feed-river .intel-row + .intel-row{margin-top:14px}
+.feed-scene .intel-title{font-size:17px;line-height:1.4;font-weight:750;color:#EEF1F6;margin:10px 0 8px}
+.feed-scene .intel-summary{color:#AAB2BF;font-size:14.5px;line-height:1.6;margin-top:8px;max-width:72ch}
+.feed-scene .intel-why{display:flex;gap:10px;align-items:baseline;margin-top:14px;font-size:14px}
+.feed-scene .intel-why-label{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--em);white-space:nowrap}
+.feed-scene .intel-why-text{color:#AAB2BF;line-height:1.55}
+.feed-scene .meta-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px;color:var(--muted);font-size:12px}
+.feed-scene .meta-row span{padding:5px 10px;border:1px solid var(--line-soft);border-radius:var(--radius-pill)}
+.feed-scene .truth-badge{font-weight:800}
+.feed-scene .truth-verified{color:var(--em);border-color:color-mix(in srgb,var(--em) 45%,var(--line-soft))}
+.feed-scene .truth-not_verified,.feed-scene .truth-unknown{color:#e8b23e;border-color:color-mix(in srgb,#e8b23e 45%,var(--line-soft))}
+.feed-scene .intel-row[data-truth="VERIFIED"]{border-left:3px solid color-mix(in srgb,var(--em) 80%,var(--edge))}
+.feed-scene .intel-row[data-truth="NOT_VERIFIED"],.feed-scene .intel-row[data-truth="UNKNOWN"]{border-left:3px dashed color-mix(in srgb,#e8b23e 70%,var(--edge))}
+.feed-scene .intel-focus[data-truth="NOT_VERIFIED"]::before,.feed-scene .intel-focus[data-truth="UNKNOWN"]::before{
+  background:linear-gradient(90deg,transparent,#e8b23e,transparent)}
+/* The seam: restrained, state-linked (real seen-set only), transform/opacity only. */
+@keyframes feed-seam-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.feed-scene .intel-new{animation:feed-seam-in .55s ease-out}
+.feed-scene .feed-river .intel-row.intel-new::before{content:"";position:absolute;top:-1px;left:14px;right:14px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,transparent,var(--em),transparent);opacity:.85}
+.feed-scene .intel-evidence{margin-top:14px;border-top:1px solid var(--line-soft);padding-top:10px;display:grid;gap:8px}
+.feed-scene .intel-evidence[hidden]{display:none}
+.feed-scene .intel-evidence-row{display:flex;gap:12px;font-size:13px}
+.feed-scene .intel-evidence-key{color:var(--muted);min-width:120px;font-weight:700}
+.feed-scene .intel-evidence-val{color:#AAB2BF}
+.feed-scene .action-row{display:flex;gap:10px;margin-top:18px}
+@media (prefers-reduced-motion:reduce){.feed-scene .intel-new{animation:none}}
+@media (max-width:560px){
+  .feed-scene .intel-focus{padding:26px 22px}
+  .feed-scene .intel-focus-title{font-size:19px}
+  .feed-scene .feed-naya-line{font-size:14.5px}
+  .feed-scene .room-orient{font-size:13.5px}
+}
