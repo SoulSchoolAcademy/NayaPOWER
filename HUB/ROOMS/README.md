@@ -7,6 +7,14 @@
 
 ## One shell. Eleven masterpieces. One Naya. One governed substrate.
 
+## Hub input / output law
+
+**The Hub is output.** Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports are produced upstream and projected into the Hub automatically.
+
+The Hub organizes and explains intelligence; it does not become the capture system.
+
+See `../INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
+
 The sidebar is navigation. **The center workspace is the room.**
 
 Clicking a room does not replace the Hub with another disconnected page. The same shell, sidebar, Naya presence and global context remain while the center becomes a different intelligent software experience.
@@ -73,7 +81,7 @@ but each room composes those pieces differently.
 
 - Search Intelligence
 - Ask Naya
-- Smart Note / Capture
+- Smart Note / Intelligent Block projection (upstream-created, Hub-received)
 - Save / Favorite
 - Add to List
 - Inspect Source / Evidence
