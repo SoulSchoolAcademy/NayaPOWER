@@ -211,3 +211,88 @@
   background: linear-gradient(145deg, #1a1424, #0b0a10);
   border: 1px solid var(--line); box-shadow: var(--depth-hi), 0 8px 20px #0009;
 }
+
+/* ——— Identity chip: the entry-flow profile, now a sign-out control ——— */
+button.identity-chip {
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+button.identity-chip:hover { border-color: #d86cff66; }
+button.identity-chip.armed {
+  border-color: #ff5e6c88;
+  box-shadow: var(--depth-hi), 0 8px 20px #0009, 0 0 18px #ff5e6c33;
+}
+button.identity-chip .id-label { white-space: nowrap; }
+
+/* ——— Install pop-up: reminds until the app is installed, then never ——— */
+.install-pop {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center;
+  padding: 22px;
+  background: rgba(3, 3, 6, 0.72);
+  backdrop-filter: blur(6px);
+  animation: install-pop-in .35s ease;
+}
+@keyframes install-pop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.install-card {
+  position: relative;
+  width: min(420px, 100%);
+  text-align: center;
+  padding: 38px 30px 30px;
+  border-radius: 24px;
+  background: linear-gradient(165deg, #171224f5, #0a0810f5);
+  border: 1px solid #d86cff55;
+  box-shadow: var(--depth-hi), 0 30px 80px #000d, 0 0 60px #d86cff2e;
+}
+.install-x {
+  position: absolute; top: 10px; right: 14px;
+  width: 36px; height: 36px;
+  border: none; background: none; color: var(--muted);
+  font-size: 24px; line-height: 1; cursor: pointer;
+  border-radius: 10px;
+}
+.install-x:hover { color: var(--ink); background: #ffffff10; }
+.install-gem {
+  width: 64px; height: 64px; margin: 0 auto 18px;
+  display: grid; place-items: center;
+  font-size: 30px; color: #e9d5ff;
+  border-radius: 20px;
+  border: 1px solid #ffffff40;
+  background: radial-gradient(circle at 35% 25%, #e9d5ff, #a855f7 38%, #160b27 75%);
+  box-shadow: 0 0 28px #a855f766;
+}
+.install-card h2 {
+  font-size: 22px; font-weight: 800; letter-spacing: .01em;
+  margin-bottom: 10px; color: var(--ink);
+}
+.install-card p {
+  font-size: 15px; line-height: 1.6; color: var(--muted);
+  margin-bottom: 24px;
+}
+.install-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.install-go {
+  border: 1px solid #d86cff;
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff; cursor: pointer;
+  background: linear-gradient(180deg, #7c3aed, #5b21b6);
+  box-shadow: 0 0 24px #a855f755;
+}
+.install-go:hover { box-shadow: 0 0 34px #a855f788; transform: translateY(-1px); }
+.install-later {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-size: 14px; font-weight: 700;
+  color: var(--muted); cursor: pointer; background: transparent;
+}
+.install-later:hover { color: var(--ink); border-color: #ffffff33; }
+@media (prefers-reduced-motion: reduce) {
+  .install-pop { animation: none; }
+}

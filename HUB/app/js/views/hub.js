@@ -49,9 +49,35 @@ function HubView(params) {
       else showSearchResult(res);
     }
   });
-  const identity = R.identitySnapshot ? R.identitySnapshot() : { display_name: 'You', state: 'not_verified' };
-  const chip = el('div', 'identity-chip',
-    `<span class="avatar" role="img" aria-label="Identity avatar"></span><span>${escapeHtml(identity.display_name || 'You')}</span>`);
+  /* Identity chip — the device-local profile from the entry flow
+     (name + smart alias). Two taps sign out and return to the front door.
+     This is a remembered profile, never a verified credential. */
+  const entryIdentity = window.NayaIdentity || null;
+  const runtimeIdentity = R.identitySnapshot ? R.identitySnapshot() : null;
+  const idName = (entryIdentity && entryIdentity.name) || (runtimeIdentity && runtimeIdentity.display_name) || 'You';
+  const idAlias = (entryIdentity && entryIdentity.alias) || '';
+  const chipLabel = idAlias || idName;
+  const chip = el('button', 'identity-chip',
+    `<span class="avatar" role="img" aria-label="Identity avatar"></span><span class="id-label">${escapeHtml(chipLabel)}</span>`);
+  chip.setAttribute('aria-label', 'Signed in as ' + idName + (idAlias ? ' (@' + idAlias + ')' : '') + ' on this device. Tap twice to sign out.');
+  chip.setAttribute('title', 'Signed in on this device — tap twice to sign out');
+  chip.addEventListener('click', () => {
+    const label = chip.querySelector('.id-label');
+    if (chip.dataset.armed) {
+      try { localStorage.removeItem('nayanet.identity.v1'); } catch (e) {}
+      location.href = window.NayaWelcomeUrl || 'https://welcome.nayanet.app/';
+      return;
+    }
+    chip.dataset.armed = '1';
+    chip.classList.add('armed');
+    if (label) label.textContent = 'Tap again to sign out';
+    setTimeout(() => {
+      delete chip.dataset.armed;
+      chip.classList.remove('armed');
+      const l = chip.querySelector('.id-label');
+      if (l) l.textContent = chipLabel;
+    }, 4000);
+  });
   top.append(toggle, search, chip);
 
   /* ——— Room outlet ——— */
