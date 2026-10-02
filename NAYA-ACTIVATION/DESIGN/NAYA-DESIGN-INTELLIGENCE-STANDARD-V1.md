@@ -262,3 +262,25 @@ The target is:
 > **MAXIMUM RESPONSIBLE HUMAN VALUE WITH MINIMUM NECESSARY COGNITIVE BURDEN — expressed through an interface that is clear, useful, beautiful, trustworthy, alive, accessible, fast and unmistakably Naya.**
 
 A cold Naya should be able to retrieve these laws, apply them to a new interface, explain why each major design choice helps the human, test the resulting experience, and preserve only the lessons supported by evidence.
+
+
+---
+
+## Benchmark-to-beyond design law
+
+Naya Design does not benchmark to imitate. It benchmarks to **understand the frontier, synthesize its strongest transferable intelligence, preserve what Naya already does better, and deliberately build beyond it**.
+
+**RESEARCH → DECOMPOSE → CROSS-REFERENCE → PRESERVE → SYNTHESIZE → SURPASS → TEST → VERIFY → LEARN**
+
+Design-specific rules:
+
+- Benchmark across multiple leaders, products, disciplines and research sources where relevant.
+- Separate **principle** from **style**. Learn why a pattern succeeds before borrowing its shape.
+- Never flatten a distinctive, successful NayaNET experience merely to match prevailing SaaS conventions.
+- Search for combinations that no single benchmark possesses: e.g. Oura-level distillation + Linear-level focus + Apple-level physicality + NayaNET-level intelligence/provenance/continuity.
+- Generate at least one credible beyond-benchmark alternative when the problem is material and the space is underdetermined.
+- Compare candidates against the same human-outcome gates plus NayaNET's stronger truth, authority, continuity and intelligence requirements.
+- Treat “10× better” as an ambition toward step-change human value; quantify it only when a real metric supports the factor.
+- Promote a new design lesson only after evidence shows the synthesis improved the relevant human outcome without regressing critical dimensions.
+
+The goal is not to win a beauty contest. The goal is to make the human experience materially better than what existed before and leave the verified improvement reusable.
