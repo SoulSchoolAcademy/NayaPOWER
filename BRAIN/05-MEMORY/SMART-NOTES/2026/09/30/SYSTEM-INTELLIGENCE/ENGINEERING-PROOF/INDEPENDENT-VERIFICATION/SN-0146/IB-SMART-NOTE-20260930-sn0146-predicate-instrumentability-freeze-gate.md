@@ -1,6 +1,6 @@
 # A Predicate That Cannot Be Instrumented Is Not a Predicate — The Freeze Gate's Testability Clause
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn0143-predicate-instrumentability-freeze-gate
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0146-predicate-instrumentability-freeze-gate
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-01
