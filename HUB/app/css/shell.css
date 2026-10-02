@@ -354,3 +354,11 @@ body.drawer-open{overflow:hidden}
   .drawer,.drawer-backdrop,.corner-btn,.drawer-btn,.mode-btn{transition:none}
   .corner-btn:hover,.drawer-btn:hover{transform:none}
 }
+
+
+/* Width containment: drawers overlay; the stage never grows wider than the viewport. */
+.shell,.main,.main-show,.mainshow-body{min-width:0;max-width:100%}
+.mode-zone{width:100%;max-width:100vw;box-sizing:border-box}
+@media(max-width:900px){
+  .mode-zone{overscroll-behavior-x:contain}
+}
