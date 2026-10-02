@@ -103,3 +103,14 @@
 @media(prefers-reduced-motion:reduce){
   .segmented button,.intel-row{transition:none}
 }
+
+
+/* Whole-Hub responsive containment: long canonical identifiers never widen the viewport. */
+.board,.board-body,.room-scene,.library-hero,.library-search,.intel-row,.meta-row{min-width:0}
+.library-search input{min-width:0}
+.intel-row{overflow:hidden}
+.meta-row span,.intel-title,.intel-summary,.empty-instrument p{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:620px){
+  .library-search{display:grid;grid-template-columns:auto minmax(0,1fr)}
+  .library-search .btn{grid-column:1 / -1;width:100%;min-height:44px}
+}

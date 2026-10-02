@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════════════════════════
+   YOUR INTELLIGENCE TODAY — v5 · one board language
+   The board rules below are the reference sample's board anatomy
+   (smart-feed.html .block.naya509-board), quoted verbatim and scoped
+   under .today-stage so the language cannot leak into other rooms.
+   Room chrome (orient, search, section labels) speaks the same
+   micro-label language. Magenta #d86cff signs the room only where it
+   has a named job: the orient edge, the scoreline numerals, the TOP
+   INTELLIGENCE pill. Per-board --tone = the object's stable identity.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ——— ORIENT ——— */
+.today-stage .orient{ border-left:3px solid #d86cff; padding:2px 0 2px 20px; margin-bottom:6px; }
+.today-stage .orient-date{ margin:0 0 4px; font-size:12px; letter-spacing:0.22em; color:var(--muted); text-transform:uppercase; }
+.today-stage .orient-line{ margin:0 0 14px; font-size:17px; line-height:1.55; color:var(--ink); }
+.today-stage .orient .score-line{ border-bottom:none; padding:0; }
+.today-stage .orient .score-line p{ margin:0; font-size:12px; letter-spacing:0.22em; color:var(--muted); text-transform:uppercase; }
+.today-stage .orient .score-line strong{ color:#d86cff; font-size:15px; }
+
+/* ——— SEARCH ——— */
+.today-stage .search-wrap{ margin:0; }
+.today-stage .search-input{
+  width:100%; min-height:48px; font-size:16px; color:var(--ink);
+  background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:12px;
+  padding:0 18px;
+}
+.today-stage .search-input::placeholder{ color:var(--muted); }
+.today-stage .search-input:focus{ outline:none; border-color:#d86cff; box-shadow:0 0 0 3px rgba(216,108,255,.18); }
+
+/* ——— SMART TABS — time is the first axis of organization ——— */
+.today-stage .smart-tabs{
+  display:flex; gap:4px; margin:2px 0 0;
+  border-bottom:1px solid var(--line);
+}
+.today-stage .smart-tab{
+  appearance:none; background:none; border:0; cursor:pointer;
+  font-size:13px; font-weight:700; letter-spacing:.14em;
+  color:var(--muted); padding:12px 18px 10px;
+  border-bottom:2px solid transparent; margin-bottom:-1px;
+}
+.today-stage .smart-tab:hover{ color:var(--ink); }
+.today-stage .smart-tab.on{ color:#f0e6ff; border-bottom-color:#d86cff; }
+.today-stage .smart-tab:focus-visible{ outline:2px solid #d86cff; outline-offset:2px; }
+.today-stage .match-line{ margin:0 0 4px; font-size:13px; letter-spacing:0.08em; color:var(--muted); }
+.today-stage .match-line:not(:empty){ margin-bottom:10px; }
+
+/* ——— SECTION CHROME — reference micro-label language ——— */
+.today-stage .tsection{ display:flex; flex-direction:column; gap:14px; }
+.today-stage .tsection-eyebrow{ margin:0 0 2px; font-size:7px; font-weight:1000; letter-spacing:.18em; color:#b8b0c4; text-transform:uppercase; }
+.today-stage .tsection-title{ margin:0; font-size:22px; line-height:1.25; color:var(--ink); }
+.today-stage .now-block{ display:flex; flex-direction:column; gap:0; }
+.today-stage .plays-river{ display:grid; gap:0; }
+
+/* ═══ THE BOARD — reference anatomy, verbatim values ═══ */
+/* Leakage guard: these generic class names also exist in other room
+   stylesheets (e.g. .identity{min-height:100vh}). Neutralize foreign
+   box properties the reference language doesn't set; the reference
+   rules below win on equal specificity by source order. */
+.today-stage .naya509-board :is(.blockTop,.identity,.meta,.state,.dot,.actions,.layer,.layerHead,.layerBody,.truth,.nutshell,.glyph,.pills,.call,.blockFoot,.blockInner){ min-height:0; height:auto; }
+.today-stage .block.naya509-board{
+  position:relative; margin:18px 0; padding:34px 34px 30px;
+  border:2px solid color-mix(in srgb, var(--tone) 52%, #fff 16%);
+  border-radius:28px;
+  background:
+    radial-gradient(700px 240px at 50% -8%, color-mix(in srgb, var(--tone) 13%, transparent), transparent 72%),
+    linear-gradient(145deg, #0b0a10, #050507);
+  box-shadow:
+    inset 0 1px #fff8,
+    0 24px 60px #000b,
+    0 0 42px color-mix(in srgb, var(--tone) 16%, transparent);
+  overflow:hidden; cursor:pointer;
+}
+.today-stage .block.naya509-board::before{
+  content:""; position:absolute; left:8px; top:16px; bottom:16px; width:3px;
+  background:linear-gradient(180deg, var(--tone), color-mix(in srgb, var(--tone) 72%, #fff 8%), var(--tone));
+  box-shadow:0 0 26px color-mix(in srgb, var(--tone) 48%, transparent);
+  pointer-events:none;
+}
+.today-stage .block.naya509-board::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(700px 280px at 50% 0%, color-mix(in srgb, var(--tone) 10%, transparent), transparent 72%),
+    linear-gradient(180deg, #ffffff04, transparent 20%);
+}
+.today-stage .naya509-board .blockInner{ position:relative; z-index:1; padding:0; }
+.today-stage .naya509-board .blockTop{ position:relative; display:flex; justify-content:space-between; gap:16px; align-items:flex-start; }
+.today-stage .naya509-board .identity{ display:flex; gap:13px; min-width:0; align-items:flex-start; }
+.today-stage .naya509-board .glyph{
+  width:45px; height:45px; flex:none; border-radius:14px; display:grid; place-items:center;
+  border:2px solid color-mix(in srgb, var(--tone) 48%, #fff 8%);
+  background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--tone) 24%, transparent), #09090e 70%);
+  color:var(--tone); font-size:18px; font-weight:900;
+  box-shadow:inset 0 1px #fff4, 0 9px 24px #0009;
+}
+.today-stage .naya509-board h3{
+  font-size:clamp(24px,3.4vw,46px); line-height:1.05; letter-spacing:-.055em; margin:0 0 8px; color:#fff;
+}
+.today-stage .naya509-board .meta{ display:flex; gap:7px; flex-wrap:wrap; color:#817a89; font-size:7px; font-weight:900; letter-spacing:.07em; }
+.today-stage .naya509-board .pills{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; flex:none; }
+.today-stage .naya509-board .truth{
+  padding:8px 11px; border:2px solid #55e39a45; border-radius:999px; color:#bfffd8;
+  background:#55e39a08; font-size:7px; font-weight:1000; letter-spacing:.08em; white-space:nowrap;
+}
+.today-stage .naya509-board .truth-top{ border-color:#d86cff88; color:#f0d4ff; background:#d86cff10; }
+.today-stage .naya509-board .truth-turning{ border-color:#e8b64c88; color:#ffe9b8; background:#e8b64c10; }
+
+/* the announcer's call — the Today room's voice, in the board's type scale */
+.today-stage .naya509-board .call{
+  margin:18px 0 0; font-size:18px; line-height:1.65; color:#f5f2f8; font-weight:500;
+}
+
+/* the nutshell box */
+.today-stage .naya509-board .nutshell{
+  margin:22px 0 19px; padding:21px 22px;
+  border:2px solid color-mix(in srgb, var(--tone) 34%, #fff 10%);
+  border-radius:18px; background:#08080d;
+  box-shadow:inset 0 1px #fff4, 0 14px 30px #0009, 0 0 18px color-mix(in srgb, var(--tone) 7%, transparent);
+}
+.today-stage .naya509-board .nutshell b{ display:block; color:#f4f2f7; font-size:7px; font-weight:1000; letter-spacing:.16em; margin-bottom:8px; }
+.today-stage .naya509-board .nutshell p{ font-size:18px; line-height:1.65; color:#f5f2f8; margin:0; }
+
+/* the full intelligent block — the same layers as the main page */
+.today-stage .naya509-board .layers{ display:grid; gap:12px; margin:0 0 4px; }
+.today-stage .naya509-board .layer{
+  border:2px solid color-mix(in srgb, var(--tone) 22%, #ffffff 4%);
+  border-radius:15px; background:#08080c; overflow:hidden;
+  box-shadow:inset 0 1px #fff2, 0 12px 28px #0007;
+}
+.today-stage .naya509-board .layerHead{ display:flex; align-items:center; gap:9px; padding:14px 15px; border-bottom:1px solid #ffffff0e; }
+.today-stage .naya509-board .dot{ width:10px; height:10px; border-radius:50%; background:var(--layer); box-shadow:0 0 13px var(--layer); flex:none; }
+.today-stage .naya509-board .layerHead b{ font-size:7px; font-weight:1000; letter-spacing:.14em; color:#fff; }
+.today-stage .naya509-board .state{ margin-left:auto; color:#706a77; font-size:6px; font-weight:900; letter-spacing:.08em; }
+.today-stage .naya509-board .layerBody{ padding:16px 17px; font-size:14px; line-height:1.7; color:#eeeaf2; }
+
+/* actions — every button does something real */
+.today-stage .naya509-board .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; padding-top:16px; border-top:2px solid #ffffff18; }
+.today-stage .naya509-board .action{
+  min-height:56px; padding:0 18px; border:2px solid var(--action-color,#9d75ff); border-radius:13px;
+  background:linear-gradient(145deg, color-mix(in srgb, var(--action-color,#9d75ff) 16%, #101016), #08080c);
+  color:#fff; font-size:14px; font-weight:900; letter-spacing:.03em; cursor:pointer;
+  box-shadow:inset 0 1px #fff5, 0 9px 20px #0008, 0 0 16px color-mix(in srgb, var(--action-color,#9d75ff) 12%, transparent);
+  transition:.2s cubic-bezier(.16,.84,.22,1);
+}
+.today-stage .naya509-board .action:hover{ transform:translateY(-2px); }
+.today-stage .naya509-board .action:active{ transform:translateY(1px); }
+.today-stage .naya509-board .action:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+.today-stage .naya509-board .carry-on{ color:#c8ffd9; }
+
+.today-stage .naya509-board .blockFoot{
+  display:flex; justify-content:space-between; gap:10px; margin-top:16px; padding-top:12px;
+  border-top:1px solid #ffffff0d; color:#6f6976; font-size:6px; font-weight:900; letter-spacing:.1em;
+}
+
+/* ——— QUIET LISTS — watch / waiting / lineup, congruent rows ——— */
+.today-stage .lineup ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+.today-stage .lineup li{
+  display:flex; align-items:center; gap:12px; font-size:14px; color:#eeeaf2;
+  border:2px solid #ffffff12; border-radius:15px; padding:12px 15px; background:#08080c;
+  box-shadow:inset 0 1px #fff2, 0 12px 28px #0007;
+}
+.today-stage .lineup-dot{
+  width:8px; height:8px; border-radius:50%; background:var(--tone,#d86cff);
+  box-shadow:0 0 13px var(--tone,#d86cff); flex:none;
+}
+.today-stage .lineup li button{
+  margin-left:auto; min-height:44px; padding:0 14px; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+  color:#c9c3ce; background:transparent; border:1px solid #ffffff18; border-radius:999px; cursor:pointer;
+}
+.today-stage .lineup li button:hover{ color:#fff; border-color:#fff; }
+.today-stage .quiet-note{
+  margin:0; padding:20px; text-align:center; font-size:14px; line-height:1.7; color:#c9c3ce;
+  border:1px dashed #ffffff18; border-radius:15px; background:#08080c;
+}
+.today-stage .lineup{ margin-top:4px; }
+.today-stage .lineup-sub{ margin:0 0 14px; font-size:14px; color:#c9c3ce; line-height:1.7; }
+
+@media (max-width:640px){
+  .today-stage .block.naya509-board{ padding:27px 18px 26px; border-radius:21px; margin:12px 0; }
+  .today-stage .naya509-board .blockTop{ flex-wrap:wrap; }
+  .today-stage .naya509-board .pills{ max-width:none; width:100%; justify-content:flex-start; }
+  .today-stage .naya509-board h3{ font-size:clamp(24px,7vw,34px); }
+  .today-stage .naya509-board .nutshell{ padding:17px 18px; }
+  .today-stage .naya509-board .nutshell p, .today-stage .naya509-board .call{ font-size:16px; }
+  .today-stage .naya509-board .layerBody{ font-size:13px; }
+  .today-stage .tsection-title{ font-size:20px; }
+}
+
+
+/* ——— the full note: one home for the intelligent block ——— */
+.note-overlay{
+  position:fixed; inset:0; z-index:200;
+  background:rgba(4,4,8,.78); backdrop-filter:blur(14px);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:4vh 16px; overflow-y:auto;
+}
+.note-dialog{
+  width:min(880px,100%); max-height:92vh; overflow-y:auto;
+  position:relative;
+}
+.note-close{
+  position:absolute; top:14px; right:16px; z-index:2;
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid #ffffff22; background:#00000088; color:#fff;
+  font-size:22px; line-height:1; cursor:pointer;
+}
+.note-close:hover{ border-color:#d86cff; }
+.today-stage .today-highlight{ cursor:pointer; }
+@media(max-width:640px){
+  .note-overlay{ padding:2vh 10px; }
+}
+
+/* ——— FOOTER: the product promise ——— */
+.today-stage .today-footer{
+  margin-top:56px; padding:40px 24px; text-align:center;
+  border-top:1px solid #ffffff14;
+}
+.today-stage .today-footer p{
+  margin:0; font-size:17px; line-height:1.7; color:#b8b8cc; font-weight:500;
+}
+.today-stage .today-footer strong{ color:#fff; font-weight:800; }
