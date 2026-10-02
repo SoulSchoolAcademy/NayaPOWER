@@ -107,13 +107,16 @@ No decorative boards. No "nice to have" widgets. No button without a consequence
 
 ## 7. THE DATA LAW
 
+The pipeline (canonical): **today's events → Smart Notes / intelligent blocks → retrieval → classification → ranking → synthesis → daily briefing.** The briefing is a derived view — never the canonical source, never a second truth.
+
 - **NOW** is powered by: today's verified intelligence, ranked by evidence-backed relevance.
 - **NEXT** is powered by: open loops, commitments, blocked work with owners.
 - **WATCH** is powered by: the difference engine (today vs. yesterday's canonical state).
 - **LEARNED** is powered by: classified learning rungs (never mixed).
 - **WAITING** is powered by: unresolved questions, unmet dependencies, unacknowledged receipts.
 - **RECENT PROOF** is powered by: receipts, evidence links, verification states.
-- **Never invented.** An empty section says so honestly ("Nothing qualifies yet — the day is young") rather than manufacturing content.
+- **Never invented. Never manufacture filler for empty categories.** An empty section says so honestly ("Nothing qualifies yet — the day is young") rather than filling space.
+- **The goal is usefulness and truth** — not clicks, engagement, or manufactured activity.
 - **One brain, many doors:** this room projects canonical objects. It creates no duplicate store for presentation.
 
 ## 8. STATES — every one designed
