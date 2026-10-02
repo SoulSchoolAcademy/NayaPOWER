@@ -206,6 +206,7 @@ affected section is amended. Taste becomes law through the loop, never
 through lectures. No seat amends this directive on its own authority.
 
 **Amendment log**
+- 2026-10-02 — v1.0.3 (director ruling: SAVE + SHARE; 10-star pass). Actions are SAVE (keeps the play in the Smart List, persisted, the store the Smart Lists room reads) and SHARE (native sheet via navigator.share, clipboard deep-link fallback). Evidence button removed — proof lives in the opened layers. Boards collapse layers (Today is the reel) and carry a quiet tone chevron; rank 01 opens by default to teach the pattern; WATCH persists across reloads.
 - 2026-10-02 — v1.0.2 (director ruling: one board language). The play boards are the reference board anatomy (.block.naya509-board), quoted verbatim and scoped to the room — not a second presentation. Opening a play renders the full intelligent-block layers in the reference language, identical to the main page. The board language (including its micro-label scale) is quoted from the director's approved sample; the 11px floor does not override the sample.
 - 2026-10-02 — v1.0.1 (director correction). A manufactured primary action is worse than none: the v3 NEXT button was cut — it did nothing real. The ranking IS the directive: the system ranks the day's intelligence by value and declares #1 (TOP INTELLIGENCE tag). Decorative sections that duplicate NOW or do nothing on click are cut (LEARNED removed). Search added: filter the day's plays by title/call/nutshell.
 - 2026-10-02 — v1.0 created. Fused from the seven KNOWLEDGE documents.
