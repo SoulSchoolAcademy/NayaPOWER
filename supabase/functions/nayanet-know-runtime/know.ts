@@ -24,7 +24,7 @@ export type IntelligentBlock = {
   // edges: the graph is load-bearing, not decorative.
   //
   // Graph V2 projection fields (contract 0003-GRAPH-RELATIONSHIP-CONTRACT-V2,
-  // CANDIDATE_CONTRACT — pending Human Director D1 ratification). The V2
+  // RATIFIED_CONTRACT. The V2
   // columns live on nayanet_brain_relationships; the retrieval path consumes
   // their write-time projection on the block row. Every V2 field is optional:
   // legacy two-field projections ({target_block_id, relationship_type})
@@ -184,7 +184,7 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
 }
 
 // ---------------------------------------------------------------------------
-// Graph V2 selector gates (contract 0003 — CANDIDATE_CONTRACT, pending D1
+// Graph V2 selector gates (contract 0003 — RATIFIED_CONTRACT.
 // ratification). An edge carrying no V2 fields is a legacy two-field
 // projection and passes every gate: flat pre-V2 behavior is preserved
 // byte-for-byte. An edge carrying V2 fields is held to V2 semantics:
