@@ -1,6 +1,6 @@
 {
   "schema": "nayanet.smart-app.rooms.v1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
   "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF",
   "design_intelligence": "NAYA-DESIGN-INTELLIGENCE-V1@1.3",
@@ -300,5 +300,19 @@
     "SETTINGS",
     "HARDEN",
     "INDEPENDENT_GRADUATION"
-  ]
+  ],
+  "room_document_registry": {
+    "feed": "HUB/ROOMS/01-FEED.md",
+    "today": "HUB/ROOMS/02-TODAY.md",
+    "reports": "HUB/ROOMS/03-REPORTS.md",
+    "library": "HUB/ROOMS/04-LIBRARY.md",
+    "connect": "HUB/ROOMS/05-CONNECT.md",
+    "ledger": "HUB/ROOMS/06-LEDGER.md",
+    "connections": "HUB/ROOMS/07-CONNECTIONS.md",
+    "lists": "HUB/ROOMS/08-LISTS.md",
+    "mail": "HUB/ROOMS/09-MAIL.md",
+    "spaces": "HUB/ROOMS/10-SPACES.md",
+    "settings": "HUB/ROOMS/11-SETTINGS.md"
+  },
+  "room_record_rule": "Every canonical room has one living room-specific contract. The record specializes the master room law, retains open decisions, and records evidence-backed design evolution. It is specification truth, not runtime proof."
 }
