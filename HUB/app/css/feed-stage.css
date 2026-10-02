@@ -43,156 +43,14 @@
   margin: 0 0 8px;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   THE BOARD — elevated, theme-edged, one color one board.
-   ═══════════════════════════════════════════════════════════════════ */
+/* ——— Main Show river — active projection only ——— */
 .feed-river{
-  display: flex; flex-direction: column; gap: 30px;
-  margin-top: 30px;
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+  margin-top:30px;
 }
-.feed-river[hidden], .note-view[hidden]{ display: none !important; }
-.board{
-  --tone: #9d75ff;
-  border-radius: 22px;
-  padding: 36px 40px 30px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.014) 55%, rgba(0,0,0,.14)),
-    #0b0c12;
-  border: 1px solid color-mix(in srgb, var(--tone) 44%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    inset 0 -14px 34px rgba(0,0,0,.30),
-    0 28px 64px rgba(0,0,0,.55),
-    0 0 48px color-mix(in srgb, var(--tone) 20%, transparent);
-  scroll-margin-top: 96px;
-  transition: box-shadow .3s ease, border-color .3s ease, transform .3s var(--ease);
-}
-.board:hover{
-  border-color: color-mix(in srgb, var(--tone) 62%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.12),
-    inset 0 -14px 34px rgba(0,0,0,.28),
-    0 34px 76px rgba(0,0,0,.6),
-    0 0 64px color-mix(in srgb, var(--tone) 30%, transparent);
-}
-.board-hero{
-  padding: 44px 46px 36px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.12),
-    inset 0 -16px 40px rgba(0,0,0,.32),
-    0 34px 80px rgba(0,0,0,.6),
-    0 0 70px color-mix(in srgb, var(--tone) 28%, transparent);
-}
-.board.flash{ animation: board-flash 1.6s var(--ease); }
-@keyframes board-flash{
-  0%{ box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 28px 64px rgba(0,0,0,.55), 0 0 90px color-mix(in srgb, var(--tone) 55%, transparent); }
-  100%{ box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 -14px 34px rgba(0,0,0,.30), 0 28px 64px rgba(0,0,0,.55), 0 0 48px color-mix(in srgb, var(--tone) 20%, transparent); }
-}
-
-/* ——— Board head: orb + title + theme ——— */
-.board-head{ display: flex; align-items: center; gap: 24px; }
-.board-orb{
-  width: 78px; height: 78px; border-radius: 50%; flex: none;
-  display: grid; place-items: center;
-  background:
-    radial-gradient(circle at 32% 26%, rgba(255,255,255,.95), transparent 44%),
-    radial-gradient(circle at 50% 62%,
-      color-mix(in srgb, var(--tone) 78%, #fff),
-      color-mix(in srgb, var(--tone) 42%, #000) 78%);
-  box-shadow:
-    inset 0 2px 8px rgba(255,255,255,.6),
-    inset 0 -10px 22px rgba(0,0,0,.55),
-    0 12px 30px rgba(0,0,0,.6),
-    0 0 38px color-mix(in srgb, var(--tone) 60%, transparent);
-}
-.board-hero .board-orb{ width: 92px; height: 92px; }
-.board-orb svg{
-  width: 36px; height: 36px;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,.55));
-}
-.board-hero .board-orb svg{ width: 42px; height: 42px; }
-.board-titles{ flex: 1; min-width: 0; }
-.board-title{
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 400;
-  font-size: clamp(1.45rem, 3.2vw, 2rem);
-  line-height: 1.14;
-  letter-spacing: 0.015em;
-  text-transform: uppercase;
-  margin: 0 0 8px;
-  color: var(--ink);
-  text-wrap: balance;
-}
-.board-hero .board-title{ font-size: clamp(1.9rem, 4.2vw, 2.7rem); }
-.board-kicker{
-  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--muted); margin: 0;
-}
-.board-kicker .k-dot{ padding: 0 6px; }
-.board-kicker .k-state{ color: var(--tone); }
-
-
-
-
-
-
-/* ——— Divider ——— */
-.board-rule{
-  height: 1px; margin: 26px 0;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--tone) 38%, transparent), transparent);
-}
-
-/* ——— Board body ——— */
-.board-whynow{
-  display: flex; gap: 12px; align-items: baseline;
-  margin: 0 0 14px; max-width: 760px;
-  font-size: 16px; line-height: 1.65; color: var(--ink-dim);
-}
-.board-whynow strong{
-  font-size: 11px; letter-spacing: 0.24em; color: var(--tone);
-  font-weight: 700; white-space: nowrap;
-}
-.board-nut{
-  font-size: 17px; line-height: 1.7; color: var(--ink);
-  margin: 0; max-width: 760px;
-}
-.board-hero .board-nut{ font-size: 19px; }
-
-/* ——— Entered depth ——— */
-
-
-
-
-
-
-
-
-/* ——— Working tools: everything here does something real ——— */
-
-
-
-
-
-
-/* ——— Cross-references ——— */
-
-
-
-
-
-
-
-/* ——— Board foot: source separation, quiet ——— */
-.board-foot{
-  display: flex; align-items: center; gap: 10px;
-  margin-top: 26px; padding-top: 18px;
-  border-top: 1px solid var(--line-soft);
-  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
-}
-.board-foot .led{
-  width: 8px; height: 8px; border-radius: 50%; flex: none;
-  background: var(--tone); box-shadow: 0 0 10px var(--tone);
-}
+.feed-river[hidden],.note-view[hidden]{display:none!important}
 
 /* ——— Stage footer: Ask Naya ——— */
 .feed-stage-foot{ margin-top: 60px; text-align: center; }
@@ -211,7 +69,6 @@
     inset 0 -3px 8px rgba(0,0,0,.4),
     0 14px 34px rgba(0,0,0,.55),
     0 0 26px rgba(157,117,255,.14);
-  text-shadow: 0 1px 2px rgba(0,0,0,.5);
   transition: transform .16s var(--ease), box-shadow .25s ease, border-color .25s ease;
 }
 .feed-ask:hover{
@@ -282,36 +139,6 @@
   text-transform: uppercase; padding: 10px 22px; margin-top: 8px;
 }
 .ev-close:hover{ color: var(--ink); border-color: var(--ink-dim); }
-
-/* ——— Today's list ——— */
-.today-list{ margin: 34px 0 0; padding: 24px; border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--bg-raise); display: none; }
-.today-list.show{ display: block; }
-.today-list h3{ margin: 0 0 4px; font-size: 17px; }
-.today-list .tl-sub{ font-size: 16px; color: var(--muted); margin: 0 0 14px; }
-.today-list ul{ margin: 0; padding: 0; list-style: none; }
-.today-list li{ display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line-soft); font-size: 16px; color: var(--ink-dim); }
-.today-list li button{ background: none; border: none; cursor: pointer; color: var(--muted); font-size: 12px; }
-.today-list li button:hover{ color: var(--red); }
-
-/* ——— Reduced motion ——— */
-@media (prefers-reduced-motion: reduce){
-  .board, .board-explore, .board-tool, .feed-ask{ transition: none; }
-  .board-depth, .ask-panel.open, .board.flash{ animation: none; }
-  .ev-drawer{ transition: none; }
-}
-
-/* ——— Small screens ——— */
-@media (max-width: 560px){
-  .board{ padding: 26px 22px; border-radius: 18px; }
-  .board-hero{ padding: 30px 24px; }
-  .board-head{ gap: 16px; flex-wrap: wrap; }
-  .board-orb{ width: 58px; height: 58px; }
-  .board-hero .board-orb{ width: 68px; height: 68px; }
-  .board-orb svg{ width: 28px; height: 28px; }
-  
-  .ask-row{ flex-direction: column; }
-  .ask-go{ padding: 14px; }
-}
 
 /* ═══════════════════════════════════════════════════════════════════
    v7 — THE RIVER: quiet snapshots. Tap → the Smart Note.
@@ -448,7 +275,6 @@
     inset 0 -3px 8px rgba(0,0,0,.38),
     0 10px 26px rgba(0,0,0,.5),
     0 0 22px color-mix(in srgb, var(--tone) 32%, transparent);
-  text-shadow: 0 1px 3px rgba(0,0,0,.45);
   transition: transform .16s var(--ease), filter .25s ease;
 }
 .note-tool:hover{ transform: translateY(-2px); filter: brightness(1.1); }
@@ -474,53 +300,10 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════
-   NAYA 1 OSCAR CONVERGENCE — governed Main Show additions
-   Quiet mode filter, semantic state, runtime proof/action feedback.
+   MAIN SHOW — causal operating surface
+   One shell-owned mode zone. Feed owns intelligence presentation only.
    ═══════════════════════════════════════════════════════════════════ */
 .feed-load-zone{margin:24px 0}
-.feed-modebar{
-  position:sticky;
-  top:var(--topbar-h,64px);
-  z-index:55;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  margin:22px 0 24px;
-  padding:9px 12px;
-  border-top:1px solid var(--line-soft);
-  border-bottom:1px solid var(--line-soft);
-  background:rgba(5,5,7,.90);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-}
-.feed-mode-label{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.18em;
-}
-.feed-mode-tabs{display:flex;align-items:center;gap:4px}
-.feed-mode{
-  appearance:none;
-  min-height:44px;
-  padding:0 12px;
-  border:0;
-  border-radius:10px;
-  background:transparent;
-  color:var(--muted);
-  font:700 12px/1 var(--font);
-  letter-spacing:.05em;
-  cursor:pointer;
-  transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),transform var(--dur-fast) var(--ease);
-}
-.feed-mode:hover{color:var(--ink);background:rgba(255,255,255,.035)}
-.feed-mode:active{transform:translateY(1px)}
-.feed-mode[aria-selected="true"]{
-  color:var(--ink);
-  background:rgba(255,255,255,.055);
-  box-shadow:inset 0 -2px var(--green);
-}
 
 .sb-meta{
   display:flex;
@@ -639,7 +422,6 @@
 .ev-runtime-result[data-state="success"]{color:var(--green)}
 .ev-runtime-result[data-state="error"]{color:var(--red)}
 
-.feed-mode:focus-visible,
 .note-tool:focus-visible,
 .ev-retrieve:focus-visible{
   outline:2px solid var(--ink);
@@ -647,38 +429,34 @@
 }
 
 @media(max-width:620px){
-  .feed-modebar{justify-content:space-between;gap:8px;margin:18px 0 22px;padding:7px 4px}
-  .feed-mode-label{display:none}
-  .feed-mode-tabs{width:100%;justify-content:space-between}
-  .feed-mode{flex:1;padding:0 8px}
   .sb-meta{align-items:flex-start}
   .note-why{grid-template-columns:1fr;gap:6px}
 }
-@media(prefers-reduced-motion:reduce){
-  .feed-mode{transition:none}
-  .feed-mode:active{transform:none}
+
+
+/* MAIN SHOW CONVERGENCE — one focal object, quiet river, no duplicated mode chrome. */
+.snap-board:active{transform:translateY(1px) scale(.997)}
+.feed-ask:focus-visible,
+.ask-go:focus-visible,
+.ask-hit button:focus-visible,
+.note-back:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:3px;
 }
-
-
-/* OSCAR failure repair — exact browser findings from run 37027775202. */
-.feed-modebar[hidden]{display:none!important}
-.nlayer-text{font-size:16px}
-.ask-go,.ask-hit button,.ev-close{min-height:46px}
-.ask-hit button{display:inline-flex;align-items:center}
-.ev-close{
-  appearance:none;
-  margin:8px 0 0;
-  padding:0 18px;
-  border:1px solid #ffffff22;
-  border-radius:13px;
-  background:linear-gradient(145deg,#171b25,#0b0d12);
-  color:var(--ink);
-  font:700 12px/1 var(--font);
-  cursor:pointer;
+.feed-ask:disabled,
+.ask-go:disabled,
+.note-tool:disabled,
+.ev-retrieve:disabled,
+.ev-close:disabled{
+  opacity:.52;
+  cursor:not-allowed;
+  transform:none;
+  filter:none;
 }
+.note-tool[data-state="processing"]{cursor:progress}
+.note-tool[data-state="success"]{cursor:default}
 
 
-/* NAYA 1 MAIN SHOW CONVERGENCE — one focal object, quiet river, no duplicated mode chrome. */
 .feed-stage{
   max-width:1040px;
   padding-top:clamp(40px,6vw,72px);
