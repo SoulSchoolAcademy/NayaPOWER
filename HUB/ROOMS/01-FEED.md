@@ -72,7 +72,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE GAME.** The center canvas is a continuous emerald intelligence river, not a social feed. Objects rise through relevance, truth and consequence. Verified new intelligence may cross a restrained luminous seam so the human can *see* that something genuinely arrived. Emerald light lives on edges, jewels and active state — never as wallpaper. The room should feel alive because the underlying intelligence is alive, not because animation is pretending.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -299,6 +299,25 @@ And the current global acceptance bar applies:
 - Whether a single highest-value focus object or a small focus group creates the best comprehension must be measured, not assumed.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+The **verified-intelligence seam**: a newly arrived canonical object crosses a thin emerald boundary, settles into the river, and exposes “why now” + provenance without stealing the whole screen.
+
+### Best-of intelligence to synthesize
+- **Oura / Instrument:** progressive disclosure and semantic state.
+- **Linear:** focus and low-noise density.
+- **Spotify:** personalized relevance with stable grammar.
+- **Slack / MetaLab:** human warmth and micro-feedback.
+
+### Beyond-benchmark hypothesis
+A feed becomes materially smarter than conventional feeds when ranking is explainable, provenance is inspectable, truth state is visible, and success is measured by useful orientation/action rather than time-on-page.
+
+### Proof boundary
+Do not claim this advantage until real mode switching, relevance rationale, provenance, return-position continuity and user-orientation evidence exist.
 
 ---
 
