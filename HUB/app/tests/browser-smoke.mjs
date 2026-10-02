@@ -260,7 +260,9 @@ async function assertMainShow(page,label){
   await origin.focus();
   await page.evaluate(()=>window.scrollTo(0,240));
   const originScroll=await page.evaluate(()=>Math.round(window.scrollY));
-  await origin.click();
+  // DOM activation avoids Playwright's pre-click auto-scroll so this asserts
+  // the app preserves the user's own river position, not the test runner's.
+  await origin.evaluate(el=>el.click());
   await page.waitForSelector('.note-view:not([hidden])');
 
   if(await page.locator('.mode-zone:visible').count()){
