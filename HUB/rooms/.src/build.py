@@ -158,6 +158,14 @@ def main():
     assert '</body>' in src
     src = src.replace('</body>', script_tag, 1)
 
+    # 3b. Smart tabs: the KIND axis (All / Smart Notes / Activity / Reports)
+    # over her AUDIENCE axis. Her feed() is IIFE-scoped, so the tabs compose
+    # by re-applying kind filtering after her mode handlers run.
+    _tabs = open(os.path.join(BUILD, 'rooms', 'smart-tabs.html')).read()
+    assert '</body>' in src
+    src = src.replace('</body>', '\n<!-- SMART-TABS -->\n' + _tabs + '\n</body>', 1)
+    print('smart-tabs: injected')
+
     open(OUT, 'w').write(src)
     print('wrote', OUT, len(src), 'bytes')
 

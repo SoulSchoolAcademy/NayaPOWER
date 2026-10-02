@@ -1,0 +1,74 @@
+# IB → Hub feed trigger (CANDIDATE — not active until merged)
+#
+# Shawn's model: the Hub is the OUTPUT of intelligence, not the input.
+# When any AI captures a Smart Note / Activity / Report, it writes an
+# Intelligent Block to BRAIN/04-INTELLIGENCE/SMART-NOTES/**. This workflow
+# is the TRIGGER: it validates the new IBs and emits feed events for the
+# Hub build to consume. It never deploys — production deploy stays the
+# human director's explicit gate.
+#
+# Status: candidate. Merge requires Shawn's word (protected: production
+# pipeline change).
+
+name: ib-feed-trigger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'BRAIN/04-INTELLIGENCE/SMART-NOTES/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-emit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate IBs and emit feed events
+        id: emit
+        run: |
+          python3 - <<'PYEOF'
+          import os, re, json, glob
+          ROOT = 'BRAIN/04-INTELLIGENCE/SMART-NOTES'
+          REQUIRED = ['in a nutshell']
+          LAYERS = ['in a nutshell','human note','child note','grandma note',
+                    'naya note','machine note','learning lesson',
+                    'what it ultimately means','how to use it',
+                    "what's in it for you"]
+          events = []
+          files = sorted(glob.glob(os.path.join(ROOT, '**', '*.md'), recursive=True))
+          assert files, 'no IB markdown files found under ' + ROOT
+          for f in files:
+              text = open(f).read()
+              m = re.match(r'^---\n(.*?)\n---\n(.*)$', text, re.S)
+              assert m, 'missing frontmatter: ' + f
+              fm = dict(l.split(':',1) for l in m.group(1).splitlines() if ':' in l)
+              fm = {k.strip(): v.strip().strip('"') for k,v in fm.items()}
+              for req in ('ib','kind','title','streams','time'):
+                  assert req in fm, f'{f}: frontmatter missing {req}'
+              assert fm['kind'] in ('smart-note','activity','report'), f'{f}: bad kind'
+              secs = set(s.strip().lower() for s in re.findall(r'^##\s+(.*)', m.group(2), re.M))
+              missing = [r for r in REQUIRED if r not in secs]
+              assert not missing, f'{f}: missing sections {missing}'
+              present = [l for l in LAYERS if l in secs]
+              events.append({
+                  'ib': fm['ib'], 'kind': fm['kind'], 'title': fm['title'],
+                  'streams': [s.strip() for s in fm['streams'].strip('[]').split(',')],
+                  'time': fm['time'], 'layers': present, 'path': f,
+              })
+              print('OK', fm['ib'], fm['kind'], f'{len(present)}/10 layers')
+          os.makedirs('ib-events', exist_ok=True)
+          open('ib-events/feed-events.json','w').write(json.dumps(events, indent=2))
+          print(f'{len(events)} IB events emitted')
+          PYEOF
+
+      - name: Upload feed events
+        uses: actions/upload-artifact@v4
+        with:
+          name: ib-feed-events
+          path: ib-events/feed-events.json
+          retention-days: 30
