@@ -1,15 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ROOM 01 — SMART FEED · THE MAIN STAGE
-   V7 intelligent-block language. Rebuilt 2026-10-02 per the director's call:
-   the main stage shows "your intelligence today" as intelligent blocks —
-   jewel · title · source · nutshell · deeper layers · trust footer.
-   No mode tabs, no spec-speak buttons, no invented content.
+   ROOM 01 — SMART FEED · THE MAIN SHOW · v6
+   The board language, learned from the main interface concept:
+   every intelligence is a BOARD — elevated, theme-edged, glass orb
+   with glyph, title + theme label, divider, generous body.
+   One color, one board. A board is a destination you ENTER.
    ═══════════════════════════════════════════════════════════════════ */
 
 .feed-stage{
-  /* Per-block tone flow (V7): each intelligent block takes the next tone.
-     --tone is set per block by the renderer. Room identity stays neutral. */
-  max-width: 920px;
+  max-width: 980px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px) 96px;
   color: var(--ink);
@@ -18,7 +16,8 @@
     radial-gradient(900px 700px at 100% 100%, #d86cff12, transparent 70%);
 }
 
-/* ——— Stage header ——— */
+/* ——— Presence → recognition ——— */
+.feed-stage-head{ margin-bottom: 6px; }
 .feed-greeting{
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 400;
@@ -35,7 +34,7 @@
   color: var(--muted);
   margin: 0 0 18px;
 }
-.feed-dateline .feed-dot{ color: var(--tone); padding: 0 10px; }
+.feed-dateline .feed-dot{ color: var(--green); padding: 0 10px; }
 .feed-daystate{
   font-size: clamp(1.02rem, 2.4vw, 1.3rem);
   line-height: 1.55;
@@ -43,191 +42,202 @@
   max-width: 640px;
   margin: 0 0 8px;
 }
-.feed-countline{
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 26px 0 0;
-  padding-top: 22px;
-  border-top: 1px solid var(--line-soft);
-}
-.feed-countline strong{ color: var(--ink); font-weight: 600; }
 
-/* ——— Intelligent block ——— */
-.iblock{
-  --tone: #55e39a;
-  padding: clamp(30px, 5vw, 54px) 0;
-  border-bottom: 1px solid var(--line-soft);
+/* ═══════════════════════════════════════════════════════════════════
+   THE BOARD — elevated, theme-edged, one color one board.
+   ═══════════════════════════════════════════════════════════════════ */
+.feed-river{
+  display: flex; flex-direction: column; gap: 30px;
+  margin-top: 30px;
 }
-.iblock-head{ display: flex; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
-/* ——— The Smart Feed jewel: luminous orb, specimen V1 anatomy ———
-   1. Light source upper-left (38%/30%) · 2. white-hot core · 3. accent
-   falloff light → accent → deep → obsidian edge · 4. white glyph, 40%
-   of diameter, centered · 5. 1.5px accent rim + glow ≈ 25% of diameter
-   · 6. always on black. Scale steps only: 48px here. */
-.iblock-jewel{
-  flex: 0 0 auto;
-  width: 48px; height: 48px;
-  margin-top: 4px;
-  border-radius: 50%;
-  position: relative;
+.board{
+  --tone: #9d75ff;
+  border-radius: 22px;
+  padding: 36px 40px 30px;
   background:
-    radial-gradient(circle at 38% 30%,
-      rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 12%, rgba(255,255,255,0) 30%),
-    radial-gradient(circle at 38% 30%,
-      color-mix(in srgb, var(--tone) 30%, white) 0%,
-      var(--tone) 34%,
-      color-mix(in srgb, var(--tone) 52%, black) 60%,
-      color-mix(in srgb, var(--tone) 20%, black) 82%,
-      #04060a 100%);
-  border: 1.5px solid color-mix(in srgb, var(--tone) 72%, white);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--tone) 45%, transparent),
-              inset 0 1px 2px rgba(255,255,255,.35);
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.014) 55%, rgba(0,0,0,.14)),
+    #0b0c12;
+  border: 1px solid color-mix(in srgb, var(--tone) 44%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -14px 34px rgba(0,0,0,.30),
+    0 28px 64px rgba(0,0,0,.55),
+    0 0 48px color-mix(in srgb, var(--tone) 20%, transparent);
+  scroll-margin-top: 96px;
+  transition: box-shadow .3s ease, border-color .3s ease, transform .3s var(--ease);
 }
-/* Glow = meaning: the lead block carries the stronger glow. */
-.iblock-lead .iblock-jewel{
-  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 65%, transparent),
-              inset 0 1px 2px rgba(255,255,255,.4);
+.board:hover{
+  border-color: color-mix(in srgb, var(--tone) 62%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -14px 34px rgba(0,0,0,.28),
+    0 34px 76px rgba(0,0,0,.6),
+    0 0 64px color-mix(in srgb, var(--tone) 30%, transparent);
 }
-.iblock-jewel svg{
-  position: absolute; inset: 0; margin: auto;
-  width: 40%; height: 40%; display: block;
+.board-hero{
+  padding: 44px 46px 36px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -16px 40px rgba(0,0,0,.32),
+    0 34px 80px rgba(0,0,0,.6),
+    0 0 70px color-mix(in srgb, var(--tone) 28%, transparent);
 }
-.iblock-title{
+.board.flash{ animation: board-flash 1.6s var(--ease); }
+@keyframes board-flash{
+  0%{ box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 28px 64px rgba(0,0,0,.55), 0 0 90px color-mix(in srgb, var(--tone) 55%, transparent); }
+  100%{ box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 -14px 34px rgba(0,0,0,.30), 0 28px 64px rgba(0,0,0,.55), 0 0 48px color-mix(in srgb, var(--tone) 20%, transparent); }
+}
+
+/* ——— Board head: orb + title + theme ——— */
+.board-head{ display: flex; align-items: center; gap: 24px; }
+.board-orb{
+  width: 78px; height: 78px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255,255,255,.95), transparent 44%),
+    radial-gradient(circle at 50% 62%,
+      color-mix(in srgb, var(--tone) 78%, #fff),
+      color-mix(in srgb, var(--tone) 42%, #000) 78%);
+  box-shadow:
+    inset 0 2px 8px rgba(255,255,255,.6),
+    inset 0 -10px 22px rgba(0,0,0,.55),
+    0 12px 30px rgba(0,0,0,.6),
+    0 0 38px color-mix(in srgb, var(--tone) 60%, transparent);
+}
+.board-hero .board-orb{ width: 92px; height: 92px; }
+.board-orb svg{
+  width: 36px; height: 36px;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.55));
+}
+.board-hero .board-orb svg{ width: 42px; height: 42px; }
+.board-titles{ flex: 1; min-width: 0; }
+.board-title{
   font-family: Georgia, 'Times New Roman', serif;
   font-weight: 400;
-  font-size: clamp(1.5rem, 3.6vw, 2.3rem);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
+  line-height: 1.14;
+  letter-spacing: 0.015em;
   text-transform: uppercase;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: var(--ink);
   text-wrap: balance;
 }
-.iblock-lead .iblock-title{ font-size: clamp(1.8rem, 4.4vw, 2.8rem); }
-.iblock-kicker{
-  font-size: 11px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 12px;
-}
-.iblock-kicker .k-accent{ color: var(--tone); }
-.iblock-source{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  padding: 7px 14px;
-}
-.iblock-source .led{
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--tone);
-  box-shadow: 0 0 8px var(--tone);
-}
-
-/* ——— Layers ——— */
-.ilayer{ margin: 0 0 20px; max-width: 720px; }
-.ilayer-label{
-  display: flex; align-items: baseline; gap: 10px;
-  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-  margin: 0 0 8px;
-}
-.ilayer-label strong{ color: var(--ink); font-weight: 700; }
-.ilayer-label span{ color: var(--muted); font-weight: 400; letter-spacing: 0.14em; }
-.ilayer-text{
-  font-size: 16px; line-height: 1.7; color: var(--ink-dim); margin: 0;
-}
-.ilayer-nutshell .ilayer-text{
-  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
-  line-height: 1.6;
-  color: var(--ink);
-}
-.iblock-layers{ display: none; }
-.iblock-layers.open{ display: block; animation: iblock-in .45s ease; }
-@keyframes iblock-in{ from{ opacity: 0; transform: translateY(8px);} to{ opacity: 1; transform: none;} }
-
-.feed-deeper{
-  background: none; border: none; cursor: pointer;
-  display: inline-flex; align-items: center; gap: 10px;
+.board-hero .board-title{ font-size: clamp(1.9rem, 4.2vw, 2.7rem); }
+.board-kicker{
   font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--tone);
-  padding: 12px 0; margin-top: 6px;
+  color: var(--muted); margin: 0;
 }
-.feed-deeper::after{
-  content: ""; width: 28px; height: 1px; background: var(--tone);
-  transition: width .3s ease;
+.board-kicker .k-dot{ padding: 0 6px; }
+.board-kicker .k-state{ color: var(--tone); }
+.board-side{ text-align: right; flex: none; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.board-theme{
+  font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--tone); font-weight: 700; margin: 0;
 }
-.feed-deeper:hover::after{ width: 44px; }
-.feed-deeper .chev{ transition: transform .3s ease; font-size: 14px; }
-.feed-deeper[aria-expanded="true"] .chev{ transform: rotate(180deg); }
-
-/* ——— Block footer ——— */
-.iblock-foot{
-  margin-top: 30px; padding-top: 20px;
-  border-top: 1px solid var(--line-soft);
-  text-align: center;
-}
-.iblock-foot p{
-  font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 8px;
-}
-.iblock-foot p:last-child{ margin-bottom: 0; color: var(--faint); }
-.iblock-foot .trust{ color: var(--tone); }
-
-/* ——— Block action ——— */
-.iblock-action{ margin-top: 22px; }
-/* ——— v5: PHYSICAL primary action — a NayaNET button is an object with
-   mass, light, state and consequence. Layered material, edge light,
-   cast depth, tone aura. Hover lifts; press compresses. ——— */
-.feed-btn{
+.board-explore{
   appearance: none; cursor: pointer;
-  border: 1px solid color-mix(in srgb, var(--tone) 60%, #000);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--tone) 50%, transparent);
+  color: var(--ink-dim);
+  border-radius: var(--radius-pill);
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 700;
+  padding: 10px 22px;
+  transition: border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .16s var(--ease);
+}
+.board-explore:hover{
+  color: #fff; border-color: var(--tone);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--tone) 45%, transparent);
+  transform: translateY(-1px);
+}
+.board-explore[aria-expanded="true"]{ color: #fff; border-color: var(--tone); background: color-mix(in srgb, var(--tone) 22%, transparent); }
+
+/* ——— Divider ——— */
+.board-rule{
+  height: 1px; margin: 26px 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--tone) 38%, transparent), transparent);
+}
+
+/* ——— Board body ——— */
+.board-whynow{
+  display: flex; gap: 12px; align-items: baseline;
+  margin: 0 0 14px; max-width: 760px;
+  font-size: 16px; line-height: 1.65; color: var(--ink-dim);
+}
+.board-whynow strong{
+  font-size: 11px; letter-spacing: 0.24em; color: var(--tone);
+  font-weight: 700; white-space: nowrap;
+}
+.board-nut{
+  font-size: 17px; line-height: 1.7; color: var(--ink);
+  margin: 0; max-width: 760px;
+}
+.board-hero .board-nut{ font-size: 19px; }
+
+/* ——— Entered depth ——— */
+.board-depth{ margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line-soft); animation: board-in .45s var(--ease); }
+@keyframes board-in{ from{ opacity: 0; transform: translateY(10px);} to{ opacity: 1; transform: none;} }
+.blayer{ margin: 0 0 20px; max-width: 760px; }
+.blayer:last-child{ margin-bottom: 0; }
+.blayer-label{ display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px; }
+.blayer-label strong{ font-size: 11px; letter-spacing: 0.24em; color: var(--tone); font-weight: 700; }
+.blayer-label span{ font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+.blayer-text{ font-size: 16px; line-height: 1.7; color: var(--ink-dim); margin: 0; }
+
+/* ——— Working tools: everything here does something real ——— */
+.board-tools{ display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 6px; }
+.board-tool{
+  appearance: none; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--tone) 55%, #000);
   border-radius: var(--radius-pill);
   color: #fff;
-  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
-  padding: 15px 32px;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+  padding: 13px 26px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,0) 46%),
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 46%),
     linear-gradient(180deg,
-      color-mix(in srgb, var(--tone) 78%, #fff),
-      color-mix(in srgb, var(--tone) 52%, #000));
+      color-mix(in srgb, var(--tone) 72%, #fff),
+      color-mix(in srgb, var(--tone) 48%, #000));
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.5),
+    inset 0 1px 0 rgba(255,255,255,.45),
     inset 0 -3px 8px rgba(0,0,0,.38),
-    0 12px 30px rgba(0,0,0,.55),
-    0 0 26px color-mix(in srgb, var(--tone) 38%, transparent);
+    0 10px 26px rgba(0,0,0,.5),
+    0 0 22px color-mix(in srgb, var(--tone) 32%, transparent);
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   transition: transform .16s var(--ease), box-shadow .25s ease, filter .25s ease;
 }
-.feed-btn:hover{
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.55),
-    inset 0 -3px 8px rgba(0,0,0,.32),
-    0 18px 40px rgba(0,0,0,.6),
-    0 0 38px color-mix(in srgb, var(--tone) 55%, transparent);
-}
-.feed-btn:active{
-  transform: translateY(1px);
-  box-shadow:
-    inset 0 2px 8px rgba(0,0,0,.45),
-    0 6px 16px rgba(0,0,0,.5),
-    0 0 18px color-mix(in srgb, var(--tone) 30%, transparent);
-}
-.feed-btn:focus-visible{ outline: 2px solid var(--tone); outline-offset: 3px; }
+.board-tool:hover{ transform: translateY(-2px); filter: brightness(1.1); }
+.board-tool:active{ transform: translateY(1px); }
+.board-tool:focus-visible{ outline: 2px solid var(--tone); outline-offset: 3px; }
 
-/* ——— Stage footer ——— */
-.feed-stage-foot{
-  margin-top: 56px; text-align: center;
+/* ——— Cross-references ——— */
+.board-refs{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.board-ref{
+  appearance: none; cursor: pointer; background: none;
+  border: 1px solid var(--line-soft); color: var(--muted);
+  border-radius: var(--radius-pill);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 9px 17px;
+  transition: border-color .2s ease, color .2s ease;
 }
+.board-ref:hover{ border-color: var(--tone); color: var(--ink); }
+.board-ref.static{ cursor: default; }
+.board-ref.static:hover{ border-color: var(--line-soft); color: var(--muted); }
+.board-ref .who{ color: var(--tone); }
+
+/* ——— Board foot: source separation, quiet ——— */
+.board-foot{
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 26px; padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+}
+.board-foot .led{
+  width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--tone); box-shadow: 0 0 10px var(--tone);
+}
+
+/* ——— Stage footer: Ask Naya ——— */
+.feed-stage-foot{ margin-top: 60px; text-align: center; }
 .feed-ask{
   appearance: none; cursor: pointer;
   background:
@@ -257,152 +267,13 @@
 }
 .feed-ask:active{ transform: translateY(1px); }
 
-/* ——— Honest states inherit the stage voice ——— */
-.feed-stage .shimmer-grid{ padding: 40px 0; }
-
-/* ═══════════════════════════════════════════════════════════════════
-   v4 — THE DISTILLED MAIN SHOW (§8.2 / §14B.2)
-   Presence → recognition → ONE hero → mode dock (one sticky zone) →
-   subordinate snapshot river → Ask Naya. Depth opens on tap.
-   ═══════════════════════════════════════════════════════════════════ */
-.mainshow-body{ padding-top: 8px; }
-.feed-hero{ margin: 6px 0 8px; }
-.feed-hero .iblock{ margin-top: 0; }
-
-/* The river: subordinate snapshots — the in-a-nutshell of each node. */
-.feed-river{ margin-top: 10px; }
-.river-kicker{
-  font-size: 11px; letter-spacing: 0.26em; color: var(--muted);
-  margin: 34px 0 6px; font-weight: 700;
-}
-.river-kicker span{ color: var(--ink); }
-.snap{
-  appearance: none; cursor: pointer; width: 100%; text-align: left;
-  display: flex; align-items: center; gap: 16px;
-  background: transparent; border: none;
-  border-bottom: 1px solid var(--line-soft);
-  padding: 20px 6px;
-  transition: background .2s ease;
-}
-.snap:hover{ background: rgba(255,255,255,.025); }
-/* ——— v5: the tone flow. One color, one block — the river shows it. ——— */
-.snap-jewel{
-  width: 38px; height: 38px; border-radius: 50%; flex: none;
-  display: grid; place-items: center;
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 46%),
-    radial-gradient(circle at 50% 58%,
-      color-mix(in srgb, var(--tone) 82%, #000),
-      color-mix(in srgb, var(--tone) 34%, #000));
-  box-shadow:
-    inset 0 1px 2px rgba(255,255,255,.55),
-    inset 0 -4px 10px rgba(0,0,0,.5),
-    0 6px 18px rgba(0,0,0,.55),
-    0 0 20px color-mix(in srgb, var(--tone) 45%, transparent);
-  transition: transform .25s var(--ease), box-shadow .25s ease;
-}
-.snap-jewel svg{ width: 52%; height: 52%; }
-.snap:hover .snap-jewel{
-  transform: scale(1.08);
-  box-shadow:
-    inset 0 1px 2px rgba(255,255,255,.6),
-    inset 0 -4px 10px rgba(0,0,0,.45),
-    0 8px 24px rgba(0,0,0,.6),
-    0 0 30px color-mix(in srgb, var(--tone) 65%, transparent);
-}
-.snap-main{ flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
-.snap-title{
-  font-family: var(--font-display); font-size: 21px; line-height: 1.25;
-  color: var(--ink); letter-spacing: .01em;
-}
-.snap-nut{
-  font-size: 16px; line-height: 1.55; color: var(--muted);
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-}
-.snap-chev{ color: var(--muted); font-size: 14px; flex: none; transition: transform .25s var(--ease); }
-.snap:hover .snap-chev{ color: var(--ink); transform: translateY(2px); }
-.snap-open{ border-bottom: 1px solid var(--line-soft); padding-bottom: 6px; }
-.snap-open .iblock{ margin-top: 8px; }
-.snap-less{
-  appearance: none; cursor: pointer; background: none; border: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--muted); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-  padding: 12px 6px 18px;
-}
-.snap-less:hover{ color: var(--ink); }
-
-/* Greeting: presence → recognition, quiet. */
-.feed-stage-head{ margin-bottom: 4px; }
-/* ——— v5: mode filter — a whisper, not a navigation bar. One quiet
-   segmented control, clearly a filter. Still one sticky zone. ——— */
-.feed-modedock{
-  position: sticky; top: 64px; z-index: 30;
-  display: flex; gap: 2px; justify-content: flex-start; align-items: center;
-  padding: 12px 0; margin: 20px 0 0;
-  background: linear-gradient(180deg, rgba(5,5,7,.94), rgba(5,5,7,.78));
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
-}
-.modedock-label{
-  font-size: 11px; letter-spacing: 0.26em; color: var(--muted);
-  margin-right: 10px; font-weight: 700;
-}
-.feed-mode{
-  appearance: none; cursor: pointer; background: transparent; border: none;
-  color: var(--muted);
-  border-radius: var(--radius-pill);
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
-  padding: 9px 16px;
-  transition: color .2s ease, background .2s ease, box-shadow .2s ease;
-}
-.feed-mode:hover{ color: var(--ink); }
-.feed-mode[aria-selected="true"]{
-  color: var(--ink); background: rgba(255,255,255,.07);
-  box-shadow: inset 0 0 0 1px var(--line-soft), 0 0 14px rgba(85,227,154,.12);
-}
-
-/* ——— v3: why-now — first-class ranking reason ——— */
-.iblock-whynow{
-  display: flex; gap: 10px; align-items: baseline;
-  margin: 16px 0 4px; max-width: 720px;
-  font-size: 16px; line-height: 1.6; color: var(--ink-dim);
-}
-.iblock-whynow strong{
-  font-size: 11px; letter-spacing: 0.22em; color: var(--tone);
-  font-weight: 700; white-space: nowrap;
-}
-
-/* ——— v3: the one obvious action ——— */
-.iblock-actionrow{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; align-items: center; }
-.feed-btn:disabled{ opacity: .5; cursor: default; transform: none; filter: saturate(.6); }
-.iblock-decision{ font-size: 16px; color: var(--muted); }
-/* The consequence, stated in plain words — no action without it. */
-.action-consequence{ font-size: 16px; line-height: 1.6; color: var(--muted); margin: 10px 0 0; max-width: 620px; }
-.action-consequence strong{ color: var(--ink-dim); font-weight: 600; }
-
-/* ——— v3: cross-reference rail ——— */
-.iblock-refs{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.iblock-ref{
-  appearance: none; cursor: pointer; background: none;
-  border: 1px solid var(--line-soft); color: var(--muted);
-  border-radius: var(--radius-pill);
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 8px 16px;
-  transition: border-color .2s ease, color .2s ease;
-}
-.iblock-ref:hover{ border-color: var(--tone); color: var(--ink); }
-.iblock-ref .who{ color: var(--tone); }
-.iblock.flash{ animation: iblock-flash 1.6s var(--ease); }
-@keyframes iblock-flash{ 0%{ background: rgba(85,227,154,.10);} 100%{ background: transparent;} }
-.iblock{ scroll-margin-top: 130px; }
-
-/* ——— v3: ask panel — a real working surface ——— */
+/* ——— Ask panel ——— */
 .ask-panel{
   display: none; margin: 28px auto 0; max-width: 720px; text-align: left;
   background: var(--bg-raise); border: 1px solid var(--line);
   border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--depth-drop);
 }
-.ask-panel.open{ display: block; animation: iblock-in .4s ease; }
+.ask-panel.open{ display: block; animation: board-in .4s ease; }
 .ask-panel h3{ margin: 0 0 6px; font-size: 17px; color: var(--ink); }
 .ask-panel .ask-sub{ font-size: 16px; color: var(--muted); margin: 0 0 18px; line-height: 1.6; }
 .ask-row{ display: flex; gap: 10px; }
@@ -427,7 +298,7 @@
 .ask-hit button:hover{ text-decoration: underline; }
 .ask-boundary{ font-size: 16px; line-height: 1.7; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 14px; margin: 18px 0 0; }
 
-/* ——— v3: evidence drawer ——— */
+/* ——— Evidence drawer ——— */
 .ev-backdrop{ position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 80; display: none; }
 .ev-backdrop.open{ display: block; }
 .ev-drawer{
@@ -454,7 +325,7 @@
 }
 .ev-close:hover{ color: var(--ink); border-color: var(--ink-dim); }
 
-/* ——— v3: today's list ——— */
+/* ——— Today's list ——— */
 .today-list{ margin: 34px 0 0; padding: 24px; border: 1px solid var(--line-soft); border-radius: var(--radius-lg); background: var(--bg-raise); display: none; }
 .today-list.show{ display: block; }
 .today-list h3{ margin: 0 0 4px; font-size: 17px; }
@@ -466,19 +337,20 @@
 
 /* ——— Reduced motion ——— */
 @media (prefers-reduced-motion: reduce){
-  .iblock-layers.open{ animation: none; }
-  .feed-deeper::after, .feed-deeper .chev,
-  .feed-btn, .feed-ask{ transition: none; }
-  .ask-panel.open, .iblock.flash{ animation: none; }
-  .feed-mode, .ev-drawer{ transition: none; }
+  .board, .board-explore, .board-tool, .feed-ask{ transition: none; }
+  .board-depth, .ask-panel.open, .board.flash{ animation: none; }
+  .ev-drawer{ transition: none; }
 }
 
 /* ——— Small screens ——— */
 @media (max-width: 560px){
-  .iblock-head{ gap: 14px; }
-  .iblock-jewel{ width: 32px; height: 32px; margin-top: 2px; }
-  .ilayer-label{ flex-wrap: wrap; row-gap: 2px; }
-  .feed-mode{ padding: 10px 16px; font-size: 11px; }
+  .board{ padding: 26px 22px; border-radius: 18px; }
+  .board-hero{ padding: 30px 24px; }
+  .board-head{ gap: 16px; flex-wrap: wrap; }
+  .board-orb{ width: 58px; height: 58px; }
+  .board-hero .board-orb{ width: 68px; height: 68px; }
+  .board-orb svg{ width: 28px; height: 28px; }
+  .board-side{ flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
   .ask-row{ flex-direction: column; }
   .ask-go{ padding: 14px; }
 }
