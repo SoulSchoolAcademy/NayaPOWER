@@ -11,6 +11,7 @@ import json, os, glob
 REPO = os.path.expanduser('~/workspace/nayapower-room02')
 RECEIPTS = os.path.expanduser('~/workspace/demo-staging/receipts')
 OUT = os.path.expanduser('~/workspace/your_files/ledger-preview.html')
+DEMO = True  # demo stream for design review; the live stream replaces it at launch
 
 def main():
     objs = []
@@ -35,11 +36,12 @@ def main():
         return s[a + len('(function(){'):b]
 
     full_js = (harness + inner(ad) + inner(js)
-               + 'const RAW=' + json.dumps(objs) + ';'
+               + ("const entries=LedgerAdapter.demoStream();const DEMO=true;"
+                  if DEMO else
+                  'const RAW=' + json.dumps(objs) + ';const entries=LedgerAdapter.parseMany(RAW);const DEMO=false;')
                + "document.addEventListener('DOMContentLoaded',()=>{"
-               + "const entries=LedgerAdapter.parseMany(RAW);"
                + "const root=document.getElementById('app');"
-               + "root.appendChild(window.NayaRooms.ledger(el,{entries:entries}));"
+               + "root.appendChild(window.NayaRooms.ledger(el,{entries:entries,demo:DEMO}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'
