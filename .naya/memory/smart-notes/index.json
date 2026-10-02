@@ -459,12 +459,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "0346d653-3d89-41c7-ba0d-ccfc521f2085"
       }
+    },
+    {
+      "smart_note_id": "SN-021",
+      "intelligent_block_id": "IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier",
+      "content_hash": "084990f161902f94d10ec240306f856adc2ceaca8d440064d7320936314f121e",
+      "title": "NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors",
+      "captured_at": "2026-10-01",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "CURRENT_ARCHITECTURAL_TRUTH",
+      "subtopic": "ORGANISM_COMPOSITION_AND_PROOF_FRONTIER",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "d0c83a47-ec1d-4674-aa79-6d850a1aba76",
+        "lineage_id": "e746ebe8-7f8f-46b6-8777-6bb5c1163b68",
+        "relationship_id": "c528758d-314f-488c-a525-9755dd22f19f",
+        "runtime_index_id": "747004db-a091-4e2b-b204-e718529ea5da",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "62274196-5fee-43e8-91ce-0847f5a2b767"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 21,
+    "next_sequence": 22,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
