@@ -20,6 +20,13 @@ The Hub has **one canonical meaning** and purpose-built representations.
 
 **Invariant:** these are projections, not separate truth systems. They MUST NOT disagree silently.
 
+
+### Smart-app room execution contracts
+- [NayaNET Smart App Room Specification V1](./NAYANET-SMART-APP-ROOM-SPEC-V1.md) — human/AI room, page, feed, shell, state and experience contract.
+- [Machine Smart App Room Contracts V1](./NAYANET-SMART-APP-ROOMS-V1.json) — deterministic room identities, jobs, primary actions, composition grammar, failure countermeasures and build order.
+
+**Builder rule:** retrieve these before substantive room/page implementation. The room spec specializes the existing Hub meaning; it does not create a second product or design system.
+
 ## Global designer intelligence
 
 Hub builders inherit:
@@ -60,7 +67,7 @@ Do not silently ignore defects, contradictions, stale truth, missing proof, like
 
 ## Current implementation sequence
 
-**freeze visual baseline → app shell/router → canonical room registry → Welcome→Identity→Hub → tokens/primitives → runtime adapter → Your Intelligence Today → remaining rooms → hardening → independent proof**
+**freeze visual baseline → smart-app room contracts → app shell/router → canonical room registry → Welcome→Identity→Hub → tokens/primitives → runtime adapter → Your Intelligence Today → remaining rooms → hardening → independent proof**
 
 Implementation owner: GitHub Issue **#1270**.
 

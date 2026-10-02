@@ -193,5 +193,14 @@
     "EVIDENCE_OR_RECEIPT_WHERE_REQUIRED"
   ],
   "runtime_truth_rule": "This target matrix is not evidence that any room/capability is live. Audit runtime separately.",
-  "next_implementation_focus": "App shell + canonical router/room registry + Welcome→Identity→Hub, then Your Intelligence Today end-to-end."
+  "next_implementation_focus": "App shell + canonical router/room registry using the smart-app room contracts, then Welcome→Identity→Hub continuity and Your Intelligence Today end-to-end.",
+  "smart_app_room_spec": {
+    "human": "HUB/NAYANET-SMART-APP-ROOM-SPEC-V1.md",
+    "machine": "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
+    "design_intelligence": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-V1.json@1.3",
+    "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
+    "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF"
+  },
+  "builder_rule": "Before substantive room/page implementation, retrieve the smart-app room spec and machine contract; do not re-derive shell, room purpose, state grammar, or human-job hierarchy from screenshots.",
+  "benchmark_rule": "Research the frontier when material, extract causal principles, preserve any stronger current Naya behavior, synthesize, generate a beyond-benchmark option, then verify improvement before promotion."
 }
