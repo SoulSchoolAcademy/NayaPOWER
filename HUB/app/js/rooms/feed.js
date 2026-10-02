@@ -29,7 +29,7 @@
   /* The V7 tone flow: each board takes the next tone in sequence.
      Pink → purple → indigo → blue → green → lime → yellow → orange → red,
      then it cycles. One color, one block — never monochrome wallpaper. */
-  const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#f8f7fb','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
+  const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
 
   const JEWEL='<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">'
     +'<path d="M4 8.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/>'
