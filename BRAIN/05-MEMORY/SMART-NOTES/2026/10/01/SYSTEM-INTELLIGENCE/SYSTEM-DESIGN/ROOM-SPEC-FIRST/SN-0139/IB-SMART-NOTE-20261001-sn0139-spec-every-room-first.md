@@ -27,6 +27,23 @@ fine as something to work with. He is done with the produce → "no, do XYZ" →
 
 ---
 
+## SHAWN'S METAPHOR — THE TRILLION-DOLLAR HOUSE (his words, 2026-10-01 ~19:39 PDT)
+
+"I'm gonna go build a house — well, what are you gonna build? I don't know, I'm just gonna
+go build the house... have you decided what size of the rooms are going to be or what's
+going to be in there? No, I'm just going to build a house." It doesn't make sense. We're
+building a house — a high-tech house, potentially a trillion-dollar house — combined with a
+supercar. We're building the body now, and it can't just be any body. You put thought, care,
+attention, and detail into it: spec it out, talk it out, plan it out, blueprint it, think
+through all the colors, the details, the functions.
+
+He speaks from experience, not theory: 16 hours a day with AI for a couple of years, 25
+years online. "I'm not talking to a newbie." The frustration is real — "I've wanted to pull
+my hair out so many times" — and the lesson is earned: do it right, do it in a specific
+way, think logically about how you'd actually do it.
+
+---
+
 ## HUMAN NOTE
 
 Shawn — from a builder who once needed 198 tries to finish one page — laid down the law:
