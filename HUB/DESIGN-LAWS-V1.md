@@ -309,31 +309,41 @@ Two kinds of boards exist. **Room boards** (Part III) are the stage. **Smart Boa
 (this Part) are the soul: the fifteen-layer intelligent shell Shawn built and
 declared extraordinary. Never redesign the shell. Restore it, complete it, theme it.
 
-## SB-0 · The Fifteen Layers — in this order, every board, no exceptions
+## SB-0 · The Eight Canonical Layers — in this order, every board, no exceptions
+
+**Correction (2026-10-01):** this law previously declared fifteen layers. The canonical
+contract (DESIGN-CONTRACT.md §16) specifies **eight** intelligence layers, rendered as
+*nested intelligence, not repeated sections*. The disagreement is named here, not silently
+resolved: the fifteen counted board *furniture* (kicker, identity block, trust line, seal)
+and *extensions* (nutshell, how-to-use, how-it-connects) as layers. They are not layers.
+
+The eight canonical layers, in order:
 
 | # | Layer | Label | Job |
 |---|-------|-------|-----|
-| 1 | Kicker | `SMART NOTE 0X · CANONICAL INTELLIGENCE` | Provenance at a glance |
-| 2 | Identity | 🧠 glyph + Title | What this intelligence is |
-| 3 | Trust line | `SOURCE SEPARATED` | Source and interpretation are separate — always visible |
-| 4 | Nutshell | **IN A NUTSHELL** | The whole thing in 2–3 sentences |
-| 5 | Human | **HUMAN NOTE** · HUMAN INPUT | What the human brings |
-| 6 | Child | **CHILD** · SIMPLIFIED | A bright 10-year-old gets it |
-| 7 | Grandma | **GRANDMA NOTE** · WHY NOTICE? | A wise grandmother gets why it matters |
-| 8 | Naya | **NAYA NOTE** · INTERPRETATION | Naya's interpretation — labeled as interpretation, never as source |
-| 9 | Machine | **MACHINE NOTE** · EVIDENCE BOUNDARY | The mechanical pipeline; what is proven vs. assumed |
-| 10 | Learning | **ADAPTIVE LEARNING** · LEARNING | How this compounds — experience → intelligence → better action |
-| 11 | Meaning | **WHAT IT MEANS** · SIGNIFICANCE | The ultimate meaning |
-| 12 | Value | **WHAT'S IN IT FOR YOU?** · HUMAN VALUE | Why the human should care — bottom territory |
-| 13 | Use | **HOW TO USE IT** · PRACTICE | What to actually do with this — bottom territory |
-| 14 | Connect | **HOW IT ALL CONNECTS** · CONNECTIONS | How this board connects to the other boards, rooms, and the system — bottom territory |
-| 15 | Seal | `ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY — TRUST: SOURCE / INTERPRETATION SEPARATED` | The covenant, closing every board |
+| 1 | Human | **HUMAN NOTE** · HUMAN INPUT | What the human brings |
+| 2 | Child | **CHILD** · SIMPLIFIED | A bright 10-year-old gets it |
+| 3 | Grandma | **GRANDMA NOTE** · WHY NOTICE? | A wise grandmother gets why it matters |
+| 4 | Naya | **NAYA NOTE** · INTERPRETATION | Naya's interpretation — labeled as interpretation, never as source |
+| 5 | Machine | **MACHINE NOTE** · EVIDENCE BOUNDARY | The mechanical pipeline; what is proven vs. assumed |
+| 6 | Learning | **ADAPTIVE LEARNING** · LEARNING | How this compounds — experience → intelligence → better action |
+| 7 | Meaning | **WHAT IT MEANS** · SIGNIFICANCE | The ultimate meaning |
+| 8 | Value | **WHAT'S IN IT FOR YOU?** · HUMAN VALUE | Why the human should care |
 
-Layers 12–14 are the bottom trio, in that order: value → use → connects. Then the seal.
+**Board furniture (required, but not layers):** kicker line (`SMART NOTE 0X · CANONICAL
+INTELLIGENCE`), identity block (glyph + title), trust line (`SOURCE SEPARATED`), and the
+closing seal (`ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY — TRUST: SOURCE /
+INTERPRETATION SEPARATED`). Furniture frames the layers; it never counts as one.
 
-**Violation.** A board missing layers ("redesigned" shell). Layers out of order. The Naya note presented as source. The seal missing.
+**Permitted extensions (not canonical):** the V7 boards also carry a nutshell summary,
+a how-to-use, and a how-it-all-connects. These are board extensions — allowed where the
+V7 has them, never required, never called layers.
 
-**Test.** Checklist the fifteen against the V7 reference boards. All present, in order = pass.
+**Violation.** A board missing canonical layers. Layers out of order. The Naya note
+presented as source. The seal missing. Furniture counted as intelligence.
+
+**Test.** Checklist the eight against the V7 reference boards. All present, in order = pass.
+
 
 ## SB-1 · Tight Layers
 
