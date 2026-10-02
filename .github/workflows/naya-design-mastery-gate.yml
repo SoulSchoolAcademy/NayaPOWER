@@ -1,0 +1,49 @@
+name: Naya Design Mastery Gate
+
+on:
+  pull_request:
+    paths:
+      - 'NAYA-ACTIVATION/DESIGN/**'
+      - 'tools/verify_naya_design_mastery.py'
+      - '.github/workflows/naya-design-mastery-gate.yml'
+  push:
+    branches:
+      - 'naya-design-mastery-os-v1'
+    paths:
+      - 'NAYA-ACTIVATION/DESIGN/**'
+      - 'tools/verify_naya_design_mastery.py'
+
+permissions:
+  contents: read
+
+jobs:
+  mastery-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Design Mastery OS
+        run: python3 tools/verify_naya_design_mastery.py
+      - name: Parse mastery JSON contracts
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('NAYA-ACTIVATION/DESIGN/MASTERY')
+          for name in ['NAYA-DESIGN-MASTERY-V1.json','GOLD-STANDARD-REGISTRY-V1.json']:
+              with (base/name).open() as f:
+                  json.load(f)
+              print(name, 'VALID')
+          PY
+      - name: Guard against false mastery claim
+        run: |
+          python3 - <<'PY'
+          import json
+          p='NAYA-ACTIVATION/DESIGN/MASTERY/NAYA-DESIGN-MASTERY-V1.json'
+          d=json.load(open(p))
+          assert d['status'] == 'HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL'
+          assert 'Do not self-declare mastery' in d['mastery_claim_rule']
+          print('Design Mastery remains proposed and evidence-bound.')
+          PY
