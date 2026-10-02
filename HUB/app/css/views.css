@@ -90,3 +90,45 @@
 }
 .identity-card .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .identity-card .btn { min-height: 50px; padding: 0 34px; font-size: 14px; }
+
+
+/* ——— Welcome precision portal: 108 jewel orbit + one unity light ——— */
+.welcome-portal-stage{
+  width:min(58vw,360px);height:min(58vw,360px);min-width:250px;min-height:250px;
+  position:relative;display:grid;place-items:center;margin-bottom:26px;
+}
+.welcome-portal-stage .portal-jewel{
+  width:118px;height:118px;margin:0;z-index:3;
+}
+.welcome-orbit,.welcome-unity-orbit{
+  position:absolute;inset:0;border-radius:50%;pointer-events:none;
+}
+.welcome-orbit{animation:welcome-spectrum 78s linear infinite}
+.welcome-orbit-jewel{
+  --a:0deg;--j:#9d75ff;--s:1;
+  position:absolute;left:50%;top:50%;width:7px;height:11px;margin:-5.5px 0 0 -3.5px;
+  clip-path:polygon(50% 0,88% 26%,74% 82%,50% 100%,26% 82%,12% 26%);
+  background:radial-gradient(circle at 30% 20%,#fff 0 8%,transparent 28%),
+             linear-gradient(140deg,#ffffffcc,var(--j) 27% 61%,#ffffff24 74%,#0008);
+  box-shadow:0 0 2px #fff8,0 0 6px var(--j),0 0 12px color-mix(in srgb,var(--j) 42%,transparent);
+  transform:rotate(var(--a)) translateY(-154px) rotate(calc(var(--a) * -1)) scale(var(--s));
+  opacity:.82;
+}
+.welcome-unity-orbit{animation:welcome-unity 31s linear infinite}
+.welcome-unity-light{
+  position:absolute;left:50%;top:2%;width:7px;height:7px;margin:-3.5px;border-radius:50%;
+  background:#fff;box-shadow:0 0 5px #fff,0 0 13px #fff,0 0 30px #ffffff88,0 0 54px #ffffff2e;
+}
+@keyframes welcome-spectrum{to{transform:rotate(-360deg)}}
+@keyframes welcome-unity{to{transform:rotate(360deg)}}
+@media(max-width:620px){
+  .welcome-portal-stage{width:300px;height:300px;min-width:300px;min-height:300px}
+  .welcome-orbit-jewel{transform:rotate(var(--a)) translateY(-128px) rotate(calc(var(--a) * -1)) scale(var(--s))}
+}
+@media(max-width:350px){
+  .welcome-portal-stage{width:260px;height:260px;min-width:260px;min-height:260px}
+  .welcome-orbit-jewel{transform:rotate(var(--a)) translateY(-110px) rotate(calc(var(--a) * -1)) scale(var(--s))}
+}
+@media(prefers-reduced-motion:reduce){
+  .welcome-orbit,.welcome-unity-orbit,.welcome .portal-jewel,.welcome h1{animation:none!important}
+}
