@@ -1,26 +1,26 @@
-/* SMART FEED — THE GAME */
+/* SMART FEED — THE GAME.
+   Director ruling 2026-10-02: the mode zone (Collective / Personal / Activity)
+   lives in the shell and ONLY in the shell. This room is the river — it reads
+   the shell's mode and never renders its own mode control. */
 (function(){
   function FeedRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit, r=K.room('feed');
+    const R=window.NayaRuntime;
     const wrap=el('div','room-scene'); wrap.style.setProperty('--room-accent',r.accent);
     const top=el('div','room-toolbar between');
-    const modes=K.segmented([
-      {value:'collective',label:'COLLECTIVE'},
-      {value:'personal',label:'PERSONAL'},
-      {value:'activity',label:'ACTIVITY'}
-    ],'collective',mode=>refresh(mode));
     const status=el('div','room-status-line','<span class="led"></span><span>LIVE INTELLIGENCE · PROVENANCE PRESERVED</span>');
-    top.append(modes,status); wrap.appendChild(top);
+    top.appendChild(status); wrap.appendChild(top);
 
     const intro=K.board(r.accent,'feed','The game','The living intelligence stream. Streams are sources; smart views are lenses.');
     intro.body.innerHTML='<p style="color:var(--ink-dim);font-size:13.5px;max-width:720px;line-height:1.55">Collective shows consented network intelligence, Personal shows intelligence scoped to you, and Activity shows operational change. Switching streams must change the underlying runtime query — never just the color.</p>';
     wrap.appendChild(intro);
 
     const zone=el('section','intelligence-list'); wrap.appendChild(zone);
-    refresh('collective');
+    refresh();
     return wrap;
 
-    function refresh(stream){
+    function refresh(){
+      const stream=R.mode||'collective';
       K.load(zone,'feed',{stream,limit:50},(payload,list,out)=>{
         const head=el('div','room-toolbar between');
         const count=el('div','room-status-line','<span class="led"></span><span>'+K.safe(list.length)+' QUALIFYING OBJECT'+(list.length===1?'':'S')+'</span>');

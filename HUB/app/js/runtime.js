@@ -116,9 +116,60 @@ const Runtime = (() => {
 
 
 
+  // ——— The Main Show's mode zone. Director ruling 2026-10-02:
+  // Collective / Personal / Activity live here and ONLY here — never in rooms.
+  const MODES = [
+    { id: 'collective', name: 'Collective',
+      hint: 'Anonymized, consented',
+      desc: 'The shared intelligence — anonymized, consented, collective.',
+      accent: '#9d75ff' },
+    { id: 'personal', name: 'Personal',
+      hint: 'Private by default',
+      desc: 'Your intelligence — private by default, yours alone.',
+      accent: '#d86cff' },
+    { id: 'activity', name: 'Activity',
+      hint: 'The network pulse',
+      desc: 'What happened — the pulse of you and the network.',
+      accent: '#55b9ee' },
+  ];
+  let mode = 'collective';
+  function setMode(m) {
+    if (MODES.some(x => x.id === m)) mode = m;
+    return mode;
+  }
+
+  // ——— The ecosystem drawer. Director's list, 2026-10-02.
+  // kind: internal (hash route, works now) | external (canonical property).
+  // External URLs are NOT guessed — url:null renders an honest LINK PENDING
+  // state until the director supplies the canonical address. Never a dead
+  // button pretending to go somewhere.
+  const ECOSYSTEM_LINKS = [
+    { id: 'home',       name: 'Home',            desc: 'The Main Show — your intelligence feed',
+      kind: 'internal', route: '/hub',        icon: 'home' },
+    { id: 'nayapower',  name: 'NayaPOWER',       desc: 'The governed intelligence substrate',
+      kind: 'external', url: null,             icon: 'core' },
+    { id: 'challenge',  name: '5-Day Challenge', desc: 'Five days into an intelligent life',
+      kind: 'external', url: null,             icon: 'spark' },
+    { id: 'enterfree',  name: 'Enter Free',      desc: 'Begin — no commitment',
+      kind: 'external', url: null,             icon: 'open' },
+    { id: 'powercast',  name: 'Powercast',       desc: 'The NayaNET broadcast',
+      kind: 'external', url: null,             icon: 'play' },
+    { id: 'whitepaper', name: 'White Paper',     desc: 'The NayaNET thesis, in full',
+      kind: 'external', url: null,             icon: 'note' },
+    { id: 'about',      name: 'About Us',        desc: 'The people building this',
+      kind: 'external', url: null,             icon: 'nodes' },
+    { id: 'login',      name: 'Login',           desc: 'Verify your identity',
+      kind: 'internal', route: '/identity',   icon: 'lock' },
+  ];
+
+  // The room drawer holds the ten rooms. Smart Feed is NOT a drawer entry —
+  // it is the Main Show (director ruling 2026-10-02).
+  function drawerRooms() { return ROOMS.filter(r => r.id !== 'feed'); }
+
   return {
-    ROOMS, DOORS, DOOR_ROADMAP, stateFor, NOT_VERIFIED_COPY,
-    connectDoor, search,
+    ROOMS, DOORS, DOOR_ROADMAP, MODES, ECOSYSTEM_LINKS, stateFor, NOT_VERIFIED_COPY,
+    connectDoor, search, drawerRooms,
+    get mode() { return mode; }, setMode,
     version: '1.0.0',
     doorRegistryRef: 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json',
   };

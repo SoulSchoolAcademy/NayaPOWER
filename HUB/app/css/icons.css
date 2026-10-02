@@ -19,6 +19,7 @@
   flex: none;
 }
 
+.drawer-emblem,
 .rail-emblem {
   display: inline-flex;
   flex: none;
@@ -58,6 +59,7 @@ button:active .action-chip {
 }
 
 /* ——— the Naya emblem: Shawn's crystal mark ——— */
+.drawer-emblem img,
 .rail-emblem img {
   display: block;
   border-radius: 50%;
