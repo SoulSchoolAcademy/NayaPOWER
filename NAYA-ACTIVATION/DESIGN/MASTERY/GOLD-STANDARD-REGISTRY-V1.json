@@ -1,0 +1,33 @@
+{
+  "$schema": "naya.design-gold-registry.v1",
+  "version": "1.0.0",
+  "status": "PROPOSED_REGISTRY",
+  "purpose": "Track reference floors, accepted gold examples, anti-examples and supersession without turning screenshots into universal law.",
+  "entry_states": ["REFERENCE_FLOOR", "CANDIDATE", "GOLD_ACCEPTED", "ANTI_EXAMPLE", "SUPERSEDED"],
+  "promotion_rule": "GOLD_ACCEPTED requires explicit Human Director acceptance and/or applicable independent outcome evidence plus stable source/evidence references.",
+  "truth_rule": "A registry entry never upgrades runtime truth, product completion or authority.",
+  "entries": [
+    {
+      "id": "REF-HUB-CONCEPT-001",
+      "state": "REFERENCE_FLOOR",
+      "project": "NayaNET Intelligent Hub",
+      "surface": "Hub visual laboratory",
+      "source_ref": "HUB/NAYANET INTERFACE CONCEPT.html",
+      "why_it_matters": ["existing visual-quality floor", "living depth", "spectral intelligence", "board/button/material language"],
+      "do_not_copy_literally": ["monolithic production architecture", "legacy performance weight", "prototype-only interaction behavior"],
+      "evidence_refs": [],
+      "applicability": ["NayaNET Hub visual language"]
+    },
+    {
+      "id": "REF-WELCOME-001",
+      "state": "REFERENCE_FLOOR",
+      "project": "NayaNET",
+      "surface": "Welcome portal",
+      "source_ref": "HUB/NAYANET WELCOME PAGE.html",
+      "why_it_matters": ["invitation-not-explanation", "orbital/jewel portal identity", "spectral field", "restrained entrance moment"],
+      "do_not_copy_literally": ["prototype routing", "unverified liveness"],
+      "evidence_refs": [],
+      "applicability": ["NayaNET entry experience"]
+    }
+  ]
+}
