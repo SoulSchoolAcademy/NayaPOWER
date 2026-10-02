@@ -77,7 +77,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE CONTROL DECK.** Neutral silver and obsidian replace form-page blandness with calm instrument-panel precision. Controls should feel like brushed metal or precision switches only where physicality improves understanding. Every consequential setting shows what it affects, where it persists, whether it is local/account/runtime-backed, and what the recovery path is. Control should feel empowering, not administrative.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -305,6 +305,25 @@ And the current global acceptance bar applies:
 - Control-deck material language should be rendered and challenged for calmness versus sterility.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+Before a consequential control changes, the human can understand **what will change, where it applies, what authority is involved, and how to reverse or verify it** — then receives truthful confirmation after the change.
+
+### Best-of intelligence to synthesize
+- **Norman/Nielsen:** mapping, feedback, error prevention and recovery.
+- **Stripe:** operational consequence clarity.
+- **Things:** calm hierarchy and restraint.
+- **Linear:** compact precision.
+
+### Beyond-benchmark hypothesis
+Settings become a Smart Control Deck when every control is causally transparent, scope-aware and verifiable, while ordinary preferences remain effortless and technical machinery stays secondary.
+
+### Proof boundary
+Measure setting-find time, change success, reversal/recovery success, consequential misclick rate and persistence verification.
 
 ---
 

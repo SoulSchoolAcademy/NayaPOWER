@@ -72,7 +72,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE BLACK BOX / PROOF ROOM.** Gold light is sparse and precious. Consequential events form a precise evidence timeline; sealed receipts feel like crafted instruments, not log rows. The room should communicate: “nothing consequential disappears.” Human-readable meaning comes first; technical proof unfolds underneath on demand.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -295,6 +295,25 @@ And the current global acceptance bar applies:
 - Exact gold intensity must remain restrained so evidence remains readable; render test required.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+A consequential action expands from a single gold timeline entry into **authority → action → observation → outcome → verification**, all readable by a non-engineer and inspectable by a machine.
+
+### Best-of intelligence to synthesize
+- **Stripe:** operational clarity.
+- **Pentagram:** data hierarchy and narrative.
+- **Things:** calm restraint.
+- **Norman/Nielsen:** state, feedback and recovery clarity.
+
+### Beyond-benchmark hypothesis
+The ledger can go beyond conventional audit logs by making evidence understandable, beautiful and directly connected to authority/provenance while retaining machine-verifiable receipts.
+
+### Proof boundary
+Require receipt find-time, proof comprehension, record accuracy and independent verification.
 
 ---
 

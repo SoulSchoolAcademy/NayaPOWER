@@ -41,6 +41,13 @@
       ]
     },
     {
+      "id": "hub-home",
+      "purpose": "First Intelligent Hub experience: Naya presence, distilled current intelligence, obvious next action and room entry.",
+      "primary_action": "OPEN_TOP_INTELLIGENCE_OR_ASK_NAYA",
+      "route": "/hub",
+      "design_contract": "HUB/ROOMS/00-HUB-HOME.md"
+    },
+    {
       "id": "search",
       "purpose": "Retrieve canonical intelligence by relevance/context with provenance."
     },
@@ -199,8 +206,10 @@
     "machine": "HUB/NAYANET-SMART-APP-ROOMS-V1.json",
     "design_intelligence": "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-V1.json@1.3",
     "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
-    "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF"
+    "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF",
+    "living_registry": "HUB/ROOMS/README.md",
+    "hub_home": "HUB/ROOMS/00-HUB-HOME.md"
   },
-  "builder_rule": "Before substantive room/page implementation, retrieve the smart-app room spec and machine contract; do not re-derive shell, room purpose, state grammar, or human-job hierarchy from screenshots.",
+  "builder_rule": "Before substantive Hub/room/page implementation, retrieve the master smart-app spec and the applicable living room contract; do not re-derive shell, room purpose, state grammar, signature moment, or human-job hierarchy from screenshots.",
   "benchmark_rule": "Research the frontier when material, extract causal principles, preserve any stronger current Naya behavior, synthesize, generate a beyond-benchmark option, then verify improvement before promotion."
 }

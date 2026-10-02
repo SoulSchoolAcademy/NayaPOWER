@@ -73,7 +73,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE CONSTELLATION.** Orange warmth represents relationship and human connection. The default experience remains legible and list-oriented; when a graph truly adds understanding, identities become a living constellation with explicit relationship lines and scope. Proximity, brightness or motion must never invent relationship strength — visual intensity follows supported state only.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -292,6 +292,25 @@ And the current global acceptance bar applies:
 - Whether/when the graph view materially improves outcomes must be proven; it remains optional.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+A relationship opens as a living object showing **who/what the connection is, what is shared, what consent/authority applies, what changed, and where the relationship lives across Spaces**.
+
+### Best-of intelligence to synthesize
+- **Airbnb:** trust and consequential relationship decisions.
+- **Spotify:** personal relevance without changing interaction grammar.
+- **Bret Victor:** direct, explorable relationship representations.
+- **frog:** journey/context thinking.
+
+### Beyond-benchmark hypothesis
+A relationship interface becomes smarter when social/organizational connections are inseparable from scope, consent, shared intelligence and evidence — not merely profile links.
+
+### Proof boundary
+Test relationship/scope comprehension, revocation/manage flows and false-access inference.
 
 ---
 

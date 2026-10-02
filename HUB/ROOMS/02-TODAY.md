@@ -75,7 +75,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE HIGHLIGHT REEL.** Magenta intelligence is edited into a cinematic daily arc: one dominant NOW moment, a short NEXT sequence, WATCH tension, LEARNED transformation and WAITING dependencies. The room should feel like Naya already watched the whole game and cut the few scenes the human actually needs. It is calm, editorial and emotionally resonant — not a dashboard of today's metrics.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -298,6 +298,25 @@ And the current global acceptance bar applies:
 - The amount of Recent Proof visible by default should be tuned to trust need versus cognitive load.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+The human opens the room and instantly feels: **“She already did the sorting.”** A concise magenta day-arc visually connects the most important beats without forcing the person to reconstruct the day.
+
+### Best-of intelligence to synthesize
+- **Oura:** distilled personal signals first, evidence second.
+- **Things:** calm organization and low cognitive burden.
+- **Tide Guide:** state expressed through an environmental visual language.
+- **Pentagram:** information shaped into a coherent narrative.
+
+### Beyond-benchmark hypothesis
+A daily briefing can outperform static dashboards by combining personalized distillation, verified learning, waiting/dependency awareness, provenance and direct next-action support in one adaptive narrative.
+
+### Proof boundary
+Measure time-to-orientation, top-action usefulness, missed-critical-item rate and return-session continuity before claiming superiority.
 
 ---
 

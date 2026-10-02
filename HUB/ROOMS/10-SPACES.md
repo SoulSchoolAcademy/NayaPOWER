@@ -75,7 +75,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE WORLDS.** Lime marks context and growth. Each Space is a coherent world, not a folder: identity, purpose, people, goals and intelligence form one environment. Entering a Space may subtly retint ambient shell energy while the navigation and interaction grammar remain stable. The human should *feel* the context change without having to relearn the product.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -294,6 +294,25 @@ And the current global acceptance bar applies:
 - Exact sphere/world visual treatment must be proven against clarity; metaphor cannot outrank navigation.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+Crossing into a Space changes what Naya retrieves, prioritizes and explains while preserving canonical object identity and scope — context switching feels like travel, not opening another folder.
+
+### Best-of intelligence to synthesize
+- **AKQA:** immersive digital environments.
+- **Airbnb:** trust and context-rich decision making.
+- **Spotify:** personalized content inside familiar grammar.
+- **Huge / Work & Co:** coherence across a large ecosystem.
+
+### Beyond-benchmark hypothesis
+Spaces can exceed ordinary workspaces by becoming governed context lenses over one intelligence substrate: people, goals, retrieval, reports and Naya all adapt without copying data or broadening authority.
+
+### Proof boundary
+Test context-switch correctness, scope comprehension, cold return/resume time and cross-space leakage.
 
 ---
 

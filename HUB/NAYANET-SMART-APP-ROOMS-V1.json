@@ -1,6 +1,6 @@
 {
   "schema": "nayanet.smart-app.rooms.v1",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
   "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF",
   "design_intelligence": "NAYA-DESIGN-INTELLIGENCE-V1@1.3",
@@ -287,6 +287,7 @@
     "APP_SHELL",
     "SEARCH_NAYA",
     "WELCOME_IDENTITY_HUB",
+    "HUB_HOME_MAIN_SHOW",
     "TODAY",
     "FEED",
     "LIBRARY",
@@ -302,6 +303,7 @@
     "INDEPENDENT_GRADUATION"
   ],
   "room_document_registry": {
+    "hub_home": "HUB/ROOMS/00-HUB-HOME.md",
     "feed": "HUB/ROOMS/01-FEED.md",
     "today": "HUB/ROOMS/02-TODAY.md",
     "reports": "HUB/ROOMS/03-REPORTS.md",
@@ -314,5 +316,24 @@
     "spaces": "HUB/ROOMS/10-SPACES.md",
     "settings": "HUB/ROOMS/11-SETTINGS.md"
   },
-  "room_record_rule": "Every canonical room has one living room-specific contract. The record specializes the master room law, retains open decisions, and records evidence-backed design evolution. It is specification truth, not runtime proof."
+  "room_record_rule": "Every canonical room has one living room-specific contract. The record specializes the master room law, retains open decisions, and records evidence-backed design evolution. It is specification truth, not runtime proof.",
+  "hub_home": {
+    "id": "hub-home",
+    "name": "Intelligent Hub Home",
+    "metaphor": "THE_MAIN_SHOW",
+    "route": "/hub",
+    "primary_room": false,
+    "job": "Arrive already oriented to the few things that matter now.",
+    "primary": "OPEN_TOP_INTELLIGENCE_OR_ASK_NAYA",
+    "composition": [
+      "NAYA_PRESENCE",
+      "CURRENT_INTELLIGENCE_HEADLINE",
+      "UP_TO_THREE_BEATS",
+      "ASK_NAYA",
+      "CONTINUE_CONTEXT",
+      "ROOM_NAVIGATION"
+    ],
+    "design_contract": "HUB/ROOMS/00-HUB-HOME.md",
+    "anti_pattern": "KPI_DASHBOARD_AS_FIRST_IMPRESSION"
+  }
 }

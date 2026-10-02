@@ -376,6 +376,37 @@ Do not expose tokens, runtime IDs or identity internals as primary UX.
 
 ---
 
+# 9A. INTELLIGENT HUB HOME — THE MAIN SHOW
+
+**Purpose:** make the first moment inside the Hub feel like living intelligence already at work.
+
+**Human question:** “What matters now, and where should I go?”
+
+**3-second understanding:** “Naya already distilled what matters and I can move immediately.”
+
+**Primary action:** open the most useful current intelligence beat or ask Naya.
+
+## Composition
+
+- Naya presence / legitimate recognition;
+- one current-intelligence headline;
+- up to three high-value intelligence beats;
+- prominent Ask Naya / intelligence search instrument;
+- optional continue/recent-context affordance when real context exists;
+- quiet but always-available room navigation.
+
+This is **not a dashboard** and not a twelfth primary room.
+
+Its job is to create:
+
+**PRESENCE → RECOGNITION → DISTILLATION → INVITATION → FLOW**
+
+The first “wow” must come primarily from Naya having already done useful cognitive work, with visual craft amplifying it.
+
+**Living contract:** `HUB/ROOMS/00-HUB-HOME.md`
+
+---
+
 # 10. SMART FEED — “WHAT SHOULD I SEE NOW?”
 
 **Route:** `/feed`  
