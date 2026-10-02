@@ -189,7 +189,7 @@ async function assertMainShow(page,label){
 
   await page.evaluate(()=>window.scrollTo(0,420));
   await page.waitForTimeout(50);
-  const top=await page.locator('.feed-modebar').evaluate(el=>Math.round(el.getBoundingClientRect().top));
+  const top=await page.locator('.mode-zone').evaluate(el=>Math.round(el.getBoundingClientRect().top));
   if(top<63) fail(label+': sticky mode zone collides with the topbar, top='+top);
   await page.evaluate(()=>window.scrollTo(0,0));
 
@@ -200,6 +200,11 @@ async function assertMainShow(page,label){
 
   if(await page.locator('.snap-hero').count()!==1) fail(label+': expected exactly one dominant intelligence object');
   if(!(await page.locator('.snap-board').first().evaluate(el=>el.classList.contains('snap-hero')))) fail(label+': first ranked intelligence is not the focal object');
+
+  await page.locator('.mode-btn[data-mode="personal"]').click();
+  await page.waitForFunction(
+    () => document.querySelector('.sb-title')?.textContent.includes('Choose the next highest-value move')
+  );
 
   const personalTone=await page.locator('.snap-board').first().evaluate(
     el=>el.style.getPropertyValue('--tone').trim()
