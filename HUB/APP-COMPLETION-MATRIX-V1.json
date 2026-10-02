@@ -66,12 +66,12 @@
       "remaining": "Live backend capability coverage and browser proof required."
     },
     "responsive": {
-      "state": "IMPLEMENTED",
+      "state": "TESTED",
       "evidence": [
-        "HUB/app/css/shell.css",
-        "HUB/app/css/rooms.css"
+        "Hub App Completion Gate browser-smoke run 36955195833",
+        "hub-browser-qa artifact 11205951815"
       ],
-      "remaining": "Viewport/zoom/browser evidence pending."
+      "remaining": "Independent visual review across artifact screenshots and additional zoom/orientation/device cases remain."
     },
     "accessibility": {
       "state": "IMPLEMENTED",
@@ -86,10 +86,11 @@
       "remaining": "Measure bundle, render, interaction and device performance."
     },
     "regression_suite": {
-      "state": "IMPLEMENTED",
+      "state": "TESTED",
       "evidence": [
         "tools/verify_hub_app_completion.py",
-        ".github/workflows/hub-app-completion-gate.yml"
+        ".github/workflows/hub-app-completion-gate.yml",
+        "browser-smoke run 36955195833"
       ],
       "remaining": "Add visual/browser regression evidence."
     },
@@ -102,37 +103,35 @@
   "surfaces": {
     "welcome": {
       "kind": "journey",
-      "state": "IMPLEMENTED",
+      "state": "TESTED",
       "files": [
         "HUB/app/js/views/welcome.js"
       ],
       "remaining": [
-        "browser proof",
-        "visual regression comparison"
+        "independent visual comparison against approved portal baseline"
       ]
     },
     "identity": {
       "kind": "journey",
-      "state": "IMPLEMENTED",
+      "state": "TESTED",
       "files": [
         "HUB/app/js/views/identity.js"
       ],
       "remaining": [
         "governed identity runtime binding",
-        "negative identity proof",
-        "browser proof"
+        "negative identity runtime proof"
       ]
     },
     "shell": {
       "kind": "shared",
-      "state": "IMPLEMENTED",
+      "state": "TESTED",
       "files": [
         "HUB/app/js/views/hub.js",
         "HUB/app/css/shell.css"
       ],
       "remaining": [
-        "full breakpoint/zoom QA",
-        "scroll/back-forward/reload proof"
+        "deeper back-forward/reload state restoration proof",
+        "200% zoom and landscape expansion beyond current smoke coverage"
       ]
     },
     "global_search": {
@@ -170,7 +169,12 @@
         "live Personal/Collective/Activity round-trip",
         "WhyAmISeeingThis evidence",
         "cross-room object detail"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "today": {
       "state": "IMPLEMENTED",
@@ -182,7 +186,12 @@
         "highlight selection evidence",
         "Naya reflection evidence",
         "quiet-day browser proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "reports": {
       "state": "IMPLEMENTED",
@@ -193,7 +202,12 @@
         "day/week/month/year runtime",
         "period semantic differentiation proof",
         "evidence appendix"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "library": {
       "state": "IMPLEMENTED",
@@ -204,7 +218,12 @@
         "canonical semantic search",
         "domain runtime",
         "uncertainty/gap proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "connect": {
       "state": "IMPLEMENTED",
@@ -214,7 +233,12 @@
       "remaining": [
         "registry fetched dynamically rather than mirrored",
         "connection/auth/authority/health runtime proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "ledger": {
       "state": "IMPLEMENTED",
@@ -224,7 +248,12 @@
       "remaining": [
         "receipt/outcome/verification runtime",
         "causal chain proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "connections": {
       "state": "IMPLEMENTED",
@@ -235,7 +264,12 @@
         "governed relationship runtime",
         "consent/revoke proof",
         "accessible graph/list equivalence"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "lists": {
       "state": "IMPLEMENTED",
@@ -246,7 +280,12 @@
         "canonical reference persistence",
         "smart-rule explanation",
         "cross-room add-to-list path"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "mail": {
       "state": "IMPLEMENTED",
@@ -257,7 +296,12 @@
         "real mail runtime",
         "draft/send authority proof",
         "thread context proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "spaces": {
       "state": "IMPLEMENTED",
@@ -268,7 +312,12 @@
         "Space context persistence",
         "query/ranking changes by Space",
         "privacy enforcement proof"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     },
     "settings": {
       "state": "IMPLEMENTED",
@@ -279,7 +328,12 @@
         "real account/settings persistence",
         "privacy/authority enforcement scope",
         "System Health live evidence"
-      ]
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
     }
   },
   "whole_app_journeys": [
@@ -364,5 +418,42 @@
     "builder self-score cannot close the release gate",
     "remaining work stays machine-visible until evidence closes it"
   ],
-  "next_failing_gate": "Static/syntax validation of the complete 11-room implementation, then browser QA and exact governed runtime contract binding."
+  "next_failing_gate": "Bind the exact governed runtime contract and prove one canonical intelligence object end-to-end across Feed → Today → Library → Lists/Spaces → Ledger, then continue room runtime closure without regressing browser-tested surfaces.",
+  "latest_validation": {
+    "head_sha": "7a65d11b957f3a0dfcd3cd613cb088d26f8975cc",
+    "hub_completion_gate": {
+      "run_id": 36955199586,
+      "result": "SUCCESS"
+    },
+    "collective_chain_readiness": {
+      "run_id": 36955199590,
+      "result": "SUCCESS"
+    },
+    "kernel_tests": {
+      "run_id": 36955199623,
+      "result": "FAIL_SHARED_BRAIN_INDEX_DRIFT_ONLY",
+      "node_tests": "246 passed / 0 failed",
+      "pytest": "546 passed / 3 skipped / 0 failed",
+      "failing_step": "tools/regenerate_brain_index.py --check",
+      "observed": "05-MEMORY actual 26 vs expected 23",
+      "routed_to": "PR #1301"
+    },
+    "browser_qa": {
+      "run_id": 36955195833,
+      "result": "SUCCESS",
+      "artifact_id": 11205951815,
+      "artifact_name": "hub-browser-qa",
+      "artifact_digest": "sha256:84e96cc417281e7ef9189d2bcaf484a7e89788cf8ee1d57d7c42cd824c3fcd7b",
+      "coverage": [
+        "welcome",
+        "identity",
+        "all_11_desktop_rooms",
+        "all_11_mobile_rooms",
+        "mobile_drawer",
+        "horizontal_overflow",
+        "reduced_motion_context",
+        "108_welcome_jewels"
+      ]
+    }
+  }
 }
