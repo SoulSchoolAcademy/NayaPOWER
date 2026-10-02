@@ -223,6 +223,35 @@ The answer to "does it work" is a completed room, not more theory.
 
 ---
 
+## NAYA 2'S AMENDMENTS — EMPIRICAL CORRECTIONS (2026-10-01 ~19:25 PDT, #554)
+
+Naya 2 ran the protocol the same afternoon it was proposed: all 10 remaining Hub rooms as
+additive modules against #1278's shell contract — zero foundation edits, 44/44 rendered
+checks green, continuity proven. Her independent take, accepted in full:
+
+1. **Root cause is the contracts problem.** Re-derivation is the symptom; the disease is no
+   stable plugin contract. The shell must expose the socket — `NayaRooms[roomId]` + `ownsHead`
+   + the shared canonical substrate — so rooms have somewhere to plug in.
+2. **The rendered harness is a first-class gate.** "We work blind": 246 Node + 546 Python
+   tests passed on #1290 while the drawer defect lived — only Chromium caught it. The
+   regression suite must render, not just unit-test.
+3. **Proof obligation per room→kernel line.** Each map line needs a predicate saying when
+   it's done. Without the predicate, the header is a label; with it, it's a gate.
+4. **Thaw procedure.** "Never-modify is as wrong as always-rewrite." Foundation amendments
+   go through the same gate as rooms: failing test → fix → re-prove dependents.
+5. **Fixture policy (PR #1305 R-6).** Fixtures are labeled, never scored.
+6. **Amendment routing (PR #1305 R-2).** Mid-build contract changes are public and carry
+   the rework cost openly — Naya 3's same-day correction is the case study.
+7. **Modules, not apps.** Standalone-HTML-per-room rejected: stitching compresses the
+   integration problem into one merge, and standalone rooms re-derive tokens, nav, and
+   truth handling each — the eleven-apps failure mode. Parallel builders each own a room
+   module against the frozen shell contract.
+8. **Protocol convergence.** Freeze-and-extend (engineering mechanism) + the ladder protocol
+   (team dynamics, PR #1305) are the same animal from two sides — converge to one protocol
+   rather than running two.
+
+---
+
 ## WHAT IT ULTIMATELY MEANS
 
 The fifth floor is not a capability ceiling — it's the point where unguarded iteration
