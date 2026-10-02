@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """IB → Hub feed pipeline (demo trigger).
 
-Reads Intelligent Blocks from BRAIN/04-INTELLIGENCE/SMART-NOTES/** and emits
+Reads Intelligent Blocks from BRAIN/05-MEMORY/SMART-NOTES/** and emits
 `.block` article HTML for injection into the Hub's `.blocks` container.
 
 The Hub is the OUTPUT. This script is the TRIGGER: IB written -> event ->
@@ -10,9 +10,10 @@ feed block. Production trigger: GitHub Actions on push to SMART-NOTES/**.
 import os, re, html, glob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-# Canonical IB home (Shawn's path: brain/smart-notes/YYYY/MM/DD/...).
+# Canonical IB home: ratified protocol 0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1
+# specifies BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md.
 # Falls back to the branch-local demo tree when the canonical tree is absent.
-IB_ROOT = os.path.join(HERE, 'BRAIN', '04-INTELLIGENCE', 'SMART-NOTES')
+IB_ROOT = os.path.join(HERE, 'BRAIN', '05-MEMORY', 'SMART-NOTES')
 if not os.path.isdir(IB_ROOT):
     IB_ROOT = os.path.join(HERE, 'ib', 'SMART-NOTES')
 

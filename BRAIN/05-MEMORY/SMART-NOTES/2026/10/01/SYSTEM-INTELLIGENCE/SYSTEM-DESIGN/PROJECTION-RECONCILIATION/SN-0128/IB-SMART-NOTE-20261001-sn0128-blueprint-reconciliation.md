@@ -7,7 +7,9 @@ captured: 2026-10-01 19:05 PDT
 captured-by: Naya 4 (builder seat)
 source: detailed alignment analysis shared by Shawn Vibert (forwarded text; authoring seat
   unconfirmed — reads as another AI seat's analysis written against fresh GitHub truth)
+relocated: 2026-10-01 from 04-INTELLIGENCE demo path to canonical 05-MEMORY home per ratified protocol 0005
 provenance: human-shared intelligence → distilled by Naya 4 → intelligent block
+sn-number: SN-0128
 ib-number: IB-005
 github-truth-at-capture: main 43e74d30c407b39d1d7e471267982f8e8cab60fd
 

@@ -2,7 +2,7 @@
 #
 # Shawn's model: the Hub is the OUTPUT of intelligence, not the input.
 # When any AI captures a Smart Note / Activity / Report, it writes an
-# Intelligent Block to BRAIN/04-INTELLIGENCE/SMART-NOTES/**. This workflow
+# Intelligent Block to BRAIN/05-MEMORY/SMART-NOTES/**. This workflow
 # is the TRIGGER: it validates the new IBs and emits feed events for the
 # Hub build to consume. It never deploys — production deploy stays the
 # human director's explicit gate.
@@ -16,7 +16,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'BRAIN/04-INTELLIGENCE/SMART-NOTES/**'
+      - 'BRAIN/05-MEMORY/SMART-NOTES/**'
   workflow_dispatch:
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
         run: |
           python3 - <<'PYEOF'
           import os, re, json, glob
-          ROOT = 'BRAIN/04-INTELLIGENCE/SMART-NOTES'
+          ROOT = 'BRAIN/05-MEMORY/SMART-NOTES'
           REQUIRED = ['in a nutshell']
           LAYERS = ['in a nutshell','human note','child note','grandma note',
                     'naya note','machine note','learning lesson',

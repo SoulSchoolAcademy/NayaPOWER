@@ -45,8 +45,10 @@ Step by step, with no exceptions:
 
 1. **Capture.** You ask any AI for a smart note, an activity update, or a report.
    (A smart note is also a diary entry, an intelligent entry — same thing.)
-2. **Block.** The AI writes an Intelligent Block to
-   `BRAIN/04-INTELLIGENCE/SMART-NOTES/<YYYY>/<MM>/<DD>/<slug>.md`, carrying all ten layers:
+2. **Block.** The AI writes an Intelligent Block to the canonical home
+   `BRAIN/05-MEMORY/SMART-NOTES/<YYYY>/<MM>/<DD>/<CATEGORY>/<TOPIC>/<SUBTOPIC>/SN-###/IB-....md`
+   (ratified protocol `BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md`),
+   carrying all ten layers:
    in-a-nutshell, human note, child note, grandma note, Naya note, machine note,
    learning lesson, what it ultimately means, how to use it, what's in it for you.
 3. **Trigger.** The new block is validated and an intelligent event is emitted.
@@ -101,7 +103,9 @@ If that works, the pipeline works. If it does not, the pipeline is where to look
 
 ---
 
-**Open questions for the lanes (not decisions):** confirm the canonical SMART-NOTES home
-(proposed: `BRAIN/04-INTELLIGENCE/SMART-NOTES`, beside the ratified IB protocol — note: an
-earlier message said 05-MEMORY; the actual demo IBs live at 04-INTELLIGENCE); wire
+**Resolved 2026-10-01:** the canonical SMART-NOTES home is `BRAIN/05-MEMORY/SMART-NOTES`
+per the ratified IB protocol (0005, line 337) — Naya 3's projection-contract reconciliation
+confirmed it, and the SN-001..SN-126 corpus plus the distillation loop all stage there. The
+04-INTELLIGENCE placement was a demo-local error, corrected the same day: notes relocated,
+pipeline repointed. Remaining open questions for the lanes (not decisions): wire
 `feed-events.json` into the #1278 feed room; merge the trigger workflow (director's gate).
