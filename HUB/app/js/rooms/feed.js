@@ -21,11 +21,6 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
-  const MODES=[
-    {id:'personal',label:'Personal'},
-    {id:'collective',label:'Collective'},
-    {id:'activity',label:'Activity'}
-  ];
 
   const GLYPHS={
     decision:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>',
@@ -35,7 +30,7 @@
   };
 
   let allItems=[];
-  let currentMode=restoreMode();
+  let currentMode=normalizeMode(window.NayaRuntime?.mode||'collective');
   let evidenceReturnFocus=null;
 
   function FeedRoom(){
@@ -46,8 +41,6 @@
 
     stage.appendChild(greeting(el));
 
-    const modebar=modeBar(el);
-    stage.appendChild(modebar);
 
     const loadZone=el('div','feed-load-zone');
     stage.appendChild(loadZone);
@@ -109,58 +102,15 @@
     return wrap;
   }
 
-  function modeBar(el){
-    const wrap=el('div','feed-modebar');
-    const label=el('span','feed-mode-label','SHOWING');
-    const tabs=el('div','feed-mode-tabs');
-    tabs.setAttribute('role','tablist');
-    tabs.setAttribute('aria-label','Smart Feed view');
-
-    MODES.forEach(mode=>{
-      const b=el('button','feed-mode','');
-      b.type='button';
-      b.textContent=mode.label;
-      b.dataset.mode=mode.id;
-      b.setAttribute('role','tab');
-      b.setAttribute('aria-selected',mode.id===currentMode?'true':'false');
-      b.addEventListener('click',()=>{
-        currentMode=mode.id;
-        persistMode(currentMode);
-        tabs.querySelectorAll('.feed-mode').forEach(x=>{
-          x.setAttribute('aria-selected',x.dataset.mode===currentMode?'true':'false');
-        });
-        const stage=wrap.closest('.feed-stage');
-        renderRiver(el,stage);
-      });
-      b.addEventListener('keydown',event=>{
-        if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
-        event.preventDefault();
-        const buttons=[...tabs.querySelectorAll('.feed-mode')];
-        const index=buttons.indexOf(b);
-        let next=index;
-        if(event.key==='ArrowLeft') next=(index-1+buttons.length)%buttons.length;
-        if(event.key==='ArrowRight') next=(index+1)%buttons.length;
-        if(event.key==='Home') next=0;
-        if(event.key==='End') next=buttons.length-1;
-        buttons[next].focus();
-        buttons[next].click();
-      });
-      tabs.appendChild(b);
-    });
-
-    wrap.append(label,tabs);
-    return wrap;
-  }
-
   function renderRiver(el,stage){
     const river=stage.querySelector('.feed-river');
     const note=stage.querySelector('.note-view');
-    const modebar=stage.querySelector('.feed-modebar');
+    currentMode=normalizeMode(window.NayaRuntime?.mode||currentMode);
     if(!river||!note) return;
 
     note.hidden=true;
     river.hidden=false;
-    if(modebar) modebar.hidden=false;
+    setModeVisibility(false);
     river.innerHTML='';
 
     const items=allItems.filter(item=>modeOf(item)===currentMode);
@@ -178,11 +128,12 @@
     kicker.innerHTML='<span>'+items.length+'</span>&nbsp;&nbsp;INTELLIGENCE BLOCK'+(items.length===1?'':'S')+' · '+esc(currentMode.toUpperCase());
     river.appendChild(kicker);
 
-    items.forEach(item=>river.appendChild(snapshot(el,item)));
+    items.forEach((item,index)=>river.appendChild(snapshot(el,item,index)));
   }
 
-  function snapshot(el,b){
-    const board=el('article','snap-board');
+  function snapshot(el,b,index){
+    const hero=index===0;
+    const board=el('article','snap-board'+(hero?' snap-hero':''));
     board.style.setProperty('--tone',toneFor(b));
     board.style.setProperty('--state-tone',stateTone(b.truth_state));
     board.setAttribute('tabindex','0');
@@ -195,6 +146,10 @@
 
     const main=el('div','sb-main');
     const meta=el('div','sb-meta');
+    if(hero){
+      const priority=el('span','sb-priority','RIGHT NOW');
+      meta.appendChild(priority);
+    }
     const theme=el('p','sb-theme','');
     theme.textContent=b.type;
     const state=el('span','sb-state','');
@@ -208,6 +163,11 @@
     nutshell.textContent=b.layers.nutshell||'No nutshell was supplied for this intelligence object.';
 
     main.append(meta,title,nutshell);
+
+    if(hero){
+      const enter=el('span','sb-enter','Open intelligence <span aria-hidden="true">→</span>');
+      main.appendChild(enter);
+    }
 
     if(b.whyNow){
       const why=el('p','sb-why','');
@@ -236,10 +196,9 @@
   function renderNote(el,stage,b){
     const river=stage.querySelector('.feed-river');
     const note=stage.querySelector('.note-view');
-    const modebar=stage.querySelector('.feed-modebar');
     river.hidden=true;
     note.hidden=false;
-    if(modebar) modebar.hidden=true;
+    setModeVisibility(true);
     note.innerHTML='';
     note.style.setProperty('--tone',toneFor(b));
     note.style.setProperty('--state-tone',stateTone(b.truth_state));
@@ -630,8 +589,6 @@
           button.textContent=local.title;
           button.addEventListener('click',()=>{
             const stage=result.closest('.feed-stage');
-            currentMode=modeOf(local);
-            persistMode(currentMode);
             renderNote(el,stage,local);
             stage.scrollIntoView({block:'start'});
           });
@@ -671,8 +628,6 @@
         button.textContent=hit.b.title;
         button.addEventListener('click',()=>{
           const stage=result.closest('.feed-stage');
-          currentMode=modeOf(hit.b);
-          persistMode(currentMode);
           renderNote(el,stage,hit.b);
           stage.scrollIntoView({block:'start'});
         });
@@ -787,16 +742,10 @@
     return bits.length?bits.join(' — '):'No provenance is attached to this object.';
   }
 
-  function restoreMode(){
-    try{
-      const saved=sessionStorage.getItem('nayanet.feedMode');
-      if(MODES.some(mode=>mode.id===saved)) return saved;
-    }catch(_){}
-    return 'personal';
-  }
 
-  function persistMode(mode){
-    try{ sessionStorage.setItem('nayanet.feedMode',mode); }catch(_){}
+  function setModeVisibility(hidden){
+    const zone=document.querySelector('.mode-zone');
+    if(zone) zone.hidden=!!hidden;
   }
 
   function prefersReduced(){
