@@ -109,17 +109,10 @@ body.drawer-open { overflow: hidden; }
   display: flex; align-items: center; gap: 11px; padding: 6px 8px;
   color: var(--ink);
 }
-.brand-jewel {
-  width: 34px; height: 34px; border-radius: 12px; flex: none;
-  background:
-    radial-gradient(circle at 32% 28%, #ffffffcc, transparent 42%),
-    conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--blue), var(--teal), var(--green), var(--lime), var(--gold), var(--orange), var(--red), var(--magenta));
+.brand-img {
+  width: 40px; height: 40px; border-radius: 12px; flex: none;
+  object-fit: cover;
   box-shadow: var(--depth-hi), 0 8px 24px #000a, 0 0 26px #d86cff44;
-  position: relative;
-}
-.brand-jewel::after {
-  content: ""; position: absolute; inset: 0; border-radius: 12px;
-  box-shadow: inset 0 0 0 1px #ffffff2e;
 }
 .brand-mark b { display: block; font-size: 13px; letter-spacing: .14em; text-align: left; }
 .brand-mark small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .22em; text-align: left; }

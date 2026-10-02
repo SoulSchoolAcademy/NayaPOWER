@@ -21,7 +21,7 @@ function HubView(params) {
   const leftBtn = el('button', 'corner-btn corner-left', Icons.icon('menu'));
   leftBtn.setAttribute('aria-label', 'Open room navigation');
   leftBtn.setAttribute('aria-expanded', 'false');
-  const brand = el('button', 'brand-mark', '<span class="brand-jewel"></span><span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>');
+  const brand = el('button', 'brand-mark', '<img class="brand-img" src="assets/nayanet-logo.png" alt=""><span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>');
   brand.setAttribute('aria-label', 'NayaNET — back to the Main Show');
   brand.addEventListener('click', () => { closeDrawers(); window.NayaRouter.navigate('/hub/feed'); });
   const rightBtn = el('button', 'corner-btn corner-right', Icons.icon('grid'));
