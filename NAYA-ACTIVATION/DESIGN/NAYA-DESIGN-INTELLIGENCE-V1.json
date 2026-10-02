@@ -1,6 +1,6 @@
 {
   "schema": "naya.design-intelligence.v1",
-  "version": "1.2",
+  "version": "1.3",
   "status": "HUMAN_DIRECTOR_RATIFIED_CANONICAL",
   "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
   "coordination": {
@@ -249,6 +249,54 @@
       "maximum_engagement",
       "maximum_interface_density",
       "pattern_copying_without_applicability"
+    ]
+  },
+  "benchmark_to_beyond": {
+    "adoption": "HUMAN_DIRECTOR_RATIFIED_2026-10-02",
+    "objective": "Learn from the strongest available external and internal evidence, preserve what is already stronger, synthesize compatible strengths, and build measurably better outcomes rather than imitate leaders.",
+    "loop": [
+      "RESEARCH_FRONTIER",
+      "DECOMPOSE_CAUSAL_PRINCIPLES",
+      "CROSS_REFERENCE_CURRENT_NAYA",
+      "PRESERVE_CURRENT_SUPERIOR_STRENGTHS",
+      "SYNTHESIZE_COMPATIBLE_BEST",
+      "GENERATE_BEYOND_BENCHMARK_OPTION",
+      "TEST",
+      "INDEPENDENT_VERIFY",
+      "CAPTURE_PROVEN_IMPROVEMENT",
+      "REPEAT"
+    ],
+    "comparison_axes": [
+      "human_value",
+      "usefulness",
+      "clarity",
+      "quality",
+      "safety",
+      "truth",
+      "speed",
+      "accessibility",
+      "reliability",
+      "human_effort",
+      "domain_outcome"
+    ],
+    "rules": {
+      "multiple_benchmarks_required_when_material": true,
+      "copy_surface_style_without_reason": false,
+      "prestige_creates_truth": false,
+      "preserve_current_if_proven_superior": true,
+      "synthesis_preferred_over_imitation": true,
+      "ten_x_is_aspiration_not_claim": true,
+      "superiority_claim_requires_evidence": true,
+      "verified_improvement_must_compound": true
+    },
+    "anti_patterns": [
+      "leader_copying",
+      "cargo_cult_best_practice",
+      "prestige_deference",
+      "novelty_without_value",
+      "regression_to_convention",
+      "benchmark_chasing_over_human_outcome",
+      "unverified_superiority_claim"
     ]
   }
 }
