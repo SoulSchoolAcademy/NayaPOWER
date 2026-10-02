@@ -1,17 +1,17 @@
 /* ═══════════════════════════════════════════════════════════════════
-   YOUR INTELLIGENCE TODAY — v6 · save & share
+   YOUR INTELLIGENCE TODAY — v8 · smart tabs
    Director's ruling (2026-10-02): "the same visual language, the same
    style, the same look. If you're going to change it, then you have to
    change everything."
 
    Every play is a .block.naya509-board — the reference board anatomy,
    quoted verbatim and scoped to this room: blockTop (glyph + title +
-   meta + truth pills) → the announcer's call → the nutshell box →
+   meta) → the nutshell box →
    the full ten-layer intelligent block (on open) → actions →
    blockFoot. Opening a play renders the SAME intelligent-block
    language as the main page — not a second presentation.
 
-   Composition: ORIENT → SEARCH → NOW → WATCH → WAITING → REMEMBER.
+   Composition: ORIENT → TABS → SEARCH → NOW → WATCH → WAITING → REMEMBER.
    The ranking IS the intelligence (#1 wears TOP INTELLIGENCE).
    Actions: SAVE keeps it (the Smart List), SHARE sends it (native
    sheet, clipboard fallback). Proof lives in the opened layers.
@@ -57,6 +57,14 @@
   }
   let allPlays=[];
   let query='';
+  let activeTab='today';
+  const TABS=[
+    {id:'today',label:'TODAY',title:'What changed',searchPh:'Search today\u2019s intelligence\u2026'},
+    {id:'yesterday',label:'YESTERDAY',title:'What changed yesterday',searchPh:'Search yesterday\u2019s intelligence\u2026'},
+    {id:'week',label:'LAST WEEK',title:'What changed last week',searchPh:'Search last week\u2019s intelligence\u2026'}
+  ];
+  function tabDef(){ return TABS.find(t=>t.id===activeTab)||TABS[0]; }
+  function tabPlays(){ return allPlays.filter(p=>(p.period||'today')===activeTab); }
 
   function TodayRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit;
@@ -78,9 +86,10 @@
   function renderAll(el,stage){
     stage.innerHTML='';
     stage.appendChild(orient(el));
+    stage.appendChild(smartTabs(el,stage));
     stage.appendChild(searchBar(el));
     const secs=el('div','today-sections');
-    secs.appendChild(section(el,'NOW','What changed',nowBlock(el)));
+    secs.appendChild(section(el,'NOW',tabDef().title,nowBlock(el)));
     secs.appendChild(section(el,'WATCH','Still unopened',watchList(el),'watch-sec'));
     secs.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
     const lineup=rememberLineup(el);
@@ -96,6 +105,32 @@
     h.appendChild(e); h.appendChild(t);
     s.appendChild(h); s.appendChild(body);
     return s;
+  }
+
+  /* ——— SMART TABS: the diary you can flip back through.
+         Today / Yesterday / Last Week. Time is the first axis of
+         intelligent organization; topic is the second (needs the runtime). ——— */
+  function smartTabs(el,stage){
+    const wrap=el('div','smart-tabs');
+    wrap.setAttribute('role','tablist');
+    wrap.setAttribute('aria-label','Time period');
+    TABS.forEach(t=>{
+      const b=el('button','smart-tab'+(t.id===activeTab?' on':''),'');
+      b.type='button';
+      b.textContent=t.label;
+      b.setAttribute('role','tab');
+      b.setAttribute('aria-selected',t.id===activeTab?'true':'false');
+      b.addEventListener('click',()=>{
+        if(activeTab===t.id)return;
+        activeTab=t.id;
+        query='';
+        renderAll(el,stage);
+        const nt=stage.querySelector('.smart-tab.on');
+        if(nt)nt.focus();
+      });
+      wrap.appendChild(b);
+    });
+    return wrap;
   }
 
   /* ——— ORIENT: the day at a glance ——— */
@@ -121,7 +156,7 @@
   }
 
   function scoreHTML(){
-    const n=allPlays.length;
+    const n=tabPlays().length;
     return '<strong>'+n+'</strong> PLAYS&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+smartList.length+'</strong> SAVED';
   }
 
@@ -130,8 +165,8 @@
     const wrap=el('div','search-wrap');
     const input=el('input','search-input','');
     input.type='search';
-    input.setAttribute('aria-label','Search today\u2019s intelligence');
-    input.placeholder='Search today\u2019s intelligence\u2026';
+    input.setAttribute('aria-label',tabDef().searchPh.replace('\u2026',''));
+    input.placeholder=tabDef().searchPh;
     input.value=query;
     input.addEventListener('input',()=>{
       query=input.value;
@@ -145,7 +180,7 @@
   function matches(p){
     const q=query.trim().toLowerCase();
     if(!q)return true;
-    return (p.title+' '+(p.call||'')+' '+(p.layers.nutshell||'')).toLowerCase().includes(q);
+    return (p.title+' '+(p.layers.nutshell||'')).toLowerCase().includes(q);
   }
 
   /* ——— NOW: what changed — ranked boards, reference language ——— */
@@ -166,15 +201,16 @@
 
   function renderRiverInto(el,matchLine,river){
     river.innerHTML='';
-    const hits=allPlays.map((p,i)=>({p,i})).filter(x=>matches(x.p));
+    const plays=tabPlays();
+    const hits=plays.map((p,i)=>({p,i})).filter(x=>matches(x.p));
     const q=query.trim();
     if(q){
       if(hits.length){
-        matchLine.textContent=hits.length+' of '+allPlays.length+' plays match \u201C'+q+'\u201D';
+        matchLine.textContent=hits.length+' of '+plays.length+' plays match \u201C'+q+'\u201D';
       }else{
         matchLine.textContent='';
         const note=el('p','quiet-note','');
-        note.textContent='No intelligence matches \u201C'+q+'\u201D today.';
+        note.textContent='No intelligence matches \u201C'+q+'\u201D in '+tabDef().label.toLowerCase()+'.';
         river.appendChild(note);
         return;
       }
@@ -214,13 +250,7 @@
     top.appendChild(ident);
     inner.appendChild(top);
 
-    /* the announcer's call */
-    if(p.call){
-      const c=el('p','call',''); c.textContent=p.call;
-      inner.appendChild(c);
-    }
-
-    /* the nutshell — the snapshot */
+    /* the nutshell — the snapshot, and the whole snapshot */
     if(p.layers.nutshell){
       const nut=el('div','nutshell');
       const b=el('b',''); b.textContent='IN A NUTSHELL';
@@ -229,8 +259,8 @@
       inner.appendChild(nut);
     }
 
-    /* actions — SAVE keeps it, SHARE sends it */
-    inner.appendChild(actionRow(el,p));
+    /* actions — SAVE keeps it, SHARE sends it, VIEW FULL NOTE opens it */
+    inner.appendChild(actionRow(el,p,()=>openNote(el,p,rank)));
 
     const foot=el('div','blockFoot');
     const fL=el('span',''); fL.textContent='YOUR INTELLIGENCE TODAY';
@@ -239,18 +269,11 @@
     inner.appendChild(foot);
 
     a.appendChild(inner);
-
-    /* tap the highlight -> the full note, in its own view */
-    const open=()=>openNote(el,p,rank);
-    a.setAttribute('tabindex','0'); a.setAttribute('role','button');
-    a.setAttribute('aria-label','Read the full note: '+p.title);
-    a.addEventListener('click',open);
-    a.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
     return a;
   }
 
-  /* ——— shared SAVE/SHARE row (highlights and the full-note view) ——— */
-  function actionRow(el,p){
+  /* ——— shared SAVE/SHARE/VIEW row (highlights and the full-note view) ——— */
+  function actionRow(el,p,onView){
     const actions=el('div','actions');
     const isOn=smartList.includes(p.id);
     const save=el('button','action'+(isOn?' carry-on':''),'');
@@ -271,6 +294,15 @@
       sharePlay(p,share);
     });
     actions.appendChild(save); actions.appendChild(share);
+    if(onView){
+      const view=el('button','action','VIEW FULL NOTE'); view.type='button';
+      view.setAttribute('aria-label','View the full smart note: '+p.title);
+      view.addEventListener('click',e2=>{
+        e2.stopPropagation();
+        onView();
+      });
+      actions.appendChild(view);
+    }
     return actions;
   }
 
@@ -305,7 +337,7 @@
 
   function sharePlay(p,btn){
     const url=location.origin+location.pathname+'#/today/'+p.id;
-    const data={title:p.title, text:p.layers.nutshell||p.call||p.title, url:url};
+    const data={title:p.title, text:p.layers.nutshell||p.title, url:url};
     const copied=()=>{ btn.textContent='COPIED \u2713'; setTimeout(()=>{ btn.textContent='SHARE'; },2000); };
     const copyFallback=()=>{
       const ta=document.createElement('textarea');
@@ -420,7 +452,8 @@
   /* ——— WATCH: still unopened — derived from real state ——— */
   function watchList(el){
     const wrap=el('div','watch-list');
-    const unseen=allPlays.filter(p=>!seenPlays.has(p.id));
+    const plays=tabPlays();
+    const unseen=plays.filter(p=>!seenPlays.has(p.id));
     if(!unseen.length){
       const q=el('p','quiet-note','');
       q.textContent='You\u2019ve opened every play. Nothing is waiting on your attention.';
@@ -434,7 +467,7 @@
       const open=el('button','','Open'); open.type='button';
       open.setAttribute('aria-label','Open: '+p.title);
       open.addEventListener('click',()=>{
-        const rank=allPlays.findIndex(x=>x.id===p.id);
+        const rank=plays.findIndex(x=>x.id===p.id);
         openNote(el,p,rank);
       });
       li.appendChild(dot); li.appendChild(span); li.appendChild(open); ul.appendChild(li);
@@ -510,6 +543,7 @@
       call:o.call||'',
       turning:!!o.turning_point||!!o.turning,
       waiting:Array.isArray(o.waiting)?o.waiting.filter(w=>typeof w==='string'&&w.trim()):[],
+      period:o.period||'today',
       layers
     };
   }
