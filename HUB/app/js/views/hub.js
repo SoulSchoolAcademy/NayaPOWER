@@ -10,6 +10,10 @@
    duplicated inside the room).
    ═══════════════════════════════════════════════════════════════════ */
 
+  /* Smart Tab state lives at IIFE level so the active tab survives room re-renders. */
+  var activeSmartTab = 'all';
+  var tabPopCloser = null;
+
 function HubView(params) {
   const { el, Icons, toast, StatePanel } = window.NayaUI;
   const R = window.NayaRuntime;
@@ -93,6 +97,132 @@ function HubView(params) {
       } finally { searchInput.removeAttribute('aria-busy'); }
     }
   });
+
+  /* ═══ SMART TABS — topic navigation generated from the notes themselves.
+     System tabs (All + every topic present in this lens) are permanent.
+     Human tabs are named views saved on this device only (localStorage):
+     add, retarget (replace), or delete. Per the canonical Smart Tab law,
+     tabs are navigation intent — never intelligence storage — and
+     human-created tabs are visually distinguished from system tabs. ═══ */
+  const SMART_TAB_KEY = 'nayanet.feed.smartTabs.v1';
+
+  function readHumanTabs() {
+    try { const t = JSON.parse(localStorage.getItem(SMART_TAB_KEY)); return Array.isArray(t) ? t : []; }
+    catch (e) { return []; }
+  }
+  function writeHumanTabs(t) { try { localStorage.setItem(SMART_TAB_KEY, JSON.stringify(t)); } catch (e) { /* private mode — tabs stay session-only */ } }
+  function topicSlug(s) { return 't-' + String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+  function closeTabManager() {
+    document.querySelectorAll('.tab-pop').forEach(p => p.remove());
+    if (tabPopCloser) { document.removeEventListener('click', tabPopCloser); tabPopCloser = null; }
+  }
+
+  function smartTabStrip(lensNotes, allNotes) {
+    const seen = [];
+    lensNotes.forEach(n => (n.topics || []).forEach(t => { if (!seen.includes(t)) seen.push(t); }));
+    const sysTabs = [{ id: 'all', label: 'All', topic: null, kind: 'system' }]
+      .concat(seen.map(t => ({ id: topicSlug(t), label: t, topic: t, kind: 'system' })));
+    const tabs = sysTabs.concat(readHumanTabs().map(h => ({ id: h.id, label: h.label, topic: h.topic, kind: 'human' })));
+    if (!tabs.some(t => t.id === activeSmartTab)) activeSmartTab = 'all';
+
+    const bar = el('div', 'smart-tabs');
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Smart Tabs — filter the feed by topic');
+    const rerender = () => window.NayaRouter.render();
+    tabs.forEach(t => {
+      const b = el('button', 'smart-tab' + (t.id === activeSmartTab ? ' active' : '') + (t.kind === 'human' ? ' is-human' : ''));
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', t.id === activeSmartTab ? 'true' : 'false');
+      b.title = t.kind === 'human'
+        ? 'Your tab · shows ' + t.topic + ' · saved on this device'
+        : (t.topic ? 'Topic · ' + t.topic : 'The full feed — everything, newest first');
+      b.innerHTML = '<span>' + esc(t.label) + '</span>' + (t.kind === 'human' ? '<i class="human-dot" aria-hidden="true"></i>' : '');
+      b.addEventListener('click', () => { closeTabManager(); activeSmartTab = t.id; rerender(); });
+      bar.appendChild(b);
+    });
+    const add = el('button', 'smart-tab add-tab');
+    add.setAttribute('aria-label', 'Add, retarget, or delete your tabs');
+    add.title = 'Add, retarget, or delete your tabs';
+    add.innerHTML = '<span aria-hidden="true">+</span>';
+    add.addEventListener('click', (ev) => { ev.stopPropagation(); openTabManager(bar, add, sysTabs, allNotes, rerender); });
+    bar.appendChild(add);
+    return { bar, tabs };
+  }
+
+  function openTabManager(bar, addBtn, sysTabs, allNotes, rerender) {
+    closeTabManager();
+    const human = readHumanTabs();
+    const allTopics = [];
+    allNotes.forEach(n => (n.topics || []).forEach(t => { if (!allTopics.includes(t)) allTopics.push(t); }));
+    const used = new Set(sysTabs.map(t => t.topic).concat(human.map(h => h.topic)));
+    const unused = allTopics.filter(t => !used.has(t));
+
+    const pop = el('div', 'tab-pop');
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-label', 'Manage your smart tabs');
+    let html = '<b class="tab-pop-title">Add a tab</b>';
+    html += unused.length
+      ? '<div class="tab-pop-list">' + unused.map(t =>
+          '<button type="button" class="tab-pop-add" data-topic="' + esc(t) + '"><span aria-hidden="true">+ </span>' + esc(t) + '</button>').join('') + '</div>'
+      : '<p class="tab-pop-note">Every topic already has a tab in this view.</p>';
+    html += '<b class="tab-pop-title">Your tabs</b>';
+    if (human.length) {
+      html += '<div class="tab-pop-list">' + human.map((h, i) =>
+        '<div class="tab-pop-row">' +
+          '<span class="tab-pop-name">' + esc(h.label) + '</span>' +
+          '<select data-retarget="' + i + '" aria-label="Replace what ' + esc(h.label) + ' shows">' +
+            allTopics.map(t => '<option value="' + esc(t) + '"' + (t === h.topic ? ' selected' : '') + '>' + esc(t) + '</option>').join('') +
+          '</select>' +
+          '<button type="button" class="tab-pop-del" data-del="' + i + '" aria-label="Delete ' + esc(h.label) + '">×</button>' +
+        '</div>').join('') + '</div>';
+    } else {
+      html += '<p class="tab-pop-note">No custom tabs yet. Yours live on this device only — never in the shared intelligence.</p>';
+    }
+    pop.innerHTML = html;
+
+    pop.addEventListener('click', (ev) => {
+      const addB = ev.target.closest('[data-topic]');
+      if (addB) {
+        const topic = addB.getAttribute('data-topic');
+        const h = readHumanTabs();
+        const tab = { id: 'human-' + Date.now().toString(36), label: topic, topic };
+        h.push(tab); writeHumanTabs(h);
+        activeSmartTab = tab.id;
+        closeTabManager(); rerender(); return;
+      }
+      const delB = ev.target.closest('[data-del]');
+      if (delB) {
+        const h = readHumanTabs();
+        const gone = h.splice(+delB.getAttribute('data-del'), 1)[0];
+        writeHumanTabs(h);
+        if (gone && activeSmartTab === gone.id) activeSmartTab = 'all';
+        closeTabManager(); rerender();
+      }
+    });
+    pop.addEventListener('change', (ev) => {
+      const sel = ev.target.closest('[data-retarget]');
+      if (!sel) return;
+      const h = readHumanTabs();
+      const i = +sel.getAttribute('data-retarget');
+      if (h[i]) { h[i].topic = sel.value; h[i].label = sel.value; writeHumanTabs(h); }
+      closeTabManager(); rerender();
+    });
+    pop.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') { closeTabManager(); addBtn.focus(); }
+    });
+    /* Fixed to the viewport: the tab strip scrolls horizontally, which would
+       clip an absolutely-positioned child. */
+    document.body.appendChild(pop);
+    pop.style.position = 'fixed';
+    const r = addBtn.getBoundingClientRect();
+    pop.style.top = Math.min(r.bottom + 8, window.innerHeight - 320) + 'px';
+    pop.style.left = Math.max(8, Math.min(r.left - 240, window.innerWidth - 346)) + 'px';
+    tabPopCloser = (ev) => {
+      if (!pop.contains(ev.target) && ev.target !== addBtn && !addBtn.contains(ev.target)) closeTabManager();
+    };
+    setTimeout(() => document.addEventListener('click', tabPopCloser), 0);
+  }
+
 
   /* Shell lens slot — owned by the room, positioned by the chassis. */
   const lensSlot = el('div', 'shell-lens');
@@ -214,7 +344,7 @@ function HubView(params) {
       '<p class="hero-prov">Snapshot projection · main 10190133 · nothing fabricated</p>';
     wrap.appendChild(hero);
 
-    /* — Lens: three equal columns, full feed width, real navigation — */
+    /* — Lens: three compact buttons in one row, real navigation — */
     const lens = el('nav', 'lens-tabs');
     lens.setAttribute('aria-label', 'Feed lens');
     const tabs = [
@@ -225,7 +355,9 @@ function HubView(params) {
     tabs.forEach(([key, label, sub, path]) => {
       const b = el('button', 'lens-tab' + (stream === key ? ' active' : ''));
       b.setAttribute('aria-current', stream === key ? 'true' : 'false');
-      b.innerHTML = '<b>' + label + '</b><small>' + esc(sub) + '</small>';
+      b.setAttribute('aria-label', label + ' — ' + sub);
+      b.title = sub;
+      b.innerHTML = '<b>' + label + '</b>';
       b.addEventListener('click', () => window.NayaRouter.navigate(path));
       lens.appendChild(b);
     });
@@ -240,15 +372,28 @@ function HubView(params) {
     } else if (stream === 'activity') {
       feed.appendChild(activityStream(content));
     } else {
-      const notes = stream === 'personal' ? FI.notes.filter(n => n.personal) : FI.notes;
+      const lensNotes = stream === 'personal' ? FI.notes.filter(n => n.personal) : FI.notes;
+      /* Smart Tabs: the strip is generated from this lens's notes, so a
+         re-baked snapshot with new notes/topics automatically grows tabs. */
+      const tabbed = smartTabStrip(lensNotes, FI.notes);
+      wrap.appendChild(tabbed.bar);
+      const active = tabbed.tabs.find(t => t.id === activeSmartTab) || tabbed.tabs[0];
+      const notes = active.topic ? lensNotes.filter(n => (n.topics || []).includes(active.topic)) : lensNotes;
       if (!notes.length) {
+        const elsewhere = active.topic ? FI.notes.filter(n => (n.topics || []).includes(active.topic)).length : 0;
+        const emptyTitle = active.topic ? 'No ' + esc(active.topic) + ' here.' : 'Nothing here yet.';
+        const emptyBody = active.topic
+          ? (elsewhere
+              ? 'There ' + (elsewhere === 1 ? 'is 1' : 'are ' + elsewhere) + ' in the full stream — this lens holds none.'
+              : 'Nothing in this snapshot carries that topic.')
+          : 'No personal intelligence is marked in this snapshot.';
         feed.appendChild(el('div', 'empty-instrument',
-          '<strong>Nothing here yet.</strong><p>No personal intelligence is marked in this snapshot.</p>'));
+          '<strong>' + emptyTitle + '</strong><p>' + emptyBody + '</p>'));
       }
       notes.forEach((n, i) => feed.appendChild(intelBoard(n, i)));
       const prov = el('p', 'show-prov',
         'Boards project the Smart Note snapshot at main 10190133 · fetched 2026-10-02 · ' +
-        'canonical source: BRAIN/05-MEMORY/SMART-NOTES in the NayaPOWER repo');
+        'topics derived at bake time · canonical source: BRAIN/05-MEMORY/SMART-NOTES in the NayaPOWER repo');
       feed.appendChild(prov);
     }
     wrap.appendChild(feed);

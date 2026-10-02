@@ -7,12 +7,17 @@
    Layer colors follow Design Law v2 (KNOWLEDGE/DESIGN LAW CONCEPT
    PART #25.md, Vol. 2 §2.3): one color, one job. Color names are
    presentation metadata assigned at bake time, not source content.
+   Topics are bake-time metadata derived from each note's subject;
+   the Smart Tab strip is generated from them at render time, so a
+   re-baked snapshot with new notes/topics automatically grows new tabs.
+   To refresh: re-run the snapshot bake from BRAIN/05-MEMORY/SMART-NOTES.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   const NOTES = [
   {
     "id": "SN-022",
     "title": "Human-Centered Design Intelligence — World-Class UX Principles Adopted into Naya Design",
+    "topics": ["Design"],
     "tone": "purple",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-022/",
     "layers": [
@@ -120,6 +125,7 @@
   {
     "id": "SN-020",
     "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",
+    "topics": ["Design"],
     "tone": "sapphire",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/",
     "layers": [
@@ -227,6 +233,7 @@
   {
     "id": "SN-019",
     "title": "Complete the App Doctrine — Finish the House, Not the Shell",
+    "topics": ["Craft"],
     "tone": "emerald",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/",
     "layers": [
@@ -334,6 +341,7 @@
   {
     "id": "SN-021",
     "title": "NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors",
+    "topics": ["Architecture"],
     "tone": "purple",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/",
     "layers": [
@@ -434,6 +442,7 @@
   {
     "id": "SN-018",
     "title": "The Hub Is the Visual Projection of Intelligence",
+    "topics": ["Design"],
     "tone": "sapphire",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/",
     "layers": [
@@ -541,6 +550,7 @@
   {
     "id": "SN-017",
     "title": "AutoResearch Harness Lesson — Make the Experiment Tiny, Frozen, Measurable, and Reversible",
+    "topics": ["Research"],
     "tone": "emerald",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/SELF-OPTIMIZATION/GOVERNED-EXPERIMENT-CAMPAIGNS/SN-017/",
     "layers": [
@@ -655,6 +665,7 @@
   {
     "id": "SN-016",
     "title": "The Judgment Rule — Judgment Before Blind Obedience",
+    "topics": ["Judgment"],
     "tone": "purple",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/",
     "layers": [
@@ -769,6 +780,7 @@
   {
     "id": "SN-015",
     "title": "Active Intelligence Rule — Stored Knowledge Must Become Connected, Retrievable, Usable Intelligence",
+    "topics": ["Intelligence"],
     "tone": "sapphire",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-015/",
     "layers": [
@@ -883,6 +895,7 @@
   {
     "id": "SN-014",
     "title": "The Compounding Imperative — Everything Teaches; Only the Captured Compounds",
+    "topics": ["Learning"],
     "tone": "emerald",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/CAPTURE-RETAIN-SIMPLIFY/SN-014/",
     "layers": [
@@ -997,6 +1010,7 @@
   {
     "id": "SN-005",
     "title": "SMART NOTE — Internal Morality: A Subset of Data Grows Into a Moral AI",
+    "topics": ["Values"],
     "tone": "purple",
     "source": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTERNAL-MORALITY/EARNED-CONSCIENCE/SN-005/",
     "layers": [
