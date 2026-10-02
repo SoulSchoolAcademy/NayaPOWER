@@ -74,7 +74,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE PORTAL BAY.** Canonical emerald remains the room identity, with teal energy reserved for connection/flow within the portal objects. Every door feels dimensional and distinct. Live, configured, blocked, contract-only and roadmap states are immediately legible. A portal may breathe only when a real connection state justifies it. Connected is visually and semantically separate from authorized.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -299,6 +299,25 @@ And the current global acceptance bar applies:
 - Exact portal metaphor intensity must be resolved through render evidence, not glow alone.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+The human sees every legitimate doorway into NayaPOWER as a living portal whose **connection, authentication, authorization and health** are understandable at a glance — no mystery permissions.
+
+### Best-of intelligence to synthesize
+- **Stripe:** explicit operational state.
+- **Airbnb:** trust before consequential commitment.
+- **Play:** direct manipulation and production-connected interaction.
+- **frog:** whole journey, not isolated setup screens.
+
+### Beyond-benchmark hypothesis
+Integration UX becomes safer and more useful when capability, connection health and authority are separate visible concepts, with proof/history available without infrastructure jargon dominating the view.
+
+### Proof boundary
+Test state comprehension, setup success, permission-confusion rate and honest unavailable/roadmap behavior.
 
 ---
 
