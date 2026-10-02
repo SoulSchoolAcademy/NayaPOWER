@@ -402,6 +402,11 @@ try{
   });
 
   await desktop.goto(base+'#/hub/feed');
+  await desktop.waitForSelector('.snap-board');
+  await desktop.screenshot({
+    path:'HUB/app/test-artifacts/02-feed-first-paint-desktop.png',
+    fullPage:false
+  });
   await assertMainShow(desktop,'feed-desktop');
   await desktop.screenshot({
     path:'HUB/app/test-artifacts/02-feed-desktop.png',
@@ -439,6 +444,11 @@ try{
   mobile.on('pageerror',error=>mobileErrors.push('pageerror: '+error.message));
 
   await mobile.goto(base+'#/hub/feed');
+  await mobile.waitForSelector('.snap-board');
+  await mobile.screenshot({
+    path:'HUB/app/test-artifacts/20-feed-first-paint-mobile.png',
+    fullPage:false
+  });
   await assertMainShow(mobile,'feed-mobile');
   await mobile.screenshot({
     path:'HUB/app/test-artifacts/20-feed-mobile.png',
