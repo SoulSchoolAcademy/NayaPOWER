@@ -5,6 +5,7 @@
 **Execution branch parent:** `naya4/room-01-main-stage-v2@babae0b42009dbae847b21dcc1de5e56922d1964`
 **Canonical main restored before implementation:** `10190133505f4ba03cd029d18cf6f650affeeb9c`
 **Main/app merge base:** `a67fc180306c3ebf616c8d02c0e0c11570276ce4`
+**Current main repin before evidence close:** `d9e6b32fa097a9abd026523652a5e423a7e08d06` - only canonical Brain-index repair files changed since the implementation-start pin; no HUB files changed.
 
 ## Objective
 
@@ -46,7 +47,10 @@ This is a reference implementation only. It does not resolve whether Feed is can
 - `python tools/verify_hub_app_completion.py` - PASS: matrix consistent; 11 rooms; 0 production-proven; overall IN_PROGRESS.
 - `node HUB/app/tests/browser-smoke.mjs` against local exact working bytes - PASS, exit code 0.
 - Browser smoke includes desktop/mobile rendering plus the new room-contract/socket assertions.
-- Existing CI workflow uploads browser screenshots on PR runs; CI is required before treating this branch as remotely verified.
+- PR #1338 Hub App Completion Gate run `37037730392` - SUCCESS.
+- PR #1338 Collective Chain Readiness run `37037730371` - SUCCESS.
+- Remote browser artifact `hub-browser-qa` id `11240443104`, digest `sha256:f1a0f6cb8f234bbd3e3ed356656631d59291ea35ee7d874c254f15181cc55af2`.
+- Kernel Tests run `37037730493` - BLOCKED only at stale-parent Brain-index check; Node and pytest steps PASS. Current main `d9e6b32...` already contains the canonical index repair, so this is inherited branch divergence rather than Hub-socket failure.
 ## Truth boundary
 
 This work proves the shared UI seam exists and renders/behaves under the browser fixture/runtime harness.
