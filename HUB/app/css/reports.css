@@ -358,3 +358,41 @@ button.kr-row:focus-visible{outline:2px solid #fff;outline-offset:2px}
   margin:6px 0 0; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
   color:var(--day,#c9b8ff); text-shadow:0 0 12px var(--day,#8b5cf6);
 }
+
+/* ——— SHAWN'S BUTTON LAW (2026-10-02): silver-white at rest, theme color on highlight.
+   Every control must read as a control before it is touched. Rest = luminous
+   silver halo; hover/focus = the weekday/theme glow (already defined per rule). ——— */
+.reports-stage .search-input{
+  border:1px solid rgba(232,234,242,.42); color:#fff;
+  box-shadow:0 0 16px -6px rgba(255,255,255,.45), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.reports-stage .search-input::placeholder{ color:#c9c9d2; }
+.reports-stage .card-open,
+.reports-stage .report-back,
+.reports-stage .prompt-copy,
+.reports-stage .tile-open,
+.reports-stage .tile-view,
+.reports-stage .rail-chip,
+.reports-stage button.kr-row{
+  border:1px solid rgba(232,234,242,.5);
+  color:#fff;
+  text-shadow:0 0 10px rgba(255,255,255,.35);
+  box-shadow:0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.25);
+}
+/* inert rows stay inert — no silver halo on the todo row */
+.reports-stage div.kr-row.todo{ border:1px solid rgba(255,255,255,.08); box-shadow:none; }
+
+/* hover re-assertion: theme glow must beat the silver rest (specificity 0,3,0 > 0,2,0) */
+.reports-stage .tile-open:hover,.reports-stage .tile-open:focus-visible,
+.reports-stage .tile-view:hover,.reports-stage .tile-view:focus-visible{
+  border-color:var(--glow); transform:translateY(-1px); outline:none;
+  box-shadow:0 0 22px -4px var(--glow),inset 0 0 16px -8px var(--glow),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.reports-stage .rail-chip:hover{
+  border-color:var(--day); transform:translateY(-1px);
+  box-shadow:0 0 16px -4px var(--day);
+}
+.reports-stage button.kr-row:hover{
+  border-color:var(--day); transform:translateY(-1px);
+  box-shadow:0 0 18px -6px var(--day);
+}
