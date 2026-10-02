@@ -38,20 +38,29 @@
 .connect-stage .cn-list{ display:flex; flex-direction:column; gap:18px; }
 .connect-stage .cn-door{
   position:relative; overflow:hidden;
-  border:1px solid rgba(255,255,255,.1); border-radius:22px;
+  border:2px solid color-mix(in srgb, var(--door) 42%, transparent); border-radius:22px;
   padding:30px 34px 30px 40px;
   background:linear-gradient(145deg,#101410,#080b09);
   box-shadow:inset 0 1px rgba(255,255,255,.07), 0 24px 60px rgba(0,0,0,.55);
   transition:transform .22s cubic-bezier(.2,.8,.2,1), border-color .22s, box-shadow .25s;
 }
+.connect-stage .cn-door.live{
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 24px 60px rgba(0,0,0,.55),
+             0 0 30px -6px var(--door);
+}
 .connect-stage .cn-door::before{
-  content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
+  content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
   background:var(--door);
   box-shadow:0 0 20px var(--door);
 }
-/* in design: rest white and calm, ignite in the door's color on hover */
-.connect-stage .cn-door.design::before{ background:#dfe3e8; box-shadow:none; }
-.connect-stage .cn-door.design:hover::before{ background:var(--door); box-shadow:0 0 20px var(--door); }
+/* in design: calm at rest, ignites in the door's color on hover */
+.connect-stage .cn-door.design::before{ box-shadow:none; }
+.connect-stage .cn-door.design:hover::before{ box-shadow:0 0 20px var(--door); }
+.connect-stage .cn-door.design:hover{
+  border-color:color-mix(in srgb, var(--door) 65%, transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 70px rgba(0,0,0,.6),
+             0 0 34px -4px var(--door);
+}
 .connect-stage .cn-door:hover{
   transform:translateY(-2px);
   border-color:color-mix(in srgb, var(--door) 38%, transparent);
@@ -74,14 +83,12 @@
   font-size:21px; font-weight:900; color:#fff;
   text-shadow:0 2px 8px rgba(0,0,0,.6);
 }
-/* unlit: a white jewel; it ignites in the door's color on hover */
-.connect-stage .cn-door.design .cn-gem{ --gem:#e8eaee; box-shadow:0 0 12px rgba(255,255,255,.35); }
-.connect-stage .cn-door.design:hover .cn-gem{ --gem:var(--door); box-shadow:0 0 20px var(--door); }
+/* the jewel is always lit in the door's color */
+.connect-stage .cn-door.design .cn-gem{ box-shadow:0 0 14px var(--door); }
+.connect-stage .cn-door.design:hover .cn-gem{ box-shadow:0 0 22px var(--door); }
 .connect-stage .cn-namewrap{ flex:1; min-width:0; }
 .connect-stage .cn-name{ font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.01em; margin:0 0 4px; color:#fff; }
 .connect-stage .cn-tagline{ font-size:13px; color:var(--door); margin:0; font-weight:600; transition:color .22s ease; }
-.connect-stage .cn-door.design .cn-tagline{ color:var(--cn-dim); }
-.connect-stage .cn-door.design:hover .cn-tagline{ color:var(--door); }
 .connect-stage .cn-pill{
   flex:none; font-size:10px; font-weight:800; letter-spacing:.16em;
   padding:7px 14px; border-radius:99px;
@@ -101,13 +108,6 @@
   border:1px solid color-mix(in srgb, var(--door) 38%, transparent); border-radius:99px; padding:6px 12px;
   background:color-mix(in srgb, var(--door) 9%, transparent);
   transition:border-color .22s ease, background .22s ease;
-}
-.connect-stage .cn-door.design .cn-cap{
-  border-color:rgba(255,255,255,.16); background:transparent;
-}
-.connect-stage .cn-door.design:hover .cn-cap{
-  border-color:color-mix(in srgb, var(--door) 38%, transparent);
-  background:color-mix(in srgb, var(--door) 9%, transparent);
 }
 .connect-stage .cn-auth{ font-size:13.5px; line-height:1.6; color:var(--cn-dim); margin:0 0 20px; max-width:720px; }
 .connect-stage .cn-auth strong{ color:#fff; font-weight:800; }
