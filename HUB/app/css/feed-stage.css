@@ -183,20 +183,46 @@
 
 /* ——— Block action ——— */
 .iblock-action{ margin-top: 22px; }
+/* ——— v5: PHYSICAL primary action — a NayaNET button is an object with
+   mass, light, state and consequence. Layered material, edge light,
+   cast depth, tone aura. Hover lifts; press compresses. ——— */
 .feed-btn{
   appearance: none; cursor: pointer;
-  background: transparent;
-  border: 1px solid var(--tone);
-  color: var(--tone);
+  border: 1px solid color-mix(in srgb, var(--tone) 60%, #000);
   border-radius: var(--radius-pill);
-  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 13px 28px;
-  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+  color: #fff;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+  padding: 15px 32px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,0) 46%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--tone) 78%, #fff),
+      color-mix(in srgb, var(--tone) 52%, #000));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    inset 0 -3px 8px rgba(0,0,0,.38),
+    0 12px 30px rgba(0,0,0,.55),
+    0 0 26px color-mix(in srgb, var(--tone) 38%, transparent);
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
+  transition: transform .16s var(--ease), box-shadow .25s ease, filter .25s ease;
 }
 .feed-btn:hover{
-  background: var(--tone); color: #06110c;
-  box-shadow: 0 8px 28px rgba(53,224,161,.28);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -3px 8px rgba(0,0,0,.32),
+    0 18px 40px rgba(0,0,0,.6),
+    0 0 38px color-mix(in srgb, var(--tone) 55%, transparent);
 }
+.feed-btn:active{
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,.45),
+    0 6px 16px rgba(0,0,0,.5),
+    0 0 18px color-mix(in srgb, var(--tone) 30%, transparent);
+}
+.feed-btn:focus-visible{ outline: 2px solid var(--tone); outline-offset: 3px; }
 
 /* ——— Stage footer ——— */
 .feed-stage-foot{
@@ -204,18 +230,32 @@
 }
 .feed-ask{
   appearance: none; cursor: pointer;
-  background: linear-gradient(135deg, #12151d, #0b0d12);
-  border: 1px solid #252b39;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 50%),
+    linear-gradient(135deg, #1c1826, #0b0d12);
+  border: 1px solid #2c3342;
   color: var(--ink);
   border-radius: var(--radius-pill);
-  font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
-  padding: 18px 44px;
-  transition: box-shadow .3s ease, border-color .3s ease;
+  font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700;
+  padding: 19px 46px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -3px 8px rgba(0,0,0,.4),
+    0 14px 34px rgba(0,0,0,.55),
+    0 0 26px rgba(157,117,255,.14);
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  transition: transform .16s var(--ease), box-shadow .25s ease, border-color .25s ease;
 }
 .feed-ask:hover{
+  transform: translateY(-2px);
   border-color: var(--ink-dim);
-  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -3px 8px rgba(0,0,0,.35),
+    0 20px 46px rgba(0,0,0,.6),
+    0 0 40px rgba(157,117,255,.28);
 }
+.feed-ask:active{ transform: translateY(1px); }
 
 /* ——— Honest states inherit the stage voice ——— */
 .feed-stage .shimmer-grid{ padding: 40px 0; }
@@ -245,9 +285,30 @@
   transition: background .2s ease;
 }
 .snap:hover{ background: rgba(255,255,255,.025); }
-.snap-dot{
-  width: 12px; height: 12px; border-radius: 50%; flex: none;
-  background: var(--tone); box-shadow: 0 0 12px var(--tone);
+/* ——— v5: the tone flow. One color, one block — the river shows it. ——— */
+.snap-jewel{
+  width: 38px; height: 38px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 46%),
+    radial-gradient(circle at 50% 58%,
+      color-mix(in srgb, var(--tone) 82%, #000),
+      color-mix(in srgb, var(--tone) 34%, #000));
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.55),
+    inset 0 -4px 10px rgba(0,0,0,.5),
+    0 6px 18px rgba(0,0,0,.55),
+    0 0 20px color-mix(in srgb, var(--tone) 45%, transparent);
+  transition: transform .25s var(--ease), box-shadow .25s ease;
+}
+.snap-jewel svg{ width: 52%; height: 52%; }
+.snap:hover .snap-jewel{
+  transform: scale(1.08);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.6),
+    inset 0 -4px 10px rgba(0,0,0,.45),
+    0 8px 24px rgba(0,0,0,.6),
+    0 0 30px color-mix(in srgb, var(--tone) 65%, transparent);
 }
 .snap-main{ flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
 .snap-title{
@@ -272,26 +333,32 @@
 
 /* Greeting: presence → recognition, quiet. */
 .feed-stage-head{ margin-bottom: 4px; }
+/* ——— v5: mode filter — a whisper, not a navigation bar. One quiet
+   segmented control, clearly a filter. Still one sticky zone. ——— */
 .feed-modedock{
-  position: sticky; top: 0; z-index: 55;
-  display: flex; gap: 8px; justify-content: center;
-  padding: 14px 12px; margin: 26px -12px 0;
-  background: rgba(5,5,7,.86);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  position: sticky; top: 64px; z-index: 30;
+  display: flex; gap: 2px; justify-content: flex-start; align-items: center;
+  padding: 12px 0; margin: 20px 0 0;
+  background: linear-gradient(180deg, rgba(5,5,7,.94), rgba(5,5,7,.78));
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
 }
-.feed-mode{
-  appearance: none; cursor: pointer; background: transparent;
-  border: 1px solid var(--line); color: var(--muted);
-  border-radius: var(--radius-pill);
-  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-  padding: 11px 26px;
-  transition: border-color .22s var(--ease), color .22s var(--ease), box-shadow .22s var(--ease);
+.modedock-label{
+  font-size: 10px; letter-spacing: 0.26em; color: var(--muted);
+  margin-right: 10px; font-weight: 700;
 }
-.feed-mode:hover{ color: var(--ink); border-color: var(--ink-dim); }
+.feed-mode{
+  appearance: none; cursor: pointer; background: transparent; border: none;
+  color: var(--muted);
+  border-radius: var(--radius-pill);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+  padding: 9px 16px;
+  transition: color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.feed-mode:hover{ color: var(--ink); }
 .feed-mode[aria-selected="true"]{
-  color: var(--ink); border-color: var(--green);
-  box-shadow: 0 0 18px rgba(85,227,154,.18), inset 0 1px #fff3;
+  color: var(--ink); background: rgba(255,255,255,.07);
+  box-shadow: inset 0 0 0 1px var(--line-soft), 0 0 14px rgba(85,227,154,.12);
 }
 
 /* ——— v3: why-now — first-class ranking reason ——— */
@@ -307,10 +374,11 @@
 
 /* ——— v3: the one obvious action ——— */
 .iblock-actionrow{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; align-items: center; }
-.feed-btn.primary{ background: var(--purple); border-color: var(--purple); color: #fff; }
-.feed-btn.primary:hover{ box-shadow: 0 8px 28px rgba(157,117,255,.4); color: #fff; }
-.feed-btn:disabled{ opacity: .45; cursor: default; }
+.feed-btn:disabled{ opacity: .5; cursor: default; transform: none; filter: saturate(.6); }
 .iblock-decision{ font-size: 13px; color: var(--muted); }
+/* The consequence, stated in plain words — no action without it. */
+.action-consequence{ font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 10px 0 0; max-width: 620px; }
+.action-consequence strong{ color: var(--ink-dim); font-weight: 600; }
 
 /* ——— v3: cross-reference rail ——— */
 .iblock-refs{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }

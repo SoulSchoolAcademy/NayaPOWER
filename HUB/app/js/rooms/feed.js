@@ -90,6 +90,8 @@
   function modeDock(el){
     const dock=el('div','feed-modedock');
     dock.setAttribute('role','tablist'); dock.setAttribute('aria-label','Feed mode');
+    const lab=el('span','modedock-label',''); lab.textContent='SHOWING';
+    dock.appendChild(lab);
     MODES.forEach((m,i)=>{
       const b=el('button','feed-mode',''); b.type='button'; b.textContent=m.label;
       b.setAttribute('role','tab'); b.setAttribute('aria-selected',i===0?'true':'false');
@@ -136,10 +138,13 @@
     const s=el('button','snap',''); s.type='button';
     s.style.setProperty('--tone',TONES[idx%TONES.length]);
     s.setAttribute('aria-expanded','false');
-    s.innerHTML='<span class="snap-dot" aria-hidden="true"></span>'
-      +'<span class="snap-main"><span class="snap-title">'+esc(b.title)+'</span>'
-      +'<span class="snap-nut">'+esc(b.layers.nutshell||'')+'</span></span>'
-      +'<span class="snap-chev" aria-hidden="true">▾</span>';
+    const dot=el('span','snap-jewel',''); dot.setAttribute('aria-hidden','true'); dot.innerHTML=JEWEL;
+    const main=el('span','snap-main','');
+    const tt=el('span','snap-title',''); tt.textContent=b.title;
+    const nn=el('span','snap-nut',''); nn.textContent=b.layers.nutshell||'';
+    main.appendChild(tt); main.appendChild(nn);
+    const chev=el('span','snap-chev',''); chev.setAttribute('aria-hidden','true'); chev.textContent='▾';
+    s.appendChild(dot); s.appendChild(main); s.appendChild(chev);
     s.setAttribute('aria-label','Open: '+b.title);
     s.addEventListener('click',()=>{
       expandedId=b.id;
@@ -200,6 +205,7 @@
       related:Array.isArray(o.related)?o.related:[],
       people:Array.isArray(o.people)?o.people:[],
       context:o.context||null,
+      consequence:o.consequence||'',
       action:(act&&(act.label||act.verb))?{label:act.label||act.verb,kind:act.kind||'evidence',run:act.run||null}:null
     };
   }
@@ -281,6 +287,12 @@
     if(acted) note.textContent='Recorded '+acted.at+' — preview-local receipt.';
     aw.appendChild(note);
     a.appendChild(aw);
+
+    /* The consequence, stated in plain words — no action without it. */
+    if(b.consequence){
+      const c=el('p','action-consequence',''); c.textContent=b.consequence;
+      a.appendChild(c);
+    }
 
     /* Cross-references — the identity becomes navigable. */
     const refs=el('div','iblock-refs');
