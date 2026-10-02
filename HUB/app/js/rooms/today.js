@@ -45,7 +45,8 @@
     stage.appendChild(evDrawer(el));
 
     K.load(stage,'today',{date:new Date().toISOString().slice(0,10)},(payload,list,out)=>{
-      const raw=Array.isArray(payload.highlights)&&payload.highlights.length?payload.highlights:list;
+      const hl=payload&&Array.isArray(payload.highlights)?payload.highlights:[];
+      const raw=hl.length?hl:list;
       allPlays=(raw||[]).map(o=>normalize(o,K));
       renderAll(el,out);
     },{
