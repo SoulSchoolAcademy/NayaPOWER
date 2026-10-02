@@ -1,0 +1,87 @@
+{
+  "schema": "nayanet.hub.current-implementation-inventory.v1",
+  "version": "1.0",
+  "observed_at": "2026-10-01",
+  "status": "OBSERVED_NOT_PRODUCTION_PROOF",
+  "canonical_main_sha": "5885459af85bcbaede4480557413ae9c681028a1",
+  "deployed_worker": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+  "supplied_artifacts": {
+    "welcome": {
+      "name": "index.HTML",
+      "bytes": 27206,
+      "lines": 1579,
+      "git_blob": "b434cdf6016a546a43cb4f0d4d5da6c18542c6f5"
+    },
+    "hub": {
+      "name": "smart-feed.html",
+      "bytes": 864094,
+      "lines": 1306,
+      "git_blob": "ed6b1a81f50ba752e8d081b63987c6963cd85755"
+    }
+  },
+  "main_reference_blobs": {
+    "welcome": "3b04e5f0bd3f6c5e9a630b77b87981769eb644e5",
+    "hub_concept": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
+  },
+  "deployed_source_parity": "UNKNOWN",
+  "supplied_hub_metrics": {
+    "script_blocks": 31,
+    "named_function_declarations": 176,
+    "unique_named_functions": 119,
+    "local_storage_references": 14,
+    "distinct_observed_local_keys": 7,
+    "mutation_observer_constructors": 8,
+    "mutation_observer_global_shim": "NO_OP_AT_DOCUMENT_START"
+  },
+  "observed_strengths": [
+    "distinctive obsidian/spectral visual DNA",
+    "Personal/Collective/Activity separation",
+    "prominent search and Naya companion",
+    "truth/provenance language",
+    "runtime Smart Note capture hook",
+    "canonical Intelligent Block retrieval/deep-link hook",
+    "authenticated personal smartFeed runtime projection",
+    "honest unavailable/not-verified fallbacks in newer room surfaces",
+    "partial keyboard/reduced-motion support"
+  ],
+  "material_gaps": [
+    "no single accepted production architecture",
+    "deployed-source parity unknown",
+    "Smart Share vs Smart Connect mismatch",
+    "11 vs 13 primary room IA conflict",
+    "daily/report/library/list/space runtime contracts incomplete",
+    "localStorage/DOM state still carries product behavior",
+    "864KB layered monolith and repair-stack debt",
+    "Welcome/Identity/Hub journey not yet one governed boundary",
+    "complete end-to-end proof absent",
+    "open app/spec/art-direction branches require convergence"
+  ],
+  "room_status": {
+    "feed": "PARTIAL_RUNTIME_PLUS_STATIC",
+    "today": "HONEST_PARTIAL_MISSING_DAILY_EVIDENCE_BOUNDARIES",
+    "reports": "THIN_RENDERED_PROJECTION",
+    "library": "DOM_SEARCH_IN_ONE_PATH_NOT_CANONICAL_RETRIEVAL",
+    "connect": "MISNAMED_SMART_SHARE_AND_BROWSER_SHARE_PATH",
+    "ledger": "OPTIONAL_RUNTIME_PROBE",
+    "connections": "OPTIONAL_RUNTIME_PROBE",
+    "lists": "LOCAL_OR_DOM_DERIVED",
+    "mail": "OPTIONAL_RUNTIME_PROBE",
+    "spaces": "OPTIONAL_RUNTIME_OR_VISIBLE_CONTEXT_FALLBACK",
+    "settings": "RUNTIME_SNAPSHOT_VERIFY_PARTIAL"
+  },
+  "working_self_score": {
+    "D1_visual": 8.3,
+    "D2_functional": 4.8,
+    "D3_intelligence": 4.2,
+    "D4_honesty": 8.3,
+    "D5_performance": 3.8,
+    "D6_reliability_continuity": 4.8,
+    "D7_accessibility": 5.5,
+    "D8_craft": 5.8,
+    "composite_approx": 5.7,
+    "closure": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "next_true_milestone": "current-main app shell + governed journey + canonical runtime adapter + Your Intelligence Today end-to-end + evidence",
+  "execution_issue": 1270,
+  "coordination_issue": 554
+}
