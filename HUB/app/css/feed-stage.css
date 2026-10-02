@@ -659,3 +659,21 @@
   .feed-mode{transition:none}
   .feed-mode:active{transform:none}
 }
+
+
+/* OSCAR failure repair — exact browser findings from run 37027775202. */
+.feed-modebar[hidden]{display:none!important}
+.nlayer-text{font-size:16px}
+.ask-go,.ask-hit button,.ev-close{min-height:46px}
+.ask-hit button{display:inline-flex;align-items:center}
+.ev-close{
+  appearance:none;
+  margin:8px 0 0;
+  padding:0 18px;
+  border:1px solid #ffffff22;
+  border-radius:13px;
+  background:linear-gradient(145deg,#171b25,#0b0d12);
+  color:var(--ink);
+  font:700 12px/1 var(--font);
+  cursor:pointer;
+}
