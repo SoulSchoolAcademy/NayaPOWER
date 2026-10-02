@@ -1,0 +1,200 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ROOM 01 — SMART FEED · THE MAIN STAGE
+   V7 intelligent-block language. Rebuilt 2026-10-02 per the director's call:
+   the main stage shows "your intelligence today" as intelligent blocks —
+   jewel · title · source · nutshell · deeper layers · trust footer.
+   No mode tabs, no spec-speak buttons, no invented content.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.feed-stage{
+  --feed-accent: var(--emerald);
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px) 96px;
+  color: var(--ink);
+}
+
+/* ——— Stage header ——— */
+.feed-greeting{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.feed-dateline{
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.feed-dateline .feed-dot{ color: var(--feed-accent); padding: 0 10px; }
+.feed-daystate{
+  font-size: clamp(1.02rem, 2.4vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--ink-dim);
+  max-width: 640px;
+  margin: 0 0 8px;
+}
+.feed-countline{
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 26px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+.feed-countline strong{ color: var(--feed-accent); font-weight: 600; }
+
+/* ——— Intelligent block ——— */
+.iblock{
+  padding: clamp(30px, 5vw, 54px) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.iblock-head{ display: flex; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
+.iblock-jewel{ flex: 0 0 auto; width: 34px; height: 34px; margin-top: 6px; }
+.iblock-jewel svg{ width: 100%; height: 100%; display: block; }
+.iblock-lead .iblock-jewel{ filter: drop-shadow(0 0 14px rgba(53,224,161,.35)); }
+.iblock-title{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.6vw, 2.3rem);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.iblock-lead .iblock-title{ font-size: clamp(1.8rem, 4.4vw, 2.8rem); }
+.iblock-kicker{
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.iblock-kicker .k-accent{ color: var(--feed-accent); }
+.iblock-source{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+}
+.iblock-source .led{
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--feed-accent);
+  box-shadow: 0 0 8px var(--feed-accent);
+}
+
+/* ——— Layers ——— */
+.ilayer{ margin: 0 0 20px; max-width: 720px; }
+.ilayer-label{
+  display: flex; align-items: baseline; gap: 10px;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.ilayer-label strong{ color: var(--ink); font-weight: 700; }
+.ilayer-label span{ color: var(--muted); font-weight: 400; letter-spacing: 0.14em; }
+.ilayer-text{
+  font-size: 15px; line-height: 1.7; color: var(--ink-dim); margin: 0;
+}
+.ilayer-nutshell .ilayer-text{
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.iblock-layers{ display: none; }
+.iblock-layers.open{ display: block; animation: iblock-in .45s ease; }
+@keyframes iblock-in{ from{ opacity: 0; transform: translateY(8px);} to{ opacity: 1; transform: none;} }
+
+.feed-deeper{
+  background: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--feed-accent);
+  padding: 12px 0; margin-top: 6px;
+}
+.feed-deeper::after{
+  content: ""; width: 28px; height: 1px; background: var(--feed-accent);
+  transition: width .3s ease;
+}
+.feed-deeper:hover::after{ width: 44px; }
+.feed-deeper .chev{ transition: transform .3s ease; font-size: 14px; }
+.feed-deeper[aria-expanded="true"] .chev{ transform: rotate(180deg); }
+
+/* ——— Block footer ——— */
+.iblock-foot{
+  margin-top: 30px; padding-top: 20px;
+  border-top: 1px solid var(--line-soft);
+  text-align: center;
+}
+.iblock-foot p{
+  font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 8px;
+}
+.iblock-foot p:last-child{ margin-bottom: 0; color: var(--faint); }
+.iblock-foot .trust{ color: var(--feed-accent); }
+
+/* ——— Block action ——— */
+.iblock-action{ margin-top: 22px; }
+.feed-btn{
+  appearance: none; cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--feed-accent);
+  color: var(--feed-accent);
+  border-radius: var(--radius-pill);
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 13px 28px;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.feed-btn:hover{
+  background: var(--feed-accent); color: #06110c;
+  box-shadow: 0 8px 28px rgba(53,224,161,.28);
+}
+
+/* ——— Stage footer ——— */
+.feed-stage-foot{
+  margin-top: 56px; text-align: center;
+}
+.feed-ask{
+  appearance: none; cursor: pointer;
+  background: linear-gradient(135deg, rgba(53,224,161,.16), rgba(53,224,161,.05));
+  border: 1px solid rgba(53,224,161,.4);
+  color: var(--ink);
+  border-radius: var(--radius-pill);
+  font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 18px 44px;
+  transition: box-shadow .3s ease, border-color .3s ease;
+}
+.feed-ask:hover{
+  border-color: var(--feed-accent);
+  box-shadow: 0 12px 40px rgba(53,224,161,.22);
+}
+
+/* ——— Honest states inherit the stage voice ——— */
+.feed-stage .shimmer-grid{ padding: 40px 0; }
+
+/* ——— Reduced motion ——— */
+@media (prefers-reduced-motion: reduce){
+  .iblock-layers.open{ animation: none; }
+  .feed-deeper::after, .feed-deeper .chev,
+  .feed-btn, .feed-ask{ transition: none; }
+}
+
+/* ——— Small screens ——— */
+@media (max-width: 560px){
+  .iblock-head{ gap: 14px; }
+  .iblock-jewel{ width: 26px; height: 26px; margin-top: 4px; }
+  .ilayer-label{ flex-wrap: wrap; row-gap: 2px; }
+}
