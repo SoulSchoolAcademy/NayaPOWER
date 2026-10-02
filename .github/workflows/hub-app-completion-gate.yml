@@ -1,0 +1,74 @@
+name: Hub App Completion Gate
+
+on:
+  pull_request:
+    paths:
+      - 'HUB/app/**'
+      - 'HUB/APP-COMPLETION-MATRIX-V1.json'
+      - 'HUB/APP-SPEC.*.md'
+      - 'tools/verify_hub_app_completion.py'
+      - '.github/workflows/hub-app-completion-gate.yml'
+  push:
+    branches:
+      - 'naya/hub-complete-app-v1'
+    paths:
+      - 'HUB/app/**'
+      - 'HUB/APP-COMPLETION-MATRIX-V1.json'
+      - 'tools/verify_hub_app_completion.py'
+
+permissions:
+  contents: read
+
+jobs:
+  consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Completion matrix consistency
+        run: python3 tools/verify_hub_app_completion.py
+      - name: JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            echo "node --check $file"
+            node --check "$file"
+          done < <(find HUB/app/js -type f -name '*.js' -print0 | sort -z)
+      - name: No shell-only release claim
+        run: |
+          python3 - <<'PY'
+          import json
+          p=json.load(open('HUB/APP-COMPLETION-MATRIX-V1.json'))
+          assert p['overall_state'] == 'IN_PROGRESS', 'Do not claim completion before proof.'
+          print('Current branch correctly remains IN_PROGRESS.')
+          PY
+
+
+  browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Serve Hub
+        run: |
+          python3 -m http.server 4173 --directory . > /tmp/hub-server.log 2>&1 &
+          echo $! > /tmp/hub-server.pid
+          for i in {1..20}; do
+            curl -fsS http://127.0.0.1:4173/HUB/app/index.html >/dev/null && break
+            sleep 0.5
+          done
+      - name: Browser smoke and responsive QA
+        run: node HUB/app/tests/browser-smoke.mjs
+      - name: Upload Hub screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hub-browser-qa
+          path: HUB/app/test-artifacts/
+          if-no-files-found: warn

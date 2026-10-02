@@ -1,0 +1,72 @@
+{
+  "schema": "naya.complete-app-build.v1",
+  "version": "1.0",
+  "status": "PROPOSED_REUSABLE_STANDARD",
+  "source_intelligence": "SN-019",
+  "north_star": "PLAN_THE_WHOLE_BUILD_THE_WHOLE_PROVE_THE_WHOLE",
+  "scope_law": "SMALLEST_EFFECTIVE_SLICE_CONTROLS_BUILD_ORDER_NOT_DECLARED_PRODUCT_SCOPE",
+  "surface_states": [
+    "NOT_STARTED",
+    "SPEC_READY",
+    "DESIGN_READY",
+    "IMPLEMENTED",
+    "TESTED",
+    "INTEGRATED",
+    "INDEPENDENTLY_VERIFIED",
+    "PRODUCTION_PROVEN"
+  ],
+  "required_inventory": [
+    "journeys",
+    "routes_pages_rooms",
+    "shell_navigation",
+    "design_system",
+    "runtime_data_owners",
+    "actions_causal_paths",
+    "states",
+    "cross_surface_handoffs",
+    "responsive",
+    "accessibility",
+    "performance",
+    "reliability_recovery",
+    "proof",
+    "deployment_parity"
+  ],
+  "interface_design_sequence": [
+    "PURPOSE",
+    "HUMAN_OUTCOME",
+    "HIERARCHY",
+    "COMPOSITION",
+    "MATERIAL",
+    "LIGHT",
+    "TYPE",
+    "ICON",
+    "COLOR",
+    "MOTION",
+    "STATE",
+    "PROOF"
+  ],
+  "control_trace": [
+    "CONTROL",
+    "HUMAN_INTENT",
+    "AUTHORITY_SCOPE",
+    "CAPABILITY",
+    "RUNTIME",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE"
+  ],
+  "false_completion": [
+    "shell_only",
+    "first_vertical_slice_only",
+    "placeholder_pages",
+    "self_score_only",
+    "fake_data",
+    "untracked_regression",
+    "silent_scope_reduction"
+  ],
+  "successor_terminal_states": [
+    "TERMINAL",
+    "SUCCESSOR_READY"
+  ],
+  "success": "Declared product usable end-to-end without Human Director enumerating ordinary missing work; evidence and independent review meet current quality bar."
+}

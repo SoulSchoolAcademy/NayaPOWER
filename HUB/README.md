@@ -79,3 +79,20 @@ A cold builder passes only if it can answer from this index and linked sources:
 10. What must be left for the next Naya?
 
 If Shawn has to rebuild this context, the project intelligence is incomplete.
+
+## Complete-app implementation candidate
+
+The current end-to-end implementation candidate lives under `HUB/app/`.
+
+Read before changing it:
+
+1. `HUB/APP-SPEC.HUMAN.md`
+2. `HUB/APP-SPEC.AI.md`
+3. `HUB/APP-COMPLETION-MATRIX-V1.json`
+4. `NAYA-ACTIVATION/DESIGN/COMPLETE-APP-BUILD-STANDARD-V1.md`
+5. the canonical Hub project/design intelligence above.
+
+**Completion invariant:** a shell, route, first room, or first vertical slice is not the completed application. The declared Hub scope remains open until all 11 rooms, shared surfaces, whole-app journeys, accessibility/performance/reliability gates, and applicable production proof are closed in the machine-readable completion matrix.
+
+The implementation currently includes distinct room modules for all eleven primary rooms. Missing live backend capability remains explicit as NOT_VERIFIED rather than being represented as finished.
+

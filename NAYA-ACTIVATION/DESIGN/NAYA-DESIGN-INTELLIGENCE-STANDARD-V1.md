@@ -167,3 +167,15 @@ A cold Naya should be able to:
 **understand the human → explain the product → identify the design DNA → identify the highest-value gap → build a bounded improvement → preserve what works → prove it → learn → leave a better design starting point**
 
 without Shawn repeatedly explaining the vision.
+
+## Complete-app scope law
+
+Read `NAYA-ACTIVATION/DESIGN/COMPLETE-APP-BUILD-STANDARD-V1.md` for substantive application/interface work.
+
+**Important:** “build the smallest effective slice” is a sequencing rule, not permission to redefine the finished product as the slice.
+
+If the declared product contains multiple routes/pages/rooms, the design/build task remains open until the complete declared scope is represented in the completion matrix and every required surface reaches its applicable closure gate.
+
+A shell, first room, first vertical slice, or visually strong prototype is not a completed application.
+
+Completed surfaces become non-regression baselines. Future work must preserve or improve them.

@@ -1,0 +1,459 @@
+{
+  "schema": "nayanet.hub.app-completion.v1",
+  "version": "1.0",
+  "app_id": "NAYANET_INTELLIGENT_HUB",
+  "doctrine": "SN-019 — Complete the App Doctrine — Finish the House, Not the Shell",
+  "base_main_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
+  "branch": "naya/hub-complete-app-v1",
+  "overall_state": "IN_PROGRESS",
+  "quality_target": {
+    "target": 10,
+    "near_perfect_acceptance": 9.5,
+    "below_9_0": "NOT_READY"
+  },
+  "legal_states": [
+    "NOT_STARTED",
+    "SPEC_READY",
+    "DESIGN_READY",
+    "IMPLEMENTED",
+    "TESTED",
+    "INTEGRATED",
+    "INDEPENDENTLY_VERIFIED",
+    "PRODUCTION_PROVEN"
+  ],
+  "required_primary_rooms": [
+    "feed",
+    "today",
+    "reports",
+    "library",
+    "connect",
+    "ledger",
+    "connections",
+    "lists",
+    "mail",
+    "spaces",
+    "settings"
+  ],
+  "universal_surfaces": [
+    "welcome",
+    "identity",
+    "shell",
+    "global_search",
+    "runtime_adapter"
+  ],
+  "completion_law": "No shell, route, room, or first vertical slice closes the declared app. The app stays open until every required surface and cross-app journey meets its contract and proof gate.",
+  "shared_gates": {
+    "source_design_contract": {
+      "state": "SPEC_READY",
+      "evidence": [
+        "HUB/DESIGN-CONTRACT.md",
+        "HUB/APP-SPEC.AI.md"
+      ]
+    },
+    "one_shell_router": {
+      "state": "IMPLEMENTED",
+      "evidence": [
+        "HUB/app/js/router.js",
+        "HUB/app/js/views/hub.js"
+      ]
+    },
+    "canonical_runtime_adapter": {
+      "state": "IMPLEMENTED",
+      "evidence": [
+        "HUB/app/js/runtime.js",
+        "HUB/app/js/runtime-live.js"
+      ],
+      "remaining": "Live backend capability coverage and browser proof required."
+    },
+    "responsive": {
+      "state": "TESTED",
+      "evidence": [
+        "Hub App Completion Gate browser-smoke run 36955195833",
+        "hub-browser-qa artifact 11205951815"
+      ],
+      "remaining": "Independent visual review across artifact screenshots and additional zoom/orientation/device cases remain."
+    },
+    "accessibility": {
+      "state": "IMPLEMENTED",
+      "evidence": [
+        "semantic controls, keyboard hooks, reduced-motion CSS"
+      ],
+      "remaining": "Independent accessibility audit pending."
+    },
+    "performance": {
+      "state": "NOT_STARTED",
+      "evidence": [],
+      "remaining": "Measure bundle, render, interaction and device performance."
+    },
+    "regression_suite": {
+      "state": "TESTED",
+      "evidence": [
+        "tools/verify_hub_app_completion.py",
+        ".github/workflows/hub-app-completion-gate.yml",
+        "browser-smoke run 36955195833"
+      ],
+      "remaining": "Add visual/browser regression evidence."
+    },
+    "deployed_source_parity": {
+      "state": "NOT_STARTED",
+      "evidence": [],
+      "remaining": "No deployment from this branch; parity must be proven at release."
+    }
+  },
+  "surfaces": {
+    "welcome": {
+      "kind": "journey",
+      "state": "TESTED",
+      "files": [
+        "HUB/app/js/views/welcome.js"
+      ],
+      "remaining": [
+        "independent visual comparison against approved portal baseline"
+      ]
+    },
+    "identity": {
+      "kind": "journey",
+      "state": "TESTED",
+      "files": [
+        "HUB/app/js/views/identity.js"
+      ],
+      "remaining": [
+        "governed identity runtime binding",
+        "negative identity runtime proof"
+      ]
+    },
+    "shell": {
+      "kind": "shared",
+      "state": "TESTED",
+      "files": [
+        "HUB/app/js/views/hub.js",
+        "HUB/app/css/shell.css"
+      ],
+      "remaining": [
+        "deeper back-forward/reload state restoration proof",
+        "200% zoom and landscape expansion beyond current smoke coverage"
+      ]
+    },
+    "global_search": {
+      "kind": "shared",
+      "state": "IMPLEMENTED",
+      "files": [
+        "HUB/app/js/views/hub.js",
+        "HUB/app/js/runtime-live.js"
+      ],
+      "remaining": [
+        "live canonical search round-trip",
+        "provenance rendering proof"
+      ]
+    },
+    "runtime_adapter": {
+      "kind": "shared",
+      "state": "IMPLEMENTED",
+      "files": [
+        "HUB/app/js/runtime.js",
+        "HUB/app/js/runtime-live.js"
+      ],
+      "remaining": [
+        "bind exact canonical runtime contract",
+        "remove compatibility aliases once contract is fixed"
+      ]
+    }
+  },
+  "rooms": {
+    "feed": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_GAME",
+      "file": "HUB/app/js/rooms/feed.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "live Personal/Collective/Activity round-trip",
+        "WhyAmISeeingThis evidence",
+        "cross-room object detail"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "today": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_HIGHLIGHT_REEL",
+      "file": "HUB/app/js/rooms/today.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "real daily pulse",
+        "highlight selection evidence",
+        "Naya reflection evidence",
+        "quiet-day browser proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "reports": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_FILM_ROOM_TIME_MACHINE",
+      "file": "HUB/app/js/rooms/reports.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "day/week/month/year runtime",
+        "period semantic differentiation proof",
+        "evidence appendix"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "library": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_VAULT",
+      "file": "HUB/app/js/rooms/library.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "canonical semantic search",
+        "domain runtime",
+        "uncertainty/gap proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "connect": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_PORTAL_BAY",
+      "file": "HUB/app/js/rooms/connect.js",
+      "runtime": "PARTIAL",
+      "remaining": [
+        "registry fetched dynamically rather than mirrored",
+        "connection/auth/authority/health runtime proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "ledger": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_BLACK_BOX",
+      "file": "HUB/app/js/rooms/ledger.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "receipt/outcome/verification runtime",
+        "causal chain proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "connections": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_CONSTELLATION",
+      "file": "HUB/app/js/rooms/connections.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "governed relationship runtime",
+        "consent/revoke proof",
+        "accessible graph/list equivalence"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "lists": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_MISSION_TABLE",
+      "file": "HUB/app/js/rooms/lists.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "canonical reference persistence",
+        "smart-rule explanation",
+        "cross-room add-to-list path"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "mail": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_SIGNAL_ROOM",
+      "file": "HUB/app/js/rooms/mail.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "real mail runtime",
+        "draft/send authority proof",
+        "thread context proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "spaces": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_WORLDS",
+      "file": "HUB/app/js/rooms/spaces.js",
+      "runtime": "NOT_VERIFIED",
+      "remaining": [
+        "Space context persistence",
+        "query/ranking changes by Space",
+        "privacy enforcement proof"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    },
+    "settings": {
+      "state": "IMPLEMENTED",
+      "metaphor": "THE_CONTROL_DECK",
+      "file": "HUB/app/js/rooms/settings.js",
+      "runtime": "PARTIAL",
+      "remaining": [
+        "real account/settings persistence",
+        "privacy/authority enforcement scope",
+        "System Health live evidence"
+      ],
+      "browser_render": {
+        "state": "TESTED",
+        "evidence": "browser-smoke run 36955195833",
+        "artifact": "hub-browser-qa / 11205951815"
+      }
+    }
+  },
+  "whole_app_journeys": [
+    {
+      "id": "J01",
+      "name": "Welcome → Identity → Hub",
+      "state": "IMPLEMENTED",
+      "proof": []
+    },
+    {
+      "id": "J02",
+      "name": "Back/forward/reload/room continuity",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J03",
+      "name": "Ask Naya/search → canonical answer → provenance",
+      "state": "IMPLEMENTED",
+      "proof": [],
+      "remaining": "live runtime proof"
+    },
+    {
+      "id": "J04",
+      "name": "Smart Note outside Hub → persistence → Feed → Today → Library",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J05",
+      "name": "One canonical intelligence object across rooms",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J06",
+      "name": "Smart Connect registry → authority boundary → proof",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J07",
+      "name": "Ledger causal receipt chain",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J08",
+      "name": "Space changes scoped intelligence across rooms",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J09",
+      "name": "Mail draft/send refusal and authorized send",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J10",
+      "name": "Offline/error/blocked/unauthorized/unknown recovery",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J11",
+      "name": "Mobile + keyboard + reduced motion + 200% zoom",
+      "state": "NOT_STARTED",
+      "proof": []
+    },
+    {
+      "id": "J12",
+      "name": "Production deployment/source parity/return session",
+      "state": "NOT_STARTED",
+      "proof": []
+    }
+  ],
+  "false_completion_guards": [
+    "overall_state may not be COMPLETE while any required room is below PRODUCTION_PROVEN",
+    "IMPLEMENTED means code exists; it does not mean tested, integrated, verified, deployed, or production-proven",
+    "runtime NOT_VERIFIED cannot be represented as live",
+    "builder self-score cannot close the release gate",
+    "remaining work stays machine-visible until evidence closes it"
+  ],
+  "next_failing_gate": "Bind the exact governed runtime contract and prove one canonical intelligence object end-to-end across Feed → Today → Library → Lists/Spaces → Ledger, then continue room runtime closure without regressing browser-tested surfaces.",
+  "latest_validation": {
+    "head_sha": "7a65d11b957f3a0dfcd3cd613cb088d26f8975cc",
+    "hub_completion_gate": {
+      "run_id": 36955199586,
+      "result": "SUCCESS"
+    },
+    "collective_chain_readiness": {
+      "run_id": 36955199590,
+      "result": "SUCCESS"
+    },
+    "kernel_tests": {
+      "run_id": 36955199623,
+      "result": "FAIL_SHARED_BRAIN_INDEX_DRIFT_ONLY",
+      "node_tests": "246 passed / 0 failed",
+      "pytest": "546 passed / 3 skipped / 0 failed",
+      "failing_step": "tools/regenerate_brain_index.py --check",
+      "observed": "05-MEMORY actual 26 vs expected 23",
+      "routed_to": "PR #1301"
+    },
+    "browser_qa": {
+      "run_id": 36955195833,
+      "result": "SUCCESS",
+      "artifact_id": 11205951815,
+      "artifact_name": "hub-browser-qa",
+      "artifact_digest": "sha256:84e96cc417281e7ef9189d2bcaf484a7e89788cf8ee1d57d7c42cd824c3fcd7b",
+      "coverage": [
+        "welcome",
+        "identity",
+        "all_11_desktop_rooms",
+        "all_11_mobile_rooms",
+        "mobile_drawer",
+        "horizontal_overflow",
+        "reduced_motion_context",
+        "108_welcome_jewels"
+      ]
+    }
+  }
+}
