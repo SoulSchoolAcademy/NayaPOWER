@@ -424,12 +424,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "52f0187a-052f-438f-b802-ed56f997974e"
       }
+    },
+    {
+      "smart_note_id": "SN-020",
+      "intelligent_block_id": "IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery",
+      "content_hash": "7745e0164917066bb7a45f9cf369dabae14a7d3c5b31434bb57d95ebfd17b822",
+      "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",
+      "captured_at": "2026-10-01",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "DESIGN_MASTERY",
+      "subtopic": "AUTONOMOUS_SIGNATURE_INTERFACE_BUILDING",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "7ed41dd7-1e11-40cf-b7e4-68ae29fe2db9",
+        "lineage_id": "96aa0202-1aee-4ccc-8357-6b861ef0f5ab",
+        "relationship_id": "4aff284e-3405-4f55-b757-2d6c3d02818f",
+        "runtime_index_id": "c05cb9ae-f75e-4c2d-a268-3008447839ec",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "0346d653-3d89-41c7-ba0d-ccfc521f2085"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 20,
+    "next_sequence": 21,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
