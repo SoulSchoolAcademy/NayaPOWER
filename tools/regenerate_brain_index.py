@@ -126,7 +126,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    "05-MEMORY": 25,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree (25 @ ae2fd838: +4 real non-report Smart-Note files since 42c8f594: 3 SN notes + 1 duplicate-SN-018 path)
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
