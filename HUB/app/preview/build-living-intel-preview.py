@@ -34,7 +34,10 @@ def reports():
         if m:
             nutshell = re.sub(r'\s+', ' ',
                 re.sub(r'[*_`>#\U0001f9e0\U0001f4e1\U0001f441\ufe0f]', '', m.group(1)).strip())[:240]
-        out.append({'date': d.group(1) if d else '', 'nutshell': nutshell})
+        sections = len(re.findall(r'^#{1,3}\s+', s, re.M))
+        words = len(re.findall(r'\S+', s))
+        out.append({'date': d.group(1) if d else '', 'nutshell': nutshell,
+                    'sections': sections, 'words': words})
     return out
 
 def notes():
@@ -53,6 +56,7 @@ def notes():
             'title': title,
             'nutshell': re.sub(r'\s+', ' ', m.group(1).strip())[:220] if m else '',
             'truth': tr.group(1).strip()[:20] if tr else 'CANDIDATE',
+            'words': len(re.findall(r'\S+', s)),
         })
     return out
 
@@ -65,7 +69,8 @@ def doors():
         name = d.get('name') or d.get('display_name') or d.get('id')
         color, jewel = DOOR_STYLE.get(name, ('#6366f1', '\u25c9'))
         out.append({'name': name, 'status': d.get('status', ''),
-                    'color': color, 'jewel': jewel})
+                    'color': color, 'jewel': jewel,
+                    'capabilities': d.get('capabilities', []) or []})
     return out
 
 def main():

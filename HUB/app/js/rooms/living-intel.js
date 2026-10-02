@@ -1,15 +1,20 @@
 /* LIVING INTEL — the heartbeat of it all.
  * The unified living stream: intelligence reports, smart notes, ledger
- * actions, and connection states — every source keeping its identity color,
- * one heart beating underneath.
+ * actions, and connection states — flowing through the natural color
+ * spectrum, one heart beating underneath.
  *
  * Contract: window.NayaRooms.livingIntel(el, ctx)
  *   ctx.items — from LivingIntelAdapter.build (newest first)
- * Law: demo items keep their DEMO chip. Time-ago ticks live. Every
- * button has a real consequence. Color is stable source identity.
+ * Law: demo items keep their DEMO chip. Time-ago ticks live. Click any
+ * board and its heartbeat graph pops up — real numbers, or a plain-words
+ * explanation where there is no graph. White at rest; the flow color
+ * ignites on highlight.
  */
 (function(){
   'use strict';
+
+  var FLOW = ['#a855f7','#6366f1','#22d3ee','#16a34a','#a3e635',
+              '#facc15','#d4a017','#fb923c','#ef4444','#ec4899'];
 
   var FILTERS = [
     ['all',   'ALL',         '#ffffff', null],
@@ -31,7 +36,6 @@
     var mid = H/2, seg = W/beats, p = 'M 0 '+mid;
     for(var b=0;b<beats;b++){
       var x = b*seg;
-      /* P wave, QRS spike, T wave */
       p += ' L '+(x+seg*0.18).toFixed(1)+' '+mid;
       p += ' Q '+(x+seg*0.24).toFixed(1)+' '+(mid-14).toFixed(1)+' '+(x+seg*0.30).toFixed(1)+' '+mid;
       p += ' L '+(x+seg*0.40).toFixed(1)+' '+mid;
@@ -65,7 +69,9 @@
     var grad=document.createElementNS(svgNS,'linearGradient');
     grad.setAttribute('id','li-ekg-grad'); grad.setAttribute('x1','0'); grad.setAttribute('y1','0');
     grad.setAttribute('x2','1'); grad.setAttribute('y2','0');
-    [['0','#38bdf8'],['0.35','#c084fc'],['0.65','#d4a017'],['1','#ef4444']].forEach(function(s){
+    [['0','#a855f7'],['0.15','#6366f1'],['0.28','#22d3ee'],['0.4','#16a34a'],
+     ['0.52','#a3e635'],['0.62','#facc15'],['0.72','#d4a017'],['0.82','#fb923c'],
+     ['0.92','#ef4444'],['1','#ec4899']].forEach(function(s){
       var st=document.createElementNS(svgNS,'stop');
       st.setAttribute('offset',s[0]); st.setAttribute('stop-color',s[1]); defs.appendChild(st);
     });
@@ -83,16 +89,15 @@
     hero.appendChild(svg);
 
     var hov = el('div','li-hero-over');
-    var kick = el('p','li-kicker',''); 
+    var kick = el('p','li-kicker','');
     var liveDot = el('span','li-live-dot',''); kick.appendChild(liveDot);
     var ktx = el('span','',''); ktx.textContent=' LIVING INTEL \u00B7 LIVE'; kick.appendChild(ktx);
     hov.appendChild(kick);
     var h1 = el('h1','li-title',''); h1.textContent='The heartbeat of it all'; hov.appendChild(h1);
     var sub = el('p','li-sub','');
-    sub.textContent='Every report, every note, every action, every connection \u2014 one living stream. This is Naya thinking, in the open.';
+    sub.textContent='Every report, every note, every action, every connection \u2014 one living stream. Tap any board to see its heartbeat.';
     hov.appendChild(sub);
 
-    /* hero stats */
     var stats = el('div','li-stats');
     var sources = {};
     items.forEach(function(i){ sources[i.source]=(sources[i.source]||0)+1; });
@@ -146,9 +151,7 @@
     function setFilter(f){
       state.filter = f;
       var btns = tabs.querySelectorAll('.li-tab');
-      FILTERS.forEach(function(ff,i){
-        btns[i].classList.toggle('on', ff[0]===f);
-      });
+      FILTERS.forEach(function(ff,i){ btns[i].classList.toggle('on', ff[0]===f); });
       renderStream();
     }
 
@@ -166,9 +169,13 @@
         return;
       }
       list.forEach(function(it, idx){
+        var fc = FLOW[idx % FLOW.length];
         var card = el('article','li-card');
-        card.style.setProperty('--ic', it.color);
-        card.style.animationDelay = Math.min(idx*0.05, 1)+'s';
+        card.style.setProperty('--ic', fc);
+        card.style.setProperty('--i', idx);
+        card.style.animationDelay = Math.min(idx*0.04, 0.8)+'s';
+        card.setAttribute('role','button'); card.setAttribute('tabindex','0');
+        card.setAttribute('aria-label','Inspect: '+it.title);
         var top = el('div','li-card-top');
         var jw = el('span','li-card-j',''); jw.textContent=it.jewel; top.appendChild(jw);
         top.appendChild(el('span','li-card-s', sourceLabel(it.source)));
@@ -179,10 +186,60 @@
         var t = el('h2','li-card-title',''); t.textContent=it.title; card.appendChild(t);
         if(it.nutshell){ var n=el('p','li-card-n',''); n.textContent=it.nutshell; card.appendChild(n); }
         if(it.meta){ var m=el('p','li-card-m',''); m.textContent=it.meta; card.appendChild(m); }
+        var hint = el('span','li-card-hint','TAP FOR HEARTBEAT'); card.appendChild(hint);
+        card.addEventListener('click', function(){ openModal(it, fc); });
+        card.addEventListener('keydown', function(ev){
+          if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openModal(it, fc); }
+        });
         stream.appendChild(card);
       });
     }
     renderStream();
+
+    /* ============ HEARTBEAT MODAL ============ */
+    var overlay = el('div','li-overlay'); overlay.style.display='none';
+    var mcard = el('div','li-modal');
+    overlay.appendChild(mcard);
+    overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeModal(); });
+    document.addEventListener('keydown', function esc(ev){
+      if(ev.key==='Escape' && overlay.style.display==='flex') closeModal();
+    });
+    stage.appendChild(overlay);
+
+    function openModal(it, fc){
+      mcard.innerHTML='';
+      mcard.style.setProperty('--ic', fc);
+      var k = el('p','li-kicker','');
+      var ld = el('span','li-live-dot',''); k.appendChild(ld);
+      var kx = el('span','',''); kx.textContent=' HEARTBEAT \u00B7 '+sourceLabel(it.source); k.appendChild(kx);
+      mcard.appendChild(k);
+      var t = el('h2','li-modal-title',''); t.textContent=it.title; mcard.appendChild(t);
+      var mm = el('p','li-modal-meta',''); mm.textContent=timeAgo(it.ts)+(it.demo?' \u00B7 DEMO':''); mcard.appendChild(mm);
+
+      if(it.graph) mcard.appendChild(graphSvg(el, it.graph, fc));
+
+      if(it.stats && it.stats.length){
+        var st = el('div','li-modal-stats');
+        it.stats.forEach(function(s){
+          var r = el('div','li-modal-stat');
+          r.appendChild(el('span','li-modal-stat-l', s[0]));
+          var vv = el('span','li-modal-stat-v',''); vv.textContent=s[1]; r.appendChild(vv);
+          st.appendChild(r);
+        });
+        mcard.appendChild(st);
+      }
+
+      if(it.explain){
+        var ex = el('p','li-modal-explain',''); ex.textContent=it.explain; mcard.appendChild(ex);
+      }
+
+      var x = el('button','li-modal-x','CLOSE'); x.type='button';
+      x.style.setProperty('--tab-c', fc);
+      x.addEventListener('click', closeModal);
+      mcard.appendChild(x);
+      overlay.style.display='flex';
+    }
+    function closeModal(){ overlay.style.display='none'; }
 
     /* live time-ago ticker */
     var timer = setInterval(function(){
@@ -193,9 +250,66 @@
     }, 30000);
 
     var foot = el('footer','li-foot','');
-    foot.textContent = 'every source keeps its color \u00B7 demo items labeled \u00B7 identities never revealed';
+    foot.textContent = 'the flow: purple \u2192 indigo \u2192 cyan \u2192 forest \u2192 lime \u2192 yellow \u2192 gold \u2192 orange \u2192 red \u2192 magenta \u2192 again';
     stage.appendChild(foot);
     return stage;
+  }
+
+  /* mini heartbeat graphs — real numbers only */
+  function graphSvg(el, g, color){
+    var svgNS='http://www.w3.org/2000/svg';
+    var W=560,H=150;
+    var svg=document.createElementNS(svgNS,'svg');
+    svg.setAttribute('viewBox','0 0 '+W+' '+H); svg.setAttribute('class','li-graph');
+    if(g.kind==='bars'){
+      var n=g.bars.length, bw=W/n;
+      g.bars.forEach(function(b,i){
+        var v=Math.max(0,Math.min(1,b[1]/b[2]));
+        var bh=Math.max(6, v*(H-44));
+        var r=document.createElementNS(svgNS,'rect');
+        r.setAttribute('x', (i*bw+bw*0.28).toFixed(1));
+        r.setAttribute('y', (H-24-bh).toFixed(1));
+        r.setAttribute('width', (bw*0.44).toFixed(1));
+        r.setAttribute('height', bh.toFixed(1));
+        r.setAttribute('rx','6'); r.setAttribute('class','li-gbar');
+        r.style.setProperty('--ic', color);
+        r.style.animationDelay=(i*0.12)+'s';
+        svg.appendChild(r);
+        var tx=document.createElementNS(svgNS,'text');
+        tx.setAttribute('x',(i*bw+bw/2).toFixed(1)); tx.setAttribute('y',H-6);
+        tx.setAttribute('class','li-glabel'); tx.textContent=b[0];
+        svg.appendChild(tx);
+        var tv=document.createElementNS(svgNS,'text');
+        tv.setAttribute('x',(i*bw+bw/2).toFixed(1)); tv.setAttribute('y',(H-30-bh).toFixed(1));
+        tv.setAttribute('class','li-gval'); tv.textContent=b[1];
+        svg.appendChild(tv);
+      });
+    } else if(g.kind==='spark'){
+      var pts=g.points, mx=Math.max.apply(null,pts.concat([1])), mn=Math.min.apply(null,pts.concat([0]));
+      var X=function(i){ return 40 + i*(W-80)/Math.max(1,pts.length-1); };
+      var Y=function(v){ return 20 + (1-(v-mn)/Math.max(0.001,(mx-mn)))*(H-60); };
+      var dpts=pts.map(function(v,i){ return X(i).toFixed(1)+','+Y(v).toFixed(1); }).join(' ');
+      var pl=document.createElementNS(svgNS,'polyline');
+      pl.setAttribute('points',dpts); pl.setAttribute('class','li-gspark');
+      pl.style.setProperty('--ic', color);
+      svg.appendChild(pl);
+      pts.forEach(function(v,i){
+        var c=document.createElementNS(svgNS,'circle');
+        c.setAttribute('cx',X(i).toFixed(1)); c.setAttribute('cy',Y(v).toFixed(1));
+        c.setAttribute('r','5'); c.setAttribute('class','li-gdot');
+        c.style.setProperty('--ic', color);
+        svg.appendChild(c);
+        var lb=document.createElementNS(svgNS,'text');
+        lb.setAttribute('x',X(i).toFixed(1)); lb.setAttribute('y',H-6);
+        lb.setAttribute('class','li-glabel'); lb.textContent=(g.labels&&g.labels[i])||'';
+        svg.appendChild(lb);
+        var vv=document.createElementNS(svgNS,'text');
+        vv.setAttribute('x',X(i).toFixed(1)); vv.setAttribute('y',(Y(v)-12).toFixed(1));
+        vv.setAttribute('class','li-gval'); vv.textContent=v;
+        svg.appendChild(vv);
+      });
+    }
+    return svg;
   }
 
   function sourceLabel(s){
