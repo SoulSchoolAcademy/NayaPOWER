@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 
 const base = process.env.HUB_TEST_URL || 'http://127.0.0.1:4173/HUB/app/index.html';
+const WELCOME_URL = 'https://welcome.nayanet.app/';
 const rooms = [
   ['feed','Smart Feed'],
   ['today','Your Intelligence Today'],
@@ -30,35 +31,77 @@ async function inspectPage(page, label) {
 }
 
 try {
+  /* ——— ENTRY FLOW: no identity → back to the front door ——— */
+  const entry = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  let redirectTarget = null;
+  await entry.route(WELCOME_URL + '**', route => { redirectTarget = route.request().url(); return route.abort(); });
+  await entry.goto(base+'#/hub');
+  await entry.waitForTimeout(2500);
+  if (!(redirectTarget && redirectTarget.startsWith(WELCOME_URL))) failures.push('entry: no-identity visit did not redirect to the front door, target='+redirectTarget);
+  await entry.close();
+
+  /* ——— ENTRY FLOW: handoff ?name=&alias= → Hub, URL scrubbed, chip shows alias ——— */
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
-  await desktop.goto(base+'#/welcome');
-  await desktop.waitForSelector('.welcome');
-  const jewels = await desktop.locator('.welcome-orbit-jewel').count();
-  if (jewels !== 108) failures.push('welcome: expected 108 orbit jewels, got '+jewels);
-  await inspectPage(desktop,'welcome');
-  await desktop.screenshot({ path:'HUB/app/test-artifacts/00-welcome-desktop.png', fullPage:true });
+  await desktop.goto(base+'?name=Test%20User&alias=tester');
+  await desktop.waitForSelector('.room-title');
+  const title = (await desktop.locator('.room-title').innerText()).trim();
+  if (title !== 'Smart Feed') failures.push('entry: handoff did not boot the Hub feed, title='+title);
+  if (desktop.url().includes('name=')) failures.push('entry: handoff query was not scrubbed from the URL');
+  const chip = await desktop.locator('.identity-chip .id-label').innerText();
+  if (chip.trim() !== 'tester') failures.push('entry: identity chip shows "'+chip+'" instead of the alias');
+  await inspectPage(desktop,'entry-handoff');
+  await desktop.screenshot({ path:'HUB/app/test-artifacts/00-entry-handoff-desktop.png', fullPage:true });
 
-  await desktop.goto(base+'#/identity');
-  await desktop.waitForSelector('.identity-card');
-  const identityText = await desktop.locator('.identity-card').innerText();
-  if (/Shawn\s*·\s*verified device/i.test(identityText)) failures.push('identity: hardcoded verified Shawn identity regressed');
-  await inspectPage(desktop,'identity');
-  await desktop.screenshot({ path:'HUB/app/test-artifacts/01-identity-desktop.png', fullPage:true });
-
-  for (let i=0;i<rooms.length;i++) {
-    const [id,title] = rooms[i];
-    await desktop.goto(base+'#/hub/'+id);
-    await desktop.waitForSelector('.room-title');
-    const actual=(await desktop.locator('.room-title').innerText()).trim();
-    if(actual!==title) failures.push(id+': title mismatch '+actual);
-    const rails=await desktop.locator('nav.rail').count();
-    if(rails!==1) failures.push(id+': expected one rail, got '+rails);
-    await inspectPage(desktop,id);
-    await desktop.screenshot({ path:`HUB/app/test-artifacts/${String(i+2).padStart(2,'0')}-${id}-desktop.png`, fullPage:true });
+  /* ——— ENTRY FLOW: install pop-up appears until installed ——— */
+  await desktop.waitForSelector('.install-pop', { timeout: 8000 }).catch(()=>{});
+  if (!(await desktop.locator('.install-pop').count())) failures.push('entry: install pop-up did not appear');
+  else {
+    const popText = await desktop.locator('.install-pop').innerText();
+    if (!/Add to Home Screen/i.test(popText)) failures.push('entry: install pop-up lacks home-screen guidance');
+    await desktop.screenshot({ path:'HUB/app/test-artifacts/01-install-pop-desktop.png' });
+    await desktop.locator('.install-later').click(); /* session dismiss only */
+    if (await desktop.locator('.install-pop').count()) failures.push('entry: install pop-up did not dismiss');
   }
+  /* installed flag → never again */
+  await desktop.evaluate(() => localStorage.setItem('nayanet.appInstalled.v1','1'));
+  await desktop.reload();
+  await desktop.waitForSelector('.room-title');
+  await desktop.waitForTimeout(4500);
+  if (await desktop.locator('.install-pop').count()) failures.push('entry: install pop-up reappeared after install flag set');
+
+  /* ——— ENTRY FLOW: stored identity → straight back in ——— */
+  await desktop.evaluate(() => localStorage.removeItem('nayanet.appInstalled.v1'));
+  await desktop.goto(base+'#/hub/feed');
+  await desktop.waitForSelector('.room-title');
+  if (!desktop.url().includes('#/hub')) failures.push('entry: stored identity did not boot straight into the Hub');
+
+  /* ——— ENTRY FLOW: sign out (two taps) → front door ——— */
+  let signoutTarget = null;
+  await desktop.route(WELCOME_URL + '**', route => { signoutTarget = route.request().url(); return route.abort(); });
+  await desktop.locator('.identity-chip').click();
+  await desktop.locator('.identity-chip').click();
+  await desktop.waitForTimeout(2500);
+  if (!(signoutTarget && signoutTarget.startsWith(WELCOME_URL))) failures.push('entry: sign-out did not return to the front door, target='+signoutTarget);
   await desktop.close();
 
+  /* ——— ROOMS (with a stored identity so the gate passes) ——— */
+  const app = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'no-preference' });
+  await app.addInitScript(() => localStorage.setItem('nayanet.identity.v1', JSON.stringify({ name:'QA', alias:'qa' })));
+  for (let i=0;i<rooms.length;i++) {
+    const [id,expected] = rooms[i];
+    await app.goto(base+'#/hub/'+id);
+    await app.waitForSelector('.room-title');
+    const actual=(await app.locator('.room-title').innerText()).trim();
+    if(actual!==expected) failures.push(id+': title mismatch '+actual);
+    const rails=await app.locator('nav.rail').count();
+    if(rails!==1) failures.push(id+': expected one rail, got '+rails);
+    await inspectPage(app,id);
+    await app.screenshot({ path:`HUB/app/test-artifacts/${String(i+2).padStart(2,'0')}-${id}-desktop.png`, fullPage:true });
+  }
+  await app.close();
+
   const mobile = await browser.newPage({ viewport:{ width:390,height:844 }, reducedMotion:'reduce' });
+  await mobile.addInitScript(() => localStorage.setItem('nayanet.identity.v1', JSON.stringify({ name:'QA', alias:'qa' })));
   await mobile.goto(base+'#/hub/feed');
   await mobile.waitForSelector('.rail-toggle');
   await mobile.locator('.rail-toggle').click();
@@ -71,11 +114,11 @@ try {
   await inspectPage(mobile,'mobile-connections');
   await mobile.screenshot({ path:'HUB/app/test-artifacts/20-connections-mobile.png', fullPage:true });
 
-  for (const [id,title] of rooms) {
+  for (const [id,expected] of rooms) {
     await mobile.goto(base+'#/hub/'+id);
     await mobile.waitForSelector('.room-title');
     const actual=(await mobile.locator('.room-title').innerText()).trim();
-    if(actual!==title) failures.push('mobile '+id+': title mismatch');
+    if(actual!==expected) failures.push('mobile '+id+': title mismatch');
     await inspectPage(mobile,'mobile-'+id);
   }
   await mobile.screenshot({ path:'HUB/app/test-artifacts/21-settings-mobile.png', fullPage:true });
@@ -89,4 +132,4 @@ if (failures.length) {
   for (const failure of failures) console.error(' -', failure);
   process.exit(1);
 }
-console.log('HUB BROWSER QA PASSED: welcome + identity + 11 rooms + mobile drawer + horizontal-overflow checks');
+console.log('HUB BROWSER QA PASSED: entry flow (redirect/handoff/chip/install/sign-out) + 11 rooms + mobile drawer + horizontal-overflow checks');
