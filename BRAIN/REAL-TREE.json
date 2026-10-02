@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-01",
-  "receipt_basis_commit": "b05ebc52bae9f1663dd3f992ecdb99e55e6362b1",
-  "inventory_file_count": 166,
+  "generated_at": "2026-10-02",
+  "receipt_basis_commit": "252686756e64f543a399307c44c1c092002b0449",
+  "inventory_file_count": 171,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 23,
+    "05-MEMORY": 28,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -415,8 +415,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
-      "blob_sha": "63d27c8cb01dd8905ff66d02225ea03de1a794cb",
-      "size": 5361
+      "blob_sha": "b00c986807c544c908efb4f7b050510f11abfd0d",
+      "size": 5587
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
@@ -504,9 +504,34 @@
       "size": 4877
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.md",
+      "blob_sha": "c351000a16adaacdfa974fa1fd13c8723a6c8db6",
+      "size": 9076
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "blob_sha": "0a00a49b1f914b934bc15f675fb73d14eacac24b",
+      "size": 10771
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/SELF-OPTIMIZATION/GOVERNED-EXPERIMENT-CAMPAIGNS/SN-017/IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md",
       "blob_sha": "9a51a0291bf2a0ecd14b7579591dac382509fbcf",
       "size": 7834
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+      "blob_sha": "55f0b28f57d99bfad8d82f39116405937d036324",
+      "size": 8650
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+      "blob_sha": "2073f4914195307f2c4956343ac77fd5a98609be",
+      "size": 7469
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "blob_sha": "6d22e76989978320931d35032d89c33d106a922b",
+      "size": 7135
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",

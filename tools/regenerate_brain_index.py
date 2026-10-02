@@ -126,7 +126,12 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    "05-MEMORY": 26,  # 2026-10-02 deliberate: +5 verified Smart-Note files since 21-baseline @42c8f594
+    #   SN-018/2026-10-01 (hub projection), SN-021/2026-10-01 (architectural truth),
+    #   SN-019/2026-10-02 (complete-the-app), SN-020/2026-10-02 (design mastery),
+    #   SN-018/2026-10-02 (hub projection, second date partition - duplicate-number
+    #   collision flagged to owning seats, not unilaterally renumbered)
+    # Excludes INTELLIGENCE-REPORTS append-only subtree (added separately by expected_domain_counts).
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
