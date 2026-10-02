@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════════════
+   NAYANET ICON SYSTEM V1 — jewel + chip styles
+   Companion to js/icons.js. Ground: always on black. Glow = meaning.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.jewel-mark {
+  display: inline-block;
+  vertical-align: middle;
+  flex: none;
+}
+
+/* Rail jewel slot: snaps to the 32px scale step */
+.jewel-ico {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.drawer-emblem,
+.rail-emblem {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active jewel breathes softly — only while state justifies it.
+   Apply .breathe from JS when the room is live/working, remove when idle. */
+@keyframes jewel-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+.jewel-mark.breathe {
+  animation: jewel-breathe 3.2s ease-in-out infinite;
+}
+
+/* ——— Set B: action chips ——— */
+.action-chip {
+  display: inline-block;
+  vertical-align: middle;
+  flex: none;
+  transition: filter var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+button:hover .action-chip,
+a:hover .action-chip {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+button:active .action-chip {
+  transform: scale(0.94);
+}
+
+/* ——— motion discipline ——— */
+@media (prefers-reduced-motion: reduce) {
+  .jewel-mark.breathe { animation: none; }
+  .action-chip { transition: none; }
+}
+
+/* ——— the Naya emblem: Shawn's crystal mark ——— */
+.drawer-emblem img,
+.rail-emblem img {
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #9d75ff44;
+}
