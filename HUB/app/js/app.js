@@ -25,5 +25,8 @@
     rooms: R.ROOMS.map(r => r.id),
     doors: R.DOORS.map(d => ({ id: d.id, status: d.status })),
     stateFor: R.stateFor,
+    contractFor: id => window.NayaRoomContract.get(id),
+    activeRoom: () => R.roomSocket.active(),
+    socketTrace: () => R.roomSocket.trace(),
   };
 })();

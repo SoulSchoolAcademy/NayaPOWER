@@ -65,7 +65,7 @@
     }
 
     async function runSearch(query){
-      zone.innerHTML=''; const res=await window.NayaRuntime.search(query,{scope:'library'});
+      zone.innerHTML=''; const res=await window.NayaRuntime.roomSocket.search('library',query,{scope:'library'});
       if(!res.ok){K.unavailable(zone,'library',res.message);return;}
       const list=K.items(res.data??res);
       if(!list.length){K.empty(zone,'library','No verified match','The knowledge base returned no qualifying intelligence for this search.');return;}

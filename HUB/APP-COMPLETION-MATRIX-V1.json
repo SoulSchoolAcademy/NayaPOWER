@@ -2,7 +2,7 @@
   "schema": "nayanet.hub.app-completion.v1",
   "version": "1.0",
   "app_id": "NAYANET_INTELLIGENT_HUB",
-  "doctrine": "SN-019 — Complete the App Doctrine — Finish the House, Not the Shell",
+  "doctrine": "SN-019 \u2014 Complete the App Doctrine \u2014 Finish the House, Not the Shell",
   "base_main_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
   "branch": "naya/hub-complete-app-v1",
   "overall_state": "IN_PROGRESS",
@@ -98,6 +98,25 @@
       "state": "NOT_STARTED",
       "evidence": [],
       "remaining": "No deployment from this branch; parity must be proven at release."
+    },
+    "canonical_room_contract": {
+      "state": "TESTED",
+      "evidence": [
+        "HUB/app/js/room-contract.js",
+        "HUB/app/tests/browser-smoke.mjs"
+      ],
+      "remaining": "Independent review and canonical shell/Home authority reconciliation remain."
+    },
+    "canonical_room_socket": {
+      "state": "TESTED",
+      "evidence": [
+        "HUB/app/js/room-socket.js",
+        "HUB/app/js/rooms/shared.js",
+        "HUB/app/js/rooms/feed.js",
+        "HUB/app/js/rooms/library.js",
+        "HUB/app/tests/browser-smoke.mjs"
+      ],
+      "remaining": "Exact live governed backend contract and independent review remain."
     }
   },
   "surfaces": {
@@ -339,7 +358,7 @@
   "whole_app_journeys": [
     {
       "id": "J01",
-      "name": "Welcome → Identity → Hub",
+      "name": "Welcome \u2192 Identity \u2192 Hub",
       "state": "IMPLEMENTED",
       "proof": []
     },
@@ -351,14 +370,14 @@
     },
     {
       "id": "J03",
-      "name": "Ask Naya/search → canonical answer → provenance",
+      "name": "Ask Naya/search \u2192 canonical answer \u2192 provenance",
       "state": "IMPLEMENTED",
       "proof": [],
       "remaining": "live runtime proof"
     },
     {
       "id": "J04",
-      "name": "Smart Note outside Hub → persistence → Feed → Today → Library",
+      "name": "Smart Note outside Hub \u2192 persistence \u2192 Feed \u2192 Today \u2192 Library",
       "state": "NOT_STARTED",
       "proof": []
     },
@@ -370,7 +389,7 @@
     },
     {
       "id": "J06",
-      "name": "Smart Connect registry → authority boundary → proof",
+      "name": "Smart Connect registry \u2192 authority boundary \u2192 proof",
       "state": "NOT_STARTED",
       "proof": []
     },
@@ -418,7 +437,7 @@
     "builder self-score cannot close the release gate",
     "remaining work stays machine-visible until evidence closes it"
   ],
-  "next_failing_gate": "Bind the exact governed runtime contract and prove one canonical intelligence object end-to-end across Feed → Today → Library → Lists/Spaces → Ledger, then continue room runtime closure without regressing browser-tested surfaces.",
+  "next_failing_gate": "Reconcile canonical Hub Home/shell authority with the active Main Show implementation, then prove one canonical intelligence object across Feed -> Today through the shared room socket before broader room closure.",
   "latest_validation": {
     "head_sha": "7a65d11b957f3a0dfcd3cd613cb088d26f8975cc",
     "hub_completion_gate": {
@@ -455,5 +474,13 @@
         "108_welcome_jewels"
       ]
     }
+  },
+  "source_reconciliation": {
+    "canonical_main_sha": "10190133505f4ba03cd029d18cf6f650affeeb9c",
+    "implementation_parent_sha": "babae0b42009dbae847b21dcc1de5e56922d1964",
+    "merge_base_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
+    "relationship": "DIVERGED",
+    "authority_conflict": "Current main declares distinct Hub Home /hub plus Feed /feed and persistent shell primitives; active app lane implements Feed as Main Show at /hub/feed with two drawers. Preserved, not silently resolved.",
+    "receipt": "HUB/ROOM-SOCKET-IMPLEMENTATION-RECEIPT-V1.md"
   }
 }

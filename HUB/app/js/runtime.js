@@ -5,20 +5,12 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 const Runtime = (() => {
-  // ——— The eleven rooms. The rail holds only these. ———
-  const ROOMS = [
-    { id: 'feed',        name: 'Smart Feed',          kicker: 'STREAM',       accent: 'var(--accent-feed)',        icon: 'feed' },
-    { id: 'today',       name: 'Your Intelligence Today', kicker: 'TODAY',    accent: 'var(--accent-today)',       icon: 'spark' },
-    { id: 'reports',     name: 'Your Reports',        kicker: 'REPORTS',      accent: 'var(--accent-reports)',     icon: 'report' },
-    { id: 'library',     name: 'Intelligent Library', kicker: 'LIBRARY',      accent: 'var(--accent-library)',     icon: 'library' },
-    { id: 'connect',     name: 'Smart Connect',       kicker: 'CONNECT',      accent: 'var(--accent-connect)',     icon: 'connect' },
-    { id: 'ledger',      name: 'Smart Ledger',        kicker: 'ACCOUNTABILITY', accent: 'var(--accent-ledger)',     icon: 'ledger' },
-    { id: 'connections', name: 'Your Connections',    kicker: 'CONNECTIONS',  accent: 'var(--accent-connections)', icon: 'nodes' },
-    { id: 'lists',       name: 'Smart Lists',         kicker: 'LISTS',        accent: 'var(--accent-lists)',       icon: 'lists' },
-    { id: 'mail',        name: 'Smart Mail',          kicker: 'MAIL',         accent: 'var(--accent-mail)',         icon: 'mail' },
-    { id: 'spaces',      name: 'Smart Spaces',        kicker: 'SPACES',       accent: 'var(--accent-spaces)',      icon: 'spaces' },
-    { id: 'settings',    name: 'Settings',            kicker: 'SETTINGS',     accent: 'var(--accent-settings)',    icon: 'gear' },
-  ];
+  // ——— The eleven rooms come from the canonical room contract. ———
+  const roomContract = window.NayaRoomContract;
+  if (!roomContract) throw new Error('NayaRoomContract must load before runtime.js');
+  const ROOMS = roomContract.list().map(c => ({
+    id:c.id, name:c.name, kicker:c.kicker, accent:c.accent, icon:c.icon, route:c.app_route, canonical_route:c.canonical_route
+  }));
   // NOTE (input/output law, HUB/PROJECT-INTELLIGENCE.md §6 Law 1): no Smart Notes room,
   // no capture surface in Hub chrome. Capture is input; the Hub is output.
   // System diagnostics live under Settings → System Health.

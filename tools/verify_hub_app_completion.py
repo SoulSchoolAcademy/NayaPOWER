@@ -83,7 +83,7 @@ def main() -> int:
 
     index = (ROOT / "HUB" / "app" / "index.html").read_text()
     required_scripts = [
-        "js/runtime-live.js","js/rooms/shared.js",
+        "js/room-contract.js","js/runtime-live.js","js/room-socket.js","js/rooms/shared.js",
         *[f"js/rooms/{rid}.js" for rid in REQUIRED_ROOMS if rid not in {"connect","settings"}],
         "js/rooms/connect.js","js/rooms/settings.js"
     ]

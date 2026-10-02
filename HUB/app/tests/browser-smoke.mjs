@@ -186,6 +186,25 @@ async function assertTouchTargets(page,label){
 async function assertMainShow(page,label){
   await page.waitForSelector('.snap-board');
 
+  const socketProof=await page.evaluate(()=>({
+    contractSchema:window.NayaRoomContract?.schema||'',
+    socketSchema:window.NayaRoomSocket?.schema||'',
+    count:window.NayaRoomSocket?.registry?.().length||0,
+    active:window.NayaRoomSocket?.active?.()?.room_id||'',
+    feed:window.NayaRoomSocket?.contract?.('feed')||null,
+    trace:window.NayaRoomSocket?.trace?.()||[]
+  }));
+  if(socketProof.contractSchema!=='nayanet.hub.room-contract.v1') fail(label+': canonical room contract missing');
+  if(socketProof.socketSchema!=='nayanet.hub.room-socket.v1') fail(label+': canonical room socket missing');
+  if(socketProof.count!==11) fail(label+': expected 11 room contracts, got '+socketProof.count);
+  if(socketProof.active!=='feed') fail(label+': room lifecycle did not enter feed');
+  if(socketProof.feed?.canonical_route!=='/feed'||socketProof.feed?.app_route!=='/hub/feed'){
+    fail(label+': canonical/app route distinction is not explicit');
+  }
+  if(!socketProof.trace.some(x=>x.op==='query'&&x.room_id==='feed')){
+    fail(label+': Main Show did not load through the room socket');
+  }
+
   if(await page.locator('nav.rail').count()) fail(label+': legacy persistent rail exists');
 
   const corners=await page.locator('.corner-btn').count();

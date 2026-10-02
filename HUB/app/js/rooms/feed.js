@@ -320,7 +320,7 @@
   }
 
   async function runGovernedAction(b,button,status){
-    if(!window.NayaRuntime.performIntelligenceAction){
+    if(!window.NayaRuntime.roomSocket?.act){
       setStatus(status,'not_verified','The governed action seam is not available. Nothing changed.');
       return;
     }
@@ -333,7 +333,7 @@
 
     let out;
     try{
-      out=await window.NayaRuntime.performIntelligenceAction({
+      out=await window.NayaRuntime.roomSocket.act('feed',{
         id:b.id,
         intelligent_block_id:b.id,
         action:b.action.kind,
@@ -490,7 +490,7 @@
       retrieve.textContent='Retrieving…';
       let out;
       try{
-        out=await window.NayaRuntime.retrieve?.(b.id);
+        out=await window.NayaRuntime.roomSocket.retrieve('feed',b.id);
       }catch(err){
         out={ok:false,state:'error',message:err?.message||'Canonical retrieval failed.'};
       }
@@ -561,7 +561,7 @@
 
       let runtime;
       try{
-        runtime=await window.NayaRuntime.search?.(question,{
+        runtime=await window.NayaRuntime.roomSocket.search('feed',question,{
           room:'feed',
           mode:currentMode,
           intelligent_block_id:activeAskContext?.id||null,
