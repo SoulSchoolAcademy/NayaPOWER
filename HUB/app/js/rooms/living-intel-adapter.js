@@ -42,6 +42,36 @@
     return isNaN(d) ? Date.now() : d.getTime();
   }
 
+  function ledgerItem(e){
+    var dv = e.scores && e.scores.deltaV;
+    var q = e.scores && e.scores.q;
+    var cf = e.scores && e.scores.confidence;
+    var vP = e.scores && e.scores.vPred;
+    var vA = e.scores && e.scores.vActual;
+    var stats = [['Outcome', e.outcome]];
+    if(q!=null) stats.push(['Q', q.toFixed(1)]);
+    if(dv!=null) stats.push(['\u0394V', (dv>0?'+':'')+dv]);
+    if(cf!=null) stats.push(['Confidence', cf.toFixed(2)]);
+    stats.push(['Proof', e.proofState]);
+    var graph = null;
+    if(vP!=null && vA!=null){
+      graph = {kind:'spark', points:[vP, vA], labels:['predicted','observed']};
+    } else if(q!=null){
+      graph = {kind:'bars', bars:[['Q', q, 10], ['Confidence', cf*10, 10]]};
+    }
+    return {
+      source:'ledger', color:COLORS.ledger, jewel:'\u25C6',
+      ts: new Date(e.issuedAt).getTime() || Date.now(),
+      title: e.glyph + ' ' + e.smartName + ' \u00B7 ' + e.outcome,
+      nutshell: e.effectsObserved
+        || (dv!=null ? ('\u0394V ' + (dv>0?'+':'') + dv) : '')
+        || String(e.kind||'').toUpperCase(),
+      meta: 'smart id \u00B7 ' + String(e.hash||'').slice(0,10) + '\u2026',
+      demo: !!e.demo,
+      stats: stats, graph: graph, explain: EXPLAIN.ledger
+    };
+  }
+
   function build(packs){
     packs = packs || {};
     var items = [];
@@ -95,35 +125,8 @@
       });
     });
 
-    (packs.ledger||[]).forEach(function(e){
-      var dv = e.scores && e.scores.deltaV;
-      var q = e.scores && e.scores.q;
-      var cf = e.scores && e.scores.confidence;
-      var vP = e.scores && e.scores.vPred;
-      var vA = e.scores && e.scores.vActual;
-      var stats = [['Outcome', e.outcome]];
-      if(q!=null) stats.push(['Q', q.toFixed(1)]);
-      if(dv!=null) stats.push(['\u0394V', (dv>0?'+':'')+dv]);
-      if(cf!=null) stats.push(['Confidence', cf.toFixed(2)]);
-      stats.push(['Proof', e.proofState]);
-      var graph = null;
-      if(vP!=null && vA!=null){
-        graph = {kind:'spark', points:[vP, vA], labels:['predicted','observed']};
-      } else if(q!=null){
-        graph = {kind:'bars', bars:[['Q', q, 10], ['Confidence', cf*10, 10]]};
-      }
-      items.push({
-        source:'ledger', color:COLORS.ledger, jewel:'\u25C6',
-        ts: new Date(e.issuedAt).getTime() || Date.now(),
-        title: e.glyph + ' ' + e.smartName + ' \u00B7 ' + e.outcome,
-        nutshell: e.effectsObserved
-          || (dv!=null ? ('\u0394V ' + (dv>0?'+':'') + dv) : '')
-          || String(e.kind||'').toUpperCase(),
-        meta: 'smart id \u00B7 ' + String(e.hash||'').slice(0,10) + '\u2026',
-        demo: !!e.demo,
-        stats: stats, graph: graph, explain: EXPLAIN.ledger
-      });
-    });
+    (packs.ledgerReal||[]).forEach(function(e){ items.push(ledgerItem(e)); });
+    (packs.ledger||[]).forEach(function(e){ items.push(ledgerItem(e)); });
 
     items.sort(function(a,b){ return b.ts - a.ts; });
     return items;
@@ -135,5 +138,5 @@
     return d.toLocaleDateString('en-US',{month:'long',day:'numeric'});
   }
 
-  window.LivingIntelAdapter = { build:build, COLORS:COLORS, FLOW:FLOW };
+  window.LivingIntelAdapter = { build:build, ledgerItem:ledgerItem, COLORS:COLORS, FLOW:FLOW };
 })();

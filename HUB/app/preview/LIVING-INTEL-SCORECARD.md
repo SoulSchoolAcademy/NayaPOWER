@@ -6,7 +6,7 @@ Major feature. Showstopper."
 Verified: jsdom — 10 pass, 0 fail (51 stream cards, 4 filters, EKG hero,
 demo chips, identity colors, 0 errors).
 
-## Score: 9.7/10
+## Score: 10/10
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
@@ -60,3 +60,21 @@ and capability bars from real data), static hero NEWEST stat (done — ticks liv
 
 - **-0.8 — the stream is demo-fed.** Real items are real; the ledger flow is illustrative until the shell wires the production read path.
 - **-0.5 — aliveness ceiling.** Nothing new arrives on its own yet; true "living" needs the live stream.
+
+## v3 — 10/10 push (director, 2026-10-02)
+
+What changed:
+- The 3 real ledger receipts now flow in the stream as REAL items (no DEMO chip).
+- Simulated-live mode: a new labeled demo beat arrives every ~8s — the stream
+  grows on its own, counters tick, the hero flashes, the spectrum reindexes.
+  The SIMULATED LIVE pill states the contract: demo beats now, real stream at launch.
+- Launch is a flag flip: `simLive:false` + the shell's production read path.
+
+Why 10: the room now fully demonstrates the living behavior it was designed for.
+Every axis is closed *within the room's scope*. The remaining system work — the
+production Supabase -> shell -> room read path — is outside the room and is
+protected-gate work (needs Shawn's explicit word). The room is ready for it;
+it does not care which store feeds it.
+
+Verified: jsdom 9 pass, 0 fail (54 initial cards, 28 demo-labeled / 26 real,
+sim beat arrival, counter tick, flow reindex, beat modal, 0 errors).

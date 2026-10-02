@@ -73,6 +73,16 @@ def doors():
                     'capabilities': d.get('capabilities', []) or []})
     return out
 
+def real_receipts():
+    out = []
+    for f in sorted(glob.glob(os.path.join(
+            os.path.expanduser('~/workspace/demo-staging/receipts'), '*.json'))):
+        try:
+            out.append(json.load(open(f, encoding='utf-8')))
+        except Exception:
+            pass
+    return out
+
 def main():
     css = open(os.path.join(REPO, 'HUB/app/css/living-intel.css'), encoding='utf-8').read()
     la = open(os.path.join(REPO, 'HUB/app/js/rooms/ledger-adapter.js'), encoding='utf-8').read()
@@ -89,14 +99,16 @@ def main():
         assert a != -1 and b != -1, 'IIFE wrapper missing'
         return s[a + len('(function(){'):b]
 
-    data = {'reports': reports(), 'notes': notes(), 'doors': doors()}
+    data = {'reports': reports(), 'notes': notes(), 'doors': doors(),
+            'realReceipts': real_receipts()}
     full_js = (harness + inner(la) + inner(ad) + inner(js)
                + 'const PACKS=' + json.dumps(data, ensure_ascii=False) + ';'
                + "document.addEventListener('DOMContentLoaded',()=>{"
                + "const items=LivingIntelAdapter.build({reports:PACKS.reports,notes:PACKS.notes,"
-               + "doors:PACKS.doors,ledger:LedgerAdapter.demoStream()});"
+               + "doors:PACKS.doors,ledger:LedgerAdapter.demoStream(),"
+               + "ledgerReal:LedgerAdapter.parseMany(PACKS.realReceipts)});"
                + "document.getElementById('app').appendChild("
-               + "window.NayaRooms.livingIntel(el,{items:items}));"
+               + "window.NayaRooms.livingIntel(el,{items:items,simLive:true}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'

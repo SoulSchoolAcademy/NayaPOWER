@@ -52,6 +52,8 @@
   function LivingIntel(el, ctx){
     ctx = ctx || {};
     var items = Array.isArray(ctx.items) ? ctx.items : [];
+    var allItems = items.slice();
+    var simLive = !!ctx.simLive;
     var state = { filter:'all' };
 
     var stage = el('div','li-stage');
@@ -100,16 +102,28 @@
 
     var stats = el('div','li-stats');
     var sources = {};
-    items.forEach(function(i){ sources[i.source]=(sources[i.source]||0)+1; });
-    [['ITEMS FLOWING', items.length, null],['SOURCES ALIVE', Object.keys(sources).length, null],
-     ['NEWEST', items.length? timeAgo(items[0].ts):'\u2014', items.length? items[0].ts : null]].forEach(function(s){
+    allItems.forEach(function(i){ sources[i.source]=(sources[i.source]||0)+1; });
+    var statRefs = {};
+    [['ITEMS FLOWING', allItems.length, null, 'items'],
+     ['SOURCES ALIVE', Object.keys(sources).length, null, null],
+     ['NEWEST', allItems.length? timeAgo(allItems[0].ts):'\u2014', allItems.length? allItems[0].ts : null, null]
+    ].forEach(function(s){
       var c = el('div','li-stat');
       var n = el('span','li-stat-n',''); n.textContent=s[1]; c.appendChild(n);
       if(s[2]){ n.setAttribute('data-ts', s[2]); n.classList.add('li-tick'); }
+      if(s[3]) statRefs[s[3]] = n;
       c.appendChild(el('span','li-stat-l',s[0]));
       stats.appendChild(c);
     });
     hov.appendChild(stats);
+    if(simLive){
+      var sim = el('p','li-sim','');
+      var sd = el('span','li-live-dot',''); sim.appendChild(sd);
+      var stx = el('span','','');
+      stx.textContent=' SIMULATED LIVE \u00B7 demo beats arriving \u00B7 flips to the real stream at launch';
+      sim.appendChild(stx);
+      hov.appendChild(sim);
+    }
     hero.appendChild(hov);
     stage.appendChild(hero);
 
@@ -158,44 +172,90 @@
 
     function visible(){
       var f = FILTERS.filter(function(x){return x[0]===state.filter;})[0];
-      if(!f || !f[3]) return items;
-      return items.filter(function(i){ return f[3].indexOf(i.source)>=0; });
+      if(!f || !f[3]) return allItems;
+      return allItems.filter(function(i){ return f[3].indexOf(i.source)>=0; });
     }
 
-    function renderStream(){
+    function cardNode(it, idx, animate){
+      var fc = FLOW[idx % FLOW.length];
+      var card = el('article','li-card');
+      card.style.setProperty('--ic', fc);
+      card.style.setProperty('--i', idx);
+      if(animate) card.style.animationDelay = Math.min(idx*0.04, 0.8)+'s';
+      else card.style.animation = 'none';
+      card.setAttribute('role','button'); card.setAttribute('tabindex','0');
+      card.setAttribute('aria-label','Inspect: '+it.title);
+      var top = el('div','li-card-top');
+      var jw = el('span','li-card-j',''); jw.textContent=it.jewel; top.appendChild(jw);
+      top.appendChild(el('span','li-card-s', sourceLabel(it.source)));
+      var ta = el('span','li-card-t',''); ta.textContent=timeAgo(it.ts); ta.setAttribute('data-ts', it.ts);
+      top.appendChild(ta);
+      if(it.demo) top.appendChild(el('span','li-demo-chip','DEMO'));
+      card.appendChild(top);
+      var t = el('h2','li-card-title',''); t.textContent=it.title; card.appendChild(t);
+      if(it.nutshell){ var n=el('p','li-card-n',''); n.textContent=it.nutshell; card.appendChild(n); }
+      if(it.meta){ var m=el('p','li-card-m',''); m.textContent=it.meta; card.appendChild(m); }
+      var hint = el('span','li-card-hint','TAP FOR HEARTBEAT'); card.appendChild(hint);
+      card.addEventListener('click', function(){ openModal(it, fc); });
+      card.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openModal(it, fc); }
+      });
+      return card;
+    }
+
+    function renderStream(animate){
       stream.innerHTML='';
       var list = visible();
       if(!list.length){
         stream.appendChild(el('p','li-empty','Nothing flowing here yet.'));
         return;
       }
-      list.forEach(function(it, idx){
-        var fc = FLOW[idx % FLOW.length];
-        var card = el('article','li-card');
-        card.style.setProperty('--ic', fc);
-        card.style.setProperty('--i', idx);
-        card.style.animationDelay = Math.min(idx*0.04, 0.8)+'s';
-        card.setAttribute('role','button'); card.setAttribute('tabindex','0');
-        card.setAttribute('aria-label','Inspect: '+it.title);
-        var top = el('div','li-card-top');
-        var jw = el('span','li-card-j',''); jw.textContent=it.jewel; top.appendChild(jw);
-        top.appendChild(el('span','li-card-s', sourceLabel(it.source)));
-        var ta = el('span','li-card-t',''); ta.textContent=timeAgo(it.ts); ta.setAttribute('data-ts', it.ts);
-        top.appendChild(ta);
-        if(it.demo) top.appendChild(el('span','li-demo-chip','DEMO'));
-        card.appendChild(top);
-        var t = el('h2','li-card-title',''); t.textContent=it.title; card.appendChild(t);
-        if(it.nutshell){ var n=el('p','li-card-n',''); n.textContent=it.nutshell; card.appendChild(n); }
-        if(it.meta){ var m=el('p','li-card-m',''); m.textContent=it.meta; card.appendChild(m); }
-        var hint = el('span','li-card-hint','TAP FOR HEARTBEAT'); card.appendChild(hint);
-        card.addEventListener('click', function(){ openModal(it, fc); });
-        card.addEventListener('keydown', function(ev){
-          if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); openModal(it, fc); }
-        });
-        stream.appendChild(card);
-      });
+      list.forEach(function(it, idx){ stream.appendChild(cardNode(it, idx, animate!==false)); });
     }
-    renderStream();
+    renderStream(true);
+
+    function reindexFlow(){
+      var cards = stream.querySelectorAll('.li-card');
+      for(var i=0;i<cards.length;i++){
+        cards[i].style.setProperty('--ic', FLOW[i % FLOW.length]);
+        cards[i].style.setProperty('--i', i);
+      }
+    }
+
+    function refreshCounts(){
+      if(statRefs.items) statRefs.items.textContent = allItems.length;
+      var newest = stream.querySelector('.li-tick');
+      if(newest && allItems.length){
+        newest.setAttribute('data-ts', allItems[0].ts);
+        newest.textContent = timeAgo(allItems[0].ts);
+      }
+    }
+
+    function flashHero(){
+      hero.classList.remove('li-flash');
+      void hero.offsetWidth;
+      hero.classList.add('li-flash');
+      setTimeout(function(){ hero.classList.remove('li-flash'); }, 1200);
+    }
+
+    /* simulated live: a new demo beat arrives on its own */
+    if(simLive && window.LedgerAdapter && window.LedgerAdapter.demoBeat){
+      var simTimer = setInterval(function(){
+        if(!document.contains(stage)){ clearInterval(simTimer); return; }
+        var item = window.LivingIntelAdapter.ledgerItem(window.LedgerAdapter.demoBeat());
+        allItems.unshift(item);
+        if(allItems.length > 90) allItems.pop();
+        if(state.filter==='all' || state.filter==='actions'){
+          stream.insertBefore(cardNode(item, 0, true), stream.firstChild);
+          while(stream.querySelectorAll('.li-card').length > 90){
+            stream.removeChild(stream.lastChild);
+          }
+          reindexFlow();
+        }
+        refreshCounts();
+        flashHero();
+      }, 8000);
+    }
 
     /* ============ HEARTBEAT MODAL ============ */
     var overlay = el('div','li-overlay'); overlay.style.display='none';

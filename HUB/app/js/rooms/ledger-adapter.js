@@ -220,7 +220,37 @@
     return entries;
   }
 
+  /* One fresh demo beat for simulated-live mode. Labeled demo:true, always. */
+  function demoBeat(){
+    var kinds=['decision','execution','contribution','signal'];
+    var k=kinds[Math.floor(Math.random()*kinds.length)];
+    var hash=''; for(var i=0;i<64;i++) hash+='0123456789abcdef'[Math.floor(Math.random()*16)];
+    var e={kind:k, id:'sim-'+Date.now().toString(36), demo:true,
+           issuedAt:new Date().toISOString(), proofState:'RECORDED',
+           hash:hash, hashes:{receipt:hash.slice(0,16), receiptFull:hash},
+           scores:{}, raw:{simulated:true}};
+    if(k==='decision'){
+      var outcomes=['ACT','ACT','ACT','READ_MORE','ASK'];
+      var o=outcomes[Math.floor(Math.random()*outcomes.length)];
+      var q=+(7.5+Math.random()*2.4).toFixed(1);
+      var dv=+(Math.random()*10-2).toFixed(1);
+      e.outcome=o;
+      e.scores={q:q, deltaV:dv, confidence:+(0.65+Math.random()*0.34).toFixed(2)};
+      if(o==='ACT'){ e.scores.vPred=dv; e.scores.vActual=+(dv+(Math.random()-0.5)*1.6).toFixed(1); }
+    } else if(k==='execution'){
+      e.outcome='EFFECTS OBSERVED';
+      e.effectsObserved='Simulated effect recorded ('+(100+Math.floor(Math.random()*900))+' bytes, sha256-bound).';
+      e.durationMs=Math.floor(Math.random()*900);
+      e.authorityBasis='director_order \u00B7 order-sim';
+    } else {
+      e.outcome=(k==='contribution'?'VALUED':'RECORDED');
+      e.effectsObserved=(k==='contribution'?'Share valued':'Heartbeat signal');
+      e.scores={deltaV:+(Math.random()*2).toFixed(1)};
+    }
+    return normalize(e);
+  }
+
   window.LedgerAdapter = { parseOne:parseOne, parseMany:parseMany,
-                           demoStream:demoStream, smartNameFor:smartNameFor,
-                           normalize:normalize };
+                           demoStream:demoStream, demoBeat:demoBeat,
+                           smartNameFor:smartNameFor, normalize:normalize };
 })();
