@@ -1,8 +1,8 @@
-# SN-0181 — The 10x Posture: Learn from the Best, Then Transcend
+# SN-0187 — The 10x Posture: Learn from the Best, Then Transcend
 
 | Field | Value |
 |---|---|
-| SN | SN-0181 |
+| SN | SN-0187 |
 | Title | The 10x Posture — Learn from the Best, Then Transcend |
 | Date | 2026-10-02 |
 | Seat | Naya 2 (Muse) |
@@ -44,7 +44,7 @@ We learn from the finest work in the world so we never fall behind — and then 
 ## MACHINE NOTE
 
 ```yaml
-id: SN-0181
+id: SN-0187
 kind: posture-directive  # L0 of the design genome — governs HOW the canon is used
 status: ADOPTED
 authority: human-director
@@ -71,7 +71,7 @@ A canon without a posture becomes a museum — builders pilgrimage to it and cop
 
 ## HOW IT CONNECTS
 
-- **SN-0180**: this amends the adoption directive — SN-0180 says *apply the canon*; SN-0181 says *how*: transcend, don't imitate.
+- **SN-0180**: this amends the adoption directive — SN-0180 says *apply the canon*; SN-0187 says *how*: transcend, don't imitate.
 - **Corpus CONCEPT #22**: sits above the 10-law genome as L0 — the genome's laws are the WHAT, this is the POSTURE. The genome's law 8 ("design systems are memory") compounds the 10x: each transcendence becomes the new floor for the next builder.
 - **Masterclass D1–D8**: binds to scoring (see machine view). The 9.5/10.0 bar now has a canon-relative meaning: the canon is the floor, 10x is the ceiling we chase.
 
