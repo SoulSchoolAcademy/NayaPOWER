@@ -126,7 +126,9 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    "05-MEMORY": 27,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    # (deliberate 21->27 on main 5eaec742: 6 non-report Smart Notes landed 2026-10-01/02
+    #  SN-018 (10/01) + SN-018 (10/02) + SN-019 + SN-020 + SN-021 + SN-022, no ledger bump)
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
