@@ -75,7 +75,23 @@ RESTORE
 
 The Hub is not a dashboard.
 
-It is **living intelligence made usable**.
+It is **living intelligence made visible and usable**.
+
+### Input / output law
+
+**The Hub is an output/projection surface. It is not the canonical producer of Smart Notes, Activity, or Intelligence Reports.**
+
+Upstream:
+`HUMAN + NAYA / CONNECTED AI / WORK → SMART NOTE | ACTIVITY | REPORT → CANONICAL INTELLIGENCE / EVENT`
+
+Downstream:
+`CANONICAL INTELLIGENCE / EVENT → HUB ADAPTER → PERSONAL | COLLECTIVE | ACTIVITY → HUB ROOMS`
+
+When Shawn says **“Smart Note this”**, Naya owns the intelligence-production lifecycle. The Hub should later receive the resulting canonical IB automatically. Do not solve missing projection by adding a client-local Capture Smart Note button.
+
+Collective participation is governed by entry consent for eligible distilled/anonymized wisdom; contributor identity and raw/non-wisdom personal material remain sealed/private according to the projection contract.
+
+Canonical contract: `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
 
 The human should feel:
 - I know where I am.
