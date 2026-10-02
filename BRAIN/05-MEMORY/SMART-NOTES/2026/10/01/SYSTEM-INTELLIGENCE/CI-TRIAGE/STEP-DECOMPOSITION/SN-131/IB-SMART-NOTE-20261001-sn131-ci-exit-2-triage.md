@@ -1,6 +1,6 @@
 # CI Exit-2 Triage — Read the Job's Steps Before Theorizing
 
-**Intelligent Block:** IB-SMART-NOTE-20261001-sn031-ci-exit-2-triage
+**Intelligent Block:** IB-SMART-NOTE-20261001-sn131-ci-exit-2-triage
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-01
@@ -104,3 +104,4 @@ CANDIDATE: the triage procedure worked once, on one check, in one workflow. It h
 ## ➜ NEXT ACTION / SUCCESS CONDITION
 
 Apply this procedure to the next CI red and check that it still resolves in one pass; if a red ever defeats step decomposition, update this note with the counter-case.
+
