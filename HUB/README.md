@@ -9,7 +9,8 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Canonical semantic/build sources
 1. [PROJECT-INTELLIGENCE.md](./PROJECT-INTELLIGENCE.md) — build law, roadmap, scorecard, phases and gates.
 2. [DESIGN-CONTRACT.md](./DESIGN-CONTRACT.md) — visual/experience law and protected design DNA.
-3. [SMART-APP-10-10-EXECUTION-LAW.md](./SMART-APP-10-10-EXECUTION-LAW.md) — Human Director burden-transfer / whole-app ownership loop.
+3. [INTELLIGENCE-PROJECTION-CONTRACT-V1.md](./INTELLIGENCE-PROJECTION-CONTRACT-V1.md) — Hub output/projection architecture: Smart Notes, Activity, Reports → automatic Hub projection.
+4. [SMART-APP-10-10-EXECUTION-LAW.md](./SMART-APP-10-10-EXECUTION-LAW.md) — Human Director burden-transfer / whole-app ownership loop.
 
 ### Detailed room functionality
 
@@ -54,7 +55,9 @@ Successful onboarding does not default to Academy or Powercast.
 
 ## Product law
 
-The Hub is the human cockpit over NayaPOWER. It is not a second brain, database, authority system, learning system, or source of truth.
+The Hub is the human visual projection over NayaPOWER. **It is output, not the canonical input of intelligence.** It is not a second brain, database, authority system, learning system, capture system, report-authoring system, activity-publishing system, or source of truth.
+
+Primary upstream projection classes are **Smart Notes / Intelligent Blocks, Activity, and Intelligence Reports**. The Hub receives and presents them automatically through governed projection/runtime seams.
 
 ## Design law
 
