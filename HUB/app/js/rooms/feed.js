@@ -1,15 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ROOM 01 — SMART FEED · THE MAIN SHOW · v7
-   Learned from the live V7 page (deep dive 2026-10-02):
-   - The feed is a RIVER of quiet snapshots. The full intelligent block
-     lives on its own Smart Note surface — the two are never mashed
-     together.
-   - Restraint: orb · title · nutshell · why-now. No buttons, no modes,
-     no chrome shouting over the intelligence.
-   - USER-WORLD ONLY. Builder-world (PRs, contracts, lanes, ratify) is
-     back-end lane work and never appears as a user feed action.
-   - Tap a snapshot → the Smart Note: full layers in the live page's
-     calm language, with only working tools (Evidence, Save, Ask).
+   SMART FEED — THE MAIN SHOW
+   Projection, not input. Canonical intelligence remains in NayaPOWER.
+   Human experience:
+   PRESENCE → RECOGNITION → DISTILLATION → INVITATION → FLOW.
+   The river stays quiet. A snapshot opens one complete intelligence
+   object. Evidence and action remain truthful and governed.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
@@ -26,7 +21,11 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
-  const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
+  const MODES=[
+    {id:'personal',label:'Personal'},
+    {id:'collective',label:'Collective'},
+    {id:'activity',label:'Activity'}
+  ];
 
   const GLYPHS={
     decision:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>',
@@ -35,133 +34,249 @@
     event:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13.5h6L11 21l8-10.5h-6L13 3z"/></svg>'
   };
 
-  const savedList=[];
   let allItems=[];
-  let openNoteId=null;
+  let currentMode=restoreMode();
+  let evidenceReturnFocus=null;
 
   function FeedRoom(){
-    const {el}=window.NayaUI, K=window.NayaRoomKit;
+    const {el}=window.NayaUI;
+    const K=window.NayaRoomKit;
     const stage=el('section','feed-stage');
     stage.setAttribute('aria-label','Smart Feed — the Main Show');
+
     stage.appendChild(greeting(el));
+
+    const modebar=modeBar(el);
+    stage.appendChild(modebar);
+
+    const loadZone=el('div','feed-load-zone');
+    stage.appendChild(loadZone);
+
     const river=el('div','feed-river');
     stage.appendChild(river);
-    const note=el('div','note-view'); note.hidden=true;
+
+    const note=el('div','note-view');
+    note.hidden=true;
     stage.appendChild(note);
-    stage.appendChild(todayListBox(el));
+
     const foot=el('div','feed-stage-foot');
     const ask=el('button','feed-ask','<span>Ask Naya about today</span>');
     ask.type='button';
     const panel=askPanel(el);
     ask.addEventListener('click',()=>{
       panel.classList.toggle('open');
-      if(panel.classList.contains('open')){const i=panel.querySelector('.ask-input'); if(i)i.focus();}
+      if(panel.classList.contains('open')){
+        const input=panel.querySelector('.ask-input');
+        if(input) input.focus();
+      }
     });
-    foot.appendChild(ask); foot.appendChild(panel); stage.appendChild(foot);
+    foot.append(ask,panel);
+    stage.appendChild(foot);
+
     stage.appendChild(evDrawer(el));
 
-    K.load(stage,'feed',{limit:25},(payload,list)=>{
+    K.load(loadZone,'feed',{limit:25},(payload,list)=>{
       allItems=(list||[]).map(o=>normalize(o,K));
+      loadZone.remove();
       renderRiver(el,stage);
     },{
       title:'The stage is quiet',
       body:'There is no qualifying intelligence right now. When something matters, it appears here — ordered for you, never manufactured to fill the space.'
     });
+
     return stage;
   }
 
   function greeting(el){
-    const h=new Date().getHours();
-    const part=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-    const who=(window.NayaRuntime&&window.NayaRuntime.user&&window.NayaRuntime.user.name)||'';
+    const hour=new Date().getHours();
+    const part=hour<12?'Good morning':hour<18?'Good afternoon':'Good evening';
+    const identity=window.NayaRuntime?.identitySnapshot?.();
+    const known=identity&&/^(ready|verified|current)$/i.test(identity.state||'')&&identity.display_name&&identity.display_name!=='You';
+    const who=known?identity.display_name:'';
     const date=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+
     const wrap=el('header','feed-stage-head');
-    const g=el('h1','feed-greeting',''); g.textContent=who?part+', '+who:part;
-    const d=el('p','feed-dateline','');
-    d.innerHTML='<span>'+esc(date.toUpperCase())+'</span><span class="feed-dot">·</span><span>YOUR INTELLIGENCE TODAY</span>';
-    const s=el('p','feed-daystate','');
-    s.textContent='Your intelligence has a place to be understood, explored, remembered, and acted on — without making you manage the architecture.';
-    wrap.appendChild(g); wrap.appendChild(d); wrap.appendChild(s);
+    const title=el('h1','feed-greeting','');
+    title.textContent=who?part+', '+who:part;
+
+    const dateline=el('p','feed-dateline','');
+    dateline.innerHTML='<span>'+esc(date.toUpperCase())+'</span><span class="feed-dot">·</span><span>YOUR INTELLIGENCE TODAY</span>';
+
+    const promise=el('p','feed-daystate','');
+    promise.textContent='What matters now, distilled first. Open anything to understand it, inspect its evidence, or act through the governed runtime.';
+
+    wrap.append(title,dateline,promise);
     return wrap;
   }
 
-  /* ——— THE RIVER: quiet snapshots. Tap → the Smart Note. ——— */
+  function modeBar(el){
+    const wrap=el('div','feed-modebar');
+    const label=el('span','feed-mode-label','SHOWING');
+    const tabs=el('div','feed-mode-tabs');
+    tabs.setAttribute('role','tablist');
+    tabs.setAttribute('aria-label','Smart Feed view');
+
+    MODES.forEach(mode=>{
+      const b=el('button','feed-mode','');
+      b.type='button';
+      b.textContent=mode.label;
+      b.dataset.mode=mode.id;
+      b.setAttribute('role','tab');
+      b.setAttribute('aria-selected',mode.id===currentMode?'true':'false');
+      b.addEventListener('click',()=>{
+        currentMode=mode.id;
+        persistMode(currentMode);
+        tabs.querySelectorAll('.feed-mode').forEach(x=>{
+          x.setAttribute('aria-selected',x.dataset.mode===currentMode?'true':'false');
+        });
+        const stage=wrap.closest('.feed-stage');
+        renderRiver(el,stage);
+      });
+      b.addEventListener('keydown',event=>{
+        if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        event.preventDefault();
+        const buttons=[...tabs.querySelectorAll('.feed-mode')];
+        const index=buttons.indexOf(b);
+        let next=index;
+        if(event.key==='ArrowLeft') next=(index-1+buttons.length)%buttons.length;
+        if(event.key==='ArrowRight') next=(index+1)%buttons.length;
+        if(event.key==='Home') next=0;
+        if(event.key==='End') next=buttons.length-1;
+        buttons[next].focus();
+        buttons[next].click();
+      });
+      tabs.appendChild(b);
+    });
+
+    wrap.append(label,tabs);
+    return wrap;
+  }
+
   function renderRiver(el,stage){
     const river=stage.querySelector('.feed-river');
     const note=stage.querySelector('.note-view');
-    note.hidden=true; river.hidden=false;
+    const modebar=stage.querySelector('.feed-modebar');
+    if(!river||!note) return;
+
+    note.hidden=true;
+    river.hidden=false;
+    if(modebar) modebar.hidden=false;
     river.innerHTML='';
-    if(!allItems.length){
-      const p=el('p','feed-daystate','');
-      p.textContent='Nothing today yet. When something matters, it appears here — never manufactured to fill the space.';
-      river.appendChild(p); return;
+
+    const items=allItems.filter(item=>modeOf(item)===currentMode);
+
+    if(!items.length){
+      const empty=el('div','feed-empty');
+      const h=el('strong','','Nothing in '+currentMode+' right now.');
+      const p=el('span','','When qualifying intelligence arrives, it appears here. NayaNET never manufactures activity to make the screen feel busy.');
+      empty.append(h,p);
+      river.appendChild(empty);
+      return;
     }
-    const k=el('p','river-kicker','');
-    k.innerHTML='<span>'+allItems.length+'</span>&nbsp;&nbsp;INTELLIGENCE BLOCK'+(allItems.length===1?'':'S')+' · TODAY';
-    river.appendChild(k);
-    allItems.forEach(b=>river.appendChild(snapshot(el,b)));
+
+    const kicker=el('p','river-kicker','');
+    kicker.innerHTML='<span>'+items.length+'</span>&nbsp;&nbsp;INTELLIGENCE BLOCK'+(items.length===1?'':'S')+' · '+esc(currentMode.toUpperCase());
+    river.appendChild(kicker);
+
+    items.forEach(item=>river.appendChild(snapshot(el,item)));
   }
 
   function snapshot(el,b){
-    const a=el('article','snap-board');
-    a.style.setProperty('--tone',toneFor(b));
-    a.setAttribute('tabindex','0');
-    a.setAttribute('role','button');
-    a.setAttribute('aria-label','Open: '+b.title);
-    const orb=el('div','sb-orb'); orb.innerHTML=glyphFor(b); orb.setAttribute('aria-hidden','true');
+    const board=el('article','snap-board');
+    board.style.setProperty('--tone',toneFor(b));
+    board.style.setProperty('--state-tone',stateTone(b.truth_state));
+    board.setAttribute('tabindex','0');
+    board.setAttribute('role','button');
+    board.setAttribute('aria-label','Open intelligence: '+b.title);
+
+    const orb=el('div','sb-orb');
+    orb.innerHTML=glyphFor(b);
+    orb.setAttribute('aria-hidden','true');
+
     const main=el('div','sb-main');
-    const th=el('p','sb-theme',''); th.textContent=themeFor(b);
-    const t=el('h2','sb-title',''); t.textContent=b.title;
-    const n=el('p','sb-nut',''); n.textContent=b.layers.nutshell||'';
-    main.appendChild(th); main.appendChild(t); main.appendChild(n);
+    const meta=el('div','sb-meta');
+    const theme=el('p','sb-theme','');
+    theme.textContent=b.type;
+    const state=el('span','sb-state','');
+    state.textContent=shortState(b.truth_state);
+    meta.append(theme,state);
+
+    const title=el('h2','sb-title','');
+    title.textContent=b.title;
+
+    const nutshell=el('p','sb-nut','');
+    nutshell.textContent=b.layers.nutshell||'No nutshell was supplied for this intelligence object.';
+
+    main.append(meta,title,nutshell);
+
     if(b.whyNow){
-      const w=el('p','sb-why','');
-      w.innerHTML='<strong>WHY NOW</strong><span>'+esc(b.whyNow)+'</span>';
-      main.appendChild(w);
+      const why=el('p','sb-why','');
+      why.innerHTML='<strong>WHY NOW</strong><span>'+esc(b.whyNow)+'</span>';
+      main.appendChild(why);
     }
-    a.appendChild(orb); a.appendChild(main);
+
+    board.append(orb,main);
+
     const open=()=>{
-      openNoteId=b.id;
-      const stage=a.closest('.feed-stage');
+      const stage=board.closest('.feed-stage');
       renderNote(el,stage,b);
       stage.scrollIntoView({block:'start'});
     };
-    a.addEventListener('click',open);
-    a.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); }});
-    return a;
+    board.addEventListener('click',open);
+    board.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        open();
+      }
+    });
+
+    return board;
   }
 
-  function themeFor(b){
-    const t=(b.kicker.split(' · ')[0]||'INTELLIGENCE').toUpperCase();
-    return t;
-  }
-  function glyphFor(b){
-    const t=(b.kicker.split(' · ')[0]||'').toLowerCase();
-    return GLYPHS[t]||GLYPHS.intelligence;
-  }
-
-  /* ——— THE SMART NOTE: the full block, live-page language ——— */
   function renderNote(el,stage,b){
     const river=stage.querySelector('.feed-river');
     const note=stage.querySelector('.note-view');
-    river.hidden=true; note.hidden=false; note.innerHTML='';
+    const modebar=stage.querySelector('.feed-modebar');
+    river.hidden=true;
+    note.hidden=false;
+    if(modebar) modebar.hidden=true;
+    note.innerHTML='';
     note.style.setProperty('--tone',toneFor(b));
+    note.style.setProperty('--state-tone',stateTone(b.truth_state));
 
-    const back=el('button','note-back',''); back.type='button';
-    back.innerHTML='<span>←</span><span>Today</span>';
-    back.setAttribute('aria-label','Back to today’s river');
-    back.addEventListener('click',()=>renderRiver(el,stage));
+    const back=el('button','note-back','<span aria-hidden="true">←</span><span>Back to '+currentMode+'</span>');
+    back.type='button';
+    back.setAttribute('aria-label','Back to the '+currentMode+' intelligence river');
+    back.addEventListener('click',()=>{
+      renderRiver(el,stage);
+      stage.scrollIntoView({block:'start'});
+    });
     note.appendChild(back);
 
     const head=el('div','note-head');
-    const orb=el('div','note-orb'); orb.innerHTML=glyphFor(b); orb.setAttribute('aria-hidden','true');
-    const t=el('h2','note-title',''); t.textContent=b.title;
-    head.appendChild(orb); head.appendChild(t);
+    const orb=el('div','note-orb');
+    orb.innerHTML=glyphFor(b);
+    orb.setAttribute('aria-hidden','true');
+    const hgroup=el('div','note-hgroup');
+    const type=el('p','note-canon','');
+    type.textContent=b.type+' · '+shortState(b.truth_state);
+    const title=el('h2','note-title','');
+    title.textContent=b.title;
+    hgroup.append(type,title);
+    head.append(orb,hgroup);
     note.appendChild(head);
 
-    const canon=el('p','note-canon',''); canon.textContent='CANONICAL INTELLIGENCE';
-    const src=el('p','note-source',''); src.textContent='SOURCE SEPARATED';
-    note.appendChild(canon); note.appendChild(src);
+    if(b.source){
+      const source=el('p','note-source','');
+      source.textContent='SOURCE · '+b.source;
+      note.appendChild(source);
+    }
+
+    if(b.whyNow){
+      const why=el('div','note-why','');
+      why.innerHTML='<strong>WHY NOW</strong><span>'+esc(b.whyNow)+'</span>';
+      note.appendChild(why);
+    }
 
     const layers=el('div','note-layers');
     LAYERS.forEach(([key])=>{
@@ -169,225 +284,549 @@
     });
     note.appendChild(layers);
 
-    /* Only working tools. Everything here does something real. */
     const tools=el('div','note-tools');
-    tools.appendChild(toolBtn(el,'Evidence',()=>openEvidence(b)));
-    tools.appendChild(toolBtn(el,savedList.includes(b.id)?'Saved ✓':'Save to Today',()=>{
-      if(!savedList.includes(b.id))savedList.push(b.id);
-      renderTodayList(); renderNote(el,stage,b);
-    }));
-    tools.appendChild(toolBtn(el,'Ask Naya',()=>{
-      const panel=document.querySelector('.ask-panel');
-      if(panel){panel.classList.add('open');
-        const i=panel.querySelector('.ask-input');
-        if(i){i.value='About "'+b.title+'": ';}}
-      renderRiver(el,stage);
-      const foot=document.querySelector('.feed-stage-foot');
-      if(foot)foot.scrollIntoView({behavior:'smooth',block:'center'});
-      const inp=document.querySelector('.ask-input'); if(inp)inp.focus();
-    }));
+    tools.appendChild(toolBtn(el,'Inspect evidence',()=>openEvidence(b)));
+
+    if(b.action){
+      const action=toolBtn(el,b.action.label,()=>runGovernedAction(b,action,actionStatus));
+      action.classList.add('note-tool-primary');
+      tools.appendChild(action);
+      var actionStatus=el('span','note-action-status','');
+      actionStatus.setAttribute('role','status');
+      actionStatus.setAttribute('aria-live','polite');
+      tools.appendChild(actionStatus);
+    }
+
+    tools.appendChild(toolBtn(el,'Ask Naya',()=>openAskForBlock(stage,b)));
     note.appendChild(tools);
+
+    const refs=buildRelationships(el,stage,b);
+    if(refs.childElementCount) note.appendChild(refs);
 
     const foot=el('footer','note-foot');
     foot.innerHTML='<p>ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY</p><p>TRUST: SOURCE / INTERPRETATION SEPARATED</p>';
     note.appendChild(foot);
   }
 
+  function buildRelationships(el,stage,b){
+    const wrap=el('section','note-related');
+    const links=el('div','note-related-links');
+
+    b.related.forEach(id=>{
+      const target=allItems.find(item=>item.id===String(id));
+      if(!target) return;
+      links.appendChild(toolBtn(el,'Related · '+shortTitle(target.title),()=>{
+        currentMode=modeOf(target);
+        persistMode(currentMode);
+        renderNote(el,stage,target);
+        stage.scrollIntoView({block:'start'});
+      }));
+    });
+
+    const roomMap={list:'lists',space:'spaces',report:'reports'};
+    Object.keys(roomMap).forEach(key=>{
+      if(!b.context?.[key]) return;
+      links.appendChild(toolBtn(el,key.charAt(0).toUpperCase()+key.slice(1)+' · '+shortTitle(b.context[key]),()=>{
+        window.NayaRouter.navigate('/hub/'+roomMap[key]);
+      }));
+    });
+
+    if(b.people.length){
+      const people=el('p','note-people','');
+      people.textContent='Related people · '+b.people.join(', ');
+      links.appendChild(people);
+    }
+
+    if(links.childElementCount){
+      const label=el('p','note-related-label','RELATIONSHIPS');
+      wrap.append(label,links);
+    }
+
+    return wrap;
+  }
+
+  async function runGovernedAction(b,button,status){
+    if(!window.NayaRuntime.performIntelligenceAction){
+      setStatus(status,'not_verified','The governed action seam is not available. Nothing changed.');
+      return;
+    }
+
+    button.disabled=true;
+    button.dataset.state='processing';
+    const original=button.textContent;
+    button.textContent='Working…';
+    setStatus(status,'processing','Checking runtime capability and authority…');
+
+    let out;
+    try{
+      out=await window.NayaRuntime.performIntelligenceAction({
+        id:b.id,
+        intelligent_block_id:b.id,
+        action:b.action.kind,
+        label:b.action.label,
+        mode:modeOf(b)
+      });
+    }catch(err){
+      out={ok:false,state:'error',message:err?.message||'The action failed.'};
+    }
+
+    if(!out?.ok){
+      button.disabled=false;
+      button.dataset.state=out?.state||'not_verified';
+      button.textContent=original;
+      setStatus(status,out?.state||'not_verified',out?.message||'The runtime did not confirm this action. Nothing changed.');
+      return;
+    }
+
+    const data=out.data??out;
+    const receipt=data?.receipt?.receipt_id||data?.receipt_id||out?.raw?.receipt?.receipt_id||'';
+    button.dataset.state='success';
+    button.textContent='Completed';
+    setStatus(
+      status,
+      'success',
+      receipt?'Receipt · '+receipt:'Runtime confirmed the action, but no receipt ID was returned.'
+    );
+  }
+
+  function setStatus(node,state,text){
+    if(!node) return;
+    node.dataset.state=state;
+    node.textContent=text;
+  }
+
   function toolBtn(el,label,fn){
-    const x=el('button','note-tool',''); x.type='button'; x.textContent=label;
-    x.addEventListener('click',fn); return x;
+    const b=el('button','note-tool','');
+    b.type='button';
+    b.textContent=label;
+    b.addEventListener('click',fn);
+    return b;
   }
 
   function makeLayer(el,key,text){
-    const found=LAYERS.find(l=>l[0]===key);
-    const label=found?found[1]:key.toUpperCase();
-    const sub=found?found[2]:'';
-    const d=el('div','nlayer');
-    const lab=el('p','nlayer-label','');
-    lab.innerHTML='<strong>'+esc(label)+'</strong>'+(sub?'<span>'+esc(sub)+'</span>':'');
-    const txt=el('p','nlayer-text',''); txt.textContent=text;
-    d.appendChild(lab); d.appendChild(txt);
-    return d;
+    const found=LAYERS.find(layer=>layer[0]===key);
+    const block=el('section','nlayer');
+    const label=el('p','nlayer-label','');
+    label.innerHTML='<strong>'+esc(found?found[1]:key.toUpperCase())+'</strong>'+
+      (found&&found[2]?'<span>'+esc(found[2])+'</span>':'');
+    const body=el('p','nlayer-text','');
+    body.textContent=text;
+    block.append(label,body);
+    return block;
   }
 
-  /* ——— Object → snapshot. Only real fields; nothing invented. ——— */
   function normalize(o,K){
     const src=o.layers||o.intelligent_block||o.content||{};
     const layers={};
+
     LAYERS.forEach(([key])=>{
-      const v=o[key]??src[key];
-      if(typeof v==='string'&&v.trim()) layers[key]=v.trim();
+      const value=o[key]??src[key];
+      if(typeof value==='string'&&value.trim()) layers[key]=value.trim();
     });
+
     if(!layers.nutshell){
-      const s=K.summary(o);
-      if(s) layers.nutshell=s;
+      const summary=K.summary(o);
+      if(summary) layers.nutshell=summary;
     }
     if(!layers.machine) layers.machine=evidenceLine(o);
-    const type=(o.category||o.type||o.kind||'').toString().toUpperCase();
-    const state=(o.truth_state||o.state||'').toString().toUpperCase();
-    const srcName=typeof o.source==='string'?o.source:(o.source&&o.source.name)||'';
+
+    const type=String(o.category||o.type||o.kind||'INTELLIGENCE').toUpperCase();
+    const state=String(o.truth_state||o.state||'UNKNOWN').toUpperCase();
+    const sourceObject=o.source&&typeof o.source==='object'?o.source:null;
+    const source=typeof o.source==='string'?o.source:(sourceObject?.name||sourceObject?.title||'');
+    const action=o.action||o.primary_action||null;
+
     return {
       id:String(o.intelligent_block_id||o.id||type+'-'+Math.abs(hashCode(o.title||''))),
+      mode:normalizeMode(o.mode||o.stream||o.feed_scope||o.projection),
+      type,
       title:K.title(o,'Untitled intelligence'),
-      kicker:[type||'INTELLIGENCE', state||null].filter(Boolean).join(' · '),
-      source:srcName,
+      source,
       truth_state:state,
       created_at:o.created_at||o.timestamp||o.time||'',
-      whyNow:o.why_now||o.whyNow||'',
+      whyNow:o.why_now||o.whyNow||o.rank_reason||'',
       layers,
       related:Array.isArray(o.related)?o.related:[],
       people:Array.isArray(o.people)?o.people:[],
-      context:o.context||null
+      context:o.context||{},
+      action:(action&&(action.label||action.verb))?{
+        label:action.label||action.verb,
+        kind:String(action.kind||action.action||action.verb||'act').toLowerCase()
+      }:null
     };
-  }
-
-  function hashCode(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return h;}
-  function toneFor(b){ return TONES[Math.abs(hashCode('tone:'+b.id)) % TONES.length]; }
-
-  function evidenceLine(o){
-    const bits=[];
-    const src=typeof o.source==='string'?o.source:(o.source&&o.source.name);
-    if(src) bits.push('Source: '+src);
-    const st=o.truth_state||o.state;
-    if(st) bits.push('State: '+String(st).toUpperCase());
-    const t=o.created_at||o.timestamp||o.time;
-    if(t) bits.push('Time: '+t);
-    const id=o.intelligent_block_id||o.id;
-    if(id) bits.push('ID: '+id);
-    return bits.length
-      ? bits.join(' — ')
-      : 'No provenance is attached to this object, so no evidence boundary can be stated.';
-  }
-
-  function todayListBox(el){
-    const box=el('div','today-list'); box.id='today-list';
-    renderTodayList(); return box;
-  }
-  function renderTodayList(){
-    const box=document.getElementById('today-list'); if(!box)return;
-    box.innerHTML='';
-    if(!savedList.length){box.classList.remove('show');return;}
-    box.classList.add('show');
-    const {el}=window.NayaUI;
-    const h=el('h3','','Today’s list'); box.appendChild(h);
-    const sub=el('p','tl-sub',''); sub.textContent=savedList.length+' saved — preview-local working list.'; box.appendChild(sub);
-    const ul=el('ul','');
-    savedList.forEach(id=>{
-      const o=allItems.find(x=>x.id===id); if(!o)return;
-      const li=el('li','');
-      const span=el('span','',''); span.textContent=o.title;
-      const rm=el('button','','Remove'); rm.type='button';
-      rm.addEventListener('click',()=>{
-        const ix=savedList.indexOf(id); if(ix>=0)savedList.splice(ix,1);
-        renderTodayList();
-      });
-      li.appendChild(span); li.appendChild(rm); ul.appendChild(li);
-    });
-    box.appendChild(ul);
   }
 
   function evDrawer(el){
     const wrap=el('div','ev-wrap','');
-    const bd=el('div','ev-backdrop',''); bd.id='ev-backdrop';
-    const dr=el('aside','ev-drawer',''); dr.id='ev-drawer';
-    dr.setAttribute('aria-label','Evidence'); dr.setAttribute('role','dialog'); dr.setAttribute('aria-modal','true');
-    bd.addEventListener('click',closeEvidence);
-    wrap.appendChild(bd); wrap.appendChild(dr);
-    if(!window.__nayaCloseEvidence) window.__nayaCloseEvidence=closeEvidence;
+    const backdrop=el('div','ev-backdrop','');
+    backdrop.id='ev-backdrop';
+    const drawer=el('aside','ev-drawer','');
+    drawer.id='ev-drawer';
+    drawer.setAttribute('aria-label','Evidence');
+    drawer.setAttribute('role','dialog');
+    drawer.setAttribute('aria-modal','true');
+    backdrop.addEventListener('click',closeEvidence);
+    wrap.append(backdrop,drawer);
+    window.__nayaCloseEvidence=closeEvidence;
     return wrap;
   }
+
   function openEvidence(b){
     const {el}=window.NayaUI;
-    const dr=document.getElementById('ev-drawer'), bd=document.getElementById('ev-backdrop');
-    if(!dr||!bd)return;
-    dr.innerHTML='';
-    const k=el('p','ev-kicker',''); k.textContent='EVIDENCE · '+(b.truth_state||'STATE UNSTATED');
-    const h=el('h3','',''); h.textContent=b.title;
-    dr.appendChild(k); dr.appendChild(h);
-    const ul=el('ul','ev-chain');
-    const rows=[
-      ['SOURCE',(b.source||'Unnamed source')+' — origin of this intelligence. Source and interpretation stay separate.'],
-      ['EVENT','Recorded '+(b.created_at||'at an unstated time')+'. Object ID: '+b.id+'.'],
-      ['BLOCK','Rendered with '+Object.keys(b.layers).length+' layers. '+(b.whyNow?('Ranked because: '+b.whyNow):'No ranking reason attached.')],
-      ['STATE',(b.truth_state||'UNSTATED')+' — '+(b.truth_state==='VERIFIED'?'backed by evidence.':'not yet verified; treat accordingly.')]
-    ];
-    rows.forEach(r=>{
-      const li=el('li',''); li.innerHTML='<strong>'+esc(r[0])+'</strong>';
-      const sp=el('span','',''); sp.textContent=r[1]; li.appendChild(sp); ul.appendChild(li);
+    const drawer=document.getElementById('ev-drawer');
+    const backdrop=document.getElementById('ev-backdrop');
+    if(!drawer||!backdrop) return;
+
+    evidenceReturnFocus=document.activeElement;
+    drawer.innerHTML='';
+
+    const kicker=el('p','ev-kicker','');
+    kicker.textContent='EVIDENCE · '+shortState(b.truth_state);
+    const title=el('h3','','');
+    title.textContent=b.title;
+    const intro=el('p','ev-intro','');
+    intro.textContent='What this projection can state now, plus a direct retrieval check against the canonical runtime.';
+    drawer.append(kicker,title,intro);
+
+    const chain=el('ul','ev-chain');
+    [
+      ['SOURCE',b.source||'No source name was supplied.'],
+      ['TIME',b.created_at||'No event time was supplied.'],
+      ['OBJECT','Canonical ID: '+b.id+'.'],
+      ['WHY NOW',b.whyNow||'No separate ranking reason was supplied.'],
+      ['STATE',shortState(b.truth_state)+'. Presentation does not upgrade truth.']
+    ].forEach(([label,value])=>{
+      const li=el('li','');
+      li.innerHTML='<strong>'+esc(label)+'</strong>';
+      const span=el('span','','');
+      span.textContent=value;
+      li.appendChild(span);
+      chain.appendChild(li);
     });
-    dr.appendChild(ul);
-    const c=el('button','ev-close','Close evidence'); c.type='button';
-    c.addEventListener('click',closeEvidence);
-    dr.appendChild(c);
-    bd.classList.add('open'); dr.classList.add('open'); c.focus();
+    drawer.appendChild(chain);
+
+    const retrieve=el('button','ev-retrieve','Retrieve canonical record');
+    retrieve.type='button';
+    const result=el('div','ev-runtime-result','');
+    result.setAttribute('role','status');
+    result.setAttribute('aria-live','polite');
+
+    retrieve.addEventListener('click',async()=>{
+      retrieve.disabled=true;
+      retrieve.textContent='Retrieving…';
+      let out;
+      try{
+        out=await window.NayaRuntime.retrieve?.(b.id);
+      }catch(err){
+        out={ok:false,state:'error',message:err?.message||'Canonical retrieval failed.'};
+      }
+      retrieve.disabled=false;
+      retrieve.textContent='Retrieve canonical record';
+
+      if(!out?.ok){
+        result.dataset.state=out?.state||'not_verified';
+        result.textContent=out?.message||'The canonical record is not available from the governed runtime.';
+        return;
+      }
+
+      const data=out.data??out;
+      const name=data?.title||data?.name||b.title;
+      const state=data?.truth_state||data?.state||'state not returned';
+      result.dataset.state='success';
+      result.textContent='Canonical runtime returned “'+name+'” · '+state+'.';
+    });
+
+    const close=el('button','ev-close','Close evidence');
+    close.type='button';
+    close.addEventListener('click',closeEvidence);
+    drawer.append(retrieve,result,close);
+
+    backdrop.classList.add('open');
+    drawer.classList.add('open');
+    close.focus();
   }
+
   function closeEvidence(){
-    const dr=document.getElementById('ev-drawer'), bd=document.getElementById('ev-backdrop');
-    if(dr)dr.classList.remove('open');
-    if(bd)bd.classList.remove('open');
+    const drawer=document.getElementById('ev-drawer');
+    const backdrop=document.getElementById('ev-backdrop');
+    if(drawer) drawer.classList.remove('open');
+    if(backdrop) backdrop.classList.remove('open');
+    if(evidenceReturnFocus&&evidenceReturnFocus.focus){
+      try{ evidenceReturnFocus.focus(); }catch(_){}
+    }
+    evidenceReturnFocus=null;
   }
 
   function askPanel(el){
-    const p=el('div','ask-panel');
-    const h=el('h3','','Ask Naya about today');
-    const sub=el('p','ask-sub',''); sub.textContent='Ask in plain words. Naya searches what is actually loaded on this stage and answers only from it — nothing invented.';
+    const panel=el('section','ask-panel');
+    const title=el('h3','','Ask Naya about today');
+    const sub=el('p','ask-sub','');
+    sub.textContent='Ask in plain words. Naya uses the governed retrieval seam first and clearly labels any on-screen fallback.';
+
     const row=el('div','ask-row');
-    const input=el('input','ask-input'); input.type='text';
-    input.setAttribute('aria-label','Ask Naya'); input.placeholder='What needs my attention today?';
-    const go=el('button','ask-go','Ask'); go.type='button';
-    const res=el('div','ask-result');
-    const answer=()=>{
-      const q=input.value.trim(); if(!q)return;
-      res.innerHTML=''; res.classList.add('show');
-      res.appendChild(askStep(el,'INTENT','You asked: “'+q+'”'));
-      const hits=retrieve(q);
-      const hv=el('div','ask-step');
-      const hk=el('p','ask-k',''); hk.textContent='RETRIEVAL — '+hits.length+' relevant'+(hits.length===1?'':'s');
-      hv.appendChild(hk);
-      if(!hits.length){
-        const none=el('p','ask-v',''); none.textContent='Nothing loaded on this stage matches. Naya will not invent an answer — try different words.';
-        hv.appendChild(none);
+    const input=el('input','ask-input');
+    input.type='text';
+    input.setAttribute('aria-label','Ask Naya about today');
+    input.placeholder='What needs my attention today?';
+
+    const go=el('button','ask-go','Ask Naya');
+    go.type='button';
+
+    const result=el('div','ask-result');
+    result.setAttribute('aria-live','polite');
+
+    const answer=async()=>{
+      const question=input.value.trim();
+      if(!question) return;
+
+      go.disabled=true;
+      go.textContent='Thinking…';
+      result.innerHTML='';
+      result.classList.add('show');
+      result.appendChild(askStep(el,'QUESTION',question));
+
+      let runtime;
+      try{
+        runtime=await window.NayaRuntime.search?.(question,{room:'feed',mode:currentMode});
+      }catch(err){
+        runtime={ok:false,state:'error',message:err?.message||'Runtime search failed.'};
       }
-      hits.forEach(hit=>{
-        const line=el('div','ask-hit','');
-        const bb=el('button','',''); bb.type='button'; bb.textContent=hit.b.title;
-        bb.addEventListener('click',()=>{ const stage=p.closest('.feed-stage'); renderNote(el,stage,hit.b); stage.scrollIntoView({block:'start'}); });
-        line.appendChild(bb);
-        const why=el('span','',''); why.textContent=' — '+(hit.b.whyNow||'on this stage');
-        line.appendChild(why); hv.appendChild(line);
-      });
-      res.appendChild(hv);
-      if(hits.length){
-        const synth=hits.slice(0,3).map(hit=>hit.b.layers.nutshell||'').filter(Boolean).join(' ');
-        res.appendChild(askStep(el,'SYNTHESIS — assembled only from the above',synth.slice(0,420)+(synth.length>420?'…':'')));
-      }
-      const bound=el('p','ask-boundary','');
-      bound.textContent='Boundary, stated plainly: this answers from what is loaded on this stage. In production the same surface queries the governed runtime. Nothing here is sent anywhere.';
-      res.appendChild(bound);
+
+      if(runtime?.ok) renderRuntimeAnswer(el,result,runtime);
+      else renderStageFallback(el,result,question,runtime);
+
+      go.disabled=false;
+      go.textContent='Ask Naya';
     };
+
     go.addEventListener('click',answer);
-    input.addEventListener('keydown',e=>{if(e.key==='Enter')answer();});
-    row.appendChild(input); row.appendChild(go);
-    p.appendChild(h); p.appendChild(sub); p.appendChild(row); p.appendChild(res);
-    return p;
-  }
-  function askStep(el,k,v){
-    const d=el('div','ask-step');
-    const kk=el('p','ask-k',''); kk.textContent=k;
-    const vv=el('p','ask-v',''); vv.textContent=v;
-    d.appendChild(kk); d.appendChild(vv); return d;
-  }
-  function retrieve(q){
-    const words=q.toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>2);
-    return allItems.map(o=>{
-      const hay=((o.title||'')+' '+(o.kicker||'')+' '+(o.whyNow||'')+' '+Object.keys(o.layers).map(k=>o.layers[k]).join(' ')).toLowerCase();
-      let score=0; words.forEach(w=>{if(hay.includes(w))score++;});
-      return {b:o,score};
-    }).filter(h=>h.score>0).sort((a,b2)=>b2.score-a.score);
+    input.addEventListener('keydown',event=>{if(event.key==='Enter') answer();});
+
+    row.append(input,go);
+    panel.append(title,sub,row,result);
+    return panel;
   }
 
-  function esc(s){
-    return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function renderRuntimeAnswer(el,result,runtime){
+    const data=runtime.data??runtime;
+    const answerText=typeof data==='string'?data:(data?.answer||data?.summary||data?.message||'');
+
+    if(answerText) result.appendChild(askStep(el,'NAYA',answerText));
+
+    const rawItems=window.NayaRoomKit.items(data);
+    if(rawItems.length){
+      const group=el('div','ask-step');
+      const label=el('p','ask-k','');
+      label.textContent='RELATED INTELLIGENCE · '+rawItems.length;
+      group.appendChild(label);
+
+      rawItems.slice(0,5).forEach(raw=>{
+        const normalized=normalize(raw,window.NayaRoomKit);
+        const line=el('div','ask-hit','');
+        const local=allItems.find(item=>item.id===normalized.id);
+        if(local){
+          const button=el('button','','');
+          button.type='button';
+          button.textContent=local.title;
+          button.addEventListener('click',()=>{
+            const stage=result.closest('.feed-stage');
+            currentMode=modeOf(local);
+            persistMode(currentMode);
+            renderNote(el,stage,local);
+            stage.scrollIntoView({block:'start'});
+          });
+          line.appendChild(button);
+        }else{
+          const text=el('span','','');
+          text.textContent=normalized.title;
+          line.appendChild(text);
+        }
+        group.appendChild(line);
+      });
+
+      result.appendChild(group);
+    }
+
+    const boundary=el('p','ask-boundary','');
+    boundary.textContent='Source: governed runtime'+(runtime.method?' · '+runtime.method:'')+'. The interface does not upgrade the returned truth state.';
+    result.appendChild(boundary);
+  }
+
+  function renderStageFallback(el,result,question,runtime){
+    const hits=localRetrieve(question);
+    const group=el('div','ask-step');
+    const label=el('p','ask-k','');
+    label.textContent='ON-SCREEN RETRIEVAL · '+hits.length;
+    group.appendChild(label);
+
+    if(!hits.length){
+      const none=el('p','ask-v','');
+      none.textContent='Nothing currently loaded on this stage matches. Naya will not invent an answer.';
+      group.appendChild(none);
+    }else{
+      hits.slice(0,5).forEach(hit=>{
+        const line=el('div','ask-hit','');
+        const button=el('button','','');
+        button.type='button';
+        button.textContent=hit.b.title;
+        button.addEventListener('click',()=>{
+          const stage=result.closest('.feed-stage');
+          currentMode=modeOf(hit.b);
+          persistMode(currentMode);
+          renderNote(el,stage,hit.b);
+          stage.scrollIntoView({block:'start'});
+        });
+        line.appendChild(button);
+        group.appendChild(line);
+      });
+
+      const synthesis=hits.slice(0,3).map(hit=>hit.b.layers.nutshell||'').filter(Boolean).join(' ');
+      if(synthesis){
+        result.appendChild(askStep(
+          el,
+          'WHAT THE LOADED STAGE SAYS',
+          synthesis.slice(0,520)+(synthesis.length>520?'…':'')
+        ));
+      }
+    }
+
+    result.appendChild(group);
+
+    const boundary=el('p','ask-boundary','');
+    boundary.textContent='Governed retrieval was unavailable'+(runtime?.message?' — '+runtime.message:'')+'. This fallback searches only intelligence already visible to this browser session. Nothing was invented or written.';
+    result.appendChild(boundary);
+  }
+
+  function openAskForBlock(stage,b){
+    renderRiver(window.NayaUI.el,stage);
+    const panel=stage.querySelector('.ask-panel');
+    if(!panel) return;
+    panel.classList.add('open');
+    const input=panel.querySelector('.ask-input');
+    if(input){
+      input.value='About "'+b.title+'": ';
+      input.focus();
+    }
+    panel.scrollIntoView({behavior:prefersReduced()?'auto':'smooth',block:'center'});
+  }
+
+  function askStep(el,label,value){
+    const block=el('div','ask-step');
+    const key=el('p','ask-k','');
+    key.textContent=label;
+    const body=el('p','ask-v','');
+    body.textContent=value;
+    block.append(key,body);
+    return block;
+  }
+
+  function localRetrieve(query){
+    const words=query.toLowerCase().split(/[^a-z0-9]+/).filter(word=>word.length>2);
+    return allItems.map(item=>{
+      const haystack=(
+        item.title+' '+item.type+' '+(item.whyNow||'')+' '+Object.values(item.layers).join(' ')
+      ).toLowerCase();
+      let score=0;
+      words.forEach(word=>{if(haystack.includes(word)) score++;});
+      return {b:item,score};
+    }).filter(result=>result.score>0).sort((a,b)=>b.score-a.score);
+  }
+
+  function modeOf(item){
+    return normalizeMode(item.mode);
+  }
+
+  function normalizeMode(value){
+    const raw=String(value||'personal').toLowerCase();
+    if(raw.includes('collective')||raw.includes('shared')||raw.includes('public')) return 'collective';
+    if(raw.includes('activity')||raw.includes('event')) return 'activity';
+    return 'personal';
+  }
+
+  function toneFor(b){
+    const state=String(b.truth_state||'').toUpperCase();
+    const type=String(b.type||'').toUpperCase();
+    const mode=modeOf(b);
+
+    if(/BLOCKED|FAILED|ERROR|DENIED|REVOKED|CONTRADICTED/.test(state)) return 'var(--red)';
+    if(/NAYA|AI|INTERPRET/.test(type)) return 'var(--purple)';
+    if(/CONNECT|CONNECTION|NETWORK|COLLECTIVE|SHARED/.test(type)||mode==='collective') return 'var(--teal)';
+    if(/ACTIVITY|EVENT|CURRENT|EXECUTION|UPDATE/.test(type)||mode==='activity') return 'var(--green)';
+    if(/KNOWLEDGE|REPORT|EVIDENCE|LIBRARY|LEARNING|INSIGHT|PATTERN/.test(type)) return 'var(--blue)';
+    if(/HUMAN|PERSONAL|NOTE|DECISION|IDEA|GOAL|QUESTION|OPPORTUNITY|BREAKTHROUGH/.test(type)||mode==='personal') return 'var(--magenta)';
+    return 'var(--sapphire)';
+  }
+
+  function stateTone(state){
+    const value=String(state||'').toUpperCase();
+    if(/BLOCKED|FAILED|ERROR|DENIED|REVOKED|CONTRADICTED/.test(value)) return 'var(--red)';
+    if(/VERIFIED|CURRENT|READY|ACTIVE|SUCCESS|LIVE|COMPLETE/.test(value)) return 'var(--green)';
+    return 'var(--muted)';
+  }
+
+  function themeFor(b){ return b.type||'INTELLIGENCE'; }
+
+  function glyphFor(b){
+    const type=String(b.type||'').toLowerCase();
+    if(type.includes('decision')) return GLYPHS.decision;
+    if(type.includes('event')||type.includes('activity')) return GLYPHS.event;
+    if(type.includes('signal')||type.includes('connection')) return GLYPHS.signal;
+    return GLYPHS.intelligence;
+  }
+
+  function evidenceLine(o){
+    const bits=[];
+    const source=typeof o.source==='string'?o.source:(o.source&&o.source.name);
+    if(source) bits.push('Source: '+source);
+    const state=o.truth_state||o.state;
+    if(state) bits.push('State: '+String(state).toUpperCase());
+    const time=o.created_at||o.timestamp||o.time;
+    if(time) bits.push('Time: '+time);
+    const id=o.intelligent_block_id||o.id;
+    if(id) bits.push('ID: '+id);
+    return bits.length?bits.join(' — '):'No provenance is attached to this object.';
+  }
+
+  function restoreMode(){
+    try{
+      const saved=sessionStorage.getItem('nayanet.feedMode');
+      if(MODES.some(mode=>mode.id===saved)) return saved;
+    }catch(_){}
+    return 'personal';
+  }
+
+  function persistMode(mode){
+    try{ sessionStorage.setItem('nayanet.feedMode',mode); }catch(_){}
+  }
+
+  function prefersReduced(){
+    return !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function hashCode(text){
+    let hash=0;
+    const value=String(text||'');
+    for(let i=0;i<value.length;i++) hash=(hash*31+value.charCodeAt(i))|0;
+    return hash;
+  }
+
+  function shortState(state){
+    return String(state||'UNKNOWN').replaceAll('_',' ');
+  }
+
+  function shortTitle(title){
+    const value=String(title||'');
+    return value.length>36?value.slice(0,36)+'…':value;
+  }
+
+  function esc(value){
+    return String(value??'').replace(/[&<>"']/g,char=>({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[char]));
   }
 
   window.NayaRooms=window.NayaRooms||{};
