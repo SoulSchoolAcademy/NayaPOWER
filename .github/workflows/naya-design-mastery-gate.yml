@@ -26,6 +26,8 @@ jobs:
           python-version: '3.12'
       - name: Validate Design Mastery OS
         run: python3 tools/verify_naya_design_mastery.py
+      - name: Compile design automation tools
+        run: python3 -m py_compile tools/verify_naya_design_mastery.py tools/naya_design_lint.py
       - name: Parse mastery JSON contracts
         run: |
           python3 - <<'PY'
