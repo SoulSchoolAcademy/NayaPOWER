@@ -494,12 +494,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "62274196-5fee-43e8-91ce-0847f5a2b767"
       }
+    },
+    {
+      "smart_note_id": "SN-022",
+      "intelligent_block_id": "IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence",
+      "content_hash": "69ad4c87f672b9d45f872397c3c80a594c98301fe64555148a6ed2b2059c50e8",
+      "title": "Human-Centered Design Intelligence — World-Class UX Principles Adopted into Naya Design",
+      "captured_at": "2026-10-02",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "DESIGN_MASTERY",
+      "subtopic": "HUMAN_CENTERED_INTERACTION_SCIENCE",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-022/IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-022/IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "547ac869-4e06-4925-9add-37fb1a11c5f7",
+        "lineage_id": "f7f768ed-b80d-445a-8186-b03d22c4480a",
+        "relationship_id": "4bf8f1b7-9807-4bbf-b113-8aeb69093c9f",
+        "runtime_index_id": "730678d4-9251-4238-af5a-791042cc1cd1",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 22,
+    "next_sequence": 23,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
