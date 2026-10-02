@@ -136,7 +136,7 @@ The Human Director supplied snapshots differ from current main reference blobs. 
 Live/supplied Hub still exposes **Smart Share** while canonical project intelligence requires **Smart Connect**.
 
 ### G4 · 11-room vs 13-room implementation conflict
-PR #1278 implements Smart Notes + System as primary rooms. Current canonical proposal keeps 11 primary rooms, with Smart Note as universal capability/focused surface and System Health under Settings.
+PR #1278 implements Smart Notes + System as primary rooms. Human Director correction now keeps 11 primary rooms, with Smart Note creation upstream through Naya and automatic Hub projection; System Health remains under Settings.
 
 ### G5 · runtime contract is not complete enough for the room promises
 Today explicitly lacks daily comparison/learning/priority retrieval. Reports/Library/Lists/Spaces still use partial/local projections in places.
@@ -152,6 +152,9 @@ Welcome routes to a local Identity filename; current main Identity still redirec
 
 ### G9 · proof is uneven
 Some code is honest about unavailable runtime state, which is good. But end-to-end browser/runtime/persistence/independent proof does not yet cover the complete app.
+
+### G11 · Hub input/output boundary is violated in current prototypes
+Some current implementations expose Smart Note capture directly inside the Hub. Human Director correction: the Hub is the output/projection layer. Smart Notes are created upstream by Naya / connected AI, then automatically projected into the Hub. Current capture controls must be removed or converted into an upstream Naya intent handoff; local card creation is not canonical capture.
 
 ### G10 · open branches must converge before implementation continues
 - #1278 = app foundation, currently stale/diverged from current main and implements 13 rooms.
@@ -188,7 +191,7 @@ Do not add another concept layer.
 4. establish one production App Shell + Router + runtime adapter;
 5. fix Welcome → governed Identity → Hub;
 6. implement Your Intelligence Today as the first complete vertical slice;
-7. prove capture → persistence → retrieval → Today/Feed/Library → Ledger;
+7. prove upstream Smart Note / Activity / Report → canonical persistence/event → automatic Today/Feed/Library projection → Ledger/evidence without duplicate truth;
 8. then activate rooms in dependency order;
 9. harden accessibility/performance/reliability;
 10. independently score D1–D8 and continue until target.
