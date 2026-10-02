@@ -162,10 +162,11 @@
 
 @media (max-width:640px){
   .today-stage .block.naya509-board{ padding:27px 18px 26px; border-radius:21px; margin:12px 0; }
+  .today-stage .naya509-board .blockTop{ flex-wrap:wrap; }
+  .today-stage .naya509-board .pills{ max-width:none; width:100%; justify-content:flex-start; }
   .today-stage .naya509-board h3{ font-size:clamp(24px,7vw,34px); }
   .today-stage .naya509-board .nutshell{ padding:17px 18px; }
   .today-stage .naya509-board .nutshell p, .today-stage .naya509-board .call{ font-size:16px; }
   .today-stage .naya509-board .layerBody{ font-size:13px; }
   .today-stage .tsection-title{ font-size:20px; }
-  .today-stage .naya509-board .pills{ max-width:45%; }
 }
