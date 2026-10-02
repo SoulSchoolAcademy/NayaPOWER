@@ -74,7 +74,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE VAULT / YOUR MIND.** Sapphire depth creates the feeling of a vast but navigable intelligence vault. Search is the dominant instrument. Opening an object reveals an unbroken thread: what it means, where it came from, what it connects to, what superseded it and how strongly it is supported. The awe comes from total recall with receipts — not shelves of cards.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -296,6 +296,25 @@ And the current global acceptance bar applies:
 - Exact visual treatment of the result detail depth should be tested with real intelligence density.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+Ask a natural-language question and watch Naya surface the exact intelligence object **with its visible lineage** — source, truth state, relationships and supersession — so the human never loses the thread.
+
+### Best-of intelligence to synthesize
+- **Linear:** search/focus and fast navigation.
+- **Pentagram:** information architecture as meaning.
+- **Stripe:** trustworthy dense information.
+- **Bret Victor:** representations that help humans think.
+
+### Beyond-benchmark hypothesis
+A library becomes a visual brain when retrieval returns not only an answer but the object's meaning, lineage, confidence, relationships and applicability while preserving one canonical identity.
+
+### Proof boundary
+Measure search success, answer quality, source inspection, supersession correctness and cold retrieval.
 
 ---
 
