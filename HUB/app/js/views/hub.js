@@ -13,7 +13,7 @@ function HubView(params) {
   rail.setAttribute('aria-label', 'Hub rooms');
   rail.innerHTML = `
     <div class="rail-mark">
-      <span class="rail-emblem">${window.NayaJewels ? window.NayaJewels.emblem(40) : '<span class="jewel"></span>'}</span>
+      <span class="rail-emblem"><img src="assets/naya-emblem-192.png" width="40" height="40" alt="Naya"></span>
       <span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>
     </div>`;
   R.ROOMS.forEach(r => {

@@ -56,3 +56,10 @@ button:active .action-chip {
   .jewel-mark.breathe { animation: none; }
   .action-chip { transition: none; }
 }
+
+/* ——— the Naya emblem: Shawn's crystal mark ——— */
+.rail-emblem img {
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #9d75ff44;
+}
