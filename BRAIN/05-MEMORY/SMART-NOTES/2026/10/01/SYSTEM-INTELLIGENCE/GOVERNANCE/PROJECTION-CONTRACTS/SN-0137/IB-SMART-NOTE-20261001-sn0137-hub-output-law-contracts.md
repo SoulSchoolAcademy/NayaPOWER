@@ -7,7 +7,7 @@ captured: 2026-10-01 19:15 PDT
 captured-by: Naya 4 (builder seat)
 source: report shared by Shawn Vibert, authored by Naya 3 (Hub project/design-intelligence seat)
 provenance: Naya 3's spec correction → shared by Shawn → distilled by Naya 4 → intelligent block
-sn-number: SN-0130
+sn-number: SN-0137
 ib-number: IB-007
 
 ---
@@ -129,7 +129,7 @@ still to build, index drift honestly labeled — is exactly the honesty standard
 ```json
 {
   "block": "IB-007",
-  "sn": "SN-0130",
+  "sn": "SN-0137",
   "kind": "smart-note",
   "truth_state": "CANDIDATE",
   "captured": "2026-10-01T19:15:00-07:00",

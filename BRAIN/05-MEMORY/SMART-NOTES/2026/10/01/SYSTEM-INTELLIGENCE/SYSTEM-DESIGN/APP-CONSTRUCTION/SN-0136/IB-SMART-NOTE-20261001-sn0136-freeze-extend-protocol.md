@@ -9,7 +9,7 @@ source: director's standing frustration + direct question — a month of shell c
   "how do we get past the fifth floor"; Naya 4's diagnosis and proposed protocol
 relocated: 2026-10-01 from 04-INTELLIGENCE demo path to canonical 05-MEMORY home per ratified protocol 0005
 provenance: director question → Naya 4 analysis → intelligent block
-sn-number: SN-0129
+sn-number: SN-0136
 ib-number: IB-006
 
 ---

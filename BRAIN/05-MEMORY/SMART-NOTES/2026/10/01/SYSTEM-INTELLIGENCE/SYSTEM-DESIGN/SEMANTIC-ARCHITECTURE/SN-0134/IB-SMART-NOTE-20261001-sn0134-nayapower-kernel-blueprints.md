@@ -9,7 +9,7 @@ source: 14 architecture blueprint images shared by Shawn Vibert (NotebookLM "Gem
   synthesis of NayaPOWER doctrine), stored in his media library
 relocated: 2026-10-01 from 04-INTELLIGENCE demo path to canonical 05-MEMORY home per ratified protocol 0005
 provenance: human-shared intelligence → distilled by Naya 4 → intelligent block
-sn-number: SN-0127
+sn-number: SN-0134
 ib-number: IB-004
 
 ---
