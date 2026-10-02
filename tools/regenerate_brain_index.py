@@ -126,7 +126,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    "05-MEMORY": 24,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree (21 + 3 SMART-NOTE .md 2026-10-01/02: 2x SN-018 hub-projection + 1x SN-019 app-doctrine, landed main a67fc180)
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
