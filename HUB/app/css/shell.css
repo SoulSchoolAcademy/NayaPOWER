@@ -343,6 +343,22 @@ body.drawer-open{overflow:hidden}
   .mode-zone-label,.mode-hint{display:none}
   .brand-mark small{display:none}
 }
+@media(max-width:560px){
+  .mode-zone{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    overflow:visible;
+    padding:8px 20px;
+  }
+  .mode-btn{
+    width:100%;
+    min-width:0;
+    justify-content:center;
+    padding:0 8px;
+  }
+  .mode-name{font-size:13px;letter-spacing:.04em}
+}
 @media(max-width:480px){
   .topbar{grid-template-columns:52px minmax(0,1fr) 52px;padding:0 8px}
   .corner-btn{width:46px;height:46px}
