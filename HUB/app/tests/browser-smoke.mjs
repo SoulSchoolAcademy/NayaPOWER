@@ -120,10 +120,26 @@ async function installRuntime(page){
 }
 
 async function inspectPage(page,label){
-  const overflow=await page.evaluate(
-    () => document.documentElement.scrollWidth-document.documentElement.clientWidth
+  const overflowReport=await page.evaluate(()=>{
+    const root=document.documentElement;
+    const overflow=root.scrollWidth-root.clientWidth;
+    const offenders=[...document.querySelectorAll('body *')].map(el=>{
+      const r=el.getBoundingClientRect();
+      return {
+        tag:el.tagName,
+        cls:String(el.className||'').slice(0,90),
+        left:Math.round(r.left),
+        right:Math.round(r.right),
+        width:Math.round(r.width)
+      };
+    }).filter(x=>x.right>window.innerWidth+2||x.left<-2)
+      .sort((a,b)=>(b.right-window.innerWidth)-(a.right-window.innerWidth))
+      .slice(0,8);
+    return {overflow,offenders};
+  });
+  if(overflowReport.overflow>2) fail(
+    label+': horizontal overflow '+overflowReport.overflow+'px · offenders '+JSON.stringify(overflowReport.offenders)
   );
-  if(overflow>2) fail(label+': horizontal overflow '+overflow+'px');
 }
 
 async function assertNoTinyText(page,label){
