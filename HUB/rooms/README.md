@@ -9,3 +9,4 @@
   default expects the Smart Feed blueprint alongside — edit `BASE` as needed).
 
 Status: CANDIDATE — not merged, not deployed. Scorecarding in progress on #554.
+See `SCORECARD.md` for the 10/10 scorecard (living document).

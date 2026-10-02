@@ -26,9 +26,9 @@ function reports(){
   return head(S.reports)
     + '<div class="hub-tabs">'+tabs+'</div>'
     + '<div class="ws-grid">'
-    + card('INTELLIGENCE IN RANGE', '<div class="hub-big">'+total+'</div><span class="hub-dim">'+bl.length+' boards · '+notes.length+' notes</span>', '#6675ff')
-    + card('YOUR SIGNALS', '<div class="hub-big">'+(sv+fv+lv)+'</div><span class="hub-dim">'+sv+' saved · '+fv+' favorites · '+lv+' loved</span>', '#d86cff')
-    + card('ACCOUNTABILITY', '<div class="hub-big">'+rc.length+'</div><span class="hub-dim">receipts · hash-chained</span>', '#f1d75a')
+    + card('INTELLIGENCE IN RANGE', '<div class="ws-stat">'+total+'</div><span class="hub-dim">'+bl.length+' boards · '+notes.length+' notes</span>', '#6675ff')
+    + card('YOUR SIGNALS', '<div class="ws-stat">'+(sv+fv+lv)+'</div><span class="hub-dim">'+sv+' saved · '+fv+' favorites · '+lv+' loved</span>', '#d86cff')
+    + card('ACCOUNTABILITY', '<div class="ws-stat">'+rc.length+'</div><span class="hub-dim">receipts · hash-chained</span>', '#f1d75a')
     + '</div>'
     + card('WHAT IT MEANS', '<p>'+meaning+'</p>', '#55b9ee')
     + '<h3 class="hub-h">LATEST RECEIPTS IN RANGE</h3><div class="ws-list">'+rows+'</div>'

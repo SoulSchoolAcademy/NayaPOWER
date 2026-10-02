@@ -7,7 +7,7 @@ function connections(){
     return '<article class="ws-card" style="--accent:'+color+'"><h3>'+name+'</h3>'
       + '<p><b>'+role+'</b> · <span class="hub-chip'+(active?' on':'')+'">'+st+'</span></p>'
       + '<p class="hub-dim">Scope — '+scope+'</p>'
-      + '<div class="hub-actions">'+act+'</div></article>';
+      + '<div class="ws-actions">'+act+'</div></article>';
   }
   var pend = reqs.filter(function(r){ return r.door === 'collective' || r.door === 'human'; });
   var pendHtml = pend.length

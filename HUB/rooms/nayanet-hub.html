@@ -829,14 +829,20 @@ nav.ecosystem{display:none !important;}
 .hub-tab.on{background:linear-gradient(135deg,#d86cff33,#6675ff33);border-color:#d86cff;color:#fff;box-shadow:0 0 18px #d86cff33}
 .hub-note{font-size:12px;line-height:1.7;color:#8f8a9c;margin:14px 2px 4px}
 .hub-h{font-size:13px;letter-spacing:.18em;font-weight:800;color:#b9b3c9;margin:22px 2px 10px}
-.hub-big{font-size:34px;font-weight:800;color:#fff;line-height:1.1;margin:6px 0}
 .hub-actions{display:flex;gap:10px;margin:12px 0;flex-wrap:wrap}
-.hub-actions button,.hub-form button,.ws-row button{font-size:11px;letter-spacing:.08em;font-weight:800;padding:11px 18px;border-radius:12px;border:1px solid #8b63ff66;background:linear-gradient(145deg,#17161f,#0a0a0e);color:#fff;cursor:pointer;transition:.18s;min-height:44px}
-.hub-actions button:hover,.hub-form button:hover,.ws-row button:hover{border-color:#d86cff;box-shadow:0 0 20px #d86cff44;transform:translateY(-1px)}
+.hub-actions button,.hub-form button{font-size:11px;letter-spacing:.08em;font-weight:800;padding:11px 18px;border-radius:12px;border:1px solid #8b63ff66;background:linear-gradient(145deg,#17161f,#0a0a0e);color:#fff;cursor:pointer;transition:.18s;min-height:44px}
+.hub-actions button:hover,.hub-form button:hover{border-color:#d86cff;box-shadow:0 0 20px #d86cff44,inset 0 1px #fff3;transform:translateY(-1px)}
+/* Room rows: icon | title+meta | action — her ws-row, given structure */
+.ws-list .ws-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:center}
+.ws-list .ws-row b{font-size:14px;color:#f2eef7;font-weight:700}
+.ws-list .ws-row span{font-size:12px;color:#96909d}
+.ws-list .ws-row .dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 10px currentColor}
+.ws-list .ws-row .hub-detail{grid-column:1/-1;font-size:12px;line-height:1.7;color:#a49dae;margin-top:6px}
+.ws-row button{font-size:10px;letter-spacing:.08em;font-weight:800;padding:9px 14px;border-radius:10px;border:1px solid #8b63ff55;background:#14131b;color:#e8e2ec;cursor:pointer;transition:.18s;min-height:40px;white-space:nowrap}
+.ws-row button:hover{border-color:#d86cff;box-shadow:0 0 16px #d86cff44;transform:translateY(-1px)}
 .hub-chip{display:inline-block;font-size:10px;letter-spacing:.14em;font-weight:800;padding:5px 12px;border-radius:999px;border:1px solid #8b63ff55;color:#b9b3c9;background:#101018}
 .hub-chip.on{border-color:#55e39a;color:#bff5d9;box-shadow:0 0 14px #55e39a33}
 .hub-dim{opacity:.62;font-size:12px;line-height:1.6}
-.hub-detail{font-size:12px;line-height:1.7;color:#a49dae;margin-top:8px;grid-column:1/-1}
 .hub-form{display:flex;gap:10px;margin:12px 0;flex-wrap:wrap;align-items:center}
 .hub-form input,.hub-form textarea,.hub-form select,.hub-search input{font-size:14px;color:#fff;background:#0c0c12;border:1px solid #8b63ff44;border-radius:12px;padding:12px 16px;min-height:44px}
 .hub-form input:focus,.hub-form textarea:focus,.hub-form select:focus,.hub-search input:focus{outline:none;border-color:#d86cff;box-shadow:0 0 18px #d86cff33}
@@ -847,14 +853,13 @@ nav.ecosystem{display:none !important;}
 .hub-check input{width:20px;height:20px;accent-color:#d86cff}
 .hub-danger{border-color:#ff4f5e88!important;color:#ffb3ba!important}
 .hub-mail-empty{text-align:center;padding:44px 20px!important}
-.hub-mail-empty .hub-big{font-size:44px;letter-spacing:.06em}
-.ws-row{position:relative}
-.ws-row .dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 10px currentColor}
+.hub-mail-empty .ws-stat{font-size:44px;letter-spacing:.06em}
 .ws-row code{font-size:11px;color:#9d75ff;background:#ffffff10;padding:2px 8px;border-radius:6px}
 #hubVerify{margin:10px 0;font-size:13px;font-weight:700}
 #hubVerify.ok{color:#55e39a}
 #hubVerify.bad{color:#ff4f5e}
 #hubNoteStatus{margin-top:8px;font-size:13px;min-height:20px}
+html.hub-rm *,html.hub-rm *::before,html.hub-rm *::after{transition:none!important;animation:none!important}
 
 </style>
 </head>
@@ -1109,9 +1114,9 @@ function reports(){
   return head(S.reports)
     + '<div class="hub-tabs">'+tabs+'</div>'
     + '<div class="ws-grid">'
-    + card('INTELLIGENCE IN RANGE', '<div class="hub-big">'+total+'</div><span class="hub-dim">'+bl.length+' boards · '+notes.length+' notes</span>', '#6675ff')
-    + card('YOUR SIGNALS', '<div class="hub-big">'+(sv+fv+lv)+'</div><span class="hub-dim">'+sv+' saved · '+fv+' favorites · '+lv+' loved</span>', '#d86cff')
-    + card('ACCOUNTABILITY', '<div class="hub-big">'+rc.length+'</div><span class="hub-dim">receipts · hash-chained</span>', '#f1d75a')
+    + card('INTELLIGENCE IN RANGE', '<div class="ws-stat">'+total+'</div><span class="hub-dim">'+bl.length+' boards · '+notes.length+' notes</span>', '#6675ff')
+    + card('YOUR SIGNALS', '<div class="ws-stat">'+(sv+fv+lv)+'</div><span class="hub-dim">'+sv+' saved · '+fv+' favorites · '+lv+' loved</span>', '#d86cff')
+    + card('ACCOUNTABILITY', '<div class="ws-stat">'+rc.length+'</div><span class="hub-dim">receipts · hash-chained</span>', '#f1d75a')
     + '</div>'
     + card('WHAT IT MEANS', '<p>'+meaning+'</p>', '#55b9ee')
     + '<h3 class="hub-h">LATEST RECEIPTS IN RANGE</h3><div class="ws-list">'+rows+'</div>'
@@ -1179,7 +1184,7 @@ function connections(){
     return '<article class="ws-card" style="--accent:'+color+'"><h3>'+name+'</h3>'
       + '<p><b>'+role+'</b> · <span class="hub-chip'+(active?' on':'')+'">'+st+'</span></p>'
       + '<p class="hub-dim">Scope — '+scope+'</p>'
-      + '<div class="hub-actions">'+act+'</div></article>';
+      + '<div class="ws-actions">'+act+'</div></article>';
   }
   var pend = reqs.filter(function(r){ return r.door === 'collective' || r.door === 'human'; });
   var pendHtml = pend.length
@@ -1206,10 +1211,10 @@ function mail(){
     ? 'The runtime mail service is reachable, but your mailbox is empty.'
     : 'The runtime is not exposed in this build, so there is no mailbox to check.';
   return head(S.mail)
-    + '<div class="ws-empty hub-mail-empty"><div class="hub-big">NO MAIL</div>'
+    + '<div class="ws-empty hub-mail-empty"><div class="ws-stat">NO MAIL</div>'
     + '<p>'+state_line+'</p>'
     + '<p class="hub-dim">A real room. No fake mailbox, ever.</p></div>'
-    + '<div class="hub-actions"><button data-hub-action="mail-check">CHECK AGAIN</button></div>'
+    + '<div class="ws-actions"><button data-hub-action="mail-check">CHECK AGAIN</button></div>'
     + card('NOTIFICATIONS',
         '<label class="hub-check"><input type="checkbox" data-hub-check="mail-notify"'+(prefs.notify?' checked':'')+'> Notify me when mail connects</label>'
         + '<p class="hub-dim">Stored locally. When the runtime exposes mail, this room fills — honestly.</p>',
@@ -1224,8 +1229,16 @@ function settings(){
   var nSaved = Object.keys(state.saved || {}).length;
   var nNotes = 0;
   try{ nNotes = NOTES().length; }catch(e){}
+  var rm = NayaHub.d.prefs.reduceMotion ? ' checked' : '';
   return head(S.settings)
     + '<div class="ws-grid">'
+    + card('IDENTITY',
+        '<p><b>Shawn</b> · Director</p>'
+        + '<p class="hub-dim">The human authority. Merges, deploys, ratification — your word only.</p>'
+        + '<p class="hub-dim">Naya · Trusted thinking partner — interprets, never acts alone.</p>', '#d86cff')
+    + card('PREFERENCES',
+        '<label class="hub-check"><input type="checkbox" data-hub-check="reduce-motion"'+rm+'> Reduce motion</label>'
+        + '<p class="hub-dim">Stills the glows and transitions. The Hub stays fully usable.</p>', '#55b9ee')
     + card('RUNTIME',
         '<p><b>'+(r ? 'EXPOSED' : 'NOT EXPOSED')+'</b></p>'
         + '<p class="hub-dim">'+(snap && snap.authenticated ? 'Authenticated' : 'Not authenticated')
@@ -1235,7 +1248,7 @@ function settings(){
     + card('HUB DATA',
         '<p><b>'+nRcpt+'</b> receipts · <b>'+nSaved+'</b> saved · <b>'+nNotes+'</b> notes</p>'
         + '<p class="hub-dim">Everything above lives in this browser — yours, not ours.</p>'
-        + '<div class="hub-actions"><button data-hub-action="hub-export">EXPORT MY DATA</button>'
+        + '<div class="ws-actions"><button data-hub-action="hub-export">EXPORT MY DATA</button>'
         + '<button data-hub-action="hub-clear" class="hub-danger">ERASE LOCAL DATA</button></div>', '#f1d75a')
     + card('TRUST',
         '<p>Source and interpretation are marked separately, everywhere in this Hub.</p>'
@@ -1302,7 +1315,7 @@ function share(){
     return '<article class="ws-card" style="--accent:'+dr.color+'"><h3>'+dr.name+'</h3>'
       + '<p><b>'+dr.who+'</b> · <span class="hub-chip">'+dr.status+'</span></p>'
       + '<p class="hub-dim">'+dr.desc+'</p>'
-      + '<div class="hub-actions">'+act+'</div></article>';
+      + '<div class="ws-actions">'+act+'</div></article>';
   }).join('');
   return head(S.share)
     + '<div class="ws-grid">'+cards+'</div>'
@@ -1318,7 +1331,7 @@ async function ledger(){
       + '<br><span class="hub-dim">'+NayaHub.esc(r.actor)+' · prev <code>'+String(r.prev).slice(0,12)+'</code></span></div></div>';
   }).join('') || '<div class="ws-empty">No receipts yet. Save, favorite, capture, or request — the ledger records it.</div>';
   return head(S.ledger)
-    + '<div class="hub-actions"><button data-hub-action="ledger-verify">VERIFY CHAIN</button>'
+    + '<div class="ws-actions"><button data-hub-action="ledger-verify">VERIFY CHAIN</button>'
     + '<button data-hub-action="hub-export">EXPORT LEDGER</button></div>'
     + '<div id="hubVerify" role="status"></div>'
     + '<div class="ws-list">'+rows+'</div>'
@@ -1873,7 +1886,15 @@ window.HubActions = {
     var t = e.target && e.target.getAttribute ? e.target.getAttribute('data-hub-check') : null;
     if (!t) return;
     if (t === 'mail-notify'){ NayaHub.d.mail.notify = !!e.target.checked; NayaHub.w(); }
+    if (t === 'reduce-motion'){
+      NayaHub.d.prefs.reduceMotion = !!e.target.checked; NayaHub.w();
+      applyMotionPref();
+    }
   });
+  function applyMotionPref(){
+    try{ document.documentElement.classList.toggle('hub-rm', !!NayaHub.d.prefs.reduceMotion); }catch(e){}
+  }
+  applyMotionPref();
 
   /* Wrap the feed action() so marks become ledger receipts. */
   try{

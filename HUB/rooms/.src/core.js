@@ -236,7 +236,15 @@ window.HubActions = {
     var t = e.target && e.target.getAttribute ? e.target.getAttribute('data-hub-check') : null;
     if (!t) return;
     if (t === 'mail-notify'){ NayaHub.d.mail.notify = !!e.target.checked; NayaHub.w(); }
+    if (t === 'reduce-motion'){
+      NayaHub.d.prefs.reduceMotion = !!e.target.checked; NayaHub.w();
+      applyMotionPref();
+    }
   });
+  function applyMotionPref(){
+    try{ document.documentElement.classList.toggle('hub-rm', !!NayaHub.d.prefs.reduceMotion); }catch(e){}
+  }
+  applyMotionPref();
 
   /* Wrap the feed action() so marks become ledger receipts. */
   try{

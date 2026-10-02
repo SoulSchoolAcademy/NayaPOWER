@@ -20,7 +20,7 @@ function share(){
     return '<article class="ws-card" style="--accent:'+dr.color+'"><h3>'+dr.name+'</h3>'
       + '<p><b>'+dr.who+'</b> · <span class="hub-chip">'+dr.status+'</span></p>'
       + '<p class="hub-dim">'+dr.desc+'</p>'
-      + '<div class="hub-actions">'+act+'</div></article>';
+      + '<div class="ws-actions">'+act+'</div></article>';
   }).join('');
   return head(S.share)
     + '<div class="ws-grid">'+cards+'</div>'
