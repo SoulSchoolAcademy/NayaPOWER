@@ -6,13 +6,13 @@ Branch: `naya4/room-02-reports-v2` @ `d84c8fb`. Source: canonical
 Verified: jsdom — 9 boards, 2 live / 7 design, 9 buttons, honest notices,
 0 errors. Palette keyed by door id (stable identity, never list index).
 
-## Score: 9.4/10
+## Score: 9.5/10
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
 | 1 | Canonical grounding | 10 | All 9 doors, exact IDs, statuses, capabilities. Nothing invented. |
 | 2 | Honesty | 10 | LIVE vs IN DESIGN shown truthfully; no fake connect buttons — the notice tells the truth. |
-| 3 | Color language | 10 | Each door owns its stable color AND its own jewel glyph beside the name (director palette 2026-10-02: GitHub purple, MCP indigo, A2A sapphire, Data cyan, Email lime, Calendar yellow, Voice gold, Web orange, Naya red). Live lit; design rests white, ignites on hover. |
+| 3 | Color language | 10 | Each door owns its stable color AND its own jewel glyph, always lit (director palette 2026-10-02: GitHub purple, MCP indigo, A2A sapphire, Data cyan, Email lime, Calendar yellow, Voice gold, Web orange, Naya red). Full-perimeter 2px door-colored edge; live doors glow, design doors ignite on hover. Director-approved 2026-10-02. |
 | 4 | Simplicity | 9 | Door → plain words → unlocks → authority → one button. Nothing else. |
 | 5 | Button law | 10 | Silver-white at rest, the door's own color on highlight. |
 | 6 | Completeness | 8 | The room presents doors; real connection flows (OAuth) belong to the Hub shell via `ctx.onConnect`. |
@@ -25,7 +25,7 @@ Verified: jsdom — 9 boards, 2 live / 7 design, 9 buttons, honest notices,
 ## Why not 10
 
 - **−0.5 — the wires aren't real yet.** The room calls `ctx.onConnect(doorId)`; until the shell implements the GitHub App / provider OAuth flows, CONNECT opens the honest notice instead of a real flow. Room-side this is complete; system-side it's pending.
-- **−0.3 — visual confirmation pending.** Structure verified; the per-door ignition needs Shawn's eyes (screenshot pipeline still down).
+- Visual approval received from the director (2026-10-02: "100% better").
 
 ## What closes it
 
