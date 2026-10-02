@@ -3,7 +3,7 @@ import test from "node:test";
 import { selectKnowContext } from "../supabase/functions/nayanet-know-runtime/know.ts";
 
 // Graph V2 selector gates in the KNOW retrieval path (contract 0003 —
-// CANDIDATE_CONTRACT, pending D1 ratification). The selector must exclude
+// RATIFIED_CONTRACT. The selector must exclude
 // superseded, expired, not-yet-valid, revoked, consentless cross-owner, and
 // not-applicable edges — while admitting applicable edges and preserving
 // legacy two-field projections byte-for-byte.
