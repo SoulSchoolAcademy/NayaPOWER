@@ -126,7 +126,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 21,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
+    "05-MEMORY": 24,  # deliberate 2026-10-02: +2 SN-018 hub-projection notes landed 43e74d30 (10/01 + 10/02 paths), +1 SN-019 complete-the-app-doctrine landed a67fc180; excludes INTELLIGENCE-REPORTS append-only subtree
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
