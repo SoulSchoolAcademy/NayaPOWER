@@ -2,7 +2,7 @@
 """Build nayanet-hub.html: Naya 2's shell + Naya 4's furnished rooms. One app."""
 import re, os, sys, subprocess, tempfile
 
-BASE = os.path.expanduser('~/workspace/user/files/smart-feed.html')
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'base', 'smart-feed.html')
 BUILD = os.path.expanduser('~/workspace/hub-build')
 OUT = os.path.expanduser('~/workspace/your_files/nayanet-hub.html')
 
