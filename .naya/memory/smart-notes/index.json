@@ -352,12 +352,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "d6ebae20-1e2f-4100-a36d-6a3b281defdc"
       }
+    },
+    {
+      "smart_note_id": "SN-018",
+      "intelligent_block_id": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection",
+      "content_hash": "c86410e196bdbd7f222e5e42326c816842eb96ba27204cc526256828e9c3b561",
+      "title": "The Hub Is the Visual Projection of Intelligence",
+      "captured_at": "2026-10-01 18:16:00 PDT",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "HUB_INTELLIGENCE_ARCHITECTURE",
+      "subtopic": "INPUT_OUTPUT_PROJECTION_MODEL",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "5dee2e86-3039-4afd-bb64-111e5c445fed",
+        "lineage_id": "e2050192-b11a-4b80-a3ed-a13300ea9a2b",
+        "relationship_id": "fcd3d3cd-8c4f-4b0b-803d-10fd40f22b60",
+        "runtime_index_id": "a3559f3d-c5d2-4601-85c7-5206704bf296",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "4b313018-abac-41a8-ae74-1d842b655ef1"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 18,
+    "next_sequence": 19,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
