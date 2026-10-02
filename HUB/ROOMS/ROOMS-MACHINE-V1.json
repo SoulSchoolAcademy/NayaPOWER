@@ -1,12 +1,13 @@
 {
   "schema": "nayanet.hub.rooms.v1",
-  "version": "1.1",
+  "version": "1.2",
   "status": "PROPOSED_CANONICAL_FUNCTIONAL_SPEC",
   "authority": "Shawn Vibert, Human Director",
   "parent_contracts": [
     "HUB/PROJECT-INTELLIGENCE.md",
     "HUB/DESIGN-CONTRACT.md",
-    "HUB/PROJECT-INTELLIGENCE.FEATURES.json"
+    "HUB/PROJECT-INTELLIGENCE.FEATURES.json",
+    "HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md"
   ],
   "coordination_issue": 554,
   "implementation_issue": 1270,
@@ -36,11 +37,6 @@
       "role": "contextual_interpretation"
     },
     {
-      "id": "smart_note_capture",
-      "name": "Smart Note Capture",
-      "role": "universal_capture_not_required_primary_room"
-    },
-    {
       "id": "save_favorite",
       "name": "Save / Favorite",
       "role": "organization_reference"
@@ -67,12 +63,6 @@
     }
   ],
   "secondary_surfaces": [
-    {
-      "id": "smart_notes_focus",
-      "name": "Smart Notes focused capture",
-      "placement": "universal capability / optional focused surface",
-      "primary_rail": false
-    },
     {
       "id": "system_health",
       "name": "System Health",
@@ -130,7 +120,6 @@
       "primary_actions": [
         "OPEN",
         "ASK_NAYA",
-        "CAPTURE_SMART_NOTE",
         "SAVE_FAVORITE",
         "ADD_TO_LIST",
         "OPEN_EVIDENCE",
@@ -153,7 +142,18 @@
         "cross_room_reference_preserves_id",
         "scroll_context_restores"
       ],
-      "package": "HUB/ROOMS/01-smart-feed"
+      "package": "HUB/ROOMS/01-smart-feed",
+      "smart_tabs": [
+        "ALL",
+        "SMART_NOTES",
+        "REPORTS",
+        "HIGHLIGHTS",
+        "LEARNING",
+        "DECISIONS",
+        "DISCOVERIES",
+        "PROJECTS"
+      ],
+      "input_rule": "RECEIVE_PROJECTED_CANONICAL_INTELLIGENCE_ONLY"
     },
     {
       "id": "today",
@@ -179,7 +179,6 @@
         "OPEN_IN_FEED",
         "OPEN_EVIDENCE",
         "SAVE_ADD_TO_LIST",
-        "CAPTURE_FOLLOWUP",
         "VIEW_DAY_LEDGER"
       ],
       "data_owner": "canonical intelligence + verified events + current context",
@@ -199,7 +198,8 @@
         "open_loops_visible",
         "quiet_day_not_fabricated"
       ],
-      "package": "HUB/ROOMS/02-your-intelligence-today"
+      "package": "HUB/ROOMS/02-your-intelligence-today",
+      "input_rule": "SYNTHESIZE_PROJECTED_CANONICAL_INTELLIGENCE_ONLY"
     },
     {
       "id": "reports",
@@ -227,8 +227,7 @@
         "INSPECT_EVIDENCE",
         "SAVE_ADD_TO_LIST",
         "SHARE_IF_AUTHORIZED",
-        "EXPORT_IF_SUPPORTED",
-        "GENERATE_REFRESH_IF_RUNTIME"
+        "EXPORT_IF_SUPPORTED"
       ],
       "data_owner": "derived canonical intelligence/report pipeline",
       "handoffs": [
@@ -246,7 +245,8 @@
         "compare_preserves_criteria",
         "evidence_links_to_canonical_objects"
       ],
-      "package": "HUB/ROOMS/03-your-reports"
+      "package": "HUB/ROOMS/03-your-reports",
+      "input_rule": "PROJECT_UPSTREAM_CANONICAL_REPORTS_ONLY"
     },
     {
       "id": "library",
@@ -484,7 +484,6 @@
         "ARCHIVE",
         "PRIORITIZE",
         "ASK_NAYA",
-        "CAPTURE_SMART_NOTE",
         "ADD_TO_LIST",
         "LINK_TO_SPACE",
         "OPEN_SENDER",
@@ -628,5 +627,20 @@
     "ACTION_DECK",
     "EVIDENCE_LAYER",
     "NAYA_LAYER"
-  ]
+  ],
+  "projection_boundary": {
+    "hub_role": "OUTPUT_PROJECTION",
+    "upstream_types": [
+      "SMART_NOTE_INTELLIGENT_BLOCK",
+      "ACTIVITY",
+      "INTELLIGENCE_REPORT"
+    ],
+    "forbidden_hub_owned_intelligence_actions": [
+      "CAPTURE_SMART_NOTE",
+      "CAPTURE_FOLLOWUP",
+      "GENERATE_CANONICAL_REPORT",
+      "POST_ACTIVITY"
+    ],
+    "object_identity_rule": "ONE_CANONICAL_OBJECT_MANY_PROJECTIONS"
+  }
 }
