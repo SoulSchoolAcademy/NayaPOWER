@@ -134,6 +134,80 @@
   border-top: 1px solid var(--line-soft);
 }
 
+/* ——— Popup menus: anchored to the "+" corners ———
+   The director's enhancement: a plus button, a menu pops up, you click
+   through. Never a pill nav across the top; on mobile the rooms live here. */
+.popup-menu {
+  position: fixed;
+  top: 66px;
+  z-index: 80;
+  width: 302px; max-width: calc(100vw - 28px);
+  max-height: min(72vh, 620px);
+  display: flex; flex-direction: column;
+  padding: 14px 10px 10px;
+  background: linear-gradient(180deg, #100e16f7, #08080cf7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--depth-deep), 0 0 44px #9d75ff14;
+  overflow-y: auto; overscroll-behavior: contain;
+  opacity: 0;
+  transform: translateY(-8px) scale(.98);
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.popup-right { right: 14px; transform-origin: top right; }
+.popup-left { left: 14px; transform-origin: top left; }
+.popup-menu.open { opacity: 1; transform: none; pointer-events: auto; }
+
+.popup-head { padding: 2px 10px 10px; }
+.popup-head b { display: block; font-size: 12px; font-weight: 800; letter-spacing: .22em; }
+.popup-head small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .2em; margin-top: 3px; }
+
+.popup-list { display: flex; flex-direction: column; gap: 2px; }
+
+.popup-item {
+  min-height: 48px;
+  width: 100%;
+  display: flex; align-items: center; gap: 11px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--ink-dim);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+              transform var(--dur-fast) var(--ease);
+}
+.popup-item:hover { background: #ffffff09; border-color: var(--line-soft); transform: translateX(2px); }
+.popup-right .popup-item:hover { transform: translateX(-2px); }
+.popup-item:focus-visible {
+  outline: none;
+  border-color: #9d75ff88;
+  box-shadow: 0 0 0 2px #9d75ff44;
+}
+.popup-item.active {
+  background: linear-gradient(145deg, #1c1526, #0d0c12);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.popup-ico { flex: none; display: grid; place-items: center; }
+.popup-label { flex: 1; min-width: 0; }
+.popup-name { display: block; font-size: 13px; font-weight: 800; letter-spacing: .05em; }
+.popup-kicker {
+  display: block; font-size: 11px; letter-spacing: .1em;
+  color: var(--muted); margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.popup-item.pending { cursor: default; }
+.popup-item.pending .popup-kicker { color: var(--yellow); opacity: .75; }
+.popup-go { flex: none; color: var(--muted); opacity: 0; transition: opacity var(--dur-fast) var(--ease); }
+.popup-go svg { width: 15px; height: 15px; }
+.popup-item:hover .popup-go, .popup-item:focus-visible .popup-go { opacity: .9; }
+.popup-item.pending .popup-go { opacity: .35; }
+
 /* ——— Backdrop: the drawer overlays content; exactly one nav surface ——— */
 .backdrop {
   position: fixed; inset: 0; z-index: 75;
@@ -231,5 +305,5 @@ body.drawer-open { overflow: hidden; }
   .feed-mount { padding: 4px 14px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .drawer, .backdrop, .corner, .drawer-btn, .mode-btn { transition: none; }
+  .drawer, .popup-menu, .backdrop, .corner, .drawer-btn, .popup-item, .mode-btn { transition: none; }
 }

@@ -1,13 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════════
-   HUB SHELL v2 — the quiet stage.
+   HUB SHELL v2.1 — the quiet stage, enhanced.
    Director's law (2026-10-02): no persistent rail. First paint shows only
-   two quiet corner controls. Top-left opens the room drawer (ten rooms —
-   Smart Feed is NOT a drawer entry; it IS the Main Show). Top-right opens
-   the ecosystem drawer. The Main Show is a full-bleed intelligence feed
-   with ONE sticky mode zone (Collective / Personal / Activity) — modes
-   live here and nowhere else, never inside rooms.
-   Drawer law: exactly one nav surface at a time · backdrop · Escape ·
+   two quiet "+" corner controls. Top-left opens rooms (drawer on desktop,
+   popup menu on mobile). Top-right opens the ecosystem popup menu — never
+   a pill nav across the top. The Main Show is a full-bleed intelligence
+   feed with ONE sticky mode zone (Collective / Personal / Activity) —
+   modes live here and nowhere else, never inside rooms.
+   Nav law: exactly one nav surface at a time · backdrop · Escape ·
    scroll lock · focus trap · focus restoration.
+   Director's enhancement (2026-10-02): enhance, don't redesign. Plus
+   buttons open popup menus; the feed IS the presentation — scroll, clean,
+   premium, nothing overlapping.
    ═══════════════════════════════════════════════════════════════════ */
 
 function HubView(params) {
@@ -17,29 +20,125 @@ function HubView(params) {
   const roomId = params.room || 'feed';
   const isMainShow = roomId === 'feed';
   const room = R.ROOMS.find(r => r.id === roomId) || R.ROOMS[0];
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
   const stage = el('div', 'stage');
   let lastFocus = null;
 
-  /* ——— The two quiet corner controls ——— */
-  function cornerBtn(side, glyph, label, drawerId) {
+  /* ——— The two quiet "+" corner controls ——— */
+  function cornerBtn(side, label, controls, toggle) {
     const b = el('button', 'corner corner-' + side);
-    b.innerHTML = Jewels ? Jewels.chip(glyph, 26, '#9d75ff') : Icons.icon('menu');
+    b.innerHTML = Jewels ? Jewels.chip('add', 26, '#9d75ff') : Icons.icon('add');
     b.setAttribute('aria-label', label);
     b.setAttribute('aria-expanded', 'false');
-    b.setAttribute('aria-controls', drawerId);
-    b.addEventListener('click', () => {
-      const d = document.getElementById(drawerId);
-      (d && d.classList.contains('open')) ? closeDrawers() : openDrawer(drawerId, b);
-    });
+    b.setAttribute('aria-controls', controls);
+    b.addEventListener('click', () => toggle(b));
     return b;
   }
-  const tlCorner = cornerBtn('tl', 'lines', 'Open rooms', 'roomsDrawer');
-  const trCorner = cornerBtn('tr', 'grid', 'Open ecosystem navigation', 'ecoDrawer');
+  const tlCorner = cornerBtn('tl', 'Rooms', 'roomsDrawer roomsMenu', () => {
+    if (navOpen()) return closeNav();
+    openNav(isMobile() ? 'roomsMenu' : 'roomsDrawer');
+  });
+  const trCorner = cornerBtn('tr', 'Ecosystem menu', 'ecoMenu', () => {
+    if (navOpen()) return closeNav();
+    openNav('ecoMenu');
+  });
 
-  /* ——— Room drawer (left): the ten rooms, never Smart Feed ——— */
+  /* ——— Nav surfaces: drawers and popup menus share one law ——— */
+  function navOpen() { return !!stage.querySelector('.nav-surface.open'); }
+  function openNav(id, opener) {
+    closeNav(true);
+    lastFocus = opener || document.activeElement;
+    const s = document.getElementById(id);
+    if (!s) return;
+    s.classList.add('open');
+    backdrop.classList.add('show');
+    document.body.classList.add('drawer-open');
+    const corner = stage.querySelector('[aria-controls~="' + id + '"]');
+    if (corner) corner.setAttribute('aria-expanded', 'true');
+    const first = s.querySelector('button');
+    if (first) first.focus();
+  }
+  function closeNav(silent) {
+    let wasOpen = false;
+    stage.querySelectorAll('.nav-surface.open').forEach(s => { s.classList.remove('open'); wasOpen = true; });
+    if (!wasOpen && !silent) return;
+    backdrop.classList.remove('show');
+    document.body.classList.remove('drawer-open');
+    stage.querySelectorAll('.corner[aria-expanded="true"]').forEach(c => c.setAttribute('aria-expanded', 'false'));
+    if (!silent && lastFocus && document.contains(lastFocus)) lastFocus.focus();
+    lastFocus = null;
+  }
+
+  /* ——— Popup menu: anchored to its "+" corner, premium, compact ——— */
+  function buildPopupMenu(id, side, title, sub) {
+    const m = el('div', 'popup-menu nav-surface popup-' + side);
+    m.id = id;
+    m.setAttribute('role', 'menu');
+    m.setAttribute('aria-label', title);
+    m.innerHTML =
+      '<div class="popup-head"><b>' + title + '</b><small>' + sub + '</small></div>' +
+      '<div class="popup-list" role="none"></div>';
+    return m;
+  }
+  function popupItem(menu, opts) {
+    const b = el('button', 'popup-item' + (opts.pending ? ' pending' : '') + (opts.active ? ' active' : ''));
+    b.setAttribute('role', 'menuitem');
+    b.innerHTML =
+      '<span class="popup-ico">' + (opts.iconHTML || (Jewels ? Jewels.chip(opts.icon, 24, '#9d75ff') : Icons.icon(opts.icon))) + '</span>' +
+      '<span class="popup-label"><span class="popup-name">' + opts.name + '</span>' +
+      '<span class="popup-kicker">' + (opts.pending ? 'LINK PENDING' : opts.kicker) + '</span></span>' +
+      '<span class="popup-go">' + Icons.icon(opts.pending ? 'clock' : 'arrow') + '</span>';
+    b.setAttribute('aria-label', opts.ariaLabel || opts.name);
+    if (opts.pending) b.setAttribute('aria-disabled', 'true');
+    if (opts.active) b.setAttribute('aria-current', 'page');
+    b.addEventListener('click', () => opts.onSelect(b));
+    menu.querySelector('.popup-list').appendChild(b);
+    return b;
+  }
+
+  /* ——— Ecosystem popup menu (top-right "+"): the director's eight ——— */
+  function buildEcoMenu() {
+    const m = buildPopupMenu('ecoMenu', 'right', 'ECOSYSTEM', 'ONE BRAIN · MANY DOORS');
+    R.ECOSYSTEM_LINKS.forEach(link => {
+      const live = link.kind === 'internal' || !!link.url;
+      popupItem(m, {
+        icon: link.icon, name: link.name, kicker: link.desc, pending: !live,
+        ariaLabel: link.name + (!live ? ' — canonical link pending' : (link.kind === 'internal' ? '' : ', opens in a new tab')),
+        onSelect: () => {
+          closeNav();
+          if (!live) {
+            // Honest state, never a dead button pretending: the door exists,
+            // its canonical address is being linked. One tap says so, plainly.
+            toast(link.name + ' opens here — the canonical address is being linked. Nothing was faked.', '#9d75ff');
+            return;
+          }
+          if (link.kind === 'internal') window.NayaRouter.navigate(link.route);
+          else window.open(link.url, '_blank', 'noopener');
+        }
+      });
+    });
+    return m;
+  }
+
+  /* ——— Rooms popup menu (mobile, top-left "+"): the ten rooms ——— */
+  function buildRoomsMenu() {
+    const m = buildPopupMenu('roomsMenu', 'left', 'ROOMS', 'TEN DESTINATIONS');
+    R.drawerRooms().forEach(r => {
+      const active = r.id === room.id && !isMainShow;
+      popupItem(m, {
+        iconHTML: Jewels ? Jewels.mark(r.id, 30) : Icons.icon(r.icon),
+        name: r.name, kicker: r.kicker, active,
+        ariaLabel: r.name + ' room',
+        onSelect: () => { closeNav(); window.NayaRouter.navigate('/hub/' + r.id); }
+      });
+    });
+    return m;
+  }
+
+  /* ——— Room drawer (desktop, left): the ten rooms, never Smart Feed ——— */
   function buildRoomsDrawer() {
-    const d = el('nav', 'drawer drawer-left');
+    const d = el('nav', 'drawer drawer-left nav-surface');
     d.id = 'roomsDrawer';
     d.setAttribute('aria-label', 'Hub rooms');
     d.innerHTML = `
@@ -61,7 +160,7 @@ function HubView(params) {
       if (r.id === room.id && !isMainShow) b.setAttribute('aria-current', 'page');
       b.setAttribute('aria-label', r.name + ' room');
       b.addEventListener('click', () => {
-        closeDrawers();
+        closeNav();
         window.NayaRouter.navigate('/hub/' + r.id);
       });
       list.appendChild(b);
@@ -69,85 +168,20 @@ function HubView(params) {
     return d;
   }
 
-  /* ——— Ecosystem drawer (right): the director's eight ——— */
-  function buildEcoDrawer() {
-    const d = el('nav', 'drawer drawer-right');
-    d.id = 'ecoDrawer';
-    d.setAttribute('aria-label', 'Ecosystem navigation');
-    d.innerHTML = `
-      <div class="drawer-head">
-        <span class="drawer-titles"><b>ECOSYSTEM</b><small>ONE BRAIN · MANY DOORS</small></span>
-      </div>
-      <div class="drawer-list" role="list"></div>
-      <div class="drawer-foot">EVERY DOOR OPENS ONTO THE SAME INTELLIGENCE.</div>`;
-    const list = d.querySelector('.drawer-list');
-    R.ECOSYSTEM_LINKS.forEach(link => {
-      const live = link.kind === 'internal' || !!link.url;
-      const b = el('button', 'drawer-btn' + (live ? '' : ' pending'));
-      b.setAttribute('role', 'listitem');
-      b.innerHTML = `
-        <span class="drawer-ico">${Jewels ? Jewels.chip(link.icon, 26, '#9d75ff') : Icons.icon(link.icon)}</span>
-        <span class="drawer-label"><span class="drawer-name">${link.name}</span>
-        <span class="drawer-kicker">${live ? link.desc : 'LINK PENDING'}</span></span>
-        <span class="drawer-go">${Icons.icon(live ? 'arrow' : 'clock')}</span>`;
-      if (live) {
-        b.setAttribute('aria-label', link.name + (link.kind === 'internal' ? '' : ', opens in a new tab'));
-        b.addEventListener('click', () => {
-          closeDrawers();
-          if (link.kind === 'internal') window.NayaRouter.navigate(link.route);
-          else window.open(link.url, '_blank', 'noopener');
-        });
-      } else {
-        // Honest state, never a dead button pretending: the door exists,
-        // its canonical address is being linked. One tap says so, plainly.
-        b.setAttribute('aria-disabled', 'true');
-        b.setAttribute('aria-label', link.name + ' — canonical link pending');
-        b.addEventListener('click', () => {
-          toast(`${link.name} opens here — the canonical address is being linked. Nothing was faked.`, '#9d75ff');
-        });
-      }
-      list.appendChild(b);
-    });
-    return d;
-  }
-
   const roomsDrawer = buildRoomsDrawer();
-  const ecoDrawer = buildEcoDrawer();
+  const roomsMenu = buildRoomsMenu();
+  const ecoMenu = buildEcoMenu();
 
   /* ——— Backdrop: one nav surface at a time ——— */
   const backdrop = el('div', 'backdrop');
   backdrop.setAttribute('aria-hidden', 'true');
-  backdrop.addEventListener('click', closeDrawers);
+  backdrop.addEventListener('click', closeNav);
 
-  function openDrawer(id, opener) {
-    closeDrawers(true);
-    lastFocus = opener || document.activeElement;
-    const d = document.getElementById(id);
-    if (!d) return;
-    d.classList.add('open');
-    backdrop.classList.add('show');
-    document.body.classList.add('drawer-open');
-    const corner = stage.querySelector(`[aria-controls="${id}"]`);
-    if (corner) corner.setAttribute('aria-expanded', 'true');
-    const first = d.querySelector('.drawer-btn');
-    if (first) first.focus();
-  }
-  function closeDrawers(silent) {
-    let wasOpen = false;
-    stage.querySelectorAll('.drawer.open').forEach(d => { d.classList.remove('open'); wasOpen = true; });
-    if (!wasOpen && !silent) return;
-    backdrop.classList.remove('show');
-    document.body.classList.remove('drawer-open');
-    stage.querySelectorAll('.corner[aria-expanded="true"]').forEach(c => c.setAttribute('aria-expanded', 'false'));
-    if (!silent && lastFocus && document.contains(lastFocus)) lastFocus.focus();
-    lastFocus = null;
-  }
-
-  /* ——— Focus trap: Tab never escapes an open drawer ——— */
-  if (!window.__nayaDrawerTrap) {
-    window.__nayaDrawerTrap = function (e) {
+  /* ——— Focus trap: Tab never escapes an open nav surface ——— */
+  if (!window.__nayaNavTrap) {
+    window.__nayaNavTrap = function (e) {
       if (e.key !== 'Tab') return;
-      const open = document.querySelector('.stage .drawer.open');
+      const open = document.querySelector('.stage .nav-surface.open');
       if (!open) return;
       const items = Array.from(open.querySelectorAll('button:not([disabled])'));
       if (!items.length) return;
@@ -155,24 +189,30 @@ function HubView(params) {
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     };
-    document.addEventListener('keydown', window.__nayaDrawerTrap);
+    document.addEventListener('keydown', window.__nayaNavTrap);
   }
 
-  /* ——— Escape: one global handler, closes whatever drawer is open ——— */
-  if (!window.__nayaDrawerEsc) {
-    window.__nayaDrawerEsc = function (e) {
+  /* ——— Escape: one global handler, closes whatever nav surface is open.
+     Attached once, so it must work from live document queries — never from
+     this render's closures, which go stale on the next route render. ——— */
+  if (!window.__nayaNavEsc) {
+    window.__nayaNavEsc = function (e) {
       if (e.key !== 'Escape') return;
-      const open = document.querySelector('.stage .drawer.open');
+      const open = document.querySelector('.stage .nav-surface.open');
       if (!open) return;
-      const cornerId = open.id;
+      const surfaceId = open.id;
       open.classList.remove('open');
-      const bd = document.querySelector('.stage .backdrop');
-      if (bd) bd.classList.remove('show');
+      const stageEl = open.closest('.stage');
+      if (stageEl) {
+        const bd = stageEl.querySelector('.backdrop');
+        if (bd) bd.classList.remove('show');
+        stageEl.querySelectorAll('.corner[aria-expanded="true"]').forEach(c => c.setAttribute('aria-expanded', 'false'));
+      }
       document.body.classList.remove('drawer-open');
-      const corner = document.querySelector(`.corner[aria-controls="${cornerId}"]`);
-      if (corner) { corner.setAttribute('aria-expanded', 'false'); corner.focus(); }
+      const corner = document.querySelector('.corner[aria-controls~="' + surfaceId + '"]');
+      if (corner) corner.focus();
     };
-    document.addEventListener('keydown', window.__nayaDrawerEsc);
+    document.addEventListener('keydown', window.__nayaNavEsc);
   }
 
   /* ——— The Main Show: full-bleed feed + ONE sticky mode zone ——— */
@@ -257,7 +297,7 @@ function HubView(params) {
     main.appendChild(body);
   }
 
-  stage.append(tlCorner, trCorner, roomsDrawer, ecoDrawer, backdrop, main);
+  stage.append(tlCorner, trCorner, roomsDrawer, roomsMenu, ecoMenu, backdrop, main);
   return stage;
 }
 window.HubView = HubView;

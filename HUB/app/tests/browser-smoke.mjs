@@ -1,7 +1,8 @@
-/* HUB SHELL v2 — browser smoke. Asserts the director's shell contract:
-   two quiet corner controls · room drawer (10 rooms, never Smart Feed) ·
-   ecosystem drawer (8) · feed-as-main-show · ONE sticky mode zone ·
-   drawer law (backdrop, Escape, scroll lock, focus trap/restore). */
+/* HUB SHELL v2.1 — browser smoke. Asserts the director's shell contract:
+   two quiet "+" corner controls · room drawer on desktop (10 rooms, never
+   Smart Feed) · rooms popup menu on mobile · ecosystem popup menu (8, never
+   a top pill nav) · feed-as-main-show · ONE sticky mode zone ·
+   nav law (backdrop, Escape, scroll lock, focus trap/restore). */
 import { chromium } from 'playwright-core';
 import fs from 'node:fs/promises';
 
@@ -85,20 +86,29 @@ try {
   note(/corner-tl/.test(focused||''), 'room drawer: focus not restored to corner, got '+focused);
   await inspectPage(desktop,'drawer-law');
 
-  /* ——— Ecosystem drawer: the director's eight ——— */
+  /* ——— Ecosystem popup menu: the director's eight, never a top pill nav ——— */
   await desktop.locator('.corner-tr').click();
-  await desktop.waitForSelector('#ecoDrawer.open');
-  const ecoNames = await desktop.locator('#ecoDrawer .drawer-name').allInnerTexts();
+  await desktop.waitForSelector('#ecoMenu.open');
+  const ecoNames = await desktop.locator('#ecoMenu .popup-name').allInnerTexts();
   for (const want of ['Home','NayaPOWER','5-Day Challenge','Enter Free','Powercast','White Paper','About Us','Login'])
-    note(ecoNames.includes(want), 'eco drawer: missing '+want);
-  const pending = await desktop.locator('#ecoDrawer .drawer-btn.pending').count();
-  note(pending === 6, 'eco drawer: expected 6 LINK PENDING rows, got '+pending);
-  // Home navigates internally
-  await desktop.locator('#ecoDrawer .drawer-btn', { hasText: 'Home' }).click();
+    note(ecoNames.includes(want), 'eco menu: missing '+want);
+  const pending = await desktop.locator('#ecoMenu .popup-item.pending').count();
+  note(pending === 6, 'eco menu: expected 6 LINK PENDING rows, got '+pending);
+  note(await desktop.locator('.backdrop.show').count() === 1, 'eco menu: backdrop must show');
+  await desktop.screenshot({ path:'HUB/app/test-artifacts/04-eco-menu-desktop.png' });
+  // Home navigates internally and closes the menu
+  await desktop.locator('#ecoMenu .popup-item', { hasText: 'Home' }).click();
   await desktop.waitForTimeout(120);
-  note(desktop.url().includes('#/hub') && !desktop.url().includes('#/hub/'), 'eco drawer: Home did not navigate to main show');
-  note(await desktop.locator('#ecoDrawer.open').count() === 0, 'eco drawer: did not close after Home');
-  await desktop.screenshot({ path:'HUB/app/test-artifacts/04-eco-drawer-desktop.png' });
+  note(desktop.url().includes('#/hub') && !desktop.url().includes('#/hub/'), 'eco menu: Home did not navigate to main show');
+  note(await desktop.locator('#ecoMenu.open').count() === 0, 'eco menu: did not close after Home');
+  // Escape closes the menu and restores focus to the "+" control
+  await desktop.locator('.corner-tr').click();
+  await desktop.waitForSelector('#ecoMenu.open');
+  await desktop.keyboard.press('Escape');
+  await desktop.waitForTimeout(120);
+  note(await desktop.locator('#ecoMenu.open').count() === 0, 'eco menu: Escape did not close');
+  const ecoFocused = await desktop.evaluate(() => document.activeElement && document.activeElement.className);
+  note(/corner-tr/.test(ecoFocused||''), 'eco menu: focus not restored to corner, got '+ecoFocused);
 
   /* ——— Mode switching re-mounts the feed in the new mode ——— */
   await desktop.goto(base+'#/hub');
@@ -120,26 +130,33 @@ try {
   }
   await desktop.close();
 
-  /* ——— Mobile: corners drive everything ——— */
+  /* ——— Mobile: "+" buttons drive everything ——— */
   const mobile = await browser.newPage({ viewport:{ width:390,height:844 }, reducedMotion:'reduce' });
   await mobile.goto(base+'#/hub/feed');
   await mobile.waitForSelector('.corner-tl');
+  // Rooms open as an anchored popup menu on mobile — never the drawer
   await mobile.locator('.corner-tl').click();
-  await mobile.waitForSelector('#roomsDrawer.open');
-  const target=mobile.locator('#roomsDrawer .drawer-btn').filter({hasText:'Your Connections'});
+  await mobile.waitForSelector('#roomsMenu.open');
+  note(await mobile.locator('#roomsDrawer.open').count() === 0, 'mobile: drawer must not open on mobile');
+  const mobileRoomNames = await mobile.locator('#roomsMenu .popup-name').allInnerTexts();
+  note(mobileRoomNames.length === 10, 'mobile rooms menu: expected 10 rooms, got '+mobileRoomNames.length);
+  note(!mobileRoomNames.some(n => /smart feed/i.test(n)), 'mobile rooms menu: Smart Feed must not be a menu entry');
+  await mobile.screenshot({ path:'HUB/app/test-artifacts/20-rooms-menu-mobile.png' });
+  const target=mobile.locator('#roomsMenu .popup-item').filter({hasText:'Your Connections'});
   await target.click();
   await mobile.waitForTimeout(120);
   note(mobile.url().includes('#/hub/connections'), 'mobile: room selection did not navigate');
-  note(await mobile.locator('#roomsDrawer.open').count() === 0, 'mobile: drawer did not close after selection');
+  note(await mobile.locator('#roomsMenu.open').count() === 0, 'mobile: menu did not close after selection');
   await inspectPage(mobile,'mobile-connections');
-  await mobile.screenshot({ path:'HUB/app/test-artifacts/20-connections-mobile.png', fullPage:true });
-  // focus trap: tab from first button stays inside the drawer
+  await mobile.screenshot({ path:'HUB/app/test-artifacts/21-connections-mobile.png', fullPage:true });
+  // Ecosystem "+" menu on mobile; focus trap: tab from first item stays inside
   await mobile.locator('.corner-tr').click();
-  await mobile.waitForSelector('#ecoDrawer.open');
-  await mobile.locator('#ecoDrawer .drawer-btn').first().focus();
+  await mobile.waitForSelector('#ecoMenu.open');
+  await mobile.locator('#ecoMenu .popup-item').first().focus();
   await mobile.keyboard.press('Tab');
-  const trapped = await mobile.evaluate(() => document.activeElement && document.activeElement.closest('#ecoDrawer') !== null);
-  note(trapped, 'mobile: focus escaped the open drawer');
+  const trapped = await mobile.evaluate(() => document.activeElement && document.activeElement.closest('#ecoMenu') !== null);
+  note(trapped, 'mobile: focus escaped the open menu');
+  await mobile.screenshot({ path:'HUB/app/test-artifacts/22-eco-menu-mobile.png' });
   await mobile.keyboard.press('Escape');
   await mobile.close();
 } finally {
@@ -151,4 +168,4 @@ if (failures.length) {
   for (const failure of failures) console.error(' -', failure);
   process.exit(1);
 }
-console.log('HUB BROWSER QA PASSED: welcome + identity + main show + drawers + drawer law + 10 rooms + mobile');
+console.log('HUB BROWSER QA PASSED: welcome + identity + main show + rooms drawer + popup menus + nav law + 10 rooms + mobile');
