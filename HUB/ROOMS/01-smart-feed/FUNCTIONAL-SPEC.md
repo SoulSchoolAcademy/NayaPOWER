@@ -43,17 +43,24 @@ Your captured, learned, received and relevant intelligence.
 Intelligence legitimately shared into your scope through consent/permissions.
 
 ### Activity
-What happened: captures, updates, connections, messages, verified actions, new learning, space events.
+What is happening / what changed: upstream project/runtime activity, updates, connections, messages, verified actions, new learning, report events and Space events. Activity is received from observed work; it is not manually posted from the Hub.
+
+**Presentation note:** the exact final visual composition of Activity remains open for design refinement. The semantic contract—real observed current work/state, truthful provenance, no fabricated liveness—is fixed.
 
 ## Primary actions
 
 - **Open**
 - **Ask Naya**
-- **Capture Smart Note**
 - **Save / Favorite**
 - **Add to List**
 - **Open Source / Evidence**
 - **Share / Connect** where authorized
+
+The Feed does **not** create Smart Notes. Smart Notes are created upstream through Naya / connected AI and arrive here automatically as projected canonical intelligence.
+
+## Smart Tabs / feed views
+
+Within the selected projection scope, Smart Tabs may organize the same canonical intelligence without copying it. Initial views: **ALL · SMART NOTES · REPORTS · HIGHLIGHTS · LEARNING · DECISIONS · DISCOVERIES · PROJECTS**. Categories may evolve from canonical metadata and user usefulness.
 
 ## Feed controls
 
@@ -123,5 +130,5 @@ The Drive notes clarify the product hierarchy: **Smart Feed is the game**, while
 - **ORIENTATION:** room title, current Space, feed mode and freshness
 - **CURRENT STATE:** real incoming/current intelligence and mode-specific activity
 - **INTELLIGENCE:** Naya explains relevance, relationships and why an object appears
-- **ACTION:** open, ask, capture, save, list, evidence, governed share/connect
+- **ACTION:** open, ask/explain, save, list, evidence, governed share/connect; intelligence creation remains upstream
 - **PROOF:** source, time, provenance, truth state and relevant receipts
