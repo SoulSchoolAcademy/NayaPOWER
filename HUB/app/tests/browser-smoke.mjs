@@ -284,6 +284,11 @@ async function assertMainShow(page,label){
     );
     await page.locator('.note-back').click();
     await page.waitForSelector('.feed-river:not([hidden])');
+    await page.waitForFunction(expected=>Math.abs(Math.round(window.scrollY)-expected)<=2,originScroll);
+    const relatedReturnId=await page.evaluate(()=>document.activeElement?.dataset?.intelligenceId||'');
+    if(relatedReturnId!=='ib-personal-1'){
+      fail(label+': related intelligence return did not restore origin focus, got '+relatedReturnId);
+    }
     await page.locator('.snap-board').first().click();
     await page.waitForSelector('.note-view:not([hidden])');
   }else{
