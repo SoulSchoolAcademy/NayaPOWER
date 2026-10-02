@@ -1,6 +1,6 @@
 # The Image Is the Lock Artifact — Visuals Are First-Class, Not Derived
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn0144-visual-first-class-lock-artifact
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-01
