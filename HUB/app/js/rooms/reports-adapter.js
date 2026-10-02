@@ -86,7 +86,7 @@
     flush();
 
     const stripNum=t=>t.replace(/^\d+\.\s*/,'');
-    const stripQuote=t=>t.replace(/^>\s?/,'');
+    const stripQuote=t=>t.replace(/^\s*>\s?/gm,'');
     const sentences=t=>{
       const prot=t.replace(/(\d)\.(\d)/g,'$1<DOT>$2');
       const parts=prot.match(/[^.!?]+[.!?]+/g)||[prot];
@@ -170,21 +170,26 @@
         if(b.marker==='quote') t=stripQuote(t);
         if(b.marker==='bold'){
           const kv=t.match(/^([^:–—]{2,60}?)\s*[:–—]\s*(.+)$/);
-          if(kv && kv[2].length<90){ out.points.push(kv[1].trim()+': '+kv[2].trim()); return; }
+          if(kv && kv[2].length<90){ out.points.push({t:kv[1].trim()+': '+kv[2].trim(),q:false}); return; }
         }
-        if(t.length<=210){ if(t.length>25) out.points.push(t); return; }
+        if(t.length<=210){ if(t.length>25) out.points.push({t:t,q:b.marker==='quote'}); return; }
         const ss=sentences(t);
-        out.points.push(ss[0].trim()+' — '+truncate(ss.slice(1).join(' ').trim(),130));
+        out.points.push({t:ss[0].trim()+' — '+truncate(ss.slice(1).join(' ').trim(),130),q:b.marker==='quote'});
       });
       /* Thin sections: split longest blocks into sentences (no invention, finer grain) */
       if(out.points.length<3){
         const extra=[];
         blocks.forEach((b,bi)=>{
           if(skipIdx.has(bi)||b.marker==='num') return;
-          sentences(b.text).forEach(s=>{ s=s.trim(); if(s.length>=40 && !out.nutshell.includes(s)) extra.push(s); });
+          sentences(b.text).forEach(s=>{
+            s=s.trim();
+            if(b.marker==='quote') s=stripQuote(s);
+            if(b.marker==='bul') s=s.replace(/^-\s*/,'');
+            if(s.length>=40 && !out.nutshell.includes(s)) extra.push({t:s,q:b.marker==='quote'});
+          });
         });
-        const have=new Set(out.points);
-        for(const s of extra){ if(out.points.length>=4) break; if(!have.has(s)){ out.points.push(s); have.add(s); } }
+        const have=new Set(out.points.map(p=>p.t));
+        for(const s of extra){ if(out.points.length>=4) break; if(!have.has(s.t)){ out.points.push(s); have.add(s.t); } }
       }
       out.points=out.points.slice(0,10);
     }

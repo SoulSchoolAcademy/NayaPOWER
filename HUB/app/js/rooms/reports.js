@@ -249,7 +249,7 @@
       if(query){
         const q=query.toLowerCase();
         const hay=r=>((r.title+' '+r.dateLabel+' '+r.bigPicture+' '+r.id+' '+
-          (r.sections||[]).map(s=>s.label+' '+(s.nutshell||'')+' '+(s.points||[]).join(' ')).join(' ')
+          (r.sections||[]).map(s=>s.label+' '+(s.nutshell||'')+' '+(s.points||[]).map(p=>(p&&typeof p==='object')?(p.t||''):String(p||'')).join(' ')).join(' ')
         ).toLowerCase());
         list=list.filter(r=>hay(r).includes(q));
       }
@@ -344,6 +344,35 @@
       return ch;
     }
 
+    /* ——— points: natural forms. Quotes render as pull-quotes, everything else
+         as jewel bullets (numbered for MOVE sections). Empty -> null. ——— */
+    function ptText(p){ return (p && typeof p==='object') ? (p.t||'') : String(p||''); }
+    function pointsBlock(s,i){
+      const pts=(s.points||[]).filter(p=>ptText(p).trim().length>0);
+      if(!pts.length) return null;
+      const wrap=el('div','rb-points-wrap');
+      const numbered=/MOVE/.test(s.label);
+      const ul=el('ul','rb-points');
+      pts.forEach((p,bi)=>{
+        const t=ptText(p).trim();
+        if(p && typeof p==='object' && p.q){
+          const q=el('blockquote','rb-quote',''); q.textContent=t; wrap.appendChild(q); return;
+        }
+        const bcol=JEWELS[(bi+i)%JEWELS.length];
+        const li=el('li','rb-point');
+        if(numbered){
+          const nj=el('span','jewel jewel-num',''); nj.textContent=String(bi+1);
+          nj.style.setProperty('--jewel',bcol); li.appendChild(nj);
+        } else {
+          li.appendChild(jewel(bcol,JEWEL_GLYPHS[(bi+i)%JEWEL_GLYPHS.length],'11px'));
+        }
+        const tx=el('span','',''); tx.textContent=t;
+        li.appendChild(tx); ul.appendChild(li);
+      });
+      if(ul.children.length) wrap.appendChild(ul);
+      return wrap;
+    }
+
     function scorecardSection(s,i){
       const color=JEWELS[i%JEWELS.length];
       const sec=el('section','rb-section rb-scorecard');
@@ -368,17 +397,7 @@
       /* the chain */
       if(s.chain && s.chain.length) sec.appendChild(chainStrip(s,i));
       /* remaining bullets */
-      if(s.points && s.points.length){
-        const ul=el('ul','rb-points');
-        s.points.forEach((pt,bi)=>{
-          const bcol=JEWELS[(bi+i)%JEWELS.length];
-          const li=el('li','rb-point');
-          li.appendChild(jewel(bcol,JEWEL_GLYPHS[(bi+i)%JEWEL_GLYPHS.length],'11px'));
-          const tx=el('span','',''); tx.textContent=pt;
-          li.appendChild(tx); ul.appendChild(li);
-        });
-        sec.appendChild(ul);
-      }
+      const pb1=pointsBlock(s,i); if(pb1) sec.appendChild(pb1);
       return sec;
     }
 
@@ -391,7 +410,7 @@
       const lab=el('h2','rb-sec-label',''); lab.textContent=s.label;
       head.appendChild(lab); sec.appendChild(head);
       const box=el('div','prompt-box');
-      const pre=el('pre','prompt-text',''); pre.textContent=s.prompt||s.points.join('\n');
+      const pre=el('pre','prompt-text',''); pre.textContent=s.prompt||(s.points||[]).map(p=>(p&&typeof p==='object')?(p.t||''):String(p||'')).join('\n');
       box.appendChild(pre);
       const copy=el('button','prompt-copy','COPY PROMPT'); copy.type='button';
       copy.addEventListener('click',()=>{
@@ -531,24 +550,8 @@
           }
           /* chain strip when the section carries one */
           if(s.chain && s.chain.length) sec.appendChild(chainStrip(s,i));
-          /* jewel bullets — mixed palette for contrast, never all-matching */
-          const ul=el('ul','rb-points');
-          const numbered=/MOVE/.test(s.label);
-          s.points.forEach((pt,bi)=>{
-            const bcol=JEWELS[(bi+i)%JEWELS.length];
-            const li=el('li','rb-point');
-            if(numbered){
-              const nj=el('span','jewel jewel-num',''); nj.textContent=String(bi+1);
-              nj.style.setProperty('--jewel',bcol); li.appendChild(nj);
-            } else {
-              const bgly=JEWEL_GLYPHS[(bi+i)%JEWEL_GLYPHS.length];
-              li.appendChild(jewel(bcol,bgly,'11px'));
-            }
-            const tx=el('span','',''); tx.textContent=pt;
-            li.appendChild(tx);
-            ul.appendChild(li);
-          });
-          sec.appendChild(ul);
+          /* points — natural forms (quotes as pull-quotes, bullets otherwise) */
+          const pb2=pointsBlock(s,i); if(pb2) sec.appendChild(pb2);
           board.appendChild(sec);
         });
       }

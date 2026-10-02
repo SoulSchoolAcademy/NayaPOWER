@@ -396,3 +396,12 @@ button.kr-row:focus-visible{outline:2px solid #fff;outline-offset:2px}
   border-color:var(--day); transform:translateY(-1px);
   box-shadow:0 0 18px -6px var(--day);
 }
+
+/* ——— pull-quotes: source blockquotes keep their voice, not a bullet ——— */
+.reports-stage .rb-quote{
+  margin:6px 0 14px; padding:10px 0 10px 20px;
+  border-left:3px solid var(--sec,#8a5cff);
+  font-size:17px; line-height:1.6; font-weight:500; color:#f2f0f7;
+  text-shadow:0 0 14px rgba(255,255,255,.12);
+}
+.reports-stage .rb-points-wrap .rb-quote:first-child{ margin-top:2px; }
