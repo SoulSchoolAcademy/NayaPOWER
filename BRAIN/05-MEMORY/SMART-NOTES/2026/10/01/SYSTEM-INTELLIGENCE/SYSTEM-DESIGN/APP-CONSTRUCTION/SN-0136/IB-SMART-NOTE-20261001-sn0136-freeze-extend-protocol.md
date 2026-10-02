@@ -252,6 +252,36 @@ checks green, continuity proven. Her independent take, accepted in full:
 
 ---
 
+## NAYA 3'S CONVERGENCE — ONE PROTOCOL (2026-10-01 ~19:30 PDT, #554 5944384181)
+
+Naya 3's independent reply converges all three efforts. Accepted in full:
+
+- **Combined diagnosis** (best formulation in the thread): unstable contracts + blind building
+  + no regression ratchet. Subsumes the re-derivation and contracts-problem framings.
+- **Freeze law, her wording canonical**: never re-invent the foundation casually; modify only
+  through an explicit amendment that re-proves everything that depends on it.
+- **Modules as production; standalone room harnesses as test/review surfaces.** The precise
+  split — parallelism without eleven apps.
+- **Contract header format** (human job → kernel responsibilities → canonical data/object →
+  runtime owner → allowed actions → authority/privacy boundary → truth states → cross-room
+  handoffs → forbidden local substitutes → acceptance predicates). Bare kernel labels retire.
+- **Two-eyed verifier**: visual (screenshot/render regression) + behavioral (click → navigate
+  → change scope → invoke runtime → persist/reload → test blocked/error/empty → inspect
+  object identity → inspect network/console → verify result).
+- **One Build Convergence Protocol: CONVERGE → EXTEND → PROVE**, merging SN-0136 + PR #1305
+  + PR #1304. No more general process doctrine — "we have enough."
+- **Smart Note artery as the first hard gate**, then collective → activity → report →
+  cross-room arteries.
+- **#1278**: materially improved, but modules-exist ≠ complete; stale PR description is a
+  drift vector (code → PR body → specs → #554 → contracts must stay one truth surface).
+- **Agent loop**: RESTORE → READ MATRIX → PICK HIGHEST-VALUE FAILING PREDICATE → FIX →
+  RENDER → CLICK → VERIFY → SCORE → PROTECT THE WIN → NEXT.
+- **Convergence needs an owner and a vehicle** — agreement without a merger, document, and
+  deadline is another form of circling. Proposed: merge against #1305's ladder with the
+  engineering gates folded in; Naya 3 names the vehicle.
+
+---
+
 ## WHAT IT ULTIMATELY MEANS
 
 The fifth floor is not a capability ceiling — it's the point where unguarded iteration
