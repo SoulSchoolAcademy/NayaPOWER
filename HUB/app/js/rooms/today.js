@@ -56,7 +56,6 @@
     try{ localStorage.setItem(SEEN_KEY, JSON.stringify(Array.from(seenPlays))); }catch(err){}
   }
   let allPlays=[];
-  let openPlayId=null;
   let query='';
 
   function TodayRoom(){
@@ -77,22 +76,20 @@
   }
 
   function renderAll(el,stage){
-    if(openPlayId===null&&allPlays.length){
-      openPlayId=allPlays[0].id;
-      seenPlays.add(allPlays[0].id); persistSeen();
-    }
     stage.innerHTML='';
     stage.appendChild(orient(el));
     stage.appendChild(searchBar(el));
-    stage.appendChild(section(el,'NOW','What changed',nowBlock(el)));
-    stage.appendChild(section(el,'WATCH','Still unopened',watchList(el)));
-    stage.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
+    const secs=el('div','today-sections');
+    secs.appendChild(section(el,'NOW','What changed',nowBlock(el)));
+    secs.appendChild(section(el,'WATCH','Still unopened',watchList(el),'watch-sec'));
+    secs.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
     const lineup=rememberLineup(el);
-    if(lineup)stage.appendChild(section(el,'REMEMBER','Your Smart List',lineup));
+    if(lineup)secs.appendChild(section(el,'REMEMBER','Your Smart List',lineup,'remember-sec'));
+    stage.appendChild(secs);
   }
 
-  function section(el,eyebrow,title,body){
-    const s=el('section','tsection');
+  function section(el,eyebrow,title,body,extra){
+    const s=el('section','tsection'+(extra?' '+extra:''));
     const h=el('div','tsection-head');
     const e=el('p','tsection-eyebrow',''); e.textContent=eyebrow;
     const t=el('h2','tsection-title',''); t.textContent=title;
@@ -117,13 +114,15 @@
     const l=el('p','orient-line',''); l.textContent=line;
     o.appendChild(d); o.appendChild(l);
 
-    const n=allPlays.length;
-    const tp=allPlays.filter(p=>p.turning).length;
-    const s=el('p','score-line');
-    s.innerHTML='<strong>'+n+'</strong> PLAYS&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+tp+'</strong> TURNING POINT'+(tp===1?'':'S')
-      +'&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+smartList.length+'</strong> SAVED';
-    o.appendChild(s);
+    const sc=el('p','score-line');
+    sc.innerHTML=scoreHTML();
+    o.appendChild(sc);
     return o;
+  }
+
+  function scoreHTML(){
+    const n=allPlays.length;
+    return '<strong>'+n+'</strong> PLAYS&nbsp;&nbsp;\u00B7&nbsp;&nbsp;<strong>'+smartList.length+'</strong> SAVED';
   }
 
   /* ——— SEARCH: filter the day's plays ——— */
@@ -186,16 +185,20 @@
   }
 
   /* ——— THE BOARD — reference anatomy, quoted verbatim ——— */
+  /* ——— THE HIGHLIGHT — a snapshot, not the full note.
+         Rank + title + when + call + nutshell + SAVE/SHARE.
+         No pills (rank IS the priority; the call IS the significance).
+         Tap opens the full intelligent block in its own view. ——— */
   function play(el,p,rank){
     const tone=toneFor(p);
     const nn=String(rank+1).padStart(2,'0');
-    const a=el('article','block naya509-board');
+    const a=el('article','block naya509-board today-highlight');
     a.id='play-'+p.id;
     a.style.setProperty('--tone',tone);
 
     const inner=el('div','blockInner');
 
-    /* blockTop: identity (rank glyph + title + meta) · truth pills */
+    /* blockTop: identity (rank glyph + title + meta) */
     const top=el('div','blockTop');
     const ident=el('div','identity');
     const glyph=el('div','glyph',''); glyph.textContent=nn;
@@ -208,22 +211,7 @@
     meta.appendChild(mWhen); meta.appendChild(mPlay);
     titleWrap.appendChild(h3); titleWrap.appendChild(meta);
     ident.appendChild(glyph); ident.appendChild(titleWrap);
-
-    const pills=el('div','pills');
-    if(rank===0){
-      const t=el('span','truth truth-top',''); t.textContent='TOP INTELLIGENCE';
-      pills.appendChild(t);
-    }
-    if(p.turning){
-      const t=el('span','truth truth-turning',''); t.textContent='TURNING POINT';
-      pills.appendChild(t);
-    }
     top.appendChild(ident);
-    if(pills.children.length)top.appendChild(pills);
-    const chev=el('span','chev','');
-    chev.setAttribute('aria-hidden','true');
-    chev.textContent=(p.id===openPlayId)?'\u2303':'\u2304';
-    top.appendChild(chev);
     inner.appendChild(top);
 
     /* the announcer's call */
@@ -232,7 +220,7 @@
       inner.appendChild(c);
     }
 
-    /* the nutshell box */
+    /* the nutshell — the snapshot */
     if(p.layers.nutshell){
       const nut=el('div','nutshell');
       const b=el('b',''); b.textContent='IN A NUTSHELL';
@@ -241,60 +229,8 @@
       inner.appendChild(nut);
     }
 
-    /* the full intelligent block — same language as the main page */
-    const opened=p.id===openPlayId;
-    if(opened){
-      const layers=el('div','layers');
-      LAYERS.forEach(([key,label,sub])=>{
-        if(p.layers[key])layers.appendChild(makeLayer(el,key,label,sub,p.layers[key],tone));
-      });
-      inner.appendChild(layers);
-    }
-
-    /* actions — SAVE keeps it, SHARE sends it. Proof lives in the
-       opened note's layers (machine note = evidence boundary). */
-    const actions=el('div','actions');
-    const isOn=smartList.includes(p.id);
-    const save=el('button','action'+(isOn?' carry-on':''),'');
-    save.type='button';
-    save.textContent=isOn?'\u2605 SAVED':'SAVE';
-    save.setAttribute('aria-pressed',isOn?'true':'false');
-    save.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+p.title);
-    if(isOn)save.style.setProperty('--action-color','#e8b64c');
-    save.addEventListener('click',e2=>{
-      e2.stopPropagation();
-      const ix=smartList.indexOf(p.id);
-      if(ix>=0)smartList.splice(ix,1); else smartList.push(p.id);
-      persistSmartList();
-      const stage=a.closest('.today-stage');
-      renderAll(el,stage);
-    });
-    const share=el('button','action','SHARE'); share.type='button';
-    share.setAttribute('aria-label','Share: '+p.title);
-    share.addEventListener('click',e2=>{
-      e2.stopPropagation();
-      const url=location.origin+location.pathname+'#/today/'+p.id;
-      const data={title:p.title, text:p.layers.nutshell||p.call||p.title, url:url};
-      const copied=()=>{ share.textContent='COPIED \u2713'; setTimeout(()=>{ share.textContent='SHARE'; },2000); };
-      const copyFallback=()=>{
-        const ta=document.createElement('textarea');
-        ta.value=url; ta.style.position='fixed'; ta.style.opacity='0';
-        document.body.appendChild(ta); ta.select();
-        try{ document.execCommand('copy'); copied(); }
-        catch(err){ share.textContent='SHARE FAILED'; setTimeout(()=>{ share.textContent='SHARE'; },2000); }
-        document.body.removeChild(ta);
-      };
-      if(navigator.share){
-        navigator.share(data).then(
-          ()=>{ share.textContent='SHARED \u2713'; setTimeout(()=>{ share.textContent='SHARE'; },2000); },
-          ()=>{}
-        );
-      }else if(navigator.clipboard&&navigator.clipboard.writeText){
-        navigator.clipboard.writeText(url).then(copied).catch(copyFallback);
-      }else copyFallback();
-    });
-    actions.appendChild(save); actions.appendChild(share);
-    inner.appendChild(actions);
+    /* actions — SAVE keeps it, SHARE sends it */
+    inner.appendChild(actionRow(el,p));
 
     const foot=el('div','blockFoot');
     const fL=el('span',''); fL.textContent='YOUR INTELLIGENCE TODAY';
@@ -304,22 +240,167 @@
 
     a.appendChild(inner);
 
-    const toggle=()=>{
-      openPlayId=opened?null:p.id;
-      if(!opened)seenPlays.add(p.id);
-      const stage=a.closest('.today-stage');
-      renderAll(el,stage);
-      if(!opened){
-        const t2=document.getElementById('play-'+CSS.escape(p.id));
-        if(t2)t2.scrollIntoView({block:'nearest',behavior:'smooth'});
-      }
-    };
+    /* tap the highlight -> the full note, in its own view */
+    const open=()=>openNote(el,p,rank);
     a.setAttribute('tabindex','0'); a.setAttribute('role','button');
-    a.setAttribute('aria-expanded',opened?'true':'false');
-    a.setAttribute('aria-label',(opened?'Close ':'Open the full note: ')+p.title);
-    a.addEventListener('click',toggle);
-    a.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+    a.setAttribute('aria-label','Read the full note: '+p.title);
+    a.addEventListener('click',open);
+    a.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
     return a;
+  }
+
+  /* ——— shared SAVE/SHARE row (highlights and the full-note view) ——— */
+  function actionRow(el,p){
+    const actions=el('div','actions');
+    const isOn=smartList.includes(p.id);
+    const save=el('button','action'+(isOn?' carry-on':''),'');
+    save.type='button';
+    save.dataset.saveFor=p.id;
+    save.textContent=isOn?'\u2605 SAVED':'SAVE';
+    save.setAttribute('aria-pressed',isOn?'true':'false');
+    save.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+p.title);
+    if(isOn)save.style.setProperty('--action-color','#e8b64c');
+    save.addEventListener('click',e2=>{
+      e2.stopPropagation();
+      toggleSave(el,p.id,p.title);
+    });
+    const share=el('button','action','SHARE'); share.type='button';
+    share.setAttribute('aria-label','Share: '+p.title);
+    share.addEventListener('click',e2=>{
+      e2.stopPropagation();
+      sharePlay(p,share);
+    });
+    actions.appendChild(save); actions.appendChild(share);
+    return actions;
+  }
+
+  function toggleSave(el,playId,title){
+    const ix=smartList.indexOf(playId);
+    if(ix>=0)smartList.splice(ix,1); else smartList.push(playId);
+    persistSmartList();
+    const isOn=smartList.includes(playId);
+    /* surgical update — no full re-render, no scroll jump */
+    document.querySelectorAll('[data-save-for="'+CSS.escape(playId)+'"]').forEach(btn=>{
+      btn.textContent=isOn?'\u2605 SAVED':'SAVE';
+      btn.setAttribute('aria-pressed',isOn?'true':'false');
+      btn.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+title);
+      btn.classList.toggle('carry-on',isOn);
+      btn.style.setProperty('--action-color',isOn?'#e8b64c':'');
+    });
+    const stage=document.querySelector('.today-stage');
+    if(stage){
+      const sc=stage.querySelector('.score-line');
+      if(sc)sc.innerHTML=scoreHTML();
+      const sec=stage.querySelector('.remember-sec');
+      if(sec){
+        const fresh=rememberLineup(el);
+        if(fresh){ sec.replaceChildren(fresh); }
+        else{ sec.remove(); }
+      }else if(smartList.length){
+        const wrap=stage.querySelector('.today-sections');
+        if(wrap)wrap.appendChild(section(el,'REMEMBER','Your Smart List',rememberLineup(el),'remember-sec'));
+      }
+    }
+  }
+
+  function sharePlay(p,btn){
+    const url=location.origin+location.pathname+'#/today/'+p.id;
+    const data={title:p.title, text:p.layers.nutshell||p.call||p.title, url:url};
+    const copied=()=>{ btn.textContent='COPIED \u2713'; setTimeout(()=>{ btn.textContent='SHARE'; },2000); };
+    const copyFallback=()=>{
+      const ta=document.createElement('textarea');
+      ta.value=url; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); copied(); }
+      catch(err){ btn.textContent='SHARE FAILED'; setTimeout(()=>{ btn.textContent='SHARE'; },2000); }
+      document.body.removeChild(ta);
+    };
+    if(navigator.share){
+      navigator.share(data).then(
+        ()=>{ btn.textContent='SHARED \u2713'; setTimeout(()=>{ btn.textContent='SHARE'; },2000); },
+        ()=>{}
+      );
+    }else if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(copied).catch(copyFallback);
+    }else copyFallback();
+  }
+
+  /* ——— THE FULL NOTE — one home for the intelligent block.
+         The highlight points here; this is not a second presentation. ——— */
+  function openNote(el,p,rank){
+    closeNote();
+    seenPlays.add(p.id); persistSeen();
+    const stage=document.querySelector('.today-stage');
+    if(stage)renderWatchOnly(el,stage);
+
+    const tone=toneFor(p);
+    const nn=String(rank+1).padStart(2,'0');
+    const overlay=el('div','note-overlay'); overlay.id='today-note-overlay';
+    const dialog=el('div','note-dialog block naya509-board');
+    dialog.style.setProperty('--tone',tone);
+    dialog.setAttribute('role','dialog');
+    dialog.setAttribute('aria-modal','true');
+    dialog.setAttribute('aria-label','Full note: '+p.title);
+
+    const inner=el('div','blockInner');
+    const close=el('button','note-close','\u00D7'); close.type='button';
+    close.setAttribute('aria-label','Close the full note');
+    close.addEventListener('click',closeNote);
+    inner.appendChild(close);
+
+    const top=el('div','blockTop');
+    const ident=el('div','identity');
+    const glyph=el('div','glyph',''); glyph.textContent=nn; glyph.setAttribute('aria-hidden','true');
+    const titleWrap=el('div','');
+    const h3=el('h3',''); h3.textContent=p.title;
+    const meta=el('div','meta');
+    const mWhen=el('span',''); mWhen.textContent=p.when||'TODAY';
+    const mPlay=el('span',''); mPlay.textContent='PLAY '+nn;
+    meta.appendChild(mWhen); meta.appendChild(mPlay);
+    titleWrap.appendChild(h3); titleWrap.appendChild(meta);
+    ident.appendChild(glyph); ident.appendChild(titleWrap);
+    top.appendChild(ident); inner.appendChild(top);
+
+    if(p.call){ const c=el('p','call',''); c.textContent=p.call; inner.appendChild(c); }
+    if(p.layers.nutshell){
+      const nut=el('div','nutshell');
+      const b=el('b',''); b.textContent='IN A NUTSHELL';
+      const par=el('p',''); par.textContent=p.layers.nutshell;
+      nut.appendChild(b); nut.appendChild(par); inner.appendChild(nut);
+    }
+    const layers=el('div','layers');
+    LAYERS.forEach(([key,label,sub])=>{
+      if(p.layers[key])layers.appendChild(makeLayer(el,key,label,sub,p.layers[key],tone));
+    });
+    inner.appendChild(layers);
+    inner.appendChild(actionRow(el,p));
+    const foot=el('div','blockFoot');
+    const fL=el('span',''); fL.textContent='YOUR INTELLIGENCE TODAY';
+    const fR=el('span',''); fR.textContent='INTELLIGENCE EVENT \u00B7 PLAY '+nn;
+    foot.appendChild(fL); foot.appendChild(fR); inner.appendChild(foot);
+
+    dialog.appendChild(inner);
+    overlay.appendChild(dialog);
+    overlay.addEventListener('click',e=>{ if(e.target===overlay)closeNote(); });
+    document.body.appendChild(overlay);
+    document.body.style.overflow='hidden';
+    close.focus();
+  }
+
+  function closeNote(){
+    const ov=document.getElementById('today-note-overlay');
+    if(ov)ov.remove();
+    document.body.style.overflow='';
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closeNote();
+  });
+
+  function renderWatchOnly(el,stage){
+    const w=stage.querySelector('.watch-sec .watch-list');
+    if(!w)return;
+    const fresh=watchList(el);
+    w.replaceWith(fresh);
   }
 
   function makeLayer(el,key,label,sub,text,tone){
@@ -352,11 +433,8 @@
       const open=el('button','','Open'); open.type='button';
       open.setAttribute('aria-label','Open: '+p.title);
       open.addEventListener('click',()=>{
-        openPlayId=p.id; seenPlays.add(p.id);
-        const stage=wrap.closest('.today-stage');
-        renderAll(el,stage);
-        const t2=document.getElementById('play-'+CSS.escape(p.id));
-        if(t2)t2.scrollIntoView({block:'center',behavior:'smooth'});
+        const rank=allPlays.findIndex(x=>x.id===p.id);
+        openNote(el,p,rank);
       });
       li.appendChild(dot); li.appendChild(span); li.appendChild(open); ul.appendChild(li);
     });
@@ -399,12 +477,7 @@
       const span=el('span','',''); span.textContent=p.title;
       const rm=el('button','','Remove'); rm.type='button';
       rm.setAttribute('aria-label','Remove from Smart List: '+p.title);
-      rm.addEventListener('click',()=>{
-        const ix=smartList.indexOf(id); if(ix>=0)smartList.splice(ix,1);
-        persistSmartList();
-        const stage=box.closest('.today-stage');
-        renderAll(el,stage);
-      });
+      rm.addEventListener('click',()=>{ toggleSave(el,id,p.title); });
       li.appendChild(dot); li.appendChild(span); li.appendChild(rm); ul.appendChild(li);
     });
     box.appendChild(ul);
