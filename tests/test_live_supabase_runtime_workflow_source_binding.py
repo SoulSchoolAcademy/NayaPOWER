@@ -9,9 +9,9 @@ def _workflow() -> str:
     return WORKFLOW.read_text(encoding='utf-8')
 
 
-def test_cold_runtime_proof_has_explicit_source_sha_input_for_manual_dispatch():
+def test_cold_runtime_proof_has_explicit_main_source_sha_input_for_manual_dispatch():
     workflow = _workflow()
-    assert 'expected_source_sha:' in workflow
+    assert 'source_sha:' in workflow
     assert "description: \"Exact main SHA whose runtime is being proven\"" in workflow
     assert 'required: true' in workflow
 
