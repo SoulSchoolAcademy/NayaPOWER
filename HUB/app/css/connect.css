@@ -46,30 +46,37 @@
 }
 .connect-stage .cn-door::before{
   content:""; position:absolute; left:0; top:0; bottom:0; width:5px;
-  background:var(--cn-emerald);
-  box-shadow:0 0 20px var(--cn-emerald);
+  background:var(--door);
+  box-shadow:0 0 20px var(--door);
 }
-.connect-stage .cn-door.design::before{ background:#3a3f3c; box-shadow:none; }
+/* in design: rest white and calm, ignite in the door's color on hover */
+.connect-stage .cn-door.design::before{ background:#dfe3e8; box-shadow:none; }
+.connect-stage .cn-door.design:hover::before{ background:var(--door); box-shadow:0 0 20px var(--door); }
 .connect-stage .cn-door:hover{
-  transform:translateY(-2px); border-color:rgba(52,211,153,.35);
-  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 70px rgba(0,0,0,.6), 0 0 30px rgba(52,211,153,.12);
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--door) 38%, transparent);
+  box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 70px rgba(0,0,0,.6),
+             0 0 30px color-mix(in srgb, var(--door) 14%, transparent);
 }
 .connect-stage .cn-door-top{ display:flex; align-items:flex-start; gap:16px; margin-bottom:12px; }
 .connect-stage .cn-jewel{
-  font-size:22px; line-height:1.4; color:var(--cn-emerald);
-  text-shadow:0 0 16px rgba(52,211,153,.8); flex:none;
+  font-size:22px; line-height:1.4; color:var(--door);
+  text-shadow:0 0 16px var(--door); flex:none;
+  transition:color .22s ease, text-shadow .25s ease, opacity .22s ease;
 }
-.connect-stage .cn-door.design .cn-jewel{ color:#5a605d; text-shadow:none; }
+.connect-stage .cn-door.design .cn-jewel{ color:#dfe3e8; text-shadow:none; opacity:.65; }
+.connect-stage .cn-door.design:hover .cn-jewel{ color:var(--door); text-shadow:0 0 16px var(--door); opacity:1; }
 .connect-stage .cn-namewrap{ flex:1; min-width:0; }
 .connect-stage .cn-name{ font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.01em; margin:0 0 4px; color:#fff; }
-.connect-stage .cn-tagline{ font-size:13px; color:var(--cn-emerald); margin:0; font-weight:600; }
+.connect-stage .cn-tagline{ font-size:13px; color:var(--door); margin:0; font-weight:600; transition:color .22s ease; }
 .connect-stage .cn-door.design .cn-tagline{ color:var(--cn-dim); }
+.connect-stage .cn-door.design:hover .cn-tagline{ color:var(--door); }
 .connect-stage .cn-pill{
   flex:none; font-size:10px; font-weight:800; letter-spacing:.16em;
   padding:7px 14px; border-radius:99px;
-  border:1px solid rgba(52,211,153,.5); color:var(--cn-emerald);
-  box-shadow:0 0 14px -4px rgba(52,211,153,.6), inset 0 1px 0 rgba(255,255,255,.15);
-  text-shadow:0 0 8px rgba(52,211,153,.5);
+  border:1px solid color-mix(in srgb, var(--door) 55%, transparent); color:var(--door);
+  box-shadow:0 0 14px -4px var(--door), inset 0 1px 0 rgba(255,255,255,.15);
+  text-shadow:0 0 8px var(--door);
 }
 .connect-stage .cn-pill.design{
   border-color:rgba(255,255,255,.25); color:var(--cn-dim);
@@ -80,8 +87,16 @@
 .connect-stage .cn-caps-label{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--cn-dim); margin-right:4px; }
 .connect-stage .cn-cap{
   font-size:10.5px; font-weight:700; letter-spacing:.08em; color:#e8f5ee;
-  border:1px solid rgba(52,211,153,.35); border-radius:99px; padding:6px 12px;
-  background:rgba(52,211,153,.08);
+  border:1px solid color-mix(in srgb, var(--door) 38%, transparent); border-radius:99px; padding:6px 12px;
+  background:color-mix(in srgb, var(--door) 9%, transparent);
+  transition:border-color .22s ease, background .22s ease;
+}
+.connect-stage .cn-door.design .cn-cap{
+  border-color:rgba(255,255,255,.16); background:transparent;
+}
+.connect-stage .cn-door.design:hover .cn-cap{
+  border-color:color-mix(in srgb, var(--door) 38%, transparent);
+  background:color-mix(in srgb, var(--door) 9%, transparent);
 }
 .connect-stage .cn-auth{ font-size:13.5px; line-height:1.6; color:var(--cn-dim); margin:0 0 20px; max-width:720px; }
 .connect-stage .cn-auth strong{ color:#fff; font-weight:800; }
@@ -89,7 +104,7 @@
 /* actions — Shawn's button law: silver at rest, emerald on highlight */
 .connect-stage .cn-actions{ display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
 .connect-stage .cn-connect{
-  --glow:var(--cn-emerald);
+  --glow:var(--door);
   padding:13px 30px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.12em;
   cursor:pointer; font-family:inherit; color:#fff;
   background:#060807; border:1px solid rgba(232,234,242,.5);
@@ -99,17 +114,17 @@
 }
 .connect-stage .cn-connect:hover, .connect-stage .cn-connect:focus-visible{
   border-color:var(--glow); transform:translateY(-1px); outline:none;
-  text-shadow:0 0 10px rgba(52,211,153,.6);
+  text-shadow:0 0 10px var(--glow);
   box-shadow:0 0 24px -4px var(--glow), inset 0 0 16px -8px var(--glow), inset 0 1px 0 rgba(255,255,255,.15);
 }
 
 /* honest inline notice — the button's real consequence when no handler is wired */
 .connect-stage .cn-notice{
-  border:1px solid rgba(52,211,153,.35); border-radius:16px; padding:18px 22px;
-  background:rgba(52,211,153,.06); max-width:640px;
-  box-shadow:0 0 24px -8px rgba(52,211,153,.4);
+  border:1px solid color-mix(in srgb, var(--door) 38%, transparent); border-radius:16px; padding:18px 22px;
+  background:color-mix(in srgb, var(--door) 7%, transparent); max-width:640px;
+  box-shadow:0 0 24px -8px var(--door);
 }
-.connect-stage .cn-notice-title{ font-size:11px; font-weight:800; letter-spacing:.16em; color:var(--cn-emerald); margin:0 0 8px; }
+.connect-stage .cn-notice-title{ font-size:11px; font-weight:800; letter-spacing:.16em; color:var(--door); margin:0 0 8px; }
 .connect-stage .cn-notice-text{ font-size:14px; line-height:1.6; color:#d7dcd8; margin:0 0 14px; }
 .connect-stage .cn-notice-close{
   padding:9px 20px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:.12em;
@@ -120,8 +135,8 @@
   transition:border-color .22s ease, box-shadow .25s ease, transform .15s ease;
 }
 .connect-stage .cn-notice-close:hover, .connect-stage .cn-notice-close:focus-visible{
-  border-color:var(--cn-emerald); transform:translateY(-1px); outline:none;
-  box-shadow:0 0 24px -4px var(--cn-emerald), inset 0 1px 0 rgba(255,255,255,.15);
+  border-color:var(--door); transform:translateY(-1px); outline:none;
+  box-shadow:0 0 24px -4px var(--door), inset 0 1px 0 rgba(255,255,255,.15);
 }
 
 /* footer law */

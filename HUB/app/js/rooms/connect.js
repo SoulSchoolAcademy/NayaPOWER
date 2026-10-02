@@ -65,6 +65,20 @@
     return DOOR_COPY[id] || { tagline:'A connection door.', plain:'A registered way for Naya to reach an outside service.', authority:'LAW decides permitted use.' };
   }
 
+  /* color language: each door owns a stable color (keyed by door id, never by
+     list index). Live doors burn in their color; doors in design stay white. */
+  var DOOR_COLORS = {
+    'DOOR-GITHUB':   '#a371f7',
+    'DOOR-MCP':      '#fb8500',
+    'DOOR-AI':       '#f72585',
+    'DOOR-DATA':     '#3ecf8e',
+    'DOOR-EMAIL':    '#4cc9f0',
+    'DOOR-CALENDAR': '#ef476f',
+    'DOOR-VOICE':    '#2dd4bf',
+    'DOOR-WEB':      '#60a5fa',
+    'DOOR-NAYA':     '#ffd166'
+  };
+
   function capLabel(c){
     return String(c||'').replace(/_/g,' ').toUpperCase();
   }
@@ -115,6 +129,8 @@
   function doorBoard(el, d, onConnect){
     var copy = copyFor(d.id);
     var board = el('article','cn-door '+d.statusKind);
+    /* the door's own stable color; design doors rest white and ignite on hover */
+    board.style.setProperty('--door', DOOR_COLORS[d.id] || '#34d399');
 
     var top = el('div','cn-door-top');
     var jewel = el('span','cn-jewel',''); jewel.textContent = d.statusKind==='live' ? '\u25CF' : '\u25CB';
