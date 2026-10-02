@@ -80,6 +80,40 @@ def main():
     assert 'Smart Share' not in src, 'stale Smart Share remains'
     print('renamed Smart Share -> Smart Connect everywhere')
 
+    # 1f. IB → feed pipeline (the TRIGGER). Intelligent Blocks written to
+    #     BRAIN/04-INTELLIGENCE/SMART-NOTES/** become feed blocks in the Hub's
+    #     .blocks container. The Hub is the OUTPUT; this injection is the
+    #     event fan-out. Production trigger: GitHub Actions on push to
+    #     SMART-NOTES/**.
+    import subprocess as _sp
+    _r = _sp.run(['python3', os.path.join(BUILD, 'ib-ingest.py')],
+                 capture_output=True, text=True)
+    print(_r.stdout.strip().splitlines()[-2:])
+    assert _r.returncode == 0, 'ib-ingest failed: ' + _r.stderr[:300]
+    _ib = open(os.path.join(BUILD, 'ib-blocks.html')).read().strip()
+    _bt = '<div class="blocks" id="blocks">'
+    assert _bt in src, '.blocks container not found'
+    _marker = '<!-- IB-FEED: live blocks from the IB pipeline (appended after curated blocks) -->'
+    if _ib:
+        # Append BEFORE the closing </div> of #blocks (not at the top):
+        # her normalize scripts assume index 0 is her curated lead block and
+        # rewrite its title. Our blocks live after hers, titles intact.
+        _bi = src.find(_bt)
+        _depth, _close = 0, None
+        for _m in re.finditer(r'</?div\b', src[_bi:]):
+            if _m.group(0) == '<div':
+                _depth += 1
+            else:
+                _depth -= 1
+                if _depth == 0:
+                    _close = _bi + _m.start()
+                    break
+        assert _close is not None, '#blocks close not found'
+        src = src[:_close] + '\n' + _marker + '\n' + _ib + '\n' + src[_close:]
+        print('ib-feed: appended %d IB blocks after curated blocks'
+              % _ib.count('<article class="block ib-block"'))
+    else:
+        print('ib-feed: no IB blocks (empty source)')
     # 1e. Scope repair: her base splits room functions across two IIFE closures.
     #     connections()/mail() were defined only in the first closure, but
     #     render(page) lives in the second -- so render() threw ReferenceError.
