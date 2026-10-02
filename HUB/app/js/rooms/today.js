@@ -1,24 +1,26 @@
 /* ═══════════════════════════════════════════════════════════════════
-   YOUR INTELLIGENCE TODAY — v4 · director's correction (2026-10-02)
-   - No manufactured primary action. The ranking IS the intelligence:
-     the system ranks the day's intelligence by value and declares #1
-     TOP INTELLIGENCE. No purple button.
-   - No decorative sections. Anything that duplicates another section or
-     does nothing when clicked is cut.
-   - Search: filter the day's plays by title, call, nutshell.
-   Composition: ORIENT → SEARCH → NOW → WATCH → WAITING → REMEMBER → PROOF.
+   YOUR INTELLIGENCE TODAY — v5 · one board language
+   Director's ruling (2026-10-02): "the same visual language, the same
+   style, the same look. If you're going to change it, then you have to
+   change everything."
 
-   Color jobs (every pixel named): magenta #d86cff signs the ROOM
-   (human significance — eyebrows, scoreline, orient edge, TOP tag);
-   per-play edge tone = the object's stable identity; gold = turning
-   points and carried-forward (consequence/value). No modes. No faked
-   content. Every control does something real.
+   Every play is a .block.naya509-board — the reference board anatomy,
+   quoted verbatim and scoped to this room: blockTop (glyph + title +
+   meta + truth pills) → the announcer's call → the nutshell box →
+   the full ten-layer intelligent block (on open) → actions →
+   blockFoot. Opening a play renders the SAME intelligent-block
+   language as the main page — not a second presentation.
+
+   Composition: ORIENT → SEARCH → NOW → WATCH → WAITING → REMEMBER
+   → PROOF. The ranking IS the intelligence (#1 wears TOP
+   INTELLIGENCE). No manufactured actions. No modes.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
 
+  /* The intelligent-block layers, in reference order. The nutshell is
+     shown in its own box above; the open state renders the rest. */
   const LAYERS=[
-    ['nutshell','IN A NUTSHELL',''],
     ['human','HUMAN NOTE','HUMAN INPUT'],
     ['child','CHILD','SIMPLIFIED'],
     ['grandma','GRANDMA NOTE','WHY NOTICE?'],
@@ -126,7 +128,7 @@
     return (p.title+' '+(p.call||'')+' '+(p.layers.nutshell||'')).toLowerCase().includes(q);
   }
 
-  /* ——— NOW: what changed — ranked by value, #1 declared ——— */
+  /* ——— NOW: what changed — ranked boards, reference language ——— */
   function nowBlock(el){
     const block=el('div','now-block');
     const matchLine=el('p','match-line',''); matchLine.id='today-match-line';
@@ -162,59 +164,80 @@
     hits.forEach(x=>river.appendChild(play(el,x.p,x.i)));
   }
 
+  /* ——— THE BOARD — reference anatomy, quoted verbatim ——— */
   function play(el,p,rank){
-    const a=el('article','play'+(p.turning?' play-turning':''));
+    const tone=toneFor(p);
+    const nn=String(rank+1).padStart(2,'0');
+    const a=el('article','block naya509-board');
     a.id='play-'+p.id;
-    a.style.setProperty('--tone',toneFor(p));
+    a.style.setProperty('--tone',tone);
 
-    const brow=el('div','play-brow');
-    const rankEl=el('span','play-rank',''); rankEl.textContent=String(rank+1).padStart(2,'0');
-    const when=el('span','play-when',''); when.textContent=p.when||'TODAY';
-    brow.appendChild(rankEl); brow.appendChild(when);
+    const inner=el('div','blockInner');
+
+    /* blockTop: identity (rank glyph + title + meta) · truth pills */
+    const top=el('div','blockTop');
+    const ident=el('div','identity');
+    const glyph=el('div','glyph',''); glyph.textContent=nn;
+    glyph.setAttribute('aria-hidden','true');
+    const titleWrap=el('div','');
+    const h3=el('h3',''); h3.textContent=p.title;
+    const meta=el('div','meta');
+    const mWhen=el('span',''); mWhen.textContent=p.when||'TODAY';
+    const mPlay=el('span',''); mPlay.textContent='PLAY '+nn;
+    meta.appendChild(mWhen); meta.appendChild(mPlay);
+    titleWrap.appendChild(h3); titleWrap.appendChild(meta);
+    ident.appendChild(glyph); ident.appendChild(titleWrap);
+
+    const pills=el('div','pills');
     if(rank===0){
-      const top=el('span','top-tag',''); top.textContent='TOP INTELLIGENCE';
-      brow.appendChild(top);
+      const t=el('span','truth truth-top',''); t.textContent='TOP INTELLIGENCE';
+      pills.appendChild(t);
     }
     if(p.turning){
-      const tag=el('span','play-turning-tag',''); tag.textContent='TURNING POINT';
-      brow.appendChild(tag);
+      const t=el('span','truth truth-turning',''); t.textContent='TURNING POINT';
+      pills.appendChild(t);
     }
-    a.appendChild(brow);
+    top.appendChild(ident);
+    if(pills.children.length)top.appendChild(pills);
+    inner.appendChild(top);
 
-    const t=el('h2','play-title',''); t.textContent=p.title;
-    a.appendChild(t);
+    /* the announcer's call */
     if(p.call){
-      const c=el('p','play-call',''); c.textContent=p.call;
-      a.appendChild(c);
-    }
-    if(p.layers.nutshell){
-      const n=el('p','play-nut',''); n.textContent=p.layers.nutshell;
-      a.appendChild(n);
+      const c=el('p','call',''); c.textContent=p.call;
+      inner.appendChild(c);
     }
 
+    /* the nutshell box */
+    if(p.layers.nutshell){
+      const nut=el('div','nutshell');
+      const b=el('b',''); b.textContent='IN A NUTSHELL';
+      const par=el('p',''); par.textContent=p.layers.nutshell;
+      nut.appendChild(b); nut.appendChild(par);
+      inner.appendChild(nut);
+    }
+
+    /* the full intelligent block — same language as the main page */
     const opened=p.id===openPlayId;
     if(opened){
-      const deep=el('div','play-depth');
-      LAYERS.forEach(([key])=>{
-        if(key!=='nutshell'&&p.layers[key]) deep.appendChild(makeLayer(el,key,p.layers[key]));
+      const layers=el('div','layers');
+      LAYERS.forEach(([key,label,sub])=>{
+        if(p.layers[key])layers.appendChild(makeLayer(el,key,label,sub,p.layers[key],tone));
       });
-      const tools=el('div','play-tools');
-      const ev=el('button','play-tool','Evidence'); ev.type='button';
-      ev.addEventListener('click',e2=>{e2.stopPropagation();openEvidence(p);});
-      tools.appendChild(ev);
-      deep.appendChild(tools);
-      a.appendChild(deep);
+      inner.appendChild(layers);
     }
 
-    const foot=el('div','play-foot');
+    /* actions — every button does something real */
+    const actions=el('div','actions');
+    const ev=el('button','action','EVIDENCE'); ev.type='button';
+    ev.setAttribute('aria-label','Open evidence for: '+p.title);
+    ev.addEventListener('click',e2=>{e2.stopPropagation();openEvidence(p);});
     const isOn=carried.includes(p.id);
-    const carry=el('button','carry-toggle'+(isOn?' on':''),'');
+    const carry=el('button','action'+(isOn?' carry-on':''),'');
     carry.type='button';
+    carry.textContent=isOn?'\u2605 CARRIED FORWARD':'CARRY FORWARD';
     carry.setAttribute('aria-pressed',isOn?'true':'false');
     carry.setAttribute('aria-label',(isOn?'Remove from tomorrow\u2019s lineup: ':'Carry into tomorrow: ')+p.title);
-    const dot=el('span','carry-dot',''); carry.appendChild(dot);
-    const clab=el('span','',''); clab.textContent=isOn?'Carried forward':'Carry forward';
-    carry.appendChild(clab);
+    if(isOn)carry.style.setProperty('--action-color','#e8b64c');
     carry.addEventListener('click',e2=>{
       e2.stopPropagation();
       const ix=carried.indexOf(p.id);
@@ -222,10 +245,16 @@
       const stage=a.closest('.today-stage');
       renderAll(el,stage);
     });
-    foot.appendChild(carry);
-    const hint=el('span','play-hint',''); hint.textContent=opened?'Close':'Open the note';
-    foot.appendChild(hint);
-    a.appendChild(foot);
+    actions.appendChild(ev); actions.appendChild(carry);
+    inner.appendChild(actions);
+
+    const foot=el('div','blockFoot');
+    const fL=el('span',''); fL.textContent='YOUR INTELLIGENCE TODAY';
+    const fR=el('span',''); fR.textContent='INTELLIGENCE EVENT \u00B7 PLAY '+nn;
+    foot.appendChild(fL); foot.appendChild(fR);
+    inner.appendChild(foot);
+
+    a.appendChild(inner);
 
     const toggle=()=>{
       openPlayId=opened?null:p.id;
@@ -239,9 +268,22 @@
     };
     a.setAttribute('tabindex','0'); a.setAttribute('role','button');
     a.setAttribute('aria-expanded',opened?'true':'false');
-    a.setAttribute('aria-label',(opened?'Close ':'Open ')+p.title);
+    a.setAttribute('aria-label',(opened?'Close ':'Open the full note: ')+p.title);
     a.addEventListener('click',toggle);
     a.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+    return a;
+  }
+
+  function makeLayer(el,key,label,sub,text,tone){
+    const a=el('article','layer');
+    a.style.setProperty('--layer',tone);
+    const head=el('div','layerHead');
+    const dot=el('span','dot',''); dot.setAttribute('aria-hidden','true');
+    const b=el('b',''); b.textContent=label;
+    const st=el('span','state',''); st.textContent=sub;
+    head.appendChild(dot); head.appendChild(b); head.appendChild(st);
+    const body=el('div','layerBody',''); body.textContent=text;
+    a.appendChild(head); a.appendChild(body);
     return a;
   }
 
@@ -320,22 +362,11 @@
     return box;
   }
 
-  function makeLayer(el,key,text){
-    const found=LAYERS.find(l=>l[0]===key);
-    const label=found?found[1]:key.toUpperCase();
-    const sub=found?found[2]:'';
-    const d=el('div','nlayer');
-    const lab=el('p','nlayer-label','');
-    lab.innerHTML='<strong>'+esc(label)+'</strong>'+(sub?'<span>'+esc(sub)+'</span>':'');
-    const txt=el('p','nlayer-text',''); txt.textContent=text;
-    d.appendChild(lab); d.appendChild(txt);
-    return d;
-  }
-
   function normalize(o,K){
     const src=o.layers||o.intelligent_block||o.content||{};
+    const keys=['nutshell','human','child','grandma','naya','machine','learning','means','value'];
     const layers={};
-    LAYERS.forEach(([key])=>{
+    keys.forEach(key=>{
       const v=o[key]??src[key];
       if(typeof v==='string'&&v.trim()) layers[key]=v.trim();
     });
