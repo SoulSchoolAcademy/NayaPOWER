@@ -143,10 +143,10 @@ Deno.serve(async(req)=>{
       if(!authority.ok) return json({ok:false,status:"BLOCKED",error:authority.reason},403);
       const universe=await readEligibleUniverse(admin);
       // Replay the selection-time, never wall-clock now: temporal gates must
-      // be evaluated exactly as they were at selection. Ratified #1136 makes
-      // current participation distinct from historical acceptance of derived
-      // intelligence, so temporal replay does not perform a retroactive
-      // participation check. Fallback: recorded selection_now → receipt created_at
+      // be evaluated exactly as they were at selection. This replay is concerned
+      // only with the recorded graph-selection state; collective participation
+      // and revocation semantics are governed separately and must not be inferred
+      // here as constitutional law. Fallback: recorded selection_now → receipt created_at
       // (legacy receipts, pre-V2 wiring) → wall clock as last resort.
       const recordedNowRaw=receipt.evidence?.selection_now??receipt.created_at??null;
       const recordedNowMs=recordedNowRaw!==null?Date.parse(String(recordedNowRaw)):NaN;

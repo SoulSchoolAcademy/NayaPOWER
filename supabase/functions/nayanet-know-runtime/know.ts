@@ -195,7 +195,8 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
 //     (V2 temporal_contract: null valid_until means open-ended);
 //   - non-PRIVATE visibility requires an explicit consent_ref. Current
 //     participation state is not a retroactive read gate for already accepted
-//     identity-safe derived intelligence (ratified #1136);
+//     identity-safe derived intelligence. Collective participation/revocation semantics
+//     are governed separately; this selector must not infer constitutional ratification.
 //   - NOT_APPLICABLE edges never influence retrieval; UNKNOWN stays UNKNOWN
 //     (V2 applicability_contract: retrieval does not imply applicability).
 // Malformed V2 values fail closed. No gate creates authority: admission is
