@@ -166,7 +166,56 @@ function HubView(params) {
     trapFocus(event);
   });
 
-  const main = el('main', 'main');
+  function modeZone() {
+    const zone=el('div','mode-zone');
+    zone.setAttribute('role','tablist');
+    zone.setAttribute('aria-label','Intelligence mode');
+
+    const label=el('span','mode-zone-label','SHOWING');
+    zone.appendChild(label);
+
+    R.MODES.forEach(mode=>{
+      const active=R.mode===mode.id;
+      const button=el('button','mode-btn'+(active?' active':''));
+      button.type='button';
+      button.dataset.mode=mode.id;
+      button.style.setProperty('--mode-accent',mode.accent);
+      button.setAttribute('role','tab');
+      button.setAttribute('aria-selected',active?'true':'false');
+      button.setAttribute('tabindex',active?'0':'-1');
+      button.innerHTML='<span class="mode-name">'+mode.name+'</span><span class="mode-hint">'+mode.hint+'</span>';
+      button.setAttribute('aria-label',mode.name+' mode — '+mode.desc);
+
+      const activate=()=>{
+        if(R.mode===mode.id) return;
+        R.setMode(mode.id);
+        window.NayaRouter.render();
+        requestAnimationFrame(()=>{
+          const current=document.querySelector('.mode-btn.active');
+          if(current) current.focus({preventScroll:true});
+        });
+      };
+
+      button.addEventListener('click',activate);
+      button.addEventListener('keydown',event=>{
+        if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        event.preventDefault();
+        const buttons=[...zone.querySelectorAll('.mode-btn')];
+        const index=buttons.indexOf(button);
+        let next=index;
+        if(event.key==='ArrowLeft') next=(index-1+buttons.length)%buttons.length;
+        if(event.key==='ArrowRight') next=(index+1)%buttons.length;
+        if(event.key==='Home') next=0;
+        if(event.key==='End') next=buttons.length-1;
+        buttons[next].focus();
+        buttons[next].click();
+      });
+      zone.appendChild(button);
+    });
+    return zone;
+  }
+
+  const main = el('main', 'main'+(isMainShow?' main-show':''));
 
   if (!isMainShow) {
     const head = el('div', 'room-head');
@@ -177,6 +226,8 @@ function HubView(params) {
       '<p class="room-desc">' + roomDesc(room.id) + '</p>';
     main.appendChild(head);
   }
+
+  if (isMainShow) main.appendChild(modeZone());
 
   const body = el('div', 'room-body' + (isMainShow ? ' mainshow-body' : ''));
   body.style.setProperty('--room-accent', room.accent);
@@ -190,7 +241,7 @@ function HubView(params) {
 
   function roomDesc(id) {
     return {
-      today: 'Your day, answered by the intelligence. What matters, what changed, what deserves you.',
+      today: 'Your day, answered by the intelligence. What matters, what changed, and what deserves your attention.',
       reports: 'Proof, not promises. Every report carries its evidence and receipts.',
       library: 'Everything retained, organized by what it means — not where it happened to land.',
       connect: 'One brain. Many doors. Choose how humans, agents, apps, and systems connect to the same intelligence.',
