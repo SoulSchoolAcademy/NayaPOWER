@@ -2,6 +2,14 @@
 
 **Purpose:** define how every primary Hub room functions as a complete intelligent environment.
 
+## 0. Hub projection boundary
+
+**The Hub is an output/projection experience over canonical intelligence.** It does not own Smart Note creation, canonical report generation, or manual activity publishing. Those are upstream Naya/runtime processes. Hub rooms receive, organize, explain, navigate and act on projected intelligence without becoming a second source of truth.
+
+Canonical projected input classes: **Smart Notes / Intelligent Blocks · Activity · Intelligence Reports**.
+
+See `HUB/INTELLIGENCE-PROJECTION-CONTRACT-V1.md`.
+
 ## 1. Room = experience + instrument + causal function
 
 A room is complete only when all three are true:
@@ -83,7 +91,6 @@ Where applicable, intelligence objects may expose:
 - **Open Source / Evidence**
 - **Open Relationships**
 - **Share / Connect** (governed)
-- **Capture follow-up Smart Note**
 - **Open in originating room**
 
 Low-value social reactions should not crowd every surface. Actions are context-sensitive.
@@ -143,4 +150,4 @@ A room cannot pass until:
 
 Primary rail remains the canonical eleven-room architecture.
 
-Smart Notes is a universal capture system. System health is an advanced control/diagnostic surface. Promote either to primary-room status only through an explicit product decision backed by evidence.
+Smart Notes is an **upstream Naya intelligence-production process whose results project into the Hub**, not a Hub capture room/control. System health is an advanced control/diagnostic surface. Promote either concept to primary-room status only through an explicit product decision backed by evidence.
