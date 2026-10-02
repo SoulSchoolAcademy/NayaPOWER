@@ -77,7 +77,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE FILM ROOM / TIME MACHINE.** Reports appear as indigo editorial objects with thesis-first identity — closer to film posters or chapters than spreadsheet tiles. Opening one should feel like entering a story through time: conclusion first, then evidence, drivers, uncertainty and proof unfolding beneath it. Ceremony serves comprehension, never spectacle.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -300,6 +300,25 @@ And the current global acceptance bar applies:
 - Exact chart grammar is intentionally not frozen until the first real report outcome is observed.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+A month of scattered events resolves into one elegant thesis with an attached evidence trail; the human can move from “what happened?” to “why?” to “show me the proof” without leaving the narrative.
+
+### Best-of intelligence to synthesize
+- **Pentagram:** data as human narrative.
+- **Oura / Instrument:** layered interpretation depth.
+- **Stripe:** operational precision and trustworthy state.
+- **Work & Co:** whole-system coherence.
+
+### Beyond-benchmark hypothesis
+Reports become smarter when every major conclusion is connected to provenance, uncertainty, causal limits and an actionable next move instead of merely presenting retrospective charts.
+
+### Proof boundary
+Require comprehension tests, evidence drill-down success, claim/provenance correctness and actionability evidence.
 
 ---
 
