@@ -35,6 +35,12 @@ Main body:
 
 Visualizations appear only when they clarify meaning. No ornamental charts.
 
+## Projection boundary
+
+Reports are created upstream through the governed intelligence-report pipeline and automatically mirrored into the Hub. The Reports room opens, compares, explains, searches and traces reports; it does not become the canonical report author.
+
+A new/updated report should arrive through the projection/event adapter without a manual Hub upload or client-local generation step.
+
 ## Report types
 
 Time:
@@ -59,7 +65,6 @@ Purpose:
 - **Save / Add to List**
 - **Share** under governance
 - **Export** where supported
-- **Generate / refresh report** only through real runtime capability
 
 ## Compare mode
 
