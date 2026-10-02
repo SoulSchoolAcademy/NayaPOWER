@@ -1,21 +1,16 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ROOM 01 — SMART FEED · THE MAIN STAGE · v3
-   Oscar convergence pass (Naya 3 reports, 2026-10-02):
-   P1-1 CAUSAL ACTION — every block carries one real action (decide /
-         evidence / ask / save) with honest behavior + receipt. No toasts.
-   P1-2 WHY-NOW — ranking reason is first-class on every block.
-   P1-3 CROSS-REFERENCE — identity is navigable: source, evidence,
-         related blocks, people, list/space/report, prior/next events.
-   P1-4 MODE DOCK — Collective / Personal / Activity as ONE sticky zone,
-         each a real pipeline switching real data.
-   Visual language preserved: V7 intelligent blocks, jewel system, tone flow.
+   ROOM 01 — SMART FEED · THE MAIN SHOW · v4
+   Per the binding design law (Ultimate Contract, PR #1331, §8.2 / §14B.2):
+   Presence → recognition → the river (ONE hero region, the rest
+   subordinate) → the mode dock (Collective / Personal / Activity, ONE
+   sticky zone) → Ask Naya. Full-bleed scroll. Distilled content. No KPI
+   wall. No dashboard grid. No navigation wall before the intelligence.
+   The river shows snapshots — the in-a-nutshell of each smart node for
+   the day. Depth (why-now, layers, action, refs, evidence) opens on tap.
    ═══════════════════════════════════════════════════════════════════ */
 (function(){
   'use strict';
 
-  /* The V7 layer order. Nutshell is always visible; the rest live behind
-     "Go deeper" and only render when the object actually carries them —
-     except MACHINE NOTE, which is honestly derived from provenance facts. */
   const LAYERS=[
     ['nutshell','IN A NUTSHELL',''],
     ['human','HUMAN NOTE','HUMAN INPUT'],
@@ -28,8 +23,6 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
-  /* The V7 tone flow: each board takes the next tone in sequence, then cycles.
-     One color, one block — never monochrome wallpaper. */
   const TONES=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c'];
 
   const JEWEL='<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">'
@@ -43,21 +36,20 @@
     {id:'activity',label:'Activity'}
   ];
 
-  /* Preview-local working state. In production these write through the
-     governed runtime; here they are real local behavior, labeled as such. */
   const savedList=[];
   const decisions={};
   let allItems=[];
   let currentMode='personal';
+  let expandedId=null;
 
   function FeedRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit;
     const stage=el('section','feed-stage');
-    stage.setAttribute('aria-label','Smart Feed — your intelligence today');
+    stage.setAttribute('aria-label','Smart Feed — the Main Show');
     stage.appendChild(greeting(el));
+    const heroZone=el('div','feed-hero'); stage.appendChild(heroZone);
     stage.appendChild(modeDock(el));
-    const zone=el('div','feed-blocks');
-    stage.appendChild(zone);
+    const river=el('div','feed-river'); stage.appendChild(river);
     stage.appendChild(todayListBox(el));
     const foot=el('div','feed-stage-foot');
     const ask=el('button','feed-ask','<span>Ask Naya about today</span>');
@@ -70,9 +62,9 @@
     foot.appendChild(ask); foot.appendChild(panel); stage.appendChild(foot);
     stage.appendChild(evDrawer(el));
 
-    K.load(zone,'feed',{limit:25},(payload,list,out)=>{
+    K.load(stage,'feed',{limit:25},(payload,list)=>{
       allItems=(list||[]).map(o=>normalize(o,K));
-      renderMode(el,out);
+      renderShow(el,stage);
     },{
       title:'The stage is quiet',
       body:'There is no qualifying intelligence right now. When something matters, it appears here — ordered for you, never manufactured to fill the space.'
@@ -80,7 +72,7 @@
     return stage;
   }
 
-  /* ——— Stage header. Identity derives dynamically; never hardcoded. ——— */
+  /* ——— Presence → recognition. Quiet. No navigation wall. ——— */
   function greeting(el){
     const h=new Date().getHours();
     const part=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
@@ -90,13 +82,11 @@
     const g=el('h1','feed-greeting',''); g.textContent=who?part+', '+who:part;
     const d=el('p','feed-dateline','');
     d.innerHTML='<span>'+esc(date.toUpperCase())+'</span><span class="feed-dot">·</span><span>YOUR INTELLIGENCE TODAY</span>';
-    const s=el('p','feed-daystate','');
-    s.textContent='What changed, what matters, and what needs you — ordered for you, with the reason you are seeing it and the evidence attached.';
-    wrap.appendChild(g); wrap.appendChild(d); wrap.appendChild(s);
+    wrap.appendChild(g); wrap.appendChild(d);
     return wrap;
   }
 
-  /* ——— P1-4: one sticky mode zone. Three pipelines, real data switch. ——— */
+  /* ——— ONE sticky mode zone, under the top bar ——— */
   function modeDock(el){
     const dock=el('div','feed-modedock');
     dock.setAttribute('role','tablist'); dock.setAttribute('aria-label','Feed mode');
@@ -107,27 +97,72 @@
       b.addEventListener('click',()=>{
         dock.querySelectorAll('.feed-mode').forEach(x=>x.setAttribute('aria-selected','false'));
         b.setAttribute('aria-selected','true');
-        currentMode=m.id;
-        const zone=dock.parentNode.querySelector('.feed-blocks');
-        renderMode(el,zone);
+        currentMode=m.id; expandedId=null;
+        const stage=dock.closest('.feed-stage');
+        renderShow(el,stage);
+        stage.scrollIntoView({block:'start'});
       });
       dock.appendChild(b);
     });
     return dock;
   }
 
-  function renderMode(el,zone){
-    zone.innerHTML='';
+  /* ——— The show: one hero, the rest subordinate snapshots ——— */
+  function renderShow(el,stage){
     const items=allItems.filter(o=>modeOf(o)===currentMode);
-    const n=el('p','feed-countline','');
-    n.innerHTML='<strong>'+items.length+'</strong>&nbsp;&nbsp;'+currentMode.toUpperCase()+' INTELLIGENCE BLOCK'+(items.length===1?'':'S');
-    zone.appendChild(n);
+    const heroZone=stage.querySelector('.feed-hero');
+    const river=stage.querySelector('.feed-river');
+    heroZone.innerHTML=''; river.innerHTML='';
     if(!items.length){
-      const p=el('p','feed-daystate',''); p.style.marginTop='24px';
+      const p=el('p','feed-daystate','');
       p.textContent='Nothing in this stream right now. When something matters, it appears here — never manufactured to fill the space.';
-      zone.appendChild(p); return;
+      river.appendChild(p); return;
     }
-    items.forEach((b,i)=>zone.appendChild(block(el,b,i,i===0)));
+    const [hero,...rest]=items;
+    heroZone.appendChild(block(el,hero,0,true));
+    if(rest.length){
+      const k=el('p','river-kicker','');
+      k.innerHTML='<span>'+rest.length+'</span>&nbsp;&nbsp;MORE TODAY';
+      river.appendChild(k);
+      rest.forEach((b,i)=>{
+        if(b.id===expandedId) river.appendChild(expandedBlock(el,b,i+1));
+        else river.appendChild(snapshot(el,b,i+1));
+      });
+    }
+  }
+
+  /* Subordinate snapshot: the in-a-nutshell of the node. One calm line. */
+  function snapshot(el,b,idx){
+    const s=el('button','snap',''); s.type='button';
+    s.style.setProperty('--tone',TONES[idx%TONES.length]);
+    s.setAttribute('aria-expanded','false');
+    s.innerHTML='<span class="snap-dot" aria-hidden="true"></span>'
+      +'<span class="snap-main"><span class="snap-title">'+esc(b.title)+'</span>'
+      +'<span class="snap-nut">'+esc(b.layers.nutshell||'')+'</span></span>'
+      +'<span class="snap-chev" aria-hidden="true">▾</span>';
+    s.setAttribute('aria-label','Open: '+b.title);
+    s.addEventListener('click',()=>{
+      expandedId=b.id;
+      const stage=s.closest('.feed-stage');
+      renderShow(el,stage);
+      const t=stage.querySelector('#block-'+CSS.escape(b.id));
+      if(t){t.scrollIntoView({behavior:'smooth',block:'center'});}
+    });
+    return s;
+  }
+
+  function expandedBlock(el,b,idx){
+    const wrap=el('div','snap-open');
+    wrap.appendChild(block(el,b,idx,false));
+    const less=el('button','snap-less',''); less.type='button';
+    less.innerHTML='<span>Show less</span><span class="chev">▴</span>';
+    less.addEventListener('click',()=>{
+      expandedId=null;
+      const stage=wrap.closest('.feed-stage');
+      renderShow(el,stage);
+    });
+    wrap.appendChild(less);
+    return wrap;
   }
 
   function modeOf(b){
@@ -171,7 +206,6 @@
 
   function hashCode(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0;}return h;}
 
-  /* MACHINE NOTE is derived from provenance facts, never invented. */
   function evidenceLine(o){
     const bits=[];
     const src=typeof o.source==='string'?o.source:(o.source&&o.source.name);
@@ -187,7 +221,7 @@
       : 'No provenance is attached to this object, so no evidence boundary can be stated.';
   }
 
-  /* ——— Block renderer ——— */
+  /* ——— Full block: hero or expanded snapshot. Depth lives here, on demand. ——— */
   function block(el,b,idx,lead){
     const a=el('article','iblock'+(lead?' iblock-lead':''));
     a.id='block-'+b.id;
@@ -209,17 +243,14 @@
     head.appendChild(jewel); head.appendChild(htext);
     a.appendChild(head);
 
-    /* P1-2: why now, first-class. */
     if(b.whyNow){
       const w=el('p','iblock-whynow','');
       w.innerHTML='<strong>WHY NOW</strong><span>'+esc(b.whyNow)+'</span>';
       a.appendChild(w);
     }
 
-    /* Nutshell — always visible. */
     if(b.layers.nutshell) a.appendChild(makeLayer(el,'ilayer-nutshell','nutshell',b.layers.nutshell));
 
-    /* Deeper layers — behind an honest toggle, only if any exist. */
     const deepKeys=LAYERS.map(l=>l[0]).filter(k2=>k2!=='nutshell'&&b.layers[k2]);
     if(deepKeys.length){
       const deeper=el('button','feed-deeper','');
@@ -237,7 +268,7 @@
       a.appendChild(layersEl);
     }
 
-    /* P1-1: the one obvious action — real behavior, never a toast. */
+    /* The one obvious action — real behavior, never a toast. */
     const aw=el('div','iblock-actionrow');
     const acted=decisions[b.id];
     const btn=el('button','feed-btn primary',''); btn.type='button';
@@ -251,13 +282,22 @@
     aw.appendChild(note);
     a.appendChild(aw);
 
-    /* P1-3: cross-references — the identity becomes navigable. */
+    /* Cross-references — the identity becomes navigable. */
     const refs=el('div','iblock-refs');
     refs.appendChild(refBtn(el,'Source note',()=>openEvidence(b)));
     refs.appendChild(refBtn(el,'Evidence',()=>openEvidence(b)));
     b.related.forEach(rid=>{
       const target=allItems.find(x=>x.id===String(rid));
-      if(target) refs.appendChild(refBtn(el,'Related: '+shortTitle(target.title),()=>jumpTo(target.id)));
+      if(target) refs.appendChild(refBtn(el,'Related: '+shortTitle(target.title),()=>{
+        const prev=currentMode, pm=modeOf(target);
+        const finish=()=>jumpTo(target.id);
+        if(pm!==prev){
+          currentMode=pm; expandedId=target.id;
+          const stage=a.closest('.feed-stage');
+          stage.querySelectorAll('.feed-mode').forEach(x=>x.setAttribute('aria-selected',x.dataset.mode===pm?'true':'false'));
+          renderShow(el,stage); finish();
+        }else{ expandedId=target.id; const stage=a.closest('.feed-stage'); renderShow(el,stage); finish(); }
+      }));
     });
     b.people.forEach(pn=>{
       const c=el('span','iblock-ref','');
@@ -288,7 +328,8 @@
   function shortTitle(t){t=String(t||'');return t.length>26?t.slice(0,26)+'…':t;}
   function refBtn(el,label,fn){const b=el('button','iblock-ref','');b.type='button';b.textContent=label;b.addEventListener('click',fn);return b;}
   function jumpTo(rid){
-    const t=document.getElementById('block-'+rid);
+    const sel='#block-'+CSS.escape(rid);
+    const t=document.querySelector(sel);
     if(t){t.scrollIntoView({behavior:'smooth',block:'center'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');}
   }
 
@@ -304,12 +345,10 @@
     return d;
   }
 
-  /* ——— P1-1: real actions. Every action does something observable. ——— */
   function runAction(el,b,btn,row){
     const kind=(b.action&&b.action.kind)||'evidence';
     if(typeof (b.action&&b.action.run)==='function'){ b.action.run(); return; }
     if(kind==='decide'){
-      /* Intelligence → decision → receipt. Real local state, labeled. */
       decisions[b.id]={choice:'APPROVED',at:new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})};
       btn.textContent='Decided: APPROVED'; btn.disabled=true;
       const note=row.querySelector('.iblock-decision');
@@ -357,15 +396,14 @@
     box.appendChild(ul);
   }
 
-  /* ——— P1-3: evidence drawer — provenance chain from real fields. ——— */
   function evDrawer(el){
     const wrap=el('div','ev-wrap','');
     const bd=el('div','ev-backdrop',''); bd.id='ev-backdrop';
     const dr=el('aside','ev-drawer',''); dr.id='ev-drawer';
     dr.setAttribute('aria-label','Evidence'); dr.setAttribute('role','dialog'); dr.setAttribute('aria-modal','true');
     bd.addEventListener('click',closeEvidence);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEvidence();});
     wrap.appendChild(bd); wrap.appendChild(dr);
+    if(!window.__nayaCloseEvidence) window.__nayaCloseEvidence=closeEvidence;
     return wrap;
   }
   function openEvidence(b){
@@ -399,7 +437,6 @@
     if(bd)bd.classList.remove('open');
   }
 
-  /* ——— P1-1: Ask Naya — a real working surface over the loaded stage. ——— */
   function askPanel(el){
     const p=el('div','ask-panel');
     const h=el('h3','','Ask Naya about today');
@@ -424,7 +461,16 @@
       hits.forEach(hit=>{
         const line=el('div','ask-hit','');
         const bb=el('button','',''); bb.type='button'; bb.textContent=hit.b.title;
-        bb.addEventListener('click',()=>jumpTo(hit.b.id));
+        bb.addEventListener('click',()=>{
+          const pm=modeOf(hit.b);
+          if(pm!==currentMode){
+            currentMode=pm; expandedId=hit.b.id;
+            const stage=p.closest('.feed-stage');
+            stage.querySelectorAll('.feed-mode').forEach(x=>x.setAttribute('aria-selected',x.dataset.mode===pm?'true':'false'));
+            renderShow(el,stage);
+          }else{ expandedId=hit.b.id; renderShow(el,p.closest('.feed-stage')); }
+          jumpTo(hit.b.id);
+        });
         line.appendChild(bb);
         const why=el('span','',''); why.textContent=' — '+(hit.b.whyNow||'on this stage');
         line.appendChild(why); hv.appendChild(line);

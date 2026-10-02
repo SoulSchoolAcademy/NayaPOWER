@@ -1,101 +1,66 @@
 /* ═══════════════════════════════════════════════════════════════════
-   SHELL — app frame, left rail, topbar, jewel search
+   SHELL — v4: corner-button shell per the binding design law (14B.1).
+   Top-left → room drawer. Top-right → product drawer. No persistent rail.
    ═══════════════════════════════════════════════════════════════════ */
 
 .shell {
   display: grid;
-  grid-template-columns: 248px 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 64px 1fr;
   grid-template-areas:
-    "rail top"
-    "rail main";
+    "top"
+    "main";
   min-height: 100vh;
 }
 
-/* ——— Left rail ——— */
-.rail {
-  grid-area: rail;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 18px 14px 16px;
-  background: linear-gradient(180deg, #0d0c12f2, #07070bf2);
-  border-right: 1px solid var(--line-soft);
+/* ——— Drawers (replaces the old persistent rail) ——— */
+.drawer {
+  position: fixed; top: 0; bottom: 0; z-index: 70;
+  width: 300px; max-width: 84vw;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 22px 16px 16px;
+  background: linear-gradient(180deg, #0d0c12f8, #07070bf8);
+  border-right: 1px solid var(--line);
   backdrop-filter: blur(14px);
-  overflow-y: auto;
-  z-index: 20;
+  overflow-y: auto; overscroll-behavior: contain;
+  transition: transform var(--dur-med) var(--ease);
+}
+.drawer-left { left: 0; transform: translateX(-102%); box-shadow: 30px 0 60px #000c; }
+.drawer-right { right: 0; transform: translateX(102%); box-shadow: -30px 0 60px #000c; border-right: none; border-left: 1px solid var(--line); }
+.shell[data-drawer="left"] .drawer-left { transform: none; }
+.shell[data-drawer="right"] .drawer-right { transform: none; }
+
+.drawer-kicker {
+  font-size: 10px; letter-spacing: 0.28em; color: var(--muted);
+  padding: 0 10px 10px; margin: 0;
 }
 
-.rail-mark {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 6px 8px 16px;
-}
-.rail-mark .jewel {
-  width: 40px; height: 40px; border-radius: 14px;
-  background:
-    radial-gradient(circle at 32% 28%, #ffffffcc, transparent 42%),
-    conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--blue), var(--teal), var(--green), var(--lime), var(--gold), var(--orange), var(--red), var(--magenta));
-  box-shadow: var(--depth-hi), 0 8px 24px #000a, 0 0 26px #d86cff44;
-  position: relative;
-}
-.rail-mark .jewel::after {
-  content: ""; position: absolute; inset: 0; border-radius: 14px;
-  box-shadow: inset 0 0 0 1px #ffffff2e;
-}
-.rail-mark b { display: block; font-size: 14px; letter-spacing: .14em; }
-.rail-mark small { display: block; color: var(--muted); font-size: 11px; letter-spacing: .22em; }
-
-.rail-btn {
+.drawer-btn {
   --nav: var(--magenta);
   position: relative;
-  min-height: 44px;
-  border: 1px solid var(--line-soft);
+  min-height: 48px;
+  border: 1px solid transparent;
   border-radius: var(--radius-md);
   background: transparent;
-  padding: 0 10px;
-  display: flex; align-items: center; gap: 10px;
-  text-align: left;
-  color: var(--ink-dim);
-  font-size: 12px; font-weight: 800; letter-spacing: .08em;
-  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-med) var(--ease),
-              background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-  overflow: hidden;
-  width: 100%;
+  padding: 0 12px;
+  display: flex; align-items: center; gap: 12px;
+  color: var(--ink-dim); font-size: 14px; text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.rail-btn .ico {
-  width: 30px; height: 30px; border-radius: 10px; flex: none;
-  display: grid; place-items: center;
-  background: linear-gradient(145deg, #ffffff14, #ffffff05);
-  border: 1px solid var(--line-soft);
-  box-shadow: var(--depth-hi);
-  color: var(--nav);
-  transition: box-shadow var(--dur-med) var(--ease), transform var(--dur-fast) var(--ease);
+.drawer-btn .ico { width: 20px; height: 20px; color: var(--nav); flex: none; display: grid; place-items: center; }
+.drawer-btn .ico svg { width: 20px; height: 20px; }
+.drawer-btn:hover { background: #ffffff08; color: var(--ink); }
+.drawer-btn.active {
+  background: #ffffff0a; border-color: var(--line-soft); color: var(--ink);
 }
-.rail-btn .ico svg { width: 16px; height: 16px; }
-.rail-btn:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(145deg, #ffffff0a, transparent);
-  border-color: color-mix(in srgb, var(--nav) 38%, transparent);
-  box-shadow: var(--depth-hi), 0 10px 26px #0009, 0 0 22px color-mix(in srgb, var(--nav) 22%, transparent);
+.drawer-btn.active::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px;
+  border-radius: 3px; background: var(--nav); box-shadow: 0 0 12px var(--nav);
 }
-.rail-btn:hover .ico { transform: translateZ(0) scale(1.06); }
-.rail-btn.active {
-  background: linear-gradient(145deg, #1c1526, #0d0c12);
-  border-color: color-mix(in srgb, var(--nav) 55%, transparent);
-  color: var(--ink);
-  box-shadow: var(--depth-hi), 0 14px 32px #000a,
-              0 0 30px color-mix(in srgb, var(--nav) 26%, transparent);
-}
-.rail-btn.active .ico {
-  background: linear-gradient(145deg, color-mix(in srgb, var(--nav) 30%, #ffffff10), transparent);
-  box-shadow: var(--depth-hi), 0 0 16px color-mix(in srgb, var(--nav) 45%, transparent);
-}
-.rail-privacy {
+.product-btn { letter-spacing: 0.18em; font-size: 12px; font-weight: 700; }
+
+.drawer-privacy {
   margin-top: auto;
   padding: 12px 8px 2px;
   color: var(--muted);
@@ -103,16 +68,61 @@
   border-top: 1px solid var(--line-soft);
 }
 
-/* ——— Topbar ——— */
+/* Backdrop: exactly one nav surface visible. */
+.drawer-backdrop {
+  position: fixed; inset: 0; z-index: 65;
+  background: rgba(3, 3, 6, 0.66);
+  backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur-med) var(--ease);
+}
+.shell[data-drawer] .drawer-backdrop { opacity: 1; pointer-events: auto; }
+/* Scroll lock: opening navigation must not change document width or jump scroll. */
+body.drawer-open { overflow: hidden; }
+  display: flex; align-items: center; gap: 10px;
+  text-align: left;
+  color: var(--ink-dim);
+/* ——— Topbar: two corner controls + brand (no nav wall) ——— */
 .topbar {
   grid-area: top;
-  position: sticky; top: 0; z-index: 10;
+  position: sticky; top: 0; z-index: 40;
   display: flex; align-items: center; gap: 14px;
-  padding: 0 22px;
+  padding: 0 14px;
   background: linear-gradient(180deg, #050507ee, #05050799);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-soft);
 }
+.corner-btn {
+  appearance: none; cursor: pointer;
+  width: 44px; height: 44px; border-radius: 14px;
+  display: grid; place-items: center; color: var(--ink);
+  background: linear-gradient(145deg, #1a1424, #0b0a10);
+  border: 1px solid var(--line); box-shadow: var(--depth-hi), 0 8px 20px #0009;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+.corner-btn:hover { border-color: var(--ink-dim); }
+.corner-btn svg { width: 20px; height: 20px; }
+.corner-btn[aria-expanded="true"] { border-color: var(--green); box-shadow: 0 0 18px rgba(85,227,154,.25); }
+.brand-mark {
+  appearance: none; cursor: pointer; background: none; border: none;
+  display: flex; align-items: center; gap: 11px; padding: 6px 8px;
+  color: var(--ink);
+}
+.brand-jewel {
+  width: 34px; height: 34px; border-radius: 12px; flex: none;
+  background:
+    radial-gradient(circle at 32% 28%, #ffffffcc, transparent 42%),
+    conic-gradient(from 210deg, var(--magenta), var(--purple), var(--indigo), var(--blue), var(--teal), var(--green), var(--lime), var(--gold), var(--orange), var(--red), var(--magenta));
+  box-shadow: var(--depth-hi), 0 8px 24px #000a, 0 0 26px #d86cff44;
+  position: relative;
+}
+.brand-jewel::after {
+  content: ""; position: absolute; inset: 0; border-radius: 12px;
+  box-shadow: inset 0 0 0 1px #ffffff2e;
+}
+.brand-mark b { display: block; font-size: 13px; letter-spacing: .14em; text-align: left; }
+.brand-mark small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .22em; text-align: left; }
 
 .jewel-search {
   flex: 1; max-width: 560px;
@@ -177,37 +187,10 @@
 .room-desc { color: var(--muted); font-size: var(--fs-body); max-width: 640px; }
 
 @media (max-width: 900px) {
-  .shell { grid-template-columns: 1fr; grid-template-areas: "top" "main"; overflow-x: clip; }
-  .rail {
-    position: fixed; left: 0; top: 0; bottom: 0; width: 262px; max-width: 84vw;
-    transform: translateX(-102%);
-    transition: transform var(--dur-med) var(--ease);
-    box-shadow: 30px 0 60px #000c;
-    overflow-y: auto; overscroll-behavior: contain;
-    z-index: 60;
-  }
-  .shell.rail-open .rail { transform: none; }
-  /* Backdrop: the drawer overlays content; exactly one nav surface visible. */
-  .rail-backdrop {
-    position: fixed; inset: 0; z-index: 55;
-    background: rgba(3, 3, 6, 0.66);
-    backdrop-filter: blur(2px);
-    opacity: 0; pointer-events: none;
-    transition: opacity var(--dur-med) var(--ease);
-  }
-  .shell.rail-open .rail-backdrop { opacity: 1; pointer-events: auto; }
-  /* Scroll lock: opening navigation must not change document width or jump scroll. */
-  body.drawer-open { overflow: hidden; }
-  .rail-toggle { display: grid !important; }
   .main { padding: 20px 16px 70px; }
+  .brand-mark small { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rail { transition: none; }
-  .rail-backdrop { transition: none; }
-}
-.rail-toggle {
-  display: none; width: 40px; height: 40px; border-radius: 12px;
-  place-items: center; color: var(--ink);
-  background: linear-gradient(145deg, #1a1424, #0b0a10);
-  border: 1px solid var(--line); box-shadow: var(--depth-hi), 0 8px 20px #0009;
+  .drawer { transition: none; }
+  .drawer-backdrop { transition: none; }
 }

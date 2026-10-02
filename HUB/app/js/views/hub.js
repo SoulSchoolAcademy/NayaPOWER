@@ -1,134 +1,139 @@
-/* HUB — the intelligent cockpit. Rail + topbar + room outlet. */
+/* ═══════════════════════════════════════════════════════════════════
+   HUB SHELL — v4, per the binding design law (Ultimate Contract, PR #1331)
+   14B.1: Top-left → room drawer. Top-right → product/navigation drawer.
+   No persistent rail. The rooms drawer NEVER lists Smart Feed — the feed
+   is the Main Show, not a room. The brand mark returns to the Main Show.
+   Drawer law preserved: exactly one nav surface, backdrop, Escape,
+   scroll lock, focus restore.
+   ═══════════════════════════════════════════════════════════════════ */
 
 function HubView(params) {
   const { el, Icons, toast } = window.NayaUI;
   const R = window.NayaRuntime;
   const activeRoom = params.room || 'feed';
   const room = R.ROOMS.find(r => r.id === activeRoom) || R.ROOMS[0];
+  const isMainShow = room.id === 'feed';
 
   const shell = el('div', 'shell');
 
-  /* ——— Rail ——— */
-  const rail = el('nav', 'rail');
-  rail.setAttribute('aria-label', 'Hub rooms');
-  rail.innerHTML = `
-    <div class="rail-mark">
-      <span class="jewel"></span>
-      <span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>
-    </div>`;
-  R.ROOMS.forEach(r => {
-    const b = el('button', 'rail-btn' + (r.id === room.id ? ' active' : ''));
+  /* ——— Top bar: two corner controls, nothing else competing ——— */
+  const top = el('header', 'topbar');
+  const leftBtn = el('button', 'corner-btn corner-left', Icons.icon('menu'));
+  leftBtn.setAttribute('aria-label', 'Open room navigation');
+  leftBtn.setAttribute('aria-expanded', 'false');
+  const brand = el('button', 'brand-mark', '<span class="brand-jewel"></span><span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>');
+  brand.setAttribute('aria-label', 'NayaNET — back to the Main Show');
+  brand.addEventListener('click', () => { closeDrawers(); window.NayaRouter.navigate('/hub/feed'); });
+  const rightBtn = el('button', 'corner-btn corner-right', Icons.icon('grid'));
+  rightBtn.setAttribute('aria-label', 'Open product navigation');
+  rightBtn.setAttribute('aria-expanded', 'false');
+  leftBtn.addEventListener('click', () => toggleDrawer('left'));
+  rightBtn.addEventListener('click', () => toggleDrawer('right'));
+  top.append(leftBtn, brand, rightBtn);
+
+  /* ——— Left drawer: rooms. Smart Feed is NOT listed — it is the Main Show. ——— */
+  const leftDrawer = el('nav', 'drawer drawer-left');
+  leftDrawer.setAttribute('aria-label', 'Hub rooms');
+  const lh = el('p', 'drawer-kicker', 'ROOMS');
+  leftDrawer.appendChild(lh);
+  R.ROOMS.filter(r => r.id !== 'feed').forEach(r => {
+    const b = el('button', 'drawer-btn' + (r.id === room.id ? ' active' : ''));
     b.style.setProperty('--nav', r.accent);
     b.innerHTML = `<span class="ico">${Icons.icon(r.icon)}</span><span>${r.name}</span>`;
     b.setAttribute('aria-current', r.id === room.id ? 'page' : 'false');
     b.addEventListener('click', () => {
-      closeDrawer();
+      closeDrawers();
       window.NayaRouter.navigate('/hub/' + r.id);
     });
-    rail.appendChild(b);
+    leftDrawer.appendChild(b);
   });
-  const priv = el('div', 'rail-privacy',
+  const priv = el('div', 'drawer-privacy',
     'PRIVATE BY DEFAULT.<br>SHARED BY CHOICE.<br>COLLECTIVE BY CONSENT.');
-  rail.appendChild(priv);
+  leftDrawer.appendChild(priv);
 
-  /* ——— Topbar ——— */
-  const top = el('header', 'topbar');
-  const toggle = el('button', 'rail-toggle', Icons.icon('menu'));
-  toggle.setAttribute('aria-label', 'Open room navigation');
-  toggle.setAttribute('aria-expanded', 'false');
-  toggle.addEventListener('click', () => (shell.classList.contains('rail-open') ? closeDrawer() : openDrawer()));
-  const search = el('div', 'jewel-search');
-  search.innerHTML = `${Icons.icon('search')}<input type="search" placeholder="Ask the intelligence…" aria-label="Search the intelligence">`;
-  const input = search.querySelector('input');
-  input.addEventListener('keydown', async e => {
-    if (e.key === 'Enter' && input.value.trim()) {
-      input.setAttribute('aria-busy','true');
-      const res = await R.search(input.value.trim(), { room: room.id });
-      input.removeAttribute('aria-busy');
-      if (!res.ok) toast(res.message || 'No verified answer is available.', room.accent);
-      else showSearchResult(res);
-    }
+  /* ——— Right drawer: product / navigation ——— */
+  const PRODUCT_LINKS = ['HOME','NAYA POWER','5-DAY CHALLENGE','ENTER FREE','POWERCAST','WHITE PAPER','ABOUT US','LOGIN'];
+  const rightDrawer = el('nav', 'drawer drawer-right');
+  rightDrawer.setAttribute('aria-label', 'Product navigation');
+  const rh = el('p', 'drawer-kicker', 'NAYANET');
+  rightDrawer.appendChild(rh);
+  PRODUCT_LINKS.forEach(name => {
+    const b = el('button', 'drawer-btn product-btn', '');
+    b.innerHTML = `<span>${name}</span>`;
+    b.addEventListener('click', () => {
+      closeDrawers();
+      toast(name + ' — the product surface this opens is outside this preview shell.', 'var(--ink-dim)');
+    });
+    rightDrawer.appendChild(b);
   });
-  const identity = R.identitySnapshot ? R.identitySnapshot() : { display_name: 'You', state: 'not_verified' };
-  const chip = el('div', 'identity-chip',
-    `<span class="avatar" role="img" aria-label="Identity avatar"></span><span>${escapeHtml(identity.display_name || 'You')}</span>`);
-  top.append(toggle, search, chip);
+
+  /* ——— Drawer law: exactly one nav surface ——— */
+  const backdrop = el('div', 'drawer-backdrop');
+  backdrop.setAttribute('aria-hidden', 'true');
+  backdrop.addEventListener('click', closeDrawers);
+  shell.appendChild(backdrop);
+
+  let lastFocus = null;
+  function toggleDrawer(which) {
+    const open = shell.dataset.drawer;
+    if (open === which) { closeDrawers(); return; }
+    openDrawer(which);
+  }
+  function openDrawer(which) {
+    lastFocus = document.activeElement;
+    shell.dataset.drawer = which;
+    document.body.classList.add('drawer-open');
+    leftBtn.setAttribute('aria-expanded', which === 'left' ? 'true' : 'false');
+    rightBtn.setAttribute('aria-expanded', which === 'right' ? 'true' : 'false');
+    const first = (which === 'left' ? leftDrawer : rightDrawer).querySelector('.drawer-btn');
+    if (first) first.focus();
+  }
+  function closeDrawers() {
+    delete shell.dataset.drawer;
+    document.body.classList.remove('drawer-open');
+    leftBtn.setAttribute('aria-expanded', 'false');
+    rightBtn.setAttribute('aria-expanded', 'false');
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} lastFocus = null; }
+  }
+  if (!window.__nayaDrawerEsc) {
+    window.__nayaDrawerEsc = function (e) {
+      if (e.key !== 'Escape') return;
+      const s = document.querySelector('.shell[data-drawer]');
+      if (s) {
+        delete s.dataset.drawer;
+        document.body.classList.remove('drawer-open');
+        s.querySelectorAll('.corner-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      }
+      if (typeof window.__nayaCloseEvidence === 'function') window.__nayaCloseEvidence();
+    };
+    document.addEventListener('keydown', window.__nayaDrawerEsc);
+  }
 
   /* ——— Room outlet ——— */
   const main = el('main', 'main');
-  const head = el('div', 'room-head');
-  head.style.setProperty('--room-accent', room.accent);
-  head.innerHTML = `
-    <div class="kicker">${room.kicker}</div>
-    <h2 class="room-title">${room.name}</h2>
-    <p class="room-desc">${roomDesc(room.id)}</p>`;
-  main.appendChild(head);
-
-  const body = el('div', 'room-body');
+  if (!isMainShow) {
+    /* Rooms get orientation: one line on what the room is for. The Main Show
+       has its own presence → recognition grammar and needs no header wall. */
+    const head = el('div', 'room-head');
+    head.style.setProperty('--room-accent', room.accent);
+    head.innerHTML = `
+      <div class="kicker">${room.kicker}</div>
+      <h2 class="room-title">${room.name}</h2>
+      <p class="room-desc">${roomDesc(room.id)}</p>`;
+    main.appendChild(head);
+  }
+  const body = el('div', 'room-body' + (isMainShow ? ' mainshow-body' : ''));
   body.style.setProperty('--room-accent', room.accent);
   const renderer = window.NayaRooms && window.NayaRooms[room.id];
   if (renderer) body.appendChild(renderer());
   else body.appendChild(notVerifiedPanel(room));
   main.appendChild(body);
 
-  /* ——— Drawer law: exactly one nav surface. Backdrop, Escape, scroll lock. ——— */
-  const backdrop = el('div', 'rail-backdrop');
-  backdrop.setAttribute('aria-hidden', 'true');
-  backdrop.addEventListener('click', closeDrawer);
-  shell.appendChild(backdrop);
-  function closeDrawer() {
-    shell.classList.remove('rail-open');
-    document.body.classList.remove('drawer-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }
-  function openDrawer() {
-    shell.classList.add('rail-open');
-    document.body.classList.add('drawer-open');
-    toggle.setAttribute('aria-expanded', 'true');
-    const first = rail.querySelector('.rail-btn');
-    if (first) first.focus();
-  }
-  if (!window.__nayaDrawerEsc) {
-    window.__nayaDrawerEsc = function (e) {
-      const open = document.querySelector('.shell.rail-open');
-      if (e.key === 'Escape' && open) {
-        open.classList.remove('rail-open');
-        document.body.classList.remove('drawer-open');
-        const t = open.querySelector('.rail-toggle');
-        if (t) { t.setAttribute('aria-expanded', 'false'); t.focus(); }
-      }
-    };
-    document.addEventListener('keydown', window.__nayaDrawerEsc);
-  }
-
-  shell.append(rail, top, main);
+  shell.append(top, leftDrawer, rightDrawer, main);
   return shell;
-
-  function showSearchResult(res) {
-    const payload = res.data ?? res;
-    const list = window.NayaRoomKit ? window.NayaRoomKit.items(payload) : [];
-    const existing = main.querySelector('.global-search-result');
-    if (existing) existing.remove();
-    const panel = el('section', 'board global-search-result');
-    panel.style.setProperty('--room-accent', room.accent);
-    const summary = payload.summary || payload.answer || payload.text || '';
-    panel.innerHTML = `<div class="board-head"><div class="board-icon">${Icons.icon('search')}</div><div><div class="board-title">Ask the intelligence</div><div class="board-sub">Sourced retrieval · current room context</div></div></div><div class="board-body"></div>`;
-    const body = panel.querySelector('.board-body');
-    if (summary) body.insertAdjacentHTML('beforeend', `<p style="color:var(--ink-dim);font-size:14px;line-height:1.6">${escapeHtml(summary)}</p>`);
-    if (list.length && window.NayaRoomKit) {
-      const listWrap = el('div','intelligence-list');
-      list.slice(0,8).forEach(x=>listWrap.appendChild(window.NayaRoomKit.intelCard(x,room.accent)));
-      body.appendChild(listWrap);
-    }
-    if (!summary && !list.length) body.innerHTML='<div class="empty-instrument"><strong>No verified answer returned.</strong><p>The runtime connected, but returned no displayable intelligence.</p></div>';
-    main.insertBefore(panel, bodyAnchor());
-  }
-  function bodyAnchor(){ return main.querySelector('.room-body'); }
-  function escapeHtml(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
   function roomDesc(id) {
     return {
-      feed: 'One stream of everything the collective intelligence wants you to see — newest understanding first.',
       today: 'Your day, answered by the intelligence. What matters, what changed, what deserves you.',
       reports: 'Proof, not promises. Every report carries its evidence and its receipts.',
       library: 'Everything retained, organized by what it means — not where it happened to land.',

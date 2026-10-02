@@ -220,7 +220,58 @@
 /* ——— Honest states inherit the stage voice ——— */
 .feed-stage .shimmer-grid{ padding: 40px 0; }
 
-/* ——— v3: mode dock — ONE sticky zone (director direction) ——— */
+/* ═══════════════════════════════════════════════════════════════════
+   v4 — THE DISTILLED MAIN SHOW (§8.2 / §14B.2)
+   Presence → recognition → ONE hero → mode dock (one sticky zone) →
+   subordinate snapshot river → Ask Naya. Depth opens on tap.
+   ═══════════════════════════════════════════════════════════════════ */
+.mainshow-body{ padding-top: 8px; }
+.feed-hero{ margin: 6px 0 8px; }
+.feed-hero .iblock{ margin-top: 0; }
+
+/* The river: subordinate snapshots — the in-a-nutshell of each node. */
+.feed-river{ margin-top: 10px; }
+.river-kicker{
+  font-size: 11px; letter-spacing: 0.26em; color: var(--muted);
+  margin: 34px 0 6px; font-weight: 700;
+}
+.river-kicker span{ color: var(--ink); }
+.snap{
+  appearance: none; cursor: pointer; width: 100%; text-align: left;
+  display: flex; align-items: center; gap: 16px;
+  background: transparent; border: none;
+  border-bottom: 1px solid var(--line-soft);
+  padding: 20px 6px;
+  transition: background .2s ease;
+}
+.snap:hover{ background: rgba(255,255,255,.025); }
+.snap-dot{
+  width: 12px; height: 12px; border-radius: 50%; flex: none;
+  background: var(--tone); box-shadow: 0 0 12px var(--tone);
+}
+.snap-main{ flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.snap-title{
+  font-family: var(--font-display); font-size: 21px; line-height: 1.25;
+  color: var(--ink); letter-spacing: .01em;
+}
+.snap-nut{
+  font-size: 14px; line-height: 1.55; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.snap-chev{ color: var(--muted); font-size: 14px; flex: none; transition: transform .25s var(--ease); }
+.snap:hover .snap-chev{ color: var(--ink); transform: translateY(2px); }
+.snap-open{ border-bottom: 1px solid var(--line-soft); padding-bottom: 6px; }
+.snap-open .iblock{ margin-top: 8px; }
+.snap-less{
+  appearance: none; cursor: pointer; background: none; border: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--muted); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 12px 6px 18px;
+}
+.snap-less:hover{ color: var(--ink); }
+
+/* Greeting: presence → recognition, quiet. */
+.feed-stage-head{ margin-bottom: 4px; }
 .feed-modedock{
   position: sticky; top: 0; z-index: 55;
   display: flex; gap: 8px; justify-content: center;
