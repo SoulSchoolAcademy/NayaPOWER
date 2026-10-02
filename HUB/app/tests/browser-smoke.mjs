@@ -58,6 +58,51 @@ try {
   }
   await desktop.close();
 
+  const today = await browser.newPage({ viewport:{ width:1440,height:900 }, reducedMotion:'no-preference' });
+  await today.addInitScript(() => {
+    window.NayaAssistantRuntime = {
+      intelligenceToday: async () => ({
+        state: 'ready',
+        data: {
+          truth_state: 'TEST_FIXTURE',
+          now: { id:'IB-TODAY-NOW', type:'now', title:'Close the reference experience loop', summary:'One dominant current situation, grounded in the controlled browser fixture.', truth_state:'TEST_FIXTURE' },
+          next: [{ id:'IB-TODAY-NEXT', type:'next', title:'Run the independent visual challenge', summary:'Hand the rendered reference to the judging seat after the build.', truth_state:'TEST_FIXTURE' }],
+          watch: [{ id:'IB-TODAY-WATCH', type:'watch', title:'Runtime parity is still open', summary:'Do not promote browser-fixture success into production proof.', truth_state:'TEST_FIXTURE' }],
+          learned: [{ id:'IB-TODAY-LEARNED', type:'learned', title:'Distillation beats metric density', summary:'The room should explain the few things that matter, not mirror the Feed.', truth_state:'TEST_FIXTURE' }],
+          waiting: [{ id:'IB-TODAY-WAITING', type:'waiting', title:'Human taste acceptance', summary:'Final visual acceptance remains outside this automated test.', truth_state:'TEST_FIXTURE' }],
+          recent_proof: [{ id:'RCPT-TODAY-1', receipt_id:'RCPT-TODAY-1', type:'proof', title:'Browser contract fixture', summary:'Controlled proof that the Today composition can render all canonical sections.', truth_state:'TEST_FIXTURE' }],
+          reflection: 'The room is useful when the human can understand the day without reconstructing it.',
+        }
+      }),
+      retrieveIntelligentBlock: async ({id}) => ({
+        state:'ready',
+        data:{id,title:'Retrieved canonical context',summary:'Controlled browser retrieval fixture for '+id+'.',truth_state:'TEST_FIXTURE'}
+      }),
+      searchIntelligence: async () => ({
+        state:'ready',
+        data:{answer:'Controlled Naya support fixture: inspect the evidence, then take the next authorized step.',truth_state:'TEST_FIXTURE'}
+      })
+    };
+  });
+  await today.goto(base+'#/hub/today');
+  await today.waitForSelector('.today-now');
+  const todayHead=(await today.locator('.today-now h3').innerText()).trim();
+  if(todayHead!=='Close the reference experience loop') failures.push('today-contract: NOW hierarchy did not render canonical current item');
+  const arcCount=await today.locator('.today-arc-step').count();
+  if(arcCount!==6) failures.push('today-contract: expected six intelligence-arc steps, got '+arcCount);
+  for(const section of ['next','watch','learned','waiting','proof']){
+    if(await today.locator('#today-'+section).count()!==1) failures.push('today-contract: missing '+section+' section');
+  }
+  const actionHeight=await today.getByRole('button',{name:'Ask Naya to help'}).first().evaluate(el=>el.getBoundingClientRect().height);
+  if(actionHeight<44) failures.push('today-contract: action target below 44px ('+actionHeight+')');
+  await today.getByRole('button',{name:'Ask Naya to help'}).first().click();
+  await today.waitForSelector('.today-inspector:not([hidden])');
+  const supportText=await today.locator('.today-inspector').innerText();
+  if(!/next move support/i.test(supportText)) failures.push('today-contract: Ask Naya causal response did not reach inspector');
+  await inspectPage(today,'today-contract');
+  await today.screenshot({ path:'HUB/app/test-artifacts/14-today-contract-desktop.png', fullPage:true });
+  await today.close();
+
   const mobile = await browser.newPage({ viewport:{ width:390,height:844 }, reducedMotion:'reduce' });
   await mobile.goto(base+'#/hub/feed');
   await mobile.waitForSelector('.rail-toggle');
