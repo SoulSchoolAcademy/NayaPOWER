@@ -203,6 +203,11 @@ async function assertMainShow(page,label){
   const modeZones=await page.locator('.mode-zone').count();
   if(modeZones!==1) fail(label+': expected one shell-owned mode zone, got '+modeZones);
   if(await page.locator('.feed-modebar').count()) fail(label+': duplicate feed-owned mode chrome exists');
+  const clippedModes=await page.locator('.mode-btn').evaluateAll(nodes=>nodes.map(node=>{
+    const r=node.getBoundingClientRect();
+    return {name:node.textContent.trim(),left:Math.round(r.left),right:Math.round(r.right)};
+  }).filter(x=>x.left<0||x.right>window.innerWidth));
+  if(clippedModes.length) fail(label+': intelligence lens clipped outside viewport '+JSON.stringify(clippedModes));
 
   const startScroll=await page.evaluate(()=>Math.round(window.scrollY));
   if(startScroll>2) fail(label+': page moved without the user on first load, scrollY='+startScroll);
