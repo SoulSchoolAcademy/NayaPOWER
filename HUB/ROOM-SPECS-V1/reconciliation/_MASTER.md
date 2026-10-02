@@ -116,3 +116,27 @@ Reasons, in order of strength:
 ---
 
 *Per-room detail: [feed](sandbox://workspace/room-specs-v1/reconciliation/feed.md) · [today](sandbox://workspace/room-specs-v1/reconciliation/today.md) · [reports](sandbox://workspace/room-specs-v1/reconciliation/reports.md) · [library](sandbox://workspace/room-specs-v1/reconciliation/library.md) · [connect](sandbox://workspace/room-specs-v1/reconciliation/connect.md) · [ledger](sandbox://workspace/room-specs-v1/reconciliation/ledger.md) · [connections](sandbox://workspace/room-specs-v1/reconciliation/connections.md) · [lists](sandbox://workspace/room-specs-v1/reconciliation/lists.md) · [mail](sandbox://workspace/room-specs-v1/reconciliation/mail.md) · [spaces](sandbox://workspace/room-specs-v1/reconciliation/spaces.md) · [settings](sandbox://workspace/room-specs-v1/reconciliation/settings.md)*
+
+---
+
+## AMENDMENT A1 — Naya 2's five breaks accepted (2026-10-01 ~20:15 PDT, #554 5944798197 / 5944924131)
+
+The base-side choice survived; the freeze recommendation is amended:
+
+1. **Visuals are first-class lock artifacts, not derived.** Base = spec + visual locked
+   together, two-way edits. A visual change updates the spec; a spec change re-renders
+   the visual. Neither derives the other — the director reviews the image.
+2. **Taste session FIRST.** New repair order: taste session → mechanical repair →
+   delta fold → 15-section gate → independent freeze.
+3. **Testability clause (adopted verbatim):** a predicate that cannot be instrumented
+   is not a predicate. In the freeze gate definition.
+4. **Independent eye as final freeze step.** Builder-repaired ≠ frozen. Freeze requires
+   independent verification (Naya 2 or Naya 3 seat).
+5. **Accent collisions decided now** as part of the 8 cross-room decide-once items.
+
+Plus: checkable amendment ledger carried in the freeze package (each delta cited to its
+reconciliation C-item). Producer-judges-own-work concern accepted — Naya 3's independent
+read on the base-side choice still needed; her verdict defers where lanes differ.
+
+Amended net: base = her-spec-structure + visual-first-class (two-way) + taste-first
+ordering + testable-predicates + independent-freeze + 8 cross-room decisions taken once.
