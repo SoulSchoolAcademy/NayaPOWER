@@ -152,22 +152,21 @@
 }
 
 /* ——— QUIET LISTS — watch / waiting / lineup, congruent rows ——— */
-.today-stage .watch-list ul, .today-stage .waiting-list ul, .today-stage .lineup ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
-.today-stage .watch-list li, .today-stage .waiting-list li, .today-stage .lineup li{
+.today-stage .lineup ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+.today-stage .lineup li{
   display:flex; align-items:center; gap:12px; font-size:14px; color:#eeeaf2;
   border:2px solid #ffffff12; border-radius:15px; padding:12px 15px; background:#08080c;
   box-shadow:inset 0 1px #fff2, 0 12px 28px #0007;
 }
-.today-stage .watch-dot, .today-stage .lineup-dot{
+.today-stage .lineup-dot{
   width:8px; height:8px; border-radius:50%; background:var(--tone,#d86cff);
   box-shadow:0 0 13px var(--tone,#d86cff); flex:none;
 }
-.today-stage .watch-list li button, .today-stage .lineup li button{
+.today-stage .lineup li button{
   margin-left:auto; min-height:44px; padding:0 14px; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
   color:#c9c3ce; background:transparent; border:1px solid #ffffff18; border-radius:999px; cursor:pointer;
 }
-.today-stage .watch-list li button:hover, .today-stage .lineup li button:hover{ color:#fff; border-color:#fff; }
-.today-stage .waiting-src{ margin-left:auto; font-size:11px; color:#706a77; letter-spacing:0.06em; }
+.today-stage .lineup li button:hover{ color:#fff; border-color:#fff; }
 .today-stage .quiet-note{
   margin:0; padding:20px; text-align:center; font-size:14px; line-height:1.7; color:#c9c3ce;
   border:1px dashed #ffffff18; border-radius:15px; background:#08080c;
@@ -209,3 +208,13 @@
 @media(max-width:640px){
   .note-overlay{ padding:2vh 10px; }
 }
+
+/* ——— FOOTER: the product promise ——— */
+.today-stage .today-footer{
+  margin-top:56px; padding:40px 24px; text-align:center;
+  border-top:1px solid #ffffff14;
+}
+.today-stage .today-footer p{
+  margin:0; font-size:17px; line-height:1.7; color:#b8b8cc; font-weight:500;
+}
+.today-stage .today-footer strong{ color:#fff; font-weight:800; }

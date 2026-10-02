@@ -46,15 +46,6 @@
   function persistSmartList(){
     try{ localStorage.setItem(SMARTLIST_KEY, JSON.stringify(smartList)); }catch(err){}
   }
-  const SEEN_KEY='nayanet.today.seen.v1';
-  let seenPlays=new Set();
-  try{
-    const rawSeen=localStorage.getItem(SEEN_KEY);
-    if(rawSeen)seenPlays=new Set(JSON.parse(rawSeen).filter(x=>typeof x==='string'));
-  }catch(err){ seenPlays=new Set(); }
-  function persistSeen(){
-    try{ localStorage.setItem(SEEN_KEY, JSON.stringify(Array.from(seenPlays))); }catch(err){}
-  }
   let allPlays=[];
   let query='';
   let activeTab='today';
@@ -90,11 +81,10 @@
     stage.appendChild(searchBar(el));
     const secs=el('div','today-sections');
     secs.appendChild(section(el,'NOW',tabDef().title,nowBlock(el)));
-    secs.appendChild(section(el,'WATCH','Still unopened',watchList(el),'watch-sec'));
-    secs.appendChild(section(el,'WAITING','Open loops',waitingList(el)));
     const lineup=rememberLineup(el);
     if(lineup)secs.appendChild(section(el,'REMEMBER','Your Smart List',lineup,'remember-sec'));
     stage.appendChild(secs);
+    stage.appendChild(footer(el));
   }
 
   function section(el,eyebrow,title,body,extra){
@@ -105,6 +95,15 @@
     h.appendChild(e); h.appendChild(t);
     s.appendChild(h); s.appendChild(body);
     return s;
+  }
+
+  /* ——— FOOTER: the product promise, in one breath ——— */
+  function footer(el){
+    const f=el('footer','today-footer');
+    const p=el('p','','');
+    p.innerHTML='Your life creates intelligence every day.<br>Now it helps you <strong>capture</strong> it, <strong>understand</strong> it, <strong>remember</strong> it, <strong>compound</strong> it, and <strong>use</strong> it.';
+    f.appendChild(p);
+    return f;
   }
 
   /* ——— SMART TABS: the diary you can flip back through.
@@ -374,10 +373,6 @@
          The highlight points here; this is not a second presentation. ——— */
   function openNote(el,p,rank){
     closeNote();
-    seenPlays.add(p.id); persistSeen();
-    const stage=document.querySelector('.today-stage');
-    if(stage)renderWatchOnly(el,stage);
-
     const tone=toneFor(p);
     const nn=String(rank+1).padStart(2,'0');
     const overlay=el('div','note-overlay'); overlay.id='today-note-overlay';
@@ -442,13 +437,6 @@
     if(e.key==='Escape')closeNote();
   });
 
-  function renderWatchOnly(el,stage){
-    const w=stage.querySelector('.watch-sec .watch-list');
-    if(!w)return;
-    const fresh=watchList(el);
-    w.replaceWith(fresh);
-  }
-
   function makeLayer(el,key,label,sub,text,tone){
     const a=el('article','layer');
     a.style.setProperty('--layer',tone);
@@ -460,53 +448,6 @@
     const body=el('div','layerBody',''); body.textContent=text;
     a.appendChild(head); a.appendChild(body);
     return a;
-  }
-
-  /* ——— WATCH: still unopened — derived from real state ——— */
-  function watchList(el){
-    const wrap=el('div','watch-list');
-    const plays=tabPlays();
-    const unseen=plays.filter(p=>!seenPlays.has(p.id));
-    if(!unseen.length){
-      const q=el('p','quiet-note','');
-      q.textContent='You\u2019ve opened every play. Nothing is waiting on your attention.';
-      wrap.appendChild(q); return wrap;
-    }
-    const ul=el('ul','');
-    unseen.forEach(p=>{
-      const li=el('li','');
-      const dot=el('span','watch-dot',''); dot.style.setProperty('--tone',toneFor(p));
-      const span=el('span','',''); span.textContent=p.title;
-      const open=el('button','','Open'); open.type='button';
-      open.setAttribute('aria-label','Open: '+p.title);
-      open.addEventListener('click',()=>{
-        const rank=plays.findIndex(x=>x.id===p.id);
-        openNote(el,p,rank);
-      });
-      li.appendChild(dot); li.appendChild(span); li.appendChild(open); ul.appendChild(li);
-    });
-    wrap.appendChild(ul);
-    return wrap;
-  }
-
-  /* ——— WAITING: open loops — honest when empty ——— */
-  function waitingList(el){
-    const wrap=el('div','waiting-list');
-    const items=allPlays.filter(p=>Array.isArray(p.waiting)&&p.waiting.length);
-    if(!items.length){
-      const q=el('p','quiet-note','');
-      q.textContent='Nothing is waiting on you. A quiet day can stay quiet.';
-      wrap.appendChild(q); return wrap;
-    }
-    const ul=el('ul','');
-    items.forEach(p=>p.waiting.forEach(w=>{
-      const li=el('li','');
-      const span=el('span','',''); span.textContent=w;
-      const src=el('span','waiting-src',''); src.textContent=p.title;
-      li.appendChild(span); li.appendChild(src); ul.appendChild(li);
-    }));
-    wrap.appendChild(ul);
-    return wrap;
   }
 
   /* ——— REMEMBER: your Smart List ——— */
