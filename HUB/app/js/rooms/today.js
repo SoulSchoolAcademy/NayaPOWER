@@ -382,7 +382,8 @@
     dialog.appendChild(inner);
     overlay.appendChild(dialog);
     overlay.addEventListener('click',e=>{ if(e.target===overlay)closeNote(); });
-    document.body.appendChild(overlay);
+    const host=document.querySelector('.today-stage')||document.body;
+    host.appendChild(overlay);
     document.body.style.overflow='hidden';
     close.focus();
   }
