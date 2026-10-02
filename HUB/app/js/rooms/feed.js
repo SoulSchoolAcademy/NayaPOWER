@@ -275,8 +275,6 @@
       const target=allItems.find(item=>item.id===String(id));
       if(!target) return;
       links.appendChild(toolBtn(el,'Related · '+shortTitle(target.title),()=>{
-        currentMode=modeOf(target);
-        persistMode(currentMode);
         renderNote(el,stage,target);
         stage.scrollIntoView({block:'start'});
       }));
