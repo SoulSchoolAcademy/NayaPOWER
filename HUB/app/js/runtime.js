@@ -23,6 +23,31 @@ const Runtime = (() => {
   // no capture surface in Hub chrome. Capture is input; the Hub is output.
   // System diagnostics live under Settings → System Health.
 
+  // ——— Main Show intelligence lenses. One shell-owned mode. ———
+  const MODES = [
+    { id:'collective', name:'Collective', hint:'Shared intelligence', desc:'Consented network intelligence, identity-protected.', accent:'var(--teal)' },
+    { id:'personal',   name:'Personal',   hint:'Your intelligence',   desc:'Intelligence scoped to you and your authorized context.', accent:'var(--magenta)' },
+    { id:'activity',   name:'Activity',   hint:'What is happening',   desc:'Meaningful current activity and governed operational change.', accent:'var(--green)' }
+  ];
+
+  function restoreMode(){
+    try{
+      const saved=sessionStorage.getItem('nayanet.feedMode');
+      if(MODES.some(item=>item.id===saved)) return saved;
+    }catch(_){}
+    return 'collective';
+  }
+
+  let mode=restoreMode();
+
+  function setMode(next){
+    const normalized=String(next||'').toLowerCase();
+    if(!MODES.some(item=>item.id===normalized)) return false;
+    mode=normalized;
+    try{ sessionStorage.setItem('nayanet.feedMode',mode); }catch(_){}
+    return true;
+  }
+
   // ——— The Smart Doors. One brain. Many doors. ———
   // Source of truth: BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json
   // (canonical registry). This array mirrors it; `registry` carries the
@@ -117,7 +142,8 @@ const Runtime = (() => {
 
 
   return {
-    ROOMS, DOORS, DOOR_ROADMAP, stateFor, NOT_VERIFIED_COPY,
+    ROOMS, MODES, get mode(){ return mode; }, setMode,
+    DOORS, DOOR_ROADMAP, stateFor, NOT_VERIFIED_COPY,
     connectDoor, search,
     version: '1.0.0',
     doorRegistryRef: 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json',
