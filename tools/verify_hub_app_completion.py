@@ -88,6 +88,15 @@ def main() -> int:
         canonical_room_data = json.loads(canonical_room_path.read_text())
         if canonical_room_data.get("schema") != "nayanet.smart-app.rooms.v1":
             fail(f"unexpected canonical room schema: {canonical_room_data.get('schema')!r}", errors)
+        if canonical_room_data.get("version") != "1.0.3":
+            fail(f"unexpected canonical room contract version: {canonical_room_data.get('version')!r}", errors)
+        shell = canonical_room_data.get("shell", {})
+        if shell.get("persistent_rail") is not False or shell.get("main_show") != "feed":
+            fail("canonical shell must encode no permanent rail + Feed as Main Show", errors)
+        if "feed" in shell.get("room_drawer", []):
+            fail("Feed must not be duplicated in the room drawer", errors)
+        if canonical_room_data.get("hub_home", {}).get("projects_room") != "feed":
+            fail("Hub Home must project the single Feed/Main Show implementation", errors)
         canonical_ids = [r.get("id") for r in canonical_room_data.get("rooms", [])]
         if canonical_ids != REQUIRED_ROOMS:
             fail(f"canonical room contract identities/order mismatch: {canonical_ids}", errors)

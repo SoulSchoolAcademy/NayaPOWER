@@ -196,8 +196,14 @@ async function assertMainShow(page,label){
     trace:window.NayaRoomSocket?.trace?.()||[]
   }));
   if(socketProof.contractSchema!=='nayanet.hub.room-contract-adapter.v1') fail(label+': room contract adapter missing');
-  if(socketProof.source?.schema!=='nayanet.smart-app.rooms.v1'||socketProof.source?.version!=='1.0.2'){
+  if(socketProof.source?.schema!=='nayanet.smart-app.rooms.v1'||socketProof.source?.version!=='1.0.3'){
     fail(label+': canonical machine room contract was not loaded from the expected source');
+  }
+  if(socketProof.source?.shell?.persistent_rail!==false||socketProof.source?.shell?.main_show!=='feed'){
+    fail(label+': resolved Main Show/two-drawer shell law is not present');
+  }
+  if(socketProof.source?.hub_home?.projects_room!=='feed'){
+    fail(label+': Hub Home is not projecting the single Feed/Main Show implementation');
   }
   if(socketProof.socketSchema!=='nayanet.hub.room-socket.v1') fail(label+': canonical room socket missing');
   if(socketProof.count!==11) fail(label+': expected 11 room contracts, got '+socketProof.count);

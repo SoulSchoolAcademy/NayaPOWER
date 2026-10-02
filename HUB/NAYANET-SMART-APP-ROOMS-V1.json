@@ -1,6 +1,6 @@
 {
   "schema": "nayanet.smart-app.rooms.v1",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
   "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF",
   "design_intelligence": "NAYA-DESIGN-INTELLIGENCE-V1@1.3",
@@ -48,13 +48,40 @@
   ],
   "shell": {
     "components": [
-      "LEFT_RAIL",
-      "TOP_CONTEXT_BAR",
-      "GLOBAL_SEARCH",
-      "MAIN_WORKSPACE",
+      "TOP_LEFT_ROOM_DRAWER_CONTROL",
+      "TOP_RIGHT_PRODUCT_DRAWER_CONTROL",
+      "MAIN_SHOW_WORKSPACE",
+      "STICKY_INTELLIGENCE_LENS",
       "NAYA_PRESENCE"
     ],
-    "invariant": "ONE_SHELL_ELEVEN_ROOMS_ONE_GOVERNED_SUBSTRATE"
+    "room_drawer": [
+      "today",
+      "reports",
+      "library",
+      "connect",
+      "ledger",
+      "connections",
+      "lists",
+      "mail",
+      "spaces",
+      "settings"
+    ],
+    "product_drawer": [
+      "HOME",
+      "NAYA_POWER",
+      "5_DAY_CHALLENGE",
+      "ENTER_FREE",
+      "POWERCAST",
+      "WHITE_PAPER",
+      "ABOUT_US",
+      "LOGIN"
+    ],
+    "main_show": "feed",
+    "persistent_rail": false,
+    "invariant": "ONE_SHELL_ONE_MAIN_SHOW_ELEVEN_ROOMS_ONE_GOVERNED_SUBSTRATE",
+    "authority": "HUMAN_DIRECTOR_LATEST_ROOM01_OSCAR_CONVERGENCE_2026-10-02",
+    "authority_receipt": "Issue #554 comment 5957476163",
+    "law": "Two quiet corner controls; Feed is the Main Show and is not duplicated in room navigation. /hub and /feed may project the same Main Show but must not become independent surfaces or stores."
   },
   "ai_failure_countermeasures": {
     "blind_building": "RENDER_OBSERVE_USE_TEST",
@@ -97,7 +124,9 @@
         "FOCUS",
         "INTELLIGENCE_STREAM",
         "WHY_NOW"
-      ]
+      ],
+      "main_show": true,
+      "navigation_visibility": "MAIN_SHOW_NOT_DUPLICATED_IN_ROOM_DRAWER"
     },
     {
       "id": "today",
@@ -334,6 +363,13 @@
       "ROOM_NAVIGATION"
     ],
     "design_contract": "HUB/ROOMS/00-HUB-HOME.md",
-    "anti_pattern": "KPI_DASHBOARD_AS_FIRST_IMPRESSION"
+    "anti_pattern": "KPI_DASHBOARD_OR_SECOND_MAIN_SHOW_OR_PERMANENT_RAIL",
+    "projects_room": "feed",
+    "projection_rule": "ONE_MAIN_SHOW_IMPLEMENTATION",
+    "route_aliases": [
+      "/hub",
+      "/feed"
+    ],
+    "authority": "HUMAN_DIRECTOR_LATEST_ROOM01_OSCAR_CONVERGENCE_2026-10-02"
   }
 }

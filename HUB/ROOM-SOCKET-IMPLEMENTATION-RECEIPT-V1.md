@@ -58,15 +58,21 @@ This work proves the shared UI seam exists and renders/behaves under the browser
 
 It does **not** prove the live production NayaPOWER runtime artery, production deployment/source parity, all room backend capabilities, independent verification, Human Director approval, or final design-law ratification.
 
-## Material authority conflict preserved
+## Shell authority reconciled
 
-Current canonical `main` and the active application lane do not currently agree on all shell/Home semantics.
+The apparent shell conflict was resolved by restoring the latest Human Director Room 01/Hub source rather than asking Shawn to repeat it.
 
-Current-main machine/living contracts specify a distinct Intelligent Hub Home/Main Show at `/hub`, Smart Feed as a separate room at `/feed`, and shell components including LEFT_RAIL, TOP_CONTEXT_BAR, GLOBAL_SEARCH, MAIN_WORKSPACE, NAYA_PRESENCE.
+The governing direction is:
+- repair PR #1328 rather than start another Room 01 implementation;
+- preserve its calm Main Show language;
+- do not port the 509 page architecture or permanent rails;
+- Feed is the actual Home/Main Show and is not duplicated in room navigation;
+- one sticky Collective / Personal / Activity zone;
+- two quiet corner controls open the room and product drawers.
 
-The active Main Show branch currently implements Feed as the Main Show/home behavior at `/hub/feed`, with two corner controls plus two drawers and Feed omitted from the room drawer.
+The previous `HUB/NAYANET-SMART-APP-ROOMS-V1.json@1.0.2` persistent-rail metadata was therefore stale on shell shape. This PR advances the machine contract to `1.0.3` with the resolved no-permanent-rail, Feed/Main-Show, two-drawer law while preserving the same eleven room identities and canonical intelligence model.
 
-PR #1331 remains candidate/open, not silently ratified. Therefore this rung does not change shell/Home semantics. The socket is intentionally shell-neutral, and canonical/app route differences stay explicit until authority is reconciled.
+`/hub` and `/feed` may remain entry/deep-link aliases, but they must project one Main Show implementation rather than create two surfaces or stores. The current implementation route `/hub/feed` remains explicitly visible as an app-route detail.
 
 ## Regression posture
 
@@ -74,7 +80,7 @@ Existing Hub visual/interaction behavior was preserved. No second runtime or sto
 
 ## Exact next action
 
-Reconcile the current-main Hub Home/shell authority with the active two-drawer Feed/Main Show implementation. Once that decision is canonical, close **Today** as the next reference consumer using the same canonical object identity/socket and prove Feed -> Today continuity without route/title guessing.
+Obtain the independent challenge of #1338, then close **Today** as the next reference consumer using the same canonical object identity/socket and prove Feed -> Today continuity without route/title guessing.
 
 ## Evidence law
 

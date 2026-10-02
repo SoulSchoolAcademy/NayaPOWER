@@ -106,7 +106,7 @@
         "HUB/app/js/room-contract.js",
         "HUB/app/tests/browser-smoke.mjs"
       ],
-      "remaining": "Independent review and canonical shell/Home authority reconciliation remain; runtime adapter fails closed if canonical identity/order/state model drifts."
+      "remaining": "Independent review remains; adapter fails closed if canonical identity/order/state model drifts."
     },
     "canonical_room_socket": {
       "state": "TESTED",
@@ -438,7 +438,7 @@
     "builder self-score cannot close the release gate",
     "remaining work stays machine-visible until evidence closes it"
   ],
-  "next_failing_gate": "Reconcile canonical Hub Home/shell authority with the active Main Show implementation, then prove one canonical intelligence object across Feed -> Today through the shared room socket before broader room closure.",
+  "next_failing_gate": "Independently challenge the canonical contract/socket, then prove one canonical intelligence object and context across Feed -> Today through the shared room socket.",
   "latest_validation": {
     "head_sha": "43225c58c51a8d455c0303647c608454d9a5f25f",
     "hub_completion_gate": {
@@ -471,9 +471,10 @@
     "implementation_parent_sha": "babae0b42009dbae847b21dcc1de5e56922d1964",
     "merge_base_sha": "a67fc180306c3ebf616c8d02c0e0c11570276ce4",
     "relationship": "DIVERGED",
-    "authority_conflict": "Current main declares distinct Hub Home /hub plus Feed /feed and persistent shell primitives; active app lane implements Feed as Main Show at /hub/feed with two drawers. Preserved, not silently resolved.",
+    "authority_conflict": "RESOLVED: latest Human Director source directs #1328 calm Main Show, Feed-as-home, two corner drawers, and explicitly rejects importing 509 permanent rails.",
     "receipt": "HUB/ROOM-SOCKET-IMPLEMENTATION-RECEIPT-V1.md",
     "implementation_start_main_sha": "10190133505f4ba03cd029d18cf6f650affeeb9c",
-    "repin_result": "Main advanced only through the canonical Brain-index repair; no HUB files changed between the implementation-start pin and this repin."
+    "repin_result": "Main advanced only through the canonical Brain-index repair; no HUB files changed between the implementation-start pin and this repin.",
+    "machine_contract_resolution": "HUB/NAYANET-SMART-APP-ROOMS-V1.json advanced to 1.0.3 on this PR to remove stale persistent-rail shell metadata while preserving the same 11 canonical rooms."
   }
 }
