@@ -1,11 +1,12 @@
 # NayaNET Master Design Contract V1
 
-**Status:** HUMAN-DIRECTOR-DIRECTED — 2026-10-02
+**Status:** HUMAN-DIRECTOR-DIRECTED · CANDIDATE-CONVERGED — 2026-10-02
+**Ratification state:** Human Director ratification still required for unresolved contradiction decisions; until then this is the single candidate master, not a merged/production claim.
 **Version:** 1.0
 **Authority:** Human Director → this contract → living room contracts → implementation
 **Companion machine file:** `HUB/NAYA-MASTER-DESIGN-CONTRACT-V1.json`
 
-**What this is:** the single official design law of NayaNET. Every color, every flow, every button, every spacing rule, every do and don't — and the procedure by which a builder proves their work obeys it before the Human Director ever sees it. There is no guessing. If it isn't in this contract, it isn't the law; if it contradicts this contract, this contract wins.
+**What this is:** the single candidate master design law of NayaNET (visual + functional + interaction + truth representation). Every color, every flow, every button, every spacing rule, every do and don't — and the procedure by which a builder proves their work obeys it before the Human Director ever sees it. There is no guessing. If it isn't in this contract, it isn't the law; if it contradicts this contract, this contract wins.
 
 **What this is not:** a template, a ranking, a mood board, or a suggestion. It is the compiled intelligence of the design canon (designers, companies, award-winning apps, books), the Human Director's direct teaching, the website exemplars he showed, and everything the team learned building. The canon is the floor, not the ceiling: study the best, extract the principle, build ten times better — and only measured evidence earns the claim.
 
@@ -21,6 +22,12 @@ No builder should ever have to guess what "good" looks like, and the Human Direc
 
 ### 0.3 How it is organized
 Volumes 1–2 give the laws and the visual language. Volumes 3–7 specify every atom: type, space, depth, components, icons, motion. Volume 8 composes atoms into surfaces. Volume 9 holds the canon intelligence it was distilled from. Volumes 10–11 give the dos, don'ts, and automatic rejections. Volume 12 is the self-evaluation procedure — the gate. Volume 13 is accessibility. Volume 14 applies the contract room by room. Volume 15 is the living record.
+
+### 0.5 Whole-product rule
+
+The contract is not complete when colors and components are specified. A room's visual composition MUST be derived from its human job, information hierarchy, real capability, authority boundary and truthful state model. **Design follows function; function becomes experience; experience is then made beautiful.**
+
+When a visual choice and a functional truth appear to conflict, preserve truth and human comprehension first, then redesign the visual treatment.
 
 ### 0.4 How it learns
 This contract is living. When the Human Director's reactions teach something new, it is written into Volume 15 — dated, with the evidence — and the affected volume is amended. Taste becomes law through the loop, never through lectures. No seat amends the contract on their own authority; amendments arrive through the director's reactions or his explicit order.
@@ -178,6 +185,28 @@ Each room carries one theme color as its identity: Feed emerald `#55e39a` · Tod
 
 The theme appears at the room's threshold — the drawer jewel, the header edge, the primary accents — and recedes everywhere else. Known collisions (Feed/Connect both emerald; Library/Mail both sapphire) are differentiated by icon glyph until the director rules otherwise. A room's theme never floods the canvas; it signs the room the way a signature signs a letter.
 
+
+### 2.4A Operational spectrum — consolidated from the team's design-law review
+
+The six core semantic voices above remain the human-facing vocabulary. The working design system also has the following fixed operational accents. These are **not a second palette**; they are additional semantic words in the same language.
+
+| Accent | Hex | Operational job |
+|---|---|---|
+| Indigo | `#6675ff` | comprehension / depth / reports |
+| Teal | `#40d3bb` | connection / flow |
+| Lime | `#b8ee57` | learning / growth |
+| Yellow | `#f1d75a` | attention / signal |
+| Orange | `#ff9a5a` | action / movement |
+| Rich orange | `#ff7a3d` | transition / momentum |
+
+Canonical working spectrum order:
+
+**purple → indigo → sapphire → teal → emerald → lime → yellow → gold → orange → rich orange → red → magenta → purple**
+
+Use the spectrum to encode meaning, not to decorate. A room theme identifies the room; it does not require the room's entire content to become monochrome.
+
+**Compatibility law:** existing production/main tokens remain authoritative until a Human Director decision explicitly changes them. In particular, **Smart Connect remains emerald on the current main contract; teal is the candidate connection semantic and must not be silently substituted.**
+
 ### 2.5 The color flows — how color moves
 
 **Flow 1 — Hierarchy.** The eye travels in this order: white (the words) → room theme (the identity) → semantic color (the state) → gold (the extraordinary). This is the path attention walks. The builder places color energy along this path deliberately: the most important thing gets the strongest color voice. If everything glows, nothing does — the path collapses into noise.
@@ -284,6 +313,17 @@ Build in that order. Depth first. Light second. Glow last.
 **Ghost / quiet:** text or minimal chrome for tertiary actions. Still verb-first. Still the seven states where consequential.
 
 **Placement:** one primary per surface region (LAW-04). The primary action sits where the eye lands after reading — not hidden in a corner, not competing with a twin.
+
+
+### 5.1A Button sizing reconciliation
+
+Three dimensions are intentionally separated so builders do not guess:
+
+- **Primary CTA visual minimum:** 48px high.
+- **Compact/secondary visual minimum:** 43px high (the current machine build contract).
+- **Interactive hit target:** never less than 44px in either axis; padding/hit-area expansion may make the clickable region larger than the visual shell.
+
+This resolves the old 43px-versus-48px contradiction without shrinking primary actions and without violating touch accessibility. No builder may choose a smaller value.
 
 ### 5.2 Inputs and forms
 
@@ -614,6 +654,316 @@ Each room applies the contract to its own job. The grammar is shared (Volume 8.3
 
 ---
 
+
+## VOLUME 14A — WHOLE-PRODUCT FUNCTIONAL DESIGN MAP
+
+The master contract governs **what the human sees because of what the system is doing**. A visual decision is incomplete until its functional reason is named. A function is incomplete until its human-facing representation is named.
+
+### 14A.1 The product model
+
+NayaNET is one living product:
+
+**ONE MAIN SHOW + ELEVEN ROOMS + ONE SHELL + ONE GOVERNED INTELLIGENCE SUBSTRATE**
+
+The Main Show is the human's primary entry experience. It is not a twelfth independent app and it is not a duplicate store of intelligence.
+
+The product path is:
+
+**Human → NayaNET Shell → Room / Main Show → Runtime Adapter → Governed Runtime → Canonical Intelligence → Result → UI State → Evidence / Memory where required**
+
+Never:
+
+**Human → UI-local shadow store → invented intelligence**
+
+### 14A.2 The four questions every surface must answer
+
+Every surface, drawer, dialog and important object must make these understandable:
+
+1. **WHERE AM I?**
+2. **WHAT MATTERS NOW?**
+3. **WHAT CAN I DO?**
+4. **WHAT HAPPENS NEXT?**
+
+The four questions are evaluated at the 1-second, 3-second, 30-second and return-visit horizons.
+
+### 14A.3 Canonical room map
+
+| Surface | Route | Human job | Primary action | Information hierarchy | Canonical objects / source of truth | Signature visual direction | Critical interaction |
+|---|---|---|---|---|---|---|---|
+| **Main Show / Intelligent Hub Home** | `/hub` entry; may project the Feed experience | Arrive oriented, recognized and ready to move | Open highest-value beat / Ask Naya / continue | Presence → Recognition → Distillation → Invitation → Flow | Current governed intelligence, legitimate human/session context, active goals/dependencies | Obsidian calm; living Naya presence; cinematic focal intelligence; no KPI dashboard | Open beat → canonical object → owning room/detail → preserve context |
+| **Smart Feed** | `/feed` | See useful intelligence/activity now | Open or act on highest-value item | Mode → Focus → Stream → Why now | Intelligent Blocks, governed activity/event records, relevance/provenance | Emerald identity; river; variable-height intelligence blocks | Mode changes real data; object opens without losing context |
+| **Your Intelligence Today** | `/today` | Know what matters right now | Act on top next move | NOW → NEXT → WATCH → LEARNED → WAITING → RECENT PROOF | Daily synthesis, canonical intelligence, learning evidence, relevant receipts | Magenta human-significance energy; NOW dominates | Inspect what changed; act on NEXT; resume WAITING |
+| **Your Reports** | `/reports` | Understand meaning across time | Inspect/act on key finding | Meaning → Evidence → Change → Drivers → Uncertainty → Next → Proof | Reporting/synthesis objects, underlying intelligence, evidence | Indigo comprehension/depth; thesis first, detail second | Scope/time change alters real report/data scope |
+| **Intelligent Library** | `/library` | Find, trust and reuse intelligence | Search/open intelligence | Search → Filters → Relevant → Results → Detail | Intelligent Blocks, knowledge indexes, provenance, evidence | Sapphire knowledge calm; search is the door | Search/retrieval returns canonical objects with provenance |
+| **Smart Connect** | `/connect` | Understand/configure connection doors | Connect/configure a legitimate door | Door → Status → Capability → Setup → Authority | Smart Door registry, connection state, authority requirements, door receipts | Connection/flow semantic; room theme currently emerald on main; teal candidate only | Connection never implies permission; status must be real |
+| **Smart Ledger** | `/ledger` | Inspect what happened and what proves it | Inspect event proof | Trust summary → Receipts → Filters → Inspector | Execution/decision/verification receipts, authority records, evidence | Yellow attention as room identity; Gold reserved for proven value/consequence | Event → authority → outcome → evidence trace |
+| **Your Connections** | `/connections` | Understand governed relationships | Inspect/manage connection | Relationship → Scope/Consent → Activity → Action | Governed relationship records, consent/scope, related spaces/intelligence | Orange relationship/action energy | Scope change is explicit and consequential |
+| **Smart Lists** | `/lists` | Organize intelligence for action without duplication | Open/create list | List purpose → Qualification rules → Members → Actions | List definitions + canonical object references + governed rules | Purple intent/organization energy | Edit rule → preview causal membership impact |
+| **Smart Mail** | `/mail` | Prioritize and respond to real communication | Open highest-value conversation | Priority → Conversation → Meaning → Naya assist → Response → Provider state | Real connected provider/runtime data | Sapphire correspondence; never fake mailbox content | Provider-backed conversation → safe draft/reply → observed result |
+| **Smart Spaces** | `/spaces` | Enter/resume a durable context | Enter/resume space | Identity/Purpose → State → Intelligence → Members/Roles → Scope | Space/context records, membership, consent, linked intelligence | Lime context/growth energy | Context switch changes scope visibly without recreating identity |
+| **Settings** | `/settings` | Control the relationship with NayaNET | Contextual by category | Category → Current state → Consequence → Control → Result | Governed account/privacy/authority/connection/preferences sources | Neutral control deck with semantic accents | Setting → governed operation → persisted state → visible result |
+
+### 14A.4 Universal causal contract
+
+Every consequential control follows:
+
+**CONTROL → INTENT → SCOPE/AUTHORITY → CAPABILITY → OPERATION → OBSERVATION → RESULT → UI STATE → EVIDENCE WHERE REQUIRED**
+
+A beautiful control with no causal path is a defect.
+
+A real causal path with no legible state is also a defect.
+
+A state that implies a capability the runtime cannot provide is a defect.
+
+### 14A.5 Universal truth contract
+
+The interface MUST distinguish:
+
+**REAL / VERIFIED / NOT VERIFIED / UNKNOWN / BLOCKED / UNAUTHORIZED / ERROR / OFFLINE / DISABLED / EMPTY / LOADING**
+
+The UI MUST NOT manufacture:
+
+- intelligence;
+- activity;
+- counts;
+- personalization;
+- relationships;
+- messages;
+- reports;
+- receipts;
+- connection state;
+- completion;
+- proof.
+
+**NOT_VERIFIED is a valid product state.** Honest absence is preferable to fabricated richness.
+
+### 14A.6 Naya's role in every room
+
+Naya is the intelligence behind the experience, not a generic chatbot pasted onto it.
+
+Within a room, Naya may explain, retrieve, compare, summarize, propose and—only where authorized—act.
+
+Naya must have the actual room/context, selected object, truth state and authority boundary before making room-specific claims.
+
+### 14A.7 Progressive disclosure law
+
+Every intelligent object supports:
+
+**GLANCE → UNDERSTAND → INSPECT → PROVE**
+
+The first view gives the distilled meaning. Deeper evidence remains available without dominating first comprehension.
+
+### 14A.8 No duplication law
+
+The following may not become competing sources of truth:
+
+- room-local browser state;
+- visual fixtures;
+- duplicated JSON stores;
+- parallel component registries;
+- UI-generated intelligence;
+- a second app shell;
+- a second brain.
+
+Presentation may cache for performance where technically required, but the cache MUST NOT become canonical truth.
+
+---
+
+## VOLUME 14B — CANONICAL SHELL + MAIN SHOW RECONCILIATION
+
+The Human Director's latest shell direction on Issue #554 supersedes the older persistent-rail description for the production Hub shape.
+
+### 14B.1 Shell
+
+- **Two corner controls only.**
+  - Top-left → left room drawer.
+  - Top-right → right product/navigation drawer.
+- **Left drawer:** Today, Reports, Library, Connect, Ledger, Connections, Lists, Mail, Spaces, Settings.
+- **Smart Feed is NOT a left-drawer room entry.** It is the Main Show / primary feed experience.
+- **Right drawer:** HOME, NAYA POWER, 5-DAY CHALLENGE, ENTER FREE, POWERCAST, WHITE PAPER, ABOUT US, LOGIN.
+- **Collective / Personal / Activity** remains in one coordinated sticky zone under the top bar when applicable.
+- Never create a second sticky zone or two competing navigation systems.
+
+### 14B.2 Main Show
+
+The first authenticated human experience lands on the Feed/Main Show experience:
+
+**FULL-BLEED INTELLIGENCE RIVER → DISTILLED CONTENT → CLEAR NEXT ACTION → CONTEXTUAL NAYA**
+
+No KPI wall. No dashboard-first composition. No navigation wall before the intelligence.
+
+### 14B.3 Route reconciliation
+
+The product MAY expose both `/hub` and `/feed` as entry/deep-link addresses, but they MUST NOT represent two independent intelligence surfaces.
+
+**Canonical rule:** one Main Show implementation, one intelligence projection, one state model. Route aliases, history semantics and redirect details are implementation concerns and must not create duplicate experiences or duplicate stores.
+
+---
+
+## VOLUME 14C — PRODUCT ARCHITECTURE AS DESIGN LAW
+
+### 14C.1 Ownership chain
+
+**Human Director → product/design law → room contracts → implementation → runtime proof**
+
+Capability never creates authority.
+
+Connection never creates authority.
+
+Presentation never upgrades truth.
+
+### 14C.2 Data ownership
+
+**Hub → runtime adapter → governed runtime → canonical intelligence**
+
+The Hub does not query the database directly.
+
+Room code does not invent missing fields to complete a composition.
+
+The machine contract describes what a room expects; only the canonical runtime can establish what is actually true.
+
+### 14C.3 Continuity
+
+A working room preserves legitimate context:
+
+- current route/object;
+- current user/session identity where known;
+- room mode;
+- relevant filters/search;
+- unfinished action;
+- recent context;
+- verified intelligence already learned.
+
+Closing and reopening a room must not require the human to reconstruct state that the system legitimately knows.
+
+### 14C.4 Authority
+
+Every consequential action must establish:
+
+**WHO is acting → ON WHAT → IN WHICH SCOPE → WITH WHAT AUTHORITY → USING WHICH CAPABILITY → WITH WHAT RESULT**
+
+The UI may expose authority and proof; it may never grant them merely by rendering a button.
+
+### 14C.5 Design-memory contract
+
+A verified design lesson becomes reusable only when its record contains:
+
+**OBSERVATION → EVIDENCE → DECISION → CHANGE → HUMAN OUTCOME → SCORE EFFECT → LESSON → NEXT TEST**
+
+A builder must be able to retrieve previous lessons before repeating the same class of work.
+
+---
+
+## VOLUME 14D — DESIGN ↔ FUNCTION RECONCILIATION TEST
+
+Before a visual change reaches implementation, run both directions.
+
+### DIRECTION 1 — FUNCTION → VISUAL
+
+For every required function:
+
+- Where is it represented?
+- What does it look like before interaction?
+- What state does it have while working?
+- What happens on success?
+- What happens on failure?
+- How does the human recover?
+- What evidence is available?
+- How is the meaning preserved without relying on color alone?
+
+### DIRECTION 2 — VISUAL → FUNCTION
+
+For every visible object:
+
+- What is its purpose?
+- What truth does it communicate?
+- What state causes its color/light/motion?
+- What human action does it afford?
+- What causal path follows?
+- What observable consequence follows?
+- What happens when the capability is unavailable?
+- What canonical object owns the result?
+
+**Any visible element that cannot answer these questions is a defect candidate.**
+
+### 14D.1 The three rejection questions
+
+Before keeping any element, ask:
+
+1. **Does it help the human understand?**
+2. **Does it help the human act or recover?**
+3. **Does it communicate something true?**
+
+A "no" means **REMOVE** unless a stronger documented reason exists.
+
+---
+
+## VOLUME 14E — SELF-EVALUATION + HANDOFF PACKET
+
+No builder sends a PR, screenshot or preview as "ready" from visual judgment alone.
+
+The builder's packet MUST contain:
+
+- exact frozen SHA;
+- exact surface/room;
+- human job;
+- primary action;
+- contract sections implemented;
+- KEEP / IMPROVE / REPLACE / REMOVE decisions;
+- rendered evidence;
+- 1-second / 3-second / 30-second / squint results;
+- type/spacing/color measurements;
+- all applicable state renders;
+- keyboard/focus/reduced-motion evidence;
+- mobile/responsive evidence;
+- functional causal-path evidence;
+- truth/provenance evidence;
+- known limitations;
+- deliberate omissions;
+- self-score with one evidence line per dimension;
+- independent review request.
+
+**Self-score is diagnostic only.**
+
+The receiving judge must evaluate the frozen SHA independently. No "looks good" comment closes the gate.
+
+### 14E.1 Show-me gate
+
+The only acceptable handoff sentence is effectively:
+
+> **This is ready for independent challenge because the exact bytes were rendered, measured, tested, and the remaining unknowns are named.**
+
+Not:
+
+> "I think it looks good."
+
+---
+
+## VOLUME 14F — ROOM GRADUATION MATRIX
+
+A room can graduate only when all applicable cells are evidenced:
+
+| Gate | Required proof |
+|---|---|
+| Human purpose | 1-sentence job + 3-second comprehension |
+| Visual law | Contract token/layout/component checks |
+| Focal hierarchy | 1-second + squint |
+| Function | Real primary/secondary causal paths |
+| State truth | Loading/empty/ready/blocked/etc. tested as applicable |
+| Intelligence | Canonical runtime or honest NOT_VERIFIED |
+| Authority | Scope/capability/action boundary proven |
+| Evidence | Provenance/receipt where required |
+| Continuity | Re-entry preserves legitimate context |
+| Responsive | Mobile/tablet/desktop rendered and checked |
+| Accessibility | Keyboard, semantics, focus, reduced motion, target size |
+| Performance | Measured user-critical path |
+| Craft | Typography, spacing, depth, icon, microinteraction audit |
+| Independent challenge | Second seat attempts to break it |
+| Director gate | Human acceptance after independent review |
+
+---
+
+
 ## VOLUME 15 — LIVING RECORD
 
 ### 2026-10-02 — Contract created (convergence)
@@ -622,6 +972,26 @@ Compiled from: v1.4 canon dos/don'ts/genome (folded verbatim), Builder Field Man
 **Open director questions (preserved, his to rule):**
 1. Body-type target: 17–18px vs 16px floor.
 2. Room accent token collisions: Feed/Connect (emerald), Library/Mail (sapphire) — differentiated by icon glyph pending ruling.
+
+### 15.1 — Consolidated contradictions register (from PR #1332 review)
+
+These conflicts were found by independently reconciling the master contract, build law, room contracts, the v1.4 candidate, and the latest #554 director direction.
+
+| ID | Conflict | Current law / handling |
+|---|---|---|
+| C1 | 7/10/11 state models | **Use the 11-state universal model**. It is the superset: LOADING, EMPTY, READY, BLOCKED, UNAUTHORIZED, NOT_VERIFIED, VERIFIED, ERROR, OFFLINE, DISABLED, UNKNOWN. |
+| C2 | Gold hex conflicts | **Gold/value = `#e8b64c`; Yellow/attention = `#f1d75a`.** Separate semantics. |
+| C3 | Connect emerald vs teal | **OPEN — Human Director owns final decision.** Main currently remains emerald; teal `#40d3bb` is the candidate connection semantic. |
+| C4 | Duplicate room accents | Do not silently retheme. Preserve current canonical room tokens until C3/other collisions are explicitly resolved. |
+| C5 | 9.0 vs 9.5 acceptance bars | Phase progress may use **9.0 readiness** from project build law; **room/signature graduation uses D1=10 and D2–D8≥9.5**. No failed hard gate can be averaged away. |
+| C6 | 10px vs 11px labels | **11px is the minimum.** LAW ZERO wins over older component-specific values. |
+| C7 | Persistent 64px rail vs #554 corner-drawer shell | **#554 director direction supersedes the older rail shape** for the production shell. |
+| C8 | Purple vs magenta primary action | **Purple `#9d75ff` is primary-action/Naya energy; magenta `#d86cff` is human-significance energy.** |
+| C9 | 0000 architectural master vs visual spec | Architectural contracts govern architecture; this master governs visual+design behavior. Never treat the two as competing systems. |
+| C10 | Yellow/gold ambiguity | **Resolved by semantic split:** Yellow = attention/signal, Gold = consequence/value. |
+
+Until an OPEN decision is resolved, builders MUST preserve the current known-good canonical behavior and MUST NOT invent a replacement.
+
 
 ---
 
