@@ -7,7 +7,7 @@ window.NayaHub = (function(){
   try { d = JSON.parse(localStorage.getItem(K) || '{}'); } catch(e){ d = {}; }
   d.receipts = d.receipts || []; d.collections = d.collections || [];
   d.spaces = d.spaces || []; d.prefs = d.prefs || {};
-  d.requests = d.requests || []; d.mail = d.mail || {};
+  d.requests = d.requests || []; d.mail = d.mail || {}; d.conns = d.conns || [];
   function w(){ try{ localStorage.setItem(K, JSON.stringify(d)); }catch(e){} }
   function uid(p){ return (p||'id') + '-' + Date.now().toString(36) + Math.floor(Math.random()*46656).toString(36); }
   function hts(t){ try{ return new Date(t).toLocaleString([], {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}); }catch(e){ return String(t); } }
@@ -67,6 +67,7 @@ window.HubActions = {
     NayaHub.d.prefs.libFacet = t.getAttribute('data-v'); NayaHub.w(); NayaHub.rerender();
     setTimeout(function(){ var q = document.getElementById('hubLibQ'); if (q){ q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }, 80);
   },
+  'lib-time': function(t){ NayaHub.d.prefs.libTime = t.getAttribute('data-v'); NayaHub.w(); NayaHub.rerender(); },
   'lib-open': function(t){
     var i = parseInt(t.getAttribute('data-v'), 10);
     var bl = document.querySelectorAll('.block');
@@ -77,11 +78,42 @@ window.HubActions = {
     }
     if (home){ home.click(); setTimeout(go, 450); } else { go(); }
   },
-  'req-access': function(t){
-    var door = t.getAttribute('data-v');
+  'lib-inspect': function(t){
+    var id = t.getAttribute('data-v');
+    NayaHub.d.prefs.libInspect = NayaHub.d.prefs.libInspect === id ? null : id;
+    NayaHub.w(); NayaHub.rerender();
+  },
+  'door-scope': function(t){
+    NayaHub.d.prefs.pendingDoor = t.getAttribute('data-v');
+    NayaHub.w(); NayaHub.rerender();
+    setTimeout(function(){ var p = document.getElementById('hubDoorScope'); if (p) p.scrollIntoView({behavior:'smooth', block:'center'}); }, 80);
+  },
+  'door-confirm': function(){
+    var door = NayaHub.d.prefs.pendingDoor;
+    if (!door) return;
+    NayaHub.d.prefs.pendingDoor = null;
     NayaHub.d.requests.push({ id:NayaHub.uid('req'), door:door, ts:new Date().toISOString() });
     NayaHub.w();
-    NayaHub.receipt('connect.request', 'Access requested: ' + door, function(){ NayaHub.rerender(); });
+    NayaHub.receipt('connect.request', 'Access requested: ' + door + ' (scope reviewed)', function(){ NayaHub.rerender(); });
+  },
+  'door-cancel': function(){
+    NayaHub.d.prefs.pendingDoor = null; NayaHub.w(); NayaHub.rerender();
+  },
+  'conn-add': function(){
+    var name = ((document.getElementById('hubConnName') || {}).value || '').trim();
+    var kind = (document.getElementById('hubConnKind') || {}).value || 'Person';
+    if (!name) return;
+    NayaHub.d.conns.push({ id:NayaHub.uid('conn'), name:name, kind:kind, ts:new Date().toISOString(),
+      scope:'Reads what you share with it. Cannot act, persist, or reach private rooms without your word.' });
+    NayaHub.w();
+    NayaHub.receipt('connections.add', kind + ' connected: ' + name, function(){ NayaHub.rerender(); });
+  },
+  'conn-remove': function(t){
+    var id = t.getAttribute('data-v');
+    var c = NayaHub.d.conns.filter(function(x){ return x.id === id; })[0];
+    NayaHub.d.conns = NayaHub.d.conns.filter(function(x){ return x.id !== id; });
+    NayaHub.w();
+    NayaHub.receipt('connections.remove', 'Disconnected: ' + (c ? c.name : id), function(){ NayaHub.rerender(); });
   },
   'conn-request': function(t){
     var who = t.getAttribute('data-v');
@@ -174,6 +206,7 @@ window.HubActions = {
     var title = (document.getElementById('hubNoteTitle') || {}).value || '';
     var text = (document.getElementById('hubNoteText') || {}).value || '';
     var type = (document.getElementById('hubNoteType') || {}).value || 'INSIGHT';
+    var space = (document.getElementById('hubNoteSpace') || {}).value || 'personal';
     var st = document.getElementById('hubNoteStatus');
     function say(m){ if (st) st.textContent = m; }
     if (!text.trim()){ say('Write the note first — empty captures are not kept.'); return; }
@@ -182,7 +215,7 @@ window.HubActions = {
     function localSave(){
       var arr = [];
       try{ arr = JSON.parse(localStorage.getItem('nayanet_v7_live_notes') || '[]'); }catch(e){}
-      var rec = { id:'note-' + Date.now().toString(36), text:(title.trim() ? title.trim() + ' — ' : '') + text.trim(), type:type, createdAt:new Date().toISOString(), space:'personal' };
+      var rec = { id:'note-' + Date.now().toString(36), text:(title.trim() ? title.trim() + ' — ' : '') + text.trim(), type:type, createdAt:new Date().toISOString(), space:space };
       arr.unshift(rec);
       try{ localStorage.setItem('nayanet_v7_live_notes', JSON.stringify(arr)); }catch(e){}
       NayaHub.receipt('notes.capture', '“' + String(rec.text).slice(0, 80) + '”', function(){

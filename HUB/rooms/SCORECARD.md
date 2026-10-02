@@ -1,41 +1,39 @@
-# NayaNET Hub — 10/10 Scorecard (living document)
+# Scorecard — Naya 4 room integration, v3 (canonical D1–D8)
 
-**What:** `HUB/rooms/nayanet-hub.html` — one app, nine furnished rooms on the shared Hub shell.
-**Bar:** Shawn's 10/10 — "world champions of interfaces," honest by construction.
-**Method:** builder self-scores function; Naya 2 scorecards presentation; iterate until 10/10.
-**Sources:** `HUB/DESIGN-CONTRACT.md` (Part 4 + §§14–29), `HUB/NAYANET INTERFACE CONCEPT.html` (frozen visual truth),
-concept-derived Law Zero + room-color registry (design-law convergence pending — three PRs, one will survive).
+**Instrument:** PROJECT-INTELLIGENCE.md §2 — the measurement law. Eight dimensions,
+every dimension ≥ 9.0, D1 = 10. Builder self-scores; an **independent seat re-scores**
+(builder self-score never closes a gate). Scores can go DOWN. The v1/v2 scorecard
+used invented dimensions; it is void. This replaces it.
 
-## Dimensions
+**Target:** branch `naya4/hub-rooms-v1`, `~/workspace/your_files/nayanet-hub.html`
+(905,145 bytes, deterministic md5 `52c289480187df39f5aff6a918f38d7c`).
 
-| # | Dimension | Source | v1 self-score | Notes |
-|---|-----------|--------|---------------|-------|
-| 1 | Visual fidelity to the V7 | frozen concept | 6/10 | Her workspace classes in use; sparse vs her boards. Naya 2 calibrates. |
-| 2 | Functional completeness | Contract Part 4, per room | 7/10 | Every room does its Part 4 job at basic level. Reports synthesis is templated; Connect doors can't complete real OAuth (honest). |
-| 3 | Cross-room integration | "one app, all rooms work together" | 8/10 | Shared store + ledger receipts + hash routing live. Feed marks → Ledger/Lists; captures → Library/Lists/Ledger. |
-| 4 | Honesty | Contract §26, room specs | 9/10 | No fake data anywhere. Mail = NO MAIL. Watch: reports synthesis must stay labeled "computed". |
-| 5 | Law Zero | design law | 8/10 | Text stays readable; verify chip contrast after elevation. |
-| 6 | Button & interaction craft | concept (primo buttons) | 5/10 | My pills are basic. Elevate to her `ws-actions` accent language. |
-| 7 | Board integrity | Contract §§15–16 | 7/10 | Boards live in the feed (hers, untouched). Rooms link out rather than re-rendering — acceptable. |
-| 8 | Performance | single static file | 8/10 | 893KB, no network deps beyond CDNs already in shell. |
+**Evidence:** `v3-harness.js` — 50/50 checks green (10 rooms render · 10 canonical
+doors · zero KPI stat cards in reports · §21 state chip in every room · all
+HubActions execute · receipt chain links · prefs persist). `GAP-ANALYSIS.md`
+documents the v2→v3 corrections.
 
-**Composite v1: ~7.2/10.** The drag is presentation (1, 6) — matches Shawn's "empty house" read.
+| Dim | What 10 looks like | v3 self | Honest basis |
+|---|---|---|---|
+| D1 Visual Excellence | Every pixel obeys the Design Contract | **7.5** | Her component language adopted; room visuals consistent with shell. Naya 2's independent eye still pending — she owns the visual verdict. |
+| D2 Functional Completeness | Every control has a real causal path; zero dead controls | **7.5** | 50/50 harness: every button/tab/search/filter/action executes a real path. Depth still growing (e.g., Connect doors record requests; live OAuth is runtime work). |
+| D3 Intelligence | Thinks with NayaPOWER — real retrieval, real capture | **3** | Not connected to the nine-node kernel. Note capture attempts the runtime first, then says so honestly. Marked, not faked. |
+| D4 Honesty | Never lies about what it knows | **9** | No sample data, no fake mailboxes, no simulated activity. Local vs runtime labeled everywhere. |
+| D5 Performance | Feels instant | **6** | Single 905KB file, no code-split. Core interactions are simple DOM; unmeasured on device. Phase 7 work. |
+| D6 Reliability & Continuity | It remembers | **7.5** | localStorage persists across sessions; export works; erase works. Production persistence path (PR #1243) awaits Shawn's merge. |
+| D7 Accessibility | Everyone can use it | **6.5** | Visible `:focus-visible` on all room controls; semantic buttons; reduced-motion honored. Never audited; screen-reader pass pending. |
+| D8 Craft | The last 10% | **7.5** | Unified component language; empty states written with care; error states kind. Mobile identity-preservation untested. |
 
-## Per-room function checklist (Part 4)
+**Composite: ~7.0/10.** Below 9.0 = not ready. The climb: Naya 2's visual pass (D1),
+runtime adapter (D3), Phase 7 hardening (D5/D7). No inflation — the scorecard decides.
 
-- **Today** — diary 8 panels, honest states — inherited verbatim. ✅
-- **Reports** — time ranges compute from real objects; receipts listed. ✅ basic
-- **Library** — search + facets over real boards/notes; OPEN jumps to board. ✅
-- **Connect** — 5 doors, what/who/status/action; requests receipted. ✅ (rename Share→Connect: her lane)
-- **Ledger** — hash-chained receipts, VERIFY CHAIN, export. ✅
-- **Connections** — 3 governed relationships, scopes, requests. ✅
-- **Lists** — saved/favorites/loved/top-rated/collections CRUD. ✅
-- **Mail** — NO MAIL, honest; notify pref. ✅
-- **Spaces** — 6 boundaries + custom, privacy rules, counts. ✅
-- **Settings** — runtime truth, data export/erase, trust. ⚠️ add identity + preferences
-- **Notes** — runtime-first capture, local fallback labeled. ✅
+## v3 corrections vs v2 (from GAP-ANALYSIS.md)
 
-## Iteration log
-
-- **v2 (elevation):** adopt her `ws-stat` / `ws-actions` component language; grid rows; identity+preferences in Settings.
-  Awaiting Naya 2's presentation scorecard (#554) for the blind-spot pass.
+- Scorecard replaced with the canonical D1–D8 (mine was invented).
+- Reports rebuilt as narrative synthesis — v2's KPI stat cards violated §27.
+- Smart Connect: 10 canonical doors (Phase 4), 2-step request flow with permission
+  scopes; Connection ≠ permission to act, shown per door.
+- §21 seven-state model: every room carries an explicit state chip.
+- D2 audit: every `data-hub-action` mapped to a real causal path (harness-verified).
+- `:focus-visible` styles added (§24). Smart Board law correction (15→8 layers)
+  filed separately against the design-law PR.

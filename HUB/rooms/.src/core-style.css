@@ -36,3 +36,23 @@
 #hubVerify.bad{color:#ff4f5e}
 #hubNoteStatus{margin-top:8px;font-size:13px;min-height:20px}
 html.hub-rm *,html.hub-rm *::before,html.hub-rm *::after{transition:none!important;animation:none!important}
+/* §21 — the seven room states, standardized visuals. No room is exempt. */
+.hub-state{display:inline-block;font-size:10px;letter-spacing:.16em;font-weight:800;padding:5px 12px;border-radius:999px;border:1px solid #8b63ff66;color:#b9b3c9;background:#101018;margin:8px 0 4px}
+.hub-state[data-s="READY"]{border-color:#55e39a77;color:#bff5d9}
+.hub-state[data-s="VERIFIED"]{border-color:#55e39a;color:#d8ffe9;box-shadow:0 0 12px #55e39a33}
+.hub-state[data-s="EMPTY"]{border-color:#8b63ff55;color:#8f8a9c}
+.hub-state[data-s="NOT_VERIFIED"]{border-color:#f1d75a77;color:#f5e6a8}
+.hub-state[data-s="BLOCKED"],.hub-state[data-s="ERROR"]{border-color:#ff4f5e77;color:#ffb3ba}
+.hub-state[data-s="LOADING"]{border-color:#55b9ee77;color:#bfe6f5}
+/* §24 — visible elegant focus. Beauty that excludes is not elite. */
+#nayaIntelligenceWorkspace button:focus-visible,#nayaIntelligenceWorkspace input:focus-visible,#nayaIntelligenceWorkspace select:focus-visible,#nayaIntelligenceWorkspace textarea:focus-visible,#nayaIntelligenceWorkspace a:focus-visible{outline:2px solid #d86cff;outline-offset:3px;border-radius:8px}
+/* Reports: narrative, not dashboard (§27 — never just "12 objects found") */
+.hub-narrative{font-size:15px;line-height:1.9;color:#d9d4e2;max-width:72ch;margin:12px 0}
+.hub-narrative b{color:#fff}
+.hub-theme{display:inline-block;margin:4px 6px 4px 0}
+.hub-fulltext{white-space:pre-wrap;line-height:1.75;color:#cfc9dc}
+.hub-dim{color:#8f8a9c}
+.hub-scope{border:1px solid #f1d75a55;border-radius:14px;padding:18px;margin:14px 0;background:#141210}
+.hub-scope h4{margin:0 0 8px;color:#f5e6a8}
+.hub-scope p{font-size:14px;line-height:1.75;color:#d9d4e2;margin:8px 0}
+.hub-scope .can{color:#bff5d9}.hub-scope .cannot{color:#ffb3ba}

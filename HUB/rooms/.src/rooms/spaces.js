@@ -18,6 +18,7 @@ function spaces(){
       + '<p><b>'+n+'</b> captured notes visible here</p></article>';
   }).join('');
   return head(S.spaces)
+    + '<span class="hub-state" data-s="READY">READY · '+all.length+' SPACES</span>'
     + '<div class="ws-grid">'+cards+'</div>'
     + '<div class="hub-form"><input id="hubSpaceName" placeholder="New space name…"><button data-hub-action="space-create">CREATE SPACE</button></div>'
     + '<p class="hub-note">Spaces are context boundaries, not folders. Private by default · shared by choice · collective by consent · public by decision.</p>';

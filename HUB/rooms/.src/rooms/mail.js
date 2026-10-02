@@ -5,6 +5,7 @@ function mail(){
     ? 'The runtime mail service is reachable, but your mailbox is empty.'
     : 'The runtime is not exposed in this build, so there is no mailbox to check.';
   return head(S.mail)
+    + '<span class="hub-state" data-s="NOT_VERIFIED">NOT VERIFIED · NO MAIL RUNTIME</span>'
     + '<div class="ws-empty hub-mail-empty"><div class="ws-stat">NO MAIL</div>'
     + '<p>'+state_line+'</p>'
     + '<p class="hub-dim">A real room. No fake mailbox, ever.</p></div>'

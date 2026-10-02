@@ -8,6 +8,7 @@ function settings(){
   try{ nNotes = NOTES().length; }catch(e){}
   var rm = NayaHub.d.prefs.reduceMotion ? ' checked' : '';
   return head(S.settings)
+    + '<span class="hub-state" data-s="READY">READY</span>'
     + '<div class="ws-grid">'
     + card('IDENTITY',
         '<p><b>Shawn</b> · Director</p>'
@@ -27,6 +28,10 @@ function settings(){
         + '<p class="hub-dim">Everything above lives in this browser — yours, not ours.</p>'
         + '<div class="ws-actions"><button data-hub-action="hub-export">EXPORT MY DATA</button>'
         + '<button data-hub-action="hub-clear" class="hub-danger">ERASE LOCAL DATA</button></div>', '#f1d75a')
+    + card('PRIVACY',
+        '<p><b>Private by default.</b> Shared by choice. Collective by consent. Public by decision.</p>'
+        + '<p class="hub-dim">Captures land in Personal unless you file them elsewhere. Nothing leaves this browser except what you explicitly send.</p>'
+        + '<p class="hub-dim">Door Law: connection never implies permission to act. Every connection, request, and share is receipted in the Ledger.</p>', '#b8ee57')
     + card('TRUST',
         '<p>Source and interpretation are marked separately, everywhere in this Hub.</p>'
         + '<p class="hub-dim">No remote result is fabricated in this static build. What the Hub cannot prove, it says so.</p>', '#d86cff')

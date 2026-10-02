@@ -51,6 +51,7 @@ function lists(){
     body = rowsFor(ids, tab);
   }
   return head(S.lists)
+    + '<span class="hub-state" data-s="'+(Object.keys(state.saved||{}).length+Object.keys(state.favorites||{}).length ? 'READY' : 'EMPTY')+'">'+(Object.keys(state.saved||{}).length+Object.keys(state.favorites||{}).length ? 'READY' : 'EMPTY')+'</span>'
     + '<div class="hub-tabs">'+tabs+'</div>'
     + body
     + '<p class="hub-note">The human-friendly organization layer. Lists organize canonical intelligence — they never become another storage system.</p>';
