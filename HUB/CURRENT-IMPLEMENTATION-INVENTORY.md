@@ -202,3 +202,30 @@ It is:
 **CURRENT-MAIN APP SHELL + GOVERNED JOURNEY + CANONICAL RUNTIME ADAPTER + YOUR INTELLIGENCE TODAY WORKING END-TO-END + EVIDENCE.**
 
 That slice must preserve the visual baseline while proving the architecture the rest of the app will inherit.
+
+
+## 10. Human Director presentation finding — mobile navigation
+
+**Source:** direct Human Director QA feedback, 2026-10-01.  
+**Independent reproduction:** NOT YET VERIFIED.
+
+Reported behavior:
+- opening the mobile "+" / navigation affordance reveals the sidebar;
+- a duplicate/double-sidebar condition remains visible during scroll;
+- scrolling can expose a large unused black gutter/empty side region;
+- the result reads as unfinished even when individual controls look good.
+
+Classification:
+**P1 PRESENTATION / RESPONSIVE SHELL DEFECT** because the global shell is inherited by every room.
+
+Required closure:
+- exactly one primary navigation surface per viewport;
+- no permanent desktop rail underneath an open mobile drawer;
+- drawer overlays instead of reserving a second content column;
+- no horizontal overflow;
+- no dead black gutter;
+- open/close preserves scroll;
+- long-page testing at phone/tablet widths;
+- screenshot/video evidence before closure.
+
+Do not mark this defect PASS from code inspection alone.
