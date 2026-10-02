@@ -12,7 +12,7 @@ Memory stores and retrieves intelligence; it does not decide truth or authority 
 |---|---|
 | [0001-MEMORY-CONTINUITY-CONTRACT-V1.md](./0001-MEMORY-CONTINUITY-CONTRACT-V1.md) | Core memory and continuity rules |\n| [INTELLIGENCE-REPORTS/README.md](./INTELLIGENCE-REPORTS/README.md) | Canonical Daily / Weekly / Monthly / Yearly intelligence-report program |\n| [2026-10-01 Daily Intelligence Report](./INTELLIGENCE-REPORTS/DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md) | Canonical daily report snapshot — IB-DIR-NAYAPOWER-20261001-001 |
 
-### Smart Notes (19)
+### Smart Notes (20)
 
 | Smart Note | Topic |
 |---|---|
@@ -42,3 +42,5 @@ Memory stores and retrieves intelligence; it does not decide truth or authority 
 - Memory must not silently convert history into current truth
 - Cold continuity is the acceptance target: a cold Naya can retrieve relevant intelligence without manual reconstruction
 - Stored data is not automatically intelligence
+
+| [SN-018](./SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md) | 20261001-hub-is-intelligence-projection |
