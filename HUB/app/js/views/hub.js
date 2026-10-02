@@ -40,14 +40,18 @@ function HubView(params) {
   const search = el('div', 'jewel-search');
   search.innerHTML = `${Icons.icon('search')}<input type="search" placeholder="Ask the intelligence…" aria-label="Search the intelligence">`;
   const input = search.querySelector('input');
-  input.addEventListener('keydown', e => {
+  input.addEventListener('keydown', async e => {
     if (e.key === 'Enter' && input.value.trim()) {
-      const res = R.search(input.value.trim());
-      toast(res.message, room.accent);
+      input.setAttribute('aria-busy','true');
+      const res = await R.search(input.value.trim(), { room: room.id });
+      input.removeAttribute('aria-busy');
+      if (!res.ok) toast(res.message || 'No verified answer is available.', room.accent);
+      else showSearchResult(res);
     }
   });
+  const identity = R.identitySnapshot ? R.identitySnapshot() : { display_name: 'You', state: 'not_verified' };
   const chip = el('div', 'identity-chip',
-    `<span class="avatar" role="img" aria-label="Your avatar"></span><span>Shawn</span>`);
+    `<span class="avatar" role="img" aria-label="Identity avatar"></span><span>${escapeHtml(identity.display_name || 'You')}</span>`);
   top.append(toggle, search, chip);
 
   /* ——— Room outlet ——— */
@@ -99,6 +103,28 @@ function HubView(params) {
 
   shell.append(rail, top, main);
   return shell;
+
+  function showSearchResult(res) {
+    const payload = res.data ?? res;
+    const list = window.NayaRoomKit ? window.NayaRoomKit.items(payload) : [];
+    const existing = main.querySelector('.global-search-result');
+    if (existing) existing.remove();
+    const panel = el('section', 'board global-search-result');
+    panel.style.setProperty('--room-accent', room.accent);
+    const summary = payload.summary || payload.answer || payload.text || '';
+    panel.innerHTML = `<div class="board-head"><div class="board-icon">${Icons.icon('search')}</div><div><div class="board-title">Ask the intelligence</div><div class="board-sub">Sourced retrieval · current room context</div></div></div><div class="board-body"></div>`;
+    const body = panel.querySelector('.board-body');
+    if (summary) body.insertAdjacentHTML('beforeend', `<p style="color:var(--ink-dim);font-size:14px;line-height:1.6">${escapeHtml(summary)}</p>`);
+    if (list.length && window.NayaRoomKit) {
+      const listWrap = el('div','intelligence-list');
+      list.slice(0,8).forEach(x=>listWrap.appendChild(window.NayaRoomKit.intelCard(x,room.accent)));
+      body.appendChild(listWrap);
+    }
+    if (!summary && !list.length) body.innerHTML='<div class="empty-instrument"><strong>No verified answer returned.</strong><p>The runtime connected, but returned no displayable intelligence.</p></div>';
+    main.insertBefore(panel, bodyAnchor());
+  }
+  function bodyAnchor(){ return main.querySelector('.room-body'); }
+  function escapeHtml(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 
   function roomDesc(id) {
     return {
