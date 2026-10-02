@@ -24,13 +24,12 @@
     ['value',"WHAT'S IN IT FOR YOU?",'HUMAN VALUE']
   ];
 
-  const JEWEL='<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">'
-    +'<defs><linearGradient id="fjg" x1="0" y1="0" x2="32" y2="32">'
-    +'<stop offset="0" stop-color="#35e0a1"/><stop offset="1" stop-color="#0e9f6e"/>'
-    +'</linearGradient></defs>'
-    +'<path d="M16 2 L28 12 L16 30 L4 12 Z" stroke="url(#fjg)" stroke-width="1.6"/>'
-    +'<path d="M4 12 H28 M16 2 L11 12 L16 30 M16 2 L21 12 L16 30" stroke="url(#fjg)" stroke-width="1" opacity="0.65"/>'
-    +'<circle cx="16" cy="12" r="1.6" fill="#35e0a1"/></svg>';
+  /* The Smart Feed glyph: white wave-lines, geometric, 40% of diameter,
+     centered — set by the specimen V1. The orb itself is CSS anatomy. */
+  const JEWEL='<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">'
+    +'<path d="M4 8.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/>'
+    +'<path d="M4 13.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/>'
+    +'<path d="M4 18.5c2.6-2.6 5.4-2.6 8 0s5.4 2.6 8 0"/></svg>';
 
   function FeedRoom(){
     const {el}=window.NayaUI, K=window.NayaRoomKit;
@@ -43,7 +42,7 @@
     const ask=el('button','feed-ask','<span>Ask Naya about today</span>');
     ask.type='button';
     ask.addEventListener('click',()=>{
-      window.NayaUI.toast('Ask Naya about today — the governed ask seam lands here. Nothing is answered from thin air.', 'var(--emerald)');
+      window.NayaUI.toast('Ask Naya about today — the governed ask seam lands here. Nothing is answered from thin air.', '#55e39a');
     });
     foot.appendChild(ask);
     stage.appendChild(foot);
@@ -168,7 +167,7 @@
       const btn=el('button','feed-btn',''); btn.type='button'; btn.textContent=b.action.label;
       btn.addEventListener('click',()=>{
         if(typeof b.action.run==='function'){ b.action.run(); return; }
-        window.NayaUI.toast('This action runs through the governed runtime — never from the feed alone.', 'var(--emerald)');
+        window.NayaUI.toast('This action runs through the governed runtime — never from the feed alone.', '#55e39a');
       });
       aw.appendChild(btn); a.appendChild(aw);
     }
