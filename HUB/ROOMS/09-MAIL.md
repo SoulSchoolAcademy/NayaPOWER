@@ -74,7 +74,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE SIGNAL ROOM.** Sapphire is the canonical room color; cyan can appear as the high-frequency signal accent. The room suppresses visual noise and elevates communication that genuinely needs the human. Every priority signal says *why it needs you*. The emotional goal is relief: opening Mail should feel like the inbox has already been understood.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -296,6 +296,25 @@ And the current global acceptance bar applies:
 - Priority visual emphasis should be validated against actual communication outcomes, not engagement heuristics.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+The highest-value conversation arrives with a one-line **why this needs you**, relevant context, commitments and a prepared next action — while the provider-backed message remains clearly distinct from Naya's synthesis.
+
+### Best-of intelligence to synthesize
+- **Slack / MetaLab:** conversational warmth and feedback.
+- **Linear:** focus and low-noise density.
+- **Things:** organization that reduces anxiety.
+- **Stripe:** explicit action/consequence state.
+
+### Beyond-benchmark hypothesis
+Mail becomes meaningfully smarter when triage, context, commitments and drafting are intelligence layers over real provider truth, and the human sees signals rather than manually classifying noise.
+
+### Proof boundary
+Measure priority precision/recall, triage time, draft usefulness, send/recovery success and provider-state clarity.
 
 ---
 
