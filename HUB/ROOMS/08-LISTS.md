@@ -72,7 +72,7 @@ The room inherits the shared Naya material system. Theme energy appears at meani
 
 ### Signature expression
 
-undefined
+**THE MISSION TABLE.** Purple command energy gives deliberate work gravity without turning the room into gamified checkboxes. Lists feel like missions because Naya exposes purpose, qualification and current momentum. Momentum may brighten only from real state change; stalled work dims honestly. The human can manipulate the work directly while every item remains a reference to canonical intelligence.
 
 The room must feel like one member of the same living product, not an independent microsite.
 
@@ -293,6 +293,25 @@ And the current global acceptance bar applies:
 - Exact mission-table metaphor intensity should be tuned after first real list outcome.
 
 Open decisions remain visibly open until resolved by the Human Director or authoritative project evidence. They must not be silently guessed into production.
+
+---
+
+## 15A. SIGNATURE / BENCHMARK-TO-BEYOND
+
+### Signature moment
+A list explains **why every item is here** and can evolve from a static collection into a living rule-driven mission without duplicating source truth.
+
+### Best-of intelligence to synthesize
+- **Things:** calm task organization.
+- **Linear:** dense but focused execution.
+- **Play:** direct manipulation with real underlying structure.
+- **Cooper:** goals before feature mechanics.
+
+### Beyond-benchmark hypothesis
+Lists become Smart Lists when membership can be intentional or intelligence-driven, qualification is explainable, actions preserve canonical identity and Naya reduces coordination work instead of creating another task manager.
+
+### Proof boundary
+Measure qualification comprehension, list-creation success, manual-work reduction and duplicate-truth incidents.
 
 ---
 
