@@ -234,9 +234,9 @@
     const isOn=carried.includes(p.id);
     const carry=el('button','action'+(isOn?' carry-on':''),'');
     carry.type='button';
-    carry.textContent=isOn?'\u2605 CARRIED FORWARD':'CARRY FORWARD';
+    carry.textContent=isOn?'\u2605 SAVED FOR TOMORROW':'SAVE FOR TOMORROW';
     carry.setAttribute('aria-pressed',isOn?'true':'false');
-    carry.setAttribute('aria-label',(isOn?'Remove from tomorrow\u2019s lineup: ':'Carry into tomorrow: ')+p.title);
+    carry.setAttribute('aria-label',(isOn?'Remove from tomorrow\u2019s lineup: ':'Save for tomorrow: ')+p.title);
     if(isOn)carry.style.setProperty('--action-color','#e8b64c');
     carry.addEventListener('click',e2=>{
       e2.stopPropagation();
@@ -245,7 +245,25 @@
       const stage=a.closest('.today-stage');
       renderAll(el,stage);
     });
-    actions.appendChild(ev); actions.appendChild(carry);
+    const copy=el('button','action','COPY LINK'); copy.type='button';
+    copy.setAttribute('aria-label','Copy link to: '+p.title);
+    copy.addEventListener('click',e2=>{
+      e2.stopPropagation();
+      const url=location.origin+location.pathname+'#/today/'+p.id;
+      const done=()=>{ copy.textContent='COPIED \u2713'; setTimeout(()=>{ copy.textContent='COPY LINK'; },2000); };
+      const fallback=()=>{
+        const ta=document.createElement('textarea');
+        ta.value=url; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); done(); }
+        catch(err){ copy.textContent='COPY FAILED'; setTimeout(()=>{ copy.textContent='COPY LINK'; },2000); }
+        document.body.removeChild(ta);
+      };
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(done).catch(fallback);
+      }else fallback();
+    });
+    actions.appendChild(ev); actions.appendChild(carry); actions.appendChild(copy);
     inner.appendChild(actions);
 
     const foot=el('div','blockFoot');
