@@ -1,7 +1,7 @@
 {
   "schema": "naya.design-intelligence.v1",
-  "version": "1.0",
-  "status": "HUMAN_DIRECTOR_DIRECTED_PROPOSED_CANONICAL",
+  "version": "1.2",
+  "status": "HUMAN_DIRECTOR_RATIFIED_CANONICAL",
   "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
   "coordination": {
     "issue": 554,
@@ -168,5 +168,87 @@
     "unmeasured_improvement",
     "self_grade_as_final_proof"
   ],
-  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence."
+  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence.",
+  "ratified_at": "2026-10-02",
+  "human_experience_science": {
+    "adoption": "HUMAN_DIRECTOR_RATIFIED_2026-10-02",
+    "evidence_boundary": "Distilled public benchmark corpus; external sources inform transferable design principles but do not override canonical NayaPOWER governance, project contracts, human authority, or verified project outcomes.",
+    "cross_reference": {
+      "result": "STRONGLY_ALIGNED_WITH_TARGETED_GAPS",
+      "preserve": [
+        "purpose_before_visual_treatment",
+        "hierarchy_before_density",
+        "meaning_before_decoration",
+        "depth_before_glow",
+        "state_before_animation",
+        "beauty_causality_truth_speed",
+        "coherent_tokens_material_icon_family",
+        "complete_product_quality",
+        "accessibility_responsiveness_performance",
+        "render_observe_independent_verify_learn_reuse"
+      ],
+      "explicit_gaps_closed": [
+        "recognition_over_recall",
+        "progressive_disclosure",
+        "error_prevention_and_recovery",
+        "choice_complexity",
+        "target_acquisition_and_motor_ergonomics",
+        "stable_grammar_with_adaptive_intelligence",
+        "direct_manipulation_when_applicable",
+        "measured_cognitive_burden",
+        "human_usability_outcome_evidence",
+        "pattern_applicability_and_supersession"
+      ]
+    },
+    "laws": [
+      "PURPOSE_BEFORE_INTERFACE",
+      "DISTILL_BEFORE_DISPLAY",
+      "RECOGNITION_BEFORE_RECALL",
+      "ONE_OBVIOUS_NEXT_ACTION",
+      "PERCEPTIBLE_STATE_AND_IMMEDIATE_FEEDBACK",
+      "PREVENT_ERROR_BEFORE_EXPLAINING_ERROR",
+      "COMPLEXITY_STAYS_IN_THE_MACHINE",
+      "STABLE_GRAMMAR_ADAPTIVE_INTELLIGENCE",
+      "DIRECT_MANIPULATION_WHEN_IT_CLARIFIES_CAUSALITY",
+      "DESIGN_LEARNS_FROM_HUMAN_OUTCOMES"
+    ],
+    "surface_questions": [
+      "WHERE_AM_I",
+      "WHAT_MATTERS",
+      "WHAT_CAN_I_DO",
+      "WHAT_HAPPENS_NEXT"
+    ],
+    "cognitive_ergonomics_checks": [
+      "attention",
+      "choice_complexity",
+      "target_acquisition",
+      "memory_burden",
+      "mental_model",
+      "feedback_latency",
+      "error_probability",
+      "recovery",
+      "progressive_disclosure",
+      "trust"
+    ],
+    "pattern_intelligence_schema": [
+      "HUMAN_PROBLEM",
+      "CONTEXT",
+      "APPLICABILITY",
+      "PATTERN",
+      "IMPLEMENTATION_GRAMMAR",
+      "FAILURE_MODES",
+      "ACCESSIBILITY",
+      "EVIDENCE",
+      "OUTCOME",
+      "SUPERSESSION"
+    ],
+    "optimization_target": "MAXIMUM_RESPONSIBLE_HUMAN_VALUE_WITH_MINIMUM_NECESSARY_COGNITIVE_BURDEN",
+    "anti_goals": [
+      "maximum_decoration",
+      "maximum_novelty",
+      "maximum_engagement",
+      "maximum_interface_density",
+      "pattern_copying_without_applicability"
+    ]
+  }
 }
