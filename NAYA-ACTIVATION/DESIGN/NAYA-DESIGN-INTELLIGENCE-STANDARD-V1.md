@@ -1,6 +1,6 @@
 # 🔱 Naya Design Intelligence Standard V1
 
-**Status:** HUMAN-DIRECTOR-DIRECTED PROPOSED CANONICAL — 2026-10-01  
+**Status:** HUMAN-DIRECTOR-RATIFIED CANONICAL — 2026-10-02  
 **Scope:** NayaPOWER/NayaNET interfaces, apps, digital systems, project intelligence and design/build work.
 
 ## North star
@@ -167,3 +167,98 @@ A cold Naya should be able to:
 **understand the human → explain the product → identify the design DNA → identify the highest-value gap → build a bounded improvement → preserve what works → prove it → learn → leave a better design starting point**
 
 without Shawn repeatedly explaining the vision.
+
+
+---
+
+## Human-centered interaction science — adopted 2026-10-02
+
+**Human Director adoption:** Shawn explicitly directed that NayaPOWER/NayaNET adopt the cross-referenced world-class design intelligence as an operating method: keep what already aligns, close the missing human-factors gaps, and optimize for maximum user experience rather than fashion, novelty, or local visual preference.
+
+### Evidence boundary
+
+This adoption is based on the distilled benchmark corpus assembled from public material about leading digital-product studios, high-quality interface exemplars, established interaction-design thinkers, and widely used UX/design texts. It is **not** a claim that every referenced book was ingested cover-to-cover or that any external source is canonical project authority. External material supplies design evidence and transferable principles; NayaPOWER governance, current project contracts, current human direction, and verified project outcomes remain authoritative.
+
+### Cross-reference result
+
+The existing Naya Design Intelligence Standard is strongly aligned with the external benchmark corpus. Preserve these existing laws:
+
+- purpose and human outcome before visual treatment;
+- hierarchy before density;
+- meaning before decoration;
+- depth before glow;
+- state before animation;
+- beauty + causality + truth + speed;
+- one coherent material/icon/token family;
+- complete-product quality rather than isolated screenshots;
+- accessibility, responsiveness and performance as design requirements;
+- rendered observation, independent challenge, evidence-backed learning and successor reuse.
+
+The main gaps were not a conflicting design philosophy. They were **human-factors laws that needed to become explicit and machine-retrievable**.
+
+### Ten adopted human-experience laws
+
+1. **PURPOSE BEFORE INTERFACE**  
+   Resolve the human's real outcome before selecting a page, component, layout, visual treatment or interaction.
+
+2. **DISTILL BEFORE DISPLAY**  
+   Raw data, memory, events and intelligence are not presentation. Determine what matters now, then progressively disclose depth and evidence.
+
+3. **RECOGNITION BEFORE RECALL**  
+   Prefer visible, familiar, contextual choices over requiring the human to remember commands, locations, meanings or prior state.
+
+4. **ONE OBVIOUS NEXT ACTION**  
+   Every major working surface should make four questions easy to answer: **Where am I? What matters? What can I do? What happens next?**
+
+5. **PERCEPTIBLE STATE + IMMEDIATE FEEDBACK**  
+   Every meaningful interaction must communicate affordance, current state, action response and consequence. Do not make the human guess whether something happened.
+
+6. **PREVENT ERROR BEFORE EXPLAINING ERROR**  
+   Use constraints, safe defaults, confirmation where consequence warrants it, clear recovery, undo/reversibility when possible, and calm actionable failure states.
+
+7. **COMPLEXITY STAYS IN THE MACHINE**  
+   Increasing system intelligence should reduce human cognitive work. More capability must not automatically produce more controls, settings, text, panels or navigation.
+
+8. **STABLE GRAMMAR, ADAPTIVE INTELLIGENCE**  
+   Personalize content, priority and context aggressively when useful, while keeping core interaction grammar predictable enough to learn and trust.
+
+9. **DIRECT MANIPULATION WHEN IT CLARIFIES CAUSALITY**  
+   When the human's mental model supports it, let people interact with the meaningful object/state itself rather than routing simple intent through avoidable abstraction.
+
+10. **DESIGN MUST LEARN FROM HUMAN OUTCOMES**  
+    A design lesson is not promoted because an AI likes it. Observe comprehension, task success, error, time, cognitive burden, accessibility, performance, trust and accepted human judgment; verify; then preserve the scoped lesson.
+
+### Cognitive ergonomics checks
+
+For every consequential interface change, check:
+
+- **attention:** what wins first glance, and should it?
+- **choice complexity:** can unnecessary alternatives be removed or deferred?
+- **target acquisition:** are important controls large, reachable and well-spaced for the actual device/input?
+- **memory burden:** are we forcing recall that recognition/context could eliminate?
+- **mental model:** does the interface behave the way the human reasonably expects?
+- **feedback latency:** is response immediate enough to preserve causality?
+- **error probability:** can the system prevent the mistake rather than merely report it?
+- **recovery:** can the human safely undo, retry, back out or understand the blocked state?
+- **progressive disclosure:** is advanced complexity available without dominating the first view?
+- **trust:** does the visible state match canonical truth, authority, provenance and real capability?
+
+### Design pattern intelligence
+
+A reusable pattern is not a mandatory template.
+
+Store and retrieve patterns as:
+
+**HUMAN PROBLEM → CONTEXT → APPLICABILITY → PATTERN → IMPLEMENTATION GRAMMAR → FAILURE MODES → ACCESSIBILITY → EVIDENCE → OUTCOME → SUPERSESSION**
+
+Use a pattern when its applicability matches. Reject it when the current purpose demands a better composition.
+
+### Human-experience success condition
+
+The target is not maximum decoration, maximum novelty, maximum engagement or maximum interface density.
+
+The target is:
+
+> **MAXIMUM RESPONSIBLE HUMAN VALUE WITH MINIMUM NECESSARY COGNITIVE BURDEN — expressed through an interface that is clear, useful, beautiful, trustworthy, alive, accessible, fast and unmistakably Naya.**
+
+A cold Naya should be able to retrieve these laws, apply them to a new interface, explain why each major design choice helps the human, test the resulting experience, and preserve only the lessons supported by evidence.

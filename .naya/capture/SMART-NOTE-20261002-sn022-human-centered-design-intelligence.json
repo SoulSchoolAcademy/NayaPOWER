@@ -1,0 +1,178 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-022",
+  "capture_id": "20261002-sn022-human-centered-design-intelligence",
+  "title": "Human-Centered Design Intelligence — World-Class UX Principles Adopted into Naya Design",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "DESIGN_MASTERY",
+  "subtopic": "HUMAN_CENTERED_INTERACTION_SCIENCE",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-02",
+    "captured_at_utc": "2026-10-02T12:30:00Z",
+    "source_type": "human_director_adopted_design_doctrine",
+    "source_reference": "Shawn Vibert direct Human Director instruction on 2026-10-02: cross-reference the distilled world-class design/interface/UX corpus against Naya's existing design intelligence; preserve what aligns, close what is missing, encode the result for human/Naya/AI/machine understanding, and adopt the resulting method as how Naya now designs for maximum user experience."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "DESIGN-MASTERY",
+    "subtopic_slug": "HUMAN-CENTERED-INTERACTION-SCIENCE"
+  },
+  "intelligence": {
+    "essence": "Naya Design is now explicitly grounded in human-centered interaction science as well as signature visual craft. The external benchmark synthesis strongly confirms the existing direction: purpose before interface, hierarchy, truthful state, causal controls, coherent material craft, complete applications, accessibility, performance, rendered observation and verified learning. The missing layer was to make cognitive ergonomics explicit: distill before display, recognition before recall, progressive disclosure, obvious next action, target/choice ergonomics, immediate feedback, error prevention/recovery, stable interaction grammar, appropriate direct manipulation and measured human outcomes. The design target is maximum responsible human value with minimum necessary cognitive burden.",
+    "human_view": {
+      "meaning": "Keep the beautiful, living NayaNET design language, but make every design choice serve the person first. The interface should know what matters, show the right amount at the right time, make the next action obvious, prevent mistakes, respond immediately, stay familiar while becoming personal, and hide machine complexity instead of making the human manage it.",
+      "goal": "A person should feel that Naya has already organized the experience for them: clear without being plain, powerful without being complicated, beautiful without being distracting, and intelligent without forcing them to understand the machinery.",
+      "simple_rule": "UNDERSTAND THE HUMAN → DISTILL WHAT MATTERS → MAKE THE NEXT ACTION OBVIOUS → RESPOND TRUTHFULLY → PREVENT/RECOVER ERRORS → MEASURE THE EXPERIENCE → LEARN → REUSE."
+    },
+    "simple_view": {
+      "child": "Make the app beautiful, but also make it easy enough that I know what to do without asking. Show me the important thing first, make buttons easy to use, tell me what happened, help me fix mistakes, and remember what worked.",
+      "grandma": "Do the complicated thinking behind the scenes. On the screen, give me the important information, clear choices, familiar controls, readable words, obvious feedback and a safe way back if something goes wrong."
+    },
+    "naya_view": {
+      "purpose": "Fuse Naya's existing signature design mastery with explicit human-factors and cognitive-ergonomics laws so design optimization targets the complete human experience rather than visual excellence alone.",
+      "cross_reference_result": "STRONGLY_ALIGNED_WITH_TARGETED_GAPS",
+      "preserve": [
+        "purpose_first",
+        "hierarchy_before_density",
+        "meaning_before_decoration",
+        "depth_before_glow",
+        "state_before_animation",
+        "beauty_plus_causality_plus_truth_plus_speed",
+        "coherent_signature_language",
+        "complete_app_quality",
+        "accessibility_responsiveness_performance",
+        "render_observe_verify_learn_reuse"
+      ],
+      "add_or_strengthen": [
+        "distill_before_display",
+        "recognition_before_recall",
+        "progressive_disclosure",
+        "one_obvious_next_action",
+        "choice_complexity_control",
+        "target_acquisition_and_motor_ergonomics",
+        "error_prevention_and_recovery",
+        "stable_grammar_with_adaptive_intelligence",
+        "direct_manipulation_when_applicable",
+        "measured_human_cognitive_burden_and_task_outcomes"
+      ],
+      "operating_loop": "RESTORE → UNDERSTAND HUMAN OUTCOME → DISTILL → PRIORITIZE → SELECT APPLICABLE PATTERNS → MODEL STATES/FAILURES → DESIGN HIERARCHY/INTERACTION → APPLY NAYA VISUAL CRAFT → BUILD → RENDER → USE → TEST HUMAN FACTORS → VERIFY → LEARN → SUPERSEDE/REUSE",
+      "anti_pattern": "Do not confuse premium visual effects with user experience. Do not copy benchmark interfaces. Extract principles, preserve applicability, and express them through Naya's own coherent design language."
+    },
+    "ai_view": {
+      "instruction": "Before producing UI, resolve objective, user context, information priority, action hierarchy, interaction state, failure/recovery, accessibility, responsive behavior and proof criteria. Retrieve canonical design laws and applicable patterns. Generate visual treatment only after the experience model is coherent.",
+      "primary_evaluation": [
+        "human_goal_fit",
+        "comprehension",
+        "orientation",
+        "cognitive_burden",
+        "action_clarity",
+        "feedback",
+        "error_prevention",
+        "recovery",
+        "trust",
+        "visual_craft",
+        "accessibility",
+        "performance",
+        "continuity"
+      ],
+      "design_pattern_rule": "Patterns are reusable intelligence with applicability conditions, not templates to copy blindly."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "human_director_design_doctrine_status": "RATIFIED_ADOPTED_2026-10-02",
+      "authority_inheritance": false,
+      "design_standard": "NAYA-DESIGN-INTELLIGENCE-STANDARD-V1",
+      "design_standard_version": "1.2",
+      "optimization_target": "MAXIMUM_RESPONSIBLE_HUMAN_VALUE_WITH_MINIMUM_NECESSARY_COGNITIVE_BURDEN",
+      "laws": [
+        "PURPOSE_BEFORE_INTERFACE",
+        "DISTILL_BEFORE_DISPLAY",
+        "RECOGNITION_BEFORE_RECALL",
+        "ONE_OBVIOUS_NEXT_ACTION",
+        "PERCEPTIBLE_STATE_AND_IMMEDIATE_FEEDBACK",
+        "PREVENT_ERROR_BEFORE_EXPLAINING_ERROR",
+        "COMPLEXITY_STAYS_IN_THE_MACHINE",
+        "STABLE_GRAMMAR_ADAPTIVE_INTELLIGENCE",
+        "DIRECT_MANIPULATION_WHEN_IT_CLARIFIES_CAUSALITY",
+        "DESIGN_LEARNS_FROM_HUMAN_OUTCOMES"
+      ],
+      "required_surface_questions": [
+        "WHERE_AM_I",
+        "WHAT_MATTERS",
+        "WHAT_CAN_I_DO",
+        "WHAT_HAPPENS_NEXT"
+      ],
+      "cognitive_checks": [
+        "attention",
+        "choice_complexity",
+        "target_acquisition",
+        "memory_burden",
+        "mental_model",
+        "feedback_latency",
+        "error_probability",
+        "recovery",
+        "progressive_disclosure",
+        "trust"
+      ],
+      "pattern_schema": [
+        "HUMAN_PROBLEM",
+        "CONTEXT",
+        "APPLICABILITY",
+        "PATTERN",
+        "IMPLEMENTATION_GRAMMAR",
+        "FAILURE_MODES",
+        "ACCESSIBILITY",
+        "EVIDENCE",
+        "OUTCOME",
+        "SUPERSESSION"
+      ],
+      "gate_rule": "Visual quality alone cannot pass UX. A design is incomplete when the human cannot understand, act, recover, trust the state or complete the intended outcome."
+    },
+    "decisions": [
+      "Adopt the cross-referenced human-centered design intelligence as a standing Naya Design operating method.",
+      "Preserve NayaNET's existing distinctive living-depth visual DNA because it is compatible with, not opposed to, human-centered design.",
+      "Do not copy external products or aesthetics; extract causal and psychological principles and express them through Naya's design language.",
+      "Make progressive disclosure, recognition over recall, error prevention/recovery, choice complexity and target ergonomics explicit design requirements.",
+      "Optimize personalization in content/context while keeping interaction grammar stable and learnable.",
+      "Treat increasing machine intelligence as a mandate to reduce human cognitive burden.",
+      "Require human-experience evidence in addition to visual review for promoted design learning.",
+      "Keep accessibility, truth, privacy, authority, performance and causal completeness as hard constraints.",
+      "Store reusable design patterns with applicability, evidence, failure modes and supersession rather than as static templates.",
+      "A future Naya should begin from these laws automatically instead of requiring Shawn to restate them."
+    ],
+    "connections": [
+      {
+        "type": "EXTENDS",
+        "target": "SN-020 — Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine"
+      },
+      {
+        "type": "EXTENDS",
+        "target": "Naya Design Intelligence Standard V1"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "HUB/DESIGN-CONTRACT.md"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "HUB/PROJECT-INTELLIGENCE.md"
+      },
+      {
+        "type": "REFINES",
+        "target": "NayaNET Hub D1–D8 design scorecard"
+      },
+      {
+        "type": "FEEDS",
+        "target": "LEARN → EVOLVE → scoped design-pattern reuse"
+      }
+    ],
+    "uncertainty": "The cross-reference strongly supports the current Naya design direction, but exact quantitative UX thresholds, device-specific motor targets, benchmark weights and long-term human outcome effects require iterative evidence from real NayaNET users. Adoption means these principles govern design reasoning now; it does not claim every principle has already been production-proven in NayaNET.",
+    "applicability": "Applies to NayaPOWER/NayaNET interfaces, apps, rooms, onboarding, controls, navigation, data/intelligence presentation, design systems and AI-generated UI. Project-specific contracts may specialize expression but should not weaken the human-experience laws without evidence and Human Director authority.",
+    "learning_lesson": "The external benchmark corpus did not overturn Naya's design philosophy; it validated it and exposed the missing explicit cognitive layer. The highest-leverage upgrade is to fuse Naya's distinctive visual/material craft with rigorous human psychology and usability so increasingly powerful intelligence creates an increasingly simple human experience.",
+    "successor_effect": "A cold Naya should retrieve this doctrine before substantive interface work, preserve existing signature strengths, apply the human-experience laws, test the resulting experience, and leave verified design learning for the next Naya."
+  }
+}
