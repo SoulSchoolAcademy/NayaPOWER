@@ -947,6 +947,34 @@ If the implementation requires a better composition, it may diverge from layout 
 
 ---
 
+# 28b. PER-ROOM LIVING CONTRACTS
+
+The master room specification is the common law. Each canonical room now has one living room-specific contract under `HUB/ROOMS/`.
+
+**Registry:** [`HUB/ROOMS/README.md`](./ROOMS/README.md)
+
+Each room contract carries the room's human job, exact experience intention, information hierarchy, visual direction, intelligence/data truth, causal interactions, applicable states, responsive behavior, accessibility, performance, metrics, proof plan, open decisions and permanent working notes.
+
+**Rule:** room contracts evolve by evidence. They may specialize the master contract but may not silently contradict canonical authority. Every meaningful change records observation → evidence → decision → change → score effect → lesson → next test.
+
+### Current room contracts
+
+- **01 Smart Feed** — [living contract](./ROOMS/01-FEED.md)
+- **02 Your Intelligence Today** — [living contract](./ROOMS/02-TODAY.md)
+- **03 Your Reports** — [living contract](./ROOMS/03-REPORTS.md)
+- **04 Intelligent Library** — [living contract](./ROOMS/04-LIBRARY.md)
+- **05 Smart Connect** — [living contract](./ROOMS/05-CONNECT.md)
+- **06 Smart Ledger** — [living contract](./ROOMS/06-LEDGER.md)
+- **07 Your Connections** — [living contract](./ROOMS/07-CONNECTIONS.md)
+- **08 Smart Lists** — [living contract](./ROOMS/08-LISTS.md)
+- **09 Smart Mail** — [living contract](./ROOMS/09-MAIL.md)
+- **10 Smart Spaces** — [living contract](./ROOMS/10-SPACES.md)
+- **11 Settings** — [living contract](./ROOMS/11-SETTINGS.md)
+
+This directory is part of the product intelligence needed by a cold builder. It is not optional project lore and it is not production proof.
+
+---
+
 # 29. BUILD ORDER FOR TODAY
 
 The room specifications are now defined as a target. Implementation should proceed by dependency and visible value:
