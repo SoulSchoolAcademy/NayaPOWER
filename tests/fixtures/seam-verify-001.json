@@ -1,0 +1,147 @@
+{
+  "receipt_id": "decision-seam-verify-001",
+  "node_id": "NAYA-KERNEL",
+  "kernel_version": "0.3.0-candidate",
+  "topology": "canonical-runtime-graph-v1",
+  "graph_seed": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
+  "lock_ref": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
+  "decision_id": "seam-verify-001",
+  "inputs_hash": "2828c71a55bc3f3679f5bcf1191634c230bff5f6da246802b70a7c8a23f29195",
+  "evaluation_order": [
+    "SELF",
+    "LAW",
+    "KNOW",
+    "ACT",
+    "PROVE",
+    "CONNECT",
+    "VERIFY",
+    "LEARN",
+    "EVOLVE"
+  ],
+  "verdict": "FAIL",
+  "stopped_at": "SELF",
+  "first_non_pass": "FAIL",
+  "first_non_pass_at": "SELF",
+  "gates": [
+    {
+      "node": "SELF",
+      "position": 1,
+      "evaluated": true,
+      "verdict": "FAIL",
+      "reasons": [
+        "SELF refuses \u2014 missing execution_id (\u00a74). replay detection impossible; boot unreceiptable"
+      ],
+      "blocked_by": []
+    }
+  ],
+  "edge_trace": [
+    {
+      "relationship_id": "REL-KERNEL-SELF-LAW",
+      "source": "SELF",
+      "target": "LAW",
+      "type": "CONTEXTUALIZES",
+      "status": "BLOCKED",
+      "note": "SELF did not PASS (FAIL); CONTEXTUALIZES handoff to LAW withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-SELF-KNOW",
+      "source": "SELF",
+      "target": "KNOW",
+      "type": "CONTEXTUALIZES",
+      "status": "BLOCKED",
+      "note": "SELF did not PASS (FAIL); CONTEXTUALIZES handoff to KNOW withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-LAW-ACT",
+      "source": "LAW",
+      "target": "ACT",
+      "type": "GOVERNS",
+      "status": "BLOCKED",
+      "note": "LAW did not PASS (unevaluated); GOVERNS handoff to ACT withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-ACT-KNOW",
+      "source": "ACT",
+      "target": "KNOW",
+      "type": "PRODUCES",
+      "status": "BLOCKED",
+      "note": "ACT outcomes produced into KNOW's store; KNOW's gate is not re-run in this pass (ingest is KNOW's own intake path)"
+    },
+    {
+      "relationship_id": "REL-KERNEL-ACT-VERIFY",
+      "source": "ACT",
+      "target": "VERIFY",
+      "type": "VERIFIED_BY",
+      "status": "BLOCKED",
+      "note": "ACT did not PASS (unevaluated); VERIFIED_BY handoff to VERIFY withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-KNOW-PROVE",
+      "source": "KNOW",
+      "target": "PROVE",
+      "type": "SUPPORTS",
+      "status": "BLOCKED",
+      "note": "KNOW did not PASS (unevaluated); SUPPORTS handoff to PROVE withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-KNOW-CONNECT",
+      "source": "KNOW",
+      "target": "CONNECT",
+      "type": "CONTEXTUALIZES",
+      "status": "BLOCKED",
+      "note": "KNOW did not PASS (unevaluated); CONTEXTUALIZES handoff to CONNECT withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-PROVE-VERIFY",
+      "source": "PROVE",
+      "target": "VERIFY",
+      "type": "SUPPORTS",
+      "status": "BLOCKED",
+      "note": "PROVE did not PASS (unevaluated); SUPPORTS handoff to VERIFY withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-CONNECT-VERIFY",
+      "source": "CONNECT",
+      "target": "VERIFY",
+      "type": "CONTEXTUALIZES",
+      "status": "BLOCKED",
+      "note": "CONNECT did not PASS (unevaluated); CONTEXTUALIZES handoff to VERIFY withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-VERIFY-LEARN",
+      "source": "VERIFY",
+      "target": "LEARN",
+      "type": "PRODUCES",
+      "status": "BLOCKED",
+      "note": "VERIFY did not PASS (unevaluated); PRODUCES handoff to LEARN withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-LEARN-EVOLVE",
+      "source": "LEARN",
+      "target": "EVOLVE",
+      "type": "ENABLES",
+      "status": "BLOCKED",
+      "note": "LEARN did not PASS (unevaluated); ENABLES handoff to EVOLVE withheld"
+    },
+    {
+      "relationship_id": "REL-KERNEL-EVOLVE-SELF",
+      "source": "EVOLVE",
+      "target": "SELF",
+      "type": "SUCCEEDS",
+      "status": "NEXT_CYCLE",
+      "note": "closes the loop to the next decide() call; not traversed inside one pass"
+    },
+    {
+      "relationship_id": "REL-KERNEL-LAW-EVOLVE",
+      "source": "LAW",
+      "target": "EVOLVE",
+      "type": "GOVERNS",
+      "status": "BLOCKED",
+      "note": "LAW did not PASS (unevaluated); GOVERNS handoff to EVOLVE withheld"
+    }
+  ],
+  "unexpected_gate_keys": [],
+  "issued_at": "2026-10-01T15:43:10.657550+00:00",
+  "candidate_banner": "CANDIDATE \u2014 NOT RATIFIED \u2014 NOT MERGED",
+  "receipt_hash": "a4c9e5b7e6fc81713fe7712785ed9f50d82fae986dc08130887bc9606914d6a5"
+}
