@@ -164,9 +164,19 @@
   .today-stage .block.naya509-board{ padding:27px 18px 26px; border-radius:21px; margin:12px 0; }
   .today-stage .naya509-board .blockTop{ flex-wrap:wrap; }
   .today-stage .naya509-board .pills{ max-width:none; width:100%; justify-content:flex-start; }
+  .today-stage .naya509-board .chev{ position:absolute; top:2px; right:2px; margin:0; padding:0; }
   .today-stage .naya509-board h3{ font-size:clamp(24px,7vw,34px); }
   .today-stage .naya509-board .nutshell{ padding:17px 18px; }
   .today-stage .naya509-board .nutshell p, .today-stage .naya509-board .call{ font-size:16px; }
   .today-stage .naya509-board .layerBody{ font-size:13px; }
   .today-stage .tsection-title{ font-size:20px; }
 }
+
+/* chevron — the Today expression for "this board opens"; the reference
+   never collapses, so it needs none. Quiet, in the room's tone. */
+.today-stage .naya509-board .chev{
+  margin-left:auto; align-self:flex-start; padding:6px 4px 0 12px;
+  color:var(--tone); opacity:.55; font-size:20px; line-height:1;
+  font-weight:400; user-select:none; flex:none;
+}
+.today-stage .naya509-board .pills + .chev{ margin-left:12px; }

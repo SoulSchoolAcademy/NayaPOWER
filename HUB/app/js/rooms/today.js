@@ -46,7 +46,15 @@
   function persistSmartList(){
     try{ localStorage.setItem(SMARTLIST_KEY, JSON.stringify(smartList)); }catch(err){}
   }
-  const seenPlays=new Set();
+  const SEEN_KEY='nayanet.today.seen.v1';
+  let seenPlays=new Set();
+  try{
+    const rawSeen=localStorage.getItem(SEEN_KEY);
+    if(rawSeen)seenPlays=new Set(JSON.parse(rawSeen).filter(x=>typeof x==='string'));
+  }catch(err){ seenPlays=new Set(); }
+  function persistSeen(){
+    try{ localStorage.setItem(SEEN_KEY, JSON.stringify(Array.from(seenPlays))); }catch(err){}
+  }
   let allPlays=[];
   let openPlayId=null;
   let query='';
@@ -69,6 +77,10 @@
   }
 
   function renderAll(el,stage){
+    if(openPlayId===null&&allPlays.length){
+      openPlayId=allPlays[0].id;
+      seenPlays.add(allPlays[0].id); persistSeen();
+    }
     stage.innerHTML='';
     stage.appendChild(orient(el));
     stage.appendChild(searchBar(el));
@@ -208,6 +220,10 @@
     }
     top.appendChild(ident);
     if(pills.children.length)top.appendChild(pills);
+    const chev=el('span','chev','');
+    chev.setAttribute('aria-hidden','true');
+    chev.textContent=(p.id===openPlayId)?'\u2303':'\u2304';
+    top.appendChild(chev);
     inner.appendChild(top);
 
     /* the announcer's call */
