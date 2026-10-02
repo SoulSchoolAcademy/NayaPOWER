@@ -1,6 +1,6 @@
 # CI Exit-2 Triage — Read the Job's Steps Before Theorizing
 
-**Intelligent Block:** IB-SMART-NOTE-20261001-sn021-ci-exit-2-triage
+**Intelligent Block:** IB-SMART-NOTE-20261001-sn031-ci-exit-2-triage
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-01

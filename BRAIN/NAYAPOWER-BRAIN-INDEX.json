@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-10-01",
+  "generated_at": "2026-10-02",
   "status": "POST_NORTH_STAR_BOUNDED_ACCEPTANCE_NINE_NODE_LIVE_PROOF",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
@@ -262,7 +262,7 @@
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED_CURRENT_MAIN; LIVE_KNOW_RUNTIME_STALE_TO_CURRENT_SELECTOR; PRODUCTION_BEHAVIOR_NOT_YET_REPROVEN"
   },
-  "last_reconciled_main": "3a7db2f6b9ed78a9030e5d3116bbb9b7c15e2e0e",
+  "last_reconciled_main": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -297,8 +297,8 @@
   "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json",
   "reconciliation": {
     "ledger": ".naya/project-intelligence/brain-reconciliation-ledger-f648833b.md",
-    "reconciled_at": "2026-10-01",
-    "basis_commit": "3a7db2f6b9ed78a9030e5d3116bbb9b7c15e2e0e",
+    "reconciled_at": "2026-10-02",
+    "basis_commit": "ded09a9ef85017b7bb2be91442aea6fa051f8ba5",
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-SPEC": 15,
