@@ -1,0 +1,164 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-021",
+  "capture_id": "20261001-sn021-current-architectural-truth-and-frontier",
+  "title": "NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "CURRENT_ARCHITECTURAL_TRUTH",
+  "subtopic": "ORGANISM_COMPOSITION_AND_PROOF_FRONTIER",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-01",
+    "source_type": "human_director_requested_system_analysis",
+    "source_reference": "Human Director requested that the current NayaPOWER architectural analysis be locked into the Brain as durable intelligence, linked to Team Naya coordination in GitHub Issue #554, and made retrievable by future Nayas."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "CURRENT-ARCHITECTURAL-TRUTH",
+    "subtopic_slug": "ORGANISM-COMPOSITION-AND-PROOF-FRONTIER"
+  },
+  "intelligence": {
+    "essence": "NayaPOWER has moved beyond an architecture sketch. The major organs, contracts, governance, intelligence model, graph model, Value Calculus, nine-node genome, design intelligence and persistence machinery exist in substantial form. The limiting frontier is now composition: making the organs operate together under exact runtime/source parity, proving causal behavior in production, making learning measurably improve future behavior, proving cold succession, and projecting the same canonical intelligence honestly through the Hub. The governing engineering strategy is therefore convergence plus proof, not endless parallel architecture.",
+    "human_view": {
+      "what_we_have_built": "NayaPOWER is the governed intelligence and memory substrate; NayaNET is the network of interfaces; the Hub is the human-facing visual projection. The architecture follows one brain, one tree, many doors.",
+      "what_is_strong": "The system has a defined North Star, constitutional governance, explicit epistemic states, provenance rules, a nine-node model, an Intelligent Block memory unit, an intelligent graph, Decision Value Calculus V2.1, design intelligence doctrine, completion doctrine and machine-visible proof boundaries.",
+      "what_is_not_finished": "The current main branch still does not establish universal live runtime binding/influence or full production parity. The live Graph V2 and live Value receipt path remain proof boundaries. Learning and evolution still need measured causal improvement. Cold successor continuity remains incomplete. The Hub implementation exists on an active candidate branch but is not yet the current-main production-proven whole application.",
+      "simple_rule": "Stop adding architecture unless it closes a named proof gap. Converge the best existing work onto current main, execute the smallest safe integration slice, and verify the whole causal chain."
+    },
+    "simple_view": {
+      "child": "We have built most of the spaceship parts. Now we have to connect them, turn them on, fly the whole ship, test every control, remember what we learned, and prove the next captain can fly it without being retaught everything.",
+      "grandma": "The pieces are mostly here. The important work now is making sure they truly work together, checking the real thing rather than the plans, keeping the good lessons, and making the next person able to continue without starting over."
+    },
+    "naya_view": {
+      "purpose": "Turn a collection of individually strong organs into one continuously operating, evidence-bearing intelligence organism.",
+      "architecture_law": "ONE BRAIN / ONE TREE / MANY DOORS. NayaPOWER is the substrate. NayaNET is the network. The Hub is projection, not source-of-truth.",
+      "organism_flow": "SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF",
+      "proof_frontier": "The remaining qualification frontier is not primarily semantic design. It is runtime parity, real generalized node influence, durable persistence, causal behavior change, independent verification, measurable learning, successor continuity, human-value measurement and disciplined convergence.",
+      "convergence_rule": "Parallel intelligence is useful only when it converges. Overlapping branches, duplicated design laws, stale projections and conflicting drafts must be reconciled against the exact current main truth before promotion.",
+      "completion_rule": "A shell, score, document, source implementation or isolated successful test is not equivalent to a complete living system. Whole-system claims require whole-system evidence."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "current_main_sha": "ae2fd838d092ae1ae7414aa239fe486e1a5eef46",
+      "canonical_nodes": [
+        "SELF",
+        "LAW",
+        "ACT",
+        "KNOW",
+        "PROVE",
+        "CONNECT",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE"
+      ],
+      "standing_epistemic_laws": [
+        "UNKNOWN != PASS",
+        "BLOCKED != PASS",
+        "IMPLEMENTED != VERIFIED",
+        "VERIFIED != PRODUCTION_PROVEN",
+        "RETRIEVED != AUTHORIZED",
+        "VALUE != AUTHORITY",
+        "GRAPH RELEVANCE != TRUTH",
+        "LEARNING != AUTHORITY",
+        "SUCCESSOR CONTEXT DOES NOT INHERIT AUTHORITY"
+      ],
+      "current_strengths": [
+        "North Star and governance are explicit.",
+        "Nine-node architecture and semantic contracts are defined.",
+        "Decision Value Calculus V2.1 is ratified and executable in source.",
+        "Graph Relationship Contract V2 is ratified and integrated in source.",
+        "Brain drift protection and structural validation exist.",
+        "Smart Note / Intelligent Block persistence model is established.",
+        "Design intelligence now includes constitution, signature grammar, app-completion doctrine, self-analysis, independent challenge and learning loops."
+      ],
+      "current_open_boundaries": [
+        "Exact production source/deployment parity is not proven.",
+        "The kernel manifest still reports universal runtime binding as NOT_PROVEN.",
+        "Live Graph V2 behavior is not production-proven against the exact current source.",
+        "Decision Value runtime functions and live Value Smart Ledger seams are not fully production-proven.",
+        "Universal nine-node causal influence is not proven.",
+        "VERIFY→LEARN→EVOLVE still needs measured causal calibration.",
+        "Cold successor continuity is not fully proven.",
+        "Human-value improvement must be measured rather than inferred.",
+        "Hub whole-application completion, runtime closure and independent visual qualification remain open on current main.",
+        "The large set of overlapping open design/Hub branches creates convergence risk."
+      ],
+      "current_strategic_next_move": [
+        "Rerun Current Truth Resolver against the exact current main SHA.",
+        "Converge Hub and design intelligence onto current main instead of merging stale branches unchanged.",
+        "Use the strongest current Hub implementation candidate as the integration base, while treating design protocol/mastery branches as inputs to one canonical system.",
+        "Make the whole Hub a proof-bearing boundary: one canonical object should persist, appear across projections, carry provenance, respect authority and remain behaviorally coherent across rooms.",
+        "Then close live Graph V2, live Value receipt/recomputation, ACT concurrency, learning calibration and cold successor gates in sequence.",
+        "Retire or rebase redundant branches so parallel work reduces future reconstruction instead of increasing it."
+      ],
+      "evidence_references": [
+        "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
+        "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
+        "BRAIN/03-KERNEL/MANIFEST.json",
+        "NAYANODE/0032-NINE-NODE-GENOME-ACCEPTANCE-MATRIX-V1.md",
+        "BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md",
+        "HUB/NAYA-DESIGN-MASTERCLASS-V1.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APP-COMPLETION/FINISH-THE-HOUSE-NOT-THE-SHELL/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+        "PR #1300 — Hub input/output law",
+        "PR #1303 — Hub complete application specification",
+        "PR #1304 — shell-barrier completion harness",
+        "PR #1306 — complete Hub application candidate",
+        "PR #1310 — Naya Design Protocol V1 candidate",
+        "PR #1313 — Naya Design Mastery OS V1 candidate",
+        "GitHub Issue #554 — Team Naya coordination baton"
+      ]
+    },
+    "decisions": [
+      "Do not mistake architecture volume for organism capability.",
+      "Do not claim AAA while material G7–G13 proof gates remain open.",
+      "Treat current main as the only architectural source-of-truth for present-state decisions.",
+      "Prefer preserve-before-replace and converge-before-duplicate.",
+      "Treat the Hub as a retina/projection layer, not a second intelligence store.",
+      "Treat complete application scope as the unit of Hub completion.",
+      "Treat design signature as invariant reasoning and craft, not decorative sameness.",
+      "Treat self-build and self-score as capability, never as self-authorization.",
+      "Require independent observation and verification for consequential visual, behavioral and runtime claims.",
+      "Make durable learning reusable: every substantive cycle should reduce future reconstruction or repeated mistakes."
+    ],
+    "connections": [
+      {
+        "type": "EXTENDS",
+        "target": "SN-018 — The Hub Is the Visual Projection of Intelligence"
+      },
+      {
+        "type": "EXTENDS",
+        "target": "SN-019 — Complete the App Doctrine — Finish the House, Not the Shell"
+      },
+      {
+        "type": "EXTENDS",
+        "target": "SN-020 — Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NayaPOWER North Star and Ultimate Master Execution Plan"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "Nine-Node Genome Acceptance Matrix"
+      },
+      {
+        "type": "FEEDS",
+        "target": "CONNECT → VERIFY → LEARN → EVOLVE → successor continuity"
+      },
+      {
+        "type": "REQUIRES",
+        "target": "Exact current-main truth resolution before consequential promotion"
+      }
+    ],
+    "uncertainty": "This note is a durable synthesis of the current repository analysis, not a substitute for independent runtime proof. The identified proof boundaries remain explicitly open until exact current-source and live-runtime evidence closes them.",
+    "applicability": "Use for Naya continuation, architecture decisions, branch convergence, Hub completion, design intelligence, runtime proof planning, handoffs and future successor reconstruction.",
+    "learning_lesson": "The system has crossed the architecture-to-composition boundary. The highest-value intelligence now is disciplined convergence plus evidence: connect the existing organs, prove their causal operation, measure learning, prove succession, and expose the same canonical intelligence through the Hub without creating a second brain.",
+    "successor_effect": "A cold successor should restore current main truth, read this note before proposing new architecture, locate the strongest existing implementation, reconcile overlapping work, choose one proof-bearing frontier, execute the smallest safe change, independently verify it, and update this state only when evidence changes the frontier."
+  }
+}
