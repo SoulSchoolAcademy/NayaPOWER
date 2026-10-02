@@ -144,7 +144,7 @@
 .today-stage .naya509-board .action:hover{ transform:translateY(-2px); }
 .today-stage .naya509-board .action:active{ transform:translateY(1px); }
 .today-stage .naya509-board .action:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
-.today-stage .naya509-board .carry-on{ color:#ffe9b8; }
+.today-stage .naya509-board .carry-on{ color:#c8ffd9; }
 
 .today-stage .naya509-board .blockFoot{
   display:flex; justify-content:space-between; gap:10px; margin-top:16px; padding-top:12px;

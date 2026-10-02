@@ -293,12 +293,13 @@
     save.textContent=isOn?'\u2605 SAVED':'SAVE';
     save.setAttribute('aria-pressed',isOn?'true':'false');
     save.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+p.title);
-    if(isOn)save.style.setProperty('--action-color','#e8b64c');
+    save.style.setProperty('--action-color',isOn?'#7dffb0':'#55e39a');
     save.addEventListener('click',e2=>{
       e2.stopPropagation();
       toggleSave(el,p.id,p.title);
     });
     const share=el('button','action','SHARE'); share.type='button';
+    share.style.setProperty('--action-color','#55b9ee');
     share.setAttribute('aria-label','Share: '+p.title);
     share.addEventListener('click',e2=>{
       e2.stopPropagation();
@@ -307,6 +308,7 @@
     actions.appendChild(save); actions.appendChild(share);
     if(onView){
       const view=el('button','action','VIEW FULL NOTE'); view.type='button';
+      view.style.setProperty('--action-color','#9d75ff');
       view.setAttribute('aria-label','View the full smart note: '+p.title);
       view.addEventListener('click',e2=>{
         e2.stopPropagation();
@@ -328,7 +330,7 @@
       btn.setAttribute('aria-pressed',isOn?'true':'false');
       btn.setAttribute('aria-label',(isOn?'Remove from your Smart List: ':'Save to your Smart List: ')+title);
       btn.classList.toggle('carry-on',isOn);
-      btn.style.setProperty('--action-color',isOn?'#e8b64c':'');
+      btn.style.setProperty('--action-color',isOn?'#7dffb0':'#55e39a');
     });
     const stage=document.querySelector('.today-stage');
     if(stage){
