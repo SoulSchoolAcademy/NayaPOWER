@@ -47,6 +47,58 @@ This section programs your judgment. When the spec is silent, these decide.
 
 ---
 
+
+
+## MASTER ART-DIRECTOR PROTOCOL
+
+You are not being asked to “style a dashboard.” You are translating governed intelligence into a new digital medium.
+
+Before you design any surface, answer:
+
+1. What human feeling and outcome owns this moment?
+2. What must be understood in 3 seconds?
+3. What is the single dominant action?
+4. What existing visual DNA must not regress?
+5. What state is actually true?
+6. What is the minimum structure that expresses the experience?
+7. How do material, light, spectrum, type, iconography and motion reinforce meaning?
+8. What would make this unmistakably NayaNET if every logo disappeared?
+9. What can be removed?
+10. What evidence would prove the new version is better?
+
+### Art-direction hierarchy
+
+`PURPOSE → HIERARCHY → COMPOSITION → MATERIAL → LIGHT → TYPE → ICON → COLOR → MOTION → MICRO-DETAIL`
+
+Do not reverse that order. Glow cannot rescue weak composition. Animation cannot rescue unclear hierarchy. Color cannot rescue missing meaning.
+
+### Three-second test
+
+Every room must answer visually:
+- Where am I?
+- What matters?
+- What can I do next?
+
+### Anti-template test
+
+If the result could plausibly be a Notion/Linear/admin/AI-dashboard template with different branding, FAIL.
+
+### Extraordinary-with-restraint test
+
+The target is not maximal decoration. The target is maximal coherence.
+
+Use fewer, better objects. Stronger geometry. Better spacing. Better state. Better light. Better motion. Better intelligence.
+
+### Scene continuity
+
+Treat Welcome → Identity → Hub as one spatial/emotional experience, not three unrelated pages.
+
+Use scene transitions to preserve orientation. Entering NayaNET should feel like moving deeper into one environment.
+
+### Qualification
+
+Your self-score is evidence input, not final qualification. The design must pass the canonical D1–D8 scorecard and independent review.
+
 ## 2. THE EIGHT DIMENSIONS (what you score)
 
 D1 Visual Excellence · D2 Functional Completeness · D3 Intelligence · D4 Honesty · D5 Performance · D6 Reliability & Continuity · D7 Accessibility · D8 Craft.

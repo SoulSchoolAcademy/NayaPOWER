@@ -86,6 +86,43 @@ Project-specific scorecards remain authoritative where they exist. Do not create
 9. Premium must remain fast.
 10. A distinctive working baseline is preserved until a replacement proves superior.
 
+
+
+## Art as system intelligence
+
+For NayaNET, art direction is not decoration after engineering. It is the coherent expression of purpose, intelligence and state.
+
+Use this ordering:
+
+**PURPOSE → HIERARCHY → COMPOSITION → MATERIAL → LIGHT → TYPE → ICON → COLOR → MOTION → DETAIL**
+
+The best interface is not the one with the most effects. It is the one in which every layer reinforces the same meaning.
+
+### Creative excellence test
+
+A great intelligent system should feel:
+- obvious before explained;
+- beautiful before flashy;
+- calm before busy;
+- deep before glowy;
+- personal before generic;
+- truthful before impressive;
+- powerful without exposing machinery.
+
+### Emotional continuity
+
+For multi-surface journeys, define the intended emotional arc and preserve it through transitions.
+
+For the Hub:
+
+**CURIOSITY → RECOGNITION → TRUST → ORIENTATION → COMMAND → FLOW → MASTERY → CONTINUITY**
+
+### Project meaning of “divine design”
+
+When used in NayaPOWER/NayaNET creative direction, interpret “divine design” as a craft standard: **purpose, proportion, harmony, truth, beauty, usefulness, restraint and nothing arbitrary.**
+
+It does not override evidence, accessibility, performance, safety, privacy or governance.
+
 ## Functional intelligence law
 
 For every control:
