@@ -24,8 +24,9 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Smart-app room execution contracts
 - [NayaNET Smart App Room Specification V1](./NAYANET-SMART-APP-ROOM-SPEC-V1.md) — human/AI room, page, feed, shell, state and experience contract.
 - [Machine Smart App Room Contracts V1](./NAYANET-SMART-APP-ROOMS-V1.json) — deterministic room identities, jobs, primary actions, composition grammar, failure countermeasures and build order.
+- [Living Room Contract Registry](./ROOMS/README.md) — canonical room-by-room design, behavior, states, proof plans, open decisions and evolving working notes.
 
-**Builder rule:** retrieve these before substantive room/page implementation. The room spec specializes the existing Hub meaning; it does not create a second product or design system.
+**Builder rule:** retrieve the master room law, the machine room registry, and the selected room's living contract before substantive room/page implementation. The room spec specializes the existing Hub meaning; the room directory does not create a second product or design system.
 
 ## Global designer intelligence
 
