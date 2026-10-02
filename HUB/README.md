@@ -9,6 +9,7 @@ The Hub has **one canonical meaning** and purpose-built representations.
 ### Canonical semantic/build sources
 1. [PROJECT-INTELLIGENCE.md](./PROJECT-INTELLIGENCE.md) — build law, roadmap, scorecard, phases and gates.
 2. [DESIGN-CONTRACT.md](./DESIGN-CONTRACT.md) — visual/experience law and protected design DNA.
+3. [SMART-APP-10-10-EXECUTION-LAW.md](./SMART-APP-10-10-EXECUTION-LAW.md) — Human Director burden-transfer / whole-app ownership loop.
 
 ### Detailed room functionality
 
@@ -29,6 +30,9 @@ Each room has its own detailed spec under `HUB/ROOMS/`.
 - [PROJECT-INTELLIGENCE.MACHINE.json](./PROJECT-INTELLIGENCE.MACHINE.json) — deterministic machine representation.
 - [PROJECT-INTELLIGENCE.FEATURES.json](./PROJECT-INTELLIGENCE.FEATURES.json) — machine-readable feature/room contract.
 - [PROJECT-INTELLIGENCE.PROOF.md](./PROJECT-INTELLIGENCE.PROOF.md) — evidence and scorecard closure rules.
+- [CURRENT-IMPLEMENTATION-INVENTORY.md](./CURRENT-IMPLEMENTATION-INVENTORY.md) — dated observed reality; target and implementation are kept separate.
+- [CURRENT-IMPLEMENTATION-INVENTORY.json](./CURRENT-IMPLEMENTATION-INVENTORY.json) — machine-readable dated implementation snapshot.
+- [ROOMS/README.md](./ROOMS/README.md) — 11-room functional/design/Human/AI/Machine contracts.
 
 **Invariant:** these are projections, not separate truth systems. They MUST NOT disagree silently.
 
