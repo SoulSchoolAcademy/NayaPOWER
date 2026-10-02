@@ -13,13 +13,13 @@ function HubView(params) {
   rail.setAttribute('aria-label', 'Hub rooms');
   rail.innerHTML = `
     <div class="rail-mark">
-      <span class="jewel"></span>
+      <span class="rail-emblem">${window.NayaJewels ? window.NayaJewels.emblem(40) : '<span class="jewel"></span>'}</span>
       <span><b>NAYANET</b><small>INTELLIGENT HUB</small></span>
     </div>`;
   R.ROOMS.forEach(r => {
     const b = el('button', 'rail-btn' + (r.id === room.id ? ' active' : ''));
     b.style.setProperty('--nav', r.accent);
-    b.innerHTML = `<span class="ico">${Icons.icon(r.icon)}</span><span>${r.name}</span>`;
+    b.innerHTML = `<span class="ico jewel-ico">${window.NayaJewels ? window.NayaJewels.mark(r.id, 32) : Icons.icon(r.icon)}</span><span>${r.name}</span>`;
     b.setAttribute('aria-current', r.id === room.id ? 'page' : 'false');
     b.addEventListener('click', () => {
       closeDrawer();
