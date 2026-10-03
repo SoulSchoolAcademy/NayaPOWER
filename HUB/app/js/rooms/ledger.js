@@ -47,7 +47,7 @@
       : function(t){ if(navigator.clipboard) navigator.clipboard.writeText(t); };
 
     var stage = el('div','ledger-stage');
-    var state = { view:'heartbeat', modalEntry:null };
+    var state = { view:'heartbeat', modalEntry:null, demo:demo, nodeOpen:null };
 
     /* header */
     var head = el('header','lg-head');
@@ -84,14 +84,25 @@
       });
       tabs.appendChild(b);
     });
+    /* keyboard: arrow keys move across tabs like a real tab strip */
+    tabs.addEventListener('keydown', function(ev){
+      if(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft') return;
+      var btns = Array.prototype.slice.call(tabs.querySelectorAll('.lg-tab'));
+      var i = btns.indexOf(document.activeElement);
+      if(i<0) return;
+      ev.preventDefault();
+      var j = (i + (ev.key==='ArrowRight'?1:-1) + btns.length) % btns.length;
+      btns[j].focus(); btns[j].click();
+    });
     stage.appendChild(tabs);
     stage.appendChild(body);
 
     function renderView(){
       body.innerHTML='';
+      state.nodeOpen = null; /* drawer starts closed each time the view is built */
       var fn = {heartbeat:viewHeartbeat, value:viewValue, nodes:viewNodes,
                 proof:viewProof, receipts:viewReceipts}[state.view];
-      body.appendChild(fn(el, entries, onCopy, openModal));
+      body.appendChild(fn(el, entries, onCopy, openModal, state));
     }
     renderView();
 
@@ -101,7 +112,9 @@
     overlay.appendChild(card);
     overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeModal(); });
     stage.appendChild(overlay);
+    var lastFocus = null;
     function openModal(e){
+      lastFocus = document.activeElement;
       state.modalEntry = e;
       card.innerHTML='';
       var k = el('p','lg-kicker','SMART ID'); card.appendChild(k);
@@ -127,8 +140,17 @@
       x.addEventListener('click', closeModal); row.appendChild(x);
       card.appendChild(row);
       overlay.style.display='flex';
+      cp.focus();
     }
-    function closeModal(){ overlay.style.display='none'; state.modalEntry=null; }
+    function closeModal(){
+      overlay.style.display='none'; state.modalEntry=null;
+      if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus();
+      lastFocus = null;
+    }
+    /* keyboard: Escape closes the modal and hands focus back */
+    document.addEventListener('keydown', function(ev){
+      if(ev.key==='Escape' && overlay.style.display!=='none') closeModal();
+    });
 
     var foot = el('footer','lg-foot','');
     foot.textContent = 'UNKNOWN \u2260 IMPLEMENTED \u2260 VERIFIED \u2260 PRODUCTION-PROVEN \u00B7 identities never revealed';
@@ -186,7 +208,7 @@
   }
 
   /* ---------------- HEARTBEAT view ---------------- */
-  function viewHeartbeat(el, entries, onCopy, openModal){
+  function viewHeartbeat(el, entries, onCopy, openModal, state){
     var v = el('div','lg-view');
     /* pulse */
     var pw = el('div','lg-pulse-wrap');
@@ -224,7 +246,11 @@
     pw.appendChild(svg);
     var pl = el('p','lg-pulse-label','');
     var dot = el('span','lg-live-dot',''); pl.appendChild(dot);
-    var ptx = el('span','',''); ptx.textContent = ' LIVE \u00B7 ' + entries.length + ' recorded actions \u00B7 newest on the right \u00B7 click any action to inspect its smart id';
+    var ptx = el('span','','');
+    /* honesty: a demo stream never claims to be live */
+    ptx.textContent = state.demo
+      ? 'DEMO STREAM \u00B7 ' + entries.length + ' illustrative actions \u00B7 newest on the right \u00B7 click any action to inspect its smart id'
+      : 'LIVE \u00B7 ' + entries.length + ' recorded actions \u00B7 newest on the right \u00B7 click any action to inspect its smart id';
     pl.appendChild(ptx);
     pw.appendChild(pl);
     v.appendChild(pw);
@@ -300,12 +326,24 @@
       var val=el('span','lg-crow-v',''); val.textContent=e.scores.q.toFixed(1); row.appendChild(val);
       qb.appendChild(row);
     });
+    if(!dec.length) qb.appendChild(el('p','lg-empty-t','No scored decisions yet.'));
     v.appendChild(qb);
     return v;
   }
 
+  /* status identity color — stable per status, never list position */
+  function nodeStatusClass(st){
+    st = String(st||'');
+    if(st==='PASS') return 'pass';
+    if(st==='NON-PASS'||st==='REFUSED') return 'nonpass';
+    if(st==='READ_MORE') return 'rm';
+    if(st==='ASK') return 'ask';
+    if(st==='NOT RUN') return 'nr';
+    return 'ev';
+  }
+
   /* ---------------- NODES view ---------------- */
-  function viewNodes(el, entries, onCopy, openModal){
+  function viewNodes(el, entries, onCopy, openModal, state){
     var v = el('div','lg-view');
     var stats={};
     entries.forEach(function(e){
@@ -321,10 +359,17 @@
     });
     var order=['SELF','LAW','KNOW','ACT','PROVE','CONNECT','VERIFY','LEARN','EVOLVE'];
     var grid=el('div','lg-nodes-grid');
+    var drawer = el('div','lg-node-drawer');
+    drawer.style.display='none';
+    drawer.setAttribute('role','region');
+    drawer.setAttribute('aria-live','polite');
+    drawer.setAttribute('aria-label','Node evaluation detail');
+    var cardOf = {};
     order.forEach(function(n){
       var s=stats[n]||{evals:0,pass:0,edges:0};
       var rate=s.evals?Math.round(s.pass/s.evals*100):0;
       var card=el('button','lg-node-card'); card.type='button';
+      card.setAttribute('aria-expanded','false');
       var nm=el('span','lg-node-card-n',''); nm.textContent=n; card.appendChild(nm);
       var svgNS='http://www.w3.org/2000/svg';
       var svg=document.createElementNS(svgNS,'svg'); svg.setAttribute('viewBox','0 0 60 60'); svg.setAttribute('class','lg-ring');
@@ -338,11 +383,46 @@
       tx.textContent=rate+'%'; svg.appendChild(tx);
       card.appendChild(svg);
       var meta=el('span','lg-node-card-m',''); meta.textContent=s.evals+' evals \u00B7 '+s.edges+' handoffs'; card.appendChild(meta);
-      card.setAttribute('aria-label',n+': '+rate+' percent pass');
+      card.setAttribute('aria-label',n+': '+rate+' percent pass. Activate to inspect this node\u2019s evaluations.');
+      /* real function: drill into this node's recorded evaluations */
+      card.addEventListener('click', function(){ toggleNode(n); });
+      cardOf[n] = card;
       grid.appendChild(card);
     });
     v.appendChild(grid);
-    v.appendChild(el('p','lg-pulse-label','Rings show pass rate across recorded evaluations.'));
+    v.appendChild(drawer);
+
+    function toggleNode(n){
+      var wasOpen = state.nodeOpen===n;
+      state.nodeOpen = wasOpen ? null : n;
+      order.forEach(function(k){
+        cardOf[k].setAttribute('aria-expanded', state.nodeOpen===k ? 'true' : 'false');
+        if(state.nodeOpen===k) cardOf[k].classList.add('open');
+        else cardOf[k].classList.remove('open');
+      });
+      drawer.innerHTML='';
+      if(wasOpen){ drawer.style.display='none'; return; }
+      var rows = entries.filter(function(e){
+        return (e.nodes||[]).some(function(nd){ return nd.node===n; });
+      });
+      var h = el('h3','lg-node-drawer-h','');
+      h.textContent = n + ' \u00B7 ' + rows.length + ' recorded evaluation' + (rows.length===1?'':'s');
+      drawer.appendChild(h);
+      if(!rows.length) drawer.appendChild(el('p','lg-empty-t','No recorded evaluations for this node yet.'));
+      rows.forEach(function(e){
+        var nd = null;
+        (e.nodes||[]).forEach(function(x){ if(x.node===n) nd=x; });
+        var row = el('div','lg-node-row');
+        row.appendChild(smartChip(el, e, openModal));
+        var st = el('span','lg-node-status '+nodeStatusClass(nd&&nd.status),'');
+        st.textContent = nd ? nd.status : '\u2014'; row.appendChild(st);
+        var t = el('span','lg-trow-t',''); t.textContent = fmtTime(e.issuedAt); row.appendChild(t);
+        drawer.appendChild(row);
+      });
+      drawer.style.display='block';
+    }
+
+    v.appendChild(el('p','lg-pulse-label','Rings show pass rate across recorded evaluations. Select a node to inspect its evaluations.'));
     return v;
   }
 
