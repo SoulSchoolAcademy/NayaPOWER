@@ -59,7 +59,7 @@
 .reports-stage .report-card{
   --day:#8a5cff;
   position:relative; overflow:hidden;
-  padding:34px 36px 34px 44px; border-radius:22px; cursor:pointer;
+  padding:34px 36px 34px 44px; border-radius:22px;
   background:linear-gradient(145deg,#111117,#08080c);
   border:1px solid rgba(255,255,255,.1);
   box-shadow:inset 0 1px rgba(255,255,255,.07), 0 24px 60px rgba(0,0,0,.6);
@@ -77,7 +77,7 @@
   box-shadow:inset 0 1px rgba(255,255,255,.07), 0 30px 70px rgba(0,0,0,.65), 0 0 30px rgba(138,92,255,.15);
 }
 .reports-stage .card-kicker{
-  font-size:10px; font-weight:800; letter-spacing:.2em; color:var(--day); margin:0 0 12px;
+  font-size:11px; font-weight:800; letter-spacing:.2em; color:var(--day); margin:0 0 12px;
 }
 .reports-stage .card-title{
   font-size:clamp(22px,3vw,30px); font-weight:900; letter-spacing:-.02em; margin:0 0 10px; line-height:1.15;
@@ -135,7 +135,7 @@
 /* hero */
 .reports-stage .rb-hero{ text-align:center; margin-bottom:8px; }
 .reports-stage .rb-kicker{
-  font-size:10px; font-weight:800; letter-spacing:.22em; color:var(--rs-purple-lt);
+  font-size:11px; font-weight:800; letter-spacing:.22em; color:var(--rs-purple-lt);
   margin:0 0 18px; text-transform:uppercase;
 }
 .reports-stage .rb-title{
@@ -215,7 +215,7 @@
 .reports-stage .rb-prov{
   display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
   margin-top:48px; padding-top:22px; border-top:1px solid rgba(255,255,255,.08);
-  font-size:10px; letter-spacing:.16em; color:#595661; font-weight:700;
+  font-size:11px; letter-spacing:.16em; color:#595661; font-weight:700;
 }
 
 @media(max-width:640px){
@@ -291,10 +291,10 @@
   box-shadow:0 0 14px var(--day)}
 .day-tile.live{box-shadow:0 0 26px -8px var(--day)}
 .day-tile.todo{opacity:.45}
-.tile-kicker{font-size:10px;letter-spacing:.16em;font-weight:800;color:var(--day);margin:0 0 8px}
+.tile-kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:var(--day);margin:0 0 8px}
 .tile-date{font-size:21px;font-weight:800;color:#fff;margin:0 0 4px}
-.tile-label{font-size:10px;color:#8b8b98;margin:0 0 12px;line-height:1.4}
-.tile-open{--glow:var(--day);font-size:10px;letter-spacing:.12em;font-weight:800;
+.tile-label{font-size:11px;color:#8b8b98;margin:0 0 12px;line-height:1.4}
+.tile-open{--glow:var(--day);font-size:11px;letter-spacing:.12em;font-weight:800;
   border-radius:99px;padding:8px 14px;cursor:pointer;
   background:#060608; border:1px solid #2c2c36; color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
@@ -304,12 +304,12 @@
   border-color:var(--glow); transform:translateY(-1px); outline:none;
   box-shadow:0 0 22px -4px var(--glow),inset 0 0 16px -8px var(--glow),inset 0 1px 0 rgba(255,255,255,.1);
 }
-.tile-pill{display:inline-block;font-size:9px;letter-spacing:.14em;font-weight:700;color:#6d6d78;
+.tile-pill{display:inline-block;font-size:11px;letter-spacing:.14em;font-weight:700;color:#6d6d78;
   border:1px dashed #3a3a44;border-radius:99px;padding:6px 10px;margin:0}
 @media(max-width:1100px){.week-strip{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:600px){.week-strip{grid-template-columns:repeat(2,1fr)}}
 
-.tile-view{--glow:var(--day);font-size:10px;letter-spacing:.12em;font-weight:800;
+.tile-view{--glow:var(--day);font-size:11px;letter-spacing:.12em;font-weight:800;
   border-radius:99px;padding:7px 14px;cursor:pointer;
   background:#060608; border:1px solid #2c2c36; color:#fff;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
@@ -324,7 +324,7 @@
 .week-rail{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:2px 0 4px}
 .rail-chip{--day:#8a5cff;display:inline-flex;align-items:center;gap:8px;background:#060608;
   border:1px solid #2c2c36;color:#fff;border-radius:99px;padding:8px 14px;
-  font-size:10px;font-weight:800;letter-spacing:.1em;cursor:pointer;font-family:inherit;
+  font-size:11px;font-weight:800;letter-spacing:.1em;cursor:pointer;font-family:inherit;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
   transition:border-color .2s ease,box-shadow .25s ease,transform .15s ease}
 .rail-chip:hover{border-color:var(--day);transform:translateY(-1px);box-shadow:0 0 16px -4px var(--day)}
@@ -346,7 +346,7 @@ button.kr-row:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .kr-dot{width:10px;height:10px;border-radius:50%;background:var(--day);box-shadow:0 0 10px var(--day);flex:none}
 .kr-row.todo .kr-dot{box-shadow:none}
 .kr-name{font-size:12px;font-weight:700;letter-spacing:.06em;flex:1}
-.kr-act{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--day);flex:none}
+.kr-act{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--day);flex:none}
 .kr-row.todo .kr-act{color:#6d6d78}
 
 /* day theme (subtitle) — the report's own name for the day */
@@ -361,7 +361,8 @@ button.kr-row:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
 /* ——— SHAWN'S BUTTON LAW (2026-10-02): silver-white at rest, theme color on highlight.
    Every control must read as a control before it is touched. Rest = luminous
-   silver halo; hover/focus = the weekday/theme glow (already defined per rule). ——— */
+   silver halo; hover/focus = the weekday/theme glow (already defined per rule).
+   Obsidian gradient body + top-light catch + deep shadow (elite pass 2026-10-02). ——— */
 .reports-stage .search-input{
   border:1px solid rgba(232,234,242,.42); color:#fff;
   box-shadow:0 0 16px -6px rgba(255,255,255,.45), inset 0 1px 0 rgba(255,255,255,.1);
@@ -374,13 +375,19 @@ button.kr-row:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .reports-stage .tile-view,
 .reports-stage .rail-chip,
 .reports-stage button.kr-row{
+  background:linear-gradient(180deg,#1b1b21,#0b0b0e);
   border:1px solid rgba(232,234,242,.5);
   color:#fff;
   text-shadow:0 0 10px rgba(255,255,255,.35);
-  box-shadow:0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow:0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.16), 0 10px 24px rgba(0,0,0,.5);
 }
 /* inert rows stay inert — no silver halo on the todo row */
-.reports-stage div.kr-row.todo{ border:1px solid rgba(255,255,255,.08); box-shadow:none; }
+.reports-stage div.kr-row.todo{ border:1px solid rgba(255,255,255,.08); box-shadow:none; background:#08080d; }
+
+/* ——— REDUCED MOTION: the whole stage goes still (elite pass 2026-10-02) ——— */
+@media (prefers-reduced-motion: reduce){
+  .reports-stage *{ animation:none !important; transition:none !important; }
+}
 
 /* hover re-assertion: theme glow must beat the silver rest (specificity 0,3,0 > 0,2,0) */
 .reports-stage .tile-open:hover,.reports-stage .tile-open:focus-visible,

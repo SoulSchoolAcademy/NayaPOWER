@@ -8,8 +8,10 @@
     let openReportId=null;
     let openDay=null;
     let query='';
-    /* Adapter output wins when provided; fixtures are the fallback. */
-    let ALL_REPORTS=(ctx&&ctx.reports&&ctx.reports.length)?ctx.reports:null;
+    /* Adapter/loader output wins when provided — even an empty array, which
+       renders the honest empty state. Fixtures are only the no-data fallback
+       (never shown as real reports); the room never invents report data. */
+    let ALL_REPORTS=(ctx&&Array.isArray(ctx.reports))?ctx.reports:null;
 
     /* Jewel palette — cycles through sections */
     const JEWELS=['#ffd45a','#35e39b','#3ca8ff','#8a5cff','#ed42c4'];
@@ -75,7 +77,7 @@
       if(st==='live'){
         const b=el('button','tile-open','READ \u2192'); b.type='button';
         b.setAttribute('aria-label','Read the '+d.label+' report');
-        b.addEventListener('click',()=>{ openReportId=rep.id; openDay=null; renderAll(); });
+        b.addEventListener('click',()=>{ openReportId=rep.id; openDay=null; renderAll(); window.scrollTo(0,0); });
         t.appendChild(b);
       }else if(st==='open'){
         const b=el('button','tile-view','VIEW \u2192'); b.type='button';
@@ -259,7 +261,9 @@
     /* ——— ORIENT ——— */
     function orient(){
       const o=el('div','orient');
-      const d=el('p','orient-date',''); d.textContent='Friday, October 2, 2026';
+      const now=new Date();
+      const d=el('p','orient-date','');
+      d.textContent=DAY_NAMES[now.getDay()]+', '+MONTHS[now.getMonth()]+' '+now.getDate()+', '+now.getFullYear();
       const l=el('p','orient-line','');
       l.textContent='Your intelligence, collected across time. Each report \u2014 one beautiful board.';
       o.appendChild(d); o.appendChild(l);
@@ -305,7 +309,7 @@
       const big=el('p','card-big',''); big.textContent=r.bigPicture;
       const open=el('button','card-open','READ THE REPORT \u2192'); open.type='button';
       open.setAttribute('aria-label','Read the full report: '+r.title+' '+r.dateLabel);
-      open.addEventListener('click',()=>{ openReportId=r.id; renderAll(); });
+      open.addEventListener('click',()=>{ openReportId=r.id; renderAll(); window.scrollTo(0,0); });
       card.appendChild(big); card.appendChild(open);
       return card;
     }
