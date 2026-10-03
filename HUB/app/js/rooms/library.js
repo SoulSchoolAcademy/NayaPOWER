@@ -42,7 +42,7 @@
     var search = el('input', 'lib-search');
     search.type = 'search';
     search.setAttribute('aria-label', 'Search the library by canonical ID or text');
-    search.placeholder = 'Type a canonical ID (e.g. SN-217) or any text…';
+    search.placeholder = 'Search by ID (SN-217) or words…';
     var cap = el('span', 'lib-cap', '(retrieval, not capture)');
     cap.title = 'The search box retrieves. Nothing is captured or filed here.';
     searchWrap.appendChild(search);
