@@ -60,6 +60,16 @@
     head.appendChild(sub);
     stage.appendChild(head);
 
+    /* saved-confirmation pill: visible proof that a change persisted */
+    var savedPill = el('span','st-saved','SAVED');
+    head.querySelector('.st-kicker').appendChild(savedPill);
+    function markSaved(){
+      savedPill.classList.add('show');
+      clearTimeout(markSaved._t);
+      markSaved._t = setTimeout(function(){ savedPill.classList.remove('show'); }, 1400);
+    }
+    function persist(){ save(st); markSaved(); }
+
     function applyGlobal(){
       stage.classList.toggle('st-compact', st.density === 'compact');
       stage.classList.toggle('st-reduced', !!st.reduceMotion);
@@ -81,7 +91,7 @@
         b.setAttribute('aria-checked', get() ? 'true' : 'false');
         b.setAttribute('aria-label', label + ': ' + (get() ? 'on' : 'off'));
       }
-      b.addEventListener('click', function(){ set(!get()); save(st); paint(); });
+      b.addEventListener('click', function(){ set(!get()); persist(); paint(); });
       paint();
       row.appendChild(b);
       row._repaint = paint;
@@ -109,7 +119,7 @@
       var b = el('button','st-seg-btn' + (st.density===mode ? ' on' : ''), mode.charAt(0).toUpperCase()+mode.slice(1));
       b.type='button'; b.setAttribute('aria-pressed', st.density===mode ? 'true':'false');
       b.addEventListener('click', function(){
-        st.density = mode; save(st); applyGlobal();
+        st.density = mode; persist(); applyGlobal();
         var btns = seg.querySelectorAll('.st-seg-btn');
         ['comfortable','compact'].forEach(function(m,i){
           btns[i].classList.toggle('on', m===mode);
@@ -181,7 +191,7 @@
       idname.textContent = st.maskIdentity ? masked(userName) : userName;
     }
     var prow = switchRow('Mask identity',
-      'Hides your name across the Hub.',
+      'Masks your name on this page\u2019s identity card (local demo).',
       function(){ return st.maskIdentity; },
       function(v){ st.maskIdentity = v; paintIdentity(); });
     priv.appendChild(prow);
