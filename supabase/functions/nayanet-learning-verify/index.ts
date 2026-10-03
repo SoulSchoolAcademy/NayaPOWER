@@ -434,6 +434,31 @@ Deno.serve(async (req: Request) => {
     const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
       ? promoted.observed_value
       : {};
+    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
+    const relationshipId = String((observed as any).relationship_id || "");
+    const checkpointId = String((observed as any).checkpoint_id || "");
+    const lineageId = String((observed as any).lineage_id || "");
+    const indexId = String((observed as any).index_id || "");
+    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
+      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
+    }
+
+    // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
+    // Hoisted before the historical-receipt block: lawDecision is referenced by
+    // immutableVerificationRecord there, and every canonical mutation must sit
+    // behind the grant gate.
+    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
+    if (!lawDecision.authorized) {
+      return json({
+        ok: false,
+        error: "LEARNING_LOCK_IN_LAW_DENIED",
+        reason: lawDecision.reason,
+        authority_refs: lawDecision.authority_refs,
+        action: LEARNING_LOCK_IN_ACTION,
+        target: intelligentBlockId,
+      }, 403);
+    }
+
     let historicalCommitReceipt = null;
     const historicalCommitReceiptId = String((observed as any).commit_receipt_id || "");
     const historicalCheckpointProvenance = (observed as any).checkpoint_provenance === "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT";
@@ -477,28 +502,6 @@ Deno.serve(async (req: Request) => {
       if (originalReceiptUpdateError) throw originalReceiptUpdateError;
       historicalCommitReceipt = updatedOriginalReceipt;
     }
-    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
-    const relationshipId = String((observed as any).relationship_id || "");
-    const checkpointId = String((observed as any).checkpoint_id || "");
-    const lineageId = String((observed as any).lineage_id || "");
-    const indexId = String((observed as any).index_id || "");
-    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
-      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
-    }
-
-    // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
-    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
-    if (!lawDecision.authorized) {
-      return json({
-        ok: false,
-        error: "LEARNING_LOCK_IN_LAW_DENIED",
-        reason: lawDecision.reason,
-        authority_refs: lawDecision.authority_refs,
-        action: LEARNING_LOCK_IN_ACTION,
-        target: intelligentBlockId,
-      }, 403);
-    }
-
     const { data: blockBefore, error: blockReadError } = await admin
       .from("nayanet_intelligent_blocks")
       .select("*")
