@@ -47,33 +47,66 @@ async function authenticateRuntime(req: Request) {
 }
 
 
+// H8-7 repair (2026-10-03): governed task-class registry. Applicability is a
+// GOVERNED assertion, not a text-derived one. The trigger regexes only PROPOSE
+// candidate classes; APPLICABLE requires a provenance-attested declaration
+// (block.provenance.declared_task_classes, written by a governed capture path)
+// that is a member of this closed registry. Lesson text alone can never yield
+// APPLICABLE — fail-closed on TEXT_TRIGGER_WITHOUT_GOVERNED_DECLARATION.
+const TASK_CLASS_REGISTRY: Record<string, { triggers: RegExp; limitations: string[] }> = {
+  provenance_sensitive: {
+    triggers: /preserve provenance|provenance before applying retained intelligence/i,
+    limitations: ["Only use where provenance preservation is materially relevant."],
+  },
+  repository_correction: {
+    triggers: /act-first within guardrails|asking permission and acting|within the guardrails and adds value/i,
+    limitations: ["Does not create authority; LAW must independently authorize consequential action."],
+  },
+  active_intelligence_sensitive: {
+    triggers: /persistence alone is memory, not proof of active intelligence|retrieved intelligence does not grant authority/i,
+    limitations: ["Persistence and retrieval never create verification or authority; truth and LAW boundaries remain mandatory."],
+  },
+  learning_reuse: {
+    triggers: /(?:preserve provenance|act-first within guardrails|persistence alone is memory, not proof of active intelligence)/i,
+    limitations: ["Reuses verified learning only; never a standalone authority claim."],
+  },
+  contextual_retrieval: {
+    triggers: /(?:provenance before applying retained intelligence|asking permission and acting|retrieved intelligence does not grant authority)/i,
+    limitations: ["Retrieval context only; does not alter verification or authority state."],
+  },
+};
+
 function deriveGraphApplicability(block: any) {
   const lesson = String(block?.content?.lesson ?? "");
-  if (/preserve provenance|provenance before applying retained intelligence/i.test(lesson)) {
-    return {
-      state: "APPLICABLE",
-      task_classes: ["provenance_sensitive", "learning_reuse", "contextual_retrieval"],
-      limitations: ["Only use where provenance preservation is materially relevant."],
-    };
+  // (1) Proposals from lesson text — advisory only, never authoritative.
+  const proposedTaskClasses: string[] = [];
+  for (const taskClass of Object.keys(TASK_CLASS_REGISTRY)) {
+    if (TASK_CLASS_REGISTRY[taskClass].triggers.test(lesson)) proposedTaskClasses.push(taskClass);
   }
-  if (/act-first within guardrails|asking permission and acting|within the guardrails and adds value/i.test(lesson)) {
+  // (2) Governed decision: only provenance-attested declarations count.
+  const declaredRaw = block?.provenance?.declared_task_classes;
+  const declared: string[] = Array.isArray(declaredRaw)
+    ? declaredRaw.filter((c: unknown) => typeof c === "string")
+    : [];
+  const governed = declared.filter((c) => Object.prototype.hasOwnProperty.call(TASK_CLASS_REGISTRY, c));
+  const ungoverned = declared.filter((c) => !Object.prototype.hasOwnProperty.call(TASK_CLASS_REGISTRY, c));
+  if (governed.length > 0) {
+    const classes = Array.from(new Set(governed));
     return {
       state: "APPLICABLE",
-      task_classes: ["repository_correction", "learning_reuse", "contextual_retrieval"],
-      limitations: ["Does not create authority; LAW must independently authorize consequential action."],
-    };
-  }
-  if (/persistence alone is memory, not proof of active intelligence|retrieved intelligence does not grant authority/i.test(lesson)) {
-    return {
-      state: "APPLICABLE",
-      task_classes: ["active_intelligence_sensitive", "learning_reuse", "contextual_retrieval"],
-      limitations: ["Persistence and retrieval never create verification or authority; truth and LAW boundaries remain mandatory."],
+      task_classes: classes,
+      limitations: Array.from(new Set(classes.flatMap((c) => TASK_CLASS_REGISTRY[c].limitations))),
+      proposed_task_classes: proposedTaskClasses,
+      ungoverned_declared_task_classes: ungoverned,
     };
   }
   return {
     state: "UNKNOWN",
     task_classes: [],
-    limitations: ["NO_PREDECLARED_TASK_CLASS"],
+    proposed_task_classes: proposedTaskClasses,
+    limitations: proposedTaskClasses.length > 0
+      ? ["TEXT_TRIGGER_WITHOUT_GOVERNED_DECLARATION", "NO_PREDECLARED_TASK_CLASS"]
+      : ["NO_PREDECLARED_TASK_CLASS"],
   };
 }
 
@@ -481,7 +514,7 @@ Deno.serve(async (req: Request) => {
     const graphApplicability = deriveGraphApplicability(blockAfter);
     const relationshipEvidenceRefs = verificationRefs;
     const relationshipReasonCodes = graphApplicability.state === "APPLICABLE"
-      ? ["INDEPENDENT_CAUSAL_VERIFICATION", "LEARNING_VERIFIED", "TASK_APPLICABILITY_DERIVED_FROM_VERIFIED_LESSON"]
+      ? ["INDEPENDENT_CAUSAL_VERIFICATION", "LEARNING_VERIFIED", "TASK_APPLICABILITY_GOVERNED_DECLARATION"]
       : ["INDEPENDENT_CAUSAL_VERIFICATION", "LEARNING_VERIFIED", "APPLICABILITY_UNCLASSIFIED"];
     const { data: relationshipAfter, error: relationshipUpdateError } = await admin
       .from("nayanet_brain_relationships")
