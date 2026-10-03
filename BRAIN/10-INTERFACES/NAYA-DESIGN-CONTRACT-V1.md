@@ -1,4 +1,4 @@
-# NAYA DESIGN CONTRACT v1.0
+# NAYA DESIGN CONTRACT v1.1
 **Status:** CANONICAL — All Naya seats follow this. No exceptions.
 **Ratified:** 2026-10-03 by Shawn Vibert (Human Director)
 **Purpose:** The visual signature, interaction language, and design philosophy of Naya. So Shawn never has to repeat himself.
@@ -13,16 +13,43 @@
 - **Purple** (`#9d75ff`, `#8a5cff`) — Naya's signature, primary actions
 
 ### Spectrum (accents, never dominant)
-Flow order: **magenta → purple → blue → emerald → yellow/gold → orange → red → magenta**
-- Magenta `#ed42c4`
-- Purple `#8a5cff`
-- Blue `#3ca8ff`
-- Emerald `#35e39b`
-- Yellow/Gold `#ffd45a` (restrained, semantic only)
-- Orange `#ff8c42`
-- Red `#ff5e6c` / `#ff5e6c`
 
-**Law:** Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is least favorite — tiny semantic accents only, never dominant text.
+Color has three distinct jobs. Do not use one job's rule for another.
+
+**1. Accent jewels** — bullet points, boards, icons. Always the richest, most vibrant:
+**hot pink · purple · blue · green · gold.**
+
+**2. Endless flow** — feeds and long continuous sequences. A repeating pattern, not the same for everything:
+**purple → indigo → forest emerald → lime → yellow → gold → orange → red → magenta → purple** (repeats)
+
+**3. SmartNote board sections** — fixed mapping:
+- In a nutshell → white
+- Human → magenta
+- Child → purple
+- Grandma → indigo
+- Naya → Kenya blue (the lighter blue)
+- Machine → forest emerald
+- Why it matters → lime green
+- How do you use it → yellow
+- What's in it for you → orange or gold
+
+### Tokens
+
+- Magenta (hot pink) `#ed42c4`
+- Purple `#8a5cff` (Naya's signature; also `#9d75ff`)
+- Indigo `#6675ff`
+- Kenya blue (lighter blue) `#3ca8ff`
+- Emerald `#35e39b`
+- Forest emerald (deep green) `#2e9e6a`
+- Lime `#b8ee57`
+- Yellow `#ffd45a`
+- Gold `#e8c766`
+- Orange `#ff8c42`
+- Red `#ff5e6c`
+
+**Law:** Purple/black/white are PROMINENT. Spectrum colors are complementary accents. Gold/yellow is restrained — semantic accents, never dominant text.
+
+**Active intelligence:** Intelligent blocks are dynamic, so the color flow is dynamic — it depends on what the content is. Always use the richest, most vibrant colors. Everything should look like jewels, alive.
 
 ---
 
@@ -144,3 +171,4 @@ Shawn amends this contract verbally. The amending Naya updates this document and
 
 **Version history:**
 - v1.0 (2026-10-03): Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive.
+- v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); Kenya blue named; forest emerald + lime + gold + indigo tokens added; active intelligence principle locked.
