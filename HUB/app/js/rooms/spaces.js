@@ -110,8 +110,7 @@
         var row = el('div','sp-card-members');
         s.members.slice(0,5).forEach(function(m){
           var dot = el('span','sp-mdot','');
-          dot.style.background = m.color;
-          dot.style.boxShadow = '0 0 8px ' + m.color;
+          dot.style.setProperty('--mc', m.color || '#888888');
           dot.title = m.name;
           row.appendChild(dot);
         });
@@ -157,8 +156,7 @@
         var chip = el('div','sp-member');
         var av = el('span','sp-avatar','');
         av.textContent = initials(m.name);
-        av.style.background = m.color;
-        av.style.boxShadow = '0 0 14px ' + m.color;
+        av.style.setProperty('--av', m.color || '#888888');
         chip.appendChild(av);
         var tx = el('div','sp-member-tx');
         var mn = el('span','sp-member-n',''); mn.textContent = m.name; tx.appendChild(mn);
@@ -216,6 +214,8 @@
         ta.value = '';
         send.disabled = true;
         paintFeed();
+        var prior = sendRow.querySelector('.sp-sent');
+        if(prior) prior.remove();
         var note = el('span','sp-sent','SENT \u2713');
         sendRow.appendChild(note);
         setTimeout(function(){ note.remove(); }, 1800);
