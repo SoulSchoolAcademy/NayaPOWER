@@ -47,6 +47,68 @@ async function authenticateRuntime(req: Request) {
 }
 
 
+// H13-LOCK-IN-LAW-START
+// H13 (2026-10-03): the lock-in below mutates canonical learning state
+// (block->LEARNED, relationship->VERIFIED, checkpoint->LEARNED). It must
+// re-resolve a live LAW authority grant, not rely on OIDC workflow-binding
+// alone. Decision semantics mirror supabase/functions/nayanet-law-runtime/law.ts
+// (evaluateLaw / targetMatches / expiry). The CI workflow cannot satisfy
+// NEEDS_HUMAN_AUTHORIZATION, so the fail-closed mapping here is: any decision
+// other than AUTHORIZED denies the lock-in. Written without TS annotations so
+// the shipped block can be executed verbatim in the loop's node harness.
+const LEARNING_LOCK_IN_ACTION = "learning_lock_in";
+
+const lawGrantTargetMatches = (grant, target, projectId) => {
+  const scope = (grant && grant.scope) || {};
+  const matches = (value, requested) =>
+    typeof value === "string" && value.trim().length > 0 &&
+    typeof requested === "string" && requested.trim().length > 0 &&
+    value === requested;
+  return matches(scope.target, target) || matches(scope.project_id, target) || matches(scope.project_id, projectId);
+};
+
+const lawGrantIsExpired = (grant, now) =>
+  Boolean(grant && grant.expires_at && new Date(String(grant.expires_at)).getTime() <= now.getTime());
+
+async function resolveLearningLockInLaw(admin, ownerId, intelligentBlockId) {
+  const { data, error } = await admin
+    .from("nayanet_authority_grants")
+    .select("*")
+    .eq("issuer_id", ownerId)
+    .eq("subject_id", ownerId);
+  if (error) throw error;
+  const grants = data || [];
+  const now = new Date();
+  const sameSubject = grants.filter((g) => g.subject_id === ownerId && g.issuer_id === ownerId);
+  const matchingIntent = sameSubject.filter(
+    (g) => Array.isArray(g.actions) && g.actions.includes(LEARNING_LOCK_IN_ACTION) &&
+      lawGrantTargetMatches(g, intelligentBlockId, "NayaNET")
+  );
+  const invalid = matchingIntent.find(
+    (g) => g.status === "REVOKED" || Boolean(g.revoked_at) || g.status === "INVALID" ||
+      lawGrantIsExpired(g, now)
+  );
+  if (invalid) {
+    const grantId = String(invalid.grant_id || "");
+    const reason = (invalid.status === "REVOKED" || Boolean(invalid.revoked_at)) ? "GRANT_REVOKED"
+      : lawGrantIsExpired(invalid, now) ? "GRANT_EXPIRED" : "GRANT_INVALID";
+    return { authorized: false, reason: reason, authority_refs: [grantId], expires_at: invalid.expires_at || null };
+  }
+  const active = matchingIntent.find(
+    (g) => g.status === "ACTIVE" && !g.revoked_at && !lawGrantIsExpired(g, now)
+  );
+  if (active) {
+    return {
+      authorized: true,
+      reason: "ACTIVE_IN_SCOPE_GRANT",
+      authority_refs: [String(active.grant_id || "")],
+      expires_at: active.expires_at || null,
+    };
+  }
+  return { authorized: false, reason: "NO_MATCHING_ACTIVE_AUTHORITY", authority_refs: [], expires_at: null };
+}
+// H13-LOCK-IN-LAW-END
+
 function deriveGraphApplicability(block: any) {
   const lesson = String(block?.content?.lesson ?? "");
   if (/preserve provenance|provenance before applying retained intelligence/i.test(lesson)) {
@@ -399,6 +461,8 @@ Deno.serve(async (req: Request) => {
         verification_runtime_jti: payload.jti ?? null,
         verified_at: new Date().toISOString(),
         historical_checkpoint_provenance: "IMMUTABLE_COMMIT_RECEIPT_SNAPSHOT",
+        law_authority_refs: lawDecision.authority_refs,
+        law_decision_reason: lawDecision.reason,
       };
       const immutableAlreadyRecorded = immutableLearning.some(
         (entry: any) => entry?.learning_id === promoted.id && entry?.verified === true
@@ -420,6 +484,19 @@ Deno.serve(async (req: Request) => {
     const indexId = String((observed as any).index_id || "");
     if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
       return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
+    }
+
+    // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
+    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
+    if (!lawDecision.authorized) {
+      return json({
+        ok: false,
+        error: "LEARNING_LOCK_IN_LAW_DENIED",
+        reason: lawDecision.reason,
+        authority_refs: lawDecision.authority_refs,
+        action: LEARNING_LOCK_IN_ACTION,
+        target: intelligentBlockId,
+      }, 403);
     }
 
     const { data: blockBefore, error: blockReadError } = await admin
@@ -448,6 +525,9 @@ Deno.serve(async (req: Request) => {
       verification_runtime_jti: payload.jti ?? null,
       progressive_intelligence_lock_in: "LEARNED",
       locked_in_at: new Date().toISOString(),
+      law_authority_refs: lawDecision.authority_refs,
+      law_decision_reason: lawDecision.reason,
+      law_evaluated_at: new Date().toISOString(),
     };
     const { data: blockAfter, error: blockUpdateError } = await admin
       .from("nayanet_intelligent_blocks")
@@ -477,6 +557,9 @@ Deno.serve(async (req: Request) => {
       causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
       verification_runtime: "github-actions-oidc",
       verification_runtime_jti: payload.jti ?? null,
+      law_authority_refs: lawDecision.authority_refs,
+      law_decision_reason: lawDecision.reason,
+      law_evaluated_at: new Date().toISOString(),
     };
     const graphApplicability = deriveGraphApplicability(blockAfter);
     const relationshipEvidenceRefs = verificationRefs;
@@ -526,6 +609,9 @@ Deno.serve(async (req: Request) => {
         causal_verification_id: refs.find((ref: string) => ref.startsWith("CVO-")) || null,
         progressive_intelligence_lock_in: "LEARNED",
         last_learning_verified_at: new Date().toISOString(),
+        law_authority_refs: lawDecision.authority_refs,
+        law_decision_reason: lawDecision.reason,
+        law_evaluated_at: new Date().toISOString(),
       };
       const checkpointUpdate = await admin
         .from("nayanet_project_cognition_state")
@@ -542,6 +628,7 @@ Deno.serve(async (req: Request) => {
     const integration = {
       core_intelligence_updated: true,
       progressive_intelligence_lock_in: "LEARNED",
+      law_authority: { refs: lawDecision.authority_refs, reason: lawDecision.reason },
       learning_id: promoted.id,
       intelligent_block: {
         id: blockAfter.intelligent_block_id,
