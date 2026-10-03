@@ -67,6 +67,19 @@ conversation." The room now restores the last-opened space
 (`naya.smartspaces.lastOpen`); the preview opens Team Naya via
 `ctx.initialSpaceId`. First paint = people talking, not a directory.
 
+## Dense-feed redesign (Shawn, 2026-10-02 ~23:40 PDT)
+
+"You should do some research." Done: studied Discord channel view and
+WhatsApp group chat (screenshots on file). The feel of a group = DENSITY
+(6-10 messages per viewport, <=8px between rows), NO card chrome on messages
+(avatar+name+time+text in one tight row), SLIM header (name+topic+count in 3
+lines), STICKY composer, thin date dividers. Message cards are gone; the
+conversation is now compact rows with ball avatars, author names in their
+stable identity colors (spine color when known, hash fallback), grouped
+replies, and a Today divider. MAIL and + ADD moved into the header bar.
+Ball-avatar CSS and `.sp-send` were accidentally dropped in the rewrite and
+restored; author colors now resolve from the people spine.
+
 **Score: 9.7/10.** Why not 10: quality and pro level are his call
 (-0.2), and realtime multi-user delivery is backend-gated, local-only until
 the shell wires it (-0.1, honestly labeled).

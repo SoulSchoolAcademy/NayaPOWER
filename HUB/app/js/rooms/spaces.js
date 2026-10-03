@@ -317,101 +317,138 @@
     }
 
     /* ---------------- DETAIL (the living room) ---------------- */
+    /* Research notes (2026-10-02, Discord + WhatsApp references):
+       a group feed feels alive through DENSITY (6-10 messages/viewport,
+       <=8px between rows), NO card chrome on messages (avatar+name+time+text
+       in one tight row), a SLIM header (name+topic+count in 3 lines), a
+       STICKY composer, and thin date dividers. Author color = stable identity
+       via colorFor(). */
+    function dayLabel(ts){
+      var d = new Date(ts);
+      if(isNaN(d)) return '';
+      var now = new Date();
+      var a = d.toDateString(), b = now.toDateString();
+      if(a === b) return 'Today';
+      var y = new Date(now.getTime() - 86400000).toDateString();
+      if(a === y) return 'Yesterday';
+      return d.toLocaleDateString(undefined, {month:'short', day:'numeric', year:'numeric'});
+    }
+    function firstName(n){ return String(n||'').split(/\s+/)[0] || ''; }
     function detailView(s){
       var d = el('div','sp-detail');
       d.style.setProperty('--sc', s.color);
 
-      var back = el('button','sp-back','\u2190 ALL SPACES');
+      /* ---- slim header bar: back | ball + name + meta | actions ---- */
+      var bar = el('div','sp-dbar');
+      var back = el('button','sp-dback','\u2190');
       back.type = 'button';
+      back.setAttribute('aria-label','Back to all spaces');
       back.addEventListener('click', goGrid);
-      d.appendChild(back);
-
-      /* hero */
-      var hero = el('div','sp-dhero');
-      var jewel = el('span','sp-djewel',''); jewel.textContent = '\u25C9';
-      hero.appendChild(jewel);
-      var ht = el('div','sp-dhead');
-      var nm = el('h2','sp-dname',''); nm.textContent = s.name; ht.appendChild(nm);
-      hero.appendChild(ht);
-      if(s.demo) hero.appendChild(el('span','sp-demo-chip','DEMO'));
-      d.appendChild(hero);
-
-      /* topic block */
-      var topic = s.topic || s.desc;
-      var tb = el('div','sp-topic');
-      var tk = el('p','sp-topic-k','THE TOPIC');
-      tb.appendChild(tk);
-      var tt = el('p','sp-topic-t',''); tt.textContent = topic || 'An open conversation.';
-      tb.appendChild(tt);
-      if(s.block){
-        var bl = el('p','sp-topic-b','');
-        bl.textContent = 'Gathered around: ' + s.block;
-        tb.appendChild(bl);
-      }
-      d.appendChild(tb);
-
-      /* members */
-      var mhead = el('div','sp-mhead');
-      mhead.appendChild(el('h3','sp-sec','PEOPLE'));
-      var addBtn = el('button','sp-addppl','+ ADD PEOPLE');
-      addBtn.type = 'button';
-      addBtn.addEventListener('click', function(){ addPeopleModal(s); });
-      mhead.appendChild(addBtn);
-      d.appendChild(mhead);
-      var mrow = el('div','sp-mrow');
-      function paintMembers(){
-        mrow.innerHTML = '';
+      bar.appendChild(back);
+      var sball = el('span','sp-avatar xs','');
+      sball.textContent = initials(s.name);
+      sball.style.setProperty('--av', s.color || '#8b5cf6');
+      sball.setAttribute('aria-hidden','true');
+      bar.appendChild(sball);
+      var bt = el('div','sp-dbar-t');
+      var bn = el('div','sp-dbar-n',''); bn.textContent = s.name;
+      if(s.demo){ var dc = el('span','sp-fdemo','DEMO'); bn.appendChild(dc); }
+      bt.appendChild(bn);
+      var meta = el('div','sp-dbar-m','');
+      (function(){
         var ms = effectiveMembers(s);
-        if(!ms.length) mrow.appendChild(el('p','sp-empty','No one here yet \u2014 add people.'));
-        ms.forEach(function(m){
-          var chip = el('div','sp-mchip');
-          chip.title = m.name + (m.role ? ' \u00B7 ' + m.role : '');
-          var av = el('span','sp-avatar sm','');
-          av.textContent = initials(m.name);
-          av.style.setProperty('--av', m.color || '#888888');
-          chip.appendChild(av);
-          var mn = el('span','sp-mname',''); mn.textContent = m.name;
-          chip.appendChild(mn);
-          mrow.appendChild(chip);
+        var names = ms.slice(0,3).map(function(m){ return firstName(m.name); }).join(', ');
+        var more = ms.length > 3 ? ' +' + (ms.length - 3) : '';
+        meta.textContent = ms.length + (ms.length === 1 ? ' person' : ' people') +
+          (names ? ' \u00B7 ' + names + more : '');
+      })();
+      bt.appendChild(meta);
+      bar.appendChild(bt);
+      var acts = el('div','sp-dbar-a');
+      if(onCompose){
+        var mailBtn = el('button','sp-dact','MAIL');
+        mailBtn.type = 'button';
+        mailBtn.setAttribute('aria-label','Mail the whole space');
+        mailBtn.addEventListener('click', function(){
+          try { onCompose({to:s.id, toKind:'space'}); } catch(e){}
         });
+        acts.appendChild(mailBtn);
       }
-      paintMembers();
-      d.appendChild(mrow);
+      var addBtn = el('button','sp-dact','+ ADD');
+      addBtn.type = 'button';
+      addBtn.setAttribute('aria-label','Add people to ' + s.name);
+      addBtn.addEventListener('click', function(){ addPeopleModal(s); });
+      acts.appendChild(addBtn);
+      bar.appendChild(acts);
+      d.appendChild(bar);
 
-      /* conversation */
-      d.appendChild(el('h3','sp-sec','CONVERSATION'));
-      var feed = el('div','sp-conv');
+      /* topic: one quiet line, not a billboard */
+      var topic = s.topic || s.desc;
+      if(topic){
+        var tl = el('p','sp-dtopic',''); tl.textContent = topic;
+        if(s.block){ var bl = el('span','sp-dtopic-b',''); bl.textContent = ' \u00B7 gathered around ' + s.block; tl.appendChild(bl); }
+        d.appendChild(tl);
+      }
+
+      /* author color: the person's stable identity color when known, hash fallback */
+      var colorByName = {};
+      allPeople().forEach(function(p){ colorByName[p.name] = p.color || colorFor(p.id); });
+      effectiveMembers(s).forEach(function(m){ colorByName[m.name] = m.color || colorFor(m.id); });
+      function authorColor(name){ return colorByName[name] || colorFor(name || '?'); }
+
+      /* ---- dense conversation feed ---- */
+      var feed = el('div','sp-feed');
       feed.setAttribute('aria-live','polite');
-      function paintConv(scroll){
+      function paintFeed(scroll){
         feed.innerHTML = '';
         var msgs = conversation(s);
-        if(!msgs.length) feed.appendChild(el('p','sp-empty','Nothing said yet. Start the conversation.'));
+        if(!msgs.length) feed.appendChild(el('p','sp-fempty','Nothing said yet. Start the conversation.'));
+        var prev = null;
         msgs.forEach(function(m){
-          var row = el('div','sp-msg' + (m.mine ? ' mine' : ''));
-          var meta = el('div','sp-msg-meta');
-          if(m.author){ var au = el('span','sp-msg-author',''); au.textContent = m.author; meta.appendChild(au); }
-          var t = el('span','sp-msg-time',''); t.textContent = fmtTime(m.ts); meta.appendChild(t);
-          if(m.demo) meta.appendChild(el('span','sp-demo-chip sm','DEMO'));
-          row.appendChild(meta);
-          var tx = el('p','sp-msg-text',''); tx.textContent = m.text; row.appendChild(tx);
+          var day = dayLabel(m.ts);
+          if(day && (!prev || dayLabel(prev.ts) !== day)){
+            var dv = el('div','sp-fdiv');
+            dv.appendChild(el('span','sp-fdiv-l',''));
+            var dl = el('span','sp-fdiv-t',''); dl.textContent = day; dv.appendChild(dl);
+            dv.appendChild(el('span','sp-fdiv-l',''));
+            feed.appendChild(dv);
+          }
+          var sameDay = prev && dayLabel(prev.ts) === day;
+          var dt = new Date(m.ts).getTime(), pt = prev ? new Date(prev.ts).getTime() : 0;
+          var grouped = !!(prev && sameDay && prev.author === m.author && !isNaN(dt) && !isNaN(pt) && (dt - pt) < 5*60000);
+          var row = el('div','sp-frow' + (grouped ? ' cont' : '') + (m.mine ? ' mine' : ''));
+          var main = el('div','sp-fmain');
+          if(!grouped){
+            var av = el('span','sp-avatar xs','');
+            av.textContent = initials(m.author || '?');
+            av.style.setProperty('--av', authorColor(m.author));
+            av.setAttribute('aria-hidden','true');
+            row.appendChild(av);
+            var mh = el('div','sp-fmeta');
+            var au = el('span','sp-fauthor',''); au.textContent = m.author || 'You';
+            au.style.color = authorColor(m.author);
+            mh.appendChild(au);
+            var t = el('span','sp-ftime',''); t.textContent = fmtTime(m.ts); mh.appendChild(t);
+            if(m.demo) mh.appendChild(el('span','sp-fdemo','DEMO'));
+            main.appendChild(mh);
+          }
+          var tx = el('p','sp-ftext',''); tx.textContent = m.text; main.appendChild(tx);
+          row.appendChild(main);
           feed.appendChild(row);
+          prev = m;
         });
         if(scroll) feed.scrollTop = feed.scrollHeight;
       }
-      paintConv(false);
+      paintFeed(false);
       d.appendChild(feed);
 
-      /* composer — instant chat, real locally */
-      var box = el('div','sp-compose');
+      /* ---- sticky composer ---- */
+      var box = el('div','sp-composer');
       var ta = el('textarea','sp-ta','');
-      ta.placeholder = 'Say something in ' + s.name + '\u2026';
+      ta.placeholder = 'Message ' + s.name + '\u2026';
       ta.setAttribute('aria-label','Message to ' + s.name);
-      ta.rows = 2;
+      ta.rows = 1;
       box.appendChild(ta);
-      var sendRow = el('div','sp-sendrow');
-      var hint = el('span','sp-sendhint','');
-      hint.textContent = 'Instant chat \u00B7 saved on this device';
-      sendRow.appendChild(hint);
       var send = el('button','sp-send','SEND');
       send.type = 'button';
       send.disabled = true;
@@ -425,29 +462,16 @@
         saveJSON(STORE_KEY, posts);
         ta.value = '';
         send.disabled = true;
-        paintConv(true);
+        paintFeed(true);
         if(onMail){ try { onMail(s, text); } catch(e){} }
       }
       send.addEventListener('click', doSend);
       ta.addEventListener('keydown', function(ev){
         if(ev.key === 'Enter' && !ev.shiftKey){ ev.preventDefault(); doSend(); }
       });
-      sendRow.appendChild(send);
-      box.appendChild(sendRow);
+      box.appendChild(send);
       d.appendChild(box);
 
-      /* mail this space — only when the hook exists; never a dead button */
-      if(onCompose){
-        var mailBtn = el('button','sp-mailspace','MAIL THIS SPACE');
-        mailBtn.type = 'button';
-        mailBtn.setAttribute('aria-label','Open Smart Mail addressed to ' + s.name);
-        mailBtn.addEventListener('click', function(){
-          try { onCompose({to:s.id, toKind:'space'}); } catch(e){}
-        });
-        d.appendChild(mailBtn);
-      }
-
-      /* refresh members row when the modal adds people */
       return d;
     }
 
