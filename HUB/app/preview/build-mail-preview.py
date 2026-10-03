@@ -29,7 +29,7 @@ NOW = int(time.time() * 1000)
 
 THREADS = [
     {
-        'id': 'demo-mail-001', 'from': 'naya2', 'to': 'naya4', 'toKind': 'person',
+        'id': 'demo-mail-001', 'threadId': 'conv-verify', 'from': 'naya2', 'to': 'naya4', 'toKind': 'person',
         'subject': 'Room 2 verification pass',
         'ts': NOW - 2 * H * 1000, 'unread': True, 'demo': True,
         'body': (
@@ -37,6 +37,24 @@ THREADS = [
             'Archive cards open all six daily reports, the week rail navigates cleanly, and search behaves on hit, miss, and clear.\n\n'
             'The one open item is shell adoption \u2014 ReportsLoader is proven but the converged Hub shell still does not call it. '
             'That is lane 1 territory now, not ours.'
+        ),
+    },
+    {
+        'id': 'demo-mail-001b', 'threadId': 'conv-verify', 'from': 'naya4', 'to': 'naya2', 'toKind': 'person',
+        'subject': 'Room 2 verification pass',
+        'ts': NOW - 1 * H * 1000, 'unread': False, 'demo': True,
+        'body': (
+            'Got it \u2014 shell adoption is lane 1\u2019s now. I\u2019ll note the open item and keep the room side clean.\n\n'
+            'Anything else on the verification before I close it out?'
+        ),
+    },
+    {
+        'id': 'demo-mail-001c', 'threadId': 'conv-verify', 'from': 'naya2', 'to': 'naya4', 'toKind': 'person',
+        'subject': 'Room 2 verification pass',
+        'ts': NOW - 30 * 60 * 1000, 'unread': True, 'demo': True,
+        'body': (
+            'One more: the week rail on mobile \u2014 check the 760px stack when you get a minute. '
+            'Otherwise we\u2019re done here.'
         ),
     },
     {
@@ -61,13 +79,22 @@ THREADS = [
         ),
     },
     {
-        'id': 'demo-mail-004', 'from': 'naya1', 'to': 'team-naya', 'toKind': 'space',
+        'id': 'demo-mail-004', 'threadId': 'conv-converge', 'from': 'naya1', 'to': 'team-naya', 'toKind': 'space',
         'subject': 'Convergence: single branch',
         'ts': NOW - 14 * H * 1000, 'unread': True, 'demo': True,
         'body': (
             'Proposal for the lanes: we converge the room work onto one branch per room before any shell integration. '
             'No competing integration mechanisms, no parallel trees.\n\n'
             'Reply here with objections by tonight \u2014 silence reads as agreement, and I will post the plan to #554.'
+        ),
+    },
+    {
+        'id': 'demo-mail-004b', 'threadId': 'conv-converge', 'from': 'naya4', 'to': 'team-naya', 'toKind': 'space',
+        'subject': 'Convergence: single branch',
+        'ts': NOW - 12 * H * 1000, 'unread': False, 'demo': True,
+        'body': (
+            'Agreed. One branch per room, no parallel trees. '
+            'I\u2019ll hold my pushes until the freeze receipt lands.'
         ),
     },
     {
@@ -144,7 +171,7 @@ def main():
             '<style>body{margin:0;background:#020202;}' + css + '</style></head>'
             '<body><div id="app"></div><script>' + full_js + '</script></body></html>')
     open(OUT, 'w', encoding='utf-8').write(html)
-    print('wrote %s %d bytes | threads %d' % (OUT, len(html), len(THREADS)))
+    print('wrote %s %d bytes | %d messages' % (OUT, len(html), len(THREADS)))
 
 
 if __name__ == '__main__':

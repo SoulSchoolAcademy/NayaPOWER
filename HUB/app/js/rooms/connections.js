@@ -53,13 +53,22 @@
       ? window.NayaPeople.ensureSeeded(ctx.contacts)
       : (Array.isArray(ctx.contacts) ? ctx.contacts : []);
     var byId = {};
-    contacts.forEach(function(c){ byId[c.id] = c; });
+    var store = null;
+    function reloadPeople(){
+      if(window.NayaPeople && window.NayaPeople.load){
+        var p = window.NayaPeople.load();
+        if(p) contacts = p;
+      }
+      byId = {};
+      contacts.forEach(function(c){ byId[c.id]=c; });
+      /* repair: drop member ids that no longer exist */
+      if(store) store.lists.forEach(function(l){
+        l.members = l.members.filter(function(id){ return byId[id]; });
+      });
+    }
 
-    var store = loadLists() || seedLists(contacts);
-    /* repair: drop member ids that no longer exist, keep seed if empty */
-    store.lists.forEach(function(l){
-      l.members = l.members.filter(function(id){ return byId[id]; });
-    });
+    store = loadLists() || seedLists(contacts);
+    reloadPeople();
     if(!store.lists.length) store = seedLists(contacts);
     saveLists(store);
 
@@ -101,6 +110,9 @@
         saveLists(store); state.filter = id; sync();
       });
       side.appendChild(nb);
+      var ap = el('button','cx-new','+ Add person'); ap.type='button';
+      ap.addEventListener('click', openAddPerson);
+      side.appendChild(ap);
     }
 
     function chip(label, count, on, fn){
@@ -237,6 +249,84 @@
     }
 
     function closeModal(){ overlay.style.display='none'; state.draftFor=null; }
+
+    /* focus trap: Tab cycles inside the open modal */
+    overlay.addEventListener('keydown', function(ev){
+      if(ev.key!=='Tab' || overlay.style.display!=='flex') return;
+      var all = mcard.querySelectorAll('button, input, textarea, select');
+      var vis = [];
+      for(var i=0;i<all.length;i++){ if(!all[i].disabled) vis.push(all[i]); }
+      if(!vis.length) return;
+      var first=vis[0], last=vis[vis.length-1];
+      if(ev.shiftKey && document.activeElement===first){ ev.preventDefault(); last.focus(); }
+      else if(!ev.shiftKey && document.activeElement===last){ ev.preventDefault(); first.focus(); }
+    });
+
+    /* ---------- add person: grows the shared people spine ---------- */
+    var PALETTE = ['#facc15','#a855f7','#38bdf8','#ec4899','#a3e635','#fb718c','#34d399','#f97316'];
+    function openAddPerson(){
+      state.draftFor = null;
+      mcard.innerHTML = '';
+      mcard.style.setProperty('--cc', '#fb718c');
+      mcard.appendChild(el('h2','cx-mname','ADD PERSON'));
+      var sub = el('p','cx-mnote','');
+      sub.textContent='Someone new in your world. They join the shared people spine \u2014 Smart Mail will know them too.';
+      mcard.appendChild(sub);
+
+      var selColor = PALETTE[2];
+      mcard.appendChild(el('p','cx-mlabel','NAME'));
+      var nmIn = el('input','cx-textin','');
+      nmIn.setAttribute('placeholder','Full name'); nmIn.setAttribute('aria-label','Full name');
+      nmIn.maxLength=60;
+      mcard.appendChild(nmIn);
+      mcard.appendChild(el('p','cx-mlabel','ROLE'));
+      var roIn = el('input','cx-textin','');
+      roIn.setAttribute('placeholder','Role (optional)'); roIn.setAttribute('aria-label','Role');
+      roIn.maxLength=80;
+      mcard.appendChild(roIn);
+      mcard.appendChild(el('p','cx-mlabel','COLOR'));
+      var sw = el('div','cx-swatches');
+      var swBtns = [];
+      function paintSw(){
+        swBtns.forEach(function(x){
+          x.className = x.className.replace(' on','') + (x.getAttribute('data-c')===selColor ? ' on' : '');
+        });
+      }
+      PALETTE.forEach(function(c){
+        var b = el('button','cx-sw'); b.type='button';
+        b.style.background=c; b.setAttribute('data-c',c); b.setAttribute('aria-label','Color '+c);
+        b.addEventListener('click', function(){ selColor=c; custom.value=c; paintSw(); });
+        swBtns.push(b); sw.appendChild(b);
+      });
+      var custom = el('input','cx-swcustom'); custom.type='color'; custom.value=selColor;
+      custom.setAttribute('aria-label','Custom color');
+      custom.addEventListener('input', function(){ selColor=custom.value; paintSw(); });
+      sw.appendChild(custom);
+      mcard.appendChild(sw);
+      paintSw();
+
+      var row = el('div','cx-mrow');
+      var save = el('button','cx-btn','ADD PERSON'); save.type='button';
+      var err = el('span','cx-dstatus','');
+      save.addEventListener('click', function(){
+        var name = nmIn.value.trim();
+        if(!name){ err.textContent='They need a name.'; nmIn.focus(); return; }
+        var person = { id:'p-'+Date.now().toString(36), name:name,
+          role:roIn.value.trim(), color:selColor };
+        if(window.NayaPeople) window.NayaPeople.add(person);
+        else { contacts.push(person); }
+        reloadPeople();
+        closeModal(); sync();
+      });
+      row.appendChild(save); row.appendChild(err);
+      var cancel = el('button','cx-btn ghost','CANCEL'); cancel.type='button';
+      cancel.addEventListener('click', closeModal);
+      row.appendChild(cancel);
+      mcard.appendChild(row);
+
+      overlay.style.display='flex';
+      nmIn.focus();
+    }
 
     function timeAgo(iso){
       var s = Math.max(0, Math.floor((Date.now()-new Date(iso).getTime())/1000));

@@ -1,7 +1,9 @@
 /* SMART MAIL — how people communicate inside the NayaNET network.
  * Registry: "mail", route "/mail", theme blue.
  * Contract: window.NayaRooms.smartMail(el, ctx)
- *   ctx.threads  — thread view-models from MailAdapter.parseThreads
+ *   ctx.threads  — conversation view-models from MailAdapter.parseThreads:
+ *     {id, subject, messages:[{id,from,to,toKind,subject,body,ts,unread,demo}],
+ *      count, ts, unread, demo}
  *   ctx.contacts  — [{id,name,role,color}]; seeds window.NayaPeople, the
  *     people spine shared with Connections (one registry, not four copies)
  *   ctx.spaces    — [{id,name,color}] mail can be addressed to a space
@@ -10,9 +12,9 @@
  *     composer pre-addressed (cross-room handoff, e.g. from Connections)
  * People spine: ADD TO CONNECTIONS files an unknown sender into the shared
  * registry, so they appear in Connections and in the next compose.
- * Law: every button has a real consequence. Filters filter, opening a
- * thread marks it read, Send really appends to Sent and persists to
- * localStorage (naya.smartmail.sent). All seeded threads carry DEMO.
+ * Law: every button has a real consequence. Search searches, delete deletes
+ * (two-tap), reply appends to the conversation, Send persists user messages
+ * to localStorage (naya.smartmail.sent). All seeded messages carry DEMO.
  */
 (function(){
   'use strict';
@@ -37,6 +39,15 @@
 
   function esc(s){ return String(s==null?'':s); }
 
+  function refreshThread(t){
+    t.messages.sort(function(a,b){ return a.ts - b.ts; });
+    var last = t.messages[t.messages.length-1];
+    t.count = t.messages.length;
+    t.ts = last ? last.ts : 0;
+    t.unread = t.messages.some(function(m){ return m.unread; });
+    t.demo = t.messages.every(function(m){ return m.demo; });
+  }
+
   function SmartMail(el, ctx){
     ctx = ctx || {};
     var me = ctx.me || 'naya4';
@@ -59,14 +70,24 @@
     var spaceById = {};
     spaces.forEach(function(s){ spaceById[s.id]=s; });
 
-    /* threads: seeded (demo) + previously sent (persisted) */
+    /* threads: seeded (demo) + user messages restored from persistence */
     var threads = Array.isArray(ctx.threads) ? ctx.threads.slice() : [];
-    loadSent().forEach(function(s){
-      if(!threads.some(function(t){ return t.id===s.id; })) threads.push(s);
+    loadSent().forEach(function(rec){
+      var t = findThread(rec.id);
+      if(t){
+        (rec.messages||[]).forEach(function(m){
+          if(!t.messages.some(function(x){ return x.id===m.id; })) t.messages.push(m);
+        });
+        refreshThread(t);
+      }else if(rec.messages && rec.messages.length){
+        var nt = { id:rec.id, subject:rec.subject || '(no subject)', messages:rec.messages.slice() };
+        refreshThread(nt);
+        threads.push(nt);
+      }
     });
     threads.sort(function(a,b){ return b.ts - a.ts; });
 
-    var state = { folder:'inbox', selectedId:null };
+    var state = { folder:'inbox', selectedId:null, q:'' };
 
     var stage = el('div','mail-stage');
 
@@ -85,8 +106,25 @@
     var rail = el('nav','ml-rail'); rail.setAttribute('aria-label','Mail folders');
     panes.appendChild(rail);
 
+    var listCol = el('div','ml-listcol');
+    var searchBar = el('div','ml-searchbar');
+    var searchIcon = el('span','ml-searchicon','');
+    searchIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+    searchBar.appendChild(searchIcon);
+    var searchIn = el('input','ml-searchin');
+    searchIn.type='search';
+    searchIn.setAttribute('placeholder','Search mail\u2026');
+    searchIn.setAttribute('aria-label','Search mail');
+    searchIn.addEventListener('input', function(){
+      state.q = searchIn.value.trim().toLowerCase();
+      renderList();
+    });
+    searchBar.appendChild(searchIn);
+    listCol.appendChild(searchBar);
+
     var list = el('div','ml-list'); list.setAttribute('role','listbox'); list.setAttribute('aria-label','Threads');
-    panes.appendChild(list);
+    listCol.appendChild(list);
+    panes.appendChild(listCol);
 
     var read = el('article','ml-read'); read.setAttribute('aria-live','polite');
     panes.appendChild(read);
@@ -100,8 +138,9 @@
     stage.appendChild(composeBtn);
 
     /* ---------- folders ---------- */
-    function inboxThreads(){ return threads.filter(function(t){ return t.from!==me; }); }
-    function sentThreads(){ return threads.filter(function(t){ return t.from===me; }); }
+    function isSent(t){ return t.messages.length && t.messages[0].from===me; }
+    function inboxThreads(){ return threads.filter(function(t){ return !isSent(t); }); }
+    function sentThreads(){ return threads.filter(function(t){ return isSent(t); }); }
     function unreadCount(){ return inboxThreads().filter(function(t){ return t.unread; }).length; }
 
     /* folder identity: each folder owns a stable color + icon (Shawn, 2026-10-02).
@@ -136,9 +175,20 @@
     }
 
     function folderThreads(){
-      if(state.folder==='sent') return sentThreads();
-      if(state.folder==='unread') return inboxThreads().filter(function(t){ return t.unread; });
-      return inboxThreads();
+      var ts;
+      if(state.folder==='sent') ts = sentThreads();
+      else if(state.folder==='unread') ts = inboxThreads().filter(function(t){ return t.unread; });
+      else ts = inboxThreads();
+      if(state.q){
+        var q = state.q;
+        ts = ts.filter(function(t){
+          var hay = (t.subject+' '+t.messages.map(function(m){
+            return m.subject+' '+m.snippet+' '+m.body+' '+partyName(m.from,'person');
+          }).join(' ')).toLowerCase();
+          return hay.indexOf(q)>=0;
+        });
+      }
+      return ts;
     }
 
     /* ---------- thread list ---------- */
@@ -152,28 +202,40 @@
       if(byId[id]) return byId[id].color;
       return '#8b93a3';
     }
+    /* the human face of a thread: the first participant who isn't me,
+       else the last message's recipient. */
+    function otherParty(t){
+      for(var i=0;i<t.messages.length;i++){
+        if(t.messages[i].from!==me) return {id:t.messages[i].from, kind:'person'};
+      }
+      var l = t.messages[t.messages.length-1];
+      return l ? {id:l.to, kind:l.toKind} : {id:'?', kind:'person'};
+    }
 
     function renderList(){
       list.innerHTML='';
       var ts = folderThreads();
       if(!ts.length){
         var empty = el('p','ml-empty','');
-        empty.textContent = state.folder==='sent'
-          ? 'Nothing sent yet. Compose your first network mail.'
+        empty.textContent = state.q ? 'No threads match your search.'
+          : state.folder==='sent' ? 'Nothing sent yet. Compose your first network mail.'
           : 'All caught up. No threads here.';
         list.appendChild(empty);
         return;
       }
       ts.forEach(function(t){
+        var op = otherParty(t);
+        var last = t.messages[t.messages.length-1];
         var item = el('button','ml-thread'+(t.unread?' unread':'')+(state.selectedId===t.id?' sel':''));
         item.type='button'; item.setAttribute('role','option');
         item.setAttribute('aria-selected', state.selectedId===t.id?'true':'false');
-        item.setAttribute('aria-label',(t.unread?'Unread: ':'')+t.subject);
+        item.setAttribute('aria-label',(t.unread?'Unread: ':'')+t.subject+
+          (t.count>1 ? ' ('+t.count+' messages)' : ''));
 
         var av = el('span','ml-avatar','');
-        var nm = partyName(t.from,'person');
+        var nm = partyName(op.id, op.kind);
         av.textContent = nm.charAt(0).toUpperCase();
-        av.style.setProperty('--pc', partyColor(t.from,'person'));
+        av.style.setProperty('--pc', partyColor(op.id, op.kind));
         item.appendChild(av);
 
         var mid = el('span','ml-thread-mid');
@@ -182,9 +244,12 @@
         var time = el('span','ml-thread-time',''); time.textContent=timeAgo(t.ts); top.appendChild(time);
         mid.appendChild(top);
         var sj = el('span','ml-thread-subj',''); sj.textContent=t.subject; mid.appendChild(sj);
-        var sn = el('span','ml-thread-snip',''); sn.textContent=t.snippet; mid.appendChild(sn);
+        var sn = el('span','ml-thread-snip',''); sn.textContent=last.snippet; mid.appendChild(sn);
         item.appendChild(mid);
 
+        if(t.count>1){
+          var cnt = el('span','ml-count',''); cnt.textContent=t.count; item.appendChild(cnt);
+        }
         if(t.unread){ item.appendChild(el('span','ml-dot','')); }
         if(t.demo){
           var chip = el('span','ml-chip',''); chip.textContent='DEMO'; item.appendChild(chip);
@@ -206,13 +271,13 @@
       var t = findThread(id);
       if(!t) return;
       state.selectedId = id;
-      if(t.unread){ t.unread=false; }
+      if(t.unread){ t.messages.forEach(function(m){ m.unread=false; }); refreshThread(t); }
       renderRail(); renderList(); renderRead();
       var pane = read.querySelector('.ml-read-subj');
       if(pane) pane.focus();
     }
 
-    /* ---------- reading pane ---------- */
+    /* ---------- reading pane: the conversation ---------- */
     function renderRead(){
       read.innerHTML='';
       var t = findThread(state.selectedId);
@@ -223,66 +288,102 @@
         read.appendChild(none);
         return;
       }
-      var toKind = t.toKind==='space' ? 'space' : 'person';
+      var op = otherParty(t);
 
       var sj = el('h2','ml-read-subj',''); sj.textContent=t.subject; sj.tabIndex=-1; read.appendChild(sj);
 
       var meta = el('div','ml-read-meta');
-      var fav = el('span','ml-avatar sm','');
-      fav.textContent=partyName(t.from,'person').charAt(0).toUpperCase();
-      fav.style.setProperty('--pc', partyColor(t.from,'person'));
-      meta.appendChild(fav);
-      var who = el('div','ml-read-who');
-      var fl = el('span','ml-read-from',''); fl.textContent=partyName(t.from,'person'); who.appendChild(fl);
-      var tl = el('span','ml-read-to','');
-      tl.textContent='to '+partyName(t.to,toKind)+(toKind==='space'?' (space)':'');
-      who.appendChild(tl);
-      meta.appendChild(who);
-      var dt = el('span','ml-read-date',''); dt.textContent=fmtFull(t.ts); meta.appendChild(dt);
+      var names = [];
+      t.messages.forEach(function(m){
+        var n = partyName(m.from,'person');
+        if(names.indexOf(n)<0) names.push(n);
+      });
+      var mm = el('span','ml-read-to','');
+      mm.textContent = t.count+' message'+(t.count>1?'s':'')+' · '+names.join(', ');
+      meta.appendChild(mm);
       if(t.demo){ var chip=el('span','ml-chip',''); chip.textContent='DEMO'; meta.appendChild(chip); }
       read.appendChild(meta);
 
-      var body = el('div','ml-read-body');
-      String(t.body||'').split(/\n\s*\n/).forEach(function(para){
-        var p = el('p','',''); p.textContent=para.trim(); body.appendChild(p);
+      t.messages.forEach(function(m){
+        var mine = m.from===me;
+        var mc = el('div','ml-msg'+(mine?' mine':''));
+        var mhead = el('div','ml-msg-head');
+        var fav = el('span','ml-avatar sm','');
+        fav.textContent=partyName(m.from,'person').charAt(0).toUpperCase();
+        fav.style.setProperty('--pc', partyColor(m.from,'person'));
+        mhead.appendChild(fav);
+        var who = el('div','ml-msg-who');
+        var fn = el('span','ml-msg-from',''); fn.textContent=partyName(m.from,'person'); who.appendChild(fn);
+        var fd = el('span','ml-msg-date',''); fd.textContent=fmtFull(m.ts); who.appendChild(fd);
+        mhead.appendChild(who);
+        mc.appendChild(mhead);
+        var mb = el('div','ml-msg-body');
+        String(m.body||'').split(/\n\s*\n/).forEach(function(para){
+          var p = el('p','',''); p.textContent=para.trim(); mb.appendChild(p);
+        });
+        mc.appendChild(mb);
+        read.appendChild(mc);
       });
-      read.appendChild(body);
 
       var actions = el('div','ml-read-actions');
       var reply = el('button','ml-btn','REPLY'); reply.type='button';
       reply.addEventListener('click', function(){
-        openCompose({ to:t.from, toKind:'person', subject:'Re: '+t.subject.replace(/^Re:\s*/i,'') });
+        openCompose({ threadId:t.id, to:op.id, toKind:op.kind,
+          subject:'Re: '+t.subject.replace(/^Re:\s*/i,'') });
       });
       actions.appendChild(reply);
       var toggle = el('button','ml-btn ghost','MARK UNREAD'); toggle.type='button';
       toggle.addEventListener('click', function(){
-        t.unread=true; renderRail(); renderList();
+        t.messages.forEach(function(m){ m.unread=true; });
+        refreshThread(t);
+        renderRail(); renderList();
       });
       actions.appendChild(toggle);
-      /* people spine: a sender who isn't a connection yet can be filed
-         in one tap — the registry is shared, so Connections sees them too. */
-      if(window.NayaPeople && window.NayaPeople.get && !window.NayaPeople.get(t.from)){
+      /* people spine: file the other party as a connection in one tap. */
+      if(window.NayaPeople && window.NayaPeople.get && !window.NayaPeople.get(op.id)){
         var addP = el('button','ml-btn ghost','ADD TO CONNECTIONS'); addP.type='button';
         addP.addEventListener('click', function(){
-          window.NayaPeople.add({ id:t.from, name:partyName(t.from,'person'),
-            role:'via Smart Mail', color:partyColor(t.from,'person') });
+          window.NayaPeople.add({ id:op.id, name:partyName(op.id,op.kind),
+            role:'via Smart Mail', color:partyColor(op.id,op.kind) });
           reloadPeople();
           addP.textContent='IN CONNECTIONS \u2713'; addP.disabled=true;
         });
         actions.appendChild(addP);
       }
+      var del = el('button','ml-btn ghost danger','DELETE'); del.type='button';
+      del.addEventListener('click', function(){
+        if(del.getAttribute('data-arm')==='1'){ deleteThread(t.id); return; }
+        del.setAttribute('data-arm','1'); del.textContent='CONFIRM DELETE';
+        setTimeout(function(){
+          if(del.parentNode){ del.removeAttribute('data-arm'); del.textContent='DELETE'; }
+        }, 3000);
+      });
+      actions.appendChild(del);
       read.appendChild(actions);
+    }
+
+    function deleteThread(id){
+      for(var i=0;i<threads.length;i++){
+        if(threads[i].id===id){ threads.splice(i,1); break; }
+      }
+      try{
+        var arr = loadSent().filter(function(r){ return r.id!==id; });
+        localStorage.setItem(SENT_KEY, JSON.stringify(arr));
+      }catch(e){}
+      if(state.selectedId===id) state.selectedId=null;
+      renderRail(); renderList(); renderRead();
     }
 
     /* ---------- compose ---------- */
     var overlay=null;
     function openCompose(preset){
+      preset = preset || {};
       closeCompose();
       overlay = el('div','ml-overlay');
       var card = el('div','ml-modal'); card.setAttribute('role','dialog'); card.setAttribute('aria-label','Compose mail');
       overlay.appendChild(card);
 
-      card.appendChild(el('h2','ml-modal-title','COMPOSE'));
+      card.appendChild(el('h2','ml-modal-title', preset.threadId ? 'REPLY' : 'COMPOSE'));
 
       var toRow = el('label','ml-field');
       toRow.appendChild(el('span','ml-field-l','TO'));
@@ -329,15 +430,28 @@
           err.style.display='block';
           return;
         }
-        var thread={
-          id:'sent-'+Date.now().toString(36),
+        var thread = preset.threadId ? findThread(preset.threadId) : null;
+        var msg={
+          id:'m-'+Date.now().toString(36)+Math.floor(Math.random()*1e4).toString(36),
           from:me, to:parts[1]||'', toKind:parts[0]==='space'?'space':'person',
-          subject:subject, snippet:body.slice(0,120), body:body,
+          subject: thread ? thread.subject : subject,
+          snippet:body.slice(0,120), body:body,
           ts:Date.now(), unread:false, demo:false
         };
-        threads.unshift(thread);
-        persistSent(thread);
-        state.folder='sent'; state.selectedId=thread.id;
+        if(thread){
+          /* reply appends to the conversation — threads actually thread now */
+          thread.messages.push(msg);
+          refreshThread(thread);
+          persistThread(thread);
+          state.selectedId=thread.id;
+        }else{
+          var nt={ id:'thread-'+Date.now().toString(36), subject:subject, messages:[msg] };
+          refreshThread(nt);
+          threads.unshift(nt);
+          persistThread(nt);
+          state.folder = nt.messages[0].from===me ? 'sent' : 'inbox';
+          state.selectedId=nt.id;
+        }
         closeCompose();
         renderRail(); renderList(); renderRead();
       });
@@ -346,6 +460,18 @@
       cancel.addEventListener('click', closeCompose);
       row.appendChild(cancel);
       card.appendChild(row);
+
+      /* focus trap: Tab cycles inside the dialog */
+      card.addEventListener('keydown', function(ev){
+        if(ev.key!=='Tab') return;
+        var all = card.querySelectorAll('button, input, textarea, select');
+        var vis = [];
+        for(var i=0;i<all.length;i++){ if(!all[i].disabled) vis.push(all[i]); }
+        if(!vis.length) return;
+        var first=vis[0], last=vis[vis.length-1];
+        if(ev.shiftKey && document.activeElement===first){ ev.preventDefault(); last.focus(); }
+        else if(!ev.shiftKey && document.activeElement===last){ ev.preventDefault(); first.focus(); }
+      });
 
       overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeCompose(); });
       stage.appendChild(overlay);
@@ -359,18 +485,23 @@
       if(ev.key==='Escape' && overlay) closeCompose();
     });
 
-    /* ---------- persistence ---------- */
+    /* ---------- persistence: user-authored messages only ---------- */
     function loadSent(){
       try{
         var raw = localStorage.getItem(SENT_KEY);
         var arr = raw ? JSON.parse(raw) : [];
-        return Array.isArray(arr) ? arr.filter(function(t){ return t && t.id && t.subject; }) : [];
+        return Array.isArray(arr) ? arr.filter(function(r){ return r && r.id && Array.isArray(r.messages); }) : [];
       }catch(e){ return []; }
     }
-    function persistSent(thread){
+    function persistThread(t){
       try{
+        var mine = t.messages.filter(function(m){ return !m.demo; });
+        if(!mine.length) return;
         var arr = loadSent();
-        arr.unshift(thread);
+        var rec = { id:t.id, subject:t.subject, messages:mine };
+        var ix=-1;
+        for(var i=0;i<arr.length;i++){ if(arr[i].id===t.id){ ix=i; break; } }
+        if(ix>=0) arr[ix]=rec; else arr.unshift(rec);
         localStorage.setItem(SENT_KEY, JSON.stringify(arr.slice(0,50)));
       }catch(e){ /* storage unavailable — mail still sends in-memory */ }
     }
