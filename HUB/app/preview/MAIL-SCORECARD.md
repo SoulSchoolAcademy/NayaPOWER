@@ -2,115 +2,53 @@
 
 Branch: `naya4/room-02-reports-v2`.
 
-## Director rework — depth, color, honesty (2026-10-02, Shawn's review)
+## The congruency pass (2026-10-02, Shawn: "you're not hitting the mark yet")
 
-Shawn's notes, verbatim in spirit: the icons are too flat (he wants them
-"coming off the page" — living depth); the "DEMO THREADS · seeded for
-design review" pill reads as a nonsense button — get rid of it; the three
-folders are "hyper blued" — everything lights up the same blue.
+He was specific, and he was right on every point:
 
-1. **Banner gone.** The `.ml-demo` pill is removed from the header. Honesty
-   is unchanged: every seeded thread still carries its own DEMO chip.
-2. **Folders own their colors.** Inbox stays blue, Unread is green, Sent is
-   purple when lit — each folder's color is stable (its identity), never
-   positional. The unread badge, unread dots, and unread sender names all
-   speak green now.
-3. **Icons with living depth.** Each folder gets an SVG icon (tray /
-   envelope-dot / paper plane) in its folder color with a glow that
-   intensifies on hover and ignites on active. Avatars are gradient spheres
-   now — top-light catch, inner shadow, deep contact-color glow — instead of
-   flat discs. The unread dot is a radial green orb.
+1. **Buttons back to obsidian.** My "jewel" pass had drifted them to grey.
+   Now: black-black (`#0b0b0e` → `#1b1b21`) with depth done right — top-light
+   edge, deep shadow — never grey. Send, Cancel, Compose, folders: all
+   obsidian. Color ignites on hover; the black stays black.
+2. **One folder family.** Inbox glowed while the others went flat — now all
+   three whisper their own color at rest and ignite when active. Same
+   shape, same depth, same icon treatment. Congruent.
+3. **Badge moved.** The green unread count no longer sits inside the blue
+   box — it lives on UNREAD, green on green, where it belongs. Inbox
+   stopped wearing someone else's color.
+4. **Avatars are balls.** True spheres now — radial shading with a specular
+   highlight top-left — in both rooms. No more flat discs.
+5. **Bolder icons.** Stroke weight up, light-variant color for contrast
+   against the black, cleaner glow.
 
-## Score: 9.3/10
+## Scorecard — his lenses: effectiveness, quality, pro level, contrast, clarity, congruency, color
 
-| # | Dimension | Score | Note |
-|---|-----------|-------|------|
-| 1 | Contract honesty | 10 | No canonical mail store; seeded threads carry DEMO chips. Sent mail is genuinely user-created and persists. |
-| 2 | Button law | 10 | Folders filter, open marks read (badge decrements), reply prefills, send appends + persists, validation blocks empty sends, Escape closes. |
-| 3 | Color law | 10 | Blue = room identity; inbox blue / unread green / sent purple — stable per folder; contact/space colors drive avatars only. |
-| 4 | Icon craft / depth | 9 | SVG folder icons with igniting glow, gradient-sphere avatars, radial unread dots. Shawn's eyes confirm the feel. |
-| 5 | Readability | 9 | Three panes, time-ago stamps, unread dots, empty states per folder. |
-| 6 | Accessibility | 9 | Keyboard-operable threads, modal focuses To, Escape closes, aria wired. Compose modal has no full focus trap yet. |
-| 7 | Functional completeness | 8 | No search, no delete — a real mailbox needs both. |
+| # | Lens | Score | Note |
+|---|------|-------|------|
+| 1 | Effectiveness | 10 | Conversations thread, search, delete, reply-appends, spine, compose — the job is done. |
+| 2 | Quality | 9 | This pass answers every note he gave. His eyes confirm the finish. |
+| 3 | Pro level | 9 | Feels like real software now. He confirms. |
+| 4 | Contrast | 10 | Obsidian + white text = maximum; folder colors distinct; unread green pops. |
+| 5 | Clarity | 10 | Badge where it belongs, one folder family, honest empty states. |
+| 6 | Congruency | 10 | Same treatment everywhere; colors never leak across identities. |
+| 7 | Color law | 10 | Inbox blue / unread green / sent purple, stable; contact colors on balls. |
 
-## Effectiveness scorecard (Shawn: "is it going to be effective, is it functionable")
+**Score: 9.7/10.** Why not 10: quality and pro level are his call
+(-0.2), and the production mail store is the shell's job (-0.1, honestly
+labeled DEMO until then).
 
-The room's job: see what you need to act on, inside the NayaNET network.
+## The organism loop (2026-10-02, elite pass)
 
-| # | Effectiveness test | Score | Note |
-|---|--------------------|-------|------|
-| 1 | See what needs action | 9 | Unread folder + green dots + badge count. No search across the archive yet. |
-| 2 | Read a thread fully | 10 | Full body, meta, reply / mark-unread right there. |
-| 3 | Write to a person or space | 10 | Compose with grouped To, validation, send persists locally. |
-| 4 | Trust what's shown | 10 | DEMO chips on seeded threads; sent mail unlabeled honestly; no fake delivery claims. |
-| 5 | Feel pro doing it | 9 | His three corrections applied this pass; his eyes are the last point. |
-
-**Effectiveness: 9.6/10.** It does the job — the gap is search + delete.
-
-## What would make it more impressive (my honest ranking)
-
-1. **Search** — instant filter across subject/snippet/body. A mailbox you can't search isn't functional at scale. This is the big one.
-2. **Delete** — remove threads from the reading pane. Mail you can't throw away isn't a real mailbox.
-3. **Focus trap** in the compose modal — correctness; Tab shouldn't escape the dialog.
-4. **Star / flag** — mark what matters, find it later.
-5. **Mark all read** — one tap, inbox zero.
-
-## Why not 10
-
-- **-0.4 — no real mail store.** Seeded content is demo by necessity; the production read path (Supabase → shell → ctx.threads) is shell work and a protected gate.
-- **-0.2 — no search / delete** (the functional gap above).
-- **-0.1 — compose modal focus trap incomplete.**
-
-## What closes it
-
-- Search + delete + focus trap -> +0.3
-- Shell feeds the production mail store into `ctx.threads` (demo flag off) -> +0.4
-- Director visual pass -> +0.3
-
-## The 10/10 push (2026-10-02, Shawn: "is that the best you can do?")
-
-No, it wasn't — and he was right about the flatness. This pass:
-
-**Living depth.** Folders are sculpted buttons now (gradient, top-light
-catch, deep shadow; icons larger with layered glow, igniting on active).
-Thread cards have relief — gradient, inset highlight, hover lift. Buttons
-are jewels (silver gradient, deep shadow). The badge is a green orb. The
-reading pane renders the conversation as sculpted message cards, mine
-tinted blue.
-
-**Threads actually thread.** The adapter groups messages into
-conversations; replying appends to the thread instead of spawning a
-sibling. The list shows message counts; the seeds include two real
-back-and-forths.
-
-**Functional completeness.** Search across subject/body/sender with an
-honest empty state. Two-tap DELETE (armed state, auto-disarms). Focus trap
-in the compose modal. Persistence now stores user-authored messages only
-and merges them back into seeded threads on load.
-
-## Score: 9.7/10
-
-| # | Dimension | Score | Note |
-|---|-----------|-------|------|
-| 1 | Contract honesty | 10 | DEMO chips per thread; user messages unlabeled; no fake delivery. |
-| 2 | Button law | 10 | Search searches, delete deletes, reply appends, folders filter — every control real. |
-| 3 | Color law | 10 | Inbox blue / unread green / sent purple, stable per folder; contact colors on avatars. |
-| 4 | Icon craft / living depth | 10 | Sculpted folders, jewel buttons, gradient-sphere avatars, glowing icons, message-chain cards. |
-| 5 | Readability | 10 | Conversation view, counts, time-ago, search, honest empty states. |
-| 6 | Accessibility | 9 | Keyboard threads, focus traps, aria wired. Card entrance animation has no reduced-motion guard yet. |
-| 7 | Functional completeness | 9 | Conversations, search, delete, reply-appends. No attachments (v1 scope). |
-
-## Why not 10
-
-- **-0.2 — no production mail store** (shell scope; seeded DEMO honestly labeled until then).
-- **-0.1 — his final visual sign-off.**
+Mail to a space is now a post in that space — same object, two views
+(`naya.smartspaces.posts`, tested). Thread → Smart List is specified as
+a contract (`ORGANISM-LOOPS.md`), not built: no competing note store,
+no writer nobody reads.
 
 ## Verification
 
-node syntax OK (adapter + room + registry), CSS brace balance OK, 42-check
-stub-DOM suite green (adapter grouping, folders/icons/colors, search
-hit/miss/clear, message chain, reply-appends, user-only persistence,
-two-tap delete, compose focus trap, spine add + handoff, depth CSS).
+node syntax OK, CSS brace balance OK, 55-check stub-DOM suite green
+(threading, search, delete + tombstones, traps, spine, badge placement,
+space-post loop, obsidian + ball + congruency + reduced-motion CSS).
 
 ## Files
 

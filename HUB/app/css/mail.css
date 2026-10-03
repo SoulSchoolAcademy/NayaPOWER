@@ -41,14 +41,14 @@
   display:flex; align-items:center; gap:12px;
   padding:12px 14px; border-radius:14px; font-size:11px; font-weight:800; letter-spacing:.14em;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  background:linear-gradient(180deg, #1b1b21, #0b0b0e);
   border:1px solid rgba(232,234,242,.22);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 6px 18px rgba(0,0,0,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55), 0 0 14px -8px var(--fc);
   transition:border-color .22s, box-shadow .25s, transform .15s, background .25s;
 }
 .mail-stage .ml-folder .ml-ficon{
-  width:22px; height:22px; flex:none; color:var(--fc);
-  filter:drop-shadow(0 0 6px var(--fc)) drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  width:22px; height:22px; flex:none; color:var(--fcl);
+  filter:drop-shadow(0 0 6px var(--fc)) drop-shadow(0 2px 3px rgba(0,0,0,.6));
   transition:filter .25s, transform .2s;
 }
 .mail-stage .ml-folder .ml-ficon svg{ width:100%; height:100%; display:block; }
@@ -62,9 +62,9 @@
 }
 .mail-stage .ml-folder.on{
   border-color:var(--fc); color:var(--fcl);
-  text-shadow:0 0 10px var(--fc);
-  background:linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.03));
-  box-shadow:0 10px 30px -8px var(--fc), inset 0 1px 0 rgba(255,255,255,.2);
+  text-shadow:0 0 12px var(--fc);
+  background:linear-gradient(180deg, #232329, #0e0e12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 12px 32px rgba(0,0,0,.6), 0 0 30px -6px var(--fc);
   transform:translateY(-1px);
 }
 .mail-stage .ml-folder.on .ml-ficon{
@@ -122,21 +122,22 @@
   background:linear-gradient(180deg, rgba(59,130,246,.1), rgba(59,130,246,.04));
   box-shadow:inset 0 1px rgba(255,255,255,.1), 0 10px 28px rgba(0,0,0,.45), 0 0 26px -6px var(--ml-blue);
 }
-/* avatars — living depth: gradient sphere, top-light catch, deep contact glow */
+/* avatars — true balls: radial sphere, specular highlight top-left,
+   deep contact-color aura. */
 .mail-stage .ml-avatar{
   flex:none; width:40px; height:40px; border-radius:50%;
   display:inline-flex; align-items:center; justify-content:center;
   font-size:15px; font-weight:900; color:#060a14;
   background:var(--pc,#8b93a3);
-  background:linear-gradient(135deg,
-    color-mix(in srgb, var(--pc,#8b93a3) 45%, #ffffff),
-    var(--pc,#8b93a3) 55%,
-    color-mix(in srgb, var(--pc,#8b93a3) 55%, #000000));
-  box-shadow:0 5px 16px -3px color-mix(in srgb, var(--pc,#8b93a3) 65%, transparent),
-             inset 0 2px 3px rgba(255,255,255,.45),
-             inset 0 -4px 7px rgba(0,0,0,.35),
-             inset 0 0 0 2px rgba(255,255,255,.22);
-  text-shadow:0 1px 0 rgba(255,255,255,.35);
+  background:radial-gradient(circle at 32% 28%,
+    rgba(255,255,255,.95) 0%,
+    color-mix(in srgb, var(--pc,#8b93a3) 35%, #ffffff) 24%,
+    var(--pc,#8b93a3) 58%,
+    color-mix(in srgb, var(--pc,#8b93a3) 48%, #000000) 100%);
+  box-shadow:0 6px 18px -4px color-mix(in srgb, var(--pc,#8b93a3) 70%, transparent),
+             inset 0 -6px 12px rgba(0,0,0,.35),
+             inset 0 3px 6px rgba(255,255,255,.3);
+  text-shadow:0 1px 0 rgba(255,255,255,.4);
 }
 .mail-stage .ml-avatar.sm{ width:34px; height:34px; font-size:13px; }
 .mail-stage .ml-thread-mid{ flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
@@ -203,35 +204,35 @@
 .mail-stage .ml-read-to{ font-size:12px; color:var(--ml-dim); }
 .mail-stage .ml-read-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
 
-/* buttons — jewels: silver gradient, top-light catch, deep shadow */
+/* buttons — obsidian black (Shawn, 2026-10-02): black with depth —
+   top-light edge and deep shadow — never grey. Color ignites on hover. */
 .mail-stage .ml-btn, .mail-stage .ml-compose{
   padding:10px 24px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.14em;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04));
-  border:1px solid rgba(232,234,242,.4);
+  background:linear-gradient(180deg, #1c1c22, #0a0a0d);
+  border:1px solid rgba(232,234,242,.35);
   -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
-  text-shadow:0 0 10px rgba(255,255,255,.3);
-  box-shadow:0 6px 20px rgba(0,0,0,.45), 0 0 16px -6px rgba(255,255,255,.4), inset 0 1px 0 rgba(255,255,255,.28);
+  text-shadow:0 1px 2px rgba(0,0,0,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55);
   transition:border-color .22s, box-shadow .25s, transform .15s, color .22s;
 }
 .mail-stage .ml-btn:hover, .mail-stage .ml-btn:focus-visible,
 .mail-stage .ml-compose:hover, .mail-stage .ml-compose:focus-visible{
   border-color:var(--ml-blue); color:var(--ml-blue-lt); transform:translateY(-2px); outline:none;
   text-shadow:0 0 12px rgba(59,130,246,.7);
-  box-shadow:0 10px 28px rgba(0,0,0,.5), 0 0 26px -6px var(--ml-blue), inset 0 1px 0 rgba(255,255,255,.2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 10px 28px rgba(0,0,0,.6), 0 0 26px -6px var(--ml-blue);
 }
 .mail-stage .ml-btn:disabled{ opacity:.55; cursor:default; transform:none; }
-.mail-stage .ml-btn.primary{ border-color:var(--ml-blue); }
+.mail-stage .ml-btn.primary{ border-color:rgba(147,197,253,.55); }
 .mail-stage .ml-btn.danger[data-arm="1"]{
   border-color:#f87171; color:#fca5a5;
   text-shadow:0 0 12px rgba(248,113,113,.7);
-  box-shadow:0 6px 20px rgba(0,0,0,.45), 0 0 26px -6px #f87171, inset 0 1px 0 rgba(255,255,255,.2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16), 0 8px 22px rgba(0,0,0,.55), 0 0 26px -6px #f87171;
 }
 .mail-stage .ml-compose{
   position:fixed; bottom:28px; right:28px; z-index:40; padding:14px 30px;
-  background:linear-gradient(180deg, rgba(96,165,250,.4), rgba(59,130,246,.2));
-  border-color:rgba(147,197,253,.6);
-  box-shadow:0 10px 30px rgba(0,0,0,.5), 0 0 34px -6px var(--ml-blue), inset 0 1px 0 rgba(255,255,255,.35);
+  border-color:rgba(147,197,253,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 10px 30px rgba(0,0,0,.6), 0 0 30px -8px var(--ml-blue);
 }
 
 /* compose modal */
@@ -270,4 +271,9 @@
   .mail-stage .ml-list{ max-height:320px; }
   .mail-stage .ml-read{ max-height:none; padding:24px 20px; }
   .mail-stage .ml-compose{ bottom:18px; right:18px; }
+}
+
+/* reduced motion: the room goes still — no transitions, no animation */
+@media (prefers-reduced-motion: reduce){
+  .mail-stage *{ animation:none !important; transition:none !important; }
 }

@@ -21,6 +21,8 @@
 
   var BLUE = '#3b82f6';
   var SENT_KEY = 'naya.smartmail.sent';
+  var DEL_KEY  = 'naya.smartmail.deleted'; /* tombstoned threadIds — a deleted
+     seeded thread stays deleted across reloads instead of resurrecting */
 
   function timeAgo(ts){
     var s = Math.max(0, Math.floor((Date.now()-ts)/1000));
@@ -86,6 +88,12 @@
       }
     });
     threads.sort(function(a,b){ return b.ts - a.ts; });
+    /* the dead stay dead: tombstoned threads never resurrect on reload */
+    (function(){
+      var gone = {};
+      loadDeleted().forEach(function(id){ gone[id]=1; });
+      threads = threads.filter(function(t){ return !gone[t.id]; });
+    })();
 
     var state = { folder:'inbox', selectedId:null, q:'' };
 
@@ -144,16 +152,18 @@
     function unreadCount(){ return inboxThreads().filter(function(t){ return t.unread; }).length; }
 
     /* folder identity: each folder owns a stable color + icon (Shawn, 2026-10-02).
-       inbox stays blue, unread is green, sent is purple when lit. */
-    var F_INBOX  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>';
-    var F_UNREAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/><circle cx="18.5" cy="5.5" r="2.6" fill="currentColor" stroke="#0b0e16" stroke-width="1.4"/></svg>';
-    var F_SENT   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>';
+       inbox stays blue, unread is green, sent is purple when lit.
+       The unread count lives on UNREAD (green on green) — never a green
+       badge inside the blue box. */
+    var F_INBOX  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>';
+    var F_UNREAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/><circle cx="18.5" cy="5.5" r="2.8" fill="currentColor" stroke="#0b0b0e" stroke-width="1.6"/></svg>';
+    var F_SENT   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>';
 
     function renderRail(){
       rail.innerHTML='';
       var defs = [
-        ['inbox','INBOX', unreadCount(), '#3b82f6', '#93c5fd', F_INBOX],
-        ['unread','UNREAD', null,        '#34d399', '#a7f3d0', F_UNREAD],
+        ['inbox','INBOX', null,          '#3b82f6', '#93c5fd', F_INBOX],
+        ['unread','UNREAD', unreadCount(), '#34d399', '#a7f3d0', F_UNREAD],
         ['sent','SENT',   null,          '#a855f7', '#d8b4fe', F_SENT]
       ];
       defs.forEach(function(d){
@@ -366,6 +376,7 @@
       for(var i=0;i<threads.length;i++){
         if(threads[i].id===id){ threads.splice(i,1); break; }
       }
+      tombstone(id);
       try{
         var arr = loadSent().filter(function(r){ return r.id!==id; });
         localStorage.setItem(SENT_KEY, JSON.stringify(arr));
@@ -452,6 +463,23 @@
           state.folder = nt.messages[0].from===me ? 'sent' : 'inbox';
           state.selectedId=nt.id;
         }
+        /* the organism loop (Shawn, 2026-10-02): a mail addressed to a space
+           IS a post in that space — same object, two views. Spaces reads
+           naya.smartspaces.posts, so the post lands in the space feed with
+           no changes needed on the spaces side. */
+        if(msg.toKind==='space' && msg.to){
+          try{
+            var SP_KEY='naya.smartspaces.posts';
+            var sraw=localStorage.getItem(SP_KEY);
+            var sall=sraw?JSON.parse(sraw):{};
+            if(!sall || typeof sall!=='object') sall={};
+            var slist=Array.isArray(sall[msg.to])?sall[msg.to]:[];
+            slist.push({ts:new Date(msg.ts).toISOString(), text:msg.body,
+                        author:partyName(me,'person')});
+            sall[msg.to]=slist.slice(-100);
+            localStorage.setItem(SP_KEY, JSON.stringify(sall));
+          }catch(e){ /* space feed unavailable — the mail itself still sent */ }
+        }
         closeCompose();
         renderRail(); renderList(); renderRead();
       });
@@ -486,6 +514,19 @@
     });
 
     /* ---------- persistence: user-authored messages only ---------- */
+    function loadDeleted(){
+      try{
+        var raw = localStorage.getItem(DEL_KEY);
+        var arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr.filter(function(x){ return typeof x==='string'; }) : [];
+      }catch(e){ return []; }
+    }
+    function tombstone(id){
+      try{
+        var arr = loadDeleted();
+        if(arr.indexOf(id)<0){ arr.push(id); localStorage.setItem(DEL_KEY, JSON.stringify(arr.slice(0,200))); }
+      }catch(e){}
+    }
     function loadSent(){
       try{
         var raw = localStorage.getItem(SENT_KEY);

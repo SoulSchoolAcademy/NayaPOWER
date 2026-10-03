@@ -83,15 +83,17 @@
   display:inline-flex; align-items:center; justify-content:center;
   width:64px; height:64px; border-radius:50%; margin-bottom:14px;
   font-size:20px; font-weight:900; color:#0b0b0c;
-  background:linear-gradient(135deg,
-    color-mix(in srgb, var(--cc) 65%, #ffffff),
-    var(--cc) 55%,
-    color-mix(in srgb, var(--cc) 50%, #000000));
+  background:var(--cc);
+  background:radial-gradient(circle at 32% 28%,
+    rgba(255,255,255,.95) 0%,
+    color-mix(in srgb, var(--cc) 35%, #ffffff) 24%,
+    var(--cc) 58%,
+    color-mix(in srgb, var(--cc) 48%, #000000) 100%);
   border:2px solid color-mix(in srgb, var(--cc) 60%, #ffffff);
   text-shadow:0 1px 0 rgba(255,255,255,.45);
   box-shadow:0 8px 22px -6px var(--cc),
-             inset 0 2px 4px rgba(255,255,255,.5),
-             inset 0 -4px 8px rgba(0,0,0,.4);
+             inset 0 -6px 12px rgba(0,0,0,.35),
+             inset 0 3px 6px rgba(255,255,255,.3);
 }
 .cx-stage .cx-ava.big{ width:76px; height:76px; font-size:24px; margin-bottom:0; }
 .cx-stage .cx-name{ font-size:19px; font-weight:800; margin:0 0 6px; color:#fff; }
@@ -197,4 +199,9 @@
   .cx-stage .cx-side{ position:static; flex-direction:row; flex-wrap:wrap; align-items:center; }
   .cx-stage .cx-side-label{ width:100%; }
   .cx-stage .cx-modal{ padding:26px 22px; }
+}
+
+/* reduced motion: the room goes still — no transitions, no animation */
+@media (prefers-reduced-motion: reduce){
+  .cx-stage *{ animation:none !important; transition:none !important; }
 }
