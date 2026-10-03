@@ -27,7 +27,7 @@ Color has three distinct jobs. Do not use one job's rule for another.
 - Human → magenta
 - Child → purple
 - Grandma → indigo
-- Naya → Kenya blue (the lighter blue)
+- Naya → cyan
 - Machine → forest emerald
 - Why it matters → lime green
 - How do you use it → yellow
@@ -38,7 +38,7 @@ Color has three distinct jobs. Do not use one job's rule for another.
 - Magenta (hot pink) `#ed42c4`
 - Purple `#8a5cff` (Naya's signature; also `#9d75ff`)
 - Indigo `#6675ff`
-- Kenya blue (lighter blue) `#3ca8ff`
+- Cyan `#3ca8ff`
 - Emerald `#35e39b`
 - Forest emerald (deep green) `#2e9e6a`
 - Lime `#b8ee57`
@@ -171,4 +171,4 @@ Shawn amends this contract verbally. The amending Naya updates this document and
 
 **Version history:**
 - v1.0 (2026-10-03): Initial ratification. Synthesized from Shawn's directives across the Hub 10/10 drive.
-- v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); Kenya blue named; forest emerald + lime + gold + indigo tokens added; active intelligence principle locked.
+- v1.1 (2026-10-03): Verbal amendment — three color jobs (accent jewels, endless flow, SmartNote board mapping); cyan named (dictation had rendered it as "Kenya" — fixed); forest emerald + lime + gold + indigo tokens added; active intelligence principle locked.
