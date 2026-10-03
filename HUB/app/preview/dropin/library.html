@@ -1,0 +1,748 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Intelligent Library — Shelved, not stored</title><style>body{margin:0;background:#060608;}/* INTELLIGENT LIBRARY — sapphire vault. Shelved, not stored.
+   Theme: sapphire #55b9ee (knowledge/depth). Obsidian foundation,
+   precise edge, controlled theme energy at meaningful points only.
+   Type floor: 16px body / 11px labels. */
+.lib-stage{
+  --lib-accent:#55b9ee;
+  min-height:100vh;
+  background:
+    radial-gradient(1100px 500px at 50% -120px, rgba(85,185,238,.10), transparent 60%),
+    #060608;
+  color:#f2f0f7;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding:0 0 96px;
+}
+.lib-hero{
+  max-width:880px;
+  margin:0 auto;
+  padding:72px 24px 40px;
+  text-align:center;
+}
+.lib-kicker{
+  font-size:11px; letter-spacing:.32em; font-weight:700;
+  color:var(--lib-accent);
+  margin:0 0 14px;
+}
+.lib-title{
+  font-size:clamp(38px,5vw,58px); font-weight:800; letter-spacing:-.02em;
+  margin:0 0 10px; color:#fff;
+}
+.lib-thesis{
+  font-size:17px; color:#b9b4c9; margin:0 0 30px; font-style:italic;
+}
+.lib-searchwrap{
+  display:flex; align-items:center; gap:10px;
+  background:#101014;
+  border:1px solid rgba(85,185,238,.35);
+  border-radius:999px;
+  padding:6px 6px 6px 22px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.4), 0 8px 32px rgba(85,185,238,.12);
+}
+.lib-searchwrap:focus-within{
+  border-color:var(--lib-accent);
+  box-shadow:0 0 0 3px rgba(85,185,238,.25), 0 8px 32px rgba(85,185,238,.18);
+}
+.lib-search{
+  flex:1; min-width:0;
+  background:transparent; border:0; outline:0;
+  color:#fff; font-size:16px; padding:12px 0;
+}
+.lib-search::placeholder{ color:#6d6880; }
+.lib-cap{
+  flex:none; font-size:11px; letter-spacing:.08em; color:#8f8aa3;
+  background:#17171d; border:1px solid rgba(255,255,255,.1);
+  padding:8px 14px; border-radius:999px; white-space:nowrap;
+}
+.lib-idhint{
+  min-height:20px; font-size:13px; color:var(--lib-accent); margin:12px 0 0;
+}
+/* areas strip */
+.lib-areas{ max-width:1120px; margin:0 auto 8px; padding:0 24px; }
+.lib-areas-label{
+  font-size:11px; letter-spacing:.22em; font-weight:700; color:#8f8aa3; margin:0 0 10px;
+}
+.lib-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.lib-chip{
+  padding:9px 18px; border-radius:999px; cursor:pointer;
+  background:#101014; color:#cfc9df; font-size:13px; font-weight:600;
+  border:1px solid rgba(255,255,255,.12);
+}
+.lib-chip:hover{ border-color:rgba(85,185,238,.5); color:#fff; }
+.lib-chip.on, .lib-chip[aria-pressed="true"]{
+  background:rgba(85,185,238,.14); border-color:var(--lib-accent); color:#fff;
+}
+.lib-chip:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(85,185,238,.3); }
+/* answer card */
+.lib-answerwrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+.lib-answer{
+  background:linear-gradient(160deg,rgba(85,185,238,.12),rgba(85,185,238,.03));
+  border:1px solid rgba(85,185,238,.45); border-radius:18px;
+  padding:24px 26px; margin:18px 0 8px;
+}
+.lib-answer-label{
+  font-size:11px; letter-spacing:.2em; font-weight:700; color:var(--lib-accent); margin:0 0 10px;
+}
+.lib-answer-title{ font-size:22px; font-weight:750; margin:0 0 10px; color:#fff; }
+.lib-answer-text{ font-size:16px; line-height:1.65; color:#e6e1f2; margin:0 0 14px; }
+.lib-answer-open{ max-width:280px; margin-top:14px; }
+.lib-shelves{ max-width:1120px; margin:0 auto; padding:0 24px; }
+.lib-shelf{ margin:0 0 44px; }
+.lib-shelf-head{
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+  padding-bottom:10px; margin-bottom:18px;
+}
+.lib-shelf-name{ font-size:20px; font-weight:700; margin:0; color:#fff; }
+.lib-shelf-count{
+  font-size:11px; letter-spacing:.22em; font-weight:700; color:var(--lib-accent);
+  margin:0; white-space:nowrap;
+}
+.lib-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:14px;
+}
+.lib-card{
+  background:linear-gradient(160deg,#101016,#0a0a0e);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:16px; padding:18px 18px 14px;
+  cursor:pointer; outline:none;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.lib-card:hover{ border-color:rgba(85,185,238,.5); transform:translateY(-2px); }
+.lib-card:focus-visible{
+  border-color:var(--lib-accent);
+  box-shadow:0 0 0 3px rgba(85,185,238,.3);
+}
+.lib-card-eyebrow{
+  font-size:11px; letter-spacing:.2em; font-weight:700; color:#8f8aa3; margin:0 0 8px;
+}
+.lib-card-title{ font-size:16px; font-weight:650; margin:0 0 8px; color:#fff; line-height:1.35; }
+.lib-card-ex{
+  font-size:14px; color:#b9b4c9; line-height:1.55; margin:0 0 12px;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.lib-card-meta{ display:flex; align-items:center; gap:10px; }
+.lib-id{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px; color:var(--lib-accent);
+  background:rgba(85,185,238,.1); padding:3px 8px; border-radius:6px;
+}
+.lib-pill{
+  font-size:11px; font-weight:700; letter-spacing:.12em;
+  color:var(--pill,#888); border:1px solid var(--pill,#888);
+  padding:3px 10px; border-radius:999px; opacity:.9;
+}
+.lib-demotag{
+  font-size:11px; font-weight:700; letter-spacing:.12em; color:#a855f7;
+  border:1px dashed #a855f7; padding:3px 10px; border-radius:999px;
+}
+/* states */
+.lib-state{ max-width:640px; margin:60px auto; text-align:center; padding:0 24px; }
+.lib-state-t{ font-size:20px; font-weight:700; color:#fff; margin:0 0 10px; }
+.lib-state-d{ font-size:15px; color:#b9b4c9; line-height:1.6; margin:0; }
+/* evidence drawer */
+.lib-scrim{
+  position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:60;
+}
+.lib-drawer{
+  position:fixed; top:0; right:0; bottom:0; width:min(480px,94vw); z-index:61;
+  background:#0c0c11; border-left:1px solid rgba(85,185,238,.3);
+  padding:28px 28px 40px; overflow-y:auto;
+  box-shadow:-24px 0 64px rgba(0,0,0,.6);
+}
+.lib-x{
+  position:absolute; top:16px; right:16px;
+  width:36px; height:36px; border-radius:50%;
+  background:#17171d; color:#fff; border:1px solid rgba(255,255,255,.14);
+  font-size:20px; line-height:1; cursor:pointer;
+}
+.lib-x:hover{ border-color:var(--lib-accent); }
+.lib-ev-eyebrow{ font-size:11px; letter-spacing:.2em; font-weight:700; color:#8f8aa3; margin:0 0 10px; }
+.lib-ev-title{ font-size:24px; font-weight:750; margin:0 0 12px; color:#fff; line-height:1.3; }
+.lib-ev-meta{ display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+.lib-ev-excerpt{ font-size:15px; color:#cfc9df; line-height:1.65; margin:0 0 22px; }
+.lib-ev-q{ border-top:1px solid rgba(255,255,255,.08); padding:14px 0; }
+.lib-ev-qq{ font-size:12px; letter-spacing:.14em; font-weight:700; color:var(--lib-accent); margin:0 0 6px; }
+.lib-ev-qa{ font-size:14px; color:#cfc9df; line-height:1.6; margin:0; }
+.lib-ev-hands{ display:flex; gap:10px; margin-top:22px; }
+.lib-hbtn{
+  flex:1; padding:13px; border-radius:12px; cursor:pointer;
+  background:#17171d; color:#fff; font-size:14px; font-weight:650;
+  border:1px solid rgba(85,185,238,.4);
+}
+.lib-hbtn:hover{ background:rgba(85,185,238,.14); border-color:var(--lib-accent); }
+.lib-toast{
+  position:fixed; bottom:28px; left:50%; transform:translateX(-50%); z-index:70;
+  background:#17171c; color:#fff; border:1px solid rgba(85,185,238,.6);
+  border-radius:999px; padding:12px 24px; font-size:13px; font-weight:600;
+  max-width:90vw; text-align:center;
+}
+@media (max-width:640px){
+  .lib-hero{ padding:48px 18px 30px; }
+  .lib-shelves{ padding:0 16px; }
+  .lib-cap{ display:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  .lib-card{ transition:none; }
+  .lib-card:hover{ transform:none; }
+}
+</style></head><body><a href="./" aria-label="Back to Hub rooms" style="position:fixed;top:20px;left:20px;z-index:10001;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-weight:300;line-height:1;color:#fff;text-decoration:none;background:linear-gradient(145deg,#2a2a3a,#12121a);border:1px solid rgba(157,117,255,0.5);box-shadow:0 4px 16px rgba(0,0,0,0.6),0 0 20px rgba(157,117,255,0.3);">‹</a><div id="app"></div><script>function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;return e;}window.NayaRooms=window.NayaRooms||{};window.LibraryAdapter=window.LibraryAdapter||{};
+  'use strict';
+
+  var KINDS = [
+    {id:'notes',      name:'Smart Notes'},
+    {id:'discoveries',name:'Discoveries'},
+    {id:'learning',   name:'Learning'},
+    {id:'decisions',  name:'Decisions'},
+    {id:'reports',    name:'Reports'},
+    {id:'activity',   name:'Activity'}
+  ];
+
+  /* Real canonical objects (Brain). demo:false = genuine reference. */
+  var REAL = [
+    {id:'SN-016', kind:'notes', area:'governance', stream:'BRAIN · SMART NOTES',
+     title:'Prime Judgment Rule — Judgment Before Blind Obedience',
+     excerpt:'Obedience without judgment is abdication. An instruction is an input to judgment, not proof the instructed action is right.',
+     truth:'RATIFIED', demo:false,
+     provenance:{source:'Shawn, 2026-09-30 — ratified as Prime Operating Law 1',
+                 evidence:'~/workspace/your_files/the-judgment-rule-2026-09-30.md',
+                 status:'RATIFIED — constitutional-adjacent law', supersededBy:null}},
+    {id:'SN-017', kind:'notes', area:'build', stream:'BRAIN · SMART NOTES',
+     title:'Asserted Is Not Verified',
+     excerpt:'A builder claiming "done" is not evidence. UNKNOWN, BLOCKED and IMPLEMENTED never count as VERIFIED or PASS.',
+     truth:'CANDIDATE', demo:false,
+     provenance:{source:'Naya 4 auto-capture, 2026-09-30 — draft PR #1229',
+                 evidence:'BRAIN/04-INTELLIGENCE/SMART-NOTES/2026/09/30/',
+                 status:'CANDIDATE — awaiting Shawn ratification', supersededBy:null}},
+    {id:'SN-217', kind:'notes', area:'build', stream:'BRAIN · SMART NOTES',
+     title:'Compare Semantic Identity, Not Raw Bytes',
+     excerpt:'Independently regenerated index artifacts may differ only by generated timestamps; verify with the tool\u2019s semantic normalizers, not raw blob equality.',
+     truth:'CANDIDATE', demo:false,
+     provenance:{source:'Night-shift distillation, 2026-10-02 — staged on naya4/smart-notes-2026-09-30 @ 0c395f1c',
+                 evidence:'Draft PR #1229', status:'CANDIDATE — awaiting Shawn ratification', supersededBy:null}},
+    {id:'IB-006', kind:'discoveries', area:'build', stream:'BRAIN · INTELLIGENT BLOCKS',
+     title:'Freeze-and-Extend Protocol',
+     excerpt:'The working answer to the AI app-interface build problem: freeze the proven foundation, extend behind the seam — never rebuild the foundation per attempt.',
+     truth:'CANDIDATE', demo:false,
+     provenance:{source:'North-Star deep dive, 2026-10-01 — Shawn: "this is the most valuable thing I could possibly do"',
+                 evidence:'BRAIN/04-INTELLIGENCE/INTELLIGENT-BLOCKS/', status:'CANDIDATE working answer', supersededBy:null}},
+    {id:'DEC-6TO10', kind:'decisions', area:'governance', stream:'TEAM NAYA · DIRECTIVES',
+     title:'The 6→10 Doctrine',
+     excerpt:'Before acting: will it wreck anything? Is it reversible? Risk vs reward? Clear 6→10 with no plausible path to 3 — act. Plausible 6→3 or uncertain — ask.',
+     truth:'DIRECTOR-STATED', demo:false,
+     provenance:{source:'Shawn, 2026-09-30 — director-stated decision procedure',
+                 evidence:'~/workspace/your_files/smart-note-6-to-10-doctrine-2026-09-30.md (IB-OP-001)',
+                 status:'Standing operating doctrine', supersededBy:null}}
+  ];
+
+  /* DEMO illustrations so every shelf has a shape to show. Plainly labeled. */
+  var DEMO = [
+    {id:'DEMO-LN-01', kind:'learning', stream:'DEMO · LEARNING',
+     title:'Board congruence: carry the full flow, not the summary color',
+     excerpt:'The unsupervised batch broke congruence once on Smart List — mostly-green boards where the full flow belonged. Drilled laws now travel with every build.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Demo illustration', evidence:'—', status:'Illustrative only', supersededBy:null}},
+    {id:'DEMO-RP-01', kind:'reports', stream:'DEMO · REPORTS',
+     title:'Nightly build verification — six rooms green',
+     excerpt:'Illustrative report shape: what was built, exact branch/commit/PR/test counts, candidate vs verified vs merged vs deployed.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Demo illustration', evidence:'—', status:'Illustrative only', supersededBy:null}},
+    {id:'DEMO-AC-01', kind:'activity', stream:'DEMO · ACTIVITY',
+     title:'Hub shell integration proof captured',
+     excerpt:'CDP-verified: rail renders 11 tabs; Spaces and Mail mount full-bleed through the shell adapter.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Demo illustration', evidence:'—', status:'Illustrative only', supersededBy:null}}
+  ];
+
+  function isStr(x){ return typeof x === 'string'; }
+
+  function parseOne(o){
+    if(!o || typeof o !== 'object') return null;
+    if(!isStr(o.id) || !isStr(o.title)) return null;
+    var kindOk = KINDS.some(function(k){ return k.id === o.kind; });
+    return {
+      id: o.id,
+      kind: kindOk ? o.kind : 'notes',
+      area: isStr(o.area) ? o.area : null,
+      stream: isStr(o.stream) ? o.stream : '',
+      title: o.title,
+      excerpt: isStr(o.excerpt) ? o.excerpt : '',
+      truth: isStr(o.truth) ? o.truth : 'CANDIDATE',
+      demo: !!o.demo,
+      provenance: o.provenance && typeof o.provenance === 'object' ? {
+        source: isStr(o.provenance.source) ? o.provenance.source : '—',
+        evidence: isStr(o.provenance.evidence) ? o.provenance.evidence : '—',
+        status: isStr(o.provenance.status) ? o.provenance.status : '—',
+        supersededBy: isStr(o.provenance.supersededBy) ? o.provenance.supersededBy : null
+      } : {source:'—', evidence:'—', status:'—', supersededBy:null}
+    };
+  }
+
+  function parseMany(raw){
+    var out = [];
+    (Array.isArray(raw) ? raw : []).forEach(function(o){
+      try{ var p = parseOne(o); if(p) out.push(p); }catch(e){/* skip */}
+    });
+    return out;
+  }
+
+  /* Exact canonical-ID resolution: the primary path. Returns the object or null. */
+  function resolveId(objects, query){
+    var q = String(query || '').trim().toUpperCase();
+    if(!q) return null;
+    for(var i = 0; i < objects.length; i++){
+      if(String(objects[i].id).toUpperCase() === q) return objects[i];
+    }
+    /* tolerant: allow "SN217" or "sn-217" prefix forms */
+    var compact = q.replace(/[^A-Z0-9]/g, '');
+    for(var j = 0; j < objects.length; j++){
+      if(String(objects[j].id).toUpperCase().replace(/[^A-Z0-9]/g, '') === compact) return objects[j];
+    }
+    return null;
+  }
+
+  var STOP = {what:1,how:1,why:1,when:1,where:1,who:1,which:1,whom:1,whose:1,
+    the:1,a:1,an:1,is:1,are:1,was:1,were:1,be:1,been:1,do:1,does:1,did:1,
+    can:1,could:1,should:1,would:1,will:1,of:1,to:1,in:1,on:1,for:1,with:1,
+    and:1,or:1,my:1,your:1,it:1,its:1,this:1,that:1,there:1,here:1,by:1,
+    from:1,about:1,into:1,over:1,me:1,i:1,all:1,any:1};
+
+  function terms(query){
+    return String(query || '').toLowerCase().replace(/[^a-z0-9\s-]/g, ' ')
+      .split(/[\s-]+/).filter(function(t){ return t.length > 1 && !STOP[t]; });
+  }
+
+  function isQuestion(query){
+    var q = String(query || '').trim().toLowerCase();
+    if(/\?$/.test(q)) return true;
+    return /^(who|what|where|when|why|how|which|can|does|do|is|are|should|tell me)\b/.test(q);
+  }
+
+  /* Relevance-ranked search for the Q&A job: ID match first, then title,
+     excerpt, stream/area term overlap. Returns [{obj, score}] sorted desc. */
+  function rank(objects, query){
+    var ts = terms(query);
+    var out = [];
+    objects.forEach(function(o){
+      var score = 0;
+      var idU = String(o.id).toUpperCase();
+      var qU = String(query || '').trim().toUpperCase();
+      if(qU && idU === qU) score += 100;
+      else if(qU && idU.indexOf(qU) !== -1 && qU.length > 2) score += 50;
+      var title = o.title.toLowerCase(), ex = o.excerpt.toLowerCase();
+      var hay = (o.stream + ' ' + (o.area || '')).toLowerCase();
+      ts.forEach(function(t){
+        if(title.indexOf(t) !== -1) score += 10;
+        else if(ex.indexOf(t) !== -1) score += 5;
+        if(hay.indexOf(t) !== -1) score += 3;
+      });
+      if(score > 0) out.push({obj:o, score:score});
+    });
+    out.sort(function(a,b){ return b.score - a.score; });
+    return out;
+  }
+
+  function search(objects, query){
+    var q = String(query || '').trim().toLowerCase();
+    if(!q) return objects.slice();
+    return rank(objects, query).map(function(r){ return r.obj; });
+  }
+
+  /* Major areas of NayaPOWER — the browse strip. Every object carries one. */
+  var AREAS = [
+    {id:'nodes',      name:'Nine nodes'},
+    {id:'rooms',      name:'Hub rooms'},
+    {id:'nayanet',    name:'NayaNET'},
+    {id:'governance', name:'Governance'},
+    {id:'organism',   name:'One organism'},
+    {id:'build',      name:'Build practice'}
+  ];
+
+  /* Proposed Q&A corpus (DEMO-labeled seeds). The real corpus gets written
+     as Brain Smart Notes / Intelligent Blocks through the smart-note
+     pipeline (CANDIDATE, Shawn ratifies) — these seeds show the shape. */
+  var QA_SEEDS = [
+    {id:'QA-NODES-01', kind:'notes', area:'nodes', stream:'Q&A · NINE NODES',
+     title:'What are the nine nodes?',
+     excerpt:'SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE — the nine-node kernel is the living mind: identity, law, action, knowledge, proof, connection, verification, learning, and evolution, invoked in sequence with per-node receipts.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed — from the nine-node kernel spec (CANDIDATE)',
+                 evidence:'BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md',
+                 status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-ORGANISM-01', kind:'notes', area:'organism', stream:'Q&A · ONE ORGANISM',
+     title:'How do Smart Mail, Connections, Spaces and Lists fit together?',
+     excerpt:'They are parts of each other — one graph, four views. Connections is the people spine, Mail is the voice, Spaces are the gatherings, Lists are the memory. A mail to a space IS a post in that space: same object, two views.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed — from Shawn\u2019s 2026-10-02 organism ruling',
+                 evidence:'MEMORY.md — Hub room integration vision', status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-SPACES-01', kind:'notes', area:'rooms', stream:'Q&A · HUB ROOMS',
+     title:'What is a Smart Space?',
+     excerpt:'A social connection group organized around intelligence. Any two or more people gather around any subject, an Intelligent Block, a Smart Note, or a feed topic — instant chat, post to the group, mail the whole space, add people.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed — from Shawn\u2019s 2026-10-02 product definition',
+                 evidence:'Smart Spaces v4 room', status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-NAYANET-01', kind:'notes', area:'nayanet', stream:'Q&A · NAYANET',
+     title:'What is NayaNET?',
+     excerpt:'The governed intelligence network NayaPOWER connects to — one brain, many doors. The Hub is the human cockpit; NayaNET is the network it bridges into.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed', evidence:'HUB/NAYANET-SMART-APP-ROOMS-V1.json',
+                 status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-HUB-01', kind:'notes', area:'rooms', stream:'Q&A · HUB ROOMS',
+     title:'What is the Hub?',
+     excerpt:'The human cockpit for NayaPOWER — not the source of truth, the projection surface. Eleven rooms: Feed, Today, Reports, Library, Connect, Ledger, Connections, Lists, Mail, Spaces, Settings.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed', evidence:'HUB/NAYANET-SMART-APP-ROOM-SPEC-V1.md',
+                 status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-PRIVACY-01', kind:'notes', area:'governance', stream:'Q&A · GOVERNANCE',
+     title:'How is my privacy protected?',
+     excerpt:'Private by default. Shared by choice. Collective by consent. Public by decision. Capability never creates authority — the human director is the final authority on what leaves the vault.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed — from the activation constitution',
+                 evidence:'NAYA-ACTIVATION/CONSTITUTION/', status:'Proposed — needs a real Brain note', supersededBy:null}},
+    {id:'QA-BUILD-01', kind:'notes', area:'build', stream:'Q&A · BUILD PRACTICE',
+     title:'What does "asserted is not verified" mean in practice?',
+     excerpt:'A green-looking document, commit, or test is not proof of the larger claim. UNKNOWN, BLOCKED and IMPLEMENTED never count as VERIFIED or PASS — and VERIFIED is not PRODUCTION-PROVEN.',
+     truth:'DEMO', demo:true,
+     provenance:{source:'Proposed Q&A seed — see the real SN-017', evidence:'Draft PR #1229',
+                 status:'Proposed — the real note is SN-017', supersededBy:null}}
+  ];
+
+  function byArea(objects, areaId){
+    return objects.filter(function(o){ return o.area === areaId; });
+  }
+
+  window.LibraryAdapter = {
+    KINDS: KINDS,
+    AREAS: AREAS,
+    REAL: REAL,
+    DEMO: DEMO,
+    QA_SEEDS: QA_SEEDS,
+    parseOne: parseOne,
+    parseMany: parseMany,
+    resolveId: resolveId,
+    search: search,
+    rank: rank,
+    terms: terms,
+    isQuestion: isQuestion,
+    byArea: byArea
+  };
+
+  'use strict';
+
+  var LS_QUERY = 'naya.library.query';
+
+  var TRUTH_COLORS = {
+    'RATIFIED': '#a3e635',
+    'DIRECTOR-STATED': '#facc15',
+    'CANDIDATE': '#fb923c',
+    'DEMO': '#a855f7'
+  };
+
+  function LibraryRoom(el, ctx){
+    ctx = ctx || {};
+    var A = window.LibraryAdapter;
+    var objects = Array.isArray(ctx.objects) && ctx.objects.length
+      ? A.parseMany(ctx.objects)
+      : A.parseMany(A.REAL.concat(A.DEMO));
+    var verified = ctx.verified !== false;
+
+    var stage = el('div', 'lib-stage');
+
+    /* ---------- hero ---------- */
+    var hero = el('header', 'lib-hero');
+    hero.appendChild(el('p', 'lib-kicker', 'INTELLIGENT LIBRARY'));
+    hero.appendChild(el('h1', 'lib-title', 'Intelligent Library'));
+    hero.appendChild(el('p', 'lib-thesis', 'Shelved, not stored.'));
+    var searchWrap = el('div', 'lib-searchwrap');
+    var search = el('input', 'lib-search');
+    search.type = 'search';
+    search.setAttribute('aria-label', 'Search the library by canonical ID or text');
+    search.placeholder = 'Search by ID (SN-217) or words…';
+    var cap = el('span', 'lib-cap', '(retrieval, not capture)');
+    cap.title = 'The search box retrieves. Nothing is captured or filed here.';
+    searchWrap.appendChild(search);
+    searchWrap.appendChild(cap);
+    hero.appendChild(searchWrap);
+    var idHint = el('p', 'lib-idhint', '');
+    hero.appendChild(idHint);
+    stage.appendChild(hero);
+
+    /* ---------- browse the major areas ---------- */
+    var activeArea = null;
+    var areasEl = el('div', 'lib-areas');
+    areasEl.appendChild(el('p', 'lib-areas-label', 'Browse the major areas of NayaPOWER'));
+    var chipsEl = el('div', 'lib-chips');
+    A.AREAS.forEach(function(a){
+      var chip = el('button', 'lib-chip', a.name);
+      chip.type = 'button';
+      chip.setAttribute('aria-pressed', 'false');
+      chip.addEventListener('click', function(){
+        activeArea = (activeArea === a.id) ? null : a.id;
+        Array.prototype.forEach.call(chipsEl.children, function(c){
+          c.setAttribute('aria-pressed', c.textContent === a.name && activeArea ? 'true' : 'false');
+          c.classList.toggle('on', c.textContent === a.name && !!activeArea);
+        });
+        try{ localStorage.setItem(LS_QUERY, search.value); }catch(e){}
+        paint(search.value);
+      });
+      chipsEl.appendChild(chip);
+    });
+    areasEl.appendChild(chipsEl);
+    stage.appendChild(areasEl);
+
+    var answerEl = el('div', 'lib-answerwrap');
+    stage.appendChild(answerEl);
+
+    var shelvesEl = el('div', 'lib-shelves');
+    stage.appendChild(shelvesEl);
+
+    /* ---------- evidence drawer ---------- */
+    var scrim = el('div', 'lib-scrim');
+    scrim.hidden = true;
+    var drawer = el('aside', 'lib-drawer');
+    drawer.setAttribute('role', 'dialog');
+    drawer.setAttribute('aria-modal', 'true');
+    drawer.setAttribute('aria-label', 'Object evidence');
+    drawer.hidden = true;
+    stage.appendChild(scrim);
+    stage.appendChild(drawer);
+
+    var toast = el('div', 'lib-toast');
+    toast.hidden = true;
+    stage.appendChild(toast);
+    var toastH = null;
+    function say(msg){
+      toast.textContent = msg;
+      toast.hidden = false;
+      clearTimeout(toastH);
+      toastH = setTimeout(function(){ toast.hidden = true; }, 2600);
+    }
+
+    function pill(truth){
+      var p = el('span', 'lib-pill', truth);
+      p.style.setProperty('--pill', TRUTH_COLORS[truth] || '#888888');
+      return p;
+    }
+
+    function openEvidence(obj){
+      drawer.innerHTML = '';
+      drawer.hidden = false;
+      scrim.hidden = false;
+      var prevFocus = document.activeElement;
+
+      var close = el('button', 'lib-x', '×');
+      close.setAttribute('aria-label', 'Close evidence');
+      drawer.appendChild(close);
+
+      drawer.appendChild(el('p', 'lib-ev-eyebrow', obj.stream));
+      var t = el('h2', 'lib-ev-title', obj.title);
+      drawer.appendChild(t);
+      var meta = el('div', 'lib-ev-meta');
+      meta.appendChild(el('code', 'lib-id', obj.id));
+      meta.appendChild(pill(obj.truth));
+      if(obj.demo) meta.appendChild(el('span', 'lib-demotag', 'DEMO'));
+      drawer.appendChild(meta);
+      drawer.appendChild(el('p', 'lib-ev-excerpt', obj.excerpt));
+
+      var qs = [
+        ['What is it?', obj.title + ' — ' + obj.excerpt],
+        ['Where did it come from?', obj.provenance.source],
+        ['What supports it?', obj.provenance.evidence],
+        ['What is its standing?', obj.provenance.status +
+          (obj.provenance.supersededBy ? ' Superseded by ' + obj.provenance.supersededBy + '.' : '')]
+      ];
+      qs.forEach(function(q){
+        var block = el('div', 'lib-ev-q');
+        block.appendChild(el('p', 'lib-ev-qq', q[0]));
+        block.appendChild(el('p', 'lib-ev-qa', q[1]));
+        drawer.appendChild(block);
+      });
+
+      var hands = el('div', 'lib-ev-hands');
+      var bStream = el('button', 'lib-hbtn', 'View in stream');
+      var bToday = el('button', 'lib-hbtn', 'View in Today');
+      bStream.addEventListener('click', function(){
+        if(typeof ctx.onViewInStream === 'function') ctx.onViewInStream(obj.id);
+        else say('Hands ' + obj.id + ' to the Feed — same canonical ID, the stream position.');
+      });
+      bToday.addEventListener('click', function(){
+        if(typeof ctx.onViewInToday === 'function') ctx.onViewInToday(obj.id);
+        else say('Hands ' + obj.id + ' to Today — same canonical ID, the reel context.');
+      });
+      hands.appendChild(bStream);
+      hands.appendChild(bToday);
+      drawer.appendChild(hands);
+
+      function shut(){
+        drawer.hidden = true;
+        scrim.hidden = true;
+        document.removeEventListener('keydown', onKey, true);
+        if(prevFocus && prevFocus.focus) prevFocus.focus();
+      }
+      function onKey(e){
+        if(e.key === 'Escape'){ e.stopPropagation(); shut(); return; }
+        if(e.key === 'Tab'){
+          var f = drawer.querySelectorAll('button');
+          if(!f.length) return;
+          var first = f[0], last = f[f.length - 1];
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+      }
+      close.addEventListener('click', shut);
+      scrim.addEventListener('click', shut);
+      document.addEventListener('keydown', onKey, true);
+      close.focus();
+    }
+
+    function card(obj){
+      var c = el('article', 'lib-card' + (obj.demo ? ' is-demo' : ''));
+      c.tabIndex = 0;
+      c.setAttribute('role', 'button');
+      c.setAttribute('aria-label', obj.title + ', ' + obj.id + ', ' + obj.truth);
+      c.appendChild(el('p', 'lib-card-eyebrow', obj.stream));
+      c.appendChild(el('h3', 'lib-card-title', obj.title));
+      c.appendChild(el('p', 'lib-card-ex', obj.excerpt));
+      var meta = el('div', 'lib-card-meta');
+      meta.appendChild(el('code', 'lib-id', obj.id));
+      meta.appendChild(pill(obj.truth));
+      c.appendChild(meta);
+      function open(){ openEvidence(obj); }
+      c.addEventListener('click', open);
+      c.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
+      });
+      return c;
+    }
+
+    function answerCard(obj, score){
+      var a = el('div', 'lib-answer');
+      a.appendChild(el('p', 'lib-answer-label', 'Best match from the shelves — retrieved, not generated'));
+      a.appendChild(el('h2', 'lib-answer-title', obj.title));
+      a.appendChild(el('p', 'lib-answer-text', obj.excerpt));
+      var meta = el('div', 'lib-card-meta');
+      meta.appendChild(el('code', 'lib-id', obj.id));
+      meta.appendChild(pill(obj.truth));
+      a.appendChild(meta);
+      var open = el('button', 'lib-hbtn lib-answer-open', 'Open the evidence');
+      open.type = 'button';
+      open.addEventListener('click', function(){ openEvidence(obj); });
+      a.appendChild(open);
+      /* One organism: gather a Space around this intelligence. */
+      var gather = el('button', 'lib-hbtn lib-answer-gather', 'Gather a Space around this');
+      gather.type = 'button';
+      gather.addEventListener('click', function(){
+        try{
+          var fn = window.NayaRooms && (window.NayaRooms.spaces || window.NayaRooms.smartSpaces);
+          fn = fn && (fn.createAround || (window.NayaRooms.smartSpaces && window.NayaRooms.smartSpaces.createAround));
+          if(typeof fn === 'function'){
+            fn({kind: obj.kind === 'block' ? 'block' : 'note', id: obj.id, title: obj.title});
+            return;
+          }
+        }catch(e){}
+        /* Spaces room not loaded here (standalone preview): deep-link it. */
+        try{ window.open('spaces.html?around=' + encodeURIComponent(obj.id), '_blank'); }catch(e){}
+      });
+      a.appendChild(gather);
+      return a;
+    }
+
+    function paint(query){
+      shelvesEl.innerHTML = '';
+      answerEl.innerHTML = '';
+      idHint.textContent = '';
+
+      if(!verified){
+        var nv = el('div', 'lib-state');
+        nv.appendChild(el('p', 'lib-state-t', 'No governed runtime connected yet.'));
+        nv.appendChild(el('p', 'lib-state-d',
+          'The Library shelves references from the canonical runtime. Nothing is shown — and nothing is faked — until the runtime answers.'));
+        shelvesEl.appendChild(nv);
+        return;
+      }
+      if(!objects.length){
+        var em = el('div', 'lib-state');
+        em.appendChild(el('p', 'lib-state-t', 'The shelves are empty.'));
+        em.appendChild(el('p', 'lib-state-d', 'Shelving is automatic from canonical intelligence — nothing is filed by hand.'));
+        shelvesEl.appendChild(em);
+        return;
+      }
+
+      var q = String(query || '').trim();
+      var pool = activeArea ? A.byArea(objects, activeArea) : objects;
+      var idHit = q ? A.resolveId(pool, q) : null;
+      var ranked = q ? A.rank(pool, q) : pool.map(function(o){ return {obj:o, score:0}; });
+      var list = ranked.map(function(r){ return r.obj; });
+
+      if(idHit){
+        idHint.textContent = 'Canonical ID resolved: ' + idHit.id + ' — the primary path.';
+        list = [idHit].concat(list.filter(function(o){ return o.id !== idHit.id; }));
+      }
+
+      /* Q&A: a question with a strong hit gets the answer card. */
+      if(q && !idHit && A.isQuestion(q) && ranked.length && ranked[0].score >= 15){
+        answerEl.appendChild(answerCard(ranked[0].obj, ranked[0].score));
+      }
+
+      if(q && !list.length){
+        var nr = el('div', 'lib-state');
+        nr.appendChild(el('p', 'lib-state-t', 'No references match "' + q + '".'));
+        nr.appendChild(el('p', 'lib-state-d', 'The shelves stay honest — no results invented.'));
+        if(activeArea){
+          var clr = el('button', 'lib-hbtn', 'Clear the area filter');
+          clr.type = 'button';
+          clr.addEventListener('click', function(){
+            activeArea = null;
+            Array.prototype.forEach.call(chipsEl.children, function(c){
+              c.setAttribute('aria-pressed', 'false'); c.classList.remove('on');
+            });
+            paint(search.value);
+          });
+          nr.appendChild(clr);
+        }
+        shelvesEl.appendChild(nr);
+        return;
+      }
+
+      A.KINDS.forEach(function(kind){
+        var items = list.filter(function(o){ return o.kind === kind.id; });
+        if(!items.length) return;
+        var shelf = el('section', 'lib-shelf');
+        var head = el('div', 'lib-shelf-head');
+        head.appendChild(el('h2', 'lib-shelf-name', kind.name));
+        head.appendChild(el('p', 'lib-shelf-count', items.length + ' REFERENCES · 0 COPIES'));
+        shelf.appendChild(head);
+        var grid = el('div', 'lib-grid');
+        items.forEach(function(o){ grid.appendChild(card(o)); });
+        shelf.appendChild(grid);
+        shelvesEl.appendChild(shelf);
+      });
+    }
+
+    /* query persists across reload */
+    var saved = null;
+    try{ saved = localStorage.getItem(LS_QUERY); }catch(e){}
+    if(saved){ search.value = saved; }
+    var deb = null;
+    search.addEventListener('input', function(){
+      clearTimeout(deb);
+      deb = setTimeout(function(){
+        try{ localStorage.setItem(LS_QUERY, search.value); }catch(e){}
+        paint(search.value);
+      }, 160);
+    });
+    search.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        clearTimeout(deb);
+        try{ localStorage.setItem(LS_QUERY, search.value); }catch(e){}
+        paint(search.value);
+      }
+    });
+
+    paint(search.value || '');
+    return stage;
+  }
+
+  window.NayaRooms = window.NayaRooms || {};
+  window.NayaRooms.library = LibraryRoom;
+document.addEventListener('DOMContentLoaded',()=>{const objs=LibraryAdapter.parseMany(LibraryAdapter.REAL.concat(LibraryAdapter.DEMO,LibraryAdapter.QA_SEEDS));document.getElementById('app').appendChild(window.NayaRooms.library(el,{objects:objs,verified:true}));});</script></body></html>
