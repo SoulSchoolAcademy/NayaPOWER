@@ -24,7 +24,7 @@ SHELL_CSS = ['tokens', 'base', 'shell', 'components', 'states', 'views', 'rooms'
 SHELL_JS = ['runtime', 'runtime-live', 'components', 'router',
             'views/welcome', 'views/identity', 'views/hub']
 MY_CSS = ['spaces', 'mail', 'connections', 'list', 'ledger', 'connect',
-          'reports', 'settings']
+          'reports', 'settings', 'library']
 MY_JS = ['people-registry.js',
          'rooms/spaces-adapter.js', 'rooms/spaces.js',
          'rooms/mail-adapter.js', 'rooms/mail.js',
@@ -34,6 +34,7 @@ MY_JS = ['people-registry.js',
          'rooms/connect-adapter.js', 'rooms/connect.js',
          'rooms/reports-adapter.js', 'rooms/reports-loader.js', 'rooms/reports.js',
          'rooms/settings.js',
+         'rooms/library-adapter.js', 'rooms/library.js',
          'rooms/shell-adapter.js']
 
 

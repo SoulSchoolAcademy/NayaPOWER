@@ -108,10 +108,12 @@
                                  demo: S.demo}, 'Smart Ledger');
   R.connections = wrap('connections', {contacts: contacts}, 'Connections');
   R.settings    = wrap('settings', {userName: S.userName || 'Shawn Vibert'}, 'Settings');
+  R.library     = wrap('library', {objects: Array.isArray(S.objects) ? S.objects : null,
+                                   verified: S.verified !== false}, 'Intelligent Library');
 
   /* Introspection for the shell/debugger: which slots this adapter serves. */
   R.__shellAdapter = {
-    slots: ['spaces','mail','lists','reports','connect','ledger','connections','settings'],
+    slots: ['spaces','mail','lists','reports','connect','ledger','connections','settings','library'],
     seeded: !!window.__NayaShellSeeds,
     at: new Date().toISOString()
   };
