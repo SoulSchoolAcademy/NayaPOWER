@@ -29,7 +29,8 @@
         });
         var activity = (r.activity || []).map(function(a){
           if(!a || typeof a !== 'object') return null;
-          return {ts:a.ts || '', text:String(a.text || ''), demo:!!a.demo};
+          return {ts:a.ts || '', text:String(a.text || ''), demo:!!a.demo,
+                  author:String(a.author || '')};
         }).filter(Boolean);
         /* newest first */
         activity.sort(function(a,b){ return String(b.ts).localeCompare(String(a.ts)); });

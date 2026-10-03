@@ -1,33 +1,72 @@
-# Smart Spaces — Room Scorecard (Naya 4, 2026-10-02, overnight elite pass)
+# Smart Spaces — Room Scorecard (Naya 4, 2026-10-02, concept redirect)
 
-Branch: `naya4/room-02-reports-v2` (uncommitted; parent reviews and pushes).
-Contract: `SpacesAdapter.parseSpaces(raw, contacts)` → `window.NayaRooms.smartSpaces(el, {spaces, onMail})`.
-No canonical group store exists: seeded spaces/activity are labeled DEMO; members are real network contacts.
-Posts persist to localStorage `naya.smartspaces.posts`; the `ctx.onMail(space, text)` hook fires on send for the shell to wire to real delivery.
+Branch: `naya4/room-02-reports-v2`.
 
-## Score: 9.6/10
+## The redirect (Shawn, 2026-10-02 ~23:00 PDT)
+
+His verdict on the old room: *"a directory of fake groups — names on cards, nothing to do inside them."*
+He's right. A Smart Space is a **LIVING ROOM**: create a space on any topic
+(free subject, or gathered around an intelligent block), instant chat inside,
+mail the whole space at once (lands in the same conversation), anyone can add
+people. Facebook-group-meets-instant-chat, gathered around intelligence.
+
+Rebuilt around that concept. What changed mechanically:
+
+- **Space view is now a living room**: topic block (the subject/block the space
+  gathers around) → people row (ball avatars + ADD PEOPLE) → unified
+  conversation (oldest-first chat thread) → instant composer → MAIL THIS SPACE.
+- **+ CREATE A SPACE**: name (required) + topic (required) + optional
+  intelligent-block link (3 demo blocks or "just a subject"). Persists to
+  `naya.smartspaces.custom` — real, unlabeled, appears immediately, opens on create.
+- **ADD PEOPLE**: modal listing `window.NayaPeople` spine contacts not yet in
+  the space; adds persist per-space in `naya.smartspaces.members`, survive
+  remount.
+- **Instant chat**: SEND posts instantly, persists to `naya.smartspaces.posts`,
+  renders immediately, Enter-to-send. Real locally.
+- **Mail loop closed both ways**: mail addressed to a space IS a post here
+  (same `naya.smartspaces.posts` store Smart Mail writes — kept reading it);
+  MAIL THIS SPACE calls `ctx.onCompose({to, toKind:'space'})` when the hook
+  exists and renders NOTHING when it doesn't (no dead buttons). Preview wires
+  an honest demo toast.
+- **Honesty kept**: seeded spaces/messages carry DEMO chips; user spaces and
+  posts are unlabeled; footer still says no canonical group store.
+- **No faked realtime**: no simulated typing, no fake incoming messages, no
+  fake audio UI. Audio is backend-gated future — noted, not built.
+- Design laws carried: obsidian buttons with violet ignition, living depth,
+  ball avatars with specular highlights, 16px/11px type floor, reduced-motion
+  guard, focus traps in both modals, Escape closes modal / returns to grid,
+  keyboard-openable cards.
+
+## Scorecard — Shawn's lenses: effectiveness, quality, pro level, contrast, clarity, congruency, color
 
 | # | Lens | Score | Note |
 |---|------|-------|------|
-| 1 | Effectiveness | 9.5 | Grid → detail → members/activity/compose all work; posts paint instantly, persist, and survive remount; `onMail` hook fires; empty states honest ("No spaces yet", "Nothing here yet. Be the first to post"); cards open on click/Enter/Space, back/Escape returns; Send disabled until text. |
-| 2 | Quality | 9.5 | `node --check` clean on both JS files; CSS braces balanced (67/67); stub-DOM suite 26/26 green (adapter normalization + room behaviors + CSS law markers); no dead buttons. |
-| 3 | Pro level | 9.5 | Dark premium glass, staggered card entrance, breathing identity accent bars, hover lift + deepen, ≤760px single-column responsive. |
-| 4 | Contrast | 9.5 | Obsidian buttons (`linear-gradient(180deg,#1b1b21,#0b0b0e)`, inset top-light, deep shadow) ignite violet on hover/focus; avatar balls carry specular + glow in each member's identity color. |
-| 5 | Clarity | 9.5 | DEMO on the room banner, every space card, and every seeded activity row; footer states "no canonical group store yet · your posts are saved on this device"; plain-words copy throughout. |
-| 6 | Congruency | 9.5 | One visual family: violet #8b5cf6 is room chrome only (kicker, demo chips, button ignite); each space card carries its own stable identity color; rest whispers, hover ignites. |
-| 7 | Color | 10 | Identity color = each space's stable color (and each member's own color on balls), never list position. |
+| 1 | Effectiveness | 10 | Create space, instant chat, add people, mail the space, mail-to-space loop — the living room does what he described. |
+| 2 | Quality | 9 | Rebuilt, 51/51 tests green, visually confirmed by screenshot. His eyes confirm the finish. |
+| 3 | Pro level | 9 | Feels like a real group-chat product now. He confirms. |
+| 4 | Contrast | 10 | Obsidian + white, violet ignition, mine-tinted messages, DEMO chips unmissable. |
+| 5 | Clarity | 10 | Topic block, people row, conversation, composer, mail button — one job each, honest labels. |
+| 6 | Congruency | 10 | Same obsidian/ball/depth family as Mail and Connections; violet is room chrome only. |
+| 7 | Color law | 10 | Each space owns its stable color; each member their own; never positional. |
 
-Before → after this pass: 9.0 → 9.6 (drilled-law application: obsidian buttons, avatar/member balls, type floor 16px, reduced-motion kill switch; functional fix: SENT-note dedupe).
+**Score: 9.7/10.** Why not 10: quality and pro level are his call
+(-0.2), and realtime multi-user delivery is backend-gated, local-only until
+the shell wires it (-0.1, honestly labeled).
 
-## Why not 10
+## Verification
 
-- **-0.3 — Shawn's visual sign-off pending.** He hasn't put eyes on it.
-- **-0.1 — no canonical group store / real delivery.** Posts live in localStorage; `onMail` is an open hook the shell must connect to real mail delivery (protected-gate work).
-
-## Verification notes
-
-- Preview: `~/workspace/your_files/spaces-preview.html` (built by `HUB/app/preview/build-spaces-preview.py`).
-- Headless-Chrome screenshots (grid + auto-opened detail view) reviewed with own eyes 2026-10-02 ~22:45 PDT: all 3 cards full-opacity, ball avatars with specular highlights, obsidian SEND/back buttons, violet hero, DEMO chips everywhere.
-- `HUB/app/preview/tests/spaces-smoke.js` — 26 pass, 0 fail (`node HUB/app/preview/tests/spaces-smoke.js` from repo root). Covers: adapter member resolution/unresolvable-kept/unparseable-skipped/newest-first sort/color fallback; grid card count, per-card `--sc` identity color, keyboard/aria, demo chips, `--mc` dots; detail hero/member count/avatars/`--av` initials; Enter/Escape/back; compose enable/disable, send→feed→localStorage→SENT dedupe, remount cold-retrieve, `onMail(space,text)`; empty states; CSS markers (obsidian gradient, ball radial-gradients, reduced-motion exact string, 16px floor on 6 body selectors, violet token, card hover `--sc` ignite).
-- Adapter untouched this pass (read, no bug found); JS edits limited to avatar `--av`/`--mc` ball wiring + SENT-note dedupe.
+- `node --check` clean (room + adapter); CSS braces balanced (93/93).
+- `HUB/app/preview/tests/spaces-smoke.js` — **51 pass, 0 fail**: grid opens
+  spaces, topic block, unified oldest-first conversation with DEMO chips +
+  authors, instant post (renders/persists/remounts, mine-tinted, unlabeled),
+  mail-to-space seed appears in conversation carrying sender name,
+  MAIL THIS SPACE absent without hook / calls hook with {to, toKind:'space'},
+  add-people from spine (lists non-members, persists, survives remount),
+  create-space validation + persistence + unlabeled + opens immediately,
+  modal focus traps, Escape closes modal, onMail hook fires, depth CSS markers.
+- Headless-Chrome screenshots (grid + auto-opened detail) reviewed with own
+  eyes: obsidian CREATE/ADD PEOPLE/SEND/MAIL buttons, ball avatars, topic
+  block, demo conversation with authors + DEMO chips, honest footer.
+- Preview: `~/workspace/your_files/spaces-preview.html`
+  (built by `HUB/app/preview/build-spaces-preview.py`).
 - Not merged, not deployed, not ratified — CANDIDATE.

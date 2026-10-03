@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build the Smart Spaces preview.
+"""Build the Smart Spaces preview — the LIVING ROOM.
 
 Bakes the shared CONTACTS/SPACES contract with clearly-labeled DEMO activity,
-then inlines css + adapter + room and renders into #app.
+seeds the shared people spine, and pre-seeds one DEMO mail-to-space post so the
+mail loop is demonstrable (DEMO-labeled, never presented as user content).
+Inlines css + people-registry + adapter + room and renders into #app.
 No canonical group store exists; seeded spaces/activity are DEMO, members real.
 """
 import json, os
@@ -28,36 +30,64 @@ SPACES = [
      'members': ['shawn', 'naya1', 'naya2', 'naya3', 'naya4'],
      'desc': 'The full build team \u2014 directors, lanes, and builders moving as one.',
      'activity': [
-         {'ts': ago(3),  'text': 'Naya 4 pushed Living Intel v3 \u2014 the heartbeat hit 10/10.', 'demo': True},
-         {'ts': ago(9),  'text': 'Shawn rated Connect 9.5 and locked the per-door color law.', 'demo': True},
-         {'ts': ago(30), 'text': 'Naya 2 verified the Room Two loader across all six daily reports.', 'demo': True},
+         {'ts': ago(30), 'author': 'Naya 2', 'text': 'Room Two loader verified across all six daily reports.', 'demo': True},
+         {'ts': ago(9),  'author': 'Shawn',  'text': 'Connect 9.5 \u2014 per-door color law locked.', 'demo': True},
+         {'ts': ago(3),  'author': 'Naya 4', 'text': 'Living Intel v3 pushed \u2014 the heartbeat hit 10/10.', 'demo': True},
      ]},
     {'id': 'hub-builders', 'name': 'Hub Builders', 'color': '#22d3ee',
      'members': ['shawn', 'naya3', 'naya4'],
      'desc': 'Rooms, interfaces, and convergence \u2014 where the Hub gets built.',
      'activity': [
-         {'ts': ago(5),  'text': 'Naya 4 shipped the Smart Ledger heartbeat dashboard.', 'demo': True},
-         {'ts': ago(26), 'text': 'Naya 3 signed off on the design-intelligence projection model.', 'demo': True},
+         {'ts': ago(26), 'author': 'Naya 3', 'text': 'Signed off on the design-intelligence projection model.', 'demo': True},
+         {'ts': ago(5),  'author': 'Naya 4', 'text': 'Shipped the Smart Ledger heartbeat dashboard.', 'demo': True},
      ]},
     {'id': 'design-review', 'name': 'Design Review', 'color': '#ec4899',
      'members': ['shawn', 'naya3'],
      'desc': 'Taste, design law, and visual QA. Nothing ships ugly.',
      'activity': [
-         {'ts': ago(7),  'text': 'Shawn: jewels stay lit, full-perimeter color \u2014 Connect approved.', 'demo': True},
-         {'ts': ago(20), 'text': 'Naya 3 filed the type floor: 16px body, 11px labels minimum.', 'demo': True},
-         {'ts': ago(44), 'text': 'Glass pass approved for ledger panels.', 'demo': True},
+         {'ts': ago(44), 'author': 'Naya 3', 'text': 'Glass pass approved for ledger panels.', 'demo': True},
+         {'ts': ago(20), 'author': 'Naya 3', 'text': 'Type floor filed: 16px body, 11px labels minimum.', 'demo': True},
+         {'ts': ago(7),  'author': 'Shawn',  'text': 'Jewels stay lit, full-perimeter color \u2014 Connect approved.', 'demo': True},
      ]},
 ]
 
+# One DEMO mail-to-space post: shows the loop (a mail addressed to the space
+# IS a post here). Demo-labeled in the room, never presented as user content.
+MAIL_SEED = {
+    'design-review': [
+        {'ts': ago(2), 'author': 'Naya 2',
+         'text': 'Mailed in from Smart Mail \u2014 same conversation, two views.', 'demo': True},
+    ],
+}
+
 def main():
     css = open(os.path.join(REPO, 'HUB/app/css/spaces.css'), encoding='utf-8').read()
+    reg = open(os.path.join(REPO, 'HUB/app/js/people-registry.js'), encoding='utf-8').read()
     ad = open(os.path.join(REPO, 'HUB/app/js/rooms/spaces-adapter.js'), encoding='utf-8').read()
     js = open(os.path.join(REPO, 'HUB/app/js/rooms/spaces.js'), encoding='utf-8').read()
 
-    harness = ("function el(tag,cls,text){const e=document.createElement(tag);"
-               "if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;"
-               "return e;}window.NayaRooms=window.NayaRooms||{};"
-               "window.SpacesAdapter=window.SpacesAdapter||{};")
+    harness = (
+        "function el(tag,cls,text){var e=document.createElement(tag);"
+        "if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;"
+        "return e;}window.NayaRooms=window.NayaRooms||{};"
+        "window.SpacesAdapter=window.SpacesAdapter||{};"
+    )
+    toast_js = (
+        "function __spToast(m){"
+        "var t=document.getElementById(\u0027sp-demo-toast\u0027);"
+        "if(!t){t=document.createElement(\u0027div\u0027);t.id=\u0027sp-demo-toast\u0027;"
+        "t.style.position=\u0027fixed\u0027;t.style.bottom=\u002728px\u0027;"
+        "t.style.left=\u002750%\u0027;t.style.transform=\u0027translateX(-50%)\u0027;"
+        "t.style.zIndex=\u002799\u0027;t.style.background=\u0027#17171c\u0027;"
+        "t.style.color=\u0027#fff\u0027;t.style.border=\u00271px solid rgba(139,92,246,.6)\u0027;"
+        "t.style.borderRadius=\u0027999px\u0027;t.style.padding=\u002712px 24px\u0027;"
+        "t.style.font=\u0027700 13px system-ui\u0027;"
+        "document.body.appendChild(t);}"
+        "t.textContent=m;t.style.display=\u0027block\u0027;"
+        "clearTimeout(t._h);"
+        "t._h=setTimeout(function(){t.style.display=\u0027none\u0027;},2600);}"
+    )
+    harness = harness + toast_js
 
     def inner(s):
         a = s.find('(function(){')
@@ -66,12 +96,16 @@ def main():
         return s[a + len('(function(){'):b]
 
     data = {'contacts': CONTACTS, 'spaces': SPACES}
-    full_js = (harness + inner(ad) + inner(js)
+    full_js = (harness + inner(reg) + inner(ad) + inner(js)
                + 'const PACKS=' + json.dumps(data, ensure_ascii=False) + ';'
+               + 'const MAILSEED=' + json.dumps(MAIL_SEED, ensure_ascii=False) + ';'
                + "document.addEventListener('DOMContentLoaded',()=>{"
+               + "window.NayaPeople.ensureSeeded(PACKS.contacts);"
+               + "try{localStorage.setItem('naya.smartspaces.posts',JSON.stringify(MAILSEED));}catch(e){}"
                + "const spaces=SpacesAdapter.parseSpaces(PACKS.spaces, PACKS.contacts);"
                + "document.getElementById('app').appendChild("
-               + "window.NayaRooms.smartSpaces(el,{spaces:spaces}));"
+               + "window.NayaRooms.smartSpaces(el,{spaces:spaces,contacts:PACKS.contacts,me:'naya4',"
+               + "onCompose:(req)=>{__spToast('In the Hub this opens Smart Mail addressed to '+req.to);}}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'

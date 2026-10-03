@@ -1,19 +1,40 @@
-/* SMART SPACES — Room: groups within NayaNET.
- * Registry theme: VIOLET #8b5cf6 (room chrome). Space cards carry each
- * space's OWN identity color (color = stable identity, never list position).
+/* SMART SPACES — Room: living rooms inside NayaNET.
+ *
+ * A Smart Space is a LIVING ROOM, not a directory card: create a space on any
+ * topic (free subject, or gathered around an intelligent block), instant chat
+ * inside it, mail the whole space at once (lands in the same conversation),
+ * anyone can add people. Facebook-group-meets-instant-chat, gathered around
+ * intelligence.
+ *
+ * Registry theme: VIOLET #8b5cf6 (room chrome). Each space carries its OWN
+ * identity color (stable identity, never list position).
  *
  * Contract: window.NayaRooms.smartSpaces(el, ctx)
- *   ctx.spaces  — from SpacesAdapter.parseSpaces (normalized)
- *   ctx.onMail  — optional fn(space, text) called when a message is posted
- * Law: no canonical group store exists; seeded spaces/activity are DEMO.
- * Members are real network contacts. Every button has a real consequence.
- * Posts persist to localStorage `naya.smartspaces.posts`.
+ *   ctx.spaces    — from SpacesAdapter.parseSpaces (normalized)
+ *   ctx.contacts  — optional contact list (fallback when window.NayaPeople is absent)
+ *   ctx.me        — my person id (author name resolution)
+ *   ctx.onMail    — optional fn(space, text) called when a message is posted
+ *   ctx.onCompose — optional fn({to, toKind:'space'}) — opens Smart Mail addressed to the space
+ *
+ * Stores (localStorage):
+ *   naya.smartspaces.posts   — {spaceId:[{ts: ISO string, text, author, demo?}]}
+ *                               SHARED with Smart Mail: a mail addressed to a space
+ *                               IS a post here. Same object, two views.
+ *   naya.smartspaces.members — {spaceId:[personId]} user-added members
+ *   naya.smartspaces.custom  — [user-created spaces] — real, unlabeled
+ *
+ * Law: seeded spaces/activity are DEMO-labeled; user content is unlabeled and
+ * never invented. No faked realtime: no simulated typing, no fake incoming
+ * messages. Text chat is real locally; audio is backend-gated future, not built.
  */
 (function(){
   'use strict';
 
   var ROOM = '#8b5cf6';
-  var STORE_KEY = 'naya.smartspaces.posts';
+  var STORE_KEY  = 'naya.smartspaces.posts';
+  var MEMBER_KEY = 'naya.smartspaces.members';
+  var CUSTOM_KEY = 'naya.smartspaces.custom';
+  var PALETTE = ['#8b5cf6','#22d3ee','#ec4899','#a3e635','#facc15','#38bdf8','#fb923c'];
 
   function fmtTime(ts){
     if(!ts) return '';
@@ -27,37 +48,142 @@
     if(h < 24) return h + 'h ago';
     return Math.floor(h/24) + 'd ago';
   }
+  function esc(s){ return String(s == null ? '' : s); }
 
-  function loadPosts(){
-    try {
-      var raw = localStorage.getItem(STORE_KEY);
-      var p = raw ? JSON.parse(raw) : {};
-      return (p && typeof p === 'object') ? p : {};
-    } catch(e){ return {}; }
+  function loadJSON(key, fallback){
+    try{
+      var raw = localStorage.getItem(key);
+      var v = raw ? JSON.parse(raw) : fallback;
+      return v === undefined ? fallback : v;
+    }catch(e){ return fallback; }
   }
-  function savePosts(posts){
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(posts)); } catch(e){}
+  function saveJSON(key, val){
+    try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){}
+  }
+  function loadPosts(){ var p = loadJSON(STORE_KEY, {}); return (p && typeof p === 'object') ? p : {}; }
+
+  function initials(name){
+    return String(name || '').split(/\s+/).map(function(w){ return w[0]; })
+      .join('').slice(0,2).toUpperCase();
+  }
+  function colorFor(id){
+    var h = 0, s = String(id || '');
+    for(var i=0;i<s.length;i++){ h = (h*31 + s.charCodeAt(i)) % 997; }
+    return PALETTE[h % PALETTE.length];
   }
 
   function SmartSpaces(el, ctx){
     ctx = ctx || {};
-    var spaces = Array.isArray(ctx.spaces) ? ctx.spaces : [];
+    var seeded = Array.isArray(ctx.spaces) ? ctx.spaces : [];
+    var ctxContacts = Array.isArray(ctx.contacts) ? ctx.contacts : [];
+    var me = ctx.me || null;
     var onMail = (typeof ctx.onMail === 'function') ? ctx.onMail : null;
+    var onCompose = (typeof ctx.onCompose === 'function') ? ctx.onCompose : null;
     var posts = loadPosts();
 
+    /* ---------- people: shared spine first, ctx.contacts as fallback ---------- */
+    function allPeople(){
+      var out = [], seen = {};
+      function push(p){
+        if(!p || !p.id || seen[p.id]) return;
+        seen[p.id] = 1;
+        out.push({id:p.id, name:p.name || p.id, role:p.role || '', color:p.color || '#888888'});
+      }
+      try{
+        if(window.NayaPeople && typeof window.NayaPeople.load === 'function'){
+          (window.NayaPeople.load() || []).forEach(push);
+        }
+      }catch(e){}
+      ctxContacts.forEach(push);
+      seeded.forEach(function(s){
+        (s.members || []).forEach(push);
+      });
+      return out;
+    }
+    function personById(id){
+      var found = null;
+      allPeople().forEach(function(p){ if(p.id === id) found = p; });
+      return found;
+    }
+    function myName(){
+      if(me){ var p = personById(me); if(p) return p.name; }
+      return 'You';
+    }
+
+    /* ---------- spaces: seeded + user-created ---------- */
+    function customSpaces(){ return loadJSON(CUSTOM_KEY, []); }
+    function effectiveSpaces(){
+      var out = seeded.slice();
+      customSpaces().forEach(function(c){
+        if(!c || !c.id) return;
+        out.push({
+          id: c.id, name: c.name || 'Untitled space',
+          color: c.color || colorFor(c.id),
+          desc: c.topic || '',
+          topic: c.topic || '', block: c.block || null,
+          memberIds: c.memberIds || [],
+          custom: true, demo: false
+        });
+      });
+      return out;
+    }
+    function spaceById(id){
+      var found = null;
+      effectiveSpaces().forEach(function(s){ if(s.id === id) found = s; });
+      return found;
+    }
+    function memberOverrides(){ return loadJSON(MEMBER_KEY, {}); }
+    function effectiveMembers(space){
+      var out = [], seen = {};
+      function push(p){
+        if(!p || !p.id || seen[p.id]) return;
+        seen[p.id] = 1;
+        out.push({id:p.id, name:p.name || p.id, role:p.role || '', color:p.color || '#888888'});
+      }
+      (space.members || []).forEach(push);                    /* seeded members */
+      (space.memberIds || []).forEach(function(id){ push(personById(id)); }); /* custom space members */
+      ((memberOverrides()[space.id]) || []).forEach(function(id){ push(personById(id)); }); /* added later */
+      return out;
+    }
+    function addMember(spaceId, personId){
+      var ov = memberOverrides();
+      var arr = Array.isArray(ov[spaceId]) ? ov[spaceId] : [];
+      if(arr.indexOf(personId) < 0) arr.push(personId);
+      ov[spaceId] = arr;
+      saveJSON(MEMBER_KEY, ov);
+    }
+
+    /* ---------- conversation: one unified thread, oldest first ----------
+       Space posts AND mailed-to-space messages live in the same store:
+       a mail addressed to a space IS a post here. */
+    function conversation(space){
+      var seededActs = (space.activity || []).map(function(a){
+        return {ts:a.ts || '', text:String(a.text || ''), author:a.author || '',
+                demo:true, mine:false};
+      });
+      var posted = (posts[space.id] || []).map(function(p){
+        return {ts:p.ts || '', text:String(p.text || ''), author:p.author || 'You',
+                demo:!!p.demo, mine:!p.demo};
+      });
+      var all = seededActs.concat(posted);
+      all.sort(function(a,b){ return String(a.ts).localeCompare(String(b.ts)); });
+      return all;
+    }
+
     var stage = el('div','sp-stage');
-    var state = { view:'grid', space:null };
+    var state = { view:'grid', spaceId:null };
+    var modalStack = [];
 
     /* header */
     var head = el('header','sp-head');
     head.appendChild(el('p','sp-kicker','SMART SPACES'));
-    var h1 = el('h1','sp-title',''); h1.textContent = 'Groups that move as one';
+    var h1 = el('h1','sp-title',''); h1.textContent = 'Rooms where people talk';
     head.appendChild(h1);
     var sub = el('p','sp-sub','');
-    sub.textContent = 'The teams inside NayaNET. Open a space to see its people, what is happening, and mail them all at once.';
+    sub.textContent = 'Create a space on any topic, gather around a block of intelligence, and talk — instant chat here, or mail the whole space at once. Anyone can add people.';
     head.appendChild(sub);
     var demo = el('p','sp-demo','');
-    demo.textContent = 'DEMO SPACES \u00B7 illustrative groups for design review \u00B7 members are real network contacts';
+    demo.textContent = 'DEMO SPACES \u00B7 illustrative groups for design review \u00B7 your spaces and posts are yours';
     head.appendChild(demo);
     stage.appendChild(head);
 
@@ -65,31 +191,67 @@
     stage.appendChild(body);
 
     var foot = el('footer','sp-foot','');
-    foot.textContent = 'no canonical group store yet \u00B7 your posts are saved on this device';
+    foot.textContent = 'no canonical group store yet \u00B7 your spaces and posts are saved on this device';
     stage.appendChild(foot);
-
-    function allActivity(space){
-      var seeded = space.activity || [];
-      var mine = (posts[space.id] || []).map(function(p){
-        return {ts:p.ts, text:p.text, demo:false, mine:true, author:p.author||'You'};
-      });
-      var all = seeded.concat(mine);
-      all.sort(function(a,b){ return String(b.ts).localeCompare(String(a.ts)); });
-      return all;
-    }
 
     function render(){
       body.innerHTML = '';
       if(state.view === 'grid') body.appendChild(gridView());
-      else body.appendChild(detailView(state.space));
+      else {
+        var s = spaceById(state.spaceId);
+        if(!s){ state.view = 'grid'; body.appendChild(gridView()); return; }
+        body.appendChild(detailView(s));
+      }
+    }
+    function openSpace(id){ state.view = 'detail'; state.spaceId = id; render(); }
+    function goGrid(){ state.view = 'grid'; state.spaceId = null; render(); }
+
+    /* ---------- focus trap ---------- */
+    function trapFocus(container){
+      container.addEventListener('keydown', function(ev){
+        if(ev.key !== 'Tab') return;
+        var all = container.querySelectorAll('button, input, textarea, select');
+        var vis = [];
+        for(var i=0;i<all.length;i++){ if(!all[i].disabled) vis.push(all[i]); }
+        if(!vis.length) return;
+        var first = vis[0], last = vis[vis.length-1];
+        if(ev.shiftKey && document.activeElement === first){ ev.preventDefault(); last.focus(); }
+        else if(!ev.shiftKey && document.activeElement === last){ ev.preventDefault(); first.focus(); }
+      });
+    }
+    function openModal(card){
+      var overlay = el('div','sp-overlay');
+      overlay.appendChild(card);
+      overlay.addEventListener('click', function(ev){ if(ev.target === overlay) closeModal(); });
+      stage.appendChild(overlay);
+      modalStack.push(overlay);
+      trapFocus(card);
+      var first = card.querySelector('input, textarea, select, button');
+      if(first) first.focus();
+      return overlay;
+    }
+    function closeModal(){
+      var ov = modalStack.pop();
+      if(ov && ov.parentNode) ov.parentNode.removeChild(ov);
     }
 
     /* ---------------- GRID ---------------- */
     function gridView(){
+      var wrap = el('div','sp-gridwrap');
+      var headrow = el('div','sp-gridhead');
+      var create = el('button','sp-create','+ CREATE A SPACE');
+      create.type = 'button';
+      create.addEventListener('click', createSpaceModal);
+      headrow.appendChild(create);
+      var hint = el('span','sp-gridhint','');
+      hint.textContent = 'a space for any topic \u00B7 any group of people';
+      headrow.appendChild(hint);
+      wrap.appendChild(headrow);
+
       var grid = el('div','sp-grid');
+      var spaces = effectiveSpaces();
       if(!spaces.length){
-        grid.appendChild(el('p','sp-empty','No spaces yet.'));
-        return grid;
+        grid.appendChild(el('p','sp-empty','No spaces yet. Create the first one.'));
       }
       spaces.forEach(function(s, i){
         var card = el('article','sp-card');
@@ -105,144 +267,286 @@
         top.appendChild(nm);
         if(s.demo) top.appendChild(el('span','sp-demo-chip','DEMO'));
         card.appendChild(top);
-        var dc = el('p','sp-card-desc',''); dc.textContent = s.desc;
-        card.appendChild(dc);
+        var topic = s.topic || s.desc;
+        if(topic){ var dc = el('p','sp-card-desc',''); dc.textContent = topic; card.appendChild(dc); }
         var row = el('div','sp-card-members');
-        s.members.slice(0,5).forEach(function(m){
+        effectiveMembers(s).slice(0,5).forEach(function(m){
           var dot = el('span','sp-mdot','');
           dot.style.setProperty('--mc', m.color || '#888888');
           dot.title = m.name;
           row.appendChild(dot);
         });
         var cnt = el('span','sp-card-count','');
-        cnt.textContent = s.members.length + ' members \u00B7 ' + allActivity(s).length + ' updates';
+        var n = effectiveMembers(s).length;
+        cnt.textContent = n + (n === 1 ? ' person' : ' people') + ' \u00B7 ' + conversation(s).length + ' messages';
         row.appendChild(cnt);
         card.appendChild(row);
-        var open = function(){ state.view = 'detail'; state.space = s; render(); };
+        var open = function(){ openSpace(s.id); };
         card.addEventListener('click', open);
         card.addEventListener('keydown', function(ev){
           if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); open(); }
         });
         grid.appendChild(card);
       });
-      return grid;
+      wrap.appendChild(grid);
+      return wrap;
     }
 
-    /* ---------------- DETAIL ---------------- */
+    /* ---------------- DETAIL (the living room) ---------------- */
     function detailView(s){
       var d = el('div','sp-detail');
       d.style.setProperty('--sc', s.color);
 
       var back = el('button','sp-back','\u2190 ALL SPACES');
       back.type = 'button';
-      var goBack = function(){ state.view = 'grid'; state.space = null; render(); };
-      back.addEventListener('click', goBack);
+      back.addEventListener('click', goGrid);
       d.appendChild(back);
 
+      /* hero */
       var hero = el('div','sp-dhero');
       var jewel = el('span','sp-djewel',''); jewel.textContent = '\u25C9';
       hero.appendChild(jewel);
       var ht = el('div','sp-dhead');
       var nm = el('h2','sp-dname',''); nm.textContent = s.name; ht.appendChild(nm);
-      var dc = el('p','sp-ddesc',''); dc.textContent = s.desc; ht.appendChild(dc);
       hero.appendChild(ht);
       if(s.demo) hero.appendChild(el('span','sp-demo-chip','DEMO'));
       d.appendChild(hero);
 
-      /* members */
-      d.appendChild(el('h3','sp-sec','MEMBERS \u00B7 ' + s.members.length));
-      var ml = el('div','sp-members');
-      s.members.forEach(function(m){
-        var chip = el('div','sp-member');
-        var av = el('span','sp-avatar','');
-        av.textContent = initials(m.name);
-        av.style.setProperty('--av', m.color || '#888888');
-        chip.appendChild(av);
-        var tx = el('div','sp-member-tx');
-        var mn = el('span','sp-member-n',''); mn.textContent = m.name; tx.appendChild(mn);
-        if(m.role){ var mr = el('span','sp-member-r',''); mr.textContent = m.role; tx.appendChild(mr); }
-        chip.appendChild(tx);
-        ml.appendChild(chip);
-      });
-      d.appendChild(ml);
+      /* topic block */
+      var topic = s.topic || s.desc;
+      var tb = el('div','sp-topic');
+      var tk = el('p','sp-topic-k','THE TOPIC');
+      tb.appendChild(tk);
+      var tt = el('p','sp-topic-t',''); tt.textContent = topic || 'An open conversation.';
+      tb.appendChild(tt);
+      if(s.block){
+        var bl = el('p','sp-topic-b','');
+        bl.textContent = 'Gathered around: ' + s.block;
+        tb.appendChild(bl);
+      }
+      d.appendChild(tb);
 
-      /* activity */
-      d.appendChild(el('h3','sp-sec','ACTIVITY'));
-      var feed = el('div','sp-feed');
-      function paintFeed(){
-        feed.innerHTML = '';
-        var acts = allActivity(s);
-        if(!acts.length) feed.appendChild(el('p','sp-empty','Nothing here yet. Be the first to post.'));
-        acts.forEach(function(a){
-          var row = el('div','sp-arow' + (a.mine ? ' mine' : ''));
-          var tx = el('p','sp-atext',''); tx.textContent = a.text; row.appendChild(tx);
-          var meta = el('div','sp-ameta');
-          var t = el('span','sp-atime',''); t.textContent = fmtTime(a.ts);
-          if(a.mine && a.author){ t.textContent = a.author + ' \u00B7 ' + t.textContent; }
-          meta.appendChild(t);
-          if(a.demo) meta.appendChild(el('span','sp-demo-chip sm','DEMO'));
-          row.appendChild(meta);
-          feed.appendChild(row);
+      /* members */
+      var mhead = el('div','sp-mhead');
+      mhead.appendChild(el('h3','sp-sec','PEOPLE'));
+      var addBtn = el('button','sp-addppl','+ ADD PEOPLE');
+      addBtn.type = 'button';
+      addBtn.addEventListener('click', function(){ addPeopleModal(s); });
+      mhead.appendChild(addBtn);
+      d.appendChild(mhead);
+      var mrow = el('div','sp-mrow');
+      function paintMembers(){
+        mrow.innerHTML = '';
+        var ms = effectiveMembers(s);
+        if(!ms.length) mrow.appendChild(el('p','sp-empty','No one here yet \u2014 add people.'));
+        ms.forEach(function(m){
+          var chip = el('div','sp-mchip');
+          chip.title = m.name + (m.role ? ' \u00B7 ' + m.role : '');
+          var av = el('span','sp-avatar sm','');
+          av.textContent = initials(m.name);
+          av.style.setProperty('--av', m.color || '#888888');
+          chip.appendChild(av);
+          var mn = el('span','sp-mname',''); mn.textContent = m.name;
+          chip.appendChild(mn);
+          mrow.appendChild(chip);
         });
       }
-      paintFeed();
+      paintMembers();
+      d.appendChild(mrow);
+
+      /* conversation */
+      d.appendChild(el('h3','sp-sec','CONVERSATION'));
+      var feed = el('div','sp-conv');
+      feed.setAttribute('aria-live','polite');
+      function paintConv(scroll){
+        feed.innerHTML = '';
+        var msgs = conversation(s);
+        if(!msgs.length) feed.appendChild(el('p','sp-empty','Nothing said yet. Start the conversation.'));
+        msgs.forEach(function(m){
+          var row = el('div','sp-msg' + (m.mine ? ' mine' : ''));
+          var meta = el('div','sp-msg-meta');
+          if(m.author){ var au = el('span','sp-msg-author',''); au.textContent = m.author; meta.appendChild(au); }
+          var t = el('span','sp-msg-time',''); t.textContent = fmtTime(m.ts); meta.appendChild(t);
+          if(m.demo) meta.appendChild(el('span','sp-demo-chip sm','DEMO'));
+          row.appendChild(meta);
+          var tx = el('p','sp-msg-text',''); tx.textContent = m.text; row.appendChild(tx);
+          feed.appendChild(row);
+        });
+        if(scroll) feed.scrollTop = feed.scrollHeight;
+      }
+      paintConv(false);
       d.appendChild(feed);
 
-      /* mail this space */
-      d.appendChild(el('h3','sp-sec','MAIL THIS SPACE'));
+      /* composer — instant chat, real locally */
       var box = el('div','sp-compose');
       var ta = el('textarea','sp-ta','');
-      ta.placeholder = 'Message everyone in ' + s.name + '\u2026';
+      ta.placeholder = 'Say something in ' + s.name + '\u2026';
       ta.setAttribute('aria-label','Message to ' + s.name);
-      ta.rows = 3;
+      ta.rows = 2;
       box.appendChild(ta);
       var sendRow = el('div','sp-sendrow');
       var hint = el('span','sp-sendhint','');
-      hint.textContent = 'Posts to the space feed \u00B7 saved on this device';
+      hint.textContent = 'Instant chat \u00B7 saved on this device';
       sendRow.appendChild(hint);
-      var send = el('button','sp-send','SEND TO SPACE');
+      var send = el('button','sp-send','SEND');
       send.type = 'button';
       send.disabled = true;
       ta.addEventListener('input', function(){ send.disabled = !ta.value.trim(); });
-      send.addEventListener('click', function(){
+      function doSend(){
         var text = ta.value.trim();
         if(!text) return;
-        var entry = {ts:new Date().toISOString(), text:text, author:'You'};
+        var entry = {ts:new Date().toISOString(), text:text, author:myName()};
         posts[s.id] = posts[s.id] || [];
         posts[s.id].push(entry);
-        savePosts(posts);
+        saveJSON(STORE_KEY, posts);
         ta.value = '';
         send.disabled = true;
-        paintFeed();
-        var prior = sendRow.querySelector('.sp-sent');
-        if(prior) prior.remove();
-        var note = el('span','sp-sent','SENT \u2713');
-        sendRow.appendChild(note);
-        setTimeout(function(){ note.remove(); }, 1800);
+        paintConv(true);
         if(onMail){ try { onMail(s, text); } catch(e){} }
+      }
+      send.addEventListener('click', doSend);
+      ta.addEventListener('keydown', function(ev){
+        if(ev.key === 'Enter' && !ev.shiftKey){ ev.preventDefault(); doSend(); }
       });
       sendRow.appendChild(send);
       box.appendChild(sendRow);
       d.appendChild(box);
 
+      /* mail this space — only when the hook exists; never a dead button */
+      if(onCompose){
+        var mailBtn = el('button','sp-mailspace','MAIL THIS SPACE');
+        mailBtn.type = 'button';
+        mailBtn.setAttribute('aria-label','Open Smart Mail addressed to ' + s.name);
+        mailBtn.addEventListener('click', function(){
+          try { onCompose({to:s.id, toKind:'space'}); } catch(e){}
+        });
+        d.appendChild(mailBtn);
+      }
+
+      /* refresh members row when the modal adds people */
       return d;
+    }
+
+    /* ---------------- CREATE SPACE ---------------- */
+    var DEMO_BLOCKS = [
+      'IB-004 \u2014 14 NayaPOWER blueprint images',
+      'IB-006 \u2014 freeze-and-extend protocol',
+      'IB-OP-001 \u2014 the 6-to-10 doctrine'
+    ];
+    function createSpaceModal(){
+      var card = el('div','sp-modal');
+      card.setAttribute('role','dialog');
+      card.setAttribute('aria-label','Create a space');
+      card.appendChild(el('h2','sp-modal-title','CREATE A SPACE'));
+
+      var nameF = field('Space name', 'text', 'e.g. Launch crew');
+      var topicF = field('Topic \u2014 what is this space about?', 'text', 'e.g. everything about the Hub launch');
+      card.appendChild(nameF.wrap); card.appendChild(topicF.wrap);
+
+      var bw = el('label','sp-field');
+      bw.appendChild(el('span','sp-flabel','Gather around an intelligent block (optional)'));
+      var sel = el('select','sp-input'); sel.name = 'block';
+      var opt0 = document.createElement('option'); opt0.value = ''; opt0.textContent = 'Just a subject \u2014 no block';
+      sel.appendChild(opt0);
+      DEMO_BLOCKS.forEach(function(b){
+        var o = document.createElement('option'); o.value = b; o.textContent = b + '  [DEMO]';
+        sel.appendChild(o);
+      });
+      bw.appendChild(sel);
+      card.appendChild(bw);
+
+      var row = el('div','sp-modal-row');
+      var cancel = el('button','sp-btn','CANCEL'); cancel.type = 'button';
+      var create = el('button','sp-btn primary','CREATE SPACE'); create.type = 'button';
+      create.disabled = true;
+      function valid(){ create.disabled = !(nameF.input.value.trim() && topicF.input.value.trim()); }
+      nameF.input.addEventListener('input', valid);
+      topicF.input.addEventListener('input', valid);
+      cancel.addEventListener('click', closeModal);
+      create.addEventListener('click', function(){
+        var name = nameF.input.value.trim(), topic = topicF.input.value.trim();
+        if(!name || !topic) return;
+        var id = 'sp-' + Date.now().toString(36);
+        var memberIds = [];
+        if(me && personById(me)) memberIds.push(me);
+        var list = customSpaces();
+        list.push({id:id, name:name, topic:topic, block:sel.value || null,
+                   color:colorFor(id), memberIds:memberIds});
+        saveJSON(CUSTOM_KEY, list);
+        closeModal();
+        openSpace(id);
+      });
+      row.appendChild(cancel); row.appendChild(create);
+      card.appendChild(row);
+      openModal(card);
+    }
+    function field(label, type, placeholder){
+      var wrap = el('label','sp-field');
+      wrap.appendChild(el('span','sp-flabel',label));
+      var input = el('input','sp-input','');
+      input.type = type; input.placeholder = placeholder;
+      wrap.appendChild(input);
+      return {wrap:wrap, input:input};
+    }
+
+    /* ---------------- ADD PEOPLE ---------------- */
+    function addPeopleModal(s){
+      var card = el('div','sp-modal');
+      card.setAttribute('role','dialog');
+      card.setAttribute('aria-label','Add people to ' + s.name);
+      card.appendChild(el('h2','sp-modal-title','ADD PEOPLE'));
+      var sub = el('p','sp-modal-sub','');
+      sub.textContent = 'Anyone in your network can join the conversation.';
+      card.appendChild(sub);
+      var list = el('div','sp-plist');
+      function paintList(){
+        list.innerHTML = '';
+        var have = {};
+        effectiveMembers(s).forEach(function(m){ have[m.id] = 1; });
+        var cands = allPeople().filter(function(p){ return !have[p.id]; });
+        if(!cands.length) list.appendChild(el('p','sp-empty','Everyone is already here.'));
+        cands.forEach(function(p){
+          var row = el('div','sp-prow');
+          var av = el('span','sp-avatar sm','');
+          av.textContent = initials(p.name);
+          av.style.setProperty('--av', p.color || '#888888');
+          row.appendChild(av);
+          var tx = el('div','sp-ptx');
+          var pn = el('span','sp-pname',''); pn.textContent = p.name; tx.appendChild(pn);
+          if(p.role){ var pr = el('span','sp-prole',''); pr.textContent = p.role; tx.appendChild(pr); }
+          row.appendChild(tx);
+          var add = el('button','sp-padd','ADD');
+          add.type = 'button';
+          add.addEventListener('click', function(){
+            addMember(s.id, p.id);
+            closeModal();  /* remove this overlay from the DOM + stack */
+            render();      /* refresh the detail members row */
+            addPeopleModal(s); /* reopen fresh */
+          });
+          row.appendChild(add);
+          list.appendChild(row);
+        });
+      }
+      paintList();
+      card.appendChild(list);
+      var row = el('div','sp-modal-row');
+      var done = el('button','sp-btn primary','DONE'); done.type = 'button';
+      done.addEventListener('click', closeModal);
+      row.appendChild(done);
+      card.appendChild(row);
+      openModal(card);
     }
 
     render();
 
-    /* Escape returns to grid from detail */
+    /* Escape: close modal first, else back to grid from detail */
     stage.addEventListener('keydown', function(ev){
-      if(ev.key === 'Escape' && state.view === 'detail'){
-        state.view = 'grid'; state.space = null; render();
-      }
+      if(ev.key !== 'Escape') return;
+      if(modalStack.length){ closeModal(); return; }
+      if(state.view === 'detail') goGrid();
     });
 
     return stage;
-  }
-
-  function initials(name){
-    return String(name || '').split(/\s+/).map(function(w){ return w[0]; })
-      .join('').slice(0,2).toUpperCase();
   }
 
   window.NayaRooms = window.NayaRooms || {};

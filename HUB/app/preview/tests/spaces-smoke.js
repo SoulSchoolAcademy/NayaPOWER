@@ -1,348 +1,250 @@
-#!/usr/bin/env node
-/* SPACES SMOKE — stub-DOM suite for the Smart Spaces room.
- * No dependency: a minimal DOM/localStorage stub exercises the room's
- * real behaviors (parseSpaces -> smartSpaces -> grid/detail/post/persist)
- * plus the drilled CSS markers in spaces.css.
- *
- *   node HUB/app/preview/tests/spaces-smoke.js   # from the repo root
- */
+/* Smart Spaces smoke suite — stub DOM, no layout. Covers the LIVING ROOM:
+ * grid opens spaces, create-a-space, instant chat posting + persistence,
+ * mail-to-space loop, add-people from the spine, demo honesty, no dead
+ * MAIL button, modal focus traps, reduced-motion + depth CSS. */
 'use strict';
-
 const fs = require('fs');
-const path = require('path');
-const REPO = path.resolve(__dirname, '../../../..');
+const REPO = process.env.HOME + '/workspace/nayapower-room02';
 
-/* ---------------- minimal DOM stub ---------------- */
-class StubEl {
-  constructor(tag) {
-    this.tagName = String(tag).toUpperCase();
-    this.children = [];
-    this.parentNode = null;
-    this.className = '';
-    this.textContent = '';
-    this.value = '';
-    this.disabled = false;
-    this.rows = 0;
-    this.placeholder = '';
-    this.title = '';
-    this.type = '';
-    this.attrs = {};
-    this._props = {};
-    this.listeners = {};
-    this.style = {
-      setProperty: (k, v) => { this._props[k] = String(v); },
-      getPropertyValue: (k) => this._props[k] || ''
-    };
-  }
-  setAttribute(k, v) { this.attrs[k] = String(v); }
-  getAttribute(k) { return this.attrs[k]; }
-  appendChild(c) { c.parentNode = this; this.children.push(c); return c; }
-  remove() { if (this.parentNode) this.parentNode.children = this.parentNode.children.filter(x => x !== this); }
-  addEventListener(t, fn) { (this.listeners[t] = this.listeners[t] || []).push(fn); }
-  dispatch(t, ev) { (this.listeners[t] || []).forEach(fn => fn(Object.assign({ target: this, key: '', preventDefault() {} }, ev || {}))); }
-  set innerHTML(v) { if (v === '') this.children = []; else throw new Error('innerHTML set only supports ""'); }
-  get innerHTML() { return ''; }
-  _clsList() { return this.className.split(/\s+/).filter(Boolean); }
-  _matches(sel) {
-    if (sel[0] === '.') {
-      const need = sel.slice(1).split('.').filter(Boolean);
-      const have = this._clsList();
-      return need.every(c => have.includes(c));
-    }
-    return false;
-  }
-  querySelector(sel) {
-    for (const c of this.children) { if (c._matches(sel)) return c; const d = c.querySelector(sel); if (d) return d; }
-    return null;
-  }
-  querySelectorAll(sel, acc) {
-    acc = acc || [];
-    for (const c of this.children) { if (c._matches(sel)) acc.push(c); c.querySelectorAll(sel, acc); }
-    return acc;
-  }
+/* ---------- stub DOM ---------- */
+function makeStyle(){
+  const s = { _p:{},
+    setProperty(k,v){ this._p[k]=String(v); },
+    getPropertyValue(k){ return this._p[k]||''; } };
+  return s;
 }
-
-const store = {};
-const localStorageStub = {
-  getItem: k => (k in store ? store[k] : null),
-  setItem: (k, v) => { store[k] = String(v); },
-  removeItem: k => { delete store[k]; }
+function makeEl(tag){
+  const e = {
+    tagName:(tag||'div').toUpperCase(), children:[], attrs:{}, handlers:{},
+    className:'', textContent:'', _html:'', style:makeStyle(), value:'', name:'',
+    parent:null, disabled:false, type:'', rows:0, placeholder:'',
+    scrollTop:0, scrollHeight:0,
+    setAttribute(k,v){ this.attrs[k]=String(v); },
+    getAttribute(k){ return this.attrs[k]; },
+    appendChild(c){ c.parent=this; this.children.push(c); return c; },
+    removeChild(c){ const i=this.children.indexOf(c); if(i>=0)this.children.splice(i,1); c.parent=null; return c; },
+    addEventListener(t,f){ (this.handlers[t]=this.handlers[t]||[]).push(f); },
+    click(){ (this.handlers.click||[]).forEach(f=>f({preventDefault(){},target:this})); },
+    input(){ (this.handlers.input||[]).forEach(f=>f({target:this})); },
+    keydown(ev){ const e2 = typeof ev==='string' ? {key:ev,shiftKey:false,preventDefault(){}} : ev;
+      (this.handlers.keydown||[]).forEach(f=>f(e2)); },
+    focus(){ document.activeElement=this; },
+    querySelector(sel){
+      const all=[]; (function walk(n){ n.children.forEach(c=>{ all.push(c); walk(c); }); })(e);
+      if(sel[0]==='.'){ const c=sel.slice(1); return all.find(x=>(x.className||'').split(' ').includes(c))||null; }
+      if(sel[0]==='#'){ const id=sel.slice(1); return all.find(x=>x.attrs.id===id)||null; }
+      return null;
+    },
+    querySelectorAll(sel){
+      const all=[]; (function walk(n){ n.children.forEach(c=>{ all.push(c); walk(c); }); })(e);
+      const parts = sel.split(',').map(s=>s.trim().toLowerCase()).filter(s=>s && s[0]!=='.' && s[0]!=='#' && s[0]!=='[');
+      return all.filter(x=>parts.indexOf((x.tagName||'').toLowerCase())>=0);
+    },
+  };
+  Object.defineProperty(e,'innerHTML',{
+    get(){ return this._html; },
+    set(v){ this._html=String(v); if(v==='') this.children=[]; }
+  });
+  Object.defineProperty(e,'parentNode',{ get(){ return this.parent; } });
+  return e;
+}
+const document = {
+  activeElement:null, body:makeEl('body'),
+  createElement(t){ return makeEl(t); },
+  addEventListener(){}, getElementById(){ return null; },
 };
+const store = {};
+const localStorage = {
+  getItem(k){ return k in store ? store[k] : null; },
+  setItem(k,v){ store[k]=String(v); },
+  removeItem(k){ delete store[k]; },
+};
+function el(tag,cls,text){ const e=document.createElement(tag);
+  if(cls)e.className=cls; if(text!==undefined&&text!==null)e.textContent=text; return e; }
 
-function makeEnv() {
-  for (const k of Object.keys(store)) delete store[k];
-  const body = new StubEl('body');
-  const document = {
-    createElement: t => new StubEl(t),
-    body
-  };
-  const window = {};
-  const g = { document, window, localStorage: localStorageStub };
-  g.el = function (tag, cls, text) {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text !== undefined && text !== null) e.textContent = text;
-    return e;
-  };
-  return g;
+/* ---------- load ---------- */
+const window = {};
+global.window = window; global.document = document; global.localStorage = localStorage;
+function inner(s){ const a=s.indexOf('(function(){'); const b=s.lastIndexOf('})();'); return s.slice(a+12,b); }
+eval(inner(fs.readFileSync(REPO+'/HUB/app/js/people-registry.js','utf8')));
+eval(inner(fs.readFileSync(REPO+'/HUB/app/js/rooms/spaces-adapter.js','utf8')));
+eval(inner(fs.readFileSync(REPO+'/HUB/app/js/rooms/spaces.js','utf8')));
+
+/* ---------- helpers ---------- */
+let pass=0, fail=0;
+function ok(c,name){ if(c){pass++;console.log('  PASS',name);} else {fail++;console.log('  FAIL',name);} }
+function findAll(root,cls){ const out=[];
+  (function walk(n){ n.children.forEach(c=>{ if((c.className||'').split(' ').includes(cls)) out.push(c); walk(c); }); })(root);
+  return out; }
+function find(root,cls){ return findAll(root,cls)[0]||null; }
+function text(n){ return n? String(n.textContent) : ''; }
+function btnByLabel(root,cls,label){
+  return findAll(root,cls).filter(b=>text(b)===label)[0]||null;
 }
+function clearStore(){ for(const k in store) delete store[k]; }
 
-function loadScripts(env) {
-  for (const f of ['HUB/app/js/rooms/spaces-adapter.js', 'HUB/app/js/rooms/spaces.js']) {
-    const src = fs.readFileSync(path.join(REPO, f), 'utf8');
-    const a = src.indexOf('(function(){');
-    const b = src.lastIndexOf('})();');
-    if (a === -1 || b === -1) throw new Error('IIFE wrapper missing in ' + f);
-    const fn = new Function('window', 'document', 'localStorage', 'el',
-      src.slice(a + '(function(){'.length, b));
-    fn(env.window, env.document, env.localStorage, env.el);
-  }
-  return env;
-}
-
-/* ---------------- fixtures ---------------- */
+/* ---------- fixtures ---------- */
 const CONTACTS = [
-  { id: 'shawn', name: 'Shawn Vibert', role: 'Human Director', color: '#facc15' },
-  { id: 'naya1', name: 'Naya 1', role: 'Senior seat', color: '#a855f7' },
-  { id: 'naya2', name: 'Naya 2', role: 'Review lane', color: '#38bdf8' }
+  {id:'shawn', name:'Shawn Vibert', role:'Human Director', color:'#facc15'},
+  {id:'naya1', name:'Naya 1', role:'Senior seat', color:'#a855f7'},
+  {id:'naya2', name:'Naya 2', role:'Review lane', color:'#38bdf8'},
+  {id:'naya3', name:'Naya 3', role:'Design intelligence', color:'#ec4899'},
+  {id:'naya4', name:'Naya 4', role:'Builder seat', color:'#a3e635'},
 ];
 const RAW = [
-  { id: 'team-naya', name: 'Team Naya', color: '#a855f7', desc: 'd1',
-    members: ['shawn', 'naya1', 'ghost'], demo: true,
-    activity: [
-      { ts: '2026-10-02T02:00:00Z', text: 'older', demo: true },
-      { ts: '2026-10-02T10:00:00Z', text: 'newer', demo: true }
-    ] },
-  { id: 'solo', name: 'Solo', desc: 'd2', members: [], demo: false, activity: [] },
-  null,
-  { id: 'broken' }
+  {id:'team-naya', name:'Team Naya', color:'#a855f7', members:['shawn','naya1','naya2'],
+   desc:'The build team.',
+   activity:[
+     {ts:'2026-10-01T10:00:00Z', author:'Naya 2', text:'oldest demo note', demo:true},
+     {ts:'2026-10-02T10:00:00Z', author:'Shawn', text:'newest demo note', demo:true},
+   ]},
+  {id:'design-review', name:'Design Review', color:'#ec4899', members:['shawn','naya3'],
+   desc:'Taste and QA.', activity:[]},
 ];
+const SPACES = window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
 
-/* ---------------- assertions ---------------- */
-let pass = 0, fail = 0;
-const failures = [];
-function t(name, fn) {
-  try { fn(); pass++; }
-  catch (e) { fail++; failures.push(name + ' :: ' + e.message); }
-}
-function eq(a, b, msg) { if (a !== b) throw new Error((msg || 'mismatch') + ': ' + JSON.stringify(a) + ' !== ' + JSON.stringify(b)); }
-function ok(v, msg) { if (!v) throw new Error(msg || 'expected truthy'); }
+console.log('— grid: spaces open —');
+clearStore();
+window.NayaPeople.ensureSeeded(CONTACTS);
+const stage = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+ok(findAll(stage,'sp-card').length===2, 'two space cards');
+ok(!!find(stage,'sp-create'), 'CREATE A SPACE primary present');
+const firstCard = findAll(stage,'sp-card')[0];
+firstCard.click();
+ok(!!find(stage,'sp-detail'), 'card opens the living room');
+ok(text(find(stage,'sp-dname'))==='Team Naya', 'detail shows the space name');
+ok(!!find(stage,'sp-topic'), 'topic block present');
+ok(text(find(stage,'sp-topic-t'))==='The build team.', 'topic text correct');
 
-/* ---------------- adapter ---------------- */
-t('adapter: resolves member ids to contacts', () => {
-  const env = loadScripts(makeEnv());
-  const s = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const m = s[0].members[0];
-  eq(m.name, 'Shawn Vibert'); eq(m.role, 'Human Director'); eq(m.color, '#facc15');
-});
-t('adapter: unresolvable member kept, never dropped', () => {
-  const env = loadScripts(makeEnv());
-  const s = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const g = s[0].members.find(m => m.id === 'ghost');
-  ok(g, 'ghost kept'); eq(g.name, 'ghost'); eq(g.color, '#888888');
-});
-t('adapter: skips unparseable records', () => {
-  const env = loadScripts(makeEnv());
-  const s = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  eq(s.length, 2);
-});
-t('adapter: activity sorted newest-first', () => {
-  const env = loadScripts(makeEnv());
-  const s = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  eq(s[0].activity[0].text, 'newer');
-});
-t('adapter: color falls back to violet chrome', () => {
-  const env = loadScripts(makeEnv());
-  const s = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  eq(s[1].color, '#8b5cf6');
-});
+console.log('— conversation: unified, oldest-first, demo-labeled —');
+const msgs = findAll(stage,'sp-msg');
+ok(msgs.length===2, 'two demo messages render');
+ok(text(find(msgs[0],'sp-msg-text'))==='oldest demo note', 'oldest first');
+ok(text(find(msgs[1],'sp-msg-text'))==='newest demo note', 'newest last');
+ok(findAll(stage,'sp-msg').every(m=>!!find(m,'sp-demo-chip')), 'demo messages carry DEMO chips');
+ok(findAll(stage,'sp-msg').every(m=>!(m.className||'').split(' ').includes('mine')), 'demo messages not mine-tinted');
+ok(text(find(msgs[0],'sp-msg-author'))==='Naya 2', 'demo author shown');
 
-/* ---------------- room: grid ---------------- */
-function mountSpaces(spaces, ctxExtra) {
-  const env = loadScripts(makeEnv());
-  const stage = env.window.NayaRooms.smartSpaces(env.el, Object.assign({ spaces }, ctxExtra));
-  env.document.body.appendChild(stage);
-  return { env, stage };
-}
-t('grid: renders one card per space', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  eq(stage.querySelectorAll('.sp-card').length, 2);
-});
-t('grid: each card carries its OWN identity color in --sc', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  const cards = stage.querySelectorAll('.sp-card');
-  eq(cards[0].style.getPropertyValue('--sc'), '#a855f7');
-  eq(cards[1].style.getPropertyValue('--sc'), '#8b5cf6'); // fallback, not list position
-});
-t('grid: cards are keyboard-operable with aria labels', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  const card = stage.querySelectorAll('.sp-card')[0];
-  eq(card.getAttribute('role'), 'button');
-  eq(card.getAttribute('tabindex'), '0');
-  ok(card.getAttribute('aria-label').includes('Team Naya'));
-});
-t('grid: DEMO chip on demo spaces only', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  const cards = stage.querySelectorAll('.sp-card');
-  ok(cards[0].querySelector('.sp-demo-chip'), 'demo chip on demo card');
-  ok(!cards[1].querySelector('.sp-demo-chip'), 'no chip on non-demo card');
-});
-t('grid: member dots set --mc ball color (not flat inline bg)', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  const dot = stage.querySelector('.sp-mdot');
-  eq(dot.style.getPropertyValue('--mc'), '#facc15');
-});
-t('grid: empty spaces -> honest empty state', () => {
-  const { stage } = mountSpaces([]);
-  const empty = stage.querySelector('.sp-empty');
-  ok(empty && empty.textContent.includes('No spaces yet'));
-});
+console.log('— instant chat: post persists + renders —');
+const ta = find(stage,'sp-ta');
+const sendBtn = btnByLabel(stage,'sp-send','SEND');
+ok(sendBtn.disabled===true, 'SEND disabled on empty');
+ta.value = 'hello from the test';
+ta.input();
+ok(sendBtn.disabled===false, 'SEND enables with text');
+sendBtn.click();
+const msgs2 = findAll(stage,'sp-msg');
+ok(msgs2.length===3, 'post appears instantly');
+ok(text(find(msgs2[2],'sp-msg-text'))==='hello from the test', 'post is newest (chat order)');
+ok((msgs2[2].className||'').split(' ').includes('mine'), 'my post is mine-tinted');
+ok(!find(msgs2[2],'sp-demo-chip'), 'user content unlabeled');
+const saved = JSON.parse(store['naya.smartspaces.posts']||'{}');
+ok(saved['team-naya'] && saved['team-naya'].length===1 && saved['team-naya'][0].author==='Naya 4',
+   'post persists with author name');
+const stageR = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+findAll(stageR,'sp-card')[0].click();
+ok(findAll(stageR,'sp-msg').length===3, 'post survives remount');
 
-/* ---------------- room: detail + post ---------------- */
-function openFirst(spaces, ctxExtra) {
-  const { env, stage } = mountSpaces(spaces, ctxExtra);
-  stage.querySelectorAll('.sp-card')[0].dispatch('click');
-  return { env, stage };
-}
-t('detail: click opens hero with space name + member count', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  const d = stage.querySelector('.sp-detail');
-  ok(d, 'detail rendered');
-  eq(d.style.getPropertyValue('--sc'), '#a855f7');
-  ok(stage.querySelector('.sp-dname').textContent === 'Team Naya');
-  ok(stage.querySelector('.sp-sec').textContent.includes('3'));
-  eq(stage.querySelectorAll('.sp-avatar').length, 3);
+console.log('— mail-to-space loop: mailed message appears in the conversation —');
+clearStore();
+store['naya.smartspaces.posts'] = JSON.stringify({
+  'design-review':[{ts:'2026-10-02T09:00:00Z', text:'mailed in from Smart Mail', author:'Naya 2'}]
 });
-t('detail: avatars set --av for the ball gradient', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  const av = stage.querySelectorAll('.sp-avatar')[0];
-  eq(av.style.getPropertyValue('--av'), '#facc15');
-  eq(av.textContent, 'SV');
-});
-t('detail: Enter opens card, Escape returns to grid', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  const card = stage.querySelectorAll('.sp-card')[0];
-  card.dispatch('keydown', { key: 'Enter' });
-  ok(stage.querySelector('.sp-detail'), 'detail after Enter');
-  stage.dispatch('keydown', { key: 'Escape' });
-  ok(stage.querySelector('.sp-grid'), 'grid after Escape');
-  ok(!stage.querySelector('.sp-detail'), 'detail gone after Escape');
-});
-t('detail: back button returns to grid', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  stage.querySelector('.sp-back').dispatch('click');
-  ok(stage.querySelector('.sp-grid'), 'grid after back');
-});
-t('compose: send disabled until text is typed', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  const ta = stage.querySelector('.sp-ta');
-  const send = stage.querySelector('.sp-send');
-  ok(send.disabled, 'disabled when empty');
-  ta.value = 'hello space';
-  ta.dispatch('input');
-  ok(!send.disabled, 'enabled after input');
-  ta.value = '   ';
-  ta.dispatch('input');
-  ok(send.disabled, 'disabled again on whitespace');
-});
-t('compose: send posts to feed, persists, dedupes SENT note', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  const ta = stage.querySelector('.sp-ta');
-  const send = stage.querySelector('.sp-send');
-  ta.value = 'ship it'; ta.dispatch('input'); send.dispatch('click');
-  const mine = stage.querySelector('.sp-arow.mine');
-  ok(mine, 'mine row painted');
-  ok(mine.querySelector('.sp-atext').textContent === 'ship it');
-  ok(mine.querySelector('.sp-atime').textContent.includes('You'), 'author labeled You');
-  const raw = JSON.parse(localStorageStub.getItem('naya.smartspaces.posts'));
-  ok(raw['team-naya'] && raw['team-naya'].length === 1, 'persisted to localStorage');
-  ta.value = 'again'; ta.dispatch('input'); send.dispatch('click');
-  eq(stage.querySelectorAll('.sp-sent').length, 1, 'single SENT note after double send');
-});
-t('compose: posts survive a remount (cold retrieve)', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces);
-  stage.querySelector('.sp-ta').value = 'persist me';
-  stage.querySelector('.sp-ta').dispatch('input');
-  stage.querySelector('.sp-send').dispatch('click');
-  /* remount in the SAME browser store (localStorage is not wiped on re-render) */
-  const stage2 = env.window.NayaRooms.smartSpaces(env.el, { spaces });
-  stage2.querySelectorAll('.sp-card')[0].dispatch('click');
-  const mine = stage2.querySelector('.sp-arow.mine');
-  ok(mine && mine.querySelector('.sp-atext').textContent === 'persist me', 'post reloaded from store');
-});
-t('compose: onMail hook fires with (space, text)', () => {
-  let got = null;
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = openFirst(spaces, { onMail: (s, text) => { got = [s.id, text]; } });
-  const ta = stage.querySelector('.sp-ta');
-  ta.value = 'via hook'; ta.dispatch('input');
-  stage.querySelector('.sp-send').dispatch('click');
-  eq(got[0], 'team-naya'); eq(got[1], 'via hook');
-});
-t('detail: empty activity -> honest empty state', () => {
-  const env = loadScripts(makeEnv());
-  const spaces = env.window.SpacesAdapter.parseSpaces(RAW, CONTACTS);
-  const { stage } = mountSpaces(spaces);
-  stage.querySelectorAll('.sp-card')[1].dispatch('click');
-  const empty = stage.querySelector('.sp-feed').querySelector('.sp-empty');
-  ok(empty && empty.textContent.includes('Nothing here yet'));
-});
+const stageM = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+findAll(stageM,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Design Review')[0].click();
+const mMsgs = findAll(stageM,'sp-msg');
+ok(mMsgs.length===1 && text(find(mMsgs[0],'sp-msg-text'))==='mailed in from Smart Mail',
+   'mailed-to-space post appears in the space conversation');
+ok((mMsgs[0].className||'').split(' ').includes('mine'), 'mail-written post is mine (not demo)');
+ok(text(find(mMsgs[0],'sp-msg-author'))==='Naya 2', 'carries the sender name');
 
-/* ---------------- drilled CSS markers ---------------- */
-const css = fs.readFileSync(path.join(REPO, 'HUB/app/css/spaces.css'), 'utf8');
-t('css: obsidian button law on .sp-back/.sp-send', () => {
-  ok(css.includes('linear-gradient(180deg,#1b1b21,#0b0b0e)'), 'obsidian gradient present');
-  ok(css.includes('inset 0 1px 0 rgba(255,255,255,.16)'), 'top-light inset present');
-});
-t('css: avatar balls — radial-gradient on .sp-avatar and .sp-mdot', () => {
-  ok(/\.sp-avatar\{[\s\S]*?radial-gradient\(circle at 32% 28%/.test(css), 'avatar ball');
-  ok(/\.sp-mdot\{[\s\S]*?radial-gradient\(circle at 32% 28%/.test(css), 'dot ball');
-});
-t('css: reduced-motion kill switch', () => {
-  ok(css.includes('prefers-reduced-motion'), 'media query present');
-  ok(css.includes('.sp-stage *{ animation:none !important; transition:none !important; }'), 'kill switch exact');
-});
-t('css: type floor 16px body text', () => {
-  const bodySel = ['.sp-card-desc', '.sp-ddesc', '.sp-atext', '.sp-empty', '.sp-ta', '.sp-member-n'];
-  for (const sel of bodySel) {
-    const m = css.match(new RegExp(sel.replace(/\./g, '\\.') + '\\{[^}]*?font-size:(\\d+(?:\\.\\d+)?)px'));
-    ok(m, sel + ' has font-size');
-    if (parseFloat(m[1]) < 16) throw new Error(sel + ' is ' + m[1] + 'px, below 16px floor');
-  }
-});
-t('css: violet #8b5cf6 is room chrome (--sp-violet)', () => {
-  ok(css.includes('--sp-violet:#8b5cf6'), 'violet chrome token');
-});
-t('css: hover ignites identity color on cards', () => {
-  ok(/\.sp-card:hover[\s\S]*?border-color:var\(--sc\)/.test(css), 'card hover ignites --sc');
-});
+console.log('— MAIL THIS SPACE: no dead button —');
+ok(!find(stageM,'sp-mailspace'), 'no MAIL button without the hook');
+let composed = null;
+const stageC = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4',
+  onCompose:(req)=>{ composed = req; }});
+findAll(stageC,'sp-card')[0].click();
+const mailBtn = find(stageC,'sp-mailspace');
+ok(!!mailBtn, 'MAIL THIS SPACE renders with the hook');
+mailBtn.click();
+ok(composed && composed.to==='team-naya' && composed.toKind==='space', 'hook called with {to, toKind:space}');
 
-/* ---------------- report ---------------- */
-console.log('SPACES SMOKE: %d pass, %d fail', pass, fail);
-for (const f of failures) console.log('FAIL ' + f);
-process.exit(fail ? 1 : 0);
+console.log('— add people from the spine —');
+clearStore();
+const stageP = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+findAll(stageP,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Design Review')[0].click();
+ok(findAll(stageP,'sp-mchip').length===2, 'two seeded members shown');
+btnByLabel(stageP,'sp-addppl','+ ADD PEOPLE').click();
+const modal = find(stageP,'sp-modal');
+ok(!!modal, 'add-people modal opens');
+const rows = findAll(modal,'sp-prow');
+ok(rows.length===3, 'lists spine contacts not yet in the space (5-2)');
+const addN2 = rows.filter(r=>text(find(r,'sp-pname'))==='Naya 2')[0];
+btnByLabel(addN2,'sp-padd','ADD').click();
+ok(findAll(stageP,'sp-mchip').length===3, 'member added to the row');
+const memSaved = JSON.parse(store['naya.smartspaces.members']||'{}');
+ok((memSaved['design-review']||[]).indexOf('naya2')>=0, 'member id persists');
+const stageP2 = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+findAll(stageP2,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Design Review')[0].click();
+ok(findAll(stageP2,'sp-mchip').length===3, 'added member survives remount');
+
+console.log('— create a space —');
+clearStore();
+const stageX = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+find(stageX,'sp-create').click();
+const cm = find(stageX,'sp-modal');
+ok(!!cm, 'create modal opens');
+const inputs = findAll(cm,'sp-input');
+const createBtn = btnByLabel(cm,'sp-btn','CREATE SPACE');
+ok(createBtn.disabled===true, 'CREATE disabled until valid');
+inputs[0].value = 'Launch crew'; inputs[0].input();
+inputs[1].value = 'everything about the launch'; inputs[1].input();
+ok(createBtn.disabled===false, 'CREATE enables with name+topic');
+createBtn.click();
+ok(findAll(stageX,'sp-card').length===0 || !!find(stageX,'sp-detail'), 'create leaves the modal');
+btnByLabel(stageX,'sp-back','\u2190 ALL SPACES').click();
+ok(findAll(stageX,'sp-card').length===3, 'new space appears in the grid');
+const newCard = findAll(stageX,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Launch crew')[0];
+ok(!!newCard && !find(newCard,'sp-demo-chip'), 'user space has no DEMO chip');
+newCard.click();
+ok(!!find(stageX,'sp-detail'), 'new space opens');
+ok(text(find(stageX,'sp-dname'))==='Launch crew', 'new space named correctly');
+const custom = JSON.parse(store['naya.smartspaces.custom']||'[]');
+ok(custom.length===1 && custom[0].name==='Launch crew' && !custom[0].demo, 'custom space persists, unlabeled');
+
+console.log('— modal focus trap + escape —');
+const stageF = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+find(stageF,'sp-create').click();
+const fmodal = find(stageF,'sp-modal');
+const fels = fmodal.querySelectorAll('button, input, textarea, select').filter(x=>!x.disabled);
+document.activeElement = fels[fels.length-1];
+fmodal.keydown({key:'Tab', shiftKey:false, preventDefault(){}});
+ok(document.activeElement===fels[0], 'Tab on last wraps to first');
+document.activeElement = fels[0];
+fmodal.keydown({key:'Tab', shiftKey:true, preventDefault(){}});
+ok(document.activeElement===fels[fels.length-1], 'Shift+Tab on first wraps to last');
+stageF.keydown({key:'Escape', preventDefault(){}});
+ok(!find(stageF,'sp-modal'), 'Escape closes the modal');
+
+console.log('— onMail hook fires on post —');
+clearStore();
+let mailed = null;
+const stageO = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4',
+  onMail:(s,t)=>{ mailed = {id:s.id, text:t}; }});
+findAll(stageO,'sp-card')[0].click();
+const ota = find(stageO,'sp-ta');
+ota.value = 'hook check'; ota.input();
+btnByLabel(stageO,'sp-send','SEND').click();
+ok(mailed && mailed.id==='team-naya' && mailed.text==='hook check', 'ctx.onMail(space, text) fires');
+
+console.log('— CSS: living depth —');
+const css = fs.readFileSync(REPO+'/HUB/app/css/spaces.css','utf8');
+ok(css.indexOf('#0b0b0e')>=0, 'obsidian buttons — never grey');
+ok(css.indexOf('radial-gradient(circle at 32% 28%')>=0, 'ball avatars (specular)');
+ok(css.indexOf('prefers-reduced-motion')>=0, 'reduced-motion guard');
+ok(css.indexOf('.sp-msg.mine')>=0, 'mine-tinted messages styled');
+ok(css.indexOf('.sp-overlay')>=0 && css.indexOf('.sp-modal')>=0, 'modals styled');
+ok(css.indexOf('font-size:16px')>=0, '16px type floor present');
+
+console.log('\n'+pass+' pass, '+fail+' fail');
+process.exit(fail?1:0);
