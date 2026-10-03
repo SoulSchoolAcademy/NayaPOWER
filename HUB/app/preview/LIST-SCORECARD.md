@@ -3,12 +3,12 @@
 Branch: `naya4/room-02-reports-v2`.
 Sources: 24 canonical smart notes via `ListAdapter.parseNotes` (projection, never invention).
 Verified: node syntax OK (adapter + room), CSS brace balance OK,
-49-check smoke suite green (SmartTabs ribbon structure, pill filter toggle,
-⋯ menu four actions, 💜/⭐ persistence + heart-first sort, edit popover,
-＋Add popover, custom-tab empty state, remove + hidden-restore round-trip
-with rename preserved, clear-filter chip, search, board spectrum, Today
-board anatomy, modal + flow color, focus trap, save flow, lists row,
-Today-key read, honest placeholders). Preview rebuilt.
+63-check smoke suite green (SmartTabs ribbon, drift tick/ping-pong/poke,
+post-mount measure regression, arrow-key travel, ⋯ menu four actions,
+💜/⭐ persistence + sort, edit popover, ＋Add popover, remove + hidden-restore
+round-trip, clear-filter chip, search, board spectrum, Today board anatomy,
+modal + flow color, focus trap, save flow, lists row, Today-key read, honest
+placeholders). Preview rebuilt.
 
 ## Director rework v6 — his SmartTabs become the tab bar (2026-10-02)
 
@@ -35,18 +35,25 @@ was read from his PDF and ported faithfully — not approximated:
 5. The lists row (Saved from Today, custom lists) speaks the same pill
    language — count badge + × instead of ⋯.
 
-## Director rework v7 — ambient ribbon drift (2026-10-02, Shawn's words)
+## Director rework v8 — the drift actually drifts (2026-10-02, bug fix)
 
-His verdict: "That's a lot better, eh? Smart tabs are smart, eh? That's
-good logic." His one suggestion: the ribbon should drift slowly across on
-its own, like his SmartNET page — "it scrolled just nice slowly across...
-that would present really nice."
+Shawn: "I don't see any movement." He was right — the drift never ran.
+Root cause, verified: the room measures layout (scrollWidth/clientWidth)
+inside `renderTabs()`, which executes while the stage is still detached
+from the document — every width reads 0, so the timer never armed (and the
+chevrons/fades never appeared either). The smoke suite couldn't catch it
+because the stub has no layout.
 
-1. **Ambient auto-scroll.** The ribbon now drifts at ~34px/sec in a slow
-   ping-pong, pausing a full 4 seconds on any hover, touch, scroll, focus,
-   keypress, chevron use, or open menu/popover. Respects
-   `prefers-reduced-motion` and never starts when nothing overflows.
-2. No leaks: timers are disarmed and the registry reset on every re-render.
+1. **Measure after mount.** Each scroll row now carries a ResizeObserver
+   that re-runs measure + arm whenever its size changes (0 → real width on
+   attach included); plus a double-rAF / setTimeout fallback where RO is
+   unavailable. Observers are disconnected on re-render — no leaks.
+2. **Regression test.** The suite now reproduces the bug shape: fresh stage
+   (detached, widths 0) → no timer; simulate attach (widths appear) →
+   refresh → timer arms and `is-scroll` sets.
+3. **Bonus enhancement (his invitation):** ←/→ arrow keys travel between
+   pills, Home/End jump to the ends — the expected keyboard pattern for a
+   tab ribbon.
 
 ## Effectiveness scorecard (Shawn asked: score it for effectiveness)
 
@@ -61,7 +68,7 @@ into categories and lists. Scored against that job, not against itself:
 | 4 | Manage the organization | 10 | Tabs: add/edit/heart/star/remove/restore. Lists: create/delete. |
 | 5 | Receive Today saves | 9 | Wired to Today's real SAVE key; unresolvable saves are honest placeholders until the Today lane ships snapshots. |
 | 6 | Read a note fully | 8 | VIEW FULL NOTE shows parsed nutshell + metadata + source — not the complete note body yet. |
-| 7 | Pro feel | 9 | Shawn: "that's a lot better." The drift is the last motion piece; his eyes confirm. |
+| 7 | Pro feel | 9 | Shawn: "that's a lot better." The drift now actually runs; his eyes confirm the feel. |
 
 **Effectiveness: 9.5/10.** It does the whole job — the half point off is
 read-the-full-note (needs full-body projection) and the Today snapshot

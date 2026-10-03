@@ -245,6 +245,15 @@
       w.addEventListener('keydown', poke);
       row.poke = poke; row.tick = tick; row.arm = arm; row.disarm = disarm;
       w._row = row;
+      /* Re-measure when layout actually happens: the room renders detached,
+         so first-paint widths are 0 until the stage is mounted. */
+      if(window.ResizeObserver){
+        try{
+          var ro = new ResizeObserver(function(){ update(); arm(); });
+          ro.observe(s);
+          row._ro = ro;
+        }catch(e){}
+      }
       scrollRows.push(row);
       return { wrap:w, scroll:s, update:update, row:row };
     }
@@ -270,7 +279,7 @@
     function renderTabs(){
       tabs.innerHTML = '';
       scrollUpdaters = [];
-      scrollRows.forEach(function(r){ r.disarm(); });
+      scrollRows.forEach(function(r){ r.disarm(); if(r._ro){ try{ r._ro.disconnect(); }catch(e){} } });
       scrollRows = [];
       syncTabs();
 
@@ -309,15 +318,42 @@
       var alab = el('span','sn-label',''); alab.textContent = '\uFF0B Add'; addPill.appendChild(alab);
       var addGo = function(){ openTabEditor(null, true, addPill); };
       addPill.addEventListener('click', addGo);
-      addPill.addEventListener('keydown', function(ev){
-        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); addGo(); }
-      });
+      wirePillKeys(addPill, addGo);
       kr.scroll.appendChild(addPill);
       krow.appendChild(kr.wrap);
       tabs.appendChild(krow);
 
+      refreshRows();
+      /* Fallback for no-ResizeObserver: re-measure after mount + first paint. */
+      if(!window.ResizeObserver){
+        if(window.requestAnimationFrame){
+          window.requestAnimationFrame(function(){ window.requestAnimationFrame(refreshRows); });
+        } else {
+          setTimeout(refreshRows, 60);
+        }
+      }
+    }
+    function refreshRows(){
       scrollUpdaters.forEach(function(u){ u(); });
       scrollRows.forEach(function(r){ r.arm(); });
+    }
+
+    /* Roving keyboard travel across a pill ribbon: ←/→ move, Home/End jump. */
+    function wirePillKeys(p, go){
+      p.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); return; }
+        if(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft'&&ev.key!=='Home'&&ev.key!=='End') return;
+        ev.preventDefault();
+        var kids = (p.parentNode && p.parentNode.children) || [];
+        var ps = [];
+        for(var i=0;i<kids.length;i++){ if(hasClass(kids[i],'sn-pill')) ps.push(kids[i]); }
+        var ix = ps.indexOf(p), n = ix;
+        if(ev.key==='ArrowRight') n = Math.min(ps.length-1, ix+1);
+        else if(ev.key==='ArrowLeft') n = Math.max(0, ix-1);
+        else if(ev.key==='Home') n = 0;
+        else n = ps.length-1;
+        if(ps[n] && ps[n].focus) ps[n].focus();
+      });
     }
 
     /* One SmartTab pill: label + 💜/⭐ marker + ⋯ menu. */
@@ -344,9 +380,7 @@
         state.query=''; search.value=''; renderAll();
       };
       p.addEventListener('click', go);
-      p.addEventListener('keydown', function(ev){
-        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); }
-      });
+      wirePillKeys(p, go);
       p.addEventListener('contextmenu', function(ev){ ev.preventDefault(); openTabMenu(t, p); });
       return p;
     }
@@ -372,9 +406,7 @@
         state.query=''; search.value=''; renderAll();
       };
       p.addEventListener('click', go);
-      p.addEventListener('keydown', function(ev){
-        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); }
-      });
+      wirePillKeys(p, go);
       return p;
     }
 
@@ -792,6 +824,7 @@
 
     function renderAll(){ renderTabs(); renderGrid(); }
     renderAll();
+    stage._refreshRows = refreshRows;
 
     var foot = el('footer','sl-foot','');
     foot.textContent = 'stored on this device \u00B7 the Brain stays the source of truth';
