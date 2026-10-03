@@ -314,6 +314,15 @@
 }
 .sl-stage .sl-date{ font-size:12px; color:var(--sl-dim); font-variant-numeric:tabular-nums; }
 .sl-stage .sl-nutshell{ font-size:14.5px; line-height:1.75; color:#d8d3c4; margin:0 0 20px; font-weight:500; }
+/* Full-note reading: the complete note body, verbatim, in a readable block.
+   The modal itself scrolls; no nested scroller. */
+.sl-stage .sl-fullnote{
+  white-space:pre-wrap; word-break:break-word;
+  font-size:13.5px; line-height:1.8; color:#cfc9ba;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.09); border-radius:14px;
+  padding:18px 20px; margin:0 0 20px;
+}
 .sl-stage .sl-path{
   display:block; font-size:11px; line-height:1.7; color:var(--sl-dim);
   font-family:ui-monospace,Menlo,monospace; word-break:break-all;

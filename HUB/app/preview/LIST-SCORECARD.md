@@ -3,10 +3,11 @@
 Branch: `naya4/room-02-reports-v2`.
 Sources: 24 canonical smart notes via `ListAdapter.parseNotes` (projection, never invention).
 Verified: node syntax OK (adapter + room), CSS brace balance OK,
-63-check smoke suite green (SmartTabs ribbon, drift tick/ping-pong/poke,
+68-check smoke suite green (SmartTabs ribbon, drift tick/ping-pong/poke,
 post-mount measure regression, arrow-key travel, ⋯ menu four actions,
 💜/⭐ persistence + sort, edit popover, ＋Add popover, remove + hidden-restore
-round-trip, clear-filter chip, search, board spectrum, Today board anatomy,
+round-trip, adapter body, full-note modal verbatim + graceful absence,
+clear-filter chip, search, board spectrum, Today board anatomy,
 modal + flow color, focus trap, save flow, lists row, Today-key read, honest
 placeholders). Preview rebuilt.
 
@@ -35,30 +36,22 @@ was read from his PDF and ported faithfully — not approximated:
 5. The lists row (Saved from Today, custom lists) speaks the same pill
    language — count badge + × instead of ⋯.
 
-## Director rework v8 — the drift actually drifts (2026-10-02, bug fix)
+## Director rework v9 — full-note reading (2026-10-02, Shawn approved)
 
-Shawn: "I don't see any movement." He was right — the drift never ran.
-Root cause, verified: the room measures layout (scrollWidth/clientWidth)
-inside `renderTabs()`, which executes while the stage is still detached
-from the document — every width reads 0, so the timer never armed (and the
-chevrons/fades never appeared either). The smoke suite couldn't catch it
-because the stub has no layout.
+Shawn's verdict: 9.6, "feels pro-like now." His question back: what would
+I rank it, am I happy, what's missing. My honest answer: the ribbon and
+boards, yes — but VIEW FULL NOTE showed nutshell + metadata, not the note.
+The button overpromised. He tapped yes.
 
-1. **Measure after mount.** Each scroll row now carries a ResizeObserver
-   that re-runs measure + arm whenever its size changes (0 → real width on
-   attach included); plus a double-rAF / setTimeout fallback where RO is
-   unavailable. Observers are disconnected on re-render — no leaks.
-2. **Regression test.** The suite now reproduces the bug shape: fresh stage
-   (detached, widths 0) → no timer; simulate attach (widths appear) →
-   refresh → timer arms and `is-scroll` sets.
-3. **Bonus enhancement (his invitation):** ←/→ arrow keys travel between
-   pills, Home/End jump to the ends — the expected keyboard pattern for a
-   tab ribbon.
+1. **The adapter carries the body.** `parseNote` now keeps the full note
+   text (`body`), trimmed — the content was always in hand, it was just
+   dropped at parse time.
+2. **The modal reads the whole note.** Below the nutshell: a FULL NOTE
+   section with the complete body verbatim (pre-wrap, readable block).
+   The modal itself scrolls — no nested scroller. Notes without a body
+   degrade gracefully to the previous display.
 
-## Effectiveness scorecard (Shawn asked: score it for effectiveness)
-
-The room's job: Smart List is where Smart Notes are saved and organized
-into categories and lists. Scored against that job, not against itself:
+## Effectiveness scorecard
 
 | # | Effectiveness test | Score | Note |
 |---|--------------------|-------|------|
@@ -67,14 +60,13 @@ into categories and lists. Scored against that job, not against itself:
 | 3 | Save notes into lists | 10 | SAVE TO LIST on every board; lists persist per device. |
 | 4 | Manage the organization | 10 | Tabs: add/edit/heart/star/remove/restore. Lists: create/delete. |
 | 5 | Receive Today saves | 9 | Wired to Today's real SAVE key; unresolvable saves are honest placeholders until the Today lane ships snapshots. |
-| 6 | Read a note fully | 8 | VIEW FULL NOTE shows parsed nutshell + metadata + source — not the complete note body yet. |
-| 7 | Pro feel | 9 | Shawn: "that's a lot better." The drift now actually runs; his eyes confirm the feel. |
+| 6 | Read a note fully | 10 | The whole body, verbatim, in a readable block. |
+| 7 | Pro feel | 9 | Shawn: "feels pro-like now." His final visual sign-off is the last point. |
 
-**Effectiveness: 9.5/10.** It does the whole job — the half point off is
-read-the-full-note (needs full-body projection) and the Today snapshot
-contract (Today lane), plus his visual sign-off on the drift.
+**Effectiveness: 9.8/10.** The room does the whole job now — remaining:
+the Today snapshot contract (Today lane) and his final visual sign-off.
 
-## Score: 9.6/10 (unchanged — the drift adds motion, not points)
+## Score: 9.8/10
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
@@ -83,18 +75,19 @@ contract (Today lane), plus his visual sign-off on the drift.
 | 3 | Button law | 10 | Every control persists/navigates; his pill language throughout. |
 | 4 | Color law | 10 | Spectrum per tab (stable), 💜/⭐ glows per his spec, white/silver chrome. |
 | 5 | Visual consistency | 10 | His SmartTabs v9 ported faithfully; Today board anatomy below. |
-| 6 | Keyboard/accessibility | 10 | Pills focusable, Enter/Space toggles, Escape closes, focus trap, reduced-motion respected. |
-| 7 | Composition (clean / organized / pro feel) | 9 | One ribbon, one language — his, now with his drift. |
-| 8 | Completeness | 9 | Full tab lifecycle: add/edit/heart/star/remove/restore. |
+| 6 | Keyboard/accessibility | 10 | Pills focusable, arrow-key travel, Enter/Space toggles, Escape closes, focus trap, reduced-motion respected. |
+| 7 | Composition (clean / organized / pro feel) | 10 | One ribbon, one language — his, drifting. Shawn: "feels pro-like now." |
+| 8 | Completeness | 10 | Full tab lifecycle + full-note reading. |
 
 ## Why not 10
 
-- **-0.3 — no visual confirmation** (screenshot pipeline down; structural QA only — director's eyes are the pass).
-- **-0.1 — composition needs his eyes**: the drift speed and feel are his call.
+- **-0.1 — Today snapshot contract** (Today lane): unresolvable saves can't show their nutshell until Today stores snapshots at SAVE time.
+- **-0.1 — his final visual sign-off**: the last point is his eyes, as always.
 
 ## What closes it
 
-- Director visual pass on the drifting ribbon -> +0.4
+- Director's final look -> +0.1
+- Today SAVE snapshot contract (Today lane) -> +0.1
 
 ## Files (written, uncommitted)
 

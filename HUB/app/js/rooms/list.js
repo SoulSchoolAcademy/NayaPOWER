@@ -741,6 +741,10 @@
       mbox.appendChild(meta);
       if(n.nutshell){ var p = el('p','sl-nutshell',''); p.textContent = n.nutshell; mbox.appendChild(p); }
       if(n.path){ var ph = el('code','sl-path',''); ph.textContent = n.path; mbox.appendChild(ph); }
+      if(n.body){
+        mbox.appendChild(el('p','sl-msub','FULL NOTE'));
+        var full = el('div','sl-fullnote',''); full.textContent = n.body; mbox.appendChild(full);
+      }
       var row = el('div','sl-mrow');
       var sv = el('button','sl-btn','SAVE TO LIST'); sv.type='button';
       sv.addEventListener('click', function(){ openPickerModal(n); });

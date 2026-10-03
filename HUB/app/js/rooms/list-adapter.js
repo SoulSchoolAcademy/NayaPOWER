@@ -51,7 +51,8 @@
       truth: truth,
       date: date,
       category: category,
-      path: file.path
+      path: file.path,
+      body: s.trim()
     };
   }
 
