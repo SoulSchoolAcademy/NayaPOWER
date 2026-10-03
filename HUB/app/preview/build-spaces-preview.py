@@ -104,7 +104,7 @@ def main():
                + "try{localStorage.setItem('naya.smartspaces.posts',JSON.stringify(MAILSEED));}catch(e){}"
                + "const spaces=SpacesAdapter.parseSpaces(PACKS.spaces, PACKS.contacts);"
                + "document.getElementById('app').appendChild("
-               + "window.NayaRooms.smartSpaces(el,{spaces:spaces,contacts:PACKS.contacts,me:'naya4',"
+               + "window.NayaRooms.smartSpaces(el,{spaces:spaces,contacts:PACKS.contacts,me:'naya4',initialSpaceId:'team-naya',"
                + "onCompose:(req)=>{__spToast('In the Hub this opens Smart Mail addressed to '+req.to);}}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'

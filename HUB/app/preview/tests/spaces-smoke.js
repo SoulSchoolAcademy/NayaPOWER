@@ -118,6 +118,19 @@ const firstCard = findAll(stage,'sp-card')[0];
 firstCard.click();
 ok(!!find(stage,'sp-detail'), 'card opens the living room');
 ok(text(find(stage,'sp-dname'))==='Team Naya', 'detail shows the space name');
+
+console.log('— opens INTO the conversation —');
+clearStore();
+const stageD = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4', initialSpaceId:'team-naya'});
+ok(!!find(stageD,'sp-detail') && findAll(stageD,'sp-card').length===0, 'initialSpaceId opens the living room directly');
+ok(findAll(stageD,'sp-msg').length>0, 'the conversation is visible on first paint');
+delete store['naya.smartspaces.lastOpen'];
+const stageG = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+ok(findAll(stageG,'sp-card').length===2, 'without initial, the grid shows (no last-open yet)');
+findAll(stageG,'sp-card')[0].click();
+const stageR2 = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
+ok(!!find(stageR2,'sp-detail'), 'reopen returns to the last-opened space');
+delete store['naya.smartspaces.lastOpen'];
 ok(!!find(stage,'sp-topic'), 'topic block present');
 ok(text(find(stage,'sp-topic-t'))==='The build team.', 'topic text correct');
 
@@ -146,6 +159,7 @@ ok(!find(msgs2[2],'sp-demo-chip'), 'user content unlabeled');
 const saved = JSON.parse(store['naya.smartspaces.posts']||'{}');
 ok(saved['team-naya'] && saved['team-naya'].length===1 && saved['team-naya'][0].author==='Naya 4',
    'post persists with author name');
+delete store['naya.smartspaces.lastOpen'];
 const stageR = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
 findAll(stageR,'sp-card')[0].click();
 ok(findAll(stageR,'sp-msg').length===3, 'post survives remount');
@@ -155,6 +169,7 @@ clearStore();
 store['naya.smartspaces.posts'] = JSON.stringify({
   'design-review':[{ts:'2026-10-02T09:00:00Z', text:'mailed in from Smart Mail', author:'Naya 2'}]
 });
+delete store['naya.smartspaces.lastOpen'];
 const stageM = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
 findAll(stageM,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Design Review')[0].click();
 const mMsgs = findAll(stageM,'sp-msg');
@@ -166,6 +181,7 @@ ok(text(find(mMsgs[0],'sp-msg-author'))==='Naya 2', 'carries the sender name');
 console.log('— MAIL THIS SPACE: no dead button —');
 ok(!find(stageM,'sp-mailspace'), 'no MAIL button without the hook');
 let composed = null;
+delete store['naya.smartspaces.lastOpen'];
 const stageC = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4',
   onCompose:(req)=>{ composed = req; }});
 findAll(stageC,'sp-card')[0].click();
@@ -189,6 +205,7 @@ btnByLabel(addN2,'sp-padd','ADD').click();
 ok(findAll(stageP,'sp-mchip').length===3, 'member added to the row');
 const memSaved = JSON.parse(store['naya.smartspaces.members']||'{}');
 ok((memSaved['design-review']||[]).indexOf('naya2')>=0, 'member id persists');
+delete store['naya.smartspaces.lastOpen'];
 const stageP2 = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
 findAll(stageP2,'sp-card').filter(c=>text(find(c,'sp-card-name'))==='Design Review')[0].click();
 ok(findAll(stageP2,'sp-mchip').length===3, 'added member survives remount');
@@ -218,6 +235,7 @@ const custom = JSON.parse(store['naya.smartspaces.custom']||'[]');
 ok(custom.length===1 && custom[0].name==='Launch crew' && !custom[0].demo, 'custom space persists, unlabeled');
 
 console.log('— modal focus trap + escape —');
+delete store['naya.smartspaces.lastOpen'];
 const stageF = window.NayaRooms.smartSpaces(el, {spaces:SPACES, contacts:CONTACTS, me:'naya4'});
 find(stageF,'sp-create').click();
 const fmodal = find(stageF,'sp-modal');

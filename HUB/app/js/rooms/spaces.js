@@ -15,6 +15,9 @@
  *   ctx.me        — my person id (author name resolution)
  *   ctx.onMail    — optional fn(space, text) called when a message is posted
  *   ctx.onCompose — optional fn({to, toKind:'space'}) — opens Smart Mail addressed to the space
+ *   ctx.initialSpaceId — optional space id to open directly (a chat app opens
+ *                        INTO the conversation); otherwise the last-opened space
+ *                        is restored from naya.smartspaces.lastOpen
  *
  * Stores (localStorage):
  *   naya.smartspaces.posts   — {spaceId:[{ts: ISO string, text, author, demo?}]}
@@ -34,6 +37,7 @@
   var STORE_KEY  = 'naya.smartspaces.posts';
   var MEMBER_KEY = 'naya.smartspaces.members';
   var CUSTOM_KEY = 'naya.smartspaces.custom';
+  var LASTOPEN_KEY = 'naya.smartspaces.lastOpen'; /* return to your conversation */
   var PALETTE = ['#8b5cf6','#22d3ee','#ec4899','#a3e635','#facc15','#38bdf8','#fb923c'];
 
   function fmtTime(ts){
@@ -172,6 +176,12 @@
 
     var stage = el('div','sp-stage');
     var state = { view:'grid', spaceId:null };
+    /* a chat app opens INTO the conversation: preview can force one via
+       ctx.initialSpaceId; otherwise return to the last-opened space. */
+    (function(){
+      var startId = ctx.initialSpaceId || loadJSON(LASTOPEN_KEY, null);
+      if(startId && spaceById(startId)){ state.view = 'detail'; state.spaceId = startId; }
+    })();
     var modalStack = [];
 
     /* header */
@@ -203,7 +213,7 @@
         body.appendChild(detailView(s));
       }
     }
-    function openSpace(id){ state.view = 'detail'; state.spaceId = id; render(); }
+    function openSpace(id){ state.view = 'detail'; state.spaceId = id; saveJSON(LASTOPEN_KEY, id); render(); }
     function goGrid(){ state.view = 'grid'; state.spaceId = null; render(); }
 
     /* ---------- focus trap ---------- */

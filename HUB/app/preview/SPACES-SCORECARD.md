@@ -60,6 +60,13 @@ talking." He was right — the grid showed zero conversation. Two fixes:
    → Naya 4 answers → Shawn reacts") instead of disconnected bulletins.
    Still DEMO-labeled; illustrative, never presented as real activity.
 
+## Opens INTO the conversation (Shawn, 2026-10-02 ~23:30 PDT)
+
+"You shouldn't have to hunt for it. A chat app opens into the
+conversation." The room now restores the last-opened space
+(`naya.smartspaces.lastOpen`); the preview opens Team Naya via
+`ctx.initialSpaceId`. First paint = people talking, not a directory.
+
 **Score: 9.7/10.** Why not 10: quality and pro level are his call
 (-0.2), and realtime multi-user delivery is backend-gated, local-only until
 the shell wires it (-0.1, honestly labeled).
@@ -67,7 +74,7 @@ the shell wires it (-0.1, honestly labeled).
 ## Verification
 
 - `node --check` clean (room + adapter); CSS braces balanced (93/93).
-- `HUB/app/preview/tests/spaces-smoke.js` — **54 pass, 0 fail**: grid opens
+- `HUB/app/preview/tests/spaces-smoke.js` — **58 pass, 0 fail**: grid opens
   spaces, topic block, unified oldest-first conversation with DEMO chips +
   authors, instant post (renders/persists/remounts, mine-tinted, unlabeled),
   mail-to-space seed appears in conversation carrying sender name,
