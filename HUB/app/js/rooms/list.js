@@ -30,14 +30,20 @@
               '#facc15','#d4a017','#fb923c','#ef4444','#ec4899'];
 
   function loadStore(){
+    var s = { custom:{}, cats:{ added:[], renamed:{}, hidden:[] } };
     try{
-      var s = JSON.parse(localStorage.getItem(STORE_KEY));
-      if(s && typeof s === 'object'){
-        if(!s.custom || typeof s.custom !== 'object') s.custom = {};
+      var raw = JSON.parse(localStorage.getItem(STORE_KEY));
+      if(raw && typeof raw === 'object'){
+        if(raw.custom && typeof raw.custom === 'object') s.custom = raw.custom;
+        if(raw.cats && typeof raw.cats === 'object'){
+          if(Array.isArray(raw.cats.added)) s.cats.added = raw.cats.added.filter(function(x){ return typeof x === 'string'; });
+          if(raw.cats.renamed && typeof raw.cats.renamed === 'object') s.cats.renamed = raw.cats.renamed;
+          if(Array.isArray(raw.cats.hidden)) s.cats.hidden = raw.cats.hidden.filter(function(x){ return typeof x === 'string'; });
+        }
         return s;
       }
     }catch(err){}
-    return { custom:{} };
+    return s;
   }
   function saveStore(s){
     try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }catch(err){}
@@ -108,18 +114,71 @@
     var grid = el('div','sl-grid');
     main.appendChild(grid);
 
-    /* ---------- tabs: lists row (only when it earns the space) + one category row ---------- */
+    /* ---------- category tabs: derived from notes + user-managed ---------- */
+    function setClass(elm, cls, on){
+      var cs = (' ' + (elm.className||'') + ' ').replace(/\s+/g,' ');
+      var has = cs.indexOf(' ' + cls + ' ') >= 0;
+      if(on && !has) elm.className = ((elm.className||'') + ' ' + cls).trim();
+      else if(!on && has) elm.className = cs.split(' ' + cls + ' ').join(' ').trim();
+    }
+
+    /* Visible tabs: derived categories (minus hidden, plus renames) then added customs. */
+    function visibleCategories(){
+      var out = [];
+      categories().forEach(function(c){
+        if(store.cats.hidden.indexOf(c.name) >= 0) return;
+        out.push({ key:c.name, label:(store.cats.renamed[c.name] || prettyCat(c.name)), n:c.n, custom:false });
+      });
+      store.cats.added.forEach(function(name){
+        out.push({ key:'custom:'+name, label:name, n:0, custom:true });
+      });
+      return out;
+    }
+
+    /* A horizontally scrolling row done properly: edge fades + chevrons when
+       content overflows, instead of buttons accidentally clipped. */
+    var scrollUpdaters = [];
+    function scrollRow(){
+      var w = el('div','sl-scrollwrap');
+      var l = el('button','sl-chev sl-chev-l','\u2039'); l.type='button';
+      l.setAttribute('aria-label','Scroll tabs left');
+      var s = el('div','sl-tabscroll');
+      var r = el('button','sl-chev sl-chev-r','\u203A'); r.type='button';
+      r.setAttribute('aria-label','Scroll tabs right');
+      w.appendChild(l); w.appendChild(s); w.appendChild(r);
+      var step = function(){ return Math.max(280, (s.clientWidth||0)*0.7); };
+      l.addEventListener('click', function(){ if(s.scrollBy) s.scrollBy({left:-step(), behavior:'smooth'}); });
+      r.addEventListener('click', function(){ if(s.scrollBy) s.scrollBy({left: step(), behavior:'smooth'}); });
+      var update = function(){
+        var can = (s.scrollWidth||0) > (s.clientWidth||0) + 4;
+        setClass(w, 'is-scroll', can);
+        setClass(s, 'is-scroll', can);
+        l.disabled = (s.scrollLeft||0) <= 4;
+        r.disabled = (s.scrollLeft||0) + (s.clientWidth||0) >= (s.scrollWidth||0) - 4;
+      };
+      s.addEventListener('scroll', update);
+      scrollUpdaters.push(update);
+      return { wrap:w, scroll:s, update:update };
+    }
+    if(window.addEventListener){
+      window.addEventListener('resize', function(){
+        scrollUpdaters.forEach(function(u){ u(); });
+      });
+    }
+
+    /* ---------- tabs: lists row (only when it earns the space) + scrolling category bar ---------- */
     function renderTabs(){
       tabs.innerHTML = '';
+      scrollUpdaters = [];
 
       /* Row 1 — lists: Saved from Today (only when non-empty) + my lists. */
       var todaySaves = loadTodaySaves();
       var names = Object.keys(store.custom).sort();
       if(todaySaves.length || names.length){
         var lrow = el('div','sl-tabrow');
-        var lscroll = el('div','sl-tabscroll');
+        var lr = scrollRow();
         if(todaySaves.length){
-          lscroll.appendChild(tabBtn({type:'today'}, 'SAVED FROM TODAY', todaySaves.length,
+          lr.scroll.appendChild(tabBtn({type:'today'}, 'SAVED FROM TODAY', todaySaves.length,
             state.view.type==='today', null));
         }
         names.forEach(function(nm){
@@ -147,22 +206,30 @@
             renderAll();
           });
           wrap.appendChild(del);
-          lscroll.appendChild(wrap);
+          lr.scroll.appendChild(wrap);
         });
-        lrow.appendChild(lscroll);
+        lrow.appendChild(lr.wrap);
         tabs.appendChild(lrow);
       }
 
-      /* Row 2 — categories on one level, each with its own spectrum color.
-         Tabs toggle: nothing selected = all notes, so no tab sits lit by default. */
+      /* Row 2 — the scrolling category bar: one level, toggle to filter,
+         each tab lighting in its own spectrum color. Nothing lit by default. */
       var krow = el('div','sl-tabrow');
-      var kscroll = el('div','sl-tabscroll');
-      categories().forEach(function(c, i){
-        kscroll.appendChild(tabBtn({type:'cat', name:c.name}, prettyCat(c.name), c.n,
-          isView({type:'cat', name:c.name}), FLOW[i % FLOW.length]));
+      var kr = scrollRow();
+      visibleCategories().forEach(function(c, i){
+        kr.scroll.appendChild(tabBtn({type:'cat', name:c.key}, c.label, c.n,
+          isView({type:'cat', name:c.key}), FLOW[i % FLOW.length]));
       });
-      krow.appendChild(kscroll);
+      krow.appendChild(kr.wrap);
+      var mg = el('button','sl-manage','\u2699 TABS');
+      mg.type = 'button';
+      mg.setAttribute('title','Add, rename, or hide category tabs');
+      mg.setAttribute('aria-label','Manage category tabs');
+      mg.addEventListener('click', openManageCats);
+      krow.appendChild(mg);
       tabs.appendChild(krow);
+
+      scrollUpdaters.forEach(function(u){ u(); });
     }
 
     function tabBtn(view, label, n, on, color){
@@ -484,6 +551,85 @@
       mbox.appendChild(row);
       openModal();
       inp.focus();
+    }
+
+    /* Manage the category tabs: rename, hide, restore, add. Persisted in the
+       room store — notes themselves are never touched. */
+    function openManageCats(){
+      mbox.style.setProperty('--ic', '#a855f7');
+      modalHead('MANAGE TABS', 'Rename, hide, or add category tabs');
+      var list = el('div','sl-catlist');
+      visibleCategories().forEach(function(c){
+        var row = el('div','sl-catrow');
+        var inp = el('input','sl-input'); inp.type='text'; inp.value = c.label;
+        inp.setAttribute('aria-label','Rename tab '+c.label);
+        inp.addEventListener('change', function(){
+          var v = inp.value.trim();
+          if(!v){ inp.value = c.label; return; }
+          if(c.custom){
+            var i = store.cats.added.indexOf(c.label);
+            if(i >= 0) store.cats.added[i] = v;
+          } else {
+            store.cats.renamed[c.key] = v;
+          }
+          saveStore(store); state.view = {type:'all'}; renderAll(); openManageCats();
+        });
+        row.appendChild(inp);
+        row.appendChild(el('span','sl-catn', c.n + (c.n===1 ? ' note' : ' notes')));
+        var del = el('button','sl-btn sl-btndanger', c.custom ? 'DELETE' : 'HIDE');
+        del.type = 'button';
+        del.setAttribute('title', c.custom ? 'Delete this tab' : 'Hide this tab (its notes stay under All)');
+        del.addEventListener('click', function(){
+          if(c.custom){
+            store.cats.added = store.cats.added.filter(function(x){ return x !== c.label; });
+          } else if(store.cats.hidden.indexOf(c.key) < 0){
+            store.cats.hidden.push(c.key);
+          }
+          saveStore(store); state.view = {type:'all'}; renderAll(); openManageCats();
+        });
+        row.appendChild(del);
+        list.appendChild(row);
+      });
+      mbox.appendChild(list);
+
+      if(store.cats.hidden.length){
+        mbox.appendChild(el('p','sl-msub','HIDDEN'));
+        store.cats.hidden.forEach(function(key){
+          var row = el('div','sl-catrow');
+          var s = el('span','',''); s.textContent = prettyCat(key); row.appendChild(s);
+          var rs = el('button','sl-btn','RESTORE'); rs.type = 'button';
+          rs.addEventListener('click', function(){
+            store.cats.hidden = store.cats.hidden.filter(function(x){ return x !== key; });
+            saveStore(store); renderAll(); openManageCats();
+          });
+          row.appendChild(rs);
+          mbox.appendChild(row);
+        });
+      }
+
+      mbox.appendChild(el('p','sl-msub','ADD NEW TAB'));
+      var arow = el('div','sl-catrow');
+      var ainp = el('input','sl-input'); ainp.type = 'text'; ainp.placeholder = 'New tab name\u2026';
+      ainp.setAttribute('aria-label','New tab name');
+      arow.appendChild(ainp);
+      var addTab = function(){
+        var v = ainp.value.trim();
+        if(!v) return;
+        var dup = store.cats.added.indexOf(v) >= 0 ||
+          categories().some(function(c){ return (store.cats.renamed[c.name] || prettyCat(c.name)) === v; });
+        if(!dup){ store.cats.added.push(v); saveStore(store); }
+        state.view = {type:'all'}; renderAll(); openManageCats();
+      };
+      var add = el('button','sl-btn','ADD TAB'); add.type = 'button';
+      add.addEventListener('click', addTab);
+      ainp.addEventListener('keydown', function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); addTab(); } });
+      arow.appendChild(add);
+      mbox.appendChild(arow);
+
+      var crow = el('div','sl-mrow');
+      crow.appendChild(modalCloseBtn());
+      mbox.appendChild(crow);
+      openModal();
     }
 
     function renderAll(){ renderTabs(); renderGrid(); }
