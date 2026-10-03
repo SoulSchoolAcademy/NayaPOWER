@@ -60,8 +60,6 @@
     var sub = el('p','ml-sub','');
     sub.textContent='Mail inside the NayaNET network \u2014 write to a person or straight to a space. Nothing leaves the network; everything stays inspectable.';
     head.appendChild(sub);
-    var demo = el('p','ml-demo',''); demo.textContent='DEMO THREADS \u00B7 seeded for design review \u00B7 your sent mail persists locally';
-    head.appendChild(demo);
     stage.appendChild(head);
 
     /* three panes */
@@ -89,17 +87,26 @@
     function sentThreads(){ return threads.filter(function(t){ return t.from===me; }); }
     function unreadCount(){ return inboxThreads().filter(function(t){ return t.unread; }).length; }
 
+    /* folder identity: each folder owns a stable color + icon (Shawn, 2026-10-02).
+       inbox stays blue, unread is green, sent is purple when lit. */
+    var F_INBOX  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>';
+    var F_UNREAD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/><circle cx="18.5" cy="5.5" r="2.6" fill="currentColor" stroke="#0b0e16" stroke-width="1.4"/></svg>';
+    var F_SENT   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>';
+
     function renderRail(){
       rail.innerHTML='';
       var defs = [
-        ['inbox','INBOX', unreadCount()],
-        ['unread','UNREAD', null],
-        ['sent','SENT', null]
+        ['inbox','INBOX', unreadCount(), '#3b82f6', '#93c5fd', F_INBOX],
+        ['unread','UNREAD', null,        '#34d399', '#a7f3d0', F_UNREAD],
+        ['sent','SENT',   null,          '#a855f7', '#d8b4fe', F_SENT]
       ];
       defs.forEach(function(d){
         var b = el('button','ml-folder'+(state.folder===d[0]?' on':''));
         b.type='button'; b.setAttribute('aria-pressed', state.folder===d[0]?'true':'false');
-        var nm = el('span','',''); nm.textContent=d[1]; b.appendChild(nm);
+        b.style.setProperty('--fc', d[3]);
+        b.style.setProperty('--fcl', d[4]);
+        var ic = el('span','ml-ficon',''); ic.innerHTML = d[5]; b.appendChild(ic);
+        var nm = el('span','ml-fname',''); nm.textContent=d[1]; b.appendChild(nm);
         if(d[2]){
           var badge = el('span','ml-badge',''); badge.textContent=d[2]; b.appendChild(badge);
         }
