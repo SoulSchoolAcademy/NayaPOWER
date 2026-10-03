@@ -64,14 +64,20 @@
 
     var stage = el('div','sl-stage');
 
-    /* ---------- header ---------- */
+    /* ---------- header: title left, + NEW LIST top-right ---------- */
     var head = el('header','sl-head');
-    head.appendChild(el('p','sl-kicker','SMART LIST'));
+    var htext = el('div','sl-head-text');
+    htext.appendChild(el('p','sl-kicker','SMART LIST'));
     var h1 = el('h1','sl-title',''); h1.textContent = 'Your intelligence, filed';
-    head.appendChild(h1);
+    htext.appendChild(h1);
     var sub = el('p','sl-sub','');
     sub.textContent = 'Every smart note, grouped by what it teaches. Save notes into your own lists — they persist on this device.';
-    head.appendChild(sub);
+    htext.appendChild(sub);
+    head.appendChild(htext);
+    var nbHead = el('button','sl-new','+ NEW LIST');
+    nbHead.type = 'button';
+    nbHead.addEventListener('click', function(){ openNewListModal(); });
+    head.appendChild(nbHead);
     stage.appendChild(head);
 
     var tabs = el('div','sl-tabs');
@@ -90,52 +96,65 @@
     toolbar.appendChild(search);
     var count = el('span','sl-count','');
     toolbar.appendChild(count);
+    var clearf = el('button','sl-clearf','\u00D7 CLEAR');
+    clearf.type = 'button';
+    clearf.style.display = 'none';
+    clearf.setAttribute('aria-label','Clear filter');
+    clearf.addEventListener('click', function(){
+      state.view = {type:'all'}; state.query=''; search.value=''; renderAll();
+    });
+    toolbar.appendChild(clearf);
     main.appendChild(toolbar);
     var grid = el('div','sl-grid');
     main.appendChild(grid);
 
-    /* ---------- tabs across the top: collections row + one category row ---------- */
+    /* ---------- tabs: lists row (only when it earns the space) + one category row ---------- */
     function renderTabs(){
       tabs.innerHTML = '';
 
-      /* Row 1 — collections: views + my lists, NEW LIST pinned top-right */
-      var crow = el('div','sl-tabrow sl-collections');
-      var cscroll = el('div','sl-tabscroll');
-      cscroll.appendChild(tabBtn('all', 'ALL NOTES', notes.length, state.view.type==='all', null));
-      cscroll.appendChild(tabBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today', null));
+      /* Row 1 — lists: Saved from Today (only when non-empty) + my lists. */
+      var todaySaves = loadTodaySaves();
       var names = Object.keys(store.custom).sort();
-      names.forEach(function(nm){
-        var wrap = el('span','sl-ltab');
-        var b = el('button','sl-tab'+(isView({type:'list', name:nm})?' on':''));
-        b.type = 'button';
-        var t = el('span','',''); t.textContent = nm; b.appendChild(t);
-        b.appendChild(el('span','sl-tab-n', String(store.custom[nm].length)));
-        b.addEventListener('click', function(){
-          state.view = {type:'list', name:nm}; state.query=''; search.value=''; renderAll();
+      if(todaySaves.length || names.length){
+        var lrow = el('div','sl-tabrow');
+        var lscroll = el('div','sl-tabscroll');
+        if(todaySaves.length){
+          lscroll.appendChild(tabBtn({type:'today'}, 'SAVED FROM TODAY', todaySaves.length,
+            state.view.type==='today', null));
+        }
+        names.forEach(function(nm){
+          var wrap = el('span','sl-ltab');
+          var v = {type:'list', name:nm};
+          var b = el('button','sl-tab'+(isView(v)?' on':''));
+          b.type = 'button';
+          b.setAttribute('data-view', 'list:'+nm);
+          var t = el('span','',''); t.textContent = nm; b.appendChild(t);
+          b.appendChild(el('span','sl-tab-n', String(store.custom[nm].length)));
+          b.addEventListener('click', function(){
+            state.view = isView(v) ? {type:'all'} : v;
+            state.query=''; search.value=''; renderAll();
+          });
+          wrap.appendChild(b);
+          var del = el('button','sl-tabx','\u00D7');
+          del.type = 'button';
+          del.setAttribute('aria-label','Delete list '+nm);
+          del.setAttribute('title','Delete list');
+          del.addEventListener('click', function(ev){
+            ev.stopPropagation();
+            delete store.custom[nm];
+            saveStore(store);
+            if(state.view.type==='list' && state.view.name===nm) state.view = {type:'all'};
+            renderAll();
+          });
+          wrap.appendChild(del);
+          lscroll.appendChild(wrap);
         });
-        wrap.appendChild(b);
-        var del = el('button','sl-tabx','\u00D7');
-        del.type = 'button';
-        del.setAttribute('aria-label','Delete list '+nm);
-        del.setAttribute('title','Delete list');
-        del.addEventListener('click', function(ev){
-          ev.stopPropagation();
-          delete store.custom[nm];
-          saveStore(store);
-          if(state.view.type==='list' && state.view.name===nm) state.view = {type:'all'};
-          renderAll();
-        });
-        wrap.appendChild(del);
-        cscroll.appendChild(wrap);
-      });
-      crow.appendChild(cscroll);
-      var nb = el('button','sl-new','+ NEW LIST');
-      nb.type = 'button';
-      nb.addEventListener('click', openNewListModal);
-      crow.appendChild(nb);
-      tabs.appendChild(crow);
+        lrow.appendChild(lscroll);
+        tabs.appendChild(lrow);
+      }
 
-      /* Row 2 — categories on one level, each with its own spectrum color */
+      /* Row 2 — categories on one level, each with its own spectrum color.
+         Tabs toggle: nothing selected = all notes, so no tab sits lit by default. */
       var krow = el('div','sl-tabrow');
       var kscroll = el('div','sl-tabscroll');
       categories().forEach(function(c, i){
@@ -150,11 +169,11 @@
       var b = el('button','sl-tab'+(on?' on':''));
       b.type = 'button';
       if(color) b.style.setProperty('--tc', color);
-      var key = (typeof view === 'string') ? view : view.type+':'+view.name;
+      var key = view.type+':'+(view.name || view.type);
       var t = el('span','',''); t.textContent = label; b.appendChild(t);
       b.appendChild(el('span','sl-tab-n', String(n)));
       b.addEventListener('click', function(){
-        state.view = (typeof view === 'string') ? {type:view} : view;
+        state.view = isView(view) ? {type:'all'} : view;
         state.query=''; search.value='';
         renderAll();
       });
@@ -211,6 +230,7 @@
       grid.innerHTML = '';
       var list = currentNotes();
       count.textContent = list.length + (list.length===1 ? ' note' : ' notes');
+      clearf.style.display = (state.view.type!=='all' || state.query) ? '' : 'none';
       if(!list.length){
         var empty = el('div','sl-empty','');
         empty.textContent = state.view.type==='today'
