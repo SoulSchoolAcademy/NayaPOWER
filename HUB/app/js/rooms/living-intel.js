@@ -154,6 +154,7 @@
     FILTERS.forEach(function(f){
       var b = el('button','li-tab'+(f[0]===state.filter?' on':''), f[1]);
       b.type='button'; b.style.setProperty('--tab-c', f[2]);
+      b.setAttribute('aria-pressed', f[0]===state.filter ? 'true' : 'false');
       b.addEventListener('click', function(){ setFilter(f[0]); });
       tabs.appendChild(b);
     });
@@ -166,7 +167,10 @@
     function setFilter(f){
       state.filter = f;
       var btns = tabs.querySelectorAll('.li-tab');
-      FILTERS.forEach(function(ff,i){ btns[i].classList.toggle('on', ff[0]===f); });
+      FILTERS.forEach(function(ff,i){
+        btns[i].classList.toggle('on', ff[0]===f);
+        btns[i].setAttribute('aria-pressed', ff[0]===f ? 'true' : 'false');
+      });
       renderStream();
     }
 
@@ -207,7 +211,12 @@
       stream.innerHTML='';
       var list = visible();
       if(!list.length){
-        stream.appendChild(el('p','li-empty','Nothing flowing here yet.'));
+        var msg = 'Nothing flowing here yet.';
+        if(state.filter!=='all'){
+          var fname = state.filter==='intel' ? 'INTEL' : state.filter==='actions' ? 'ACTIONS' : 'CONNECTIONS';
+          msg = 'No ' + fname + ' beats in this view \u2014 switch to ALL to see the whole stream.';
+        }
+        stream.appendChild(el('p','li-empty',msg));
         return;
       }
       list.forEach(function(it, idx){ stream.appendChild(cardNode(it, idx, animate!==false)); });
@@ -260,12 +269,24 @@
     /* ============ HEARTBEAT MODAL ============ */
     var overlay = el('div','li-overlay'); overlay.style.display='none';
     var mcard = el('div','li-modal');
+    mcard.setAttribute('role','dialog'); mcard.setAttribute('aria-modal','true');
     overlay.appendChild(mcard);
     overlay.addEventListener('click', function(ev){ if(ev.target===overlay) closeModal(); });
     document.addEventListener('keydown', function esc(ev){
       if(ev.key==='Escape' && overlay.style.display==='flex') closeModal();
     });
     stage.appendChild(overlay);
+
+    var lastFocus = null;
+    function trapKeys(ev){
+      if(ev.key!=='Tab') return;
+      var els = mcard.querySelectorAll('button, [tabindex="0"], [href]');
+      if(!els.length) return;
+      var first = els[0], last = els[els.length-1];
+      var active = document.activeElement;
+      if(ev.shiftKey && active===first){ ev.preventDefault(); last.focus(); }
+      else if(!ev.shiftKey && active===last){ ev.preventDefault(); first.focus(); }
+    }
 
     function openModal(it, fc){
       mcard.innerHTML='';
@@ -298,9 +319,16 @@
       x.style.setProperty('--tab-c', fc);
       x.addEventListener('click', closeModal);
       mcard.appendChild(x);
+      lastFocus = document.activeElement;
       overlay.style.display='flex';
+      overlay.addEventListener('keydown', trapKeys);
+      x.focus();
     }
-    function closeModal(){ overlay.style.display='none'; }
+    function closeModal(){
+      overlay.style.display='none';
+      overlay.removeEventListener('keydown', trapKeys);
+      if(lastFocus && typeof lastFocus.focus==='function') lastFocus.focus();
+    }
 
     /* live time-ago ticker */
     var timer = setInterval(function(){

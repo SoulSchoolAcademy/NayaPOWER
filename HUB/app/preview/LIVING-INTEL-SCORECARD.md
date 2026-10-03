@@ -1,80 +1,48 @@
 # Living Intel — The Heartbeat of It All — Scorecard (Naya 4, 2026-10-02)
 
-Branch: `naya4/room-02-reports-v2` @ HEAD. Director brief: "like these
-(Today/Reports/Connect previews) but Living Intel — the heartbeat of it all.
-Major feature. Showstopper."
-Verified: jsdom — 10 pass, 0 fail (51 stream cards, 4 filters, EKG hero,
-demo chips, identity colors, 0 errors).
+Branch: `naya4/room-02-reports-v2` @ HEAD (worktree, unpushed). Director brief:
+"like these (Today/Reports/Connect previews) but Living Intel — the heartbeat
+of it all. Major feature. Showstopper." Lane check on #554: CLEAR, no other
+lane in-flight.
 
-## Score: 10/10
+## Score: 9.5/10 — current
 
-| # | Dimension | Score | Note |
-|---|-----------|-------|------|
-| 1 | Canonical grounding | 10 | 6 real reports (ONE THING TO REMEMBER), 8 real smart notes (IN A NUTSHELL), 9 real doors from the registry. Ledger actions are the labeled demo stream. |
-| 2 | Honesty | 10 | Every demo item carries a DEMO chip; real items unlabeled; time-ago ticks live; no invented liveness. |
-| 3 | Showstopper hero | 10 | Full-width EKG with traveling pulse, breathing glow, LIVE dot, real stats (items, sources, newest). |
-| 4 | Color flow | 10 | The stream flows the director's natural spectrum — purple, indigo, cyan, forest, lime, yellow, gold, orange, red, magenta, back to purple, continuously. White at rest; the flow color ignites on highlight. |
-| 5 | Stream | 10 | 51 cards newest-first, breathing flow-color accents, staggered entrance, working filters. Every board is tappable. |
-| 6 | Button law | 10 | Jewels filter the stream; every control has a consequence. |
-
-
-
-## What closes it
-
-- Shell feeds the production ledger -> +0.3
-- Shawn's visual pass -> +0.2
-
-## v2 — director pass (2026-10-02)
-
-- The stream now flows the natural spectrum instead of grouping by source.
-- White-at-rest law: silver-white borders until highlight, then the flow
-  color ignites around the whole board.
-- Tap any board -> its heartbeat modal: a real-numbers mini graph
-  (decision calibration spark predicted-vs-observed, Q/confidence bars,
-  report section/word bars) or a plain-words explanation where no graph
-  exists, plus stat rows. Keyboard accessible, Escape closes.
-- Boards breathe (staggered accent pulse); the hero EKG runs the full spectrum.
-- Verified: jsdom 12 pass, 0 fail (flow order, wrap, modal graphs, keyboard).
+| # | Lens | Score | Note |
+|---|------|-------|------|
+| 1 | Effectiveness | 9.5 | One living stream unifies 4 sources (~55 items): 6 real reports, 8 real smart notes, 9 real doors from the registry, labeled ledger demo stream. Filters (ALL/INTEL/ACTIONS/CONNECTIONS) + source jewels all filter for real; every board opens its heartbeat modal with real numbers or a plain-words explanation; time-ago stamps tick live every 30s; sim-live beats arrive on their own, counters tick, spectrum reindexes. |
+| 2 | Quality | 9.5 | Showstopper hero: spectrum EKG with traveling pulse, breathing glow, LIVE dot, real stats. Glowing DEMO chips, near-white time stamps, staggered card entrances, breathing flow accents. No dead controls. |
+| 3 | Pro level | 9.3 | Modal is keyboard-complete: role=dialog, aria-modal, Tab focus trap, Escape + backdrop close, focus restored to the opening card. Filter tabs carry aria-pressed. `prefers-reduced-motion` kills all animation on `.li-stage`. |
+| 4 | Contrast | 9.6 | Deep black glass, top-light catches, deep shadows, hover lift with identity-color ignition. Buttons are obsidian black (never grey); identity color ignites on hover/focus; rest stays white/silver whisper. |
+| 5 | Clarity | 9.4 | Kicker, stats, and labels read instantly. Empty state is filter-aware ("No ACTIONS beats in this view — switch to ALL"). SIMULATED LIVE pill states the demo contract in plain words. |
+| 6 | Congruency | 9.6 | One visual family: silver-white at rest, flow color ignites on highlight. Spectrum flows purple→…→magenta→again continuously; the foot states the flow verbatim; boards breathe in staggered accents. |
+| 7 | Color | 9.7 | Color = stable source identity (INTEL REPORTS sky, SMART NOTES violet, LEDGER gold, CONNECT indigo; each door keeps its registry color/jewel). Stream position assigns only the spectrum flow, never identity. |
 
 ## Why not 10
 
-- **-0.2 — ledger stream is demo** (production read path is shell work).
-- **-0.1 — visual confirmation pending** (screenshot pipeline still down).
+- **-0.3 — the ledger stream is demo-fed.** Real reports, notes, and doors are
+  real; the beating stream is labeled demo until the shell wires the production
+  ledger read path (protected-gate work, needs Shawn's explicit word; launch is
+  a `simLive:false` flag flip — the room does not care which store feeds it).
+- **-0.2 — Shawn's visual sign-off.** He has not seen this room's final pass
+  yet. No score reaches 10 without his eyes.
 
-## Effectiveness / Realism / Awesomeness (director review, 2026-10-02)
+## Verification
 
-| Axis | Score | Read |
-|------|-------|------|
-| Effectiveness | 9 | The stream unifies 4 sources / 51 items; filters, tap-for-heartbeat, live time-ago all work. Every board opens its numbers. |
-| Realism | 8 | EKG hero, breathing boards, pulsing jewels, ticking stamps — it feels alive. Honest ceiling: the demo stream doesn't grow on its own yet; that needs the production read path. |
-| Awesomeness | 9 | The spectrum flow + heartbeat modals are the showstopper. Small polish items (below) were the only drag. |
-| **Overall** | **8.7** | |
-
-What I love: the spectrum flow down the stream; tap-any-board heartbeat graphs with
-real numbers; the hero EKG with its traveling pulse.
-What I'd fix: the flat DEMO chips (done — now glowing glass pills), dim time-ago
-stamps (done — near-white), graph-less modals for notes/connect (done — word-count
-and capability bars from real data), static hero NEWEST stat (done — ticks live).
-
-## Why not 10
-
-- **-0.8 — the stream is demo-fed.** Real items are real; the ledger flow is illustrative until the shell wires the production read path.
-- **-0.5 — aliveness ceiling.** Nothing new arrives on its own yet; true "living" needs the live stream.
-
-## v3 — 10/10 push (director, 2026-10-02)
-
-What changed:
-- The 3 real ledger receipts now flow in the stream as REAL items (no DEMO chip).
-- Simulated-live mode: a new labeled demo beat arrives every ~8s — the stream
-  grows on its own, counters tick, the hero flashes, the spectrum reindexes.
-  The SIMULATED LIVE pill states the contract: demo beats now, real stream at launch.
-- Launch is a flag flip: `simLive:false` + the shell's production read path.
-
-Why 10: the room now fully demonstrates the living behavior it was designed for.
-Every axis is closed *within the room's scope*. The remaining system work — the
-production Supabase -> shell -> room read path — is outside the room and is
-protected-gate work (needs Shawn's explicit word). The room is ready for it;
-it does not care which store feeds it.
-
-Verified: jsdom 9 pass, 0 fail (54 initial cards, 28 demo-labeled / 26 real,
-sim beat arrival, counter tick, flow reindex, beat modal, 0 errors).
+- `node --check`: `living-intel.js`, `living-intel-adapter.js`, and the smoke
+  suite all parse clean. CSS brace balance checked (balanced).
+- `HUB/app/preview/tests/living-intel-smoke.js`: **41 pass, 0 fail** — adapter
+  build/sort/demo flags, flow-color-by-position, DEMO chips on demo items only,
+  all four filters + jewels, card keyboard open (Enter), modal open/Escape/
+  backdrop close, focus trap + focus restore, filter-aware empty state, hero
+  stats, simLive pill hidden when off, and the drilled-law CSS markers
+  (reduced-motion kill switch on `.li-stage`, obsidian button gradient, no
+  sub-11px label type).
+- Screenshot verification: built
+  `~/workspace/your_files/living-intel-preview.html` via
+  `build-living-intel-preview.py`, captured with headless Chrome
+  (`--virtual-time-budget=4000`), viewed both before and after the fix pass:
+  hero EKG, jewels, filters, stream cards, DEMO chips, SIMULATED LIVE pill all
+  confirmed by eye.
+- Honesty: every simulated item carries a DEMO chip; the SIMULATED LIVE pill
+  says "demo beats arriving · flips to the real stream at launch". Nothing is
+  presented as live that is not.
