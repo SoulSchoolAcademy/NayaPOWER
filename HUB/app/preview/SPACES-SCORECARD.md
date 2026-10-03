@@ -49,6 +49,17 @@ Rebuilt around that concept. What changed mechanically:
 | 6 | Congruency | 10 | Same obsidian/ball/depth family as Mail and Connections; violet is room chrome only. |
 | 7 | Color law | 10 | Each space owns its stable color; each member their own; never positional. |
 
+## The "feel alive" pass (Shawn, 2026-10-02 ~23:20 PDT)
+
+His verdict on the grid: "it doesn't feel like a room where people are
+talking." He was right — the grid showed zero conversation. Two fixes:
+
+1. **Last-message preview on every card** — author · time · snippet, like
+   every chat app. The grid now reads as living conversation at a glance.
+2. **Demo seeds rewritten as back-and-forth**, minutes fresh ("Naya 2 asks
+   → Naya 4 answers → Shawn reacts") instead of disconnected bulletins.
+   Still DEMO-labeled; illustrative, never presented as real activity.
+
 **Score: 9.7/10.** Why not 10: quality and pro level are his call
 (-0.2), and realtime multi-user delivery is backend-gated, local-only until
 the shell wires it (-0.1, honestly labeled).
@@ -56,7 +67,7 @@ the shell wires it (-0.1, honestly labeled).
 ## Verification
 
 - `node --check` clean (room + adapter); CSS braces balanced (93/93).
-- `HUB/app/preview/tests/spaces-smoke.js` — **51 pass, 0 fail**: grid opens
+- `HUB/app/preview/tests/spaces-smoke.js` — **54 pass, 0 fail**: grid opens
   spaces, topic block, unified oldest-first conversation with DEMO chips +
   authors, instant post (renders/persists/remounts, mine-tinted, unlabeled),
   mail-to-space seed appears in conversation carrying sender name,

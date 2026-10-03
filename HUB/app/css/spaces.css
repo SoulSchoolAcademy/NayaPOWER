@@ -274,3 +274,11 @@
 @media (prefers-reduced-motion: reduce){
   .sp-stage *{ animation:none !important; transition:none !important; }
 }
+
+/* last-message preview: the grid shows life — latest message per space */
+.sp-stage .sp-card-preview{
+  margin:14px 0 0; font-size:14px; line-height:1.5; color:#b9b3a6;
+  border-top:1px solid rgba(255,255,255,.08); padding-top:12px;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.sp-stage .sp-card-preview-who{ color:#fff; font-weight:700; }

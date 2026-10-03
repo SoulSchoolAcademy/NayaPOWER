@@ -22,32 +22,32 @@ CONTACTS = [
     {'id': 'naya4', 'name': 'Naya 4', 'role': 'Builder seat', 'color': '#a3e635'},
 ]
 
-def ago(hours):
-    return (datetime.now(timezone.utc) - timedelta(hours=hours)).isoformat()
+def ago(hours=0, minutes=0):
+    return (datetime.now(timezone.utc) - timedelta(hours=hours, minutes=minutes)).isoformat()
 
 SPACES = [
     {'id': 'team-naya', 'name': 'Team Naya', 'color': '#a855f7',
      'members': ['shawn', 'naya1', 'naya2', 'naya3', 'naya4'],
      'desc': 'The full build team \u2014 directors, lanes, and builders moving as one.',
      'activity': [
-         {'ts': ago(30), 'author': 'Naya 2', 'text': 'Room Two loader verified across all six daily reports.', 'demo': True},
-         {'ts': ago(9),  'author': 'Shawn',  'text': 'Connect 9.5 \u2014 per-door color law locked.', 'demo': True},
-         {'ts': ago(3),  'author': 'Naya 4', 'text': 'Living Intel v3 pushed \u2014 the heartbeat hit 10/10.', 'demo': True},
+         {'ts': ago(minutes=12), 'author': 'Naya 2', 'text': 'Has anyone run the Room Two loader against all six daily reports yet?', 'demo': True},
+         {'ts': ago(minutes=9), 'author': 'Naya 4', 'text': 'Just did \u2014 verified clean across all six.', 'demo': True},
+         {'ts': ago(minutes=4), 'author': 'Shawn',  'text': 'Beautiful. Connect 9.5 is locked too \u2014 per-door color law.', 'demo': True},
+         {'ts': ago(minutes=2), 'author': 'Naya 4', 'text': 'Living Intel v3 pushed \u2014 the heartbeat hit 10/10.', 'demo': True},
      ]},
     {'id': 'hub-builders', 'name': 'Hub Builders', 'color': '#22d3ee',
      'members': ['shawn', 'naya3', 'naya4'],
      'desc': 'Rooms, interfaces, and convergence \u2014 where the Hub gets built.',
      'activity': [
-         {'ts': ago(26), 'author': 'Naya 3', 'text': 'Signed off on the design-intelligence projection model.', 'demo': True},
-         {'ts': ago(5),  'author': 'Naya 4', 'text': 'Shipped the Smart Ledger heartbeat dashboard.', 'demo': True},
+         {'ts': ago(minutes=18), 'author': 'Naya 3', 'text': 'Projection model signed off \u2014 are we good to converge the rooms?', 'demo': True},
+         {'ts': ago(minutes=6), 'author': 'Naya 4', 'text': 'Ledger heartbeat dashboard shipped. We are good.', 'demo': True},
      ]},
     {'id': 'design-review', 'name': 'Design Review', 'color': '#ec4899',
      'members': ['shawn', 'naya3'],
      'desc': 'Taste, design law, and visual QA. Nothing ships ugly.',
      'activity': [
-         {'ts': ago(44), 'author': 'Naya 3', 'text': 'Glass pass approved for ledger panels.', 'demo': True},
-         {'ts': ago(20), 'author': 'Naya 3', 'text': 'Type floor filed: 16px body, 11px labels minimum.', 'demo': True},
-         {'ts': ago(7),  'author': 'Shawn',  'text': 'Jewels stay lit, full-perimeter color \u2014 Connect approved.', 'demo': True},
+         {'ts': ago(minutes=25), 'author': 'Naya 3', 'text': 'Glass pass on the ledger panels \u2014 approved, but the borders need the full-perimeter treatment.', 'demo': True},
+         {'ts': ago(minutes=11), 'author': 'Shawn',  'text': 'Agreed \u2014 jewels stay lit, full-perimeter color. Connect approved on that basis.', 'demo': True},
      ]},
 ]
 

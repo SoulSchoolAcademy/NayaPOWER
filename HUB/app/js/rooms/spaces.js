@@ -276,11 +276,25 @@
           dot.title = m.name;
           row.appendChild(dot);
         });
-        var cnt = el('span','sp-card-count','');
+        var cnt = el('span','sp-card-count',''); 
         var n = effectiveMembers(s).length;
         cnt.textContent = n + (n === 1 ? ' person' : ' people') + ' \u00B7 ' + conversation(s).length + ' messages';
         row.appendChild(cnt);
         card.appendChild(row);
+        /* the grid shows life: the latest message, so a space reads as a
+           conversation at a glance — like every chat app. */
+        var conv = conversation(s);
+        if(conv.length){
+          var lastM = conv[conv.length-1];
+          var prev = el('p','sp-card-preview','');
+          var who = el('b','sp-card-preview-who','');
+          who.textContent = (lastM.author || 'You') + ' \u00B7 ' + fmtTime(lastM.ts);
+          prev.appendChild(who);
+          var rest = el('span','','');
+          rest.textContent = ' \u2014 ' + String(lastM.text || '').slice(0, 90);
+          prev.appendChild(rest);
+          card.appendChild(prev);
+        }
         var open = function(){ openSpace(s.id); };
         card.addEventListener('click', open);
         card.addEventListener('keydown', function(ev){
