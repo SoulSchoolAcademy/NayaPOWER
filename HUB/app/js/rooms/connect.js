@@ -195,6 +195,8 @@
       if(onConnect){ onConnect(d.id); return; }
       /* honest inline state — never a fake connection */
       var n = el('div','cn-notice');
+      n.setAttribute('role','status');
+      n.setAttribute('aria-live','polite');
       var t = el('p','cn-notice-title',''); t.textContent = d.statusKind==='live' ? 'Connection manager' : 'Not yet wired';
       n.appendChild(t);
       var p = el('p','cn-notice-text','');

@@ -90,7 +90,7 @@
 .connect-stage .cn-name{ font-size:clamp(20px,2.6vw,26px); font-weight:900; letter-spacing:-.01em; margin:0 0 4px; color:#fff; }
 .connect-stage .cn-tagline{ font-size:13px; color:var(--door); margin:0; font-weight:600; transition:color .22s ease; }
 .connect-stage .cn-pill{
-  flex:none; font-size:10px; font-weight:800; letter-spacing:.16em;
+  flex:none; font-size:11px; font-weight:800; letter-spacing:.16em;
   padding:7px 14px; border-radius:99px;
   border:1px solid color-mix(in srgb, var(--door) 55%, transparent); color:var(--door);
   box-shadow:0 0 14px -4px var(--door), inset 0 1px 0 rgba(255,255,255,.15);
@@ -100,11 +100,11 @@
   border-color:rgba(255,255,255,.25); color:var(--cn-dim);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.1); text-shadow:none;
 }
-.connect-stage .cn-plain{ font-size:15.5px; line-height:1.65; color:#d7dcd8; margin:0 0 16px; max-width:720px; }
+.connect-stage .cn-plain{ font-size:16px; line-height:1.65; color:#d7dcd8; margin:0 0 16px; max-width:720px; }
 .connect-stage .cn-caps{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:0 0 14px; }
-.connect-stage .cn-caps-label{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--cn-dim); margin-right:4px; }
+.connect-stage .cn-caps-label{ font-size:11px; font-weight:800; letter-spacing:.18em; color:var(--cn-dim); margin-right:4px; }
 .connect-stage .cn-cap{
-  font-size:10.5px; font-weight:700; letter-spacing:.08em; color:#e8f5ee;
+  font-size:11px; font-weight:700; letter-spacing:.08em; color:#e8f5ee;
   border:1px solid color-mix(in srgb, var(--door) 38%, transparent); border-radius:99px; padding:6px 12px;
   background:color-mix(in srgb, var(--door) 9%, transparent);
   transition:border-color .22s ease, background .22s ease;
@@ -112,21 +112,22 @@
 .connect-stage .cn-auth{ font-size:13.5px; line-height:1.6; color:var(--cn-dim); margin:0 0 20px; max-width:720px; }
 .connect-stage .cn-auth strong{ color:#fff; font-weight:800; }
 
-/* actions — Shawn's button law: silver at rest, emerald on highlight */
+/* actions — Shawn's button law: obsidian black at rest, the door's own color igniting on highlight */
 .connect-stage .cn-actions{ display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
 .connect-stage .cn-connect{
   --glow:var(--door);
   padding:13px 30px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.12em;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:#060807; border:1px solid rgba(232,234,242,.5);
+  background:linear-gradient(180deg,#1b1b21,#0b0b0e);
+  border:1px solid rgba(232,234,242,.5);
   text-shadow:0 0 10px rgba(255,255,255,.35);
-  box-shadow:0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow:0 6px 18px rgba(0,0,0,.55), 0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.16);
   transition:border-color .22s ease, box-shadow .25s ease, transform .15s ease;
 }
 .connect-stage .cn-connect:hover, .connect-stage .cn-connect:focus-visible{
   border-color:var(--glow); transform:translateY(-1px); outline:none;
   text-shadow:0 0 10px var(--glow);
-  box-shadow:0 0 24px -4px var(--glow), inset 0 0 16px -8px var(--glow), inset 0 1px 0 rgba(255,255,255,.15);
+  box-shadow:0 8px 22px rgba(0,0,0,.6), 0 0 24px -4px var(--glow), inset 0 0 16px -8px var(--glow), inset 0 1px 0 rgba(255,255,255,.16);
 }
 
 /* honest inline notice — the button's real consequence when no handler is wired */
@@ -138,11 +139,12 @@
 .connect-stage .cn-notice-title{ font-size:11px; font-weight:800; letter-spacing:.16em; color:var(--door); margin:0 0 8px; }
 .connect-stage .cn-notice-text{ font-size:14px; line-height:1.6; color:#d7dcd8; margin:0 0 14px; }
 .connect-stage .cn-notice-close{
-  padding:9px 20px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:.12em;
+  padding:9px 20px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.12em;
   cursor:pointer; font-family:inherit; color:#fff;
-  background:#060807; border:1px solid rgba(232,234,242,.5);
+  background:linear-gradient(180deg,#1b1b21,#0b0b0e);
+  border:1px solid rgba(232,234,242,.5);
   text-shadow:0 0 10px rgba(255,255,255,.35);
-  box-shadow:0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow:0 5px 14px rgba(0,0,0,.55), 0 0 18px -5px rgba(255,255,255,.55), inset 0 1px 0 rgba(255,255,255,.16);
   transition:border-color .22s ease, box-shadow .25s ease, transform .15s ease;
 }
 .connect-stage .cn-notice-close:hover, .connect-stage .cn-notice-close:focus-visible{
@@ -160,4 +162,9 @@
 @media(max-width:640px){
   .connect-stage{ padding:28px 16px 70px; }
   .connect-stage .cn-door{ padding:24px 22px 24px 28px; }
+}
+
+/* reduced motion: entrance lifts and hover transitions go flat */
+@media (prefers-reduced-motion: reduce){
+  .connect-stage *{ animation:none !important; transition:none !important; }
 }
