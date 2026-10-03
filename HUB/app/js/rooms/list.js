@@ -29,18 +29,25 @@
   var FLOW = ['#a855f7','#6366f1','#22d3ee','#16a34a','#a3e635',
               '#facc15','#d4a017','#fb923c','#ef4444','#ec4899'];
 
+  /* Store: custom lists + the SmartTabs ribbon.
+     tabs[] follows Shawn's SmartTabs v9 data shape {id,label,heart,star},
+     plus key = the category binding (his `route` becomes our filter key)
+     and custom = user-added tab. hiddenTabs = removed derived tabs. */
   function loadStore(){
-    var s = { custom:{}, cats:{ added:[], renamed:{}, hidden:[] } };
+    var s = { custom:{}, tabs:[], hiddenTabs:[] };
     try{
-      var raw = JSON.parse(localStorage.getItem(STORE_KEY));
-      if(raw && typeof raw === 'object'){
-        if(raw.custom && typeof raw.custom === 'object') s.custom = raw.custom;
-        if(raw.cats && typeof raw.cats === 'object'){
-          if(Array.isArray(raw.cats.added)) s.cats.added = raw.cats.added.filter(function(x){ return typeof x === 'string'; });
-          if(raw.cats.renamed && typeof raw.cats.renamed === 'object') s.cats.renamed = raw.cats.renamed;
-          if(Array.isArray(raw.cats.hidden)) s.cats.hidden = raw.cats.hidden.filter(function(x){ return typeof x === 'string'; });
-        }
-        return s;
+      var raw = JSON.parse(localStorage.getItem(STORE_KEY)) || {};
+      if(raw.custom && typeof raw.custom === 'object') s.custom = raw.custom;
+      if(Array.isArray(raw.tabs)) s.tabs = raw.tabs;
+      if(Array.isArray(raw.hiddenTabs)) s.hiddenTabs = raw.hiddenTabs;
+      if(raw.cats && !raw.tabs){
+        /* migrate the v5 cats model */
+        var renamed = raw.cats.renamed || {};
+        (raw.cats.added || []).forEach(function(nm){
+          s.tabs.push({ id:'tab-custom-'+nm, key:'custom:'+nm, label:nm, heart:false, star:false, custom:true });
+        });
+        s._renamed = renamed;
+        s.hiddenTabs = (raw.cats.hidden || []).slice();
       }
     }catch(err){}
     return s;
@@ -114,25 +121,71 @@
     var grid = el('div','sl-grid');
     main.appendChild(grid);
 
-    /* ---------- category tabs: derived from notes + user-managed ---------- */
+    /* ============ Shawn's SmartTabs v9, ported as the category ribbon ============
+       His component: pill ribbon, click = navigate, right-click / ⋯ =
+       Edit / Set Purple Heart / Set Gold Star / Remove, ＋Add pill, popover
+       editor with 💜/⭐ toggles, heart-first sort, localStorage persistence.
+       Ported here: click = filter the Smart List (the list's "navigation"),
+       his `route` binding becomes our category `key`. Same pill language,
+       same menu, same popover, same sort. */
+
     function setClass(elm, cls, on){
       var cs = (' ' + (elm.className||'') + ' ').replace(/\s+/g,' ');
       var has = cs.indexOf(' ' + cls + ' ') >= 0;
       if(on && !has) elm.className = ((elm.className||'') + ' ' + cls).trim();
       else if(!on && has) elm.className = cs.split(' ' + cls + ' ').join(' ').trim();
     }
+    function hasClass(elm, cls){
+      return ((' '+(elm.className||'')+' ').replace(/\s+/g,' ').indexOf(' '+cls+' ') >= 0);
+    }
 
-    /* Visible tabs: derived categories (minus hidden, plus renames) then added customs. */
-    function visibleCategories(){
-      var out = [];
+    /* Stable spectrum color per tab: color is the tab's identity, so it must
+       not shift when 💜/⭐ re-sort the ribbon. */
+    function tabColor(key){
+      var h = 0, s = String(key);
+      for(var i=0;i<s.length;i++){ h = ((h*31) + s.charCodeAt(i)) | 0; }
+      return FLOW[Math.abs(h) % FLOW.length];
+    }
+
+    /* Keep the ribbon grounded in the real notes: every derived category gets
+       a tab unless hidden; vanished categories drop off; customs persist. */
+    function syncTabs(){
+      var have = {}, changed = false;
+      store.tabs.forEach(function(t){ have[t.key]=true; });
       categories().forEach(function(c){
-        if(store.cats.hidden.indexOf(c.name) >= 0) return;
-        out.push({ key:c.name, label:(store.cats.renamed[c.name] || prettyCat(c.name)), n:c.n, custom:false });
+        if(have[c.name] || store.hiddenTabs.indexOf(c.name)>=0) return;
+        store.tabs.push({ id:'tab-'+String(c.name).replace(/[^a-z0-9]+/gi,'-').toLowerCase(),
+          key:c.name, label:prettyCat(c.name), heart:false, star:false, custom:false });
+        changed = true;
       });
-      store.cats.added.forEach(function(name){
-        out.push({ key:'custom:'+name, label:name, n:0, custom:true });
+      if(store._renamed){
+        Object.keys(store._renamed).forEach(function(k){
+          store.tabs.forEach(function(t){ if(t.key===k) t.label = store._renamed[k]; });
+        });
+        delete store._renamed; changed = true;
+      }
+      var cats = {};
+      categories().forEach(function(c){ cats[c.name]=true; });
+      var before = store.tabs.length;
+      store.tabs = store.tabs.filter(function(t){ return t.custom || !!cats[t.key]; });
+      if(store.tabs.length!==before) changed = true;
+      var hb = store.hiddenTabs.length;
+      store.hiddenTabs = store.hiddenTabs.filter(function(k){ return !!cats[k]; });
+      if(store.hiddenTabs.length!==hb) changed = true;
+      if(changed) saveStore(store);
+    }
+
+    /* His sortLit: 💜 first, then ⭐, the rest keep insertion order. */
+    function sortedTabs(){
+      return store.tabs.slice().sort(function(a,b){
+        var pa = (a.heart?2:0)+(a.star?1:0), pb = (b.heart?2:0)+(b.star?1:0);
+        return pb - pa;
       });
-      return out;
+    }
+    /* What the ribbon shows: everything except hidden tabs. Hidden tabs keep
+       their objects, so rename/💜/⭐ survive a remove → restore round-trip. */
+    function visibleTabs(){
+      return sortedTabs().filter(function(t){ return store.hiddenTabs.indexOf(t.key)<0; });
     }
 
     /* A horizontally scrolling row done properly: edge fades + chevrons when
@@ -166,87 +219,228 @@
       });
     }
 
-    /* ---------- tabs: lists row (only when it earns the space) + scrolling category bar ---------- */
+    function placeNear(anchor, panel){
+      if(!anchor || !anchor.getBoundingClientRect) return;
+      try{
+        var r = anchor.getBoundingClientRect();
+        var W = panel.offsetWidth||280, H = panel.offsetHeight||180;
+        var vw = window.innerWidth||1024, vh = window.innerHeight||768;
+        panel.style.left = Math.min(vw-W-8, Math.max(8, r.left))+'px';
+        panel.style.top = Math.min(vh-H-8, (r.bottom||r.top||0)+8)+'px';
+      }catch(e){}
+    }
+
+    /* ---------- the ribbon ---------- */
     function renderTabs(){
       tabs.innerHTML = '';
       scrollUpdaters = [];
+      syncTabs();
 
-      /* Row 1 — lists: Saved from Today (only when non-empty) + my lists. */
+      /* Row 1 — lists row (only when it earns the space), same pill language. */
       var todaySaves = loadTodaySaves();
       var names = Object.keys(store.custom).sort();
       if(todaySaves.length || names.length){
         var lrow = el('div','sl-tabrow');
         var lr = scrollRow();
         if(todaySaves.length){
-          lr.scroll.appendChild(tabBtn({type:'today'}, 'SAVED FROM TODAY', todaySaves.length,
-            state.view.type==='today', null));
+          lr.scroll.appendChild(listPill('SAVED FROM TODAY', todaySaves.length, {type:'today'}, null));
         }
         names.forEach(function(nm){
-          var wrap = el('span','sl-ltab');
           var v = {type:'list', name:nm};
-          var b = el('button','sl-tab'+(isView(v)?' on':''));
-          b.type = 'button';
-          b.setAttribute('data-view', 'list:'+nm);
-          var t = el('span','',''); t.textContent = nm; b.appendChild(t);
-          b.appendChild(el('span','sl-tab-n', String(store.custom[nm].length)));
-          b.addEventListener('click', function(){
-            state.view = isView(v) ? {type:'all'} : v;
-            state.query=''; search.value=''; renderAll();
-          });
-          wrap.appendChild(b);
-          var del = el('button','sl-tabx','\u00D7');
-          del.type = 'button';
-          del.setAttribute('aria-label','Delete list '+nm);
-          del.setAttribute('title','Delete list');
-          del.addEventListener('click', function(ev){
-            ev.stopPropagation();
+          lr.scroll.appendChild(listPill(nm, store.custom[nm].length, v, function(){
             delete store.custom[nm];
             saveStore(store);
             if(state.view.type==='list' && state.view.name===nm) state.view = {type:'all'};
             renderAll();
-          });
-          wrap.appendChild(del);
-          lr.scroll.appendChild(wrap);
+          }));
         });
         lrow.appendChild(lr.wrap);
         tabs.appendChild(lrow);
       }
 
-      /* Row 2 — the scrolling category bar: one level, toggle to filter,
-         each tab lighting in its own spectrum color. Nothing lit by default. */
+      /* Row 2 — the SmartTabs ribbon. Click a pill = filter (toggle). */
       var krow = el('div','sl-tabrow');
       var kr = scrollRow();
-      visibleCategories().forEach(function(c, i){
-        kr.scroll.appendChild(tabBtn({type:'cat', name:c.key}, c.label, c.n,
-          isView({type:'cat', name:c.key}), FLOW[i % FLOW.length]));
+      visibleTabs().forEach(function(t){
+        kr.scroll.appendChild(snPill(t));
       });
+      var addPill = el('div','sn-pill add');
+      addPill.setAttribute('tabindex','0');
+      addPill.setAttribute('role','button');
+      addPill.setAttribute('aria-label','Add a tab');
+      var alab = el('span','sn-label',''); alab.textContent = '\uFF0B Add'; addPill.appendChild(alab);
+      var addGo = function(){ openTabEditor(null, true, addPill); };
+      addPill.addEventListener('click', addGo);
+      addPill.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); addGo(); }
+      });
+      kr.scroll.appendChild(addPill);
       krow.appendChild(kr.wrap);
-      var mg = el('button','sl-manage','\u2699 TABS');
-      mg.type = 'button';
-      mg.setAttribute('title','Add, rename, or hide category tabs');
-      mg.setAttribute('aria-label','Manage category tabs');
-      mg.addEventListener('click', openManageCats);
-      krow.appendChild(mg);
       tabs.appendChild(krow);
 
       scrollUpdaters.forEach(function(u){ u(); });
     }
 
-    function tabBtn(view, label, n, on, color){
-      var b = el('button','sl-tab'+(on?' on':''));
-      b.type = 'button';
-      if(color) b.style.setProperty('--tc', color);
-      var key = view.type+':'+(view.name || view.type);
-      var t = el('span','',''); t.textContent = label; b.appendChild(t);
-      b.appendChild(el('span','sl-tab-n', String(n)));
-      b.addEventListener('click', function(){
-        state.view = isView(view) ? {type:'all'} : view;
-        state.query=''; search.value='';
-        renderAll();
+    /* One SmartTab pill: label + 💜/⭐ marker + ⋯ menu. */
+    function snPill(t){
+      var p = el('div','sn-pill'+(t.heart?' heart':'')+(t.star?' star':'')+
+        (isView({type:'cat',name:t.key})?' on':''));
+      p.style.setProperty('--tc', tabColor(t.key));
+      p.setAttribute('data-id', t.id);
+      p.setAttribute('tabindex','0');
+      p.setAttribute('role','button');
+      p.setAttribute('aria-label','Filter by '+t.label);
+      var lab = el('span','sn-label',''); lab.textContent = t.label; p.appendChild(lab);
+      if(t.heart || t.star){
+        var mk = el('span','sn-mark',''); mk.textContent = t.heart ? '\uD83D\uDC9C' : '\u2B50'; p.appendChild(mk);
+      }
+      var more = el('button','sn-more','\u22EF');
+      more.type='button';
+      more.setAttribute('aria-label','Tab options for '+t.label);
+      more.addEventListener('click', function(ev){ ev.stopPropagation(); openTabMenu(t, p); });
+      p.appendChild(more);
+      var go = function(){
+        var v = {type:'cat', name:t.key};
+        state.view = isView(v) ? {type:'all'} : v;
+        state.query=''; search.value=''; renderAll();
+      };
+      p.addEventListener('click', go);
+      p.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); }
       });
-      b.setAttribute('data-view', key);
-      return b;
+      p.addEventListener('contextmenu', function(ev){ ev.preventDefault(); openTabMenu(t, p); });
+      return p;
     }
+
+    /* A saved-collection pill in the same language (× instead of ⋯). */
+    function listPill(label, count, view, onDelete){
+      var p = el('div','sn-pill'+(isView(view)?' on':''));
+      p.style.setProperty('--tc', '#ffffff');
+      p.setAttribute('data-view', view.type+':'+(view.name||view.type));
+      p.setAttribute('tabindex','0');
+      p.setAttribute('role','button');
+      p.setAttribute('aria-label', label);
+      var lab = el('span','sn-label',''); lab.textContent = label; p.appendChild(lab);
+      p.appendChild(el('span','sn-count', String(count)));
+      if(onDelete){
+        var x = el('button','sn-more sn-x','\u00D7'); x.type='button';
+        x.setAttribute('aria-label','Delete '+label);
+        x.addEventListener('click', function(ev){ ev.stopPropagation(); onDelete(); });
+        p.appendChild(x);
+      }
+      var go = function(){
+        state.view = isView(view) ? {type:'all'} : view;
+        state.query=''; search.value=''; renderAll();
+      };
+      p.addEventListener('click', go);
+      p.addEventListener('keydown', function(ev){
+        if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); go(); }
+      });
+      return p;
+    }
+
+    /* ---------- the ⋯ menu: his Edit / 💜 / ⭐ / Remove ---------- */
+    var tabMenu = el('div','sn-menu'); tabMenu.style.display='none'; stage.appendChild(tabMenu);
+    var menuTab = null;
+    function openTabMenu(t, anchor){
+      menuTab = t;
+      tabMenu.innerHTML = '';
+      var items = [['edit','\u270F\uFE0F Edit'],['heart','\uD83D\uDC9C Set Purple Heart'],
+                   ['star','\u2B50 Set Gold Star'],['remove','\u2715 Remove']];
+      items.forEach(function(it){
+        var mi = el('div','mi',''); mi.textContent = it[1]; mi.setAttribute('data-act', it[0]);
+        (function(act){ mi.addEventListener('click', function(){ tabMenuAction(act); }); })(it[0]);
+        tabMenu.appendChild(mi);
+      });
+      tabMenu.style.display='block';
+      placeNear(anchor, tabMenu);
+    }
+    function tabMenuAction(act){
+      tabMenu.style.display='none';
+      var t = menuTab; if(!t) return;
+      if(act==='edit'){ openTabEditor(t, false, null); }
+      else if(act==='heart' || act==='star'){
+        store.tabs.forEach(function(x){
+          if(x.id===t.id){ x.heart = (act==='heart'); x.star = (act==='star'); }
+        });
+        saveStore(store); renderAll();
+      }
+      else if(act==='remove'){
+        if(t.custom){
+          store.tabs = store.tabs.filter(function(x){ return x.id!==t.id; });
+        } else if(store.hiddenTabs.indexOf(t.key)<0){
+          /* derived: hide the tab, keep its object — rename/💜/⭐ survive restore */
+          store.hiddenTabs.push(t.key);
+        }
+        saveStore(store);
+        if(state.view.type==='cat' && state.view.name===t.key) state.view = {type:'all'};
+        renderAll();
+      }
+    }
+
+    /* ---------- the popover editor: his Label + 💜/⭐ toggles ---------- */
+    var tabPop = el('div','sn-pop'); tabPop.style.display='none'; stage.appendChild(tabPop);
+    function openTabEditor(t, isCreate, anchor){
+      tabPop.innerHTML = '';
+      tabPop.appendChild(el('h3','sn-pop-title', isCreate ? 'Add Tab' : 'Edit Tab'));
+      var r1 = el('div','row');
+      var l1 = el('label','','Label');
+      var inLabel = el('input','sn-in-label'); inLabel.type='text';
+      inLabel.value = isCreate ? '' : t.label;
+      inLabel.placeholder = 'e.g. Design';
+      inLabel.setAttribute('aria-label','Tab label');
+      l1.appendChild(inLabel); r1.appendChild(l1); tabPop.appendChild(r1);
+      var tg = el('div','toggles');
+      var tH = el('div','tgl sn-tgl-heart'+((!isCreate && t.heart)?' on':''), '\uD83D\uDC9C Purple Heart');
+      var tS = el('div','tgl sn-tgl-star'+((!isCreate && t.star)?' on':''), '\u2B50 Gold Star');
+      tH.addEventListener('click', function(){ setClass(tH,'on',!hasClass(tH,'on')); setClass(tS,'on',false); });
+      tS.addEventListener('click', function(){ setClass(tS,'on',!hasClass(tS,'on')); setClass(tH,'on',false); });
+      tg.appendChild(tH); tg.appendChild(tS); tabPop.appendChild(tg);
+      if(isCreate && store.hiddenTabs.length){
+        tabPop.appendChild(el('p','sn-msub','HIDDEN — TAP TO RESTORE'));
+        store.hiddenTabs.forEach(function(key){
+          var rb = el('button','sn-btn sn-restore',''); rb.type='button';
+          rb.textContent = prettyCat(key);
+          rb.addEventListener('click', function(){
+            store.hiddenTabs = store.hiddenTabs.filter(function(x){ return x!==key; });
+            saveStore(store); renderAll(); openTabEditor(null, true, anchor);
+          });
+          tabPop.appendChild(rb);
+        });
+      }
+      var ft = el('div','ft');
+      var cancel = el('button','sn-btn sn-cancel','Cancel'); cancel.type='button';
+      cancel.addEventListener('click', function(){ tabPop.style.display='none'; });
+      var save = el('button','sn-btn primary sn-save','Save'); save.type='button';
+      save.addEventListener('click', function(){
+        var label = inLabel.value.trim() || (isCreate ? 'New Tab' : t.label);
+        var heart = hasClass(tH,'on'), star = hasClass(tS,'on');
+        if(isCreate){
+          var dup = store.tabs.some(function(x){ return x.label.toLowerCase()===label.toLowerCase(); });
+          if(!dup) store.tabs.push({ id:'tab-'+Date.now(), key:'custom:'+label,
+            label:label, heart:heart, star:star, custom:true });
+        } else {
+          store.tabs.forEach(function(x){
+            if(x.id===t.id){ x.label=label; x.heart=heart; x.star=star; }
+          });
+        }
+        saveStore(store); tabPop.style.display='none'; renderAll();
+      });
+      ft.appendChild(cancel); ft.appendChild(save); tabPop.appendChild(ft);
+      tabPop.style.display='block';
+      placeNear(anchor, tabPop);
+      if(inLabel.focus) inLabel.focus();
+    }
+
+    /* His global close: click outside, or Escape, dismisses menu + popover. */
+    document.addEventListener('click', function(ev){
+      var t = ev.target, inside = false;
+      try{
+        inside = !!(t && ((tabs.contains && tabs.contains(t)) ||
+          (tabMenu.contains && tabMenu.contains(t)) || (tabPop.contains && tabPop.contains(t))));
+      }catch(e){}
+      if(!inside){ tabMenu.style.display='none'; tabPop.style.display='none'; }
+    });
 
     function isView(v){
       if(state.view.type !== v.type) return false;
@@ -424,6 +618,7 @@
     overlay.addEventListener('click', function(ev){ if(ev.target === overlay) closeModal(); });
     document.addEventListener('keydown', function(ev){
       if(ev.key === 'Escape' && overlay.style.display !== 'none') closeModal();
+      if(ev.key === 'Escape'){ tabMenu.style.display='none'; tabPop.style.display='none'; }
     });
     /* Focus trap: Tab cycles inside the open modal, never escapes to the page. */
     function focusables(){
@@ -553,84 +748,6 @@
       inp.focus();
     }
 
-    /* Manage the category tabs: rename, hide, restore, add. Persisted in the
-       room store — notes themselves are never touched. */
-    function openManageCats(){
-      mbox.style.setProperty('--ic', '#a855f7');
-      modalHead('MANAGE TABS', 'Rename, hide, or add category tabs');
-      var list = el('div','sl-catlist');
-      visibleCategories().forEach(function(c){
-        var row = el('div','sl-catrow');
-        var inp = el('input','sl-input'); inp.type='text'; inp.value = c.label;
-        inp.setAttribute('aria-label','Rename tab '+c.label);
-        inp.addEventListener('change', function(){
-          var v = inp.value.trim();
-          if(!v){ inp.value = c.label; return; }
-          if(c.custom){
-            var i = store.cats.added.indexOf(c.label);
-            if(i >= 0) store.cats.added[i] = v;
-          } else {
-            store.cats.renamed[c.key] = v;
-          }
-          saveStore(store); state.view = {type:'all'}; renderAll(); openManageCats();
-        });
-        row.appendChild(inp);
-        row.appendChild(el('span','sl-catn', c.n + (c.n===1 ? ' note' : ' notes')));
-        var del = el('button','sl-btn sl-btndanger', c.custom ? 'DELETE' : 'HIDE');
-        del.type = 'button';
-        del.setAttribute('title', c.custom ? 'Delete this tab' : 'Hide this tab (its notes stay under All)');
-        del.addEventListener('click', function(){
-          if(c.custom){
-            store.cats.added = store.cats.added.filter(function(x){ return x !== c.label; });
-          } else if(store.cats.hidden.indexOf(c.key) < 0){
-            store.cats.hidden.push(c.key);
-          }
-          saveStore(store); state.view = {type:'all'}; renderAll(); openManageCats();
-        });
-        row.appendChild(del);
-        list.appendChild(row);
-      });
-      mbox.appendChild(list);
-
-      if(store.cats.hidden.length){
-        mbox.appendChild(el('p','sl-msub','HIDDEN'));
-        store.cats.hidden.forEach(function(key){
-          var row = el('div','sl-catrow');
-          var s = el('span','',''); s.textContent = prettyCat(key); row.appendChild(s);
-          var rs = el('button','sl-btn','RESTORE'); rs.type = 'button';
-          rs.addEventListener('click', function(){
-            store.cats.hidden = store.cats.hidden.filter(function(x){ return x !== key; });
-            saveStore(store); renderAll(); openManageCats();
-          });
-          row.appendChild(rs);
-          mbox.appendChild(row);
-        });
-      }
-
-      mbox.appendChild(el('p','sl-msub','ADD NEW TAB'));
-      var arow = el('div','sl-catrow');
-      var ainp = el('input','sl-input'); ainp.type = 'text'; ainp.placeholder = 'New tab name\u2026';
-      ainp.setAttribute('aria-label','New tab name');
-      arow.appendChild(ainp);
-      var addTab = function(){
-        var v = ainp.value.trim();
-        if(!v) return;
-        var dup = store.cats.added.indexOf(v) >= 0 ||
-          categories().some(function(c){ return (store.cats.renamed[c.name] || prettyCat(c.name)) === v; });
-        if(!dup){ store.cats.added.push(v); saveStore(store); }
-        state.view = {type:'all'}; renderAll(); openManageCats();
-      };
-      var add = el('button','sl-btn','ADD TAB'); add.type = 'button';
-      add.addEventListener('click', addTab);
-      ainp.addEventListener('keydown', function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); addTab(); } });
-      arow.appendChild(add);
-      mbox.appendChild(arow);
-
-      var crow = el('div','sl-mrow');
-      crow.appendChild(modalCloseBtn());
-      mbox.appendChild(crow);
-      openModal();
-    }
 
     function renderAll(){ renderTabs(); renderGrid(); }
     renderAll();

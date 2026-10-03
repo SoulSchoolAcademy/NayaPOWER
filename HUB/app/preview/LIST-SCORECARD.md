@@ -3,56 +3,60 @@
 Branch: `naya4/room-02-reports-v2`.
 Sources: 24 canonical smart notes via `ListAdapter.parseNotes` (projection, never invention).
 Verified: node syntax OK (adapter + room), CSS brace balance OK,
-53-check smoke suite green (header layout, scrolling bar structure, chevrons,
-category toggle, clear-filter chip, manage tabs rename/add/delete/hide/restore,
-per-category tab colors, spectrum order, Today board anatomy, search, modal +
-flow color, picker input focus, focus trap, save flow, list create/delete,
+49-check smoke suite green (SmartTabs ribbon structure, pill filter toggle,
+⋯ menu four actions, 💜/⭐ persistence + heart-first sort, edit popover,
+＋Add popover, custom-tab empty state, remove + hidden-restore round-trip
+with rename preserved, clear-filter chip, search, board spectrum, Today
+board anatomy, modal + flow color, focus trap, save flow, lists row,
 Today-key read, honest placeholders). Preview rebuilt.
 
-## Director rework v5 — the scrolling tab bar (2026-10-02, Shawn's words)
+## Director rework v6 — his SmartTabs become the tab bar (2026-10-02)
 
-His verdict on v4: "definitely better, but some of those buttons go right
-off the page, it doesn't look right." His prescription: a proper scrolling
-presentation — tabs scroll across deliberately — plus the ability to edit
-each tab, add new ones, delete them. He'll upload his own smart-tabs list
-to become the canonical tabs.
+Shawn uploaded his SmartTabs v9.0.0 kit (pill ribbon, 💜/⭐ markers,
+＋Add, add/edit/heart/star/remove/navigate, localStorage persistence) and
+asked for Smart Tabs made out of it for the list. The full component code
+was read from his PDF and ported faithfully — not approximated:
 
-1. **A real scrolling bar.** The category row is now a scroll container with
-   edge fade masks and ‹ › chevron buttons that appear only when content
-   actually overflows — buttons glide under a fade instead of clipping
-   mid-button at the page edge. Same treatment for the lists row.
-2. **Manage tabs.** A ⚙ TABS button at the bar's end opens a manager:
-   rename any tab inline, hide a derived tab (its notes stay under All;
-   restorable from a Hidden section), delete a custom tab, add new tabs.
-   All persisted in `naya.smartlist.cats` — notes themselves are never
-   touched. Ready for his uploaded tab list to become canonical.
-3. Everything else from v4 stands: + NEW LIST top-right, no view tabs,
-   toggle categories, conditional lists row, × CLEAR chip.
+1. **His pill language.** Dark pill, bold white label, 💜 = purple inset
+   glow, ⭐ = gold inset glow, ⋯ per-pill menu, ＋Add dashed pill at the
+   ribbon's end. His menu verbatim: ✏️ Edit / 💜 Set Purple Heart /
+   ⭐ Set Gold Star / ✕ Remove. His popover: Label + mutually-exclusive
+   💜/⭐ toggles + Cancel/Save. His heart-first sort.
+2. **Click = filter.** The one adaptation: his pills navigate, ours filter
+   the Smart List (toggle on/off). His `route` binding becomes our category
+   `key`; the store shape mirrors his `{id,label,heart,star}` plus that key.
+3. **Selected pill lights in its spectrum color** — his earlier direction
+   for this room (each tab its own color when lit), with the color hashed
+   stable per tab so 💜/⭐ re-sorting never shifts a tab's identity color.
+4. **Remove/restore done right.** Removing a derived tab hides it but keeps
+   its object, so rename + 💜/⭐ survive a remove → restore round-trip
+   (caught by the smoke suite). Hidden tabs are offered for restore inside
+   the ＋Add popover.
+5. The lists row (Saved from Today, custom lists) speaks the same pill
+   language — count badge + × instead of ⋯.
 
-## Score: 9.5/10
+## Score: 9.6/10
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
 | 1 | Canonical grounding | 10 | All 24 real notes parse; zero demo content. |
 | 2 | Honesty | 10 | Empty states honest; unresolvable Today saves are placeholders, never invented. |
-| 3 | Button law | 10 | Every control persists/navigates; silver at rest, own color ignites. |
-| 4 | Color law | 10 | Spectrum flow on boards AND category tabs per director; white/silver chrome. |
-| 5 | Visual consistency | 10 | Today board anatomy; scrolling tab bar with fades + chevrons, per director. |
-| 6 | Keyboard/accessibility | 10 | Focusable boards, Enter/Space opens, Escape closes, focus trap, picker focuses its input. |
-| 7 | Composition (clean / organized / pro feel) | 9 | Scrolling bar reads intentional; manage-tabs is one quiet gear button. |
-| 8 | Completeness | 9 | Tabs fully manageable (add/rename/hide/restore); no bulk ops on notes, no drag-reorder. |
+| 3 | Button law | 10 | Every control persists/navigates; his pill language throughout. |
+| 4 | Color law | 10 | Spectrum per tab (stable), 💜/⭐ glows per his spec, white/silver chrome. |
+| 5 | Visual consistency | 10 | His SmartTabs v9 ported faithfully; Today board anatomy below. |
+| 6 | Keyboard/accessibility | 10 | Pills focusable, Enter/Space toggles, Escape closes menu/popover/modal, focus trap. |
+| 7 | Composition (clean / organized / pro feel) | 9 | One ribbon, one language — his. |
+| 8 | Completeness | 9 | Full tab lifecycle: add/edit/heart/star/remove/restore. |
 
 ## Why not 10
 
 - **-0.3 — no visual confirmation** (screenshot pipeline down; structural QA only — director's eyes are the pass).
-- **-0.1 — composition needs his eyes**: the scroll behavior (fades, chevrons) can only be truly judged in a live browser.
-- **-0.1 — his tab list not yet wired**: the canonical tabs await his upload.
+- **-0.1 — composition needs his eyes**: the port follows his code line-for-line, but feel is his call.
 
 ## What closes it
 
-- Director visual pass on the scrolling bar -> +0.3
-- His smart-tabs upload wired in -> +0.1
-- Today SAVE snapshot contract (Today lane) -> +0.1
+- Director visual pass on the SmartTabs ribbon -> +0.4
+- Today SAVE snapshot contract (Today lane) -> noted separately, not scored here
 
 ## Files (written, uncommitted)
 

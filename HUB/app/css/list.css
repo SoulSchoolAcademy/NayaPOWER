@@ -66,55 +66,89 @@
 .sl-stage .sl-chev:not(:disabled):hover{
   border-color:#fff; box-shadow:0 0 14px -4px rgba(255,255,255,.65);
 }
-.sl-stage .sl-manage{
-  flex:none; padding:9px 14px; border-radius:999px; cursor:pointer; font-family:inherit;
-  font-size:10px; font-weight:800; letter-spacing:.12em; color:var(--sl-dim); white-space:nowrap;
-  background:transparent; border:1px dashed rgba(255,255,255,.24);
-  transition:color .2s, border-color .2s, border-style .2s;
-}
-.sl-stage .sl-manage:hover{ color:#fff; border-color:rgba(255,255,255,.55); border-style:solid; }
-/* Manage-tabs modal rows. */
-.sl-stage .sl-catlist{ display:flex; flex-direction:column; gap:8px; margin:14px 0 4px; max-height:38vh; overflow-y:auto; }
-.sl-stage .sl-catrow{ display:flex; align-items:center; gap:10px; }
-.sl-stage .sl-catrow .sl-input{ flex:1; min-width:0; }
-.sl-stage .sl-catn{ flex:none; min-width:58px; text-align:right; font-size:11px; color:var(--sl-dim); font-variant-numeric:tabular-nums; }
 .sl-stage .sl-msub{ font-size:10px; font-weight:800; letter-spacing:.18em; color:var(--sl-dim); margin:18px 0 8px; }
-.sl-stage .sl-btn.sl-btndanger{ border-color:rgba(248,113,113,.45); }
-.sl-stage .sl-btn.sl-btndanger:hover{ border-color:#f87171; color:#f87171; box-shadow:0 0 14px -6px #f87171; }
-/* Tabs rest white/silver; --tc carries the tab's own color when lit. */
-.sl-stage .sl-tab{
+/* ============ Shawn's SmartTabs v9 pill language, ported ============
+   Dark pill, bold white label, 💜 = purple inset glow, ⭐ = gold inset
+   glow, ⋯ per-pill menu, ＋Add dashed pill. Selected/hover ignites the
+   tab's own spectrum color (--tc), stable per tab. */
+.sl-stage .sn-pill{
   --tc:#fff;
-  flex:none; display:flex; align-items:center; gap:8px;
-  padding:9px 16px; border-radius:999px; cursor:pointer; font-family:inherit;
-  font-size:11px; font-weight:800; letter-spacing:.08em; color:#fff; white-space:nowrap;
-  background:transparent; border:1px solid rgba(255,255,255,.16);
-  transition:border-color .2s, background .2s, box-shadow .25s, color .2s, text-shadow .25s;
+  flex:0 0 auto; display:inline-flex; align-items:center; gap:10px;
+  padding:10px 16px; border-radius:999px; cursor:pointer; user-select:none;
+  border:1px solid rgba(255,255,255,.18); background:rgba(0,0,0,.55);
+  color:#fff; font-family:inherit; font-weight:900; font-size:12px; letter-spacing:.03em;
+  transition:box-shadow .25s, border-color .2s, text-shadow .25s;
 }
-.sl-stage .sl-tab:hover, .sl-stage .sl-tab:focus-visible{
-  border-color:var(--tc); background:rgba(255,255,255,.04); outline:none;
-  box-shadow:0 0 18px -6px var(--tc), inset 0 1px rgba(255,255,255,.08);
+.sl-stage .sn-pill .sn-label{ white-space:nowrap; }
+.sl-stage .sn-pill.heart{ box-shadow:0 0 0 2px rgba(183,114,255,.4) inset; }
+.sl-stage .sn-pill.star{ box-shadow:0 0 0 2px rgba(248,201,56,.4) inset; }
+.sl-stage .sn-mark{ font-size:13px; line-height:1; }
+.sl-stage .sn-pill:hover, .sl-stage .sn-pill:focus-visible{
+  border-color:var(--tc); outline:none;
+  box-shadow:0 0 18px -4px var(--tc), 0 0 0 2px var(--tc) inset;
   text-shadow:0 0 10px var(--tc);
 }
-.sl-stage .sl-tab.on{
-  border-color:var(--tc); color:#fff; background:rgba(255,255,255,.07);
-  box-shadow:0 0 22px -6px var(--tc), inset 0 1px rgba(255,255,255,.1);
-  text-shadow:0 0 10px var(--tc);
+.sl-stage .sn-pill.on{
+  border-color:var(--tc);
+  box-shadow:0 0 22px -4px var(--tc), 0 0 0 2px var(--tc) inset;
+  text-shadow:0 0 12px var(--tc);
 }
-.sl-stage .sl-tab-n{
+.sl-stage .sn-pill.add{ border-style:dashed; color:var(--sl-dim); }
+.sl-stage .sn-pill.add:hover{ color:#fff; border-color:#fff; box-shadow:none; text-shadow:none; }
+.sl-stage .sn-more{
+  border:0; background:rgba(255,255,255,.1); color:#fff; border-radius:8px;
+  padding:3px 9px; cursor:pointer; font-size:13px; line-height:1.5; font-family:inherit;
+  transition:background .2s;
+}
+.sl-stage .sn-more:hover{ background:rgba(255,255,255,.22); }
+.sl-stage .sn-more.sn-x:hover{ background:rgba(248,113,113,.3); color:#fca5a5; }
+.sl-stage .sn-count{
   font-size:10px; font-weight:800; color:var(--sl-dim); font-variant-numeric:tabular-nums;
   background:rgba(255,255,255,.07); border-radius:99px; padding:2px 8px;
-  transition:color .2s;
 }
-.sl-stage .sl-tab:hover .sl-tab-n, .sl-stage .sl-tab:focus-visible .sl-tab-n,
-.sl-stage .sl-tab.on .sl-tab-n{ color:var(--tc); }
-.sl-stage .sl-ltab{ flex:none; display:flex; align-items:center; gap:4px; }
-.sl-stage .sl-tabx{
-  flex:none; width:24px; height:24px; border-radius:50%; cursor:pointer;
-  font-size:13px; line-height:1; color:var(--sl-dim);
-  background:transparent; border:1px solid transparent;
-  transition:all .2s;
+/* His anchored menu + popover, namespaced. */
+.sl-stage .sn-menu{
+  position:fixed; z-index:1000; display:none; min-width:220px; overflow:hidden;
+  background:linear-gradient(180deg,#121827,#0e1424);
+  border:1px solid rgba(255,255,255,.18); border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5);
 }
-.sl-stage .sl-tabx:hover{ color:#f87171; border-color:#f87171; box-shadow:0 0 10px -2px #f87171; }
+.sl-stage .sn-menu .mi{
+  padding:10px 14px; border-bottom:1px solid rgba(255,255,255,.08);
+  cursor:pointer; color:#fff; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-menu .mi:last-child{ border-bottom:none; }
+.sl-stage .sn-menu .mi:hover{ background:rgba(255,255,255,.07); }
+.sl-stage .sn-pop{
+  position:fixed; z-index:1000; display:none; min-width:300px; max-width:92vw;
+  background:linear-gradient(180deg,#111727,#0e1424);
+  border:1px solid rgba(255,255,255,.18); border-radius:14px;
+  box-shadow:0 22px 60px rgba(0,0,0,.5); padding:16px; color:#fff;
+}
+.sl-stage .sn-pop h3{ margin:0 0 10px; font-size:15px; }
+.sl-stage .sn-pop .row{ display:grid; gap:6px; margin:8px 0; }
+.sl-stage .sn-pop label{ display:grid; gap:6px; font-size:11px; font-weight:800; letter-spacing:.1em; color:var(--sl-dim); }
+.sl-stage .sn-pop input{
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.2);
+  background:#0a0f1a; color:#fff; font-family:inherit; font-size:14px;
+}
+.sl-stage .sn-pop .toggles{ display:flex; gap:8px; margin:10px 0; flex-wrap:wrap; }
+.sl-stage .sn-pop .tgl{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.22); background:rgba(0,0,0,.45);
+  cursor:pointer; color:#fff; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-pop .tgl.on{
+  box-shadow:0 0 0 2px rgba(255,255,255,.35) inset, 0 0 18px rgba(124,77,255,.3);
+}
+.sl-stage .sn-pop .ft{ display:flex; gap:8px; justify-content:flex-end; margin-top:10px; }
+.sl-stage .sn-btn{
+  display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.55); color:#fff;
+  cursor:pointer; font-family:inherit; font-weight:700; font-size:13px;
+}
+.sl-stage .sn-btn.primary{ background:linear-gradient(135deg,#6F3DFF,#9D7BFF); border-color:transparent; }
+.sl-stage .sn-btn.sn-restore{ margin:4px 8px 4px 0; }
 .sl-stage .sl-new{
   flex:none; padding:9px 16px; border-radius:999px; cursor:pointer; font-family:inherit;
   font-size:11px; font-weight:800; letter-spacing:.1em; color:#fff; white-space:nowrap;
