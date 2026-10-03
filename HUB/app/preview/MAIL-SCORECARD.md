@@ -67,9 +67,36 @@ The room's job: see what you need to act on, inside the NayaNET network.
 - Shell feeds the production mail store into `ctx.threads` (demo flag off) -> +0.4
 - Director visual pass -> +0.3
 
+## People-spine slice (2026-10-02, Shawn's integration ruling)
+
+Shawn: Mail, Connections, Spaces, Lists are not four apps — they are parts
+of each other. First slice built:
+
+1. **`HUB/app/js/people-registry.js`** — `window.NayaPeople`, the shared
+   people spine over `localStorage['naya.people.registry']`
+   (load/save/ensureSeeded/add/get). First room opened seeds it from
+   `ctx.contacts`; every room after reads one truth.
+2. **Smart Mail reads the spine** — compose To, avatars, names all resolve
+   against the registry now.
+3. **ADD TO CONNECTIONS on every thread** — a sender who isn't a connection
+   yet gets filed in one tap (role: "via Smart Mail"); the button confirms
+   "IN CONNECTIONS ✓". They immediately appear in Connections and in the
+   next compose.
+4. **Cross-room compose handoff** — `ctx.composeRequest` ({to, toKind,
+   subject, body}) opens the composer pre-addressed. Connections' WRITE
+   MAIL feeds it via a `naya.mail.compose.request` key (same pattern as the
+   Today→List save key); the shell will route it natively.
+
 ## Verification
 
-node syntax OK (adapter + room), CSS brace balance OK, 23-check stub-DOM smoke suite green (banner gone, per-folder icons/colors, badge, folder filtering, open-marks-read, compose→send→persist, avatar/dot/icon depth in CSS).
+node syntax OK (room + registry), CSS brace balance OK, 32-check stub-DOM
+smoke suite green (banner gone, per-folder icons/colors, badge, filtering,
+open-marks-read, compose→send→persist, registry seed/idempotent add,
+add-to-connections flow, composeRequest pre-address + body preset, avatar/
+dot/icon depth in CSS).
+
+## Score: 9.3/10 (unchanged — the spine is cross-room infrastructure; the
+room's own gaps are still search/delete and the no-real-store -0.4)
 
 ## Files
 

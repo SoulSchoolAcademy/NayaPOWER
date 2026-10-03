@@ -30,6 +30,7 @@ CONTACTS = [
 
 def main():
     css = open(os.path.join(REPO, 'HUB/app/css/connections.css'), encoding='utf-8').read()
+    pr = open(os.path.join(REPO, 'HUB/app/js/people-registry.js'), encoding='utf-8').read()
     ad = open(os.path.join(REPO, 'HUB/app/js/rooms/connections-adapter.js'), encoding='utf-8').read()
     js = open(os.path.join(REPO, 'HUB/app/js/rooms/connections.js'), encoding='utf-8').read()
 
@@ -44,12 +45,19 @@ def main():
         assert a != -1 and b != -1, 'IIFE wrapper missing'
         return s[a + len('(function(){'):b]
 
-    full_js = (harness + inner(ad) + inner(js)
+    full_js = (harness + inner(pr) + inner(ad) + inner(js)
                + 'const PACK=' + json.dumps(CONTACTS, ensure_ascii=False) + ';'
                + "document.addEventListener('DOMContentLoaded',()=>{"
                + "const contacts=ConnectionsAdapter.parseContacts(PACK);"
+               # cross-room handoff: WRITE MAIL stashes a compose request for
+               # Smart Mail, then routes to the mail preview (the shell will
+               # route natively instead).
+               + "const onCompose=function(c){"
+               + "try{localStorage.setItem('naya.mail.compose.request',"
+               + "JSON.stringify({to:c.id,toKind:'person',ts:Date.now()}));}catch(e){}"
+               + "window.location.href='mail-preview.html';};"
                + "document.getElementById('app').appendChild("
-               + "window.NayaRooms.connections(el,{contacts:contacts}));"
+               + "window.NayaRooms.connections(el,{contacts:contacts,onCompose:onCompose}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'

@@ -110,6 +110,7 @@ for t in THREADS:
 
 def main():
     css = open(os.path.join(REPO, 'HUB/app/css/mail.css'), encoding='utf-8').read()
+    pr = open(os.path.join(REPO, 'HUB/app/js/people-registry.js'), encoding='utf-8').read()
     ad = open(os.path.join(REPO, 'HUB/app/js/rooms/mail-adapter.js'), encoding='utf-8').read()
     js = open(os.path.join(REPO, 'HUB/app/js/rooms/mail.js'), encoding='utf-8').read()
 
@@ -123,14 +124,19 @@ def main():
         assert a != -1 and b != -1, 'IIFE wrapper missing'
         return s[a + len('(function(){'):b]
 
-    full_js = (harness + inner(ad) + inner(js)
+    full_js = (harness + inner(pr) + inner(ad) + inner(js)
                + 'const THREADS=' + json.dumps(THREADS, ensure_ascii=False) + ';'
                + 'const CONTACTS=' + json.dumps(CONTACTS, ensure_ascii=False) + ';'
                + 'const SPACES=' + json.dumps(SPACES, ensure_ascii=False) + ';'
                + "document.addEventListener('DOMContentLoaded',()=>{"
                + "const threads=MailAdapter.parseThreads(THREADS);"
+               # cross-room handoff: a sibling room (e.g. Connections WRITE MAIL)
+               # stashes a compose request; consume it once, if fresh.
+               + "let CR=null;try{CR=JSON.parse(localStorage.getItem('naya.mail.compose.request')||'null');"
+               + "localStorage.removeItem('naya.mail.compose.request');}catch(e){CR=null;}"
+               + "if(CR&&(Date.now()-(CR.ts||0)>600000))CR=null;"
                + "document.getElementById('app').appendChild("
-               + "window.NayaRooms.smartMail(el,{threads:threads,contacts:CONTACTS,spaces:SPACES,me:'naya4'}));"
+               + "window.NayaRooms.smartMail(el,{threads:threads,contacts:CONTACTS,spaces:SPACES,me:'naya4',composeRequest:CR}));"
                + "});")
     html = ('<!DOCTYPE html><html><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1">'

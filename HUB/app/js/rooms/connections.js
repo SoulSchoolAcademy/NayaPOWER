@@ -2,6 +2,10 @@
  * Registry: "connections", route "/connections", identity ROSE.
  * Contract: window.NayaRooms.connections(el, ctx)
  *   ctx.contacts — from ConnectionsAdapter.parseContacts (real people)
+ *   ctx.onCompose — optional fn(contact); WRITE MAIL hands the contact to
+ *     Smart Mail's composer (the shell routes it; previews use a handoff key).
+ * People spine: contacts resolve through window.NayaPeople, the registry
+ * shared with Smart Mail — add someone in Mail and they appear here.
  * Lists persist in localStorage `naya.connections.lists` (seed: "Team Naya").
  * Message drafts persist in `naya.connections.drafts` — honest drafts,
  * never presented as sent.
@@ -43,7 +47,11 @@
 
   function Connections(el, ctx){
     ctx = ctx || {};
-    var contacts = Array.isArray(ctx.contacts) ? ctx.contacts : [];
+    /* people spine: the same shared registry Smart Mail reads — seeded from
+       ctx.contacts on first run, so both rooms see one truth. */
+    var contacts = (window.NayaPeople && window.NayaPeople.ensureSeeded)
+      ? window.NayaPeople.ensureSeeded(ctx.contacts)
+      : (Array.isArray(ctx.contacts) ? ctx.contacts : []);
     var byId = {};
     contacts.forEach(function(c){ byId[c.id] = c; });
 
@@ -209,6 +217,13 @@
         st.textContent = 'Draft saved '+timeAgo(rec.savedAt)+' \u2014 not sent.';
       });
       row.appendChild(sv); row.appendChild(st);
+      /* cross-room handoff: WRITE MAIL only exists when the shell (or preview)
+         provides the composer route — no dead buttons. */
+      if(typeof ctx.onCompose === 'function'){
+        var wm = el('button','cx-btn','WRITE MAIL'); wm.type='button';
+        wm.addEventListener('click', function(){ ctx.onCompose(c); });
+        row.appendChild(wm);
+      }
       mcard.appendChild(row);
       var honest = el('p','cx-honest','');
       honest.textContent = 'Drafts stay on this device. Nothing is sent anywhere from here.';

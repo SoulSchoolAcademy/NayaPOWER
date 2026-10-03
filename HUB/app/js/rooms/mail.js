@@ -2,9 +2,14 @@
  * Registry: "mail", route "/mail", theme blue.
  * Contract: window.NayaRooms.smartMail(el, ctx)
  *   ctx.threads  — thread view-models from MailAdapter.parseThreads
- *   ctx.contacts  — [{id,name,role,color}] (shared contact contract)
+ *   ctx.contacts  — [{id,name,role,color}]; seeds window.NayaPeople, the
+ *     people spine shared with Connections (one registry, not four copies)
  *   ctx.spaces    — [{id,name,color}] mail can be addressed to a space
  *   ctx.me        — id of the mailbox owner (default 'naya4')
+ *   ctx.composeRequest — optional {to, toKind, subject, body}; opens the
+ *     composer pre-addressed (cross-room handoff, e.g. from Connections)
+ * People spine: ADD TO CONNECTIONS files an unknown sender into the shared
+ * registry, so they appear in Connections and in the next compose.
  * Law: every button has a real consequence. Filters filter, opening a
  * thread marks it read, Send really appends to Sent and persists to
  * localStorage (naya.smartmail.sent). All seeded threads carry DEMO.
@@ -35,10 +40,22 @@
   function SmartMail(el, ctx){
     ctx = ctx || {};
     var me = ctx.me || 'naya4';
-    var contacts = Array.isArray(ctx.contacts) ? ctx.contacts : [];
+    /* people spine: one shared registry across rooms; seeds from ctx.contacts
+       on first run, then every room reads the same truth. */
+    var contacts = (window.NayaPeople && window.NayaPeople.ensureSeeded)
+      ? window.NayaPeople.ensureSeeded(ctx.contacts)
+      : (Array.isArray(ctx.contacts) ? ctx.contacts : []);
     var spaces = Array.isArray(ctx.spaces) ? ctx.spaces : [];
     var byId = {};
-    contacts.forEach(function(c){ byId[c.id]=c; });
+    function reloadPeople(){
+      if(window.NayaPeople && window.NayaPeople.load){
+        var p = window.NayaPeople.load();
+        if(p) contacts = p;
+      }
+      byId = {};
+      contacts.forEach(function(c){ byId[c.id]=c; });
+    }
+    reloadPeople();
     var spaceById = {};
     spaces.forEach(function(s){ spaceById[s.id]=s; });
 
@@ -242,6 +259,18 @@
         t.unread=true; renderRail(); renderList();
       });
       actions.appendChild(toggle);
+      /* people spine: a sender who isn't a connection yet can be filed
+         in one tap — the registry is shared, so Connections sees them too. */
+      if(window.NayaPeople && window.NayaPeople.get && !window.NayaPeople.get(t.from)){
+        var addP = el('button','ml-btn ghost','ADD TO CONNECTIONS'); addP.type='button';
+        addP.addEventListener('click', function(){
+          window.NayaPeople.add({ id:t.from, name:partyName(t.from,'person'),
+            role:'via Smart Mail', color:partyColor(t.from,'person') });
+          reloadPeople();
+          addP.textContent='IN CONNECTIONS \u2713'; addP.disabled=true;
+        });
+        actions.appendChild(addP);
+      }
       read.appendChild(actions);
     }
 
@@ -284,6 +313,7 @@
       bdRow.appendChild(el('span','ml-field-l','MESSAGE'));
       var bdIn = el('textarea','ml-input'); bdIn.name='body'; bdIn.rows=6;
       bdIn.setAttribute('placeholder','Write to the network…');
+      bdIn.value = preset.body || '';
       bdRow.appendChild(bdIn);
       card.appendChild(bdRow);
 
@@ -346,6 +376,15 @@
     }
 
     renderRail(); renderList(); renderRead();
+
+    /* cross-room handoff: the shell (or a sibling room) can open the composer
+       pre-addressed — e.g. "write mail" from a connection card. */
+    if(ctx.composeRequest && ctx.composeRequest.to){
+      var cr = ctx.composeRequest;
+      openCompose({ to:cr.to, toKind:cr.toKind || 'person',
+                    subject:cr.subject || '', body:cr.body || '' });
+    }
+
     return stage;
   }
 
