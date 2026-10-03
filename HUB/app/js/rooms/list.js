@@ -1,38 +1,54 @@
 /* SMART LIST — Room: smart notes saved into lists, groupings, categories.
- * Room identity: EMERALD #10b981 (stable; color is identity, never position).
+ *
+ * Visual law (director, 2026-10-02): boards flow the natural spectrum —
+ *   purple → indigo → cyan → forest → lime → yellow → gold → orange → red → magenta
+ * white/silver at rest; the flow color ignites the whole perimeter on hover/focus.
+ * Boards share the Your Intelligence Today anatomy: rank + title + when +
+ * in-a-nutshell + explicit SAVE TO LIST / VIEW FULL NOTE actions.
+ *
  * Contract: window.NayaRooms.smartList(el, ctx)
  *   ctx.notes — note view-models from ListAdapter.parseNotes
  *
- * Store contract (localStorage):
- *   'naya.smartlist' = { custom: {listName: [noteId,...]}, today: [...] }
- * NOTE: the Today room's SAVE implementation lives on another branch
- * (naya4/room-01-main-stage-v2) and its exact key could not be verified
- * here. This key is the proposed shared contract: Today SAVE should append
- * note ids (or {title, nutshell} objects) into store.today; this room reads
- * it under "Saved from Today". Flagged in LIST-SCORECARD.md.
+ * Store contracts (localStorage):
+ *   'naya.smartlist' = { custom: {listName: [noteId,...]} }   (this room owns)
+ *   'nayanet.today.smartlist.v1' = [noteId,...]               (the Today room
+ *     owns writes — key verified in the Today v8.3 preview; this room reads it
+ *     for the "Saved from Today" view and never writes it)
  *
  * Law: every button has a real consequence. No demo content — the 24 real
- * notes are the data. Keyboard: cards are focusable, Enter opens,
+ * notes are the data. Keyboard: cards are focusable, Enter/Space opens,
  * Escape closes modals.
  */
 (function(){
   'use strict';
 
   var STORE_KEY = 'naya.smartlist';
+  var TODAY_KEY = 'nayanet.today.smartlist.v1';
+
+  /* The natural spectrum — the same flow as Living Intel. */
+  var FLOW = ['#a855f7','#6366f1','#22d3ee','#16a34a','#a3e635',
+              '#facc15','#d4a017','#fb923c','#ef4444','#ec4899'];
 
   function loadStore(){
     try{
       var s = JSON.parse(localStorage.getItem(STORE_KEY));
       if(s && typeof s === 'object'){
         if(!s.custom || typeof s.custom !== 'object') s.custom = {};
-        if(!Array.isArray(s.today)) s.today = [];
         return s;
       }
     }catch(err){}
-    return { custom:{}, today:[] };
+    return { custom:{} };
   }
   function saveStore(s){
     try{ localStorage.setItem(STORE_KEY, JSON.stringify(s)); }catch(err){}
+  }
+  /* Today SAVE writes a flat array of note ids under its own key. Read-only here. */
+  function loadTodaySaves(){
+    try{
+      var a = JSON.parse(localStorage.getItem(TODAY_KEY));
+      if(Array.isArray(a)) return a.filter(function(x){ return typeof x === 'string'; });
+    }catch(err){}
+    return [];
   }
 
   function esc(s){ return String(s == null ? '' : s); }
@@ -84,7 +100,7 @@
 
       var views = el('div','sl-sec');
       views.appendChild(sideBtn('all', 'ALL NOTES', notes.length, state.view.type==='all'));
-      views.appendChild(sideBtn('today', 'SAVED FROM TODAY', store.today.length, state.view.type==='today'));
+      views.appendChild(sideBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today'));
       side.appendChild(views);
 
       var cats = categories();
@@ -158,7 +174,7 @@
       return Object.keys(map).sort().map(function(k){ return {name:k, n:map[k]}; });
     }
     function prettyCat(c){
-      return c.split('/').pop().replace(/-/g,' ').replace(/\b\w/g,function(m){return m.toUpperCase();});
+      return String(c||'').split('/').pop().replace(/-/g,' ').replace(/\b\w/g,function(m){return m.toUpperCase();});
     }
 
     /* ---------- grid ---------- */
@@ -181,16 +197,14 @@
       return list;
     }
 
-    /* Today-saved entries: note ids OR {title, nutshell} objects (defensive). */
+    /* Today-saved ids resolve against known notes; anything else renders as an
+       honest placeholder that points back at the Today page — never invented. */
     function resolveToday(){
-      return store.today.map(function(e){
-        if(typeof e === 'string' && byId[e]) return byId[e];
-        if(e && typeof e === 'object' && e.title){
-          return { id:'today:'+e.title, title:e.title, nutshell:e.nutshell||'',
-                   truth:e.truth||'', date:e.date||'', category:'SAVED FROM TODAY', path:'' };
-        }
-        return null;
-      }).filter(Boolean);
+      return loadTodaySaves().map(function(id){
+        if(byId[id]) return byId[id];
+        return { id:'today:'+id, unresolved:true, title:'Saved from Today',
+                 nutshell:'', truth:'', date:'', category:'SAVED FROM TODAY', path:'' };
+      });
     }
 
     function renderGrid(){
@@ -205,7 +219,9 @@
         grid.appendChild(empty);
         return;
       }
-      list.forEach(function(n){ grid.appendChild(noteCard(n)); });
+      list.forEach(function(n, i){
+        grid.appendChild(n.unresolved ? unresolvedCard(n, i) : noteCard(n, i));
+      });
     }
 
     function truthClass(t){
@@ -215,32 +231,102 @@
       return 'other';
     }
 
-    function noteCard(n){
-      var card = el('article','sl-card');
+    /* The board: Today anatomy (rank + title + when + in-a-nutshell + explicit
+       actions) flowing the spectrum — --ic is this board's flow color. */
+    function noteCard(n, idx){
+      var fc = FLOW[idx % FLOW.length];
+      var card = el('article','sl-board');
+      card.style.setProperty('--ic', fc);
       card.setAttribute('tabindex','0');
       card.setAttribute('role','button');
       card.setAttribute('aria-label','Open note: '+n.title);
-      var t = el('h2','sl-card-t',''); t.textContent = n.title; card.appendChild(t);
-      if(n.nutshell){
-        var p = el('p','sl-card-n',''); p.textContent = n.nutshell; card.appendChild(p);
-      }
-      var foot = el('div','sl-card-f');
+
+      var inner = el('div','sl-board-inner');
+
+      var top = el('div','sl-board-top');
+      var ident = el('div','sl-board-id');
+      var glyph = el('div','sl-board-glyph','');
+      glyph.textContent = String(idx+1).padStart(2,'0');
+      glyph.setAttribute('aria-hidden','true');
+      var tw = el('div','');
+      var t = el('h3','sl-board-t',''); t.textContent = n.title;
+      var meta = el('div','sl-board-meta');
+      if(n.date){ var dm = el('span','',''); dm.textContent = n.date; meta.appendChild(dm); }
+      var cm = el('span','',''); cm.textContent = prettyCat(n.category); meta.appendChild(cm);
+      tw.appendChild(t); tw.appendChild(meta);
+      ident.appendChild(glyph); ident.appendChild(tw);
+      top.appendChild(ident);
       if(n.truth){
         var pill = el('span','sl-truth '+truthClass(n.truth),''); pill.textContent = n.truth;
-        foot.appendChild(pill);
+        top.appendChild(pill);
       }
-      if(n.date){ var dt = el('span','sl-date',''); dt.textContent = n.date; foot.appendChild(dt); }
-      card.appendChild(foot);
-      var actions = el('div','sl-card-a');
-      var sv = el('button','sl-btn','SAVE TO LIST');
+      inner.appendChild(top);
+
+      if(n.nutshell){
+        var nut = el('div','sl-board-nut');
+        var b = el('b','',''); b.textContent = 'IN A NUTSHELL'; nut.appendChild(b);
+        var p = el('p','',''); p.textContent = n.nutshell; nut.appendChild(p);
+        inner.appendChild(nut);
+      }
+
+      var actions = el('div','sl-board-actions');
+      var sv = el('button','sl-act','SAVE TO LIST');
       sv.type = 'button';
       sv.addEventListener('click', function(ev){ ev.stopPropagation(); openPickerModal(n); });
-      actions.appendChild(sv);
-      card.appendChild(actions);
-      card.addEventListener('click', function(){ openNoteModal(n); });
+      var vw = el('button','sl-act','VIEW FULL NOTE');
+      vw.type = 'button';
+      vw.addEventListener('click', function(ev){ ev.stopPropagation(); openNoteModal(n, fc); });
+      actions.appendChild(sv); actions.appendChild(vw);
+      inner.appendChild(actions);
+
+      var foot = el('div','sl-board-foot');
+      var fl = el('span','',''); fl.textContent = 'SMART LIST'; foot.appendChild(fl);
+      var fr = el('span','',''); fr.textContent = 'NOTE '+String(idx+1).padStart(2,'0'); foot.appendChild(fr);
+      inner.appendChild(foot);
+
+      card.appendChild(inner);
+      card.addEventListener('click', function(){ openNoteModal(n, fc); });
       card.addEventListener('keydown', function(ev){
-        if(ev.key === 'Enter' && ev.target === card){ ev.preventDefault(); openNoteModal(n); }
+        if((ev.key==='Enter'||ev.key===' ') && ev.target===card){ ev.preventDefault(); openNoteModal(n, fc); }
       });
+      return card;
+    }
+
+    /* A Today save that isn't one of the 24 known notes: honest, minimal,
+       points back at the Today page. Never invents a title or nutshell. */
+    function unresolvedCard(n, idx){
+      var fc = FLOW[idx % FLOW.length];
+      var card = el('article','sl-board sl-unresolved');
+      card.style.setProperty('--ic', fc);
+
+      var inner = el('div','sl-board-inner');
+      var top = el('div','sl-board-top');
+      var ident = el('div','sl-board-id');
+      var glyph = el('div','sl-board-glyph','');
+      glyph.textContent = String(idx+1).padStart(2,'0');
+      glyph.setAttribute('aria-hidden','true');
+      var tw = el('div','');
+      var t = el('h3','sl-board-t',''); t.textContent = 'Saved from Today';
+      var meta = el('div','sl-board-meta');
+      var m = el('span','',''); m.textContent = 'YOUR INTELLIGENCE TODAY'; meta.appendChild(m);
+      tw.appendChild(t); tw.appendChild(meta);
+      ident.appendChild(glyph); ident.appendChild(tw);
+      top.appendChild(ident);
+      inner.appendChild(top);
+
+      var nut = el('div','sl-board-nut');
+      var b = el('b','',''); b.textContent = 'SAVED ITEM'; nut.appendChild(b);
+      var p = el('p','','');
+      p.textContent = 'This save lives on the Today page — open Your Intelligence Today to view the full block.';
+      nut.appendChild(p);
+      inner.appendChild(nut);
+
+      var foot = el('div','sl-board-foot');
+      var fl = el('span','',''); fl.textContent = 'SMART LIST'; foot.appendChild(fl);
+      var fr = el('span','',''); fr.textContent = 'NOTE '+String(idx+1).padStart(2,'0'); foot.appendChild(fr);
+      inner.appendChild(foot);
+
+      card.appendChild(inner);
       return card;
     }
 
@@ -268,27 +354,27 @@
       return x;
     }
 
-    function openNoteModal(n){
+    function openNoteModal(n, fc){
+      mbox.style.setProperty('--ic', fc || '#a855f7');
       modalHead('SMART NOTE', n.title);
       var meta = el('div','sl-meta');
       if(n.truth){ var pill = el('span','sl-truth '+truthClass(n.truth),''); pill.textContent=n.truth; meta.appendChild(pill); }
       if(n.date){ var dt = el('span','sl-date',''); dt.textContent=n.date; meta.appendChild(dt); }
-      var cat = el('span','sl-cat',''); cat.textContent = n.category; meta.appendChild(cat);
+      var cat = el('span','sl-cat',''); cat.textContent = prettyCat(n.category); meta.appendChild(cat);
       mbox.appendChild(meta);
       if(n.nutshell){ var p = el('p','sl-nutshell',''); p.textContent = n.nutshell; mbox.appendChild(p); }
       if(n.path){ var ph = el('code','sl-path',''); ph.textContent = n.path; mbox.appendChild(ph); }
       var row = el('div','sl-mrow');
-      if(String(n.id).indexOf('today:') !== 0){
-        var sv = el('button','sl-btn','SAVE TO LIST'); sv.type='button';
-        sv.addEventListener('click', function(){ openPickerModal(n); });
-        row.appendChild(sv);
-      }
+      var sv = el('button','sl-btn','SAVE TO LIST'); sv.type='button';
+      sv.addEventListener('click', function(){ openPickerModal(n); });
+      row.appendChild(sv);
       row.appendChild(modalCloseBtn());
       mbox.appendChild(row);
       openModal();
     }
 
     function openPickerModal(n){
+      mbox.style.setProperty('--ic', '#a855f7');
       modalHead('SAVE TO LIST', n.title);
       var names = Object.keys(store.custom).sort();
       if(!names.length){
@@ -335,6 +421,7 @@
     }
 
     function openNewListModal(){
+      mbox.style.setProperty('--ic', '#a855f7');
       modalHead('NEW LIST', 'Name your list');
       var row = el('div','sl-mrow');
       var inp = el('input','sl-input'); inp.type='text'; inp.placeholder='e.g. Launch research\u2026';
