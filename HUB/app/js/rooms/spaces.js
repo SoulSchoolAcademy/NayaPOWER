@@ -481,14 +481,22 @@
       'IB-006 \u2014 freeze-and-extend protocol',
       'IB-OP-001 \u2014 the 6-to-10 doctrine'
     ];
-    function createSpaceModal(){
+    function createSpaceModal(prefill){
+      prefill = prefill || {};
       var card = el('div','sp-modal');
       card.setAttribute('role','dialog');
       card.setAttribute('aria-label','Create a space');
       card.appendChild(el('h2','sp-modal-title','CREATE A SPACE'));
+      if(prefill.aroundLabel){
+        var al = el('p','sp-modal-sub','');
+        al.textContent = 'Gathered around: ' + prefill.aroundLabel;
+        card.appendChild(al);
+      }
 
       var nameF = field('Space name', 'text', 'e.g. Launch crew');
       var topicF = field('Topic \u2014 what is this space about?', 'text', 'e.g. everything about the Hub launch');
+      if(prefill.name){ nameF.input.value = prefill.name; }
+      if(prefill.topic){ topicF.input.value = prefill.topic; }
       card.appendChild(nameF.wrap); card.appendChild(topicF.wrap);
 
       var bw = el('label','sp-field');
@@ -500,14 +508,24 @@
         var o = document.createElement('option'); o.value = b; o.textContent = b + '  [DEMO]';
         sel.appendChild(o);
       });
+      if(prefill.block){
+        // pre-select the block if it matches a known option, else add it
+        var found = false;
+        Array.prototype.forEach.call(sel.options, function(o){ if(o.value === prefill.block){ sel.value = prefill.block; found = true; } });
+        if(!found){
+          var extra = document.createElement('option');
+          extra.value = prefill.block; extra.textContent = prefill.block;
+          sel.appendChild(extra); sel.value = prefill.block;
+        }
+      }
       bw.appendChild(sel);
       card.appendChild(bw);
 
       var row = el('div','sp-modal-row');
       var cancel = el('button','sp-btn','CANCEL'); cancel.type = 'button';
       var create = el('button','sp-btn primary','CREATE SPACE'); create.type = 'button';
-      create.disabled = true;
       function valid(){ create.disabled = !(nameF.input.value.trim() && topicF.input.value.trim()); }
+      valid();
       nameF.input.addEventListener('input', valid);
       topicF.input.addEventListener('input', valid);
       cancel.addEventListener('click', closeModal);
@@ -587,6 +605,38 @@
 
     render();
 
+    /* ---- "Create a Space around this intelligence" entry contract ----
+     * Any room can launch space creation pre-filled from a block, note,
+     * or feed item:
+     *   window.NayaRooms.smartSpaces.createAround({kind:'block'|'note'|'feed'|'subject', id:'IB-006', title:'Freeze protocol'})
+     * The spec is consumed on the next room render (or immediately if the
+     * room is already mounted). Standalone page also honors ?around=ID.
+     * Prefill is a suggestion — the human still names the space and taps CREATE.
+     */
+    function consumeAround(){
+      var spec = null;
+      try{
+        if(window.__nayaCreateAround){ spec = window.__nayaCreateAround; window.__nayaCreateAround = null; }
+        else {
+          var m = /[?&]around=([^&#]*)/.exec(location.search || '');
+          if(m) spec = {kind:'subject', id:decodeURIComponent(m[1]), title:decodeURIComponent(m[1])};
+        }
+      }catch(e){}
+      if(!spec) return;
+      var label = (spec.kind || 'subject') + ' ' + (spec.id || '');
+      createSpaceModal({
+        name: spec.title ? spec.title.slice(0, 60) : '',
+        topic: spec.title ? ('Conversation around ' + spec.title) : '',
+        block: spec.kind === 'block' ? (spec.id || '') : '',
+        aroundLabel: label.trim()
+      });
+    }
+    // consume after first paint so the modal opens over the grid
+    setTimeout(consumeAround, 60);
+    // if another room calls createAround while we're mounted, open it live
+    stage.addEventListener('naya:create-around', consumeAround);
+    document.addEventListener('naya:create-around', consumeAround);
+
     /* Escape: close modal first, else back to grid from detail */
     stage.addEventListener('keydown', function(ev){
       if(ev.key !== 'Escape') return;
@@ -599,4 +649,11 @@
 
   window.NayaRooms = window.NayaRooms || {};
   window.NayaRooms.smartSpaces = SmartSpaces;
+  /* Entry contract for other rooms: queue a "create around this" spec.
+   * If the spaces room is already mounted, the pending spec is consumed
+   * on a custom event; otherwise it waits for the next render. */
+  window.NayaRooms.smartSpaces.createAround = function(spec){
+    window.__nayaCreateAround = spec || null;
+    try{ document.dispatchEvent(new CustomEvent('naya:create-around')); }catch(e){}
+  };
 })();

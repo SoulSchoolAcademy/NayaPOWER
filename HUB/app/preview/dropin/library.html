@@ -628,6 +628,22 @@
       open.type = 'button';
       open.addEventListener('click', function(){ openEvidence(obj); });
       a.appendChild(open);
+      /* One organism: gather a Space around this intelligence. */
+      var gather = el('button', 'lib-hbtn lib-answer-gather', 'Gather a Space around this');
+      gather.type = 'button';
+      gather.addEventListener('click', function(){
+        try{
+          var fn = window.NayaRooms && (window.NayaRooms.spaces || window.NayaRooms.smartSpaces);
+          fn = fn && (fn.createAround || (window.NayaRooms.smartSpaces && window.NayaRooms.smartSpaces.createAround));
+          if(typeof fn === 'function'){
+            fn({kind: obj.kind === 'block' ? 'block' : 'note', id: obj.id, title: obj.title});
+            return;
+          }
+        }catch(e){}
+        /* Spaces room not loaded here (standalone preview): deep-link it. */
+        try{ window.open('spaces.html?around=' + encodeURIComponent(obj.id), '_blank'); }catch(e){}
+      });
+      a.appendChild(gather);
       return a;
     }
 

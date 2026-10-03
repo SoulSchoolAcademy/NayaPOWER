@@ -99,6 +99,13 @@
 
   /* Shell-facing registrations. Names match the shell's ROOMS ids. */
   R.spaces      = wrap('smartSpaces', ctxSpaces, 'Smart Spaces');
+  /* Forward the "create around this intelligence" entry contract so the
+   * shell (or any room) can launch space creation pre-filled. */
+  try{
+    if(window.NayaRooms.smartSpaces && typeof window.NayaRooms.smartSpaces.createAround === 'function'){
+      R.spaces.createAround = window.NayaRooms.smartSpaces.createAround;
+    }
+  }catch(err){}
   R.mail        = wrap('smartMail', {threads: parsedThreads(), contacts: contacts,
                                     spaces: rawSpaces(), me: me}, 'Smart Mail');
   R.lists       = wrap('smartList', {notes: Array.isArray(S.notes) ? S.notes : []}, 'Smart Lists');
