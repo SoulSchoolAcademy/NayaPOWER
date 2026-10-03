@@ -189,8 +189,10 @@
     }
 
     /* A horizontally scrolling row done properly: edge fades + chevrons when
-       content overflows, instead of buttons accidentally clipped. */
+       content overflows, instead of buttons accidentally clipped — plus the
+       slow ambient drift from his SmartNET ribbon (pauses on touch). */
     var scrollUpdaters = [];
+    var scrollRows = [];
     function scrollRow(){
       var w = el('div','sl-scrollwrap');
       var l = el('button','sl-chev sl-chev-l','\u2039'); l.type='button';
@@ -211,8 +213,42 @@
       };
       s.addEventListener('scroll', update);
       scrollUpdaters.push(update);
-      return { wrap:w, scroll:s, update:update };
+
+      /* Ambient drift: slow ping-pong across the ribbon, like his SmartNET
+         page. Any touch, hover, focus, or menu pauses it for a while. */
+      var lastPoke = 0, dir = 1, timer = null;
+      var row = { wrap:w, scroll:s, update:update, timer:null };
+      function reduced(){
+        return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      }
+      function poke(){ lastPoke = Date.now(); }
+      function tick(){
+        if(document.hidden) return;
+        if(reduced()) return;
+        if(Date.now() - lastPoke < 4000) return;
+        var max = (s.scrollWidth||0) - (s.clientWidth||0);
+        if(max <= 4) return;
+        var next = (s.scrollLeft||0) + dir * 1.1;
+        if(next >= max){ next = max; dir = -1; }
+        else if(next <= 0){ next = 0; dir = 1; }
+        s.scrollLeft = next;
+      }
+      function arm(){
+        if(row.timer || reduced()) return;
+        if((s.scrollWidth||0) <= (s.clientWidth||0) + 4) return;
+        row.timer = setInterval(tick, 32);
+      }
+      function disarm(){ if(row.timer){ clearInterval(row.timer); row.timer = null; } }
+      ['pointerenter','pointerdown','focusin'].forEach(function(t){ w.addEventListener(t, poke); });
+      w.addEventListener('wheel', poke, {passive:true});
+      w.addEventListener('touchstart', poke, {passive:true});
+      w.addEventListener('keydown', poke);
+      row.poke = poke; row.tick = tick; row.arm = arm; row.disarm = disarm;
+      w._row = row;
+      scrollRows.push(row);
+      return { wrap:w, scroll:s, update:update, row:row };
     }
+    function pokeScrollers(){ scrollRows.forEach(function(r){ r.poke(); }); }
     if(window.addEventListener){
       window.addEventListener('resize', function(){
         scrollUpdaters.forEach(function(u){ u(); });
@@ -234,6 +270,8 @@
     function renderTabs(){
       tabs.innerHTML = '';
       scrollUpdaters = [];
+      scrollRows.forEach(function(r){ r.disarm(); });
+      scrollRows = [];
       syncTabs();
 
       /* Row 1 — lists row (only when it earns the space), same pill language. */
@@ -279,6 +317,7 @@
       tabs.appendChild(krow);
 
       scrollUpdaters.forEach(function(u){ u(); });
+      scrollRows.forEach(function(r){ r.arm(); });
     }
 
     /* One SmartTab pill: label + 💜/⭐ marker + ⋯ menu. */
@@ -344,6 +383,7 @@
     var menuTab = null;
     function openTabMenu(t, anchor){
       menuTab = t;
+      pokeScrollers();
       tabMenu.innerHTML = '';
       var items = [['edit','\u270F\uFE0F Edit'],['heart','\uD83D\uDC9C Set Purple Heart'],
                    ['star','\u2B50 Set Gold Star'],['remove','\u2715 Remove']];
@@ -382,6 +422,7 @@
     var tabPop = el('div','sn-pop'); tabPop.style.display='none'; stage.appendChild(tabPop);
     function openTabEditor(t, isCreate, anchor){
       tabPop.innerHTML = '';
+      pokeScrollers();
       tabPop.appendChild(el('h3','sn-pop-title', isCreate ? 'Add Tab' : 'Edit Tab'));
       var r1 = el('div','row');
       var l1 = el('label','','Label');

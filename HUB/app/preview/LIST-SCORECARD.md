@@ -35,7 +35,39 @@ was read from his PDF and ported faithfully — not approximated:
 5. The lists row (Saved from Today, custom lists) speaks the same pill
    language — count badge + × instead of ⋯.
 
-## Score: 9.6/10
+## Director rework v7 — ambient ribbon drift (2026-10-02, Shawn's words)
+
+His verdict: "That's a lot better, eh? Smart tabs are smart, eh? That's
+good logic." His one suggestion: the ribbon should drift slowly across on
+its own, like his SmartNET page — "it scrolled just nice slowly across...
+that would present really nice."
+
+1. **Ambient auto-scroll.** The ribbon now drifts at ~34px/sec in a slow
+   ping-pong, pausing a full 4 seconds on any hover, touch, scroll, focus,
+   keypress, chevron use, or open menu/popover. Respects
+   `prefers-reduced-motion` and never starts when nothing overflows.
+2. No leaks: timers are disarmed and the registry reset on every re-render.
+
+## Effectiveness scorecard (Shawn asked: score it for effectiveness)
+
+The room's job: Smart List is where Smart Notes are saved and organized
+into categories and lists. Scored against that job, not against itself:
+
+| # | Effectiveness test | Score | Note |
+|---|--------------------|-------|------|
+| 1 | Find any note fast | 10 | SmartTabs ribbon + toggle + search + × CLEAR — three ways in, all instant. |
+| 2 | Browse by what it teaches | 10 | Categories auto-derived from the real notes; 💜/⭐ floats priorities. |
+| 3 | Save notes into lists | 10 | SAVE TO LIST on every board; lists persist per device. |
+| 4 | Manage the organization | 10 | Tabs: add/edit/heart/star/remove/restore. Lists: create/delete. |
+| 5 | Receive Today saves | 9 | Wired to Today's real SAVE key; unresolvable saves are honest placeholders until the Today lane ships snapshots. |
+| 6 | Read a note fully | 8 | VIEW FULL NOTE shows parsed nutshell + metadata + source — not the complete note body yet. |
+| 7 | Pro feel | 9 | Shawn: "that's a lot better." The drift is the last motion piece; his eyes confirm. |
+
+**Effectiveness: 9.5/10.** It does the whole job — the half point off is
+read-the-full-note (needs full-body projection) and the Today snapshot
+contract (Today lane), plus his visual sign-off on the drift.
+
+## Score: 9.6/10 (unchanged — the drift adds motion, not points)
 
 | # | Dimension | Score | Note |
 |---|-----------|-------|------|
@@ -44,19 +76,18 @@ was read from his PDF and ported faithfully — not approximated:
 | 3 | Button law | 10 | Every control persists/navigates; his pill language throughout. |
 | 4 | Color law | 10 | Spectrum per tab (stable), 💜/⭐ glows per his spec, white/silver chrome. |
 | 5 | Visual consistency | 10 | His SmartTabs v9 ported faithfully; Today board anatomy below. |
-| 6 | Keyboard/accessibility | 10 | Pills focusable, Enter/Space toggles, Escape closes menu/popover/modal, focus trap. |
-| 7 | Composition (clean / organized / pro feel) | 9 | One ribbon, one language — his. |
+| 6 | Keyboard/accessibility | 10 | Pills focusable, Enter/Space toggles, Escape closes, focus trap, reduced-motion respected. |
+| 7 | Composition (clean / organized / pro feel) | 9 | One ribbon, one language — his, now with his drift. |
 | 8 | Completeness | 9 | Full tab lifecycle: add/edit/heart/star/remove/restore. |
 
 ## Why not 10
 
 - **-0.3 — no visual confirmation** (screenshot pipeline down; structural QA only — director's eyes are the pass).
-- **-0.1 — composition needs his eyes**: the port follows his code line-for-line, but feel is his call.
+- **-0.1 — composition needs his eyes**: the drift speed and feel are his call.
 
 ## What closes it
 
-- Director visual pass on the SmartTabs ribbon -> +0.4
-- Today SAVE snapshot contract (Today lane) -> noted separately, not scored here
+- Director visual pass on the drifting ribbon -> +0.4
 
 ## Files (written, uncommitted)
 
