@@ -74,11 +74,11 @@
     head.appendChild(sub);
     stage.appendChild(head);
 
-    var body = el('div','sl-body');
-    var side = el('aside','sl-side');
+    var tabs = el('div','sl-tabs');
+    stage.appendChild(tabs);
+
     var main = el('main','sl-main');
-    body.appendChild(side); body.appendChild(main);
-    stage.appendChild(body);
+    stage.appendChild(main);
 
     /* ---------- main: search + grid ---------- */
     var toolbar = el('div','sl-toolbar');
@@ -94,39 +94,47 @@
     var grid = el('div','sl-grid');
     main.appendChild(grid);
 
-    /* ---------- sidebar ---------- */
-    function renderSide(){
-      side.innerHTML = '';
+    /* ---------- tabs across the top (no sidebar) ---------- */
+    function renderTabs(){
+      tabs.innerHTML = '';
 
-      var views = el('div','sl-sec');
-      views.appendChild(sideBtn('all', 'ALL NOTES', notes.length, state.view.type==='all'));
-      views.appendChild(sideBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today'));
-      side.appendChild(views);
+      /* views row */
+      var vrow = el('div','sl-tabrow');
+      vrow.appendChild(tabBtn('all', 'ALL NOTES', notes.length, state.view.type==='all'));
+      vrow.appendChild(tabBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today'));
+      tabs.appendChild(vrow);
 
-      var cats = categories();
-      var csec = el('div','sl-sec');
-      csec.appendChild(el('h2','sl-sec-h','CATEGORIES'));
-      cats.forEach(function(c){
-        csec.appendChild(sideBtn({type:'cat', name:c.name}, prettyCat(c.name), c.n, isView({type:'cat', name:c.name})));
+      /* categories row */
+      var crow = el('div','sl-tabrow');
+      crow.appendChild(el('span','sl-tablabel','CATEGORIES'));
+      var cscroll = el('div','sl-tabscroll');
+      categories().forEach(function(c){
+        cscroll.appendChild(tabBtn({type:'cat', name:c.name}, prettyCat(c.name), c.n,
+          isView({type:'cat', name:c.name})));
       });
-      side.appendChild(csec);
+      crow.appendChild(cscroll);
+      tabs.appendChild(crow);
 
-      var lsec = el('div','sl-sec');
-      lsec.appendChild(el('h2','sl-sec-h','MY LISTS'));
+      /* my lists row */
+      var lrow = el('div','sl-tabrow');
+      lrow.appendChild(el('span','sl-tablabel','MY LISTS'));
+      var lscroll = el('div','sl-tabscroll');
       var names = Object.keys(store.custom).sort();
       if(!names.length){
-        var none = el('p','sl-none',''); none.textContent = 'No custom lists yet.';
-        lsec.appendChild(none);
+        var none = el('span','sl-tabnone',''); none.textContent = 'No custom lists yet';
+        lscroll.appendChild(none);
       }
       names.forEach(function(nm){
-        var row = el('div','sl-listrow');
-        var b = el('button','sl-sidebtn'+(isView({type:'list', name:nm})?' on':''));
+        var wrap = el('span','sl-ltab');
+        var b = el('button','sl-tab'+(isView({type:'list', name:nm})?' on':''));
         b.type = 'button';
         var t = el('span','',''); t.textContent = nm; b.appendChild(t);
-        b.appendChild(el('span','sl-sidebtn-n', String(store.custom[nm].length)));
-        b.addEventListener('click', function(){ state.view = {type:'list', name:nm}; state.query=''; search.value=''; renderAll(); });
-        row.appendChild(b);
-        var del = el('button','sl-del','\u00D7');
+        b.appendChild(el('span','sl-tab-n', String(store.custom[nm].length)));
+        b.addEventListener('click', function(){
+          state.view = {type:'list', name:nm}; state.query=''; search.value=''; renderAll();
+        });
+        wrap.appendChild(b);
+        var del = el('button','sl-tabx','\u00D7');
         del.type = 'button';
         del.setAttribute('aria-label','Delete list '+nm);
         del.setAttribute('title','Delete list');
@@ -137,22 +145,23 @@
           if(state.view.type==='list' && state.view.name===nm) state.view = {type:'all'};
           renderAll();
         });
-        row.appendChild(del);
-        lsec.appendChild(row);
+        wrap.appendChild(del);
+        lscroll.appendChild(wrap);
       });
       var nb = el('button','sl-new','+ NEW LIST');
       nb.type = 'button';
       nb.addEventListener('click', openNewListModal);
-      lsec.appendChild(nb);
-      side.appendChild(lsec);
+      lscroll.appendChild(nb);
+      lrow.appendChild(lscroll);
+      tabs.appendChild(lrow);
     }
 
-    function sideBtn(view, label, n, on){
-      var b = el('button','sl-sidebtn'+(on?' on':''));
+    function tabBtn(view, label, n, on){
+      var b = el('button','sl-tab'+(on?' on':''));
       b.type = 'button';
       var key = (typeof view === 'string') ? view : view.type+':'+view.name;
       var t = el('span','',''); t.textContent = label; b.appendChild(t);
-      b.appendChild(el('span','sl-sidebtn-n', String(n)));
+      b.appendChild(el('span','sl-tab-n', String(n)));
       b.addEventListener('click', function(){
         state.view = (typeof view === 'string') ? {type:view} : view;
         state.query=''; search.value='';
@@ -338,9 +347,31 @@
     document.addEventListener('keydown', function(ev){
       if(ev.key === 'Escape' && overlay.style.display !== 'none') closeModal();
     });
+    /* Focus trap: Tab cycles inside the open modal, never escapes to the page. */
+    function focusables(){
+      var out = [];
+      (function walk(n){
+        if(n.tag==='button' || n.tag==='input') out.push(n);
+        (n.children||[]).forEach(walk);
+      })(mbox);
+      return out;
+    }
+    overlay.addEventListener('keydown', function(ev){
+      if(ev.key !== 'Tab' || overlay.style.display === 'none') return;
+      var f = focusables();
+      if(!f.length) return;
+      var first = f[0], last = f[f.length-1];
+      var active = document.activeElement;
+      if(ev.shiftKey && active === first){ ev.preventDefault(); last.focus(); }
+      else if(!ev.shiftKey && active === last){ ev.preventDefault(); first.focus(); }
+    });
     stage.appendChild(overlay);
 
-    function openModal(){ overlay.style.display = 'flex'; }
+    function openModal(){
+      overlay.style.display = 'flex';
+      var f = focusables();
+      if(f.length) f[0].focus();
+    }
     function closeModal(){ overlay.style.display = 'none'; mbox.innerHTML=''; }
 
     function modalHead(kicker, title){
@@ -444,7 +475,7 @@
       inp.focus();
     }
 
-    function renderAll(){ renderSide(); renderGrid(); }
+    function renderAll(){ renderTabs(); renderGrid(); }
     renderAll();
 
     var foot = el('footer','sl-foot','');
