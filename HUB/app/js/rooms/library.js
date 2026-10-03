@@ -52,6 +52,32 @@
     hero.appendChild(idHint);
     stage.appendChild(hero);
 
+    /* ---------- browse the major areas ---------- */
+    var activeArea = null;
+    var areasEl = el('div', 'lib-areas');
+    areasEl.appendChild(el('p', 'lib-areas-label', 'Browse the major areas of NayaPOWER'));
+    var chipsEl = el('div', 'lib-chips');
+    A.AREAS.forEach(function(a){
+      var chip = el('button', 'lib-chip', a.name);
+      chip.type = 'button';
+      chip.setAttribute('aria-pressed', 'false');
+      chip.addEventListener('click', function(){
+        activeArea = (activeArea === a.id) ? null : a.id;
+        Array.prototype.forEach.call(chipsEl.children, function(c){
+          c.setAttribute('aria-pressed', c.textContent === a.name && activeArea ? 'true' : 'false');
+          c.classList.toggle('on', c.textContent === a.name && !!activeArea);
+        });
+        try{ localStorage.setItem(LS_QUERY, search.value); }catch(e){}
+        paint(search.value);
+      });
+      chipsEl.appendChild(chip);
+    });
+    areasEl.appendChild(chipsEl);
+    stage.appendChild(areasEl);
+
+    var answerEl = el('div', 'lib-answerwrap');
+    stage.appendChild(answerEl);
+
     var shelvesEl = el('div', 'lib-shelves');
     stage.appendChild(shelvesEl);
 
@@ -174,8 +200,25 @@
       return c;
     }
 
+    function answerCard(obj, score){
+      var a = el('div', 'lib-answer');
+      a.appendChild(el('p', 'lib-answer-label', 'Best match from the shelves — retrieved, not generated'));
+      a.appendChild(el('h2', 'lib-answer-title', obj.title));
+      a.appendChild(el('p', 'lib-answer-text', obj.excerpt));
+      var meta = el('div', 'lib-card-meta');
+      meta.appendChild(el('code', 'lib-id', obj.id));
+      meta.appendChild(pill(obj.truth));
+      a.appendChild(meta);
+      var open = el('button', 'lib-hbtn lib-answer-open', 'Open the evidence');
+      open.type = 'button';
+      open.addEventListener('click', function(){ openEvidence(obj); });
+      a.appendChild(open);
+      return a;
+    }
+
     function paint(query){
       shelvesEl.innerHTML = '';
+      answerEl.innerHTML = '';
       idHint.textContent = '';
 
       if(!verified){
@@ -195,18 +238,37 @@
       }
 
       var q = String(query || '').trim();
-      var idHit = q ? A.resolveId(objects, q) : null;
-      var list = q ? A.search(objects, q) : objects.slice();
+      var pool = activeArea ? A.byArea(objects, activeArea) : objects;
+      var idHit = q ? A.resolveId(pool, q) : null;
+      var ranked = q ? A.rank(pool, q) : pool.map(function(o){ return {obj:o, score:0}; });
+      var list = ranked.map(function(r){ return r.obj; });
 
       if(idHit){
         idHint.textContent = 'Canonical ID resolved: ' + idHit.id + ' — the primary path.';
         list = [idHit].concat(list.filter(function(o){ return o.id !== idHit.id; }));
       }
 
+      /* Q&A: a question with a strong hit gets the answer card. */
+      if(q && !idHit && A.isQuestion(q) && ranked.length && ranked[0].score >= 15){
+        answerEl.appendChild(answerCard(ranked[0].obj, ranked[0].score));
+      }
+
       if(q && !list.length){
         var nr = el('div', 'lib-state');
         nr.appendChild(el('p', 'lib-state-t', 'No references match "' + q + '".'));
         nr.appendChild(el('p', 'lib-state-d', 'The shelves stay honest — no results invented.'));
+        if(activeArea){
+          var clr = el('button', 'lib-hbtn', 'Clear the area filter');
+          clr.type = 'button';
+          clr.addEventListener('click', function(){
+            activeArea = null;
+            Array.prototype.forEach.call(chipsEl.children, function(c){
+              c.setAttribute('aria-pressed', 'false'); c.classList.remove('on');
+            });
+            paint(search.value);
+          });
+          nr.appendChild(clr);
+        }
         shelvesEl.appendChild(nr);
         return;
       }

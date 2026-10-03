@@ -30,7 +30,7 @@ def main():
 
     full_js = (harness + inner(ad) + inner(js)
                + "document.addEventListener('DOMContentLoaded',()=>{"
-               + "const objs=LibraryAdapter.parseMany(LibraryAdapter.REAL.concat(LibraryAdapter.DEMO));"
+               + "const objs=LibraryAdapter.parseMany(LibraryAdapter.REAL.concat(LibraryAdapter.DEMO,LibraryAdapter.QA_SEEDS));"
                + "document.getElementById('app').appendChild("
                + "window.NayaRooms.library(el,{objects:objs,verified:true}));"
                + "});")

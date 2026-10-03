@@ -56,6 +56,35 @@
 .lib-idhint{
   min-height:20px; font-size:13px; color:var(--lib-accent); margin:12px 0 0;
 }
+/* areas strip */
+.lib-areas{ max-width:1120px; margin:0 auto 8px; padding:0 24px; }
+.lib-areas-label{
+  font-size:11px; letter-spacing:.22em; font-weight:700; color:#8f8aa3; margin:0 0 10px;
+}
+.lib-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.lib-chip{
+  padding:9px 18px; border-radius:999px; cursor:pointer;
+  background:#101014; color:#cfc9df; font-size:13px; font-weight:600;
+  border:1px solid rgba(255,255,255,.12);
+}
+.lib-chip:hover{ border-color:rgba(85,185,238,.5); color:#fff; }
+.lib-chip.on, .lib-chip[aria-pressed="true"]{
+  background:rgba(85,185,238,.14); border-color:var(--lib-accent); color:#fff;
+}
+.lib-chip:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(85,185,238,.3); }
+/* answer card */
+.lib-answerwrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
+.lib-answer{
+  background:linear-gradient(160deg,rgba(85,185,238,.12),rgba(85,185,238,.03));
+  border:1px solid rgba(85,185,238,.45); border-radius:18px;
+  padding:24px 26px; margin:18px 0 8px;
+}
+.lib-answer-label{
+  font-size:11px; letter-spacing:.2em; font-weight:700; color:var(--lib-accent); margin:0 0 10px;
+}
+.lib-answer-title{ font-size:22px; font-weight:750; margin:0 0 10px; color:#fff; }
+.lib-answer-text{ font-size:16px; line-height:1.65; color:#e6e1f2; margin:0 0 14px; }
+.lib-answer-open{ max-width:280px; margin-top:14px; }
 .lib-shelves{ max-width:1120px; margin:0 auto; padding:0 24px; }
 .lib-shelf{ margin:0 0 44px; }
 .lib-shelf-head{
