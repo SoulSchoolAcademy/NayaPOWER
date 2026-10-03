@@ -94,36 +94,16 @@
     var grid = el('div','sl-grid');
     main.appendChild(grid);
 
-    /* ---------- tabs across the top (no sidebar) ---------- */
+    /* ---------- tabs across the top: collections row + one category row ---------- */
     function renderTabs(){
       tabs.innerHTML = '';
 
-      /* views row */
-      var vrow = el('div','sl-tabrow');
-      vrow.appendChild(tabBtn('all', 'ALL NOTES', notes.length, state.view.type==='all'));
-      vrow.appendChild(tabBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today'));
-      tabs.appendChild(vrow);
-
-      /* categories row */
-      var crow = el('div','sl-tabrow');
-      crow.appendChild(el('span','sl-tablabel','CATEGORIES'));
+      /* Row 1 — collections: views + my lists, NEW LIST pinned top-right */
+      var crow = el('div','sl-tabrow sl-collections');
       var cscroll = el('div','sl-tabscroll');
-      categories().forEach(function(c){
-        cscroll.appendChild(tabBtn({type:'cat', name:c.name}, prettyCat(c.name), c.n,
-          isView({type:'cat', name:c.name})));
-      });
-      crow.appendChild(cscroll);
-      tabs.appendChild(crow);
-
-      /* my lists row */
-      var lrow = el('div','sl-tabrow');
-      lrow.appendChild(el('span','sl-tablabel','MY LISTS'));
-      var lscroll = el('div','sl-tabscroll');
+      cscroll.appendChild(tabBtn('all', 'ALL NOTES', notes.length, state.view.type==='all', null));
+      cscroll.appendChild(tabBtn('today', 'SAVED FROM TODAY', loadTodaySaves().length, state.view.type==='today', null));
       var names = Object.keys(store.custom).sort();
-      if(!names.length){
-        var none = el('span','sl-tabnone',''); none.textContent = 'No custom lists yet';
-        lscroll.appendChild(none);
-      }
       names.forEach(function(nm){
         var wrap = el('span','sl-ltab');
         var b = el('button','sl-tab'+(isView({type:'list', name:nm})?' on':''));
@@ -146,19 +126,30 @@
           renderAll();
         });
         wrap.appendChild(del);
-        lscroll.appendChild(wrap);
+        cscroll.appendChild(wrap);
       });
+      crow.appendChild(cscroll);
       var nb = el('button','sl-new','+ NEW LIST');
       nb.type = 'button';
       nb.addEventListener('click', openNewListModal);
-      lscroll.appendChild(nb);
-      lrow.appendChild(lscroll);
-      tabs.appendChild(lrow);
+      crow.appendChild(nb);
+      tabs.appendChild(crow);
+
+      /* Row 2 — categories on one level, each with its own spectrum color */
+      var krow = el('div','sl-tabrow');
+      var kscroll = el('div','sl-tabscroll');
+      categories().forEach(function(c, i){
+        kscroll.appendChild(tabBtn({type:'cat', name:c.name}, prettyCat(c.name), c.n,
+          isView({type:'cat', name:c.name}), FLOW[i % FLOW.length]));
+      });
+      krow.appendChild(kscroll);
+      tabs.appendChild(krow);
     }
 
-    function tabBtn(view, label, n, on){
+    function tabBtn(view, label, n, on, color){
       var b = el('button','sl-tab'+(on?' on':''));
       b.type = 'button';
+      if(color) b.style.setProperty('--tc', color);
       var key = (typeof view === 'string') ? view : view.type+':'+view.name;
       var t = el('span','',''); t.textContent = label; b.appendChild(t);
       b.appendChild(el('span','sl-tab-n', String(n)));

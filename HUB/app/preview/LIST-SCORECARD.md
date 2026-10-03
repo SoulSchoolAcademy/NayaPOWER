@@ -3,31 +3,33 @@
 Branch: `naya4/room-02-reports-v2`.
 Sources: 24 canonical smart notes via `ListAdapter.parseNotes` (projection, never invention).
 Verified: node syntax OK (adapter + room), CSS brace balance OK,
-27-check smoke suite green (render, tabs, spectrum order, Today board anatomy,
-search, category filter, modal + flow color, focus trap, save flow, list
-create/delete as tabs, Today-key read, honest placeholders). Preview rebuilt.
+32-check smoke suite green (two-row tabs, per-category tab colors, spectrum
+order, Today board anatomy, search, category filter, modal + flow color,
+focus trap, save flow, list create/delete as tabs, Today-key read, honest
+placeholders). Preview rebuilt.
 
-## Director rework v2 — layout (2026-10-02, Shawn's own words)
+## Director rework v3 — tab bar, pro level (2026-10-02, Shawn's own words)
 
-1. **Categories across the top, no sidebar.** Views (ALL NOTES / SAVED FROM
-   TODAY), CATEGORIES, and MY LISTS are now sticky smart-tab rows — the
-   sidebar is gone, so no dead black space on scroll. Lists render as tabs
-   with an inline × delete; + NEW LIST is a tab-button.
-2. **Widescreen boards, not boxes.** The grid is now a full-width single
-   column — boards read like the Today page, not boxed cards.
+His verdict on v2: the boards present great, but the top "just looks like a
+mess... not clean and nice and organized and logical." His prescription:
++ NEW LIST in the top-right corner, categories on one level, tabs unlit
+white at rest and each lighting in its own color on hover.
 
-## Director rework v1 — color + Today-style boards (2026-10-02)
+1. **Two deliberate rows.** Row 1 = collections (ALL NOTES, SAVED FROM
+   TODAY, my-list tabs with inline ×, + NEW LIST pinned top-right). Row 2 =
+   all categories on one scrollable level. No sidebar, no labels, no
+   placeholder noise — the "No custom lists yet" text is gone.
+2. **Per-category tab colors.** Tabs rest white/silver; on hover/focus/select
+   each category tab ignites in its own spectrum color (same flow as the
+   boards), count badge tints to match. Views and NEW LIST stay white.
 
-1. **Color flow, not all-green.** Boards flow the natural spectrum —
-   purple → indigo → cyan → forest → lime → yellow → gold → orange → red →
-   magenta — white/silver at rest, the board's flow color ignites the whole
-   perimeter on hover/focus. Emerald identity retired.
-2. **Today-style boards.** Today `.naya509-board` anatomy: rank glyph + title
-   + when + IN A NUTSHELL + explicit SAVE TO LIST / VIEW FULL NOTE + footer.
-3. **Store contract resolved with evidence.** Today v8.3 writes SAVE to
-   `nayanet.today.smartlist.v1` (flat id array); this room reads it
-   read-only. Custom lists in `naya.smartlist={custom:{}}`. Unresolvable
-   Today saves render as honest placeholders.
+## Honest self-assessment (Shawn asked: what do I give it, what would I do for 10)
+
+v2 scored 9.2 on structure but the tab bar was really a 6/10 — three
+mismatched rows, placeholder noise, misaligned labels. That was a fair
+"mess" call; the v2 scorecard didn't catch it because it measured
+dimensions, not whether the top read as one clean composition. Lesson:
+score the *composition*, not just the parts.
 
 ## Score: 9.4/10
 
@@ -35,9 +37,9 @@ create/delete as tabs, Today-key read, honest placeholders). Preview rebuilt.
 |---|-----------|-------|------|
 | 1 | Canonical grounding | 10 | All 24 real notes parse; zero demo content. |
 | 2 | Honesty | 10 | Empty states honest; unresolvable Today saves are placeholders, never invented. |
-| 3 | Button law | 10 | Every control persists/navigates; silver at rest, flow ignites. |
-| 4 | Color law | 10 | Spectrum flow on boards per director; white/silver chrome. |
-| 5 | Visual consistency | 10 | Today board anatomy + smart tabs across the top, per director. |
+| 3 | Button law | 10 | Every control persists/navigates; silver at rest, own color ignites. |
+| 4 | Color law | 10 | Spectrum flow on boards AND category tabs per director; white/silver chrome. |
+| 5 | Visual consistency | 10 | Today board anatomy + two-row smart tabs, per director. |
 | 6 | Keyboard/accessibility | 10 | Focusable boards, Enter/Space opens, Escape closes, focus trap cycles Tab inside modal. |
 | 7 | Completeness | 8 | Core flows done; no bulk operations, no list rename, no drag-reorder. |
 
@@ -50,7 +52,7 @@ create/delete as tabs, Today-key read, honest placeholders). Preview rebuilt.
 
 ## What closes it
 
-- Director visual pass -> +0.3
+- Director visual pass on the new top -> +0.3
 - Today SAVE snapshot contract (Today lane) -> +0.3
 - Bulk ops / rename / reorder -> +0.2 (beyond the 10 bar for this pass)
 
