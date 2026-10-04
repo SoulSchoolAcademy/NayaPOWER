@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "8ad6cfa69db40befb8b62314155c90356726455c",
-  "inventory_file_count": 185,
+  "receipt_basis_commit": "0aae787a93fa2a89a96d5c42f30fd0f5582d06fa",
+  "inventory_file_count": 188,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 41,
+    "05-MEMORY": 44,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -597,6 +597,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
       "blob_sha": "c79132f6a7177f3b6f2bee8d4a4a00a1d8843f8b",
       "size": 13685
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.ai.md",
+      "blob_sha": "af4db7e5d495ad2c64f3f2b0495fb8811d68995b",
+      "size": 2661
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.machine.json",
+      "blob_sha": "52671091d621d9ed65b9773117a3a3c67005c1d8",
+      "size": 7622
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.md",
+      "blob_sha": "177898e642f26af317c834b398e062cdd33120f5",
+      "size": 6923
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
