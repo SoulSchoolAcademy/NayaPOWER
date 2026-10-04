@@ -8,16 +8,27 @@ Before changing code, documentation, infrastructure, or configuration:
 
 1. Read this file completely.
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
-3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
-4. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-5. Read `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`.
-6. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
-7. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
-8. Read ratified project intelligence from `.naya/project-intelligence/`.
-9. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
-10. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+3. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+4. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
+5. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
+6. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
+7. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
+8. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
+9. Read ratified project intelligence from `.naya/project-intelligence/`.
+10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
+11. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
+
+## CONTINUOUS DISTILLATION / OPTIMIZATION
+
+Every meaningful work cycle asks: **What did we learn? What is the smallest durable lesson? What can be retired, consolidated or superseded?**
+
+Optimize for **MAXIMUM VERIFIED HUMAN VALUE PER ACTION PER MOMENT + MINIMUM NECESSARY COMPLEXITY**.
+
+Use multiple perspectives—human, child, grandma, Naya, AI, machine and proof—when they materially improve understanding, while keeping one canonical intelligence object and one source of truth.
+
+A daily learning event distills meaningful experience into durable lessons, preserves evidence and releases material that no longer earns its weight. Daily synthesis compounds into weekly, monthly and yearly intelligence.
 
 ## HUMAN AUTHORITY
 
