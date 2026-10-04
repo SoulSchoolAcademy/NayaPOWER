@@ -204,7 +204,7 @@ def update_registry(capture, verify, projection):
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
         "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
-        "smart_link_status": "ACTIVE" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
+        "smart_link_status": ("ACTIVE_AUTH_GATED" if str(block.get("owner_scope", "PRIVATE")).upper() == "PRIVATE" else "ACTIVE") if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PENDING_PRIVATE_PROJECTION",
         "smart_link": ("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/" + str(projection.relative_to(ROOT)).replace("\\", "/")) if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else None,
         "publication_scope": capture.get("projection", {}).get("publication_scope", "PRIVATE"),
         "keywords": ["smart note","capture","intelligent block","future naya","superbrain","intent","memory","reusable intelligence"],
