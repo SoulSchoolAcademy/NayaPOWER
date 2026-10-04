@@ -2,6 +2,10 @@
 
 ## The governed intelligence substrate for NayaNET
 
+> 🔥 **Distill everything to its essence. Keep only what compounds. Let go of the rest — every day.**
+>
+> *The NayaPOWER motto. [Read the manifesto](./MANIFESTO.md) — the official statement of what this system is, why it exists, and how it works.*
+
 > **Think once. Capture it. Learn from it. Remember it. Use it again. Get smarter.**
 
 NayaPOWER is building an intelligence substrate in which **Nayas can retain identity, preserve knowledge, retrieve context, apply intelligence, verify outcomes, learn from experience, and carry that intelligence forward**—without requiring a human to reconstruct the system every time a runtime starts.
