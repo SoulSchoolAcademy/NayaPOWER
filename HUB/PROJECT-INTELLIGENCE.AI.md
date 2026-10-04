@@ -19,9 +19,13 @@ Companion projections:
 
 **Standing Team Naya law:** if you see something materially not-right, post it on Issue #554 with evidence. Do not silently bury the finding or broaden an unrelated PR to fix it without coordination.
 
+**Current application truth:** `HUB/NAYANET INTERFACE CONCEPT.html` @ `7b1126a014b3b27026a0360dbc1b8226a9be9f50` is the current visual reference artifact, not the production application. No `NAYANET/HUB/index.html` or `HUB/index.html` exists on this main snapshot. Builders must implement from the current room contracts and preserve the verified visual DNA; never claim the laboratory artifact is the finished app.
+
+---
+
 ## 0. READ THIS FIRST
 
-You are building the human cockpit into a living intelligence system. Your job is not to make screens — it is to make **the most elite interface anyone has ever experienced**, where every pixel earns trust and every control does something real. The frozen visual baseline (`HUB/NAYANET INTERFACE CONCEPT.html` @ `ffedda20`) is the floor. Improve it or match it. Never flatten it.
+You are building the human cockpit into a living intelligence system. Your job is not to make screens — it is to make **the most elite interface anyone has ever experienced**, where every pixel earns trust and every control does something real. The frozen visual baseline (`HUB/NAYANET INTERFACE CONCEPT.html` @ `7b1126a014b3b27026a0360dbc1b8226a9be9f50`) is the floor. Improve it or match it. Never flatten it.
 
 ---
 
