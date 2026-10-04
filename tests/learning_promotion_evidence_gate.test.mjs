@@ -223,3 +223,75 @@ test('a persisted causally valid control/treatment pair may cross the promotion 
   // Intelligent Block lock-in read. We only prove the promotion evidence gate here.
   assert.notEqual(response.status, 409);
 });
+
+
+async function assertPromotionRejected(mutator, refs = [
+  'treatment-1',
+  'control-1',
+  LEARNING_ID,
+  'CVO-VALID-1',
+  NAYA_ID,
+]) {
+  const pair = makePair();
+  mutator(pair);
+  const r = runtime({ persistedReceipts: pair });
+  const response = await r.invoke(refs);
+  assert.equal(
+    r.promotionWrites.length,
+    0,
+    'invalid causal evidence reached the ACTIVE promotion write',
+  );
+  assert.equal(response.status, 409);
+  return response.json();
+}
+
+test('promotion gate rejects same-learning pair with a mismatched source event', async () => {
+  const body = await assertPromotionRejected(([, treatment]) => {
+    treatment.evidence.source_event_id = 'event-other';
+    treatment.evidence.outcome.source_event_bound = 'event-other';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.same_source_event, false);
+});
+
+test('promotion gate rejects treatment bound to a different Intelligent Block', async () => {
+  const body = await assertPromotionRejected(([, treatment]) => {
+    treatment.evidence.intelligence_id = 'IB-OTHER';
+    treatment.evidence.outcome.intelligent_block_bound = 'IB-OTHER';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.lineage_bindings_valid, false);
+});
+
+test('promotion gate rejects a claimed causal pass with zero measurable outcome delta', async () => {
+  const body = await assertPromotionRejected(([, treatment]) => {
+    treatment.evidence.outcome.provenance_preserved = false;
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.outcome_valid, false);
+});
+
+test('promotion gate rejects an unregistered held-out task even with positive outcome', async () => {
+  const body = await assertPromotionRejected(([control, treatment]) => {
+    control.evidence.task_input = { ...control.evidence.task_input, task_id: 'UNREGISTERED-TASK' };
+    treatment.evidence.task_input = { ...treatment.evidence.task_input, task_id: 'UNREGISTERED-TASK' };
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.task_registered_and_bound, false);
+});
+
+test('promotion gate rejects a mismatched causal-verification id', async () => {
+  const body = await assertPromotionRejected(
+    () => {},
+    ['treatment-1', 'control-1', LEARNING_ID, 'CVO-DIFFERENT', NAYA_ID],
+  );
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.causal_record_valid, false);
+});
+
+test('promotion gate rejects malformed control/treatment roles', async () => {
+  const body = await assertPromotionRejected(([control]) => {
+    control.evidence.condition = 'TREATMENT';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_PAIR_INVALID');
+});
