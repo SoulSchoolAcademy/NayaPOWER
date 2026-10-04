@@ -345,3 +345,53 @@ def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture
     assert capture["intelligence"]["machine_view"]["instruction_is_proof"] is False
     assert capture["intelligence"]["machine_view"]["human_authority_preserved"] is True
     assert capture["intelligence"]["machine_view"]["automatic_truth_ceiling"] == "CANDIDATE"
+
+
+def test_renderer_emits_ai_note_section_from_ai_view(tmp_path):
+    lesson = {
+        "essence": "ai note essence",
+        "ai_view": {
+            "instruction": "AI operating instruction for seats",
+            "primary_evaluation": "cold successor applies it unaided",
+        },
+        "machine_view": {"automatic_truth_ceiling": "CANDIDATE"},
+    }
+    path = mod.render(
+        _private_sn004_capture(),
+        _verify_for_lesson(lesson, block_id="IB-AINOTE-TEST"),
+        private_root=tmp_path,
+    )
+    rendered = path.read_text()
+    assert "## 🤖 AI NOTE" in rendered
+    assert "AI operating instruction for seats" in rendered
+    assert "cold successor applies it unaided" in rendered
+
+
+def test_validation_rejects_invented_preview_path():
+    try:
+        mod.validate_changed_paths([".naya/preview/IB-SMART-NOTE-20261004-wrong.md"])
+    except SystemExit as exc:
+        assert "SMART_NOTE_INVENTED_LOCATION" in str(exc)
+    else:
+        raise AssertionError("expected invented Smart Note preview location to fail closed")
+
+
+def test_validation_rejects_projection_outside_brain():
+    try:
+        mod.validate_changed_paths(["notes/IB-SMART-NOTE-20261004-wrong.md"])
+    except SystemExit as exc:
+        assert "SMART_NOTE_PROJECTION_OUTSIDE_BRAIN" in str(exc)
+    else:
+        raise AssertionError("expected Smart Note projection outside Brain to fail closed")
+
+
+def test_smart_note_front_doors_name_one_canonical_brain_path():
+    capture_readme = (ROOT / ".naya/capture/README.md").read_text()
+    activation_readme = (ROOT / "NAYA-ACTIVATION/README.md").read_text()
+    agents = (ROOT / "AGENTS.md").read_text()
+    root_readme = (ROOT / "README.md").read_text()
+    assert "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD" in capture_readme
+    assert ".naya/memory/smart-notes/YYYY" not in capture_readme
+    assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in activation_readme
+    assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in agents
+    assert "Smart Note — one path, no guessing" in root_readme
