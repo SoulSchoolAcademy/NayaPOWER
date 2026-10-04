@@ -4,7 +4,11 @@
 **Authority:** Shawn Vibert, Human Director
 **Reconciled from:** Naya 2's `HUB-10-10-PROJECT-INTELLIGENCE-V1` (8 dimensions, scorecard instrument, phases 0–8) + Naya 4's elite design contract (12 frozen laws, Smart Doors spec, 22-element criteria)
 **Companion:** `HUB/DESIGN-CONTRACT.md` (the visual law — this document is the build law)
-**Frozen visual baseline:** `HUB/NAYANET INTERFACE CONCEPT.html` @ main `ffedda20`
+**Frozen visual baseline:** `HUB/NAYANET INTERFACE CONCEPT.html` @ main `7b1126a014b3b27026a0360dbc1b8226a9be9f50`
+
+## CURRENT REPOSITORY SURFACE
+
+**Truth:** the visual concept/reference and room contracts exist on current `main`; the production Hub application itself is **not yet present/proven as a canonical `index.html` surface**. In particular, `NAYANET/HUB/index.html` and `HUB/index.html` are absent on this main snapshot. Do not present the concept artifact as the production application. The build target is the real componentized Hub described by the current room contracts.
 
 > Reconciliation notes: the 8-dimension scorecard and its instrument are adopted as the measurement law (cleaner governance). The 22 granular element criteria fold in as measurement detail under their parent dimension. The Phase 0–8 plan is adopted (more actionable than the 4-phase version). The Smart Doors spec and Door Law are baked into Phase 4. Where the two sources disagreed, the disagreement is named below — never silently resolved.
 
