@@ -774,21 +774,6 @@
       "size": 6153
     },
     {
-      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
-      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
-      "size": 6173
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
-      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
-      "size": 21537
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
-      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
-      "size": 7561
-    },
-    {
       "path": "BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json",
       "blob_sha": "966f182d5f34860fc201231236e29a04f654d1e9",
       "size": 3044
@@ -817,6 +802,21 @@
       "path": "BRAIN/12-ENGINEERING/README.md",
       "blob_sha": "51cf103c13dd57fe68bd3d1abe826542d11a8c10",
       "size": 3540
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
+      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
+      "size": 6173
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
+      "size": 21537
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
+      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
+      "size": 7561
     },
     {
       "path": "BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py",
