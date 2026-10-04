@@ -51,7 +51,9 @@
         "PROVENANCE_AND_LINEAGE_PRESERVED",
         "COLD_RETRIEVAL_BEFORE_ACTION",
         "NO_PARALLEL_BRAIN_PER_AI"
-      ]
+      ],
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE"
     },
     "learning_lesson": "The strategic value is not merely AI agnosticism. It is AI unification: preserve one continuity-bearing intelligence layer beneath many changing AI interfaces so better or different models can be adopted without sacrificing memory, relationships, learned context, or governance.",
     "significance": "This changes the product category from 'another AI assistant' into an intelligence continuity and coordination layer. It can reduce vendor lock-in, repeated onboarding, fragmented agent work, context loss, and duplicated human explanation while enabling specialized AIs to contribute to one governed compounding brain.",
