@@ -22,12 +22,18 @@ Usage: render_smart_note.py <capture-json>
   (The pipeline performs the authoritative three-file write post-merge.)
 """
 import json
+import re
 import sys
 
 
-def _slug(title):
-    s = "".join(c if (c.isalnum() or c == " ") else "" for c in (title or "smart-note").lower())
-    return "-".join(s.split())[:60]
+def _slug(d):
+    """Slug from the capture_id (everything after snNNNN-), falling back to title words."""
+    cap = d.get("capture_id", "")
+    m = re.search(r"sn\d+-(.+)$", cap)
+    if m:
+        return m.group(1)[:60]
+    s = "".join(c if (c.isalnum() or c == " ") else "" for c in (d.get("title") or "smart-note").lower())
+    return "-".join(s.split()[:5])
 
 
 def brain_paths(d):
@@ -40,7 +46,7 @@ def brain_paths(d):
     sub = proj.get("subtopic_slug", "SUB")
     sid = d.get("smart_note_id", "SN-000")
     num = sid.replace("SN-", "").zfill(4)
-    slug = _slug(d.get("title"))
+    slug = _slug(d)
     base = (f"BRAIN/05-MEMORY/SMART-NOTES/{date}/{cat}/{topic}/{sub}/"
             f"SN-{num}/IB-SMART-NOTE-{ymd}-sn{num}-{slug}")
     return {
