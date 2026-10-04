@@ -138,7 +138,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
-    "90-OPERATIONS": 10,
+    "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
     "99-ARCHIVE": 1,
     "ROOT": 5,
 }
