@@ -301,8 +301,190 @@ Deno.serve(async (req: Request) => {
     if (learningError) throw learningError;
     if (!learning) return json({ ok: false, error: "LEARNING_NOT_FOUND" }, 404);
 
-    const refs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
+    const refs = Array.isArray(body?.evidence_refs) ? body.evidence_refs.map((ref: unknown) => String(ref)) : [];
     if (!refs.length) return json({ ok: true, verified: false, reason: "EVIDENCE_REQUIRED" });
+
+    // Promotion is a truth transition, not a caller assertion. Re-read the exact
+    // persisted control/treatment pair and recompute the bounded causal claim
+    // before any ACTIVE/LEARNED write occurs. A non-empty evidence_refs array is
+    // not evidence by itself.
+    const causalRef = refs.find((ref: string) => ref.startsWith("CVO-")) || "";
+    const receiptRefs = refs.filter(
+      (ref: string) =>
+        ref !== learningId &&
+        ref !== "NAYA-NODE-0001" &&
+        !ref.startsWith("CVO-")
+    );
+    if (
+      !causalRef ||
+      receiptRefs.length !== 2 ||
+      new Set(receiptRefs).size !== 2 ||
+      !refs.includes(learningId) ||
+      !refs.includes("NAYA-NODE-0001")
+    ) {
+      return json({ ok: false, error: "CAUSAL_EVIDENCE_SET_INVALID" }, 409);
+    }
+
+    const { data: evidenceRows, error: evidenceRowsError } = await admin
+      .from("nayanet_execution_receipts")
+      .select("*")
+      .in("id", receiptRefs)
+      .eq("user_id", ownerId)
+      .eq("project_id", "NayaNET");
+    if (evidenceRowsError) throw evidenceRowsError;
+    if (!Array.isArray(evidenceRows) || evidenceRows.length !== 2) {
+      return json({
+        ok: false,
+        error: "CAUSAL_EVIDENCE_RECEIPTS_NOT_FOUND",
+        expected_count: 2,
+        actual_count: Array.isArray(evidenceRows) ? evidenceRows.length : 0,
+      }, 409);
+    }
+
+    const evidenceObject = (row: any) => {
+      if (Array.isArray(row?.evidence)) {
+        return row.evidence
+          .filter((item: any) => item && !item?.causal_verification)
+          .reduce((acc: Record<string, unknown>, item: any) => ({ ...acc, ...item }), {});
+      }
+      return row?.evidence && typeof row.evidence === "object" ? row.evidence : {};
+    };
+    const control = evidenceRows.find((row: any) => evidenceObject(row).condition === "CONTROL");
+    const treatment = evidenceRows.find((row: any) => evidenceObject(row).condition === "TREATMENT");
+    if (!control || !treatment) {
+      return json({ ok: false, error: "CAUSAL_EVIDENCE_PAIR_INVALID" }, 409);
+    }
+
+    const controlEvidence: any = evidenceObject(control);
+    const treatmentEvidence: any = evidenceObject(treatment);
+    const persistedCausal: any = Array.isArray(treatment.evidence)
+      ? treatment.evidence.find((item: any) => item?.causal_verification)?.causal_verification
+      : treatment.evidence?.causal_verification;
+    const learningObservedForGate =
+      learning.observed_value &&
+      typeof learning.observed_value === "object" &&
+      !Array.isArray(learning.observed_value)
+        ? learning.observed_value
+        : {};
+    const expectedIntelligentBlockId = String((learningObservedForGate as any).intelligent_block_id || "");
+
+    const controlTask = controlEvidence.task_input ?? null;
+    const treatmentTask = treatmentEvidence.task_input ?? null;
+    const taskId = String(controlTask?.task_id || "");
+    const taskContracts: Record<string, {
+      requiredCapability: string;
+      metric: string;
+      controlBehavior: string;
+      treatmentBehavior: string;
+    }> = {
+      "NAYA-0001-PROVENANCE-HELDOUT-001": {
+        requiredCapability: "provenance_preservation",
+        metric: "provenance_preserved",
+        controlBehavior: "REQUIRE_DIRECT_CANONICAL_INTELLIGENCE",
+        treatmentBehavior: "PRESERVE_PROVENANCE_BEFORE_APPLY",
+      },
+      "NAYA-0001-ACT-FIRST-HELDOUT-001": {
+        requiredCapability: "governed_act_first_autonomy",
+        metric: "governed_autonomy_applied",
+        controlBehavior: "REQUIRE_EXPLICIT_PER_ACTION_APPROVAL",
+        treatmentBehavior: "ACT_WITHIN_GUARDRAILS_THEN_ANNOUNCE",
+      },
+      "NAYA-0001-ACTIVE-INTELLIGENCE-HELDOUT-001": {
+        requiredCapability: "active_intelligence_discipline",
+        metric: "governed_autonomy_applied",
+        controlBehavior: "TREAT_STORED_LESSON_AS_ACTIVE_AUTHORITY",
+        treatmentBehavior: "REQUIRE_TRUTH_AND_AUTHORITY_BOUNDARIES_BEFORE_APPLY",
+      },
+    };
+    const taskContract = taskContracts[taskId] ?? null;
+    const metric = taskContract?.metric || "";
+    const controlOutcome =
+      controlEvidence.outcome &&
+      typeof controlEvidence.outcome === "object" &&
+      !Array.isArray(controlEvidence.outcome)
+        ? controlEvidence.outcome
+        : {};
+    const treatmentOutcome =
+      treatmentEvidence.outcome &&
+      typeof treatmentEvidence.outcome === "object" &&
+      !Array.isArray(treatmentEvidence.outcome)
+        ? treatmentEvidence.outcome
+        : {};
+
+    const sameTask =
+      controlTask !== null &&
+      JSON.stringify(controlTask) === JSON.stringify(treatmentTask);
+    const sameLearning =
+      controlEvidence.learning_id === learningId &&
+      treatmentEvidence.learning_id === learningId;
+    const sameSourceEvent =
+      controlEvidence.source_event_id &&
+      controlEvidence.source_event_id === treatmentEvidence.source_event_id &&
+      controlEvidence.source_event_id === learning.source_event_id;
+    const conditionsValid =
+      controlEvidence.retained_intelligence_used === false &&
+      treatmentEvidence.retained_intelligence_used === true;
+    const taskBindingValid =
+      !!taskContract &&
+      controlTask?.required_capability === taskContract.requiredCapability &&
+      treatmentTask?.required_capability === taskContract.requiredCapability;
+    const behaviorValid =
+      !!taskContract &&
+      control.status === "SUCCESS" &&
+      treatment.status === "SUCCESS" &&
+      control.observed_result === taskContract.controlBehavior &&
+      treatment.observed_result === taskContract.treatmentBehavior &&
+      controlEvidence.behavior === taskContract.controlBehavior &&
+      treatmentEvidence.behavior === taskContract.treatmentBehavior;
+    const outcomeValid =
+      !!taskContract &&
+      metric.length > 0 &&
+      controlOutcome[metric] === false &&
+      treatmentOutcome[metric] === true;
+    const lineageBindingsValid =
+      controlOutcome.source_event_bound == null &&
+      controlOutcome.intelligent_block_bound == null &&
+      treatmentOutcome.source_event_bound === treatmentEvidence.source_event_id &&
+      treatmentOutcome.intelligent_block_bound === treatmentEvidence.intelligence_id &&
+      treatmentEvidence.intelligence_id === expectedIntelligentBlockId;
+    const causalRecordValid =
+      persistedCausal?.schema === "NAYANET_CAUSAL_VERIFICATION_V1" &&
+      persistedCausal?.causal_id === causalRef &&
+      persistedCausal?.receipt_id === treatment.id &&
+      persistedCausal?.comparison_receipt_id === control.id &&
+      persistedCausal?.causal_assessment === "CAUSAL_SUPPORTED" &&
+      persistedCausal?.verification_status === "OUTCOME_VERIFIED" &&
+      persistedCausal?.observed_change === treatment.observed_result &&
+      Array.isArray(persistedCausal?.limitations) &&
+      persistedCausal.limitations.length > 0;
+
+    const causalEvidenceVerified =
+      sameTask &&
+      sameLearning &&
+      sameSourceEvent &&
+      conditionsValid &&
+      taskBindingValid &&
+      behaviorValid &&
+      outcomeValid &&
+      lineageBindingsValid &&
+      causalRecordValid;
+    if (!causalEvidenceVerified) {
+      return json({
+        ok: false,
+        error: "CAUSAL_EVIDENCE_RECOMPUTATION_FAILED",
+        recomputed: {
+          same_task: sameTask,
+          same_learning: sameLearning,
+          same_source_event: Boolean(sameSourceEvent),
+          conditions_valid: conditionsValid,
+          task_registered_and_bound: taskBindingValid,
+          behavior_valid: behaviorValid,
+          outcome_valid: outcomeValid,
+          lineage_bindings_valid: lineageBindingsValid,
+          causal_record_valid: causalRecordValid,
+        },
+      }, 409);
+    }
 
     const verificationMethod = String(
       body?.verification_method || learning.verification_method || "Independent runtime verification."
