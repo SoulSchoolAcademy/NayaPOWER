@@ -1,3 +1,6 @@
+<!-- TOMBSTONE: status=SUPERSEDED | smart_note_id=SN-018 | canonical_path=BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md -->
+<!-- DO NOT USE THIS FILE — see canonical path above -->
+
 # SUPERSEDED — SN-018 Projection (Tombstone)
 
 **Smart Note:** SN-018
