@@ -11,8 +11,13 @@ Fails the PR when any Smart Note capture or view violates the canonical law:
      .naya/ and any non-.machine.json under the brain notes tree.
   3. One capture JSON per PR (batch guard).
   4. smart_note_id must not already exist on main (identity collision guard).
+  5. RATIFIED LAW (SN-036, Human Director 2026-10-04): every delivery ends with
+     the Smart Link. With --delivery-text PATH, the gate verifies the delivery
+     text (PR body, handoff) contains a human-viewable Smart Link to the note's
+     canonical brain path. No Smart Link = incomplete delivery = FAIL.
 
 Usage: validate_smart_note.py <changed-file> [<changed-file> ...]
+       [--delivery-text PATH]
 Exit 0 = conformant. Exit 1 = violation (message explains the exact breach).
 """
 import json
@@ -87,7 +92,7 @@ def id_exists_on_main(sid):
     return bool(out.stdout.strip())
 
 
-def main(files):
+def main(files, delivery_text=None):
     rels = [repo_rel(f) for f in files]
     pair = dict(zip(rels, files))  # rel -> real path for opening
     captures = [r for r in rels
@@ -131,9 +136,43 @@ def main(files):
             fail(f"{c}: smart_note_id {sid} already exists on main "
                  f"(first claim stands — renumber).")
 
+    # RATIFIED LAW (SN-036): every delivery ends with the Smart Link.
+    # --delivery-text PATH points at the delivery message (PR body, handoff).
+    # The gate requires a human-viewable Smart Link: a github.com blob URL
+    # under the canonical brain notes tree naming this note's SN id.
+    # A PR number, branch name, SHA, or raw JSON URL is not a Smart Link.
+    if delivery_text:
+        try:
+            with open(delivery_text, encoding="utf-8") as fh:
+                dt = fh.read()
+        except Exception as ex:
+            fail(f"--delivery-text {delivery_text}: unreadable ({ex})")
+        for c in captures:
+            sid = check_capture(pair[c])
+            sn_slug = "sn%04d" % int(sid.split("-")[1])  # SN-036 -> sn0036
+            smart_link_re = re.compile(
+                r"https://github\.com/SoulSchoolAcademy/NayaPOWER/blob/"
+                r"\S*BRAIN/05-MEMORY/SMART-NOTES/\S*" + re.escape(sn_slug) + r"\S*\.md")
+            if not smart_link_re.search(dt):
+                fail(f"{c}: DELIVERY INCOMPLETE — no Smart Link. "
+                     f"RATIFIED LAW (SN-036): every delivery ends with the human-viewable "
+                     f"Smart Link to {sid}'s canonical brain projection "
+                     f"(https://github.com/SoulSchoolAcademy/NayaPOWER/blob/<branch>/"
+                     f"BRAIN/05-MEMORY/SMART-NOTES/.../{sn_slug}....md). "
+                     f"PR numbers, branch names, SHAs, and raw JSON URLs are not Smart Links.")
+
     print(f"CONFORMANCE-GATE PASS: {len(captures)} capture(s), "
           f"{len(views)} view(s) conformant.")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    args = sys.argv[1:]
+    delivery_text = None
+    if "--delivery-text" in args:
+        i = args.index("--delivery-text")
+        try:
+            delivery_text = args[i + 1]
+        except IndexError:
+            fail("--delivery-text requires a PATH argument")
+        del args[i:i + 2]
+    main(args, delivery_text=delivery_text)
