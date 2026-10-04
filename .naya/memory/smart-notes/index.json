@@ -34,7 +34,8 @@
         "receipt_id": "faa4345a-aacd-43f2-ab2f-a991b9681979",
         "checkpoint_semantics": "MUTABLE_PROJECT_STATE_POINTER",
         "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
-        "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding."
+        "note": "The project cognition-state row advances in place; historical Smart Note verification must use object-local execution receipt evidence for lineage binding.",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "reconciliation": {
         "exact_identity": "REUSE_EXISTING",
@@ -57,7 +58,8 @@
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md",
       "link_repaired_2026_10_04": "truncated path restored from main tree",
       "smart_link_verified_at": "2026-10-04T22:08:14Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "b8a0adf84cfb3f513bf90a450fc5b832671b98317b7a567f7696b5cb1283e108"
     },
     {
       "smart_note_id": "SN-002",
@@ -99,7 +101,8 @@
         "receipt_id": "102d900e-1dc0-44ce-bde4-9d8d668f4d60",
         "runtime_identity": "naya-node-oidc",
         "checkpoint_semantics": "MUTABLE_PROJECT_STATE_POINTER",
-        "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE"
+        "historical_checkpoint_binding": "EXECUTION_RECEIPT_EVIDENCE",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "proven_relationship": {
         "source_id": "NAYA-KERNEL-KNOW",
@@ -115,7 +118,8 @@
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md",
       "link_repaired_2026_10_04": "truncated path restored from main tree",
       "smart_link_verified_at": "2026-10-04T22:08:15Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "6739866ef97369069c22f7c4ed0f7ef251cd0a0f2c842fa7e9259c24c79379a4"
     },
     {
       "smart_note_id": "SN-003",
@@ -520,10 +524,12 @@
         "relationship_id": "54fa1d13-9431-4e26-a7e7-f352941f2ba0",
         "runtime_index_id": "7a39f97a-1f29-4456-98cd-920086d36957",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "db11981e-27b2-4b18-abb0-14e1d581668d"
+        "receipt_id": "db11981e-27b2-4b18-abb0-14e1d581668d",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:26Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "2a534acea3882a352ba27a3d46d42253d37d7aeb93cebe806a1bb60aee450037"
     },
     {
       "smart_note_id": "SN-014",
@@ -556,10 +562,12 @@
         "relationship_id": "abecf0cb-6756-4c4a-9b33-e3ef79cdc7d0",
         "runtime_index_id": "865a3385-0cd8-4351-8d5e-acea59dda558",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "b65f1cd2-5d22-4a86-a1f1-61445452a508"
+        "receipt_id": "b65f1cd2-5d22-4a86-a1f1-61445452a508",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:26Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "318b7a0682f6a5b9d3fe41531c01773d00fae653c2e49d3170fa23a5838a0441"
     },
     {
       "smart_note_id": "SN-015",
@@ -592,10 +600,12 @@
         "relationship_id": "c3ed4835-53fa-4d00-85d1-e6481b8ad5b2",
         "runtime_index_id": "dce32d18-553c-4e11-bc3e-d68a39d8a0e1",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "0e092e90-e208-406a-9627-4c45a77f93cc"
+        "receipt_id": "0e092e90-e208-406a-9627-4c45a77f93cc",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:27Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "15051f226d9619285b4633876df52fd73b56f36f0a5146d732739f1a9b0f736a"
     },
     {
       "smart_note_id": "SN-016",
@@ -629,7 +639,8 @@
         "relationship_id": "3f23e02f-7b55-4409-9477-a0b3c1b776a4",
         "runtime_index_id": "bafe64e0-c262-4424-b0d4-ceef696ca7e8",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "c6cb2f2a-9eb7-48a1-be68-33763d1df390"
+        "receipt_id": "c6cb2f2a-9eb7-48a1-be68-33763d1df390",
+        "content_hash_status": "UNREPRODUCIBLE: capture file content changed after hash was computed (verified 2026-10-04)"
       },
       "smart_link_verified_at": "2026-10-04T22:08:29Z",
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
@@ -665,10 +676,12 @@
         "relationship_id": "57195c7f-e1b8-49ce-a88e-fd75e7727dc0",
         "runtime_index_id": "3b1199d7-0ca3-40f1-9b14-8d823d8299ef",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "d6ebae20-1e2f-4100-a36d-6a3b281defdc"
+        "receipt_id": "d6ebae20-1e2f-4100-a36d-6a3b281defdc",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:29Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "32f90aab45558ebc239a710eb84cc6f4cffed48a59784bd62f9a38416d409f50"
     },
     {
       "smart_note_id": "SN-018",
@@ -691,7 +704,8 @@
         "relationship_id": "fcd3d3cd-8c4f-4b0b-803d-10fd40f22b60",
         "runtime_index_id": "a3559f3d-c5d2-4601-85c7-5206704bf296",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "4b313018-abac-41a8-ae74-1d842b655ef1"
+        "receipt_id": "4b313018-abac-41a8-ae74-1d842b655ef1",
+        "content_hash_status": "UNREPRODUCIBLE: no capture file exists in repo (verified 2026-10-04)"
       },
       "keywords": [
         "hub",
@@ -748,10 +762,12 @@
         "relationship_id": "f5cd3094-0d24-4614-8284-27ce2e7946eb",
         "runtime_index_id": "59522558-c4ee-434e-a8c2-25e4625a4a27",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "52f0187a-052f-438f-b802-ed56f997974e"
+        "receipt_id": "52f0187a-052f-438f-b802-ed56f997974e",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:31Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "5ad28db9cec2300c430c5938d9a9fc01a156f3c151349f5158981208001e05d7"
     },
     {
       "smart_note_id": "SN-020",
@@ -784,10 +800,12 @@
         "relationship_id": "4aff284e-3405-4f55-b757-2d6c3d02818f",
         "runtime_index_id": "c05cb9ae-f75e-4c2d-a268-3008447839ec",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "0346d653-3d89-41c7-ba0d-ccfc521f2085"
+        "receipt_id": "0346d653-3d89-41c7-ba0d-ccfc521f2085",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:32Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "7745e0164917066bb7a45f9cf369dabae14a7d3c5b31434bb57d95ebfd17b822"
     },
     {
       "smart_note_id": "SN-021",
@@ -820,11 +838,13 @@
         "relationship_id": "c528758d-314f-488c-a525-9755dd22f19f",
         "runtime_index_id": "747004db-a091-4e2b-b204-e718529ea5da",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "62274196-5fee-43e8-91ce-0847f5a2b767"
+        "receipt_id": "62274196-5fee-43e8-91ce-0847f5a2b767",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "link_repaired_2026_10_04": "truncated path restored from main tree",
       "smart_link_verified_at": "2026-10-04T22:08:33Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "084990f161902f94d10ec240306f856adc2ceaca8d440064d7320936314f121e"
     },
     {
       "smart_note_id": "SN-022",
@@ -857,10 +877,12 @@
         "relationship_id": "4bf8f1b7-9807-4bbf-b113-8aeb69093c9f",
         "runtime_index_id": "730678d4-9251-4238-af5a-791042cc1cd1",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
+        "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:35Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "69ad4c87f672b9d45f872397c3c80a594c98301fe64555148a6ed2b2059c50e8"
     },
     {
       "smart_note_id": "SN-032",
@@ -893,10 +915,12 @@
         "relationship_id": "fb63ea83-3890-4d75-a968-195b66b1291d",
         "runtime_index_id": "6ea6e7de-a511-43a0-862e-ecc105fc8152",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "fcaf222f-a116-48a4-b14b-48ae5a5d224e"
+        "receipt_id": "fcaf222f-a116-48a4-b14b-48ae5a5d224e",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:36Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "a7fcb73e4e74773c93be54aef86fd83162287fa83cfdfe6a6a729e2c7359bd92"
     },
     {
       "smart_note_id": "SN-034",
@@ -929,10 +953,12 @@
         "relationship_id": "f4238416-3a9d-4f6f-b0a6-9ce90178e40e",
         "runtime_index_id": "15948367-b923-41e3-958f-c52720d25b47",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "219be516-5201-4f71-b037-cc5b4664fe87"
+        "receipt_id": "219be516-5201-4f71-b037-cc5b4664fe87",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:37Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "cbfa37d970c5fdacf0b53520f12d2f66d11780982f96d6029c979839151806d5"
     },
     {
       "smart_note_id": "SN-035",
@@ -999,10 +1025,12 @@
         "relationship_id": "3e565da9-f947-487a-89a8-b1792b278ef1",
         "runtime_index_id": "40fd32ad-aaf4-40af-9c39-b0fb2c4e54cc",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "b4780bc2-d2bd-4488-b871-aa33a242e394"
+        "receipt_id": "b4780bc2-d2bd-4488-b871-aa33a242e394",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:39Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "dd910a0023c679c8889cfc98c40950d5d8fac606620f476fb0df084947da3106"
     },
     {
       "smart_note_id": "SN-042",
@@ -1035,10 +1063,12 @@
         "relationship_id": "d0051ef6-21f0-4fe6-ba9c-d110af9679d7",
         "runtime_index_id": "2ca09440-8f59-441c-8cf3-a971f42c86f6",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "b0015959-3734-4a07-8656-1321d168df3a"
+        "receipt_id": "b0015959-3734-4a07-8656-1321d168df3a",
+        "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
       },
       "smart_link_verified_at": "2026-10-04T22:08:39Z",
-      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
+      "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+      "content_hash": "a006ef61f9ddba32b810bfce1b05f2c4f828c8d34ed55142e58cb31284c6d0a8"
     },
     {
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn275-consent-granularity",
