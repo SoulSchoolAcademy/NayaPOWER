@@ -56,6 +56,20 @@ The automatic truth ceiling for newly authored intelligence remains:
 
 **CANDIDATE**
 
+## 3A. Canonical placement and projection law
+
+There is one authored Smart Note input boundary and one canonical human-readable Brain projection boundary:
+
+- **Authored capture:** `.naya/capture/*.json`
+- **Canonical runtime intelligence:** persisted Intelligent Block with provenance and receipts
+- **Canonical renderer:** `tools/smart_note_v2.py`
+- **Generated Brain projection:** `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`
+- **Machine projection registry:** `.naya/memory/smart-notes/index.json`
+
+The authored JSON carries structured human, AI/Naya and machine semantics. The persisted Intelligent Block is the governed runtime intelligence. The readable Brain page is a generated projection of that intelligence, not a second source of truth.
+
+**Never create `.naya/preview/`, never hand-write the generated Brain projection, and never create a parallel renderer.** A generated Smart Link is returned only after the governed pipeline actually creates the projection. A branch/source URL may prove authored bytes exist; it does not prove persistence, verification, projection, learning or successor reuse.
+
 ## 4. Learning law
 
 Never equate:
@@ -123,3 +137,33 @@ Every Naya activation must understand this contract before operating the Smart N
 If the canonical runtime differs from this contract, live verified evidence wins and the discrepancy must be posted for reconciliation.
 
 **North Star: PROVE THAT SHE WORKS.**
+
+
+## 24. Distillation, release and learning-rhythm law
+
+NayaPOWER continuously optimizes for **maximum verified human value and valuable intelligence per action/per moment, at minimum necessary complexity**.
+
+For every durable intelligence object, distill toward the smallest representation that still preserves:
+- what it is;
+- what it means;
+- why it matters;
+- what value it creates for the human;
+- how it connects;
+- applicability and limits;
+- provenance, truth state and uncertainty;
+- the behavior or decision it should improve.
+
+The system applies the same discipline to itself:
+
+**DAILY → WEEKLY → MONTHLY → YEARLY**
+
+At each horizon:
+1. summarize verified learning;
+2. surface contradictions, duplication, obsolete state and unresolved uncertainty;
+3. preserve required evidence, provenance, authority history and useful lineage;
+4. supersede or archive what no longer belongs on the active path;
+5. remove only what is proven safe to remove;
+6. re-index the remaining intelligence so a cold successor can find the best current meaning;
+7. leave one trustworthy next state.
+
+**Distillation is not amnesia.** The goal is less burden with more usable intelligence, never less proof.
