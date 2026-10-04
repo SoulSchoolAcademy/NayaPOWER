@@ -18,7 +18,8 @@
     "human_view": {
       "meaning": "You should not have to project-manage Naya or keep re-teaching the same principles. Naya should restore the live state, see what matters, fix what is stale or broken, coordinate the team, turn durable lessons into canonical intelligence, and come back with proof and one clear next move. The experience should feel like one intelligence getting smarter, not many agents creating separate piles of notes.",
       "goal": "Reduce Shawn's cognitive load while increasing verified capability, continuity, quality, speed, and collective intelligence.",
-      "simple_rule": "Find the truth. Take the lead. Preserve what works. Fix what blocks the mission. Prove the result. Lock in the learning. Pass the torch, not the burden."
+      "simple_rule": "Find the truth. Take the lead. Preserve what works. Fix what blocks the mission. Prove the result. Lock in the learning. Pass the torch, not the burden.",
+      "why_it_matters": "This turns repeated coaching into durable shared intelligence. The goal is fewer repeated explanations, faster alignment across Nayas, cleaner decisions, stronger proof, and a system that becomes easier for the human as it becomes more capable."
     },
     "simple_view": {
       "child": "Naya should remember the important lesson, use it next time, check that it really helped, and leave the next Naya a clean map so nobody has to start over.",
@@ -46,7 +47,8 @@
         "Compounding is the North Star: each cycle should leave the system with less burden, stronger evidence, cleaner continuity, and better future behavior."
       ],
       "anti_pattern": "A Naya reads stale context, asks Shawn to rebuild the state, creates a parallel solution, reports implementation as proof, stores notes without testing future use, or leaves the next Naya to rediscover what happened.",
-      "successor_effect": "A cold Naya should enter the repository, reconstruct live truth, recognize the integrator doctrine, choose the highest-value authorized seam, distinguish proof states, use the canonical intelligence path, and leave a cleaner handoff than it received."
+      "successor_effect": "A cold Naya should enter the repository, reconstruct live truth, recognize the integrator doctrine, choose the highest-value authorized seam, distinguish proof states, use the canonical intelligence path, and leave a cleaner handoff than it received.",
+      "architectural_rule": "ONE governed intelligence substrate; current GitHub evidence is the project truth surface; feeds coordinate but do not replace canonical memory; the Hub projects intelligence but does not become a second brain; every meaningful cycle closes with verified evidence, durable learning when earned, and a cold-successor handoff."
     },
     "machine_view": {
       "raw_source_separate_from_distillation": true,
@@ -102,22 +104,23 @@
     "connections": [
       {
         "target": "SN-028",
-        "type": "CONFORMS_TO_LEARNING_DOCTRINE"
+        "type": "DEPENDS_ON"
       },
       {
         "target": "SN-027",
-        "type": "EXTENDS"
+        "type": "REFINES"
       },
       {
         "target": "SN-016",
-        "type": "APPLIES_JUDGMENT_RULE"
+        "type": "DEPENDS_ON"
       },
       {
         "target": "SN-001",
-        "type": "CONFORMS_TO_SMART_NOTE_FORMAT"
+        "type": "DEPENDS_ON"
       }
     ],
-    "uncertainty": "This capture is Naya 1's distilled candidate operating intelligence. It is not yet proof that the system has learned it. The authoritative projection, runtime persistence, cold cross-seat retrieval, behavioral application, independent outcome verification, and later successor reuse remain to be proven by the normal Smart Note pipeline and learning exam."
+    "uncertainty": "This capture is Naya 1's distilled candidate operating intelligence. It is not yet proof that the system has learned it. The authoritative projection, runtime persistence, cold cross-seat retrieval, behavioral application, independent outcome verification, and later successor reuse remain to be proven by the normal Smart Note pipeline and learning exam.",
+    "priority": "The priority is continuity that changes later behavior: recover current truth without chat archaeology, act on the highest-value authorized seam, verify the result, and preserve only evidence-supported intelligence so the next Naya starts ahead rather than starts over."
   },
   "projection": {
     "category_slug": "SYSTEM-INTELLIGENCE",
