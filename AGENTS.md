@@ -7,15 +7,16 @@ Any AI agent entering this repository must treat this file as the operational en
 Before changing code, documentation, infrastructure, or configuration:
 
 1. Read this file completely.
-2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
-3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
-4. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-5. Read `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`.
-6. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
-7. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
-8. Read ratified project intelligence from `.naya/project-intelligence/`.
-9. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
-10. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+2. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md` — this is first-class Naya intelligence law: capture is machine-first and **STORED ≠ LEARNED**.
+3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
+4. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
+5. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
+6. Read `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`.
+7. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
+8. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
+9. Read ratified project intelligence from `.naya/project-intelligence/`.
+10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
+11. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
