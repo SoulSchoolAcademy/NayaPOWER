@@ -25,6 +25,33 @@ def changed_capture(paths):
         raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
     return hits[0] if hits else ""
 
+def validate_changed_paths(paths):
+    """Fail closed on Smart Note mistake classes already observed in production work."""
+    normalized = [str(raw).replace("\\\\", "/") for raw in paths]
+
+    for path in normalized:
+        if path.startswith(".naya/preview/"):
+            raise SystemExit("SMART_NOTE_INVENTED_LOCATION:" + path)
+        name = Path(path).name
+        if name.startswith("IB-SMART-NOTE-") and path.endswith(".md") and not path.startswith("BRAIN/05-MEMORY/SMART-NOTES/"):
+            raise SystemExit("SMART_NOTE_PROJECTION_OUTSIDE_BRAIN:" + path)
+
+    capture_path = changed_capture(normalized)
+    if capture_path:
+        capture = load_json(capture_path)
+        if capture.get("schema") != "naya.smart-note-capture.v2":
+            raise SystemExit("SMART_NOTE_SCHEMA_INVALID:" + str(capture.get("schema")))
+        smart_note_id = str(capture.get("smart_note_id") or "").strip().upper()
+        if not re.fullmatch(r"SN-\d{3,}", smart_note_id):
+            raise SystemExit("SMART_NOTE_ID_INVALID:" + smart_note_id)
+        machine = capture.get("intelligence", {}).get("machine_view", {})
+        if machine.get("raw_source_separate_from_distillation") is not True:
+            raise SystemExit("SMART_NOTE_RAW_SOURCE_SEPARATION_REQUIRED")
+        if machine.get("automatic_truth_ceiling") != "CANDIDATE":
+            raise SystemExit("SMART_NOTE_TRUTH_CEILING_MUST_BE_CANDIDATE")
+    return capture_path
+
+
 
 EDGE_VOCABULARY = {
     "DERIVED_FROM","SUPPORTS","CONTRADICTS","DEPENDS_ON","IMPLEMENTS","GOVERNS",
@@ -149,6 +176,7 @@ def render(capture, verify, private_root=None):
         "## 🟣 CHILD NOTE", "", view_text(intelligence.get("simple_view"), "child", primary_key="child"), "",
         "## 🔵 GRANDMA NOTE", "", view_text(intelligence.get("simple_view"), "grandma", primary_key="child"), "",
         "## 🟠 NAYA NOTE", "", view_text(intelligence.get("naya_view"), "purpose", primary_key="purpose"), "", view_text(intelligence.get("naya_view"), "architectural_rule", primary_key="purpose"), "",
+        "## 🤖 AI NOTE", "", view_text(intelligence.get("ai_view"), "instruction", primary_key="instruction"), "", view_text(intelligence.get("ai_view"), "primary_evaluation", primary_key="instruction"), "",
         "## 🟢 MACHINE NOTE", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
         "## 🟢 LEARNING LESSON", "", intelligence.get("learning_lesson", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next."), "",
         "## 🟡 WHAT IT MEANS", "", intelligence.get("priority", ""), "",
@@ -265,12 +293,15 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
+    v = sub.add_parser("validate"); v.add_argument("paths", nargs="*")
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     args = ap.parse_args()
     if args.cmd == "discover":
         print(changed_capture(args.paths)); return
+    if args.cmd == "validate":
+        print(validate_changed_paths(args.paths)); return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
         p = render(cap, ver, args.private_root)
