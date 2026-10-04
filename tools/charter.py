@@ -8,9 +8,10 @@ thesis the humans read.
 
     from tools.charter import MOTTO, TWELVE_LAWS, mission_check
 
-Status: PROPOSED — the charter becomes law only on the Human Director's
-ratification. Until then this module is the proposed machine form, never
-quoted as authority.
+Status: RATIFIED — Human Director ratification recorded 2026-10-04.
+Receipt: CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md.
+This module exposes the ratified machine form; it does not create authority
+outside the existing LAW and Human Director boundaries.
 """
 
 import json
