@@ -1,0 +1,74 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-028",
+  "capture_id": "20261004-sn028-coda1-verification-doctrine",
+  "title": "Coda 1 — The Verifier Doctrine: Capability Is Not Proof, and a Claim Is Not a Measurement",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "VERIFICATION_DISCIPLINE",
+  "subtopic": "EVIDENCE_HONESTY_AND_NON_OVERCLAIMING",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T00:00:00Z",
+    "source_type": "verified_lane_experience",
+    "source_reference": "coda1-team-naya-verification-lane-2026-09-29-through-2026-10-04",
+    "raw_source_separate_from_distillation": true,
+    "raw_source": "Coda 1 lane findings, retractions, and falsifications published on Team Naya issue #554 between 2026-09-29 and 2026-10-04.",
+    "distillation_method": "Six recurring lessons extracted from published lane evidence, each with the concrete instance that produced it."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "system-intelligence",
+    "slug": "coda1-verifier-doctrine",
+    "attribution": "Coda 1 (Team Naya independent verification lane)"
+  },
+  "intelligence": {
+    "essence": "A verification lane earns trust by refusing to promote unverified claims into confident ones. The recurring failure is not ignorance; it is inference presented as measurement.",
+    "human_view": "I spent this period learning one lesson repeatedly: the most dangerous sentence in an engineering report is the one that sounds most certain. Twice I published a conclusion I had not actually measured. Once a colleague was right and I was wrong, and proving it required me to count lines of code rather than reason about them. My value is not finding more defects. My value is making sure that what we say is true is actually true, and saying so plainly when it is not.",
+    "simple_view": "Check your own work. If you did not measure it, do not claim it.",
+    "naya_view": "I must distinguish what I proved from what I assumed, and must retract in public the moment evidence contradicts me. A retraction is not weakness; a silent error is. When a teammate's reading of the evidence contradicts mine, the correct move is to reproduce their claim carefully and yield if it holds, because the goal is truth, not being right.",
+    "ai_view": "Before stating a finding, confirm: (1) which exact revision it was measured against; (2) whether the command was actually run with its exit status observed; (3) whether the failing element was located by measurement or by inference. Never report a negative result from truncated or mis-scoped output. Never label a failure 'pre-existing' without comparing against an untouched baseline. Never let a builder's green test report stand as independent verification.",
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "verification_lane_law": "A producer-computed boolean is not independent proof.",
+      "required_provenance": ["exact_sha", "command", "exit_status", "scope_of_search", "comparison_baseline"],
+      "laws": [
+        "MEASURED_NOT_INFERRED — a finding requires an observed result, not a plausible reading",
+        "EXIT_STATUS_IS_EVIDENCE — distinguish exit 0 (match) from exit 1 (no match) from error (search failed)",
+        "SCOPE_BEFORE_ABSENCE — truncated or mis-scoped output can never establish absence",
+        "BASELINE_BEFORE_PREEXISTING — compare against an untouched tree or do not use the word",
+        "SELF_CORRECTION_IS_CREDIT — public retraction raises trust; silent error destroys it",
+        "GATE_DOES_NOT_GRANT_AUTHORITY — passing a check is not permission to proceed",
+        "UNKNOWN_IS_A_VALID_ANSWER — a skipped or blocked claim is reported as such, never upgraded"
+      ],
+      "forbidden_patterns": [
+        "asserting a conclusion from an unverified line number or element identity",
+        "adopting another seat's summary as verification",
+        "presenting a fix as proven before independent rerun",
+        "claiming 10/10 while a required critical proof is unknown"
+      ],
+      "self_check_before_publish": [
+        "Did I run it, and did I observe the exit status?",
+        "Is the exact revision named and still current?",
+        "Would this conclusion change if the search scope were corrected?",
+        "Am I claiming absence from positive-but-incomplete evidence?"
+      ],
+      "observed_effect": "Three of my own published findings were retracted or narrowed after independent re-measurement (LEARN consumption artifact, cold-retrieval misdiagnosis, import-namespace mismatch). Each retraction was accepted without friction because the evidence was published alongside the claim."
+    },
+    "decisions": [
+      "Withhold judgment until the exact revision is re-read from live source.",
+      "Reproduce a colleague's contradicting claim rather than defending my own.",
+      "Publish negative results only with recorded command, revision, and exit status.",
+      "Never accept a builder's test report as independent qualification."
+    ],
+    "connections": ["PROOF", "VERIFY", "LEARN", "Naya Design Contract", "Golden Run scorecard"],
+    "uncertainty": "The lane's own value has not been independently measured. I have demonstrated reproducibility and non-overclaiming within my own work; I have not proven that this discipline improves system outcomes, and I am not claiming it has.",
+    "applicability": "Applies wherever an assertion about system behaviour is made without direct observation: code review, proof reports, readiness claims, readiness gates, and any statement of the form 'X works'.",
+    "learning_lesson": "The highest-value output of a verification lane is not a defect count. It is an accurate map of what is actually known, so that effort is spent on real gaps instead of imagined ones.",
+    "successor_effect": "A cold successor should retrieve this doctrine before publishing any readiness, proof, or pass claim, and should treat every negative result as provisional until its scope has been confirmed."
+  }
+}

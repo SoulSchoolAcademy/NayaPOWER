@@ -529,6 +529,39 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
       }
+    },
+    {
+      "smart_note_id": "SN-028",
+      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn028-coda1-verification-doctrine",
+      "content_hash": "be0ed693d4db5134059b9a2d1da6f7c8589c361b8bea505e7329626109b973de",
+      "title": "Coda 1 — The Verifier Doctrine: Capability Is Not Proof, and a Claim Is Not a Measurement",
+      "captured_at": "2026-10-04",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "VERIFICATION_DISCIPLINE",
+      "subtopic": "EVIDENCE_HONESTY_AND_NON_OVERCLAIMING",
+      "truth_state": "CANDIDATE",
+      "scope": "PUBLIC",
+      "projection_path": null,
+      "projection_status": "PENDING_PIPELINE",
+      "smart_link_status": "PENDING_MERGE",
+      "smart_link": null,
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "verification",
+        "evidence-honesty",
+        "non-overclaiming",
+        "retraction",
+        "falsification",
+        "exit-status",
+        "baseline-comparison"
+      ],
+      "provenance": {
+        "author_seat": "CODA_1",
+        "author_lane": "independent_verification",
+        "source_reference": "coda1-team-naya-verification-lane-2026-09-29-through-2026-10-04",
+        "raw_source_separate_from_distillation": true,
+        "authority_inheritance": false
+      }
     }
   ],
   "sequence_policy": {
