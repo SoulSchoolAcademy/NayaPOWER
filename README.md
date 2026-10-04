@@ -6,7 +6,7 @@
 >
 > ✅ **MUST:**
 > - Author ONE conformant JSON capture in `.naya/capture/` (schema `naya.smart-note-capture.v2`, governance keys true). The JSON is the canonical truth — it carries the human view, the AI view, and the machine view together.
-> - Let the pipeline GENERATE every human view at the canonical brain path `BRAIN/05-MEMORY/SMART-NOTES/<yyyy>/<mm>/<dd>/...`. Never hand-write Brain markdown.
+> - Let the pipeline GENERATE every view at the canonical brain path `BRAIN/05-MEMORY/SMART-NOTES/<yyyy>/<mm>/<dd>/...` — THREE projections per note, no exceptions: human `.md` (plain words), AI `.ai.md` (Naya-language instructions), machine `.machine.json` (canonized machine truth). Never hand-write any of them.
 > - Return the **Smart Link** to the human — the viewable note showing where it went, that it is there, what it says. A PR number is an engineering receipt, never the delivery.
 > - Prove learning: cold retrieval → comprehension → behavioral application → independently verified outcome. **Stored is not learned.**
 >

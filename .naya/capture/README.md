@@ -12,7 +12,7 @@ The **ingestion boundary** — the ONE official spot for machine-first Smart Not
 2. **Governance keys true:** `machine_view.raw_source_separate_from_distillation: true`, `machine_view.automatic_truth_ceiling: "CANDIDATE"`. New captures are CANDIDATE — never mark one VERIFIED, ACTIVE, or RATIFIED yourself. Only the human director ratifies.
 3. **Explicit `smart_note_id`.** Check open PRs first — **first claim stands**. If your number is taken, renumber before opening the PR.
 4. **Filename convention:** `SMART-NOTE-<yyyymmdd>-sn<NNN>-<slug>.json` (e.g. `SMART-NOTE-20261004-sn028-the-learning-doctrine.json`).
-5. **Human views are generated, never hand-written.** Render with `.naya/bin/render_smart_note.py <your-capture.json>` — it computes the canonical brain path from the JSON itself. There is no output-path argument; the brain path is the only path.
+5. **All three views are generated, never hand-written.** Render with `.naya/bin/render_smart_note.py <your-capture.json>` — it computes all three canonical brain paths (human `.md`, AI `.ai.md`, machine `.machine.json`) from the JSON itself. There is no output-path argument; the brain paths are the only paths.
 6. **Return the Smart Link to the human** — the viewable generated note. Never a PR number as the primary delivery.
 
 ## MUST NOT

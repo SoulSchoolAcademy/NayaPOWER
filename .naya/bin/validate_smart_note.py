@@ -4,9 +4,11 @@
 Fails the PR when any Smart Note capture or view violates the canonical law:
   1. Every capture JSON under .naya/capture/ must be schema naya.smart-note-capture.v2,
      with the governance keys present and true.
-  2. Every human view (IB-SMART-NOTE-*.md) must live under the canonical brain path:
+  2. Every generated projection (human .md, AI .ai.md, machine .machine.json)
+     must live under the canonical brain path:
      BRAIN/05-MEMORY/SMART-NOTES/<yyyy>/<mm>/<dd>/... — nowhere else. Invented
-     locations (e.g. .naya/preview/) are refused.
+     locations (e.g. .naya/preview/) are refused, as is any new markdown under
+     .naya/ and any non-.machine.json under the brain notes tree.
   3. One capture JSON per PR (batch guard).
   4. smart_note_id must not already exist on main (identity collision guard).
 
@@ -24,7 +26,8 @@ REQUIRED_TOP = [
 ]
 BRAIN_RE = re.compile(
     r"^BRAIN/05-MEMORY/SMART-NOTES/\d{4}/\d{2}/\d{2}/.+"
-    r"/SN-\d{3,4}/IB-SMART-NOTE-\d{8}-sn\d+-[a-z0-9-]+\.md$"
+    r"/SN-\d{3,4}/IB-SMART-NOTE-\d{8}-sn\d+-[a-z0-9-]+"
+    r"\.(md|ai\.md|machine\.json)$"
 )
 
 
@@ -90,7 +93,7 @@ def main(files):
     captures = [r for r in rels
                 if r.startswith(".naya/capture/") and r.endswith(".json")]
     views = [r for r in rels
-             if re.search(r"IB-SMART-NOTE-.*\.md$", r)]
+             if re.search(r"IB-SMART-NOTE-.*\.(md|ai\.md|machine\.json)$", r)]
     # Placement law, part 1: no NEW markdown under .naya/ except READMEs.
     # .naya/ is machine territory (captures, specs, memory). Human views do not
     # live there — this refuses the entire invented-location class (e.g. the
@@ -100,6 +103,14 @@ def main(files):
                 and not r.endswith("/README.md") and is_new(r)):
             fail(f"{r}: new markdown under .naya/ is refused — human views live "
                  f"only at BRAIN/05-MEMORY/SMART-NOTES/<yyyy>/<mm>/<dd>/...")
+    # Placement law, part 1b: no NEW json under BRAIN/ except .machine.json.
+    # The brain's machine truth is the generated machine projection — never a
+    # hand-placed capture copy.
+    for r in rels:
+        if (r.startswith("BRAIN/05-MEMORY/SMART-NOTES/") and r.endswith(".json")
+                and not r.endswith(".machine.json") and is_new(r)):
+            fail(f"{r}: only generated .machine.json projections live in the brain — "
+                 f"capture JSONs belong in .naya/capture/")
 
     # Batch guard: one authored capture per PR.
     if len(captures) > 1:
