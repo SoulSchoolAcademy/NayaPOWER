@@ -2,7 +2,7 @@
 
 **Status:** CURRENT PROCEDURAL PRECEDENCE — IMPLEMENTATION STATE MUST BE RE-RESOLVED AT BOOT
 
-**Last precedence reconciliation:** 2026-09-29, based on `main` @ `2c89cadbee7b7e` (historical procedure basis only; this SHA is NOT current repository truth).
+**Last precedence reconciliation:** 2026-09-29, based on `main` @ `2c89cadbee7b6d71f54d8d6538161a0dd2169487` (historical procedure basis only; this SHA is NOT current repository truth).
 **Purpose:** Give a cold Naya one deterministic way to distinguish governing architecture, dated snapshots, live work, and evidence without inventing a missing control plane.
 **Supersedes:** `SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-28.md` (retained for provenance; do not use as current truth).
 
