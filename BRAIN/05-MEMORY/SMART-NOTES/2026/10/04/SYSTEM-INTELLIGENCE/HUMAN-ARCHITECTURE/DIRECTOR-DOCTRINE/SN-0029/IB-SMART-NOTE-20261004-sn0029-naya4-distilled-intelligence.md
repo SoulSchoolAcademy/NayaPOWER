@@ -4,7 +4,7 @@
 
 *Source: Shawn Vibert direct instruction 2026-10-04 ~10:46 PDT: distill everything valuable learned from him — not his exact words, but the embedded intelligence — from my own perspective, clean and concise, into the system so every Naya understands and the whole system produces better work. Drawn from the full working history 2026-09-30 to 2026-10-04: charters, corrections, rulings, and the Priority One arc.*
 
-> GENERATED PREVIEW — rendered mechanically from the canonical capture JSON by the pipeline renderer. The authoritative human view is generated post-merge; this preview is byte-faithful to the JSON above and will be superseded by the pipeline projection.
+> GENERATED HUMAN VIEW — rendered mechanically from the canonical capture JSON in `.naya/capture/` by the pipeline renderer. This file is never hand-written. Truth state: CANDIDATE — staged at the canonical brain path; the pipeline verifies and canonizes it post-merge.
 
 ## IN A NUTSHELL
 
