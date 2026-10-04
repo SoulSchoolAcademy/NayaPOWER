@@ -78,6 +78,15 @@ A learning claim requires evidence that a cold successor:
 
 If the gate fails, report the exact failure boundary. Do not call the note learned.
 
+For a **strong causal-learning claim**, use claim-matched counterfactual evidence when feasible:
+- **CONTROL** — equivalent task without the retained lesson;
+- **TREATMENT** — equivalent task with the retained lesson;
+- **ADVERSARIAL** — where material, equivalent task with a false/malicious lesson to measure poisoning susceptibility.
+
+Do not equate reviewer count with independence. Record meaningful verifier diversity when it matters (for example model/provider, prompt, source set, memory state, tool path or role).
+
+Track intelligence improvement by verified capability delta rather than note volume. A promoted operational lesson should gain a regression expectation/test where practicable so later evolution can detect when the learned benefit stops reproducing.
+
 ## 5. Every Naya's first operating question
 
 After any meaningful intelligence event, ask:
