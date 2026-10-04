@@ -1,10 +1,10 @@
-# IB-SMART-NOTE-20260930-sn012-consent-granularity
+# IB-SMART-NOTE-20260930-sn275-consent-granularity
 
-> **ID disambiguation (2026-09-30):** a second, unrelated note also carries the ID `SN-012`: `SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md` (NayaPOWER operating model). This file is the **consent-granularity** note. The IDs were not renumbered — the Human Director owns the ID decision.
+> **ID disambiguation (2026-09-30):** this note was renumbered from SN-275 to SN-275 on 2026-10-04 to resolve the ID collision. The NayaPOWER Operating Model note keeps SN-275.
 
 ## IDENTITY
 
-- **Smart Note ID:** SN-012
+- **Smart Note ID:** SN-275
 - **Title:** Consent-Granularity Reconciliation — Entry Consent Satisfies "Collective by Consent"
 - **Class:** REUSABLE INTELLIGENCE
 - **Capture type:** Discovery / Principle
