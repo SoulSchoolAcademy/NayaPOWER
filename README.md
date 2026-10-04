@@ -8,6 +8,22 @@
 
 [Read the full NayaPOWER Operating Manifesto](./CONSTITUTION/NAYAPOWER-OPERATING-MANIFESTO-V1.md)
 
+[Read the ratified NayaPOWER System Charter](./MANIFESTO.md) · [12 Laws](./CONSTITUTION/0003-CONSTITUTIONAL-CODE-V1.md) · [Ratification receipt](./CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md)
+
+## 🧠 Smart Note — one path, no guessing
+
+Before authoring durable intelligence, read [the Smart Note Operating Contract](./NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md).
+
+**AUTHOR →** one structured JSON capture in `.naya/capture/`  
+**PERSIST / VERIFY →** governed Intelligent Block + proof receipts  
+**PROJECT →** generated human-readable Smart Note under `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`  
+**INDEX →** `.naya/memory/smart-notes/index.json` (registry, not the human library)  
+**RENDER →** `tools/smart_note_v2.py` is the one canonical renderer
+
+Never invent `.naya/preview/`. Never hand-write a generated Brain projection. Never create a second renderer.
+
+**STORED ≠ LEARNED.**
+
 ## The governed intelligence substrate for NayaNET
 
 > **Think once. Capture it. Learn from it. Remember it. Use it again. Get smarter.**
