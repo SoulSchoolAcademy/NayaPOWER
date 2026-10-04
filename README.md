@@ -1,5 +1,13 @@
 # 🧠 NayaPOWER
 
+# 🔱 Our Operating Manifesto
+
+> **Distill everything to its essence. Keep only what compounds. Let go of the rest — every day.**
+
+**NayaPOWER is a governed intelligence system that exists to increase verified human capability. We continuously capture, distill, prove, preserve, retrieve, understand, apply, verify, learn and compound intelligence — while removing unnecessary complexity and preserving human authority.**
+
+[Read the full NayaPOWER Operating Manifesto](./CONSTITUTION/NAYAPOWER-OPERATING-MANIFESTO-V1.md)
+
 ## The governed intelligence substrate for NayaNET
 
 > **Think once. Capture it. Learn from it. Remember it. Use it again. Get smarter.**
