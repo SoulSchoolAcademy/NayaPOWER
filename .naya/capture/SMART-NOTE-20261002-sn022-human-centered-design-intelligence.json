@@ -82,6 +82,7 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
       "automatic_truth_ceiling": "CANDIDATE",
       "human_director_design_doctrine_status": "RATIFIED_ADOPTED_2026-10-02",
       "authority_inheritance": false,
