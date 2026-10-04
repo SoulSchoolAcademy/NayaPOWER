@@ -91,7 +91,8 @@
         ],
         "invariant": "a learning event with no observable capability change is a notification, not learning"
       },
-      "truth_state": "CANDIDATE"
+      "truth_state": "CANDIDATE",
+      "raw_source_separate_from_distillation": true
     },
     "naya_view": {
       "add_or_strengthen": "The learning-event requirement: integrate every intelligent event until it is replayable, understood, grown-from, baked in. The projection legs: personal feed (attributed), collective feed (unattributed), notification.",
