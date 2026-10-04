@@ -80,3 +80,19 @@ def test_ai_charter_doc_exists_and_carries_law_ids():
     assert data["motto"] in ai, "ai doc missing motto"
     for law in data["twelve_laws"]:
         assert law["id"] in ai, f"ai doc missing law id: {law['id']}"
+
+
+def test_ratified_surfaces_do_not_claim_the_charter_is_still_proposed():
+    ai = _read("MANIFESTO.ai.md")
+    code = _read("CONSTITUTION/0003-CONSTITUTIONAL-CODE-V1.md")
+    tool = _read("tools/charter.py")
+    forbidden = [
+        "Never quote as ratified law until ratified",
+        "Cite the charter as PROPOSED/CANDIDATE until",
+        "proposed as Amendment 0003",
+        "This code becomes law only by the Human Director's ratification",
+        "Status: PROPOSED — the charter becomes law only",
+    ]
+    combined = "\n".join([ai, code, tool])
+    for phrase in forbidden:
+        assert phrase not in combined, f"stale pre-ratification wording remains: {phrase}"
