@@ -627,6 +627,110 @@ def verify_receipt(receipt, evidence_bundle):
     return True, "Receipt verified: promotion was valid under recorded thresholds."
 
 
+def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=None):
+    """Reconcile captures, the machine registry, and published Brain projections.
+
+    Reconciles bidirectionally so a green publish run cannot hide drift. The
+    publish path only ever proves the single note it just handled; it never
+    compares every historical capture against the registry. That gap lets a
+    fully green run coexist with a corrupted registry, which is why this audit
+    exists as a separate whole-surface check.
+
+    Hashing reuses _canonical_content_hash so this stays a single authority
+    rather than a second, independently drifting hash implementation.
+    """
+    root = Path(root) if root else ROOT
+    registry_p = Path(registry_path) if registry_path else root / ".naya" / "memory" / "smart-notes" / "index.json"
+    cap_dir = Path(capture_dir) if capture_dir else root / ".naya" / "capture"
+    brain = Path(brain_root) if brain_root else root / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+
+    defects = {
+        "unparseable_captures": [],
+        "captures_missing_intelligence": [],
+        "captures_unregistered_by_hash": [],
+        "entries_without_hash": [],
+        "entries_with_stale_hash": [],
+        "duplicate_smart_note_ids": [],
+        "published_entries_missing_projection_path": [],
+        "registry_projection_paths_absent": [],
+        "published_pages_without_registry_entry": [],
+        "duplicate_published_page_paths": [],
+    }
+
+    registry = load_json(registry_p) if registry_p.exists() else {"entries": []}
+    entries = registry.get("entries", [])
+
+    def hash_of(data):
+        return _canonical_content_hash(json.dumps(data["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False))
+
+    capture_by_hash = {}
+    if cap_dir.exists():
+        for p in sorted(cap_dir.glob("*.json")):
+            try:
+                data = json.loads(p.read_text(encoding="utf-8"))
+            except ValueError:
+                defects["unparseable_captures"].append(p.name)
+                continue
+            if not isinstance(data.get("intelligence"), dict):
+                defects["captures_missing_intelligence"].append(p.name)
+                continue
+            capture_by_hash[hash_of(data)] = p.name
+
+    entry_hashes = {}
+    for e in entries:
+        sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        h = e.get("content_hash")
+        if not h:
+            defects["entries_without_hash"].append(sn)
+            continue
+        entry_hashes.setdefault(h, []).append(sn)
+        if h not in capture_by_hash:
+            defects["entries_with_stale_hash"].append({"smart_note_id": sn, "content_hash": h})
+
+    for h, names in entry_hashes.items():
+        if len(names) > 1:
+            defects["duplicate_smart_note_ids"].append(sorted(names))
+
+    for h, name in capture_by_hash.items():
+        if h not in entry_hashes:
+            defects["captures_unregistered_by_hash"].append(name)
+
+    for e in entries:
+        sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        published = e.get("projection_status") == "GITHUB_BRAIN_PUBLISHED"
+        pp = e.get("projection_path")
+        if published and not pp:
+            defects["published_entries_missing_projection_path"].append(sn)
+        if pp and not (root / pp).exists():
+            defects["registry_projection_paths_absent"].append({"smart_note_id": sn, "projection_path": pp})
+
+    pages_by_name = {}
+    if brain.exists():
+        for p in sorted(brain.rglob("*.md")):
+            pages_by_name.setdefault(p.name, []).append(str(p.relative_to(root)).replace("\\", "/"))
+    for name, paths in sorted(pages_by_name.items()):
+        if len(paths) > 1:
+            defects["duplicate_published_page_paths"].append({"page": name, "paths": paths})
+
+    known_pages = {f"{e.get('intelligent_block_id')}.md" for e in entries if e.get("intelligent_block_id")}
+    for name, paths in sorted(pages_by_name.items()):
+        if name not in known_pages:
+            defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
+
+    counts = {k: len(v) for k, v in defects.items()}
+    return {
+        "ok": sum(counts.values()) == 0,
+        "counts": counts,
+        "defect_total": sum(counts.values()),
+        "defects": defects,
+        "surfaces": {
+            "captures_on_disk": len(capture_by_hash),
+            "registry_entries": len(entries),
+            "published_pages_on_disk": sum(len(v) for v in pages_by_name.values()),
+        },
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -635,7 +739,12 @@ def main():
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
     pm = sub.add_parser("promote"); pm.add_argument("--note", required=True); pm.add_argument("--evidence", required=True); pm.add_argument("--promoter", required=True); pm.add_argument("--registry"); pm.add_argument("--out")
+    a = sub.add_parser("audit"); a.add_argument("--root"); a.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
+    if args.cmd == "audit":
+        report = audit_registry(root=args.root)
+        print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
+        raise SystemExit(0 if report["ok"] else 1)
     if args.cmd == "discover":
         print(changed_capture(args.paths)); return
     if args.cmd == "project":
