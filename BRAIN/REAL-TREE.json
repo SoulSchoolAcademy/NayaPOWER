@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "fcee24ec73b2e575b02d0ec734e4287f37d76d20",
-  "inventory_file_count": 180,
+  "receipt_basis_commit": "14e95d04e9abcf550c339b8b4926b8394b894baf",
+  "inventory_file_count": 182,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 37,
+    "05-MEMORY": 38,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -17,7 +17,7 @@
     "10-INTERFACES": 5,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
-    "90-OPERATIONS": 10,
+    "90-OPERATIONS": 11,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -450,8 +450,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
-      "blob_sha": "b00c986807c544c908efb4f7b050510f11abfd0d",
-      "size": 5587
+      "blob_sha": "d9ca35c22c012c631421d18edd41fd42995670ee",
+      "size": 2300
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
@@ -577,6 +577,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
       "blob_sha": "2943bc25673359e4f5b32d2444493c087a99fb2e",
       "size": 6380
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
+      "blob_sha": "c79132f6a7177f3b6f2bee8d4a4a00a1d8843f8b",
+      "size": 13685
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
@@ -887,6 +892,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md",
       "blob_sha": "73d6eddebcec094d98324179d4aeedca0ef48f0c",
       "size": 9953
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md",
+      "blob_sha": "954227fe2d94f7cfb47a9d2853bc93243eeeb6b8",
+      "size": 8068
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
