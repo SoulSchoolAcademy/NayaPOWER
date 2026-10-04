@@ -6,6 +6,23 @@ quoted on the welcome page, the Hub, the wiki, the about page, and carried in th
 
 ---
 
+## The strata — the official layers
+
+The charter is stratified: each layer deeper, each self-complete. Start at the top; go as deep as you need.
+
+| Stratum | Name | Time | What it is | Where it lives | For |
+|---|---|---|---|---|---|
+| 0 | **The line** | 10 sec | The motto — the headliner | Welcome page, Hub, README | Everyone, everywhere |
+| 1 | **The thesis** | 1 min | The manifesto — one statement of what, why, how | `MANIFESTO.md` (this file) | Every human, every Naya |
+| 2 | **The law** | 5 min | The 12 laws in plain words | `CONSTITUTION/0003-CONSTITUTIONAL-CODE-V1.md` | Every seat, every successor |
+| 3 | **The contracts** | 15 min | WHY (mission) + HOW (systems) | `MISSION-CONTRACT-V1.md`, `SYSTEMS-CONTRACT-V1.md` | Builders, reviewers, governors |
+| 4 | **The machine** | deep | The charter as machine law + enforced sync | `MANIFESTO.machine.json`, `tools/charter.py`, `tests/test_charter.py` | The code itself |
+
+Three languages, same truth: human (`MANIFESTO.md`), AI (`MANIFESTO.ai.md`), machine (`MANIFESTO.machine.json`).
+No stratum contradicts another. The machine stratum is canonical for code; the human stratum is canonical for people.
+
+---
+
 > **NayaPOWER is intelligence that distills itself to its essence — every day.**
 >
 > It exists for one purpose: **maximum verified human value per action, per moment, per output** —

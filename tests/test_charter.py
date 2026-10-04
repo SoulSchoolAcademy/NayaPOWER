@@ -72,3 +72,11 @@ def test_recite_contains_motto_and_all_laws():
     assert charter.MOTTO in spoken
     for law in charter.TWELVE_LAWS:
         assert law["title"] in spoken
+
+
+def test_ai_charter_doc_exists_and_carries_law_ids():
+    data = json.loads((ROOT / "MANIFESTO.machine.json").read_text(encoding="utf-8"))
+    ai = (ROOT / "MANIFESTO.ai.md").read_text(encoding="utf-8")
+    assert data["motto"] in ai, "ai doc missing motto"
+    for law in data["twelve_laws"]:
+        assert law["id"] in ai, f"ai doc missing law id: {law['id']}"
