@@ -90,3 +90,21 @@ def test_learning_requires_verified_outcome():
     result = kernel.decide(blocked)
 
     assert result.learning_candidate is None
+
+
+def test_kernel_loads_candidate_machine_charter_without_activating_it():
+    kernel = Kernel()
+    assert kernel.system_charter_status == "CANDIDATE_NON_GOVERNING"
+    assert kernel.system_charter_governing is False
+    preview = kernel.system_charter_directive(Node.SELF, require_governing=False)
+    assert preview["node"] == "SELF"
+    assert preview["governing"] is False
+
+
+def test_kernel_refuses_governing_charter_directive_before_ratification():
+    kernel = Kernel()
+    import pytest
+    from kernel.system_charter import CharterContractError
+
+    with pytest.raises(CharterContractError, match="SYSTEM_CHARTER_NOT_RATIFIED_ACTIVE"):
+        kernel.system_charter_directive(Node.LAW)
