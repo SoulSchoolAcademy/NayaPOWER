@@ -4,6 +4,7 @@ This is the portable activation surface for a genuinely cold Naya.
 
 ## Boot order
 
+0. SMART NOTE OPERATING CONTRACT — read `SMART-NOTE-OPERATING-CONTRACT-V1.md` before authoring durable intelligence; one capture, one canonical Brain path, generated projections only, stored ≠ learned
 1. KERNEL — identity, purpose, role and authority
 2. CONSTITUTION — governing principles, laws and governance
 3. INTELLIGENCE — architecture, memory, learning, continuity and CVO
