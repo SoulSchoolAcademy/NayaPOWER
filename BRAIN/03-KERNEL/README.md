@@ -16,6 +16,7 @@ This directory contains contracts, schemas, runtime semantics, and tests—not n
 | [0001-KERNEL-CONTRACT-V1.md](./0001-KERNEL-CONTRACT-V1.md) | Core kernel contract |
 | [0002-KERNEL-ACCEPTANCE-V1.md](./0002-KERNEL-ACCEPTANCE-V1.md) | Acceptance criteria for kernel operation |
 | [0003-RUNTIME-REGISTRY-V1.json](./0003-RUNTIME-REGISTRY-V1.json) | Registry of runtime components |
+| [0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json](./0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json) | Ratification-gated machine projection of the human system charter onto the nine-node organism |
 | [NODES/SELF/](./NODES/SELF/) | Identity, mission, continuity |
 | [NODES/LAW/](./NODES/LAW/) | Authority, consent, governance |
 | [NODES/ACT/](./NODES/ACT/) | Execution, agency, safe action |
