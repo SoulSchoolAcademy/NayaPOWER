@@ -248,6 +248,20 @@ def update_registry(capture, verify, projection):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    for existing in registry.get("entries", []):
+        if (
+            existing.get("smart_note_id") == sn_id
+            and existing.get("intelligent_block_id") != entry["intelligent_block_id"]
+        ):
+            raise SystemExit(
+                "SMART_NOTE_IDENTITY_CONFLICT:"
+                + sn_id
+                + ":FIRST="
+                + str(existing.get("intelligent_block_id"))
+                + ":REJECTED="
+                + str(entry["intelligent_block_id"])
+            )
+
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
