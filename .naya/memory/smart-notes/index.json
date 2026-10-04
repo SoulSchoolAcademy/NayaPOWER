@@ -564,12 +564,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "fcaf222f-a116-48a4-b14b-48ae5a5d224e"
       }
+    },
+    {
+      "smart_note_id": "SN-034",
+      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis",
+      "content_hash": "cbfa37d970c5fdacf0b53520f12d2f66d11780982f96d6029c979839151806d5",
+      "title": "NayaPOWER Core System Synthesis — Mission, Architecture, Laws, Intelligence River, and Human Experience",
+      "captured_at": "2026-10-04",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "NAYAPOWER-CORE-SYSTEM",
+      "subtopic": "WHOLE-ORGANISM-OPERATING-MAP",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "3a081baa-4381-4905-9445-c4baea3fd104",
+        "lineage_id": "e9ac6425-a955-45e8-88dc-26eb5fffaa8a",
+        "relationship_id": "f4238416-3a9d-4f6f-b0a6-9ce90178e40e",
+        "runtime_index_id": "15948367-b923-41e3-958f-c52720d25b47",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "219be516-5201-4f71-b037-cc5b4664fe87"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 33,
+    "next_sequence": 35,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
