@@ -41,6 +41,7 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
       "automatic_truth_ceiling": "CANDIDATE",
       "authority_inheritance": false,
       "current_main_sha": "ae2fd838d092ae1ae7414aa239fe486e1a5eef46",
