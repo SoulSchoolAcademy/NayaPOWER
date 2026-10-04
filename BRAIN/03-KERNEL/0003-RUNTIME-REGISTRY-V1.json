@@ -168,5 +168,14 @@
   "next_node_after_connect": "VERIFY",
   "next_node_after_verify": "LEARN",
   "next_node_after_learn": "EVOLVE",
-  "next_node_after_evolve": "SELF"
+  "next_node_after_evolve": "SELF",
+  "system_charter_machine_projection": {
+    "status": "CANDIDATE_NON_GOVERNING",
+    "contract": "BRAIN/03-KERNEL/0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json",
+    "compiler": "kernel/system_charter.py",
+    "kernel_binding": "kernel/nayapower_kernel.py",
+    "authority_rule": "Machine may validate/compile candidate charter; governing directives require exact Human Director ratification receipt.",
+    "architecture_rule": "This is a projection over the existing nine nodes and shared Value Calculus; it is not a tenth node or second authority/decision system.",
+    "proof_boundary": "Source integration and tests may prove machine compilation. Runtime governance remains disabled until ratification; ratification itself does not prove production outcomes."
+  }
 }
