@@ -1,3 +1,10 @@
+# ⚠️ HISTORICAL DESIGN DISCUSSION — NOT A CURRENT OPERATING CONTRACT
+
+> Preserved for provenance only. **Do not use this file to boot a Naya or determine current architecture.**
+> Current activation begins at `AGENTS.md`, then the newest dated Current-Reality reconciliation and the canonical Smart Note Operating Contract, reconciled against live `main` and claim-matched proof.
+
+---
+
 Yes. And I think you just made an important architectural leap.
 
 What you're describing is not merely the internal Naya boot protocol anymore. It is the beginning of a portable NayaPOWER activation product.
