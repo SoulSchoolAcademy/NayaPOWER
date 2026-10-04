@@ -149,6 +149,7 @@ def render(capture, verify, private_root=None):
         "## 🟣 CHILD NOTE", "", view_text(intelligence.get("simple_view"), "child", primary_key="child"), "",
         "## 🔵 GRANDMA NOTE", "", view_text(intelligence.get("simple_view"), "grandma", primary_key="child"), "",
         "## 🟠 NAYA NOTE", "", view_text(intelligence.get("naya_view"), "purpose", primary_key="purpose"), "", view_text(intelligence.get("naya_view"), "architectural_rule", primary_key="purpose"), "",
+        "## 🤖 AI NOTE", "", view_text(intelligence.get("ai_view"), "instruction", primary_key="instruction"), "", view_text(intelligence.get("ai_view"), "primary_evaluation", primary_key="instruction"), "",
         "## 🟢 MACHINE NOTE", "", "~~~json", json.dumps(intelligence.get("machine_view", {}), indent=2, ensure_ascii=False), "~~~", "",
         "## 🟢 LEARNING LESSON", "", intelligence.get("learning_lesson", "Experience becomes compounding intelligence only when retained meaning can be retrieved, applied, observed, verified, and used to improve what happens next."), "",
         "## 🟡 WHAT IT MEANS", "", intelligence.get("priority", ""), "",
