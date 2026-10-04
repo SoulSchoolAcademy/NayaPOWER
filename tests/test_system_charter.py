@@ -46,7 +46,8 @@ def test_hard_stops_precede_act_and_authority_cannot_be_created_by_value():
     assert set(hard["nodes"]) == {"LAW","ACT"}
     assert "regardless of score" in hard["machine_rule"]
     assert "value" in authority["machine_rule"].lower()
-    assert "never create authority" in doc["node_bindings"]["LAW"]["must_not"][1]
+    assert "never create authority" in authority["machine_rule"].lower()
+    assert "allow score to override hard gate" in doc["node_bindings"]["LAW"]["must_not"]
 
 
 def test_learning_requires_verify_and_cold_successor_continuity():
