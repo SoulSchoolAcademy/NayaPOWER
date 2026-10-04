@@ -3196,23 +3196,24 @@ window.BoardActions = (() => {
       /* Click while playing this block: pause. Click another block: switch. */
       if (activeId === boardId && audio && !audio.paused) { stop(); return; }
       stop();
+      /* One failure = one toast: the 404 path can fire both onerror and a
+         rejected play() promise — notify once. */
+      let notified = false;
+      const notifyNotReady = () => {
+        if (notified) return; notified = true; stop();
+        toast('VOICE NOT READY', 'Naya\u2019s voice for this block is still baking. The button will play it once the audio is published.', '#9d75ff');
+      };
       const a = new Audio(audioUrl(boardId));
       audio = a; activeId = boardId; activeBtn = btnEl;
       btnEl.classList.add('on');
       btnEl.setAttribute('aria-pressed', 'true');
       btnEl.textContent = '\u23F8 PAUSE';
       a.onended = () => stop();
-      a.onerror = () => {
-        stop();
-        toast('VOICE NOT READY', 'Naya\u2019s voice for this block is still baking. The button will play it once the audio is published.', '#9d75ff');
-      };
+      a.onerror = notifyNotReady;
       try {
         const p = a.play();
-        if (p && p.catch) p.catch(() => {
-          stop();
-          toast('VOICE NOT READY', 'Playback could not start on this device.', '#9d75ff');
-        });
-      } catch (e) { stop(); }
+        if (p && p.catch) p.catch(notifyNotReady);
+      } catch (e) { notifyNotReady(); }
     }
     return { toggle, stop };
   })();
