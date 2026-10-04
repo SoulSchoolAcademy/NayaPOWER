@@ -39,6 +39,7 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
       "automatic_truth_ceiling": "CANDIDATE",
       "authority_inheritance": false,
       "design_system_id": "NAYA_SIGNATURE_DESIGN_SYSTEM",
