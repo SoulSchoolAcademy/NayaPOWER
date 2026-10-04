@@ -3035,10 +3035,22 @@ function Pill(status) {
 }
 
 /* ——— Toast ——— */
-function toast(message, accent = 'var(--magenta)', ms = 4200) {
+/* Toast — two call conventions, both honored (fixed 2026-10-04: the 10 board-action
+   call sites pass (title, message, color) and their toasts were dismissing instantly
+   because a color string landed in the ms slot).
+   toast(message, accent, ms)     e.g. toast('Copied', 'gold', 2200)
+   toast(title, message, accent)  e.g. toast('VOICE NOT READY', '…baking…', '#9d75ff')
+   A numeric 3rd arg is a duration in ms; a string 3rd arg is an accent color. */
+function toast(a, b, c) {
+  let title = null, message = a, accent = 'var(--magenta)', ms = 4200;
+  if (typeof c === 'number') { accent = b || accent; ms = c; }
+  else if (typeof c === 'string') { title = a; message = b; accent = c; }
+  else if (typeof b === 'string') { accent = b; }
   let stack = document.querySelector('.toast-stack');
   if (!stack) { stack = el('div', 'toast-stack'); document.body.appendChild(stack); }
-  const t = el('div', 'toast', `<span>${message}</span>`);
+  const t = el('div', 'toast', title
+    ? `<span><strong>${title}</strong>&nbsp;&middot;&nbsp;${message}</span>`
+    : `<span>${message}</span>`);
   t.style.setProperty('--toast-accent', accent);
   stack.appendChild(t);
   setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 350); }, ms);
