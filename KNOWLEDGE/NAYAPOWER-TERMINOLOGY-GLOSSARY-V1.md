@@ -1,3 +1,5 @@
+> ⚠️ **CURRENT-PATH WARNING (2026-10-04):** This file contains historical Smart Note path material. It does not override the canonical operating contract. The current generated human projection path is `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`; authored intake is `.naya/capture/`; `.naya/memory/smart-notes/index.json` is the machine registry. See `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+
 # NAYAPOWER — TERMINOLOGY GLOSSARY V1
 
 **Status:** CANONICAL — TERMINOLOGY AUTHORITY
@@ -88,7 +90,7 @@ NIA Language normalizes that phrase to `CAPTURE_DURABLE_INTELLIGENCE`.
 
 After canonical commit, the Smart Note projection belongs at:
 
-`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/subtopic/IB-.../smart-note.md`
+`BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`
 
 The path is navigation, not truth. The Intelligent Block remains canonical. The projection MUST carry the IB identity and provenance pointers and MUST be generated from verified persisted intelligence.
 
