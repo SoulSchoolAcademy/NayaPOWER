@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya.system-charter.machine.v1.schema",
+  "title": "NayaPOWER System Charter Machine Contract V1",
+  "type": "object",
+  "required": [
+    "schema",
+    "contract_id",
+    "version",
+    "status",
+    "authority",
+    "sources",
+    "objective",
+    "laws",
+    "node_bindings",
+    "activation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "naya.system-charter.machine.v1"
+    },
+    "contract_id": {
+      "const": "NAYAPOWER-SYSTEM-CHARTER-V1"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE_NON_GOVERNING",
+        "RATIFIED_ACTIVE",
+        "SUPERSEDED",
+        "RETIRED"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "human_director_ratification_required",
+        "ratified",
+        "ratification_receipt",
+        "activation_rule",
+        "candidate_behavior"
+      ]
+    },
+    "sources": {
+      "type": "object"
+    },
+    "objective": {
+      "type": "object",
+      "required": [
+        "canonical",
+        "complexity_rule",
+        "decision_system",
+        "executable",
+        "decision_outcomes"
+      ]
+    },
+    "laws": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12
+    },
+    "node_bindings": {
+      "type": "object",
+      "required": [
+        "SELF",
+        "LAW",
+        "ACT",
+        "KNOW",
+        "PROVE",
+        "CONNECT",
+        "VERIFY",
+        "LEARN",
+        "EVOLVE"
+      ]
+    },
+    "activation": {
+      "type": "object",
+      "required": [
+        "runtime_enabled",
+        "required_for_activation",
+        "on_candidate",
+        "on_ratified"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
