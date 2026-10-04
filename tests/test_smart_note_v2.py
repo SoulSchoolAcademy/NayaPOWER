@@ -23,7 +23,8 @@ def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["scope"] == "PRIVATE"
-    assert entry["smart_link_status"] == "ACTIVE"
+    # D2 (smart-link generator, #1406): PRIVATE-scope notes are ACTIVE_AUTH_GATED, never bare ACTIVE.
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"
     assert entry["provenance"]["receipt_id"] == "faa4345a-aacd-43f2-ab2f-a991b9681979"
 
 def test_nia_language_has_primary_command_and_safe_ceiling():
@@ -50,7 +51,7 @@ def test_smart_note_command_is_standing_authority_for_same_note_lifecycle():
 def test_registered_smart_link_is_active_and_exact():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
-    assert entry["smart_link_status"] == "ACTIVE"
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"  # D2: PRIVATE scope, see above
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
     assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
     assert entry["smart_note_id"] == "SN-001"
