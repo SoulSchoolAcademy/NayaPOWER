@@ -21,9 +21,10 @@ edited file) still fails the check.
 
 Reconciliation rules (2026-09-30 brain-reconciliation ledger):
     - Per-domain counts must match the ledger's fixed classification table,
-      except the governed INTELLIGENCE-REPORTS subtree, whose committed file
-      count is added mechanically to the 05-MEMORY baseline. Any other drift
-      fails the run instead of silently rewriting the table.
+      except the governed INTELLIGENCE-REPORTS and SMART-NOTES subtrees, whose
+      committed file counts are added mechanically to the fixed 05-MEMORY
+      baseline. Any other drift fails the run instead of silently rewriting
+      the table.
     - Pointer integrity: every declared pointer-bearing field in the index
       layer (POINTER_FIELDS) must resolve against the git tree at HEAD. A
       generic backstop scan catches path-like strings in the same files that
@@ -115,20 +116,21 @@ PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.n
 
 # Ledger classification table: fixed domain baselines.
 #
-# INTELLIGENCE-REPORTS is an append-only governed memory subtree. Daily/weekly/
-# monthly/yearly reports must be able to accumulate without requiring a manual
-# ledger-count edit every day. We therefore keep the 05-MEMORY baseline fixed
-# at the count that excludes BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/, then add
-# the current report-subtree file count mechanically from git truth.
+# INTELLIGENCE-REPORTS and SMART-NOTES are append-only governed memory subtrees.
+# Reports and verified Smart Note projections must be able to accumulate without
+# requiring a manual ledger-count edit after every intelligence event. We
+# therefore keep the 05-MEMORY baseline fixed at the count that excludes both
+# governed append-only subtrees, then add their committed file counts
+# mechanically from git truth.
 BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 27,  # fixed baseline excluding INTELLIGENCE-REPORTS append-only subtree
-    # (deliberate 21->27 on main 5eaec742: 6 non-report Smart Notes landed 2026-10-01/02
-    #  SN-018 (10/01) + SN-018 (10/02) + SN-019 + SN-020 + SN-021 + SN-022, no ledger bump)
+    "05-MEMORY": 2,  # fixed baseline excluding governed INTELLIGENCE-REPORTS + SMART-NOTES subtrees
+    # Current fixed files are 0001-MEMORY-CONTINUITY-CONTRACT-V1.md + README.md.
+    # Smart Note projections and intelligence reports are counted mechanically below.
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -142,20 +144,24 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
 }
 
 INTELLIGENCE_REPORT_PREFIX = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/"
+SMART_NOTE_PREFIX = "BRAIN/05-MEMORY/SMART-NOTES/"
 DOMAIN_ORDER = tuple(BASE_EXPECTED_DOMAIN_COUNTS.keys())
 
 
 def expected_domain_counts(files: list[dict]) -> dict[str, int]:
-    """Return expected counts, allowing only the governed report subtree to grow.
+    """Return expected counts with governed append-only memory subtrees dynamic.
 
-    Every non-report Brain domain remains fixed against the reconciliation
-    ledger. 05-MEMORY may exceed its baseline only by the exact number of
-    committed files beneath INTELLIGENCE_REPORT_PREFIX. This preserves the
-    count-skew tripwire while making daily report accumulation append-safe.
+    Every Brain domain remains fixed against the reconciliation ledger except
+    the two governed append-only 05-MEMORY subtrees. 05-MEMORY may exceed its
+    fixed baseline only by the exact number of committed files beneath
+    INTELLIGENCE_REPORT_PREFIX and SMART_NOTE_PREFIX. This preserves the
+    count-skew tripwire for every other memory path while letting reports and
+    Smart Note projections accumulate without manual baseline edits.
     """
     expected = dict(BASE_EXPECTED_DOMAIN_COUNTS)
     report_files = sum(1 for f in files if f["path"].startswith(INTELLIGENCE_REPORT_PREFIX))
-    expected["05-MEMORY"] += report_files
+    smart_note_files = sum(1 for f in files if f["path"].startswith(SMART_NOTE_PREFIX))
+    expected["05-MEMORY"] += report_files + smart_note_files
     return expected
 
 
@@ -502,10 +508,10 @@ def main() -> int:
     counts = domain_counts(files)
     expected = expected_domain_counts(files)
     if counts != expected:
-        print("error: domain counts do not match the reconciliation ledger + report subtree:", file=sys.stderr)
+        print("error: domain counts do not match the reconciliation ledger + governed append-only memory subtrees:", file=sys.stderr)
         print(f"  git:      {counts}", file=sys.stderr)
         print(f"  expected: {expected}", file=sys.stderr)
-        print("A real non-report BRAIN/ count change landed — update BASE_EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
+        print("A real non-governed BRAIN/ count change landed — update BASE_EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
         return 2
 
     pointer_errors = validate_pointers(root)
