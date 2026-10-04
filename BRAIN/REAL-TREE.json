@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "14e95d04e9abcf550c339b8b4926b8394b894baf",
-  "inventory_file_count": 182,
+  "receipt_basis_commit": "c60b9e888ba08b632689171b94d2a6838bb7daef",
+  "inventory_file_count": 183,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 38,
+    "05-MEMORY": 39,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -572,6 +572,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
       "blob_sha": "6d22e76989978320931d35032d89c33d106a922b",
       "size": 7135
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-035/IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.md",
+      "blob_sha": "b2f45204f2c586c6b182f41a66902583e3d83d02",
+      "size": 2718
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
