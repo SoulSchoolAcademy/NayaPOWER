@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "f01e4bc4b077d0db9dfe4fc9786316aba9e9c3e4",
+  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
   "inventory_file_count": 186,
   "domain_counts": {
     "00-SPEC": 15,
@@ -570,8 +570,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
-      "blob_sha": "df94c1e9694ae55e2b99ad8176704ed24d8cf773",
-      "size": 1361
+      "blob_sha": "ae3ff71ad93e31fc4a2dd4789472ee961ed187ec",
+      "size": 1682
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-042/IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration.md",
