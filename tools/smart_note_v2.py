@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, hashlib, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -217,6 +217,28 @@ def update_registry(capture, verify, projection):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    # Identity-collision flag (SN-0257): the registry dedupes on intelligent_block_id,
+    # but the human-visible smart_note_id must also be unique per block. A new entry
+    # claiming an SN already held by a DIFFERENT block is flagged here — never silently
+    # kept alongside it. First claim stands; the conflict record drives lane resolution.
+    # (Additive only: dedupe semantics unchanged, no entries dropped.)
+    _sn_new = entry.get("smart_note_id", "")
+    if _sn_new:
+        for _e in registry.get("entries", []):
+            if (_e.get("smart_note_id") == _sn_new
+                    and _e.get("intelligent_block_id") != entry["intelligent_block_id"]):
+                _conflicts = registry.setdefault("identity_conflicts", [])
+                _record = {"smart_note_id": _sn_new,
+                           "claimants": sorted({_e["intelligent_block_id"],
+                                                entry["intelligent_block_id"]}),
+                           "detected_at": entry.get("captured_at", ""),
+                           "resolution": "UNRESOLVED — first claim stands; renumber the later claim."}
+                if _record not in _conflicts:
+                    _conflicts.append(_record)
+                print(f"IDENTITY CONFLICT: {_sn_new} claimed by two blocks — "
+                      f"first claim stands, renumber the later claim.",
+                      file=sys.stderr)
+                break
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
