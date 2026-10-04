@@ -63,6 +63,16 @@ def _first_party_modules() -> set:
     names = {"tests"}
     # Test helper modules are first-party too; they must not be mistaken for PyPI distributions.
     names.update(p.stem for p in TESTS.glob("*.py"))
+    # First-party tool modules live in tools/ and are imported by name, because
+    # their tests put tools/ on sys.path. Without this they read as PyPI
+    # distributions and the guard reports its own false positive -- exactly the
+    # failure this function already exists to prevent for kernel/ and
+    # intelligence/. #1406 added tools/smart_link.py and turned CI red on a
+    # module the repository ships itself.
+    tools = REPO / "tools"
+    if tools.is_dir():
+        names.add("tools")
+        names.update(p.stem for p in tools.glob("*.py"))
     for entry in REPO.iterdir():
         if entry.is_dir() and (entry / "__init__.py").exists():
             names.add(entry.name)

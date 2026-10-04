@@ -20,10 +20,13 @@ def test_capture_discovery_fails_closed_on_batch():
         raise AssertionError("expected fail-closed batch rejection")
 
 def test_machine_registry_contains_exact_private_block_pointer():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["scope"] == "PRIVATE"
-    assert entry["smart_link_status"] == "ACTIVE"
+    # #1406 gate logic: a PRIVATE-scope note must be auth-gated, never bare ACTIVE.
+    # This is strictly stronger than the previous `== "ACTIVE"`, which permitted a
+    # PRIVATE note to advertise itself as an ungated public link.
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"
     assert entry["provenance"]["receipt_id"] == "faa4345a-aacd-43f2-ab2f-a991b9681979"
 
 def test_nia_language_has_primary_command_and_safe_ceiling():
@@ -48,13 +51,41 @@ def test_smart_note_command_is_standing_authority_for_same_note_lifecycle():
     assert "does **not** authorize unrelated product releases" in nia
 
 def test_registered_smart_link_is_active_and_exact():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
-    assert entry["smart_link_status"] == "ACTIVE"
+    # Active means reachable; #1406 splits that into ungated ACTIVE versus
+    # ACTIVE_AUTH_GATED. Membership is asserted, then the scope invariant is
+    # asserted separately so a PRIVATE note can never claim bare ACTIVE.
+    assert entry["smart_link_status"] in {"ACTIVE", "ACTIVE_AUTH_GATED"}
+    assert entry["scope"] == "PRIVATE"
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
     assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
     assert entry["smart_note_id"] == "SN-001"
     assert entry["canonical_brain_path"].endswith("/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
+
+def test_every_private_smart_link_is_auth_gated():
+    """#1406 privacy invariant, enforced across the whole registry.
+
+    `tools/smart_link.py` states the rule: "PRIVATE-scope notes get status
+    ACTIVE_AUTH_GATED, never bare ACTIVE." Asserting it for one entry is not
+    enough -- a single ungated PRIVATE link is a privacy leak, so the invariant
+    is checked for every entry rather than one sample.
+    """
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
+    ungated = [
+        e.get("smart_note_id")
+        for e in reg["entries"]
+        if e.get("scope") == "PRIVATE" and e.get("smart_link_status") == "ACTIVE"
+    ]
+    assert not ungated, f"PRIVATE-scope notes must be ACTIVE_AUTH_GATED, never bare ACTIVE: {ungated}"
+
+    invalid = [
+        (e.get("smart_note_id"), e.get("smart_link_status"))
+        for e in reg["entries"]
+        if e.get("smart_link_status") not in {"ACTIVE", "ACTIVE_AUTH_GATED", "PENDING", "SUPERSEDED", "BROKEN", "COLLISION"}
+    ]
+    assert not invalid, f"smart_link_status outside the documented vocabulary: {invalid}"
 
 def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
     entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
