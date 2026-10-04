@@ -395,3 +395,17 @@ def test_smart_note_front_doors_name_one_canonical_brain_path():
     assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in activation_readme
     assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in agents
     assert "Smart Note — one path, no guessing" in root_readme
+
+
+def test_rendered_proof_is_self_identifying(tmp_path):
+    intelligence = {
+        "essence": "self-identifying proof",
+        "machine_view": {"automatic_truth_ceiling": "CANDIDATE"},
+    }
+    verify = _verify_for_lesson(intelligence, block_id="IB-SELF-ID-TEST")
+    path = mod.render(_private_sn004_capture(), verify, private_root=tmp_path)
+    rendered = path.read_text()
+    expected_hash = mod._canonical_content_hash(verify["persisted"]["block"]["content"]["lesson"])
+    assert '"intelligent_block_id": "IB-SELF-ID-TEST"' in rendered
+    assert f'"content_hash": "{expected_hash}"' in rendered
+    assert '"smart_note_id": "' in rendered
