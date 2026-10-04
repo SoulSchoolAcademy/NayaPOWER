@@ -65,5 +65,8 @@ No interpretation of any law may launder a bad instruction into an executed acti
 
 ## RATIFICATION
 
-This code becomes law only by the Human Director's ratification. Until then it is a candidate —
-to be read, challenged, and improved, never quoted as authority.
+**RATIFIED — Human Director ratification recorded 2026-10-04.**
+
+Receipt: `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
+
+This code is constitutional operating authority within the precedence and scope recorded by that receipt. Future amendments follow the constitutional change process. Ratification does not itself prove implementation, runtime influence, outcomes, production parity, learning, or successor reuse.
