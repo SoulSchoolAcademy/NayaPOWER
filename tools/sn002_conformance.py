@@ -162,6 +162,65 @@ def failures_only(results: list[ConformanceResult]) -> list[ConformanceResult]:
     return [r for r in results if not r.conformant]
 
 
+BASELINE_PATH = Path(".naya/conformance-baseline.json")
+
+
+def load_baseline(path: str | Path | None = None) -> set[str]:
+    """Load the grandfathered legacy-capture exemption set (filenames).
+
+    A missing baseline is an empty set, which means nothing is exempt. That is
+    the safe direction: it fails closed rather than silently allowing drift.
+    """
+    p = Path(path) if path else BASELINE_PATH
+    if not p.is_file():
+        return set()
+    try:
+        doc = json.loads(p.read_bytes().decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return set()
+    exempt = doc.get("exempt")
+    return set(exempt) if isinstance(exempt, list) else set()
+
+
+def ratchet_violations(
+    results: list[ConformanceResult],
+    baseline: set[str] | None = None,
+) -> list[ConformanceResult]:
+    """Failures that are NOT grandfathered.
+
+    The ratchet: new and changed captures must conform. Pre-existing debt named
+    in the baseline is reported but does not block. The baseline can only ever
+    shrink, so the debt is monotonic and cannot quietly grow.
+    """
+    exempt = load_baseline() if baseline is None else baseline
+    out = []
+    for r in results:
+        if r.conformant:
+            continue
+        name = Path(r.path).name
+        if name in exempt:
+            continue
+        out.append(r)
+    return out
+
+
+def stale_baseline_entries(
+    results: list[ConformanceResult],
+    baseline: set[str] | None = None,
+) -> set[str]:
+    """Baseline entries that now CONFORM -- the repair landed, drop them.
+
+    A baseline that never shrinks stops being a ratchet and becomes a
+    permanent exemption. This is how the debt gets retired.
+    """
+    exempt = load_baseline() if baseline is None else baseline
+    return {
+        Path(r.path).name
+        for r in results
+        if r.conformant and Path(r.path).name in exempt
+    }
+
+
 def _main(argv: list[str] | None = None) -> int:
     """CLI so this can be a real gate rather than a script nobody runs.
 
@@ -184,8 +243,10 @@ def _main(argv: list[str] | None = None) -> int:
     ap.add_argument("--report", action="store_true",
                     help="advisory (default): always exit 0")
     ap.add_argument("--dir", default=".naya/capture")
+    ap.add_argument("--ratchet", action="store_true",
+                    help="block only on non-grandfathered failures")
     args = ap.parse_args(argv)
-    blocking = bool(args.check)
+    blocking = bool(args.check) or bool(args.ratchet)
 
     results = check_dir(args.dir)
     if not results:
@@ -201,6 +262,26 @@ def _main(argv: list[str] | None = None) -> int:
             print(f"        - {v}")
         for a in r.advisories:
             print(f"        ~ {a}")
+
+    if args.ratchet:
+        ungrand = ratchet_violations(results)
+        stale = stale_baseline_entries(results)
+        if stale:
+            print("BASELINE ENTRIES NOW CONFORM (drop them to retire the debt):")
+            for n in sorted(stale):
+                print(f"  * {n}")
+        print(f"ratchet: {len(ungrand)} non-grandfathered failure(s), "
+              f"{len(bad) - len(ungrand)} grandfathered")
+        for r in ungrand:
+            label = r.smart_note_id or "(no smart_note_id)"
+            print(f"  BLOCKED {label}  {r.path}")
+            for v in r.violations:
+                print(f"          - {v}")
+        if ungrand:
+            print("RATCHET FAIL: a capture outside the baseline is non-conformant")
+            return 1
+        print("RATCHET PASS")
+        return 0
 
     if blocking and bad:
         print(f"FAIL: {len(bad)} capture(s) non-conformant")

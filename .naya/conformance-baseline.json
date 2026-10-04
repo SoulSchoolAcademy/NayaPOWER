@@ -1,0 +1,32 @@
+{
+  "schema": "naya.sn002-conformance-ratchet-baseline.v1",
+  "created": "2026-10-04",
+  "author": "Coda 1",
+  "purpose": "Explicit, dated exemption list for LEGACY Smart Note captures that predate the mechanical SN-002 governance keys. This is debt, not permission.",
+  "why_a_ratchet": "Flipping CI to blocking --check today would fail every merge on 10 historical captures for reasons unrelated to any current change. A ratchet blocks the drift class going forward WITHOUT reddening main on debt that already exists, and it makes the debt visible instead of invisible.",
+  "invariants": [
+    "This list may only ever SHRINK. A capture removed from it must be genuinely repaired.",
+    "A capture NOT in this list must pass governance conformance or CI fails.",
+    "Adding an entry is a governance decision and requires review; it is not a fix.",
+    "tests/test_sn002_conformance.py asserts this list does not grow."
+  ],
+  "governance_key_repair_pending": [
+    "SMART-NOTE-20260930-sn016-prime-judgment-rule.json",
+    "SMART-NOTE-20261001-sn020-naya-signature-design-mastery.json",
+    "SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.json",
+    "SMART-NOTE-20261002-sn022-human-centered-design-intelligence.json",
+    "SMART-NOTE-SN-002-NODE-FLOW.json"
+  ],
+  "exempt": [
+    "SMART-NOTE-20260929-sn003-naya-continuation-engine.json",
+    "SMART-NOTE-20260929-sn004-shawn-standing-law-r2.json",
+    "SMART-NOTE-20260929-sn004-shawn-standing-law.json",
+    "SMART-NOTE-20260930-sn016-prime-judgment-rule.json",
+    "SMART-NOTE-20261001-sn019-complete-the-app-doctrine.json",
+    "SMART-NOTE-20261001-sn020-naya-signature-design-mastery.json",
+    "SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.json",
+    "SMART-NOTE-20261002-sn022-human-centered-design-intelligence.json",
+    "SMART-NOTE-SN-002-NODE-FLOW.json",
+    "SMART-NOTE-b8f141805fa0d7ae.json"
+  ]
+}

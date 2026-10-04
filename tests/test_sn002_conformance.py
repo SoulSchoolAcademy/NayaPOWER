@@ -157,3 +157,59 @@ def test_conformant_captures_exist_too():
     """A gate that rejects everything is useless."""
     results = check_dir(CAPTURE_DIR)
     assert any(r.conformant for r in results), "gate rejects every capture"
+
+# ==========================================================================
+# RATCHET -- the debt is grandfathered, the drift class is not
+# ==========================================================================
+def test_ratchet_blocks_a_new_non_conformant_capture(tmp_path):
+    """THE load-bearing test. A new bad capture must be BLOCKED.
+
+    This is what makes the gate a real gate: legacy debt is exempted, anything
+    new must pass. Without this, --ratchet would be --report with extra steps.
+    """
+    from tools.sn002_conformance import ratchet_violations
+
+    def drop(doc):
+        del doc["intelligence"]["machine_view"]["raw_source_separate_from_distillation"]
+
+    new_bad = check_capture(_write(tmp_path, drop))
+    assert not new_bad.conformant
+    blocked = ratchet_violations([new_bad], baseline=set())  # baseline irrelevant
+    assert len(blocked) == 1, "a NEW non-conformant capture was not blocked"
+
+
+def test_ratchet_grandfathers_named_legacy_capture(tmp_path):
+    from tools.sn002_conformance import ratchet_violations
+
+    def drop(doc):
+        del doc["intelligence"]["machine_view"]["raw_source_separate_from_distillation"]
+
+    legacy = check_capture(_write(tmp_path, drop))
+    name = Path(legacy.path).name
+    assert ratchet_violations([legacy], baseline={name}) == []
+    assert len(ratchet_violations([legacy], baseline=set())) == 1
+
+
+def test_baseline_never_grows():
+    """A ratchet that can grow is a permanent exemption, not a ratchet."""
+    from tools.sn002_conformance import load_baseline
+
+    exempt = load_baseline()
+    assert isinstance(exempt, set)
+    results = check_dir(CAPTURE_DIR)
+    failing_names = {Path(r.path).name for r in failures_only(results)}
+    # Every non-conformant capture must be named, or the ratchet is not armed.
+    assert failing_names <= exempt, (
+        f"non-conformant captures absent from the baseline (ratchet would "
+        f"block them): {sorted(failing_names - exempt)}"
+    )
+
+
+def test_baseline_entries_that_now_conform_are_retirable(tmp_path):
+    """The repair path: a conforming baseline entry must be droppable."""
+    from tools.sn002_conformance import load_baseline, stale_baseline_entries
+
+    exempt = load_baseline()
+    good = check_capture(_write(tmp_path))
+    stale = stale_baseline_entries([good], baseline=exempt | {Path(good.path).name})
+    assert Path(good.path).name in stale
