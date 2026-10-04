@@ -529,12 +529,49 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
       }
+    },
+    {
+      "smart_note_id": "SN-023",
+      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn023-ai-unification",
+      "title": "AI Unification — One Brain, Many AI Interfaces",
+      "captured_at": "2026-10-04",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "AI_UNIFICATION",
+      "subtopic": "ONE_BRAIN_MANY_AI_INTERFACES",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AI-UNIFICATION/ONE-BRAIN-MANY-AI-INTERFACES/SN-023/IB-SMART-NOTE-20261004-sn023-ai-unification.md",
+      "projection_status": "GITHUB_BRAIN_CANDIDATE",
+      "smart_link_status": "PENDING_MAIN_MERGE",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AI-UNIFICATION/ONE-BRAIN-MANY-AI-INTERFACES/SN-023/IB-SMART-NOTE-20261004-sn023-ai-unification.md",
+      "keywords": [
+        "AI unification",
+        "AI agnostic",
+        "one brain many AIs",
+        "model portability",
+        "intelligence continuity",
+        "multi-agent",
+        "NayaPOWER",
+        "NayaNET"
+      ],
+      "provenance": {
+        "source_type": "human_director_smart_note_request",
+        "capture_path": ".naya/capture/SMART-NOTE-20261004-sn023-ai-unification.json",
+        "runtime_receiver_receipt": "NOT_YET_PRODUCED_BY_THIS_GITHUB_CAPTURE"
+      },
+      "proof_boundary": {
+        "architectural_direction_captured": true,
+        "repository_projection_created": true,
+        "runtime_persistence": "NOT_VERIFIED_IN_THIS_CHANGE",
+        "cross_provider_interoperability": "NOT_YET_PROVEN"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 23,
+    "next_sequence": 24,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
