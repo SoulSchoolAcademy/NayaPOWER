@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "8ad6cfa69db40befb8b62314155c90356726455c",
-  "inventory_file_count": 185,
+  "receipt_basis_commit": "a9e5a505f9f420216100aa89295fcb93ee7c5a40",
+  "inventory_file_count": 186,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -14,7 +14,7 @@
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 5,
+    "10-INTERFACES": 6,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,
@@ -702,6 +702,11 @@
       "path": "BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json",
       "blob_sha": "ec4123eea3dfbbef587b19348d46fe08dee19445",
       "size": 8959
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md",
+      "blob_sha": "c549ed2f71eee30e34cf67a63502f944a0dade8f",
+      "size": 5118
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",

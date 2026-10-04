@@ -135,7 +135,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 5,
+    "10-INTERFACES": 6,  # 2026-10-04 a9e5a505: Naya Voice Chatterbox spec landed on main (Shawn, docs)
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
