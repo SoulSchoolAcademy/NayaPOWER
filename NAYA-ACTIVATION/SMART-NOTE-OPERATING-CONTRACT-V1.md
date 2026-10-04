@@ -70,6 +70,8 @@ The authored JSON carries structured human, AI/Naya and machine semantics. The p
 
 **Never create `.naya/preview/`, never hand-write the generated Brain projection, and never create a parallel renderer.** A generated Smart Link is returned only after the governed pipeline actually creates the projection. A branch/source URL may prove authored bytes exist; it does not prove persistence, verification, projection, learning or successor reuse.
 
+A published Smart Link must be self-identifying: its readable projection carries the Smart Note ID, canonical Intelligent Block ID, canonical content hash, and persisted provenance receipt references so a cold reader can tie the page back to the governed intelligence object without guessing.
+
 ## 4. Learning law
 
 Never equate:
