@@ -112,7 +112,8 @@
         "PR #1310 — Naya Design Protocol V1 candidate",
         "PR #1313 — Naya Design Mastery OS V1 candidate",
         "GitHub Issue #554 — Team Naya coordination baton"
-      ]
+      ],
+      "raw_source_separate_from_distillation": true
     },
     "decisions": [
       "Do not mistake architecture volume for organism capability.",

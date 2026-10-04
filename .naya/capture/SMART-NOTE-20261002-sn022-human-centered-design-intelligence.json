@@ -130,7 +130,8 @@
         "OUTCOME",
         "SUPERSESSION"
       ],
-      "gate_rule": "Visual quality alone cannot pass UX. A design is incomplete when the human cannot understand, act, recover, trust the state or complete the intended outcome."
+      "gate_rule": "Visual quality alone cannot pass UX. A design is incomplete when the human cannot understand, act, recover, trust the state or complete the intended outcome.",
+      "raw_source_separate_from_distillation": true
     },
     "decisions": [
       "Adopt the cross-referenced human-centered design intelligence as a standing Naya Design operating method.",

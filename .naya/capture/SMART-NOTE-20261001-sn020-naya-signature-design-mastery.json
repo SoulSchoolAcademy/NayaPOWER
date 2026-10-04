@@ -1,5 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-020",
   "capture_id": "20261001-sn020-naya-signature-design-mastery",
   "title": "Naya Signature Design Mastery — Autonomous Extraordinary Interface Doctrine",
   "category": "SYSTEM_INTELLIGENCE",
@@ -87,7 +88,8 @@
         "LEARNING_REUSABLE"
       ],
       "gate_rule": "No self-score, visual impression, implementation state or AI preference can independently close the design-quality gate.",
-      "success_metric": "A cold Naya can build a new complete page/app from canonical intelligence with a recognizable Naya signature, pass machine and human quality gates, preserve prior excellence, and leave reusable design learning without Human Director micromanagement."
+      "success_metric": "A cold Naya can build a new complete page/app from canonical intelligence with a recognizable Naya signature, pass machine and human quality gates, preserve prior excellence, and leave reusable design learning without Human Director micromanagement.",
+      "raw_source_separate_from_distillation": true
     },
     "decisions": [
       "Design is a first-class intelligence capability, not a final polish phase.",
