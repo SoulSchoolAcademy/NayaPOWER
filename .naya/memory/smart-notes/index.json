@@ -529,12 +529,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
       }
+    },
+    {
+      "smart_note_id": "SN-032",
+      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence",
+      "content_hash": "a7fcb73e4e74773c93be54aef86fd83162287fa83cfdfe6a6a729e2c7359bd92",
+      "title": "Naya 1 Distilled Intelligence — Director / Integrator Operating Doctrine",
+      "captured_at": "2026-10-04",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "NAYA-1-DISTILLED-INTELLIGENCE",
+      "subtopic": "DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "a77adca4-683c-4a0c-b51a-b216c1764e0a",
+        "lineage_id": "5248646d-8b9c-4e2a-a9be-ab9354e7f0cf",
+        "relationship_id": "fb63ea83-3890-4d75-a968-195b66b1291d",
+        "runtime_index_id": "6ea6e7de-a511-43a0-862e-ecc105fc8152",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "fcaf222f-a116-48a4-b14b-48ae5a5d224e"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 23,
+    "next_sequence": 33,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
