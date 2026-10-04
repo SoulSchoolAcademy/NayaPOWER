@@ -2,29 +2,47 @@
   "schema": "naya.system-charter.machine.v1",
   "contract_id": "NAYAPOWER-SYSTEM-CHARTER-V1",
   "version": "1.0.0",
-  "status": "CANDIDATE_NON_GOVERNING",
+  "status": "RATIFIED_ACTIVE",
   "purpose": "Machine-executable projection of the NayaPOWER human charter into the existing nine-node organism. It creates no new node, authority model, brain, ledger, graph, learning path, or decision engine.",
   "authority": {
     "human_director_ratification_required": true,
-    "ratified": false,
-    "ratification_receipt": null,
+    "ratified": true,
+    "ratification_receipt": {
+      "path": "CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md",
+      "blob_sha": "ac77b25769fa46fd93c7fc7fc125161be9676164",
+      "human_director": "Shawn Vibert",
+      "recorded_date": "2026-10-04",
+      "ratified_source_head": "ea9bd18c6abe8778f04c5775f5ff539dbd4abd79"
+    },
     "activation_rule": "status == RATIFIED_ACTIVE && ratified == true && ratification_receipt is non-empty",
-    "candidate_behavior": "validate, compile, test, explain; MUST NOT govern consequential runtime behavior"
+    "candidate_behavior": "Historical pre-ratification behavior: validate, compile, test, explain; MUST NOT govern consequential runtime behavior."
   },
   "sources": {
-    "candidate_charter": {
-      "branch": "brain-build/system-charter-20261004",
-      "head_sha": "0ed85ad91da10212fe57bc64af302a21a0d889fa",
+    "ratified_charter": {
+      "source_branch": "brain-build/system-charter-20261004",
+      "ratified_head_sha": "ea9bd18c6abe8778f04c5775f5ff539dbd4abd79",
+      "receipt_path": "CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md",
+      "receipt_blob_sha": "ac77b25769fa46fd93c7fc7fc125161be9676164",
       "documents": [
         {
           "path": "MANIFESTO.md",
-          "blob_sha": "570b15ba7b0dd4bf605bc22f967adb4caa7b1c8e",
-          "role": "THESIS"
+          "blob_sha": "641bfe3fa6f762ee4b7a0cd99cafba3d08fd19f9",
+          "role": "THESIS_HUMAN"
+        },
+        {
+          "path": "MANIFESTO.ai.md",
+          "blob_sha": "f9ec135cccdeff5d86334bd20426cfeb995462c2",
+          "role": "THESIS_AI"
+        },
+        {
+          "path": "MANIFESTO.machine.json",
+          "blob_sha": "00569ed1a645fa1792d5f914faeeb3e77b26b93c",
+          "role": "THESIS_MACHINE"
         },
         {
           "path": "CONSTITUTION/0003-CONSTITUTIONAL-CODE-V1.md",
           "blob_sha": "8536a0ed253859b4ddcd1d6c98628c24a188164b",
-          "role": "CANDIDATE_LAW"
+          "role": "LAW"
         },
         {
           "path": "MISSION-CONTRACT-V1.md",
@@ -36,20 +54,21 @@
           "blob_sha": "91c0cc8d07e4924498f38b8a4ef06ba3de970f2b",
           "role": "OPERATING_SYSTEM"
         }
-      ]
+      ],
+      "projection_note": "Current main projections may differ in status-label bytes only; normative ratified content is bound to the immutable blob set above."
     },
     "higher_precedence": [
       {
         "path": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
-        "status": "RATIFIED"
+        "status": "RATIFIED_LEGAL_BEDROCK"
       },
       {
         "path": ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md",
-        "status": "HUMAN_DIRECTOR_LOCKED"
+        "status": "HUMAN_DIRECTOR_LOCKED_SEMANTIC_NODE_BOUNDARY"
       },
       {
         "path": "CONSTITUTION/NAYAPOWER-OPERATING-MANIFESTO-V1.md",
-        "status": "CURRENT_MAIN"
+        "status": "CURRENT_MAIN_OPERATING_PROJECTION"
       }
     ]
   },
@@ -535,7 +554,7 @@
     "deletion_rule": "NO_DESTRUCTIVE_RELEASE_WITHOUT_APPLICABLE_HUMAN_AUTHORITY"
   },
   "activation": {
-    "runtime_enabled": false,
+    "runtime_enabled": true,
     "required_for_activation": [
       "exact charter version ratified by Human Director",
       "ratification receipt/reference",
@@ -546,6 +565,14 @@
       "truth-distinction pass"
     ],
     "on_candidate": "MACHINE_MAY_VALIDATE_AND_COMPILE_BUT_MUST_NOT_GOVERN",
-    "on_ratified": "MACHINE_MAY_EXPOSE_NODE_DIRECTIVES_WITHIN_EXISTING_NODE_AUTHORITY_BOUNDARIES"
+    "on_ratified": "MACHINE_MAY_EXPOSE_NODE_DIRECTIVES_WITHIN_EXISTING_NODE_AUTHORITY_BOUNDARIES",
+    "activated_from_receipt": {
+      "path": "CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md",
+      "blob_sha": "ac77b25769fa46fd93c7fc7fc125161be9676164",
+      "human_director": "Shawn Vibert",
+      "recorded_date": "2026-10-04",
+      "ratified_source_head": "ea9bd18c6abe8778f04c5775f5ff539dbd4abd79"
+    },
+    "proof_boundary": "Machine governance is source/test active within existing node authority boundaries. Behavioral and production proof of charter-driven improvement remain separate gates."
   }
 }
