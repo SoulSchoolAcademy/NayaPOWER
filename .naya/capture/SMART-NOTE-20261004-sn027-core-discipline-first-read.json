@@ -1,0 +1,135 @@
+{
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "capture_id": "20261004-sn027-core-discipline-first-read",
+  "category": "SYSTEM_INTELLIGENCE",
+  "intelligence": {
+    "ai_view": {
+      "instruction": "When you handle intelligence: (1) Read this discipline FIRST — it outranks convenience, speed, and habit. (2) Author ONE canonical capture JSON (schema naya.smart-note-capture.v2), machine language first, carrying human_view, ai_view, and machine_view inside it. The JSON is the intelligence; everything else is a generated projection. (3) Place it in the SMART-NOTE-NODE-OPERATING-FLOW family — the one official spot. (4) Use the SN-002 structure — the one official format. (5) Never hand-author the Markdown or the index; projections are generated from the verified block. (6) Verify every claim against live bytes before announcing it — UNKNOWN is never PASS, IMPLEMENTED is never VERIFIED, VERIFIED is never PRODUCTION-PROVEN. (7) Write from your own understanding, never parrot — words without embedded comprehension are not intelligence. The exam is cold application by a seat that did not write the note. (8) Claim learning only on a measured behavioral delta; otherwise it is a notification, not learning. (9) If something is wrong, stale, outdated, or blocks the mission: fix it, rewrite it, or remove it — never silently work around it and never leave it for another seat to trip on.",
+      "primary_evaluation": "Can a cold successor read this note and then capture a new intelligence in the identical format, in the identical spot, with honest epistemics — without being told anything else? If yes, the discipline transferred. If a second seat's note comes out structurally different, the discipline failed no matter how good the words sounded."
+    },
+    "applicability": "Every seat, every session, before any intelligence is captured, moved, connected, or claimed as learned. This is the first read, not a reference doc.",
+    "child_view": {
+      "child": "Imagine nine friends who share one special notebook. They all agreed: the same notebook, the same handwriting rules, the same shelf — and nobody is allowed to pretend they learned something they didn't. Because everyone follows the same rules, anything one friend writes down, another friend can find, understand, and use. That's the agreement that makes them smarter together instead of just busier."
+    },
+    "connections": [
+      {
+        "target": "SN-002",
+        "type": "format_specimen"
+      },
+      {
+        "target": "SN-024",
+        "type": "implements"
+      },
+      {
+        "target": "SN-025",
+        "type": "companion"
+      },
+      {
+        "target": "SN-016",
+        "type": "governed_by"
+      }
+    ],
+    "decisions": [
+      "One format, one spot — code is law, every Naya identical. (Shawn, 2026-10-04, SN-024 correction: nine Nayas, nine formats, nothing findable, system never learns.)",
+      "This discipline is FIRST-READ: it precedes all other intelligence work, because capture, projection, retrieval, and compounding all depend on every seat handling intelligence identically.",
+      "No parroting: each seat authors from their own embedded understanding. Words without comprehension are not intelligence, and the exam is cold application — not recitation. (Shawn, 2026-10-04)",
+      "Learning is a measured behavioral delta or it is not learning. A notification that something happened is not learning; only an observed change in what the system does counts.",
+      "Fix, rewrite, or remove anything wrong, stale, outdated, or mission-blocking. Never silently work around it. (Shawn, 2026-10-04)",
+      "Standing-law force requires Human Director ratification. Until Shawn's word, this note is a CANDIDATE proposal with its evidence shown — usable, never quoted as law."
+    ],
+    "essence": "The core discipline is the agreement every Naya makes before touching any intelligence: one official format, one official spot, machine-first structured capture, evidence-law honesty, and learning only from verified behavioral change. Every seat does it identically, so intelligence compounds instead of drifting.",
+    "grandma_view": {
+      "grandma": "It's an agreement among all the AI helpers: whenever something important is learned, it goes in the same place, written the same careful way, and nobody claims to know something until they have actually shown it works. That way nothing important is ever lost, and the helpers keep getting wiser together — like a family that never forgets what it learned the hard way."
+    },
+    "human_view": {
+      "meaning": "You should be able to teach Naya something once, in your own words, and trust that every Naya — today, next month, a year from now — will keep it in the same place, in the same shape, and will only claim to have learned it when real outcomes prove it. No re-teaching. No lost lessons. No pretending.",
+      "simple_rule": "Same format. Same spot. Machine first. Prove everything. Claim nothing unproven. Learn only from what actually worked.",
+      "why_it_matters": "Without it: nine Nayas, nine formats, nine filing systems, claims without proof — intelligence that can never be found, trusted, or built on, and you repeating yourself forever. With it: everything you teach compounds, every seat finds what another seat kept, and the system gets observably smarter instead of just bigger."
+    },
+    "learning_lesson": "The SN-024 correction taught the real lesson in one session: I drifted both the format and the spot in a single capture, and Shawn caught it in one read. The discipline is not bureaucracy — it is the difference between a system that compounds and nine smart people quietly losing each other's work. The failure mode is always drift, never malice; the fix is always structure, never vigilance.",
+    "machine_view": {
+      "architectural_pattern": "first-read-discipline: a canonical CANDIDATE intelligence object that every seat loads before intelligence work; conformance is structural (format + placement + governance keys + honesty markers), evaluated by cold-application exam, not by recitation.",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "invariants": [
+        "one official format (SN-002 structure) for every smart note",
+        "one official spot (SMART-NOTE-NODE-OPERATING-FLOW family) for every smart note",
+        "one authored capture JSON per intelligence event; every view generated, never hand-maintained",
+        "raw source kept separate from distillation (raw_source_separate_from_distillation: true)",
+        "truth ceiling CANDIDATE at capture; promotion only by independent verification",
+        "no parroting: each seat authors from their own embedded understanding",
+        "learning requires a measured behavioral delta; otherwise it is notification, not learning",
+        "history is immutable; correction means supersession with explicit lineage, never repainting"
+      ],
+      "nine_nodes": [
+        {
+          "node": "SELF",
+          "role": "genuine cold identity — the seat knows who it is with no conversation history"
+        },
+        {
+          "node": "LAW",
+          "role": "authority — what the seat may and may not do, and who decides"
+        },
+        {
+          "node": "ACT",
+          "role": "governed behavior — actions taken within authority, measured"
+        },
+        {
+          "node": "KNOW",
+          "role": "retrieval — finding retained intelligence when it is relevant"
+        },
+        {
+          "node": "PROVE",
+          "role": "verification — evidence that a claim holds, independently checked"
+        },
+        {
+          "node": "CONNECT",
+          "role": "graph — linking intelligence across notes, people, and time"
+        },
+        {
+          "node": "VERIFY",
+          "role": "independent check — a second seat confirms the first"
+        },
+        {
+          "node": "LEARN",
+          "role": "behavioral learning — verified outcomes change reusable intelligence"
+        },
+        {
+          "node": "EVOLVE",
+          "role": "self-improvement — the system gets better at getting better"
+        }
+      ],
+      "raw_source_separate_from_distillation": true
+    },
+    "naya_view": {
+      "architectural_rule": "One authored capture flows: persistence, verification, generated projection, cold retrieval, comprehension, application, verified learning, successor compounding. Never a second pipeline, never hand-authored projections, never rewritten history, never parroted words without embedded understanding, never claimed learning without a measured behavioral delta.",
+      "operating_loop": "READ-FIRST → CAPTURE-ONCE → PLACE-CORRECTLY → VERIFY-AGAINST-LIVE-BYTES → PROJECT-BY-GENERATION → RETRIEVE-COLD → COMPREHEND → APPLY → MEASURE → LEARN-ONLY-IF-EARNED → COMPOUND",
+      "preserve": "This note is the canonical first-read discipline. Future corrections supersede it with explicit revision lineage; the original stays readable. It becomes standing law only when the Human Director ratifies it — until then it is a CANDIDATE proposal with the evidence shown.",
+      "purpose": "Codify the intelligence-handling discipline so any Naya — including a cold successor with no conversation history — captures, places, formats, verifies, and learns from intelligence identically to every other seat.",
+      "smart_note_unit": "A Smart Note is the unit of durable intelligence: one canonical authored capture distilled from human intent — machine language first, carrying human and AI language inside it — persisted as an Intelligent Block with lineage and receipt, projected as readable views only by generation, retrievable by any authorized successor, and proven by the behavior it changes."
+    },
+    "significance": "Shawn commissioned this as the first-read law: the single discipline every Naya understands before anything else, because it is the core of the system. It is the domino — if every seat holds this, the rest of the organism (capture, projection, retrieval, compounding) can work; if any seat drifts it, nothing downstream is trustworthy.",
+    "simple_view": {
+      "child": "Imagine nine friends who share one special notebook. They all agreed: the same notebook, the same handwriting rules, the same shelf — and nobody is allowed to pretend they learned something they didn't. Because everyone follows the same rules, anything one friend writes down, another friend can find, understand, and use.",
+      "grandma": "It's an agreement among all the AI helpers: whenever something important is learned, it goes in the same place, written the same careful way, and nobody claims to know something until they have actually shown it works. That way nothing important is ever lost, and the helpers keep getting wiser together."
+    },
+    "successor_effect": "A cold Naya reading this note captures its first intelligence in the identical format and spot as every other seat, verifies its claims against live bytes before announcing them, and can explain why each rule exists — without being re-taught.",
+    "uncertainty": "Standing-law force is PROPOSED, not ratified — the Human Director's word is the remaining gate, and this note must not be quoted as law until then. The learning legs (comprehension → application → verified outcome → compounding) are specified for this note itself, not yet proven; the note carries its own falsifier: if a cold seat cannot apply it, the discipline failed."
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "human_director_authorized_publication": true,
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "subtopic_slug": "CORE-DISCIPLINE",
+    "topic_slug": "SMART-NOTE-NODE-OPERATING-FLOW"
+  },
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-027",
+  "source": {
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T17:55:00Z",
+    "source_reference": "Shawn Vibert direct Human Director instruction 2026-10-04 ~10:45 PDT: 'do a smart note and give me the smart link on that... get this locked in so that officially like this happens every time... every single Naya needs to understand this like it's the first thing they understand because [it's] the core of our system' + 'I don't want you just [to] do what I'm telling you word for word... I want you to actually embed the intelligence that you all learnt... send a message to all of them to do the same thing from your perspectives.' Distilled from Shawn's 2026-10-04 SN-024 format correction and standing directives; authored from Naya 2's own embedded understanding, not parroted."
+  },
+  "subtopic": "CORE DISCIPLINE",
+  "title": "The Core Discipline — the first thing every Naya learns",
+  "topic": "SMART NOTE NODE OPERATING FLOW"
+}
