@@ -1,0 +1,122 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-023",
+  "capture_id": "20261004-sn023-ai-unification",
+  "title": "AI Unification — One Brain, Many AI Interfaces",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "AI_UNIFICATION",
+  "subtopic": "ONE_BRAIN_MANY_AI_INTERFACES",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-04",
+    "source_type": "human_director_product_architecture_insight",
+    "source_reference": "Shawn Vibert direct Smart Note request on 2026-10-04, distilled from a conversation with Naya 4 about NayaPOWER as the user-owned intelligence substrate connecting multiple AI systems and agents."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "AI-UNIFICATION",
+    "subtopic_slug": "ONE-BRAIN-MANY-AI-INTERFACES"
+  },
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn023-ai-unification",
+  "epistemic_state": "CANDIDATE",
+  "proposed_class": "CORE",
+  "intelligence": {
+    "essence": "NayaPOWER should function as a governed, user-owned intelligence substrate that can be accessed through many authorized AI interfaces, models, agents, devices, and applications without fragmenting the person's memory, context, provenance, authority, or learned intelligence. The AI endpoint may change; the governed brain remains the continuity layer.",
+    "human_view": {
+      "meaning": "You should not have to rebuild yourself every time you switch AI. ChatGPT, Muse, local agents, future models, and other authorized interfaces can all become doors into the same brain. The brain belongs to the person; the AI is a replaceable interface to it."
+    },
+    "child_view": "Imagine one backpack that holds everything important you learned. You can bring that same backpack to any teacher, helper, or computer. You do not start with an empty backpack each time.",
+    "grandma_view": "Instead of explaining your life and work again to every new AI, your important intelligence stays in one governed place. Any AI you choose can be brought up to speed through that same brain, if you authorize it.",
+    "naya_view": "Separate intelligence continuity from model identity. Preserve one governed canonical intelligence substrate while allowing multiple authorized cognition and interaction endpoints. A model is a participant/interface, not the owner of the person's memory or truth.",
+    "machine_view": {
+      "architectural_pattern": "ONE_GOVERNED_INTELLIGENCE_SUBSTRATE_MANY_AUTHORIZED_AI_INTERFACES",
+      "canonical_brain": "NayaPOWER",
+      "network_layer": "NayaNET",
+      "interface_examples": [
+        "ChatGPT",
+        "Muse",
+        "local coding agents",
+        "Claude",
+        "Gemini",
+        "future AI systems"
+      ],
+      "invariants": [
+        "ONE_CANONICAL_INTELLIGENCE_SUBSTRATE",
+        "MODEL_VENDOR_INDEPENDENT_CONTINUITY",
+        "USER_OWNED_GOVERNED_INTELLIGENCE",
+        "AUTHORITY_AND_CONSENT_DO_NOT_TRANSFER_WITH_MODEL_ACCESS",
+        "PRIVATE_BY_DEFAULT",
+        "PROVENANCE_AND_LINEAGE_PRESERVED",
+        "COLD_RETRIEVAL_BEFORE_ACTION",
+        "NO_PARALLEL_BRAIN_PER_AI"
+      ]
+    },
+    "learning_lesson": "The strategic value is not merely AI agnosticism. It is AI unification: preserve one continuity-bearing intelligence layer beneath many changing AI interfaces so better or different models can be adopted without sacrificing memory, relationships, learned context, or governance.",
+    "significance": "This changes the product category from 'another AI assistant' into an intelligence continuity and coordination layer. It can reduce vendor lock-in, repeated onboarding, fragmented agent work, context loss, and duplicated human explanation while enabling specialized AIs to contribute to one governed compounding brain.",
+    "product_positioning": {
+      "primary_phrase": "AI Unifying — One Brain, Every AI",
+      "supporting_phrase": "Your intelligence is yours. Bring any authorized AI to the same brain.",
+      "avoided_overclaim": "Do not claim universal interoperability or category uniqueness until demonstrated against named external systems."
+    },
+    "applicability": {
+      "applies_when": [
+        "connecting a new AI model or agent to NayaPOWER",
+        "designing activation and cold-retrieval flows",
+        "building agent handoffs or multi-agent collaboration",
+        "explaining NayaPOWER product value",
+        "designing NayaNET connection/permission boundaries",
+        "evaluating vendor independence and portability"
+      ],
+      "does_not_imply": [
+        "all external AI providers are currently integrated",
+        "all interfaces have equal capabilities",
+        "access to intelligence grants authority",
+        "a connected AI may bypass privacy, consent, LAW, or provenance"
+      ]
+    },
+    "connections": [
+      {
+        "type": "EXTENDS",
+        "target": "SN-021 — NayaPOWER Current Architectural Truth — One Organism, One Brain, Many Doors"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-007 — Intelligence Continuity"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-014 — The Compounding Imperative"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-015 — Active Intelligence Rule"
+      },
+      {
+        "type": "REFINES",
+        "target": "SN-018 — The Hub Is the Visual Projection of Intelligence"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NayaPOWER Portable Activation Protocol V1"
+      },
+      {
+        "type": "FEEDS",
+        "target": "NayaNET connector / Smart Door architecture"
+      }
+    ],
+    "key_principles": [
+      "The brain is the constant; AI models and agents are replaceable interfaces.",
+      "One person should not accumulate separate disconnected brains for every model.",
+      "Every authorized AI should restore relevant current intelligence before meaningful work.",
+      "All contributions return through the same governed intelligence river rather than creating shadow memory.",
+      "Model access never inherits authority, consent, ownership, or truth status.",
+      "The Human Director controls which interfaces may access which intelligence.",
+      "The Hub visualizes the shared intelligence; it is not the brain itself.",
+      "AI unification is a product promise only to the degree interoperability is actually proven."
+    ],
+    "uncertainty": "The architecture and product doctrine are CANDIDATE intelligence. NayaPOWER already contains strong continuity, activation, graph, Smart Note, Hub-projection, and many-doors concepts that support this direction, but universal cross-provider interoperability has not been established by this capture. Each external AI/provider needs an explicit governed connection contract and proof.",
+    "successor_effect": "A cold successor should treat AI unification as a core product/architecture lens: when adding an AI, do not build another brain. Connect the AI as an authorized door to the existing NayaPOWER substrate, restore relevant intelligence, preserve authority boundaries, route new learning back through the canonical river, and prove continuity across at least two distinct AI interfaces."
+  }
+}
