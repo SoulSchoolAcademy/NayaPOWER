@@ -1,7 +1,8 @@
 # NayaPOWER Whole-Repository Alignment Report — 2026-10-04
 
 **Status:** CURRENT alignment assessment against `main`  
-**Basis:** `fcee24ec73b2e575b02d0ec734e4287f37d76d20`  
+**Initial audit basis:** `fcee24ec73b2e575b02d0ec734e4287f37d76d20`  
+**Current main after alignment corrections:** `c4b95a6bd579edd4dcf7e1f54817de8efab7ff1e`  
 **Authority:** Shawn Vibert remains final authority for merges, ratifications, production, database and credentials.
 
 ## Executive verdict
