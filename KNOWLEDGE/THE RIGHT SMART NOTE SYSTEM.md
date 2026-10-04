@@ -1,3 +1,5 @@
+> **Status:** HISTORICAL DESIGN EXPLANATION — current operating authority is `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+>
 > ⚠️ **CURRENT-PATH WARNING (2026-10-04):** This file contains historical Smart Note path material. It does not override the canonical operating contract. The current generated human projection path is `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`; authored intake is `.naya/capture/`; `.naya/memory/smart-notes/index.json` is the machine registry. See `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
 
 The biggest thing you noticed correctly
@@ -5,7 +7,7 @@ You said you expected something like:
 NayaPOWER / Brain / Smart Notes / year / month / day / category / topic / IB...
 
 Shawn — that already exists in the canonical terminology document.
-The repo currently specifies:
+The 2026-09-27-era design described this retired projection path:
 .naya/memory/smart-notes/
     YYYY/
       MM/
@@ -14,6 +16,10 @@ The repo currently specifies:
             topic/
               IB-XXXXXX/
                 smart-note.md
+
+The current governed renderer instead generates:
+BRAIN/05-MEMORY/SMART-NOTES/
+    YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md
 
 That is almost exactly your mental model.
 And I agree with it.
@@ -51,7 +57,7 @@ INTELLIGENT BLOCK
 database / graph / index / lineage
       ↓
 SMART NOTE PROJECTION
-.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB.../
+BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md
       ↓
 SMART LINK
 verified direct link to smart-note.md
