@@ -134,7 +134,7 @@ Never weaken an acceptance gate to manufacture a pass.
 
 For project-specific reality, use the precedence contract in:
 
-`NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-09-29.md`
+the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`
 
 Key rule: current repository state + current work/evidence outrank stale snapshots and activation projections. The nonexistent `.naya/control-plane/` path is not a source of truth and must not be invented.
 

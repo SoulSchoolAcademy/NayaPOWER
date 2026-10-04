@@ -3,14 +3,15 @@
   "status": "CANONICAL",
   "title": "NayaPOWER Contract Registry",
   "system": "NayaPOWER / NayaNET",
-  "last_updated": "2026-09-27",
+  "last_updated": "2026-10-04",
   "canonical_stack_source": "KNOWLEDGE/NAYA POWER CONCEPT PART #3.md",
   "candidate_stack_source": "KNOWLEDGE/NAYA POWER CONCEPT PART #2.md",
   "integrity_report": ".naya/contract-library-integrity-report.json",
   "notes": [
     "PART #2 presents a 19-contract candidate library; PART #3 presents the canonical stack as '26 contracts' but enumerates IDs 00-26, which is 27 contracts. The enforceable kernel spec (PART #4) requires exactly 27 (contract_id_range ['00','26'], contract_primary_ownership min/maxProperties 27), and PART #1 calls it 'THE 27-CONTRACT -> 9-NODE COMPILATION'. This registry therefore adopts 27 contracts (IDs 00-26) as canonical; the '26' in PART #3 refers to the highest contract ID.",
     "Status RATIFIED means the contract's authority is established by the 2026-09-26 North Star ratification or by live canonical enforcement. PROPOSED means specified in a canonical document but not yet ratified. DRAFT means the artifact exists but has known integrity findings.",
-    "The contract library currently holds 45 files with 12 ERROR-severity findings (authority ambiguity, contract-id collision on 00-, multi-defined governed nouns, unratified boundaries). See .naya/contract-library-integrity-report.json."
+    "The contract library currently holds 45 files with 12 ERROR-severity findings (authority ambiguity, contract-id collision on 00-, multi-defined governed nouns, unratified boundaries). See .naya/contract-library-integrity-report.json.",
+    "2026-10-04 Smart Note path reconciliation: authored captures remain under .naya/capture/; the canonical generated human-readable projection is BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md; .naya/memory/smart-notes/index.json is the machine registry. Historical path evidence is retained only as lineage."
   ],
   "contracts": [
     {
@@ -79,7 +80,7 @@
       "dependencies": ["05"],
       "source_file": ".naya/contracts/01-INTELLIGENCE/01-SMART-NOTE-AND-SMART-LINK.md",
       "master_node": "MN-04 KNOW",
-      "evidence": "PART #3: 'The existing canonical contract already ratifies this structure'; canonical path .naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+      "evidence": "PART #3 historical evidence recorded the retired .naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md projection path. Superseded 2026-10-04 by the live renderer/operating contract: BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md; .naya/memory/smart-notes/index.json remains the machine registry.",
       "finding": "UNREFERENCED_CONTRACT: not named by the library index or any registry"
     },
     {

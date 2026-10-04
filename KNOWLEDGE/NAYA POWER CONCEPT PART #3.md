@@ -1,3 +1,5 @@
+> ⚠️ **CURRENT-PATH WARNING (2026-10-04):** Historical source material below may name the retired `.naya/memory/smart-notes/YYYY/...` human projection path. Current law: authored capture `.naya/capture/`; generated human projection `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`; registry `.naya/memory/smart-notes/index.json`. See `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+
 North Star just got sharper
 Previously we could say:
 NayaPOWER preserves intelligence.
