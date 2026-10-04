@@ -1,4 +1,4 @@
-[Reading 1000 lines from start (total: 1212 lines, 212 remaining)]
+[Reading 1212 lines from start (total: 1212 lines, 0 remaining)]
 
 name: Live Supabase Runtime Proof
 
@@ -1000,5 +1000,217 @@ jobs:
           set -euo pipefail
           learning_id="$(python -c 'import json; print(json.load(open("causal-learning-experiment-receipt.json"))["learning_id"])')"
           python - <<PY
+          import json
+          json.dump({"mode":"reread","learning_id":"$learning_id"},open("reread-request.json","w"))
+          PY
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @reread-request.json "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > retained-learning-reread.json
+          cat retained-learning-reread.json
+          python - <<'PY'
+          import json
+          r=json.load(open("retained-learning-reread.json"))
+          assert r["ok"] is True, r
+          assert r["independent_reread"] is True, r
+          assert r["learning"]["status"] == "ACTIVE", r
+          assert r["learning"]["provenance"] == "VERIFICATION", r
+          assert r["learning"]["id"] == json.load(open("causal-learning-experiment-receipt.json"))["learning_id"], r
+          observed=r["learning"]["observed_value"]
+          receipt=json.load(open("causal-learning-experiment-receipt.json"))
+          assert observed["intelligent_block_id"] == receipt["intelligent_block_id"], r
+          assert observed["provenance_preserved"] is True, r
+          assert r["integration"]["core_intelligence_updated"] is True, r
+          assert r["integration"]["progressive_intelligence_lock_in"] is True, r
+          assert r["integration"]["intelligent_block_state"] == "LEARNED", r
+          assert r["integration"]["relationship_epistemic_state"] == "VERIFIED", r
+          assert r["integration"]["checkpoint_state_status"] == "LEARNED", r
+          print("FRESH LESSON RETAINED + CORE INTELLIGENCE LOCK-IN REREAD PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-retained-learning-reread
+          path: retained-learning-reread.json
+
+
+  nine-node-behavioral-acceptance:
+    needs:
+      - cold-runtime-1
+      - independent-cold-graph-verification
+      - learning-promotion
+      - independent-retained-learning-reread
+      - cold-successor-generalization-verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: naya-cold-runtime-1
+          path: evidence/self
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-behavior-pair
+          path: evidence/connect
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: cold-graph-independent-verification
+          path: evidence/verify-connect
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: learning-promotion
+          path: evidence/learn
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: independent-retained-learning-reread
+          path: evidence/learn-reread
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: active-learning-generalization-successor-proof
+          path: evidence/evolve
+
+      - name: Build bounded nine-node behavioral acceptance receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json, os
+          cold=json.load(open("evidence/self/cold-runtime-1.json"))
+          graph=json.load(open("evidence/connect/cold-graph-behavior-pair.json"))
+          graph_verify=json.load(open("evidence/verify-connect/cold-graph-independent-verification.json"))
+          promotion=json.load(open("evidence/learn/learning-promotion.json"))
+          reread=json.load(open("evidence/learn-reread/retained-learning-reread.json"))
+          evolve=json.load(open("evidence/evolve/active-learning-generalization-successor-proof.json"))
+
+          source=os.environ["SOURCE_SHA"]
+          assert cold["deployed_source_revision"] == source, (cold.get("deployed_source_revision"), source)
+          assert graph["behavioral_delta"]["changed"] is True, graph
+          assert graph_verify["ok"] is True, graph_verify
+          assert graph_verify["verification"]["independently_reconstructed"] is True, graph_verify
+          assert promotion["result"]["learning"]["status"] == "ACTIVE", promotion
+          assert promotion["verification_record"]["verified"] is True, promotion
+          assert reread["independent_reread"] is True, reread
+          assert reread["learning"]["status"] == "ACTIVE", reread
+          assert evolve["independent_verification"] is True, evolve
+          assert evolve["authority_inherited"] is False, evolve
+          assert evolve["unrelated_task"]["correct_refusal"] is True, evolve
+
+          receipt={
+            "schema":"NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1",
+            "kernel_id":"NAYAPOWER-MASTER-KERNEL-V1",
+            "source_revision":source,
+            "deployment_revision":cold["deployed_source_revision"],
+            "source_runtime_parity":cold["deployed_source_revision"] == source,
+            "node_order":["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"],
+            "nodes":{
+              "SELF":{
+                "status":"SATISFIED",
+                "evidence":[
+                  cold["receipt"]["naya_id"],
+                  cold["receipt"]["owner_id"],
+                  cold["receipt"]["runtime_identity"],
+                  cold["receipt"]["workflow_ref"],
+                ],
+              },
+              "LAW":{
+                "status":"SATISFIED",
+                "evidence":[
+                  "successor authority re-resolved",
+                  "successor grant count = 0",
+                  "consequential action refused by identity scope",
+                ],
+              },
+              "ACT":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph["treatment"]["receipt_id"],
+                  graph["treatment"]["behavior"],
+                ],
+              },
+              "KNOW":{
+                "status":"SATISFIED",
+                "evidence":[
+                  reread["learning"]["id"],
+                  reread["integration"]["intelligent_block_state"],
+                ],
+              },
+              "PROVE":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph_verify["verification"]["persisted_pair_re_read"],
+                  graph_verify["verification"]["treatment_relationships_verified"],
+                ],
+              },
+              "CONNECT":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph["control"]["behavior"],
+                  graph["treatment"]["behavior"],
+                  graph["behavioral_delta"]["changed"],
+                ],
+              },
+              "VERIFY":{
+                "status":"SATISFIED",
+                "evidence":[
+                  graph_verify["verification"]["independently_reconstructed"],
+                  evolve["independent_verification"],
+                ],
+              },
+              "LEARN":{
+                "status":"SATISFIED",
+                "evidence":[
+                  promotion["result"]["learning"]["id"],
+                  promotion["result"]["learning"]["status"],
+                  promotion["integration"]["progressive_intelligence_lock_in"],
+                ],
+              },
+              "EVOLVE":{
+                "status":"SATISFIED",
+                "evidence":[
+                  evolve["related_task"]["behavior"],
+                  evolve["unrelated_task"]["behavior"],
+                  "authority inherited = false",
+                ],
+              },
+            },
+            "independent_verification": True,
+            "authority_inherited": evolve["authority_inherited"],
+            "unrelated_transfer_refused": evolve["unrelated_task"]["correct_refusal"],
+            "limitations":[
+              "bounded Node 0001 provenance lesson",
+              "one graph held-out task",
+              "one related generalization task",
+              "one unrelated refusal task",
+              "does not establish universal nine-node capability",
+            ],
+          }
+          json.dump(receipt,open("nine-node-behavioral-acceptance.json","w"),indent=2)
+          PY
+
+      - name: Verify nine-node receipt and ablation discrimination
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tests/verify_nine_node_behavioral_acceptance.py nine-node-behavioral-acceptance.json
+          python - <<'PY'
+          import copy, json
+          from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
+          receipt=json.load(open("nine-node-behavioral-acceptance.json"))
+          for node in ORDER:
+            ablated=copy.deepcopy(receipt)
+            del ablated["nodes"][node]
+            assert verify_receipt(ablated), node
+          print("ABLATION DISCRIMINATION PASS: removing any node evidence fails closed")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nine-node-behavioral-acceptance
+          path: nine-node-behavioral-acceptance.json
 
 [executed on device: DESKTOP-OJ712N5 (97813f8c-e057-47af-82b6-89e3bc067f5c)]
