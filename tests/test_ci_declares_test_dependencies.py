@@ -63,6 +63,13 @@ def _first_party_modules() -> set:
     names = {"tests"}
     # Test helper modules are first-party too; they must not be mistaken for PyPI distributions.
     names.update(p.stem for p in TESTS.glob("*.py"))
+    # In-repo import roots the suite adds to sys.path (e.g. `sys.path.insert(0, REPO/"tools")`
+    # before `import smart_link`) are first-party as well: those modules resolve from the
+    # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
+    # about project modules and gets ignored — the exact failure mode its docstring warns of.
+    for import_root in (REPO / "tools",):
+        if import_root.is_dir():
+            names.update(p.stem for p in import_root.glob("*.py"))
     for entry in REPO.iterdir():
         if entry.is_dir() and (entry / "__init__.py").exists():
             names.add(entry.name)
