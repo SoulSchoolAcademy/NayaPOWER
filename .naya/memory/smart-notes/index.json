@@ -666,12 +666,47 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "b4780bc2-d2bd-4488-b871-aa33a242e394"
       }
+    },
+    {
+      "smart_note_id": "SN-042",
+      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration",
+      "content_hash": "a006ef61f9ddba32b810bfce1b05f2c4f828c8d34ed55142e58cb31284c6d0a8",
+      "title": "Intelligence Gain & Epistemic Calibration Law — Measure Capability, Causal Learning, Independence, and Complexity",
+      "captured_at": "2026-10-04",
+      "category": "GOVERNANCE",
+      "topic": "EPISTEMIC-INTEGRITY",
+      "subtopic": "INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-042/IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-042/IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "717cb9d9-01da-43d8-b5ed-dd013682793f",
+        "lineage_id": "ed8bd2b5-eb2f-41d9-947f-b3234255c847",
+        "relationship_id": "d0051ef6-21f0-4fe6-ba9c-d110af9679d7",
+        "runtime_index_id": "2ca09440-8f59-441c-8cf3-a971f42c86f6",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "b0015959-3734-4a07-8656-1321d168df3a"
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 42,
+    "next_sequence": 43,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
