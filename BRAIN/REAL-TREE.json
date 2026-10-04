@@ -1,13 +1,13 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-04",
-  "receipt_basis_commit": "14e95d04e9abcf550c339b8b4926b8394b894baf",
-  "inventory_file_count": 182,
+  "receipt_basis_commit": "019f091bb649d1e6bcbc3b736e5555d7936424f0",
+  "inventory_file_count": 184,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
+    "03-KERNEL": 30,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 38,
     "06-PROOF": 10,
@@ -150,8 +150,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "e98bf80a5c9b187b51ab0eef56f928325d62f40c",
-      "size": 9870
+      "blob_sha": "c6a4a0f846ae495d7cf9749d0139823fcae3898c",
+      "size": 10639
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
@@ -167,6 +167,11 @@
       "path": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
       "blob_sha": "a71ae7e732e1da0132ce1cb968160ebc018e1d37",
       "size": 6272
+    },
+    {
+      "path": "BRAIN/03-KERNEL/0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json",
+      "blob_sha": "6b49a12912aa44fbc1283ce00d4147d23c67518d",
+      "size": 13884
     },
     {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
@@ -225,8 +230,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/README.md",
-      "blob_sha": "03dd562d8591519ed48f00468eda13e1ae5e1db3",
-      "size": 1402
+      "blob_sha": "e9d1e66e76da9fa6b16bb713bdf25c468b2baf30",
+      "size": 1597
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json",
@@ -272,6 +277,11 @@
       "path": "BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json",
       "blob_sha": "9a5908c493f1b6528abbca14c5007110f80075c0",
       "size": 1494
+    },
+    {
+      "path": "BRAIN/03-KERNEL/SCHEMA/SYSTEM-CHARTER-MACHINE-CONTRACT-V1.schema.json",
+      "blob_sha": "c6d71b52b083f5e718a6597663d03e2c82653a69",
+      "size": 1806
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json",

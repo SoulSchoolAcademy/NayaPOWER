@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-04  
-**Receipt basis commit:** `14e95d04e9abcf550c339b8b4926b8394b894baf`  
-**Inventory file count:** 182  
+**Receipt basis commit:** `019f091bb649d1e6bcbc3b736e5555d7936424f0`  
+**Inventory file count:** 184  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -13,7 +13,7 @@
 | 00-SPEC | 15 |
 | 01-GOVERNANCE | 3 |
 | 02-ARCHITECTURE | 5 |
-| 03-KERNEL | 28 |
+| 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 24 |
 | 05-MEMORY | 38 |
 | 06-PROOF | 10 |
@@ -62,10 +62,11 @@
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
 - `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
-- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `e98bf80a5c9b` (9870 bytes)
+- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `c6a4a0f846ae` (10639 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `bb9868d5aea0` (25514 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
 - `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md` — `a71ae7e732e1` (6272 bytes)
+- `BRAIN/03-KERNEL/0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json` — `6b49a12912aa` (13884 bytes)
 - `BRAIN/03-KERNEL/MANIFEST.json` — `305124036fff` (1394 bytes)
 - `BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md` — `8b067739b60b` (2507 bytes)
 - `BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md` — `b84356eb6101` (2383 bytes)
@@ -77,7 +78,7 @@
 - `BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md` — `cdb415628f7d` (2194 bytes)
 - `BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md` — `850ed8a6615b` (2630 bytes)
 - `BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md` — `207b37d63e36` (1846 bytes)
-- `BRAIN/03-KERNEL/README.md` — `03dd562d8591` (1402 bytes)
+- `BRAIN/03-KERNEL/README.md` — `e9d1e66e76da` (1597 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json` — `842a394d4ad9` (1143 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/CONNECT-NODE-SCHEMA.json` — `fa4a9ea066fe` (1001 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/EVOLVE-NODE-SCHEMA.json` — `687e904b9edf` (1380 bytes)
@@ -87,6 +88,7 @@
 - `BRAIN/03-KERNEL/SCHEMA/LEARN-NODE-SCHEMA.json` — `865d254f5be9` (1004 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/PROVE-NODE-SCHEMA.json` — `4c89d444684e` (1148 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/SELF-NODE-SCHEMA.json` — `9a5908c493f1` (1494 bytes)
+- `BRAIN/03-KERNEL/SCHEMA/SYSTEM-CHARTER-MACHINE-CONTRACT-V1.schema.json` — `c6d71b52b083` (1806 bytes)
 - `BRAIN/03-KERNEL/SCHEMA/VERIFY-NODE-SCHEMA.json` — `c274f66b9483` (1125 bytes)
 ### 04-INTELLIGENCE — Intelligence
 

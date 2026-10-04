@@ -126,7 +126,7 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
+    "03-KERNEL": 30,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 2,  # fixed baseline excluding governed INTELLIGENCE-REPORTS + SMART-NOTES subtrees
     # Current fixed files are 0001-MEMORY-CONTINUITY-CONTRACT-V1.md + README.md.
