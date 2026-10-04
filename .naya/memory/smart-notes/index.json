@@ -178,6 +178,247 @@
       }
     },
     {
+      "smart_note_id": "SN-005",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn005-internal-morality",
+      "title": "Internal Morality — A Subset of Data Grows Into a Moral AI",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "INTERNAL_MORALITY",
+      "subtopic": "EARNED_CONSCIENCE",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTERNAL-MORALITY/EARNED-CONSCIENCE/SN-005/IB-SMART-NOTE-20260930-sn005-internal-morality.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTERNAL-MORALITY/EARNED-CONSCIENCE/SN-005/IB-SMART-NOTE-20260930-sn005-internal-morality.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "internal morality",
+        "earned conscience",
+        "moral ai",
+        "data",
+        "principles",
+        "shawn vibert"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-006",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn006-earned-intelligence",
+      "title": "Earned Intelligence — Capability That Compounds From Verified Experience",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "EARNED_INTELLIGENCE",
+      "subtopic": "VERIFIED_EXPERIENCE",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-006/IB-SMART-NOTE-20260930-sn006-earned-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-006/IB-SMART-NOTE-20260930-sn006-earned-intelligence.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "earned intelligence",
+        "verified experience",
+        "compounding",
+        "capability",
+        "principles"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-007",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn007-continuity-of-intelligence",
+      "title": "Continuity of Intelligence — The Deeper Category",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "INTELLIGENCE_CONTINUITY",
+      "subtopic": "GOVERNED_CONTINUITY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTELLIGENCE-CONTINUITY/GOVERNED-CONTINUITY/SN-007/IB-SMART-NOTE-20260930-sn007-continuity-of-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTELLIGENCE-CONTINUITY/GOVERNED-CONTINUITY/SN-007/IB-SMART-NOTE-20260930-sn007-continuity-of-intelligence.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "continuity",
+        "intelligence continuity",
+        "governed continuity",
+        "runtimes",
+        "mission"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-008",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure",
+      "title": "Human Reconstruction Is an Architectural Failure",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "HUMAN_ARCHITECTURE",
+      "subtopic": "NO_RECONSTRUCTION",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/NO-RECONSTRUCTION/SN-008/IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/NO-RECONSTRUCTION/SN-008/IB-SMART-NOTE-20260930-sn008-human-reconstruction-failure.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "human reconstruction",
+        "architecture",
+        "context",
+        "direct intelligence",
+        "constraint"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-009",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn009-correct-forgetting",
+      "title": "Correct Forgetting — History Must Not Masquerade as Current Truth",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "MEMORY_DISCIPLINE",
+      "subtopic": "CORRECT_FORGETTING",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/MEMORY-DISCIPLINE/CORRECT-FORGETTING/SN-009/IB-SMART-NOTE-20260930-sn009-correct-forgetting.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "forgetting",
+        "memory discipline",
+        "supersession",
+        "freshness",
+        "history",
+        "current truth"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-010",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity",
+      "title": "Internal Rigor / External Simplicity",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_DESIGN",
+      "subtopic": "RIGOR_SIMPLICITY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/RIGOR-SIMPLICITY/SN-010/IB-SMART-NOTE-20260930-sn010-internal-rigor-external-simplicity.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "rigor",
+        "simplicity",
+        "system design",
+        "human experience",
+        "internal machinery"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
+      "smart_note_id": "SN-011",
+      "intelligent_block_id": "IB-SMART-NOTE-20260930-sn011-intelligence-classes",
+      "title": "Intelligence Classes & Capture Classification — Proposed Protocol Refinement",
+      "captured_at": "2026-09-30",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SMART_NOTE_REFINEMENT",
+      "subtopic": "CLASSIFICATION_TAXONOMY",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "intelligence classes",
+        "classification",
+        "taxonomy",
+        "capture type",
+        "protocol",
+        "proposal"
+      ],
+      "provenance": {
+        "capture_status": "PROJECTION_ONLY_NO_RUNTIME_CAPTURE",
+        "note": "09/30 batch: human projection exists without a persisted runtime capture record. Provenance UUIDs absent on disk at 2026-10-04 backfill. See audit H6."
+      },
+      "backfill": {
+        "backfilled_at": "2026-10-04",
+        "backfilled_by": "Naya 4 integrity fix",
+        "source": "on-disk projection header fields",
+        "content_hash": "NOT_COMPUTED_PENDING_HASH_SEMANTICS_DECISION"
+      },
+      "timestamp_role": "PROVENANCE_ONLY"
+    },
+    {
       "smart_note_id": "SN-013",
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn013-decision-efficiency",
       "content_hash": "2a534acea3882a352ba27a3d46d42253d37d7aeb93cebe806a1bb60aee450037",
