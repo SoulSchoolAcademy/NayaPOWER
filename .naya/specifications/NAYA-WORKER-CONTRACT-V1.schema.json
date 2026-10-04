@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://naya.network/specifications/NAYA-WORKER-CONTRACT-V1.schema.json",
+  "title": "Naya Worker Contract V1",
+  "description": "Machine-readable delegation packet for the Naya Universal Worker Protocol. Conformance does not grant authority or prove execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "task_id",
+    "mission",
+    "current_state",
+    "authority_boundary",
+    "execution_contract",
+    "verification_contract",
+    "failure_protocol",
+    "quality_gate",
+    "handoff",
+    "learning"
+  ],
+  "properties": {
+    "version": { "const": "1.0" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "worker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string" }
+      }
+    },
+    "mission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objective", "why_it_matters", "success"],
+      "properties": {
+        "objective": { "type": "string", "minLength": 1 },
+        "why_it_matters": { "type": "string", "minLength": 1 },
+        "success": { "type": "string", "minLength": 1 }
+      }
+    },
+    "current_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_sources", "truth_state"],
+      "properties": {
+        "canonical_sources": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "source_version": { "type": ["string", "null"] },
+        "truth_state": {
+          "enum": ["VERIFIED", "IMPLEMENTED_NOT_VERIFIED", "UNKNOWN", "BLOCKED", "CONFLICTED", "STALE", "FAILED", "DEFERRED", "INCONCLUSIVE", "PRODUCTION_PROVEN"]
+        },
+        "dependencies": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_source", "may", "must_not", "escalate_when"],
+      "properties": {
+        "authority_source": { "type": "string", "minLength": 1 },
+        "may": { "type": "array", "items": { "type": "string" } },
+        "must_not": { "type": "array", "items": { "type": "string" } },
+        "escalate_when": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "execution_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "canonical_seam", "constraints", "non_goals"],
+      "properties": {
+        "scope": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "canonical_seam": { "type": "string", "minLength": 1 },
+        "constraints": { "type": "array", "items": { "type": "string" } },
+        "non_goals": { "type": "array", "items": { "type": "string" } },
+        "expected_actions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "verification_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tests", "evidence_required", "independence_required"],
+      "properties": {
+        "tests": { "type": "array", "items": { "type": "string" } },
+        "evidence_required": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "independence_required": { "type": "boolean" },
+        "production_proof_required": { "type": "boolean", "default": false },
+        "reproduction_criteria": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "failure_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_states", "stop_conditions"],
+      "properties": {
+        "allowed_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": ["VERIFIED", "IMPLEMENTED_NOT_VERIFIED", "UNKNOWN", "BLOCKED", "CONFLICTED", "STALE", "FAILED", "DEFERRED", "INCONCLUSIVE", "PRODUCTION_PROVEN"]
+          }
+        },
+        "stop_conditions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "quality_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimensions", "aaa_threshold", "target"],
+      "properties": {
+        "dimensions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "aaa_threshold": { "type": "number", "const": 9.5 },
+        "target": { "type": "number", "const": 10 },
+        "score": { "type": ["number", "null"], "minimum": 0, "maximum": 10 }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_fields"],
+      "properties": {
+        "required_fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "next_action": { "type": ["string", "null"] }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capture_reusable_lessons", "promotion_requires_evidence"],
+      "properties": {
+        "capture_reusable_lessons": { "type": "boolean", "const": true },
+        "promotion_requires_evidence": { "type": "boolean", "const": true },
+        "regression_protection_when_testable": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}
