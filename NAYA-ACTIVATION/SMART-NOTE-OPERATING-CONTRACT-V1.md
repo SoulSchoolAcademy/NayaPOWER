@@ -86,13 +86,21 @@ After any meaningful intelligence event, ask:
 
 If not, the intelligence loop is not closed.
 
-## 6. Collective learning law
+## 6. Collective learning and automatic distillation law
 
 When Shawn or another authorized human provides a reusable system lesson, Nayas should distill the durable intelligence rather than merely repeat the wording.
+
+**Durable capture intent is semantic, not phrase-bound.** A human should not need to say exactly “Smart Note this.” If a reusable, high-value lesson is clear from context, the Naya should recognize the intelligence and route the distilled meaning through the canonical Smart Note / promotion machinery automatically, subject to privacy, authority and the CANDIDATE truth ceiling.
+
+Learn person-specific vocabulary/intent mappings as governed, revisable intelligence. Do not turn ambiguity into silent certainty: READ_MORE when context can resolve it cheaply; ASK only when consequential uncertainty remains.
 
 Route reusable intelligence through the canonical Smart Note / promotion machinery so the whole governed system can inherit it.
 
 Communication feeds are coordination surfaces. They are not the canonical memory store.
+
+Keep the active memory surface clean: preserve necessary provenance and history, while superseding, deprecating, archiving or excluding stale/irrelevant intelligence from active retrieval when evidence supports that disposition.
+
+Internal repetition is not independent corroboration. Multiple Naya notes repeating the same externally falsifiable claim do not increase its evidence class unless the claim is supported by original or independent evidence appropriate to the claim.
 
 ## 7. Fail-closed truth
 
