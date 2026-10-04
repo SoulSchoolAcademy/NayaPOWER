@@ -168,3 +168,44 @@ Not another architecture document. Not another Smart Note format. Not another br
 **Make the existing canonical learning pipeline run end-to-end and prove that a cold successor uses retained intelligence to produce a better independently verified outcome.**
 
 That is where the repository stops describing an intelligent system and demonstrates one.
+
+
+## AAA full-send update — 2026-10-04
+
+### Ratification correction
+System Charter V1 is now Human-Director ratified at immutable source head
+`ea9bd18c6abe8778f04c5775f5ff539dbd4abd79`, with
+`CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md` as the ratification receipt.
+
+The proof ladder remains:
+`RATIFIED ≠ MERGED ≠ RUNTIME_ACTIVE ≠ BEHAVIORALLY_PROVEN ≠ PRODUCTION_PROVEN`.
+
+### Current readiness
+The refreshed canonical AAA scorecard measures the whole organism at approximately **8.0/10**.
+This is not a permission average. Critical-cap dimensions below 9.5 prevent an AAA claim.
+
+### Critical caps
+1. exact-current nine-node production parity;
+2. human-value / attention measurement;
+3. self-optimization and self-building;
+4. NayaNET two-owner collective intelligence;
+5. Hub one-shell/11-room production journey proof;
+6. live Smart Door coverage;
+7. operational convergence / candidate-lane reduction.
+
+### Current convergence law
+Do not add another architecture layer.
+
+`SCORE → CLASSIFY → FIX CANONICAL SEAM → VERIFY → RE-SCORE → ABSORB PROVEN WORK → SUPERSEDE/CLOSE DUPLICATES → COLD-RETRIEVE → CONTINUE`
+
+### Current convergence payload
+- ratified Charter human/AI/machine projections + receipt;
+- ratification-bound nine-node machine compiler;
+- canonical Smart Note authoring/projection path;
+- AI Smart Note view + self-identifying proof;
+- wrong-path CI refusal;
+- fail-closed duplicate human Smart Note identity;
+- historical Smart Note path demotion;
+- refreshed AAA scorecard.
+
+The next proof is the combined repository gate. If source/tests pass, canonicalization is the next Human Director merge boundary; production deployment remains a separate explicit governed gate.
