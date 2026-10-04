@@ -2,7 +2,7 @@
 
 **Status:** RATIFIED — Human Director ratification recorded 2026-10-04. See `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`. Companion to `MANIFESTO.md` (human) and
 `MANIFESTO.machine.json` (machine). Same truth, three tongues. In case of divergence, the machine JSON
-is canonical for code; this file is canonical for seat reasoning. Never quote as ratified law until ratified.
+is canonical for code; this file is canonical for seat reasoning. Ratification is recorded in `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
 
 ## 1. Identity strings (verbatim, immutable)
 
@@ -49,7 +49,7 @@ If any is unanswerable, it is not yet intelligence.
 
 ## 4. Citation rules
 
-- Cite the charter as PROPOSED/CANDIDATE until the Human Director ratifies. Never as authority before that.
+- Cite the Charter as RATIFIED System Charter V1 and preserve its ratification receipt/proof boundary. Future amendments require the constitutional change process.
 - The ratified Constitution Act V1 outranks this charter where they differ, until the Director rules.
 - Quote MOTTO and MANIFESTO_STATEMENT verbatim. Do not paraphrase the line.
 - Canonical paths: `MANIFESTO.md`, `MANIFESTO.ai.md` (this file), `MANIFESTO.machine.json`,
