@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-02",
-  "receipt_basis_commit": "5eaec742fa908163e288ac42615b9731a80fc5bf",
-  "inventory_file_count": 172,
+  "generated_at": "2026-10-04",
+  "receipt_basis_commit": "64e665d6befd57a33dedd27252af36cd1082f3e8",
+  "inventory_file_count": 179,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 29,
+    "05-MEMORY": 36,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -404,9 +404,44 @@
       "size": 1937
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
+      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
+      "size": 4371
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
+      "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
+      "size": 6363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
+      "blob_sha": "cb3d277c8117de4d5f465059f63640604bc27b92",
+      "size": 2359
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md",
+      "blob_sha": "9a102af8700083f0cd1dfe900c65407885b08d12",
+      "size": 2091
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md",
+      "blob_sha": "ef4f22f9e3c1f619be2011b5a7b13ed5b5e96031",
+      "size": 2239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/30/IB-DIR-NAYAPOWER-20260930-001.md",
+      "blob_sha": "c45c324130fb21c3f05d9b43eb489ec5b58db657",
+      "size": 2001
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md",
       "blob_sha": "22b0d0d71bcf6de6621db212e3352e96477c3df4",
       "size": 16019
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/02/IB-DIR-NAYAPOWER-20261002-001.md",
+      "blob_sha": "6514a763ac078fcc442cb246945c88e09d8b7455",
+      "size": 2477
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
