@@ -1,0 +1,44 @@
+name: Smart Note conformance gate
+
+on:
+  pull_request:
+    paths:
+      - ".naya/capture/**"
+      - "BRAIN/05-MEMORY/SMART-NOTES/**"
+      - "tools/smart_note_v2.py"
+      - "tests/test_smart_note_v2.py"
+      - ".naya/capture/README.md"
+      - "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md"
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependency
+        run: python -m pip install pytest
+
+      - name: Collect changed files
+        id: changed
+        shell: bash
+        run: |
+          git diff --name-only "${{ github.event.pull_request.base.sha }}"...HEAD
+
+      - name: Enforce canonical Smart Note path and capture law
+        shell: bash
+        run: |
+          mapfile -t files < <(git diff --name-only "${{ github.event.pull_request.base.sha }}"...HEAD)
+          python3 tools/smart_note_v2.py validate "${files[@]}"
+
+      - name: Run Smart Note regression suite
+        run: python3 -m pytest -q tests/test_smart_note_v2.py

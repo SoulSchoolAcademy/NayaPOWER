@@ -337,3 +337,64 @@ This scorecard is the measurement companion to the ratified System North Star an
 It remains a readiness instrument, not a claim that every architectural mechanism is complete. The ratified model defines the target system; live evidence determines which parts are implemented, verified, production-proven, learned, compounded, or still unknown.
 
 The decisive question is not how much has been built. It is whether the next human moment is measurably better because governed intelligence was remembered, connected, retrieved, applied, verified, learned from, and carried forward.
+
+
+---
+
+## 11. Current evidence re-score — 2026-10-04
+
+**Audit basis before this convergence lane:** `main@c60b9e888ba08b632689171b94d2a6838bb7daef`  
+**AAA threshold:** every critical declared-scope dimension ≥ **9.5**, with no critical UNKNOWN/BLOCKED/unproven required boundary.  
+**Scoring rule:** architecture/spec quality does not inherit runtime, outcome, production, learning, or successor proof.
+
+| System area | Current-main score | Why it is not yet 9.5+ | Exact closure proof |
+|---|---:|---|---|
+| Mission / Charter / North Star | 9.2 | System Charter V1 is Human-Director ratified, but exact ratified Charter + receipt are not yet canonical on current main and machine governance is not yet main-active. | Ratified bytes + receipt on main; immutable source binding; sync tests + nine-node machine directives green. |
+| Human authority / governance | 9.3 | Strong law and fail-closed boundaries exist, but deterministic enforcement is not universal across every consequential door/runtime. | Rule→enforcement→test→runtime→receipt traceability for every critical authority rule. |
+| Contract architecture | 9.2 | Strong contracts and source precedence; candidate/legacy overlap still creates navigation and authority drag. | One authoritative current path per concept; superseded candidates classified/closed; cold entrant reaches the same contracts unaided. |
+| Contract → machine law compiler | 7.8 | Verified compiler exists on a candidate lane, not current main; behavioral influence from compiled Charter directives is not proven. | Active ratification-bound compiler on main + adversarial tests + held-out decision behavior changed correctly. |
+| Nine-node semantic architecture | 9.6 | Human-Director semantic lock is strong and complete. | Maintain no-regression; exact nine node identities/ownership remain stable. |
+| Nine-node runtime organism | 8.1 | Runtime registry explicitly reports partial current-main parity; KNOW/CONNECT/VERIFY/LEARN/EVOLVE have mixed/stale production bindings. | Exact-current source→deployment parity for all nine + bounded end-to-end receipt chain + independent reread. |
+| Brain / current truth / navigation | 8.2 | Brain index is behind live main and still carries stale frontier SHAs/actions; historical/current separation is improving but incomplete. | Generated index/real-tree match current main; current frontier dynamically correct; cold navigation exam passes. |
+| Smart Note / Smart Link system | 7.9 | Live authoring README still advertises the retired human projection path; identity collisions and projection duplication have occurred. | One authoring door/path/renderer; wrong paths fail CI; duplicate human IDs fail closed; fresh ACTIVE Smart Link + receipt + cold reuse proof. |
+| Graph / relationship intelligence | 8.1 | Graph V2 source is integrated, but live KNOW selector is stale to current source and broad applicability-driven reasoning is not production-proven. | Exact-current KNOW/CONNECT parity + applicable-vs-unrelated held-out behavior + contradiction/supersession evidence. |
+| PROVE / epistemic integrity | 8.9 | Strong bounded evidence discipline; full-chain latest-main proof remains separate and some runtime proof is historical. | Exact-current independent recomputation across representative claims, conflicts, negative controls and persisted receipts. |
+| VERIFY / causal outcome proof | 8.7 | Bounded causal verification works; learning verifier parity is mixed and outcome verification is not universal across actions. | Exact-current independent outcome/CVO proof across authorized action classes with failure/inconclusive batteries. |
+| LEARN / future behavior | 8.6 | A bounded four-rung Smart Note learning chain has passed, but exact-current generalized learning and production parity remain incomplete. | Fresh candidate→verified learning→related held-out improvement→unrelated refusal→independent verification on current source. |
+| Compounding / cold successor | 8.4 | Bounded successor/generalization proof exists; generic A→B→C multi-generation continuity is not production-proven. | Two successive cold successors reuse verified learning without inheriting authority, with no regression or negative transfer. |
+| Privacy / owner isolation / consent | 9.2 | Strong private-by-default model and bounded owner isolation; two-owner NayaNET is not production-proven at current main. | Fresh two-owner positive/negative isolation, consent, revocation and no-leak proof on exact deployment. |
+| Smart Doors / interfaces | 6.8 | 7 of 9 registered doors are contract-only; only AI/Data are live bounded. | Each declared live door has real identity, authority, operation, receipt and verification path; contract-only doors stay honestly labeled. |
+| Hub / human experience | 7.8 | One-shell/eleven-room target is strong, but room registry explicitly says specification ≠ runtime proof; production journey proof remains incomplete. | Desktop/mobile one-shell 11-room navigation + deep-link/back-forward/active-state + real causal controls + independent visual/behavioral verification. |
+| Human value / attention measurement | 6.4 | Objective is ratified; instrumentation for time, effort, error, re-explanation, cognitive load and useful outcome remains immature. | Before/after human-value metrics tied to actions/outcomes and fed into shared Value Calculus without creating authority. |
+| Self-observation / telemetry | 8.3 | Receipts and readiness reports exist but whole-organism state is not yet one fresh, self-updating operational view. | Current-main runtime/door/node/learning/value telemetry reconciled automatically with stale-state alarms. |
+| Self-optimization | 5.9 | Value calculus and improvement doctrine exist; safe closed-loop optimization from measured human value is not proven. | Measure→propose→gate→test→verify→adopt/rollback loop on a bounded real improvement. |
+| Self-building | 5.5 | EVOLVE/self-building contracts and bounded components exist, but recursive production change is not proven. | Authorized bounded code/config improvement executed, tested, independently verified, adopted, rollback-proven and successor-retained. |
+| NayaNET / collective intelligence | 5.7 | Architecture exists; two-owner/network-scale governed sharing and collective reuse are not production-proven. | Two distinct owners/Nayas share permitted distilled intelligence, preserve privacy/authority, produce verified reuse, refuse forbidden transfer. |
+| Production parity / deployment | 7.5 | Multiple node runtimes are stale/mixed versus current main; Vercel/Cloudflare integration noise obscures signal. | One canonical release authority, exact SHA deployment, source/runtime parity receipts, no competing deployment path, post-deploy smoke/proof. |
+| Operational convergence / team continuity | 6.3 | Dozens of overlapping open PRs and historical P0 issues create cognitive ballast and collision risk. | Consolidated canonical lanes, duplicate/stale PR closure, owner/next-action clarity, cold successor can identify one priority without archaeology. |
+
+### 2026-10-04 verdict
+
+**Current whole-organism readiness: ~8.0/10.**  
+This is a directional summary, not an arithmetic permission to call the system AAA.
+
+**AAA STATUS: NOT YET.**
+
+The critical-cap rule is active because several required system boundaries are below 9.5:
+- exact-current nine-node production parity;
+- human-value measurement;
+- self-optimization/self-building;
+- NayaNET collective proof;
+- Hub production journey proof;
+- door/interface live coverage;
+- operational convergence.
+
+### The shortest path to AAA
+
+`CONVERGE CURRENT TRUTH → CANONICALIZE RATIFIED CHARTER → ENFORCE SMART NOTE ID/PATH → DEPLOY EXACT CURRENT NINE-NODE SOURCE → PROVE LEARNING/SUCCESSOR → MEASURE HUMAN VALUE → PROVE HUB/DOORS/NETWORK → RUN BOUNDED SELF-IMPROVEMENT → COLD SUCCESSOR REUSES IT`
+
+### Scorecard law
+
+Do not raise a score because a document became clearer. Raise it only when the evidence class required by that row is satisfied.
+
+**The target remains every critical area ≥ 9.5. The method is not optimism; it is repeated measurement, smallest-effective repair, verification, and convergence.**

@@ -48,14 +48,14 @@ Any document containing a dated SHA or dated proof statement is a snapshot unles
 
 ## Current alignment items
 
-- README distillation philosophy is prepared in PR **#1373**; merge remains a Human Director gate.
-- AI projection repair is prepared in PR **#1370**; merge remains a Human Director gate.
-- Smart Note protocol candidate is PR **#1368**.
-- Smart Note enforcement candidate is PR **#1369**; workflow-file installation remains permission-gated.
-- SN-027 remains an open candidate in PR **#1359**.
-- SN-032 is present on current `main` as candidate distilled Naya 1 operating doctrine.
-- Full Smart Note behavioral learning remains unproven.
-- Brain index currently contains a duplicate SN-018 projection entry; cleanup requires synchronized index regeneration.
+- **System Charter V1 is Human-Director RATIFIED.** Immutable ratified head: `ea9bd18c6abe8778f04c5775f5ff539dbd4abd79`; receipt: `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
+- Ratification does not itself prove merge/runtime/behavior/production. The current AAA convergence lane binds the immutable receipt to the existing nine-node machine compiler and keeps those proof states separate.
+- The Smart Note canonical seam is being converged onto current main: one authored capture `.naya/capture/*.json`, one renderer `tools/smart_note_v2.py`, generated Brain projection under `BRAIN/05-MEMORY/SMART-NOTES/...`, machine registry under `.naya/memory/smart-notes/index.json`.
+- Invented `.naya/preview/` paths and Smart Note projections outside the canonical Brain tree are rejected by the convergence gate.
+- Duplicate human Smart Note identity claims are being changed from social coordination to fail-closed machine enforcement.
+- Whole-organism AAA re-score is approximately **8.0/10**. Critical caps remain exact-current production parity, measurable human value, self-optimization/self-building, collective NayaNET proof, Hub production journey proof, live door coverage, and operational convergence.
+- Full behavioral learning has bounded green evidence, but exact-current fresh Smart Note → successor reuse → independently verified outcome must be rerun after convergence.
+- Open candidate/legacy PR proliferation is now itself a P0 convergence defect. Proven mechanisms are to be absorbed into canonical seams; duplicates/superseded lanes must be classified and closed rather than accumulated.
 
 ## Truth rule
 
@@ -69,4 +69,4 @@ Any document containing a dated SHA or dated proof statement is a snapshot unles
 
 ## One next executable action
 
-**Run the existing canonical Smart Note pipeline against one current conformant candidate, collect the receipt and generated Smart Link, then run the cold-successor comprehension/application/independent-outcome exam. If it fails, repair the exact broken seam and rerun; do not add a new subsystem merely to bypass the seam.**
+**Finish the current-main AAA convergence gate: Charter receipt binding + Smart Note fail-closed path/identity enforcement + Brain/index reconciliation + full Kernel/Chain/Smart-Note CI. If green, present the exact canonical merge gate; after canonicalization, run the fresh nine-node/Smart-Note behavioral proof rather than creating another architecture lane.**

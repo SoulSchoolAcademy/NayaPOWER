@@ -168,5 +168,16 @@
   "next_node_after_connect": "VERIFY",
   "next_node_after_verify": "LEARN",
   "next_node_after_learn": "EVOLVE",
-  "next_node_after_evolve": "SELF"
+  "next_node_after_evolve": "SELF",
+  "system_charter_machine_projection": {
+    "status": "RATIFIED_ACTIVE",
+    "contract": "BRAIN/03-KERNEL/0006-SYSTEM-CHARTER-MACHINE-CONTRACT-V1.json",
+    "compiler": "kernel/system_charter.py",
+    "kernel_binding": "kernel/nayapower_kernel.py",
+    "ratification_receipt": "CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md",
+    "ratified_source_head": "ea9bd18c6abe8778f04c5775f5ff539dbd4abd79",
+    "authority_rule": "Charter directives govern only within existing node authority boundaries; the Charter never creates authority or bypasses LAW.",
+    "architecture_rule": "One projection over the existing nine nodes and shared Value Calculus; no tenth node or second authority/decision system.",
+    "proof_boundary": "Ratification + immutable source binding + repository tests prove active machine governance semantics. Behavioral influence, outcome improvement, production parity and successor reuse require separate evidence."
+  }
 }

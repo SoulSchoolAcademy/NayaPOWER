@@ -90,3 +90,19 @@ def test_learning_requires_verified_outcome():
     result = kernel.decide(blocked)
 
     assert result.learning_candidate is None
+
+
+def test_kernel_loads_ratified_machine_charter_as_governing():
+    kernel = Kernel()
+    assert kernel.system_charter_status == "RATIFIED_ACTIVE"
+    assert kernel.system_charter_governing is True
+    directive = kernel.system_charter_directive(Node.SELF)
+    assert directive["node"] == "SELF"
+    assert directive["governing"] is True
+
+
+def test_kernel_can_compile_every_existing_node_without_creating_a_tenth():
+    kernel = Kernel()
+    directives = [kernel.system_charter_directive(node) for node in Node]
+    assert len(directives) == 9
+    assert {d["node"] for d in directives} == {node.value for node in Node}
