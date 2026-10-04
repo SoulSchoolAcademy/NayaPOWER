@@ -318,6 +318,6 @@
       "99-ARCHIVE": 1,
       "ROOT": 5
     },
-    "note": "Counts are machine-verified against the Git tree. Semantic sections are preserved; only mechanical reconciliation fields change."
+    "note": "Counts are machine-verified against the Git tree. Semantic sections (nine_nodes, proof_boundary, operations, ...) are preserved untouched; only generated_at, inventory_file_count, last_reconciled_main and this section are mechanical."
   }
 }
