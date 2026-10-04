@@ -28,7 +28,7 @@ PINNED_BASELINE = {
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
-    "published_entries_missing_projection_path": 4,
+    "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 1,
     "duplicate_published_page_paths": 1,
