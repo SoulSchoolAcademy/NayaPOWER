@@ -44,5 +44,3 @@ Memory stores and retrieves intelligence; it does not decide truth or authority 
 - Stored data is not automatically intelligence
 
 | [SN-018](./SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md) | 20261001-hub-is-intelligence-projection |
-
-| [SN-023](./SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AI-UNIFICATION/ONE-BRAIN-MANY-AI-INTERFACES/SN-023/IB-SMART-NOTE-20261004-sn023-ai-unification.md) | 20261004-sn023-ai-unification |
