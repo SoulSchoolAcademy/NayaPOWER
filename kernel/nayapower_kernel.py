@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from kernel.runtime_boot import load_runtime_manifest
+from kernel.system_charter import charter_is_governing, compile_node_directive, load_system_charter
 
 if TYPE_CHECKING:
     from kernel.supabase_intelligent_blocks import IntelligentBlock, SupabaseIntelligentBlockReader
@@ -69,6 +70,7 @@ class Kernel:
         manifest = load_runtime_manifest(brain_root)
         self._manifest = manifest
         self._NODE_ORDER = tuple(Node(node["name"]) for node in manifest["nodes"])
+        self._system_charter = load_system_charter(brain_root)
 
     @property
     def manifest(self) -> dict:
@@ -77,6 +79,27 @@ class Kernel:
     @classmethod
     def node_order(cls):
         return cls._NODE_ORDER
+
+    @property
+    def system_charter_status(self) -> str:
+        return str(self._system_charter["status"])
+
+    @property
+    def system_charter_governing(self) -> bool:
+        return charter_is_governing(self._system_charter)
+
+    def system_charter_directive(self, node: Node, *, require_governing: bool = True) -> dict:
+        """Compile the charter for one existing node.
+
+        Candidate charter content may be inspected with require_governing=False.
+        Consequential runtime use must require a ratified active charter.
+        """
+        return compile_node_directive(
+            self._system_charter,
+            node.value,
+            require_governing=require_governing,
+        )
+
 
     def retrieve_intelligent_block(
         self,
