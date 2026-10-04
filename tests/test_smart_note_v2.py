@@ -345,3 +345,13 @@ def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture
     assert capture["intelligence"]["machine_view"]["instruction_is_proof"] is False
     assert capture["intelligence"]["machine_view"]["human_authority_preserved"] is True
     assert capture["intelligence"]["machine_view"]["automatic_truth_ceiling"] == "CANDIDATE"
+
+def test_projection_workflow_reconciles_brain_index_before_push():
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    projection_commit = workflow.index('git commit -m "chore(smart-note): publish verified projection [smart-note-projection]"')
+    rebase = workflow.index("git pull --rebase origin main", projection_commit)
+    regenerate = workflow.index("python tools/regenerate_brain_index.py", rebase)
+    push = workflow.index("git push origin HEAD:main", regenerate)
+    assert projection_commit < rebase < regenerate < push
+    assert "BRAIN/REAL-TREE.json BRAIN/REAL-TREE.md BRAIN/NAYAPOWER-BRAIN-INDEX.json" in workflow
+
