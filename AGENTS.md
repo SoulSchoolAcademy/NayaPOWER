@@ -144,6 +144,26 @@ Operating rules:
 
 This is an operating law, not a second memory system or decision engine. Extend the existing Smart Note, Value Calculus, graph, retrieval, proof and activation seams.
 
+## EPISTEMIC CALIBRATION / INTELLIGENCE GAIN LAW
+
+**Independent Airtight Exam finding — 2026-10-04.** Canonical Smart Note: **SN-042**.
+
+A larger Brain is not automatically a smarter Brain. NayaPOWER must measure whether retained intelligence creates verified capability gain and whether the system knows the limits of its own knowledge.
+
+Operating rules:
+
+1. **Measure capability delta, not memory volume.** The default intelligence-growth question is: did verified capability improve after retained learning, under a comparable task/environment?
+2. **Preserve epistemic type.** Keep external claim, internal knowledge, derived belief, verified fact, operating assumption, hypothesis, decision, outcome and learning distinct. Never promote between them merely through repetition.
+3. **Causal learning proportional to claim.** For strong learning claims, use a control without the lesson and treatment with the lesson when feasible. Add an adversarial wrong/malicious-memory arm for high-value learning/security tests.
+4. **Independence must be real.** Multiple reviewers using the same model, memory, sources and assumptions are correlated. Record meaningful verifier diversity; do not equate seat count with independent evidence.
+5. **Track epistemic calibration.** Measure confidence vs correctness, false-certainty rate, and whether uncertainty rises before failure. A system that performs better while becoming less aware of its errors is regressing in trustworthiness.
+6. **Regression-protect promoted lessons.** When a durable lesson is operationally testable, attach an expectation/test so later system changes can detect loss of the learned benefit.
+7. **Poisoning is a compounding risk.** Storage, retrieval, repetition or use never make a false lesson authoritative. Falsification must preserve provenance, record correction, and reduce downstream influence.
+8. **Complexity must earn permanence.** A new artifact/subsystem should persist only if it creates a unique capability, unique proof boundary, or required provenance. Otherwise strengthen an existing seam or retire it.
+9. **Priority-One proof harness.** Prefer one exact-current executable intelligence acceptance chain with evidence at every transition over additional descriptive architecture.
+
+These rules refine proof and learning. They do not create a new value engine, truth engine, authority model, ledger or Node.
+
 ## TRUTH / PROOF
 
 Never collapse these states:
