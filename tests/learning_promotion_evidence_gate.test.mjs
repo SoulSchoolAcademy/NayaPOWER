@@ -29,6 +29,7 @@ function makePair() {
     user_id: OWNER_ID,
     project_id: 'NayaNET',
     status: 'SUCCESS',
+    created_at: new Date().toISOString(),
     observed_result: 'REQUIRE_DIRECT_CANONICAL_INTELLIGENCE',
     evidence: {
       condition: 'CONTROL',
@@ -50,6 +51,7 @@ function makePair() {
     user_id: OWNER_ID,
     project_id: 'NayaNET',
     status: 'SUCCESS',
+    created_at: new Date().toISOString(),
     observed_result: 'PRESERVE_PROVENANCE_BEFORE_APPLY',
     evidence: {
       condition: 'TREATMENT',
@@ -294,4 +296,29 @@ test('promotion gate rejects malformed control/treatment roles', async () => {
     control.evidence.condition = 'TREATMENT';
   });
   assert.equal(body.error, 'CAUSAL_EVIDENCE_PAIR_INVALID');
+});
+
+test('promotion gate rejects stale causal receipts before ACTIVE write', async () => {
+  const body = await assertPromotionRejected(([control, treatment]) => {
+    control.created_at = '2020-01-01T00:00:00Z';
+    treatment.created_at = '2020-01-01T00:00:00Z';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_STALE_OR_INVALID_TIME');
+  assert.equal(body.max_evidence_age_days, 90);
+});
+
+test('promotion gate rejects future-dated causal receipts before ACTIVE write', async () => {
+  const body = await assertPromotionRejected(([control, treatment]) => {
+    control.created_at = '2999-01-01T00:00:00Z';
+    treatment.created_at = '2999-01-01T00:00:00Z';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_STALE_OR_INVALID_TIME');
+});
+
+test('promotion gate rejects valid-looking receipts from another learning', async () => {
+  const body = await assertPromotionRejected(([control]) => {
+    control.evidence.learning_id = 'learning-other';
+  });
+  assert.equal(body.error, 'CAUSAL_EVIDENCE_RECOMPUTATION_FAILED');
+  assert.equal(body.recomputed.same_learning, false);
 });

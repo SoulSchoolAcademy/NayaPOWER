@@ -357,6 +357,33 @@ Deno.serve(async (req: Request) => {
 
     const controlEvidence: any = evidenceObject(control);
     const treatmentEvidence: any = evidenceObject(treatment);
+
+    // Align live runtime promotion with the canonical Smart Note promotion
+    // freshness policy: stale proof is not current proof. Both causal receipts
+    // must carry parseable timestamps no more than 90 days old, and future
+    // timestamps fail closed.
+    const maxEvidenceAgeMs = 90 * 24 * 60 * 60 * 1000;
+    const nowMs = Date.now();
+    const receiptTimeMs = (row: any) => Date.parse(String(row?.created_at ?? ""));
+    const controlCreatedAtMs = receiptTimeMs(control);
+    const treatmentCreatedAtMs = receiptTimeMs(treatment);
+    const evidenceFresh =
+      Number.isFinite(controlCreatedAtMs) &&
+      Number.isFinite(treatmentCreatedAtMs) &&
+      controlCreatedAtMs <= nowMs &&
+      treatmentCreatedAtMs <= nowMs &&
+      nowMs - controlCreatedAtMs <= maxEvidenceAgeMs &&
+      nowMs - treatmentCreatedAtMs <= maxEvidenceAgeMs;
+    if (!evidenceFresh) {
+      return json({
+        ok: false,
+        error: "CAUSAL_EVIDENCE_STALE_OR_INVALID_TIME",
+        max_evidence_age_days: 90,
+        control_created_at: control?.created_at ?? null,
+        treatment_created_at: treatment?.created_at ?? null,
+      }, 409);
+    }
+
     const persistedCausal: any = Array.isArray(treatment.evidence)
       ? treatment.evidence.find((item: any) => item?.causal_verification)?.causal_verification
       : treatment.evidence?.causal_verification;
