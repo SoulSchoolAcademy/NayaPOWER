@@ -391,7 +391,7 @@ def test_smart_note_front_doors_name_one_canonical_brain_path():
     agents = (ROOT / "AGENTS.md").read_text()
     root_readme = (ROOT / "README.md").read_text()
     assert "BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD" in capture_readme
-    assert ".naya/memory/smart-notes/YYYY" not in capture_readme
+    assert "do **not** use `.naya/memory/smart-notes/YYYY/...` as the human projection path" in capture_readme
     assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in activation_readme
     assert "SMART-NOTE-OPERATING-CONTRACT-V1.md" in agents
     assert "Smart Note — one path, no guessing" in root_readme
