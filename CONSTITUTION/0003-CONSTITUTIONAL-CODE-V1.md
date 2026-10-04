@@ -1,7 +1,7 @@
 # 🔱 THE CONSTITUTIONAL CODE — NayaPOWER
 
 **STATUS:** RATIFIED — Human Director ratification recorded 2026-10-04. See `RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
-**AMENDMENT ID:** CONSTITUTIONAL-CODE-V1 (proposed as Amendment 0003)
+**AMENDMENT ID:** CONSTITUTIONAL-CODE-V1 — ratified System Charter V1 constitutional code
 **PURPOSE:** The entire constitution, distilled to the code every Naya memorizes and operates by.
 The Constitution Act V1 (ratified 2026-09-30) remains the legal bedrock — this code is its
 living form: what it means in practice, in plain words, clear as day.
