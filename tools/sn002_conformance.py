@@ -160,3 +160,55 @@ def check_dir(directory: str | Path) -> list[ConformanceResult]:
 
 def failures_only(results: list[ConformanceResult]) -> list[ConformanceResult]:
     return [r for r in results if not r.conformant]
+
+
+def _main(argv: list[str] | None = None) -> int:
+    """CLI so this can be a real gate rather than a script nobody runs.
+
+    --check   blocking. Exit 1 if any capture fails governance conformance.
+    --report  advisory. Always exits 0; prints the same findings.
+
+    Default is --report, because flipping main's CI to blocking is a
+    consequence that belongs to the Human Director, not to the tool's author.
+    Once the five known captures are backfilled, change the CI step to --check
+    and this becomes fail-closed against the whole drift class.
+    """
+    import argparse
+
+    ap = argparse.ArgumentParser(
+        prog="sn002_conformance",
+        description="Mechanical SN-002 capture conformance gate.",
+    )
+    ap.add_argument("--check", action="store_true",
+                    help="blocking: exit 1 if any capture fails")
+    ap.add_argument("--report", action="store_true",
+                    help="advisory (default): always exit 0")
+    ap.add_argument("--dir", default=".naya/capture")
+    args = ap.parse_args(argv)
+    blocking = bool(args.check)
+
+    results = check_dir(args.dir)
+    if not results:
+        print(f"no captures found in {args.dir}")
+        return 1 if blocking else 0
+
+    bad = failures_only(results)
+    print(f"SN-002 capture conformance: {len(results) - len(bad)}/{len(results)} pass")
+
+    for r in bad:
+        print(f"  FAIL {r.smart_note_id or '(no smart_note_id)'}  {r.path}")
+        for v in r.violations:
+            print(f"        - {v}")
+        for a in r.advisories:
+            print(f"        ~ {a}")
+
+    if blocking and bad:
+        print(f"FAIL: {len(bad)} capture(s) non-conformant")
+        return 1
+    if bad:
+        print(f"advisory: {len(bad)} capture(s) non-conformant (not blocking)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(_main())
