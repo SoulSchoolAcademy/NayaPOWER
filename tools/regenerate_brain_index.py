@@ -135,7 +135,10 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 5,
+    # 2026-10-04: a9e5a505f added 0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md, the
+    # canonical Naya Voice playback architecture spec. A real governed artifact
+    # landed, so the baseline moves deliberately rather than being forced.
+    "10-INTERFACES": 6,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
