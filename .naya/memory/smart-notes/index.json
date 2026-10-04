@@ -529,54 +529,6 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c"
       }
-    },
-    {
-      "smart_note_id": "SN-024",
-      "intelligent_block_id": "IB-SMART-NOTE-20261004-sn024-smart-note-this-lifecycle",
-      "content_hash": "44a15106ad58011d61c710f4b353bef6975ebd41f61dcc31794bb7994362ecb9",
-      "title": "\"Smart Note This\": The Intelligence Lifecycle and the Learning Event",
-      "captured_at": "2026-10-04",
-      "captured_at_utc": "2026-10-04T15:47:00Z",
-      "timestamp_role": "intelligent_chain_ordering",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "SMART_NOTE_NODE_OPERATING_FLOW",
-      "subtopic": "END_TO_END_PROTOCOL",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-024/IB-SMART-NOTE-20261004-sn024-smart-note-this-lifecycle.md",
-      "projection_status": "GITHUB_BRAIN_CANDIDATE",
-      "smart_link_status": "PENDING_MAIN_MERGE",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-024/IB-SMART-NOTE-20261004-sn024-smart-note-this-lifecycle.md",
-      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
-      "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-024/IB-SMART-NOTE-20261004-sn024-smart-note-this-lifecycle.md",
-      "canonical_block_scope": "COLLECTIVE_INTELLIGENCE_LAW",
-      "keywords": [
-        "smart note",
-        "intelligent block",
-        "intelligent event",
-        "learning event",
-        "one format one spot",
-        "code is law",
-        "nine nodes",
-        "lifecycle",
-        "capture",
-        "projection",
-        "personal intelligence",
-        "collective intelligence",
-        "notification",
-        "baked in locked in"
-      ],
-      "provenance": {
-        "source_type": "human_director_system_law",
-        "capture_path": ".naya/capture/SMART-NOTE-20261004-sn024-smart-note-this-lifecycle.json",
-        "runtime_receiver_receipt": "NOT_YET_PRODUCED_BY_THIS_GITHUB_CAPTURE"
-      },
-      "reconciliation": {
-        "extends": "SN-002",
-        "registry_check": "tree max SN-022; SN-023 claimed by #1350; no SN-024 claim in tree, open PRs, or #554"
-      },
-      "viewer": null,
-      "private_runtime_link": null
     }
   ],
   "sequence_policy": {
