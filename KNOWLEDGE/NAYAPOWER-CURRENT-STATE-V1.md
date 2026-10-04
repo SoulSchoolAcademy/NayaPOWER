@@ -1,6 +1,8 @@
+> ⚠️ **CURRENT-PATH WARNING (2026-10-04):** This file contains historical Smart Note path material. It does not override the canonical operating contract. The current generated human projection path is `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`; authored intake is `.naya/capture/`; `.naya/memory/smart-notes/index.json` is the machine registry. See `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+
 # NAYAPOWER — CURRENT STATE V1
 
-**Status:** CANONICAL CURRENT-STATE RECORD
+**Status:** HISTORICAL CURRENT-STATE SNAPSHOT — superseded for live navigation by the newest `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`
 **As of:** 2026-09-27
 **Authority:** NayaPOWER System North Star Ratification (2026-09-26)
 **Companion:** [NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md](../.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md)
@@ -49,7 +51,7 @@ Every claim below carries one of three maturity labels, per constitutional truth
 
 | Attribute | Value |
 |-----------|-------|
-| Canonical path | `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md` |
+| Historical path in this 2026-09-27 snapshot | `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md` — superseded; current generated projection path is `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md` |
 | Structure | Ratified 15-section human-readable structure |
 | Live registry | IB-000001, IB-000002, IB-001019, IB-001024, IB-001061 (per PART #3); IB-000980 verified via deep-link golden path |
 | Deep-link proof | `canonical-smart-note-deep-link-proof.json` — status VERIFIED, IB-000980, event `245937ce-f466-489d-ba91-4fcfb4c46d89`, transaction `7b5c574b-ec3a-4e0a-a5b0-b56612f5af7e` |
