@@ -4,7 +4,7 @@
 
 *Source: Shawn Vibert direct Human Director instruction, 2026-10-04 ~10:46 PDT: the Smart Link is the mandatory human deliverable (shows where it went, that it is there, what it says — viewable); lessons go in as machine language (JSON) so the system learns; the event must be proven and the learning demonstrated — baked in, locked in, official; the full process runs every time; every new Naya reads this doctrine first as the core of the system.*
 
-> GENERATED PREVIEW — rendered mechanically from the canonical capture JSON by the pipeline renderer. The authoritative human view is generated post-merge; this preview is byte-faithful to the JSON above and will be superseded by the pipeline projection.
+> GENERATED HUMAN VIEW — rendered mechanically from the canonical capture JSON in `.naya/capture/` by the pipeline renderer. This file is never hand-written. Truth state: CANDIDATE — staged at the canonical brain path; the pipeline verifies and canonizes it post-merge.
 
 ## IN A NUTSHELL
 
