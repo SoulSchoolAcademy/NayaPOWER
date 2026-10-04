@@ -1,3 +1,14 @@
+> ## ⛔ COLD NAYA FIRST-READ — SMART NOTE LAW
+>
+> Before authoring durable intelligence, read **[NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md](./NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md)**.
+>
+> **One authored input:** `.naya/capture/*.json` using the canonical Smart Note schema.  
+> **One generated human/AI memory projection:** `BRAIN/05-MEMORY/SMART-NOTES/YYYY/MM/DD/CATEGORY/TOPIC/SUBTOPIC/SN-###/IB-....md`.  
+> **One canonical renderer:** `tools/smart_note_v2.py`.  
+> **Never:** invent `.naya/preview/`, hand-write a Brain projection, or create a second renderer.
+>
+> The authored JSON carries the structured human, AI/Naya, and machine perspectives. The pipeline persists and verifies the Intelligent Block, then generates the readable Brain projection and Smart Link. **Stored ≠ learned.** Learning requires later retrieval, comprehension, appropriate application, observed effect, independent verification, and successor reuse.
+
 # 🧠 NayaPOWER
 
 ## The governed intelligence substrate for NayaNET
@@ -368,6 +379,31 @@ Every capability should answer:
 > **Does this make the next human moment measurably better?**
 
 If it doesn't improve useful understanding, memory, connection, retrieval, action, verification, learning, compounding, or human experience, it should not be on the critical path.
+
+---
+
+# 🔥 The distillation philosophy
+
+> **Distill everything to its essence. Keep only what compounds. Let go of the rest — every day.**
+
+Intelligence is not how much the system can hold. It is how much of what it holds can be **understood, connected, retrieved, applied, verified, and used to make a future moment better**.
+
+Every durable intelligence object should answer, with the least necessary words, visuals, structure, or code:
+
+> **What is it? What does it mean? Why does it matter? What's in it for me? How does it connect?**
+
+An Intelligent Block is compression with meaning: preserve the essence, perspectives, applicability, relationships, provenance, uncertainty, and action value without carrying the full cognitive backpack forever.
+
+The system applies the same discipline to itself:
+
+**DAILY → distill verified learning, surface contradictions/duplicates/stale state, preserve required evidence, release unnecessary drag, and leave one trustworthy next state.**  
+**WEEKLY → synthesize patterns and recurring lessons.**  
+**MONTHLY → reconcile strategy, architecture, proof, and accumulated debt.**  
+**YEARLY → preserve the durable intelligence and retire what no longer earns its weight.**
+
+Release does **not** mean deleting proof, authority history, provenance, or unresolved contradictions. Those remain available until safely superseded, archived, or otherwise governed.
+
+**Maximum verified human value and valuable intelligence per action, per moment — at minimum necessary complexity.**
 
 ---
 
