@@ -156,6 +156,9 @@ def render(capture, verify, private_root=None):
         p = projection_path(capture, ib)
     p.parent.mkdir(parents=True, exist_ok=True)
     proof = {
+        "smart_note_id": allocate_smart_note_id(capture, ib),
+        "intelligent_block_id": ib,
+        "content_hash": _canonical_content_hash(block["content"]["lesson"]),
         "event_id": verify["persisted"]["event"]["id"],
         "lineage_id": verify["persisted"]["lineage"]["id"],
         "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
