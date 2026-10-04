@@ -409,3 +409,71 @@ def test_rendered_proof_is_self_identifying(tmp_path):
     assert '"intelligent_block_id": "IB-SELF-ID-TEST"' in rendered
     assert f'"content_hash": "{expected_hash}"' in rendered
     assert '"smart_note_id": "' in rendered
+
+
+def test_registry_refuses_same_smart_note_id_for_different_block(tmp_path, monkeypatch):
+    registry_path = tmp_path / "index.json"
+    registry_path.write_text(json.dumps({
+        "schema": "naya.smart-note-projection-index.v1",
+        "version": "1.0",
+        "source_of_truth": "runtime_intelligent_block",
+        "entries": [{
+            "smart_note_id": "SN-777",
+            "intelligent_block_id": "IB-FIRST-CLAIM",
+            "content_hash": "existing",
+            "projection_path": "BRAIN/existing.md",
+        }],
+        "sequence_policy": {"human_id_format": "SN-###", "next_sequence": 778},
+    }), encoding="utf-8")
+
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
+
+    capture = _private_sn004_capture()
+    capture["smart_note_id"] = "SN-777"
+    verify = _verify_for_lesson({"essence": "second claimant"}, "IB-SECOND-CLAIM")
+    projection = tmp_path / "BRAIN" / "second.md"
+
+    before = registry_path.read_text(encoding="utf-8")
+    try:
+        mod.update_registry(capture, verify, projection)
+    except SystemExit as exc:
+        message = str(exc)
+        assert message.startswith("SMART_NOTE_IDENTITY_CONFLICT:SN-777")
+        assert "FIRST=IB-FIRST-CLAIM" in message
+        assert "REJECTED=IB-SECOND-CLAIM" in message
+    else:
+        raise AssertionError("expected duplicate Smart Note identity to fail closed")
+
+    assert registry_path.read_text(encoding="utf-8") == before
+
+
+def test_registry_allows_same_smart_note_id_when_updating_same_block(tmp_path, monkeypatch):
+    registry_path = tmp_path / "index.json"
+    registry_path.write_text(json.dumps({
+        "schema": "naya.smart-note-projection-index.v1",
+        "version": "1.0",
+        "source_of_truth": "runtime_intelligent_block",
+        "entries": [{
+            "smart_note_id": "SN-778",
+            "intelligent_block_id": "IB-SAME-BLOCK",
+            "content_hash": "old",
+            "projection_path": "BRAIN/old.md",
+        }],
+        "sequence_policy": {"human_id_format": "SN-###", "next_sequence": 779},
+    }), encoding="utf-8")
+
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
+
+    capture = _private_sn004_capture()
+    capture["smart_note_id"] = "SN-778"
+    verify = _verify_for_lesson({"essence": "same identity revised"}, "IB-SAME-BLOCK")
+    mod.update_registry(capture, verify, tmp_path / "BRAIN" / "new.md")
+
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    claims = [e for e in registry["entries"] if e.get("smart_note_id") == "SN-778"]
+    assert len(claims) == 1
+    assert claims[0]["intelligent_block_id"] == "IB-SAME-BLOCK"
