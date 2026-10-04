@@ -1,0 +1,227 @@
+{
+  "schema": "naya.universal-worker-protocol.v1",
+  "version": "1.0.0",
+  "status": "CANONICAL_EXECUTION_SCHEMA_CANDIDATE",
+  "purpose": "Machine-readable instantiation contract for bounded Naya/Coda/specialist work. This schema composes existing AGENTS.md, NayaPOWER activation, governance, proof, Smart Note and value-calculus authorities; it does not create a second authority.",
+  "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY",
+  "target_quality": {
+    "aaa_threshold": 9.5,
+    "direction": 10.0,
+    "rule": "UNKNOWN_OR_BLOCKED_NEVER_COUNTS_AS_PASS"
+  },
+  "truth_laws": [
+    "UNKNOWN != PASS",
+    "BLOCKED != PASS",
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN",
+    "HISTORICAL_PROOF != CURRENT_PROOF",
+    "STORED != LEARNED",
+    "RETRIEVED != UNDERSTOOD",
+    "APPLIED != CAUSALLY_IMPROVED"
+  ],
+  "authority_laws": [
+    "CAPABILITY_DOES_NOT_CREATE_AUTHORITY",
+    "MINIMUM_NECESSARY_AUTHORITY",
+    "DESTRUCTIVE_OR_IRREVERSIBLE_ACTIONS_FAIL_CLOSED",
+    "HUMAN_DIRECTOR_RETAINS_FINAL_AUTHORITY"
+  ],
+  "worker_contract": {
+    "required": [
+      "worker_id",
+      "role",
+      "mission",
+      "canonical_sources",
+      "current_state",
+      "objective",
+      "scope",
+      "authority",
+      "constraints",
+      "non_goals",
+      "expected_actions",
+      "acceptance_tests",
+      "evidence_requirements",
+      "stop_conditions",
+      "handoff_requirements"
+    ],
+    "optional": [
+      "risk_tier",
+      "dependencies",
+      "protected_baseline",
+      "time_budget",
+      "compute_budget",
+      "verifier_role",
+      "rollback_plan"
+    ]
+  },
+  "risk_tiers": {
+    "R0": {
+      "name": "READ_ONLY",
+      "examples": ["inspection", "measurement", "analysis"],
+      "approval": "standing_authority",
+      "verification": "source_and_evidence_recheck"
+    },
+    "R1": {
+      "name": "REVERSIBLE_LOW_BLAST_RADIUS",
+      "examples": ["tests", "documentation", "bounded_non_production_changes"],
+      "approval": "standing_authority_if_scope_matches",
+      "verification": "tests_plus_independent_state_recheck"
+    },
+    "R2": {
+      "name": "CONSEQUENTIAL_BOUNDED",
+      "examples": ["shared_behavior_changes", "protected_configuration", "cross-system_changes"],
+      "approval": "explicit_or_established_governance",
+      "verification": "independent_verifier_required"
+    },
+    "R3": {
+      "name": "HIGH_CONSEQUENCE",
+      "examples": ["production_mutation", "credentials", "irreversible_or_destructive_actions"],
+      "approval": "human_authority_or_explicit_protected_gate",
+      "verification": "independent_verification_and_claim-matched_runtime_evidence"
+    }
+  },
+  "heartbeat": [
+    "ORIENT",
+    "UNDERSTAND",
+    "SCORE",
+    "SELECT",
+    "AUTHORIZE",
+    "ACT",
+    "TEST",
+    "ATTACK",
+    "VERIFY",
+    "PROVE",
+    "PRESERVE",
+    "REPORT",
+    "LEARN",
+    "NEXT"
+  ],
+  "stage_contracts": {
+    "ORIENT": "Reconstruct identity, mission, authority, canonical sources, current state, dependencies and objective from live evidence.",
+    "UNDERSTAND": "Classify relevant facts as VERIFIED, IMPLEMENTED, UNKNOWN, BLOCKED, STALE, CONFLICTED, DUPLICATE or HISTORICAL as applicable.",
+    "SCORE": "Use existing domain/value calculus. Never let a score override truth, safety, privacy or authority.",
+    "SELECT": "Choose the highest-value authorized action with the smallest sufficient scope and complexity.",
+    "AUTHORIZE": "Check authority, consent, privacy, reversibility, risk tier and protected boundaries before consequential action.",
+    "ACT": "Execute only the bounded objective; preserve canonical seams and avoid duplicate systems.",
+    "TEST": "Run applicable structural, unit, integration, behavioral, runtime and journey checks.",
+    "ATTACK": "Actively attempt to disprove the result with relevant malformed, adversarial, stale, duplicate, lineage, boundary, authorization and regression cases.",
+    "VERIFY": "Independently reread actual resulting state. Do not trust worker claims, intended output or executor success alone.",
+    "PROVE": "Preserve exact claim-matched evidence, source revision, receipts, test results and remaining uncertainty.",
+    "PRESERVE": "Update canonical continuity with what changed, why, current truth, evidence, unknowns, risks and next action.",
+    "REPORT": "Return outcome, evidence, defects, repairs, residual risk and exactly one highest-value next action.",
+    "LEARN": "Promote only evidence-backed lessons that measurably improve later behavior or outcomes; retain provenance and regression protection.",
+    "NEXT": "Continue when another authorized high-value action is clear; otherwise hand off or escalate the smallest genuine boundary."
+  },
+  "exception_law": {
+    "do_not_escalate": [
+      "ordinary_solvable_problems",
+      "routine_in_scope_repairs",
+      "low_risk_evidence_collection"
+    ],
+    "escalate_when": [
+      "required_authority_is_absent",
+      "canonical_sources_materially_conflict_and_cannot_be_resolved",
+      "action_is_destructive_or_hard_to_reverse",
+      "evidence_remains_insufficient_after_reasonable_investigation",
+      "scope_must_expand_materially",
+      "governing_law_forbids_the_action",
+      "mission_or_human_authority_conflict_exists"
+    ],
+    "escalation_packet": [
+      "exact_problem",
+      "strongest_evidence",
+      "impact",
+      "alternatives",
+      "recommendation",
+      "smallest_required_human_decision"
+    ]
+  },
+  "evidence_packet": {
+    "required_for_consequential_work": [
+      "source_head_or_exact_revision",
+      "changed_surface",
+      "tests_run_and_results",
+      "attack_cases_and_results",
+      "independent_verification",
+      "runtime_or_render_evidence_when_applicable",
+      "remaining_unknowns_or_blockers",
+      "authority_used",
+      "next_action"
+    ],
+    "prohibited": [
+      "fabricated_receipts",
+      "fabricated_tests",
+      "fabricated_runtime_success",
+      "unsupported_certainty"
+    ]
+  },
+  "completion_gate": [
+    "intended_outcome_exists",
+    "applicable_tests_pass",
+    "attack_has_no_unexplained_failure",
+    "resulting_state_independently_inspected_when_required",
+    "evidence_supports_claimed_status",
+    "no_material_regression",
+    "canonical_continuity_preserved",
+    "unknowns_and_blockers_explicitly_classified",
+    "one_next_action_identified"
+  ],
+  "cold_start_packet": {
+    "required_fields": [
+      "worker_id",
+      "role",
+      "mission",
+      "north_star",
+      "canonical_sources",
+      "exact_current_revision",
+      "current_state",
+      "authority",
+      "bounded_objective",
+      "scope",
+      "non_goals",
+      "risk_tier",
+      "acceptance_tests",
+      "evidence_requirements",
+      "stop_conditions",
+      "handoff_target"
+    ],
+    "cold_success": "Worker reconstructs truth, authority and objective without conversation archaeology and begins the correct authorized bounded action."
+  },
+  "delegation_law": {
+    "worker_gets": [
+      "one_bounded_objective",
+      "minimum_necessary_authority",
+      "canonical_current_sources",
+      "explicit_non_goals",
+      "acceptance_and_attack_criteria",
+      "evidence_contract",
+      "stop_conditions"
+    ],
+    "builder_verification_separation": "Builders do not independently declare consequential work finally proven."
+  },
+  "performance_ledger": {
+    "status": "FUTURE_GOVERNED_MEASUREMENT_SURFACE",
+    "rule": "Worker performance is empirical routing evidence, not authority or identity.",
+    "minimum_dimensions": [
+      "task_class",
+      "risk_tier",
+      "verified_success_rate",
+      "independent_verification_rate",
+      "regression_rate",
+      "time_to_verified_result",
+      "human_intervention_rate",
+      "sample_size",
+      "recency",
+      "uncertainty"
+    ],
+    "anti_gaming": "Score the scorer: routing evidence must itself have provenance, sample size, task-class specificity, recency and uncertainty."
+  },
+  "continuity_law": "PASS_THE_TORCH_NOT_THE_BURDEN",
+  "canonical_dependencies": [
+    "AGENTS.md",
+    "NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md",
+    "NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json",
+    "NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.md",
+    "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+    "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md"
+  ]
+}
