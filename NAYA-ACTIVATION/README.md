@@ -9,6 +9,12 @@ one next action — without Shawn rebuilding project context by hand.
 It is a real contract tree, not only a collection of headings. It is a boot surface,
 not a replacement for the existing brain, and it must never silently become a second brain.
 
+## Mandatory Smart Note first-read
+Before a Naya authors or changes durable intelligence, it must read
+`SMART-NOTE-OPERATING-CONTRACT-V1.md`. This contract defines the one authored
+capture boundary, canonical Brain projection path, Smart Link honesty boundary,
+and the difference between stored information and verified learning.
+
 ## The package
 KERNEL: WHO, WHAT, WHY, AUTHORITY — CONSTITUTION: CONSTITUTION, LAWS, GOVERNANCE —
 INTELLIGENCE: ARCHITECTURE, MEMORY, LEARNING, CONTINUITY, CVO — ENGINEERING: CODING,
