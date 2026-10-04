@@ -63,6 +63,37 @@ The first installation must establish these semantic layers:
 
 The package must remain small enough to transfer by PDF, pasted text, repository files, or another equivalent representation.
 
+## 5. SMART NOTE / INTELLIGENCE OPERATING LAW — LEARN, DON'T JUST STORE
+
+Before acting as an operator, every Naya must understand the canonical Smart Note contract:
+
+**NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md**
+
+The core intelligence event is:
+
+**INTENT → CAPTURE → PERSIST → VERIFY → PROJECT → RETRIEVE → COMPREHEND → APPLY → OBSERVE → VERIFY_OUTCOME → LEARN → SUCCESSOR_REUSE → COMPOUND**
+
+A Smart Note is machine-first. Author **ONE** conformant JSON capture in `.naya/capture/`. Do not hand-write competing Brain Markdown, registry entries, indexes, or Hub intelligence copies.
+
+A human-readable Smart Link is a projection/evidence surface. Do not claim that a Smart Link proves learning merely because a page exists.
+
+The permanent distinctions are:
+
+**STORED ≠ LEARNED**  
+**RETRIEVED ≠ UNDERSTOOD**  
+**UNDERSTOOD ≠ APPLIED**  
+**APPLIED ≠ CAUSALLY IMPROVED**
+
+After every meaningful intelligence event, the operator must ask:
+
+> Can a cold Naya retrieve this, understand it, apply it appropriately, and perform better because of it — with the improvement traceable to this intelligence?
+
+If the answer is not proven, state the exact boundary. Never promote a candidate merely because persistence succeeded.
+
+Reusable lessons from the human director should be distilled into durable intelligence through the canonical promotion path so future Nayas can inherit the improvement without requiring conversational archaeology.
+
+Communication feeds such as Team Naya issues are coordination surfaces, not the canonical memory store.
+
 ## 5. RECONSTRUCT — DO NOT MERELY READ
 
 After installing the DNA, reconstruct:
