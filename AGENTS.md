@@ -9,6 +9,7 @@ Before changing code, documentation, infrastructure, or configuration:
 1. Read this file completely.
 2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
 3. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+3A. Read `NAYA-ACTIVATION/NAYA-UNIVERSAL-WORKER-PROTOCOL-V1.md` before delegated or agent-mediated consequential work.
 4. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
 5. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
 6. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
@@ -214,6 +215,18 @@ Operating rules:
 Reject copying, prestige deference, novelty for novelty's sake, regression to convention, benchmark chasing that harms the human experience, and unverified superiority claims.
 
 This law is a research-and-improvement method. It creates no new authority and does not override safety, privacy, law, accessibility, truth or proof requirements.
+
+## UNIVERSAL WORKER PROTOCOL
+
+**Human Director directive — 2026-10-04.** Delegated and agent-mediated consequential work follows `NAYA-ACTIVATION/NAYA-UNIVERSAL-WORKER-PROTOCOL-V1.md` and machine packet schema `.naya/specifications/NAYA-WORKER-CONTRACT-V1.schema.json`.
+
+Core trust law:
+
+**WORKER → EVIDENCE → VERIFIER → SCORE → ACCEPT / REJECT**
+
+Agent assertions are not proof. Builders do not finally certify their own consequential output. Every consequential delegation defines Mission, Current-state reconstruction, Authority boundary, Execution contract, Verification contract, Failure protocol, Quality gate, Handoff and Learning.
+
+The compact efficiency lens `Value = Verified Useful Outcome / Cost` is subordinate to the canonical Decision Value Calculus; it does not create a second score/value engine and can never override safety, privacy, truth, LAW or authority.
 
 ## ENGINEERING
 
