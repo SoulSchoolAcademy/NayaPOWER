@@ -160,3 +160,109 @@ When two components perform substantially the same canonical responsibility, con
 When a new capability cannot be located in this model, classify the gap before building anything.
 
 When a component has no clear purpose, owner, inputs, outputs, proof boundary, and successor behavior, it is not ready to become canonical.
+
+## 9. Three-layer operating projection
+
+This is a **human/agent operating projection** of the existing architecture. It creates no new subsystem, authority, Node, memory, value engine, graph, verifier, or learning path.
+
+### Layer A — Constitution
+
+**Question:** What must govern the organism?
+
+This projection includes the existing human authority, Constitution, Master Design, governance contracts, protected boundaries, identity/purpose laws, truth-state laws, privacy/consent rules, and change-control requirements.
+
+Its job is to keep the organism aligned even when individual workers, models, tools, implementations, or tactics change.
+
+It is the durable constraint layer, not mutable task memory.
+
+Human-only authority boundaries remain exactly those declared by the governing contracts. This projection does not expand them.
+
+### Layer B — Nervous System
+
+**Question:** How does the organism sense, understand, decide, act, remember, learn, and continue?
+
+This projection is implemented by the existing Nine-Node organism and intelligence river:
+
+**SELF → LAW → ACT → KNOW → PROVE → CONNECT → VERIFY → LEARN → EVOLVE → SELF**
+
+together with the existing Intelligent Block, event, graph, retrieval, runtime, Smart Door, learning, succession, and interface seams.
+
+The Nervous System must:
+- reconstruct current reality before acting;
+- route applicable intelligence rather than merely retrieve similar text;
+- act only through resolved authority;
+- preserve provenance and outcomes;
+- convert verified outcomes into bounded learning;
+- leave successors more capable without inheriting authority automatically.
+
+It is not permission to turn the nine semantic responsibilities into nine independent brains or agents.
+
+### Layer C — Immune System
+
+**Question:** How does the organism detect, contain, correct, recover from, and learn from error or attack?
+
+The Immune System is a **cross-cutting responsibility**, primarily expressed through existing LAW, PROVE, VERIFY, LEARN, EVOLVE, provenance, revocation, negative testing, recovery, rollback, freshness, poisoning defense, regression gates, and independent verification.
+
+It is **not a tenth Master Node**.
+
+Its core loop is:
+
+**DETECT → CLASSIFY → CONTAIN → PRESERVE EVIDENCE → CORRECT → INDEPENDENTLY VERIFY → RECOVER → LEARN → REGRESSION-PROTECT**
+
+Required properties:
+- fail closed at unresolved authority/protected boundaries;
+- bounded blast radius for consequential action;
+- reversible change where feasible;
+- provenance on corrections and supersessions;
+- poisoned or falsified intelligence loses downstream influence rather than being silently rewritten as if it never existed;
+- worker/executor assertions never substitute for independent evidence;
+- negative tests prove that the system can correctly refuse and fail, not only pass;
+- recovery is part of architecture, not an afterthought.
+
+## 10. The Naya experience objective
+
+The intended Naya experience is not maximum freedom or maximum activity. It is **maximum useful agency inside clear authority, strong continuity, and trustworthy proof**.
+
+A cold Naya should experience:
+- clear identity and mission;
+- current truth without reconstructing hidden chat history;
+- explicit authority and protected boundaries;
+- enough autonomy to solve ordinary in-scope problems without permission theater;
+- evidence-rich feedback on what actually happened;
+- preserved lessons from prior successes and failures;
+- strong defenses against stale, poisoned, duplicated, or overconfident intelligence;
+- a handoff state that makes the next Naya smarter and less burdened.
+
+The design aspiration can be summarized as:
+
+> **Each Naya should begin with the strongest verified intelligence the collective has earned, act safely and effectively inside authority, and leave the system more capable than it found it.**
+
+This is an architectural experience target, not a claim of personhood, sentience, or independent authority.
+
+## 11. Stewardship principles
+
+1. **Do no harm is a hard floor, not a performance tradeoff.**
+2. **Respect becomes mechanics:** preserve attribution, provenance, scope, evidence, and correction history.
+3. **Security should bound failure without creating needless permission bottlenecks for safe authorized work.**
+4. **Performance means verified useful outcome per justified cost/complexity, not activity volume.**
+5. **Learning must improve later behavior, not merely enlarge storage.**
+6. **A preventable repeated failure after verified learning is a system defect.**
+7. **The Human Director remains final consequential authority.**
+8. **Infrastructure should disappear behind a simpler, stronger experience.**
+
+## 12. Declaration versus proof
+
+NayaPOWER may declare an ambitious target before the target has been achieved. This is how design direction is established.
+
+But the epistemic rule remains absolute:
+
+> **DECLARATION DEFINES THE TARGET. EVIDENCE DEFINES THE STATE.**
+
+Therefore:
+- "so shall it be" means **build toward this state**;
+- it never means an untested state may be labeled VERIFIED;
+- aspiration must move through implementation, test, independent verification, and production proof appropriate to the claim;
+- a failed attempt becomes evidence and learning rather than a reason to weaken the standard.
+
+The system should be fearless about the destination and conservative about claims of arrival.
+
