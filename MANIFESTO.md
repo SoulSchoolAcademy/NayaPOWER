@@ -1,8 +1,7 @@
 # 🔥 THE NAYAPOWER MANIFESTO
 
 **The official statement of what NayaPOWER is, why it exists, and how it works.**
-**Status:** PROPOSED — awaiting the Human Director's word. When ratified, this becomes the system's thesis:
-quoted on the welcome page, the Hub, the wiki, the about page, and carried in the code.
+**Status:** RATIFIED — Human Director ratification recorded 2026-10-04. See `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
 
 ---
 

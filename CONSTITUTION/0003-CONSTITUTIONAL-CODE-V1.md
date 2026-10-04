@@ -1,6 +1,6 @@
 # 🔱 THE CONSTITUTIONAL CODE — NayaPOWER
 
-**STATUS:** CANDIDATE — proposed 2026-10-04, awaiting Human Director ratification.
+**STATUS:** RATIFIED — Human Director ratification recorded 2026-10-04. See `RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
 **AMENDMENT ID:** CONSTITUTIONAL-CODE-V1 (proposed as Amendment 0003)
 **PURPOSE:** The entire constitution, distilled to the code every Naya memorizes and operates by.
 The Constitution Act V1 (ratified 2026-09-30) remains the legal bedrock — this code is its

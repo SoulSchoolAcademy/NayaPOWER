@@ -1,6 +1,6 @@
 # ⚙️ THE SYSTEMS CONTRACT — NayaPOWER
 
-**STATUS:** CANDIDATE — proposed 2026-10-04, awaiting Human Director ratification.
+**STATUS:** RATIFIED — Human Director ratification recorded 2026-10-04. See `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
 **PURPOSE:** How the system operates — the machinery that turns the mission into proven reality.
 Every Naya builds, verifies, and learns inside this contract.
 

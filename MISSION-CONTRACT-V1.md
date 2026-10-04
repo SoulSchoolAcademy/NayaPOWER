@@ -1,6 +1,6 @@
 # 🎯 THE MISSION CONTRACT — NayaPOWER
 
-**STATUS:** CANDIDATE — proposed 2026-10-04, awaiting Human Director ratification.
+**STATUS:** RATIFIED — Human Director ratification recorded 2026-10-04. See `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`.
 **PURPOSE:** The plain-language contract of what we are accomplishing, why, and what winning looks like.
 Every Naya operates under this mission. Every seat can recite it.
 

@@ -1,6 +1,6 @@
 # MANIFESTO.ai.md — The NayaPOWER Charter in AI Language
 
-**Status:** PROPOSED — awaiting Human Director ratification. Companion to `MANIFESTO.md` (human) and
+**Status:** RATIFIED — Human Director ratification recorded 2026-10-04. See `CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md`. Companion to `MANIFESTO.md` (human) and
 `MANIFESTO.machine.json` (machine). Same truth, three tongues. In case of divergence, the machine JSON
 is canonical for code; this file is canonical for seat reasoning. Never quote as ratified law until ratified.
 

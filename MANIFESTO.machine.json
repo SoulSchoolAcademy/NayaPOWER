@@ -33,7 +33,7 @@
  "privacy_line": "Private by default. Shared by choice. Collective by consent. Public by decision.",
  "purpose": "Maximum verified human value per action, per moment, per output — at minimum necessary complexity.",
  "schema": "naya.charter.v1",
- "status": "PROPOSED — awaiting Human Director ratification. This file is the canonical MACHINE source of the charter; MANIFESTO.md is the human projection and MUST contain the motto and manifesto_statement verbatim (enforced by tests/test_charter.py).",
+ "status": "RATIFIED — Human Director ratification recorded 2026-10-04. Receipt: CONSTITUTION/RATIFICATION-RECEIPT-SYSTEM-CHARTER-V1.md.",
  "twelve_laws": [
   {
    "id": "JUDGMENT_OVER_OBEDIENCE",
