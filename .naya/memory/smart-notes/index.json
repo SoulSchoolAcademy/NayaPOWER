@@ -388,7 +388,16 @@
         "personal intelligence",
         "collective intelligence"
       ],
-      "timestamp_role": "PROVENANCE_ONLY"
+      "timestamp_role": "PROVENANCE_ONLY",
+      "superseded_projections": [
+        {
+          "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+          "status": "SUPERSEDED_TOMBSTONE",
+          "superseded_at": "2026-10-04",
+          "superseded_by": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+          "reason": "Divergent duplicate projection under one IB-ID (312 diff lines, no supersession marker). 10/01 rendering is canonical per registry projection_path + content_hash."
+        }
+      ]
     },
     {
       "smart_note_id": "SN-019",
