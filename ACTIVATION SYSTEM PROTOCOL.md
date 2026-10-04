@@ -1,3 +1,10 @@
+# ⚠️ HISTORICAL DESIGN DISCUSSION — NOT A CURRENT OPERATING CONTRACT
+
+> Preserved for provenance only. **Do not use this file to boot a Naya or determine current architecture.**  
+> Current activation begins at `AGENTS.md` → `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md` → `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`, reconciled against live `main` and current proof.
+
+---
+
 Yes. And I think you just made an important architectural leap.
 
 What you're describing is not merely the internal Naya boot protocol anymore. It is the beginning of a portable NayaPOWER activation product.
