@@ -1348,6 +1348,7 @@ svg.jewel { display: block; }
 .action[data-kind="love"] { --action-color: #ff5e6c; }
 .action[data-kind="like"] { --action-color: #55b9ee; }
 .action[data-kind="share-intel"] { --action-color: #d86cff; }
+.action[data-kind="naya-play"] { --action-color: #9d75ff; }
 .action[data-kind="love"].on { border-color: #ff3f52; background: linear-gradient(145deg,#391019,#09090d); }
 .star-rating {
   display: inline-flex; gap: 4px; align-items: center; padding: 6px;
@@ -3155,6 +3156,55 @@ window.BoardActions = (() => {
   const read = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
   const write = s => { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {} };
 
+  /* ——— Naya Play: every Intelligent Block gets a voice (Shawn 2026-10-04).
+         Audio contract: R2 naya-voice/<board-id-slug>.mp3, baked per block by the
+         voice pipeline. This button is the Hub side of that contract: it plays the
+         baked audio, toggles pause, and tells the truth when audio is not baked yet. */
+  const NayaVoice = (() => {
+    const R2_BASE = 'https://pub-55de1e53f610437db77c701797f6b607.r2.dev/naya-voice/';
+    let audio = null, activeBtn = null, activeId = null;
+    function audioUrl(boardId) {
+      const slug = String(boardId || 'block').toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'block';
+      return R2_BASE + slug + '.mp3';
+    }
+    function resetBtn() {
+      if (activeBtn) {
+        activeBtn.classList.remove('on');
+        activeBtn.setAttribute('aria-pressed', 'false');
+        activeBtn.textContent = '\u25B6 NAYA PLAY';
+      }
+      activeBtn = null; activeId = null;
+    }
+    function stop() {
+      if (audio) { try { audio.pause(); } catch (e) {} audio = null; }
+      resetBtn();
+    }
+    function toggle(boardId, btnEl) {
+      /* Click while playing this block: pause. Click another block: switch. */
+      if (activeId === boardId && audio && !audio.paused) { stop(); return; }
+      stop();
+      const a = new Audio(audioUrl(boardId));
+      audio = a; activeId = boardId; activeBtn = btnEl;
+      btnEl.classList.add('on');
+      btnEl.setAttribute('aria-pressed', 'true');
+      btnEl.textContent = '\u23F8 PAUSE';
+      a.onended = () => stop();
+      a.onerror = () => {
+        stop();
+        toast('VOICE NOT READY', 'Naya\u2019s voice for this block is still baking. The button will play it once the audio is published.', '#9d75ff');
+      };
+      try {
+        const p = a.play();
+        if (p && p.catch) p.catch(() => {
+          stop();
+          toast('VOICE NOT READY', 'Playback could not start on this device.', '#9d75ff');
+        });
+      } catch (e) { stop(); }
+    }
+    return { toggle, stop };
+  })();
+
   function btn(label, kind, ariaLabel) {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'action'; b.dataset.kind = kind;
@@ -3168,6 +3218,10 @@ window.BoardActions = (() => {
     wrap.setAttribute('role', 'group');
     wrap.setAttribute('aria-label', 'Board actions');
     const store = read();
+    /* Naya Play first: the default Play button on every Intelligent Block (Shawn 2026-10-04). */
+    const play = btn('\u25B6 NAYA PLAY', 'naya-play', 'Play Naya reading this intelligence aloud');
+    play.addEventListener('click', e => { e.stopPropagation(); NayaVoice.toggle(boardId, play); });
+    wrap.appendChild(play);
     const defs = [
       ['\uFF0B CREATE SPACE', 'create-space', 'Create a smart space from this intelligence'],
       ['\u2605 FAVORITE', 'favorite', 'Mark as favorite'],
