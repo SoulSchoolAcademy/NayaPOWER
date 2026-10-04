@@ -288,6 +288,10 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: smart-note-lineage
+
       - name: Mint genuinely fresh runtime identity
         shell: bash
         run: |
@@ -301,17 +305,18 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import json
-          reg=json.load(open(".naya/memory/smart-notes/index.json"))
-          matches=[e for e in reg["entries"] if e.get("smart_note_id")=="SN-001"]
-          assert len(matches)==1, matches
-          e=matches[0]
-          assert e["intelligent_block_id"]=="IB-SMART-NOTE-20260929-b8f141805fa0d7ae", e
-          p=e["provenance"]
+          # Use the block ID from the fresh-lesson artifact, not hardcoded SN-001
+          lineage=json.load(open("fresh-lesson-lineage-ids.json"))
+          block_id=lineage["intelligent_block_id"]
           req={
             "mode":"verify",
-            "event_id":p["event_id"],"intelligent_block_id":e["intelligent_block_id"],
-            "lineage_id":p["lineage_id"],"relationship_id":p["relationship_id"],
-            "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
+            "event_id":lineage["event_id"],
+            "intelligent_block_id":block_id,
+            "lineage_id":lineage["lineage_id"],
+            "relationship_id":lineage["relationship_id"],
+            "index_id":lineage["index_id"],
+            "checkpoint_id":lineage["checkpoint_id"],
+            "receipt_id":lineage["receipt_id"]
           }
           json.dump(req,open("cold-verify-request.json","w"))
           PY
