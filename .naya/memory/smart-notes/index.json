@@ -119,7 +119,7 @@
       "link_repaired_2026_10_04": "truncated path restored from main tree",
       "smart_link_verified_at": "2026-10-04T22:08:15Z",
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
-      "content_hash": "6739866ef97369069c22f7c4ed0f7ef251cd0a0f2c842fa7e9259c24c79379a4"
+      "content_hash": "99f347fe9504297776435f16295d93d72eaef87156d4ffdad71956098f58a882"
     },
     {
       "smart_note_id": "SN-003",
@@ -805,7 +805,7 @@
       },
       "smart_link_verified_at": "2026-10-04T22:08:32Z",
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
-      "content_hash": "7745e0164917066bb7a45f9cf369dabae14a7d3c5b31434bb57d95ebfd17b822"
+      "content_hash": "2e209d7f29967fd11039ef0ef8b77430b9ce0b587e2c7a3fb179bb2e17c2cf9e"
     },
     {
       "smart_note_id": "SN-021",
@@ -844,7 +844,7 @@
       "link_repaired_2026_10_04": "truncated path restored from main tree",
       "smart_link_verified_at": "2026-10-04T22:08:33Z",
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
-      "content_hash": "084990f161902f94d10ec240306f856adc2ceaca8d440064d7320936314f121e"
+      "content_hash": "d1b477b9505fe6e8dc71e41d6ccf12d43fc204b8e6ab408d78ddca3cc450fe15"
     },
     {
       "smart_note_id": "SN-022",
@@ -882,7 +882,7 @@
       },
       "smart_link_verified_at": "2026-10-04T22:08:35Z",
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
-      "content_hash": "69ad4c87f672b9d45f872397c3c80a594c98301fe64555148a6ed2b2059c50e8"
+      "content_hash": "bd050e4ad42b7ca07f8a05e9ade15a32982c1eefe6fb710e3e7ff818b502d409"
     },
     {
       "smart_note_id": "SN-032",
