@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-04  
-**Receipt basis commit:** `8ad6cfa69db40befb8b62314155c90356726455c`  
-**Inventory file count:** 185  
+**Receipt basis commit:** `0aae787a93fa2a89a96d5c42f30fd0f5582d06fa`  
+**Inventory file count:** 188  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 41 |
+| 05-MEMORY | 44 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -156,6 +156,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md` — `305262427a26` (8450 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md` — `2943bc256733` (6380 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.ai.md` — `af4db7e5d495` (2661 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.machine.json` — `52671091d621` (7622 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/RATIFICATIONS/SYSTEM-CHARTER-V1/SN-0040/IB-SMART-NOTE-20261004-sn0040-ratification-system-charter-v1.md` — `177898e642f2` (6923 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 
