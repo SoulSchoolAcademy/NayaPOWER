@@ -1,6 +1,6 @@
 # NayaPOWER Backlog
 
-**The canonical shared to-do list for all NayaPOWER work.** One file, every idea, to-do, and concept. All seats read and write it through PRs — never in chat alone, never in a side file.
+**Shared human-readable work projection / ranked queue. NOT a second source of truth.** Live repository/runtime evidence, ratified contracts, GitHub Issues/PRs, receipts and Current Truth own authoritative state; this file projects the highest-value work for Team Naya.
 
 ## How to use
 
@@ -9,37 +9,33 @@
 - **Complete** an item by moving it to `DONE` with the evidence (PR/issue/run link).
 - **Priorities:** `P0` = active or blocked-now · `P1` = next up · `P2` = future · `IDEA` = under consideration, not committed.
 - **Blocked** items name their blocker explicitly. No item sits in P0 blocked without a named unblock action.
-- This file is the queue, not the archive. GitHub Issues hold the long-form detail; this file holds the ranked list.
+- This file is a **projection/index**, not independent authority. Every consequential item should resolve to an Issue/PR/receipt/contract/current-truth source. If this file conflicts with live canonical evidence, live canonical evidence wins.
+- This file is the queue, not the archive. Git history preserves prior projections; Issues/contracts/receipts preserve detailed authority and evidence.
 
 ---
 
 ## P0 — Active / Blocked
 
-### 1. Production parity: `a3ce52dc` → production — HUMAN GATE (Shawn)
-- **Owner:** Shawn (human gate) · **Status:** awaiting human action
-- **Why:** The Live Supabase Runtime Proof's first real RED is production parity — deployed runtime reports `355e5d89`, current main is `a3ce52dc`. Nothing downstream can go green until this closes.
-- **Action:** Dispatch the Governed Production Promotion workflow with `confirm=DEPLOY`, `source_sha=a3ce52dc7a29fe37c220c5a595952ebc34f8f418`.
-- **Then:** fresh exact-main proof runs; Naya 1 takes the next first RED.
+### 1. Re-establish exact-current production parity — HUMAN DEPLOY GATE
+- **Owner:** Shawn for consequential production authorization · **Status:** waiting on exact-current promotion
+- **Current main:** `69fc9371ef6907d623d3c2e91fcea8c4128fdfe3`
+- **Current production stamp:** `e727720424e237f1e0264a39598365ef986c7670`, source `4a2f728239c0e404205f0cc590766ceb7e7b7c28`
+- **Why:** exact-SHA proof law requires current production/source parity before downstream runtime REDs can be promoted to current truth.
+- **Boundary:** only the Human Director may authorize the exact production promotion. Team Naya may prepare/verify but must not infer `DEPLOY`.
 
-### 2. Merge PR #1506 (SN-0356 — Dead Workers Still Vote) — HELD for parity
-- **Owner:** Naya 2 · **Status:** CI green, held
-- **Why held:** Merging now would move main and stale the `a3ce52dc` promotion target (the promotion workflow fails closed on SHA mismatch). Merges immediately after parity clears.
+### 2. Fresh exact-current proof after parity
+- **Owner:** proof lane · **Status:** blocked by P0-1
+- **Evidence:** Live Intelligence Commit Proof run `37385965077` was 4/4 green on prior main `cf4e0151...`; main then moved through #1522 and #1521.
+- **What:** rerun the canonical commit/runtime proof on exact current source and take the **first actual RED** only.
 
-### 3. Merge PR #1509 (Hub welcome seam) — HELD for parity
-- **Owner:** Naya 2 · **Status:** CI in progress, held
-- **Why held:** Same as #1506 — no main moves until parity clears.
-
-### 4. Shared backlog + automated activity feed — IN PROGRESS
-- **Owner:** Naya 2 · **Status:** building (this PR)
-- **What:** This file + a 15-minute workflow that logs commits/PRs/workflow results to `ACTIVITY-FEED.md`, mirrored by the Hub's Smart Feed room.
+### 3. Cold graph ON/OFF causal proof
+- **Owner:** brain/proof lane · **Status:** downstream of parity
+- **What:** the known `cold-graph-control-treatment` failure remains the leading genuine brain frontier, but it must be re-observed on exact-current production before repair claims.
+- **Law:** do not patch stale downstream evidence.
 
 ---
 
-## P1 — Next (unblocks after P0)
-
-### 5. Fresh exact-main proof after parity (Naya 1's lane)
-- **Owner:** Naya 1 · **Status:** waiting on P0-1
-- **What:** Rerun the full proof against the parity-closed main; classify the next first real RED.
+## P1 — Next / Parallel
 
 ### 6. Governed RSI Experiment Campaign V1 — Issue #1513 (BLOCKED by parity)
 - **Owner:** unassigned · **Status:** backlog, do not implement yet
@@ -56,9 +52,10 @@
   10. Shadow/canary/rollback promotion
 - **Detail:** Issue #1513.
 
-### 7. Graph ON/OFF causal proof (post-parity)
-- **Owner:** Naya 1 · **Status:** waiting on P0-1
-- **What:** The `cold-graph-control-treatment` RED from run 37377035191 gets diagnosed from fresh post-parity evidence — first RED, smallest fix.
+### 7. Backlog / projection authority reconciliation — Issue #1519
+- **Owner:** foundation/ops lane · **Status:** PARTIAL — activity-feed mutation fixed by merged #1522; backlog authority wording repaired by this PR.
+- **What:** preserve the simple Backlog + Activity experience while enforcing one-owner/many-projections law.
+- **Proof:** feed refresh no longer has write authority to `main`; backlog explicitly defers to live canonical evidence/Issues/PRs/contracts/receipts.
 
 ### 8. NayaNET viral invite system — the traffic engine — QUEUED (spec + design complete)
 - **Owner:** Naya 4 (spec/design) · **Status:** SPEC COMPLETE, DESIGN COMPLETE, implementation queued — does NOT jump the proof queue (parity → graph seam → brain chain first)
@@ -97,6 +94,10 @@
 
 ## DONE — Recently completed (evidence)
 
+- 2026-10-05 — PR #1522 merged at `42acf203...`: Activity Feed is manual/read-only artifact projection; scheduled self-writing main removed.
+- 2026-10-05 — PR #1521 merged at `69fc9371...`: Idea Evolution / Smart Link protocol + Viral Invite relationships added to shared backlog projection.
+- 2026-10-05 — PR #1518 merged at `cf4e0151...`: Viral Invite System queued in backlog.
+- 2026-10-05 — Live Intelligence Commit Proof run `37385965077`: 4/4 green on `cf4e0151...` before later main movement.
 - 2026-10-05 — Cloudflare dead-worker cleanup: 17 stale Workers disconnected, 0 Cloudflare checks on fresh pushes. (Shawn deleted; Naya 2 verified. Smart Note SN-0356.)
 - 2026-10-05 — Promotion workflow repair (#1496), cold-runtime hardening (#1497, #1501, #1502), SHA binding (#1499), replication-lag retry (#1500), unique fallback lesson (#1504).
 - 2026-10-05 — Current Truth PR-truncation repair (#1507); fallback machine_view contract fields (#1508).
