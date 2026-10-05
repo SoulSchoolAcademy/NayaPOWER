@@ -1491,7 +1491,18 @@
       "note": "Applied 2026-10-05 via Management API (Naya 2, authorized by Shawn); verified in schema_migrations."
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20261005235000",
+      "name": "exact_event_replay_reconciliation_v1",
+      "path": "supabase/migrations/20261005235000_exact_event_replay_reconciliation_v1.sql",
+      "sha256": "fcd14fd697f4560a88362dfabbe91be1d2d724efcae57e7f6fff1e470586471c",
+      "statement_count": 3,
+      "bytes": 16460,
+      "status": "PENDING",
+      "note": "Source-staged exact event replay reconciliation. Not production-applied; production migration remains a protected human gate."
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
