@@ -146,6 +146,23 @@ print(f'{"quoted policy/dynamic SQL noise not reported":<58} expect=0 false rela
       f'actual={sorted(reported)} {"OK" if ok else "*** WRONG ***"}')
 results.append(ok)
 
+
+# 8. IS [NOT] DISTINCT FROM is a comparison operator, never a FROM clause.
+tree = fixture()
+(tree / MIGRATIONS / '20260104000000_control_distinct_from.sql').write_text(
+    'create or replace function public.noise_fn(p_owner_id uuid) returns void language plpgsql as $$\n'
+    'begin\n'
+    "if auth.uid() is not null and auth.uid() is distinct from p_owner_id then raise exception 'NOPE'; end if;\n"
+    "if p_owner_id is not distinct from null then raise exception 'NOPE2'; end if;\n"
+    'end; $$;\n',
+    encoding='utf-8')
+got, out = classes(tree)
+distinct_noise = {g for g in got if 'p_owner_id' in g}
+ok = not distinct_noise
+print(f'{"is [not] distinct from not reported as table":<58} expect=0 false relations '
+      f'actual={sorted(distinct_noise)} {"OK" if ok else "*** WRONG ***"}')
+results.append(ok)
+
 print()
 print(f'CONTROLS: {sum(results)}/{len(results)} behaved as specified')
 print('VERDICT:', 'gate discriminates real migration content'

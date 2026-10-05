@@ -112,6 +112,22 @@ def mask_quoted_text(sql: str) -> str:
     return sql
 
 
+
+def neutralise_distinct_from(sql: str) -> str:
+    """Neutralise the IS [NOT] DISTINCT FROM comparison operator.
+
+    A naive FROM regex reads `... is distinct from p_owner_id` as a table
+    reference `FROM p_owner_id`. This rewrites the operator into a single
+    token before the usage patterns run, so the comparison can never be
+    mistaken for a relation. (False positive found 2026-10-05 in the
+    backfilled Smart Ledger migration: `auth.uid() is distinct from
+    p_owner_id` was reported as UNCREATED_DEPENDENCY public.p_owner_id.)
+    """
+    sql = re.sub(r'\bis\s+not\s+distinct\s+from\b', ' is_not_distinct_from ', sql, flags=re.I)
+    sql = re.sub(r'\bis\s+distinct\s+from\b', ' is_distinct_from ', sql, flags=re.I)
+    return sql
+
+
 def normalise(name: str) -> str:
     name = name.strip().strip('"').lower()
     return name if '.' in name else f'public.{name}'
@@ -171,7 +187,7 @@ def main() -> int:
 
     for idx, path in enumerate(files):
         raw = path.read_text(encoding='utf-8', errors='replace')
-        sql = mask_quoted_text(strip_comments(raw))
+        sql = neutralise_distinct_from(mask_quoted_text(strip_comments(raw)))
         if not sql.strip():
             empty.append(path.name)
         order.append((path.name, sql))
