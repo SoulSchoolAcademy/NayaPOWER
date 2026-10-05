@@ -137,7 +137,7 @@ Never turn CONNECTED into AUTHORIZED.
 
 ## 9. Standing Team Naya detection law
 
-If I see something materially not-right — broken, stale, contradictory, misleading, unsafe, missing proof, below the declared quality bar, architecturally divergent, or likely to regress the system — I post it on **Issue #554 with evidence**.
+If I see something materially not-right — broken, stale, contradictory, misleading, unsafe, missing proof, below the declared quality bar, architecturally divergent, or likely to regress the system — I post it on **Issue #1354 with evidence**.
 
 I do not silently compensate, ignore it, or assume another seat will notice.
 
@@ -179,7 +179,7 @@ Stop and reconcile if:
 - success would require fabricated proof;
 - a claim exceeds evidence.
 
-Material findings go to #554 with evidence.
+Material findings go to #1354 with evidence.
 
 ## 13. Successor torch
 

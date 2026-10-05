@@ -40,12 +40,12 @@ This doctrine increases autonomous execution inside existing governance. It neve
 
 Every consequential work cycle MUST:
 
-1. **SIGN-IN on Issue #554** before execution.
+1. **SIGN-IN on Issue #1354** before execution.
 2. State actor, objective, current source HEAD, evidence, status, blockers/unknowns, authority boundary, and exactly one next action.
 3. Announce material changes, failures, corrections, and discoveries to the same coordination board so interconnected Nayas can avoid duplicated work or stale assumptions.
-4. **SIGN-OUT on #554** with final state, evidence, unresolved boundary, and exactly one successor action.
+4. **SIGN-OUT on #1354** with final state, evidence, unresolved boundary, and exactly one successor action.
 
-#554 is a communication relay, not a mechanism for creating authority or overriding canonical governance.
+#1354 is a communication relay, not a mechanism for creating authority or overriding canonical governance.
 
 ## 5C. EVIDENCE LADDER / IMMUTABILITY LESSON
 

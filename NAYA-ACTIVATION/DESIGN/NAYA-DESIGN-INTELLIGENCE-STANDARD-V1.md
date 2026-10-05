@@ -129,7 +129,7 @@ AI-builder preference alone never creates universal law.
 
 ## Standing Team Naya finding rule
 
-If any Naya/agent sees something materially not-right, the observation goes to **Issue #554 with evidence**.
+If any Naya/agent sees something materially not-right, the observation goes to **Issue #1354 with evidence**.
 
 That includes broken/stale/contradictory state, missing proof, unsafe behavior, quality regression, architectural divergence or any defect likely to cost the team later.
 

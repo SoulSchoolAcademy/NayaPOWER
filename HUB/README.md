@@ -62,7 +62,7 @@ Every visible control must perform a real operation, navigate somewhere real, or
 
 ## Team Naya standing detection rule
 
-**If any participant sees something materially not-right, it goes on Issue #554 with evidence.**
+**If any participant sees something materially not-right, it goes on Issue #1354 with evidence.**
 
 Do not silently ignore defects, contradictions, stale truth, missing proof, likely regressions, or below-standard work. Posting a finding does not itself authorize a consequential change.
 
