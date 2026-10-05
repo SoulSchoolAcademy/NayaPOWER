@@ -1457,6 +1457,15 @@
    "statement_count": 18,
    "bytes": 15720,
    "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
+   "version": "20261003170000",
+   "name": "evolve_first_executable_v1",
+   "path": "supabase/migrations/20261003170000_evolve_first_executable_v1.sql",
+   "sha256": "66de49712454ca56c5e3a1d81d759e1c8afd7221165fba54dcd75dc4093abca2",
+   "statement_count": 4,
+   "bytes": 6047,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
   }
  ],
  "legacy_repository_snapshot_count": 95,
