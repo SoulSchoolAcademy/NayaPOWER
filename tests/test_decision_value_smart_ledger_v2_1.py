@@ -1,7 +1,9 @@
 """Source-level contract for Decision Value Calculus V2.1 SmartLedger binding.
 
-These tests prove repository semantics before deployment. They do not claim that
-the pending migration has been applied to production.
+These tests prove repository semantics. The ledger's `production_applied` list
+records human-verified production application; the fail-closed rule is that
+`pending` never carries a claim the applied list already owns, and every
+PRODUCTION_APPLIED claim names its verification evidence.
 """
 from __future__ import annotations
 
@@ -121,14 +123,23 @@ def test_contribution_schema_is_strict_and_evidence_before_reward():
     )
 
 
-def test_pending_migration_ledger_declares_not_production_applied():
+def test_reconciled_ledger_declares_production_applied_with_verification():
+    # Reconciled 2026-10-05 (bf4c8e9b): 20261001032000 moved from `pending` to
+    # `production_applied` with note "Applied 2026-10-05 via Management API
+    # (Naya 2, authorized by Shawn); verified in schema_migrations." The old
+    # NOT_PRODUCTION_APPLIED assertion is superseded; the fail-closed rule is
+    # now: the applied claim must name its verification evidence, and `pending`
+    # must not duplicate the claim.
     ledger = json.loads((ROOT / "supabase" / "PRODUCTION-MIGRATION-LEDGER-V1.json").read_text(encoding="utf-8"))
-    matches = [x for x in ledger["pending"] if x["version"] == "20261001032000"]
+    pending_matches = [x for x in ledger.get("pending", []) if x["version"] == "20261001032000"]
+    assert pending_matches == []
+    matches = [x for x in ledger["production_applied"] if x["version"] == "20261001032000"]
     assert len(matches) == 1
     entry = matches[0]
     assert entry["name"] == "decision_value_smart_ledger_v2_1"
-    assert entry["status"] == "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    assert entry["status"] == "PRODUCTION_APPLIED"
     assert entry["statement_count"] == 18
+    assert "verified in schema_migrations" in entry.get("note", "")
 
 
 def test_alignment_decision_signed_boundary_is_ten_and_sql_mirrors_it():
