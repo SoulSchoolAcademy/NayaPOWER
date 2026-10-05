@@ -143,7 +143,7 @@ none
 go
 
 ## Handoff completion
-verified sha abc123
+verified sha abc123; learning decision: NO_CAPTURE — no reusable material lesson.
 """)
     assert res.score <= 10.0
 
