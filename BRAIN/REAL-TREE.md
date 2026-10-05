@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `1e1f27e116f0e724e9e2c3fd8c509b5b87504186`  
-**Inventory file count:** 200  
+**Receipt basis commit:** `a3ce52dc7a29fe37c220c5a595952ebc34f8f418`  
+**Inventory file count:** 202  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 7 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 24 |
-| 90-OPERATIONS | 11 |
+| 90-OPERATIONS | 13 |
 | 99-ARCHIVE | 1 |
 | ROOT | 5 |
 
@@ -250,6 +250,8 @@
 - `BRAIN/90-OPERATIONS/2026-09-29-LAW-ACT-FRESHNESS-HANDOFF.md` — `589364c5cd30` (11027 bytes)
 - `BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md` — `73d6eddebcec` (9953 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
+- `BRAIN/90-OPERATIONS/ACTIVITY-FEED.json` — `34d187759dca` (1441 bytes)
+- `BRAIN/90-OPERATIONS/NAYAPOWER-BACKLOG.md` — `d13e7d212199` (6823 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 ### 99-ARCHIVE — Archive
 

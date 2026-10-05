@@ -152,7 +152,10 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
-    "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
+    "90-OPERATIONS": 13,  # 11 -> 13 for 2026-10-05 shared backlog + activity feed:
+    # NAYAPOWER-BACKLOG.md (canonical shared to-do/ideas list) and
+    # ACTIVITY-FEED.json (automated 15-min activity feed) land under Shawn
+    # directive 2026-10-05. Deliberate update.
     "99-ARCHIVE": 1,
     "ROOT": 5,
 }

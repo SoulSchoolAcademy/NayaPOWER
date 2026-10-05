@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "1e1f27e116f0e724e9e2c3fd8c509b5b87504186",
-  "inventory_file_count": 200,
+  "receipt_basis_commit": "a3ce52dc7a29fe37c220c5a595952ebc34f8f418",
+  "inventory_file_count": 202,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 10,
@@ -17,7 +17,7 @@
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
-    "90-OPERATIONS": 11,
+    "90-OPERATIONS": 13,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -987,6 +987,16 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md",
       "blob_sha": "954227fe2d94f7cfb47a9d2853bc93243eeeb6b8",
       "size": 8068
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/ACTIVITY-FEED.json",
+      "blob_sha": "34d187759dcac9b13b83a87020c85d9816c0a240",
+      "size": 1441
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/NAYAPOWER-BACKLOG.md",
+      "blob_sha": "d13e7d212199d9ec960da192666d9b57312ab8d6",
+      "size": 6823
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",

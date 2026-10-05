@@ -1,0 +1,208 @@
+name: Activity Feed Publisher
+
+# Automated activity feed for the NayaPOWER organism.
+# Every 15 minutes this workflow polls the GitHub API for new repository
+# events (commits to main, PR activity, workflow run conclusions, new issues)
+# and appends them to BRAIN/90-OPERATIONS/ACTIVITY-FEED.json.
+#
+# Design rules:
+# - Read-only API polling via GITHUB_TOKEN; the only write is the feed JSON
+#   (plus the mechanical brain-index regen the repo requires for any BRAIN/
+#   change) committed back to main.
+# - Defensive: ANY API or git failure exits 0 silently. A missed tick is
+#   recovered by the next tick (watermark is timestamp-based). This workflow
+#   must never go red on transient errors.
+# - No-op ticks (no new events) commit nothing.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  publish-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Poll events and update feed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          python3 - <<'PY'
+          import json, os, subprocess, datetime, sys
+
+          FEED = "BRAIN/90-OPERATIONS/ACTIVITY-FEED.json"
+          MAX_ENTRIES = 500
+          repo = os.environ["REPO"]
+
+          def gh_api(path):
+              out = subprocess.run(
+                  ["gh", "api", path, "--paginate"],
+                  capture_output=True, text=True, timeout=90)
+              if out.returncode != 0:
+                  raise RuntimeError(f"gh api failed: {path}: {out.stderr[:300]}")
+              # --paginate concatenates pages; each page is a JSON value.
+              # For list endpoints this yields one array per page; merge them.
+              vals = []
+              dec = json.JSONDecoder()
+              s = out.stdout.strip()
+              idx = 0
+              while idx < len(s):
+                  while idx < len(s) and s[idx] in " \t\r\n":
+                      idx += 1
+                  if idx >= len(s):
+                      break
+                  obj, idx = dec.raw_decode(s, idx)
+                  vals.append(obj)
+              merged = []
+              for v in vals:
+                  if isinstance(v, list):
+                      merged.extend(v)
+                  elif isinstance(v, dict):
+                      merged.append(v)
+              return merged
+
+          def load_feed():
+              try:
+                  with open(FEED) as f:
+                      return json.load(f)
+              except Exception:
+                  return {"schema": "nayapower-activity-feed/v1",
+                          "watermark": {"last_seen": "2026-10-05T00:00:00Z"},
+                          "entries": []}
+
+          def parse_ts(s):
+              try:
+                  return datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
+              except Exception:
+                  return datetime.datetime.min.replace(tzinfo=datetime.timezone.utc)
+
+          try:
+              feed = load_feed()
+              wm = parse_ts(feed.get("watermark", {}).get("last_seen", "2026-10-05T00:00:00Z"))
+              now = datetime.datetime.now(datetime.timezone.utc)
+              new_entries = []
+              seen_urls = {e.get("url") for e in feed.get("entries", [])}
+
+              def add(ts_str, typ, title, detail, url, actor):
+                  if not url or url in seen_urls:
+                      return
+                  ts = parse_ts(ts_str)
+                  if ts <= wm:
+                      return
+                  new_entries.append({
+                      "ts": ts_str, "type": typ, "title": title[:200],
+                      "detail": (detail or "")[:500], "url": url,
+                      "actor": actor or ""})
+                  seen_urls.add(url)
+
+              # 1. Commits to main
+              for c in gh_api(f"repos/{repo}/commits?sha=main&per_page=30"):
+                  sha = c.get("sha", "")[:8]
+                  msg = (c.get("commit", {}).get("message", "") or "").split("\n")[0]
+                  author = ((c.get("commit", {}) or {}).get("author", {}) or {}).get("name", "")
+                  date = ((c.get("commit", {}) or {}).get("author", {}) or {}).get("date", "")
+                  add(date, "commit", f"commit {sha}: {msg}",
+                      f"main <- {sha}", c.get("html_url", ""), author)
+
+              # 2. Pull requests (open/closed/merged), by recency
+              for pr in gh_api(f"repos/{repo}/pulls?state=all&sort=updated&direction=desc&per_page=30"):
+                  num = pr.get("number")
+                  title = pr.get("title", "")
+                  state = "merged" if pr.get("merged_at") else pr.get("state", "")
+                  updated = pr.get("updated_at", "")
+                  user = (pr.get("user", {}) or {}).get("login", "")
+                  add(updated, "pr", f"PR #{num} {state}: {title}",
+                      f"state={state}", pr.get("html_url", ""), user)
+
+              # 3. Workflow runs (conclusions), by recency
+              runs = gh_api(f"repos/{repo}/actions/runs?per_page=30")
+              # gh_api merges pages into a list; actions/runs returns {"workflow_runs": [...]}
+              wr = []
+              for r in runs:
+                  if isinstance(r, dict) and "workflow_runs" in r:
+                      wr.extend(r["workflow_runs"])
+                  elif isinstance(r, dict) and "id" in r:
+                      wr.append(r)
+              for r in wr:
+                  rid = r.get("id")
+                  name = r.get("name", "")
+                  concl = r.get("conclusion") or r.get("status", "")
+                  created = r.get("created_at", "")
+                  sha = str(r.get("head_sha", ""))[:8]
+                  add(created, "workflow_run",
+                      f"{name} #{rid}: {concl} @ {sha}",
+                      f"event={r.get('event','')}",
+                      r.get("html_url", ""), r.get("actor", {}).get("login", "") if isinstance(r.get("actor"), dict) else "")
+
+              # 4. Issues (excluding PRs, which are covered above)
+              for iss in gh_api(f"repos/{repo}/issues?state=all&sort=updated&direction=desc&per_page=30"):
+                  if "pull_request" in iss:
+                      continue
+                  num = iss.get("number")
+                  title = iss.get("title", "")
+                  updated = iss.get("updated_at", "")
+                  user = (iss.get("user", {}) or {}).get("login", "")
+                  add(updated, "issue", f"issue #{num} {iss.get('state','')}: {title}",
+                      "", iss.get("html_url", ""), user)
+
+              if not new_entries:
+                  print("No new events since watermark; nothing to commit.")
+                  sys.exit(0)
+
+              new_entries.sort(key=lambda e: e["ts"])
+              entries = feed.get("entries", []) + new_entries
+              entries = entries[-MAX_ENTRIES:]
+              feed["entries"] = entries
+              feed["watermark"] = {"last_seen": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                   "event_count": len(entries)}
+
+              with open(FEED, "w") as f:
+                  json.dump(feed, f, indent=2)
+                  f.write("\n")
+              print(f"Appended {len(new_entries)} new events; feed now {len(entries)} entries.")
+          except Exception as e:
+              # Defensive: never fail loudly on transient errors.
+              print(f"poll skipped (transient): {str(e)[:300]}")
+              sys.exit(0)
+          PY
+
+      - name: Regenerate brain index (mechanical, required for any BRAIN/ change)
+        shell: bash
+        run: |
+          if git diff --quiet -- BRAIN/90-OPERATIONS/ACTIVITY-FEED.json; then
+            echo "No feed change; skipping index regen."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add BRAIN/90-OPERATIONS/ACTIVITY-FEED.json
+          git commit -m "activity-feed: automated event poll" --quiet
+          python3 tools/regenerate_brain_index.py
+          git add BRAIN/NAYAPOWER-BRAIN-INDEX.json BRAIN/REAL-TREE.json BRAIN/REAL-TREE.md
+          git commit -m "activity-feed: regen brain index (mechanical)" --quiet
+          echo "Index regenerated."
+
+      - name: Push (fail quiet on race)
+        shell: bash
+        run: |
+          # Push only if we created local commits this run; anything else
+          # (no-op tick, raced main movement) exits quietly for next tick.
+          if git log --oneline origin/main..HEAD 2>/dev/null | grep -q .; then
+            git push origin HEAD:main 2>&1 || echo "push raced main movement; next tick recovers."
+          else
+            echo "Nothing to push."
+          fi
