@@ -60,6 +60,21 @@ def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
     assert 'exit 1' in block
 
 
+def test_independent_verification_reread_has_json_validated_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    for marker in ('independent-lineage-verification-$i.json', 'independent-lineage-verification.json'):
+        mpos = wf.index(marker)
+        start = wf.rindex('attempt=1; max_attempts=5', 0, mpos)
+        end = wf.index('attempt=$((attempt + 1))', mpos) + 60
+        block = wf[start:end]
+        assert 'max_attempts=5' in block
+        assert 'json.load(' in block
+        assert 'not valid JSON' in block
+        assert 'sleep $backoff' in block
+        assert 'curl exit=' in block
+        assert 'exit 1' in block
+
+
 
 def test_cold_successor_uses_canonical_lineage_verifier_and_pinned_source():
     wf = WORKFLOW.read_text(encoding="utf-8")
