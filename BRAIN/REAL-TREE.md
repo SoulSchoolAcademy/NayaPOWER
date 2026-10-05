@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `1e1f27e116f0e724e9e2c3fd8c509b5b87504186`  
-**Inventory file count:** 200  
+**Receipt basis commit:** `a3ce52dc7a29fe37c220c5a595952ebc34f8f418`  
+**Inventory file count:** 201  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 47 |
+| 05-MEMORY | 48 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -165,6 +165,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0312/IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things.md` — `096d965a992f` (18689 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md` — `2943bc256733` (6380 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/OPERATING-INTELLIGENCE/CLOUDFLARE-CONNECTION-HYGIENE/SN-0356/IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote.md` — `9d8fd7cbc8ee` (4559 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md` — `cc2bbd0ebf52` (3468 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md` — `2f1690a0c1b6` (4695 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md` — `8aa82b0ca02e` (5183 bytes)
