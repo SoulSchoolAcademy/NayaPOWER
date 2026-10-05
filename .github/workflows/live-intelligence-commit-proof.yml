@@ -358,7 +358,23 @@ jobs:
           x=json.load(open(f"fresh-lesson-lineage-ids-{i}.json"))
           json.dump({"mode":"verify",**x},open(f"verify-request-{i}.json","w"))
           PY
-              curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"verify-request-$i.json" "$RUNTIME_FUNCTION" > "independent-lineage-verification-$i.json"
+              attempt=1; max_attempts=5; backoff=5
+              while [[ $attempt -le $max_attempts ]]; do
+                if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"verify-request-$i.json" "$RUNTIME_FUNCTION" > "independent-lineage-verification-$i.json" 2>"iv-curl-stderr-$i.txt"; then
+                  if python3 -c "import json; json.load(open('independent-lineage-verification-$i.json'))" 2>/dev/null; then
+                    break
+                  fi
+                  echo "IV_REREAD_ATTEMPT_${attempt}: http ok but body is not valid JSON"
+                else
+                  ec=$?
+                  echo "IV_REREAD_ATTEMPT_${attempt}: curl exit=$ec; stderr: $(cat "iv-curl-stderr-$i.txt")"
+                fi
+                if [[ $attempt -eq $max_attempts ]]; then
+                  echo "IV_REREAD_FAILED: no valid JSON response after $max_attempts attempts"
+                  exit 1
+                fi
+                sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
+              done
               IDX="$i" python - <<'PY'
           import json, os
           i=os.environ["IDX"]
@@ -407,7 +423,23 @@ jobs:
           x=json.load(open("fresh-lesson-lineage-ids.json"))
           json.dump({"mode":"verify",**x},open("verify-request.json","w"))
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @verify-request.json "$RUNTIME_FUNCTION" > independent-lineage-verification.json
+          attempt=1; max_attempts=5; backoff=5
+          while [[ $attempt -le $max_attempts ]]; do
+            if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-request.json "$RUNTIME_FUNCTION" > independent-lineage-verification.json 2>iv-curl-stderr.txt; then
+              if python3 -c "import json; json.load(open('independent-lineage-verification.json'))" 2>/dev/null; then
+                break
+              fi
+              echo "IV_REREAD_ATTEMPT_${attempt}: http ok but body is not valid JSON"
+            else
+              ec=$?
+              echo "IV_REREAD_ATTEMPT_${attempt}: curl exit=$ec; stderr: $(cat iv-curl-stderr.txt)"
+            fi
+            if [[ $attempt -eq $max_attempts ]]; then
+              echo "IV_REREAD_FAILED: no valid JSON response after $max_attempts attempts"
+              exit 1
+            fi
+            sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
+          done
           python - <<'PY'
           import json
           r=json.load(open("independent-lineage-verification.json"))
