@@ -76,6 +76,7 @@ begin
   -- the first committed event after the lock, not race into a duplicate insert.
   perform pg_advisory_xact_lock(hashtext(uid::text || ':' || p_project_id)::bigint);
 
+  content_hash := encode(extensions.digest(p_content,'sha256'),'hex');
   v_connections := public.nayanet_normalize_block_connections(coalesce(p_connections,'[]'::jsonb), uid);
   v_content := jsonb_build_object('lesson',p_content,'topic',p_topic,'category',p_category);
   if v_capabilities is not null then
