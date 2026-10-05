@@ -1105,6 +1105,44 @@
       "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96"
     },
     {
+      "smart_note_id": "SN-0355",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2",
+      "content_hash": "f455bb346dd86aa997d1941db9edac533cbe5f81596cf7b851f7c425bcc2a776",
+      "title": "The Nonstop Loop — NayaPOWER Operating Code",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING_CODE",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "a494048a-140e-4473-bc48-cf17a6c46fc3",
+        "lineage_id": "1feb2889-1a82-4d03-89fd-2e2ef399cc6d",
+        "relationship_id": "cc5ce287-f04d-40cd-a835-efc407f4d40e",
+        "runtime_index_id": "1cbc2a8f-23ef-4525-b0bc-8bf438eb7b77",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "5d3aa695-f1c1-481c-a695-7ad96f1f882c"
+      }
+    },
+    {
       "smart_note_id": "SN-041",
       "intelligent_block_id": "IB-SMART-NOTE-20261004-sn041-discernment-operating-law",
       "title": "Discernment-to-Compounding Operating Law — Understand Meaning, Distill Intelligence, Act with Evidence, Learn Fast",
@@ -1234,6 +1272,9 @@
       "topic": "GOVERNANCE",
       "subtopic": "OPERATING_CODE",
       "truth_state": "CANDIDATE",
+      "lifecycle_state": "SUPERSEDED",
+      "superseded_by_capture_id": "20261005-sn0355-nonstop-loop-r2",
+      "supersession_reason": "R2 preserves the director-ratified Nonstop Loop while correcting SN-002 capture conformance and restoring the intended stable human ID SN-0355. R1 runtime provenance remains immutable.",
       "scope": "PRIVATE",
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
@@ -1263,7 +1304,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 347,
+    "next_sequence": 356,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
