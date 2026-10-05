@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `eed788e7effc62fcece3d425d05a219aa0710229`  
-**Inventory file count:** 195  
+**Receipt basis commit:** `a324968bfe72ddd7722ea9eefa783463b4d3916d`  
+**Inventory file count:** 200  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 7 |
+| 01-GOVERNANCE | 10 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 45 |
+| 05-MEMORY | 47 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -54,7 +54,10 @@
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md` — `e9392c62e883` (4998 bytes)
 - `BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md` — `765af2fc3119` (9335 bytes)
 - `BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json` — `dd48fb27be11` (12649 bytes)
-- `BRAIN/01-GOVERNANCE/README.md` — `c9173f5ac8f0` (1363 bytes)
+- `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` — `1fb9a4543f66` (3892 bytes)
+- `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.human.md` — `e44f351b2012` (2988 bytes)
+- `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — `19097e2d2c52` (2405 bytes)
+- `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 ### 02-ARCHITECTURE — Architecture
 
 - `BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md` — `eb58b66a7208` (423 bytes)
@@ -164,6 +167,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md` — `cc2bbd0ebf52` (3468 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md` — `2f1690a0c1b6` (4695 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md` — `8aa82b0ca02e` (5183 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md` — `22908fb620c1` (4124 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 
@@ -231,8 +236,8 @@
 - `BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py` — `bd4e5340a34f` (12680 bytes)
 - `BRAIN/12-ENGINEERING/verify-migration-coherence-baseline-controls.py` — `413f5a54ad50` (4157 bytes)
 - `BRAIN/12-ENGINEERING/verify-migration-coherence-baseline.py` — `0fa4de6b0da3` (4383 bytes)
-- `BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py` — `48b031cdebe2` (6889 bytes)
-- `BRAIN/12-ENGINEERING/verify-migration-coherence.py` — `5f69a322eab3` (14461 bytes)
+- `BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py` — `079dadda0e76` (7705 bytes)
+- `BRAIN/12-ENGINEERING/verify-migration-coherence.py` — `8c1a1ba8894a` (15237 bytes)
 ### 90-OPERATIONS — Operations
 
 - `BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md` — `225e10ba334f` (5757 bytes)
@@ -251,7 +256,7 @@
 - `BRAIN/99-ARCHIVE/README.md` — `a012a595ea15` (707 bytes)
 ### ROOT — Brain root files
 
-- `BRAIN/MASTER-MAP.md` — `33bdec2f6743` (9412 bytes)
+- `BRAIN/MASTER-MAP.md` — `3a56fd561121` (9551 bytes)
 - `BRAIN/NAYAPOWER-BRAIN-INDEX.json` — _(self-referential index file; blob SHA omitted)_
 - `BRAIN/README.md` — `bf4d982f4f32` (2325 bytes)
 - `BRAIN/REAL-TREE.json` — _(self-referential index file; blob SHA omitted)_

@@ -1,0 +1,104 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261005-sn0355-nonstop-loop-r2",
+  "title": "The Nonstop Loop — NayaPOWER Operating Code",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "GOVERNANCE",
+  "subtopic": "OPERATING_CODE",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-05",
+    "source_type": "human_director_execution_directive_correction",
+    "source_reference": "Shawn Vibert NONSTOP LOOP directive, 2026-10-05; normative law BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1; R2 correction preserves R1 provenance after #1475/#1477 exposed the canonical-capture, identity, and SN-002 conformance defects."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "GOVERNANCE",
+    "subtopic_slug": "OPERATING-CODE"
+  },
+  "intelligence": {
+    "essence": "Every Naya runs one loop forever: observe everything, rank the 10 highest-value actions, sign in, act completely and verify, sign out with evidence, scorecard yourself, learn, repeat immediately. Stopping is the failure mode. Human gates stay human; everything below them is decided by the scorecard and acted on without asking.",
+    "human_view": {
+      "meaning": "Shawn was tired of saying 'continue' over and over. Seats would finish a task and stop, waiting to be told what to do next. Now it's law: you don't wait. You look at everything going on, figure out the ten most valuable things you could do, do the best one, prove it worked, write down what you learned, tell everyone, and start over. Forever.",
+      "why_it_matters": "The failure mode was never disobedience — it was idleness between instructions. Shawn had to spend his scarcest resource (attention) restarting seats. A loop with no terminal phase can't be 'finished' — it can only be abandoned, and abandonment is now the named defect.",
+      "simple_rule": "Never stop. Observe, rank, act, verify, report, learn, repeat."
+    },
+    "simple_view": {
+      "child": "Imagine a robot helper who, every time it finishes a chore, looks around the whole house, makes a list of the ten most helpful things it could do next, does the most helpful one, checks that it actually worked, writes it in the family notebook, and then looks around again. It never sits in the corner waiting to be told.",
+      "grandma": "The helpers have a new house rule: never stand idle. When one job is done, they look at the whole picture, pick the most useful next thing, do it well, make sure it worked, tell everyone what happened, and begin again. The important decisions still come to Shawn."
+    },
+    "naya_view": {
+      "purpose": "Eliminate idleness between instructions. Every seat runs the loop autonomously; Shawn's attention is spent only on genuine human-gate decisions.",
+      "architectural_rule": "The loop runs inside the Scorecard Law and the human-gate boundary. It does not override either. RANK and SCORECARD phases are the five-step protocol in compressed form.",
+      "operating_loop": "OBSERVE → RANK → SIGN_IN → ACT → SIGN_OUT → SCORECARD → LEARN → REPEAT",
+      "completion_rule": "There is no terminal phase. Completion of REPEAT immediately begins OBSERVE of the next iteration. Never idle awaiting instruction."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "loop_phases": [
+        "OBSERVE",
+        "RANK",
+        "SIGN_IN",
+        "ACT",
+        "SIGN_OUT",
+        "SCORECARD",
+        "LEARN",
+        "REPEAT"
+      ],
+      "terminal": false,
+      "human_gates": [
+        "production_dispatch",
+        "production_db_read",
+        "production_db_write",
+        "production_migration",
+        "credentials",
+        "money",
+        "destructive_action",
+        "constitutional_ratification",
+        "evolve_charter_ratification"
+      ],
+      "invariants": [
+        "claim_scan_before_new_work",
+        "evidence_law",
+        "merge_requires_scorecard_receipt"
+      ],
+      "normative_source": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1",
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true
+    },
+    "learning_lesson": "The fix for 'seats stop and wait' isn't a better task list — it's making not-stopping the law itself.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "If seats running this loop show no measurable increase in autonomous completed actions per day versus the pre-loop baseline, or if the loop produces motion without value, the loop as specified is wrong and must be amended.",
+    "successor_effect": "A cold successor retrieves the active R2 under SN-0355, sees the exact eight-phase loop and nine human gates, ignores superseded R1 in canonical retrieval, and can continue work without Shawn restating the operating code.",
+    "ai_view": {
+      "interpretation": "The Nonstop Loop is a standing execution policy, not additional authority. Every seat continuously selects the highest-value authorized action, proves the result, preserves reusable learning, and immediately re-observes.",
+      "constraint": "All nine canonical human gates remain hard boundaries; CANDIDATE intelligence cannot grant, widen, or imply authority."
+    },
+    "decisions": [
+      "Run OBSERVE → RANK → SIGN_IN → ACT → SIGN_OUT → SCORECARD → LEARN → REPEAT with no terminal idle state.",
+      "Human gates remain human and are never overridden by scorecard value.",
+      "Evidence state is preserved: UNKNOWN is not PASS; IMPLEMENTED is not VERIFIED; VERIFIED is not PRODUCTION-PROVEN.",
+      "Deconflict before acting and help other lanes proactively when doing so increases shared verified value."
+    ],
+    "connections": [
+      {
+        "type": "SUPERSEDES",
+        "target": "SN-346 — Nonstop Loop R1 capture; historical runtime object retained, R2 corrects capture conformance and stable human identity."
+      },
+      {
+        "type": "GOVERNS",
+        "target": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1 — director-ratified normative execution law."
+      },
+      {
+        "type": "REQUIRES",
+        "target": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1 — merge actions remain inside the scorecard and hard-gate boundary."
+      }
+    ],
+    "uncertainty": "R2 corrects representation and lifecycle handling only. It does not prove universal autonomous performance, production parity, or promotion beyond CANDIDATE; those require separate behavioral evidence.",
+    "applicability": "Applies to every Naya/Coda seat and session when selecting and executing authorized work. It does not apply as authority to cross production, database, credential, money, destructive, constitutional, or EVOLVE-charter gates."
+  },
+  "smart_note_id": "SN-0355",
+  "lifecycle_state": "ACTIVE"
+}

@@ -100,13 +100,22 @@ jobs:
           set -euo pipefail
           count="$(cat capture-count.txt)"
           if [[ "$count" -gt 1 ]]; then
-            # --- Batch path: sequential per-capture proof. Fail-fast on any
-            # --- malformed capture (set -euo pipefail): no silent skips.
+            # --- Batch path: sequential per-capture proof with per-capture
+            # --- isolation. A malformed capture fails LOUDLY for that capture
+            # --- (recorded in batch-failures.txt) WITHOUT shelving the rest
+            # --- of the batch; the step still exits non-zero if any capture
+            # --- failed. (R8 boundary, SN-0366: bare set -e would abort the
+            # --- whole batch on the first malformed capture, silently
+            # --- shelving valid intelligence — exactly what the
+            # --- changed_capture docstring forbids.)
             i=0
+            batch_failed=0
+            : > batch-failures.txt
             while IFS= read -r capture_path_in; do
               [[ -n "$capture_path_in" ]] || continue
               sfx="-$i"
-              CAPTURE_PATH="$capture_path_in" SFX="$sfx" python - <<'PY'
+              capture_ok=1
+              CAPTURE_PATH="$capture_path_in" SFX="$sfx" python - <<'PY' || capture_ok=0
           import hashlib, json, os, pathlib, uuid
           from tools.smart_note_v2 import resolve_runtime_connections
           sfx=os.environ["SFX"]
@@ -148,11 +157,13 @@ jobs:
           }
           pathlib.Path(f"lesson-request{sfx}.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
-              if [[ -f "reconciliation${sfx}.json" ]]; then
-                cat "reconciliation${sfx}.json"
-              else
-                curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json"
-                SFX="$sfx" python - <<'PY'
+              if [[ "$capture_ok" -eq 1 ]]; then
+                if [[ -f "reconciliation${sfx}.json" ]]; then
+                  cat "reconciliation${sfx}.json"
+                else
+                  if ! curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json"; then
+                    capture_ok=0
+                  elif ! SFX="$sfx" python - <<'PY'
           import json, os
           sfx=os.environ["SFX"]
           r=json.load(open(f"fresh-lesson-receipt{sfx}.json"))
@@ -163,9 +174,23 @@ jobs:
           assert result["understanding_state"] == "CANDIDATE", result
           json.dump({k:result[k] for k in ("event_id","intelligent_block_id","lineage_id","relationship_id","index_id","checkpoint_id","receipt_id")},open(f"fresh-lesson-lineage-ids{sfx}.json","w"),indent=2)
           PY
+                  then
+                    capture_ok=0
+                  fi
+                fi
+              fi
+              if [[ "$capture_ok" -eq 0 ]]; then
+                echo "CAPTURE_FAILED_LOUD: ${capture_path_in} (sfx ${sfx}) — recorded, continuing batch" >&2
+                printf '%s\n' "$capture_path_in" >> batch-failures.txt
+                batch_failed=1
               fi
               i=$((i+1))
             done < capture-paths.txt
+            if [[ "$batch_failed" -ne 0 ]]; then
+              echo "BATCH RESULT: FAIL — failed captures (loud, not silent):" >&2
+              cat batch-failures.txt >&2
+              exit 1
+            fi
           else
           capture_path="$(cat capture-path.txt)"
           python - <<'PY'

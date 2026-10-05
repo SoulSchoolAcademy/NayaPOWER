@@ -16,7 +16,8 @@ Before changing code, documentation, infrastructure, or configuration:
 8. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
 9. Read ratified project intelligence from `.naya/project-intelligence/`.
 10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
-11. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+11. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` and `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — standing NONSTOP LOOP operating law and machine twin.
+12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
