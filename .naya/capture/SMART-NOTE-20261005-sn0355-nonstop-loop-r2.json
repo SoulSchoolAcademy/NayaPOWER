@@ -8,7 +8,6 @@
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
   "source": {
     "captured_at": "2026-10-05",
-    "captured_at_utc": "2026-10-05T16:45:00Z",
     "source_type": "human_director_execution_directive_correction",
     "source_reference": "Shawn Vibert NONSTOP LOOP directive, 2026-10-05; normative law BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1; R2 correction preserves R1 provenance after #1475/#1477 exposed the canonical-capture, identity, and SN-002 conformance defects."
   },
