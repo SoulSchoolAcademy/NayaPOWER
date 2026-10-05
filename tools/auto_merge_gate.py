@@ -233,7 +233,7 @@ def _check_receipt(receipt, reasons):
         if not receipt.get("owning_seat_ack_comment_id"):
             reasons.append(
                 "H4: merge is outside the author's lane; "
-                "owning_seat_ack_comment_id (owning seat's #1354 acknowledgment) is required"
+                "owning_seat_ack_comment_id (owning seat's #554 acknowledgment) is required"
             )
     return tier
 
@@ -296,10 +296,10 @@ def may_auto_merge(pr_state):
             f"(verified {main_tip}, now {tip_at_merge}); re-verify currency before merging"
         )
 
-    # ---- P5: intent posted on #1354
+    # ---- P5: intent posted on #554
     intent_id = get("intent_comment_id")
     if not isinstance(intent_id, int):
-        reasons.append("P5: intent_comment_id missing — intent must be posted to #1354 before merging")
+        reasons.append("P5: intent_comment_id missing — intent must be posted to #554 before merging")
 
     # ---- P6: deconfliction re-fetch
     if _parse_ts(get("deconfliction_refetch_at")) is None:
