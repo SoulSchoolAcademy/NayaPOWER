@@ -4,9 +4,15 @@
 -- VERIFY-locked-only packaging, fail-closed refusals, structural
 -- no-authority-transfer, and grant posture.
 --
--- CONTROLS WRITTEN, NOT EXECUTED IN THIS CYCLE: no PostgreSQL in the loop
--- VM (EVIDENCE GAP, recorded). Parse-verified with the genuine PostgreSQL
--- parser (pglast). Execution is CI / scratch-DB work.
+-- CONTROLS EXECUTED 2026-10-05 (UTC) on a genuine PostgreSQL 16 scratch DB:
+-- 15/15 PASS (3 positive / 6 negative / 2 structural / 4 grant). Parse-verified
+-- with the genuine PostgreSQL parser (pglast). Non-vacuity proven by mutant
+-- kill: block-lock removed => EV-N1 catches; rel-verified removed => EV-N3
+-- catches. EV-P2 repaired 2026-10-05: the original nested the packaging call
+-- inside the asserting SELECT; the outer scan uses the statement-start MVCC
+-- snapshot, which predates the initplan's INSERT (0 rows => false failure).
+-- The call now runs in its own statement. (TEST DEFECT in this file, not a
+-- bug in the migration.)
 \set QUIET on
 \pset footer off
 create extension if not exists pgcrypto;
@@ -146,14 +152,22 @@ select verify_assert('EV-P1b exactly one handoff row, authority_inherited=false,
      and bool_and((proof->'verify_locked'->'verified_relationships')::text <> '[]')
    from public.nayanet_successor_handoffs));
 
+-- EV-P2 note: the packaging call MUST run in its own statement. A call nested
+-- inside the asserting SELECT cannot see its own freshly inserted row: the
+-- outer scan uses the statement-start MVCC snapshot, which predates the
+-- initplan's INSERT (0 rows => false failure). Separate statements see the
+-- committed row.
+do $$
+begin
+  perform public.nayanet_evolve_package_successor(
+    current_setting('verify.a')::uuid, 'NAYA-4', 'SUCCESSOR-2', 'm2',
+    current_setting('verify.blk_locked')::uuid);
+end $$;
+
 select verify_assert('EV-P2 locked block with no relationships => packaged, empty verified list',
-  (select (s.proof->'verify_locked'->'verified_relationships') = '[]'::jsonb
-   from (select h.proof from public.nayanet_successor_handoffs h
-         where h.successor_node_id = (
-           select r.receipt->>'successor_node_id'
-           from public.nayanet_evolve_package_successor(
-             current_setting('verify.a')::uuid, 'NAYA-4', 'SUCCESSOR-2', 'm2',
-             current_setting('verify.blk_locked')::uuid) as r(receipt))) as s));
+  (select (proof->'verify_locked'->'verified_relationships') = '[]'::jsonb
+   from public.nayanet_successor_handoffs
+   where successor_node_id = 'SUCCESSOR-2'));
 
 -- ---- negative controls ----------------------------------------------------
 do $$
