@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "c8e738616153e3c0523b8e4fba543836418308ed",
-  "inventory_file_count": 205,
+  "receipt_basis_commit": "5162b1ec5620a298a0ba1f6a6b06b9c0452e8e12",
+  "inventory_file_count": 206,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 13,
+    "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -155,13 +155,18 @@
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
-      "blob_sha": "781bfe1b39a6cb57aeb34e3e3797cd6a11ea1d3f",
-      "size": 7827
+      "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+      "size": 9313
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
+      "blob_sha": "c469937962ebb1776b391a7c2a525ab615d52cb1",
+      "size": 22689
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
