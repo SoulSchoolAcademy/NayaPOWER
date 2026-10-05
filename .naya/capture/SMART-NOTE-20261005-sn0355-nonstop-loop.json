@@ -1,5 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0355",
   "capture_id": "20261005-sn0355-nonstop-loop",
   "title": "The Nonstop Loop — NayaPOWER Operating Code",
   "category": "SYSTEM_INTELLIGENCE",
@@ -38,6 +39,7 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
       "loop_phases": ["OBSERVE", "RANK", "SIGN_IN", "ACT", "SIGN_OUT", "SCORECARD", "LEARN", "REPEAT"],
       "terminal": false,
       "human_gates": ["production_dispatch", "production_db_read", "production_db_write", "production_migration", "credentials", "money", "destructive_action", "constitutional_ratification", "evolve_charter_ratification"],
