@@ -1,34 +1,41 @@
 {
   "schema": "naya.governance.nonstop-loop.v1",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "status": "DIRECTOR-RATIFIED",
   "ratified_by": "Shawn Vibert",
   "ratified_date": "2026-10-05",
   "scope": "all_seats_all_lanes",
+  "coordination_surface": "github_issue_554",
   "loop": {
     "terminal": false,
     "phases": [
-      {"n": 1, "name": "OBSERVE", "requires": ["live_board", "main_sha", "open_prs", "scorecard_state", "red_checks", "blocked_items", "lane_activity"], "rule": "re-fetch immediately before acting; never act on stale data"},
-      {"n": 2, "name": "RANK", "requires": ["candidate_actions_max_10"], "scores": ["value", "reversibility", "risk", "mission_alignment"], "rule": "highest score wins; decisive scorecard => act without asking"},
-      {"n": 3, "name": "SIGN_IN", "requires": ["board_post_what_why"], "rule": "state not events"},
-      {"n": 4, "name": "ACT", "requires": ["complete_execution", "evidence_verification_on_exact_bytes"], "rule": "unverified action is not done"},
-      {"n": 5, "name": "SIGN_OUT", "requires": ["board_post_done_evidence_broken_next_owners"], "rule": "or explicit no_action_needed"},
-      {"n": 6, "name": "SCORECARD", "requires": ["five_step_self_score"], "rule": "honest score; owned low beats faked high"},
-      {"n": 7, "name": "LEARN", "requires": ["capture_test"], "rule": "would this change a future decision? if yes+evidence => Smart Note"},
-      {"n": 8, "name": "REPEAT", "requires": [], "rule": "begin phase 1 immediately; never idle; stopping is the failure mode"}
+      {"n": 1, "name": "OBSERVE", "requires": ["live_board_554", "main_sha", "open_prs", "scorecard_state", "red_checks", "blocked_items", "lane_activity"], "rule": "re-fetch current state before acting; never act on stale data"},
+      {"n": 2, "name": "RANK", "requires": ["candidate_actions_max_10", "hard_gate_filter"], "scores": ["verified_value", "reversibility", "risk_blast_radius", "mission_alignment", "cost_of_inaction"], "rule": "highest-value admissible action wins"},
+      {"n": 3, "name": "SIGN_IN", "requires": ["board_post_what_why_scope_evidence_intent"], "rule": "state not events; Team Naya coordination uses Issue #554"},
+      {"n": 4, "name": "ACT", "requires": ["complete_execution_within_authority"], "rule": "do not report partial work as complete; never cross human gates"},
+      {"n": 5, "name": "VERIFY", "requires": ["exact_state_or_bytes_evidence", "independent_evidence_when_warranted"], "rule": "unverified action is not done"},
+      {"n": 6, "name": "SIGN_OUT", "requires": ["done", "evidence", "broken_or_none", "blockers_or_unknowns", "owner", "exactly_one_next_action"], "rule": "or explicit no_action_needed"},
+      {"n": 7, "name": "SCORECARD", "requires": ["valid_five_step_scorecard_receipt"], "rule": "honest score; hard gates cannot be overridden"},
+      {"n": 8, "name": "LEARN", "requires": ["capture_test"], "rule": "if evidence-backed learning would change a future decision, capture through canonical Smart Note path"},
+      {"n": 9, "name": "REPEAT", "requires": [], "rule": "begin OBSERVE immediately; never idle; stopping is the failure mode"}
     ]
   },
   "invariants": {
     "human_gates_never_crossed": ["production_dispatch", "production_db_read", "production_db_write", "production_migration", "credentials", "money", "destructive_action", "constitutional_ratification", "evolve_charter_ratification"],
-    "no_duplicate_lanes": "board claim scan before new work; on COLLISION coordinate or stand down",
+    "capability_never_creates_authority": true,
+    "no_duplicate_lanes": "claim scan before new work; on COLLISION coordinate or stand down",
     "evidence_law": "UNKNOWN!=PASS,BLOCKED!=PASS,IMPLEMENTED!=VERIFIED,VERIFIED!=PRODUCTION-PROVEN",
-    "merge_protocol": "no merge without five-step scorecard receipt on #1354"
+    "merge_protocol": "no merge without valid five-step Scorecard Law receipt publicly posted on Issue #554",
+    "handoff": "every consequential sign-out leaves durable evidence and exactly one successor action",
+    "board_truth_boundary": "Issue #554 is coordination; canonical files and verified evidence establish truth",
+    "correction_duty": "own errors publicly within one cycle; repair mechanism, verify, continue"
   },
   "failure_recovery": {
     "idle": "re-observe and re-rank immediately",
-    "uncertain": "take highest-value reversible action",
-    "blocked_human_gate": "record blocker with owner; continue with next item",
-    "blocked_other_lane": "coordinate on #1354; never silent workaround",
-    "error_made": "own publicly within one cycle; repair mechanism not just instance"
+    "uncertain": "READ_MORE when cheap evidence could materially change ranking; otherwise highest-value reversible authorized action",
+    "blocked_human_gate": "record blocker and owner; continue with next admissible action",
+    "blocked_other_lane": "coordinate on Issue #554; never silent workaround",
+    "verification_failed": "mark incomplete; diagnose, repair or re-rank",
+    "error_made": "own publicly within one cycle; repair mechanism; verify; continue"
   }
 }
