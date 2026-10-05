@@ -126,14 +126,14 @@ A cold Naya reads and verifies:
 2. **GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
 3. **BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md** + **0004-nonstop-loop-v1.machine.json** — standing execution law and machine twin
 4. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
-4. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
-5. **BRAIN/MASTER-MAP.md** — this map
-6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — declared kernel/runtime-binding state
-7. **BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md** + **0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md** — current execution projection
-8. **Live GitHub main / open priority work / current runtime and proof evidence** — fresher evidence outranks dated projections
-9. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
-10. **BRAIN/06-PROOF/** — evidence and verification
-11. **BRAIN/08-SUCCESSION/** — successor context
+5. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
+6. **BRAIN/MASTER-MAP.md** — this map
+7. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — declared kernel/runtime-binding state
+8. **BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md** + **0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md** — current execution projection
+9. **Live GitHub main / open priority work / current runtime and proof evidence** — fresher evidence outranks dated projections
+10. **BRAIN/04-INTELLIGENCE/** — relevant canonical intelligence
+11. **BRAIN/06-PROOF/** — evidence and verification
+12. **BRAIN/08-SUCCESSION/** — successor context
 
 The system must be discoverable without Shawn reconstructing it.
 
