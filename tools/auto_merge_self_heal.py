@@ -2,7 +2,7 @@
 """Self-healing revert for FULL-AUTO-MERGE-V1 hardening clause H3.
 
 Rule: if an auto-merge turns the verification battery red, the merge is
-automatically reverted and the evidence is posted to #1354. The loop heals
+automatically reverted and the evidence is posted to #554. The loop heals
 itself; no human needed.
 
 This helper performs the revert half. The battery watch (which already
@@ -17,7 +17,7 @@ Usage:
     python3 tools/auto_merge_self_heal.py <merge_sha> <evidence_json_path>
 
 evidence_json_path: JSON with {"battery": "...", "failing_checks": [...],
-"detected_at": "...", "reported_by": "..."} — posted to #1354 with the revert.
+"detected_at": "...", "reported_by": "..."} — posted to #554 with the revert.
 
 Stdlib only. Uses ~/workspace/naya/bin/gh-api for GitHub API calls.
 """
