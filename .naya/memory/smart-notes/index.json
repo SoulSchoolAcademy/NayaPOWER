@@ -1011,6 +1011,41 @@
       "content_hash": "cbfa37d970c5fdacf0b53520f12d2f66d11780982f96d6029c979839151806d5"
     },
     {
+      "smart_note_id": "SN-0344",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule",
+      "content_hash": "02ad8dc9f7b098e794aaeab6c363e5e91524c91b3844a099238c934e277cf1f7",
+      "title": "Canary synthetic red-check repair-drill rule — open a drill repair PR for canary experiment signals",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "CANARY_EXPERIMENT_SIGNALS",
+      "subtopic": "SYNTHETIC_RED_CHECK_REPAIR_DRILL",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "5d84af69-6aa7-4191-bef6-3f21354766ed",
+        "lineage_id": "3a4cbe6d-8e09-4985-b317-4ceeea30534d",
+        "relationship_id": "c9f630eb-70fb-491c-9879-5bf0abf61095",
+        "runtime_index_id": "dd1bc335-5d31-4d6e-904f-dbbb312caf99",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "154c257a-982e-426f-b4b3-1e6999e1a87e"
+      }
+    },
+    {
       "smart_note_id": "SN-035",
       "intelligent_block_id": "IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate",
       "title": "NayaPOWER Charter Stratification & Quality Gate — Thesis, Law, Mission, Mechanism, and 10/10 Discipline",
@@ -1168,7 +1203,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 313,
+    "next_sequence": 345,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
