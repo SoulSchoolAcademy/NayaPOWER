@@ -40,14 +40,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          expected="${{ inputs.expected_source_sha }}"
+          # Trim all whitespace: hand-pasted SHAs often carry a trailing newline/space,
+          # which would fail the exact-match binding check below for no good reason.
+          expected="$(printf '%s' "${{ inputs.expected_source_sha }}" | tr -d '[:space:]')"
           if [ -z "$expected" ]; then
             expected="${{ github.sha }}"
           fi
           resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
           printf '%s' "$resolved" > resolved-source-sha.txt
-          echo "expected_source_sha=$expected"
-          echo "resolved_main_sha=$resolved"
+          echo "expected_source_sha=$expected (len ${#expected})"
+          echo "resolved_main_sha=$resolved (len ${#resolved})"
           if [ "$resolved" != "$expected" ]; then
             echo "SOURCE BINDING MISMATCH: refs/heads/main resolved to $resolved, expected $expected. Failing closed."
             exit 1
