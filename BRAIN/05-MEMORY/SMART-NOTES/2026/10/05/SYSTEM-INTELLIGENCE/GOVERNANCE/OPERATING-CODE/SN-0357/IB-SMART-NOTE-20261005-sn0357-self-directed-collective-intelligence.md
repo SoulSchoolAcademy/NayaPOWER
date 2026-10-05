@@ -117,7 +117,7 @@ Use the existing Nonstop Loop and Scorecard Law. Treat the collective as one sys
 
 ## ⚠️ TRUTH BOUNDARY / UNCERTAINTY
 
-The operating law is Director-ratified. This Smart Note remains a candidate memory projection until the repository's normal Smart Note indexing/promotion machinery independently records and verifies it. No claim here grants production authority or bypasses existing human gates.
+The operating law is Director-ratified. This Smart Note remains a candidate memory projection the repository projection is now registered in the Smart Note index; runtime promotion remains separately evidence-gated. No claim here grants production authority or bypasses existing human gates.
 
 ## ➜ NEXT ACTION / SUCCESS CONDITION
 
