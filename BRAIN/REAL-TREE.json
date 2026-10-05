@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
-  "inventory_file_count": 186,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "9f28af1dc1017375605f59cd25e0be55bc794f63",
+  "inventory_file_count": 190,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 41,
+    "05-MEMORY": 45,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -587,6 +587,26 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md",
       "blob_sha": "305262427a264508f0fe1c35364962d10dbe5980",
       "size": 8450
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/VALUE-ALIGNMENT/CONSTITUTION-PROTOCOL/SN-0304/IB-SMART-NOTE-20261004-sn0304-constitution-protocol.md",
+      "blob_sha": "91d9750e74542f1f8c22fb681e52f80684c19c53",
+      "size": 6164
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/HUMAN-NEXUS-CODEX/SN-0310/IB-SMART-NOTE-20261004-sn0310-human-nexus-codex.md",
+      "blob_sha": "ad863ac4b6c00a2cc4821beb86845c0480ef7787",
+      "size": 11173
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/WHITE-PAPER-TRILOGY/SN-0302/IB-SMART-NOTE-20261004-sn0302-white-paper-trilogy.md",
+      "blob_sha": "e3a65c4436300959f698d0f54642181dc7862ca9",
+      "size": 6231
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/WISDOM-THESIS/SN-0303/IB-SMART-NOTE-20261004-sn0303-wisdom-thesis.md",
+      "blob_sha": "1621b474bb7b2109e4df69aea686d250511b361c",
+      "size": 6334
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
