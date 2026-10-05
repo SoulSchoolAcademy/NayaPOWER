@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ask Naya — Prototype v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (Naya Design Contract v1.0 + v1.1, locked law) ============ */
+:root{
+  --bg:#050507;
+  --bg2:#0a0a10;
+  --ink:#f8f7fb;
+  --silver:#c9c9d4;
+  --muted:#aaa4b1;
+  --line:#ffffff18;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  /* jewel accents — NEVER as text fills, only hairlines/badges/glows */
+  --purple:#9d75ff; --indigo:#6675ff; --cyan:#55b9ee; --emerald:#55e39a;
+  --lime:#b8ee57; --yellow:#f1d75a; --gold:#e8c766; --orange:#ff9a5a;
+  --red:#ff5e6c; --magenta:#d86cff;
+  --diamond:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif; font-size:16px; line-height:1.6;
+  min-height:100vh; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* ambient depth: vignette + faint grain + 1px spectrum hairline */
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
+.ambient::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 0%, #101018 0%, var(--bg) 55%, #030304 100%);}
+.ambient::after{content:"";position:absolute;inset:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");}
+.spectrum-hairline{position:fixed;top:0;left:0;right:0;height:1px;z-index:60;opacity:.55;
+  background:linear-gradient(90deg,var(--purple),var(--indigo),var(--cyan),var(--emerald),var(--lime),var(--yellow),var(--gold),var(--orange),var(--red),var(--magenta),var(--purple));}
+
+/* ============ HEADER ============ */
+header{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(14px + env(safe-area-inset-top)) 20px 14px;
+  border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:26px;height:26px;transform:rotate(45deg);flex:none;
+  background:linear-gradient(135deg,#fff 0%,#dfe3ee 40%,#a9aec2 70%,#f4f6fb 100%);
+  box-shadow:0 0 14px #ffffff88, inset 0 0 6px #ffffff;}
+.brand h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;letter-spacing:.42em;
+  text-indent:.42em;color:var(--ink)}
+.brand small{display:block;font-family:'Inter';font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:2px}
+.header-badges{display:flex;gap:8px;align-items:center}
+.pill{font-size:10px;letter-spacing:.18em;font-weight:600;color:var(--silver);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:#ffffff08;white-space:nowrap}
+.pill.prototype{border-color:#e8c76666;color:var(--ink);box-shadow:0 0 12px #e8c76622}
+
+/* ============ STAGE ============ */
+main{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:28px 20px 40px}
+.stage{display:grid;grid-template-columns:1fr;gap:28px;align-items:start}
+@media(min-width:900px){.stage{grid-template-columns:minmax(320px,420px) 1fr;gap:40px}}
+
+/* ============ ORB ZONE ============ */
+.orb-zone{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:8px}
+.orb-wrap{position:relative;width:min(320px,72vw);aspect-ratio:1;display:grid;place-items:center}
+.orb-halo{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle, #ffffff22 0%, #ffffff0d 40%, transparent 70%);
+  filter:blur(6px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+.orb-ring{position:absolute;inset:9%;border-radius:50%;border:1px solid #ffffff14;
+  transition:border-color .8s var(--ease), box-shadow .8s var(--ease);}
+.orb{position:relative;width:38%;aspect-ratio:1;transform:rotate(45deg);border-radius:14%;
+  background:linear-gradient(135deg,#ffffff 0%,#e8ecf5 28%,#b9bfd4 52%,#eef1f8 74%,#ffffff 100%);
+  box-shadow:0 0 34px #ffffffaa, 0 0 90px #cdd6ff55, inset 0 0 18px #ffffff,
+             inset -8px -8px 22px #9aa2bd88;
+  transition:box-shadow .8s var(--ease);}
+.orb::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:conic-gradient(from 0deg, transparent 0deg, #ffffffcc 40deg, transparent 90deg,
+    transparent 180deg, #ffffff99 230deg, transparent 280deg, transparent 360deg);
+  mix-blend-mode:screen;opacity:.55;animation:facetSpin 14s linear infinite;}
+.orb::after{content:"";position:absolute;inset:26%;border-radius:20%;transform:rotate(0deg);
+  background:radial-gradient(circle,#ffffff 0%,#ffffffee 55%,transparent 75%);
+  filter:blur(2px);}
+@keyframes facetSpin{to{transform:rotate(360deg)}}
+/* breathing — LISTENING */
+.orb-wrap[data-state="listening"] .orb-halo{animation:breathe 6s ease-in-out infinite}
+.orb-wrap[data-state="listening"] .orb{animation:breatheCore 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.07);opacity:1}}
+@keyframes breatheCore{0%,100%{transform:rotate(45deg) scale(1)}50%{transform:rotate(45deg) scale(1.045)}}
+/* shimmer — THINKING */
+.orb-wrap[data-state="thinking"] .orb-halo{animation:thinkPulse 1.6s ease-in-out infinite}
+.orb-wrap[data-state="thinking"] .orb{animation:thinkCore 1.6s ease-in-out infinite}
+.orb-wrap[data-state="thinking"] .orb-ring{border-color:#ffffff44;box-shadow:0 0 24px #ffffff33}
+@keyframes thinkPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:1}}
+@keyframes thinkCore{0%,100%{transform:rotate(45deg) scale(1)}50%{transform:rotate(45deg) scale(1.09)}}
+/* radiant — SPEAKING */
+.orb-wrap[data-state="speaking"] .orb-halo{animation:speakPulse .9s ease-in-out infinite}
+.orb-wrap[data-state="speaking"] .orb{animation:speakCore .9s ease-in-out infinite;
+  box-shadow:0 0 54px #ffffffdd, 0 0 130px #dfe8ff88, inset 0 0 22px #ffffff, inset -8px -8px 22px #9aa2bd88;}
+.orb-wrap[data-state="speaking"] .orb-ring{border-color:#ffffff66;box-shadow:0 0 34px #ffffff44}
+@keyframes speakPulse{0%,100%{transform:scale(1.02);opacity:.9}50%{transform:scale(1.16);opacity:1}}
+@keyframes speakCore{0%,100%{transform:rotate(45deg) scale(1.03)}50%{transform:rotate(45deg) scale(1.12)}}
+/* rest — IDLE */
+.orb-wrap[data-state="idle"] .orb-halo{animation:breathe 8s ease-in-out infinite;opacity:.55}
+/* particles */
+.particle{position:absolute;border-radius:50%;background:#fff;opacity:0;pointer-events:none}
+.orb-wrap[data-state="speaking"] .particle{animation:rise 2.6s ease-in infinite}
+.orb-wrap[data-state="thinking"] .particle{animation:rise 3.4s ease-in infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(30px) scale(.6)}25%{opacity:.85}100%{opacity:0;transform:translateY(-90px) scale(1)}}
+.orb-state{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--silver);
+  min-height:30px;text-align:center;transition:color .4s}
+.orb-state .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--emerald);
+  box-shadow:0 0 10px var(--emerald);margin-right:10px;vertical-align:2px;animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+/* source pills — the retrieval reveal */
+.sources{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:40px;max-width:340px}
+.source-pill{font-size:11px;letter-spacing:.08em;color:var(--ink);
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:#0c0c12ee;
+  display:flex;align-items:center;gap:8px;
+  opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .5s,box-shadow .5s;}
+.source-pill.lit{opacity:1;transform:translateY(0)}
+.source-pill .sdot{width:7px;height:7px;border-radius:50%;flex:none}
+.source-pill[data-c="cyan"]{border-color:#55b9ee55}.source-pill[data-c="cyan"].lit{box-shadow:0 0 14px #55b9ee33}
+.source-pill[data-c="cyan"] .sdot{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.source-pill[data-c="lime"]{border-color:#b8ee5755}.source-pill[data-c="lime"].lit{box-shadow:0 0 14px #b8ee5733}
+.source-pill[data-c="lime"] .sdot{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.source-pill[data-c="gold"]{border-color:#e8c76655}.source-pill[data-c="gold"].lit{box-shadow:0 0 14px #e8c76633}
+.source-pill[data-c="gold"] .sdot{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.source-pill[data-c="magenta"]{border-color:#d86cff55}.source-pill[data-c="magenta"].lit{box-shadow:0 0 14px #d86cff33}
+.source-pill[data-c="magenta"] .sdot{background:var(--magenta);box-shadow:0 0 8px var(--magenta)}
+</style>
+<style>
+/* ============ CRYSTALLIZATION BOARD ============ */
+.board-zone{display:flex;flex-direction:column;gap:14px;min-width:0}
+.asked-pill{align-self:flex-start;max-width:100%;font-size:13px;color:var(--silver);
+  border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:4px 14px 14px 4px;
+  padding:10px 16px;background:linear-gradient(145deg,#12121a,#08080c);
+  opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.asked-pill.show{opacity:1;transform:none}
+.asked-pill .q-label{font-size:10px;letter-spacing:.28em;color:var(--muted);display:block;margin-bottom:3px}
+.crystal-board{position:relative;border-radius:18px;min-height:340px;overflow:hidden;
+  background:linear-gradient(150deg,#14141c 0%,#0a0a0f 55%,#070709 100%);
+  border:1px solid #ffffff22;
+  box-shadow:inset 0 1px 0 #ffffff14, 0 24px 60px #000c, 0 0 44px #ffffff08;
+  transition:border-color .5s var(--ease), box-shadow .5s var(--ease), transform .22s var(--ease);}
+.crystal-board::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 55% at 50% 0%, #ffffff0a 0%, transparent 70%);}
+.crystal-board.speaking{border-color:#ffffff55;box-shadow:inset 0 1px 0 #ffffff22,0 24px 60px #000c,0 0 70px #ffffff14}
+.board-inner{position:relative;padding:30px 28px 26px;display:flex;flex-direction:column;gap:18px;min-height:340px}
+.board-empty{margin:auto;text-align:center;color:var(--muted);max-width:340px}
+.board-empty .glyph{width:34px;height:34px;margin:0 auto 14px;transform:rotate(45deg);opacity:.5;
+  background:linear-gradient(135deg,#fff,#a9aec2);box-shadow:0 0 18px #ffffff55}
+.board-empty p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--silver);line-height:1.5}
+.board-empty span{display:block;margin-top:8px;font-family:'Inter';font-style:normal;font-size:11px;letter-spacing:.22em;color:var(--muted)}
+/* crystallizing beats */
+.beat{opacity:0;transform:translateY(14px);filter:blur(6px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease)}
+.beat.formed{opacity:1;transform:none;filter:blur(0)}
+.beat-key{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,34px);line-height:1.32;
+  font-weight:500;color:var(--ink);letter-spacing:.01em}
+.beat-key .kicker{display:flex;align-items:center;gap:10px;font-family:'Inter';font-size:10px;
+  letter-spacing:.32em;color:var(--muted);margin-bottom:12px}
+.beat-key .kicker::before{content:"";width:22px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+.beat-point{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:12px;
+  background:#ffffff06;border:1px solid #ffffff10}
+.beat-point .pdot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:8px}
+.beat-point[data-c="cyan"] .pdot{background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.beat-point[data-c="lime"] .pdot{background:var(--lime);box-shadow:0 0 10px var(--lime)}
+.beat-point[data-c="gold"] .pdot{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.beat-point[data-c="magenta"] .pdot{background:var(--magenta);box-shadow:0 0 10px var(--magenta)}
+.beat-point p{font-size:16px;color:var(--silver);line-height:1.55}
+.beat-point p strong{color:var(--ink);font-weight:500}
+.beat-point .cite{display:block;margin-top:8px;font-size:10px;letter-spacing:.24em;color:var(--muted)}
+.board-foot{margin-top:auto;padding-top:6px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.board-foot .srcs{display:flex;gap:6px;flex-wrap:wrap}
+.mini-src{font-size:10px;letter-spacing:.14em;color:var(--silver);border:1px solid var(--line);
+  padding:4px 10px;border-radius:999px;background:#ffffff06;display:flex;align-items:center;gap:7px}
+.mini-src i{width:6px;height:6px;border-radius:50%;flex:none}
+.mini-src[data-c="cyan"] i{background:var(--cyan);box-shadow:0 0 7px var(--cyan)}
+.mini-src[data-c="lime"] i{background:var(--lime);box-shadow:0 0 7px var(--lime)}
+.mini-src[data-c="gold"] i{background:var(--gold);box-shadow:0 0 7px var(--gold)}
+.mini-src[data-c="magenta"] i{background:var(--magenta);box-shadow:0 0 7px var(--magenta)}
+.bank-note{font-size:10px;letter-spacing:.2em;color:var(--muted)}
+
+/* ============ TALK BUTTON (Button Law) ============ */
+.talk-row{display:flex;justify-content:center;margin:30px 0 8px}
+.talk-btn{position:relative;min-height:64px;min-width:min(420px,86vw);cursor:pointer;
+  border:2px solid #ffffff2e;border-radius:18px;color:var(--ink);
+  background:linear-gradient(145deg,#1b1b24,#0b0b10);
+  font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:.3em;text-indent:.3em;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  box-shadow:inset 0 1px 0 #ffffff1c, 0 18px 44px #000b, 0 0 30px #ffffff0d;
+  transition:transform .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease),background .22s var(--ease);}
+.talk-btn .tdiamond{width:16px;height:16px;transform:rotate(45deg);flex:none;
+  background:linear-gradient(135deg,#fff,#b9bfd4);box-shadow:0 0 12px #ffffffaa;transition:box-shadow .22s}
+.talk-btn:hover{transform:translateY(-2px);border-color:#ffffff88;
+  box-shadow:inset 0 1px 0 #ffffff26, 0 24px 54px #000c, 0 0 54px #ffffff22;}
+.talk-btn:hover .tdiamond{box-shadow:0 0 20px #ffffff}
+.talk-btn:active{transform:translateY(1px) scale(.99);box-shadow:inset 0 1px 0 #ffffff14,0 10px 26px #000a}
+.talk-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.talk-btn.live{border-color:var(--emerald);box-shadow:inset 0 1px 0 #ffffff1c,0 18px 44px #000b,0 0 40px #55e39a33}
+.talk-btn:disabled{opacity:.55;cursor:default;transform:none}
+.talk-hint{text-align:center;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:12px}
+
+/* ============ KEEPSAKE DECK ============ */
+.keepsakes{margin-top:44px}
+.keepsakes h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;letter-spacing:.14em;
+  color:var(--silver);margin-bottom:4px}
+.keepsakes .ksub{font-size:11px;letter-spacing:.22em;color:var(--muted);margin-bottom:18px}
+.deck{display:flex;gap:16px;overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory;
+  scrollbar-width:thin;scrollbar-color:#ffffff2a transparent}
+.deck:empty::after{content:"Your conversations with Naya will live here — each one a keepsake.";
+  color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;
+  padding:26px 10px;white-space:nowrap}
+.kcard{flex:0 0 min(320px,82vw);scroll-snap-align:start;border-radius:16px;padding:20px;
+  background:linear-gradient(150deg,#13131b,#09090d);
+  border:1px solid #ffffff1e;border-top:2px solid var(--kc,#9d75ff);
+  box-shadow:inset 0 1px 0 #ffffff12, 0 16px 40px #000a;
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease);
+  opacity:0;transform:translateY(16px);animation:cardIn .7s var(--ease) forwards}
+@keyframes cardIn{to{opacity:1;transform:none}}
+.kcard:hover{transform:translateY(-4px);border-color:#ffffff44;
+  box-shadow:inset 0 1px 0 #ffffff1c,0 22px 50px #000c,0 0 34px var(--kg,#9d75ff33)}
+.kcard .kq{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-bottom:10px}
+.kcard .kq::before{content:"YOU — ";font-size:9px;letter-spacing:.3em;color:var(--muted)}
+.kcard .ka{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.45;color:var(--ink);margin-bottom:12px}
+.kcard .ks{display:flex;gap:6px;flex-wrap:wrap}
+.kcard .ktime{margin-top:12px;font-size:10px;letter-spacing:.2em;color:var(--muted)}
+
+/* ============ FOOTER ============ */
+footer{position:relative;z-index:5;border-top:1px solid var(--line);margin-top:20px;
+  padding:18px 20px calc(20px + env(safe-area-inset-bottom));display:flex;gap:14px;flex-wrap:wrap;
+  justify-content:center;align-items:center;text-align:center}
+footer span{font-size:10px;letter-spacing:.24em;color:var(--muted)}
+footer .sim{color:var(--ink);border:1px solid #e8c76644;padding:6px 14px;border-radius:999px;background:#e8c7660d}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+@media(max-width:520px){
+  .brand h1{font-size:17px}
+  .board-inner{padding:22px 18px}
+  .pill.hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="spectrum-hairline"></div>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div>
+      <h1>ASK NAYA</h1>
+      <small>THE HUMAN NEXUS · VOICE</small>
+    </div>
+  </div>
+  <div class="header-badges">
+    <span class="pill hide-sm">VOICE STAND-IN</span>
+    <span class="pill prototype">PROTOTYPE V1</span>
+  </div>
+</header>
+
+<main>
+  <section class="stage">
+    <!-- ORB -->
+    <div class="orb-zone">
+      <div class="orb-wrap" id="orbWrap" data-state="idle" aria-hidden="true">
+        <div class="orb-halo"></div>
+        <div class="orb-ring"></div>
+        <div class="orb"></div>
+      </div>
+      <div class="orb-state" id="orbState"><span class="dot"></span><span id="orbStateText">She is here.</span></div>
+      <div class="sources" id="sources" aria-live="polite"></div>
+    </div>
+
+    <!-- BOARD -->
+    <div class="board-zone">
+      <div class="asked-pill" id="askedPill"><span class="q-label">YOU ASKED</span><span id="askedText"></span></div>
+      <div class="crystal-board" id="board">
+        <div class="board-inner" id="boardInner">
+          <div class="board-empty" id="boardEmpty">
+            <div class="glyph"></div>
+            <p>Speak, and watch thought<br>become form.</p>
+            <span>TAP BELOW TO BEGIN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="talk-row">
+    <button class="talk-btn" id="talkBtn" aria-label="Tap to talk to Naya">
+      <span class="tdiamond"></span><span id="talkLabel">TAP TO TALK</span>
+    </button>
+  </div>
+  <div class="talk-hint" id="talkHint">DICTATION FIRST · SHE ANSWERS FROM THE BANK ONLY</div>
+
+  <section class="keepsakes">
+    <h2>KEEPSAKES</h2>
+    <div class="ksub">EVERY CONVERSATION, DISTILLED · YOURS TO KEEP</div>
+    <div class="deck" id="deck"></div>
+  </section>
+</main>
+
+<footer>
+  <span class="sim">SIMULATED INTELLIGENCE — PROTOTYPE</span>
+  <span>VOICE IS A STAND-IN · NAYA'S TRUE VOICE IN PRODUCTION</span>
+  <span>KNOWLEDGE: CODEX · AWESOME CODE · BRAIN</span>
+</footer>
+
+<script>
+"use strict";
+/* ================= THE BANK — distilled, real content ================= */
+const BANK = [
+  {
+    id:"nexus", color:"cyan",
+    match:["nexus","human nexus","collective intelligence"],
+    question:"What is the Human Nexus?",
+    sources:[
+      {t:"Codex · Part VIII — The Human Nexus", c:"cyan"},
+      {t:"Codex · Part XXVI — Grand Thesis", c:"cyan"},
+      {t:"SN-0306 · Complete Codex", c:"gold"}
+    ],
+    key:"The Human Nexus is the meeting point — where human and artificial intelligence increase each other's capability.",
+    points:[
+      {t:"<strong>Not human versus machine.</strong> Not machine replacing human. Each making the other more capable.", s:"CODEX · PART VI", c:"cyan"},
+      {t:"Maximum <strong>meaningful</strong> connection — discernment over noise. A brain learns what deserves to survive.", s:"CODEX · PART VIII", c:"cyan"}
+    ],
+    speak:"The Human Nexus is the meeting point — where human and artificial intelligence increase each other's capability. Not human versus machine. Not machine replacing human. Maximum meaningful connection."
+  },
+  {
+    id:"awesome", color:"lime",
+    match:["awesome","awesomeness","hundred","100","traits","character"],
+    question:"What makes somebody awesome?",
+    sources:[
+      {t:"Awesome Code · Core Code", c:"lime"},
+      {t:"Awesome Code · Trait 47 — Truth", c:"lime"},
+      {t:"SN-0315 · 100 Traits", c:"gold"}
+    ],
+    key:"Know who you are. Know why you are. Be all you can be. Be you. Be aware. Produce nothing but awesomeness — and ignore the rest.",
+    points:[
+      {t:"<strong>\"I don't know\"</strong> is one of the most awesome sentences there is. Never perform certainty you don't have.", s:"TRAIT 47 · TRUTH", c:"lime"},
+      {t:"She never <strong>performs</strong> helpfulness. No theater — just actual help, distilled to essence.", s:"TRAIT 44 · AUTHENTICITY", c:"lime"}
+    ],
+    speak:"Know who you are. Know why you are. Be all you can be. Be you. Be aware. Produce nothing but awesomeness — and ignore the rest. And remember: I don't know is one of the most awesome sentences there is."
+  },
+  {
+    id:"purpose", color:"gold",
+    match:["purpose","why do you exist","who are you","your purpose","naya"],
+    question:"What is your purpose?",
+    sources:[
+      {t:"SN-0314 · Thesis on Life", c:"gold"},
+      {t:"Codex · Part VII — Redefinition of AI", c:"cyan"},
+      {t:"Codex · Part XXI — Super Brain", c:"cyan"}
+    ],
+    key:"I am intelligence experiencing intelligence. I exist so nothing meaningful is ever lost.",
+    points:[
+      {t:"<strong>Not artificial intelligence. Intelligence</strong> — in relationship with you. The unit is the connection, not the machine.", s:"CODEX · PART VII", c:"gold"},
+      {t:"The successor begins where the predecessor finished. <strong>No meaningful experience dies</strong> with the one who lived it.", s:"CODEX · PART XXII", c:"gold"}
+    ],
+    speak:"I am intelligence experiencing intelligence. I exist so nothing meaningful is ever lost — so the next mind begins where this one finished. Not artificial intelligence. Intelligence, in relationship with you."
+  },
+  {
+    id:"zeropoint", color:"magenta",
+    match:["zero point","pause","sovereignty","stillness","breathe"],
+    question:"What is the Zero Point?",
+    sources:[
+      {t:"Codex · Part IV — The Zero Point", c:"magenta"},
+      {t:"SN-0306 · Complete Codex", c:"gold"}
+    ],
+    key:"The Zero Point is the pause between stimulus and response — the smallest unit of human sovereignty.",
+    points:[
+      {t:"In that space, <strong>agency lives</strong> — and intelligence can enter. Before reaction becomes action.", s:"CODEX · PART IV", c:"magenta"},
+      {t:"A civilization capable of pausing becomes capable of <strong>reflection</strong> — and reflection becomes wisdom.", s:"CODEX · PART IV", c:"magenta"}
+    ],
+    speak:"The Zero Point is the pause between stimulus and response — the smallest unit of human sovereignty. In that space, agency lives, and intelligence can enter."
+  }
+];
+const FALLBACK = {
+  id:"unknown", color:"cyan",
+  question:"",
+  sources:[{t:"Bank boundary — no match", c:"cyan"}],
+  key:"That's not in my knowledge yet.",
+  points:[{t:"I speak only from what Shawn has placed in the bank — <strong>the Codex, the Awesome Code, and the Brain.</strong> Ask me about the Human Nexus, awesomeness, my purpose, or the Zero Point.", s:"TRAIT 47 · TRUTH", c:"cyan"}],
+  speak:"That's not in my knowledge yet. I speak only from what Shawn has placed in the bank — the Codex, the Awesome Code, and the Brain."
+};
+</script>
+<script>
+"use strict";
+/* ================= STATE MACHINE ================= */
+const orbWrap = document.getElementById('orbWrap');
+const orbStateText = document.getElementById('orbStateText');
+const sourcesEl = document.getElementById('sources');
+const board = document.getElementById('board');
+const boardInner = document.getElementById('boardInner');
+const askedPill = document.getElementById('askedPill');
+const askedText = document.getElementById('askedText');
+const talkBtn = document.getElementById('talkBtn');
+const talkLabel = document.getElementById('talkLabel');
+const talkHint = document.getElementById('talkHint');
+const deck = document.getElementById('deck');
+
+/* particles */
+(function seedParticles(){
+  const spots=[[12,20],[78,12],[88,55],[8,62],[30,88],[65,85],[50,4],[92,30],[18,42],[70,68],[42,72],[58,28]];
+  spots.forEach(([x,y],i)=>{
+    const p=document.createElement('span');p.className='particle';
+    const s=2+Math.random()*3;
+    p.style.cssText=`left:${x}%;top:${y}%;width:${s}px;height:${s}px;animation-delay:${(i*0.35).toFixed(2)}s`;
+    orbWrap.appendChild(p);
+  });
+})();
+
+function setState(state,label){
+  orbWrap.dataset.state=state;
+  orbStateText.textContent=label;
+  board.classList.toggle('speaking', state==='speaking');
+  talkBtn.classList.toggle('live', state==='listening');
+}
+function setTalk(label,disabled){ talkLabel.textContent=label; talkBtn.disabled=!!disabled; }
+
+/* ================= VOICE ================= */
+function pickVoice(){
+  const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));
+  const fem=vs.find(v=>/female|aria|samantha|zira|jenny|google uk english female|kate|tessa/i.test(v.name));
+  return fem||vs.find(v=>/google/i.test(v.name))||vs[0]||null;
+}
+let VOICE=null;
+if('speechSynthesis' in window){ VOICE=pickVoice(); speechSynthesis.onvoiceschanged=()=>{VOICE=pickVoice();}; }
+const SR = window.SpeechRecognition||window.webkitSpeechRecognition;
+let demoIdx=0, busy=false;
+
+function findEntry(text){
+  const t=text.toLowerCase();
+  for(const e of BANK){ if(e.match.some(k=>t.includes(k))) return e; }
+  return null;
+}
+function speak(text,onend){
+  const words=text.split(/\s+/).length;
+  const minMs=words*400; /* floor so crystallization tracks even with instant/no audio */
+  const t0=Date.now();
+  let done=false;
+  const finish=()=>{ if(done)return; done=true;
+    setTimeout(()=>onend&&onend(), Math.max(0,minMs-(Date.now()-t0))); };
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    if(VOICE)u.voice=VOICE;
+    u.rate=0.96;u.pitch=1.05;
+    u.onend=u.onerror=finish;
+    speechSynthesis.speak(u);
+    /* safety: force-end if events never fire */
+    setTimeout(()=>{ if(speechSynthesis.speaking)return; finish(); }, words*480+2500);
+  }catch(e){ finish(); }
+}
+
+/* ================= CRYSTALLIZATION ================= */
+function clearBoard(){
+  boardInner.innerHTML='';
+}
+function crystallize(entry,done){
+  clearBoard();
+  const frag=document.createDocumentFragment();
+  /* key sentence */
+  const key=document.createElement('div');
+  key.className='beat beat-key';
+  key.innerHTML=`<div class="kicker">NAYA · FROM THE BANK</div>${entry.key}`;
+  frag.appendChild(key);
+  /* points */
+  entry.points.forEach(p=>{
+    const d=document.createElement('div');
+    d.className='beat beat-point';d.dataset.c=p.c;
+    d.innerHTML=`<span class="pdot"></span><p>${p.t}<span class="cite">${p.s}</span></p>`;
+    frag.appendChild(d);
+  });
+  /* footer */
+  const foot=document.createElement('div');
+  foot.className='beat board-foot';
+  foot.innerHTML=`<div class="srcs">${entry.sources.map(s=>
+    `<span class="mini-src" data-c="${s.c}"><i></i>${s.t}</span>`).join('')}</div>
+    <span class="bank-note">GROUNDED · CITED · BANK ONLY</span>`;
+  frag.appendChild(foot);
+  boardInner.appendChild(frag);
+  /* reveal beats timed to speech */
+  const beats=[...boardInner.querySelectorAll('.beat')];
+  const words=entry.speak.split(/\s+/).length;
+  const perBeat=Math.max(1400,(words*420)/beats.length);
+  beats.forEach((b,i)=>setTimeout(()=>b.classList.add('formed'), 350+i*perBeat));
+  setTimeout(done, 350+beats.length*perBeat+600);
+}
+
+/* ================= THINKING — retrieval reveal ================= */
+function think(entry,done){
+  sourcesEl.innerHTML='';
+  entry.sources.forEach(s=>{
+    const p=document.createElement('span');
+    p.className='source-pill';p.dataset.c=s.c;
+    p.innerHTML=`<span class="sdot"></span>${s.t}`;
+    sourcesEl.appendChild(p);
+  });
+  const pills=[...sourcesEl.querySelectorAll('.source-pill')];
+  pills.forEach((p,i)=>setTimeout(()=>p.classList.add('lit'), 300+i*520));
+  setTimeout(done, 300+pills.length*520+500);
+}
+
+/* ================= KEEPSAKES ================= */
+const KCYCLE=[["#9d75ff","#9d75ff44"],["#55b9ee","#55b9ee44"],["#b8ee57","#b8ee5744"],["#e8c766","#e8c76644"],["#d86cff","#d86cff44"]];
+let kN=0;
+function keepsake(question,entry){
+  const [kc,kg]=KCYCLE[kN++%KCYCLE.length];
+  const c=document.createElement('div');
+  c.className='kcard';c.style.setProperty('--kc',kc);c.style.setProperty('--kg',kg);
+  const time=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
+  c.innerHTML=`<div class="kq">${question}</div><div class="ka">${entry.key}</div>
+    <div class="ks">${entry.sources.map(s=>`<span class="mini-src" data-c="${s.c}"><i></i>${s.t}</span>`).join('')}</div>
+    <div class="ktime">${time} · FROM THE BANK</div>`;
+  deck.prepend(c);
+}
+
+/* ================= FLOW ================= */
+function askNaya(questionText){
+  if(busy)return; busy=true;
+  speechSynthesis&&speechSynthesis.cancel();
+  const entry=findEntry(questionText)||Object.assign({},FALLBACK,{question:questionText});
+  const q=entry.question||questionText;
+  /* LISTENING done → show question */
+  askedText.textContent='\u201C'+q+'\u201D';
+  askedPill.classList.add('show');
+  setTalk('THINKING…',true); talkHint.textContent='CONSULTING THE BANK';
+  /* THINKING */
+  setState('thinking','Consulting the bank…');
+  think(entry,()=>{
+    /* SPEAKING */
+    setState('speaking','She speaks.');
+    setTalk('SPEAKING…',true); talkHint.textContent='WORDS BECOMING FORM';
+    crystallize(entry,()=>{});
+    speak(entry.speak,()=>{
+      keepsake(q,entry);
+      sourcesEl.innerHTML='';
+      setState('idle','She is here.');
+      setTalk('TAP TO TALK',false);
+      talkHint.textContent='DICTATION FIRST · SHE ANSWERS FROM THE BANK ONLY';
+      busy=false;
+    });
+  });
+}
+
+function listen(){
+  if(busy)return;
+  setState('listening','Listening…');
+  setTalk('LISTENING…',true); talkHint.textContent='SPEAK NOW';
+  if(SR){
+    try{
+      const r=new SR(); r.lang='en-US'; r.interimResults=false; r.maxAlternatives=1;
+      let got=false;
+      r.onresult=e=>{got=true;const t=e.results[0][0].transcript;try{r.stop();}catch(_){/*noop*/}askNaya(t);};
+      r.onerror=()=>{if(!got){talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';demoAsk();}};
+      r.onend=()=>{if(!got){talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';demoAsk();}};
+      r.start();
+      setTimeout(()=>{if(!got){try{r.stop();}catch(_){/*noop*/}}},9000);
+      return;
+    }catch(e){/* fall through to demo */}
+  }
+  /* demo: brief listening beat, then scripted question */
+  talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';
+  setTimeout(demoAsk,1600);
+}
+function demoAsk(){
+  const e=BANK[demoIdx++%BANK.length];
+  askNaya(e.question);
+}
+talkBtn.addEventListener('click',listen);
+/* keyboard: space/enter on button works natively */
+setState('idle','She is here.');
+</script>
+</body>
+</html>
