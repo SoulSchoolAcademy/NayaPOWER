@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `a324968bfe72ddd7722ea9eefa783463b4d3916d`  
+**Receipt basis commit:** `1e1f27e116f0e724e9e2c3fd8c509b5b87504186`  
 **Inventory file count:** 200  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
@@ -222,7 +222,7 @@
 - `BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json` — `8492e95af9c6` (1598 bytes)
 - `BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json` — `f5ee4130bec0` (6153 bytes)
 - `BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json` — `966f182d5f34` (3044 bytes)
-- `BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md` — `6280418bcbb1` (8333 bytes)
+- `BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md` — `b392cdaa0777` (9141 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md` — `f7ab6850885d` (4051 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V3.md` — `0de10fd1f2a7` (6999 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588.md` — `196cc0ca9705` (13564 bytes)

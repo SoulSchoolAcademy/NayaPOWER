@@ -286,7 +286,7 @@ jobs:
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
-              lesson_content=json.dumps({"naya_fallback_lesson":True,"text":"Preserve provenance before applying retained intelligence.","run_key":lesson_key,"machine_view":{}} )
+              lesson_content=json.dumps({"naya_fallback_lesson":True,"text":"Preserve provenance before applying retained intelligence.","run_key":lesson_key,"machine_view":{"raw_source_separate_from_distillation":True,"automatic_truth_ceiling":"CANDIDATE"}} )
               digest=hashlib.sha256(lesson_content.encode()).hexdigest()
               pathlib.Path("smart-note-expected.json").write_text(json.dumps({
                 "capture_path":"",
