@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "580bfdddae71ceebfc7a8441d909117ecd9a6271",
-  "inventory_file_count": 188,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "d986d0b275821df490e2f5827e0872e92b69ee4b",
+  "inventory_file_count": 189,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 42,
+    "05-MEMORY": 43,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -592,6 +592,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/PHILOSOPHY-LIFE/AWESOME-THESIS/SN-0311/IB-SMART-NOTE-20261004-sn0311-awesome-thesis.md",
       "blob_sha": "c333e92f56294692646e72877f57db6b525296ad",
       "size": 9947
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0312/IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things.md",
+      "blob_sha": "096d965a992fb64a185713fa05e7e9d3d9302c6d",
+      "size": 18689
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
