@@ -18,10 +18,10 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // WHICH canonical commit is serving traffic is for the runtime to say so. Every
 // response carries this value.
 //
-// It MUST be stamped with the commit this artifact was deployed from, at deploy
-// time. It is left UNSTAMPED here because this repository has no deployment
-// pipeline: a value written into source is only meaningful if whoever deploys
-// updates it to the commit they actually deployed.
+// It MUST be stamped with the commit this artifact was deployed from at deploy
+// time. Source remains UNSTAMPED in git by design; the governed production
+// promotion path stamps the exact deployed revision into the artifact. A value
+// written statically into source would not prove what was actually deployed.
 //
 // While it reads UNSTAMPED, deployed-vs-canonical parity is UNDECIDABLE and the
 // parity detector refuses to report a pass. An unstamped artifact is not a
