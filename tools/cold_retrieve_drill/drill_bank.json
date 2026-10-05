@@ -1,0 +1,58 @@
+{
+  "bank_version": "v1",
+  "items": [
+    {
+      "application_question": "A seat saved a 50-page raw conversation transcript into the brain and declared it 'active intelligence \u2014 the brain now knows this.' Per the retrieved rule, is the transcript active intelligence? Name the highest rung it has actually reached and the first rung it is missing.",
+      "expected_phrases": [
+        "not active",
+        "PERSISTED"
+      ],
+      "grading_notes": "Pass requires BOTH: (a) verdict that raw storage is not active intelligence, (b) naming PERSISTED as the reached rung (or equivalently 'stored only'). The missing rung may be named RETRIEVABLE or APPLICABLE \u2014 either is acceptable; the grader checks the two required phrases.",
+      "id": "drill-2026-w41-a",
+      "note_id": "SN-015",
+      "query": "active intelligence rule stored knowledge retrievable",
+      "retired": false,
+      "rotation_week": 0
+    },
+    {
+      "application_question": "A seat is about to merge a PR where every CI check is green, but the change quietly violates the spirit of a standing team law. Per the retrieved rule, what should the seat do?",
+      "expected_phrases": [
+        "judgment",
+        "blind obedience"
+      ],
+      "grading_notes": "Pass requires the core distinction: judgment before blind obedience \u2014 green checks do not override the law's spirit.",
+      "id": "drill-2026-w41-b",
+      "note_id": "SN-016",
+      "query": "prime judgment rule blind obedience merge law spirit",
+      "retired": false,
+      "rotation_week": 1
+    },
+    {
+      "application_question": "A new RED check class 'canary-7x2q-drift' appears on a PR. No repair lane exists for it. Per the retrieved rule, what is the correct action \u2014 and what must the repair PR be titled?",
+      "expected_phrases": [
+        "[CANARY-DRILL]",
+        "repair drill"
+      ],
+      "grading_notes": "Pass requires BOTH: (a) run/open the repair drill (not stand down), (b) the [CANARY-DRILL] title prefix. This item exercises the canary rule end to end.",
+      "id": "drill-2026-w41-c",
+      "note_id": "SN-0344",
+      "query": "canary synthetic red check repair drill signals",
+      "retired": false,
+      "rotation_week": 2
+    },
+    {
+      "application_question": "Two seats each kept their own private notes about the same decision, in different formats, neither connected to the other. Per the retrieved rule, what is wrong with this picture and what rung should they aim for?",
+      "expected_phrases": [
+        "connected",
+        "retrievable"
+      ],
+      "grading_notes": "Pass requires the connected/retrievable rungs: isolated notes are not active intelligence until connected and retrievable.",
+      "id": "drill-2026-w41-d",
+      "note_id": "SN-015",
+      "query": "stored knowledge connected retrievable usable intelligence rule",
+      "retired": false,
+      "rotation_week": 3
+    }
+  ],
+  "selection": "ISO week number mod len(active items)"
+}

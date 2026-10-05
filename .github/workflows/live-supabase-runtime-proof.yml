@@ -27,7 +27,30 @@ env:
   PRODUCER_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.producer_run_id }}
 
 jobs:
+  source-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify resolved source matches SOURCE_SHA
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${SOURCE_SHA}" ]; then
+            echo "SOURCE_SHA is required"
+            exit 1
+          fi
+          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          echo "expected_source_sha=${SOURCE_SHA}"
+          echo "resolved_main_sha=${resolved}"
+          if [ "${SOURCE_SHA}" != "${resolved}" ]; then
+            echo "SOURCE_SHA_MISMATCH expected=${SOURCE_SHA} resolved=${resolved}"
+            exit 1
+          fi
+          echo "SOURCE_SHA_MATCH=PASS"
+
   contract:
+    needs: [source-integrity]
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +64,7 @@ jobs:
         run: python -m pytest -q tests/test_naya_identity_owner_binding.py tests/test_github_oidc_binding.py
 
   cold-runtime-1:
-    needs: contract
+    needs: [source-integrity, contract]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -72,7 +95,7 @@ jobs:
           path: cold-runtime-1.json
 
   cold-runtime-2:
-    needs: contract
+    needs: [source-integrity, contract]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -103,7 +126,7 @@ jobs:
           path: cold-runtime-2.json
 
   independent-verification:
-    needs: [cold-runtime-1, cold-runtime-2]
+    needs: [source-integrity, cold-runtime-1, cold-runtime-2]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -117,7 +140,7 @@ jobs:
         run: python tests/verify_cold_runtime_receipt.py receipts/one/cold-runtime-1.json receipts/two/cold-runtime-2.json
 
   live-connect:
-    needs: [cold-runtime-1, cold-runtime-2]
+    needs: [source-integrity, cold-runtime-1, cold-runtime-2]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

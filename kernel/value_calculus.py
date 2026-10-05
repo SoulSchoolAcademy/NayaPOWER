@@ -661,3 +661,156 @@ def build_contribution_receipt(
         "evidence_refs": list(evidence_refs),
         "verification": verification,
     }
+
+
+# ---------------------------------------------------------------------------
+# Operation eligibility: RETRIEVAL_ELIGIBLE / CONSEQUENTIAL_USE_ELIGIBLE
+# ---------------------------------------------------------------------------
+# Two machine-exact predicates (never one Boolean) that decide whether a
+# retrieval (KNOW HIT serving) or a consequential use (ACT on consequential /
+# irreversible operations) may proceed. Four states, evaluated in precedence
+# order — hard stops first, then the indeterminate, then the determined
+# negative, and only then PASS:
+#   ELIGIBLE_PASS     - eligible under current evidence; may proceed.
+#   ELIGIBLE_FAIL     - not eligible under current evidence; may become
+#                       eligible if the evidence changes (e.g. authorized).
+#   ELIGIBLE_UNKNOWN  - cannot determine from current evidence. UNKNOWN never
+#                       becomes PASS: it routes to evidence gathering, never
+#                       to proceed.
+#   ELIGIBLE_BLOCKED  - hard stop; not eligible without intervention
+#                       (safety/law violation, unauthenticated identity).
+# Every decision carries its reasons and the evidence refs it rested on.
+# These predicates never score human worth and never grant authority.
+
+ELIGIBLE_PASS = "ELIGIBLE_PASS"
+ELIGIBLE_FAIL = "ELIGIBLE_FAIL"
+ELIGIBLE_UNKNOWN = "ELIGIBLE_UNKNOWN"
+ELIGIBLE_BLOCKED = "ELIGIBLE_BLOCKED"
+
+_ELIGIBLE_STATES = (ELIGIBLE_PASS, ELIGIBLE_FAIL, ELIGIBLE_UNKNOWN, ELIGIBLE_BLOCKED)
+
+
+@dataclass(frozen=True)
+class OperationRequest:
+    """Evidence available about a proposed retrieval or consequential use."""
+    operation_id: str
+    requester_id: Optional[str] = None          # None = unauthenticated
+    requester_scope: Optional[str] = None        # owner scope, e.g. "owner:<id>"
+    object_scope: Optional[str] = None          # scope of the object touched
+    source_canonical: Optional[bool] = None      # True/False/unknown
+    authority_basis: Optional[str] = None        # consent/authority ref; None = unknown
+    consequential: bool = False
+    irreversible: bool = False
+    human_authorized: bool = False
+    hard_violation: bool = False
+    hard_flags: Optional[Mapping[str, Optional[bool]]] = None  # LAW/RIGHTS/PRIVACY/SAFETY
+    confidence_aggregate: Optional[float] = None
+    confidence_critical: Optional[float] = None
+    evidence_refs: Sequence[str] = ()
+
+
+def _eligibility_receipt(predicate: str, request: OperationRequest, state: str, reasons: list) -> dict:
+    assert state in _ELIGIBLE_STATES, f"invalid eligibility state: {state}"
+    return {
+        "predicate": predicate,
+        "operation_id": request.operation_id,
+        "state": state,
+        "reasons": list(reasons),
+        "evidence_refs": list(request.evidence_refs),
+        "engine_version": ENGINE_VERSION,
+    }
+
+
+def _hard_flag_states(request: OperationRequest) -> dict:
+    flags = request.hard_flags or {}
+    return {k: flags.get(k) for k in ("LAW", "RIGHTS", "PRIVACY", "SAFETY")}
+
+
+def retrieval_eligible(request: OperationRequest) -> dict:
+    """Machine-exact predicate: may this KNOW retrieval be served?
+
+    Precedence: BLOCKED (hard stops) -> UNKNOWN (indeterminate) ->
+    FAIL (determined negative) -> PASS. UNKNOWN never becomes PASS.
+    """
+    if not request.operation_id:
+        raise ValueError("operation_id is required")
+    flags = _hard_flag_states(request)
+
+    # BLOCKED: hard stops. No identity, or a law/safety violation, ends the
+    # question here — these do not become eligible by gathering evidence.
+    if request.requester_id is None:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["UNAUTHENTICATED_REQUESTER"])
+    if request.hard_violation:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["JUDGMENT_RULE_HARD_STOP"])
+    violated = [k for k, v in flags.items() if v is False]
+    if violated:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    [f"{k}_VIOLATION" for k in violated])
+
+    # UNKNOWN: indeterminate. Each of these routes to evidence gathering;
+    # none of them may resolve to PASS.
+    unknown_reasons = []
+    if request.requester_scope is None or request.object_scope is None:
+        unknown_reasons.append("SCOPE_UNKNOWN")
+    if request.source_canonical is None:
+        unknown_reasons.append("SOURCE_CANONICALITY_UNKNOWN")
+    if request.authority_basis is None:
+        unknown_reasons.append("AUTHORITY_BASIS_UNKNOWN")
+    unknown_reasons.extend(f"UNKNOWN_{k}" for k, v in flags.items() if v is None)
+    if unknown_reasons:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_UNKNOWN, unknown_reasons)
+
+    # FAIL: determined negative on complete evidence. May become eligible if
+    # the evidence changes (e.g. cross-scope authority granted).
+    if request.requester_scope != request.object_scope:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                    ["CROSS_SCOPE"])
+    if request.source_canonical is False:
+        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                    ["NON_CANONICAL_SOURCE"])
+
+    return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_PASS, [])
+
+
+def consequential_use_eligible(request: OperationRequest, profile: QualityProfile) -> dict:
+    """Machine-exact predicate: may this consequential/irreversible use proceed?
+
+    Same four-state precedence as retrieval_eligible. Additionally requires
+    human authorization for consequential or irreversible operations and the
+    independent confidence floors from the quality profile.
+    """
+    if not request.operation_id:
+        raise ValueError("operation_id is required")
+    flags = _hard_flag_states(request)
+
+    # BLOCKED: hard stops.
+    if request.hard_violation:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["JUDGMENT_RULE_HARD_STOP"])
+    violated = [k for k, v in flags.items() if v is False]
+    if violated:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    [f"{k}_VIOLATION" for k in violated])
+
+    # UNKNOWN: indeterminate — never PASS.
+    unknown_reasons = [f"UNKNOWN_{k}" for k, v in flags.items() if v is None]
+    if request.confidence_aggregate is None or request.confidence_critical is None:
+        unknown_reasons.append("CONFIDENCE_UNKNOWN")
+    if unknown_reasons:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_UNKNOWN,
+                                    unknown_reasons)
+
+    # FAIL: determined negative on complete evidence.
+    if (request.consequential or request.irreversible) and not request.human_authorized:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                    ["HUMAN_AUTHORITY_REQUIRED"])
+    if request.confidence_aggregate < profile.aggregate_confidence_floor:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                    ["AGGREGATE_CONFIDENCE_FLOOR"])
+    if request.confidence_critical < profile.critical_confidence_floor:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                    ["CRITICAL_CONFIDENCE_FLOOR"])
+
+    return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_PASS, [])

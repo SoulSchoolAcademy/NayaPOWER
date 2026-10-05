@@ -1,3 +1,11 @@
+"""Tests the nine-node behavioral-acceptance RECEIPT VERIFIER (not live behavior).
+
+These tests prove verify_receipt() accepts complete receipts and fails closed
+on ablations and negative controls. They do not prove the nine nodes behaved
+a given way in a live runtime — no live behavioral run has produced a real
+receipt yet. The name says what is actually proven.
+"""
+
 import copy
 from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
 

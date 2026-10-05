@@ -3,7 +3,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATION = ROOT / "supabase" / "migrations" / "20260930022500_harden_collective_wisdom_consent_revocation_v1.sql"
-# #1136 Reading A (ratified 2026-09-30): disconnect stops future, does not erase past.
+# #1136 Reading A is an implementation candidate; its constitutional status must be read from the current issue/contract, not inferred from this test comment.
 READING_A_MIGRATION = ROOT / "supabase" / "migrations" / "20261001030000_disconnect_stop_future_v1.sql"
 
 

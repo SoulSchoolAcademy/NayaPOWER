@@ -9,21 +9,37 @@ mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
 def test_general_capture_discovery_is_not_filename_hardcoded():
-    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == ".naya/capture/ANY-NAME.json"
+    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == [".naya/capture/ANY-NAME.json"]
 
-def test_capture_discovery_fails_closed_on_batch():
-    try:
-        mod.changed_capture([".naya/capture/a.json", ".naya/capture/b.json"])
-    except SystemExit as e:
-        assert "BATCH_NOT_YET_SUPPORTED" in str(e)
-    else:
-        raise AssertionError("expected fail-closed batch rejection")
+def test_capture_discovery_returns_batch_sorted_not_aborted():
+    # Problem A repair (GAP-20): a batch is discovered, never aborted. The
+    # proof workflow processes each capture in sorted order, each with its
+    # own SMART-NOTE-<capture_id> identity. This test fails on the pre-repair
+    # code (SystemExit SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED).
+    assert mod.changed_capture([
+        ".naya/capture/c.json",
+        "README.md",
+        ".naya/capture/a.json",
+        ".naya/capture/b.json",
+    ]) == [".naya/capture/a.json", ".naya/capture/b.json", ".naya/capture/c.json"]
+
+def test_capture_discovery_dedupes_and_ignores_non_captures():
+    assert mod.changed_capture([
+        ".naya/capture/b.json",
+        ".naya/capture/b.json",
+        ".naya/capture/x.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/a.md",
+    ]) == [".naya/capture/b.json"]
+
+def test_capture_discovery_empty_when_no_captures():
+    assert mod.changed_capture(["README.md", "tools/x.py"]) == []
 
 def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["scope"] == "PRIVATE"
-    assert entry["smart_link_status"] == "ACTIVE"
+    # D2 (smart-link generator, #1406): PRIVATE-scope notes are ACTIVE_AUTH_GATED, never bare ACTIVE.
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"
     assert entry["provenance"]["receipt_id"] == "faa4345a-aacd-43f2-ab2f-a991b9681979"
 
 def test_nia_language_has_primary_command_and_safe_ceiling():
@@ -50,7 +66,7 @@ def test_smart_note_command_is_standing_authority_for_same_note_lifecycle():
 def test_registered_smart_link_is_active_and_exact():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
-    assert entry["smart_link_status"] == "ACTIVE"
+    assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"  # D2: PRIVATE scope, see above
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
     assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
     assert entry["smart_note_id"] == "SN-001"
@@ -112,7 +128,7 @@ def test_sequence_policy_advances_after_sn002():
 
 def test_projection_workflow_publishes_active_verified_public_projection():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
-    assert 'e.get("smart_link_status") in {"ACTIVE", "READY"}' in workflow
+    assert 'e.get("smart_link_status") in {"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
     assert 'e.get("smart_link_status")=="READY"' not in workflow
 
 
@@ -345,3 +361,236 @@ def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture
     assert capture["intelligence"]["machine_view"]["instruction_is_proof"] is False
     assert capture["intelligence"]["machine_view"]["human_authority_preserved"] is True
     assert capture["intelligence"]["machine_view"]["automatic_truth_ceiling"] == "CANDIDATE"
+
+def test_live_workflow_honors_private_publication_authorization_without_bare_active():
+    """A PRIVATE canonical Block may publish an explicitly authorized derived view,
+    but its Smart Link status remains ACTIVE_AUTH_GATED rather than bare ACTIVE."""
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert 'expected_status="ACTIVE_AUTH_GATED" if e.get("scope")=="PRIVATE" else "ACTIVE"' in workflow
+    assert '{"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
+    # Preserve the fail-closed private path: publication is decided by the canonical
+    # projector, not by weakening PRIVATE into public inside the workflow.
+    assert 'elif e.get("scope")=="PRIVATE":' in workflow
+    assert 'assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"' in workflow
+    assert 'assert e["smart_link_status"]=="PENDING_PRIVATE_PROJECTION"' in workflow
+
+
+# --- Problem B regression: concurrent registry writers must not lose updates ---
+# 2026-10-05: update_registry() did read-modify-write with no lock; two
+# concurrent writers both allocated the same SN and the last writer won,
+# dropping the other's entry. The registry_transaction (flock + atomic
+# commit) serializes writers. These tests pin the fix.
+
+def _problem_b_fresh_module(tmp_path):
+    """Load smart_note_v2 with ROOT pointed at an isolated temp dir."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "smart_note_v2_isolated", ROOT / "tools" / "smart_note_v2.py")
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    m.ROOT = tmp_path
+    m.REGISTRY = tmp_path / ".naya" / "memory" / "smart-notes" / "index.json"
+    m.BRAIN_SMART_NOTE_ROOT = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    return m
+
+def _problem_b_inputs(m, tmp_path, ib_id):
+    capture = {"title": f"Note {ib_id}", "category": "SMART_NOTE",
+               "source": {"captured_at": "2026-10-05T00:00:00Z"}}
+    block = {"intelligent_block_id": ib_id,
+             "content": {"lesson": json.dumps({"lesson": f"lesson-{ib_id}"})},
+             "understanding_state": "CANDIDATE", "owner_scope": "PRIVATE"}
+    verify = {"persisted": {"block": block,
+              "event": {"id": "e1"}, "lineage": {"id": "l1"},
+              "relationship": {"relationship_id": "r1"},
+              "index": {"id": "i1"}, "checkpoint": {"id": "c1"},
+              "receipt": {"id": "rc1"}}}
+    proj = tmp_path / "proj.md"
+    proj.write_text("# test", encoding="utf-8")
+    return capture, verify, proj
+
+def test_concurrent_registry_writers_lose_no_updates(tmp_path):
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    errors = []
+    def writer(ib):
+        try:
+            cap, ver, proj = _problem_b_inputs(m, tmp_path, ib)
+            m.update_registry(cap, ver, proj)
+        except Exception as e:  # noqa: BLE001 — collected, asserted below
+            errors.append(repr(e))
+    threads = [threading.Thread(target=writer, args=(f"IB-RACE-{i}",))
+               for i in range(10)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    entries = reg["entries"]
+    assert len(entries) == 10, f"lost update: {len(entries)}/10 entries"
+    sn_ids = [e["smart_note_id"] for e in entries]
+    assert len(sn_ids) == len(set(sn_ids)), "duplicate Smart Note IDs allocated"
+    # Registry is valid JSON after every concurrent commit (atomic write).
+    assert reg["schema"] == "naya.smart-note-projection-index.v1"
+
+def test_concurrent_promotions_serialize_without_loss(tmp_path):
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    for i in range(3):
+        cap, ver, proj = _problem_b_inputs(m, tmp_path, f"IB-PROM-{i}")
+        m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    sn_ids = [e["smart_note_id"] for e in reg["entries"]]
+    types = ["behavioral_test", "independent_verification", "reproduction"]
+    bundle = [{"type": types[i % 3], "source": "s", "content_hash": f"h{i}",
+               "gatherer": f"g{i}", "gathered_at": "2026-10-05T00:00:00Z"}
+              for i in range(3)]
+    errors = []
+    def promoter(sn_id):
+        try:
+            m.promote_note(sn_id, bundle, "tester")
+        except Exception as e:  # noqa: BLE001
+            errors.append(repr(e))
+    threads = [threading.Thread(target=promoter, args=(s,)) for s in sn_ids]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg2 = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    verified = [e for e in reg2["entries"] if e.get("truth_state") == "VERIFIED"]
+    assert len(verified) == 3, f"promotion lost: {len(verified)}/3 verified"
+
+def test_idempotent_recapture_keeps_smart_note_id(tmp_path):
+    """Re-capturing the same intelligent block returns its SN (no sequence burn)."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-IDEMPOTENT")
+    first = m.update_registry(cap, ver, proj)
+    second = m.update_registry(cap, ver, proj)
+    assert first["smart_note_id"] == second["smart_note_id"]
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 1
+
+
+# --- Projection-path race regression: concurrent projectors must derive ---
+# --- directories from authoritative reservations, never advisory pre-reads --
+# 2026-10-05: projection_path() allocated an advisory SN *before* the
+# registry transaction, so N concurrent projectors could pick the same SN
+# directory and collide/clobber. reserve_smart_note_id() closes it: the
+# directory is derived from the authoritatively reserved ID. These tests
+# pin the fix at the projection seam (not the registry seam).
+
+def _race_capture(ib_id):
+    return {
+        "title": f"Race note {ib_id}",
+        "category": "SMART_NOTE",
+        "topic": "CONCURRENCY",
+        "subtopic": "PROJECTION_RACE",
+        "source": {"captured_at": "2026-10-05T00:00:00Z"},
+        "projection": {},
+    }
+
+def _race_verify(ib_id):
+    lesson = json.dumps({"essence": f"essence-{ib_id}", "lesson": f"lesson-{ib_id}"})
+    return {"persisted": {"block": {
+        "intelligent_block_id": ib_id,
+        "content": {"lesson": lesson},
+        "understanding_state": "CANDIDATE",
+        "owner_scope": "PUBLIC",
+    }, "event": {"id": "e"}, "lineage": {"id": "l"},
+      "relationship": {"relationship_id": "r"}, "index": {"id": "i"},
+      "checkpoint": {"id": "c"}, "receipt": {"id": "rc"}}}
+
+def test_concurrent_projectors_derive_distinct_directories(tmp_path):
+    """N concurrent projectors → N distinct SN directories, zero clobbering."""
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    N = 20
+    errors = []
+    results = {}
+    lock = threading.Lock()
+    def projector(i):
+        try:
+            ib = f"IB-PROJ-RACE-{i:03d}"
+            cap, ver = _race_capture(ib), _race_verify(ib)
+            sn = m.reserve_smart_note_id(cap, ib)
+            p = m.render(cap, ver, sn_id=sn)
+            entry = m.update_registry(cap, ver, p, sn_id=sn)
+            with lock:
+                results[ib] = (sn, str(p), entry["smart_note_id"])
+        except Exception as e:  # noqa: BLE001 — collected, asserted below
+            with lock:
+                errors.append(repr(e))
+    threads = [threading.Thread(target=projector, args=(i,)) for i in range(N)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    assert len(results) == N, f"projector lost: {len(results)}/{N}"
+    sns = [v[0] for v in results.values()]
+    assert len(set(sns)) == N, f"SN collision among projectors: {sns}"
+    dirs = {str(Path(v[1]).parent) for v in results.values()}
+    assert len(dirs) == N, "projected directories collided"
+    for ib, (sn, p, entry_sn) in results.items():
+        assert sn == entry_sn, "registry entry SN must match the reserved SN"
+        text = Path(p).read_text(encoding="utf-8")
+        assert ib in text, f"file content clobbered for {ib}"
+        assert f"/{sn}/" in p.replace("\\", "/")
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == N, f"registry lost entries: {len(reg['entries'])}/{N}"
+
+def test_concurrent_duplicate_projections_converge_on_existing_sn(tmp_path):
+    """Concurrent re-projections of the SAME block converge: one entry,
+    stable SN (existing wins), zero errors."""
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-DUP"
+    errors = []
+    entry_sns = []
+    lock = threading.Lock()
+    def projector():
+        try:
+            cap, ver = _race_capture(ib), _race_verify(ib)
+            sn = m.reserve_smart_note_id(cap, ib)
+            p = m.render(cap, ver, sn_id=sn)
+            entry = m.update_registry(cap, ver, p, sn_id=sn)
+            with lock:
+                entry_sns.append(entry["smart_note_id"])
+        except Exception as e:  # noqa: BLE001
+            with lock:
+                errors.append(repr(e))
+    threads = [threading.Thread(target=projector) for _ in range(5)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 1, "duplicate projections must converge to one entry"
+    final_sn = reg["entries"][0]["smart_note_id"]
+    assert all(s == final_sn for s in entry_sns), "entry SN must be stable across racers"
+    assert reg["entries"][0]["projection_path"].endswith(f"/{final_sn}/{ib}.md")
+
+def test_reserve_is_idempotent_for_known_block(tmp_path):
+    """Re-reserving a known block returns its SN without burning sequence."""
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-IDEM"
+    cap, ver = _race_capture(ib), _race_verify(ib)
+    first = m.reserve_smart_note_id(cap, ib)
+    p = m.render(cap, ver, sn_id=first)
+    m.update_registry(cap, ver, p, sn_id=first)
+    seq_before = json.loads(m.REGISTRY.read_text(encoding="utf-8"))["sequence_policy"]["next_sequence"]
+    second = m.reserve_smart_note_id(cap, ib)
+    assert second == first, "re-reserve must return the existing SN"
+    seq_after = json.loads(m.REGISTRY.read_text(encoding="utf-8"))["sequence_policy"]["next_sequence"]
+    assert seq_after == seq_before, "re-reserve must not burn a sequence number"
+
+def test_render_with_reserved_sn_id_uses_reserved_directory(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-DIR"
+    cap, ver = _race_capture(ib), _race_verify(ib)
+    sn = m.reserve_smart_note_id(cap, ib)
+    p = m.render(cap, ver, sn_id=sn)
+    ps = str(p).replace("\\", "/")
+    assert f"/{sn}/" in ps, "rendered directory must derive from the reserved SN"
+    assert ps.startswith(str(m.BRAIN_SMART_NOTE_ROOT).replace("\\", "/"))
+
+def test_projection_path_advisory_fallback_unchanged(tmp_path):
+    """Without sn_id=, projection_path keeps its advisory behavior."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap = _race_capture("IB-PROJ-ADV")
+    p = m.projection_path(cap, "IB-PROJ-ADV")
+    assert "/SN-001/" in str(p).replace("\\", "/")

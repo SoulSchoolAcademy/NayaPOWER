@@ -1,14 +1,16 @@
 # NayaPOWER KNOW — Master Node Contract V1
 
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` (MN-04 KNOW, Human Director locked 2026-09-30). Where older semantic wording conflicts, the Ultimate Lock governs intended responsibility; runtime/proof status still comes from live evidence.
+
 **STATUS:** CANONICAL ENGINEERING TARGET — AAA
 **NODE:** NAYA-KERNEL-KNOW
-**RESPONSIBILITY:** memory, intelligence, knowledge
+**RESPONSIBILITY:** intelligence, memory, meaning, events, canonical intelligence objects
 
 ## 1. Purpose
-What durable information exists, what is current, applicable, supported, and relevant?
+What durable intelligence exists, what does it mean, whose is it, where did it come from, and what is its current lifecycle/temporal state?
 
 ## 2. Six-language definition
-- **Human:** What durable information exists, what is current, applicable, supported, and relevant?
+- **Human:** What durable intelligence exists, what does it mean, whose is it, where did it come from, and what is its current lifecycle/temporal state?
 - **Child:** This part of Naya makes sure the right thing happens for the right reason.
 - **Grandma:** It keeps this part of Naya honest about what it knows, what it may do, and what really happened.
 - **Naya:** I must know my exact job, trusted inputs, current state, authority boundary, evidence, unknowns, downstream requirement, refusal condition, and receipt.
@@ -41,24 +43,26 @@ What durable information exists, what is current, applicable, supported, and rel
 - relationship constraints
 
 ## 5. Outputs
-- retrieval set with provenance
-- truth state
-- applicability
-- freshness
-- conflicts
+- canonical intelligence context with provenance
+- lifecycle / temporal state
+- evidence references and uncertainties
+- candidate relationship / applicability metadata for CONNECT
+- contradiction / supersession signals
 
 ## 6. Invariants
-- Never treat similarity as truth
+- STORAGE ≠ KNOWLEDGE ≠ INTELLIGENCE ≠ TRUTH ≠ AUTHORITY
+- Never treat similarity as identity, truth, or applicability
 - Never cross owner scope
 - Never silently prefer stale data
-- Never fabricate provenance.
+- Never fabricate provenance
+- Never promote final truth or task-level applicability; PROVE and CONNECT own those responsibilities.
 
 ## 7. State machine
 UNINITIALIZED → RESTORING → READY; DEGRADED when substrate is limited; FAILED when required substrate is unavailable
 Every transition records before-state, after-state, transition reason, execution ID, evidence references, and timestamp. Invalid transitions fail closed.
 
 ## 8. Inter-node contract
-SELF scopes identity. PROVE evaluates evidence. CONNECT explains relationships. LAW governs use.
+SELF establishes identity/context. PROVE determines what the evidence supports. CONNECT determines task/context applicability and relationship-aware relevance. LAW governs consequential use.
 
 ## 9. Acceptance battery
 1. valid input reaches intended state;

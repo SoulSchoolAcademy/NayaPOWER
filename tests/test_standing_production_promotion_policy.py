@@ -186,3 +186,123 @@ def test_protected_repository_changes_require_explicit_promotion():
         },
     )
     assert result["decision"] == "DENY"
+
+
+def _valid_context(sha="9" * 40):
+    return {
+        "repository": "SoulSchoolAcademy/NayaPOWER",
+        "source_branch": "main",
+        "source_sha": sha,
+        "resolved_main_sha": sha,
+        "changed_paths": [],
+        "requested_operation": "PROMOTE_PRODUCTION",
+        "target_branch": "production",
+        "policy_active": True,
+        "policy_not_expired": True,
+        "policy_not_revoked": True,
+        "required_ci": True,
+        "required_tests": True,
+        "required_security_checks": True,
+        "no_unresolved_production_blocker": True,
+        "source_revision_identified": True,
+        "deployment_artifact_provenance_bound": True,
+        "production_target_exact": True,
+        "deployment_mechanism_authorized": True,
+        "concurrency_safe": True,
+        "deployment_check_required": True,
+        "source_runtime_parity_required": True,
+        "canonical_runtime_proof_required": True,
+    }
+
+
+def _policy_with_bounds(review_after, expires_at):
+    policy = load_policy()
+    policy["expiry"] = {
+        "expires_at": expires_at.isoformat(),
+        "review_after": review_after.isoformat(),
+        "automatic_renewal": False,
+    }
+    return policy
+
+
+def test_policy_allow_before_review_after():
+    now = datetime(2026, 10, 5, tzinfo=timezone.utc)
+    policy = _policy_with_bounds(
+        review_after=now + timedelta(days=10),
+        expires_at=now + timedelta(days=24),
+    )
+    result = evaluate_policy(policy, _valid_context(), now=now)
+    assert result == {"decision": "ALLOW", "reason": "all_policy_gates_pass"}
+
+
+def test_policy_deny_when_review_after_passed():
+    now = datetime(2026, 10, 16, tzinfo=timezone.utc)
+    policy = _policy_with_bounds(
+        review_after=datetime(2026, 10, 15, tzinfo=timezone.utc),
+        expires_at=datetime(2026, 10, 29, tzinfo=timezone.utc),
+    )
+    result = evaluate_policy(policy, _valid_context(), now=now)
+    assert result["decision"] == "DENY"
+    assert result["reason"] == "policy_review_due"
+
+
+def test_policy_deny_when_expired():
+    now = datetime(2026, 10, 30, tzinfo=timezone.utc)
+    policy = _policy_with_bounds(
+        review_after=datetime(2026, 10, 15, tzinfo=timezone.utc),
+        expires_at=datetime(2026, 10, 29, tzinfo=timezone.utc),
+    )
+    result = evaluate_policy(policy, _valid_context(), now=now)
+    assert result["decision"] == "DENY"
+    assert result["reason"] == "policy_expired"
+
+
+def test_policy_does_not_trust_caller_expiry_assertion():
+    # The workflow pins policy_not_expired=true in its context JSON; the module
+    # must measure expiry from the policy document, not the caller's assertion.
+    now = datetime(2026, 11, 1, tzinfo=timezone.utc)
+    policy = _policy_with_bounds(
+        review_after=datetime(2026, 10, 15, tzinfo=timezone.utc),
+        expires_at=datetime(2026, 10, 29, tzinfo=timezone.utc),
+    )
+    context = _valid_context()
+    context["policy_not_expired"] = True
+    result = evaluate_policy(policy, context, now=now)
+    assert result["decision"] == "DENY"
+    assert result["reason"] == "policy_expired"
+
+
+@pytest.mark.parametrize(
+    "expiry",
+    [
+        {},
+        {"expires_at": "not-a-date"},
+        {"expires_at": (datetime.now(timezone.utc) + timedelta(days=1)).isoformat()},
+        {
+            "expires_at": (datetime.now(timezone.utc) + timedelta(days=1)).isoformat(),
+            "review_after": (datetime.now(timezone.utc) + timedelta(days=2)).isoformat(),
+        },
+        {
+            "expires_at": (datetime.now(timezone.utc) + timedelta(days=30)).replace(tzinfo=None).isoformat(),
+            "review_after": (datetime.now(timezone.utc) + timedelta(days=15)).replace(tzinfo=None).isoformat(),
+        },
+    ],
+)
+def test_policy_time_not_bounded_fails_closed(expiry):
+    policy = load_policy()
+    policy["expiry"] = expiry
+    result = evaluate_policy(policy, _valid_context())
+    assert result["decision"] == "DENY", expiry
+    assert result["reason"] == "policy_time_not_bounded", expiry
+
+
+def test_ratified_policy_document_has_bounded_time_window():
+    # Document coherence only — no wall-clock coupling, so this test never
+    # becomes a scheduled CI tripwire. Enforcement of the window is covered
+    # by the injected-now tests above.
+    policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+    assert policy["status"] == "RATIFIED"
+    expires_at = datetime.fromisoformat(policy["expiry"]["expires_at"].replace("Z", "+00:00"))
+    review_after = datetime.fromisoformat(policy["expiry"]["review_after"].replace("Z", "+00:00"))
+    assert expires_at.tzinfo is not None and review_after.tzinfo is not None
+    assert review_after < expires_at

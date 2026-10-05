@@ -154,9 +154,10 @@
     },
     "EVOLVE": {
       "status": "BOUNDED_SUCCESSOR_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
-      "entrypoint": "supabase/functions/nayanet-cold-runtime-proof + nayanet-successor-handoff",
-      "persisted_transitions": "checkpoint/successor handoff evidence + execution receipts",
-      "proof_boundary": "Bounded cold-successor evidence exists historically; current source parity is not fully established and no universal successor claim is made."
+      "entrypoint": "supabase/functions/nayanet-cold-runtime-proof (modes: cold-successor, cold-successor-verify)",
+      "persisted_transitions": "learning_evidence + nayanet_intelligent_blocks + nayanet_brain_relationships + execution receipts; nayanet_successor_handoffs table exists as canonical persistence substrate",
+      "proof_boundary": "Bounded cold-successor reconstruction and independent reread exist historically/current source, but exact-current deployed parity, generic successor package runtime, A→B→C continuity and bounded self-building are not universally production-proven.",
+      "phantom_binding_reconciliation": "nayanet-successor-handoff is not present on current main and is no longer claimed as an active runtime entrypoint. Restore it only if future evidence establishes it as the canonical seam."
     }
   },
   "next_node_after_law": "ACT",

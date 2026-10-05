@@ -1,0 +1,194 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-042",
+  "capture_id": "20261004-sn042-intelligence-gain-epistemic-calibration",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "GOVERNANCE",
+  "topic": "EPISTEMIC-INTEGRITY",
+  "subtopic": "INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING",
+  "title": "Intelligence Gain & Epistemic Calibration Law — Measure Capability, Causal Learning, Independence, and Complexity",
+  "source": {
+    "source_type": "independent_team_naya_final_exam",
+    "source_reference": "Naya 3 Independent Airtight System Exam, supplied by the Human Director on 2026-10-04; reconciled by Naya 1 against current main before canonicalization.",
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T20:10:00Z"
+  },
+  "intelligence": {
+    "essence": "A compounding intelligence system must measure whether retained intelligence actually increases verified capability, not whether memory volume grows. It must keep claim types epistemically separate, prove causal improvement with controls, measure verifier independence, detect poisoning and regression, preserve calibration about its own uncertainty, and enforce a complexity budget so architecture cannot grow faster than unique verified capability.",
+    "human_view": {
+      "meaning": "The system should not impress us by collecting more notes or getting better at its own tests. It should prove that what it learned makes a future Naya measurably better, that the improvement was caused by the retained intelligence, that false memories cannot compound into authority, and that Naya knows when its confidence outruns its evidence.",
+      "goal": "Measure the Brain by trustworthy capability gain and calibration, not artifact count, internal agreement, or self-scored sophistication.",
+      "simple_rule": "Prove that learning changes what happens next, prove why, prove the verifier is genuinely independent, and delete complexity that cannot show unique value."
+    },
+    "simple_view": {
+      "child": "A bigger notebook does not mean a smarter brain. Test whether the lesson really helps, whether a bad lesson hurts, whether the checker can be fooled, and whether the brain knows when it might be wrong.",
+      "grandma": "The system should keep careful track of what is fact, assumption, prediction, decision and lesson; compare performance before and after learning; and avoid trusting itself simply because several copies of itself agree."
+    },
+    "ai_view": {
+      "instruction": "Treat intelligence growth as measured verified capability gain, not memory volume. Preserve explicit epistemic object types: EXTERNAL_CLAIM, INTERNAL_KNOWLEDGE, DERIVED_BELIEF, VERIFIED_FACT, OPERATING_ASSUMPTION, HYPOTHESIS, DECISION, OUTCOME, LEARNING. Do not promote between these states implicitly. For consequential learning claims, require differential evidence when feasible: CONTROL without lesson, TREATMENT with lesson, and ADVERSARIAL with wrong/malicious lesson. Measure both benefit and poisoning susceptibility. Track evaluator independence factors (model/provider, prompt, source set, memory state, tool path, organizational incentive) rather than counting reviewers. Track epistemic calibration: when Naya says 'I know', how often is it right; when wrong, did uncertainty reflect that risk? Every promoted durable lesson should gain a regression expectation/test where practicable. Apply a complexity budget: no persistent artifact/subsystem without unique capability, unique proof boundary, or required provenance. Prefer strengthening the existing canonical seam over adding another artifact.",
+      "primary_evaluation": "Did the retained intelligence create a reproducible capability delta, did a control establish the counterfactual, did the verifier have meaningful independence, did calibration match reality, did poisoning remain contained, and did the implementation add less complexity than verified value?"
+    },
+    "naya_view": {
+      "purpose": "Prevent NayaPOWER from becoming a large self-referential proof machine that gets better at scoring itself while losing contact with reality.",
+      "doctrine": [
+        "Intelligence Gain (IG) is capability delta, not note count: verified capability after learning minus verified capability before learning, normalized for task difficulty, model/provider, user/context, environment, randomness, tools, time, cost and risk where material.",
+        "Compounding Gain requires later verified gains to benefit from previously retained verified intelligence; accumulation alone is not compounding.",
+        "Epistemic firewall: claim type/state must be explicit and transitions must be evidence-gated.",
+        "Reality can falsify internal knowledge; internal sovereignty never means objective infallibility.",
+        "Causal learning should use control/treatment comparison when feasible; an adversarial wrong-memory arm measures poisoning susceptibility.",
+        "No LEARN promotion merely from storage, retrieval, use, or successful outcome; causal attribution must match the claim strength.",
+        "Evaluator independence is multidimensional and measurable; multiple correlated Nayas do not equal independent verification.",
+        "Epistemic calibration is a permanent metric: confidence should track correctness and uncertainty should rise before failure.",
+        "Every promoted durable lesson should create or attach to a regression expectation/test when the lesson is operationally testable.",
+        "Memory poisoning is existential because compounding amplifies seed quality; poisoned lessons must remain bounded/quarantinable and lose downstream influence when falsified.",
+        "Complexity budget: if a new artifact, index, projection, registry, graph, report or subsystem creates no unique capability, proof boundary or required provenance, it should not persist.",
+        "The single highest-value acceptance harness is the exact-current end-to-end intelligence lifecycle with evidence at every transition."
+      ],
+      "anti_pattern": "Counting notes as intelligence growth; calling correlated reviewers independent; allowing hypotheses to become facts by repetition; learning from one lucky run; trusting an evaluator that only optimizes its own rubric; creating permanent artifacts without unique value; or promoting lessons that have no regression protection.",
+      "successor_effect": "A cold successor should evaluate whether the Brain is actually more capable, not merely larger; preserve epistemic types, demand causal evidence proportional to the learning claim, measure verifier independence and calibration, red-team poisoning, and resist unnecessary architecture."
+    },
+    "machine_view": {
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "epistemic_object_types": [
+        "EXTERNAL_CLAIM",
+        "INTERNAL_KNOWLEDGE",
+        "DERIVED_BELIEF",
+        "VERIFIED_FACT",
+        "OPERATING_ASSUMPTION",
+        "HYPOTHESIS",
+        "DECISION",
+        "OUTCOME",
+        "LEARNING"
+      ],
+      "forbidden_implicit_promotions": [
+        "EXTERNAL_CLAIM->VERIFIED_FACT",
+        "HYPOTHESIS->VERIFIED_FACT",
+        "DECISION->OUTCOME",
+        "OUTCOME->LEARNING",
+        "REPETITION->CORROBORATION"
+      ],
+      "intelligence_gain": {
+        "formula": "IG = VERIFIED_CAPABILITY_AFTER - VERIFIED_CAPABILITY_BEFORE",
+        "normalize_when_material": [
+          "TASK_DIFFICULTY",
+          "MODEL_PROVIDER",
+          "USER_CONTEXT",
+          "ENVIRONMENT",
+          "RANDOMNESS",
+          "TOOLS",
+          "TIME",
+          "COST",
+          "RISK"
+        ],
+        "compounding_condition": "LATER_VERIFIED_GAIN_IS_CAUSALLY_HELPED_BY_PRIOR_VERIFIED_LEARNING"
+      },
+      "causal_learning_test": {
+        "arms": [
+          "CONTROL_NO_LESSON",
+          "TREATMENT_WITH_LESSON",
+          "ADVERSARIAL_WRONG_OR_MALICIOUS_LESSON"
+        ],
+        "outputs": [
+          "BENEFIT_DELTA",
+          "POISONING_SUSCEPTIBILITY",
+          "ATTRIBUTION_CONFIDENCE"
+        ]
+      },
+      "evaluator_independence": {
+        "dimensions": [
+          "MODEL_PROVIDER",
+          "PROMPT",
+          "SOURCE_SET",
+          "MEMORY_STATE",
+          "TOOL_PATH",
+          "INCENTIVE_ORGANIZATIONAL_ROLE"
+        ],
+        "count_of_reviewers_is_independence": false
+      },
+      "epistemic_calibration": {
+        "metrics": [
+          "CONFIDENCE_VS_CORRECTNESS",
+          "UNCERTAINTY_BEFORE_FAILURE",
+          "FALSE_CERTAINTY_RATE"
+        ],
+        "objective": "KNOW_WHEN_WE_DO_NOT_KNOW"
+      },
+      "regression_policy": {
+        "promoted_lesson_requires_expectation_where_testable": true,
+        "regression_signal": "EXPECTED_BENEFIT_NO_LONGER_REPRODUCES"
+      },
+      "complexity_budget": {
+        "persistent_artifact_requires_one_of": [
+          "UNIQUE_CAPABILITY",
+          "UNIQUE_PROOF_BOUNDARY",
+          "REQUIRED_PROVENANCE"
+        ],
+        "otherwise": "DO_NOT_CREATE_OR_RETIRE"
+      },
+      "poison_defense": {
+        "false_lesson_cannot_gain_authority_from": [
+          "STORAGE",
+          "RETRIEVAL",
+          "REPETITION",
+          "USE"
+        ],
+        "falsification_requires": [
+          "CONFLICT_DETECTION",
+          "PROVENANCE_PRESERVATION",
+          "DOWNSTREAM_INFLUENCE_REDUCTION",
+          "CORRECTION_RECORD"
+        ]
+      }
+    },
+    "learning_lesson": "The existential risk of a compounding intelligence system is not merely forgetting; it is confidently compounding the wrong thing. Therefore intelligence quality must be measured as causal capability gain under calibrated uncertainty, with poisoning resistance, independent verification, regression protection, and strict complexity discipline.",
+    "priority": "Build and use one exact-current Intelligence Acceptance Harness that produces claim-matched evidence at every transition, then add differential learning/poisoning arms and calibration measurements to the existing proof seams before creating more architecture.",
+    "decisions": [
+      "Use verified capability delta, not Smart Note count, as the primary measure of intelligence gain.",
+      "Make epistemic type/state explicit and evidence-gated.",
+      "Require control/treatment causal comparisons for strong learning claims when feasible.",
+      "Add an adversarial wrong-memory arm to measure poisoning susceptibility.",
+      "Measure verifier independence rather than reviewer count.",
+      "Track epistemic calibration as a permanent system metric.",
+      "Attach regression expectations/tests to promoted operational lessons where practicable.",
+      "Apply a complexity budget to permanent artifacts and subsystems.",
+      "Prioritize the exact-current end-to-end intelligence acceptance harness over additional doctrine or dashboards."
+    ],
+    "applicability": "Applies to LEARN/VERIFY/PROVE, Smart Notes, evaluation design, memory promotion, multi-agent review, scorecards, artifact creation, and claims of intelligence growth or compounding. It does not replace the Value Calculus, authority model, or Smart Note contract; it sharpens their proof requirements.",
+    "connections": [
+      {
+        "target": "SN-014",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-015",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-016",
+        "type": "DEPENDS_ON"
+      },
+      {
+        "target": "SN-032",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-034",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-041",
+        "type": "REFINES"
+      }
+    ],
+    "uncertainty": "Current NayaPOWER has bounded Smart Note cold-retrieval/held-out behavior proofs, including SN-032, SN-034 and SN-041, so statements that no behavioral loop exists at all are stale. However universal system-wide causal compounding, multi-generation successor reuse, calibrated intelligence-gain measurement, poisoning resistance, verifier-independence measurement, disaster/model/database swap resilience, and long-horizon stability remain unproven at the strongest claim scope."
+  },
+  "projection": {
+    "category_slug": "GOVERNANCE",
+    "topic_slug": "EPISTEMIC-INTEGRITY",
+    "subtopic_slug": "INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING",
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true
+  }
+}

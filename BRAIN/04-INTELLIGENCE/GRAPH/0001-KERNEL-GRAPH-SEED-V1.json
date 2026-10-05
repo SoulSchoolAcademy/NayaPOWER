@@ -9,10 +9,25 @@
       "relationship_id": "REL-KERNEL-SELF-LAW",
       "source_id": "NAYA-KERNEL-SELF",
       "target_id": "NAYA-KERNEL-LAW",
-      "type": "GOVERNS",
+      "type": "CONTEXTUALIZES",
       "status": "ACTIVE",
       "provenance": [
-        "BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md"
+        "NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md",
+        "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md"
+      ],
+      "epistemic_state": "VERIFIED"
+    },
+    {
+      "relationship_id": "REL-KERNEL-SELF-KNOW",
+      "source_id": "NAYA-KERNEL-SELF",
+      "target_id": "NAYA-KERNEL-KNOW",
+      "type": "CONTEXTUALIZES",
+      "status": "ACTIVE",
+      "provenance": [
+        "NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md",
+        "BRAIN/03-KERNEL/NODES/SELF/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md"
       ],
       "epistemic_state": "VERIFIED"
     },
@@ -31,10 +46,11 @@
       "relationship_id": "REL-KERNEL-ACT-KNOW",
       "source_id": "NAYA-KERNEL-ACT",
       "target_id": "NAYA-KERNEL-KNOW",
-      "type": "USED_BY",
+      "type": "PRODUCES",
       "status": "ACTIVE",
       "provenance": [
-        "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md"
+        "BRAIN/03-KERNEL/NODES/ACT/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md"
       ],
       "epistemic_state": "SUPPORTED"
     },
@@ -52,12 +68,14 @@
     },
     {
       "relationship_id": "REL-KERNEL-KNOW-PROVE",
-      "source_id": "NAYA-KERNEL-PROVE",
-      "target_id": "NAYA-KERNEL-KNOW",
+      "source_id": "NAYA-KERNEL-KNOW",
+      "target_id": "NAYA-KERNEL-PROVE",
       "type": "SUPPORTS",
       "status": "ACTIVE",
       "provenance": [
-        "BRAIN/11-KNOWLEDGE/0001-CANONICAL-DISTILLED-KNOWLEDGE-V1.md"
+        "NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md",
+        "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
+        "BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md"
       ],
       "epistemic_state": "SUPPORTED"
     },
@@ -247,7 +265,7 @@
       "epistemic_state": "VERIFIED"
     }
   ],
-  "note": "This seed graph is a canonical semantic seed, not proof that the production graph runtime is live.",
+  "note": "Canonical semantic seed. Runtime routing follows NAYANODE/0100-INTER-NODE-WIRE-CONTRACT-V1.md; this seed is not proof that production graph behavior is live.",
   "allowed_vocabulary": [
     "DERIVED_FROM",
     "SUPPORTS",

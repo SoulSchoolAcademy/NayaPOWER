@@ -1,5 +1,7 @@
 # NayaPOWER SELF — Master Node Contract V1
 
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` (MN-01 SELF, Human Director locked 2026-09-30). Where older semantic wording conflicts, the Ultimate Lock governs intended responsibility; runtime/proof status still comes from live evidence.
+
 **STATUS:** CANONICAL ENGINEERING TARGET — AAA
 **NODE:** NAYA-KERNEL-SELF
 **RESPONSIBILITY:** identity, mission, continuity

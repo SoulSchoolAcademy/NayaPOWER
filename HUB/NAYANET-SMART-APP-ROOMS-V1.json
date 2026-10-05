@@ -1,0 +1,339 @@
+{
+  "schema": "nayanet.smart-app.rooms.v1",
+  "version": "1.0.2",
+  "status": "HUMAN_DIRECTOR_DIRECTED_TARGET_CONTRACT",
+  "runtime_truth": "SPECIFICATION_NOT_RUNTIME_PROOF",
+  "design_intelligence": "NAYA-DESIGN-INTELLIGENCE-V1@1.3",
+  "north_star": "Sophisticated intelligence should produce a simpler, clearer, more useful human experience.",
+  "surface_questions": [
+    "WHERE_AM_I",
+    "WHAT_MATTERS_NOW",
+    "WHAT_CAN_I_DO",
+    "WHAT_HAPPENS_NEXT"
+  ],
+  "benchmark_loop": [
+    "RESEARCH",
+    "DECOMPOSE",
+    "CROSS_REFERENCE",
+    "PRESERVE",
+    "SYNTHESIZE",
+    "SURPASS",
+    "TEST",
+    "VERIFY",
+    "LEARN",
+    "REUSE"
+  ],
+  "states": [
+    "LOADING",
+    "EMPTY",
+    "READY",
+    "BLOCKED",
+    "UNAUTHORIZED",
+    "NOT_VERIFIED",
+    "VERIFIED",
+    "ERROR",
+    "OFFLINE",
+    "DISABLED",
+    "UNKNOWN"
+  ],
+  "causal_path": [
+    "CONTROL",
+    "INTENT",
+    "AUTHORITY_SCOPE",
+    "RUNTIME_OPERATION",
+    "OBSERVATION",
+    "RESULT",
+    "UI_STATE",
+    "EVIDENCE_WHERE_REQUIRED"
+  ],
+  "shell": {
+    "components": [
+      "LEFT_RAIL",
+      "TOP_CONTEXT_BAR",
+      "GLOBAL_SEARCH",
+      "MAIN_WORKSPACE",
+      "NAYA_PRESENCE"
+    ],
+    "invariant": "ONE_SHELL_ELEVEN_ROOMS_ONE_GOVERNED_SUBSTRATE"
+  },
+  "ai_failure_countermeasures": {
+    "blind_building": "RENDER_OBSERVE_USE_TEST",
+    "fragment_optimization": "ONE_SHELL_ONE_GRAMMAR",
+    "contract_decay": "MACHINE_READABLE_PAGE_CONTRACTS",
+    "component_first": "HUMAN_JOB_BEFORE_COMPONENT",
+    "generic_defaults": "NAYA_SIGNATURE_AND_ANTI_GENERIC_TEST",
+    "screenshot_only": "COMPLETE_APPLICATION_PATH",
+    "happy_path_only": "UNIVERSAL_STATE_MATRIX",
+    "fake_intelligence": "CANONICAL_RUNTIME_OR_HONEST_STATE",
+    "unclear_hierarchy": "RECOGNITION_PROGRESSIVE_DISCLOSURE",
+    "dead_controls": "COMPLETE_CAUSAL_PATH",
+    "self_grading": "INDEPENDENT_REVIEW",
+    "forgotten_lessons": "VERIFIED_DESIGN_MEMORY"
+  },
+  "entry": [
+    {
+      "id": "welcome",
+      "purpose": "Invitation and entry",
+      "three_second": "Understand what NayaNET is and how to enter",
+      "primary_action": "ENTER_NAYANET"
+    },
+    {
+      "id": "identity",
+      "purpose": "Governed identity/session bridge",
+      "three_second": "Recognized identity, privacy posture and next action",
+      "primary_action": "ENTER_INTELLIGENT_HUB"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "feed",
+      "name": "Smart Feed",
+      "route": "/feed",
+      "theme": "emerald",
+      "job": "See useful intelligence/activity now",
+      "primary": "OPEN_OR_ACT_ON_HIGHEST_VALUE_ITEM",
+      "composition": [
+        "PERSONAL_COLLECTIVE_ACTIVITY",
+        "FOCUS",
+        "INTELLIGENCE_STREAM",
+        "WHY_NOW"
+      ]
+    },
+    {
+      "id": "today",
+      "name": "Your Intelligence Today",
+      "route": "/today",
+      "theme": "magenta",
+      "job": "Know what matters right now",
+      "primary": "ACT_ON_TOP_NEXT_MOVE",
+      "composition": [
+        "NOW",
+        "NEXT",
+        "WATCH",
+        "LEARNED",
+        "WAITING",
+        "RECENT_PROOF"
+      ]
+    },
+    {
+      "id": "reports",
+      "name": "Your Reports",
+      "route": "/reports",
+      "theme": "indigo",
+      "job": "Understand meaning across time",
+      "primary": "INSPECT_OR_ACT_ON_KEY_FINDING",
+      "composition": [
+        "MEANING",
+        "EVIDENCE",
+        "CHANGE_OVER_TIME",
+        "DRIVERS",
+        "UNCERTAINTY",
+        "NEXT_MOVES",
+        "PROOF"
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Intelligent Library",
+      "route": "/library",
+      "theme": "sapphire",
+      "job": "Find, trust and reuse intelligence",
+      "primary": "SEARCH_OR_OPEN_INTELLIGENCE",
+      "composition": [
+        "SEARCH",
+        "FILTERS",
+        "RELEVANT",
+        "RESULTS",
+        "OBJECT_DETAIL"
+      ]
+    },
+    {
+      "id": "connect",
+      "name": "Smart Connect",
+      "route": "/connect",
+      "theme": "emerald",
+      "job": "Understand and configure connection doors",
+      "primary": "CONNECT_OR_CONFIGURE_DOOR",
+      "composition": [
+        "DOORS",
+        "REAL_STATUS",
+        "CAPABILITIES",
+        "SETUP",
+        "AUTHORITY_NOTE"
+      ]
+    },
+    {
+      "id": "ledger",
+      "name": "Smart Ledger",
+      "route": "/ledger",
+      "theme": "gold",
+      "job": "Inspect what happened and what proves it",
+      "primary": "INSPECT_EVENT_PROOF",
+      "composition": [
+        "TRUST_SUMMARY",
+        "RECEIPT_STREAM",
+        "FILTERS",
+        "RECEIPT_INSPECTOR"
+      ]
+    },
+    {
+      "id": "connections",
+      "name": "Your Connections",
+      "route": "/connections",
+      "theme": "orange",
+      "job": "Understand governed relationships",
+      "primary": "INSPECT_OR_MANAGE_CONNECTION",
+      "composition": [
+        "RELATIONSHIP_LIST",
+        "SCOPE",
+        "CONSENT",
+        "ACTIVITY",
+        "OPTIONAL_MAP"
+      ]
+    },
+    {
+      "id": "lists",
+      "name": "Smart Lists",
+      "route": "/lists",
+      "theme": "purple",
+      "job": "Organize intelligence for action without duplication",
+      "primary": "OPEN_OR_CREATE_LIST",
+      "composition": [
+        "LISTS",
+        "QUALIFICATION_RULES",
+        "ITEMS",
+        "ACTIONS"
+      ]
+    },
+    {
+      "id": "mail",
+      "name": "Smart Mail",
+      "route": "/mail",
+      "theme": "sapphire",
+      "job": "Prioritize and respond to real communication",
+      "primary": "OPEN_HIGHEST_VALUE_CONVERSATION",
+      "composition": [
+        "PRIORITY_INBOX",
+        "CONVERSATIONS",
+        "DETAIL",
+        "NAYA_ASSIST",
+        "CONNECTION_STATE"
+      ]
+    },
+    {
+      "id": "spaces",
+      "name": "Smart Spaces",
+      "route": "/spaces",
+      "theme": "lime",
+      "job": "Enter or resume a durable context",
+      "primary": "ENTER_OR_RESUME_SPACE",
+      "composition": [
+        "SPACE_IDENTITY",
+        "PURPOSE",
+        "MEMBERS",
+        "SCOPE",
+        "RECENT_INTELLIGENCE",
+        "CURRENT_STATE"
+      ]
+    },
+    {
+      "id": "settings",
+      "name": "Settings",
+      "route": "/settings",
+      "theme": "neutral",
+      "job": "Control the relationship with NayaNET",
+      "primary": "CONTEXTUAL_BY_CATEGORY",
+      "composition": [
+        "IDENTITY",
+        "PRIVACY",
+        "AUTHORITY",
+        "CONNECTIONS",
+        "PERSONALIZATION",
+        "NOTIFICATIONS",
+        "APPEARANCE",
+        "ACCESSIBILITY"
+      ]
+    }
+  ],
+  "room_contract_required": [
+    "PURPOSE",
+    "HUMAN_JOB",
+    "THREE_SECOND_UNDERSTANDING",
+    "PRIMARY_ACTION",
+    "CANONICAL_OBJECTS",
+    "SOURCE_OF_TRUTH",
+    "COMPONENTS",
+    "ACTIONS",
+    "AUTHORITY",
+    "HIERARCHY",
+    "STATES",
+    "RESPONSIVE",
+    "ACCESSIBILITY",
+    "PERFORMANCE",
+    "TRUTH_PROVENANCE",
+    "SUCCESS_METRICS",
+    "EVIDENCE_PLAN"
+  ],
+  "beyond_benchmark": [
+    "TRUTH_NATIVE",
+    "INTELLIGENCE_NATIVE",
+    "MULTI_LAYER_REPRESENTATION",
+    "GOVERNED_ACTION",
+    "CONTINUITY",
+    "LEARNING_DESIGN_SYSTEM",
+    "CONTEXTUAL_ROOMS_STABLE_GRAMMAR"
+  ],
+  "build_order": [
+    "APP_SHELL",
+    "SEARCH_NAYA",
+    "WELCOME_IDENTITY_HUB",
+    "HUB_HOME_MAIN_SHOW",
+    "TODAY",
+    "FEED",
+    "LIBRARY",
+    "LEDGER",
+    "CONNECT",
+    "LISTS",
+    "SPACES",
+    "REPORTS",
+    "CONNECTIONS",
+    "MAIL",
+    "SETTINGS",
+    "HARDEN",
+    "INDEPENDENT_GRADUATION"
+  ],
+  "room_document_registry": {
+    "hub_home": "HUB/ROOMS/00-HUB-HOME.md",
+    "feed": "HUB/ROOMS/01-FEED.md",
+    "today": "HUB/ROOMS/02-TODAY.md",
+    "reports": "HUB/ROOMS/03-REPORTS.md",
+    "library": "HUB/ROOMS/04-LIBRARY.md",
+    "connect": "HUB/ROOMS/05-CONNECT.md",
+    "ledger": "HUB/ROOMS/06-LEDGER.md",
+    "connections": "HUB/ROOMS/07-CONNECTIONS.md",
+    "lists": "HUB/ROOMS/08-LISTS.md",
+    "mail": "HUB/ROOMS/09-MAIL.md",
+    "spaces": "HUB/ROOMS/10-SPACES.md",
+    "settings": "HUB/ROOMS/11-SETTINGS.md"
+  },
+  "room_record_rule": "Every canonical room has one living room-specific contract. The record specializes the master room law, retains open decisions, and records evidence-backed design evolution. It is specification truth, not runtime proof.",
+  "hub_home": {
+    "id": "hub-home",
+    "name": "Intelligent Hub Home",
+    "metaphor": "THE_MAIN_SHOW",
+    "route": "/hub",
+    "primary_room": false,
+    "job": "Arrive already oriented to the few things that matter now.",
+    "primary": "OPEN_TOP_INTELLIGENCE_OR_ASK_NAYA",
+    "composition": [
+      "NAYA_PRESENCE",
+      "CURRENT_INTELLIGENCE_HEADLINE",
+      "UP_TO_THREE_BEATS",
+      "ASK_NAYA",
+      "CONTINUE_CONTEXT",
+      "ROOM_NAVIGATION"
+    ],
+    "design_contract": "HUB/ROOMS/00-HUB-HOME.md",
+    "anti_pattern": "KPI_DASHBOARD_AS_FIRST_IMPRESSION"
+  }
+}

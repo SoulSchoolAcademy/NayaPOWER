@@ -4,7 +4,7 @@
 
 ## Purpose
 
-KNOW preserves and serves canonical semantic intelligence, events and memory. It is the knowledge organ of the kernel, responsible for maintaining the intelligence substrate.
+KNOW preserves and serves canonical semantic intelligence, events and memory. It owns canonical intelligence-object identity, meaning, lifecycle, provenance and durable reconstruction. PROVE owns epistemic claim assessment; CONNECT owns task/context applicability and relationship-aware selection.
 
 ## Inputs
 
@@ -19,8 +19,8 @@ KNOW preserves and serves canonical semantic intelligence, events and memory. It
 - Canonical intelligence context
 - Events and observations
 - Checkpoints and state snapshots
-- Current knowledge state summary
-- Retrieval results with provenance
+- Current intelligence-object lifecycle/temporal summary
+- Retrieval candidates with provenance, evidence references and uncertainty metadata
 
 ## MUST Rules
 
@@ -37,7 +37,9 @@ KNOW preserves and serves canonical semantic intelligence, events and memory. It
 - Promote unclassified source material silently.
 - Collapse knowledge type into epistemic state.
 - Serve intelligence without provenance.
-- Allow retrieval without authorization check.
+- Allow owner/scope-ineligible retrieval.
+- Treat retrieval as truth, applicability, or authority.
+- Promote final truth or task-level applicability; those belong to PROVE and CONNECT.
 
 ## Acceptance Criteria
 
@@ -45,7 +47,8 @@ KNOW preserves and serves canonical semantic intelligence, events and memory. It
 - Intelligence is retrievable by semantic, structural, and contextual queries.
 - Lifecycle state is accurate and current.
 - Classification follows the canonical type system.
-- Retrieval results include epistemic state.
+- Retrieval candidates include current lifecycle/temporal state, provenance and evidence references.
+- Any applicability metadata is treated as candidate/context input until CONNECT resolves task-level applicability.
 
 ## Failure States
 

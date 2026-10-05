@@ -24,7 +24,7 @@ export type IntelligentBlock = {
   // edges: the graph is load-bearing, not decorative.
   //
   // Graph V2 projection fields (contract 0003-GRAPH-RELATIONSHIP-CONTRACT-V2,
-  // CANDIDATE_CONTRACT — pending Human Director D1 ratification). The V2
+  // RATIFIED_CONTRACT. The V2
   // columns live on nayanet_brain_relationships; the retrieval path consumes
   // their write-time projection on the block row. Every V2 field is optional:
   // legacy two-field projections ({target_block_id, relationship_type})
@@ -184,7 +184,7 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
 }
 
 // ---------------------------------------------------------------------------
-// Graph V2 selector gates (contract 0003 — CANDIDATE_CONTRACT, pending D1
+// Graph V2 selector gates (contract 0003 — RATIFIED_CONTRACT.
 // ratification). An edge carrying no V2 fields is a legacy two-field
 // projection and passes every gate: flat pre-V2 behavior is preserved
 // byte-for-byte. An edge carrying V2 fields is held to V2 semantics:
@@ -195,7 +195,8 @@ function blockConnections(block: IntelligentBlock): ParsedBlockConnection[] {
 //     (V2 temporal_contract: null valid_until means open-ended);
 //   - non-PRIVATE visibility requires an explicit consent_ref. Current
 //     participation state is not a retroactive read gate for already accepted
-//     identity-safe derived intelligence (ratified #1136);
+//     identity-safe derived intelligence. Collective participation/revocation semantics
+//     are governed separately; this selector must not infer constitutional ratification.
 //   - NOT_APPLICABLE edges never influence retrieval; UNKNOWN stays UNKNOWN
 //     (V2 applicability_contract: retrieval does not imply applicability).
 // Malformed V2 values fail closed. No gate creates authority: admission is

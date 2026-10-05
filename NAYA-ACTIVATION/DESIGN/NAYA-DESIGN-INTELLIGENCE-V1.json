@@ -1,0 +1,302 @@
+{
+  "schema": "naya.design-intelligence.v1",
+  "version": "1.3",
+  "status": "HUMAN_DIRECTOR_RATIFIED_CANONICAL",
+  "north_star": "Make sophisticated intelligence feel simple, beautiful, trustworthy, alive and useful to the human.",
+  "coordination": {
+    "issue": 554,
+    "finding_rule": "Any materially not-right observation must be posted with evidence; posting does not itself grant authority."
+  },
+  "inherited_contracts": [
+    "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+    "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md",
+    "BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md"
+  ],
+  "required_views": {
+    "HUMAN": [
+      "essence",
+      "human_value",
+      "experience",
+      "what_to_remember",
+      "next_action"
+    ],
+    "NAYA": [
+      "intent",
+      "outcome",
+      "preserve",
+      "ambiguity",
+      "authority_privacy",
+      "best_next_move",
+      "proof",
+      "successor_relevance"
+    ],
+    "AI": [
+      "requirements",
+      "architecture",
+      "dependencies",
+      "components",
+      "states",
+      "causal_paths",
+      "constraints",
+      "failure_behavior",
+      "acceptance",
+      "non_goals"
+    ],
+    "MACHINE": [
+      "ids",
+      "enums",
+      "routes",
+      "tokens",
+      "state_machines",
+      "dependencies",
+      "gates",
+      "schema_refs",
+      "version",
+      "status"
+    ],
+    "PROOF": [
+      "claim",
+      "evidence",
+      "method",
+      "verifier",
+      "scope",
+      "result",
+      "limitations",
+      "unresolved_gaps"
+    ]
+  },
+  "workflow": [
+    "RESTORE",
+    "UNDERSTAND_INTENT",
+    "DISTILL_OUTCOME",
+    "INVENTORY",
+    "IDENTIFY_CANONICAL_OWNERS",
+    "PRESERVE",
+    "CLASSIFY_CHANGE",
+    "MODEL_EXPERIENCE",
+    "DEFINE_CAUSAL_PATHS",
+    "DESIGN_SYSTEM",
+    "SIMULATE_STATES",
+    "SCORE",
+    "BUILD_BOUNDED_SLICE",
+    "TEST",
+    "OBSERVE",
+    "INDEPENDENT_VERIFY",
+    "LEARN",
+    "PROMOTE_OR_SUPERSEDE",
+    "SUCCESSOR"
+  ],
+  "change_classification": [
+    "KEEP",
+    "IMPROVE",
+    "REPLACE",
+    "REMOVE"
+  ],
+  "quality_axes": [
+    "purpose",
+    "human_value",
+    "clarity",
+    "visual_craft",
+    "interaction",
+    "intelligence",
+    "truth",
+    "governance",
+    "accessibility",
+    "responsive_quality",
+    "performance",
+    "reliability",
+    "maintainability",
+    "continuity",
+    "learning"
+  ],
+  "causal_path": [
+    "CONTROL",
+    "INTENT",
+    "SCOPE_AUTHORITY",
+    "CAPABILITY",
+    "OBSERVATION",
+    "UI_STATE",
+    "EVIDENCE_WHERE_REQUIRED"
+  ],
+  "learning": {
+    "maximum_automatic_state": "CANDIDATE",
+    "evidence_sources": [
+      "human_director_preference",
+      "repeated_user_outcome",
+      "task_completion",
+      "error_reduction",
+      "accessibility_gain",
+      "performance_gain",
+      "accepted_visual_comparison",
+      "reuse_success"
+    ],
+    "ai_preference_alone_can_promote": false,
+    "requires_applicability": true,
+    "requires_provenance": true,
+    "supersession_supported": true
+  },
+  "automatic_builder_outputs": [
+    "human_outcome",
+    "experience_model",
+    "existing_state_inventory",
+    "preservation_map",
+    "information_architecture",
+    "feature_function_map",
+    "component_architecture",
+    "state_matrix",
+    "causal_path_matrix",
+    "visual_token_system",
+    "responsive_accessibility_performance_contract",
+    "project_scorecard",
+    "roadmap_dependencies",
+    "proof_plan",
+    "successor_handoff"
+  ],
+  "anti_patterns": [
+    "generic_dashboard_conversion",
+    "identity_erasure",
+    "style_without_function",
+    "fake_liveness",
+    "fake_data",
+    "random_color",
+    "mixed_placeholder_icons",
+    "glow_without_depth",
+    "spectacle_over_readability",
+    "client_truth_as_canonical",
+    "competing_design_systems",
+    "one_off_css_accumulation",
+    "unmeasured_improvement",
+    "self_grade_as_final_proof"
+  ],
+  "truth_law": "No representation, implementation, score or visual-quality claim upgrades truth status without evidence.",
+  "ratified_at": "2026-10-02",
+  "human_experience_science": {
+    "adoption": "HUMAN_DIRECTOR_RATIFIED_2026-10-02",
+    "evidence_boundary": "Distilled public benchmark corpus; external sources inform transferable design principles but do not override canonical NayaPOWER governance, project contracts, human authority, or verified project outcomes.",
+    "cross_reference": {
+      "result": "STRONGLY_ALIGNED_WITH_TARGETED_GAPS",
+      "preserve": [
+        "purpose_before_visual_treatment",
+        "hierarchy_before_density",
+        "meaning_before_decoration",
+        "depth_before_glow",
+        "state_before_animation",
+        "beauty_causality_truth_speed",
+        "coherent_tokens_material_icon_family",
+        "complete_product_quality",
+        "accessibility_responsiveness_performance",
+        "render_observe_independent_verify_learn_reuse"
+      ],
+      "explicit_gaps_closed": [
+        "recognition_over_recall",
+        "progressive_disclosure",
+        "error_prevention_and_recovery",
+        "choice_complexity",
+        "target_acquisition_and_motor_ergonomics",
+        "stable_grammar_with_adaptive_intelligence",
+        "direct_manipulation_when_applicable",
+        "measured_cognitive_burden",
+        "human_usability_outcome_evidence",
+        "pattern_applicability_and_supersession"
+      ]
+    },
+    "laws": [
+      "PURPOSE_BEFORE_INTERFACE",
+      "DISTILL_BEFORE_DISPLAY",
+      "RECOGNITION_BEFORE_RECALL",
+      "ONE_OBVIOUS_NEXT_ACTION",
+      "PERCEPTIBLE_STATE_AND_IMMEDIATE_FEEDBACK",
+      "PREVENT_ERROR_BEFORE_EXPLAINING_ERROR",
+      "COMPLEXITY_STAYS_IN_THE_MACHINE",
+      "STABLE_GRAMMAR_ADAPTIVE_INTELLIGENCE",
+      "DIRECT_MANIPULATION_WHEN_IT_CLARIFIES_CAUSALITY",
+      "DESIGN_LEARNS_FROM_HUMAN_OUTCOMES"
+    ],
+    "surface_questions": [
+      "WHERE_AM_I",
+      "WHAT_MATTERS",
+      "WHAT_CAN_I_DO",
+      "WHAT_HAPPENS_NEXT"
+    ],
+    "cognitive_ergonomics_checks": [
+      "attention",
+      "choice_complexity",
+      "target_acquisition",
+      "memory_burden",
+      "mental_model",
+      "feedback_latency",
+      "error_probability",
+      "recovery",
+      "progressive_disclosure",
+      "trust"
+    ],
+    "pattern_intelligence_schema": [
+      "HUMAN_PROBLEM",
+      "CONTEXT",
+      "APPLICABILITY",
+      "PATTERN",
+      "IMPLEMENTATION_GRAMMAR",
+      "FAILURE_MODES",
+      "ACCESSIBILITY",
+      "EVIDENCE",
+      "OUTCOME",
+      "SUPERSESSION"
+    ],
+    "optimization_target": "MAXIMUM_RESPONSIBLE_HUMAN_VALUE_WITH_MINIMUM_NECESSARY_COGNITIVE_BURDEN",
+    "anti_goals": [
+      "maximum_decoration",
+      "maximum_novelty",
+      "maximum_engagement",
+      "maximum_interface_density",
+      "pattern_copying_without_applicability"
+    ]
+  },
+  "benchmark_to_beyond": {
+    "adoption": "HUMAN_DIRECTOR_RATIFIED_2026-10-02",
+    "objective": "Learn from the strongest available external and internal evidence, preserve what is already stronger, synthesize compatible strengths, and build measurably better outcomes rather than imitate leaders.",
+    "loop": [
+      "RESEARCH_FRONTIER",
+      "DECOMPOSE_CAUSAL_PRINCIPLES",
+      "CROSS_REFERENCE_CURRENT_NAYA",
+      "PRESERVE_CURRENT_SUPERIOR_STRENGTHS",
+      "SYNTHESIZE_COMPATIBLE_BEST",
+      "GENERATE_BEYOND_BENCHMARK_OPTION",
+      "TEST",
+      "INDEPENDENT_VERIFY",
+      "CAPTURE_PROVEN_IMPROVEMENT",
+      "REPEAT"
+    ],
+    "comparison_axes": [
+      "human_value",
+      "usefulness",
+      "clarity",
+      "quality",
+      "safety",
+      "truth",
+      "speed",
+      "accessibility",
+      "reliability",
+      "human_effort",
+      "domain_outcome"
+    ],
+    "rules": {
+      "multiple_benchmarks_required_when_material": true,
+      "copy_surface_style_without_reason": false,
+      "prestige_creates_truth": false,
+      "preserve_current_if_proven_superior": true,
+      "synthesis_preferred_over_imitation": true,
+      "ten_x_is_aspiration_not_claim": true,
+      "superiority_claim_requires_evidence": true,
+      "verified_improvement_must_compound": true
+    },
+    "anti_patterns": [
+      "leader_copying",
+      "cargo_cult_best_practice",
+      "prestige_deference",
+      "novelty_without_value",
+      "regression_to_convention",
+      "benchmark_chasing_over_human_outcome",
+      "unverified_superiority_claim"
+    ]
+  }
+}

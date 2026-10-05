@@ -1,0 +1,126 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "smart_note_id": "SN-017",
+ "capture_id": "20261001-sn017-autoresearch-harness-lessons",
+ "title": "AutoResearch Harness Lesson — Make the Experiment Tiny, Frozen, Measurable, and Reversible",
+ "category": "SYSTEM_INTELLIGENCE",
+ "topic": "SELF_OPTIMIZATION",
+ "subtopic": "GOVERNED_EXPERIMENT_CAMPAIGNS",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_at": "2026-10-01",
+  "captured_at_utc": "2026-10-01T16:30:00Z",
+  "source_type": "external_research_reconciled_with_nayapower",
+  "source_reference": "Human Director requested a deep-dive and durable capture of the useful intelligence from Andrej Karpathy's AutoResearch project. Primary sources inspected: https://github.com/karpathy/autoresearch (snapshot 228791fb499afffb54b46200aca536f79142f117), README.md, program.md, prepare.py, train.py, and https://autoresearch.lol/#how-it-works. Community issues #179, #284, #613, #396 and #261 were reviewed as non-canonical operating evidence. Full reconciled report: KNOWLEDGE/AUTORESEARCH HARNESS DEEP DIVE AND NAYAPOWER LESSONS 2026-10-01.md.",
+  "lifecycle_reverification": "2026-10-01 final metadata-only retrigger after PR #1250 repaired source-SHA projection race and PR #1253 bound cold Smart Note reread to the canonical intelligence verifier. Intelligence payload unchanged; exact-content reconciliation must reuse the existing canonical IB."
+ },
+ "projection": {
+  "publication_scope": "PUBLIC_DERIVED_VIEW",
+  "human_director_authorized_publication": true,
+  "category_slug": "SYSTEM-INTELLIGENCE",
+  "topic_slug": "SELF-OPTIMIZATION",
+  "subtopic_slug": "GOVERNED-EXPERIMENT-CAMPAIGNS"
+ },
+ "intelligence": {
+  "essence": "AutoResearch's most valuable lesson for NayaPOWER is not to replace the Nine-Node organism or fork another agent framework. It is to make autonomous experiments radically easier to reason about: freeze the baseline and evaluator, tightly bound what may change, bound time/compute/cost, measure objectively, automatically keep or revert decisive low-risk results within existing authority, and detect search stagnation so the optimizer explores a genuinely different direction. NayaPOWER should absorb these mechanics inside the existing LAW → ACT → VERIFY → SmartLedger → LEARN → EVOLVE path, preserving its stronger authority, evidence, value, memory and cold-successor architecture.",
+  "human_view": {
+   "meaning": "The useful idea is simple: do not change our brain. Make the test box around the brain cleaner. Before Naya tries to improve something, lock what 'before' looks like, lock how success is measured, say exactly what she may touch, give her a budget, test the change, keep it only if it truly wins, and otherwise roll it back. If she keeps trying the same kind of idea without progress, deliberately change direction.",
+   "why_it_matters": "This can reduce human micromanagement and wasted experiments without weakening governance. AutoResearch shows how powerful a smart agent becomes when the surrounding experiment is hard to misunderstand. NayaPOWER already has the harder governance/memory/verification layers; the gap is operational compression of self-optimization.",
+   "simple_rule": "Keep the NayaPOWER architecture. Add AutoResearch-grade experimental discipline inside EVOLVE: BASELINE → FREEZE EVALUATOR → BOUND MUTATION → BOUND BUDGET → RUN → VERIFY → KEEP/REVERT → LEDGER → LEARN → REDIRECT IF STAGNATING."
+  },
+  "simple_view": {
+   "child": "It is like testing a new race-car part on the same track with the same stopwatch. Only change one allowed part, use the same test, and keep it only if the car truly gets better. If the same ideas stop helping, try a different kind of idea.",
+   "grandma": "We do not need to rebuild the whole house because somebody made a clever workshop. We can borrow the workshop rule: measure the house before the change, protect the parts that must not move, make one bounded improvement, check the result honestly, and undo it if it did not help."
+  },
+  "naya_view": {
+   "purpose": "Translate AutoResearch's high-throughput bounded-experiment mechanics into NayaPOWER without adding another brain, authority model, ledger, value engine or learning path.",
+   "architectural_rule": "External harness ideas are research inputs. Reuse only mechanics that complement canonical ownership. The Governed Experiment Campaign, if implemented, is a projection/profile over SELF, LAW, ACT, KNOW, PROVE, CONNECT, VERIFY, LEARN, EVOLVE plus Value Calculus and SmartLedger.",
+   "adoption_set": [
+    "immutable evaluator identity/hash",
+    "explicit mutable/immutable surface",
+    "frozen baseline receipt",
+    "resource envelope",
+    "automatic keep/revert within standing authority",
+    "stagnation/novelty redirect"
+   ],
+   "reject_set": [
+    "forking AutoResearch as a NayaPOWER subsystem",
+    "replacing Value Calculus with one scalar metric",
+    "replacing SmartLedger with a flat experiment log",
+    "using unrestricted never-stop autonomy as global law",
+    "using git history as the complete memory system",
+    "letting the experiment agent alter its evaluator or authority contract"
+   ],
+   "next_proof": "Prove one low-risk bounded NayaPOWER experiment with BASELINE → FROZEN EVALUATOR → BOUNDED CANDIDATE → RUN → INDEPENDENT VERIFY → VALUE → KEEP/REVERT → SMARTLEDGER → COLD REREAD before generalizing."
+  },
+  "machine_view": {
+   "canonical_object": "INTELLIGENT_BLOCK",
+   "intelligence_class": "EXTERNAL_RESEARCH_RECONCILIATION",
+   "adoption_decision": "SELECTIVE_ADOPTION_NO_FORK",
+   "external_system": "karpathy/autoresearch",
+   "external_snapshot": "228791fb499afffb54b46200aca536f79142f117",
+   "nayapower_base": "a726a8376559609a3620f948ec7bfcabdba50abb",
+   "recommended_existing_seam": "LEARN_TO_EVOLVE_SELF_OPTIMIZATION",
+   "new_brain_required": false,
+   "new_ledger_required": false,
+   "new_authority_model_required": false,
+   "new_value_engine_required": false,
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE",
+   "required_campaign_mechanics": [
+    "frozen_baseline",
+    "immutable_evaluator",
+    "explicit_mutable_surface",
+    "resource_envelope",
+    "independent_verification",
+    "automatic_keep_or_revert_when_authorized",
+    "experiment_history_persistence",
+    "stagnation_or_novelty_redirect",
+    "cold_successor_reread"
+   ],
+   "hard_invariants": [
+    "CAPABILITY_DOES_NOT_CREATE_AUTHORITY",
+    "VALUE_DOES_NOT_CREATE_AUTHORITY",
+    "UNKNOWN_IS_NOT_PASS",
+    "IMPLEMENTED_IS_NOT_VERIFIED",
+    "VERIFIED_IS_NOT_PRODUCTION_PROVEN",
+    "DO_NOT_CREATE_SECOND_BRAIN",
+    "DO_NOT_CREATE_SECOND_LEDGER"
+   ],
+   "claim_boundary": "AutoResearch demonstrates a strong bounded experimentation pattern. It does not prove universal 100x cost savings, and its narrow sandbox does not replace NayaPOWER's broader governance requirements."
+  },
+  "decisions": [
+   "Do not fork AutoResearch into NayaPOWER now.",
+   "Do not change the Nine-Node architecture because of this research.",
+   "Preserve AutoResearch as external reference intelligence.",
+   "Adopt six mechanics selectively: immutable evaluator, explicit mutable surface, frozen baseline, resource envelope, authorized automatic keep/revert, stagnation/novelty redirect.",
+   "Express any Governed Experiment Campaign as a profile/projection over existing Nine-Node ownership.",
+   "Persist experiment outcomes, including discarded candidates, through existing SmartLedger semantics rather than a second experiment ledger.",
+   "Require one bounded proof campaign before generalizing.",
+   "Treat the claimed 100x savings as unverified unless measured in the relevant NayaPOWER workload."
+  ],
+  "priority": "High-value research input for the future self-optimization/self-building lane. It should not interrupt the current Nine-Node proof frontier, but it should be retrievable when EVOLVE work reaches governed experiment campaigns.",
+  "connections": [
+   {
+    "type": "REFINES",
+    "target": "SN-013 — Decision Efficiency — Evidence-Based Act / Read / Ask Doctrine"
+   },
+   {
+    "type": "SUPPORTS",
+    "target": "SN-014 — The Compounding Imperative — Everything Teaches; Only the Captured Compounds"
+   },
+   {
+    "type": "SUPPORTS",
+    "target": "SN-015 — Active Intelligence Rule — Stored Knowledge Must Become Connected, Retrievable, Usable Intelligence"
+   },
+   {
+    "type": "CONTEXTUALIZES",
+    "target": "SN-016 — The Judgment Rule — Judgment Before Blind Obedience"
+   }
+  ],
+  "uncertainty": "This note preserves a research reconciliation, not production proof that these six mechanics will improve NayaPOWER. AutoResearch's canonical sources prove its bounded loop design; community issues are observations/proposals, not project law. The precise Naya campaign schema, early-abort thresholds, search policy, and measured savings remain hypotheses until implemented and experimentally verified. The 100x-cheaper claim was not verified from canonical AutoResearch sources.",
+  "applicability": "Retrieve when designing NayaPOWER self-optimization, EVOLVE campaigns, bounded autonomous coding/research loops, experiment harnesses, evaluation isolation, rollback logic, compute/attention efficiency, or search-stagnation controls. Do not use this note to bypass LAW, production authorization, privacy, evidence or Human Director boundaries.",
+  "learning_lesson": "The environment around an intelligent agent can be as important as the intelligence inside it. Freeze what must not move, bound what may move, measure against a real baseline, make failure cheap to revert, and preserve every result as evidence. This converts autonomy from open-ended improvisation into a compounding experiment loop.",
+  "successor_effect": "A cold Naya encountering an experiment-harness problem should first restore existing NayaPOWER ownership, then use this intelligence to make the experimental container smaller and more deterministic. She should not propose a fork or second optimization engine unless current canonical evidence proves the existing seam cannot support the requirement."
+ }
+}

@@ -59,7 +59,7 @@
       "dependencies": ["00", "03"],
       "source_file": ".naya/contracts/02-GOVERNANCE-AND-FLOW/01-EXECUTION-PROTOCOL.md",
       "master_node": "MN-03 ACT",
-      "finding": "UNREFERENCED_CONTRACT: not named by the library index or any registry"
+      "finding": "POINTER_REPAIRED_2026-09-30: prior .naya/contracts/10-CONTINUITY-SUCCESSOR.md path is absent on current main; canonical succession semantics are mapped to the existing Successor Contract V1. Status remains PROPOSED pending full contract reconciliation/ratification."
     },
     {
       "contract_id": "05",
@@ -200,7 +200,7 @@
       "status": "PROPOSED",
       "authority": "NayaNET Constitutional Contract Law",
       "dependencies": ["02", "20"],
-      "source_file": ".naya/contracts/10-CONTINUITY-SUCCESSOR.md",
+      "source_file": "BRAIN/08-SUCCESSION/0001-SUCCESSOR-CONTRACT-V1.md",
       "master_node": "MN-09 EVOLVE",
       "finding": "UNREFERENCED_CONTRACT: not named by the library index or any registry"
     },

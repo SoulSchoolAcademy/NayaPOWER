@@ -1,5 +1,7 @@
 # MACHINE-VERIFY-CONTRACT-V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — VERIFY semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Status:** CANONICAL MACHINE CONTRACT — implementation qualification layer. Runtime proof is separate.
 
 ## Role
@@ -49,3 +51,7 @@ Prefer deterministic bounded work; expose latency, retrieval count, evidence cou
 
 ## Acceptance
 Unit tests cover happy and negative paths. Integration tests prove node-to-node contracts. Runtime tests must use legitimate authenticated identity and real substrate. Independent verification is required for VERIFIED. Production proof is a separate gate.
+
+
+## Ultimate-lock state axes
+Keep outcome status, acceptance decision, causal status and verification/observation-window maturity separate. EXECUTION ≠ OUTCOME; RECEIPT ≠ OUTCOME; SELF-REPORT ≠ INDEPENDENT VERIFICATION; CORRELATION ≠ CAUSATION; NOT_PROVEN ≠ FALSE.

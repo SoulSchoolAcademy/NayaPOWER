@@ -1,23 +1,23 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-09-30",
-  "receipt_basis_commit": "50103510caa6f5fc6b3cd409c7388f154acd58f6",
-  "inventory_file_count": 160,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "eed788e7effc62fcece3d425d05a219aa0710229",
+  "inventory_file_count": 195,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 3,
+    "01-GOVERNANCE": 7,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 19,
+    "05-MEMORY": 45,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 5,
+    "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 23,
-    "90-OPERATIONS": 10,
+    "12-ENGINEERING": 24,
+    "90-OPERATIONS": 11,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -60,8 +60,8 @@
     },
     {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
-      "blob_sha": "1fb0f6c8421d1be055999c4222ce58c41691316d",
-      "size": 5737
+      "blob_sha": "75200ca1f5cec5476d43f6647b72623b13c4cace",
+      "size": 7778
     },
     {
       "path": "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json",
@@ -109,9 +109,29 @@
       "size": 1978
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md",
+      "blob_sha": "11c8c5515633b8743859a0ff0f92aa9619992c88",
+      "size": 11571
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md",
+      "blob_sha": "e9392c62e8834b955fa9518cfcdd062f1d6000d2",
+      "size": 4998
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md",
+      "blob_sha": "765af2fc3119fc844f52554652535d39ab7cfb48",
+      "size": 9335
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json",
+      "blob_sha": "dd48fb27be1120aa763019966d4d1145e4c58df0",
+      "size": 12649
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "779fb7d8c1fc8cfe0a2971badc3b63e63935d6d7",
-      "size": 848
+      "blob_sha": "c9173f5ac8f09f94e0e861729383bcb261f5d905",
+      "size": 1363
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
@@ -150,18 +170,23 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "51b0d2685de8a0993b34eff7f406db423e1ab010",
-      "size": 9395
+      "blob_sha": "e98bf80a5c9b187b51ab0eef56f928325d62f40c",
+      "size": 9870
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
-      "blob_sha": "7953bbc48e2173839178ab485f085aca2f71a6e9",
-      "size": 24029
+      "blob_sha": "bb9868d5aea0bee6cf41b9d0161deb3aa10b18ea",
+      "size": 25514
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md",
       "blob_sha": "900f3d525938c8ab315e871baca891196f6b52de",
       "size": 3347
+    },
+    {
+      "path": "BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md",
+      "blob_sha": "a71ae7e732e1da0132ce1cb968160ebc018e1d37",
+      "size": 6272
     },
     {
       "path": "BRAIN/03-KERNEL/MANIFEST.json",
@@ -175,18 +200,18 @@
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/CONNECT/0001-CONTRACT.md",
-      "blob_sha": "1fa8bc04319774abf88cfe7b193da7d7da3bf6e8",
-      "size": 2007
+      "blob_sha": "b84356eb61012c233016bba8a25730997af5948e",
+      "size": 2383
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/EVOLVE/0001-CONTRACT.md",
-      "blob_sha": "4926599cc45c6f9b53c16d502aecbce7b02d5590",
-      "size": 1982
+      "blob_sha": "2985f04efa9a4d4715f05ad4642c6aeea16020a4",
+      "size": 2689
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/KNOW/0001-CONTRACT.md",
-      "blob_sha": "17d60031abf12c4f0f68ce50275d0b0a89f0f6bd",
-      "size": 1829
+      "blob_sha": "254345b219a72a9cf7160fe9aa8e2b249b5be91c",
+      "size": 2334
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/LAW/0001-CONTRACT.md",
@@ -195,8 +220,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/LEARN/0001-CONTRACT.md",
-      "blob_sha": "e1a02f3e7ebde00a208393b4f83ef2e0f6671827",
-      "size": 2092
+      "blob_sha": "2702a7a5c3032a6b4446ea1ef551d3a79d99741f",
+      "size": 2364
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/PROVE/0001-CONTRACT.md",
@@ -215,8 +240,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
-      "blob_sha": "207b37d63e36b4566eae17c545f203e17334c7ed",
-      "size": 1846
+      "blob_sha": "baa6ba69a27b53aa00151c4206ad1984b04f1045",
+      "size": 6806
     },
     {
       "path": "BRAIN/03-KERNEL/README.md",
@@ -300,8 +325,8 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json",
-      "blob_sha": "6f4cdd2f69ef6b2f6c7680a3075054ec1741a6aa",
-      "size": 8502
+      "blob_sha": "695f81578467c0928269c0edd05cc84e48c80147",
+      "size": 9261
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
@@ -335,53 +360,53 @@
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json",
-      "blob_sha": "3b927e0cfeda1ce66ec1fd7349f825909886dadb",
-      "size": 7446
+      "blob_sha": "28f74bd818d82eaf5d3b35340803077f7f562f30",
+      "size": 8099
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json",
-      "blob_sha": "9da295d13eb135adc9dbb62134dd3325a970be87",
-      "size": 4483
+      "blob_sha": "076ae6c00f068f0dea4457ac4db4c904ae70ec8d",
+      "size": 4685
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-CONNECT.json",
-      "blob_sha": "d7fd513735f72b53e6f0c0ef0accabd1198bf720",
-      "size": 3781
+      "blob_sha": "d9a8078b22e975236ead7fa892c10e5b3db7a683",
+      "size": 3982
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-EVOLVE.json",
-      "blob_sha": "a1adf92ff9a88290c691f8c525ee0fb0c79bf2d7",
-      "size": 4035
+      "blob_sha": "9e634a6cda27ce5e9422268ade17090d2233341a",
+      "size": 4234
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-KNOW.json",
-      "blob_sha": "900ae469d951dcd6e4d5c0038bf4acbaefe40ee0",
-      "size": 5260
+      "blob_sha": "51f527f44273c0205859499e29c2fee35b061f2f",
+      "size": 5949
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LAW.json",
-      "blob_sha": "be01de8a3a7959d3ac7afb794c799f09b2813544",
-      "size": 4717
+      "blob_sha": "a9c9f8a8457173732965a41e5e8151cc1b8357bb",
+      "size": 4922
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-LEARN.json",
-      "blob_sha": "268730edaba567c9a6373df60541e3b4c0cf03db",
-      "size": 3658
+      "blob_sha": "4bb157986508e2eda475a2b586434da0b086e931",
+      "size": 3859
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-PROVE.json",
-      "blob_sha": "a4ba759315dc547f4a4892b7f858d1c237d9ffcc",
-      "size": 4757
+      "blob_sha": "e51ffebafe62a7aff6c9ec0c7f0243c8f779a623",
+      "size": 4957
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json",
-      "blob_sha": "733ca0c3712d8167bea88742f3f86db5eaff5869",
-      "size": 3595
+      "blob_sha": "47a611e41ba3ca2f3d7e6e39ab03ef199fd7d4d4",
+      "size": 4161
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
-      "blob_sha": "76031c71d8ba756bfb7bbba4f3c5cb61c61b9300",
-      "size": 4361
+      "blob_sha": "2739d6b853808e1668020dc052d0cbc55f7e60c5",
+      "size": 4561
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -399,9 +424,54 @@
       "size": 1937
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
+      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
+      "size": 4371
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
+      "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
+      "size": 6363
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/27/IB-DIR-NAYAPOWER-20260927-001.md",
+      "blob_sha": "cb3d277c8117de4d5f465059f63640604bc27b92",
+      "size": 2359
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/28/IB-DIR-NAYAPOWER-20260928-001.md",
+      "blob_sha": "9a102af8700083f0cd1dfe900c65407885b08d12",
+      "size": 2091
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/29/IB-DIR-NAYAPOWER-20260929-001.md",
+      "blob_sha": "ef4f22f9e3c1f619be2011b5a7b13ed5b5e96031",
+      "size": 2239
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/09/30/IB-DIR-NAYAPOWER-20260930-001.md",
+      "blob_sha": "c45c324130fb21c3f05d9b43eb489ec5b58db657",
+      "size": 2001
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md",
+      "blob_sha": "22b0d0d71bcf6de6621db212e3352e96477c3df4",
+      "size": 16019
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/02/IB-DIR-NAYAPOWER-20261002-001.md",
+      "blob_sha": "6514a763ac078fcc442cb246945c88e09d8b7455",
+      "size": 2477
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
+      "blob_sha": "16b436f42a72271eefc64c031ea5c0c75a4651d5",
+      "size": 5598
+    },
+    {
       "path": "BRAIN/05-MEMORY/README.md",
-      "blob_sha": "b4a6c7f3e85067e6a851f4b881263c232662d011",
-      "size": 4666
+      "blob_sha": "d9ca35c22c012c631421d18edd41fd42995670ee",
+      "size": 2300
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md",
@@ -434,9 +504,9 @@
       "size": 5197
     },
     {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-012/IB-SMART-NOTE-20260930-sn012-consent-granularity.md",
-      "blob_sha": "971ba37e415b3b5a29a3de080dd807a04659c590",
-      "size": 6830
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-275/IB-SMART-NOTE-20260930-sn275-consent-granularity.md",
+      "blob_sha": "d373c8e2dc2b44afd33172ddc011c6592c1cf294",
+      "size": 6624
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
@@ -475,8 +545,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md",
-      "blob_sha": "b11503343dcf7c30d19713d41544b647bee807af",
-      "size": 11786
+      "blob_sha": "7670d492a24a35f6e5c86f84b6476cd0e7d5aba3",
+      "size": 11679
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/CLASSIFICATION-TAXONOMY/SN-011/IB-SMART-NOTE-20260930-sn011-intelligence-classes.md",
@@ -489,9 +559,94 @@
       "size": 4877
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/CURRENT-ARCHITECTURAL-TRUTH/ORGANISM-COMPOSITION-AND-PROOF-FRONTIER/SN-021/IB-SMART-NOTE-20261001-sn021-current-architectural-truth-and-frontier.md",
+      "blob_sha": "c351000a16adaacdfa974fa1fd13c8723a6c8db6",
+      "size": 9076
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "blob_sha": "0a00a49b1f914b934bc15f675fb73d14eacac24b",
+      "size": 10771
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/SELF-OPTIMIZATION/GOVERNED-EXPERIMENT-CAMPAIGNS/SN-017/IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md",
+      "blob_sha": "9a51a0291bf2a0ecd14b7579591dac382509fbcf",
+      "size": 7834
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+      "blob_sha": "55f0b28f57d99bfad8d82f39116405937d036324",
+      "size": 8650
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+      "blob_sha": "2073f4914195307f2c4956343ac77fd5a98609be",
+      "size": 7469
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-022/IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence.md",
+      "blob_sha": "16b91f45075df057bc069c3d41129c201ba70e0d",
+      "size": 7293
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+      "blob_sha": "ae3ff71ad93e31fc4a2dd4789472ee961ed187ec",
+      "size": 1682
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-042/IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration.md",
+      "blob_sha": "ee2495c9265212bdc42697cbde22bf1444a84b14",
+      "size": 7343
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-035/IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.md",
+      "blob_sha": "b2f45204f2c586c6b182f41a66902583e3d83d02",
+      "size": 2718
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md",
+      "blob_sha": "305262427a264508f0fe1c35364962d10dbe5980",
+      "size": 8450
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/PHILOSOPHY-LIFE/AWESOME-THESIS/SN-0311/IB-SMART-NOTE-20261004-sn0311-awesome-thesis.md",
+      "blob_sha": "c333e92f56294692646e72877f57db6b525296ad",
+      "size": 9947
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0312/IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things.md",
+      "blob_sha": "096d965a992fb64a185713fa05e7e9d3d9302c6d",
+      "size": 18689
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
+      "blob_sha": "2943bc25673359e4f5b32d2444493c087a99fb2e",
+      "size": 6380
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
+      "blob_sha": "c79132f6a7177f3b6f2bee8d4a4a00a1d8843f8b",
+      "size": 13685
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md",
+      "blob_sha": "cc2bbd0ebf5265c33fb3130ec1a3008e3bd94537",
+      "size": 3468
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
+      "blob_sha": "2f1690a0c1b6335e2aac2ac8d1fbc9e3a687fec3",
+      "size": 4695
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
+      "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
+      "size": 4958
+    },
+    {
       "path": "BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md",
-      "blob_sha": "b7385f9b59c3957c780ef8d6f3e79f1286a6aec2",
-      "size": 1920
+      "blob_sha": "f07b3b9a33a848b0c28bafdbcc5164b37c3e5f1c",
+      "size": 2468
     },
     {
       "path": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
@@ -589,9 +744,19 @@
       "size": 8959
     },
     {
+      "path": "BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md",
+      "blob_sha": "c549ed2f71eee30e34cf67a63502f944a0dade8f",
+      "size": 5118
+    },
+    {
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
+      "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
+      "size": 33837
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",
@@ -647,6 +812,11 @@
       "path": "BRAIN/12-ENGINEERING/0004-KERNEL-RUNTIME-LOADER-SPEC-V1.md",
       "blob_sha": "39f1c91c06f3d92fb844d8a8ddac55a61154026f",
       "size": 5062
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md",
+      "blob_sha": "0c3592b50b3e4ea96ca1027711e0a7cd6d6a8cff",
+      "size": 6242
     },
     {
       "path": "BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json",
@@ -710,8 +880,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py",
-      "blob_sha": "a9d13675bf72ac82850c46b619215066200e69b8",
-      "size": 6375
+      "blob_sha": "775c647f6925c6876e69d85993ec7ae256ddd2e5",
+      "size": 9418
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py",
@@ -745,8 +915,8 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
-      "blob_sha": "61b2ba136baee7f1eb9a56a26e8541c1012cee23",
-      "size": 17145
+      "blob_sha": "225e10ba334f51a0e0e3e8fa2301663b33551f9f",
+      "size": 5757
     },
     {
       "path": "BRAIN/90-OPERATIONS/0002-AAA-BRAIN-EXECUTION-PROMPT-V1.md",
@@ -755,13 +925,13 @@
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json",
-      "blob_sha": "f846eb8763426a319b5267dab409f42e4825ae56",
-      "size": 6732
+      "blob_sha": "512100cc2f42052c77fb1460a5bad9e7804ee49e",
+      "size": 6028
     },
     {
       "path": "BRAIN/90-OPERATIONS/0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.md",
-      "blob_sha": "0deeef63e18c3ddf4f007038b9b2c0b19cf295ed",
-      "size": 10363
+      "blob_sha": "197c13af29fbac7bac7b2316b3233a7a33e42c8b",
+      "size": 3936
     },
     {
       "path": "BRAIN/90-OPERATIONS/0004-ISSUE-944-CONCEPT-17-RECONCILIATION.md",
@@ -789,9 +959,14 @@
       "size": 9953
     },
     {
+      "path": "BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md",
+      "blob_sha": "954227fe2d94f7cfb47a9d2853bc93243eeeb6b8",
+      "size": 8068
+    },
+    {
       "path": "BRAIN/90-OPERATIONS/README.md",
-      "blob_sha": "6c88370c0b9d6bf202b85740884a28960c8a456b",
-      "size": 4572
+      "blob_sha": "c9c2abaff6488d74e840ac7ea42ad2ac66468821",
+      "size": 2077
     },
     {
       "path": "BRAIN/99-ARCHIVE/README.md",

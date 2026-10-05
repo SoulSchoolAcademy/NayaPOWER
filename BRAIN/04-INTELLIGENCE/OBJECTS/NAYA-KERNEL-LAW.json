@@ -47,7 +47,11 @@
     "universal_envelope": "naya.master-node-envelope.v1",
     "neighbor_handoff": "NAYA-KERNEL-ACT",
     "decision_calculus": "NAYA-DECISION-VALUE-CALCULUS-V2.1",
-    "decision_calculus_role": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization"
+    "decision_calculus_role": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization",
+    "neighbor_handoff_semantics": "semantic/display neighbor only; executable routing is runtime_handoffs and the inter-node wire contract",
+    "runtime_handoffs": [
+      "NAYA-KERNEL-ACT"
+    ]
   },
   "provenance": {
     "derived_from": [
@@ -71,7 +75,7 @@
     {
       "relationship_id": "REL-KERNEL-SELF-LAW",
       "direction": "IN",
-      "type": "GOVERNS",
+      "type": "CONTEXTUALIZES",
       "source_object_id": "NAYA-KERNEL-SELF",
       "target_object_id": "NAYA-KERNEL-LAW",
       "epistemic_state": "VERIFIED",

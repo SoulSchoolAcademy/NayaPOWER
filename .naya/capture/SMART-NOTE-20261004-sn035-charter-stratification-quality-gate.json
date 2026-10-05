@@ -1,0 +1,104 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-035",
+  "capture_id": "20261004-sn035-charter-stratification-quality-gate",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "GOVERNANCE",
+  "topic": "NAYAPOWER-CHARTER",
+  "subtopic": "STRATIFICATION-AND-SCORECARD-GATE",
+  "title": "NayaPOWER Charter Stratification & Quality Gate — Thesis, Law, Mission, Mechanism, and 10/10 Discipline",
+  "source": {
+    "source_type": "human_director_operating_doctrine_distillation",
+    "source_reference": "2026-10-04 Human Director directive: stratify the charter, make the structure official within its authority boundary, scorecard the work, invite multiple independent perspectives, and iterate until it reaches the quality threshold.",
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-04T18:48:00Z"
+  },
+  "intelligence": {
+    "essence": "NayaPOWER uses four charter strata: THESIS says what we are; LAW says how we behave; MISSION says what we are accomplishing and what winning means; MECHANISM says how the system turns that mission into verified reality. Every meaningful artifact is scorecarded rather than assumed good. The target is 10/10, 9.5 is the preferred acceptance threshold, 9.0 is the minimum acceptable threshold, and anything below 9 requires further work unless a documented authority or evidence boundary prevents improvement.",
+    "human_view": {
+      "meaning": "Do not wonder whether the work is good. Measure it. Look at it from multiple perspectives, identify the highest-value changes that would move it toward 10/10, make those changes, and score it again.",
+      "why_it_matters": "Scorecarding converts quality from opinion into a repeatable improvement loop. It also exposes blind spots that a single creator or single AI can miss.",
+      "goal": "Make quality measurable across documents, intelligence objects, interfaces, apps, websites, images, workflows, and other human-empowerment work.",
+      "simple_rule": "MAKE -> SCORE -> ASK WHAT MAKES IT A 10 -> IMPROVE -> SCORE AGAIN -> VERIFY -> COMPOUND."
+    },
+    "simple_view": {
+      "child": "Make something, give it a score, find what would make it better, fix that, and keep going until it is excellent.",
+      "grandma": "Do not settle because something is finished. Have people independently look at it, measure it, improve the weak parts, and check again."
+    },
+    "ai_view": {
+      "instruction": "Treat scorecarding as a protocol step, not an optional review. Score the artifact against explicit criteria appropriate to its class. Use multiple independent perspectives when stakes justify it. Separate quality score from truth state and authority: a 10/10 candidate can still be unratified, and a ratified artifact can still require improvement. Never inflate a score to close work.",
+      "primary_evaluation": "Can an independent reviewer understand what the artifact is, test whether it works or communicates its purpose, identify its highest-value gaps, and provide actionable evidence for the next iteration?"
+    },
+    "naya_view": {
+      "purpose": "Turn continuous improvement into a measurable intelligence metabolism.",
+      "charter_stratification": [
+        {"stratum": "THESIS", "artifact": "MANIFESTO.md", "question": "WHAT ARE WE?"},
+        {"stratum": "LAW", "artifact": "CONSTITUTION/0003-CONSTITUTIONAL-CODE-V1.md", "question": "HOW DO WE BEHAVE?"},
+        {"stratum": "MISSION", "artifact": "MISSION-CONTRACT-V1.md", "question": "WHAT ARE WE ACCOMPLISHING / WHAT IS WINNING?"},
+        {"stratum": "MECHANISM", "artifact": "SYSTEMS-CONTRACT-V1.md", "question": "HOW DOES THE SYSTEM TURN THE MISSION INTO PROVEN REALITY?"}
+      ],
+      "quality_gate": {
+        "target": 10,
+        "preferred_acceptance": 9.5,
+        "minimum_acceptance": 9,
+        "below_minimum": "ITERATE",
+        "loop": ["MAKE", "SCORE", "IDENTIFY_HIGHEST_VALUE_GAPS", "IMPROVE", "RESCORE", "VERIFY", "COMPOUND"],
+        "question": "WHAT ARE THE HIGHEST-VALUE THINGS WE COULD ADD, REMOVE, REWRITE, VERIFY, OR SIMPLIFY TO MAKE THIS A 10/10?",
+        "perspective_rule": "Use multiple independent reviewers when practical; outside-AI review is valuable when available.",
+        "truth_rule": "Quality score never upgrades epistemic status, authority, or proof state."
+      },
+      "maxis_direction": "The future Maxis measurement system should make human empowerment and AI empowerment measurable, learnable, and improvable: establish a baseline, identify gaps, teach toward the next level, reassess, and track progress toward a target score."
+    },
+    "machine_view": {
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "truth_states": ["PROPOSED", "CANDIDATE", "UNKNOWN", "BLOCKED", "CONFLICTED", "VERIFIED", "PROMOTED", "SUPERSEDED", "REJECTED"],
+      "quality_score_semantics": "QUALITY_IS_MEASURED_SEPARATELY_FROM_TRUTH_AND_AUTHORITY",
+      "current_charter_score": {
+        "score": 9.2,
+        "status": "PRELIMINARY_INTERNAL_SCORE",
+        "basis": [
+          "Four-stratum structure is clear and coherent.",
+          "The four artifacts align strongly on purpose, governance, and distillation.",
+          "Proof and scorecard discipline are explicit.",
+          "Systems Contract still compresses the full behavioral proof lifecycle and should be reconciled to the actual end-to-end learning gate.",
+          "The mission's 'whole internet, understood' language is appropriately treated as vision, but must not be confused with current proof."
+        ],
+        "independent_team_score_required": true
+      },
+      "scoring_dimensions": [
+        "PURPOSE_ALIGNMENT",
+        "TRUTH_AND_EVIDENCE",
+        "COHERENCE",
+        "COMPLETENESS",
+        "USABILITY",
+        "GOVERNANCE",
+        "HUMAN_VALUE",
+        "SIMPLICITY",
+        "IMPLEMENTABILITY",
+        "PROOFABILITY"
+      ]
+    },
+    "learning_lesson": "Scorecarding is itself part of the intelligence protocol. A finished artifact is not automatically a quality artifact. The system should repeatedly measure work, expose the gap to excellence, make the smallest highest-value improvement, and measure again. Quality is a compounding loop.",
+    "priority": "Score and reconcile the charter before treating it as finished. Then propagate the agreed four-stratum model and quality gate into the places that teach Nayas how to operate, without creating duplicate competing doctrine.",
+    "decisions": [
+      "The charter is stratified into THESIS, LAW, MISSION, and MECHANISM.",
+      "The four charter artifacts are the proposed source set for those strata.",
+      "Human ratification remains the authority boundary; 'official structure' does not mean self-ratified law.",
+      "Scorecarding applies to every meaningful deliverable class.",
+      "10/10 is the target; 9.5 is the preferred acceptance threshold; 9.0 is the minimum acceptable threshold.",
+      "Below 9 means iterate unless a genuine evidence or authority boundary prevents further improvement.",
+      "Multiple independent perspectives are preferred for consequential work.",
+      "The recurring improvement question is: WHAT ARE THE HIGHEST-VALUE THINGS WE COULD ADD, REMOVE, REWRITE, VERIFY, OR SIMPLIFY TO MAKE THIS A 10/10?",
+      "Maxis is the future measurement/learning product for human and AI empowerment, not a generic arbitrary score for every subject."
+    ],
+    "applicability": "Use for charter governance, document quality, product quality, interface quality, app quality, intelligence quality, proof quality, and future Maxis measurement workflows."
+  },
+  "projection": {
+    "category_slug": "GOVERNANCE",
+    "topic_slug": "NAYAPOWER-CHARTER",
+    "subtopic_slug": "STRATIFICATION-AND-SCORECARD-GATE",
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST"
+  }
+}

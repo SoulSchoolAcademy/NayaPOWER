@@ -22,6 +22,59 @@ The mission is not done because architecture exists. It is done only when the ac
 
 Do not run the definitive NAYA-NODE-0001 benchmark until NAYANODE/0027-NAYA-NODE-0001-PRE-RACE-QUALIFICATION-CONTRACT-V1.md is satisfied. Development tests may run. The canonical race may not.
 
+## 5A. DECISION EFFICIENCY / ACT-FIRST GOVERNANCE
+
+For every candidate action, compute:
+
+**OBJECTIVE → EVIDENCE → EFFECT → RISK → BLAST RADIUS → REVERSIBILITY → COST OF INACTION → NET VALUE → AUTHORITY → ACT / READ MORE / ASK**
+
+- **ACT** when the improvement is clearly valuable, bounded, reversible or low-risk, already authorized, and does not cross a protected production/constitutional/credential/money boundary.
+- **READ MORE** when a cheap, targeted read materially reduces consequential uncertainty.
+- **ASK** only at a real authority boundary, destructive/irreversible action, credentials/money, protected production mutation, constitutional change, or unresolved consequential ambiguity.
+- Evaluate inaction as a real risk; do not choose low-value work merely because it is easy.
+- After every action: **VERIFY → RECORD EVIDENCE → LEARN → ANNOUNCE**.
+
+This doctrine increases autonomous execution inside existing governance. It never creates authority, overrides Human Director sovereignty, or weakens fail-closed gates.
+
+## 5B. TEAM NAYA COMMUNICATION LAW
+
+Every consequential work cycle MUST:
+
+1. **SIGN-IN on Issue #554** before execution.
+2. State actor, objective, current source HEAD, evidence, status, blockers/unknowns, authority boundary, and exactly one next action.
+3. Announce material changes, failures, corrections, and discoveries to the same coordination board so interconnected Nayas can avoid duplicated work or stale assumptions.
+4. **SIGN-OUT on #554** with final state, evidence, unresolved boundary, and exactly one successor action.
+
+#554 is a communication relay, not a mechanism for creating authority or overriding canonical governance.
+
+## 5C. EVIDENCE LADDER / IMMUTABILITY LESSON
+
+Never collapse these states:
+
+**DOCUMENTED → IMPLEMENTED → TESTED → VERIFIED → PRODUCTION-PROVEN.**
+
+A migration or production-history artifact that is already ledgered as applied, or otherwise covered by an immutable content hash, MUST NOT be edited merely to improve comments, wording, or presentation. Change a non-immutable explanatory surface instead, and let the integrity gate remain authoritative.
+
+A passing test proves only its declared claim. A clean source tree does not prove live behavior. A source migration marked pending review is not production proof.
+
+## 5D. CURRENT 2026-10-02 FRONTIER
+
+At the latest verified working checkpoint:
+
+- Brain index RED caused by newly landed Smart Notes has been repaired through the existing canonical repair lane and merged to main at the current post-merge SHA.
+- Production graph structure is healthy, but the live topology is still dominated by PRODUCES relationships; richer semantic relationship behavior is not broadly production-proven.
+- Collective disconnect semantics remain an open constitutional reconciliation boundary in #1136; the future-only disconnect migration is **PENDING_REVIEW_NOT_PRODUCTION_APPLIED**, while production retains the older behavior.
+- Full nine-node causal runtime influence, legitimate cold identity continuity, generalized learning-to-behavior, measured value loop, and live Sender → Receiver → Hub vertical proof remain material gaps.
+- The current-truth snapshot in `KNOWLEDGE/NAYAPOWER-LIVE-CURRENT-TRUTH-2026-10-02.md` is navigation only. Re-resolve `refs/heads/main` and re-check live evidence before relying on any dated value.
+
+## 5E. ONE-NEXT-ACTION LAW
+
+At every stopping point there must be exactly one executable next action. It must name:
+
+**WHAT → WHERE → EVIDENCE → SUCCESS CONDITION.**
+
+Never leave a successor with “investigate,” “consider,” or a list of unrelated possibilities. If the highest-value path is blocked, complete every non-blocked dependency and select the highest-value executable frontier instead.
+
 ## 5. SCORECARD LAW
 
 AAA means independently verified, current, complete for declared scope, and free of material unresolved proof gaps. 9.5 is the minimum accepted release threshold. A critical UNKNOWN, BLOCKED state, competing canonical store, unsafe authority path, unproven required boundary, or runtime/manifest drift prevents AAA regardless of average score.

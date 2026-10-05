@@ -20,8 +20,11 @@ SHAs only need to be well-formed. Any real BRAIN/ change (added, removed, or
 edited file) still fails the check.
 
 Reconciliation rules (2026-09-30 brain-reconciliation ledger):
-    - Per-domain counts must match the ledger's classification table (asserted;
-      any drift fails the run instead of silently rewriting the table).
+    - Per-domain counts must match the ledger's fixed classification table,
+      except the governed INTELLIGENCE-REPORTS and SMART-NOTES subtrees, whose
+      committed file counts are added mechanically to the fixed 05-MEMORY
+      baseline. Any other drift fails the run instead of silently rewriting
+      the table.
     - Pointer integrity: every declared pointer-bearing field in the index
       layer (POINTER_FIELDS) must resolve against the git tree at HEAD. A
       generic backstop scan catches path-like strings in the same files that
@@ -33,7 +36,7 @@ Reconciliation rules (2026-09-30 brain-reconciliation ledger):
       blob SHAs (which would make the content a moving target — the SHA changes
       every time the file is regenerated), their table entries carry
       "_self_referential": true with no blob SHA. file_count always equals the
-      true tree size (158), so the ledger's count assertions still hold.
+      true tree size, so the ledger's count assertions still hold.
 
 Exit codes: 0 = ok (or --check passed); 1 = --check found drift;
            2 = usage/git error, count drift, or dangling pointer.
@@ -111,25 +114,67 @@ NON_POINTER_STRINGS = {
 # A string value is treated as a repo path pointer if it matches this.
 PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.naya/|0000-)")
 
-# Ledger classification table: domain -> file count (includes each domain's README).
-EXPECTED_DOMAIN_COUNTS = {
+# Ledger classification table: fixed domain baselines.
+#
+# INTELLIGENCE-REPORTS and SMART-NOTES are append-only governed memory subtrees.
+# Reports and verified Smart Note projections must be able to accumulate without
+# requiring a manual ledger-count edit after every intelligence event. We
+# therefore keep the 05-MEMORY baseline fixed at the count that excludes both
+# governed append-only subtrees, then add their committed file counts
+# mechanically from git truth.
+BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 3,
+    # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
+    # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
+    # 6 -> 7 for the 10-area system scorecard: 0003-SYSTEM-SCORECARD-V1 lands as
+    # standing law (ratified by Shawn Vibert 2026-10-05; weighted total 6.8/10).
+    # Deliberate update.
+    "01-GOVERNANCE": 7,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 27,
+    "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 19,  # 18 -> 19 deliberate: SN-016 Judgment Rule smart note (IB-SMART-NOTE-20260930-sn016) added 2026-09-30
+    "05-MEMORY": 2,  # fixed baseline excluding governed INTELLIGENCE-REPORTS + SMART-NOTES subtrees
+    # Current fixed files are 0001-MEMORY-CONTINUITY-CONTRACT-V1.md + README.md.
+    # Smart Note projections and intelligence reports are counted mechanically below.
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 5,
+    # 2026-10-04: a9e5a505f added 0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md, the
+    # canonical Naya Voice playback architecture spec. A real governed artifact
+    # landed, so the baseline moves deliberately rather than being forced.
+    # 2026-10-04: naya2/voice-bake-canonical-v1 adds naya-voice-sample-v1.mp3,
+    # the first real-model baked voice sample next to the spec. Real artifact
+    # landed; baseline moves deliberately.
+    "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 23,
-    "90-OPERATIONS": 10,
+    "12-ENGINEERING": 24,
+    "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
     "99-ARCHIVE": 1,
     "ROOT": 5,
 }
+
+INTELLIGENCE_REPORT_PREFIX = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/"
+SMART_NOTE_PREFIX = "BRAIN/05-MEMORY/SMART-NOTES/"
+DOMAIN_ORDER = tuple(BASE_EXPECTED_DOMAIN_COUNTS.keys())
+
+
+def expected_domain_counts(files: list[dict]) -> dict[str, int]:
+    """Return expected counts with governed append-only memory subtrees dynamic.
+
+    Every Brain domain remains fixed against the reconciliation ledger except
+    the two governed append-only 05-MEMORY subtrees. 05-MEMORY may exceed its
+    fixed baseline only by the exact number of committed files beneath
+    INTELLIGENCE_REPORT_PREFIX and SMART_NOTE_PREFIX. This preserves the
+    count-skew tripwire for every other memory path while letting reports and
+    Smart Note projections accumulate without manual baseline edits.
+    """
+    expected = dict(BASE_EXPECTED_DOMAIN_COUNTS)
+    report_files = sum(1 for f in files if f["path"].startswith(INTELLIGENCE_REPORT_PREFIX))
+    smart_note_files = sum(1 for f in files if f["path"].startswith(SMART_NOTE_PREFIX))
+    expected["05-MEMORY"] += report_files + smart_note_files
+    return expected
+
 
 DOMAIN_TITLES = {
     "00-SPEC": "00-SPEC — Specification",
@@ -338,7 +383,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         "| Domain | Files |",
         "|---|---|",
     ]
-    for domain in EXPECTED_DOMAIN_COUNTS:
+    for domain in DOMAIN_ORDER:
         lines.append(f"| {domain} | {counts.get(domain, 0)} |")
     lines += ["", "## Files", ""]
     current_domain = None
@@ -408,8 +453,9 @@ def check(root: Path) -> int:
     files = inventory(root)
     counts = domain_counts(files)
     problems = []
-    if counts != EXPECTED_DOMAIN_COUNTS:
-        problems.append(f"domain counts drifted: {counts} != ledger {EXPECTED_DOMAIN_COUNTS}")
+    expected = expected_domain_counts(files)
+    if counts != expected:
+        problems.append(f"domain counts drifted: {counts} != ledger+reports {expected}")
     pointer_errors = validate_pointers(root)
     if pointer_errors:
         print("error: pointer integrity check failed:", file=sys.stderr)
@@ -471,11 +517,12 @@ def main() -> int:
         return 2
 
     counts = domain_counts(files)
-    if counts != EXPECTED_DOMAIN_COUNTS:
-        print("error: domain counts do not match the reconciliation ledger table:", file=sys.stderr)
-        print(f"  git:    {counts}", file=sys.stderr)
-        print(f"  ledger: {EXPECTED_DOMAIN_COUNTS}", file=sys.stderr)
-        print("A real BRAIN/ change landed — update EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
+    expected = expected_domain_counts(files)
+    if counts != expected:
+        print("error: domain counts do not match the reconciliation ledger + governed append-only memory subtrees:", file=sys.stderr)
+        print(f"  git:      {counts}", file=sys.stderr)
+        print(f"  expected: {expected}", file=sys.stderr)
+        print("A real non-governed BRAIN/ count change landed — update BASE_EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
         return 2
 
     pointer_errors = validate_pointers(root)

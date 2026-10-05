@@ -129,6 +129,88 @@ results.append(malformed_rc == 2)
 print(f'{"malformed contract reports instrument failure":<56} exit expect=2 actual={malformed_rc:<19} {"OK" if malformed_rc == 2 else "*** WRONG ***"}')
 
 print()
+# Ratified calculus uses the existing readiness job's declared JSON Schema validator.
+def load(path):
+    return json.loads((ROOT / path).read_text())
+
+
+def validator():
+    from jsonschema import Draft202012Validator
+    return Draft202012Validator(load('BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'))
+
+
+def calculus():
+    return load('BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-DECISION-VALUE-CALCULUS-V2.1.json')
+
+
+def test_ratified_calculus_object_and_graph_validate():
+    validator().validate(calculus())
+    validator().validate(load('BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json'))
+
+
+def test_calculus_identity_cannot_admit_another_decision_system():
+    obj = calculus()
+    obj['object_id'] = 'NAYA-ANOTHER-DECISION-SYSTEM'
+    assert not validator().is_valid(obj)
+
+
+def test_calculus_missing_required_views_fails_closed():
+    for field in ('ai_view', 'provenance', 'proof', 'machine_view'):
+        obj = calculus()
+        del obj[field]
+        assert not validator().is_valid(obj)
+
+
+def test_calculus_cannot_become_a_tenth_kernel_node():
+    obj = calculus()
+    obj['object_type'] = 'NODE'
+    assert not validator().is_valid(obj)
+
+
+def test_graph_still_rejects_unrecognized_source_and_target():
+    graph = load('BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json')
+    for field in ('source_id', 'target_id'):
+        forged = json.loads(json.dumps(graph))
+        forged['edges'][0][field] = 'NAYA-UNRATIFIED-OBJECT'
+        assert not validator().is_valid(forged)
+
+
+def test_calculus_required_semantics_cannot_be_removed_or_redirected():
+    for field in ('purpose', 'inputs', 'outputs', 'failure_mode'):
+        obj = calculus()
+        del obj['ai_view'][field]
+        assert not validator().is_valid(obj)
+    obj = calculus()
+    obj['machine_view']['executable'] = 'another/calculator.py'
+    assert not validator().is_valid(obj)
+
+
+def test_existing_kernel_node_contract_remains_strict():
+    node = load('BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-SELF.json')
+    validator().validate(node)
+    node['machine_view']['node_name'] = 'VALUE'
+    assert not validator().is_valid(node)
+
+# Stub-based unit tests exercise process/measurement discrimination only.
+# Production CI invokes this runner without arguments and always executes all controls.
+if sys.argv[1:] != ["--instrument-only"]:
+    for control in (
+        test_ratified_calculus_object_and_graph_validate,
+        test_calculus_identity_cannot_admit_another_decision_system,
+        test_calculus_missing_required_views_fails_closed,
+        test_calculus_cannot_become_a_tenth_kernel_node,
+        test_graph_still_rejects_unrecognized_source_and_target,
+        test_calculus_required_semantics_cannot_be_removed_or_redirected,
+        test_existing_kernel_node_contract_remains_strict,
+    ):
+        try:
+            control()
+            results.append(True)
+            print(control.__name__ + ": OK")
+        except Exception as exc:
+            results.append(False)
+            print(control.__name__ + ": FAIL " + str(exc))
+
 print(f'CONTROLS: {sum(results)}/{len(results)} behaved as specified')
 print('VERDICT:', 'gate discriminates real state' if all(results)
       else 'GATE IS UNSOUND ΓÇö it may be hardcoding its answer')

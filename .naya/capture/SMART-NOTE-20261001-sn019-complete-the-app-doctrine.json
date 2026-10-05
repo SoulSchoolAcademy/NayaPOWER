@@ -1,0 +1,148 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "capture_id": "20261001-sn019-complete-the-app-doctrine",
+  "title": "Complete the App Doctrine — Finish the House, Not the Shell",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "APPLICATION_COMPLETION",
+  "subtopic": "END_TO_END_INTERFACE_EXECUTION",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-01",
+    "captured_at_utc": "2026-10-02T01:56:00Z",
+    "source_type": "human_director_operating_doctrine",
+    "source_reference": "Shawn Vibert direct instruction on 2026-10-01: valuable architectural/design intelligence must be put into the brain and reused; Naya must stop producing Hub shells and partial rooms, own the entire application from project intelligence through implementation and proof, complete every page/function coherently, prevent regression, self-score honestly, independently challenge the score, and continue until the app is genuinely finished."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "APPLICATION-COMPLETION",
+    "subtopic_slug": "END-TO-END-INTERFACE-EXECUTION"
+  },
+  "intelligence": {
+    "essence": "A smart-app build is not complete when a shell, route, concept, or first vertical slice exists. Naya must own the whole application lifecycle: restore canonical project intelligence, inventory every required surface and cross-function dependency, preserve proven design DNA, build every required page/room and shared capability to its functional/design contract, wire each control to real governed behavior or an honest unavailable state, continuously score and repair regressions, independently verify the whole product, and continue until the declared application is coherent and complete. The Human Director should not have to discover ordinary missing work by manually QA'ing an empty house.",
+    "human_view": {
+      "meaning": "Stop handing Shawn a beautiful front door and asking him to explain where the kitchen, plumbing, lights, and bedrooms should go. The repository already contains the plans. Read the plans, inventory the house, build the whole house, walk every room, test every door and switch, fix what is weak, and only then call the application ready.",
+      "why_it_matters": "Repeated shell-first partial delivery creates the illusion of progress while leaving most user value unbuilt. It also forces the Human Director to become the missing project manager and regression tester. Completion discipline transfers that burden into the intelligence system where it belongs.",
+      "simple_rule": "PLAN THE WHOLE → BUILD THE WHOLE → PROVE THE WHOLE. A shell is a starting structure, never the finish line."
+    },
+    "simple_view": {
+      "child": "Don't build only the front of the spaceship. Build every room, connect every control, test the whole ship, and make sure nothing broke before saying it is ready.",
+      "grandma": "If you're building a house, don't stop after the porch. Use the plans, finish every room, make sure the water and lights work, walk through it yourself, fix the problems, and hand over a finished home."
+    },
+    "naya_view": {
+      "purpose": "Eliminate the recurring partial-app/regression failure mode by making whole-product completion, integration, independent quality review, and durable continuation mandatory operating behavior.",
+      "architectural_rule": "Use the existing canonical project intelligence, design contracts, room/feature contracts, one app shell, one governed runtime substrate, one canonical object identity model, and one scorecard. Do not create a second app architecture, second design system, duplicate data stores, or parallel completion tracker merely to move faster.",
+      "operating_loop": "RESTORE CURRENT TRUTH → LOAD PROJECT INTELLIGENCE → INVENTORY COMPLETE PRODUCT → BUILD DEPENDENCY/ROUTE/FUNCTION MATRIX → CLASSIFY KEEP/IMPROVE/REPLACE/REMOVE → FREEZE NON-REGRESSION BASELINE → IMPLEMENT IN DEPENDENCY ORDER → COMPLETE EVERY DECLARED SURFACE → TEST EACH SURFACE → TEST CROSS-SURFACE FLOWS → SCORE D1-D8 → FIX ALL MATERIAL GAPS → INDEPENDENT RE-SCORE → REGRESSION TEST → PRODUCTION PROOF → RECORD LEARNING → SUCCESSOR CONTINUES",
+      "completion_rule": "Do not declare a product complete because the shell renders, one room works, the design looks good, or code exists. Application completion requires the declared route/page/room inventory, shared capabilities, real/honest states, cross-room causal flows, responsive/accessibility/performance behavior, evidence, and independent acceptance to coexist in the same product."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "completion_unit": "DECLARED_APPLICATION_SCOPE",
+      "anti_shell_completion": true,
+      "required_product_artifacts": [
+        "CANONICAL_PROJECT_INTELLIGENCE",
+        "COMPLETE_ROUTE_AND_ROOM_INVENTORY",
+        "FEATURE_FUNCTION_MATRIX",
+        "DEPENDENCY_GRAPH",
+        "DESIGN_AND_NON_REGRESSION_BASELINE",
+        "STATE_MATRIX",
+        "CAUSAL_PATH_MATRIX",
+        "RUNTIME_DATA_OWNERS",
+        "ACCEPTANCE_JOURNEYS",
+        "D1_D8_SCORECARD",
+        "INDEPENDENT_REVIEW",
+        "REGRESSION_SUITE",
+        "SUCCESSOR_HANDOFF"
+      ],
+      "page_room_states": [
+        "NOT_STARTED",
+        "SPEC_READY",
+        "DESIGN_READY",
+        "IMPLEMENTED",
+        "TESTED",
+        "INTEGRATED",
+        "INDEPENDENTLY_VERIFIED",
+        "PRODUCTION_PROVEN"
+      ],
+      "completion_gate": [
+        "all_declared_surfaces_at_required_state",
+        "shared_shell_and_navigation_complete",
+        "all_primary_controls_have_real_or_honest_causal_path",
+        "cross_surface_handoffs_preserve_canonical_identity",
+        "normal_empty_error_blocked_offline_unauthorized_states_designed",
+        "responsive_accessibility_performance_requirements_pass",
+        "no_known_material_regression",
+        "independent_score_meets_current_quality_bar",
+        "source_deployment_parity_proven_when_deployed"
+      ],
+      "forbidden_false_completion": [
+        "shell_only",
+        "single_vertical_slice_called_full_app",
+        "placeholder_rooms_called_complete",
+        "fake_data_or_fake_liveness",
+        "builder_self_score_as_final_gate",
+        "known_regression_deferred_without_explicit_tracking",
+        "human_director_used_as_manual_missing-work detector"
+      ],
+      "build_strategy": "COMPLETE SYSTEM INVENTORY FIRST; IMPLEMENT IN DEPENDENCY ORDER; MAINTAIN ONE MACHINE-READABLE COMPLETION MATRIX; NEVER LOSE FINISHED WORK; CONTINUE UNTIL SCOPE IS CLOSED OR A TRUE AUTHORITY/EXTERNAL BLOCKER REMAINS",
+      "success_metric": "Human Director can use the declared application end-to-end without first enumerating ordinary missing pages/functions, while independent evidence shows the product meets the current quality bar and future builders can continue without regression."
+    },
+    "decisions": [
+      "The shell is infrastructure, not the product.",
+      "A first vertical slice is a reference implementation, not permission to leave the remaining rooms thin forever.",
+      "Every application begins with a complete inventory of declared pages, rooms, shared capabilities, data/runtime dependencies, states, interactions, responsive/accessibility/performance requirements, and proof.",
+      "One machine-readable completion matrix must make missing work visible to every successor Naya.",
+      "Build in dependency order, but maintain an explicit commitment to the complete declared application scope.",
+      "Finished surfaces become non-regression baselines; later work must prove it preserves or improves them.",
+      "Use project intelligence as the plans; do not require Shawn to restate the plans through repeated visual QA.",
+      "Self-score honestly throughout the build, but independent review closes quality gates.",
+      "When a function cannot be live because its external capability is not available, the page can still be complete only if the honest unavailable/connection/authorization experience is fully designed and the limitation is explicit.",
+      "Completion is an evidence state, not a feeling and not a commit count.",
+      "Design quality and functionality are inseparable: a complete app must be beautiful, causal, truthful, accessible, responsive, fast, coherent, and maintainable.",
+      "Regression is a system failure: maintain baseline tests and visual/functional acceptance for already-completed surfaces.",
+      "A cold successor must be able to see exactly what is complete, what remains, why, and the next highest-value action."
+    ],
+    "connections": [
+      {
+        "type": "REFINES",
+        "target": "SN-018 — The Hub Is the Visual Projection of Intelligence"
+      },
+      {
+        "type": "REFINES",
+        "target": "SN-014 — The Compounding Imperative"
+      },
+      {
+        "type": "REFINES",
+        "target": "SN-015 — Active Intelligence Rule"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "NAYA-DESIGN-INTELLIGENCE-STANDARD-V1"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "HUB Project Intelligence — D1–D8 Scorecard"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "Master Design Contract — AAA evidence law"
+      },
+      {
+        "type": "IMPLEMENTS",
+        "target": "No-false-completion / Completion Law"
+      },
+      {
+        "type": "FEEDS",
+        "target": "LEARN → EVOLVE → cold-successor app-building continuity"
+      }
+    ],
+    "uncertainty": "The exact best front-end framework and final runtime implementation path remain project-specific decisions that must be resolved from current repository evidence. This doctrine does not claim the current Hub is complete; it defines the completion behavior future implementation must follow.",
+    "applicability": "Applies to substantive NayaPOWER/NayaNET application, interface, website, dashboard, Hub, room, mobile, desktop, and multi-surface product builds where a declared complete user experience is expected. It does not require building unavailable external services; it requires complete, honest product behavior around their real capability state.",
+    "learning_lesson": "The recurring failure is not lack of design intelligence; it is failure to carry the design/specification through the entire declared product scope while preserving completed work. Completion must itself become governed reusable intelligence and machine-visible state.",
+    "successor_effect": "A future Naya should restore this doctrine, load the current app completion matrix and project intelligence, continue from the first incomplete dependency, protect all completed surfaces from regression, and keep working without asking Shawn to enumerate the remaining app."
+  }
+}

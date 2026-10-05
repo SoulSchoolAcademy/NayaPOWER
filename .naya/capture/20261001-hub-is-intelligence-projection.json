@@ -1,0 +1,119 @@
+{
+  "capture_id": "20261001-hub-is-intelligence-projection",
+  "title": "The Hub Is the Visual Projection of Intelligence",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "HUB_INTELLIGENCE_ARCHITECTURE",
+  "subtopic": "INPUT_OUTPUT_PROJECTION_MODEL",
+  "source": {
+    "captured_at": "2026-10-01 18:16:00 PDT",
+    "captured_at_utc": "2026-10-02T01:16:00Z",
+    "type": "human_director_conversation",
+    "note": "Human Director clarified the canonical product model for NayaNET Hub, Smart Notes, Activity, Reports, Personal/Collective intelligence, and feed projections."
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "HUB-INTELLIGENCE-ARCHITECTURE",
+    "subtopic_slug": "INPUT-OUTPUT-PROJECTION-MODEL",
+    "human_director_authorized_publication": true,
+    "publication_scope": "PUBLIC_DERIVED_VIEW"
+  },
+  "intelligence": {
+    "essence": "The Hub is the visual projection of intelligence, not the source of intelligence. Intelligence is created by Naya and human work, captured as canonical Intelligent Blocks and governed events, persisted in the Brain/runtime, then automatically projected into the Hub. Smart Notes, Activity, and Reports are distinct intelligence/event streams that the Hub receives and presents through smart feed views.",
+    "human_view": {
+      "meaning": "The Hub should behave like the living visual surface of NayaPOWER. A Smart Note is created outside the Hub by an intelligence-producing action such as asking Naya to preserve something important. That action creates or reconciles a canonical Intelligent Block, persists it, emits the relevant event, and causes the same intelligence object to become visible in the appropriate Hub feed. The Hub is therefore a receiver and projection layer, not a second capture database.",
+      "why_it_matters": "This prevents the product from becoming a beautiful dashboard filled with static samples or locally simulated cards. The real product is the causal intelligence river underneath the presentation.",
+      "simple_rule": "Input intelligence first. Persist the canonical object. Emit the governed event. Project the same object into the appropriate Hub views. Never manufacture a separate copy merely to make the Hub look alive."
+    },
+    "simple_view": {
+      "child": "Think of the Hub like a screen showing what the brain knows. You do not put the brain inside the screen. When Naya learns something important, the real intelligence is saved first, then the screen lights up and shows it.",
+      "grandma": "When we learn something worth remembering, Naya files the useful intelligence properly. The Hub then shows that real intelligence in a clear, organized way. The cards are the view of the knowledge, not the place where the knowledge lives."
+    },
+    "naya_view": {
+      "purpose": "Preserve one canonical intelligence object and make every human-facing projection derive from it.",
+      "architectural_rule": "ONE INTELLIGENCE OBJECT → MANY VALID PROJECTIONS. The Hub never becomes a second brain, second persistence path, or authoritative copy of intelligence."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "hub_role": "VISUAL_PROJECTION",
+      "input_surface_role": "NAYA_RUNTIME_AND_INTELLIGENCE_CAPTURE",
+      "canonical_flow": [
+        "HUMAN_OR_AI_INTENT",
+        "CAPTURE_EVENT",
+        "INTELLIGENT_BLOCK",
+        "PERSISTENCE",
+        "INDEX",
+        "PROVENANCE",
+        "GOVERNED_EVENT",
+        "HUB_PROJECTION"
+      ],
+      "primary_streams": [
+        {
+          "name": "PERSONAL",
+          "meaning": "The user's authorized personal intelligence: Smart Notes, reports, discoveries, learning, decisions and related intelligence."
+        },
+        {
+          "name": "COLLECTIVE",
+          "meaning": "Distilled intelligence shared according to explicit consent/governance, with contributor identity kept separate from the shared intelligence projection."
+        },
+        {
+          "name": "ACTIVITY",
+          "meaning": "Current work, system/project state, transitions and meaningful live activity; activity is not the same object as a Smart Note."
+        }
+      ],
+      "additional_views": [
+        "ALL",
+        "SMART_NOTES",
+        "ACTIVITY",
+        "REPORTS",
+        "HIGHLIGHTS",
+        "LEARNING",
+        "DECISIONS",
+        "DISCOVERIES",
+        "PROJECTS",
+        "COLLECTIVE"
+      ],
+      "sample_data_rule": "Existing visual fixtures are examples of intended presentation unless backed by canonical intelligence. They must not be treated as production intelligence merely because they render.",
+      "cross_room_rule": "Feed, Today, Reports, Library, Lists, Spaces, Ledger and other rooms project or reference the same canonical intelligence rather than creating duplicate truth stores."
+    },
+    "learning_lesson": "The visual quality of an intelligence product is only meaningful when the presentation is causally connected to the intelligence it claims to present. A world-class Hub must therefore be both extraordinary to look at and truthful about where every displayed intelligence object came from.",
+    "priority": "This is the missing product seam behind repeated Hub shell work: the team has repeatedly built the projection surface without completing the intelligence-to-projection river. The correct build target is the complete causal path from intent to canonical intelligence to event to Hub projection.",
+    "applicability": "Use this model as the architectural test for every Hub implementation. A feature is not complete because a card, tab, button, route or sample renders. It is complete when real canonical intelligence can enter the system, persist, emit the appropriate event, appear automatically in the correct Hub projection, remain traceable to the same object, and survive reload/retrieval according to its governed scope.",
+    "connections": [
+      {
+        "type": "GOVERNS",
+        "target": "SN-001 — Official Smart Note Format & Lifecycle"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-002 — Smart Note Node Operating Flow"
+      },
+      {
+        "type": "REFINES",
+        "target": "HUB/PROJECT-INTELLIGENCE.md"
+      },
+      {
+        "type": "REFINES",
+        "target": "HUB/SMART-APP-10-10-EXECUTION-LAW.md"
+      },
+      {
+        "type": "APPLIES_TO",
+        "target": "Smart Feed / Personal / Collective / Activity"
+      },
+      {
+        "type": "ENABLES",
+        "target": "Your Intelligence Today / Reports / Library / Lists / Spaces / Ledger"
+      }
+    ],
+    "decisions": [
+      "The Hub is an output/projection surface, not the canonical input or intelligence store.",
+      "Smart Note capture belongs to the intelligence-producing/runtime path; the Hub may invoke Naya but must not become the capture database.",
+      "Smart Notes, Activity and Reports are distinct streams with distinct semantics.",
+      "Personal and Collective projections are governed views; sharing intelligence does not require exposing contributor identity.",
+      "Smart Feed tabs/views are projections over canonical intelligence, not duplicated content stores.",
+      "Existing sample cards are presentation fixtures until connected to real canonical intelligence.",
+      "The acceptance test is causal: create real intelligence → persist → emit event → automatic Hub appearance → trace the same object across projections."
+    ],
+    "uncertainty": "The exact visual composition of Activity events remains an open product-design detail. The architectural distinction between Smart Notes, Activity and Reports is locked. Collective publication must remain governed by explicit sharing/consent rules. Runtime-to-Hub live projection is the implementation proof boundary and must not be claimed merely because the UI can render a matching fixture."
+  }
+}

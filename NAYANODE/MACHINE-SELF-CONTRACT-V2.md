@@ -1,5 +1,7 @@
 # NayaPOWER SELF — Machine Contract V2
 
+
+**ULTIMATE SEMANTIC LOCK:** `.naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md` — SELF semantics and boundaries MUST conform to the Human-Director lock; this file is an implementation/cognitive projection, not a competing semantic authority.
 **Role:** identity, mission, continuity.
 
 ## Inputs

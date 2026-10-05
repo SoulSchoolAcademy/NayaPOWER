@@ -118,7 +118,11 @@
       ],
       "handoff_to": "NAYA-KERNEL-LAW",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "SELF performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "SELF performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-LAW",
+        "NAYA-KERNEL-KNOW"
+      ]
     },
     "LAW": {
       "node_id": "NAYA-KERNEL-LAW",
@@ -199,7 +203,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-ACT",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "LAW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "LAW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-ACT"
+      ]
     },
     "ACT": {
       "node_id": "NAYA-KERNEL-ACT",
@@ -272,12 +279,15 @@
       ],
       "handoff_to": "NAYA-KERNEL-KNOW",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "ACT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "ACT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-VERIFY"
+      ]
     },
     "KNOW": {
       "node_id": "NAYA-KERNEL-KNOW",
       "name": "KNOW",
-      "purpose": "Persist/retrieve canonical intelligence and reconstruct meaning.",
+      "purpose": "Persist/retrieve canonical intelligence and reconstruct meaning; emit evidence-bearing intelligence to PROVE and relationship/applicability candidates to CONNECT.",
       "owns": [
         "canonical intelligence",
         "events",
@@ -286,7 +296,9 @@
       "non_responsibilities": [
         "authorize use",
         "claim evidence quality",
-        "verify outcomes"
+        "verify outcomes",
+        "final epistemic proof",
+        "task-level applicability decision"
       ],
       "inputs": [
         "task_context",
@@ -345,7 +357,11 @@
       ],
       "handoff_to": "NAYA-KERNEL-PROVE",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "KNOW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "KNOW performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-PROVE",
+        "NAYA-KERNEL-CONNECT"
+      ]
     },
     "PROVE": {
       "node_id": "NAYA-KERNEL-PROVE",
@@ -419,7 +435,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-CONNECT",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "PROVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "PROVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-VERIFY"
+      ]
     },
     "CONNECT": {
       "node_id": "NAYA-KERNEL-CONNECT",
@@ -429,12 +448,15 @@
         "relationships",
         "retrieval",
         "reconciliation",
-        "context"
+        "context",
+        "applicability"
       ],
       "non_responsibilities": [
         "authorize action",
         "verify causal outcomes",
-        "promote learning"
+        "promote learning",
+        "promote truth",
+        "create authority"
       ],
       "inputs": [
         "intelligence",
@@ -493,7 +515,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-VERIFY",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "CONNECT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "CONNECT performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-VERIFY"
+      ]
     },
     "VERIFY": {
       "node_id": "NAYA-KERNEL-VERIFY",
@@ -566,7 +591,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-LEARN",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "VERIFY performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "VERIFY performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-LEARN"
+      ]
     },
     "LEARN": {
       "node_id": "NAYA-KERNEL-LEARN",
@@ -636,7 +664,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-EVOLVE",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "LEARN performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "LEARN performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-EVOLVE"
+      ]
     },
     "EVOLVE": {
       "node_id": "NAYA-KERNEL-EVOLVE",
@@ -707,7 +738,10 @@
       ],
       "handoff_to": "NAYA-KERNEL-SELF",
       "cold_successor_obligation": "successor may recover semantic/intelligence context but never inherit authority merely from context",
-      "success_criteria": "EVOLVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node."
+      "success_criteria": "EVOLVE performs only its owned responsibility, emits a bounded handoff, and does not assume responsibilities owned by another Node.",
+      "runtime_handoffs": [
+        "NAYA-KERNEL-SELF"
+      ]
     }
   },
   "planning_loop": [
@@ -741,12 +775,27 @@
       "SELF": "resolve declared objective, stakeholders, baseline, horizon, and current ladder state",
       "LAW": "apply hard gates, Prime Judgment Rule, scope, consent, authority, and risk policy before optimization",
       "ACT": "execute only an ACT outcome that is admissible, authorized, bounded, and selected by the canonical calculus",
-      "KNOW": "supply current evidence-bound facts, estimates, prior decision receipts, and applicable retained intelligence",
+      "KNOW": "supply current evidence-bound facts, estimates, prior decision receipts, and candidate retained intelligence; CONNECT resolves task applicability",
       "PROVE": "preserve scoring inputs, provenance, uncertainty, gate reasons, predicted value, and decision receipt evidence",
-      "CONNECT": "retrieve and relate applicable intelligence, dependencies, affected parties, baselines, and graph context without creating truth or authority",
+      "CONNECT": "resolve and relate applicable intelligence, dependencies, affected parties, baselines, and graph context without creating truth or authority",
       "VERIFY": "independently recompute decision/outcome claims, compare predicted vs observed value, and preserve calibration error",
       "LEARN": "turn verified calibration error into versioned VALUE_RECALIBRATION learning candidates; never self-ratify",
       "EVOLVE": "promote only verified and authorized recalibration versions into successor/system continuity without changing constitutional boundaries"
     }
-  }
+  },
+  "semantic_order_note": "The order array is the organism/display sequence. It is not a mandatory single runtime call stack.",
+  "handoff_field_semantics": "node.handoff_to names the next semantic/display neighbor. node.runtime_handoffs and required_runtime_routes define executable minimum routing.",
+  "required_runtime_routes": [
+    "SELF->LAW",
+    "SELF->KNOW",
+    "LAW->ACT",
+    "ACT->VERIFY",
+    "KNOW->PROVE",
+    "KNOW->CONNECT",
+    "PROVE->VERIFY",
+    "CONNECT->VERIFY",
+    "VERIFY->LEARN",
+    "LEARN->EVOLVE",
+    "EVOLVE->SELF"
+  ]
 }
