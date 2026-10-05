@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
-  "inventory_file_count": 186,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "9f28af1dc1017375605f59cd25e0be55bc794f63",
+  "inventory_file_count": 188,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 41,
+    "05-MEMORY": 43,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -592,6 +592,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
       "blob_sha": "2943bc25673359e4f5b32d2444493c087a99fb2e",
       "size": 6380
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-IDENTITY/BRAIN-ACTIVATION/SN-0306/IB-SMART-NOTE-20261004-sn0306-brain-activation.md",
+      "blob_sha": "bb36a6dbf8dc2a6069b8a219c51a604195bc7f4f",
+      "size": 5717
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-IDENTITY/PERSONALITY-CODEX/SN-0305/IB-SMART-NOTE-20261004-sn0305-personality-codex.md",
+      "blob_sha": "0ec4c4cf7c66a760f5428cb9af0429f30997f979",
+      "size": 6687
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
