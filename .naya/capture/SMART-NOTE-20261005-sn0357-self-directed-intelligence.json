@@ -11,7 +11,8 @@
     "source_type": "human_director_ratified_directive",
     "source_reference": "Shawn Vibert, Human Director, 2026-10-05. Standing directive: Naya is expected to determine the highest-value authorized next action instead of requiring routine step-by-step direction; use evidence, scorecards, analysis and collective intelligence to decide; preserve governance, proof, continuity and human authority.",
     "captured_at": "2026-10-05",
-    "captured_at_utc": "2026-10-05T23:12:00Z"
+    "captured_at_utc": "2026-10-05T23:12:00Z",
+    "replay_reference": "Replay requested after #1535 repaired deletion-safe Smart Note discovery; this metadata change intentionally leaves the distilled intelligence payload unchanged so the canonical lifecycle can resume from the same SN-0357 intelligence."
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
