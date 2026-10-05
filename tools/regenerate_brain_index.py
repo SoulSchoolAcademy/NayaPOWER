@@ -132,7 +132,14 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # 7 -> 10 for the NONSTOP LOOP: 0004-NONSTOP-LOOP-V1 lands as standing
     # operational law in three languages (human/ai/machine), director-ratified
     # 2026-10-05 (PR #1472). Deliberate update.
-    "01-GOVERNANCE": 10,
+    # 10 -> 13 for the CAPTAIN OPERATING PROTOCOL: 0005-CAPTAIN-OPERATING-
+    # PROTOCOL-V1 lands as standing law in three languages (human/ai/machine),
+    # director-ratified 2026-10-05. Same shape as 0004: one directive, three
+    # surfaces. It carries no new intelligence object - its law_id binds to the
+    # restored SN-0359 (PROACTIVE-CAPTAIN-V1) rather than claiming a parallel
+    # law identity, which is pinned by tests/test_captain_operating_protocol.py.
+    # Deliberate update.
+    "01-GOVERNANCE": 13,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,

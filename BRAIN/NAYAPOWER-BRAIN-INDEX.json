@@ -179,7 +179,7 @@
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-  "inventory_file_count": 202,
+  "inventory_file_count": 205,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
     "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
@@ -302,7 +302,7 @@
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-SPEC": 15,
-      "01-GOVERNANCE": 10,
+      "01-GOVERNANCE": 13,
       "02-ARCHITECTURE": 5,
       "03-KERNEL": 28,
       "04-INTELLIGENCE": 24,

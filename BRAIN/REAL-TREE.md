@@ -2,7 +2,7 @@
 
 **Generated:** 2026-10-05  
 **Receipt basis commit:** `c8e738616153e3c0523b8e4fba543836418308ed`  
-**Inventory file count:** 202  
+**Inventory file count:** 205  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 10 |
+| 01-GOVERNANCE | 13 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
@@ -57,6 +57,9 @@
 - `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` — `1fb9a4543f66` (3892 bytes)
 - `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.human.md` — `e44f351b2012` (2988 bytes)
 - `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — `19097e2d2c52` (2405 bytes)
+- `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
+- `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
+- `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `781bfe1b39a6` (7827 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 ### 02-ARCHITECTURE — Architecture
 
