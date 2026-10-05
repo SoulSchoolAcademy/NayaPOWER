@@ -1,37 +1,33 @@
-name: Activity Feed
+name: Activity Feed Projection
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: activity-feed
-  cancel-in-progress: false
+  group: activity-feed-projection
+  cancel-in-progress: true
 
 jobs:
-  update-feed:
+  generate-feed:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Update activity feed
+
+      - name: Generate activity feed projection
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 tools/activity_feed.py
-      - name: Commit if changed
-        run: |
-          if git diff --quiet ACTIVITY-FEED.md; then
-            echo "No new activity."
-          else
-            git config user.name "Naya Activity Feed"
-            git config user.email "activity-feed@nayanet.local"
-            git add ACTIVITY-FEED.md
-            git commit -m "[skip ci] activity-feed: update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
-          fi
+
+      - name: Publish projection artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: activity-feed-projection
+          path: ACTIVITY-FEED.md
+          if-no-files-found: error
+          retention-days: 7
