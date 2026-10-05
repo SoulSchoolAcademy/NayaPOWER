@@ -76,7 +76,7 @@ Record:
 
 ## Standing finding rule
 
-Any materially not-right finding discovered during build or review goes to **Issue #554 with evidence**, even when it is outside the current implementation lane.
+Any materially not-right finding discovered during build or review goes to **Issue #1354 with evidence**, even when it is outside the current implementation lane.
 
 Do not silently bury it. Do not broaden the active PR merely because the finding exists. Record and route it.
 
