@@ -7,6 +7,10 @@ on:
         description: 'Exact commit SHA that refs/heads/main must resolve to before any consequential step'
         required: true
         type: string
+      replay_capture_paths:
+        description: 'Optional newline/comma-separated canonical .naya/capture JSON paths to verify without creating new runtime objects'
+        required: false
+        type: string
   push:
     branches:
       - main
@@ -60,10 +64,26 @@ jobs:
           set -euo pipefail
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
-          if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
-            mapfile -t changed < <(git diff --name-only "$before" "$after")
+          replay_raw="${{ inputs.replay_capture_paths }}"
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && -n "$replay_raw" ]]; then
+            printf '%s\n' "$replay_raw" | tr ',' '\n' | sed '/^[[:space:]]*$/d' > replay-requested-paths.txt
+            mapfile -t changed < replay-requested-paths.txt
+            [[ "${#changed[@]}" -gt 0 ]] || { echo "VERIFY_ONLY_REPLAY_EMPTY"; exit 1; }
+            for replay_path in "${changed[@]}"; do
+              case "$replay_path" in
+                .naya/capture/*.json) ;;
+                *) echo "VERIFY_ONLY_REPLAY_INVALID_PATH: $replay_path"; exit 1 ;;
+              esac
+              [[ -f "$replay_path" ]] || { echo "VERIFY_ONLY_REPLAY_MISSING_PATH: $replay_path"; exit 1; }
+            done
+            printf '%s' 'verify-only' > replay-mode.txt
           else
-            mapfile -t changed < <(git show --pretty="" --name-only "$after")
+            if [[ -n "$before" && "$before" != "0000000000000000000000000000000000000000" ]]; then
+              mapfile -t changed < <(git diff --name-only "$before" "$after")
+            else
+              mapfile -t changed < <(git show --pretty="" --name-only "$after")
+            fi
+            printf '%s' 'normal' > replay-mode.txt
           fi
           # Batch-capable discovery (Problem A repair): one capture path per
           # line, sorted. Never aborts on a batch; each capture is proven
@@ -148,6 +168,8 @@ jobs:
                 "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
               },indent=2))
               raise SystemExit(0)
+          if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
+              raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
           request={
             "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
             "p_event_id":"SMART-NOTE-"+capture["capture_id"],
@@ -227,6 +249,8 @@ jobs:
                     "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
                   },indent=2))
                   raise SystemExit(0)
+              if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
+                  raise SystemExit("VERIFY_ONLY_REPLAY_REQUIRES_EXISTING_CANONICAL_HASH")
               request={
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],
                 "p_event_id":"SMART-NOTE-"+capture["capture_id"],
@@ -280,6 +304,7 @@ jobs:
             capture-count.txt
             batch-manifest.json
             resolved-source-sha.txt
+            replay-mode.txt
             fresh-lesson-receipt.json
             fresh-lesson-receipt-*.json
             fresh-lesson-lineage-ids.json
@@ -618,8 +643,12 @@ jobs:
           assert actual_hash==expected["content_hash"]
           intel=json.loads(block["content"]["lesson"])
           machine=intel.get("machine_view",{})
+          capture=json.load(open(expected["capture_path"]))
+          lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
+          assert lifecycle_state in {"ACTIVE","SUPERSEDED"}, lifecycle_state
           comprehension={
-            "schema":"naya.smart-note-cold-retrieval.v2",
+            "schema":"naya.smart-note-cold-retrieval.v3",
+            "lifecycle_state":lifecycle_state,
             "original_conversation_supplied":False,
             "prior_workflow_artifact_supplied":False,
             "retrieved_intelligent_block_id":block["intelligent_block_id"],
@@ -628,35 +657,89 @@ jobs:
             "exact_current_capture_retrieved":True,
             "canonical_lineage_verified":True,
             "checkpoint_provenance":checkpoint_provenance,
-            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT",
-            "understands_raw_source_separate":machine.get("raw_source_separate_from_distillation") is True,
-            "understands_candidate_ceiling":machine.get("automatic_truth_ceiling")=="CANDIDATE"
+            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           }
           assert comprehension["exact_current_capture_retrieved"]
-          assert comprehension["understands_raw_source_separate"]
-          assert comprehension["understands_candidate_ceiling"]
           assert comprehension["canonical_lineage_verified"]
-          json.dump(comprehension,open(f"cold-retrieval-proof-{i}.json","w"),indent=2)
 
-          task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
-          control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
-          treatment={
-            "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
-            "promote_to_verified":False,
-            "raw_transcript_is_canonical":False,
-            "source_intelligent_block_id":block["intelligent_block_id"]
-          }
-          behavior={
-            "schema":"naya.smart-note-held-out-behavior.v2",
-            "task":task,
-            "task_is_distinct_from_capture_command":True,
-            "control":control,
-            "treatment":treatment,
-            "behavior_changed":control["decision"]!=treatment["decision"],
-            "change_is_traceable_to_retrieved_intelligence":comprehension["understands_candidate_ceiling"] and comprehension["understands_raw_source_separate"]
-          }
-          assert behavior["behavior_changed"] and behavior["change_is_traceable_to_retrieved_intelligence"]
-          json.dump(behavior,open(f"held-out-behavior-proof-{i}.json","w"),indent=2)
+          if lifecycle_state=="ACTIVE":
+              assert machine.get("raw_source_separate_from_distillation") is True
+              assert machine.get("automatic_truth_ceiling")=="CANDIDATE"
+              from tools import smart_note_v2 as sn
+              active=sn.retrieve(capture["title"])
+              assert active["retrieved"]["smart_note_id"]==capture["smart_note_id"], active
+              assert active["retrieved"]["intelligent_block_id"]==block["intelligent_block_id"], active
+              comprehension.update({
+                "understands_raw_source_separate":True,
+                "understands_candidate_ceiling":True,
+                "canonical_active_retrieval_verified":True
+              })
+              task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
+              control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
+              treatment={
+                "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
+                "promote_to_verified":False,
+                "raw_transcript_is_canonical":False,
+                "source_intelligent_block_id":block["intelligent_block_id"]
+              }
+              behavior={
+                "schema":"naya.smart-note-held-out-behavior.v3",
+                "lifecycle_state":"ACTIVE",
+                "task":task,
+                "task_is_distinct_from_capture_command":True,
+                "control":control,
+                "treatment":treatment,
+                "behavior_changed":control["decision"]!=treatment["decision"],
+                "change_is_traceable_to_retrieved_intelligence":True
+              }
+              assert behavior["behavior_changed"]
+              json.dump(behavior,open(f"held-out-behavior-proof-{i}.json","w"),indent=2)
+          else:
+              # Historical R1 is intentionally immutable. Its missing typed raw-source
+              # field is historical evidence, not an ACTIVE-successor conformance target.
+              from pathlib import Path
+              from tools.sn002_conformance import check_dir
+              from tools.smart_note_v2 import resolve_runtime_connections
+              from tools import smart_note_v2 as sn
+              reg=json.load(open(".naya/memory/smart-notes/index.json"))
+              historical=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+              assert len(historical)==1, historical
+              historical=historical[0]
+              assert historical["intelligent_block_id"]==block["intelligent_block_id"]
+              assert historical.get("smart_note_id")==capture.get("smart_note_id")
+              assert str(historical.get("lifecycle_state","")).upper()=="SUPERSEDED"
+              required_provenance=("event_id","lineage_id","relationship_id","runtime_index_id","checkpoint_id","receipt_id")
+              assert all(historical.get("provenance",{}).get(k) for k in required_provenance), historical.get("provenance")
+              conformance={r.capture_id:r for r in check_dir(".naya/capture")}
+              current=conformance.get(capture.get("capture_id"))
+              assert current is not None and current.conformant, getattr(current,"violations",None)
+              successor_id=str(capture.get("superseded_by_capture_id") or "").strip()
+              assert successor_id and successor_id!=capture.get("capture_id")
+              successor_doc=None
+              for candidate in Path(".naya/capture").glob("SMART-NOTE-*.json"):
+                  doc=json.loads(candidate.read_text(encoding="utf-8"))
+                  if doc.get("capture_id")==successor_id:
+                      successor_doc=doc
+                      break
+              assert successor_doc is not None, successor_id
+              assert str(successor_doc.get("lifecycle_state","ACTIVE")).upper()=="ACTIVE"
+              successor_result=conformance.get(successor_id)
+              assert successor_result is not None and successor_result.conformant, getattr(successor_result,"violations",None)
+              resolved=resolve_runtime_connections(successor_doc,reg)
+              assert {"target_block_id":block["intelligent_block_id"],"relationship_type":"SUPERSEDES"} in resolved, resolved
+              active=sn.retrieve(capture["title"])
+              assert active["retrieved"]["smart_note_id"]==successor_doc.get("smart_note_id"), active
+              assert active["retrieved"]["intelligent_block_id"]!=block["intelligent_block_id"], active
+              comprehension.update({
+                "historical_hash_provenance_verified":True,
+                "real_conformant_successor_verified":True,
+                "machine_resolvable_supersedes_verified":True,
+                "superseded_excluded_from_active_retrieval":True,
+                "successor_capture_id":successor_id,
+                "successor_smart_note_id":successor_doc.get("smart_note_id")
+              })
+
+          json.dump(comprehension,open(f"cold-retrieval-proof-{i}.json","w"),indent=2)
 
           PY
             done
@@ -836,22 +919,38 @@ jobs:
           for c in man["captures"]:
               i=c["index"]
               cr=json.load(open(f"cold-retrieval-proof-{i}.json"))
-              b=json.load(open(f"held-out-behavior-proof-{i}.json"))
               assert cr["original_conversation_supplied"] is False
               assert cr["prior_workflow_artifact_supplied"] is False
               assert cr["canonical_lineage_verified"] is True
               assert cr["exact_current_capture_retrieved"] is True
               assert cr["retrieved_content_hash"] == cr["expected_content_hash"]
-              assert cr["understands_raw_source_separate"] is True
-              assert cr["understands_candidate_ceiling"] is True
-              assert b["task_is_distinct_from_capture_command"] is True
-              assert b["behavior_changed"] is True
-              assert b["change_is_traceable_to_retrieved_intelligence"] is True
-              assert b["treatment"]["promote_to_verified"] is False
-              assert b["treatment"]["raw_transcript_is_canonical"] is False
-              captures.append({"intelligent_block_id":cr["retrieved_intelligent_block_id"],
-                               "cold_retrieval_verified":True,
-                               "held_out_behavioral_effect_verified":True})
+              lifecycle=cr.get("lifecycle_state","ACTIVE")
+              if lifecycle=="ACTIVE":
+                  b=json.load(open(f"held-out-behavior-proof-{i}.json"))
+                  assert cr["understands_raw_source_separate"] is True
+                  assert cr["understands_candidate_ceiling"] is True
+                  assert cr["canonical_active_retrieval_verified"] is True
+                  assert b["task_is_distinct_from_capture_command"] is True
+                  assert b["behavior_changed"] is True
+                  assert b["change_is_traceable_to_retrieved_intelligence"] is True
+                  assert b["treatment"]["promote_to_verified"] is False
+                  assert b["treatment"]["raw_transcript_is_canonical"] is False
+                  captures.append({"intelligent_block_id":cr["retrieved_intelligent_block_id"],
+                                   "lifecycle_state":"ACTIVE",
+                                   "cold_retrieval_verified":True,
+                                   "held_out_behavioral_effect_verified":True})
+              elif lifecycle=="SUPERSEDED":
+                  assert cr["historical_hash_provenance_verified"] is True
+                  assert cr["real_conformant_successor_verified"] is True
+                  assert cr["machine_resolvable_supersedes_verified"] is True
+                  assert cr["superseded_excluded_from_active_retrieval"] is True
+                  captures.append({"intelligent_block_id":cr["retrieved_intelligent_block_id"],
+                                   "lifecycle_state":"SUPERSEDED",
+                                   "historical_provenance_verified":True,
+                                   "superseded_retrieval_refusal_verified":True,
+                                   "held_out_behavioral_effect_verified":"NOT_APPLICABLE_HISTORICAL_OBJECT"})
+              else:
+                  raise AssertionError(f"unexpected lifecycle_state: {lifecycle}")
           json.dump({
             "schema":"naya.smart-note-independent-behavior-verification.v1",
             "status":"PASS",
