@@ -22,7 +22,7 @@ def candidate(cid, **scores):
 
 def test_exactly_ten_dimensions_and_default_weights_sum_to_one():
     assert len(ACTION_DIMENSIONS) == 10
-    profile = NextBestNextBestActionProfile.default()
+    profile = NextBestActionProfile.default()
     assert sum(profile.weights.values()) == pytest.approx(1.0)
     assert set(profile.weights) == set(ACTION_DIMENSIONS)
 
@@ -52,7 +52,7 @@ def test_low_evidence_routes_to_read_more_not_act():
     a = candidate("unknown", mission_value=10, human_value=10, urgency=10,
                   leverage=10, evidence=5.9, risk=1, cost=1, dependencies=10,
                   reversibility=10, compounding_continuity=10)
-    result = rank_actions([a], p)
+    result = rank_next_best_actions([a], p)
     assert result[0].status == "READ_MORE"
     assert result[0].reason == "EVIDENCE_FLOOR"
 
@@ -62,7 +62,7 @@ def test_thresholds_apply_after_score_and_before_selection():
     low = candidate("low", mission_value=2, human_value=2, urgency=2, leverage=2,
                     evidence=10, risk=0, cost=0, dependencies=0, reversibility=10,
                     compounding_continuity=2)
-    result = rank_actions([low], p)
+    result = rank_next_best_actions([low], p)
     assert result[0].status == "BELOW_STANDARD"
 
 
@@ -74,7 +74,7 @@ def test_tie_breakers_are_deterministic_and_ordered():
     b = candidate("b", mission_value=9, human_value=9, urgency=5, leverage=9,
                   evidence=9, risk=2, cost=5, dependencies=5, reversibility=9,
                   compounding_continuity=9)
-    ranked = rank_actions([b, a], p)
+    ranked = rank_next_best_actions([b, a], p)
     assert [r.candidate_id for r in ranked] == ["a", "b"]
 
 
@@ -86,14 +86,14 @@ def test_top_level_selection_requires_margin_when_two_options_are_close():
     b = candidate("b", mission_value=9.9, human_value=9.9, urgency=10, leverage=10,
                   evidence=10, risk=0, cost=0, dependencies=10, reversibility=10,
                   compounding_continuity=10)
-    ranked = rank_actions([a, b], p)
+    ranked = rank_next_best_actions([a, b], p)
     assert ranked[0].status == "READ_MORE"
     assert ranked[0].reason == "NO_CLEAR_DOMINANT_OPTION"
 
 
 def test_profile_rejects_unknown_dimensions_and_invalid_weights():
     with pytest.raises(ValueError):
-        NextBestNextBestActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
+        NextBestActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
     with pytest.raises(ValueError):
         NextBestActionProfile(profile_id="x", version="1",
                       weights={d: 0 for d in ACTION_DIMENSIONS})
