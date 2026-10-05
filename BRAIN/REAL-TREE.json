@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "d986d0b275821df490e2f5827e0872e92b69ee4b",
-  "inventory_file_count": 189,
+  "receipt_basis_commit": "1b9aa828c88ca125cdd306b852de7f168c6e9eab",
+  "inventory_file_count": 192,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 3,
+    "01-GOVERNANCE": 6,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -109,9 +109,24 @@
       "size": 1978
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md",
+      "blob_sha": "11c8c5515633b8743859a0ff0f92aa9619992c88",
+      "size": 11571
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md",
+      "blob_sha": "e9392c62e8834b955fa9518cfcdd062f1d6000d2",
+      "size": 4998
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json",
+      "blob_sha": "dd48fb27be1120aa763019966d4d1145e4c58df0",
+      "size": 12649
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "779fb7d8c1fc8cfe0a2971badc3b63e63935d6d7",
-      "size": 848
+      "blob_sha": "b7d18f3c1c12077d47d9a6df185f5664df1fe0ae",
+      "size": 1228
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",

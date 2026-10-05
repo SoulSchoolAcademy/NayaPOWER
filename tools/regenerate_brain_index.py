@@ -124,7 +124,9 @@ PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.n
 # mechanically from git truth.
 BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 3,
+    # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
+    # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
+    "01-GOVERNANCE": 6,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
