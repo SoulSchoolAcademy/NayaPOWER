@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "5162b1ec5620a298a0ba1f6a6b06b9c0452e8e12",
-  "inventory_file_count": 206,
+  "receipt_basis_commit": "0aee4a4ad22e0e2e65796ddc1dcbd362ff6c69de",
+  "inventory_file_count": 208,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 49,
+    "05-MEMORY": 51,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -692,6 +692,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
       "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
       "size": 6070
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0358/IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code.md",
+      "blob_sha": "6e9e1c9b3420b2800b097125ae6ff3d663f5ca58",
+      "size": 5653
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0359/IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain.md",
+      "blob_sha": "faa3ec7deb4b377c4d15350b1a92ed62d45d9db5",
+      "size": 4988
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
