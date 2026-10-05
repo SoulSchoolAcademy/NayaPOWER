@@ -32,6 +32,10 @@ PINNED_BASELINE = {
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 1,
     "duplicate_published_page_paths": 1,
+    "registry_entries_without_capture_identity": 17,
+    "captures_without_registry_identity": 1,
+    "captures_without_smart_note_id": 5,
+    "filename_smart_note_id_divergence": 1,
 }
 
 PAGE = "BRAIN/05-MEMORY/SMART-NOTES/2026/01/01/CAT/TOPIC/SUB/SN-001/IB-1.md"
@@ -48,7 +52,7 @@ def build_clean_root(tmp_path):
     intelligence = {"essence": "a", "distilled_intelligence": "b"}
     cap_dir = tmp_path / ".naya" / "capture"
     cap_dir.mkdir(parents=True)
-    (cap_dir / "c1.json").write_text(
+    (cap_dir / "SMART-NOTE-SN-001.json").write_text(
         json.dumps({"smart_note_id": "SN-001", "intelligence": intelligence}), encoding="utf-8"
     )
     page = tmp_path / PAGE
@@ -140,6 +144,26 @@ def test_clean_fixture_is_reported_ok(tmp_path):
             "captures_missing_intelligence",
             id="capture_missing_intelligence",
         ),
+        pytest.param(
+            lambda root: _drop_capture_identity(root),
+            "captures_without_smart_note_id",
+            id="capture_without_smart_note_id",
+        ),
+        pytest.param(
+            lambda root: _set_entry_id(root, "SN-009"),
+            "registry_entries_without_capture_identity",
+            id="registry_identity_without_capture",
+        ),
+        pytest.param(
+            lambda root: _set_capture_id(root, "SN-009"),
+            "captures_without_registry_identity",
+            id="capture_identity_without_registry",
+        ),
+        pytest.param(
+            lambda root: _set_capture_id(root, "SN-009"),
+            "filename_smart_note_id_divergence",
+            id="filename_identity_divergence",
+        ),
     ],
 )
 def test_detector_catches_injected_drift(tmp_path, mutate, expected_class):
@@ -155,7 +179,7 @@ def test_detector_catches_injected_drift(tmp_path, mutate, expected_class):
 
 
 def _add_capture(root, intelligence):
-    p = root / ".naya" / "capture" / "c2.json"
+    p = root / ".naya" / "capture" / "SMART-NOTE-SN-002.json"
     p.write_text(json.dumps({"smart_note_id": "SN-002", "intelligence": intelligence}), encoding="utf-8")
 
 
@@ -193,7 +217,28 @@ def _point_projection_at_absent_path(root):
 
 
 def _write_capture(root, text):
-    (root / ".naya" / "capture" / "c1.json").write_text(text, encoding="utf-8")
+    (root / ".naya" / "capture" / "SMART-NOTE-SN-001.json").write_text(text, encoding="utf-8")
+
+
+def _drop_capture_identity(root):
+    p = root / ".naya" / "capture" / "SMART-NOTE-SN-001.json"
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    doc.pop("smart_note_id", None)
+    p.write_text(json.dumps(doc), encoding="utf-8")
+
+
+def _set_entry_id(root, smart_note_id):
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    entries[0]["smart_note_id"] = smart_note_id
+    write_entries(reg, entries)
+
+
+def _set_capture_id(root, smart_note_id):
+    p = root / ".naya" / "capture" / "SMART-NOTE-SN-001.json"
+    doc = json.loads(p.read_text(encoding="utf-8"))
+    doc["smart_note_id"] = smart_note_id
+    p.write_text(json.dumps(doc), encoding="utf-8")
 
 
 def test_live_repository_drift_never_grows_per_class():
