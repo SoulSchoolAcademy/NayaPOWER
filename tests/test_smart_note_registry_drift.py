@@ -13,8 +13,9 @@ spec.loader.exec_module(mod)
 # Measured live drift on main@add657b4d. Pinned as a ratchet, not as a pass.
 # Rationale: the publish path only ever proves the single note it just handled,
 # so a fully green run can coexist with a broken registry. CI must stay usable,
-# but the drift may never grow silently. Each class is pinned individually so a
-# new defect in one class cannot hide inside an improving total elsewhere.
+# but the drift may never grow silently. Count pins stop cross-class masking;
+# the identity-membership ratchet below also stops within-class substitution
+# (repair one known defect + introduce a different defect at the same count).
 #
 # ROOT CAUSE NOTE: entries_without_hash and captures_unregistered_by_hash are
 # coupled. Every registry entry currently lacks content_hash (28/28), so no
@@ -36,6 +37,43 @@ PINNED_BASELINE = {
     "captures_without_registry_identity": 1,
     "captures_without_smart_note_id": 5,
     "filename_smart_note_id_divergence": 1,
+}
+
+# Identity-bearing drift needs a stronger ratchet than cardinality alone.
+# These are the exact known members at the #1495 repair baseline. Repairs may
+# remove members freely, but a different defect may not replace a repaired one
+# while keeping the count unchanged.
+PINNED_IDENTITY_MEMBERS = {
+    "registry_entries_without_capture_identity": {
+        "SN-001",
+        "SN-003",
+        "SN-004",
+        "SN-005",
+        "SN-006",
+        "SN-007",
+        "SN-008",
+        "SN-009",
+        "SN-010",
+        "SN-011",
+        "SN-012",
+        "SN-018",
+        "SN-019",
+        "SN-0311",
+        "SN-0312",
+        "SN-0345",
+        "SN-275",
+    },
+    "captures_without_registry_identity": {"SN-276"},
+    "captures_without_smart_note_id": {
+        "SMART-NOTE-20260929-sn003-naya-continuation-engine.json",
+        "SMART-NOTE-20260929-sn004-shawn-standing-law-r2.json",
+        "SMART-NOTE-20260929-sn004-shawn-standing-law.json",
+        "SMART-NOTE-20261001-sn019-complete-the-app-doctrine.json",
+        "SMART-NOTE-b8f141805fa0d7ae.json",
+    },
+    "filename_smart_note_id_divergence": {
+        "SMART-NOTE-20261005-sn0355-nonstop-loop.json|SN-355|SN-346"
+    },
 }
 
 PAGE = "BRAIN/05-MEMORY/SMART-NOTES/2026/01/01/CAT/TOPIC/SUB/SN-001/IB-1.md"
@@ -258,6 +296,61 @@ def test_live_repository_drift_never_grows_per_class():
             f"{defect_class} grew: {pinned} -> {actual}. That is a regression and must be "
             f"investigated before this baseline is changed. Full report: "
             f"{json.dumps(report['defects'], indent=2)}"
+        )
+
+
+def _assert_no_unseen_identity_members(defect_class, actual, pinned):
+    unseen = set(actual) - set(pinned)
+    assert not unseen, (
+        f"{defect_class} introduced previously unseen identity drift: {sorted(unseen)}. "
+        "A same-count substitution is still a regression; investigate the new member "
+        "before changing the pinned membership."
+    )
+
+
+def test_live_identity_drift_membership_never_expands():
+    """Ratchet identity membership, not only counts.
+
+    Count-only gating permits a sideways regression: fix one known defect and
+    introduce a different defect in the same class, leaving cardinality equal.
+    Exact known-member subsets let repairs shrink freely while rejecting that
+    substitution.
+    """
+    report = mod.audit_registry()
+    defects = report["defects"]
+
+    actual = {
+        "registry_entries_without_capture_identity": set(
+            defects["registry_entries_without_capture_identity"]
+        ),
+        "captures_without_registry_identity": {
+            item["smart_note_id"]
+            for item in defects["captures_without_registry_identity"]
+        },
+        "captures_without_smart_note_id": set(
+            defects["captures_without_smart_note_id"]
+        ),
+        "filename_smart_note_id_divergence": {
+            f"{item['capture']}|{item['filename_identity']}|{item['smart_note_id']}"
+            for item in defects["filename_smart_note_id_divergence"]
+        },
+    }
+
+    for defect_class, pinned in PINNED_IDENTITY_MEMBERS.items():
+        _assert_no_unseen_identity_members(defect_class, actual[defect_class], pinned)
+
+
+def test_identity_membership_ratchet_rejects_same_count_substitution():
+    """Regression: equal counts do not make a replacement defect acceptable."""
+    known = {"SN-OLD"}
+    replacement = {"SN-NEW"}
+    assert len(known) == len(replacement)
+
+    with pytest.raises(AssertionError, match="SN-NEW"):
+        _assert_no_unseen_identity_members(
+            "registry_entries_without_capture_identity",
+            replacement,
+            known,
         )
 
 
