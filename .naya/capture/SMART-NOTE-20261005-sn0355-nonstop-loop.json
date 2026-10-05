@@ -1,5 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0355",
   "capture_id": "20261005-sn0355-nonstop-loop",
   "title": "The Nonstop Loop — NayaPOWER Operating Code",
   "category": "SYSTEM_INTELLIGENCE",
@@ -38,10 +39,33 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
-      "loop_phases": ["OBSERVE", "RANK", "SIGN_IN", "ACT", "SIGN_OUT", "SCORECARD", "LEARN", "REPEAT"],
+      "loop_phases": [
+        "OBSERVE",
+        "RANK",
+        "SIGN_IN",
+        "ACT",
+        "SIGN_OUT",
+        "SCORECARD",
+        "LEARN",
+        "REPEAT"
+      ],
       "terminal": false,
-      "human_gates": ["production_dispatch", "production_db_read", "production_db_write", "production_migration", "credentials", "money", "destructive_action", "constitutional_ratification", "evolve_charter_ratification"],
-      "invariants": ["claim_scan_before_new_work", "evidence_law", "merge_requires_scorecard_receipt"],
+      "human_gates": [
+        "production_dispatch",
+        "production_db_read",
+        "production_db_write",
+        "production_migration",
+        "credentials",
+        "money",
+        "destructive_action",
+        "constitutional_ratification",
+        "evolve_charter_ratification"
+      ],
+      "invariants": [
+        "claim_scan_before_new_work",
+        "evidence_law",
+        "merge_requires_scorecard_receipt"
+      ],
       "normative_source": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1",
       "automatic_truth_ceiling": "CANDIDATE"
     },
