@@ -113,7 +113,7 @@ def test_sequence_policy_advances_after_sn002():
 
 def test_projection_workflow_publishes_active_verified_public_projection():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
-    assert 'e.get("smart_link_status") in {"ACTIVE", "READY"}' in workflow
+    assert 'e.get("smart_link_status") in {"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
     assert 'e.get("smart_link_status")=="READY"' not in workflow
 
 
