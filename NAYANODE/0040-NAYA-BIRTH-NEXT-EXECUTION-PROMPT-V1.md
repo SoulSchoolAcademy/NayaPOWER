@@ -41,12 +41,8 @@ SUCCESSOR CONTEXT ≠ INHERITED AUTHORITY
 2. Inspect the actual current branch and HEAD. Do not trust this prompt's remembered SHA if GitHub reports a newer one.
 3. Inspect the kernel manifest, behavior engine, behavior-engine tests, live Supabase test, and live proof workflow.
 4. Run the repository test suite. Fix real failures rather than documenting them.
-5. Configure or confirm protected GitHub Actions secrets by secret name only:
-- SUPABASE_URL
-- SUPABASE_USER_ACCESS_TOKEN
-- SUPABASE_PUBLISHABLE_KEY
-Never request or print secret values.
-6. Run the legitimate live Supabase proof.
+5. Use the current governed GitHub OIDC runtime identity path. Do not request, restore, or depend on a recurring human SUPABASE_USER_ACCESS_TOKEN. Confirm only the current non-secret configuration/secret names required by the canonical workflows, and never print secret values.
+6. Run the legitimate live Supabase proof through the current OIDC-bound workflow/runtime seam.
 
 ## Live persistence acceptance
 
