@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "5018968ed322eca165560cbc970c1f91c7a32ba0",
+  "receipt_basis_commit": "a3ce52dc7a29fe37c220c5a595952ebc34f8f418",
   "inventory_file_count": 201,
   "domain_counts": {
     "00-SPEC": 15,
@@ -865,8 +865,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md",
-      "blob_sha": "6280418bcbb1a812a2b6fb87fd6c425d0240cc83",
-      "size": 8333
+      "blob_sha": "b392cdaa07772595fee3909e6ef515491043e9b7",
+      "size": 9141
     },
     {
       "path": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md",
