@@ -7,7 +7,7 @@ function SettingsRoom(){
 
   const human=Board({accent:ACC,icon:'gear',title:'Your intelligence, your rules',sub:'Identity · Privacy · Authority · Connections · Notifications · Data · Security · Appearance',lift:false});
   const cats=['Identity','Privacy','Authority','Connections','Notifications','Data & Security','Appearance'];
-  human.body.innerHTML='<p style="color:var(--ink-dim);font-size:13.5px;line-height:1.6;max-width:720px">A setting is only real when its persistence/enforcement scope is known. Local presentation preferences must never masquerade as governed privacy or authority controls.</p>'+
+  human.body.innerHTML='<p style="color:var(--ink-dim);font-size:16px;line-height:1.6;max-width:720px">A setting is only real when its persistence/enforcement scope is known. Local presentation preferences must never masquerade as governed privacy or authority controls.</p>'+
     '<div class="domain-grid" style="margin-top:16px">'+cats.map(x=>'<div class="domain"><strong>'+esc(x)+'</strong><p>Governed control surface · exact runtime scope must be verified before modification is enabled.</p></div>').join('')+'</div>';
   wrap.appendChild(human);
 
@@ -43,7 +43,7 @@ function SettingsRoom(){
         metric(journeys.filter(x=>x.state==='PRODUCTION_PROVEN').length+'/'+journeys.length,'JOURNEYS PROVEN')+
         '</div><div class="intelligence-list" style="margin-top:16px">'+
         Object.entries(rooms).map(([id,x])=>'<div class="intel-row"><div class="intel-type">'+esc(id)+'</div><div class="intel-title">'+esc(x.metaphor||id)+'</div><div class="meta-row"><span>'+esc(x.state)+'</span><span>RUNTIME '+esc(x.runtime||'—')+'</span></div></div>').join('')+
-        '</div><p style="color:var(--muted);font-size:12px;margin-top:14px">Overall: <b style="color:var(--ink)">'+esc(m.overall_state)+'</b> · target '+esc(m.quality_target?.target||'10')+' · IMPLEMENTED is not DONE.</p>';
+        '</div><p style="color:var(--muted);font-size:16px;margin-top:14px">Overall: <b style="color:var(--ink)">'+esc(m.overall_state)+'</b> · target '+esc(m.quality_target?.target||'10')+' · IMPLEMENTED is not DONE.</p>';
     }else{
       health.body.innerHTML='<div class="empty-instrument"><strong>Completion matrix unavailable</strong><p>'+esc(matrix.message)+'</p></div>';
     }
@@ -52,7 +52,7 @@ function SettingsRoom(){
     if(reg.ok){
       registry.body.innerHTML='<div class="intelligence-list">'+(reg.data.doors||[]).map(d=>
         '<div class="intel-row"><div class="intel-title">'+esc(d.name)+'</div><div class="meta-row"><span>'+esc(d.status)+'</span><span>'+esc(d.health)+'</span><span>'+esc((d.capabilities||[]).join(' · '))+'</span></div></div>'
-      ).join('')+'</div><p style="color:var(--muted);font-size:12px;margin-top:12px">Source: '+esc(reg.source)+'</p>';
+      ).join('')+'</div><p style="color:var(--muted);font-size:16px;margin-top:12px">Source: '+esc(reg.source)+'</p>';
     }else registry.body.innerHTML='<div class="empty-instrument"><strong>Canonical registry unavailable</strong><p>'+esc(reg.message)+'</p></div>';
   }
   function metric(v,l){return '<div class="metric"><b>'+esc(v)+'</b><span>'+esc(l)+'</span></div>';}
