@@ -7,16 +7,17 @@ Any AI agent entering this repository must treat this file as the operational en
 Before changing code, documentation, infrastructure, or configuration:
 
 1. Read this file completely.
-2. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
-3. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
-4. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
-5. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
-6. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
-7. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
-8. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
-9. Read ratified project intelligence from `.naya/project-intelligence/`.
-10. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
-11. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
+2. Read `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` — the standing execution loop for every Naya seat.
+3. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md`.
+4. Read `NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md`.
+5. Read `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json`.
+6. Read `NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md`.
+7. Read the newest dated `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-*.md`.
+8. Read the relevant activation-domain README(s) and leaf contracts needed for the assigned work.
+9. Reconcile the package with the existing graph and knowledge surfaces: `BRAIN/00-SPEC/`, `BRAIN/04-INTELLIGENCE/`, `BRAIN/11-KNOWLEDGE/`, and `KNOWLEDGE/`.
+10. Read ratified project intelligence from `.naya/project-intelligence/`.
+11. Inspect current `main`, current GitHub issues/PRs, recent commits, and claim-matched proof/workflow evidence relevant to the assigned work.
+12. Establish the human director, authority, scope, current state, proof state, blockers, and exactly one next action.
 
 Do not rely on hidden conversation memory. Do not infer project truth from this file when stronger current evidence says otherwise.
 
