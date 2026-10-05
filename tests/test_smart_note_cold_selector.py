@@ -117,3 +117,12 @@ def test_dispatch_replay_is_verify_only_and_cannot_create_missing_runtime_object
     assert 'if lifecycle=="ACTIVE":' in block
     assert 'elif lifecycle=="SUPERSEDED":' in block
     assert '"NOT_APPLICABLE_HISTORICAL_OBJECT"' in block
+
+def test_independent_behavior_job_downloads_lineage_batch_metadata():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    start = wf.index("  independent-behavior-verification:")
+    block = wf[start:]
+    assert "name: smart-note-lineage" in block
+    assert "name: smart-note-cold-successor-proof" in block
+    assert 'count="$(cat capture-count.txt)"' in block
+    assert 'man=json.load(open("batch-manifest.json"))' in block
