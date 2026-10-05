@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "3dfd9b2062a934454100ddb39e134a5c3593c7af",
-  "inventory_file_count": 202,
+  "receipt_basis_commit": "5162b1ec5620a298a0ba1f6a6b06b9c0452e8e12",
+  "inventory_file_count": 206,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 10,
+    "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -144,9 +144,29 @@
       "size": 2405
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md",
+      "blob_sha": "2c5bc9a4da4dca43fb1255daf7005de5d724bad3",
+      "size": 6562
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md",
+      "blob_sha": "0d2f56f8f52f5661193d1fd82c5c9aa40af840ab",
+      "size": 3217
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
+      "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+      "size": 9313
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
+      "blob_sha": "c469937962ebb1776b391a7c2a525ab615d52cb1",
+      "size": 22689
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",

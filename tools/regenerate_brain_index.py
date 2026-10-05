@@ -132,7 +132,18 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # 7 -> 10 for the NONSTOP LOOP: 0004-NONSTOP-LOOP-V1 lands as standing
     # operational law in three languages (human/ai/machine), director-ratified
     # 2026-10-05 (PR #1472). Deliberate update.
-    "01-GOVERNANCE": 10,
+    # 10 -> 14 for two director-ratified governance surfaces:
+    #   +3  0005-CAPTAIN-OPERATING-PROTOCOL-V1 (human/ai/machine), the
+    #       machine-enforceable ordering guarantee subordinate to AGENTS.md
+    #       CAPTAIN MODE. Deliberate update.
+    #   +1  naya-dream-v1.machine.json (PR #1543, NAYA-DREAM-V1 offline
+    #       simulation spec). Deliberate update.
+    # NOTE for the next lane: this constant is a WHACK-A-MOLE. Every merge that
+    # adds a BRAIN file invalidates every open PR that pinned it, and the failure
+    # surfaces as an opaque "domain counts do not match" rather than naming the
+    # file. Re-read the actual counts immediately before pinning; do not copy a
+    # neighbour's number. Consider replacing per-domain pins with a ratchet.
+    "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
