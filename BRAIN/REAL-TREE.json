@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "f6129a7d0dc1461b904cd72708a24a733be71bd1",
-  "inventory_file_count": 199,
+  "receipt_basis_commit": "a324968bfe72ddd7722ea9eefa783463b4d3916d",
+  "inventory_file_count": 200,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 10,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 46,
+    "05-MEMORY": 47,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -652,6 +652,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
       "blob_sha": "2f1690a0c1b6335e2aac2ac8d1fbc9e3a687fec3",
       "size": 4695
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md",
+      "blob_sha": "8aa82b0ca02e849762ce383ca69607695ea7e01e",
+      "size": 5183
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
