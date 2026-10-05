@@ -1,0 +1,37 @@
+name: Activity Feed
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: activity-feed
+  cancel-in-progress: false
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update activity feed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/activity_feed.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet ACTIVITY-FEED.md; then
+            echo "No new activity."
+          else
+            git config user.name "Naya Activity Feed"
+            git config user.email "activity-feed@nayanet.local"
+            git add ACTIVITY-FEED.md
+            git commit -m "[skip ci] activity-feed: update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
