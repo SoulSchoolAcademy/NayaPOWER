@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "eed788e7effc62fcece3d425d05a219aa0710229",
-  "inventory_file_count": 195,
+  "receipt_basis_commit": "8fb7831d9947c7b9b6a88527277b24564e8d5de4",
+  "inventory_file_count": 199,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 7,
+    "01-GOVERNANCE": 10,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 45,
+    "05-MEMORY": 46,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -129,9 +129,24 @@
       "size": 12649
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
+      "blob_sha": "1fb9a4543f6662147a103a99e19949e131c5aceb",
+      "size": 3892
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.human.md",
+      "blob_sha": "e44f351b20129333f8979d288a9ec4282685deda",
+      "size": 2988
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
+      "blob_sha": "19097e2d2c52cae250b04dcf08fbeb26d2f05c96",
+      "size": 2405
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "c9173f5ac8f09f94e0e861729383bcb261f5d905",
-      "size": 1363
+      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
+      "size": 1673
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
@@ -639,6 +654,11 @@
       "size": 4695
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
+      "blob_sha": "a5ca0e75e839e2d3e913e9a569dd336f6c7cfd72",
+      "size": 6119
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
       "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
       "size": 4958
@@ -905,13 +925,13 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-migration-coherence-controls.py",
-      "blob_sha": "48b031cdebe23bd6d664c80f32bba3fda2ea52a9",
-      "size": 6889
+      "blob_sha": "079dadda0e763c717be955dbbcf005ee39adebb6",
+      "size": 7705
     },
     {
       "path": "BRAIN/12-ENGINEERING/verify-migration-coherence.py",
-      "blob_sha": "5f69a322eab35ff79ffe705c0d7b58a5db64c13e",
-      "size": 14461
+      "blob_sha": "8c1a1ba8894aad017e7b3b33e35baa2cd7d2bd69",
+      "size": 15237
     },
     {
       "path": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -975,8 +995,8 @@
     },
     {
       "path": "BRAIN/MASTER-MAP.md",
-      "blob_sha": "33bdec2f6743a5135652e952daaf760e3cadad2a",
-      "size": 9412
+      "blob_sha": "3a56fd5611216760eae0fbf936fd28936a371432",
+      "size": 9551
     },
     {
       "path": "BRAIN/NAYAPOWER-BRAIN-INDEX.json",

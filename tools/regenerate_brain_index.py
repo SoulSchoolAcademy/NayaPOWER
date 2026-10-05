@@ -129,7 +129,11 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # 6 -> 7 for the 10-area system scorecard: 0003-SYSTEM-SCORECARD-V1 lands as
     # standing law (ratified by Shawn Vibert 2026-10-05; weighted total 6.8/10).
     # Deliberate update.
-    "01-GOVERNANCE": 7,
+    # 7 -> 10 for the Nonstop Loop V1 operating code: 0004-NONSTOP-LOOP-V1
+    # (ai/human/machine) lands as standing law (authored by Shawn Vibert
+    # 2026-10-05; report-routing amendment adopted same morning).
+    # Deliberate update.
+    "01-GOVERNANCE": 10,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
