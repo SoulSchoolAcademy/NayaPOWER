@@ -55,7 +55,7 @@ When a room changes, update the room record with:
 - A beautiful render does not graduate a room.
 - A room cannot graduate below **D1 = 10.0** and **D2–D8 ≥ 9.5**.
 - No score may be asserted without evidence.
-- All material defects go to **Issue #554**.
+- All material defects go to **Issue #1354**.
 - Graduation qualification is governed by **Issue #1310**.
 
 ## Build order
