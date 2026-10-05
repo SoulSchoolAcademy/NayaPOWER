@@ -1,5 +1,3 @@
-[Reading 119 lines from start (total: 119 lines, 0 remaining)]
-
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -119,5 +117,3 @@ def test_dispatch_replay_is_verify_only_and_cannot_create_missing_runtime_object
     assert 'if lifecycle=="ACTIVE":' in block
     assert 'elif lifecycle=="SUPERSEDED":' in block
     assert '"NOT_APPLICABLE_HISTORICAL_OBJECT"' in block
-
-[executed on device: DESKTOP-OJ712N5 (97813f8c-e057-47af-82b6-89e3bc067f5c)]
