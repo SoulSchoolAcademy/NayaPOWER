@@ -21,8 +21,8 @@
     "let a score manufacture truth"
   ],
   "enforcement": {
-    "on_false": "do not merge; post reasons to #1354; PR waits for human or repaired re-run",
-    "on_true": "merge via API; verify merge commit on main; post merge receipt to #1354",
+    "on_false": "do not merge; post reasons to #554; PR waits for human or repaired re-run",
+    "on_true": "merge via API; verify merge commit on main; post merge receipt to #554",
     "predicate": "tools/auto_merge_gate.py::may_auto_merge",
     "signature": "may_auto_merge(pr_state: dict) -> tuple[bool, list[str]]"
   },
@@ -36,7 +36,7 @@
       "H1_scorecard_theater": {
         "enforced_by": "predicate fields: step2_score.scores, step4_decide.winner/strongest_alternative/falsifier, rigor_tier, named_risks, rollback_plan, second_seat_ack_comment_id",
         "problem": "a seat fills out the scorecard to justify a pre-decided merge",
-        "solution": "receipt must carry strongest_alternative + falsifier, posted publicly on #1354 where any seat can challenge; the predicate mechanically checks winner-is-highest-scorer; rigor scales with blast radius (LIGHT vs FULL tiers)"
+        "solution": "receipt must carry strongest_alternative + falsifier, posted publicly on #554 where any seat can challenge; the predicate mechanically checks winner-is-highest-scorer; rigor scales with blast radius (LIGHT vs FULL tiers)"
       },
       "H2_conflicting_overnight_merges": {
         "enforced_by": "predicate precondition P10",
@@ -46,12 +46,12 @@
       "H3_bad_merge_poisons_canon": {
         "enforced_by": "post-merge obligation; helper tools/auto_merge_self_heal.py",
         "problem": "an auto-merge breaks something overnight",
-        "solution": "self-heal: battery-red auto-merge is automatically reverted with evidence posted to #1354; automatic only while the merge is still the tip, else escalate"
+        "solution": "self-heal: battery-red auto-merge is automatically reverted with evidence posted to #554; automatic only while the merge is still the tip, else escalate"
       },
       "H4_scope_creep": {
         "enforced_by": "predicate fields: lane, owner_seat, author_seat, author_lane, owning_seat_ack_comment_id",
         "problem": "'the scorecard said so' as a blank check",
-        "solution": "every auto-merge PR states lane + owner_seat; out-of-lane merge requires owning seat's #1354 acknowledgment first"
+        "solution": "every auto-merge PR states lane + owner_seat; out-of-lane merge requires owning seat's #554 acknowledgment first"
       },
       "H5_lost_visibility": {
         "enforced_by": "post-merge obligation on the merging seat",
@@ -83,7 +83,7 @@
     ],
     "protected_paths_note": "this PR itself touches BRAIN/01-GOVERNANCE/; it merges under the supreme Scorecard Law because the Human Director verbally ratified the substance (2026-10-04 auto-merge decision + 2026-10-05 Scorecard Law) — the merge encodes already-ratified authority, it does not create new authority. The merge's own scorecard must name this tension as its strongest alternative.",
     "supreme_law_exception": {
-      "rule": "the protected-path exclusion is waived ONLY when the receipt carries supreme_law_exception {ratified_by: 'Shawn Vibert', ratification_evidence_comment_id: int, scope: string>=20 chars} proving the Human Director already ratified the substance on #1354; the merge must encode already-ratified authority and create none",
+      "rule": "the protected-path exclusion is waived ONLY when the receipt carries supreme_law_exception {ratified_by: 'Shawn Vibert', ratification_evidence_comment_id: int, scope: string>=20 chars} proving the Human Director already ratified the substance on #554; the merge must encode already-ratified authority and create none",
       "note": "used once: PR #1444, the Scorecard Law's own encoding (ratification evidence: #1354 comment 5995131455). Historical, not a precedent."
     }
   },
@@ -132,7 +132,7 @@
       ],
       "id": "P5",
       "name": "intent_posted",
-      "rule": "announcement on #1354 precedes the merge"
+      "rule": "announcement on #554 precedes the merge"
     },
     {
       "fields": [
@@ -183,7 +183,7 @@
     "anti_theater": {
       "note": "Shawn's hardening (2026-10-04): 'as long as you don't cheat and you really scorecard it — accurate real scores, for the highest good of the collective, not ego'",
       "rigor_tiers": {
-        "FULL": "wide-blast-radius auto-mergeable changes (shared kernel, brain-wide index, multi-consumer surfaces); additionally requires named_risks (non-empty array), rollback_plan (string), second_seat_ack_comment_id (a second seat's acknowledgment on #1354, posted BEFORE merging)",
+        "FULL": "wide-blast-radius auto-mergeable changes (shared kernel, brain-wide index, multi-consumer surfaces); additionally requires named_risks (non-empty array), rollback_plan (string), second_seat_ack_comment_id (a second seat's acknowledgment on #554, posted BEFORE merging)",
         "LIGHT": "mechanical/docs/narrow-blast-radius merges; the five steps still required, kept light"
       }
     },
@@ -194,7 +194,7 @@
         "author_seat",
         "author_lane"
       ],
-      "out_of_lane_rule": "if lane != author_lane, owning_seat_ack_comment_id (the owning seat's public acknowledgment on #1354) is required",
+      "out_of_lane_rule": "if lane != author_lane, owning_seat_ack_comment_id (the owning seat's public acknowledgment on #554) is required",
       "rule": "no scope creep — 'the scorecard said so' is not a blank check"
     },
     "law": "SCORECARD-LAW-V1 — the receipt IS the five steps; a receipt in any other shape is not a receipt",
@@ -242,9 +242,9 @@
         "decided_at": "ISO-8601 timestamp",
         "decided_by": "seat id",
         "decision_id": "string, unique",
-        "receipt_posted_comment_id": "integer — the #1354 comment where this receipt was posted"
+        "receipt_posted_comment_id": "integer — the #554 comment where this receipt was posted"
       },
-      "rule": "the scorecard is written and posted to #1354; no receipt, no merge — no exceptions"
+      "rule": "the scorecard is written and posted to #554; no receipt, no merge — no exceptions"
     }
   },
   "status": "RATIFIED_VERBAL_2026-10-05__PENDING_MERGE",
