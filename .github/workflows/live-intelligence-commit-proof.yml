@@ -46,12 +46,23 @@ jobs:
           if [ -z "$expected" ]; then
             expected="${{ github.sha }}"
           fi
-          resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
-          printf '%s' "$resolved" > resolved-source-sha.txt
+          # Retry the resolve: GitHub API replicas can lag a fresh merge by ~60s.
+          # A retry that converges proves lag; consistent disagreement still fails closed.
+          resolved=""
+          for attempt in 1 2 3 4 5; do
+            resolved="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+            printf '%s' "$resolved" > resolved-source-sha.txt
+            echo "attempt $attempt: resolved_main_sha=$resolved (len ${#resolved})"
+            if [ "$resolved" = "$expected" ]; then
+              break
+            fi
+            if [ "$attempt" -lt 5 ]; then
+              sleep 15
+            fi
+          done
           echo "expected_source_sha=$expected (len ${#expected})"
-          echo "resolved_main_sha=$resolved (len ${#resolved})"
           if [ "$resolved" != "$expected" ]; then
-            echo "SOURCE BINDING MISMATCH: refs/heads/main resolved to $resolved, expected $expected. Failing closed."
+            echo "SOURCE BINDING MISMATCH: refs/heads/main resolved to $resolved, expected $expected (after 5 attempts). Failing closed."
             exit 1
           fi
           echo "Source binding verified: $resolved"
