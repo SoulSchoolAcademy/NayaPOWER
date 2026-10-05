@@ -22,13 +22,13 @@ def candidate(cid, **scores):
 
 def test_exactly_ten_dimensions_and_default_weights_sum_to_one():
     assert len(ACTION_DIMENSIONS) == 10
-    profile = NextBestActionProfile.default()
+    profile = NextBestNextBestActionProfile.default()
     assert sum(profile.weights.values()) == pytest.approx(1.0)
     assert set(profile.weights) == set(ACTION_DIMENSIONS)
 
 
 def test_combination_is_deterministic_weighted_score():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     a = candidate("a", mission_value=10, human_value=10, urgency=0, leverage=0,
                   evidence=10, risk=0, cost=0, dependencies=0, reversibility=10,
                   compounding_continuity=10)
@@ -38,7 +38,7 @@ def test_combination_is_deterministic_weighted_score():
 
 
 def test_hard_risk_cap_blocks_even_a_high_average():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     a = candidate("danger", mission_value=10, human_value=10, evidence=10,
                   leverage=10, risk=9.0, cost=0, dependencies=10,
                   reversibility=10, urgency=10, compounding_continuity=10)
@@ -48,7 +48,7 @@ def test_hard_risk_cap_blocks_even_a_high_average():
 
 
 def test_low_evidence_routes_to_read_more_not_act():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     a = candidate("unknown", mission_value=10, human_value=10, urgency=10,
                   leverage=10, evidence=5.9, risk=1, cost=1, dependencies=10,
                   reversibility=10, compounding_continuity=10)
@@ -58,7 +58,7 @@ def test_low_evidence_routes_to_read_more_not_act():
 
 
 def test_thresholds_apply_after_score_and_before_selection():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     low = candidate("low", mission_value=2, human_value=2, urgency=2, leverage=2,
                     evidence=10, risk=0, cost=0, dependencies=0, reversibility=10,
                     compounding_continuity=2)
@@ -67,7 +67,7 @@ def test_thresholds_apply_after_score_and_before_selection():
 
 
 def test_tie_breakers_are_deterministic_and_ordered():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     a = candidate("a", mission_value=9, human_value=9, urgency=5, leverage=9,
                   evidence=9, risk=2, cost=5, dependencies=5, reversibility=9,
                   compounding_continuity=9)
@@ -79,7 +79,7 @@ def test_tie_breakers_are_deterministic_and_ordered():
 
 
 def test_top_level_selection_requires_margin_when_two_options_are_close():
-    p = ActionProfile.default()
+    p = NextBestActionProfile.default()
     a = candidate("a", mission_value=10, human_value=10, urgency=10, leverage=10,
                   evidence=10, risk=0, cost=0, dependencies=10, reversibility=10,
                   compounding_continuity=10)
@@ -93,9 +93,9 @@ def test_top_level_selection_requires_margin_when_two_options_are_close():
 
 def test_profile_rejects_unknown_dimensions_and_invalid_weights():
     with pytest.raises(ValueError):
-        NextBestActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
+        NextBestNextBestActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
     with pytest.raises(ValueError):
-        ActionProfile(profile_id="x", version="1",
+        NextBestActionProfile(profile_id="x", version="1",
                       weights={d: 0 for d in ACTION_DIMENSIONS})
 
 
