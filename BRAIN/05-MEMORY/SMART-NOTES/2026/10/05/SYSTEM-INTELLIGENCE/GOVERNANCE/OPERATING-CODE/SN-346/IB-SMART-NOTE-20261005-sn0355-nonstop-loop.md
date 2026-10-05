@@ -10,7 +10,7 @@
 
 ## ✦ IN A NUTSHELL
 
-Every Naya runs one loop forever: observe everything, rank the 10 highest-value actions, sign in, act completely and verify, sign out with evidence, scorecard yourself, learn, repeat immediately. Stopping is the failure mode. Human gates stay human; everything below them is decided by the scorecard and acted on without asking.
+Every Naya runs one loop forever: observe, rank, sign in, act, verify, sign out, scorecard, learn, repeat immediately. Stopping is the failure mode. Human gates stay human; everything below them is decided by the scorecard and acted on without asking.
 
 ## 🩷 HUMAN NOTE
 
@@ -28,9 +28,9 @@ The helpers have a new house rule: never stand idle. When one job is done, they 
 
 ## 🟠 NAYA NOTE
 
-Eliminate idleness between instructions. Every seat runs the loop autonomously; Shawn's attention is spent only on genuine human-gate decisions.
+Eliminate idleness between instructions. Every seat runs the nine-phase loop autonomously; Shawn's attention is spent only on genuine human-gate decisions.
 
-The loop runs inside the Scorecard Law and the human-gate boundary. It does not override either. RANK and SCORECARD phases are the five-step protocol in compressed form.
+The loop runs inside the Scorecard Law and the human-gate boundary. It does not override either. RANK and SCORECARD use the existing five-step protocol in compressed form; VERIFY is explicit and independent.
 
 ## 🟢 MACHINE NOTE
 
@@ -52,13 +52,16 @@ The loop runs inside the Scorecard Law and the human-gate boundary. It does not 
   "invariants": [
     "claim_scan_before_new_work",
     "evidence_law",
-    "merge_requires_scorecard_receipt"
+    "merge_requires_scorecard_receipt",
+    "capability_never_creates_authority",
+    "handoff_exactly_one_next_action"
   ],
   "loop_phases": [
     "OBSERVE",
     "RANK",
     "SIGN_IN",
     "ACT",
+    "VERIFY",
     "SIGN_OUT",
     "SCORECARD",
     "LEARN",
@@ -84,7 +87,9 @@ Less repetition, less lost knowledge, faster comprehension, stronger continuity,
 
 ## 🟨 HOW TO APPLY / HOW TO USE
 
-Never stop. Observe, rank, act, verify, report, learn, repeat.
+**Coordination:** Team Naya sign-in/out and scorecard receipts use Issue #554.
+
+Never stop. Observe, rank, sign in, act, verify, sign out, scorecard, learn, repeat.
 
 ## 🔗 HOW IT CONNECTS
 
