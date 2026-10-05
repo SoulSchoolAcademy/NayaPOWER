@@ -1,0 +1,38 @@
+from pathlib import Path
+import re
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_current_truth_collector_does_not_silently_truncate_open_prs():
+    workflow = (ROOT / ".github/workflows/current-truth-resolver.yml").read_text(encoding="utf-8")
+    anchor = workflow.index('"gh", "pr", "list"')
+    window = workflow[anchor:anchor + 800]
+    match = re.search(r'"--limit",\s*"([0-9]+)"', window)
+    assert match, "current-truth PR collector must declare an explicit enumeration ceiling"
+    assert int(match.group(1)) >= 1000
+    assert "OPEN_PR_ENUMERATION_CAP_REACHED" in window
+
+
+def test_maintained_knowledge_index_does_not_link_missing_control_plane():
+    readme = (ROOT / "KNOWLEDGE/README.md").read_text(encoding="utf-8")
+    assert "](../.naya/control-plane/)" not in readme
+    assert "NAYA-ACTIVATION/CURRENT-REALITY/" in readme
+
+
+def test_historical_successor_prompt_cannot_direct_execution_through_dead_paths():
+    prompt = (
+        ROOT / "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md"
+    ).read_text(encoding="utf-8")
+    for stale in (
+        ".naya/control-plane/STATE.json",
+        ".naya/control-plane/BLOCKS.json",
+        ".naya/control-plane/BATON.json",
+        "Commit all changes to main",
+        "Push to origin/main",
+        "Post Issue #554 sign-in/out",
+    ):
+        assert stale not in prompt
+    assert "HISTORICAL SETTER HANDOFF — DO NOT EXECUTE LITERALLY" in prompt
+    assert "Issue #1354" in prompt

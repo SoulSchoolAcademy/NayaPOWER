@@ -26,7 +26,7 @@ def test_dispatch_fallback_persists_expected_content_for_cold_successor():
     wf = WORKFLOW.read_text(encoding="utf-8")
     fallback = wf[wf.index("          else:\n              lesson_key="):]
     fallback = fallback[:fallback.index("          pathlib.Path(\"lesson-request.json\")")]
-    assert 'lesson_content="Preserve provenance before applying retained intelligence."' in fallback
+    assert 'lesson_content=json.dumps(' in fallback
     assert 'digest=hashlib.sha256(lesson_content.encode()).hexdigest()' in fallback
     assert 'pathlib.Path("smart-note-expected.json").write_text' in fallback
     assert '"expected_content":lesson_content' in fallback
@@ -47,14 +47,32 @@ def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exist
 
 def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
     wf = WORKFLOW.read_text(encoding="utf-8")
-    start = wf.index('          for attempt in 1 2 3; do', wf.index('cold-verify-request.json'))
+    start = wf.index('attempt=1; max_attempts=5', wf.index('cold-verify-request.json'))
     end = wf.index('          python - <<\'PY\'', start)
     block = wf[start:end]
-    assert 'for attempt in 1 2 3; do' in block
+    assert 'max_attempts=5' in block
     assert 'cold-runtime-reread.json' in block
-    assert 'if [[ -s cold-runtime-reread.json ]]' in block
-    assert 'sleep 2' in block
+    assert 'json.load(' in block
+    assert 'not valid JSON' in block
+    assert 'sleep $backoff' in block
+    assert 'backoff=$((backoff * 2))' in block
+    assert 'curl exit=' in block
     assert 'exit 1' in block
+
+
+def test_independent_verification_reread_has_json_validated_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    for marker in ('independent-lineage-verification-$i.json', 'independent-lineage-verification.json'):
+        mpos = wf.index(marker)
+        start = wf.rindex('attempt=1; max_attempts=5', 0, mpos)
+        end = wf.index('attempt=$((attempt + 1))', mpos) + 60
+        block = wf[start:end]
+        assert 'max_attempts=5' in block
+        assert 'json.load(' in block
+        assert 'not valid JSON' in block
+        assert 'sleep $backoff' in block
+        assert 'curl exit=' in block
+        assert 'exit 1' in block
 
 
 
@@ -126,3 +144,38 @@ def test_independent_behavior_job_downloads_lineage_batch_metadata():
     assert "name: smart-note-cold-successor-proof" in block
     assert 'count="$(cat capture-count.txt)"' in block
     assert 'man=json.load(open("batch-manifest.json"))' in block
+
+
+def test_fresh_lesson_capture_has_json_validated_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    for marker in ('fresh-lesson-receipt${sfx}.json', 'fresh-lesson-receipt.json'):
+        mpos = wf.index(marker)
+        start = wf.rindex('fl_attempt=1', 0, mpos)
+        end = wf.index('fl_attempt=$((fl_attempt + 1))', mpos) + 40
+        block = wf[start:end]
+        assert 'json.load(' in block
+        assert 'not valid JSON' in block
+        assert 'FRESH_LESSON_ATTEMPT' in block
+        assert 'curl exit=' in block
+
+
+def test_fallback_lesson_content_is_unique_per_run():
+    # Naya 2 hypothesis (verified): static fallback content produced duplicate
+    # content_hashes across runs, tripping assert len(matches)==0 in cold-retrieve.
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    assert 'lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex' in wf
+    # The content must embed the unique key so the hash differs per run
+    assert '"run_key":lesson_key' in wf
+    # The content must be valid JSON (cold-successor does json.loads on it)
+    assert 'lesson_content=json.dumps(' in wf
+    assert '"machine_view"' in wf
+    assert '"raw_source_separate_from_distillation":True' in wf
+    assert '"automatic_truth_ceiling":"CANDIDATE"' in wf
+
+
+def test_cold_successor_lesson_parse_has_validity_gate():
+    # Naya 2 sibling flag: json.loads on content.lesson needs a legible denial,
+    # not a bare traceback.
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    assert wf.count('COLD_LESSON_NOT_JSON') == 2
+    assert 'lesson prefix=' in wf

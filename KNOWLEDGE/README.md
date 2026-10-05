@@ -83,8 +83,7 @@ can be skimmed once the ratified model (Parts #1, #3, #4, #6, #15) is understood
 
 - **Canonical BRAIN directory:** [`../BRAIN/`](../BRAIN/README.md) — the target home of the
   governed intelligence substrate (specs, master map, machine index, distilled knowledge).
-- **NayaPOWER control plane:** [`../.naya/control-plane/`](../.naya/control-plane/) — the
-  governance kernel and workflow gate that enforce the contracts at runtime.
+- **Current operational truth:** [`../NAYA-ACTIVATION/CURRENT-REALITY/`](../NAYA-ACTIVATION/CURRENT-REALITY/) plus current `main`, live GitHub work and claim-matched proof evidence. The former `.naya/control-plane/` path does **not** exist on current `main`; do not invent or restore it.
 - **System specifications:** [`../.naya/specifications/`](../.naya/specifications/) —
   machine-checkable specifications (e.g. the nine-master-node enforceable spec).
 - **AAA Scorecard:** [`../.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md`](../.naya/NAYAPOWER-SYSTEM-AAA-SCORECARD-V1.md)
