@@ -905,6 +905,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
+          name: smart-note-lineage
+      - uses: actions/download-artifact@v4
+        with:
           name: smart-note-cold-successor-proof
       - name: Independently verify cold retrieval and held-out behavioral effect
         shell: bash
