@@ -49,3 +49,11 @@ Out of scope: authorization decisions, intelligence content creation, behavioral
 | Verification method unknown | Mark method as UNVERIFIED |
 | Scope mismatch | Reject proof; request scoped evidence |
 | Expired proof | Mark as STALE; require re-verification |
+
+## Verifier execution rule
+
+Consequential proof evaluation uses the Universal Verifier Method in `BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md`.
+
+Proof records must preserve enough detail to reproduce both positive and negative findings. In particular, absence/pre-existing claims require exact revision, measurement method, scope, result/exit status, and baseline where applicable.
+
+A verifier should preserve valid substance even when citation, state, scope, or authority claims fail. Proof precision is preferred over all-or-nothing judgment.
