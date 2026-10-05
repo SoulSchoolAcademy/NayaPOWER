@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
-  "inventory_file_count": 186,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "d13975149b7a8319091fb8737a05861e5f9d7f08",
+  "inventory_file_count": 187,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
@@ -14,7 +14,7 @@
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 6,
+    "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,
@@ -712,6 +712,11 @@
       "path": "BRAIN/10-INTERFACES/README.md",
       "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
       "size": 1226
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
+      "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
+      "size": 33837
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",
