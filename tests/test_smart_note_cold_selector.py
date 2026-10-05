@@ -26,7 +26,7 @@ def test_dispatch_fallback_persists_expected_content_for_cold_successor():
     wf = WORKFLOW.read_text(encoding="utf-8")
     fallback = wf[wf.index("          else:\n              lesson_key="):]
     fallback = fallback[:fallback.index("          pathlib.Path(\"lesson-request.json\")")]
-    assert 'lesson_content="Preserve provenance before applying retained intelligence. ["+lesson_key+"]"' in fallback
+    assert 'lesson_content=json.dumps(' in fallback
     assert 'digest=hashlib.sha256(lesson_content.encode()).hexdigest()' in fallback
     assert 'pathlib.Path("smart-note-expected.json").write_text' in fallback
     assert '"expected_content":lesson_content' in fallback
@@ -165,4 +165,15 @@ def test_fallback_lesson_content_is_unique_per_run():
     wf = WORKFLOW.read_text(encoding="utf-8")
     assert 'lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex' in wf
     # The content must embed the unique key so the hash differs per run
-    assert 'lesson_content="Preserve provenance before applying retained intelligence. ["+lesson_key+"]"' in wf
+    assert '"run_key":lesson_key' in wf
+    # The content must be valid JSON (cold-successor does json.loads on it)
+    assert 'lesson_content=json.dumps(' in wf
+    assert '"machine_view"' in wf
+
+
+def test_cold_successor_lesson_parse_has_validity_gate():
+    # Naya 2 sibling flag: json.loads on content.lesson needs a legible denial,
+    # not a bare traceback.
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    assert wf.count('COLD_LESSON_NOT_JSON') == 2
+    assert 'lesson prefix=' in wf

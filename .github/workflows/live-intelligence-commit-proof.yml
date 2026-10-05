@@ -286,7 +286,7 @@ jobs:
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
-              lesson_content="Preserve provenance before applying retained intelligence. ["+lesson_key+"]"
+              lesson_content=json.dumps({"naya_fallback_lesson":True,"text":"Preserve provenance before applying retained intelligence.","run_key":lesson_key,"machine_view":{}} )
               digest=hashlib.sha256(lesson_content.encode()).hexdigest()
               pathlib.Path("smart-note-expected.json").write_text(json.dumps({
                 "capture_path":"",
@@ -719,7 +719,10 @@ jobs:
           assert block["content"]["lesson"]==expected["expected_content"]
           actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
           assert actual_hash==expected["content_hash"]
-          intel=json.loads(block["content"]["lesson"])
+          try:
+              intel=json.loads(block["content"]["lesson"])
+          except Exception as e:
+              raise SystemExit(f"COLD_LESSON_NOT_JSON: block {block.get('intelligent_block_id')} lesson prefix={str(block['content']['lesson'])[:120]!r} err={e}")
           machine=intel.get("machine_view",{})
           capture=json.load(open(expected["capture_path"]))
           lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
@@ -929,7 +932,10 @@ jobs:
           assert block["content"]["lesson"]==expected["expected_content"]
           actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
           assert actual_hash==expected["content_hash"]
-          intel=json.loads(block["content"]["lesson"])
+          try:
+              intel=json.loads(block["content"]["lesson"])
+          except Exception as e:
+              raise SystemExit(f"COLD_LESSON_NOT_JSON: block {block.get('intelligent_block_id')} lesson prefix={str(block['content']['lesson'])[:120]!r} err={e}")
           machine=intel.get("machine_view",{})
           comprehension={
             "schema":"naya.smart-note-cold-retrieval.v2",
