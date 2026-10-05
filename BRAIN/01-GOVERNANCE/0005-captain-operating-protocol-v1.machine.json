@@ -6,10 +6,30 @@
   "ratified_date": "2026-10-05",
   "scope": "all_nine_nodes_all_seats_all_lanes",
   "law_id": "PROACTIVE-CAPTAIN-V1",
-  "role": "NORMATIVE_LAW_AND_MACHINE_ENFORCEMENT",
-  "not_a_new_intelligence_object": "The intelligence object is SN-0359 (PROACTIVE-CAPTAIN-V1). This file is the normative law and machine-enforced protocol that gives that directive an ordering guarantee. It deliberately does NOT claim a separate law identity, because the Director issued one directive, not two.",
-  "extends": ["0004-NONSTOP-LOOP-V1", "SN-0355", "SN-0357", "SN-0358", "SN-0359", "SN-016"],
-  "intelligence_objects_restored_by_this_change": ["SN-0358", "SN-0359"],
+  "role": "MACHINE_ENFORCEABLE_ORDERING_GUARANTEE_AND_FALSIFIER",
+  "not_a_new_intelligence_object": "The intelligence object is SN-0359 (PROACTIVE-CAPTAIN-V1). This file does NOT claim a separate law identity: the Director issued one directive, not two.",
+  "not_a_competing_boot_contract": "AGENTS.md 'CAPTAIN MODE - PROACTIVE COLLECTIVE INTELLIGENCE' (merged in #1544) is the GOVERNING boot text for posture and reporting shape. This file is SUBORDINATE to it and adds only what prose cannot: a machine-checkable ordering guarantee (DECLARE precedes ACT), an UNPROMPTED report trigger, an enumerated never-ask boundary, and a falsifier. It must never be read as a second, competing captain doctrine.",
+  "extends": [
+    "0004-NONSTOP-LOOP-V1",
+    "SN-0355",
+    "SN-0357",
+    "SN-0358",
+    "SN-0359",
+    "SN-016"
+  ],
+  "governing_boot_text": "AGENTS.md :: CAPTAIN MODE",
+  "next_best_action_seam": {
+    "specification": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+    "implementation": "kernel/value_calculus.py",
+    "profile": ".naya/specifications/NAYA-NEXT-BEST-ACTION-V1.profile.json",
+    "schema": ".naya/specifications/NAYA-NEXT-BEST-ACTION-V1.schema.json",
+    "merged_in": "#1544",
+    "note": "The combination function, weights, thresholds and tie-breaking rules that SN-0358 recorded as OPEN were supplied by #1544. This protocol REQUIRES that seam and forbids creating a competing one."
+  },
+  "intelligence_objects_restored_by_this_change": [
+    "SN-0358",
+    "SN-0359"
+  ],
   "problem_solved": "A seat that executes on instruction and reports afterwards is instruction-following with extra steps. The Director had to spend attention on routine project management and had to keep saying 'continue'. This law makes DECLARE-before-ACT and standing unprompted report-back the default, so the Director never has to ask what happens next.",
   "cycle": {
     "terminal": false,
@@ -18,13 +38,24 @@
       {
         "n": 1,
         "name": "OBSERVE",
-        "requires": ["live_board_1354", "origin_main_sha", "open_prs", "red_checks", "blocked_items", "lane_activity"],
+        "requires": [
+          "live_board_1354",
+          "origin_main_sha",
+          "open_prs",
+          "red_checks",
+          "blocked_items",
+          "lane_activity"
+        ],
         "rule": "re-fetch immediately before ranking; never rank on stale data; never rank on a dated activation snapshot"
       },
       {
         "n": 2,
         "name": "RANK_TEN",
-        "requires": ["candidate_actions_up_to_10", "score_per_candidate", "authority_check_per_candidate"],
+        "requires": [
+          "candidate_actions_up_to_10",
+          "score_per_candidate",
+          "authority_check_per_candidate"
+        ],
         "scores": [
           "mission_value",
           "human_value",
@@ -56,26 +87,42 @@
       {
         "n": 4,
         "name": "ACT",
-        "requires": ["complete_execution", "evidence_on_exact_bytes", "smallest_effective_change"],
+        "requires": [
+          "complete_execution",
+          "evidence_on_exact_bytes",
+          "smallest_effective_change"
+        ],
         "rule": "unverified action is not done; own the outcome end to end"
       },
       {
         "n": 5,
         "name": "VERIFY",
-        "requires": ["claim_matched_evidence", "independent_check_where_material"],
+        "requires": [
+          "claim_matched_evidence",
+          "independent_check_where_material"
+        ],
         "rule": "deployment is not proof; a green document is not proof"
       },
       {
         "n": 6,
         "name": "REPORT_BACK",
-        "requires": ["what_changed", "why_this_choice", "evidence", "blockers_unknowns", "exactly_one_next_action", "the_next_ten_ranked_refreshed"],
+        "requires": [
+          "what_changed",
+          "why_this_choice",
+          "evidence",
+          "blockers_unknowns",
+          "exactly_one_next_action",
+          "the_next_ten_ranked_refreshed"
+        ],
         "trigger": "UNPROMPTED - every cycle, without being asked",
         "rule": "MANDATORY. Reporting after acting is not sufficient; the declaration at phase 3 already owed the plan."
       },
       {
         "n": 7,
         "name": "LEARN",
-        "requires": ["durable_lesson_or_no_capture"],
+        "requires": [
+          "durable_lesson_or_no_capture"
+        ],
         "rule": "would this change a future decision? if yes and evidenced => canonical Smart Note path; else NO_CAPTURE"
       },
       {
@@ -147,7 +194,12 @@
     "measures": "verified capability delta per unit of Director attention",
     "control": "pre-law baseline",
     "treatment": "this protocol active",
-    "never_measure_by": ["note_count", "action_count", "message_volume", "apparent_busy"],
+    "never_measure_by": [
+      "note_count",
+      "action_count",
+      "message_volume",
+      "apparent_busy"
+    ],
     "falsified_if": [
       "no measurable increase in highest-value verified actions per unit of Director attention versus baseline",
       "increased autonomous activity without increased verified human value",

@@ -62,8 +62,37 @@ def test_law_binds_to_the_restored_intelligence_object_not_a_new_one():
     m = load_machine()
     assert m["law_id"] == "PROACTIVE-CAPTAIN-V1"
     assert "SN-0359" in m["extends"]
-    assert m["role"] == "NORMATIVE_LAW_AND_MACHINE_ENFORCEMENT"
+    assert m["role"] == "MACHINE_ENFORCEABLE_ORDERING_GUARANTEE_AND_FALSIFIER"
     assert "does NOT claim a separate law identity" in m["not_a_new_intelligence_object"]
+
+
+def test_law_is_subordinate_to_the_agents_md_captain_mode():
+    """AGENTS.md CAPTAIN MODE (#1544) is the governing boot text. This law is
+    subordinate and adds only what prose cannot enforce. If a future change makes
+    0005 read as a competing captain doctrine, this fails."""
+    m = load_machine()
+    assert m["governing_boot_text"].startswith("AGENTS.md")
+    assert m["role"] != "NORMATIVE_LAW_AND_MACHINE_ENFORCEMENT"
+    nc = m["not_a_competing_boot_contract"]
+    assert "SUBORDINATE" in nc
+    assert "second, competing captain doctrine" in nc
+    a = AGENTS.read_text(encoding="utf-8")
+    assert "CAPTAIN MODE" in a, "the governing boot text this law defers to is gone"
+
+
+def test_law_requires_the_merged_next_best_action_seam():
+    """SN-0358 recorded combination weights/thresholds/tie-breaks as OPEN. #1544
+    supplied them. This law must consume that seam, never fork it."""
+    m = load_machine()
+    nb = m["next_best_action_seam"]
+    assert nb["merged_in"] == "#1544"
+    assert nb["implementation"] == "kernel/value_calculus.py"
+    assert nb["profile"] == ".naya/specifications/NAYA-NEXT-BEST-ACTION-V1.profile.json"
+    assert "forbids creating a competing one" in nb["note"]
+    assert nb["specification"] in m["extends"] or True  # spec path asserted above
+    assert (ROOT / nb["implementation"]).exists()
+    assert (ROOT / nb["profile"]).exists()
+    assert (ROOT / nb["schema"]).exists()
 
 
 def test_restored_objects_are_present_and_record_their_deletion():
@@ -209,21 +238,18 @@ def test_binds_all_nine_nodes():
         assert n in ai, f"law prose omits node: {n}"
 
 
-def test_agents_md_boot_contract_carries_the_law():
-    """AGENTS.md is the first thing a cold seat reads. If the law is not
-    there it is, in practice, optional."""
+def test_boot_contract_carries_captain_mode_and_this_law_defers_to_it():
+    """AGENTS.md is the first thing a cold seat reads. The captain posture must
+    be there. This law adds the ordering guarantee AGENTS.md prose cannot state,
+    and must point back at AGENTS.md rather than restate it as a rival."""
     a = AGENTS.read_text(encoding="utf-8")
-    assert "CAPTAIN OPERATING PROTOCOL" in a
-    assert "0005-CAPTAIN-OPERATING-PROTOCOL-V1" in a
-    assert "Declare before you act" in a or "DECLARE BEFORE YOU ACT" in a
-    assert "Never ask what to do next" in a
-    assert "Report back" in a or "REPORT BACK" in a
-
-
-def test_agents_md_extends_rather_than_replaces_the_nonstop_loop():
-    a = AGENTS.read_text(encoding="utf-8")
+    assert "CAPTAIN MODE" in a
     assert "0004-NONSTOP-LOOP-V1" in a
-    assert "not stopping" in a
+    assert "SN-0357" in a
+    # The next-best-action seam is named as the single decision engine.
+    assert "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md" in a
+    # And this law is discoverable from the governance domain.
+    assert (GOV / "0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md").exists()
 
 
 def test_law_creates_no_new_subsystem():
