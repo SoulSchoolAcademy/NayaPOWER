@@ -270,3 +270,60 @@ def test_promoted_note_missing_receipt_hash_is_still_flagged():
     }]}
     problems = audit_registry_semantics(registry)
     assert any("receipt hash" in p for p in problems)
+
+
+# ==========================================================================
+# LAUNDERING -- demotion must not be a free undo
+# ==========================================================================
+def test_demote_then_repromote_with_old_receipt_is_rejected():
+    """THE laundering regression. Found by attacking my own design rule.
+
+    Measured before the fix:
+        demote to CANDIDATE, replay the ORIGINAL receipt -> ALLOWED, state
+        returned to RATIFIED, no new authority, no new evidence.
+
+    A receipt is an unkeyed seal over a SNAPSHOT, so it stays valid forever.
+    That made "demotion is always permitted" a backdoor: containment that can
+    be undone for free is not containment.
+    """
+    from tools.truth_state_guard import receipt_is_replayed
+
+    entry = _candidate_entry()
+    r = _receipt()
+    assert apply_elevation(entry, "RATIFIED", _authority(), r, _bundle("h1")).allowed
+
+    apply_elevation(entry, "CANDIDATE")          # containment
+    assert entry["truth_state"] == "CANDIDATE"
+
+    assert receipt_is_replayed(entry, r)
+    again = apply_elevation(entry, "RATIFIED", _authority(), r, _bundle("h1"))
+    assert not again.allowed, "REPLAYED receipt re-promoted a contained note"
+    assert entry["truth_state"] == "CANDIDATE"
+    assert "RECEIPT_REPLAY" in (again.reasons[0] if again.reasons else "")
+
+
+def test_legitimate_repromotion_with_new_receipt_still_succeeds():
+    """The fix must not make a contained note permanently un-promotable."""
+    entry = _candidate_entry()
+    first = _receipt(hashes=("h1",))
+    assert apply_elevation(entry, "RATIFIED", _authority(), first, _bundle("h1")).allowed
+    apply_elevation(entry, "CANDIDATE")
+
+    fresh = _receipt(hashes=("h1", "h2"))
+    res = apply_elevation(entry, "RATIFIED", _authority(), fresh, _bundle("h1", "h2"))
+    assert res.allowed, "a genuine new promotion was blocked by the replay guard"
+    assert entry["truth_state"] == "RATIFIED"
+    assert len(entry["authority_history"]) == 2
+
+
+def test_replay_guard_does_not_block_first_use():
+    entry = _candidate_entry()
+    r = _receipt()
+    assert apply_elevation(entry, "RATIFIED", _authority(), r, _bundle("h1")).allowed
+    assert entry["consumed_receipt_hashes"] == [r["receipt_hash"]]
+
+
+def test_demotion_alone_is_still_permitted():
+    """Containment itself must never be blocked."""
+    entry = {"smart_note_id": "SN-D", "truth_state": "LEARNED"}
+    assert apply_elevation(entry, "CANDIDATE").allowed

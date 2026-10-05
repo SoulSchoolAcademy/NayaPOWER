@@ -114,6 +114,30 @@ def authority_is_valid(authority: dict | None) -> bool:
     return bool(who) and bool(scope)
 
 
+def receipt_is_replayed(entry: dict, receipt: dict | None) -> bool:
+    """True if this receipt has already been consumed for this entry.
+
+    THE LAUNDERING HOLE. A receipt is an unkeyed seal over a SNAPSHOT: once
+    issued it stays internally consistent forever. Measured attack:
+
+        demote to CANDIDATE, then re-promote by replaying the ORIGINAL receipt
+        -> allowed, state returns to RATIFIED, no new authority, no new evidence
+
+    So "demotion is always permitted" was a laundering backdoor: demotion is not
+    safe containment, because anyone holding the old receipt can undo it for
+    free. Containment that can be undone without authority is not containment.
+
+    Fix: a receipt hash is single-use per entry. Legitimate re-promotion after a
+    genuine new evidence round is still allowed -- it produces a NEW receipt.
+    """
+    if not isinstance(receipt, dict):
+        return False
+    h = receipt.get("receipt_hash")
+    if not h:
+        return False
+    return h in set(entry.get("consumed_receipt_hashes") or [])
+
+
 def check_elevation(
     current_state: str,
     proposed_state: str,
@@ -121,6 +145,7 @@ def check_elevation(
     receipt: dict | None = None,
     evidence_bundle: list[dict] | None = None,
     behavioral_evidence: list[dict] | None = None,
+    already_consumed: list[str] | None = None,
 ) -> GuardResult:
     """The write-time invariant. Returns allowed/rejected; never raises."""
     cur = str(current_state or BASE_STATE).upper()
@@ -128,7 +153,8 @@ def check_elevation(
 
     if not is_escalation(cur, new):
         # Not an escalation. Demotion and no-op are always permitted so a
-        # poisoned note can always be contained.
+        # poisoned note can always be contained -- but see the replay check in
+        # apply_elevation: containment must not be reversible for free.
         return GuardResult(True, new, reasons=["not an escalation"])
 
     res = GuardResult(False, new)
@@ -137,6 +163,16 @@ def check_elevation(
         res.missing.append("promotion_authority")
     if not evidence_is_valid(receipt, evidence_bundle):
         res.missing.append("promotion_evidence")
+
+    # Replay of an already-consumed receipt is never a fresh promotion.
+    if receipt and isinstance(receipt, dict) and receipt.get("receipt_hash") \
+            in set(already_consumed or []):
+        res.reasons = [
+            f"truth_state elevation to {new} rejected: RECEIPT_REPLAY -- "
+            "this receipt was already consumed for this note; demotion is not "
+            "a free undo. A new promotion requires new evidence and a new receipt."
+        ]
+        return res
 
     need = REQUIRES_PREDECESSOR.get(new)
     if need and rank(cur) < rank(need):
@@ -247,8 +283,10 @@ def apply_elevation(
     Refusal must not record anything. A rejected write is a non-event.
     """
     current = str(entry.get("truth_state", BASE_STATE)).upper()
+    consumed = list(entry.get("consumed_receipt_hashes") or [])
     res = check_elevation(current, proposed_state, authority, receipt,
-                          evidence_bundle, behavioral_evidence)
+                          evidence_bundle, behavioral_evidence,
+                          already_consumed=consumed)
     if not res.allowed:
         return res
 
@@ -271,6 +309,10 @@ def apply_elevation(
                 "receipt_hash": receipt.get("receipt_hash"),
                 "threshold_version": receipt.get("threshold_version"),
             }
+            h = receipt.get("receipt_hash")
+            if h and h not in consumed:
+                consumed.append(h)
+            entry["consumed_receipt_hashes"] = consumed
         if behavioral_evidence:
             entry["behavioral_evidence"] = behavioral_evidence
         entry["authority_history"] = history
