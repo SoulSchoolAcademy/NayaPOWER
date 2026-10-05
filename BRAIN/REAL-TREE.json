@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "b3ed46c6c7d2b0494900db431fc627a5bcf07eb9",
-  "inventory_file_count": 201,
+  "receipt_basis_commit": "c8e738616153e3c0523b8e4fba543836418308ed",
+  "inventory_file_count": 202,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 10,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 48,
+    "05-MEMORY": 49,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -667,6 +667,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
       "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
       "size": 4124
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
+      "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
+      "size": 6070
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
