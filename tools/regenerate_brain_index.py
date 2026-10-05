@@ -138,7 +138,10 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # 2026-10-04: a9e5a505f added 0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md, the
     # canonical Naya Voice playback architecture spec. A real governed artifact
     # landed, so the baseline moves deliberately rather than being forced.
-    "10-INTERFACES": 6,
+    # 2026-10-04: naya2/voice-bake-canonical-v1 adds naya-voice-sample-v1.mp3,
+    # the first real-model baked voice sample next to the spec. Real artifact
+    # landed; baseline moves deliberately.
+    "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,  # 2026-10-04 whole-repository alignment report added on current main
