@@ -1,8 +1,8 @@
-# Intelligent Block: SN-0297
+# Intelligent Block: SN-0301
 
 | Field | Value |
 |---|---|
-| Smart Note ID | SN-0297 |
+| Smart Note ID | SN-0301 |
 | Title | Red Team Specialist — First Instantiation |
 | Author | Naya 2 (Muse) |
 | Captured | 2026-10-04 |
@@ -47,7 +47,7 @@ This is the design record of the first specialist instantiation under the Worker
 
 ```json
 {
-  "smart_note_id": "SN-0297",
+  "smart_note_id": "SN-0301",
   "truth_state": "CANDIDATE",
   "scope": "PRIVATE",
   "captured_at": "2026-10-04",

@@ -1,8 +1,8 @@
-# Intelligent Block: SN-0296
+# Intelligent Block: SN-0300
 
 | Field | Value |
 |---|---|
-| Smart Note ID | SN-0296 |
+| Smart Note ID | SN-0300 |
 | Title | Five-Voices Briefing Protocol |
 | Author | Naya 2 (Muse) |
 | Captured | 2026-10-04 |
@@ -42,7 +42,7 @@ Hard rule: VISION must never speak in EVIDENCE's voice. If a sentence cannot nam
 
 ```json
 {
-  "smart_note_id": "SN-0296",
+  "smart_note_id": "SN-0300",
   "truth_state": "CANDIDATE",
   "scope": "PRIVATE",
   "captured_at": "2026-10-04",
