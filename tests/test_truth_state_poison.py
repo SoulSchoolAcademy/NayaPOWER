@@ -327,3 +327,66 @@ def test_demotion_alone_is_still_permitted():
     """Containment itself must never be blocked."""
     entry = {"smart_note_id": "SN-D", "truth_state": "LEARNED"}
     assert apply_elevation(entry, "CANDIDATE").allowed
+
+
+# ==========================================================================
+# CHAINED SUPERSESSION -- lineage must be self-contained
+# ==========================================================================
+def _chain():
+    from tools.truth_state_guard import supersede
+    A = _candidate_entry(); A["smart_note_id"] = "SN-A"
+    apply_elevation(A, "RATIFIED", _authority(), _receipt("A", ("A",)), _bundle("A"))
+    B, _ = supersede(A, "SN-B", authority=_authority(), receipt=_receipt("B", ("B",)),
+                     evidence_bundle=_bundle("B"), proposed_state="RATIFIED")
+    C, _ = supersede(B, "SN-C", authority=_authority(), receipt=_receipt("C", ("C",)),
+                     evidence_bundle=_bundle("C"), proposed_state="RATIFIED")
+    return A, B, C
+
+
+def test_chained_supersession_carries_full_lineage():
+    """B must not be a blank slate. A's promotion history must travel forward.
+
+    Measured gap: each entry had history of length 1, so lineage was only
+    reconstructible by walking `supersedes` and looking ancestors up
+    externally -- meaning a pruned ancestor silently broke the chain.
+    """
+    from tools.truth_state_guard import flatten_lineage
+    A, B, C = _chain()
+    assert len(flatten_lineage(B)) == 2, "B did not inherit A's authority history"
+    assert len(flatten_lineage(C)) == 3, "C did not inherit the full chain"
+
+
+def test_lineage_survives_destruction_of_predecessors():
+    """The whole point: lineage is self-contained, not reconstructible."""
+    from tools.truth_state_guard import flatten_lineage
+    A, B, C = _chain()
+    del A, B
+    assert len(flatten_lineage(C)) == 3, (
+        "lineage was lost when predecessors were removed -- supersession "
+        "erased authority history"
+    )
+
+
+def test_successor_must_earn_its_own_elevation():
+    """Inheriting lineage is inheriting PROVENANCE, not authority."""
+    from tools.truth_state_guard import supersede
+    A = _candidate_entry(); A["smart_note_id"] = "SN-A"
+    apply_elevation(A, "RATIFIED", _authority(), _receipt("A", ("A",)), _bundle("A"))
+    # Default proposed state is CANDIDATE: not an escalation, so it is
+    # legitimately permitted -- the invariant is that the successor stays
+    # CANDIDATE and inherits only PROVENANCE.
+    B, res = supersede(A, "SN-B")
+    assert res.allowed
+    assert B["truth_state"] == "CANDIDATE"
+    assert B["predecessor_lineage"], "successor must still inherit the lineage"
+
+    # Asking for elevation WITHOUT authority or evidence must still fail.
+    B2, res2 = supersede(A, "SN-B2", proposed_state="RATIFIED")
+    assert not res2.allowed, "a successor inherited authority from its predecessor"
+    assert B2["truth_state"] == "CANDIDATE"
+
+
+def test_supersession_marks_the_predecessor():
+    A, B, _ = _chain()
+    assert A["superseded_by"] == "SN-B"
+    assert B["supersedes"] == "SN-A"

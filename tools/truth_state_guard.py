@@ -266,8 +266,58 @@ def audit_registry_semantics(registry: dict) -> list[str]:
     return problems
 
 
-def new_state_needs_evidence(state: str) -> bool:
-    return rank(state) > rank("VERIFIED")
+def flatten_lineage(entry: dict) -> list[dict]:
+    """Full authority lineage for an entry, self-contained.
+
+    THE CHAINED-SUPERSESSION GAP. `authority_history` is per-entry, so in a
+    chain A -> B -> C each note carries history of length 1 and B does not
+    carry A's. Lineage is then only reconstructible by walking `supersedes`
+    and looking each ancestor up externally. If an ancestor is pruned,
+    archived, or its history rewritten, the descendant's lineage breaks
+    SILENTLY -- and the newest note is the one that looks most authoritative.
+
+    So lineage must be self-contained per entry, not reconstructible.
+    """
+    out: list[dict] = []
+    for h in entry.get("predecessor_lineage") or []:
+        if isinstance(h, dict):
+            out.append(dict(h))
+    for h in entry.get("authority_history") or []:
+        if isinstance(h, dict):
+            out.append(dict(h))
+    return out
+
+
+def supersede(
+    predecessor: dict,
+    successor_id: str,
+    *,
+    authority: dict | None = None,
+    receipt: dict | None = None,
+    evidence_bundle: list[dict] | None = None,
+    proposed_state: str = "CANDIDATE",
+) -> tuple[dict, GuardResult]:
+    """Create a successor that INHERITS the predecessor's full lineage.
+
+    Supersession must never erase who promoted what. The predecessor is
+    retained and marked; the successor carries a flattened copy of everything
+    that came before, so the chain survives even if the ancestor is later
+    pruned.
+
+    The successor starts at CANDIDATE and must earn any elevation itself --
+    inheriting lineage is inheriting PROVENANCE, not authority.
+    """
+    succ = {
+        "smart_note_id": successor_id,
+        "truth_state": BASE_STATE,
+        "supersedes": predecessor.get("smart_note_id"),
+        "predecessor_lineage": flatten_lineage(predecessor),
+        "supersedes_truth_state": predecessor.get("truth_state"),
+    }
+    res = apply_elevation(succ, proposed_state, authority, receipt, evidence_bundle)
+    if predecessor.get("smart_note_id"):
+        predecessor["superseded_by"] = successor_id
+    return succ, res
 
 
 def apply_elevation(
