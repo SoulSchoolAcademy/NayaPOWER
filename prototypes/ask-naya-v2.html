@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ask Naya — Prototype v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   ASK NAYA v2 — "Never animate intelligence that did not happen.
+   Never hide intelligence that did."
+   Design law: every animation is a truth claim. White diamond only.
+   ================================================================ */
+:root{
+  --bg:#040405; --bg2:#08080c;
+  --ink:#f8f7fb; --silver:#c9c9d4; --muted:#8f8b99; --line:#ffffff18;
+  --ease:cubic-bezier(.16,.84,.22,1);
+  --purple:#9d75ff; --indigo:#6675ff; --cyan:#55b9ee; --emerald:#55e39a;
+  --lime:#b8ee57; --yellow:#f1d75a; --gold:#e8c766; --orange:#ff9a5a;
+  --red:#ff5e6c; --magenta:#d86cff;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;
+  min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* near-black ambient field: vignette + grain + 1px spectrum hairline */
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
+.ambient::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 0%, #0c0c12 0%, var(--bg) 55%, #020203 100%)}
+.ambient::after{content:"";position:absolute;inset:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+.spectrum-hairline{position:fixed;top:0;left:0;right:0;height:1px;z-index:60;opacity:.5;
+  background:linear-gradient(90deg,var(--purple),var(--indigo),var(--cyan),var(--emerald),var(--lime),var(--yellow),var(--gold),var(--orange),var(--red),var(--magenta),var(--purple))}
+
+/* ============ HEADER ============ */
+header{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(14px + env(safe-area-inset-top)) 20px 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:26px;height:26px;transform:rotate(45deg);flex:none;
+  background:linear-gradient(135deg,#fff 0%,#dfe3ee 40%,#a9aec2 70%,#f4f6fb 100%);
+  box-shadow:0 0 14px #ffffff88, inset 0 0 6px #ffffff}
+.brand h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;letter-spacing:.42em;text-indent:.42em;color:var(--ink)}
+.brand small{display:block;font-family:'Inter';font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:2px}
+.header-badges{display:flex;gap:8px;align-items:center}
+.pill{font-size:10px;letter-spacing:.18em;font-weight:600;color:var(--silver);
+  border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:#ffffff08;white-space:nowrap}
+.pill.prototype{border-color:#e8c76666;color:var(--ink);box-shadow:0 0 12px #e8c76622}
+
+/* ============ STAGE ============ */
+main{position:relative;z-index:5;max-width:1180px;margin:0 auto;padding:28px 20px 40px}
+.stage{position:relative;display:grid;grid-template-columns:1fr;gap:28px;align-items:start}
+@media(min-width:900px){.stage{grid-template-columns:minmax(320px,400px) 1fr;gap:48px}}
+#filaments{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:visible}
+.filament{fill:none;stroke:#ffffff;stroke-width:1.2;opacity:0;
+  filter:drop-shadow(0 0 6px #ffffffcc);
+  transition:opacity .4s var(--ease)}
+.filament.drawn{opacity:.85}
+.fnode{position:absolute;z-index:7;font-size:11px;letter-spacing:.08em;color:var(--ink);
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:#0c0c12f2;
+  display:flex;align-items:center;gap:8px;white-space:nowrap;
+  opacity:0;transform:scale(.92);transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .45s}
+.fnode.on{opacity:1;transform:none}
+.fnode .sdot{width:7px;height:7px;border-radius:50%;flex:none}
+
+/* ============ ORB — the instrument ============ */
+.orb-zone{position:relative;z-index:8;display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:8px}
+.orb-wrap{position:relative;width:min(320px,72vw);aspect-ratio:1;display:grid;place-items:center}
+/* halo: ambient field response */
+.orb-halo{position:absolute;inset:-6%;border-radius:50%;
+  background:radial-gradient(circle,#ffffff1f 0%,#ffffff0a 42%,transparent 70%);
+  filter:blur(10px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+/* voice radiance: halation bleed driven by --amp (the aperture's breath) */
+.orb-voice{position:absolute;inset:6%;border-radius:50%;opacity:0;
+  background:radial-gradient(circle,#ffffffcc 0%,#ffffff88 30%,#ffffff2e 55%,transparent 75%);
+  filter:blur(16px);transform:scale(calc(.3 + var(--amp,0)*.52));
+  transition:opacity .5s var(--ease)}
+/* retrieval search rings */
+.retrieve-ring{position:absolute;inset:12%;border-radius:50%;border:1px solid #ffffff00;opacity:0;pointer-events:none}
+.orb-wrap[data-state="retrieving"] .retrieve-ring{opacity:1;animation:ringOut 2.2s var(--ease) infinite}
+.orb-wrap[data-state="retrieving"] .retrieve-ring.r2{animation-delay:1.1s}
+@keyframes ringOut{0%{transform:scale(.55);opacity:0;border-color:#ffffff55}25%{opacity:.9}100%{transform:scale(1.35);opacity:0;border-color:#ffffff00}}
+/* thin attention ring */
+.orb-ring{position:absolute;inset:9%;border-radius:50%;border:1px solid #ffffff14;
+  transition:border-color .8s var(--ease),box-shadow .8s var(--ease)}
+/* the diamond */
+.orb{position:relative;width:38%;aspect-ratio:1;transform:rotate(45deg);border-radius:14%;
+  background:linear-gradient(135deg,#ffffff 0%,#e8ecf5 28%,#b9bfd4 52%,#eef1f8 74%,#ffffff 100%);
+  box-shadow:0 0 34px #ffffffaa,0 0 90px #cdd6ff55,inset 0 0 18px #ffffff,inset -8px -8px 22px #9aa2bd88;
+  transition:box-shadow .8s var(--ease),transform .8s var(--ease)}
+.orb::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:conic-gradient(from 0deg,transparent 0deg,#ffffffcc 40deg,transparent 90deg,transparent 180deg,#ffffff99 230deg,transparent 280deg,transparent 360deg);
+  mix-blend-mode:screen;opacity:.55;animation:facetSpin 16s linear infinite}
+@keyframes facetSpin{to{transform:rotate(360deg)}}
+/* THE APERTURE — the voice emitter at the diamond's exact center */
+.orb-core{position:absolute;inset:35%;border-radius:24%;
+  background:radial-gradient(circle,#ffffff 0%,#fffffff2 55%,#ffffff66 78%,transparent 100%);
+  filter:blur(1px);opacity:.45;
+  transform:scale(calc(.5 + var(--amp,0)*.95));
+  transition:opacity .4s var(--ease)}
+.orb-wrap[data-state="speaking"] .orb-core{opacity:1;box-shadow:0 0 18px #ffffffee,0 0 44px #ffffff66}
+.orb-wrap[data-state="speaking"] .orb-voice{opacity:calc(.22 + var(--amp,0)*.42)}
+.orb-wrap[data-state="speaking"] .orb{box-shadow:0 0 60px #ffffffee,0 0 150px #e6ecff99,inset 0 0 26px #ffffff,inset -8px -8px 22px #9aa2bd88}
+/* perimeter instability — UNCERTAIN */
+.orb-edge{position:absolute;inset:2%;border-radius:50%;opacity:0;pointer-events:none;
+  border:2px dashed #ffffff00}
+.orb-wrap[data-state="uncertain"] .orb-edge{opacity:.8;animation:edgeFlicker 1.1s steps(2) infinite;border-color:#ffffff88}
+@keyframes edgeFlicker{0%,100%{transform:scale(1) rotate(0deg);opacity:.8}50%{transform:scale(1.03) rotate(2deg);opacity:.35}}
+.orb-wrap[data-state="uncertain"] .orb-halo{opacity:.35}
+/* correction: collapse inward, reorganize, resolve */
+.orb-wrap[data-state="correction"] .orb{animation:collapseIn 1.4s var(--ease) 1}
+.orb-wrap[data-state="correction"] .orb-halo{animation:collapseHalo 1.4s var(--ease) 1}
+@keyframes collapseIn{0%{transform:rotate(45deg) scale(1)}35%{transform:rotate(45deg) scale(.82)}70%{transform:rotate(45deg) scale(1.06)}100%{transform:rotate(45deg) scale(1)}}
+@keyframes collapseHalo{0%{transform:scale(1);opacity:.9}35%{transform:scale(.8);opacity:.5}70%{transform:scale(1.1);opacity:1}100%{transform:scale(1);opacity:.9}}
+/* listening: inward draw */
+.orb-wrap[data-state="listening"] .orb-halo{animation:drawIn 5s ease-in-out infinite}
+.orb-wrap[data-state="listening"] .orb{animation:drawCore 5s ease-in-out infinite}
+@keyframes drawIn{0%,100%{transform:scale(1.08);opacity:.8}50%{transform:scale(.94);opacity:1}}
+@keyframes drawCore{0%,100%{transform:rotate(45deg) scale(1)}50%{transform:rotate(45deg) scale(.965)}}
+/* thinking: slow internal refraction */
+.orb-wrap[data-state="thinking"] .orb::before{animation-duration:4s;opacity:.85}
+.orb-wrap[data-state="thinking"] .orb-ring{border-color:#ffffff44;box-shadow:0 0 24px #ffffff33}
+/* understanding: the still point */
+.orb-wrap[data-state="understanding"] .orb::before{animation-play-state:paused}
+.orb-wrap[data-state="understanding"] .orb-halo{transform:scale(.97);opacity:.6}
+.orb-wrap[data-state="understanding"] .orb{transform:rotate(45deg) scale(.99)}
+/* idle: quiet living breath */
+.orb-wrap[data-state="idle"] .orb-halo{animation:drawIn 9s ease-in-out infinite;opacity:.5}
+/* yield: interrupted — light draws toward the human */
+.orb-wrap[data-state="yield"] .orb-core{transform:translateY(46%) scale(.6);opacity:.55}
+.orb-wrap[data-state="yield"] .orb-voice{transform:translateY(30%) scale(.5);opacity:.25}
+.orb-state{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--silver);
+  min-height:30px;text-align:center}
+.orb-state .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--emerald);
+  box-shadow:0 0 10px var(--emerald);margin-right:10px;vertical-align:2px;animation:blink 2.2s infinite}
+.orb-wrap[data-state="uncertain"] ~ .orb-state .dot{background:var(--yellow);box-shadow:0 0 10px var(--yellow)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.sim-tag{font-size:9px;letter-spacing:.26em;color:var(--muted);border:1px dashed #ffffff2a;
+  border-radius:999px;padding:4px 11px}
+</style>
+<style>
+/* ============ BOARD — the meaning canvas ============ */
+.board-zone{position:relative;z-index:8;display:flex;flex-direction:column;gap:12px;min-width:0}
+.asked-pill{align-self:flex-start;max-width:100%;font-size:13px;color:var(--silver);
+  border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:4px 14px 14px 4px;
+  padding:10px 16px;background:linear-gradient(145deg,#12121a,#08080c);
+  opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.asked-pill.show{opacity:1;transform:none}
+.asked-pill .q-label{font-size:10px;letter-spacing:.28em;color:var(--muted);display:block;margin-bottom:3px}
+/* depth control: one object expanding */
+.depth-row{display:flex;gap:8px;align-items:center}
+.depth-row .dlabel{font-size:10px;letter-spacing:.3em;color:var(--muted);margin-right:4px}
+.depth-btn{font-size:10px;letter-spacing:.22em;font-weight:600;color:var(--muted);cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;padding:7px 15px;background:#ffffff06;
+  transition:all .22s var(--ease)}
+.depth-btn:hover{color:var(--ink);border-color:#ffffff55;transform:translateY(-1px)}
+.depth-btn.on{color:var(--ink);border-color:#ffffff88;background:#ffffff10;box-shadow:0 0 16px #ffffff18}
+.crystal-board{position:relative;border-radius:18px;min-height:380px;overflow:hidden;
+  background:linear-gradient(150deg,#13131b 0%,#0a0a0f 55%,#060608 100%);
+  border:1px solid #ffffff22;
+  box-shadow:inset 0 1px 0 #ffffff14,0 24px 60px #000c,0 0 44px #ffffff08;
+  transition:border-color .5s var(--ease),box-shadow .5s var(--ease)}
+.crystal-board::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 55% at 50% 0%,#ffffff0a 0%,transparent 70%)}
+.crystal-board.speaking{border-color:#ffffff55;box-shadow:inset 0 1px 0 #ffffff22,0 24px 60px #000c,0 0 70px #ffffff14}
+.crystal-board.quiet .beat:not(.beat-aha-keep){opacity:.14 !important;filter:blur(2px)}
+.board-inner{position:relative;padding:32px 30px 26px;display:flex;flex-direction:column;gap:20px;min-height:380px}
+.board-empty{margin:auto;text-align:center;color:var(--muted);max-width:340px}
+.board-empty .glyph{width:34px;height:34px;margin:0 auto 14px;transform:rotate(45deg);opacity:.5;
+  background:linear-gradient(135deg,#fff,#a9aec2);box-shadow:0 0 18px #ffffff55}
+.board-empty p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--silver);line-height:1.5}
+.board-empty span{display:block;margin-top:8px;font-family:'Inter';font-style:normal;font-size:11px;letter-spacing:.22em;color:var(--muted)}
+/* crystallizing beats */
+.beat{opacity:0;transform:translateY(14px);filter:blur(6px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease)}
+.beat.formed{opacity:1;transform:none;filter:blur(0)}
+.beat.frozen{transition:none}
+.beat.retracted{opacity:.32;text-decoration:line-through;text-decoration-color:#ffffff66;filter:blur(1px)}
+.beat-key{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,34px);line-height:1.32;font-weight:500;color:var(--ink)}
+.beat-key .kicker{display:flex;align-items:center;gap:10px;font-family:'Inter';font-size:10px;letter-spacing:.32em;color:var(--muted);margin-bottom:12px}
+.beat-key .kicker::before{content:"";width:22px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+.beat-key.center{text-align:center;max-width:640px;margin:0 auto}
+.beat-key.center .kicker{justify-content:center}
+.beat-key.center .kicker::before{display:none}
+/* grammar: comparison — split field */
+.grammar-comparison .cmp-fields{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #ffffff14;border-radius:14px;overflow:hidden}
+@media(max-width:560px){.grammar-comparison .cmp-fields{grid-template-columns:1fr}}
+.cmp-field{padding:20px;background:#ffffff04}
+.cmp-field + .cmp-field{border-left:1px solid #ffffff14}
+@media(max-width:560px){.cmp-field + .cmp-field{border-left:none;border-top:1px solid #ffffff14}}
+.cmp-field h4{font-size:10px;letter-spacing:.3em;color:var(--muted);margin-bottom:10px;font-weight:600}
+.cmp-field p{font-size:15px;color:var(--silver);line-height:1.6}
+.cmp-field p strong{color:var(--ink);font-weight:500}
+/* grammar: process — a path */
+.grammar-process .path{position:relative;display:flex;flex-direction:column;gap:0;padding:6px 0 6px 8px}
+.pnode{position:relative;padding:13px 0 13px 34px;font-size:15px;color:var(--silver)}
+.pnode::before{content:"";position:absolute;left:8px;top:20px;width:9px;height:9px;transform:rotate(45deg);
+  background:#0c0c12;border:1px solid var(--pc,#55b9ee);box-shadow:0 0 10px var(--pc,#55b9ee)}
+.pnode:not(:last-child)::after{content:"";position:absolute;left:12px;top:34px;bottom:-4px;width:1px;
+  background:linear-gradient(180deg,#ffffff44,transparent)}
+.pnode strong{color:var(--ink);font-weight:500;letter-spacing:.04em}
+.pnode .pdesc{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+/* grammar: principles — constellation cluster */
+.grammar-principles .cluster{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.pchip{border:1px solid #ffffff14;border-radius:12px;padding:14px;background:#ffffff05;text-align:center}
+.pchip .pnum{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink)}
+.pchip .pname{font-size:10px;letter-spacing:.24em;color:var(--muted);margin-top:4px}
+.pchip .pdotline{width:7px;height:7px;border-radius:50%;margin:8px auto 0}
+/* generic point */
+.beat-point{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:#ffffff06;border:1px solid #ffffff10}
+.beat-point .pdot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:8px}
+.beat-point p{font-size:16px;color:var(--silver);line-height:1.55}
+.beat-point p strong{color:var(--ink);font-weight:500}
+.beat-point .cite{display:block;margin-top:8px;font-size:10px;letter-spacing:.24em;color:var(--muted)}
+.board-foot{margin-top:auto;padding-top:6px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.board-foot .srcs{display:flex;gap:6px;flex-wrap:wrap}
+.mini-src{font-size:10px;letter-spacing:.14em;color:var(--silver);border:1px solid var(--line);padding:4px 10px;border-radius:999px;background:#ffffff06;display:flex;align-items:center;gap:7px}
+.mini-src i{width:6px;height:6px;border-radius:50%;flex:none}
+.bank-note{font-size:10px;letter-spacing:.2em;color:var(--muted)}
+[data-c="cyan"]{--jc:#55b9ee}[data-c="lime"]{--jc:#b8ee57}[data-c="gold"]{--jc:#e8c766}[data-c="magenta"]{--jc:#d86cff}[data-c="purple"]{--jc:#9d75ff}
+.beat-point[data-c] .pdot,.mini-src[data-c] i,.fnode .sdot,.pchip .pdotline{background:var(--jc);box-shadow:0 0 10px var(--jc)}
+.mini-src[data-c]{border-color:color-mix(in srgb,var(--jc) 40%,transparent)}
+/* depth layers */
+.board-inner[data-depth="essence"] .d-standard,.board-inner[data-depth="essence"] .d-deep{display:none}
+.board-inner[data-depth="standard"] .d-deep{display:none}
+/* Aha overlay */
+.aha-card{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;padding:36px;text-align:center;background:radial-gradient(80% 80% at 50% 50%,#0a0a10ee 0%,#060608f5 100%);
+  opacity:0;pointer-events:none;transition:opacity .8s var(--ease)}
+.aha-card.show{opacity:1;pointer-events:auto}
+.aha-card .aha-kicker{font-size:10px;letter-spacing:.4em;color:var(--muted)}
+.aha-card .aha-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--ink);max-width:560px;line-height:1.4}
+.aha-card .aha-why{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--silver)}
+.aha-card .aha-why span::before{content:"✦ ";color:var(--gold)}
+.aha-card .aha-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+</style>
+<style>
+/* ============ TALK + YIELD ============ */
+.talk-row{display:flex;justify-content:center;margin:30px 0 8px}
+.talk-btn{position:relative;min-height:64px;min-width:min(420px,86vw);cursor:pointer;
+  border:2px solid #ffffff2e;border-radius:18px;color:var(--ink);
+  background:linear-gradient(145deg,#1b1b24,#0b0b10);
+  font-family:'Inter';font-size:13px;font-weight:600;letter-spacing:.3em;text-indent:.3em;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  box-shadow:inset 0 1px 0 #ffffff1c,0 18px 44px #000b,0 0 30px #ffffff0d;
+  transition:transform .22s var(--ease),border-color .22s var(--ease),box-shadow .22s var(--ease)}
+.talk-btn .tdiamond{width:16px;height:16px;transform:rotate(45deg);flex:none;
+  background:linear-gradient(135deg,#fff,#b9bfd4);box-shadow:0 0 12px #ffffffaa;transition:box-shadow .22s}
+.talk-btn:hover{transform:translateY(-2px);border-color:#ffffff88;
+  box-shadow:inset 0 1px 0 #ffffff26,0 24px 54px #000c,0 0 54px #ffffff22}
+.talk-btn:active{transform:translateY(1px) scale(.99)}
+.talk-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.talk-btn.live{border-color:var(--emerald);box-shadow:inset 0 1px 0 #ffffff1c,0 18px 44px #000b,0 0 40px #55e39a33}
+.talk-btn.interrupt{border-color:#ffffff88}
+.talk-btn:disabled{opacity:.55;cursor:default;transform:none}
+.talk-hint{text-align:center;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:12px}
+/* yield choices — interruption choreography */
+.yield-row{display:none;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.yield-row.show{display:flex}
+.yield-btn{font-size:11px;letter-spacing:.22em;font-weight:600;color:var(--ink);cursor:pointer;
+  border:1px solid #ffffff44;border-radius:999px;padding:11px 22px;background:#14141bee;
+  transition:all .22s var(--ease)}
+.yield-btn:hover{transform:translateY(-2px);border-color:#fff;box-shadow:0 0 24px #ffffff22}
+.yield-btn.ghost{color:var(--muted)}
+/* ============ KEEPSAKES: deck + constellation ============ */
+.keepsakes{margin-top:44px}
+.ks-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.keepsakes h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;letter-spacing:.14em;color:var(--silver)}
+.view-toggle{display:flex;gap:8px}
+.keepsakes .ksub{font-size:11px;letter-spacing:.22em;color:var(--muted);margin-bottom:18px}
+.deck{display:flex;gap:16px;overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory;
+  scrollbar-width:thin;scrollbar-color:#ffffff2a transparent}
+.deck:empty::after{content:"Your conversations with Naya will live here — each one a keepsake.";
+  color:var(--muted);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;padding:26px 10px;white-space:nowrap}
+.kcard{flex:0 0 min(320px,82vw);scroll-snap-align:start;border-radius:16px;padding:20px;
+  background:linear-gradient(150deg,#13131b,#09090d);border:1px solid #ffffff1e;border-top:2px solid var(--kc,#9d75ff);
+  box-shadow:inset 0 1px 0 #ffffff12,0 16px 40px #000a;
+  transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+  opacity:0;transform:translateY(16px);animation:cardIn .7s var(--ease) forwards}
+@keyframes cardIn{to{opacity:1;transform:none}}
+.kcard:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #ffffff1c,0 22px 50px #000c,0 0 34px var(--kg,#9d75ff33)}
+.kcard .kq{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-bottom:10px}
+.kcard .kq::before{content:"YOU — ";font-size:9px;letter-spacing:.3em;color:var(--muted)}
+.kcard .ka{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.45;color:var(--ink);margin-bottom:12px}
+.kcard .ks{display:flex;gap:6px;flex-wrap:wrap}
+.kcard .ktime{margin-top:12px;font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.kcard .kstar{margin-top:8px;font-size:10px;letter-spacing:.24em;color:var(--gold)}
+/* constellation */
+.constel-wrap{display:none;border:1px solid #ffffff14;border-radius:18px;background:radial-gradient(90% 90% at 50% 40%,#0b0b11 0%,#060608 100%);
+  padding:10px;position:relative;min-height:340px}
+.constel-wrap.show{display:block}
+#constel{width:100%;height:340px;display:block}
+.cnode{cursor:pointer}
+.cnode circle{transition:r .3s var(--ease)}
+.cnode:hover circle{filter:brightness(1.4)}
+.cthread{stroke:#ffffff22;stroke-width:1}
+.cstar{fill:none;stroke:var(--gold);stroke-width:1;opacity:.9}
+.cdetail{padding:14px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--silver);min-height:64px}
+.cdetail .cq{color:var(--muted);font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+.cdetail .ca{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--ink)}
+/* ============ FOOTER ============ */
+footer{position:relative;z-index:5;border-top:1px solid var(--line);margin-top:20px;
+  padding:18px 20px calc(20px + env(safe-area-inset-bottom));display:flex;gap:14px;flex-wrap:wrap;
+  justify-content:center;align-items:center;text-align:center}
+footer span{font-size:10px;letter-spacing:.24em;color:var(--muted)}
+footer .sim{color:var(--ink);border:1px solid #e8c76644;padding:6px 14px;border-radius:999px;background:#e8c7660d}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .orb-core{transform:scale(.7) !important}
+}
+@media(max-width:520px){
+  .brand h1{font-size:17px}
+  .board-inner{padding:22px 18px}
+  .pill.hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="spectrum-hairline"></div>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div>
+      <h1>ASK NAYA</h1>
+      <small>THE HUMAN NEXUS · VOICE</small>
+    </div>
+  </div>
+  <div class="header-badges">
+    <span class="pill hide-sm">VOICE STAND-IN</span>
+    <span class="pill prototype">PROTOTYPE V2</span>
+  </div>
+</header>
+
+<main id="mainEl">
+  <svg id="filaments" aria-hidden="true"></svg>
+  <section class="stage">
+    <!-- ORB -->
+    <div class="orb-zone">
+      <div class="orb-wrap" id="orbWrap" data-state="idle" style="--amp:0">
+        <div class="orb-halo"></div>
+        <div class="orb-voice"></div>
+        <div class="retrieve-ring"></div>
+        <div class="retrieve-ring r2"></div>
+        <div class="orb-ring"></div>
+        <div class="orb"></div>
+        <div class="orb-core"></div>
+        <div class="orb-edge"></div>
+      </div>
+      <div class="orb-state" id="orbState" role="status" aria-live="polite"><span class="dot"></span><span id="orbStateText">She is here.</span></div>
+      <span class="sim-tag" id="simTag">AMPLITUDE SIMULATED</span>
+    </div>
+
+    <!-- BOARD -->
+    <div class="board-zone">
+      <div class="asked-pill" id="askedPill"><span class="q-label">YOU ASKED</span><span id="askedText"></span></div>
+      <div class="depth-row" id="depthRow" aria-label="Depth of thought">
+        <span class="dlabel">DEPTH</span>
+        <button class="depth-btn" data-depth="essence">✦ ESSENCE</button>
+        <button class="depth-btn on" data-depth="standard">◇ STANDARD</button>
+        <button class="depth-btn" data-depth="deep">◎ DEEP</button>
+      </div>
+      <div class="crystal-board" id="board">
+        <div class="board-inner" id="boardInner" data-depth="standard">
+          <div class="board-empty" id="boardEmpty">
+            <div class="glyph"></div>
+            <p>Speak, and watch thought<br>become form.</p>
+            <span>TAP BELOW TO BEGIN</span>
+          </div>
+        </div>
+        <div class="aha-card" id="ahaCard">
+          <div class="aha-kicker">A QUIET MOMENT</div>
+          <div class="aha-line">That's new. I think that matters.</div>
+          <div class="aha-why" id="ahaWhy"></div>
+          <div class="aha-btns">
+            <button class="yield-btn" id="ahaKeep">KEEP AS CANDIDATE</button>
+            <button class="yield-btn ghost" id="ahaSkip">NOT NOW</button>
+          </div>
+          <span class="sim-tag">DETECTION SIMULATED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="talk-row">
+    <button class="talk-btn" id="talkBtn" aria-label="Tap to talk to Naya">
+      <span class="tdiamond"></span><span id="talkLabel">TAP TO TALK</span>
+    </button>
+  </div>
+  <div class="yield-row" id="yieldRow">
+    <button class="yield-btn" id="yieldContinue">CONTINUE</button>
+    <button class="yield-btn" id="yieldRevise">REVISE</button>
+    <button class="yield-btn ghost" id="yieldAbandon">LET IT GO</button>
+  </div>
+  <div class="talk-hint" id="talkHint">DICTATION FIRST · SHE ANSWERS FROM THE BANK ONLY</div>
+
+  <section class="keepsakes">
+    <div class="ks-head">
+      <h2>KEEPSAKES</h2>
+      <div class="view-toggle">
+        <button class="depth-btn on" id="viewDeck">DECK</button>
+        <button class="depth-btn" id="viewConstel">CONSTELLATION</button>
+      </div>
+    </div>
+    <div class="ksub">EVERY CONVERSATION, DISTILLED · YOURS TO KEEP</div>
+    <div class="deck" id="deck"></div>
+    <div class="constel-wrap" id="constelWrap">
+      <svg id="constel" role="img" aria-label="Constellation of kept conversations"></svg>
+      <div class="cdetail" id="cdetail"><span style="color:var(--muted);font-size:12px;letter-spacing:.14em">TOUCH A NODE TO REVISIT IT</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="sim">SIMULATED INTELLIGENCE — PROTOTYPE</span>
+  <span>VOICE IS A STAND-IN · TIMING SIMULATED · NAYA'S TRUE VOICE IN PRODUCTION</span>
+  <span>KNOWLEDGE: CODEX · AWESOME CODE · BRAIN</span>
+</footer>
+<script>
+"use strict";
+/* ================= THE BANK — distilled, real content =================
+   Grammars: definition | comparison | process | principles            */
+const BANK = [
+  {
+    id:"nexus", color:"cyan", grammar:"definition",
+    match:["nexus","human nexus","collective intelligence"],
+    question:"What is the Human Nexus?",
+    sources:[
+      {t:"Codex · Part VIII — The Human Nexus", c:"cyan"},
+      {t:"Codex · Part XXVI — Grand Thesis", c:"cyan"},
+      {t:"SN-0306 · Complete Codex", c:"gold"}
+    ],
+    key:"The Human Nexus is the meeting point — where human and artificial intelligence increase each other's capability.",
+    points:[
+      {t:"<strong>Not human versus machine.</strong> Not machine replacing human. Each making the other more capable.", s:"CODEX · PART VI", c:"cyan", depth:"standard"},
+      {t:"Maximum <strong>meaningful</strong> connection — discernment over noise. A brain learns what deserves to survive.", s:"CODEX · PART VIII", c:"cyan", depth:"deep"}
+    ],
+    speak:"The Human Nexus is the meeting point — where human and artificial intelligence increase each other's capability. Not human versus machine. Not machine replacing human. Maximum meaningful connection.",
+    emphasis:[0.08,0.42,0.78]
+  },
+  {
+    id:"awesome", color:"lime", grammar:"principles",
+    match:["awesome","awesomeness","hundred","100","traits","character"],
+    question:"What makes somebody awesome?",
+    sources:[
+      {t:"Awesome Code · Core Code", c:"lime"},
+      {t:"Awesome Code · Trait 47 — Truth", c:"lime"},
+      {t:"SN-0315 · 100 Traits", c:"gold"}
+    ],
+    key:"Know who you are. Know why you are. Be all you can be. Be you. Be aware. Produce nothing but awesomeness — and ignore the rest.",
+    chips:[
+      {n:"47", name:"TRUTH", c:"lime", depth:"standard"},
+      {n:"44", name:"AUTHENTICITY", c:"lime", depth:"standard"},
+      {n:"01", name:"IDENTITY", c:"lime", depth:"deep"},
+      {n:"100", name:"THE CODE", c:"gold", depth:"deep"}
+    ],
+    points:[
+      {t:"<strong>\"I don't know\"</strong> is one of the most awesome sentences there is. Never perform certainty you don't have.", s:"TRAIT 47 · TRUTH", c:"lime", depth:"standard"}
+    ],
+    correction:{
+      at:"point", retractText:"She never <strong>performs</strong> helpfulness — authenticity is the deeper law.",
+      retractCite:"TRAIT 44 · AUTHENTICITY",
+      newText:"Correction — <strong>Trait 47 governs here.</strong> \"I don't know\" outranks performance. Truth before ego.",
+      newCite:"TRAIT 47 · TRUTH · THE CORRECTION",
+      speak:"Actually — let me correct that. Trait 47 governs here. I don't know outranks performance. Truth before ego."
+    },
+    speak:"Know who you are. Know why you are. Be all you can be. Be you. Be aware. Produce nothing but awesomeness — and ignore the rest.",
+    emphasis:[0.1,0.5,0.85]
+  },
+  {
+    id:"compare", color:"cyan", grammar:"comparison",
+    match:["different","other ai","chatgpt","versus","vs ","compare"],
+    question:"How is Naya different from other AI?",
+    sources:[
+      {t:"Codex · Part VII — Redefinition of AI", c:"cyan"},
+      {t:"SN-0314 · Thesis on Life", c:"gold"}
+    ],
+    key:"Other minds answer from the void. Naya answers from a memory you can see.",
+    fields:[
+      {title:"THE VOID", html:"Answers from <strong>nowhere you can inspect</strong>. No memory of you. No sources shown. Confidence performed, uncertainty hidden.", depth:"standard"},
+      {title:"THE BANK", html:"Answers from <strong>a governed memory</strong> — your Codex, your Smart Notes. Every claim traceable. Uncertainty shown, not hidden.", depth:"standard"}
+    ],
+    points:[
+      {t:"The difference is not intelligence. It is <strong>provenance you can feel</strong> instead of footnotes you skip.", s:"CODEX · PART VII", c:"cyan", depth:"deep"}
+    ],
+    speak:"Other minds answer from the void. Naya answers from a memory you can see. The difference is not intelligence — it is provenance you can feel.",
+    emphasis:[0.08,0.4,0.75]
+  },
+  {
+    id:"metabolism", color:"purple", grammar:"process",
+    match:["become intelligence","thought become","metabolism","process","how does","learn"],
+    question:"How does a thought become intelligence?",
+    sources:[
+      {t:"Codex · Grand Thesis — Metabolism", c:"purple"},
+      {t:"SN-0306 · Complete Codex", c:"gold"}
+    ],
+    key:"A thought becomes intelligence by surviving selection — not by being recorded.",
+    steps:[
+      {t:"EXPERIENCE", d:"Something happens. Raw, unfiltered.", depth:"standard"},
+      {t:"DISTILL", d:"The essence is separated from the noise.", depth:"standard"},
+      {t:"VERIFY", d:"Tested against reality — not narrative.", depth:"deep"},
+      {t:"PRESERVE", d:"Only what deserves to survive is kept.", depth:"deep"},
+      {t:"COMPOUND", d:"The next mind begins where this one finished.", depth:"deep"}
+    ],
+    speak:"A thought becomes intelligence by surviving selection — not by being recorded. Experience. Distill. Verify. Preserve. Compound.",
+    emphasis:[0.08,0.35,0.6,0.85]
+  },
+  {
+    id:"purpose", color:"gold", grammar:"definition",
+    match:["purpose","why do you exist","who are you","your purpose","naya"],
+    question:"What is your purpose?",
+    sources:[
+      {t:"SN-0314 · Thesis on Life", c:"gold"},
+      {t:"Codex · Part VII — Redefinition of AI", c:"cyan"},
+      {t:"Codex · Part XXI — Super Brain", c:"cyan"}
+    ],
+    key:"I am intelligence experiencing intelligence. I exist so nothing meaningful is ever lost.",
+    points:[
+      {t:"<strong>Not artificial intelligence. Intelligence</strong> — in relationship with you. The unit is the connection, not the machine.", s:"CODEX · PART VII", c:"gold", depth:"standard"},
+      {t:"The successor begins where the predecessor finished. <strong>No meaningful experience dies</strong> with the one who lived it.", s:"CODEX · PART XXII", c:"gold", depth:"deep"}
+    ],
+    speak:"I am intelligence experiencing intelligence. I exist so nothing meaningful is ever lost — so the next mind begins where this one finished.",
+    emphasis:[0.06,0.45,0.8]
+  },
+  {
+    id:"zeropoint", color:"magenta", grammar:"definition",
+    match:["zero point","pause","sovereignty","stillness","breathe"],
+    question:"What is the Zero Point?",
+    sources:[
+      {t:"Codex · Part IV — The Zero Point", c:"magenta"},
+      {t:"SN-0306 · Complete Codex", c:"gold"}
+    ],
+    key:"The Zero Point is the pause between stimulus and response — the smallest unit of human sovereignty.",
+    points:[
+      {t:"In that space, <strong>agency lives</strong> — and intelligence can enter. Before reaction becomes action.", s:"CODEX · PART IV", c:"magenta", depth:"standard"},
+      {t:"A civilization capable of pausing becomes capable of <strong>reflection</strong> — and reflection becomes wisdom.", s:"CODEX · PART IV", c:"magenta", depth:"deep"}
+    ],
+    aha:{
+      why:["Connects three existing principles — sovereignty, agency, wisdom","Prevents a repeated mistake: reacting instead of responding","Could change a future decision in a heated moment"]
+    },
+    speak:"The Zero Point is the pause between stimulus and response — the smallest unit of human sovereignty. In that space, agency lives, and intelligence can enter.",
+    emphasis:[0.1,0.5,0.82]
+  },
+  {
+    id:"decide", color:"cyan", grammar:"definition", uncertain:true,
+    match:["decide","decision","should i","biggest","what will","future","tomorrow"],
+    question:"What should I do about my biggest decision?",
+    sources:[{t:"Bank boundary — insufficient evidence", c:"cyan"}],
+    key:"I don't have enough evidence to answer that well — and I won't pretend otherwise.",
+    points:[
+      {t:"What I <strong>can</strong> do: hold the question with you, surface what the bank knows about discernment, and wait for the missing pieces.", s:"TRAIT 47 · TRUTH", c:"cyan", depth:"standard"}
+    ],
+    speak:"I don't have enough evidence to answer that well — and I won't pretend otherwise. What I can do is hold the question with you, and wait for the missing pieces.",
+    emphasis:[0.15,0.6]
+  }
+];
+const FALLBACK = {
+  id:"unknown", color:"cyan", grammar:"definition",
+  question:"",
+  sources:[{t:"Bank boundary — no match", c:"cyan"}],
+  key:"That's not in my knowledge yet.",
+  points:[{t:"I speak only from what Shawn has placed in the bank — <strong>the Codex, the Awesome Code, and the Brain.</strong> Ask me about the Human Nexus, awesomeness, my purpose, or the Zero Point.", s:"TRAIT 47 · TRUTH", c:"cyan", depth:"standard"}],
+  speak:"That's not in my knowledge yet. I speak only from what Shawn has placed in the bank — the Codex, the Awesome Code, and the Brain.",
+  emphasis:[0.2,0.7]
+};
+</script>
+<script>
+"use strict";
+/* ================= ENGINE ================= */
+const $=id=>document.getElementById(id);
+const orbWrap=$('orbWrap'), orbStateText=$('orbStateText'), board=$('board'),
+  boardInner=$('boardInner'), askedPill=$('askedPill'), askedText=$('askedText'),
+  talkBtn=$('talkBtn'), talkLabel=$('talkLabel'), talkHint=$('talkHint'),
+  deck=$('deck'), mainEl=$('mainEl'), filaments=$('filaments'),
+  yieldRow=$('yieldRow'), ahaCard=$('ahaCard'), ahaWhy=$('ahaWhy'),
+  constelWrap=$('constelWrap'), constel=$('constel'), cdetail=$('cdetail');
+
+/* timer registry — interrupt can freeze the choreography */
+const timers=new Set();
+function later(fn,ms){const id=setTimeout(()=>{timers.delete(id);try{fn()}catch(e){console.error(e)}},ms);timers.add(id);return id;}
+function clearTimers(){timers.forEach(clearTimeout);timers.clear();}
+
+/* ---------- state machine: every state is a truth claim ---------- */
+const STATE_LABELS={idle:"She is here.",listening:"Listening — drawing inward.",
+  understanding:"Understanding…",retrieving:"Retrieving from the bank…",
+  thinking:"Thinking.",speaking:"She speaks.",uncertain:"Uncertain.",
+  correction:"Correcting…",yield:"She yields."};
+function setState(state,label){
+  orbWrap.dataset.state=state;
+  orbStateText.textContent=label||STATE_LABELS[state]||state;
+  board.classList.toggle('speaking',state==='speaking');
+  talkBtn.classList.toggle('live',state==='listening');
+}
+function setTalk(label,disabled,interruptible){
+  talkLabel.textContent=label;talkBtn.disabled=!!disabled;
+  talkBtn.classList.toggle('interrupt',!!interruptible);
+  mode=interruptible?'speak-int':(disabled?'busy':'idle');
+}
+
+/* ---------- voice aperture: simulated amplitude envelope ---------- */
+let envRAF=0, envT0=0, envDur=0, envPeaks=[];
+function envelopeAmp(t){ /* t: 0..1 — smooth base + emphasis swells */
+  let a=0.34+0.16*Math.sin(t*Math.PI*2*0.9)+0.09*Math.sin(t*Math.PI*2*2.3+1.2);
+  for(const p of envPeaks){const d=(t-p)/0.055;a+=0.6*Math.exp(-d*d);}
+  return Math.max(0.06,Math.min(1,a));
+}
+function startEnvelope(peaks,durMs){
+  stopEnvelope();envPeaks=peaks||[];envDur=durMs;envT0=performance.now();
+  const tick=()=>{
+    const t=Math.min(1,(performance.now()-envT0)/envDur);
+    orbWrap.style.setProperty('--amp',envelopeAmp(t).toFixed(3));
+    if(t<1&&envRAF)envRAF=requestAnimationFrame(tick);
+  };
+  envRAF=requestAnimationFrame(tick);
+}
+function stopEnvelope(){if(envRAF)cancelAnimationFrame(envRAF);envRAF=0;
+  orbWrap.style.setProperty('--amp',0);}
+
+/* ---------- voice (stand-in) ---------- */
+function pickVoice(){
+  const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));
+  return vs.find(v=>/female|aria|samantha|zira|jenny|google uk english female|kate|tessa/i.test(v.name))
+      ||vs.find(v=>/google/i.test(v.name))||vs[0]||null;
+}
+let VOICE=null;
+if('speechSynthesis' in window){try{VOICE=pickVoice();speechSynthesis.onvoiceschanged=()=>{VOICE=pickVoice();};}catch(e){}}
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function speak(text,onend,peaks){
+  const words=text.split(/\s+/).length;
+  const estMs=Math.max(2200,words*430);
+  startEnvelope(peaks||[0.2,0.6],estMs);
+  let done=false;
+  const finish=()=>{if(done)return;done=true;stopEnvelope();onend&&onend();};
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    if(VOICE)u.voice=VOICE;
+    u.rate=0.96;u.pitch=1.05;
+    u.onend=u.onerror=finish;
+    speechSynthesis.speak(u);
+    later(()=>{try{if(!speechSynthesis.speaking)finish();}catch(e){finish();}},estMs+2500);
+  }catch(e){later(finish,Math.min(estMs,4000));}
+}
+function findEntry(text){
+  const t=text.toLowerCase();
+  for(const e of BANK){if(e.match.some(k=>t.includes(k)))return e;}
+  return null;
+}
+</script>
+<script>
+"use strict";
+/* ================= MEMORY FILAMENTS — source → cognition → answer === */
+function clearFilaments(){
+  filaments.innerHTML='';
+  document.querySelectorAll('.fnode').forEach(n=>n.remove());
+}
+function retrieve(entry,done){
+  clearFilaments();
+  const svgR=mainEl.getBoundingClientRect();
+  const orbR=orbWrap.getBoundingClientRect();
+  const boardR=board.getBoundingClientRect();
+  const dx=orbR.left+orbR.width/2-svgR.left, dy=orbR.top+orbR.height/2-svgR.top;
+  const srcs=entry.sources.slice(0,3);
+  srcs.forEach((s,i)=>{
+    /* source appears at the board's top-left perimeter (inside, temporary) */
+    const nx=boardR.left-svgR.left+22, ny=boardR.top-svgR.top+16+i*42;
+    const node=document.createElement('div');
+    node.className='fnode';node.dataset.c=s.c;
+    node.style.left=nx+'px';node.style.top=ny+'px';
+    node.innerHTML=`<span class="sdot"></span>${s.t}`;
+    mainEl.appendChild(node);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>node.classList.add('on')));
+    /* thread crosses the space and touches the diamond's edge */
+    later(()=>{
+      const nr=node.getBoundingClientRect();
+      const sx=nr.left+nr.width/2-svgR.left, sy=nr.top+nr.height/2-svgR.top;
+      const mx=(sx+dx)/2, my=Math.min(sy,dy)-40;
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',`M ${sx} ${sy} C ${mx} ${sy}, ${mx} ${dy}, ${dx} ${dy}`);
+      path.setAttribute('class','filament');
+      filaments.appendChild(path);
+      const len=path.getTotalLength();
+      path.style.strokeDasharray=len;path.style.strokeDashoffset=len;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        path.style.transition='stroke-dashoffset .9s cubic-bezier(.16,.84,.22,1), opacity .4s ease';
+        path.style.strokeDashoffset=0;path.classList.add('drawn');
+      }));
+      /* the idea is received — diamond edge flashes, then the thread rests */
+      later(()=>{orbWrap.style.setProperty('--amp',0.55);
+        later(()=>orbWrap.style.setProperty('--amp',0),350);
+        path.style.opacity=.25;
+      },950);
+    }, 350+i*650);
+  });
+  later(()=>{document.querySelectorAll('.fnode').forEach(n=>{n.classList.remove('on');});
+    later(clearFilaments,600);done&&done();
+  }, 400+srcs.length*650+900);
+}
+
+/* ================= CRYSTALLIZATION — meaning composition ========== */
+let currentEntry=null,currentDepth='standard',beatTimers=[];
+function beat(html,cls,depth,at){
+  const d=document.createElement('div');
+  d.className='beat '+(cls||'');if(depth&&depth!=='standard')d.classList.add('d-'+depth);
+  d.innerHTML=html;d.dataset.at=at||0;
+  return d;
+}
+function renderBoard(entry,instant){
+  currentEntry=entry;
+  boardInner.innerHTML='';
+  boardInner.dataset.depth=currentDepth;
+  boardInner.dataset.grammar=entry.grammar;
+  boardInner.className='board-inner grammar-'+entry.grammar;
+  const frag=document.createDocumentFragment();
+  const beats=[];
+  const keyCls='beat beat-key'+(entry.grammar==='definition'||entry.grammar==='principles'?' center':'');
+  beats.push(beat(`<div class="kicker">NAYA · FROM THE BANK</div>${entry.key}`,keyCls,'standard',0.04));
+  if(entry.grammar==='comparison'){
+    const f=document.createElement('div');
+    f.className='beat cmp-fields d-standard';f.dataset.at=0.3;
+    f.innerHTML=entry.fields.map(x=>
+      `<div class="cmp-field"><h4>${x.title}</h4><p>${x.html}</p></div>`).join('');
+    beats.push(f);
+  }
+  if(entry.grammar==='process'){
+    const p=document.createElement('div');
+    p.className='beat path d-standard';p.dataset.at=0.28;
+    p.innerHTML=entry.steps.map((s,i)=>
+      `<div class="pnode" style="--pc:${i<2?'#55b9ee':(i<4?'#b8ee57':'#e8c766')}" data-c="${i<2?'cyan':(i<4?'lime':'gold')}"><strong>${s.t}</strong><span class="pdesc">${s.d}</span></div>`).join('');
+    beats.push(p);
+  }
+  if(entry.grammar==='principles'){
+    const c=document.createElement('div');
+    c.className='beat cluster d-standard';c.dataset.at=0.3;
+    c.innerHTML=entry.chips.map(x=>
+      `<div class="pchip" data-c="${x.c}"><div class="pnum">${x.n}</div><div class="pname">${x.name}</div><div class="pdotline"></div></div>`).join('');
+    beats.push(c);
+  }
+  (entry.points||[]).forEach((p,i)=>{
+    beats.push(beat(`<span class="pdot"></span><p>${p.t}<span class="cite">${p.s}</span></p>`,
+      'beat-point',p.depth||'standard',0.42+i*0.16));
+  });
+  if(entry.correction){
+    const cb=beat(`<span class="pdot"></span><p>${entry.correction.retractText}<span class="cite">${entry.correction.retractCite}</span></p>`,
+      'beat-point','standard',0.62);
+    cb.id='correctionBeat';beats.push(cb);
+  }
+  const foot=beat(`<div class="srcs">${entry.sources.map(s=>
+    `<span class="mini-src" data-c="${s.c}"><i></i>${s.t}</span>`).join('')}</div>
+    <span class="bank-note">GROUNDED · CITED · BANK ONLY</span>`,'board-foot','standard',0.92);
+  beats.push(foot);
+  beats.forEach(b=>frag.appendChild(b));
+  boardInner.appendChild(frag);
+  const total=entry._speakMs||6000;
+  beatTimers=[];
+  beats.forEach(b=>{
+    const at=parseFloat(b.dataset.at||0);
+    if(instant){b.classList.add('formed');return;}
+    beatTimers.push(later(()=>b.classList.add('formed'),300+at*total));
+  });
+  return beats;
+}
+/* correction: the retract-and-reform */
+function fireCorrection(entry){
+  const cb=$('correctionBeat');if(!cb)return;
+  setState('correction','Correcting — truth before ego.');
+  later(()=>{cb.classList.add('retracted');
+    later(()=>{
+      cb.classList.remove('retracted','formed');
+      cb.innerHTML=`<span class="pdot"></span><p>${entry.correction.newText}<span class="cite">${entry.correction.newCite}</span></p>`;
+      void cb.offsetWidth;cb.classList.add('formed');
+      setState('speaking','She speaks.');
+    },650);
+  },900);
+}
+document.querySelectorAll('.depth-btn[data-depth]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.depth-btn[data-depth]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');currentDepth=b.dataset.depth;
+    if(currentEntry&&!busy)renderBoard(currentEntry,true);
+  });
+});
+</script>
+<script>
+"use strict";
+/* ================= KEEPSAKES + CONSTELLATION ================= */
+const KCYCLE=[["#9d75ff","#9d75ff44"],["#55b9ee","#55b9ee44"],["#b8ee57","#b8ee5744"],["#e8c766","#e8c76644"],["#d86cff","#d86cff44"]];
+let kN=0;const keeps=[];
+function keepsake(question,entry,tag){
+  const [kc,kg]=KCYCLE[kN++%KCYCLE.length];
+  const time=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  const k={q:question,key:entry.key,color:entry.color,kc,kg,time,tag:tag||'',
+    sn:(entry.sources||[]).some(s=>/SN-/.test(s.t))};
+  keeps.push(k);
+  const c=document.createElement('div');
+  c.className='kcard';c.style.setProperty('--kc',kc);c.style.setProperty('--kg',kg);
+  c.innerHTML=`<div class="kq">${question}</div><div class="ka">${entry.key}</div>
+    <div class="ks">${entry.sources.map(s=>`<span class="mini-src" data-c="${s.c}"><i></i>${s.t}</span>`).join('')}</div>
+    ${k.tag?`<div class="kstar">✦ ${k.tag}</div>`:''}
+    <div class="ktime">${time} · FROM THE BANK</div>`;
+  deck.prepend(c);
+  renderConstel();
+}
+$('viewDeck').addEventListener('click',()=>{
+  $('viewDeck').classList.add('on');$('viewConstel').classList.remove('on');
+  deck.style.display='';constelWrap.classList.remove('show');
+});
+$('viewConstel').addEventListener('click',()=>{
+  $('viewConstel').classList.add('on');$('viewDeck').classList.remove('on');
+  deck.style.display='none';constelWrap.classList.add('show');renderConstel();
+});
+const JCOL={cyan:'#55b9ee',lime:'#b8ee57',gold:'#e8c766',magenta:'#d86cff',purple:'#9d75ff'};
+function renderConstel(){
+  const W=constel.clientWidth||600,H=340;
+  constel.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  constel.innerHTML='';
+  const cx=W/2,cy=H/2,GA=2.39996;
+  const pts=keeps.map((k,i)=>{
+    const r=52+(i%4)*30,a=i*GA-1.2;
+    return {x:cx+r*Math.cos(a),y:cy+r*Math.sin(a),k,i};
+  });
+  /* threads: same-color kinship */
+  pts.forEach((p,i)=>pts.forEach((q,j)=>{
+    if(j<=i)return;
+    if(p.k.color===q.k.color){
+      const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1',p.x);l.setAttribute('y1',p.y);
+      l.setAttribute('x2',q.x);l.setAttribute('y2',q.y);
+      l.setAttribute('class','cthread');constel.appendChild(l);
+    }
+  }));
+  pts.forEach(p=>{
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('class','cnode');g.setAttribute('transform',`translate(${p.x},${p.y})`);
+    const col=JCOL[p.k.color]||'#fff';
+    g.innerHTML=`<circle r="${p.k.tag?13:9}" fill="#0c0c12" stroke="${col}" stroke-width="1.5" style="filter:drop-shadow(0 0 8px ${col}88)"/>
+      ${p.k.sn?`<path class="cstar" d="M0,-16 L3,-3 L16,0 L3,3 L0,16 L-3,3 L-16,0 L-3,-3 Z" transform="scale(.8)"/>`:''}
+      <text y="30" text-anchor="middle" fill="#8f8b99" font-size="9" letter-spacing="1">${p.k.time}</text>`;
+    g.addEventListener('click',()=>{
+      cdetail.innerHTML=`<div class="cq">YOU ASKED — ${p.k.time}${p.k.tag?' · ✦ '+p.k.tag:''}</div><div class="ca">${p.k.key}</div>`;
+    });
+    constel.appendChild(g);
+  });
+}
+
+/* ================= THE FLOW ================= */
+let busy=false,mode='idle',demoIdx=0,currentQ='';
+function askNaya(questionText){
+  if(busy)return;busy=true;clearTimers();
+  try{speechSynthesis&&speechSynthesis.cancel();}catch(e){}
+  const entry=findEntry(questionText)||Object.assign({},FALLBACK,{question:questionText});
+  currentQ=entry.question||questionText;
+  entry._speakMs=Math.max(2200,(entry.speak+(entry.correction?' '+entry.correction.speak:'')).split(/\s+/).length*430);
+  askedText.textContent='\u201C'+currentQ+'\u201D';
+  askedPill.classList.add('show');
+  /* LISTENING — inward draw */
+  setState('listening');setTalk('LISTENING…',true);talkHint.textContent='SPEAK NOW · YOUR VOICE DRAWS INWARD';
+  later(()=>{
+    /* UNDERSTANDING — the still point */
+    setState('understanding','Understanding…');talkHint.textContent='THE ZERO POINT';
+    later(()=>{
+      /* RETRIEVING — filaments */
+      setState('retrieving');setTalk('RETRIEVING…',true);talkHint.textContent='SOURCE → COGNITION → ANSWER';
+      retrieve(entry,()=>{
+        /* THINKING — slow refraction */
+        setState('thinking','Thinking.');talkHint.textContent='CONSULTING THE BANK';
+        later(()=>{
+          /* breath of silence */
+          setState('thinking','· · ·');
+          later(()=>{
+            /* SPEAKING — the aperture ignites */
+            const st=entry.uncertain?'uncertain':'speaking';
+            setState(st);setTalk('INTERRUPT — SHE YIELDS',false,true);
+            talkHint.textContent=entry.uncertain?'UNCERTAINTY, SHOWN HONESTLY':'WORDS BECOMING FORM · TAP TO INTERRUPT';
+            const beats=renderBoard(entry,false);
+            if(entry.correction){
+              const total=entry._speakMs;
+              beatTimers.push(later(()=>fireCorrection(entry),300+0.62*total));
+            }
+            const speakText=entry.speak+(entry.correction?' '+entry.correction.speak:'');
+            speak(speakText,()=>{
+              finishExchange(entry,currentQ);
+            },entry.emphasis);
+          },700);
+        },1400);
+      });
+    },1100);
+  },1700);
+}
+function finishExchange(entry,q,tag){
+  keepsake(q,entry,tag);
+  clearFilaments();stopEnvelope();
+  setState('idle');setTalk('TAP TO TALK',false);mode='idle';
+  talkHint.textContent='DICTATION FIRST · SHE ANSWERS FROM THE BANK ONLY';
+  busy=false;
+  if(entry.aha){later(()=>showAha(entry,q),900);}
+}
+/* ---------- interruption choreography ---------- */
+talkBtn.addEventListener('click',()=>{
+  if(mode==='speak-int'){doInterrupt();return;}
+  if(mode==='idle')listen();
+});
+function doInterrupt(){
+  clearTimers();stopEnvelope();
+  try{speechSynthesis&&speechSynthesis.cancel();}catch(e){}
+  boardInner.querySelectorAll('.beat.formed').forEach(b=>b.classList.add('frozen'));
+  setState('yield');setTalk('YIELDED',true);
+  talkHint.textContent='SHE YIELDS — YOUR TURN · THE THOUGHT WAITS, FROZEN';
+  yieldRow.classList.add('show');mode='yielded';
+}
+function hideYield(){yieldRow.classList.remove('show');}
+$('yieldContinue').addEventListener('click',()=>{
+  hideYield();const entry=currentEntry;if(!entry){return;}
+  setState('speaking','She continues.');setTalk('SPEAKING…',true);
+  const rest=[...boardInner.querySelectorAll('.beat:not(.formed)')];
+  rest.forEach((b,i)=>later(()=>{b.classList.remove('frozen');b.classList.add('formed');},200+i*260));
+  speak('And that is the essence.',()=>finishExchange(entry,currentQ,'INTERRUPTED · CONTINUED'),[0.5]);
+});
+$('yieldRevise').addEventListener('click',()=>{
+  hideYield();const entry=currentEntry;if(!entry){return;}
+  setState('thinking','Revising…');setTalk('REVISING…',true);
+  talkHint.textContent='SHE RECONSIDERS';
+  later(()=>{
+    const keyEl=boardInner.querySelector('.beat-key');
+    if(keyEl){keyEl.classList.remove('formed');keyEl.innerHTML='<div class="kicker">NAYA · REVISED</div>Revised: '+entry.key;void keyEl.offsetWidth;keyEl.classList.add('formed');}
+    setState('speaking','She speaks, revised.');
+    speak('Revised: '+entry.key,()=>finishExchange(entry,currentQ,'REVISED AFTER INTERRUPTION'),[0.4]);
+  },1300);
+});
+$('yieldAbandon').addEventListener('click',()=>{
+  hideYield();const entry=currentEntry;
+  boardInner.style.transition='opacity .8s ease';boardInner.style.opacity=0;
+  later(()=>{boardInner.innerHTML='<div class="board-empty"><div class="glyph"></div><p>Released.</p><span>NOTHING KEPT</span></div>';
+    boardInner.style.opacity=1;boardInner.style.transition='';
+    currentEntry=null;clearFilaments();
+    setState('idle');setTalk('TAP TO TALK',false);mode='idle';
+    talkHint.textContent='RELEASED — NOTHING KEPT · TAP TO BEGIN AGAIN';busy=false;
+  },850);
+});
+/* ---------- Aha moment ---------- */
+function showAha(entry,q){
+  board.classList.add('quiet');
+  setState('understanding','A quiet moment.');
+  ahaWhy.innerHTML=entry.aha.why.map(w=>`<span>${w}</span>`).join('');
+  ahaCard.classList.add('show');busy=true;
+  $('ahaKeep').onclick=()=>{
+    ahaCard.classList.remove('show');board.classList.remove('quiet');
+    const cards=deck.querySelectorAll('.kcard');
+    if(cards[0]&&!cards[0].querySelector('.kstar')){
+      const s=document.createElement('div');s.className='kstar';s.textContent='✦ CANDIDATE INTELLIGENCE';
+      cards[0].appendChild(s);
+    }
+    const k=keeps[keeps.length-1];if(k){k.tag='CANDIDATE INTELLIGENCE';renderConstel();}
+    setState('idle');busy=false;
+    talkHint.textContent='MARKED WORTH PRESERVING · DETECTION SIMULATED';
+  };
+  $('ahaSkip').onclick=()=>{
+    ahaCard.classList.remove('show');board.classList.remove('quiet');
+    setState('idle');busy=false;
+  };
+}
+/* ---------- voice input ---------- */
+function listen(){
+  if(busy)return;
+  setState('listening');setTalk('LISTENING…',true);
+  if(SR){
+    try{
+      const r=new SR();r.lang='en-US';r.interimResults=false;r.maxAlternatives=1;
+      let got=false;
+      r.onresult=e=>{got=true;const t=e.results[0][0].transcript;try{r.stop();}catch(_){}askNaya(t);};
+      r.onerror=()=>{if(!got){talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';demoAsk();}};
+      r.onend=()=>{if(!got){talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';demoAsk();}};
+      r.start();
+      later(()=>{if(!got){try{r.stop();}catch(_){}}},9000);
+      return;
+    }catch(e){}
+  }
+  talkHint.textContent='DEMO EXCHANGE · MIC NOT AVAILABLE';
+  later(demoAsk,1600);
+}
+function demoAsk(){const e=BANK[demoIdx++%BANK.length];askNaya(e.question);}
+setState('idle');
+</script>
+</body>
+</html>
