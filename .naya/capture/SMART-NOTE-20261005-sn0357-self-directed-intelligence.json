@@ -1,7 +1,7 @@
 {
   "schema": "naya.smart-note-capture.v2",
   "smart_note_id": "SN-0357",
-  "capture_id": "20261005-sn0357-self-directed-intelligence",
+  "capture_id": "20261005-sn0357-self-directed-intelligence-r2",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
   "category": "SYSTEM_INTELLIGENCE",
   "topic": "GOVERNANCE",
@@ -12,7 +12,9 @@
     "source_reference": "Shawn Vibert, Human Director, 2026-10-05. Standing directive: Naya is expected to determine the highest-value authorized next action instead of requiring routine step-by-step direction; use evidence, scorecards, analysis and collective intelligence to decide; preserve governance, proof, continuity and human authority.",
     "captured_at": "2026-10-05",
     "captured_at_utc": "2026-10-05T23:12:00Z",
-    "replay_reference": "Replay requested after #1535 repaired deletion-safe Smart Note discovery; this metadata change intentionally leaves the distilled intelligence payload unchanged so the canonical lifecycle can resume from the same SN-0357 intelligence."
+    "previous_capture_id": "20261005-sn0357-self-directed-intelligence",
+    "recovery_reason": "R2 recovery after the original v2 capture appears to have persisted before a downstream batch failure, leaving no projected registry lineage and causing replay to return HTTP 400. Stable human Smart Note identity remains SN-0357; distilled intelligence is unchanged.",
+    "recovery_truth_state": "PARTIAL_SUCCESS_REPLAY_HYPOTHESIS_FROM_WORKFLOW_EVIDENCE_NOT_DB_READ"
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
