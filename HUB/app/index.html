@@ -1155,7 +1155,10 @@ svg.jewel { display: block; }
 @media (max-width: 640px) {
   .board-top-actions {
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* wrap (not nowrap): 4 buttons overflow ~390px viewports and .shell clips
+       overflow-x — wrapping keeps every button reachable. No-op when the row
+       fits (Red Team 2026-10-04). */
+    flex-wrap: wrap;
     gap: 6px;
   }
   .board-top-actions .action {
@@ -3165,20 +3168,25 @@ const ActivityLog = (() => {
 
 window.BoardActions = (() => {
   const STORE_KEY = 'nayanet-board-actions-v1';
-  const read = () => { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; } };
+  const read = () => { try { const s = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); return (s && typeof s === 'object') ? s : {}; } catch { return {}; } };
   const write = s => { try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {} };
 
   /* ——— Naya Play: every Intelligent Block gets a voice (Shawn 2026-10-04).
-         Audio contract: R2 naya-voice/<board-id-slug>.mp3, baked per block by the
+         Audio contract: R2 naya-voice/<boardId-verbatim>.mp3, baked per block by the
          voice pipeline. This button is the Hub side of that contract: it plays the
          baked audio, toggles pause, and tells the truth when audio is not baked yet. */
   const NayaVoice = (() => {
     const R2_BASE = 'https://pub-55de1e53f610437db77c701797f6b607.r2.dev/naya-voice/';
     let audio = null, activeBtn = null, activeId = null;
+    /* Audio-key contract (exact — Red Team 2026-10-04): the key is the boardId
+       VERBATIM, the string BoardActions.enhance received. The bake lane must
+       replicate the board's factory derivation exactly:
+         feed blocks (intelBoard): 'note-' + slug(note.id || note.title || 'smart-note'), 40 chars
+         queue/observer boards:   'board-' + slug(title), 40 chars
+       No re-slugging here: any transformation would diverge from the factory key. */
     function audioUrl(boardId) {
-      const slug = String(boardId || 'block').toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'block';
-      return R2_BASE + slug + '.mp3';
+      const key = String(boardId || '').trim() || 'block';
+      return R2_BASE + encodeURIComponent(key) + '.mp3';
     }
     function resetBtn() {
       if (activeBtn) {
@@ -3200,7 +3208,10 @@ window.BoardActions = (() => {
          rejected play() promise — notify once. */
       let notified = false;
       const notifyNotReady = () => {
-        if (notified) return; notified = true; stop();
+        /* Stale-closure guard (Red Team 2026-10-04): if the user already moved
+           to another block, this rejection belongs to a dead Audio element —
+           stay silent instead of killing the live one. */
+        if (notified || audio !== a) return; notified = true; stop();
         toast('VOICE NOT READY', 'Naya\u2019s voice for this block is still baking. The button will play it once the audio is published.', '#9d75ff');
       };
       const a = new Audio(audioUrl(boardId));
