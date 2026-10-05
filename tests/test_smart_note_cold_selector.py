@@ -52,7 +52,8 @@ def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
     block = wf[start:end]
     assert 'max_attempts=5' in block
     assert 'cold-runtime-reread.json' in block
-    assert 'if [[ -s cold-runtime-reread.json ]]' in block
+    assert 'json.load(' in block
+    assert 'not valid JSON' in block
     assert 'sleep $backoff' in block
     assert 'backoff=$((backoff * 2))' in block
     assert 'curl exit=' in block

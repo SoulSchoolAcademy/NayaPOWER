@@ -823,10 +823,10 @@ jobs:
               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
               -H "Content-Type: application/json" \
               --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json 2>curl-stderr.txt; then
-              if [[ -s cold-runtime-reread.json ]]; then
+              if python3 -c "import json; json.load(open('cold-runtime-reread.json'))" 2>/dev/null; then
                 break
               fi
-              echo "COLD_RUNTIME_ATTEMPT_${attempt}: http ok but empty body"
+              echo "COLD_RUNTIME_ATTEMPT_${attempt}: http ok but body is not valid JSON"
             else
               curl_exit=$?
               echo "COLD_RUNTIME_ATTEMPT_${attempt}: curl exit=${curl_exit} stderr=$(head -c 300 curl-stderr.txt)"
