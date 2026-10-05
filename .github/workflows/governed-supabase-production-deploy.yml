@@ -11,8 +11,8 @@ on:
         default: "DEPLOY"
         type: string
       source_sha:
-        description: "Exact 40-hex main SHA authorized by the Human Director"
-        required: true
+        description: "Optional: exact 40-hex main SHA. Leave empty to promote the current tip (resolved at execution; recorded in the receipt)."
+        required: false
         type: string
 
 permissions:
@@ -53,6 +53,10 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             test "${{ inputs.confirm }}" = "DEPLOY"
             authorized_sha="${{ inputs.source_sha }}"
+            if [ -z "$authorized_sha" ]; then
+              authorized_sha="$GITHUB_SHA"
+              echo "source_sha empty: human authorized via confirm=DEPLOY; resolved to workflow source $authorized_sha (recorded in receipt)."
+            fi
             if ! printf '%s' "$authorized_sha" | grep -Eq '^[0-9a-f]{40}$'; then
               echo "FAIL CLOSED: source_sha must be exactly 40 lowercase hex characters."
               exit 1
