@@ -208,3 +208,65 @@ def test_registry_audit_passes_clean_registry():
     assert audit_registry_semantics(
         {"entries": [{"smart_note_id": "SN-OK", "truth_state": "VERIFIED"}]}
     ) == []
+
+
+# ==========================================================================
+# FALSE-POSITIVE REGRESSION -- the defect this found in itself
+# ==========================================================================
+def test_real_promote_note_shaped_entry_is_not_flagged():
+    """A LEGITIMATELY promoted note must pass the audit clean.
+
+    The first version of this guard looked for entry["promotion_authority"].
+    The canonical writer -- smart_note_v2.promote_note ~line 723 -- writes
+    entry["promotion_receipt"] = {promoted_at, promoter, receipt_hash,
+    threshold_version} and NO promotion_authority object.
+
+    That mismatch made the audit flag every correctly-promoted note as a
+    semantic escalation: a false-positive generator living in the safety layer.
+    This test is the fix, permanently.
+    """
+    registry = {"entries": [{
+        "smart_note_id": "SN-REAL",
+        "truth_state": "VERIFIED",
+        "promotion_receipt": {
+            "promoted_at": "2026-10-05T00:00:00Z",
+            "promoter": "shawn",
+            "receipt_hash": "abc123",
+            "threshold_version": "PROMOTION-THRESHOLD-V1",
+        },
+    }]}
+    assert audit_registry_semantics(registry) == [], (
+        "a legitimately promoted note was flagged -- the audit is incompatible "
+        "with the canonical writer's field shape"
+    )
+
+
+def test_richer_promotion_authority_form_is_still_accepted():
+    registry = {"entries": [{
+        "smart_note_id": "SN-RICH",
+        "truth_state": "RATIFIED",
+        "promotion_authority": _authority(),
+        "promotion_receipt": {"promoter": "shawn", "receipt_hash": "h"},
+        "authority_history": [{"from": "CANDIDATE", "to": "RATIFIED"}],
+    }]}
+    assert audit_registry_semantics(registry) == []
+
+
+def test_promoted_note_missing_promoter_is_still_flagged():
+    """The fix must not become a hole: blank promoter is still an escalation."""
+    registry = {"entries": [{
+        "smart_note_id": "SN-BAD",
+        "truth_state": "RATIFIED",
+        "promotion_receipt": {"promoter": "", "receipt_hash": "abc"},
+    }]}
+    assert audit_registry_semantics(registry)
+
+
+def test_promoted_note_missing_receipt_hash_is_still_flagged():
+    registry = {"entries": [{
+        "smart_note_id": "SN-NOH",
+        "truth_state": "RATIFIED",
+        "promotion_receipt": {"promoter": "shawn"},
+    }]}
+    problems = audit_registry_semantics(registry)
+    assert any("receipt hash" in p for p in problems)

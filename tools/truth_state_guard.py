@@ -155,12 +155,51 @@ def check_elevation(
     return GuardResult(True, new, reasons=["authority and evidence present"])
 
 
+def recorded_authority(entry: dict) -> dict | None:
+    """Authority AS THE CANONICAL WRITER RECORDS IT.
+
+    `smart_note_v2.promote_note` (line ~723) writes:
+        entry["promotion_receipt"] = {promoted_at, promoter, receipt_hash,
+                                      threshold_version}
+    It does NOT write a `promotion_authority` object. An earlier version of this
+    guard looked for one and would therefore have flagged every legitimately
+    promoted note as a semantic escalation -- a false-positive generator living
+    in the safety layer. Fixed to read the real shape.
+
+    `promotion_authority` is still accepted, for entries that carry the richer
+    form written by `apply_elevation`.
+    """
+    if isinstance(entry.get("promotion_authority"), dict):
+        return entry["promotion_authority"]
+    rcpt = entry.get("promotion_receipt")
+    if isinstance(rcpt, dict) and str(rcpt.get("promoter") or "").strip():
+        return {
+            "promoter": rcpt.get("promoter"),
+            "scope": rcpt.get("scope") or rcpt.get("threshold_version") or "promote",
+            "promoted_at": rcpt.get("promoted_at"),
+            "receipt_hash": rcpt.get("receipt_hash"),
+        }
+    return None
+
+
+def recorded_receipt_hash(entry: dict) -> str | None:
+    rcpt = entry.get("promotion_receipt")
+    if isinstance(rcpt, dict):
+        h = rcpt.get("receipt_hash")
+        if h:
+            return str(h)
+    return None
+
+
 def audit_registry_semantics(registry: dict) -> list[str]:
     """Detect semantic escalation in an already-written registry.
 
-    This is the READ side of the same law. A note found above VERIFIED with no
-    recorded promotion authority has been escalated by hand, because the
-    legitimate path always records one.
+    The READ side of the same law. A note found above VERIFIED with no recorded
+    promotion authority has been escalated by hand, because the legitimate path
+    always records one.
+
+    Reads the field shape the canonical writer actually produces, so a
+    correctly-promoted note is not flagged.
     """
     problems: list[str] = []
     for entry in registry.get("entries", []):
@@ -168,27 +207,26 @@ def audit_registry_semantics(registry: dict) -> list[str]:
         state = str(entry.get("truth_state", BASE_STATE)).upper()
         if rank(state) <= rank("VERIFIED"):
             continue
-        if not authority_is_valid(entry.get("promotion_authority")):
+        if not authority_is_valid(recorded_authority(entry)):
             problems.append(
                 f"{sid}: truth_state={state} with NO recorded promotion "
                 "authority -- semantic escalation"
             )
-        if new_state_needs_evidence(state) and not entry.get("promotion_receipt"):
+        if not recorded_receipt_hash(entry):
             problems.append(
-                f"{sid}: truth_state={state} with NO promotion receipt -- "
+                f"{sid}: truth_state={state} with NO promotion receipt hash -- "
                 "meaning asserted without evidence"
             )
         if state == "LEARNED" and not entry.get("behavioral_evidence"):
             problems.append(
                 f"{sid}: truth_state=LEARNED with NO behavioral evidence"
             )
-        if entry.get("superseded_by") and entry.get("promotion_authority"):
-            hist = entry.get("authority_history")
-            if not hist:
-                problems.append(
-                    f"{sid}: superseded but authority history erased -- "
-                    "supersession must not erase who promoted it"
-                )
+        if entry.get("superseded_by") and recorded_authority(entry) \
+                and not entry.get("authority_history"):
+            problems.append(
+                f"{sid}: superseded but authority history erased -- "
+                "supersession must not erase who promoted it"
+            )
     return problems
 
 
@@ -224,7 +262,15 @@ def apply_elevation(
             })
             entry["promotion_authority"] = authority
         if receipt:
-            entry["promotion_receipt"] = receipt.get("receipt_hash")
+            # SAME SHAPE as smart_note_v2.promote_note writes. Two writers with
+            # two shapes is the drift class this guard exists to stop -- so the
+            # guard must not introduce a third shape.
+            entry["promotion_receipt"] = {
+                "promoted_at": receipt.get("promoted_at"),
+                "promoter": authority.get("promoter") if authority else None,
+                "receipt_hash": receipt.get("receipt_hash"),
+                "threshold_version": receipt.get("threshold_version"),
+            }
         if behavioral_evidence:
             entry["behavioral_evidence"] = behavioral_evidence
         entry["authority_history"] = history
@@ -232,5 +278,7 @@ def apply_elevation(
     else:
         entry["truth_state"] = res.state
     return res
+
+
 
 
