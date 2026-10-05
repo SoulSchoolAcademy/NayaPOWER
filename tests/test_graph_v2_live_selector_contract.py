@@ -7,9 +7,18 @@ WORKFLOW = (ROOT / ".github/workflows/live-supabase-runtime-proof.yml").read_tex
 
 
 def test_verified_learning_lock_in_populates_graph_v2_semantics():
+    # H8-7 repair: applicability is provenance-governed, not text-derived.
+    # The test pins the governed contract, not the old regex triplets.
     assert "deriveGraphApplicability" in LEARN
-    assert '"provenance_sensitive", "learning_reuse", "contextual_retrieval"' in LEARN
-    assert '"repository_correction", "learning_reuse", "contextual_retrieval"' in LEARN
+    assert "TASK_CLASS_REGISTRY" in LEARN
+    assert "provenance_sensitive:" in LEARN
+    assert "repository_correction:" in LEARN
+    assert "active_intelligence_sensitive:" in LEARN
+    assert "learning_reuse:" in LEARN
+    assert "contextual_retrieval:" in LEARN
+    assert '"TASK_APPLICABILITY_GOVERNED_DECLARATION"' in LEARN
+    assert '"TEXT_TRIGGER_WITHOUT_GOVERNED_DECLARATION"' in LEARN
+    assert '"TASK_APPLICABILITY_DERIVED_FROM_VERIFIED_LESSON"' not in LEARN
     assert 'evidence_refs: relationshipEvidenceRefs' in LEARN
     assert 'applicability: graphApplicability' in LEARN
     assert 'reason_codes: relationshipReasonCodes' in LEARN
