@@ -251,7 +251,8 @@ jobs:
           x=json.load(open("projection-result.json"))
           e=x["entry"]
           if e.get("projection_status")=="GITHUB_BRAIN_PUBLISHED":
-              assert e["smart_link_status"]=="ACTIVE"
+              expected_status="ACTIVE_AUTH_GATED" if e.get("scope")=="PRIVATE" else "ACTIVE"
+              assert e["smart_link_status"]==expected_status, (e, expected_status)
               assert e.get("smart_link","").startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
           elif e.get("scope")=="PRIVATE":
               assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"
@@ -268,7 +269,7 @@ jobs:
           import json, pathlib
           x=json.load(open("projection-result.json"))
           e=x["entry"]
-          pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status") in {"ACTIVE", "READY"} else "no")
+          pathlib.Path("publish-ok.txt").write_text("yes" if e.get("smart_link_status") in {"ACTIVE", "ACTIVE_AUTH_GATED", "READY"} else "no")
           PY
             if [[ "$(cat publish-ok.txt)" == "yes" ]]; then
               git config user.name "Naya Smart Note Projector"

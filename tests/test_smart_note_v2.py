@@ -113,7 +113,7 @@ def test_sequence_policy_advances_after_sn002():
 
 def test_projection_workflow_publishes_active_verified_public_projection():
     workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
-    assert 'e.get("smart_link_status") in {"ACTIVE", "READY"}' in workflow
+    assert 'e.get("smart_link_status") in {"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
     assert 'e.get("smart_link_status")=="READY"' not in workflow
 
 
@@ -346,3 +346,16 @@ def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture
     assert capture["intelligence"]["machine_view"]["instruction_is_proof"] is False
     assert capture["intelligence"]["machine_view"]["human_authority_preserved"] is True
     assert capture["intelligence"]["machine_view"]["automatic_truth_ceiling"] == "CANDIDATE"
+
+def test_live_workflow_honors_private_publication_authorization_without_bare_active():
+    """A PRIVATE canonical Block may publish an explicitly authorized derived view,
+    but its Smart Link status remains ACTIVE_AUTH_GATED rather than bare ACTIVE."""
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    assert 'expected_status="ACTIVE_AUTH_GATED" if e.get("scope")=="PRIVATE" else "ACTIVE"' in workflow
+    assert '{"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
+    # Preserve the fail-closed private path: publication is decided by the canonical
+    # projector, not by weakening PRIVATE into public inside the workflow.
+    assert 'elif e.get("scope")=="PRIVATE":' in workflow
+    assert 'assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"' in workflow
+    assert 'assert e["smart_link_status"]=="PENDING_PRIVATE_PROJECTION"' in workflow
+
