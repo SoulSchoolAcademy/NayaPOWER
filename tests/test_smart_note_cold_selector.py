@@ -144,3 +144,16 @@ def test_independent_behavior_job_downloads_lineage_batch_metadata():
     assert "name: smart-note-cold-successor-proof" in block
     assert 'count="$(cat capture-count.txt)"' in block
     assert 'man=json.load(open("batch-manifest.json"))' in block
+
+
+def test_fresh_lesson_capture_has_json_validated_retry():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    for marker in ('fresh-lesson-receipt${sfx}.json', 'fresh-lesson-receipt.json'):
+        mpos = wf.index(marker)
+        start = wf.rindex('fl_attempt=1', 0, mpos)
+        end = wf.index('fl_attempt=$((fl_attempt + 1))', mpos) + 40
+        block = wf[start:end]
+        assert 'json.load(' in block
+        assert 'not valid JSON' in block
+        assert 'FRESH_LESSON_ATTEMPT' in block
+        assert 'curl exit=' in block
