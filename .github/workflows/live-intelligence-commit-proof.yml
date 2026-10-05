@@ -602,17 +602,22 @@ jobs:
           json.dump(req,open(f"cold-verify-request-{i}.json","w"))
           json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open(f"cold-target-{i}.json","w"),indent=2)
           PY
-              for attempt in 1 2 3; do
-                if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"cold-verify-request-$i.json" "$RUNTIME_FUNCTION" > "cold-runtime-reread-$i.json"; then
+              attempt=1; max_attempts=5; backoff=5
+              while [[ $attempt -le $max_attempts ]]; do
+                if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"cold-verify-request-$i.json" "$RUNTIME_FUNCTION" > "cold-runtime-reread-$i.json" 2>"curl-stderr-$i.txt"; then
                   if [[ -s "cold-runtime-reread-$i.json" ]]; then
                     break
                   fi
+                  echo "COLD_RUNTIME_ATTEMPT_${attempt}: http ok but empty body"
+                else
+                  curl_exit=$?
+                  echo "COLD_RUNTIME_ATTEMPT_${attempt}: curl exit=${curl_exit} stderr=$(head -c 300 "curl-stderr-$i.txt")"
                 fi
-                if [[ "$attempt" -eq 3 ]]; then
-                  echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: three bounded attempts produced no JSON body"
+                if [[ $attempt -eq $max_attempts ]]; then
+                  echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: ${max_attempts} bounded attempts produced no JSON body"
                   exit 1
                 fi
-                sleep 2
+                sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
               done
               IDX="$i" python - <<'PY'
           import hashlib, json, os
@@ -799,20 +804,25 @@ jobs:
           json.dump(req,open("cold-verify-request.json","w"))
           json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
           PY
-          for attempt in 1 2 3; do
+          attempt=1; max_attempts=5; backoff=5
+          while [[ $attempt -le $max_attempts ]]; do
             if curl -fsS --connect-timeout 10 --max-time 30 -X POST \
               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
               -H "Content-Type: application/json" \
-              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json; then
+              --data-binary @cold-verify-request.json "$RUNTIME_FUNCTION" > cold-runtime-reread.json 2>curl-stderr.txt; then
               if [[ -s cold-runtime-reread.json ]]; then
                 break
               fi
+              echo "COLD_RUNTIME_ATTEMPT_${attempt}: http ok but empty body"
+            else
+              curl_exit=$?
+              echo "COLD_RUNTIME_ATTEMPT_${attempt}: curl exit=${curl_exit} stderr=$(head -c 300 curl-stderr.txt)"
             fi
-            if [[ "$attempt" -eq 3 ]]; then
-              echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: three bounded attempts produced no JSON body"
+            if [[ $attempt -eq $max_attempts ]]; then
+              echo "COLD_RUNTIME_VERIFY_EMPTY_RESPONSE: ${max_attempts} bounded attempts produced no JSON body"
               exit 1
             fi
-            sleep 2
+            sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
           done
           python - <<'PY'
           import hashlib, json
