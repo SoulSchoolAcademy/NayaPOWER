@@ -72,9 +72,16 @@ jobs:
               "gh", "pr", "list",
               "--repo", repo,
               "--state", "open",
-              "--limit", "100",
+              "--limit", "1000",
               "--json", "number,title,headRefOid,isDraft,mergeStateStatus,updatedAt",
           ))
+          # The repository has hundreds of active PRs. Never let current-truth
+          # silently become "first page truth" again. 1000 is an explicit
+          # operational ceiling; reaching it is a defect that must fail loudly.
+          if len(prs) >= 1000:
+              raise SystemExit(
+                  "OPEN_PR_ENUMERATION_CAP_REACHED: current-truth cannot prove a complete PR set"
+              )
           open_prs = [
               {
                   "number": p["number"],

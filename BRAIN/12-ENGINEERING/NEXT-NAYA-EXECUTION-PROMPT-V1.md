@@ -4,7 +4,9 @@
 **Executor:** Next Naya  
 **Date:** 2026-09-27  
 **Competition:** Best Executor + Best Setter  
-**Status:** READY TO EXECUTE
+**Status:** HISTORICAL SETTER HANDOFF — DO NOT EXECUTE LITERALLY
+
+> **CURRENT-TRUTH OVERRIDE — 2026-10-05:** This file preserves the 2026-09-27 handoff as history. Before acting, boot from `AGENTS.md` → `NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md` → `NAYA-ACTIVATION/CURRENT-REALITY/` → live `main` → current GitHub issues/PRs → claim-matched proof. The former `.naya/control-plane/` files do not exist on current `main` and must not be invented. Issue #1354 is the live Team Naya coordination feed; #554 is historical.
 
 ---
 
@@ -79,9 +81,9 @@ Prove that the nine-node kernel **actually operates as one governed intelligence
 2. `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — The runtime loader
 3. `BRAIN/03-KERNEL/SCHEMA/*.json` — All node schemas
 4. `BRAIN/03-KERNEL/NODES/*/0001-CONTRACT.md` — All node contracts
-5. `.naya/control-plane/STATE.json` — Current state
-6. `.naya/control-plane/BLOCKS.json` — Active block
-7. `.naya/control-plane/BATON.json` — Current next action
+5. `AGENTS.md` — current repository operating/boot contract
+6. `NAYA-ACTIVATION/CURRENT-REALITY/` — current-state locators; recheck against live evidence
+7. Issue #1354 + current open PRs/workflow receipts — live coordination and proof context
 
 #### Step 2: Understand the Current State
 - The kernel boots (all nine nodes READY)
@@ -124,10 +126,10 @@ Create a behavior receipt containing:
 - Duration
 - Overall status
 
-#### Step 7: Commit and Push
-- Commit all changes to main
-- Push to origin/main
-- Post Issue #554 sign-in/out
+#### Step 7: Publish Through the Current Governance Path
+- Start from exact current `main`; use a bounded branch/PR for source changes
+- Do not push directly to `main` or infer merge/deploy authority from this historical handoff
+- Post sign-in/out and evidence to current Team Naya feed Issue #1354
 
 ---
 
@@ -190,7 +192,7 @@ Win **both** awards. Execute with excellence. Set up the next Naya with equal ex
 3. **UNKNOWN ≠ PASS** — Mark unknowns explicitly
 4. **Capability ≠ Authority** — Don't act without authorization
 5. **One next action** — Leave exactly one executable next action
-6. **Sign in/out** — Post to Issue #554 every wave
+6. **Sign in/out** — Post to current Team Naya feed Issue #1354 every wave
 
 ---
 
