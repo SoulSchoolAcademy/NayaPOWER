@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
-  "inventory_file_count": 186,
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "9f28af1dc1017375605f59cd25e0be55bc794f63",
+  "inventory_file_count": 189,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 3,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 41,
+    "05-MEMORY": 44,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -587,6 +587,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md",
       "blob_sha": "305262427a264508f0fe1c35364962d10dbe5980",
       "size": 8450
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/HUMAN-EMPOWERMENT/ECOSYSTEM-REPORT/SN-0309/IB-SMART-NOTE-20261004-sn0309-ecosystem-report.md",
+      "blob_sha": "820938137f30124cdb7c46311d5479c92492f92b",
+      "size": 5885
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/HUMAN-EMPOWERMENT/QMAX-OPERATING-SYSTEM/SN-0307/IB-SMART-NOTE-20261004-sn0307-qmax-operating-system.md",
+      "blob_sha": "1ffb17dc309bf1ccee5eabc8a416065fac04efc1",
+      "size": 6905
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/HUMAN-EMPOWERMENT/SEVEN-DOORS/SN-0308/IB-SMART-NOTE-20261004-sn0308-seven-doors.md",
+      "blob_sha": "2ba166c620ae3e2f06a41581b7b1a04189c241c7",
+      "size": 7363
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
