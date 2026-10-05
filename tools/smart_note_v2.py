@@ -66,7 +66,7 @@ def registry_transaction(registry_path=None):
         finally:
             fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
 
-def changed_capture(paths):
+def changed_capture(paths, *, existing_only=False):
     """Return the sorted, deduplicated list of changed Smart Note capture paths.
 
     A commit may carry more than one capture (batch). The discovery seam is
@@ -74,15 +74,21 @@ def changed_capture(paths):
     order, each with its own identity (``SMART-NOTE-<capture_id>``). Failing
     closed on a batch would silently shelve valuable intelligence; fail-fast
     instead on any *individual* capture that is malformed, downstream.
+
+    Git diffs also report deleted capture paths. At runtime those files no
+    longer exist and therefore are not ingestible intelligence. Set
+    ``existing_only=True`` at the workflow/CLI boundary so deletions are
+    ignored rather than misclassified as malformed capture failures.
     """
     hits = []
     for raw in paths:
-        normalized = str(raw).replace("\\\\", "/")
+        normalized = str(raw).replace("\\", "/")
         p = Path(normalized)
         if normalized.startswith(".naya/capture/") and p.suffix == ".json":
+            if existing_only and not p.is_file():
+                continue
             hits.append(normalized)
     return sorted(set(hits))
-
 
 EDGE_VOCABULARY = {
     "DERIVED_FROM","SUPPORTS","CONTRADICTS","DEPENDS_ON","IMPLEMENTS","GOVERNS",
@@ -893,7 +899,7 @@ def main():
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
     if args.cmd == "discover":
-        for path in changed_capture(args.paths):
+        for path in changed_capture(args.paths, existing_only=True):
             print(path)
         return
     if args.cmd == "project":
