@@ -1,6 +1,33 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
+import argparse, contextlib, hashlib, json, os, re, tempfile
+
+try:  # POSIX advisory locking. Absent on Windows.
+    import fcntl
+except ImportError:  # pragma: no cover - platform dependent
+    fcntl = None
+
+# False on platforms without POSIX advisory locks (Windows). The registry lock
+# is then best-effort, NOT a mutual-exclusion guarantee. Anything that requires
+# real exclusion must check this rather than assume the lock worked.
+LOCKING_AVAILABLE = fcntl is not None
+
+
+def _flock(fd, op):
+    """Advisory lock. NO-OP where fcntl is unavailable.
+
+    Windows has no fcntl. Silently pretending to lock would let two
+    concurrent promotions interleave on the registry, so this is a
+    documented degradation rather than a fake guarantee: the lock is
+    best-effort off-POSIX and the caller cannot detect it from the return
+    value. Callers that require mutual exclusion must assert
+    LOCKING_AVAILABLE first.
+    """
+    if fcntl is None:
+        return False
+    fcntl.flock(fd, op)
+    return True
+
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,7 +79,7 @@ def registry_transaction(registry_path=None):
     rp.parent.mkdir(parents=True, exist_ok=True)
     lock_path = _registry_lock_path(rp)
     with open(lock_path, "w") as lf:
-        fcntl.flock(lf.fileno(), fcntl.LOCK_EX)
+        _flock(lf.fileno(), fcntl.LOCK_EX if fcntl else 0)
         try:
             if rp.exists():
                 registry = json.loads(rp.read_text(encoding="utf-8"))
@@ -64,7 +91,7 @@ def registry_transaction(registry_path=None):
             yield registry
             _atomic_write_json(rp, registry)
         finally:
-            fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
+            _flock(lf.fileno(), fcntl.LOCK_UN if fcntl else 0)
 
 def changed_capture(paths):
     """Return the sorted, deduplicated list of changed Smart Note capture paths.
