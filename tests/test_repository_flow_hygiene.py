@@ -67,3 +67,12 @@ def test_active_birth_prompt_does_not_restore_long_lived_supabase_user_token():
     )
     assert "SUPABASE_USER_ACCESS_TOKEN" not in prompt
     assert "OIDC" in prompt
+
+
+def test_active_runtime_surfaces_do_not_claim_deployment_pipeline_is_absent():
+    for rel in (
+        "BRAIN/12-ENGINEERING/verify-deployed-runtime-parity.py",
+        "supabase/functions/nayanet-cold-runtime-proof/index.ts",
+    ):
+        text = (ROOT / rel).read_text(encoding="utf-8").lower()
+        assert "this repository has no deployment pipeline" not in text
