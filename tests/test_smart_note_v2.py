@@ -374,3 +374,95 @@ def test_live_workflow_honors_private_publication_authorization_without_bare_act
     assert 'assert e["projection_status"]=="PRIVATE_RENDER_VERIFIED"' in workflow
     assert 'assert e["smart_link_status"]=="PENDING_PRIVATE_PROJECTION"' in workflow
 
+
+# --- Problem B regression: concurrent registry writers must not lose updates ---
+# 2026-10-05: update_registry() did read-modify-write with no lock; two
+# concurrent writers both allocated the same SN and the last writer won,
+# dropping the other's entry. The registry_transaction (flock + atomic
+# commit) serializes writers. These tests pin the fix.
+
+def _problem_b_fresh_module(tmp_path):
+    """Load smart_note_v2 with ROOT pointed at an isolated temp dir."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "smart_note_v2_isolated", ROOT / "tools" / "smart_note_v2.py")
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    m.ROOT = tmp_path
+    m.REGISTRY = tmp_path / ".naya" / "memory" / "smart-notes" / "index.json"
+    m.BRAIN_SMART_NOTE_ROOT = tmp_path / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
+    return m
+
+def _problem_b_inputs(m, tmp_path, ib_id):
+    capture = {"title": f"Note {ib_id}", "category": "SMART_NOTE",
+               "source": {"captured_at": "2026-10-05T00:00:00Z"}}
+    block = {"intelligent_block_id": ib_id,
+             "content": {"lesson": json.dumps({"lesson": f"lesson-{ib_id}"})},
+             "understanding_state": "CANDIDATE", "owner_scope": "PRIVATE"}
+    verify = {"persisted": {"block": block,
+              "event": {"id": "e1"}, "lineage": {"id": "l1"},
+              "relationship": {"relationship_id": "r1"},
+              "index": {"id": "i1"}, "checkpoint": {"id": "c1"},
+              "receipt": {"id": "rc1"}}}
+    proj = tmp_path / "proj.md"
+    proj.write_text("# test", encoding="utf-8")
+    return capture, verify, proj
+
+def test_concurrent_registry_writers_lose_no_updates(tmp_path):
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    errors = []
+    def writer(ib):
+        try:
+            cap, ver, proj = _problem_b_inputs(m, tmp_path, ib)
+            m.update_registry(cap, ver, proj)
+        except Exception as e:  # noqa: BLE001 — collected, asserted below
+            errors.append(repr(e))
+    threads = [threading.Thread(target=writer, args=(f"IB-RACE-{i}",))
+               for i in range(10)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    entries = reg["entries"]
+    assert len(entries) == 10, f"lost update: {len(entries)}/10 entries"
+    sn_ids = [e["smart_note_id"] for e in entries]
+    assert len(sn_ids) == len(set(sn_ids)), "duplicate Smart Note IDs allocated"
+    # Registry is valid JSON after every concurrent commit (atomic write).
+    assert reg["schema"] == "naya.smart-note-projection-index.v1"
+
+def test_concurrent_promotions_serialize_without_loss(tmp_path):
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    for i in range(3):
+        cap, ver, proj = _problem_b_inputs(m, tmp_path, f"IB-PROM-{i}")
+        m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    sn_ids = [e["smart_note_id"] for e in reg["entries"]]
+    types = ["behavioral_test", "independent_verification", "reproduction"]
+    bundle = [{"type": types[i % 3], "source": "s", "content_hash": f"h{i}",
+               "gatherer": f"g{i}", "gathered_at": "2026-10-05T00:00:00Z"}
+              for i in range(3)]
+    errors = []
+    def promoter(sn_id):
+        try:
+            m.promote_note(sn_id, bundle, "tester")
+        except Exception as e:  # noqa: BLE001
+            errors.append(repr(e))
+    threads = [threading.Thread(target=promoter, args=(s,)) for s in sn_ids]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg2 = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    verified = [e for e in reg2["entries"] if e.get("truth_state") == "VERIFIED"]
+    assert len(verified) == 3, f"promotion lost: {len(verified)}/3 verified"
+
+def test_idempotent_recapture_keeps_smart_note_id(tmp_path):
+    """Re-capturing the same intelligent block returns its SN (no sequence burn)."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-IDEMPOTENT")
+    first = m.update_registry(cap, ver, proj)
+    second = m.update_registry(cap, ver, proj)
+    assert first["smart_note_id"] == second["smart_note_id"]
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 1
