@@ -33,7 +33,7 @@ def test_combination_is_deterministic_weighted_score():
                   evidence=10, risk=0, cost=0, dependencies=0, reversibility=10,
                   compounding_continuity=10)
     assert combine_next_best_action_score(a, p) == pytest.approx(
-        sum(p.weights[d] * a.scores[d] for d in ACTION_DIMENSIONS)
+        sum(p.weights[d] * (10.0 - a.scores[d] if d in {"risk", "cost"} else a.scores[d]) for d in ACTION_DIMENSIONS)
     )
 
 
