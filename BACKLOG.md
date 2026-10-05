@@ -21,17 +21,9 @@
 - **Action:** Dispatch the Governed Production Promotion workflow with `confirm=DEPLOY`, `source_sha=a3ce52dc7a29fe37c220c5a595952ebc34f8f418`.
 - **Then:** fresh exact-main proof runs; Naya 1 takes the next first RED.
 
-### 2. Merge PR #1506 (SN-0356 — Dead Workers Still Vote) — HELD for parity
-- **Owner:** Naya 2 · **Status:** CI green, held
-- **Why held:** Merging now would move main and stale the `a3ce52dc` promotion target (the promotion workflow fails closed on SHA mismatch). Merges immediately after parity clears.
-
-### 3. Merge PR #1509 (Hub welcome seam) — HELD for parity
-- **Owner:** Naya 2 · **Status:** CI in progress, held
-- **Why held:** Same as #1506 — no main moves until parity clears.
-
-### 4. Shared backlog + automated activity feed — IN PROGRESS
-- **Owner:** Naya 2 · **Status:** building (this PR)
-- **What:** This file + a 15-minute workflow that logs commits/PRs/workflow results to `ACTIVITY-FEED.md`, mirrored by the Hub's Smart Feed room.
+### 2. Re-promote for parity at the new main (when ready)
+- **Owner:** Shawn (human gate) · **Status:** pending
+- **Why:** Main moved three PRs past the parity-cleared `a3ce52dc` (now `cc2465f6`). Next promotion re-closes parity; then the proof reruns.
 
 ---
 
@@ -88,6 +80,10 @@
 
 ## DONE — Recently completed (evidence)
 
+- 2026-10-05 — PR #1506 merged: SN-0356 (Dead Workers Still Vote) + registry smart_link fix.
+- 2026-10-05 — PR #1509 merged: Hub welcome seam (`nayanet.live` handoff).
+- 2026-10-05 — PR #1514 merged: shared `BACKLOG.md` + automated 15-min `ACTIVITY-FEED.md`.
+- 2026-10-05 — Production parity closed at `a3ce52dc` (Shawn's dispatch 37380538687); `live-connect` flipped green.
 - 2026-10-05 — Cloudflare dead-worker cleanup: 17 stale Workers disconnected, 0 Cloudflare checks on fresh pushes. (Shawn deleted; Naya 2 verified. Smart Note SN-0356.)
 - 2026-10-05 — Promotion workflow repair (#1496), cold-runtime hardening (#1497, #1501, #1502), SHA binding (#1499), replication-lag retry (#1500), unique fallback lesson (#1504).
 - 2026-10-05 — Current Truth PR-truncation repair (#1507); fallback machine_view contract fields (#1508).
