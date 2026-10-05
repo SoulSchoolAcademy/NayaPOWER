@@ -124,7 +124,8 @@ A cold Naya reads and verifies:
 
 1. **CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md** — governing principles
 2. **GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md** — authority and consent
-3. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
+3. **BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md** + **0004-nonstop-loop-v1.machine.json** — standing execution law and machine twin
+4. **0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md** — master design
 4. **ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md** — superbrain spec
 5. **BRAIN/MASTER-MAP.md** — this map
 6. **BRAIN/03-KERNEL/MANIFEST.json** + node contracts — declared kernel/runtime-binding state
