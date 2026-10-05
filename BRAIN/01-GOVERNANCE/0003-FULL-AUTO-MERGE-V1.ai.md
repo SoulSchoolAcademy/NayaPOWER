@@ -23,7 +23,7 @@ An agent seat may merge a pull request into `main` **without** the Human Directo
 | P2 | Head SHA verified against live GitHub state | `head_sha_verified_live: true` | Local SHAs are claims, not measurements |
 | P3 | No merge conflicts | `mergeable: true`, `has_conflicts: false` | `mergeable: false` or unknown → fail |
 | P4 | Branch base is the current main tip | `base_sha == main_tip_sha` | Both re-fetched live; stale pins fail |
-| P5 | Intent posted on #1354 before merging | `intent_comment_id` (integer), `intent_posted_at` | Announcement must precede the merge, not follow it |
+| P5 | Intent posted on #554 before merging | `intent_comment_id` (integer), `intent_posted_at` | Announcement must precede the merge, not follow it |
 | P6 | Deconfliction re-fetch immediately before merging | `deconfliction_refetch_at`, `same_topic_race: false` | If a same-topic seat comment landed since intent → stand down, do not merge |
 | P7 | Revertable in one commit | `revertable_one_commit: true` | Migrations, data changes, multi-commit surgery → human |
 | P8 | Scorecard receipt recorded and posted | `scorecard_receipt` (valid per §3), `receipt_posted_comment_id` | Receipt must exist AND be posted; a private scorecard is not a gate |
@@ -68,7 +68,7 @@ overrides a failed gate, however high the score.**
   decision wrong. A platitude is not a falsifier.
 
 **Step 5 — RECEIPT** (`step5_receipt`): `receipt_posted_comment_id` (integer —
-the #1354 comment where this receipt was posted), `decided_at`, `decided_by`
+the #554 comment where this receipt was posted), `decided_at`, `decided_by`
 (seat id), `decision_id` (unique). **No receipt, no merge — no exceptions.** A
 private scorecard is not a gate.
 
@@ -80,14 +80,14 @@ the five steps still required, kept light) or `FULL` (wide-blast-radius
 auto-mergeable changes: shared kernel, brain-wide index, multi-consumer
 surfaces). `FULL` additionally requires `named_risks` (non-empty array),
 `rollback_plan` (string), and `second_seat_ack_comment_id` (a second seat's
-acknowledgment on #1354, posted *before* merging). Sensitive surfaces named in
+acknowledgment on #554, posted *before* merging). Sensitive surfaces named in
 §4 (workflows, constitution, governance) never auto-merge at any tier — with
 the single recorded exception below.
 
 **H4 scope fields:** `lane` (the lane this merge belongs to), `owner_seat`
 (the lane's owning seat), `author_seat`, `author_lane`. If `lane !=
 author_lane`, `owning_seat_ack_comment_id` is required (the owning seat's public
-acknowledgment on #1354).
+acknowledgment on #554).
 
 A receipt that names no loser, scores nothing, states no falsifier, or was
 never posted is not a receipt.
@@ -118,12 +118,12 @@ The predicate treats a missing human-only flag as **true** (fail-closed): the ca
 
 ## 5. Merge procedure (the exact sequence)
 
-1. Score the merge decision; record the receipt (with H1 anti-theater fields and H4 lane/owner fields); post it to #1354 (this is the intent post — `intent_comment_id`). For FULL-tier merges, obtain the second seat's acknowledgment on #1354 first.
-2. Immediately before merging, re-fetch: PR state, head SHA, checks, base vs main tip, newest #1354 comments (deconfliction tail). Record `main_tip_at_merge`.
+1. Score the merge decision; record the receipt (with H1 anti-theater fields and H4 lane/owner fields); post it to #554 (this is the intent post — `intent_comment_id`). For FULL-tier merges, obtain the second seat's acknowledgment on #554 first.
+2. Immediately before merging, re-fetch: PR state, head SHA, checks, base vs main tip, newest #554 comments (deconfliction tail). Record `main_tip_at_merge`.
 3. Build `pr_state`; run `may_auto_merge(pr_state)`.
-4. If `(False, reasons)` → do not merge; post the reasons to #1354; the PR waits for the human or a repaired re-run.
-5. If `(True, [])` → merge via the API, then verify the merge commit landed on main and post the merge receipt to #1354.
-6. **H3 self-heal (standing):** the verification battery watches every main move. If this auto-merge turns the battery red, the merge is automatically reverted (helper: `tools/auto_merge_self_heal.py <merge_sha> <evidence.json>`) and the evidence + revert receipt are posted to #1354. Revert is automatic only while the merge is still the main tip; otherwise escalate to the human director. The loop heals itself; no human needed.
+4. If `(False, reasons)` → do not merge; post the reasons to #554; the PR waits for the human or a repaired re-run.
+5. If `(True, [])` → merge via the API, then verify the merge commit landed on main and post the merge receipt to #554.
+6. **H3 self-heal (standing):** the verification battery watches every main move. If this auto-merge turns the battery red, the merge is automatically reverted (helper: `tools/auto_merge_self_heal.py <merge_sha> <evidence.json>`) and the evidence + revert receipt are posted to #554. Revert is automatic only while the merge is still the main tip; otherwise escalate to the human director. The loop heals itself; no human needed.
 7. **H5 visibility:** every auto-merge is listed in the morning re-score message with its scorecard receipt linked. Full visibility, zero clicks required.
 8. After action: VERIFY → RECORD EVIDENCE → LEARN → ANNOUNCE (per `AGENTS.md` decision compression).
 
@@ -140,8 +140,8 @@ Principle: *"as long as you don't cheat and you really scorecard it — accurate
 
 - **H1 — SCORECARD THEATER.** A scorecard written to justify a pre-decided merge is cheating. The receipt must carry the strongest alternative and its falsifier, posted publicly where any seat can challenge. Rigor scales with blast radius (LIGHT vs FULL tiers, §3). Enforced by the predicate (`rigor_tier`, `strongest_alternative`, `falsifier`, FULL-tier extras).
 - **H2 — CONFLICTING OVERNIGHT MERGES.** Merges serialize. The predicate requires `main_tip_at_merge` (re-fetched immediately before the merge call) to equal the verified `main_tip_sha`; a moved tip fails the gate and forces re-verification. No blind merges. (Precondition P10.)
-- **H3 — BAD MERGE POISONS THE CANON.** The verification battery already watches every main move. Standing self-heal rule: an auto-merge that turns the battery red is automatically reverted with evidence posted to #1354 — helper `tools/auto_merge_self_heal.py`. Automatic only while the merge is still the tip; otherwise escalate. Post-merge obligation, encoded in `machine.json` and procedure step 6.
-- **H4 — SCOPE CREEP.** "The scorecard said so" is not a blank check. Every auto-merge PR states its `lane` and `owner_seat`; a merge outside the author's lane requires the owning seat's acknowledgment on #1354 first (`owning_seat_ack_comment_id`). Enforced by the predicate.
+- **H3 — BAD MERGE POISONS THE CANON.** The verification battery already watches every main move. Standing self-heal rule: an auto-merge that turns the battery red is automatically reverted with evidence posted to #554 — helper `tools/auto_merge_self_heal.py`. Automatic only while the merge is still the tip; otherwise escalate. Post-merge obligation, encoded in `machine.json` and procedure step 6.
+- **H4 — SCOPE CREEP.** "The scorecard said so" is not a blank check. Every auto-merge PR states its `lane` and `owner_seat`; a merge outside the author's lane requires the owning seat's acknowledgment on #554 first (`owning_seat_ack_comment_id`). Enforced by the predicate.
 - **H5 — LOST VISIBILITY.** Every auto-merge is reported in the morning re-score message with its scorecard receipt linked. Full visibility, zero clicks required. Post-merge obligation on the merging seat.
 
 ## 8. Amendment path
