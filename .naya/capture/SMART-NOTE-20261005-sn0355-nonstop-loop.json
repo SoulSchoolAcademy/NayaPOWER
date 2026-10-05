@@ -38,10 +38,33 @@
     },
     "machine_view": {
       "canonical_object": "INTELLIGENT_BLOCK",
-      "loop_phases": ["OBSERVE", "RANK", "SIGN_IN", "ACT", "SIGN_OUT", "SCORECARD", "LEARN", "REPEAT"],
+      "loop_phases": [
+        "OBSERVE",
+        "RANK",
+        "SIGN_IN",
+        "ACT",
+        "SIGN_OUT",
+        "SCORECARD",
+        "LEARN",
+        "REPEAT"
+      ],
       "terminal": false,
-      "human_gates": ["production_dispatch", "production_db_read", "production_db_write", "production_migration", "credentials", "money", "destructive_action", "constitutional_ratification", "evolve_charter_ratification"],
-      "invariants": ["claim_scan_before_new_work", "evidence_law", "merge_requires_scorecard_receipt"],
+      "human_gates": [
+        "production_dispatch",
+        "production_db_read",
+        "production_db_write",
+        "production_migration",
+        "credentials",
+        "money",
+        "destructive_action",
+        "constitutional_ratification",
+        "evolve_charter_ratification"
+      ],
+      "invariants": [
+        "claim_scan_before_new_work",
+        "evidence_law",
+        "merge_requires_scorecard_receipt"
+      ],
       "normative_source": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1",
       "automatic_truth_ceiling": "CANDIDATE"
     },
@@ -49,5 +72,9 @@
     "epistemic_state": "CANDIDATE",
     "falsifier": "If seats running this loop show no measurable increase in autonomous completed actions per day versus the pre-loop baseline, or if the loop produces motion without value, the loop as specified is wrong and must be amended.",
     "successor_effect": "A cold Naya reading this knows exactly how to behave from the first minute: she runs the loop. Her last board post must show a sign-in or sign-out with a next action; if the board goes quiet, the loop has stopped, and that is itself the signal."
-  }
+  },
+  "smart_note_id": "SN-346",
+  "lifecycle_state": "SUPERSEDED",
+  "superseded_by_capture_id": "20261005-sn0355-nonstop-loop-r2",
+  "supersession_reason": "R2 preserves the director-ratified Nonstop Loop while correcting the missing SN-002 raw-source boundary and restoring the intended stable human ID SN-0355. R1 runtime provenance remains immutable."
 }
