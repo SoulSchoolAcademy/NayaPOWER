@@ -169,6 +169,8 @@ def test_fallback_lesson_content_is_unique_per_run():
     # The content must be valid JSON (cold-successor does json.loads on it)
     assert 'lesson_content=json.dumps(' in wf
     assert '"machine_view"' in wf
+    assert '"raw_source_separate_from_distillation":True' in wf
+    assert '"automatic_truth_ceiling":"CANDIDATE"' in wf
 
 
 def test_cold_successor_lesson_parse_has_validity_gate():
