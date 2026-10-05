@@ -9,15 +9,23 @@ mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
 def test_general_capture_discovery_is_not_filename_hardcoded():
-    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == ".naya/capture/ANY-NAME.json"
+    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == [".naya/capture/ANY-NAME.json"]
 
-def test_capture_discovery_fails_closed_on_batch():
-    try:
-        mod.changed_capture([".naya/capture/a.json", ".naya/capture/b.json"])
-    except SystemExit as e:
-        assert "BATCH_NOT_YET_SUPPORTED" in str(e)
-    else:
-        raise AssertionError("expected fail-closed batch rejection")
+def test_capture_discovery_returns_batch_in_input_order():
+    assert mod.changed_capture([".naya/capture/a.json", ".naya/capture/b.json"]) == [
+        ".naya/capture/a.json", ".naya/capture/b.json"]
+
+def test_capture_discovery_batch_of_three():
+    paths = [".naya/capture/a.json", "README.md", ".naya/capture/b.json", ".naya/capture/c.json"]
+    assert mod.changed_capture(paths) == [
+        ".naya/capture/a.json", ".naya/capture/b.json", ".naya/capture/c.json"]
+
+def test_capture_discovery_empty_when_no_capture_paths():
+    assert mod.changed_capture(["README.md", "BRAIN/x.md"]) == []
+
+def test_capture_discovery_batch_ignores_non_capture_paths():
+    assert mod.changed_capture([".naya/capture/a.json", ".naya/other/b.json", ".naya/capture/c.txt"]) == [
+        ".naya/capture/a.json"]
 
 def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())

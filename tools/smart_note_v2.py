@@ -15,15 +15,22 @@ def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
 def changed_capture(paths):
+    """Discover changed Smart Note captures (batch-capable).
+
+    Returns a list of every `.naya/capture/*.json` path in the input, in
+    input order; an empty list means no capture changed. Callers iterate
+    the list, so a batch of N captures is discovered as N hits instead of
+    aborting. Single-capture callers observe the same first element as
+    before; the `discover` command prints one path per line, which is
+    byte-identical to the old output for zero or one capture.
+    """
     hits = []
     for raw in paths:
         normalized = str(raw).replace("\\\\", "/")
         p = Path(normalized)
         if normalized.startswith(".naya/capture/") and p.suffix == ".json":
             hits.append(normalized)
-    if len(hits) > 1:
-        raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
-    return hits[0] if hits else ""
+    return hits
 
 
 EDGE_VOCABULARY = {
@@ -746,7 +753,11 @@ def main():
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
     if args.cmd == "discover":
-        print(changed_capture(args.paths)); return
+        # Batch-capable: one discovered capture per line. Zero or one
+        # capture prints exactly what the old single-capture path printed.
+        for hit in changed_capture(args.paths):
+            print(hit)
+        return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
         p = render(cap, ver, args.private_root)
