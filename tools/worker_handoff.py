@@ -62,6 +62,13 @@ EVIDENCE_MARKERS = (
     "count:", "exit=", "run ", "log", "trace",
 )
 
+# Completion learning decision required by the Universal Worker Protocol.
+# Only explicit CAPTURE / NO_CAPTURE declarations count; prose mentioning
+# learning without a decision must not satisfy the gate.
+LEARNING_DECISION_RE = re.compile(
+    r"\blearning[_ ]decision\s*[:=]\s*(CAPTURE|NO_CAPTURE)\b", re.IGNORECASE
+)
+
 
 @dataclass
 class HandoffResult:
@@ -140,6 +147,15 @@ def check_handoff(text: str) -> HandoffResult:
     if asserts_done and not has_evidence:
         res.violations.append(
             "asserts completion with no evidence marker (sha/test/exit/measured)"
+        )
+
+    # The Universal Worker Protocol makes the learning decision part of
+    # completion: a meaningful completion must say what survives, or why
+    # nothing does. This consumes the existing handoff seam; it is not a new
+    # learning system.
+    if asserts_done and not LEARNING_DECISION_RE.search(text or ""):
+        res.violations.append(
+            "asserts completion without explicit learning decision (CAPTURE/NO_CAPTURE)"
         )
 
     # Honesty is rewarded, not penalised.
