@@ -34,6 +34,19 @@ def test_capture_discovery_dedupes_and_ignores_non_captures():
 def test_capture_discovery_empty_when_no_captures():
     assert mod.changed_capture(["README.md", "tools/x.py"]) == []
 
+
+def test_capture_discovery_existing_only_ignores_deleted_capture_paths(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    capture_dir = Path(".naya/capture")
+    capture_dir.mkdir(parents=True)
+    live = capture_dir / "live.json"
+    live.write_text("{}", encoding="utf-8")
+    deleted = capture_dir / "deleted.json"
+
+    assert mod.changed_capture(
+        [str(deleted), str(live)], existing_only=True
+    ) == [".naya/capture/live.json"]
+
 def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
