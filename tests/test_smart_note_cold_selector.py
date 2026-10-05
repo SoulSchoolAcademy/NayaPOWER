@@ -47,13 +47,15 @@ def test_dispatch_cold_successor_uses_persisted_lineage_when_no_projection_exist
 
 def test_cold_successor_runtime_reread_has_bounded_empty_body_retry():
     wf = WORKFLOW.read_text(encoding="utf-8")
-    start = wf.index('          for attempt in 1 2 3; do', wf.index('cold-verify-request.json'))
+    start = wf.index('attempt=1; max_attempts=5', wf.index('cold-verify-request.json'))
     end = wf.index('          python - <<\'PY\'', start)
     block = wf[start:end]
-    assert 'for attempt in 1 2 3; do' in block
+    assert 'max_attempts=5' in block
     assert 'cold-runtime-reread.json' in block
     assert 'if [[ -s cold-runtime-reread.json ]]' in block
-    assert 'sleep 2' in block
+    assert 'sleep $backoff' in block
+    assert 'backoff=$((backoff * 2))' in block
+    assert 'curl exit=' in block
     assert 'exit 1' in block
 
 
