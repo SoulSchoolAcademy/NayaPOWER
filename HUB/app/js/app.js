@@ -14,7 +14,7 @@
   /* ——— The one deployment seam ———
      WELCOME_URL: the canonical front door. The identity handoff
      arrives as ?name=…&alias=… (consumed once, then scrubbed). */
-  var WELCOME_URL = 'https://welcome.nayanet.app/';
+  var WELCOME_URL = 'https://nayanet.live/';
   var LS_IDENTITY = 'nayanet.identity.v1';
 
   function readIdentity() {
