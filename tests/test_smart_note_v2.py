@@ -594,3 +594,56 @@ def test_projection_path_advisory_fallback_unchanged(tmp_path):
     cap = _race_capture("IB-PROJ-ADV")
     p = m.projection_path(cap, "IB-PROJ-ADV")
     assert "/SN-001/" in str(p).replace("\\", "/")
+
+
+# --- Correction lifecycle: superseded intelligence remains provenance, not active retrieval ---
+def test_registry_records_capture_lifecycle_metadata(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-HISTORICAL")
+    cap["lifecycle_state"] = "SUPERSEDED"
+    cap["superseded_by_capture_id"] = "capture-r2"
+    cap["supersession_reason"] = "Corrected by R2."
+    entry = m.update_registry(cap, ver, proj)
+    assert entry["lifecycle_state"] == "SUPERSEDED"
+    assert entry["superseded_by_capture_id"] == "capture-r2"
+    assert entry["supersession_reason"] == "Corrected by R2."
+
+
+def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
+    old_page = tmp_path / "old.md"
+    new_page = tmp_path / "new.md"
+    old_page.write_text("# Old\n\n## IN A NUTSHELL\n\nold answer", encoding="utf-8")
+    new_page.write_text("# New\n\n## IN A NUTSHELL\n\nactive answer", encoding="utf-8")
+    registry_path = tmp_path / "index.json"
+    registry_path.write_text(json.dumps({
+        "entries": [
+            {
+                "smart_note_id": "SN-346",
+                "intelligent_block_id": "IB-OLD",
+                "title": "Nonstop Loop",
+                "category": "SYSTEM_INTELLIGENCE",
+                "topic": "GOVERNANCE",
+                "subtopic": "OPERATING_CODE",
+                "captured_at": "2026-10-05T23:59:59Z",
+                "projection_path": "old.md",
+                "lifecycle_state": "SUPERSEDED",
+            },
+            {
+                "smart_note_id": "SN-0355",
+                "intelligent_block_id": "IB-R2",
+                "title": "Nonstop Loop",
+                "category": "SYSTEM_INTELLIGENCE",
+                "topic": "GOVERNANCE",
+                "subtopic": "OPERATING_CODE",
+                "captured_at": "2026-10-05T00:00:00Z",
+                "projection_path": "new.md",
+                "lifecycle_state": "ACTIVE",
+            },
+        ]
+    }), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    result = mod.retrieve("nonstop loop governance")
+    assert result["retrieved"]["smart_note_id"] == "SN-0355"
+    assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
+    assert result["explanation"] == "active answer"

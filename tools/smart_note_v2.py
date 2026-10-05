@@ -328,6 +328,9 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         "topic": capture.get("topic", ""),
         "subtopic": capture.get("subtopic", ""),
         "truth_state": block["understanding_state"],
+        "lifecycle_state": str(capture.get("lifecycle_state", "ACTIVE")).upper(),
+        "superseded_by_capture_id": capture.get("superseded_by_capture_id"),
+        "supersession_reason": capture.get("supersession_reason"),
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
         "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
@@ -358,7 +361,10 @@ def retrieve(query):
     registry = load_json(REGISTRY)
     q = set(re.findall(r"[a-z0-9]+", query.lower()))
     ranked = []
+    inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
     for e in registry.get("entries", []):
+        if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
+            continue
         hay = " ".join([e.get("title",""),e.get("category",""),e.get("topic",""),e.get("subtopic","")," ".join(e.get("keywords",[]))]).lower()
         score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
         ranked.append((score, e))

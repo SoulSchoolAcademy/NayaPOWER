@@ -213,3 +213,64 @@ def test_baseline_entries_that_now_conform_are_retirable(tmp_path):
     good = check_capture(_write(tmp_path))
     stale = stale_baseline_entries([good], baseline=exempt | {Path(good.path).name})
     assert Path(good.path).name in stale
+
+
+# ==========================================================================
+# CORRECTION LIFECYCLE — historical defects stay immutable, not exempt
+# ==========================================================================
+def _write_correction_pair(tmp_path, *, successor_good=True, include_edge=True):
+    r1 = json.loads(json.dumps(MINIMAL))
+    r1["smart_note_id"] = "SN-100"
+    r1["capture_id"] = "capture-r1"
+    r1["lifecycle_state"] = "SUPERSEDED"
+    r1["superseded_by_capture_id"] = "capture-r2"
+    r1["supersession_reason"] = "R2 corrects a historical typed-machine defect."
+    del r1["intelligence"]["machine_view"]["raw_source_separate_from_distillation"]
+
+    r2 = json.loads(json.dumps(MINIMAL))
+    r2["smart_note_id"] = "SN-101"
+    r2["capture_id"] = "capture-r2"
+    r2["lifecycle_state"] = "ACTIVE"
+    if not successor_good:
+        del r2["intelligence"]["machine_view"]["raw_source_separate_from_distillation"]
+    r2["intelligence"]["connections"] = (
+        [{"type": "SUPERSEDES", "target": "SN-100 — historical R1"}]
+        if include_edge else []
+    )
+
+    (tmp_path / "SMART-NOTE-r1.json").write_text(
+        json.dumps(r1, indent=2), encoding="utf-8")
+    (tmp_path / "SMART-NOTE-r2.json").write_text(
+        json.dumps(r2, indent=2), encoding="utf-8")
+    return {r.capture_id: r for r in check_dir(tmp_path)}
+
+
+def test_superseded_historical_gap_requires_conformant_successor_and_edge(tmp_path):
+    results = _write_correction_pair(tmp_path)
+    assert results["capture-r1"].conformant, results["capture-r1"].violations
+    assert results["capture-r2"].conformant, results["capture-r2"].violations
+    assert any("historical superseded capture" in a
+               for a in results["capture-r1"].advisories)
+
+
+def test_superseded_label_cannot_bypass_gate_without_successor(tmp_path):
+    _write_correction_pair(tmp_path)
+    (tmp_path / "SMART-NOTE-r2.json").unlink()
+    results = check_dir(tmp_path)
+    assert len(results) == 1
+    assert not results[0].conformant
+    assert any("target not found" in v for v in results[0].violations)
+
+
+def test_superseded_label_cannot_point_to_nonconformant_successor(tmp_path):
+    results = _write_correction_pair(tmp_path, successor_good=False)
+    assert not results["capture-r2"].conformant
+    assert not results["capture-r1"].conformant
+    assert any("non-conformant" in v for v in results["capture-r1"].violations)
+
+
+def test_superseded_label_requires_explicit_supersedes_edge(tmp_path):
+    results = _write_correction_pair(tmp_path, include_edge=False)
+    assert results["capture-r2"].conformant
+    assert not results["capture-r1"].conformant
+    assert any("SUPERSEDES edge" in v for v in results["capture-r1"].violations)

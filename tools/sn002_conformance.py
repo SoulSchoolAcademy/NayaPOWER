@@ -75,6 +75,9 @@ class ConformanceResult:
 
     path: str
     smart_note_id: str | None = None
+    capture_id: str | None = None
+    lifecycle_state: str = "ACTIVE"
+    superseded_by_capture_id: str | None = None
     conformant: bool = False
     violations: list[str] = field(default_factory=list)
     advisories: list[str] = field(default_factory=list)
@@ -128,12 +131,43 @@ def check_capture(path: str | Path) -> ConformanceResult:
 
     if isinstance(doc, dict):
         res.smart_note_id = doc.get("smart_note_id")
+        res.capture_id = doc.get("capture_id")
+        res.lifecycle_state = str(doc.get("lifecycle_state", "ACTIVE")).upper()
+        res.superseded_by_capture_id = doc.get("superseded_by_capture_id")
 
     mv = _machine_view(doc, res.violations, res.advisories)
 
-    # Typed boolean. `is True` deliberately rejects 1, "true", "yes", truthy junk.
+    if res.lifecycle_state not in {"ACTIVE", "SUPERSEDED"}:
+        res.violations.append(
+            f"lifecycle_state must be 'ACTIVE' or 'SUPERSEDED', got {res.lifecycle_state!r}"
+        )
+
+    # Historical correction law: persisted R1 intelligence is immutable. A
+    # superseded capture may preserve the exact historical raw-source defect,
+    # but only when it points to a conformant successor. check_dir() verifies
+    # that cross-capture relationship and the successor's SUPERSEDES edge.
     raw = mv.get("raw_source_separate_from_distillation", None)
-    if raw is not True:
+    if res.lifecycle_state == "SUPERSEDED":
+        if not isinstance(res.superseded_by_capture_id, str) or not res.superseded_by_capture_id.strip():
+            res.violations.append(
+                "SUPERSEDED capture requires superseded_by_capture_id"
+            )
+        if not isinstance(doc.get("supersession_reason"), str) or not doc.get("supersession_reason", "").strip():
+            res.violations.append("SUPERSEDED capture requires supersession_reason")
+        if raw is None:
+            res.advisories.append(
+                "historical superseded capture preserves missing "
+                "machine_view.raw_source_separate_from_distillation; successor "
+                "must carry the corrected typed boundary"
+            )
+        elif raw is not True:
+            res.violations.append(
+                "if present on a SUPERSEDED capture, "
+                "machine_view.raw_source_separate_from_distillation must be "
+                f"boolean true, got {raw!r}"
+            )
+    elif raw is not True:
+        # Typed boolean. `is True` deliberately rejects 1, "true", "yes", truthy junk.
         res.violations.append(
             "machine_view.raw_source_separate_from_distillation must be the "
             f"boolean true, got {raw!r} (type {type(raw).__name__})"
@@ -151,11 +185,64 @@ def check_capture(path: str | Path) -> ConformanceResult:
 
 
 def check_dir(directory: str | Path) -> list[ConformanceResult]:
-    """Check every capture in a directory, sorted for deterministic output."""
-    return [
-        check_capture(f)
-        for f in sorted(Path(directory).glob("SMART-NOTE-*.json"))
-    ]
+    """Check every capture and close the supersession relation fail-closed.
+
+    A historical malformed capture cannot self-exempt merely by declaring
+    SUPERSEDED. Its named successor must exist in the same canonical capture
+    directory, must itself conform, must remain ACTIVE, and must carry an
+    explicit SUPERSEDES connection back to the historical capture/Smart Note.
+    """
+    files = sorted(Path(directory).glob("SMART-NOTE-*.json"))
+    results = [check_capture(f) for f in files]
+    by_capture_id = {r.capture_id: r for r in results if r.capture_id}
+    file_by_capture_id = {r.capture_id: f for r, f in zip(results, files) if r.capture_id}
+
+    for res in results:
+        if res.lifecycle_state != "SUPERSEDED":
+            continue
+        target_id = str(res.superseded_by_capture_id or "").strip()
+        successor = by_capture_id.get(target_id)
+        if successor is None:
+            res.violations.append(
+                f"superseded_by_capture_id target not found: {target_id!r}"
+            )
+        elif successor.lifecycle_state == "SUPERSEDED":
+            res.violations.append(
+                f"supersession target {target_id!r} is itself SUPERSEDED"
+            )
+        elif not successor.conformant:
+            res.violations.append(
+                f"supersession target {target_id!r} is non-conformant"
+            )
+        else:
+            try:
+                successor_doc = json.loads(
+                    file_by_capture_id[target_id].read_text(encoding="utf-8")
+                )
+            except (OSError, ValueError):
+                successor_doc = {}
+            connections = successor_doc.get("intelligence", {}).get("connections", [])
+            needles = {
+                str(res.capture_id or "").lower(),
+                str(res.smart_note_id or "").lower(),
+            }
+            has_edge = False
+            for edge in connections if isinstance(connections, list) else []:
+                if not isinstance(edge, dict):
+                    continue
+                rel = str(edge.get("type") or edge.get("relationship_type") or "").upper()
+                target = str(edge.get("target") or edge.get("target_block_id") or "").lower()
+                if rel == "SUPERSEDES" and any(n and n in target for n in needles):
+                    has_edge = True
+                    break
+            if not has_edge:
+                res.violations.append(
+                    f"supersession target {target_id!r} must carry an explicit "
+                    "SUPERSEDES edge to the historical capture or Smart Note ID"
+                )
+        res.conformant = not res.violations
+
+    return results
 
 
 def failures_only(results: list[ConformanceResult]) -> list[ConformanceResult]:

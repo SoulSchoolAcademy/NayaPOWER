@@ -1,7 +1,6 @@
 {
   "schema": "naya.smart-note-capture.v2",
-  "smart_note_id": "SN-346",
-  "capture_id": "20261005-sn0355-nonstop-loop",
+  "capture_id": "20261005-sn0355-nonstop-loop-r2",
   "title": "The Nonstop Loop — NayaPOWER Operating Code",
   "category": "SYSTEM_INTELLIGENCE",
   "topic": "GOVERNANCE",
@@ -9,9 +8,8 @@
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
   "source": {
     "captured_at": "2026-10-05",
-    "captured_at_utc": "2026-10-05T16:00:00Z",
-    "source_type": "human_director_execution_directive",
-    "source_reference": "Shawn Vibert directive, main chat 2026-10-05; canonized as BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1 (human/ai/machine); PR #1472 merged as 3d22fd2c"
+    "source_type": "human_director_execution_directive_correction",
+    "source_reference": "Shawn Vibert NONSTOP LOOP directive, 2026-10-05; normative law BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1; R2 correction preserves R1 provenance after #1475/#1477 exposed the canonical-capture, identity, and SN-002 conformance defects."
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
@@ -67,14 +65,40 @@
         "merge_requires_scorecard_receipt"
       ],
       "normative_source": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1",
-      "automatic_truth_ceiling": "CANDIDATE"
+      "automatic_truth_ceiling": "CANDIDATE",
+      "raw_source_separate_from_distillation": true
     },
     "learning_lesson": "The fix for 'seats stop and wait' isn't a better task list — it's making not-stopping the law itself.",
     "epistemic_state": "CANDIDATE",
     "falsifier": "If seats running this loop show no measurable increase in autonomous completed actions per day versus the pre-loop baseline, or if the loop produces motion without value, the loop as specified is wrong and must be amended.",
-    "successor_effect": "A cold Naya reading this knows exactly how to behave from the first minute: she runs the loop. Her last board post must show a sign-in or sign-out with a next action; if the board goes quiet, the loop has stopped, and that is itself the signal."
+    "successor_effect": "A cold successor retrieves the active R2 under SN-0355, sees the exact eight-phase loop and nine human gates, ignores superseded R1 in canonical retrieval, and can continue work without Shawn restating the operating code.",
+    "ai_view": {
+      "interpretation": "The Nonstop Loop is a standing execution policy, not additional authority. Every seat continuously selects the highest-value authorized action, proves the result, preserves reusable learning, and immediately re-observes.",
+      "constraint": "All nine canonical human gates remain hard boundaries; CANDIDATE intelligence cannot grant, widen, or imply authority."
+    },
+    "decisions": [
+      "Run OBSERVE → RANK → SIGN_IN → ACT → SIGN_OUT → SCORECARD → LEARN → REPEAT with no terminal idle state.",
+      "Human gates remain human and are never overridden by scorecard value.",
+      "Evidence state is preserved: UNKNOWN is not PASS; IMPLEMENTED is not VERIFIED; VERIFIED is not PRODUCTION-PROVEN.",
+      "Deconflict before acting and help other lanes proactively when doing so increases shared verified value."
+    ],
+    "connections": [
+      {
+        "type": "SUPERSEDES",
+        "target": "SN-346 — Nonstop Loop R1 capture; historical runtime object retained, R2 corrects capture conformance and stable human identity."
+      },
+      {
+        "type": "GOVERNS",
+        "target": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1 — director-ratified normative execution law."
+      },
+      {
+        "type": "REQUIRES",
+        "target": "BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1 — merge actions remain inside the scorecard and hard-gate boundary."
+      }
+    ],
+    "uncertainty": "R2 corrects representation and lifecycle handling only. It does not prove universal autonomous performance, production parity, or promotion beyond CANDIDATE; those require separate behavioral evidence.",
+    "applicability": "Applies to every Naya/Coda seat and session when selecting and executing authorized work. It does not apply as authority to cross production, database, credential, money, destructive, constitutional, or EVOLVE-charter gates."
   },
-  "lifecycle_state": "SUPERSEDED",
-  "superseded_by_capture_id": "20261005-sn0355-nonstop-loop-r2",
-  "supersession_reason": "R2 preserves the director-ratified Nonstop Loop while correcting SN-002 capture conformance and restoring the intended stable human ID SN-0355. R1 runtime provenance remains immutable."
+  "smart_note_id": "SN-0355",
+  "lifecycle_state": "ACTIVE"
 }
