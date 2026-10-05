@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `f6129a7d0dc1461b904cd72708a24a733be71bd1`  
-**Inventory file count:** 199  
+**Receipt basis commit:** `a324968bfe72ddd7722ea9eefa783463b4d3916d`  
+**Inventory file count:** 200  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 46 |
+| 05-MEMORY | 47 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -167,6 +167,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md` — `cc2bbd0ebf52` (3468 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md` — `2f1690a0c1b6` (4695 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md` — `8aa82b0ca02e` (5183 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md` — `22908fb620c1` (4124 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
