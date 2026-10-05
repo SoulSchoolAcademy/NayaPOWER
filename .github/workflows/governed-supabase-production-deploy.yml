@@ -359,12 +359,19 @@ jobs:
                   print("WAIT")
               elif newest.get("conclusion") == "success":
                   print("SUCCESS")
+              elif newest.get("conclusion") == "skipped":
+                  print("SKIPWAIT")
               else:
                   print("FAIL")
           PY
             )"
             case "$status" in
               SUCCESS) break ;;
+              SKIPWAIT)
+                # A skipped check is a placeholder verdict (e.g. "not associated with any
+                # Supabase Branch"), not a deployment failure. Keep polling for a real
+                # verdict; do NOT fail fast on the messenger.
+                ;;
               FAIL)
                 cat supabase-production-check.json
                 echo "Supabase GitHub Integration reported a failed production deployment check."
@@ -373,7 +380,13 @@ jobs:
             esac
             if [ "$i" -eq 90 ]; then
               echo "No successful NEW Supabase GitHub Integration check appeared after production promotion."
-              echo "One-time setup required: Project Settings > Integrations > GitHub Integration; connect this repository, working directory '.', production branch '$PRODUCTION_BRANCH', and enable Deploy to production."
+              if [ -f supabase-production-check.json ]; then
+                echo "Last observed Supabase check on the deployment commit:"
+                cat supabase-production-check.json
+              fi
+              echo "Diagnosis routing:"
+              echo "- If the check above concluded 'skipped' ('not associated with any Supabase Branch'): the git production branch lost its linked Supabase database branch. Fix in the Supabase dashboard: Project Settings > Integrations > GitHub Integration > re-associate the 'production' branch and re-enable Deploy to production (precedent: the 2026-09-29 repair, see issue #971)."
+              echo "- If no Supabase check ever appeared on the deployment commit: one-time setup required: Project Settings > Integrations > GitHub Integration; connect this repository, working directory '.', production branch '$PRODUCTION_BRANCH', and enable Deploy to production."
               exit 1
             fi
             sleep 10
@@ -559,7 +572,7 @@ jobs:
         run: |
           set -euo pipefail
           date -u +"%Y-%m-%dT%H:%M:%SZ" > connect-proof-dispatch-start.txt
-          gh workflow run "$CONNECT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+          gh workflow run "$CONNECT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"
           for i in $(seq 1 60); do
             runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$CONNECT_PROOF_WORKFLOW" --branch main --event workflow_dispatch --limit 30 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
             python - <<'PY' "$runs"
