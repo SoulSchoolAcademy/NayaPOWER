@@ -60,20 +60,27 @@
 - **Owner:** Naya 1 · **Status:** waiting on P0-1
 - **What:** The `cold-graph-control-treatment` RED from run 37377035191 gets diagnosed from fresh post-parity evidence — first RED, smallest fix.
 
+### 8. NayaNET viral invite system — the traffic engine — QUEUED (spec + design complete)
+- **Owner:** Naya 4 (spec/design) · **Status:** SPEC COMPLETE, DESIGN COMPLETE, implementation queued — does NOT jump the proof queue (parity → graph seam → brain chain first)
+- **What:** Email invite engine (contact import → one-tap send via the member's OWN Gmail/Outlook OAuth → ambassador link auto-embedded → sent/opened/clicked/joined/reward dashboard) + native OS share sheet on all boards. Passkey identity, Grow area inside Smart Connect, smart PWA prompt.
+- **Constraint (Shawn):** no platform posting APIs, no automation that risks bans/ToS/legal — only what's logical, doable, 100% within terms.
+- **Phase 2 ideas (designed, not started):** personal video invites, smart follow-up nudges, "bring your circle" group invites, network tree visualization, smart send-time.
+- **Detail:** Issue #1517.
+
 ---
 
 ## P2 — Future
 
-### 8. A→B→C multi-generation compounding proof
+### 9. A→B→C multi-generation compounding proof
 - **What:** Prove retained intelligence compounds across cold successors, not just retrieves.
 
-### 9. Negative-transfer refusal + authority non-inheritance proof
+### 10. Negative-transfer refusal + authority non-inheritance proof
 - **What:** The brain must demonstrate "useful here, not there" and that successors never inherit authority.
 
-### 10. Reduce branch/PR entropy while preserving history
+### 11. Reduce branch/PR entropy while preserving history
 - **What:** Prune stale branches (destructive — needs Shawn's confirmation per item).
 
-### 11. Hub implementation/release
+### 12. Hub implementation/release
 - **What:** The Hub's deployed surface lags its architecture. Ranked below brain-proof work until parity + compounding close.
 
 ---
