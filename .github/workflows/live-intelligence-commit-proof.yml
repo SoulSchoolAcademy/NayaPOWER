@@ -196,7 +196,20 @@ jobs:
                 if [[ -f "reconciliation${sfx}.json" ]]; then
                   cat "reconciliation${sfx}.json"
                 else
-                  if ! curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json"; then
+                  fl_attempt=1; fl_ok=0
+                  while [[ $fl_attempt -le 5 ]]; do
+                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json" 2>"fl-curl-stderr${sfx}.txt"; then
+                      if python3 -c "import json; json.load(open('fresh-lesson-receipt${sfx}.json'))" 2>/dev/null; then
+                        fl_ok=1
+                        break
+                      fi
+                      echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON (sfx ${sfx})"
+                    else
+                      echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$? (sfx ${sfx}); stderr: $(cat "fl-curl-stderr${sfx}.txt")"
+                    fi
+                    sleep $((5 * fl_attempt)); fl_attempt=$((fl_attempt + 1))
+                  done
+                  if [[ "$fl_ok" -eq 0 ]]; then
                     capture_ok=0
                   elif ! SFX="$sfx" python - <<'PY'
           import json, os
@@ -273,7 +286,7 @@ jobs:
               }
           else:
               lesson_key="NAYA-FLOW-LESSON-"+uuid.uuid4().hex
-              lesson_content="Preserve provenance before applying retained intelligence."
+              lesson_content=json.dumps({"naya_fallback_lesson":True,"text":"Preserve provenance before applying retained intelligence.","run_key":lesson_key,"machine_view":{}} )
               digest=hashlib.sha256(lesson_content.encode()).hexdigest()
               pathlib.Path("smart-note-expected.json").write_text(json.dumps({
                 "capture_path":"",
@@ -294,7 +307,22 @@ jobs:
           if [[ -f reconciliation.json ]]; then
             cat reconciliation.json
           else
-            curl -fsS -X POST               -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"               -H "Content-Type: application/json"               --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json
+            fl_attempt=1
+            while [[ $fl_attempt -le 5 ]]; do
+              if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json 2>fl-curl-stderr.txt; then
+                if python3 -c "import json; json.load(open('fresh-lesson-receipt.json'))" 2>/dev/null; then
+                  break
+                fi
+                echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON"
+              else
+                echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$?; stderr: $(cat fl-curl-stderr.txt)"
+              fi
+              if [[ $fl_attempt -eq 5 ]]; then
+                echo "FRESH_LESSON_FAILED: no valid JSON response after 5 attempts"
+                exit 1
+              fi
+              sleep $((5 * fl_attempt)); fl_attempt=$((fl_attempt + 1))
+            done
             python - <<'PY'
           import json
           r=json.load(open("fresh-lesson-receipt.json"))
@@ -691,7 +719,10 @@ jobs:
           assert block["content"]["lesson"]==expected["expected_content"]
           actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
           assert actual_hash==expected["content_hash"]
-          intel=json.loads(block["content"]["lesson"])
+          try:
+              intel=json.loads(block["content"]["lesson"])
+          except Exception as e:
+              raise SystemExit(f"COLD_LESSON_NOT_JSON: block {block.get('intelligent_block_id')} lesson prefix={str(block['content']['lesson'])[:120]!r} err={e}")
           machine=intel.get("machine_view",{})
           capture=json.load(open(expected["capture_path"]))
           lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
@@ -901,7 +932,10 @@ jobs:
           assert block["content"]["lesson"]==expected["expected_content"]
           actual_hash=hashlib.sha256(expected["expected_content"].encode()).hexdigest()
           assert actual_hash==expected["content_hash"]
-          intel=json.loads(block["content"]["lesson"])
+          try:
+              intel=json.loads(block["content"]["lesson"])
+          except Exception as e:
+              raise SystemExit(f"COLD_LESSON_NOT_JSON: block {block.get('intelligent_block_id')} lesson prefix={str(block['content']['lesson'])[:120]!r} err={e}")
           machine=intel.get("machine_view",{})
           comprehension={
             "schema":"naya.smart-note-cold-retrieval.v2",
