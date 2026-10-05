@@ -27,7 +27,7 @@ const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent
 // parity detector refuses to report a pass. An unstamped artifact is not a
 // governance failure - it is an absence of evidence - but it must never be
 // mistaken for one.
-const DEPLOYED_SOURCE_REVISION = "a3ce52dc7a29fe37c220c5a595952ebc34f8f418";
+const DEPLOYED_SOURCE_REVISION = "b3ed46c6c7d2b0494900db431fc627a5bcf07eb9";
 
 const json = (body: unknown, status = 200) => new Response(
   JSON.stringify({ deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object) }),

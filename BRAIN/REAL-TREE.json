@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "1e1f27e116f0e724e9e2c3fd8c509b5b87504186",
-  "inventory_file_count": 200,
+  "receipt_basis_commit": "a3ce52dc7a29fe37c220c5a595952ebc34f8f418",
+  "inventory_file_count": 201,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 10,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 47,
+    "05-MEMORY": 48,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -642,6 +642,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
       "blob_sha": "c79132f6a7177f3b6f2bee8d4a4a00a1d8843f8b",
       "size": 13685
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/OPERATING-INTELLIGENCE/CLOUDFLARE-CONNECTION-HYGIENE/SN-0356/IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote.md",
+      "blob_sha": "9d8fd7cbc8eec33865c859b7f5375520aa8eacac",
+      "size": 4559
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md",
