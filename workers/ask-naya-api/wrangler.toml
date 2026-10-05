@@ -1,0 +1,25 @@
+name = "ask-naya-api"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# --- Deploy-time bindings (placeholders in scaffold; real IDs at deploy) ---
+# [[r2_buckets]]
+# binding = "BRAIN_INDEX_BUCKET"   # brain-index/<sha>.json snapshots + latest pointer
+# bucket_name = "naya-brain-index"
+#
+# [[r2_buckets]]
+# binding = "VOICE_CACHE_BUCKET"   # voice/<sha256(speakText+voicePin)>.mp3
+# bucket_name = "naya-voice-cache"
+#
+# [[kv_namespaces]]
+# binding = "SESSION_KV"           # rolling session context, 24h TTL
+# id = "REPLACE_AT_DEPLOY"
+
+[vars]
+ALLOWED_ORIGINS = "https://ask.nayapower.workers.dev,https://powercasts.nayapower.workers.dev"
+VOICE_PIN = "chatterbox-naya-ref-v1"
+INDEX_VERSION = "scaffold-mock"
+
+# Secrets (wrangler secret put …) — NEVER in the repo:
+#   VOICE_RENDER_URL   — https endpoint of the serverless-GPU Chatterbox render service
+#   VOICE_RENDER_TOKEN — bearer token for the render service (if required)
