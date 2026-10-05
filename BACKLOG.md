@@ -10,6 +10,7 @@
 - **Priorities:** `P0` = active or blocked-now · `P1` = next up · `P2` = future · `IDEA` = under consideration, not committed.
 - **Blocked** items name their blocker explicitly. No item sits in P0 blocked without a named unblock action.
 - This file is a **projection/index**, not independent authority. Every consequential item should resolve to an Issue/PR/receipt/contract/current-truth source. If this file conflicts with live canonical evidence, live canonical evidence wins.
+- **Freshness law:** never treat a SHA written inside this file as the live tip merely because it is written here. A commit that updates this projection changes `main` by definition. Resolve live refs at decision time; embedded SHAs are evidence snapshots only.
 - This file is the queue, not the archive. Git history preserves prior projections; Issues/contracts/receipts preserve detailed authority and evidence.
 
 ---
@@ -18,7 +19,8 @@
 
 ### 1. Re-establish exact-current production parity — HUMAN DEPLOY GATE
 - **Owner:** Shawn for consequential production authorization · **Status:** waiting on exact-current promotion
-- **Current main:** `69fc9371ef6907d623d3c2e91fcea8c4128fdfe3`
+- **Promotion target:** resolve live `main` at authorization time. This projection must not hardcode its own containing `main` SHA as timeless truth.
+- **Last reconciled source snapshot before this projection merge:** `69fc9371ef6907d623d3c2e91fcea8c4128fdfe3`
 - **Current production stamp:** `e727720424e237f1e0264a39598365ef986c7670`, source `4a2f728239c0e404205f0cc590766ceb7e7b7c28`
 - **Why:** exact-SHA proof law requires current production/source parity before downstream runtime REDs can be promoted to current truth.
 - **Boundary:** only the Human Director may authorize the exact production promotion. Team Naya may prepare/verify but must not infer `DEPLOY`.
@@ -53,7 +55,7 @@
 - **Detail:** Issue #1513.
 
 ### 7. Backlog / projection authority reconciliation — Issue #1519
-- **Owner:** foundation/ops lane · **Status:** PARTIAL — activity-feed mutation fixed by merged #1522; backlog authority wording repaired by this PR.
+- **Owner:** foundation/ops lane · **Status:** SOURCE FIXED — #1522 removed feed write authority; merged #1523 repaired backlog authority. Cold-successor/work-state proof remains.
 - **What:** preserve the simple Backlog + Activity experience while enforcing one-owner/many-projections law.
 - **Proof:** feed refresh no longer has write authority to `main`; backlog explicitly defers to live canonical evidence/Issues/PRs/contracts/receipts.
 
