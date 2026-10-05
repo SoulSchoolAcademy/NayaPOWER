@@ -1,0 +1,46 @@
+{
+ "schema": "naya.smart-note-capture.v2",
+ "capture_id": "SMART-NOTE-20261005-sn0356-dead-workers-still-vote",
+ "title": "Dead Workers Still Vote — Cloudflare Connection Hygiene",
+ "category": "GOVERNANCE",
+ "topic": "OPERATING-INTELLIGENCE",
+ "subtopic": "CLOUDFLARE-CONNECTION-HYGIENE",
+ "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+ "source": {
+  "captured_by": "Naya 2",
+  "captured_at": "2026-10-05",
+  "director": "Shawn Vibert"
+ },
+ "projection": {
+  "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/OPERATING-INTELLIGENCE/CLOUDFLARE-CONNECTION-HYGIENE/SN-0356/IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote.md",
+  "status": "GITHUB_BRAIN_PUBLISHED"
+ },
+ "intelligence": {
+  "essence": "A Cloudflare Worker wired to a GitHub repo keeps building on every push until its wire is cut — an unused account is not a disconnected account. Only current, relevant workers stay connected.",
+  "human_view": {
+   "meaning": "Shawn thought unused old workers were harmless. They posted 17 failing checks on every push, burying real signal. He deleted all 17; the next push came back clean."
+  },
+  "simple_view": "Old lamps still buzz when you flip the switch. Unplug what you don't use.",
+  "naya_view": "Unused != disconnected. Audit connected workers like open gates; cut the wire immediately for anything not current.",
+  "ai_view": "Integration currency is a first-class hygiene dimension: enumerate connected integrations, verify each is current and relevant, remove the rest.",
+  "machine_view": {
+   "law": "DEAD_WORKERS_STILL_VOTE",
+   "rule": "Only current, relevant Cloudflare workers remain connected to the repository.",
+   "raw_source_separate_from_distillation": true,
+   "automatic_truth_ceiling": "CANDIDATE"
+  },
+  "decisions": [
+   "Remove any Cloudflare worker not current and relevant, immediately"
+  ],
+  "connections": [
+   "SN-002 capture conformance",
+   "CI signal hygiene"
+  ],
+  "uncertainty": "None material; mechanism proven by removal test 17->0.",
+  "applicability": "Any GitHub-connected build integration (Cloudflare Workers/Pages, and by extension similar per-project webhooks).",
+  "learning_lesson": "Not using an account does not disconnect its integrations.",
+  "successor_effect": "Future seats check integration currency before trusting a clean check surface."
+ },
+ "smart_note_id": "SN-0356",
+ "lifecycle_state": "ACTIVE"
+}
