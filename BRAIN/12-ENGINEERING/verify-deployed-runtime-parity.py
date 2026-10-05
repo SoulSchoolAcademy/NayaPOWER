@@ -3,10 +3,10 @@
 
 WHY THIS EXISTS
 ---------------
-This repository has no deployment pipeline: no `functions deploy` in any
-workflow, no SUPABASE_ACCESS_TOKEN (the management token deploy requires), no
-supabase/config.toml. Every edge function reaches runtime through an untracked
-human action.
+This repository now has a governed production-promotion pipeline. Runtime parity
+still must never be inferred from repository source alone: every deployed
+component must be bound to the authorized source/artifact and independently
+observed at runtime. Historical deployments may predate the governed path.
 
 Consequence: a merged source fix can be cited as fixed and never reach runtime,
 and nothing in the repo would detect it. The CONNECT authority-boundary evidence
