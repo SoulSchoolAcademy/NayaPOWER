@@ -5396,6 +5396,28 @@ window.NayaRooms=window.NayaRooms||{};window.NayaRooms.settings=SettingsRoom;
   const R = window.NayaRuntime;
   const Router = window.NayaRouter;
 
+  // —— Front-door seam (scorecard C, 2026-10-05): entry lives outside the
+  // Hub at the canonical front door. If this device/browser carries no
+  // identity (no handoff, nothing remembered, no session), send the
+  // visitor back to the front door instead of booting the Hub.
+  const WELCOME_URL = 'https://nayanet.live/';
+  function hubHasIdentity() {
+    try {
+      var qp = new URLSearchParams(location.search);
+      if ((qp.get('name') || '').trim()) return true;
+    } catch (e) {}
+    try {
+      if ((localStorage.getItem('nayanet_smart_name') || '').trim()) return true;
+    } catch (e) {}
+    try {
+      var snap = R.identitySnapshot && R.identitySnapshot();
+      if (snap && snap.display_name && snap.display_name !== 'You') return true;
+    } catch (e) {}
+    return false;
+  }
+  if (!hubHasIdentity()) { location.href = WELCOME_URL; return; }
+  window.NayaWelcomeUrl = WELCOME_URL;
+
   // Rooms that live as standalone pages (same directory).
   const EXTERNAL_ROOMS = { today: 'today.html', reports: 'reports.html', connect: 'connect.html', ledger: 'ledger.html', lists: 'lists.html' };
   function goExternal(room) {
