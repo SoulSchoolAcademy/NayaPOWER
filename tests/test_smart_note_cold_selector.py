@@ -179,3 +179,26 @@ def test_cold_successor_lesson_parse_has_validity_gate():
     wf = WORKFLOW.read_text(encoding="utf-8")
     assert wf.count('COLD_LESSON_NOT_JSON') == 2
     assert 'lesson prefix=' in wf
+
+def test_single_cold_successor_distinguishes_active_from_superseded_lifecycle():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    start = wf.index('          machine=intel.get("machine_view",{})', wf.index('cold-verify-request.json'))
+    end = wf.index('          json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)', start)
+    block = wf[start:end]
+    assert 'lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()' in block
+    assert 'if lifecycle_state=="ACTIVE":' in block
+    assert 'from tools.sn002_conformance import check_dir' in block
+    assert 'resolve_runtime_connections(successor_doc,reg)' in block
+    assert 'superseded_excluded_from_active_retrieval' in block
+
+
+def test_single_independent_behavior_verification_is_lifecycle_aware():
+    wf = WORKFLOW.read_text(encoding="utf-8")
+    start = wf.index('          c=json.load(open("cold-retrieval-proof.json"))', wf.index("  independent-behavior-verification:"))
+    end = wf.index('          json.dump(result,open("independent-behavior-verification.json","w"),indent=2)', start)
+    block = wf[start:end]
+    assert 'if lifecycle=="ACTIVE":' in block
+    assert 'elif lifecycle=="SUPERSEDED":' in block
+    assert '"NOT_APPLICABLE_HISTORICAL_OBJECT"' in block
+    assert 'superseded_retrieval_refusal_verified' in block
+
