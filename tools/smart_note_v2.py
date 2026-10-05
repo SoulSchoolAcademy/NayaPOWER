@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +13,58 @@ def slug(s):
 
 def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
+
+def _registry_lock_path(registry_path):
+    rp = Path(registry_path)
+    return rp.parent / (rp.stem + ".lock")
+
+def _atomic_write_json(path, obj):
+    """Write JSON atomically: temp file in the same directory + os.replace.
+
+    Readers never observe a torn file, even if the writer crashes mid-write.
+    """
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(p.parent), prefix=p.stem + ".", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, p)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+@contextlib.contextmanager
+def registry_transaction(registry_path=None):
+    """Exclusive read-modify-write transaction on the Smart Note registry.
+
+    Holds an flock(LOCK_EX) across the whole transaction so concurrent
+    writers serialize; the commit is atomic (temp + os.replace). Yields
+    the in-memory registry dict; on clean exit the (possibly mutated)
+    dict is committed. On exception the lock releases with no write.
+    """
+    rp = Path(registry_path) if registry_path else REGISTRY
+    rp.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = _registry_lock_path(rp)
+    with open(lock_path, "w") as lf:
+        fcntl.flock(lf.fileno(), fcntl.LOCK_EX)
+        try:
+            if rp.exists():
+                registry = json.loads(rp.read_text(encoding="utf-8"))
+            else:
+                registry = {"schema": "naya.smart-note-projection-index.v1",
+                            "version": "1.0",
+                            "source_of_truth": "runtime_intelligent_block",
+                            "entries": []}
+            yield registry
+            _atomic_write_json(rp, registry)
+        finally:
+            fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
 
 def changed_capture(paths):
     """Return the sorted, deduplicated list of changed Smart Note capture paths.
@@ -73,19 +125,35 @@ def resolve_runtime_connections(capture, registry):
         out.append({"target_block_id": resolved, "relationship_type": rel})
     return out
 
-def allocate_smart_note_id(capture, ib):
+def _allocate_from_registry(capture, ib, registry):
+    """Pure SN allocation against an already-loaded registry.
+
+    Call inside a registry_transaction so the read-allocate-write is atomic.
+    Idempotent: a re-capture of the same intelligent block returns its
+    existing SN instead of consuming a new sequence number.
+    """
     explicit = str(capture.get("smart_note_id") or "").strip().upper()
     if re.fullmatch(r"SN-\d{3,}", explicit):
         return explicit
+    existing = next((e for e in registry.get("entries", []) if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
+    if existing:
+        return existing["smart_note_id"]
+    seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
+    return f"SN-{seq:03d}"
+
+def allocate_smart_note_id(capture, ib):
+    """Advisory SN allocation outside a transaction (e.g. projection_path).
+
+    Takes a brief read of the registry. The authoritative allocation happens
+    inside update_registry's transaction; a concurrent writer may advance the
+    sequence between this advisory read and the commit, so callers must treat
+    the result as advisory, not reserved.
+    """
     if REGISTRY.exists():
         registry = load_json(REGISTRY)
-        existing = next((e for e in registry.get("entries", []) if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
-        if existing:
-            return existing["smart_note_id"]
-        seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
     else:
-        seq = 1
-    return f"SN-{seq:03d}"
+        registry = {"entries": []}
+    return _allocate_from_registry(capture, ib, registry)
 
 def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
     captured = str(capture.get("captured_at_utc") or capture.get("source", {}).get("captured_at_utc") or capture["source"]["captured_at"])
@@ -191,12 +259,15 @@ def _canonical_content_hash(lesson: str) -> str:
 
 
 def update_registry(capture, verify, projection):
-    REGISTRY.parent.mkdir(parents=True, exist_ok=True)
-    registry = {"schema":"naya.smart-note-projection-index.v1","version":"1.0","source_of_truth":"runtime_intelligent_block","entries":[]}
-    if REGISTRY.exists():
-        registry = load_json(REGISTRY)
+    # The whole read-allocate-modify-write runs inside one exclusive
+    # transaction: concurrent writers serialize, the commit is atomic.
+    # (Problem B fix — the pre-lock code lost updates under concurrency.)
+    with registry_transaction() as registry:
+        return _update_registry_locked(capture, verify, projection, registry)
+
+def _update_registry_locked(capture, verify, projection, registry):
     block = verify["persisted"]["block"]
-    sn_id = allocate_smart_note_id(capture, block["intelligent_block_id"])
+    sn_id = _allocate_from_registry(capture, block["intelligent_block_id"], registry)
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
@@ -230,7 +301,7 @@ def update_registry(capture, verify, projection):
         policy = registry.setdefault("sequence_policy", {"human_id_format":"SN-###"})
         policy["next_sequence"] = max(int(policy.get("next_sequence", 1)), int(seq_match.group(1)) + 1)
         policy["purpose"] = "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance."
-    REGISTRY.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
 def retrieve(query):
@@ -583,15 +654,29 @@ def promote_note(note_id, evidence_bundle, promoter, registry_path=None):
     }
     receipt["receipt_hash"] = _hash_receipt(receipt)
 
-    # Update registry
-    entry["truth_state"] = "VERIFIED"
-    entry["promotion_receipt"] = {
-        "promoted_at": receipt["promoted_at"],
-        "promoter": promoter,
-        "receipt_hash": receipt["receipt_hash"],
-        "threshold_version": PROMOTION_THRESHOLD_VERSION,
-    }
-    reg_path.write_text(json.dumps(registry, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    # Update registry inside an exclusive transaction (Problem B fix):
+    # re-read under the lock, re-find the entry, mutate, atomic commit.
+    # Concurrent promotions serialize; the VERIFIED mutation is idempotent.
+    with registry_transaction(reg_path) as locked_registry:
+        locked_entry = None
+        for e in locked_registry.get("entries", []):
+            if str(e.get("smart_note_id", "")).upper() == nid_up:
+                locked_entry = e
+                break
+        if locked_entry is None:
+            for e in locked_registry.get("entries", []):
+                if str(e.get("intelligent_block_id", "")).upper() == nid_up:
+                    locked_entry = e
+                    break
+        if locked_entry is None:
+            raise SystemExit(f"PROMOTION_NOTE_NOT_FOUND: {note_id}")
+        locked_entry["truth_state"] = "VERIFIED"
+        locked_entry["promotion_receipt"] = {
+            "promoted_at": receipt["promoted_at"],
+            "promoter": promoter,
+            "receipt_hash": receipt["receipt_hash"],
+            "threshold_version": PROMOTION_THRESHOLD_VERSION,
+        }
 
     rp = _write_record(receipt, entry.get("smart_note_id"), "receipt")
     return {"promoted": True, "record": receipt, "record_path": str(rp)}
