@@ -17,7 +17,7 @@ Machine contract: `NAYA-DESIGN-INTELLIGENCE-V1.json`
 
 This compiles Human / Naya / AI / Machine / Proof views, intent interpretation, preservation, causal design, scorecarding, verified learning and successor continuity.
 
-**Standing finding rule:** materially not-right design/system findings go to Team Naya Issue #554 with evidence.
+**Standing finding rule:** materially not-right design/system findings go to Team Naya Issue #1354 with evidence.
 
 ## Design system
 Use the canonical master design contract and existing tokens/components rather than inventing a parallel design language.
