@@ -343,3 +343,5 @@ Use the existing Decision Value Calculus and Scorecard Law. Do not create a comp
 **The expected behavior is: lead the show, prove the work, learn, and keep going.**
 
 Canonical Smart Note: **SN-0357 — Self-Directed Intelligence Under Governance**. Related canonical decision seam: **NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md**.
+
+Canonical Smart Link: `https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md`.
