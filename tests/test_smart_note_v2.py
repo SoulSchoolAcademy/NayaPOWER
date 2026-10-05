@@ -9,15 +9,30 @@ mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
 def test_general_capture_discovery_is_not_filename_hardcoded():
-    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == ".naya/capture/ANY-NAME.json"
+    assert mod.changed_capture(["README.md", ".naya/capture/ANY-NAME.json"]) == [".naya/capture/ANY-NAME.json"]
 
-def test_capture_discovery_fails_closed_on_batch():
-    try:
-        mod.changed_capture([".naya/capture/a.json", ".naya/capture/b.json"])
-    except SystemExit as e:
-        assert "BATCH_NOT_YET_SUPPORTED" in str(e)
-    else:
-        raise AssertionError("expected fail-closed batch rejection")
+def test_capture_discovery_returns_batch_sorted_not_aborted():
+    # Problem A repair (GAP-20): a batch is discovered, never aborted. The
+    # proof workflow processes each capture in sorted order, each with its
+    # own SMART-NOTE-<capture_id> identity. This test fails on the pre-repair
+    # code (SystemExit SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED).
+    assert mod.changed_capture([
+        ".naya/capture/c.json",
+        "README.md",
+        ".naya/capture/a.json",
+        ".naya/capture/b.json",
+    ]) == [".naya/capture/a.json", ".naya/capture/b.json", ".naya/capture/c.json"]
+
+def test_capture_discovery_dedupes_and_ignores_non_captures():
+    assert mod.changed_capture([
+        ".naya/capture/b.json",
+        ".naya/capture/b.json",
+        ".naya/capture/x.md",
+        "BRAIN/05-MEMORY/SMART-NOTES/a.md",
+    ]) == [".naya/capture/b.json"]
+
+def test_capture_discovery_empty_when_no_captures():
+    assert mod.changed_capture(["README.md", "tools/x.py"]) == []
 
 def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
