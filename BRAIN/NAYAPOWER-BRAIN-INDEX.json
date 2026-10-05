@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.index.v1",
   "schema_version": "1.0",
-  "generated_at": "2026-10-04",
+  "generated_at": "2026-10-05",
   "status": "POST_NORTH_STAR_BOUNDED_ACCEPTANCE_NINE_NODE_LIVE_PROOF",
   "ratification": "HUMAN_DIRECTOR_REQUIRED",
   "north_star": "MAXIMUM VERIFIED HUMAN VALUE PER MOMENT, WITH COMPOUNDING INTELLIGENCE AND CONTINUITY.",
@@ -179,7 +179,7 @@
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-  "inventory_file_count": 188,
+  "inventory_file_count": 190,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
     "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
@@ -262,7 +262,7 @@
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED_CURRENT_MAIN; LIVE_KNOW_RUNTIME_STALE_TO_CURRENT_SELECTOR; PRODUCTION_BEHAVIOR_NOT_YET_REPROVEN"
   },
-  "last_reconciled_main": "580bfdddae71ceebfc7a8441d909117ecd9a6271",
+  "last_reconciled_main": "d986d0b275821df490e2f5827e0872e92b69ee4b",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -297,8 +297,8 @@
   "graph_relationship_contract_v2": "BRAIN/04-INTELLIGENCE/GRAPH/0003-GRAPH-RELATIONSHIP-CONTRACT-V2.json",
   "reconciliation": {
     "ledger": ".naya/project-intelligence/brain-reconciliation-ledger-f648833b.md",
-    "reconciled_at": "2026-10-04",
-    "basis_commit": "580bfdddae71ceebfc7a8441d909117ecd9a6271",
+    "reconciled_at": "2026-10-05",
+    "basis_commit": "d986d0b275821df490e2f5827e0872e92b69ee4b",
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-SPEC": 15,
@@ -306,7 +306,7 @@
       "02-ARCHITECTURE": 5,
       "03-KERNEL": 28,
       "04-INTELLIGENCE": 24,
-      "05-MEMORY": 42,
+      "05-MEMORY": 44,
       "06-PROOF": 10,
       "07-LEARNING": 2,
       "08-SUCCESSION": 2,
