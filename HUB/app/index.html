@@ -1155,7 +1155,10 @@ svg.jewel { display: block; }
 @media (max-width: 640px) {
   .board-top-actions {
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* wrap (not nowrap): 4 buttons overflow ~390px viewports and .shell clips
+       overflow-x — wrapping keeps every button reachable. No-op when the row
+       fits (Red Team 2026-10-04). */
+    flex-wrap: wrap;
     gap: 6px;
   }
   .board-top-actions .action {
