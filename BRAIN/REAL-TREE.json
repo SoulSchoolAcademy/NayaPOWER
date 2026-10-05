@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "1b9aa828c88ca125cdd306b852de7f168c6e9eab",
-  "inventory_file_count": 192,
+  "receipt_basis_commit": "eed788e7effc62fcece3d425d05a219aa0710229",
+  "inventory_file_count": 195,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 6,
+    "01-GOVERNANCE": 7,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 43,
+    "05-MEMORY": 45,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -119,14 +119,19 @@
       "size": 4998
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md",
+      "blob_sha": "765af2fc3119fc844f52554652535d39ab7cfb48",
+      "size": 9335
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json",
       "blob_sha": "dd48fb27be1120aa763019966d4d1145e4c58df0",
       "size": 12649
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "b7d18f3c1c12077d47d9a6df185f5664df1fe0ae",
-      "size": 1228
+      "blob_sha": "c9173f5ac8f09f94e0e861729383bcb261f5d905",
+      "size": 1363
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
@@ -622,6 +627,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
       "blob_sha": "c79132f6a7177f3b6f2bee8d4a4a00a1d8843f8b",
       "size": 13685
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md",
+      "blob_sha": "cc2bbd0ebf5265c33fb3130ec1a3008e3bd94537",
+      "size": 3468
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md",
+      "blob_sha": "2f1690a0c1b6335e2aac2ac8d1fbc9e3a687fec3",
+      "size": 4695
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",

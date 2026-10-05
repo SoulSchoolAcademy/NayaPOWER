@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `1b9aa828c88ca125cdd306b852de7f168c6e9eab`  
-**Inventory file count:** 192  
+**Receipt basis commit:** `eed788e7effc62fcece3d425d05a219aa0710229`  
+**Inventory file count:** 195  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 6 |
+| 01-GOVERNANCE | 7 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 43 |
+| 05-MEMORY | 45 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -52,8 +52,9 @@
 - `BRAIN/01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md` — `5b5c6d52d386` (1978 bytes)
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md` — `11c8c5515633` (11571 bytes)
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md` — `e9392c62e883` (4998 bytes)
+- `BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md` — `765af2fc3119` (9335 bytes)
 - `BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json` — `dd48fb27be11` (12649 bytes)
-- `BRAIN/01-GOVERNANCE/README.md` — `b7d18f3c1c12` (1228 bytes)
+- `BRAIN/01-GOVERNANCE/README.md` — `c9173f5ac8f0` (1363 bytes)
 ### 02-ARCHITECTURE — Architecture
 
 - `BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md` — `eb58b66a7208` (423 bytes)
@@ -161,6 +162,8 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0312/IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things.md` — `096d965a992f` (18689 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md` — `2943bc256733` (6380 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/SCORECARD-METHOD/SN-0345/IB-SMART-NOTE-20261005-sn0345-system-scorecard-method.md` — `cc2bbd0ebf52` (3468 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md` — `2f1690a0c1b6` (4695 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 

@@ -126,7 +126,10 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     "00-SPEC": 15,
     # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
     # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
-    "01-GOVERNANCE": 6,
+    # 6 -> 7 for the 10-area system scorecard: 0003-SYSTEM-SCORECARD-V1 lands as
+    # standing law (ratified by Shawn Vibert 2026-10-05; weighted total 6.8/10).
+    # Deliberate update.
+    "01-GOVERNANCE": 7,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
