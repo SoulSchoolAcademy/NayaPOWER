@@ -1,0 +1,271 @@
+{
+  "$id": "https://nayanet.local/schemas/FULL-AUTO-MERGE-V1.machine.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "amendment_path": "authority-model change: Human Director explicit decision, new version, never edit-in-place of ratified text",
+  "authority": {
+    "decided_at": "2026-10-04T20:04:00-07:00",
+    "decided_by": "Shawn Vibert",
+    "human_ratification_required": true,
+    "ratification_reason": "authority-model change per 0001-GOVERNANCE-CONTRACT-V1",
+    "role": "Human Director",
+    "verbatim": "Full auto-merge — trust the scorecard"
+  },
+  "constants": {
+    "MAX_EVIDENCE_AGE_SECONDS": 900,
+    "constants_note": "tunable only through the amendment path; a seat may not widen its own gate"
+  },
+  "does_not": [
+    "waive the scorecard for self-authored PRs — authorship changes nothing",
+    "override the Prime Judgment Law — 'the scorecard said so' never justifies a wrong action",
+    "create production authority — production stays human-only, unchanged",
+    "let a score manufacture truth"
+  ],
+  "enforcement": {
+    "on_false": "do not merge; post reasons to #1354; PR waits for human or repaired re-run",
+    "on_true": "merge via API; verify merge commit on main; post merge receipt to #1354",
+    "predicate": "tools/auto_merge_gate.py::may_auto_merge",
+    "signature": "may_auto_merge(pr_state: dict) -> tuple[bool, list[str]]"
+  },
+  "fail_closed": "missing or unresolvable field -> precondition fails; UNKNOWN != PASS",
+  "gate": {
+    "rule": "no receipt, no merge — no exceptions",
+    "type": "scorecard_receipt"
+  },
+  "hardening": {
+    "clauses": {
+      "H1_scorecard_theater": {
+        "enforced_by": "predicate fields: step2_score.scores, step4_decide.winner/strongest_alternative/falsifier, rigor_tier, named_risks, rollback_plan, second_seat_ack_comment_id",
+        "problem": "a seat fills out the scorecard to justify a pre-decided merge",
+        "solution": "receipt must carry strongest_alternative + falsifier, posted publicly on #1354 where any seat can challenge; the predicate mechanically checks winner-is-highest-scorer; rigor scales with blast radius (LIGHT vs FULL tiers)"
+      },
+      "H2_conflicting_overnight_merges": {
+        "enforced_by": "predicate precondition P10",
+        "problem": "two agents merging against the same tip",
+        "solution": "merges serialize: main_tip_at_merge must equal verified main_tip_sha; moved tip -> re-verify"
+      },
+      "H3_bad_merge_poisons_canon": {
+        "enforced_by": "post-merge obligation; helper tools/auto_merge_self_heal.py",
+        "problem": "an auto-merge breaks something overnight",
+        "solution": "self-heal: battery-red auto-merge is automatically reverted with evidence posted to #1354; automatic only while the merge is still the tip, else escalate"
+      },
+      "H4_scope_creep": {
+        "enforced_by": "predicate fields: lane, owner_seat, author_seat, author_lane, owning_seat_ack_comment_id",
+        "problem": "'the scorecard said so' as a blank check",
+        "solution": "every auto-merge PR states lane + owner_seat; out-of-lane merge requires owning seat's #1354 acknowledgment first"
+      },
+      "H5_lost_visibility": {
+        "enforced_by": "post-merge obligation on the merging seat",
+        "problem": "Shawn wakes up to a main he doesn't recognize",
+        "solution": "every auto-merge reported in the morning intelligence report with its scorecard receipt linked"
+      }
+    },
+    "decided_at": "2026-10-04T20:06:00-07:00",
+    "decided_by": "Shawn Vibert",
+    "principle": "as long as you don't cheat and you really scorecard it — accurate real scores, for the highest good of the collective, not ego."
+  },
+  "human_only": {
+    "flag_default": true,
+    "flag_default_rule": "a missing human-only flag is treated as true (fail-closed); the caller must affirmatively attest false with evidence",
+    "never_auto_merge": [
+      "touches_protected_paths",
+      "is_production_deploy_or_dispatch",
+      "is_production_db_access",
+      "touches_credentials_or_money",
+      "is_destructive_or_irreversible",
+      "is_constitutional_or_evolve_ratification"
+    ],
+    "protected_path_prefixes": [
+      ".github/workflows/",
+      "CONSTITUTION/",
+      "BRAIN/01-GOVERNANCE/",
+      "GOVERNANCE/",
+      "NAYA-ACTIVATION/"
+    ],
+    "protected_paths_note": "this PR itself touches BRAIN/01-GOVERNANCE/; it merges under the supreme Scorecard Law because the Human Director verbally ratified the substance (2026-10-04 auto-merge decision + 2026-10-05 Scorecard Law) — the merge encodes already-ratified authority, it does not create new authority. The merge's own scorecard must name this tension as its strongest alternative.",
+    "supreme_law_exception": {
+      "rule": "the protected-path exclusion is waived ONLY when the receipt carries supreme_law_exception {ratified_by: 'Shawn Vibert', ratification_evidence_comment_id: int, scope: string>=20 chars} proving the Human Director already ratified the substance on #1354; the merge must encode already-ratified authority and create none",
+      "note": "used once: PR #1444, the Scorecard Law's own encoding (ratification evidence: #1354 comment 5995131455). Historical, not a precedent."
+    }
+  },
+  "lane": "BRAIN/01-GOVERNANCE/",
+  "law_id": "FULL-AUTO-MERGE-V1",
+  "preconditions": [
+    {
+      "fields": [
+        "checks_green_on_head",
+        "head_sha"
+      ],
+      "id": "P1",
+      "name": "checks_green_on_head",
+      "rule": "checks must be for head_sha, not an older commit"
+    },
+    {
+      "fields": [
+        "head_sha_verified_live"
+      ],
+      "id": "P2",
+      "name": "head_sha_verified_live",
+      "rule": "local SHAs are claims, not measurements"
+    },
+    {
+      "fields": [
+        "mergeable",
+        "has_conflicts"
+      ],
+      "id": "P3",
+      "name": "no_conflicts",
+      "rule": "mergeable true and has_conflicts false"
+    },
+    {
+      "fields": [
+        "base_sha",
+        "main_tip_sha"
+      ],
+      "id": "P4",
+      "name": "branch_current_with_main",
+      "rule": "base_sha == main_tip_sha, both re-fetched live"
+    },
+    {
+      "fields": [
+        "intent_comment_id",
+        "intent_posted_at"
+      ],
+      "id": "P5",
+      "name": "intent_posted",
+      "rule": "announcement on #1354 precedes the merge"
+    },
+    {
+      "fields": [
+        "deconfliction_refetch_at",
+        "same_topic_race"
+      ],
+      "id": "P6",
+      "name": "deconfliction_refetch",
+      "rule": "re-fetch newest board state immediately before merging; same-topic race -> stand down"
+    },
+    {
+      "fields": [
+        "revertable_one_commit"
+      ],
+      "id": "P7",
+      "name": "revertable in one commit",
+      "rule": "migrations/data changes/multi-commit surgery -> human"
+    },
+    {
+      "fields": [
+        "scorecard_receipt",
+        "receipt_posted_comment_id"
+      ],
+      "id": "P8",
+      "name": "scorecard_receipt_posted",
+      "rule": "receipt must exist AND be posted; private scorecard is not a gate"
+    },
+    {
+      "fields": [
+        "evidence_fetched_at"
+      ],
+      "id": "P9",
+      "name": "evidence_freshness",
+      "rule": "within MAX_EVIDENCE_AGE_SECONDS of evaluation"
+    },
+    {
+      "fields": [
+        "main_tip_at_merge",
+        "main_tip_sha"
+      ],
+      "id": "P10",
+      "name": "merge_tip_serialization",
+      "rule": "main_tip_at_merge (re-fetched immediately before the merge call) must equal the verified main_tip_sha; a moved tip fails and forces re-verification. No blind merges."
+    }
+  ],
+  "rationale": "a merge gate the human rubber-stamps is delay without safety; judgment must either be real or be encoded",
+  "scorecard_receipt_schema": {
+    "anti_theater": {
+      "note": "Shawn's hardening (2026-10-04): 'as long as you don't cheat and you really scorecard it — accurate real scores, for the highest good of the collective, not ego'",
+      "rigor_tiers": {
+        "FULL": "wide-blast-radius auto-mergeable changes (shared kernel, brain-wide index, multi-consumer surfaces); additionally requires named_risks (non-empty array), rollback_plan (string), second_seat_ack_comment_id (a second seat's acknowledgment on #1354, posted BEFORE merging)",
+        "LIGHT": "mechanical/docs/narrow-blast-radius merges; the five steps still required, kept light"
+      }
+    },
+    "lane_fields": {
+      "fields": [
+        "lane",
+        "owner_seat",
+        "author_seat",
+        "author_lane"
+      ],
+      "out_of_lane_rule": "if lane != author_lane, owning_seat_ack_comment_id (the owning seat's public acknowledgment on #1354) is required",
+      "rule": "no scope creep — 'the scorecard said so' is not a blank check"
+    },
+    "law": "SCORECARD-LAW-V1 — the receipt IS the five steps; a receipt in any other shape is not a receipt",
+    "step1_enumerate": {
+      "fields": {
+        "options": "array, >= 2 items; each item is {id: string, summary: string}"
+      },
+      "rule": "every real option is listed — merge / don't merge / defer are all legitimate; no strawmen, no conveniently missing options"
+    },
+    "step2_score": {
+      "dimensions": [
+        "value",
+        "consequences",
+        "mission_vision_alignment",
+        "situational_awareness"
+      ],
+      "dimensions_note": "consequences = pros AND cons honestly stated; mission_vision_alignment = alignment with the ultimate objective (best for the collective / NayaNET / the team); situational_awareness = awareness of current live state, blast radius, and what else is in flight",
+      "fields": {
+        "scores": "object mapping each option id -> {value: 0-10, consequences: 0-10, mission_vision_alignment: 0-10, situational_awareness: 0-10}"
+      },
+      "rule": "each option scored on all four dimensions, 0-10 each; scores must be real — a scorecard written to justify a pre-decided outcome is theater and fails the gate"
+    },
+    "step3_gate": {
+      "fields": {
+        "gates": "{reversible: bool, no_major_damage: bool, positive_forward_effect: bool} — all three must be true"
+      },
+      "gates": [
+        "reversible",
+        "no_major_damage",
+        "positive_forward_effect"
+      ],
+      "rule": "hard stops — no score overrides a failed gate, however high the score"
+    },
+    "step4_decide": {
+      "fields": {
+        "falsifier": "string (>= 20 chars) — the concrete evidence that would prove this decision wrong",
+        "strongest_alternative": "{summary: string} — the best case AGAINST the winner, stated honestly",
+        "winner": "option id — must match an enumerated option id and hold the highest total among gate-passers"
+      },
+      "mechanical_check": "winner's total (sum of the four dimensions) must be >= every other option's total — the predicate enforces this, so the winner cannot be picked against the math",
+      "rule": "the highest total score among gate-passing options wins; the seat acts on the winner without asking"
+    },
+    "step5_receipt": {
+      "fields": {
+        "decided_at": "ISO-8601 timestamp",
+        "decided_by": "seat id",
+        "decision_id": "string, unique",
+        "receipt_posted_comment_id": "integer — the #1354 comment where this receipt was posted"
+      },
+      "rule": "the scorecard is written and posted to #1354; no receipt, no merge — no exceptions"
+    }
+  },
+  "status": "RATIFIED_VERBAL_2026-10-05__PENDING_MERGE",
+  "supersedes": {
+    "mode": "supersession_with_lineage",
+    "object": "2026-09-30 no-self-merge held boundary",
+    "reason": "a merge gate he rubber-stamps is delay without safety — the judgment must either be real or be encoded"
+  },
+  "supreme_law": {
+    "auto_merge_authorized": "under this protocol — not a blank check; merging without the protocol is the violation, not the merge",
+    "five_steps": [
+      "ENUMERATE every option",
+      "SCORE each on value, consequences (pros/cons), mission/vision alignment, situational awareness",
+      "GATE — reversible? no major damage? positive forward effect? (hard stops, no score overrides)",
+      "DECIDE — highest score + gates pass → act/merge without asking",
+      "RECEIPT — the scorecard is written and posted; no receipt, no merge"
+    ],
+    "law_id": "SCORECARD-LAW-V1",
+    "ratified": "2026-10-05 ~06:05 PDT, verbal ratification by Shawn Vibert (Human Director), recorded on #1354 comment 5995131455",
+    "supersedes": "all laws — including this one; where this file and the Scorecard Law conflict, the Scorecard Law wins",
+    "verbatim": "my law that supersedes all laws you must scorecard everything"
+  },
+  "version": "1"
+}
