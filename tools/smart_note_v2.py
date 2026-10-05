@@ -155,7 +155,38 @@ def allocate_smart_note_id(capture, ib):
         registry = {"entries": []}
     return _allocate_from_registry(capture, ib, registry)
 
-def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
+def reserve_smart_note_id(capture, ib, registry_path=None):
+    """Authoritatively reserve a Smart Note ID for (capture, ib).
+
+    The allocation read and the sequence advance commit atomically inside
+    one registry_transaction, so concurrent projectors can never receive
+    the same sequence number. Pass the result as sn_id= to
+    projection_path()/render()/update_registry() so the projected
+    directory is derived from the authoritative allocation instead of an
+    advisory pre-read (this closes the projection-path race that the
+    Problem B registry-transaction fix deliberately left open).
+
+    A reservation that is never projected leaves a harmless gap: the
+    sequence guarantees uniqueness, never reuse — not contiguity.
+    Re-reserving a known intelligent block returns its existing SN
+    without burning a sequence number.
+    """
+    with registry_transaction(registry_path) as registry:
+        sn_id = _allocate_from_registry(capture, ib, registry)
+        seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
+        if seq_match:
+            policy = registry.setdefault("sequence_policy", {"human_id_format": "SN-###"})
+            policy["next_sequence"] = max(int(policy.get("next_sequence", 1)),
+                                          int(seq_match.group(1)) + 1)
+            policy["purpose"] = ("Stable human-facing Smart Note identity. IB-ID remains canonical "
+                                 "machine identity; capture timestamp remains provenance.")
+        return sn_id
+
+def projection_path(capture, ib, root=None, sn_id=None):
+    # root resolves at call time (not def time) so test harnesses that
+    # re-point BRAIN_SMART_NOTE_ROOT get the live value.
+    if root is None:
+        root = BRAIN_SMART_NOTE_ROOT
     captured = str(capture.get("captured_at_utc") or capture.get("source", {}).get("captured_at_utc") or capture["source"]["captured_at"])
     date = captured[:10]
     y, m, d = date.split("-")
@@ -163,7 +194,8 @@ def projection_path(capture, ib, root=BRAIN_SMART_NOTE_ROOT):
     cat = (meta.get("category_slug") or slug(capture.get("category", "smart-note"))).upper()
     topic = (meta.get("topic_slug") or slug(capture.get("topic", "general"))).upper()
     sub = (meta.get("subtopic_slug") or slug(capture.get("subtopic", "general"))).upper()
-    sn_id = allocate_smart_note_id(capture, ib)
+    if sn_id is None:
+        sn_id = allocate_smart_note_id(capture, ib)
     return Path(root) / y / m / d / cat / topic / sub / sn_id / (ib + ".md")
 
 
@@ -188,7 +220,7 @@ def connection_lines(values):
             lines.append("- " + value)
     return lines
 
-def render(capture, verify, private_root=None):
+def render(capture, verify, private_root=None, sn_id=None):
     block = verify["persisted"]["block"]
     ib = block["intelligent_block_id"]
     intelligence = json.loads(block["content"]["lesson"])
@@ -198,9 +230,9 @@ def render(capture, verify, private_root=None):
     if scope == "PRIVATE" and not public_authorized:
         if not private_root:
             raise SystemExit("PRIVATE_PROJECTION_REQUIRES_AUTHENTICATED_PRIVATE_SURFACE")
-        p = projection_path(capture, ib, Path(private_root))
+        p = projection_path(capture, ib, Path(private_root), sn_id=sn_id)
     else:
-        p = projection_path(capture, ib)
+        p = projection_path(capture, ib, sn_id=sn_id)
     p.parent.mkdir(parents=True, exist_ok=True)
     proof = {
         "event_id": verify["persisted"]["event"]["id"],
@@ -258,16 +290,34 @@ def _canonical_content_hash(lesson: str) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def update_registry(capture, verify, projection):
+def update_registry(capture, verify, projection, sn_id=None):
     # The whole read-allocate-modify-write runs inside one exclusive
     # transaction: concurrent writers serialize, the commit is atomic.
     # (Problem B fix — the pre-lock code lost updates under concurrency.)
+    # sn_id, when reserved upstream via reserve_smart_note_id(), makes the
+    # recorded entry agree with the projected directory (projection-path
+    # race fix); without it the authoritative allocation happens here.
     with registry_transaction() as registry:
-        return _update_registry_locked(capture, verify, projection, registry)
+        return _update_registry_locked(capture, verify, projection, registry, sn_id=sn_id)
 
-def _update_registry_locked(capture, verify, projection, registry):
+def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     block = verify["persisted"]["block"]
-    sn_id = _allocate_from_registry(capture, block["intelligent_block_id"], registry)
+    ib = block["intelligent_block_id"]
+    if sn_id is None:
+        sn_id = _allocate_from_registry(capture, ib, registry)
+    else:
+        # Reserved upstream. Preserve the idempotent re-capture invariant:
+        # an existing entry for this IB keeps its SN (and projection path);
+        # the reserved number becomes a harmless sequence gap. An explicit
+        # smart_note_id in the capture still wins, as before.
+        explicit = str(capture.get("smart_note_id") or "").strip().upper()
+        existing = next((e for e in registry.get("entries", [])
+                         if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
+        if (not re.fullmatch(r"SN-\d{3,}", explicit) and existing is not None
+                and existing["smart_note_id"] != sn_id):
+            sn_id = existing["smart_note_id"]
+            if existing.get("projection_path"):
+                projection = ROOT / existing["projection_path"]
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
@@ -842,11 +892,19 @@ def main():
         return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
-        p = render(cap, ver, args.private_root)
         block = ver["persisted"]["block"]
+        ib = block["intelligent_block_id"]
+        # Reserve the SN authoritatively BEFORE rendering: the projected
+        # directory is derived from the reserved ID, so concurrent
+        # projectors can never pick the same directory (projection-path
+        # race). The reservation commits inside its own short transaction;
+        # rendering itself stays concurrent (no lock held across file I/O).
+        sn_id = reserve_smart_note_id(cap, ib)
+        p = render(cap, ver, args.private_root, sn_id=sn_id)
         published = str(p).startswith(str(BRAIN_SMART_NOTE_ROOT))
-        entry = update_registry(cap, ver, p) if published else {
-            "intelligent_block_id": block["intelligent_block_id"],
+        entry = update_registry(cap, ver, p, sn_id=sn_id) if published else {
+            "intelligent_block_id": ib,
+            "smart_note_id": sn_id,
             "scope": block.get("owner_scope"),
             "projection_status": "PRIVATE_RENDER_VERIFIED",
             "smart_link_status": "PENDING_PRIVATE_PROJECTION",

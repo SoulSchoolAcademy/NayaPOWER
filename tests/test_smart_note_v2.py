@@ -466,3 +466,131 @@ def test_idempotent_recapture_keeps_smart_note_id(tmp_path):
     assert first["smart_note_id"] == second["smart_note_id"]
     reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
     assert len(reg["entries"]) == 1
+
+
+# --- Projection-path race regression: concurrent projectors must derive ---
+# --- directories from authoritative reservations, never advisory pre-reads --
+# 2026-10-05: projection_path() allocated an advisory SN *before* the
+# registry transaction, so N concurrent projectors could pick the same SN
+# directory and collide/clobber. reserve_smart_note_id() closes it: the
+# directory is derived from the authoritatively reserved ID. These tests
+# pin the fix at the projection seam (not the registry seam).
+
+def _race_capture(ib_id):
+    return {
+        "title": f"Race note {ib_id}",
+        "category": "SMART_NOTE",
+        "topic": "CONCURRENCY",
+        "subtopic": "PROJECTION_RACE",
+        "source": {"captured_at": "2026-10-05T00:00:00Z"},
+        "projection": {},
+    }
+
+def _race_verify(ib_id):
+    lesson = json.dumps({"essence": f"essence-{ib_id}", "lesson": f"lesson-{ib_id}"})
+    return {"persisted": {"block": {
+        "intelligent_block_id": ib_id,
+        "content": {"lesson": lesson},
+        "understanding_state": "CANDIDATE",
+        "owner_scope": "PUBLIC",
+    }, "event": {"id": "e"}, "lineage": {"id": "l"},
+      "relationship": {"relationship_id": "r"}, "index": {"id": "i"},
+      "checkpoint": {"id": "c"}, "receipt": {"id": "rc"}}}
+
+def test_concurrent_projectors_derive_distinct_directories(tmp_path):
+    """N concurrent projectors → N distinct SN directories, zero clobbering."""
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    N = 20
+    errors = []
+    results = {}
+    lock = threading.Lock()
+    def projector(i):
+        try:
+            ib = f"IB-PROJ-RACE-{i:03d}"
+            cap, ver = _race_capture(ib), _race_verify(ib)
+            sn = m.reserve_smart_note_id(cap, ib)
+            p = m.render(cap, ver, sn_id=sn)
+            entry = m.update_registry(cap, ver, p, sn_id=sn)
+            with lock:
+                results[ib] = (sn, str(p), entry["smart_note_id"])
+        except Exception as e:  # noqa: BLE001 — collected, asserted below
+            with lock:
+                errors.append(repr(e))
+    threads = [threading.Thread(target=projector, args=(i,)) for i in range(N)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    assert len(results) == N, f"projector lost: {len(results)}/{N}"
+    sns = [v[0] for v in results.values()]
+    assert len(set(sns)) == N, f"SN collision among projectors: {sns}"
+    dirs = {str(Path(v[1]).parent) for v in results.values()}
+    assert len(dirs) == N, "projected directories collided"
+    for ib, (sn, p, entry_sn) in results.items():
+        assert sn == entry_sn, "registry entry SN must match the reserved SN"
+        text = Path(p).read_text(encoding="utf-8")
+        assert ib in text, f"file content clobbered for {ib}"
+        assert f"/{sn}/" in p.replace("\\", "/")
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == N, f"registry lost entries: {len(reg['entries'])}/{N}"
+
+def test_concurrent_duplicate_projections_converge_on_existing_sn(tmp_path):
+    """Concurrent re-projections of the SAME block converge: one entry,
+    stable SN (existing wins), zero errors."""
+    import threading
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-DUP"
+    errors = []
+    entry_sns = []
+    lock = threading.Lock()
+    def projector():
+        try:
+            cap, ver = _race_capture(ib), _race_verify(ib)
+            sn = m.reserve_smart_note_id(cap, ib)
+            p = m.render(cap, ver, sn_id=sn)
+            entry = m.update_registry(cap, ver, p, sn_id=sn)
+            with lock:
+                entry_sns.append(entry["smart_note_id"])
+        except Exception as e:  # noqa: BLE001
+            with lock:
+                errors.append(repr(e))
+    threads = [threading.Thread(target=projector) for _ in range(5)]
+    for t in threads: t.start()
+    for t in threads: t.join()
+    assert not errors, errors
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert len(reg["entries"]) == 1, "duplicate projections must converge to one entry"
+    final_sn = reg["entries"][0]["smart_note_id"]
+    assert all(s == final_sn for s in entry_sns), "entry SN must be stable across racers"
+    assert reg["entries"][0]["projection_path"].endswith(f"/{final_sn}/{ib}.md")
+
+def test_reserve_is_idempotent_for_known_block(tmp_path):
+    """Re-reserving a known block returns its SN without burning sequence."""
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-IDEM"
+    cap, ver = _race_capture(ib), _race_verify(ib)
+    first = m.reserve_smart_note_id(cap, ib)
+    p = m.render(cap, ver, sn_id=first)
+    m.update_registry(cap, ver, p, sn_id=first)
+    seq_before = json.loads(m.REGISTRY.read_text(encoding="utf-8"))["sequence_policy"]["next_sequence"]
+    second = m.reserve_smart_note_id(cap, ib)
+    assert second == first, "re-reserve must return the existing SN"
+    seq_after = json.loads(m.REGISTRY.read_text(encoding="utf-8"))["sequence_policy"]["next_sequence"]
+    assert seq_after == seq_before, "re-reserve must not burn a sequence number"
+
+def test_render_with_reserved_sn_id_uses_reserved_directory(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    ib = "IB-PROJ-DIR"
+    cap, ver = _race_capture(ib), _race_verify(ib)
+    sn = m.reserve_smart_note_id(cap, ib)
+    p = m.render(cap, ver, sn_id=sn)
+    ps = str(p).replace("\\", "/")
+    assert f"/{sn}/" in ps, "rendered directory must derive from the reserved SN"
+    assert ps.startswith(str(m.BRAIN_SMART_NOTE_ROOT).replace("\\", "/"))
+
+def test_projection_path_advisory_fallback_unchanged(tmp_path):
+    """Without sn_id=, projection_path keeps its advisory behavior."""
+    m = _problem_b_fresh_module(tmp_path)
+    cap = _race_capture("IB-PROJ-ADV")
+    p = m.projection_path(cap, "IB-PROJ-ADV")
+    assert "/SN-001/" in str(p).replace("\\", "/")
