@@ -10,22 +10,33 @@ spec = importlib.util.spec_from_file_location("smart_note_v2", ROOT / "tools" / 
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
-# Measured live drift on main@add657b4d. Pinned as a ratchet, not as a pass.
+# Measured live drift on main@a13f5083 (2026-10-05), re-pinned 2026-10-05 after
+# two repairs. Pinned as a ratchet, not as a pass.
 # Rationale: the publish path only ever proves the single note it just handled,
 # so a fully green run can coexist with a broken registry. CI must stay usable,
 # but the drift may never grow silently. Each class is pinned individually so a
 # new defect in one class cannot hide inside an improving total elsewhere.
 #
-# ROOT CAUSE NOTE: entries_without_hash and captures_unregistered_by_hash are
-# coupled. Every registry entry currently lacks content_hash (28/28), so no
-# capture can be hash-reconciled against any entry. The 20 "unregistered"
-# captures are therefore a downstream symptom of the 28 hashless entries, not
-# an independent second fault. Repairing hash coverage clears both at once.
+# 2026-10-05 re-pin history:
+# - entries_without_hash 28 -> 17 and captures_unregistered_by_hash 20 -> 7:
+#   genuine repair by commit 859c20b1c (SN-0356 registry drift repair) which
+#   restored content_hash coverage on registry entries.
+# - captures_missing_intelligence 0 -> 1 -> 0: PR #1526 landed the SN-0357
+#   capture in the v1 narrative schema (no canonical `intelligence` dict),
+#   tripping the detector. Repaired by translating SN-0357 to the v2-conformant
+#   capture shape with the original v1 document preserved verbatim under
+#   `raw_source`. The now-hashable SN-0357 has no registry entry yet (owning
+#   lane's projection flow), so captures_unregistered_by_hash re-pins at 8.
+# - Same class re-tripped the same tick by main 4c1b3df8 (PRs #1529/#1532):
+#   SN-0358 and SN-0359 landed in the same v1 narrative schema. Translated the
+#   same way in the same repair. captures_unregistered_by_hash re-pins at 10.
+#   PATTERN FLAG for the owning lane (Naya 2): the v1 capture writer keeps
+#   landing non-canonical captures; the capture path should emit v2 directly.
 PINNED_BASELINE = {
     "unparseable_captures": 0,
     "captures_missing_intelligence": 0,
-    "captures_unregistered_by_hash": 20,
-    "entries_without_hash": 28,
+    "captures_unregistered_by_hash": 10,
+    "entries_without_hash": 17,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
     "published_entries_missing_projection_path": 0,
