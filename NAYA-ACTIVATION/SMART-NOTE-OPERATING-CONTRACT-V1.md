@@ -37,6 +37,8 @@ The machine capture carries the structured intelligence required by the canonica
 
 The capture must use the official schema and official location.
 
+**Current official authored-capture schema: `naya.smart-note-capture.v2`.** Legacy `naya.smart-note-capture.v1` is non-conformant for newly authored captures and must not be merged as a new Smart Note. A new capture that fails the conformance ratchet is a defect to repair, not a baseline to bless.
+
 The capture should preserve, where applicable:
 
 - human meaning;
