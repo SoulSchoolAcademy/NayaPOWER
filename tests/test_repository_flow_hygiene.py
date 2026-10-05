@@ -36,3 +36,26 @@ def test_historical_successor_prompt_cannot_direct_execution_through_dead_paths(
         assert stale not in prompt
     assert "HISTORICAL SETTER HANDOFF — DO NOT EXECUTE LITERALLY" in prompt
     assert "Issue #1354" in prompt
+
+
+ACTIVE_COORDINATION_DOCS = (
+    "HUB/README.md",
+    "HUB/ROOMS/README.md",
+    "HUB/PROJECT-INTELLIGENCE.AI.md",
+    "HUB/PROJECT-INTELLIGENCE.NAYA.md",
+    "HUB/PROJECT-INTELLIGENCE.PROOF.md",
+    "HUB/PROJECT-INTELLIGENCE.md",
+    "HUB/ROOMS/00-HUB-HOME.md",
+    "HUB/PROJECT-INTELLIGENCE.FEATURES.json",
+    "NAYA-ACTIVATION/DESIGN/README.md",
+    "NAYA-ACTIVATION/DESIGN/NAYA-DESIGN-INTELLIGENCE-STANDARD-V1.md",
+    "NAYANODE/0028-ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md",
+    ".naya/execution/NAYA-BIRTH-MASTER-EXECUTION-PROMPT-V1.md",
+)
+
+
+def test_active_coordination_contracts_route_to_current_feed():
+    for rel in ACTIVE_COORDINATION_DOCS:
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        assert "#554" not in text, f"{rel} still routes active work to historical #554"
+        assert "#1354" in text, f"{rel} must name the current Team Naya coordination feed"
