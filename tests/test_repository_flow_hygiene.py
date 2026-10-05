@@ -59,3 +59,11 @@ def test_active_coordination_contracts_route_to_current_feed():
         text = (ROOT / rel).read_text(encoding="utf-8")
         assert "#554" not in text, f"{rel} still routes active work to historical #554"
         assert "#1354" in text, f"{rel} must name the current Team Naya coordination feed"
+
+
+def test_active_birth_prompt_does_not_restore_long_lived_supabase_user_token():
+    prompt = (ROOT / "NAYANODE/0040-NAYA-BIRTH-NEXT-EXECUTION-PROMPT-V1.md").read_text(
+        encoding="utf-8"
+    )
+    assert "SUPABASE_USER_ACCESS_TOKEN" not in prompt
+    assert "OIDC" in prompt
