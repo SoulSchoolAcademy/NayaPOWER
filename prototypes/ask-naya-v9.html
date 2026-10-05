@@ -749,12 +749,18 @@ const audioCache={};
 let curSrc=null, ampRAF=0, ampSmooth=0, playStartT=0, playDurS=0;
 const AMP_GAIN=6.5;
 function ensureAudio(){
+  /* hardening: the audio engine must NEVER throw. On hostile hosts
+     (no AudioContext, constructor blocked) AC stays null and every
+     consumer already falls back to the labeled synth path. */
   if(!AC){
-    const Ctx=window.AudioContext||window.webkitAudioContext;
-    AC=new Ctx();analyser=AC.createAnalyser();analyser.fftSize=1024;
-    analyser.connect(AC.destination);
+    try{
+      const Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx)return;
+      AC=new Ctx();analyser=AC.createAnalyser();analyser.fftSize=1024;
+      analyser.connect(AC.destination);
+    }catch(e){AC=null;analyser=null;return;}
   }
-  if(AC.state==='suspended')AC.resume();
+  try{if(AC.state==='suspended')AC.resume();}catch(e){}
 }
 async function preloadVoice(key){
   if(audioCache[key]||!AUDIO[key])return audioCache[key]||null;
@@ -1067,6 +1073,18 @@ function renderBoard(entry,instant){
     if(instant){b.classList.add('formed');return;}
     beatTimers.push(later(()=>b.classList.add('formed'),300+at*total));
   });
+  /* fallback-path hardening: the board never stays dark. If any beat is still
+     unformed after the full formation window (cleared timers, wedged audio,
+     hostile environments), form it now. Skips frozen beats — the interruption
+     choreography owns those — and stale entries. Voice is enhancement;
+     formation never waits on it. */
+  if(!instant){
+    later(()=>{
+      if(currentEntry!==entry)return;
+      boardInner.querySelectorAll('.beat:not(.formed):not(.frozen)')
+        .forEach(b=>b.classList.add('formed'));
+    },300+total+2500);
+  }
   return beats;
 }
 /* correction: the retract-and-reform */
