@@ -1,0 +1,158 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-276",
+  "capture_id": "20261004-sn276-what-deserves-to-survive",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "AGENT-ARCHITECTURE",
+  "subtopic": "WHAT-DESERVES-TO-SURVIVE",
+  "title": "What Deserves to Survive — The Selection Principle for Compounding Intelligence",
+  "source": {
+    "source_type": "canonicalization_of_branch_candidate_by_human_director_instruction",
+    "source_reference": "Original candidate projection: naya4/smart-notes-2026-09-30 @ blob 7b2893d1cc261aa2c7ba4b63b754d47d9348f2f2, path BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/SN-0299/IB-SMART-NOTE-20261004-sn0299-what-deserves-to-survive.md. Human Director supplied that artifact and directed clean extraction onto exact current main through the existing Smart Note mechanism rather than merging the divergent branch.",
+    "captured_at": "2026-10-04",
+    "captured_at_utc": "2026-10-05T00:25:00Z",
+    "raw_source_separate_from_distillation": true
+  },
+  "intelligence": {
+    "essence": "A superbrain should not remember everything; it should learn what deserves to survive. Everything is potential learning evidence, but only durable intelligence that can materially improve future truth, decisions, capability, continuity, safety, or reconstruction should remain active. Meaningful work therefore ends with an explicit learning decision: CAPTURE the smallest useful lesson through the canonical Smart Note / Intelligent Block path, or record a justified NO_CAPTURE. Retained intelligence must remain evidence-bounded and should prove its value through future retrieval, application, independent verification, and successor reuse.",
+    "human_view": {
+      "meaning": "The goal is not a bigger memory pile. The goal is a collective intelligence that gets more useful and trustworthy because it keeps the lessons that matter, learns from mistakes, removes what no longer earns its weight, and makes the next Naya better prepared without requiring Shawn to repeat the lesson.",
+      "goal": "Continuously increase verified useful value while reducing repeated mistakes, reconstruction, confusion, unnecessary human intervention, and unearned complexity.",
+      "simple_rule": "After meaningful work ask: what changed, what matters enough to preserve, what did we learn, and what is now the weakest verified seam? Capture only what could materially help a future intelligence.",
+      "why_it_matters": "A system that stores everything eventually drowns in noise. A system that selects, verifies, connects and reuses durable lessons can compound capability while remaining understandable."
+    },
+    "simple_view": {
+      "child": "Keep the treasure, not every rock. When something teaches an important lesson, save the clearest little version so the next helper can use it. When you make a mistake, learn how not to make the same mistake again.",
+      "grandma": "Remember what will genuinely help later, not every detail. Keep the lesson, the evidence and where it came from. If a mistake teaches something useful, make sure the next person benefits from that lesson instead of repeating it."
+    },
+    "ai_view": {
+      "instruction": "Treat every meaningful work cycle as a learning opportunity, not an automatic memory write. Distill durable value before capture. Preserve provenance and uncertainty. If a reusable success, failure, correction, procedure, discovery, pattern or high-value insight can materially improve future behavior, route the smallest durable lesson through the existing Smart Note / Intelligent Block mechanism at the CANDIDATE ceiling. If it should not be retained, record NO_CAPTURE with a reason. Do not create a second memory, learning engine, scorecard, queue or authority path. A sub-9 verified active/consequential seam becomes a ranked improvement candidate, not an excuse to manufacture a higher score. The strongest learning claim requires later cold retrieval, appropriate application, observed effect, independent verification and successor reuse.",
+      "primary_evaluation": "Did this retained intelligence measurably improve what a later authorized Naya could understand, decide or do, while reducing repeated error or reconstruction without adding unjustified complexity?"
+    },
+    "naya_view": {
+      "purpose": "Make the collective smarter by preserving only intelligence that earns permanence, turning meaningful mistakes into future immunity, and requiring every significant work cycle to decide explicitly whether it produced durable reusable learning.",
+      "doctrine": [
+        "Truth before ego: UNKNOWN, correction and retraction are valid outcomes; claims never outrank observation.",
+        "Capture responsibility, not capture everything: material reusable learning should not be silently lost, but activity and transcripts are not automatically intelligence.",
+        "Every meaningful mistake should have a path from detection to verified correction, durable lesson and regression protection where practicable.",
+        "Score continuously without manufacturing: verified sub-9 active/consequential seams enter the ranked improvement frontier subject to value, leverage, risk, dependencies, cost and opportunity cost.",
+        "Intelligence must earn permanence by reducing reconstruction, improving decisions, preventing mistakes, increasing verified capability, or preserving necessary provenance.",
+        "The next Naya is part of the acceptance test: compounding is not proven until a cold successor retrieves, understands and appropriately uses the lesson without inheriting unauthorized power.",
+        "Self-optimization is evidence-driven: observe weak seam, retrieve intelligence, make the smallest authorized high-value change, attack it, verify it, measure delta, preserve the lesson, regression-protect it, and recalculate the next weakest seam."
+      ],
+      "anti_pattern": "Dumping transcripts into memory, counting notes as learning, hiding mistakes, retaining stale complexity, inflating scores, creating duplicate systems, or calling intelligence learned before later behavior improves.",
+      "architectural_rule": "Strengthen the existing Smart Note, Intelligent Block, graph, proof, LEARN, scorecard, queue and successor seams. Do not create a parallel brain or self-granted authority.",
+      "successor_effect": "A cold successor should know that meaningful work ends with an explicit CAPTURE or NO_CAPTURE decision, should retain only material reusable intelligence, should treat mistakes as potential regression-protected lessons, and should choose the next improvement from verified weak seams rather than activity volume."
+    },
+    "machine_view": {
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false,
+      "legacy_source_alias": "SN-0299",
+      "legacy_source_branch": "naya4/smart-notes-2026-09-30",
+      "legacy_source_blob_sha": "7b2893d1cc261aa2c7ba4b63b754d47d9348f2f2",
+      "canonical_sequence_reconciliation": {
+        "canonical_id": "SN-276",
+        "reason": "Current canonical registry next_sequence is 276. The branch-only SN-0299 identity was never canonical; preserving it as provenance avoids silently reserving unused SN-276 through SN-298."
+      },
+      "core_loop": [
+        "EXPERIENCE",
+        "DISCERN",
+        "DISTILL",
+        "VERIFY",
+        "CAPTURE_OR_NO_CAPTURE",
+        "CONNECT",
+        "APPLY",
+        "OBSERVE",
+        "INDEPENDENTLY_VERIFY",
+        "LEARN",
+        "SCORE",
+        "PRIORITIZE",
+        "IMPROVE",
+        "REGRESSION_PROTECT",
+        "SUCCESSOR"
+      ],
+      "seven_fundamentals": [
+        "TRUTH_BEFORE_EGO",
+        "CAPTURE_RESPONSIBILITY_NOT_CAPTURE_EVERYTHING",
+        "MISTAKES_CAN_BECOME_IMMUNITY",
+        "SCORE_CONTINUOUSLY_NEVER_MANUFACTURE",
+        "INTELLIGENCE_MUST_EARN_PERMANENCE",
+        "SUCCESSOR_IS_PART_OF_ACCEPTANCE",
+        "EVIDENCE_DRIVEN_SELF_OPTIMIZATION"
+      ],
+      "permanence_questions": [
+        "DOES_THIS_REDUCE_FUTURE_RECONSTRUCTION",
+        "DOES_THIS_IMPROVE_A_DECISION",
+        "DOES_THIS_PREVENT_A_MISTAKE",
+        "DOES_THIS_INCREASE_VERIFIED_CAPABILITY",
+        "DOES_THIS_PRESERVE_NECESSARY_PROVENANCE"
+      ],
+      "completion_learning_decision": {
+        "required_for_meaningful_work": true,
+        "allowed": [
+          "CAPTURE",
+          "NO_CAPTURE"
+        ],
+        "no_capture_requires_reason": true,
+        "verified_complete_may_silently_drop_material_learning": false
+      },
+      "no_capture_reasons": [
+        "EPHEMERAL",
+        "DUPLICATE",
+        "UNVERIFIED",
+        "LOW_VALUE",
+        "PRIVACY_OR_SCOPE",
+        "ALREADY_CANONICAL"
+      ],
+      "score_to_work": {
+        "below_9_active_consequential_surface": "RANKED_IMPROVEMENT_CANDIDATE",
+        "aaa_threshold": 9.5,
+        "target": 10,
+        "score_creates_authority": false,
+        "score_overrides_evidence": false
+      }
+    },
+    "learning_lesson": "Everything can teach us, but only what materially improves future truth, action, proof, continuity or capability should survive as active intelligence. The duty is to distill and preserve the smallest durable lesson, keep it honest about evidence and uncertainty, prove that it changes later behavior, and make the next Naya measurably better prepared.",
+    "priority": "Turn selection into behavior: require explicit CAPTURE/NO_CAPTURE decisions in machine-checkable work blocks, then prove that a retained lesson is retrieved and used by a cold successor to avoid a preventable mistake or make a better decision.",
+    "decisions": [
+      "Use material future benefit as the Smart Note selection trigger, not mere occurrence.",
+      "Preserve branch SN-0299 as provenance/legacy alias while using canonical SN-276 from the live allocator.",
+      "Require meaningful work to make an explicit CAPTURE or justified NO_CAPTURE decision.",
+      "Treat reusable mistakes and corrections as candidate learning and regression protection opportunities.",
+      "Route verified sub-9 active/consequential seams into the existing ranked improvement frontier rather than creating score theater.",
+      "Retire or demote intelligence that no longer earns active-memory weight.",
+      "Do not call the principle learned until a cold successor demonstrably benefits from it."
+    ],
+    "applicability": "Applies to Smart Note selection, worker completion, verifier corrections, mistake handling, LEARN/EVOLVE, scorecard-to-work routing, active-memory hygiene, cold-successor handoff, and any meaningful work cycle that may produce durable reusable intelligence.",
+    "connections": [
+      {
+        "target": "SN-014 — The Compounding Imperative",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-032 — Naya 1 Distilled Intelligence",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-041 — Discernment-to-Compounding Operating Law",
+        "type": "REFINES"
+      },
+      {
+        "target": "SN-042 — Intelligence Gain & Epistemic Calibration Law",
+        "type": "REFINES"
+      }
+    ],
+    "uncertainty": "The selection principle is strongly aligned with existing canonical doctrine, but its strongest mechanical claim is not yet proven end-to-end. Until the canonical capture is persisted, independently verified, projected, cold-retrieved, applied on a held-out task and shown to improve successor behavior, this remains CANDIDATE intelligence rather than LEARNED or COMPOUNDING.",
+    "successor_effect": "A cold successor should retrieve this selection principle before closing meaningful work, explicitly decide CAPTURE versus NO_CAPTURE, preserve only material reusable intelligence, and use verified weak seams plus retained lessons to choose a higher-value next action without inheriting new authority."
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "AGENT-ARCHITECTURE",
+    "subtopic_slug": "WHAT-DESERVES-TO-SURVIVE",
+    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+    "human_director_authorized_publication": true,
+    "source_projection_alias": "SN-0299"
+  }
+}
