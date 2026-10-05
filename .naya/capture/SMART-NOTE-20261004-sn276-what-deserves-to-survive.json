@@ -144,7 +144,8 @@
         "type": "REFINES"
       }
     ],
-    "uncertainty": "The selection principle is strongly aligned with existing canonical doctrine, but its strongest mechanical claim is not yet proven end-to-end. Until the canonical capture is persisted, independently verified, projected, cold-retrieved, applied on a held-out task and shown to improve successor behavior, this remains CANDIDATE intelligence rather than LEARNED or COMPOUNDING."
+    "uncertainty": "The selection principle is strongly aligned with existing canonical doctrine, but its strongest mechanical claim is not yet proven end-to-end. Until the canonical capture is persisted, independently verified, projected, cold-retrieved, applied on a held-out task and shown to improve successor behavior, this remains CANDIDATE intelligence rather than LEARNED or COMPOUNDING.",
+    "successor_effect": "A cold successor should retrieve this selection principle before closing meaningful work, explicitly decide CAPTURE versus NO_CAPTURE, preserve only material reusable intelligence, and use verified weak seams plus retained lessons to choose a higher-value next action without inheriting new authority."
   },
   "projection": {
     "category_slug": "SYSTEM-INTELLIGENCE",
