@@ -1,3 +1,6 @@
+> *"Separation is delusion."*
+> — Shawn Vibert
+
 # The Human Nexus Codex — The Art of Collective Intelligence (Anchor)
 
 | Field | Value |
