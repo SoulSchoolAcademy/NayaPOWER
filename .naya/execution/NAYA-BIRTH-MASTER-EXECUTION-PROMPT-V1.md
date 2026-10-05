@@ -338,7 +338,7 @@ When handing work to Coda:
 - exact acceptance tests;
 - explicit read-only constraints where applicable;
 - no credential exposure;
-- require sign-in/update/sign-out through the established Issue #554 convention;
+- require sign-in/update/sign-out through the established Issue #1354 convention;
 - require evidence receipts;
 - require Coda to report what was actually changed and what remains unproven.
 
