@@ -15,15 +15,21 @@ def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
 def changed_capture(paths):
+    """Return the sorted, deduplicated list of changed Smart Note capture paths.
+
+    A commit may carry more than one capture (batch). The discovery seam is
+    intentionally batch-capable: the caller processes each capture in sorted
+    order, each with its own identity (``SMART-NOTE-<capture_id>``). Failing
+    closed on a batch would silently shelve valuable intelligence; fail-fast
+    instead on any *individual* capture that is malformed, downstream.
+    """
     hits = []
     for raw in paths:
         normalized = str(raw).replace("\\\\", "/")
         p = Path(normalized)
         if normalized.startswith(".naya/capture/") and p.suffix == ".json":
             hits.append(normalized)
-    if len(hits) > 1:
-        raise SystemExit("SMART_NOTE_CAPTURE_BATCH_NOT_YET_SUPPORTED:" + ",".join(hits))
-    return hits[0] if hits else ""
+    return sorted(set(hits))
 
 
 EDGE_VOCABULARY = {
@@ -746,7 +752,9 @@ def main():
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
     if args.cmd == "discover":
-        print(changed_capture(args.paths)); return
+        for path in changed_capture(args.paths):
+            print(path)
+        return
     if args.cmd == "project":
         cap = load_json(args.capture); ver = load_json(args.verify)
         p = render(cap, ver, args.private_root)
