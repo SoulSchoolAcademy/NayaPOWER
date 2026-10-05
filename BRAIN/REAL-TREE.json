@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-04",
-  "receipt_basis_commit": "18f306d4229062dd7d396a98d62dd89f954a48be",
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "d13975149b7a8319091fb8737a05861e5f9d7f08",
   "inventory_file_count": 186,
   "domain_counts": {
     "00-SPEC": 15,
@@ -220,8 +220,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
-      "blob_sha": "207b37d63e36b4566eae17c545f203e17334c7ed",
-      "size": 1846
+      "blob_sha": "baa6ba69a27b53aa00151c4206ad1984b04f1045",
+      "size": 6806
     },
     {
       "path": "BRAIN/03-KERNEL/README.md",
@@ -605,8 +605,8 @@
     },
     {
       "path": "BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md",
-      "blob_sha": "b7385f9b59c3957c780ef8d6f3e79f1286a6aec2",
-      "size": 1920
+      "blob_sha": "f07b3b9a33a848b0c28bafdbcc5164b37c3e5f1c",
+      "size": 2468
     },
     {
       "path": "BRAIN/06-PROOF/0006-LAW-LIVE-PROOF-36620001626-V1.json",
