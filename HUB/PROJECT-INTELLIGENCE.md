@@ -142,11 +142,11 @@ Full scorecard, independent re-score, Shawn experiences it end-to-end: welcome �
 | Intelligence (Phase 6) | Capture pipeline, search, learning | Nine-node kernel; Smart Note pipeline |
 | **Scorecard keeper** | **Independent re-score every phase** | **Must NOT be the builder of the phase being scored** |
 
-All lanes coordinate on issue #554. No lane rewrites another lane's in-flight work.
+All lanes coordinate on issue #1354. No lane rewrites another lane's in-flight work.
 
 ### Team Naya standing finding law
 
-**ANY MATERIAL NOT-RIGHT FINDING → ISSUE #554 + EVIDENCE.**
+**ANY MATERIAL NOT-RIGHT FINDING → ISSUE #1354 + EVIDENCE.**
 
 Broken, stale, contradictory, misleading, unsafe, missing-proof, below-standard, architecturally divergent or regression-risk findings must not disappear inside one agent's context. Record the surface, evidence/truth state, remaining hole and highest-value next action. Posting is coordination, not execution authority.
 
