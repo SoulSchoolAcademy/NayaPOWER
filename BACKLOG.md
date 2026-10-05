@@ -66,6 +66,7 @@
 - **Constraint (Shawn):** no platform posting APIs, no automation that risks bans/ToS/legal — only what's logical, doable, 100% within terms.
 - **Phase 2 ideas (designed, not started):** personal video invites, smart follow-up nudges, "bring your circle" group invites, network tree visualization, smart send-time.
 - **Detail:** Issue #1517.
+- **Smart Links:** #1520 (idea evolution/refinement) · #1519 (Feed/Backlog projection architecture) · #1513 (future bounded optimization only after proof gates).
 
 ---
 
@@ -87,6 +88,7 @@
 
 ## IDEA — Under consideration (not committed)
 
+- **Idea Evolution / Smart Link Intake Protocol V1 — Issue #1520:** every meaningful idea follows `SOURCE → DISTILL → ENHANCE → RECONCILE → CLASSIFY → SMART LINK → BACKLOG → #1354 TEAM FEED → BUILD/VERIFY → LEARN`. Preserve original provenance, improve it, connect it to current architecture, and make the collective aware without letting ideas silently jump the priority queue.
 - **AI-agnostic runtime plug-in:** prove "any model → restore governed Naya intelligence → operate → leave improved intelligence" with behavioral parity. (Architecture: yes. Proven plug-and-play: not yet.)
 - **NayaNET network experiences:** Smart Spaces/Connect/Mail as the differentiator no RSI system builds. Continue productizing post-proof.
 - **Daily Intelligence Report automation:** already nightly; consider Hub surfacing.
