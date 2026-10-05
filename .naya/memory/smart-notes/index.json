@@ -1303,7 +1303,7 @@
   {
    "smart_note_id": "SN-0356",
    "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote",
-   "content_hash": "6ac676b529459f2e0763a8c8c8289b75bc72a2053d186cc338222563c8af9b76",
+   "content_hash": "ffbb1a7fffd667accbf1af3d1e1a9fa522dced694163ba33edfcc8ffccd20565",
    "title": "Dead Workers Still Vote — Cloudflare Connection Hygiene",
    "captured_at": "2026-10-05",
    "category": "GOVERNANCE",
@@ -1340,7 +1340,7 @@
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 356,
+  "next_sequence": 357,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  }
 }
