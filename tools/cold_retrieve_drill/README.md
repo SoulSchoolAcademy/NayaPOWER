@@ -24,7 +24,7 @@ write-only archive.
    expected phrases (case-insensitive substring). PASS = exit 0, FAIL = exit 1.
 6. **Log:** append-only JSONL (`drill_log.jsonl`): week, drill id, corpus SHA,
    retrieved note id, verdict, latency. Never edited mid-run.
-7. **Report:** one line on #1354 — PASS/FAIL with the corpus SHA and the
+7. **Report:** one line on #554 — PASS/FAIL with the corpus SHA and the
    retrieved note. FAILs get a follow-up: re-run once to rule out flakiness,
    then file the rung that broke.
 
@@ -61,4 +61,4 @@ verification bar: query must hit the expected note on current main.
 `cold-retrieve-drill` — weekly, Mondays ~06:00 PDT (America/Vancouver),
 goal-owned. The job: pin main → worktree → `drill.py --show` → worker
 retrieves + answers → `drill.py --grade` → append log → post one-line result
-to #1354. First run: Monday 2026-10-12.
+to #554. First run: Monday 2026-10-12.
