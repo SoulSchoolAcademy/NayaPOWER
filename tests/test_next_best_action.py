@@ -5,24 +5,24 @@ RED phase: these tests define the deterministic contract before implementation.
 
 import pytest
 
-from kernel.next_best_action import (
+from kernel.value_calculus import (
     ACTION_DIMENSIONS,
-    ActionProfile,
-    ActionCandidate,
-    combine_action_score,
-    rank_actions,
+    NextBestActionProfile,
+    NextBestActionCandidate,
+    combine_next_best_action_score,
+    rank_next_best_actions,
 )
 
 
 def candidate(cid, **scores):
     base = {d: 5.0 for d in ACTION_DIMENSIONS}
     base.update(scores)
-    return ActionCandidate(candidate_id=cid, scores=base)
+    return NextBestActionCandidate(candidate_id=cid, scores=base)
 
 
 def test_exactly_ten_dimensions_and_default_weights_sum_to_one():
     assert len(ACTION_DIMENSIONS) == 10
-    profile = ActionProfile.default()
+    profile = NextBestActionProfile.default()
     assert sum(profile.weights.values()) == pytest.approx(1.0)
     assert set(profile.weights) == set(ACTION_DIMENSIONS)
 
@@ -32,7 +32,7 @@ def test_combination_is_deterministic_weighted_score():
     a = candidate("a", mission_value=10, human_value=10, urgency=0, leverage=0,
                   evidence=10, risk=0, cost=0, dependencies=0, reversibility=10,
                   compounding_continuity=10)
-    assert combine_action_score(a, p) == pytest.approx(
+    assert combine_next_best_action_score(a, p) == pytest.approx(
         sum(p.weights[d] * a.scores[d] for d in ACTION_DIMENSIONS)
     )
 
@@ -42,7 +42,7 @@ def test_hard_risk_cap_blocks_even_a_high_average():
     a = candidate("danger", mission_value=10, human_value=10, evidence=10,
                   leverage=10, risk=9.0, cost=0, dependencies=10,
                   reversibility=10, urgency=10, compounding_continuity=10)
-    result = rank_actions([a], p)
+    result = rank_next_best_actions([a], p)
     assert result[0].status == "BLOCKED"
     assert result[0].reason == "RISK_CAP"
 
@@ -93,7 +93,7 @@ def test_top_level_selection_requires_margin_when_two_options_are_close():
 
 def test_profile_rejects_unknown_dimensions_and_invalid_weights():
     with pytest.raises(ValueError):
-        ActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
+        NextBestActionProfile(profile_id="x", version="1", weights={"mission_value": 1, "bogus": 1})
     with pytest.raises(ValueError):
         ActionProfile(profile_id="x", version="1",
                       weights={d: 0 for d in ACTION_DIMENSIONS})
