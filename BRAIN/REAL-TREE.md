@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-04  
-**Receipt basis commit:** `580bfdddae71ceebfc7a8441d909117ecd9a6271`  
-**Inventory file count:** 188  
+**Generated:** 2026-10-05  
+**Receipt basis commit:** `d986d0b275821df490e2f5827e0872e92b69ee4b`  
+**Inventory file count:** 189  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 42 |
+| 05-MEMORY | 43 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -155,6 +155,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-035/IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.md` — `b2f45204f2c5` (2718 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md` — `305262427a26` (8450 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/PHILOSOPHY-LIFE/AWESOME-THESIS/SN-0311/IB-SMART-NOTE-20261004-sn0311-awesome-thesis.md` — `c333e92f5629` (9947 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/FOUNDER-PHILOSOPHY/AWESOME-CODE/SN-0312/IB-SMART-NOTE-20261004-sn0312-awesome-code-100-things.md` — `096d965a992f` (18689 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md` — `2943bc256733` (6380 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md` — `c79132f6a717` (13685 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
