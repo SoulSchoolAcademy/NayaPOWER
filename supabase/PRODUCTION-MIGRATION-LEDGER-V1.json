@@ -1441,6 +1441,15 @@
    "note": "Backfilled 2026-10-05: version existed on production (applied 2026-09-30 via dashboard with auto-generated timestamp); SQL recovered byte-for-byte from supabase_migrations.statements."
   },
   {
+   "version": "20260930052000",
+   "name": "consent_runtime_consumer_v1",
+   "path": "supabase/migrations/20260930052000_consent_runtime_consumer_v1.sql",
+   "sha256": "a7660ab4a6f2338bf2b9cbc4436793fc5ec13ac601257ff601dccc7c1c45f09c",
+   "statement_count": 12,
+   "bytes": 6300,
+   "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+  },
+  {
    "version": "20260930235959",
    "name": "ai1_capability_carry_v1",
    "path": "supabase/migrations/20260930235959_ai1_capability_carry_v1.sql",
