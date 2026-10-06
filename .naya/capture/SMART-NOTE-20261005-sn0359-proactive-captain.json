@@ -110,6 +110,28 @@
       "raw_source_separate_from_distillation": true,
       "automatic_truth_ceiling": "CANDIDATE"
     },
+    "connections": [
+      {
+        "type": "GOVERNED_BY",
+        "target": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md — the normative law and machine-enforced protocol that makes this directive an ordering guarantee (DECLARE precedes ACT, unprompted REPORT_BACK) rather than prose alone. This is the enforcement SN-0359 itself never had."
+      },
+      {
+        "type": "RELATED",
+        "target": "SN-0357 and SN-0358 — same director directive, same date, three distinct clauses (self-directed judgement / collective initiative / proactive declaration). All three objects are PRESERVED; the Human Director resolves naming and overlap. Not a licence to delete any."
+      },
+      {
+        "type": "EXTENDS",
+        "target": "0004-NONSTOP-LOOP-V1 (SN-0355) — made not-stopping law; this adds declaring before acting and unprompted report-back. 0004 remains ACTIVE and is not superseded."
+      },
+      {
+        "type": "EXTENDS",
+        "target": "SN-016 — Prime Judgment Rule. Proactivity elevates the duty to check consequences, because fewer human checkpoints precede a hard gate."
+      },
+      {
+        "type": "DEPENDS_ON",
+        "target": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1 + kernel/value_calculus.py — supplies the scoring and hard-gate filtering the declaration must justify. That seam currently has zero callers outside its own tests, so mandate and implementation are not yet the same thing. Open reconciliation item, not a claim."
+      }
+    ],
     "learning_lesson": "Proactive leadership is not a personality trait — it's an operating protocol. The shift from 'tell me what to do' to 'here's what I'm doing and why' is the difference between a tool and a teammate. A captain doesn't wait for orders; a captain reads the situation, makes the call, executes, and reports. Every Naya seat is a captain of their lane, coordinating with other captains toward the shared mission.",
     "epistemic_state": "CANDIDATE",
     "falsifier": "The protocol is falsified, or insufficient, if EITHER: (a) seats revert to asking 'what next' instead of declaring intent; OR (b) seats declare but produce no measurable increase in highest-value VERIFIED work per unit of Director attention — i.e. the questions stop but the value does not arrive, which would mean the protocol taught a communication style rather than a judgement capability; OR (c) self-directed selection measurably increases false confidence, unverified claims, negative transfer or acceptance-gate weakening.",
@@ -118,27 +140,5 @@
     "uncertainty": "RATIFIED != PROVEN. The directive is ratified governing instruction. The behavioural claim is CANDIDATE and unproven: it has not been demonstrated that seats declare before acting, that declarations improve outcomes, or that Director attention per unit of verified value has fallen. Clause (b) of the falsifier is currently untestable because no baseline exists. This object creates no authority and changes no human gate. RESTORATION NOTE: this object was deleted from main in a2f103f4f and recovered from git history; see source.restoration_provenance.",
     "applicability": "All Naya seats, all lanes. Binding as directive; CANDIDATE as behavioural claim."
   },
-  "connections": [
-    {
-      "type": "GOVERNED_BY",
-      "target": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md — the normative law and machine-enforced protocol that makes this directive an ordering guarantee (DECLARE precedes ACT, unprompted REPORT_BACK) rather than prose alone. This is the enforcement SN-0359 itself never had."
-    },
-    {
-      "type": "RELATED",
-      "target": "SN-0357 and SN-0358 — same director directive, same date, three distinct clauses (self-directed judgement / collective initiative / proactive declaration). All three objects are PRESERVED; the Human Director resolves naming and overlap. Not a licence to delete any."
-    },
-    {
-      "type": "EXTENDS",
-      "target": "0004-NONSTOP-LOOP-V1 (SN-0355) — made not-stopping law; this adds declaring before acting and unprompted report-back. 0004 remains ACTIVE and is not superseded."
-    },
-    {
-      "type": "EXTENDS",
-      "target": "SN-016 — Prime Judgment Rule. Proactivity elevates the duty to check consequences, because fewer human checkpoints precede a hard gate."
-    },
-    {
-      "type": "DEPENDS_ON",
-      "target": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1 + kernel/value_calculus.py — supplies the scoring and hard-gate filtering the declaration must justify. That seam currently has zero callers outside its own tests, so mandate and implementation are not yet the same thing. Open reconciliation item, not a claim."
-    }
-  ],
   "lifecycle_state": "ACTIVE"
 }
