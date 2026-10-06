@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 226,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 23,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -159,9 +159,54 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0008-DELIVERABLE-SCORECARD-OSCAR-V1.ai.md",
+      "blob_sha": "277740fb8881b16fd7877a886508b5c2c1eca4bd",
+      "size": 5992
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-DELIVERABLE-SCORECARD-OSCAR-V1.human.md",
+      "blob_sha": "a85ca59d5d6df4be94d0f62ef2c710ae7f5fc75a",
+      "size": 4403
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0008-deliverable-scorecard-oscar-v1.machine.json",
+      "blob_sha": "2f81af8f00836737328d27cdff222451f38b9f83",
+      "size": 4201
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0009-NAYA-VOCABULARY-V1.ai.md",
+      "blob_sha": "e4c942903c8d46ce7bcff8983c8d6e6277d9e409",
+      "size": 4674
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0009-NAYA-VOCABULARY-V1.human.md",
+      "blob_sha": "be9a6d7306bce04e0997d65f739013e93db00fc8",
+      "size": 3699
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0009-naya-vocabulary-v1.machine.json",
+      "blob_sha": "9701466f15c1c4502c67fdc53b01f3b2e79481d2",
+      "size": 3789
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0010-CANDIDATE-OPERATING-LAWS-V1.ai.md",
+      "blob_sha": "d939e80278bceff04003ca40d88c25ebaa681dc6",
+      "size": 4362
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0010-CANDIDATE-OPERATING-LAWS-V1.human.md",
+      "blob_sha": "b45a34cc879650f49d957c9f95023dbf073c2be5",
+      "size": 3159
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0010-candidate-operating-laws-v1.machine.json",
+      "blob_sha": "ae6fed16cb3e0a4a2d30fe6987d3dc02b32fdab8",
+      "size": 3264
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
-      "size": 1673
+      "blob_sha": "36c89fd53620719b6a7cfb4425530f0f5be28d36",
+      "size": 2749
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
