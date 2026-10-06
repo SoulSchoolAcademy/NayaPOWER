@@ -1,0 +1,120 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0361",
+  "capture_id": "20261006-sn0361-archive-recovery-thesis",
+  "title": "The Recovery Thesis — NayaPOWER Was Designed, Not Invented",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "ARCHIVE_RECOVERY",
+  "subtopic": "NAYAPOWER_DESIGN_RECOVERY",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "ARCHIVE-RECOVERY",
+    "subtopic_slug": "NAYAPOWER-DESIGN-RECOVERY"
+  },
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "captured_at": "2026-10-06",
+    "source_type": "human_director_recovery_directive",
+    "source_reference": "Shawn Vibert message to all, 2026-10-06: the archive is being recognized as the prior design corpus for NayaPOWER/NayaNET; the current mission is to recover, reconcile, translate, enforce, and prove that design rather than continually invent parallel doctrine.",
+    "director": "Shawn Vibert",
+    "ratification": {
+      "by": "Shawn Vibert",
+      "at": "2026-10-06",
+      "channel": "main chat",
+      "note": "Standing instruction: lock this in for good as durable Smart Note intelligence, return a Smart Link when the canonical projection exists, and preserve it for future Nayas."
+    }
+  },
+  "intelligence": {
+    "essence": "NayaPOWER is not primarily a new invention waiting for more doctrine. The archive contains a substantial prior design language for excellence, character, governed execution, proof, compounding intelligence, and authority. The present job is to recover that design, reconcile it against current canonical truth, express it in human, AI, and machine forms, connect it to the living system, and prove that it works under present conditions. Intelligence is not merely what the system can do; it is what the system can prove through useful action and then compound.",
+    "human_view": {
+      "meaning": "We have been writing the same book from different angles. The craft era established that excellence is care made visible and that judgment needs a real score. The character era established that power without wisdom accelerates error and that capability does not create authority. The machine era established governed activation, evidence-gated learning, and a ledger that remembers what intelligence did. The civilization era established that authority and legitimacy must travel with messages and survive present conditions. The insight now is to recover the common architecture already present across those eras instead of inventing another parallel system.",
+      "why_it_matters": "The highest-value move is not more disconnected doctrine. It is turning durable archive knowledge into current, governed, machine-enforceable intelligence with traceable provenance, useful action, and measurable compounding.",
+      "simple_rule": "Recover what already exists, reconcile it with current truth, encode it so the system can enforce it, prove it under present conditions, and let verified learning compound."
+    },
+    "simple_view": {
+      "child": "Imagine someone discovers that the house plans, safety rules, and instructions for the whole house were already written in an old family notebook. The job is not to draw a brand-new house. It is to find the good plans, check them against the real house, fix anything outdated, and use the proven plans to make the house better.",
+      "grandma": "We are not starting over. A lot of the wisdom was already written down. Now we need to bring the useful parts forward, make sure they still match reality, and put them where everyone can use them safely and correctly."
+    },
+    "naya_view": {
+      "purpose": "Prevent doctrine proliferation and archive amnesia by making historical design knowledge a first-class recovery input while preserving present-day verification and governance boundaries.",
+      "recovery_loop": "RECOVER → RECONCILE → TRANSLATE → CONNECT → ENFORCE → PROVE → COMPOUND",
+      "four_eras": [
+        "CRAFT: interface excellence, button/screen rigor, and score-driven quality — excellence as care made visible.",
+        "CHARACTER: wisdom, humility, stewardship, do-no-harm, and authority discipline — power requires wisdom and authority is not created by capability.",
+        "MACHINE: activation, governed execution, SmartLedger, evidence-gated learning, and continuity — prove the loop runs and remember what intelligence did.",
+        "CIVILIZATION: agent-to-agent governance and persistent legitimacy — authority must travel with the message and remain valid under present conditions."
+      ],
+      "core_translation": "HUMAN ARCHIVE → RECOVERED PRINCIPLE → CURRENT CANON → HUMAN/AI/MACHINE EXPRESSION → ENFORCED BEHAVIOR → VERIFIED OUTCOME → COMPOUNDING INTELLIGENCE"
+    },
+    "ai_view": {
+      "instruction": "Treat the archive as a recovery corpus, not as automatic present truth. Extract durable principles, preserve provenance, compare them against current main and current live evidence, reconcile conflicts explicitly, and promote only what earns its truth state. Do not create a competing doctrine merely because an older equivalent is harder to find.",
+      "three_tongues": [
+        "HUMAN: what the principle means, why it matters, and how a person should experience it.",
+        "AI: how a Naya should interpret, reason over, and apply the principle within authority boundaries.",
+        "MACHINE: exact schemas, predicates, invariants, lifecycle states, and tests that enforce the principle."
+      ],
+      "non_negotiable": "Recovered intent does not create new authority. Capability is never authorization, historical authority is not automatically current authority, and a remembered principle is not proven behavior."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "recovery_requirements": [
+        "preserve original archive provenance",
+        "identify the exact historical source artifact where possible",
+        "map recovered principle to current canonical contract",
+        "record conflicts or terminology drift explicitly",
+        "translate into human, AI, and machine representations when implementation requires it",
+        "attach current verification evidence before promotion",
+        "keep historical source distinct from current executable authority"
+      ],
+      "governance_boundaries": [
+        "current-main truth outranks stale copies for present-state claims",
+        "production proof requires current deployed-runtime evidence",
+        "human-only gates remain human",
+        "UNKNOWN/BLOCKED is never PASS",
+        "IMPLEMENTED is never VERIFIED"
+      ]
+    },
+    "decisions": [
+      "The archive is a first-class recovery source for NayaPOWER/NayaNET design intelligence.",
+      "The default strategic posture is RECOVER before INVENT when an existing canonical or historical source can answer the question.",
+      "Recovered archive principles must be reconciled against current canonical contracts and current live evidence rather than copied blindly.",
+      "The three-tongue model — human, AI, machine — is a representation standard for durable system intelligence when enforcement or continuity requires it.",
+      "Do not proliferate parallel doctrine when a prior principle already exists; supersede, reconcile, or refine explicitly instead.",
+      "Every recovered principle that matters operationally should have an observable path from meaning to enforcement to proof and, where applicable, compounding learning."
+    ],
+    "connections": [
+      {
+        "type": "ALIGNS_WITH",
+        "target": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md — Smart Note intelligence must be captured, persisted, verified, projected, retrieved, understood, applied, observed, learned and compounded; truth claims remain evidence-bound."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md — judgment and quality are measured by a standing scorecard rather than vibes."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.* — standing execution is a continuous governed loop, not a terminal task list."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "NAYANODE/0008-EXECUTION-ALGORITHM-V1.md — governed execution remembers actions through SmartLedger receipts and evidence."
+      },
+      {
+        "type": "REFINES",
+        "target": "KNOWLEDGE/THE RIGHT SMART NOTE SYSTEM.md — Smart Note capture, canonical IB persistence, projection, retrieval and Smart Link are distinct but connected responsibilities."
+      }
+    ],
+    "uncertainty": "This note records Shawn's recovery thesis as candidate system intelligence. The existence of specific historical documents and the exact one-to-one equivalence between every archive era and current NayaPOWER component still require document-level reconciliation; this note does not itself prove that the entire archive has already been recovered or that every historical design decision remains current.",
+    "applicability": "All Naya/Coda seats and system-design work involving architecture, governance, product design, intelligence capture, continuity, learning, and future doctrine. Use especially when deciding whether to invent a new rule or recover an existing one first.",
+    "learning_lesson": "When a system has a long design archive, repeated reinvention can be a source-of-truth failure. Recover the original intent, reconcile it with present conditions, encode it in enforceable forms, and prove the resulting behavior before calling the principle alive.",
+    "successor_effect": "A cold successor should begin by searching the current canonical corpus and relevant historical archive for the principle that governs the task, distinguish recovered design intent from present verified truth, and then continue the recovery-to-proof loop without requiring Shawn to restate the philosophy.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "The recovery thesis is too broad if document-level comparison repeatedly shows that the cited historical materials do not substantively correspond to the claimed current principles, or if following recovered archive principles consistently reduces verified human value versus current canonical practice. In that case, the thesis must be narrowed and the conflicting provenance preserved.",
+    "measurement_contract": "Measure verified recovery value, not document count: for a sampled set of important archive principles, record exact historical source, current canonical mapping, conflict status, human/AI/machine representation coverage, enforcement status, and fresh behavioral proof. Track whether recovered principles reduce redundant invention and improve verified outcomes without weakening authority or safety."
+  }
+}
