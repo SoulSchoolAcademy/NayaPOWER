@@ -125,6 +125,22 @@ def migrate_preserving_fields(existing_capture, patch, explicit_removals=None):
     return {"document": document, "receipt": receipt}
 
 
+def migrate_capture_file(existing_path, patch_path, output_path, receipt_path, explicit_removals=None):
+    """Apply the canonical preservation migration to JSON files and persist its receipt."""
+    existing = load_json(existing_path)
+    patch = load_json(patch_path)
+    result = migrate_preserving_fields(existing, patch, explicit_removals=explicit_removals)
+    Path(output_path).write_text(
+        json.dumps(result["document"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    Path(receipt_path).write_text(
+        json.dumps(result["receipt"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return result
+
+
 def _registry_lock_path(registry_path):
     rp = Path(registry_path)
     return rp.parent / (rp.stem + ".lock")
@@ -999,6 +1015,7 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
+    mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
@@ -1009,6 +1026,9 @@ def main():
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
+    if args.cmd == "migrate":
+        x = migrate_capture_file(args.existing, args.patch, args.out, args.receipt)
+        print(json.dumps({"output": args.out, "receipt": args.receipt, "removed_paths": x["receipt"]["removed_paths"]}, ensure_ascii=False)); return
     if args.cmd == "discover":
         for path in changed_capture(args.paths, existing_only=True):
             print(path)
