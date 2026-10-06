@@ -179,7 +179,7 @@
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-  "inventory_file_count": 220,
+  "inventory_file_count": 225,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
     "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
@@ -262,7 +262,7 @@
     "current_main_prove": "KNOW_PASS_36658860694; LAW_1069_AND_KNOW_1072_SOURCE_BINDINGS_MERGED; CURRENT_MAIN_DEPLOYMENT_PENDING",
     "graph_relationship_contract_v2": "RATIFIED_SOURCE_INTEGRATED_SELECTOR_V2_MERGED_CURRENT_MAIN; LIVE_KNOW_RUNTIME_STALE_TO_CURRENT_SELECTOR; PRODUCTION_BEHAVIOR_NOT_YET_REPROVEN"
   },
-  "last_reconciled_main": "333f46c3c407898591cad0746bbdb8726dd7613b",
+  "last_reconciled_main": "6a71771f52aca1850215e423c3d83748eadcc217",
   "smart_node_protocol": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md",
   "operations": {
     "queue": "BRAIN/90-OPERATIONS/0001-MAX-10-EXECUTION-QUEUE-V1.md",
@@ -298,15 +298,15 @@
   "reconciliation": {
     "ledger": ".naya/project-intelligence/brain-reconciliation-ledger-f648833b.md",
     "reconciled_at": "2026-10-06",
-    "basis_commit": "333f46c3c407898591cad0746bbdb8726dd7613b",
+    "basis_commit": "6a71771f52aca1850215e423c3d83748eadcc217",
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-SPEC": 15,
-      "01-GOVERNANCE": 14,
+      "01-GOVERNANCE": 18,
       "02-ARCHITECTURE": 5,
       "03-KERNEL": 28,
       "04-INTELLIGENCE": 24,
-      "05-MEMORY": 61,
+      "05-MEMORY": 62,
       "06-PROOF": 10,
       "07-LEARNING": 2,
       "08-SUCCESSION": 2,
