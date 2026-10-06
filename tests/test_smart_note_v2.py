@@ -203,13 +203,13 @@ def test_update_registry_rejects_injected_colliding_reserved_id(tmp_path):
     m = _problem_b_fresh_module(tmp_path)
     first_cap, first_ver, first_proj = _problem_b_inputs(m, tmp_path, "IB-FIRST")
     first = m.update_registry(first_cap, first_ver, first_proj)
-    assert first["smart_note_id"] == "SN-0001"
+    assert first["smart_note_id"] == "SN-001"
 
     second_cap, second_ver, second_proj = _problem_b_inputs(m, tmp_path, "IB-SECOND")
     try:
-        m.update_registry(second_cap, second_ver, second_proj, sn_id="SN-0001")
+        m.update_registry(second_cap, second_ver, second_proj, sn_id="SN-001")
     except SystemExit as exc:
-        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-0001:")
+        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-001:")
     else:
         raise AssertionError("direct sn_id injection must not bypass ownership validation")
 
