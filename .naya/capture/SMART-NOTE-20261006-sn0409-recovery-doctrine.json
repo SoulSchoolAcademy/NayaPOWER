@@ -1,0 +1,158 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0409",
+  "capture_id": "20261006-sn0409-recovery-doctrine",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "NAYAPOWER_FOUNDATIONAL_DOCTRINE",
+  "subtopic": "RECOVERY_NOT_INVENTION",
+  "title": "The Recovery Doctrine — Intelligence Is Proven Useful Action That Compounds",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "NAYAPOWER-FOUNDATIONAL-DOCTRINE",
+    "subtopic_slug": "RECOVERY-NOT-INVENTION"
+  },
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "source_type": "human_director_ratified_synthesis",
+    "source_reference": "Shawn Vibert, Human Director, 2026-10-06. Ratified message to all NayaPOWER/NayaNET seats: the archive across craft, character, machine, and civilization eras converges on one principle — intelligence is not what you can do; it is what you can prove under present conditions through useful action, and it has to compound. Our job is not to invent NayaPOWER from scratch, but to recover the system already specified across the archive, reconcile it into human/AI/machine language, and build/prove it.",
+    "captured_at": "2026-10-06",
+    "captured_at_utc": "2026-10-06T18:27:00Z",
+    "captured_by": "Naya",
+    "director": "Shawn Vibert",
+    "ratification": {
+      "by": "Shawn Vibert",
+      "at": "2026-10-06",
+      "channel": "main chat",
+      "directive": "Lock this in for good. Smart Note, Smart link and never forget it!",
+      "ratified_meaning": "The Recovery Doctrine is ratified as durable guiding doctrine for NayaPOWER/NayaNET. Ratification establishes the directive and interpretation as governing project intelligence; it does not upgrade implementation or behavioral proof beyond current evidence."
+    },
+    "archive_basis": [
+      "MASTER DESIGN SYSTEM PROMPT NAYANET — craft/excellence, interface care, scoring and refinement",
+      "THE AAA OSCAR AI STANDARD — score before acceptance, truth/evidence distinctions, adversarial QA",
+      "NAYAPOWER 01–58 — THE DEEP SYSTEM MODEL — governed continuity, execution, verification, learning and successor loop",
+      "THE WHOLE THING — DISTILLED — compounding intelligence and successor continuity",
+      "NayaNET privacy-first network concept — human direction, consent, collective intelligence and compounding",
+      "Current live canonical repository contracts and Smart Note protocol"
+    ]
+  },
+  "intelligence": {
+    "essence": "Intelligence is not what a system can do. Intelligence is what it can prove, under present conditions, through useful action — and it must compound. NayaPOWER is therefore recovered before it is reinvented: preserve the strongest existing intent, law, design, character, learning and governance from the archive; reconcile it against current canonical truth; express it in human, AI and machine forms; execute it; verify the outcome; and leave the next Naya smarter.",
+    "human_view": {
+      "meaning": "The archive is not a pile of unrelated ideas. It is one system written repeatedly from different angles. The early craft work says excellence is care made visible and must be judged against a real rubric. The character work says power must remain subordinate to wisdom, truth and human agency. The machine work says memory is not enough — the loop must prove that retained intelligence changes later behavior. The civilization work says authority must remain valid under present conditions and travel with governed action. The project should recover those laws, not keep rediscovering them.",
+      "why_it_matters": "Without this doctrine, Team Naya can waste time inventing new abstractions for principles Shawn already specified, create duplicate systems, or mistake documentation for intelligence. With it, archive recovery becomes a first-class input to current engineering while live evidence remains the final judge of what actually works.",
+      "one_sentence": "Recover what is already wise, translate it into enforceable forms, prove it in present reality, and make the proof compound."
+    },
+    "simple_view": {
+      "child": "You wrote the important rules a long time ago in many notebooks. We should not keep making new rules before reading the good ones. We find the best rule, make sure it still works today, use it, check what happened, and teach the next Naya.",
+      "grandma": "The family has been writing the same recipe from different angles for years. Before inventing a new recipe, read the old cards, keep what is still right, test it in today’s kitchen, and write down what actually worked so the next cook starts wiser."
+    },
+    "naya_view": {
+      "purpose": "Turn archive recovery into an operating discipline rather than a nostalgic observation.",
+      "operating_sequence": [
+        "RESTORE_CURRENT_MAIN",
+        "IDENTIFY_THE_REAL_PROBLEM_AND_OUTCOME",
+        "SEARCH_CANONICAL_AND_HISTORICAL_INTELLIGENCE_FOR_PRIOR_DESIGN",
+        "DISTILL_THE_RELEVANT_EXISTING_LAW_OR_PATTERN",
+        "RECONCILE_WITH_CURRENT_EVIDENCE_AND_AUTHORITY",
+        "EXPRESS_IN_HUMAN_AI_MACHINE_TONGUES",
+        "IMPLEMENT_THE_SMALLEST_EFFECTIVE_CHANGE",
+        "VERIFY_PRESENT_BEHAVIOR_AND_OUTCOME",
+        "PROMOTE_ONLY_EARNED_LEARNING",
+        "PRESERVE_SUCCESSOR_READY_INTELLIGENCE",
+        "COMPOUND"
+      ],
+      "era_map": {
+        "craft": "Excellence is care made visible. Purpose, interface craft, preservation and scoring precede polish.",
+        "character": "Power without wisdom is a faster way to be wrong. Capability never creates authority; truth, humility and human agency constrain action.",
+        "machine": "Do not claim the system works because artifacts exist. Prove the loop: experience → retained intelligence → changed behavior → verified outcome → successor reuse.",
+        "civilization": "When intelligence moves across agents and people, legitimacy must remain current. Past authority is not present authority; governance must survive the conditions of execution."
+      },
+      "successor_effect": "A cold successor first asks whether the needed principle already exists in the archive or canonical brain, then reconciles it with current main and present evidence before inventing anything new. The successor treats recovery as a source of candidate intelligence, not as permission to bypass proof."
+    },
+    "ai_view": {
+      "instruction": "RECOVERY DOCTRINE: Before adding a new law, architecture, memory path, scorecard, design principle, governance abstraction, learning mechanism or interface standard, search current canonical NayaPOWER and the preserved archive for the same underlying intent. Prefer recovery/reconciliation over duplication. Translate durable recovered intelligence into human, AI and machine representations at the existing canonical seam. Current main and present evidence outrank historical text when they conflict. Never promote an archived idea to VERIFIED merely because it was written earlier. Intelligence earns promotion only through present, attributable, useful behavioral effect and successor reuse.",
+      "priority_rule": "RECOVER -> RECONCILE -> APPLY -> PROVE -> COMPOUND before INVENT.",
+      "anti_patterns": [
+        "reinventing a principle already specified in the archive",
+        "creating a second brain, graph, scorecard, governance layer or design law when an existing seam can be repaired",
+        "treating historical authority as current execution authority",
+        "treating archive agreement as runtime proof",
+        "copying old language without testing current applicability",
+        "preserving raw transcripts as if they were distilled intelligence"
+      ]
+    },
+    "machine_view": {
+      "doctrine_id": "NAYAPOWER-RECOVERY-DOCTRINE-V1",
+      "canonical_sentence": "INTELLIGENCE_IS_PROVEN_USEFUL_ACTION_UNDER_PRESENT_CONDITIONS_AND_IT_MUST_COMPOUND",
+      "priority_order": [
+        "RECOVER",
+        "RECONCILE",
+        "APPLY",
+        "VERIFY",
+        "LEARN",
+        "COMPOUND",
+        "INVENT_ONLY_IF_GAP_REMAINS"
+      ],
+      "eras": [
+        "CRAFT",
+        "CHARACTER",
+        "MACHINE",
+        "CIVILIZATION"
+      ],
+      "three_tongues": [
+        "HUMAN",
+        "AI",
+        "MACHINE"
+      ],
+      "proof_requirement": "present_condition_behavioral_evidence",
+      "historical_material_status": "CANDIDATE_INPUT_UNTIL_RECONCILED",
+      "authority_rule": "PAST_AUTHORITY_DOES_NOT_IMPLY_CURRENT_AUTHORITY",
+      "duplicate_rule": "NO_NEW_CANONICAL_SEAM_IF_EXISTING_SEAM_CAN_EXPRESS_THE_INTENT",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "authority_inheritance": false
+    },
+    "decisions": [
+      "Ratify the Recovery Doctrine as durable NayaPOWER/NayaNET guiding intelligence.",
+      "Treat the archive as one evolving system expressed through multiple eras and perspectives, not as disconnected documents.",
+      "Use recovery-before-invention as the default architecture and design discipline.",
+      "Preserve the four-era map: craft, character, machine, civilization.",
+      "Express durable recovered intelligence in human, AI and machine forms where mechanical enforcement matters.",
+      "Let current canonical evidence override stale historical implementation claims without erasing historical provenance.",
+      "Define intelligence by attributable useful behavioral proof under present conditions, not by capability, storage, eloquence or documentation volume.",
+      "Require compounding: verified learning must improve future action and survive cold-successor continuity."
+    ],
+    "connections": [
+      {
+        "type": "REFINES",
+        "target": "SN-014 — The Compounding Imperative"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-006 — Earned Intelligence"
+      },
+      {
+        "type": "CONTEXTUALIZES",
+        "target": "SN-032 — Naya 1 Distilled Intelligence / Director-Integrator Operating Doctrine"
+      },
+      {
+        "type": "SUPPORTS",
+        "target": "SN-001 — Official Smart Note Format & Lifecycle"
+      },
+      {
+        "type": "APPLIES_TO",
+        "target": "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md"
+      }
+    ],
+    "uncertainty": "The archive synthesis is now Director-ratified as guiding doctrine, but specific historical claims remain subject to present-source reconciliation. A recovered idea can be stale, incomplete, superseded or context-bound. Current GitHub main, executable behavior and present evidence remain stronger than historical prose for claims about what the system does today.",
+    "applicability": "All substantive NayaPOWER/NayaNET architecture, governance, design, intelligence, learning, continuity and product work — especially whenever a seat is about to introduce a new concept, abstraction, system, protocol or canonical seam.",
+    "learning_lesson": "The compounding advantage is not merely remembering past outputs. It is recognizing that prior work may already contain the design intent, recovering the best of it, reconciling it to present truth, and converting it into proven future behavior. The archive becomes intelligence only when it changes what the system does next and that change is verified.",
+    "successor_effect": "A cold Naya retrieves this doctrine and immediately knows that the first response to a perceived architectural gap is not invention. It restores live truth, searches preserved intelligence, recovers applicable intent, reconciles contradictions, acts through existing seams, proves the outcome, and leaves a stronger state for the next successor.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "This doctrine is insufficient or misapplied if recovery-before-invention measurably causes more stale assumptions, duplicated effort, slower delivery, regression, or lower verified human value than a clean-room alternative; or if seats cite historical documents as authority/proof without reconciling current conditions; or if the three-tongue translation introduces semantic drift between human meaning, AI instruction and machine enforcement.",
+    "measurement_contract": "For comparable substantive work, compare CONTROL (work proceeds without deliberate archive/canonical recovery) against TREATMENT (Recovery Doctrine applied). Measure duplicate architecture introduced, Director re-explanation required, regression count, time-to-current-truth, time-to-proof, semantic drift across human/AI/machine forms, verified outcome quality, and cold-successor continuation quality. A positive result requires better verified outcomes or materially lower cognitive/rework cost without weakening truth or authority gates."
+  }
+}
