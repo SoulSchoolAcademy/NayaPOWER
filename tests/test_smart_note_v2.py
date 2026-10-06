@@ -957,6 +957,46 @@ def test_retrieve_full_ladder_ordering(tmp_path, monkeypatch):
     assert result["retrieved"]["smart_note_id"] == "SN-L"
 
 
+# --- Truth 10/10: guard wiring — promote_note enforces truth-state guard ---
+def test_promote_rejects_anonymous_promoter_via_guard(tmp_path):
+    """The guard wiring (2026-10-06) rejects anonymous promoters at write time.
+    Before wiring, promote_note accepted any promoter string."""
+    import hashlib as _hl
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-GUARD-1")
+    m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    sn_id = reg["entries"][0]["smart_note_id"]
+    _types = ["independent_verification", "reproduction"]
+    bundle = [{"type": _types[i % 2], "source": "s",
+               "content_hash": _hl.sha256(f"guard-test-{i}".encode()).hexdigest(),
+               "gatherer": f"g{i}", "gathered_at": "2026-10-06T00:00:00Z"}
+              for i in range(2)]
+    result = m.promote_note(sn_id, bundle, "unknown")
+    assert result["promoted"] is False
+    assert result["record"]["reason_code"] == "GUARD_REJECTED"
+    reg2 = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    assert reg2["entries"][0]["truth_state"] == "CANDIDATE"
+
+
+def test_promote_accepts_named_promoter_via_guard(tmp_path):
+    """Named promoter with valid evidence passes the guard wiring."""
+    import hashlib as _hl
+    m = _problem_b_fresh_module(tmp_path)
+    cap, ver, proj = _problem_b_inputs(m, tmp_path, "IB-GUARD-2")
+    m.update_registry(cap, ver, proj)
+    reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
+    sn_id = reg["entries"][0]["smart_note_id"]
+    bundle = [{"type": ["independent_verification", "reproduction"][i % 2], "source": "s",
+               "content_hash": _hl.sha256(f"guard-test-2-{i}".encode()).hexdigest(),
+               "gatherer": f"g{i}", "gathered_at": "2026-10-06T00:00:00Z"}
+              for i in range(2)]
+    result = m.promote_note(sn_id, bundle, "naya-4")
+    if not result["promoted"]:
+        assert result["record"]["reason_code"] != "GUARD_REJECTED", \
+            f"Guard should accept named promoter: {result['record']}"
+
+
 # --- Retrieval 10/10: field-weighted scoring, phrase bonus, stemming ---
 
 def test_retrieve_title_match_beats_keyword_only(tmp_path, monkeypatch):
@@ -1029,4 +1069,3 @@ def test_retrieve_weighted_relevance_still_yields_to_authority_on_tie(tmp_path, 
     monkeypatch.setattr(mod, "REGISTRY", rp)
     result = mod.retrieve("parallel execution")
     assert result["retrieved"]["smart_note_id"] == "SN-R"
-
