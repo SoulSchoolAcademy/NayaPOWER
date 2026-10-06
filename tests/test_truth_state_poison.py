@@ -104,8 +104,14 @@ def test_legit_candidate_to_verified():
 
 
 def test_legit_verified_to_ratified():
+    # Under the elevation-grant law (Option C, ratified 2026-10-06), a legit
+    # VERIFIED->RATIFIED carries a director-issued grant. Without one it is
+    # rejected (see test_elevation_grants.py).
     e = make_entry("VERIFIED")
-    ok, _ = g.apply_elevation(e, "RATIFIED", authority="shawn", evidence=make_evidence())
+    grant = g.make_grant(note_id="SN-9001", issuer="Shawn Vibert",
+                         issuer_role="Human Director", expires_days=7)
+    ok, _ = g.apply_elevation(e, "RATIFIED", authority="shawn",
+                              evidence=make_evidence(), elevation_grants=[grant])
     assert ok and e["truth_state"] == "RATIFIED"
 
 
