@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "9fc64cab1a064824a8e224e3a489a6bc39ccffc2",
-  "inventory_file_count": 216,
+  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
+  "inventory_file_count": 217,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 59,
+    "05-MEMORY": 60,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -742,6 +742,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
       "blob_sha": "b0b521c3ee2c7df296d2e9854db982b6ea6f39bb",
       "size": 10964
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md",
+      "blob_sha": "f11b568e28890503029f991bb5e915579393ef19",
+      "size": 7082
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
