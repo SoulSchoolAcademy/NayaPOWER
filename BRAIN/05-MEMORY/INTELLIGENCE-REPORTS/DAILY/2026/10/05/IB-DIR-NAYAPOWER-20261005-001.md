@@ -104,6 +104,29 @@ The report must remain distinct from Smart Notes and Activity events. One author
 - **October 2:** `IB-DIR-NAYAPOWER-20261002-001` established the report → governed event → Hub projection boundary.
 - October 5 Smart Notes include the NONSTOP LOOP, scorecard method, self-directed intelligence, and related operating-law intelligence.
 
+## New intelligence locked today — the core magic
+
+A major conceptual gap was identified and closed in today's intelligence record: the public explanation of NayaPOWER did not make the **Smart Note → Intelligent Block → Naya learning → NayaNET compounding** journey vivid enough.
+
+The newly ratified system intelligence establishes:
+
+**SMART NOTE = CAPTURE THE MOMENT**
+
+**INTELLIGENT BLOCK = TURN THE MOMENT INTO INTELLIGENCE**
+
+**NAYA = LEARN AND WORK WITH THE INTELLIGENCE**
+
+**NAYAPOWER = MAKE THE INTELLIGENCE DURABLE, GOVERNED, RETRIEVABLE, VERIFIABLE, AND COMPOUNDABLE**
+
+**NAYANET = CONNECT THE INTELLIGENCES BY CHOICE AND CONSENT**
+
+This is the human-facing heart of the product story. A valuable insight from a conversation should not merely become a transcript that sits somewhere. It should have a path to becoming structured, provenance-bound, reusable intelligence that can be retrieved, understood, applied, verified, learned from, and—where authorized—shared so other people and Nayas can benefit.
+
+**New canonical Intelligent Block:** `IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001`
+
+This is an official conceptual intelligence record. It does **not** by itself prove every underlying runtime, persistence, network-sharing, or compounding behavior. Those remain evidence questions and must continue to be proved separately.
+
+
 ## Current unknowns / not-yet-proven claims
 
 - Automatic **Daily Report → Hub projection** is not independently proven merely by creating this repository artifact.

@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "63a7bd3323877d7d0c37bf7fb9462b4b10acb245",
-  "inventory_file_count": 211,
+  "receipt_basis_commit": "613133b60b302963736ecb9bf2da006662873023",
+  "inventory_file_count": 213,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 29,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 53,
+    "05-MEMORY": 55,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -504,9 +504,14 @@
       "size": 4935
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/2026-10-05-LEARNING-EVENT.md",
+      "blob_sha": "6fc3e6819ee84238fd22009955db03389bd2ac70",
+      "size": 15083
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md",
-      "blob_sha": "91adb23e0b27ad22ee259058176365a77ec0e477",
-      "size": 6650
+      "blob_sha": "d747afcc0ba0207df92dae2df5f9641a8f2999cf",
+      "size": 8002
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
@@ -700,8 +705,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
-      "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
-      "size": 4124
+      "blob_sha": "b6d3ec378a19de8379c4849fc7e16383598f301f",
+      "size": 836
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
@@ -717,6 +722,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
       "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
       "size": 6070
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "blob_sha": "b0b521c3ee2c7df296d2e9854db982b6ea6f39bb",
+      "size": 10964
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
