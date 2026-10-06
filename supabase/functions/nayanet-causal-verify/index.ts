@@ -264,6 +264,13 @@ Deno.serve(async (req: Request) => {
       const evidence = Array.isArray(treatment.evidence) ? treatment.evidence : [];
       const causal = evidence.find((item: Record<string,unknown>) => item?.causal_verification)?.causal_verification as Record<string,unknown> | undefined;
       if (!causal) return json({ok:false,error:"CVO_NOT_PERSISTED"},409);
+      // Narrow before reading: an independent verifier must compare against persisted
+      // structure, not coerce whatever happens to be in the JSONB. A missing/malformed
+      // evidence arm now fails closed with a reason instead of silently reading undefined.
+      const causalEvidence=(causal.evidence??{}) as {
+        treatment?:{outcome_id?:unknown; evidence?:{provenance_present?:unknown}};
+        control?:{outcome_id?:unknown; evidence?:{provenance_present?:unknown}};
+      };
       const valid = causal.schema === "NAYANET_CAUSAL_VERIFICATION_V1"
         && causal.receipt_id === treatmentId
         && causal.comparison_receipt_id === controlId
@@ -272,10 +279,10 @@ Deno.serve(async (req: Request) => {
         && causal.verification_status === "OUTCOME_VERIFIED"
         && causal.production_action_executed === true
         && causal.observed_change === treatment.observed_result
-        && causal.evidence?.treatment?.outcome_id === treatmentOutcome.outcome_id
-        && causal.evidence?.control?.outcome_id === controlOutcome.outcome_id
-        && causal.evidence?.treatment?.evidence?.provenance_present === true
-        && causal.evidence?.control?.evidence?.provenance_present === false;
+        && causalEvidence.treatment?.outcome_id === treatmentOutcome.outcome_id
+        && causalEvidence.control?.outcome_id === controlOutcome.outcome_id
+        && causalEvidence.treatment?.evidence?.provenance_present === true
+        && causalEvidence.control?.evidence?.provenance_present === false;
       return json({ok:valid,verification:{independent_verification:valid,receipt_id:treatmentId,comparison_receipt_id:controlId,causal_verification:causal,active_authorization_grant_id:binding[0].grant_id,workflow_ref:workflowRef,token_jti:payload.jti ?? null}}, valid ? 200 : 409);
     }
 
