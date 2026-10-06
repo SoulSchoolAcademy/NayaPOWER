@@ -1404,7 +1404,9 @@
         "captain of the ship",
         "take initiative",
         "operating code",
-        "lead with the plan"
+        "lead with the plan",
+        "captain protocol",
+        "protocol"
       ],
       "provenance": {
         "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn, 2026-10-05: \"I don't ever want you to be reactive, I always want you to be proactive... make it law\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
