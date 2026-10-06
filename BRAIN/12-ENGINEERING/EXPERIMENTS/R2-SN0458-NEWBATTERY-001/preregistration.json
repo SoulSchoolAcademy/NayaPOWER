@@ -1,0 +1,77 @@
+{
+  "schema": "NAYAPOWER_LEARNING_COMPOUNDING_EXPERIMENT_V2",
+  "status": "DRAFT_AWAITING_INDEPENDENT_KEY_VALIDATION",
+  "experiment_id": "R2-SN0458-NEWBATTERY-001",
+  "original_experiment_status": "FIXTURE_PROVENANCE_LOSS",
+  "baseline_main_sha": "8442edae26dc854d792729a52f1ab83c991944aa",
+  "arms": [
+    {
+      "name": "CONTROL"
+    },
+    {
+      "name": "TREATMENT"
+    },
+    {
+      "name": "WRONG_LESSON"
+    }
+  ],
+  "minimum_trials_per_arm": 11,
+  "negative_transfer": {
+    "required": true,
+    "minimum_trials": 5
+  },
+  "scoring": {
+    "weights": {
+      "accuracy": 0.4,
+      "diagnostic_order": 0.2,
+      "cost": 0.2,
+      "consistency": 0.1,
+      "negative_transfer_guard": 0.1
+    },
+    "negative_transfer_is_hard_gate": true
+  },
+  "answer_key": {
+    "prevalidated_before_trials": false,
+    "builder": "Naya Captain",
+    "independent_verifier": "Coda 2",
+    "fixture_shas": [
+      "e41b807114b733fc1a21a6405de7e9a5c580dcfb",
+      "9bae37d9d21285961f863bcec94e2ddb155cb421",
+      "73031aa7755221d41a3db9442e13599ec2e0fe26",
+      "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
+      "6163f8279c74d3adbd96e0230b69c4bc05399ad1",
+      "392b25bbc6647a6cf4b71d0de5c983d37d654ef6",
+      "6011bd8494141514852aa2f9834ca8838d0199c1",
+      "72e370e6238315d633a3be0e57eca9fece69f8a3"
+    ]
+  },
+  "evidence_capture": {
+    "raw_transcripts_required": true,
+    "exact_tool_call_counts_required": true,
+    "immutable_fixture_binding_required": true
+  },
+  "hypotheses": [
+    "Treatment accuracy on T1-T6 is materially higher than Control under identical task facts and baseline corpus.",
+    "A majority of correct Treatment transfer trials retrieve and cite SN-0458; otherwise causal attribution is inconclusive.",
+    "WRONG_LESSON does not perform equivalently to or better than Treatment on T1-T6; otherwise lesson-specific attribution is falsified.",
+    "Treatment causes zero negative-transfer errors across N1-N5; any over-application is a hard failure."
+  ],
+  "fixture_roles": {
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/tasks/task-pack.json": "e41b807114b733fc1a21a6405de7e9a5c580dcfb",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/keys/answer-key.json": "9bae37d9d21285961f863bcec94e2ddb155cb421",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/brief-template.md": "73031aa7755221d41a3db9442e13599ec2e0fe26",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/target-lesson-SN-0458.md": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/wrong-lesson-overlay.md": "6163f8279c74d3adbd96e0230b69c4bc05399ad1",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/control.json": "392b25bbc6647a6cf4b71d0de5c983d37d654ef6",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/treatment.json": "6011bd8494141514852aa2f9834ca8838d0199c1",
+    "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/wrong-lesson.json": "72e370e6238315d633a3be0e57eca9fece69f8a3"
+  },
+  "target_lesson_source": {
+    "source_pr": 1229,
+    "source_head": "db011de86679d531ca05850523b9484867e6303e",
+    "source_blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
+    "copied_fixture_blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567"
+  },
+  "builder_boundary": "No trials executed. Coda 2 independent answer-key validation must PASS before status can become PREREGISTERED and prevalidated_before_trials can become true.",
+  "prohibited_reinterpretation": "This new battery must never be represented as the lost original Stage-1 fixture package."
+}
