@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "8e0da173b1a83e63095dcb6ad0ca4bc4554958b8",
-  "inventory_file_count": 211,
+  "receipt_basis_commit": "b28f4265fa0002de41a417d9d47e52aa5982fa88",
+  "inventory_file_count": 212,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 54,
+    "05-MEMORY": 55,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -499,9 +499,14 @@
       "size": 4935
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md",
+      "blob_sha": "91adb23e0b27ad22ee259058176365a77ec0e477",
+      "size": 6650
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
-      "blob_sha": "16b436f42a72271eefc64c031ea5c0c75a4651d5",
-      "size": 5598
+      "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
+      "size": 6111
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
