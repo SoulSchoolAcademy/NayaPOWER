@@ -2,12 +2,12 @@
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
   "receipt_basis_commit": "75a0d2d8cc7d2710163780df9da3e3fcabe12b51",
-  "inventory_file_count": 213,
+  "inventory_file_count": 212,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 29,
+    "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 55,
     "06-PROOF": 10,
@@ -282,11 +282,6 @@
       "path": "BRAIN/03-KERNEL/README.md",
       "blob_sha": "03dd562d8591519ed48f00468eda13e1ae5e1db3",
       "size": 1402
-    },
-    {
-      "path": "BRAIN/03-KERNEL/RUNTIME-WIRING.json",
-      "blob_sha": "dd64447b6dbe882fa7a0ec04fbf4af645bd2ed2c",
-      "size": 2775
     },
     {
       "path": "BRAIN/03-KERNEL/SCHEMA/ACT-NODE-SCHEMA.json",
