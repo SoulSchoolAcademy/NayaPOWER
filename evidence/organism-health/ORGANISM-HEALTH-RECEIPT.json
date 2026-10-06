@@ -1,0 +1,313 @@
+{
+  "schema": "naya.organism.health.receipt/v1",
+  "sha_measured": "272d9a13d02b2acfafaa23b6418c31cb7004bcea",
+  "measured_at": "2026-10-06T17:21:18.987058+00:00",
+  "measured_by": "tools/organism_health_receipt.py (CODA 3)",
+  "tool_version": "1.1.0",
+  "measurement_env": {
+    "python": "3.13.15",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "head_matched_sha": true
+  },
+  "overall": "NOT_HEALTHY",
+  "top_problem": {
+    "area": "production_parity",
+    "headline": "production BEHIND: stamps 4a2f7282, main is 272d9a13 (90 main-commits ahead of the stamped source).",
+    "evidence": {
+      "production_ref": "e727720424e237f1e0264a39598365ef986c7670",
+      "stamp_subject": "deploy: stamp Naya runtime source 4a2f728239c0e404205f0cc590766ceb7e7b7c28",
+      "stamp_committed_at": "2026-10-05T22:32:05Z",
+      "stamp_source": "4a2f728239c0e404205f0cc590766ceb7e7b7c28",
+      "main_sha": "272d9a13d02b2acfafaa23b6418c31cb7004bcea",
+      "ref_note": "origin/production as fetched locally; re-fetch before acting."
+    }
+  },
+  "caveats": [
+    {
+      "area": "kernel_suite",
+      "headline": "pytest UNMEASURABLE on this runner (win32 lacks fcntl; 3 files fail collection before running). Node suite green (264/264). Kernel verdict deferred to Linux CI."
+    },
+    {
+      "area": "know_retrieval",
+      "headline": "KNOW UNMEASURABLE on this runner (win32 lacks fcntl; harness imports smart_note_v2 which requires it). Rerun on Linux. Note: spec corpus pin 240db963 != measured 272d9a13 -- expectations are corpus-bound and need re-verification at this SHA regardless."
+    }
+  ],
+  "priority_rank": [
+    "kernel_suite",
+    "poison_battery",
+    "production_parity",
+    "migration_parity",
+    "smart_note_index",
+    "chain_readiness",
+    "know_retrieval",
+    "learning_proof",
+    "cold_successor_drill"
+  ],
+  "areas": {
+    "kernel_suite": {
+      "status": "UNKNOWN",
+      "summary": "pytest UNMEASURABLE on this runner (win32 lacks fcntl; 3 files fail collection before running). Node suite green (264/264). Kernel verdict deferred to Linux CI.",
+      "evidence": {
+        "node": {
+          "command": "C:\\Program Files\\nodejs\\node.EXE --test C:\\Users\\Admin\\naya-coda3-health\\tests\\act-runtime.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\act_runtime_handler_time.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\ai1-capability-carry.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\ai1-capability-revision-integrity.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\causal_learning_verifier.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\cold_successor_generalization.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\connect-writer-threading.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\github_dispatch_contract.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\intelligence-commit-digest-schema.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\intelligence-commit-lineage-revision.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\intelligence-commit-target-scope.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\intelligence_commit_handler.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know-edge-context.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know-negative-battery.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know-runtime.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know-v2-selector.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know-writer-roundtrip.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\know_runtime_handler_freshness.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\law-runtime.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\law_runtime_handler_scope.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\learning_generalization_behavior.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\learning_generalization_verifier.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\learning_influence_behavior.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\prove-runtime.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\task-class-declaration.test.mjs C:\\Users\\Admin\\naya-coda3-health\\tests\\verified_ai_action_authority_lifecycle.test.mjs",
+          "exit": 0,
+          "stdout_tail": [
+            "\u00e2\u0153\u201d authority lifecycle fails closed for revoked-at grant even if status is ACTIVE (0.9945ms)",
+            "\u00e2\u0153\u201d authority lifecycle fails closed for expired grant (0.9438ms)",
+            "\u00e2\u0153\u201d negative matrix preserves distinct authority reasons in durable refusal evidence (5.1185ms)",
+            "\u00e2\u0153\u201d authority lifecycle rejects a stale cached grant after live revocation (2.7283ms)",
+            "\u00e2\u201e\u00b9 tests 264",
+            "\u00e2\u201e\u00b9 suites 0",
+            "\u00e2\u201e\u00b9 pass 264",
+            "\u00e2\u201e\u00b9 fail 0",
+            "\u00e2\u201e\u00b9 cancelled 0",
+            "\u00e2\u201e\u00b9 skipped 0",
+            "\u00e2\u201e\u00b9 todo 0",
+            "\u00e2\u201e\u00b9 duration_ms 516.4547"
+          ],
+          "stderr_tail": [],
+          "timed_out": false
+        },
+        "pytest": {
+          "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pytest -q",
+          "exit": 2,
+          "stdout_tail": [
+            "tests\\test_smart_note_v2.py:9: in <module>",
+            "    spec.loader.exec_module(mod)",
+            "tools\\smart_note_v2.py:3: in <module>",
+            "    import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile",
+            "E   ModuleNotFoundError: No module named 'fcntl'",
+            "=========================== short test summary info ===========================",
+            "ERROR tests/test_promotion_writer.py",
+            "ERROR tests/test_smart_note_migration_preservation.py",
+            "ERROR tests/test_smart_note_registry_drift.py",
+            "ERROR tests/test_smart_note_v2.py",
+            "!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!",
+            "4 errors in 1.46s"
+          ],
+          "stderr_tail": [],
+          "timed_out": false
+        },
+        "node_files": 26,
+        "node_counts": {
+          "total": 264,
+          "pass": 264,
+          "fail": 0
+        },
+        "pytest_counts": {
+          "pass": null,
+          "fail": null,
+          "skip": null
+        }
+      },
+      "details": {}
+    },
+    "chain_readiness": {
+      "status": "PASS",
+      "summary": "2/11 links SATISFIED, at/above floor 2: no regression. 9 links open (incompleteness, not rot).",
+      "evidence": {
+        "run": {
+          "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe C:\\Users\\Admin\\naya-coda3-health\\BRAIN\\12-ENGINEERING\\verify-collective-chain-readiness.py",
+          "exit": 1,
+          "stdout_tail": [
+            "COLLECTIVE INTELLIGENCE CHAIN \u00ce\u201c\u00c3\u2021\u00c3\u00b6 MEASURED READINESS",
+            "  runtime on branch : receiver=True migrations=166 edge_functions=21",
+            "  chain verdict     : 2/11 links SATISFIED",
+            "",
+            "  L01  NOT_SATISFIED       LESSON -> INTELLIGENT BLOCK",
+            "                           no governed intelligence-commit receipt is available to this repository-only readiness probe",
+            "  L02  SATISFIED           VALIDATE",
+            "                           10 governed artifacts validate against the canonical machine contract, 0 do not",
+            "  L03  SATISFIED           CONNECT",
+            "                           22/22 graph relationships carry a canonical type and provenance",
+            "  L04  UNKNOWN             RECONCILE",
+            "                           0 declared contradictions, 0 unadjudicated, 0 artifact/contract disagreements; no contradiction is evidence of a reconciled system",
+            "  L05  UNKNOWN             INTEGRATE INTO CORE INTELLIGENCE",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L06  UNKNOWN             CHECKPOINT",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L07  UNKNOWN             COLD RETRIEVE",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L08  UNKNOWN             RECOGNIZE APPLICABILITY",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L09  UNKNOWN             ACT WITHIN AUTHORITY",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L10  UNKNOWN             VERIFY",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            "  L11  UNKNOWN             IMPROVE COLLECTIVE INTELLIGENCE",
+            "                           evidence for this link is runtime-produced and cannot be inspected on this branch",
+            ""
+          ],
+          "stderr_tail": [
+            "  9 of 11 links are not satisfied.",
+            "FAIL: collective intelligence chain is 9/11 links from ready"
+          ],
+          "timed_out": false
+        },
+        "satisfied": 2,
+        "floor": 2,
+        "baseline_ref": "BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json"
+      },
+      "details": {
+        "open_links": 9
+      }
+    },
+    "smart_note_index": {
+      "status": "PASS",
+      "summary": "brain index matches git tree (212 files), no drift.",
+      "evidence": {
+        "run": {
+          "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe tools/regenerate_brain_index.py --check",
+          "exit": 0,
+          "stdout_tail": [
+            "OK: index layer matches git tree (212 files)"
+          ],
+          "stderr_tail": [],
+          "timed_out": false
+        },
+        "indexed_files": 212
+      },
+      "details": {}
+    },
+    "know_retrieval": {
+      "status": "UNKNOWN",
+      "summary": "KNOW UNMEASURABLE on this runner (win32 lacks fcntl; harness imports smart_note_v2 which requires it). Rerun on Linux. Note: spec corpus pin 240db963 != measured 272d9a13 -- expectations are corpus-bound and need re-verification at this SHA regardless.",
+      "evidence": {
+        "harness": {
+          "command": "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe C:\\Users\\Admin\\naya-coda3-health\\tools\\know_measure\\harness.py --repo C:\\Users\\Admin\\naya-coda3-health --spec C:\\Users\\Admin\\naya-coda3-health\\tools\\know_measure\\query_spec_v1.json --out C:\\Users\\Admin\\AppData\\Local\\Temp\\know-run-fqp2868c",
+          "exit": 1,
+          "stdout_tail": [],
+          "stderr_tail": [
+            "    main()",
+            "    ~~~~^^",
+            "  File \"C:\\Users\\Admin\\naya-coda3-health\\tools\\know_measure\\harness.py\", line 69, in main",
+            "    import smart_note_v2 as sn2  # noqa: E402  (the system under test)",
+            "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+            "  File \"C:\\Users\\Admin\\naya-coda3-health\\tools\\smart_note_v2.py\", line 3, in <module>",
+            "    import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile",
+            "ModuleNotFoundError: No module named 'fcntl'"
+          ],
+          "timed_out": false
+        },
+        "scorer": {
+          "command": "scorer (skipped: no retrieval log)",
+          "exit": null,
+          "stdout_tail": [],
+          "stderr_tail": [
+            "    ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+            "  File \"C:\\Users\\Admin\\naya-coda3-health\\tools\\smart_note_v2.py\", line 3, in <module>",
+            "    import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile",
+            "ModuleNotFoundError: No module named 'fcntl'"
+          ],
+          "timed_out": false
+        },
+        "summary": {},
+        "spec_corpus_pin": "240db96362f17070540cede62ba8034cfcde37ef",
+        "measured_sha": "272d9a13d02b2acfafaa23b6418c31cb7004bcea",
+        "pin_match": false,
+        "spec_ref": "tools/know_measure/query_spec_v1.json"
+      },
+      "details": {}
+    },
+    "poison_battery": {
+      "status": "PASS",
+      "summary": "poison battery 12/12 adversarial cases rejected.",
+      "evidence": {
+        "battery_run": {
+          "command": "C:\\Program Files\\nodejs\\node.EXE --test C:\\Users\\Admin\\naya-coda3-health\\tests\\know-negative-battery.test.mjs",
+          "exit": 0,
+          "stdout_tail": [
+            "\u00e2\u0153\u201d NEG TOCTOU: supersession chase uses the input snapshot, no re-fetch (0.1331ms)",
+            "\u00e2\u0153\u201d NEG REVOKED: edge to a revoked-status target contributes zero (0.1554ms)",
+            "\u00e2\u0153\u201d NEG CANDIDATE: unpromoted target cannot steer selection or context (0.1069ms)",
+            "\u00e2\u0153\u201d NEG UNKNOWN-TYPE: forged relationship types are inert (0.16ms)",
+            "\u00e2\u201e\u00b9 tests 12",
+            "\u00e2\u201e\u00b9 suites 0",
+            "\u00e2\u201e\u00b9 pass 12",
+            "\u00e2\u201e\u00b9 fail 0",
+            "\u00e2\u201e\u00b9 cancelled 0",
+            "\u00e2\u201e\u00b9 skipped 0",
+            "\u00e2\u201e\u00b9 todo 0",
+            "\u00e2\u201e\u00b9 duration_ms 121.9191"
+          ],
+          "stderr_tail": [],
+          "timed_out": false
+        },
+        "battery_pass": 12,
+        "battery_fail": 0,
+        "adversarial_script_present": true,
+        "adversarial_evidence_present": true
+      },
+      "details": {}
+    },
+    "migration_parity": {
+      "status": "FLAG",
+      "summary": "repo<->ledger accounting EXACT (166 = 165 applied + 1 recorded pending), but 1 migration(s) are PENDING_REVIEW_NOT_PRODUCTION_APPLIED; production DB side UNVERIFIED (never touched).",
+      "evidence": {
+        "repo_files": 166,
+        "ledger_versions": 165,
+        "ledger_claimed_applied": 165,
+        "ledger_recorded_pending": 1,
+        "ledger_authority_note": "Reconciled 2026-10-05 by Team Naya. Production ledger now records 165 applied migrations; EVENT_ID_REPLAY exact-payload reconciliation was applied and independently probed against SN-0357 with no duplicate event/receipt/block/lineage writes.",
+        "in_ledger_applied_not_repo": [],
+        "in_repo_not_in_ledger_at_all": [],
+        "recorded_pending_not_production_applied": [
+          "20261006021500"
+        ],
+        "recorded_pending_missing_from_repo": [],
+        "production_db": "NEVER CONTACTED -- lane rule forbids touching production DB/credentials; DB side is UNKNOWN by construction."
+      },
+      "details": {}
+    },
+    "production_parity": {
+      "status": "FLAG",
+      "summary": "production BEHIND: stamps 4a2f7282, main is 272d9a13 (90 main-commits ahead of the stamped source).",
+      "evidence": {
+        "production_ref": "e727720424e237f1e0264a39598365ef986c7670",
+        "stamp_subject": "deploy: stamp Naya runtime source 4a2f728239c0e404205f0cc590766ceb7e7b7c28",
+        "stamp_committed_at": "2026-10-05T22:32:05Z",
+        "stamp_source": "4a2f728239c0e404205f0cc590766ceb7e7b7c28",
+        "main_sha": "272d9a13d02b2acfafaa23b6418c31cb7004bcea",
+        "ref_note": "origin/production as fetched locally; re-fetch before acting."
+      },
+      "details": {
+        "commits_behind": "90"
+      }
+    },
+    "learning_proof": {
+      "status": "FLAG",
+      "summary": "learning proof STALE: latest causal experiment 8.0d old (> 7d).",
+      "evidence": {
+        "canaries": [
+          ".naya/capture/SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.json"
+        ],
+        "canary_ages_days": {
+          ".naya/capture/SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.json": 1.16
+        },
+        "causal_verified_at": "2026-09-28T16:32:55.349Z",
+        "causal_age_days": 8.03,
+        "fresh_threshold_days": 7
+      },
+      "details": {}
+    },
+    "cold_successor_drill": {
+      "status": "FLAG",
+      "summary": "cold drill NEVER PROVEN: bank holds 4 items, zero drill logs tracked.",
+      "evidence": {
+        "bank_items": 4,
+        "bank_ids": [
+          "drill-2026-w41-a",
+          "drill-2026-w41-b",
+          "drill-2026-w41-c",
+          "drill-2026-w41-d"
+        ],
+        "drill_logs_tracked": [],
+        "newest_log_age_days": null,
+        "fresh_threshold_days": 7
+      },
+      "details": {}
+    }
+  },
+  "how_to_regenerate": "python tools/organism_health_receipt.py --sha 272d9a13d02b2acfafaa23b6418c31cb7004bcea"
+}
