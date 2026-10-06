@@ -506,9 +506,13 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     return entry
 
 # Truth-state authority rank for retrieval tie-breaking. Higher = more
-# authoritative. Unknown/missing truth_state ranks 0 (neutral) so legacy
-# entries without the field behave exactly as before.
-TRUTH_STATE_RANK = {"RATIFIED": 2, "VERIFIED": 1}
+# authoritative. Rank breaks ties on keyword relevance only — relevance
+# dominates (see retrieve()). The map covers the full elevation ladder
+# (CANDIDATE < TESTING < VERIFIED < RATIFIED < ACTIVE < LEARNED) so higher
+# truth states outrank lower ones at equal relevance. Unknown/missing
+# truth_state ranks 0 (neutral) so legacy entries without the field behave
+# exactly as before.
+TRUTH_STATE_RANK = {"LEARNED": 4, "ACTIVE": 3, "RATIFIED": 2, "VERIFIED": 1}
 
 def _nutshell_text(projection_path):
     """Return a note's IN A NUTSHELL lesson text for retrieval matching.
@@ -541,15 +545,22 @@ def retrieve(query):
         # unchanged: keyword score first, truth-state rank second, recency last.
         hay += " " + _nutshell_text(e.get("projection_path", "")).lower()
         score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
-        # Truth-state rank: when keyword relevance ties, prefer the higher
-        # authority. Score stays primary — a highly relevant CANDIDATE still
-        # beats a barely relevant RATIFIED note. (Retrieval track, 2026-10-06:
-        # without this, a newer CANDIDATE restatement wins ties over ratified
-        # law purely on captured_at recency.)
+        if score <= 0:
+            # Authority never promotes irrelevance: a note matching zero
+            # query terms cannot win on truth-state rank alone.
+            continue
         rank = TRUTH_STATE_RANK.get(str(e.get("truth_state", "")).upper(), 0)
+        # Boundary (investigated 2026-10-06, Naya 4): relevance dominates,
+        # authority breaks ties. An additive authority bonus was built and
+        # FALSIFIED on the live corpus: RATIFIED+2 promoted SN-016
+        # ("Judgment Rule") over SN-041 ("Discernment-to-Compounding") for
+        # the query "compounding proof" — true but irrelevant intelligence
+        # wearing authority is misdirection, and it is worse than a
+        # relevant CANDIDATE whose uncertainty is visible. A 1-2 keyword
+        # gap at these score magnitudes (1-3) is signal, not noise.
         ranked.append((score, rank, e))
     ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
-    if not ranked or ranked[0][0] <= 0:
+    if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
     e = ranked[0][2]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")

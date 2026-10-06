@@ -759,3 +759,114 @@ def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch
     monkeypatch.setattr(mod, "REGISTRY", rp)
     result = mod.retrieve("declaring intent before acting")
     assert result["retrieved"]["smart_note_id"] == "SN-CAP"
+
+
+# --- Retrieval relevance-vs-authority boundary (Naya 4, 2026-10-06) ---
+# Investigated, evidence-backed rule: relevance dominates, authority breaks
+# ties. An additive authority bonus (RATIFIED+2) was built and FALSIFIED on
+# the live corpus — it promoted SN-016 ("Judgment Rule", RATIFIED, 1 hit)
+# over SN-041 ("Discernment-to-Compounding", CANDIDATE, 2 hits) for the
+# query "compounding proof". True-but-irrelevant intelligence wearing
+# authority is misdirection, worse than a relevant CANDIDATE whose
+# uncertainty is visible. These tests pin the boundary so it is not
+# reintroduced as a "fix".
+def test_retrieve_relevance_dominates_small_gap(tmp_path, monkeypatch):
+    """CANDIDATE +1 keyword over RATIFIED still wins: relevance dominates."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta", "gamma"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha beta gamma")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_candidate_wins_on_large_gap(tmp_path, monkeypatch):
+    """CANDIDATE +3 keywords over RATIFIED is signal; relevance wins."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta", "gamma", "delta", "epsilon"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha beta gamma delta epsilon")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_irrelevant_ratified_never_wins(tmp_path, monkeypatch):
+    """A RATIFIED note matching zero query terms cannot win on rank alone."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zzz"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_no_relevant_intelligence_still_fires(tmp_path, monkeypatch):
+    """All zero relevance -> NO_RELEVANT_INTELLIGENCE, even with RATIFIED present."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zzz"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("alpha")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE"
+    else:
+        raise AssertionError("expected NO_RELEVANT_INTELLIGENCE to fail closed")
+
+
+def test_retrieve_full_ladder_ordering(tmp_path, monkeypatch):
+    """Equal relevance -> LEARNED > ACTIVE > RATIFIED > VERIFIED > CANDIDATE."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-V", "intelligent_block_id": "IB-V",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "VERIFIED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-A", "intelligent_block_id": "IB-A",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-L", "intelligent_block_id": "IB-L",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "LEARNED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha")
+    assert result["retrieved"]["smart_note_id"] == "SN-L"
