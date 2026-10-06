@@ -33,7 +33,7 @@ def test_migrate_refuses_undeclared_removal():
     existing = {"title": "Original", "intelligence": {"provenance": {"source": "x"}, "keep": 1}}
 
     with pytest.raises(mod.PreservationMigrationError, match="EXPLICIT_REMOVAL_REQUIRED"):
-        mod.migrate_preserving_fields(existing, {"title": "Updated"}, removed_paths=["intelligence.keep"])
+        mod.migrate_preserving_fields(existing, {"title": "Updated"}, explicit_removals=[{"path": "intelligence.keep", "reason": "cleanup", "authority": "director:shawn"}])
 
 
 def test_migrate_records_explicit_authorized_nonprotected_removal():
