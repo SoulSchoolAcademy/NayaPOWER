@@ -93,6 +93,9 @@ def build_manifest(
         "hypotheses": list(hypotheses),
     }
     if extras:
+        overwritten = sorted(set(extras) & set(manifest))
+        if overwritten:
+            raise ValueError("GENERATED_CONTRACT_OVERRIDE:" + ",".join(overwritten))
         manifest.update(extras)
     return manifest
 
