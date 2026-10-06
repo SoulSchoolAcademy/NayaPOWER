@@ -3,6 +3,14 @@ import pytest
 from tools.score_round2_trials import ARMS, score_trials
 
 
+@pytest.fixture(autouse=True)
+def real_transcript(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    logs = tmp_path / "logs"
+    logs.mkdir()
+    (logs / "t.json").write_text('{"raw": "test transcript fixture"}', encoding="utf-8")
+
+
 def _trial(trial_id, arm, correct=True, cited=True, order=1.0, count=10,
            consistent=True, nt=False, transcript="logs/t.json"):
     return {
@@ -71,7 +79,7 @@ def test_missing_tool_count_voids_trial():
     trials = _battery()
     trials[0].pop("tool_call_count")
     result = score_trials(trials)
-    assert result.verdict == "PASS"
+    assert result.verdict == "FAIL"
     assert any("void trial" in r for r in result.reasons)
 
 
@@ -99,3 +107,67 @@ def test_cost_overrun_penalizes_treatment_score():
     assert result.verdict == "PASS"
     assert result.cost_ratio_treatment_vs_control == pytest.approx(2.0)
     assert result.arm_scores["TREATMENT"] < 1.0
+
+
+def test_three_trials_cannot_pass_round2_minimums():
+    trials = [_trial("T", "TREATMENT"),
+              _trial("C", "CONTROL", correct=False),
+              _trial("W", "WRONG_LESSON", correct=False)]
+    result = score_trials(trials)
+    assert result.verdict == "FAIL"
+    assert any("MINIMUM_FIVE_TRIALS_PER_ARM" in r for r in result.reasons)
+
+
+def test_absent_negative_transfer_is_not_a_vacuous_pass():
+    result = score_trials(_battery(nt_per_arm=0))
+    assert result.verdict == "FAIL"
+    assert any("MINIMUM_FIVE_NEGATIVE_TRANSFER_TRIALS" in r for r in result.reasons)
+
+
+def test_duplicate_trial_ids_cannot_pad_the_battery():
+    trials = _battery()
+    trials[0]["trial_id"] = trials[1]["trial_id"]
+    assert score_trials(trials).verdict == "FAIL"
+
+
+def test_missing_transcript_file_cannot_count_as_evidence():
+    trials = _battery()
+    for trial in trials:
+        trial["transcript_path"] = "logs/nonexistent.json"
+    with pytest.raises(ValueError, match="NO_VALID_TRIALS"):
+        score_trials(trials)
+
+
+def test_empty_transcript_file_cannot_count_as_evidence():
+    from pathlib import Path
+    Path("logs/t.json").write_text("", encoding="utf-8")
+    with pytest.raises(ValueError, match="NO_VALID_TRIALS"):
+        score_trials(_battery())
+
+
+@pytest.mark.parametrize("key,value", [
+    ("verdict_correct", "false"), ("cited_lesson", "true"),
+    ("consistent", 1), ("negative_transfer", "false"),
+    ("tool_call_count", True), ("diagnostic_order", True),
+    ("trial_id", None), ("transcript_path", None),
+])
+def test_malformed_trial_fields_cannot_receive_pass(key, value):
+    trials = _battery()
+    trials[0][key] = value
+    assert score_trials(trials).verdict == "FAIL"
+
+
+def test_malformed_trial_cannot_be_silently_dropped():
+    assert score_trials(_battery() + [None]).verdict == "FAIL"
+
+
+def test_four_negative_transfer_trials_do_not_meet_the_floor():
+    trials = _battery(nt_per_arm=0)
+    trials.extend(_trial(f"N{i}", "TREATMENT", nt=True) for i in range(4))
+    assert score_trials(trials).verdict == "FAIL"
+
+
+def test_five_negative_transfer_trials_meet_the_declared_floor():
+    trials = _battery(nt_per_arm=0)
+    trials.extend(_trial(f"N{i}", "TREATMENT", nt=True) for i in range(5))
+    assert score_trials(trials).verdict == "PASS"
