@@ -374,6 +374,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
+# Truth-state authority rank for retrieval tie-breaking. Higher = more
+# authoritative. Unknown/missing truth_state ranks 0 (neutral) so legacy
+# entries without the field behave exactly as before.
+TRUTH_STATE_RANK = {"RATIFIED": 2, "VERIFIED": 1}
+
 def retrieve(query):
     registry = load_json(REGISTRY)
     q = set(re.findall(r"[a-z0-9]+", query.lower()))
@@ -384,11 +389,17 @@ def retrieve(query):
             continue
         hay = " ".join([e.get("title",""),e.get("category",""),e.get("topic",""),e.get("subtopic","")," ".join(e.get("keywords",[]))]).lower()
         score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
-        ranked.append((score, e))
-    ranked.sort(key=lambda z: (z[0], z[1].get("captured_at","")), reverse=True)
+        # Truth-state rank: when keyword relevance ties, prefer the higher
+        # authority. Score stays primary — a highly relevant CANDIDATE still
+        # beats a barely relevant RATIFIED note. (Retrieval track, 2026-10-06:
+        # without this, a newer CANDIDATE restatement wins ties over ratified
+        # law purely on captured_at recency.)
+        rank = TRUTH_STATE_RANK.get(str(e.get("truth_state", "")).upper(), 0)
+        ranked.append((score, rank, e))
+    ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
     if not ranked or ranked[0][0] <= 0:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
-    e = ranked[0][1]
+    e = ranked[0][2]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     explanation = m.group(1).strip() if m else ""

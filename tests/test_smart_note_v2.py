@@ -660,3 +660,68 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
     assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
     assert result["explanation"] == "active answer"
+
+
+# --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
+def _truth_rank_registry(tmp_path, entries):
+    for i, e in enumerate(entries):
+        page = tmp_path / f"p{i}.md"
+        page.write_text("# T\n\n## IN A NUTSHELL\n\nanswer", encoding="utf-8")
+        e.setdefault("projection_path", f"p{i}.md")
+        e.setdefault("lifecycle_state", "ACTIVE")
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    return rp
+
+
+def test_retrieve_prefers_ratified_on_keyword_tie(tmp_path, monkeypatch):
+    """Equal keyword score -> RATIFIED wins over CANDIDATE (not recency)."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop")
+    assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+def test_retrieve_score_still_beats_truth_state(tmp_path, monkeypatch):
+    """Higher keyword relevance wins even when the other note is RATIFIED."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Nonstop Loop Operating Code", "category": "X", "topic": "Y",
+         "subtopic": "Z", "keywords": ["nonstop", "loop", "operating", "code"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop operating code")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_missing_truth_state_is_neutral(tmp_path, monkeypatch):
+    """Entries without truth_state behave exactly as before (rank 0)."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-A", "intelligent_block_id": "IB-A",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-B", "intelligent_block_id": "IB-B",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop")
+    # tie on score and rank -> newest captured_at wins (legacy behavior)
+    assert result["retrieved"]["smart_note_id"] == "SN-A"
