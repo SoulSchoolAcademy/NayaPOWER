@@ -130,13 +130,94 @@ def _max_allocated_sn_number():
 
 
 def test_explicit_smart_note_id_is_honored():
-    capture = {"smart_note_id": "SN-013", "source": {"captured_at": "2026-09-30"}}
-    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-013"
+    capture = {"smart_note_id": "SN-9999", "source": {"captured_at": "2026-09-30"}}
+    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
+
+
+def test_explicit_smart_note_id_collision_fails_closed(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-FIRST-CLAIM"}
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    try:
+        m.reserve_smart_note_id(capture, "IB-STALE-CLAIM")
+    except SystemExit as exc:
+        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-0457:")
+        assert "owned_by=IB-FIRST-CLAIM" in str(exc)
+        assert "requested_by=IB-STALE-CLAIM" in str(exc)
+    else:
+        raise AssertionError("duplicate explicit Smart Note ID must fail closed")
+
+
+def test_explicit_smart_note_id_is_idempotent_for_same_block(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-FIRST-CLAIM"}
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    assert m.reserve_smart_note_id(capture, "IB-FIRST-CLAIM") == "SN-0457"
+
+
+def test_stale_sequence_skips_occupied_smart_note_id(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 457},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-EXISTING"},
+            {"smart_note_id": "SN-0458", "intelligent_block_id": "IB-EXISTING-2"},
+        ],
+    }), encoding="utf-8")
+    capture = {"source": {"captured_at": "2026-10-06"}}
+    assert m.reserve_smart_note_id(capture, "IB-NEW") == "SN-0459"
+
+def test_explicit_id_fails_if_registry_has_mixed_owners(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-SAME"},
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-OTHER"},
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    try:
+        m.reserve_smart_note_id(capture, "IB-SAME")
+    except SystemExit as exc:
+        assert "owned_by=IB-OTHER" in str(exc)
+    else:
+        raise AssertionError("mixed ownership must fail closed even if one owner matches")
+
+
+def test_update_registry_rejects_injected_colliding_reserved_id(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    first_cap, first_ver, first_proj = _problem_b_inputs(m, tmp_path, "IB-FIRST")
+    first = m.update_registry(first_cap, first_ver, first_proj)
+    assert first["smart_note_id"] == "SN-0001"
+
+    second_cap, second_ver, second_proj = _problem_b_inputs(m, tmp_path, "IB-SECOND")
+    try:
+        m.update_registry(second_cap, second_ver, second_proj, sn_id="SN-0001")
+    except SystemExit as exc:
+        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-0001:")
+    else:
+        raise AssertionError("direct sn_id injection must not bypass ownership validation")
+
 
 def test_sequence_policy_advances_after_sn002():
     reg, maxn = _max_allocated_sn_number()
     assert reg["sequence_policy"]["next_sequence"] == maxn + 1
-    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:04d}"
 
 
 def test_projection_workflow_publishes_active_verified_public_projection():
@@ -159,7 +240,7 @@ def test_projection_workflow_stages_brain_projection_and_registry():
 def test_sequence_policy_advances_past_sn003():
     reg, maxn = _max_allocated_sn_number()
     assert reg["sequence_policy"]["next_sequence"] == maxn + 1
-    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:04d}"
 
 
 def test_live_intelligence_proof_is_capture_triggered_not_arbitrary_main_push():
@@ -606,7 +687,7 @@ def test_projection_path_advisory_fallback_unchanged(tmp_path):
     m = _problem_b_fresh_module(tmp_path)
     cap = _race_capture("IB-PROJ-ADV")
     p = m.projection_path(cap, "IB-PROJ-ADV")
-    assert "/SN-001/" in str(p).replace("\\", "/")
+    assert "/SN-0001/" in str(p).replace("\\", "/")
 
 
 # --- Correction lifecycle: superseded intelligence remains provenance, not active retrieval ---
