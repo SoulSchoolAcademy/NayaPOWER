@@ -98,7 +98,13 @@ This is the parent law of the auto-merge gate. The enforcement predicate in tool
     "SN-0328 (auto-merge preconditions, CANDIDATE)",
     "SN-0336 (intent-to-merge scorecard)",
     "SN-0337 (lane-convergence dedupe)",
-    "PR #1444 (FULL-AUTO-MERGE-V1 draft)"
+    "PR #1444 (FULL-AUTO-MERGE-V1 draft)",
+    "SN-0343 (canonical-reading claim in 0003-SYSTEM-SCORECARD-V1.md; no SN-0343 object exists as of 2026-10-06 — identity merge required if materialized)"
   ]
 }
 ```
+
+## PROVENANCE CLARIFICATION (Naya 4 audit, 2026-10-06)
+- This object (SN-0340) is the first-claimed capture of the Scorecard Law, ratified by Shawn Vibert on 2026-10-05.
+- The system scorecard document (BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md) references this law's canonical reading as SN-0343. No SN-0343 object exists on main as of 2026-10-06.
+- If an SN-0343 object is ever materialized, it must merge identities with SN-0340, not fork a second identity for the same law. (Required by Naya 4 identity audit, #1605.)
