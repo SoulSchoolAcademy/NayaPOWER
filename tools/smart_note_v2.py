@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
 from pathlib import Path
 
+# Truth-state guard (Option C, 2026-10-06): all elevations go through
+# apply_elevation() so authority, evidence, and grants are enforced by code.
+from tools.truth_state_guard import apply_elevation as _guard_apply_elevation
+
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
 REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
@@ -958,7 +962,33 @@ def promote_note(note_id, evidence_bundle, promoter, registry_path=None):
                     break
         if locked_entry is None:
             raise SystemExit(f"PROMOTION_NOTE_NOT_FOUND: {note_id}")
-        locked_entry["truth_state"] = "VERIFIED"
+        # Truth-state guard (2026-10-06): route the elevation through the
+        # canonical guard so authority, evidence, and grants are enforced
+        # by code, not bypassed. The guard is additive — it can only reject,
+        # never loosen the threshold checks already passed above.
+        _guard_ok, _guard_rec = _guard_apply_elevation(
+            locked_entry,
+            "VERIFIED",
+            authority=promoter,
+            evidence={"items": evidence_bundle},
+        )
+        if not _guard_ok:
+            # Guard rejected: convert to a refusal (do not promote).
+            # The entry is left byte-identical by the guard.
+            refusal = {
+                "schema": "naya.promotion-refusal.v1",
+                "note_id": locked_entry.get("smart_note_id"),
+                "intelligent_block_id": locked_entry.get("intelligent_block_id"),
+                "promoter": promoter,
+                "refused_at": _utc_now(),
+                "threshold_version": PROMOTION_THRESHOLD_VERSION,
+                "reason_code": "GUARD_REJECTED",
+                "reason_detail": f"Truth-state guard rejected elevation: {_guard_rec.get('code')} — {_guard_rec.get('detail')}",
+                "failed_checks": [{"check": "truth_state_guard", "detail": _guard_rec.get("detail")}],
+            }
+            refusal["receipt_hash"] = _hash_receipt(refusal)
+            rp = _write_record(refusal, locked_entry.get("smart_note_id"), "refusal")
+            return {"promoted": False, "record": refusal, "record_path": str(rp)}
         locked_entry["promotion_receipt"] = {
             "promoted_at": receipt["promoted_at"],
             "promoter": promoter,
