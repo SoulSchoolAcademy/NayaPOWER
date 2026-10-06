@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "2c7bf5a5d7ab65095e6343f608d55d68bf583485",
-  "inventory_file_count": 224,
+  "receipt_basis_commit": "1204519c5efd794cd9f7c0c2fc92175bf63d7db5",
+  "inventory_file_count": 225,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 18,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 61,
+    "05-MEMORY": 62,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -772,6 +772,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
       "blob_sha": "1ad610ccba19f2ca54e6245788453a3000fd5bf6",
       "size": 5373
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "blob_sha": "9a5fbe1643e4276825a2308e0858c0b12f62d245",
+      "size": 4859
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
