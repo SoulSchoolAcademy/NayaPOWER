@@ -178,7 +178,7 @@ def test_stale_sequence_skips_occupied_smart_note_id(tmp_path):
         ],
     }), encoding="utf-8")
     capture = {"source": {"captured_at": "2026-10-06"}}
-    assert m.reserve_smart_note_id(capture, "IB-NEW") == "SN-0459"
+    assert m.reserve_smart_note_id(capture, "IB-NEW") == "SN-459"
 
 def test_explicit_id_fails_if_registry_has_mixed_owners(tmp_path):
     m = _problem_b_fresh_module(tmp_path)
