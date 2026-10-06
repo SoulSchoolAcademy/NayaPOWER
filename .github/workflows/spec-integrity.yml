@@ -1,0 +1,24 @@
+name: Spec Integrity
+
+# Verifies ratified machine-readable governance specs (Nonstop Loop, Captain
+# Protocol) are intact: blob pins match the manifest, the envelope is
+# director-ratified, phases form a clean sequence, invariants are present.
+# Spec integrity only — this check does NOT enforce agent conduct and reads
+# no agent behavior. A deliberate spec change must update the manifest pins
+# in the same (reviewed) PR.
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  spec-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check ratified spec integrity
+        run: python tools/spec_integrity_check.py
