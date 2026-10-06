@@ -143,7 +143,9 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # surfaces as an opaque "domain counts do not match" rather than naming the
     # file. Re-read the actual counts immediately before pinning; do not copy a
     # neighbour's number. Consider replacing per-domain pins with a ratchet.
-    "01-GOVERNANCE": 14,
+    #   +1  naya-value-engine-v1.machine.json (PR #1566, NAYA-VALUE-ENGINE-V1
+    #       spec). Deliberate update.
+    "01-GOVERNANCE": 15,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
