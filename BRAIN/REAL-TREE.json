@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "17e5321a7e5b9c7b0c1c8858ef81dec66c9e61a2",
+  "receipt_basis_commit": "8e0da173b1a83e63095dcb6ad0ca4bc4554958b8",
   "inventory_file_count": 211,
   "domain_counts": {
     "00-SPEC": 15,
@@ -459,11 +459,6 @@
       "size": 1937
     },
     {
-      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
-      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
-      "size": 4371
-    },
-    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
@@ -497,6 +492,11 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/02/IB-DIR-NAYAPOWER-20261002-001.md",
       "blob_sha": "6514a763ac078fcc442cb246945c88e09d8b7455",
       "size": 2477
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md",
+      "blob_sha": "b918e1f4d91e33da8f70ca4466f1a42ecf8d50e8",
+      "size": 4935
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
