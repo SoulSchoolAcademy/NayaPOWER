@@ -67,6 +67,15 @@
 - **Detail:** Issue #1517.
 - **Smart Links:** #1520 (idea evolution/refinement) · #1519 (Feed/Backlog projection architecture) · #1513 (future bounded optimization only after proof gates).
 
+### 13. Hub Supreme Upgrade List — Shawn's 100-item Hub backlog (PROPOSED)
+- **Owner:** unassigned · **Status:** PROPOSED/CANDIDATE — director-authored, ~90 of 100 still open per 2026-10-06 cross-check
+- **Canonical home:** `HUB/HUB-UPGRADE-100-V1.md` (this entry indexes it; this file stays the shared projection seam — not a competing backlog)
+- **Tier 1 (build first, aligns with locked direction):** #91 hologram Naya pop-up → Talk-to-Naya first-entry · #92 in-dashboard voice chat · #100 Naya-led tutorial → Reveal pop-up first-entry overlay · #98 Naya-powered semantic search → Ask Naya · #95 Mission of the Day
+- **Tier 2 (LAW-ZERO-gated visual supremacy):** #1–3, #17 aurora/glass/blur-through · #12 hotspot guidance pings · #19 cinematic first-open
+- **Tier 3 (product future):** #41–60 gamification (**bound by DL-087 — intimacy, not addiction**) · #81–90 monetization (future scope)
+- **Law bounds:** 2026-10-04 color standard on all visual items; nothing below 90 on the Elite Interface Playbook ships to Shawn; SmartCoin items are north-star economy until then.
+- **Claim protocol:** claim in a PR editing the canonical file + sign in on #1354.
+
 ---
 
 ## P2 — Future
