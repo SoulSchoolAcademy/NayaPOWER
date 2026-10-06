@@ -9,7 +9,8 @@
       "preserved provenance",
       "applicable Human Director authority"
     ],
-    "semantic_similarity_is_not_retirement_authority": true
+    "semantic_similarity_is_not_retirement_authority": true,
+    "protected_path_rule": "A protected path may change through governed evolution, but it must not disappear or be renamed without an explicit lifecycle/replacement update to this registry in the same change."
   },
   "protected": [
     {
@@ -26,6 +27,48 @@
       "smart_note_id": "SN-0360",
       "title": "No Deletion Without Understanding — The Preservation Law",
       "reason": "Human Director ratified preservation law created from the SN-0358/SN-0359 deletion incident."
+    }
+  ],
+  "protected_paths": [
+    {
+      "path": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+      "role": "CANONICAL_ROOT",
+      "reason": "Exact-current Brain index canonical root; top-level design authority for the system."
+    },
+    {
+      "path": "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+      "role": "CONSTITUTIONAL_ROOT",
+      "reason": "Exact-current Brain index constitutional root; foundational authority/law boundary."
+    },
+    {
+      "path": "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+      "role": "GOVERNANCE_ROOT",
+      "reason": "Exact-current Brain index governance root; canonical governance contract."
+    },
+    {
+      "path": "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+      "role": "SUPERBRAIN_ROOT",
+      "reason": "Exact-current Brain index Superbrain specification; top-level architecture identity."
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "COLD_SUCCESSOR_OPERATING_ROOT",
+      "reason": "Repository-root activation and operating doctrine used by cold successors and agents."
+    },
+    {
+      "path": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+      "role": "INTELLIGENCE_LIFECYCLE_ROOT",
+      "reason": "Canonical Smart Note operating contract, including preservation and deletion law."
+    },
+    {
+      "path": ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md",
+      "role": "NINE_NODE_SEMANTIC_LOCK",
+      "reason": "Human-Director semantic convergence lock for the nine approved Master Nodes."
+    },
+    {
+      "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+      "role": "NINE_NODE_MACHINE_CONTRACT",
+      "reason": "Exact-current Brain index machine contract for the nine-node organism."
     }
   ]
 }

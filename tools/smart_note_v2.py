@@ -324,8 +324,30 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             sn_id = existing["smart_note_id"]
             if existing.get("projection_path"):
                 projection = ROOT / existing["projection_path"]
+    # Explicit migration lineage preserves the historical registry/projection
+    # record while making the successor the only ACTIVE representation of the
+    # stable Smart Note identity. This does not collapse unrelated historical
+    # ID collisions: the prior block must contain source.previous_capture_id.
+    previous_capture_id = str(capture.get("source", {}).get("previous_capture_id") or "").strip()
+    superseded_ibs = []
+    if previous_capture_id:
+        needle = previous_capture_id.lower()
+        for historical in registry.get("entries", []):
+            historical_ib = str(historical.get("intelligent_block_id") or "")
+            if (historical.get("smart_note_id") == sn_id
+                    and historical_ib != ib
+                    and needle in historical_ib.lower()):
+                historical["lifecycle_state"] = "SUPERSEDED"
+                historical["superseded_by_capture_id"] = capture.get("capture_id")
+                historical["supersession_reason"] = (
+                    "Explicit Smart Note migration lineage; historical projection "
+                    "preserved while successor becomes ACTIVE."
+                )
+                superseded_ibs.append(historical_ib)
+
     entry = {
         "smart_note_id": sn_id,
+        "capture_id": capture.get("capture_id"),
         "intelligent_block_id": block["intelligent_block_id"],
         "content_hash": _canonical_content_hash(block["content"]["lesson"]),
         "title": capture["title"],
@@ -337,6 +359,7 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         "lifecycle_state": str(capture.get("lifecycle_state", "ACTIVE")).upper(),
         "superseded_by_capture_id": capture.get("superseded_by_capture_id"),
         "supersession_reason": capture.get("supersession_reason"),
+        "supersedes_intelligent_block_ids": sorted(superseded_ibs),
         "scope": block["owner_scope"],
         "projection_path": str(projection.relative_to(ROOT)).replace("\\\\", "/") if str(projection).startswith(str(ROOT)) else None,
         "projection_status": "GITHUB_BRAIN_PUBLISHED" if str(projection).startswith(str(BRAIN_SMART_NOTE_ROOT)) else "PRIVATE_RENDER_VERIFIED",
@@ -817,6 +840,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         return _canonical_content_hash(json.dumps(data["intelligence"], sort_keys=True, separators=(",", ":"), ensure_ascii=False))
 
     capture_by_hash = {}
+    capture_ids = set()
     if cap_dir.exists():
         for p in sorted(cap_dir.glob("*.json")):
             try:
@@ -827,22 +851,43 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             if not isinstance(data.get("intelligence"), dict):
                 defects["captures_missing_intelligence"].append(p.name)
                 continue
+            capture_id = str(data.get("capture_id") or "").strip()
+            if capture_id:
+                capture_ids.add(capture_id)
             capture_by_hash[hash_of(data)] = p.name
 
     entry_hashes = {}
+    active_by_smart_note_id = {}
+    inactive_states = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        state = str(e.get("lifecycle_state", "ACTIVE")).upper()
+        if state not in inactive_states:
+            active_by_smart_note_id.setdefault(sn, []).append(
+                str(e.get("intelligent_block_id") or "<unknown>")
+            )
         h = e.get("content_hash")
         if not h:
             defects["entries_without_hash"].append(sn)
             continue
         entry_hashes.setdefault(h, []).append(sn)
         if h not in capture_by_hash:
-            defects["entries_with_stale_hash"].append({"smart_note_id": sn, "content_hash": h})
+            successor_id = str(e.get("superseded_by_capture_id") or "").strip()
+            valid_historical_supersession = (
+                state == "SUPERSEDED"
+                and bool(successor_id)
+                and successor_id in capture_ids
+            )
+            if not valid_historical_supersession:
+                defects["entries_with_stale_hash"].append(
+                    {"smart_note_id": sn, "content_hash": h}
+                )
 
-    for h, names in entry_hashes.items():
-        if len(names) > 1:
-            defects["duplicate_smart_note_ids"].append(sorted(names))
+    for sn, ibs in active_by_smart_note_id.items():
+        if len(ibs) > 1:
+            defects["duplicate_smart_note_ids"].append(
+                {"smart_note_id": sn, "intelligent_block_ids": sorted(ibs)}
+            )
 
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:

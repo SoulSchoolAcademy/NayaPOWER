@@ -111,6 +111,11 @@ def test_clean_fixture_is_reported_ok(tmp_path):
             id="entry_with_stale_hash",
         ),
         pytest.param(
+            lambda root: _duplicate_active_smart_note_id(root),
+            "duplicate_smart_note_ids",
+            id="duplicate_active_smart_note_id",
+        ),
+        pytest.param(
             lambda root: (_set_entry_hash(root, None), _dup_page(root)),
             "duplicate_published_page_paths",
             id="duplicate_published_page",
@@ -158,6 +163,19 @@ def _add_capture(root, intelligence):
     p = root / ".naya" / "capture" / "c2.json"
     p.write_text(json.dumps({"smart_note_id": "SN-002", "intelligence": intelligence}), encoding="utf-8")
 
+
+
+
+def _duplicate_active_smart_note_id(root):
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    dup = dict(entries[0])
+    dup["intelligent_block_id"] = "IB-2"
+    dup["content_hash"] = "1" * 64
+    dup["projection_status"] = "PRIVATE_RENDER_VERIFIED"
+    dup["projection_path"] = None
+    entries.append(dup)
+    write_entries(reg, entries)
 
 def _set_entry_hash(root, value):
     reg = root / ".naya" / "memory" / "smart-notes" / "index.json"

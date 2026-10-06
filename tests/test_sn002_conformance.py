@@ -326,3 +326,43 @@ def test_incident_laws_are_mechanically_protected():
     registry = _load_protected_registry()
     protected = {entry["smart_note_id"] for entry in registry.get("protected", [])}
     assert {"SN-0358", "SN-0359", "SN-0360"} <= protected
+
+
+def test_every_protected_repository_path_exists():
+    """Constitutional spine cannot disappear or be renamed silently."""
+    registry = _load_protected_registry()
+    missing = [
+        entry["path"]
+        for entry in registry.get("protected_paths", [])
+        if not Path(entry["path"]).is_file()
+    ]
+    assert not missing, (
+        "PROTECTED CONSTITUTIONAL ARTIFACT MISSING: "
+        f"{missing}. Rename/removal requires an explicit registry lifecycle update."
+    )
+
+
+def test_protected_constitutional_spine_roles_are_unique():
+    registry = _load_protected_registry()
+    entries = registry.get("protected_paths", [])
+    paths = [entry.get("path") for entry in entries]
+    roles = [entry.get("role") for entry in entries]
+    assert paths and all(paths), "protected constitutional paths must be named"
+    assert len(paths) == len(set(paths)), "protected constitutional paths must be unique"
+    assert len(roles) == len(set(roles)), "protected constitutional roles must be unique"
+
+
+def test_protected_constitutional_spine_includes_exact_current_roots():
+    registry = _load_protected_registry()
+    paths = {entry["path"] for entry in registry.get("protected_paths", [])}
+    required = {
+        "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+        "CONSTITUTION/0000-NAYAPOWER-CONSTITUTION-ACT-V1.md",
+        "GOVERNANCE/0000-NAYAPOWER-GOVERNANCE-CONTRACT-V1.md",
+        "ARCHITECTURE/0000-NAYAPOWER-SUPERBRAIN-MASTER-SPEC-V1.md",
+        "AGENTS.md",
+        "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+        ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ULTIMATE-LOCK-V1.md",
+        "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
+    }
+    assert required <= paths
