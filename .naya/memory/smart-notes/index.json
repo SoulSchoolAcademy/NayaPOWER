@@ -1687,12 +1687,29 @@
       "provenance": {
         "note": "DIRECT_TO_MAIN commit 2c34c6e1d by Human Director 2026-10-05 (\"docs: ratify NayaPOWER and NayaNET core magic intelligence\"); no capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
       }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
+      "smart_note_id": "SN-0459",
+      "title": "SN-0459: Parallel Execution Directive (documents DIRECTOR-RATIFIED law 0013)",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_INTELLIGENCE",
+      "subtopic": "EXECUTION",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN commit 1f99d2bbdd + merge 1204519c5e by Human Director 2026-10-06 (\"docs(memory): SN-0459 parallel-execution directive\"); the page announced the id without the capture+registry pipeline (ingestion gap, not a deletion — the id never had a capture or entry). No capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 409,
-    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
+    "next_sequence": 460,
+    "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent.",
+    "note_20261006": "Advanced 409->460 by the intelligent-graph drive loop: SN-0459 was allocated out-of-band (direct-to-main 1f99d2bbdd); the allocator must resume past the max allocated id to avoid future collision. See test_sequence_policy_advances_after_sn002."
   }
 }
