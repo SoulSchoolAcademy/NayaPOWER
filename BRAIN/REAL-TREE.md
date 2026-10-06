@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-05  
-**Receipt basis commit:** `990e43198d7d9518f2aee88d4b13504a1e24d6e4`  
-**Inventory file count:** 208  
+**Receipt basis commit:** `8240d154f916eb58e1bb0dc2d4f6d095c7a9b91e`  
+**Inventory file count:** 209  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 51 |
+| 05-MEMORY | 52 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -174,6 +174,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CANARY-EXPERIMENT-SIGNALS/SYNTHETIC-RED-CHECK-REPAIR-DRILL/SN-0344/IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md` — `2f1690a0c1b6` (4695 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md` — `8aa82b0ca02e` (5183 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md` — `22908fb620c1` (4124 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md` — `c9ed74b61e13` (4530 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md` — `5a1eda32c6f8` (6070 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0358/IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code.md` — `6e9e1c9b3420` (5653 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0359/IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain.md` — `faa3ec7deb4b` (4988 bytes)

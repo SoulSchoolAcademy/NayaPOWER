@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "990e43198d7d9518f2aee88d4b13504a1e24d6e4",
-  "inventory_file_count": 208,
+  "receipt_basis_commit": "8240d154f916eb58e1bb0dc2d4f6d095c7a9b91e",
+  "inventory_file_count": 209,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 51,
+    "05-MEMORY": 52,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -687,6 +687,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
       "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
       "size": 4124
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+      "blob_sha": "c9ed74b61e1386ddb42cbb759ce4c5340e7aecc0",
+      "size": 4530
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
