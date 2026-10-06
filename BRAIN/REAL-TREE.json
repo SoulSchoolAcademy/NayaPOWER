@@ -1,23 +1,23 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "333f46c3c407898591cad0746bbdb8726dd7613b",
+  "inventory_file_count": 220,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 60,
+    "05-MEMORY": 61,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 24,
-    "90-OPERATIONS": 11,
+    "12-ENGINEERING": 25,
+    "90-OPERATIONS": 12,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -749,6 +749,11 @@
       "size": 7082
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
+      "blob_sha": "1ad610ccba19f2ca54e6245788453a3000fd5bf6",
+      "size": 5373
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
       "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
       "size": 4958
@@ -949,6 +954,11 @@
       "size": 9141
     },
     {
+      "path": "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md",
+      "blob_sha": "9efe5ad7236a950b54d0fa3a6ba7115c6c7135aa",
+      "size": 20751
+    },
+    {
       "path": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md",
       "blob_sha": "f7ab6850885dfdd39c77af0e538431e54e8658ec",
       "size": 4051
@@ -1072,6 +1082,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md",
       "blob_sha": "954227fe2d94f7cfb47a9d2853bc93243eeeb6b8",
       "size": 8068
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md",
+      "blob_sha": "188ee5921503ff2fb36ab10f11f6531cde8b71d0",
+      "size": 30828
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
