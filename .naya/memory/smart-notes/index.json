@@ -1218,6 +1218,44 @@
     },
     {
       "smart_note_id": "SN-0358",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0358-law-is-code-r2",
+      "content_hash": "320da6fdf079e6844454b2f77e77e70c760a25aeb501f6321f28a991109bd1af",
+      "title": "LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "LAW_IS_CODE",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0358/IB-SMART-NOTE-20261005-sn0358-law-is-code-r2.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0358/IB-SMART-NOTE-20261005-sn0358-law-is-code-r2.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "7a816ecd-3938-4266-9a11-ecf3cf3e66a9",
+        "lineage_id": "76417b8a-9683-45d6-9a52-66e8740f5660",
+        "relationship_id": "c55052a8-4e65-4b75-a825-6f680d659bd7",
+        "runtime_index_id": "1d91ee25-c138-4eca-835b-36b8d9eb3502",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "6e73cd61-24b3-4f6e-8202-51762d9e36ee"
+      }
+    },
+    {
+      "smart_note_id": "SN-0358",
       "intelligent_block_id": "IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code",
       "content_hash": "41c76bfc1ff1a68ca454bc547ea12bff2e6caa01363a5475805f45a4647d9dd2",
       "title": "LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence",
@@ -1252,6 +1290,44 @@
         "runtime_index_id": "d28b64eb-882d-4c14-b338-d70423e18b9b",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "3d0a2ec1-5700-435b-b25b-f7f118905430"
+      }
+    },
+    {
+      "smart_note_id": "SN-0359",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2",
+      "content_hash": "36d9d54136afe8a42ce1374c4c57ea3085239f865f8b362d4987693bb26060c7",
+      "title": "The Captain Protocol — Proactive Leadership as Operating Law",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PROACTIVE_CAPTAIN_PROTOCOL",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0359/IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0359/IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "f00c0cc1-563c-4829-b54b-bcdf171d6625",
+        "lineage_id": "dd9d66aa-b2c8-404f-8f5e-349d6e95b9b1",
+        "relationship_id": "eec83753-57c3-4446-88e2-467ef1dd4ce0",
+        "runtime_index_id": "a826245f-7bbb-4124-b37c-455688a5ca2d",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "d98de439-ecbe-49a0-ab9b-132e60dc888c"
       }
     },
     {
