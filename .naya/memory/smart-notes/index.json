@@ -1011,6 +1011,34 @@
       "content_hash": "cbfa37d970c5fdacf0b53520f12d2f66d11780982f96d6029c979839151806d5"
     },
     {
+      "smart_note_id": "SN-0340",
+      "intelligent_block_id": "SN-0340",
+      "title": "The Scorecard Law",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING-DOCTRINE",
+      "truth_state": "RATIFIED",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md",
+      "keywords": [
+        "scorecard law",
+        "scorecard everything",
+        "auto-merge",
+        "decision protocol",
+        "enumerate options",
+        "reversibility",
+        "no receipt no merge",
+        "decision value calculus",
+        "situational awareness"
+      ],
+      "provenance": {
+        "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn Vibert, 2026-10-05, verbal ratification in main chat. No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
+      }
+    },
+    {
       "smart_note_id": "SN-0344",
       "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule",
       "content_hash": "02ad8dc9f7b098e794aaeab6c363e5e91524c91b3844a099238c934e277cf1f7",
@@ -1328,6 +1356,84 @@
         "runtime_index_id": "ccc51d73-537e-4afe-8fb7-1cbba7cac61a",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "882d0bf9-8866-4623-b6e0-1554696a09af"
+      }
+    },
+    {
+      "smart_note_id": "SN-0399",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence",
+      "title": "Self-Directed Intelligence Under Governance (the operating code)",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING-CODE",
+      "truth_state": "RATIFIED",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0399/IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0399/IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence.md",
+      "keywords": [
+        "self-directed intelligence",
+        "governance",
+        "best next action",
+        "competent",
+        "evidence-bound",
+        "accountable",
+        "determine the best next action"
+      ],
+      "provenance": {
+        "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn declared 2026-10-05: \"this is how we roll... this is what is expected... this is the code we operate under\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
+      }
+    },
+    {
+      "smart_note_id": "SN-0400",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always",
+      "title": "The Captain Directive: proactive always, reactive never",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING-CODE",
+      "truth_state": "RATIFIED",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0400/IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0400/IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always.md",
+      "keywords": [
+        "captain directive",
+        "proactive",
+        "reactive never",
+        "captain of the ship",
+        "take initiative",
+        "operating code",
+        "lead with the plan"
+      ],
+      "provenance": {
+        "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn, 2026-10-05: \"I don't ever want you to be reactive, I always want you to be proactive... make it law\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
+      }
+    },
+    {
+      "smart_note_id": "SN-0408",
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0408-deletion-discipline",
+      "title": "Deletion Discipline: understand fully before you delete anything",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING-CODE",
+      "truth_state": "RATIFIED",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0408/IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0408/IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md",
+      "keywords": [
+        "deletion discipline",
+        "never delete",
+        "understand fully",
+        "preservation",
+        "ratified objects",
+        "cleanup",
+        "optimization"
+      ],
+      "provenance": {
+        "note": "Registration bookkeeping for already-ratified law. Published to main by Team 3 (Naya 4 lane) under Scorecard Law auto-merge authorization, 2026-10-06 (receipt: #1605). Source: existing IB file on draft branch naya4/smart-notes-2026-09-30 (PR #1229), byte-identical. Ratification: Shawn, 2026-10-05: \"you don't delete anything until you understand fully what it is\". No new capture event was created; no provenance UUIDs invented. Follows the explicit-provenance-note registration pattern (cf. SN-NET-POWER-MAGIC-001)."
       }
     },
     {
