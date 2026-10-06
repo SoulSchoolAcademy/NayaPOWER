@@ -88,3 +88,25 @@ def test_every_preregistered_fixture_role_matches_exact_git_blob():
     actual = {path: blob_sha_file(ROOT / path) for path in roles}
     assert actual == roles
     assert sorted(manifest["answer_key"]["fixture_shas"]) == sorted(roles.values())
+
+
+def test_diagnostic_brain_index_projection_matches_generator():
+    import difflib
+    from tools.regenerate_brain_index import (
+        basis_commit,
+        domain_counts,
+        inventory,
+        normalize_json,
+        patch_brain_index,
+    )
+    files = inventory(ROOT)
+    counts = domain_counts(files)
+    basis = basis_commit(ROOT)
+    expected = normalize_json(patch_brain_index(ROOT, basis, counts, "2026-10-06"))
+    actual = normalize_json((ROOT / "BRAIN/NAYAPOWER-BRAIN-INDEX.json").read_text())
+    assert actual == expected, "\n".join(
+        difflib.unified_diff(
+            actual.splitlines(), expected.splitlines(),
+            fromfile="actual", tofile="expected", n=3
+        )
+    )
