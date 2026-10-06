@@ -1293,6 +1293,44 @@
       }
     },
     {
+      "smart_note_id": "SN-0360",
+      "intelligent_block_id": "IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding",
+      "content_hash": "5820663fbb25115e337fbfc038f5e33e8f01ad29f17d2c64225c474a14fe5cb5",
+      "title": "No Deletion Without Understanding — The Preservation Law",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PRESERVATION",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "2cc97a91-0721-456d-9b03-89a127cff4db",
+        "lineage_id": "2aad6793-dee0-402e-828a-834f8a07ab16",
+        "relationship_id": "be10b7b6-017e-41a5-8ccb-3004a71ee2fa",
+        "runtime_index_id": "ccc51d73-537e-4afe-8fb7-1cbba7cac61a",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "882d0bf9-8866-4623-b6e0-1554696a09af"
+      }
+    },
+    {
       "smart_note_id": "SN-041",
       "intelligent_block_id": "IB-SMART-NOTE-20261004-sn041-discernment-operating-law",
       "title": "Discernment-to-Compounding Operating Law — Understand Meaning, Distill Intelligence, Act with Evidence, Learn Fast",
@@ -1454,7 +1492,7 @@
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 360,
+    "next_sequence": 361,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
