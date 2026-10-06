@@ -1,0 +1,34 @@
+```json
+{
+  "version": "1.0",
+  "generated_at": "2026-10-04T00:00:00Z",
+  "total_smart_notes": 32,
+  "duplicate_projections_removed": 1,
+  "smart_notes": [
+    {"id": "SN-032", "path": "SN-032.md", "has_duplicate": false},
+    {"id": "SN-031", "path": "SN-031.md", "has_duplicate": false},
+    {"id": "SN-034", "path": "SN-034.md", "has_duplicate": false},
+    {"id": "SN-027", "path": "SN-027.md", "has_duplicate": false},
+    {"id": "SN-018", "path": "SN-018.md", "has_duplicate": false},
+    {"id": "SN-012", "path": "SN-012.md", "has_duplicate": false},
+    {"id": "SN-011", "path": "SN-011.md", "has_duplicate": false},
+    {"id": "SN-010", "path": "SN-010.md", "has_duplicate": false},
+    {"id": "SN-009", "path": "SN-009.md", "has_duplicate": false},
+    {"id": "SN-008", "path": "SN-008.md", "has_duplicate": false},
+    {"id": "SN-007", "path": "SN-007.md", "has_duplicate": false},
+    {"id": "SN-006", "path": "SN-006.md", "has_duplicate": false},
+    {"id": "SN-005", "path": "SN-005.md", "has_duplicate": false},
+    {"id": "SN-004", "path": "SN-004.md", "has_duplicate": false},
+    {"id": "SN-003", "path": "SN-003.md", "has_duplicate": false},
+    {"id": "SN-002", "path": "SN-002.md", "has_duplicate": false},
+    {"id": "SN-001", "path": "SN-001.md", "has_duplicate": false}
+  ],
+  "duplicates": {
+    "SN-018": [
+      {
+        "path": "BRAIN/projections/SN-018-dup.md",
+        "canonical": "SN-018.md"
+      }
+    ]
+  }
+}

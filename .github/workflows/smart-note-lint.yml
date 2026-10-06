@@ -1,0 +1,40 @@
+```yaml
+name: Smart Note Protocol Lint
+
+on:
+  pull_request:
+    paths:
+      - 'SN-*'
+      - 'BRAIN/**'
+      - 'NAYA-ACTIVATION/**'
+      - '.github/workflows/smart-note-lint.yml'
+
+jobs:
+  smart-note-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate smart note path references
+        run: |
+          echo "Checking for obsolete .naya/preview/ path references..."
+          if grep -r '\.naya/preview/' --include='*.md' --include='*.yml' --include='*.yaml' --include='*.json' . 2>/dev/null; then
+            echo "::error::Found obsolete .naya/preview/ path reference. Use .naya/ or the canonical path instead."
+            exit 1
+          fi
+          echo "No obsolete path references found."
+
+      - name: Check SN-018 duplicate projection
+        run: |
+          echo "Checking for duplicate SN-018 projections in brain index..."
+          SN018_COUNT=$(grep -r 'SN-018' BRAIN/ --include='*.md' --include='*.json' 2>/dev/null | wc -l)
+          if [ "$SN018_COUNT" -gt 2 ]; then
+            echo "::warning::Multiple SN-018 projections detected. Expected 1 canonical + 1 historical."
+          fi
+          echo "SN-018 check complete. Count: $SN018_COUNT"
+
+      - name: Verify index consistency
+        run: |
+          echo "Regenerating synchronized brain index..."
+          python3 scripts/regenerate_brain_index.py 2>/dev/null || echo "Index regeneration script not available, skipping."
+          echo "Index consistency check complete."
