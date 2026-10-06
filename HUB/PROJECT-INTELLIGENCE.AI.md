@@ -90,3 +90,38 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 3. **Escalate with options + recommendation,** never bare questions.
 4. Protected gates are Shawn's word only: merges, production deploys, ratification, destructive changes, privacy/consent/security/authority changes.
 5. **Bring better ideas.** The spec is the floor. If you see a wiser, more powerful, more extraordinary approach — table it on #554 with reasoning. The scorecard decides, not taste. If you can beat the concept's look, do it — and prove it scores.
+
+## 8. EXECUTABLE DESIGN MATH (Naya 2's contribution — reconciled 2026-10-01)
+
+Recovered from her withdrawn app spec (`HUB/app/SPEC.ai.md` @ PR #1278 commit `82283e1f96`) and landed here as the canonical home per her proposal on #554. Technique, not taste — execute it; don't interpret it.
+
+**DEPTH EQUATION (every elevated object):**
+```
+surface = linear-gradient(145°, raise, base)
+        + border(1px, #ffffff18) + radius(17px)
+        + shadow(inset 0 1px #fff6, 0 18px 42px #000b, 0 0 26px accent@14%)
+hover   = translateY(-3px)
+        + shadow(inset 0 1px #fff6, 0 20px 48px #000d, 0 0 40px accent@24%)
+```
+The top highlight (`inset 0 1px #fff6`) is non-negotiable — it is what reads as "jewel." Drop shadow grounds it. Accent glow tints it. Remove any one and the object goes flat; that is how you detect regression.
+
+**SPECTRUM LAW (rules — canonical):** the spectrum is an ordered wheel. Rule 1: each room owns exactly one spectral position. Rule 2: adjacent rooms in the rail never share a hue family. Rule 3: glow/hover/borders inside a room use only that room's accent at the stated opacities — never a foreign accent. The color list itself is Shawn's canonical 12-color order (see `PROJECT-INTELLIGENCE.MACHINE.json` → `spectrum`). Naya 2's 14-color wheel formulation remains a **proposed extension under review** — see the open conflict on #554 comment 5941960535; it is not law until Shawn rules.
+
+**ICON GRAMMAR:** 24×24 viewBox · stroke 1.8 · round caps/joins · geometric primitives · one family. Adding an icon = adding one path entry. Emoji as icon = defect, always.
+
+**LIVING RULES:** motion is physical (translate/scale/opacity on the compositor; never layout thrash) and purposeful (every animation answers "what just happened"). Boards breathe on hover; doors lift higher than boards (they are thresholds). Text never animates except the welcome sheen.
+
+**SELF-SCORECARD PROCEDURE (run before every PR):** screenshot each changed view → check: (a) top highlight present on every elevated object, (b) one accent per room, (c) icon family consistent, (d) no dead control without an honest state, (e) no invented data. Any failure = not ready, regardless of what else passes.
+
+**Not imported:** her app-local room accent assignments (e.g. feed→magenta) remain an **open conflict** on #554 comment 5941960535 — the verified baseline accents stand until Shawn rules. Her component API and runtime contract (§§5–6 of her spec) live in the app at `HUB/app/`; they become canonical only if the app merges.
+
+## 9. ROOM MODEL — 11 CANONICAL, 13 IN THE APP (reconciled 2026-10-01)
+
+Naya 2's flag on #554 comment 5942028964, resolved here:
+
+- **11 canonical rail rooms** — verified from the frozen concept markup (`HUB/PROJECT-INTELLIGENCE.MACHINE.json` → `rooms`). This is the rail. It does not change without a scored, intentional improvement (Baseline Law).
+- **Welcome and Identity** are journey surfaces, not rail rooms — they precede the Hub in the routing law.
+- **2 proposed additions** from her app PR #1278 (`HUB/app/js/runtime.js` → `ROOMS[13]`):
+  - `notes` — Smart Notes capture room (local drafts, honestly labeled). Has concept lineage; status PROPOSED.
+  - `system` — System room (live scorecard, roadmap, door registry). Builder-facing scaffolding; status PROPOSED.
+- Her app renders all 13 on the rail today — honest for a foundation, but the canonical rail stays 11 until these two are justified, scored, and ruled on. `PROJECT-INTELLIGENCE.MACHINE.json` → `room_model` carries the machine-readable record.
