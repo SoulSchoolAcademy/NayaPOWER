@@ -1,0 +1,966 @@
+{
+  "schema": "naya.design.playbook-rubric.v1",
+  "schema_version": "1.0",
+  "status": "PROPOSED",
+  "automatic_truth_ceiling": "CANDIDATE",
+  "awaiting_ratification_by": "Shawn Vibert",
+  "provenance": {
+    "source": "Shawn Vibert's 100-point Elite Interface Playbook (SmartNET era), distilled 2026-10-06",
+    "distillation": "~/workspace/distillations/smartnet-batch-3/01-elite-interface-playbook.md",
+    "lineage": "ancestor of the 9.0 auto-approval bar (BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md)"
+  },
+  "scoring": {
+    "per_checkpoint_points": 1,
+    "section_points": 10,
+    "total_points": 100,
+    "scorecard_value": "total / 10",
+    "no_partial_credit": true,
+    "no_na": true,
+    "pass_predicate": {
+      "min_total": 90,
+      "rule": "total >= 90 ships; below 90: name misses, fix, re-score"
+    }
+  },
+  "sections": [
+    {
+      "id": "visual_dna_color",
+      "name": "Visual DNA & Color",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-001",
+          "section": "visual_dna_color",
+          "number": 1,
+          "text": "Black primary canvas (#000-#0a0a0d range); no light canvas.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        },
+        {
+          "id": "PB-002",
+          "section": "visual_dna_color",
+          "number": 2,
+          "text": "Signature purple accent used sparingly - accent/glow only, never solid fill.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        },
+        {
+          "id": "PB-003",
+          "section": "visual_dna_color",
+          "number": 3,
+          "text": "True black/white neutrals for text and structure.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        },
+        {
+          "id": "PB-004",
+          "section": "visual_dna_color",
+          "number": 4,
+          "text": "Primary buttons black with purple edge glow, lighting up white on interaction.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        },
+        {
+          "id": "PB-005",
+          "section": "visual_dna_color",
+          "number": 5,
+          "text": "Glassy cards: backdrop blur 10-16px, 65-75% opacity.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-006",
+          "section": "visual_dna_color",
+          "number": 6,
+          "text": "Luxury soft shadows - layered depth, never flat black boxes.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-007",
+          "section": "visual_dna_color",
+          "number": 7,
+          "text": "High text contrast - readable at a glance.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-008",
+          "section": "visual_dna_color",
+          "number": 8,
+          "text": "State colors sparing: Emerald=success; gold=warning; error=icon+text required, color TBD within allowed palette.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": false,
+          "note": "error color pending Shawn ruling"
+        },
+        {
+          "id": "PB-009",
+          "section": "visual_dna_color",
+          "number": 9,
+          "text": "WCAG AA contrast on all text states.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-010",
+          "section": "visual_dna_color",
+          "number": 10,
+          "text": "Semantic color tokens via CSS variables; no hardcoded hex in components.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-011",
+          "section": "visual_dna_color",
+          "number": 11,
+          "text": "Focus ring: 2px purple glow OUTSIDE the element, always visible on keyboard focus.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-012",
+          "section": "visual_dna_color",
+          "number": 12,
+          "text": "Gradients gentle, purple-family only; no rainbow.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        }
+      ]
+    },
+    {
+      "id": "typography_rhythm",
+      "name": "Typography & Rhythm",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-013",
+          "section": "typography_rhythm",
+          "number": 13,
+          "text": "One UI family, elegant and clear (original: Inter; principle governs, stack governs family).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-014",
+          "section": "typography_rhythm",
+          "number": 14,
+          "text": "Type scale 12/14/16/18/24/32/48; body target 17-18px, floor 16px pending Shawn ruling.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-015",
+          "section": "typography_rhythm",
+          "number": 15,
+          "text": "Headlines medium/bold - clear weight contrast with body.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-016",
+          "section": "typography_rhythm",
+          "number": 16,
+          "text": "Micro-labels uppercase with letterspacing.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-017",
+          "section": "typography_rhythm",
+          "number": 17,
+          "text": "Max ~75ch line width for reading text.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-018",
+          "section": "typography_rhythm",
+          "number": 18,
+          "text": "No text over busy backgrounds - glass panels behind text.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-019",
+          "section": "typography_rhythm",
+          "number": 19,
+          "text": "Tabular numerals for all data/numbers.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-020",
+          "section": "typography_rhythm",
+          "number": 20,
+          "text": "8px spacing system - all spacing a multiple of 8.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-021",
+          "section": "typography_rhythm",
+          "number": 21,
+          "text": "Tightened, consistent vertical rhythm.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-022",
+          "section": "typography_rhythm",
+          "number": 22,
+          "text": "One clear visual hierarchy per screen.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "layout_structure",
+      "name": "Layout & Structure",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-023",
+          "section": "layout_structure",
+          "number": 23,
+          "text": "Top command strip <=72px, always visible.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-024",
+          "section": "layout_structure",
+          "number": 24,
+          "text": "Fixed, sacred primary nav order.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "note": "original SmartNET-era nav names dated; principle timeless"
+        },
+        {
+          "id": "PB-025",
+          "section": "layout_structure",
+          "number": 25,
+          "text": "One-glance layout order: Metrics -> Actions -> Charts -> Dock -> Right-Now.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-026",
+          "section": "layout_structure",
+          "number": 26,
+          "text": "Compact hero; real content above the fold.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-027",
+          "section": "layout_structure",
+          "number": 27,
+          "text": "12-column grid; 16-24px gutters.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-028",
+          "section": "layout_structure",
+          "number": 28,
+          "text": "Cards snap to grid - no orphans, no overlaps.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-029",
+          "section": "layout_structure",
+          "number": 29,
+          "text": "Divine-12 dock: 2-3 priority tiles larger than the rest.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-030",
+          "section": "layout_structure",
+          "number": 30,
+          "text": "Sticky mobile utility bar.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-031",
+          "section": "layout_structure",
+          "number": 31,
+          "text": "Empty states = value statement + one primary action.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-032",
+          "section": "layout_structure",
+          "number": 32,
+          "text": "Modals light, never fullscreen takeovers.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-033",
+          "section": "layout_structure",
+          "number": 33,
+          "text": "Right panel 360-420px when present.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-034",
+          "section": "layout_structure",
+          "number": 34,
+          "text": "Full screen width used - no max-width caps on chassis or rooms.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "background_magic",
+      "name": "Background Magic",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-035",
+          "section": "background_magic",
+          "number": 35,
+          "text": "Living 3D aurora - slow, parallax, subtle.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-036",
+          "section": "background_magic",
+          "number": 36,
+          "text": "Cursor-reactive particle sprinkles, low density.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-037",
+          "section": "background_magic",
+          "number": 37,
+          "text": "Sheen layer adds depth without noise.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-038",
+          "section": "background_magic",
+          "number": 38,
+          "text": "Text contrast never sacrificed - glass mask behind text.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-039",
+          "section": "background_magic",
+          "number": 39,
+          "text": "Animation loops 20-30s, calm cadence.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-040",
+          "section": "background_magic",
+          "number": 40,
+          "text": "Background motion <=2-3% CPU budget.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-041",
+          "section": "background_magic",
+          "number": 41,
+          "text": "Ambient animation pauses when tab hidden.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-042",
+          "section": "background_magic",
+          "number": 42,
+          "text": "CSS transforms/opacity only for ambient motion.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-043",
+          "section": "background_magic",
+          "number": 43,
+          "text": "GPU-friendly filters.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        },
+        {
+          "id": "PB-044",
+          "section": "background_magic",
+          "number": 44,
+          "text": "Global Low Motion toggle, respected everywhere.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "gated_by": "LAW ZERO - serves meaning or it is out"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "name": "Components",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-045",
+          "section": "components",
+          "number": 45,
+          "text": "Primary buttons black with purple edge glow; hover glow intensifies, lifts white.",
+          "points": 1,
+          "truth_state": "TIMELESS",
+          "superseded": true,
+          "superseded_by": "standing color standard 2026-10-04 (black canvas)"
+        },
+        {
+          "id": "PB-046",
+          "section": "components",
+          "number": 46,
+          "text": "Primary CTA inner-glow pulse, 1200ms cycle - the single most important action only.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-047",
+          "section": "components",
+          "number": 47,
+          "text": "Soft-press state: scale 0.985 on press.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-048",
+          "section": "components",
+          "number": 48,
+          "text": "Disabled = 60% opacity + dotted border.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-049",
+          "section": "components",
+          "number": 49,
+          "text": "Inputs: dark surface; focus = purple ring (2px, outside).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-050",
+          "section": "components",
+          "number": 50,
+          "text": "Segmented controls preferred over dropdowns where options <=5.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-051",
+          "section": "components",
+          "number": 51,
+          "text": "Metric cards: icon chip + label + big number + delta, in that anatomy.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-052",
+          "section": "components",
+          "number": 52,
+          "text": "Count-up number animations <=900ms.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-053",
+          "section": "components",
+          "number": 53,
+          "text": "Zebra list rows: translucent alternate tint.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-054",
+          "section": "components",
+          "number": 54,
+          "text": "Glass tooltips (blur, subtle border).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-055",
+          "section": "components",
+          "number": 55,
+          "text": "Toasts top-right, 3-4s, auto-dismiss with action retained in history.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-056",
+          "section": "components",
+          "number": 56,
+          "text": "Skeleton shimmer loaders - never spinners.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-057",
+          "section": "components",
+          "number": 57,
+          "text": "Hover glow scaled to dwell.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-058",
+          "section": "components",
+          "number": 58,
+          "text": "One icon set, inline SVG, stroke-consistent.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "data_viz_insights",
+      "name": "Data Viz & Insights",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-059",
+          "section": "data_viz_insights",
+          "number": 59,
+          "text": "Airy fills, <=3 data series per chart.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-060",
+          "section": "data_viz_insights",
+          "number": 60,
+          "text": "Fixed container height - no layout jumps when data loads.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-061",
+          "section": "data_viz_insights",
+          "number": 61,
+          "text": "Smart Y-axis padding - data never kisses the frame.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-062",
+          "section": "data_viz_insights",
+          "number": 62,
+          "text": "Line-draw animations 700-900ms.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-063",
+          "section": "data_viz_insights",
+          "number": 63,
+          "text": "Tooltips lead with the big number.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-064",
+          "section": "data_viz_insights",
+          "number": 64,
+          "text": "Legends off - inline chips label series.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-065",
+          "section": "data_viz_insights",
+          "number": 65,
+          "text": "Every chart pairs an Action Panel ('Do this next').",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-066",
+          "section": "data_viz_insights",
+          "number": 66,
+          "text": "Sparklines in previews only, never as the main chart.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-067",
+          "section": "data_viz_insights",
+          "number": 67,
+          "text": "Tabular numerals on all axes/labels.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-068",
+          "section": "data_viz_insights",
+          "number": 68,
+          "text": "Empty data -> illustration + 'Connect source' action.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "navigation_discovery",
+      "name": "Navigation & Discovery",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-069",
+          "section": "navigation_discovery",
+          "number": 69,
+          "text": "Omnipresent search (Cmd/Ctrl+K palette) from anywhere.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-070",
+          "section": "navigation_discovery",
+          "number": 70,
+          "text": "Breadcrumbs whenever the user is deep.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-071",
+          "section": "navigation_discovery",
+          "number": 71,
+          "text": "Dock hover previews (spring, 200ms/24 stiffness).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-072",
+          "section": "navigation_discovery",
+          "number": 72,
+          "text": "Recents auto-pin - the user never re-hunts.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-073",
+          "section": "navigation_discovery",
+          "number": 73,
+          "text": "Logical Tab order matching visual order.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-074",
+          "section": "navigation_discovery",
+          "number": 74,
+          "text": "Esc always closes overlays - no trapped modals.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "microinteractions_motion",
+      "name": "Micro-Interactions & Motion",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-075",
+          "section": "microinteractions_motion",
+          "number": 75,
+          "text": "Dwell-scaled hover glow.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-076",
+          "section": "microinteractions_motion",
+          "number": 76,
+          "text": "Card tilt <=6 deg with shadow parallax.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-077",
+          "section": "microinteractions_motion",
+          "number": 77,
+          "text": "Shadow pop: 120ms down / 240ms up.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-078",
+          "section": "microinteractions_motion",
+          "number": 78,
+          "text": "easeOutQuart (or cubic-bezier(.16,.84,.22,1)) as the standard ease.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-079",
+          "section": "microinteractions_motion",
+          "number": 79,
+          "text": "Staggered entrances 40-60ms apart.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-080",
+          "section": "microinteractions_motion",
+          "number": 80,
+          "text": "Sliding nav underline, 140ms.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-081",
+          "section": "microinteractions_motion",
+          "number": 81,
+          "text": "Spring dock previews (200/24).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-082",
+          "section": "microinteractions_motion",
+          "number": 82,
+          "text": "Crossfade theme toggle - no flash.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-083",
+          "section": "microinteractions_motion",
+          "number": 83,
+          "text": "prefers-reduced-motion fully respected.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-084",
+          "section": "microinteractions_motion",
+          "number": 84,
+          "text": "No animation pretends the intelligence is alive - motion communicates state.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "accessibility_i18n",
+      "name": "Accessibility & i18n",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-085",
+          "section": "accessibility_i18n",
+          "number": 85,
+          "text": "WCAG AA in ALL states (hover, focus, disabled, error included).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-086",
+          "section": "accessibility_i18n",
+          "number": 86,
+          "text": "Focus always visible (PB-011).",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-087",
+          "section": "accessibility_i18n",
+          "number": 87,
+          "text": "Alt-text discipline on every meaningful image.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-088",
+          "section": "accessibility_i18n",
+          "number": 88,
+          "text": "RTL-ready layout.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-089",
+          "section": "accessibility_i18n",
+          "number": 89,
+          "text": "Safe at 120% font scaling - no clipped text, no broken grids.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-090",
+          "section": "accessibility_i18n",
+          "number": 90,
+          "text": "Colorblind-safe states - never color-alone; every state pairs icon and/or text.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "performance_tech_handoff",
+      "name": "Performance, Tech & Handoff",
+      "weight_points": 10,
+      "checkpoints": [
+        {
+          "id": "PB-091",
+          "section": "performance_tech_handoff",
+          "number": 91,
+          "text": "First paint <1.5s on target hardware.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-092",
+          "section": "performance_tech_handoff",
+          "number": 92,
+          "text": "Non-critical JS deferred.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-093",
+          "section": "performance_tech_handoff",
+          "number": 93,
+          "text": "Inline SVG, single icon set.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-094",
+          "section": "performance_tech_handoff",
+          "number": 94,
+          "text": "CSS variable tokens for every design value.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-095",
+          "section": "performance_tech_handoff",
+          "number": 95,
+          "text": "Documented component library - every component has a canonical example.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-096",
+          "section": "performance_tech_handoff",
+          "number": 96,
+          "text": "Figma mirrors code - no design/code drift without a recorded delta.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-097",
+          "section": "performance_tech_handoff",
+          "number": 97,
+          "text": "Snapshot UI tests on canonical screens.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-098",
+          "section": "performance_tech_handoff",
+          "number": 98,
+          "text": "One-click rule: the screen's primary action reachable in one click.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-099",
+          "section": "performance_tech_handoff",
+          "number": 99,
+          "text": "Right-Now panel = high-signal alerts only, each with a one-tap action.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "PB-100",
+          "section": "performance_tech_handoff",
+          "number": 100,
+          "text": "Consistency over novelty - a familiar pattern beats a clever new one.",
+          "points": 1,
+          "truth_state": "TIMELESS"
+        }
+      ]
+    }
+  ],
+  "adaptations": {
+    "canvas": {
+      "original": "white primary canvas",
+      "adapted": "black primary canvas (#000-#0a0a0d)",
+      "authority": "standing color standard 2026-10-04",
+      "supersedes": [
+        "PB-001",
+        "PB-002",
+        "PB-003",
+        "PB-004",
+        "PB-012",
+        "PB-045"
+      ]
+    },
+    "state_colors": {
+      "success": "emerald (stands)",
+      "warning": "gold",
+      "error": {
+        "color": "TBD - must resolve within [black,white,purple,blues,green,gold]; no amber, no rose pink",
+        "required_pairing": "icon + text label (PB-090: never color-alone)",
+        "decision": "mini-scorecard recorded in ELITE-INTERFACE-PLAYBOOK-V1.ai.md; open question for Shawn"
+      }
+    },
+    "mockup_bound": "simulations are legitimate exploration tools; every mockup labeled MOCKUP in the artifact; presenting a simulation as the real artifact is misrepresentation",
+    "north_star_items": [
+      "DID",
+      "soul-ID",
+      "SSO",
+      "SmartCoin economy",
+      "offline-by-design",
+      "SmartNET-era nav names (SmartHub/SmartWorld/SmartFeeds)",
+      "Inter as mandated family"
+    ],
+    "north_star_rule": "MUST NOT be claimed as current, presented as shipped, or scored as passing"
+  },
+  "precedence": [
+    "law-zero",
+    "standing-color-standard-2026-10-04",
+    "playbook-rubric-v1",
+    "room-specs"
+  ],
+  "enforcement": {
+    "today": "manual - builder self-score with evidence links; independent re-score by judge seat",
+    "ci_followup_proposed": "design-rubric-check job validating score file presence, total >= 90, no superseded checkpoint scored on old values"
+  }
+}

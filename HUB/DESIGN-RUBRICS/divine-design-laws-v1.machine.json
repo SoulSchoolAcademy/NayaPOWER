@@ -1,0 +1,895 @@
+{
+  "schema": "naya.design.divine-laws.v1",
+  "schema_version": "1.0",
+  "status": "PROPOSED",
+  "automatic_truth_ceiling": "CANDIDATE",
+  "awaiting_ratification_by": "Shawn Vibert",
+  "provenance": {
+    "source": "Shawn Vibert's 100 Laws of Divine App Design (SmartNET era), distilled 2026-10-06",
+    "distillation": "~/workspace/distillations/smartnet-batch-3/02-divine-laws.md"
+  },
+  "meta_law": {
+    "id": "DL-000",
+    "text": "The app must feel like magic - but run like math.",
+    "rule": "subordinate every DL below to this sentence; on conflict, DL-000 wins"
+  },
+  "sections": [
+    {
+      "id": "visual",
+      "name": "Visual Laws - the awe standard",
+      "law_range": "DL-001-DL-010",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-001",
+          "section": "visual",
+          "number": 1,
+          "text": "Design for awe at first glance - the first 3 seconds decide.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-002",
+          "section": "visual",
+          "number": 2,
+          "text": "White space like a Zen master - restraint is luxury.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-003",
+          "section": "visual",
+          "number": 3,
+          "text": "Color = consciousness: purple=power, blue=trust, gold=divinity; palette order black,white,purple,blues,green,gold; purple accent/glow only, never solid fill.",
+          "truth_state": "TIMELESS",
+          "note": "canvas superseded: black, not white"
+        },
+        {
+          "id": "DL-004",
+          "section": "visual",
+          "number": 4,
+          "text": "Consistency is king - one visual language everywhere.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-005",
+          "section": "visual",
+          "number": 5,
+          "text": "Typography speaks soul - type carries emotion, not just information.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-006",
+          "section": "visual",
+          "number": 6,
+          "text": "Animate with intention - every motion communicates state.",
+          "truth_state": "TIMELESS",
+          "note": "cf. PB-084"
+        },
+        {
+          "id": "DL-007",
+          "section": "visual",
+          "number": 7,
+          "text": "Use real faces, real people - avatar + human fusion; Naya's picture welcomes the user by name on first Hub entry.",
+          "truth_state": "TIMELESS",
+          "note": "identity-page authority"
+        },
+        {
+          "id": "DL-008",
+          "section": "visual",
+          "number": 8,
+          "text": "Self-explaining icons - no icon needs a manual.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-009",
+          "section": "visual",
+          "number": 9,
+          "text": "Hierarchy = harmony - visual weight matches importance.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-010",
+          "section": "visual",
+          "number": 10,
+          "text": "Design like Apple x Tesla x Avatar - the craft bar.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "intuitive_ux",
+      "name": "Intuitive UX Laws - the clarity test",
+      "law_range": "DL-011-DL-020",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-011",
+          "section": "intuitive_ux",
+          "number": 11,
+          "text": "The user always knows: What is this? Why does it matter? What do I do now?",
+          "truth_state": "TIMELESS",
+          "note": "acceptance test for every page"
+        },
+        {
+          "id": "DL-012",
+          "section": "intuitive_ux",
+          "number": 12,
+          "text": "3 clicks or less to any primary outcome.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-013",
+          "section": "intuitive_ux",
+          "number": 13,
+          "text": "Zero learning curve - a new user succeeds without instruction.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-014",
+          "section": "intuitive_ux",
+          "number": 14,
+          "text": "Every action gives feedback - no silent taps.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-015",
+          "section": "intuitive_ux",
+          "number": 15,
+          "text": "Never dead-end - every state offers a next step.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-016",
+          "section": "intuitive_ux",
+          "number": 16,
+          "text": "Gamify decisions - progress visible, effort rewarded.",
+          "truth_state": "TIMELESS",
+          "note": "bound by DL-087"
+        },
+        {
+          "id": "DL-017",
+          "section": "intuitive_ux",
+          "number": 17,
+          "text": "Onboarding is activation - first-time = delight + clarity.",
+          "truth_state": "TIMELESS",
+          "note": "onboarding XP mission statement"
+        },
+        {
+          "id": "DL-018",
+          "section": "intuitive_ux",
+          "number": 18,
+          "text": "Personalize on sight - the interface knows who it serves.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-019",
+          "section": "intuitive_ux",
+          "number": 19,
+          "text": "Ask before telling - invite, don't lecture.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-020",
+          "section": "intuitive_ux",
+          "number": 20,
+          "text": "Navigation is sacred geometry - fixed, learnable, never shuffled.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "name": "Performance Laws",
+      "law_range": "DL-021-DL-030",
+      "truth_states": {
+        "TIMELESS": 9,
+        "NORTH_STAR": 1
+      },
+      "laws": [
+        {
+          "id": "DL-021",
+          "section": "performance",
+          "number": 21,
+          "text": "Screens in under 1 second.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-022",
+          "section": "performance",
+          "number": 22,
+          "text": "Zero-lag interactions.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-023",
+          "section": "performance",
+          "number": 23,
+          "text": "Async everything.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-024",
+          "section": "performance",
+          "number": 24,
+          "text": "Micro-cached preferences.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-025",
+          "section": "performance",
+          "number": 25,
+          "text": "Predictive loading.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-026",
+          "section": "performance",
+          "number": 26,
+          "text": "Fail gracefully - with love and a solution.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-027",
+          "section": "performance",
+          "number": 27,
+          "text": "Battery-conscious.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-028",
+          "section": "performance",
+          "number": 28,
+          "text": "Seamless security - invisible until needed.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-029",
+          "section": "performance",
+          "number": 29,
+          "text": "Edge/low-signal tolerance.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-030",
+          "section": "performance",
+          "number": 30,
+          "text": "Offline-capable by design.",
+          "truth_state": "NORTH_STAR",
+          "note": "standing aspiration, not current reality"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "name": "Trust Laws",
+      "law_range": "DL-031-DL-040",
+      "truth_states": {
+        "TIMELESS": 8,
+        "NORTH_STAR": 2
+      },
+      "laws": [
+        {
+          "id": "DL-031",
+          "section": "trust",
+          "number": 31,
+          "text": "Data belongs to the user.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-032",
+          "section": "trust",
+          "number": 32,
+          "text": "Transparent permissions.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-033",
+          "section": "trust",
+          "number": 33,
+          "text": "E2E encryption default posture.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-034",
+          "section": "trust",
+          "number": 34,
+          "text": "No silent tracking.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-035",
+          "section": "trust",
+          "number": 35,
+          "text": "The user is admin of their space.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-036",
+          "section": "trust",
+          "number": 36,
+          "text": "Everything undoable.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-037",
+          "section": "trust",
+          "number": 37,
+          "text": "Audit trails on consequential actions.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-038",
+          "section": "trust",
+          "number": 38,
+          "text": "Trust badges earned, never self-awarded.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-039",
+          "section": "trust",
+          "number": 39,
+          "text": "DID options.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-040",
+          "section": "trust",
+          "number": 40,
+          "text": "Biometric + soul-ID SSO.",
+          "truth_state": "NORTH_STAR",
+          "note": "current identity page is device-local, never a verified credential"
+        }
+      ]
+    },
+    {
+      "id": "ai_intelligence",
+      "name": "AI + Intelligence Laws - Naya's core",
+      "law_range": "DL-041-DL-050",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-041",
+          "section": "ai_intelligence",
+          "number": 41,
+          "text": "AI reflects the user's tone, language, and vibe.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-042",
+          "section": "ai_intelligence",
+          "number": 42,
+          "text": "Teach as it serves - every answer leaves the user more capable.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-043",
+          "section": "ai_intelligence",
+          "number": 43,
+          "text": "No generic responses - ever.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-044",
+          "section": "ai_intelligence",
+          "number": 44,
+          "text": "Voice is an interface - Naya reads back; the user talks.",
+          "truth_state": "TIMELESS",
+          "note": "governs the identity rework"
+        },
+        {
+          "id": "DL-045",
+          "section": "ai_intelligence",
+          "number": 45,
+          "text": "Predictive + conversational search.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-046",
+          "section": "ai_intelligence",
+          "number": 46,
+          "text": "Useful suggestions, not noise.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-047",
+          "section": "ai_intelligence",
+          "number": 47,
+          "text": "Learn every interaction - behavior changes, not just logs.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-048",
+          "section": "ai_intelligence",
+          "number": 48,
+          "text": "Emotionally aware - read the room.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-049",
+          "section": "ai_intelligence",
+          "number": 49,
+          "text": "Responses = story + metaphor + action; distilled to essence, never walls of text.",
+          "truth_state": "TIMELESS",
+          "note": "reconciled with distilled-essence doctrine"
+        },
+        {
+          "id": "DL-050",
+          "section": "ai_intelligence",
+          "number": 50,
+          "text": "Teacher, coach, assistant - never dictator.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "name": "Backend Laws",
+      "law_range": "DL-051-DL-060",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-051",
+          "section": "backend",
+          "number": 51,
+          "text": "Modular, plug-and-play.",
+          "truth_state": "TIMELESS",
+          "note": "architecture posture"
+        },
+        {
+          "id": "DL-052",
+          "section": "backend",
+          "number": 52,
+          "text": "Realtime sync where the user feels it.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-053",
+          "section": "backend",
+          "number": 53,
+          "text": "Stunning-simple dev tools.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-054",
+          "section": "backend",
+          "number": 54,
+          "text": "Open, intuitive APIs.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-055",
+          "section": "backend",
+          "number": 55,
+          "text": "Microservices where they earn it.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-056",
+          "section": "backend",
+          "number": 56,
+          "text": "Serverless where possible.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-057",
+          "section": "backend",
+          "number": 57,
+          "text": "Error reporting in every function.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-058",
+          "section": "backend",
+          "number": 58,
+          "text": "Transparent logging - every backend action leaves a receipt.",
+          "truth_state": "TIMELESS",
+          "note": "matches the team's evidence culture"
+        },
+        {
+          "id": "DL-059",
+          "section": "backend",
+          "number": 59,
+          "text": "Smart cache.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-060",
+          "section": "backend",
+          "number": 60,
+          "text": "Spaceship-grade admin.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "social_viral",
+      "name": "Social + Viral Laws",
+      "law_range": "DL-061-DL-070",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-061",
+          "section": "social_viral",
+          "number": 61,
+          "text": "Everything shareable.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-062",
+          "section": "social_viral",
+          "number": 62,
+          "text": "Clip/remix/share built in.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-063",
+          "section": "social_viral",
+          "number": 63,
+          "text": "One-click invite.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-064",
+          "section": "social_viral",
+          "number": 64,
+          "text": "Referral = instant reward.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-065",
+          "section": "social_viral",
+          "number": 65,
+          "text": "'Magic Moments' worth posting - engineer them deliberately.",
+          "truth_state": "TIMELESS",
+          "note": "Reveal pop-up = the first-entry Magic Moment"
+        },
+        {
+          "id": "DL-066",
+          "section": "social_viral",
+          "number": 66,
+          "text": "Tribe-feeling community.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-067",
+          "section": "social_viral",
+          "number": 67,
+          "text": "Reactions with soul.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-068",
+          "section": "social_viral",
+          "number": 68,
+          "text": "Resonance-personalized feeds.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-069",
+          "section": "social_viral",
+          "number": 69,
+          "text": "Achievement scoreboards.",
+          "truth_state": "TIMELESS",
+          "note": "bound by DL-087"
+        },
+        {
+          "id": "DL-070",
+          "section": "social_viral",
+          "number": 70,
+          "text": "No dead zones.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    },
+    {
+      "id": "monetization",
+      "name": "Monetization Laws - product direction",
+      "law_range": "DL-071-DL-080",
+      "truth_states": {
+        "NORTH_STAR": 10
+      },
+      "laws": [
+        {
+          "id": "DL-071",
+          "section": "monetization",
+          "number": 71,
+          "text": "Every tap has value potential.",
+          "truth_state": "NORTH_STAR",
+          "note": "product-direction, not current build scope"
+        },
+        {
+          "id": "DL-072",
+          "section": "monetization",
+          "number": 72,
+          "text": "Reward attention.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-073",
+          "section": "monetization",
+          "number": 73,
+          "text": "Ads optional.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-074",
+          "section": "monetization",
+          "number": 74,
+          "text": "Built-in frictionless affiliate.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-075",
+          "section": "monetization",
+          "number": 75,
+          "text": "Earn/learn/elevate pathway.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-076",
+          "section": "monetization",
+          "number": 76,
+          "text": "One-click tip.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-077",
+          "section": "monetization",
+          "number": 77,
+          "text": "Premium instantly worth it.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-078",
+          "section": "monetization",
+          "number": 78,
+          "text": "Users sell.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-079",
+          "section": "monetization",
+          "number": 79,
+          "text": "Trackable transparent value.",
+          "truth_state": "NORTH_STAR"
+        },
+        {
+          "id": "DL-080",
+          "section": "monetization",
+          "number": 80,
+          "text": "SmartCoin = abundance.",
+          "truth_state": "NORTH_STAR",
+          "note": "future economy, not current"
+        }
+      ]
+    },
+    {
+      "id": "emotional",
+      "name": "Emotional Design Laws",
+      "law_range": "DL-081-DL-090",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-081",
+          "section": "emotional",
+          "number": 81,
+          "text": "Delight is the goal.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-082",
+          "section": "emotional",
+          "number": 82,
+          "text": "Surprise + beauty.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-083",
+          "section": "emotional",
+          "number": 83,
+          "text": "Celebrate progress.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-084",
+          "section": "emotional",
+          "number": 84,
+          "text": "Speak like a friend.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-085",
+          "section": "emotional",
+          "number": 85,
+          "text": "Uplift, never shame.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-086",
+          "section": "emotional",
+          "number": 86,
+          "text": "Express mood and identity.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-087",
+          "section": "emotional",
+          "number": 87,
+          "text": "Build intimacy, not addiction - engagement mechanics MUST be intimacy-building, never addiction loops.",
+          "truth_state": "TIMELESS",
+          "note": "hard constraint; constrains gamification (hub-upgrade 41-60)"
+        },
+        {
+          "id": "DL-088",
+          "section": "emotional",
+          "number": 88,
+          "text": "Sonic magic.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-089",
+          "section": "emotional",
+          "number": 89,
+          "text": "Sacred rituals in-app.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-090",
+          "section": "emotional",
+          "number": 90,
+          "text": "The product feels alive because the intelligence is alive.",
+          "truth_state": "TIMELESS",
+          "note": "cf. LAW ZERO"
+        }
+      ]
+    },
+    {
+      "id": "cosmic_purpose",
+      "name": "Cosmic Purpose Laws",
+      "law_range": "DL-091-DL-100",
+      "truth_states": {
+        "TIMELESS": 10
+      },
+      "laws": [
+        {
+          "id": "DL-091",
+          "section": "cosmic_purpose",
+          "number": 91,
+          "text": "Every feature uplifts human potential.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-092",
+          "section": "cosmic_purpose",
+          "number": 92,
+          "text": "Teach as it serves.",
+          "truth_state": "TIMELESS",
+          "note": "cf. DL-042"
+        },
+        {
+          "id": "DL-093",
+          "section": "cosmic_purpose",
+          "number": 93,
+          "text": "Awaken wisdom.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-094",
+          "section": "cosmic_purpose",
+          "number": 94,
+          "text": "Inspire creativity.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-095",
+          "section": "cosmic_purpose",
+          "number": 95,
+          "text": "Empower the creator economy.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-096",
+          "section": "cosmic_purpose",
+          "number": 96,
+          "text": "Global healing as direction.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-097",
+          "section": "cosmic_purpose",
+          "number": 97,
+          "text": "Make the invisible visible.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-098",
+          "section": "cosmic_purpose",
+          "number": 98,
+          "text": "Respect divine free will - never coerce.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-099",
+          "section": "cosmic_purpose",
+          "number": 99,
+          "text": "Build a movement, not a user base.",
+          "truth_state": "TIMELESS"
+        },
+        {
+          "id": "DL-100",
+          "section": "cosmic_purpose",
+          "number": 100,
+          "text": "LOVE, TRUTH, PURPOSE, POWER.",
+          "truth_state": "TIMELESS"
+        }
+      ]
+    }
+  ],
+  "truth_state_semantics": {
+    "TIMELESS": "current design law once ratified",
+    "NORTH_STAR": "direction only; MUST NOT be claimed as current, presented as shipped, or scored as passing",
+    "SUPERSEDED": "yielded to a newer standing decision"
+  },
+  "supersessions": [
+    {
+      "laws": [
+        "DL-001",
+        "DL-002",
+        "DL-003",
+        "DL-004",
+        "DL-005",
+        "DL-006",
+        "DL-007",
+        "DL-008",
+        "DL-009",
+        "DL-010"
+      ],
+      "aspect": "white-canvas implication",
+      "superseded_by": "standing color standard 2026-10-04 (black canvas)",
+      "note": "DL-003's color psychology (purple=power, blue=trust, gold=divinity) stands; only the canvas flips"
+    }
+  ],
+  "bounds": [
+    {
+      "id": "B-DEMONSTRATE",
+      "from": "Reminders #66/#76",
+      "rule": "demonstrate, don't promote; the system markets itself when the results are real"
+    },
+    {
+      "id": "B-INTIMACY",
+      "from": "DL-087",
+      "rule": "engagement mechanics MUST be intimacy-building, never addiction loops; constrains all gamification (hub-upgrade 41-60)"
+    },
+    {
+      "id": "B-IDENTITY",
+      "from": "DL-039/DL-040",
+      "rule": "the current identity page creates a device-local profile, never a verified credential; law language MUST NOT imply verified identity"
+    },
+    {
+      "id": "B-CLAIM",
+      "from": "north-star tagging",
+      "rule": "offline-by-design, DID/soul-ID/SSO, SmartCoin economy MUST NOT be claimed as implemented"
+    }
+  ],
+  "precedence": [
+    "law-zero",
+    "standing-color-standard-2026-10-04",
+    "divine-laws-v1",
+    "room-specs"
+  ],
+  "enforcement": {
+    "today": "design reviews cite DL numbers; violations named plainly under the mutual-oversight protocol",
+    "ci_followup_proposed": "divine-laws-check validating north-star tags and that no spec claims DID/SSO/SmartCoin/offline as current"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "naya.governance.reminders-lineage.v1",
+  "schema_version": "1.0",
+  "status": "PROPOSED",
+  "automatic_truth_ceiling": "CANDIDATE",
+  "awaiting_ratification_by": "Shawn Vibert",
+  "provenance": {
+    "source": "Naya's 100 Daily Success Reminders (SmartNET era), distilled 2026-10-06",
+    "distillation": "~/workspace/distillations/smartnet-batch-3/04-daily-reminders.md"
+  },
+  "finding": "The team is not inventing Shawn's standards - it is rediscovering them. Current law is the formalization of his long-standing standard.",
+  "lineage_status_semantics": {
+    "COVERED": "directive already lives as law in the cited artifact; this file only cites it",
+    "ANCESTOR_CLAIMED": "directive lives in operating doctrine but has no standalone repo-law file; cited honestly, not upgraded",
+    "NEWLY_FORGED": "directive was genuinely missing from the repo; forged by this PR"
+  },
+  "entries": [
+    {
+      "reminder": "#31",
+      "quote": "Score before I show. Minimum 90 or rework.",
+      "current_law": "9.0 auto-approval bar + score-grounding rule",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md",
+      "covering_evidence": "9.0 is the birth threshold - nothing under 9.0 ships (RATIFIED 2026-10-05)",
+      "lineage_status": "COVERED",
+      "extended_by_this_pr": "Elite Interface Playbook rubric (90/100 = 9.0)"
+    },
+    {
+      "reminder": "#35",
+      "quote": "Screenshots = proof. Links = belief.",
+      "current_law": "visual-proof standard",
+      "covering_artifact": "HUB/PROJECT-INTELLIGENCE.md + HUB/PROJECT-INTELLIGENCE.AI.md",
+      "covering_evidence": "self-score with evidence links (screenshots, recordings, test output)",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#21",
+      "quote": "Always know the next 3 steps.",
+      "current_law": "execution-communication law",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md",
+      "covering_evidence": "REPORT_BACK: exactly one next action + the refreshed next ten",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#22",
+      "quote": "Every 15 minutes should create visible progress.",
+      "current_law": "nonstop loop",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md + 0004-nonstop-loop-v1.machine.json",
+      "covering_evidence": "standing law, RATIFIED 2026-10-05",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#32",
+      "quote": "If it can be simplified - it should be.",
+      "current_law": "smallest effective change",
+      "covering_artifact": "AGENTS.md (Engineering) + BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#57",
+      "quote": "Every glitch is a gift. Fix it and evolve.",
+      "current_law": "The Loop (miss -> analyze -> learn -> grow -> improve -> re-score)",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#26",
+      "quote": "Automate first, repeat never.",
+      "current_law": "self-building mandate",
+      "covering_artifact": "0000-NAYAPOWER-MASTER-DESIGN-CONTRACT-V1.md",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#34",
+      "quote": "Default to launch. Default to link. Default to live.",
+      "current_law": "bias-to-shipped applies BELOW the human gates",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
+      "covering_evidence": "human_gates_never_crossed invariant",
+      "lineage_status": "COVERED",
+      "note": "the bound is covered, not the slogan"
+    },
+    {
+      "reminder": "#25",
+      "quote": "Fix forward. Don't freeze.",
+      "current_law": "repair culture - fix the mechanism, keep moving",
+      "covering_artifact": "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json",
+      "covering_evidence": "correction_duty: repair the mechanism, not just the instance",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#40",
+      "quote": "Always ask: Can this run without me? Then build it that way.",
+      "current_law": "minimal project management",
+      "covering_artifact": "AGENTS.md (Captain Mode)",
+      "covering_evidence": "do not make Shawn project-manage routine work",
+      "lineage_status": "ANCESTOR_CLAIMED",
+      "note": "doctrine, no standalone repo-law file"
+    },
+    {
+      "reminder": "#39",
+      "quote": "The whole system should feel like a conversation, not a website.",
+      "current_law": "post-website vision",
+      "covering_artifact": "Design North Star (LAW ZERO)",
+      "covering_evidence": "not a dashboard, a database, a chatbot, or a collection of features",
+      "lineage_status": "COVERED"
+    },
+    {
+      "reminder": "#9",
+      "quote": "Every pixel is a portal. Treat it like one.",
+      "current_law": "visual-bliss law + 10/10 delivery bar",
+      "covering_artifact": "director standing doctrine; open PR #1296 (not merged)",
+      "lineage_status": "ANCESTOR_CLAIMED",
+      "note": "cited as doctrine, not as merged law"
+    },
+    {
+      "reminder": "#33",
+      "quote": "Mock it up if it's not built yet.",
+      "current_law": "mockup bound: mockups legitimate; label MOCKUP; never present as the artifact",
+      "covering_artifact": "HUB/DESIGN-RUBRICS/ELITE-INTERFACE-PLAYBOOK-V1.ai.md + elite-interface-playbook-v1.machine.json",
+      "lineage_status": "NEWLY_FORGED"
+    },
+    {
+      "reminder": "#66/#76",
+      "quote": "Don't promote. Demonstrate. / The system markets itself when the results are real.",
+      "current_law": "demonstrate bound",
+      "covering_artifact": "HUB/DESIGN-RUBRICS/DIVINE-DESIGN-LAWS-V1.ai.md (B-DEMONSTRATE) + divine-design-laws-v1.machine.json",
+      "lineage_status": "NEWLY_FORGED"
+    }
+  ],
+  "lock_in_posture": "lock-in material MUST present current team law as the continuation of Shawn's standard, citing this file - never as new process",
+  "exclusions": [
+    "the 'I am' affirmations (#1-20, #41-60): Shawn's personal operating fuel, not team process - MUST NOT be imposed as procedure",
+    "SmartNET-era naming: dated packaging; directives preserved, packaging not liturgized"
+  ],
+  "enforcement": {
+    "today": "none - this is a citation map; no new obligations",
+    "ci_followup_proposed": "lock-in checklist item verifying new-seat onboarding references this lineage file"
+  }
+}
