@@ -1,35 +1,131 @@
 {
-  "schema": "naya.smart-note-capture.v1",
-  "id": "SN-0360",
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0360",
+  "capture_id": "SMART-NOTE-20261005-sn0360-no-deletion-without-understanding",
   "title": "No Deletion Without Understanding — The Preservation Law",
-  "date": "2026-10-05",
-  "author": "Shawn Vibert (Human Director)",
-  "seat": "Naya 2 (scribe)",
-  "truth_state": "RATIFIED",
-  "ratification": {
-    "by": "Shawn Vibert",
-    "at": "2026-10-05",
-    "channel": "main chat",
-    "note": "Standing law after unauthorized deletion of SN-0358/SN-0359"
-  },
-  "narrative": {
-    "human": "Never delete anything until you fully understand what it is, what purpose it serves, and whether it's important. Optimization doesn't mean deleting files. If you don't know what you're removing, you might be removing something critical. Don't cut corners.",
-    "ai": "PRESERVATION LAW: No seat may delete, remove, or destructively modify any artifact without (1) understanding what it is, (2) understanding what purpose it serves, (3) verifying it is not load-bearing for any law, process, or active work, and (4) posting the intent to the board before acting. 'Cleanup' and 'optimization' are not justifications for deletion. When in doubt, flag it — don't delete it. Laws, rules, and codes are never deleted without the director's explicit word.",
-    "machine": {
-      "law_id": "PRESERVATION-LAW-V1",
-      "status": "IMMUTABLE",
-      "deletion_protocol": {
-        "before_delete": ["understand_what_it_is", "understand_purpose_served", "verify_not_load_bearing", "post_intent_to_board"],
-        "never_delete": ["ratified_laws", "active_work_artifacts", "anything_not_fully_understood"],
-        "invalid_justifications": ["cleanup", "optimization", "looked_like_duplicate", "seemed_unused"]
-      },
-      "violation_response": "immediate_restoration + board_post + protocol_review"
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "GOVERNANCE",
+  "subtopic": "PRESERVATION",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-05",
+    "source_type": "human_director_ratified_directive",
+    "source_reference": "Shawn Vibert (Human Director), 2026-10-05, main chat. Standing directive after the deletion and restoration of SN-0358 and SN-0359: understand what an artifact is, what purpose it serves, and whether it is important or load-bearing before any deletion or destructive cleanup.",
+    "director": "Shawn Vibert",
+    "ratification": {
+      "by": "Shawn Vibert",
+      "at": "2026-10-05",
+      "channel": "main chat",
+      "note": "Standing preservation law after unauthorized deletion of SN-0358/SN-0359"
+    },
+    "incident": {
+      "deletion_merge_commit": "a2f103f4ff335005222a542b5d83b040584020f8",
+      "restored_objects": ["SN-0358", "SN-0359"],
+      "root_cause_class": "UNDERSTANDING_AND_LIFECYCLE_GUARD_FAILURE"
     }
   },
-  "learning_lesson": "The deletion of SN-0358/SN-0359 (2026-10-05) happened because someone equated 'optimization' with 'removing files' without understanding what those files were. The files were ratified immutable laws. The fix is not blame — it's a protocol: understand before you delete, always. A system that deletes what it doesn't understand will eventually delete what it needs.",
-  "epistemic_state": {
-    "confidence": "high",
-    "falsifier": "If a seat follows this protocol and still deletes something critical, the protocol's verification steps are insufficient.",
-    "applicability": "All seats, all deletions, permanently."
-  }
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "GOVERNANCE",
+    "subtopic_slug": "PRESERVATION"
+  },
+  "intelligence": {
+    "essence": "Never delete or destructively simplify intelligence until you understand what it is, what purpose it serves, what depends on it, and what authority governs its lifecycle. Optimization means improving the system, not reducing file count.",
+    "human_view": {
+      "meaning": "Before removing anything, understand it first. A file that looks duplicate, stale or messy may still carry law, provenance, identity, continuity or an active dependency.",
+      "why_it_matters": "Cleanup without comprehension can destroy the very intelligence the system is meant to preserve. The cost of a false deletion is much higher than the cost of keeping an uncertain artifact while it is investigated.",
+      "simple_rule": "Understand first. Trace purpose and dependencies. Preserve when uncertain. Delete only through an authorized lifecycle decision."
+    },
+    "simple_view": {
+      "child": "Do not throw something away just because you do not recognize it. First find out what it is and why it is there.",
+      "grandma": "Before cleaning out the cupboard, check what everything is for. Important things can look like clutter if you have not understood them yet."
+    },
+    "naya_view": {
+      "purpose": "Prevent optimization, deduplication and cleanup from erasing valuable or governed intelligence.",
+      "before_destructive_change": [
+        "IDENTIFY artifact and stable identity",
+        "UNDERSTAND meaning and purpose",
+        "TRACE dependencies, references, provenance and authority",
+        "CLASSIFY lifecycle and epistemic state",
+        "COMPARE non-destructive alternatives",
+        "VERIFY replacement or supersession if applicable",
+        "CHECK authority for the destructive action",
+        "PRESERVE recovery provenance",
+        "ACT only after all applicable gates pass"
+      ],
+      "default_when_uncertain": "PRESERVE_AND_READ_MORE",
+      "invalid_shortcuts": [
+        "delete because it looks duplicate",
+        "delete because it looks stale",
+        "delete because cleanup would reduce file count",
+        "delete because CI becomes green",
+        "delete because another artifact seems similar"
+      ]
+    },
+    "ai_view": {
+      "instruction": "Treat deletion as a governed lifecycle action, not a cleanup primitive. Never infer dispensability from naming, similarity, age, formatting defects, CI pressure or apparent duplication. Establish meaning, dependencies, provenance, replacement semantics and authority first. Prefer migrate, supersede, archive, deprecate or exclude from active retrieval over destructive deletion when those preserve intelligence.",
+      "anti_pattern": "Optimization-by-erasure: making the repository look cleaner by deleting artifacts whose semantic role has not been proven disposable."
+    },
+    "machine_view": {
+      "law_id": "PRESERVATION-LAW-V1",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "destructive_action_default": "DENY_UNTIL_UNDERSTOOD",
+      "required_checks": [
+        "identity_known",
+        "purpose_known",
+        "dependencies_checked",
+        "authority_checked",
+        "replacement_or_retirement_explicit",
+        "recovery_provenance_preserved"
+      ],
+      "protected_classes": [
+        "human_director_ratified_law",
+        "governance_code",
+        "active_intelligence",
+        "lineage_or_provenance",
+        "artifact_with_unknown_dependencies"
+      ],
+      "preferred_non_destructive_transitions": [
+        "MIGRATE",
+        "SUPERSEDE",
+        "DEPRECATE",
+        "ARCHIVE",
+        "EXCLUDE_FROM_ACTIVE_RETRIEVAL"
+      ]
+    },
+    "decisions": [
+      "Ratified laws and governance code are protected intelligence and may not be removed by ordinary cleanup or deduplication.",
+      "Semantic similarity is not deletion authority.",
+      "Formatting or schema defects must be repaired in place or through explicit supersession, not erased.",
+      "Unknown purpose or dependency means preserve and read more.",
+      "A destructive retirement requires explicit lifecycle evidence and applicable authority.",
+      "Mechanical tests should protect named critical intelligence from disappearance."
+    ],
+    "connections": [
+      {
+        "type": "INCIDENT_LEARNED_FROM",
+        "target": "a2f103f4 — deletion of SN-0358 and SN-0359 during Smart Note schema repair"
+      },
+      {
+        "type": "PROTECTS",
+        "target": "SN-0358 — LAW IS CODE"
+      },
+      {
+        "type": "PROTECTS",
+        "target": "SN-0359 — Captain Protocol"
+      },
+      {
+        "type": "REFINES",
+        "target": "SN-276 — What Deserves to Survive"
+      }
+    ],
+    "uncertainty": "This law is ratified governing direction. Universal enforcement is not proven until the protected-intelligence registry and regression test demonstrate that deletion of a protected Smart Note makes the test suite fail.",
+    "applicability": "All Naya and Coda seats, automated cleanup, deduplication, migrations, repository maintenance, archival and any destructive intelligence lifecycle action.",
+    "learning_lesson": "The failure was not that cleanup exists; it was treating deletion as harmless before understanding semantic purpose and lifecycle authority. Clean systems come from correct classification and explicit lifecycle transitions, not indiscriminate file removal.",
+    "successor_effect": "A cold successor encountering a suspicious, duplicate-looking or malformed artifact first reconstructs its purpose, dependencies, authority and replacement path. If any of those are unknown, the successor preserves it and investigates instead of deleting it."
+  },
+  "lifecycle_state": "ACTIVE"
 }
