@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 227,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
@@ -16,7 +16,7 @@
     "09-EVOLUTION": 2,
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 24,
+    "12-ENGINEERING": 34,
     "90-OPERATIONS": 11,
     "99-ARCHIVE": 1,
     "ROOT": 5
@@ -937,6 +937,56 @@
       "path": "BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json",
       "blob_sha": "f5ee4130bec0facf1c0ec21f2ed8857ea0565763",
       "size": 6153
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/README.md",
+      "blob_sha": "b4e24c4088c413492d9a524d85486882d93b4d60",
+      "size": 2079
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/control.json",
+      "blob_sha": "392b25bbc6647a6cf4b71d0de5c983d37d654ef6",
+      "size": 287
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/treatment.json",
+      "blob_sha": "6011bd8494141514852aa2f9834ca8838d0199c1",
+      "size": 474
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/wrong-lesson.json",
+      "blob_sha": "72e370e6238315d633a3be0e57eca9fece69f8a3",
+      "size": 312
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/brief-template.md",
+      "blob_sha": "73031aa7755221d41a3db9442e13599ec2e0fe26",
+      "size": 658
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/keys/answer-key.json",
+      "blob_sha": "9bae37d9d21285961f863bcec94e2ddb155cb421",
+      "size": 2013
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/preregistration.json",
+      "blob_sha": "e68b6e953a8d9f402be194bcb38c6c4b2407e444",
+      "size": 3627
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/target-lesson-SN-0458.md",
+      "blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
+      "size": 5038
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/tasks/task-pack.json",
+      "blob_sha": "91f65264eae32d4f865bfd7655e14983f7358bcc",
+      "size": 4068
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/wrong-lesson-overlay.md",
+      "blob_sha": "6163f8279c74d3adbd96e0230b69c4bc05399ad1",
+      "size": 570
     },
     {
       "path": "BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json",
