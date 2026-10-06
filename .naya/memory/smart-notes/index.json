@@ -1397,6 +1397,44 @@
       }
     },
     {
+      "smart_note_id": "SN-0362",
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface",
+      "content_hash": "0279b5431572fb027c603251a60a1e8cad67700be1753d01b40cfd10722819f4",
+      "title": "Cold-14 — The Minimum Viable Intelligence Interface for NayaNET",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "CONTINUITY",
+      "subtopic": "COLD_14",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "9f6d6b57-14f7-4ceb-a71d-8696fc54f835",
+        "lineage_id": "c20ab2eb-3049-4ba6-ac1d-4297d9a9845f",
+        "relationship_id": "5e116ef0-cc5b-455e-8b13-abf569f37d9c",
+        "runtime_index_id": "d64340dd-1970-4217-9ce1-41c993d83841",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "226bbd44-9131-4e70-bc81-056d077e9953"
+      }
+    },
+    {
       "smart_note_id": "SN-0399",
       "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence",
       "title": "Self-Directed Intelligence Under Governance (the operating code)",
