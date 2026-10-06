@@ -733,6 +733,7 @@ def test_registry_audit_allows_only_valid_superseded_historical_stale_hash(tmp_p
         root=tmp_path, registry_path=registry_path,
         capture_dir=cap_dir, brain_root=brain)
     assert report["counts"]["entries_with_stale_hash"] == 0
+    assert report["counts"]["duplicate_smart_note_ids"] == 0
 
     broken = json.loads(registry_path.read_text(encoding="utf-8"))
     broken["entries"][0]["superseded_by_capture_id"] = "missing-successor"

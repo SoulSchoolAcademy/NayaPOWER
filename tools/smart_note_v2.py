@@ -857,15 +857,21 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
             capture_by_hash[hash_of(data)] = p.name
 
     entry_hashes = {}
+    active_by_smart_note_id = {}
+    inactive_states = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        state = str(e.get("lifecycle_state", "ACTIVE")).upper()
+        if state not in inactive_states:
+            active_by_smart_note_id.setdefault(sn, []).append(
+                str(e.get("intelligent_block_id") or "<unknown>")
+            )
         h = e.get("content_hash")
         if not h:
             defects["entries_without_hash"].append(sn)
             continue
         entry_hashes.setdefault(h, []).append(sn)
         if h not in capture_by_hash:
-            state = str(e.get("lifecycle_state", "ACTIVE")).upper()
             successor_id = str(e.get("superseded_by_capture_id") or "").strip()
             valid_historical_supersession = (
                 state == "SUPERSEDED"
@@ -877,9 +883,11 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
                     {"smart_note_id": sn, "content_hash": h}
                 )
 
-    for h, names in entry_hashes.items():
-        if len(names) > 1:
-            defects["duplicate_smart_note_ids"].append(sorted(names))
+    for sn, ibs in active_by_smart_note_id.items():
+        if len(ibs) > 1:
+            defects["duplicate_smart_note_ids"].append(
+                {"smart_note_id": sn, "intelligent_block_ids": sorted(ibs)}
+            )
 
     for h, name in capture_by_hash.items():
         if h not in entry_hashes:
