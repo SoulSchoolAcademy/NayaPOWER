@@ -1,0 +1,140 @@
+name: NayaNET Agent Capture
+
+# Governed machine-invocation path for the canonical Receiver
+# (supabase/functions/v7-smart-note-canonical — NOT modified by this workflow).
+#
+# An authorized Naya runtime triggers this workflow via workflow_dispatch with
+# the Smart Note payload. The workflow signs in as the dedicated `naya-runtime`
+# Supabase auth user (credentials in repo secrets — Naya runtimes never hold
+# them) and POSTs to the UNCHANGED receiver with a real user JWT. The full
+# canonical pipeline runs: IB allocation, persistence, learning evidence,
+# checkpoint, feed verification, GitHub projection, verified Smart Link.
+#
+# Required repo secrets (Shawn's gate):
+#   NAYA_SUPABASE_URL, NAYA_SUPABASE_ANON_KEY,
+#   NAYA_RUNTIME_EMAIL, NAYA_RUNTIME_PASSWORD
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload_json:
+        description: >-
+          JSON object: { human_note: { subject, text }, naya_note: { text },
+          idempotency_key, source, invoking_seat }. Example source:
+          "nayanet-agent-capture:capture-agent".
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Capture via canonical receiver
+        env:
+          SUPABASE_URL: ${{ secrets.NAYA_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.NAYA_SUPABASE_ANON_KEY }}
+          RUNTIME_EMAIL: ${{ secrets.NAYA_RUNTIME_EMAIL }}
+          RUNTIME_PASSWORD: ${{ secrets.NAYA_RUNTIME_PASSWORD }}
+          PAYLOAD_JSON: ${{ inputs.payload_json }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os, sys, urllib.request, re
+
+          def fail(msg):
+              print(f"AGENT_CAPTURE_FAILED: {msg}", file=sys.stderr)
+              sys.exit(1)
+
+          url = os.environ.get("SUPABASE_URL", "").rstrip("/")
+          anon = os.environ.get("SUPABASE_ANON_KEY", "")
+          email = os.environ.get("RUNTIME_EMAIL", "")
+          password = os.environ.get("RUNTIME_PASSWORD", "")
+          if not (url and anon and email and password):
+              fail("missing Naya runtime secrets (NAYA_SUPABASE_URL / NAYA_SUPABASE_ANON_KEY / NAYA_RUNTIME_EMAIL / NAYA_RUNTIME_PASSWORD)")
+
+          try:
+              payload = json.loads(os.environ.get("PAYLOAD_JSON", ""))
+          except Exception as e:
+              fail(f"payload_json is not valid JSON: {e}")
+          human = payload.get("human_note") or {}
+          naya = payload.get("naya_note") or {}
+          idem = payload.get("idempotency_key")
+          if not idem or not isinstance(idem, str):
+              fail("payload.idempotency_key (string) is required")
+          if not str(human.get("text") or human.get("content") or "").strip():
+              fail("payload.human_note.text is required")
+          if not str(naya.get("text") or naya.get("content") or naya.get("summary") or "").strip():
+              fail("payload.naya_note.text is required")
+          source = str(payload.get("source") or "nayanet-agent-capture")
+          if not source.startswith("nayanet-agent-capture"):
+              fail("payload.source must start with 'nayanet-agent-capture' (provenance discipline)")
+
+          def post_json(endpoint, body, headers=None):
+              req = urllib.request.Request(
+                  endpoint,
+                  data=json.dumps(body).encode(),
+                  headers={"Content-Type": "application/json", **(headers or {})},
+                  method="POST",
+              )
+              try:
+                  with urllib.request.urlopen(req, timeout=120) as r:
+                      return r.status, json.loads(r.read().decode())
+              except urllib.error.HTTPError as e:
+                  try:
+                      return e.code, json.loads(e.read().decode())
+                  except Exception:
+                      return e.code, {"raw_error": str(e)}
+
+          # 1. Sign in as the naya-runtime auth user -> real user JWT.
+          s, auth_res = post_json(
+              f"{url}/auth/v1/token?grant_type=password",
+              {"email": email, "password": password},
+              {"apikey": anon},
+          )
+          token = auth_res.get("access_token") if isinstance(auth_res, dict) else None
+          if s != 200 or not token:
+              fail(f"runtime sign-in failed (http {s}): {str(auth_res)[:300]}")
+
+          # 2. Call the canonical receiver with the real JWT. Receiver code is unchanged.
+          body = {
+              "human_note": human,
+              "naya_note": naya,
+              "idempotency_key": idem,
+              "source": source,
+          }
+          for k in ("subject", "in_a_nutshell", "correlation_id"):
+              if payload.get(k):
+                  body[k] = payload[k]
+          s, res = post_json(
+              f"{url}/functions/v1/v7-smart-note-canonical",
+              body,
+              {"apikey": anon, "Authorization": f"Bearer {token}", "x-idempotency-key": idem},
+          )
+          if s != 200 or not isinstance(res, dict) or res.get("ok") is not True:
+              fail(f"receiver rejected capture (http {s}): {str(res)[:500]}")
+          if res.get("pipeline") != "PROJECTION_VERIFIED":
+              fail(f"pipeline not verified: {res.get('pipeline')}")
+          ib = str(res.get("intelligent_block_id") or "")
+          link = str(res.get("smart_link") or "")
+          if not re.fullmatch(r"IB-\d{6}", ib):
+              fail(f"invalid intelligent_block_id: {ib}")
+          if not re.fullmatch(r"https://github\.com/SoulSchoolAcademy/NayaPOWER/blob/main/.+/IB-\d{6}/smart-note\.md", link):
+              fail(f"invalid smart_link: {link}")
+
+          receipt = {
+              "ok": True,
+              "pipeline": res.get("pipeline"),
+              "intelligent_block_id": ib,
+              "event_id": res.get("event_id"),
+              "transaction_id": res.get("transaction_id"),
+              "smart_link": link,
+              "replayed": res.get("replayed", False),
+              "invoking_seat": payload.get("invoking_seat"),
+          }
+          print("CAPTURE_RECEIPT_JSON_BEGIN")
+          print(json.dumps(receipt))
+          print("CAPTURE_RECEIPT_JSON_END")
+          print(f"Agent capture complete: {ib} -> {link}")
+          PYEOF
