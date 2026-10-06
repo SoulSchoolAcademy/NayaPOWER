@@ -18,6 +18,9 @@ No retrieval result grants authority.
 | [0003-FULL-AUTO-MERGE-V1.human.md](./0003-FULL-AUTO-MERGE-V1.human.md) / [.ai.md](./0003-FULL-AUTO-MERGE-V1.ai.md) / [.machine.json](./0003-full-auto-merge-v1.machine.json) | Full auto-merge law authorized under the supreme Scorecard Law (SCORECARD-LAW-V1, ratified 2026-10-05): five-step receipt schema, machine predicate (`tools/auto_merge_gate.py`), five hardening clauses |
 | [0004-NONSTOP-LOOP-V1.human.md](./0004-NONSTOP-LOOP-V1.human.md) / [.ai.md](./0004-NONSTOP-LOOP-V1.ai.md) / [.machine.json](./0004-nonstop-loop-v1.machine.json) | Standing execution law for every Naya seat: observe, rank, sign in, act, verify, sign out, scorecard, learn, repeat; preserves all human gates |
 
+| [0011-RUNTIME-GOVERNANCE-RICO-V1.human.md](./0011-RUNTIME-GOVERNANCE-RICO-V1.human.md) / [.ai.md](./0011-RUNTIME-GOVERNANCE-RICO-V1.ai.md) / [.machine.json](./0011-runtime-governance-rico-v1.machine.json) | PROPOSED: RiCo — past authority -> current context -> runtime legitimacy -> admissible execution; fail-closed legitimacy gate. |
+| [0012-PROBLEM-OWNERSHIP-V1.human.md](./0012-PROBLEM-OWNERSHIP-V1.human.md) / [.ai.md](./0012-PROBLEM-OWNERSHIP-V1.ai.md) / [.machine.json](./0012-problem-ownership-v1.machine.json) | PROPOSED: problem-ownership law, ten-solution method (converged, both sources cited), seven failure modes as review checklist. |
+
 ## Key Principles
 
 - Authority flows from the Constitution downward
