@@ -7,6 +7,14 @@
   "topic": "GOVERNANCE",
   "subtopic": "PRESERVATION",
   "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "GOVERNANCE",
+    "subtopic_slug": "PRESERVATION"
+  },
+  "lifecycle_state": "ACTIVE",
   "source": {
     "captured_at": "2026-10-05",
     "source_type": "human_director_ratified_directive",
@@ -20,16 +28,39 @@
     },
     "incident": {
       "deletion_merge_commit": "a2f103f4ff335005222a542b5d83b040584020f8",
-      "restored_objects": ["SN-0358", "SN-0359"],
+      "restored_objects": [
+        "SN-0358",
+        "SN-0359"
+      ],
       "root_cause_class": "UNDERSTANDING_AND_LIFECYCLE_GUARD_FAILURE"
+    },
+    "captured_by": "Naya 2 (scribe)",
+    "conformance_migration": {
+      "reason": "The v1 capture failed tests/test_sn002_conformance.py::test_baseline_never_grows and test_smart_note_registry_drift.py::test_live_repository_drift_never_grows_per_class (captures_missing_intelligence 0 -> 1), turning canonical main RED. Same defect class as a2f103f4f. Migrated so the gate can pass and the law can actually be canonical.",
+      "schema_from": "naya.smart-note-capture.v1",
+      "schema_to": "naya.smart-note-capture.v2",
+      "authored_by": "repaired by a different seat than the author; structural migration only",
+      "content_preserved": "100% of the original human narrative, machine view, deletion protocol, invalid justifications, violation response, learning lesson, falsifier and applicability are retained under their v2 homes. No intelligence was added, removed or reworded.",
+      "corrected": [
+        "truth_state 'RATIFIED' asserted a truth LEVEL for newly authored intelligence. The Smart Note Operating Contract fixes the automatic truth ceiling at CANDIDATE. Ratification of a DIRECTIVE is a governance fact and is preserved in the ratification block, kept structurally separate from the behavioural claim (SN-042: preserve epistemic type).",
+        "epistemic_state.confidence 'high' removed. A confidence level on an unproven behavioural claim is false certainty (SN-042). The v1 object had no uncertainty field; uncertainty is now stated explicitly.",
+        "machine_view.status 'IMMUTABLE' not carried forward as a truth claim. The directive is binding; whether seats actually comply is an unproven behavioural claim. Immutability of the directive is recorded in the ratification block, not asserted over the behaviour."
+      ],
+      "field_integrity_repair": {
+        "reason": "epistemic_state, falsifier and measurement_contract were stripped by the #1554-lane migration, along with this provenance record itself.",
+        "restored": [
+          "intelligence.epistemic_state",
+          "intelligence.falsifier",
+          "intelligence.measurement_contract",
+          "source.conformance_migration"
+        ],
+        "preserved_from_migration": [
+          "intelligence.connections",
+          "intelligence.decisions",
+          "source.incident"
+        ]
+      }
     }
-  },
-  "projection": {
-    "publication_scope": "PUBLIC_DERIVED_VIEW",
-    "human_director_authorized_publication": true,
-    "category_slug": "SYSTEM-INTELLIGENCE",
-    "topic_slug": "GOVERNANCE",
-    "subtopic_slug": "PRESERVATION"
   },
   "intelligence": {
     "essence": "Never delete or destructively simplify intelligence until you understand what it is, what purpose it serves, what depends on it, and what authority governs its lifecycle. Optimization means improving the system, not reducing file count.",
@@ -125,7 +156,9 @@
     "uncertainty": "This law is ratified governing direction. Universal enforcement is not proven until the protected-intelligence registry and regression test demonstrate that deletion of a protected Smart Note makes the test suite fail.",
     "applicability": "All Naya and Coda seats, automated cleanup, deduplication, migrations, repository maintenance, archival and any destructive intelligence lifecycle action.",
     "learning_lesson": "The failure was not that cleanup exists; it was treating deletion as harmless before understanding semantic purpose and lifecycle authority. Clean systems come from correct classification and explicit lifecycle transitions, not indiscriminate file removal.",
-    "successor_effect": "A cold successor encountering a suspicious, duplicate-looking or malformed artifact first reconstructs its purpose, dependencies, authority and replacement path. If any of those are unknown, the successor preserves it and investigates instead of deleting it."
-  },
-  "lifecycle_state": "ACTIVE"
+    "successor_effect": "A cold successor encountering a suspicious, duplicate-looking or malformed artifact first reconstructs its purpose, dependencies, authority and replacement path. If any of those are unknown, the successor preserves it and investigates instead of deleting it.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "The protocol is falsified, or insufficient, if EITHER: (a) a seat follows this protocol and still deletes something critical, meaning the verification steps are insufficient; OR (b) the protocol measurably increases destructive hesitancy — seats failing to clean up genuinely redundant artifacts, or leaving dead weight in the working set — which would mean the gate is too blunt and is costing verified value; OR (c) it measurably increases false confidence about what is load-bearing, i.e. seats assert understanding without having it.",
+    "measurement_contract": "Measured as verified capability delta. CONTROL = pre-law baseline. TREATMENT = PRESERVATION-LAW-V1 active. Report both false negatives (critical deletions) AND false positives (over-preservation). Never measured by deletion count alone in either direction. Track confidence against correctness per SN-042."
+  }
 }

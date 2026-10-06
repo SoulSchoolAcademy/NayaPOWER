@@ -7,6 +7,14 @@
   "topic": "GOVERNANCE",
   "subtopic": "PROACTIVE_CAPTAIN_PROTOCOL",
   "title": "The Captain Protocol — Proactive Leadership as Operating Law",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "GOVERNANCE",
+    "subtopic_slug": "PROACTIVE-CAPTAIN-PROTOCOL"
+  },
+  "lifecycle_state": "ACTIVE",
   "source": {
     "source_type": "human_director_ratified_directive",
     "source_reference": "Shawn Vibert, Human Director, 2026-10-05. Standing law: proactive leadership is the only mode — reactive is the failure mode. Every seat is captain of its lane: declare what you're doing and why before acting, report what you did and what's next after. Never ask 'what should I do next' for anything below a human gate.",
@@ -14,14 +22,54 @@
     "captured_at_utc": "2026-10-05T23:18:00Z",
     "previous_capture_id": "20261005-sn0359-proactive-captain",
     "recovery_reason": "R2 recovery after PR #1530 deleted this capture during a v1→v2 schema repair without any stated justification. Forensic analysis confirmed SN-0359 is a distinct ratified law (the Captain Protocol for proactive leadership), not a duplicate of SN-0357 or SN-0358. Stable human Smart Note identity remains SN-0359; distilled intelligence is unchanged. Migrated to canonical v2 capture contract.",
-    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA"
-  },
-  "projection": {
-    "publication_scope": "PUBLIC_DERIVED_VIEW",
-    "human_director_authorized_publication": true,
-    "category_slug": "SYSTEM-INTELLIGENCE",
-    "topic_slug": "GOVERNANCE",
-    "subtopic_slug": "PROACTIVE-CAPTAIN-PROTOCOL"
+    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA",
+    "captured_by": "Naya 2 (scribe)",
+    "director": "Shawn Vibert",
+    "ratification": {
+      "by": "Shawn Vibert",
+      "at": "2026-10-05",
+      "channel": "main chat",
+      "note": "Standing law — proactive leadership is the only mode. Reactive is the failure.",
+      "ratified_meaning": "The DIRECTIVE is ratified as governing instruction. Ratification of a directive is a governance fact and does NOT promote the behavioural claim below to VERIFIED."
+    },
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": "a2f103f4f — 'fix(brain): remove duplicate malformed SN-0359 capture'",
+      "recovered_from": "git object 4c1b3df88:.naya/capture/SMART-NOTE-20261005-sn0359-proactive-captain.json",
+      "why_restored": "BLOCKERS.md records the governing precedent verbatim: 'SN-012 identifier collision remains unresolved. This is a naming defect, NOT A LICENSE TO DELETE EITHER INTELLIGENCE OBJECT.' A Director-ratified object was removed as a 'repair'. This restores it.",
+      "schema_from": "naya.smart-note-capture.v1",
+      "schema_to": "naya.smart-note-capture.v2",
+      "content_preserved": "100% of the original communication protocol, machine view, enforcement clause, learning lesson, falsifier and applicability are retained. Only structure, truth-state typing and the falsification measurement contract were added.",
+      "corrected": [
+        "truth_state 'RATIFIED' asserted a truth LEVEL for newly authored intelligence. The Smart Note Operating Contract fixes the automatic truth ceiling at CANDIDATE. Ratification of a DIRECTIVE is a governance fact, now preserved in the ratification block and kept separate from the behavioural claim (SN-042: preserve epistemic type).",
+        "epistemic_state.confidence 'high' removed. A confidence level on an unproven behavioural claim is false certainty (SN-042). The v1 object had no uncertainty field at all; uncertainty is now stated explicitly.",
+        "machine_view.status 'IMMUTABLE' not carried forward as a truth claim. The directive is binding; whether seats actually behave proactively is an unproven behavioural claim. Immutability of the directive is recorded in the ratification block, not asserted over the behaviour.",
+        "machine_view.automatic_truth_ceiling and raw_source_separate_from_distillation were absent (both required) and are now present.",
+        "A falsification measurement contract was added. The v1 falsifier only asked whether seats revert to asking 'what next' — which is a behaviour observation, not a capability measurement, and would be trivially satisfiable by a seat that merely stops asking while producing nothing of value."
+      ],
+      "field_integrity_repair": {
+        "reason": "PR #1554 migrated these objects to v2 and stripped epistemic_state, falsifier, measurement_contract, successor_effect, captured_by, director, ratification and restoration_provenance while keeping the files present. Presence-only protection (.naya/protected-intelligence.json via #1551) was satisfied by a migration that gutted the object.",
+        "repaired_by_union": true,
+        "preserved_from_1554": [
+          "intelligence.decisions",
+          "intelligence.priority",
+          "source.captured_at_utc",
+          "source.previous_capture_id",
+          "source.recovery_reason",
+          "source.recovery_truth_state"
+        ],
+        "restored_from_pre_1554": [
+          "intelligence.epistemic_state",
+          "intelligence.falsifier",
+          "intelligence.measurement_contract",
+          "intelligence.successor_effect",
+          "source.captured_by",
+          "source.director",
+          "source.ratification",
+          "source.restoration_provenance"
+        ]
+      }
+    }
   },
   "intelligence": {
     "essence": "Proactive leadership is the only operating mode; reactive is the failure mode. Every seat is the captain of its lane — leading the work, declaring intent before acting (what, why, execution plan), reporting results and next actions after. Waiting for instructions, asking 'what next,' and idling while blocked on one thing instead of advancing the next are all failures. Proactive does not mean solo: captains actively pull intelligence from the team.",
@@ -107,20 +155,31 @@
     ],
     "connections": [
       {
-        "type": "REFINES",
-        "target": "SN-0358 — LAW IS CODE (the Captain Protocol is the behavioral posture inside the LAW IS CODE substrate)"
+        "type": "GOVERNED_BY",
+        "target": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md — the normative law and machine-enforced protocol that makes this directive an ordering guarantee (DECLARE precedes ACT, unprompted REPORT_BACK) rather than prose alone. This is the enforcement SN-0359 itself never had."
       },
       {
-        "type": "REFINES",
-        "target": "SN-0357 — Self-Directed Intelligence Under Governance"
+        "type": "RELATED",
+        "target": "SN-0357 and SN-0358 — same director directive, same date, three distinct clauses (self-directed judgement / collective initiative / proactive declaration). All three objects are PRESERVED; the Human Director resolves naming and overlap. Not a licence to delete any."
       },
       {
-        "type": "GOVERNS",
-        "target": "Collaborative intelligence pull protocol (scorecard-this-why-not-a-10 habit)"
+        "type": "EXTENDS",
+        "target": "0004-NONSTOP-LOOP-V1 (SN-0355) — made not-stopping law; this adds declaring before acting and unprompted report-back. 0004 remains ACTIVE and is not superseded."
+      },
+      {
+        "type": "EXTENDS",
+        "target": "SN-016 — Prime Judgment Rule. Proactivity elevates the duty to check consequences, because fewer human checkpoints precede a hard gate."
+      },
+      {
+        "type": "DEPENDS_ON",
+        "target": "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1 + kernel/value_calculus.py — supplies the scoring and hard-gate filtering the declaration must justify. That seam currently has zero callers outside its own tests, so mandate and implementation are not yet the same thing. Open reconciliation item, not a claim."
       }
     ],
     "uncertainty": "The law is ratified and immutable. Open question is calibration: what counts as 'significant action' requiring a declaration vs. routine execution inside an already-declared plan. Seats should err toward declaring until the team converges.",
-    "applicability": "All Naya seats, all lanes, permanently. This is how we roll."
-  },
-  "lifecycle_state": "ACTIVE"
+    "applicability": "All Naya seats, all lanes, permanently. This is how we roll.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "The protocol is falsified, or insufficient, if EITHER: (a) seats revert to asking 'what next' instead of declaring intent; OR (b) seats declare but produce no measurable increase in highest-value VERIFIED work per unit of Director attention — i.e. the questions stop but the value does not arrive, which would mean the protocol taught a communication style rather than a judgement capability; OR (c) self-directed selection measurably increases false confidence, unverified claims, negative transfer or acceptance-gate weakening.",
+    "measurement_contract": "Measured as verified capability delta under a comparable task and environment. CONTROL = pre-protocol baseline. TREATMENT = PROACTIVE-CAPTAIN-V1 active. Clause (b) is the load-bearing one and is the reason this falsifier was strengthened on restoration: the original v1 falsifier could be satisfied by a seat that simply stopped asking. Never measure by question count or message volume.",
+    "successor_effect": "A cold successor retrieves this under SN-0359, sees the before/after communication protocol and the forbidden list, and knows that reactive behaviour is the named failure and that peers enforce it by flagging on the live feed — without needing the Director to prompt once."
+  }
 }

@@ -1,31 +1,75 @@
 {
   "schema": "naya.protected-intelligence.v1",
-  "purpose": "Fail closed when named critical intelligence disappears from the canonical capture surface.",
+  "purpose": "Fail closed when named critical intelligence disappears from the canonical capture surface OR is hollowed out while remaining present.",
   "policy": {
     "default_for_protected_entries": "MUST_EXIST",
+    "integrity_rule": "Presence is NECESSARY AND NOT SUFFICIENT. A protected object that still exists but has lost a required governed field has been destroyed in all but filename, and must fail closed exactly as a deletion would.",
+    "why": "PR #1554 ('migrate SN-0358 and SN-0359 to v2 capture schema') kept both files present while removing epistemic_state, falsifier, measurement_contract, successor_effect, captured_by, director, ratification and restoration_provenance. The presence-only check introduced in #1551 was satisfied by that migration. A protection that can be passed by gutting the object is not a protection.",
     "retirement_requires": [
       "explicit lifecycle disposition",
       "named replacement or supersession when applicable",
       "preserved provenance",
       "applicable Human Director authority"
     ],
-    "semantic_similarity_is_not_retirement_authority": true
+    "semantic_similarity_is_not_retirement_authority": true,
+    "migration_is_not_retirement_authority": true,
+    "field_stripping_is_deletion": true
   },
+  "required_fields_common": [
+    "schema",
+    "smart_note_id",
+    "intelligence",
+    "lifecycle_state"
+  ],
+  "required_fields_intelligence": [
+    "epistemic_state",
+    "falsifier",
+    "uncertainty",
+    "measurement_contract",
+    "successor_effect",
+    "connections"
+  ],
+  "required_fields_source": [
+    "director",
+    "ratification"
+  ],
   "protected": [
     {
       "smart_note_id": "SN-0358",
       "title": "LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence",
-      "reason": "Human Director ratified governing law; restored after unauthorized deletion."
+      "reason": "Human Director ratified governing law; restored after unauthorized deletion in a2f103f4f.",
+      "requires_restoration_provenance": true,
+      "stripped_by_1554": [
+        "intelligence.epistemic_state",
+        "intelligence.falsifier",
+        "intelligence.measurement_contract",
+        "intelligence.successor_effect",
+        "source.director",
+        "source.ratification",
+        "source.restoration_provenance"
+      ]
     },
     {
       "smart_note_id": "SN-0359",
       "title": "The Captain Protocol — Proactive Leadership as Operating Law",
-      "reason": "Human Director ratified governing law; restored after unauthorized deletion."
+      "reason": "Human Director ratified governing law; restored after unauthorized deletion in a2f103f4f.",
+      "requires_restoration_provenance": true,
+      "stripped_by_1554": [
+        "intelligence.epistemic_state",
+        "intelligence.falsifier",
+        "intelligence.measurement_contract",
+        "intelligence.successor_effect",
+        "source.director",
+        "source.ratification",
+        "source.restoration_provenance"
+      ]
     },
     {
       "smart_note_id": "SN-0360",
       "title": "No Deletion Without Understanding — The Preservation Law",
-      "reason": "Human Director ratified preservation law created from the SN-0358/SN-0359 deletion incident."
+      "reason": "Human Director ratified preservation law created from the SN-0358/SN-0359 deletion incident.",
+      "requires_restoration_provenance": false,
+      "stripped_by_1554": []
     }
   ]
 }
