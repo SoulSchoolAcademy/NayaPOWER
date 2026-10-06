@@ -75,10 +75,10 @@ git -C "$T/b" -c user.name=adv -c user.email=adv@local rm -q "BRAIN/99-ARCHIVE/R
 git -C "$T/b" -c user.name=adv -c user.email=adv@local commit -qm "sabotage: delete 99-ARCHIVE README (count skew)"
 out="$(python3 "$GEN" --root "$T/b" 2>&1)"; code=$?
 echo "$out"
-if [ $code -eq 2 ] && echo "$out" | grep -q "domain counts do not match"; then
-  report "count skew fails exit 2 with count message" 1 ""
+if [ $code -eq 2 ] && echo "$out" | grep -q "below the baseline floor"; then
+  report "count skew fails exit 2 with floor message" 1 ""
 else
-  report "count skew fails exit 2 with count message" 0 "exit=$code (expected 2)"
+  report "count skew fails exit 2 with floor message" 0 "exit=$code (expected 2)"
 fi
 
 # --------------------------------- case C: undeclared pointer (backstop)
