@@ -1487,6 +1487,22 @@
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "06d1521e-81b9-47e7-a103-a4b779f833c1"
       }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001",
+      "smart_note_id": "SN-NET-POWER-MAGIC-001",
+      "title": "NayaPOWER Intelligence — The Magic of NayaPOWER",
+      "captured_at": "2026-10-05",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SYSTEM_INTELLIGENCE",
+      "subtopic": "NAYAPOWER-NAYANET-CORE-MAGIC",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN commit 2c34c6e1d by Human Director 2026-10-05 (\"docs: ratify NayaPOWER and NayaNET core magic intelligence\"); no capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
+      }
     }
   ],
   "sequence_policy": {

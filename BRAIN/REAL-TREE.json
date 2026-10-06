@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "c6b491483ec8815460814c14e11c31c5c64e3b98",
-  "inventory_file_count": 212,
+  "receipt_basis_commit": "514ab42d1704e596680aff72963492e733cc3d5a",
+  "inventory_file_count": 213,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 29,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 54,
+    "05-MEMORY": 55,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -510,8 +510,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md",
-      "blob_sha": "91adb23e0b27ad22ee259058176365a77ec0e477",
-      "size": 6650
+      "blob_sha": "d747afcc0ba0207df92dae2df5f9641a8f2999cf",
+      "size": 8002
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
@@ -722,6 +722,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
       "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
       "size": 6070
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "blob_sha": "b0b521c3ee2c7df296d2e9854db982b6ea6f39bb",
+      "size": 10964
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
