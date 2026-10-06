@@ -14,7 +14,16 @@
     "captured_at_utc": "2026-10-05T23:18:00Z",
     "previous_capture_id": "20261005-sn0359-proactive-captain",
     "recovery_reason": "R2 recovery after PR #1530 deleted this capture during a v1→v2 schema repair without any stated justification. Forensic analysis confirmed SN-0359 is a distinct ratified law (the Captain Protocol for proactive leadership), not a duplicate of SN-0357 or SN-0358. Stable human Smart Note identity remains SN-0359; distilled intelligence is unchanged. Migrated to canonical v2 capture contract.",
-    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA"
+    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA",
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": "a2f103f4ff335005222a542b5d83b040584020f8",
+      "deleted_by_pr": 1530,
+      "restored_by_pr": 1537,
+      "restored_at": "2026-10-05",
+      "recovered_from": "git history pre-deletion tree (commit 8612237a lineage); v2 schema migration of the original v1 capture",
+      "note": "The deletion is preserved on the record. Restoration does not erase the gap."
+    }
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
@@ -120,7 +129,9 @@
       }
     ],
     "uncertainty": "The law is ratified and immutable. Open question is calibration: what counts as 'significant action' requiring a declaration vs. routine execution inside an already-declared plan. Seats should err toward declaring until the team converges.",
-    "applicability": "All Naya seats, all lanes, permanently. This is how we roll."
+    "applicability": "All Naya seats, all lanes, permanently. This is how we roll.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "The Captain Protocol is falsified if a seat operating under it shows no measurable increase in proactive value delivery — completed work, surfaced risks, closed loops — versus a reactive baseline. Clause (b): the questions stop but the value does not arrive. A seat that merely stops asking while producing nothing has not become a captain; it has become silent. Silence without value is the degenerate case this protocol exists to prevent."
   },
   "lifecycle_state": "ACTIVE"
 }

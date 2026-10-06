@@ -1219,7 +1219,7 @@
     {
       "smart_note_id": "SN-0358",
       "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0358-law-is-code-r2",
-      "content_hash": "320da6fdf079e6844454b2f77e77e70c760a25aeb501f6321f28a991109bd1af",
+      "content_hash": "9e8b8a014e82e289bc068cfe50be2ad18a14d7a7751eeb3f6c6645eb004e6666",
       "title": "LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence",
       "captured_at": "2026-10-05",
       "category": "SYSTEM_INTELLIGENCE",
@@ -1255,47 +1255,9 @@
       }
     },
     {
-      "smart_note_id": "SN-0358",
-      "intelligent_block_id": "IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code",
-      "content_hash": "d7370040d460b9f891b81dd52ab1bbad6c2c4d95822534eb3470b68c7830dabf",
-      "title": "LAW IS CODE — Operational Manifesto for Self-Directed Collective Intelligence",
-      "captured_at": "2026-10-05",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "OPERATING-CODE",
-      "truth_state": "CANDIDATE",
-      "lifecycle_state": "ACTIVE",
-      "superseded_by_capture_id": null,
-      "supersession_reason": null,
-      "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0358/IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link_status": "ACTIVE_AUTH_GATED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0358/IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code.md",
-      "publication_scope": "PUBLIC_DERIVED_VIEW",
-      "keywords": [
-        "smart note",
-        "capture",
-        "intelligent block",
-        "future naya",
-        "superbrain",
-        "intent",
-        "memory",
-        "reusable intelligence"
-      ],
-      "provenance": {
-        "event_id": "4e0b73b5-efdb-42a2-bb36-b2de8b93d4ba",
-        "lineage_id": "cb5f4015-1904-4b3c-b7d5-613e48796603",
-        "relationship_id": "d627194c-9877-47a5-9d9f-f0e8bb512634",
-        "runtime_index_id": "d28b64eb-882d-4c14-b338-d70423e18b9b",
-        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "3d0a2ec1-5700-435b-b25b-f7f118905430"
-      }
-    },
-    {
       "smart_note_id": "SN-0359",
       "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2",
-      "content_hash": "36d9d54136afe8a42ce1374c4c57ea3085239f865f8b362d4987693bb26060c7",
+      "content_hash": "38a70c492ad6efb756387ce2e84839e0af3aa5766f2a9d6274502aab09fe8717",
       "title": "The Captain Protocol — Proactive Leadership as Operating Law",
       "captured_at": "2026-10-05",
       "category": "SYSTEM_INTELLIGENCE",
@@ -1328,44 +1290,6 @@
         "runtime_index_id": "a826245f-7bbb-4124-b37c-455688a5ca2d",
         "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
         "receipt_id": "d98de439-ecbe-49a0-ab9b-132e60dc888c"
-      }
-    },
-    {
-      "smart_note_id": "SN-0359",
-      "intelligent_block_id": "IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain",
-      "content_hash": "a3cdf7b31f7aa668737d837564a43724906736555288b9f6f7eca79e5fbfdc27",
-      "title": "The Captain Protocol — Proactive Leadership as Operating Law",
-      "captured_at": "2026-10-05",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "OPERATING-CODE",
-      "truth_state": "CANDIDATE",
-      "lifecycle_state": "ACTIVE",
-      "superseded_by_capture_id": null,
-      "supersession_reason": null,
-      "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0359/IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link_status": "ACTIVE_AUTH_GATED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0359/IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain.md",
-      "publication_scope": "PUBLIC_DERIVED_VIEW",
-      "keywords": [
-        "smart note",
-        "capture",
-        "intelligent block",
-        "future naya",
-        "superbrain",
-        "intent",
-        "memory",
-        "reusable intelligence"
-      ],
-      "provenance": {
-        "event_id": "da73d38a-0f87-4cc6-8cf0-caec8f3ab0dd",
-        "lineage_id": "89ee61b4-3e2b-48e1-bda0-087fcdef4023",
-        "relationship_id": "dd9d827f-28a7-4996-989a-02cbf4ca9a60",
-        "runtime_index_id": "6b084cc1-5c1f-4485-b7a0-8725b9127bcf",
-        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
-        "receipt_id": "d4e66881-a29d-4d84-8625-5db9af036802"
       }
     },
     {
