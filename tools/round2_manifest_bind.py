@@ -7,7 +7,10 @@ It builds a NAYAPOWER_LEARNING_COMPOUNDING_EXPERIMENT_V2 manifest from
 explicit inputs and validates it with tools.learning_experiment_contract.
 It never claims learning occurred. Design-only gate.
 
-Fixture identity is the sha1 of raw file bytes (40 hex). Re-hash at trial
+Fixture identity is the git blob SHA-1 of file bytes (40 hex) — the same
+identifier the team cites as `blob <sha>` in evidence. Raw sha1 of file
+bytes is a different number and MUST NOT be substituted: publisher-posted
+blob SHAs and trial-time re-hashes must use one function. Re-hash at trial
 time with verify_fixture_binding; any drift fails the binding.
 """
 
@@ -37,10 +40,10 @@ FROZEN_WEIGHTS: dict[str, float] = {
 FORBIDDEN_EXTRAS = {"results", "observed_scores", "winner", "causal_verdict"}
 
 
-def sha1_file(path: str | Path) -> str:
-    """Return the 40-hex sha1 of raw file bytes. Raises FileNotFoundError."""
+def blob_sha_file(path: str | Path) -> str:
+    """Return the git blob SHA-1 (40 hex) of file bytes. Raises FileNotFoundError."""
     data = Path(path).read_bytes()
-    return hashlib.sha1(data).hexdigest()
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
 
 
 def build_manifest(
@@ -54,14 +57,33 @@ def build_manifest(
 ) -> dict[str, Any]:
     """Build a V2 preregistration manifest with frozen weights.
 
-    Raises FileNotFoundError for missing fixtures, ValueError when extras
-    contain pre-trial outcome keys.
+    Fail-fast: blank builder/verifier, empty fixture list, fewer than four
+    distinct nonempty hypotheses, non-integer or underpowered trial counts,
+    and pre-trial outcome extras are refused here with the contract's error
+    codes instead of producing a manifest the gate must reject.
+    Raises FileNotFoundError for missing fixtures, ValueError otherwise.
     """
+    if not str(builder).strip() or not str(independent_verifier).strip():
+        raise ValueError("BUILDER_AND_VERIFIER_REQUIRED")
+    if str(builder).strip() == str(independent_verifier).strip():
+        raise ValueError("ANSWER_KEY_VERIFIER_MUST_BE_INDEPENDENT")
+    if not fixture_paths:
+        raise ValueError("FIXTURE_SHAS_REQUIRED")
+    distinct = {str(h).strip() for h in hypotheses if str(h).strip()}
+    if len(distinct) < 4:
+        raise ValueError("FOUR_HYPOTHESES_REQUIRED")
+    if (
+        not isinstance(minimum_trials_per_arm, int)
+        or minimum_trials_per_arm < 5
+        or not isinstance(negative_transfer_trials, int)
+        or negative_transfer_trials < 5
+    ):
+        raise ValueError("MINIMUM_FIVE_TRIALS_PER_ARM")
     if extras:
         leaked = sorted(k for k in FORBIDDEN_EXTRAS if k in extras)
         if leaked:
             raise ValueError("OUTCOME_LEAKAGE_BEFORE_TRIALS:" + ",".join(leaked))
-    fixture_shas = [sha1_file(p) for p in fixture_paths]
+    fixture_shas = [blob_sha_file(p) for p in fixture_paths]
     manifest: dict[str, Any] = {
         "schema": SCHEMA,
         "status": "PREREGISTERED",
@@ -134,7 +156,7 @@ def verify_fixture_binding(
     drifted = []
     for p in fixture_paths:
         try:
-            current[str(p)] = sha1_file(p)
+            current[str(p)] = blob_sha_file(p)
         except FileNotFoundError:
             drifted.append(f"{p}:MISSING")
     current_shas = set(current.values())
