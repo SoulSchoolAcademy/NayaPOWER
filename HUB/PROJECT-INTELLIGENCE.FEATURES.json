@@ -7,7 +7,7 @@
     "HUB/DESIGN-CONTRACT.md"
   ],
   "coordination_issue": 554,
-  "finding_rule": "Any materially not-right observation must be posted to issue #554 with evidence; posting does not grant execution authority.",
+  "finding_rule": "Any materially not-right observation must be posted to issue #1354 with evidence; posting does not grant execution authority.",
   "invariants": [
     "Hub is a projection, not a second brain.",
     "Welcome → Identity → Intelligent Hub is the successful journey.",
