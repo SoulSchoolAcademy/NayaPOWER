@@ -312,7 +312,7 @@ def _allocate_from_registry(capture, ib, registry):
     seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
     while seq in occupied:
         seq += 1
-    return f"SN-{seq:04d}"
+    return f"SN-{seq:03d}"
 
 def allocate_smart_note_id(capture, ib):
     """Advisory SN allocation outside a transaction (e.g. projection_path).
