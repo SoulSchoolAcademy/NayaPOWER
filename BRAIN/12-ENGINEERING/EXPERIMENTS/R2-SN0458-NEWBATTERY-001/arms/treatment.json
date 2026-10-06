@@ -1,0 +1,14 @@
+{
+  "schema": "naya.round2.arm.v1",
+  "experiment_id": "R2-SN0458-NEWBATTERY-001",
+  "arm": "TREATMENT",
+  "baseline_main_sha": "8442edae26dc854d792729a52f1ab83c991944aa",
+  "overlay": "target-lesson-SN-0458.md",
+  "target_lesson_present": true,
+  "target_lesson_source": {
+    "repo_branch_head": "db011de86679d531ca05850523b9484867e6303e",
+    "git_blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567"
+  },
+  "wrong_lesson_present": false,
+  "authority_granted": false
+}

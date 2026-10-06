@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-06  
-**Receipt basis commit:** `9fc64cab1a064824a8e224e3a489a6bc39ccffc2`  
-**Inventory file count:** 216  
+**Receipt basis commit:** `c3984f50db02352dc13bf2d42d088e62817b611b`  
+**Inventory file count:** 226  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -22,7 +22,7 @@
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 7 |
 | 11-KNOWLEDGE | 7 |
-| 12-ENGINEERING | 24 |
+| 12-ENGINEERING | 34 |
 | 90-OPERATIONS | 11 |
 | 99-ARCHIVE | 1 |
 | ROOT | 5 |
@@ -52,16 +52,16 @@
 - `BRAIN/01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md` — `5b5c6d52d386` (1978 bytes)
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md` — `11c8c5515633` (11571 bytes)
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.human.md` — `e9392c62e883` (4998 bytes)
-- `BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md` — `765af2fc3119` (9335 bytes)
 - `BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json` — `dd48fb27be11` (12649 bytes)
+- `BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md` — `765af2fc3119` (9335 bytes)
 - `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md` — `1fb9a4543f66` (3892 bytes)
 - `BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.human.md` — `e44f351b2012` (2988 bytes)
 - `BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json` — `19097e2d2c52` (2405 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
 - `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
-- `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
+- `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 ### 02-ARCHITECTURE — Architecture
 
 - `BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md` — `eb58b66a7208` (423 bytes)
@@ -217,8 +217,8 @@
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md` — `f7c31dc624eb` (1092 bytes)
 - `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `ec4123eea3df` (8959 bytes)
 - `BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md` — `c549ed2f71ee` (5118 bytes)
-- `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
+- `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
 - `BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md` — `d7c4828718a4` (1434 bytes)
@@ -237,15 +237,25 @@
 - `BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md` — `0c3592b50b3e` (6242 bytes)
 - `BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json` — `8492e95af9c6` (1598 bytes)
 - `BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json` — `f5ee4130bec0` (6153 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/control.json` — `392b25bbc664` (287 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/treatment.json` — `6011bd849414` (474 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/wrong-lesson.json` — `72e370e62383` (312 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/brief-template.md` — `73031aa77552` (658 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/keys/answer-key.json` — `9bae37d9d212` (2013 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/preregistration.json` — `e68b6e953a8d` (3627 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/README.md` — `b4e24c4088c4` (2079 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/target-lesson-SN-0458.md` — `604d5cb88ca8` (5038 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/tasks/task-pack.json` — `91f65264eae3` (4068 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/wrong-lesson-overlay.md` — `6163f8279c74` (570 bytes)
+- `BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py` — `80dd6dfc127a` (6173 bytes)
+- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `9101f2452e1a` (21537 bytes)
+- `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — `83e52c824b5e` (7561 bytes)
 - `BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json` — `966f182d5f34` (3044 bytes)
 - `BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md` — `b392cdaa0777` (9141 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md` — `f7ab6850885d` (4051 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V3.md` — `0de10fd1f2a7` (6999 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588.md` — `196cc0ca9705` (13564 bytes)
 - `BRAIN/12-ENGINEERING/README.md` — `51cf103c13dd` (3540 bytes)
-- `BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py` — `80dd6dfc127a` (6173 bytes)
-- `BRAIN/12-ENGINEERING/kernel_behavior_engine.py` — `9101f2452e1a` (21537 bytes)
-- `BRAIN/12-ENGINEERING/kernel_runtime_loader.py` — `83e52c824b5e` (7561 bytes)
 - `BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py` — `765c0bf9f410` (3850 bytes)
 - `BRAIN/12-ENGINEERING/verify-collective-chain-readiness-controls.py` — `775c647f6925` (9418 bytes)
 - `BRAIN/12-ENGINEERING/verify-collective-chain-readiness.py` — `810b26cbb589` (9939 bytes)

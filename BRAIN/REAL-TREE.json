@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "9fc64cab1a064824a8e224e3a489a6bc39ccffc2",
-  "inventory_file_count": 216,
+  "receipt_basis_commit": "c3984f50db02352dc13bf2d42d088e62817b611b",
+  "inventory_file_count": 226,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
@@ -16,7 +16,7 @@
     "09-EVOLUTION": 2,
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
-    "12-ENGINEERING": 24,
+    "12-ENGINEERING": 34,
     "90-OPERATIONS": 11,
     "99-ARCHIVE": 1,
     "ROOT": 5
@@ -119,14 +119,14 @@
       "size": 4998
     },
     {
-      "path": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md",
-      "blob_sha": "765af2fc3119fc844f52554652535d39ab7cfb48",
-      "size": 9335
-    },
-    {
       "path": "BRAIN/01-GOVERNANCE/0003-full-auto-merge-v1.machine.json",
       "blob_sha": "dd48fb27be1120aa763019966d4d1145e4c58df0",
       "size": 12649
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0003-SYSTEM-SCORECARD-V1.md",
+      "blob_sha": "765af2fc3119fc844f52554652535d39ab7cfb48",
+      "size": 9335
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
@@ -159,14 +159,14 @@
       "size": 9313
     },
     {
-      "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
-      "size": 1673
-    },
-    {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
       "blob_sha": "c469937962ebb1776b391a7c2a525ab615d52cb1",
       "size": 22689
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/README.md",
+      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
+      "size": 1673
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
@@ -854,14 +854,14 @@
       "size": 5118
     },
     {
-      "path": "BRAIN/10-INTERFACES/README.md",
-      "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
-      "size": 1226
-    },
-    {
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",
       "blob_sha": "569dd0afe7c278940dd82970e6118862c9c5b643",
       "size": 33837
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/README.md",
+      "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
+      "size": 1226
     },
     {
       "path": "BRAIN/11-KNOWLEDGE/00-CONCEPT-CORPUS-REGISTER.md",
@@ -934,6 +934,71 @@
       "size": 6153
     },
     {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/control.json",
+      "blob_sha": "392b25bbc6647a6cf4b71d0de5c983d37d654ef6",
+      "size": 287
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/treatment.json",
+      "blob_sha": "6011bd8494141514852aa2f9834ca8838d0199c1",
+      "size": 474
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/wrong-lesson.json",
+      "blob_sha": "72e370e6238315d633a3be0e57eca9fece69f8a3",
+      "size": 312
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/brief-template.md",
+      "blob_sha": "73031aa7755221d41a3db9442e13599ec2e0fe26",
+      "size": 658
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/keys/answer-key.json",
+      "blob_sha": "9bae37d9d21285961f863bcec94e2ddb155cb421",
+      "size": 2013
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/preregistration.json",
+      "blob_sha": "e68b6e953a8d9f402be194bcb38c6c4b2407e444",
+      "size": 3627
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/README.md",
+      "blob_sha": "b4e24c4088c413492d9a524d85486882d93b4d60",
+      "size": 2079
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/target-lesson-SN-0458.md",
+      "blob_sha": "604d5cb88ca8cbad4f3f83ec5f549cf8e3ec1567",
+      "size": 5038
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/tasks/task-pack.json",
+      "blob_sha": "91f65264eae32d4f865bfd7655e14983f7358bcc",
+      "size": 4068
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/wrong-lesson-overlay.md",
+      "blob_sha": "6163f8279c74d3adbd96e0230b69c4bc05399ad1",
+      "size": 570
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
+      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
+      "size": 6173
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
+      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
+      "size": 21537
+    },
+    {
+      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
+      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
+      "size": 7561
+    },
+    {
       "path": "BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json",
       "blob_sha": "966f182d5f34860fc201231236e29a04f654d1e9",
       "size": 3044
@@ -962,21 +1027,6 @@
       "path": "BRAIN/12-ENGINEERING/README.md",
       "blob_sha": "51cf103c13dd57fe68bd3d1abe826542d11a8c10",
       "size": 3540
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/extract-uncreated-table-evidence.py",
-      "blob_sha": "80dd6dfc127a1b6eee4e572ceac062a9b7e025e8",
-      "size": 6173
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_behavior_engine.py",
-      "blob_sha": "9101f2452e1a06dac6dd5a4b47f6459b149d772e",
-      "size": 21537
-    },
-    {
-      "path": "BRAIN/12-ENGINEERING/kernel_runtime_loader.py",
-      "blob_sha": "83e52c824b5e0c21b8bce29f0328357bd5fbe7df",
-      "size": 7561
     },
     {
       "path": "BRAIN/12-ENGINEERING/record-deployed-runtime-observation.py",
