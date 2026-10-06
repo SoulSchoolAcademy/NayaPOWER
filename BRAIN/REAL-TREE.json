@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "b9d1f80ca2ebbe1c949cc91678169ef724663826",
-  "inventory_file_count": 212,
+  "receipt_basis_commit": "1df73862bea562c7c4e4cd85f6a83d546e42cfd4",
+  "inventory_file_count": 216,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 55,
+    "05-MEMORY": 59,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -554,6 +554,21 @@
       "size": 6624
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0399/IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence.md",
+      "blob_sha": "c4cbbee5c5f4b0913c8bbc81f1ebe7d54cf0b9e6",
+      "size": 4253
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0400/IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always.md",
+      "blob_sha": "d269f851777b55bcf6a1fd863742696e52e73876",
+      "size": 4694
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0408/IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md",
+      "blob_sha": "73242886bdf5a0ff69f0d91f9f3cfe8d1367d128",
+      "size": 3941
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
       "blob_sha": "f9d64da3f0e0537cbf271a62f8d6587ce7babaeb",
       "size": 10790
@@ -702,6 +717,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
       "blob_sha": "b6d3ec378a19de8379c4849fc7e16383598f301f",
       "size": 836
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md",
+      "blob_sha": "0e9aed03b3d9ce81af2029053e884478ab5b98ae",
+      "size": 7237
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
