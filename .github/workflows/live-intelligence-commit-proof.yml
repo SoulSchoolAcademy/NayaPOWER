@@ -174,11 +174,9 @@ jobs:
                 "receipt_id":p["receipt_id"],
               }
               pathlib.Path(f"fresh-lesson-lineage-ids{sfx}.json").write_text(json.dumps(ids,indent=2))
-              pathlib.Path(f"reconciliation{sfx}.json").write_text(json.dumps({
-                "status":"REUSED_EXISTING_CANONICAL_BLOCK",
-                "matched_by":"exact_content_hash",
-                "intelligent_block_id":exact["intelligent_block_id"],
-                "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
+              pathlib.Path(f"registry-hit{sfx}.json").write_text(json.dumps({
+                "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                "intelligent_block_id":exact["intelligent_block_id"]
               },indent=2))
               raise SystemExit(0)
           if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
@@ -192,9 +190,45 @@ jobs:
           }
           pathlib.Path(f"lesson-request{sfx}.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
+              if [[ "$capture_ok" -eq 1 && -f "registry-hit${sfx}.json" ]]; then
+                SFX="$sfx" python - <<'PY'
+          import json, os
+          sfx=os.environ["SFX"]
+          ids=json.load(open(f"fresh-lesson-lineage-ids{sfx}.json"))
+          json.dump({"mode":"verify",**ids},open(f"registry-verify-request{sfx}.json","w"))
+          PY
+                if ! curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"registry-verify-request${sfx}.json" "$RUNTIME_FUNCTION" > "registry-runtime-verification${sfx}.json"; then
+                  echo "REGISTRY_RUNTIME_VERIFY_UNAVAILABLE${sfx}"
+                  capture_ok=0
+                else
+                  verify_only_flag=""
+                  [[ "$(cat replay-mode.txt)" == "verify-only" ]] && verify_only_flag="--verify-only"
+                  python tools/live_intelligence_reconcile.py assess --expected "smart-note-expected${sfx}.json" --verify "registry-runtime-verification${sfx}.json" $verify_only_flag --out "reconciliation-plan${sfx}.json"
+                  action="$(python -c "import json; print(json.load(open('reconciliation-plan${sfx}.json'))['action'])")"
+                  if [[ "$action" == "REUSE" ]]; then
+                    cp "reconciliation-plan${sfx}.json" "reconciliation${sfx}.json"
+                  elif [[ "$action" == "FAIL_CLOSED" ]]; then
+                    echo "REGISTRY_RUNTIME_CONTENT_DRIFT${sfx}: verify-only mode never mutates"
+                    capture_ok=0
+                  elif [[ "$action" == "SUPERSEDE" ]]; then
+                    python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path_in" --expected "smart-note-expected${sfx}.json" --verify "registry-runtime-verification${sfx}.json" --grant-id "$GRANT_ID" --out "supersede-request${sfx}.json"
+                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"supersede-request${sfx}.json" "$RUNTIME_FUNCTION" > "supersede-response${sfx}.json"; then
+                      python tools/live_intelligence_reconcile.py validate-supersede --expected "smart-note-expected${sfx}.json" --old-verify "registry-runtime-verification${sfx}.json" --response "supersede-response${sfx}.json" --out "supersession-reconciliation${sfx}.json"
+                    else
+                      echo "REGISTRY_RUNTIME_SUPERSESSION_FAILED${sfx}"
+                      capture_ok=0
+                    fi
+                  else
+                    echo "REGISTRY_RUNTIME_RECONCILIATION_UNKNOWN_ACTION${sfx}: $action"
+                    capture_ok=0
+                  fi
+                fi
+              fi
               if [[ "$capture_ok" -eq 1 ]]; then
                 if [[ -f "reconciliation${sfx}.json" ]]; then
                   cat "reconciliation${sfx}.json"
+                elif [[ -f "supersession-reconciliation${sfx}.json" ]]; then
+                  cat "supersession-reconciliation${sfx}.json"
                 else
                   fl_attempt=1; fl_ok=0
                   while [[ $fl_attempt -le 5 ]]; do
@@ -277,11 +311,9 @@ jobs:
                     "receipt_id":p["receipt_id"],
                   }
                   pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
-                  pathlib.Path("reconciliation.json").write_text(json.dumps({
-                    "status":"REUSED_EXISTING_CANONICAL_BLOCK",
-                    "matched_by":"exact_content_hash",
-                    "intelligent_block_id":exact["intelligent_block_id"],
-                    "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
+                  pathlib.Path("registry-hit.json").write_text(json.dumps({
+                    "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                    "intelligent_block_id":exact["intelligent_block_id"]
                   },indent=2))
                   raise SystemExit(0)
               if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
@@ -313,8 +345,36 @@ jobs:
           pathlib.Path("lesson-request.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
 
+          if [[ -f registry-hit.json ]]; then
+            python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lesson-lineage-ids.json"))
+          json.dump({"mode":"verify",**ids},open("registry-verify-request.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @registry-verify-request.json "$RUNTIME_FUNCTION" > registry-runtime-verification.json
+            verify_only_flag=""
+            [[ "$(cat replay-mode.txt)" == "verify-only" ]] && verify_only_flag="--verify-only"
+            python tools/live_intelligence_reconcile.py assess --expected smart-note-expected.json --verify registry-runtime-verification.json $verify_only_flag --out reconciliation-plan.json
+            action="$(python -c "import json; print(json.load(open('reconciliation-plan.json'))['action'])")"
+            if [[ "$action" == "REUSE" ]]; then
+              cp reconciliation-plan.json reconciliation.json
+            elif [[ "$action" == "FAIL_CLOSED" ]]; then
+              echo "REGISTRY_RUNTIME_CONTENT_DRIFT: verify-only mode never mutates"
+              exit 1
+            elif [[ "$action" == "SUPERSEDE" ]]; then
+              python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path" --expected smart-note-expected.json --verify registry-runtime-verification.json --grant-id "$GRANT_ID" --out supersede-request.json
+              curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @supersede-request.json "$RUNTIME_FUNCTION" > supersede-response.json
+              python tools/live_intelligence_reconcile.py validate-supersede --expected smart-note-expected.json --old-verify registry-runtime-verification.json --response supersede-response.json --out supersession-reconciliation.json
+            else
+              echo "REGISTRY_RUNTIME_RECONCILIATION_UNKNOWN_ACTION: $action"
+              exit 1
+            fi
+          fi
+
           if [[ -f reconciliation.json ]]; then
             cat reconciliation.json
+          elif [[ -f supersession-reconciliation.json ]]; then
+            cat supersession-reconciliation.json
           else
             fl_attempt=1; fl_ok=0
             while [[ $fl_attempt -le 5 ]]; do
@@ -373,6 +433,8 @@ jobs:
             smart-note-expected-*.json
             reconciliation.json
             reconciliation-*.json
+            supersession-reconciliation.json
+            supersession-reconciliation-*.json
 
   independent-verification:
     needs: fresh-lesson
@@ -422,6 +484,16 @@ jobs:
                 fi
                 sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
               done
+              if [[ -f "supersession-reconciliation-$i.json" ]]; then
+                IDX="$i" python - <<'PY'
+          import json, os
+          i=os.environ["IDX"]
+          marker=json.load(open(f"supersession-reconciliation-{i}.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open(f"verify-current-block-{i}.json","w"))
+          PY
+                curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"verify-current-block-$i.json" "$RUNTIME_FUNCTION" > "current-block-verification-$i.json"
+                python tools/live_intelligence_reconcile.py verify-supersession --expected "smart-note-expected-$i.json" --old-verify "independent-lineage-verification-$i.json" --block-verify "current-block-verification-$i.json" --marker "supersession-reconciliation-$i.json" --out "independent-lineage-verification-$i.json"
+              fi
               IDX="$i" python - <<'PY'
           import json, os
           i=os.environ["IDX"]
@@ -439,11 +511,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           expected=json.load(open(f"smart-note-expected-{i}.json"))
           block=r["persisted"]["block"]
           actual=block["content"]["lesson"]
@@ -487,6 +563,15 @@ jobs:
             fi
             sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
           done
+          if [[ -f supersession-reconciliation.json ]]; then
+            python - <<'PY'
+          import json
+          marker=json.load(open("supersession-reconciliation.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open("verify-current-block.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-current-block.json "$RUNTIME_FUNCTION" > current-block-verification.json
+            python tools/live_intelligence_reconcile.py verify-supersession --expected smart-note-expected.json --old-verify independent-lineage-verification.json --block-verify current-block-verification.json --marker supersession-reconciliation.json --out independent-lineage-verification.json
+          fi
           python - <<'PY'
           import json
           r=json.load(open("independent-lineage-verification.json"))
@@ -503,11 +588,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           try: expected=json.load(open("smart-note-expected.json"))
           except FileNotFoundError: expected=None
           if expected:
@@ -692,7 +781,11 @@ jobs:
             "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
           }
           json.dump(req,open(f"cold-verify-request-{i}.json","w"))
-          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open(f"cold-target-{i}.json","w"),indent=2)
+          target_ib=e["intelligent_block_id"]
+          marker_path=f"supersession-reconciliation-{i}.json"
+          if os.path.exists(marker_path):
+              target_ib=json.load(open(marker_path))["new_intelligent_block_id"]
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":target_ib},open(f"cold-target-{i}.json","w"),indent=2)
           PY
               attempt=1; max_attempts=5; backoff=5
               while [[ $attempt -le $max_attempts ]]; do
@@ -711,6 +804,16 @@ jobs:
                 fi
                 sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
               done
+              if [[ -f "supersession-reconciliation-$i.json" ]]; then
+                IDX="$i" python - <<'PY'
+          import json, os
+          i=os.environ["IDX"]
+          marker=json.load(open(f"supersession-reconciliation-{i}.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open(f"cold-current-block-request-{i}.json","w"))
+          PY
+                curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"cold-current-block-request-$i.json" "$RUNTIME_FUNCTION" > "cold-current-block-verification-$i.json"
+                python tools/live_intelligence_reconcile.py verify-supersession --expected "smart-note-expected-$i.json" --old-verify "cold-runtime-reread-$i.json" --block-verify "cold-current-block-verification-$i.json" --marker "supersession-reconciliation-$i.json" --out "cold-runtime-reread-$i.json"
+              fi
               IDX="$i" python - <<'PY'
           import hashlib, json, os
           i=os.environ["IDX"]
@@ -728,11 +831,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           block=persisted["block"]
           assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
           assert block["content"]["lesson"]==expected["expected_content"]
@@ -846,6 +953,7 @@ jobs:
           else
           python - <<'PY'
           import json
+          from pathlib import Path
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
           capture_path=open("capture-path.txt").read().strip()
           try:
@@ -897,7 +1005,10 @@ jobs:
             "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
           }
           json.dump(req,open("cold-verify-request.json","w"))
-          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
+          target_ib=e["intelligent_block_id"]
+          if Path("supersession-reconciliation.json").exists():
+              target_ib=json.load(open("supersession-reconciliation.json"))["new_intelligent_block_id"]
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":target_ib},open("cold-target.json","w"),indent=2)
           PY
           attempt=1; max_attempts=5; backoff=5
           while [[ $attempt -le $max_attempts ]]; do
@@ -919,6 +1030,15 @@ jobs:
             fi
             sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
           done
+          if [[ -f supersession-reconciliation.json ]]; then
+            python - <<'PY'
+          import json
+          marker=json.load(open("supersession-reconciliation.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open("cold-current-block-request.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @cold-current-block-request.json "$RUNTIME_FUNCTION" > cold-current-block-verification.json
+            python tools/live_intelligence_reconcile.py verify-supersession --expected smart-note-expected.json --old-verify cold-runtime-reread.json --block-verify cold-current-block-verification.json --marker supersession-reconciliation.json --out cold-runtime-reread.json
+          fi
           python - <<'PY'
           import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
@@ -941,11 +1061,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           block=persisted["block"]
           assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
           assert block["content"]["lesson"]==expected["expected_content"]
