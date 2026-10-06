@@ -240,14 +240,25 @@ def render(capture, verify, private_root=None, sn_id=None):
     else:
         p = projection_path(capture, ib, sn_id=sn_id)
     p.parent.mkdir(parents=True, exist_ok=True)
-    proof = {
-        "event_id": verify["persisted"]["event"]["id"],
-        "lineage_id": verify["persisted"]["lineage"]["id"],
-        "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
-        "index_id": verify["persisted"]["index"]["id"],
-        "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
-        "receipt_id": verify["persisted"]["receipt"]["id"],
-    }
+    if verify.get("supersession_proof"):
+        proof = {
+            "proof_type": "SUPERSESSION_RECONCILIATION",
+            "prior_lineage_preserved": True,
+            "prior_lineage": verify["supersession_proof"].get("prior_lineage", {}),
+            "prior_intelligent_block_id": verify["supersession_proof"].get("prior_intelligent_block_id"),
+            "current_intelligent_block_id": block["intelligent_block_id"],
+            "current_block_row_id": block["block_id"],
+            "content_hash": verify["supersession_proof"].get("content_hash"),
+        }
+    else:
+        proof = {
+            "event_id": verify["persisted"]["event"]["id"],
+            "lineage_id": verify["persisted"]["lineage"]["id"],
+            "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
+            "index_id": verify["persisted"]["index"]["id"],
+            "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
+            "receipt_id": verify["persisted"]["receipt"]["id"],
+        }
     lines = [
         "# " + capture["title"], "",
         "**Intelligent Block:** " + ib,
