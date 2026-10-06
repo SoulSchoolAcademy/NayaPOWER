@@ -47,6 +47,28 @@ def test_bind_always_uses_frozen_weights(tmp_path):
     }
 
 
+@pytest.mark.parametrize("key", [
+    "schema", "status", "arms", "minimum_trials_per_arm", "negative_transfer",
+    "scoring", "answer_key", "evidence_capture", "hypotheses",
+])
+def test_extras_cannot_override_generated_contract(tmp_path, key):
+    f = tmp_path / "fixture.md"
+    f.write_text("real fixture")
+    with pytest.raises(ValueError, match="GENERATED_CONTRACT_OVERRIDE:" + key):
+        build_manifest("builder", "verifier", [f], _hypotheses(), extras={key: {}})
+
+
+def test_extras_preserve_annotation_metadata(tmp_path):
+    f = tmp_path / "fixture.md"
+    f.write_text("real fixture")
+    manifest, result = bind_and_validate(
+        "builder", "verifier", [f], _hypotheses(), extras={"annotation": "review me"}
+    )
+    assert result.ok
+    assert manifest["annotation"] == "review me"
+    assert manifest["scoring"]["weights"] == FROZEN_WEIGHTS
+
+
 def test_bind_refuses_builder_self_validation(tmp_path):
     f1 = tmp_path / "s.md"
     f1.write_text("x")
