@@ -210,6 +210,23 @@ Deno.serve(async (req) => {
       });
     }
 
+    if (mode === "verify_block") {
+      const blockId = String(body.intelligent_block_id ?? "");
+      if (!blockId) return json({ok:false,error:"INTELLIGENT_BLOCK_ID_REQUIRED"},400);
+      const block = await read(admin, blockId, "nayanet_intelligent_blocks", "owner_id");
+      return json({
+        ok: Boolean(block),
+        status: block ? "BLOCK_VERIFIED" : "BLOCK_NOT_FOUND",
+        independent_verification: true,
+        runtime_identity: "naya-node-oidc",
+        naya_id: NAYA_ID,
+        owner_id: OWNER_ID,
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+        persisted: {block},
+      }, block ? 200 : 404);
+    }
+
     if (mode === "verify") {
       const receiptId = String(body.receipt_id ?? "");
       const eventId = String(body.event_id ?? "");
