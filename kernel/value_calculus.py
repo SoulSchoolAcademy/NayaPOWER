@@ -20,10 +20,6 @@ QUALITY_DIMENSIONS = (
     "reversibility",
     "blast_containment",
     "simplicity",
-    "mission_value",
-    "urgency",
-    "leverage",
-    "compounding_continuity",
 )
 DEFAULT_QUALITY_PRIORITIES = {
     "objective_fit": 0.20,
@@ -33,10 +29,6 @@ DEFAULT_QUALITY_PRIORITIES = {
     "reversibility": 0.10,
     "blast_containment": 0.10,
     "simplicity": 0.10,
-    "mission_value": 0.18,
-    "urgency": 0.10,
-    "leverage": 0.10,
-    "compounding_continuity": 0.10,
 }
 
 PROHIBITED = "PROHIBITED"

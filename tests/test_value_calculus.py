@@ -16,6 +16,8 @@ from kernel.value_calculus import (
     NEEDS_EVIDENCE,
     PROHIBITED,
     Candidate,
+    ACTION_DIMENSIONS,
+    QUALITY_DIMENSIONS,
     OperationRequest,
     PVEstimate,
     QualityProfile,
@@ -77,6 +79,16 @@ def cand(cid, *, baseline=False, B=8, score=9.5, conf=0.95, **kwargs):
         cid, q, c, pv(B=B, conf=conf), authorized=True, reversible=True,
         human_authorized=False, is_baseline=baseline, **hard, **kwargs
     )
+
+
+def test_next_best_action_dimensions_do_not_mutate_core_decision_quality():
+    # Mission value / urgency / leverage / continuity are priority-ranking
+    # dimensions in the NBA overlay. The ratified V2.1 quality contract keeps
+    # Q about decision soundness; moving NBA dimensions into Q changes gating
+    # semantics and makes established fully-evidenced candidates look missing.
+    for dimension in ("mission_value", "urgency", "leverage", "compounding_continuity"):
+        assert dimension in ACTION_DIMENSIONS
+        assert dimension not in QUALITY_DIMENSIONS
 
 
 def test_q_is_pure_decision_quality_not_value(profile):
