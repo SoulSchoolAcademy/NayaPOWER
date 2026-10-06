@@ -64,6 +64,10 @@ def quality(score=9.5, conf=0.95, **overrides):
         "reversibility": score,
         "blast_containment": score,
         "simplicity": score,
+        "mission_value": score,
+        "urgency": score,
+        "leverage": score,
+        "compounding_continuity": score,
     }
     dims.update(overrides)
     return dims, {k: conf for k in dims}
