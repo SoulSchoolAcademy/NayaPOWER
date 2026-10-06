@@ -1491,7 +1491,18 @@
       "note": "Applied 2026-10-05 via Management API (Naya 2, authorized by Shawn); verified in schema_migrations."
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20261006001500",
+      "name": "reconcile_intelligence_commit_event_replay_v1",
+      "path": "supabase/migrations/20261006001500_reconcile_intelligence_commit_event_replay_v1.sql",
+      "sha256": "a514d294cfc0e0367c9705208c47e0c734eb88cd44d155c0b84617e8f1fb1448",
+      "statement_count": 3,
+      "bytes": 16231,
+      "status": "PENDING_PRODUCTION_APPLY",
+      "reason": "Exact EVENT_ID_REPLAY idempotency repair; production application is a governed DB migration step."
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {
