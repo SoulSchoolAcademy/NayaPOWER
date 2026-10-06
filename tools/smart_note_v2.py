@@ -379,6 +379,20 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
 # entries without the field behave exactly as before.
 TRUTH_STATE_RANK = {"RATIFIED": 2, "VERIFIED": 1}
 
+def _nutshell_text(projection_path):
+    """Return a note's IN A NUTSHELL lesson text for retrieval matching.
+
+    Unreadable projection files yield '' during matching so one broken path
+    cannot poison ranking for the whole corpus. (The winner's explanation
+    read below stays strict: a broken winning path surfaces loudly.)
+    """
+    try:
+        note = (ROOT / str(projection_path)).read_text(encoding="utf-8")
+    except (OSError, TypeError):
+        return ""
+    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    return m.group(1).strip() if m else ""
+
 def retrieve(query):
     registry = load_json(REGISTRY)
     q = set(re.findall(r"[a-z0-9]+", query.lower()))
@@ -388,6 +402,13 @@ def retrieve(query):
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
         hay = " ".join([e.get("title",""),e.get("category",""),e.get("topic",""),e.get("subtopic","")," ".join(e.get("keywords",[]))]).lower()
+        # Lesson-content matching (retrieval track, 2026-10-06): capture stamps
+        # every note with the same generic keywords, so the metadata haystack
+        # cannot distinguish lessons. Content-word queries ("declaring intent
+        # before acting") retrieved wrong notes. Include each note's own
+        # distilled lesson (NUTSHELL) in the haystack. Ranking order is
+        # unchanged: keyword score first, truth-state rank second, recency last.
+        hay += " " + _nutshell_text(e.get("projection_path", "")).lower()
         score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
         # Truth-state rank: when keyword relevance ties, prefer the higher
         # authority. Score stays primary — a highly relevant CANDIDATE still

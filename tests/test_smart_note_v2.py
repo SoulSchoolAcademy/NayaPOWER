@@ -725,3 +725,37 @@ def test_retrieve_missing_truth_state_is_neutral(tmp_path, monkeypatch):
     result = mod.retrieve("nonstop loop")
     # tie on score and rank -> newest captured_at wins (legacy behavior)
     assert result["retrieved"]["smart_note_id"] == "SN-A"
+
+
+def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch):
+    """Content-word queries hit the note whose LESSON matches, not metadata.
+
+    Regression: capture stamps every note with identical generic keywords,
+    so the metadata-only haystack retrieved wrong notes for content-word
+    queries (e.g. 'declaring intent before acting' -> SN-042 instead of the
+    Captain Protocol note that teaches exactly that). The NUTSHELL lesson
+    text is part of the haystack.
+    """
+    (tmp_path / "captain.md").write_text(
+        "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required",
+        encoding="utf-8")
+    (tmp_path / "other.md").write_text(
+        "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration",
+        encoding="utf-8")
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({"entries": [
+        {"smart_note_id": "SN-CAP", "intelligent_block_id": "IB-CAP",
+         "title": "The Captain Protocol", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["smart note", "capture", "intelligent block"],
+         "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "captain.md"},
+        {"smart_note_id": "SN-OTH", "intelligent_block_id": "IB-OTH",
+         "title": "Some Other Note", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["smart note", "capture", "intelligent block"],
+         "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
+    ]}), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("declaring intent before acting")
+    assert result["retrieved"]["smart_note_id"] == "SN-CAP"
