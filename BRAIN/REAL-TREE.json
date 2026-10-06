@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 223,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 20,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -159,9 +159,39 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0011-RUNTIME-GOVERNANCE-RICO-V1.ai.md",
+      "blob_sha": "107ccd4d30eef7a7db51b63b4203e5ec26aa6530",
+      "size": 4850
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0011-RUNTIME-GOVERNANCE-RICO-V1.human.md",
+      "blob_sha": "37b77fc1c4af68565bef509d5dcc7308f79a8f0c",
+      "size": 2857
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0011-runtime-governance-rico-v1.machine.json",
+      "blob_sha": "ab6eb98ff3e3f5bb101da46baca0d9cf092d50f1",
+      "size": 2551
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0012-PROBLEM-OWNERSHIP-V1.ai.md",
+      "blob_sha": "254998ad1dfd9805ff91ca3b3e8136625f5826c3",
+      "size": 5601
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0012-PROBLEM-OWNERSHIP-V1.human.md",
+      "blob_sha": "114958fc0f7710de9fcb268a33fc77063aeb1d56",
+      "size": 3130
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0012-problem-ownership-v1.machine.json",
+      "blob_sha": "389f6b09ac9ebc6b98a6ff4613e35bdbb047dec1",
+      "size": 2568
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
-      "size": 1673
+      "blob_sha": "f0bebde9729e893b50eb03973890532f50f416d5",
+      "size": 2328
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
