@@ -21,7 +21,13 @@ def test_cvo_runtime_derives_action_and_outcome_from_persisted_receipts():
     assert "nayanet_execution_outcomes" in source
     assert "NAYA-NODE-0001-COLD-BEHAVIOR" in source
     assert "TREATMENT_OUTCOME_EVIDENCE_INVALID" in source
-    assert "causal.evidence?.treatment?.evidence?.provenance_present" in source
+    # The verifier narrows persisted JSONB into causalEvidence before reading it.
+    # Asserting on the untyped `causal.evidence?...` spelling would re-freeze an
+    # untyped read; assert the narrowed accessors instead.
+    assert "causalEvidence.treatment?.evidence?.provenance_present === true" in source
+    assert "causalEvidence.control?.evidence?.provenance_present === false" in source
+    assert "causalEvidence.treatment?.outcome_id === treatmentOutcome.outcome_id" in source
+    assert "causalEvidence.control?.outcome_id === controlOutcome.outcome_id" in source
     assert "comparison_receipt_id" in source
     assert "NAYA-NODE-0001-TREATMENT" in source
     assert "NAYA-NODE-0001-BASELINE" in source

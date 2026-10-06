@@ -219,7 +219,11 @@ function buildIntelligentBlock(args:{
     },
     metadata:{
       transport_version:"NAYANET_INTELLIGENT_BLOCK_V1",
-      source_idempotency_key:args.idempotencyKey
+      source_idempotency_key:args.idempotencyKey,
+      // Declared so the projection fields added by the caller below are part of the
+      // contract rather than an untyped widening of a closed literal type.
+      projection_category:null as string|null,
+      projection_topic:null as string|null
     }
   };
 }
@@ -237,7 +241,7 @@ Deno.serve(async(req)=>{
   const body=await req.json(),human=body?.human_note,naya=body?.naya_note,idempotencyKey=body?.idempotency_key||req.headers.get("x-idempotency-key");
   if(!idempotencyKey||typeof idempotencyKey!=="string")return json({ok:false,error:"SMART_NOTE_IDEMPOTENCY_KEY_REQUIRED"},400);
   if(!human||!naya)return json({ok:false,error:"HUMAN_AND_NAYA_NOTES_REQUIRED"},400);
-   const now=new Date().toISOString();let eventId=crypto.randomUUID();canonicalEventId=eventId;
+   const now=new Date().toISOString();let eventId:string=crypto.randomUUID();canonicalEventId=eventId;
 
   const canonicalHuman={...human,event_id:eventId};
   const canonicalNaya={...naya,event_id:eventId};
@@ -274,8 +278,12 @@ Deno.serve(async(req)=>{
      const persistedHuman=normalizedText(data?.human_note?.text??data?.human_note?.content);
      const persistedNaya=normalizedText(data?.naya_note?.text??data?.naya_note?.content??data?.naya_note?.summary);
      const persistedSubject=normalizedText(data?.human_note?.subject||data?.intelligent_block?.meaning?.subject);
-     if(persistedHuman!==normalizedText(humanText)||persistedNaya!==normalizedText(nayaText)||persistedSubject!==normalizedText(subject))throw new Error("SMART_NOTE_IDEMPOTENCY_CONFLICT");
-     eventId=persistedEventId;
+      if(persistedHuman!==normalizedText(humanText)||persistedNaya!==normalizedText(nayaText)||persistedSubject!==normalizedText(subject))throw new Error("SMART_NOTE_IDEMPOTENCY_CONFLICT");
+      // The replayed canonical event id must still be a well-formed UUID before it
+      // becomes this request's event identity; an empty-but-nonempty or malformed
+      // persisted value would otherwise propagate into the canonical receipt.
+      if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(persistedEventId))throw new Error("SMART_NOTE_CANONICAL_EVENT_ID_MALFORMED");
+      eventId=persistedEventId;
    }
    canonicalEventId=eventId;
    const persistedBlock:any=data?.intelligent_block||{};

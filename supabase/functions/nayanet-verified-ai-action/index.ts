@@ -267,7 +267,7 @@ Deno.serve(async (req) => {
           owner_id: OWNER_ID,
         },
         learning: ["Authorized action is distinct from capability. Authority is resolved from the durable grant before any governed effect."],
-      });
+      }, idempotencyKey);
 
       if (idempotentReplay) {
         const persistedFingerprint = String(((receipt.evidence ?? {}) as Json).idempotency_request_fingerprint ?? "");
