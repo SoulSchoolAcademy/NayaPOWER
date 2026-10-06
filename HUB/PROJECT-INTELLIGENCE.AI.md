@@ -90,3 +90,18 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 3. **Escalate with options + recommendation,** never bare questions.
 4. Protected gates are Shawn's word only: merges, production deploys, ratification, destructive changes, privacy/consent/security/authority changes.
 5. **Bring better ideas.** The spec is the floor. If you see a wiser, more powerful, more extraordinary approach — table it on #554 with reasoning. The scorecard decides, not taste. If you can beat the concept's look, do it — and prove it scores.
+
+## 10. COLOR PROMINENCE + VISUAL BLISS (Shawn's law, 2026-10-01)
+
+**Prominence hierarchy — weight, not just order:**
+- **Dominant:** purple, black, white. The brand voice, the material, the ink. Purple leads; black grounds; white reads.
+- **Complementary:** the rest of the spectrum. Room accents and semantic energy serve the experience; they never lead it.
+- **Restrained:** yellow and gold. Never for text. Never dominant over purple/white/black. Small accents and semantic moments only — never fields, never type. A room that owns yellow/gold still reads purple/black/white first.
+
+**The Visual Bliss Law:** it is not about the colors — it is about presentation. Contrast, clarity, cleanliness, the best user experience. Rules:
+- Contrast is king. If a user squints, you failed, no matter what the system does.
+- Bigger text. Most people cannot see small type. Nothing important in micro-type.
+- Clean over clever. Every pixel earns trust or leaves.
+- You build for the human receiving it, not the coder shipping it. The interface should feel like visual bliss — calm, luminous, obvious.
+
+**LAW ZERO — READABILITY SUPREMACY (outranks everything below, including the spectrum and the depth equation):** no glow, no accent, no depth effect is ever allowed to make anything harder to read. When beauty and readability conflict, readability wins — no exceptions. Generous text by default: most people can't see small print. The full North Star is `HUB/DESIGN-NORTH-STAR.md` — read it before you design anything.

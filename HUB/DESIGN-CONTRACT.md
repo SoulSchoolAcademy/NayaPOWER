@@ -179,6 +179,20 @@ UI rule: layers must feel like **nested intelligence**, not repeated sections. E
 
 ## PART 2 — THE DESIGN LANGUAGE (EXTRACTED FROM THE LIVE FILE, NOT INVENTED)
 
+> The full director statement lives in `HUB/DESIGN-NORTH-STAR.md` — read it first. Everything below serves it.
+
+### 2.0 LAW ZERO — READABILITY SUPREMACY (DIRECTOR-DECREED 2026-10-01, the top law)
+
+**No glow, no accent, no depth effect is ever allowed to make anything harder to read.**
+
+This law outranks the Spectrum Law (§2.4), the Living Depth Law (§2.5), and every recipe in this document. When beauty and readability conflict, readability wins — every time, no exceptions, no clever workarounds. A jewel that obscures its own inscription is a failed jewel.
+
+- **Generous text by default.** Most people can't see small print — coders always forget that part. Body text runs larger than builder instinct suggests. Nothing important lives in micro-type.
+- **Contrast is never negotiable.** Glow, halo, and ambient effects serve the object; the moment they touch legibility, they are removed or repositioned — never the text that is dimmed.
+- **Depth is felt, not read through.** Shadows, bevels, and specular highlights give objects physical presence; they never sit between the eye and the words.
+
+*Why this is Law Zero:* the North Star says the human should feel "I know where I am. I know what matters. I understand what this means." None of that survives an unreadable screen. Visual bliss is not a style — it is the experience of never having to struggle to see.
+
 ### 2.1 Design tokens (the actual `:root` block, verbatim)
 
 ```css
@@ -287,6 +301,27 @@ Semantic energy map (color carries meaning, never decoration):
 | 🩷 Magenta | human significance / expression |
 
 **Constraint (preserved from the old discipline):** spectrum accents must be semantically justified. Never flat decorative background fills. Never overpower primary reading content. Primary text stays high-contrast white/light neutral.
+
+### 2.4b Color Prominence Hierarchy (DIRECTOR-RESOLVED 2026-10-01)
+
+Shawn's explicit word on how the spectrum is *weighted*, not just ordered:
+
+- **Dominant — purple, black, white.** These are the brand, the foundation, the reading experience. Purple is the primary voice; black is the material; white is the ink.
+- **Complementary — the rest of the spectrum.** Room accents, semantic energy, jewel detail. They serve the experience; they never lead it.
+- **Restrained — yellow and gold.** Shawn's least favorite, stated plainly: never used for text, never dominant over purple/white/black, never the loudest thing on screen. They exist in the wheel (Ledger owns yellow as attention/signal; gold marks value/consequence) but they whisper — small accents, semantic moments, never fields, never type.
+
+A room may own yellow or gold as its accent and still obey this: the accent lives in glows, edges, and markers — the room itself still reads purple/black/white first.
+
+### 2.4c The Visual Bliss Law (DIRECTOR-STATED 2026-10-01)
+
+> "It's not about the colors. It's about how it presents. The contrast. How clear it is. How clean it is. The best user experience."
+
+Every visual decision serves the person looking at the screen — not the coder who built it:
+
+- **Contrast is king.** Text must be effortlessly readable in every state. If a user has to squint, the design failed — no matter how beautiful the system behind it.
+- **Bigger text.** Most people can't see small type. Body text runs larger than coder instinct suggests; nothing important lives in micro-type.
+- **Clean over clever.** Clarity first, decoration never. Every pixel earns trust or it leaves.
+- **Presentation is the product.** Coders optimize for the build; Naya optimizes for the human receiving it. The interface should feel like visual bliss — calm, luminous, obvious.
 
 ### 2.5 The Living Depth Law (frozen)
 
