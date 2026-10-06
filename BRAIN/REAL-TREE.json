@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 223,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 20,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -159,9 +159,39 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0006-COMPOUNDING-INTELLIGENCE-V1.ai.md",
+      "blob_sha": "7b9f950005ac6ecc282ddeafe2f29fb9e7e1d653",
+      "size": 7370
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-COMPOUNDING-INTELLIGENCE-V1.human.md",
+      "blob_sha": "e8dfcac89bc902a8d3591fc72bb01aa8645ffffd",
+      "size": 4151
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0006-compounding-intelligence-v1.machine.json",
+      "blob_sha": "43985cb241ca62110a972d8274df3d3fba7681d4",
+      "size": 8867
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-CONTINUITY-RESTORE-V1.ai.md",
+      "blob_sha": "8ba9720d5cb8a011ea3f2f8a6681adbffd112b5e",
+      "size": 8052
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-CONTINUITY-RESTORE-V1.human.md",
+      "blob_sha": "02bdea1b7efbec8a450057d235ff7e8408432b52",
+      "size": 3354
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-continuity-restore-v1.machine.json",
+      "blob_sha": "eda941fc33a90707ee35c4ebc4f380558df71560",
+      "size": 7824
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
-      "size": 1673
+      "blob_sha": "237c0c9cd9f9d4149a264be22bb07ac4531a4123",
+      "size": 2424
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
