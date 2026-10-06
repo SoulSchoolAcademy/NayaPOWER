@@ -14,8 +14,10 @@ Trial schema (dict):
   consistent: bool, transcript_path: str (non-empty)
 
 Verdict:
-  FAIL when any negative-transfer trial is wrong (hard gate), or when a
-  required arm is missing/void.
+  FAIL when any negative-transfer trial is wrong (hard gate), evidence is
+  void/duplicated, any arm has fewer than five trials, or fewer than five
+  negative-transfer trials exist. Transcript paths must resolve to readable,
+  nonempty files relative to the current working directory.
   INCONCLUSIVE when control >= treatment accuracy (ceiling/adjacent
   knowledge, F3 class) or treatment wins without citation majority and
   without beating WRONG_LESSON (attribution failure, F2 class).
@@ -28,6 +30,7 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Sequence
 
 from tools.round2_manifest_bind import FROZEN_WEIGHTS
@@ -46,10 +49,13 @@ class TrialVerdict:
 
 def _validate_trial(trial: dict[str, Any]) -> str | None:
     """Return an error string when the trial is VOID, else None."""
+    if not isinstance(trial, dict):
+        return "VOID:trial must be an object"
     if trial.get("arm") not in ARMS:
         return "VOID:unknown arm"
     for key in (
         "trial_id",
+        "negative_transfer",
         "verdict_correct",
         "cited_lesson",
         "diagnostic_order",
@@ -59,25 +65,50 @@ def _validate_trial(trial: dict[str, Any]) -> str | None:
     ):
         if key not in trial:
             return f"VOID:missing {key}"
+    if not isinstance(trial["trial_id"], str) or not trial["trial_id"].strip():
+        return "VOID:trial_id must be a nonempty string"
+    for key in ("verdict_correct", "cited_lesson", "consistent", "negative_transfer"):
+        if type(trial[key]) is not bool:
+            return f"VOID:{key} must be a boolean"
     order = trial["diagnostic_order"]
-    if not isinstance(order, (int, float)) or not 0.0 <= float(order) <= 1.0:
+    if type(order) not in (int, float) or not 0.0 <= order <= 1.0:
         return "VOID:diagnostic_order outside 0..1"
     count = trial["tool_call_count"]
-    if not isinstance(count, int) or count < 0:
+    if type(count) is not int or count < 0:
         return "VOID:tool_call_count must be an exact non-negative int"
-    if not str(trial["transcript_path"]).strip():
+    transcript = trial["transcript_path"]
+    if not isinstance(transcript, str) or not transcript.strip():
         return "VOID:transcript_path empty (summaries do not count)"
+    try:
+        path = Path(transcript)
+        if not path.is_file() or not path.read_bytes().strip():
+            return "VOID:transcript must be a readable nonempty file"
+    except (OSError, ValueError):
+        return "VOID:transcript must be a readable nonempty file"
     return None
 
 
 def score_trials(trials: Sequence[dict[str, Any]]) -> TrialVerdict:
-    """Score executed trials. Pure function; raises ValueError on no valid trials."""
+    """Score trials with local transcript checks; raises ValueError on no valid trials.
+
+    File presence is necessary, not proof of transcript authenticity, answer-key
+    correctness, fixture binding or accurate reported tool counts. Independent
+    recomputation remains required before making a learning claim.
+    """
     valid: list[dict[str, Any]] = []
     voided: list[str] = []
+    seen_ids: set[str] = set()
     for trial in trials:
         error = _validate_trial(trial)
+        if not error:
+            trial_id = trial["trial_id"].strip()
+            if trial_id in seen_ids:
+                error = "VOID:duplicate trial_id"
+            else:
+                seen_ids.add(trial_id)
         if error:
-            voided.append(f"{trial.get('trial_id', '?')}:{error}")
+            trial_id = trial.get("trial_id", "?") if isinstance(trial, dict) else "?"
+            voided.append(f"{trial_id}:{error}")
         else:
             valid.append(trial)
     if not valid:
@@ -112,6 +143,23 @@ def score_trials(trials: Sequence[dict[str, Any]]) -> TrialVerdict:
         return TrialVerdict(
             verdict="FAIL",
             reasons=tuple(reasons + [f"MISSING_ARM:{','.join(missing)}"]),
+            arm_scores={},
+            arm_accuracy={},
+            cost_ratio_treatment_vs_control=None,
+        )
+
+    # The executed battery must satisfy the same minimums as preregistration.
+    # Invalid evidence is a failed gate, never a silently excluded observation.
+    underpowered = [arm for arm in ARMS if len(by_arm[arm]) < 5]
+    if underpowered:
+        reasons.append("MINIMUM_FIVE_TRIALS_PER_ARM:" + ",".join(underpowered))
+    nt_count = sum(t["negative_transfer"] for t in valid)
+    if nt_count < 5:
+        reasons.append("MINIMUM_FIVE_NEGATIVE_TRANSFER_TRIALS")
+    if voided or underpowered or nt_count < 5:
+        return TrialVerdict(
+            verdict="FAIL",
+            reasons=tuple(reasons),
             arm_scores={},
             arm_accuracy={},
             cost_ratio_treatment_vs_control=None,
