@@ -1496,9 +1496,9 @@
       "version": "20261006001500",
       "name": "reconcile_intelligence_commit_event_replay_v1",
       "path": "supabase/migrations/20261006001500_reconcile_intelligence_commit_event_replay_v1.sql",
-      "sha256": "959558e0b44c46566e315c8c948a98637eb580434d7d096e0c26e22cec143647",
+      "sha256": "60247cacb23b33ac3081a15802752a978ac44b1ed0ea434837b23d4a13f40864",
       "statement_count": 3,
-      "bytes": 16213,
+      "bytes": 16214,
       "status": "PENDING_PRODUCTION_APPLY",
       "reason": "Exact EVENT_ID_REPLAY idempotency repair; production application is a governed DB migration step."
     }
