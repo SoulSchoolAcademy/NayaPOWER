@@ -217,7 +217,7 @@ def test_update_registry_rejects_injected_colliding_reserved_id(tmp_path):
 def test_sequence_policy_advances_after_sn002():
     reg, maxn = _max_allocated_sn_number()
     assert reg["sequence_policy"]["next_sequence"] == maxn + 1
-    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:04d}"
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
 
 
 def test_projection_workflow_publishes_active_verified_public_projection():
@@ -240,7 +240,7 @@ def test_projection_workflow_stages_brain_projection_and_registry():
 def test_sequence_policy_advances_past_sn003():
     reg, maxn = _max_allocated_sn_number()
     assert reg["sequence_policy"]["next_sequence"] == maxn + 1
-    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:04d}"
+    assert mod.allocate_smart_note_id({"source": {"captured_at": "2026-09-29"}}, "IB-NEW") == f"SN-{maxn + 1:03d}"
 
 
 def test_live_intelligence_proof_is_capture_triggered_not_arbitrary_main_push():
@@ -687,7 +687,7 @@ def test_projection_path_advisory_fallback_unchanged(tmp_path):
     m = _problem_b_fresh_module(tmp_path)
     cap = _race_capture("IB-PROJ-ADV")
     p = m.projection_path(cap, "IB-PROJ-ADV")
-    assert "/SN-0001/" in str(p).replace("\\", "/")
+    assert "/SN-001/" in str(p).replace("\\", "/")
 
 
 # --- Correction lifecycle: superseded intelligence remains provenance, not active retrieval ---
