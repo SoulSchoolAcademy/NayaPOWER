@@ -13,6 +13,10 @@
     {
       "path": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json",
       "reason": "Law-schema v1 projection (execution_schema/predicates/scorecard_check; no DIRECTOR-RATIFIED phase envelope with schema/phases/invariants). Envelope conformance owned by the authoring lane (PR #1651, law 0013). Pin here only if it adopts the ratified envelope -- same precedent as the 0003 exclusion. Recorded by the drive loop 2026-10-06; revisit on conformance."
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
+      "reason": "Predicate-style law spec (formal predicates, no phase structure); pin here only if it adopts the ratified phase envelope -- same precedent as the 0003 exclusion. Recorded 2026-10-06 with Law 0014 forge (no ratified content touched)."
     }
   ],
   "note": "Pins are git blob SHAs of the ratified projections as they existed on live main at establishment. Any deliberate spec change must update the pins in the same (reviewed) PR. A pin mismatch is spec drift until proven otherwise. This manifest is a drift detector anchored at a known-good point, not a re-proof of the original ratification.",
