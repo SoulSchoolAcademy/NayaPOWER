@@ -660,3 +660,84 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
     assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
     assert result["explanation"] == "active answer"
+
+
+def test_explicit_migration_supersedes_prior_registry_block_without_erasing_history(tmp_path, monkeypatch):
+    capture = _private_sn004_capture()
+    capture["smart_note_id"] = "SN-099"
+    capture["capture_id"] = "20261005-sn099-r2"
+    capture["source"]["previous_capture_id"] = "20261005-sn099-r1"
+    old_ib = "IB-SMART-NOTE-20261005-sn099-r1"
+    new_ib = "IB-SMART-NOTE-20261005-sn099-r2"
+    registry_path = tmp_path / "index.json"
+    registry_path.write_text(json.dumps({
+        "entries": [{
+            "smart_note_id": "SN-099",
+            "intelligent_block_id": old_ib,
+            "content_hash": "historical-hash",
+            "lifecycle_state": "ACTIVE",
+            "projection_path": "BRAIN/old.md",
+        }],
+        "sequence_policy": {"next_sequence": 100},
+    }), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", registry_path)
+    monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
+    verify = _verify_for_lesson({"essence": "migrated"}, new_ib)
+    projection = tmp_path / "BRAIN" / "new.md"
+    mod.update_registry(capture, verify, projection, sn_id="SN-099")
+    reg = json.loads(registry_path.read_text(encoding="utf-8"))
+    same_id = [e for e in reg["entries"] if e.get("smart_note_id") == "SN-099"]
+    assert len(same_id) == 2
+    historical = next(e for e in same_id if e["intelligent_block_id"] == old_ib)
+    successor = next(e for e in same_id if e["intelligent_block_id"] == new_ib)
+    assert historical["lifecycle_state"] == "SUPERSEDED"
+    assert historical["superseded_by_capture_id"] == capture["capture_id"]
+    assert old_ib in successor["supersedes_intelligent_block_ids"]
+    assert successor["lifecycle_state"] == "ACTIVE"
+    assert successor["capture_id"] == capture["capture_id"]
+
+
+def test_registry_audit_allows_only_valid_superseded_historical_stale_hash(tmp_path):
+    cap_dir = tmp_path / ".naya" / "capture"
+    cap_dir.mkdir(parents=True)
+    brain = tmp_path / "BRAIN"
+    brain.mkdir()
+    intelligence = {"essence": "successor"}
+    capture = {
+        "capture_id": "cap-r2",
+        "smart_note_id": "SN-099",
+        "intelligence": intelligence,
+    }
+    (cap_dir / "SMART-NOTE-r2.json").write_text(json.dumps(capture), encoding="utf-8")
+    current_hash = mod._canonical_content_hash(json.dumps(
+        intelligence, sort_keys=True, separators=(",", ":"), ensure_ascii=False))
+    registry_path = tmp_path / "index.json"
+    registry_path.write_text(json.dumps({"entries": [
+        {
+            "smart_note_id": "SN-099",
+            "intelligent_block_id": "IB-R1",
+            "content_hash": "historical-hash",
+            "lifecycle_state": "SUPERSEDED",
+            "superseded_by_capture_id": "cap-r2",
+        },
+        {
+            "smart_note_id": "SN-099",
+            "capture_id": "cap-r2",
+            "intelligent_block_id": "IB-R2",
+            "content_hash": current_hash,
+            "lifecycle_state": "ACTIVE",
+        },
+    ]}), encoding="utf-8")
+    report = mod.audit_registry(
+        root=tmp_path, registry_path=registry_path,
+        capture_dir=cap_dir, brain_root=brain)
+    assert report["counts"]["entries_with_stale_hash"] == 0
+
+    broken = json.loads(registry_path.read_text(encoding="utf-8"))
+    broken["entries"][0]["superseded_by_capture_id"] = "missing-successor"
+    registry_path.write_text(json.dumps(broken), encoding="utf-8")
+    report = mod.audit_registry(
+        root=tmp_path, registry_path=registry_path,
+        capture_dir=cap_dir, brain_root=brain)
+    assert report["counts"]["entries_with_stale_hash"] == 1
