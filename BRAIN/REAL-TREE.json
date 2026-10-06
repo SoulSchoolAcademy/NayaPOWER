@@ -1,12 +1,12 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 229,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
-    "02-ARCHITECTURE": 5,
+    "01-GOVERNANCE": 17,
+    "02-ARCHITECTURE": 11,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
     "05-MEMORY": 60,
@@ -14,7 +14,7 @@
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 7,
+    "10-INTERFACES": 10,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 24,
     "90-OPERATIONS": 11,
@@ -159,9 +159,24 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0009-WISDOM-THESIS-V1.ai.md",
+      "blob_sha": "0d18625c3e724fe21fc136729a47a5ed588d7f35",
+      "size": 5835
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0009-WISDOM-THESIS-V1.human.md",
+      "blob_sha": "4e3fa9fc0521731980d91b7ed4ee2e4762c484c8",
+      "size": 5290
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0009-wisdom-thesis-v1.machine.json",
+      "blob_sha": "fab8b579185a5870c10595cbe3ec132e9809ae84",
+      "size": 5703
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
-      "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
-      "size": 1673
+      "blob_sha": "17dd2fec4ec5d9ce5b5f711c94d578d18774b379",
+      "size": 2125
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
@@ -189,9 +204,39 @@
       "size": 2339
     },
     {
+      "path": "BRAIN/02-ARCHITECTURE/0004-DEEP-SYSTEM-MODEL-V1.ai.md",
+      "blob_sha": "fcd3bc764f32be07826eda9c443f5e720a8a767a",
+      "size": 6806
+    },
+    {
+      "path": "BRAIN/02-ARCHITECTURE/0004-DEEP-SYSTEM-MODEL-V1.human.md",
+      "blob_sha": "6a136ef5d3fe764c521598eaf79fc69ba8b87449",
+      "size": 5956
+    },
+    {
+      "path": "BRAIN/02-ARCHITECTURE/0004-deep-system-model-v1.machine.json",
+      "blob_sha": "4afff30b9b57b7a326d1809db0dd5c848118c27b",
+      "size": 7263
+    },
+    {
+      "path": "BRAIN/02-ARCHITECTURE/0005-PROVENANCE-CHAIN-EXTENSION-V1.ai.md",
+      "blob_sha": "f0fec6ab03856d7503c91f5f6bbf4b2e8ff02382",
+      "size": 4190
+    },
+    {
+      "path": "BRAIN/02-ARCHITECTURE/0005-PROVENANCE-CHAIN-EXTENSION-V1.human.md",
+      "blob_sha": "e15fd2b0b850fc184dee73da60aaceb7f69c44e9",
+      "size": 4059
+    },
+    {
+      "path": "BRAIN/02-ARCHITECTURE/0005-provenance-chain-extension-v1.machine.json",
+      "blob_sha": "ec6835a47c3cfbdae91b2ac415b9034af87cbbb2",
+      "size": 3423
+    },
+    {
       "path": "BRAIN/02-ARCHITECTURE/README.md",
-      "blob_sha": "bcb20728e0977d5a69f9261e52e5e006ff9cee24",
-      "size": 1030
+      "blob_sha": "164e3d19ce4d2d2037238c5fcad78342c234a5ad",
+      "size": 1689
     },
     {
       "path": "BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md",
@@ -859,9 +904,24 @@
       "size": 5118
     },
     {
+      "path": "BRAIN/10-INTERFACES/0004-INTELLIGENCE-IDENTITY-TRUST-PROTOCOL-V1.ai.md",
+      "blob_sha": "3b2852ccf6a205dfba2922ee91e6f443a934dbde",
+      "size": 5825
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/0004-INTELLIGENCE-IDENTITY-TRUST-PROTOCOL-V1.human.md",
+      "blob_sha": "34177461ddb6149b8ea967c85f4334408aed6508",
+      "size": 5372
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/0004-intelligence-identity-trust-protocol-v1.machine.json",
+      "blob_sha": "2a02a7c5f228d2bfdbad19b7dc9977c31da1e5d2",
+      "size": 4972
+    },
+    {
       "path": "BRAIN/10-INTERFACES/README.md",
-      "blob_sha": "7093bf121d662cb6f8e88a0952e814a96dcb7cba",
-      "size": 1226
+      "blob_sha": "e2ceb86f47b59e1db9d269bc9b3aac9c2f3a72f6",
+      "size": 1922
     },
     {
       "path": "BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3",

@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-06  
-**Receipt basis commit:** `62d1994f88d82ed4c061717b03d734fe36954e25`  
-**Inventory file count:** 217  
+**Receipt basis commit:** `aa88ea777b153202f29f85fcaf826e4079237e67`  
+**Inventory file count:** 229  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,8 +11,8 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 14 |
-| 02-ARCHITECTURE | 5 |
+| 01-GOVERNANCE | 17 |
+| 02-ARCHITECTURE | 11 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
 | 05-MEMORY | 60 |
@@ -20,7 +20,7 @@
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
-| 10-INTERFACES | 7 |
+| 10-INTERFACES | 10 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 24 |
 | 90-OPERATIONS | 11 |
@@ -60,7 +60,10 @@
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
 - `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
-- `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
+- `BRAIN/01-GOVERNANCE/0009-WISDOM-THESIS-V1.ai.md` — `0d18625c3e72` (5835 bytes)
+- `BRAIN/01-GOVERNANCE/0009-WISDOM-THESIS-V1.human.md` — `4e3fa9fc0521` (5290 bytes)
+- `BRAIN/01-GOVERNANCE/0009-wisdom-thesis-v1.machine.json` — `fab8b579185a` (5703 bytes)
+- `BRAIN/01-GOVERNANCE/README.md` — `17dd2fec4ec5` (2125 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
 ### 02-ARCHITECTURE — Architecture
 
@@ -68,7 +71,13 @@
 - `BRAIN/02-ARCHITECTURE/0002-DEPENDENCY-ORDER-V1.md` — `c4394b152549` (296 bytes)
 - `BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.json` — `abccfeaa4dc8` (2041 bytes)
 - `BRAIN/02-ARCHITECTURE/0003-NINE-NODE-ORGANISM-MAP-V1.md` — `dc8f7fbdbb4a` (2339 bytes)
-- `BRAIN/02-ARCHITECTURE/README.md` — `bcb20728e097` (1030 bytes)
+- `BRAIN/02-ARCHITECTURE/0004-DEEP-SYSTEM-MODEL-V1.ai.md` — `fcd3bc764f32` (6806 bytes)
+- `BRAIN/02-ARCHITECTURE/0004-DEEP-SYSTEM-MODEL-V1.human.md` — `6a136ef5d3fe` (5956 bytes)
+- `BRAIN/02-ARCHITECTURE/0004-deep-system-model-v1.machine.json` — `4afff30b9b57` (7263 bytes)
+- `BRAIN/02-ARCHITECTURE/0005-PROVENANCE-CHAIN-EXTENSION-V1.ai.md` — `f0fec6ab0385` (4190 bytes)
+- `BRAIN/02-ARCHITECTURE/0005-PROVENANCE-CHAIN-EXTENSION-V1.human.md` — `e15fd2b0b850` (4059 bytes)
+- `BRAIN/02-ARCHITECTURE/0005-provenance-chain-extension-v1.machine.json` — `ec6835a47c3c` (3423 bytes)
+- `BRAIN/02-ARCHITECTURE/README.md` — `164e3d19ce4d` (1689 bytes)
 ### 03-KERNEL — Kernel
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
@@ -218,7 +227,10 @@
 - `BRAIN/10-INTERFACES/0001-SMART-DOOR-CONTRACT-V1.md` — `f7c31dc624eb` (1092 bytes)
 - `BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json` — `ec4123eea3df` (8959 bytes)
 - `BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md` — `c549ed2f71ee` (5118 bytes)
-- `BRAIN/10-INTERFACES/README.md` — `7093bf121d66` (1226 bytes)
+- `BRAIN/10-INTERFACES/0004-INTELLIGENCE-IDENTITY-TRUST-PROTOCOL-V1.ai.md` — `3b2852ccf6a2` (5825 bytes)
+- `BRAIN/10-INTERFACES/0004-INTELLIGENCE-IDENTITY-TRUST-PROTOCOL-V1.human.md` — `34177461ddb6` (5372 bytes)
+- `BRAIN/10-INTERFACES/0004-intelligence-identity-trust-protocol-v1.machine.json` — `2a02a7c5f228` (4972 bytes)
+- `BRAIN/10-INTERFACES/README.md` — `e2ceb86f47b5` (1922 bytes)
 - `BRAIN/10-INTERFACES/naya-voice-sample-v1.mp3` — `569dd0afe7c2` (33837 bytes)
 ### 11-KNOWLEDGE — Knowledge
 
