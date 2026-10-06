@@ -1539,6 +1539,15 @@
       "statement_count": 2,
       "bytes": 2770,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261006134800",
+      "name": "evolve_ownership_check_v1",
+      "path": "supabase/migrations/20261006134800_evolve_ownership_check_v1.sql",
+      "sha256": "bad1f59908e43d93a8a62e5f963edac2e5eaf899c7d0ce7cb72bcee27a6b5a58",
+      "statement_count": 4,
+      "bytes": 7739,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
