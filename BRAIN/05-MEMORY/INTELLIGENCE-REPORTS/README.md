@@ -130,6 +130,7 @@ Those are historical evidence, not competing current homes. Do not delete histor
 
 ## 10. Current canonical report
 
+- [2026-10-05 — IB-DIR-NAYAPOWER-20261005-001](./DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md)
 - [2026-10-01 — IB-DIR-NAYAPOWER-20261001-001](./DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md)
 
 ## 11. Automation target
