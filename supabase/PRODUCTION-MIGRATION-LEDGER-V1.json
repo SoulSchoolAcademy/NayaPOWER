@@ -1465,7 +1465,7 @@
    "name": "disconnect_stop_future_v1",
    "path": "supabase/migrations/20261001030000_disconnect_stop_future_v1.sql",
    "sha256": "7a2b0d0dbaf7e092f5be94a0bd126fe04d581e294fdc2e99f0183332b9ada679",
-   "statement_count": 19,
+   "statement_count": 3,
    "bytes": 3265,
    "status": "PRODUCTION_APPLIED",
    "note": "Applied 2026-10-05 via Management API (Naya 2, authorized by Shawn); verified in schema_migrations."
