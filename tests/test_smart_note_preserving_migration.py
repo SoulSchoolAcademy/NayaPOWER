@@ -85,3 +85,40 @@ def test_migrate_receipt_is_machine_readable_and_lists_changes():
     assert receipt["changed_paths"] == ["title"]
     assert receipt["added_paths"] == ["metadata.added"]
     assert receipt["removed_paths"] == []
+
+
+def test_migration_cli_is_the_canonical_preservation_path(tmp_path, monkeypatch):
+    existing_path = tmp_path / "existing.json"
+    patch_path = tmp_path / "patch.json"
+    out_path = tmp_path / "migrated.json"
+    receipt_path = tmp_path / "receipt.json"
+
+    existing_path.write_text(
+        __import__("json").dumps({
+            "schema": "naya.smart-note-capture.v1",
+            "intelligence": {
+                "essence": "original",
+                "provenance": {"source": "conversation"},
+                "successor": {"continuity_key": "cold-1"},
+            },
+            "future_field": {"keep": True},
+        }),
+        encoding="utf-8",
+    )
+    patch_path.write_text(
+        __import__("json").dumps({
+            "schema": "naya.smart-note-capture.v2",
+            "intelligence": {"essence": "updated"},
+        }),
+        encoding="utf-8",
+    )
+
+    result = mod.migrate_capture_file(existing_path, patch_path, out_path, receipt_path)
+
+    assert result["receipt"]["schema"] == "naya.smart-note-migration-receipt.v1"
+    document = __import__("json").loads(out_path.read_text(encoding="utf-8"))
+    receipt = __import__("json").loads(receipt_path.read_text(encoding="utf-8"))
+    assert document["intelligence"]["provenance"] == {"source": "conversation"}
+    assert document["intelligence"]["successor"] == {"continuity_key": "cold-1"}
+    assert document["future_field"] == {"keep": True}
+    assert receipt["removed_paths"] == []
