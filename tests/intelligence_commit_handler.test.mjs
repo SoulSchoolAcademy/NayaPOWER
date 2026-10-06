@@ -7,6 +7,10 @@ import {
   CapabilityValidationError,
   validateCapabilities,
 } from '../supabase/functions/nayanet-intelligence-commit-runtime/capability-vocabulary.ts';
+import {
+  TaskClassValidationError,
+  validateTaskClasses,
+} from '../supabase/functions/nayanet-intelligence-commit-runtime/task-class-vocabulary.ts';
 
 // Execute the real handler offline. Only external services and the Deno host
 // are substituted; authentication decisions and RPC serialization remain real.
@@ -24,8 +28,9 @@ function runtime({ payload = claims, rpcStatus = 200 } = {}) {
   vm.runInNewContext(code, {
     URL, Request, Response,
     // The handler's import lines are stripped for offline execution; the real
-    // vocabulary module is injected so capability validation stays real.
+    // vocabulary modules are injected so validation stays real.
     validateCapabilities, CapabilityValidationError,
+    validateTaskClasses, TaskClassValidationError,
     Deno: {
       env: { get: key => ({ SUPABASE_URL: 'https://offline.invalid', SUPABASE_SERVICE_ROLE_KEY: 'fake-server-key' })[key] },
       serve: callback => { handler = callback; },
@@ -51,7 +56,7 @@ test('execute carries lesson fields and authenticated token ID across the RPC bo
   assert.equal((await response.json()).result.receipt_id, 'test-receipt');
   assert.equal(r.calls.length, 1);
   const { mode, p_runtime_jti, p_owner_id, p_naya_id, ...fields } = lesson;
-  assert.deepEqual(r.calls[0].body, { ...fields, p_connections: null, p_capabilities: null, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001' });
+  assert.deepEqual(r.calls[0].body, { ...fields, p_connections: null, p_capabilities: null, p_declared_task_classes: null, p_runtime_jti: claims.jti, p_owner_id: 'adfdf0b8-5558-41d1-9fed-ec51abf4fe2f', p_naya_id: 'NAYA-NODE-0001' });
   assert.equal(r.calls[0].url, 'https://offline.invalid/rest/v1/rpc/nayanet_intelligence_commit_runtime');
 });
 
