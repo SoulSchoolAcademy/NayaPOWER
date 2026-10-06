@@ -346,7 +346,7 @@ Record:
 - **Machine room registry:** `../NAYANET-SMART-APP-ROOMS-V1.json`
 - **Design constitution:** `../NAYA-DESIGN-MASTERCLASS-V1.md`
 - **Visual authority:** `../DESIGN-CONTRACT.md`
-- **Coordination:** GitHub Issue **#554**
+- **Coordination:** GitHub Issue **#1354**
 - **Graduation contract:** GitHub Issue **#1310**
 
 > **Final room command:** Do not make this room merely attractive. Make its human purpose obvious, its intelligence useful, its state truthful, its interactions elegant, and its presence unmistakably Naya.
