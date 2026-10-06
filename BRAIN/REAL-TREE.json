@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-06",
-  "receipt_basis_commit": "514ab42d1704e596680aff72963492e733cc3d5a",
+  "generated_at": "2026-10-05",
+  "receipt_basis_commit": "613133b60b302963736ecb9bf2da006662873023",
   "inventory_file_count": 213,
   "domain_counts": {
     "00-SPEC": 15,
@@ -705,8 +705,8 @@
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
-      "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
-      "size": 4124
+      "blob_sha": "b6d3ec378a19de8379c4849fc7e16383598f301f",
+      "size": 836
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
