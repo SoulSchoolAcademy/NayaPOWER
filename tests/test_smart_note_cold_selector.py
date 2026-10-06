@@ -72,6 +72,12 @@ def test_independent_verification_reread_has_json_validated_retry():
         assert 'not valid JSON' in block
         assert 'sleep $backoff' in block
         assert 'curl exit=' in block
+        assert 'http_code' in block
+        assert 'FRESH_LESSON_HTTP_' in block
+        assert 'FRESH_LESSON_NONRETRYABLE_HTTP_' in block
+        assert 'NON_MACHINE_ERROR' in block
+        assert '408' in block and '429' in block
+        assert 'curl -fsS' not in block
         assert 'exit 1' in block
 
 
