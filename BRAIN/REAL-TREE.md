@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-06  
-**Receipt basis commit:** `62d1994f88d82ed4c061717b03d734fe36954e25`  
-**Inventory file count:** 217  
+**Receipt basis commit:** `aa88ea777b153202f29f85fcaf826e4079237e67`  
+**Inventory file count:** 223  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 14 |
+| 01-GOVERNANCE | 20 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
@@ -60,7 +60,13 @@
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
 - `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
-- `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
+- `BRAIN/01-GOVERNANCE/0006-COMPOUNDING-INTELLIGENCE-V1.ai.md` — `7b9f950005ac` (7370 bytes)
+- `BRAIN/01-GOVERNANCE/0006-COMPOUNDING-INTELLIGENCE-V1.human.md` — `e8dfcac89bc9` (4151 bytes)
+- `BRAIN/01-GOVERNANCE/0006-compounding-intelligence-v1.machine.json` — `43985cb241ca` (8867 bytes)
+- `BRAIN/01-GOVERNANCE/0007-CONTINUITY-RESTORE-V1.ai.md` — `8ba9720d5cb8` (8052 bytes)
+- `BRAIN/01-GOVERNANCE/0007-CONTINUITY-RESTORE-V1.human.md` — `02bdea1b7efb` (3354 bytes)
+- `BRAIN/01-GOVERNANCE/0007-continuity-restore-v1.machine.json` — `eda941fc33a9` (7824 bytes)
+- `BRAIN/01-GOVERNANCE/README.md` — `237c0c9cd9f9` (2424 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
 ### 02-ARCHITECTURE — Architecture
 
