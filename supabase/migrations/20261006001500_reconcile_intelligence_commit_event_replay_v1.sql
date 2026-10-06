@@ -234,5 +234,5 @@ begin
 end;
 $function$;
 
-revoke all on function public.nayanet_intelligence_commit(text,text,text,text,text,text,uuid,text,jsonb,text[])
+revoke all on function public.nayanet_intelligence_commit(text,text,text,text,text,text,uuid,text,jsonb,text[]);
 grant execute on function public.nayanet_intelligence_commit(text,text,text,text,text,text,uuid,text,jsonb,text[]) to authenticated;
