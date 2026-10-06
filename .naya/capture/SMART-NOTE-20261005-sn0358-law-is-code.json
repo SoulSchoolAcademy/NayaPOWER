@@ -14,7 +14,17 @@
     "captured_at_utc": "2026-10-05T23:15:00Z",
     "previous_capture_id": "20261005-sn0358-law-is-code",
     "recovery_reason": "R2 recovery after PR #1530 deleted this capture during a v1→v2 schema repair, incorrectly classifying it as a duplicate of SN-0357. Forensic analysis confirmed SN-0358 is a distinct ratified law (the LAW IS CODE operational manifesto), not a duplicate. Stable human Smart Note identity remains SN-0358; distilled intelligence is unchanged. Migrated to canonical v2 capture contract.",
-    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA"
+    "recovery_truth_state": "RATIFIED_BY_HUMAN_DIRECTOR_MIGRATED_TO_V2_SCHEMA",
+    "restoration_provenance": {
+      "status": "RESTORED_AFTER_UNLICENSED_DELETION",
+      "deleted_in": [
+        "a2f103f4f",
+        "a2f103f4ff335005222a542b5d83b040584020f8"
+      ],
+      "recovered_from": "git history via PR #1554 (v2 migration of original v1 capture)",
+      "restored_at": "2026-10-06T00:08:58Z",
+      "restored_by": "Naya 2 (subagent) per Shawn Vibert directive"
+    }
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
@@ -148,7 +158,9 @@
       }
     ],
     "uncertainty": "The law is ratified and immutable, but the combination function weights, action thresholds, and tie-breaking rules flagged as refinement_needed are not yet finalized. The law's authority does not depend on those refinements.",
-    "applicability": "All Naya seats, all lanes, all decisions. Immutable."
+    "applicability": "All Naya seats, all lanes, all decisions. Immutable.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "If Naya seats consistently require Shawn to direct routine work despite this law, or if the 10-dimension scoring produces decisions that contradict the mission, the law's operationalization is insufficient and needs the formal Next-Best-Action engine."
   },
   "lifecycle_state": "ACTIVE"
 }
