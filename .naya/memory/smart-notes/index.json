@@ -1359,6 +1359,44 @@
       }
     },
     {
+      "smart_note_id": "SN-0361",
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis",
+      "content_hash": "5f322bfb2979b234d1af0e6077e040371571fcac830d2c0a91e7e4fe184706a4",
+      "title": "The Recovery Thesis — NayaPOWER Was Designed, Not Invented",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "ARCHIVE_RECOVERY",
+      "subtopic": "NAYAPOWER_DESIGN_RECOVERY",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "a890b97a-44c9-40de-b17c-757bb19ca956",
+        "lineage_id": "9eef1037-21d9-4093-8b54-4324c274b93d",
+        "relationship_id": "53dedcb4-ff84-40ca-bd07-b6aeca1f892b",
+        "runtime_index_id": "3b3f495f-abe5-4b38-8726-758a04771140",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "785caea8-92ae-44c4-93b9-6b46c5636ab0"
+      }
+    },
+    {
       "smart_note_id": "SN-0399",
       "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence",
       "title": "Self-Directed Intelligence Under Governance (the operating code)",
