@@ -8,7 +8,8 @@ enough to run without quietly changing the answer key after seeing outcomes.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import isclose
+from math import isclose, isfinite
+import re
 from typing import Any
 
 REQUIRED_ARMS = {"CONTROL", "TREATMENT", "WRONG_LESSON"}
@@ -22,6 +23,8 @@ class ContractResult:
 
 
 def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
+    if not isinstance(manifest, dict):
+        return ContractResult(ok=False, errors=("MANIFEST_MUST_BE_OBJECT",))
     errors: list[str] = []
 
     if manifest.get("schema") != "NAYAPOWER_LEARNING_COMPOUNDING_EXPERIMENT_V2":
@@ -35,12 +38,14 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
     if not isinstance(arms, list):
         errors.append("ARMS_REQUIRED")
         arms = []
-    arm_names = {str(a.get("name")) for a in arms if isinstance(a, dict)}
-    if arm_names != REQUIRED_ARMS:
+    arm_names = [a.get("name") if isinstance(a, dict) else None for a in arms]
+    if (len(arm_names) != len(REQUIRED_ARMS)
+            or any(not isinstance(name, str) for name in arm_names)
+            or set(arm_names) != REQUIRED_ARMS):
         errors.append("EXACT_ABC_ARMS_REQUIRED")
 
     min_trials = manifest.get("minimum_trials_per_arm")
-    if not isinstance(min_trials, int) or min_trials < 5:
+    if type(min_trials) is not int or min_trials < 5:
         errors.append("MINIMUM_FIVE_TRIALS_PER_ARM")
 
     negative_transfer = manifest.get("negative_transfer")
@@ -50,7 +55,7 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
         if negative_transfer.get("required") is not True:
             errors.append("NEGATIVE_TRANSFER_MUST_BE_REQUIRED")
         nt_trials = negative_transfer.get("minimum_trials")
-        if not isinstance(nt_trials, int) or nt_trials < 5:
+        if type(nt_trials) is not int or nt_trials < 5:
             errors.append("MINIMUM_FIVE_NEGATIVE_TRANSFER_TRIALS")
 
     scoring = manifest.get("scoring")
@@ -61,12 +66,15 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
         if not isinstance(weights, dict) or set(weights) != REQUIRED_WEIGHTS:
             errors.append("SCORING_WEIGHTS_INCOMPLETE")
         else:
-            try:
-                total = sum(float(weights[k]) for k in REQUIRED_WEIGHTS)
-            except (TypeError, ValueError):
+            values = [weights[k] for k in REQUIRED_WEIGHTS]
+            if any(type(v) not in (int, float) for v in values):
                 errors.append("SCORING_WEIGHTS_NON_NUMERIC")
             else:
-                if not isclose(total, 1.0, rel_tol=0.0, abs_tol=1e-9):
+                # Range checks also reject NaN/Infinity and avoid converting
+                # unbounded integers to floats before they can be rejected.
+                if any(not 0 <= v <= 1 or not isfinite(v) for v in values):
+                    errors.append("SCORING_WEIGHTS_MUST_BE_FINITE_NONNEGATIVE")
+                elif not isclose(sum(values), 1.0, rel_tol=0.0, abs_tol=1e-9):
                     errors.append("SCORING_WEIGHTS_MUST_SUM_TO_ONE")
         if scoring.get("negative_transfer_is_hard_gate") is not True:
             errors.append("NEGATIVE_TRANSFER_HARD_GATE_REQUIRED")
@@ -77,8 +85,10 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
     else:
         if answer_key.get("prevalidated_before_trials") is not True:
             errors.append("ANSWER_KEY_PREVALIDATION_REQUIRED")
-        builder = str(answer_key.get("builder", "")).strip()
-        verifier = str(answer_key.get("independent_verifier", "")).strip()
+        builder_value = answer_key.get("builder")
+        verifier_value = answer_key.get("independent_verifier")
+        builder = builder_value.strip() if isinstance(builder_value, str) else ""
+        verifier = verifier_value.strip() if isinstance(verifier_value, str) else ""
         if not builder or not verifier:
             errors.append("BUILDER_AND_VERIFIER_REQUIRED")
         elif builder == verifier:
@@ -86,7 +96,8 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
         fixture_shas = answer_key.get("fixture_shas")
         if not isinstance(fixture_shas, list) or not fixture_shas:
             errors.append("FIXTURE_SHAS_REQUIRED")
-        elif any(not isinstance(x, str) or len(x) != 40 for x in fixture_shas):
+        elif any(not isinstance(x, str) or re.fullmatch(r"[0-9a-fA-F]{40}", x) is None
+                 for x in fixture_shas):
             errors.append("FIXTURE_SHA_MUST_BE_40_HEX")
 
     evidence = manifest.get("evidence_capture")
@@ -101,7 +112,9 @@ def validate_round2_manifest(manifest: dict[str, Any]) -> ContractResult:
             errors.append("IMMUTABLE_FIXTURE_BINDING_REQUIRED")
 
     hypotheses = manifest.get("hypotheses")
-    if not isinstance(hypotheses, list) or len(hypotheses) < 4:
+    if (not isinstance(hypotheses, list) or len(hypotheses) < 4
+            or any(not isinstance(h, str) or not h.strip() for h in hypotheses)
+            or len({h.strip() for h in hypotheses}) < 4):
         errors.append("FOUR_HYPOTHESES_REQUIRED")
 
     # Pre-registration is invalid if it already contains observed outcomes.
