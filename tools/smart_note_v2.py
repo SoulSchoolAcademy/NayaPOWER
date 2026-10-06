@@ -982,6 +982,7 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
         "registry_projection_paths_absent": [],
         "published_pages_without_registry_entry": [],
         "duplicate_published_page_paths": [],
+        "truth_state_semantic_poison": [],
     }
 
     registry = load_json(registry_p) if registry_p.exists() else {"entries": []}
@@ -1003,9 +1004,46 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
                 continue
             capture_by_hash[hash_of(data)] = p.name
 
+    # Two ratified entries predate the promotion-receipt writer. They are
+    # grandfathered by exact canonical ID + durable provenance only; this is
+    # intentionally closed, not a general bypass for future direct edits.
+    legacy_ratified_ids = {"SN-016", "SN-NET-POWER-MAGIC-001"}
+
     entry_hashes = {}
     for e in entries:
         sn = e.get("smart_note_id") or e.get("intelligent_block_id") or "<unknown>"
+        state = str(e.get("truth_state") or "CANDIDATE").upper()
+        if state not in {"CANDIDATE", "TESTING", "VERIFIED", "RATIFIED", "ACTIVE", "LEARNED"}:
+            defects["truth_state_semantic_poison"].append({
+                "smart_note_id": sn, "reason": "UNKNOWN_TRUTH_STATE", "truth_state": state,
+            })
+        elif state in {"VERIFIED", "RATIFIED", "ACTIVE", "LEARNED"}:
+            receipt = e.get("promotion_receipt")
+            legacy_ok = (
+                state == "RATIFIED"
+                and sn in legacy_ratified_ids
+                and isinstance(e.get("provenance"), dict)
+                and bool(e.get("provenance"))
+            )
+            receipt_ok = (
+                isinstance(receipt, dict)
+                and bool(str(receipt.get("promoter") or "").strip())
+                and bool(str(receipt.get("receipt_hash") or "").strip())
+            )
+            if not (legacy_ok or receipt_ok):
+                defects["truth_state_semantic_poison"].append({
+                    "smart_note_id": sn,
+                    "reason": "ELEVATED_WITHOUT_PROMOTION_EVIDENCE",
+                    "truth_state": state,
+                })
+            if state == "LEARNED":
+                behavioral = e.get("behavioral_evidence")
+                if not isinstance(behavioral, list) or not behavioral:
+                    defects["truth_state_semantic_poison"].append({
+                        "smart_note_id": sn,
+                        "reason": "LEARNED_WITHOUT_BEHAVIORAL_EVIDENCE",
+                        "truth_state": state,
+                    })
         h = e.get("content_hash")
         if not h:
             defects["entries_without_hash"].append(sn)
