@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "6a71771f52aca1850215e423c3d83748eadcc217",
-  "inventory_file_count": 225,
+  "receipt_basis_commit": "fc8cf75c7682988e8be194a865811de3c88b0895",
+  "inventory_file_count": 228,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 18,
+    "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -172,6 +172,21 @@
       "path": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json",
       "blob_sha": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
       "size": 2592
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.ai.md",
+      "blob_sha": "91dbed78f64c1f36b7b0e3959e437897b81a09df",
+      "size": 4744
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.human.md",
+      "blob_sha": "866ef064a64df1483f901d59ef4c16ca86a9d133",
+      "size": 4122
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
+      "blob_sha": "9d9d1fe2937d4ee3bcb6c7c9ebcbae6e884dc290",
+      "size": 3087
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
