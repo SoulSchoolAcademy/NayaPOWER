@@ -97,13 +97,34 @@ const deriveCapabilities=(block:ProveBlock):string[]=>{
   return structured.length?structured:boundedLegacyCapabilities(block);
 };
 
-const stableJson=(value:any):string=>{
+export const stableJson=(value:any):string=>{
   if(Array.isArray(value)) return "["+value.map(stableJson).join(",")+"]";
   if(value && typeof value==="object"){
     return "{"+Object.keys(value).sort().map(k=>JSON.stringify(k)+":"+stableJson(value[k])).join(",")+"}";
   }
   return JSON.stringify(value);
 };
+
+// Independent verification seam: does a freshly recomputed assessment match the one
+// persisted on the PROVE receipt? Kept here (not inline in the edge handler) so it is
+// executable in CI. An inline-only comparison shipped green in CI while throwing a
+// ReferenceError at runtime, because the handler was never executed.
+export function sameAssessment(recorded:any,recomputed:ProveAssessment):boolean{
+  const r=recorded??{};
+  return r.schema===recomputed.schema &&
+    r.state===recomputed.state &&
+    r.claim===recomputed.claim &&
+    r.epistemic_state===recomputed.epistemic_state &&
+    r.claim_strength===recomputed.claim_strength &&
+    r.evidence_strength===recomputed.evidence_strength &&
+    stableJson(r.evidence??[])===stableJson(recomputed.evidence??[]) &&
+    stableJson(r.provenance_chain??[])===stableJson(recomputed.provenance_chain??[]) &&
+    stableJson(r.conflicts??[])===stableJson(recomputed.conflicts??[]) &&
+    (r.selected_block_id??null)===(recomputed.selected_block_id??null) &&
+    (r.failure_reason??null)===(recomputed.failure_reason??null) &&
+    (r.handoff_to??null)===(recomputed.handoff_to??null) &&
+    r.proof_creates_authority===false;
+}
 
 function blocked(
   receipt:ProveKnowReceipt|null,

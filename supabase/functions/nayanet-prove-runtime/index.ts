@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { assessKnowProof, type ProveKnowReceipt, type ProveBlock, type ProveGrant, type ProveRelationship } from "./prove.ts";
+import { assessKnowProof, sameAssessment, type ProveKnowReceipt, type ProveBlock, type ProveGrant, type ProveRelationship } from "./prove.ts";
 
 const ISSUER="https://token.actions.githubusercontent.com";
 const AUDIENCE="nayanet-runtime";
@@ -138,20 +138,7 @@ Deno.serve(async(req)=>{
       const assessTime=proveReceipt.created_at?new Date(proveReceipt.created_at):new Date();
       const recomputed=assessKnowProof(OWNER_ID,NAYA_ID,knowReceipt,block,grant,relationships,assessTime);
       const recorded=proveReceipt.evidence?.assessment??{};
-      const same=
-        recorded.schema===recomputed.schema &&
-        recorded.state===recomputed.state &&
-        recorded.claim===recomputed.claim &&
-        recorded.epistemic_state===recomputed.epistemic_state &&
-        recorded.claim_strength===recomputed.claim_strength &&
-        recorded.evidence_strength===recomputed.evidence_strength &&
-        stableJson(recorded.evidence??[])===stableJson(recomputed.evidence??[]) &&
-        stableJson(recorded.provenance_chain??[])===stableJson(recomputed.provenance_chain??[]) &&
-        stableJson(recorded.conflicts??[])===stableJson(recomputed.conflicts??[]) &&
-        (recorded.selected_block_id??null)===(recomputed.selected_block_id??null) &&
-        (recorded.failure_reason??null)===(recomputed.failure_reason??null) &&
-        (recorded.handoff_to??null)===(recomputed.handoff_to??null) &&
-        recorded.proof_creates_authority===false;
+      const same=sameAssessment(recorded,recomputed);
 
       return json({
         ok:same,

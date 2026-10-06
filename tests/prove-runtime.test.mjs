@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { assessKnowProof } from "../supabase/functions/nayanet-prove-runtime/prove.ts";
+import { assessKnowProof, sameAssessment } from "../supabase/functions/nayanet-prove-runtime/prove.ts";
 
 const OWNER="adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const NAYA="NAYA-NODE-0001";
@@ -130,13 +130,57 @@ test("runtime persists PROVE assessments in existing execution receipt ledger an
 
 
 test("PROVE independent verifier compares persisted JSONB semantically, not object key order",()=>{
-  const source=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/index.ts",import.meta.url),"utf8");
-  assert.match(source,/stableJson\(recorded\.evidence\?\?\[\]\)===stableJson\(recomputed\.evidence\?\?\[\]\)/);
-  assert.match(source,/stableJson\(recorded\.provenance_chain\?\?\[\]\)===stableJson\(recomputed\.provenance_chain\?\?\[\]\)/);
-  assert.match(source,/stableJson\(recorded\.conflicts\?\?\[\]\)===stableJson\(recomputed\.conflicts\?\?\[\]\)/);
-  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.evidence/);
-  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.provenance_chain/);
-  assert.doesNotMatch(source,/JSON\.stringify\(recorded\.conflicts/);
+  // EXECUTED, not grepped. The previous version of this test only regex-matched
+  // index.ts source text, so it stayed green while the inspect handler threw a
+  // ReferenceError at runtime (live-prove-proof run 37384065800, HTTP 400).
+  const assessment=assessKnowProof(OWNER,NAYA,knowReceipt(),block(),grant(),[],NOW);
+  // JSON round-trip with reordered keys, exactly like persisted JSONB reads back.
+  const reordered=JSON.parse(JSON.stringify({
+    conflicts:assessment.conflicts,
+    provenance_chain:assessment.provenance_chain.reverse(),
+    evidence:assessment.evidence,
+    failure_reason:assessment.failure_reason,
+    handoff_to:assessment.handoff_to,
+    selected_block_id:assessment.selected_block_id,
+    proof_creates_authority:assessment.proof_creates_authority,
+    evidence_strength:assessment.evidence_strength,
+    claim_strength:assessment.claim_strength,
+    epistemic_state:assessment.epistemic_state,
+    claim:assessment.claim,
+    state:assessment.state,
+    schema:assessment.schema
+  }));
+  assert.equal(sameAssessment(reordered,assessment),true);
+
+  // Same-shape key order must NOT mask a real content difference.
+  assert.equal(sameAssessment({...reordered,epistemic_state:"UNVERIFIED"},assessment),false);
+  assert.equal(sameAssessment({...reordered,evidence:[{evidence_id:"forged"}]},assessment),false);
+  assert.equal(sameAssessment({...reordered,proof_creates_authority:true},assessment),false);
+  // A recorded assessment that claims authority is never a match.
+  assert.equal(sameAssessment({...reordered,proof_creates_authority:true},assessment),false);
+});
+
+test("PROVE runtime handler imports every symbol it calls (no undefined-identifier 400s)",()=>{
+  // Regression guard for the shipped defect: index.ts called stableJson() in the
+  // inspect path without importing it. A ReferenceError there is caught by the outer
+  // handler and returned as HTTP 400, indistinguishable from a real client error.
+  const indexSource=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/index.ts",import.meta.url),"utf8");
+  const proveSource=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/prove.ts",import.meta.url),"utf8");
+
+  const importLine=indexSource.match(/^import\s*\{([^}]*)\}\s*from\s*"\.\/prove\.ts";/m);
+  assert.ok(importLine,"index.ts must import from ./prove.ts");
+  const importedNames=importLine[1].split(",").map(s=>s.trim()).filter(Boolean)
+    .map(s=>s.replace(/^type\s+/,"").split(/\s+as\s+/)[0].trim());
+
+  // Every identifier index.ts calls that is defined in prove.ts must be imported.
+  const proveExports=[...proveSource.matchAll(/^export\s+(?:const|function|type)\s+([A-Za-z_$][\w$]*)/gm)].map(m=>m[1]);
+  const calledNames=new Set([...indexSource.matchAll(/(?<![.\w$])([A-Za-z_$][\w$]*)\s*\(/g)].map(m=>m[1]));
+  const undeclared=proveExports.filter(name=>calledNames.has(name)&&!importedNames.includes(name));
+  assert.deepEqual(undeclared,[],`index.ts calls prove.ts symbol(s) it never imports: ${undeclared.join(", ")}`);
+
+  // stableJson and the comparison seam must be exported so tests can execute them.
+  assert.match(proveSource,/export const stableJson/);
+  assert.match(proveSource,/export function sameAssessment/);
 });
 
 test("PROVE inspect recomputes as-of assess time, not wall-clock now (KNOW freshness time-bomb)",()=>{
@@ -162,4 +206,23 @@ test("PROVE inspect recomputes as-of assess time, not wall-clock now (KNOW fresh
 test("runtime inspect mode derives recompute time from the PROVE receipt, not wall-clock",()=>{
   const source=readFileSync(new URL("../supabase/functions/nayanet-prove-runtime/index.ts",import.meta.url),"utf8");
   assert.match(source,/proveReceipt\.created_at\?new Date\(proveReceipt\.created_at\):new Date\(\)/);
+});
+
+test("PROVE inspect survives a JSONB round-trip of a SUPPORTED assessment (the shipped 400)",()=>{
+  // Reproduces live-prove-proof run 37384065800: assess persisted a receipt, then the
+  // independent verifier's inspect call returned HTTP 400 because stableJson was not
+  // imported into index.ts. End-to-end through the real comparison seam, this must hold.
+  const assessment=assessKnowProof(OWNER,NAYA,knowReceipt(),block(),grant(),[],NOW);
+  assert.equal(assessment.epistemic_state,"SUPPORTED");
+  const persisted=JSON.parse(JSON.stringify({schema:"naya.prove.receipt.v1",assessment}));
+  assert.equal(sameAssessment(persisted.evidence?.assessment??persisted.assessment,assessment),true);
+
+  // And the negative/non-promotion path the same run also inspects.
+  const negativeReceipt=knowReceipt();
+  negativeReceipt.evidence.result={...negativeReceipt.evidence.result,status:"MISS",selected_block_id:null,
+    selected_epistemic_state:null,selected_provenance:null,selected_evidence_refs:[],applicable:false,
+    reason:"NO_ELIGIBLE_APPLICABLE_INTELLIGENCE"};
+  const negative=assessKnowProof(OWNER,NAYA,negativeReceipt,null,grant(),[],NOW);
+  assert.equal(negative.epistemic_state,"UNVERIFIED");
+  assert.equal(sameAssessment(JSON.parse(JSON.stringify(negative)),negative),true);
 });
