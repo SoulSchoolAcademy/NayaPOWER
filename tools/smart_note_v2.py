@@ -14,6 +14,137 @@ def slug(s):
 def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
+class PreservationMigrationError(ValueError):
+    """Raised when a Smart Note migration would destroy governed state."""
+
+
+PROTECTED_MIGRATION_SEGMENTS = {
+    "provenance", "restoration_provenance", "ratification", "falsifier",
+    "falsification", "measurement", "measurement_contract", "successor",
+    "successor_effect",
+}
+
+
+def _path_exists(document, path):
+    current = document
+    for part in path.split("."):
+        if not isinstance(current, dict) or part not in current:
+            return False
+        current = current[part]
+    return True
+
+
+def _path_get(document, path):
+    current = document
+    for part in path.split("."):
+        current = current[part]
+    return current
+
+
+def _path_delete(document, path):
+    parts = path.split(".")
+    current = document
+    for part in parts[:-1]:
+        current = current[part]
+    del current[parts[-1]]
+
+
+def _deep_merge_preserving_unknown(existing, patch):
+    """Merge declared patch values while retaining unknown keys recursively."""
+    import copy
+    if not isinstance(existing, dict) or not isinstance(patch, dict):
+        return copy.deepcopy(patch)
+    merged = copy.deepcopy(existing)
+    for key, value in patch.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge_preserving_unknown(merged[key], value)
+        else:
+            merged[key] = copy.deepcopy(value)
+    return merged
+
+
+def _flatten_paths(value, prefix=""):
+    """Return deterministic leaf paths for migration receipts."""
+    if not isinstance(value, dict):
+        return {prefix} if prefix else set()
+    paths = set()
+    for key, child in value.items():
+        path = f"{prefix}.{key}" if prefix else str(key)
+        if isinstance(child, dict):
+            paths.update(_flatten_paths(child, path) or {path})
+        else:
+            paths.add(path)
+    return paths
+
+
+def _protected_migration_path(path):
+    return any(part.lower() in PROTECTED_MIGRATION_SEGMENTS for part in path.split("."))
+
+
+def migrate_preserving_fields(existing_capture, patch, explicit_removals=None):
+    """Apply a monotonic Smart Note migration without dropping unknown fields."""
+    if not isinstance(existing_capture, dict) or not isinstance(patch, dict):
+        raise PreservationMigrationError("CAPTURE_AND_PATCH_MUST_BE_OBJECTS")
+    removals = list(explicit_removals or [])
+    document = _deep_merge_preserving_unknown(existing_capture, patch)
+
+    for item in removals:
+        if not isinstance(item, dict):
+            raise PreservationMigrationError("REMOVAL_MANIFEST_ENTRY_INVALID")
+        path = str(item.get("path") or "").strip()
+        reason = str(item.get("reason") or "").strip()
+        authority = str(item.get("authority") or "").strip()
+        if not path or not reason or not authority:
+            raise PreservationMigrationError("EXPLICIT_REMOVAL_REQUIRES_PATH_REASON_AUTHORITY")
+        if _protected_migration_path(path):
+            raise PreservationMigrationError(f"PROTECTED_FIELD_REMOVAL:{path}")
+        if not _path_exists(document, path):
+            raise PreservationMigrationError(f"REMOVAL_TARGET_NOT_FOUND:{path}")
+        _path_delete(document, path)
+
+    before = _flatten_paths(existing_capture)
+    after = _flatten_paths(document)
+    patch_paths = _flatten_paths(patch)
+    changed = sorted(
+        path for path in (before & after & patch_paths)
+        if _path_get(existing_capture, path) != _path_get(document, path)
+    )
+    added = sorted(after - before)
+    removed = sorted(before - after)
+    declared_removed = {str(item["path"]).strip() for item in removals}
+    undeclared = sorted(set(removed) - declared_removed)
+    if undeclared:
+        raise PreservationMigrationError("EXPLICIT_REMOVAL_REQUIRED:" + ",".join(undeclared))
+
+    receipt = {
+        "schema": "naya.smart-note-migration-receipt.v1",
+        "changed_paths": changed,
+        "added_paths": added,
+        "removed_paths": removed,
+        "removals": [{
+            "path": str(item["path"]).strip(),
+            "reason": str(item["reason"]).strip(),
+            "authority": str(item["authority"]).strip(),
+        } for item in removals],
+    }
+    return {"document": document, "receipt": receipt}
+
+
+def migrate_capture_file(existing_path, patch_path, output_path, receipt_path, explicit_removals=None):
+    """Apply the canonical preservation migration to JSON files and persist its receipt."""
+    existing = load_json(existing_path)
+    patch = load_json(patch_path)
+    result = migrate_preserving_fields(existing, patch, explicit_removals=explicit_removals)
+    Path(output_path).write_text(
+        json.dumps(result["document"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    Path(receipt_path).write_text(
+        json.dumps(result["receipt"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return result
+
 def _registry_lock_path(registry_path):
     rp = Path(registry_path)
     return rp.parent / (rp.stem + ".lock")
@@ -931,6 +1062,7 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
+    mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
@@ -941,6 +1073,10 @@ def main():
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
+    if args.cmd == "migrate":
+        x = migrate_capture_file(args.existing, args.patch, args.out, args.receipt)
+        print(json.dumps({"output": args.out, "receipt": args.receipt, "removed_paths": x["receipt"]["removed_paths"]}, ensure_ascii=False))
+        return
     if args.cmd == "discover":
         for path in changed_capture(args.paths, existing_only=True):
             print(path)
