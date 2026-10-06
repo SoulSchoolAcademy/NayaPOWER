@@ -29,11 +29,15 @@ def test_migrate_preserving_fields_keeps_unknown_nested_governed_fields():
     assert result["document"]["future_top_level"] == existing["future_top_level"]
 
 
-def test_migrate_refuses_undeclared_removal():
+def test_migrate_preserves_omitted_fields_without_a_removal_manifest():
     existing = {"title": "Original", "intelligence": {"provenance": {"source": "x"}, "keep": 1}}
 
-    with pytest.raises(mod.PreservationMigrationError, match="EXPLICIT_REMOVAL_REQUIRED"):
-        mod.migrate_preserving_fields(existing, {"title": "Updated"}, explicit_removals=[{"path": "intelligence.keep", "reason": "cleanup", "authority": "director:shawn"}])
+    result = mod.migrate_preserving_fields(existing, {"title": "Updated"})
+
+    assert result["document"]["title"] == "Updated"
+    assert result["document"]["intelligence"]["provenance"] == {"source": "x"}
+    assert result["document"]["intelligence"]["keep"] == 1
+    assert result["receipt"]["removed_paths"] == []
 
 
 def test_migrate_records_explicit_authorized_nonprotected_removal():
