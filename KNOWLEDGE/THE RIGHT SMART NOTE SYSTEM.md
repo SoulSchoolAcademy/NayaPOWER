@@ -204,7 +204,7 @@ Exactly.
 A future Naya doesn't necessarily read every closed PR comment.
 So it cannot be the only handoff.
 The activation contract explicitly says:
-Issue #554 has been used as the primary Naya coordination relay.
+Issue #1354 has been used as the active Team Naya coordination feed.
 
 So I have now added the Smart Note system update there too.
 That means the broader Naya coordination surface now contains:
@@ -217,11 +217,11 @@ That means the broader Naya coordination surface now contains:
 - the terminology drift
 - the exact next action
 You can see that update here:
-Team Naya #554 — Smart Note system update
+Team Naya #1354 — Smart Note system update
 That's a much better handoff.
-What #554 should be
-But #554 also needs the right role.
-I don't want #554 to become another brain.
+What #1354 should be
+But #1354 also needs the right role.
+I don't want #1354 to become another brain.
 It should be:
 The running operations channel / team communication feed.
 
@@ -236,7 +236,7 @@ Then the Naya follows pointers into:
 - runtime evidence
 - proof
 So:
-#554 = newspaper
+#1354 = newspaper
 Brain = knowledge
 Database/IB = canonical intelligence
 Git = engineering history
@@ -490,7 +490,7 @@ NayaPOWER
 │   ├── canonical intents
 │   └── authority boundaries
 │
-└── TEAM NAYA #554
+└── TEAM NAYA #1354
     └── operational updates + links
 
 And I would not duplicate the intelligence into those layers.
@@ -521,4 +521,4 @@ You were correct that a comment sitting on an old PR isn't enough to make the or
 The good news is that the underlying architecture already anticipated much of what you just described.
 We don't need to invent another system.
 We need to finish connecting the pieces that already exist.
-And the state is now recorded on the actual Team Naya relay, #554, so the next Naya has this correction and doesn't have to rediscover it.
+And the state is now recorded on the actual Team Naya relay, #1354, so the next Naya has this correction and doesn't have to rediscover it.
