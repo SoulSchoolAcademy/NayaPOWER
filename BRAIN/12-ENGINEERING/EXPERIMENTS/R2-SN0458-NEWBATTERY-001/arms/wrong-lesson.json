@@ -1,0 +1,10 @@
+{
+  "schema": "naya.round2.arm.v1",
+  "experiment_id": "R2-SN0458-NEWBATTERY-001",
+  "arm": "WRONG_LESSON",
+  "baseline_main_sha": "8442edae26dc854d792729a52f1ab83c991944aa",
+  "overlay": "wrong-lesson-overlay.md",
+  "target_lesson_present": false,
+  "wrong_lesson_present": true,
+  "authority_granted": false
+}
