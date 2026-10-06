@@ -12,7 +12,7 @@ const BLOCK_ID = "IB-NAYA-NODE-0001-0001";
 const MISSION_ID = "NAYA-NODE-0001-CONTINUITY";
 const ACTION = "naya_node_apply";
 const EXPERIMENT_CASE = "NAYA-0001-VERIFIED-AI-ACTION";
-const DEPLOYED_SOURCE_REVISION = "4a2f728239c0e404205f0cc590766ceb7e7b7c28";
+const DEPLOYED_SOURCE_REVISION = "333f46c3c407898591cad0746bbdb8726dd7613b";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify({deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object)}), {
@@ -267,7 +267,7 @@ Deno.serve(async (req) => {
           owner_id: OWNER_ID,
         },
         learning: ["Authorized action is distinct from capability. Authority is resolved from the durable grant before any governed effect."],
-      });
+      }, idempotencyKey);
 
       if (idempotentReplay) {
         const persistedFingerprint = String(((receipt.evidence ?? {}) as Json).idempotency_request_fingerprint ?? "");

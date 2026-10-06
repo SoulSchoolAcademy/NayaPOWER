@@ -4,8 +4,8 @@
   "captured_date": "2026-10-05",
   "source_project_ref": "dahisasgpfvziswqvmvm",
   "source_table": "supabase_migrations.schema_migrations",
-  "authority_note": "Reconciled 2026-10-05 by Naya 2: 2 orphan versions backfilled from production statements; 5 pending applied via Management API and verified. 164/164, 0 orphans, 0 pending.",
-  "production_applied_count": 164,
+  "authority_note": "Reconciled 2026-10-05 by Team Naya. Production ledger now records 165 applied migrations; EVENT_ID_REPLAY exact-payload reconciliation was applied and independently probed against SN-0357 with no duplicate event/receipt/block/lineage writes.",
+  "production_applied_count": 165,
   "production_applied": [
     {
       "version": "20260827011050",
@@ -1489,9 +1489,49 @@
       "bytes": 6047,
       "status": "PRODUCTION_APPLIED",
       "note": "Applied 2026-10-05 via Management API (Naya 2, authorized by Shawn); verified in schema_migrations."
+    },
+    {
+      "version": "20261006001500",
+      "name": "reconcile_intelligence_commit_event_replay_v1",
+      "path": "supabase/migrations/20261006001500_reconcile_intelligence_commit_event_replay_v1.sql",
+      "sha256": "a514d294cfc0e0367c9705208c47e0c734eb88cd44d155c0b84617e8f1fb1448",
+      "statement_count": 3,
+      "bytes": 16231,
+      "status": "PRODUCTION_APPLIED",
+      "reason": "Exact EVENT_ID_REPLAY idempotency repair; production application is a governed DB migration step.",
+      "verification": {
+        "applied_via": "governed_supabase_migration_surface",
+        "production_project_ref": "dahisasgpfvziswqvmvm",
+        "migration_list_verified": true,
+        "replay_probe": {
+          "event_key": "SMART-NOTE-20261005-sn0357-self-directed-intelligence",
+          "result": "REUSED_EXISTING_CANONICAL_LINEAGE",
+          "reconciled_replay": true,
+          "duplicate_counts_unchanged": true
+        }
+      }
     }
   ],
-  "pending": [],
+  "pending": [
+    {
+      "version": "20261006021500",
+      "name": "declared_task_classes_commit_writer_v1",
+      "path": "supabase/migrations/20261006021500_declared_task_classes_commit_writer_v1.sql",
+      "sha256": "5e7da798cb9992914fcdfb2010709d0562e384480b8294cb952ed43cb57fbdc3",
+      "statement_count": 8,
+      "bytes": 24338,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261006120000",
+      "name": "idempotency_key_unique_v1",
+      "path": "supabase/migrations/20261006120000_idempotency_key_unique_v1.sql",
+      "sha256": "220b290a20db64aa1fa918804e60424ad63db58d23516f542a440636024e536d",
+      "statement_count": 1,
+      "bytes": 1363,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    }
+  ],
   "legacy_repository_snapshot_count": 95,
   "legacy_repository_snapshot": [
     {

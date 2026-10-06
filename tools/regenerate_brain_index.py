@@ -19,12 +19,14 @@ tree-derived data: generated_at only needs to be a valid date, and the basis
 SHAs only need to be well-formed. Any real BRAIN/ change (added, removed, or
 edited file) still fails the check.
 
-Reconciliation rules (2026-09-30 brain-reconciliation ledger):
-    - Per-domain counts must match the ledger's fixed classification table,
-      except the governed INTELLIGENCE-REPORTS and SMART-NOTES subtrees, whose
-      committed file counts are added mechanically to the fixed 05-MEMORY
-      baseline. Any other drift fails the run instead of silently rewriting
-      the table.
+Reconciliation rules (2026-09-30 brain-reconciliation ledger; ratchet since 2026-10-05):
+    - Per-domain counts are checked against the ledger's baseline FLOORS as a
+      ratchet: a domain may hold MORE files than its floor, but never fewer.
+      Additions never trip the guard; deletions do, naming the domain and the
+      shortfall. The governed INTELLIGENCE-REPORTS and SMART-NOTES subtrees
+      keep their mechanically-counted addition to the fixed 05-MEMORY floor.
+      A deliberate removal requires lowering the floor with a comment naming
+      the PR — the run fails instead of silently blessing deletions.
     - Pointer integrity: every declared pointer-bearing field in the index
       layer (POINTER_FIELDS) must resolve against the git tree at HEAD. A
       generic backstop scan catches path-like strings in the same files that
@@ -114,7 +116,7 @@ NON_POINTER_STRINGS = {
 # A string value is treated as a repo path pointer if it matches this.
 PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.naya/|0000-)")
 
-# Ledger classification table: fixed domain baselines.
+# Ledger classification table: per-domain baseline FLOORS (a ratchet, not a pin).
 #
 # INTELLIGENCE-REPORTS and SMART-NOTES are append-only governed memory subtrees.
 # Reports and verified Smart Note projections must be able to accumulate without
@@ -122,7 +124,20 @@ PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.n
 # therefore keep the 05-MEMORY baseline fixed at the count that excludes both
 # governed append-only subtrees, then add their committed file counts
 # mechanically from git truth.
-BASE_EXPECTED_DOMAIN_COUNTS = {
+#
+# RATCHET SEMANTICS (replaces the old exact-pin, 2026-10-05): each value is a
+# MINIMUM, not an exact expectation. A domain may hold MORE files than its
+# floor — additions never trip the guard. A domain holding FEWER files than its
+# floor trips the guard with a named violation: that is a deletion, and
+# deletions are never blessed silently. To bless a deliberate removal, lower
+# the floor here with a comment naming the PR and the reason.
+#
+# Why this is safe: the --check artifact comparison still forces every PR to
+# regenerate the index layer after ANY tree change (additions included), so
+# un-regenerated changes are always caught — by content, not by count. The
+# floor's narrowed job is to stop the regeneration command itself from silently
+# blessing a mass deletion. Git history remains the ultimate backstop.
+BASELINE_DOMAIN_FLOORS = {
     "00-SPEC": 15,
     # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
     # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
@@ -132,7 +147,13 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
     # 7 -> 10 for the NONSTOP LOOP: 0004-NONSTOP-LOOP-V1 lands as standing
     # operational law in three languages (human/ai/machine), director-ratified
     # 2026-10-05 (PR #1472). Deliberate update.
-    "01-GOVERNANCE": 10,
+    # 10 -> 14 for two director-ratified governance surfaces:
+    #   +3  0005-CAPTAIN-OPERATING-PROTOCOL-V1 (human/ai/machine), the
+    #       machine-enforceable ordering guarantee subordinate to AGENTS.md
+    #       CAPTAIN MODE. Deliberate update.
+    #   +1  naya-dream-v1.machine.json (PR #1543, NAYA-DREAM-V1 offline
+    #       simulation spec). Deliberate update.
+    "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -159,24 +180,46 @@ BASE_EXPECTED_DOMAIN_COUNTS = {
 
 INTELLIGENCE_REPORT_PREFIX = "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/"
 SMART_NOTE_PREFIX = "BRAIN/05-MEMORY/SMART-NOTES/"
-DOMAIN_ORDER = tuple(BASE_EXPECTED_DOMAIN_COUNTS.keys())
+DOMAIN_ORDER = tuple(BASELINE_DOMAIN_FLOORS.keys())
 
 
-def expected_domain_counts(files: list[dict]) -> dict[str, int]:
-    """Return expected counts with governed append-only memory subtrees dynamic.
+def floor_domain_counts(files: list[dict]) -> dict[str, int]:
+    """Return baseline floors with governed append-only memory subtrees dynamic.
 
-    Every Brain domain remains fixed against the reconciliation ledger except
-    the two governed append-only 05-MEMORY subtrees. 05-MEMORY may exceed its
-    fixed baseline only by the exact number of committed files beneath
-    INTELLIGENCE_REPORT_PREFIX and SMART_NOTE_PREFIX. This preserves the
-    count-skew tripwire for every other memory path while letting reports and
-    Smart Note projections accumulate without manual baseline edits.
+    Every Brain domain keeps its ratchet floor except the two governed
+    append-only 05-MEMORY subtrees. The 05-MEMORY floor may only be raised —
+    never lowered — by the exact number of committed files beneath
+    INTELLIGENCE_REPORT_PREFIX and SMART_NOTE_PREFIX, counted mechanically
+    from git truth. This preserves the deletion tripwire for every other
+    memory path while letting reports and Smart Note projections accumulate
+    without manual floor edits.
     """
-    expected = dict(BASE_EXPECTED_DOMAIN_COUNTS)
+    floors = dict(BASELINE_DOMAIN_FLOORS)
     report_files = sum(1 for f in files if f["path"].startswith(INTELLIGENCE_REPORT_PREFIX))
     smart_note_files = sum(1 for f in files if f["path"].startswith(SMART_NOTE_PREFIX))
-    expected["05-MEMORY"] += report_files + smart_note_files
-    return expected
+    floors["05-MEMORY"] += report_files + smart_note_files
+    return floors
+
+
+def floor_violations(counts: dict[str, int], floors: dict[str, int]) -> list[str]:
+    """Domains whose actual file count dropped below the baseline floor.
+
+    The ratchet moves one way only: counts may exceed the floor (additions
+    are always allowed) but may never fall below it. A violation names the
+    domain, the actual count, the floor, and the number of missing files —
+    deletions are reported explicitly, never as an opaque "counts do not
+    match". Returns an empty list when the tree is at or above every floor.
+    """
+    violations = []
+    for domain in DOMAIN_ORDER:
+        actual = counts.get(domain, 0)
+        floor = floors.get(domain, 0)
+        if actual < floor:
+            violations.append(
+                f"{domain}: {actual} files in tree, floor is {floor} "
+                f"({floor - actual} file(s) removed without a deliberate floor update)"
+            )
+    return violations
 
 
 DOMAIN_TITLES = {
@@ -456,9 +499,10 @@ def check(root: Path) -> int:
     files = inventory(root)
     counts = domain_counts(files)
     problems = []
-    expected = expected_domain_counts(files)
-    if counts != expected:
-        problems.append(f"domain counts drifted: {counts} != ledger+reports {expected}")
+    floors = floor_domain_counts(files)
+    violations = floor_violations(counts, floors)
+    if violations:
+        problems.append("domain counts below baseline floor: " + "; ".join(violations))
     pointer_errors = validate_pointers(root)
     if pointer_errors:
         print("error: pointer integrity check failed:", file=sys.stderr)
@@ -520,12 +564,14 @@ def main() -> int:
         return 2
 
     counts = domain_counts(files)
-    expected = expected_domain_counts(files)
-    if counts != expected:
-        print("error: domain counts do not match the reconciliation ledger + governed append-only memory subtrees:", file=sys.stderr)
-        print(f"  git:      {counts}", file=sys.stderr)
-        print(f"  expected: {expected}", file=sys.stderr)
-        print("A real non-governed BRAIN/ count change landed — update BASE_EXPECTED_DOMAIN_COUNTS deliberately, do not force.", file=sys.stderr)
+    floors = floor_domain_counts(files)
+    violations = floor_violations(counts, floors)
+    if violations:
+        print("error: BRAIN/ files were REMOVED below the baseline floor:", file=sys.stderr)
+        for v in violations:
+            print(f"  {v}", file=sys.stderr)
+        print("Restore the files, or lower BASELINE_DOMAIN_FLOORS deliberately with a "
+              "comment naming the PR and the reason. Do not force.", file=sys.stderr)
         return 2
 
     pointer_errors = validate_pointers(root)

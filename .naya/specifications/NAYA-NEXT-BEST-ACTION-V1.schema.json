@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.local/schemas/NAYA-NEXT-BEST-ACTION-V1.schema.json",
+  "title": "NayaPOWER Next-Best-Action Combination Profile V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "version",
+    "weights",
+    "thresholds",
+    "tie_breakers"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "weights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mission_value",
+        "human_value",
+        "urgency",
+        "leverage",
+        "evidence",
+        "risk",
+        "cost",
+        "dependencies",
+        "reversibility",
+        "compounding_continuity"
+      ],
+      "properties": {
+        "mission_value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "human_value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "urgency": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "leverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "risk": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "cost": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "dependencies": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reversibility": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "compounding_continuity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "act_score",
+        "below_standard_score",
+        "evidence_floor",
+        "max_risk_for_auto",
+        "min_human_value_for_auto",
+        "min_reversibility_for_auto",
+        "dominance_margin"
+      ],
+      "properties": {
+        "act_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "below_standard_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "evidence_floor": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "max_risk_for_auto": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "min_human_value_for_auto": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "min_reversibility_for_auto": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "dominance_margin": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "tie_breakers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  }
+}

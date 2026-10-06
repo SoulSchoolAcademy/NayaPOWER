@@ -1,0 +1,21 @@
+{
+  "//": "Type-check shim for Deno edge functions. Not shipped to Deno; it exists so CI can run a real compiler over supabase/functions/**. Type errors here are the same ReferenceErrors that surface in production as opaque HTTP 400s.",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "module": "esnext",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "skipLibCheck": true,
+    "strict": false,
+    "lib": ["es2023", "dom"],
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "https://*": ["./tools/edge-typecheck/remote-module.d.ts"],
+      "npm:*": ["./tools/edge-typecheck/remote-module.d.ts"],
+      "jsr:*": ["./tools/edge-typecheck/remote-module.d.ts"]
+    }
+  },
+  "include": ["../../supabase/functions/**/*.ts", "./**/*.d.ts"]
+}

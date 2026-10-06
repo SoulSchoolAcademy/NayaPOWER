@@ -442,7 +442,7 @@ Record:
 - **Machine room contract:** `../NAYANET-SMART-APP-ROOMS-V1.json`
 - **Design constitution:** `../NAYA-DESIGN-MASTERCLASS-V1.md`
 - **Visual authority:** `../DESIGN-CONTRACT.md`
-- **Coordination:** Issue #554
+- **Coordination:** Issue #1354
 - **Implementation:** Issue #1270
 
 > **Final command:** Make the first moment inside NayaNET feel like entering a living intelligence that already knows how to help — extraordinary, obvious, truthful and fast.

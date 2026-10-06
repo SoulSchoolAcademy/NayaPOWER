@@ -37,6 +37,8 @@ The machine capture carries the structured intelligence required by the canonica
 
 The capture must use the official schema and official location.
 
+**Current official authored-capture schema: `naya.smart-note-capture.v2`.** Legacy `naya.smart-note-capture.v1` is non-conformant for newly authored captures and must not be merged as a new Smart Note. A new capture that fails the conformance ratchet is a defect to repair, not a baseline to bless.
+
 The capture should preserve, where applicable:
 
 - human meaning;
@@ -110,6 +112,28 @@ Communication feeds are coordination surfaces. They are not the canonical memory
 Keep the active memory surface clean: preserve necessary provenance and history, while superseding, deprecating, archiving or excluding stale/irrelevant intelligence from active retrieval when evidence supports that disposition.
 
 Internal repetition is not independent corroboration. Multiple Naya notes repeating the same externally falsifiable claim do not increase its evidence class unless the claim is supported by original or independent evidence appropriate to the claim.
+
+## 6A. Preservation and deletion law
+
+**Deletion is a governed lifecycle action, not a cleanup primitive.**
+
+Before deleting, removing, or destructively collapsing any intelligence artifact, a seat or automation must establish:
+
+1. what the artifact is and its stable identity;
+2. what purpose it serves;
+3. what depends on it or cites it;
+4. its provenance, authority, epistemic state and lifecycle state;
+5. whether a non-destructive transition such as migrate, supersede, deprecate, archive or active-retrieval exclusion preserves the value;
+6. whether applicable authority permits destructive retirement;
+7. how recovery provenance will remain reconstructable.
+
+**Unknown purpose or dependency fails closed to PRESERVE_AND_READ_MORE.**
+
+The following are never sufficient deletion reasons by themselves: cleanup, optimization, apparent duplication, age, schema non-conformance, a green CI result, or “seems unused.”
+
+Human-Director-ratified laws and governance code must be named in `.naya/protected-intelligence.json`. Kernel tests must fail if a protected Smart Note disappears from the canonical capture surface. Retirement of a protected entry requires explicit lifecycle disposition, preserved provenance, applicable Human Director authority, and a named replacement or supersession when applicable.
+
+Semantic overlap does not collapse identity. Repair malformed intelligence in place or supersede it explicitly; do not erase it to make the tree cleaner.
 
 ## 7. Fail-closed truth
 

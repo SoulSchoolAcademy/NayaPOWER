@@ -1,6 +1,7 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { CapabilityValidationError, validateCapabilities } from "./capability-vocabulary.ts";
+import { TaskClassValidationError, validateTaskClasses } from "./task-class-vocabulary.ts";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -81,6 +82,18 @@ async function callCommit(body: Json, jti: string) {
     if (err instanceof CapabilityValidationError) throw new Error(err.code + ":" + err.detail);
     throw err;
   }
+  // H8-7 writer closure: `declared_task_classes` is the ONLY channel by which
+  // a governed task-class declaration enters a block's provenance. Validated
+  // here (fail fast, clean 400) and again server-side in the SQL writer (fail
+  // closed). Absent/empty -> null -> the writer persists the block exactly as
+  // today. Unknown/malformed -> the commit is rejected, never silently stored.
+  let declaredTaskClasses: string[] | null = null;
+  try {
+    declaredTaskClasses = validateTaskClasses(body.declared_task_classes);
+  } catch (err) {
+    if (err instanceof TaskClassValidationError) throw new Error(err.code + ":" + err.detail);
+    throw err;
+  }
   const response = await fetch(url + "/rest/v1/rpc/nayanet_intelligence_commit_runtime", {
     method: "POST",
     headers: {
@@ -103,6 +116,7 @@ async function callCommit(body: Json, jti: string) {
       p_project_id: String(body.p_project_id ?? "NayaNET"),
       p_connections: coerceConnections(body.p_connections),
       p_capabilities: capabilities,
+      p_declared_task_classes: declaredTaskClasses,
     }),
   });
   const text = await response.text();
@@ -120,6 +134,16 @@ async function callSupersede(body: Json, jti: string) {
   // same bounded validator as callCommit; unknown/malformed values fail
   // before the RPC and SQL validates again.
   const capabilities = coerceCapabilities(body.p_capabilities);
+
+  // H8-7 writer closure: the supersession runtime does not yet carry
+  // task-class declarations (follow-up: thread p_declared_task_classes
+  // through nayanet_supersede_intelligent_block_runtime). An explicit
+  // declaration on a supersede call is rejected rather than silently dropped:
+  // a silent drop would manufacture the exact "writer exists, declaration
+  // lost" gap this repair closes on the commit path.
+  if (body.declared_task_classes !== undefined && body.declared_task_classes !== null) {
+    throw new Error("TASK_CLASS_DECLARATION_NOT_SUPPORTED_ON_SUPERSEDE");
+  }
 
   // Same direct PostgREST boundary as callCommit.
   const response = await fetch(url + "/rest/v1/rpc/nayanet_supersede_intelligent_block_runtime", {
@@ -208,6 +232,23 @@ Deno.serve(async (req) => {
         workflow_ref: workflowRef,
         token_jti: payload.jti ?? null,
       });
+    }
+
+    if (mode === "verify_block") {
+      const blockId = String(body.intelligent_block_id ?? "");
+      if (!blockId) return json({ok:false,error:"INTELLIGENT_BLOCK_ID_REQUIRED"},400);
+      const block = await read(admin, blockId, "nayanet_intelligent_blocks", "owner_id");
+      return json({
+        ok: Boolean(block),
+        status: block ? "BLOCK_VERIFIED" : "BLOCK_NOT_FOUND",
+        independent_verification: true,
+        runtime_identity: "naya-node-oidc",
+        naya_id: NAYA_ID,
+        owner_id: OWNER_ID,
+        workflow_ref: workflowRef,
+        token_jti: payload.jti ?? null,
+        persisted: {block},
+      }, block ? 200 : 404);
     }
 
     if (mode === "verify") {

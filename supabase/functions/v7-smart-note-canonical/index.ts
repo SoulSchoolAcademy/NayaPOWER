@@ -23,6 +23,33 @@ async function stableUuid(value:string):Promise<string>{
   return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 }
 const normalizedText=(value:unknown)=>String(value??"").replace(/\s+/g," ").trim();
+// Governed task-class registry. These are the ONLY classes that confer graph
+// applicability via provenance attestation. Must stay in sync with
+// nayanet-learning-verify/index.ts TASK_CLASS_REGISTRY keys.
+// Unknown classes are fail-closed: filtered out, never confer applicability.
+const GOVERNED_TASK_CLASSES = new Set([
+  "provenance_sensitive",
+  "repository_correction",
+  "active_intelligence_sensitive",
+  "learning_reuse",
+  "contextual_retrieval",
+]);
+
+function validateDeclaredTaskClasses(raw: unknown): { governed: string[]; rejected: string[] } {
+  if (!Array.isArray(raw)) return { governed: [], rejected: [] };
+  const seen = new Set<string>();
+  const governed: string[] = [];
+  const rejected: string[] = [];
+  for (const c of raw) {
+    if (typeof c !== "string" || !c) continue;
+    if (seen.has(c)) continue;
+    seen.add(c);
+    if (GOVERNED_TASK_CLASSES.has(c)) governed.push(c);
+    else rejected.push(c);
+  }
+  return { governed, rejected };
+}
+
 function buildIntelligentBlock(args:{
   eventId:string;
   now:string;
@@ -42,6 +69,7 @@ function buildIntelligentBlock(args:{
   connectsText:string;
   applyText:string;
   valueText:string;
+  declaredTaskClasses:string[];
 }){
   return {
     identity:{
@@ -121,7 +149,8 @@ function buildIntelligentBlock(args:{
       source:args.source,
       source_ref:"smart_note:"+args.eventId,
       captured_by:args.userId,
-      derived_from:[]
+      derived_from:[],
+      declared_task_classes:args.declaredTaskClasses
     },
     evidence:{
       evidence_state:"OBSERVED",
@@ -190,7 +219,11 @@ function buildIntelligentBlock(args:{
     },
     metadata:{
       transport_version:"NAYANET_INTELLIGENT_BLOCK_V1",
-      source_idempotency_key:args.idempotencyKey
+      source_idempotency_key:args.idempotencyKey,
+      // Declared so the projection fields added by the caller below are part of the
+      // contract rather than an untyped widening of a closed literal type.
+      projection_category:null as string|null,
+      projection_topic:null as string|null
     }
   };
 }
@@ -208,7 +241,7 @@ Deno.serve(async(req)=>{
   const body=await req.json(),human=body?.human_note,naya=body?.naya_note,idempotencyKey=body?.idempotency_key||req.headers.get("x-idempotency-key");
   if(!idempotencyKey||typeof idempotencyKey!=="string")return json({ok:false,error:"SMART_NOTE_IDEMPOTENCY_KEY_REQUIRED"},400);
   if(!human||!naya)return json({ok:false,error:"HUMAN_AND_NAYA_NOTES_REQUIRED"},400);
-   const now=new Date().toISOString();let eventId=crypto.randomUUID();canonicalEventId=eventId;
+   const now=new Date().toISOString();let eventId:string=crypto.randomUUID();canonicalEventId=eventId;
 
   const canonicalHuman={...human,event_id:eventId};
   const canonicalNaya={...naya,event_id:eventId};
@@ -229,7 +262,8 @@ Deno.serve(async(req)=>{
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
   const projectionCategory=String(body?.projection_category||body?.category||"system").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,64)||"system";
   const projectionTopic=String(body?.projection_topic||body?.topic||subject).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").split("-").filter(Boolean).slice(0,3).join("-")||"smart-note";
-  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey});
+  const {governed:declaredTaskClasses,rejected:rejectedTaskClasses}=validateDeclaredTaskClasses(body?.declared_task_classes);
+  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey,declaredTaskClasses});
   blockBase.metadata={...blockBase.metadata,projection_category:projectionCategory,projection_topic:projectionTopic};
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
@@ -244,8 +278,12 @@ Deno.serve(async(req)=>{
      const persistedHuman=normalizedText(data?.human_note?.text??data?.human_note?.content);
      const persistedNaya=normalizedText(data?.naya_note?.text??data?.naya_note?.content??data?.naya_note?.summary);
      const persistedSubject=normalizedText(data?.human_note?.subject||data?.intelligent_block?.meaning?.subject);
-     if(persistedHuman!==normalizedText(humanText)||persistedNaya!==normalizedText(nayaText)||persistedSubject!==normalizedText(subject))throw new Error("SMART_NOTE_IDEMPOTENCY_CONFLICT");
-     eventId=persistedEventId;
+      if(persistedHuman!==normalizedText(humanText)||persistedNaya!==normalizedText(nayaText)||persistedSubject!==normalizedText(subject))throw new Error("SMART_NOTE_IDEMPOTENCY_CONFLICT");
+      // The replayed canonical event id must still be a well-formed UUID before it
+      // becomes this request's event identity; an empty-but-nonempty or malformed
+      // persisted value would otherwise propagate into the canonical receipt.
+      if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(persistedEventId))throw new Error("SMART_NOTE_CANONICAL_EVENT_ID_MALFORMED");
+      eventId=persistedEventId;
    }
    canonicalEventId=eventId;
    const persistedBlock:any=data?.intelligent_block||{};

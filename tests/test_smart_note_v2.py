@@ -34,6 +34,19 @@ def test_capture_discovery_dedupes_and_ignores_non_captures():
 def test_capture_discovery_empty_when_no_captures():
     assert mod.changed_capture(["README.md", "tools/x.py"]) == []
 
+
+def test_capture_discovery_existing_only_ignores_deleted_capture_paths(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    capture_dir = Path(".naya/capture")
+    capture_dir.mkdir(parents=True)
+    live = capture_dir / "live.json"
+    live.write_text("{}", encoding="utf-8")
+    deleted = capture_dir / "deleted.json"
+
+    assert mod.changed_capture(
+        [str(deleted), str(live)], existing_only=True
+    ) == [".naya/capture/live.json"]
+
 def test_machine_registry_contains_exact_private_block_pointer():
     reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
@@ -117,8 +130,89 @@ def _max_allocated_sn_number():
 
 
 def test_explicit_smart_note_id_is_honored():
-    capture = {"smart_note_id": "SN-013", "source": {"captured_at": "2026-09-30"}}
-    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-013"
+    capture = {"smart_note_id": "SN-9999", "source": {"captured_at": "2026-09-30"}}
+    assert mod.allocate_smart_note_id(capture, "IB-EXPLICIT") == "SN-9999"
+
+
+def test_explicit_smart_note_id_collision_fails_closed(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-FIRST-CLAIM"}
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    try:
+        m.reserve_smart_note_id(capture, "IB-STALE-CLAIM")
+    except SystemExit as exc:
+        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-0457:")
+        assert "owned_by=IB-FIRST-CLAIM" in str(exc)
+        assert "requested_by=IB-STALE-CLAIM" in str(exc)
+    else:
+        raise AssertionError("duplicate explicit Smart Note ID must fail closed")
+
+
+def test_explicit_smart_note_id_is_idempotent_for_same_block(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-FIRST-CLAIM"}
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    assert m.reserve_smart_note_id(capture, "IB-FIRST-CLAIM") == "SN-0457"
+
+
+def test_stale_sequence_skips_occupied_smart_note_id(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 457},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-EXISTING"},
+            {"smart_note_id": "SN-0458", "intelligent_block_id": "IB-EXISTING-2"},
+        ],
+    }), encoding="utf-8")
+    capture = {"source": {"captured_at": "2026-10-06"}}
+    assert m.reserve_smart_note_id(capture, "IB-NEW") == "SN-459"
+
+def test_explicit_id_fails_if_registry_has_mixed_owners(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    m.REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    m.REGISTRY.write_text(json.dumps({
+        "sequence_policy": {"next_sequence": 458},
+        "entries": [
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-SAME"},
+            {"smart_note_id": "SN-0457", "intelligent_block_id": "IB-OTHER"},
+        ],
+    }), encoding="utf-8")
+    capture = {"smart_note_id": "SN-0457", "source": {"captured_at": "2026-10-06"}}
+    try:
+        m.reserve_smart_note_id(capture, "IB-SAME")
+    except SystemExit as exc:
+        assert "owned_by=IB-OTHER" in str(exc)
+    else:
+        raise AssertionError("mixed ownership must fail closed even if one owner matches")
+
+
+def test_update_registry_rejects_injected_colliding_reserved_id(tmp_path):
+    m = _problem_b_fresh_module(tmp_path)
+    first_cap, first_ver, first_proj = _problem_b_inputs(m, tmp_path, "IB-FIRST")
+    first = m.update_registry(first_cap, first_ver, first_proj)
+    assert first["smart_note_id"] == "SN-001"
+
+    second_cap, second_ver, second_proj = _problem_b_inputs(m, tmp_path, "IB-SECOND")
+    try:
+        m.update_registry(second_cap, second_ver, second_proj, sn_id="SN-001")
+    except SystemExit as exc:
+        assert str(exc).startswith("SMART_NOTE_ID_COLLISION:SN-001:")
+    else:
+        raise AssertionError("direct sn_id injection must not bypass ownership validation")
+
 
 def test_sequence_policy_advances_after_sn002():
     reg, maxn = _max_allocated_sn_number()
@@ -647,3 +741,213 @@ def test_retrieve_ignores_superseded_registry_entries(tmp_path, monkeypatch):
     assert result["retrieved"]["smart_note_id"] == "SN-0355"
     assert result["retrieved"]["intelligent_block_id"] == "IB-R2"
     assert result["explanation"] == "active answer"
+
+
+# --- Retrieval truth-state tie-breaking (retrieval track, 2026-10-06) ---
+def _truth_rank_registry(tmp_path, entries):
+    for i, e in enumerate(entries):
+        page = tmp_path / f"p{i}.md"
+        page.write_text("# T\n\n## IN A NUTSHELL\n\nanswer", encoding="utf-8")
+        e.setdefault("projection_path", f"p{i}.md")
+        e.setdefault("lifecycle_state", "ACTIVE")
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    return rp
+
+
+def test_retrieve_prefers_ratified_on_keyword_tie(tmp_path, monkeypatch):
+    """Equal keyword score -> RATIFIED wins over CANDIDATE (not recency)."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop")
+    assert result["retrieved"]["smart_note_id"] == "SN-R"
+
+
+def test_retrieve_score_still_beats_truth_state(tmp_path, monkeypatch):
+    """Higher keyword relevance wins even when the other note is RATIFIED."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "Nonstop Loop Operating Code", "category": "X", "topic": "Y",
+         "subtopic": "Z", "keywords": ["nonstop", "loop", "operating", "code"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop operating code")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_missing_truth_state_is_neutral(tmp_path, monkeypatch):
+    """Entries without truth_state behave exactly as before (rank 0)."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-A", "intelligent_block_id": "IB-A",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-B", "intelligent_block_id": "IB-B",
+         "title": "Nonstop Loop", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["nonstop", "loop"], "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("nonstop loop")
+    # tie on score and rank -> newest captured_at wins (legacy behavior)
+    assert result["retrieved"]["smart_note_id"] == "SN-A"
+
+
+def test_retrieve_matches_lesson_content_not_just_metadata(tmp_path, monkeypatch):
+    """Content-word queries hit the note whose LESSON matches, not metadata.
+
+    Regression: capture stamps every note with identical generic keywords,
+    so the metadata-only haystack retrieved wrong notes for content-word
+    queries (e.g. 'declaring intent before acting' -> SN-042 instead of the
+    Captain Protocol note that teaches exactly that). The NUTSHELL lesson
+    text is part of the haystack.
+    """
+    (tmp_path / "captain.md").write_text(
+        "# Captain\n\n## IN A NUTSHELL\n\ndeclaring intent before acting is required",
+        encoding="utf-8")
+    (tmp_path / "other.md").write_text(
+        "# Other\n\n## IN A NUTSHELL\n\nunrelated lesson about calibration",
+        encoding="utf-8")
+    rp = tmp_path / "index.json"
+    rp.write_text(json.dumps({"entries": [
+        {"smart_note_id": "SN-CAP", "intelligent_block_id": "IB-CAP",
+         "title": "The Captain Protocol", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["smart note", "capture", "intelligent block"],
+         "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "captain.md"},
+        {"smart_note_id": "SN-OTH", "intelligent_block_id": "IB-OTH",
+         "title": "Some Other Note", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["smart note", "capture", "intelligent block"],
+         "truth_state": "CANDIDATE", "lifecycle_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z", "projection_path": "other.md"},
+    ]}), encoding="utf-8")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("declaring intent before acting")
+    assert result["retrieved"]["smart_note_id"] == "SN-CAP"
+
+
+# --- Retrieval relevance-vs-authority boundary (Naya 4, 2026-10-06) ---
+# Investigated, evidence-backed rule: relevance dominates, authority breaks
+# ties. An additive authority bonus (RATIFIED+2) was built and FALSIFIED on
+# the live corpus — it promoted SN-016 ("Judgment Rule", RATIFIED, 1 hit)
+# over SN-041 ("Discernment-to-Compounding", CANDIDATE, 2 hits) for the
+# query "compounding proof". True-but-irrelevant intelligence wearing
+# authority is misdirection, worse than a relevant CANDIDATE whose
+# uncertainty is visible. These tests pin the boundary so it is not
+# reintroduced as a "fix".
+def test_retrieve_relevance_dominates_small_gap(tmp_path, monkeypatch):
+    """CANDIDATE +1 keyword over RATIFIED still wins: relevance dominates."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta", "gamma"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha beta gamma")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_candidate_wins_on_large_gap(tmp_path, monkeypatch):
+    """CANDIDATE +3 keywords over RATIFIED is signal; relevance wins."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta", "gamma", "delta", "epsilon"],
+         "truth_state": "CANDIDATE", "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha", "beta"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha beta gamma delta epsilon")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_irrelevant_ratified_never_wins(tmp_path, monkeypatch):
+    """A RATIFIED note matching zero query terms cannot win on rank alone."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zzz"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha")
+    assert result["retrieved"]["smart_note_id"] == "SN-C"
+
+
+def test_retrieve_no_relevant_intelligence_still_fires(tmp_path, monkeypatch):
+    """All zero relevance -> NO_RELEVANT_INTELLIGENCE, even with RATIFIED present."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["zzz"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-01T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    try:
+        mod.retrieve("alpha")
+    except SystemExit as exc:
+        assert str(exc) == "NO_RELEVANT_INTELLIGENCE"
+    else:
+        raise AssertionError("expected NO_RELEVANT_INTELLIGENCE to fail closed")
+
+
+def test_retrieve_full_ladder_ordering(tmp_path, monkeypatch):
+    """Equal relevance -> LEARNED > ACTIVE > RATIFIED > VERIFIED > CANDIDATE."""
+    rp = _truth_rank_registry(tmp_path, [
+        {"smart_note_id": "SN-C", "intelligent_block_id": "IB-C",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "CANDIDATE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-V", "intelligent_block_id": "IB-V",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "VERIFIED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-R", "intelligent_block_id": "IB-R",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "RATIFIED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-A", "intelligent_block_id": "IB-A",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "ACTIVE",
+         "captured_at": "2026-10-06T00:00:00Z"},
+        {"smart_note_id": "SN-L", "intelligent_block_id": "IB-L",
+         "title": "W", "category": "X", "topic": "Y", "subtopic": "Z",
+         "keywords": ["alpha"], "truth_state": "LEARNED",
+         "captured_at": "2026-10-06T00:00:00Z"},
+    ])
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+    monkeypatch.setattr(mod, "REGISTRY", rp)
+    result = mod.retrieve("alpha")
+    assert result["retrieved"]["smart_note_id"] == "SN-L"

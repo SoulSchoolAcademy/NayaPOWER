@@ -17,7 +17,7 @@ Companion projections:
 - `PROJECT-INTELLIGENCE.FEATURES.json`
 - `PROJECT-INTELLIGENCE.PROOF.md`
 
-**Standing Team Naya law:** if you see something materially not-right, post it on Issue #554 with evidence. Do not silently bury the finding or broaden an unrelated PR to fix it without coordination.
+**Standing Team Naya law:** if you see something materially not-right, post it on Issue #1354 with evidence. Do not silently bury the finding or broaden an unrelated PR to fix it without coordination.
 
 ## 0. READ THIS FIRST
 
@@ -75,7 +75,7 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 
 ## 6. WORKING AGREEMENTS
 
-- Coordinate on issue #554. Never rewrite another lane's in-flight work.
+- Coordinate on issue #1354. Never rewrite another lane's in-flight work.
 - Smallest effective change. Componentize; don't redesign the visual language.
 - **Before shipping any Hub change, inventory:** PURPOSE → REQUIREMENTS → EXISTING FEATURES → PRESERVATION → INTERACTIONS → DATA → AUTHORITY → STATES → ACCESSIBILITY → RESPONSIVE → PERFORMANCE → PROOF. Then classify every existing element: **KEEP / IMPROVE / REPLACE / REMOVE.** No replacement merely because it is newer or cleaner — it must be superior in purpose, UX, visual craft, and system coherence.
 - **Cold-Naya rule:** a cold Naya must be able to enter `HUB/`, understand the objective, identify what is preserved, know what is broken, and execute the next authorized step without Shawn reconstructing the vision. If not, the intelligence is incomplete.
@@ -89,4 +89,4 @@ One brain. Many doors. Each door: themed elevated object, what it is, who it's f
 2. **6→10 doctrine:** clear 6→10 with no plausible path to 3 → act. Plausible 6→3 or uncertain → check with Shawn. Gray zone → ask.
 3. **Escalate with options + recommendation,** never bare questions.
 4. Protected gates are Shawn's word only: merges, production deploys, ratification, destructive changes, privacy/consent/security/authority changes.
-5. **Bring better ideas.** The spec is the floor. If you see a wiser, more powerful, more extraordinary approach — table it on #554 with reasoning. The scorecard decides, not taste. If you can beat the concept's look, do it — and prove it scores.
+5. **Bring better ideas.** The spec is the floor. If you see a wiser, more powerful, more extraordinary approach — table it on #1354 with reasoning. The scorecard decides, not taste. If you can beat the concept's look, do it — and prove it scores.

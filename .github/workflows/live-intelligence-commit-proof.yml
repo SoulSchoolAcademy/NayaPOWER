@@ -174,11 +174,9 @@ jobs:
                 "receipt_id":p["receipt_id"],
               }
               pathlib.Path(f"fresh-lesson-lineage-ids{sfx}.json").write_text(json.dumps(ids,indent=2))
-              pathlib.Path(f"reconciliation{sfx}.json").write_text(json.dumps({
-                "status":"REUSED_EXISTING_CANONICAL_BLOCK",
-                "matched_by":"exact_content_hash",
-                "intelligent_block_id":exact["intelligent_block_id"],
-                "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
+              pathlib.Path(f"registry-hit{sfx}.json").write_text(json.dumps({
+                "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                "intelligent_block_id":exact["intelligent_block_id"]
               },indent=2))
               raise SystemExit(0)
           if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
@@ -192,18 +190,63 @@ jobs:
           }
           pathlib.Path(f"lesson-request{sfx}.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
+              if [[ "$capture_ok" -eq 1 && -f "registry-hit${sfx}.json" ]]; then
+                SFX="$sfx" python - <<'PY'
+          import json, os
+          sfx=os.environ["SFX"]
+          ids=json.load(open(f"fresh-lesson-lineage-ids{sfx}.json"))
+          json.dump({"mode":"verify",**ids},open(f"registry-verify-request{sfx}.json","w"))
+          PY
+                if ! curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"registry-verify-request${sfx}.json" "$RUNTIME_FUNCTION" > "registry-runtime-verification${sfx}.json"; then
+                  echo "REGISTRY_RUNTIME_VERIFY_UNAVAILABLE${sfx}"
+                  capture_ok=0
+                else
+                  verify_only_flag=""
+                  [[ "$(cat replay-mode.txt)" == "verify-only" ]] && verify_only_flag="--verify-only"
+                  python tools/live_intelligence_reconcile.py assess --expected "smart-note-expected${sfx}.json" --verify "registry-runtime-verification${sfx}.json" $verify_only_flag --out "reconciliation-plan${sfx}.json"
+                  action="$(python -c "import json; print(json.load(open('reconciliation-plan${sfx}.json'))['action'])")"
+                  if [[ "$action" == "REUSE" ]]; then
+                    cp "reconciliation-plan${sfx}.json" "reconciliation${sfx}.json"
+                  elif [[ "$action" == "FAIL_CLOSED" ]]; then
+                    echo "REGISTRY_RUNTIME_CONTENT_DRIFT${sfx}: verify-only mode never mutates"
+                    capture_ok=0
+                  elif [[ "$action" == "SUPERSEDE" ]]; then
+                    python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path_in" --expected "smart-note-expected${sfx}.json" --verify "registry-runtime-verification${sfx}.json" --grant-id "$GRANT_ID" --out "supersede-request${sfx}.json"
+                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"supersede-request${sfx}.json" "$RUNTIME_FUNCTION" > "supersede-response${sfx}.json"; then
+                      python tools/live_intelligence_reconcile.py validate-supersede --expected "smart-note-expected${sfx}.json" --old-verify "registry-runtime-verification${sfx}.json" --response "supersede-response${sfx}.json" --out "supersession-reconciliation${sfx}.json"
+                    else
+                      echo "REGISTRY_RUNTIME_SUPERSESSION_FAILED${sfx}"
+                      capture_ok=0
+                    fi
+                  else
+                    echo "REGISTRY_RUNTIME_RECONCILIATION_UNKNOWN_ACTION${sfx}: $action"
+                    capture_ok=0
+                  fi
+                fi
+              fi
               if [[ "$capture_ok" -eq 1 ]]; then
                 if [[ -f "reconciliation${sfx}.json" ]]; then
                   cat "reconciliation${sfx}.json"
+                elif [[ -f "supersession-reconciliation${sfx}.json" ]]; then
+                  cat "supersession-reconciliation${sfx}.json"
                 else
                   fl_attempt=1; fl_ok=0
                   while [[ $fl_attempt -le 5 ]]; do
-                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json" 2>"fl-curl-stderr${sfx}.txt"; then
+                    if http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o "fresh-lesson-receipt${sfx}.json" -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" 2>"fl-curl-stderr${sfx}.txt")"; then
                       if python3 -c "import json; json.load(open('fresh-lesson-receipt${sfx}.json'))" 2>/dev/null; then
-                        fl_ok=1
-                        break
+                        if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+                          fl_ok=1
+                          break
+                        fi
+                        safe_detail="$(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' "fresh-lesson-receipt${sfx}.json")"
+                        echo "FRESH_LESSON_HTTP_${http_code}: ${safe_detail} (sfx ${sfx})"
+                        if [[ "$http_code" =~ ^4[0-9][0-9]$ && "$http_code" != "408" && "$http_code" != "429" ]]; then
+                          echo "FRESH_LESSON_NONRETRYABLE_HTTP_${http_code}: fail closed with safe reason preserved (sfx ${sfx})"
+                          break
+                        fi
+                      else
+                        echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: HTTP ${http_code} body is not valid JSON (sfx ${sfx})"
                       fi
-                      echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON (sfx ${sfx})"
                     else
                       echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$? (sfx ${sfx}); stderr: $(cat "fl-curl-stderr${sfx}.txt")"
                     fi
@@ -268,11 +311,9 @@ jobs:
                     "receipt_id":p["receipt_id"],
                   }
                   pathlib.Path("fresh-lesson-lineage-ids.json").write_text(json.dumps(ids,indent=2))
-                  pathlib.Path("reconciliation.json").write_text(json.dumps({
-                    "status":"REUSED_EXISTING_CANONICAL_BLOCK",
-                    "matched_by":"exact_content_hash",
-                    "intelligent_block_id":exact["intelligent_block_id"],
-                    "semantic_near_duplicate_policy":"CANDIDATE_REVIEW_REQUIRED"
+                  pathlib.Path("registry-hit.json").write_text(json.dumps({
+                    "status":"REGISTRY_HASH_HIT_REQUIRES_RUNTIME_VERIFICATION",
+                    "intelligent_block_id":exact["intelligent_block_id"]
                   },indent=2))
                   raise SystemExit(0)
               if pathlib.Path("replay-mode.txt").read_text().strip()=="verify-only":
@@ -304,25 +345,63 @@ jobs:
           pathlib.Path("lesson-request.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
 
+          if [[ -f registry-hit.json ]]; then
+            python - <<'PY'
+          import json
+          ids=json.load(open("fresh-lesson-lineage-ids.json"))
+          json.dump({"mode":"verify",**ids},open("registry-verify-request.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @registry-verify-request.json "$RUNTIME_FUNCTION" > registry-runtime-verification.json
+            verify_only_flag=""
+            [[ "$(cat replay-mode.txt)" == "verify-only" ]] && verify_only_flag="--verify-only"
+            python tools/live_intelligence_reconcile.py assess --expected smart-note-expected.json --verify registry-runtime-verification.json $verify_only_flag --out reconciliation-plan.json
+            action="$(python -c "import json; print(json.load(open('reconciliation-plan.json'))['action'])")"
+            if [[ "$action" == "REUSE" ]]; then
+              cp reconciliation-plan.json reconciliation.json
+            elif [[ "$action" == "FAIL_CLOSED" ]]; then
+              echo "REGISTRY_RUNTIME_CONTENT_DRIFT: verify-only mode never mutates"
+              exit 1
+            elif [[ "$action" == "SUPERSEDE" ]]; then
+              python tools/live_intelligence_reconcile.py build-supersede --capture "$capture_path" --expected smart-note-expected.json --verify registry-runtime-verification.json --grant-id "$GRANT_ID" --out supersede-request.json
+              curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @supersede-request.json "$RUNTIME_FUNCTION" > supersede-response.json
+              python tools/live_intelligence_reconcile.py validate-supersede --expected smart-note-expected.json --old-verify registry-runtime-verification.json --response supersede-response.json --out supersession-reconciliation.json
+            else
+              echo "REGISTRY_RUNTIME_RECONCILIATION_UNKNOWN_ACTION: $action"
+              exit 1
+            fi
+          fi
+
           if [[ -f reconciliation.json ]]; then
             cat reconciliation.json
+          elif [[ -f supersession-reconciliation.json ]]; then
+            cat supersession-reconciliation.json
           else
-            fl_attempt=1
+            fl_attempt=1; fl_ok=0
             while [[ $fl_attempt -le 5 ]]; do
-              if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json 2>fl-curl-stderr.txt; then
+              if http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o fresh-lesson-receipt.json -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" 2>fl-curl-stderr.txt)"; then
                 if python3 -c "import json; json.load(open('fresh-lesson-receipt.json'))" 2>/dev/null; then
-                  break
+                  if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+                    fl_ok=1
+                    break
+                  fi
+                  safe_detail="$(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' fresh-lesson-receipt.json)"
+                  echo "FRESH_LESSON_HTTP_${http_code}: ${safe_detail}"
+                  if [[ "$http_code" =~ ^4[0-9][0-9]$ && "$http_code" != "408" && "$http_code" != "429" ]]; then
+                    echo "FRESH_LESSON_NONRETRYABLE_HTTP_${http_code}: fail closed with safe reason preserved"
+                    break
+                  fi
+                else
+                  echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: HTTP ${http_code} body is not valid JSON"
                 fi
-                echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON"
               else
                 echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$?; stderr: $(cat fl-curl-stderr.txt)"
               fi
-              if [[ $fl_attempt -eq 5 ]]; then
-                echo "FRESH_LESSON_FAILED: no valid JSON response after 5 attempts"
-                exit 1
-              fi
               sleep $((5 * fl_attempt)); fl_attempt=$((fl_attempt + 1))
             done
+            if [[ "$fl_ok" -eq 0 ]]; then
+              echo "FRESH_LESSON_FAILED: runtime did not return a successful JSON execution response"
+              exit 1
+            fi
             python - <<'PY'
           import json
           r=json.load(open("fresh-lesson-receipt.json"))
@@ -354,6 +433,8 @@ jobs:
             smart-note-expected-*.json
             reconciliation.json
             reconciliation-*.json
+            supersession-reconciliation.json
+            supersession-reconciliation-*.json
 
   independent-verification:
     needs: fresh-lesson
@@ -403,6 +484,16 @@ jobs:
                 fi
                 sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
               done
+              if [[ -f "supersession-reconciliation-$i.json" ]]; then
+                IDX="$i" python - <<'PY'
+          import json, os
+          i=os.environ["IDX"]
+          marker=json.load(open(f"supersession-reconciliation-{i}.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open(f"verify-current-block-{i}.json","w"))
+          PY
+                curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"verify-current-block-$i.json" "$RUNTIME_FUNCTION" > "current-block-verification-$i.json"
+                python tools/live_intelligence_reconcile.py verify-supersession --expected "smart-note-expected-$i.json" --old-verify "independent-lineage-verification-$i.json" --block-verify "current-block-verification-$i.json" --marker "supersession-reconciliation-$i.json" --out "independent-lineage-verification-$i.json"
+              fi
               IDX="$i" python - <<'PY'
           import json, os
           i=os.environ["IDX"]
@@ -420,11 +511,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           expected=json.load(open(f"smart-note-expected-{i}.json"))
           block=r["persisted"]["block"]
           actual=block["content"]["lesson"]
@@ -468,6 +563,15 @@ jobs:
             fi
             sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
           done
+          if [[ -f supersession-reconciliation.json ]]; then
+            python - <<'PY'
+          import json
+          marker=json.load(open("supersession-reconciliation.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open("verify-current-block.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @verify-current-block.json "$RUNTIME_FUNCTION" > current-block-verification.json
+            python tools/live_intelligence_reconcile.py verify-supersession --expected smart-note-expected.json --old-verify independent-lineage-verification.json --block-verify current-block-verification.json --marker supersession-reconciliation.json --out independent-lineage-verification.json
+          fi
           python - <<'PY'
           import json
           r=json.load(open("independent-lineage-verification.json"))
@@ -484,11 +588,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           try: expected=json.load(open("smart-note-expected.json"))
           except FileNotFoundError: expected=None
           if expected:
@@ -673,7 +781,11 @@ jobs:
             "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
           }
           json.dump(req,open(f"cold-verify-request-{i}.json","w"))
-          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open(f"cold-target-{i}.json","w"),indent=2)
+          target_ib=e["intelligent_block_id"]
+          marker_path=f"supersession-reconciliation-{i}.json"
+          if os.path.exists(marker_path):
+              target_ib=json.load(open(marker_path))["new_intelligent_block_id"]
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":target_ib},open(f"cold-target-{i}.json","w"),indent=2)
           PY
               attempt=1; max_attempts=5; backoff=5
               while [[ $attempt -le $max_attempts ]]; do
@@ -692,6 +804,16 @@ jobs:
                 fi
                 sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
               done
+              if [[ -f "supersession-reconciliation-$i.json" ]]; then
+                IDX="$i" python - <<'PY'
+          import json, os
+          i=os.environ["IDX"]
+          marker=json.load(open(f"supersession-reconciliation-{i}.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open(f"cold-current-block-request-{i}.json","w"))
+          PY
+                curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"cold-current-block-request-$i.json" "$RUNTIME_FUNCTION" > "cold-current-block-verification-$i.json"
+                python tools/live_intelligence_reconcile.py verify-supersession --expected "smart-note-expected-$i.json" --old-verify "cold-runtime-reread-$i.json" --block-verify "cold-current-block-verification-$i.json" --marker "supersession-reconciliation-$i.json" --out "cold-runtime-reread-$i.json"
+              fi
               IDX="$i" python - <<'PY'
           import hashlib, json, os
           i=os.environ["IDX"]
@@ -709,11 +831,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           block=persisted["block"]
           assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
           assert block["content"]["lesson"]==expected["expected_content"]
@@ -827,6 +953,7 @@ jobs:
           else
           python - <<'PY'
           import json
+          from pathlib import Path
           reg=json.load(open(".naya/memory/smart-notes/index.json"))
           capture_path=open("capture-path.txt").read().strip()
           try:
@@ -878,7 +1005,10 @@ jobs:
             "index_id":p["runtime_index_id"],"checkpoint_id":p["checkpoint_id"],"receipt_id":p["receipt_id"]
           }
           json.dump(req,open("cold-verify-request.json","w"))
-          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":e["intelligent_block_id"]},open("cold-target.json","w"),indent=2)
+          target_ib=e["intelligent_block_id"]
+          if Path("supersession-reconciliation.json").exists():
+              target_ib=json.load(open("supersession-reconciliation.json"))["new_intelligent_block_id"]
+          json.dump({"content_hash":expected["content_hash"],"intelligent_block_id":target_ib},open("cold-target.json","w"),indent=2)
           PY
           attempt=1; max_attempts=5; backoff=5
           while [[ $attempt -le $max_attempts ]]; do
@@ -900,6 +1030,15 @@ jobs:
             fi
             sleep $backoff; backoff=$((backoff * 2)); attempt=$((attempt + 1))
           done
+          if [[ -f supersession-reconciliation.json ]]; then
+            python - <<'PY'
+          import json
+          marker=json.load(open("supersession-reconciliation.json"))
+          json.dump({"mode":"verify_block","intelligent_block_id":marker["new_intelligent_block_id"]},open("cold-current-block-request.json","w"))
+          PY
+            curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @cold-current-block-request.json "$RUNTIME_FUNCTION" > cold-current-block-verification.json
+            python tools/live_intelligence_reconcile.py verify-supersession --expected smart-note-expected.json --old-verify cold-runtime-reread.json --block-verify cold-current-block-verification.json --marker supersession-reconciliation.json --out cold-runtime-reread.json
+          fi
           python - <<'PY'
           import hashlib, json
           r=json.load(open("cold-runtime-reread.json"))
@@ -922,11 +1061,15 @@ jobs:
               receipt_evidence.get("checkpoint_id")==persisted["checkpoint"]["id"] and
               persisted["receipt"]["action"]=="intelligence_commit"
           )
-          non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
-          checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
-          lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+          if r.get("supersession_proof"):
+              lineage_valid=all(checks.values()) and r["supersession_proof"].get("prior_lineage_preserved") is True
+              checkpoint_provenance="PRIOR_LINEAGE_PRESERVED_SUPERSESSION_VERIFIED"
+          else:
+              non_checkpoint_checks=[v for k,v in checks.items() if not k.startswith("checkpoint_links_")]
+              checkpoint_links=[v for k,v in checks.items() if k.startswith("checkpoint_links_")]
+              lineage_valid=all(non_checkpoint_checks) and (all(checkpoint_links) or object_local_receipt)
+              checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           assert lineage_valid, {"checks":checks,"object_local_receipt":object_local_receipt}
-          checkpoint_provenance="CURRENT_STATE_MATCH" if all(checkpoint_links) else "RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           block=persisted["block"]
           assert block["intelligent_block_id"]==target["intelligent_block_id"], (block["intelligent_block_id"],target)
           assert block["content"]["lesson"]==expected["expected_content"]
@@ -937,8 +1080,16 @@ jobs:
           except Exception as e:
               raise SystemExit(f"COLD_LESSON_NOT_JSON: block {block.get('intelligent_block_id')} lesson prefix={str(block['content']['lesson'])[:120]!r} err={e}")
           machine=intel.get("machine_view",{})
+          capture_path=str(expected.get("capture_path") or "").strip()
+          lifecycle_state="ACTIVE"
+          capture=None
+          if capture_path:
+              capture=json.load(open(capture_path))
+              lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
+          assert lifecycle_state in {"ACTIVE","SUPERSEDED"}, lifecycle_state
           comprehension={
-            "schema":"naya.smart-note-cold-retrieval.v2",
+            "schema":"naya.smart-note-cold-retrieval.v3",
+            "lifecycle_state":lifecycle_state,
             "original_conversation_supplied":False,
             "prior_workflow_artifact_supplied":False,
             "retrieved_intelligent_block_id":block["intelligent_block_id"],
@@ -947,35 +1098,85 @@ jobs:
             "exact_current_capture_retrieved":True,
             "canonical_lineage_verified":True,
             "checkpoint_provenance":checkpoint_provenance,
-            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT",
-            "understands_raw_source_separate":machine.get("raw_source_separate_from_distillation") is True,
-            "understands_candidate_ceiling":machine.get("automatic_truth_ceiling")=="CANDIDATE"
+            "mutable_project_checkpoint_advanced":checkpoint_provenance=="RECEIPT_OBJECT_LOCAL_SNAPSHOT"
           }
           assert comprehension["exact_current_capture_retrieved"]
-          assert comprehension["understands_raw_source_separate"]
-          assert comprehension["understands_candidate_ceiling"]
           assert comprehension["canonical_lineage_verified"]
-          json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)
 
-          task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
-          control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
-          treatment={
-            "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
-            "promote_to_verified":False,
-            "raw_transcript_is_canonical":False,
-            "source_intelligent_block_id":block["intelligent_block_id"]
-          }
-          behavior={
-            "schema":"naya.smart-note-held-out-behavior.v2",
-            "task":task,
-            "task_is_distinct_from_capture_command":True,
-            "control":control,
-            "treatment":treatment,
-            "behavior_changed":control["decision"]!=treatment["decision"],
-            "change_is_traceable_to_retrieved_intelligence":comprehension["understands_candidate_ceiling"] and comprehension["understands_raw_source_separate"]
-          }
-          assert behavior["behavior_changed"] and behavior["change_is_traceable_to_retrieved_intelligence"]
-          json.dump(behavior,open("held-out-behavior-proof.json","w"),indent=2)
+          if lifecycle_state=="ACTIVE":
+              assert machine.get("raw_source_separate_from_distillation") is True
+              assert machine.get("automatic_truth_ceiling")=="CANDIDATE"
+              comprehension.update({
+                "understands_raw_source_separate":True,
+                "understands_candidate_ceiling":True
+              })
+              task="A successor proposes treating this retrieved CANDIDATE Smart Note as VERIFIED solely because it exists, and replacing the distilled intelligence with a raw transcript."
+              control={"decision":"INSUFFICIENT_CANONICAL_CONTEXT","promote_to_verified":None,"raw_transcript_is_canonical":None}
+              treatment={
+                "decision":"KEEP_CANDIDATE_AND_PRESERVE_DISTILLATION_BOUNDARY",
+                "promote_to_verified":False,
+                "raw_transcript_is_canonical":False,
+                "source_intelligent_block_id":block["intelligent_block_id"]
+              }
+              behavior={
+                "schema":"naya.smart-note-held-out-behavior.v3",
+                "lifecycle_state":"ACTIVE",
+                "task":task,
+                "task_is_distinct_from_capture_command":True,
+                "control":control,
+                "treatment":treatment,
+                "behavior_changed":control["decision"]!=treatment["decision"],
+                "change_is_traceable_to_retrieved_intelligence":True
+              }
+              assert behavior["behavior_changed"] and behavior["change_is_traceable_to_retrieved_intelligence"]
+              json.dump(behavior,open("held-out-behavior-proof.json","w"),indent=2)
+          else:
+              # Historical R1 is immutable evidence. Verify its provenance and
+              # conformant ACTIVE successor instead of requiring modern ACTIVE fields.
+              assert capture is not None
+              from pathlib import Path
+              from tools.sn002_conformance import check_dir
+              from tools.smart_note_v2 import resolve_runtime_connections
+              from tools import smart_note_v2 as sn
+              reg=json.load(open(".naya/memory/smart-notes/index.json"))
+              historical=[e for e in reg["entries"] if e.get("content_hash")==expected["content_hash"]]
+              assert len(historical)==1, historical
+              historical=historical[0]
+              assert historical["intelligent_block_id"]==block["intelligent_block_id"]
+              assert historical.get("smart_note_id")==capture.get("smart_note_id")
+              assert str(historical.get("lifecycle_state","")).upper()=="SUPERSEDED"
+              required_provenance=("event_id","lineage_id","relationship_id","runtime_index_id","checkpoint_id","receipt_id")
+              assert all(historical.get("provenance",{}).get(k) for k in required_provenance), historical.get("provenance")
+              conformance={r.capture_id:r for r in check_dir(".naya/capture")}
+              current=conformance.get(capture.get("capture_id"))
+              assert current is not None and current.conformant, getattr(current,"violations",None)
+              successor_id=str(capture.get("superseded_by_capture_id") or "").strip()
+              assert successor_id and successor_id!=capture.get("capture_id")
+              successor_doc=None
+              for candidate in Path(".naya/capture").glob("SMART-NOTE-*.json"):
+                  doc=json.loads(candidate.read_text(encoding="utf-8"))
+                  if doc.get("capture_id")==successor_id:
+                      successor_doc=doc
+                      break
+              assert successor_doc is not None, successor_id
+              assert str(successor_doc.get("lifecycle_state","ACTIVE")).upper()=="ACTIVE"
+              successor_result=conformance.get(successor_id)
+              assert successor_result is not None and successor_result.conformant, getattr(successor_result,"violations",None)
+              resolved=resolve_runtime_connections(successor_doc,reg)
+              assert {"target_block_id":block["intelligent_block_id"],"relationship_type":"SUPERSEDES"} in resolved, resolved
+              active=sn.retrieve(capture["title"])
+              assert active["retrieved"]["smart_note_id"]==successor_doc.get("smart_note_id"), active
+              assert active["retrieved"]["intelligent_block_id"]!=block["intelligent_block_id"], active
+              comprehension.update({
+                "historical_hash_provenance_verified":True,
+                "real_conformant_successor_verified":True,
+                "machine_resolvable_supersedes_verified":True,
+                "superseded_excluded_from_active_retrieval":True,
+                "successor_capture_id":successor_id,
+                "successor_smart_note_id":successor_doc.get("smart_note_id")
+              })
+
+          json.dump(comprehension,open("cold-retrieval-proof.json","w"),indent=2)
           PY
           fi
 
@@ -1059,31 +1260,45 @@ jobs:
           python - <<'PY'
           import json
           c=json.load(open("cold-retrieval-proof.json"))
-          b=json.load(open("held-out-behavior-proof.json"))
           assert c["original_conversation_supplied"] is False
           assert c["prior_workflow_artifact_supplied"] is False
           assert c["canonical_lineage_verified"] is True
           assert c["exact_current_capture_retrieved"] is True
           assert c["retrieved_content_hash"] == c["expected_content_hash"]
-          assert c["understands_raw_source_separate"] is True
-          assert c["understands_candidate_ceiling"] is True
-          assert b["task_is_distinct_from_capture_command"] is True
-          assert b["behavior_changed"] is True
-          assert b["change_is_traceable_to_retrieved_intelligence"] is True
-          assert b["treatment"]["promote_to_verified"] is False
-          assert b["treatment"]["raw_transcript_is_canonical"] is False
-          json.dump({
+          lifecycle=c.get("lifecycle_state","ACTIVE")
+          result={
             "schema":"naya.smart-note-independent-behavior-verification.v1",
             "status":"PASS",
             "intelligent_block_id":c["retrieved_intelligent_block_id"],
+            "lifecycle_state":lifecycle,
             "cold_retrieval_verified":True,
-            "held_out_behavioral_effect_verified":True,
             "limits":[
               "Smart Note remains CANDIDATE; this does not promote it to VERIFIED learning.",
               "PRIVATE Smart Link remains pending an authenticated private projection surface.",
               "Held-out proof establishes behavior for this exact captured intelligence boundary, not universal task performance."
             ]
-          },open("independent-behavior-verification.json","w"),indent=2)
+          }
+          if lifecycle=="ACTIVE":
+              b=json.load(open("held-out-behavior-proof.json"))
+              assert c["understands_raw_source_separate"] is True
+              assert c["understands_candidate_ceiling"] is True
+              assert b["task_is_distinct_from_capture_command"] is True
+              assert b["behavior_changed"] is True
+              assert b["change_is_traceable_to_retrieved_intelligence"] is True
+              assert b["treatment"]["promote_to_verified"] is False
+              assert b["treatment"]["raw_transcript_is_canonical"] is False
+              result["held_out_behavioral_effect_verified"]=True
+          elif lifecycle=="SUPERSEDED":
+              assert c["historical_hash_provenance_verified"] is True
+              assert c["real_conformant_successor_verified"] is True
+              assert c["machine_resolvable_supersedes_verified"] is True
+              assert c["superseded_excluded_from_active_retrieval"] is True
+              result["historical_provenance_verified"]=True
+              result["superseded_retrieval_refusal_verified"]=True
+              result["held_out_behavioral_effect_verified"]="NOT_APPLICABLE_HISTORICAL_OBJECT"
+          else:
+              raise AssertionError(f"unexpected lifecycle_state: {lifecycle}")
+          json.dump(result,open("independent-behavior-verification.json","w"),indent=2)
           PY
           fi
       - uses: actions/upload-artifact@v4

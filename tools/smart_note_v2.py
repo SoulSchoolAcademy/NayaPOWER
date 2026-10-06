@@ -14,6 +14,137 @@ def slug(s):
 def load_json(p):
     return json.loads(Path(p).read_text(encoding="utf-8"))
 
+class PreservationMigrationError(ValueError):
+    """Raised when a Smart Note migration would destroy governed state."""
+
+
+PROTECTED_MIGRATION_SEGMENTS = {
+    "provenance", "restoration_provenance", "ratification", "falsifier",
+    "falsification", "measurement", "measurement_contract", "successor",
+    "successor_effect",
+}
+
+
+def _path_exists(document, path):
+    current = document
+    for part in path.split("."):
+        if not isinstance(current, dict) or part not in current:
+            return False
+        current = current[part]
+    return True
+
+
+def _path_get(document, path):
+    current = document
+    for part in path.split("."):
+        current = current[part]
+    return current
+
+
+def _path_delete(document, path):
+    parts = path.split(".")
+    current = document
+    for part in parts[:-1]:
+        current = current[part]
+    del current[parts[-1]]
+
+
+def _deep_merge_preserving_unknown(existing, patch):
+    """Merge declared patch values while retaining unknown keys recursively."""
+    import copy
+    if not isinstance(existing, dict) or not isinstance(patch, dict):
+        return copy.deepcopy(patch)
+    merged = copy.deepcopy(existing)
+    for key, value in patch.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge_preserving_unknown(merged[key], value)
+        else:
+            merged[key] = copy.deepcopy(value)
+    return merged
+
+
+def _flatten_paths(value, prefix=""):
+    """Return deterministic leaf paths for migration receipts."""
+    if not isinstance(value, dict):
+        return {prefix} if prefix else set()
+    paths = set()
+    for key, child in value.items():
+        path = f"{prefix}.{key}" if prefix else str(key)
+        if isinstance(child, dict):
+            paths.update(_flatten_paths(child, path) or {path})
+        else:
+            paths.add(path)
+    return paths
+
+
+def _protected_migration_path(path):
+    return any(part.lower() in PROTECTED_MIGRATION_SEGMENTS for part in path.split("."))
+
+
+def migrate_preserving_fields(existing_capture, patch, explicit_removals=None):
+    """Apply a monotonic Smart Note migration without dropping unknown fields."""
+    if not isinstance(existing_capture, dict) or not isinstance(patch, dict):
+        raise PreservationMigrationError("CAPTURE_AND_PATCH_MUST_BE_OBJECTS")
+    removals = list(explicit_removals or [])
+    document = _deep_merge_preserving_unknown(existing_capture, patch)
+
+    for item in removals:
+        if not isinstance(item, dict):
+            raise PreservationMigrationError("REMOVAL_MANIFEST_ENTRY_INVALID")
+        path = str(item.get("path") or "").strip()
+        reason = str(item.get("reason") or "").strip()
+        authority = str(item.get("authority") or "").strip()
+        if not path or not reason or not authority:
+            raise PreservationMigrationError("EXPLICIT_REMOVAL_REQUIRES_PATH_REASON_AUTHORITY")
+        if _protected_migration_path(path):
+            raise PreservationMigrationError(f"PROTECTED_FIELD_REMOVAL:{path}")
+        if not _path_exists(document, path):
+            raise PreservationMigrationError(f"REMOVAL_TARGET_NOT_FOUND:{path}")
+        _path_delete(document, path)
+
+    before = _flatten_paths(existing_capture)
+    after = _flatten_paths(document)
+    patch_paths = _flatten_paths(patch)
+    changed = sorted(
+        path for path in (before & after & patch_paths)
+        if _path_get(existing_capture, path) != _path_get(document, path)
+    )
+    added = sorted(after - before)
+    removed = sorted(before - after)
+    declared_removed = {str(item["path"]).strip() for item in removals}
+    undeclared = sorted(set(removed) - declared_removed)
+    if undeclared:
+        raise PreservationMigrationError("EXPLICIT_REMOVAL_REQUIRED:" + ",".join(undeclared))
+
+    receipt = {
+        "schema": "naya.smart-note-migration-receipt.v1",
+        "changed_paths": changed,
+        "added_paths": added,
+        "removed_paths": removed,
+        "removals": [{
+            "path": str(item["path"]).strip(),
+            "reason": str(item["reason"]).strip(),
+            "authority": str(item["authority"]).strip(),
+        } for item in removals],
+    }
+    return {"document": document, "receipt": receipt}
+
+
+def migrate_capture_file(existing_path, patch_path, output_path, receipt_path, explicit_removals=None):
+    """Apply the canonical preservation migration to JSON files and persist its receipt."""
+    existing = load_json(existing_path)
+    patch = load_json(patch_path)
+    result = migrate_preserving_fields(existing, patch, explicit_removals=explicit_removals)
+    Path(output_path).write_text(
+        json.dumps(result["document"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    Path(receipt_path).write_text(
+        json.dumps(result["receipt"], indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return result
+
 def _registry_lock_path(registry_path):
     rp = Path(registry_path)
     return rp.parent / (rp.stem + ".lock")
@@ -66,7 +197,7 @@ def registry_transaction(registry_path=None):
         finally:
             fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
 
-def changed_capture(paths):
+def changed_capture(paths, *, existing_only=False):
     """Return the sorted, deduplicated list of changed Smart Note capture paths.
 
     A commit may carry more than one capture (batch). The discovery seam is
@@ -74,15 +205,21 @@ def changed_capture(paths):
     order, each with its own identity (``SMART-NOTE-<capture_id>``). Failing
     closed on a batch would silently shelve valuable intelligence; fail-fast
     instead on any *individual* capture that is malformed, downstream.
+
+    Git diffs also report deleted capture paths. At runtime those files no
+    longer exist and therefore are not ingestible intelligence. Set
+    ``existing_only=True`` at the workflow/CLI boundary so deletions are
+    ignored rather than misclassified as malformed capture failures.
     """
     hits = []
     for raw in paths:
-        normalized = str(raw).replace("\\\\", "/")
+        normalized = str(raw).replace("\\", "/")
         p = Path(normalized)
         if normalized.startswith(".naya/capture/") and p.suffix == ".json":
+            if existing_only and not p.is_file():
+                continue
             hits.append(normalized)
     return sorted(set(hits))
-
 
 EDGE_VOCABULARY = {
     "DERIVED_FROM","SUPPORTS","CONTRADICTS","DEPENDS_ON","IMPLEMENTS","GOVERNS",
@@ -125,20 +262,56 @@ def resolve_runtime_connections(capture, registry):
         out.append({"target_block_id": resolved, "relationship_type": rel})
     return out
 
+def _assert_smart_note_id_available(sn_id, ib, entries):
+    """Fail closed if sn_id is already owned by any different block."""
+    conflicts = sorted({
+        str(e.get("intelligent_block_id"))
+        for e in entries
+        if str(e.get("smart_note_id") or "").strip().upper() == sn_id
+        and e.get("intelligent_block_id") != ib
+    })
+    if conflicts:
+        raise SystemExit(
+            "SMART_NOTE_ID_COLLISION:"
+            f"{sn_id}:owned_by={','.join(conflicts)}:requested_by={ib}"
+        )
+
+
 def _allocate_from_registry(capture, ib, registry):
     """Pure SN allocation against an already-loaded registry.
 
     Call inside a registry_transaction so the read-allocate-write is atomic.
     Idempotent: a re-capture of the same intelligent block returns its
     existing SN instead of consuming a new sequence number.
+
+    Explicit IDs are claims, not authority: an explicit SN already owned by
+    another Intelligent Block fails closed. Automatic allocation also skips
+    occupied IDs so a stale next_sequence pointer cannot reissue an existing
+    human-facing Smart Note identity.
     """
+    entries = registry.get("entries", [])
     explicit = str(capture.get("smart_note_id") or "").strip().upper()
     if re.fullmatch(r"SN-\d{3,}", explicit):
+        _assert_smart_note_id_available(explicit, ib, entries)
         return explicit
-    existing = next((e for e in registry.get("entries", []) if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
+
+    existing = next(
+        (e for e in entries
+         if e.get("intelligent_block_id") == ib and e.get("smart_note_id")),
+        None,
+    )
     if existing:
         return existing["smart_note_id"]
+
+    occupied = {
+        int(m.group(1))
+        for e in entries
+        for m in [re.fullmatch(r"SN-(\d+)", str(e.get("smart_note_id") or "").strip().upper())]
+        if m
+    }
     seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
+    while seq in occupied:
+        seq += 1
     return f"SN-{seq:03d}"
 
 def allocate_smart_note_id(capture, ib):
@@ -234,14 +407,25 @@ def render(capture, verify, private_root=None, sn_id=None):
     else:
         p = projection_path(capture, ib, sn_id=sn_id)
     p.parent.mkdir(parents=True, exist_ok=True)
-    proof = {
-        "event_id": verify["persisted"]["event"]["id"],
-        "lineage_id": verify["persisted"]["lineage"]["id"],
-        "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
-        "index_id": verify["persisted"]["index"]["id"],
-        "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
-        "receipt_id": verify["persisted"]["receipt"]["id"],
-    }
+    if verify.get("supersession_proof"):
+        proof = {
+            "proof_type": "SUPERSESSION_RECONCILIATION",
+            "prior_lineage_preserved": True,
+            "prior_lineage": verify["supersession_proof"].get("prior_lineage", {}),
+            "prior_intelligent_block_id": verify["supersession_proof"].get("prior_intelligent_block_id"),
+            "current_intelligent_block_id": block["intelligent_block_id"],
+            "current_block_row_id": block["block_id"],
+            "content_hash": verify["supersession_proof"].get("content_hash"),
+        }
+    else:
+        proof = {
+            "event_id": verify["persisted"]["event"]["id"],
+            "lineage_id": verify["persisted"]["lineage"]["id"],
+            "relationship_id": verify["persisted"]["relationship"]["relationship_id"],
+            "index_id": verify["persisted"]["index"]["id"],
+            "checkpoint_id": verify["persisted"]["checkpoint"]["id"],
+            "receipt_id": verify["persisted"]["receipt"]["id"],
+        }
     lines = [
         "# " + capture["title"], "",
         "**Intelligent Block:** " + ib,
@@ -318,6 +502,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             sn_id = existing["smart_note_id"]
             if existing.get("projection_path"):
                 projection = ROOT / existing["projection_path"]
+    normalized_sn_id = str(sn_id or "").strip().upper()
+    if re.fullmatch(r"SN-\d{3,}", normalized_sn_id):
+        _assert_smart_note_id_available(
+            normalized_sn_id, ib, registry.get("entries", [])
+        )
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
@@ -357,6 +546,29 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
     # No direct write: registry_transaction commits atomically on clean exit.
     return entry
 
+# Truth-state authority rank for retrieval tie-breaking. Higher = more
+# authoritative. Rank breaks ties on keyword relevance only — relevance
+# dominates (see retrieve()). The map covers the full elevation ladder
+# (CANDIDATE < TESTING < VERIFIED < RATIFIED < ACTIVE < LEARNED) so higher
+# truth states outrank lower ones at equal relevance. Unknown/missing
+# truth_state ranks 0 (neutral) so legacy entries without the field behave
+# exactly as before.
+TRUTH_STATE_RANK = {"LEARNED": 4, "ACTIVE": 3, "RATIFIED": 2, "VERIFIED": 1}
+
+def _nutshell_text(projection_path):
+    """Return a note's IN A NUTSHELL lesson text for retrieval matching.
+
+    Unreadable projection files yield '' during matching so one broken path
+    cannot poison ranking for the whole corpus. (The winner's explanation
+    read below stays strict: a broken winning path surfaces loudly.)
+    """
+    try:
+        note = (ROOT / str(projection_path)).read_text(encoding="utf-8")
+    except (OSError, TypeError):
+        return ""
+    m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
+    return m.group(1).strip() if m else ""
+
 def retrieve(query):
     registry = load_json(REGISTRY)
     q = set(re.findall(r"[a-z0-9]+", query.lower()))
@@ -366,12 +578,32 @@ def retrieve(query):
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
         hay = " ".join([e.get("title",""),e.get("category",""),e.get("topic",""),e.get("subtopic","")," ".join(e.get("keywords",[]))]).lower()
+        # Lesson-content matching (retrieval track, 2026-10-06): capture stamps
+        # every note with the same generic keywords, so the metadata haystack
+        # cannot distinguish lessons. Content-word queries ("declaring intent
+        # before acting") retrieved wrong notes. Include each note's own
+        # distilled lesson (NUTSHELL) in the haystack. Ranking order is
+        # unchanged: keyword score first, truth-state rank second, recency last.
+        hay += " " + _nutshell_text(e.get("projection_path", "")).lower()
         score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
-        ranked.append((score, e))
-    ranked.sort(key=lambda z: (z[0], z[1].get("captured_at","")), reverse=True)
-    if not ranked or ranked[0][0] <= 0:
+        if score <= 0:
+            # Authority never promotes irrelevance: a note matching zero
+            # query terms cannot win on truth-state rank alone.
+            continue
+        rank = TRUTH_STATE_RANK.get(str(e.get("truth_state", "")).upper(), 0)
+        # Boundary (investigated 2026-10-06, Naya 4): relevance dominates,
+        # authority breaks ties. An additive authority bonus was built and
+        # FALSIFIED on the live corpus: RATIFIED+2 promoted SN-016
+        # ("Judgment Rule") over SN-041 ("Discernment-to-Compounding") for
+        # the query "compounding proof" — true but irrelevant intelligence
+        # wearing authority is misdirection, and it is worse than a
+        # relevant CANDIDATE whose uncertainty is visible. A 1-2 keyword
+        # gap at these score magnitudes (1-3) is signal, not noise.
+        ranked.append((score, rank, e))
+    ranked.sort(key=lambda z: (z[0], z[1], z[2].get("captured_at","")), reverse=True)
+    if not ranked:
         raise SystemExit("NO_RELEVANT_INTELLIGENCE")
-    e = ranked[0][1]
+    e = ranked[0][2]
     note = (ROOT / e["projection_path"]).read_text(encoding="utf-8")
     m = re.search(r"##(?:\s+[^\n]*)?IN A NUTSHELL\n\n(.+?)(?:\n\n##|$)", note, re.S | re.I)
     explanation = m.group(1).strip() if m else ""
@@ -882,6 +1114,7 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("discover"); d.add_argument("paths", nargs="*")
+    mg = sub.add_parser("migrate"); mg.add_argument("--existing", required=True); mg.add_argument("--patch", required=True); mg.add_argument("--out", required=True); mg.add_argument("--receipt", required=True)
     pr = sub.add_parser("project"); pr.add_argument("--capture", required=True); pr.add_argument("--verify", required=True); pr.add_argument("--private-root")
     r = sub.add_parser("retrieve"); r.add_argument("--query", required=True); r.add_argument("--out")
     h = sub.add_parser("held-out"); h.add_argument("--retrieval", required=True); h.add_argument("--out", required=True)
@@ -892,8 +1125,12 @@ def main():
         report = audit_registry(root=args.root)
         print(json.dumps(report, indent=2, ensure_ascii=False) if not args.quiet else ("ok" if report["ok"] else f"DRIFT:{report['defect_total']}"))
         raise SystemExit(0 if report["ok"] else 1)
+    if args.cmd == "migrate":
+        x = migrate_capture_file(args.existing, args.patch, args.out, args.receipt)
+        print(json.dumps({"output": args.out, "receipt": args.receipt, "removed_paths": x["receipt"]["removed_paths"]}, ensure_ascii=False))
+        return
     if args.cmd == "discover":
-        for path in changed_capture(args.paths):
+        for path in changed_capture(args.paths, existing_only=True):
             print(path)
         return
     if args.cmd == "project":

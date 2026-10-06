@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-05",
-  "receipt_basis_commit": "b3ed46c6c7d2b0494900db431fc627a5bcf07eb9",
-  "inventory_file_count": 201,
+  "generated_at": "2026-10-06",
+  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
+  "inventory_file_count": 217,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 10,
+    "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 48,
+    "05-MEMORY": 60,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -144,9 +144,29 @@
       "size": 2405
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md",
+      "blob_sha": "2c5bc9a4da4dca43fb1255daf7005de5d724bad3",
+      "size": 6562
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md",
+      "blob_sha": "0d2f56f8f52f5661193d1fd82c5c9aa40af840ab",
+      "size": 3217
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
+      "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
+      "size": 9313
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
+      "blob_sha": "c469937962ebb1776b391a7c2a525ab615d52cb1",
+      "size": 22689
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",
@@ -439,11 +459,6 @@
       "size": 1937
     },
     {
-      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
-      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
-      "size": 4371
-    },
-    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
@@ -479,9 +494,24 @@
       "size": 2477
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md",
+      "blob_sha": "b918e1f4d91e33da8f70ca4466f1a42ecf8d50e8",
+      "size": 4935
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/2026-10-05-LEARNING-EVENT.md",
+      "blob_sha": "6fc3e6819ee84238fd22009955db03389bd2ac70",
+      "size": 15083
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md",
+      "blob_sha": "d747afcc0ba0207df92dae2df5f9641a8f2999cf",
+      "size": 8002
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
-      "blob_sha": "16b436f42a72271eefc64c031ea5c0c75a4651d5",
-      "size": 5598
+      "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
+      "size": 6111
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
@@ -522,6 +552,21 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/CONSENT-GRANULARITY/SN-275/IB-SMART-NOTE-20260930-sn275-consent-granularity.md",
       "blob_sha": "d373c8e2dc2b44afd33172ddc011c6592c1cf294",
       "size": 6624
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0399/IB-SMART-NOTE-20261005-sn0399-self-directed-intelligence.md",
+      "blob_sha": "c4cbbee5c5f4b0913c8bbc81f1ebe7d54cf0b9e6",
+      "size": 4253
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0400/IB-SMART-NOTE-20261005-sn0400-captain-directive-proactive-always.md",
+      "blob_sha": "d269f851777b55bcf6a1fd863742696e52e73876",
+      "size": 4694
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0408/IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md",
+      "blob_sha": "73242886bdf5a0ff69f0d91f9f3cfe8d1367d128",
+      "size": 3941
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-016/IB-SMART-NOTE-20260930-sn016-prime-judgment-rule.md",
@@ -659,14 +704,49 @@
       "size": 4695
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0358/IB-SMART-NOTE-20261005-sn0358-law-is-code-r2.md",
+      "blob_sha": "6fe6a8baa16f57bf86ec15f6606b1b15040fb779",
+      "size": 6175
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md",
       "blob_sha": "8aa82b0ca02e849762ce383ca69607695ea7e01e",
       "size": 5183
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
-      "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
-      "size": 4124
+      "blob_sha": "b6d3ec378a19de8379c4849fc7e16383598f301f",
+      "size": 836
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0340/IB-SMART-NOTE-20261005-sn0340-the-scorecard-law.md",
+      "blob_sha": "0e9aed03b3d9ce81af2029053e884478ab5b98ae",
+      "size": 7237
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+      "blob_sha": "c9ed74b61e1386ddb42cbb759ce4c5340e7aecc0",
+      "size": 4530
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0359/IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2.md",
+      "blob_sha": "e265051bdaca26204323b967a3af2f1300c6ceec",
+      "size": 5706
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
+      "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
+      "size": 6070
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md",
+      "blob_sha": "b0b521c3ee2c7df296d2e9854db982b6ea6f39bb",
+      "size": 10964
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md",
+      "blob_sha": "f11b568e28890503029f991bb5e915579393ef19",
+      "size": 7082
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",

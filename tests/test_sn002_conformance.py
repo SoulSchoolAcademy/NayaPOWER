@@ -274,3 +274,55 @@ def test_superseded_label_requires_explicit_supersedes_edge(tmp_path):
     assert results["capture-r2"].conformant
     assert not results["capture-r1"].conformant
     assert any("SUPERSEDES edge" in v for v in results["capture-r1"].violations)
+
+
+# ==========================================================================
+# PROTECTED INTELLIGENCE — deletion must fail closed
+# ==========================================================================
+def _load_protected_registry():
+    path = Path(".naya/protected-intelligence.json")
+    assert path.is_file(), "protected-intelligence registry missing"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _canonical_capture_ids():
+    ids = {}
+    for path in CAPTURE_DIR.glob("SMART-NOTE-*.json"):
+        try:
+            doc = json.loads(path.read_text(encoding="utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            continue
+        note_id = doc.get("smart_note_id") or doc.get("id")
+        if note_id:
+            ids[str(note_id)] = path
+    return ids
+
+
+def test_protected_intelligence_registry_has_unique_ids():
+    registry = _load_protected_registry()
+    protected = registry.get("protected", [])
+    ids = [entry.get("smart_note_id") for entry in protected]
+    assert ids and all(ids), "protected registry must contain named Smart Note IDs"
+    assert len(ids) == len(set(ids)), "protected registry contains duplicate Smart Note IDs"
+
+
+def test_every_protected_smart_note_exists_on_canonical_capture_surface():
+    """Regression for a2f103f4: protected intelligence cannot disappear silently."""
+    registry = _load_protected_registry()
+    present = _canonical_capture_ids()
+    missing = [
+        entry["smart_note_id"]
+        for entry in registry.get("protected", [])
+        if entry["smart_note_id"] not in present
+    ]
+    assert not missing, (
+        "PROTECTED INTELLIGENCE DELETION: canonical Smart Note(s) disappeared: "
+        f"{missing}. Cleanup/optimization/duplication is not retirement authority."
+    )
+
+
+def test_incident_laws_are_mechanically_protected():
+    """Specific negative-control anchor for the SN-0358/SN-0359 incident."""
+    registry = _load_protected_registry()
+    protected = {entry["smart_note_id"] for entry in registry.get("protected", [])}
+    assert {"SN-0358", "SN-0359", "SN-0360"} <= protected

@@ -814,3 +814,171 @@ def consequential_use_eligible(request: OperationRequest, profile: QualityProfil
                                     ["CRITICAL_CONFIDENCE_FLOOR"])
 
     return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_PASS, [])
+
+# Next-Best-Action priority overlay. This extends the canonical Value Calculus;
+# it is not a second authority, truth, gate, or ledger system.
+ACTION_DIMENSIONS = (
+    "mission_value",
+    "human_value",
+    "urgency",
+    "leverage",
+    "evidence",
+    "risk",
+    "cost",
+    "dependencies",
+    "reversibility",
+    "compounding_continuity",
+)
+
+DEFAULT_NEXT_BEST_ACTION_WEIGHTS = {
+    "mission_value": 0.18,
+    "human_value": 0.18,
+    "urgency": 0.08,
+    "leverage": 0.12,
+    "evidence": 0.14,
+    "risk": 0.10,
+    "cost": 0.05,
+    "dependencies": 0.05,
+    "reversibility": 0.04,
+    "compounding_continuity": 0.06,
+}
+
+
+@dataclass(frozen=True)
+class NextBestActionCandidate:
+    """Candidate input for deterministic priority ranking after governance gating.
+
+    All fields are 0..10. Higher is better for every dimension *except* risk and
+    cost, where the input is burden (higher is worse) and is inverted for the
+    combined score. Hard governance remains outside this scalar score.
+    """
+    candidate_id: str
+    scores: Mapping[str, float]
+
+    def normalized(self) -> dict[str, float]:
+        unknown = set(self.scores) - set(ACTION_DIMENSIONS)
+        missing = set(ACTION_DIMENSIONS) - set(self.scores)
+        if unknown:
+            raise ValueError(f"unknown action dimensions: {sorted(unknown)}")
+        if missing:
+            raise ValueError(f"missing action dimensions: {sorted(missing)}")
+        out = {}
+        for d in ACTION_DIMENSIONS:
+            out[d] = _norm10(self.scores[d], f"action[{d}]")
+        return out
+
+
+@dataclass(frozen=True)
+class NextBestActionProfile:
+    profile_id: str
+    version: str
+    weights: Mapping[str, float]
+    act_score: float = 9.0
+    below_standard_score: float = 7.0
+    evidence_floor: float = 8.0
+    max_risk_for_auto: float = 3.0
+    min_human_value_for_auto: float = 7.0
+    min_reversibility_for_auto: float = 7.0
+    dominance_margin: float = 0.10
+
+    @classmethod
+    def default(cls) -> "NextBestActionProfile":
+        return cls(
+            profile_id="NAYAPOWER-NEXT-BEST-ACTION",
+            version="1.0",
+            weights=DEFAULT_NEXT_BEST_ACTION_WEIGHTS,
+        )
+
+    def __post_init__(self):
+        unknown = set(self.weights) - set(ACTION_DIMENSIONS)
+        missing = set(ACTION_DIMENSIONS) - set(self.weights)
+        if unknown:
+            raise ValueError(f"unknown action dimensions: {sorted(unknown)}")
+        if missing:
+            raise ValueError(f"missing action dimensions: {sorted(missing)}")
+        vals = {d: _finite(self.weights[d], f"weight[{d}]") for d in ACTION_DIMENSIONS}
+        if any(v < 0 for v in vals.values()) or sum(vals.values()) <= 0:
+            raise ValueError("action weights require non-negative positive total")
+        if abs(sum(vals.values()) - 1.0) > 1e-9:
+            raise ValueError("action weights must sum to 1")
+        for name, value in (("act_score", self.act_score), ("below_standard_score", self.below_standard_score),
+                            ("evidence_floor", self.evidence_floor), ("max_risk_for_auto", self.max_risk_for_auto),
+                            ("min_human_value_for_auto", self.min_human_value_for_auto),
+                            ("min_reversibility_for_auto", self.min_reversibility_for_auto),
+                            ("dominance_margin", self.dominance_margin)):
+            _finite(value, name)
+        if not 0 <= self.dominance_margin <= 10:
+            raise ValueError("dominance_margin must be in [0,10]")
+
+
+def _next_best_action_favorable_score(candidate: NextBestActionCandidate, profile: NextBestActionProfile) -> float:
+    scores = candidate.normalized()
+    return sum(
+        profile.weights[d] * (10.0 - scores[d] if d in {"risk", "cost"} else scores[d])
+        for d in ACTION_DIMENSIONS
+    )
+
+
+def combine_next_best_action_score(candidate: NextBestActionCandidate, profile: NextBestActionProfile) -> float:
+    """Return the deterministic 0..10 priority score for a candidate.
+
+    Governance gates are deliberately not scalarized. This function only
+    combines the ten prioritization dimensions after the canonical Value
+    Calculus has determined the action is otherwise eligible for comparison.
+    """
+    return _next_best_action_favorable_score(candidate, profile)
+
+
+def _next_best_action_status(candidate: NextBestActionCandidate, score: float, profile: NextBestActionProfile) -> tuple[str, str]:
+    values = candidate.normalized()
+    if values["risk"] > profile.max_risk_for_auto:
+        return "BLOCKED", "RISK_CAP"
+    if values["evidence"] < profile.evidence_floor:
+        return "READ_MORE", "EVIDENCE_FLOOR"
+    if score < profile.below_standard_score:
+        return "BELOW_STANDARD", "QUALITY_FLOOR"
+    if values["human_value"] < profile.min_human_value_for_auto:
+        return "READ_MORE", "HUMAN_VALUE_FLOOR"
+    if values["reversibility"] < profile.min_reversibility_for_auto:
+        return "READ_MORE", "REVERSIBILITY_FLOOR"
+    if score < profile.act_score:
+        return "READ_MORE", "ACT_SCORE_FLOOR"
+    return "ELIGIBLE", ""
+
+
+@dataclass(frozen=True)
+class NextBestActionResult:
+    candidate_id: str
+    score: float
+    status: str
+    reason: str
+
+
+def rank_next_best_actions(candidates: Sequence[NextBestActionCandidate], profile: NextBestActionProfile | None = None) -> list[NextBestActionResult]:
+    """Rank eligible actions deterministically; close leaders become READ_MORE.
+
+    Tie-break order: combined score, evidence, human value, urgency, leverage,
+    reversibility, lower risk, lower cost, then stable candidate_id. A close
+    top pair is intentionally not auto-selected: uncertainty should trigger
+    more evidence rather than false precision.
+    """
+    p = profile or NextBestActionProfile.default()
+    rows = []
+    for candidate in candidates:
+        score = combine_next_best_action_score(candidate, p)
+        status, reason = _next_best_action_status(candidate, score, p)
+        values = candidate.normalized()
+        rows.append((candidate, score, status, reason, values))
+
+    rows.sort(key=lambda x: (
+        -x[1], -x[4]["evidence"], -x[4]["human_value"], -x[4]["urgency"],
+        -x[4]["leverage"], -x[4]["reversibility"], x[4]["risk"], x[4]["cost"], x[0].candidate_id,
+    ))
+    results = [NextBestActionResult(x[0].candidate_id, x[1], x[2], x[3]) for x in rows]
+    eligible = [i for i, x in enumerate(rows) if x[2] == "ELIGIBLE"]
+    if len(eligible) >= 2:
+        first, second = eligible[0], eligible[1]
+        if rows[first][1] - rows[second][1] < p.dominance_margin:
+            for i in eligible:
+                results[i] = NextBestActionResult(results[i].candidate_id, results[i].score, "READ_MORE", "NO_CLEAR_DOMINANT_OPTION")
+    return results
