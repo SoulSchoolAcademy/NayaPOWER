@@ -23,6 +23,33 @@ async function stableUuid(value:string):Promise<string>{
   return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 }
 const normalizedText=(value:unknown)=>String(value??"").replace(/\s+/g," ").trim();
+// Governed task-class registry. These are the ONLY classes that confer graph
+// applicability via provenance attestation. Must stay in sync with
+// nayanet-learning-verify/index.ts TASK_CLASS_REGISTRY keys.
+// Unknown classes are fail-closed: filtered out, never confer applicability.
+const GOVERNED_TASK_CLASSES = new Set([
+  "provenance_sensitive",
+  "repository_correction",
+  "active_intelligence_sensitive",
+  "learning_reuse",
+  "contextual_retrieval",
+]);
+
+function validateDeclaredTaskClasses(raw: unknown): { governed: string[]; rejected: string[] } {
+  if (!Array.isArray(raw)) return { governed: [], rejected: [] };
+  const seen = new Set<string>();
+  const governed: string[] = [];
+  const rejected: string[] = [];
+  for (const c of raw) {
+    if (typeof c !== "string" || !c) continue;
+    if (seen.has(c)) continue;
+    seen.add(c);
+    if (GOVERNED_TASK_CLASSES.has(c)) governed.push(c);
+    else rejected.push(c);
+  }
+  return { governed, rejected };
+}
+
 function buildIntelligentBlock(args:{
   eventId:string;
   now:string;
@@ -42,6 +69,7 @@ function buildIntelligentBlock(args:{
   connectsText:string;
   applyText:string;
   valueText:string;
+  declaredTaskClasses:string[];
 }){
   return {
     identity:{
@@ -121,7 +149,8 @@ function buildIntelligentBlock(args:{
       source:args.source,
       source_ref:"smart_note:"+args.eventId,
       captured_by:args.userId,
-      derived_from:[]
+      derived_from:[],
+      declared_task_classes:args.declaredTaskClasses
     },
     evidence:{
       evidence_state:"OBSERVED",
@@ -229,7 +258,8 @@ Deno.serve(async(req)=>{
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
   const projectionCategory=String(body?.projection_category||body?.category||"system").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,64)||"system";
   const projectionTopic=String(body?.projection_topic||body?.topic||subject).trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").split("-").filter(Boolean).slice(0,3).join("-")||"smart-note";
-  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey});
+  const {governed:declaredTaskClasses,rejected:rejectedTaskClasses}=validateDeclaredTaskClasses(body?.declared_task_classes);
+  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey,declaredTaskClasses});
   blockBase.metadata={...blockBase.metadata,projection_category:projectionCategory,projection_topic:projectionTopic};
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
