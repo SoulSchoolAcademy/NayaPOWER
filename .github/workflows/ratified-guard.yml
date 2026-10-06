@@ -1,0 +1,31 @@
+name: Ratified Guard
+
+# SN-0408 enforcement: a ratified object (law, code, protocol the Human
+# Director spoke into existence) must never disappear through ordinary
+# cleanup, deduplication, or schema repair.
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check no ratified object is deleted without a retirement record
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            python tools/ratified_guard.py --check-diff \
+              --base-ref "origin/${{ github.base_ref }}" --head-ref HEAD
+          else
+            # Push to main: compare against the pre-push base as an alarm.
+            python tools/ratified_guard.py --check-diff \
+              --base-ref "${{ github.event.before }}" --head-ref "${{ github.sha }}"
+          fi

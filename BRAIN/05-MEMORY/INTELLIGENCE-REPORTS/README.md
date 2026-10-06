@@ -128,9 +128,14 @@ Daily intelligence reporting existed before this canonical Brain home but was fr
 
 Those are historical evidence, not competing current homes. Do not delete history. Future reports should use this Brain path.
 
-## 10. Current canonical report
+## 10. Current canonical reports
 
+- [2026-10-05 — IB-DIR-NAYAPOWER-20261005-001](./DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md) — current daily system report
+- [2026-10-03 — IB-DIR-NAYANET-20261003-001](./DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md) — canonicalized Hub daily report
+- [2026-10-02 — IB-DIR-NAYAPOWER-20261002-001](./DAILY/2026/10/02/IB-DIR-NAYAPOWER-20261002-001.md)
 - [2026-10-01 — IB-DIR-NAYAPOWER-20261001-001](./DAILY/2026/10/01/IB-DIR-NAYAPOWER-20261001-001.md)
+
+The 2026-10-04 `IRB-2026-10-04-NAYAPOWER-FLOW-001` remains a candidate proof specimen and is not reclassified as a Daily Intelligence Report.
 
 ## 11. Automation target
 

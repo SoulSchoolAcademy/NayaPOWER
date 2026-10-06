@@ -198,12 +198,21 @@ jobs:
                 else
                   fl_attempt=1; fl_ok=0
                   while [[ $fl_attempt -le 5 ]]; do
-                    if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" > "fresh-lesson-receipt${sfx}.json" 2>"fl-curl-stderr${sfx}.txt"; then
+                    if http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o "fresh-lesson-receipt${sfx}.json" -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @"lesson-request${sfx}.json" "$RUNTIME_FUNCTION" 2>"fl-curl-stderr${sfx}.txt")"; then
                       if python3 -c "import json; json.load(open('fresh-lesson-receipt${sfx}.json'))" 2>/dev/null; then
-                        fl_ok=1
-                        break
+                        if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+                          fl_ok=1
+                          break
+                        fi
+                        safe_detail="$(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' "fresh-lesson-receipt${sfx}.json")"
+                        echo "FRESH_LESSON_HTTP_${http_code}: ${safe_detail} (sfx ${sfx})"
+                        if [[ "$http_code" =~ ^4[0-9][0-9]$ && "$http_code" != "408" && "$http_code" != "429" ]]; then
+                          echo "FRESH_LESSON_NONRETRYABLE_HTTP_${http_code}: fail closed with safe reason preserved (sfx ${sfx})"
+                          break
+                        fi
+                      else
+                        echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: HTTP ${http_code} body is not valid JSON (sfx ${sfx})"
                       fi
-                      echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON (sfx ${sfx})"
                     else
                       echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$? (sfx ${sfx}); stderr: $(cat "fl-curl-stderr${sfx}.txt")"
                     fi
@@ -307,22 +316,32 @@ jobs:
           if [[ -f reconciliation.json ]]; then
             cat reconciliation.json
           else
-            fl_attempt=1
+            fl_attempt=1; fl_ok=0
             while [[ $fl_attempt -le 5 ]]; do
-              if curl -fsS --connect-timeout 10 --max-time 30 -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" > fresh-lesson-receipt.json 2>fl-curl-stderr.txt; then
+              if http_code="$(curl -sS --connect-timeout 10 --max-time 30 -o fresh-lesson-receipt.json -w '%{http_code}' -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @lesson-request.json "$RUNTIME_FUNCTION" 2>fl-curl-stderr.txt)"; then
                 if python3 -c "import json; json.load(open('fresh-lesson-receipt.json'))" 2>/dev/null; then
-                  break
+                  if [[ "$http_code" =~ ^2[0-9][0-9]$ ]]; then
+                    fl_ok=1
+                    break
+                  fi
+                  safe_detail="$(python3 -c 'import json,re,sys; o=json.load(open(sys.argv[1])); raw=str(o.get("error") or o.get("reason") or o.get("message") or ""); code=str(o.get("code") or ""); m=re.search(r"\"message\"\s*:\s*\"([A-Z][A-Z0-9_:-]{2,96})\"",raw); token=m.group(1) if m else (raw if re.fullmatch(r"[A-Z][A-Z0-9_:-]{2,96}",raw) else "NON_MACHINE_ERROR"); print(json.dumps({"code":code[:32],"message":token}))' fresh-lesson-receipt.json)"
+                  echo "FRESH_LESSON_HTTP_${http_code}: ${safe_detail}"
+                  if [[ "$http_code" =~ ^4[0-9][0-9]$ && "$http_code" != "408" && "$http_code" != "429" ]]; then
+                    echo "FRESH_LESSON_NONRETRYABLE_HTTP_${http_code}: fail closed with safe reason preserved"
+                    break
+                  fi
+                else
+                  echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: HTTP ${http_code} body is not valid JSON"
                 fi
-                echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: http ok but body is not valid JSON"
               else
                 echo "FRESH_LESSON_ATTEMPT_${fl_attempt}: curl exit=$?; stderr: $(cat fl-curl-stderr.txt)"
               fi
-              if [[ $fl_attempt -eq 5 ]]; then
-                echo "FRESH_LESSON_FAILED: no valid JSON response after 5 attempts"
-                exit 1
-              fi
               sleep $((5 * fl_attempt)); fl_attempt=$((fl_attempt + 1))
             done
+            if [[ "$fl_ok" -eq 0 ]]; then
+              echo "FRESH_LESSON_FAILED: runtime did not return a successful JSON execution response"
+              exit 1
+            fi
             python - <<'PY'
           import json
           r=json.load(open("fresh-lesson-receipt.json"))

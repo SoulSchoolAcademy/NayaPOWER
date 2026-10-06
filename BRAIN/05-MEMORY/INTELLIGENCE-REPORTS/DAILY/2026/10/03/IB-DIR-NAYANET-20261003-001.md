@@ -1,4 +1,18 @@
-# 🔱 NAYANET DAILY INTELLIGENCE REPORT
+# Canonical Intelligence Report Record
+
+Object type: DAILY_INTELLIGENCE_REPORT
+Intelligent Block ID: IB-DIR-NAYANET-20261003-001
+Report ID: DIR-NAYANET-2026-10-03
+Period type: DAILY
+Period date: 2026-10-03
+Scope: NayaNET Hub
+Status: CANONICAL DAILY REPORT SNAPSHOT
+Canonical repository representation: this file
+Hub projection: Reports → Daily Intelligence
+Snapshot law: this is a historical snapshot for the stated date; later repository changes do not rewrite it.
+Migrated from legacy path: `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md`
+
+## Original report
 ## October 3, 2026
 
 **Human Director:** Shawn Vibert
