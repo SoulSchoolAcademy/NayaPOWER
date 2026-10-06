@@ -14,7 +14,17 @@
     "captured_at_utc": "2026-10-05T23:12:00Z",
     "previous_capture_id": "20261005-sn0357-self-directed-intelligence",
     "recovery_reason": "R2 recovery after the original v2 capture appears to have persisted before a downstream batch failure, leaving no projected registry lineage and causing replay to return HTTP 400. Stable human Smart Note identity remains SN-0357; distilled intelligence is unchanged.",
-    "recovery_truth_state": "PARTIAL_SUCCESS_REPLAY_HYPOTHESIS_FROM_WORKFLOW_EVIDENCE_NOT_DB_READ"
+    "recovery_truth_state": "PARTIAL_SUCCESS_REPLAY_HYPOTHESIS_FROM_WORKFLOW_EVIDENCE_NOT_DB_READ",
+    "recovery_resolution": {
+      "resolved_at_utc": "2026-10-06T00:18:00Z",
+      "prior_hypothesis": "The original v2 capture may have partially persisted before downstream proof failure.",
+      "observed_truth": "Governed production read proved the original SN-0357 event had fully persisted a SUCCESS receipt, Intelligent Block, lineage, relationships, index, and checkpoint. The downstream proof failed after persistence; retrying the same event key hit the writer's unconditional EVENT_ID_REPLAY guard.",
+      "root_cause": "Exact replay idempotency defect in public.nayanet_intelligence_commit.",
+      "repair": "Production migration 20261006001500_reconcile_intelligence_commit_event_replay_v1.",
+      "verification": "Exact same event key/payload returned REUSED_EXISTING_CANONICAL_LINEAGE with the original receipt/lineage IDs and unchanged event/receipt/block/lineage counts.",
+      "r2_interpretation": "R2 preserved the doctrine and enabled projection, but was a recovery workaround rather than the root idempotency repair."
+    },
+    "replay_reference": "SN-0357 exact-replay acceptance trigger after production idempotency repair"
   },
   "projection": {
     "publication_scope": "PUBLIC_DERIVED_VIEW",
