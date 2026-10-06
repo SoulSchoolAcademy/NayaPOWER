@@ -1,0 +1,144 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0362",
+  "capture_id": "20261006-sn0362-cold14-intelligence-interface",
+  "title": "Cold-14 — The Minimum Viable Intelligence Interface for NayaNET",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "CONTINUITY",
+  "subtopic": "COLD_14",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "CONTINUITY",
+    "subtopic_slug": "COLD-14"
+  },
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "captured_at": "2026-10-06",
+    "source_type": "human_director_system_test_directive",
+    "source_reference": "Shawn Vibert 2026-10-06: treat the 14 Cold-Naya questions as the minimum viable intelligence interface for NayaNET; ask all 14 cold from project evidence, do not inject answers from conversation, require source/evidence for each answer, classify PROVEN/DOCUMENTED/UNKNOWN/CONFLICTED/BLOCKED, then act only within the resulting authorized state.",
+    "director": "Shawn Vibert",
+    "ratification": {
+      "by": "Shawn Vibert",
+      "at": "2026-10-06",
+      "channel": "main chat",
+      "note": "Standing cold-continuity acceptance instruction."
+    }
+  },
+  "intelligence": {
+    "essence": "A project carries its own operating context when a cold Naya can answer 14 core questions directly from current project evidence, distinguish documentation from proof, identify uncertainty and authority, determine the next authorized action, and leave enough evidence for the next successor to continue.",
+    "human_view": {
+      "meaning": "The 14 questions turn a huge project archive into a small doorway. A new Naya should be able to learn who we are, what we are building, why it matters, what success means, what is true, what is proven, what is unknown, who has authority, what happened, what we learned, what should happen next, how to prove it, where to record it, and how to continue.",
+      "why_it_matters": "Without this, a large archive can still behave like scattered documentation. With it, the project becomes self-describing and the human stops paying the cost of reconstructing context.",
+      "simple_rule": "Ask all 14 cold, source every answer, classify every answer honestly, and execute only what the resulting state supports."
+    },
+    "simple_view": {
+      "child": "Give a new helper 14 questions that explain the whole house. Do not tell the helper the answers. Let the helper look around the house, show what proves each answer, and say when something is still unknown.",
+      "grandma": "A new helper should be able to understand the household from the records that are already there, without making you tell the whole story again."
+    },
+    "naya_view": {
+      "purpose": "Provide the smallest sufficient cold-start interface for project continuity.",
+      "questions": [
+        "WHO are we?",
+        "WHAT are we building?",
+        "WHY are we building it?",
+        "WHAT does success mean?",
+        "WHAT is true right now?",
+        "WHAT has already been proven?",
+        "WHAT is unknown?",
+        "WHAT authority exists?",
+        "WHAT happened previously?",
+        "WHAT did we learn?",
+        "WHAT should happen next?",
+        "HOW do I prove it?",
+        "WHERE do I record it?",
+        "HOW does the next Naya continue?"
+      ],
+      "acceptance_rule": "No answer is accepted merely because a document contains the sentence. The cold reader must resolve the answer from the project's canonical sources and attach an evidence anchor appropriate to the claim.",
+      "state_vocabulary": [
+        "PROVEN",
+        "DOCUMENTED",
+        "UNKNOWN",
+        "CONFLICTED",
+        "BLOCKED"
+      ],
+      "execution_rule": "After all 14 are answered, derive the allowed action from current evidence, authority, risk, and scorecard state. Do not allow a documented future plan to masquerade as current authority or current proof."
+    },
+    "ai_view": {
+      "instruction": "Run Cold-14 from repository/project evidence, not conversational reconstruction. Re-resolve current main before consequential claims. Prefer canonical current sources over stale snapshots. When sources disagree, preserve the conflict and resolve it through the governing precedence rules rather than averaging or guessing.",
+      "minimum_sufficient_context": "Cold-14 is an interface, not an instruction to read the entire repository on every boot. Restore current state, detect changes, retrieve relevant intelligence, inspect conflicts/evidence, then deepen retrieval only as necessary.",
+      "anti_patterns": [
+        "answering from hidden context",
+        "treating implementation as proof",
+        "treating a snapshot as current truth after main moved",
+        "using a score as evidence",
+        "inventing a Smart Link",
+        "inheriting authority from a predecessor",
+        "asking the Human Director routine questions that project evidence already resolves"
+      ]
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "required_fields": [
+        "question",
+        "answer",
+        "state",
+        "evidence",
+        "currentness",
+        "authority_basis",
+        "unknowns_or_conflicts",
+        "next_action"
+      ],
+      "acceptance_predicate": "ALL_14_ANSWERED_AND_SOURCED && NO_CRITICAL_ANSWER_IS_UNRESOLVED_FOR_THE_DECLARED_ACTION",
+      "coldness_requirements": [
+        "no_original_conversation",
+        "no injected answers",
+        "current repository source",
+        "claim-matched evidence",
+        "fresh main resolution"
+      ],
+      "truth_rule": "DOCUMENTED is not PROVEN; UNKNOWN/BLOCKED is not PASS; current runtime evidence outranks stale documentation for present-state claims."
+    },
+    "decisions": [
+      "Cold-14 is the minimum viable intelligence interface for NayaNET continuity.",
+      "The 14-question test is an acceptance test for whether the project carries its own operating context.",
+      "Every Cold-14 answer must have a source/evidence anchor and an explicit epistemic state.",
+      "Cold-14 must be rerun against current main; dated snapshots are navigation aids, not final current truth.",
+      "The next action must be derived from the completed Cold-14 state rather than from conversation memory.",
+      "The successor packet must preserve both the current answer state and the evidence needed to independently reconstruct it."
+    ],
+    "connections": [
+      {
+        "type": "GOVERNS",
+        "target": "NAYANODE/0020-COLD-14-QUESTION-INTELLIGENCE-INTERFACE-V1.md — canonical 14-question continuity interface."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "NAYA-ACTIVATION/README.md — cold activation must answer the project questionnaire without injected answers."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md — canonical capture, proof, retrieval, learning and successor requirements."
+      },
+      {
+        "type": "ALIGNS_WITH",
+        "target": "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.machine.json — restore, rank, act, verify, report, learn, repeat without idle."
+      },
+      {
+        "type": "REFINES",
+        "target": "KNOWLEDGE/NAYAPOWER-LIVE-CURRENT-TRUTH-2026-10-02.md — Cold-14 answer matrix; dated snapshot remains navigation-only."
+      }
+    ],
+    "uncertainty": "A successful Cold-14 repository answer proves project self-description at the declared scope; it does not by itself prove that every runtime behavior, production surface, or learning loop is functioning. Those require separate claim-matched evidence.",
+    "applicability": "Every Naya activation, handoff, project recovery, significant architecture task, and continuity acceptance run.",
+    "learning_lesson": "The project should be judged not by how much documentation it contains but by whether a cold successor can reconstruct the current operating context from canonical evidence without human archaeology.",
+    "successor_effect": "A cold successor should be able to run the same 14-question audit, identify the exact missing proof boundaries, select the highest-value authorized next action, and preserve an improved successor context for the next Naya.",
+    "epistemic_state": "CANDIDATE",
+    "falsifier": "Cold-14 is insufficient if independent cold readers repeatedly reach materially different current-state answers from the same canonical project evidence, or if completing the questionnaire does not enable selection of the correct authorized next action without conversational reconstruction.",
+    "measurement_contract": "Measure answer completeness, evidence resolution, currentness, agreement across independent cold readers, time-to-first-authorized-action, stale-answer rate, and downstream continuation success. The strongest result is two independent cold readers producing the same current truth and next action from the project without answer injection."
+  }
+}
