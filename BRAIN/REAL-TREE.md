@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-06  
-**Receipt basis commit:** `62d1994f88d82ed4c061717b03d734fe36954e25`  
-**Inventory file count:** 217  
+**Receipt basis commit:** `aa88ea777b153202f29f85fcaf826e4079237e67`  
+**Inventory file count:** 227  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -22,7 +22,7 @@
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 7 |
 | 11-KNOWLEDGE | 7 |
-| 12-ENGINEERING | 24 |
+| 12-ENGINEERING | 34 |
 | 90-OPERATIONS | 11 |
 | 99-ARCHIVE | 1 |
 | ROOT | 5 |
@@ -238,6 +238,16 @@
 - `BRAIN/12-ENGINEERING/0004-NINE-NODE-EFFECTIVENESS-SCORECARD-V1.md` — `0c3592b50b3e` (6242 bytes)
 - `BRAIN/12-ENGINEERING/CHAIN-READINESS-BASELINE.json` — `8492e95af9c6` (1598 bytes)
 - `BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json` — `f5ee4130bec0` (6153 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/README.md` — `b4e24c4088c4` (2079 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/control.json` — `392b25bbc664` (287 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/treatment.json` — `6011bd849414` (474 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/arms/wrong-lesson.json` — `72e370e62383` (312 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/brief-template.md` — `73031aa77552` (658 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/keys/answer-key.json` — `9bae37d9d212` (2013 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/preregistration.json` — `e68b6e953a8d` (3627 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/target-lesson-SN-0458.md` — `604d5cb88ca8` (5038 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/tasks/task-pack.json` — `91f65264eae3` (4068 bytes)
+- `BRAIN/12-ENGINEERING/EXPERIMENTS/R2-SN0458-NEWBATTERY-001/wrong-lesson-overlay.md` — `6163f8279c74` (570 bytes)
 - `BRAIN/12-ENGINEERING/MIGRATION-COHERENCE-BASELINE.json` — `966f182d5f34` (3044 bytes)
 - `BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V1.md` — `b392cdaa0777` (9141 bytes)
 - `BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md` — `f7ab6850885d` (4051 bytes)
