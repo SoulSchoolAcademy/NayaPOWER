@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-05",
-  "receipt_basis_commit": "17e5321a7e5b9c7b0c1c8858ef81dec66c9e61a2",
-  "inventory_file_count": 211,
+  "receipt_basis_commit": "7fe8e6fec6f9f4f188356808e8843b82cefcd01f",
+  "inventory_file_count": 210,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 54,
+    "05-MEMORY": 53,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -459,11 +459,6 @@
       "size": 1937
     },
     {
-      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
-      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
-      "size": 4371
-    },
-    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",
       "blob_sha": "ea6a1d83a40b410b990b09d53b08e9668f188a13",
       "size": 6363
@@ -499,9 +494,19 @@
       "size": 2477
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md",
+      "blob_sha": "b918e1f4d91e33da8f70ca4466f1a42ecf8d50e8",
+      "size": 4935
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md",
+      "blob_sha": "91adb23e0b27ad22ee259058176365a77ec0e477",
+      "size": 6650
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
-      "blob_sha": "16b436f42a72271eefc64c031ea5c0c75a4651d5",
-      "size": 5598
+      "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
+      "size": 6111
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
@@ -707,16 +712,6 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
       "blob_sha": "5a1eda32c6f8053c7a488ef87216548bf9b98dcb",
       "size": 6070
-    },
-    {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0358/IB-SMART-NOTE-SMART-NOTE-20261005-sn0358-law-is-code.md",
-      "blob_sha": "6e9e1c9b3420b2800b097125ae6ff3d663f5ca58",
-      "size": 5653
-    },
-    {
-      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM_INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0359/IB-SMART-NOTE-SMART-NOTE-20261005-sn0359-proactive-captain.md",
-      "blob_sha": "faa3ec7deb4b377c4d15350b1a92ed62d45d9db5",
-      "size": 4988
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
