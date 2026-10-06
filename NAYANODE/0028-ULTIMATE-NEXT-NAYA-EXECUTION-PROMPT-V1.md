@@ -1,6 +1,6 @@
 # NayaPOWER — Ultimate Next-Naya Execution Prompt V1
 
-**Status:** CANONICAL EXECUTION DIRECTIVE — 2026-09-27
+**Status:** HISTORICAL EXECUTION DIRECTIVE — SUPERSEDED BY `BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md` (2026-10-06)
 **Authority:** Shawn Vibert — Human Director / Final Authority
 **Mission:** Raise NayaPOWER from substantial architecture to a living, governed, compounding intelligence system that qualifies for and passes NAYA-NODE-0001, then ship the human experience without dead features.
 
@@ -40,12 +40,12 @@ This doctrine increases autonomous execution inside existing governance. It neve
 
 Every consequential work cycle MUST:
 
-1. **SIGN-IN on Issue #554** before execution.
+1. **SIGN-IN on Issue #1354** before execution.
 2. State actor, objective, current source HEAD, evidence, status, blockers/unknowns, authority boundary, and exactly one next action.
 3. Announce material changes, failures, corrections, and discoveries to the same coordination board so interconnected Nayas can avoid duplicated work or stale assumptions.
-4. **SIGN-OUT on #554** with final state, evidence, unresolved boundary, and exactly one successor action.
+4. **SIGN-OUT on #1354** with final state, evidence, unresolved boundary, and exactly one successor action.
 
-#554 is a communication relay, not a mechanism for creating authority or overriding canonical governance.
+**#1354 is the active Team Naya communication relay. #554 is historical/archive only.** Neither is a mechanism for creating authority or overriding canonical governance.
 
 ## 5C. EVIDENCE LADDER / IMMUTABILITY LESSON
 
