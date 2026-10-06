@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "2de032b38c58f0a253e3ac75b83f08bb7a614df5",
-  "inventory_file_count": 221,
+  "receipt_basis_commit": "2c7bf5a5d7ab65095e6343f608d55d68bf583485",
+  "inventory_file_count": 224,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 15,
+    "01-GOVERNANCE": 18,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -157,6 +157,21 @@
       "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
       "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
       "size": 9313
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
+      "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
+      "size": 3430
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md",
+      "blob_sha": "a82aa1b3ffc3154d45ebf65b3fdd09836409f76f",
+      "size": 2623
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json",
+      "blob_sha": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
+      "size": 2592
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",

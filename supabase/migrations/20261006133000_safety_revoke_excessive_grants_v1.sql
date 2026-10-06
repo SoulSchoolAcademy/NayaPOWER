@@ -1,0 +1,45 @@
+-- SAFETY REMEDIATION: revoke excessive EXECUTE grants (Security Advisor 27 WARNs, 2026-10-06)
+--
+-- Context: Read-only Security Advisor pull found 27 WARN / 0 ERROR. This migration
+-- addresses the SQL-fixable items. Dashboard config toggles (anon sign-ins,
+-- password protection) are documented separately — they cannot be done via SQL.
+--
+-- What this migration does (2 statements, both REVOKE = removing permissions, never adding):
+--
+--   1. Trigger function lock-down (fixes 1 WARN):
+--      nayanet_execution_receipt_to_smart_ledger() is a RETURNS trigger function.
+--      Triggers fire automatically when receipts are written — they do NOT need
+--      public EXECUTE permission. The grant is accidental. Revoking it changes
+--      nothing for normal operation; it only stops strangers from calling the
+--      trigger function directly like an API.
+--
+--   2. Evolve function lock-down (fixes 1 WARN, HIGHEST RISK):
+--      nayanet_evolve_package_successor() is SECURITY DEFINER (runs with full
+--      database privileges) and trusts the p_owner_id parameter without verifying
+--      the caller is that owner. Any signed-in user who knows an owner ID can
+--      act as that owner. This REVOKE removes public/authenticated/anon access.
+--      Edge functions calling via service_role are unaffected.
+--      RISK NOTE: if any client-side code calls this function directly (not via
+--      edge function), it will break. The function appears to be internal-only,
+--      but this should be verified before applying.
+--
+-- What this migration does NOT do:
+--   - Does not touch the 5 intentional API functions (smart_connect x2,
+--     smart_disconnect, validate_authority_grant, intelligence_commit).
+--     Those check auth.uid() internally and are flagged for conscious
+--     acknowledgment, not revocation.
+--   - Does not disable anonymous sign-ins (18 WARNs) — that's a dashboard
+--     config toggle requiring Shawn's explicit word.
+--   - Does not enable password protection (1 WARN) — dashboard toggle.
+--
+-- Reversibility: GRANT statements restore the prior state. Fully reversible.
+-- Idempotent: REVOKE IF EXISTS pattern — safe to re-run.
+
+-- §1: Lock the trigger function (accidental public grant on a trigger)
+REVOKE EXECUTE ON FUNCTION public.nayanet_execution_receipt_to_smart_ledger() FROM anon, public, authenticated;
+
+-- §2: Lock the evolve function (SECURITY DEFINER without ownership check)
+-- Recommended Option 1 from the remediation plan. If Shawn prefers Option 2
+-- (add ownership check inside function body), replace this REVOKE with the
+-- function edit before applying.
+REVOKE EXECUTE ON FUNCTION public.nayanet_evolve_package_successor(uuid, text, text, text, uuid, uuid[], jsonb) FROM public, authenticated, anon;
