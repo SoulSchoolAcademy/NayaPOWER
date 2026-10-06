@@ -6,8 +6,8 @@ from tools.learning_experiment_contract import REQUIRED_WEIGHTS
 from tools.round2_manifest_bind import (
     FROZEN_WEIGHTS,
     bind_and_validate,
+    blob_sha_file,
     build_manifest,
-    sha1_file,
     verify_fixture_binding,
 )
 
@@ -47,6 +47,7 @@ def test_bind_always_uses_frozen_weights(tmp_path):
     }
 
 
+
 @pytest.mark.parametrize("key", [
     "schema", "status", "arms", "minimum_trials_per_arm", "negative_transfer",
     "scoring", "answer_key", "evidence_capture", "hypotheses",
@@ -72,9 +73,33 @@ def test_extras_preserve_annotation_metadata(tmp_path):
 def test_bind_refuses_builder_self_validation(tmp_path):
     f1 = tmp_path / "s.md"
     f1.write_text("x")
-    _, result = bind_and_validate("Naya 4", "Naya 4", [f1], _hypotheses())
-    assert not result.ok
-    assert "ANSWER_KEY_VERIFIER_MUST_BE_INDEPENDENT" in result.errors
+    with pytest.raises(ValueError, match="ANSWER_KEY_VERIFIER_MUST_BE_INDEPENDENT"):
+        bind_and_validate("Naya 4", "Naya 4", [f1], _hypotheses())
+
+
+def test_bind_refuses_blank_identities(tmp_path):
+    f1 = tmp_path / "s.md"
+    f1.write_text("x")
+    with pytest.raises(ValueError, match="BUILDER_AND_VERIFIER_REQUIRED"):
+        build_manifest("  ", "Coda 2", [f1], _hypotheses())
+    with pytest.raises(ValueError, match="BUILDER_AND_VERIFIER_REQUIRED"):
+        build_manifest("Naya 4", "", [f1], _hypotheses())
+
+
+def test_bind_refuses_weak_hypotheses(tmp_path):
+    f1 = tmp_path / "s.md"
+    f1.write_text("x")
+    with pytest.raises(ValueError, match="FOUR_HYPOTHESES_REQUIRED"):
+        build_manifest("Naya 4", "Coda 2", [f1], ["H1", "H2", "H3"])
+    with pytest.raises(ValueError, match="FOUR_HYPOTHESES_REQUIRED"):
+        build_manifest(
+            "Naya 4", "Coda 2", [f1], ["H1", "H1", "  ", "H1"]
+        )
+
+
+def test_bind_refuses_empty_fixture_list():
+    with pytest.raises(ValueError, match="FIXTURE_SHAS_REQUIRED"):
+        build_manifest("Naya 4", "Coda 2", [], _hypotheses())
 
 
 def test_bind_refuses_outcome_leakage(tmp_path):
@@ -100,17 +125,15 @@ def test_bind_missing_fixture_refused(tmp_path):
 def test_bind_rejects_underpowered_design(tmp_path):
     f1 = tmp_path / "s.md"
     f1.write_text("x")
-    _, result = bind_and_validate(
-        "Naya 4",
-        "Coda 2",
-        [f1],
-        _hypotheses(),
-        minimum_trials_per_arm=4,
-        negative_transfer_trials=1,
-    )
-    assert not result.ok
-    assert "MINIMUM_FIVE_TRIALS_PER_ARM" in result.errors
-    assert "MINIMUM_FIVE_NEGATIVE_TRANSFER_TRIALS" in result.errors
+    with pytest.raises(ValueError, match="MINIMUM_FIVE_TRIALS_PER_ARM"):
+        bind_and_validate(
+            "Naya 4",
+            "Coda 2",
+            [f1],
+            _hypotheses(),
+            minimum_trials_per_arm=4,
+            negative_transfer_trials=1,
+        )
 
 
 def test_tampered_fixture_breaks_binding(tmp_path):
@@ -128,12 +151,76 @@ def test_tampered_fixture_breaks_binding(tmp_path):
     assert drifted
 
 
-def test_sha1_is_40_hex(tmp_path):
+def test_blob_sha_matches_git_vectors(tmp_path):
+    empty = tmp_path / "empty.md"
+    empty.write_bytes(b"")
+    assert blob_sha_file(empty) == "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    hello = tmp_path / "hello.md"
+    hello.write_bytes(b"hello")
+    assert blob_sha_file(hello) == "b6fc4c620b67d95f953a5c1c1230aaab5db5a1b0"
+
+
+def test_blob_sha_differs_from_raw_sha1(tmp_path):
+    # Regression: v1 bound raw sha1, which never equals a published blob SHA.
+    # SN-0458 lesson bytes: blob 604d5cb8... vs raw 6e13497b... (verified live).
+    import hashlib
+
     f1 = tmp_path / "s.md"
-    f1.write_text("probe")
-    sha = sha1_file(f1)
-    assert len(sha) == 40
-    assert all(c in "0123456789abcdef" for c in sha)
+    f1.write_bytes(b"probe")
+    assert blob_sha_file(f1) != hashlib.sha1(b"probe").hexdigest()
+    assert len(blob_sha_file(f1)) == 40
+
+
+def test_missing_equal_content_fixture_cannot_hide_behind_remaining_file(tmp_path):
+    files = [tmp_path / name for name in ("scenario.md", "key.md")]
+    for path in files:
+        path.write_text("same bytes")
+    manifest = build_manifest("Naya 4", "Coda 2", files, _hypotheses())
+    files[1].unlink()
+    ok, reasons = verify_fixture_binding(manifest, files)
+    assert not ok
+    assert any("MISSING" in reason for reason in reasons)
+
+
+def test_omitted_equal_content_fixture_breaks_inventory_binding(tmp_path):
+    files = [tmp_path / name for name in ("scenario.md", "key.md")]
+    for path in files:
+        path.write_text("same bytes")
+    manifest = build_manifest("Naya 4", "Coda 2", files, _hypotheses())
+    ok, reasons = verify_fixture_binding(manifest, files[:1])
+    assert not ok
+    assert reasons
+
+
+@pytest.mark.parametrize("manifest", [None, {}, {"answer_key": None},
+    {"answer_key": {"fixture_shas": []}},
+    {"answer_key": {"fixture_shas": ""}},
+    {"answer_key": {"fixture_shas": [None]}},
+    {"answer_key": {"fixture_shas": [[]]}},
+    {"answer_key": {"fixture_shas": ["bad"]}}])
+def test_malformed_binding_is_refused_without_crashing(manifest):
+    ok, reasons = verify_fixture_binding(manifest, [])
+    assert not ok
+    assert reasons
+
+
+def test_same_content_fixture_inventory_round_trips_order_independently(tmp_path):
+    files = [tmp_path / name for name in ("scenario.md", "key.md")]
+    for path in files:
+        path.write_text("same bytes")
+    manifest = build_manifest("Naya 4", "Coda 2", files, _hypotheses())
+    assert verify_fixture_binding(manifest, list(reversed(files))) == (True, [])
+
+
+def test_directory_fixture_fails_closed(tmp_path):
+    f = tmp_path / "scenario.md"
+    f.write_text("bytes")
+    manifest = build_manifest("Naya 4", "Coda 2", [f], _hypotheses())
+    f.unlink()
+    f.mkdir()
+    ok, reasons = verify_fixture_binding(manifest, [f])
+    assert not ok
+    assert reasons
 
 
 def test_cli_rejects_leakage_and_missing(tmp_path, capsys):
