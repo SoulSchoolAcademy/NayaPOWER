@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-05",
-  "receipt_basis_commit": "990e43198d7d9518f2aee88d4b13504a1e24d6e4",
-  "inventory_file_count": 208,
+  "generated_at": "2026-10-06",
+  "receipt_basis_commit": "2e4fe0094987c10b528c8b467f1845502a22db23",
+  "inventory_file_count": 211,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 14,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 51,
+    "05-MEMORY": 54,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -679,6 +679,11 @@
       "size": 4695
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LAW-IS-CODE/SN-0358/IB-SMART-NOTE-20261005-sn0358-law-is-code-r2.md",
+      "blob_sha": "6fe6a8baa16f57bf86ec15f6606b1b15040fb779",
+      "size": 6175
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0355/IB-SMART-NOTE-20261005-sn0355-nonstop-loop-r2.md",
       "blob_sha": "8aa82b0ca02e849762ce383ca69607695ea7e01e",
       "size": 5183
@@ -687,6 +692,16 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
       "blob_sha": "22908fb620c11210e180ad5c718245150f9f4a07",
       "size": 4124
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+      "blob_sha": "c9ed74b61e1386ddb42cbb759ce4c5340e7aecc0",
+      "size": 4530
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0359/IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2.md",
+      "blob_sha": "e265051bdaca26204323b967a3af2f1300c6ceec",
+      "size": 5706
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
