@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "62d1994f88d82ed4c061717b03d734fe36954e25",
-  "inventory_file_count": 217,
+  "receipt_basis_commit": "aa88ea777b153202f29f85fcaf826e4079237e67",
+  "inventory_file_count": 220,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 17,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -157,6 +157,21 @@
       "path": "BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json",
       "blob_sha": "c7e6b0497fb020e0a3aab095c19f2d8bbd3371af",
       "size": 9313
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-REMINDERS-LINEAGE-V1.ai.md",
+      "blob_sha": "90ce738433a622899789e9ad0796217a12bae8b6",
+      "size": 5214
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-REMINDERS-LINEAGE-V1.human.md",
+      "blob_sha": "fb1df2fd8b301d4ab93fe54f16a0e49a58954a5f",
+      "size": 4296
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0007-reminders-lineage-v1.machine.json",
+      "blob_sha": "507cf0f75b577e524e0e2c6976a593ee21649c4a",
+      "size": 6478
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
