@@ -262,20 +262,56 @@ def resolve_runtime_connections(capture, registry):
         out.append({"target_block_id": resolved, "relationship_type": rel})
     return out
 
+def _assert_smart_note_id_available(sn_id, ib, entries):
+    """Fail closed if sn_id is already owned by any different block."""
+    conflicts = sorted({
+        str(e.get("intelligent_block_id"))
+        for e in entries
+        if str(e.get("smart_note_id") or "").strip().upper() == sn_id
+        and e.get("intelligent_block_id") != ib
+    })
+    if conflicts:
+        raise SystemExit(
+            "SMART_NOTE_ID_COLLISION:"
+            f"{sn_id}:owned_by={','.join(conflicts)}:requested_by={ib}"
+        )
+
+
 def _allocate_from_registry(capture, ib, registry):
     """Pure SN allocation against an already-loaded registry.
 
     Call inside a registry_transaction so the read-allocate-write is atomic.
     Idempotent: a re-capture of the same intelligent block returns its
     existing SN instead of consuming a new sequence number.
+
+    Explicit IDs are claims, not authority: an explicit SN already owned by
+    another Intelligent Block fails closed. Automatic allocation also skips
+    occupied IDs so a stale next_sequence pointer cannot reissue an existing
+    human-facing Smart Note identity.
     """
+    entries = registry.get("entries", [])
     explicit = str(capture.get("smart_note_id") or "").strip().upper()
     if re.fullmatch(r"SN-\d{3,}", explicit):
+        _assert_smart_note_id_available(explicit, ib, entries)
         return explicit
-    existing = next((e for e in registry.get("entries", []) if e.get("intelligent_block_id") == ib and e.get("smart_note_id")), None)
+
+    existing = next(
+        (e for e in entries
+         if e.get("intelligent_block_id") == ib and e.get("smart_note_id")),
+        None,
+    )
     if existing:
         return existing["smart_note_id"]
+
+    occupied = {
+        int(m.group(1))
+        for e in entries
+        for m in [re.fullmatch(r"SN-(\d+)", str(e.get("smart_note_id") or "").strip().upper())]
+        if m
+    }
     seq = int(registry.get("sequence_policy", {}).get("next_sequence", 1))
+    while seq in occupied:
+        seq += 1
     return f"SN-{seq:03d}"
 
 def allocate_smart_note_id(capture, ib):
@@ -466,6 +502,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             sn_id = existing["smart_note_id"]
             if existing.get("projection_path"):
                 projection = ROOT / existing["projection_path"]
+    normalized_sn_id = str(sn_id or "").strip().upper()
+    if re.fullmatch(r"SN-\d{3,}", normalized_sn_id):
+        _assert_smart_note_id_available(
+            normalized_sn_id, ib, registry.get("entries", [])
+        )
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
