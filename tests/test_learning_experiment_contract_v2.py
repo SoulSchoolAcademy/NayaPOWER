@@ -1,3 +1,5 @@
+import pytest
+
 from tools.learning_experiment_contract import validate_round2_manifest
 
 
@@ -107,3 +109,72 @@ def test_round2_fixture_ids_are_content_bound():
     m["answer_key"]["fixture_shas"] = ["not-a-sha"]
     result = validate_round2_manifest(m)
     assert "FIXTURE_SHA_MUST_BE_40_HEX" in result.errors
+
+
+@pytest.mark.parametrize("fixture_id", ["z" * 40, " " * 40, "a" * 39 + "\n", 123, None])
+def test_round2_rejects_fixture_ids_that_are_not_hex(fixture_id):
+    m = valid_manifest()
+    m["answer_key"]["fixture_shas"] = [fixture_id]
+    assert not validate_round2_manifest(m).ok
+
+
+@pytest.mark.parametrize("extra_arm", [{"name": "CONTROL"}, {}, None])
+def test_round2_rejects_duplicate_or_malformed_extra_arms(extra_arm):
+    m = valid_manifest()
+    m["arms"].append(extra_arm)
+    assert not validate_round2_manifest(m).ok
+
+
+@pytest.mark.parametrize("accuracy,cost", [(-0.4, 1.0), (True, -0.4), ("0.4", 0.2)])
+def test_round2_rejects_invalid_weights_even_when_total_is_one(accuracy, cost):
+    m = valid_manifest()
+    m["scoring"]["weights"].update(accuracy=accuracy, cost=cost)
+    assert not validate_round2_manifest(m).ok
+
+
+@pytest.mark.parametrize("identity", [None, 123, {}, []])
+@pytest.mark.parametrize("role", ["builder", "independent_verifier"])
+def test_round2_requires_actual_nonempty_identity_strings(role, identity):
+    m = valid_manifest()
+    m["answer_key"][role] = identity
+    assert not validate_round2_manifest(m).ok
+
+
+@pytest.mark.parametrize("hypotheses", [[None] * 4, [" "] * 4, ["one hypothesis"] * 4])
+def test_round2_requires_four_distinct_nonempty_hypotheses(hypotheses):
+    m = valid_manifest()
+    m["hypotheses"] = hypotheses
+    assert not validate_round2_manifest(m).ok
+
+
+@pytest.mark.parametrize("manifest", [None, [], "PREREGISTERED", 123])
+def test_round2_malformed_document_fails_closed_without_crashing(manifest):
+    result = validate_round2_manifest(manifest)
+    assert not result.ok
+    assert "MANIFEST_MUST_BE_OBJECT" in result.errors
+
+
+@pytest.mark.parametrize("weight", [float("nan"), float("inf"), -float("inf"), 10 ** 1000])
+def test_round2_nonfinite_or_unbounded_weight_fails_closed(weight):
+    m = valid_manifest()
+    m["scoring"]["weights"]["accuracy"] = weight
+    assert not validate_round2_manifest(m).ok
+
+
+def test_round2_malformed_arm_name_fails_closed_without_crashing():
+    m = valid_manifest()
+    m["arms"][0]["name"] = ["CONTROL"]
+    assert not validate_round2_manifest(m).ok
+
+
+def test_round2_identity_whitespace_cannot_hide_self_validation():
+    m = valid_manifest()
+    m["answer_key"]["independent_verifier"] = "  Naya 4  "
+    assert not validate_round2_manifest(m).ok
+
+
+def test_round2_accepts_uppercase_hex_and_zero_weight_boundary():
+    m = valid_manifest()
+    m["answer_key"]["fixture_shas"] = ["ABCDEF0123" * 4]
+    m["scoring"]["weights"].update(cost=0, accuracy=0.6)
+    assert validate_round2_manifest(m).ok
