@@ -1,0 +1,40 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0459",
+  "capture_id": "20261006-sn0459-parallel-execution-directive",
+  "title": "Parallel Execution Directive \u2014 Parallel by Default is Ratified Law",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "PARALLEL_EXECUTION",
+  "subtopic": "PARALLEL_BY_DEFAULT",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-06",
+    "captured_at_utc": "2026-10-06T21:00:00Z",
+    "source_type": "human_director_operating_doctrine",
+    "source_reference": "Shawn's direct verbal directive, 2026-10-06, during the NayaPOWER Reveal narration bake. Ratified as law 0013 (PARALLEL-EXECUTION-V1), merged at 3f797551 via PR #1651."
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "PARALLEL-EXECUTION",
+    "subtopic_slug": "PARALLEL-BY-DEFAULT"
+  },
+  "intelligence": {
+    "essence": "If work can be done in parallel, it must be done in parallel. Sequential execution of independent work is waste, and waste is unintelligent.",
+    "human_view": {
+      "meaning": "Shawn made parallel execution a standing law: if work can be done at the same time, it is done at the same time.",
+      "why_it_matters": "The team's goal is to be the most hyper-efficient, effective execution team in the world.",
+      "simple_rule": "PARALLELIZABLE \u2192 PARALLEL. Sequential requires justification."
+    }
+  },
+  "truth_state": "DIRECTOR-RATIFIED",
+  "law_reference": "PARALLEL-EXECUTION-V1",
+  "markdown_source": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+  "recovery_provenance": {
+    "recovered_from": "git commit 1f99d2b",
+    "recovery_reason": "Note existed as markdown but lacked JSON capture; created to satisfy test_ratified_intelligence_cannot_vanish",
+    "recovered_at": "2026-10-06",
+    "recovered_by": "Naya 4"
+  }
+}
