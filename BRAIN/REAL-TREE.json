@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-06",
-  "receipt_basis_commit": "333f46c3c407898591cad0746bbdb8726dd7613b",
-  "inventory_file_count": 220,
+  "receipt_basis_commit": "6a71771f52aca1850215e423c3d83748eadcc217",
+  "inventory_file_count": 225,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 18,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 61,
+    "05-MEMORY": 62,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -159,9 +159,29 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
+      "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
+      "size": 3430
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md",
+      "blob_sha": "a82aa1b3ffc3154d45ebf65b3fdd09836409f76f",
+      "size": 2623
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json",
+      "blob_sha": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
+      "size": 2592
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",
+      "blob_sha": "37afb12365a81a93357bdd3a91eacd27ab9cfe1b",
+      "size": 1910
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
@@ -752,6 +772,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
       "blob_sha": "1ad610ccba19f2ca54e6245788453a3000fd5bf6",
       "size": 5373
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "blob_sha": "9a5fbe1643e4276825a2308e0858c0b12f62d245",
+      "size": 4859
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",

@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-06  
-**Receipt basis commit:** `333f46c3c407898591cad0746bbdb8726dd7613b`  
-**Inventory file count:** 220  
+**Receipt basis commit:** `6a71771f52aca1850215e423c3d83748eadcc217`  
+**Inventory file count:** 225  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,11 +11,11 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 14 |
+| 01-GOVERNANCE | 18 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 61 |
+| 05-MEMORY | 62 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -60,7 +60,11 @@
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.ai.md` — `2c5bc9a4da4d` (6562 bytes)
 - `BRAIN/01-GOVERNANCE/0005-CAPTAIN-OPERATING-PROTOCOL-V1.human.md` — `0d2f56f8f52f` (3217 bytes)
 - `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
+- `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md` — `bd192971f09c` (3430 bytes)
+- `BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md` — `a82aa1b3ffc3` (2623 bytes)
+- `BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json` — `45bcf7ab174b` (2592 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
+- `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
 ### 02-ARCHITECTURE — Architecture
 
@@ -187,6 +191,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/NAYAPOWER-NAYANET-CORE-MAGIC/SN-NET-POWER-MAGIC-001/IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001.md` — `b0b521c3ee2c` (10964 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md` — `f11b568e2889` (7082 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md` — `1ad610ccba19` (5373 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md` — `9a5fbe1643e4` (4859 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
 ### 06-PROOF — Proof
 

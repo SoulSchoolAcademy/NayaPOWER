@@ -1687,12 +1687,28 @@
       "provenance": {
         "note": "DIRECT_TO_MAIN commit 2c34c6e1d by Human Director 2026-10-05 (\"docs: ratify NayaPOWER and NayaNET core magic intelligence\"); no capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
       }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
+      "smart_note_id": "SN-0459",
+      "title": "Parallel Execution Directive",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "EXECUTION",
+      "subtopic": "SN-0459",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN: published to main 2026-10-06 by Shawn Vibert (Human Director), PR #1654, tip commit 1204519c (\"docs(memory): SN-0459 parallel-execution directive (documents ratified law 0013)\"); no capture file exists for this note; entry completes registration bookkeeping only, per the SN-NET-POWER-MAGIC-001 precedent (#1585). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 409,
+    "next_sequence": 460,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
