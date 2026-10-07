@@ -1,4 +1,5 @@
 from pathlib import Path
+import textwrap
 
 ROOT = Path(__file__).resolve().parents[1]
 LEARN = (ROOT / "supabase/functions/nayanet-learning-verify/index.ts").read_text(encoding="utf-8")
@@ -79,3 +80,9 @@ def test_workflow_graph_proof_waits_for_verified_learning_and_uses_producer_bloc
 def test_fallback_capture_declares_provenance_sensitive_task_class():
     source = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert '"declared_task_classes":["provenance_sensitive"]' in source
+    assert '"p_project_id":"NayaNET",\\n' not in source
+
+    start = source.index("          request={")
+    end = source.index('          pathlib.Path(f"lesson-request', start)
+    embedded = textwrap.dedent(source[start:end])
+    compile(embedded, "<live-intelligence-fallback-request>", "exec")

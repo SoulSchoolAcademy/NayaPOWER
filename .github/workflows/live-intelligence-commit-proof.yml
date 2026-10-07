@@ -186,7 +186,8 @@ jobs:
             "p_event_id":"SMART-NOTE-"+capture["capture_id"],
             "p_title":capture["title"],"p_content":distilled,
             "p_category":capture.get("category","SMART_NOTE"),"p_topic":capture["topic"],
-            "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET",\n                "declared_task_classes":["provenance_sensitive"],"p_connections":resolved_connections
+            "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET",
+            "declared_task_classes":["provenance_sensitive"],"p_connections":resolved_connections
           }
           pathlib.Path(f"lesson-request{sfx}.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY
