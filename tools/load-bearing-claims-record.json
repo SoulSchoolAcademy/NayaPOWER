@@ -70,6 +70,27 @@
       "why_not_fixed_here": "Deciding what counts as acceptable evidence is a truth/authority policy, not a parsing change. Requiring at least one CVO- id, or resolving each ref against nayanet-causal-verifications, are both defensible and have different failure modes. That choice is an owner's. The repair is small once the policy is chosen.",
       "not_a_theory": "Executed. The pinned test passes evidence_refs: ['not-a-verification', '', '0'] and observes ok:true, verified:true, block LEARNED, relationship VERIFIED. A second test shows the id is silently null in the canonical provenance, and a third shows that one forged 'CVO-forged' string among junk is accepted as the causal_verification_id.",
       "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
+    },
+    {
+      "id": "CV-08",
+      "claim": "verification checks are computed from evidence",
+      "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "problem": "A CHECK, not a result, is a hardcoded literal. index.ts:542 emits `receipt_mutated_after_refusal: false` inside refusalChecks, where every neighbouring field is computed from the row actually read. index.ts:571 then gates on it with `refusalChecks.receipt_mutated_after_refusal === false`, i.e. `false === false`, which is always true. The runtime therefore reports, under a field whose name promises mutation detection, that no mutation occurred -- while being structurally incapable of ever reporting that one did. A second field in the same object, refusal_receipt_owner_matches, IS computed at index.ts:535 and surfaced in the response, but is absent from refusalChecksPass at index.ts:563-572, so it is presented as part of the gate while having no effect on it.",
+      "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Computing the check means choosing what 'mutated after refusal' means, which needs a before-image to compare against; no such field exists on the receipt row today. Inventing the semantics from an enforcement PR would be a truth decision dressed as a bugfix. The honest minimum repair is to DELETE the field and remove it from the gate, so the verification stops claiming a check it does not perform -- that is a small, uncontroversial change an owner may reasonably authorise immediately.",
+      "not_a_theory": "Executed. The pinning test drives the real handler with a refusal receipt whose observed_result was rewritten after persistence -- precisely the event the check is named for. Every genuinely computed check still passes, receipt_mutated_after_refusal still reports false, and the runtime returns ok:true / OUTCOME_VERIFIED / independent_verification:true. A companion test confirms all six neighbouring checks are real, which is what makes this field invisible on inspection.",
+      "severity_note": "Worst instance of this class found so far, and on the highest-blast-radius surface. CV-01, CV-04 and CV-05 were literals in a verification RESULT. This is a literal in a verification CHECK: it is rendered to every downstream consumer as a passing guard. On a surface whose entire purpose is converting an authority grant into an external effect, that is the difference between 'the answer is wrong' and 'the guard that was supposed to prevent the wrong answer is itself fake'."
+    },
+    {
+      "id": "CV-09",
+      "claim": "an outcome was not self-certified by its executor",
+      "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "problem": "index.ts:556 defines outcome_not_self_certified_at_execution as `outcome.verification_method === 'PENDING_INDEPENDENT_RUNTIME_VERIFICATION' || outcome.verified === true`. The second arm accepts ANY row already claiming verified:true regardless of the verification_method it carries. So a pre-set flag -- set by the executor, by a prior verifier, or by anyone with write access to nayanet_execution_outcomes -- satisfies the check, and the check then contributes no evidence that this runtime performed an independent reread. The name promises anti-self-certification; the expression permits it.",
+      "law": "SN-0481 (never impersonate the verifier), SN-042 (independence must be real)",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Deciding whether a prior independent verification should be accepted, rejected, or required to match a specific recorded method is a verification-policy question. Narrowing the check is a one-line change; choosing the correct predicate is not.",
+      "not_a_theory": "Executed. The pinning test seeds an outcome with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT', drives the real handler, and observes outcome_not_self_certified_at_execution:true with a 200 OUTCOME_VERIFIED response."
     }
   ],
   "hardcoded_independent_verification_sites": {
