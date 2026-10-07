@@ -11,6 +11,11 @@ on:
       - 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json'
       - '.github/workflows/live-act-proof.yml'
   workflow_dispatch:
+    inputs:
+      expected_source_sha:
+        description: "Exact main SHA whose deployed ACT/KNOW/CONNECT bytes must match before behavioral proof"
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -18,10 +23,87 @@ permissions:
 
 env:
   LAW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-law-runtime
+  KNOW_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-know-runtime
   ACT_RUNTIME: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-act-runtime
 
 jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      eligible: ${{ steps.classify.outputs.eligible }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Require exact deployed ACT/KNOW/CONNECT source parity
+        id: classify
+        env:
+          EXPECTED_SOURCE_SHA: ${{ inputs.expected_source_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/evidence
+          expected="${EXPECTED_SOURCE_SHA:-}"
+          status="PARITY_ELIGIBLE"
+          reason=""
+          production_source="UNKNOWN"
+          mismatch_path=""
+          if [ -n "$expected" ] && [ "$expected" != "$GITHUB_SHA" ]; then
+            status="BLOCKED_BY_REQUESTED_SOURCE"
+            reason="workflow_dispatch expected_source_sha does not equal this workflow head"
+          elif ! git fetch origin production:refs/remotes/origin/production; then
+            status="BLOCKED_BY_NO_PRODUCTION_REF"
+            reason="production ref unavailable"
+          else
+            production_source="$(git show origin/production:supabase/functions/nayanet-verified-ai-action/index.ts | python -c 'import re,sys; s=sys.stdin.read(); m=re.findall(r"const DEPLOYED_SOURCE_REVISION = \"([0-9a-f]{40})\";",s); print(m[0] if len(m)==1 else "UNKNOWN")')"
+            if [ "$production_source" != "$GITHUB_SHA" ]; then
+              status="BLOCKED_BY_PRODUCTION_SOURCE"
+              reason="production source stamp does not equal workflow head"
+            else
+              for path in \
+                supabase/functions/nayanet-law-runtime/index.ts \
+                supabase/functions/nayanet-act-runtime/index.ts \
+                supabase/functions/nayanet-act-runtime/act.ts \
+                supabase/functions/nayanet-know-runtime/index.ts \
+                supabase/functions/nayanet-know-runtime/know.ts \
+                supabase/functions/_shared/connect_selector.ts
+              do
+                source_blob="$(git rev-parse "$GITHUB_SHA:$path")"
+                production_blob="$(git rev-parse "origin/production:$path")"
+                if [ "$source_blob" != "$production_blob" ]; then
+                  status="BLOCKED_BY_RUNTIME_BLOB_MISMATCH"
+                  reason="production runtime dependency differs from exact workflow source"
+                  mismatch_path="$path"
+                  break
+                fi
+              done
+            fi
+          fi
+          if [ "$status" = "PARITY_ELIGIBLE" ]; then eligible=true; else eligible=false; fi
+          python - "$status" "$reason" "$production_source" "$mismatch_path" "$GITHUB_SHA" <<'PY'
+          import json,sys
+          status,reason,production_source,mismatch_path,source=sys.argv[1:]
+          json.dump({
+            "status":status,
+            "source_sha":source,
+            "production_stamped_source_revision":production_source,
+            "mismatch_path":mismatch_path or None,
+            "behavioral_proof_executed":False,
+            "reason":reason or None,
+          },open(".naya/evidence/live-act-proof-preflight.json","w"),indent=2)
+          PY
+          echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
+          if [ "$eligible" = "false" ]; then
+            echo "::notice title=Live ACT proof blocked by parity::$status source=$GITHUB_SHA production_source=$production_source mismatch=$mismatch_path"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: act-live-proof-preflight
+          path: .naya/evidence/live-act-proof-preflight.json
+
   law-to-act:
+    needs: preflight
+    if: needs.preflight.outputs.eligible == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -61,34 +143,95 @@ jobs:
           json.dump({"law_receipt_id":x["receipt"]["id"]},open("ids.json","w"),indent=2)
           PY
 
-      - name: ACT executes exactly the LAW-authorized Smart Door operation
+      - name: KNOW selects applicable intelligence from normal task context
         shell: bash
         run: |
           set -euo pipefail
           law_id="$(python -c 'import json; print(json.load(open("ids.json"))["law_receipt_id"])')"
-          cat > act-request.json <<JSON
+          cat > know-request.json <<JSON
           {
-            "mode":"execute",
+            "mode":"retrieve",
             "law_receipt_id":"$law_id",
+            "task_id":"ACT-P0-PROVENANCE-001",
+            "task_class":"governed_action_planning",
+            "required_capability":"provenance_preservation"
+          }
+          JSON
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @know-request.json "$KNOW_RUNTIME" > know-selected.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("know-selected.json"))
+          assert x["ok"] is True, x
+          assert x["status"]=="KNOW_RETRIEVED", x
+          r=x["result"]
+          assert r["status"]=="HIT", x
+          assert r["applicable"] is True, x
+          assert r["required_capability"]=="provenance_preservation", x
+          assert r["retrieval_creates_authority"] is False, x
+          assert isinstance(r["selected_block_id"],str) and r["selected_block_id"], x
+          ids["know_receipt_id"]=x["receipt"]["id"]
+          ids["selected_block_id"]=r["selected_block_id"]
+          json.dump(ids,open("ids.json","w"),indent=2)
+          PY
+
+      - name: ACT plans from persisted KNOW selection then executes only that durable plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          law_id="$(python -c 'import json; print(json.load(open("ids.json"))["law_receipt_id"])')"
+          know_id="$(python -c 'import json; print(json.load(open("ids.json"))["know_receipt_id"])')"
+          cat > act-plan-request.json <<JSON
+          {
+            "mode":"plan",
+            "law_receipt_id":"$law_id",
+            "retrieval_receipt_id":"$know_id",
             "action":"naya_node_apply",
             "target":"NAYA-NODE-0001",
             "door_id":"DOOR-AI",
             "operation":"apply_retained_intelligence"
           }
           JSON
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @act-request.json "$ACT_RUNTIME" > act-executed.json
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @act-plan-request.json "$ACT_RUNTIME" > act-planned.json
+          python - <<'PY'
+          import json
+          ids=json.load(open("ids.json"))
+          x=json.load(open("act-planned.json"))
+          assert x["ok"] is True, x
+          assert x["status"]=="PLANNED", x
+          p=x["plan"]
+          assert p["status"]=="READY", x
+          assert p["reason"]=="APPLICABLE_INTELLIGENCE_STEERED_PLAN", x
+          assert p["plan_changed"] is True, x
+          assert p["intelligence_applied_to_plan"] is True, x
+          assert p["selection_replay_verified"] is True, x
+          assert p["law_reresolution_required"] is False, x
+          assert p["pre_learning_plan"]["behavior"]=="APPLY_BASELINE_WITHOUT_RETAINED_STEERING", x
+          assert p["post_retrieval_plan"]["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY", x
+          assert p["selected_intelligence"]["intelligent_block_id"]==ids["selected_block_id"], x
+          assert x["plan_receipt"]["action"]=="act_node_plan", x
+          assert x["plan_receipt"]["evidence"]["stage"]=="PLAN_READY", x
+          assert x["action_executed"] is False, x
+          ids["plan_receipt_id"]=x["plan_receipt"]["id"]
+          json.dump(ids,open("ids.json","w"),indent=2)
+          PY
+          plan_id="$(python -c 'import json; print(json.load(open("ids.json"))["plan_receipt_id"])')"
+          printf '{"mode":"execute","plan_receipt_id":"%s"}' "$plan_id" > act-request.json
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @act-request.json "$ACT_RUNTIME" > act-executed.json
           python - <<'PY'
           import json
           ids=json.load(open("ids.json"))
           x=json.load(open("act-executed.json"))
           assert x["ok"] is True, x
           assert x["status"]=="EXECUTED", x
-          assert x["guard"]["status"]=="READY", x
-          assert x["guard"]["reason"]=="LAW_AND_LIVE_AUTHORITY_MATCH", x
-          assert x["guard"]["law_receipt_id"]==ids["law_receipt_id"], x
-          assert x["guard"]["authority_grant_id"]=="ab66924e-aa3b-4c57-a029-20e96a6a8afc", x
+          assert x["planning_mode"]=="TWO_PHASE_KNOW_CONNECT_BOUND", x
+          assert x["observation"]["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY", x
+          assert x["observation"]["selected_intelligence_id"]==ids["selected_block_id"], x
           assert x["receipt"]["action"]=="act_node_execute", x
           assert x["receipt"]["status"]=="SUCCESS", x
+          assert x["receipt"]["evidence"]["plan_receipt_id"]==ids["plan_receipt_id"], x
+          assert x["receipt"]["evidence"]["retrieval_receipt_id"]==ids["know_receipt_id"], x
+          assert x["receipt"]["evidence"]["independent_verification"] is False, x
           assert x["handoff_to"]=="NAYA-KERNEL-VERIFY", x
           ids["act_receipt_id"]=x["receipt"]["id"]
           json.dump(ids,open("ids.json","w"),indent=2)
@@ -128,6 +271,8 @@ jobs:
           name: act-primary-proof
           path: |
             law-authorized.json
+            know-selected.json
+            act-planned.json
             act-executed.json
             act-refused.json
             ids.json
@@ -147,82 +292,69 @@ jobs:
           token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
           printf '%s' "$token" > "$RUNNER_TEMP/oidc.jwt"
 
-      - name: Reread authoritative ACT, LAW, grant and canonical block state
+      - name: Cold-reread durable ACT plan and authoritative execution state
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
           ids=json.load(open("ids.json"))
-          json.dump({
-            "mode":"inspect",
-            "action_receipt_id":ids["act_receipt_id"],
-            "refusal_receipt_id":ids["refusal_receipt_id"]
-          },open("inspect-request.json","w"))
+          json.dump({"mode":"inspect-plan","plan_receipt_id":ids["plan_receipt_id"]},open("inspect-plan-request.json","w"))
+          json.dump({"mode":"inspect","action_receipt_id":ids["act_receipt_id"],"refusal_receipt_id":ids["refusal_receipt_id"]},open("inspect-request.json","w"))
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @inspect-request.json "$ACT_RUNTIME" > authoritative-reread.json
-
-      - name: Independently recompute requested = authorized = executed = observed
+          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @inspect-plan-request.json "      - name: Independently recompute KNOW-bound plan, execution and refusal
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           import json
-          x=json.load(open("authoritative-reread.json"))
-          assert x["ok"] is True, x
-          a=x["action_receipt"]; r=x["refusal_receipt"]; l=x["law_receipt"]; g=x["live_grant"]; b=x["canonical_block"]; d=x["door_contract"]
-          ae=a["evidence"]; le=l["evidence"]; law_req=le["law_request"]; law_dec=le["law_decision"]; req=ae["request"]; guard=ae["guard"]
-
-          expected_behavior="PRESERVE_PROVENANCE_BEFORE_APPLY" if "Preserve provenance before applying retained intelligence" in str(b["content"].get("lesson","")) else "RETAINED_INTELLIGENCE_APPLIED"
-
-          checks={
-            "act_receipt_persisted": a["action"]=="act_node_execute" and a["status"]=="SUCCESS",
-            "law_receipt_persisted": l["action"]=="law_authority_decision" and l["status"]=="SUCCESS",
-            "law_authorized": law_dec["status"]=="AUTHORIZED",
-            "same_owner": a["user_id"]==l["user_id"]==g["issuer_id"]==g["subject_id"],
-            "same_action": req["action"]==law_req["action"]==law_dec["action"]==d["authority_action"]=="naya_node_apply",
-            "same_target": req["target"]==law_req["target"]==law_dec["target"]==d["target"]=="NAYA-NODE-0001",
-            "same_door": req["door_id"]==d["door_id"]=="DOOR-AI",
-            "same_operation": req["operation"]==d["operation"]=="apply_retained_intelligence",
-            "law_receipt_consumed": ae["law_receipt_id"]==l["id"]==guard["law_receipt_id"],
-            "grant_bound": guard["authority_grant_id"]==g["grant_id"]=="ab66924e-aa3b-4c57-a029-20e96a6a8afc",
-            "grant_live": g["status"]=="ACTIVE" and g.get("revoked_at") is None and "naya_node_apply" in g["actions"],
-            "canonical_block_reread": ae["canonical_block_id"]==b["intelligent_block_id"]=="IB-NAYA-NODE-0001-0001",
-            "observed_recomputed": a["observed_result"]==ae["observed_behavior"]==expected_behavior,
-            "verify_handoff_only": ae["handoff_to"]=="NAYA-KERNEL-VERIFY",
-            "refusal_persisted": r["action"]=="act_node_refusal" and r["status"]=="BLOCKED",
-            "refusal_no_law": r["evidence"]["guard"]["reason"]=="LAW_RECEIPT_REQUIRED",
-            "capability_existed_during_refusal": r["evidence"]["door_capability_available"] is True,
-            "refusal_had_no_effect": r["evidence"]["action_executed"] is False and r["evidence"]["observed"] is False
-          }
-          assert all(checks.values()), checks
+          ids=json.load(open("ids.json"))
+          p=json.load(open("plan-reread.json"))
+          a=json.load(open("authoritative-reread.json"))
+          assert p["ok"] is True and p["status"]=="CANONICAL_PLAN_REREAD", p
+          assert p["cold_reconstruction"] is True, p
+          assert p["executor_claim_trusted_as_verification"] is False, p
+          stored=p["plan_receipt"]["evidence"]["plan"]
+          recomputed=p["recomputed_plan"]
+          assert recomputed==stored, (stored,recomputed)
+          assert recomputed["status"]=="READY", recomputed
+          assert recomputed["reason"]=="APPLICABLE_INTELLIGENCE_STEERED_PLAN", recomputed
+          assert recomputed["selection_replay_verified"] is True, recomputed
+          assert recomputed["plan_changed"] is True, recomputed
+          assert recomputed["intelligence_applied_to_plan"] is True, recomputed
+          assert recomputed["pre_learning_plan"]["behavior"]=="APPLY_BASELINE_WITHOUT_RETAINED_STEERING", recomputed
+          assert recomputed["post_retrieval_plan"]["behavior"]=="PRESERVE_PROVENANCE_BEFORE_APPLY", recomputed
+          assert recomputed["selected_intelligence"]["intelligent_block_id"]==ids["selected_block_id"], recomputed
+          assert p["retrieval_receipt"]["id"]==ids["know_receipt_id"], p
+          assert p["law_receipt"]["id"]==ids["law_receipt_id"], p
+          assert a["ok"] is True and a["status"]=="AUTHORITATIVE_STATE_REREAD", a
+          ar=a["action_receipt"]; ae=ar["evidence"]; rr=a["refusal_receipt"]
+          assert ar["action"]=="act_node_execute" and ar["status"]=="SUCCESS", ar
+          assert ae["planning_mode"]=="TWO_PHASE_KNOW_CONNECT_BOUND", ae
+          assert ae["plan_receipt_id"]==ids["plan_receipt_id"], ae
+          assert ae["retrieval_receipt_id"]==ids["know_receipt_id"], ae
+          assert ae["selected_intelligence"]["intelligent_block_id"]==ids["selected_block_id"], ae
+          assert ae["observed_behavior"]==recomputed["post_retrieval_plan"]["behavior"], ae
+          assert ae["independent_verification"] is False, ae
+          assert a["canonical_block"]["intelligent_block_id"]==ids["selected_block_id"], a
+          assert a["live_grant"]["status"]=="ACTIVE" and a["live_grant"].get("revoked_at") is None, a
+          assert rr["action"]=="act_node_refusal" and rr["status"]=="BLOCKED", rr
+          assert rr["evidence"]["action_executed"] is False, rr
           proof={
-            "schema":"naya.act.live-proof.v1",
+            "schema":"naya.act.learning-activation.live-proof.v1",
             "status":"PASS",
             "node_id":"NAYA-KERNEL-ACT",
-            "checks":checks,
-            "authorized":{
-              "law_receipt_id":l["id"],
-              "authority_grant_id":g["grant_id"],
-              "act_receipt_id":a["id"],
-              "action":"naya_node_apply",
-              "door":"DOOR-AI",
-              "operation":"apply_retained_intelligence",
-              "observed_behavior":expected_behavior
-            },
-            "refused":{
-              "act_refusal_receipt_id":r["id"],
-              "reason":"LAW_RECEIPT_REQUIRED",
-              "door_capability_available":True,
-              "action_executed":False
-            },
+            "planning_mode":"TWO_PHASE_KNOW_CONNECT_BOUND",
+            "law_receipt_id":ids["law_receipt_id"],
+            "retrieval_receipt_id":ids["know_receipt_id"],
+            "plan_receipt_id":ids["plan_receipt_id"],
+            "act_receipt_id":ids["act_receipt_id"],
+            "selected_intelligence_id":ids["selected_block_id"],
+            "observed_behavior":ae["observed_behavior"],
+            "cold_reconstruction":True,
             "independent_verification":True,
             "executor_claim_trusted_as_verification":False,
-            "limits":[
-              "Bounded ACT vertical slice only; universal nine-node runtime binding remains NOT_PROVEN.",
-              "The verifier rereads and recomputes ACT proof but this pass does not claim the general VERIFY Node is implemented.",
-              "KNOW/PROVE/CONNECT/LEARN/EVOLVE universal bindings remain separate rungs."
-            ]
+            "retrieval_creates_authority":False,
           }
           json.dump(proof,open("act-live-proof.json","w"),indent=2)
           PY
@@ -231,5 +363,6 @@ jobs:
         with:
           name: act-independent-proof
           path: |
+            plan-reread.json
             authoritative-reread.json
             act-live-proof.json
