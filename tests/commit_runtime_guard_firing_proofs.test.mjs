@@ -7,29 +7,14 @@ import vm from "node:vm";
 // Firing proofs for nayanet-intelligence-commit-runtime -- the canonical write path
 // everything else depends on.
 //
-// AND the proof of a defect found while writing them:
+// CV-04 was a live-runtime truth defect: both verification paths previously hardcoded
+// `independent_verification: true`, including broken or missing persisted state. The
+// repaired paths derive the flag from the actual verification result. The falsifiers below
+// keep that contract executable, including a healthy positive control.
 //
-//   index.ts:309 returns `independent_verification: true` as a LITERAL, while the same
-//   response carries `ok: pass` and `status: pass ? "LINEAGE_VERIFIED" : "LINEAGE_BROKEN"`.
-//
-//   So when the lineage is broken, the runtime answers:
-//       { ok: false, status: "LINEAGE_BROKEN", independent_verification: true }
-//
-//   A broken lineage attests that it was independently verified. index.ts:244 has the
-//   same literal for verify_block.
-//
-//   The comparator is right next door: nayanet-causal-verify computes
-//   `independent_verification: valid` from the actual result. This function hardcodes it.
-//
-//   This is the same defect class as CV-01 in live-supabase-runtime-proof.yml, but worse
-//   in one respect: that one was a CI receipt builder, this one is the LIVE runtime that
-//   other nodes trust. SN-0481 (never impersonate the verifier) and SN-0462 (structural
-//   audit blind to meaning) both apply.
-//
-//   The test below does NOT assert the fixed behaviour. It asserts the CURRENT behaviour
-//   exactly, including the lie, so the lie is on the record in executable form and the
-//   fix is a one-line change that turns this test red. Fixing it silently would be worse
-//   than the defect.
+// The comparator is nayanet-causal-verify, which also computes `independent_verification`
+// from the actual result. SN-0481 (never impersonate the verifier) and SN-0462 (structural
+// audit blind to meaning) remain the governing laws.
 
 const source = readFileSync(
   new URL("../supabase/functions/nayanet-intelligence-commit-runtime/index.ts", import.meta.url),
@@ -128,11 +113,11 @@ const verifyBody = {
   checkpoint_id: "c1",
 };
 
-// ── The defect, pinned ────────────────────────────────────────────────────────
+// ── Verified-result falsifiers ────────────────────────────────────────────────
 
-test("DEFECT PINNED -- verify returns independent_verification: true even when lineage is broken", async () => {
-  // Break the checkpoint's link to the block. `ok` goes false and status goes
-  // LINEAGE_BROKEN -- and independent_verification stays true, because it is a literal.
+test("CV-04 FALSIFIER -- broken lineage cannot claim independent verification", async () => {
+  // Break the checkpoint's link to the block. The independent-verification claim must
+  // follow the recomputed lineage result rather than a hardcoded success flag.
   const rt = runtime({ breakLink: "intelligent_block_id" });
   const res = await rt.invoke(verifyBody);
   const body = await res.json();
@@ -140,23 +125,17 @@ test("DEFECT PINNED -- verify returns independent_verification: true even when l
   assert.equal(body.ok, false, "precondition: the lineage really is broken");
   assert.equal(body.status, "LINEAGE_BROKEN");
   assert.equal(body.checks.checkpoint_links_block, false);
-  assert.equal(
-    body.independent_verification,
-    true,
-    "THIS IS THE DEFECT. A broken lineage currently attests independent verification. " +
-    "If this assertion fails, the literal was fixed -- good -- and this test should be " +
-    "updated to assert `independent_verification: false` on a broken lineage."
-  );
+  assert.equal(body.independent_verification, false);
 });
 
-test("DEFECT PINNED -- verify_block also hardcodes independent_verification", async () => {
+test("CV-04 FIX -- a missing verify_block cannot claim independent verification", async () => {
   const rt = runtime({ drop: "nayanet_intelligent_blocks" });
   const res = await rt.invoke({ mode: "verify_block", intelligent_block_id: "IB-000123" });
   const body = await res.json();
   assert.equal(res.status, 404);
   assert.equal(body.ok, false);
   assert.equal(body.status, "BLOCK_NOT_FOUND");
-  assert.equal(body.independent_verification, true, "same defect on the verify_block path");
+  assert.equal(body.independent_verification, false);
 });
 
 test("the honest comparator proves the correct pattern already exists in the codebase", async () => {

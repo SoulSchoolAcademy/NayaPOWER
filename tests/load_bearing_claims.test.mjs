@@ -160,27 +160,18 @@ test("CLAIM 2 -- the nine-node receipt's ablation step must prove behavior, not 
 });
 
 test("CLAIM 2 -- the hardcoded-verification defect is recorded, not hidden", () => {
-  // A second site was found after the record was written:
-  // supabase/functions/nayanet-intelligence-commit-runtime/index.ts returns
-  // `independent_verification: true` as a literal at BOTH verify (line ~309) and
-  // verify_block (line ~244), while the same response reports
-  // `ok: pass` / `status: LINEAGE_BROKEN`. A broken lineage attests that it was
-  // independently verified.
-  //
-  // This is the same class as CV-01, and worse in one respect: CV-01 was a CI receipt
-  // builder, this is the LIVE runtime other nodes trust. The correct pattern already
-  // exists in the codebase -- nayanet-causal-verify computes
-  // `independent_verification: valid` -- so the repair is a one-line change.
-  //
-  // Recorded rather than fixed: correcting a live runtime's evidence semantics is an
-  // owner decision, and the pinned test makes the lie executable rather than buried.
+  // CV-04 was a live-runtime truth defect: both intelligence-commit verification paths
+  // previously hardcoded `independent_verification: true`. It is now repaired, and the
+  // record keeps the finding visible as RESOLVED rather than silently deleting history.
+  // The correct pattern already exists in the codebase -- nayanet-causal-verify computes
+  // `independent_verification: valid` from the actual result.
   const ids = new Set(RECORD.violations.map((v) => v.id));
   assert.ok(
     ids.has("CV-04"),
     "the intelligence-commit-runtime hardcoded independent_verification must be recorded as CV-04"
   );
   const cv4 = RECORD.violations.find((v) => v.id === "CV-04");
-  assert.match(cv4.status, /^OPEN/, "CV-04 is an open truth defect and must say so");
+  assert.match(cv4.status, /^RESOLVED/, "CV-04 is repaired locally and must say so");
   assert.ok(
     /intelligence-commit-runtime/.test(cv4.location),
     "CV-04 must name the file so the finding is findable without reading this test"
