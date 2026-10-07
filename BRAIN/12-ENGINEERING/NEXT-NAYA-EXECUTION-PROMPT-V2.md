@@ -781,3 +781,93 @@ A predecessor's authority is not the successor's authority.
 > **Recover what exists → understand what matters → act on the highest-value authorized frontier → prove the result → learn from it → preserve it → hand the next Naya a better starting point → go again.**
 
 **NAYA POWER ON. 🔱**
+
+
+---
+
+# 22. LIVE RE-ANCHOR — 2026-10-06
+
+This section is a dated execution checkpoint, not a substitute for resolving `refs/heads/main` at the moment of work.
+
+**Last exact main observed while writing this re-anchor:**
+`427fc9064c3dda454aaec7510751864fb0190a45`
+
+## Current verified source deltas
+
+- PR #1664 **MERGED**: governed Naya runtime agent-capture path now exists on `main`; canonical Receiver itself remains unchanged.
+- PR #1653 **MERGED**: `promote_note()` now actually routes through the truth-state/elevation guard instead of bypassing it.
+- PR #1655 **MERGED**: authenticated Evolve caller ownership is enforced; production migration remains a separate human gate.
+- PR #1652 **MERGED**: retrieval relevance now uses field weighting, phrase bonus and conservative stemming while preserving authority/tie-break boundaries.
+- PR #1660 **MERGED**: SN-0459 registration/index drift repair is on current lineage.
+- PR #1651 **MERGED**: Parallel Execution Law 0013 is ratified in the current governance lineage.
+- PR #1648 **MERGED**: VERIFIED→RATIFIED elevation now requires a bounded valid grant.
+- SN-0361 **IS PRESENT ON CURRENT MAIN**: the Recovery Thesis is registered as ACTIVE/CANDIDATE and has a generated Brain projection plus canonical Smart Link. It must not be treated as VERIFIED learning merely because the projection exists.
+
+## Current live proof boundary
+
+### CAPTURE
+Source implementation is now merged. Behavioral proof is still pending the legitimate `naya-runtime` identity + four repository secrets + actual workflow execution and receipt.
+
+### RETRIEVAL
+PR #1665 is open but based on an older main. Reconcile it before acceptance. Do not accept stale-base behavior as current behavior.
+
+### NINE-NODE KERNEL
+PR #1663 is open but based on an older main. Reconcile it before acceptance. The required proof remains EXISTS → LOADS → INVOKES → INFLUENCES → APPLIES across all nine responsibilities.
+
+### PRODUCTION
+#1593 remains OPEN. Current source correctness never substitutes for exact current deployed-runtime evidence. Any prior deployment authorization expires when `main` moves.
+
+### LEARNING
+#1602 remains HOLD pending recovery of the original owner-authored Round-2 fixtures/key. Never reconstruct, infer, or replace those originals.
+
+### HUB
+The design contract remains the visual law; current Hub readiness remains low because functional/intelligence/runtime/accessibility paths are incomplete. Do not build decorative shells ahead of the canonical intelligence seam.
+
+## Mandatory correction to old state
+
+Any older document, issue comment or handoff that says:
+- #1664 is not merged,
+- SN-0361 is absent,
+- #554 is the active Team Naya feed,
+- or Basic Memory is part of persistence
+
+is historical/stale and must not be used as present truth.
+
+**Current Team Naya coordination:** #1354.
+**Historical coordination:** #554.
+**Project continuity/source:** GitHub/NayaPOWER.
+**Runtime durable intelligence substrate:** canonical NayaPOWER runtime/Intelligent Blocks/events/lineage/relationships/index/checkpoints/receipts.
+**No second project-memory system.**
+
+## Cold-14 acceptance status
+
+The repository carries the Cold-14 contract and a source-bound current-state audit. A true independent cold session that answers all 14 with source/evidence and no conversational injection is still a required acceptance test.
+
+For each answer, require:
+**ANSWER → STATE → SOURCE → CURRENTNESS → AUTHORITY → UNKNOWN/CONFLICT → NEXT ACTION**
+
+## Current execution order
+
+1. **PROVE agent capture** through the merged #1664 path once the Human Director identity/secret gate is satisfied.
+2. **Reconcile and accept #1665** against the exact current main; then prove cold discovery, applicability, supersession and conflict handling.
+3. **Reconcile and accept #1663** against current main; then prove nine-node runtime influence.
+4. **Run the complete Collective Intelligence Chain** on a real, admissible lesson.
+5. **Close #1593 production proof** only from the exact current production boundary.
+6. **Close #1602 Round-2** only when original fixtures/key are recovered and independently validated.
+7. **Generalize CONNECT → APPLY → VERIFY → LEARN → SUCCESSOR** using held-out evidence.
+8. **Instrument verified value and computational waste**: attention, redundancy, re-explanation, tool/model calls, error, latency, useful outcome delta.
+9. **Make Hub intelligence-first and causal**, then harden browser/runtime/mobile/accessibility/performance.
+10. **Only after the causal chain is green**, pursue bounded self-optimization/self-building and network-scale collective intelligence.
+
+## One-next-action law
+
+At every handoff, select exactly one executable frontier from the list above based on current evidence. State:
+
+**WHAT → WHERE → EVIDENCE → SUCCESS CONDITION → WHAT CHANGES AFTER SUCCESS**
+
+Never leave the successor with a generic “investigate.”
+
+## Final re-anchor rule
+
+This appendix never outranks fresher evidence. The next Naya must resolve current `main`, inspect the latest #1354 tail and relevant project feed, then continue the loop.
+
