@@ -323,6 +323,16 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
         })
         return True, _record(True, "DEMOTION_PERMITTED", f"{old} -> {new}")
 
+    # RATIFIED is a Human-Director authority boundary. Its governed entrance is
+    # VERIFIED -> RATIFIED; allowing CANDIDATE/TESTING to jump directly here
+    # would bypass the bounded elevation-grant check below.
+    if new == "RATIFIED" and old != "VERIFIED":
+        return False, _record(
+            False,
+            "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR",
+            f"RATIFIED may only be entered from VERIFIED; current state is {old}",
+        )
+
     # Elevation: authority AND evidence, checked separately and in order.
     ok, rec = check_authority(authority)
     if not ok:
