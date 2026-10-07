@@ -1,0 +1,79 @@
+{
+  "schema": "NAYANET_LEARNING_COMPOUNDING_PROOF_V1",
+  "gate_version": "1.0.0",
+  "updated_at": "2026-10-07T04:02:46.779565+00:00",
+  "lessons": {
+    "L1-COMPOUND-STOPWORDS-V1": {
+      "id": "L1-COMPOUND-STOPWORDS-V1",
+      "title": "Strip stopwords before lesson matching",
+      "keywords": [
+        "stopwords",
+        "retrieval",
+        "matching",
+        "signal"
+      ],
+      "text": "Strip stopwords from the query before lesson matching. Stopwords (to, is, when, what, does, ...) carry no retrieval signal; matching them lets long generic notes outrank the note that actually teaches the queried concept.",
+      "stopwords_on": true,
+      "synonyms": {},
+      "provenance": {
+        "derived_from": [],
+        "method": "gate-authored seed lesson"
+      },
+      "measured_accuracy": 0.4166666666666667
+    },
+    "L2-COMPOUND-DERIVED-SYNONYMS-V1": {
+      "id": "L2-COMPOUND-DERIVED-SYNONYMS-V1",
+      "title": "Refined retrieval lesson with derived synonyms compounding",
+      "keywords": [
+        "refined",
+        "derived",
+        "synonyms",
+        "compounding",
+        "retrieval"
+      ],
+      "text": "Refined retrieval: strip stopwords (L1), then expand the query with synonym mappings derived from L1's measured failures: remove->delete. Mappings were kept only with positive marginal gain on the full benchmark (greedy forward selection).",
+      "stopwords_on": true,
+      "synonyms": {
+        "remove": [
+          "delete"
+        ]
+      },
+      "provenance": {
+        "derived_from": [
+          "L1-COMPOUND-STOPWORDS-V1"
+        ],
+        "method": "mechanical: failure-driven synonym selection",
+        "l1_failures": [
+          {
+            "query": "when is it safe to remove something",
+            "expected": "SN-0408"
+          },
+          {
+            "query": "does more stored knowledge mean smarter",
+            "expected": "SN-042"
+          },
+          {
+            "query": "why must scorecards come before merging",
+            "expected": "SN-0340"
+          },
+          {
+            "query": "what do you do when you do not know",
+            "expected": "SN-013"
+          },
+          {
+            "query": "can many agents reviewing the same thing count as independent",
+            "expected": "SN-042"
+          },
+          {
+            "query": "how do you know if you are actually learning",
+            "expected": "SN-042"
+          },
+          {
+            "query": "does repeating something make it true",
+            "expected": "SN-042"
+          }
+        ]
+      }
+    }
+  }
+}

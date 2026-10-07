@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
 from pathlib import Path
 
+# Truth-state guard (Option C, 2026-10-06): all elevations go through
+# apply_elevation() so authority, evidence, and grants are enforced by code.
+from tools.truth_state_guard import apply_elevation as _guard_apply_elevation
+
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
 REGISTRY = ROOT / ".naya" / "memory" / "smart-notes" / "index.json"
@@ -555,6 +559,27 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
 # exactly as before.
 TRUTH_STATE_RANK = {"LEARNED": 4, "ACTIVE": 3, "RATIFIED": 2, "VERIFIED": 1}
 
+def _stem(word):
+    """Normalize common English inflections so 'compounding' matches 'compound'.
+
+    Conservative: only strips unambiguous suffixes, never shortens below
+    4 chars, applied identically to query and haystack so matches are
+    preserved. (Retrieval 10/10 track, 2026-10-06.)
+    """
+    if len(word) <= 4:
+        return word
+    for suffix in ("ing", "ed", "es", "ly", "ion"):
+        if word.endswith(suffix) and len(word) > len(suffix) + 3:
+            return word[:-len(suffix)]
+    if word.endswith("s") and not word.endswith("ss") and len(word) > 5:
+        return word[:-1]
+    return word
+
+
+def _field_words(text):
+    """Tokenize text into a set of stemmed lowercase words."""
+    return set(_stem(w) for w in re.findall(r"[a-z0-9]+", text.lower()))
+
 def _nutshell_text(projection_path):
     """Return a note's IN A NUTSHELL lesson text for retrieval matching.
 
@@ -571,21 +596,36 @@ def _nutshell_text(projection_path):
 
 def retrieve(query):
     registry = load_json(REGISTRY)
-    q = set(re.findall(r"[a-z0-9]+", query.lower()))
+    q_raw = re.findall(r"[a-z0-9]+", query.lower())
+    q = set(_stem(w) for w in q_raw)
+    q_phrase = " ".join(q_raw)
     ranked = []
     inactive = {"SUPERSEDED", "ARCHIVED", "REVOKED"}
+    # Field weights (retrieval 10/10 track, 2026-10-06): a query term in the
+    # title is stronger relevance evidence than in keywords. Weights were
+    # chosen so the #1630 boundary tests still hold: relevance dominates,
+    # authority breaks ties, zero-relevance never wins.
     for e in registry.get("entries", []):
         if str(e.get("lifecycle_state", "ACTIVE")).upper() in inactive:
             continue
-        hay = " ".join([e.get("title",""),e.get("category",""),e.get("topic",""),e.get("subtopic","")," ".join(e.get("keywords",[]))]).lower()
+        title = e.get("title", "")
+        nutshell = _nutshell_text(e.get("projection_path", ""))
+        keywords = " ".join(e.get("keywords", []))
+        taxonomy = " ".join([e.get("category", ""), e.get("topic", ""), e.get("subtopic", "")])
         # Lesson-content matching (retrieval track, 2026-10-06): capture stamps
         # every note with the same generic keywords, so the metadata haystack
         # cannot distinguish lessons. Content-word queries ("declaring intent
         # before acting") retrieved wrong notes. Include each note's own
-        # distilled lesson (NUTSHELL) in the haystack. Ranking order is
-        # unchanged: keyword score first, truth-state rank second, recency last.
-        hay += " " + _nutshell_text(e.get("projection_path", "")).lower()
-        score = len(q & set(re.findall(r"[a-z0-9]+", hay)))
+        # distilled lesson (NUTSHELL) in the haystack.
+        score = 0.0
+        score += len(q & _field_words(title)) * 3.0
+        score += len(q & _field_words(nutshell)) * 2.0
+        score += len(q & _field_words(keywords)) * 1.5
+        score += len(q & _field_words(taxonomy)) * 1.0
+        # Phrase bonus: the query as an exact phrase in title or lesson
+        # content is strong relevance signal (not just scattered words).
+        if q_phrase and (q_phrase in title.lower() or q_phrase in nutshell.lower()):
+            score += 2.0
         if score <= 0:
             # Authority never promotes irrelevance: a note matching zero
             # query terms cannot win on truth-state rank alone.
@@ -958,7 +998,33 @@ def promote_note(note_id, evidence_bundle, promoter, registry_path=None):
                     break
         if locked_entry is None:
             raise SystemExit(f"PROMOTION_NOTE_NOT_FOUND: {note_id}")
-        locked_entry["truth_state"] = "VERIFIED"
+        # Truth-state guard (2026-10-06): route the elevation through the
+        # canonical guard so authority, evidence, and grants are enforced
+        # by code, not bypassed. The guard is additive — it can only reject,
+        # never loosen the threshold checks already passed above.
+        _guard_ok, _guard_rec = _guard_apply_elevation(
+            locked_entry,
+            "VERIFIED",
+            authority=promoter,
+            evidence={"items": evidence_bundle},
+        )
+        if not _guard_ok:
+            # Guard rejected: convert to a refusal (do not promote).
+            # The entry is left byte-identical by the guard.
+            refusal = {
+                "schema": "naya.promotion-refusal.v1",
+                "note_id": locked_entry.get("smart_note_id"),
+                "intelligent_block_id": locked_entry.get("intelligent_block_id"),
+                "promoter": promoter,
+                "refused_at": _utc_now(),
+                "threshold_version": PROMOTION_THRESHOLD_VERSION,
+                "reason_code": "GUARD_REJECTED",
+                "reason_detail": f"Truth-state guard rejected elevation: {_guard_rec.get('code')} — {_guard_rec.get('detail')}",
+                "failed_checks": [{"check": "truth_state_guard", "detail": _guard_rec.get("detail")}],
+            }
+            refusal["receipt_hash"] = _hash_receipt(refusal)
+            rp = _write_record(refusal, locked_entry.get("smart_note_id"), "refusal")
+            return {"promoted": False, "record": refusal, "record_path": str(rp)}
         locked_entry["promotion_receipt"] = {
             "promoted_at": receipt["promoted_at"],
             "promoter": promoter,

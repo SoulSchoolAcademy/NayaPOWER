@@ -101,7 +101,7 @@ jobs:
           # Batch-capable discovery (Problem A repair): one capture path per
           # line, sorted. Never aborts on a batch; each capture is proven
           # with its own SMART-NOTE-<capture_id> identity downstream.
-          python tools/smart_note_v2.py discover "${changed[@]}" > capture-paths.txt
+          python -m tools.smart_note_v2 discover "${changed[@]}" > capture-paths.txt
           count="$(grep -c . capture-paths.txt || true)"
           printf '%s' "$count" > capture-count.txt
           python - <<'PY'
@@ -628,7 +628,7 @@ jobs:
           if [[ "$count" -gt 1 ]]; then
             for i in $(seq 0 $((count-1))); do
               capture_path="$(sed -n "$((i+1))p" capture-paths.txt)"
-              python tools/smart_note_v2.py project --capture "$capture_path" --verify "independent-lineage-verification-$i.json" --private-root "$RUNNER_TEMP/private-smart-notes" > "projection-result-$i.json"
+              python -m tools.smart_note_v2 project --capture "$capture_path" --verify "independent-lineage-verification-$i.json" --private-root "$RUNNER_TEMP/private-smart-notes" > "projection-result-$i.json"
               IDX="$i" python - <<'PY'
           import json, os
           i=os.environ["IDX"]
@@ -646,7 +646,7 @@ jobs:
           else
           capture_path="$(cat capture-path.txt)"
           if [[ -n "$capture_path" ]]; then
-            python tools/smart_note_v2.py project               --capture "$capture_path"               --verify independent-lineage-verification.json               --private-root "$RUNNER_TEMP/private-smart-notes" > projection-result.json
+            python -m tools.smart_note_v2 project               --capture "$capture_path"               --verify independent-lineage-verification.json               --private-root "$RUNNER_TEMP/private-smart-notes" > projection-result.json
             python - <<'PY'
           import json
           x=json.load(open("projection-result.json"))

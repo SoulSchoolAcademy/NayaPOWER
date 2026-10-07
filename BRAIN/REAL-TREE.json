@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-06",
-  "receipt_basis_commit": "333f46c3c407898591cad0746bbdb8726dd7613b",
-  "inventory_file_count": 220,
+  "generated_at": "2026-10-07",
+  "receipt_basis_commit": "aea25885b6b2598c367db5995ca5b4379354a47d",
+  "inventory_file_count": 234,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 61,
+    "05-MEMORY": 68,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -159,9 +159,44 @@
       "size": 9313
     },
     {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.ai.md",
+      "blob_sha": "bd192971f09c8b25cadef5abb9620a0e1cd6bbb9",
+      "size": 3430
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-PARALLEL-EXECUTION-V1.human.md",
+      "blob_sha": "a82aa1b3ffc3154d45ebf65b3fdd09836409f76f",
+      "size": 2623
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0013-parallel-execution-v1.machine.json",
+      "blob_sha": "45bcf7ab174b44062dc94fae8a8b2ce5d64cfb6a",
+      "size": 2592
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.ai.md",
+      "blob_sha": "91dbed78f64c1f36b7b0e3959e437897b81a09df",
+      "size": 4744
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-MANTRA-V1.human.md",
+      "blob_sha": "866ef064a64df1483f901d59ef4c16ca86a9d133",
+      "size": 4122
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
+      "blob_sha": "9d9d1fe2937d4ee3bcb6c7c9ebcbae6e884dc290",
+      "size": 3087
+    },
+    {
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",
+      "blob_sha": "37afb12365a81a93357bdd3a91eacd27ab9cfe1b",
+      "size": 1910
     },
     {
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
@@ -205,8 +240,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "e98bf80a5c9b187b51ab0eef56f928325d62f40c",
-      "size": 9870
+      "blob_sha": "6718854aea87b090776ff381824ecad9efada124",
+      "size": 12899
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
@@ -509,6 +544,11 @@
       "size": 8002
     },
     {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/06/IB-DIR-NAYAPOWER-20261006-001.md",
+      "blob_sha": "a5cc40093ada63b786792a6b067d72d16ba7d9cd",
+      "size": 5770
+    },
+    {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
       "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
       "size": 6111
@@ -754,6 +794,36 @@
       "size": 5373
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "blob_sha": "9a5fbe1643e4276825a2308e0858c0b12f62d245",
+      "size": 4859
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
+      "blob_sha": "ac4bc6a073da05763783f32a1a9ba1f1dcc6725c",
+      "size": 7864
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+      "blob_sha": "276e860173bbb9f4ed476fd36e0fb223455a1776",
+      "size": 4976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "blob_sha": "abf4a967c3896802f447b1dbd1095f798b6f5dbc",
+      "size": 5545
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
+      "blob_sha": "984688b30976748819abc0401cbbedc80806b02b",
+      "size": 11378
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "blob_sha": "a17fe344f136c0efd210822268ba86607be90dc5",
+      "size": 4499
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
       "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
       "size": 4958
@@ -955,8 +1025,8 @@
     },
     {
       "path": "BRAIN/12-ENGINEERING/NEXT-NAYA-EXECUTION-PROMPT-V2.md",
-      "blob_sha": "9efe5ad7236a950b54d0fa3a6ba7115c6c7135aa",
-      "size": 20751
+      "blob_sha": "7d4856f3d1d7049a038bd7a7f6d751f506ec6d18",
+      "size": 29132
     },
     {
       "path": "BRAIN/12-ENGINEERING/NORTH-STAR-ACCEPTANCE-AUDIT-36516790588-V2.md",

@@ -20,3 +20,8 @@ def test_governed_write_drift_routes_through_existing_supersession_runtime():
     assert "validate-supersede" in WF
     assert "supersession-reconciliation" in WF
     assert '"mode":"verify_block"' in WF
+
+
+def test_smart_note_v2_runs_as_repo_module_so_tools_imports_resolve():
+    assert "python -m tools.smart_note_v2" in WF
+    assert "python tools/smart_note_v2.py" not in WF

@@ -56,7 +56,7 @@ def test_case1_direct_edit_candidate_to_ratified_rejected():
     e = make_entry("CANDIDATE")
     before = snapshot(e)
     ok, rec = g.apply_elevation(e, "RATIFIED", authority=None, evidence=None)
-    assert not ok and rec["reason_code"] == "ELEVATION_REQUIRES_AUTHORITY"
+    assert not ok and rec["reason_code"] == "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR"
     assert snapshot(e) == before
 
 
@@ -104,8 +104,14 @@ def test_legit_candidate_to_verified():
 
 
 def test_legit_verified_to_ratified():
+    # Under the elevation-grant law (Option C, ratified 2026-10-06), a legit
+    # VERIFIED->RATIFIED carries a director-issued grant. Without one it is
+    # rejected (see test_elevation_grants.py).
     e = make_entry("VERIFIED")
-    ok, _ = g.apply_elevation(e, "RATIFIED", authority="shawn", evidence=make_evidence())
+    grant = g.make_grant(note_id="SN-9001", issuer="Shawn Vibert",
+                         issuer_role="Human Director", expires_days=7)
+    ok, _ = g.apply_elevation(e, "RATIFIED", authority="shawn",
+                              evidence=make_evidence(), elevation_grants=[grant])
     assert ok and e["truth_state"] == "RATIFIED"
 
 

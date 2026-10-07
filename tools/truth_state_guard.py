@@ -25,6 +25,12 @@ Ladder (monotonic): CANDIDATE < TESTING < VERIFIED < RATIFIED < ACTIVE < LEARNED
 
 Read side: audit_registry_semantics() finds escalation already on disk, so
 the hole is closed for new writes AND detectable after the fact.
+
+Elevation grants (Option C, ratified 2026-10-06): VERIFIED->RATIFIED additionally
+requires a bounded capability grant — a machine-readable record naming the
+note, the target state, the issuer (Human Director or named delegate), and an
+expiry. Authority travels with the elevation request, not as a standing
+identity. See check_elevation_grant() and BRAIN/01-GOVERNANCE/elevation-grants/.
 """
 
 from __future__ import annotations
@@ -42,7 +48,18 @@ _RANK = {s: i for i, s in enumerate(LADDER)}
 # cannot be held accountable, so these never satisfy the authority check.
 ANONYMOUS_AUTHORITIES = {"", "unknown", "anonymous", "n/a", "none", "system", "null", "-"}
 
+# Issuer strings that identify the Human Director. An elevation grant is only
+# valid if issued by the Director or by a delegate the Director named.
+# Delegates are recorded via the grant's "delegated_by" field, which must
+# itself name the Director.
+DIRECTOR_MARKERS = {"shawn vibert", "human director"}
+
+# Default grants directory, relative to the repo root. Overridable by passing
+# elevation_grants explicitly to apply_elevation().
+DEFAULT_GRANTS_DIR = "BRAIN/01-GOVERNANCE/elevation-grants"
+
 _HASH64 = re.compile(r"[0-9a-fA-F]{64}")
+_GRANT_TS = re.compile(r"^\d{8}T\d{6}Z$")
 
 
 def _utc_now():
@@ -105,6 +122,148 @@ def check_evidence(evidence):
     return True, _record(True, "EVIDENCE_OK", f"{len(items)} items verified")
 
 
+def _is_director_issuer(issuer):
+    """True if the issuer string names the Human Director."""
+    i = str(issuer or "").strip().lower()
+    return any(m in i for m in DIRECTOR_MARKERS)
+
+
+def _parse_grant_ts(ts):
+    """Parse a grant timestamp (YYYYMMDDTHHMMSSZ) to a datetime, or None."""
+    s = str(ts or "").strip()
+    if not _GRANT_TS.match(s):
+        return None
+    try:
+        return datetime.strptime(s, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def make_grant(note_id, target_state="RATIFIED", issuer="Shawn Vibert",
+               issuer_role="Human Director", expires_days=7, scope_note="",
+               delegated_by=None, issued_at=None):
+    """Build a grant dict with integrity hash. Does not write to disk."""
+    now = _utc_now() if issued_at is None else str(issued_at).strip()
+    issued_dt = _parse_grant_ts(now)
+    if issued_dt is None:
+        raise ValueError(f"issued_at {now!r} is not YYYYMMDDTHHMMSSZ")
+    from datetime import timedelta
+    expires_dt = issued_dt + timedelta(days=int(expires_days))
+    expires = expires_dt.strftime("%Y%m%dT%H%M%SZ")
+    nid = str(note_id or "").strip().upper()
+    grant_id = f"EG-{now[:8]}-{nid.replace('-', '')}-{expires_dt.strftime('%H%M%S')}"
+    grant = {
+        "grant_id": grant_id,
+        "note_id": nid,
+        "target_state": normalize_state(target_state),
+        "issuer": str(issuer or "").strip(),
+        "issuer_role": str(issuer_role or "").strip(),
+        "issued_at": now,
+        "expires_at": expires,
+        "scope_note": str(scope_note or "").strip(),
+    }
+    if delegated_by:
+        grant["delegated_by"] = str(delegated_by).strip()
+    grant["grant_hash"] = _canonical_hash(grant)
+    return grant
+
+
+def validate_grant(grant, note_id, target_state, now=None):
+    """Validate a single elevation grant. Returns (ok, record).
+
+    A grant is valid iff: it is a dict; its grant_hash recomputes (not
+    tampered); it names this note; it names this target state; it has not
+    expired; issued_at <= expires_at; and the issuer is the Human Director
+    or a delegate the Director named (via delegated_by).
+    """
+    if not isinstance(grant, dict):
+        return False, _record(False, "GRANT_INVALID", "grant is not an object")
+    body = {k: v for k, v in grant.items() if k != "grant_hash"}
+    if grant.get("grant_hash") != _canonical_hash(body):
+        return False, _record(False, "GRANT_TAMPERED",
+                              "grant_hash does not recompute — grant altered")
+    gid = str(grant.get("note_id") or "").strip().upper()
+    nid = str(note_id or "").strip().upper()
+    if not gid or gid != nid:
+        return False, _record(False, "GRANT_NOTE_MISMATCH",
+                              f"grant names {gid or '<none>'!r}, elevation targets {nid or '<none>'!r}")
+    if normalize_state(grant.get("target_state")) != normalize_state(target_state):
+        return False, _record(False, "GRANT_STATE_MISMATCH",
+                              f"grant targets {grant.get('target_state')!r}, elevation wants {target_state!r}")
+    now_dt = _parse_grant_ts(now) if now else datetime.now(timezone.utc)
+    if now_dt is None:
+        return False, _record(False, "GRANT_INVALID", f"reference time {now!r} is not parseable")
+    expires_dt = _parse_grant_ts(grant.get("expires_at"))
+    issued_dt = _parse_grant_ts(grant.get("issued_at"))
+    if expires_dt is None or issued_dt is None:
+        return False, _record(False, "GRANT_INVALID", "grant timestamps are not YYYYMMDDTHHMMSSZ")
+    if issued_dt > expires_dt:
+        return False, _record(False, "GRANT_INVALID", "issued_at is after expires_at")
+    if now_dt > expires_dt:
+        return False, _record(False, "GRANT_EXPIRED",
+                              f"grant {grant.get('grant_id')} expired at {grant.get('expires_at')}")
+    issuer = str(grant.get("issuer") or "").strip()
+    if not issuer or issuer.lower() in ANONYMOUS_AUTHORITIES:
+        return False, _record(False, "GRANT_INVALID", "grant names no issuer")
+    role = str(grant.get("issuer_role") or "").strip().lower()
+    if _is_director_issuer(issuer) or role == "human director":
+        return True, _record(True, "GRANT_OK",
+                             f"grant {grant.get('grant_id')} by Human Director")
+    if role == "delegate":
+        delegator = str(grant.get("delegated_by") or "").strip()
+        if _is_director_issuer(delegator):
+            return True, _record(True, "GRANT_OK",
+                                 f"grant {grant.get('grant_id')} by delegate of Human Director")
+        return False, _record(False, "GRANT_INVALID",
+                              "delegate grant's delegated_by does not name the Human Director")
+    return False, _record(False, "GRANT_UNAUTHORIZED_ISSUER",
+                          f"issuer {issuer!r} is not the Human Director or a named delegate")
+
+
+def check_elevation_grant(entry, new_state, elevation_grants):
+    """VERIFIED->RATIFIED requires a valid, unexpired grant naming this note.
+
+    elevation_grants: iterable of grant dicts (or None). Returns (ok, record).
+    On success the record's detail names the satisfying grant_id.
+    """
+    old = normalize_state(entry.get("truth_state", "CANDIDATE"))
+    new = normalize_state(new_state)
+    if not (old == "VERIFIED" and new == "RATIFIED"):
+        return True, _record(True, "GRANT_NOT_REQUIRED",
+                             f"grant only gates VERIFIED->RATIFIED, not {old}->{new}")
+    note_id = str(entry.get("smart_note_id") or entry.get("intelligent_block_id") or "").strip()
+    if not note_id:
+        return False, _record(False, "GRANT_INVALID", "entry names no note for grant binding")
+    grants = list(elevation_grants or [])
+    if not grants:
+        return False, _record(False, "RATIFIED_REQUIRES_ELEVATION_GRANT",
+                              f"VERIFIED->RATIFIED for {note_id} requires an elevation grant; none provided")
+    failures = []
+    for grant in grants:
+        ok, rec = validate_grant(grant, note_id, new)
+        if ok:
+            return True, _record(True, "GRANT_OK", rec["detail"])
+        failures.append(f"{grant.get('grant_id', '<unknown>')}: {rec['reason_code']}")
+    return False, _record(False, "RATIFIED_REQUIRES_ELEVATION_GRANT",
+                          f"no valid grant for {note_id}->RATIFIED among {len(grants)}: " +
+                          "; ".join(failures[:3]))
+
+
+def load_elevation_grants(grants_dir):
+    """Load all grant JSON files from a directory. Returns (grants, errors)."""
+    from pathlib import Path
+    grants, errors = [], []
+    d = Path(grants_dir)
+    if not d.is_dir():
+        return grants, [f"grants directory not found: {grants_dir}"]
+    for p in sorted(d.glob("*.json")):
+        try:
+            grants.append(json.loads(p.read_text(encoding="utf-8")))
+        except Exception as e:
+            errors.append(f"{p.name}: {e}")
+    return grants, errors
+
+
 def _valid_predecessor_receipt(pred, entry):
     """A VERIFIED-predecessor receipt must hash-verify, name this entry, and
     record a VERIFIED new_state."""
@@ -120,7 +279,8 @@ def _valid_predecessor_receipt(pred, entry):
     return bool(pred_id) and pred_id == entry_id
 
 
-def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_entry=None):
+def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_entry=None,
+                    elevation_grants=None):
     """Attempt a truth-state transition on a registry entry dict.
 
     On success the entry is mutated in place (truth_state + appended
@@ -132,6 +292,10 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
     superseded_entry: when this write supersedes an older entry, pass the old
     entry — an elevated write that drops the old entry's authority history
     is rejected (SUPERSESSION_ERASES_AUTHORITY).
+
+    elevation_grants: iterable of elevation-grant dicts. VERIFIED->RATIFIED
+    requires a valid, unexpired grant naming this note (RATIFIED_REQUIRES_
+    ELEVATION_GRANT). All other transitions ignore grants.
     """
     if not isinstance(entry, dict):
         return False, _record(False, "INVALID_ENTRY", "entry is not an object")
@@ -159,6 +323,17 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
         })
         return True, _record(True, "DEMOTION_PERMITTED", f"{old} -> {new}")
 
+    # RATIFIED is a Human-Director authority boundary. Its only governed
+    # predecessor is VERIFIED. Reject every direct jump before authority or
+    # evidence can make the transition appear valid.
+    if new == "RATIFIED" and old != "VERIFIED":
+        return False, _record(
+            False,
+            "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR",
+            f"RATIFIED may only be entered from VERIFIED; current state is {old}",
+        )
+
+
     # Elevation: authority AND evidence, checked separately and in order.
     ok, rec = check_authority(authority)
     if not ok:
@@ -166,6 +341,19 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
     ok, rec = check_evidence(evidence)
     if not ok:
         return False, rec
+
+    # VERIFIED->RATIFIED additionally requires a capability grant: authority
+    # travels with the elevation request (Option C, ratified 2026-10-06).
+    grant_id = None
+    if old == "VERIFIED" and new == "RATIFIED":
+        ok, rec = check_elevation_grant(entry, new, elevation_grants)
+        if not ok:
+            return False, rec
+        # Extract the satisfying grant_id from the detail for the history record.
+        # check_elevation_grant returns GRANT_OK with "grant <id> by ..." detail.
+        detail = rec.get("detail", "")
+        if detail.startswith("grant "):
+            grant_id = detail.split(" ", 2)[1]
 
     if new == "ACTIVE":
         pred = (evidence or {}).get("predecessor_receipt")
@@ -192,6 +380,8 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
         hist_record["receipt_hash"] = evidence["receipt"]["receipt_hash"]
     if new == "ACTIVE" and evidence.get("predecessor_receipt"):
         hist_record["predecessor_receipt_hash"] = evidence["predecessor_receipt"]["receipt_hash"]
+    if grant_id:
+        hist_record["elevation_grant_id"] = grant_id
     entry.setdefault("elevation_history", []).append(hist_record)
     return True, _record(True, "ELEVATED", f"{old} -> {new} by {str(authority).strip()}")
 
@@ -212,6 +402,7 @@ def audit_registry_semantics(registry):
         "active_without_verified_predecessor": [],
         "learned_without_behavioral_evidence": [],
         "supersession_erased_history": [],
+        "ratified_without_elevation_grant": [],
     }
     entries = registry.get("entries", []) if isinstance(registry, dict) else []
     for e in entries:
@@ -245,6 +436,16 @@ def audit_registry_semantics(registry):
                     types.update(h.get("evidence_types") or [])
             if "behavioral" not in types:
                 defects["learned_without_behavioral_evidence"].append(sn)
+        # Elevation-grant law (Option C, 2026-10-06): any recorded
+        # VERIFIED->RATIFIED transition must carry an elevation_grant_id.
+        # Entries ratified before the law (no history at all) are reported
+        # under elevated_without_provenance, not here.
+        for h in hist:
+            if (isinstance(h, dict) and h.get("from") == "VERIFIED"
+                    and h.get("to") == "RATIFIED"
+                    and not h.get("elevation_grant_id")):
+                defects["ratified_without_elevation_grant"].append(sn)
+                break
     counts = {k: len(v) for k, v in defects.items()}
     total = sum(counts.values())
     return {"ok": total == 0, "counts": counts, "defect_total": total,

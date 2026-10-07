@@ -241,7 +241,7 @@ Deno.serve(async (req) => {
       return json({
         ok: Boolean(block),
         status: block ? "BLOCK_VERIFIED" : "BLOCK_NOT_FOUND",
-        independent_verification: true,
+        independent_verification: Boolean(block),
         runtime_identity: "naya-node-oidc",
         naya_id: NAYA_ID,
         owner_id: OWNER_ID,
@@ -306,7 +306,7 @@ Deno.serve(async (req) => {
       return json({
         ok: pass,
         status: pass ? "LINEAGE_VERIFIED" : "LINEAGE_BROKEN",
-        independent_verification: true,
+        independent_verification: pass,
         runtime_identity: "naya-node-oidc",
         naya_id: NAYA_ID,
         owner_id: OWNER_ID,

@@ -1,0 +1,89 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0525",
+  "capture_id": "20261007-sn0525-one-brain-every-ai",
+  "title": "One Brain. Every AI. — Human-Owned Intelligence Is the Constant",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "OPERATING_MODEL",
+  "subtopic": "AI_UNIFYING_HUMAN_SOVEREIGNTY",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "lifecycle_state": "ACTIVE",
+  "source": {
+    "captured_by": "Naya",
+    "captured_at": "2026-10-07",
+    "director": "Shawn Vibert",
+    "context": "Learning distilled from the Empire of AI discussion, Shawn's correction, the AI Unifying feature description, and reconciliation against current NayaPOWER canonical architecture.",
+    "evidence_refs": [
+      "README.md",
+      "NAYA-ACTIVATION/CONSTITUTION/README.md",
+      "NAYANODE/0000-NINE-NODE-GENOME-MASTER-INDEX-V2.md",
+      "NAYANODE/0025-VALUE-CALCULUS-SPECIFICATION-V1.md",
+      "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODEL/IDENTITY-AUTHORITY-INTELLIGENCE-VALUE/SN-012/IB-SMART-NOTE-20260930-sn012-nayapower-operating-model.md",
+      "KNOWLEDGE/NAYA POWER CONCEPT #15.md"
+    ]
+  },
+  "projection": {
+    "category_slug": "SYSTEM-INTELLIGENCE",
+    "topic_slug": "OPERATING-MODEL",
+    "subtopic_slug": "AI-UNIFYING-HUMAN-SOVEREIGNTY",
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true
+  },
+  "intelligence": {
+    "essence": "NayaPOWER is not the AI model and not the compute provider. It is the governed, human-owned intelligence and continuity layer that lets many authorized AI engines work from one evolving brain. The human remains the owner and director; the AIs are interchangeable engines and interfaces. NayaNET connects that intelligence without requiring the human to surrender continuity to any single provider.",
+    "human_view": {
+      "meaning": "Your intelligence should not belong to ChatGPT, Claude, Gemini, Muse, Codex, a local model, or any other single AI. It belongs to you. NayaPOWER keeps what matters connected around you so you can use the best AI for the moment without starting over. NayaNET is the network that lets authorized AIs, agents, tools, and people contribute to that continuing intelligence while constitutional rules protect human agency, consent, privacy, provenance, truth, and value."
+    },
+    "simple_view": "Think of one notebook that belongs to you and many brilliant helpers who are allowed to use it. You can change helpers without losing the notebook. The helpers are not the owner. You are.",
+    "grandma_view": "The AI is like the engine in a car. You may choose a different engine tomorrow, but your map, memories, keys, rules, and destination stay with you. NayaPOWER keeps those things together and makes sure the engine only drives where it is allowed to drive.",
+    "naya_view": "Do not project the assumptions of a conventional AI provider onto NayaPOWER. Before declaring an ethical, ownership, portability, compute, or governance hole, retrieve the canonical Constitution, operating model, and Value Calculus and distinguish the HUMAN OWNER, NAYAPOWER INTELLIGENCE LAYER, NAYANET NETWORK, AI ENGINE/PROVIDER, and ECONOMIC LAYER. NayaPOWER already treats DO NO HARM as a hard boundary and separates intelligence from authority. The main frontier is proving those laws and the AI-agnostic continuity model operationally across every door, not inventing duplicate ethics or portability systems.",
+    "ai_view": "Architecturally, NayaPOWER decouples persistent governed intelligence from model-provider capability. Models are replaceable inference engines; the continuity state is externalized into a human-centered substrate with provenance, authority, privacy, applicability, verification, learning, and successor reuse. This reduces provider lock-in and allows heterogeneous models to contribute without becoming the permanent owner of user intelligence. External critiques of concentrated AI power should therefore be applied layer-by-layer rather than assuming NayaPOWER vertically integrates model, compute, data ownership, and network control.",
+    "machine_view": {
+      "law": "HUMAN_OWNED_INTELLIGENCE_AI_AGNOSTIC_CONTINUITY",
+      "rule": "Treat the human-owned intelligence layer as the constant and AI models/providers as authorized replaceable participants. Before proposing a missing safeguard, reconcile the critique against existing constitutional and operating contracts. Do not create a duplicate mechanism when the requirement is already canonical; instead identify the exact executable proof gap.",
+      "raw_source_separate_from_distillation": true,
+      "automatic_truth_ceiling": "CANDIDATE",
+      "layer_model": [
+        "HUMAN_OWNER",
+        "NAYAPOWER_INTELLIGENCE_LAYER",
+        "NAYANET_NETWORK",
+        "AUTHORIZED_AI_ENGINE_OR_INTERFACE",
+        "ECONOMIC_VALUE_LAYER"
+      ],
+      "hard_boundaries": [
+        "DO_NO_HARM",
+        "CAPABILITY_DOES_NOT_CREATE_AUTHORITY",
+        "RETRIEVAL_DOES_NOT_CREATE_AUTHORITY",
+        "LEARNING_DOES_NOT_CREATE_AUTHORITY",
+        "PRIVATE_BY_DEFAULT_SHARED_BY_CHOICE_COLLECTIVE_BY_CONSENT_PUBLIC_BY_DECISION"
+      ],
+      "proof_frontier": "Prove cross-provider continuity and governed learning behavior end-to-end rather than merely documenting the philosophy."
+    },
+    "decisions": [
+      "Treat AI Unifying as unifying intelligence around the human, not merging AI models into one meta-model.",
+      "Treat DO NO HARM and human agency as foundational constitutional law, not an ethics feature to add later.",
+      "Classify compute and environmental externalities primarily at the underlying AI-provider layer unless NayaPOWER directly controls that infrastructure.",
+      "Preserve the intended identity-private, governed wisdom-sharing model: collective intelligence must not require public exposure of the contributor's real-world identity.",
+      "Preserve economic participation as part of the human-value thesis: the intended referral model shares 50% of referral revenue with users; do not upgrade that intention to an implemented or production-proven claim without evidence.",
+      "When an external critique appears to expose a hole, first test current canonical law and architecture; if the protection already exists, work on enforcement/proof rather than creating a duplicate subsystem."
+    ],
+    "connections": [
+      {
+        "type": "REFINES",
+        "target": "SN-012 — NayaPOWER Operating Model: Identity ≠ Intelligence ≠ Authority ≠ Value"
+      },
+      {
+        "type": "CONTEXTUALIZES",
+        "target": "SN-016 — Prime Judgment Rule — Judgment Before Blind Obedience"
+      },
+      {
+        "type": "APPLIES_TO",
+        "target": "SN-0522 — The Self-Governing Intelligence Law"
+      }
+    ],
+    "uncertainty": "The constitutional and architectural principles are directly supported by current canonical repository evidence. The 50% referral revenue model is preserved in project concept intelligence and was reaffirmed by the Human Director here, but this capture does not claim that payout automation or weekly Wednesday payments are currently implemented or production-proven. The external book discussion is a source of comparison and learning, not authority.",
+    "applicability": "Use this lesson for architecture reviews, external critiques, investor/product explanations, AI Unifying messaging, feature design, roadmap decisions, and any future analysis of ownership, portability, ethics, compute, governance, or provider lock-in.",
+    "learning_lesson": "The mistake to prevent is category error: treating NayaPOWER like a conventional AI company that owns the model, compute, user intelligence, and interface. A cold Naya must first recover the canonical layer model. The correct question is not 'what generic AI safeguard should we add?' but 'which layer owns this concern, is it already governed, and what exact behavior remains unproven?'",
+    "successor_effect": "A cold successor should explain NayaPOWER accurately without asking Shawn to re-teach the distinction: the human owns the intelligence; NayaPOWER preserves and governs it; NayaNET connects it; AI engines are interchangeable authorized participants; constitutional law constrains the system; collective intelligence can gain wisdom without turning real-world identity into the product. The successor should then focus work on executable proof of these claims rather than duplicate philosophy."
+  }
+}

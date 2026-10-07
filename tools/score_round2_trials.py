@@ -17,7 +17,8 @@ Verdict:
   FAIL when any negative-transfer trial is wrong (hard gate), evidence is
   void/duplicated, any arm has fewer than five trials, or fewer than five
   negative-transfer trials exist. Transcript paths must resolve to readable,
-  nonempty files relative to the current working directory.
+  nonempty files relative to the current working directory. Each trial must
+  have its own transcript file; path aliases cannot count as new evidence.
   INCONCLUSIVE when control >= treatment accuracy (ceiling/adjacent
   knowledge, F3 class) or treatment wins without citation majority and
   without beating WRONG_LESSON (attribution failure, F2 class).
@@ -98,6 +99,7 @@ def score_trials(trials: Sequence[dict[str, Any]]) -> TrialVerdict:
     valid: list[dict[str, Any]] = []
     voided: list[str] = []
     seen_ids: set[str] = set()
+    seen_transcripts: set[tuple[int, int]] = set()
     for trial in trials:
         error = _validate_trial(trial)
         if not error:
@@ -106,6 +108,18 @@ def score_trials(trials: Sequence[dict[str, Any]]) -> TrialVerdict:
                 error = "VOID:duplicate trial_id"
             else:
                 seen_ids.add(trial_id)
+        if not error:
+            try:
+                # stat follows symlinks; device/inode also catches hardlinks.
+                # The schema has no per-trial offsets into a shared transcript.
+                stat = Path(trial["transcript_path"]).stat()
+                identity = (stat.st_dev, stat.st_ino)
+                if identity in seen_transcripts:
+                    error = "VOID:duplicate transcript file"
+                else:
+                    seen_transcripts.add(identity)
+            except (OSError, ValueError):
+                error = "VOID:transcript must be a readable nonempty file"
         if error:
             trial_id = trial.get("trial_id", "?") if isinstance(trial, dict) else "?"
             voided.append(f"{trial_id}:{error}")

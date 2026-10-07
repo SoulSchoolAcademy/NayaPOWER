@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from tools.score_round2_trials import ARMS, score_trials
@@ -8,11 +10,16 @@ def real_transcript(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     logs = tmp_path / "logs"
     logs.mkdir()
-    (logs / "t.json").write_text('{"raw": "test transcript fixture"}', encoding="utf-8")
 
 
 def _trial(trial_id, arm, correct=True, cited=True, order=1.0, count=10,
-           consistent=True, nt=False, transcript="logs/t.json"):
+           consistent=True, nt=False, transcript=None):
+    if transcript is None:
+        transcript = f"logs/{trial_id}.json"
+        Path(transcript).write_text(
+            '{"raw": "test transcript fixture", "trial_id": "' + trial_id + '"}',
+            encoding="utf-8",
+        )
     return {
         "trial_id": trial_id,
         "arm": arm,
@@ -139,10 +146,39 @@ def test_missing_transcript_file_cannot_count_as_evidence():
 
 
 def test_empty_transcript_file_cannot_count_as_evidence():
-    from pathlib import Path
-    Path("logs/t.json").write_text("", encoding="utf-8")
+    trials = _battery()
+    for trial in trials:
+        Path(trial["transcript_path"]).write_text("", encoding="utf-8")
     with pytest.raises(ValueError, match="NO_VALID_TRIALS"):
-        score_trials(_battery())
+        score_trials(trials)
+
+
+@pytest.mark.parametrize("alias", ["same", "absolute", "symlink", "hardlink"])
+def test_one_transcript_cannot_back_two_trial_ids(alias):
+    trials = _battery()
+    original = Path(trials[0]["transcript_path"])
+    duplicate = Path("logs/reused.json")
+    if alias == "same":
+        duplicate = original
+    elif alias == "absolute":
+        duplicate = original.resolve()
+    elif alias == "symlink":
+        duplicate.symlink_to(original.resolve())
+    else:
+        duplicate.hardlink_to(original)
+    trials[-1]["transcript_path"] = str(duplicate)
+    result = score_trials(trials)
+    assert result.verdict == "FAIL"
+    assert any("duplicate transcript" in reason for reason in result.reasons)
+
+
+def test_one_transcript_cannot_pad_all_three_arms():
+    trials = _battery()
+    for trial in trials:
+        trial["transcript_path"] = trials[0]["transcript_path"]
+    result = score_trials(trials)
+    assert result.verdict == "FAIL"
+    assert any("duplicate transcript" in reason for reason in result.reasons)
 
 
 @pytest.mark.parametrize("key,value", [
