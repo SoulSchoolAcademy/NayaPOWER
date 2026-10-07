@@ -79,6 +79,15 @@ EXECUTED_PROOF_PATTERNS = [
     re.compile(r'^\s*from\s+kernel\.', re.M),          # python kernel import
     re.compile(r'\bexecute_cycle\(|\.decide\('),       # direct kernel invocation
     re.compile(r'\.invoke\(|\bhandleCycle\(|\breceipt\['),  # handler driven end to end
+    # Direct named import from a runtime module. You cannot execute a module's own
+    # function without importing it, so this is itself evidence of execution.
+    #
+    # This signal was MISSING in the first version, which only recognised VM-sandbox
+    # execution. A full suite of direct-call firing proofs therefore scored 0 and the
+    # coverage number did not move -- the detector could not see real proof work. A
+    # detector blind to genuine evidence is worse than no detector, because it reports a
+    # confident number that is wrong.
+    re.compile(r'import\s*\{[^}]*\}\s*from\s*["\'][^"\']*(?:\.\./)?(?:supabase/functions|kernel)/', re.S),
 ]
 
 
@@ -127,13 +136,34 @@ def is_executed_test(text: str) -> bool:
 
 
 def firing_evidence(literal: str, tests: list[dict]) -> dict:
-    """Find a test that executes runtime code AND asserts this literal as an outcome."""
+    """Find a test that executes runtime code AND asserts this literal as an outcome.
+
+    Importing a runtime module is necessary but not sufficient: a test can import one
+    module and then grep a *different* handler for a literal. So the literal must appear
+    on a line that is not a source-read assertion. A line mentioning `source` (the
+    conventional name for a readFileSync result) is treated as grep-only, which keeps
+    SN-0461 out of the proven column even when the file also imports runtime code.
+    """
     referencing = [t for t in tests if literal in t["text"]]
-    executed = [t["file"] for t in referencing if is_executed_test(t["text"])]
-    grep_only = [t["file"] for t in referencing if not is_executed_test(t["text"])]
+    executed: list[str] = []
+    grep_only: list[str] = []
+
+    for t in referencing:
+        if not is_executed_test(t["text"]):
+            grep_only.append(t["file"])
+            continue
+        outcome_lines = [
+            line for line in t["text"].splitlines()
+            if literal in line and not re.search(r'\b(source|src|code)\b', line)
+        ]
+        if outcome_lines:
+            executed.append(t["file"])
+        else:
+            grep_only.append(t["file"])
+
     return {
-        "executed_proofs": executed,
-        "grep_only": grep_only,
+        "executed_proofs": sorted(set(executed)),
+        "grep_only": sorted(set(grep_only)),
         "firing_observed": bool(executed),
     }
 
