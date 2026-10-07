@@ -166,7 +166,7 @@
     },
     "CONNECT": {
       "status": "SOURCE_GRAPH_V2_MERGED_PRODUCTION_PARITY_PENDING",
-      "entrypoint": "Graph V2 selector/reconciliation inside supabase/functions/nayanet-know-runtime/know.ts",
+      "entrypoint": "Graph V2 selector/reconciliation in supabase/functions/_shared/connect_selector.ts (CONNECT-owned module; consumed by supabase/functions/nayanet-know-runtime/know.ts)",
       "persisted_transitions": "nayanet_intelligent_blocks.connections + relationship-aware retrieval receipts",
       "proof_boundary": "Graph V2 contract is ratified and selector source merged. Live KNOW is stale to current source, so current Graph V2 influence is not production-proven.",
       "behavioral_contract": {
@@ -204,7 +204,7 @@
       "status": "BOUNDED_SUCCESSOR_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
       "entrypoint": "supabase/functions/nayanet-cold-runtime-proof (modes: cold-successor, cold-successor-verify)",
       "persisted_transitions": "learning_evidence + nayanet_intelligent_blocks + nayanet_brain_relationships + execution receipts; nayanet_successor_handoffs table exists as canonical persistence substrate",
-      "proof_boundary": "Bounded cold-successor reconstruction and independent reread exist historically/current source, but exact-current deployed parity, generic successor package runtime, A\u2192B\u2192C continuity and bounded self-building are not universally production-proven.",
+      "proof_boundary": "Bounded cold-successor reconstruction and independent reread exist historically/current source, but exact-current deployed parity, generic successor package runtime, A→B→C continuity and bounded self-building are not universally production-proven.",
       "phantom_binding_reconciliation": "nayanet-successor-handoff is not present on current main and is no longer claimed as an active runtime entrypoint. Restore it only if future evidence establishes it as the canonical seam.",
       "behavioral_contract": {
         "test": "tests/cold_successor_generalization.test.mjs",
