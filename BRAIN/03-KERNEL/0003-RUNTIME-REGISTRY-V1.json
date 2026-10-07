@@ -123,7 +123,7 @@
         "execute_mode": "execute + plan_receipt_id",
         "consumes_retrieval_receipt": "nayanet_execution_receipts.action=know_context_retrieval",
         "selector": "nayanet-know-runtime/selectKnowContext + _shared/connect_selector/selectableConnections",
-        "authority_rule": "retrieval may change planning but never creates authority; changed consequential scope requires LAW re-resolution; execution revalidates live LAW/grant",
+        "authority_rule": "retrieval may change planning but never creates authority; ACT replays canonical KNOW/CONNECT selection at the pinned selection time; changed consequential scope requires LAW re-resolution; execution revalidates live LAW/grant",
         "test": "tests/act_learning_activation_seam.test.mjs"
       }
     },
