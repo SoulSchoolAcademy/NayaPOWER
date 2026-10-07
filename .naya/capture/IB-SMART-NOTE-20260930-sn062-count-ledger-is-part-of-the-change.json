@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-062",
+ "intelligence": {
+  "title": "The Count Ledger Is Part of the Change",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn062-count-ledger-is-part-of-the-change",
+  "smart_note_id": "SN-062",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/COUNT-LEDGER-STALENESS/SN-062/IB-SMART-NOTE-20260930-sn062-count-ledger-is-part-of-the-change.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/COUNT-LEDGER-STALENESS/SN-062/IB-SMART-NOTE-20260930-sn062-count-ledger-is-part-of-the-change.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

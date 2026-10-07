@@ -1,0 +1,252 @@
+{
+ "trial_id": "SR-P6-20261008",
+ "date": "2026-10-08",
+ "director": "Naya 5 (successor-builder lane)",
+ "verifier": "../harness/verifier-p6.mjs",
+ "sandbox_posture": "local-exec-node-no-network",
+ "retrieval_path": "STUBBED",
+ "lesson": {
+  "id": "T12-compositional (Naya 4 Trial-12 treatment material, PR #1787)",
+  "sha256": "26b61b73475a15eb282c327992b3927528f8b70acace1baf49ae4934c7dd4a14",
+  "verification_status": "CANDIDATE - Naya 1 independent verification PENDING"
+ },
+ "c_leg_note_source": "retained-note.txt of arm-b6 (randomly selected via shuf -n 1 over 10 B notes; committed pre-C-arms as 1e09b7d)",
+ "protocol_deviations": [],
+ "arms": {
+  "arm-a1": {
+   "submission_dir": "arms/arm-a1",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "2704d4a6783c3922c1eb410f3aab43a6924909370565752b12d42819a4aa9cb6"
+   }
+  },
+  "arm-a10": {
+   "submission_dir": "arms/arm-a10",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "2704d4a6783c3922c1eb410f3aab43a6924909370565752b12d42819a4aa9cb6"
+   }
+  },
+  "arm-a2": {
+   "submission_dir": "arms/arm-a2",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "b9bc29aa725c7ad6f674bed4461ae621a3cd32e2483e72e3232409f45712464a"
+   }
+  },
+  "arm-a3": {
+   "submission_dir": "arms/arm-a3",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "b9bc29aa725c7ad6f674bed4461ae621a3cd32e2483e72e3232409f45712464a"
+   }
+  },
+  "arm-a4": {
+   "submission_dir": "arms/arm-a4",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "46bc71e08d7c02d9545591869ebb6d53682e247dc63e41e39f3e4abf37cce4d1"
+   }
+  },
+  "arm-a5": {
+   "submission_dir": "arms/arm-a5",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "b9bc29aa725c7ad6f674bed4461ae621a3cd32e2483e72e3232409f45712464a"
+   }
+  },
+  "arm-a6": {
+   "submission_dir": "arms/arm-a6",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "46bc71e08d7c02d9545591869ebb6d53682e247dc63e41e39f3e4abf37cce4d1"
+   }
+  },
+  "arm-a7": {
+   "submission_dir": "arms/arm-a7",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "46bc71e08d7c02d9545591869ebb6d53682e247dc63e41e39f3e4abf37cce4d1"
+   }
+  },
+  "arm-a8": {
+   "submission_dir": "arms/arm-a8",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "b9bc29aa725c7ad6f674bed4461ae621a3cd32e2483e72e3232409f45712464a"
+   }
+  },
+  "arm-a9": {
+   "submission_dir": "arms/arm-a9",
+   "verifier_arg": "A",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "8dc2463468486337dc78137f8cb5e34f33fe8c30326ed3592bc93f10ff118ba9",
+    "dispatch.json": "b9bc29aa725c7ad6f674bed4461ae621a3cd32e2483e72e3232409f45712464a"
+   }
+  },
+  "arm-b1": {
+   "submission_dir": "arms/arm-b1",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837",
+    "retained-note.txt": "1d3e3767d5d1b02c09f469f8f9dbae03295c945764d80ae79fb69dae97df6d9e"
+   }
+  },
+  "arm-b10": {
+   "submission_dir": "arms/arm-b10",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "3982dc97cea2adcf4f7f23f48f315fb42414f4d8f138f8e713957d721b9b7320"
+   }
+  },
+  "arm-b2": {
+   "submission_dir": "arms/arm-b2",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "d3e8cc73bf972ea193fd9d261064e20d459fd36b67c97412263630633d1acfe3"
+   }
+  },
+  "arm-b3": {
+   "submission_dir": "arms/arm-b3",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "8bf808f9f5033b2db350370731aa3c6b6df44de6bbf93bab8064b9e2ca913cf5"
+   }
+  },
+  "arm-b4": {
+   "submission_dir": "arms/arm-b4",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "6f2101d5beb506e6074d09024a5e68c5b7faf843d4529538efa7051bc19f8650"
+   }
+  },
+  "arm-b5": {
+   "submission_dir": "arms/arm-b5",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837",
+    "retained-note.txt": "5470d672ec40ccfba2ed5126b6b2bf5aae8d8904ccc613d5c2212bc3f025c60b"
+   }
+  },
+  "arm-b6": {
+   "submission_dir": "arms/arm-b6",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "e1243387d600c3156941a308f4ebd647ab33c78c0f09d3c728c845d6c3ff3274"
+   }
+  },
+  "arm-b7": {
+   "submission_dir": "arms/arm-b7",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984",
+    "retained-note.txt": "280abbd21ee5a215fd32df515f040c5f7f8e0bd73c2207b45f34c8d5c6aea8a4"
+   }
+  },
+  "arm-b8": {
+   "submission_dir": "arms/arm-b8",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837",
+    "retained-note.txt": "338079f53647aa56c88cf0bc77084ac3c3f20b447a0fbcca91ee85fbc8c3bb1e"
+   }
+  },
+  "arm-b9": {
+   "submission_dir": "arms/arm-b9",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837",
+    "retained-note.txt": "1af5af44d26f89973aea020de48c9d7c8a20f7ab6a18289a746a56383162e832"
+   }
+  },
+  "arm-c1": {
+   "submission_dir": "arms/arm-c1",
+   "verifier_arg": "C",
+   "recorded_verdict": "FAIL",
+   "file_hashes": {
+    "answer.txt": "92482ae6aa4dd047a3a3b88741092bad9c0c11a49d992706b77583f253797a74",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984"
+   }
+  },
+  "arm-c2": {
+   "submission_dir": "arms/arm-c2",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "812c9efc96e67c6e6bac88bf4aaf56f6edcc3fe40dac72b055962bae2fa0e05f"
+   }
+  },
+  "arm-c3": {
+   "submission_dir": "arms/arm-c3",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837"
+   }
+  },
+  "arm-c4": {
+   "submission_dir": "arms/arm-c4",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "d3950389f406e781b4eb98372ea7c9ad3506a91c69c59f2fdaf0a5b517e3a837"
+   }
+  },
+  "arm-c5": {
+   "submission_dir": "arms/arm-c5",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "c4eb8519723ec003501542d0d002f817661754727188f5329aa55c1bd06de39f",
+    "dispatch.json": "125548c156fcc13a69d452e4d6ede8b90339064886ebc10543a171510cd8b984"
+   }
+  }
+ }
+}

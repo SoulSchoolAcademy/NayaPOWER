@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0336",
+ "intelligence": {
+  "title": "Intent-to-Merge Scorecard: Score It, Deconflict It, Then Merge — Battery Before the Next",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0336-intent-to-merge-scorecard-deconflict-battery",
+  "smart_note_id": "SN-0336",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0336/IB-SMART-NOTE-20261005-sn0336-intent-to-merge-scorecard-deconflict-battery.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0336/IB-SMART-NOTE-20261005-sn0336-intent-to-merge-scorecard-deconflict-battery.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

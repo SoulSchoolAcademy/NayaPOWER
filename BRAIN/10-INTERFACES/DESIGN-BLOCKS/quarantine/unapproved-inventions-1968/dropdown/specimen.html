@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dropdown — Smart Block Specimen</title>
+<link rel="stylesheet" href="dropdown.css">
+<style>
+  body{ background:#050507; color:#F8F7FB; font-family:-apple-system,"SF Pro Text",Inter,sans-serif;
+        margin:0; padding:48px 20px; min-height:100vh; }
+  .wrap{ max-width:640px; margin:0 auto; }
+  h1{ font-size:24px; font-weight:800; margin:0 0 8px; }
+  .sub{ font-size:14px; color:rgba(248,247,251,.55); margin:0 0 40px; }
+  .demo{ margin-bottom:64px; }
+  .cap{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:1.2px;
+        color:rgba(248,247,251,.55); margin:0 0 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Smart Block · forms/dropdown</h1>
+  <p class="sub">Tab to the trigger, hit Enter or ↓ to open. Arrows move, Enter picks, type a letter to jump.</p>
+
+  <div class="demo">
+    <p class="cap">Default</p>
+    <div class="dd-root">
+      <button class="dd-trigger" aria-haspopup="listbox" aria-expanded="false">
+        <span class="dd-label">Neptune</span>
+        <svg class="dd-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="dd-menu" role="listbox">
+        <button class="dd-option dd-selected" role="option" aria-selected="true">
+          <span class="dd-text">Neptune</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+        <button class="dd-option" role="option" aria-selected="false">
+          <span class="dd-text">Saturn</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+        <button class="dd-option" role="option" aria-selected="false">
+          <span class="dd-text">Jupiter</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+        <button class="dd-option" role="option" aria-selected="false">
+          <span class="dd-text">Mars</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo">
+    <p class="cap">Second instance — independent state</p>
+    <div class="dd-root">
+      <button class="dd-trigger" aria-haspopup="listbox" aria-expanded="false">
+        <span class="dd-label">Midnight</span>
+        <svg class="dd-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="dd-menu" role="listbox">
+        <button class="dd-option" role="option" aria-selected="false">
+          <span class="dd-text">Midnight</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+        <button class="dd-option dd-selected" role="option" aria-selected="true">
+          <span class="dd-text">Obsidian</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+        <button class="dd-option" role="option" aria-selected="false">
+          <span class="dd-text">Violet</span>
+          <svg class="dd-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M4 12.5l5 5L20 6.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="dropdown.js"></script>
+</body>
+</html>

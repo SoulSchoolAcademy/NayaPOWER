@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0319",
+ "intelligence": {
+  "title": "The Interface May Beautify Truth, But It Must Never Fabricate Cognition",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0319-never-fabricate-cognition",
+  "smart_note_id": "SN-0319",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/INTERFACE-HONESTY/SN-0319/IB-SMART-NOTE-20261004-sn0319-never-fabricate-cognition.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/INTERFACE-HONESTY/SN-0319/IB-SMART-NOTE-20261004-sn0319-never-fabricate-cognition.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

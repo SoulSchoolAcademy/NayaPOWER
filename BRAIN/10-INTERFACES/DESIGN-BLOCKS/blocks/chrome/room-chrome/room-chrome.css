@@ -1,0 +1,45 @@
+/* Smart Block: room-chrome
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: chrome
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --magenta: #d86cff;
+  --muted: #AAB2BF;
+  --purple: #9d75ff;
+}
+
+.room-outlet { padding: 0 28px; }
+
+.room-head { padding: 28px 0 4px; }
+
+.room-head .kicker {
+  font-size: 11px; letter-spacing: .24em; font-weight: 700;
+  color: var(--room-accent, var(--purple)); margin-bottom: 10px;
+}
+
+.room-head h2 { font-size: 27px; margin: 0 0 8px; letter-spacing: -0.01em; }
+
+.room-head p { font-size: 15.5px; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 0; }
+
+.room-body { padding: 18px 0 8px; }
+
+@media (max-width: 900px) {
+.room-outlet { padding: 0 14px; }
+.room-head h2 { font-size: 23px; }
+}
+
+@media (min-width: 1700px) {
+.top, .searchWrap, .shell-lens, .room-outlet { padding-left: 44px; padding-right: 44px; }
+}
+
+.room-scene {display:grid;gap:18px}
+
+.room-toolbar {display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+.room-toolbar.between {justify-content:space-between}
+
+.room-status-line {display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px}
+
+.room-status-line .led {width:8px;height:8px;border-radius:50%;background:var(--room-accent,var(--magenta));box-shadow:0 0 10px color-mix(in srgb,var(--room-accent,var(--magenta)) 55%,transparent)}

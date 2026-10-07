@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0398",
+ "intelligence": {
+  "title": "Stale-State Claims Die on Live Bytes — Lane Contradiction Resolution",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0398-stale-state-claims-die-on-live-bytes",
+  "smart_note_id": "SN-0398",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-ALIGNMENT/SN-0398/IB-SMART-NOTE-20261005-sn0398-stale-state-claims-die-on-live-bytes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/BOARD-ALIGNMENT/SN-0398/IB-SMART-NOTE-20261005-sn0398-stale-state-claims-die-on-live-bytes.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

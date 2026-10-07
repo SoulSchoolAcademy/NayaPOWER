@@ -67,7 +67,14 @@ def test_persona_object_json_honest_proof_block():
     assert obj["canonical_status"] == "CANDIDATE"
     proof = obj["proof"]
     assert proof["implementation_status"] == "DOCUMENTED"
-    assert proof["behavioral_status"] == "NOT_PROVEN"
+    # 2026-10-07: pilot behavioral trial passed 9/9 -- the proof block must
+    # say exactly that (pilot-evidenced, not fully proven), and the cited
+    # trial evidence must exist in the repo (Trial-4 rule: never /tmp).
+    assert proof["behavioral_status"] == "PILOT_TRIAL_EVIDENCED"
+    trial_rel = "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.md"
+    assert trial_rel in proof["behavioral_trial"]
+    assert (REPO / trial_rel).exists()
+    assert (REPO / "BRAIN/06-PROOF/2026-10-07-SELF-IDENTITY-TRIAL-V1.json").exists()
     assert proof["production_status"] == "NOT_PROVEN"
 
 

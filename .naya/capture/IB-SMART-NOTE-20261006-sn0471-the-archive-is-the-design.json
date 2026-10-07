@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0471",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design.md",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design",
+  "smart_note_id": "SN-0471",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/DOCTRINE/RECOVERY/SN-0471/IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/DOCTRINE/RECOVERY/SN-0471/IB-SMART-NOTE-20261006-sn0471-the-archive-is-the-design.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

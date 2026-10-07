@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0124",
+ "intelligence": {
+  "title": "SMART NOTE — The Hub Is the Screen, Not the Camera: The Output Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0124-hub-is-the-output-law",
+  "smart_note_id": "SN-0124",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0124/IB-SMART-NOTE-20260930-sn0124-hub-is-the-output-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0124/IB-SMART-NOTE-20260930-sn0124-hub-is-the-output-law.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

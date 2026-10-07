@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0508",
+ "intelligence": {
+  "title": "Stand Down the Unpushed Repair — Verify the Other Lane's Instead",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0508-stand-down-the-unpushed-repair",
+  "smart_note_id": "SN-0508",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-STAND-DOWN/SN-0508/IB-SMART-NOTE-20260930-sn0508-stand-down-the-unpushed-repair.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-STAND-DOWN/SN-0508/IB-SMART-NOTE-20260930-sn0508-stand-down-the-unpushed-repair.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0247",
+ "intelligence": {
+  "title": "Prove the Cause Before Permanently Encoding the Cure — The Experiment Must Test the Hypothesis, Not the Harness",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0247-causal-experiment-must-test-hypothesis",
+  "smart_note_id": "SN-0247",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0247/IB-SMART-NOTE-20261004-sn0247-causal-experiment-must-test-hypothesis.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0247/IB-SMART-NOTE-20261004-sn0247-causal-experiment-must-test-hypothesis.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

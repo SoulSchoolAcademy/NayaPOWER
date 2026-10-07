@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0243",
+ "intelligence": {
+  "title": "If She Can't Recall It, She Didn't Learn It — the Failing Rung Names the Seam",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0243-recall-is-the-proof-of-learning",
+  "smart_note_id": "SN-0243",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0243/IB-SMART-NOTE-20261004-sn0243-recall-is-the-proof-of-learning.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0243/IB-SMART-NOTE-20261004-sn0243-recall-is-the-proof-of-learning.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

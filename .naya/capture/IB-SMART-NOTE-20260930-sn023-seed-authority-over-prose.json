@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-023",
+ "intelligence": {
+  "title": "Machine-Readable Artifact Governs When Prose Minimums Under-Specify",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn023-seed-authority-over-prose",
+  "smart_note_id": "SN-023",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-023/IB-SMART-NOTE-20260930-sn023-seed-authority-over-prose.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/DOCUMENT-AUTHORITY/SN-023/IB-SMART-NOTE-20260930-sn023-seed-authority-over-prose.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

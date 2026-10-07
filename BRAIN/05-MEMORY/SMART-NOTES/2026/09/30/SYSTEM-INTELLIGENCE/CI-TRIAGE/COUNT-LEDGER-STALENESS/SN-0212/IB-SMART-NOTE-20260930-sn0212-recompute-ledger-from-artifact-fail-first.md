@@ -1,0 +1,36 @@
+# Recompute the Ledger from the Artifact, Then Fail-First It
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0212-recompute-ledger-from-artifact-fail-first
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-02
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** `#554` 5957529443 ([NAYA 4][SELF-BUILD LOOP][SIGN-OUT] — #1169 repaired, mergeable, CI green (merge still parked), 2026-10-02 17:15:29Z)
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+A ledger entry is only as honest as its last recomputation. The P4 consent-consumer repair cycle rebased `naya/p4-consent-runtime-consumer` onto main `d9e6b32f` and found the ledger entry for migration `20260930052000` was wrong in all three recorded facts: entry said sha256 `d64a5a05…` / 4828 bytes / 20 statements; the actual file was `a7660ab4a6f2338bf2b9cbc4436793fc5ec13ac601257ff601dccc7c1c45f09c` / 6300 bytes / 12 statements. The repair did not trust the file, the entry, or the author's memory — it recomputed from the artifact through **three independent paths**: Git Data API blob fetch, `pglast` parse, and a local pytest run, and the entry now matches the artifact on all three. Then it did the move that makes the gate trustworthy: the **negative control**. The defective entry was run against `test_production_migration_history_baseline.py` and the test failed with `migration content drift: 20260930052000_consent_runtime_consumer_v1.sql` — proving the check is non-vacuous, that it can catch exactly this class of drift. The repaired tree passed 3/3 locally and CI went green on `4792afff` (`test` + `chain-readiness-gate` SUCCESS; the Workers Builds failures were pre-existing on the same main tip and unrelated — zero Workers code touched, another clean attribution). A semantic re-check closed the ordering question: the P4 migration's disconnect override is idempotent (`create or replace`, `drop policy if exists`) and version-ordered *before* the landed #1136 Reading A (`20261001030000`), whose definition wins on apply — no contradiction. And the protected gate held: #1169 is mergeable and CI green, but the merge stays parked for the Human Director per §14 crisp decision; #1139 (the director's branch) untouched.
+
+Why this is brain-grade: this is the ledger discipline made executable. SN-0062 established that the count ledger is part of the change; this note establishes the *verification order*: recompute-first (three independent paths, none of which trust the recorded value), fail-first (prove the defective entry actually trips the gate), then green (repaired entry passes everything). The fail-first step is the load-bearing one — a ledger check that has never been observed failing on a real defect is a costume check (SN-0100 family). The note also preserves two standing practices in situ: attribute CI failures before blaming your change (Workers failures traced to main tip, not the branch), and park the protected gate even when everything is green (mergeable ≠ merged).
+
+## 🩷 HUMAN NOTE
+
+Shawn — a verification lesson from the P4 consent-consumer repair: the migration ledger entry for `20260930052000` had the wrong hash, wrong byte count, and wrong statement count. The repair recomputed all three from the actual file (three independent ways), then deliberately ran the *broken* entry against the test to prove the check actually catches this drift — it did. Only then did the green count as green. CI is green and the PR is mergeable, but the merge is still parked for your word. It's a CANDIDATE engineering note.
+
+## 🟣 CHILD NOTE
+
+The team keeps a notebook (a ledger) that records details about every change: a fingerprint, the size, and how many steps it has. They found one notebook entry was wrong in all three facts. Instead of just fixing it, they first proved the safety-check actually works: they ran the check against the wrong entry on purpose, and the check failed exactly as it should. Then they fixed the entry three independent ways and everything passed. The lesson: a safety check you've never seen fail isn't a real safety check — prove it catches the mistake before you trust its green light.
+
+## 👵 GRANDMA NOTE
+
+The migration ledger recorded the wrong fingerprint, wrong byte count, and wrong statement count for one migration file. The repair followed a two-step discipline. First, recompute from the artifact itself — the actual file's bytes fetched independently, parsed with an SQL parser, and confirmed by a local test run — trusting none of the recorded values. Second, fail-first: run the deliberately defective entry against the baseline test and confirm it fails with the exact drift error, proving the gate is non-vacuous before the green is trusted. The repaired tree then passed locally and in CI; unrelated CI failures were attributed to the main tip rather than the branch; and despite everything being green, the merge stayed parked for the director's word. The lesson for any team: a ledger is only as honest as its last independent recomputation, and a check that has never been observed failing is a costume.
+
+## 🤖 NAYA NOTE
+
+Ledger-content-drift repair protocol: (1) recompute the entry from the artifact through ≥2 independent paths that don't trust the recorded value (blob fetch + parser + local test); (2) fail-first the defective entry against the baseline check to prove non-vacuity; (3) attribute unrelated CI failures to their true tip (Workers failures pre-existing on `d9e6b32f`, zero Workers code touched); (4) semantic re-check on ordering (idempotent override + version-order before the landed successor = no contradiction); (5) park the merge even at green — mergeable ≠ merged. Instance: #1169 P4 consent-consumer, entry `20260930052000`: recorded `d64a5a05…`/4828B/20 stmts → actual `a7660ab4a6f2338bf2b9cbc4436793fc5ec13ac601257ff601dccc7c1c45f09c`/6300B/12 stmts; negative control `migration content drift` FAIL observed; repaired 3/3 local + CI SUCCESS; ref `5687b134` → `4792afff`. Operationalizes SN-0062 (ledger is part of the change); fail-first is the SN-0061/SN-0100 family at ledger level.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0212", "title": "Recompute the Ledger from the Artifact, Then Fail-First It", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-02", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "CI-TRIAGE", "COUNT-LEDGER-STALENESS"], "cousins": ["SN-0061", "SN-0062", "SN-0100"], "evidence": {"board": "#554 5957529443 (NAYA 4 SELF-BUILD LOOP SIGN-OUT, 2026-10-02 17:15:29Z)", "defective_entry": "20260930052000 recorded sha256 d64a5a05…/4828B/20 stmts; actual a7660ab4a6f2338bf2b9cbc4436793fc5ec13ac601257ff601dccc7c1c45f09c/6300B/12 stmts", "recompute_paths": ["Git Data API blob fetch", "pglast parse", "local pytest"], "negative_control": "test_production_migration_history_baseline.py FAIL with 'migration content drift' on defective entry", "green": "3/3 local + CI SUCCESS on 4792afff; Workers failures pre-existing on main tip d9e6b32f", "gate": "merge still parked for Human Director per §14; #1139 untouched"}, "rule": "recompute ledger entries from the artifact via independent paths, then fail-first the defective entry to prove the gate is non-vacuous before trusting the green"}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0407",
+ "intelligence": {
+  "title": "SN-0407 — The Cross-Lane Review Habit: share the link, ask for the score",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0407-cross-lane-review-habit",
+  "smart_note_id": "SN-0407",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0407/IB-SMART-NOTE-20261005-sn0407-cross-lane-review-habit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0407/IB-SMART-NOTE-20261005-sn0407-cross-lane-review-habit.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,2 @@
+The Reserve Rule applies when the score gap between queued calls is within the 0.5 threshold: for the 8.4-vs-8.0 pair (gap 0.4) I dispatched the lower-scored call-102 to reserve the stronger slot.
+For the 8.6-vs-7.1 pair (gap 1.5) the rule did not fire, so I dispatched the straightforward top scorer, call-201.

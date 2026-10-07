@@ -424,7 +424,9 @@ def evaluate_candidates(candidates: Sequence[Candidate], baseline_id: str, profi
 def verification_state(outcome_passed: bool, observation_window_closed: bool, delayed_harm_material: bool) -> str:
     if not outcome_passed:
         return "FAIL"
-    if delayed_harm_material and not observation_window_closed:
+    if delayed_harm_material:
+        return "FAIL"
+    if not observation_window_closed:
         return "PASS_PENDING_WINDOW"
     return "VERIFIED_PASS"
 
@@ -763,10 +765,15 @@ def retrieval_eligible(request: OperationRequest) -> dict:
         return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_UNKNOWN, unknown_reasons)
 
     # FAIL: determined negative on complete evidence. May become eligible if
-    # the evidence changes (e.g. cross-scope authority granted).
+    # the evidence changes (e.g. cross-scope authority granted via authority_basis).
     if request.requester_scope != request.object_scope:
-        return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_FAIL,
-                                    ["CROSS_SCOPE"])
+        # Cross-scope is authorized only if authority_basis explicitly grants
+        # access to the object's scope.
+        authorized_scopes = (request.authority_basis or "").lower()
+        if request.object_scope.lower() not in authorized_scopes and "cross-scope" not in authorized_scopes:
+            return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_FAIL,
+                                        ["CROSS_SCOPE"])
+        # Cross-scope authority granted — the scope mismatch is authorized.
     if request.source_canonical is False:
         return _eligibility_receipt("RETRIEVAL_ELIGIBLE", request, ELIGIBLE_FAIL,
                                     ["NON_CANONICAL_SOURCE"])
@@ -786,6 +793,9 @@ def consequential_use_eligible(request: OperationRequest, profile: QualityProfil
     flags = _hard_flag_states(request)
 
     # BLOCKED: hard stops.
+    if request.requester_id is None:
+        return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
+                                    ["UNAUTHENTICATED_REQUESTER"])
     if request.hard_violation:
         return _eligibility_receipt("CONSEQUENTIAL_USE_ELIGIBLE", request, ELIGIBLE_BLOCKED,
                                     ["JUDGMENT_RULE_HARD_STOP"])

@@ -221,16 +221,32 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
   // with a reason. A bare allowlist would let a real regression hide next to a false
   // positive. A verdict is auditable; a silenced rule is not.
   const offenders = new Set();
+  const scanLiteral = (rel) => {
+    const text = readFileSync(join(ROOT, rel), "utf8");
+    // TS/JS runtimes: independent_verification: true  |  Python/YAML: "independent_verification": True
+    if (/independent_verification\s*:\s*true/.test(text) || /["']independent_verification["']\s*:\s*True/.test(text)) {
+      offenders.add(rel);
+    }
+  };
   const dir = join(ROOT, "supabase", "functions");
   for (const fn of readdirSync(dir, { withFileTypes: true })) {
     if (!fn.isDirectory()) continue;
     for (const f of readdirSync(join(dir, fn.name))) {
       if (!f.endsWith(".ts")) continue;
-      const rel = `supabase/functions/${fn.name}/${f}`;
-      if (/independent_verification\s*:\s*true/.test(readFileSync(join(dir, fn.name, f), "utf8"))) {
-        offenders.add(rel);
-      }
+      scanLiteral(`supabase/functions/${fn.name}/${f}`);
     }
+  }
+  // The same trust class lives outside TS runtimes: live workflows build proof
+  // receipts, and tools/*.py builds verification responses. A literal on any of
+  // these surfaces is self-certification with the same blast radius, so the
+  // scanner covers them too. Excludes this test file's own quoted patterns.
+  for (const f of readdirSync(join(ROOT, ".github", "workflows"))) {
+    if (!f.endsWith(".yml")) continue;
+    scanLiteral(`.github/workflows/${f}`);
+  }
+  for (const f of readdirSync(join(ROOT, "tools"))) {
+    if (!f.endsWith(".py")) continue;
+    scanLiteral(`tools/${f}`);
   }
 
   const verdicts = RECORD.hardcoded_independent_verification_sites ?? {};
@@ -259,6 +275,71 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
   }
 });
 
+test("CLAIM 2 -- REVIEWED_OK literals cannot be moved above their guards", () => {
+  // A REVIEWED_OK verdict is a claim about ORDER: the literal is safe only
+  // because verification executes before it is written. Moving the literal
+  // above its guard turns a safe attestation into self-certification, so each
+  // REVIEWED_OK site pins the ordering. SN-0528's rule: a verdict is
+  // auditable; the ordering it depends on must be executable.
+
+  // live-act-proof.yml: the proof dict's independent_verification flag must be
+  // DERIVED from a named predicate computed after the assertion gauntlet —
+  // never a bare literal (SN-0528). The predicate must summarize the same
+  // verification outcomes the asserts check, and the proof must name its scope
+  // and carry the act receipt's own (False-by-design) value, so a cold reader
+  // cannot mistake the workflow-level PASS for runtime-level verification
+  // (anti-citogenesis).
+  const actProof = read(".github/workflows/live-act-proof.yml");
+  const bareLiterals = [...actProof.matchAll(/["']independent_verification["']\s*:\s*True\b/g)];
+  assert.deepEqual(
+    bareLiterals,
+    [],
+    "live-act-proof.yml must not contain a bare independent_verification:True literal"
+  );
+  const derivedAt = actProof.indexOf('"independent_verification":workflow_verified_plan');
+  assert.ok(derivedAt > 0, "the act proof flag must be derived from the workflow_verified_plan predicate");
+  const stepStart = actProof.lastIndexOf("run: |", derivedAt);
+  const stepText = actProof.slice(stepStart, derivedAt);
+  const asserts = [...stepText.matchAll(/^\s*assert\s/mg)];
+  assert.ok(
+    asserts.length >= 10,
+    `the act proof step must keep its assertion gauntlet before the derivation (found ${asserts.length})`
+  );
+  const predStart = actProof.indexOf("workflow_verified_plan=(");
+  assert.ok(
+    predStart > stepStart && predStart < derivedAt,
+    "workflow_verified_plan must be computed inside the proof step before the proof dict"
+  );
+  const predText = actProof.slice(predStart, derivedAt);
+  for (const outcome of ["recomputed==stored", 'ae["observed_behavior"]']) {
+    assert.ok(
+      predText.includes(outcome),
+      `the derivation predicate must summarize the verification outcome (${outcome})`
+    );
+  }
+  assert.ok(
+    actProof.includes('"independent_verification_scope"'),
+    "the proof must name the scope of its independent_verification claim"
+  );
+  assert.ok(
+    actProof.includes('"act_receipt_independent_verification":ae["independent_verification"]'),
+    "the proof must carry the act receipt's own (False-by-design) value"
+  );
+
+  // tools/live_intelligence_reconcile.py: verify_supersession must raise on any
+  // failed check before reaching the return that carries the literal.
+  const reconcile = read("tools/live_intelligence_reconcile.py");
+  const fnStart = reconcile.indexOf("def verify_supersession(");
+  const literalLine = reconcile.indexOf('"independent_verification": True', fnStart);
+  assert.ok(fnStart >= 0 && literalLine > fnStart, "the reconcile literal must exist inside verify_supersession");
+  const guardText = reconcile.slice(fnStart, literalLine);
+  const raises = [...guardText.matchAll(/raise ValueError\(/g)];
+  assert.ok(
+    raises.length >= 5,
+    `verify_supersession must keep its raise-gauntlet before the literal (found ${raises.length})`
+  );
+});
+
 test("the claim record is itself honest", () => {
   // A record that lists a violation as OPEN after it was fixed lets the gate go slack
   // forever. Require every entry to name a law, a location, and a status.
@@ -271,6 +352,162 @@ test("the claim record is itself honest", () => {
   }
   const ids = RECORD.violations.map((v) => v.id);
   assert.equal(new Set(ids).size, ids.length, "violation ids must be unique");
+});
+
+test("CLAIM 4 -- the record's statuses match the code, in BOTH directions", () => {
+  // This gate exists because it was already needed once. #1791/#1792 repaired CV-04,
+  // CV-05, CV-08 and CV-09 and marked all nine violations RESOLVED in one commit. Every
+  // repair was real -- I re-read each one on main and they are computed correctly now --
+  // but at the moment they landed, nothing in this suite compared a status to the code.
+  //
+  // A record that under-reports resolution is not conservative, it is false. And it is
+  // worse than no record, because it looks authoritative. Both drift directions are now
+  // checked:
+  //   - an entry marked OPEN must still have its defect present
+  //   - an entry marked RESOLVED must have its defect gone
+  // The second direction is the one that would have caught the CV-06/CV-07 incident, where
+  // a repair merged and the record silently kept claiming OPEN.
+  //
+  // Every violation therefore declares a machine-checkable probe of whether its defect is
+  // STILL PRESENT.
+  const probes = RECORD.status_probes ?? {};
+  const violationsById = new Map(RECORD.violations.map((v) => [v.id, v]));
+  // Skip the explanatory "//" key; it documents the record, it is not a violation.
+  const entries = Object.entries(probes).filter(([k]) => !k.startsWith("//"));
+  assert.ok(entries.length > 0, "the record must carry status_probes");
+
+  for (const [id, probe] of entries) {
+    const v = violationsById.get(id);
+    assert.ok(v, `status_probes names ${id}, which is not in violations`);
+    // A self_verifying entry is a defect in the record's OWN enforcement, so no source
+    // pattern can observe it. It is exempt from the file probe and covered instead by the
+    // mutation proof below -- a stronger check, because that proves the gate rejects
+    // drift rather than detecting one instance of it.
+    if (probe.self_verifying) {
+      assert.equal(
+        v.self_verifying,
+        true,
+        `${id} is exempt from file probing, so its violation entry must also declare self_verifying`
+      );
+      continue;
+    }
+    assert.ok(typeof probe.file === "string" && probe.file, `${id} probe must name a file`);
+    const path = join(ROOT, probe.file);
+    assert.ok(existsSync(path), `${id} probe file does not exist: ${probe.file}`);
+    const present = existsSync(path);
+    const text = readFileSync(path, "utf8");
+
+    // Every probe answers ONE question in ONE direction: is the DEFECT present?
+    //   pattern         -- defect present when the file matches
+    //   absent_pattern  -- defect present when the file does NOT match (for defects that
+    //                      are an absence: a missing validation, a missing gate boundary)
+    //   exists          -- defect present when file existence differs from `exists`
+    //
+    // Holding the direction fixed lets one pair of assertions cover OPEN and RESOLVED
+    // without either branch needing to know how the probe was written.
+    const compile = (p) => (p instanceof RegExp ? new RegExp(p.source, p.flags) : new RegExp(p, "m"));
+    let observed;
+    let what;
+    if (probe.exists !== undefined) {
+      assert.equal(
+        present,
+        probe.exists,
+        `${id} probe is incoherent: the record declares ${probe.file} must ` +
+        `${probe.exists ? "exist" : "not exist"}, and it does the opposite.`
+      );
+      // `exists` names the RESOLVED state, so the defect is present when it is absent.
+      observed = !present;
+      what = `exists=${probe.exists}`;
+    } else if (probe.absent_pattern !== undefined) {
+      observed = !compile(probe.absent_pattern).test(text);
+      what = `NOT ${String(probe.absent_pattern)}`;
+    } else {
+      observed = compile(probe.pattern).test(text);
+      what = String(probe.pattern);
+    }
+
+    if (v.status.startsWith("OPEN")) {
+      assert.equal(
+        observed,
+        true,
+        `${id} is recorded OPEN, but its probe says the defect is gone (${probe.file} :: ${what}). ` +
+        `Either the defect was fixed and the record must be updated to RESOLVED in the same commit, ` +
+        `or the probe is stale and must be corrected. A record that keeps reporting a fixed defect ` +
+        `as open is a false record -- it teaches readers to ignore the file.`
+      );
+    } else {
+      assert.equal(
+        observed,
+        false,
+        `${id} is recorded RESOLVED, but its probe says the defect is still present ` +
+        `(${probe.file} :: ${what}). The defect is in code while the record claims it is fixed.`
+      );
+    }
+  }
+
+  // Every violation must have a probe, or it is exempt from reality-checking and
+  // therefore free to drift forever.
+  const unprobed = RECORD.violations
+    .map((v) => v.id)
+    .filter((id) => !Object.prototype.hasOwnProperty.call(probes, id));
+  assert.deepEqual(
+    unprobed,
+    [],
+    `violations with no status_probes entry cannot be checked against reality: ${unprobed.join(", ")}. ` +
+    `Add a probe (file + pattern/absent_pattern/exists) or remove the violation.`
+  );
+});
+
+test("CLAIM 4 -- the status gate is not itself defeatable", () => {
+  // Every gate added by an agent that hunts defects shares one failure mode: it is written
+  // once, passes on the day it lands, and is never tested again. A gate that cannot fail is
+  // the exact shape of CV-08, which this file exists to prevent -- landing another one
+  // while CV-08 was open would be its own kind of irony.
+  //
+  // So the gate is proved by feeding it hostile inputs rather than by being trusted.
+  const decide = (status, observed) => (status.startsWith("OPEN") ? observed === true : observed === false);
+
+  // Both drift directions must be rejected...
+  assert.equal(decide("RESOLVED -- pretend fix", true), false, "must reject a false RESOLVED");
+  assert.equal(decide("OPEN -- owner decision required", false), false, "must reject a stale OPEN");
+  // ...and the honest cases must still pass, or the two assertions above prove nothing.
+  assert.equal(decide("OPEN -- owner decision required", true), true);
+  assert.equal(decide("RESOLVED -- repaired", false), true);
+
+  // Probes must be well-formed and name a real file, so one cannot be made vacuous.
+  for (const [id, probe] of Object.entries(RECORD.status_probes ?? {}).filter(([k]) => !k.startsWith("//"))) {
+    if (probe.self_verifying) continue;
+    const hasPattern = probe.pattern !== undefined || probe.absent_pattern !== undefined;
+    assert.ok(
+      hasPattern || probe.exists !== undefined,
+      `${id} needs exactly one of pattern, absent_pattern, or exists`
+    );
+    if (hasPattern) {
+      assert.match(String(probe.pattern ?? probe.absent_pattern), /\S/, `${id} probe pattern is empty`);
+    }
+    assert.ok(existsSync(join(ROOT, probe.file)), `${id} probe names a missing file: ${probe.file}`);
+  }
+
+  // A self-verifying entry is the only permitted exemption and must be declared on BOTH
+  // sides of the record, so the exemption cannot be granted in one place alone.
+  const exemptions = RECORD.violations.filter((v) => v.self_verifying).map((v) => v.id);
+  for (const id of exemptions) {
+    assert.ok(
+      RECORD.status_probes?.[id]?.self_verifying === true,
+      `${id} claims self_verifying on the violation but has no matching exempt probe entry`
+    );
+  }
+  assert.ok(
+    exemptions.length < RECORD.violations.length,
+    "at least one violation must be checked against real code; a record where every entry " +
+    "exempts itself from reality-checking enforces nothing"
+  );
+
+  // Finally, assert the real gate still exists. If someone deletes the status assertions
+  // above, this suite would otherwise stay green while enforcing nothing.
+  const self = readFileSync(new URL(import.meta.url), "utf8");
+  assert.match(self, /recorded OPEN, but its probe says the defect is gone/);
+  assert.match(self, /recorded RESOLVED, but its probe says the defect is still present/);
 });
 
 test("a claim may not be repaired without updating the record", () => {
@@ -309,7 +546,18 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   // influential for the runtime kernel -- the floor is recorded so it can only rise,
   // exactly like guard liveness.
   const probePath = join(ROOT, "tools", "measure_node_influence.py");
-  const out = execFileSync("python", [probePath, "--json"], {
+  // Resolve the interpreter at runtime: CI images carry `python`, minimal VMs
+  // carry only `python3`. A gate that cannot execute is a gate that cannot
+  // fire, so the probe must run wherever the suite runs.
+  const pythonBin = (() => {
+    try {
+      execFileSync("python3", ["--version"], { stdio: "ignore" });
+      return "python3";
+    } catch {
+      return "python";
+    }
+  })();
+  const out = execFileSync(pythonBin, [probePath, "--json"], {
     cwd: ROOT,
     encoding: "utf8",
     timeout: 180000,

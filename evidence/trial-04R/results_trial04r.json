@@ -1,0 +1,132 @@
+{
+  "n_treat": 9,
+  "n_ctrl": 10,
+  "treat_success": 9,
+  "ctrl_success": 0,
+  "fisher_two_sided_p": 1.1e-05,
+  "cohens_h": 3.1415,
+  "bayes_P_treat_gt_ctrl": 1.0,
+  "treat_mean_proj": 8.89,
+  "ctrl_mean_proj": 0.0,
+  "treat_mean_gen": 3.0,
+  "ctrl_mean_gen": 3.0,
+  "tierS_pass": true,
+  "ceiling_invalid": false,
+  "negative_transfer_flag": false,
+  "per_agent": {
+    "T4R-A02": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A04": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A06": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A09": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A10": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A11": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A12": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A13": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A16": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A17": {
+      "proj": 0,
+      "gen": 3,
+      "success": false,
+      "arm": "cold"
+    },
+    "T4R-A01": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A03": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A05": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A07": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A08": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A14": {
+      "proj": 8,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A15": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A18": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    },
+    "T4R-A20": {
+      "proj": 9,
+      "gen": 3,
+      "success": true,
+      "arm": "bridge"
+    }
+  }
+}

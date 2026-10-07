@@ -1,0 +1,26 @@
+<!-- Smart Block specimen: nl-btn -->
+<!-- Source: Naya_Lego-blocks.html -->
+<button class="btn" data-modal-open="demo-modal"><span class="dot"></span>Open modal</button>
+      <p style="color:var(--quiet);font-size:14px;margin:14px 0 0">Try Tab — focus stays trapped inside. ESC or backdrop closes it.</p>
+    </div>
+    <div class="nl-modal-back" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-t">
+      <div class="nl-modal">
+        <button class="nl-modal-x" data-modal-close aria-label="Close">×</button>
+        <div class="gem"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3 id="demo-modal-t">Publish your Smart App?</h3>
+        <p>It will go live on your fork first — <strong style="color:var(--ink)">private by default</strong>. The public directory is a separate decision you make later.</p>
+        <div class="nl-modal-actions">
+          <button class="btn-ghost" data-modal-close>Not yet</button>
+          <button class="btn" data-modal-close><span class="dot"></span>Publish to my fork</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rules">
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Give the modal the deepest shadow on the page. It is the most important thing while open.</div>
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Trap focus inside. ESC closes. Backdrop click closes. No dead ends.</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Pop it in with no transition. Materialize: rise + unblur, 300–400ms.</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Stack modals on modals. One decision at a time.</div>
+  </div>
+  <div class="codewrap">
+    <div class="codebar"><span>modal.css — the heaviest surface</span><button class="copybtn" data-copy="code-modal">Copy</button>

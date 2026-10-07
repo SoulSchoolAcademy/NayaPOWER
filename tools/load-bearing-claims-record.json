@@ -96,6 +96,18 @@
       "why_not_fixed_here": "Resolved by requiring the independently verifying runtime to observe `verified:false` together with the exact `PENDING_INDEPENDENT_RUNTIME_VERIFICATION` method, then atomically update only that still-pending row. Pre-verified or otherwise method-mismatched rows fail closed.",
       "not_a_theory": "Executed. RED on current main: a row with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT' returned 200 / OUTCOME_VERIFIED. GREEN on the repair: the same row returns 409 / independent_verification:false; the clean pending outcome still verifies. Focused suite: 38/38; repository Node suite: 527/527.",
       "resolution_note": "Local behavior is verified from the exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Deployment and independent production runtime proof remain separate gates."
+    },
+    {
+      "id": "CV-10",
+      "claim": "the claim record's statuses match the code",
+      "location": "tools/load-bearing-claims-record.json",
+      "problem": "The record enforced its own SHAPE -- every entry names a law, a location, a status -- and nothing compared any status to the code. So the failure it exists to prevent occurred inside the file itself, twice: #1695 repaired CV-06 and CV-07 while both entries kept reading OPEN, and #1791/#1792 marked all nine RESOLVED in a single commit with no test able to tell whether that was true.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED -- status_probes added and every entry probed",
+      "resolution": "Every violation now carries a machine-checkable probe of whether its defect is still present, and tests/load_bearing_claims.test.mjs asserts OPEN entries still misbehave and RESOLVED entries do not. Absence-defects use absent_pattern, the missing-measurement defect uses exists, and literal-defects use pattern. CV-10 itself is covered by a mutation proof rather than a pattern.",
+      "not_a_theory": "Mutation-tested in both directions before this entry was written. A companion test drives the gate's decision function with a still-present defect claimed RESOLVED and with a fixed defect left OPEN, and asserts both are rejected, so the gate cannot drift unnoticed the way the original record did.",
+      "severity_note": "A record that under-reports resolution is not conservative, it is false. And it is worse than having no record, because it looks authoritative. The real cost is teaching every future reader to discount the file.",
+      "self_verifying": true
     }
   ],
   "hardcoded_independent_verification_sites": {
@@ -113,10 +125,71 @@
     "supabase/functions/nayanet-verified-ai-action/index.ts": {
       "verdict": "REVIEWED_OK",
       "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+    },
+    ".github/workflows/live-act-proof.yml": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE -- DERIVED, NOT LITERAL (repaired 2026-10-08, branch naya5/truth-act-proof-fix). The proof dict's independent_verification is computed from the named predicate workflow_verified_plan, which summarizes the same ~25 independent assertions (cold re-read of plan + authoritative execution state, recomputed==stored, receipt-id and behavior matches) in the same run step; set -euo pipefail still aborts before the predicate is computed if any assert fails. The proof also carries independent_verification_scope (workflow-level recomputation, NOT act-execution verification) and act_receipt_independent_verification (the receipt's own False-by-design value) so a cold reader cannot mistake the workflow-level PASS for runtime-level verification. The move-above-guard test now pins derivation-after-gauntlet ordering instead of the literal."
+    },
+    "tools/live_intelligence_reconcile.py": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE. In verify_supersession the literal is returned only after a raise-gauntlet (prior lineage valid, BLOCK_VERIFIED, supersession chain forward/back links, content hash equality); any failed check raises ValueError before the return is reached. The literal therefore attests to checks that actually executed. Recorded so a future edit that returns before the gauntlet fails the move-above-guard test."
     }
   },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
   },
-  "resolved_summary": "CV-01 through CV-09 are resolved at source/CI or focused runtime-test level on this proof branch. Production parity, universal live nine-node binding, and end-to-end successor proof remain separate gates; resolution here is not a claim of production proof."
+  "resolved_summary": "CV-01 through CV-09 are resolved at source/CI or focused runtime-test level on this proof branch. Production parity, universal live nine-node binding, and end-to-end successor proof remain separate gates; resolution here is not a claim of production proof.",
+  "status_probes": {
+    "//": "Each probe reports ONE thing: is this violation's defect STILL PRESENT in the named file? tests/load_bearing_claims.test.mjs asserts that a violation recorded OPEN must still have its defect present, and one recorded RESOLVED must not. Both directions are required. Why: the drift already happened twice. #1695 repaired CV-06 and CV-07 while both entries kept reading OPEN. #1791/#1792 repaired CV-04, CV-05, CV-08 and CV-09 and marked all nine RESOLVED in one commit -- correctly, but nothing in the suite compared a status to the code, so a future silent repair would leave a false record behind a green build. A record that under-reports resolution is not conservative, it is false, and it is worse than no record because it looks authoritative. Shape is no longer enough: every RESOLVED entry is a claim that can be falsified.",
+    "//probe_semantics": "Direction matters and is the easiest thing to get wrong here. All probes answer 'is the defect present?'. Therefore: a defect that WAS a literal or literal text uses `pattern` (defect present while the text is still there); a defect that was an ABSENCE uses `absent_pattern` (the fix's marker is the only observable, so defect present means the marker is gone); a defect that was a missing FILE uses `exists`. CV-01/02/04/05/08/09 were literals and use `pattern`. CV-06/07 were absences and use `absent_pattern`. CV-03 was a missing tool and uses `exists`. Getting this backwards produces a gate that passes while the defect is present, which is the exact failure being guarded against.",
+    "CV-01": {
+      "file": ".github/workflows/live-supabase-runtime-proof.yml",
+      "pattern": "\"independent_verification\":\\s*True\\s*[,}]",
+      "regression_note": "The defect was a hardcoded True literal in the receipt builder, so the probe watches for that literal still being present. The pattern is anchored on `True` FOLLOWED BY A DELIMITER so it cannot match the legitimate computed forms now in the file (`ver[...]`, `vr[...] and vu[...]`) or the `is True` assertions that check a recomputed value. Reintroducing a literal turns the RESOLVED assertion red."
+    },
+    "CV-02": {
+      "file": "tools/measure_node_influence.py",
+      "pattern": "shape check\\. Nothing in that receipt executes a node",
+      "regression_note": "The defect was a shape-only assertion, so the probe watches for that text still being present. The repair is the real CONTROL/TREATMENT ablation; reverting to a shape check restores the text and turns this red."
+    },
+    "CV-03": {
+      "file": "tools/measure_node_influence.py",
+      "exists": true,
+      "regression_note": "The defect was the ABSENCE of the measurement, so no pattern can express it and `exists` inverts the check. Deleting the measurement tool turns this red."
+    },
+    "CV-04": {
+      "file": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+      "pattern": "independent_verification:\\s*true",
+      "regression_note": "The defect was a hardcoded `independent_verification: true` on the verify path, so the probe watches for that literal. Now computed as `pass` / `Boolean(block)`. Also caught independently by the hardcoded_independent_verification_sites scanner in this file, so this defect has two independent guards."
+    },
+    "CV-05": {
+      "file": "supabase/functions/nayanet-law-runtime/index.ts",
+      "pattern": "independent_verification\\s*:\\s*true",
+      "regression_note": "Same defect as CV-04 but on the AUTHORITY node, where a LAW_DECISION_MISMATCH attested independent verification. Now computed as `same`. Also caught by the site scanner."
+    },
+    "CV-06": {
+      "file": "supabase/functions/nayanet-learning-verify/index.ts",
+      "absent_pattern": "All gates passed\\. Mutations begin here\\.",
+      "regression_note": "Absence-defect, so INVERTED and that is correct: the defect was that the LAW gate ran AFTER the mutations it guarded, meaning nothing marked where the ordering guarantee begins. Moving the gates back below the learning_evidence promotion removes the 'All gates passed. Mutations begin here.' boundary, which makes this match and fails the RESOLVED assertion."
+    },
+    "CV-07": {
+      "file": "supabase/functions/nayanet-learning-verify/index.ts",
+      "absent_pattern": "EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION",
+      "regression_note": "Absence-defect, INVERTED for the same reason: the defect was that non-empty was the only check on evidence_refs, so there was no evidence-content refusal to find. Removing validateEvidenceRefs removes the EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION marker, which fails the RESOLVED assertion."
+    },
+    "CV-08": {
+      "file": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "pattern": "receipt_mutated_after_refusal:\\s*false",
+      "regression_note": "The defect was a verification CHECK hardcoded to a constant, so the gate on it was `false === false` and the field was reported as a passing guard while being structurally incapable of failing. Replaced by a computed refusal_receipt_contract_valid, and refusal_receipt_owner_matches was added to refusalChecksPass. Restoring the constant turns this red."
+    },
+    "CV-09": {
+      "file": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "pattern": "outcome\\.verified === true",
+      "regression_note": "The anti-self-certification check had an OR arm accepting any row already claiming verified:true regardless of method, so a pre-set flag satisfied a check whose name promised independence. Now `verified === false && method === PENDING`. Restoring the OR arm turns this red."
+    },
+    "CV-10": {
+      "self_verifying": true,
+      "note": "CV-10 is a defect in the record's OWN enforcement, so no source pattern can observe it. It is covered by the mutation-proof companion test, which drives the gate's decision function with both drift directions and asserts it rejects them, plus assertions that the status checks still exist in this file. That is stronger than a pattern: it proves the gate cannot drift rather than detecting one instance of drift."
+    }
+  }
 }

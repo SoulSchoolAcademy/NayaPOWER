@@ -161,7 +161,7 @@
     }
 
     async function nayaProvisionSession(client, user) {
-      const smartName = rawName.trim().replace(/\\s+/g, ' ').slice(0, 120);
+      const smartName = rawName.trim().replace(/\s+/g, ' ').slice(0, 120);
       const smartAlias = (aliasInput.value || rawName).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 48) || 'pioneer';
       const { error: metadataError } = await client.auth.updateUser({ data: { display_name: smartName, full_name: smartName, smart_name: smartName, smart_alias: smartAlias, nayanet_identity_version: 'name-first-v1' } });
       if (metadataError) throw metadataError;
@@ -204,9 +204,9 @@
 
     async function nayaVerifyOtp() {
       const email = document.getElementById('nayaAuthEmail').value.trim().toLowerCase();
-      const token = document.getElementById('nayaAuthOtp').value.replace(/\\D/g, '').slice(0, 6);
+      const token = document.getElementById('nayaAuthOtp').value.replace(/\D/g, '').slice(0, 6);
       const status = document.getElementById('nayaAuthStatus');
-      if (!nayaOtpSent || !email || !/^\\d{6}$/.test(token)) { status.textContent = 'Enter the six-digit code from your email.'; return; }
+      if (!nayaOtpSent || !email || !/^\d{6}$/.test(token)) { status.textContent = 'Enter the six-digit code from your email.'; return; }
       status.textContent = 'Verifying identity…';
       try {
         const client = await nayaAuthClient();

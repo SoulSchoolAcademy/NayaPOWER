@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0557",
+ "intelligence": {
+  "title": "Projector Commits Are a Third Brain-Index Drift Class — CI-Masked Until the Next Push",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0557-projector-commit-drift-third-class",
+  "smart_note_id": "SN-0557",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0557/IB-SMART-NOTE-20260930-sn0557-projector-commit-drift-third-class.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0557/IB-SMART-NOTE-20260930-sn0557-projector-commit-drift-third-class.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

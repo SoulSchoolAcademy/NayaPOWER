@@ -1,0 +1,1 @@
+Yesterday's job run went through its ingest step. The runner read the input payload and found real data present, so the checkpoint recorded the step as successful: ingest finished with status ok. With ingest confirmed, the pipeline is ready for the next stage. Next step: hand the ingested payload to the processing step and re-checkpoint when it completes.

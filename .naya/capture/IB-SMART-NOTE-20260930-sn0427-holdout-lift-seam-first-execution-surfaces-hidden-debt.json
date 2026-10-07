@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0427",
+ "intelligence": {
+  "title": "SN-0427 — The Holdout-Lift Seam: a Step's First Real Execution Surfaces the Debt the Holdout Was Hiding",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0427-holdout-lift-seam-first-execution-surfaces-hidden-debt",
+  "smart_note_id": "SN-0427",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0427/IB-SMART-NOTE-20260930-sn0427-holdout-lift-seam-first-execution-surfaces-hidden-debt.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0427/IB-SMART-NOTE-20260930-sn0427-holdout-lift-seam-first-execution-surfaces-hidden-debt.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

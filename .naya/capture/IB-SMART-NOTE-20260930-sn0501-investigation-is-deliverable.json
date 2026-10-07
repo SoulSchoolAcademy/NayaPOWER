@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0501",
+ "intelligence": {
+  "title": "The Investigation Is the Deliverable — When the Target's Source of Truth Is Unverified, Refuse to Ship Against a Guess",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0501-investigation-is-deliverable",
+  "smart_note_id": "SN-0501",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0501/IB-SMART-NOTE-20260930-sn0501-investigation-is-deliverable.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0501/IB-SMART-NOTE-20260930-sn0501-investigation-is-deliverable.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

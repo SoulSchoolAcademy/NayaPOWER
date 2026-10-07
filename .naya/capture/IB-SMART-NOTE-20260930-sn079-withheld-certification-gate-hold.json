@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-079",
+ "intelligence": {
+  "title": "Withheld Certification Is the Gate Working — Grade the Hold, Don't \"Fix\" the Gate",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn079-withheld-certification-gate-hold",
+  "smart_note_id": "SN-079",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-079/IB-SMART-NOTE-20260930-sn079-withheld-certification-gate-hold.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-079/IB-SMART-NOTE-20260930-sn079-withheld-certification-gate-hold.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

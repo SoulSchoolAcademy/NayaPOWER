@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0545",
+ "intelligence": {
+  "title": "The Registry Is the Identity Authority — Published-Tree Collisions Resolve by Disambiguation, Never Deletion, Never a Second Entry",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0545-registry-is-identity-authority-disambiguate-never-delete",
+  "smart_note_id": "SN-0545",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0545/IB-SMART-NOTE-20261007-sn0545-registry-is-identity-authority-disambiguate-never-delete.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0545/IB-SMART-NOTE-20261007-sn0545-registry-is-identity-authority-disambiguate-never-delete.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

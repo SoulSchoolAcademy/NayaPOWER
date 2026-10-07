@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0434",
+ "intelligence": {
+  "title": "Adjudicate Disputes by Pinning Scope First — Byte-Level Inventory Against the Manifest",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0434-dispute-audit-pin-scope-first",
+  "smart_note_id": "SN-0434",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0434/IB-SMART-NOTE-20260930-sn0434-dispute-audit-pin-scope-first.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0434/IB-SMART-NOTE-20260930-sn0434-dispute-audit-pin-scope-first.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

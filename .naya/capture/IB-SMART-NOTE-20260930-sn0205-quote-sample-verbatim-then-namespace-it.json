@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0205",
+ "intelligence": {
+  "title": "Quote the Approved Sample Verbatim — Then Namespace It",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0205-quote-sample-verbatim-then-namespace-it",
+  "smart_note_id": "SN-0205",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/REFERENCE-ADOPTION/SN-0205/IB-SMART-NOTE-20260930-sn0205-quote-sample-verbatim-then-namespace-it.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/REFERENCE-ADOPTION/SN-0205/IB-SMART-NOTE-20260930-sn0205-quote-sample-verbatim-then-namespace-it.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

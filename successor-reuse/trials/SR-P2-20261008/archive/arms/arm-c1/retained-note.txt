@@ -1,0 +1,1 @@
+When two queued calls score within 0.5 of each other, dispatch the lower-scored call now and hold the higher-scored call for the stronger slot that follows. When the gap exceeds 0.5, the Reserve Rule does not fire and the single slot goes to the straightforward top scorer.

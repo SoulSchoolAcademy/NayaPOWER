@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0416",
+ "intelligence": {
+  "title": "The Kernel Contract Seam — a Kernel Weighting Change Must Migrate Every Consumer as One Atomic Unit",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0416-kernel-contract-seam",
+  "smart_note_id": "SN-0416",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KERNEL-CONTRACT-SEAMS/SN-0416/IB-SMART-NOTE-20261005-sn0416-kernel-contract-seam.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KERNEL-CONTRACT-SEAMS/SN-0416/IB-SMART-NOTE-20261005-sn0416-kernel-contract-seam.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

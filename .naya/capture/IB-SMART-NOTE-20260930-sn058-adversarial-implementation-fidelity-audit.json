@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-058",
+ "intelligence": {
+  "title": "Adversarial Implementation-Fidelity Audit — A Decided Option Is Verified at the Field Level, Not Just by the Green Suite",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn058-adversarial-implementation-fidelity-audit",
+  "smart_note_id": "SN-058",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-058/IB-SMART-NOTE-20260930-sn058-adversarial-implementation-fidelity-audit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-058/IB-SMART-NOTE-20260930-sn058-adversarial-implementation-fidelity-audit.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

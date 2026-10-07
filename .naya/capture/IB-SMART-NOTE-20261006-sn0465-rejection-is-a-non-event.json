@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0465",
+ "intelligence": {
+  "title": "Rejection Is a Non-Event: a Refused Write Must Not Record Itself",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0465-rejection-is-a-non-event",
+  "smart_note_id": "SN-0465",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0465/IB-SMART-NOTE-20261006-sn0465-rejection-is-a-non-event.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0465/IB-SMART-NOTE-20261006-sn0465-rejection-is-a-non-event.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

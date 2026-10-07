@@ -46,7 +46,21 @@ class JsonContinuityStore:
     def load(self) -> SelfState:
         if not self.path.exists():
             raise SelfNodeError("continuity_missing")
-        return _state_from_payload(json.loads(self.path.read_text(encoding="utf-8")))
+        try:
+            payload = json.loads(self.path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            # Unparseable store = corrupt record: isolate, never silently absorb.
+            raise SelfNodeError("checkpoint_integrity_failed") from exc
+        if not isinstance(payload, dict):
+            raise SelfNodeError("checkpoint_integrity_failed")
+        stored = payload.get("checkpoint_id")
+        # checkpoint_id() is a content hash over the payload excluding the id
+        # itself, so the stored id must equal the recomputed hash. Any
+        # tampering with mission, known, unknown, blocked, experience count,
+        # or the id breaks the match -> fail closed, inherit nothing.
+        if stored is None or checkpoint_id(payload) != stored:
+            raise SelfNodeError("checkpoint_integrity_failed")
+        return _state_from_payload(payload)
 
 def _canonical_payload(state: SelfState) -> dict[str, Any]:
     payload = asdict(state)
@@ -55,7 +69,12 @@ def _canonical_payload(state: SelfState) -> dict[str, Any]:
     return payload
 
 def checkpoint_id(payload: dict[str, Any]) -> str:
-    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+    # Content hash over everything EXCEPT the checkpoint id itself, so a
+    # stored id is verifiable: stored_id == checkpoint_id(stored_payload).
+    # Hashing the id into its own pre-image would make the stored value
+    # unverifiable (the pre-image could never be reconstructed on load).
+    content = {k: v for k, v in payload.items() if k != "checkpoint_id"}
+    encoded = json.dumps(content, sort_keys=True, separators=(",", ":")).encode()
     return "CHK-" + hashlib.sha256(encoded).hexdigest()[:24]
 
 class SelfNode:
@@ -109,7 +128,11 @@ class SelfNode:
         )
         self.state.checkpoint_id = checkpoint_id(_canonical_payload(self.state))
         self.store.save(self.state)
-        return self.boot_receipt()
+        receipt = self.boot_receipt()
+        # Observability for the integrity gate: reaching this line means a
+        # stored prior (if any) passed checkpoint verification in load().
+        receipt["prior_checkpoint_integrity"] = "VERIFIED" if prior is not None else "ABSENT"
+        return receipt
 
     def record_experience(self, *, lesson: str, observed_outcome: str, next_objective: str | None = None) -> dict[str, Any]:
         self._require_ready()

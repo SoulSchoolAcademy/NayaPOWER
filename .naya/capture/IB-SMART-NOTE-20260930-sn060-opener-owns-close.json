@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-060",
+ "intelligence": {
+  "title": "The Opener Owns the Close — Supersede in a Comment, Leave His PR Open",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn060-opener-owns-close",
+  "smart_note_id": "SN-060",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-060/IB-SMART-NOTE-20260930-sn060-opener-owns-close.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-060/IB-SMART-NOTE-20260930-sn060-opener-owns-close.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

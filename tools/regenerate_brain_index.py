@@ -437,7 +437,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         d = domain_of(f["path"])
         if d != current_domain:
             current_domain = d
-            lines.append(f"### {DOMAIN_TITLES[d]}")
+            lines.append(f"### {DOMAIN_TITLES.get(d, d + ' — (unregistered domain)')}")
             lines.append("")
         if f["path"] in RECEIPT_PATHS:
             lines.append(f"- `{f['path']}` — _(self-referential index file; blob SHA omitted)_")

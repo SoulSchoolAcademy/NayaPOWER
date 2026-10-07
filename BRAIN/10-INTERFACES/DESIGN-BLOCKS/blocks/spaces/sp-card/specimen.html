@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block specimen: spaces/sp-card</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#fff; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; margin:0; padding:40px 24px; }
+  h1{ font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin:0 0 24px; }
+  .note{ font-size:13px; color:#8a8a96; margin-top:24px; }
+  /* sp-join / sp-mcount / sp-priv are not in this block's CSS; specimen-only styling so the demo renders */
+  .sp-join{ padding:8px 16px; border-radius:999px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; color:#a78bfa; background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.4); margin-left:auto; }
+  .sp-join.in{ color:#fff; background:rgba(13,158,111,.2); border-color:rgba(13,158,111,.6); }
+</style>
+</head>
+<body>
+<h1>spaces / sp-card</h1>
+<div id="demo"></div>
+<p class="note">Hover a card — the V2 premium hover glow is in block.css. Cards 1–3 set <code>--sc</code> per card; card 4 falls back to the block default <code>#7c3aed</code>.</p>
+<script src="block.js"></script>
+<script>
+  function dot(color, label){
+    var s = document.createElement('span');
+    s.className = 'sp-ava';
+    s.title = label || '';
+    s.style.cssText = 'display:inline-block;width:26px;height:26px;border-radius:50%;background:' + color + ';';
+    return s;
+  }
+  var demo = document.getElementById('demo');
+  demo.appendChild(spGrid([
+    spCard({ name:'Design Guild', topic:'Creativity',
+      desc:'World-class interface craft. The bar is 10 stars or it never ships.',
+      members:128, accent:'#7c3aed',
+      avatars:[dot('#7c3aed','A'),dot('#1e6fd9','B'),dot('#0d9e6f','C'),dot('#d4a017','D')] }),
+    spCard({ name:'Morning Builders', topic:'Engineering',
+      desc:'Ship before breakfast. Smallest effective change, always verified.',
+      members:64, accent:'#0d9e6f', joined:true,
+      avatars:[dot('#0d9e6f','E'),dot('#0e9bd8','F')] }),
+    spCard({ name:'Signal Room', topic:'Governance',
+      desc:'Every law ships as code. The scorecard is the gate.',
+      members:32, accent:'#1e6fd9', privacy:'private' }),
+    spCard({ name:'Idea Garden', topic:'Brainstorm',
+      desc:'Mess in, beauty out. Wild ideas welcome.',
+      members:256 })
+  ]));
+</script>
+</body>
+</html>

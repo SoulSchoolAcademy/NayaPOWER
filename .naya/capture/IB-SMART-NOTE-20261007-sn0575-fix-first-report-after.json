@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0575",
+ "intelligence": {
+  "title": "IB-SMART-NOTE — SN-0575 — Fix It First, Report After: The Proactive Service Law",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0575-fix-first-report-after",
+  "smart_note_id": "SN-0575",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-LAW/PROACTIVE-SERVICE/SN-0575/IB-SMART-NOTE-20261007-sn0575-fix-first-report-after.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-LAW/PROACTIVE-SERVICE/SN-0575/IB-SMART-NOTE-20261007-sn0575-fix-first-report-after.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

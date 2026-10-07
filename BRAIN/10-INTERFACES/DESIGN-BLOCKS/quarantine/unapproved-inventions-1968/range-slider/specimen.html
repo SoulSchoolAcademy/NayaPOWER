@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Range Slider — Smart Block Specimen</title>
+<link rel="stylesheet" href="range-slider.css">
+<style>
+  body{ background:#050507; color:#F8F7FB; font-family:-apple-system,"SF Pro Text",Inter,sans-serif;
+        margin:0; padding:48px 20px; min-height:100vh; }
+  .wrap{ max-width:560px; margin:0 auto; }
+  h1{ font-size:24px; font-weight:800; margin:0 0 8px; }
+  .sub{ font-size:14px; color:rgba(248,247,251,.55); margin:0 0 44px; }
+  .demo{ margin-bottom:64px; }
+  .cap{ font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:1.2px;
+        color:rgba(248,247,251,.55); margin:0 0 20px; }
+  .rowline{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:20px; }
+  .rowline .name{ font-size:18px; font-weight:700; }
+  .rs-value{ font-size:18px; font-weight:700; color:#a06bff;
+             text-shadow:0 0 12px rgba(160,107,255,.6); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Smart Block · forms/range-slider</h1>
+  <p class="sub">Drag the thumb, or Tab to it and use ← → (arrows), PageUp/PageDown, Home/End.</p>
+
+  <div class="demo">
+    <div class="rowline">
+      <span class="name">Glow intensity</span>
+      <span class="rs-value" data-for="glow">75%</span>
+    </div>
+    <div class="rs-root" data-min="0" data-max="100" data-value="75" data-step="1" data-suffix="%" data-out="glow">
+      <div class="rs-bubble">75%</div>
+      <div class="rs-track">
+        <div class="rs-fill"></div>
+        <div class="rs-thumb"></div>
+      </div>
+      <input class="rs-input" type="range" tabindex="0" aria-label="Glow intensity">
+    </div>
+  </div>
+
+  <div class="demo">
+    <div class="rowline">
+      <span class="name">Orbit speed</span>
+      <span class="rs-value" data-for="orbit">2.5×</span>
+    </div>
+    <div class="rs-root" data-min="0.5" data-max="5" data-value="2.5" data-step="0.1" data-suffix="×" data-out="orbit">
+      <div class="rs-bubble">2.5×</div>
+      <div class="rs-track">
+        <div class="rs-fill"></div>
+        <div class="rs-thumb"></div>
+      </div>
+      <input class="rs-input" type="range" tabindex="0" aria-label="Orbit speed">
+    </div>
+  </div>
+</div>
+<script>
+  // wire each demo's readout line (outside the root) to its slider
+  document.querySelectorAll(".rs-root").forEach(function(root){
+    var readout = document.querySelector('.rs-value[data-for="' + root.dataset.out + '"]');
+    root.addEventListener("rs-change", function(e){
+      var s = root.dataset.suffix || "";
+      var v = e.detail.value;
+      readout.textContent = (Number.isInteger(v) ? v : v.toFixed(1)) + s;
+    });
+  });
+</script>
+<script src="range-slider.js"></script>
+</body>
+</html>

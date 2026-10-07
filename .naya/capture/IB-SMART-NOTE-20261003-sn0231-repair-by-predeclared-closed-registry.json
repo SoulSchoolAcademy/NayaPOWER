@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0231",
+ "intelligence": {
+  "title": "Repair by Predeclared Registry — Fail-Closed, Text-as-Proposals, Declared-Class-or-UNKNOWN",
+  "intelligent_block_id": "IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry",
+  "smart_note_id": "SN-0231",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0231/IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/03/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0231/IB-SMART-NOTE-20261003-sn0231-repair-by-predeclared-closed-registry.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

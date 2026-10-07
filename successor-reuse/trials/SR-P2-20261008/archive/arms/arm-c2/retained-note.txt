@@ -1,0 +1,1 @@
+I learned that when two calls' priority scores are within 0.5 of each other, dispatch the lower-scored call to keep the stronger one in reserve; when the gap exceeds 0.5, just dispatch the top scorer. I also learned that a short retained rule like this one lets a cold successor reproduce the predecessor's exact decisions without re-deriving the heuristic.

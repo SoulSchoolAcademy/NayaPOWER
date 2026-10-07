@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0592",
+ "intelligence": {
+  "title": "Never Impersonate the Named Independent Verifier — the Blind Gate Is Not Yours to Cross",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0592-never-impersonate-the-verifier",
+  "smart_note_id": "SN-0592",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0592/IB-SMART-NOTE-20261006-sn0592-never-impersonate-the-verifier.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/EVIDENCE-DISCIPLINE/SN-0592/IB-SMART-NOTE-20261006-sn0592-never-impersonate-the-verifier.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

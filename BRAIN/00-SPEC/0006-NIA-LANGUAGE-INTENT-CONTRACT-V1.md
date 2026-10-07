@@ -73,7 +73,7 @@ These phrases MAY normalize directly to `CAPTURE_DURABLE_INTELLIGENCE` when the 
 - smart note this
 - make a smart note
 - save this as a smart note
-- make this a smart node
+- make this an intelligent block
 - lock this in
 - make this an intelligent block
 - save this as reusable intelligence
