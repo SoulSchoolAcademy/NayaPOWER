@@ -1,3 +1,5 @@
+[Reading 1212 lines from start (total: 1212 lines, 0 remaining)]
+
 name: Live Supabase Runtime Proof
 
 on:
@@ -197,7 +199,6 @@ jobs:
             .naya/evidence/deployed-runtime-observation.json
 
   independent-connect-verification:
-    if: ${{ always() }}
     needs: live-connect
     runs-on: ubuntu-latest
     steps:
@@ -780,7 +781,6 @@ jobs:
           path: active-learning-generalization-successor-proof.json
 
   cold-successor:
-    if: ${{ always() }}
     # Depends only on live-connect, which proves the canonical block exists and is
     # owner-scoped. It deliberately does NOT depend on
     # independent-learning-influence-verification: that job needs a rotated owner
@@ -837,7 +837,6 @@ jobs:
           path: cold-successor-receipt.json
 
   cold-successor-verification:
-    if: ${{ always() }}
     needs: cold-successor
     runs-on: ubuntu-latest
     steps:
@@ -1213,3 +1212,5 @@ jobs:
         with:
           name: nine-node-behavioral-acceptance
           path: nine-node-behavioral-acceptance.json
+
+[executed on device: DESKTOP-OJ712N5 (97813f8c-e057-47af-82b6-89e3bc067f5c)]
