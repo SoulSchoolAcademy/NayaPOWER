@@ -95,15 +95,41 @@ def fetch_open_prs():
 
 
 def fetch_board_tail(board, pages=2):
+    """Read the newest pages*100 comments, refusing an incomplete snapshot.
+
+    GitHub's issue-comment endpoint orders by ascending ID, so pages 1..2
+    are the oldest comments, not the tail. Counts locate the final window;
+    a changed count requires a fresh scan rather than a false CLEAR.
+    """
+    if type(pages) is not int or pages < 1:
+        raise ValueError("pages must be a positive integer")
+    issue_path = f"/repos/{REPO}/issues/{board}"
+
+    def comment_count():
+        issue = gh_api("GET", issue_path)
+        count = issue.get("comments") if isinstance(issue, dict) else None
+        if type(count) is not int or count < 0:
+            raise RuntimeError("BOARD_COMMENT_COUNT: missing or invalid count")
+        return count
+
+    count = comment_count()
+    first_page = max(0, count - pages * 100) // 100 + 1
+    last_page = (count + 99) // 100
     items = []
-    for page in range(1, pages + 1):
+    for page in range(first_page, last_page + 1):
         data = gh_api(
             "GET",
             f"/repos/{REPO}/issues/{board}/comments?per_page=100&page={page}",
         )
-        if not data:
-            break
+        expected = min(100, count - (page - 1) * 100)
+        if not isinstance(data, list) or len(data) != expected:
+            raise RuntimeError("BOARD_COVERAGE: incomplete comment page; retry scan")
         for c in data:
+            if (not isinstance(c, dict) or type(c.get("id")) is not int
+                    or not isinstance(c.get("body"), str)):
+                raise RuntimeError("BOARD_COVERAGE: malformed comment")
+            if items and c["id"] <= items[-1]["id"]:
+                raise RuntimeError("BOARD_COVERAGE: duplicate or unordered comments")
             items.append(
                 {
                     "kind": "board",
@@ -113,7 +139,9 @@ def fetch_board_tail(board, pages=2):
                     "text": c["body"][:2000],
                 }
             )
-    return items
+    if comment_count() != count:
+        raise RuntimeError("BOARD_CHANGED: comment count moved; retry scan")
+    return items[-pages * 100:]
 
 
 def scan(work, candidates):
