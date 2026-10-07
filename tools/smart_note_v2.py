@@ -1,6 +1,63 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
+import argparse, contextlib, hashlib, json, os, re, tempfile
+
+try:
+    import fcntl
+except ModuleNotFoundError:  # Windows: fcntl is Unix-only.
+    fcntl = None
+
+if fcntl is None and os.name == "nt":
+    import msvcrt
+    import threading as _threading
+
+    # flock() provides two mutual-exclusion scopes in a single call:
+    # intra-process (threads) and inter-process (separate OS processes).
+    # msvcrt byte-range locks are owned PER PROCESS, so they supply only the
+    # inter-process scope; a process-local lock keyed by lock-file path
+    # supplies the missing intra-process scope. Without it, two threads in one
+    # process contend for the same byte range and msvcrt fails fast with
+    # OSError(36, "Resource deadlock avoided") instead of blocking.
+    _LOCK_GATES: dict = {}
+    _LOCK_GATES_GUARD = _threading.Lock()
+
+    def _gate_for(lock_path):
+        key = os.path.abspath(str(lock_path))
+        with _LOCK_GATES_GUARD:
+            gate = _LOCK_GATES.get(key)
+            if gate is None:
+                gate = _threading.Lock()
+                _LOCK_GATES[key] = gate
+            return gate
+
+
+@contextlib.contextmanager
+def _exclusive_file_lock(handle):
+    """Hold an exclusive lock on an open file handle for the block's duration.
+
+    POSIX uses fcntl.flock, which excludes other threads and other processes
+    in one call. On Windows the equivalent is a process-local gate (threads)
+    plus an msvcrt byte-range lock (processes), combined here so both
+    platforms provide the same guarantee.
+    """
+    if fcntl is not None:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        return
+
+    gate = _gate_for(handle.name)
+    gate.acquire()
+    try:
+        msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+        try:
+            yield
+        finally:
+            msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+    finally:
+        gate.release()
 from pathlib import Path
 
 # Truth-state guard (Option C, 2026-10-06): all elevations go through
@@ -178,17 +235,20 @@ def _atomic_write_json(path, obj):
 def registry_transaction(registry_path=None):
     """Exclusive read-modify-write transaction on the Smart Note registry.
 
-    Holds an flock(LOCK_EX) across the whole transaction so concurrent
+    Holds an exclusive lock across the whole transaction so concurrent
     writers serialize; the commit is atomic (temp + os.replace). Yields
     the in-memory registry dict; on clean exit the (possibly mutated)
     dict is committed. On exception the lock releases with no write.
+
+    POSIX uses fcntl.flock(LOCK_EX). Windows uses a process-local gate plus
+    an msvcrt byte-range lock, which together provide the same two scopes.
+    See _exclusive_file_lock.
     """
     rp = Path(registry_path) if registry_path else REGISTRY
     rp.parent.mkdir(parents=True, exist_ok=True)
     lock_path = _registry_lock_path(rp)
     with open(lock_path, "w") as lf:
-        fcntl.flock(lf.fileno(), fcntl.LOCK_EX)
-        try:
+        with _exclusive_file_lock(lf):
             if rp.exists():
                 registry = json.loads(rp.read_text(encoding="utf-8"))
             else:
@@ -198,8 +258,6 @@ def registry_transaction(registry_path=None):
                             "entries": []}
             yield registry
             _atomic_write_json(rp, registry)
-        finally:
-            fcntl.flock(lf.fileno(), fcntl.LOCK_UN)
 
 def changed_capture(paths, *, existing_only=False):
     """Return the sorted, deduplicated list of changed Smart Note capture paths.
