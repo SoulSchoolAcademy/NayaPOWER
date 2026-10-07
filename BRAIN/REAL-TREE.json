@@ -1,14 +1,14 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "d53d754703bd3a887be6436e35ad035a899a56d8",
-  "inventory_file_count": 235,
+  "receipt_basis_commit": "a0bbafcf1e88090850bb6b27906bda8dce640f52",
+  "inventory_file_count": 237,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
-    "04-INTELLIGENCE": 24,
+    "03-KERNEL": 29,
+    "04-INTELLIGENCE": 25,
     "05-MEMORY": 69,
     "06-PROOF": 10,
     "07-LEARNING": 2,
@@ -309,6 +309,11 @@
       "size": 2630
     },
     {
+      "path": "BRAIN/03-KERNEL/NODES/SELF/0003-PERSONA-IDENTITY-CONTRACT-V1.md",
+      "blob_sha": "6b5bddde9d94f93409ae26680e07102ef1ec8be4",
+      "size": 4146
+    },
+    {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
       "blob_sha": "baa6ba69a27b53aa00151c4206ad1984b04f1045",
       "size": 6806
@@ -477,6 +482,11 @@
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
       "blob_sha": "2739d6b853808e1668020dc052d0cbc55f7e60c5",
       "size": 4561
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json",
+      "blob_sha": "5c399eb8b94ef72204613009901f7f7827216190",
+      "size": 3369
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
