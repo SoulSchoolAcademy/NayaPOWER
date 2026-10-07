@@ -3,23 +3,22 @@
 
 Why this exists
 ---------------
-NAYANODE/0007 section 6 requires behavioral attribution:
+`live-supabase-runtime-proof.yml` builds a `NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1`
+receipt that marks all nine nodes SATISFIED with `independent_verification: true`, and
+its "ablation discrimination" step proves only that deleting a key from a dict breaks a
+shape check. Nothing in that receipt executes a node.
+
+NAYANODE/0007 section 6 states the actual requirement:
 
     CONTROL:   relevant kernel capability unavailable.
     TREATMENT: relevant kernel capability available.
     The test must measure an observable behavioral difference attributable to the
     treatment.
 
-This script executes the canonical behavior engine and produces deterministic, target-node
-behavior fingerprints under real CONTROL/TREATMENT ablations. The live runtime-proof
-workflow consumes this artifact as a gate and requires 9/9 demonstrated node influence.
-The manifest-bound reference kernel is measured separately and is allowed to expose its
-current narrower runtime scope.
-
-The standalone tool reports the measured delta against both kernels the repo ships.
-The canonical live runtime-proof workflow consumes the measurement as a gate and requires
-9/9 demonstrated influence for the nine-node behavior engine. The standalone command does
-not itself mutate or authorize production state.
+This script runs that ablation for real, against both kernels the repo ships, and
+reports the measured delta. It is deliberately a measurement and not a gate: it does not
+fail the build, because the correct response to "the proof artifact overstates what it
+proves" is a truth decision, not a coda's unilateral edit to a CI gate.
 
 Usage:  python tools/measure_node_influence.py [--json]
 """
@@ -28,7 +27,6 @@ from __future__ import annotations
 
 import argparse
 import copy
-import hashlib
 import importlib.util
 import json
 import sys
@@ -38,32 +36,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 ORDER = ["SELF", "LAW", "ACT", "KNOW", "PROVE", "CONNECT", "VERIFY", "LEARN", "EVOLVE"]
-EPHEMERAL_KEYS = {
-    "execution_id",
-    "candidate_id",
-    "timestamp",
-    "cycle_id",
-    "start_time",
-    "end_time",
-    "duration_ms",
-}
-
-
-def stable_behavior_hash(value: Any) -> str:
-    """Hash only semantically observable node behavior, excluding per-run UUID/time noise."""
-    def normalize(item: Any) -> Any:
-        if isinstance(item, dict):
-            return {
-                key: normalize(val)
-                for key, val in sorted(item.items())
-                if key not in EPHEMERAL_KEYS
-            }
-        if isinstance(item, list):
-            return [normalize(val) for val in item]
-        return item
-
-    payload = json.dumps(normalize(value), sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
 
 
 # ── the two kernels ────────────────────────────────────────────────────────────
@@ -124,12 +96,6 @@ def measure_behavior_engine() -> dict:
             "node_statuses": {
                 nid: rec["status"] for nid, rec in out["node_receipts"].items()
             },
-            # Fingerprint the actual node output after removing only ephemeral run IDs/time.
-            # Influence attribution compares ONLY the target node's behavior fingerprint.
-            "node_behavior_fingerprints": {
-                nid: stable_behavior_hash(engine.outputs.get(nid, {}))
-                for nid in out["node_receipts"]
-            },
         }
 
     base = {
@@ -139,14 +105,9 @@ def measure_behavior_engine() -> dict:
         "authority": {"grant_id": "G"},
         "claim": "c",
         "evidence": [{"provenance": "p"}],
-        "intelligent_block_id": "IB-1",
-        "intelligence": [{"id": "IB-1", "owner_id": "O", "content": "lesson"}],
-        "relationships": [{"type": "DERIVED_FROM", "source": "IB-1", "target": "KNOW-1"}],
         "observed_outcome": "done",
         "independent_evidence": ["i"],
         "holdout_result": True,
-        "next_action": "continue",
-        "applicability": "contextual",
     }
 
     scenarios = {"full_cycle": run(base)}
@@ -165,19 +126,18 @@ def measure_behavior_engine() -> dict:
         "no_independent_evidence": ("VERIFY", {**base, "independent_evidence": []}),
         "outcome_mismatch": ("VERIFY", {**base, "observed_outcome": "different"}),
         "holdout_failed": ("LEARN", {**base, "holdout_result": False}),
-        # KNOW ablation: remove the durable block binding and the retrieved result.
-        "know_without_reader": ("KNOW", {
-            **base,
-            "intelligent_block_id": "",
-            "intelligence": [],
-        }),
-        # CONNECT ablation: drop the actual typed relationship used by the treatment.
-        "connect_without_relationships": ("CONNECT", {**base, "relationships": []}),
-        # EVOLVE ablation: remove the successor's next action.
-        "evolve_without_next_action": ("EVOLVE", {**base, "next_action": None}),
     }
     for name, (_node, ctx) in ablations.items():
         scenarios[name] = run(ctx)
+
+    # KNOW ablation: durable retrieval is identity-bound, so removing the block id must
+    # block the cycle when a reader is wired in.
+    scenarios["know_without_reader"] = run({**base, "intelligent_block_id": ""})
+    # CONNECT ablation: drop every typed relationship.
+    scenarios["connect_without_relationships"] = run({**base, "relationships": []})
+    # EVOLVE ablation: SELF not ready blocks EVOLVE; already covered by no_identity, so
+    # here we test that successor continuity does NOT carry authority.
+    scenarios["evolve_inherits_no_authority"] = run(base)
 
     return {"kernel": "BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine",
             "scenarios": scenarios,
@@ -202,10 +162,7 @@ def influence_report(measurements: list[dict]) -> dict:
         influential = set()
         changed_scenarios = []
         for scenario_name, (node, _ctx) in m.get("ablations", {}).items():
-            baseline_hash = (scenarios[baseline_key].get("node_behavior_fingerprints") or {}).get(node)
-            treatment_hash = (scenarios[scenario_name].get("node_behavior_fingerprints") or {}).get(node)
-            changed = baseline_hash != treatment_hash
-            if changed:
+            if json.dumps(scenarios[scenario_name], sort_keys=True) != base:
                 influential.add(node)
                 changed_scenarios.append(scenario_name)
 

@@ -1,7 +1,7 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main 6a1df86d6dadd96f31bd4ce8b385c9c78c0835b4 + Gate 2 integration review",
+  "measured_on": "main c0b899b6b19d83aad4b192dae5af47b2ec8190fe",
   "violations": [
     {
       "id": "CV-01",
@@ -9,9 +9,8 @@
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
       "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 sets \"independent_verification\": True as a literal in the receipt builder. No independent process produced it.",
       "law": "SN-0481",
-      "status": "RESOLVED -- independent verification proof integrated on Gate 2 branch; production parity still pending",
-      "why_not_fixed_here": "Resolved on the Gate-2 proof branch; this status becomes canonical once the PR merges to current main.",
-      "resolution": "Gate 2 now mints a fresh verifier identity, rejects executor self-attestation, pins verification to SOURCE_SHA, and recomputes the nine-node acceptance from raw persisted evidence. Production parity remains a separate deployment gate."
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Editing a proof artifact is a truth decision for an owner, not a unilateral change from an enforcement PR. Removing the claim silently would destroy a signal other lanes read; leaving it silently is what this record prevents."
     },
     {
       "id": "CV-02",
@@ -19,9 +18,8 @@
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
       "problem": "The 'ablation discrimination' step deletes a key from the dict it just built and asserts a shape checker fails. That proves the shape checker checks shapes. No node in the receipt is executed by any code.",
       "law": "SN-0462, SN-0505",
-      "status": "RESOLVED -- behavioral influence proof integrated; live runtime binding remains separate",
-      "why_not_fixed_here": "Resolved by the G3 proof lane; production runtime binding is a distinct proof surface and remains unclaimed here.",
-      "resolution": "Integrated from G3: canonical KernelBehaviorEngine CONTROL/TREATMENT ablations now produce deterministic target-node fingerprints; the acceptance gate requires 9/9 invoked and 9/9 behaviorally influential nodes and rechecks every target-node delta. This proves reference-engine influence, not production runtime influence."
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Same reason. The real ablation exists (tools/measure_node_influence.py) and reports 2/9 invoked, 0/9 influential for the runtime kernel. Wiring it into this gate is an owner decision about what the receipt may claim."
     },
     {
       "id": "CV-03",
@@ -60,9 +58,9 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "ORDERING DEFECT ON THE LOCK-IN PATH. index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION. index.ts:453 writes verified:true into an execution receipt. index.ts:482 calls resolveLearningLockInLaw(). So when LAW denies, the runtime correctly returns 403 LEARNING_LOCK_IN_LAW_DENIED while both mutations are ALREADY PERSISTED. The refusal is real and the fail-open is real in the same request. The same ordering applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED at index.ts:435: the learning row is ACTIVE before the receipt is looked up. The H13 comment at index.ts:478 states the intent -- 'every canonical mutation must sit behind the grant gate' -- and two of them do not.",
       "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier)",
-      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
-      "why_not_fixed_here": "Resolved on current main by ordering provenance-link checks, LAW authorization, and receipt existence before the first canonical mutation. Denied requests leave learning_evidence and receipt learning state untouched.",
-      "not_a_theory": "Executed in the focused current-main suite: LAW denial, receipt absence, untouched graph state, and authorized positive-control lock-in are covered. Production parity remains a separate gate."
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Reordering a live lock-in transaction changes what gets promoted when LAW denies, and a partial failure after the promote would leave learning_evidence ACTIVE with no rollback. That is a transactional-design decision for an owner. The repair is to hoist resolveLearningLockInLaw and the LEARNING_PROVENANCE_LINKS_REQUIRED check above index.ts:404.",
+      "not_a_theory": "Executed. The pinned tests drive the real handler with no authority grant and observe, in one response, ok:false + LEARNING_LOCK_IN_LAW_DENIED + learning_evidence.status == ACTIVE + a receipt entry with verified:true. A companion test asserts the graph mutations ARE correctly untouched, so the leak is scoped precisely rather than overclaimed."
     },
     {
       "id": "CV-07",
@@ -70,9 +68,9 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "index.ts:398 accepts body.evidence_refs as an array of caller-supplied strings and requires only that it be non-empty (index.ts:399). No check that any element corresponds to a real causal verification record. index.ts:552 then derives causal_verification_id: refs.find(r => r.startsWith('CVO-')) || null. So arbitrary strings promote the learning to ACTIVE, set the block LEARNED and the relationship VERIFIED, while recording causal_verification_id: null and reporting ok:true / verified:true. Nothing in the response or the persisted provenance says the verification was never found.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
-      "why_not_fixed_here": "Resolved on current main by validateEvidenceRefs: malformed or junk refs fail closed, and a causal-verification ID is required before promotion.",
-      "not_a_theory": "Executed in the focused current-main suite: junk, missing CVO, forged CVO-prefix, and valid CVO positive-control paths are covered. Production parity remains a separate gate.",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Deciding what counts as acceptable evidence is a truth/authority policy, not a parsing change. Requiring at least one CVO- id, or resolving each ref against nayanet-causal-verifications, are both defensible and have different failure modes. That choice is an owner's. The repair is small once the policy is chosen.",
+      "not_a_theory": "Executed. The pinned test passes evidence_refs: ['not-a-verification', '', '0'] and observes ok:true, verified:true, block LEARNED, relationship VERIFIED. A second test shows the id is silently null in the canonical provenance, and a third shows that one forged 'CVO-forged' string among junk is accepted as the causal_verification_id.",
       "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
     },
     {
@@ -117,6 +115,5 @@
   },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
-  },
-  "resolved_summary": "CV-01 through CV-09 are resolved at source/CI or focused runtime-test level on this proof branch. Production parity, universal live nine-node binding, and end-to-end successor proof remain separate gates; resolution here is not a claim of production proof."
+  }
 }

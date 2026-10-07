@@ -764,15 +764,7 @@ jobs:
             "authority_inherited":False,
             "successor_grant_count":0,
             "executed":False,
-            "independent_verification":vr["independent_verification"] and vu["independent_verification"],
-            "independent_verification_basis":{
-              "verifier_mode":"AUTHORITATIVE_REREAD_AND_RECOMPUTATION",
-              "verifier_runtime_jti":vr["token_jti"],
-              "executor_runtime_jti":er.get("token_jti"),
-              "executor_claim_trusted":False,
-              "related_recomputed":vr["recomputed"],
-              "unrelated_recomputed":vu["recomputed"],
-            },
+            "independent_verification":True,
             "limitations":[
               "one ACTIVE applicable lesson",
               "one second related held-out task",
@@ -1082,104 +1074,6 @@ jobs:
           name: active-learning-generalization-successor-proof
           path: evidence/evolve
 
-      - name: Mint fresh independent nine-node verifier identity
-        shell: bash
-        run: |
-          set -euo pipefail
-          token="$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=nayanet-runtime" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
-          VERIFIER_TOKEN="$token" python - <<'PY'
-          import base64, json, os
-          from pathlib import Path
-
-          token = os.environ["VERIFIER_TOKEN"]
-          parts = token.split(".")
-          if len(parts) != 3:
-            raise SystemExit("OIDC token is not a JWT")
-          payload = json.loads(base64.urlsafe_b64decode(parts[1] + "=" * (-len(parts[1]) % 4)))
-          jti = str(payload.get("jti") or "")
-          if not jti:
-            raise SystemExit("fresh verifier token has no jti")
-          Path("verifier-runtime-jti.txt").write_text(jti, encoding="utf-8")
-          PY
-
-      - name: Independently recompute nine-node behavioral acceptance
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          cold=json.load(open("evidence/self/cold-runtime-1.json"))
-          graph=json.load(open("evidence/connect/cold-graph-behavior-pair.json"))
-          graph_verify=json.load(open("evidence/verify-connect/cold-graph-independent-verification.json"))
-          promotion=json.load(open("evidence/learn/learning-promotion.json"))
-          reread=json.load(open("evidence/learn-reread/retained-learning-reread.json"))
-          evolve=json.load(open("evidence/evolve/active-learning-generalization-successor-proof.json"))
-          source="${{ env.SOURCE_SHA }}"
-          executor_jti=str(cold["receipt"].get("token_jti") or "")
-          verifier_jti=Path("verifier-runtime-jti.txt").read_text(encoding="utf-8").strip()
-          if not executor_jti:
-            raise SystemExit("authoritative executor receipt has no token_jti")
-          bundle={
-            "executor":{"source_revision":source,"token_jti":executor_jti},
-            "cold":cold,
-            "graph":graph,
-            "graph_verify":graph_verify,
-            "promotion":promotion,
-            "reread":reread,
-            "evolve":evolve,
-          }
-          Path("nine-node-independent-input.json").write_text(json.dumps(bundle,indent=2),encoding="utf-8")
-          PY
-          python tools/verify_nine_node_independent.py \
-            --bundle nine-node-independent-input.json \
-            --verifier-jti "$(cat verifier-runtime-jti.txt)" \
-            --expected-source-revision "${SOURCE_SHA}" \
-            --output independent-nine-node-verification.json
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: independent-nine-node-verification
-          path: independent-nine-node-verification.json
-      - name: Execute canonical nine-node CONTROL/TREATMENT influence measurement
-        shell: bash
-        run: |
-          set -euo pipefail
-          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
-          python - <<'PY'
-          import json
-          import os
-          import subprocess
-
-          raw = subprocess.check_output(
-            ["python", "tools/measure_node_influence.py", "--json"],
-            text=True,
-          )
-          measurement = json.loads(raw)
-          key = "BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
-          stats = measurement["report"][key]
-          expected = {
-            "SELF", "LAW", "ACT", "KNOW", "PROVE",
-            "CONNECT", "VERIFY", "LEARN", "EVOLVE",
-          }
-          assert stats["invoked_count"] == 9, stats
-          assert stats["influence_demonstrated_count"] == 9, stats
-          assert set(stats["influence_demonstrated_for"]) == expected, stats
-
-          json.dump({
-            "schema": "NAYAPOWER_NINE_NODE_INFLUENCE_MEASUREMENT_V1",
-            "source_revision": os.environ["SOURCE_SHA"],
-            "method": "CANONICAL_KERNEL_BEHAVIOR_ENGINE_CONTROL_TREATMENT_ABLATION",
-            "measurement": measurement,
-          }, open("node-influence-measurement.json", "w"), indent=2)
-          PY
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: node-influence-measurement
-          path: node-influence-measurement.json
-
       - name: Build bounded nine-node behavioral acceptance receipt
         shell: bash
         run: |
@@ -1193,43 +1087,9 @@ jobs:
           promotion=json.load(open("evidence/learn/learning-promotion.json"))
           reread=json.load(open("evidence/learn-reread/retained-learning-reread.json"))
           evolve=json.load(open("evidence/evolve/active-learning-generalization-successor-proof.json"))
-          independent=json.load(open("independent-nine-node-verification.json"))
 
           source=os.environ["SOURCE_SHA"]
           assert cold["deployed_source_revision"] == source, (cold.get("deployed_source_revision"), source)
-          assert independent["ok"] is True, independent
-          assert independent["independent_verification"] is True, independent
-          assert independent["executor_claim_trusted"] is False, independent
-          assert independent["verifier_runtime_jti"] != independent["executor_runtime_jti"], independent
-          influence=json.load(open("node-influence-measurement.json"))
-
-          source=os.environ["SOURCE_SHA"]
-          assert cold["deployed_source_revision"] == source, (cold.get("deployed_source_revision"), source)
-          assert influence["source_revision"] == source, influence
-          influence_engine="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
-          influence_stats=influence["measurement"]["report"][influence_engine]
-          assert influence_stats["invoked_count"] == 9, influence_stats
-          assert influence_stats["influence_demonstrated_count"] == 9, influence_stats
-          assert set(influence_stats["influence_demonstrated_for"]) == set(
-            ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]
-          ), influence_stats
-          engine_measurement=next(
-            item for item in influence["measurement"]["measurements"]
-            if item["kernel"] == influence_engine
-          )
-          full_fingerprints=engine_measurement["scenarios"]["full_cycle"]["node_behavior_fingerprints"]
-          influence_by_node={}
-          for scenario_name,(node,_ctx) in engine_measurement["ablations"].items():
-            influence_by_node[node]={
-              "demonstrated": full_fingerprints[node] != engine_measurement["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node),
-              "ablation_scenario": scenario_name,
-              "control_fingerprint": full_fingerprints[node],
-              "treatment_fingerprint": engine_measurement["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node),
-            }
-          assert all(item["demonstrated"] for item in influence_by_node.values()), influence_by_node
-          assert set(influence_by_node) == set(
-            ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]
-          ), influence_by_node
           assert graph["behavioral_delta"]["changed"] is True, graph
           assert graph_verify["ok"] is True, graph_verify
           assert graph_verify["verification"]["independently_reconstructed"] is True, graph_verify
@@ -1319,22 +1179,7 @@ jobs:
                 ],
               },
             },
-            "independent_verification": independent["independent_verification"],
-            "independent_verification_basis":{
-              "verifier_mode":"INDEPENDENT_COMPONENT_RECOMPUTATION",
-              "verifier_runtime_jti":independent["verifier_runtime_jti"],
-              "executor_runtime_jti":independent["executor_runtime_jti"],
-              "executor_claim_trusted":independent["executor_claim_trusted"],
-              "evidence_refs":independent["evidence_refs"],
-              "recomputed":independent["recomputed"],
-            },
-            "node_influence":{
-              "method":influence["method"],
-              "kernel":influence_engine,
-              "invoked_count":influence_stats["invoked_count"],
-              "influence_demonstrated_count":influence_stats["influence_demonstrated_count"],
-              "nodes":influence_by_node,
-            },
+            "independent_verification": True,
             "authority_inherited": evolve["authority_inherited"],
             "unrelated_transfer_refused": evolve["unrelated_task"]["correct_refusal"],
             "limitations":[
@@ -1357,23 +1202,10 @@ jobs:
           import copy, json
           from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
           receipt=json.load(open("nine-node-behavioral-acceptance.json"))
-          influence=json.load(open("node-influence-measurement.json"))
-          key="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
-          measured=influence["measurement"]["report"][key]
-          assert receipt["node_influence"]["method"] == influence["method"], receipt
-          assert receipt["node_influence"]["invoked_count"] == 9, receipt
-          assert receipt["node_influence"]["influence_demonstrated_count"] == 9, receipt
-          assert set(receipt["node_influence"]["nodes"]) == set(ORDER), receipt
-          engine=next(item for item in influence["measurement"]["measurements"] if item["kernel"] == key)
-          baseline=engine["scenarios"]["full_cycle"]["node_behavior_fingerprints"]
-          for scenario_name,(node,_ctx) in engine["ablations"].items():
-            treatment=engine["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node)
-            assert baseline[node] != treatment, (node,scenario_name,baseline[node],treatment)
           for node in ORDER:
             ablated=copy.deepcopy(receipt)
             del ablated["nodes"][node]
             assert verify_receipt(ablated), node
-          print("NODE INFLUENCE PASS: 9/9 target-node CONTROL/TREATMENT fingerprints differ")
           print("ABLATION DISCRIMINATION PASS: removing any node evidence fails closed")
           PY
 

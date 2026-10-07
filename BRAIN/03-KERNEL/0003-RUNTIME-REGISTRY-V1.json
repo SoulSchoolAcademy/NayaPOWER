@@ -64,13 +64,7 @@
       "status": "BOUNDED_IDENTITY_ANCHOR",
       "entrypoint": "NAYA-NODE-0001 / existing governed runtime identity",
       "persisted_transitions": "canonical identity/authority context + execution receipts",
-      "proof_boundary": "Identity anchor exists; universal SELF behavioral influence across every task is not claimed.",
-      "behavioral_contract": {
-        "test": "tests/test_naya_identity_owner_binding.py",
-        "mode": "identity-binding",
-        "falsifier": "Explicit owner binding failure cannot authorize an orphan runtime.",
-        "production_boundary": "source/identity test only; not production proof."
-      }
+      "proof_boundary": "Identity anchor exists; universal SELF behavioral influence across every task is not claimed."
     },
     "LAW": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
@@ -85,13 +79,7 @@
       "authorized_receipt": "85606889-e310-4d6a-a5f7-a10d020e5165",
       "refusal_receipt": "cd6b23a6-6ad9-470e-ba7a-5cda42f7c90e",
       "persisted_transitions": "nayanet_authority_grants + nayanet_execution_receipts",
-      "proof_boundary": "Deployed Edge source equals current repository source; prior bounded authorize/refuse proof exists. Latest-main end-to-end chain still requires fresh production proof.",
-      "behavioral_contract": {
-        "test": "tests/law_runtime_handler_scope.test.mjs",
-        "mode": "authorize-refuse",
-        "falsifier": "Wrong scope, expiry, revocation, and authority-missing paths must refuse.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Deployed Edge source equals current repository source; prior bounded authorize/refuse proof exists. Latest-main end-to-end chain still requires fresh production proof."
     },
     "ACT": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
@@ -110,13 +98,7 @@
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
       "persisted_transitions": "nayanet_execution_receipts + governed execution outcomes",
-      "proof_boundary": "Deployed Edge source equals current repository source; bounded live ACT proof exists. Exact-current multi-request/idempotency proof remains a separate rung.",
-      "behavioral_contract": {
-        "test": "tests/act_runtime_handler_time.test.mjs",
-        "mode": "authorize-refuse",
-        "falsifier": "Stale/malformed LAW time or broader Door authority must refuse before execution.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Deployed Edge source equals current repository source; bounded live ACT proof exists. Exact-current multi-request/idempotency proof remains a separate rung."
     },
     "KNOW": {
       "status": "SOURCE_GRAPH_V2_MERGED_LIVE_RUNTIME_STALE_TO_CURRENT_MAIN",
@@ -130,13 +112,7 @@
       "handoff_to": "NAYA-KERNEL-PROVE",
       "live_proof": "PENDING",
       "persisted_transitions": "nayanet_intelligent_blocks + graph connections + nayanet_execution_receipts",
-      "proof_boundary": "Live function is active but deployed source does not equal current Graph V2 repository source. Do not claim current-main Graph V2 production behavior.",
-      "behavioral_contract": {
-        "test": "tests/know_runtime_handler_freshness.test.mjs",
-        "mode": "retrieve-refuse",
-        "falsifier": "Stale/future LAW time, wrong owner, or wrong grant target must refuse before private reads.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Live function is active but deployed source does not equal current Graph V2 repository source. Do not claim current-main Graph V2 production behavior."
     },
     "PROVE": {
       "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
@@ -156,62 +132,32 @@
         "status": "PASS"
       },
       "persisted_transitions": "nayanet_execution_receipts + evidence/provenance assessment state",
-      "proof_boundary": "Deployed Edge source equals current repository source; bounded proof exists, but current full-chain outcome remains separately gated.",
-      "behavioral_contract": {
-        "test": "tests/prove-runtime.test.mjs",
-        "mode": "assess-refuse",
-        "falsifier": "Missing/stale KNOW evidence or caller-supplied proof content must fail closed.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Deployed Edge source equals current repository source; bounded proof exists, but current full-chain outcome remains separately gated."
     },
     "CONNECT": {
       "status": "SOURCE_GRAPH_V2_MERGED_PRODUCTION_PARITY_PENDING",
       "entrypoint": "Graph V2 selector/reconciliation inside supabase/functions/nayanet-know-runtime/know.ts",
       "persisted_transitions": "nayanet_intelligent_blocks.connections + relationship-aware retrieval receipts",
-      "proof_boundary": "Graph V2 contract is ratified and selector source merged. Live KNOW is stale to current source, so current Graph V2 influence is not production-proven.",
-      "behavioral_contract": {
-        "test": "tests/cold_graph_runtime_execution.test.mjs",
-        "mode": "connect-verify-refuse",
-        "falsifier": "Unverified relationship evidence must not produce contextual verified support.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Graph V2 contract is ratified and selector source merged. Live KNOW is stale to current source, so current Graph V2 influence is not production-proven."
     },
     "VERIFY": {
       "status": "MIXED_PARITY_BOUNDED_LIVE_COMPONENTS",
       "entrypoint": "supabase/functions/nayanet-causal-verify + nayanet-learning-verify",
       "persisted_transitions": "nayanet_execution_outcomes + verification/execution receipts",
-      "proof_boundary": "nayanet-causal-verify deployed source equals current repo; nayanet-learning-verify does not. Verification capability is bounded, not universal current-main proof.",
-      "behavioral_contract": {
-        "test": "tests/causal_verify_runtime_execution.test.mjs",
-        "mode": "causal-verify-refuse",
-        "falsifier": "Missing/forged paired receipts or outcomes must fail closed.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "nayanet-causal-verify deployed source equals current repo; nayanet-learning-verify does not. Verification capability is bounded, not universal current-main proof."
     },
     "LEARN": {
       "status": "LIVE_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
       "entrypoint": "supabase/functions/nayanet-learning-verify + nayanet-causal-learning-experiment",
       "persisted_transitions": "learning candidates + Intelligent Blocks + checkpoint/verification receipts",
-      "proof_boundary": "Live components exist, but current repository sources are not fully deployed. Learning claims still require verified future behavioral effect.",
-      "behavioral_contract": {
-        "test": "tests/learning_verify_guard_firing_proofs.test.mjs",
-        "mode": "promote-refuse",
-        "falsifier": "Missing provenance, authority, evidence, or checkpoint state must refuse promotion and preserve state.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Live components exist, but current repository sources are not fully deployed. Learning claims still require verified future behavioral effect."
     },
     "EVOLVE": {
       "status": "BOUNDED_SUCCESSOR_COMPONENTS_PRESENT_CURRENT_SOURCE_PARITY_PENDING",
       "entrypoint": "supabase/functions/nayanet-cold-runtime-proof (modes: cold-successor, cold-successor-verify)",
       "persisted_transitions": "learning_evidence + nayanet_intelligent_blocks + nayanet_brain_relationships + execution receipts; nayanet_successor_handoffs table exists as canonical persistence substrate",
-      "proof_boundary": "Bounded cold-successor reconstruction and independent reread exist historically/current source, but exact-current deployed parity, generic successor package runtime, A\u2192B\u2192C continuity and bounded self-building are not universally production-proven.",
-      "phantom_binding_reconciliation": "nayanet-successor-handoff is not present on current main and is no longer claimed as an active runtime entrypoint. Restore it only if future evidence establishes it as the canonical seam.",
-      "behavioral_contract": {
-        "test": "tests/cold_successor_generalization.test.mjs",
-        "mode": "successor-reuse-refuse",
-        "falsifier": "Related reuse may be reconstructed; unrelated transfer and inherited authority must be refused.",
-        "production_boundary": "local runtime-handler execution only; not production proof."
-      }
+      "proof_boundary": "Bounded cold-successor reconstruction and independent reread exist historically/current source, but exact-current deployed parity, generic successor package runtime, A→B→C continuity and bounded self-building are not universally production-proven.",
+      "phantom_binding_reconciliation": "nayanet-successor-handoff is not present on current main and is no longer claimed as an active runtime entrypoint. Restore it only if future evidence establishes it as the canonical seam."
     }
   },
   "next_node_after_law": "ACT",
