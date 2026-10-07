@@ -267,8 +267,12 @@ jobs:
           assert x["status"]=="BLOCKED", x
           assert x["guard"]["reason"]=="LAW_RECEIPT_REQUIRED", x
           assert x["refusal_receipt"]["status"]=="BLOCKED", x
-          assert x["refusal_receipt"]["evidence"]["door_capability_available"] is True, x
-          assert x["refusal_receipt"]["evidence"]["action_executed"] is False, x
+          rev=x["refusal_receipt"]["evidence"]
+          assert rev["guard"]["reason"]=="LAW_RECEIPT_REQUIRED", x
+          assert rev["request"]["door_id"]=="DOOR-AI", x
+          assert rev["request"]["operation"]=="apply_retained_intelligence", x
+          assert rev["action_executed"] is False, x
+          assert rev["observed"] is False, x
           ids["refusal_receipt_id"]=x["refusal_receipt"]["id"]
           json.dump(ids,open("ids.json","w"),indent=2)
           PY
