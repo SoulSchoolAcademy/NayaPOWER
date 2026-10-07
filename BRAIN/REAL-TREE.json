@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "d53d754703bd3a887be6436e35ad035a899a56d8",
-  "inventory_file_count": 235,
+  "receipt_basis_commit": "b8034c24d27c7db7c314f3f6e88539830033b4db",
+  "inventory_file_count": 238,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
-    "04-INTELLIGENCE": 24,
-    "05-MEMORY": 69,
+    "03-KERNEL": 29,
+    "04-INTELLIGENCE": 25,
+    "05-MEMORY": 70,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -240,8 +240,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "6718854aea87b090776ff381824ecad9efada124",
-      "size": 12899
+      "blob_sha": "cc5f5559c0bfd753d938cc62f8d763a559de2ed4",
+      "size": 13674
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
@@ -307,6 +307,11 @@
       "path": "BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md",
       "blob_sha": "850ed8a6615ba53469048d08e7ce16cde09e9b4d",
       "size": 2630
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/SELF/0003-PERSONA-IDENTITY-CONTRACT-V1.md",
+      "blob_sha": "6b5bddde9d94f93409ae26680e07102ef1ec8be4",
+      "size": 4146
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
@@ -479,6 +484,11 @@
       "size": 4561
     },
     {
+      "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json",
+      "blob_sha": "5c399eb8b94ef72204613009901f7f7827216190",
+      "size": 3369
+    },
+    {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
       "blob_sha": "6bd1a6ab1572cc6f9b87ec423bc7749dd7527813",
       "size": 3827
@@ -492,6 +502,11 @@
       "path": "BRAIN/05-MEMORY/0001-MEMORY-CONTINUITY-CONTRACT-V1.md",
       "blob_sha": "1dad3e9d1c457d373c9e043023884a26b081e30e",
       "size": 1937
+    },
+    {
+      "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-03-NAYANET-HUB-DAILY-INTELLIGENCE.md",
+      "blob_sha": "2594fc618ff22a7dc8379a078fe2740928daf03f",
+      "size": 4371
     },
     {
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026-10-04-NAYAPOWER-FLOW-PROOF-SPECIMEN.md",

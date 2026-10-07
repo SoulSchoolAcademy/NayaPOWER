@@ -197,7 +197,7 @@ jobs:
             .naya/evidence/deployed-runtime-observation.json
 
   independent-connect-verification:
-    if: ${{ always() }}
+    if: ${{ always() && needs.live-connect.result == 'success' }}
     needs: live-connect
     runs-on: ubuntu-latest
     steps:
@@ -788,7 +788,7 @@ jobs:
           path: active-learning-generalization-successor-proof.json
 
   cold-successor:
-    if: ${{ always() }}
+    if: ${{ always() && needs.independent-retained-learning-reread.result == 'success' }}
     # Depends only on live-connect, which proves the canonical block exists and is
     # owner-scoped. It deliberately does NOT depend on
     # independent-learning-influence-verification: that job needs a rotated owner
@@ -845,7 +845,7 @@ jobs:
           path: cold-successor-receipt.json
 
   cold-successor-verification:
-    if: ${{ always() }}
+    if: ${{ always() && needs.cold-successor.result == 'success' }}
     needs: cold-successor
     runs-on: ubuntu-latest
     steps:
@@ -951,7 +951,69 @@ jobs:
           }
           json.dump(payload,open("promotion-request.json","w"),indent=2)
           PY
-          curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"             -H "Content-Type: application/json"             --data-binary @promotion-request.json             "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify" > learning-promotion.json
+          promotion_url="https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-learning-verify"
+          promotion_body="learning-promotion.json"
+          promotion_headers="learning-promotion.headers"
+          promotion_status="learning-promotion.http-status"
+          promotion_attempts=0
+
+          mint_runtime_token() {
+            curl -fsS \
+              -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-runtime" |
+              python -c 'import json,sys; print(json.load(sys.stdin)["value"])'
+          }
+
+          record_oidc_claims() {
+            python - <<'PY'
+          import base64, json
+          token=open("/tmp/naya-oidc-token","r",encoding="utf-8").read().strip()
+          payload=token.split(".")[1]
+          payload += "=" * (-len(payload) % 4)
+          claims=json.loads(base64.urlsafe_b64decode(payload))
+          safe={k: claims.get(k) for k in ("iss","aud","repository","workflow_ref","ref","jti","exp","iat")}
+          json.dump(safe,open("oidc-claims.json","w"),indent=2)
+          PY
+          }
+
+          post_promotion() {
+            promotion_attempts=$((promotion_attempts + 1))
+            printf '%s' "$1" > /tmp/naya-oidc-token
+            record_oidc_claims
+            curl -sS -X POST \
+              -H "Authorization: Bearer $(cat /tmp/naya-oidc-token)" \
+              -H "Content-Type: application/json" \
+              --data-binary @promotion-request.json \
+              -D "$promotion_headers" \
+              -o "$promotion_body" \
+              -w "%{http_code}" \
+              "$promotion_url" > "$promotion_status" || true
+          }
+
+          post_promotion "$(cat "$RUNNER_TEMP/oidc.jwt")"
+          status="$(cat "$promotion_status")"
+          echo "PROMOTION_ATTEMPT=$promotion_attempts HTTP_STATUS=$status"
+          if [ "$status" = "403" ]; then
+            echo "PROMOTION_403_RETRYING_WITH_FRESH_OIDC_TOKEN"
+            echo "FIRST_ATTEMPT_BODY:"
+            cat "$promotion_body"
+            echo
+            token="$(mint_runtime_token)"
+            post_promotion "$token"
+            status="$(cat "$promotion_status")"
+            echo "PROMOTION_ATTEMPT=$promotion_attempts HTTP_STATUS=$status"
+          fi
+          echo "PROMOTION_FINAL_HTTP_STATUS=$status"
+          echo "PROMOTION_FINAL_OIDC_CLAIMS:"
+          cat oidc-claims.json
+          echo
+          echo "PROMOTION_RESPONSE_BODY:"
+          cat learning-promotion.json
+          echo
+          if [[ ! "$status" =~ ^2[0-9][0-9]$ ]]; then
+            echo "PROMOTION_HTTP_FAILURE status=$status"
+            exit 1
+          fi
           cat learning-promotion.json
           python - <<'PY'
           import json

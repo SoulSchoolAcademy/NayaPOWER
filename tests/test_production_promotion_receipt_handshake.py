@@ -60,7 +60,7 @@ def run_receipt(tmp_path, source_sha="a" * 40, producer_sha=None, proof_sha=None
         exec(compile(receipt_program(), "governed-production-receipt", "exec"), {})
     finally:
         os.chdir(old)
-    return json.loads((tmp_path / "production-promotion-receipt.json").read_text())
+    return json.loads((tmp_path / "production-promotion-receipt.json").read_text(encoding="utf-8"))
 
 
 def test_parent_receipt_binds_both_child_proofs_to_authorized_source(tmp_path):

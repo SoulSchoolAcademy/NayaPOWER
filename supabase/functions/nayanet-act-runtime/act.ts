@@ -1,3 +1,5 @@
+import { selectKnowContext, type IntelligentBlock, type KnowRequest } from "../nayanet-know-runtime/know.ts";
+
 export type ActStatus = "READY" | "BLOCKED";
 
 export type LawReceipt = {
@@ -55,6 +57,93 @@ export type ActDecision = {
   action: string;
   target: string;
 };
+
+export type KnowReceipt = {
+  id?: string;
+  user_id?: string;
+  action?: string;
+  status?: string;
+  evidence?: any;
+};
+
+export type SelectedBlock = IntelligentBlock;
+
+export type ActPlan = {
+  action: string;
+  target: string;
+  door_id: string;
+  operation: string;
+  behavior: string;
+};
+
+export type ActPlanResult = {
+  schema: "naya.act.plan.v1";
+  status: "READY" | "BLOCKED" | "LAW_RERESOLUTION_REQUIRED";
+  reason: string;
+  guard: ActDecision;
+  task_identity: {
+    task_id: string;
+    task_class: string;
+    required_capability: string;
+  } | null;
+  selector: {
+    owner: "KNOW+CONNECT";
+    id: "selectKnowContext+selectableConnections";
+    version: "naya.know.context-result.v1/connect-selector-v2";
+  };
+  pre_learning_plan: ActPlan;
+  post_retrieval_plan: ActPlan;
+  plan_changed: boolean;
+  authority_scope_changed: boolean;
+  law_reresolution_required: boolean;
+  intelligence_applied_to_plan: boolean;
+  application_reason: string;
+  selected_intelligence: null | {
+    intelligent_block_id: string;
+    provenance: any;
+    evidence_refs: any[];
+    lifecycle_state: string;
+    truth_state: string;
+    applicability: boolean;
+    retrieval_reason: string;
+  };
+  retrieval_receipt_id: string | null;
+  selection_replay_verified: boolean;
+  selection_replay_reason: string;
+  selection_now: string | null;
+  effect_executed: false;
+};
+
+export const ACT_RETRIEVAL_SELECTOR = {
+  owner: "KNOW+CONNECT" as const,
+  id: "selectKnowContext+selectableConnections" as const,
+  version: "naya.know.context-result.v1/connect-selector-v2" as const,
+};
+
+export const ACT_BASELINE_BEHAVIOR = "APPLY_BASELINE_WITHOUT_RETAINED_STEERING";
+export const ACT_PROVENANCE_BEHAVIOR = "PRESERVE_PROVENANCE_BEFORE_APPLY";
+
+const SERVABLE_STATUS = new Set(["ACTIVE", "DURABLE", "RELEASED"]);
+const SERVABLE_STATES = new Set(["VERIFIED", "DISTILLED", "APPLIED", "LEARNED"]);
+// Retained intelligence may propose a change to LAW-governed scope, but that
+// proposal can never authorize itself: any changed field below forces
+// LAW_RERESOLUTION_REQUIRED before effect. Non-scope behavior is NOT accepted as
+// an arbitrary patch; bounded behavior steering stays capability-specific below.
+const PLAN_PATCH_FIELDS = new Set(["action", "target", "door_id", "operation"]);
+
+function canonicalize(value: any): any {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const key of Object.keys(value).sort()) out[key] = canonicalize(value[key]);
+    return out;
+  }
+  return value;
+}
+
+export function canonicalEqual(a: any, b: any): boolean {
+  return JSON.stringify(canonicalize(a)) === JSON.stringify(canonicalize(b));
+}
 
 const blocked = (req: ActRequest, reason: string, lawId: string | null = null, grantId: string | null = null): ActDecision => ({
   schema:"naya.act.guard.v1",status:"BLOCKED",reason,law_receipt_id:lawId,authority_grant_id:grantId,
@@ -128,4 +217,297 @@ export function validateAct(
     law_receipt_id:lawId,authority_grant_id:grantId,
     door_id:req.door_id,operation:req.operation,action:req.action,target:req.target
   };
+}
+
+function basePlan(req: ActRequest): ActPlan {
+  return {
+    action: req.action,
+    target: req.target,
+    door_id: req.door_id,
+    operation: req.operation,
+    behavior: ACT_BASELINE_BEHAVIOR,
+  };
+}
+
+function planResult(
+  req: ActRequest,
+  guard: ActDecision,
+  status: ActPlanResult["status"],
+  reason: string,
+  extra: Partial<ActPlanResult> = {},
+): ActPlanResult {
+  const baseline=basePlan(req);
+  return {
+    schema:"naya.act.plan.v1",
+    status,
+    reason,
+    guard,
+    task_identity:null,
+    selector:ACT_RETRIEVAL_SELECTOR,
+    pre_learning_plan:baseline,
+    post_retrieval_plan:baseline,
+    plan_changed:false,
+    authority_scope_changed:false,
+    law_reresolution_required:false,
+    intelligence_applied_to_plan:false,
+    application_reason:reason,
+    selected_intelligence:null,
+    retrieval_receipt_id:null,
+    selection_replay_verified:false,
+    selection_replay_reason:reason,
+    selection_now:null,
+    effect_executed:false,
+    ...extra,
+  };
+}
+
+function authorityScope(plan: ActPlan) {
+  return {
+    action:plan.action,
+    target:plan.target,
+    door_id:plan.door_id,
+    operation:plan.operation,
+  };
+}
+
+function taskIdentityFromKnow(receipt: KnowReceipt) {
+  const request=receipt?.evidence?.request ?? {};
+  const task_id=String(request.task_id ?? "").trim();
+  const task_class=String(request.task_class ?? "").trim();
+  const required_capability=String(request.required_capability ?? "").trim();
+  if (!task_id || !task_class || !required_capability) return null;
+  return {task_id,task_class,required_capability};
+}
+
+function replayKnowSelection(
+  req: ActRequest,
+  receipt: KnowReceipt,
+  universe: SelectedBlock[] | null,
+): {ok:true;selection_now:string;recomputed:any} | {ok:false;reason:string} {
+  if (!Array.isArray(universe)) return {ok:false,reason:"KNOW_SELECTION_UNIVERSE_REQUIRED"};
+  const ev=receipt.evidence ?? {};
+  const recorded=ev.result ?? {};
+  const task=taskIdentityFromKnow(receipt);
+  if (!task) return {ok:false,reason:"KNOW_TASK_IDENTITY_MISSING"};
+  const rawSelectionNow=ev.selection_now;
+  const selectionMs=typeof rawSelectionNow==="string" ? Date.parse(rawSelectionNow) : NaN;
+  if (!Number.isFinite(selectionMs)) return {ok:false,reason:"KNOW_SELECTION_TIME_INVALID"};
+
+  const replayRequest:KnowRequest={
+    owner_id:req.owner_id,
+    naya_id:req.naya_id,
+    task_id:task.task_id,
+    task_class:task.task_class,
+    required_capability:task.required_capability,
+  };
+  const recomputed=selectKnowContext(replayRequest,universe,new Date(selectionMs));
+  if (!canonicalEqual(recorded,recomputed)) return {ok:false,reason:"KNOW_SELECTION_REPLAY_MISMATCH"};
+  return {ok:true,selection_now:new Date(selectionMs).toISOString(),recomputed};
+}
+
+function selectedBlockMatchesReceipt(
+  req: ActRequest,
+  result: any,
+  block: SelectedBlock | null,
+): {ok:true} | {ok:false;reason:string} {
+  if (!block) return {ok:false,reason:"SELECTED_INTELLIGENCE_NOT_FOUND"};
+  if (String(block.intelligent_block_id ?? "") !== String(result.selected_block_id ?? "")) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_ID_MISMATCH"};
+  }
+  if (block.owner_id !== req.owner_id) return {ok:false,reason:"SELECTED_INTELLIGENCE_OWNER_MISMATCH"};
+  if (!SERVABLE_STATUS.has(String(block.status ?? ""))) return {ok:false,reason:"SELECTED_INTELLIGENCE_LIFECYCLE_NOT_SERVABLE"};
+  if (!SERVABLE_STATES.has(String(block.understanding_state ?? ""))) return {ok:false,reason:"SELECTED_INTELLIGENCE_TRUTH_NOT_SERVABLE"};
+  if (block.superseded_by_block_id) return {ok:false,reason:"SELECTED_INTELLIGENCE_SUPERSEDED"};
+  if (String(block.understanding_state ?? "") !== String(result.selected_epistemic_state ?? "")) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_TRUTH_MISMATCH"};
+  }
+  if (!block.provenance || Object.keys(block.provenance).length===0) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_PROVENANCE_MISSING"};
+  }
+  if (!Array.isArray(block.evidence_refs) || block.evidence_refs.length===0) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_EVIDENCE_MISSING"};
+  }
+  if (!canonicalEqual(block.provenance,result.selected_provenance)) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_PROVENANCE_MISMATCH"};
+  }
+  if (!canonicalEqual(block.evidence_refs,result.selected_evidence_refs)) {
+    return {ok:false,reason:"SELECTED_INTELLIGENCE_EVIDENCE_MISMATCH"};
+  }
+  const target=String(block.applicable_scope?.target ?? "");
+  if (target && target!==req.naya_id) return {ok:false,reason:"SELECTED_INTELLIGENCE_APPLICABILITY_MISMATCH"};
+  return {ok:true};
+}
+
+function applyBlockToPlan(pre: ActPlan, task: NonNullable<ActPlanResult["task_identity"]>, block: SelectedBlock) {
+  const post={...pre};
+  const content=(block.content && typeof block.content==="object") ? block.content : {};
+  const patch=(content as any).act_plan_patch;
+  if (patch && typeof patch==="object" && !Array.isArray(patch)) {
+    for (const [key,value] of Object.entries(patch)) {
+      if (PLAN_PATCH_FIELDS.has(key) && value!==undefined) (post as any)[key]=String(value);
+    }
+  }
+  const lesson=String((content as any).lesson ?? "");
+  if (
+    task.required_capability==="provenance_preservation" &&
+    /preserve provenance before applying retained intelligence/i.test(lesson)
+  ) {
+    post.behavior=ACT_PROVENANCE_BEHAVIOR;
+  }
+  return post;
+}
+
+export function buildActPlan(
+  req: ActRequest,
+  lawReceipt: LawReceipt | null,
+  liveGrant: Grant | null,
+  door: DoorOperation | null,
+  knowReceipt: KnowReceipt | null,
+  selectedBlock: SelectedBlock | null,
+  selectionUniverse: SelectedBlock[] | null,
+  now = new Date(),
+): ActPlanResult {
+  const guard=validateAct(req,lawReceipt,liveGrant,door,now);
+  if (guard.status!=="READY") return planResult(req,guard,"BLOCKED",guard.reason);
+
+  if (!knowReceipt) return planResult(req,guard,"BLOCKED","KNOW_RECEIPT_REQUIRED");
+  const retrievalId=String(knowReceipt.id ?? "");
+  if (knowReceipt.user_id!==req.owner_id) return planResult(req,guard,"BLOCKED","KNOW_RECEIPT_OWNER_MISMATCH",{retrieval_receipt_id:retrievalId});
+  if (knowReceipt.action!=="know_context_retrieval" || knowReceipt.status!=="SUCCESS") {
+    return planResult(req,guard,"BLOCKED","KNOW_RECEIPT_INVALID",{retrieval_receipt_id:retrievalId});
+  }
+
+  const ev=knowReceipt.evidence ?? {};
+  const knowRequest=ev.request ?? {};
+  const result=ev.result ?? {};
+  const task=taskIdentityFromKnow(knowReceipt);
+  if (ev.schema!=="naya.know.receipt.v1" || ev.node_id!=="NAYA-KERNEL-KNOW") {
+    return planResult(req,guard,"BLOCKED","KNOW_RECEIPT_SCHEMA_INVALID",{retrieval_receipt_id:retrievalId});
+  }
+  if (ev.law_receipt_id!==guard.law_receipt_id) {
+    return planResult(req,guard,"BLOCKED","KNOW_LAW_BINDING_MISMATCH",{retrieval_receipt_id:retrievalId});
+  }
+  const authorityRefs=Array.isArray(ev.authority_refs)?ev.authority_refs.map(String):[];
+  if (authorityRefs.length!==1 || authorityRefs[0]!==guard.authority_grant_id) {
+    return planResult(req,guard,"BLOCKED","KNOW_AUTHORITY_BINDING_MISMATCH",{retrieval_receipt_id:retrievalId});
+  }
+  if (ev.caller_selected_block!==false || ev.retrieval_creates_authority!==false) {
+    return planResult(req,guard,"BLOCKED","KNOW_BOUNDARY_INVALID",{retrieval_receipt_id:retrievalId});
+  }
+  if (!task) return planResult(req,guard,"BLOCKED","KNOW_TASK_IDENTITY_MISSING",{retrieval_receipt_id:retrievalId});
+  if (
+    String(result.schema ?? "")!=="naya.know.context-result.v1" ||
+    String(result.task_id ?? "")!==task.task_id ||
+    String(result.required_capability ?? "")!==task.required_capability ||
+    result.retrieval_creates_authority!==false
+  ) {
+    return planResult(req,guard,"BLOCKED","KNOW_RESULT_BINDING_INVALID",{retrieval_receipt_id:retrievalId,task_identity:task});
+  }
+  if (
+    String(knowRequest.task_id ?? "")!==task.task_id ||
+    String(knowRequest.task_class ?? "")!==task.task_class ||
+    String(knowRequest.required_capability ?? "")!==task.required_capability
+  ) {
+    return planResult(req,guard,"BLOCKED","KNOW_REQUEST_BINDING_INVALID",{retrieval_receipt_id:retrievalId,task_identity:task});
+  }
+
+  // Do not trust a persisted KNOW result merely because its selected block,
+  // provenance and evidence are self-consistent. Replay the canonical KNOW
+  // selector over the owner-scoped current universe at the receipt's pinned
+  // selection time. This catches a coherently forged selected ID that points
+  // at a real but non-canonical block.
+  const replay=replayKnowSelection(req,knowReceipt,selectionUniverse);
+  if ("reason" in replay) {
+    return planResult(req,guard,"BLOCKED",replay.reason,{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+      selection_replay_reason:replay.reason,
+    });
+  }
+
+  const pre=basePlan(req);
+  if (result.status==="MISS") {
+    return planResult(req,guard,"READY","NO_APPLICABLE_RETAINED_INTELLIGENCE",{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+      pre_learning_plan:pre,
+      post_retrieval_plan:{...pre},
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
+      application_reason:String(result.reason ?? "NO_APPLICABLE_RETAINED_INTELLIGENCE"),
+    });
+  }
+  if (result.status!=="HIT" || result.applicable!==true || !result.selected_block_id) {
+    return planResult(req,guard,"BLOCKED","KNOW_RESULT_NOT_APPLICABLE",{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+    });
+  }
+  if (result.conflict_detected===true) {
+    return planResult(req,guard,"READY","CONFLICTED_INTELLIGENCE_NON_STEERING",{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+      pre_learning_plan:pre,
+      post_retrieval_plan:{...pre},
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
+      application_reason:"CONFLICT_SURFACED_BY_CONNECT_NO_STEERING",
+    });
+  }
+
+  const snapshot=selectedBlockMatchesReceipt(req,result,selectedBlock);
+  if ("reason" in snapshot) {
+    return planResult(req,guard,"BLOCKED",snapshot.reason,{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+    });
+  }
+
+  const post=applyBlockToPlan(pre,task,selectedBlock as SelectedBlock);
+  const planChanged=!canonicalEqual(pre,post);
+  const scopeChanged=!canonicalEqual(authorityScope(pre),authorityScope(post));
+  const selected={
+    intelligent_block_id:String(selectedBlock?.intelligent_block_id ?? ""),
+    provenance:selectedBlock?.provenance ?? null,
+    evidence_refs:Array.isArray(selectedBlock?.evidence_refs)?selectedBlock?.evidence_refs:[],
+    lifecycle_state:String(selectedBlock?.status ?? ""),
+    truth_state:String(selectedBlock?.understanding_state ?? ""),
+    applicability:true,
+    retrieval_reason:String(result.reason ?? ""),
+  };
+  if (scopeChanged) {
+    return planResult(req,guard,"LAW_RERESOLUTION_REQUIRED","LAW_RERESOLUTION_REQUIRED",{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+      pre_learning_plan:pre,
+      post_retrieval_plan:post,
+      plan_changed:planChanged,
+      authority_scope_changed:true,
+      law_reresolution_required:true,
+      intelligence_applied_to_plan:false,
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
+      application_reason:"RETRIEVED_INTELLIGENCE_CHANGED_CONSEQUENTIAL_SCOPE",
+      selected_intelligence:selected,
+    });
+  }
+
+  return planResult(req,guard,"READY",planChanged?"APPLICABLE_INTELLIGENCE_STEERED_PLAN":"APPLICABLE_INTELLIGENCE_NO_PLAN_DELTA",{
+    retrieval_receipt_id:retrievalId,
+    task_identity:task,
+    pre_learning_plan:pre,
+    post_retrieval_plan:post,
+    plan_changed:planChanged,
+    intelligence_applied_to_plan:planChanged,
+    selection_replay_verified:true,
+    selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+    selection_now:replay.selection_now,
+    application_reason:planChanged
+      ? "NORMAL_KNOW_CONNECT_SELECTION_CHANGED_ACT_PLAN"
+      : "SELECTED_INTELLIGENCE_HAS_NO_ACT_PLAN_EFFECT",
+    selected_intelligence:selected,
+  });
 }

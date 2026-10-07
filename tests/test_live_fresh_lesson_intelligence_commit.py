@@ -89,7 +89,7 @@ def test_fresh_lesson_enters_existing_runtime_and_independent_verification_path(
 def test_independent_verifier_downloads_the_produced_lineage_before_reading_it():
     import yaml
 
-    workflow = yaml.safe_load((ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text())
+    workflow = yaml.safe_load((ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8"))
     producer = workflow["jobs"]["fresh-lesson"]["steps"]
     uploads = [step["with"] for step in producer if step.get("uses", "").startswith("actions/upload-artifact@")]
     artifact = next(item for item in uploads if "fresh-lesson-lineage-ids.json" in item["path"])

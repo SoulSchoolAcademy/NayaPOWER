@@ -115,7 +115,9 @@ def test_manual_production_authorization_is_bound_to_exact_source_sha():
     assert 'description: "Exact 40-hex main SHA authorized by the Human Director"' in source
     assert "required: true" in source
     assert "AUTHORIZED_SOURCE_SHA" in source
-    assert "^[0-9a-f]{40}$" in source
+    assert 'if [ "${#authorized_sha}" -ne 40 ]; then' in source
+    assert 'case "$authorized_sha" in' in source
+    assert '*[!0-9a-f]*|""' in source
     assert 'if [ "$authorized_sha" != "$GITHUB_SHA" ]; then' in source
     assert 'resolved_main="$(git rev-parse origin/main)"' in source
     assert 'if [ "$authorized_sha" != "$resolved_main" ]; then' in source

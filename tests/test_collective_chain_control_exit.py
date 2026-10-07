@@ -33,13 +33,13 @@ root = Path(sys.argv[1])
 contract = root / 'BRAIN/12-ENGINEERING/COLLECTIVE-INTELLIGENCE-CHAIN-READINESS-V1.json'
 if contract.exists():
     try:
-        json.loads(contract.read_text())
+        json.loads(contract.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         raise SystemExit(2)
 machine = root / 'BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json'
 objects = root / 'BRAIN/04-INTELLIGENCE/OBJECTS'
-valid = any(json.loads(p.read_text()).get('valid') for p in objects.glob('*.json')) if objects.exists() else False
-edges = json.loads((root / 'BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json').read_text())['edges']
+valid = any(json.loads(p.read_text(encoding="utf-8")).get('valid') for p in objects.glob('*.json')) if objects.exists() else False
+edges = json.loads((root / 'BRAIN/04-INTELLIGENCE/GRAPH/0001-KERNEL-GRAPH-SEED-V1.json').read_text(encoding="utf-8"))['edges']
 runtime = (root / 'supabase/functions/nayanet-intelligence-commit-runtime/index.ts').exists()
 print('L01', 'NOT_SATISFIED' if runtime else 'BLOCKED_NO_RUNTIME')
 print('L02', 'SATISFIED' if machine.exists() and valid else 'NOT_SATISFIED')

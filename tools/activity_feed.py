@@ -33,7 +33,7 @@ def gh(*args: str):
 def parse_watermark() -> dt.datetime:
     if not FEED.exists():
         return dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)
-    m = re.search(r"<!-- watermark: ([^>]+) -->", FEED.read_text())
+    m = re.search(r"<!-- watermark: ([^>]+) -->", FEED.read_text(encoding="utf-8"))
     if not m:
         return dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=1)
     return dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
@@ -107,7 +107,7 @@ def main() -> int:
     )
     old_lines: list[str] = []
     if FEED.exists():
-        text = FEED.read_text()
+        text = FEED.read_text(encoding="utf-8")
         # keep everything after the first three header lines
         parts = text.split("\n", 3)
         old_lines = parts[3].splitlines() if len(parts) > 3 else []

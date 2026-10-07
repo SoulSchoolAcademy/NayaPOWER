@@ -343,11 +343,11 @@ def main(argv=None) -> int:
                 if not args.tree_list:
                     print("link-complete: SKIPPED (no --tree-list)", file=sys.stderr)
                     return 2
-                tree_paths = Path(args.tree_list).read_text().splitlines()
+                tree_paths = Path(args.tree_list).read_text(encoding="utf-8").splitlines()
                 violations += check_complete(index, tree_paths)
             elif name == "no-branch-links":
                 violations += check_no_branch_links(
-                    Path(args.diff).read_text() if args.diff and Path(args.diff).exists()
+                    Path(args.diff).read_text(encoding="utf-8") if args.diff and Path(args.diff).exists()
                     else (sys.stdin.read() if not sys.stdin.isatty() else ""))
             elif name in CHECKS:
                 violations += CHECKS[name](index)

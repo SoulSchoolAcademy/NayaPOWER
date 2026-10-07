@@ -1,6 +1,45 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, fcntl, hashlib, json, os, re, tempfile
+import argparse, contextlib, hashlib, json, os, re, tempfile
+try:
+    import fcntl
+except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
+    import msvcrt, os as _os
+
+    class fcntl:  # POSIX-compatible flock shim backed by msvcrt.locking.
+        LOCK_EX = 2
+        LOCK_UN = 8
+
+        @staticmethod
+        def flock(fd, op):
+            _os.lseek(fd, 0, _os.SEEK_SET)
+            if op == fcntl.LOCK_EX:
+                # LK_NBLCK loop: retry briefly to approximate a blocking lock.
+                import time as _time
+                deadline = _time.monotonic() + 30
+                while True:
+                    try:
+                        msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+                        break
+                    except OSError:
+                        if _time.monotonic() > deadline:
+                            raise
+                        _time.sleep(0.05)
+            elif op == fcntl.LOCK_UN:
+                _os.lseek(fd, 0, _os.SEEK_SET)
+                try:
+                    msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+                except OSError:
+                    pass
+            return 0
+except ImportError:  # Windows has no POSIX fcntl; locking is a no-op there.
+    class fcntl:  # minimal compatible shim
+        LOCK_EX = 2
+        LOCK_UN = 8
+        @staticmethod
+        def flock(*_args, **_kwargs):
+            return None
+
 from pathlib import Path
 
 # Truth-state guard (Option C, 2026-10-06): all elevations go through
@@ -186,7 +225,7 @@ def registry_transaction(registry_path=None):
     rp = Path(registry_path) if registry_path else REGISTRY
     rp.parent.mkdir(parents=True, exist_ok=True)
     lock_path = _registry_lock_path(rp)
-    with open(lock_path, "w") as lf:
+    with open(lock_path, "w", encoding="utf-8") as lf:
         fcntl.flock(lf.fileno(), fcntl.LOCK_EX)
         try:
             if rp.exists():

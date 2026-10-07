@@ -163,7 +163,11 @@ def test_one_transcript_cannot_back_two_trial_ids(alias):
     elif alias == "absolute":
         duplicate = original.resolve()
     elif alias == "symlink":
-        duplicate.symlink_to(original.resolve())
+        try:
+            duplicate.symlink_to(original.resolve())
+        except OSError as e:  # Windows: symlink needs admin/developer mode
+            import pytest as _pt
+            _pt.skip(f"symlink privilege unavailable: {e}")
     else:
         duplicate.hardlink_to(original)
     trials[-1]["transcript_path"] = str(duplicate)

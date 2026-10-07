@@ -94,14 +94,14 @@
       }
     },
     "ACT": {
-      "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
+      "status": "SOURCE_TWO_PHASE_LEARNING_ACTIVATION_NOT_DEPLOYED",
       "entrypoint": "supabase/functions/nayanet-act-runtime/index.ts",
       "deployment": {
         "function": "nayanet-act-runtime",
         "version": 1
       },
       "consumes": "nayanet_execution_receipts.action=law_authority_decision",
-      "writes": "nayanet_execution_receipts.action=act_node_execute|act_node_refusal",
+      "writes": "nayanet_execution_receipts.action=act_node_plan|act_node_execute|act_node_refusal",
       "door": "DOOR-AI/apply_retained_intelligence",
       "proof_run": 36622283683,
       "proof_source_main": "66e63c02f9590ec52fa14714a8897feb68d18aef",
@@ -110,12 +110,21 @@
       "authorized_receipt": "675cac2c-5091-4e18-9b7a-61664f688c10",
       "refusal_receipt": "db8e344b-5718-438a-bf7c-e61ac8b0c382",
       "persisted_transitions": "nayanet_execution_receipts + governed execution outcomes",
-      "proof_boundary": "Deployed Edge source equals current repository source; bounded live ACT proof exists. Exact-current multi-request/idempotency proof remains a separate rung.",
+      "proof_boundary": "Historical deployed ACT proof remains a bounded direct specimen. Current source adds the two-phase KNOW/CONNECT-bound learning activation seam, but those source bytes are not deployed or production-proven.",
       "behavioral_contract": {
         "test": "tests/act_runtime_handler_time.test.mjs",
         "mode": "authorize-refuse",
         "falsifier": "Stale/malformed LAW time or broader Door authority must refuse before execution.",
         "production_boundary": "local runtime-handler execution only; not production proof."
+      },
+      "learning_activation": {
+        "status": "SOURCE_IMPLEMENTED_NOT_PRODUCTION_PROVEN",
+        "plan_mode": "plan",
+        "execute_mode": "execute + plan_receipt_id",
+        "consumes_retrieval_receipt": "nayanet_execution_receipts.action=know_context_retrieval",
+        "selector": "nayanet-know-runtime/selectKnowContext + _shared/connect_selector/selectableConnections",
+        "authority_rule": "retrieval may change planning but never creates authority; ACT replays canonical KNOW/CONNECT selection at the pinned selection time; changed consequential scope requires LAW re-resolution; execution revalidates live LAW/grant",
+        "test": "tests/act_learning_activation_seam.test.mjs"
       }
     },
     "KNOW": {
