@@ -28,7 +28,7 @@ env:
   PRODUCTION_BRANCH: production
   PRODUCER_WORKFLOW: live-intelligence-commit-proof.yml
   PROOF_WORKFLOW: live-supabase-runtime-proof.yml
-  ACT_PROOF_WORKFLOW: live-verified-ai-action-proof.yml
+  ACT_PROOF_WORKFLOW: live-act-proof.yml
   CONNECT_PROOF_WORKFLOW: live-connect-proof.yml
 
 jobs:
@@ -525,7 +525,7 @@ jobs:
         run: |
           set -euo pipefail
           date -u +"%Y-%m-%dT%H:%M:%SZ" > act-proof-dispatch-start.txt
-          gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main
+          gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"
           for i in $(seq 1 60); do
             runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch --limit 30 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
             python - <<'PY' "$runs"
