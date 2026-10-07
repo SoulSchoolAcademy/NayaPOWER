@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "aea25885b6b2598c367db5995ca5b4379354a47d",
+  "receipt_basis_commit": "f4d6ba647ee6ea303f618a77d49c582ee9dc1a25",
   "inventory_file_count": 234,
   "domain_counts": {
     "00-SPEC": 15,
@@ -875,8 +875,8 @@
     },
     {
       "path": "BRAIN/06-PROOF/README.md",
-      "blob_sha": "6e90dab1006fbaa836d48497f3a8eda2ea99ec97",
-      "size": 2315
+      "blob_sha": "309261f9a46137d27a3d1b9ff619e7a689179292",
+      "size": 3059
     },
     {
       "path": "BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md",

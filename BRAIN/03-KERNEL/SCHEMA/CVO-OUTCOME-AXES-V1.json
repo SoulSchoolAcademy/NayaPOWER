@@ -1,0 +1,68 @@
+{
+ "$id": "naya.kernel.cvo-outcome-axes/v1",
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "amendment_rule": "New status values are added to this spec by PR together with a conformance-test update. Producers must not emit values outside these enums.",
+ "axes": {
+  "authority_status": {
+   "description": "authority.status records the authorization standing at CVO construction.",
+   "observed_values": [
+    "AUTHORIZED"
+   ]
+  },
+  "causal_assessment": {
+   "description": "The causal judgment on the treatment-vs-control claim.",
+   "enum": [
+    "CAUSAL_SUPPORTED",
+    "CAUSAL_NOT_SUPPORTED"
+   ],
+   "rule": "Only the verifier's recomputed value is a verdict. The executor-declared causal_assessment is a claim and never, by itself, exits NOT_PROVEN.",
+   "verdict_field": "recomputed_causal_assessment"
+  },
+  "observation_status": {
+   "description": "observation.status mirrors the execution receipt's status for the observed action.",
+   "observed_values": [
+    "SUCCESS"
+   ],
+   "rule": "CAUSAL_SUPPORTED requires both treatment and control receipts at SUCCESS (the both_success gate). Any other status keeps the claim NOT_PROVEN."
+  },
+  "verification_status": {
+   "description": "The outcome-verification verdict on the paired action outcomes.",
+   "enum": [
+    "OUTCOME_VERIFIED"
+   ],
+   "rule": "Emitted only after independent recomputation confirms the outcomes. A CVO block without this field is NOT_PROVEN. (PAIRED_ACTION_OUTCOMES_NOT_VERIFIED is an edge-function error code, not a verification_status value.)"
+  }
+ },
+ "derived_from": {
+  "canonical_fixture": "causal-learning-experiment-receipt.json",
+  "derived_at": "2026-10-07",
+  "main_tip": "ed82e8b39e7e892f4ffb15339061232eb55685ac",
+  "method": "descriptive-then-prescriptive: the enums below were read from what the producers actually emit at the pinned tip (no invented values); they are prescriptive going forward \u2014 producers must not emit values outside these enums",
+  "producers": [
+   "supabase/functions/nayanet-causal-verify/index.ts",
+   "supabase/functions/nayanet-causal-learning-experiment/index.ts"
+  ]
+ },
+ "independence_invariant": {
+  "executor_claim_trusted": false,
+  "rule": "The verifier re-reads persisted receipts and gates validity on evidence-derived checks; the executor declared assessment is necessary but never sufficient. Two verifier styles satisfy this: nayanet-causal-verify re-validates the declared CVO against re-read receipts (declared values must match re-read evidence, including provenance checks); nayanet-causal-learning-experiment fully recomputes the assessment (recomputed_causal_assessment) and requires declared == recomputed.",
+  "verifier_mode": "AUTHORITATIVE_REREAD_AND_RECOMPUTATION"
+ },
+ "not_proven": {
+  "default": "Every causal claim is NOT_PROVEN until a verifier emits a conforming CVO with causal_assessment=CAUSAL_SUPPORTED and verification_status=OUTCOME_VERIFIED via independent recomputation (verifier_mode AUTHORITATIVE_REREAD_AND_RECOMPUTATION, executor_claim_trusted=false).",
+  "exit_conditions": [
+   "independent verification confirms the claim against re-read evidence",
+   "declared values match re-read evidence (declared_matches_recomputation where implemented)",
+   "identities and observations match the persisted receipts",
+   "limitations are present (bounded-claim honesty)"
+  ],
+  "non_exits": [
+   "executor-declared CAUSAL_SUPPORTED alone (verification_method executor-declared-cvo-pending-independent-runtime-reverification)",
+   "absence of a causal_verification block (verify mode returns CVO_NOT_PERSISTED, HTTP 409)",
+   "verify-mode failure (ok:false, HTTP 409)"
+  ]
+ },
+ "scope": "The `causal_verification` block (schema NAYANET_CAUSAL_VERIFICATION_V1) persisted on nayanet_execution_receipts evidence, and the verifier's recomputation response. nayanet-learning-verify does not construct CVO blocks (it references causal_verification_id only). learning-verify declaration tags (LEARNING_VERIFIED, epistemic_state) are a separate axis and out of scope here.",
+ "status": "CANDIDATE",
+ "title": "CVO Outcome Axes \u2014 canonical verdict vocabulary for Causal Verification Objects"
+}
