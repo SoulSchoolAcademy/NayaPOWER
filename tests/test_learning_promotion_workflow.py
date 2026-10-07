@@ -144,3 +144,35 @@ def test_runtime_proof_can_be_dispatched_with_exact_producer_context():
     assert "github.event_name == 'workflow_run'" in source
     assert "SOURCE_SHA:" in source
     assert "PRODUCER_RUN_ID:" in source
+
+
+def test_learning_promotion_makes_http_failures_observable_and_retries_one_fresh_oidc_token_on_403():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'promotion_status="learning-promotion.http-status"' in source
+    assert 'promotion_headers="learning-promotion.headers"' in source
+    assert 'promotion_attempts=0' in source
+    assert 'curl -sS -X POST' in source
+    assert '-D "$promotion_headers"' in source
+    assert '-o "$promotion_body"' in source
+    assert '-w "%{http_code}"' in source
+    assert 'PROMOTION_FINAL_HTTP_STATUS=$status' in source
+    assert 'PROMOTION_RESPONSE_BODY:' in source
+    assert 'PROMOTION_403_RETRYING_WITH_FRESH_OIDC_TOKEN' in source
+    assert 'token="$(mint_runtime_token)"' in source
+    assert 'post_promotion "$token"' in source
+    assert 'if [[ ! "$status" =~ ^2[0-9][0-9]$ ]]; then' in source
+    assert 'exit 1' in source
+
+
+def test_learning_promotion_no_longer_uses_opaque_fail_fast_curl():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert 'curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"' not in source
+    assert 'learning-promotion.json >' not in source
+
+
+def test_learning_promotion_retry_is_bounded_to_a_single_403_recovery_attempt():
+    source = WORKFLOW.read_text(encoding="utf-8")
+    assert source.count('post_promotion "$(cat "$RUNNER_TEMP/oidc.jwt")"') == 1
+    assert source.count('post_promotion "$token"') == 1
+    assert source.count('if [ "$status" = "403" ]; then') == 1
+    assert source.count('mint_runtime_token()') == 1
