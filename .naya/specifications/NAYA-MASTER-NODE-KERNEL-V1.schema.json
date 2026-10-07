@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Machine-readable kernel contract for the nine Master Nodes. See NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md.",
+  "properties": {
+    "authority": {
+      "type": "string"
+    },
+    "effective": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "type": "string"
+    },
+    "gates": {
+      "type": "object"
+    },
+    "input_envelope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "invariants": {
+      "type": "object"
+    },
+    "kernel": {
+      "const": "naya-master-node-kernel"
+    },
+    "lifecycle_states": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "properties": {
+          "contracts": {
+            "items": {
+              "pattern": "^[0-9]{2}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "id": {
+            "pattern": "^MN-0[1-9]$",
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "enum": [
+              "PROPOSED",
+              "ACTIVE",
+              "CONFLICTED",
+              "SUPERSEDED",
+              "RETIRED"
+            ]
+          },
+          "must": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "must_not": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "responsibility": {
+            "type": "string"
+          },
+          "triad": {
+            "enum": [
+              "T1",
+              "T2",
+              "T3"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "responsibility",
+          "triad",
+          "contracts",
+          "lifecycle",
+          "must",
+          "must_not"
+        ],
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "output_envelope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "permitted_transitions": {
+      "items": {
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 2,
+        "minItems": 2,
+        "type": "array"
+      },
+      "type": "array"
+    },
+    "related_artifacts": {
+      "type": "object"
+    },
+    "schema": {
+      "type": "string"
+    },
+    "spec": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "triads": {
+      "additionalProperties": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "sequence": {
+            "items": {
+              "pattern": "^MN-0[1-9]$",
+              "type": "string"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "question",
+          "sequence"
+        ],
+        "type": "object"
+      },
+      "required": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "type": "object"
+    },
+    "version": {
+      "const": "V1"
+    }
+  },
+  "required": [
+    "kernel",
+    "version",
+    "status",
+    "effective",
+    "authority",
+    "spec",
+    "nodes",
+    "triads",
+    "invariants",
+    "gates",
+    "input_envelope",
+    "output_envelope",
+    "lifecycle_states",
+    "permitted_transitions"
+  ],
+  "title": "NayaPOWER Nine Master Node Kernel Manifest V1",
+  "type": "object"
+}

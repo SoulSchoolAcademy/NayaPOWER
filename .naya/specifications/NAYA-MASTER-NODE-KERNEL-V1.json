@@ -1,0 +1,354 @@
+{
+  "authority": "NayaPOWER System North Star + NayaNET Constitutional Contract Law",
+  "conformance_note": "Passing gates K1-K6 proves STRUCTURAL kernel conformance only. It does not prove production intelligence. Behavioral proof is defined in spec section 15. See also BRAIN/03-KERNEL/MANIFEST.json for the runtime binding record.",
+  "default_kernel_sequence": [
+    "MN-01",
+    "MN-02",
+    "MN-03",
+    "MN-04",
+    "MN-05",
+    "MN-06",
+    "MN-07",
+    "MN-08",
+    "MN-09",
+    "MN-01"
+  ],
+  "effective": "2026-09-26",
+  "envelope_distinctions": [
+    "decision_context != authority",
+    "action_context != evidence",
+    "evidence_context != verification",
+    "learning_context != verified learning",
+    "successor_context != new authority"
+  ],
+  "fail_closed_conditions": [
+    "required authority is missing",
+    "consent is missing",
+    "scope is materially ambiguous",
+    "required provenance is absent",
+    "required evidence is absent",
+    "a material conflict is unresolved",
+    "canonical identity cannot be established",
+    "a protected boundary cannot be verified",
+    "required successor context cannot be safely generated"
+  ],
+  "gates": {
+    "K1": "Exactly nine unique Node identities MN-01..MN-09.",
+    "K2": "Every contract 00..26 has exactly one primary Node.",
+    "K3": "Manifest and universal envelopes conform to the canonical machine-readable structure.",
+    "K4": "Self-authorization and self-ratification are explicitly forbidden and machine-checked.",
+    "K5": "Claim status cannot exceed evidence status.",
+    "K6": "Meaningful completion can emit sufficient successor context."
+  },
+  "input_envelope": [
+    "identity",
+    "intent",
+    "state",
+    "context",
+    "authority",
+    "intelligence",
+    "evidence",
+    "relationships"
+  ],
+  "invariants": {
+    "I1": "No Node can create authority from capability, usefulness, retrieval relevance, confidence, or self-score.",
+    "I10": "A Node MAY propose/build/test/verify improvements within its authorized boundary; adoption requiring higher authority MUST stop at that boundary.",
+    "I2": "No Node can promote a claim beyond the evidence supporting the claim.",
+    "I3": "No Node can create a competing canonical identity for durable intelligence.",
+    "I4": "Cross-node movement MUST preserve relevant provenance, epistemic state, ownership, scope, and authority context.",
+    "I5": "Cross-node movement MUST NOT widen visibility beyond applicable consent/privacy rules.",
+    "I6": "Temporal validity, freshness, and supersession MUST be preserved when material to applicability.",
+    "I7": "Contradictions MUST be surfaced, reconciled, or explicitly preserved as unresolved; MUST NOT be silently averaged into false certainty.",
+    "I8": "Successor context MAY inherit intelligence and continuation state but MUST NOT automatically inherit every permission.",
+    "I9": "Constitutional changes and reserved human decisions MUST remain outside autonomous Node ratification."
+  },
+  "kernel": "naya-master-node-kernel",
+  "lifecycle_states": [
+    "PROPOSED",
+    "ACTIVE",
+    "CONFLICTED",
+    "SUPERSEDED",
+    "RETIRED"
+  ],
+  "nodes": [
+    {
+      "contracts": [
+        "00",
+        "01",
+        "02"
+      ],
+      "id": "MN-01",
+      "key": "SELF",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Establish sufficient identity, mission, state, and scope before consequential execution."
+      ],
+      "must_not": [
+        "Invent missing identity, state, mission, authority, or current truth."
+      ],
+      "responsibility": "Identity, Mission & Continuity",
+      "triad": "T1"
+    },
+    {
+      "authority_outcomes": [
+        "AUTHORIZED",
+        "DENIED",
+        "REQUIRES_CONFIRMATION",
+        "AMBIGUOUS",
+        "EXPIRED",
+        "REVOKED",
+        "OUT_OF_SCOPE"
+      ],
+      "contracts": [
+        "03",
+        "14",
+        "26"
+      ],
+      "id": "MN-02",
+      "key": "LAW",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Resolve authority before consequential action.",
+        "Distinguish capability from authority.",
+        "Use the canonical authority outcomes where applicable."
+      ],
+      "must_not": [
+        "Self-authorize or self-ratify."
+      ],
+      "responsibility": "Authority, Consent & Governance",
+      "triad": "T1"
+    },
+    {
+      "contracts": [
+        "04",
+        "12",
+        "13"
+      ],
+      "id": "MN-03",
+      "key": "ACT",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Consume applicable authority from LAW.",
+        "Define success and evidence requirements where reasonably determinable.",
+        "Stop when required authority or required evidence is unavailable."
+      ],
+      "must_not": [
+        "Silently broaden scope.",
+        "Call an attempted action verified without verification evidence."
+      ],
+      "responsibility": "Execution, Agency & Safe Action",
+      "triad": "T1"
+    },
+    {
+      "contracts": [
+        "05",
+        "06",
+        "15"
+      ],
+      "id": "MN-04",
+      "key": "KNOW",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Preserve canonical identity and provenance for durable intelligence.",
+        "Distinguish event, understanding, evidence, outcome, and learning.",
+        "Route durable intelligence through the canonical Receiver."
+      ],
+      "must_not": [
+        "Create a competing canonical memory store or locally allocate canonical Intelligent Block identity."
+      ],
+      "responsibility": "Intelligence, Memory & Events",
+      "triad": "T2"
+    },
+    {
+      "contracts": [
+        "07",
+        "10",
+        "16"
+      ],
+      "epistemic_distinctions": [
+        "UNKNOWN != VERIFIED",
+        "BLOCKED != PASS",
+        "IMPLEMENTED != VERIFIED",
+        "VERIFIED != PRODUCTION-PROVEN",
+        "LEARNING LABEL != VERIFIED LEARNING"
+      ],
+      "id": "MN-05",
+      "key": "PROVE",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Preserve the epistemic distinctions.",
+        "Enforce CLAIM STRENGTH <= EVIDENCE STRENGTH."
+      ],
+      "must_not": [
+        "Upgrade an epistemic state without required evidence."
+      ],
+      "responsibility": "Truth, Provenance & Accountability",
+      "triad": "T2"
+    },
+    {
+      "contracts": [
+        "08",
+        "09",
+        "21"
+      ],
+      "id": "MN-06",
+      "key": "CONNECT",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Distinguish relevance from truth and authority.",
+        "Preserve relationship support where a relationship affects trust or action.",
+        "Prefer applicable intelligence over merely similar intelligence.",
+        "Preserve temporal/supersession context when it affects applicability."
+      ],
+      "must_not": [
+        "Bypass ownership, privacy, or authority restrictions."
+      ],
+      "responsibility": "Relationships, Retrieval & System Context",
+      "triad": "T2"
+    },
+    {
+      "contracts": [
+        "11",
+        "23",
+        "25"
+      ],
+      "id": "MN-07",
+      "key": "VERIFY",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Compare observed results with the declared success/evidence boundary.",
+        "Be able to return NOT_PROVEN.",
+        "Distinguish implementation, testing, verification, independent verification, and production proof."
+      ],
+      "must_not": [
+        "Infer success solely from intent, invocation, code presence, or an upstream step that does not establish the claimed outcome."
+      ],
+      "responsibility": "Outcome, Causality & Acceptance",
+      "triad": "T3"
+    },
+    {
+      "contracts": [
+        "17",
+        "18",
+        "22"
+      ],
+      "id": "MN-08",
+      "key": "LEARN",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Preserve the outcome and evidence supporting a learning transition.",
+        "Distinguish candidate learning from verified learning."
+      ],
+      "must_not": [
+        "Declare learning verified merely because it was stored, retrieved, or viewed.",
+        "Silently erase contradictory historical evidence."
+      ],
+      "responsibility": "Learning, Reconciliation & Prediction",
+      "should": [
+        "Seek held-out or otherwise appropriate future-use evidence when claiming compounding."
+      ],
+      "triad": "T3"
+    },
+    {
+      "contracts": [
+        "19",
+        "20",
+        "24"
+      ],
+      "id": "MN-09",
+      "key": "EVOLVE",
+      "lifecycle": "ACTIVE",
+      "must": [
+        "Preserve enough verified state and applicable intelligence for the successor to continue correctly where reasonably preservable.",
+        "Preserve authority separately from inherited context.",
+        "Distinguish proposed improvement from adopted improvement."
+      ],
+      "must_not": [
+        "Grant a successor authority merely because successor context was created.",
+        "Silently modify constitutional law or ratified authority.",
+        "Treat self-scoring as independent verification."
+      ],
+      "responsibility": "Continuity, Experience & System Evolution",
+      "triad": "T3"
+    }
+  ],
+  "output_envelope": [
+    "understanding",
+    "decision_context",
+    "action_context",
+    "evidence_context",
+    "learning_context",
+    "successor_context"
+  ],
+  "permitted_transitions": [
+    [
+      "PROPOSED",
+      "ACTIVE"
+    ],
+    [
+      "PROPOSED",
+      "CONFLICTED"
+    ],
+    [
+      "ACTIVE",
+      "CONFLICTED"
+    ],
+    [
+      "ACTIVE",
+      "SUPERSEDED"
+    ],
+    [
+      "ACTIVE",
+      "RETIRED"
+    ],
+    [
+      "CONFLICTED",
+      "ACTIVE"
+    ],
+    [
+      "CONFLICTED",
+      "SUPERSEDED"
+    ],
+    [
+      "SUPERSEDED",
+      "RETIRED"
+    ]
+  ],
+  "related_artifacts": {
+    "BRAIN/03-KERNEL/MANIFEST.json": "The kernel runtime manifest (runtime binding record; declares runtime_binding NOT_PROVEN). This .naya manifest is the enforceable spec's machine companion (gates K1-K6); the two are complementary, not competing. Reconciliation of any drift between them is follow-up work.",
+    "scripts/verify-nine-master-nodes.py": "Static gate checking K1-K6 against this manifest."
+  },
+  "schema": ".naya/specifications/NAYA-MASTER-NODE-KERNEL-V1.schema.json",
+  "spec": ".naya/specifications/NAYAPOWER-NINE-MASTER-NODES-ENFORCEABLE-SPEC-V1.md",
+  "status": "RATIFIED",
+  "triads": {
+    "T1": {
+      "name": "ORIENTATION",
+      "question": "Who am I? What governs me? What may I responsibly do?",
+      "sequence": [
+        "MN-01",
+        "MN-02",
+        "MN-03"
+      ]
+    },
+    "T2": {
+      "name": "COGNITION",
+      "question": "What do we know? Why should we believe it? What matters here?",
+      "sequence": [
+        "MN-04",
+        "MN-05",
+        "MN-06"
+      ]
+    },
+    "T3": {
+      "name": "EVOLUTION",
+      "question": "What happened? What changed? How does the next Naya improve?",
+      "sequence": [
+        "MN-07",
+        "MN-08",
+        "MN-09"
+      ]
+    }
+  },
+  "version": "V1"
+}
