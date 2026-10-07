@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location("selector", ROOT/"tools"/"validate_graph_selector_v2.py")
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
-FIXTURE=json.loads((ROOT/"BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json").read_text())
+FIXTURE=json.loads((ROOT/"BRAIN/04-INTELLIGENCE/GRAPH/0004-GRAPH-SELECTOR-V2-ACCEPTANCE.json").read_text(encoding="utf-8"))
 TASK=FIXTURE["task"]; TYPES=FIXTURE["allowed_relationship_types"]
 
 def case(name):

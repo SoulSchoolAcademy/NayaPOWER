@@ -72,7 +72,7 @@ def test_resolver_is_projection_not_second_authority():
 
 def test_workflow_collects_live_github_state_and_uploads_resolution():
     root = Path(__file__).resolve().parents[1]
-    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text(encoding="utf-8")
     assert "permissions:" in wf
     assert "actions: read" in wf
     assert "issues: read" in wf
@@ -88,8 +88,8 @@ def test_workflow_collects_live_github_state_and_uploads_resolution():
 
 def test_control_plane_points_to_open_current_truth_frontier():
     root = Path(__file__).resolve().parents[1]
-    brain = json.loads((root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").read_text())
-    ops = json.loads((root / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json").read_text())
+    brain = json.loads((root / "BRAIN" / "NAYAPOWER-BRAIN-INDEX.json").read_text(encoding="utf-8"))
+    ops = json.loads((root / "BRAIN" / "90-OPERATIONS" / "0003-ULTIMATE-MASTER-EXECUTION-PLAN-V1.json").read_text(encoding="utf-8"))
     assert brain["operations"]["active_issue"] == 66
     assert ops["current_state"]["issue_978"].startswith("CLOSED")
     assert ops["current_state"]["issue_975"].startswith("CLOSED")
@@ -116,7 +116,7 @@ def test_generated_markdown_continuation_brief_contains_operational_handoff():
 
 def test_workflow_publishes_and_uploads_generated_continuation_brief():
     root = Path(__file__).resolve().parents[1]
-    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text(encoding="utf-8")
     assert "--markdown-output current-truth-brief.md" in wf
     assert "current-truth-brief.md" in wf
     assert "GITHUB_STEP_SUMMARY" in wf
@@ -136,7 +136,7 @@ def test_resolver_carries_live_open_pr_frontier():
 
 def test_workflow_collects_live_open_pull_requests():
     root = Path(__file__).resolve().parents[1]
-    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text(encoding="utf-8")
     assert "pull-requests: read" in wf
     assert '"gh", "pr", "list"' in wf
     assert '"number,title,headRefOid,isDraft,mergeStateStatus,updatedAt"' in wf
@@ -241,7 +241,7 @@ def test_projection_freshness_flags_substantive_path(monkeypatch):
 
 def test_current_truth_resolver_has_daily_schedule():
     root = Path(__file__).resolve().parents[1]
-    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text()
+    wf = (root / ".github" / "workflows" / "current-truth-resolver.yml").read_text(encoding="utf-8")
     assert "schedule:" in wf
     assert 'cron: "17 15 * * *"' in wf
     assert "contents: read" in wf

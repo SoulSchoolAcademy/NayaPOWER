@@ -56,7 +56,7 @@ def reconcile(edges:list[dict[str,Any]], task_class:str)->dict[str,Any]:
     return {"status":"RESOLVED","selected":selected,"excluded":sorted(set(excluded))}
 
 def main()->int:
-    data=json.loads(FIXTURE.read_text())
+    data=json.loads(FIXTURE.read_text(encoding="utf-8"))
     failures=[]
     for case in data["cases"]:
         got=reconcile(case["edges"],case["task_class"])

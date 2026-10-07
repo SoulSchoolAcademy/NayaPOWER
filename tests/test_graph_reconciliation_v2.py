@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location("rec",ROOT/"tools"/"validate_graph_reconciliation_v2.py")
 mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
-DATA=json.loads((ROOT/"BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json").read_text())
+DATA=json.loads((ROOT/"BRAIN/04-INTELLIGENCE/GRAPH/0005-GRAPH-RECONCILIATION-V2-ACCEPTANCE.json").read_text(encoding="utf-8"))
 
 def case(name):
     return next(x for x in DATA["cases"] if x["name"]==name)

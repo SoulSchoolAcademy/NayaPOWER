@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 SHA='a'*40
 
 def ci_program():
-    text=(ROOT/'.github/workflows/governed-supabase-production-deploy.yml').read_text()
+    text=(ROOT/'.github/workflows/governed-supabase-production-deploy.yml').read_text(encoding="utf-8")
     snippets=re.findall(r"          python - <<'PY'\n(.*?)\n          PY",text,re.S)
     return dedent(next(s for s in snippets if 'for attempt in range(90)' in s))
 
@@ -43,7 +43,7 @@ def test_real_workflow_never_accepts_wrong_or_unfinished_ci_evidence(overrides):
 
 
 def delta_program():
-    source = (ROOT/'.github/workflows/governed-supabase-production-deploy.yml').read_text()
+    source = (ROOT/'.github/workflows/governed-supabase-production-deploy.yml').read_text(encoding="utf-8")
     return dedent(re.search(r"          python - <<'PYCODE'\n(.*?)\n          PYCODE", source, re.S).group(1))
 
 
@@ -54,7 +54,7 @@ def test_full_undeployed_delta_includes_protected_changes_from_earlier_pushes():
         exec(compile(delta_program(), 'governed-workflow-delta', 'exec'), {})
     ancestry.assert_called_once_with(['git','merge-base','--is-ancestor',base,SHA], check=True)
     diff.assert_called_once_with(['git','diff','--name-only',base,SHA],text=True)
-    assert json.loads(Path('standing-changed-paths.json').read_text())[0] == 'supabase/migrations/security.sql'
+    assert json.loads(Path('standing-changed-paths.json').read_text(encoding="utf-8"))[0] == 'supabase/migrations/security.sql'
 
 
 @pytest.mark.parametrize('source', ['const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";', ''])
