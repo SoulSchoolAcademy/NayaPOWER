@@ -1741,12 +1741,28 @@
       "provenance": {
         "note": "PR #1666: documents the 2026-10-06 Reveal narration bake incident (7x BrokenProcessPool OOM). Director affirmation: Shawn Vibert, 2026-10-06."
       }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-prime-math-decides",
+      "smart_note_id": "SN-0522",
+      "title": "Prime 3 — THE MATH DECIDES",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PRIME_JUDGMENT",
+      "truth_state": "CANDIDATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0522/IB-SMART-NOTE-20261007-sn0522-prime-math-decides.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0522/IB-SMART-NOTE-20261007-sn0522-prime-math-decides.md",
+      "provenance": {
+        "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. COLLISION FLAG: SN-0522 is also claimed on unmerged branches (naya4/smart-notes-2026-09-30 voice-integration correction, 2026-10-06; naya5/sn0522-self-governing-law, 2026-10-07) — renumber per SN-0189 if those land first."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 502,
+    "next_sequence": 523,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
