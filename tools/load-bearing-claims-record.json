@@ -1,0 +1,37 @@
+{
+  "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
+  "measured_at": "2026-10-07",
+  "measured_on": "main c9c8b8ce0",
+  "violations": [
+    {
+      "id": "CV-01",
+      "claim": "independent verification",
+      "location": ".github/workflows/live-supabase-runtime-proof.yml",
+      "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 sets \"independent_verification\": True as a literal in the receipt builder. No independent process produced it.",
+      "law": "SN-0481",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Editing a proof artifact is a truth decision for an owner, not a unilateral change from an enforcement PR. Removing the claim silently would destroy a signal other lanes read; leaving it silently is what this record prevents."
+    },
+    {
+      "id": "CV-02",
+      "claim": "node influence",
+      "location": ".github/workflows/live-supabase-runtime-proof.yml",
+      "problem": "The 'ablation discrimination' step deletes a key from the dict it just built and asserts a shape checker fails. That proves the shape checker checks shapes. No node in the receipt is executed by any code.",
+      "law": "SN-0462, SN-0505",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Same reason. The real ablation exists (tools/measure_node_influence.py) and reports 2/9 invoked, 0/9 influential for the runtime kernel. Wiring it into this gate is an owner decision about what the receipt may claim."
+    },
+    {
+      "id": "CV-03",
+      "claim": "node influence",
+      "location": "tools/measure_node_influence.py",
+      "problem": "The measurement did not exist on main when these claims were first enforced. It landed alongside this gate.",
+      "law": "SN-0461",
+      "status": "RESOLVED -- present as of this commit",
+      "why_not_fixed_here": "Already resolved; retained so the resolution is visible rather than the entry silently vanishing."
+    }
+  ],
+  "repaired_claims": {
+    "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
+  }
+}

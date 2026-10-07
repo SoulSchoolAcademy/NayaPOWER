@@ -1,0 +1,10 @@
+{
+  "//": "Committed floor for tools/guard_liveness.py. The gate fails only if coverage DROPS below this. Ratchet, not cliff: failing at the honest starting number would block every merge and train the team to bypass it. The floor may only rise.",
+  "floor_pct_with_firing_proof": 30.6,
+  "measured_at": "2026-10-07",
+  "measured_on": "main c9c8b8ce0",
+  "total_guards": 147,
+  "with_firing_proof": 45,
+  "without_firing_proof": 102,
+  "baseline_rationale": "Starting position, not a target. 102 guards cannot currently be observed to reject anything. The work is to move them, one at a time, into the proven column."
+}
