@@ -48,7 +48,14 @@ function runtime(opts = {}) {
     grant = GRANT_ROW,
     tx = TX_ROW,
     receipt = null,
+    github = {},
   } = opts;
+  const {
+    initialReadStatus = null,
+    commitStatus = 201,
+    commitSha = 'blobsha123',
+    verifySha = commitSha,
+  } = github;
   let handler;
   const receipts = new Map();
   const blobs = new Map();
@@ -185,11 +192,19 @@ function runtime(opts = {}) {
       if (u.startsWith('https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/')) {
         const path = u.split('/contents/')[1].split('?')[0];
         if ((init.method || 'GET') === 'PUT') {
-          blobs.set(path, 'blobsha123');
-          return new Response(JSON.stringify({ content: { sha: 'blobsha123' } }), { status: 201 });
+          if (commitStatus !== 201) {
+            return new Response(JSON.stringify({ message: 'synthetic commit failure' }), { status: commitStatus });
+          }
+          blobs.set(path, commitSha);
+          const payload = commitSha == null ? { content: null } : { content: { sha: commitSha } };
+          return new Response(JSON.stringify(payload), { status: 201 });
+        }
+        const contentGets = githubCalls.filter((c) => c.url.includes('/contents/') && c.method === 'GET').length;
+        if (contentGets === 1 && initialReadStatus !== null) {
+          return new Response(JSON.stringify({ message: 'synthetic initial read failure' }), { status: initialReadStatus });
         }
         if (blobs.has(path)) {
-          return new Response(JSON.stringify({ sha: blobs.get(path), path }), { status: 200 });
+          return new Response(JSON.stringify({ sha: contentGets >= 2 ? verifySha : blobs.get(path), path }), { status: 200 });
         }
         return new Response(JSON.stringify({ message: 'Not Found' }), { status: 404 });
       }
@@ -323,4 +338,85 @@ test('idempotent replay returns stored receipt without touching GitHub', async (
   assert.equal(body.smart_link, stored.smart_link);
   assert.equal(body.replayed, true);
   assert.equal(githubCalls.length, 0, 'no GitHub call on replay');
+});
+
+test('requires the authority grant id in the request before any external work', async () => {
+  const { post, githubCalls, receipts } = runtime();
+  const body = { ...validBody(), authority_grant_id: '' };
+  const { status, body: result } = await post(body);
+  assert.equal(status, 400);
+  assert.equal(result.error, 'AUTHORITY_GRANT_REQUIRED');
+  assert.equal(githubCalls.length, 0, 'request validation must precede GitHub work');
+  assert.equal(receipts.size, 0, 'request validation must precede receipt claiming');
+});
+
+test('requires explicit approval before claiming a projection receipt', async () => {
+  const { post, githubCalls, receipts } = runtime();
+  const body = { ...validBody(), approval: 'NOT_APPROVED' };
+  const { status, body: result } = await post(body);
+  assert.equal(status, 403);
+  assert.equal(result.error, 'EXPLICIT_APPROVAL_REQUIRED');
+  assert.equal(githubCalls.length, 0, 'approval refusal must precede GitHub work');
+  assert.equal(receipts.size, 0, 'approval refusal must precede receipt claiming');
+});
+
+test('requires an idempotency key before claiming a projection receipt', async () => {
+  const { post, githubCalls, receipts } = runtime();
+  const body = { ...validBody(), idempotency_key: '' };
+  const { status, body: result } = await post(body);
+  assert.equal(status, 400);
+  assert.equal(result.error, 'IDEMPOTENCY_KEY_REQUIRED');
+  assert.equal(githubCalls.length, 0, 'idempotency validation must precede GitHub work');
+  assert.equal(receipts.size, 0, 'idempotency validation must precede receipt claiming');
+});
+
+test('refuses malformed intelligent block identity before projection', async () => {
+  const { post, receipts, githubCalls } = runtime({
+    tx: {
+      ...TX_ROW,
+      intelligent_block: {
+        ...TX_ROW.intelligent_block,
+        identity: { ...TX_ROW.intelligent_block.identity, intelligent_block_id: 'NOT-AN-IB' },
+      },
+    },
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 422);
+  assert.equal(body.error, 'INTELLIGENT_BLOCK_ID_INVALID');
+  assert.equal(githubCalls.length, 0, 'invalid block identity must not touch GitHub');
+  assert.equal(receipts.get(IDEM).status, 'failed');
+  assert.equal(receipts.get(IDEM).failure, 'INTELLIGENT_BLOCK_ID_INVALID');
+});
+
+test('fails closed when the GitHub read used to establish projection state errors', async () => {
+  const { post, receipts, githubCalls } = runtime({ github: { initialReadStatus: 500 } });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.error, 'GITHUB_READ_FAILED');
+  assert.equal(receipts.get(IDEM).status, 'failed');
+  assert.equal(receipts.get(IDEM).failure, 'GITHUB_READ_FAILED:500');
+  assert.equal(githubCalls.filter((c) => c.method === 'PUT').length, 0, 'must not write after failed read');
+});
+
+test('fails closed when the GitHub commit does not succeed', async () => {
+  const { post, receipts, githubCalls } = runtime({ github: { commitStatus: 500 } });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.error, 'GITHUB_COMMIT_FAILED');
+  assert.equal(receipts.get(IDEM).status, 'failed');
+  assert.equal(receipts.get(IDEM).failure, 'GITHUB_COMMIT_FAILED:500');
+  assert.equal(githubCalls.filter((c) => c.method === 'PUT').length, 1);
+});
+
+test('fails closed when the post-commit read-back cannot verify the committed blob', async () => {
+  const { post, receipts, githubCalls } = runtime({
+    github: { verifySha: 'different-blob-sha' },
+  });
+  const { status, body } = await post(validBody());
+  assert.equal(status, 502);
+  assert.equal(body.error, 'PROJECTION_UNVERIFIED');
+  assert.equal(receipts.get(IDEM).status, 'failed');
+  assert.equal(receipts.get(IDEM).failure, 'PROJECTION_UNVERIFIED');
+  assert.equal(githubCalls.filter((c) => c.method === 'PUT').length, 1);
+  assert.equal(githubCalls.filter((c) => c.method === 'GET').length, 2);
 });
