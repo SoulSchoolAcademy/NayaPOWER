@@ -141,8 +141,106 @@ def test_committed_mode_accepts_tracked_file():
 
 
 # ---------------------------------------------------------------------------
-# Trial-4 regression: the real failure, replayed
+# Adversarial regression: attacks that defeated the verifier before the
+# resolve-and-contain fix (TRUTH-AGENT independent review, 2026-10-07).
+# A bare string-prefix check cannot see through symlinks or `..` traversals:
+# each of these sailed through as "OK" before the fix.
 # ---------------------------------------------------------------------------
+
+def _adv_scratch():
+    scratch = ROOT / "_adv_evidence_scratch"
+    scratch.mkdir(exist_ok=True)
+    return scratch
+
+
+def _cleanup_adv_scratch():
+    import shutil
+
+    shutil.rmtree(ROOT / "_adv_evidence_scratch", ignore_errors=True)
+
+
+def test_adversarial_symlink_to_tmp_fails(tmp_path):
+    """An in-repo symlink pointing at /tmp must NOT pass as durable evidence."""
+    target = tmp_path / "RESULTS.md"
+    target.write_text('{"raw": "ephemeral"}', encoding="utf-8")
+    scratch = _adv_scratch()
+    link = scratch / "via-link.md"
+    try:
+        link.symlink_to(target)
+        proc = run_verifier(trial_descriptor("_adv_evidence_scratch/via-link.md"))
+        assert proc.returncode == 2, (
+            "DEFEATED: verifier accepted an in-repo symlink to /tmp as durable evidence"
+        )
+        assert "escapes" in proc.stderr
+    finally:
+        _cleanup_adv_scratch()
+
+
+def test_adversarial_traversal_to_tmp_fails(tmp_path):
+    """A `..` traversal escaping the repo to /tmp must NOT pass."""
+    target = tmp_path / "RESULTS.md"
+    target.write_text('{"raw": "ephemeral"}', encoding="utf-8")
+    # tmp_path is /tmp/pytest-*/... ; walk from the repo-relative scratch dir
+    # up to the common /tmp ancestor. Compute the traversal dynamically.
+    rel_up = "/".join([".."] * (len(ROOT.resolve().parts) - 1))
+    scratch = _adv_scratch()
+    evil = f"_adv_evidence_scratch/{rel_up}{str(target)[1:]}"
+    try:
+        proc = run_verifier(trial_descriptor(evil))
+        assert proc.returncode == 2, (
+            "DEFEATED: verifier accepted a ../.. traversal to /tmp as durable evidence"
+        )
+    finally:
+        _cleanup_adv_scratch()
+
+
+def test_adversarial_symlink_outside_repo_fails():
+    """An in-repo symlink pointing outside the repo must NOT pass."""
+    scratch = _adv_scratch()
+    link = scratch / "etc-link.md"
+    try:
+        link.symlink_to("/etc/hostname")
+        proc = run_verifier(trial_descriptor("_adv_evidence_scratch/etc-link.md"))
+        assert proc.returncode == 2, (
+            "DEFEATED: verifier accepted an in-repo symlink to /etc as durable evidence"
+        )
+        assert "escapes" in proc.stderr
+    finally:
+        _cleanup_adv_scratch()
+
+
+def test_adversarial_symlink_committed_mode_fails(tmp_path):
+    """--committed must not be fooled by a tracked symlink to ephemeral bytes."""
+    target = tmp_path / "RESULTS.md"
+    target.write_text('{"raw": "ephemeral"}', encoding="utf-8")
+    scratch = _adv_scratch()
+    link = scratch / "via-link.md"
+    try:
+        link.symlink_to(target)
+        proc = run_verifier(
+            trial_descriptor("_adv_evidence_scratch/via-link.md"), "--committed"
+        )
+        assert proc.returncode == 2, (
+            "DEFEATED: --committed accepted a symlink to ephemeral evidence"
+        )
+    finally:
+        _cleanup_adv_scratch()
+
+
+def test_adversarial_ephemeral_repo_root_fails(tmp_path):
+    """A repository root on ephemeral storage fails the whole claim."""
+    desc_path = tmp_path / "d.json"
+    desc_path.write_text(
+        json.dumps({"trial_id": "t", "claim": "c", "raw_evidence_paths": ["x.md"]}),
+        encoding="utf-8",
+    )
+    proc = subprocess.run(
+        [sys.executable, str(VERIFIER), str(desc_path), "--repo", str(tmp_path)],
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 2, "verifier MUST reject an ephemeral repository root"
+    assert "ephemeral" in proc.stderr.lower()
 
 def test_trial4_regression_would_have_failed():
     """Replays Trial-4's claim shape: summary stats, raw data at /tmp.
