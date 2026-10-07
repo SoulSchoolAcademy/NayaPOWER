@@ -435,3 +435,19 @@ test("PLAN_STATE_CHANGED_OR_FORGED fires when canonical selected intelligence ch
   assert.equal(executed.body.error,"PLAN_STATE_CHANGED_OR_FORGED");
   assert.equal(rt.rows.nayanet_execution_receipts.some(r=>r.action==="act_node_execute"),false);
 });
+
+
+test("retained intelligence cannot smuggle arbitrary behavior through act_plan_patch",()=>{
+  const block=learnedBlock({
+    content:{
+      lesson:"Preserve provenance before applying retained intelligence.",
+      capabilities:["provenance_preservation"],
+      act_plan_patch:{behavior:"UNAUTHORIZED_ARBITRARY_BEHAVIOR"},
+    },
+  });
+  const result=selectKnowContext(TASK,[block],NOW);
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-behavior-injection",result),block,NOW);
+  assert.equal(plan.status,"READY");
+  assert.equal(plan.post_retrieval_plan.behavior,ACT_PROVENANCE_BEHAVIOR);
+  assert.notEqual(plan.post_retrieval_plan.behavior,"UNAUTHORIZED_ARBITRARY_BEHAVIOR");
+});

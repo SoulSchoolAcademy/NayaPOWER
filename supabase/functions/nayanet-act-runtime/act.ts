@@ -131,7 +131,11 @@ export const ACT_PROVENANCE_BEHAVIOR = "PRESERVE_PROVENANCE_BEFORE_APPLY";
 
 const SERVABLE_STATUS = new Set(["ACTIVE", "DURABLE", "RELEASED"]);
 const SERVABLE_STATES = new Set(["VERIFIED", "DISTILLED", "APPLIED", "LEARNED"]);
-const PLAN_PATCH_FIELDS = new Set(["action", "target", "door_id", "operation", "behavior"]);
+// Retained intelligence may propose a change to LAW-governed scope, but that
+// proposal can never authorize itself: any changed field below forces
+// LAW_RERESOLUTION_REQUIRED before effect. Non-scope behavior is NOT accepted as
+// an arbitrary patch; bounded behavior steering stays capability-specific below.
+const PLAN_PATCH_FIELDS = new Set(["action", "target", "door_id", "operation"]);
 
 function canonicalize(value: any): any {
   if (Array.isArray(value)) return value.map(canonicalize);
