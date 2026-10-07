@@ -1074,6 +1074,44 @@ jobs:
           name: active-learning-generalization-successor-proof
           path: evidence/evolve
 
+      - name: Execute canonical nine-node CONTROL/TREATMENT influence measurement
+        shell: bash
+        run: |
+          set -euo pipefail
+          export SOURCE_SHA="${{ env.SOURCE_SHA }}"
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+
+          raw = subprocess.check_output(
+            ["python", "tools/measure_node_influence.py", "--json"],
+            text=True,
+          )
+          measurement = json.loads(raw)
+          key = "BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
+          stats = measurement["report"][key]
+          expected = {
+            "SELF", "LAW", "ACT", "KNOW", "PROVE",
+            "CONNECT", "VERIFY", "LEARN", "EVOLVE",
+          }
+          assert stats["invoked_count"] == 9, stats
+          assert stats["influence_demonstrated_count"] == 9, stats
+          assert set(stats["influence_demonstrated_for"]) == expected, stats
+
+          json.dump({
+            "schema": "NAYAPOWER_NINE_NODE_INFLUENCE_MEASUREMENT_V1",
+            "source_revision": os.environ["SOURCE_SHA"],
+            "method": "CANONICAL_KERNEL_BEHAVIOR_ENGINE_CONTROL_TREATMENT_ABLATION",
+            "measurement": measurement,
+          }, open("node-influence-measurement.json", "w"), indent=2)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-influence-measurement
+          path: node-influence-measurement.json
+
       - name: Build bounded nine-node behavioral acceptance receipt
         shell: bash
         run: |
@@ -1087,9 +1125,35 @@ jobs:
           promotion=json.load(open("evidence/learn/learning-promotion.json"))
           reread=json.load(open("evidence/learn-reread/retained-learning-reread.json"))
           evolve=json.load(open("evidence/evolve/active-learning-generalization-successor-proof.json"))
+          influence=json.load(open("node-influence-measurement.json"))
 
           source=os.environ["SOURCE_SHA"]
           assert cold["deployed_source_revision"] == source, (cold.get("deployed_source_revision"), source)
+          assert influence["source_revision"] == source, influence
+          influence_engine="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
+          influence_stats=influence["measurement"]["report"][influence_engine]
+          assert influence_stats["invoked_count"] == 9, influence_stats
+          assert influence_stats["influence_demonstrated_count"] == 9, influence_stats
+          assert set(influence_stats["influence_demonstrated_for"]) == set(
+            ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]
+          ), influence_stats
+          engine_measurement=next(
+            item for item in influence["measurement"]["measurements"]
+            if item["kernel"] == influence_engine
+          )
+          full_fingerprints=engine_measurement["scenarios"]["full_cycle"]["node_behavior_fingerprints"]
+          influence_by_node={}
+          for scenario_name,(node,_ctx) in engine_measurement["ablations"].items():
+            influence_by_node[node]={
+              "demonstrated": full_fingerprints[node] != engine_measurement["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node),
+              "ablation_scenario": scenario_name,
+              "control_fingerprint": full_fingerprints[node],
+              "treatment_fingerprint": engine_measurement["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node),
+            }
+          assert all(item["demonstrated"] for item in influence_by_node.values()), influence_by_node
+          assert set(influence_by_node) == set(
+            ["SELF","LAW","ACT","KNOW","PROVE","CONNECT","VERIFY","LEARN","EVOLVE"]
+          ), influence_by_node
           assert graph["behavioral_delta"]["changed"] is True, graph
           assert graph_verify["ok"] is True, graph_verify
           assert graph_verify["verification"]["independently_reconstructed"] is True, graph_verify
@@ -1179,6 +1243,13 @@ jobs:
                 ],
               },
             },
+            "node_influence":{
+              "method":influence["method"],
+              "kernel":influence_engine,
+              "invoked_count":influence_stats["invoked_count"],
+              "influence_demonstrated_count":influence_stats["influence_demonstrated_count"],
+              "nodes":influence_by_node,
+            },
             "independent_verification": True,
             "authority_inherited": evolve["authority_inherited"],
             "unrelated_transfer_refused": evolve["unrelated_task"]["correct_refusal"],
@@ -1202,10 +1273,23 @@ jobs:
           import copy, json
           from tests.verify_nine_node_behavioral_acceptance import ORDER, verify_receipt
           receipt=json.load(open("nine-node-behavioral-acceptance.json"))
+          influence=json.load(open("node-influence-measurement.json"))
+          key="BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine"
+          measured=influence["measurement"]["report"][key]
+          assert receipt["node_influence"]["method"] == influence["method"], receipt
+          assert receipt["node_influence"]["invoked_count"] == 9, receipt
+          assert receipt["node_influence"]["influence_demonstrated_count"] == 9, receipt
+          assert set(receipt["node_influence"]["nodes"]) == set(ORDER), receipt
+          engine=next(item for item in influence["measurement"]["measurements"] if item["kernel"] == key)
+          baseline=engine["scenarios"]["full_cycle"]["node_behavior_fingerprints"]
+          for scenario_name,(node,_ctx) in engine["ablations"].items():
+            treatment=engine["scenarios"][scenario_name]["node_behavior_fingerprints"].get(node)
+            assert baseline[node] != treatment, (node,scenario_name,baseline[node],treatment)
           for node in ORDER:
             ablated=copy.deepcopy(receipt)
             del ablated["nodes"][node]
             assert verify_receipt(ablated), node
+          print("NODE INFLUENCE PASS: 9/9 target-node CONTROL/TREATMENT fingerprints differ")
           print("ABLATION DISCRIMINATION PASS: removing any node evidence fails closed")
           PY
 
