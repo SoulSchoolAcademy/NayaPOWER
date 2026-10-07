@@ -32,9 +32,10 @@
   function setBtn(btn, mode) {
     btn.dataset.nvMode = mode;
     var ic = btn.querySelector('.nv-ic');
-    if (mode === 'playing') { btn.setAttribute('aria-label', 'Pause'); if (ic) ic.textContent = '❚❚'; }
-    else if (mode === 'done') { btn.setAttribute('aria-label', 'Replay'); if (ic) ic.textContent = '↻'; }
-    else { btn.setAttribute('aria-label', 'Play'); if (ic) ic.textContent = '▶'; }
+    btn.classList.toggle('playing', mode === 'playing');
+    if (mode === 'playing') { btn.setAttribute('aria-label', 'Pause Naya'); if (ic) ic.textContent = '❚❚'; }
+    else if (mode === 'done') { btn.setAttribute('aria-label', 'Replay Naya'); if (ic) ic.textContent = '↻'; }
+    else { btn.setAttribute('aria-label', 'Play Naya'); if (ic) ic.textContent = '▶'; }
   }
 
   function wireCard(card) {
@@ -49,7 +50,7 @@
     btn.type = 'button';
     btn.className = 'nv-play';
     btn.innerHTML = '<span class="nv-ic" aria-hidden="true">▶</span>' +
-      '<span class="nv-name">Naya</span>' +
+      '<span class="nv-name">Play Naya</span>' +
       '<span class="nv-tag">' + (window.NayaVoice ? window.NayaVoice.voiceLabel : 'SYNTHESIZED VOICE') + '</span>';
     setBtn(btn, 'idle');
 
