@@ -1329,6 +1329,10 @@ jobs:
               "recomputed":independent["recomputed"],
             },
             "node_influence":{
+              "measurement_scope":"REFERENCE_ENGINE_ONLY_NOT_PRODUCTION_RUNTIME",
+              "runtime_kernel":"kernel.nayapower_kernel.Kernel",
+              "measured_engine":"BRAIN.Engineering.kernel_behavior_engine.KernelBehaviorEngine",
+              "production_runtime_influence":"NOT_PROVEN",
               "method":influence["method"],
               "kernel":influence_engine,
               "invoked_count":influence_stats["invoked_count"],
