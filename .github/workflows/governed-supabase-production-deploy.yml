@@ -29,6 +29,7 @@ env:
   PRODUCER_WORKFLOW: live-intelligence-commit-proof.yml
   PROOF_WORKFLOW: live-supabase-runtime-proof.yml
   ACT_PROOF_WORKFLOW: live-verified-ai-action-proof.yml
+  LEARNING_ACT_PROOF_WORKFLOW: live-act-proof.yml
   CONNECT_PROOF_WORKFLOW: live-connect-proof.yml
 
 jobs:
@@ -570,6 +571,59 @@ jobs:
             sleep 5
           done
 
+      - name: Dispatch canonical two-phase ACT learning-activation proof after deployment
+        if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > learning-act-proof-dispatch-start.txt
+          gh workflow run "$LEARNING_ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"
+          for i in $(seq 1 60); do
+            runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "$LEARNING_ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch --limit 30 --json databaseId,headSha,status,conclusion,event,createdAt,url)"
+            python - <<'PY' "$runs"
+          import json,sys
+          runs=json.loads(sys.argv[1])
+          start=open("learning-act-proof-dispatch-start.txt").read().strip()
+          matches=[r for r in runs if r.get("createdAt","")>=start]
+          json.dump(max(matches,key=lambda r:r["createdAt"]) if matches else {}, open("learning-act-proof-run.json","w"), indent=2)
+          PY
+            run_id="$(python -c 'import json; print(json.load(open("learning-act-proof-run.json")).get("databaseId",""))')"
+            if [ -n "$run_id" ]; then
+              act_head="$(python -c 'import json; print(json.load(open("learning-act-proof-run.json")).get("headSha",""))')"
+              if [ "$act_head" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "Two-phase ACT proof resolved to $act_head instead of authorized source $GITHUB_SHA."
+                exit 1
+              fi
+              git fetch origin main
+              if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+                gh run cancel "$run_id" --repo "$GITHUB_REPOSITORY" || true
+                echo "main moved after two-phase ACT proof dispatch; refusing to continue."
+                exit 1
+              fi
+              for j in $(seq 1 180); do
+                status="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json status --jq .status)"
+                conclusion="$(gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json conclusion --jq .conclusion)"
+                state="${status}:${conclusion}"
+                case "$state" in
+                  completed:success) break ;;
+                  completed:*) echo "Two-phase ACT proof run failed: $state"; exit 1 ;;
+                esac
+                if [ "$j" -eq 180 ]; then echo "Timed out waiting for two-phase ACT proof run."; exit 1; fi
+                sleep 5
+              done
+              gh run view "$run_id" --repo "$GITHUB_REPOSITORY" --json databaseId,headSha,status,conclusion,event,createdAt,updatedAt,url > learning-act-proof-run.json
+              break
+            fi
+            if [ "$i" -eq 60 ]; then
+              echo "Timed out locating canonical two-phase ACT proof run."
+              exit 1
+            fi
+            sleep 5
+          done
+
       - name: Dispatch canonical CONNECT proof after deployment
         if: github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed == 'true'
         env:
@@ -653,6 +707,7 @@ jobs:
               producer=json.load(open("producer-run.json"))
               proof=json.load(open("proof-run.json"))
               act_proof=json.load(open("act-proof-run.json"))
+              learning_act_proof=json.load(open("learning-act-proof-run.json"))
               connect_proof=json.load(open("connect-proof-run.json"))
               receipt={
                 "schema":"NAYAPOWER_PRODUCTION_PROMOTION_RECEIPT_V1",
@@ -685,6 +740,8 @@ jobs:
                   "runtime_proof_conclusion":proof.get("conclusion"),
                   "act_proof_run_id":act_proof.get("databaseId"),
                   "act_proof_conclusion":act_proof.get("conclusion"),
+                  "learning_act_proof_run_id":learning_act_proof.get("databaseId"),
+                  "learning_act_proof_conclusion":learning_act_proof.get("conclusion"),
                   "connect_proof_run_id":connect_proof.get("databaseId"),
                   "connect_proof_conclusion":connect_proof.get("conclusion"),
                 },
@@ -699,10 +756,12 @@ jobs:
               assert receipt["canonical_proof"]["producer_conclusion"]=="success", receipt
               assert receipt["canonical_proof"]["runtime_proof_conclusion"]=="success", receipt
               assert receipt["canonical_proof"]["act_proof_conclusion"]=="success", receipt
+              assert receipt["canonical_proof"]["learning_act_proof_conclusion"]=="success", receipt
               assert receipt["canonical_proof"]["connect_proof_conclusion"]=="success", receipt
               assert producer.get("headSha")==os.environ["GITHUB_SHA"], receipt
               assert proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
               assert act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
+              assert learning_act_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
               assert connect_proof.get("headSha")==os.environ["GITHUB_SHA"], receipt
 
           json.dump(receipt, open("production-promotion-receipt.json","w"), indent=2)
@@ -723,4 +782,5 @@ jobs:
             producer-run.json
             proof-run.json
             act-proof-run.json
+            learning-act-proof-run.json
             connect-proof-run.json

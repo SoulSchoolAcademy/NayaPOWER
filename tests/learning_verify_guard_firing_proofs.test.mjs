@@ -45,6 +45,7 @@ function baseTables(overrides = {}) {
       {
         id: "L1",
         member_id: OWNER,
+        target_id: "NAYA-NODE-0001",
         status: "CANDIDATE",
         claim: "lesson text",
         provenance: "OBSERVATION",
@@ -477,6 +478,33 @@ test("LEARNING_LOCK_IN_LAW_DENIED -- a grant scoped to a different block", async
   const { status, body } = await runtime({ body: { learning_id: "L1", evidence_refs: ["CVO-1"] }, tables: t });
   assert.equal(status, 403);
   assert.equal(body.reason, "NO_MATCHING_ACTIVE_AUTHORITY");
+});
+
+test("node-scoped learning authority covers only learning rows targeted to that node", async () => {
+  const t = baseTables();
+  t.nayanet_authority_grants[0].scope = { target: "NAYA-NODE-0001" };
+  const { status, body } = await runtime({
+    body: { learning_id: "L1", evidence_refs: ["CVO-777"], receipt_id: "RC1" },
+    tables: t,
+  });
+  assert.equal(status, 200);
+  assert.equal(body.ok, true);
+  assert.equal(body.result.verified, true);
+});
+
+test("node-scoped learning authority cannot promote an owner-owned learning row targeted elsewhere", async () => {
+  const t = baseTables();
+  t.learning_evidence[0].target_id = "NAYA-NODE-OTHER";
+  t.nayanet_authority_grants[0].scope = { target: "NAYA-NODE-0001" };
+  const { status, body, rows, writes } = await runtime({
+    body: { learning_id: "L1", evidence_refs: ["CVO-777"], receipt_id: "RC1" },
+    tables: t,
+  });
+  assert.equal(status, 403);
+  assert.equal(body.error, "LEARNING_LOCK_IN_LAW_DENIED");
+  assert.equal(body.reason, "NO_MATCHING_ACTIVE_AUTHORITY");
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
+  assert.ok(!writes.some((w) => w.op === "update" && w.table === "learning_evidence"));
 });
 
 test("LEARNING_LOCK_IN_LAW_DENIED -- a grant that does not name the learning_lock_in action", async () => {
