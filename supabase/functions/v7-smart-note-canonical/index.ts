@@ -548,6 +548,17 @@ Deno.serve(async(req)=>{
     }
   });
 
- }catch(error){console.error(error);return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error),event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)}
+ }catch(error){
+  // String(error) on a driver error object yields "[object Object]", which hides the
+  // actual cause behind an opaque failure. Extract the safe diagnostic fields so a
+  // failed Smart Note is legible without leaking payload contents.
+  console.error(error);
+  const driverCode=(error as {code?:unknown})?.code;
+  const driverMessage=(error as {message?:unknown})?.message;
+  const detail=typeof driverMessage==="string"&&driverMessage
+    ? (typeof driverCode==="string"||typeof driverCode==="number" ? `${driverCode}: ${driverMessage}` : driverMessage)
+    : String(error);
+  return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail,event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)
+ }
 });
 
