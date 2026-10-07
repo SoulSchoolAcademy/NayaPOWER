@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-07",
-  "receipt_basis_commit": "7121f169e44f72971461e6dce66a67fcb0d1f7a2",
+  "generated_at": "2026-10-06",
+  "receipt_basis_commit": "2ac67373ea907bf0f005c1b66e40d35c55f9eabb",
   "inventory_file_count": 230,
   "domain_counts": {
     "00-SPEC": 15,
@@ -240,8 +240,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "e98bf80a5c9b187b51ab0eef56f928325d62f40c",
-      "size": 9870
+      "blob_sha": "6718854aea87b090776ff381824ecad9efada124",
+      "size": 12899
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
