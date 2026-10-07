@@ -1,6 +1,6 @@
 # Prime 3 — THE MATH DECIDES
 
-**Intelligent Block:** IB-SMART-NOTE-20261007-sn0522-prime-math-decides
+**Intelligent Block:** IB-SMART-NOTE-20261007-sn0523-prime-math-decides
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-07
@@ -136,7 +136,7 @@ If a close score OR a ranking-flipping unknown appears: investigate the unknown 
 
 ~~~json
 {
-  "smart_note_id": "SN-0522",
+  "smart_note_id": "SN-0523",
   "lineage": "seat-local doctrine (AGENTS.md Prime 3) -> #1354 announcement 2026-10-07 -> canonical note",
   "announcement": "issue 1354, comment 6040109547, 2026-10-07",
   "executable_implementation": "kernel/value_calculus.py (V2.1 Decision Value Calculus, verified operative)",
@@ -148,7 +148,7 @@ Identifiers above name the first capture event. Authority evidence:
 
 - **Stated by:** Shawn Vibert (Human Director), 2026-10-07 ~06:00 PDT: "My authority is saying, do everything in your power to get it operational. Block nothing. And don't stop until it's active and working. That's my command." Recorded as his permission slip on #1354 comment 6039461119 — his words, timestamped, not agent self-authorization.
 - **Deepened by:** Shawn Vibert, 2026-10-07 ~07:30 PDT: "the authority is the math and the logic and intelligence" — per-item permission is the bottleneck; the V2.1 decision calculus plus verification gates should BE the authority.
-- **Enacted by:** Naya 4 — Prime 3 entered into AGENTS.md as standing law; Smart Note SN-0522 admitted; announced on #1354 (comment 6040109547).
+- **Enacted by:** Naya 4 — Prime 3 entered into AGENTS.md as standing law; Smart Note SN-0523 admitted; announced on #1354 (comment 6040109547).
 - **Machine evidence:** `kernel/value_calculus.py` V2.1 — verified operative, 10/10 tested. The prose here is doctrine; the executable reading is the implementation.
 
 ## ⚠️ TRUTH BOUNDARY / UNCERTAINTY

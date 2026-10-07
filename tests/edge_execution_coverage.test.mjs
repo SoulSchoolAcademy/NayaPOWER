@@ -81,6 +81,7 @@ test("no edge function is left without executed test coverage", () => {
 
   for (const fn of readdirSync(FUNCTIONS, { withFileTypes: true })) {
     if (!fn.isDirectory()) continue;
+    if (fn.name.startsWith('_')) continue; // _shared is shared code, not an edge function
     const paths = walk(join(FUNCTIONS, fn.name)).map(rel);
     const evidence = executionEvidenceFor(paths);
     if (!evidence.length) uncovered.push(fn.name);
@@ -113,6 +114,7 @@ test("the coverage audit tool reports the same verdicts as this gate", () => {
 
   const gateExecuted = readdirSync(FUNCTIONS, { withFileTypes: true })
     .filter((e) => e.isDirectory())
+    .filter((e) => !e.name.startsWith('_')) // exclude _shared/
     .filter((e) => executionEvidenceFor(walk(join(FUNCTIONS, e.name)).map(rel)).length > 0)
     .map((e) => e.name);
 
@@ -127,9 +129,10 @@ test("the coverage audit tool reports the same verdicts as this gate", () => {
 test("every edge function has executed coverage, not just a grep", () => {
   // The concrete number, asserted so a silent regression cannot hide behind the
   // generic message above.
-  const total = readdirSync(FUNCTIONS, { withFileTypes: true }).filter((e) => e.isDirectory()).length;
+  const total = readdirSync(FUNCTIONS, { withFileTypes: true }).filter((e) => e.isDirectory()).filter((e) => !e.name.startsWith('_')).length;
   const covered = readdirSync(FUNCTIONS, { withFileTypes: true })
     .filter((e) => e.isDirectory())
+    .filter((e) => !e.name.startsWith('_'))
     .filter((e) => executionEvidenceFor(walk(join(FUNCTIONS, e.name)).map(rel)).length > 0)
     .map((e) => e.name);
 

@@ -1743,26 +1743,58 @@
       }
     },
     {
-      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-prime-math-decides",
-      "smart_note_id": "SN-0522",
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0523-prime-math-decides",
+      "smart_note_id": "SN-0523",
       "title": "Prime 3 — THE MATH DECIDES",
       "captured_at": "2026-10-07",
       "category": "SYSTEM_INTELLIGENCE",
       "topic": "GOVERNANCE",
       "subtopic": "PRIME_JUDGMENT",
       "truth_state": "CANDIDATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0522/IB-SMART-NOTE-20261007-sn0522-prime-math-decides.md",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
       "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0522/IB-SMART-NOTE-20261007-sn0522-prime-math-decides.md",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
       "provenance": {
-        "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. COLLISION FLAG: SN-0522 is also claimed on unmerged branches (naya4/smart-notes-2026-09-30 voice-integration correction, 2026-10-06; naya5/sn0522-self-governing-law, 2026-10-07) — renumber per SN-0189 if those land first."
+        "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. Historical collision resolved on 2026-10-07: the ratified Self-Governing Intelligence Law retains SN-0522; candidate Prime 3 was renumbered to SN-0523. Both identities are now unique on current main."
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law",
+      "smart_note_id": "SN-0522",
+      "title": "The Self-Governing Intelligence Law",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING_DOCTRINE",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "provenance": {
+        "note": "PR #1727 (Naya 5): canonical ratified operating law. Ratified by Shawn on 2026-10-07: Make it so. Word. The law is present on current main and is the canonical owner of SN-0522. Registered here to resolve the historical SN-0522 collision with the candidate Prime 3 note, which is now SN-0523. No content_hash: registration preserves the existing published projection without fabricating a capture hash."
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
+      "smart_note_id": "SN-0524",
+      "title": "Human IDs Are Canonical Continuity Boundaries",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PROOF_HONESTY",
+      "truth_state": "CANDIDATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "provenance": {
+        "note": "Captured from the verified SN-0522 identity collision repair on PR #1742. No content_hash: the Smart Note projection is registered as durable intelligence for continuity; source-of-truth remains the persisted Intelligent Block."
       }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 523,
+    "next_sequence": 525,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
