@@ -196,7 +196,7 @@ function resolveScorecardReceiptAuthority(receipt, intelligentBlockId, now) {
 }
 // SCORECARD-RECEIPT-AUTHORITY-END
 
-// CommonJS + ESM interop for the node harness and Deno.
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { validateScorecardReceipt, resolveScorecardReceiptAuthority };
-}
+// Real ESM exports — the Deno edge function imports this module directly.
+// (Review fix: the previous CommonJS-only guard left the named import
+// undefined in Deno, which would have crashed the verifier's LAW gate.)
+export { validateScorecardReceipt, resolveScorecardReceiptAuthority };
