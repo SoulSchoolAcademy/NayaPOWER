@@ -1,5 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from "https://esm.sh/jose@6.0.10";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { resolveScorecardReceiptAuthority } from "./scorecard_receipt_authority.js";
 
 const ISSUER = "https://token.actions.githubusercontent.com";
 const AUDIENCE = "nayanet-runtime";
@@ -473,13 +474,36 @@ Deno.serve(async (req: Request) => {
     // SN-0521 CV-06: LAW gate runs BEFORE any mutation. A refusal must prevent
     // writes, not just report them. Zero mutations have occurred at this point.
     // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
+    // Authority bridge (SN-0340 Scorecard Law): a personal grant OR a valid
+    // scorecard receipt carries the Human Director's authority. The receipt IS
+    // his decision — he designed the scale and commanded the highest honest
+    // score to act. Fail-closed: neither valid, no promotion.
     const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
-    if (!lawDecision.authorized) {
+    let authorityDecision = lawDecision;
+    const scorecardReceipt = (body as any)?.scorecard_receipt;
+    if (!lawDecision.authorized && scorecardReceipt && typeof scorecardReceipt === "object") {
+      const receiptDecision = resolveScorecardReceiptAuthority(scorecardReceipt, intelligentBlockId, new Date());
+      if (receiptDecision.authorized) {
+        authorityDecision = receiptDecision;
+      } else if ((receiptDecision as any).receipt_reasons?.length) {
+        // Receipt was offered but invalid — surface why, still denied.
+        return json({
+          ok: false,
+          error: "LEARNING_LOCK_IN_LAW_DENIED",
+          reason: receiptDecision.reason,
+          receipt_reasons: (receiptDecision as any).receipt_reasons,
+          authority_refs: [],
+          action: LEARNING_LOCK_IN_ACTION,
+          target: intelligentBlockId,
+        }, 403);
+      }
+    }
+    if (!authorityDecision.authorized) {
       return json({
         ok: false,
         error: "LEARNING_LOCK_IN_LAW_DENIED",
-        reason: lawDecision.reason,
-        authority_refs: lawDecision.authority_refs,
+        reason: authorityDecision.reason,
+        authority_refs: authorityDecision.authority_refs,
         action: LEARNING_LOCK_IN_ACTION,
         target: intelligentBlockId,
       }, 403);
