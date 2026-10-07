@@ -90,19 +90,32 @@ Each rung has a **criterion** (what must be true), a **falsifier** (what would p
 
 **Falsifiable test (Round 2 protocol):**
 - Hard transfer tasks: novel scenarios where baseline (control) accuracy is 40–70% (not 80%+ — ceiling effects invalidate)
-- n ≥ 10 trials per arm (not 3–5 — too small for signal)
-- Pre-registered metrics: accuracy, diagnostic order, cost (tool calls)
+- Power tier chosen at pre-registration (see Power Tier Table); minimum n = 10/arm
+- Pre-registered metrics: ONE primary metric (accuracy, diagnostic order, OR cost — chosen before trials run); the rest are secondary/exploratory
 - Pre-registered hypotheses before trials run
 - Independent verifier re-scores all transcripts from scratch
 - Negative-transfer control: treatment must not degrade on unrelated task
 
-**Pass threshold:**
-- Treatment accuracy > control accuracy with p < 0.05 (or Bayesian equivalent)
-- Effect size: Cohen's d ≥ 0.5 (medium) on at least one metric
-- Negative transfer: treatment ≥ control on unrelated task
-- Independent verifier corroborates all numbers
+**Power Tier Table** (all tiers: two-sided α = 0.05, power ≥ 80% at the stated minimum d):
 
-**Falsifier:** If treatment ≤ control, or if ceiling effects make the delta undefined, or if the verifier disagrees — delta NOT proven, still at 6.0.
+| Tier | n per arm | Minimum Cohen's d | Use when |
+|------|-----------|-------------------|----------|
+| S | 10 | 1.4 (large) | Fast signal check; only large effects count |
+| M | 25 | 0.85 (large-medium) | Balanced cost |
+| L | 64 | 0.5 (medium) | Full proof; the original d ≥ 0.5 bar, properly powered |
+
+Why tiers: the original bar (n ≥ 10, p < 0.05, d ≥ 0.5) has ~18% power at its minimum n — an honest trial fails 4 times out of 5 even when the effect is real. A bar that cannot detect what it demands is not a high bar; it is a broken ruler. Tiers keep full falsifiability (tier pre-registered, decision rule fixed) while making each rung actually passable.
+
+**Pass threshold (all on the PRIMARY metric):**
+- Treatment > control with two-sided p < 0.05
+- Observed Cohen's d ≥ the pre-registered tier's minimum
+- Bayesian corroboration: P(treatment > control | data) ≥ 0.95 (weakly informative prior, e.g. Cauchy(0, 0.707) on d — pre-registered)
+- Negative transfer: no statistically significant degradation on the unrelated task (reported with 95% CI; descriptive — the control is a guardrail, not a powered test)
+- Independent verifier corroborates all numbers from raw transcripts
+
+**Multiplicity rule:** secondary metrics are reported but cannot pass the bar. If a secondary metric is promoted to a claim, Holm correction applies across all examined metrics.
+
+**Falsifier:** If treatment ≤ control on the primary metric, or observed d < tier minimum, or the verifier disagrees, or ceiling effects make the delta undefined — delta NOT proven, still at 6.0.
 
 **Instrumentation needed:**
 - Trial harness (exists: experiment-01 protocol, needs hardening for n=10+, harder tasks)
@@ -121,7 +134,7 @@ Each rung has a **criterion** (what must be true), a **falsifier** (what would p
 
 **Falsifiable test:** Run the Round 2 protocol independently for 3 lessons from different domains (e.g., verification-methods, safety-gates, retrieval-patterns). Each must independently meet the 7.0 bar.
 
-**Pass threshold:** ≥3 lessons each show treatment > control (p < 0.05, d ≥ 0.5) with independent verification and no negative transfer.
+**Pass threshold:** ≥3 lessons each meet the 7.0 bar at their pre-registered tier, with independent verification and no negative transfer.
 
 **Falsifier:** If deltas replicate for 1–2 lessons but not the third, or if any lesson shows negative transfer — we're at 7.0, not 8.0. One swallow doesn't make a summer.
 
@@ -192,7 +205,7 @@ Each rung has a **criterion** (what must be true), a **falsifier** (what would p
 | Rung | New instrumentation required | Builds on |
 |------|------------------------------|-----------|
 | 6.0 | Retrieval path logging, transcript scanner, retrieval receipts | Existing brief template |
-| 7.0 | Hardened trial harness (n≥10, hard tasks), pre-registration log, blind runner, independent scoring pipeline | Experiment-01 protocol |
+| 7.0 | Power-tiered trial harness (S/M/L tiers, hard tasks), pre-registration log, blind runner, independent scoring pipeline | Experiment-01 protocol |
 | 8.0 | Lesson registry, task family library (≥3), cross-lesson dashboard | 7.0 harness × 3 |
 | 9.0 | Provenance tracker, cycle comparator, compounding receipts | 8.0 results |
 | 10.0 | Autonomous orchestrator, floor time-series tracker, human-touch detector | 9.0 pipeline |
@@ -221,7 +234,7 @@ Right now, we cannot answer the question: "When a fresh agent gets the standard 
 
 1. **Hand-feeding disqualifies.** If the lesson is in the prompt (not retrieved), the trial doesn't count toward any rung.
 2. **Ceiling effects invalidate.** If control scores ≥80%, the task is too easy — discard, don't count as "learned."
-3. **Small-n doesn't prove.** n < 10 per arm is a pilot, not proof. Pilots inform design; they don't move scores.
+3. **Small-n doesn't prove.** n < 10 per arm is a pilot, not proof. Pilots inform design; they don't move scores. n ≥ 10 is the Tier S minimum and the tier's minimum d applies. Choosing or changing the tier after seeing data disqualifies the trial.
 4. **Builder doesn't self-verify.** Every delta must be corroborated by a different seat from raw transcripts.
 5. **Filing more notes can't raise Learning Yield.** The denominator grows with capture; only proven deltas grow the numerator.
 6. **A rung is not met until the falsifier has been tested.** "We didn't find a problem" is not "we proved there's no problem." Each rung's falsifier must be actively attempted.
