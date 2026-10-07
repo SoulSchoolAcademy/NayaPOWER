@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "ed82e8b39e7e892f4ffb15339061232eb55685ac",
-  "inventory_file_count": 232,
+  "receipt_basis_commit": "75f6e225481bc0e8753cadd644e2b5b6f67d4173",
+  "inventory_file_count": 233,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 66,
+    "05-MEMORY": 67,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -807,6 +807,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
       "blob_sha": "276e860173bbb9f4ed476fd36e0fb223455a1776",
       "size": 4976
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "blob_sha": "abf4a967c3896802f447b1dbd1095f798b6f5dbc",
+      "size": 5545
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0522/IB-SMART-NOTE-20261007-sn0522-prime-math-decides.md",
