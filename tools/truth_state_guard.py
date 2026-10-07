@@ -323,6 +323,17 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
         })
         return True, _record(True, "DEMOTION_PERMITTED", f"{old} -> {new}")
 
+    # RATIFIED is a Human-Director authority boundary. Its only governed
+    # predecessor is VERIFIED. Reject every direct jump before authority or
+    # evidence can make the transition appear valid.
+    if new == "RATIFIED" and old != "VERIFIED":
+        return False, _record(
+            False,
+            "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR",
+            f"RATIFIED may only be entered from VERIFIED; current state is {old}",
+        )
+
+
     # Elevation: authority AND evidence, checked separately and in order.
     ok, rec = check_authority(authority)
     if not ok:
