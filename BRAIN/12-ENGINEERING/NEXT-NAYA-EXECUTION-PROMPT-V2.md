@@ -871,3 +871,57 @@ Never leave the successor with a generic “investigate.”
 
 This appendix never outranks fresher evidence. The next Naya must resolve current `main`, inspect the latest #1354 tail and relevant project feed, then continue the loop.
 
+
+---
+
+# 23. LATEST SEAM AUDIT — CURRENT MAIN `8df3565c`
+
+## Kernel binding truth
+
+The canonical kernel manifest currently declares:
+- `status = CANONICAL_MANIFEST_RUNTIME_BINDING_PENDING`
+- `runtime_binding.status = NOT_PROVEN`
+
+The companion runtime registry currently declares:
+- `status = CANONICAL_RUNTIME_BINDINGS_RECONCILED`
+- `runtime_binding.status = PARTIAL_CURRENT_MAIN_PARITY`
+
+This is not a cosmetic discrepancy. It means the project has a structural binding description and a bounded runtime registry, but has not yet established one exact-current, universally proven runtime binding for the whole nine-node organism.
+
+The canonical bounded node identities are: `NAYA-KERNEL-SELF`, `NAYA-KERNEL-LAW`, `NAYA-KERNEL-ACT`, `NAYA-KERNEL-KNOW`, `NAYA-KERNEL-PROVE`, `NAYA-KERNEL-CONNECT`, `NAYA-KERNEL-VERIFY`, `NAYA-KERNEL-LEARN`, `NAYA-KERNEL-EVOLVE`.
+
+The reference Python kernel intentionally stops at SELF+LAW decision and correctly returns `executed=false` / `UNKNOWN` for an authorized decision. Do not fix that by fabricating execution. The missing work is runtime convergence + behavioral proof, not more self-reporting.
+
+## Cold Retrieve acceptance truth
+
+PR #1665 is directionally correct but is not yet acceptance-ready.
+
+Required before merge:
+- reconcile onto current main;
+- add focused tests for search/ranking/applicability/supersession/conflict/no-authority behavior;
+- explicitly test relationship-validity semantics when `valid_from` is absent;
+- prove the applicability contract discriminates applicable vs merely similar intelligence;
+- prove live OIDC binding and real production retrieval behavior.
+
+A source-only PR is not a behavioral Cold-Retrieve proof.
+
+## Current priority correction
+
+1. Close agent-capture runtime proof when the Human Director's credential/runtime gate is available.
+2. Reconcile #1665 + test + prove Cold Retrieve.
+3. Reconcile #1663 + close nine-node identity/binding gap + prove behavioral influence.
+4. Join Capture → Retrieve → Apply → Verify → Learn → Successor on one real admissible lesson.
+5. Only then promote broad Hub/runtime/network experience.
+6. Keep #1593 production proof and #1602 original-fixture recovery as explicit human/evidence gates; never fabricate a pass around either.
+
+## Independent-review rule
+
+Code-review automation is not currently providing substantive independent review on these PRs. Treat its availability notices as infrastructure facts, not review evidence. The acceptance seat must perform the semantic/evidence review itself or obtain a genuinely independent reviewer.
+
+## One-next-action
+
+**WHAT:** reconcile PR #1665 to current main and produce the missing focused regression suite.
+**WHERE:** `supabase/functions/nayanet-intelligence-retrieve/*`, `supabase/migrations/20261006235900_nayanet_cold_retrieve_search_v1.sql`, tests, and PR #1665.
+**EVIDENCE:** red→green focused tests on the reconciled bytes, current-main regression, then live runtime proof.
+**SUCCESS:** Cold Retrieve can discover relevant intelligence from a zero-context query, correctly handle applicability/supersession/conflicts, never create authority, and has claim-matched evidence.
+**AFTER SUCCESS:** move immediately to the nine-node runtime-binding/influence seam.
