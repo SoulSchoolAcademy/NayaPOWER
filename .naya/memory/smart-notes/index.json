@@ -1591,6 +1591,146 @@
       "content_hash": "a006ef61f9ddba32b810bfce1b05f2c4f828c8d34ed55142e58cb31284c6d0a8"
     },
     {
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
+      "smart_note_id": "SN-0459",
+      "title": "Parallel Execution Directive",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "EXECUTION",
+      "subtopic": "SN-0459",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN: published to main 2026-10-06 by Shawn Vibert (Human Director), PR #1654, tip commit 1204519c (\"docs(memory): SN-0459 parallel-execution directive (documents ratified law 0013)\"); no capture file exists for this note; entry completes registration bookkeeping only, per the SN-NET-POWER-MAGIC-001 precedent (#1585). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline."
+      }
+    },
+    {
+      "smart_note_id": "SN-0460",
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
+      "title": "RATIFIED Predecessor Guard — Direct Trust-State Jumps Must Fail Closed",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "RATIFIED_PREDECESSOR_GUARD",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN_AFTER_BEHAVIORAL_REPAIR: defect reproduced on current main in RED workflow 37556644604; repaired in PR #1677; merged as cfba2fee23854d49b876cf372336e54005dd32fc; green Kernel Tests 37556718704, Ratified Guard 37556718444, Spec Integrity 37556718436, Collective Chain Readiness Gate 37556718469. No runtime capture UUIDs invented; this is a projection record for a verified source repair."
+      }
+    },
+    {
+      "smart_note_id": "SN-0501",
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0501-bake-memory-math",
+      "title": "Bake Memory Math: a restart loop cannot heal resource exhaustion — size the whole process tree to the machine",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "EXECUTION",
+      "subtopic": "BAKE_MEMORY_MATH",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "provenance": {
+        "note": "PR #1666: documents the 2026-10-06 Reveal narration bake incident (7x BrokenProcessPool OOM). Director affirmation: Shawn Vibert, 2026-10-06."
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law",
+      "smart_note_id": "SN-0522",
+      "title": "The Self-Governing Intelligence Law",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "OPERATING_DOCTRINE",
+      "truth_state": "RATIFIED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+      "provenance": {
+        "note": "PR #1727 (Naya 5): canonical ratified operating law. Ratified by Shawn on 2026-10-07: Make it so. Word. The law is present on current main and is the canonical owner of SN-0522. Registered here to resolve the historical SN-0522 collision with the candidate Prime 3 note, which is now SN-0523. No content_hash: registration preserves the existing published projection without fabricating a capture hash."
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0523-prime-math-decides",
+      "smart_note_id": "SN-0523",
+      "title": "Prime 3 — THE MATH DECIDES",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PRIME_JUDGMENT",
+      "truth_state": "CANDIDATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
+      "provenance": {
+        "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. Historical collision resolved on 2026-10-07: the ratified Self-Governing Intelligence Law retains SN-0522; candidate Prime 3 was renumbered to SN-0523. Both identities are now unique on current main."
+      }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
+      "smart_note_id": "SN-0524",
+      "title": "Human IDs Are Canonical Continuity Boundaries",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PROOF_HONESTY",
+      "truth_state": "CANDIDATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "provenance": {
+        "note": "Captured from the verified SN-0522 identity collision repair on PR #1742. No content_hash: the Smart Note projection is registered as durable intelligence for continuity; source-of-truth remains the persisted Intelligent Block."
+      }
+    },
+    {
+      "smart_note_id": "SN-0525",
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai",
+      "content_hash": "953d0ddfa8ee4db8081c6827fff6700d292874991b76373516ff5849b61324af",
+      "title": "One Brain. Every AI. — Human-Owned Intelligence Is the Constant",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "OPERATING_MODEL",
+      "subtopic": "AI_UNIFYING_HUMAN_SOVEREIGNTY",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "ACTIVE",
+      "superseded_by_capture_id": null,
+      "supersession_reason": null,
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW",
+      "keywords": [
+        "smart note",
+        "capture",
+        "intelligent block",
+        "future naya",
+        "superbrain",
+        "intent",
+        "memory",
+        "reusable intelligence"
+      ],
+      "provenance": {
+        "event_id": "988e3106-b4e2-4486-bc35-24ed1753aae8",
+        "lineage_id": "e22d184b-f54f-435d-b4f8-98f5db00367f",
+        "relationship_id": "d1d97cd3-44cf-4bb1-8b8b-33796a923450",
+        "runtime_index_id": "e4cef3ff-25e4-4530-8fca-3d1a4d63a6f5",
+        "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
+        "receipt_id": "26e82cc8-2a2a-4201-8b05-82d2b81c3c31"
+      }
+    },
+    {
       "intelligent_block_id": "IB-SMART-NOTE-20260930-sn275-consent-granularity",
       "title": "Consent-Granularity Reconciliation",
       "captured_at": "2026-09-30",
@@ -1687,114 +1827,12 @@
       "provenance": {
         "note": "DIRECT_TO_MAIN commit 2c34c6e1d by Human Director 2026-10-05 (\"docs: ratify NayaPOWER and NayaNET core magic intelligence\"); no capture file exists for this note; entry completes registration bookkeeping only. Owning smart-note lane may supersede via the canonical projection pipeline."
       }
-    },
-    {
-      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
-      "smart_note_id": "SN-0459",
-      "title": "Parallel Execution Directive",
-      "captured_at": "2026-10-06",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "EXECUTION",
-      "subtopic": "SN-0459",
-      "truth_state": "RATIFIED",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0459/IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive.md",
-      "provenance": {
-        "note": "DIRECT_TO_MAIN: published to main 2026-10-06 by Shawn Vibert (Human Director), PR #1654, tip commit 1204519c (\"docs(memory): SN-0459 parallel-execution directive (documents ratified law 0013)\"); no capture file exists for this note; entry completes registration bookkeeping only, per the SN-NET-POWER-MAGIC-001 precedent (#1585). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline."
-      }
-    },
-    {
-      "smart_note_id": "SN-0460",
-      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
-      "title": "RATIFIED Predecessor Guard — Direct Trust-State Jumps Must Fail Closed",
-      "captured_at": "2026-10-06",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "RATIFIED_PREDECESSOR_GUARD",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link_status": "ACTIVE_AUTH_GATED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
-      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
-      "provenance": {
-        "note": "DIRECT_TO_MAIN_AFTER_BEHAVIORAL_REPAIR: defect reproduced on current main in RED workflow 37556644604; repaired in PR #1677; merged as cfba2fee23854d49b876cf372336e54005dd32fc; green Kernel Tests 37556718704, Ratified Guard 37556718444, Spec Integrity 37556718436, Collective Chain Readiness Gate 37556718469. No runtime capture UUIDs invented; this is a projection record for a verified source repair."
-      }
-    },
-    {
-      "smart_note_id": "SN-0501",
-      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0501-bake-memory-math",
-      "title": "Bake Memory Math: a restart loop cannot heal resource exhaustion — size the whole process tree to the machine",
-      "captured_at": "2026-10-06",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "EXECUTION",
-      "subtopic": "BAKE_MEMORY_MATH",
-      "truth_state": "CANDIDATE",
-      "scope": "PRIVATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link_status": "ACTIVE_AUTH_GATED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
-      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
-      "provenance": {
-        "note": "PR #1666: documents the 2026-10-06 Reveal narration bake incident (7x BrokenProcessPool OOM). Director affirmation: Shawn Vibert, 2026-10-06."
-      }
-    },
-    {
-      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0523-prime-math-decides",
-      "smart_note_id": "SN-0523",
-      "title": "Prime 3 — THE MATH DECIDES",
-      "captured_at": "2026-10-07",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "PRIME_JUDGMENT",
-      "truth_state": "CANDIDATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
-      "provenance": {
-        "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. Historical collision resolved on 2026-10-07: the ratified Self-Governing Intelligence Law retains SN-0522; candidate Prime 3 was renumbered to SN-0523. Both identities are now unique on current main."
-      }
-    },
-    {
-      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law",
-      "smart_note_id": "SN-0522",
-      "title": "The Self-Governing Intelligence Law",
-      "captured_at": "2026-10-07",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "OPERATING_DOCTRINE",
-      "truth_state": "RATIFIED",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
-      "provenance": {
-        "note": "PR #1727 (Naya 5): canonical ratified operating law. Ratified by Shawn on 2026-10-07: Make it so. Word. The law is present on current main and is the canonical owner of SN-0522. Registered here to resolve the historical SN-0522 collision with the candidate Prime 3 note, which is now SN-0523. No content_hash: registration preserves the existing published projection without fabricating a capture hash."
-      }
-    },
-    {
-      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
-      "smart_note_id": "SN-0524",
-      "title": "Human IDs Are Canonical Continuity Boundaries",
-      "captured_at": "2026-10-07",
-      "category": "SYSTEM_INTELLIGENCE",
-      "topic": "GOVERNANCE",
-      "subtopic": "PROOF_HONESTY",
-      "truth_state": "CANDIDATE",
-      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
-      "projection_status": "GITHUB_BRAIN_PUBLISHED",
-      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
-      "provenance": {
-        "note": "Captured from the verified SN-0522 identity collision repair on PR #1742. No content_hash: the Smart Note projection is registered as durable intelligence for continuity; source-of-truth remains the persisted Intelligent Block."
-      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 525,
+    "next_sequence": 526,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
