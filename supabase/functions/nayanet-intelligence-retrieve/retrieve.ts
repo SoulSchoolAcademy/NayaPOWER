@@ -64,6 +64,11 @@ export type ExpandedBlock = ScoredBlock & {
   conflicts: ConflictEntry[];
 };
 
+// Block fetcher injected by the caller: resolves a block id to its current
+// record, or null when unknown. (Defined here so the edge-typecheck gate
+// resolves every name in supabase/functions/**.)
+export type FetchBlock = (blockId: string) => Promise<ScoredBlock | null>;
+
 // Retrieval-local admission sets. Edge-level V2 gates (status, temporal,
 // consent, applicability) come from the canonical selector above; these sets
 // decide which admitted relationship types attach context vs surface
