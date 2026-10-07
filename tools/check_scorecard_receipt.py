@@ -82,6 +82,18 @@ def verdict_for(body):
                       "(enumerate / score / gate / decide / receipt) in the PR body.",
         }
     found, missing = check_steps(section)
+    if not found:
+        # A header mentioning "scorecard" with zero of the five steps is not
+        # a receipt — it is MISSING wearing a header.
+        return {
+            "verdict": "MISSING",
+            "steps_found": [],
+            "steps_missing": list(STEP_KEYWORDS),
+            "detail": "A scorecard section header was found but none of the "
+                      "five steps (enumerate / score / gate / decide / receipt) "
+                      "appear in it. The Scorecard Law requires the five-step "
+                      "receipt in the PR body.",
+        }
     if not missing:
         return {
             "verdict": "PRESENT",

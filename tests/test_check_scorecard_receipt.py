@@ -105,6 +105,15 @@ def test_section_bounded_by_next_header():
     assert set(r["steps_missing"]) == {"score", "gate", "decide", "receipt"}
 
 
+def test_header_without_steps_is_missing():
+    # A "scorecard" header with zero of the five steps is MISSING, not PARTIAL.
+    mod = load_tool()
+    body = ("## Scorecard receipt — SCORECARD-LAW-V1\n\n"
+            "We did the work carefully and it is good.\n")
+    r = mod.verdict_for(body)
+    assert r["verdict"] == "MISSING", r
+
+
 def test_cli_exit_codes():
     # 0 = PRESENT, 1 = PARTIAL/MISSING, via real subprocess (fail-closed wiring).
     p = subprocess.run([sys.executable, str(TOOL), "--body", FULL_RECEIPT_BODY],
