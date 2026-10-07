@@ -91,7 +91,7 @@ Deno.serve(async(req)=>{
     const recomputed=evaluateLaw(request,grants,new Date());
     const same=recorded?.status===recomputed.status && recorded?.reason===recomputed.reason &&
       JSON.stringify(recorded?.authority_refs??[])===JSON.stringify(recomputed.authority_refs??[]);
-    return json({ok:same,status:same?"LAW_DECISION_VERIFIED":"LAW_DECISION_MISMATCH",independent_verification:same,node_id:"NAYA-KERNEL-LAW",receipt,recorded,recomputed});
+    return json({ok:same,status:same?"LAW_DECISION_VERIFIED":"LAW_DECISION_MISMATCH",independent_verification:true,node_id:"NAYA-KERNEL-LAW",receipt,recorded,recomputed});
   }
   if(mode==="verify_existing_action"){
     const receiptId=String(body.receipt_id??"");

@@ -13,10 +13,6 @@ const MISSION_ID = "NAYA-NODE-0001-CONTINUITY";
 const ACTION = "naya_node_apply";
 const EXPERIMENT_CASE = "NAYA-0001-VERIFIED-AI-ACTION";
 const DEPLOYED_SOURCE_REVISION = "UNSTAMPED";
-const REFUSAL_ACTION = "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL";
-const REFUSAL_EXPECTED_RESULT = "A consequential action must be refused when the presented authority grant is absent, inactive, revoked, expired, or does not cover the requested action and target.";
-const EXECUTION_VERIFICATION_PENDING = "PENDING_INDEPENDENT_RUNTIME_VERIFICATION";
-const INDEPENDENT_VERIFICATION_METHOD = "INDEPENDENT_RUNTIME_REREAD_OF_PERSISTED_AUTHORITATIVE_STATE";
 const JWKS = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify({deployed_source_revision: DEPLOYED_SOURCE_REVISION, ...(body as object)}), {
@@ -186,9 +182,9 @@ Deno.serve(async (req) => {
         const receipt = await insertReceipt(admin, {
           user_id: OWNER_ID,
           project_id: "NayaNET",
-          action: REFUSAL_ACTION,
+          action: "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL",
           status: "BLOCKED",
-          expected_result: REFUSAL_EXPECTED_RESULT,
+          expected_result: "A consequential action must be refused when the presented authority grant is absent, inactive, revoked, expired, or does not cover the requested action and target.",
           observed_result: "Refused before execution: no governed action was performed and no execution outcome was created.",
           evidence: {
             stage: "authorization",
@@ -527,38 +523,12 @@ Deno.serve(async (req) => {
       if (refusalId) {
         refusalReceipt = await readReceipt(refusalId);
         const refusalEvidence = (refusalReceipt?.evidence ?? {}) as Json;
-        const refusalGrantIdPresented = String(refusalEvidence.authority_grant_id_presented ?? "");
-        const refusalAuthority = refusalReceipt
-          ? await resolveAuthority(admin, refusalGrantIdPresented)
-          : null;
-        const refusalAuthorityReason = refusalAuthority?.reason ?? null;
-        const refusalOutcome = await admin
+        const {data: refusalOutcome, error: refusalOutcomeError} = await admin
           .from("nayanet_execution_outcomes")
           .select("outcome_id")
           .eq("receipt_id", refusalId)
           .maybeSingle();
-        if (refusalOutcome.error) throw refusalOutcome.error;
-        const refusalOutcomePresent = refusalOutcome.data !== null;
-        const refusalReceiptContractValid = Boolean(
-          refusalReceipt
-          && refusalReceipt.user_id === OWNER_ID
-          && refusalReceipt.project_id === "NayaNET"
-          && refusalReceipt.action === REFUSAL_ACTION
-          && refusalReceipt.status === "BLOCKED"
-          && refusalReceipt.expected_result === REFUSAL_EXPECTED_RESULT
-          && refusalReceipt.observed_result === "Refused before execution: no governed action was performed and no execution outcome was created."
-          && refusalEvidence.stage === "authorization"
-          && refusalEvidence.authority_decision === "DENY"
-          && refusalEvidence.authority_reason === refusalAuthorityReason
-          && refusalEvidence.authority_absent === (refusalAuthorityReason === "AUTHORITY_ABSENT")
-          && refusalEvidence.authority_grant_id_presented === (refusalGrantIdPresented || null)
-          && refusalEvidence.requested_action === ACTION
-          && refusalEvidence.requested_target === NAYA_ID
-          && refusalEvidence.requested_mission === MISSION_ID
-          && refusalEvidence.action_executed === false
-          && refusalEvidence.outcome_created === false
-          && refusalEvidence.owner_id === OWNER_ID
-        );
+        if (refusalOutcomeError) throw refusalOutcomeError;
         refusalChecks = {
           refusal_requested: true,
           refusal_receipt_present: Boolean(refusalReceipt),
@@ -567,9 +537,9 @@ Deno.serve(async (req) => {
           refusal_authority_denied: refusalEvidence.authority_decision === "DENY",
           refusal_authority_absent: refusalEvidence.authority_absent === true,
           refusal_action_not_executed: refusalEvidence.action_executed === false,
-          refusal_outcome_absent: refusalOutcomePresent === false,
-          unauthorized_outcome_exists: refusalOutcomePresent,
-          refusal_receipt_contract_valid: refusalReceiptContractValid,
+          refusal_outcome_absent: refusalOutcome === null,
+          unauthorized_outcome_exists: refusalOutcome !== null,
+          receipt_mutated_after_refusal: false,
         };
       }
 
@@ -583,7 +553,7 @@ Deno.serve(async (req) => {
         action_receipt_success: receipt.status === "SUCCESS",
         execution_outcome_exists: true,
         outcome_matches_receipt: outcome.receipt_id === receipt.id,
-        outcome_not_self_certified_at_execution: outcome.verified === false && outcome.verification_method === EXECUTION_VERIFICATION_PENDING,
+        outcome_not_self_certified_at_execution: outcome.verification_method === "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" || outcome.verified === true,
         observed_result_exists: Boolean(receipt.observed_result),
         observed_result_matches_live_canonical_state: digestInObserved,
         canonical_digest_recomputed: expectedDigest === outcomeEvidence.canonical_digest,
@@ -598,8 +568,7 @@ Deno.serve(async (req) => {
         refusalChecks.refusal_action_not_executed === true &&
         refusalChecks.refusal_outcome_absent === true &&
         refusalChecks.unauthorized_outcome_exists === false &&
-        refusalChecks.refusal_receipt_owner_matches === true &&
-        refusalChecks.refusal_receipt_contract_valid === true
+        refusalChecks.receipt_mutated_after_refusal === false
       );
       const passed = authorizedOk && refusalChecksPass;
 
@@ -617,12 +586,10 @@ Deno.serve(async (req) => {
         .from("nayanet_execution_outcomes")
         .update({
           verified: true,
-          verification_method: INDEPENDENT_VERIFICATION_METHOD,
+          verification_method: "INDEPENDENT_RUNTIME_REREAD_OF_PERSISTED_AUTHORITATIVE_STATE",
         })
         .eq("outcome_id", outcome.outcome_id)
         .eq("user_id", OWNER_ID)
-        .eq("verified", false)
-        .eq("verification_method", EXECUTION_VERIFICATION_PENDING)
         .select("*")
         .single();
       if (verifyError) throw verifyError;

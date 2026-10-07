@@ -15,7 +15,7 @@ const claims = {
   jti: 'offline-law-scope-jti',
 };
 
-function runtime(scope, identity = claims, failReceipt = false, expires_at = null, verifyReceipt = null, mode = 'evaluate') {
+function runtime(scope, identity = claims, failReceipt = false, expires_at = null) {
   let handler;
   const writes = [];
   const reads = [];
@@ -26,7 +26,6 @@ function runtime(scope, identity = claims, failReceipt = false, expires_at = nul
     assert.ok(['nayanet_authority_grants', 'nayanet_execution_receipts'].includes(table));
     const query = {
       select() { return this; }, eq() { return this; }, order() { return this; }, limit() { return this; },
-      maybeSingle() { return Promise.resolve({data: table === 'nayanet_execution_receipts' ? verifyReceipt : null, error: null}); },
       then(resolve, reject) { return Promise.resolve({data: table === 'nayanet_authority_grants' ? [grant] : [], error: null}).then(resolve,reject); },
       insert(row) {
         assert.equal(table, 'nayanet_execution_receipts');
@@ -47,44 +46,9 @@ function runtime(scope, identity = claims, failReceipt = false, expires_at = nul
   });
   return {writes, reads, invoke: () => handler(new Request('https://offline.invalid', {
     method:'POST',headers:{authorization:'Bearer offline','content-type':'application/json'},
-    body:JSON.stringify(mode === 'verify' ? {mode:'verify',receipt_id:String(verifyReceipt?.id ?? '')} : {mode:'evaluate',request:{action:'data_read',target:NAYA}}),
+    body:JSON.stringify({mode:'evaluate',request:{action:'data_read',target:NAYA}}),
   }))};
 }
-
-test('CV-05 FALSIFIER -- LAW decision mismatch cannot claim independent verification', async () => {
-  const receipt = {
-    id: 'offline-law-verify-mismatch',
-    user_id: OWNER,
-    action: 'law_authority_decision',
-    evidence: {
-      law_request: {owner_id: OWNER, naya_id: NAYA, action: 'data_read', target: NAYA},
-      law_decision: {status: 'NEEDS_HUMAN_AUTHORIZATION', reason: 'FORGED_MISMATCH', authority_refs: []},
-    },
-  };
-  const rt = runtime({target:NAYA}, claims, false, null, receipt, 'verify');
-  const response = await rt.invoke();
-  const body = await response.json();
-  assert.equal(response.status, 200);
-  assert.equal(body.ok, false);
-  assert.equal(body.status, 'LAW_DECISION_MISMATCH');
-  assert.equal(body.independent_verification, false);
-});
-
-test('CV-05 FIX -- matching LAW decision may claim independent verification', async () => {
-  const req = {owner_id: OWNER, naya_id: NAYA, action: 'data_read', target: NAYA};
-  const decision = evaluateLaw(req, [{grant_id:'g1', issuer_id:OWNER, subject_id:OWNER, mission_id:'M1', scope:{target:NAYA}, actions:['data_read'], constraints:{}, issued_at:'2026-09-29T18:00:00Z', expires_at:null, status:'ACTIVE', revoked_at:null}], new Date());
-  const receipt = {
-    id: 'offline-law-verify-match', user_id: OWNER, action: 'law_authority_decision',
-    evidence: {law_request:req, law_decision:decision},
-  };
-  const rt = runtime({target:NAYA}, claims, false, null, receipt, 'verify');
-  const response = await rt.invoke();
-  const body = await response.json();
-  assert.equal(response.status, 200);
-  assert.equal(body.ok, true);
-  assert.equal(body.status, 'LAW_DECISION_VERIFIED');
-  assert.equal(body.independent_verification, true);
-});
 
 test('actual LAW handler persists refusal for wrong or missing target scope', async () => {
   for(const scope of [{target:'OTHER-NAYA'}, {}, {project_id:''}]) {

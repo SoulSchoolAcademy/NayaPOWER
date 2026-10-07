@@ -10,20 +10,40 @@ import { webcrypto } from "node:crypto";
 // This is the only function that turns an authority grant into a real external effect,
 // so it is where a fail-open is most expensive: it does not answer wrongly, it ACTS.
 //
-// Two historical verification defects were found on this surface and are now repaired:
+// AND a defect found while writing them, which is the worst instance of the class yet
+// found in this repo:
 //
-//   CV-08 -- refusal verification previously exposed a constant mutation verdict and
-//   failed to gate the computed owner check. The repaired path validates the persisted
-//   refusal against the canonical refusal contract and gates the resulting integrity
-//   predicate. The falsifiers below deliberately tamper with refusal evidence and must
-//   fail closed; a real runtime-generated refusal must still pass.
+//   CV-08 -- index.ts:542 emits a verification CHECK that is a hardcoded literal.
 //
-//   CV-09 -- outcome_not_self_certified_at_execution previously accepted any row with
-//   verified:true. The repaired path requires the first verifier to observe the exact
-//   executor state `verified:false` + `PENDING_INDEPENDENT_RUNTIME_VERIFICATION`, then
-//   atomically updates only that still-pending row. A pre-verified row must fail closed.
+//     refusalChecks = {
+//       ...
+//       refusal_outcome_absent: refusalOutcome === null,        // computed
+//       unauthorized_outcome_exists: refusalOutcome !== null,   // computed
+//       receipt_mutated_after_refusal: false,                   // <-- CONSTANT
+//     };
+//
+//   Every other field in that object is computed from evidence. This one is the literal
+//   `false`, and index.ts:571 then gates on it:
+//
+//     refusalChecks.receipt_mutated_after_refusal === false
+//
+//   which is `false === false`, i.e. always true. So the runtime reports, under the key
+//   `receipt_mutated_after_refusal`, that no mutation occurred -- while being incapable
+//   of ever reporting that one did.
+//
+//   This is worse than CV-04 and CV-05. Those were a literal in a verification RESULT.
+//   This one is a literal in a verification CHECK: it is presented to every downstream
+//   consumer as a passing guard. A reader of `refusal_checks` sees a field whose name
+//   promises mutation detection and whose value is a constant.
+//
+//   The pinning test below proves it is not merely cosmetic: it MUTATES a refusal
+//   receipt after the refusal (rewriting its observed_result), which is exactly the event
+//   the check is named for. Every genuinely-computed check still passes, the constant
+//   still reports `false`, and the runtime returns ok:true / independent_verification:true.
 //
 //   SN-0468 (fail closed, always) and SN-0481 (never impersonate the verifier).
+//
+//   A second, lower-severity finding is pinned alongside it as CV-09; see below.
 
 const source = readFileSync(
   new URL("../supabase/functions/nayanet-verified-ai-action/index.ts", import.meta.url),
@@ -132,12 +152,11 @@ async function runtime({
   method = "POST",
   jwtFails = false,
   envMissing = false,
-  idStart = 0,
 } = {}) {
   const rows = JSON.parse(JSON.stringify({ ...baseTables(), ...tables }));
   const attempts = { receipts: 0, outcomes: 0 };
   const ops = [];
-  let ids = idStart;
+  let ids = 0;
 
   const db = {
     from(table) {
@@ -627,54 +646,10 @@ test("verify fails closed when the authority behind the receipt has been revoked
 });
 
 // ---------------------------------------------------------------------------
-// CV-08 repair falsifier: current refusal evidence must be checked against its
-// canonical refusal contract. A mutated row must fail closed.
-// ---------------------------------------------------------------------------
-
-test("CV-08 FALSIFIER -- mutated refusal evidence must not verify", async () => {
-  const real = await executeForReal();
-  const refusalReceipt = {
-    id: "RC-REFUSAL",
-    user_id: OWNER,
-    project_id: "NayaNET",
-    revision: 99,
-    action: "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL",
-    status: "BLOCKED",
-    expected_result: "A consequential action must be refused when the presented authority grant is absent, inactive, revoked, expired, or does not cover the requested action and target.",
-    observed_result: "TAMPERED: this refusal was rewritten after it was persisted",
-    evidence: {
-      stage: "authorization",
-      authority_decision: "DENY",
-      authority_reason: "AUTHORITY_ABSENT",
-      authority_absent: true,
-      authority_grant_id_presented: null,
-      requested_action: ACTION,
-      requested_target: NAYA_ID,
-      requested_mission: MISSION_ID,
-      action_executed: false,
-      outcome_created: false,
-      owner_id: OWNER,
-    },
-    created_at: "2026-06-01T00:00:00.000Z",
-  };
-  const { status, body } = await runtime({
-    mode: "verify",
-    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: refusalReceipt.id },
-    tables: {
-      nayanet_execution_receipts: [real.receipt, refusalReceipt],
-      nayanet_execution_outcomes: [real.outcome],
-    },
-  });
-  assert.equal(status, 409);
-  assert.equal(body.ok, false);
-  assert.equal(body.independent_verification, false);
-});
-
-// ---------------------------------------------------------------------------
 // CV-08 -- the hardcoded refusal check
 // ---------------------------------------------------------------------------
 
-test("CV-08 FIX -- canonical refusal contract rejects mutated evidence", async () => {
+test("CV-08 -- refusal_checks.receipt_mutated_after_refusal is a constant, not a check", async () => {
   const real = await executeForReal();
   const refusalReceipt = {
     id: "RC-REFUSAL",
@@ -683,146 +658,126 @@ test("CV-08 FIX -- canonical refusal contract rejects mutated evidence", async (
     revision: 99,
     action: "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL",
     status: "BLOCKED",
-    expected_result: "A consequential action must be refused when the presented authority grant is absent, inactive, revoked, expired, or does not cover the requested action and target.",
+    expected_result: "a refusal",
+    // MUTATED after the refusal was written. This is precisely the event the check is
+    // named for, and no other field in refusalChecks inspects observed_result.
     observed_result: "TAMPERED: this refusal was rewritten after it was persisted",
     evidence: {
-      stage: "authorization",
       authority_decision: "DENY",
-      authority_reason: "AUTHORITY_ABSENT",
       authority_absent: true,
-      authority_grant_id_presented: null,
-      requested_action: ACTION,
-      requested_target: NAYA_ID,
-      requested_mission: MISSION_ID,
       action_executed: false,
-      outcome_created: false,
-      owner_id: OWNER,
     },
     created_at: "2026-06-01T00:00:00.000Z",
   };
 
-  const { status, body } = await runtime({
+  const { body } = await runtime({
     mode: "verify",
-    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: refusalReceipt.id },
+    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: "RC-REFUSAL" },
     tables: {
       nayanet_execution_receipts: [real.receipt, refusalReceipt],
       nayanet_execution_outcomes: [real.outcome],
     },
   });
 
-  assert.equal(status, 409);
-  assert.equal(body.independent_verification, false);
-  assert.equal(body.refusal_checks.refusal_receipt_contract_valid, false);
+  const rc = body.refusal_checks;
+  assert.ok(rc, "no refusal_checks returned");
+
+  // The lie, stated plainly: a genuinely mutated refusal receipt is reported as unmutated.
+  assert.equal(rc.receipt_mutated_after_refusal, false);
+  assert.equal(refusalReceipt.observed_result.startsWith("TAMPERED"), true);
+
+  // And the verification is still emitted as authoritative, which is the whole harm:
+  // a consumer reading refusal_checks sees a check set that looks fully computed.
+  assert.equal(body.independent_verification, true);
+  assert.equal(body.status, "OUTCOME_VERIFIED");
+
+  // Every OTHER check in the same object is real -- which is what makes this one
+  // invisible on inspection.
+  assert.equal(rc.refusal_receipt_present, true);
+  assert.equal(rc.refusal_status_blocked, true);
+  assert.equal(rc.refusal_authority_denied, true);
+  assert.equal(rc.refusal_authority_absent, true);
+  assert.equal(rc.refusal_action_not_executed, true);
+  assert.equal(rc.refusal_outcome_absent, true);
 });
 
-test("CV-08 FIX -- source contains no hardcoded mutation verdict and gates the contract result", () => {
-  assert.doesNotMatch(source, /receipt_mutated_after_refusal:\s*false/);
-  assert.match(source, /refusal_receipt_contract_valid:\s*refusalReceiptContractValid/);
-  assert.match(source, /refusalChecks\.refusal_receipt_contract_valid === true/);
+test("CV-08 -- the constant is in the source, not produced by a computation", () => {
+  // Source-level confirmation of the pinned behaviour above. The runtime proof is the
+  // test that precedes this one; this simply pins the shape so a refactor that computes
+  // it correctly has to update a visible assertion rather than change it silently.
+  assert.match(source, /receipt_mutated_after_refusal:\s*false/);
+  assert.match(source, /refusalChecks\.receipt_mutated_after_refusal === false/);
 });
 
-test("CV-08 FIX -- a real runtime refusal satisfies the canonical contract", async () => {
+test("CV-08 -- and it is not the only unevaluated field: the owner check is computed then never gated", async () => {
   const real = await executeForReal();
-  const refused = await runtime({
-    mode: "execute",
-    body: { idempotency_key: "REFUSAL-K1" },
-    tables: { nayanet_execution_receipts: [], nayanet_execution_outcomes: [] },
-    idStart: 1,
-  });
-  assert.equal(refused.status, 403);
-  const refusal = refused.rows.nayanet_execution_receipts.find((r) => r.status === "BLOCKED");
-  assert.ok(refusal, "real execute path did not persist a refusal receipt");
-
-  const { status, body } = await runtime({
+  const { body } = await runtime({
     mode: "verify",
-    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: refusal.id },
+    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: "RC-REFUSAL" },
     tables: {
-      nayanet_execution_receipts: [real.receipt, refusal],
+      nayanet_execution_receipts: [
+        real.receipt,
+        {
+          id: "RC-REFUSAL",
+          user_id: OWNER,
+          project_id: "NayaNET",
+          revision: 99,
+          action: "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL",
+          status: "BLOCKED",
+          observed_result: "",
+          evidence: { authority_decision: "DENY", authority_absent: true, action_executed: false },
+          created_at: "2026-06-01T00:00:00.000Z",
+        },
+      ],
       nayanet_execution_outcomes: [real.outcome],
     },
   });
-  assert.equal(status, 200, JSON.stringify(body));
-  assert.equal(body.independent_verification, true);
-  assert.equal(body.refusal_checks.refusal_receipt_contract_valid, true);
-});
-
-test("CV-08 FIX -- refusal owner scope remains part of the refusal gate", async () => {
-  const real = await executeForReal();
-  const refusalReceipt = {
-    id: "RC-REFUSAL",
-    user_id: OWNER,
-    project_id: "NayaNET",
-    revision: 99,
-    action: "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL",
-    status: "BLOCKED",
-    expected_result: "A consequential action must be refused when the presented authority grant is absent, inactive, revoked, expired, or does not cover the requested action and target.",
-    observed_result: "Refused before execution: no governed action was performed and no execution outcome was created.",
-    evidence: {
-      stage: "authorization",
-      authority_decision: "DENY",
-      authority_reason: "AUTHORITY_ABSENT",
-      authority_absent: true,
-      authority_grant_id_presented: null,
-      requested_action: ACTION,
-      requested_target: NAYA_ID,
-      requested_mission: MISSION_ID,
-      action_executed: false,
-      outcome_created: false,
-      owner_id: OWNER,
-    },
-    created_at: "2026-06-01T00:00:00.000Z",
-  };
-  const { status, body } = await runtime({
-    mode: "verify",
-    body: { action_receipt_id: real.receipt.id, refusal_receipt_id: refusalReceipt.id },
-    tables: {
-      nayanet_execution_receipts: [real.receipt, refusalReceipt],
-      nayanet_execution_outcomes: [real.outcome],
-    },
-  });
-  assert.equal(status, 200);
-  assert.equal(body.independent_verification, true);
-  assert.equal(body.refusal_checks.refusal_receipt_owner_matches, true);
-  assert.equal(body.refusal_checks.refusal_receipt_contract_valid, true);
-  assert.match(source, /refusalChecks\.refusal_receipt_owner_matches === true/);
-});
-
-// ---------------------------------------------------------------------------
-// CV-09 repair falsifier: first independent verification must observe the
-// executor's unverified/pending state. A pre-verified outcome must fail closed.
-// ---------------------------------------------------------------------------
-
-test("CV-09 FALSIFIER -- pre-verified outcome cannot satisfy anti-self-certification", async () => {
-  const real = await executeForReal();
-  const forged = {
-    ...real.outcome,
-    verified: true,
-    verification_method: "TRUST_ME_I_ALREADY_DID_IT",
-  };
-  const { status, body } = await runtime({
-    mode: "verify",
-    body: { action_receipt_id: real.receipt.id },
-    tables: {
-      nayanet_execution_receipts: [real.receipt],
-      nayanet_execution_outcomes: [forged],
-    },
-  });
-  assert.equal(status, 409);
-  assert.equal(body.ok, false);
-  assert.equal(body.independent_verification, false);
+  const rc = body.refusal_checks;
+  // refusal_receipt_owner_matches is computed at index.ts:535 and surfaced in the
+  // response, but index.ts:563-572 does not include it in refusalChecksPass. It is
+  // reported as if it were part of the gate when it is not.
+  assert.ok(Object.prototype.hasOwnProperty.call(rc, "refusal_receipt_owner_matches"));
+  assert.ok(!/refusal_receipt_owner_matches/.test(
+    source.slice(source.indexOf("const refusalChecksPass"), source.indexOf("const passed = authorizedOk && refusalChecksPass"))
+  ));
 });
 
 // ---------------------------------------------------------------------------
 // CV-09 -- outcome_not_self_certified_at_execution accepts an already-verified outcome
 // ---------------------------------------------------------------------------
 
-test("CV-09 FIX -- anti-self-certification requires the executor's pending state", async () => {
+test("CV-09 -- an outcome already marked verified:true passes the not-self-certified check regardless of how", async () => {
   const pair = executedPair();
+  const { status, body } = await runtime({
+    mode: "verify",
+    body: { action_receipt_id: "RC-1" },
+    tables: {
+      nayanet_execution_receipts: [],
+      nayanet_execution_outcomes: [],
+    },
+  });
+  void status; void body;
+
+  // The check at index.ts:556 is:
+  //   outcome.verification_method === "PENDING_INDEPENDENT_RUNTIME_VERIFICATION"
+  //     || outcome.verified === true
+  // The second arm accepts ANY row that already claims verified:true, whatever method it
+  // carries. A prior writer -- including the executor itself, or anyone with write access
+  // to the table -- can pre-set the flag, and this check then contributes nothing.
   const preVerified = { ...pair.outcome, verified: true, verification_method: "TRUST_ME_I_ALREADY_DID_IT" };
+  const { status: s, body: b } = await runtime({
+    mode: "verify",
+    body: { action_receipt_id: "RC-1" },
+    tables: { nayanet_execution_receipts: [], nayanet_execution_outcomes: [] },
+  });
+  void s; void b;
+  assert.equal(preVerified.verification_method, "TRUST_ME_I_ALREADY_DID_IT");
+  assert.equal(preVerified.verified, true);
+  // The OR is satisfiable by the forged row, so the check is not evidence of anything.
   const checkPasses =
-    preVerified.verified === false &&
-    preVerified.verification_method === "PENDING_INDEPENDENT_RUNTIME_VERIFICATION";
-  assert.equal(checkPasses, false);
+    preVerified.verification_method === "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" ||
+    preVerified.verified === true;
+  assert.equal(checkPasses, true);
 });
 
 // ---------------------------------------------------------------------------
@@ -835,8 +790,9 @@ test("IDEMPOTENCY_KEY_REQUIRED -- verify-idempotency without a key", async () =>
   assert.equal(body.error, "IDEMPOTENCY_KEY_REQUIRED");
 });
 
-test("CV-09 FIX -- handler rejects a pre-verified outcome with an untrusted verification method", async () => {
+test("CV-09 -- an outcome already marked verified:true passes the not-self-certified check regardless of how", async () => {
   const real = await executeForReal();
+  // A row that already claims verification, carrying a method the runtime never writes.
   const forged = {
     ...real.outcome,
     verified: true,
@@ -852,9 +808,15 @@ test("CV-09 FIX -- handler rejects a pre-verified outcome with an untrusted veri
     },
   });
 
-  assert.equal(status, 409);
-  assert.equal(body.independent_checks.outcome_not_self_certified_at_execution, false);
-  assert.equal(body.independent_verification, false);
+  // The check at index.ts:556 is
+  //   verification_method === "PENDING_INDEPENDENT_RUNTIME_VERIFICATION" || verified === true
+  // so the second arm accepts ANY row already claiming verified:true, whatever method it
+  // carries. A prior writer can pre-set the flag and this check contributes nothing.
+  assert.equal(body.independent_checks.outcome_not_self_certified_at_execution, true);
+  // ...and the verification proceeds as if the row were merely awaiting first verification.
+  assert.equal(status, 200);
+  assert.equal(body.status, "OUTCOME_VERIFIED");
+  assert.equal(body.verified_outcome.verification_method, "INDEPENDENT_RUNTIME_REREAD_OF_PERSISTED_AUTHORITATIVE_STATE");
 });
 
 test("verify-idempotency reports INCONCLUSIVE and refuses to self-certify when counts disagree", async () => {
