@@ -54,22 +54,23 @@
       "id": "CV-06",
       "claim": "LAW gate precedes the mutations it guards",
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
-      "problem": "ORDERING DEFECT ON THE LOCK-IN PATH. index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION. index.ts:453 writes verified:true into an execution receipt. index.ts:482 calls resolveLearningLockInLaw(). So when LAW denies, the runtime correctly returns 403 LEARNING_LOCK_IN_LAW_DENIED while both mutations are ALREADY PERSISTED. The refusal is real and the fail-open is real in the same request. The same ordering applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED at index.ts:435: the learning row is ACTIVE before the receipt is looked up. The H13 comment at index.ts:478 states the intent -- 'every canonical mutation must sit behind the grant gate' -- and two of them do not.",
+      "problem": "The lock-in path previously promoted learning_evidence and wrote receipt verification state before resolving the LAW gate, so a denied request could return LEARNING_LOCK_IN_LAW_DENIED while those mutations had already persisted.",
       "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Reordering a live lock-in transaction changes what gets promoted when LAW denies, and a partial failure after the promote would leave learning_evidence ACTIVE with no rollback. That is a transactional-design decision for an owner. The repair is to hoist resolveLearningLockInLaw and the LEARNING_PROVENANCE_LINKS_REQUIRED check above index.ts:404.",
-      "not_a_theory": "Executed. The pinned tests drive the real handler with no authority grant and observe, in one response, ok:false + LEARNING_LOCK_IN_LAW_DENIED + learning_evidence.status == ACTIVE + a receipt entry with verified:true. A companion test asserts the graph mutations ARE correctly untouched, so the leak is scoped precisely rather than overclaimed."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by ordering provenance-link checks, LAW authorization, and receipt existence before the first canonical mutation. Denied requests leave learning_evidence and receipt learning state untouched.",
+      "not_a_theory": "Executed. Current-main focused suite 61/61 passes, including LAW denial with zero writes, receipt-not-found before promotion, untouched graph state, and authorized positive-control lock-in.",
+      "resolution_note": "Current source contains the SN-0521 repair. Local behavior is verified against exact main c0b899b6b19d83aad4b192dae5af47b2ec8190fe; production parity remains a separate gate."
     },
     {
       "id": "CV-07",
       "claim": "evidence_refs is evidence",
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
-      "problem": "index.ts:398 accepts body.evidence_refs as an array of caller-supplied strings and requires only that it be non-empty (index.ts:399). No check that any element corresponds to a real causal verification record. index.ts:552 then derives causal_verification_id: refs.find(r => r.startsWith('CVO-')) || null. So arbitrary strings promote the learning to ACTIVE, set the block LEARNED and the relationship VERIFIED, while recording causal_verification_id: null and reporting ok:true / verified:true. Nothing in the response or the persisted provenance says the verification was never found.",
+      "problem": "The promotion path previously accepted arbitrary non-empty evidence_refs and could promote learning without resolving a persisted causal-verification record.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Deciding what counts as acceptable evidence is a truth/authority policy, not a parsing change. Requiring at least one CVO- id, or resolving each ref against nayanet-causal-verifications, are both defensible and have different failure modes. That choice is an owner's. The repair is small once the policy is chosen.",
-      "not_a_theory": "Executed. The pinned test passes evidence_refs: ['not-a-verification', '', '0'] and observes ok:true, verified:true, block LEARNED, relationship VERIFIED. A second test shows the id is silently null in the canonical provenance, and a third shows that one forged 'CVO-forged' string among junk is accepted as the causal_verification_id.",
-      "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by validateEvidenceRefs: junk or malformed refs fail closed, and a causal-verification ID must be present before promotion proceeds.",
+      "not_a_theory": "Executed. Current-main focused suite 61/61 passes, including junk refs, missing CVO refs, forged CVO-prefix refs, and a valid CVO ref positive control that records causal_verification_id.",
+      "resolution_note": "Current source contains the SN-0521 repair. Local behavior is verified against exact main c0b899b6b19d83aad4b192dae5af47b2ec8190fe; production parity remains a separate gate."
     },
     {
       "id": "CV-08",
