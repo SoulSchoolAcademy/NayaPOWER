@@ -1,7 +1,7 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main c9c8b8ce0",
+  "measured_on": "main b82e1fd1807e6b343262c2e2d630cb90f836713b + G3 proof branch",
   "violations": [
     {
       "id": "CV-01",
@@ -16,10 +16,11 @@
       "id": "CV-02",
       "claim": "node influence",
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
-      "problem": "The 'ablation discrimination' step deletes a key from the dict it just built and asserts a shape checker fails. That proves the shape checker checks shapes. No node in the receipt is executed by any code.",
+      "problem": "The prior 'ablation discrimination' step only deleted node evidence from a receipt and asserted that the shape verifier failed. That did not prove behavioral node influence.",
       "law": "SN-0462, SN-0505",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Same reason. The real ablation exists (tools/measure_node_influence.py) and reports 2/9 invoked, 0/9 influential for the runtime kernel. Wiring it into this gate is an owner decision about what the receipt may claim."
+      "status": "RESOLVED ON G3 PROOF BRANCH -- pending human merge gate",
+      "resolution": "The canonical nine-node behavioral acceptance job now executes tools/measure_node_influence.py, requires 9/9 invoked and 9/9 influence-demonstrated nodes, records deterministic target-node control/treatment fingerprints, and rechecks every target-node fingerprint delta in the live acceptance step. The existing shape-ablation check remains as a secondary fail-closed control, not as the influence proof.",
+      "why_not_fixed_here": "Resolved on the G3 proof branch; main remains unchanged until the human merge gate approves the PR."
     },
     {
       "id": "CV-03",

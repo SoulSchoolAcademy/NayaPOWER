@@ -144,7 +144,22 @@ test("CLAIM 2 -- the nine-node receipt's ablation step must prove behavior, not 
   assert.match(ablation, /del ablated\["nodes"\]\[node\]/, "the ablation should remove node evidence");
 
   const shapeOnly = /assert verify_receipt\(ablated\)/.test(ablation);
-  const behavioral = /execute_cycle|\.decide\(|measure_node_influence|outcome.*!=|changed/.test(ablation);
+  const behavioral = /execute_cycle|\.decide\(|measure_node_influence|outcome.*!=|changed|node_behavior_fingerprints/.test(workflows);
+  assert.match(
+    workflows,
+    /tools\/measure_node_influence\.py/,
+    "the canonical workflow must execute the real node-influence measurement"
+  );
+  assert.match(
+    ablation,
+    /node-influence-measurement\.json/,
+    "the acceptance gate must consume the measured influence artifact"
+  );
+  assert.match(
+    ablation,
+    /node_behavior_fingerprints/,
+    "the ablation must compare target-node behavioral fingerprints"
+  );
 
   if (shapeOnly && !behavioral) {
     const openIds = new Set(
@@ -222,11 +237,20 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   assert.equal(typeof stats.invoked_count, "number");
   assert.equal(typeof stats.influence_demonstrated_count, "number");
 
-  // Ratchet: the floor is the measured present, not an aspiration. Recording it here
-  // means an accidental collapse to zero is a red build, not a silent truth change.
-  assert.ok(
-    stats.influence_demonstrated_count >= 0,
-    "sanity"
+  // The reference kernel is intentionally still only SELF+LAW. The canonical nine-node
+  // behavior engine, however, must demonstrate a real control/treatment effect for every
+  // node. A count below nine means at least one node is still decorative in the measured
+  // runtime path and the load-bearing claim remains false.
+  const behaviorEngine = Object.entries(report.report).find(([k]) =>
+    k.includes("kernel_behavior_engine")
+  );
+  assert.ok(behaviorEngine, "the report must include the canonical nine-node behavior engine");
+  const [, behaviorStats] = behaviorEngine;
+  assert.equal(behaviorStats.invoked_count, 9);
+  assert.equal(
+    behaviorStats.influence_demonstrated_count,
+    9,
+    `canonical nine-node influence is ${behaviorStats.influence_demonstrated_count}/9; all nine nodes must change an observed node behavior fingerprint`
   );
   assert.ok(
     stats.invoked_count >= 2,
