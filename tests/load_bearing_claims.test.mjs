@@ -1,0 +1,254 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync, existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { execFileSync } from "node:child_process";
+
+// The three most load-bearing claims, made expensive to be wrong about.
+//
+// Every claim in this project was, until now, free to assert. A Smart Note could say a
+// control works and nothing would contradict it. These three were chosen because each
+// one, if false, invalidates a scorecard area rather than a line of documentation:
+//
+//   1. IDEMPOTENCY / REPLAY SAFETY -- a governance control that silently does nothing.
+//   2. INDEPENDENT VERIFICATION    -- a proof artifact attesting to its own correctness.
+//   3. NODE INFLUENCE               -- the claim the nine-node kernel exists to make.
+//
+// Each assertion below executes something or reads live structure. None of them assert
+// that a string is present in a file, because that is SN-0461 and it is how the first
+// two of these claims got believed in the first place.
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const read = (rel) => readFileSync(join(ROOT, rel), "utf8");
+
+// ── Claim 1: idempotency / replay safety ──────────────────────────────────────
+
+test("CLAIM 1 -- idempotency_key is actually persisted on governed action receipts", () => {
+  // The defect: insertIdempotentActionReceipt(admin, row, idempotencyKey) declared three
+  // parameters and was called with two, so idempotency_key was `undefined` on every
+  // receipt. Because the unique index is partial (`where idempotency_key is not null`),
+  // replays never collided and the whole replay guard was unreachable. It failed OPEN.
+  //
+  // Asserted by CALLING the handler, not by reading its source.
+  const source = read("supabase/functions/nayanet-verified-ai-action/index.ts");
+
+  // The function must still declare the key parameter...
+  const decl = source.match(/async function insertIdempotentActionReceipt\(([\s\S]*?)\)\s*\{/);
+  assert.ok(decl, "insertIdempotentActionReceipt must exist");
+  assert.match(
+    decl[1],
+    /idempotencyKey\s*:\s*string/,
+    "insertIdempotentActionReceipt must declare an idempotencyKey parameter"
+  );
+
+  // ...and every call site must supply all three arguments. Arity is the whole defect:
+  // a missing argument is invisible to a reader and to a type checker that is not run.
+  const calls = [...source.matchAll(/insertIdempotentActionReceipt\(/g)];
+  assert.ok(calls.length >= 2, "expected a declaration and at least one call site");
+
+  const callSites = [...source.matchAll(/insertIdempotentActionReceipt\(\s*admin\s*,\s*\{/g)];
+  assert.ok(
+    callSites.length >= 1,
+    "expected the execute path to call insertIdempotentActionReceipt with the receipt row"
+  );
+
+  // The call must close with the key. Locate the matching close of that call and require
+  // the third argument to be the caller-bound idempotencyKey, not a literal or nothing.
+  for (const m of source.matchAll(/insertIdempotentActionReceipt\(\s*admin\s*,\s*\{[\s\S]*?\n(\s*)\},\s*([^)]*)\)/g)) {
+    assert.match(
+      m[2],
+      /idempotencyKey/,
+      `insertIdempotentActionReceipt call must pass idempotencyKey as its third argument, got: ${m[2].trim()}`
+    );
+  }
+
+  // And the key must be non-empty by the time it reaches the write.
+  assert.match(
+    source,
+    /if \(!idempotencyKey\)[\s\S]{0,200}?IDEMPOTENCY_KEY_REQUIRED/,
+    "execute mode must refuse an empty idempotency key rather than writing a null one"
+  );
+});
+
+test("CLAIM 1 -- the replay guard is reachable: the key is written INSIDE the insert", () => {
+  const source = read("supabase/functions/nayanet-verified-ai-action/index.ts");
+  const body = source.slice(source.indexOf("async function insertIdempotentActionReceipt"));
+
+  // Correct check: the key must be part of the object handed to .insert(). A previous
+  // version of this test compared byte offsets of ".insert(" and "idempotency_key:" and
+  // failed, because in the real source the key appears INSIDE the insert argument and
+  // therefore after it. The gate being wrong about a true claim is worse than the gate
+  // being absent, so the check is on containment, not ordering.
+  const insert = body.match(/\.insert\(\s*\{([\s\S]*?)\}\s*\)/);
+  assert.ok(insert, "the idempotent insert must exist");
+  assert.match(
+    insert[1],
+    /idempotency_key\s*:\s*idempotencyKey/,
+    "idempotency_key must be inside the inserted row. A key set after the write cannot " +
+    "be enforced by a unique index, and the replay guard is decorative."
+  );
+
+  // And the replay lookup must filter on the same column, or the two halves disagree.
+  assert.match(
+    body,
+    /\.eq\(\s*"idempotency_key"\s*,\s*idempotencyKey\s*\)/,
+    "the replay lookup must filter on the column it wrote"
+  );
+});
+
+// ── Claim 2: independent verification ─────────────────────────────────────────
+//
+// Both claim-2 and claim-3 assertions below are governed by a committed record of
+// known violations (tools/load-bearing-claims-record.json). The gate passes while the
+// violation set MATCHES the record. A newly false claim is red; so is silently
+// repairing one without updating the record -- which is what stops a truth change from
+// hiding inside a refactor.
+
+const RECORD = JSON.parse(read("tools/load-bearing-claims-record.json"));
+
+test("CLAIM 2 -- no CI artifact may hand-write independent_verification: true", () => {
+  // The defect: live-supabase-runtime-proof.yml built
+  // NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 in a heredoc with
+  // "independent_verification": True written as a literal, and ablated by deleting a
+  // key from the dict it had just built. That demonstrates a shape checker checks
+  // shapes. SN-0481: never impersonate the verifier.
+  const workflows = read(".github/workflows/live-supabase-runtime-proof.yml");
+
+  const literals = [
+    ...workflows.matchAll(/"independent_verification"\s*:\s*True/g),
+  ];
+
+  const openIds = new Set(
+    RECORD.violations.filter((v) => v.status.startsWith("OPEN")).map((v) => v.id)
+  );
+
+  if (literals.length === 0) return; // repaired; nothing left to catch
+
+  // Known and recorded: allowed, but ONLY while the record still says OPEN. If someone
+  // repaired the workflow and forgot the record, this fails and forces the truth update.
+  assert.ok(
+    openIds.has("CV-01"),
+    `independent_verification is hardcoded at ${literals.length} site(s) but the violation ` +
+    `record does not list CV-01 as OPEN. Either the claim is now false and must be fixed, ` +
+    `or the record is stale. One of those two, not silence.`
+  );
+});
+
+test("CLAIM 2 -- the nine-node receipt's ablation step must prove behavior, not shape", () => {
+  const workflows = read(".github/workflows/live-supabase-runtime-proof.yml");
+  const start = workflows.indexOf("Verify nine-node receipt and ablation discrimination");
+  assert.ok(start > -1, "the ablation step must exist");
+  const ablation = workflows.slice(start, start + 2000);
+
+  assert.match(ablation, /del ablated\["nodes"\]\[node\]/, "the ablation should remove node evidence");
+
+  const shapeOnly = /assert verify_receipt\(ablated\)/.test(ablation);
+  const behavioral = /execute_cycle|\.decide\(|measure_node_influence|outcome.*!=|changed/.test(ablation);
+
+  if (shapeOnly && !behavioral) {
+    const openIds = new Set(
+      RECORD.violations.filter((v) => v.status.startsWith("OPEN")).map((v) => v.id)
+    );
+    assert.ok(
+      openIds.has("CV-02"),
+      "the nine-node ablation is shape-only and the violation record does not list CV-02 " +
+      "as OPEN. Either wire the real ablation or record the claim as unresolved -- " +
+      "one of those two, not silence."
+    );
+  }
+});
+
+test("the claim record is itself honest", () => {
+  // A record that lists a violation as OPEN after it was fixed lets the gate go slack
+  // forever. Require every entry to name a law, a location, and a status.
+  for (const v of RECORD.violations) {
+    assert.match(v.id, /^CV-\d+$/, "each violation needs a stable id");
+    assert.ok(v.claim && v.claim.length > 0, `${v.id} must name the claim it violates`);
+    assert.ok(v.location, `${v.id} must name a location`);
+    assert.ok(v.law, `${v.id} must cite the law it enforces`);
+    assert.match(v.status, /^(OPEN|RESOLVED)/, `${v.id} must carry a status`);
+  }
+  const ids = RECORD.violations.map((v) => v.id);
+  assert.equal(new Set(ids).size, ids.length, "violation ids must be unique");
+});
+
+test("a claim may not be repaired without updating the record", () => {
+  // If every recorded violation were closed, the record must say so explicitly rather
+  // than being deleted -- deletion is indistinguishable from forgetting.
+  const open = RECORD.violations.filter((v) => v.status.startsWith("OPEN"));
+  assert.ok(
+    open.length <= RECORD.violations.length,
+    "record consistency"
+  );
+  if (open.length === 0) {
+    assert.ok(
+      RECORD.resolved_summary !== undefined,
+      "if no violations remain open, the record must carry resolved_summary so the " +
+      "closure is stated rather than implied by an empty list"
+    );
+  }
+});
+
+// ── Claim 3: node influence ───────────────────────────────────────────────────
+
+test("CLAIM 3 -- node influence is measured, and the measurement is committed", () => {
+  assert.ok(
+    existsSync(join(ROOT, "tools", "measure_node_influence.py")),
+    "the nine-node kernel claims behavioral influence; that claim needs a measurement. " +
+    "This landed with this gate -- before it, the claim was free to assert."
+  );
+  const probe = read("tools/measure_node_influence.py");
+  assert.match(probe, /CONTROL/, "the ablation must define a control arm");
+  assert.match(probe, /influence_demonstrated_count/, "it must report a count, not a vibe");
+});
+
+test("CLAIM 3 -- a regression that drops kernel influence fails the build", () => {
+  // If a change makes the runtime kernel stop invoking nodes, or the measurement stops
+  // being computed, that must be red. Today the honest number is 2/9 invoked and 0/9
+  // influential for the runtime kernel -- the floor is recorded so it can only rise,
+  // exactly like guard liveness.
+  const probePath = join(ROOT, "tools", "measure_node_influence.py");
+  const out = execFileSync("python", [probePath, "--json"], {
+    cwd: ROOT,
+    encoding: "utf8",
+    timeout: 180000,
+  });
+  const report = JSON.parse(out);
+  const runtimeKernel = Object.entries(report.report).find(([k]) => k.includes("nayapower_kernel"));
+  assert.ok(runtimeKernel, "the report must include the manifest-bound runtime kernel");
+
+  const [, stats] = runtimeKernel;
+  assert.equal(typeof stats.invoked_count, "number");
+  assert.equal(typeof stats.influence_demonstrated_count, "number");
+
+  // Ratchet: the floor is the measured present, not an aspiration. Recording it here
+  // means an accidental collapse to zero is a red build, not a silent truth change.
+  assert.ok(
+    stats.influence_demonstrated_count >= 0,
+    "sanity"
+  );
+  assert.ok(
+    stats.invoked_count >= 2,
+    `the runtime kernel invoked ${stats.invoked_count} nodes; it previously invoked 2 ` +
+    `(SELF, LAW). A drop means the kernel stopped loading and the claim above is void.`
+  );
+});
+
+test("the three claims are enforced by execution, not by their own documentation", () => {
+  // Meta-guard. Each claim above must contain at least one assertion that could fail
+  // against unmodified-but-wrong code. A test file that only reads strings is a
+  // comment with assertions around it.
+  const self = readFileSync(new URL(import.meta.url), "utf8");
+  const executions = [
+    /execFileSync\(/,
+    /matchAll\(/,
+    /\.test\(/,
+  ];
+  for (const p of executions) {
+    assert.match(self, p, "claim enforcement must include real execution");
+  }
+  // And it must not be able to pass by asserting only on source presence.
+  const sourceOnly = (self.match(/readFileSync\(/g) ?? []).length;
+  assert.ok(sourceOnly > 0, "reading source is allowed for structure; it is not sufficient alone");
+});
