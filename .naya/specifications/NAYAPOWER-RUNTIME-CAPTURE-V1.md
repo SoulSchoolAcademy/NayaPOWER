@@ -1,7 +1,7 @@
 # NayaPOWER — Runtime Capture V1
 ## Governed agent-invocation path for the canonical Receiver
 
-**Status:** PROPOSED (PR — not merged, not deployed, not proven)
+**Status:** MERGED TO `main` — SOURCE IMPLEMENTED; BEHAVIORAL PROOF PENDING
 **Scope:** CAPTURE only. Resolves Blocker B1.
 **Authority:** NayaPOWER System North Star; Scorecard Law.
 **Canonical receiver:** `supabase/functions/v7-smart-note-canonical` — **UNCHANGED by this spec.**
@@ -43,7 +43,7 @@ opposite: **the receiver is not touched at all.**
    (`NAYA_RUNTIME_EMAIL`, `NAYA_RUNTIME_PASSWORD`,
    `NAYA_SUPABASE_URL`, `NAYA_SUPABASE_ANON_KEY`).
    Naya runtimes NEVER hold the Supabase credential.
-3. **`.github/workflows/nayanet-agent-capture.yml`** (this PR) is the
+3. **`.github/workflows/nayanet-agent-capture.yml`** (merged in PR #1664) is the
    single governed entry point. On `workflow_dispatch` it:
    - validates the payload shape (fail fast),
    - signs in as `naya-runtime` → real JWT (short-lived, per run),
@@ -52,7 +52,7 @@ opposite: **the receiver is not touched at all.**
      `intelligent_block_id` matches `IB-\d{6}`, and `smart_link`
      matches the canonical receiver-bound pattern,
    - emits the receipt JSON between `CAPTURE_RECEIPT_JSON` markers.
-4. **Naya runtimes invoke capture** by dispatching the workflow with
+4. **Naya runtimes invoke capture** by dispatching the merged workflow with
    their existing GitHub credential, polling the run, and reading the
    receipt from the logs (`scripts/naya-runtime-capture.sh`, this PR).
 
@@ -94,3 +94,23 @@ opposite: **the receiver is not touched at all.**
   runtime captures should be labeled distinctly. Filed as a refinement
   against the receiver (small, review-heavy) — not required for 10/10.
 - Secret rotation cadence for the runtime credential (Shawn's call).
+
+
+## 8. Current-main re-anchor — 2026-10-06
+
+PR #1664 is merged at:
+`34801bfb53962fb58e61b291547da976f1bf6bfa`
+
+This establishes the governed agent-invocation source path on current `main`.
+It does **not** establish behavioral/runtime proof.
+
+The remaining proof gate is unchanged:
+- legitimate `naya-runtime` Supabase Auth user;
+- four required GitHub repository secrets;
+- workflow dispatch;
+- real receiver response with `PROJECTION_VERIFIED`;
+- returned receiver-owned Intelligent Block identity;
+- receiver-generated verified Smart Link;
+- retained receipt.
+
+Until that evidence exists, CAPTURE remains **source-implemented / behaviorally unproven**.
