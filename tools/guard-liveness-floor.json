@@ -1,14 +1,15 @@
 {
   "//": "Committed floor for tools/guard_liveness.py. The gate fails only if coverage DROPS below this. Ratchet, not cliff: failing at the honest starting number would block every merge and train the team to bypass it. The floor may only rise.",
-  "floor_pct_with_firing_proof": 40.1,
+  "floor_pct_with_firing_proof": 45.6,
   "measured_at": "2026-10-07",
-  "measured_on": "main c91eff63b plus the authority-tier firing proofs",
+  "measured_on": "main 6eb776c29 plus github-dispatch authority-tier firing proofs",
   "total_guards": 147,
-  "with_firing_proof": 59,
-  "without_firing_proof": 88,
+  "with_firing_proof": 67,
+  "without_firing_proof": 80,
   "history": [
     {"pct": 30.6, "guards": 147, "proven": 45, "why": "initial honest baseline at main c9c8b8ce0"},
-    {"pct": 40.1, "guards": 147, "proven": 59, "why": "14 authority/ownership/replay guards given executed firing proofs, AND the detector was corrected to recognise direct named imports from runtime modules (it had only recognised VM-sandbox execution, so real proof work scored 0)"}
+    {"pct": 40.1, "guards": 147, "proven": 59, "why": "14 authority/ownership/replay guards given executed firing proofs, AND the detector was corrected to recognise direct named imports from runtime modules (it had only recognised VM-sandbox execution, so real proof work scored 0)"},
+    {"pct": 45.6, "guards": 147, "proven": 67, "why": "+8 from nayanet-github-dispatch, the highest-blast-radius surface left: the only remaining function that causes an external, visible, hard-to-reverse effect. EXPLICIT_APPROVAL_REQUIRED -- the last gate before a public commit to main -- had never been observed to fire."}
   ],
   "baseline_rationale": "88 guards still cannot be observed to reject anything. The work is to move them, ranked by blast radius, into the proven column -- never in bulk, which would buy coverage without information."
 }
