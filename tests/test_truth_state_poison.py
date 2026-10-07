@@ -56,7 +56,7 @@ def test_case1_direct_edit_candidate_to_ratified_rejected():
     e = make_entry("CANDIDATE")
     before = snapshot(e)
     ok, rec = g.apply_elevation(e, "RATIFIED", authority=None, evidence=None)
-    assert not ok and rec["reason_code"] == "ELEVATION_REQUIRES_AUTHORITY"
+    assert not ok and rec["reason_code"] == "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR"
     assert snapshot(e) == before
 
 
