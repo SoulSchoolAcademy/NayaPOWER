@@ -1,0 +1,63 @@
+/* NayaVoice play button — PROMINENT. A real, visible control on every content card.
+ * Top-right overlay, impossible to miss, quiet until hovered, ignites on hover.
+ * Mobile: 44px minimum touch target. */
+.nv-play {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11, 11, 16, 0.92);
+  color: #f5f4f8;
+  border: 1px solid rgba(157, 117, 255, 0.45);
+  border-radius: 999px;
+  padding: 8px 14px;
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(157, 117, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.22s cubic-bezier(0.16, 0.84, 0.22, 1), box-shadow 0.22s cubic-bezier(0.16, 0.84, 0.22, 1), border-color 0.22s;
+}
+.nv-play:hover,
+.nv-play:focus-visible {
+  transform: translateY(-1px) scale(1.03);
+  border-color: #9d75ff;
+  box-shadow: 0 6px 20px rgba(157, 117, 255, 0.45), 0 0 0 1px rgba(157, 117, 255, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+.nv-play:active {
+  transform: translateY(0) scale(0.97);
+}
+.nv-play .nv-ic {
+  font-size: 14px;
+  line-height: 1;
+  color: #9d75ff;
+  width: 16px;
+  text-align: center;
+}
+.nv-play .nv-name {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #f5f4f8;
+}
+.nv-play .nv-tag {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(245, 244, 248, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  padding: 2px 5px;
+  white-space: nowrap;
+}
+/* Cards need positioning context for the overlay */
+article.timeline-item,
+div.activity-card {
+  position: relative;
+}
