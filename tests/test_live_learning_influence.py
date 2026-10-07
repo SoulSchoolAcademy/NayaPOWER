@@ -75,7 +75,7 @@ def test_learning_influence_runtime_uses_short_lived_naya_identity_not_human_ses
     # Additionally, the endpoint the workflow resolves must really be the
     # canonical function - not merely a file that mentions its name.
     url = _resolved_function()
-    assert url.rstrip("/").endswith(f"/functions/v1/{CANONICAL_FUNCTION}"), (
+    assert url.rstrip("/").replace('\\','/').endswith(f'/functions/v1/{CANONICAL_FUNCTION}'), (
         f"learning-influence proof must target the canonical runtime {CANONICAL_FUNCTION}, got {url!r}"
     )
 
