@@ -226,3 +226,37 @@ def test_audit_passes_ratified_with_grant():
     }]}
     audit = g.audit_registry_semantics(registry)
     assert audit["defects"]["ratified_without_elevation_grant"] == []
+
+
+# --- Direct-ladder bypass regression -----------------------------------------
+
+def test_candidate_cannot_skip_verified_into_ratified_without_grant():
+    """RATIFIED may only be entered from VERIFIED; a named promoter cannot bypass the grant gate."""
+    e = make_entry("CANDIDATE")
+    before = snapshot(e)
+    ok, rec = g.apply_elevation(
+        e,
+        "RATIFIED",
+        authority="mallory",
+        evidence=make_evidence(),
+        elevation_grants=[],
+    )
+    assert not ok
+    assert rec["reason_code"] == "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR"
+    assert snapshot(e) == before
+
+
+def test_testing_cannot_skip_verified_into_ratified_without_grant():
+    """TESTING must also fail closed before any RATIFIED authority/evidence path is considered."""
+    e = make_entry("TESTING")
+    before = snapshot(e)
+    ok, rec = g.apply_elevation(
+        e,
+        "RATIFIED",
+        authority="Shawn Vibert",
+        evidence=make_evidence(),
+        elevation_grants=[],
+    )
+    assert not ok
+    assert rec["reason_code"] == "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR"
+    assert snapshot(e) == before
