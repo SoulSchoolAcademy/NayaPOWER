@@ -1703,12 +1703,31 @@
       "provenance": {
         "note": "DIRECT_TO_MAIN: published to main 2026-10-06 by Shawn Vibert (Human Director), PR #1654, tip commit 1204519c (\"docs(memory): SN-0459 parallel-execution directive (documents ratified law 0013)\"); no capture file exists for this note; entry completes registration bookkeeping only, per the SN-NET-POWER-MAGIC-001 precedent (#1585). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline."
       }
+    },
+    {
+      "smart_note_id": "SN-0460",
+      "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard",
+      "title": "RATIFIED Predecessor Guard — Direct Trust-State Jumps Must Fail Closed",
+      "captured_at": "2026-10-06",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "RATIFIED_PREDECESSOR_GUARD",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/RATIFIED-PREDECESSOR-GUARD/SN-0460/IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md",
+      "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
+      "provenance": {
+        "note": "DIRECT_TO_MAIN_AFTER_BEHAVIORAL_REPAIR: defect reproduced on current main in RED workflow 37556644604; repaired in PR #1677; merged as cfba2fee23854d49b876cf372336e54005dd32fc; green Kernel Tests 37556718704, Ratified Guard 37556718444, Spec Integrity 37556718436, Collective Chain Readiness Gate 37556718469. No runtime capture UUIDs invented; this is a projection record for a verified source repair."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 461,
+    "next_sequence": 460,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
