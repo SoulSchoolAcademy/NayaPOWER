@@ -7,6 +7,8 @@ on:
     paths:
       - 'supabase/functions/nayanet-act-runtime/**'
       - 'supabase/functions/nayanet-law-runtime/**'
+      - 'supabase/functions/nayanet-know-runtime/**'
+      - 'supabase/functions/_shared/connect_selector.ts'
       - 'BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-ACT.json'
       - 'BRAIN/10-INTERFACES/0002-SMART-DOOR-REGISTRY-V1.json'
       - '.github/workflows/live-act-proof.yml'
@@ -95,8 +97,13 @@ jobs:
           echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
           if [ "$eligible" = "false" ]; then
             echo "::notice title=Live ACT proof blocked by parity::$status source=$GITHUB_SHA production_source=$production_source mismatch=$mismatch_path"
+            if [ -n "$expected" ]; then
+              echo "Exact-source ACT proof requested but production parity is not eligible: $status"
+              exit 1
+            fi
           fi
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: act-live-proof-preflight
           path: .naya/evidence/live-act-proof-preflight.json
@@ -302,7 +309,16 @@ jobs:
           json.dump({"mode":"inspect-plan","plan_receipt_id":ids["plan_receipt_id"]},open("inspect-plan-request.json","w"))
           json.dump({"mode":"inspect","action_receipt_id":ids["act_receipt_id"],"refusal_receipt_id":ids["refusal_receipt_id"]},open("inspect-request.json","w"))
           PY
-          curl -fsS -X POST -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" -H "Content-Type: application/json" --data-binary @inspect-plan-request.json "      - name: Independently recompute KNOW-bound plan, execution and refusal
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data-binary @inspect-plan-request.json "$ACT_RUNTIME" > plan-reread.json
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")" \
+            -H "Content-Type: application/json" \
+            --data-binary @inspect-request.json "$ACT_RUNTIME" > authoritative-reread.json
+
+      - name: Independently recompute KNOW-bound plan, execution and refusal
         shell: bash
         run: |
           set -euo pipefail
@@ -311,6 +327,7 @@ jobs:
           ids=json.load(open("ids.json"))
           p=json.load(open("plan-reread.json"))
           a=json.load(open("authoritative-reread.json"))
+
           assert p["ok"] is True and p["status"]=="CANONICAL_PLAN_REREAD", p
           assert p["cold_reconstruction"] is True, p
           assert p["executor_claim_trusted_as_verification"] is False, p
@@ -327,8 +344,11 @@ jobs:
           assert recomputed["selected_intelligence"]["intelligent_block_id"]==ids["selected_block_id"], recomputed
           assert p["retrieval_receipt"]["id"]==ids["know_receipt_id"], p
           assert p["law_receipt"]["id"]==ids["law_receipt_id"], p
+
           assert a["ok"] is True and a["status"]=="AUTHORITATIVE_STATE_REREAD", a
-          ar=a["action_receipt"]; ae=ar["evidence"]; rr=a["refusal_receipt"]
+          ar=a["action_receipt"]
+          ae=ar["evidence"]
+          rr=a["refusal_receipt"]
           assert ar["action"]=="act_node_execute" and ar["status"]=="SUCCESS", ar
           assert ae["planning_mode"]=="TWO_PHASE_KNOW_CONNECT_BOUND", ae
           assert ae["plan_receipt_id"]==ids["plan_receipt_id"], ae
@@ -340,6 +360,7 @@ jobs:
           assert a["live_grant"]["status"]=="ACTIVE" and a["live_grant"].get("revoked_at") is None, a
           assert rr["action"]=="act_node_refusal" and rr["status"]=="BLOCKED", rr
           assert rr["evidence"]["action_executed"] is False, rr
+
           proof={
             "schema":"naya.act.learning-activation.live-proof.v1",
             "status":"PASS",
