@@ -415,8 +415,8 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         "# NayaPOWER Brain — Real Tree (machine-verified)",
         "",
         f"**Generated:** {today}  ",
-        f"**Receipt basis commit:** `{basis}`  ",
-        f"**Inventory file count:** {len(files)}  ",
+        f"**Receipt basis commit:** `{basis}",
+        f"**Inventory file count:** {len(files)}",
         "",
         "> Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. "
         "Per-domain counts are asserted against the 2026-09-30 brain-reconciliation "
