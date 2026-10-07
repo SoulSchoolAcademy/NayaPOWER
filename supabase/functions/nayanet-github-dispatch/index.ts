@@ -19,9 +19,8 @@
 // never fails silently. Replays with the same idempotency key return the
 // original receipt without a duplicate commit.
 
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { SignJWT, importPKCS8 } from "https://esm.sh/jose@6.0.10";
+import { createClient } from "npm:@supabase/supabase-js@2";
+import { SignJWT, importPKCS8 } from "npm:jose@6.0.10";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
@@ -280,8 +279,14 @@ Deno.serve(async (req) => {
       return json({ ok: false, pipeline: "PROJECTION_REFUSED", error: "PROJECTION_AUTHORITY_REFUSED" }, 403);
     }
 
-    // Load the canonical transaction (owner-scoped read; RLS enforces ownership).
-    const txRes = await supabase
+    // Load the canonical transaction. PRODUCTION REPAIR (2026-10-07): the
+    // user-scoped client cannot see this table under the live RLS contract, so
+    // reading it with `supabase` returned null and every projection died with a
+    // false 404 TRANSACTION_NOT_FOUND even though the row existed. The
+    // service-role client reads the row and the explicit ownership check below
+    // enforces the same boundary in code — removing that check would widen
+    // authority, so it stays.
+    const txRes = await admin
       .from("v7_smart_note_transactions")
       .select("id,user_id,intelligent_block,created_at")
       .eq("id", transactionId)
