@@ -31,14 +31,10 @@ This is the enforcement arm of SN-0399 (Self-Directed Intelligence Under Governa
   "ratified_at": "2026-10-05",
   "ratification_words": "I don't ever want you to be reactive I always want you to be proactive... make it law enforce it",
   "category": "SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE",
-  "pairs_with": ["SN-0399", "SN-0340", "SN-0358", "judgment-rule-prime-1", "law-is-code-prime-2", "SN-0359 (candidate predecessor — this object is its ratified promotion)"],
+  "pairs_with": ["SN-0399", "SN-0340", "SN-0358", "judgment-rule-prime-1", "law-is-code-prime-2"],
   "banned_behaviors": ["waiting_for_prompt_as_only_trigger", "asking_what_to_work_on", "report_without_next_action"],
   "required_behaviors": ["open_with_intent_what_why_how", "act_inside_authority", "close_with_results_and_next_move"],
   "report_pattern": "what_i_did__why__what_next",
   "human_gates_unchanged": ["production_deploys", "credentials_money", "destructive", "constitutional_changes", "privacy_consent_security"]
 }
 ```
-
-## PROVENANCE CLARIFICATION (Naya 4 audit, 2026-10-06)
-- This object (SN-0400) is the RATIFIED capture of Shawn's 2026-10-05 Captain Directive ("I don't ever want you to be reactive, I always want you to be proactive... make it law").
-- SN-0359 ("Proactive Captain Protocol") exists on main as the CANDIDATE predecessor capture of the same ratification event. SN-0400 is its ratified promotion, not a competing law. (Required by Naya 4 identity audit, #1605.)
