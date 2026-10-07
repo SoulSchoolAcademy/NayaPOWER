@@ -61,6 +61,26 @@ DEFAULT_GRANTS_DIR = "BRAIN/01-GOVERNANCE/elevation-grants"
 _HASH64 = re.compile(r"[0-9a-fA-F]{64}")
 _GRANT_TS = re.compile(r"^\d{8}T\d{6}Z$")
 
+# Legacy elevations ratified by the Human Director's explicit word BEFORE the
+# elevation machinery existed (2026-10-06 and earlier). Named, dated,
+# attributed, reported-not-blocking per the Ratchet pattern (SN-0285):
+# block NEW drift without reddening main on legacy truth. These eight notes
+# carry RATIFIED without machine-readable elevation_history because the
+# authority+evidence recording did not exist when Shawn ratified them —
+# backfilling history now would itself be fabrication. This list is CLOSED:
+# no entry may ever be added; every post-machinery elevation must carry its
+# authority + evidence provenance or the semantic audit flags it.
+LEGACY_GRANDFATHERED_ELEVATIONS = frozenset({
+    "SN-016",               # Prime Judgment Rule (ratified 2026-09-30)
+    "SN-0340",              # Scorecard Law (ratified 2026-10-05)
+    "SN-0399",              # Self-directed intelligence under governance (ratified 2026-10-05)
+    "SN-0400",              # Captain directive (ratified 2026-10-05)
+    "SN-0408",              # Deletion discipline (ratified 2026-10-05)
+    "SN-0459",              # (ratified pre-machinery)
+    "SN-0522",              # Prime 3 — the math decides (ratified 2026-10-07)
+    "SN-NET-POWER-MAGIC-001",
+})
+
 
 def _utc_now():
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -386,7 +406,7 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
     return True, _record(True, "ELEVATED", f"{old} -> {new} by {str(authority).strip()}")
 
 
-def audit_registry_semantics(registry):
+def audit_registry_semantics(registry, grandfathered=LEGACY_GRANDFATHERED_ELEVATIONS):
     """Read-side semantic audit: find truth-state escalation already on disk.
 
     Structural audit_registry() checks shape (hashes, duplicates, paths).
@@ -394,6 +414,10 @@ def audit_registry_semantics(registry):
     evidence provenance, ACTIVE must chain to a verified predecessor,
     LEARNED must record behavioral evidence, and supersession must not
     have erased authority history.
+
+    grandfathered: smart_note_ids ratified before the elevation machinery
+    existed (LEGACY_GRANDFATHERED_ELEVATIONS). They are reported-not-blocking:
+    named, dated, attributed, never extended.
     """
     defects = {
         "elevated_without_provenance": [],
@@ -416,7 +440,7 @@ def audit_registry_semantics(registry):
         if not hist:
             if e.get("supersedes"):
                 defects["supersession_erased_history"].append(sn)
-            else:
+            elif str(e.get("smart_note_id") or "").strip().upper() not in (grandfathered or ()):
                 defects["elevated_without_provenance"].append(sn)
             continue
         last = hist[-1] if isinstance(hist[-1], dict) else {}

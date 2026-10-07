@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, contextlib, hashlib, json, os, re, tempfile
+import argparse, contextlib, copy, hashlib, json, os, re, tempfile
 try:
     import fcntl
 except ImportError:  # Windows: lock with msvcrt so concurrent writers still serialize.
@@ -45,6 +45,9 @@ from pathlib import Path
 # Truth-state guard (Option C, 2026-10-06): all elevations go through
 # apply_elevation() so authority, evidence, and grants are enforced by code.
 from tools.truth_state_guard import apply_elevation as _guard_apply_elevation
+from tools.truth_state_guard import audit_registry_semantics as _guard_audit_semantics
+from tools.truth_state_guard import normalize_state as _guard_normalize_state
+from tools.truth_state_guard import rank as _guard_rank
 
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
@@ -550,6 +553,35 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         _assert_smart_note_id_available(
             normalized_sn_id, ib, registry.get("entries", [])
         )
+    # --- Truth-state write-path hardening (safety, 2026-10-07) ---
+    # The capture write path must never mint authority. understanding_state
+    # arrives inside the verify JSON, which is untrusted input: a crafted
+    # capture could otherwise escalate CANDIDATE -> RATIFIED (or invent
+    # states like ABSOLUTE_TRUTH), bypassing promote_note() and the
+    # truth-state guard entirely (POISON battery #1461, 3 documented holes).
+    # Rules, fail-closed:
+    #   - Unknown state names are never valid targets -> CANDIDATE.
+    #   - A NEW note always enters as CANDIDATE: capture is not ratification.
+    #   - A RE-CAPTURE updates content, never authority: the existing entry's
+    #     truth_state and elevation_history are preserved verbatim. The write
+    #     path can neither escalate nor demote — elevation is promote_note()'s
+    #     guarded job; demotion-for-containment goes through the guard's
+    #     explicit demotion path. A raw capture that could strip RATIFIED
+    #     authority (or mint it) is a poisoning vector, not a feature.
+    _existing_ts_entry = next(
+        (e for e in registry.get("entries", [])
+         if e.get("intelligent_block_id") == ib),
+        None,
+    )
+    if _existing_ts_entry is not None:
+        _prior = _guard_normalize_state(_existing_ts_entry.get("truth_state", "CANDIDATE"))
+        # Fail closed: a garbage state already on disk is not preserved —
+        # it collapses to CANDIDATE rather than being carried forward.
+        _safe_truth_state = _prior if _guard_rank(_prior) >= 0 else "CANDIDATE"
+        _preserved_history = copy.deepcopy(_existing_ts_entry.get("elevation_history"))
+    else:
+        _safe_truth_state = "CANDIDATE"
+        _preserved_history = None
     entry = {
         "smart_note_id": sn_id,
         "intelligent_block_id": block["intelligent_block_id"],
@@ -559,7 +591,7 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
         "category": capture.get("category", "SMART_NOTE"),
         "topic": capture.get("topic", ""),
         "subtopic": capture.get("subtopic", ""),
-        "truth_state": block["understanding_state"],
+        "truth_state": _safe_truth_state,
         "lifecycle_state": str(capture.get("lifecycle_state", "ACTIVE")).upper(),
         "superseded_by_capture_id": capture.get("superseded_by_capture_id"),
         "supersession_reason": capture.get("supersession_reason"),
@@ -579,6 +611,11 @@ def _update_registry_locked(capture, verify, projection, registry, sn_id=None):
             "receipt_id": verify["persisted"]["receipt"]["id"],
         },
     }
+    if _preserved_history:
+        # Re-capture must not erase authority history (supersession without
+        # provenance is its own defect class). The new content gets the old
+        # authority record, byte for byte.
+        entry["elevation_history"] = _preserved_history
     registry["entries"] = [e for e in registry.get("entries", []) if e.get("intelligent_block_id") != entry["intelligent_block_id"]] + [entry]
     registry["entries"] = sorted(registry["entries"], key=lambda x: (x.get("smart_note_id",""), x.get("intelligent_block_id","")))
     seq_match = re.fullmatch(r"SN-(\d+)", sn_id)
@@ -1200,6 +1237,15 @@ def audit_registry(root=None, registry_path=None, capture_dir=None, brain_root=N
     for name, paths in sorted(pages_by_name.items()):
         if name not in known_pages:
             defects["published_pages_without_registry_entry"].append({"page": name, "paths": paths})
+
+    # Semantic audit (safety, 2026-10-07): the structural classes above check
+    # shape; the guard's semantic audit checks meaning — fabricated authority
+    # (elevated truth_state with no authority+evidence provenance) is now
+    # visible to the CI ratchet. Legacy director-ratified notes are
+    # grandfathered named/dated/attributed, never extended.
+    _sem = _guard_audit_semantics(registry)
+    for _k, _v in _sem["defects"].items():
+        defects[_k] = _v
 
     counts = {k: len(v) for k, v in defects.items()}
     return {
