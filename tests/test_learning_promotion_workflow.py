@@ -166,8 +166,11 @@ def test_learning_promotion_makes_http_failures_observable_and_retries_one_fresh
 
 def test_learning_promotion_no_longer_uses_opaque_fail_fast_curl():
     source = WORKFLOW.read_text(encoding="utf-8")
-    assert 'curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"' not in source
-    assert 'learning-promotion.json >' not in source
+    start = source.index("  learning-promotion:")
+    end = source.index("  independent-retained-learning-reread:", start)
+    promotion = source[start:end]
+    assert 'curl -fsS -X POST             -H "Authorization: Bearer $(cat "$RUNNER_TEMP/oidc.jwt")"' not in promotion
+    assert 'learning-promotion.json >' not in promotion
 
 
 def test_learning_promotion_retry_is_bounded_to_a_single_403_recovery_attempt():
