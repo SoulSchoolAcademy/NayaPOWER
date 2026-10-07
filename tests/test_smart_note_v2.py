@@ -83,7 +83,7 @@ def test_registered_smart_link_is_active_and_exact():
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
     assert entry["smart_link"].startswith("https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/")
     assert entry["smart_note_id"] == "SN-001"
-    assert entry["canonical_brain_path"].endswith("/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md")
+    assert entry["canonical_brain_path"].replace('\\','/').endswith('/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md')
 
 def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
     entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
@@ -99,7 +99,7 @@ def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
 
 def test_projection_generator_targets_brain_and_preserves_private_default():
     assert "BRAIN_SMART_NOTE_ROOT" in mod.__dict__
-    assert str(mod.BRAIN_SMART_NOTE_ROOT).endswith("BRAIN/05-MEMORY/SMART-NOTES")
+    assert str(mod.BRAIN_SMART_NOTE_ROOT).replace("\\", "/").endswith("BRAIN/05-MEMORY/SMART-NOTES")
     private_capture = {
         "source": {"captured_at": "2026-09-29"},
         "category": "SYSTEM_INTELLIGENCE",
@@ -660,7 +660,7 @@ def test_concurrent_duplicate_projections_converge_on_existing_sn(tmp_path):
     assert len(reg["entries"]) == 1, "duplicate projections must converge to one entry"
     final_sn = reg["entries"][0]["smart_note_id"]
     assert all(s == final_sn for s in entry_sns), "entry SN must be stable across racers"
-    assert reg["entries"][0]["projection_path"].endswith(f"/{final_sn}/{ib}.md")
+    assert reg["entries"][0]["projection_path"].replace('\\','/').endswith(f"/{final_sn}/{ib}.md")
 
 def test_reserve_is_idempotent_for_known_block(tmp_path):
     """Re-reserving a known block returns its SN without burning sequence."""
