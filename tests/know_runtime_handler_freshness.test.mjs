@@ -151,3 +151,17 @@ test('actual KNOW explicitly trusts canonical PROVE workflow without widening ar
   assert.equal(denied.reads.length,0);
   assert.equal(denied.writes.length,0);
 });
+
+test('actual KNOW explicitly trusts canonical ACT proof workflow without widening arbitrary workflows', async()=>{
+  const actClaims={...claims,
+    workflow_ref:'SoulSchoolAcademy/NayaPOWER/.github/workflows/live-act-proof.yml@refs/heads/main'};
+  const rt=runtime({identity:actClaims}),response=await rt.invoke(),body=await response.json();
+  assert.equal(response.status,200);
+  assert.equal(body.ok,true);
+  assert.equal(body.status,'KNOW_RETRIEVED');
+  assert.equal(body.result.status,'HIT');
+  assert.equal(body.retrieval_creates_authority,false);
+  assert.equal(rt.writes.length,1);
+  assert.equal(rt.writes[0].evidence.workflow_ref,actClaims.workflow_ref);
+});
+
