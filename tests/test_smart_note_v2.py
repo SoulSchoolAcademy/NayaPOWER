@@ -1,4 +1,5 @@
 import json
+import pytest
 import re
 import importlib.util
 from pathlib import Path
@@ -6,6 +7,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("smart_note_v2", ROOT / "tools" / "smart_note_v2.py")
 mod = importlib.util.module_from_spec(spec)
+
+# Concurrency tests require POSIX advisory locking (fcntl). On Windows
+# the registry lock is best-effort, so mutual exclusion cannot be
+# guaranteed and these assertions would fail for a REASON THAT IS NOT
+# A DEFECT. Skip with the reason, so Windows reads as UNSUPPORTED
+# rather than BROKEN. Consistent with the O_NOFOLLOW decision.
+requires_posix_lock = pytest.mark.skipif(
+    not getattr(mod, 'LOCKING_AVAILABLE', False),
+    reason="POSIX advisory locking unavailable (no fcntl); mutual exclusion not guaranteed on this platform",
+)
 spec.loader.exec_module(mod)
 
 def test_general_capture_discovery_is_not_filename_hardcoded():
@@ -502,6 +513,7 @@ def _problem_b_inputs(m, tmp_path, ib_id):
     proj.write_text("# test", encoding="utf-8")
     return capture, verify, proj
 
+@requires_posix_lock
 def test_concurrent_registry_writers_lose_no_updates(tmp_path):
     import threading
     m = _problem_b_fresh_module(tmp_path)
@@ -525,6 +537,7 @@ def test_concurrent_registry_writers_lose_no_updates(tmp_path):
     # Registry is valid JSON after every concurrent commit (atomic write).
     assert reg["schema"] == "naya.smart-note-projection-index.v1"
 
+@requires_posix_lock
 def test_concurrent_promotions_serialize_without_loss(tmp_path):
     import threading
     m = _problem_b_fresh_module(tmp_path)
@@ -595,6 +608,7 @@ def _race_verify(ib_id):
       "relationship": {"relationship_id": "r"}, "index": {"id": "i"},
       "checkpoint": {"id": "c"}, "receipt": {"id": "rc"}}}
 
+@requires_posix_lock
 def test_concurrent_projectors_derive_distinct_directories(tmp_path):
     """N concurrent projectors → N distinct SN directories, zero clobbering."""
     import threading
@@ -632,6 +646,7 @@ def test_concurrent_projectors_derive_distinct_directories(tmp_path):
     reg = json.loads(m.REGISTRY.read_text(encoding="utf-8"))
     assert len(reg["entries"]) == N, f"registry lost entries: {len(reg['entries'])}/{N}"
 
+@requires_posix_lock
 def test_concurrent_duplicate_projections_converge_on_existing_sn(tmp_path):
     """Concurrent re-projections of the SAME block converge: one entry,
     stable SN (existing wins), zero errors."""
