@@ -48,7 +48,7 @@ def test_capture_discovery_existing_only_ignores_deleted_capture_paths(tmp_path,
     ) == [".naya/capture/live.json"]
 
 def test_machine_registry_contains_exact_private_block_pointer():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["scope"] == "PRIVATE"
     # D2 (smart-link generator, #1406): PRIVATE-scope notes are ACTIVE_AUTH_GATED, never bare ACTIVE.
@@ -56,28 +56,28 @@ def test_machine_registry_contains_exact_private_block_pointer():
     assert entry["provenance"]["receipt_id"] == "faa4345a-aacd-43f2-ab2f-a991b9681979"
 
 def test_nia_language_has_primary_command_and_safe_ceiling():
-    nia = json.loads((ROOT / "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json").read_text())
+    nia = json.loads((ROOT / "BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json").read_text(encoding="utf-8"))
     assert nia["primary_capture_command"] == "Smart Note this"
     assert nia["primary_capture_intent"] == "CAPTURE_DURABLE_INTELLIGENCE"
     assert nia["maximum_automatic_capture_state"] == "CANDIDATE"
     assert nia["safety"]["may_grant_authority"] is False
 
 def test_historical_checkpoint_binding_uses_object_local_receipt_semantics():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["provenance"]["checkpoint_semantics"] == "MUTABLE_PROJECT_STATE_POINTER"
     assert entry["provenance"]["historical_checkpoint_binding"] == "EXECUTION_RECEIPT_EVIDENCE"
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert "RECEIPT_OBJECT_LOCAL_SNAPSHOT" in workflow
 
 def test_smart_note_command_is_standing_authority_for_same_note_lifecycle():
-    nia = (ROOT / "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md").read_text()
+    nia = (ROOT / "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md").read_text(encoding="utf-8")
     assert "No second `DEPLOY` confirmation is required" in nia
     assert "One command, one complete Smart Note lifecycle" in nia
     assert "does **not** authorize unrelated product releases" in nia
 
 def test_registered_smart_link_is_active_and_exact():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e["intelligent_block_id"] == "IB-SMART-NOTE-20260929-b8f141805fa0d7ae")
     assert entry["smart_link_status"] == "ACTIVE_AUTH_GATED"  # D2: PRIVATE scope, see above
     assert entry["projection_status"] == "GITHUB_BRAIN_PUBLISHED"
@@ -88,7 +88,7 @@ def test_registered_smart_link_is_active_and_exact():
 def test_human_smart_note_projection_lives_in_brain_memory_hierarchy():
     entry_path = ROOT / "BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-SYSTEM/OFFICIAL-SMART-NOTE-FORMAT/SN-001/IB-SMART-NOTE-20260929-b8f141805fa0d7ae.md"
     assert entry_path.exists()
-    text = entry_path.read_text()
+    text = entry_path.read_text(encoding="utf-8")
     for section in [
         "IN A NUTSHELL", "HUMAN NOTE", "CHILD NOTE", "GRANDMA NOTE", "NAYA NOTE",
         "MACHINE NOTE", "LEARNING LESSON", "WHAT IT MEANS", "WHAT'S IN IT FOR YOU",
@@ -112,7 +112,7 @@ def test_projection_generator_targets_brain_and_preserves_private_default():
     assert "/SN-" in str(p).replace("\\", "/")
 
 def test_sn002_is_registered_to_live_canonical_runtime():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     entry = next(e for e in reg["entries"] if e.get("smart_note_id") == "SN-002")
     assert entry["intelligent_block_id"] == "IB-SMART-NOTE-20260929-sn002-smart-note-node-flow"
     assert entry["provenance"]["receipt_id"] == "102d900e-1dc0-44ce-bde4-9d8d668f4d60"
@@ -121,7 +121,7 @@ def test_sn002_is_registered_to_live_canonical_runtime():
     assert entry["proof_boundary"]["universal_nine_node_binding"] == "NOT_PROVEN"
 
 def _max_allocated_sn_number():
-    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text())
+    reg = json.loads((ROOT / ".naya/memory/smart-notes/index.json").read_text(encoding="utf-8"))
     nums = [int(m.group(1)) for e in reg.get("entries", [])
             for m in [re.fullmatch(r"SN-(\d+)", str(e.get("smart_note_id", "")))] if m]
     return reg, max(nums) if nums else 0
@@ -221,19 +221,19 @@ def test_sequence_policy_advances_after_sn002():
 
 
 def test_projection_workflow_publishes_active_verified_public_projection():
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert 'e.get("smart_link_status") in {"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
     assert 'e.get("smart_link_status")=="READY"' not in workflow
 
 
 def test_projection_workflow_does_not_allocate_intelligent_block_identity():
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert 'ib="IB-SMART-NOTE-"+capture["capture_id"]' not in workflow
     assert '"intelligent_block_id"' in workflow
 
 
 def test_projection_workflow_stages_brain_projection_and_registry():
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert "git add BRAIN/05-MEMORY/SMART-NOTES .naya/memory/smart-notes" in workflow
 
 
@@ -244,7 +244,7 @@ def test_sequence_policy_advances_past_sn003():
 
 
 def test_live_intelligence_proof_is_capture_triggered_not_arbitrary_main_push():
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert '".naya/capture/**"' in workflow
 
 def _verify_for_lesson(lesson, block_id="IB-SN004-TEST"):
@@ -289,14 +289,14 @@ def test_renderer_accepts_persisted_sn004_string_views_without_inventing_relatio
         "priority": "legacy priority",
         "uncertainty": "legacy uncertainty",
     }
-    original = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260929-sn004-shawn-standing-law.json").read_text())["intelligence"]
+    original = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260929-sn004-shawn-standing-law.json").read_text(encoding="utf-8"))["intelligence"]
     # These meaning fields are unchanged from the original persisted SN-004.
     legacy["learning_lesson"] = original["learning_lesson"]
     legacy["applicability"] = original["applicability"]
     verify = _verify_for_lesson(legacy)
     before = json.dumps(verify, sort_keys=True)
     path = mod.render(_private_sn004_capture(), verify, private_root=tmp_path)
-    rendered = path.read_text()
+    rendered = path.read_text(encoding="utf-8")
     assert legacy["learning_lesson"] in rendered
     assert legacy["applicability"] in rendered
     assert "**Truth state:** CANDIDATE" in rendered
@@ -310,10 +310,10 @@ def test_renderer_accepts_persisted_sn004_string_views_without_inventing_relatio
 
 
 def test_renderer_preserves_current_structured_sn004_shape(tmp_path):
-    capture = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260929-sn004-shawn-standing-law.json").read_text())
+    capture = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260929-sn004-shawn-standing-law.json").read_text(encoding="utf-8"))
     intelligence = capture["intelligence"]
     path = mod.render(_private_sn004_capture(), _verify_for_lesson(intelligence, "IB-SN004-STRUCTURED"), private_root=tmp_path)
-    rendered = path.read_text()
+    rendered = path.read_text(encoding="utf-8")
     assert intelligence["human_view"]["meaning"] in rendered
     assert intelligence["simple_view"]["child"] in rendered
     assert intelligence["naya_view"]["purpose"] in rendered
@@ -350,7 +350,7 @@ def test_registry_reconciles_exact_persisted_lesson_with_complete_runtime_refs(t
     monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
     projection = tmp_path / "BRAIN" / "note.md"
     mod.update_registry(capture, verify, projection)
-    registry = json.loads(mod.REGISTRY.read_text())
+    registry = json.loads(mod.REGISTRY.read_text(encoding="utf-8"))
     digest = hashlib.sha256(lesson.encode()).hexdigest()
     # Exercise the actual workflow consumer's lookup and reference names.
     exact = next((entry for entry in registry["entries"]
@@ -387,7 +387,7 @@ def test_registry_hash_survives_noncanonical_lesson_serialization(tmp_path, monk
     monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
     projection = tmp_path / "BRAIN" / "note.md"
     mod.update_registry(capture, verify, projection)
-    registry = json.loads(mod.REGISTRY.read_text())
+    registry = json.loads(mod.REGISTRY.read_text(encoding="utf-8"))
     # The workflow reader's formula: canonical JSON of capture["intelligence"].
     reader_digest = hashlib.sha256(
         json.dumps(intelligence, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
@@ -410,7 +410,7 @@ def test_registry_hash_plain_string_lesson_is_stable(tmp_path, monkeypatch):
     monkeypatch.setattr(mod, "BRAIN_SMART_NOTE_ROOT", tmp_path / "BRAIN")
     projection = tmp_path / "BRAIN" / "note.md"
     mod.update_registry(capture, verify, projection)
-    registry = json.loads(mod.REGISTRY.read_text())
+    registry = json.loads(mod.REGISTRY.read_text(encoding="utf-8"))
     expected = hashlib.sha256(
         "Preserve provenance before applying retained intelligence.".encode()).hexdigest()
     assert registry["entries"][0]["content_hash"] == expected
@@ -435,17 +435,17 @@ def test_resolve_runtime_connections_maps_smart_note_ids_to_canonical_blocks():
 
 
 def test_live_capture_threads_only_resolved_connections_to_writer():
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert "resolve_runtime_connections(capture,registry)" in workflow
     assert '"p_connections":resolved_connections' in workflow
 
 
 def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture():
-    agents = (ROOT / "AGENTS.md").read_text()
-    master = (ROOT / ".naya/MASTER-DIRECTOR-ULTRA-OPTIMIZATION-V1.md").read_text()
-    protocol = (ROOT / "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md").read_text()
-    cold = (ROOT / "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md").read_text()
-    capture = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260930-sn016-prime-judgment-rule.json").read_text())
+    agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    master = (ROOT / ".naya/MASTER-DIRECTOR-ULTRA-OPTIMIZATION-V1.md").read_text(encoding="utf-8")
+    protocol = (ROOT / "BRAIN/04-INTELLIGENCE/0005-SMART-NODE-INTELLIGENT-BLOCK-PROTOCOL-V1.md").read_text(encoding="utf-8")
+    cold = (ROOT / "NAYA-ACTIVATION/00-MASTER-COLD-NAYA-ACTIVATION.md").read_text(encoding="utf-8")
+    capture = json.loads((ROOT / ".naya/capture/SMART-NOTE-20260930-sn016-prime-judgment-rule.json").read_text(encoding="utf-8"))
     assert "PRIME JUDGMENT LAW — JUDGMENT BEFORE BLIND OBEDIENCE" in agents
     assert "I was told to" in agents
     assert "Prime Judgment Rule — Judgment Before Blind Obedience" in master
@@ -459,7 +459,7 @@ def test_prime_judgment_law_is_locked_into_agent_operating_contracts_and_capture
 def test_live_workflow_honors_private_publication_authorization_without_bare_active():
     """A PRIVATE canonical Block may publish an explicitly authorized derived view,
     but its Smart Link status remains ACTIVE_AUTH_GATED rather than bare ACTIVE."""
-    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text()
+    workflow = (ROOT / ".github/workflows/live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
     assert 'expected_status="ACTIVE_AUTH_GATED" if e.get("scope")=="PRIVATE" else "ACTIVE"' in workflow
     assert '{"ACTIVE", "ACTIVE_AUTH_GATED", "READY"}' in workflow
     # Preserve the fail-closed private path: publication is decided by the canonical

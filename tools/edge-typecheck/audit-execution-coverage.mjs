@@ -56,6 +56,7 @@ const rel = (p) => relative(ROOT, p).split(sep).join("/");
 const rows = [];
 for (const fn of readdirSync(FUNCTIONS, { withFileTypes: true })) {
   if (!fn.isDirectory()) continue;
+    if (fn.name.startsWith("_")) continue; // shared modules are not deployable edge functions
   const name = fn.name;
   const sources = walk(join(FUNCTIONS, name));
   const paths = sources.map(rel);

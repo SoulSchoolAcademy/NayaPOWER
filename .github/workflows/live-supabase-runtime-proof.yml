@@ -197,7 +197,7 @@ jobs:
             .naya/evidence/deployed-runtime-observation.json
 
   independent-connect-verification:
-    if: ${{ always() }}
+    if: ${{ always() && needs.live-connect.result == 'success' }}
     needs: live-connect
     runs-on: ubuntu-latest
     steps:
@@ -788,7 +788,7 @@ jobs:
           path: active-learning-generalization-successor-proof.json
 
   cold-successor:
-    if: ${{ always() }}
+    if: ${{ always() && needs.independent-retained-learning-reread.result == 'success' }}
     # Depends only on live-connect, which proves the canonical block exists and is
     # owner-scoped. It deliberately does NOT depend on
     # independent-learning-influence-verification: that job needs a rotated owner
@@ -845,7 +845,7 @@ jobs:
           path: cold-successor-receipt.json
 
   cold-successor-verification:
-    if: ${{ always() }}
+    if: ${{ always() && needs.cold-successor.result == 'success' }}
     needs: cold-successor
     runs-on: ubuntu-latest
     steps:

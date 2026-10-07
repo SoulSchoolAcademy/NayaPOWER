@@ -79,7 +79,7 @@ def test_valid_evidence_promotes_to_verified(tmp_path):
     assert receipt["promoter"] == "naya-4"
 
     # Registry was updated
-    reg = json.loads(reg_path.read_text())
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
     entry = reg["entries"][0]
     assert entry["truth_state"] == "VERIFIED"
     assert "promotion_receipt" in entry
@@ -98,7 +98,7 @@ def test_empty_evidence_stays_candidate(tmp_path):
     refusal = result["record"]
     assert refusal["reason_code"] == "EMPTY_EVIDENCE"
 
-    reg = json.loads(reg_path.read_text())
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
     assert reg["entries"][0]["truth_state"] == "CANDIDATE"
 
 
@@ -116,7 +116,7 @@ def test_self_gathered_evidence_refused(tmp_path):
     assert result["promoted"] is False
     assert result["record"]["reason_code"] == "SELF_CERTIFICATION"
 
-    reg = json.loads(reg_path.read_text())
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
     assert reg["entries"][0]["truth_state"] == "CANDIDATE"
 
 
@@ -135,7 +135,7 @@ def test_self_referential_evidence_refused(tmp_path):
     assert result["promoted"] is False
     assert result["record"]["reason_code"] == "SELF_REFERENTIAL"
 
-    reg = json.loads(reg_path.read_text())
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
     assert reg["entries"][0]["truth_state"] == "CANDIDATE"
 
 
@@ -229,7 +229,7 @@ def test_single_gatherer_refused(tmp_path):
 
 def test_already_verified_note_refused(tmp_path):
     reg_path = make_registry(tmp_path)
-    reg = json.loads(reg_path.read_text())
+    reg = json.loads(reg_path.read_text(encoding="utf-8"))
     reg["entries"][0]["truth_state"] = "VERIFIED"
     reg_path.write_text(json.dumps(reg))
 
