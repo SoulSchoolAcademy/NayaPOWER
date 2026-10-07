@@ -30,6 +30,11 @@ declare module "https://*" {
 
 declare module "npm:*" {
   export const createClient: (...args: any[]) => any;
+  // jose (imported as npm:jose@* by nayanet-github-dispatch for GitHub App
+  // JWT minting). Mirrors the https://* stub's shape declarations -- shapes
+  // only, per this file's scope discipline.
+  export const SignJWT: any;
+  export const importPKCS8: (...args: any[]) => Promise<any>;
   const _default: any;
   export default _default;
 }
