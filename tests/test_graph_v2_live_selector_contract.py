@@ -74,4 +74,8 @@ def test_workflow_graph_proof_waits_for_verified_learning_and_uses_producer_bloc
     assert '"intelligent_block_id"' in block
     assert '"provenance_sensitive"' in block
     assert "NAYANET_COLD_GRAPH_BEHAVIOR_V2" in block
-\n\ndef test_fallback_capture_declares_provenance_sensitive_task_class():\n    source = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")\n    assert '"declared_task_classes":["provenance_sensitive"]' in source\n
+
+
+def test_fallback_capture_declares_provenance_sensitive_task_class():
+    source = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
+    assert '"declared_task_classes":["provenance_sensitive"]' in source
