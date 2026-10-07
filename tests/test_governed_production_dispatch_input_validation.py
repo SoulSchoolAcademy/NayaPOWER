@@ -8,7 +8,7 @@ def test_explicit_source_sha_validation_uses_shell_length_and_character_contract
     assert 'authorized_sha="${{ inputs.source_sha }}"' in source
     assert 'if [ "${#authorized_sha}" -ne 40 ]; then' in source
     assert 'case "$authorized_sha" in' in source
-    assert '^[0-9a-fA-F]*' in source
+    assert '*[!0-9a-f]*|""' in source
     assert "grep -Eq '^[0-9a-f]{40}$'" not in source
 
 def test_explicit_source_sha_validation_preserves_exact_current_sha_fail_closed_gate():
