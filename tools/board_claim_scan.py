@@ -81,17 +81,32 @@ def gh_api(method, path):
 
 
 def fetch_open_prs():
-    data = gh_api("GET", f"/repos/{REPO}/pulls?state=open&per_page=100")
-    return [
-        {
-            "kind": "pr",
-            "id": p["number"],
-            "title": p["title"],
-            "ref": p["head"]["ref"],
-            "text": f"{p['title']} {p['head']['ref']}",
-        }
-        for p in data
-    ]
+    """Read all open PR pages within a bounded budget; never truncate to CLEAR."""
+    items = []
+    seen = set()
+    for page in range(1, 11):
+        data = gh_api("GET", f"/repos/{REPO}/pulls?state=open&per_page=100&page={page}")
+        if not isinstance(data, list) or len(data) > 100:
+            raise RuntimeError("PR_COVERAGE: malformed PR page")
+        for p in data:
+            if (not isinstance(p, dict) or type(p.get("number")) is not int
+                    or not isinstance(p.get("title"), str)
+                    or not isinstance(p.get("head"), dict)
+                    or not isinstance(p["head"].get("ref"), str)):
+                raise RuntimeError("PR_COVERAGE: malformed PR")
+            if p["number"] in seen:
+                raise RuntimeError("PR_COVERAGE: duplicate PR; retry scan")
+            seen.add(p["number"])
+            items.append({
+                "kind": "pr",
+                "id": p["number"],
+                "title": p["title"],
+                "ref": p["head"]["ref"],
+                "text": f"{p['title']} {p['head']['ref']}",
+            })
+        if len(data) < 100:
+            return items
+    raise RuntimeError("PR_PAGINATION_LIMIT: no terminal page within 1000 PRs; cannot declare CLEAR")
 
 
 def fetch_board_tail(board, pages=2):
