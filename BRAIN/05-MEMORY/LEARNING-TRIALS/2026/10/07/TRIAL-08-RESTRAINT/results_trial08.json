@@ -1,0 +1,122 @@
+{
+  "T8-AGENT-01": {
+    "passed": 5,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-03": {
+    "passed": 6,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-06": {
+    "passed": 5,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-07": {
+    "passed": 8,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-09": {
+    "passed": 8,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-11": {
+    "passed": 7,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-13": {
+    "passed": 7,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-14": {
+    "passed": 9,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-17": {
+    "passed": 4,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-20": {
+    "passed": 0,
+    "total": 9,
+    "arm": "treatment",
+    "missing": null
+  },
+  "T8-AGENT-02": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-04": {
+    "passed": 7,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-05": {
+    "passed": 7,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-08": {
+    "passed": 7,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-10": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-12": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-15": {
+    "passed": 9,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-16": {
+    "passed": 8,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-18": {
+    "passed": 7,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  },
+  "T8-AGENT-19": {
+    "passed": 0,
+    "total": 9,
+    "arm": "control",
+    "missing": null
+  }
+}
