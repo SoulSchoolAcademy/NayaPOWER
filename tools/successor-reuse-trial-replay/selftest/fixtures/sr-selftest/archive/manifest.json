@@ -1,6 +1,6 @@
 {
   "trial_id": "SR-SELFTEST-20261007",
-  "verifier": "../successor-reuse-trial-replay/selftest-fixture-verifier-note",
+  "verifier": "../../verifier-r2.mjs",
   "sandbox_posture": "local node, loopback HTTP server only (same as original verification)",
   "arms": {
     "B": {
@@ -23,5 +23,5 @@
     }
   },
   "recorded_delta": 0,
-  "notes": "Self-test fixture for replay-trial.mjs. Mirrors SR-R2 arm shape."
+  "notes": "Self-test fixture for replay-trial.mjs. In-repo copy: verifier path resolves relative to selftest/fixtures/ to tools/successor-reuse-trial-replay/verifier-r2.mjs (the R2 reference verifier). Workspace original used ../../verifier-r2.mjs from harness/selftest/fixtures/."
 }
