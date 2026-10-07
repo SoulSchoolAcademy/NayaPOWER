@@ -1,7 +1,6 @@
 ﻿// Canonical receiver contract: authoritative live IB identity is allocated here; repository projections never guess IDs. Acceptance semantics remain provenance-bound.
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // NAYANET LIVE-PARITY REVALIDATION 2026-09-23
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, x-client-info, apikey, content-type, x-idempotency-key","Access-Control-Allow-Methods":"POST, OPTIONS"};
 function json(body:unknown,status=200){return new Response(JSON.stringify(body),{status,headers:{...cors,"Content-Type":"application/json"}})}
@@ -344,11 +343,14 @@ Deno.serve(async(req)=>{
   // present in current source/runtime. Reusing the canonical cognition RPC avoids
   // resurrecting a second orchestration surface while preserving the same
   // owner-scoped event/receipt semantics.
-  const checkpointSource=await supabase.from("nayanet_cognition_events")
-    .select("id,event_id")
-    .eq("event_id",eventId)
-    .eq("user_id",user.id)
-    .eq("project_id","NayaNET")
+  // PRODUCTION REPAIR (2026-10-07): the canonical source event for a Smart Note
+  // is persisted by v7_create_smart_note in smart_note_events (uuid primary key),
+  // NOT in nayanet_cognition_events — looking for it there always missed and the
+  // checkpoint threw a false CHECKPOINT_SOURCE_EVENT_NOT_FOUND.
+  const checkpointSource=await supabase.from("smart_note_events")
+    .select("id")
+    .eq("id",eventId)
+    .eq("member_id",user.id)
     .maybeSingle();
   if(checkpointSource.error)throw checkpointSource.error;
   if(!checkpointSource.data)throw new Error("CHECKPOINT_SOURCE_EVENT_NOT_FOUND:"+eventId);
@@ -418,10 +420,15 @@ Deno.serve(async(req)=>{
     },
     intelligence_checkpoint:checkpoint
   };
-  // Final runtime boundary: prove the canonical event is actually visible to the authenticated owner's Smart Feed before returning completion.
+  // Final runtime boundary: prove the checkpoint event persisted by
+  // nayanet_record_cognition_event is actually visible to the authenticated
+  // owner's Smart Feed before returning completion. PRODUCTION REPAIR
+  // (2026-10-07): the verified event is the CHECKPOINT (event_id=checkpointId),
+  // not the original Smart Note event — the original lives in smart_note_events
+  // (see checkpointSource above) and will never appear in this table.
   const feedVerification=await supabase.from("nayanet_cognition_events")
     .select("id,event_id,user_id,project_id,status,created_at")
-    .eq("event_id",eventId)
+    .eq("event_id",checkpointId)
     .eq("user_id",user.id)
     .eq("project_id","NayaNET")
     .maybeSingle();
@@ -466,32 +473,69 @@ Deno.serve(async(req)=>{
     if(issued.error||!issued.data?.grant_id)throw issued.error||new Error("SMART_NOTE_PROJECTION_AUTHORITY_GRANT_FAILED");
     projectionGrantId=String(issued.data.grant_id);
   }
-  const projectionResponse=await fetch(supabaseUrl+"/functions/v1/nayanet-github-dispatch",{
-    method:"POST",
-    headers:{"Authorization":auth,"apikey":supabaseAnonKey,"Content-Type":"application/json","x-idempotency-key":"smart-note-projection:"+canonicalTransactionId},
-    body:JSON.stringify({operation:"project_smart_note",transaction_id:canonicalTransactionId,authority_grant_id:projectionGrantId,approval:"EXPLICIT_APPROVAL_GRANTED",idempotency_key:"smart-note-projection:"+canonicalTransactionId})
-  });
-  const projectionData=await projectionResponse.json().catch(()=>({}));
-  if(!projectionResponse.ok || projectionData?.ok!==true || projectionData?.pipeline!=="PROJECTION_VERIFIED" || typeof projectionData?.smart_link!=="string"){
-    throw new Error("SMART_NOTE_GITHUB_PROJECTION_FAILED:"+JSON.stringify({status:projectionResponse.status,error:projectionData?.error||"UNKNOWN",pipeline:projectionData?.pipeline||"UNKNOWN",request_id:projectionData?.request_id||null}));
-  }
-  const smartLink=String(projectionData.smart_link);
-  if(!/^https:\/\/github\.com\/SoulSchoolAcademy\/NayaPOWER\/blob\/main\/.+\/IB-\d{6}\/smart-note\.md$/.test(smartLink))throw new Error("SMART_NOTE_GITHUB_LINK_INVALID");
-  const projectionVerification={
-    status:"PROJECTION_VERIFIED",
-    smart_link:smartLink,
-    workflow:"project-canonical-smart-note.yml",
-    transaction_id:canonicalTransactionId,
-    authority_grant_id:projectionGrantId,
-    dispatch_receipt_id:projectionData?.receipt?.id||null,
-    verified_at:projectionData?.projection_verification?.completed_at||new Date().toISOString(),
-    github_run_url:projectionData?.projection_verification?.run_url||null
+  // GitHub projection is best-effort and NON-BLOCKING (production contract,
+  // 2026-10-07): a dispatch failure must NEVER 500 a successfully captured Smart
+  // Note. The projection outcome is recorded in projectionVerification and the
+  // completion receipt so it stays observable; replaying the same idempotency
+  // key retries the projection.
+  let smartLink: string | null = null;
+  let projectionStatus = "PROJECTION_DEFERRED";
+  let projectionVerification: Record<string,unknown> = {
+    status: "PROJECTION_DEFERRED",
+    workflow: "project-canonical-smart-note.yml",
+    transaction_id: canonicalTransactionId,
+    authority_grant_id: projectionGrantId,
+    dispatch_receipt_id: null,
+    verified_at: null,
+    github_run_url: null,
+    note: "Projection deferred; replay the same idempotency key to retry."
   };
+  try {
+    const projectionResponse=await fetch(supabaseUrl+"/functions/v1/nayanet-github-dispatch",{
+      method:"POST",
+      headers:{"Authorization":auth,"apikey":supabaseAnonKey,"Content-Type":"application/json","x-idempotency-key":"smart-note-projection:"+canonicalTransactionId},
+      body:JSON.stringify({operation:"project_smart_note",transaction_id:canonicalTransactionId,authority_grant_id:projectionGrantId,approval:"EXPLICIT_APPROVAL_GRANTED",idempotency_key:"smart-note-projection:"+canonicalTransactionId})
+    });
+    const projectionData=await projectionResponse.json().catch(()=>({}));
+    if(!projectionResponse.ok || projectionData?.ok!==true || projectionData?.pipeline!=="PROJECTION_VERIFIED" || typeof projectionData?.smart_link!=="string"){
+      throw new Error("SMART_NOTE_GITHUB_PROJECTION_FAILED:"+JSON.stringify({status:projectionResponse.status,error:projectionData?.error||"UNKNOWN",pipeline:projectionData?.pipeline||"UNKNOWN",request_id:projectionData?.request_id||null}));
+    }
+    const candidateLink=String(projectionData.smart_link);
+    if(!/^https:\/\/github\.com\/SoulSchoolAcademy\/NayaPOWER\/blob\/main\/.+\/IB-\d{6}\/smart-note\.md$/.test(candidateLink))throw new Error("SMART_NOTE_GITHUB_LINK_INVALID");
+    smartLink=candidateLink;
+    projectionStatus="PROJECTION_VERIFIED";
+    projectionVerification={
+      status:"PROJECTION_VERIFIED",
+      smart_link:smartLink,
+      workflow:"project-canonical-smart-note.yml",
+      transaction_id:canonicalTransactionId,
+      authority_grant_id:projectionGrantId,
+      dispatch_receipt_id:projectionData?.receipt?.id||null,
+      verified_at:projectionData?.projection_verification?.completed_at||new Date().toISOString(),
+      github_run_url:projectionData?.projection_verification?.run_url||null
+    };
+  } catch (projectionError) {
+    // Non-blocking: record the failure in evidence, keep the 200.
+    projectionStatus="PROJECTION_FAILED";
+    const projectionDetail=String((projectionError as Error)?.message||projectionError).slice(0,500);
+    projectionVerification={
+      status:"PROJECTION_FAILED",
+      workflow:"project-canonical-smart-note.yml",
+      transaction_id:canonicalTransactionId,
+      authority_grant_id:projectionGrantId,
+      dispatch_receipt_id:null,
+      verified_at:null,
+      github_run_url:null,
+      error:projectionDetail,
+      note:"Projection failed without blocking capture; replay the same idempotency key to retry."
+    };
+    console.error("SMART_NOTE_GITHUB_PROJECTION_DEFERRED:"+projectionDetail);
+  }
 
   const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);
   if(!/^IB-\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
    const repositoryProjection={
-     status:"PENDING",
+     status:projectionStatus,
      rule:"Repository Smart Note projection MUST use the authoritative live intelligent_block_id returned by this receiver; repository code MUST NOT allocate or guess IB identities.",
      intelligent_block_id:intelligentBlockId||null,
      source_event_id:eventId,
@@ -510,7 +554,7 @@ Deno.serve(async(req)=>{
     smart_link:smartLink,
     hub_deep_link:hubDeepLink,
     repository_projection:{
-      status:"VERIFIED",
+      status:projectionStatus,
       category:projectionCategory,
       topic:projectionTopic,
       intelligent_block_id:intelligentBlockId,
@@ -524,7 +568,7 @@ Deno.serve(async(req)=>{
   };
   return json({
     ok:true,
-    pipeline:"PROJECTION_VERIFIED",
+    pipeline:projectionStatus==="PROJECTION_VERIFIED"?"PROJECTION_VERIFIED":"SMART_NOTE_CAPTURED_PROJECTION_DEFERRED",
     canonical_event:true,
     collection:"Smart Notes",
     replayed,
@@ -538,7 +582,7 @@ Deno.serve(async(req)=>{
     completion_receipt:completionReceipt,
     repository_projection:{
       ...repositoryProjection,
-      status:"VERIFIED",
+      status:projectionStatus,
       category:projectionCategory,
       topic:projectionTopic,
       workflow:"project-canonical-smart-note.yml",

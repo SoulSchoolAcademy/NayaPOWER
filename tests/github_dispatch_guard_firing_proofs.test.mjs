@@ -141,7 +141,22 @@ function runtime({
     },
   };
 
-  const adminClient = { from: () => receipts };
+  // PRODUCTION REPAIR (2026-10-07): the transaction row is read through the
+  // service-role client (the user-scoped read is invisible under the live RLS
+  // contract), so the admin mock serves the tx table the same as the user mock.
+  const adminClient = {
+    from(table) {
+      if (table === "v7_smart_note_transactions") {
+        const chain = {
+          select() { return chain; },
+          eq() { return chain; },
+          maybeSingle: async () => ({ data: tx, error: null }),
+        };
+        return chain;
+      }
+      return receipts;
+    },
+  };
 
   const fetchStub = async (url, opts = {}) => {
     const method = opts.method ?? "GET";
