@@ -39,11 +39,14 @@ def test_live_act_proof_fails_closed_for_exact_source_parity_mismatch():
         assert path in source
 
 
-def test_governed_promotion_dispatches_registry_designated_act_proof_on_exact_source():
+def test_governed_promotion_preserves_verified_action_and_adds_registry_designated_act_proof():
     source = DEPLOY.read_text(encoding="utf-8")
-    assert "ACT_PROOF_WORKFLOW: live-act-proof.yml" in source
-    assert 'gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"' in source
+    assert "ACT_PROOF_WORKFLOW: live-verified-ai-action-proof.yml" in source
+    assert "LEARNING_ACT_PROOF_WORKFLOW: live-act-proof.yml" in source
+    assert 'gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
+    assert 'gh workflow run "$LEARNING_ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"' in source
     assert '"act_proof_conclusion":act_proof.get("conclusion")' in source
+    assert '"learning_act_proof_conclusion":learning_act_proof.get("conclusion")' in source
 
 
 def test_know_runtime_allows_only_named_canonical_act_proof_identity():
