@@ -179,3 +179,10 @@ def test_learning_promotion_retry_is_bounded_to_a_single_403_recovery_attempt():
     assert source.count('post_promotion "$token"') == 1
     assert source.count('if [ "$status" = "403" ]; then') == 1
     assert source.count('mint_runtime_token()') == 1
+
+
+def test_learning_lock_in_law_uses_logical_naya_target_for_node_scoped_learning_authority():
+    source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
+    assert 'const LEARNING_AUTHORITY_TARGET = "NAYA-NODE-0001";' in source
+    assert 'matches(scope.target, LEARNING_AUTHORITY_TARGET)' in source
+    assert 'resolveLearningLockInLaw(admin, ownerId, intelligentBlockId)' in source
