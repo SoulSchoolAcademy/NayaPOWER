@@ -56,6 +56,7 @@ async function authenticateRuntime(req: Request) {
 // other than AUTHORIZED denies the lock-in. Written without TS annotations so
 // the shipped block can be executed verbatim in the loop's node harness.
 const LEARNING_LOCK_IN_ACTION = "learning_lock_in";
+const LEARNING_AUTHORITY_TARGET = "NAYA-NODE-0001";
 
 const lawGrantTargetMatches = (grant, target, projectId) => {
   const scope = (grant && grant.scope) || {};
@@ -63,7 +64,7 @@ const lawGrantTargetMatches = (grant, target, projectId) => {
     typeof value === "string" && value.trim().length > 0 &&
     typeof requested === "string" && requested.trim().length > 0 &&
     value === requested;
-  return matches(scope.target, target) || matches(scope.project_id, target) || matches(scope.project_id, projectId);
+  return matches(scope.target, target) || matches(scope.target, LEARNING_AUTHORITY_TARGET) || matches(scope.project_id, target) || matches(scope.project_id, projectId);
 };
 
 const lawGrantIsExpired = (grant, now) =>
