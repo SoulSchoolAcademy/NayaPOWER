@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "f4d6ba647ee6ea303f618a77d49c582ee9dc1a25",
-  "inventory_file_count": 234,
+  "receipt_basis_commit": "a0bbafcf1e88090850bb6b27906bda8dce640f52",
+  "inventory_file_count": 237,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
-    "03-KERNEL": 28,
-    "04-INTELLIGENCE": 24,
-    "05-MEMORY": 68,
+    "03-KERNEL": 29,
+    "04-INTELLIGENCE": 25,
+    "05-MEMORY": 69,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -240,8 +240,8 @@
     },
     {
       "path": "BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json",
-      "blob_sha": "6718854aea87b090776ff381824ecad9efada124",
-      "size": 12899
+      "blob_sha": "cc5f5559c0bfd753d938cc62f8d763a559de2ed4",
+      "size": 13674
     },
     {
       "path": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json",
@@ -307,6 +307,11 @@
       "path": "BRAIN/03-KERNEL/NODES/SELF/0002-ELITE-SELF-CONTRACT-V2.md",
       "blob_sha": "850ed8a6615ba53469048d08e7ce16cde09e9b4d",
       "size": 2630
+    },
+    {
+      "path": "BRAIN/03-KERNEL/NODES/SELF/0003-PERSONA-IDENTITY-CONTRACT-V1.md",
+      "blob_sha": "6b5bddde9d94f93409ae26680e07102ef1ec8be4",
+      "size": 4146
     },
     {
       "path": "BRAIN/03-KERNEL/NODES/VERIFY/0001-CONTRACT.md",
@@ -477,6 +482,11 @@
       "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-KERNEL-VERIFY.json",
       "blob_sha": "2739d6b853808e1668020dc052d0cbc55f7e60c5",
       "size": 4561
+    },
+    {
+      "path": "BRAIN/04-INTELLIGENCE/OBJECTS/NAYA-PERSONA-V1.json",
+      "blob_sha": "5c399eb8b94ef72204613009901f7f7827216190",
+      "size": 3369
     },
     {
       "path": "BRAIN/04-INTELLIGENCE/README.md",
@@ -822,6 +832,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
       "blob_sha": "a17fe344f136c0efd210822268ba86607be90dc5",
       "size": 4499
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md",
+      "blob_sha": "1d74b1e0df9a46e2bd1bb5727832a6eaff58164f",
+      "size": 6563
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
