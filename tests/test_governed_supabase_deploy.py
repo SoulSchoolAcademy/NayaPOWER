@@ -12,7 +12,8 @@ def test_governed_promotion_keeps_manual_human_gate_and_canonical_proof():
     assert "PRODUCTION_BRANCH: production" in source
     assert "live-intelligence-commit-proof.yml" in source
     assert "live-supabase-runtime-proof.yml" in source
-    assert "live-verified-ai-action-proof.yml" in source
+    assert "ACT_PROOF_WORKFLOW: live-verified-ai-action-proof.yml" in source
+    assert "LEARNING_ACT_PROOF_WORKFLOW: live-act-proof.yml" in source
     assert "live-connect-proof.yml" in source
     assert "production-promotion-receipt.json" in source
 
@@ -80,8 +81,11 @@ def test_governed_promotion_dispatches_runtime_proof_directly():
     assert 'if [ "$proof_head" != "$GITHUB_SHA" ]; then' in source
     assert 'gh workflow run "$ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
-    assert 'if [ "$act_head" != "$GITHUB_SHA" ]; then' in source
     assert '"act_proof_conclusion":act_proof.get("conclusion")' in source
+    assert 'gh workflow run "$LEARNING_ACT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main -f expected_source_sha="$GITHUB_SHA"' in source
+    assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$LEARNING_ACT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
+    assert '"learning_act_proof_conclusion":learning_act_proof.get("conclusion")' in source
+    assert 'if [ "$act_head" != "$GITHUB_SHA" ]; then' in source
     assert 'gh workflow run "$CONNECT_PROOF_WORKFLOW" --repo "$GITHUB_REPOSITORY" --ref main' in source
     assert 'gh run list --repo "$GITHUB_REPOSITORY" --workflow "$CONNECT_PROOF_WORKFLOW" --branch main --event workflow_dispatch' in source
     assert 'if [ "$connect_head" != "$GITHUB_SHA" ]; then' in source
@@ -104,8 +108,8 @@ def test_governed_promotion_polls_dispatched_runs_instead_of_blocking_on_gh_run_
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "gh run watch" not in source
     assert "gh run view" in source
-    assert source.count("--jq .status") == 4
-    assert source.count("--jq .conclusion") == 4
+    assert source.count("--jq .status") == 5
+    assert source.count("--jq .conclusion") == 5
     assert '.status+":"+(.conclusion//"")' not in source
 
 
