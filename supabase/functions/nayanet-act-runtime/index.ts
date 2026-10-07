@@ -52,10 +52,17 @@ async function readGrant(admin:ReturnType<typeof adminClient>,id:string){
 async function readBlock(admin:ReturnType<typeof adminClient>,blockId:string){
   if(!blockId) return null;
   const {data,error}=await admin.from("nayanet_intelligent_blocks")
-    .select("intelligent_block_id,owner_id,status,understanding_state,applicable_scope,content,evidence_refs,provenance,superseded_by_block_id,updated_at")
+    .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,evidence_refs,provenance,superseded_by_block_id,updated_at,connections")
     .eq("intelligent_block_id",blockId).eq("owner_id",OWNER_ID).maybeSingle();
   if(error) throw error;
   return data as SelectedBlock|null;
+}
+async function readEligibleUniverse(admin:ReturnType<typeof adminClient>){
+  const {data,error}=await admin.from("nayanet_intelligent_blocks")
+    .select("intelligent_block_id,owner_id,status,understanding_state,owner_scope,applicable_scope,value_context,content,provenance,evidence_refs,superseded_by_block_id,updated_at,connections")
+    .eq("owner_id",OWNER_ID);
+  if(error) throw error;
+  return (data??[]) as SelectedBlock[];
 }
 async function digestValue(value:unknown){
   const bytes=new TextEncoder().encode(JSON.stringify(value??null));
@@ -153,6 +160,7 @@ Deno.serve(async(req)=>{
     const knowReceipt=await readReceipt(admin,retrievalReceiptId) as KnowReceipt|null;
     const selectedId=String((knowReceipt as any)?.evidence?.result?.selected_block_id??"");
     const selectedBlock=selectedId?await readBlock(admin,selectedId):null;
+    const selectionUniverse=await readEligibleUniverse(admin);
     const plan=buildActPlan(
       request,
       authority.lawReceipt,
@@ -160,6 +168,7 @@ Deno.serve(async(req)=>{
       authority.door,
       knowReceipt,
       selectedBlock,
+      selectionUniverse,
       new Date(),
     );
 
@@ -251,6 +260,7 @@ Deno.serve(async(req)=>{
     const knowReceipt=await readReceipt(admin,retrievalReceiptId) as KnowReceipt|null;
     const selectedId=String((knowReceipt as any)?.evidence?.result?.selected_block_id??"");
     const selectedBlock=selectedId?await readBlock(admin,selectedId):null;
+    const selectionUniverse=await readEligibleUniverse(admin);
     const recomputed=buildActPlan(
       request,
       authority.lawReceipt,
@@ -258,6 +268,7 @@ Deno.serve(async(req)=>{
       authority.door,
       knowReceipt,
       selectedBlock,
+      selectionUniverse,
       new Date(),
     );
     const recomputedHash=await digestValue({
@@ -391,7 +402,8 @@ Deno.serve(async(req)=>{
     const knowReceipt=await readReceipt(admin,retrievalReceiptId) as KnowReceipt|null;
     const selectedId=String((knowReceipt as any)?.evidence?.result?.selected_block_id??"");
     const selectedBlock=selectedId?await readBlock(admin,selectedId):null;
-    const recomputed=buildActPlan(request,authority.lawReceipt,authority.liveGrant,authority.door,knowReceipt,selectedBlock,new Date());
+    const selectionUniverse=await readEligibleUniverse(admin);
+    const recomputed=buildActPlan(request,authority.lawReceipt,authority.liveGrant,authority.door,knowReceipt,selectedBlock,selectionUniverse,new Date());
     return json({
       ok:true,
       status:"CANONICAL_PLAN_REREAD",

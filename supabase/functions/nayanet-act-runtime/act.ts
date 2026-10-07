@@ -1,3 +1,5 @@
+import { selectKnowContext, type IntelligentBlock, type KnowRequest } from "../nayanet-know-runtime/know.ts";
+
 export type ActStatus = "READY" | "BLOCKED";
 
 export type LawReceipt = {
@@ -64,18 +66,7 @@ export type KnowReceipt = {
   evidence?: any;
 };
 
-export type SelectedBlock = {
-  intelligent_block_id?: string | null;
-  owner_id?: string | null;
-  status?: string | null;
-  understanding_state?: string | null;
-  applicable_scope?: any;
-  content?: any;
-  provenance?: any;
-  evidence_refs?: any[];
-  superseded_by_block_id?: string | null;
-  updated_at?: string | null;
-};
+export type SelectedBlock = IntelligentBlock;
 
 export type ActPlan = {
   action: string;
@@ -117,6 +108,9 @@ export type ActPlanResult = {
     retrieval_reason: string;
   };
   retrieval_receipt_id: string | null;
+  selection_replay_verified: boolean;
+  selection_replay_reason: string;
+  selection_now: string | null;
   effect_executed: false;
 };
 
@@ -259,6 +253,9 @@ function planResult(
     application_reason:reason,
     selected_intelligence:null,
     retrieval_receipt_id:null,
+    selection_replay_verified:false,
+    selection_replay_reason:reason,
+    selection_now:null,
     effect_executed:false,
     ...extra,
   };
@@ -280,6 +277,32 @@ function taskIdentityFromKnow(receipt: KnowReceipt) {
   const required_capability=String(request.required_capability ?? "").trim();
   if (!task_id || !task_class || !required_capability) return null;
   return {task_id,task_class,required_capability};
+}
+
+function replayKnowSelection(
+  req: ActRequest,
+  receipt: KnowReceipt,
+  universe: SelectedBlock[] | null,
+): {ok:true;selection_now:string;recomputed:any} | {ok:false;reason:string} {
+  if (!Array.isArray(universe)) return {ok:false,reason:"KNOW_SELECTION_UNIVERSE_REQUIRED"};
+  const ev=receipt.evidence ?? {};
+  const recorded=ev.result ?? {};
+  const task=taskIdentityFromKnow(receipt);
+  if (!task) return {ok:false,reason:"KNOW_TASK_IDENTITY_MISSING"};
+  const rawSelectionNow=ev.selection_now;
+  const selectionMs=typeof rawSelectionNow==="string" ? Date.parse(rawSelectionNow) : NaN;
+  if (!Number.isFinite(selectionMs)) return {ok:false,reason:"KNOW_SELECTION_TIME_INVALID"};
+
+  const replayRequest:KnowRequest={
+    owner_id:req.owner_id,
+    naya_id:req.naya_id,
+    task_id:task.task_id,
+    task_class:task.task_class,
+    required_capability:task.required_capability,
+  };
+  const recomputed=selectKnowContext(replayRequest,universe,new Date(selectionMs));
+  if (!canonicalEqual(recorded,recomputed)) return {ok:false,reason:"KNOW_SELECTION_REPLAY_MISMATCH"};
+  return {ok:true,selection_now:new Date(selectionMs).toISOString(),recomputed};
 }
 
 function selectedBlockMatchesReceipt(
@@ -341,6 +364,7 @@ export function buildActPlan(
   door: DoorOperation | null,
   knowReceipt: KnowReceipt | null,
   selectedBlock: SelectedBlock | null,
+  selectionUniverse: SelectedBlock[] | null,
   now = new Date(),
 ): ActPlanResult {
   const guard=validateAct(req,lawReceipt,liveGrant,door,now);
@@ -387,6 +411,20 @@ export function buildActPlan(
     return planResult(req,guard,"BLOCKED","KNOW_REQUEST_BINDING_INVALID",{retrieval_receipt_id:retrievalId,task_identity:task});
   }
 
+  // Do not trust a persisted KNOW result merely because its selected block,
+  // provenance and evidence are self-consistent. Replay the canonical KNOW
+  // selector over the owner-scoped current universe at the receipt's pinned
+  // selection time. This catches a coherently forged selected ID that points
+  // at a real but non-canonical block.
+  const replay=replayKnowSelection(req,knowReceipt,selectionUniverse);
+  if ("reason" in replay) {
+    return planResult(req,guard,"BLOCKED",replay.reason,{
+      retrieval_receipt_id:retrievalId,
+      task_identity:task,
+      selection_replay_reason:replay.reason,
+    });
+  }
+
   const pre=basePlan(req);
   if (result.status==="MISS") {
     return planResult(req,guard,"READY","NO_APPLICABLE_RETAINED_INTELLIGENCE",{
@@ -394,6 +432,9 @@ export function buildActPlan(
       task_identity:task,
       pre_learning_plan:pre,
       post_retrieval_plan:{...pre},
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
       application_reason:String(result.reason ?? "NO_APPLICABLE_RETAINED_INTELLIGENCE"),
     });
   }
@@ -409,6 +450,9 @@ export function buildActPlan(
       task_identity:task,
       pre_learning_plan:pre,
       post_retrieval_plan:{...pre},
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
       application_reason:"CONFLICT_SURFACED_BY_CONNECT_NO_STEERING",
     });
   }
@@ -443,6 +487,9 @@ export function buildActPlan(
       authority_scope_changed:true,
       law_reresolution_required:true,
       intelligence_applied_to_plan:false,
+      selection_replay_verified:true,
+      selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+      selection_now:replay.selection_now,
       application_reason:"RETRIEVED_INTELLIGENCE_CHANGED_CONSEQUENTIAL_SCOPE",
       selected_intelligence:selected,
     });
@@ -455,6 +502,9 @@ export function buildActPlan(
     post_retrieval_plan:post,
     plan_changed:planChanged,
     intelligence_applied_to_plan:planChanged,
+    selection_replay_verified:true,
+    selection_replay_reason:"KNOW_SELECTION_REPLAY_VERIFIED",
+    selection_now:replay.selection_now,
     application_reason:planChanged
       ? "NORMAL_KNOW_CONNECT_SELECTION_CHANGED_ACT_PLAN"
       : "SELECTED_INTELLIGENCE_HAS_NO_ACT_PLAN_EFFECT",

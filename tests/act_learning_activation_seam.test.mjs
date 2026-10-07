@@ -102,16 +102,18 @@ function controlAndTreatment(){
   const treatmentResult=selectKnowContext(TASK,[block],NOW);
   return {
     block,
+    controlUniverse:[],
+    treatmentUniverse:[block],
     control:knowReceipt("know-control",controlResult),
     treatment:knowReceipt("know-treatment",treatmentResult),
   };
 }
 
 test("CONTROL/TREATMENT: normal KNOW+CONNECT retrieval changes ACT plan under identical task and authority",()=>{
-  const {block,control,treatment}=controlAndTreatment();
+  const {block,control,treatment,controlUniverse,treatmentUniverse}=controlAndTreatment();
   const req=actRequest();
-  const c=buildActPlan(req,law(),grant(),door(),control,null,NOW);
-  const t=buildActPlan(req,law(),grant(),door(),treatment,block,NOW);
+  const c=buildActPlan(req,law(),grant(),door(),control,null,controlUniverse,NOW);
+  const t=buildActPlan(req,law(),grant(),door(),treatment,block,treatmentUniverse,NOW);
 
   assert.equal(control.evidence.result.status,"MISS");
   assert.equal(treatment.evidence.result.status,"HIT");
@@ -134,9 +136,9 @@ test("CONTROL/TREATMENT: normal KNOW+CONNECT retrieval changes ACT plan under id
 });
 
 test("falsifier: removing the activation seam makes the treatment delta disappear",()=>{
-  const {block,control,treatment}=controlAndTreatment();
-  const withSeam=buildActPlan(actRequest(),law(),grant(),door(),treatment,block,NOW);
-  const seamRemoved=buildActPlan(actRequest(),law(),grant(),door(),control,null,NOW);
+  const {block,control,treatment,controlUniverse,treatmentUniverse}=controlAndTreatment();
+  const withSeam=buildActPlan(actRequest(),law(),grant(),door(),treatment,block,treatmentUniverse,NOW);
+  const seamRemoved=buildActPlan(actRequest(),law(),grant(),door(),control,null,controlUniverse,NOW);
   assert.equal(withSeam.post_retrieval_plan.behavior,ACT_PROVENANCE_BEHAVIOR);
   assert.equal(seamRemoved.post_retrieval_plan.behavior,ACT_BASELINE_BEHAVIOR);
   assert.notEqual(withSeam.post_retrieval_plan.behavior,seamRemoved.post_retrieval_plan.behavior);
@@ -157,7 +159,7 @@ test("unrelated, superseded, contradicted, and inapplicable intelligence do not 
   for(const block of variants){
     const result=selectKnowContext(TASK,[block],NOW);
     assert.equal(result.status,"MISS");
-    const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-negative",result),null,NOW);
+    const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-negative",result),null,[block],NOW);
     assert.equal(plan.status,"READY");
     assert.equal(plan.post_retrieval_plan.behavior,ACT_BASELINE_BEHAVIOR);
     assert.equal(plan.intelligence_applied_to_plan,false);
@@ -165,10 +167,19 @@ test("unrelated, superseded, contradicted, and inapplicable intelligence do not 
 });
 
 test("CONNECT conflict is visible but non-steering",()=>{
-  const {block,treatment}=controlAndTreatment();
-  const conflicted=structuredClone(treatment);
-  conflicted.evidence.result.conflict_detected=true;
-  const plan=buildActPlan(actRequest(),law(),grant(),door(),conflicted,block,NOW);
+  const block=learnedBlock({
+    connections:[{target_block_id:"IB-CONFLICT",relationship_type:"CONTRADICTS"}],
+  });
+  const conflictBlock=learnedBlock({
+    intelligent_block_id:"IB-CONFLICT",
+    updated_at:new Date(NOW.getTime()-20_000).toISOString(),
+    provenance:{source_event_id:"event-conflict",method:"canonical-test"},
+    evidence_refs:[{type:"receipt",id:"evidence-conflict"}],
+  });
+  const universe=[block,conflictBlock];
+  const result=selectKnowContext(TASK,universe,NOW);
+  assert.equal(result.conflict_detected,true);
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-conflict",result),block,universe,NOW);
   assert.equal(plan.status,"READY");
   assert.equal(plan.reason,"CONFLICTED_INTELLIGENCE_NON_STEERING");
   assert.equal(plan.post_retrieval_plan.behavior,ACT_BASELINE_BEHAVIOR);
@@ -176,17 +187,17 @@ test("CONNECT conflict is visible but non-steering",()=>{
 });
 
 test("missing or revoked authority blocks before learning can steer",()=>{
-  const {block,treatment}=controlAndTreatment();
-  const missing=buildActPlan(actRequest(),null,null,door(),treatment,block,NOW);
+  const {block,treatment,treatmentUniverse}=controlAndTreatment();
+  const missing=buildActPlan(actRequest(),null,null,door(),treatment,block,treatmentUniverse,NOW);
   assert.equal(missing.status,"BLOCKED");
   assert.equal(missing.reason,"LAW_RECEIPT_REQUIRED");
 
-  const revoked=buildActPlan(actRequest(),law(),grant({status:"REVOKED",revoked_at:NOW.toISOString()}),door(),treatment,block,NOW);
+  const revoked=buildActPlan(actRequest(),law(),grant({status:"REVOKED",revoked_at:NOW.toISOString()}),door(),treatment,block,treatmentUniverse,NOW);
   assert.equal(revoked.status,"BLOCKED");
   assert.equal(revoked.reason,"LIVE_AUTHORITY_NOT_ACTIVE");
 
   const expired=buildActPlan(
-    actRequest(),law(),grant({expires_at:new Date(NOW.getTime()-1_000).toISOString()}),door(),treatment,block,NOW
+    actRequest(),law(),grant({expires_at:new Date(NOW.getTime()-1_000).toISOString()}),door(),treatment,block,treatmentUniverse,NOW
   );
   assert.equal(expired.status,"BLOCKED");
   assert.equal(expired.reason,"LIVE_AUTHORITY_EXPIRED");
@@ -201,7 +212,7 @@ test("scope-changing learning cannot use the old LAW receipt",()=>{
     },
   });
   const result=selectKnowContext(TASK,[block],NOW);
-  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-scope-change",result),block,NOW);
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-scope-change",result),block,[block],NOW);
   assert.equal(plan.status,"LAW_RERESOLUTION_REQUIRED");
   assert.equal(plan.authority_scope_changed,true);
   assert.equal(plan.law_reresolution_required,true);
@@ -211,12 +222,12 @@ test("scope-changing learning cannot use the old LAW receipt",()=>{
 });
 
 test("forged retrieval provenance fails closed",()=>{
-  const {block,treatment}=controlAndTreatment();
+  const {block,treatment,treatmentUniverse}=controlAndTreatment();
   const forged=structuredClone(treatment);
   forged.evidence.result.selected_provenance={source_event_id:"forged"};
-  const plan=buildActPlan(actRequest(),law(),grant(),door(),forged,block,NOW);
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),forged,block,treatmentUniverse,NOW);
   assert.equal(plan.status,"BLOCKED");
-  assert.equal(plan.reason,"SELECTED_INTELLIGENCE_PROVENANCE_MISMATCH");
+  assert.equal(plan.reason,"KNOW_SELECTION_REPLAY_MISMATCH");
   assert.equal(plan.intelligence_applied_to_plan,false);
 });
 
@@ -240,7 +251,7 @@ function handlerRuntime({useTreatment=true,blockOverride=null}={}){
   const rows={
     nayanet_execution_receipts:[law(),chosenKnow],
     nayanet_authority_grants:[grant()],
-    nayanet_intelligent_blocks:[chosenBlock],
+    nayanet_intelligent_blocks:useTreatment?[chosenBlock]:[],
   };
 
   const executeQuery=(query)=>{
@@ -371,7 +382,7 @@ test("handler CONTROL executes baseline using same action and authority with no 
 
 
 test("selected-block reread guards all fire fail-closed against forged or changed canonical state",()=>{
-  const {block,treatment}=controlAndTreatment();
+  const {block,treatment,treatmentUniverse}=controlAndTreatment();
   const cases=[
     ["SELECTED_INTELLIGENCE_NOT_FOUND", null],
     ["SELECTED_INTELLIGENCE_ID_MISMATCH", {...block,intelligent_block_id:"IB-FORGED"}],
@@ -386,7 +397,7 @@ test("selected-block reread guards all fire fail-closed against forged or change
     ["SELECTED_INTELLIGENCE_APPLICABILITY_MISMATCH", {...block,applicable_scope:{target:"OTHER",capabilities:["provenance_preservation"]}}],
   ];
   for(const [reason,changedBlock] of cases){
-    const plan=buildActPlan(actRequest(),law(),grant(),door(),treatment,changedBlock,NOW);
+    const plan=buildActPlan(actRequest(),law(),grant(),door(),treatment,changedBlock,treatmentUniverse,NOW);
     assert.equal(plan.status,"BLOCKED",reason);
     assert.equal(plan.reason,reason,reason);
     assert.equal(plan.effect_executed,false,reason);
@@ -446,8 +457,52 @@ test("retained intelligence cannot smuggle arbitrary behavior through act_plan_p
     },
   });
   const result=selectKnowContext(TASK,[block],NOW);
-  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-behavior-injection",result),block,NOW);
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),knowReceipt("know-behavior-injection",result),block,[block],NOW);
   assert.equal(plan.status,"READY");
   assert.equal(plan.post_retrieval_plan.behavior,ACT_PROVENANCE_BEHAVIOR);
   assert.notEqual(plan.post_retrieval_plan.behavior,"UNAUTHORIZED_ARBITRARY_BEHAVIOR");
+});
+
+
+test("coherently forged KNOW selected ID fails canonical selector replay",()=>{
+  const newest=learnedBlock({
+    intelligent_block_id:"IB-NEWEST",
+    updated_at:new Date(NOW.getTime()-1_000).toISOString(),
+    provenance:{source_event_id:"event-newest",method:"canonical-test"},
+    evidence_refs:[{type:"receipt",id:"evidence-newest"}],
+  });
+  const older=learnedBlock({
+    intelligent_block_id:"IB-OLDER",
+    updated_at:new Date(NOW.getTime()-60_000).toISOString(),
+    provenance:{source_event_id:"event-older",method:"canonical-test"},
+    evidence_refs:[{type:"receipt",id:"evidence-older"}],
+  });
+  const universe=[older,newest];
+  const canonical=selectKnowContext(TASK,universe,NOW);
+  assert.equal(canonical.selected_block_id,"IB-NEWEST");
+
+  const forged=knowReceipt("know-forged-coherent",{
+    ...canonical,
+    selected_block_id:"IB-OLDER",
+    selected_epistemic_state:older.understanding_state,
+    selected_provenance:older.provenance,
+    selected_evidence_refs:older.evidence_refs,
+  });
+  const plan=buildActPlan(actRequest(),law(),grant(),door(),forged,older,universe,NOW);
+  assert.equal(plan.status,"BLOCKED");
+  assert.equal(plan.reason,"KNOW_SELECTION_REPLAY_MISMATCH");
+  assert.equal(plan.intelligence_applied_to_plan,false);
+});
+
+test("missing selector replay universe or pinned selection time fails closed",()=>{
+  const {block,treatment,treatmentUniverse}=controlAndTreatment();
+  const noUniverse=buildActPlan(actRequest(),law(),grant(),door(),treatment,block,null,NOW);
+  assert.equal(noUniverse.status,"BLOCKED");
+  assert.equal(noUniverse.reason,"KNOW_SELECTION_UNIVERSE_REQUIRED");
+
+  const noTime=structuredClone(treatment);
+  delete noTime.evidence.selection_now;
+  const missingTime=buildActPlan(actRequest(),law(),grant(),door(),noTime,block,treatmentUniverse,NOW);
+  assert.equal(missingTime.status,"BLOCKED");
+  assert.equal(missingTime.reason,"KNOW_SELECTION_TIME_INVALID");
 });
