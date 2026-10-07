@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { join, dirname } from "node:path";
+import { join, dirname, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 // Coverage-shape gate: no edge function may regress to "grep only".
@@ -34,7 +34,16 @@ function walk(dir) {
   return out;
 }
 
-const rel = (p) => p.replace(ROOT + "\\", "").replace(/\\/g, "/");
+/**
+ * Repo-relative, forward-slash path.
+ *
+ * Platform-independent on purpose. An earlier version did
+ * `p.replace(ROOT + "\\", "")`, which silently produces an absolute path on Linux, so
+ * the gate matched nothing there and reported 0/14 executed -- a false "everything is
+ * unproven" verdict in CI while passing locally. path.relative + sep normalisation is
+ * the only form that behaves the same on every runner.
+ */
+const rel = (p) => relative(ROOT, p).split(sep).join("/");
 
 /**
  * Decide whether any test genuinely executes a function's code.

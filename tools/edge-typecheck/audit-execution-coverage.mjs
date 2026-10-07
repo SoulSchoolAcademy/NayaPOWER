@@ -8,7 +8,7 @@
 //
 // Runs both suites: tests/*.test.mjs (node) and tests/*.py (pytest).
 import { readFileSync, readdirSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { join, dirname, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -32,7 +32,15 @@ function walk(dir) {
   return out;
 }
 
-const rel = (p) => p.replace(ROOT + "\\", "").replace(/\\/g, "/");
+/**
+ * Repo-relative, forward-slash path.
+ *
+ * Platform-independent on purpose. A previous version stripped ROOT + "\\", which
+ * yields an absolute path on Linux and therefore matched nothing on the CI runner.
+ * That made the audit report every function as UNCOVERED there while passing on
+ * Windows -- a false negative in the tool people would trust for a coverage claim.
+ */
+const rel = (p) => relative(ROOT, p).split(sep).join("/");
 
 // Two ways a node test can genuinely EXECUTE handler code:
 //   1. imports the module            -> `import { x } from "../supabase/..."`
