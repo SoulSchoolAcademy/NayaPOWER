@@ -61,7 +61,11 @@ def test_executor_cannot_self_certify_its_own_outcome():
     assert "verified: true" not in execute
     verify = source.split('mode === "verify"')[1]
     assert "verified: true" in verify
-    assert "INDEPENDENT_RUNTIME" in verify
+    assert 'const INDEPENDENT_VERIFICATION_METHOD = "INDEPENDENT_RUNTIME_REREAD_OF_PERSISTED_AUTHORITATIVE_STATE";' in source
+    assert "verification_method: INDEPENDENT_VERIFICATION_METHOD" in verify
+    assert "outcome.verified === false && outcome.verification_method === EXECUTION_VERIFICATION_PENDING" in verify
+    assert '.eq("verified", false)' in verify
+    assert '.eq("verification_method", EXECUTION_VERIFICATION_PENDING)' in verify
 
 
 def test_observed_result_is_derived_from_canonical_block_not_asserted():
@@ -95,17 +99,22 @@ def test_refusal_persists_receipt_and_creates_no_outcome():
     source = FUNCTION.read_text(encoding="utf-8")
     refusal = source.split("if (!authorityDecision.allowed)")[1].split("const grant = authorityDecision.grant")[0]
     assert '"BLOCKED"' in refusal
-    assert "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL" in refusal
+    assert 'const REFUSAL_ACTION = "NAYA-NODE-0001-VERIFIED-AI-ACTION-REFUSAL";' in source
+    assert "action: REFUSAL_ACTION" in refusal
     assert "nayanet_execution_outcomes" not in refusal
     assert "AUTHORITY_ABSENT" in refusal
 
 
-def test_verifier_proves_refusal_had_no_outcome_and_no_mutation():
+def test_verifier_checks_refusal_contract_and_outcome_absence_without_claiming_history():
     source = FUNCTION.read_text(encoding="utf-8")
     assert "refusal_outcome_absent" in source
     assert "unauthorized_outcome_exists" in source
     assert "refusal_receipt_present" in source
-    assert "receipt_mutated_after_refusal" in source
+    # Present contract conformity is not proof of historical immutability.
+    assert "receipt_mutated_after_refusal" not in source
+    assert "refusal_receipt_contract_valid: refusalReceiptContractValid" in source
+    assert "refusalChecks.refusal_receipt_contract_valid === true" in source
+    assert "refusalChecks.refusal_receipt_owner_matches === true" in source
 
 
 def test_workflow_uses_three_separate_fresh_runtimes():
