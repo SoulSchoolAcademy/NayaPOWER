@@ -56,21 +56,23 @@ async function authenticateRuntime(req: Request) {
 // other than AUTHORIZED denies the lock-in. Written without TS annotations so
 // the shipped block can be executed verbatim in the loop's node harness.
 const LEARNING_LOCK_IN_ACTION = "learning_lock_in";
-const LEARNING_AUTHORITY_TARGET = "NAYA-NODE-0001";
 
-const lawGrantTargetMatches = (grant, target, projectId) => {
+const lawGrantTargetMatches = (grant, intelligentBlockId, learningTargetId, projectId) => {
   const scope = (grant && grant.scope) || {};
   const matches = (value, requested) =>
     typeof value === "string" && value.trim().length > 0 &&
     typeof requested === "string" && requested.trim().length > 0 &&
     value === requested;
-  return matches(scope.target, target) || matches(scope.target, LEARNING_AUTHORITY_TARGET) || matches(scope.project_id, target) || matches(scope.project_id, projectId);
+  return matches(scope.target, intelligentBlockId) ||
+    matches(scope.target, learningTargetId) ||
+    matches(scope.project_id, intelligentBlockId) ||
+    matches(scope.project_id, projectId);
 };
 
 const lawGrantIsExpired = (grant, now) =>
   Boolean(grant && grant.expires_at && new Date(String(grant.expires_at)).getTime() <= now.getTime());
 
-async function resolveLearningLockInLaw(admin, ownerId, intelligentBlockId) {
+async function resolveLearningLockInLaw(admin, ownerId, intelligentBlockId, learningTargetId) {
   const { data, error } = await admin
     .from("nayanet_authority_grants")
     .select("*")
@@ -82,7 +84,7 @@ async function resolveLearningLockInLaw(admin, ownerId, intelligentBlockId) {
   const sameSubject = grants.filter((g) => g.subject_id === ownerId && g.issuer_id === ownerId);
   const matchingIntent = sameSubject.filter(
     (g) => Array.isArray(g.actions) && g.actions.includes(LEARNING_LOCK_IN_ACTION) &&
-      lawGrantTargetMatches(g, intelligentBlockId, "NayaNET")
+      lawGrantTargetMatches(g, intelligentBlockId, learningTargetId, "NayaNET")
   );
   const invalid = matchingIntent.find(
     (g) => g.status === "REVOKED" || Boolean(g.revoked_at) || g.status === "INVALID" ||
@@ -463,6 +465,7 @@ Deno.serve(async (req: Request) => {
       ? learning.observed_value
       : {};
     const intelligentBlockId = String((observed as any).intelligent_block_id || "");
+    const learningTargetId = String((learning as any).target_id || "").trim();
     const relationshipId = String((observed as any).relationship_id || "");
     const checkpointId = String((observed as any).checkpoint_id || "");
     const lineageId = String((observed as any).lineage_id || "");
@@ -474,7 +477,7 @@ Deno.serve(async (req: Request) => {
     // SN-0521 CV-06: LAW gate runs BEFORE any mutation. A refusal must prevent
     // writes, not just report them. Zero mutations have occurred at this point.
     // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
-    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
+    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId, learningTargetId);
     if (!lawDecision.authorized) {
       return json({
         ok: false,
