@@ -53,10 +53,16 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             test "${{ inputs.confirm }}" = "DEPLOY"
             authorized_sha="${{ inputs.source_sha }}"
-            if ! printf '%s' "$authorized_sha" | grep -Eq '^[0-9a-f]{40}$'; then
+            if [ "${#authorized_sha}" -ne 40 ]; then
               echo "FAIL CLOSED: source_sha must be exactly 40 lowercase hex characters."
               exit 1
             fi
+            case "$authorized_sha" in
+              *[!0-9a-f]*|"")
+                echo "FAIL CLOSED: source_sha must be exactly 40 lowercase hex characters."
+                exit 1
+                ;;
+            esac
             if [ "$authorized_sha" != "$GITHUB_SHA" ]; then
               echo "FAIL CLOSED: authorized source_sha $authorized_sha does not equal workflow source $GITHUB_SHA. Re-authorize the exact current main SHA."
               exit 1
