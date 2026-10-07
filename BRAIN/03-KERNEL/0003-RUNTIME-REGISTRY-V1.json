@@ -139,7 +139,7 @@
       }
     },
     "PROVE": {
-      "status": "LIVE_SOURCE_PARITY_VERIFIED_READ_ONLY_2026_09_30",
+      "status": "SOURCE_CHANGED_2026_10_06__PRODUCTION_PARITY_PENDING",
       "entrypoint": "supabase/functions/nayanet-prove-runtime/index.ts",
       "assessor": "supabase/functions/nayanet-prove-runtime/prove.ts",
       "consumes": "fresh persisted nayanet_execution_receipts.action=know_context_retrieval handoff",
@@ -156,7 +156,7 @@
         "status": "PASS"
       },
       "persisted_transitions": "nayanet_execution_receipts + evidence/provenance assessment state",
-      "proof_boundary": "Deployed Edge source equals current repository source; bounded proof exists, but current full-chain outcome remains separately gated.",
+      "proof_boundary": "Deployed Edge source predates PR #1608 (export stableJson + execute the inspect comparison in CI, merged 2026-10-06); no redeploy has occurred since, so deployed-vs-canonical parity is PENDING, not verified. Bounded source/CI proof exists (the inspect comparison executes against the real handler in CI, per #1608). Live re-proof is gated on the production dispatch (feed #1609, coda1 lane). Claim refreshed 2026-10-07 by the PROVE area driver from live evidence; supersedes the 2026-09-30 claim.",
       "behavioral_contract": {
         "test": "tests/prove-runtime.test.mjs",
         "mode": "assess-refuse",

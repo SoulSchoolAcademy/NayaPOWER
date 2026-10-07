@@ -146,6 +146,11 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: ${{ env.SOURCE_SHA }}
+          # The parity detector compares the runtime-reported revision's tree
+          # against HEAD via git objects. A shallow checkout has no history, so
+          # the comparison is undeterminable and the detector can never return
+          # anything but UNKNOWN. Full history is required for a real verdict.
+          fetch-depth: 0
       - name: Mint short-lived GitHub OIDC runtime identity for CONNECT
         shell: bash
         run: |
