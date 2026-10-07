@@ -64,6 +64,11 @@ export type ExpandedBlock = ScoredBlock & {
   conflicts: ConflictEntry[];
 };
 
+// FetchBlock: the block-fetch callback expandBlock/expandRanked resolve
+// supersession lineage through. Type-only (erased at runtime); declared so
+// the edge type-check gate stays green. Shape matches the index.ts caller.
+export type FetchBlock = (blockId: string) => Promise<ScoredBlock | null>;
+
 // Retrieval-local admission sets. Edge-level V2 gates (status, temporal,
 // consent, applicability) come from the canonical selector above; these sets
 // decide which admitted relationship types attach context vs surface
