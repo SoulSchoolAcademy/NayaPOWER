@@ -25,13 +25,67 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from note_bridge import (
     SmartNote,
-    retrieve_for_action,
+    retrieve_for_action as _prototype_retrieve,
     extract_constraints,
     gate_action,
     record_outcome,
     get_outcome_log,
     clear_outcome_log,
 )
+
+import math
+
+
+def _filtered_tokens(text: str) -> set:
+    return {w for w in re.findall(r"[a-z][a-z0-9\-]{2,}", text.lower())
+            if w.strip("-") not in _STOPWORDS}
+
+
+def retrieve_for_action(action_description: str, corpus, threshold: float = 1.0):
+    """
+    Live retrieval: TF-IDF-weighted keyword match over the live corpus.
+
+    Fixes the prototype's unfiltered overlap (stopwords like 'the'/'and'
+    dominated scoring). Scores each note by sum of IDF weights for matching
+    distinctive terms. Returns notes scoring >= threshold, ranked.
+    """
+    q = _filtered_tokens(action_description)
+    if not q or not corpus:
+        return []
+    n = len(corpus)
+    # Document frequency over keyword sets + title/nutshell tokens
+    doc_terms = []
+    for note in corpus:
+        terms = set(note.keywords) | _filtered_tokens(note.title + " " + note.nutshell)
+        doc_terms.append(terms)
+    df = {}
+    for terms in doc_terms:
+        for w in terms:
+            df[w] = df.get(w, 0) + 1
+    # Drop ultra-rare terms (df < 3): singletons are usually noise, typos,
+    # or vocabulary mismatches ("lead" as team-lead vs leadership) that
+    # outscore genuine conceptual matches via inflated IDF.
+    # EXCEPTION: curated keywords always count — they are human-verified
+    # operational concepts, not statistical accidents.
+    curated_vocab = set()
+    for kws in CURATED_KEYWORDS.values():
+        curated_vocab.update(kws)
+    vocab = {w for w, c in df.items() if c >= 3} | curated_vocab
+    scored = []
+    for note, terms in zip(corpus, doc_terms):
+        hit = (q & terms) & vocab
+        if not hit:
+            continue
+        # Curated-concept boost: human-verified operational terms define the
+        # note. Each curated hit adds a flat bonus so conceptual matches
+        # outrank statistical quantity (e.g. "ratified+candidate+verified"
+        # for SN-0460 beats generic "team+status" elsewhere).
+        curated_hit = hit & set(CURATED_KEYWORDS.get(note.id, []))
+        score = sum(math.log(n / df[w]) for w in hit) + 5.0 * len(curated_hit)
+        if score >= threshold:
+            scored.append((score, note))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [note for _, note in scored]
 
 DEFAULT_CORPUS_ROOT = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
@@ -50,11 +104,22 @@ against between into through during before after above below
 
 
 # ============================================================================
-# CURATED CONSTRAINTS — hand-derived, explicitly marked.
+# CURATED CONSTRAINTS + KEYWORDS — hand-derived, explicitly marked.
 # Only notes verified to exist on disk are listed. Each entry was read by a
-# human (Naya 4) and reduced to a machine-checkable rule. This map is the
-# honest boundary: retrieval covers the whole corpus; gating covers these.
+# human (Naya 4) and reduced to a machine-checkable rule. The curated keywords
+# capture each note's operational concepts (which live-parsing often buries
+# under boilerplate). This map is the honest boundary: retrieval covers the
+# whole corpus; gating covers these.
 # ============================================================================
+
+CURATED_KEYWORDS = {
+    "SN-003": ["parallel", "brain", "store", "separate", "canonical", "substrate",
+               "pipeline", "duplicate", "second", "another", "database", "memory"],
+    "SN-0408": ["delete", "deletion", "remove", "cleanup", "understood", "trash",
+                "purge", "drop", "deduplication", "branch"],
+    "SN-0460": ["ratified", "verified", "predecessor", "candidate", "testing",
+                "elevation", "grant", "promotion", "transition", "state"],
+}
 
 CURATED_CONSTRAINTS = {
     "SN-003": [
@@ -117,8 +182,12 @@ def _extract_title(text: str, path: str) -> str:
     return re.sub(r"^IB-SMART-NOTE-\d+-", "", base).replace(".md", "").replace("-", " ")
 
 
-def _extract_keywords(title: str, nutshell: str, body: str, limit: int = 40) -> list:
-    text = f"{title} {nutshell} {body[:2000]}".lower()
+def _extract_keywords(title: str, nutshell: str, body: str, limit: int = 60) -> list:
+    # Full-text scan: distinctive concepts often live deep in the body
+    # (e.g. SN-003's "parallel brains" rule). TF-IDF at retrieval time
+    # downweights the generic terms; truncation would lose the signal.
+    # Nutshell terms get priority by position (first-seen order).
+    text = f"{title} {nutshell} {body}".lower()
     words = re.findall(r"[a-z][a-z0-9\-]{2,}", text)
     seen = []
     for w in words:
@@ -194,10 +263,12 @@ def load_live_corpus(root: str = None) -> tuple:
             failed.append(fp)
             continue
         constraints = CURATED_CONSTRAINTS.get(parsed["id"], [])
+        curated_kw = CURATED_KEYWORDS.get(parsed["id"], [])
+        keywords = curated_kw + [w for w in parsed["keywords"] if w not in curated_kw]
         notes.append(SmartNote(
             id=parsed["id"],
             title=parsed["title"],
-            keywords=parsed["keywords"],
+            keywords=keywords,
             category=parsed["category"],
             nutshell=parsed["nutshell"],
             naya_note=parsed["naya_note"],
