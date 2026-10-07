@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0611",
+ "intelligence": {
+  "title": "A Trigger Function in the Public Schema Is an RPC Endpoint by Accident",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0611-trigger-function-rpc-exposure",
+  "smart_note_id": "SN-0611",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0611/IB-SMART-NOTE-20261006-sn0611-trigger-function-rpc-exposure.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0611/IB-SMART-NOTE-20261006-sn0611-trigger-function-rpc-exposure.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-048",
+ "intelligence": {
+  "title": "API-Pushed Commits Never Trigger GitHub Actions — CI-Pending Forever Is a Mirage",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn048-api-push-actions-silence",
+  "smart_note_id": "SN-048",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-048/IB-SMART-NOTE-20260930-sn048-api-push-actions-silence.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CI-TRIGGER-SILENCE/SN-048/IB-SMART-NOTE-20260930-sn048-api-push-actions-silence.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

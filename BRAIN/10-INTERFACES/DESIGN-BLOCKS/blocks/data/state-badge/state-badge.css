@@ -1,0 +1,19 @@
+/* Smart Block: state-badge
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: data
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --magenta: #d86cff;
+  --radius-pill: 999px;
+}
+
+.state-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 800; letter-spacing: .16em;
+  padding: 6px 13px; border-radius: var(--radius-pill);
+  border: 1px dashed color-mix(in srgb, var(--room-accent, var(--magenta)) 50%, transparent);
+  color: var(--room-accent, var(--magenta));
+  background: color-mix(in srgb, var(--room-accent, var(--magenta)) 8%, transparent);
+}

@@ -1,0 +1,64 @@
+/* Smart Block: drawer
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: chrome
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --bg: #0B0D12;
+  --depth-deep: 0 20px 48px #000d;
+  --dur-med: .28s;
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --line-soft: #ffffff0d;
+}
+
+.shell.rail-collapsed .rail.left {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rail.left {
+  transition: transform .3s cubic-bezier(.16,.84,.22,1), opacity .3s;
+}
+
+.rail.left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  border-right: 1px solid var(--line-soft);
+  padding: 22px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 40;
+}
+
+.drawer-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 55;
+  background: rgba(3, 3, 6, .6);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+
+@media (max-width: 900px) {
+.rail.left {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: min(300px, 84vw); height: 100dvh;
+    transform: translateX(-106%);
+    transition: transform var(--dur-med) var(--ease);
+    z-index: 60;
+    box-shadow: var(--depth-deep);
+  }
+.shell.drawer-open .rail.left { transform: none; }
+.shell.drawer-open .drawer-backdrop { display: block; }
+body.drawer-open { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.rail.left, .plus-btn, .nav-btn { transition: none !important; }
+}

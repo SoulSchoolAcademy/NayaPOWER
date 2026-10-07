@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0616",
+ "intelligence": {
+  "title": "IB-SMART-NOTE — SN-0616 — Human IDs Are Canonical Continuity Boundaries",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0616-human-id-continuity-boundary",
+  "smart_note_id": "SN-0616",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0616/IB-SMART-NOTE-20261007-sn0616-human-id-continuity-boundary.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0616/IB-SMART-NOTE-20261007-sn0616-human-id-continuity-boundary.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

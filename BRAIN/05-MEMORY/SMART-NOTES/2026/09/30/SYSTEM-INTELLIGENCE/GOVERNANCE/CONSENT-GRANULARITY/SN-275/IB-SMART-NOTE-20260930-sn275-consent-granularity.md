@@ -86,3 +86,24 @@ None yet — newly stated. When the director ratifies or amends, record the ruli
 ## SUCCESSOR EFFECT
 
 Never re-litigate door-consent vs Law 42 as a contradiction — the analysis is settled, only ratification is pending. Never implement per-block consent as the default while the director's ruling stands. If the director rejects the scoping, fall back to per-block consent and re-derive the collective design from that constraint.
+
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "sn": "SN-0275",
+  "automatic_truth_ceiling": "CANDIDATE",
+  "canonical_object": "INTELLIGENT_BLOCK",
+  "title": "Consent-Granularity Reconciliation — Entry Consent Satisfies 'Collective by Consent'",
+  "status": "CANDIDATE",
+  "class": "REUSABLE INTELLIGENCE",
+  "consent_basis": {"technical_capability": "FORBIDDEN (Law 42)", "entry_consent": "ALLOWED (scoped)", "per_item_consent": "ALLOWED (narrower)"},
+  "entry_consent_scope": ["distilled_wisdom", "anonymized", "identity_sealed"],
+  "entry_consent_excludes": ["real_identity", "non_wisdom_personal"],
+  "law43_granularity": "resolved by director ruling 2026-09-30; ratification pending",
+  "constitutional_effect": "scoping clarification of Law 43, not an amendment of principle",
+  "fallback": "per-block consent if director rejects the scoping",
+  "epistemic_state": "PROPOSED/CANDIDATE — AUTO-CAPTURE ≠ AUTO-RATIFY",
+  "provenance": "Constitution Act V1 Laws 42/43/44; director dictation 2026-09-30; Naya 2 verified against main f1bce69c"
+}
+~~~

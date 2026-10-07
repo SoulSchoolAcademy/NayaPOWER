@@ -1,0 +1,1 @@
+The Reserve Rule says dispatch the lower call when the top two are within 0.5. But the Critical Override has priority: if the higher is 8.8 or above, dispatch it immediately. I dispatched call-302 (reserve, 8.6/8.3), call-304 (override won over reserve, 8.7/8.9), call-305 (normal, gap too wide). Check override FIRST, then reserve.

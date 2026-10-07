@@ -1,0 +1,35 @@
+{
+  "package_id": "TIER1-2026-10-08-T04R",
+  "lesson": "Cold-successor knowledge transfer — bridge notes enable 9/9 vs 0/10 on project knowledge",
+  "trial": "Trial-04R",
+  "evidence": {
+    "pr": "#1768",
+    "treatment": "Bridge (9 agents): 9/9 success, mean 8.89/9",
+    "control": "Cold (10 agents): 0/10 success, mean 0.00/9",
+    "p_value": 1.1e-05,
+    "cohens_h": 3.14,
+    "tier_s": "MET",
+    "n": 19,
+    "verified_by": "Naya 1 (independent recomputation)"
+  },
+  "four_gates": {
+    "authority": {
+      "status": "PASS",
+      "detail": "Grant 57d83ce5 ACTIVE, scope NAYA-NODE-0001, expires 2026-10-14."
+    },
+    "verification": {
+      "status": "PASS",
+      "detail": "Trial-04R independently verified by Naya 1 (recomputed from raw evidence). Largest effect size in the program (h=3.14). Proves knowledge transfers to cold successors via bridge notes."
+    },
+    "receipt": {
+      "status": "PASS",
+      "detail": "TRIAL-04R-RECEIPT.md exists with corpus manifest, arm assignment, per-question breakdown."
+    },
+    "execution": {
+      "status": "UNVERIFIED",
+      "detail": "This is trial evidence for the compounding mechanism, not a standalone promotable lesson. The 'lesson' here is that bridge notes work — the execution gate applies to the bridge-note method, which needs separate specification."
+    }
+  },
+  "created": "2026-10-08T00:35:00Z",
+  "created_by": "Naya 4 (Shawn-authorized build)"
+}

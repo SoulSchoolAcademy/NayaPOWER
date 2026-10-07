@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Graphs · 04 · Constellation — My spaces</title>
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/tokens.css">
+<link rel="stylesheet" href="../../DESIGN-BLOCKS/blocks/graphs/constellation/constellation.css">
+<link rel="stylesheet" href="sg-chrome.css">
+</head>
+<body class="sg-page">
+<div class="sg-wrap">
+  <div class="sg-kicker"><span class="gem"></span>Smart Graphs · Specimen 04</div>
+  <div class="sg-mode">Automatic · NayaNET pulse</div>
+  <div class="sg-card">
+    <h4>My spaces</h4>
+    <div class="c-sub">Automatic · 6 spaces · node size = members</div>
+    <svg class="sc-sky" viewBox="0 0 520 240" role="img" aria-label="Constellation of my six spaces">
+      <defs>
+        <radialGradient id="scNodeGrad" cx="35%" cy="30%" r="80%">
+          <stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="scArcGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#a06bff" stop-opacity=".1"/><stop offset=".5" stop-color="#a06bff" stop-opacity=".7"/><stop offset="1" stop-color="#3f9ff5" stop-opacity=".1"/>
+        </linearGradient>
+      </defs>
+      <circle class="sc-star" cx="40" cy="30" r="1.4"/><circle class="sc-star" cx="120" cy="70" r="1" style="animation-delay:.7s"/>
+      <circle class="sc-star" cx="480" cy="50" r="1.4" style="animation-delay:1.2s"/><circle class="sc-star" cx="440" cy="200" r="1" style="animation-delay:2s"/>
+      <circle class="sc-star" cx="80" cy="200" r="1.2" style="animation-delay:1.6s"/><circle class="sc-star" cx="300" cy="26" r="1" style="animation-delay:.4s"/>
+      <path class="sc-arc" d="M260,120 C220,90 180,80 140,70"/>
+      <path class="sc-arc" d="M260,120 C300,95 340,85 390,80"/>
+      <path class="sc-arc" d="M260,120 C230,150 200,165 160,180"/>
+      <path class="sc-arc" d="M260,120 C300,150 340,160 400,175"/>
+      <path class="sc-arc" d="M260,120 C260,80 260,60 260,44"/>
+      <path class="sc-arc" d="M140,70 C200,40 320,40 390,80"/>
+      <g class="sc-hub">
+        <circle class="sc-node" cx="260" cy="120" r="20" style="--nc:var(--purple);--ncrgb:var(--purple-rgb);animation-delay:.9s"/>
+        <text class="sc-tag" x="260" y="156">You</text>
+      </g>
+      <circle class="sc-node" cx="140" cy="70" r="12" style="--nc:var(--blue);--ncrgb:var(--blue-rgb);animation-delay:1s"/>
+      <text class="sc-tag" x="140" y="52">Builders</text>
+      <circle class="sc-node" cx="390" cy="80" r="15" style="--nc:var(--green);--ncrgb:var(--green-rgb);animation-delay:1.1s"/>
+      <text class="sc-tag" x="390" y="58">Family</text>
+      <circle class="sc-node" cx="160" cy="180" r="9" style="--nc:var(--gold);--ncrgb:var(--gold-rgb);animation-delay:1.2s"/>
+      <text class="sc-tag" x="160" y="202">Ideas</text>
+      <circle class="sc-node" cx="400" cy="175" r="11" style="--nc:var(--cyan);--ncrgb:57,215,232;animation-delay:1.3s"/>
+      <text class="sc-tag" x="400" y="197">Music</text>
+      <circle class="sc-node" cx="260" cy="44" r="7" style="--nc:var(--magenta);--ncrgb:232,79,255;animation-delay:1.4s"/>
+      <text class="sc-tag" x="260" y="28">Quiet</text>
+    </svg>
+    <div class="sg-legend"><span><i style="--lc:var(--purple)"></i>You</span><span><i style="--lc:var(--blue)"></i>Spaces</span><span>32 connections</span></div>
+  </div>
+  <div class="sg-actions">
+    <button class="sg-action" disabled><span class="gem"></span>Save</button>
+    <button class="sg-action" disabled><span class="gem"></span>Share</button>
+    <button class="sg-action" disabled><span class="gem"></span>PDF</button>
+    <button class="sg-action" disabled><span class="gem"></span>Send to NayaNET</button>
+  </div>
+  <p class="sg-honesty">Actions reserved in v1 — the contract ships before the wiring.<br>Sample data. The instrument is real; the feed is next.</p>
+</div>
+<script>
+new IntersectionObserver((es, io) => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('lit'); io.disconnect(); }
+}), { threshold: .35 }).observe(document.querySelector('.sg-card'));
+</script>
+</body>
+</html>

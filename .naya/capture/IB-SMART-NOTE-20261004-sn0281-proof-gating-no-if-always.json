@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0281",
+ "intelligence": {
+  "title": "Proof Gating — Never Let `if: always()` Manufacture Secondary Failures",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0281-proof-gating-no-if-always",
+  "smart_note_id": "SN-0281",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-0281/IB-SMART-NOTE-20261004-sn0281-proof-gating-no-if-always.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/FAILURE-CLASSIFICATION/SN-0281/IB-SMART-NOTE-20261004-sn0281-proof-gating-no-if-always.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

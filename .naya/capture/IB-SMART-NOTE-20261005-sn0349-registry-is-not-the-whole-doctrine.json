@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0349",
+ "intelligence": {
+  "title": "The Registry Is Not the Whole Doctrine — Retrieval Can Only Return What Was Captured",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0349-registry-is-not-the-whole-doctrine",
+  "smart_note_id": "SN-0349",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-0349/IB-SMART-NOTE-20261005-sn0349-registry-is-not-the-whole-doctrine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-0349/IB-SMART-NOTE-20261005-sn0349-registry-is-not-the-whole-doctrine.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

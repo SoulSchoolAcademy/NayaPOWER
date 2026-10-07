@@ -1,0 +1,60 @@
+/* Smart Block: door
+ * Source: Naya Smart Hub Design.html (extracted verbatim, never rewritten)
+ * Category: chrome
+ */
+
+/* ——— Shared Hub tokens (also in DESIGN-BLOCKS/tokens.css; copied here so the block is self-contained) ——— */
+:root {
+  --depth-deep: 0 20px 48px #000d;
+  --depth-drop: 0 18px 42px #000b;
+  --depth-hi: inset 0 1px #fff6;
+  --dur-med: .28s;
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --fs-body: 16px;
+  --fs-small: 13px;
+  --green: #55e39a;
+  --ink-dim: #F5F7FB;
+  --line: #ffffff18;
+  --muted: #AAB2BF;
+  --radius-lg: 17px;
+}
+
+.door {
+  --door-accent: var(--green);
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  background:
+    radial-gradient(220px 130px at 85% -20%, color-mix(in srgb, var(--door-accent) 16%, transparent), transparent 70%),
+    linear-gradient(145deg, #151021f2, #0b0a10f2);
+  border: 1px solid color-mix(in srgb, var(--door-accent) 30%, var(--line));
+  box-shadow: var(--depth-hi), var(--depth-drop),
+              0 0 30px color-mix(in srgb, var(--door-accent) 16%, transparent);
+  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease);
+  overflow: hidden;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.door:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--depth-hi), var(--depth-deep),
+              0 0 46px color-mix(in srgb, var(--door-accent) 30%, transparent);
+}
+
+.door-top { display: flex; align-items: center; gap: 13px; }
+
+.door-icon {
+  width: 48px; height: 48px; flex: none;
+  display: grid; place-items: center;
+  color: var(--door-accent);
+}
+
+.door-icon svg { width: 48px; height: 48px; }
+
+.door-name { font-size: 15px; font-weight: 800; }
+
+.door-for { color: var(--muted); font-size: var(--fs-small); }
+
+.door-desc { color: var(--ink-dim); font-size: var(--fs-body); flex: 1; }
+
+.door-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; }

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0258",
+ "intelligence": {
+  "title": "The Deliverable Is the Note Plus the Link, Never the PR Number — Ship the Verification Pair at Authoring Time",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number",
+  "smart_note_id": "SN-0258",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0258/IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SMART-NOTE-REFINEMENT/PROOF-RETURN/SN-0258/IB-SMART-NOTE-20261004-sn0258-deliverable-is-note-plus-link-not-pr-number.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

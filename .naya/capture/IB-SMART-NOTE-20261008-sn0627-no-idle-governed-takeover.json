@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0627",
+ "intelligence": {
+  "title": "The No-Idle Takeover: Lane Ownership Is Speed, Not Territory",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover",
+  "smart_note_id": "SN-0627",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0627/IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0627/IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover.md",
+  "provenance_note": "reconstructed; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

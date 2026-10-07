@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-045",
+ "intelligence": {
+  "title": "Lost-Delivery Recovery — Repost the Verified Receipt, Never Rerun the Work",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn045-lost-delivery-recovery",
+  "smart_note_id": "SN-045",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/LOST-DELIVERY-RECOVERY/SN-045/IB-SMART-NOTE-20260930-sn045-lost-delivery-recovery.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/LOST-DELIVERY-RECOVERY/SN-045/IB-SMART-NOTE-20260930-sn045-lost-delivery-recovery.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

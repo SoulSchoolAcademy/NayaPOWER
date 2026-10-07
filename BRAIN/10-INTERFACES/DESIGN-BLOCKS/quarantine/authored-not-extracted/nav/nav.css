@@ -1,0 +1,294 @@
+/* Smart Block: nav — the top navigation bar.
+ * Authored 2026-10-09 for the Smart Blocks library (composition layer).
+ * Design language: Naya — black ground, white light, purple soul.
+ *
+ * Logo left, links center/right, CTA right. Sticky by default.
+ * Depth: the bar sits on a translucent black field with a hairline
+ * bottom light — it floats above the page, never pasted onto it.
+ * Mobile: links collapse behind a hamburger; the CTA stays visible.
+ *
+ * Pairs with: buttons/naya-btn (CTA), jewels/gem-bullet (active marker).
+ * Touch targets: every interactive element is 44px+ (the law).
+ */
+
+/* The bar itself — sticky, translucent, seated above content */
+.naya-nav {
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+
+  /* Translucent black field so content slides beneath with depth */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 22%),
+    rgba(5, 5, 8, 0.86);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  /* Hairline bottom light — the bar floats, never pasted */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Inner row: logo | links | CTA */
+.naya-nav__row {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  min-height: 72px;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+/* Logo lockup — mark + wordmark */
+.naya-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  text-decoration: none;
+  color: #ffffff;
+  flex: none;
+}
+
+.naya-nav__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex: none;
+  /* Jewel mark: deep core, purple soul, white specular — the orb language */
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.25) 14%, transparent 32%),
+    radial-gradient(circle at 50% 50%, #8d63f5 0%, #4a2b9e 58%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.55),
+    0 0 18px rgba(141, 99, 245, 0.45);
+}
+
+.naya-nav__wordmark {
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Link cluster */
+.naya-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.naya-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  font-family: var(--ui, Inter, ui-sans-serif, system-ui, sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(248, 247, 251, 0.72);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 0.22s cubic-bezier(0.16, 0.84, 0.22, 1),
+    background 0.22s cubic-bezier(0.16, 0.84, 0.22, 1);
+}
+
+/* White at rest is for the bar; links rest quiet, ignite on approach */
+.naya-nav__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Active link: purple soul + diamond jewel marker (the gem-bullet language) */
+.naya-nav__link--active {
+  color: #ffffff;
+}
+
+.naya-nav__link--active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%) rotate(45deg);
+  background: linear-gradient(140deg, #ffffff 0%, #8d63f5 50%, #18101a 100%);
+  box-shadow: 0 0 10px rgba(141, 99, 245, 0.8);
+}
+
+/* CTA slot — drop a naya-btn or primo here; spacing only */
+.naya-nav__cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+/* Hamburger — hidden on desktop, the mobile door */
+.naya-nav__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.22s cubic-bezier(0.16, 0.84, 0.22, 1),
+    background 0.22s cubic-bezier(0.16, 0.84, 0.22, 1);
+}
+
+.naya-nav__toggle:hover {
+  border-color: rgba(141, 99, 245, 0.6);
+  background: rgba(141, 99, 245, 0.08);
+}
+
+/* Three-line mark drawn in CSS — white at rest */
+.naya-nav__toggle span,
+.naya-nav__toggle span::before,
+.naya-nav__toggle span::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 0.84, 0.22, 1),
+    opacity 0.2s ease;
+}
+
+.naya-nav__toggle span::before {
+  position: absolute;
+  top: -6px;
+  left: 0;
+}
+
+.naya-nav__toggle span::after {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+/* Open state: lines become an X */
+.naya-nav--open .naya-nav__toggle span {
+  background: transparent;
+}
+
+.naya-nav--open .naya-nav__toggle span::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.naya-nav--open .naya-nav__toggle span::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile: links become a dropdown sheet */
+@media (max-width: 860px) {
+  .naya-nav__row {
+    gap: 16px;
+    min-height: 64px;
+  }
+
+  .naya-nav__toggle {
+    display: inline-flex;
+  }
+
+  .naya-nav__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 12px clamp(20px, 4vw, 48px) 20px;
+    background: rgba(5, 5, 8, 0.97);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+  }
+
+  .naya-nav--open .naya-nav__links {
+    display: flex;
+  }
+
+  .naya-nav__link {
+    min-height: 52px;
+    padding: 0 12px;
+    font-size: 17px;
+    border-radius: 12px;
+  }
+
+  .naya-nav__link--active::after {
+    left: 12px;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* CTA stays in the bar on mobile — never hidden behind the toggle */
+  .naya-nav__cta {
+    margin-left: 0;
+  }
+}
+
+/* Non-sticky variant for pages that want the nav to scroll away */
+.naya-nav--static {
+  position: static;
+}
+
+/* Transparent-over-hero variant: no field until scrolled.
+ * Pair with JS adding .naya-nav--scrolled, or use as-is over a hero. */
+.naya-nav--overlay {
+  position: fixed;
+  top: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 8, 0.72) 0%, transparent 100%);
+  border-bottom-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.naya-nav--overlay.naya-nav--scrolled {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 22%),
+    rgba(5, 5, 8, 0.86);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Reduced motion: no transitions on state change */
+@media (prefers-reduced-motion: reduce) {
+  .naya-nav__link,
+  .naya-nav__toggle,
+  .naya-nav__toggle span,
+  .naya-nav__toggle span::before,
+  .naya-nav__toggle span::after {
+    transition: none;
+  }
+}

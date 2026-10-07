@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0442",
+ "intelligence": {
+  "title": "A Skip Is Neither Proof Nor Failure — Read Its Cause",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0442-a-skip-is-neither-proof-nor-failure",
+  "smart_note_id": "SN-0442",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/EVIDENCE-PER-TIP/SN-0442/IB-SMART-NOTE-20260930-sn0442-a-skip-is-neither-proof-nor-failure.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/EVIDENCE-PER-TIP/SN-0442/IB-SMART-NOTE-20260930-sn0442-a-skip-is-neither-proof-nor-failure.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

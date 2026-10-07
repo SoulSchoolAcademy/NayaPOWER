@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0256",
+ "intelligence": {
+  "title": "Placement Is Architecture — Never Invent Locations; Read the Code, Then Make the Wrong Location Unexpressible",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0256-placement-is-architecture-never-invent-locations",
+  "smart_note_id": "SN-0256",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0256/IB-SMART-NOTE-20261004-sn0256-placement-is-architecture-never-invent-locations.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0256/IB-SMART-NOTE-20261004-sn0256-placement-is-architecture-never-invent-locations.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

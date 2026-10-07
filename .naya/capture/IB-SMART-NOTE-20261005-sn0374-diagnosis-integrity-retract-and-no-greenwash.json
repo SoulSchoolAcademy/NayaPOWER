@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0374",
+ "intelligence": {
+  "title": "Diagnosis Integrity — Retract Where You Claimed It; Never Green-Wash Main's Red Inside Your PR",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0374-diagnosis-integrity-retract-and-no-greenwash",
+  "smart_note_id": "SN-0374",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0374/IB-SMART-NOTE-20261005-sn0374-diagnosis-integrity-retract-and-no-greenwash.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0374/IB-SMART-NOTE-20261005-sn0374-diagnosis-integrity-retract-and-no-greenwash.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

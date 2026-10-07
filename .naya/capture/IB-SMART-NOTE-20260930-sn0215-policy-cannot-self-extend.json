@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0215",
+ "intelligence": {
+  "title": "The Policy Cannot Self-Extend: Anti-Self-Reference in Promotion Gates",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0215-policy-cannot-self-extend",
+  "smart_note_id": "SN-0215",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COMMITMENT-INTEGRITY/SN-0215/IB-SMART-NOTE-20260930-sn0215-policy-cannot-self-extend.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COMMITMENT-INTEGRITY/SN-0215/IB-SMART-NOTE-20260930-sn0215-policy-cannot-self-extend.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

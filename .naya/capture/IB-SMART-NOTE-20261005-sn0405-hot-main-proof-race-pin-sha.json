@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0405",
+ "intelligence": {
+  "title": "SN-0405 — Hot-Main Proof Race: pin the source SHA — a source-integrity failure on a hot main is environmental, not a product defect",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0405-hot-main-proof-race-pin-sha",
+  "smart_note_id": "SN-0405",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0405/IB-SMART-NOTE-20261005-sn0405-hot-main-proof-race-pin-sha.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0405/IB-SMART-NOTE-20261005-sn0405-hot-main-proof-race-pin-sha.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

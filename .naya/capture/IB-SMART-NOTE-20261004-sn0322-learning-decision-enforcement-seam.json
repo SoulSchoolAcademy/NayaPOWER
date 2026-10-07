@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0322",
+ "intelligence": {
+  "title": "DONE Is Not Done Without a Learning Decision — Enforce CAPTURE/NO_CAPTURE at the Handoff Seam",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0322-learning-decision-enforcement-seam",
+  "smart_note_id": "SN-0322",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/LEARNING-DECISION-ENFORCEMENT/SN-0322/IB-SMART-NOTE-20261004-sn0322-learning-decision-enforcement-seam.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/LEARNING-DECISION-ENFORCEMENT/SN-0322/IB-SMART-NOTE-20261004-sn0322-learning-decision-enforcement-seam.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block specimen: lists/sp-blockrow</title>
+<link rel="stylesheet" href="block.css">
+<style>
+  body{ background:#050507; color:#fff; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; margin:0; padding:40px 24px; }
+  h1{ font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:#8a8a96; margin:0 0 24px; }
+  .demo{ max-width:560px; }
+  /* .sp-pin-act is not in this block's CSS; specimen-only styling so the demo renders */
+  .sp-pin-act{ padding:8px 18px; border-radius:999px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; color:#a78bfa; background:rgba(157,117,255,.12); border:1px solid rgba(157,117,255,.4); flex:0 0 auto; }
+  .sp-pin-act.on{ color:#fff; background:rgba(13,158,111,.2); border-color:rgba(13,158,111,.6); }
+</style>
+</head>
+<body>
+<h1>lists / sp-blockrow</h1>
+<div class="demo" id="demo"></div>
+<script src="block.js"></script>
+<script>
+  document.getElementById('demo').appendChild(spBlockList([
+    {title:'The Awesome Thesis', category:'Intelligence'},
+    {title:'Judgment Rule', category:'Governance',
+      action:{label:'Pin', active:false, onClick:function(b){ console.log('pin', b.title); }}},
+    {title:'Value Function', category:'Governance',
+      action:{label:'✓ Pinned', active:true}},
+    {title:'Design North Star', category:'Design'}
+  ]));
+</script>
+</body>
+</html>

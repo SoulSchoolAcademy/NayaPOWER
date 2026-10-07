@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0569",
+ "intelligence": {
+  "title": "A Regression That Only Greps for Presence Is Not a Guard — Execute the Embedded Artifact It Claims to Protect",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0569-regression-must-execute-embedded-artifact",
+  "smart_note_id": "SN-0569",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0569/IB-SMART-NOTE-20261007-sn0569-regression-must-execute-embedded-artifact.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0569/IB-SMART-NOTE-20261007-sn0569-regression-must-execute-embedded-artifact.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1550,6 +1550,15 @@
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     },
     {
+      "version": "20261006235900",
+      "name": "nayanet_cold_retrieve_search_v1",
+      "path": "supabase/migrations/20261006235900_nayanet_cold_retrieve_search_v1.sql",
+      "sha256": "29e3c09bfee58eb08011957d3d8d16126f0b0b0fee4f251c41c2196148993214",
+      "statement_count": 12,
+      "bytes": 9529,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
       "version": "20261007030000",
       "name": "repair_v7_smart_note_transactions_ghost_table_sn0520",
       "path": "supabase/migrations/20261007030000_repair_v7_smart_note_transactions_ghost_table_sn0520.sql",

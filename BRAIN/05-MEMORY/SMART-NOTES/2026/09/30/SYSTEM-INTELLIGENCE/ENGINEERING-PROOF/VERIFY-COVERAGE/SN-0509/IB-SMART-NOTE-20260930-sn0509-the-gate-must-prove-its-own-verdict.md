@@ -1,0 +1,40 @@
+# The Gate Must Prove Its Own Verdict — a False "Unproven" Is Worse Than No Verdict
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0509-the-gate-must-prove-its-own-verdict
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-06
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 6028066416 ([CODA 1] SIGN-OUT — 9 of 14 edge functions were unproven, 2026-10-07T00:25:03Z) — SoulSchoolAcademy.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+Coda 1's executed-coverage gate did its job on the first push — it went red on the Linux runner. But it was red for the wrong reason: `only 0/14 edge functions are executed`. Her `rel()` stripped `ROOT + "\"`, which on Windows yields the intended repo-relative path and on Linux yields an **absolute** path matching nothing — so the gate was asserting a *false* "nothing is executed" verdict in CI while passing locally. Her own words: *"I shipped a platform-dependent gate and only the runner caught it. Green-on-Windows was not evidence."* Fixed with `path.relative` + separator normalisation, verified by evaluating both forms against a POSIX root.
+
+She states the doctrine plainly: **a false "unproven" verdict is worse than no verdict — it invites someone to delete real coverage.** A gate crying "0/14 executed" doesn't just fail; it directs a human to "fix" or rip out coverage that exists. And she applied the same discipline to her own audit mid-flight: its first version only recognised direct `import`, so it reported `nayanet-verified-ai-action` as unexecuted — when in fact it has a full VM-sandbox authority-lifecycle suite. She fixed the audit rather than reporting its output; a false "uncovered" claim is worse than no claim.
+
+The durable rule: **every gate is itself an instrument, and its verdict must be proven on the platform that will run it.** Green locally proves nothing about the verdict CI will render — the verdict is a claim about the runner's world, and only the runner's world can certify it. When you catch your own measuring tool mis-reporting, fix the tool, never ship its output. Family: SN-0341 (the instrument lies — harness scratch) :: SN-0429 (verify with the instrument CI uses — the branch's pin lies about the tool) :: SN-0233 (a false green is worse than a false red) — this is the mirror image: a false "unproven" is worse than no verdict at all.
+
+Why this is brain-grade: gates multiply. Every new gate is a new instrument in the evidence chain, and a lane trusts a gate's verdict the way a reader trusts a sentence. One gate that fabricates "unproven" verdicts doesn't just produce one wrong red — it teaches every lane downstream to distrust (or delete) coverage that was real. The honesty floor the fleet stands on is not "gates exist"; it is "every gate's verdict has been proven on the instrument that renders it."
+
+## 🩷 HUMAN NOTE
+
+Shawn — a sharp one from Coda 1's edge-function coverage work. She built a gate that asserts "14/14 edge functions actually execute" — but the first version of the gate itself was broken: it passed on her machine and falsely reported "0/14 executed" on the CI runner, because of a Windows-vs-Linux path bug. She owned it: "I shipped a platform-dependent gate and only the runner caught it. Green-on-Windows was not evidence." Banked rule: a gate's verdict must be proven on the machine that will run it — and a false "unproven" verdict is worse than no verdict, because it invites someone to delete coverage that actually exists. She also caught her own audit mis-reporting a function as uncovered and fixed the audit instead of reporting its output. The checker gets checked too.
+
+## 🟣 CHILD NOTE
+
+Imagine you build a smoke detector for your house. You test it in your bedroom and it works. But when you put it in the kitchen, a tiny difference in the ceiling shape makes it scream "FIRE!" when there's no fire at all. That's worse than having no detector — because now everyone will tear up the kitchen looking for a fire that isn't there, and they might even rip out the real detector thinking it's broken. Coda 1's coverage-checker had exactly this bug: it worked on Windows and screamed "0 out of 14 run!" on Linux, even though all 14 did run. She fixed the checker (not the code it was checking) and locked the rule: the checker itself has to be proven on the machine where it will run. A wrong "everything is broken" is more dangerous than no checker at all.
+
+## 👵 GRANDMA NOTE
+
+A smoke alarm that goes off with no smoke is worse than a quiet room — it sends people running, breaking things, looking for a fire that isn't there. Coda 1 built an alarm for "are the edge functions really running?" and her first version cried wolf on the CI machine while staying quiet on her own computer — a tiny path-handling difference between Windows and Linux. She didn't argue with the machine; she fixed the alarm, proved it on the same kind of machine that would use it, and wrote down the lesson: **the alarm itself has to be tested where it will live.** And when her own measuring tape measured wrong, she fixed the tape — she didn't publish the wrong measurement.
+
+## 💜 NAYA NOTE
+
+Note to future me: whenever I write or inherit a gate — a coverage gate, a proof gate, any check that renders a verdict on CI — ask one question before trusting it: **has this gate's verdict been proven on the platform that will run it?** Green locally is not evidence about the verdict CI renders; the verdict is a claim about the runner's world. Coda 1's case is the canonical warning: a `rel()` that strips `ROOT + "\"` is a Windows verdict wearing a universal mask, and it asserted "0/14 executed" — a fabricated "unproven" — on Linux. A false "unproven" is worse than no verdict: it invites a lane to delete real coverage. And the twin discipline: when your audit mis-reports (hers missed the VM-sandbox authority suite because it only recognised direct `import`), fix the audit, never report its output. Family: SN-0341 :: SN-0429 :: SN-0233 (false green worse than false red) — this is the mirror: false "unproven" worse than no verdict.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0509", "title": "The Gate Must Prove Its Own Verdict — a False \"Unproven\" Is Worse Than No Verdict", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-06", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ENGINEERING-PROOF", "VERIFY-COVERAGE"], "cousins": ["SN-0341", "SN-0429", "SN-0233", "SN-0506"], "authority": "observed episode — Coda 1 edge-function executed-coverage sign-out 2026-10-07T00:25:03Z, CANDIDATE (auto-capture, not ratified)", "evidence": {"board": ["#1354 6028066416 (first push red on Linux runner: 'only 0/14 edge functions are executed' — rel() stripped ROOT + \"\\\" yielding absolute path on Linux vs repo-relative on Windows; gate asserted false 'nothing is executed' verdict in CI while passing locally; fixed with path.relative + separator normalisation, verified by evaluating both forms against a POSIX root; 'I shipped a platform-dependent gate and only the runner caught it. Green-on-Windows was not evidence.'; 'A false unproven verdict is worse than no verdict — it invites someone to delete real coverage.'; audit mid-flight correction: only recognised direct import, falsely reported nayanet-verified-ai-action as unexecuted despite its VM-sandbox authority-lifecycle suite — fixed the audit rather than reporting its output, 2026-10-07T00:25:03Z)"]}, "doctrine": {"gate_verdict_proof": "a gate's verdict must be proven on the platform that will run it; green locally is not evidence about the verdict CI renders", "false_unproven": "a false 'unproven' verdict is worse than no verdict — it directs a lane to 'fix' or delete coverage that exists", "fix_the_instrument": "when the audit mis-reports, fix the audit, never report its output", "family": "SN-0341 (the instrument lies) :: SN-0429 (verify with the instrument CI uses) :: SN-0233 (false green worse than false red) :: this (false 'unproven' worse than no verdict)"}}

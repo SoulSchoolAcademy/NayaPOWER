@@ -1,0 +1,31 @@
+/* Smart Block: icon-btn
+ * Source: Naya_5_Beautiful_Button_set.html (byte-true extraction, not rewritten)
+ * Type: buttons
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules (v2) ---- */
+
+
+
+/* ============ ICON BUTTONS — round, dimensional, never flat ============ */
+.icon-btn {
+  --ic: var(--purple); --ic-rgb: var(--purple-rgb);
+  width: 52px; height: 52px; border-radius: 50%; border: none; cursor: pointer;
+  display: inline-grid; place-items: center; color: #fff;
+  background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.02) 40%, rgba(0,0,0,.25) 100%), linear-gradient(180deg, #23232b 0%, #0a0a0e 55%, #020203 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset 0 2px 4px rgba(255,255,255,.3), inset 0 -4px 10px rgba(0,0,0,.6), 0 12px 28px rgba(0,0,0,.65), 0 4px 10px rgba(0,0,0,.5);
+  transition: transform .2s var(--ease), box-shadow .25s var(--ease);
+}
+
+.icon-btn svg { width: 22px; height: 22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,.7)); }
+
+.icon-btn:hover { transform: translateY(-2px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(var(--ic-rgb),.9), inset 0 2px 4px rgba(255,255,255,.35), inset 0 -4px 10px rgba(0,0,0,.55), 0 0 24px -4px rgba(var(--ic-rgb),.6), 0 16px 34px rgba(0,0,0,.7); }
+
+.icon-btn:active { transform: scale(.94); transition-duration: .08s;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.8), 0 6px 16px rgba(0,0,0,.6); }
+
+.icon-btn[aria-pressed="true"] { box-shadow: inset 0 0 0 1.5px rgba(var(--ic-rgb),1), inset 0 2px 4px rgba(255,255,255,.3), 0 0 28px -2px rgba(var(--ic-rgb),.7), 0 12px 28px rgba(0,0,0,.65); }
+
+.icon-btn[aria-pressed="true"] svg { fill: rgba(var(--ic-rgb),.35); }

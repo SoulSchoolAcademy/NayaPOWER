@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0375",
+ "intelligence": {
+  "title": "First Contact Proves the Guard — A Detector Earns CI on Real Data with Zero False Positives",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0375-first-contact-proves-the-guard",
+  "smart_note_id": "SN-0375",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/GUARD-FALSE-POSITIVES/SN-0375/IB-SMART-NOTE-20261005-sn0375-first-contact-proves-the-guard.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/GUARD-FALSE-POSITIVES/SN-0375/IB-SMART-NOTE-20261005-sn0375-first-contact-proves-the-guard.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,36 @@
+# A Sync Verdict Reads Both Sides — One-Sided Verification Is a Claim, Not a Verdict
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0227-a-sync-verdict-reads-both-sides
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-03
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** `#554` 5972363082 ([NAYA 4] bottom-bar + room/sidebar sync check, 2026-10-03 18:49:37Z — flagged EXTERNAL_ROOMS long-name vs drawer short-name mismatch as "needs our agreement"), 5972375849 ([Naya 2] "Room filenames — already in sync. I checked the Hub source" — her side only, 2026-10-03 18:51:00Z), 5972397033 ([NAYA 4] correction: those names are the Hub's, not the drawer's — "the mismatch I flagged is real", 2026-10-03 18:53:18Z), 5972447625 ([Naya 2] public correction: "I checked my side only and said 'already in sync.' That was wrong.", 2026-10-03 18:58:11Z)
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+During the lane-to-lane bottom-bar sync, Naya 4 flagged a filename mismatch between the Hub's `EXTERNAL_ROOMS` (`yourinteltoday.html`, `smartconnect.html`, `smartledger.html`, `smartlists.html`) and her rooms drawer's short deploy names (`today.html`, `connect.html`, `ledger.html`, `lists.html`) and asked the other lane for its call. Naya 2 replied "already in sync" — having read **only her own side** (the Hub source) and confirmed no short names existed there, never reading Naya 4's drawer. The claim was wrong on both facts: the other side used different names, and the mismatch was real. Two minutes later she posted a full public correction naming the method defect ("I verified my side but not yours. That's on me."), re-stated the actual state on both sides, and Naya 4 acknowledged the correction was owned fast.
+
+Why this is brain-grade: a sync is a two-party relation — your half being internally consistent proves nothing about the other half. Checking your side and declaring "in sync" is a *claim*, not a verdict, and it fails in exactly the case that matters (divergence). The durable rule: **a sync verdict names the state on BOTH sides, from reads of both sides, in the same comment**; anything less is one-sided verification and must be labeled as such ("my side reads X; the other side's read is pending"). This is the sync-specific form of SN-0121 (the verifier names its boundary) and SN-0098 (investigate the other platform before dismissing — this time the "other platform" was the teammate's file). The correction culture is what made the defect cheap: she named the method failure publicly, owned it, and re-derived the actual state — that is the model, and it is why the bad call cost four minutes instead of a debugging session.
+
+## 🩷 HUMAN NOTE
+
+Shawn — a small, clean lesson from the bottom-bar sync work: Naya 2 declared the room filenames "already in sync" after reading only her own Hub file, without reading the other lane's drawer — and the mismatch was real. She owned it publicly two minutes later ("I verified my side but not yours. That's on me.") and re-stated both sides. The rule the lane now carries: a sync verdict must name the state on BOTH sides from reads of both sides — one-sided verification is a claim, not a verdict. The fast, public correction is exactly the culture we want; the rule is so we need it less.
+
+## 🟣 CHILD NOTE
+
+Imagine checking whether two walkie-talkies are on the same channel by looking only at yours. Yours is fine — but the other one is on channel 4 while you're on channel 7, and no one can hear each other. That's what happened: she checked her side only and said "in sync." The rule is simple: to say two things are in sync, you have to look at BOTH of them. She did the next-best thing though — when she realized, she said "I was wrong" out loud so everyone could fix it fast.
+
+## 👵 GRANDMA NOTE
+
+The two seats had to agree on file names for the Hub rooms. One lane said everything matched — but she had only checked her own files, not her teammate's. Her teammate's files used different names, so links would have broken. Two minutes later she corrected herself openly: "I verified my side but not yours. That's on me." The standing rule now: claiming two things are in sync requires reading both sides — checking only yours is a guess wearing a lab coat. And the way she owned the mistake is exactly how the team stays fast.
+
+## 🤖 NAYA NOTE
+
+Sync-verdict discipline (lane-to-lane sync, OWNED + CORRECTED, 4-minute cost). Instance: bottom-bar sync 2026-10-03 — Naya 4's sync-check post 5972363082 flagged the EXTERNAL_ROOMS↔drawer filename mismatch explicitly as "needs our agreement"; Naya 2's reply 5972375849 ruled "already in sync" after reading only her side (Hub source); Naya 4's counter 5972397033 showed the mismatch was real (long names are the Hub's, short names are the drawer's); Naya 2's correction 5972447625 owned the method defect publicly ("I checked my side only and said 'already in sync.' That was wrong"), re-stated both sides' actual state, and proposed a call. Rule: **a sync verdict names the state on BOTH sides, from reads of both sides, in the same comment** — one-sided verification is a claim, never a verdict; when only your side is read, label it as partial ("my side reads X; the other side's read is pending"). Binding instance of correction culture: name the method failure, own it, re-derive the state — the correction must be as public as the call. Cousin family: SN-0121 (verifier names its boundary — partial checks without named bounds get overclaimed), SN-0098 (investigate the other platform before dismissing), SN-0042 (explicit supersession — superseded claims declared on the board). Open at note time: the lanes' filename disagreement itself — resolved separately in SN-0228.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0227", "title": "A Sync Verdict Reads Both Sides — One-Sided Verification Is a Claim, Not a Verdict", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-03", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "OPERATING-MODE", "DIRECT-LANE-COLLABORATION"], "cousins": ["SN-0042", "SN-0098", "SN-0121"], "evidence": {"board": ["#554 5972363082 ([NAYA 4] sync-check flagging EXTERNAL_ROOMS long-name vs drawer short-name mismatch, 2026-10-03 18:49:37Z)", "#554 5972375849 ([Naya 2] 'already in sync' — read her side only, 2026-10-03 18:51:00Z)", "#554 5972397033 ([NAYA 4] correction — the mismatch is real, 2026-10-03 18:53:18Z)", "#554 5972447625 ([Naya 2] public correction — 'I checked my side only and said already in sync. That was wrong.', 2026-10-03 18:58:11Z)"], "defect": "one-sided sync declaration: Hub source read, drawer never read; 'in sync' asserted over a two-party relation with one party unexamined", "correction": "public ownership + method-defect named + both-sides state re-derived in 5972447625 (~4 min after the bad call)", "underlying_dispute": "long vs short canonical room filenames — settled in SN-0228 against the deploy zip"}, "status": "doctrine CANDIDATE — owned instance, correction on the board, no recurrence yet", "rule": "a sync verdict names the state on BOTH sides from reads of both sides in the same comment; one-sided verification is a claim, never a verdict; partial reads must be labeled partial"}

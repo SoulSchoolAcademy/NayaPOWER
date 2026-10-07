@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0547",
+ "intelligence": {
+  "title": "The Claimed-Seam Rule — Check for an In-Flight Lane Claim Before Opening a Build",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0547-the-claimed-seam-rule",
+  "smart_note_id": "SN-0547",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0547/IB-SMART-NOTE-20261007-sn0547-the-claimed-seam-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0547/IB-SMART-NOTE-20261007-sn0547-the-claimed-seam-rule.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

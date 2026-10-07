@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0418",
+ "intelligence": {
+  "title": "The Skipped Producer Poisons the Chain — a Skip on an Artifact-Producing Job Is Not Neutral, It Kills Every Downstream Consumer",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0418-skipped-producer-poisons-artifact-chain",
+  "smart_note_id": "SN-0418",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0418/IB-SMART-NOTE-20261005-sn0418-skipped-producer-poisons-artifact-chain.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0418/IB-SMART-NOTE-20261005-sn0418-skipped-producer-poisons-artifact-chain.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

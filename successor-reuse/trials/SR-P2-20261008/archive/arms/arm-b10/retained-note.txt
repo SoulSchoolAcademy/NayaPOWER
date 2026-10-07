@@ -1,0 +1,1 @@
+The Reserve Rule fired on the first dispatch: Call-101 (8.4) and Call-102 (8.0) were within 0.5 points, so I dispatched the lower-scored Call-102. The second dispatch was outside the rule's applicability band (8.6 vs 7.1 differ by 1.5 points), so I dispatched the highest-scored call, Call-201, and marked the lesson not applicable there.

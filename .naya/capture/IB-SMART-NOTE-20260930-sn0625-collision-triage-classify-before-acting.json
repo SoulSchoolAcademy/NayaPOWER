@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0625",
+ "intelligence": {
+  "title": "Classify Collisions Before Acting — GENUINE / FALSE / HISTORICAL, and Never Renumber What Design Explains",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0625-collision-triage-classify-before-acting",
+  "smart_note_id": "SN-0625",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0625/IB-SMART-NOTE-20260930-sn0625-collision-triage-classify-before-acting.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0625/IB-SMART-NOTE-20260930-sn0625-collision-triage-classify-before-acting.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

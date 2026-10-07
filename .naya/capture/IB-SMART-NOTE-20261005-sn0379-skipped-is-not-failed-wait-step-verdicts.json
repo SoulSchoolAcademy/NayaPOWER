@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0379",
+ "intelligence": {
+  "title": "Skipped Is Not Failed — a Wait Step Must Not Die on an Upstream Placeholder",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0379-skipped-is-not-failed-wait-step-verdicts",
+  "smart_note_id": "SN-0379",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0379/IB-SMART-NOTE-20261005-sn0379-skipped-is-not-failed-wait-step-verdicts.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/SKIP-DISCIPLINE/SN-0379/IB-SMART-NOTE-20261005-sn0379-skipped-is-not-failed-wait-step-verdicts.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

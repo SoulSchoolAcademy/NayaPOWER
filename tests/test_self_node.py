@@ -1,3 +1,5 @@
+import json
+
 from kernel.self_node import JsonContinuityStore, RuntimeIdentity, SelfNode, SelfNodeError
 
 
@@ -64,3 +66,73 @@ def test_self_does_not_allow_successor_packet_before_experience(tmp_path):
         assert str(exc) == "successor_not_ready"
     else:
         raise AssertionError("successor packet must require preserved experience")
+
+
+def test_self_load_rejects_tampered_checkpoint(tmp_path):
+    path = tmp_path / "self.json"
+    store = JsonContinuityStore(path)
+    node = SelfNode(store)
+    node.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["mission"] = "TAMPERED-MISSION"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    try:
+        store.load()
+    except SelfNodeError as exc:
+        assert str(exc) == "checkpoint_integrity_failed"
+    else:
+        raise AssertionError("tampered checkpoint payload must be rejected")
+
+
+def test_self_load_rejects_tampered_checkpoint_id(tmp_path):
+    path = tmp_path / "self.json"
+    store = JsonContinuityStore(path)
+    node = SelfNode(store)
+    node.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["checkpoint_id"] = "CHK-000000000000000000000000"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    try:
+        store.load()
+    except SelfNodeError as exc:
+        assert str(exc) == "checkpoint_integrity_failed"
+    else:
+        raise AssertionError("forged checkpoint id must be rejected")
+
+
+def test_self_load_rejects_unparseable_store(tmp_path):
+    path = tmp_path / "self.json"
+    path.write_text("{not valid json", encoding="utf-8")
+    try:
+        JsonContinuityStore(path).load()
+    except SelfNodeError as exc:
+        assert str(exc) == "checkpoint_integrity_failed"
+    else:
+        raise AssertionError("unparseable store must be rejected as corrupt")
+
+
+def test_self_cold_boot_fails_closed_on_corrupt_store(tmp_path):
+    path = tmp_path / "self.json"
+    store = JsonContinuityStore(path)
+    first = SelfNode(store)
+    first.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "True-Mission", "Objective", "kernel")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["mission"] = "TAMPERED-MISSION"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    cold = SelfNode(JsonContinuityStore(path))
+    try:
+        cold.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "True-Mission", "Objective", "kernel")
+    except SelfNodeError as exc:
+        assert str(exc) == "checkpoint_integrity_failed"
+    else:
+        raise AssertionError("cold boot must fail closed on a corrupt store")
+
+
+def test_self_boot_receipt_reports_prior_integrity(tmp_path):
+    path = tmp_path / "self.json"
+    node = SelfNode(JsonContinuityStore(path))
+    fresh = node.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    assert fresh["prior_checkpoint_integrity"] == "ABSENT"
+    again = SelfNode(JsonContinuityStore(path))
+    receipt = again.cold_boot(RuntimeIdentity("naya-1", "NayaPOWER", "naya"), "Mission", "Objective", "kernel")
+    assert receipt["prior_checkpoint_integrity"] == "VERIFIED"

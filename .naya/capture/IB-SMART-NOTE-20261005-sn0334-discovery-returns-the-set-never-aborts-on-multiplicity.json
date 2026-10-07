@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0334",
+ "intelligence": {
+  "title": "Discovery Returns the Set, Never Aborts on Multiplicity — an Abort at Discovery Poisons the Whole Downstream Workflow",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0334-discovery-returns-the-set-never-aborts-on-multiplicity",
+  "smart_note_id": "SN-0334",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/BATCH-DISCOVERY/SN-0334/IB-SMART-NOTE-20261005-sn0334-discovery-returns-the-set-never-aborts-on-multiplicity.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/AGENT-ARCHITECTURE/BATCH-DISCOVERY/SN-0334/IB-SMART-NOTE-20261005-sn0334-discovery-returns-the-set-never-aborts-on-multiplicity.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

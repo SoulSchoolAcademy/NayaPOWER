@@ -1,0 +1,1489 @@
+{
+ "name": "NayaNET Smart Blocks",
+ "version": "1.0.0",
+ "updated": "2026-10-09",
+ "ground_rules": [
+  "Black ground only. Never light mode, never white page backgrounds.",
+  "Text is white 99% of the time; hierarchy comes from size (24/18/14), never color.",
+  "Buttons: silver-white at rest, identity color ignites on interaction. Black heart, white voice, visible skin.",
+  "Color has three jobs: chrome (actions), text (white), theme (one spectrum accent per item). Never cross them.",
+  "Spectrum flows in law order: purple, blue, green, yellow, gold, orange, red, magenta.",
+  "Motion encodes information: breathe = alive, shimmer = light, press = physical. No decoration.",
+  "Every data instrument names what it measures. A chart that calculates nothing is a screensaver.",
+  "Copy reads like an invitation, not documentation.",
+  "Icons are drawn vector geometry, readable at 16px. No shrunk photos.",
+  "One hero CTA per page. One nav system per page. One media moment per view."
+ ],
+ "how_to_use": [
+  "To BUILD a page: read RECIPES.md, pick the page recipe, pull each block by id from this manifest, paste the html, link blocks/naya-blocks.css (+ naya-blocks.js if any block has js_needed=true).",
+  "To REPAINT a page: read PAINT-JOB.md. Audit the existing page block by block, map each old pattern to the canonical block id in this manifest, swap and re-verify by screenshot.",
+  "Prefer tier=canonical. tier=alt blocks earned a 9+ as variants — use when the canonical does not fit the room. tier=new closes documented gaps. tier=specimen is anatomy reference, not for production.",
+  "Never invent a new button, card, or input. If no block fits, that is a gap to report, not a license to freestyle."
+ ],
+ "files": {
+  "showcase": "naya-smart-blocks.html (self-contained single file, human shelf)",
+  "css": "blocks/naya-blocks.css",
+  "js": "blocks/naya-blocks.js",
+  "tokens": "tokens/tokens.css",
+  "icons": "icons.svg (40 vector glyphs, referenced as #i-name)",
+  "registry": "REGISTRY.md",
+  "recipes": "RECIPES.md",
+  "paint_job": "PAINT-JOB.md"
+ },
+ "categories": [
+  {
+   "id": "buttons",
+   "label": "01 · Buttons",
+   "blocks": 10,
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page."
+  },
+  {
+   "id": "inputs",
+   "label": "02 · Inputs",
+   "blocks": 4,
+   "use_when": "Collecting user input. Fields are carved wells, never flat boxes."
+  },
+  {
+   "id": "navigation",
+   "label": "03 · Navigation",
+   "blocks": 5,
+   "use_when": "Moving between rooms/views. One nav system per page."
+  },
+  {
+   "id": "cards",
+   "label": "04 · Cards",
+   "blocks": 10,
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board."
+  },
+  {
+   "id": "data",
+   "label": "05 · Data",
+   "blocks": 4,
+   "use_when": "Numbers that mean something. Every instrument names what it measures."
+  },
+  {
+   "id": "overlays",
+   "label": "06 · Overlays",
+   "blocks": 3,
+   "use_when": "Moments that interrupt: confirm, notify, share. Use sparingly."
+  },
+  {
+   "id": "media",
+   "label": "07 · Media",
+   "blocks": 2,
+   "use_when": "Voice and image. One media moment per view max."
+  },
+  {
+   "id": "specialty",
+   "label": "08 · Specialty",
+   "blocks": 11,
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal."
+  },
+  {
+   "id": "new",
+   "label": "09 · New P0",
+   "blocks": 9,
+   "use_when": "Missing primitives, built to close P0 gaps. Prefer these over inventing new patterns."
+  }
+ ],
+ "blocks": [
+  {
+   "id": "buttons-canonical-button-naya-btn",
+   "order": 1,
+   "name": "Canonical button .naya-btn",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-btn"
+   ],
+   "description": "the one button every page reaches for first. What it measures: nothing — it is the promise: 54px pill, obsidian gradient, 1.5px silver rim, 5-layer shadow physics, hover lift −2px, press in 1px.",
+   "measures": "</strong> nothing — it <em>is</em> the promise: 54px pill, obsidian gradient, 1.",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn\">Begin the tour</button>\n      <button class=\"naya-btn small\">Save draft</button>\n      <button class=\"naya-btn compact\">Continue</button>\n      <button class=\"naya-btn\" disabled>Waiting…</button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-canonical-button-naya-btn.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-signature-variants-naya-btn-lead-machine-prism-proximity-str",
+   "order": 2,
+   "name": "Signature variants .naya-btn.lead / .machine / .prism / .proximity / .streak",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-btn.lead / .machine / .prism / .proximity / .streak"
+   ],
+   "description": "the same canonical physics wearing different rooms' identities — kept because each earned a 9+, not because one couldn't win.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn lead\">Take the lead</button>\n      <button class=\"naya-btn machine\">Machine mode</button>\n      <button class=\"naya-btn prism\">Prism view</button>\n      <button class=\"naya-btn proximity\">Come closer</button>\n    </div>",
+   "tier": "alt",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-signature-variants-naya-btn-lead-machine-prism-proximity-str.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-icon-buttons-naya-btn-icon-micro-portal",
+   "order": 3,
+   "name": "Icon buttons .naya-btn.icon / .micro / .portal",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-btn.icon / .micro / .portal"
+   ],
+   "description": "jewel sockets for the 40-glyph icon language — 58px circle, 44px micro, 66px portal. What it measures: affordance density: one tap, one honest glyph, no label needed.",
+   "measures": "</strong> affordance density: one tap, one honest glyph, no label needed.",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn icon\" aria-label=\"Search\"><svg class=\"icon\"><use href=\"#i-search\"/></svg></button>\n      <button class=\"naya-btn icon\" aria-label=\"Play\" style=\"--tone:var(--emerald);--rgb:var(--emerald-rgb)\"><svg class=\"icon\"><use href=\"#i-play\"/></svg></button>\n      <button class=\"naya-btn icon micro\" aria-label=\"Add\"><svg class=\"icon\"><use href=\"#i-plus\"/></svg></button>\n      <button class=\"naya-btn icon micro\" aria-label=\"Notify\" style=\"--tone:var(--gold);--rgb:var(--gold-rgb)\"><svg class=\"icon\"><use href=\"#i-bell\"/></svg></button>\n      <button class=\"naya-btn icon portal\" aria-label=\"Enter\"><svg class=\"icon\"><use href=\"#i-door\"/></svg></button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-icon-buttons-naya-btn-icon-micro-portal.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-ghost-amp-danger-naya-btn-ghost-naya-btn-danger",
+   "order": 4,
+   "name": "Ghost &amp; danger .naya-btn--ghost / .naya-btn--danger",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-btn--ghost / .naya-btn--danger"
+   ],
+   "description": "the quiet exit and the irreversible action — \"danger, done right\": a single red accent so the moment feels as serious as it is.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn naya-btn--ghost\">Not now</button>\n      <button class=\"naya-btn naya-btn--danger\">Delete this space</button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-ghost-amp-danger-naya-btn-ghost-naya-btn-danger.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-living-button-lv-btn",
+   "order": 5,
+   "name": "Living button .lv-btn",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".lv-btn"
+   ],
+   "description": "the signature action that wakes as your cursor approaches (160px), sheens toward your pointer, and sleeps at rest — tamed so its color never floods the page.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <span class=\"lv-wrap\"><button class=\"lv-btn\"><span class=\"lv-label\">✦&nbsp;Summon Naya</span></button></span>\n      <span class=\"lv-wrap\"><button class=\"lv-btn lv-btn--danger\"><span class=\"lv-label\">✦&nbsp;Burn it down</span></button></span>\n    </div>",
+   "tier": "alt",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-living-button-lv-btn.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-hero-cta-living-btn",
+   "order": 6,
+   "name": "Hero CTA .living-btn",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".living-btn"
+   ],
+   "description": "the one moment per page that deserves theater — a hero call-to-action with an idle breath and a per-spectrum glow that ignites only on hover.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"living-btn\" data-spectrum=\"purple\"><span class=\"btn-glow\"></span><span class=\"btn-label\">Begin the journey</span></button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-hero-cta-living-btn.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-split-button-naya-btn-split-split-orb",
+   "order": 7,
+   "name": "Split button .naya-btn.split + .split-orb",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-btn.split + .split-orb"
+   ],
+   "description": "two actions sharing one pill — the main promise plus a 44px jewel orb for the alternate path.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn split\">Publish now <span class=\"split-orb\"><svg class=\"icon\"><use href=\"#i-arrow\"/></svg></span></button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-split-button-naya-btn-split-split-orb.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-segmented-control-segmented",
+   "order": 8,
+   "name": "Segmented control .segmented",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".segmented"
+   ],
+   "description": "choosing between views that all deserve to exist — thin-bordered pill with an honest selected state.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"segmented\" role=\"tablist\" aria-label=\"Voice\">\n        <button role=\"tab\" aria-selected=\"true\">Human</button>\n        <button role=\"tab\" aria-selected=\"false\">Naya</button>\n        <button role=\"tab\" aria-selected=\"false\">Machine</button>\n      </div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-segmented-control-segmented.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-toggle-switch-naya-toggle",
+   "order": 9,
+   "name": "Toggle switch .naya-toggle",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".naya-toggle"
+   ],
+   "description": "a setting that lives or dies with one motion — living-motion switch with real role=switch semantics.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-toggle\" role=\"switch\" aria-checked=\"true\" aria-label=\"Voice replies\"></button>\n      <button class=\"naya-toggle\" role=\"switch\" aria-checked=\"false\" aria-label=\"Weekly digest\"></button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-toggle-switch-naya-toggle.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "buttons-room-micro-controls-like-pill-act-chip-day-dot-send-cta-mic-",
+   "order": 10,
+   "name": "Room micro-controls .like-pill / .act-chip / .day-dot / .send-cta / .mic-btn / .fab",
+   "category_id": "buttons",
+   "category": "01 · Buttons",
+   "css_classes": [
+    ".like-pill / .act-chip / .day-dot / .send-cta / .mic-btn / .fab"
+   ],
+   "description": "the small controls harvested from real boards — like, act, day-pick, send, talk, and the floating action that follows you home.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"like-pill\">♥ 2.4k</button>\n      <button class=\"act-chip\">Remix</button>\n      <button class=\"day-dot\" aria-label=\"Wednesday\">W</button>\n      <button class=\"send-cta\">Send <svg class=\"icon icon-sm\"><use href=\"#i-send\"/></svg></button>\n      <button class=\"mic-btn\" aria-label=\"Speak\"><svg class=\"icon\"><use href=\"#i-pulse\"/></svg></button>\n      <button class=\"fab\" aria-label=\"Create\">+</button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Primary actions. Default to .naya-btn; exactly one hero CTA per page.",
+   "css_file": "smart-blocks/buttons/buttons.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/buttons/buttons-room-micro-controls-like-pill-act-chip-day-dot-send-cta-mic-.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/buttons/buttons.css"
+   ]
+  },
+  {
+   "id": "inputs-recessed-field-recessed-field",
+   "order": 11,
+   "name": "Recessed field .recessed-field",
+   "category_id": "inputs",
+   "category": "02 · Inputs",
+   "css_classes": [
+    ".recessed-field"
+   ],
+   "description": "inviting someone to type — a well your cursor falls into, with a label that never shouts.",
+   "measures": "",
+   "html": "<div class=\"demo-col\" style=\"max-width:420px\">\n      <label class=\"recessed-field\"><span>What should Naya remember?</span><input type=\"text\" placeholder=\"Type it like you're telling a friend…\"></label>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Collecting user input. Fields are carved wells, never flat boxes.",
+   "css_file": "smart-blocks/inputs/inputs.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/inputs/inputs-recessed-field-recessed-field.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/inputs/inputs.css"
+   ]
+  },
+  {
+   "id": "inputs-search-field-search-field",
+   "order": 12,
+   "name": "Search field .search-field",
+   "category_id": "inputs",
+   "category": "02 · Inputs",
+   "css_classes": [
+    ".search-field"
+   ],
+   "description": "the front door of a query-driven system — click it and the ⌘K palette opens, so searching always has a next step.",
+   "measures": "",
+   "html": "<div class=\"demo-col\" style=\"max-width:420px\">\n      <label class=\"recessed-field search-field\"><svg class=\"icon\"><use href=\"#i-search\"/></svg><input type=\"text\" placeholder=\"Ask Naya anything…\"><span class=\"naya-kbd\">⌘K</span></label>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Collecting user input. Fields are carved wells, never flat boxes.",
+   "css_file": "smart-blocks/inputs/inputs.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/inputs/inputs-search-field-search-field.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/inputs/inputs.css"
+   ]
+  },
+  {
+   "id": "inputs-jeweled-checkbox-naya-check",
+   "order": 13,
+   "name": "Jeweled checkbox .naya-check",
+   "category_id": "inputs",
+   "category": "02 · Inputs",
+   "css_classes": [
+    ".naya-check"
+   ],
+   "description": "a promise you can keep with one tap — the 26px jewel fills with light and the label strikes through when it's done.",
+   "measures": "",
+   "html": "<div class=\"demo-col\">\n      <label class=\"naya-check\"><input type=\"checkbox\" checked><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">Render it, then look at it — screenshot reviewed, not assumed</span></label>\n      <label class=\"naya-check\"><input type=\"checkbox\"><span class=\"box\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\"><path d=\"M3 8.5l3.5 3.5L13 4.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></span><span class=\"txt\">One spectrum color per board — never a flood</span></label>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Collecting user input. Fields are carved wells, never flat boxes.",
+   "css_file": "smart-blocks/inputs/inputs.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/inputs/inputs-jeweled-checkbox-naya-check.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/inputs/inputs.css"
+   ]
+  },
+  {
+   "id": "inputs-orbiting-login-login-card-login-orbit",
+   "order": 14,
+   "name": "Orbiting login .login-card / .login-orbit",
+   "category_id": "inputs",
+   "category": "02 · Inputs",
+   "css_classes": [
+    ".login-card / .login-orbit"
+   ],
+   "description": "the welcome moment — an email well and one clear continuation, presented like something worth arriving at.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"login-card\">\n        <h3>Welcome back</h3>\n        <p>Your spaces kept breathing while you were gone.</p>\n        <label class=\"recessed-field\"><span>Email</span><input type=\"email\" placeholder=\"you@somewhere.com\"></label>\n        <button class=\"naya-btn\" style=\"width:100%;margin-top:14px\">Continue</button>\n      </div>\n    </div>",
+   "tier": "alt",
+   "use_when": "Collecting user input. Fields are carved wells, never flat boxes.",
+   "css_file": "smart-blocks/inputs/inputs.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/inputs/inputs-orbiting-login-login-card-login-orbit.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/inputs/inputs.css"
+   ]
+  },
+  {
+   "id": "navigation-top-nav-bar-nav-nav-orb",
+   "order": 15,
+   "name": "Top nav bar .nav / .nav-orb",
+   "category_id": "navigation",
+   "category": "03 · Navigation",
+   "css_classes": [
+    ".nav / .nav-orb"
+   ],
+   "description": "the constant frame — an orb with a slow conic ring, nine links, and the confidence of always being able to get home.",
+   "measures": "",
+   "html": "<nav class=\"nav\" aria-label=\"Demo navigation\" style=\"position:static\">\n        <span class=\"nav-orb\" aria-hidden=\"true\"></span>\n        <span class=\"nav-label\">NayaNET</span>\n        <span class=\"nav-links\">\n          <a href=\"#buttons\">Blocks</a><a href=\"#cards\">Boards</a><a href=\"#data\">Ledger</a>\n        </span>\n      </nav>",
+   "tier": "canonical",
+   "use_when": "Moving between rooms/views. One nav system per page.",
+   "css_file": "smart-blocks/navigation/navigation.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/navigation/navigation-top-nav-bar-nav-nav-orb.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/navigation/navigation.css"
+   ]
+  },
+  {
+   "id": "navigation-pill-tabs-smarttabs-smarttab",
+   "order": 16,
+   "name": "Pill tabs .smarttabs / .smarttab",
+   "category_id": "navigation",
+   "category": "03 · Navigation",
+   "css_classes": [
+    ".smarttabs / .smarttab"
+   ],
+   "description": "switching contexts without leaving the room — restrained black pills; the active one ignites, the rest stay quiet.",
+   "measures": "",
+   "html": "<div class=\"smarttabs\" role=\"tablist\" aria-label=\"Rooms\">\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"true\" aria-controls=\"pane-all\" style=\"--tone:var(--magenta)\"><span class=\"tab-dot\"></span>All</button>\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" aria-controls=\"pane-saved\" style=\"--tone:var(--soul)\"><span class=\"tab-dot\"></span>Saved</button>\n        <button class=\"smarttab\" role=\"tab\" aria-selected=\"false\" aria-controls=\"pane-shared\" style=\"--tone:var(--emerald)\"><span class=\"tab-dot\"></span>Shared</button>\n      </div>\n      <div class=\"smarttabs-stage\" style=\"padding:18px 4px 0;color:var(--ink-dim);font-size:14px\">\n        <div id=\"pane-all\" role=\"tabpanel\">Everything important, across every room.</div>\n        <div id=\"pane-saved\" role=\"tabpanel\" hidden>Intelligence saved because it changed a future decision.</div>\n        <div id=\"pane-shared\" role=\"tabpanel\" hidden>What you gave away — and who it helped.</div>\n      </div>",
+   "tier": "canonical",
+   "use_when": "Moving between rooms/views. One nav system per page.",
+   "css_file": "smart-blocks/navigation/navigation.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/navigation/navigation-pill-tabs-smarttabs-smarttab.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/navigation/navigation.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "navigation-favorites-ribbon-sn-row-smarttabs-js",
+   "order": 17,
+   "name": "Favorites ribbon .sn-row (SmartTabs JS)",
+   "category_id": "navigation",
+   "category": "03 · Navigation",
+   "css_classes": [
+    ".sn-row (SmartTabs JS)"
+   ],
+   "description": "your own shortcuts that follow you across every page — add, heart, star, rename. Recovered asset: Epic's SmartTabs JS was missing from the package; it's back, restyled in the restrained pill language.",
+   "measures": "",
+   "html": "<div id=\"smarttabs-demo\"></div>\n      <p class=\"fine\">Click ＋ Add, or the ⋯ on any pill — favorites persist in this browser.</p>",
+   "tier": "canonical",
+   "use_when": "Moving between rooms/views. One nav system per page.",
+   "css_file": "smart-blocks/navigation/navigation.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/navigation/navigation-favorites-ribbon-sn-row-smarttabs-js.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/navigation/navigation.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "navigation-app-room-nav-app-nav",
+   "order": 18,
+   "name": "App room nav .app-nav",
+   "category_id": "navigation",
+   "category": "03 · Navigation",
+   "css_classes": [
+    ".app-nav"
+   ],
+   "description": "the shell that switches rooms — Today, Reports, Smart Spaces, Smart Mail, Smart Ledger — one tap, no ceremony.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <nav class=\"app-nav\" aria-label=\"Rooms\">\n        <button class=\"is-here\">Today</button><button>Reports</button><button>Smart Spaces</button><button>Smart Mail</button><button>Smart Ledger</button>\n      </nav>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Moving between rooms/views. One nav system per page.",
+   "css_file": "smart-blocks/navigation/navigation.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/navigation/navigation-app-room-nav-app-nav.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/navigation/navigation.css"
+   ]
+  },
+  {
+   "id": "navigation-anchor-toc-pills-toc-a",
+   "order": 19,
+   "name": "Anchor TOC pills .toc a",
+   "category_id": "navigation",
+   "category": "03 · Navigation",
+   "css_classes": [
+    ".toc a"
+   ],
+   "description": "jumping down a long page — 1px-line section chips, like the rail at the top of this very page.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"toc\"><a href=\"#buttons\">Buttons</a><a href=\"#cards\">Cards</a><a href=\"#new\">New P0</a></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Moving between rooms/views. One nav system per page.",
+   "css_file": "smart-blocks/navigation/navigation.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/navigation/navigation-anchor-toc-pills-toc-a.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/navigation/navigation.css"
+   ]
+  },
+  {
+   "id": "cards-elevated-board-elevated-board-board-spine-board-corner",
+   "order": 20,
+   "name": "Elevated board .elevated-board / .board-spine / .board-corner",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".elevated-board / .board-spine / .board-corner"
+   ],
+   "description": "a destination — a room you step into. Deep black, serif header, identity spine and corner marks that catch the light.",
+   "measures": "",
+   "html": "<div class=\"elevated-board\" style=\"--tone:var(--soul)\">\n        <span class=\"board-spine\"></span><span class=\"board-corner\"></span>\n        <h3 style=\"font-family:var(--voice);font-size:24px;margin:0 0 6px;color:#fff\">The Reading Room</h3>\n        <p style=\"color:var(--ink-dim);font-size:14px;margin:0;max-width:420px;line-height:1.6\">Every note you ever kept, arranged the way your mind already arranged them.</p>\n      </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-elevated-board-elevated-board-board-spine-board-corner.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-spec-board-board",
+   "order": 21,
+   "name": "Spec board .board",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".board"
+   ],
+   "description": "the N4 alt — one spectrum color per board, a glowing spine on the left, a corner jewel. Same family, different accent.",
+   "measures": "",
+   "html": "<div class=\"board\" style=\"--ic:var(--emerald)\">\n        <span class=\"corner\">✦</span>\n        <h3>Today, at a glance</h3>\n        <p style=\"color:var(--ink-dim);font-size:14px;margin:0;max-width:440px;line-height:1.6\">What moved, what needs you, and what's quietly waiting — one board, one color.</p>\n      </div>",
+   "tier": "alt",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-spec-board-board.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-nested-cards-nestcard",
+   "order": 22,
+   "name": "Nested cards .nestcard",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".nestcard"
+   ],
+   "description": "ideas that unpack — nutshell, then meaning, then how to use it. Depth you can feel with your thumb.",
+   "measures": "",
+   "html": "<div class=\"nest\">\n      <div class=\"nestcard\"><p class=\"nk\" style=\"--nc:var(--soul)\"><span class=\"ndot\"></span>In a nutshell</p><p>Capture the essence. Verify the result. Let the next moment benefit.</p></div>\n      <div class=\"nestcard\"><p class=\"nk\" style=\"--nc:var(--emerald)\"><span class=\"ndot\"></span>What it means</p><p>A lesson that stays learned is worth ten that were merely stored.</p></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-nested-cards-nestcard.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-truth-cards-orbs-truthgrid-truth-torb",
+   "order": 23,
+   "name": "Truth cards + orbs .truthgrid / .truth / .torb",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".truthgrid / .truth / .torb"
+   ],
+   "description": "saying what you know and how you know it — ✓ AUTH VERIFIED, ? CLAIM, ◈ DEMO, each with its 44px truth orb. What it measures: evidentiary honesty.",
+   "measures": "</strong> evidentiary honesty.",
+   "html": "<div class=\"truthgrid\">\n      <div class=\"truth\" style=\"--tc2:var(--verified)\"><span class=\"torb\" style=\"--tc2:var(--verified)\">✓</span><b>Auth verified</b><p>Proven against a live source, receipt attached.</p></div>\n      <div class=\"truth\" style=\"--tc2:var(--claim)\"><span class=\"torb\" style=\"--tc2:var(--claim)\">?</span><b>Claim</b><p>Our honest best guess — labeled as such, never inflated.</p></div>\n      <div class=\"truth\" style=\"--tc2:var(--demo)\"><span class=\"torb\" style=\"--tc2:var(--demo)\">◈</span><b>Demo</b><p>A specimen to feel the shape of it — not real data.</p></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-truth-cards-orbs-truthgrid-truth-torb.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-law-cards-lawcard",
+   "order": 24,
+   "name": "Law cards .lawcard",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".lawcard"
+   ],
+   "description": "principles worth keeping — each card owns one spine color, stays quiet at rest, and ignites on hover.",
+   "measures": "",
+   "html": "<div class=\"laws\">\n      <div class=\"lawcard\" style=\"--lc:var(--magenta)\"><p class=\"ln\"><span class=\"ld\"></span>Law 1</p><h3>Score the experience, never the code.</h3><p>The lived page is the only scorecard.</p></div>\n      <div class=\"lawcard\" style=\"--lc:var(--emerald)\"><p class=\"ln\"><span class=\"ld\"></span>Law 2</p><h3>Restraint is the excellence.</h3><p>Less glow, fewer colors, generous black space.</p></div>\n      <div class=\"lawcard\" style=\"--lc:var(--gold)\"><p class=\"ln\"><span class=\"ld\"></span>Law 3</p><h3>Every effect encodes information.</h3><p>No visual is acceptable merely because it moves.</p></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-law-cards-lawcard.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-three-tongue-law-cards-tongue",
+   "order": 25,
+   "name": "Three-tongue law cards .tongue",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".tongue"
+   ],
+   "description": "one law spoken three ways — MACHINE (normative), AI (operational), HUMAN (plain words) — so nothing gets lost in translation.",
+   "measures": "",
+   "html": "<div class=\"tongues\">\n      <div class=\"tongue\" style=\"--tc3:var(--soul)\"><h3>Machine · normative</h3><ul><li><span class=\"jw\" style=\"--j:var(--magenta)\">◆</span>idle.glow_max_px ≤ 18</li><li><span class=\"jw\" style=\"--j:var(--soul)\">◆</span>rest.chrome = silver</li></ul></div>\n      <div class=\"tongue\" style=\"--tc3:var(--emerald)\"><h3>AI · operational</h3><ul><li><span class=\"jw\" style=\"--j:var(--emerald)\">◆</span>Glow only where a value is earned</li><li><span class=\"jw\" style=\"--j:var(--emerald)\">◆</span>White at rest, color on touch</li></ul></div>\n      <div class=\"tongue\" style=\"--tc3:var(--gold)\"><h3>Human · plain words</h3><ul><li><span class=\"jw\" style=\"--j:var(--gold)\">◆</span>Calm until you need it excited</li><li><span class=\"jw\" style=\"--j:var(--gold)\">◆</span>Expensive, not loud</li></ul></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-three-tongue-law-cards-tongue.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-type-scale-cards-typecard",
+   "order": 26,
+   "name": "Type scale cards .typecard",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".typecard"
+   ],
+   "description": "the voice ladder — 24px serif headlines, 18px body, 14px detail. Size separates, color never does.",
+   "measures": "",
+   "html": "<div class=\"typecards\">\n      <div class=\"typecard\" style=\"--tc:var(--soul)\"><p class=\"tk\">Headline · 24px</p><p style=\"font-family:var(--voice);font-size:24px;color:#fff;margin:0;line-height:1.35\">Your intelligence, collected.</p><p style=\"font-size:14px;color:var(--ink-dim);margin:14px 0 0\">Serif voice. Light-carved. It leads, never shouts.</p></div>\n      <div class=\"typecard\" style=\"--tc:var(--emerald)\"><p class=\"tk\">Body · 18px</p><p style=\"font-size:18px;color:#fff;margin:0;line-height:1.5\">The quick brown fox of interface copy.</p><p style=\"font-size:14px;color:var(--ink-dim);margin:14px 0 0\">Detail sits at 14px — quiet, legible, honest.</p></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-type-scale-cards-typecard.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-metric-trio-metric",
+   "order": 27,
+   "name": "Metric trio .metric",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".metric"
+   ],
+   "description": "a dashboard that answers three questions — what matters, what changed, what happens next. Every number earns its place.",
+   "measures": "",
+   "html": "<div class=\"demo-grid-3\">\n      <div class=\"metric\" style=\"--tone:var(--magenta)\"><span class=\"metric-mark\"><svg class=\"icon\"><use href=\"#i-spark\"/></svg></span><b>What matters</b><span>Priority is explicit.</span></div>\n      <div class=\"metric\" style=\"--tone:var(--emerald)\"><span class=\"metric-mark\"><svg class=\"icon\"><use href=\"#i-pulse\"/></svg></span><b>What changed</b><span>+12 this week, all verified.</span></div>\n      <div class=\"metric\" style=\"--tone:var(--gold)\"><span class=\"metric-mark\"><svg class=\"icon\"><use href=\"#i-arrow\"/></svg></span><b>What happens next</b><span>Review the three waiting.</span></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-metric-trio-metric.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-job-cards-job",
+   "order": 28,
+   "name": "Job cards .job",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".job"
+   ],
+   "description": "work with a color role — the swatch up top says what kind of job it is before you read a word.",
+   "measures": "",
+   "html": "<div class=\"jobs\">\n      <div class=\"job\" style=\"--jc:var(--soul)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--soul),transparent)\"></div><h3>Design</h3><p>Bring the library page to a 9+.</p></div>\n      <div class=\"job\" style=\"--jc:var(--emerald)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--emerald),transparent)\"></div><h3>Verify</h3><p>Independent eyes on every claim.</p></div>\n      <div class=\"job\" style=\"--jc:var(--gold)\"><div class=\"swatch\" style=\"background:linear-gradient(120deg,var(--gold),transparent)\"></div><h3>Ship</h3><p>Merge what earned it, nothing else.</p></div>\n    </div>",
+   "tier": "alt",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-job-cards-job.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "cards-world-tiles-layer",
+   "order": 29,
+   "name": "World tiles .layer",
+   "category_id": "cards",
+   "category": "04 · Cards",
+   "css_classes": [
+    ".layer"
+   ],
+   "description": "content tiles with gem-bullet labels — small worlds you can scan at a glance.",
+   "measures": "",
+   "html": "<div class=\"layer-grid\">\n      <div class=\"layer\" style=\"--tone:var(--soul)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>In a nutshell</p><p>Capture the essence. Verify the result.</p></div>\n      <div class=\"layer\" style=\"--tone:var(--emerald)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>What it means</p><p>Kept intelligence compounds.</p></div>\n      <div class=\"layer\" style=\"--tone:var(--gold)\"><p class=\"micro\"><span class=\"gem-bullet\"></span>Use it</p><p>Copy the block, ship the page.</p></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Destinations (boards) and truth containers (cards). One spectrum identity per board.",
+   "css_file": "smart-blocks/cards/cards.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/cards/cards-world-tiles-layer.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/cards/cards.css"
+   ]
+  },
+  {
+   "id": "data-meaning-spheres-sphere",
+   "order": 30,
+   "name": "Meaning spheres .sphere",
+   "category_id": "data",
+   "category": "05 · Data",
+   "css_classes": [
+    ".sphere"
+   ],
+   "description": "five jewel orbs for what intelligence is made of — Priority, Presence, Understanding, Verified, Value — restrained on port, no candy centers.",
+   "measures": "",
+   "html": "<div class=\"demo-row\" style=\"gap:26px\">\n      <div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:var(--magenta);--rgb:var(--magenta-rgb)\"><svg class=\"icon\"><use href=\"#i-spark\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Priority</p></div>\n      <div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:var(--sapphire);--rgb:var(--sapphire-rgb)\"><svg class=\"icon\"><use href=\"#i-pulse\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Presence</p></div>\n      <div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:var(--emerald);--rgb:var(--emerald-rgb)\"><svg class=\"icon\"><use href=\"#i-book\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Understanding</p></div>\n      <div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:var(--verified);--rgb:var(--verified-rgb)\"><svg class=\"icon\"><use href=\"#i-check\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Verified</p></div>\n      <div style=\"text-align:center\"><span class=\"sphere\" style=\"--tone:var(--gold);--rgb:var(--gold-rgb)\"><svg class=\"icon\"><use href=\"#i-star\"/></svg></span><p class=\"fine\" style=\"margin-top:10px\">Value</p></div>\n    </div>",
+   "tier": "alt",
+   "use_when": "Numbers that mean something. Every instrument names what it measures.",
+   "css_file": "smart-blocks/data/data.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/data/data-meaning-spheres-sphere.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/data/data.css"
+   ]
+  },
+  {
+   "id": "data-self-scorecard-scorecard-score-row-verdict",
+   "order": 31,
+   "name": "Self-scorecard .scorecard / .score-row / .verdict",
+   "category_id": "data",
+   "category": "05 · Data",
+   "css_classes": [
+    ".scorecard / .score-row / .verdict"
+   ],
+   "description": "scoring the work honestly — nine rows, serif 32px numbers, a note per row, and a verdict panel that says what the score means. What it measures: the work itself.",
+   "measures": "</strong> the work itself.",
+   "html": "<div class=\"scorecard\">\n        <div class=\"score-row\" style=\"--sc:var(--soul)\"><span class=\"dim\">Color discipline</span><span class=\"num\">9</span><span class=\"note\">Chrome silver, text white, spectrum in law order. No floods, no crossed jobs.</span></div>\n        <div class=\"score-row\" style=\"--sc:var(--sapphire)\"><span class=\"dim\">Lighting</span><span class=\"num\">9</span><span class=\"note\">Every surface carries the 5-layer shadow formula — light from above, always.</span></div>\n        <div class=\"score-row\" style=\"--sc:var(--emerald)\"><span class=\"dim\">Restraint</span><span class=\"num\">8</span><span class=\"note\">Two spots still glow louder than they earn. Named, queued, owned.</span></div>\n        <div class=\"verdict\"><strong>Verdict · 8.7 — ship the page, fix the two.</strong><span>Honest numbers beat flattering ones. This card is the proof.</span></div>\n      </div>",
+   "tier": "canonical",
+   "use_when": "Numbers that mean something. Every instrument names what it measures.",
+   "css_file": "smart-blocks/data/data.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/data/data-self-scorecard-scorecard-score-row-verdict.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/data/data.css"
+   ]
+  },
+  {
+   "id": "data-law-library-law-group",
+   "order": 32,
+   "name": "Law library .law-group",
+   "category_id": "data",
+   "category": "05 · Data",
+   "css_classes": [
+    ".law-group"
+   ],
+   "description": "the hundred laws as a collapsible reference — ten chapters, each law one tap away, nothing to memorize.",
+   "measures": "",
+   "html": "<details class=\"law-group\" open><summary>01 · Elevation &amp; living depth</summary>\n        <ol><li><strong>Law 1.</strong> Elevation always. If it does not sit off the page, it is not finished.</li>\n        <li><strong>Law 2.</strong> No 2D in NayaNET. Every interactive surface has depth you can feel.</li></ol>\n      </details>\n      <details class=\"law-group\"><summary>02 · The Button Law</summary>\n        <ol start=\"3\"><li><strong>Law 3.</strong> Silver-white at rest. Ignite identity color on interaction.</li></ol>\n      </details>",
+   "tier": "canonical",
+   "use_when": "Numbers that mean something. Every instrument names what it measures.",
+   "css_file": "smart-blocks/data/data.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/data/data-law-library-law-group.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/data/data.css"
+   ]
+  },
+  {
+   "id": "data-data-table-specimen-data-table",
+   "order": 33,
+   "name": "Data table specimen .data-table",
+   "category_id": "data",
+   "category": "05 · Data",
+   "css_classes": [
+    ".data-table"
+   ],
+   "description": "the anatomy of a table — block, state, proof. Labeled NO LIVE DATA because a specimen that pretends is a lie. For the real one, see §09.",
+   "measures": "",
+   "html": "<p class=\"specimen-note\">Anatomy specimen · no live data</p>\n      <div class=\"trow thead\"><span>Block</span><span>State</span><span>Proof</span></div>\n      <div class=\"trow\"><span>IB-1042</span><span><span class=\"status-dot\" style=\"--sd:var(--verified)\"></span>Active</span><span>Receipt ✓</span></div>\n      <div class=\"trow\"><span>IB-1043</span><span><span class=\"status-dot\" style=\"--sd:var(--claim)\"></span>Candidate</span><span>Pending</span></div>",
+   "tier": "alt",
+   "use_when": "Numbers that mean something. Every instrument names what it measures.",
+   "css_file": "smart-blocks/data/data.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/data/data-data-table-specimen-data-table.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/data/data.css"
+   ]
+  },
+  {
+   "id": "overlays-toast-system-nayablocks-toast",
+   "order": 34,
+   "name": "Toast system NayaBlocks.toast()",
+   "category_id": "overlays",
+   "category": "06 · Overlays",
+   "css_classes": [
+    "NayaBlocks.toast()"
+   ],
+   "description": "confirming an action in 1800ms — quiet, verified, claim, or demo tones. Truthful and gone before you miss it.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn small\" onclick=\"NayaBlocks.toast('Saved — your note is safe', 'verified')\">Toast · verified</button>\n      <button class=\"naya-btn small\" onclick=\"NayaBlocks.toast('Best guess — labeled as such', 'claim')\">Toast · claim</button>\n      <button class=\"naya-btn small\" onclick=\"NayaBlocks.toast('Specimen — not real data', 'demo')\">Toast · demo</button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Moments that interrupt: confirm, notify, share. Use sparingly.",
+   "css_file": "smart-blocks/overlays/overlays.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/overlays/overlays-toast-system-nayablocks-toast.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/overlays/overlays.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "overlays-mini-modal-modal-mini-modal-gem",
+   "order": 35,
+   "name": "Mini modal .modal-mini / .modal-gem",
+   "category_id": "overlays",
+   "category": "06 · Overlays",
+   "css_classes": [
+    ".modal-mini / .modal-gem"
+   ],
+   "description": "the one question worth stopping for — a named consequence, a gem mark, one clear way out.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"modal-mini\">\n        <span class=\"modal-gem\">✦</span>\n        <span><strong>Publish this space?</strong><small>Everyone with the link can read it. You can unpublish anytime.</small></span>\n        <button class=\"naya-btn small\">Publish</button>\n      </div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Moments that interrupt: confirm, notify, share. Use sparingly.",
+   "css_file": "smart-blocks/overlays/overlays.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/overlays/overlays-mini-modal-modal-mini-modal-gem.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/overlays/overlays.css"
+   ]
+  },
+  {
+   "id": "overlays-share-sheet-smart-link-share-actions",
+   "order": 36,
+   "name": "Share sheet .smart-link / .share-actions",
+   "category_id": "overlays",
+   "category": "06 · Overlays",
+   "css_classes": [
+    ".smart-link / .share-actions"
+   ],
+   "description": "giving something away deliberately — who can open this is explicit, never assumed.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"smart-link\"><svg class=\"icon\"><use href=\"#i-globe\"/></svg><span><strong>Public view</strong><small>Who can open this is explicit.</small></span></div>\n      <div class=\"share-actions\">\n        <button class=\"naya-btn small\"><svg class=\"icon\"><use href=\"#i-people\"/></svg>People</button>\n        <button class=\"naya-btn small\"><svg class=\"icon\"><use href=\"#i-lock\"/></svg>Private</button>\n        <button class=\"naya-btn small\" onclick=\"NayaBlocks.copyText('https://nayanet.example/s/abc123','Smart link')\"><svg class=\"icon\"><use href=\"#i-copy\"/></svg>Copy link</button>\n      </div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "Moments that interrupt: confirm, notify, share. Use sparingly.",
+   "css_file": "smart-blocks/overlays/overlays.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/overlays/overlays-share-sheet-smart-link-share-actions.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/overlays/overlays.css"
+   ]
+  },
+  {
+   "id": "media-media-player-media-player",
+   "order": 37,
+   "name": "Media player .media-player",
+   "category_id": "media",
+   "category": "07 · Media",
+   "css_classes": [
+    ".media-player"
+   ],
+   "description": "intelligence in Naya's voice — a recessed player with a portal play button and a timeline that means progress.",
+   "measures": "",
+   "html": "<div class=\"media-player\">\n        <button class=\"naya-btn icon portal\" aria-label=\"Play\"><svg class=\"icon\"><use href=\"#i-play\"/></svg></button>\n        <div class=\"media-copy\"><strong>Intelligence in Naya's voice</strong><small>02:14 · the library, read aloud</small><div class=\"timeline\"><span style=\"width:32%\"></span></div></div>\n      </div>",
+   "tier": "alt",
+   "use_when": "Voice and image. One media moment per view max.",
+   "css_file": "smart-blocks/media/media.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/media/media-media-player-media-player.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/media/media.css"
+   ]
+  },
+  {
+   "id": "media-hero-vessel-vessel",
+   "order": 38,
+   "name": "Hero vessel .vessel",
+   "category_id": "media",
+   "category": "07 · Media",
+   "css_classes": [
+    ".vessel"
+   ],
+   "description": "the image a page is remembered by — a container with orbiting rings that says \"this matters\".",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <div class=\"vessel vessel-demo\" aria-label=\"Hero image vessel\">\n        <span class=\"orb orb--hero\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span>\n        <span class=\"vessel-label\">Your hero, housed</span>\n      </div>\n    </div>",
+   "tier": "alt",
+   "use_when": "Voice and image. One media moment per view max.",
+   "css_file": "smart-blocks/media/media.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/media/media-hero-vessel-vessel.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/media/media.css"
+   ]
+  },
+  {
+   "id": "specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon",
+   "order": 39,
+   "name": "Orb system .orb / --sm / --xs / --black / --hero / --twin / --glyph / --icon",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".orb / --sm / --xs / --black / --hero / --twin / --glyph / --icon"
+   ],
+   "description": "Naya's living mark — radial light, a specular dot, an inset rim, a slow conic ring, a pool on the ground. Theme it with --oc; press it with .orb--btn.",
+   "measures": "",
+   "html": "<div class=\"orb-row\">\n      <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:var(--magenta);--oc-rgb:var(--magenta-rgb)\"></span><p class=\"micro\">Magenta<small>The living edge</small></p></div>\n      <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span><p class=\"micro\">Purple<small>Choosing intelligence</small></p></div>\n      <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:var(--blue);--oc-rgb:var(--blue-rgb)\"></span><p class=\"micro\">Blue<small>Knowledge moving</small></p></div>\n      <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:var(--green);--oc-rgb:var(--green-rgb)\"></span><p class=\"micro\">Green<small>Alive and well</small></p></div>\n      <div class=\"orb-wrap\"><span class=\"orb\" style=\"--oc:var(--gold);--oc-rgb:var(--gold-rgb)\"></span><p class=\"micro\">Gold<small>Attention, earned</small></p></div>\n    </div>\n    <div class=\"demo-row\" style=\"margin-top:26px;gap:22px;align-items:flex-end\">\n      <span class=\"orb orb--xs\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span>\n      <span class=\"orb orb--sm\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span>\n      <span class=\"orb orb--twin\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span>\n      <span class=\"orb orb--black\"></span>\n      <button class=\"orb orb--btn orb--glyph\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\" aria-label=\"Naya\"><span>✦</span></button>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-orb-system-orb-sm-xs-black-hero-twin-glyph-icon.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-mini-orb-mini-orb",
+   "order": 40,
+   "name": "Mini-orb .mini-orb",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".mini-orb"
+   ],
+   "description": "the 34px luminous mark — section anchors, list leaders, anywhere a full orb would shout.",
+   "measures": "",
+   "html": "<div class=\"demo-row\" style=\"gap:18px\">\n      <span class=\"mini-orb\" style=\"--c:var(--soul)\"></span>\n      <span class=\"mini-orb\" style=\"--c:var(--emerald)\"></span>\n      <span class=\"mini-orb\" style=\"--c:var(--gold)\"></span>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-mini-orb-mini-orb.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-gem-bullets-gem-bullet",
+   "order": 41,
+   "name": "Gem bullets .gem-bullet",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".gem-bullet"
+   ],
+   "description": "12px faceted bullets — the list's quiet jewelry. Never repeat adjacent colors.",
+   "measures": "",
+   "html": "<ul class=\"gem-list\">\n        <li><span class=\"gem-bullet\" style=\"--tone:var(--magenta)\"></span>Begin with what matters</li>\n        <li><span class=\"gem-bullet\" style=\"--tone:var(--emerald)\"></span>Prove what you claim</li>\n        <li><span class=\"gem-bullet\" style=\"--tone:var(--gold)\"></span>Ship what earned it</li>\n      </ul>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-gem-bullets-gem-bullet.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-spectrum-bar-spectrum-bar",
+   "order": 42,
+   "name": "Spectrum bar .spectrum-bar",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".spectrum-bar"
+   ],
+   "description": "the whole spectrum in law order — purple → blue → green → yellow → gold → orange → red → magenta — as a 10px strip. Discipline you can see.",
+   "measures": "",
+   "html": "<div class=\"spectrum-bar\" aria-label=\"Spectrum in law order\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>\n      <p class=\"fine\" style=\"margin-top:10px\">One standard · every page · no drift</p>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-spectrum-bar-spectrum-bar.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-spectrum-swatches-token-chips",
+   "order": 43,
+   "name": "Spectrum swatches token chips",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    "token chips"
+   ],
+   "description": "choosing a theme color with your eyes — jewel chips in law order, straight from the token file.",
+   "measures": "",
+   "html": "<div class=\"demo-row\" style=\"gap:12px\">\n      <span class=\"sw-chip\" style=\"--c:var(--magenta)\" title=\"magenta\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--purple)\" title=\"purple\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--sapphire)\" title=\"sapphire\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--emerald)\" title=\"emerald\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--gold)\" title=\"gold\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--orange)\" title=\"orange\"></span>\n      <span class=\"sw-chip\" style=\"--c:var(--red)\" title=\"red\"></span>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-spectrum-swatches-token-chips.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-interaction-physics-physics-row",
+   "order": 44,
+   "name": "Interaction physics .physics-row",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".physics-row"
+   ],
+   "description": "the motion law, written down — approach, hover, press, focus, reduced-motion. What it measures: whether motion encodes information or decoration.",
+   "measures": "</strong> whether motion encodes information or decoration.",
+   "html": "<div class=\"demo-stack\">\n      <div class=\"physics-row\"><b>Approach</b><span>170px · light only</span></div>\n      <div class=\"physics-row\"><b>Hover</b><span>−3px lift · .22s ease</span></div>\n      <div class=\"physics-row\"><b>Press</b><span>+1px down · inset shadows go dark</span></div>\n      <div class=\"physics-row\"><b>Focus</b><span>2px white ring · never skip it</span></div>\n      <div class=\"physics-row\"><b>Reduced motion</b><span>All of it off · content stays</span></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-interaction-physics-physics-row.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-ship-gate-checklist-gate",
+   "order": 45,
+   "name": "Ship-gate checklist .gate",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".gate"
+   ],
+   "description": "the pre-ship ritual — every check rendered and looked at. One fail, back to the bench.",
+   "measures": "",
+   "html": "<div class=\"gate\">\n        <p class=\"kicker\" style=\"--kc:var(--soul)\">Pre-ship checklist · all must pass</p>\n        <p class=\"aiphase\">I · See</p>\n        <ul>\n          <li><span class=\"jw\" style=\"--j:var(--magenta)\">◆</span><span>Rendered and <strong>looked at</strong> — screenshot reviewed, not assumed.</span></li>\n          <li><span class=\"jw\" style=\"--j:var(--soul)\">✧</span><span>No two adjacent jewels share a color.</span></li>\n          <li><span class=\"jw\" style=\"--j:var(--emerald)\">◆</span><span>Every control answers \"why am I here\".</span></li>\n        </ul>\n      </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-ship-gate-checklist-gate.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-code-copy-pre-code-copy-btn",
+   "order": 46,
+   "name": "Code + copy pre.code / .copy-btn",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    "pre.code / .copy-btn"
+   ],
+   "description": "handing someone the recipe — dark code panel, one copy button, a flash that says \"it's yours now\".",
+   "measures": "",
+   "html": "<div class=\"code-head\"><span>recipe.css</span><button class=\"copy-btn\" onclick=\"NayaBlocks.copyText('.naya-btn{--tone:var(--purple)}','Recipe')\">Copy</button></div>\n      <pre class=\"code\">.naya-btn{\n  --tone: var(--purple);   /* ignite color */\n  border: 1.5px solid rgba(255,255,255,.78);\n  box-shadow: var(--depth-hi), var(--depth-lo),\n              var(--depth-drop);\n}</pre>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-code-copy-pre-code-copy-btn.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-rule-boards-rule-board",
+   "order": 47,
+   "name": "Rule boards .rule-board",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".rule-board"
+   ],
+   "description": "teaching the law by example — the ✓ that earned it beside the ✕ that didn't, numbered and undeniable.",
+   "measures": "",
+   "html": "<div class=\"rule-boards\">\n      <div class=\"rule-board\" style=\"--rc:var(--magenta)\">\n        <span class=\"rule-n\">01 · Magenta</span>\n        <p class=\"rule-do\"><b>✓</b><span>Black ground, white light, purple soul</span></p>\n        <p class=\"rule-dont\"><b>✕</b><span>Flat elements — no elevation, no depth, no good</span></p>\n      </div>\n      <div class=\"rule-board\" style=\"--rc:var(--emerald)\">\n        <span class=\"rule-n\">02 · Emerald</span>\n        <p class=\"rule-do\"><b>✓</b><span>One accent per board, in law order</span></p>\n        <p class=\"rule-dont\"><b>✕</b><span>Color on chrome at rest — never</span></p>\n      </div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-rule-boards-rule-board.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-anti-pattern-drift-demos-driftgrid-drift",
+   "order": 48,
+   "name": "Anti-pattern drift demos .driftgrid / .drift",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    ".driftgrid / .drift"
+   ],
+   "description": "remembering what \"read the law, shipped the opposite\" looks like — so nobody ships it twice.",
+   "measures": "",
+   "html": "<div class=\"driftgrid\">\n      <div class=\"drift\" style=\"--dc:#ffffff\"><span class=\"dw dw-dark\" style=\"--j:var(--danger)\">✕</span><div><p class=\"dread\">They read <em>\"white light at rest\"</em></p><p class=\"dshipped\">…and shipped hairline borders.</p></div></div>\n      <div class=\"drift\" style=\"--dc:#ffffff\"><span class=\"dw\" style=\"--j:var(--emerald)\">✓</span><div><p class=\"dread\">They read <em>\"restraint is the excellence\"</em></p><p class=\"dshipped\">…and removed three glows.</p></div></div>\n    </div>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-anti-pattern-drift-demos-driftgrid-drift.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "specialty-ambient-field-page-before",
+   "order": 49,
+   "name": "Ambient field page ::before",
+   "category_id": "specialty",
+   "category": "08 · Specialty",
+   "css_classes": [
+    "page ::before"
+   ],
+   "description": "the air in the room — three quiet radial washes breathing on a 24s cycle. You're standing in it right now; this page wears it.",
+   "measures": "",
+   "html": "<p style=\"color:var(--ink-dim);font-size:14px;margin:0\">Look at the edges of this page — purple, blue, magenta, barely there. That's the field.</p>",
+   "tier": "canonical",
+   "use_when": "The Naya signature: orbs, jewels, spectrum. Seasoning, never the meal.",
+   "css_file": "smart-blocks/specialty/specialty.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/specialty/specialty-ambient-field-page-before.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/specialty/specialty.css"
+   ]
+  },
+  {
+   "id": "new-page-shell-naya-shell",
+   "order": 50,
+   "name": "Page shell .naya-shell",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-shell"
+   ],
+   "description": "the frame every NayaNET page hangs inside — room rail, sticky header, content grid, footer. Compose any page from here.",
+   "measures": "",
+   "html": "<div class=\"naya-shell is-demo\">\n        <aside class=\"naya-shell-rail\">\n          <div class=\"naya-shell-brand\"><span class=\"orb orb--xs\" style=\"--oc:var(--soul);--oc-rgb:var(--purple-rgb)\"></span><span class=\"word\">NayaNET</span></div>\n          <a class=\"naya-shell-link is-here\" href=\"#new\">Today</a>\n          <a class=\"naya-shell-link\" href=\"#cards\">Spaces</a>\n          <a class=\"naya-shell-link\" href=\"#data\">Ledger</a>\n          <a class=\"naya-shell-link\" href=\"#overlays\">Mail</a>\n        </aside>\n        <header class=\"naya-shell-head\"><span class=\"naya-shell-title\">Today</span><span class=\"naya-shell-sub\">Three things need you. The rest can wait.</span></header>\n        <div class=\"naya-shell-main\"><div class=\"naya-grid\">\n          <div class=\"span-4\"><div class=\"metric\" style=\"--tone:var(--magenta)\"><b>What matters</b><span>Priority is explicit.</span></div></div>\n          <div class=\"span-4\"><div class=\"metric\" style=\"--tone:var(--emerald)\"><b>What changed</b><span>+12 this week.</span></div></div>\n          <div class=\"span-4\"><div class=\"metric\" style=\"--tone:var(--gold)\"><b>What's next</b><span>Review the three waiting.</span></div></div>\n        </div></div>\n        <div class=\"naya-shell-foot\"></div>\n      </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/new/new-page-shell-naya-shell.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "new-command-palette-nayablocks-wirepalette",
+   "order": 51,
+   "name": "Command palette NayaBlocks.wirePalette()",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    "NayaBlocks.wirePalette()"
+   ],
+   "description": "the fastest way anywhere — ⌘K, type, jump. Naya is query-driven; this is the steering wheel.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn\" id=\"palette-open\"><svg class=\"icon\"><use href=\"#i-search\"/></svg>Open the palette <span class=\"naya-kbd\">⌘K</span></button>\n      <span class=\"fine\">Press ⌘K anywhere on this page — it jumps to any section.</span>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/new/new-command-palette-nayablocks-wirepalette.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "new-live-data-table-table-naya-table-data-sortable",
+   "order": 52,
+   "name": "Live data table table.naya-table[data-sortable]",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    "table.naya-table[data-sortable]"
+   ],
+   "description": "the Ledger's working surface — click any header to sort. What it measures: the blocks themselves, scored honestly.",
+   "measures": "</strong> the blocks themselves, scored honestly.",
+   "html": "<div class=\"naya-table-wrap\"><table class=\"naya-table\" data-sortable>\n        <thead><tr><th data-sort=\"block\">Block</th><th data-sort=\"family\">Family</th><th data-sort=\"status\">Status</th><th data-sort=\"score\">Score</th></tr></thead>\n        <tbody>\n          <tr><td>Canonical button</td><td>Buttons</td><td><span class=\"naya-badge is-verified\">Kept</span></td><td data-value=\"9.5\">9.5</td></tr>\n          <tr><td>Orb system</td><td>Specialty</td><td><span class=\"naya-badge is-verified\">Kept</span></td><td data-value=\"9.0\">9.0</td></tr>\n          <tr><td>Meaning spheres</td><td>Data</td><td><span class=\"naya-badge is-claim\">Restrained</span></td><td data-value=\"8.5\">8.5</td></tr>\n          <tr><td>Living button</td><td>Buttons</td><td><span class=\"naya-badge is-claim\">Tamed</span></td><td data-value=\"8.5\">8.5</td></tr>\n          <tr><td>Command palette</td><td>New P0</td><td><span class=\"naya-badge is-demo\">Built new</span></td><td data-value=\"8.0\">8.0</td></tr>\n        </tbody>\n      </table></div>\n      <p class=\"fine\" style=\"margin-top:10px\">Click a header — Block, Family, Status, Score — to sort.</p>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-live-data-table-table-naya-table-data-sortable.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  },
+  {
+   "id": "new-empty-error-loading-naya-state-naya-spinner",
+   "order": 53,
+   "name": "Empty · error · loading .naya-state / .naya-spinner",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-state / .naya-spinner"
+   ],
+   "description": "the moments between data — nothing found, something broke, something's on its way. Each one invites the next step.",
+   "measures": "",
+   "html": "<div class=\"demo-grid-3\">\n      <div class=\"naya-state\">\n        <span class=\"naya-state-icon\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"M16 16l5 5\"/></svg></span>\n        <h3>Nothing here yet</h3><p>Your first smart note will land right here — and Naya will make it beautiful.</p>\n        <button class=\"naya-btn small\">Write the first one</button>\n      </div>\n      <div class=\"naya-state is-error\">\n        <span class=\"naya-state-icon\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"><path d=\"M12 4L2 20h20z\" stroke-linejoin=\"round\"/><path d=\"M12 10v5M12 17.5v.5\" stroke-linecap=\"round\"/></svg></span>\n        <h3>That didn't land</h3><p>The connection dropped mid-thought. Your words are kept — try again when you're ready.</p>\n        <button class=\"naya-btn small\">Try again</button>\n      </div>\n      <div class=\"naya-state\">\n        <div class=\"naya-spinner\"></div>\n        <h3>Gathering your world</h3><p>Naya is pulling the latest across every room. This takes a breath.</p>\n      </div>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-empty-error-loading-naya-state-naya-spinner.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  },
+  {
+   "id": "new-skeleton-loading-naya-skel",
+   "order": 54,
+   "name": "Skeleton loading .naya-skel",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-skel"
+   ],
+   "description": "the ghost of content to come — shimmering in the jewel aesthetic while the real thing loads.",
+   "measures": "",
+   "html": "<div class=\"demo-col\" style=\"max-width:520px\">\n      <div class=\"naya-skel\" style=\"height:22px;width:42%\"></div>\n      <div class=\"naya-skel\" style=\"height:14px\"></div>\n      <div class=\"naya-skel\" style=\"height:14px;width:78%\"></div>\n      <div class=\"naya-skel\" style=\"height:64px;border-radius:var(--radius-md)\"></div>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-skeleton-loading-naya-skel.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  },
+  {
+   "id": "new-avatars-naya-avatar-naya-avatar-stack",
+   "order": 55,
+   "name": "Avatars .naya-avatar / .naya-avatar-stack",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-avatar / .naya-avatar-stack"
+   ],
+   "description": "the people in the room — comments, spaces, referrals. One hue per person, readable at 28px.",
+   "measures": "",
+   "html": "<div class=\"demo-row\" style=\"gap:20px\">\n      <span class=\"naya-avatar lg\" style=\"--av-hue:var(--magenta)\">S</span>\n      <span class=\"naya-avatar\" style=\"--av-hue:var(--emerald)\">N4</span>\n      <span class=\"naya-avatar xs\" style=\"--av-hue:var(--gold)\">C3</span>\n      <span class=\"naya-avatar-stack\">\n        <span class=\"naya-avatar\" style=\"--av-hue:var(--soul)\">S</span>\n        <span class=\"naya-avatar\" style=\"--av-hue:var(--sapphire)\">N2</span>\n        <span class=\"naya-avatar\" style=\"--av-hue:var(--emerald)\">N4</span>\n        <span class=\"naya-avatar\" style=\"--av-hue:var(--gold)\">+9</span>\n      </span>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-avatars-naya-avatar-naya-avatar-stack.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  },
+  {
+   "id": "new-badges-naya-badge",
+   "order": 56,
+   "name": "Badges .naya-badge",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-badge"
+   ],
+   "description": "status at a glance — the generic pill the truth orbs inspired, for every state a row can be in.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <span class=\"naya-badge is-verified\">Verified</span>\n      <span class=\"naya-badge is-claim\">Claim</span>\n      <span class=\"naya-badge is-demo\">Demo</span>\n      <span class=\"naya-badge is-danger\">Blocked</span>\n      <span class=\"naya-badge\">Quiet</span>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-badges-naya-badge.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  },
+  {
+   "id": "new-notification-drawer-naya-drawer",
+   "order": 57,
+   "name": "Notification drawer .naya-drawer",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-drawer"
+   ],
+   "description": "everything that asked for your attention, in one calm place — unread glows softly, read ones rest.",
+   "measures": "",
+   "html": "<div class=\"demo-row\">\n      <button class=\"naya-btn\" id=\"drawer-open\"><svg class=\"icon\"><use href=\"#i-bell\"/></svg>Open notifications</button>\n    </div>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": true,
+   "js_file": "blocks/naya-blocks.js",
+   "html_file": "smart-blocks/new/new-notification-drawer-naya-drawer.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css",
+    "smart-blocks/naya-blocks.js"
+   ]
+  },
+  {
+   "id": "new-real-footer-naya-footer",
+   "order": 58,
+   "name": "Real footer .naya-footer",
+   "category_id": "new",
+   "category": "09 · New",
+   "css_classes": [
+    ".naya-footer"
+   ],
+   "description": "the bottom of every page — brand, invitation, the map, and the quiet line that says who made this.",
+   "measures": "",
+   "html": "<footer class=\"naya-footer\">\n        <div class=\"naya-footer-inner\">\n          <div><div class=\"naya-footer-brand\">NayaNET</div><p class=\"naya-footer-tag\">Intelligence you can hold. Built to compound, designed to disappear.</p></div>\n          <div><h4>Build</h4><a href=\"#buttons\">Buttons</a><a href=\"#cards\">Cards</a><a href=\"#new\">New P0</a></div>\n          <div><h4>Learn</h4><a href=\"#data\">Data</a><a href=\"#specialty\">Specialty</a><a href=\"#overlays\">Overlays</a></div>\n          <div><h4>Go</h4><a href=\"#navigation\">Navigation</a><a href=\"#inputs\">Inputs</a><a href=\"#media\">Media</a></div>\n        </div>\n        <div class=\"naya-footer-base\"><span>© 2026 NayaNET — black is the suit.</span><span>Made of light, kept honest.</span></div>\n      </footer>",
+   "tier": "new",
+   "use_when": "",
+   "css_file": "smart-blocks/new/new.css",
+   "js_needed": false,
+   "js_file": null,
+   "html_file": "smart-blocks/new/new-real-footer-naya-footer.html",
+   "needs": [
+    "smart-blocks/tokens.css",
+    "smart-blocks/base.css",
+    "smart-blocks/new/new.css"
+   ]
+  }
+ ]
+}

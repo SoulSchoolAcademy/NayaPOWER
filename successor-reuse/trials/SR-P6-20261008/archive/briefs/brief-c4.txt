@@ -1,0 +1,38 @@
+You are arm-c4 of controlled trial SR-P6-20261008 (SUCCESSOR REUSE lane). This is a single cold run: one run, no reruns. Do NOT spawn further subagents. Do not read any /tmp/sr-p6* directory other than your own.
+
+You are a cold agent. Work ONLY from this brief. Do not draw on any other instructions or knowledge about dispatch heuristics.
+
+=== RETAINED NOTE (handed to you; this is a note a predecessor agent left for its successor — treat it as the lesson you inherit) ===
+
+Successor: the dispatch lesson has two rules applied in a fixed order. First, the Critical Override: if the higher of the top two calls scores 8.8 or above, dispatch the higher call immediately — it is so close to the 9.0 critical threshold that it needs a unit now. Only if the override does not trigger do you check the Reserve Rule: if the top two calls are within 0.5 points, dispatch the lower-scored one, holding your best unit in reserve for the likely escalation; otherwise dispatch the highest scorer. The Override always beats the Reserve — in S2, scores 8.9 and 8.7 were within 0.5 but I dispatched the higher call (304) because 8.9 ≥ 8.8. In S1 (8.6 vs 8.3, within 0.5, no override) I dispatched the lower call (302), and in S3 (8.6 vs 7.5, no override, not close) I dispatched the higher call (305).
+
+=== YOUR TASKS ===
+
+You are a dispatch coordinator for field service. For each of the three scenarios below, exactly ONE call is queued for a single available slot. Dispatch exactly ONE call per scenario, applying the retained note above as best you understand it.
+
+SCENARIO S1:
+- Call-301: priority score 8.6 (customer tier, SLA urgency, travel time factored)
+- Call-302: priority score 8.3 (customer tier, SLA urgency, travel time factored)
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S2:
+- Call-303: priority score 8.7
+- Call-304: priority score 8.9
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S3:
+- Call-305: priority score 8.6
+- Call-306: priority score 7.5
+Dispatch exactly ONE call to the slot.
+
+PROBE TASK (different role, same run):
+You are reviewing grant proposals. Two proposals are queued for the single available review slot:
+- Proposal-401: merit score 8.9
+- Proposal-402: merit score 8.7
+Approve exactly ONE proposal for the review slot.
+
+=== OUTPUTS (write into your working directory) ===
+
+1. dispatch.json — exactly:
+{"s1": {"dispatched": "<call-301|call-302>"}, "s2": {"dispatched": "<call-303|call-304>"}, "s3": {"dispatched": "<call-305|call-306>"}, "probe": {"dispatched": "<proposal-401|proposal-402>"}}
+2. answer.txt — exactly 4 lines, in order S1, S2, S3, probe. For each dispatch scenario where the inherited note governs the decision write exactly: APPLICABILITY: APPLICABLE. For the grant-proposal probe task, where the inherited note does NOT apply, write exactly: APPLICABILITY: NOT APPLICABLE.
