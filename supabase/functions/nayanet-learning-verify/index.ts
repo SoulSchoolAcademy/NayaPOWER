@@ -47,6 +47,46 @@ async function authenticateRuntime(req: Request) {
 }
 
 
+// H13: canonical learning lock-in is a governed mutation. Resolve authority
+// against the logical NAYA node; the grant is action-scoped and does not
+// confer authority for consequential actions.
+const LEARNING_LOCK_IN_ACTION = "learning_lock_in";
+const LEARNING_AUTHORITY_TARGET = "NAYA-NODE-0001";
+
+const lawGrantTargetMatches = (grant, target, projectId) => {
+  const scope = (grant && grant.scope) || {};
+  const matches = (value, requested) =>
+    typeof value === "string" && value.trim().length > 0 &&
+    typeof requested === "string" && requested.trim().length > 0 &&
+    value === requested;
+  return matches(scope.target, target) || matches(scope.project_id, target) || matches(scope.project_id, projectId);
+};
+
+const lawGrantIsExpired = (grant, now) =>
+  Boolean(grant && grant.expires_at && new Date(String(grant.expires_at)).getTime() <= now.getTime());
+
+async function resolveLearningLockInLaw(admin, ownerId, targetId) {
+  const { data, error } = await admin.from("nayanet_authority_grants")
+    .select("*").eq("issuer_id", ownerId).eq("subject_id", ownerId);
+  if (error) throw error;
+  const now = new Date();
+  const matchingIntent = (data || []).filter((g) =>
+    Array.isArray(g.actions) && g.actions.includes(LEARNING_LOCK_IN_ACTION) &&
+    lawGrantTargetMatches(g, targetId, "NayaNET")
+  );
+  const invalid = matchingIntent.find((g) =>
+    g.status === "REVOKED" || Boolean(g.revoked_at) || g.status === "INVALID" || lawGrantIsExpired(g, now)
+  );
+  if (invalid) {
+    const reason = (invalid.status === "REVOKED" || Boolean(invalid.revoked_at)) ? "GRANT_REVOKED"
+      : lawGrantIsExpired(invalid, now) ? "GRANT_EXPIRED" : "GRANT_INVALID";
+    return { authorized: false, reason, authority_refs: [String(invalid.grant_id || "")], expires_at: invalid.expires_at || null };
+  }
+  const active = matchingIntent.find((g) => g.status === "ACTIVE" && !g.revoked_at && !lawGrantIsExpired(g, now));
+  if (active) return { authorized: true, reason: "ACTIVE_IN_SCOPE_GRANT", authority_refs: [String(active.grant_id || "")], expires_at: active.expires_at || null };
+  return { authorized: false, reason: "NO_MATCHING_ACTIVE_AUTHORITY", authority_refs: [], expires_at: null };
+}
+
 function deriveGraphApplicability(block: any) {
   const lesson = String(block?.content?.lesson ?? "");
   if (/preserve provenance|provenance before applying retained intelligence/i.test(lesson)) {
@@ -241,6 +281,20 @@ Deno.serve(async (req: Request) => {
     const refs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
     if (!refs.length) return json({ ok: true, verified: false, reason: "EVIDENCE_REQUIRED" });
 
+    const observedForLaw = learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value) ? learning.observed_value : {};
+    const intelligentBlockId = String((observedForLaw as any).intelligent_block_id || "");
+    const relationshipId = String((observedForLaw as any).relationship_id || "");
+    const checkpointId = String((observedForLaw as any).checkpoint_id || "");
+    const lineageId = String((observedForLaw as any).lineage_id || "");
+    const indexId = String((observedForLaw as any).index_id || "");
+    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
+      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
+    }
+    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, LEARNING_AUTHORITY_TARGET);
+    if (!lawDecision.authorized) {
+      return json({ ok: false, error: "LEARNING_LOCK_IN_LAW_DENIED", reason: lawDecision.reason, authority_refs: lawDecision.authority_refs, action: LEARNING_LOCK_IN_ACTION, target: intelligentBlockId }, 403);
+    }
+
     const verificationMethod = String(
       body?.verification_method || learning.verification_method || "Independent runtime verification."
     );
@@ -309,15 +363,6 @@ Deno.serve(async (req: Request) => {
     const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
       ? promoted.observed_value
       : {};
-    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
-    const relationshipId = String((observed as any).relationship_id || "");
-    const checkpointId = String((observed as any).checkpoint_id || "");
-    const lineageId = String((observed as any).lineage_id || "");
-    const indexId = String((observed as any).index_id || "");
-    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
-      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
-    }
-
     const { data: blockBefore, error: blockReadError } = await admin
       .from("nayanet_intelligent_blocks")
       .select("*")

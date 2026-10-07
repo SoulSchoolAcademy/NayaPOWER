@@ -144,3 +144,9 @@ def test_runtime_proof_can_be_dispatched_with_exact_producer_context():
     assert "github.event_name == 'workflow_run'" in source
     assert "SOURCE_SHA:" in source
     assert "PRODUCER_RUN_ID:" in source
+
+
+def test_learning_lock_in_law_uses_logical_naya_target_for_node_scoped_learning_authority():
+    source = (ROOT / "supabase" / "functions" / "nayanet-learning-verify" / "index.ts").read_text(encoding="utf-8")
+    assert 'const LEARNING_AUTHORITY_TARGET = "NAYA-NODE-0001";' in source
+    assert 'resolveLearningLockInLaw(admin, ownerId, LEARNING_AUTHORITY_TARGET)' in source
