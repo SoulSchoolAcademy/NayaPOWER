@@ -12,41 +12,18 @@ import vm from "node:vm";
 // It WRITES a wrong answer into the brain that everything else later reads as
 // settled knowledge.
 //
-// AND two defects found while writing these, which are worse than "missing proof":
+// SN-0521 fixed two defects found while writing these:
 //
-//   CV-06 -- THE LAW GATE IS ORDERED AFTER THE MUTATIONS IT IS SUPPOSED TO GUARD.
+//   CV-06 -- THE LAW GATE WAS ORDERED AFTER THE MUTATIONS IT GUARDED.
+//     Fixed: the LAW gate now runs BEFORE any mutation. A denial writes nothing.
+//     The receipt-existence check also runs before the learning promotion.
 //
-//     index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION.
-//     index.ts:453 writes `verified: true` into an execution receipt.
-//     index.ts:482 calls resolveLearningLockInLaw().
+//   CV-07 -- evidence_refs WAS NEVER CHECKED TO BE EVIDENCE.
+//     Fixed: validateEvidenceRefs rejects junk strings (EVIDENCE_REFS_INVALID)
+//     and requires at least one well-formed CVO causal-verification ID
+//     (EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION).
 //
-//     So when LAW denies, the runtime correctly answers 403
-//     LEARNING_LOCK_IN_LAW_DENIED -- and the two mutations it just performed are
-//     already persisted. The refusal is real and the fail-open is real, in the same
-//     request. The H13 comment at index.ts:478 states the intent plainly:
-//     "every canonical mutation must sit behind the grant gate." Two of them do not.
-//
-//     The same ordering bug applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED (index.ts:435):
-//     the learning row is already ACTIVE before the receipt is looked up.
-//
-//   CV-07 -- evidence_refs IS NEVER CHECKED TO BE EVIDENCE.
-//
-//     index.ts:398 takes `body.evidence_refs` as an array of caller-supplied strings and
-//     only requires that it be non-empty (index.ts:399). index.ts:552 then derives
-//     `causal_verification_id: refs.find(r => r.startsWith("CVO-")) || null`.
-//
-//     So arbitrary strings promote the learning AND write causal_verification_id:null
-//     into the block, relationship and checkpoint provenance while still reporting
-//     VERIFIED. The candidate's own verification_method -- set at index.ts:333 -- says
-//     "Pending independent causal verification of the persisted Event -> Intelligent
-//     Block -> ... chain." The promotion claims to discharge a requirement it never
-//     checks. A caller can pass ["lol"] and get a verified lock-in with no verification
-//     id recorded anywhere.
-//
-//   The tests below assert the CURRENT behaviour exactly, including both fail-opens, so
-//   both lies are on the record in executable form. Each repair turns a test red, which
-//   is the signal that the repair happened and the assertion was updated in the same
-//   commit. Fixing these silently would be worse than the defects.
+// The tests below assert the FIXED fail-closed behaviour.
 
 const source = readFileSync(
   new URL("../supabase/functions/nayanet-learning-verify/index.ts", import.meta.url),
@@ -610,12 +587,15 @@ test("verify is idempotent for one token -- the same verification is not double-
 });
 
 // ---------------------------------------------------------------------------
-// CV-06 -- the LAW gate is ordered AFTER the mutations it guards
+// CV-06 -- the LAW gate is ordered BEFORE the mutations it guards (SN-0521 fix)
 // ---------------------------------------------------------------------------
+// Previously the LAW gate ran AFTER learning_evidence was promoted to ACTIVE
+// and the receipt was written. Now the gate runs before ANY mutation: a
+// refusal writes nothing.
 
-test("CV-06 -- LAW denies, the 403 is returned, AND the learning row is already promoted", async () => {
+test("CV-06 -- LAW denies, the 403 is returned, AND nothing is written", async () => {
   const { status, body, rows, writes } = await runtime({
-    body: { learning_id: "L1", evidence_refs: ["CVO-777"], receipt_id: "RC1" },
+    body: { learning_id: "L1", evidence_refs: ["CVO-1"], receipt_id: "RC1" },
     tables: baseTables({ nayanet_authority_grants: [] }),
   });
 
@@ -623,18 +603,18 @@ test("CV-06 -- LAW denies, the 403 is returned, AND the learning row is already 
   assert.equal(status, 403);
   assert.equal(body.error, "LEARNING_LOCK_IN_LAW_DENIED");
 
-  // And so is the fail-open it was supposed to prevent. This is the defect.
-  assert.equal(rows.learning_evidence[0].status, "ACTIVE");
-  assert.equal(rows.learning_evidence[0].provenance, "VERIFICATION");
+  // SN-0521 fix: the fail-open is closed. Nothing was written.
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
+  assert.equal(rows.learning_evidence[0].provenance, "OBSERVATION");
   assert.ok(
-    writes.some((w) => w.op === "update" && w.table === "learning_evidence"),
-    "learning_evidence was promoted despite the LAW denial"
+    !writes.some((w) => w.op === "update" && w.table === "learning_evidence"),
+    "learning_evidence must NOT be promoted when LAW denies"
   );
 
-  // The receipt has also been written with verified: true.
+  // The receipt is also untouched.
   assert.ok(
-    rows.nayanet_execution_receipts[0].learning.some((e) => e.learning_id === "L1" && e.verified === true),
-    "an execution receipt records verified:true for a lock-in LAW denied"
+    !rows.nayanet_execution_receipts[0].learning.some((e) => e.learning_id === "L1" && e.verified === true),
+    "no execution receipt may record verified:true for a lock-in LAW denied"
   );
 });
 
@@ -651,44 +631,60 @@ test("CV-06 -- the block/relationship/checkpoint ARE correctly untouched on deni
   assert.equal(rows.nayanet_project_cognition_state[0].state.status, "CANDIDATE");
 });
 
-test("CV-06 -- RECEIPT_NOT_FOUND_OR_NOT_OWNED has the same leak: the row is already ACTIVE", async () => {
+test("CV-06 -- RECEIPT_NOT_FOUND_OR_NOT_OWNED fires before promotion: the row stays CANDIDATE", async () => {
   const { status, body, rows } = await runtime({
-    body: { learning_id: "L1", evidence_refs: ["CVO-777"], receipt_id: "RC-NOT-MINE" },
+    body: { learning_id: "L1", evidence_refs: ["CVO-1"], receipt_id: "RC-NOT-MINE" },
   });
   assert.equal(status, 404);
   assert.equal(body.error, "RECEIPT_NOT_FOUND_OR_NOT_OWNED");
-  assert.equal(rows.learning_evidence[0].status, "ACTIVE");
+  // SN-0521 fix: the receipt check now runs BEFORE the learning promotion.
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
 });
 
 // ---------------------------------------------------------------------------
-// CV-07 -- evidence_refs is never checked to be evidence
+// CV-07 -- evidence_refs content is validated (SN-0521 fix)
 // ---------------------------------------------------------------------------
+// Previously only non-empty was checked. Now junk strings are rejected with
+// EVIDENCE_REFS_INVALID, and refs without a valid CVO causal-verification ID
+// are rejected with EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION.
 
-test("CV-07 -- arbitrary strings promote the learning and are recorded as verification", async () => {
+test("CV-07 -- junk evidence_refs are rejected and nothing promotes", async () => {
   const { status, body, rows } = await runtime({
     body: { learning_id: "L1", evidence_refs: ["not-a-verification", "", "0"] },
   });
+  assert.equal(status, 400);
+  assert.equal(body.error, "EVIDENCE_REFS_INVALID");
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
+  assert.equal(rows.nayanet_intelligent_blocks[0].understanding_state, "CANDIDATE");
+  assert.equal(rows.nayanet_brain_relationships[0].epistemic_state, "CANDIDATE");
+});
+
+test("CV-07 -- refs without a CVO causal-verification ID are rejected", async () => {
+  const { status, body, rows } = await runtime({ body: { learning_id: "L1", evidence_refs: ["not-a-verification"] } });
+  assert.equal(status, 400);
+  assert.equal(body.error, "EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION");
+  // Nothing promoted; no silent null causal_verification_id is recorded.
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
+  assert.equal(rows.nayanet_brain_relationships[0].epistemic_state, "CANDIDATE");
+});
+
+test("CV-07 -- a forged CVO prefix among junk is rejected", async () => {
+  const { status, body, rows } = await runtime({ body: { learning_id: "L1", evidence_refs: ["junk", "CVO-forged"] } });
+  assert.equal(status, 400);
+  assert.equal(body.error, "EVIDENCE_REFS_INVALID");
+  assert.deepEqual(body.invalid_refs, ["CVO-forged"]);
+  assert.equal(rows.learning_evidence[0].status, "CANDIDATE");
+});
+
+test("CV-07 -- a valid CVO ref promotes and records the causal_verification_id", async () => {
+  const { status, body, rows } = await runtime({ body: { learning_id: "L1", evidence_refs: ["CVO-NAYA-NODE-0001-TREATMENT-V1"] } });
   assert.equal(status, 200);
   assert.equal(body.ok, true);
   assert.equal(rows.learning_evidence[0].status, "ACTIVE");
-  assert.equal(rows.nayanet_intelligent_blocks[0].understanding_state, "LEARNED");
-  assert.equal(rows.nayanet_brain_relationships[0].epistemic_state, "VERIFIED");
-});
-
-test("CV-07 -- the causal_verification_id is silently null in the canonical provenance", async () => {
-  const { status, body, rows } = await runtime({ body: { learning_id: "L1", evidence_refs: ["not-a-verification"] } });
-  assert.equal(status, 200);
-  assert.equal(body.ok, true);
-  // The runtime performed a verified lock-in and recorded that NO causal verification
-  // exists. Nothing in the response says so -- ok:true, verified:true, LEARNED, and a
-  // provenance object that quietly contains causal_verification_id: null.
-  assert.equal(rows.nayanet_brain_relationships[0].provenance.causal_verification_id, null);
-  assert.equal(rows.nayanet_project_cognition_state[0].state.causal_verification_id, null);
-});
-
-test("CV-07 -- a single valid-looking prefix among junk is accepted as the verification id", async () => {
-  const { rows } = await runtime({ body: { learning_id: "L1", evidence_refs: ["junk", "CVO-forged"] } });
-  assert.equal(rows.nayanet_brain_relationships[0].provenance.causal_verification_id, "CVO-forged");
+  assert.equal(
+    rows.nayanet_brain_relationships[0].provenance.causal_verification_id,
+    "CVO-NAYA-NODE-0001-TREATMENT-V1"
+  );
 });
 
 // ---------------------------------------------------------------------------
