@@ -1,15 +1,16 @@
 {
   "//": "Committed floor for tools/guard_liveness.py. The gate fails only if coverage DROPS below this. Ratchet, not cliff: failing at the honest starting number would block every merge and train the team to bypass it. The floor may only rise.",
-  "floor_pct_with_firing_proof": 45.6,
+  "floor_pct_with_firing_proof": 46.9,
   "measured_at": "2026-10-07",
-  "measured_on": "main 6eb776c29 plus github-dispatch authority-tier firing proofs",
+  "measured_on": "main b82e1fd18 plus intelligence-commit-runtime firing proofs",
   "total_guards": 147,
-  "with_firing_proof": 67,
-  "without_firing_proof": 80,
+  "with_firing_proof": 69,
+  "without_firing_proof": 78,
   "history": [
     {"pct": 30.6, "guards": 147, "proven": 45, "why": "initial honest baseline at main c9c8b8ce0"},
     {"pct": 40.1, "guards": 147, "proven": 59, "why": "14 authority/ownership/replay guards given executed firing proofs, AND the detector was corrected to recognise direct named imports from runtime modules (it had only recognised VM-sandbox execution, so real proof work scored 0)"},
-    {"pct": 45.6, "guards": 147, "proven": 67, "why": "+8 from nayanet-github-dispatch, the highest-blast-radius surface left: the only remaining function that causes an external, visible, hard-to-reverse effect. EXPLICIT_APPROVAL_REQUIRED -- the last gate before a public commit to main -- had never been observed to fire."}
+    {"pct": 45.6, "guards": 147, "proven": 67, "why": "+8 from nayanet-github-dispatch, the highest-blast-radius surface left: the only remaining function that causes an external, visible, hard-to-reverse effect. EXPLICIT_APPROVAL_REQUIRED -- the last gate before a public commit to main -- had never been observed to fire."},
+    {"pct": 46.9, "guards": 147, "proven": 69, "why": "+2 from nayanet-intelligence-commit-runtime, the canonical write path. Writing these also surfaced CV-04/CV-05: two live runtimes hardcode independent_verification:true while reporting a FAILED verification. The scanner that found them had missed both on a hand review -- which is the argument for generalising the check rather than reading harder."}
   ],
   "baseline_rationale": "88 guards still cannot be observed to reject anything. The work is to move them, ranked by blast radius, into the proven column -- never in bulk, which would buy coverage without information."
 }

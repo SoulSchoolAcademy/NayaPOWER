@@ -29,8 +29,45 @@
       "law": "SN-0461",
       "status": "RESOLVED -- present as of this commit",
       "why_not_fixed_here": "Already resolved; retained so the resolution is visible rather than the entry silently vanishing."
+    },
+    {
+      "id": "CV-04",
+      "claim": "independent verification",
+      "location": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+      "problem": "BOTH verify (mode 'verify', ~line 309) and verify_block (~line 244) return `independent_verification: true` as a LITERAL, while the same response carries `ok: pass` and `status: pass ? 'LINEAGE_VERIFIED' : 'LINEAGE_BROKEN'`. A broken lineage therefore attests that it was independently verified. This is the same class as CV-01 and WORSE in one respect: CV-01 was a CI receipt builder; this is the LIVE runtime other nodes trust.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "Correcting a live runtime's evidence semantics is a truth decision for an owner, not a unilateral change from an enforcement PR. The repair is a one-line change and the CORRECT PATTERN ALREADY EXISTS in this codebase: nayanet-causal-verify computes `independent_verification: valid` from the actual result. tests/commit_runtime_guard_firing_proofs.test.mjs pins the current (defective) behaviour exactly, so the lie is executable and the fix turns that test red rather than hiding silently.",
+      "not_a_theory": "Executed, not inferred. The pinned test drives the real handler with a broken checkpoint link and observes ok:false + status:LINEAGE_BROKEN + independent_verification:true in one response."
+    },
+    {
+      "id": "CV-05",
+      "claim": "independent verification",
+      "location": "supabase/functions/nayanet-law-runtime/index.ts",
+      "problem": "The verify path returns `{ok: same, status: same ? 'LAW_DECISION_VERIFIED' : 'LAW_DECISION_MISMATCH', independent_verification: true, ...}`. The flag is a literal, so when the recomputed LAW decision does NOT match the recorded one, the response is ok:false / LAW_DECISION_MISMATCH AND independent_verification:true. Found by the scanner, not by reading -- a hand review of this function had already passed it.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "OPEN -- owner decision required",
+      "why_not_fixed_here": "LAW is the authority node. Changing what its verify response attests is a truth decision for an owner. The repair matches nayanet-causal-verify: `independent_verification: same`.",
+      "severity_note": "Most consequential instance of this class precisely because it sits on the authority node: a LAW decision mismatch currently reports that it was independently verified. A caller that reads only independent_verification would treat a contradicted authority decision as confirmed."
     }
   ],
+  "hardcoded_independent_verification_sites": {
+    "//": "Every runtime surface where `independent_verification: true` is a LITERAL rather than computed. Discovered by the scanner in tests/load_bearing_claims.test.mjs, which found CV-04 and CV-05 that reading by hand had missed. Each site carries a verdict: a CV id if it lies, REVIEWED_OK with a reason if it does not. A bare allowlist would let a real regression hide beside a false positive.",
+    "supabase/functions/nayanet-intelligence-commit-runtime/index.ts": {
+      "verdict": "REVIEWED_OK_PLUS_CV-04",
+      "cv": "CV-04",
+      "reason": "LIES on the verify path: returns independent_verification: true alongside ok:false / status:LINEAGE_BROKEN. Also literal on verify_block, which is always gated by a preceding 404 return."
+    },
+    "supabase/functions/nayanet-law-runtime/index.ts": {
+      "verdict": "CV-05",
+      "cv": "CV-05",
+      "reason": "LIES. `{ok:same, status: same?'LAW_DECISION_VERIFIED':'LAW_DECISION_MISMATCH', independent_verification:true}` -- the flag is unconditional, so a LAW decision MISMATCH attests independent verification. LAW is the authority node, so this is the most consequential instance of the class."
+    },
+    "supabase/functions/nayanet-verified-ai-action/index.ts": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+    }
+  },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
   }
