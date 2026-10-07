@@ -1,17 +1,17 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main dacc88e664af3ab0cc8776e5a958a3dece8c38a1 + Gate 2 current-tip proof branch",
+  "measured_on": "main 6a1df86d6dadd96f31bd4ce8b385c9c78c0835b4 + Gate 2 integration review",
   "violations": [
     {
       "id": "CV-01",
       "claim": "independent verification",
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
-      "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 previously set \"independent_verification\": True as a literal in the receipt builder, without requiring a fresh verifier identity or an independent recomputation artifact.",
+      "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 sets \"independent_verification\": True as a literal in the receipt builder. No independent process produced it.",
       "law": "SN-0481",
-      "status": "RESOLVED ON GATE-2 PROOF BRANCH -- independent verifier computes the field; merge remains governed",
-      "why_not_fixed_here": "Resolved in the Gate 2 proof lane; closure is retained here so the truth change remains visible. Current main remains unchanged until governed integration.",
-      "resolution": "The workflow mints a fresh GitHub OIDC verifier identity, builds an input bundle from authoritative component artifacts, executes tools/verify_nine_node_independent.py pinned to the externally resolved SOURCE_SHA, and only then derives independent_verification plus evidence/recomputation basis from verifier output. Executor claims are explicitly untrusted; executor identity is bound back to the authoritative cold receipt."
+      "status": "RESOLVED -- independent verification proof integrated on Gate 2 branch; production parity still pending",
+      "why_not_fixed_here": "Resolved on the Gate-2 proof branch; this status becomes canonical once the PR merges to current main.",
+      "resolution": "Gate 2 now mints a fresh verifier identity, rejects executor self-attestation, pins verification to SOURCE_SHA, and recomputes the nine-node acceptance from raw persisted evidence. Production parity remains a separate deployment gate."
     },
     {
       "id": "CV-02",
@@ -19,8 +19,9 @@
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
       "problem": "The 'ablation discrimination' step deletes a key from the dict it just built and asserts a shape checker fails. That proves the shape checker checks shapes. No node in the receipt is executed by any code.",
       "law": "SN-0462, SN-0505",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Same reason. The real ablation exists (tools/measure_node_influence.py) and reports 2/9 invoked, 0/9 influential for the runtime kernel. Wiring it into this gate is an owner decision about what the receipt may claim."
+      "status": "RESOLVED -- behavioral influence proof integrated; live runtime binding remains separate",
+      "why_not_fixed_here": "Resolved by the G3 proof lane; production runtime binding is a distinct proof surface and remains unclaimed here.",
+      "resolution": "Integrated from G3: canonical KernelBehaviorEngine CONTROL/TREATMENT ablations now produce deterministic target-node fingerprints; the acceptance gate requires 9/9 invoked and 9/9 behaviorally influential nodes and rechecks every target-node delta. This proves reference-engine influence, not production runtime influence."
     },
     {
       "id": "CV-03",
@@ -35,21 +36,23 @@
       "id": "CV-04",
       "claim": "independent verification",
       "location": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
-      "problem": "BOTH verify (mode 'verify', ~line 309) and verify_block (~line 244) return `independent_verification: true` as a LITERAL, while the same response carries `ok: pass` and `status: pass ? 'LINEAGE_VERIFIED' : 'LINEAGE_BROKEN'`. A broken lineage therefore attests that it was independently verified. This is the same class as CV-01 and WORSE in one respect: CV-01 was a CI receipt builder; this is the LIVE runtime other nodes trust.",
+      "problem": "Both intelligence-commit verification paths previously returned `independent_verification: true` literally, including a broken lineage or missing block. That let a failed verification state present itself as independently verified.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Correcting a live runtime's evidence semantics is a truth decision for an owner, not a unilateral change from an enforcement PR. The repair is a one-line change and the CORRECT PATTERN ALREADY EXISTS in this codebase: nayanet-causal-verify computes `independent_verification: valid` from the actual result. tests/commit_runtime_guard_firing_proofs.test.mjs pins the current (defective) behaviour exactly, so the lie is executable and the fix turns that test red rather than hiding silently.",
-      "not_a_theory": "Executed, not inferred. The pinned test drives the real handler with a broken checkpoint link and observes ok:false + status:LINEAGE_BROKEN + independent_verification:true in one response."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by deriving `independent_verification` directly from the actual verification result: `Boolean(block)` on verify_block and `pass` on full lineage verification. No new authority or truth store was introduced.",
+      "not_a_theory": "Executed. RED on current main: broken checkpoint lineage returned ok:false / LINEAGE_BROKEN / independent_verification:true. GREEN on the repair: the same falsifier returns independent_verification:false; missing block also returns false; healthy lineage remains a positive control.",
+      "resolution_note": "Local behavior is verified from exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Production parity remains a separate verification gate."
     },
     {
       "id": "CV-05",
       "claim": "independent verification",
       "location": "supabase/functions/nayanet-law-runtime/index.ts",
-      "problem": "The verify path returns `{ok: same, status: same ? 'LAW_DECISION_VERIFIED' : 'LAW_DECISION_MISMATCH', independent_verification: true, ...}`. The flag is a literal, so when the recomputed LAW decision does NOT match the recorded one, the response is ok:false / LAW_DECISION_MISMATCH AND independent_verification:true. Found by the scanner, not by reading -- a hand review of this function had already passed it.",
+      "problem": "The LAW verify path previously returned `independent_verification: true` literally, even when the recorded LAW decision disagreed with a fresh recomputation.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "LAW is the authority node. Changing what its verify response attests is a truth decision for an owner. The repair matches nayanet-causal-verify: `independent_verification: same`.",
-      "severity_note": "Most consequential instance of this class precisely because it sits on the authority node: a LAW decision mismatch currently reports that it was independently verified. A caller that reads only independent_verification would treat a contradicted authority decision as confirmed."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by deriving `independent_verification` from the same `same` predicate that compares recorded and recomputed LAW status, reason, and authority_refs. No authority behavior changed.",
+      "not_a_theory": "Executed. RED on current main: a real LAW handler verify mismatch returned ok:false / LAW_DECISION_MISMATCH / independent_verification:true. GREEN on the repair: the mismatch returns false while a matching decision remains a positive control with true.",
+      "resolution_note": "Local behavior is verified from exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Production parity remains a separate verification gate."
     },
     {
       "id": "CV-06",
@@ -57,9 +60,9 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "ORDERING DEFECT ON THE LOCK-IN PATH. index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION. index.ts:453 writes verified:true into an execution receipt. index.ts:482 calls resolveLearningLockInLaw(). So when LAW denies, the runtime correctly returns 403 LEARNING_LOCK_IN_LAW_DENIED while both mutations are ALREADY PERSISTED. The refusal is real and the fail-open is real in the same request. The same ordering applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED at index.ts:435: the learning row is ACTIVE before the receipt is looked up. The H13 comment at index.ts:478 states the intent -- 'every canonical mutation must sit behind the grant gate' -- and two of them do not.",
       "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Reordering a live lock-in transaction changes what gets promoted when LAW denies, and a partial failure after the promote would leave learning_evidence ACTIVE with no rollback. That is a transactional-design decision for an owner. The repair is to hoist resolveLearningLockInLaw and the LEARNING_PROVENANCE_LINKS_REQUIRED check above index.ts:404.",
-      "not_a_theory": "Executed. The pinned tests drive the real handler with no authority grant and observe, in one response, ok:false + LEARNING_LOCK_IN_LAW_DENIED + learning_evidence.status == ACTIVE + a receipt entry with verified:true. A companion test asserts the graph mutations ARE correctly untouched, so the leak is scoped precisely rather than overclaimed."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by ordering provenance-link checks, LAW authorization, and receipt existence before the first canonical mutation. Denied requests leave learning_evidence and receipt learning state untouched.",
+      "not_a_theory": "Executed in the focused current-main suite: LAW denial, receipt absence, untouched graph state, and authorized positive-control lock-in are covered. Production parity remains a separate gate."
     },
     {
       "id": "CV-07",
@@ -67,31 +70,32 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "index.ts:398 accepts body.evidence_refs as an array of caller-supplied strings and requires only that it be non-empty (index.ts:399). No check that any element corresponds to a real causal verification record. index.ts:552 then derives causal_verification_id: refs.find(r => r.startsWith('CVO-')) || null. So arbitrary strings promote the learning to ACTIVE, set the block LEARNED and the relationship VERIFIED, while recording causal_verification_id: null and reporting ok:true / verified:true. Nothing in the response or the persisted provenance says the verification was never found.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Deciding what counts as acceptable evidence is a truth/authority policy, not a parsing change. Requiring at least one CVO- id, or resolving each ref against nayanet-causal-verifications, are both defensible and have different failure modes. That choice is an owner's. The repair is small once the policy is chosen.",
-      "not_a_theory": "Executed. The pinned test passes evidence_refs: ['not-a-verification', '', '0'] and observes ok:true, verified:true, block LEARNED, relationship VERIFIED. A second test shows the id is silently null in the canonical provenance, and a third shows that one forged 'CVO-forged' string among junk is accepted as the causal_verification_id.",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by validateEvidenceRefs: malformed or junk refs fail closed, and a causal-verification ID is required before promotion.",
+      "not_a_theory": "Executed in the focused current-main suite: junk, missing CVO, forged CVO-prefix, and valid CVO positive-control paths are covered. Production parity remains a separate gate.",
       "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
     },
     {
       "id": "CV-08",
       "claim": "verification checks are computed from evidence",
       "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
-      "problem": "A CHECK, not a result, is a hardcoded literal. index.ts:542 emits `receipt_mutated_after_refusal: false` inside refusalChecks, where every neighbouring field is computed from the row actually read. index.ts:571 then gates on it with `refusalChecks.receipt_mutated_after_refusal === false`, i.e. `false === false`, which is always true. The runtime therefore reports, under a field whose name promises mutation detection, that no mutation occurred -- while being structurally incapable of ever reporting that one did. A second field in the same object, refusal_receipt_owner_matches, IS computed at index.ts:535 and surfaced in the response, but is absent from refusalChecksPass at index.ts:563-572, so it is presented as part of the gate while having no effect on it.",
+      "problem": "A verification check on refusal integrity was hardcoded as `receipt_mutated_after_refusal: false`, making that guard untestable and always passing. The same refusal path also surfaced `refusal_receipt_owner_matches` without gating on it.",
       "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Computing the check means choosing what 'mutated after refusal' means, which needs a before-image to compare against; no such field exists on the receipt row today. Inventing the semantics from an enforcement PR would be a truth decision dressed as a bugfix. The honest minimum repair is to DELETE the field and remove it from the gate, so the verification stops claiming a check it does not perform -- that is a small, uncontroversial change an owner may reasonably authorise immediately.",
-      "not_a_theory": "Executed. The pinning test drives the real handler with a refusal receipt whose observed_result was rewritten after persistence -- precisely the event the check is named for. Every genuinely computed check still passes, receipt_mutated_after_refusal still reports false, and the runtime returns ok:true / OUTCOME_VERIFIED / independent_verification:true. A companion test confirms all six neighbouring checks are real, which is what makes this field invisible on inspection.",
-      "severity_note": "Worst instance of this class found so far, and on the highest-blast-radius surface. CV-01, CV-04 and CV-05 were literals in a verification RESULT. This is a literal in a verification CHECK: it is rendered to every downstream consumer as a passing guard. On a surface whose entire purpose is converting an authority grant into an external effect, that is the difference between 'the answer is wrong' and 'the guard that was supposed to prevent the wrong answer is itself fake'."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by replacing the time-claiming mutation field with an evidence-derived `refusal_receipt_contract_valid` check over the canonical persisted refusal contract, and by adding the owner-scope check to the refusal gate. No before-image or second truth store was introduced.",
+      "not_a_theory": "Executed. RED on current main: a tampered refusal returned 200 / independent_verification:true. GREEN on the repair: the same tamper returns 409 / independent_verification:false; a real runtime-generated refusal passes the canonical contract; the source no longer contains the hardcoded mutation verdict. Focused suite: 38/38; repository Node suite: 527/527.",
+      "resolution_note": "Local behavior is verified from the exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Deployment and independent production runtime proof remain separate gates."
     },
     {
       "id": "CV-09",
       "claim": "an outcome was not self-certified by its executor",
       "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
-      "problem": "index.ts:556 defines outcome_not_self_certified_at_execution as `outcome.verification_method === 'PENDING_INDEPENDENT_RUNTIME_VERIFICATION' || outcome.verified === true`. The second arm accepts ANY row already claiming verified:true regardless of the verification_method it carries. So a pre-set flag -- set by the executor, by a prior verifier, or by anyone with write access to nayanet_execution_outcomes -- satisfies the check, and the check then contributes no evidence that this runtime performed an independent reread. The name promises anti-self-certification; the expression permits it.",
+      "problem": "The verification gate previously accepted any persisted outcome with `verified:true`, regardless of how that flag was produced. That made a pre-certified outcome satisfy the anti-self-certification claim without proving the executor left an unverified pending state for an independent verifier.",
       "law": "SN-0481 (never impersonate the verifier), SN-042 (independence must be real)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Deciding whether a prior independent verification should be accepted, rejected, or required to match a specific recorded method is a verification-policy question. Narrowing the check is a one-line change; choosing the correct predicate is not.",
-      "not_a_theory": "Executed. The pinning test seeds an outcome with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT', drives the real handler, and observes outcome_not_self_certified_at_execution:true with a 200 OUTCOME_VERIFIED response."
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by requiring the independently verifying runtime to observe `verified:false` together with the exact `PENDING_INDEPENDENT_RUNTIME_VERIFICATION` method, then atomically update only that still-pending row. Pre-verified or otherwise method-mismatched rows fail closed.",
+      "not_a_theory": "Executed. RED on current main: a row with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT' returned 200 / OUTCOME_VERIFIED. GREEN on the repair: the same row returns 409 / independent_verification:false; the clean pending outcome still verifies. Focused suite: 38/38; repository Node suite: 527/527.",
+      "resolution_note": "Local behavior is verified from the exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Deployment and independent production runtime proof remain separate gates."
     }
   ],
   "hardcoded_independent_verification_sites": {
@@ -113,5 +117,6 @@
   },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
-  }
+  },
+  "resolved_summary": "CV-01 through CV-09 are resolved at source/CI or focused runtime-test level on this proof branch. Production parity, universal live nine-node binding, and end-to-end successor proof remain separate gates; resolution here is not a claim of production proof."
 }

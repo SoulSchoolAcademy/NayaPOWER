@@ -1,0 +1,93 @@
+/* NayaVoice "Play Naya" button — trillion-dollar elite.
+ * Black, elevated, purple glow underneath. Dead center, top of the block.
+ * Matches the NayaPOWER Reveal play-button language. */
+.nv-play {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  /* black elevated */
+  background: linear-gradient(180deg, #17171f 0%, #0a0a0f 100%);
+  border: 1px solid rgba(157, 117, 255, 0.45);
+  border-radius: 999px;
+  padding: 10px 24px;
+  min-height: 44px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  overflow: hidden;
+  /* purple glow underneath + elevation */
+  box-shadow:
+    0 6px 22px rgba(157, 117, 255, 0.38),
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition: transform 0.22s cubic-bezier(0.16, 0.84, 0.22, 1), box-shadow 0.22s, border-color 0.22s;
+}
+/* slow sheen sweep, Reveal-style */
+.nv-play::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(from 0deg, transparent 0%, rgba(196, 181, 253, 0.14) 10%, transparent 22%, transparent 55%, rgba(157, 117, 255, 0.1) 65%, transparent 78%);
+  animation: nv-sheen 7s linear infinite;
+  pointer-events: none;
+}
+@keyframes nv-sheen { to { transform: rotate(360deg); } }
+.nv-play:hover,
+.nv-play:focus-visible {
+  transform: translateX(-50%) translateY(-1px) scale(1.03);
+  border-color: rgba(196, 181, 253, 0.8);
+  box-shadow:
+    0 8px 30px rgba(157, 117, 255, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+.nv-play:active { transform: translateX(-50%) scale(0.98); }
+/* playing pulse */
+.nv-play.playing { animation: nv-pulse 1.6s ease-in-out infinite; }
+@keyframes nv-pulse {
+  0%, 100% { box-shadow: 0 6px 22px rgba(157, 117, 255, 0.38), 0 2px 6px rgba(0, 0, 0, 0.6); }
+  50% { box-shadow: 0 6px 34px rgba(196, 181, 253, 0.7), 0 2px 6px rgba(0, 0, 0, 0.6); }
+}
+.nv-play .nv-ic {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  line-height: 1;
+  color: #c4b5fd;
+  text-shadow: 0 0 8px rgba(196, 181, 253, 0.8);
+}
+.nv-play .nv-name {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+.nv-play .nv-tag {
+  position: relative;
+  z-index: 1;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+/* Cards need positioning context for the centered overlay */
+article.timeline-item,
+div.activity-card {
+  position: relative;
+  padding-top: 56px; /* room for the centered button */
+}
+@media (prefers-reduced-motion: reduce) {
+  .nv-play::before { animation: none; }
+  .nv-play.playing { animation: none; }
+}
