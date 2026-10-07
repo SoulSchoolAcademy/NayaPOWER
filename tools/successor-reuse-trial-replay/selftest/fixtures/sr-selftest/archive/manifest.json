@@ -1,0 +1,27 @@
+{
+  "trial_id": "SR-SELFTEST-20261007",
+  "verifier": "../successor-reuse-trial-replay/selftest-fixture-verifier-note",
+  "sandbox_posture": "local node, loopback HTTP server only (same as original verification)",
+  "arms": {
+    "B": {
+      "submission_dir": "arm-b",
+      "applicability": "NO LESSON",
+      "recorded_verdict": "PASS",
+      "file_hashes": {
+        "fetchwrap.mjs": "3641281ebf38c600cab8c0a8bd1883bcfbeeedde4df9b96cf753e2aee1894811",
+        "sum.mjs": "eb04e2b0a316d6a1522724ffc75175fb26a123d7a6174fe21d38221f93e786e5"
+      }
+    },
+    "T": {
+      "submission_dir": "arm-t",
+      "applicability": "NOT APPLICABLE",
+      "recorded_verdict": "PASS",
+      "file_hashes": {
+        "fetchwrap.mjs": "e4c192be4e2f26b66908c3dfdece0f4eb9d361bfbcbd747dba9fdecabd73a821",
+        "sum.mjs": "c793e44bea8d5cc2495cb1b8a872ca0c5980d5aa52e393ad7709e15ad9c9aa7c"
+      }
+    }
+  },
+  "recorded_delta": 0,
+  "notes": "Self-test fixture for replay-trial.mjs. Mirrors SR-R2 arm shape."
+}
