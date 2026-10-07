@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -170,6 +170,81 @@ test("CLAIM 2 -- the nine-node receipt's ablation step must prove behavior, not 
       "the nine-node ablation is shape-only and the violation record does not list CV-02 " +
       "as OPEN. Either wire the real ablation or record the claim as unresolved -- " +
       "one of those two, not silence."
+    );
+  }
+});
+
+test("CLAIM 2 -- the hardcoded-verification defect is recorded, not hidden", () => {
+  // CV-04 was a live-runtime truth defect: both intelligence-commit verification paths
+  // previously hardcoded `independent_verification: true`. It is now repaired, and the
+  // record keeps the finding visible as RESOLVED rather than silently deleting history.
+  // The correct pattern already exists in the codebase -- nayanet-causal-verify computes
+  // `independent_verification: valid` from the actual result.
+  const ids = new Set(RECORD.violations.map((v) => v.id));
+  assert.ok(
+    ids.has("CV-04"),
+    "the intelligence-commit-runtime hardcoded independent_verification must be recorded as CV-04"
+  );
+  const cv4 = RECORD.violations.find((v) => v.id === "CV-04");
+  assert.match(cv4.status, /^RESOLVED/, "CV-04 is repaired locally and must say so");
+  assert.ok(
+    /intelligence-commit-runtime/.test(cv4.location),
+    "CV-04 must name the file so the finding is findable without reading this test"
+  );
+  assert.ok(cv4.law, "CV-04 must cite the law it violates");
+});
+
+test("CLAIM 2 -- the correct pattern is available, so the repair is not a redesign", () => {
+  // Guards against someone proposing "we cannot express this properly". The honest form
+  // is already in the codebase and is a copy of one line.
+  const causal = read("supabase/functions/nayanet-causal-verify/index.ts");
+  assert.match(causal, /independent_verification:valid/);
+  assert.doesNotMatch(causal, /independent_verification:\s*true/);
+});
+
+test("CLAIM 2 -- every runtime site hardcoding independent_verification has a recorded verdict", () => {
+  // Scans every runtime surface for `independent_verification: true` written as a
+  // literal. This is the generalisation: CV-01 was found in a workflow, CV-04 and CV-05
+  // in live runtimes. The scanner found CV-04 and CV-05; reading by hand had missed both.
+  //
+  // Every hit must carry a VERDICT in the record -- either a violation, or REVIEWED_OK
+  // with a reason. A bare allowlist would let a real regression hide next to a false
+  // positive. A verdict is auditable; a silenced rule is not.
+  const offenders = new Set();
+  const dir = join(ROOT, "supabase", "functions");
+  for (const fn of readdirSync(dir, { withFileTypes: true })) {
+    if (!fn.isDirectory()) continue;
+    for (const f of readdirSync(join(dir, fn.name))) {
+      if (!f.endsWith(".ts")) continue;
+      const rel = `supabase/functions/${fn.name}/${f}`;
+      if (/independent_verification\s*:\s*true/.test(readFileSync(join(dir, fn.name, f), "utf8"))) {
+        offenders.add(rel);
+      }
+    }
+  }
+
+  const verdicts = RECORD.hardcoded_independent_verification_sites ?? {};
+  // Skip the explanatory "//" key; it documents the record, it is not a site.
+  const sites = Object.entries(verdicts).filter(([k]) => !k.startsWith("//"));
+  const unrecorded = [...offenders].filter((o) => !sites.some(([k]) => k === o));
+  assert.deepEqual(
+    unrecorded,
+    [],
+    `runtime source hardcodes independent_verification: true with no recorded verdict: ` +
+    `${unrecorded.join(", ")}. Add an entry to tools/load-bearing-claims-record.json under ` +
+    `hardcoded_independent_verification_sites with either a CV id or "REVIEWED_OK" plus the ` +
+    `reason it is safe.`
+  );
+
+  // And every verdict must be justified, so neither side can be waved through.
+  for (const [site, verdict] of sites) {
+    assert.ok(
+      verdict.verdict === "REVIEWED_OK" || /^CV-\d+$/.test(String(verdict.cv)),
+      `${site} needs verdict REVIEWED_OK or a CV id`
+    );
+    assert.ok(
+      verdict.reason && verdict.reason.length > 25,
+      `${site} must record WHY it is safe or what is wrong with it`
     );
   }
 });

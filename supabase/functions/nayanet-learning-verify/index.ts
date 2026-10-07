@@ -108,6 +108,47 @@ async function resolveLearningLockInLaw(admin, ownerId, intelligentBlockId) {
 }
 // H13-LOCK-IN-LAW-END
 
+// SN-0521 CV-07: evidence_refs content validation.
+// Non-empty was the only check; junk strings ("", " ", "0", "not-a-verification")
+// and forged CVO IDs ("CVO-forged") promoted learnings while recording
+// causal_verification_id: null. Fail-closed: reject junk before any mutation.
+//
+// Policy: at least one ref must be a well-formed causal-verification ID
+// (CVO- prefix, uppercase alphanumeric/hyphen segments, e.g.
+// CVO-NAYA-NODE-0001-FRESH-LEARNING-2026-09-28). The verification_method
+// requires "independent causal verification"; without a CVO ref the promotion
+// would discharge a requirement it never checks.
+const CVO_ID_PATTERN = /^CVO-[A-Z0-9-]+$/;
+function validateEvidenceRefs(refs: any[]): { valid: boolean; reason?: string; invalidRefs?: string[] } {
+  const invalidRefs: string[] = [];
+  let hasValidCvo = false;
+  for (const ref of refs) {
+    const s = String(ref ?? "").trim();
+    // Reject empty, whitespace-only, or trivially short refs ("0", "x", "ab").
+    if (!s || s.length < 3) {
+      invalidRefs.push(String(ref));
+      continue;
+    }
+    if (s.startsWith("CVO-")) {
+      // CVO- refs must be uppercase alphanumeric/hyphen. Rejects "CVO-forged".
+      // "CVO-1" (test shorthand) passes; real IDs like CVO-NAYA-NODE-0001-... pass.
+      if (!CVO_ID_PATTERN.test(s) || s.length < 5) {
+        invalidRefs.push(String(ref));
+        continue;
+      }
+      hasValidCvo = true;
+    }
+  }
+  if (invalidRefs.length > 0) {
+    return { valid: false, reason: "EVIDENCE_REFS_INVALID", invalidRefs };
+  }
+  if (!hasValidCvo) {
+    return { valid: false, reason: "EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION", invalidRefs: [] };
+  }
+  return { valid: true };
+}
+// SN-0521-CV-07-END
+
 // H8-7 repair (2026-10-03): governed task-class registry. Applicability is a
 // GOVERNED assertion, not a text-derived one. The trigger regexes only PROPOSE
 // candidate classes; APPLICABLE requires a provenance-attested declaration
@@ -398,9 +439,70 @@ Deno.serve(async (req: Request) => {
     const refs = Array.isArray(body?.evidence_refs) ? body.evidence_refs : [];
     if (!refs.length) return json({ ok: true, verified: false, reason: "EVIDENCE_REQUIRED" });
 
+    // SN-0521 CV-07: validate evidence_refs content before any mutation.
+    // Junk strings must not promote.
+    const evidenceValidation = validateEvidenceRefs(refs);
+    if (!evidenceValidation.valid) {
+      return json({
+        ok: false,
+        error: evidenceValidation.reason,
+        invalid_refs: evidenceValidation.invalidRefs,
+      }, 400);
+    }
+
     const verificationMethod = String(
       body?.verification_method || learning.verification_method || "Independent runtime verification."
     );
+
+    // SN-0521 CV-06: read provenance links BEFORE any mutation. The LAW gate
+    // needs intelligentBlockId, and every canonical mutation must sit behind
+    // the grant gate. observed_value is unchanged by promotion, so reading
+    // from `learning` (pre-promotion) is equivalent.
+    const observed = learning.observed_value && typeof learning.observed_value === "object" && !Array.isArray(learning.observed_value)
+      ? learning.observed_value
+      : {};
+    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
+    const relationshipId = String((observed as any).relationship_id || "");
+    const checkpointId = String((observed as any).checkpoint_id || "");
+    const lineageId = String((observed as any).lineage_id || "");
+    const indexId = String((observed as any).index_id || "");
+    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
+      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
+    }
+
+    // SN-0521 CV-06: LAW gate runs BEFORE any mutation. A refusal must prevent
+    // writes, not just report them. Zero mutations have occurred at this point.
+    // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
+    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
+    if (!lawDecision.authorized) {
+      return json({
+        ok: false,
+        error: "LEARNING_LOCK_IN_LAW_DENIED",
+        reason: lawDecision.reason,
+        authority_refs: lawDecision.authority_refs,
+        action: LEARNING_LOCK_IN_ACTION,
+        target: intelligentBlockId,
+      }, 403);
+    }
+
+    // SN-0521 CV-06: validate receipt existence BEFORE promoting learning.
+    // Previously RECEIPT_NOT_FOUND_OR_NOT_OWNED fired after learning was ACTIVE.
+    let existingReceiptForUpdate: any = null;
+    const receiptId = String(body?.receipt_id || "");
+    if (receiptId) {
+      const { data: receiptLookup, error: receiptLookupError } = await admin
+        .from("nayanet_execution_receipts")
+        .select("*")
+        .eq("id", receiptId)
+        .eq("user_id", ownerId)
+        .eq("project_id", "NayaNET")
+        .maybeSingle();
+      if (receiptLookupError) throw receiptLookupError;
+      if (!receiptLookup) return json({ ok: false, error: "RECEIPT_NOT_FOUND_OR_NOT_OWNED" }, 404);
+      existingReceiptForUpdate = receiptLookup;
+    }
+
+    // All gates passed. Mutations begin here.
     const { data: promoted, error: promoteError } = await admin
       .from("learning_evidence")
       .update({
@@ -422,18 +524,8 @@ Deno.serve(async (req: Request) => {
     };
 
     let receipt = null;
-    const receiptId = String(body?.receipt_id || "");
-    if (receiptId) {
-      const { data: existingReceipt, error: receiptError } = await admin
-        .from("nayanet_execution_receipts")
-        .select("*")
-        .eq("id", receiptId)
-        .eq("user_id", ownerId)
-        .eq("project_id", "NayaNET")
-        .maybeSingle();
-      if (receiptError) throw receiptError;
-      if (!existingReceipt) return json({ ok: false, error: "RECEIPT_NOT_FOUND_OR_NOT_OWNED" }, 404);
-
+    if (receiptId && existingReceiptForUpdate) {
+      const existingReceipt = existingReceiptForUpdate;
       const learningEntries = Array.isArray(existingReceipt.learning) ? existingReceipt.learning : [];
       const verificationRecord = {
         learning_id: promoted.id,
@@ -461,34 +553,6 @@ Deno.serve(async (req: Request) => {
         .single();
       if (updateReceiptError) throw updateReceiptError;
       receipt = updatedReceipt;
-    }
-
-    const observed = promoted.observed_value && typeof promoted.observed_value === "object" && !Array.isArray(promoted.observed_value)
-      ? promoted.observed_value
-      : {};
-    const intelligentBlockId = String((observed as any).intelligent_block_id || "");
-    const relationshipId = String((observed as any).relationship_id || "");
-    const checkpointId = String((observed as any).checkpoint_id || "");
-    const lineageId = String((observed as any).lineage_id || "");
-    const indexId = String((observed as any).index_id || "");
-    if (!intelligentBlockId || !relationshipId || !checkpointId || !lineageId || !indexId) {
-      return json({ ok: false, error: "LEARNING_PROVENANCE_LINKS_REQUIRED" }, 409);
-    }
-
-    // H13: fail-closed LAW authorization for the canonical lock-in mutations below.
-    // Hoisted before the historical-receipt block: lawDecision is referenced by
-    // immutableVerificationRecord there, and every canonical mutation must sit
-    // behind the grant gate.
-    const lawDecision = await resolveLearningLockInLaw(admin, ownerId, intelligentBlockId);
-    if (!lawDecision.authorized) {
-      return json({
-        ok: false,
-        error: "LEARNING_LOCK_IN_LAW_DENIED",
-        reason: lawDecision.reason,
-        authority_refs: lawDecision.authority_refs,
-        action: LEARNING_LOCK_IN_ACTION,
-        target: intelligentBlockId,
-      }, 403);
     }
 
     let historicalCommitReceipt = null;

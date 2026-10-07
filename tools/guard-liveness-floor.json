@@ -1,15 +1,18 @@
 {
   "//": "Committed floor for tools/guard_liveness.py. The gate fails only if coverage DROPS below this. Ratchet, not cliff: failing at the honest starting number would block every merge and train the team to bypass it. The floor may only rise.",
-  "floor_pct_with_firing_proof": 45.6,
+  "floor_pct_with_firing_proof": 73.5,
   "measured_at": "2026-10-07",
-  "measured_on": "main 6eb776c29 plus github-dispatch authority-tier firing proofs",
+  "measured_on": "main 9df8645fb plus nayanet-verified-ai-action governed-action firing proofs",
   "total_guards": 147,
-  "with_firing_proof": 67,
-  "without_firing_proof": 80,
+  "with_firing_proof": 108,
+  "without_firing_proof": 39,
   "history": [
     {"pct": 30.6, "guards": 147, "proven": 45, "why": "initial honest baseline at main c9c8b8ce0"},
     {"pct": 40.1, "guards": 147, "proven": 59, "why": "14 authority/ownership/replay guards given executed firing proofs, AND the detector was corrected to recognise direct named imports from runtime modules (it had only recognised VM-sandbox execution, so real proof work scored 0)"},
-    {"pct": 45.6, "guards": 147, "proven": 67, "why": "+8 from nayanet-github-dispatch, the highest-blast-radius surface left: the only remaining function that causes an external, visible, hard-to-reverse effect. EXPLICIT_APPROVAL_REQUIRED -- the last gate before a public commit to main -- had never been observed to fire."}
+    {"pct": 45.6, "guards": 147, "proven": 67, "why": "+8 from nayanet-github-dispatch, the highest-blast-radius surface left: the only remaining function that causes an external, visible, hard-to-reverse effect. EXPLICIT_APPROVAL_REQUIRED -- the last gate before a public commit to main -- had never been observed to fire."},
+    {"pct": 46.9, "guards": 147, "proven": 69, "why": "+2 from nayanet-intelligence-commit-runtime, the canonical write path. Writing these also surfaced CV-04/CV-05: two live runtimes hardcode independent_verification:true while reporting a FAILED verification."},
+    {"pct": 62.6, "guards": 147, "proven": 92, "why": "+23 from nayanet-learning-verify, the lock-in path. The largest single jump, because it is the last function that can promote a claim CANDIDATE -> ACTIVE and rewrite block/relationship/checkpoint state at once: a fail-open here does not return a wrong answer, it WRITES a wrong answer into the brain every later read treats as settled. Writing these surfaced CV-06 (the LAW gate is ordered AFTER the mutations it guards, so a denial still leaves learning_evidence ACTIVE and a receipt claiming verified:true) and CV-07 (evidence_refs is never checked to be evidence, so arbitrary strings produce a verified lock-in with causal_verification_id: null)."},
+    {"pct": 73.5, "guards": 147, "proven": 108, "why": "+16 from nayanet-verified-ai-action, the only surface that converts an authority grant into an external effect, so a fail-open here ACTS rather than answering wrongly. Chosen over the larger-looking remaining files on blast-radius grounds, not line count. The retry and race guards (RECEIPT_WRITE_, RECEIPT_REVISION_RETRY_EXHAUSTED, RECEIPT_IDEMPOTENCY_RETRY_EXHAUSTED, OUTCOME_WRITE_, OUTCOME_WRITE_RACE_UNRESOLVED, OUTCOME_RECOVERY_WRITE_, OUTCOME_RECOVERY_RACE_UNRESOLVED) required injecting real Postgres 23505 / 42501 errors, because their entire behaviour is the difference between retrying and escalating. Replay and verification tests run against rows produced by a REAL prior execution, not hand-built fixtures, because the request fingerprint and canonical digest are SHA-256 values the runtime computes -- a fixture could only have accidentally satisfied them, which would prove nothing. Writing these surfaced CV-08: a verification CHECK hardcoded to a constant (receipt_mutated_after_refusal: false), which is worse than CV-01/04/05 because those were literals in a result and this is a literal in a guard, and CV-09: an anti-self-certification check that accepts a pre-set verified flag."}
   ],
   "baseline_rationale": "88 guards still cannot be observed to reject anything. The work is to move them, ranked by blast radius, into the proven column -- never in bulk, which would buy coverage without information."
 }

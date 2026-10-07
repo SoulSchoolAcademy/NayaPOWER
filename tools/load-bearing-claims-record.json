@@ -1,7 +1,7 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main b82e1fd1807e6b343262c2e2d630cb90f836713b + G3 proof branch",
+  "measured_on": "main ca84677ab085babc4bf9596ca1df404f04e0a796 + G3 integration review",
   "violations": [
     {
       "id": "CV-01",
@@ -16,11 +16,11 @@
       "id": "CV-02",
       "claim": "node influence",
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
-      "problem": "The prior 'ablation discrimination' step only deleted node evidence from a receipt and asserted that the shape verifier failed. That did not prove behavioral node influence.",
+      "problem": "The 'ablation discrimination' step deletes a key from the dict it just built and asserts a shape checker fails. That proves the shape checker checks shapes. No node in the receipt is executed by any code.",
       "law": "SN-0462, SN-0505",
-      "status": "RESOLVED ON G3 PROOF BRANCH -- pending human merge gate",
-      "resolution": "The canonical nine-node behavioral acceptance job now executes tools/measure_node_influence.py, requires 9/9 invoked and 9/9 influence-demonstrated nodes, records deterministic target-node control/treatment fingerprints, and rechecks every target-node fingerprint delta in the live acceptance step. The existing shape-ablation check remains as a secondary fail-closed control, not as the influence proof.",
-      "why_not_fixed_here": "Resolved on the G3 proof branch; main remains unchanged until the human merge gate approves the PR."
+      "status": "RESOLVED -- behavioral influence proof integrated; live runtime binding remains separate",
+      "why_not_fixed_here": "Resolved by the G3 proof lane; production runtime binding is a distinct proof surface and remains unclaimed here.",
+      "resolution": "Integrated from G3: canonical KernelBehaviorEngine CONTROL/TREATMENT ablations now produce deterministic target-node fingerprints; the acceptance gate requires 9/9 invoked and 9/9 behaviorally influential nodes and rechecks every target-node delta. This proves reference-engine influence, not production runtime influence."
     },
     {
       "id": "CV-03",
@@ -30,8 +30,90 @@
       "law": "SN-0461",
       "status": "RESOLVED -- present as of this commit",
       "why_not_fixed_here": "Already resolved; retained so the resolution is visible rather than the entry silently vanishing."
+    },
+    {
+      "id": "CV-04",
+      "claim": "independent verification",
+      "location": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+      "problem": "Both intelligence-commit verification paths previously returned `independent_verification: true` literally, including a broken lineage or missing block. That let a failed verification state present itself as independently verified.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by deriving `independent_verification` directly from the actual verification result: `Boolean(block)` on verify_block and `pass` on full lineage verification. No new authority or truth store was introduced.",
+      "not_a_theory": "Executed. RED on current main: broken checkpoint lineage returned ok:false / LINEAGE_BROKEN / independent_verification:true. GREEN on the repair: the same falsifier returns independent_verification:false; missing block also returns false; healthy lineage remains a positive control.",
+      "resolution_note": "Local behavior is verified from exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Production parity remains a separate verification gate."
+    },
+    {
+      "id": "CV-05",
+      "claim": "independent verification",
+      "location": "supabase/functions/nayanet-law-runtime/index.ts",
+      "problem": "The LAW verify path previously returned `independent_verification: true` literally, even when the recorded LAW decision disagreed with a fresh recomputation.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by deriving `independent_verification` from the same `same` predicate that compares recorded and recomputed LAW status, reason, and authority_refs. No authority behavior changed.",
+      "not_a_theory": "Executed. RED on current main: a real LAW handler verify mismatch returned ok:false / LAW_DECISION_MISMATCH / independent_verification:true. GREEN on the repair: the mismatch returns false while a matching decision remains a positive control with true.",
+      "resolution_note": "Local behavior is verified from exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Production parity remains a separate verification gate."
+    },
+    {
+      "id": "CV-06",
+      "claim": "LAW gate precedes the mutations it guards",
+      "location": "supabase/functions/nayanet-learning-verify/index.ts",
+      "problem": "ORDERING DEFECT ON THE LOCK-IN PATH. index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION. index.ts:453 writes verified:true into an execution receipt. index.ts:482 calls resolveLearningLockInLaw(). So when LAW denies, the runtime correctly returns 403 LEARNING_LOCK_IN_LAW_DENIED while both mutations are ALREADY PERSISTED. The refusal is real and the fail-open is real in the same request. The same ordering applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED at index.ts:435: the learning row is ACTIVE before the receipt is looked up. The H13 comment at index.ts:478 states the intent -- 'every canonical mutation must sit behind the grant gate' -- and two of them do not.",
+      "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by ordering provenance-link checks, LAW authorization, and receipt existence before the first canonical mutation. Denied requests leave learning_evidence and receipt learning state untouched.",
+      "not_a_theory": "Executed in the focused current-main suite: LAW denial, receipt absence, untouched graph state, and authorized positive-control lock-in are covered. Production parity remains a separate gate."
+    },
+    {
+      "id": "CV-07",
+      "claim": "evidence_refs is evidence",
+      "location": "supabase/functions/nayanet-learning-verify/index.ts",
+      "problem": "index.ts:398 accepts body.evidence_refs as an array of caller-supplied strings and requires only that it be non-empty (index.ts:399). No check that any element corresponds to a real causal verification record. index.ts:552 then derives causal_verification_id: refs.find(r => r.startsWith('CVO-')) || null. So arbitrary strings promote the learning to ACTIVE, set the block LEARNED and the relationship VERIFIED, while recording causal_verification_id: null and reporting ok:true / verified:true. Nothing in the response or the persisted provenance says the verification was never found.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved on current main by validateEvidenceRefs: malformed or junk refs fail closed, and a causal-verification ID is required before promotion.",
+      "not_a_theory": "Executed in the focused current-main suite: junk, missing CVO, forged CVO-prefix, and valid CVO positive-control paths are covered. Production parity remains a separate gate.",
+      "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
+    },
+    {
+      "id": "CV-08",
+      "claim": "verification checks are computed from evidence",
+      "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "problem": "A verification check on refusal integrity was hardcoded as `receipt_mutated_after_refusal: false`, making that guard untestable and always passing. The same refusal path also surfaced `refusal_receipt_owner_matches` without gating on it.",
+      "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by replacing the time-claiming mutation field with an evidence-derived `refusal_receipt_contract_valid` check over the canonical persisted refusal contract, and by adding the owner-scope check to the refusal gate. No before-image or second truth store was introduced.",
+      "not_a_theory": "Executed. RED on current main: a tampered refusal returned 200 / independent_verification:true. GREEN on the repair: the same tamper returns 409 / independent_verification:false; a real runtime-generated refusal passes the canonical contract; the source no longer contains the hardcoded mutation verdict. Focused suite: 38/38; repository Node suite: 527/527.",
+      "resolution_note": "Local behavior is verified from the exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Deployment and independent production runtime proof remain separate gates."
+    },
+    {
+      "id": "CV-09",
+      "claim": "an outcome was not self-certified by its executor",
+      "location": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "problem": "The verification gate previously accepted any persisted outcome with `verified:true`, regardless of how that flag was produced. That made a pre-certified outcome satisfy the anti-self-certification claim without proving the executor left an unverified pending state for an independent verifier.",
+      "law": "SN-0481 (never impersonate the verifier), SN-042 (independence must be real)",
+      "status": "RESOLVED -- source/runtime repaired; production parity still pending",
+      "why_not_fixed_here": "Resolved by requiring the independently verifying runtime to observe `verified:false` together with the exact `PENDING_INDEPENDENT_RUNTIME_VERIFICATION` method, then atomically update only that still-pending row. Pre-verified or otherwise method-mismatched rows fail closed.",
+      "not_a_theory": "Executed. RED on current main: a row with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT' returned 200 / OUTCOME_VERIFIED. GREEN on the repair: the same row returns 409 / independent_verification:false; the clean pending outcome still verifies. Focused suite: 38/38; repository Node suite: 527/527.",
+      "resolution_note": "Local behavior is verified from the exact current-main base c0b899b6b19d83aad4b192dae5af47b2ec8190fe. Deployment and independent production runtime proof remain separate gates."
     }
   ],
+  "hardcoded_independent_verification_sites": {
+    "//": "Every runtime surface where `independent_verification: true` is a LITERAL rather than computed. Discovered by the scanner in tests/load_bearing_claims.test.mjs, which found CV-04 and CV-05 that reading by hand had missed. Each site carries a verdict: a CV id if it lies, REVIEWED_OK with a reason if it does not. A bare allowlist would let a real regression hide beside a false positive.",
+    "supabase/functions/nayanet-intelligence-commit-runtime/index.ts": {
+      "verdict": "REVIEWED_OK_PLUS_CV-04",
+      "cv": "CV-04",
+      "reason": "LIES on the verify path: returns independent_verification: true alongside ok:false / status:LINEAGE_BROKEN. Also literal on verify_block, which is always gated by a preceding 404 return."
+    },
+    "supabase/functions/nayanet-law-runtime/index.ts": {
+      "verdict": "CV-05",
+      "cv": "CV-05",
+      "reason": "LIES. `{ok:same, status: same?'LAW_DECISION_VERIFIED':'LAW_DECISION_MISMATCH', independent_verification:true}` -- the flag is unconditional, so a LAW decision MISMATCH attests independent verification. LAW is the authority node, so this is the most consequential instance of the class."
+    },
+    "supabase/functions/nayanet-verified-ai-action/index.ts": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+    }
+  },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
   }

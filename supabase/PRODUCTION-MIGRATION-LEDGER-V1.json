@@ -1548,6 +1548,15 @@
       "statement_count": 4,
       "bytes": 7739,
       "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
+    },
+    {
+      "version": "20261007030000",
+      "name": "repair_v7_smart_note_transactions_ghost_table_sn0520",
+      "path": "supabase/migrations/20261007030000_repair_v7_smart_note_transactions_ghost_table_sn0520.sql",
+      "sha256": "67dd0f33bd84f3bc6512530e8e9d1e24ef7b84f9159ca8249c0e1a54487470bc",
+      "statement_count": 3,
+      "bytes": 1431,
+      "status": "PENDING_REVIEW_NOT_PRODUCTION_APPLIED"
     }
   ],
   "legacy_repository_snapshot_count": 95,
