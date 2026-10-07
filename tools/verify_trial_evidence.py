@@ -10,9 +10,11 @@ The descriptor names raw_evidence_paths. Every path must resolve to real,
 durable bytes inside the repository. Fails closed (exit 2) when any path is:
 
   - shaped like an ephemeral location (/tmp, /var/tmp, /dev/shm, ...), or
+  - a symlink or `..` traversal whose RESOLVED target escapes the repo, or
   - an absolute path outside the repository root, or
   - missing from the working tree, or
-  - (with --committed) not tracked by git at HEAD.
+  - (with --committed) not tracked by git at HEAD,
+  - (always) when the repository root itself lives on ephemeral storage.
 
 A verifier that cannot fail is not a verifier: this tool is MEANT to reject
 claims like Trial-4's, whose raw data lived at /tmp/trial4/RESULTS.md and was
@@ -54,23 +56,30 @@ def check(descriptor: dict, repo: Path, require_committed: bool) -> list[str]:
             )
             continue
         candidate = Path(p)
-        if candidate.is_absolute():
-            try:
-                candidate.relative_to(repo)
-            except ValueError:
-                failures.append(
-                    f"absolute evidence path outside repository root {repo}: {p}"
-                )
-                continue
-        else:
+        if not candidate.is_absolute():
             candidate = repo / p
-        if not candidate.is_file():
+        # Resolve symlinks and `..` BEFORE any trust decision. A bare string
+        # check cannot see through a symlink or a traversal: without this,
+        # an in-repo symlink -> /tmp or a `../../tmp/...` relative path sails
+        # through every check below while pointing at ephemeral bytes.
+        try:
+            resolved = candidate.resolve()
+        except OSError as exc:
+            failures.append(f"evidence path cannot be resolved: {p} ({exc})")
+            continue
+        try:
+            rel = resolved.relative_to(repo)
+        except ValueError:
+            failures.append(
+                f"evidence path escapes the repository root {repo}: {p}"
+            )
+            continue
+        if not resolved.is_file():
             failures.append(f"evidence path does not resolve to a file: {p}")
             continue
         if require_committed:
-            rel = candidate.relative_to(repo).as_posix()
             r = subprocess.run(
-                ["git", "ls-files", "--error-unmatch", rel],
+                ["git", "ls-files", "--error-unmatch", rel.as_posix()],
                 cwd=repo,
                 capture_output=True,
             )
@@ -93,6 +102,13 @@ def main(argv: list[str]) -> int:
     args = ap.parse_args(argv)
 
     repo = Path(args.repo).resolve()
+    # A repository checked out under ephemeral storage is not durable storage.
+    if is_ephemeral(str(repo)):
+        print(
+            f"FAIL: repository root itself is ephemeral storage: {repo}",
+            file=sys.stderr,
+        )
+        return 2
     try:
         descriptor = json.loads(Path(args.descriptor).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
