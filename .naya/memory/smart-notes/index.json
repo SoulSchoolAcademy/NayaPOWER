@@ -1773,12 +1773,28 @@
       "provenance": {
         "note": "PR #1727 (Naya 5): canonical ratified operating law. Ratified by Shawn on 2026-10-07: Make it so. Word. The law is present on current main and is the canonical owner of SN-0522. Registered here to resolve the historical SN-0522 collision with the candidate Prime 3 note, which is now SN-0523. No content_hash: registration preserves the existing published projection without fabricating a capture hash."
       }
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
+      "smart_note_id": "SN-0524",
+      "title": "Human IDs Are Canonical Continuity Boundaries",
+      "captured_at": "2026-10-07",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "GOVERNANCE",
+      "subtopic": "PROOF_HONESTY",
+      "truth_state": "CANDIDATE",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+      "provenance": {
+        "note": "Captured from the verified SN-0522 identity collision repair on PR #1742. No content_hash: the Smart Note projection is registered as durable intelligence for continuity; source-of-truth remains the persisted Intelligent Block."
+      }
     }
   ],
   "sequence_policy": {
     "human_id_format": "SN-###",
     "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-    "next_sequence": 524,
+    "next_sequence": 525,
     "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
   }
 }
