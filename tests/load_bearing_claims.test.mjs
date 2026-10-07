@@ -361,3 +361,32 @@ test("the three claims are enforced by execution, not by their own documentation
   const sourceOnly = (self.match(/readFileSync\(/g) ?? []).length;
   assert.ok(sourceOnly > 0, "reading source is allowed for structure; it is not sufficient alone");
 });
+
+
+test("CLAIM 3 -- acceptance receipt names influence scope instead of conflating engines", () => {
+  const workflows = read(".github/workflows/live-supabase-runtime-proof.yml");
+  const start = workflows.indexOf('"node_influence":{');
+  assert.ok(start > -1, "nine-node acceptance receipt must carry node influence evidence");
+  const block = workflows.slice(start, start + 1800);
+
+  assert.match(
+    block,
+    /"measurement_scope":"REFERENCE_ENGINE_ONLY_NOT_PRODUCTION_RUNTIME"/,
+    "reference-engine influence must be explicitly scoped as non-production-runtime evidence"
+  );
+  assert.match(
+    block,
+    /"runtime_kernel":"kernel\.nayapower_kernel\.Kernel"/,
+    "the receipt must name the manifest-bound runtime kernel separately"
+  );
+  assert.match(
+    block,
+    /"measured_engine":"BRAIN\.Engineering\.kernel_behavior_engine\.KernelBehaviorEngine"/,
+    "the receipt must name the engine that actually produced the influence measurement"
+  );
+  assert.match(
+    block,
+    /"production_runtime_influence":"NOT_PROVEN"/,
+    "the receipt must fail closed against interpreting reference-engine influence as production runtime influence"
+  );
+});
