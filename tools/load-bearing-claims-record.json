@@ -1,7 +1,7 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main ca84677ab085babc4bf9596ca1df404f04e0a796 + G3 integration review",
+  "measured_on": "main 6a1df86d6dadd96f31bd4ce8b385c9c78c0835b4 + Gate 2 integration review",
   "violations": [
     {
       "id": "CV-01",
@@ -9,8 +9,9 @@
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
       "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 sets \"independent_verification\": True as a literal in the receipt builder. No independent process produced it.",
       "law": "SN-0481",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Editing a proof artifact is a truth decision for an owner, not a unilateral change from an enforcement PR. Removing the claim silently would destroy a signal other lanes read; leaving it silently is what this record prevents."
+      "status": "RESOLVED -- independent verification proof integrated on Gate 2 branch; production parity still pending",
+      "why_not_fixed_here": "Resolved on the Gate-2 proof branch; this status becomes canonical once the PR merges to current main.",
+      "resolution": "Gate 2 now mints a fresh verifier identity, rejects executor self-attestation, pins verification to SOURCE_SHA, and recomputes the nine-node acceptance from raw persisted evidence. Production parity remains a separate deployment gate."
     },
     {
       "id": "CV-02",
@@ -116,5 +117,6 @@
   },
   "repaired_claims": {
     "idempotency/replay safety": "PROVEN. insertIdempotentActionReceipt receives and persists idempotency_key inside the inserted row, and the replay lookup filters on the same column. Repaired in #1624."
-  }
+  },
+  "resolved_summary": "CV-01 through CV-09 are resolved at source/CI or focused runtime-test level on this proof branch. Production parity, universal live nine-node binding, and end-to-end successor proof remain separate gates; resolution here is not a claim of production proof."
 }

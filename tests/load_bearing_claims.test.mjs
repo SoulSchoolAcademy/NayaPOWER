@@ -107,31 +107,41 @@ test("CLAIM 1 -- the replay guard is reachable: the key is written INSIDE the in
 
 const RECORD = JSON.parse(read("tools/load-bearing-claims-record.json"));
 
-test("CLAIM 2 -- no CI artifact may hand-write independent_verification: true", () => {
-  // The defect: live-supabase-runtime-proof.yml built
-  // NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 in a heredoc with
-  // "independent_verification": True written as a literal, and ablated by deleting a
-  // key from the dict it had just built. That demonstrates a shape checker checks
-  // shapes. SN-0481: never impersonate the verifier.
+test("CLAIM 2 -- final nine-node receipt may only consume independent verifier output", () => {
   const workflows = read(".github/workflows/live-supabase-runtime-proof.yml");
+  const start = workflows.indexOf("Build bounded nine-node behavioral acceptance receipt");
+  assert.ok(start > -1, "nine-node receipt builder must exist");
+  const builder = workflows.slice(start, start + 6000);
 
-  const literals = [
-    ...workflows.matchAll(/"independent_verification"\s*:\s*True/g),
-  ];
-
-  const openIds = new Set(
-    RECORD.violations.filter((v) => v.status.startsWith("OPEN")).map((v) => v.id)
+  assert.doesNotMatch(
+    builder,
+    /"independent_verification"\s*:\s*True/,
+    "the final receipt must never self-write independent_verification:true"
   );
-
-  if (literals.length === 0) return; // repaired; nothing left to catch
-
-  // Known and recorded: allowed, but ONLY while the record still says OPEN. If someone
-  // repaired the workflow and forgot the record, this fails and forces the truth update.
-  assert.ok(
-    openIds.has("CV-01"),
-    `independent_verification is hardcoded at ${literals.length} site(s) but the violation ` +
-    `record does not list CV-01 as OPEN. Either the claim is now false and must be fixed, ` +
-    `or the record is stale. One of those two, not silence.`
+  assert.match(
+    builder,
+    /independent-nine-node-verification\.json/,
+    "the final receipt must consume the independent verifier artifact"
+  );
+  assert.match(
+    workflows,
+    /tools\/verify_nine_node_independent\.py/,
+    "the workflow must execute the independent verifier"
+  );
+  assert.match(
+    workflows,
+    /verifier-runtime-jti\.txt/,
+    "the workflow must carry a fresh verifier identity"
+  );
+  assert.match(
+    workflows,
+    /--expected-source-revision/,
+    "the independent verifier must be pinned to the externally resolved source revision"
+  );
+  assert.match(
+    builder,
+    /verifier_runtime_jti.*executor_runtime_jti|executor_runtime_jti.*verifier_runtime_jti/,
+    "the receipt must expose both verifier and executor identities"
   );
 });
 
