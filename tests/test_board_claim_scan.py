@@ -74,3 +74,47 @@ def test_cli_reports_unknown_when_board_moves(monkeypatch, tmp_path, capsys):
     output = capsys.readouterr().out
     assert "ENVIRONMENT FAILURE" in output
     assert "VERDICT: CLEAR" not in output
+
+
+def fake_prs(monkeypatch, count, *, duplicate=False):
+    calls = []
+
+    def get(method, path):
+        calls.append(path)
+        page = int(parse_qs(urlparse(path).query).get("page", ["1"])[0])
+        return [{"number": 1 if duplicate else i, "title": "active-pr-claim" if i == count else "unrelated",
+                 "head": {"ref": f"branch-{i}"}}
+                for i in range((page - 1) * 100 + 1, min(page * 100, count) + 1)]
+
+    monkeypatch.setattr(scanner, "gh_api", get)
+    return calls
+
+
+@pytest.mark.parametrize("count", [0, 1, 100, 101, 200, 999])
+def test_all_open_pr_pages_participate_in_scan(monkeypatch, count):
+    fake_prs(monkeypatch, count)
+    rows = scanner.fetch_open_prs()
+    assert len(rows) == count
+    if count:
+        collisions, _ = scanner.scan("active-pr-claim", rows)
+        assert collisions[0][0]["id"] == count
+
+
+def test_full_pr_page_ceiling_is_unknown(monkeypatch):
+    calls = fake_prs(monkeypatch, 1000)
+    with pytest.raises(RuntimeError, match="PR_PAGINATION_LIMIT"):
+        scanner.fetch_open_prs()
+    assert len(calls) == 10
+
+
+def test_duplicate_pr_page_is_unknown(monkeypatch):
+    fake_prs(monkeypatch, 101, duplicate=True)
+    with pytest.raises(RuntimeError, match="PR_COVERAGE"):
+        scanner.fetch_open_prs()
+
+
+@pytest.mark.parametrize("data", [{"message": "error"}, [None], [{"number": 1, "title": "missing head"}]])
+def test_malformed_pr_response_is_unknown(monkeypatch, data):
+    monkeypatch.setattr(scanner, "gh_api", lambda *args: data)
+    with pytest.raises(RuntimeError, match="PR_COVERAGE"):
+        scanner.fetch_open_prs()

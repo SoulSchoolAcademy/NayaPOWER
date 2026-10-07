@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-07  
-**Receipt basis commit:** `7121f169e44f72971461e6dce66a67fcb0d1f7a2`  
-**Inventory file count:** 230  
+**Receipt basis commit:** `713e8341d00e3cc0b80fe887f60fb63debd7b601`  
+**Inventory file count:** 231  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
-| 05-MEMORY | 64 |
+| 05-MEMORY | 65 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -80,7 +80,7 @@
 
 - `BRAIN/03-KERNEL/0001-KERNEL-CONTRACT-V1.md` — `c0fbdb92d466` (671 bytes)
 - `BRAIN/03-KERNEL/0002-KERNEL-ACCEPTANCE-V1.md` — `2ceacf3091fa` (411 bytes)
-- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `e98bf80a5c9b` (9870 bytes)
+- `BRAIN/03-KERNEL/0003-RUNTIME-REGISTRY-V1.json` — `6718854aea87` (12899 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.json` — `bb9868d5aea0` (25514 bytes)
 - `BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md` — `900f3d525938` (3347 bytes)
 - `BRAIN/03-KERNEL/0005-NINE-NODE-ULTIMATE-LOCK-AND-NOTE-READINESS-V1.md` — `a71ae7e732e1` (6272 bytes)
@@ -145,6 +145,7 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/03/IB-DIR-NAYANET-20261003-001.md` — `b918e1f4d91e` (4935 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/2026-10-05-LEARNING-EVENT.md` — `6fc3e6819ee8` (15083 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md` — `d747afcc0ba0` (8002 bytes)
+- `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/06/IB-DIR-NAYAPOWER-20261006-001.md` — `a5cc40093ada` (5770 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md` — `3539d973f1e8` (6111 bytes)
 - `BRAIN/05-MEMORY/README.md` — `d9ca35c22c01` (2300 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md` — `029a0f3e447d` (6599 bytes)
