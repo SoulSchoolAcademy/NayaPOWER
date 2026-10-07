@@ -135,9 +135,12 @@ test("R1: migration vocabulary matches the canonical 22-type contract", () => {
   for (const t of canonical) {
     assert.ok(migration.includes(`'${t}'`), `migration must list vocabulary type ${t}`);
   }
-  const know = readFileSync(new URL("../supabase/functions/nayanet-know-runtime/know.ts", import.meta.url), "utf8");
+  // CONNECT-owned selector seam (2026-10-07): the vocabulary moved verbatim from
+  // know.ts to supabase/functions/_shared/connect_selector.ts. know.ts imports
+  // the gate; the invariant is unchanged — one vocabulary, matching canonical.
+  const selector = readFileSync(new URL("../supabase/functions/_shared/connect_selector.ts", import.meta.url), "utf8");
   for (const t of canonical) {
-    assert.ok(know.includes(`"${t}"`), `know.ts must list vocabulary type ${t}`);
+    assert.ok(selector.includes(`"${t}"`), `connect_selector.ts must list vocabulary type ${t}`);
   }
 });
 
