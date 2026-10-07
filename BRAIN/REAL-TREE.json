@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-05",
-  "receipt_basis_commit": "7fe8e6fec6f9f4f188356808e8843b82cefcd01f",
-  "inventory_file_count": 210,
+  "generated_at": "2026-10-06",
+  "receipt_basis_commit": "1eddeba7a45083323a72069a0aad96c221adb8d3",
+  "inventory_file_count": 211,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 14,
+    "01-GOVERNANCE": 15,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
@@ -167,6 +167,11 @@
       "path": "BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json",
       "blob_sha": "c469937962ebb1776b391a7c2a525ab615d52cb1",
       "size": 22689
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/naya-value-engine-v1.machine.json",
+      "blob_sha": "f8b06be3d28f175d381a5554377f947da7bab780",
+      "size": 23488
     },
     {
       "path": "BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md",

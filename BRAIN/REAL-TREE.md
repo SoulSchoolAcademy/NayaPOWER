@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
-**Generated:** 2026-10-05  
-**Receipt basis commit:** `7fe8e6fec6f9f4f188356808e8843b82cefcd01f`  
-**Inventory file count:** 210  
+**Generated:** 2026-10-06  
+**Receipt basis commit:** `1eddeba7a45083323a72069a0aad96c221adb8d3`  
+**Inventory file count:** 211  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 14 |
+| 01-GOVERNANCE | 15 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 28 |
 | 04-INTELLIGENCE | 24 |
@@ -62,6 +62,7 @@
 - `BRAIN/01-GOVERNANCE/0005-captain-operating-protocol-v1.machine.json` — `c7e6b0497fb0` (9313 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
+- `BRAIN/01-GOVERNANCE/naya-value-engine-v1.machine.json` — `f8b06be3d28f` (23488 bytes)
 ### 02-ARCHITECTURE — Architecture
 
 - `BRAIN/02-ARCHITECTURE/0001-SYSTEM-BOUNDARIES-V1.md` — `eb58b66a7208` (423 bytes)
