@@ -1,16 +1,17 @@
 {
   "//": "Known violations of the three load-bearing claims, recorded rather than hidden. The gate passes ONLY while the violation set matches this record: a NEW false claim is red, and so is silently repairing one without updating this file. Correcting a claim without updating this record must fail the build -- that is what stops a truth change from hiding in a refactor.",
   "measured_at": "2026-10-07",
-  "measured_on": "main c9c8b8ce0",
+  "measured_on": "main dacc88e664af3ab0cc8776e5a958a3dece8c38a1 + Gate 2 current-tip proof branch",
   "violations": [
     {
       "id": "CV-01",
       "claim": "independent verification",
       "location": ".github/workflows/live-supabase-runtime-proof.yml",
-      "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 sets \"independent_verification\": True as a literal in the receipt builder. No independent process produced it.",
+      "problem": "NAYAPOWER_NINE_NODE_BEHAVIORAL_ACCEPTANCE_V1 previously set \"independent_verification\": True as a literal in the receipt builder, without requiring a fresh verifier identity or an independent recomputation artifact.",
       "law": "SN-0481",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Editing a proof artifact is a truth decision for an owner, not a unilateral change from an enforcement PR. Removing the claim silently would destroy a signal other lanes read; leaving it silently is what this record prevents."
+      "status": "RESOLVED ON GATE-2 PROOF BRANCH -- independent verifier computes the field; merge remains governed",
+      "why_not_fixed_here": "Resolved in the Gate 2 proof lane; closure is retained here so the truth change remains visible. Current main remains unchanged until governed integration.",
+      "resolution": "The workflow mints a fresh GitHub OIDC verifier identity, builds an input bundle from authoritative component artifacts, executes tools/verify_nine_node_independent.py pinned to the externally resolved SOURCE_SHA, and only then derives independent_verification plus evidence/recomputation basis from verifier output. Executor claims are explicitly untrusted; executor identity is bound back to the authoritative cold receipt."
     },
     {
       "id": "CV-02",
