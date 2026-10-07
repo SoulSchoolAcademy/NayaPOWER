@@ -1,7 +1,7 @@
 # IB-SMART-NOTE — SN-0522 — The Self-Governing Intelligence Law
 
 Intelligent Block: SN-0522
-Truth state: PROPOSED (awaiting Human Director ratification — his words, 2026-10-07, are the substance)
+Truth state: RATIFIED (Shawn, 2026-10-07 — "Make it so. Word.")
 Scope: PRIVATE (Team Naya operating law)
 Captured: 2026-10-07
 Canonical intent: CAPTURE_DURABLE_INTELLIGENCE
@@ -96,5 +96,4 @@ gates; gates compound), **self-maximizing** (never settles for below-standard
 when the 9.0 bar is reachable), and **self-correcting** (errors are tuition,
 paid once). "Self" means the system — not any single seat, and not the Director.
 
-Ratification: PROPOSED. The substance is the Director's verbatim directive
-2026-10-07; formal ratification completes when he confirms the text.
+Ratification: RATIFIED 2026-10-07. The Director's word: "Make it so. Word." This is now standing law.
