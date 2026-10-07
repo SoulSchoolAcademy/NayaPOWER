@@ -28,6 +28,7 @@ Stdlib only.
 """
 
 import json
+import math
 import sys
 from datetime import datetime, timezone
 
@@ -158,8 +159,8 @@ def _check_receipt(receipt, reasons):
                 total = 0
                 for dim in SCORE_DIMENSIONS:
                     v = dims.get(dim)
-                    if not isinstance(v, (int, float)) or isinstance(v, bool):
-                        reasons.append(f"step2: option '{oid}' dimension '{dim}' must be numeric 0-10")
+                    if not isinstance(v, (int, float)) or isinstance(v, bool) or not math.isfinite(v):
+                        reasons.append(f"step2: option '{oid}' dimension '{dim}' must be a finite number 0-10")
                         break
                     if v < 0 or v > 10:
                         reasons.append(f"step2: option '{oid}' dimension '{dim}' out of range 0-10")
