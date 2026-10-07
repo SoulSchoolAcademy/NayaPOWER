@@ -151,6 +151,23 @@ def test_delegate_without_director_delegator_rejected():
     assert e["truth_state"] == "VERIFIED"
 
 
+
+def test_candidate_cannot_skip_verified_into_ratified_without_grant():
+    """A named promoter + evidence must not bypass the Human-Director RATIFIED gate."""
+    e = make_entry("CANDIDATE")
+    before = snapshot(e)
+    ok, rec = g.apply_elevation(
+        e,
+        "RATIFIED",
+        authority="mallory",
+        evidence=make_evidence(),
+        elevation_grants=[],
+    )
+    assert not ok
+    assert rec["reason_code"] == "RATIFIED_REQUIRES_VERIFIED_PREDECESSOR"
+    assert snapshot(e) == before
+
+
 # --- Non-RATIFIED transitions unaffected ----------------------------------
 
 def test_demotion_without_grant_permitted():
