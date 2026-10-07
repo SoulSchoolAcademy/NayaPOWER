@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "aea25885b6b2598c367db5995ca5b4379354a47d",
-  "inventory_file_count": 234,
+  "receipt_basis_commit": "d53d754703bd3a887be6436e35ad035a899a56d8",
+  "inventory_file_count": 235,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 28,
     "04-INTELLIGENCE": 24,
-    "05-MEMORY": 68,
+    "05-MEMORY": 69,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -822,6 +822,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
       "blob_sha": "a17fe344f136c0efd210822268ba86607be90dc5",
       "size": 4499
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md",
+      "blob_sha": "1d74b1e0df9a46e2bd1bb5727832a6eaff58164f",
+      "size": 6563
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
