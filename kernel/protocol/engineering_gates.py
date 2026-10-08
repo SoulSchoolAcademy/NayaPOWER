@@ -20,8 +20,8 @@ The five gates:
   5. no_duplicate_systems    — new symbols must not duplicate existing seams
 
 Usage:
-    python3 tools/protocol/engineering_gates.py --changed a.py,b.py --tests tests/test_a.py
-    python3 tools/protocol/engineering_gates.py --diff-file /tmp/d.diff --pr-body /tmp/body.md
+    python3 kernel/protocol/engineering_gates.py --changed a.py,b.py --tests tests/test_a.py
+    python3 kernel/protocol/engineering_gates.py --diff-file /tmp/d.diff --pr-body /tmp/body.md
     Returns JSON. Exit 0 = all pass, 1 = any fail.
 """
 

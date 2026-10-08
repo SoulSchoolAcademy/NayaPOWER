@@ -216,8 +216,18 @@ Before consequential action: see clearly, reason, check consequences — then ac
 | `quality_gate.py` | Delivery floor | Scorecard required; every dimension ≥ 9.0; verifier ≠ builder; weakest point named |
 | `takeover.py` | No-waiting doctrine | Takeover only after 4h stall; task must pass authority gate; completion requires record + evidence + owner notification |
 | `cold_successor_test.py` | Continuity | Handoff must state what happened, truth, authority, proof, open work, blockers, next action |
+| `learning_capture.py` | Proactive documentation | Every cycle captures its lesson or states why none; lessons require provenance |
+| `minimal_action.py` | Smallest effective change | Change proposals declare what changes, what's preserved, why nothing smaller works |
+| `protocol_integrity_gate.py` | Manifest integrity | Manifest well-formed; law IDs unique; gates first in hierarchy; truth states distinct |
+| `engineering_gates.py` | Elite engineering (CANDIDATE) | Test the seam; no dead code; smallest change; evidence not confidence; no duplicate systems |
+| `pipeline_health.py` | Pipeline monitoring | Pipeline status GREEN/YELLOW/RED; CI-alertable |
+| `checks/tip_freshness.py` | SN-0493 | Decision SHA must match current tip; stale = fail closed |
+| `checks/decision_log.py` | SN-0522 | Decision math visible; winner = math's winner; authority checked first |
+| `checks/scorecard.py` | SN-0523 | 7 dimensions scored; highest defensible score wins |
+| `checks/action_log.py` | SN-0575, SN-DONT-WAIT | Fix-it-first and takeover actions logged with evidence |
+| `checks/delivery_evidence_gate.py` | SN-0526 (CANDIDATE) | Build → Verify → Scorecard → Gate → Deliver; each stage needs evidence |
 
-*Tests: `tests/test_protocol_machine_law.py` — 29 tests, positive and negative controls.*
+*Tests: `tests/test_protocol_machine_law.py` — 37 tests, positive and negative controls.*
 
 ---
 

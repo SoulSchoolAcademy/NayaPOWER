@@ -16,14 +16,14 @@
   ],
   "laws": [
     {
-      "check": "tools/protocol/checks/decision_log.py",
+      "check": "kernel/protocol/checks/decision_log.py",
       "enforcement": "decision_log_required",
       "id": "SN-0522",
       "name": "Self-Governing Intelligence",
       "statement": "For admissible decisions, run the Value Calculus, pick the highest score, act. Never ask A/B/C. Never wait."
     },
     {
-      "check": "tools/protocol/checks/scorecard.py",
+      "check": "kernel/protocol/checks/scorecard.py",
       "dimensions": [
         "objective_alignment",
         "evidence_strength",
@@ -39,7 +39,7 @@
       "statement": "Score consequential choices on 7 dimensions. Highest defensible score wins."
     },
     {
-      "check": "tools/protocol/checks/tip_freshness.py",
+      "check": "kernel/protocol/checks/tip_freshness.py",
       "enforcement": "tip_freshness_gate",
       "id": "SN-0493",
       "name": "Decisions Expire When the Tip Moves",
@@ -53,21 +53,21 @@
       "statement": "Speed without thought produces almost-awesome. The pause is part of the work."
     },
     {
-      "check": "tools/protocol/checks/action_log.py",
+      "check": "kernel/protocol/checks/action_log.py",
       "enforcement": "action_log_required",
       "id": "SN-0575",
       "name": "Fix It First, Report After",
       "statement": "If broken within authority, fix first, report after. Never ask 'should I fix this?'"
     },
     {
-      "check": "tools/protocol/checks/action_log.py",
+      "check": "kernel/protocol/checks/action_log.py",
       "enforcement": "action_log_required",
       "id": "SN-DONT-WAIT",
       "name": "Don't Wait, Just Do",
       "statement": "If blocked on a stalled seat, do it yourself. Do it right. Record it. Report it."
     },
     {
-      "check": "tools/protocol/checks/quality_gate.py",
+      "check": "kernel/protocol/checks/delivery_evidence_gate.py",
       "enforcement": "quality_gate",
       "id": "SN-0526",
       "name": "Quality Before Speed",

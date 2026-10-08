@@ -30,8 +30,8 @@ clear, defined, and organized. Non-stop execution. Value 24 hours a day, 7 days 
    - What the mission is (prove the brain learns, encoded not remembered)
    - What the goal is (10/10 on all levels, measured not wished)
    - What choices to make (the math decides, auditable not opaque)
-3. Automatic operation MUST NOT cross protected gates (Article I, Section 5 of the
-   Operating Protocol). The machine knows its boundaries.
+3. Automatic operation MUST NOT cross protected gates (Section 5 of the
+   Operating Protocol: THE PROTECTED GATES). The machine knows its boundaries.
 4. Automatic operation MUST remain auditable. Every computed choice MUST show its
    math: options considered, scores, why the winner won.
 
