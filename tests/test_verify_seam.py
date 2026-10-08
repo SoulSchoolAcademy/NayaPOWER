@@ -1,6 +1,6 @@
-"""Red-phase tests for the kernel VERIFY seam (consumer side of action receipts).
+"""Tests for the kernel VERIFY seam (consumer side of action receipts).
 
-Module under test: kernel/verify_seam.py (does not exist yet — all fail).
+Module under test: kernel/verify_seam.py.
 Closes the ACT -> VERIFY loop: EXECUTION_COMPLETED receipts sit at
 truth_state UNKNOWN until an independent verifier closes them via
 apply_verify_verdict. The seam enforces the VERIFY node contract as
@@ -53,7 +53,7 @@ def _completed_receipt(observed="node state updated, previous state restorable",
     ledger = ap.ReceiptLedger()
     receipt = ap.execute_plan(plan, executor=lambda p: observed,
                               re_resolve=lambda: _authority(),
-                              now=NOW, ledger=ledger)
+                              now=NOW, profile=_profile(), ledger=ledger)
     assert receipt.phase == "EXECUTION_COMPLETED"
     return receipt
 
@@ -104,7 +104,7 @@ def test_full_chain_plan_execute_verify_round_trip():
     ledger = ap.ReceiptLedger()
     ledger.append(plan_receipt)
     ap.execute_plan(plan, executor=lambda p: "node state updated, previous state restorable",
-                    re_resolve=lambda: _authority(), now=NOW, ledger=ledger)
+                    re_resolve=lambda: _authority(), now=NOW, profile=_profile(), ledger=ledger)
     log = vs.VerdictLog()
     completed = [r for r in ledger.entries() if r.phase == "EXECUTION_COMPLETED"]
     assert len(completed) == 1
@@ -248,7 +248,7 @@ def test_reconcile_ledger_closes_completed_from_producer_record():
     ledger = ap.ReceiptLedger()
     ledger.append(plan_receipt)
     ap.execute_plan(plan, executor=lambda p: "node state updated, previous state restorable",
-                    re_resolve=lambda: _authority(), now=NOW, ledger=ledger)
+                    re_resolve=lambda: _authority(), now=NOW, profile=_profile(), ledger=ledger)
     log = vs.VerdictLog()
     result = vs.reconcile_ledger(ledger, verifier_id="naya-2",
                                 verdict_fn=_accept, now=NOW, log=log)
