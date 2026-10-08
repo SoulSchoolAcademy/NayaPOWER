@@ -776,13 +776,23 @@ jobs:
         # records the refusal explicitly and binds every available proof-leg
         # artifact to the authorized source and deployment commit. It never
         # certifies PROMOTED_AND_PROVEN and never raises on missing inputs.
+        # It also binds the UPSTREAM gate evidence (standing-policy verdict,
+        # promotion denial, required-workflow run conclusions at the source
+        # SHA) so the receipt names the gate that stopped the chain instead
+        # of leaving the failure unexplained.
         if: ${{ failure() && (github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed != '') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, os
-          from tools.production_promotion_failure_receipt import build_failure_receipt, SCHEMA
+          import json, os, subprocess
+          from tools.production_promotion_failure_receipt import (
+              build_failure_receipt, SCHEMA, REQUIRED_WORKFLOWS,
+              VERDICT_FILE, DENIAL_FILE,
+          )
           def load(name):
               try:
                   with open(name, encoding="utf-8") as f:
@@ -797,6 +807,39 @@ jobs:
               "learning-act-proof-run.json": load("learning-act-proof-run.json"),
               "connect-proof-run.json": load("connect-proof-run.json"),
           }
+          def observe_required_workflows():
+              """Read-only observation of the required workflows' latest runs
+              at the source SHA (same selection rule as the enforcement
+              step). Any API failure yields UNKNOWN entries, never raises."""
+              sha = os.environ["GITHUB_SHA"]
+              repo = os.environ["REPO"]
+              observed = {}
+              for workflow in REQUIRED_WORKFLOWS:
+                  try:
+                      data = json.loads(subprocess.check_output(
+                          ["gh", "api",
+                           f"repos/{repo}/actions/workflows/{workflow}/runs?head_sha={sha}&event=push&per_page=100"],
+                          text=True, timeout=60,
+                      ))
+                      matches = [
+                          r for r in data.get("workflow_runs", [])
+                          if r.get("head_sha") == sha
+                          and r.get("head_branch") == "main"
+                          and r.get("event") == "push"
+                          and str(r.get("path", "")).split("@", 1)[0] == ".github/workflows/" + workflow
+                      ]
+                      observed[workflow] = (
+                          max(matches, key=lambda r: (int(r.get("id", 0)), int(r.get("run_attempt", 0))))
+                          if matches else None
+                      )
+                  except Exception:
+                      observed[workflow] = "OBSERVATION_FAILED"
+              return observed
+          gates = {
+              "standing_policy_verdict": load(VERDICT_FILE),
+              "promotion_denial": load(DENIAL_FILE),
+              "required_workflows": observe_required_workflows(),
+          }
           receipt = build_failure_receipt(
               github_sha=os.environ["GITHUB_SHA"],
               production_branch=os.environ["PRODUCTION_BRANCH"],
@@ -806,9 +849,11 @@ jobs:
               workflow_run_id=os.environ.get("GITHUB_RUN_ID"),
               env=dict(os.environ),
               files=files,
+              gates=gates,
           )
           assert receipt["schema"] == SCHEMA
           assert receipt["status"] != "PROMOTED_AND_PROVEN"
+          assert "gates" in receipt
           json.dump(receipt, open("production-promotion-failure-receipt.json", "w"), indent=2)
           PY
           cat production-promotion-failure-receipt.json
