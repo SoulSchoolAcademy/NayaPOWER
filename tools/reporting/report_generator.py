@@ -150,6 +150,19 @@ _MOVEMENT_RE = re.compile(r"(\d{1,2}\.\d)\s*(?:→|->)\s*(\d{1,2}\.\d)")
 _SINGLE_RE = re.compile(r"(?<![\w-])[Ss]core[:\s]+(\d{1,2}\.\d)")
 _BOLD_RE = re.compile(r"\*\*(\d{1,2}\.\d)(?:/10)?\*\*")
 
+# 10.0 is never heuristically extracted: a 10/10 requires Shawn's explicit
+# confirmation (mission law — "a self-declared 10 without his word is not
+# a 10"). A worker "claiming 10/10" is awaiting confirmation, not scored.
+_MAX_HEURISTIC_SCORE = 10.0  # exclusive upper bound
+
+# Sentences in aspirational/target context are not current-score claims.
+# ("Production Readiness must move from 3.0 to 10", "the 3.0→10.0 drive")
+_NON_SCORE_CONTEXT_RE = re.compile(
+    r"\b(drive|drives|target|targets|goal|goals|roadmap|must move|"
+    r"plan to|plans to|until an honest|aspir\w+|aiming for)\b",
+    re.IGNORECASE,
+)
+
 
 def _scores_in_sentence(sentence: str) -> list[float]:
     """Extract score values from one sentence, movement-wins on overlap."""
@@ -164,7 +177,7 @@ def _scores_in_sentence(sentence: str) -> list[float]:
             val = float(m.group(2))  # NEW score, not old
         except ValueError:
             continue
-        if 0.0 <= val <= 10.0:
+        if 0.0 <= val < _MAX_HEURISTIC_SCORE:
             taken.append(m.span())
             scores.append((m.start(), val))
     for pat in (_SINGLE_RE, _BOLD_RE):
@@ -175,7 +188,7 @@ def _scores_in_sentence(sentence: str) -> list[float]:
                 val = float(m.group(1))
             except ValueError:
                 continue
-            if 0.0 <= val <= 10.0:
+            if 0.0 <= val < _MAX_HEURISTIC_SCORE:
                 taken.append(m.span())
                 scores.append((m.start(), val))
     scores.sort()  # left-to-right; last = most recent statement
@@ -217,10 +230,15 @@ def extract_scores_from_text(text: str, source: str,
       2. A sentence with multiple areas and a score is skipped (ambiguous —
          never guess which area the score belongs to).
       3. "<old> → <new>" yields the NEW score.
+      4. Aspirational/target sentences ("the 3.0→10.0 drive", "must move
+         from 3.0 to 10") are skipped — a goal is not a current score.
+      5. 10.0 is never extracted (requires Shawn's explicit confirmation).
     Lines/sentences without a recognizable area are skipped.
     """
     points: list[ScorePoint] = []
     for sentence in _split_sentences(text):
+        if _NON_SCORE_CONTEXT_RE.search(sentence):
+            continue  # aspirational or target language, not a current score
         areas = _areas_in(sentence)
         if len(areas) != 1:
             continue  # zero areas: nothing to attribute; >1: ambiguous
@@ -323,6 +341,22 @@ def parse_worker_log(path: Path) -> dict:
 _MEM_TAG_RE = re.compile(r"^\s*-\s*\[(?P<tag>[a-z|]+)\|(?P<sev>[a-z]+)\]\s*(?P<body>.+)$")
 
 
+def _memory_as_of(path: Path) -> dt.datetime:
+    """Statement date for a memory log: the filename date, not mtime.
+
+    A file touched today can contain yesterday's scores. Using the
+    YYYY-MM-DD in the filename as the score date keeps newer-dated logs'
+    scores ahead of older-dated logs' regardless of filesystem mtime.
+    Falls back to now when the stem is not a date.
+    """
+    try:
+        d = dt.date.fromisoformat(path.stem)
+        return dt.datetime(d.year, d.month, d.day, 23, 59, 59,
+                           tzinfo=dt.timezone.utc)
+    except ValueError:
+        return dt.datetime.now(dt.timezone.utc)
+
+
 def parse_memory_log(path: Path) -> dict:
     """Parse a daily memory log into scored events."""
     text = path.read_text(encoding="utf-8", errors="replace") \
@@ -344,7 +378,7 @@ def parse_memory_log(path: Path) -> dict:
             holes.append(Item(text=body, source=src,
                               priority=_hole_priority(body)))
     scores = extract_scores_from_text(text, source=f"memory:{path.stem}",
-                                      as_of=dt.datetime.now(dt.timezone.utc))
+                                      as_of=_memory_as_of(path))
     return {"achievements": achievements, "intelligence": intelligence,
             "holes": holes, "scores": scores}
 

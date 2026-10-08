@@ -449,3 +449,82 @@ def test_generate_end_to_end_with_mocks():
     assert "# MORNING Report" in report
     assert "## Scores (all levels)" in report
     assert json.dumps  # sanity: module imports cleanly
+
+
+# ---------------------------------------------------------------------------
+# Score-extraction accuracy guards (2026-10-08: first-run monitoring caught
+# two live mis-extractions — aspirational "3.0→10.0 drive" scored as 10.0,
+# and a stale 2026-10-07 6.5 overwrote the current 7.0 via mtime)
+# ---------------------------------------------------------------------------
+
+
+def test_aspirational_drive_not_extracted():
+    pts = extract_scores_from_text(
+        "Production Readiness: issue #1771 was created for the 3.0→10.0 drive.",
+        source="t", as_of=NOW)
+    assert pts == []
+
+
+def test_aspirational_must_move_not_extracted():
+    pts = extract_scores_from_text(
+        "Shawn said Production Readiness must move from 3.0 to 10.",
+        source="t", as_of=NOW)
+    assert pts == []
+
+
+def test_ten_point_zero_never_extracted():
+    pts = extract_scores_from_text(
+        "Honest score: Production Readiness **10.0/10**.",
+        source="t", as_of=NOW)
+    assert pts == []
+
+
+def test_ten_point_zero_movement_never_extracted():
+    pts = extract_scores_from_text(
+        "Production Readiness moved 3.5 → 10.0 this shift.",
+        source="t", as_of=NOW)
+    assert pts == []
+
+
+def test_genuine_score_still_extracted():
+    pts = extract_scores_from_text(
+        "Honest score: Retrieval **6.5/10** (ratified baseline stands).",
+        source="t", as_of=NOW)
+    assert len(pts) == 1 and pts[0].score == 6.5
+
+
+def test_memory_as_of_uses_filename_date(tmp_path):
+    from report_generator import _memory_as_of
+    p = tmp_path / "2026-10-07.md"
+    p.write_text("x")
+    as_of = _memory_as_of(p)
+    assert (as_of.year, as_of.month, as_of.day) == (2026, 10, 7)
+    assert as_of.tzinfo == dt.timezone.utc
+
+
+def test_memory_as_of_falls_back_for_non_date(tmp_path):
+    from report_generator import _memory_as_of
+    p = tmp_path / "notes.md"
+    p.write_text("x")
+    before = dt.datetime.now(dt.timezone.utc)
+    as_of = _memory_as_of(p)
+    after = dt.datetime.now(dt.timezone.utc)
+    assert before <= as_of <= after
+
+
+def test_newer_memory_file_beats_older_despite_mtime(tmp_path):
+    # The stale-score overwrite: 2026-10-07.md says 6.5, 2026-10-08.md
+    # says 7.0. Newer-dated file must win even if mtimes are reversed.
+    old = tmp_path / "2026-10-07.md"
+    new = tmp_path / "2026-10-08.md"
+    old.write_text("Honest score: Retrieval **6.5/10**.")
+    new.write_text("Cold Retrieve moved 6.5 → 7.0 on the audit branch.")
+    import os
+    now_ts = dt.datetime.now().timestamp()
+    os.utime(old, (now_ts, now_ts))          # old file touched LAST
+    os.utime(new, (now_ts - 3600, now_ts - 3600))
+    old_pts = parse_memory_log(old)["scores"]
+    new_pts = parse_memory_log(new)["scores"]
+    assert old_pts[0].score == 6.5
+    assert new_pts[0].score == 7.0
+    assert new_pts[0].as_of > old_pts[0].as_of
