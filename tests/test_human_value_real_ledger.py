@@ -116,3 +116,43 @@ def test_thin_evidence_does_not_move_the_profile():
             assert ">= 3" in str(exc)
         else:
             raise AssertionError("recalibration must refuse thin evidence")
+
+
+def test_second_real_observation_closes_this_runs_prediction():
+    """DEC-20261008-HV-REALDATA-002 was pre-registered BEFORE this run's ledger
+    work (predicted_at 2026-10-08T15:50:00Z, before any event was appended).
+    Its outcome event closes the second real prediction->observation join
+    (n=2). Recalibration must still honestly refuse below n=3."""
+    from tools.human_value import real_outcome_loop
+    from kernel.value_calculus import QualityProfile
+
+    receipts = compute_hv.load_receipts(RECEIPTS)
+    pred = next(
+        r for r in receipts if r["decision_id"] == "DEC-20261008-HV-REALDATA-002"
+    )
+    assert pred["predicted_at"] < "2026-10-08T16:00:00Z", (
+        "DEC-002 must be pre-registered before the work it predicts"
+    )
+    _, events = load_events()
+    outcome = [
+        e for e in events
+        if e.get("decision_id") == "DEC-20261008-HV-REALDATA-002"
+        and isinstance(e.get("delta_v_actual"), (int, float))
+    ]
+    assert len(outcome) == 1, "exactly one outcome event closes DEC-002"
+    summary = compute_hv.calibrate(receipts, events)
+    assert summary["n"] == 2, f"expected 2 joined observations, got {summary['n']}"
+    joined = {row["decision_id"]: row for row in summary["records"]}
+    assert joined["DEC-20261008-HV-REALDATA-002"]["delta_v_predicted"] == float(
+        pred["delta_v_predicted"]
+    )
+    # Recalibration still refuses: n=2 is below the n>=3 floor. Honest, not gated by hope.
+    profile = QualityProfile(profile_id="p", version="v1", objective="o")
+    try:
+        real_outcome_loop.recalibration_candidate(
+            profile, "v-next", receipts, events, evidence_refs=[]
+        )
+    except ValueError as exc:
+        assert ">= 3" in str(exc)
+    else:
+        raise AssertionError("recalibration must refuse at n=2")

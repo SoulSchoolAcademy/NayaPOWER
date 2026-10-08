@@ -1,1 +1,24 @@
-[{"decision_id":"DEC-20261008-HV-REALDATA-001","delta_v_predicted":6.5,"objective":"Seed the first REAL Human Value event ledger (public-evidence events only), run the first real HV/day + DAI computation, and prove cold-recomputability from a fresh clone.","predicted_at":"2026-10-08T09:55:00Z","predicted_by":"Naya 5 (human-value-builder run)","prediction_basis":"Completes continuity-gate 8.0 items 2-4 (cold retrieve, recompute same numbers from cited evidence, fail-closed on drift) and starts the real prediction->observation loop. Does NOT claim 8.0: the loop needs accumulated real joined observations over time, which one run cannot manufacture. Prediction recorded BEFORE the work; the outcome event carries delta_v_actual for the join.","receipt_type":"ALIGNMENT_DECISION","schema_version":"2.1","verification":"UNVERIFIED"}]
+[
+  {
+    "decision_id": "DEC-20261008-HV-REALDATA-001",
+    "delta_v_predicted": 6.5,
+    "objective": "Seed the first REAL Human Value event ledger (public-evidence events only), run the first real HV/day + DAI computation, and prove cold-recomputability from a fresh clone.",
+    "predicted_at": "2026-10-08T09:55:00Z",
+    "predicted_by": "Naya 5 (human-value-builder run)",
+    "prediction_basis": "Completes continuity-gate 8.0 items 2-4 (cold retrieve, recompute same numbers from cited evidence, fail-closed on drift) and starts the real prediction->observation loop. Does NOT claim 8.0: the loop needs accumulated real joined observations over time, which one run cannot manufacture. Prediction recorded BEFORE the work; the outcome event carries delta_v_actual for the join.",
+    "receipt_type": "ALIGNMENT_DECISION",
+    "schema_version": "2.1",
+    "verification": "UNVERIFIED"
+  },
+  {
+    "decision_id": "DEC-20261008-HV-REALDATA-002",
+    "delta_v_predicted": 7.0,
+    "objective": "Accumulate the verified real events of 2026-10-08 post-10:45 UTC (governance ratifications #1863/#1864, nine-team structure, #1764, #1768, #1880, #1881, #1883, #1884, #1885/#1887) into the real ledger with durable evidence, recompute HV/day + DAI deterministically, close the second prediction->observation join (n=2), re-run the cold-recompute proof at the new tip, rebase and push the branch.",
+    "predicted_at": "2026-10-08T15:50:00Z",
+    "predicted_by": "Naya 5 (human-value-builder run)",
+    "prediction_basis": "Continues the continuity-gate 8.0 accumulation: one run cannot manufacture weeks of data, so each run adds one verified joined observation toward the n>=3 recalibration floor. Pre-registered BEFORE the ledger work; the outcome event carries delta_v_actual for the join.",
+    "receipt_type": "ALIGNMENT_DECISION",
+    "schema_version": "2.1",
+    "verification": "UNVERIFIED"
+  }
+]
