@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-08",
-  "receipt_basis_commit": "e9afcc17b1620c9fd74aaf4f44ed65bd7ab32799",
-  "inventory_file_count": 245,
+  "receipt_basis_commit": "8337f9d9e603b90930b23a529967fee791532d04",
+  "inventory_file_count": 261,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 75,
+    "05-MEMORY": 91,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -877,6 +877,86 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md",
       "blob_sha": "e2b935e7d0ce60cdb7558648164c2c71cfb15a51",
       "size": 4958
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md",
+      "blob_sha": "7afad9abac251a891147d1adde1cf7e6516b11c5",
+      "size": 1331
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/note.md",
+      "blob_sha": "71a20d452aa474aac3ffdbc3c75cef6701cdbb21",
+      "size": 3406
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/package.json",
+      "blob_sha": "79d92cf4098ffaf9b37b0b124e066d7ec59565f6",
+      "size": 1432
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/receipt.json",
+      "blob_sha": "ce3d0c27140497805a2ba064bb2afe8fed460e57",
+      "size": 523
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/note.md",
+      "blob_sha": "b63cdb6c8ce11f4fdbcd8dab0b8f200ead92f3c2",
+      "size": 1798
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/package.json",
+      "blob_sha": "ec0487ba9f6b023c8b3fe7a2c7050ead34ab061e",
+      "size": 1248
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/receipt.json",
+      "blob_sha": "d2675ab133579cdaaf4566e490f237695fc368f5",
+      "size": 495
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/note.md",
+      "blob_sha": "e474486b48d98781eb74236f603dd5410ef9318a",
+      "size": 1899
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/package.json",
+      "blob_sha": "bc1da25d82021d35fca4039f19b508dddbfc6e7e",
+      "size": 1149
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/receipt.json",
+      "blob_sha": "37891bfecf000e94a87d89e508965c5c0be948a9",
+      "size": 382
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/note.md",
+      "blob_sha": "b63cdb6c8ce11f4fdbcd8dab0b8f200ead92f3c2",
+      "size": 1798
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/package.json",
+      "blob_sha": "570be767e6fd6a26314aff64798b7448894cea39",
+      "size": 1201
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/receipt.json",
+      "blob_sha": "663eb4bd00182934719e893d6f1a27f9996dc941",
+      "size": 382
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/note.md",
+      "blob_sha": "7898fffbe873de35453a9e0a14c7e4f3220f6080",
+      "size": 2066
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/package.json",
+      "blob_sha": "994eba7953cbbe73eff19a4e32e6426e1b37d161",
+      "size": 1317
+    },
+    {
+      "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/receipt.json",
+      "blob_sha": "a7e86d77cb9f447e2c50f3fbb76a99a5431397e0",
+      "size": 382
     },
     {
       "path": "BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md",
