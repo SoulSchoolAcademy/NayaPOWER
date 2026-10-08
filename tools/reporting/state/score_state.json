@@ -1,7 +1,7 @@
 {
   "Action & Execution": {
     "as_of": "2026-10-08T23:59:59+00:00",
-    "score": 8.7,
+    "score": 8.5,
     "source": "memory:2026-10-08",
     "status": "claim"
   },
@@ -18,14 +18,14 @@
     "status": "claim"
   },
   "Learning": {
-    "as_of": "2026-10-08T23:59:59+00:00",
     "score": 5.0,
+    "as_of": "2026-10-08T09:37:00+00:00",
     "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
     "status": "authoritative"
   },
   "Memory & Continuity": {
     "as_of": "2026-10-08T23:59:59+00:00",
-    "score": 8.0,
+    "score": 7.5,
     "source": "memory:2026-10-08",
     "status": "claim"
   },
@@ -43,7 +43,7 @@
   },
   "Safety": {
     "as_of": "2026-10-08T23:59:59+00:00",
-    "score": 7.5,
+    "score": 7.0,
     "source": "memory:2026-10-08",
     "status": "claim"
   },
@@ -55,13 +55,13 @@
   },
   "Truth": {
     "as_of": "2026-10-08T23:59:59+00:00",
-    "score": 9.0,
+    "score": 8.8,
     "source": "memory:2026-10-08",
     "status": "claim"
   },
   "Voice & Experience": {
     "as_of": "2026-10-08T23:59:59+00:00",
-    "score": 8.5,
+    "score": 8.0,
     "source": "memory:2026-10-08",
     "status": "claim"
   }
