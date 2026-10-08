@@ -432,9 +432,31 @@ def check_quality_gate(
     Scorecard = _try_kernel_attr("quality_gate", "Scorecard")
     if check_delivery is not None and Scorecard is not None:
         try:
+            # The canonical Scorecard requires weights summing to 1.0; an
+            # omitted weights arg means equal weighting (matching the local
+            # fallback below, which only validates explicitly passed weights).
+            # Passing {} here made every weights=None call fail delegation.
+            w = dict(weights) if weights else {
+                d: 1.0 / len(scores) for d in scores
+            }
+            # The canonical module does not check finiteness/range itself;
+            # nan would slip through its comparisons (nan < 9.0 is False).
+            # Enforce the adapter's input contract here, mirroring the local
+            # fallback's reason string so both paths refuse identically.
+            bad = [
+                d for d, s in scores.items()
+                if not isinstance(s, (int, float)) or isinstance(s, bool)
+                or not math.isfinite(s) or not (0 <= s <= 10)
+            ]
+            if bad:
+                return AdapterResult(
+                    passed=False, verdict="FAIL",
+                    reasons=[f"Non-finite or out-of-range scores: {bad}"],
+                    delegated_to="kernel.protocol.quality_gate (adapter pre-check)",
+                )
             sc = Scorecard(
                 what="adapter-call", evidence="adapter-call",
-                scores=dict(scores), weights=dict(weights or {}),
+                scores=dict(scores), weights=w,
                 weakest_point="adapter-call", verified_by="adapter",
             )
             r = check_delivery(sc, builder_id="protocol_gates-adapter")
