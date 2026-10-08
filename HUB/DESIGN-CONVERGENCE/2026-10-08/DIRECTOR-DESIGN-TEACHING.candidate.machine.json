@@ -104,6 +104,36 @@
       "id": "M14",
       "assertion": "tested_sha_matches_deployed_sha",
       "gate": "HOLD_PRODUCTION"
+    },
+    {
+      "id": "M15",
+      "assertion": "ordered_bullet_or_intelligence_jewel_sequence_has_no_adjacent_repeated_colors",
+      "gate": "FAIL_IF_EXPLICIT_SEQUENCE",
+      "note": "When component sequence data is inspectable, same-color neighbors FAIL; near-similar neighbors require rendered visual challenge, not a guessed machine pass."
+    },
+    {
+      "id": "M16",
+      "assertion": "human_meaning_precedes_internal_pr_ids_and_engineering_status",
+      "gate": "HOLD_COPY_REVIEW",
+      "note": "What happened, why it matters, what next: first. GitHub link is evidence, not the main sentence."
+    },
+    {
+      "id": "M17",
+      "assertion": "official_nayanet_logo_not_generic_placeholder",
+      "gate": "HOLD_BRAND_REVIEW",
+      "note": "Official embedded logo / authorized canonical asset required; do not invent a different N."
+    },
+    {
+      "id": "M18",
+      "assertion": "buttons_labels_and_cards_do_not_overlap_at_tested_breakpoints",
+      "gate": "HOLD_BROWSER",
+      "note": "Require actual screenshot + bounding/overflow inspection at 320,390,768,1024,1440."
+    },
+    {
+      "id": "M19",
+      "assertion": "independent_visual_acceptance_before_score_9_or_release",
+      "gate": "HOLD_INDEPENDENT",
+      "note": "Code tests and author self-score are not an elite design certificate; reviewed lived experience required."
     }
   ],
   "conflict_register": [
@@ -134,5 +164,19 @@
     "runtime": "NOT_VERIFIED",
     "prod": "NOT_VERIFIED"
   },
-  "truth_policy": "UNKNOWN is not PASS. Existing governed contract outranks candidate. Candidate cannot alter authority."
+  "truth_policy": "UNKNOWN is not PASS. Existing governed contract outranks candidate. Candidate cannot alter authority.",
+  "director_correction_20261008": {
+    "principle": "beautiful code is not beautiful user experience; design quality must be independently reviewed",
+    "visual_sequence": "never adjacent identical jewel hues; avoid near-similar neighboring hues and cramped jewel groups",
+    "copy_order": [
+      "human nutshell",
+      "what this means",
+      "why it matters",
+      "next human action",
+      "optional deep link to evidence"
+    ],
+    "typography": "18px readable body; 24px heading roles; 14px secondary labels; white primary text",
+    "brand": "use authentic Naya mark",
+    "status": "CANDIDATE_NOT_RATIFIED"
+  }
 }
