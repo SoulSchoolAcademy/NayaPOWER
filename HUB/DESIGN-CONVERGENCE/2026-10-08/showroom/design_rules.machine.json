@@ -1,0 +1,72 @@
+{
+  "contract": "nayanet.design-transmission.smarttabs.v10.candidate",
+  "status": "CANDIDATE_NOT_RATIFIED",
+  "governing_sources": [
+    "HUB/DESIGN-CONTRACT.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md"
+  ],
+  "design": {
+    "field": "#030305",
+    "button_core": "#050505",
+    "body_px": 18,
+    "supporting_px": 14,
+    "editorial_headline_min_px": 24,
+    "minimum_target_px": 44,
+    "primary_button_target_px": 52,
+    "idle_button_border_min_px": 1.5,
+    "idle_border_color": "white",
+    "hover_semantics": "element_own_hue",
+    "pressed_state": "physical_sink",
+    "reduce_motion": "required",
+    "five_jewel_hues": [
+      "#9d75ff",
+      "#55b9ee",
+      "#35e39b",
+      "#ffd45a",
+      "#ed42c4"
+    ],
+    "adjacent_duplicate_hues": "FAIL",
+    "code_and_visible_specimen_same_source": true
+  },
+  "smart_tabs": {
+    "api": [
+      "mount",
+      "list",
+      "set",
+      "add",
+      "update",
+      "remove",
+      "destroy"
+    ],
+    "shortcut_schema": [
+      "id",
+      "label",
+      "route",
+      "heart",
+      "star"
+    ],
+    "edit": true,
+    "favorite_exclusive": true,
+    "keyboard_accessible": true,
+    "text_as_markup": false,
+    "local_only_without_backend": true,
+    "navigation_requires_host_router": true
+  },
+  "graduation_gates": [
+    "exact_source_readback",
+    "functional_add_edit_favorite_remove",
+    "desktop_tablet_mobile_no_overlap",
+    "keyboard_and_reduced_motion",
+    "truthful_local_state",
+    "independent_visual_acceptance",
+    "cold_builder_can_reproduce_from_files_alone"
+  ],
+  "not_proved": [
+    "production Hub",
+    "cloud sync",
+    "third-party email integration",
+    "full accessibility audit",
+    "independent visual 9+ score"
+  ],
+  "authority": "A living design candidate cannot silently override current canonical design law."
+}
