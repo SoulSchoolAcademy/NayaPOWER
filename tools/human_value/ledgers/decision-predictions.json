@@ -20,5 +20,16 @@
     "receipt_type": "ALIGNMENT_DECISION",
     "schema_version": "2.1",
     "verification": "UNVERIFIED"
+  },
+  {
+    "decision_id": "DEC-20261008-HV-REALDATA-003",
+    "delta_v_predicted": 7.0,
+    "objective": "Close the third prediction->observation join (n=3, the recalibration floor): accumulate this run's verified human-value measurement work, re-run the cold-recompute proof on a fresh clone of the pushed branch, re-run the 35-test suite green, push the branch via the Git Data API with server-tree verification, and post the run scorecard. One joined observation per run; no weeks of data manufactured.",
+    "predicted_at": "2026-10-08T21:47:00Z",
+    "predicted_by": "Naya 5 (human-value-builder run)",
+    "prediction_basis": "Same basis as DEC-002: continues the continuity-gate 8.0 accumulation. n=3 is the minimum sample for a recalibration candidate (kernel floor); the join observes whether the predicted work actually completed and how calibration moves. Pre-registered BEFORE the ledger work and the cold proof; the outcome event carries delta_v_actual for the join.",
+    "receipt_type": "ALIGNMENT_DECISION",
+    "schema_version": "2.1",
+    "verification": "UNVERIFIED"
   }
 ]
