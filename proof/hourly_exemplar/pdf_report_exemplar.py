@@ -113,6 +113,22 @@ _SPECTRUM_FLOW = [MAGENTA, PURPLE, BLUE, TEAL, EMERALD,
 # gold-vs-yellow and gold-vs-gold FAIL, gold-vs-blue PASSES.
 _MIN_ADJACENT_DISTANCE = 0.30
 
+# Hue families — the distance check alone lets TEAL sit next to LIME and
+# both read as "green" (Shawn: "two adjacent green bullet bars"). Adjacent
+# elements must ALSO change hue family, not just pass the distance math.
+_COLOR_FAMILY = {
+    "#d86cff": "violet", "#9d75ff": "violet",
+    "#55b9ee": "blue",
+    "#40d3bb": "green", "#55e39a": "green", "#b8ee57": "green",
+    "#f1d75a": "yellow", "#e8b64c": "yellow",
+    "#ff9a5a": "orange",
+    "#ff5a6e": "red",
+}
+
+
+def _family(color: HexColor) -> str | None:
+    return _COLOR_FAMILY.get(_hx(color).lower())
+
 
 def _color_distance(c1: HexColor, c2: HexColor) -> float:
     """Redmean-weighted RGB perceptual distance, 0.0 (identical) to ~1.7."""
@@ -131,8 +147,11 @@ def _same_color(c1: HexColor, c2: HexColor) -> bool:
 class SpectrumCycler:
     """Yields spectrum colors in flow order. Hard guarantees:
     - never returns the same color twice in a row
+    - never returns two adjacent colors from the same hue family
+      (TEAL-then-LIME both read as "green" — the distance math alone
+      does not catch it; Shawn's eye does)
     - always keeps minimum perceptual distance from the previous color
-    - falls back to INK (white) rather than violating either rule
+    - falls back to INK (white) rather than violating any rule
     """
 
     def __init__(self) -> None:
@@ -146,6 +165,10 @@ class SpectrumCycler:
             if self._last is not None and _same_color(cand, self._last):
                 continue
             if exclude is not None and _same_color(cand, exclude):
+                continue
+            if (self._last is not None
+                    and _family(cand) is not None
+                    and _family(cand) == _family(self._last)):
                 continue
             if (self._last is not None
                     and _color_distance(cand, self._last)
@@ -189,8 +212,59 @@ def _esc(text: str) -> str:
 
 
 def _short(text: str, limit: int = 160) -> str:
+    """Truncate to a COMPLETE thought. Never mid-word, never mid-sentence
+    if a sentence boundary fits.
+
+    - Prefer a sentence end (". ", "! ", "? ") inside the window: the
+      bullet then reads as a finished thought, no ellipsis needed.
+    - Else cut at the last word boundary and add "…" to signal more.
+    - A dangling 1–2 character fragment ("T13 C…") is never shipped:
+      back up to the previous word.
+    """
     text = re.sub(r"\s+", " ", str(text)).strip()
-    return text if len(text) <= limit else text[:limit].rstrip() + "…"
+    if len(text) <= limit:
+        return text
+    window = text[:limit]
+    for sep in (". ", "! ", "? ", "; "):
+        idx = window.rfind(sep)
+        if idx > limit * 0.35:
+            return _fix_dangling_quote(window[:idx + 1].rstrip())
+    idx = window.rfind(" ")
+    if idx > 0:
+        frag = window[idx + 1:]
+        if len(frag) <= 2 and idx > limit * 0.3:
+            # Fragment too short to mean anything — back up one more word.
+            prev = window[:idx].rfind(" ")
+            if prev > limit * 0.3:
+                idx = prev
+        out = window[:idx].rstrip() + "…"
+    else:
+        out = window.rstrip() + "…"
+    return _fix_dangling_quote(out)
+
+
+def _fix_dangling_quote(s: str) -> str:
+    """A truncation that strands an opening quote ("…and 'create the
+    most…") or a dangling conjunction ("…creation, and…") reads broken.
+    Cut the dangling fragment instead."""
+    if not s.endswith("…"):
+        return s
+    # Dangling conjunction first: "…, and…" → "…".
+    s = re.sub(r",?\s+(and|or|but)\u2026$", "\u2026", s)
+    for i in range(len(s) - 2, -1, -1):
+        if s[i] in "'\"":
+            # Apostrophe inside a word ("don't") is not an opener.
+            prev = s[i - 1] if i > 0 else " "
+            if prev.isalnum():
+                continue
+            rest = s[i + 1:-1]
+            if s[i] not in rest:
+                cut = s[:i].rstrip()
+                cut = re.sub(r",?\s+and\s*$", "", cut)
+                cut = re.sub(r"[,;:]\s*$", "", cut)
+                return cut + "…"
+            break
+    return s
 
 
 def _hx(color) -> str:
@@ -308,6 +382,27 @@ _JARGON: list[tuple[str, str]] = [
 ]
 
 
+_UUID_RE = re.compile(
+    r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b",
+    re.IGNORECASE)
+# File paths are evidence, never body text: UPPERCASE/segmented paths.
+# Dir segments may start with a digit ("05-MEMORY"); every segment must
+# still contain an uppercase letter so dates ("2026/10/08") and brand
+# camelCase ("NayaPOWER/x") never match.
+_PATH_RE = re.compile(
+    r"\b(?:[A-Z0-9][A-Z0-9_-]*/)+(?:[A-Z0-9_.-]*[A-Z][A-Z0-9_.-]*)/?")
+# Source tags are database-speak: [memory:...], [source:...], etc.
+_TAG_RE = re.compile(r"\[(?:memory|source|src|ref|tag):[^\]]*\]",
+                     re.IGNORECASE)
+# SCREAMING_CASE / SCREAMING database-speak. The lookahead must include
+# every punctuation a token can touch: ")" '"' "=" "/" ";" ":" "!" "?"
+# "'" ("VERIFICATION)" and '"PROVISIONAL"' both slipped through before).
+_SCREAM_RE = re.compile(r"\b([A-Z]{3,})(?=[\s.,;:!?\"')\]/}=']|$)")
+# Proper names and acronyms that must NEVER be lowercased: CONNECT is
+# one of the nine Master Nodes (a proper noun); ICU is an acronym.
+_PRESERVE_WORDS = {"API", "URL", "UUID", "SQL", "ICU", "CONNECT"}
+
+
 def humanize(text: str) -> str:
     """Translate technical report language into plain human meaning.
 
@@ -315,23 +410,46 @@ def humanize(text: str) -> str:
     Output reads for a smart 12-year-old, not an engineer.
     """
     text, _ = strip_pr_refs(text)
-    # snake_case and SCREAMING_CASE are database-speak: normalize first.
+    # A parenthetical that exists only to carry a file path is pure
+    # metadata ("(filed 2026-10-08 at BRAIN/.../SN-0526/, posted to …)"):
+    # remove it WHOLE, before the path strip leaves "at," dangling.
+    text = re.sub(r"\([^()]{0,160}?" + _PATH_RE.pattern
+                  + r"[^()]{0,160}?\)", "", text)
+    # File paths are evidence, never reading flow: remove whole FIRST,
+    # while underscores are still intact (paths may contain them).
+    text = _PATH_RE.sub("", text)
+    # Source tags ([memory:...]) are database-speak: remove.
+    text = _TAG_RE.sub("", text)
+    # UUIDs are never human reading: remove (case-insensitive).
+    text = _UUID_RE.sub("", text)
+    # snake_case and SCREAMING_CASE are database-speak: normalize.
     text = re.sub(r"_", " ", text)
     text = re.sub(r"\b([A-Z]{2,})([A-Z][a-z])", r"\1 \2", text)
-    # Backticks and commit SHAs are engineer noise: remove.
+    # Backticks are engineer noise: remove.
     text = text.replace("`", "")
-    text = re.sub(
-        r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b",
-        "", text)
+    # Commit SHAs are engineer noise: remove. A "SHA <hex>" label goes
+    # with its hash ("at merge SHA abc123" must not leave "at merge Sha").
+    text = re.sub(r"\bSHA\s+[0-9a-f]{7,40}\b", "", text, flags=re.IGNORECASE)
     text = re.sub(r"\b[0-9a-f]{7,40}\b", "", text)
-    # Empty parens left by stripping: remove.
-    text = re.sub(r"\(\s*\)", "", text)
+    # A dangling "@" left by SHA stripping ("branch @ (…") goes too —
+    # but "user@example.com" keeps its @.
+    text = re.sub(r"\s+@(?=\s*[\s(.,;])", "", text)
+    # Residue left by stripping: empty or punctuation-only parens,
+    # parens left with a dangling "word /" ("(comments / )" after the
+    # reference was stripped), dangling commas, doubled spaces.
+    text = re.sub(r"\(\s*[/,;:]?\s*\)", "", text)
+    text = re.sub(r"\[\s*[/,;:]?\s*\]", "", text)
+    text = re.sub(r"\([^()]*?/\s*\)", "", text)
+    text = re.sub(r"\[[^[\]]*?/\s*\]", "", text)
+    text = re.sub(r"\s+,", ",", text)
+    text = re.sub(r",\s*,", ",", text)
+    text = re.sub(r"\(\s*,", "(", text)
+    text = re.sub(r",\s*\)", ")", text)
     # SCREAMING_CASE database-speak: bring down to normal case.
     # (Common acronyms are preserved.)
-    text = re.sub(r"\b([A-Z]{3,})(?=\s|$|[.,])",
-                  lambda m: (m.group(1) if m.group(1) in
-                             {"API", "URL", "UUID", "SQL"}
-                             else m.group(1).capitalize()), text)
+    text = _SCREAM_RE.sub(
+        lambda m: (m.group(1) if m.group(1) in _PRESERVE_WORDS
+                   else m.group(1).capitalize()), text)
     # Markdown markers leak from source text: strip.
     text = text.replace("**", "")
     out = f" {text} "
@@ -341,6 +459,8 @@ def humanize(text: str) -> str:
     out = re.sub(r"\s{2,}", " ", out).strip()
     # Clean up doubled words the substitution can create ("the the").
     out = re.sub(r"\b(\w+) \1\b", r"\1", out, flags=re.IGNORECASE)
+    # Tidy sentence ends left ragged by stripping ("word .", "word ,").
+    out = re.sub(r"\s+([.,;:!?])", r"\1", out)
     return out
 
 
@@ -559,10 +679,13 @@ class ButtonBar(Flowable):
         text = re.sub(r"\s+", " ", str(text)).strip()
         if len(text) > limit:
             text = text[:limit].rstrip() + "…"
-        # Shrink until it fits the button's inner width.
+        # Shrink until it fits the button's inner width — backing up to
+        # word boundaries, never cutting mid-word.
         while text and stringWidth(text, style.fontName,
                                    style.fontSize) > max_width - 60:
-            text = text[:-2].rstrip() + "…"
+            cut = text[:-2].rstrip("…").rstrip()
+            sp = cut.rfind(" ")
+            text = (cut[:sp] if sp > 10 else cut[:-1]).rstrip() + "…"
         return text or "—"
 
     def _make_para(self):
@@ -609,14 +732,18 @@ class ButtonBar(Flowable):
 class Chip(Flowable):
     """Pill chip — uppercase micro-type, per-state color (DC-077).
 
-    Ledger status-chip pattern: colored edge + white text.
+    Ledger status-chip pattern: colored edge + white text. The quiet
+    (claim) variant uses a dimmed WHITE edge — never gray.
     """
 
-    def __init__(self, text: str, color: HexColor, st: dict):
+    def __init__(self, text: str, color: HexColor, st: dict,
+                 edge_alpha: float = 0.95, glow_alpha: float = 0.22):
         super().__init__()
         self.text = text.upper()
         self.color = color
         self.st = st
+        self.edge_alpha = edge_alpha
+        self.glow_alpha = glow_alpha
         self._w = self._h = 0.0
         self._para = Paragraph(_esc(self.text), st["chip"])
 
@@ -635,11 +762,11 @@ class Chip(Flowable):
         c.setFillAlpha(1)
         c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
         c.setStrokeColor(self.color)
-        c.setStrokeAlpha(0.95)
+        c.setStrokeAlpha(self.edge_alpha)
         c.setLineWidth(1.5)
         c.roundRect(0.75, 0.75, w - 1.5, h - 1.5, r - 1, stroke=1, fill=0)
         c.setFillColor(self.color)
-        c.setFillAlpha(0.22)
+        c.setFillAlpha(self.glow_alpha)
         c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
         c.restoreState()
         self._para.drawOn(c, 13, 6)
@@ -771,7 +898,12 @@ def _metrics_bar(st: dict, data: ReportData,
         sb_txt = "unavailable"
     else:
         counts = sb.get("counts", {})
-        sb_txt = ", ".join(f"{k}={v}" for k, v in counts.items()) or "no rows"
+        # "CANDIDATE=36" is database-speak: say "36 being considered".
+        parts = []
+        for k, v in counts.items():
+            label = humanize(k).lower().strip() or "items"
+            parts.append(f"{v} {label}")
+        sb_txt = ", ".join(parts) or "no rows"
 
     metrics = [
         ("PRs touched", f"{len(prs)} · {merged} approved and added"),
@@ -786,7 +918,7 @@ def _metrics_bar(st: dict, data: ReportData,
         accent = cycler.next()
         inner = [
             Paragraph(f"<b>{_esc(humanize(label))}</b>", st["detail_white"]),
-            Paragraph(_esc(_short(value, 48)), st["detail_white"]),
+            Paragraph(_esc(humanize(_short(value, 48))), st["detail_white"]),
         ]
         inner_t = Table([[inner[0]], [inner[1]]], colWidths=[width - 24])
         inner_t.setStyle(TableStyle([
@@ -893,14 +1025,20 @@ def _highlight_boxes(st: dict, data: ReportData,
 
 def _auth_chip(st: dict, status: str) -> Chip:
     """Ledger status-chip pattern: AUTH = emerald (verified/alive),
-    claim = muted (awaiting stamp)."""
+    claim = quiet white (awaiting stamp) — NEVER gray (Shawn's law)."""
     if status == "authoritative":
         return Chip("AUTH", EMERALD, st)
-    return Chip("claim", MUTED, st)
+    return Chip("claim", INK, st, edge_alpha=0.55, glow_alpha=0.08)
 
 
-def _scorecard_table(st: dict, data: ReportData) -> Table:
-    """Team × score dashboard — L1 card, 1.5pt white edge, team colors."""
+def _scorecard_table(st: dict, data: ReportData,
+                     cycler: SpectrumCycler) -> Table:
+    """Team × score dashboard — L1 card, 1.5pt white edge, team colors.
+
+    The alternation law covers TABLE ROWS too: when two adjacent rows
+    belong to the same team, the repeated team cell takes a spectrum
+    alternate (the team NAME still carries identity; color carries flow).
+    """
     from report_generator import AREA_TO_TEAM
 
     header = [
@@ -911,13 +1049,21 @@ def _scorecard_table(st: dict, data: ReportData) -> Table:
         Paragraph("<b>Δ</b>", st["cell_head"]),
     ]
     rows = [header]
+    prev_displayed: HexColor | None = None
     for sp in data.scores:
         team_name = AREA_TO_TEAM.get(sp.area, "—")
-        team_color = TEAM_COLORS.get(team_name, INK)
-        # Score color keeps perceptual distance from the team color:
-        # a GOLD score beside a gold team header is muddy (Shawn's law).
+        pinned = TEAM_COLORS.get(team_name, INK)
+        # Same team on the previous row → alternate the CELL color.
+        # Identity lives in the name text; the color must keep flowing.
+        team_color = pinned
+        if (prev_displayed is not None
+                and _same_color(pinned, prev_displayed)):
+            team_color = cycler.next(exclude=pinned)
+        prev_displayed = team_color
+        # Score color keeps perceptual distance from the DISPLAYED team
+        # color: a GOLD score beside a gold team header is muddy.
         color = _distant_or_ink(_score_color(sp.score), team_color)
-        thx = _team_hx(team_name)
+        thx = _hx(team_color)
         # Break ONLY at slashes — never mid-word (the old report's
         # "Engine/ering" wraps were a readability failure).
         team_cell = _esc(team_name).replace("/", "/<br/>")
@@ -1258,7 +1404,7 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
         "<b>claim</b> means our own assessment so far.",
         st["detail_white"]))
     story.append(Spacer(1, 6))
-    story.append(_scorecard_table(st, data))
+    story.append(_scorecard_table(st, data, cycler))
     story.append(Spacer(1, 4))
 
     # ---- 2 · What got done (by team) ----
