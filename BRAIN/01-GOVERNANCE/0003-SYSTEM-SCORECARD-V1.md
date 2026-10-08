@@ -1,4 +1,6 @@
 # NayaPOWER System Scorecard V1 — Standing Law
+> **CURRENCY NOTE (2026-10-08):** Baseline scores below are frozen as of 2026-10-05 by design — they are the starting line, not current scores. See the latest scorecard re-run on #1354 for current numbers. The 10 areas, weights, and 9.0 floor are standing law; only the scores move.
+
 
 **Status:** RATIFIED by Shawn Vibert, Human Director, 2026-10-05.
 **Authority:** The Scorecard Law (the law that supersedes all laws — scorecard everything; ratified verbally 2026-10-05 ~06:05 PDT, machine-encoded in #1444, merged as `848576425`).
