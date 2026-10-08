@@ -1,0 +1,130 @@
+/* ============================================================================
+ * SmartTabs v9.0.0 — styles
+ * Pair with smart-tabs.js. Include after your Naya tokens.
+ * ========================================================================== */
+/* ============ SMART TABS ============ */
+.sn-row {
+position: sticky; top: 12px; z-index: 100; display: flex; gap: 8px; overflow: auto; -webkit-overflow-scrolling: touch; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.12); margin: 24px 0;
+}
+
+.sn-pill {
+flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1.7px solid #fff; background: linear-gradient(180deg, #ffffff, #e9edf6 60%, #d9dfee); color: #0b0d14; font-weight: 700; font-size: 14px; cursor: pointer; user-select: none; transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .2s ease, color .2s ease; box-shadow: inset 0 2px 5px rgba(255,255,255,.9), inset 0 -5px 10px rgba(110,125,175,.3), 0 6px 16px rgba(0,0,0,.45);
+}
+
+.sn-pill:hover {
+transform: translateY(-2px) scale(1.03); color: #fff;
+}
+
+.sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+2):hover {
+background: linear-gradient(180deg, #c49aff, #a06bff 60%, #6a3df0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(160,107,255,.55), 0 0 40px -4px rgba(160,107,255,.7);
+}
+
+.sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+3):hover {
+background: linear-gradient(180deg, #8ad8ff, #3fb8ff 60%, #1a7fe0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(63,184,255,.55), 0 0 40px -4px rgba(63,184,255,.7);
+}
+
+.sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+4):hover {
+background: linear-gradient(180deg, #8affc4, #2fe89e 60%, #0fae68); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(47,232,158,.55), 0 0 40px -4px rgba(47,232,158,.7);
+}
+
+.sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n):hover {
+background: linear-gradient(180deg, #ffd98a, #ffbf3d 60%, #d98f00); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(255,191,61,.55), 0 0 40px -4px rgba(255,191,61,.7);
+}
+
+.sn-pill.heart:hover {
+background: linear-gradient(180deg, #c49aff, #a06bff 60%, #6a3df0); color: #fff; box-shadow: inset 0 0 0 2px #fff, 0 10px 26px rgba(160,107,255,.65);
+}
+
+.sn-pill.star:hover {
+background: linear-gradient(180deg, #ffd98a, #ffbf3d 60%, #d98f00); color: #fff; box-shadow: inset 0 0 0 2px #fff, 0 10px 26px rgba(255,191,61,.65);
+}
+
+.sn-pill.add {
+border-style: dashed; border-color: rgba(255,255,255,.5); color: var(--quiet); background: transparent; box-shadow: none;
+}
+
+.sn-pill.add:hover {
+color: #fff; border-color: #fff; background: rgba(255,255,255,.08); transform: translateY(-2px);
+}
+
+.sn-pill.heart {
+box-shadow: inset 0 0 0 2px rgba(160,107,255,.55), 0 0 18px rgba(160,107,255,.35);
+}
+
+.sn-pill.star {
+box-shadow: inset 0 0 0 2px rgba(255,191,61,.55), 0 0 18px rgba(255,191,61,.35);
+}
+
+.sn-pill.add {
+border-style: dashed; color: var(--quiet);
+}
+
+.sn-label {
+white-space: nowrap;
+}
+
+.sn-more {
+border: 1.7px solid #fff; background: linear-gradient(180deg, #ffffff, #e4e9f4); color: #0b0d14; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,.35);
+}
+
+.sn-more:hover {
+transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.4), 0 0 24px -4px rgba(160,107,255,.5);
+}
+
+.sn-menu {
+position: fixed; z-index: 1000; display: none; min-width: 220px; background: linear-gradient(180deg,#121827,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 18px 40px rgba(0,0,0,.5);
+}
+
+.sn-menu .mi {
+padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); cursor: pointer; color: #fff; font-weight: 700; font-size: 14px;
+}
+
+.sn-menu .mi:last-child {
+border-bottom: none;
+}
+
+.sn-menu .mi:hover {
+background: rgba(255,255,255,.07);
+}
+
+.sn-pop {
+position: fixed; z-index: 1000; display: none; min-width: 300px; background: linear-gradient(180deg,#111727,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 22px 60px rgba(0,0,0,.5); padding: 16px; color: #fff;
+}
+
+.sn-pop h3 {
+margin: 0 0 10px; font-size: 17px;
+}
+
+.sn-pop .row {
+display: grid; gap: 6px; margin: 8px 0; font-size: 14px;
+}
+
+.sn-pop input {
+padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); background: #0a0f1a; color: #e6ecff; font-size: 14px; width: 100%;
+}
+
+.sn-pop .toggles {
+display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap;
+}
+
+.sn-pop .tgl {
+display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 700; font-size: 13px;
+}
+
+.sn-pop .tgl.on {
+box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.3);
+}
+
+.sn-pop .ft {
+display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px;
+}
+
+
+/* Spectrum flow across pills: hover ignites each pill in law order (magenta first) */
+.sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+1):hover {
+  background: linear-gradient(180deg, #ffffff, #e84fff 60%, #b52fe0);
+  box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(232,79,255,.55), 0 0 40px -4px rgba(232,79,255,.7);
+  color: #fff;
+}
+
+.sn-pill:focus-visible, .sn-more:focus-visible, .sn-btn:focus-visible { outline: 2px solid var(--soul, #a06bff); outline-offset: 3px; }

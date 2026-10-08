@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego: Hero Buttons</title>
+<style>
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+--field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+
+
+/* ---- block page base ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--field);
+  color: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.block-hero { padding: 64px 0 32px; text-align: center; }
+.block-hero h1 { font-size: 40px; margin: 12px 0 16px; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin: 0 auto 32px; }
+.lede strong { color: var(--white); }
+.demo { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 48px 32px; margin: 32px 0; text-align: center; }
+.docs { text-align: left; max-width: 72ch; margin: 0 auto; }
+.docs h3 { font-size: 24px; margin: 40px 0 12px; color: var(--white); }
+.docs p, .docs li { color: var(--quiet); font-size: 18px; }
+.docs p strong, .docs li strong { color: var(--white); }
+.docs ul { margin: 12px 0 12px 24px; }
+.docs li { margin-bottom: 8px; }
+.law-box { border-left: 3px solid var(--magenta); padding: 16px 24px; margin: 32px 0; background: rgba(232,79,255,.06); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.law-box p { color: var(--white); font-size: 18px; margin: 0; }
+.code { background: #0a0d14; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; margin: 24px 0; overflow-x: auto; font-family: ui-monospace, monospace; font-size: 14px; color: #c8d4f0; text-align: left; white-space: pre; }
+.spectrum-strip { display: flex; height: 8px; border-radius: 99px; overflow: hidden; max-width: 480px; margin: 32px auto 0; }
+.spectrum-strip span { flex: 1; }
+.spectrum-strip span:nth-child(1) { background: var(--magenta); }
+.spectrum-strip span:nth-child(2) { background: var(--purple); }
+.spectrum-strip span:nth-child(3) { background: var(--blue); }
+.spectrum-strip span:nth-child(4) { background: var(--green); }
+.spectrum-strip span:nth-child(5) { background: var(--gold); }
+.action-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; align-items: center; }
+.back { display: inline-block; margin: 32px 0; color: var(--quiet); font-size: 14px; letter-spacing: .1em; }
+
+/* ---- action button (primo mini) for block navigation ---- */
+.naya-btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #0b0d14;
+  padding: 14px 26px; border-radius: 999px; border: none; min-height: 48px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f8 50%, #d7dcee 100%);
+  box-shadow: inset 0 0 0 1.7px #fff, inset 0 2px 6px rgba(255,255,255,.9), inset 0 -8px 16px rgba(110,125,175,.35), 0 12px 30px rgba(0,0,0,.5), 0 0 28px -6px var(--soul);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .25s ease, color .25s ease;
+}
+.naya-btn:hover {
+  transform: translateY(-3px) scale(1.02); color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #a06bff 55%, #6a3df0);
+  box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), 0 16px 44px rgba(160,107,255,.6), 0 0 70px -6px rgba(160,107,255,.75);
+}
+.naya-btn:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; }
+.naya-btn:active { transform: translateY(1px) scale(.985); }
+
+
+/* ============ THE THREE BUTTONS — living depth ============ */
+.hero-buttons {
+display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 12px;
+}
+
+.living-btn {
+position: relative; overflow: hidden; cursor: pointer; border: none;
+  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  color: #0b0d14; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f4fa 45%, #dbe0ef 100%);
+  /* White light at rest. Dark voice on white light — the one place ink goes dark. The rim: visible skin. */
+  box-shadow:
+    inset 0 0 0 1.7px #ffffff,
+    inset 0 3px 10px rgba(255,255,255,.95),
+    inset 0 -12px 26px rgba(110,125,175,.42),
+    0 18px 48px rgba(0,0,0,.6),
+    0 5px 16px rgba(0,0,0,.45),
+    0 0 44px -6px var(--btnc, rgba(160,107,255,.55));
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .3s ease, color .3s ease;
+  animation: idleBreathe 4.2s ease-in-out infinite;
+}
+
+/* Each hero carries its own spectrum halo */
+.living-btn[data-spectrum="magenta"] {
+--btnc: rgba(232,79,255,.6);
+}
+
+.living-btn[data-spectrum="purple"] {
+--btnc: rgba(160,107,255,.6);
+}
+
+.living-btn[data-spectrum="blue"] {
+--btnc: rgba(63,184,255,.6);
+}
+
+.living-btn .btn-glow {
+position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s;
+}
+
+.living-btn[data-spectrum="magenta"] .btn-glow {
+box-shadow: 0 0 44px 8px rgba(232,79,255,.6), inset 0 0 26px rgba(232,79,255,.32);
+}
+
+.living-btn[data-spectrum="purple"] .btn-glow {
+box-shadow: 0 0 44px 8px rgba(160,107,255,.6), inset 0 0 26px rgba(160,107,255,.32); animation-delay: 1.4s;
+}
+
+.living-btn[data-spectrum="blue"] .btn-glow {
+box-shadow: 0 0 44px 8px rgba(63,184,255,.6), inset 0 0 26px rgba(63,184,255,.32); animation-delay: 2.8s;
+}
+
+/* The light sweep: a shine that flashes across on its own rhythm */
+.living-btn::after {
+content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
+  background: linear-gradient(105deg, transparent 20%, var(--btnc, rgba(160,107,255,.55)) 50%, transparent 80%);
+  transform: skewX(-18deg); pointer-events: none;
+  animation: sweep 5.5s var(--ease) infinite;
+}
+
+.living-btn:hover::after {
+animation-duration: .9s;
+}
+
+.living-btn[data-spectrum="purple"]::after {
+animation-delay: 1.8s;
+}
+
+.living-btn[data-spectrum="blue"]::after {
+animation-delay: 3.6s;
+}
+
+.living-btn:hover {
+transform: translateY(-4px) scale(1.03); color: #fff; animation: none;
+}
+
+.living-btn[data-spectrum="magenta"]:hover {
+background: linear-gradient(180deg, #ffffff 0%, #e84fff 52%, #b52fe0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(60,0,80,.5), 0 28px 74px rgba(232,79,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(232,79,255,.85);
+}
+
+.living-btn[data-spectrum="purple"]:hover {
+background: linear-gradient(180deg, #c49aff 0%, #a06bff 52%, #6a3df0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(30,0,90,.5), 0 28px 74px rgba(160,107,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(160,107,255,.85);
+}
+
+.living-btn[data-spectrum="blue"]:hover {
+background: linear-gradient(180deg, #8ad8ff 0%, #3fb8ff 52%, #1a7fe0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(0,40,90,.5), 0 28px 74px rgba(63,184,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(63,184,255,.85);
+}
+
+.living-btn:hover .btn-glow {
+opacity: 1;
+}
+
+.living-btn:active {
+transform: translateY(1px) scale(.975); transition-duration: .08s;
+}
+
+.living-btn .btn-label {
+position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px;
+}
+
+.living-btn .btn-label svg {
+width: 20px; height: 20px;
+}
+
+.living-btn {
+min-width: 100%;
+}
+
+.hero-buttons {
+flex-direction: column;
+}
+
+
+.living-btn:focus-visible { outline: 2px solid var(--soul); outline-offset: 4px; }
+@keyframes breathe { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+@keyframes logoGlow { 0%,100% { filter: drop-shadow(0 0 24px rgba(157,117,255,.35)); } 50% { filter: drop-shadow(0 0 44px rgba(216,108,255,.55)); } }
+
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px #fff, inset 0 3px 10px rgba(255,255,255,.95), inset 0 -12px 26px rgba(110,125,175,.42), 0 18px 48px rgba(0,0,0,.6), 0 5px 16px rgba(0,0,0,.45), 0 0 44px -6px var(--btnc, rgba(160,107,255,.55)); }
+  50% { box-shadow: inset 0 0 0 2px #fff, inset 0 3px 14px #fff, inset 0 -12px 26px rgba(110,125,175,.42), 0 24px 62px rgba(0,0,0,.65), 0 5px 16px rgba(0,0,0,.45), 0 0 72px -4px var(--btnc, rgba(160,107,255,.7)); }
+}
+
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+
+@media (max-width: 700px) { .honesty { grid-template-columns: 1fr; } }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .living-btn { min-width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="block-hero">
+    <p class="kicker">Naya Lego · Block 01</p>
+    <h1>Hero Buttons</h1>
+    <p class="lede">The front door. <strong>White light at rest</strong> — each ignites in its own spectrum color on touch. Three variants, law order, alive.</p>
+  </div>
+
+  <div class="demo">
+    <div class="hero-buttons">
+      <button class="living-btn" data-spectrum="magenta">
+        <span class="btn-glow"></span>
+        <span class="btn-label">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>
+          ENTER THE STANDARD</span>
+      </button>
+      <button class="living-btn" data-spectrum="purple">
+        <span class="btn-glow"></span>
+        <span class="btn-label">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="8"/><path d="M8 12h8"/></svg>
+          SEE IT WORKING</span>
+      </button>
+      <button class="living-btn" data-spectrum="blue">
+        <span class="btn-glow"></span>
+        <span class="btn-label">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          START BUILDING</span>
+      </button>
+    </div>
+    <p class="micro" style="margin-top:32px">Hover them. Each ignites in its own spectrum color — magenta, purple, blue, in law order.</p>
+  </div>
+  <div class="docs">
+    <h3>When to use</h3>
+    <p>Hero buttons are the <strong>front door</strong>. Use them for the one to three most important actions on a page — the actions that define what the page is for. Never more than three. If everything is a hero, nothing is.</p>
+    <h3>Variants</h3>
+    <ul>
+      <li><strong>data-spectrum="magenta"</strong> — the primary action. Magenta leads; richest first.</li>
+      <li><strong>data-spectrum="purple"</strong> — the secondary action. Purple is the soul.</li>
+      <li><strong>data-spectrum="blue"</strong> — the tertiary action. Blue is understanding.</li>
+    </ul>
+    <p>Always use them in spectrum order. Never duplicate a spectrum color adjacently.</p>
+    <h3>Anatomy (6 layers)</h3>
+    <ul>
+      <li>White pearl gradient body — <strong>white light at rest</strong></li>
+      <li>1.7px white rim — <strong>visible skin</strong></li>
+      <li>Inset top highlight + bottom shadow — <strong>bevel</strong></li>
+      <li>Deep drop shadow — <strong>elevation</strong></li>
+      <li>Spectrum halo underneath — <strong>its own color, quiet at rest</strong></li>
+      <li>Light sweep on a 5.5s rhythm — <strong>alive, never still</strong></li>
+    </ul>
+    <p>On hover: the idle animation stops, the button <strong>ignites</strong> in its spectrum color, text goes white, glow triples. On press: it compresses slightly — you feel the touch.</p>
+    <div class="law-box"><p>Law: black hearts, white voices, visible skin. White at rest, ignites in its own color on touch. Flat is dead.</p></div>
+    <h3>Copy-paste</h3>
+    <p>Take the <strong>.living-btn</strong> CSS, the <strong>idleBreathe</strong> and <strong>sweep</strong> keyframes, and this markup. Set <strong>data-spectrum</strong> to magenta, purple, or blue. Done.</p>
+<div class="code">&lt;button class="living-btn" data-spectrum="magenta"&gt;
+  &lt;span class="btn-glow"&gt;&lt;/span&gt;
+  &lt;span class="btn-label"&gt;
+    &lt;svg viewBox="0 0 24 24" width="22" height="22"
+         fill="none" stroke="currentColor" stroke-width="2"&gt;…&lt;/svg&gt;
+    YOUR ACTION
+  &lt;/span&gt;
+&lt;/button&gt;</div>
+  </div>
+
+
+    <div class="spectrum-strip"><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="micro" style="text-align:center;margin-top:24px">Black ground. White light. Purple soul. Quiet at rest — flat is dead, jewels not dots, and the details are the design.</p>
+
+</div>
+</body>
+</html>

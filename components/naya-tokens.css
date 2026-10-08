@@ -1,0 +1,41 @@
+/* ============================================================================
+ * Naya Design Tokens v1
+ * The foundation. Every Smart App starts here.
+ *
+ * Spectrum law: magenta → purple → blue → green → gold. Richest first.
+ * Black ground, white light, purple soul.
+ * ========================================================================== */
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+--field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+
+
+/* ---- Usage ----
+ * 1. Include this file first, before any component CSS.
+ * 2. Reference tokens as var(--magenta), var(--field), etc.
+ * 3. Never hardcode a color that a token provides.
+ * 4. To theme a component, set --sc (section color) to a spectrum token.
+ */

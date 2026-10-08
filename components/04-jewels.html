@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego: Jewels</title>
+<style>
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+--field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+
+
+/* ---- block page base ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--field);
+  color: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.block-hero { padding: 64px 0 32px; text-align: center; }
+.block-hero h1 { font-size: 40px; margin: 12px 0 16px; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin: 0 auto 32px; }
+.lede strong { color: var(--white); }
+.demo { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 48px 32px; margin: 32px 0; text-align: center; }
+.docs { text-align: left; max-width: 72ch; margin: 0 auto; }
+.docs h3 { font-size: 24px; margin: 40px 0 12px; color: var(--white); }
+.docs p, .docs li { color: var(--quiet); font-size: 18px; }
+.docs p strong, .docs li strong { color: var(--white); }
+.docs ul { margin: 12px 0 12px 24px; }
+.docs li { margin-bottom: 8px; }
+.law-box { border-left: 3px solid var(--magenta); padding: 16px 24px; margin: 32px 0; background: rgba(232,79,255,.06); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.law-box p { color: var(--white); font-size: 18px; margin: 0; }
+.code { background: #0a0d14; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; margin: 24px 0; overflow-x: auto; font-family: ui-monospace, monospace; font-size: 14px; color: #c8d4f0; text-align: left; white-space: pre; }
+.spectrum-strip { display: flex; height: 8px; border-radius: 99px; overflow: hidden; max-width: 480px; margin: 32px auto 0; }
+.spectrum-strip span { flex: 1; }
+.spectrum-strip span:nth-child(1) { background: var(--magenta); }
+.spectrum-strip span:nth-child(2) { background: var(--purple); }
+.spectrum-strip span:nth-child(3) { background: var(--blue); }
+.spectrum-strip span:nth-child(4) { background: var(--green); }
+.spectrum-strip span:nth-child(5) { background: var(--gold); }
+.action-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; align-items: center; }
+.back { display: inline-block; margin: 32px 0; color: var(--quiet); font-size: 14px; letter-spacing: .1em; }
+
+/* ---- action button (primo mini) for block navigation ---- */
+.naya-btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #0b0d14;
+  padding: 14px 26px; border-radius: 999px; border: none; min-height: 48px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f8 50%, #d7dcee 100%);
+  box-shadow: inset 0 0 0 1.7px #fff, inset 0 2px 6px rgba(255,255,255,.9), inset 0 -8px 16px rgba(110,125,175,.35), 0 12px 30px rgba(0,0,0,.5), 0 0 28px -6px var(--soul);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .25s ease, color .25s ease;
+}
+.naya-btn:hover {
+  transform: translateY(-3px) scale(1.02); color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #a06bff 55%, #6a3df0);
+  box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), 0 16px 44px rgba(160,107,255,.6), 0 0 70px -6px rgba(160,107,255,.75);
+}
+.naya-btn:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; }
+.naya-btn:active { transform: translateY(1px) scale(.985); }
+
+
+.spectrum-bar {
+display: flex; height: 10px; border-radius: 99px; overflow: hidden; max-width: 560px; margin: 0 auto; box-shadow: 0 4px 24px rgba(0,0,0,.5);
+}
+
+.spectrum-bar span {
+flex: 1;
+}
+
+.spectrum-bar span:nth-child(1) {
+background: var(--magenta); box-shadow: 0 0 18px var(--magenta);
+}
+
+.spectrum-bar span:nth-child(2) {
+background: var(--purple); box-shadow: 0 0 18px var(--purple);
+}
+
+.spectrum-bar span:nth-child(3) {
+background: var(--blue); box-shadow: 0 0 18px var(--blue);
+}
+
+.spectrum-bar span:nth-child(4) {
+background: var(--green); box-shadow: 0 0 18px var(--green);
+}
+
+.spectrum-bar span:nth-child(5) {
+background: var(--gold); box-shadow: 0 0 18px var(--gold);
+}
+
+.spectrum-label {
+margin-top: 14px; font-size: 13px; letter-spacing: .3em; color: var(--secondary); text-transform: uppercase;
+}
+
+/* ============ JEWELS ============ */
+.jewel-row {
+display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0;
+}
+
+.jewel {
+text-align: center;
+}
+
+.jewel svg {
+width: 72px; height: 72px; filter: drop-shadow(0 0 22px currentColor); animation: jewelPulse 4s ease-in-out infinite;
+}
+
+.jewel-meanings {
+display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; margin: 4px 0 32px;
+}
+
+.jewel:nth-child(2) svg {
+animation-delay: .8s;
+}
+
+.jewel:nth-child(3) svg {
+animation-delay: 1.6s;
+}
+
+.jewel:nth-child(4) svg {
+animation-delay: 2.4s;
+}
+
+.jewel:nth-child(5) svg {
+animation-delay: 3.2s;
+}
+
+.jewel .micro {
+margin-top: 10px; letter-spacing: .2em; text-transform: uppercase;
+}
+
+.token .swatch {
+height: 44px; border-radius: 8px; margin-bottom: 10px; box-shadow: inset 0 1px 3px rgba(255,255,255,.15), 0 4px 12px rgba(0,0,0,.4);
+}
+
+/* Spectrum flow across pills: hover ignites each pill in law order */
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+1):hover {
+background: linear-gradient(180deg, #ffffff, #e84fff 60%, #b52fe0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(232,79,255,.55), 0 0 40px -4px rgba(232,79,255,.7);
+}
+
+footer .spectrum-bar {
+max-width: 320px; margin-bottom: 20px;
+}
+
+@keyframes breathe { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+@keyframes logoGlow { 0%,100% { filter: drop-shadow(0 0 24px rgba(157,117,255,.35)); } 50% { filter: drop-shadow(0 0 44px rgba(216,108,255,.55)); } }
+
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px #fff, inset 0 3px 10px rgba(255,255,255,.95), inset 0 -12px 26px rgba(110,125,175,.42), 0 18px 48px rgba(0,0,0,.6), 0 5px 16px rgba(0,0,0,.45), 0 0 44px -6px var(--btnc, rgba(160,107,255,.55)); }
+  50% { box-shadow: inset 0 0 0 2px #fff, inset 0 3px 14px #fff, inset 0 -12px 26px rgba(110,125,175,.42), 0 24px 62px rgba(0,0,0,.65), 0 5px 16px rgba(0,0,0,.45), 0 0 72px -4px var(--btnc, rgba(160,107,255,.7)); }
+}
+
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+
+@media (max-width: 700px) { .honesty { grid-template-columns: 1fr; } }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .living-btn { min-width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="block-hero">
+    <p class="kicker">Naya Lego · Block 04</p>
+    <h1>Jewels</h1>
+    <p class="lede"><strong>Jewels, not dots.</strong> Five distinct cuts in spectrum order — each color a meaning, never twice adjacent.</p>
+  </div>
+
+  <div class="demo">
+    <div class="jewel-row">
+      <div class="jewel" style="color:var(--magenta)">
+        <svg viewBox="0 0 72 60"><path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="var(--magenta)" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="var(--magenta)" opacity=".35"/></svg>
+        <p class="micro">Magenta</p>
+      </div>
+      <div class="jewel" style="color:var(--purple)">
+        <svg viewBox="0 0 72 60"><circle cx="36" cy="30" r="22" fill="none" stroke="var(--purple)" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="var(--purple)" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/></svg>
+        <p class="micro">Purple</p>
+      </div>
+      <div class="jewel" style="color:var(--blue)">
+        <svg viewBox="0 0 72 60"><path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="var(--blue)" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="var(--blue)" opacity=".3"/></svg>
+        <p class="micro">Blue</p>
+      </div>
+      <div class="jewel" style="color:var(--green)">
+        <svg viewBox="0 0 72 60"><rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="var(--green)" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="var(--green)" opacity=".35"/></svg>
+        <p class="micro">Green</p>
+      </div>
+      <div class="jewel" style="color:var(--gold)">
+        <svg viewBox="0 0 72 60"><circle cx="36" cy="30" r="22" fill="none" stroke="var(--gold)" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="10" fill="var(--gold)" opacity=".4"/></svg>
+        <p class="micro">Gold</p>
+      </div>
+    </div>
+    <div class="jewel-meanings">
+      <p class="micro" style="color:var(--magenta)">What matters to you</p>
+      <p class="micro" style="color:var(--purple)">Naya's presence</p>
+      <p class="micro" style="color:var(--blue)">Understanding</p>
+      <p class="micro" style="color:var(--green)">Connected and well</p>
+      <p class="micro" style="color:var(--gold)">Rare achievement</p>
+    </div>
+    <div style="text-align:center"><button class="naya-btn">Copy the Code</button></div>
+    <p class="micro">Five jewels. Five distinct cuts. Spectrum order — magenta → purple → blue → green → gold. Never twice adjacent.</p>
+  </div>
+  <div class="docs">
+    <h3>When to use</h3>
+    <p><strong>Jewels</strong> are the visual markers of meaning — bullets, status indicators, section markers, list leaders. Wherever you'd use a dot, use a jewel. Wherever you'd use a colored badge, use a jewel in the right spectrum color.</p>
+    <h3>The law</h3>
+    <ul>
+      <li><strong>Jewels, not dots.</strong> Drawn, faceted, glowing — never plain circles.</li>
+      <li><strong>Distinct cuts.</strong> Each spectrum color gets its own shape: magenta diamond, purple orb, blue triangle, green rotated square, gold dashed ring.</li>
+      <li><strong>Spectrum order, always.</strong> Magenta → purple → blue → green → gold. Long sequences cycle back to magenta.</li>
+      <li><strong>Never twice adjacent.</strong> Two neighboring jewels never share a color.</li>
+      <li><strong>Color is identity.</strong> Each jewel color means something — see the meanings above.</li>
+    </ul>
+    <div class="law-box"><p>Law: jewels, not dots — drawn, glowing, in true spectrum order, never twice adjacent. Color is identity, not decoration.</p></div>
+    <h3>Copy-paste</h3>
+    <p>Each jewel is an inline SVG. Copy the shape for the color you need. The <strong>jewelPulse</strong> keyframe gives them their breathing glow.</p>
+<div class="code">&lt;div class="jewel" style="color:var(--magenta)"&gt;
+  &lt;svg viewBox="0 0 72 60"&gt;
+    &lt;path d="M36 6 L58 30 L36 54 L14 30 Z"
+          fill="none" stroke="var(--magenta)" stroke-width="3"/&gt;
+    &lt;path d="M36 16 L48 30 L36 44 L24 30 Z"
+          fill="var(--magenta)" opacity=".35"/&gt;
+  &lt;/svg&gt;
+  &lt;p class="micro"&gt;Magenta&lt;/p&gt;
+&lt;/div&gt;</div>
+  </div>
+
+
+    <div class="spectrum-strip"><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="micro" style="text-align:center;margin-top:24px">Black ground. White light. Purple soul. Quiet at rest — flat is dead, jewels not dots, and the details are the design.</p>
+
+</div>
+</body>
+</html>

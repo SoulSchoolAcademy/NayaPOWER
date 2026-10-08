@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego: Typography</title>
+<style>
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+--field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+
+
+/* ---- block page base ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--field);
+  color: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.block-hero { padding: 64px 0 32px; text-align: center; }
+.block-hero h1 { font-size: 40px; margin: 12px 0 16px; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin: 0 auto 32px; }
+.lede strong { color: var(--white); }
+.demo { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 48px 32px; margin: 32px 0; text-align: center; }
+.docs { text-align: left; max-width: 72ch; margin: 0 auto; }
+.docs h3 { font-size: 24px; margin: 40px 0 12px; color: var(--white); }
+.docs p, .docs li { color: var(--quiet); font-size: 18px; }
+.docs p strong, .docs li strong { color: var(--white); }
+.docs ul { margin: 12px 0 12px 24px; }
+.docs li { margin-bottom: 8px; }
+.law-box { border-left: 3px solid var(--magenta); padding: 16px 24px; margin: 32px 0; background: rgba(232,79,255,.06); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.law-box p { color: var(--white); font-size: 18px; margin: 0; }
+.code { background: #0a0d14; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; margin: 24px 0; overflow-x: auto; font-family: ui-monospace, monospace; font-size: 14px; color: #c8d4f0; text-align: left; white-space: pre; }
+.spectrum-strip { display: flex; height: 8px; border-radius: 99px; overflow: hidden; max-width: 480px; margin: 32px auto 0; }
+.spectrum-strip span { flex: 1; }
+.spectrum-strip span:nth-child(1) { background: var(--magenta); }
+.spectrum-strip span:nth-child(2) { background: var(--purple); }
+.spectrum-strip span:nth-child(3) { background: var(--blue); }
+.spectrum-strip span:nth-child(4) { background: var(--green); }
+.spectrum-strip span:nth-child(5) { background: var(--gold); }
+.action-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; align-items: center; }
+.back { display: inline-block; margin: 32px 0; color: var(--quiet); font-size: 14px; letter-spacing: .1em; }
+
+/* ---- action button (primo mini) for block navigation ---- */
+.naya-btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #0b0d14;
+  padding: 14px 26px; border-radius: 999px; border: none; min-height: 48px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f8 50%, #d7dcee 100%);
+  box-shadow: inset 0 0 0 1.7px #fff, inset 0 2px 6px rgba(255,255,255,.9), inset 0 -8px 16px rgba(110,125,175,.35), 0 12px 30px rgba(0,0,0,.5), 0 0 28px -6px var(--soul);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .25s ease, color .25s ease;
+}
+.naya-btn:hover {
+  transform: translateY(-3px) scale(1.02); color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #a06bff 55%, #6a3df0);
+  box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), 0 16px 44px rgba(160,107,255,.6), 0 0 70px -6px rgba(160,107,255,.75);
+}
+.naya-btn:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; }
+.naya-btn:active { transform: translateY(1px) scale(.985); }
+
+
+/* ============ TYPE SPECIMENS ============ */
+.type-spec {
+border-bottom: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; baseline-shift: 0; align-items: baseline; gap: 32px;
+}
+
+.type-spec .t-label {
+min-width: 220px;
+}
+
+.type-64 {
+font-size: 64px; font-family: Georgia, serif;
+}
+
+.type-40 {
+font-size: 40px; font-family: Georgia, serif;
+}
+
+.type-24 {
+font-size: 24px; font-weight: 700;
+}
+
+.type-18 {
+font-size: 18px;
+}
+
+.type-14 {
+font-size: 14px; color: var(--quiet);
+}
+
+@keyframes breathe { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+@keyframes logoGlow { 0%,100% { filter: drop-shadow(0 0 24px rgba(157,117,255,.35)); } 50% { filter: drop-shadow(0 0 44px rgba(216,108,255,.55)); } }
+
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px #fff, inset 0 3px 10px rgba(255,255,255,.95), inset 0 -12px 26px rgba(110,125,175,.42), 0 18px 48px rgba(0,0,0,.6), 0 5px 16px rgba(0,0,0,.45), 0 0 44px -6px var(--btnc, rgba(160,107,255,.55)); }
+  50% { box-shadow: inset 0 0 0 2px #fff, inset 0 3px 14px #fff, inset 0 -12px 26px rgba(110,125,175,.42), 0 24px 62px rgba(0,0,0,.65), 0 5px 16px rgba(0,0,0,.45), 0 0 72px -4px var(--btnc, rgba(160,107,255,.7)); }
+}
+
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+
+@media (max-width: 700px) { .honesty { grid-template-columns: 1fr; } }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .living-btn { min-width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="block-hero">
+    <p class="kicker">Naya Lego · Block 06</p>
+    <h1>Typography</h1>
+    <p class="lede">The scale: <strong>24 / 18 / 14</strong>. Body 18px always, headlines 24, small 14. Hierarchy by size, never color.</p>
+  </div>
+
+  <div class="demo" style="text-align:left">
+    <div class="type-spec"><span class="t-label micro">Headline · 24px</span><span class="type-24">Your intelligence, filed.</span></div>
+    <div class="type-spec"><span class="t-label micro">Body · 18px</span><span class="type-18">Every smart note, grouped by what it teaches. Body text is always 18px, always white.</span></div>
+    <div class="type-spec"><span class="t-label micro">Small · 14px</span><span class="type-14">Secondary labels, kickers, captions. Never body text.</span></div>
+    <div style="text-align:center;margin-top:24px"><button class="naya-btn">Copy the Scale</button></div>
+  </div>
+  <div class="docs">
+    <h3>The scale</h3>
+    <ul>
+      <li><strong>.type-24</strong> — headlines. 24px, bold. The voice of the page.</li>
+      <li><strong>.type-18</strong> — body. 18px, white, always. The law: body 18px, no exceptions.</li>
+      <li><strong>.type-14</strong> — small. 14px, quiet color. Labels, kickers, captions — never body text.</li>
+    </ul>
+    <h3>The rules</h3>
+    <ul>
+      <li><strong>Hierarchy by size, never color.</strong> Bigger means more important. Color means identity, not rank.</li>
+      <li><strong>White text 99% of the time.</strong> Body text is white. The one exception: dark text on white buttons.</li>
+      <li><strong>Editorial headlines</strong> use Georgia serif — the voice of reports and reading surfaces.</li>
+      <li><strong>UI text</strong> uses Inter/system — the voice of controls and chrome.</li>
+      <li><strong>Never gray body text.</strong> If it's hard to read, it's wrong — not the law.</li>
+    </ul>
+    <div class="law-box"><p>Law: 24 / 18 / 14. Body 18px, always. Size separates, color doesn't. Write for a human child first.</p></div>
+    <h3>Copy-paste</h3>
+<div class="code">&lt;h2 class="type-24"&gt;Headline&lt;/h2&gt;
+&lt;p class="type-18"&gt;Body text. Always 18px, always white.&lt;/p&gt;
+&lt;p class="type-14"&gt;Small label.&lt;/p&gt;</div>
+  </div>
+
+
+    <div class="spectrum-strip"><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="micro" style="text-align:center;margin-top:24px">Black ground. White light. Purple soul. Quiet at rest — flat is dead, jewels not dots, and the details are the design.</p>
+
+</div>
+</body>
+</html>
