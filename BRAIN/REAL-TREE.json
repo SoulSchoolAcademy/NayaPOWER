@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-07",
-  "receipt_basis_commit": "7e6bc649e21ecf5f2bf19ddf0ad56a6e8e006cfc",
-  "inventory_file_count": 239,
+  "receipt_basis_commit": "98719cdad0105a2ba11915f1c49aa8c1b026c8a5",
+  "inventory_file_count": 240,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
@@ -17,7 +17,7 @@
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 12,
+    "90-OPERATIONS": 13,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -1182,6 +1182,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md",
       "blob_sha": "188ee5921503ff2fb36ab10f11f6531cde8b71d0",
       "size": 30828
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md",
+      "blob_sha": "37e4e4b70a230f3e5027499fba1c5e3f146996d2",
+      "size": 20377
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
