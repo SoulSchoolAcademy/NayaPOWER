@@ -33,10 +33,18 @@ jobs:
       - name: Fail if a second decision engine appears
         run: |
           # The Decision Value Calculus is the one decision engine.
-          # The activation chain is the one boot path.
-          # This check fails if anyone adds a competing one.
-          if grep -ril "decision value calculus\|value_calculus" --include="*.py" kernel/ | grep -v "kernel/value_calculus.py" | grep -v "kernel/protocol/" | grep -q .; then
-            echo "FAIL: competing decision engine detected outside kernel/value_calculus.py and kernel/protocol/"
+          # This check fails only if a file DEFINES its own scoring/decision
+          # function outside the canonical locations. Merely importing or
+          # referencing kernel/value_calculus is correct usage, not competition.
+          FOUND=""
+          for f in $(grep -rl "def score_\|def decide_\|def calculate_value" --include="*.py" kernel/ 2>/dev/null); do
+            case "$f" in
+              kernel/value_calculus.py|kernel/protocol/*) ;;
+              *) FOUND="$FOUND $f" ;;
+            esac
+          done
+          if [ -n "$FOUND" ]; then
+            echo "FAIL: competing decision engine defined in:$FOUND"
             exit 1
           fi
           echo "OK: one decision engine, one boot path"
