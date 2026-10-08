@@ -293,6 +293,69 @@ def _failures(n, steps):
     return [{"run_id": i, "failing_steps": list(steps)} for i in range(n)]
 
 
+def _race_failures(n):
+    return [{"run_id": 900 + i,
+             "failing_steps": ["Resolve standing authorization mode"],
+             "head_sha_full": "a" * 40}
+            for i in range(n)]
+
+
+def _patch_ancestor(monkeypatch, value):
+    monkeypatch.setattr(prc, "_is_strict_ancestor_of_tip", lambda sha: value)
+
+
+def test_classify_superseded_tip_race_pure(monkeypatch):
+    _patch_ancestor(monkeypatch, True)
+    r = prc.classify_promotion_failures(_race_failures(2), _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "SUPERSEDED_TIP_RACE", r
+    assert r["superseded_tip_race"]["count"] == 2
+    assert "failure receipt" in r["detail"]
+
+
+def test_classify_fail_closed_with_race_mixed(monkeypatch):
+    _patch_ancestor(monkeypatch, True)
+    failures = (_failures(2, ["Enforce ratified standing policy before automatic promotion"])
+                + _race_failures(1))
+    r = prc.classify_promotion_failures(failures, _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "FAIL_CLOSED_BY_DESIGN", r
+    assert r["policy_step_trips"] == 2
+    assert r["superseded_tip_race"]["count"] == 1
+    assert "superseded-tip race" in r["detail"]
+
+
+def test_classify_race_not_claimed_when_not_ancestor(monkeypatch):
+    _patch_ancestor(monkeypatch, False)
+    r = prc.classify_promotion_failures(_race_failures(1), _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+    assert r["superseded_tip_race"]["count"] == 0
+
+
+def test_classify_race_not_claimed_when_ancestor_unknown(monkeypatch):
+    _patch_ancestor(monkeypatch, None)
+    r = prc.classify_promotion_failures(_race_failures(1), _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
+def test_classify_race_ignored_without_full_sha(monkeypatch):
+    # A failure dict without head_sha_full can never be race-attributed:
+    # the instrument records what it could actually read, never guesses.
+    r = prc.classify_promotion_failures(
+        _failures(1, ["Resolve standing authorization mode"]),
+        _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+    assert r["superseded_tip_race"]["count"] == 0
+
+
+def test_is_strict_ancestor_of_tip_rejects_shallow(monkeypatch):
+    monkeypatch.setattr(prc, "git", lambda args: "true" if args[:2] == ["rev-parse", "--is-shallow-repository"] else "x" * 40)
+    assert prc._is_strict_ancestor_of_tip("a" * 40) is None
+
+
+def test_is_strict_ancestor_of_tip_rejects_bad_sha():
+    assert prc._is_strict_ancestor_of_tip("not-a-sha") is None
+    assert prc._is_strict_ancestor_of_tip("") is None
+
+
 def test_classify_fail_closed_by_design():
     r = prc.classify_promotion_failures(
         _failures(3, ["Enforce ratified standing policy before automatic promotion"]),

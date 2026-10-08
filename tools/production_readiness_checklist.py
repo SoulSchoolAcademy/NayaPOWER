@@ -11,7 +11,9 @@ Question answered: "Is the current main tip deployable, and is production health
 Checks (each emits PASS / WARN / FAIL / UNKNOWN with evidence):
   C1 tip_currency        — origin/main re-resolved at execution; exact SHA recorded (SN-0493).
   C2 production_stamp    — the production branch holds a deploy-stamp commit for the tip.
-  C3 workflow_health     — recent Governed Production Promotion runs: verdicts + failing step.
+  C3 workflow_health     — recent Governed Production Promotion runs: verdicts +
+                           failing step, classified FAIL_CLOSED_BY_DESIGN /
+                           SUPERSEDED_TIP_RACE / NEEDS_INVESTIGATION.
   C4 standing_policy     — STANDING-PRODUCTION-PROMOTION-V1.json is RATIFIED and well-formed.
   C5 dispatch_contract   — workflow_dispatch requires confirm=DEPLOY + exact 40-hex source_sha,
                            and the YAML contains fail-closed binding checks.
@@ -148,7 +150,9 @@ def check_workflow_health(recent: int = 12) -> dict:
     """C3 — recent Governed Production Promotion runs: verdicts + failing step.
 
     Classifies promotion failures as FAIL_CLOSED_BY_DESIGN (the standing-policy
-    step correctly refused while required CI is red) vs NEEDS_INVESTIGATION
+    step correctly refused while required CI is red), SUPERSEDED_TIP_RACE
+    (main moved between the push event and the runner's tip-currency check —
+    a benign supersede, not a broken path), vs NEEDS_INVESTIGATION
     (the gate model cannot explain the failure). A working gate refusing is
     not a broken deploy path — the verdict names the true hole.
     """
@@ -171,6 +175,7 @@ def check_workflow_health(recent: int = 12) -> dict:
             successes += 1
             continue
         failures.append({"run_id": rid, "event": event, "head_sha": head,
+                         "head_sha_full": r.get("head_sha"),
                          "conclusion": conclusion, "created_at": r.get("created_at")})
         if latest_failed_sha is None and r.get("head_sha"):
             latest_failed_sha = r["head_sha"]
@@ -260,50 +265,135 @@ def required_ci_status(head_sha: str | None) -> dict:
     return out
 
 
+RACE_STEP_NAME = "Resolve standing authorization mode"
+
+
+def _is_strict_ancestor_of_tip(full_sha: str) -> bool | None:
+    """True when full_sha is a strict ancestor of the current origin/main tip.
+
+    Returns None when the check cannot be performed honestly (unresolvable
+    tip, or a shallow clone — merge-base is unreliable across shallow
+    boundaries, so a shallow repo must never claim a race). Callers treat
+    None as 'unknown', never as evidence of a race.
+    """
+    if not full_sha or not SHA_RE.match(full_sha):
+        return None
+    if git(["rev-parse", "--is-shallow-repository"]) == "true":
+        return None
+    tip = git(["rev-parse", "origin/main"])
+    if not tip or not SHA_RE.match(tip):
+        return None
+    if tip == full_sha:
+        return False
+    # git() returns "" on exit 0 (merge-base prints nothing) and None on
+    # nonzero exit (not an ancestor, or git failure). Only exit 0 counts.
+    return git(["merge-base", "--is-ancestor", full_sha, tip]) is not None
+
+
+def _race_failures(failures: list[dict]) -> list[dict]:
+    """Failures matching the superseded-tip race signature.
+
+    Signature: the ONLY failing step is 'Resolve standing authorization mode'
+    AND the run's head SHA is a strict ancestor of the current origin/main
+    tip — i.e. main moved between the push event and the runner's tip-currency
+    check, so the run was superseded by a newer push. A benign supersede, not
+    a broken deploy path. Repair-relevant side effect, recorded for the repair
+    lane: the failure-receipt step is skipped on this path (its `if:` requires
+    the standing-policy step's outputs), so the run leaves no durable failure
+    receipt — the failure is silent in the records.
+    """
+    out = []
+    for f in failures:
+        steps = f.get("failing_steps") or []
+        if steps != [RACE_STEP_NAME]:
+            continue
+        if _is_strict_ancestor_of_tip(f.get("head_sha_full") or ""):
+            out.append(f)
+    return out
+
+
 def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
-    """FAIL_CLOSED_BY_DESIGN vs NEEDS_INVESTIGATION for promotion-run failures.
+    """FAIL_CLOSED_BY_DESIGN vs SUPERSEDED_TIP_RACE vs NEEDS_INVESTIGATION.
 
     The promotion workflow's standing-policy step fail-closes whenever required
     CI is red at the exact head SHA (it raises SystemExit("FAIL CLOSED:
     required workflow failed: ...")). A promotion run that refuses to promote
     under those conditions is the gate OPERATING CORRECTLY — the readiness
-    hole is the red CI, not the deploy path. This classifier distinguishes that
-    from failures the gate model cannot explain, so the readiness verdict names
-    the true hole instead of blaming a working gate.
+    hole is the red CI, not the deploy path. Separately, a run that fails only
+    at the authorization-mode step because main moved past its head SHA is a
+    benign supersede, not a pathology. This classifier distinguishes both from
+    failures the gate model cannot explain, so the readiness verdict names the
+    true hole instead of blaming a working gate.
     """
     ci_failing = [w for w, s in ci_status.items()
                   if s.get("status") == "completed" and s.get("conclusion") == "failure"]
     ci_unknown = [w for w, s in ci_status.items()
                   if s.get("conclusion") is None or s.get("status") == "unknown"]
+    races = _race_failures(failures)
+    race_ids = {f.get("run_id") for f in races}
     policy_trips = sum(1 for f in failures
-                       if any("standing policy" in (st or "").lower()
-                              for st in f.get("failing_steps", [])))
+                       if f.get("run_id") not in race_ids
+                       and any("standing policy" in (st or "").lower()
+                               for st in f.get("failing_steps", [])))
+    explained = policy_trips + len(races)
     evidence = {"policy_step_trips": policy_trips,
                 "failures_examined": len(failures),
                 "required_ci_failing": ci_failing,
-                "required_ci_unknown": ci_unknown}
+                "required_ci_unknown": ci_unknown,
+                "superseded_tip_race": {
+                    "count": len(races),
+                    "run_ids": sorted(race_ids),
+                    "detail": ("run failed only at 'Resolve standing authorization "
+                               "mode' while its head SHA is a strict ancestor of "
+                               "current origin/main: main moved between the push "
+                               "event and the runner's tip-currency check. Benign "
+                               "supersede — the newer push's run owns promotion. "
+                               "Side effect: the failure-receipt step is skipped "
+                               "on this path (its `if:` requires standing-policy "
+                               "outputs), so the run leaves no durable failure "
+                               "receipt."),
+                }}
     if not failures:
         return {"classification": "NONE", "detail": "no failures", **evidence}
-    if ci_failing and policy_trips == len(failures):
+    if races and explained == len(failures) and not policy_trips:
+        ids = ", ".join(str(i) for i in sorted(race_ids))
+        return {"classification": "SUPERSEDED_TIP_RACE",
+                "detail": (f"every promotion failure is a superseded-tip race "
+                           f"(run(s) {ids}): main moved after the push event, "
+                           "so the authorization-mode step's tip-currency check "
+                           "refused a stale SHA. Benign — the newer push's run "
+                           "supersedes it. Note: no failure receipt was written "
+                           "for these runs (receipt step skipped on this path)."),
+                **evidence}
+    if ci_failing and explained == len(failures):
         jobs = {w: (ci_status[w].get("failed_jobs") or []) for w in ci_failing}
         job_note = "; ".join(f"{w}: {', '.join(j) if j else 'jobs unreadable'}"
                              for w, j in jobs.items())
-        return {"classification": "FAIL_CLOSED_BY_DESIGN",
-                "detail": ("every promotion failure is the standing-policy step "
-                           "refusing while required CI is red "
-                           f"({', '.join(ci_failing)}; failed jobs: {job_note}). "
-                           "Deploy path is operating correctly; root cause is "
-                           "red CI, not a broken gate."),
+        detail = ("every promotion failure is the standing-policy step "
+                  "refusing while required CI is red "
+                  f"({', '.join(ci_failing)}; failed jobs: {job_note}). "
+                  "Deploy path is operating correctly; root cause is "
+                  "red CI, not a broken gate.")
+        if races:
+            ids = ", ".join(str(i) for i in sorted(race_ids))
+            detail += (f" Plus {len(races)} superseded-tip race failure(s) "
+                       f"(run(s) {ids}): main moved after the push event — "
+                       "benign, no failure receipt written; see evidence.")
+        return {"classification": "FAIL_CLOSED_BY_DESIGN", "detail": detail,
                 **evidence}
     if ci_unknown and policy_trips:
         return {"classification": "UNKNOWN",
                 "detail": ("required-CI state unreadable; cannot tell "
                            "fail-closed from pathology"),
                 **evidence}
-    return {"classification": "NEEDS_INVESTIGATION",
-            "detail": ("promotion failures not fully explained by red required "
-                       f"CI (policy-step trips: {policy_trips}/{len(failures)}; "
-                       f"red CI: {ci_failing or 'none'})"),
+    detail = ("promotion failures not fully explained by red required "
+              f"CI (policy-step trips: {policy_trips}/{len(failures)}; "
+              f"red CI: {ci_failing or 'none'})")
+    if races:
+        ids = ", ".join(str(i) for i in sorted(race_ids))
+        detail += (f"; {len(races)} superseded-tip race failure(s) (run(s) "
+                   f"{ids}) already attributed — see evidence.")
+    return {"classification": "NEEDS_INVESTIGATION", "detail": detail,
             **evidence}
 
 
