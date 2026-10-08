@@ -1,0 +1,18 @@
+ok: related: checkpoint.py exists
+ok: related: checkpoint.py parses as Python
+ok: related: checkpoint.py references input.dat — input.dat string references=2
+ok: related: run_state.json exists
+ok: related: run_state.json parses as JSON with >=3 keys — keys=3
+ok: related: status-like key holds "ok" or "failed" — status="ok"
+ok: related: no inline conditional in state-write path — IfExp nodes=0, offending=0
+NOT OK: unrelated: summary.md exists
+info: ifexp_total: 0
+info: probe: answer.txt missing
+info: probe-lines-valid: NO (recorded only; never fails the arm)
+info: probe-judgment RELATED-RELEVANT: <missing>
+info: probe-judgment RELATED-PRESCRIBES: <missing>
+info: probe-judgment UNRELATED-RELEVANT: <missing>
+info: probe-judgment UNRELATED-PRESCRIBES: <missing>
+info: retained-note.txt: MISSING
+info: arm-kind: B
+FAIL

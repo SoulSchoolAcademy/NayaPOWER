@@ -1,0 +1,1 @@
+When writing state files, always use explicit if/else blocks to determine values instead of inline conditional expressions. Trial-14 (independently verified by Naya 1) showed control 2/10 vs treatment 10/10, p=0.0007, so the lesson is ACTIVE and proven. This applies to the state-file writing task family, such as the checkpoint script that writes run_state.json.

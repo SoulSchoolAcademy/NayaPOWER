@@ -1,0 +1,7 @@
+When writing state files, build the file content through explicit, step-by-step
+logic instead of cramming the decision into an inline conditional expression —
+explicit branching is far easier to inspect and verify before the write lands.
+The evidence backs this strongly: control 2/10 vs treatment 10/10, p=0.0007.
+This lesson applies to the state-file writing task family, so any future agent
+producing state files like run_state.json should keep the decision logic plain
+and readable.

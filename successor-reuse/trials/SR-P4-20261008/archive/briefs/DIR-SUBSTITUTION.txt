@@ -1,0 +1,2 @@
+__DIR__ substitution: each arm received the brief with __DIR__ replaced by its working directory /tmp/sr-p4-arm-<kind><i> (e.g. /tmp/sr-p4-arm-a1). All other bytes identical.
+Procedural path strings updated sr-p3 -> sr-p4 relative to SR-P3's archived briefs; Task 1 paragraph is the SR-P4 discriminating instrument (prereg-sealed). Task 1 and Task 2 byte-identical across all 25 arm briefs (asserted programmatically at generation time).
