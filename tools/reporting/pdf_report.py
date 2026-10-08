@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
-"""PDF renderer for Team Naya nine-team intelligence reports.
+"""PDF renderer for Team Naya nine-team intelligence reports — DARK EDITION.
+
+Shawn's design spec (2026-10-08):
+  - Background: BLACK, all text WHITE — no grey text anywhere
+  - Typography: section titles 24px bold, subtitles 18px bold, body 14px
+  - Nine team colors for section headers + bullet points (skimmable):
+      Learning magenta · Brain/Memory purple · Law/Governance indigo
+      Architecture forest green · Evolution yellow · Interfaces gold
+      Knowledge orange · Proving red · Innovation silver
 
 Takes the same structured ReportData as the markdown renderer
-(report_generator.py) and produces a professional, print-ready PDF
-matching the morning-report quality bar:
+(report_generator.py) and produces a professional, print-ready PDF:
 
   header (title + timestamp + one-line headline)
   key metrics bar (scannable at a glance)
@@ -53,11 +60,9 @@ from report_generator import (  # noqa: E402
 from reportlab.lib.colors import HexColor  # noqa: E402
 from reportlab.lib.pagesizes import A4  # noqa: E402
 from reportlab.lib.styles import ParagraphStyle  # noqa: E402
-from reportlab.lib.units import inch, mm  # noqa: E402
+from reportlab.lib.units import inch  # noqa: E402
 from reportlab.platypus import (  # noqa: E402
     HRFlowable,
-    KeepTogether,
-    PageBreak,
     Paragraph,
     SimpleDocTemplate,
     Spacer,
@@ -66,67 +71,95 @@ from reportlab.platypus import (  # noqa: E402
 )
 
 # ---------------------------------------------------------------------------
-# Palette — professional, print-safe
+# Palette — Shawn's dark edition spec (2026-10-08)
 # ---------------------------------------------------------------------------
-NAVY = HexColor("#1a2b4a")
-BLUE = HexColor("#2563eb")
-DARK = HexColor("#111827")
-GRAY = HexColor("#6b7280")
-LIGHT_BG = HexColor("#f3f4f6")
-BORDER = HexColor("#d1d5db")
-GREEN = HexColor("#15803d")
-GREEN_BG = HexColor("#dcfce7")
-AMBER = HexColor("#b45309")
-AMBER_BG = HexColor("#fef3c7")
-RED = HexColor("#b91c1c")
-RED_BG = HexColor("#fee2e2")
+BLACK = HexColor("#000000")
 WHITE = HexColor("#ffffff")
+
+# Nine team colors — exact per Shawn's spec.
+TEAM_COLORS: dict[str, HexColor] = {
+    "Learning": HexColor("#FF00FF"),                    # magenta
+    "Brain/Memory": HexColor("#800080"),                # purple
+    "Law/Governance": HexColor("#4B0082"),              # indigo blue
+    "Architecture/Engineering/Ops": HexColor("#228B22"),  # forest green
+    "Evolution/Succession": HexColor("#FFFF00"),        # yellow
+    "Interfaces/Hub": HexColor("#FFD700"),              # gold
+    "Knowledge/Intelligence": HexColor("#FFA500"),      # orange
+    "Proving/Verifying": HexColor("#FF0000"),           # red
+    "Innovation": HexColor("#C0C0C0"),                  # silver
+}
+
+# Score colors — brightened for black background readability.
+SCORE_GREEN = HexColor("#00E676")
+SCORE_AMBER = HexColor("#FFD700")
+SCORE_RED = HexColor("#FF5252")
+
+# Dark-theme surfaces.
+PANEL = HexColor("#111111")
+PANEL_ALT = HexColor("#1a1a1a")
+RULE = HexColor("#333333")
 
 PAGE_W, PAGE_H = A4
 MARGIN = 0.6 * inch
 
 # ---------------------------------------------------------------------------
-# Styles
+# Styles — 24 / 18 / 14 hierarchy, all white unless team-colored
 # ---------------------------------------------------------------------------
 
 
 def _styles() -> dict[str, ParagraphStyle]:
-    base = ParagraphStyle("base", fontName="Helvetica", fontSize=9.5,
-                          leading=13.5, textColor=DARK)
+    base = ParagraphStyle("base", fontName="Helvetica", fontSize=14,
+                          leading=19, textColor=WHITE)
     return {
         "base": base,
-        "title": ParagraphStyle("title", parent=base, fontName="Helvetica-Bold",
-                                fontSize=20, leading=24, textColor=NAVY),
-        "subtitle": ParagraphStyle("subtitle", parent=base, fontSize=11,
-                                   leading=14, textColor=GRAY),
+        # Report title.
+        "title": ParagraphStyle("title", parent=base,
+                                fontName="Helvetica-Bold",
+                                fontSize=28, leading=32, textColor=WHITE),
+        # Timestamp line under title.
+        "subtitle": ParagraphStyle("subtitle", parent=base, fontSize=14,
+                                   leading=18, textColor=WHITE),
+        # One-line headline.
         "headline": ParagraphStyle("headline", parent=base,
-                                   fontName="Helvetica-Oblique", fontSize=10,
-                                   leading=14, textColor=NAVY),
+                                   fontName="Helvetica-Oblique", fontSize=14,
+                                   leading=19, textColor=WHITE),
+        # Numbered section headers: 24px white bold.
         "h1": ParagraphStyle("h1", parent=base, fontName="Helvetica-Bold",
-                             fontSize=13, leading=16, textColor=NAVY,
-                             spaceBefore=10, spaceAfter=6),
+                             fontSize=24, leading=28, textColor=WHITE,
+                             spaceBefore=14, spaceAfter=8),
+        # Subtitles within sections: 18px white bold.
         "h2": ParagraphStyle("h2", parent=base, fontName="Helvetica-Bold",
-                             fontSize=10.5, leading=14, textColor=NAVY,
-                             spaceBefore=8, spaceAfter=4),
+                             fontSize=18, leading=22, textColor=WHITE,
+                             spaceBefore=10, spaceAfter=6),
         "body": base,
-        "bullet": ParagraphStyle("bullet", parent=base, leftIndent=14,
-                                 firstLineIndent=0, spaceAfter=3),
-        "small": ParagraphStyle("small", parent=base, fontSize=8,
-                                leading=11, textColor=GRAY),
+        "bullet": ParagraphStyle("bullet", parent=base, leftIndent=18,
+                                 firstLineIndent=0, spaceAfter=4),
+        "small": ParagraphStyle("small", parent=base, fontSize=14,
+                                leading=19, textColor=WHITE),
         "box_title": ParagraphStyle("box_title", parent=base,
-                                    fontName="Helvetica-Bold", fontSize=9,
-                                    leading=12, textColor=NAVY),
-        "box_body": ParagraphStyle("box_body", parent=base, fontSize=8.5,
-                                   leading=11.5, textColor=DARK),
-        "cell": ParagraphStyle("cell", parent=base, fontSize=8.5,
-                               leading=11.5),
+                                    fontName="Helvetica-Bold", fontSize=14,
+                                    leading=18, textColor=WHITE),
+        "box_body": ParagraphStyle("box_body", parent=base, fontSize=14,
+                                   leading=19, textColor=WHITE),
+        "cell": ParagraphStyle("cell", parent=base, fontSize=14,
+                               leading=18, textColor=WHITE),
         "cell_bold": ParagraphStyle("cell_bold", parent=base,
-                                    fontName="Helvetica-Bold", fontSize=8.5,
-                                    leading=11.5),
+                                    fontName="Helvetica-Bold", fontSize=14,
+                                    leading=18, textColor=WHITE),
         "cell_head": ParagraphStyle("cell_head", parent=base,
-                                    fontName="Helvetica-Bold", fontSize=8.5,
-                                    leading=11.5, textColor=WHITE),
+                                    fontName="Helvetica-Bold", fontSize=14,
+                                    leading=18, textColor=WHITE),
     }
+
+
+def _team_color(team_name: str) -> HexColor:
+    """Team color, defaulting to white for cross-team sections."""
+    return TEAM_COLORS.get(team_name, WHITE)
+
+
+def _team_hx(team_name: str) -> str:
+    """Hex string with # prefix for reportlab <font color> markup."""
+    return "#" + _team_color(team_name).hexval()[2:]
 
 
 # ---------------------------------------------------------------------------
@@ -147,24 +180,16 @@ def _short(text: str, limit: int = 160) -> str:
 
 def _score_color(score: float) -> HexColor:
     if score >= 9.0:
-        return GREEN
+        return SCORE_GREEN
     if score >= 7.0:
-        return AMBER
-    return RED
-
-
-def _score_bg(score: float) -> HexColor:
-    if score >= 9.0:
-        return GREEN_BG
-    if score >= 7.0:
-        return AMBER_BG
-    return RED_BG
-
+        return SCORE_AMBER
+    return SCORE_RED
 
 
 def _hx(color) -> str:
     """Hex string with # prefix for reportlab <font color> markup."""
     return "#" + color.hexval()[2:]
+
 
 def _delta_str(sp: ScorePoint, previous: dict) -> str:
     prev = previous.get(sp.area)
@@ -269,7 +294,7 @@ def _single_priority(sections: list[TeamSection],
 
 
 # ---------------------------------------------------------------------------
-# Flowable builders
+# Flowable builders — dark theme
 # ---------------------------------------------------------------------------
 
 def _metrics_bar(st: dict, data: ReportData) -> Table:
@@ -299,13 +324,14 @@ def _metrics_bar(st: dict, data: ReportData) -> Table:
     ]
     t = Table(cells, colWidths=[1.35 * inch] * 5)
     t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), LIGHT_BG),
-        ("BOX", (0, 0), (-1, -1), 0.5, BORDER),
-        ("INNERGRID", (0, 0), (-1, -1), 0.5, BORDER),
+        ("BACKGROUND", (0, 0), (-1, -1), PANEL),
+        ("BOX", (0, 0), (-1, -1), 0.5, RULE),
+        ("INNERGRID", (0, 0), (-1, -1), 0.5, RULE),
         ("TOPPADDING", (0, 0), (-1, -1), 6),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
         ("LEFTPADDING", (0, 0), (-1, -1), 8),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("TEXTCOLOR", (0, 0), (-1, -1), WHITE),
     ]))
     return t
 
@@ -326,7 +352,7 @@ def _highlight_boxes(st: dict, data: ReportData,
     if moves:
         _, area, prev, now, status = moves[0]
         d = now - prev
-        color = GREEN if d > 0 else RED
+        color = SCORE_GREEN if d > 0 else SCORE_RED
         boxes.append((
             "BIGGEST MOVE",
             f"{_esc(area)} {prev:.1f} → <b>{now:.1f}</b> ({status})",
@@ -340,7 +366,7 @@ def _highlight_boxes(st: dict, data: ReportData,
         boxes.append((
             "TOP BLOCKER",
             f"[{_esc(team)}] {_esc(_short(item.text, 110))}",
-            RED,
+            SCORE_RED,
         ))
 
     # 3 — throughput.
@@ -348,7 +374,7 @@ def _highlight_boxes(st: dict, data: ReportData,
     boxes.append((
         "THROUGHPUT",
         f"<b>{n_ach}</b> achievements recorded this window",
-        BLUE,
+        TEAM_COLORS["Interfaces/Hub"],  # gold
     ))
 
     # 4 — floor count.
@@ -359,7 +385,7 @@ def _highlight_boxes(st: dict, data: ReportData,
         f"area{'s' if len(data.scores) != 1 else ''}"
         + (": " + ", ".join(_esc(sp.area) for sp in at_floor[:3])
            if at_floor else ""),
-        GREEN if at_floor else GRAY,
+        SCORE_GREEN if at_floor else WHITE,
     ))
 
     # 5 — authoritative anchor.
@@ -369,7 +395,7 @@ def _highlight_boxes(st: dict, data: ReportData,
         boxes.append((
             "AUTHORITATIVE",
             f"{_esc(sp.area)} <b>{sp.score:.1f}</b> (verified, not a claim)",
-            NAVY,
+            WHITE,
         ))
 
     boxes = boxes[:5]
@@ -384,11 +410,13 @@ def _highlight_boxes(st: dict, data: ReportData,
         ]
         cell = Table(inner, colWidths=[width - 12])
         cell.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, -1), PANEL),
             ("LEFTPADDING", (0, 0), (-1, -1), 6),
             ("RIGHTPADDING", (0, 0), (-1, -1), 6),
             ("TOPPADDING", (0, 0), (-1, -1), 2),
             ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
             ("LINEBELOW", (0, 0), (-1, 0), 2, color),
+            ("TEXTCOLOR", (0, 0), (-1, -1), WHITE),
         ]))
         row.append(cell)
     t = Table([row], colWidths=[width] * n)
@@ -401,7 +429,7 @@ def _highlight_boxes(st: dict, data: ReportData,
 
 
 def _scorecard_table(st: dict, data: ReportData) -> Table:
-    """Team × score dashboard."""
+    """Team × score dashboard — dark theme."""
     header = [
         Paragraph("<b>Team</b>", st["cell_head"]),
         Paragraph("<b>Manager</b>", st["cell_head"]),
@@ -422,8 +450,10 @@ def _scorecard_table(st: dict, data: ReportData) -> Table:
         tag = "authoritative" if sp.status == "authoritative" else "claim"
         delta = _delta_str(sp, data.previous_scores)
         color = _score_color(sp.score)
+        thx = _team_hx(team_name)
         rows.append([
-            Paragraph(_esc(team_name), st["cell"]),
+            Paragraph(f'<font color="{thx}"><b>{_esc(team_name)}</b></font>',
+                       st["cell"]),
             Paragraph(_esc(manager), st["cell"]),
             Paragraph(_esc(sp.area), st["cell"]),
             Paragraph(
@@ -441,16 +471,16 @@ def _scorecard_table(st: dict, data: ReportData) -> Table:
     widths = [w * scale for w in widths]
     t = Table(rows, colWidths=widths, repeatRows=1)
     style = [
-        ("BACKGROUND", (0, 0), (-1, 0), NAVY),
-        ("TEXTCOLOR", (0, 0), (-1, 0), WHITE),
-        ("FONTSIZE", (0, 0), (-1, -1), 8.5),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("BACKGROUND", (0, 0), (-1, 0), PANEL_ALT),
+        ("TEXTCOLOR", (0, 0), (-1, -1), WHITE),
+        ("FONTSIZE", (0, 0), (-1, -1), 14),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
         ("LEFTPADDING", (0, 0), (-1, -1), 6),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("GRID", (0, 0), (-1, -1), 0.5, BORDER),
+        ("GRID", (0, 0), (-1, -1), 0.5, RULE),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [WHITE, LIGHT_BG]),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [PANEL, BLACK]),
     ]
     t.setStyle(TableStyle(style))
     return t
@@ -467,11 +497,30 @@ def _team_lookup() -> list[dict]:
     return _team_cache
 
 
+def _team_bullet(team_name: str, text: str, st: dict) -> Paragraph:
+    """A bullet point in the team's color."""
+    thx = _team_hx(team_name)
+    return Paragraph(
+        f'<font color="{thx}">▪</font> {_esc(text)}',
+        st["bullet"])
+
+
 def _team_section_flowables(st: dict, i: int, sec: TeamSection,
                             data: ReportData) -> list:
-    """One team's section: scores, achievements, holes, plan, priorities."""
+    """One team's section: 24px team-colored header, team-colored bullets."""
     out: list = []
-    # Header line with score chips.
+    thx = _team_hx(sec.name)
+
+    # Team header: 24px bold in team color.
+    out.append(Paragraph(
+        f'<font color="{thx}"><b>Team {i}: {_esc(sec.name)}</b></font>',
+        st["h1"]))
+    out.append(Paragraph(
+        f"{_esc(sec.manager)} · feed {sec.feed}",
+        st["subtitle"]))
+    out.append(Spacer(1, 4))
+
+    # Score chips.
     chips: list[str] = []
     for sp in sec.scores:
         color = _score_color(sp.score)
@@ -479,78 +528,79 @@ def _team_section_flowables(st: dict, i: int, sec: TeamSection,
         delta = _delta_str(sp, data.previous_scores)
         chips.append(
             f'<font color="{_hx(color)}"><b>{sp.score:.1f}</b></font>'
-            f' <font size=7 color="#6b7280">{_esc(sp.area)} · {tag} · Δ{delta}</font>'
+            f' {_esc(sp.area)} · {tag} · Δ{delta}'
         )
     chip_txt = " &nbsp;&nbsp; ".join(chips) if chips else \
-        '<font size=8 color="#6b7280">cross-cutting — no direct area score</font>'
-    out.append(Paragraph(
-        f"<b>Team {i}: {_esc(sec.name)}</b>"
-        f' <font size=8 color="#6b7280">({_esc(sec.manager)} · feed {sec.feed})</font>',
-        st["h2"]))
+        "cross-cutting — no direct area score"
     out.append(Paragraph(chip_txt, st["body"]))
-    out.append(Spacer(1, 4))
+    out.append(Spacer(1, 6))
 
-    # Achievements.
-    out.append(Paragraph("<b>Done this period</b>", st["cell_bold"]))
+    # Achievements — 18px white subtitle, team-colored bullets.
+    out.append(Paragraph("<b>Done this period</b>", st["h2"]))
     done = sec.achievements[:5]
     if done:
         for a in done:
             out.append(Paragraph(
-                f"- {_esc(_short(a.text, 200))}"
-                f' <font size=7 color="#6b7280">[{_esc(a.source)}]</font>',
+                f'<font color="{thx}">▪</font> '
+                f'{_esc(_short(a.text, 200))}'
+                f' [{_esc(a.source)}]',
                 st["bullet"]))
     else:
-        out.append(Paragraph(
-            '<font color="#6b7280">Nothing recorded this window.</font>',
-            st["bullet"]))
+        out.append(Paragraph("Nothing recorded this window.", st["bullet"]))
 
-    # Holes.
+    # Holes — 18px white subtitle, team-colored bullets.
     holes = sorted(sec.holes, key=lambda x: -x.priority)[:3]
     if holes:
-        out.append(Paragraph("<b>Holes</b>", st["cell_bold"]))
+        out.append(Paragraph("<b>Holes</b>", st["h2"]))
         for j, h in enumerate(holes, 1):
             out.append(Paragraph(
-                f"{j}. {_esc(_short(h.text, 200))}"
-                f' <font size=7 color="#6b7280">[{_esc(h.source)}]</font>',
+                f'<font color="{thx}">▪</font> '
+                f'{j}. {_esc(_short(h.text, 200))}'
+                f' [{_esc(h.source)}]',
                 st["bullet"]))
 
-    # Action plan.
+    # Action plan — 18px white subtitle.
+    out.append(Paragraph("<b>Plan to 10</b>", st["h2"]))
     plan = action_plan_text(sec).replace("_", "")
-    out.append(Paragraph(
-        f"<b>Plan to 10:</b> {_esc(_short(plan, 260))}", st["bullet"]))
+    out.append(Paragraph(_esc(_short(plan, 260)), st["body"]))
 
-    # Priorities.
+    # Priorities — 18px white subtitle, team-colored bullets.
     if sec.priorities:
-        out.append(Paragraph("<b>Next</b>", st["cell_bold"]))
+        out.append(Paragraph("<b>Next</b>", st["h2"]))
         for p in sec.priorities[:3]:
             out.append(Paragraph(
-                f"→ {_esc(_short(p.text, 200))}", st["bullet"]))
+                f'<font color="{thx}">→</font> '
+                f'{_esc(_short(p.text, 200))}',
+                st["bullet"]))
 
-    out.append(HRFlowable(width="100%", thickness=0.5, color=BORDER,
-                          spaceAfter=4, spaceBefore=6))
+    out.append(HRFlowable(width="100%", thickness=0.5, color=RULE,
+                          spaceAfter=6, spaceBefore=8))
     return out
 
 
 # ---------------------------------------------------------------------------
-# Page template — header + footer
+# Page template — black background, white header + footer
 # ---------------------------------------------------------------------------
 
 def _header_footer(canvas, doc, report_type: str, stamp: str):
     canvas.saveState()
+    # Black page background.
+    canvas.setFillColor(BLACK)
+    canvas.rect(0, 0, PAGE_W, PAGE_H, stroke=0, fill=1)
     # Header rule.
-    canvas.setStrokeColor(BORDER)
+    canvas.setStrokeColor(RULE)
     canvas.setLineWidth(0.5)
     canvas.line(MARGIN, PAGE_H - 0.45 * inch,
                 PAGE_W - MARGIN, PAGE_H - 0.45 * inch)
-    canvas.setFont("Helvetica", 7)
-    canvas.setFillColor(GRAY)
+    canvas.setFont("Helvetica", 10)
+    canvas.setFillColor(WHITE)
     canvas.drawString(MARGIN, PAGE_H - 0.38 * inch,
                       "TEAM NAYA INTELLIGENCE REPORT")
     canvas.drawRightString(PAGE_W - MARGIN, PAGE_H - 0.38 * inch,
                           f"{report_type.upper()} · {stamp}")
     # Footer.
-    canvas.setFont("Helvetica", 7)
-    canvas.setFillColor(GRAY)
+    canvas.setFont("Helvetica", 10)
+    canvas.setFillColor(WHITE)
     canvas.drawString(MARGIN, 0.45 * inch,
                       "PROVE THAT THE BRAIN LEARNS")
     canvas.drawCentredString(PAGE_W / 2, 0.45 * inch,
@@ -565,7 +615,7 @@ def _header_footer(canvas, doc, report_type: str, stamp: str):
 # ---------------------------------------------------------------------------
 
 def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
-    """Render ReportData to a professional PDF. Returns the output path."""
+    """Render ReportData to a professional dark-theme PDF. Returns output path."""
     st = _styles()
     stamp = data.generated_at.strftime("%Y-%m-%d %H:%M UTC")
     kind = (data.window_label or report_type).upper()
@@ -575,8 +625,7 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     # ---- Title block ----
     story.append(Spacer(1, 0.15 * inch))
     story.append(Paragraph("Team Naya Intelligence Report", st["title"]))
-    story.append(Paragraph(
-        f"{kind} · {stamp}", st["subtitle"]))
+    story.append(Paragraph(f"{kind} · {stamp}", st["subtitle"]))
     story.append(Spacer(1, 6))
 
     sections, unassigned = group_by_team(data)
@@ -611,13 +660,13 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     if wins:
         for team, item in wins:
             story.append(Paragraph(
-                f"- <b>[{_esc(team)}]</b> {_esc(_short(item.text, 220))}"
-                f' <font size=7 color="#6b7280">[{_esc(item.source)}]</font>',
+                f'<font color="{_team_hx(team)}">▪</font> '
+                f"<b>[{_esc(team)}]</b> {_esc(_short(item.text, 220))}"
+                f' [{_esc(item.source)}]',
                 st["bullet"]))
     else:
-        story.append(Paragraph(
-            '<font color="#6b7280">No achievements recorded this window.</font>',
-            st["body"]))
+        story.append(Paragraph("No achievements recorded this window.",
+                               st["body"]))
 
     # ---- 4 · Where we're missing ----
     story.append(Paragraph("4 · Where we're missing the mark", st["h1"]))
@@ -625,14 +674,13 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     if misses:
         for j, (team, item) in enumerate(misses, 1):
             story.append(Paragraph(
+                f'<font color="{_team_hx(team)}">▪</font> '
                 f"<b>MISS {j} — [{_esc(team)}]</b> "
                 f"{_esc(_short(item.text, 240))}"
-                f' <font size=7 color="#6b7280">[{_esc(item.source)}]</font>',
+                f' [{_esc(item.source)}]',
                 st["bullet"]))
     else:
-        story.append(Paragraph(
-            '<font color="#6b7280">No holes recorded this window.</font>',
-            st["body"]))
+        story.append(Paragraph("No holes recorded this window.", st["body"]))
 
     # ---- 5 · Decisions needed ----
     story.append(Paragraph("5 · Decisions needed", st["h1"]))
@@ -640,18 +688,16 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     if decisions:
         for j, (team, item) in enumerate(decisions, 1):
             story.append(Paragraph(
+                f'<font color="{_team_hx(team)}">▪</font> '
                 f"<b>{j} · [{_esc(team)}]</b> {_esc(_short(item.text, 240))}",
                 st["bullet"]))
             story.append(Paragraph(
-                '<font size=8 color="#6b7280">Recommendation: resolve via '
-                "the Value Calculus; escalate to Shawn only if it crosses "
-                "a protected gate.</font>",
+                "Recommendation: resolve via the Value Calculus; "
+                "escalate to Shawn only if it crosses a protected gate.",
                 st["bullet"]))
     else:
-        story.append(Paragraph(
-            '<font color="#6b7280">None recorded this window — '
-            "the math is deciding.</font>",
-            st["body"]))
+        story.append(Paragraph("None recorded this window — "
+                               "the math is deciding.", st["body"]))
 
     # ---- 6 · Single priority ----
     story.append(Paragraph("6 · Single priority for next period", st["h1"]))
@@ -669,28 +715,23 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
         if not items:
             continue
         shown = True
-        story.append(Paragraph(f"<b>{label}</b>", st["cell_bold"]))
+        story.append(Paragraph(f"<b>{label}</b>", st["h2"]))
         for it in items:
-            story.append(Paragraph(
-                f"- {_esc(_short(it.text, 220))}"
-                f' <font size=7 color="#6b7280">[{_esc(it.source)}]</font>',
-                st["bullet"]))
+            story.append(_team_bullet("Cross-team", _short(it.text, 220) +
+                                      f" [{it.source}]", st))
     if not shown:
-        story.append(Paragraph(
-            '<font color="#6b7280">All items attributed to teams.</font>',
-            st["body"]))
+        story.append(Paragraph("All items attributed to teams.", st["body"]))
 
     # ---- Evidence basis ----
     story.append(Spacer(1, 8))
-    story.append(HRFlowable(width="100%", thickness=0.5, color=BORDER))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=RULE))
     since_s = data.since.strftime("%Y-%m-%d %H:%M UTC")
     story.append(Paragraph(
-        f'<font size=7 color="#6b7280">Window: since {since_s}. '
+        f"Window: since {since_s}. "
         f"Generated {stamp}. Evidence basis: worker run logs, daily memory "
         "log, GitHub (#1354 + PRs), Supabase learning_evidence (read-only). "
         "All items carry their source. Scores labeled claim vs authoritative; "
-        "a claim becomes authoritative only on independent verification."
-        "</font>",
+        "a claim becomes authoritative only on independent verification.",
         st["small"]))
 
     def _page(canv, doc):

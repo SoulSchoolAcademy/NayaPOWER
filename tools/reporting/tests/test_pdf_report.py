@@ -14,10 +14,12 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from pdf_report import (  # noqa: E402
+    TEAM_COLORS,
     _decisions,
     _headline,
     _score_color,
     _single_priority,
+    _team_color,
     _top_misses,
     _top_wins,
     build_pdf,
@@ -151,11 +153,53 @@ def test_pdf_numbered_sections(sample_pdf):
 
 
 def test_score_color_thresholds():
-    assert _score_color(9.0).hexval() == _c.HexColor("#15803d").hexval()
-    assert _score_color(9.5).hexval() == _c.HexColor("#15803d").hexval()
-    assert _score_color(7.0).hexval() == _c.HexColor("#b45309").hexval()
-    assert _score_color(8.9).hexval() == _c.HexColor("#b45309").hexval()
-    assert _score_color(4.0).hexval() == _c.HexColor("#b91c1c").hexval()
+    # Bright variants for black background readability.
+    assert _score_color(9.0).hexval() == _c.HexColor("#00E676").hexval()
+    assert _score_color(9.5).hexval() == _c.HexColor("#00E676").hexval()
+    assert _score_color(7.0).hexval() == _c.HexColor("#FFD700").hexval()
+    assert _score_color(8.9).hexval() == _c.HexColor("#FFD700").hexval()
+    assert _score_color(4.0).hexval() == _c.HexColor("#FF5252").hexval()
+
+
+def test_team_colors_match_shawn_spec():
+    """Shawn's exact nine-team color spec (2026-10-08)."""
+    expected = {
+        "Learning": "#FF00FF",
+        "Brain/Memory": "#800080",
+        "Law/Governance": "#4B0082",
+        "Architecture/Engineering/Ops": "#228B22",
+        "Evolution/Succession": "#FFFF00",
+        "Interfaces/Hub": "#FFD700",
+        "Knowledge/Intelligence": "#FFA500",
+        "Proving/Verifying": "#FF0000",
+        "Innovation": "#C0C0C0",
+    }
+    assert set(TEAM_COLORS.keys()) == set(expected.keys())
+    for team, hx in expected.items():
+        assert TEAM_COLORS[team].hexval() == _c.HexColor(hx).hexval(), \
+            f"{team} color mismatch"
+    # Every team in TEAM_STRUCTURE has a color.
+    for t in TEAM_STRUCTURE:
+        assert t["name"] in TEAM_COLORS, f"no color for {t['name']}"
+    # Unknown team defaults to white.
+    assert _team_color("Cross-team").hexval() == _c.HexColor("#ffffff").hexval()
+
+
+def test_typography_hierarchy():
+    """24px section titles, 18px subtitles, 14px body — all white."""
+    from pdf_report import _styles
+    st = _styles()
+    assert st["h1"].fontSize == 24
+    assert st["h1"].textColor.hexval() == _c.HexColor("#ffffff").hexval()
+    assert st["h2"].fontSize == 18
+    assert st["h2"].textColor.hexval() == _c.HexColor("#ffffff").hexval()
+    assert st["body"].fontSize == 14
+    assert st["body"].textColor.hexval() == _c.HexColor("#ffffff").hexval()
+    # No grey text anywhere in the style set.
+    grey = _c.HexColor("#6b7280")
+    for name, style in st.items():
+        assert style.textColor.hexval() != grey.hexval(), \
+            f"style {name} still uses grey"
 
 
 def test_headline_mentions_movement():
