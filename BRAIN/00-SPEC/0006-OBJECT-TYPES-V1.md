@@ -6,7 +6,7 @@
 ## Core object families
 
 ```
-NODE EVENT PRINCIPLE RULE DECISION REQUIREMENT GOAL CONSTRAINT
+INTELLIGENT_BLOCK NODE EVENT PRINCIPLE RULE DECISION REQUIREMENT GOAL CONSTRAINT
 INSIGHT CLAIM QUESTION UNKNOWN EVIDENCE VERIFICATION OUTCOME
 LEARNING PROCEDURE CAPABILITY EXPERIMENT PREDICTION STATE
 RELATIONSHIP SUCCESSOR
@@ -32,6 +32,7 @@ Minimum universal fields:
 
 | Type | Required semantic fields |
 |---|---|
+| INTELLIGENT_BLOCK | meaning, context, provenance, applicability, reusability_class |
 | NODE | responsibility, purpose, applicability |
 | EVENT | actor, action, occurred_at, source |
 | PRINCIPLE | proposition, scope |

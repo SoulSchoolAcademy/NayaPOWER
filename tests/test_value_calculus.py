@@ -190,9 +190,13 @@ def test_bad_baseline_is_rejected(profile):
 
 
 def test_provisional_pass_reopens_for_delayed_harm_window():
-    assert verification_state(True, False, True) == "PASS_PENDING_WINDOW"
-    assert verification_state(True, True, True) == "VERIFIED_PASS"
+    # Materialized delayed harm is FAIL regardless of window state.
+    assert verification_state(True, False, True) == "FAIL"
+    assert verification_state(True, True, True) == "FAIL"
     assert verification_state(False, False, True) == "FAIL"
+    # No harm + open window = pending; no harm + closed window = verified.
+    assert verification_state(True, False, False) == "PASS_PENDING_WINDOW"
+    assert verification_state(True, True, False) == "VERIFIED_PASS"
 
 
 def test_decision_receipt_and_independent_recompute(profile):
@@ -531,9 +535,23 @@ def test_retrieval_explicit_flag_violation_is_blocked():
 def test_retrieval_cross_scope_is_fail_not_blocked():
     # FAIL (not BLOCKED): it may become eligible if cross-scope authority
     # is granted; the evidence is complete and determinate.
-    rec = retrieval_eligible(_retrieval_request(object_scope="owner:b"))
+    # authority_basis is known but does not grant cross-scope access.
+    rec = retrieval_eligible(_retrieval_request(
+        object_scope="owner:b",
+        authority_basis="consent:owner-a-only",
+    ))
     assert rec["state"] == ELIGIBLE_FAIL
     assert "CROSS_SCOPE" in rec["reasons"]
+
+
+def test_retrieval_cross_scope_with_authority_passes():
+    # Cross-scope authority granted via authority_basis: the scope mismatch
+    # is authorized, so CROSS_SCOPE does not FAIL.
+    rec = retrieval_eligible(_retrieval_request(
+        object_scope="owner:b",
+        authority_basis="grant:cross-scope-owner-b",
+    ))
+    assert "CROSS_SCOPE" not in rec["reasons"]
 
 
 def test_retrieval_non_canonical_source_is_fail():
@@ -582,6 +600,12 @@ def _consequential_request(**overrides):
 def test_consequential_hard_violation_is_blocked(profile):
     rec = consequential_use_eligible(_consequential_request(hard_violation=True), profile)
     assert rec["state"] == ELIGIBLE_BLOCKED
+
+
+def test_consequential_unauthenticated_is_blocked(profile):
+    rec = consequential_use_eligible(_consequential_request(requester_id=None), profile)
+    assert rec["state"] == ELIGIBLE_BLOCKED
+    assert "UNAUTHENTICATED_REQUESTER" in rec["reasons"]
 
 
 def test_consequential_unknown_flag_never_passes(profile):

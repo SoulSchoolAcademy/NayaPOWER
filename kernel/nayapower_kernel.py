@@ -74,9 +74,9 @@ class Kernel:
     def manifest(self) -> dict:
         return self._manifest
 
-    @classmethod
-    def node_order(cls):
-        return cls._NODE_ORDER
+    @property
+    def node_order(self):
+        return self._NODE_ORDER
 
     def retrieve_intelligent_block(
         self,
