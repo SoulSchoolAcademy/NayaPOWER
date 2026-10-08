@@ -1,0 +1,28 @@
+name: Ratified Claim Gate (advisory)
+
+# LAW rung 1 — ratified-claim integrity (NAYA 4, LAW-DRIVER, 2026-10-08).
+# Prime 2: a RATIFIED marking is structure, not decoration. This workflow scans
+# the ADDED lines of a PR diff and reports any RATIFIED/RATIFICATION assertion
+# that lacks a RATIFICATION-RECORD authority citation (#NNNN or YYYY-MM-DD).
+#
+# ADVISORY ONLY BY CONSTRUCTION. It runs with `|| true` and never blocks a
+# merge. Promotion to a required gate needs the Human Director's explicit word.
+# Mirrors the advisory pattern of the nine-plus delivery gate (#1805).
+
+on:
+  pull_request:
+
+jobs:
+  ratified-claim-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan added lines for unrecorded RATIFIED claims (advisory)
+        run: |
+          git diff "origin/${{ github.base_ref }}"...HEAD > /tmp/pr.diff
+          python3 tools/check_ratified_claims.py --diff /tmp/pr.diff || true
