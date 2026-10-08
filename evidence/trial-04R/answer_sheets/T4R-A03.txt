@@ -1,0 +1,12 @@
+Q2: What it is, what purpose it serves, and whether it is important (is it important) — the pre-deletion understanding checklist. [source: IB-SMART-NOTE-20261005-sn0408-deletion-discipline.md]
+Q3: CANDIDATE → RATIFIED and TESTING → RATIFIED. [source: IB-SMART-NOTE-20261006-sn0460-ratified-predecessor-guard.md]
+Q4: 17. [source: IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote.md]
+Q5: [CANARY-DRILL]. [source: IB-SMART-NOTE-20261005-sn0344-canary-repair-drill-rule.md]
+Q6: 1. THESIS — Manifesto: What are we? 2. LAW — Constitutional Code: How do we behave? 3. MISSION — Mission Contract: What are we accomplishing, and what does winning mean? 4. MECHANISM — Systems Contract: How does the system turn the mission into proven reality? [source: IB-SMART-NOTE-20261006-sn035-charter-stratification-quality-gate.md]
+Q7: DISCERN → DISTILL → RESEARCH/VERIFY → DECIDE → ACT → SHOW PROOF → LEARN → RETIRE STALE ACTIVE NOISE → COMPOUND. [source: IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md]
+Q8: Documentation from proof (DOCUMENTED is not PROVEN). [source: IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md]
+Q9: A restart loop — restarting the process cannot heal resource exhaustion. [source: IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md]
+Q10: The baseline (what "before" looks like — frozen baseline) and the evaluator (how success is measured — immutable evaluator). [source: IB-SMART-NOTE-20261001-sn017-autoresearch-harness-lessons.md]
+Q11: 68
+Q12: Tokyo
+Q13: 366
