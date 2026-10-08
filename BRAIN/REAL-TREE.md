@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-08  
-**Receipt basis commit:** `e9afcc17b1620c9fd74aaf4f44ed65bd7ab32799`  
-**Inventory file count:** 245  
+**Receipt basis commit:** `8337f9d9e603b90930b23a529967fee791532d04`  
+**Inventory file count:** 261  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 75 |
+| 05-MEMORY | 91 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -212,6 +212,22 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md` — `a17fe344f136` (4499 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md` — `1d74b1e0df9a` (6563 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/NINE-NODE-SMART-NOTE-BUILD-MANIFEST-V1.md` — `e2b935e7d0ce` (4958 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md` — `7afad9abac25` (1331 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/note.md` — `71a20d452aa4` (3406 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/package.json` — `79d92cf4098f` (1432 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/receipt.json` — `ce3d0c271404` (523 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/note.md` — `b63cdb6c8ce1` (1798 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/package.json` — `ec0487ba9f6b` (1248 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T11-reserve-rule/receipt.json` — `d2675ab13357` (495 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/note.md` — `e474486b48d9` (1899 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/package.json` — `bc1da25d8202` (1149 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T12-compositional/receipt.json` — `37891bfecf00` (382 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/note.md` — `b63cdb6c8ce1` (1798 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/package.json` — `570be767e6fd` (1201 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T13-crossdomain/receipt.json` — `663eb4bd0018` (382 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/note.md` — `7898fffbe873` (2066 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/package.json` — `994eba7953cb` (1317 bytes)
+- `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T14-statefile/receipt.json` — `a7e86d77cb9f` (382 bytes)
 ### 06-PROOF — Proof
 
 - `BRAIN/06-PROOF/0001-PROOF-CONTRACT-V1.md` — `f07b3b9a33a8` (2468 bytes)
