@@ -63,7 +63,7 @@ If it renders for a human, this contract governs it.
 - **Chrome** (buttons, actions, active states, primary actions): purple edge, white text.
 - **Text**: white, 99% of the time. Separation by SIZE, never color.
 - **Theme** (per-item accents: per-contact, per-list, per-card): the spectrum in natural flow —
-  **purple → blue → green → yellow → gold → orange → red → magenta** (→ purple, cycling).
+  **magenta → purple → blue → green → gold** (→ magenta, cycling) — SHAWN'S STANDING LAW 2026-10-08 21:28 UTC.
 
 **DC-011 [RATIFIED].** Never cross the jobs: **no theme color on chrome, no chrome color as flood.** (A-LAW-04)
 
@@ -106,7 +106,10 @@ Spectrum tokens:
 | `--red` | `#ff5a6e` | Blocked / failed. The alarm. **Never decorative** |
 | `--magenta` | `#d86cff` | Human significance. The human's own things |
 
-**DC-031 [RATIFIED].** Canonical spectrum flow order (the universe's language): **purple → blue → green → yellow → gold → orange → red → magenta → purple…** — it cycles. **CONTRACTOR DECISION:** "green" = `--emerald` `#55e39a`, "yellow" = `--yellow` `#f1d75a` (pinned from index-2's ground-truth map) *(pending Shawn)*.
+**DC-031 [SUPERSEDED by Shawn 2026-10-08 21:28 UTC].** Canonical spectrum flow order — **Shawn's standing law, verbatim:** **magenta → purple → blue → green → gold** — richest first, ultra-rich magenta leading. Every sequence on every page follows it; when a list runs long you return to magenta and flow again. Cycle returns to MAGENTA.
+
+**DC-031a [SHAWN DIRECTIVE].** Shawn's six standing design principles (2026-10-08 21:28 UTC):
+1. **Spectrum order is LAW** (above). 2. **Color is identity, not decoration.** One color job per thing; adjacent never share hue; never shouts over the brand. 3. **Black ground, white light, purple soul.** White text 99%; quiet at rest, ignites in its own color on touch. 4. **Everything dimensional.** Bevel, elevation, glow. Flat is dead. 5. **Jewels, not dots** — drawn, glowing, true spectrum order, never twice adjacent; craft distinct icons. 6. **The details ARE the design.** No missing spaces, no stranded boxes, no red boxes.
 
 **DC-032 [RATIFIED].** White light at rest, own color on touch: every interactive element shows a VISIBLE white edge light when idle — borders **1.5px minimum**, bright enough to SEE the separation (Shawn's standing complaint: *"you can't see the separation. Fix it with light."*). On hover it ignites in its OWN spectrum color, not blanket purple. Purple is for chrome; themed elements burn their own color. (A-LAW-05)
 

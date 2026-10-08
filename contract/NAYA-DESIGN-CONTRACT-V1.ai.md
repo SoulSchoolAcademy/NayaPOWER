@@ -37,7 +37,7 @@ North star: **Black ground. White light. Purple soul.** If your design doesn't r
 | Spaces | `--lime` | `#b8ee57` |
 | Smart Grow | `--emerald` | `#55e39a` (contractor decision, pending Shawn) |
 
-Spectrum flow for item sets: `purple → blue → emerald(green) → yellow(#f1d75a) → gold → orange → red → magenta → (cycle)`. Sequence MUST be a circular subsequence of this flow; start point is your beauty-first choice. Red = alarm only, never decorative. Amber/rose pink = forbidden everywhere.
+Spectrum flow for item sets — SHAWN'S STANDING LAW (2026-10-08 21:28 UTC): `magenta → purple → blue → green → gold`. Richest first, ultra-rich magenta leading. Every sequence on every page follows it; when a list runs long you return to magenta and flow again. Sequence MUST be a circular subsequence of this flow; it cycles back to MAGENTA. Red = alarm only, never decorative. (SUPERSEDES all prior contractor spectrum orders.)
 
 ---
 

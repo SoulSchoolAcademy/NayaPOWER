@@ -199,6 +199,11 @@
       "topic": "index.html exclusion",
       "decision": "Sovereign Entrance index.html excluded from authority (alien palette, rem type, follows none of the code).",
       "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-SHAWN-SPECTRUM-20261008",
+      "decision": "Spectrum flow replaced per Shawn's standing brief (2026-10-08 21:28 UTC): magenta\u2192purple\u2192blue\u2192green\u2192gold, cycling to magenta. All prior orders superseded.",
+      "status": "SHAWN_DIRECTIVE"
     }
   ],
   "drift_register": [
@@ -599,6 +604,36 @@
         "SYN-H-7"
       ],
       "source": "Convergence Law 01"
+    },
+    {
+      "id": "R-spectrum-law",
+      "statement": "Spectrum order is LAW: magenta \u2192 purple \u2192 blue \u2192 green \u2192 gold. Every sequence on every page follows it. Long lists return to magenta and flow again.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
+    },
+    {
+      "id": "R-color-identity",
+      "statement": "Color is identity, not decoration. One color job per thing. Adjacent things never share a hue. Never shouts over the brand.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
+    },
+    {
+      "id": "R-black-ground",
+      "statement": "Black ground, white light, purple soul. White text 99%. Quiet at rest \u2014 ignites in its own color on touch.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
+    },
+    {
+      "id": "R-dimensional",
+      "statement": "Everything dimensional: bevel, elevation, glow. Flat is dead.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
+    },
+    {
+      "id": "R-jewels",
+      "statement": "Jewels, not dots \u2014 drawn, glowing, in true spectrum order, never twice adjacent. Craft distinct icons; don't stamp the same one.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
+    },
+    {
+      "id": "R-details",
+      "statement": "The details ARE the design: no missing spaces, no stranded boxes, no red boxes.",
+      "source": "Shawn standing brief 2026-10-08 21:28 UTC"
     }
   ],
   "rooms": {
@@ -676,16 +711,13 @@
     }
   },
   "spectrum_flow": [
+    "magenta",
     "purple",
     "blue",
-    "emerald",
-    "yellow",
-    "gold",
-    "orange",
-    "red",
-    "magenta"
+    "green",
+    "gold"
   ],
-  "spectrum_flow_note": "SYNTHESIS 2026-10-08: three separate jobs \u2014 (1) nine team colors for team-coded elements; (2) twelve chromatic tokens as the working palette; (3) the eight-flow below as the alternation sequence for breaking visual flow. Never conflate. Cycles back to purple.",
+  "spectrum_flow_note": "SHAWN'S STANDING LAW (2026-10-08 21:28 UTC, verbatim): 'The spectrum is a law, not a palette. Magenta \u2192 purple \u2192 blue \u2192 green \u2192 gold. Richest first, ultra-rich magenta leading. That's the natural flow \u2014 every sequence on every page follows it, and when a list runs long you return to magenta and flow again. Scramble it and the eye knows something's wrong before the mind does.' Cycle returns to MAGENTA. All prior spectrum orders SUPERSEDED.",
   "status": "CANDIDATE",
   "status_note": "CANDIDATE. Re-synthesized 2026-10-08 from the 12 fresh HTML files (design authority; live site stale). Room table rewritten, X-5 resolved, nav corrected to 'ROOMS'. Pending: Shawn's ratification, team-hex confirmation (X-4).",
   "team_colors": {
@@ -762,7 +794,8 @@
       "--mail-blue": "#3ca8ff",
       "--coral": "#ff5e6c",
       "--silver": "#b9b9c4",
-      "_note": "SYNTHESIS 2026-10-08: resolved room accents added; see rooms table for per-room bindings."
+      "_note": "SYNTHESIS 2026-10-08: resolved room accents added; see rooms table for per-room bindings.",
+      "--green": "#55e39a"
     },
     "surfaces": {
       "--depth-deep": "0 20px 48px #000d",
