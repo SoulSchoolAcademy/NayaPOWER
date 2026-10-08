@@ -390,11 +390,27 @@ def metabolize(
     history is immutable by law, so a housekeeping pass must be total over
     mixed-state stores rather than crashing on the first history record.
     `decay()` itself stays strict for direct callers.
+
+    QUARANTINED records are *resolved* corruption: the quarantine decision
+    already happened and is receipted, and the placeholder's non-verifying
+    integrity marker is the evidence itself (see `quarantine()`). They are
+    skipped with a noop receipt, never re-integrity-checked. The strict
+    pre-check still fires for any non-quarantined record with broken
+    integrity: a quarantined record can never be served or promoted, so the
+    exemption buys an attacker nothing.
     """
     receipts: list[dict[str, Any]] = []
+    live: list[MemoryRecord] = []
     for record in records:
+        if record.memory_state == QUARANTINED:
+            receipt = _receipt("decay", record, QUARANTINED, now,
+                               "quarantined_noop")
+            receipt["to_state"] = QUARANTINED
+            receipts.append(receipt)
+            continue
         _require_integrity(record)
-    for record in records:
+        live.append(record)
+    for record in live:
         if record.memory_state != ACTIVE:
             receipt = _receipt("decay", record, record.memory_state, now,
                                "not_active_noop")

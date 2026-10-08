@@ -311,3 +311,43 @@ def test_full_lifecycle_paths_without_stale_winning():
     assert record.epistemic_state == "HYPOTHESIS"
     assert successor.epistemic_state == "VERIFIED_FACT"
     assert aging.epistemic_state == "OPERATING_ASSUMPTION"
+
+
+def test_metabolize_skips_quarantined_placeholders_without_refusing():
+    """Quarantine is a settled decision: housekeep must not die on its evidence.
+
+    Regression guard for the cold-boot drill finding (2026-10-08): a store
+    that quarantined corrupt lines could never run housekeep again, because
+    the placeholder's deliberate non-verifying integrity marker tripped the
+    strict pre-check. Resolved corruption is skipped with a noop receipt;
+    live corruption is still refused.
+    """
+    from kernel.memory_metabolism import quarantine
+
+    # NOTE: distinct record_ids — _rec() derives the id from (content, now),
+    # so two default _rec()s collide and a receipt dict keyed by record_id
+    # would silently drop one.
+    settled = _rec(record_id="QR-SETTLED")
+    quarantine(settled, "corrupt_line=5 reason=json_decode_failed", now=NOW)
+    settled.integrity = "QUARANTINED-NO-HASH"  # as the store's placeholder does
+    live = _rec(record_id="QR-LIVE", now=FRESH)
+
+    records, receipts = metabolize([settled, live], now=NOW, stale_after_days=90)
+
+    by_id = {r["record_id"]: r for r in receipts}
+    assert by_id[settled.record_id]["detail"] == "quarantined_noop"
+    assert by_id[settled.record_id]["to_state"] == QUARANTINED
+    assert settled.memory_state == QUARANTINED  # untouched, still unservable
+    assert retrieve([settled]).items == []
+
+
+def test_metabolize_still_refuses_live_corruption():
+    """The quarantine exemption never extends to servable records."""
+    corrupted = _rec()
+    corrupted.content = "tampered"
+    try:
+        metabolize([corrupted], now=NOW)
+    except MemoryMetabolismError as exc:
+        assert str(exc) == "memory_integrity_failed"
+    else:
+        raise AssertionError("expected metabolize to refuse corruption")
