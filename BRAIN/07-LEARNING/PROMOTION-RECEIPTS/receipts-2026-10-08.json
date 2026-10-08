@@ -1,0 +1,699 @@
+{
+ "ledger": "learning-promotion-receipts",
+ "ledger_version": 1,
+ "assessed_at": "2026-10-08T15:36:58Z",
+ "source": "Supabase learning_evidence WHERE status=CANDIDATE (read-only query, 36 rows)",
+ "tip_verified": "aacbcc9a (re-verify at merge time; SN-0493)",
+ "summary": {
+  "total": 36,
+  "PROMOTE": 0,
+  "DROP": 26,
+  "HOLD": 10
+ },
+ "receipts": [
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "de0b794b-224b-4d8b-ad1a-3afc6f8d0771",
+   "lesson_id_short": "de0b794b",
+   "claim_summary": "Fresh experimental lesson: when applying retained intelligence, preserve its provenance before taking the governed action.",
+   "evidence": {
+    "source_event_id": "NAYA-NODE-0001-LEARN-EXPERIMENT-20260928",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of paired control/treatment receipts.",
+    "row_created_at": "2026-09-28 14:31:08.700873+00",
+    "observed_value_sha16": "ad2b5dfbec2fc32c",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=True). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "367a6ae3-6945-4427-8009-c005c7ecd573",
+   "lesson_id_short": "367a6ae3",
+   "claim_summary": "Durable authority should flow through short-lived runtime credentials without recurring human token handoff.",
+   "evidence": {
+    "source_event_id": "f9cefc4b-2694-4f88-9ed9-324cf389142a",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-28 23:42:25.301485+00",
+    "observed_value_sha16": "eb080ee5cb52085f",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "e89a2d35-7498-456b-b0a6-a5e0319d9096",
+   "lesson_id_short": "e89a2d35",
+   "claim_summary": "Applicability lesson for: ChatGPT, Codex, Hub, NayaNET, Voice, Email",
+   "evidence": {
+    "source_event_id": "7997700d-b889-414c-8fa5-a237100611a4",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-29 17:06:45.422483+00",
+    "observed_value_sha16": "615b904082e2bc79",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "593eb495-bb58-4a89-abe8-89e0bd369632",
+   "lesson_id_short": "593eb495",
+   "claim_summary": "Structured lesson: {'applicability': 'Applies to consequential NayaPOWER engineering and intelligence work where safe authorized execution ",
+   "evidence": {
+    "source_event_id": "0a951ee2-1e11-46c7-bfd3-142cc9b678d2",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-29 19:39:52.869773+00",
+    "observed_value_sha16": "14f6354af4375ab3",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "3b1f1e51-fa0e-4557-aba4-be1d9683910c",
+   "lesson_id_short": "3b1f1e51",
+   "claim_summary": "Structured lesson: {'applicability': 'Applies whenever a Naya faces a choice between asking permission and acting. If the action is within ",
+   "evidence": {
+    "source_event_id": "5864311c-3d41-4474-8cfe-337660f1b145",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-30 00:57:06.373514+00",
+    "observed_value_sha16": "4b1c4c11b1e17ee0",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "b39a4930-2f7a-4a32-8467-0cf254321072",
+   "lesson_id_short": "b39a4930",
+   "claim_summary": "Structured lesson: {'applicability': 'Applies to NayaPOWER engineering, diagnosis, verification, documentation, testing, organization, evid",
+   "evidence": {
+    "source_event_id": "48be3dc0-26d6-42fe-b0c4-e13361052db8",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-30 19:51:27.491258+00",
+    "observed_value_sha16": "6fdac3d922d2eae1",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "59aed2ab-2289-465c-824f-5f66fd89dae4",
+   "lesson_id_short": "59aed2ab",
+   "claim_summary": "Structured lesson: {'applicability': 'All substantive diagnoses, repairs, decisions, doctrines, failures, successes, recoveries, deployment",
+   "evidence": {
+    "source_event_id": "9566f618-518f-4932-a733-b790b1849201",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-30 20:03:07.523159+00",
+    "observed_value_sha16": "7f6dddbcd1103757",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "fe3703db-9da5-44fd-860e-478858a436b4",
+   "lesson_id_short": "fe3703db",
+   "claim_summary": "Structured lesson: {'applicability': 'Applies to durable NayaPOWER intelligence intended for reuse by future authorized Nayas. Does not imp",
+   "evidence": {
+    "source_event_id": "6b0ed9fb-80e4-47aa-a1eb-f36efada5d02",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-09-30 20:15:52.635296+00",
+    "observed_value_sha16": "85ce064d1905d950",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "5353ceca-cf4b-4137-94d7-239ccc41da6a",
+   "lesson_id_short": "5353ceca",
+   "claim_summary": "Structured lesson: {'applicability': 'Retrieve when designing NayaPOWER self-optimization, EVOLVE campaigns, bounded autonomous coding/rese",
+   "evidence": {
+    "source_event_id": "ebcbd36b-2042-4fb2-b6d3-a8cb7b54e841",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-10-01 17:09:05.026435+00",
+    "observed_value_sha16": "16d6b15c8c0470dd",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "a7d0284e-1a94-4dac-9823-616abc14ed06",
+   "lesson_id_short": "a7d0284e",
+   "claim_summary": "Structured lesson: {'applicability': 'Applies to substantive NayaPOWER/NayaNET application, interface, website, dashboard, Hub, room, mobil",
+   "evidence": {
+    "source_event_id": "7a845a78-0a85-4bfc-80d9-eea29d535972",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-10-02 02:00:29.406756+00",
+    "observed_value_sha16": "13bce205e6489549",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "HOLD",
+   "verdict_reason": "Valid lesson with paired control/treatment receipts in observed_value (behavioral_change=False). Row verification_method states \"Pending independent causal verification\" \u2014 that verification has not happened. Promotion requires independent verification per the Standing Promotion Law; promoting now would repeat the manual-promotion error Naya 1 challenged on 2026-10-08.",
+   "next_step": "Re-assess when independent causal verification of the paired receipts lands (Naya 2 audit lane)."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "7f91cf6f-f226-423b-83e2-509a5c1747a4",
+   "lesson_id_short": "7f91cf6f",
+   "claim_summary": "Applicability lesson for: ",
+   "evidence": {
+    "source_event_id": "0d72b3c0-8f04-4eb4-82f0-04e9c690beb0",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-10-07 17:23:25.562134+00",
+    "observed_value_sha16": "ecfa99c7567c005a",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Duplicate of lesson de0b794b (\"preserve provenance before applying retained intelligence\"). Three identical naya_fallback_lesson rows created 17:23\u201318:52Z on 2026-10-07; keep the canonical de0b794b, drop the copies.",
+   "next_step": "None \u2014 deduplicated to de0b794b."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "07d705b0-2afe-4dd9-8a8b-25ae125eda68",
+   "lesson_id_short": "07d705b0",
+   "claim_summary": "Applicability lesson for: ",
+   "evidence": {
+    "source_event_id": "43444cbf-f629-4b23-8d48-f93b968a1358",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-10-07 17:31:59.307565+00",
+    "observed_value_sha16": "9fe8ab90b31f8795",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Duplicate of lesson de0b794b (\"preserve provenance before applying retained intelligence\"). Three identical naya_fallback_lesson rows created 17:23\u201318:52Z on 2026-10-07; keep the canonical de0b794b, drop the copies.",
+   "next_step": "None \u2014 deduplicated to de0b794b."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "a808d2a1-3f14-42fc-a3e7-f5898d3a5fde",
+   "lesson_id_short": "a808d2a1",
+   "claim_summary": "Applicability lesson for: ",
+   "evidence": {
+    "source_event_id": "41495e09-edb5-4937-b275-fd9c7d30a216",
+    "provenance": "OBSERVATION",
+    "verification_method": "Pending independent causal verification of computed paired control/treatment receipts.",
+    "row_created_at": "2026-10-07 18:52:36.73768+00",
+    "observed_value_sha16": "4063a914c2bcebc6",
+    "paired_control_treatment": true
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Duplicate of lesson de0b794b (\"preserve provenance before applying retained intelligence\"). Three identical naya_fallback_lesson rows created 17:23\u201318:52Z on 2026-10-07; keep the canonical de0b794b, drop the copies.",
+   "next_step": "None \u2014 deduplicated to de0b794b."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "45f3d884-ba12-5992-97a7-17c2584ff824",
+   "lesson_id_short": "45f3d884",
+   "claim_summary": "Almost there",
+   "evidence": {
+    "source_event_id": "a12fdc04-bd1c-4acd-a00b-d0f64a330596",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:43:04.861546+00",
+    "observed_value_sha16": "969e9cac566fcd00",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "340e1790-f8cc-5564-9c37-62505770fa65",
+   "lesson_id_short": "340e1790",
+   "claim_summary": "The chain should work now",
+   "evidence": {
+    "source_event_id": "fb2daeeb-1c93-45e2-8695-aef7443613b9",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:43:48.546413+00",
+    "observed_value_sha16": "8b5548c5630bacdd",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "ca1e883f-e59a-5d6f-be6d-4ba244849fae",
+   "lesson_id_short": "ca1e883f",
+   "claim_summary": "Re-testing after fix",
+   "evidence": {
+    "source_event_id": "fe04354a-4aa1-4bf0-ab27-097f02a99e7b",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:44:14.04781+00",
+    "observed_value_sha16": "5261b11a61400128",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "69ca098a-122b-5ecb-bf0e-2d1e8d3d5edc",
+   "lesson_id_short": "69ca098a",
+   "claim_summary": "Querying the right table now",
+   "evidence": {
+    "source_event_id": "435122aa-581e-43df-9a86-00c70d2554b7",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:47:36.341059+00",
+    "observed_value_sha16": "510b83c669f5a2ef",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "7dc3dc2a-6672-5f10-951f-babb2b17b9b5",
+   "lesson_id_short": "7dc3dc2a",
+   "claim_summary": "Getting closer",
+   "evidence": {
+    "source_event_id": "ca8f7642-3780-4a86-ad5f-9f50fa7d0df1",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:48:36.589049+00",
+    "observed_value_sha16": "ba132ae2abe8e8a4",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "55279e23-90c5-5125-9aac-257697855d59",
+   "lesson_id_short": "55279e23",
+   "claim_summary": "Is it all good?",
+   "evidence": {
+    "source_event_id": "a06be180-0a54-4f21-bd52-63d99f3fc951",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:52:50.357209+00",
+    "observed_value_sha16": "208eaa5d918a7f80",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "ff6f61e1-9cf1-5e0c-af0b-56641ba47927",
+   "lesson_id_short": "ff6f61e1",
+   "claim_summary": "This should work now",
+   "evidence": {
+    "source_event_id": "9505c7e3-6fba-4de5-9ee5-c16482f9418e",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:53:18.568552+00",
+    "observed_value_sha16": "0873c968b709502c",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "8f2d5894-3722-5f0a-8c61-e63ca305d477",
+   "lesson_id_short": "8f2d5894",
+   "claim_summary": "Should work now",
+   "evidence": {
+    "source_event_id": "03d65480-1e7e-4822-85eb-018b267b86cf",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:53:39.576398+00",
+    "observed_value_sha16": "3b4f69cba812ac67",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "b4b3eb85-776d-5ec3-809e-24fb238310e1",
+   "lesson_id_short": "b4b3eb85",
+   "claim_summary": "This has to work now",
+   "evidence": {
+    "source_event_id": "70c84c3c-270a-4257-80ba-6cbbadae16a5",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:53:55.039435+00",
+    "observed_value_sha16": "61557757b1605a7a",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "c291fd1a-5722-5658-ab49-309bfaf4e870",
+   "lesson_id_short": "c291fd1a",
+   "claim_summary": "All status values fixed",
+   "evidence": {
+    "source_event_id": "531907d6-0719-48e9-abf5-07fa4f6b239f",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:54:13.527896+00",
+    "observed_value_sha16": "63f4e68a30ef002a",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "6761aecf-0833-5cf4-86a7-3a5c7aa02dcc",
+   "lesson_id_short": "6761aecf",
+   "claim_summary": "Almost done",
+   "evidence": {
+    "source_event_id": "c00ef820-91f8-43c9-a840-fe74fdf8d101",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 19:55:12.587133+00",
+    "observed_value_sha16": "a3cfe3fa82283083",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "e72e5a0c-c16e-5c2a-b02e-18ea4fe752cf",
+   "lesson_id_short": "e72e5a0c",
+   "claim_summary": "Full chain test",
+   "evidence": {
+    "source_event_id": "de953106-525c-433c-bb1d-a9f7367bd544",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 20:33:30.354644+00",
+    "observed_value_sha16": "2d5d74740ca86e55",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "eadc23ed-ab31-53ed-88a8-8682a394e9c0",
+   "lesson_id_short": "eadc23ed",
+   "claim_summary": "Should work now",
+   "evidence": {
+    "source_event_id": "48b585aa-1f66-433b-8d79-0b15782224c8",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 20:34:19.717583+00",
+    "observed_value_sha16": "4f0cb6e2ce6827e4",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "ca8523cd-51e4-5340-8662-63e12698d9b2",
+   "lesson_id_short": "ca8523cd",
+   "claim_summary": "Full chain test after token update",
+   "evidence": {
+    "source_event_id": "d90fd5de-2def-4756-a7b8-d7fe01bc97a4",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:01:30.57376+00",
+    "observed_value_sha16": "db55d8a9c33dea0a",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "25d4703e-a712-5242-8e01-0a3f9764c4ca",
+   "lesson_id_short": "25d4703e",
+   "claim_summary": "This should be the one",
+   "evidence": {
+    "source_event_id": "505199c2-1754-4927-82fd-ee0a0759f6b4",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:05:33.245935+00",
+    "observed_value_sha16": "a038ceb2b55be725",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "37618928-05cd-5dbf-893d-85b14046bd4e",
+   "lesson_id_short": "37618928",
+   "claim_summary": "Testing after token confirmed",
+   "evidence": {
+    "source_event_id": "0495a5de-7079-43f2-80cb-ffa59186d14a",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:16:01.433765+00",
+    "observed_value_sha16": "150824f681ba3e6c",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "a5c318d0-1655-5d80-9255-3dc27b7d4ce4",
+   "lesson_id_short": "a5c318d0",
+   "claim_summary": "Fresh deploy should work",
+   "evidence": {
+    "source_event_id": "c5d3bd88-cab9-4623-8434-426babcad3ee",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:17:44.776775+00",
+    "observed_value_sha16": "aed9ee511acf79d9",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "d43aa799-6c91-53b5-8b77-b0ea071d8ef5",
+   "lesson_id_short": "d43aa799",
+   "claim_summary": "Testing again",
+   "evidence": {
+    "source_event_id": "5c5f2b99-dd3b-45b7-8618-e051da57cb65",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:18:41.340867+00",
+    "observed_value_sha16": "e6cbe04c70c5219b",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "bfd1ddde-a19d-516d-b383-05374e6659d6",
+   "lesson_id_short": "bfd1ddde",
+   "claim_summary": "This should work end to end",
+   "evidence": {
+    "source_event_id": "1bf1660c-bbda-4326-bac9-2631e0318bc0",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:20:53.612369+00",
+    "observed_value_sha16": "03aa7dac66c79233",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "6c45f727-bd82-5296-b379-122d2fbdc8db",
+   "lesson_id_short": "6c45f727",
+   "claim_summary": "Should return 200 now",
+   "evidence": {
+    "source_event_id": "fd914589-0a6f-40fc-846f-9bbd3fb6a6a9",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:22:19.87368+00",
+    "observed_value_sha16": "8d372fdec5f256a5",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "4ba1376b-4ccf-55e7-9c97-4adfc1f2fca7",
+   "lesson_id_short": "4ba1376b",
+   "claim_summary": "Non-blocking projection",
+   "evidence": {
+    "source_event_id": "94971f48-2d0d-4e44-a843-40cdb34dcb82",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 21:23:22.008701+00",
+    "observed_value_sha16": "7a2e1bdc01241471",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "e358c4a6-c2d5-5b72-87c9-a94ecfdb6690",
+   "lesson_id_short": "e358c4a6",
+   "claim_summary": "End-to-end proof that the deployed capture chain works.",
+   "evidence": {
+    "source_event_id": "568f8531-fffb-4aff-a19d-42ecc2b245a3",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-07 23:59:28.552614+00",
+    "observed_value_sha16": "f1ae224bed11e60b",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  },
+  {
+   "schema": "learning-promotion-receipt/v1",
+   "lesson_id": "49f8297d-2f58-5fa3-8d4b-8843ad140f8f",
+   "lesson_id_short": "49f8297d",
+   "claim_summary": "Coda 1 capture-proof run.",
+   "evidence": {
+    "source_event_id": "acc612d5-5c62-4dd5-9a80-7eeacd1e822d",
+    "provenance": "USER",
+    "verification_method": "PENDING_OUTCOME_VERIFICATION",
+    "row_created_at": "2026-10-08 00:05:29.748156+00",
+    "observed_value_sha16": "6cd10f74099f8a73",
+    "paired_control_treatment": false
+   },
+   "assessed_by": "Naya 4 (Learning doer, road-to-10 item 2)",
+   "assessed_at": "2026-10-08T15:36:58Z",
+   "verdict": "DROP",
+   "verdict_reason": "Chat utterance captured as a lesson row during the 2026-10-07 debugging session (provenance=USER, PENDING_OUTCOME_VERIFICATION) \u2014 not intelligence, no lesson content to promote. Capture chain over-captured; row should never have been a CANDIDATE.",
+   "next_step": "None \u2014 row verdict recorded; no promotion path."
+  }
+ ]
+}
