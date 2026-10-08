@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0629",
+ "intelligence": {
+  "title": "A Promotion Run's \"failure\" Conclusion Is Not the Verdict — Read the Steps",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict",
+  "smart_note_id": "SN-0629",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0629/IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0629/IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

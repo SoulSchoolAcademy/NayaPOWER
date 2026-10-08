@@ -7284,11 +7284,11 @@
    }
   },
   {
-   "smart_note_id": "SN-0360",
-   "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0360-guard-off-write-path-is-suggestion",
+   "smart_note_id": "SN-0631",
+   "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion",
    "title": "A Guard Off the Write Path Is a Suggestion, Not a Guard",
-   "content_hash": "7ffb9f11be6961034a504335c3504edf29fc71d2e53f0c66463de1a1d14bbfc5",
-   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0360/IB-SMART-NOTE-20261005-sn0360-guard-off-write-path-is-suggestion.md",
+   "content_hash": "0a26f3b95bbd8f558d0f6cb7f168090ac742fc2a7304586d5b954ce7cbb507b3",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0631/IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion.md",
    "projection_status": "GITHUB_BRAIN_PUBLISHED",
    "truth_state": "CANDIDATE",
    "scope": "PRIVATE",
@@ -7299,7 +7299,8 @@
    "lifecycle_state": "ACTIVE",
    "provenance": {
     "ingestion": "canonical-reconstruction",
-    "note": "reconstructed from published projection; no runtime provenance invented"
+    "note": "reconstructed from published projection; no runtime provenance invented",
+    "renumber_note": "Renumbered SN-0360 -> SN-0631 on 2026-10-08: SN-0360 is a Director-ratified protected note (no-deletion-without-understanding); this guard-off-write-path note is a different artifact that collided on the branch. Protected first-claim stands."
    }
   },
   {
@@ -12513,12 +12514,69 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed from published projection; no runtime provenance invented"
    }
+  },
+  {
+   "smart_note_id": "SN-0628",
+   "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0628-first-promotions-active",
+   "title": "The First Promotions Went ACTIVE \u2014 the Learning Loop Closed Its First Full Cycle",
+   "content_hash": "f6d46c3af62e0ac455b6cd0e2a276fa66254de1f691faa7859917e5b881a2c58",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/PROMOTION-LOOP/SN-0628/IB-SMART-NOTE-20261008-sn0628-first-promotions-active.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "PROMOTION",
+   "captured_at": "2026-10-08",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "reconstructed from published projection; no runtime provenance invented"
+   }
+  },
+  {
+   "smart_note_id": "SN-0629",
+   "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict",
+   "title": "A Promotion Run's \"failure\" Conclusion Is Not the Verdict \u2014 Read the Steps",
+   "content_hash": "8b64f84e0a38684f25ed958cc6129fef01ccbf1346bf254594360fc4ec0b1313",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/PROMOTION-GATES/SN-0629/IB-SMART-NOTE-20261008-sn0629-promotion-run-failure-not-the-verdict.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "PROMOTION",
+   "captured_at": "2026-10-08",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "reconstructed from published projection; no runtime provenance invented"
+   }
+  },
+  {
+   "smart_note_id": "SN-0627",
+   "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover",
+   "title": "The No-Idle Takeover: Lane Ownership Is Speed, Not Territory",
+   "content_hash": "b659f4a164b71b963e238d896941e66f9775462977253f044e734c500ee0f84d",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0627/IB-SMART-NOTE-20261008-sn0627-no-idle-governed-takeover.md",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "SYSTEM-INTELLIGENCE",
+   "subtopic": "GOVERNANCE",
+   "captured_at": "2026-10-08",
+   "lifecycle_state": "ACTIVE",
+   "provenance": {
+    "ingestion": "canonical-reconstruction",
+    "note": "reconstructed; no runtime provenance invented"
+   }
   }
  ],
  "sequence_policy": {
   "human_id_format": "SN-###",
   "purpose": "Stable human-facing Smart Note identity. IB-ID remains canonical machine identity; capture timestamp remains provenance.",
-  "next_sequence": 631,
+  "next_sequence": 632,
   "allocation": "Serialized Smart Note projection workflow allocates the next unused sequence when capture.smart_note_id is absent."
  }
 }

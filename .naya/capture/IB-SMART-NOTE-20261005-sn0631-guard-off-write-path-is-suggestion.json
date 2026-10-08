@@ -1,0 +1,20 @@
+{
+ "smart_note_id": "SN-0631",
+ "intelligence": {
+  "title": "A Guard Off the Write Path Is a Suggestion, Not a Guard",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion",
+  "smart_note_id": "SN-0631",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0631/IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed. Renumbered SN-0360->SN-0631 (protected collision). No runtime provenance invented.",
+  "ingested_at": "2026-10-08",
+  "renumbered_from": "SN-0360",
+  "renumber_reason": "ID collision with Director-ratified protected note; protected first-claim stands"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/NAYA-STANDING-LAW/LAW-AS-CODE/SN-0631/IB-SMART-NOTE-20261005-sn0631-guard-off-write-path-is-suggestion.md",
+  "provenance_note": "reconstructed; renumbered; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

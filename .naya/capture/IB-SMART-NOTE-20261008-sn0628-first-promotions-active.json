@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0628",
+ "intelligence": {
+  "title": "The First Promotions Went ACTIVE — the Learning Loop Closed Its First Full Cycle",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0628-first-promotions-active",
+  "smart_note_id": "SN-0628",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/PROMOTION-LOOP/SN-0628/IB-SMART-NOTE-20261008-sn0628-first-promotions-active.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/COMPOUNDING-INTELLIGENCE/PROMOTION-LOOP/SN-0628/IB-SMART-NOTE-20261008-sn0628-first-promotions-active.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
