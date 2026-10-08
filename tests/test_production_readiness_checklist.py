@@ -211,3 +211,112 @@ def test_score_fail():
 def test_check_result_rejects_bad_verdict():
     with pytest.raises(AssertionError):
         prc.check_result("CX", "MAYBE", "nope")
+
+
+# ---- C3 required-CI attribution ------------------------------------------------
+
+def test_required_ci_constant_matches_workflow_text():
+    text = (Path(__file__).resolve().parents[1]
+            / ".github/workflows/governed-supabase-production-deploy.yml").read_text()
+    for wf in prc.REQUIRED_CI_WORKFLOWS:
+        assert f'"{wf}"' in text, wf
+
+
+def test_required_ci_status_shape(monkeypatch):
+    def fake_gh(path):
+        return {"workflow_runs": [
+            {"id": 1, "head_sha": "a" * 40, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "failure",
+             "run_attempt": 1}]}
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    out = prc.required_ci_status("a" * 40)
+    assert set(out) == set(prc.REQUIRED_CI_WORKFLOWS)
+    assert out["kernel-tests.yml"]["conclusion"] == "failure"
+
+
+def test_required_ci_status_no_sha():
+    assert prc.required_ci_status(None) == {}
+
+
+# ---- C9 branch hygiene ---------------------------------------------------------
+
+def _prs(n, start=1800, age_days=1):
+    from datetime import datetime, timedelta, timezone
+    base = datetime.now(timezone.utc) - timedelta(days=age_days)
+    return [{"number": start + i,
+             "created_at": (base - timedelta(hours=i)).isoformat()} for i in range(n)]
+
+
+def _gh_for(open_prs, dirty=(), merged=()):
+    def fake_gh(path):
+        if "state=open" in path:
+            return open_prs
+        if "state=closed" in path:
+            return [{"number": 900 + i, "merged_at": m} for i, m in enumerate(merged)]
+        num = int(path.rsplit("/", 1)[-1])
+        return {"mergeable_state": "dirty" if num in dirty else "clean"}
+    return fake_gh
+
+
+def _recent_iso(hours_ago):
+    from datetime import datetime, timedelta, timezone
+    return (datetime.now(timezone.utc) - timedelta(hours=hours_ago)).isoformat()
+
+
+def test_branch_hygiene_clean(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get",
+                        _gh_for(_prs(10), merged=[_recent_iso(2)] * 30))
+    r = prc.check_branch_hygiene()
+    assert r["check"] == "C9"
+    assert r["verdict"] == "PASS", r
+
+
+def test_branch_hygiene_warn_on_dirty(monkeypatch):
+    prs = _prs(5)
+    monkeypatch.setattr(prc, "gh_get",
+                        _gh_for(prs, dirty={prs[0]["number"]},
+                                merged=[_recent_iso(2)] * 30))
+    r = prc.check_branch_hygiene()
+    assert r["verdict"] == "WARN", r
+    assert prs[0]["number"] in r["evidence"]["dirty_prs"]
+
+
+def test_branch_hygiene_warn_on_ancient(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get",
+                        _gh_for(_prs(5, age_days=20), merged=[_recent_iso(2)] * 30))
+    r = prc.check_branch_hygiene()
+    assert r["verdict"] == "WARN", r
+    assert r["evidence"]["ancient_prs_over_14d"]
+
+
+def test_branch_hygiene_warn_on_pileup(monkeypatch):
+    # 100 open vs 10 merged/day: pile > 3x velocity -> WARN, never FAIL.
+    monkeypatch.setattr(prc, "gh_get",
+                        _gh_for(_prs(100), merged=[_recent_iso(2)] * 10))
+    r = prc.check_branch_hygiene()
+    assert r["verdict"] == "WARN", r
+
+
+def test_branch_hygiene_never_fails(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get",
+                        _gh_for(_prs(200, age_days=60), dirty={1800},
+                                merged=[]))
+    r = prc.check_branch_hygiene()
+    assert r["verdict"] in ("PASS", "WARN", "UNKNOWN"), r
+
+
+def test_branch_hygiene_unknown_when_no_api(monkeypatch):
+    monkeypatch.setattr(prc, "gh_get", lambda path: None)
+    assert prc.check_branch_hygiene()["verdict"] == "UNKNOWN"
+
+
+# ---- main() --json -------------------------------------------------------------
+
+def test_main_json_flag_emits_pure_json(monkeypatch, capsys):
+    report = {"schema": prc.SCHEMA, "verdict": "READY",
+              "checks": [], "summary": {"PASS": 0, "WARN": 0, "FAIL": 0, "UNKNOWN": 0}}
+    monkeypatch.setattr(prc, "run", lambda: (report, 0))
+    code = prc.main(["--json"])
+    out = capsys.readouterr().out
+    assert code == 0
+    assert json.loads(out)["verdict"] == "READY"  # pure JSON, no trailing text
