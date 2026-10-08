@@ -69,6 +69,12 @@
 
 ---
 
+### Smart App Creator — independently prove self-building (Issue #1925) — ACTIVE P1 INNOVATION / NO SCORE UPLIFT
+- **Owner:** Innovation + Naya 2 independent design qualification; **Status:** candidate teaching kit and quality-calculator prototype; unprimed cold-Naya creator graduation NOT VERIFIED.
+- **What:** one held-out human request produces a working beautiful Smart App with hero buttons, jewel boards, SmartTabs, card hierarchy and four-layer Intelligent Block, without Shawn repeating design instructions.
+- **Accept:** canonical-source-only cold builder, independent visual 9.5+ acceptance, responsive/accessibility and real-action testing, evidence and receipt. **Priority:** keep engine learning P0; this is the measurable downstream mastery exam.
+- **Detail:** [#1925](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1925), [#1602](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1602), draft design training [#1912](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1912).
+
 ## P2 — Future
 
 ### 9. A→B→C multi-generation compounding proof
@@ -84,6 +90,13 @@
 - **What:** The Hub's deployed surface lags its architecture. Ranked below brain-proof work until parity + compounding close.
 
 ---
+
+### Smart App private previews, governed Cloudflare publishing and NayaNET directory (Issue #1926) — P2 AFTER CREATOR GRADUATION
+- **Owner:** Innovation product spec; future Cloudflare/Hub/GitHub App engineering owners to deconflict before implementation. **Status:** SPECIFIED / NOT BUILT.
+- **What:** user-owned isolated world from #1264 → create app → private preview URL → quality/LAW/security/owner approval → stable user-world URL → **separate opt-in directory approval** → searchable and revocable; version history and rollback.
+- **Critical boundary:** a tenant-owned logical world does not force a new GitHub repo per app; preview ≠ public; calculator ≠ authorization; Cloudflare Pages wildcard custom domains unsupported, so evaluate Workers for Platforms / dispatcher with tenant isolation and actual cost/permissions.
+- **Next action:** once cold creator passes, inventory account/runtime and run one bounded, owner-isolated preview deployment spike; no DNS/production/credentials spend changes implied.
+- **Authoritative running task list:** [#1926](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1926). **Fork/tenant isolation foundation:** [#1264](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1264).
 
 ## IDEA — Under consideration (not committed)
 
