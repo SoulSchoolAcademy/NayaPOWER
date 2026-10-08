@@ -254,6 +254,8 @@ def check_scorecard(scorecard: dict) -> ScorecardResult:
         )
     else:
         options = list(options)
+        if len(options) != len(set(options)):
+            reasons.append("Step 1 (enumerate): option identifiers must be unique")
 
     # Step 2: SCORE
     scores = scorecard.get("scores")
@@ -264,6 +266,8 @@ def check_scorecard(scorecard: dict) -> ScorecardResult:
     if not isinstance(scores, dict) or not scores:
         reasons.append("Step 2 (score): 'scores' must be a non-empty dict")
     elif isinstance(options, list):
+        if set(scores) != set(options):
+            reasons.append("Step 2 (score): scores must match enumerated options exactly")
         for opt in options:
             s = scores.get(opt)
             if not isinstance(s, dict):
@@ -291,6 +295,8 @@ def check_scorecard(scorecard: dict) -> ScorecardResult:
                 reasons.append(f"Step 3 (gate): missing gate check {g!r}")
             elif not isinstance(gates[g], bool):
                 reasons.append(f"Step 3 (gate): {g!r} must be boolean")
+            elif gates[g] is False:
+                reasons.append(f"Step 3 (gate): {g!r} is not clear — cannot approve action")
 
     # Step 4: DECIDE
     winner = scorecard.get("winner")
@@ -302,6 +308,26 @@ def check_scorecard(scorecard: dict) -> ScorecardResult:
             )
     elif not _nonempty_str(winner):
         reasons.append("Step 4 (decide): 'winner' must be a non-empty string")
+
+    # The decision receipt is not the Value Calculus. Still, it must not
+    # certify an unexplained lower-scored choice as the calculated winner.
+    # Overrides explain a choice but never waive any hard gate or grant LAW.
+    if isinstance(options, list) and options and isinstance(scores, dict) and winner in options:
+        totals = {
+            opt: scores[opt]["total"]
+            for opt in options
+            if opt in scores and isinstance(scores[opt], dict)
+            and isinstance(scores[opt].get("total"), (int, float))
+            and not isinstance(scores[opt]["total"], bool)
+            and math.isfinite(scores[opt]["total"])
+            and 0 <= scores[opt]["total"] <= 10
+        }
+        if len(totals) == len(options) and totals[winner] < max(totals.values()):
+            if not _nonempty_str(scorecard.get("override_rationale")):
+                reasons.append(
+                    "Step 4 (decide): lower-scored winner requires an explicit "
+                    "override_rationale; an override never grants authority"
+                )
 
     # Step 5: RECEIPT
     if scorecard.get("receipt_posted") is not True:
