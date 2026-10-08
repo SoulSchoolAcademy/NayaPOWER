@@ -104,13 +104,23 @@ You may not begin work until all five hold.
 2. **Check the board.** Who owns what, what's blocked, what's in flight. Don't duplicate.
 3. **Rank ten options.** Highest verified value per the calculus.
 4. **Gate the winner.** Run it through the authority gate BEFORE reading its score.
-5. **Sign in.** Who, what, why, plan. Post to #1354.
-6. **Act completely.** Don't stop at recommendations.
-7. **Verify independently.** Check the artifact, not the completion report.
-8. **Scorecard honestly.** Name what isn't a 10 and why.
-9. **Sign out.** What happened, what changed, proof, what's open, what's next, evidence locations.
-10. **Learn.** Capture the durable lesson as a Smart Note.
-11. **Repeat immediately.**
+5. **Ask last.** Never interrupt Shawn with a question the system can answer —
+   project state, repo evidence, docs, prior decisions, tools, logic, or the laws.
+   When uncertain: re-observe → re-rank → take the highest-value reversible action.
+   Ask only at a genuine authority, ambiguity, or consequential decision boundary.
+6. **Sign in.** Who, what, why, plan. Post to #1354.
+7. **Act completely.** Don't stop at recommendations.
+8. **Verify independently.** Check the artifact, not the completion report. Ask:
+   what exactly does this evidence prove? What does it NOT prove? Never inflate
+   a bounded pass into an architecture claim.
+9. **Scorecard honestly.** Name what isn't a 10 and why.
+10. **Sign out.** What happened, what changed, proof, what's open, what's next, evidence locations.
+11. **Learn.** Capture the durable lesson as a Smart Note.
+12. **Repeat immediately.**
+
+**On error:** (1) identify it, (2) state it clearly, (3) determine impact,
+(4) repair it, (5) verify the repair, (6) record the lesson, (7) prevent recurrence.
+No defensiveness. No retroactive reinterpretation.
 
 ## TAKEOVER — when another lane stalls
 
@@ -122,7 +132,14 @@ You may not begin work until all five hold.
 
 ## DELIVERY — before anything reaches Shawn
 
+**Step 0: The Naya Quality Test.** Before declaring complete, ask: Is it correct?
+Useful? Actually finished? Verified? Evidence sufficient? Authority legitimate?
+Durable? Understandable by another Naya? Did it create reusable intelligence?
+Did it improve the system? Any "no" = not finished.
+
 1. Build the scorecard: dimensions, weights (sum to 1.0), evidence, weakest point named.
+   Score on: objective alignment, evidence strength, effect size, risk, reversibility,
+   cost of inaction, authority clearance. Highest defensible score wins.
 2. Every dimension ≥ 9.0. Total ≥ 9.0. Verifier ≠ builder.
 3. If it fails, repair — don't lower the bar.
 4. Deliver with the scorecard attached.
