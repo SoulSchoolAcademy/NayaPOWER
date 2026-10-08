@@ -776,13 +776,23 @@ jobs:
         # records the refusal explicitly and binds every available proof-leg
         # artifact to the authorized source and deployment commit. It never
         # certifies PROMOTED_AND_PROVEN and never raises on missing inputs.
+        # It also binds the UPSTREAM gate evidence (standing-policy verdict,
+        # promotion denial, required-workflow run conclusions at the source
+        # SHA) so the receipt names the gate that stopped the chain instead
+        # of leaving the failure unexplained.
         if: ${{ failure() && (github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed != '') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import json, os
-          from tools.production_promotion_failure_receipt import build_failure_receipt, SCHEMA
+          import json, os, subprocess
+          from tools.production_promotion_failure_receipt import (
+              build_failure_receipt, SCHEMA, REQUIRED_WORKFLOWS,
+              VERDICT_FILE, DENIAL_FILE,
+          )
           def load(name):
               try:
                   with open(name, encoding="utf-8") as f:
@@ -797,6 +807,39 @@ jobs:
               "learning-act-proof-run.json": load("learning-act-proof-run.json"),
               "connect-proof-run.json": load("connect-proof-run.json"),
           }
+          def observe_required_workflows():
+              """Read-only observation of the required workflows' latest runs
+              at the source SHA (same selection rule as the enforcement
+              step). Any API failure yields UNKNOWN entries, never raises."""
+              sha = os.environ["GITHUB_SHA"]
+              repo = os.environ["REPO"]
+              observed = {}
+              for workflow in REQUIRED_WORKFLOWS:
+                  try:
+                      data = json.loads(subprocess.check_output(
+                          ["gh", "api",
+                           f"repos/{repo}/actions/workflows/{workflow}/runs?head_sha={sha}&event=push&per_page=100"],
+                          text=True, timeout=60,
+                      ))
+                      matches = [
+                          r for r in data.get("workflow_runs", [])
+                          if r.get("head_sha") == sha
+                          and r.get("head_branch") == "main"
+                          and r.get("event") == "push"
+                          and str(r.get("path", "")).split("@", 1)[0] == ".github/workflows/" + workflow
+                      ]
+                      observed[workflow] = (
+                          max(matches, key=lambda r: (int(r.get("id", 0)), int(r.get("run_attempt", 0))))
+                          if matches else None
+                      )
+                  except Exception:
+                      observed[workflow] = "OBSERVATION_FAILED"
+              return observed
+          gates = {
+              "standing_policy_verdict": load(VERDICT_FILE),
+              "promotion_denial": load(DENIAL_FILE),
+              "required_workflows": observe_required_workflows(),
+          }
           receipt = build_failure_receipt(
               github_sha=os.environ["GITHUB_SHA"],
               production_branch=os.environ["PRODUCTION_BRANCH"],
@@ -806,12 +849,78 @@ jobs:
               workflow_run_id=os.environ.get("GITHUB_RUN_ID"),
               env=dict(os.environ),
               files=files,
+              gates=gates,
           )
           assert receipt["schema"] == SCHEMA
           assert receipt["status"] != "PROMOTED_AND_PROVEN"
+          assert "gates" in receipt
           json.dump(receipt, open("production-promotion-failure-receipt.json", "w"), indent=2)
           PY
           cat production-promotion-failure-receipt.json
+
+      - name: Emit production parity verdict (signal-only)
+        # Complements the promotion receipts with durable production parity
+        # evidence: binds the promoted source SHA, the production branch tip,
+        # and the DEPLOYED_SOURCE_REVISION stamp read from each deployed
+        # function source into a machine-verifiable verdict
+        # (tools/production_parity_verdict.py). Signal-only: runs on every
+        # outcome and never fails the build; it certifies and authorizes
+        # nothing. The builder is pure -- this step does the IO (fetch the
+        # production branch, read the stamped sources, test ancestry) and
+        # passes parsed mappings in.
+        if: always()
+        shell: bash
+        run: |
+          set -uo pipefail
+          python3 - <<'PY' || true
+          import json, os, re, subprocess
+          from tools.production_parity_verdict import (
+              SCHEMA, STAMPED_FUNCTIONS, build_parity_verdict, extract_stamp,
+          )
+
+          def sh(*args):
+              try:
+                  return subprocess.check_output(
+                      args, text=True, stderr=subprocess.DEVNULL
+                  ).strip()
+              except Exception:
+                  return ""
+
+          sh("git", "fetch", "origin", "production:refs/remotes/origin/production")
+          prod_tip = sh("git", "rev-parse", "refs/remotes/origin/production") or None
+          promoted = os.environ.get("AUTHORIZED_SOURCE_SHA") or os.environ.get("GITHUB_SHA")
+
+          functions = {}
+          for key, path in STAMPED_FUNCTIONS:
+              source = sh("git", "show", "refs/remotes/origin/production:" + path)
+              stamp = extract_stamp(source) if source else None
+              ancestor = None
+              if stamp and stamp != "UNSTAMPED" and promoted:
+                  rc = subprocess.run(
+                      ["git", "merge-base", "--is-ancestor", stamp, promoted],
+                      capture_output=True,
+                  ).returncode
+                  ancestor = (rc == 0)
+              functions[key] = {
+                  "stamp": stamp,
+                  "source_path": path,
+                  "stamp_is_ancestor_of_promoted": ancestor,
+              }
+
+          receipt = build_parity_verdict(
+              promoted_sha=promoted,
+              production_tip_sha=prod_tip,
+              functions=functions,
+              context={
+                  "workflow_run_id": os.environ.get("GITHUB_RUN_ID"),
+                  "promotion_mode": os.environ.get("PROMOTION_MODE", "UNKNOWN"),
+                  "actor": os.environ.get("GITHUB_ACTOR"),
+              },
+          )
+          assert receipt["schema"] == SCHEMA
+          json.dump(receipt, open("production-parity-verdict.json", "w"), indent=2)
+          PY
+          cat production-parity-verdict.json 2>/dev/null || echo "parity verdict not emitted"
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -820,6 +929,7 @@ jobs:
           path: |
             production-promotion-receipt.json
             production-promotion-failure-receipt.json
+            production-parity-verdict.json
             production-promotion-denial.json
             standing-authorization-verdict.json
             standing-ci-evidence.json
