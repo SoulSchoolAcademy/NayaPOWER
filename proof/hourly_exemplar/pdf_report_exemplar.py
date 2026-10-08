@@ -1,0 +1,1012 @@
+#!/usr/bin/env python3
+"""Hourly report PDF — EXEMPLAR EDITION (Design Contract V1 reference standard).
+
+Rebuild of the Team Naya intelligence-report PDF generator to the exemplar
+standard harvested from the nine smart-app reference pages (Phase-1 reads).
+Same data layer as the production generator (imports ReportData etc. from
+the reporting worktree) — the reporting worktree is NOT modified, so the
+hourly cron is untouched.
+
+Exemplar standard (see EXEMPLAR-STANDARD.md for the harvest + law citations):
+  Field      --bg:#0B0D12 obsidian, --ink:#F5F7FB, --muted:#AAB2BF (secondary only)
+  Spectrum   canonical tokens only; Reports-room accent indigo #6675ff
+  Type       24/18/14; body 18px minimum everywhere (D9 closed)
+  Jewel      Code-exact faceted diamond clip-path as signature bullets + brand mark
+  Elevation  L1 cards #12151D with the depth formula (theme glow + inset top
+             light + deep drop shadow) and 1.5pt visible white edge light
+  Buttons    black-heart #050505 pill, white text + mark, 1.5pt white edge,
+             purple glow (DC-072/073; ground truth: start.html .btn)
+  Chips      pill, uppercase micro-type, per-state color (ledger status chips)
+  Teams      Shawn's nine team colors for team-coded elements (his direct spec)
+  Truth      counts from real data or absent; claim vs AUTH labeled
+
+CLI:
+    python3 pdf_report_exemplar.py --type hourly --hours 1 --out /tmp/out.pdf
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import re
+import sys
+from pathlib import Path
+
+# Data layer: the reporting worktree's generator (read-only import).
+sys.path.insert(0, "/home/hatch/workspace/nayapower-worktrees/reporting/tools/reporting")
+
+from report_generator import (  # noqa: E402
+    Item,
+    ReportData,
+    ReportGenerator,
+    ScorePoint,
+    TeamSection,
+    action_plan_text,
+    group_by_team,
+)
+
+from reportlab.lib.colors import HexColor  # noqa: E402
+from reportlab.lib.pagesizes import A4  # noqa: E402
+from reportlab.lib.styles import ParagraphStyle  # noqa: E402
+from reportlab.lib.units import inch  # noqa: E402
+from reportlab.platypus import (  # noqa: E402
+    Flowable,
+    HRFlowable,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
+
+# ---------------------------------------------------------------------------
+# Canonical tokens (naya-design-contract-v1.machine.json — tokens object)
+# ---------------------------------------------------------------------------
+BG = HexColor("#0B0D12")          # --bg: room default obsidian
+BG_RAISE = HexColor("#12151D")    # --bg-raise: L1 boards
+BG_CARD = HexColor("#171B25")     # --bg-card: popovers/topmost
+EDGE = HexColor("#252B39")        # --edge
+INK = HexColor("#F5F7FB")         # --ink: primary text, always
+MUTED = HexColor("#AAB2BF")       # --muted: secondary text ONLY
+WHITE = HexColor("#FFFFFF")
+BTN_BLACK = HexColor("#050505")   # --btn-black
+
+PURPLE = HexColor("#9d75ff")      # --purple: chrome/glow, never solid fill
+INDIGO = HexColor("#6675ff")      # --indigo: THIS report's room accent (Reports)
+BLUE = HexColor("#55b9ee")
+TEAL = HexColor("#40d3bb")
+EMERALD = HexColor("#55e39a")      # green pinned; AUTH/verified/pass
+LIME = HexColor("#b8ee57")
+YELLOW = HexColor("#f1d75a")       # spectrum yellow (not amber)
+GOLD = HexColor("#e8b64c")        # contract gold — 7.0-8.99 band
+ORANGE = HexColor("#ff9a5a")
+RICH_ORANGE = HexColor("#ff7a3d")
+RED = HexColor("#ff5a6e")         # contract red: alarm only
+MAGENTA = HexColor("#d86cff")
+
+# Shawn's nine team colors — his direct spec 2026-10-08 (contract CD-14:
+# recorded as PENDING INPUT, never invented; his word pinned them).
+TEAM_COLORS: dict[str, HexColor] = {
+    "Learning": HexColor("#FF00FF"),
+    "Brain/Memory": HexColor("#800080"),
+    "Law/Governance": HexColor("#4B0082"),
+    "Architecture/Engineering/Ops": HexColor("#228B22"),
+    "Evolution/Succession": HexColor("#FFFF00"),
+    "Interfaces/Hub": HexColor("#FFD700"),
+    "Knowledge/Intelligence": HexColor("#FFA500"),
+    "Proving/Verifying": HexColor("#FF0000"),
+    "Innovation": HexColor("#C0C0C0"),
+}
+
+PAGE_W, PAGE_H = A4
+MARGIN = 0.55 * inch
+SHADOW = HexColor("#000000")
+
+# Exact Code jewel clip-path as fractional points (x%, y% with y=0 at TOP):
+# polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)
+JEWEL_PTS = [(0.50, 0.00), (0.86, 0.28), (0.74, 0.82),
+             (0.50, 1.00), (0.26, 0.82), (0.14, 0.28)]
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _esc(text: str) -> str:
+    return (str(text).replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;"))
+
+
+def _short(text: str, limit: int = 160) -> str:
+    text = re.sub(r"\s+", " ", str(text)).strip()
+    return text if len(text) <= limit else text[:limit].rstrip() + "…"
+
+
+def _hx(color) -> str:
+    return "#" + color.hexval()[2:]
+
+
+def _team_hx(team_name: str) -> str:
+    return _hx(TEAM_COLORS.get(team_name, INK))
+
+
+def _score_color(score: float) -> HexColor:
+    if score >= 9.0:
+        return EMERALD
+    if score >= 7.0:
+        return GOLD
+    return RED
+
+
+def _delta_str(sp: ScorePoint, previous: dict) -> str:
+    prev = previous.get(sp.area)
+    if prev is None or prev == sp.score:
+        return "—"
+    return f"{sp.score - prev:+.1f}"
+
+
+# ---------------------------------------------------------------------------
+# Styles — 24/18/14; body 18px minimum; hierarchy by SIZE, never color
+# ---------------------------------------------------------------------------
+
+def _styles() -> dict[str, ParagraphStyle]:
+    base = ParagraphStyle("base", fontName="Helvetica", fontSize=18,
+                          leading=24, textColor=INK)
+    return {
+        "base": base,
+        "title": ParagraphStyle("title", parent=base,
+                                fontName="Helvetica-Bold",
+                                fontSize=24, leading=29, textColor=INK),
+        "kicker": ParagraphStyle("kicker", parent=base,
+                                 fontName="Helvetica-Bold",
+                                 fontSize=14, leading=18, textColor=INK),
+        "h1": ParagraphStyle("h1", parent=base,
+                             fontName="Helvetica-Bold",
+                             fontSize=24, leading=29, textColor=INK,
+                             spaceBefore=16, spaceAfter=8),
+        "h2": ParagraphStyle("h2", parent=base,
+                             fontName="Helvetica-Bold",
+                             fontSize=18, leading=23, textColor=INK,
+                             spaceBefore=10, spaceAfter=6),
+        "body": base,
+        "detail": ParagraphStyle("detail", parent=base,
+                                 fontSize=14, leading=19, textColor=MUTED),
+        "detail_white": ParagraphStyle("detail_white", parent=base,
+                                       fontSize=14, leading=19,
+                                       textColor=INK),
+        "bullet": ParagraphStyle("bullet", parent=base, leftIndent=6,
+                                 spaceBefore=4, spaceAfter=4),
+        "chip": ParagraphStyle("chip", parent=base,
+                               fontName="Helvetica-Bold",
+                               fontSize=14, leading=18, textColor=INK,
+                               alignment=1),
+        "cell": ParagraphStyle("cell", parent=base, fontSize=18,
+                               leading=23, textColor=INK),
+        "cell_bold": ParagraphStyle("cell_bold", parent=base,
+                                    fontName="Helvetica-Bold", fontSize=18,
+                                    leading=23, textColor=INK),
+        "cell_head": ParagraphStyle("cell_head", parent=base,
+                                    fontName="Helvetica-Bold", fontSize=14,
+                                    leading=18, textColor=INK),
+        "btn": ParagraphStyle("btn", parent=base,
+                              fontName="Helvetica-Bold",
+                              fontSize=18, leading=22, textColor=WHITE,
+                              alignment=1),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Custom flowables — jewel, elevation, button, chip
+# ---------------------------------------------------------------------------
+
+class JewelMark(Flowable):
+    """Code-exact faceted diamond: theme aura + white-hot core + white edge.
+
+    DC-070. clip-path polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%,
+    26% 82%, 14% 28%).
+    """
+
+    def __init__(self, size: float, color: HexColor, aura: bool = True):
+        super().__init__()
+        self.size = size
+        self.color = color
+        self.aura = aura
+
+    def wrap(self, aW, aH):
+        return self.size, self.size
+
+    def _poly(self, canv, cx, cy, scale):
+        pts = []
+        for fx, fy in JEWEL_PTS:
+            # CSS y=0 is TOP; canvas y=0 is BOTTOM.
+            pts.append((cx + (fx - 0.5) * self.size * scale,
+                        cy + (0.5 - fy) * self.size * scale))
+        p = canv.beginPath()
+        p.moveTo(*pts[0])
+        for pt in pts[1:]:
+            p.lineTo(*pt)
+        p.close()
+        return p
+
+    def draw(self):
+        c = self.canv
+        cx, cy = self.size / 2, self.size / 2
+        c.saveState()
+        if self.aura:
+            c.setFillColor(self.color)
+            c.setFillAlpha(0.30)
+            c.setStrokeColor(self.color)
+            c.setStrokeAlpha(0.30)
+            c.setLineWidth(1.2)
+            c.drawPath(self._poly(c, cx, cy, 1.35), stroke=1, fill=1)
+        # Body: the jewel color.
+        c.setFillColor(self.color)
+        c.setFillAlpha(1)
+        c.setStrokeColor(WHITE)
+        c.setStrokeAlpha(0.95)
+        c.setLineWidth(1.1)
+        c.drawPath(self._poly(c, cx, cy, 1.0), stroke=1, fill=1)
+        # White-hot core (small diamond at the crown).
+        c.setFillColor(WHITE)
+        c.setFillAlpha(0.95)
+        c.drawPath(self._poly(c, cx, cy + self.size * 0.12, 0.38),
+                   stroke=0, fill=1)
+        c.restoreState()
+
+
+class GlowCard(Flowable):
+    """L1 elevation card — the depth formula (DC-065).
+
+    Outer glow in the theme color + inset 0 1px #fff6 top light +
+    deep drop shadow 0 18px 42px rgba(0,0,0,.73), 1.5pt white edge light
+    visible at rest (A-LAW-05, briefing governs per X-1).
+    """
+
+    def __init__(self, content, accent: HexColor,
+                 pad: float = 12, radius: float = 13):
+        super().__init__()
+        self.content = content
+        self.accent = accent
+        self.pad = pad
+        self.radius = radius
+        self._w = self._h = 0.0
+
+    def wrap(self, aW, aH):
+        inner_w = aW - 2 * self.pad
+        _w, _h = self.content.wrap(inner_w, aH)
+        self._w = aW
+        self._h = _h + 2 * self.pad
+        return self._w, self._h
+
+    def draw(self):
+        c = self.canv
+        w, h, r, p = self._w, self._h, self.radius, self.pad
+        c.saveState()
+        # 1. Deep drop shadow (CD-8: L1 0 18px 42px rgba(0,0,0,.73)).
+        c.setFillColor(SHADOW)
+        c.setFillAlpha(0.73)
+        c.roundRect(3, -7, w - 3, h, r, stroke=0, fill=1)
+        # 2. Outer glow in the theme color.
+        c.setFillColor(self.accent)
+        c.setFillAlpha(0.16)
+        c.roundRect(-5, -5, w + 10, h + 10, r + 5, stroke=0, fill=1)
+        # 3. Panel.
+        c.setFillColor(BG_RAISE)
+        c.setFillAlpha(1)
+        c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
+        # 4. White edge light 1.5pt, visible at rest.
+        c.setStrokeColor(WHITE)
+        c.setStrokeAlpha(0.9)
+        c.setLineWidth(1.5)
+        c.roundRect(0.75, 0.75, w - 1.5, h - 1.5, r - 1, stroke=1, fill=0)
+        # 5. Inset top light: inset 0 1px #fff6.
+        c.setStrokeColor(WHITE)
+        c.setStrokeAlpha(0.38)
+        c.setLineWidth(1)
+        c.line(r, h - 2.5, w - r, h - 2.5)
+        c.restoreState()
+        self.content.drawOn(c, p, p)
+
+
+class ButtonBar(Flowable):
+    """Button-law bar (DC-072/073): black heart, white voice, visible skin.
+
+    background #050505 · color #fff ALWAYS · 1.5pt white edge light at rest ·
+    pill 999px · purple glow. Text always white with a mark — never colored.
+    """
+
+    def __init__(self, text: str, st: dict, glow: HexColor = PURPLE,
+                 pad_v: float = 13):
+        super().__init__()
+        self.text = text
+        self.st = st
+        self.glow = glow
+        self.pad_v = pad_v
+        self._w = self._h = 0.0
+        self._para = Paragraph("◆&nbsp;&nbsp;" + _esc(text), st["btn"])
+
+    def wrap(self, aW, aH):
+        _w, _h = self._para.wrap(aW - 44, aH)
+        self._w = aW
+        self._h = _h + 2 * self.pad_v
+        return self._w, self._h
+
+    def draw(self):
+        c = self.canv
+        w, h = self._w, self._h
+        r = h / 2
+        c.saveState()
+        # Purple glow at rest (chrome ignites purple).
+        c.setFillColor(self.glow)
+        c.setFillAlpha(0.28)
+        c.roundRect(-6, -6, w + 12, h + 12, r + 6, stroke=0, fill=1)
+        # Deep shadow.
+        c.setFillColor(SHADOW)
+        c.setFillAlpha(0.73)
+        c.roundRect(2, -6, w - 2, h, r, stroke=0, fill=1)
+        # Black heart.
+        c.setFillColor(BTN_BLACK)
+        c.setFillAlpha(1)
+        c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
+        # White edge light 1.5pt, visible at rest.
+        c.setStrokeColor(WHITE)
+        c.setStrokeAlpha(0.95)
+        c.setLineWidth(1.5)
+        c.roundRect(0.75, 0.75, w - 1.5, h - 1.5, r - 1, stroke=1, fill=0)
+        # Inset top light.
+        c.setStrokeColor(WHITE)
+        c.setStrokeAlpha(0.32)
+        c.setLineWidth(1)
+        c.line(r, h - 3, w - r, h - 3)
+        c.restoreState()
+        self._para.drawOn(c, 22, self.pad_v)
+
+
+class Chip(Flowable):
+    """Pill chip — uppercase micro-type, per-state color (DC-077).
+
+    Ledger status-chip pattern: colored edge + white text.
+    """
+
+    def __init__(self, text: str, color: HexColor, st: dict):
+        super().__init__()
+        self.text = text.upper()
+        self.color = color
+        self.st = st
+        self._w = self._h = 0.0
+        self._para = Paragraph(_esc(self.text), st["chip"])
+
+    def wrap(self, aW, aH):
+        _w, _h = self._para.wrap(aW, aH)
+        self._w = min(_w + 26, aW)
+        self._h = _h + 12
+        return self._w, self._h
+
+    def draw(self):
+        c = self.canv
+        w, h = self._w, self._h
+        r = h / 2
+        c.saveState()
+        c.setFillColor(BTN_BLACK)
+        c.setFillAlpha(1)
+        c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
+        c.setStrokeColor(self.color)
+        c.setStrokeAlpha(0.95)
+        c.setLineWidth(1.5)
+        c.roundRect(0.75, 0.75, w - 1.5, h - 1.5, r - 1, stroke=1, fill=0)
+        c.setFillColor(self.color)
+        c.setFillAlpha(0.22)
+        c.roundRect(0, 0, w, h, r, stroke=0, fill=1)
+        c.restoreState()
+        self._para.drawOn(c, 13, 6)
+
+
+# ---------------------------------------------------------------------------
+# Composite builders
+# ---------------------------------------------------------------------------
+
+def _jewel_bullet(st: dict, color: HexColor, text: str,
+                  size: float = 20) -> Table:
+    """Jewel-bullet row: precision diamond + 18px white text (reports.html)."""
+    body = Paragraph(text, st["bullet"])
+    t = Table([[JewelMark(size, color), body]],
+              colWidths=[size + 10, None])
+    t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 2),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 2),
+        ("TOPPADDING", (0, 0), (-1, -1), 1),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+    ]))
+    return t
+
+# ---------------------------------------------------------------------------
+# Executive content — computed from data, never invented (truth law DC-091)
+# ---------------------------------------------------------------------------
+
+def _headline(data: ReportData, sections: list[TeamSection]) -> str:
+    bits: list[str] = []
+    moves: list[tuple[float, str, float, float]] = []
+    for sp in data.scores:
+        prev = data.previous_scores.get(sp.area)
+        if prev is not None and prev != sp.score:
+            moves.append((abs(sp.score - prev), sp.area, prev, sp.score))
+    moves.sort(reverse=True)
+    if moves:
+        _, area, prev, now = moves[0]
+        bits.append(f"{area} {prev:.1f}→{now:.1f}")
+    n_ach = sum(len(s.achievements) for s in sections)
+    if n_ach:
+        bits.append(f"{n_ach} achievements landed")
+    all_holes: list[Item] = []
+    for s in sections:
+        all_holes.extend(s.holes)
+    all_holes.sort(key=lambda i: -i.priority)
+    if all_holes:
+        bits.append("top blocker: " + _short(all_holes[0].text, 90))
+    at_floor = sum(1 for sp in data.scores if sp.score >= 9.0)
+    if at_floor:
+        bits.append(f"{at_floor} area{'s' if at_floor != 1 else ''} at 9.0+")
+    return " · ".join(bits) if bits else "steady period — no score movement recorded"
+
+
+def _top_wins(sections: list[TeamSection], limit: int = 6
+              ) -> list[tuple[str, Item]]:
+    wins: list[tuple[str, Item]] = []
+    for s in sections:
+        for a in s.achievements[:3]:
+            wins.append((s.name, a))
+    return wins[:limit]
+
+
+def _top_misses(sections: list[TeamSection], unassigned: dict,
+                limit: int = 6) -> list[tuple[str, Item]]:
+    misses: list[tuple[str, Item]] = []
+    for s in sections:
+        for h in sorted(s.holes, key=lambda i: -i.priority)[:2]:
+            misses.append((s.name, h))
+    for h in unassigned.get("holes", [])[:2]:
+        misses.append(("Cross-team", h))
+    misses.sort(key=lambda t: -t[1].priority)
+    return misses[:limit]
+
+
+_DECISION_RE = re.compile(
+    r"\b(needs?\b|awaiting|gate\b|decision|shawn'?s word|ratif\w*|"
+    r"merge\b.*\bneeds\b|only he can|protected gate)",
+    re.IGNORECASE,
+)
+
+
+def _decisions(sections: list[TeamSection],
+               unassigned: dict) -> list[tuple[str, Item]]:
+    found: list[tuple[str, Item]] = []
+    seen: set[str] = set()
+    for s in sections:
+        for it in list(s.holes) + list(s.priorities):
+            if _DECISION_RE.search(it.text) and it.text not in seen:
+                seen.add(it.text)
+                found.append((s.name, it))
+    for it in unassigned.get("holes", []) + unassigned.get("priorities", []):
+        if _DECISION_RE.search(it.text) and it.text not in seen:
+            seen.add(it.text)
+            found.append(("Cross-team", it))
+    return found[:5]
+
+
+def _single_priority(sections: list[TeamSection], unassigned: dict) -> str:
+    misses = _top_misses(sections, unassigned, limit=1)
+    if misses:
+        team, item = misses[0]
+        return f"[{team}] {_short(item.text, 200)}"
+    for s in sections:
+        plan = action_plan_text(s)
+        if "No recorded actions" not in plan:
+            return f"[{s.name}] {_short(plan, 200)}"
+    return "No recorded priority this window."
+
+
+# ---------------------------------------------------------------------------
+# Section builders — exemplar styling
+# ---------------------------------------------------------------------------
+
+# Spectrum flow accents for the metrics set (DC-041: 5 items →
+# magenta, purple, blue, green, yellow; green pinned to emerald).
+_METRIC_ACCENTS = [MAGENTA, PURPLE, BLUE, EMERALD, YELLOW]
+
+
+def _metrics_bar(st: dict, data: ReportData) -> Table:
+    """Metrics strip — five L1 glow-cards, spectrum-flow accents (DC-041).
+
+    Ground truth: reports.html weekStrip dayTiles, one tile per day each in
+    its own spectrum color.
+    """
+    gh = data.github_snapshot
+    sb = data.supabase_snapshot
+    prs = gh.get("prs", []) if not gh.get("error") else []
+    merged = sum(1 for p in prs if p.get("merged"))
+    open_prs = sum(1 for p in prs if not p.get("merged"))
+    comments = len(gh.get("comments", [])) if not gh.get("error") else "n/a"
+    if sb.get("error"):
+        sb_txt = "unavailable"
+    else:
+        counts = sb.get("counts", {})
+        sb_txt = ", ".join(f"{k}={v}" for k, v in counts.items()) or "no rows"
+
+    metrics = [
+        ("PRs touched", f"{len(prs)} · {merged} merged"),
+        ("Open PRs", f"{open_prs}"),
+        ("#1354", f"{comments}"),
+        ("Evidence", sb_txt),
+        ("Window", data.since.strftime("%m-%d %H:%M")),
+    ]
+    width = (PAGE_W - 2 * MARGIN) / 5
+    row = []
+    for (label, value), accent in zip(metrics, _METRIC_ACCENTS):
+        inner = [
+            Paragraph(f"<b>{_esc(label)}</b>", st["detail_white"]),
+            Paragraph(_esc(_short(value, 48)), st["detail"]),
+        ]
+        inner_t = Table([[inner[0]], [inner[1]]], colWidths=[width - 24])
+        inner_t.setStyle(TableStyle([
+            ("LEFTPADDING", (0, 0), (-1, -1), 0),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+            ("TOPPADDING", (0, 0), (-1, -1), 1),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+        ]))
+        row.append(GlowCard(inner_t, accent, pad=8))
+    t = Table([row], colWidths=[width] * 5)
+    t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 4),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    return t
+
+
+def _highlight_boxes(st: dict, data: ReportData,
+                     sections: list[TeamSection]) -> Table:
+    """Callout cards — jewel-bullet titles, L1 elevation (DC-070 + DC-065)."""
+    boxes: list[tuple[str, str, HexColor]] = []
+
+    moves: list[tuple[float, str, float, float, str]] = []
+    for sp in data.scores:
+        prev = data.previous_scores.get(sp.area)
+        if prev is not None and prev != sp.score:
+            moves.append((abs(sp.score - prev), sp.area, prev, sp.score,
+                          sp.status))
+    moves.sort(reverse=True)
+    if moves:
+        _, area, prev, now, status = moves[0]
+        d = now - prev
+        color = EMERALD if d > 0 else RED
+        boxes.append((
+            "BIGGEST MOVE",
+            f"{_esc(area)} {prev:.1f} → <b>{now:.1f}</b> ({_esc(status)})",
+            color,
+        ))
+
+    misses = _top_misses(sections, {}, limit=1)
+    if misses:
+        team, item = misses[0]
+        boxes.append((
+            "TOP BLOCKER",
+            f"[{_esc(team)}] {_esc(_short(item.text, 110))}",
+            RED,
+        ))
+
+    n_ach = sum(len(s.achievements) for s in sections)
+    boxes.append((
+        "THROUGHPUT",
+        f"<b>{n_ach}</b> achievements recorded this window",
+        GOLD,
+    ))
+
+    at_floor = [sp for sp in data.scores if sp.score >= 9.0]
+    boxes.append((
+        "AT 9.0+ FLOOR",
+        f"<b>{len(at_floor)}</b> of {len(data.scores)} "
+        f"area{'s' if len(data.scores) != 1 else ''}"
+        + (": " + ", ".join(_esc(sp.area) for sp in at_floor[:3])
+           if at_floor else ""),
+        EMERALD if at_floor else INK,
+    ))
+
+    auth = [sp for sp in data.scores if sp.status == "authoritative"]
+    if auth:
+        sp = auth[0]
+        boxes.append((
+            "AUTHORITATIVE",
+            f"{_esc(sp.area)} <b>{sp.score:.1f}</b> (verified, not a claim)",
+            EMERALD,
+        ))
+
+    boxes = boxes[:5]
+    # Full-width callout strips: jewel + colored title + 18px body.
+    # A horizontal strip reads at a glance; five narrow columns did not.
+    out: list = []
+    avail = PAGE_W - 2 * MARGIN
+    for title, body, color in boxes:
+        text = (f'<font color="{_hx(color)}"><b>{_esc(title)}</b></font>'
+                f" &nbsp;{body}")
+        inner = Table(
+            [[JewelMark(26, color), Paragraph(text, st["body"])]],
+            colWidths=[36, avail - 36 - 28])
+        inner.setStyle(TableStyle([
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 2),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 2),
+            ("TOPPADDING", (0, 0), (-1, -1), 2),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
+        ]))
+        out.append(GlowCard(inner, color, pad=10))
+        out.append(Spacer(1, 8))
+    return out
+
+
+def _auth_chip(st: dict, status: str) -> Chip:
+    """Ledger status-chip pattern: AUTH = emerald (verified/alive),
+    claim = muted (awaiting stamp)."""
+    if status == "authoritative":
+        return Chip("AUTH", EMERALD, st)
+    return Chip("claim", MUTED, st)
+
+
+def _scorecard_table(st: dict, data: ReportData) -> Table:
+    """Team × score dashboard — L1 card, 1.5pt white edge, team colors."""
+    from report_generator import AREA_TO_TEAM
+
+    header = [
+        Paragraph("<b>Team</b>", st["cell_head"]),
+        Paragraph("<b>Area</b>", st["cell_head"]),
+        Paragraph("<b>Score</b>", st["cell_head"]),
+        Paragraph("<b>Status</b>", st["cell_head"]),
+        Paragraph("<b>Δ</b>", st["cell_head"]),
+    ]
+    rows = [header]
+    for sp in data.scores:
+        team_name = AREA_TO_TEAM.get(sp.area, "—")
+        color = _score_color(sp.score)
+        thx = _team_hx(team_name)
+        # Break ONLY at slashes — never mid-word (the old report's
+        # "Engine/ering" wraps were a readability failure).
+        team_cell = _esc(team_name).replace("/", "/<br/>")
+        rows.append([
+            Paragraph(f'<font color="{thx}"><b>{team_cell}</b></font>',
+                      st["cell"]),
+            Paragraph(_esc(sp.area), st["cell"]),
+            Paragraph(f'<font color="{_hx(color)}">'
+                      f"<b>{sp.score:.1f}</b></font>", st["cell"]),
+            _auth_chip(st, sp.status),
+            Paragraph(_esc(_delta_str(sp, data.previous_scores)),
+                      st["cell"]),
+        ])
+
+    avail = PAGE_W - 2 * MARGIN
+    widths = [2.35 * inch, 1.65 * inch, 0.70 * inch,
+              1.00 * inch, 0.60 * inch]
+    scale = avail / sum(widths)
+    widths = [w * scale for w in widths]
+    # A long scorecard is a BOARD (DC-077), not a card: it must flow across
+    # pages, so it renders as a splittable table with the 1.5pt white edge
+    # light applied directly (A-LAW-05).
+    t = Table(rows, colWidths=widths, repeatRows=1)
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), BG_CARD),
+        ("BACKGROUND", (0, 1), (-1, -1), BG_RAISE),
+        ("BOX", (0, 0), (-1, -1), 1.5, WHITE),
+        ("TEXTCOLOR", (0, 0), (-1, -1), INK),
+        ("TOPPADDING", (0, 0), (-1, -1), 7),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
+        ("LEFTPADDING", (0, 0), (-1, -1), 8),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 8),
+        ("LINEBELOW", (0, 0), (-1, 0), 1.5, WHITE),
+        ("LINEBELOW", (0, 1), (-1, -2), 0.75, EDGE),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+    ]))
+    return t
+
+def _team_section_flowables(st: dict, i: int, sec: TeamSection,
+                            data: ReportData) -> list:
+    """One team's section — 24px team-colored header (Shawn's spec),
+    jewel-bullet rows in the team color (DC-070), 18px body (D9)."""
+    out: list = []
+    thx = _team_hx(sec.name)
+    team_color = TEAM_COLORS.get(sec.name, INK)
+
+    out.append(Paragraph(
+        f'<font color="{thx}"><b>Team {i}: {_esc(sec.name)}</b></font>',
+        st["h1"]))
+    out.append(Paragraph(
+        f"{_esc(sec.manager)} · feed {_esc(sec.feed)}", st["detail"]))
+    out.append(Spacer(1, 4))
+
+    chips: list[str] = []
+    for sp in sec.scores:
+        color = _score_color(sp.score)
+        tag = "AUTH" if sp.status == "authoritative" else "claim"
+        delta = _delta_str(sp, data.previous_scores)
+        chips.append(
+            f'<font color="{_hx(color)}"><b>{sp.score:.1f}</b></font>'
+            f" {_esc(sp.area)} · {tag} · Δ{delta}"
+        )
+    chip_txt = " &nbsp;&nbsp; ".join(chips) if chips else \
+        "cross-cutting — no direct area score"
+    out.append(Paragraph(chip_txt, st["body"]))
+    out.append(Spacer(1, 6))
+
+    out.append(Paragraph("<b>Done this period</b>", st["h2"]))
+    done = sec.achievements[:5]
+    if done:
+        for a in done:
+            out.append(_jewel_bullet(
+                st, team_color,
+                f"{_esc(_short(a.text, 200))} "
+                f'<font color="{_hx(MUTED)}">[{_esc(a.source)}]</font>'))
+    else:
+        out.append(Paragraph("Nothing recorded this window.", st["body"]))
+
+    holes = sorted(sec.holes, key=lambda x: -x.priority)[:3]
+    if holes:
+        out.append(Paragraph("<b>Holes</b>", st["h2"]))
+        for j, h in enumerate(holes, 1):
+            # Holes are the alarm's business: red jewels (NC-2.5 — red
+            # reads as blocked/failed here, never decoration).
+            out.append(_jewel_bullet(
+                st, RED,
+                f"<b>{j}.</b> {_esc(_short(h.text, 200))} "
+                f'<font color="{_hx(MUTED)}">[{_esc(h.source)}]</font>'))
+
+    out.append(Paragraph("<b>Plan to 10</b>", st["h2"]))
+    plan = action_plan_text(sec).replace("_", "")
+    out.append(Paragraph(_esc(_short(plan, 260)), st["body"]))
+
+    if sec.priorities:
+        out.append(Paragraph("<b>Next</b>", st["h2"]))
+        for p in sec.priorities[:3]:
+            out.append(_jewel_bullet(
+                st, team_color, _esc(_short(p.text, 200))))
+
+    out.append(HRFlowable(width="100%", thickness=1.5, color=EDGE,
+                          spaceAfter=6, spaceBefore=10))
+    return out
+
+
+def _wins_misses_decisions(st: dict, sections: list[TeamSection],
+                           unassigned: dict) -> list:
+    out: list = []
+
+    out.append(Paragraph("3 · Where we're winning", st["h1"]))
+    wins = _top_wins(sections)
+    if wins:
+        for team, item in wins:
+            team_color = TEAM_COLORS.get(team, INK)
+            out.append(_jewel_bullet(
+                st, team_color,
+                f"<b>[{_esc(team)}]</b> {_esc(_short(item.text, 220))} "
+                f'<font color="{_hx(MUTED)}">[{_esc(item.source)}]</font>'))
+    else:
+        out.append(Paragraph("No achievements recorded this window.",
+                             st["body"]))
+
+    out.append(Paragraph("4 · Where we're missing the mark", st["h1"]))
+    misses = _top_misses(sections, unassigned)
+    if misses:
+        for j, (team, item) in enumerate(misses, 1):
+            out.append(_jewel_bullet(
+                st, RED,
+                f"<b>MISS {j} — [{_esc(team)}]</b> "
+                f"{_esc(_short(item.text, 240))} "
+                f'<font color="{_hx(MUTED)}">[{_esc(item.source)}]</font>'))
+    else:
+        out.append(Paragraph("No holes recorded this window.", st["body"]))
+
+    out.append(Paragraph("5 · Decisions needed", st["h1"]))
+    decisions = _decisions(sections, unassigned)
+    if decisions:
+        for j, (team, item) in enumerate(decisions, 1):
+            team_color = TEAM_COLORS.get(team, INK)
+            out.append(_jewel_bullet(
+                st, team_color,
+                f"<b>{j} · [{_esc(team)}]</b> "
+                f"{_esc(_short(item.text, 240))}"))
+            out.append(Paragraph(
+                "Recommendation: run the Value Calculus; escalate to Shawn "
+                "only if it crosses a protected gate.", st["detail"]))
+    else:
+        out.append(Paragraph("None recorded this window — "
+                             "the math is deciding.", st["body"]))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Page template — obsidian field, jewel brand, ambient glow
+# ---------------------------------------------------------------------------
+
+def _header_footer(canvas, doc, kind: str, stamp: str):
+    canvas.saveState()
+    # FIELD: sovereign darkness, the room default (DC-020).
+    canvas.setFillColor(BG)
+    canvas.rect(0, 0, PAGE_W, PAGE_H, stroke=0, fill=1)
+
+    # Ambient: low-opacity jewel light, never distracting (CD-2 ≤ 0.25).
+    canvas.setFillColor(INDIGO)
+    canvas.setFillAlpha(0.055)
+    canvas.ellipse(PAGE_W * 0.55, PAGE_H * 0.62,
+                   PAGE_W * 1.15, PAGE_H * 1.05, stroke=0, fill=1)
+    canvas.setFillColor(PURPLE)
+    canvas.setFillAlpha(0.045)
+    canvas.ellipse(-PAGE_W * 0.25, -PAGE_H * 0.30,
+                   PAGE_W * 0.55, PAGE_H * 0.45, stroke=0, fill=1)
+    canvas.setFillAlpha(1)
+
+    # Brand lockup, top-left always (DC-061): jewel + wordmark.
+    jewel = JewelMark(30, INDIGO)
+    jewel.canv = canvas
+    jewel.drawOn(canvas, MARGIN, PAGE_H - 0.72 * inch)
+
+    canvas.setFont("Helvetica-Bold", 15)
+    canvas.setFillColor(INK)
+    canvas.drawString(MARGIN + 40, PAGE_H - 0.52 * inch, "NAYA")
+    canvas.setFont("Helvetica", 11)
+    canvas.setFillColor(MUTED)
+    canvas.drawString(MARGIN + 40, PAGE_H - 0.68 * inch,
+                      "TEAM INTELLIGENCE")
+
+    # Header rule — visible edge.
+    canvas.setStrokeColor(WHITE)
+    canvas.setStrokeAlpha(0.35)
+    canvas.setLineWidth(1.5)
+    canvas.line(MARGIN, PAGE_H - 0.85 * inch,
+                PAGE_W - MARGIN, PAGE_H - 0.85 * inch)
+    canvas.setStrokeAlpha(1)
+
+    # Right: stamp only (kind already rides the title-block chip).
+    canvas.setFont("Helvetica", 11)
+    canvas.setFillColor(MUTED)
+    canvas.drawRightString(PAGE_W - MARGIN, PAGE_H - 0.60 * inch, stamp)
+
+    # Footer.
+    canvas.setStrokeColor(WHITE)
+    canvas.setStrokeAlpha(0.25)
+    canvas.setLineWidth(1)
+    canvas.line(MARGIN, 0.62 * inch, PAGE_W - MARGIN, 0.62 * inch)
+    canvas.setStrokeAlpha(1)
+    canvas.setFont("Helvetica-Bold", 10)
+    canvas.setFillColor(INK)
+    canvas.drawString(MARGIN, 0.44 * inch, "PROVE THAT THE BRAIN LEARNS")
+    canvas.setFont("Helvetica", 10)
+    canvas.setFillColor(MUTED)
+    canvas.drawRightString(PAGE_W - MARGIN, 0.44 * inch,
+                           f"{stamp} · Page {doc.page}")
+    canvas.restoreState()
+
+
+# ---------------------------------------------------------------------------
+# Main entry
+# ---------------------------------------------------------------------------
+
+def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
+    """Render ReportData to the exemplar-standard dark PDF."""
+    st = _styles()
+    stamp = data.generated_at.strftime("%Y-%m-%d %H:%M UTC")
+    kind = (data.window_label or report_type).upper()
+
+    story: list = []
+    sections, unassigned = group_by_team(data)
+
+    # ---- Title block: chip kicker + 24px headline + 18px story ----
+    kind_chip = Chip(kind, INDIGO, st)
+    stamp_line = Paragraph(
+        f"{_esc(stamp)} · window since "
+        f"{_esc(data.since.strftime('%Y-%m-%d %H:%M UTC'))}", st["detail"])
+    story.append(Spacer(1, 0.1 * inch))
+    row = Table([[Chip(kind, INDIGO, st), stamp_line]],
+                colWidths=[1.7 * inch, PAGE_W - 2 * MARGIN - 1.7 * inch])
+    row.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE")]))
+    story.append(row)
+    story.append(Spacer(1, 8))
+    story.append(Paragraph("Intelligence Report", st["title"]))
+    story.append(Spacer(1, 6))
+    story.append(Paragraph(_esc(_headline(data, sections)), st["body"]))
+    story.append(Spacer(1, 10))
+
+    # ---- Metrics bar ----
+    story.append(_metrics_bar(st, data))
+    story.append(Spacer(1, 10))
+
+    # ---- Highlight boxes ----
+    story.extend(_highlight_boxes(st, data, sections))
+    story.append(Spacer(1, 4))
+
+    # ---- 1 · Scorecard ----
+    story.append(Paragraph("1 · Scorecard", st["h1"]))
+    story.append(Paragraph(
+        "Scores move on evidence, never optimism. "
+        "<b>AUTH</b> = independently verified; <b>claim</b> = self-reported, "
+        "awaiting a stamp.", st["detail_white"]))
+    story.append(Spacer(1, 6))
+    story.append(_scorecard_table(st, data))
+    story.append(Spacer(1, 4))
+
+    # ---- 2 · What got done (by team) ----
+    story.append(Paragraph("2 · What got done — by team", st["h1"]))
+    for i, sec in enumerate(sections, 1):
+        story.extend(_team_section_flowables(st, i, sec, data))
+
+    # ---- 3/4/5 · wins, misses, decisions ----
+    story.extend(_wins_misses_decisions(st, sections, unassigned))
+
+    # ---- 6 · Single priority — the button-law bar (DC-072/073) ----
+    story.append(Paragraph("6 · Single priority for next period", st["h1"]))
+    story.append(ButtonBar(_single_priority(sections, unassigned), st))
+    story.append(Spacer(1, 6))
+
+    # ---- Cross-team signals ----
+    story.append(Paragraph("Cross-team signals", st["h1"]))
+    shown = False
+    for label, items in (("Holes", unassigned.get("holes", [])),
+                         ("Achievements", unassigned.get("achievements", [])),
+                         ("Intelligence", unassigned.get("intelligence", []))):
+        items = items[:3]
+        if not items:
+            continue
+        shown = True
+        story.append(Paragraph(f"<b>{_esc(label)}</b>", st["h2"]))
+        for it in items:
+            out_text = (f"{_esc(_short(it.text, 220))} "
+                        f'<font color="{_hx(MUTED)}">[{_esc(it.source)}]</font>')
+            story.append(_jewel_bullet(st, PURPLE, out_text))
+    if not shown:
+        story.append(Paragraph("All items attributed to teams.", st["body"]))
+
+    # ---- Evidence basis — truth, stated (DC-091) ----
+    story.append(Spacer(1, 8))
+    story.append(HRFlowable(width="100%", thickness=1.5, color=EDGE,
+                            spaceAfter=8, spaceBefore=8))
+    story.append(Paragraph(
+        f"Window: since {_esc(data.since.strftime('%Y-%m-%d %H:%M UTC'))}. "
+        f"Generated {_esc(stamp)}. Evidence basis: worker run logs, daily "
+        "memory log, GitHub (#1354 + PRs), Supabase learning_evidence "
+        "(read-only). All items carry their source. Scores labeled claim "
+        "vs AUTH; a claim becomes authoritative only on independent "
+        "verification. Demo or simulated content is labeled as such; "
+        "counts come from real outcomes or do not appear.",
+        st["detail"]))
+
+    def _page(canv, doc):
+        _header_footer(canv, doc, kind, stamp)
+
+    doc = SimpleDocTemplate(
+        output_path, pagesize=A4,
+        leftMargin=MARGIN, rightMargin=MARGIN,
+        topMargin=1.0 * inch, bottomMargin=0.85 * inch,
+        title=f"Team Naya Intelligence Report — {kind} {stamp} (exemplar)",
+        author="Naya 5",
+    )
+    doc.build(story, onFirstPage=_page, onLaterPages=_page)
+    return output_path
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(
+        description="Team Naya PDF intelligence report — exemplar edition")
+    ap.add_argument("--type", default="hourly",
+                    choices=["hourly", "morning", "nightly"])
+    ap.add_argument("--out", default="/tmp/naya-report-exemplar.pdf")
+    ap.add_argument("--hours", type=float, default=1.0,
+                    help="lookback window in hours")
+    args = ap.parse_args()
+
+    now = dt.datetime.now(dt.timezone.utc)
+    since = now - dt.timedelta(hours=args.hours)
+    gen = ReportGenerator()
+    data = gen.collect(args.type, since, now)
+    path = build_pdf(data, args.type, args.out)
+    print(path)
+
+
+if __name__ == "__main__":
+    main()
