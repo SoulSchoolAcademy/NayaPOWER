@@ -18,12 +18,12 @@
   --secondary: rgba(248,247,251,.55);
   --line: rgba(255,255,255,.12);
   /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
-  --magenta: #d86cff;
-  --purple: #9d75ff;
-  --soul: #9d75ff;
-  --blue: #55b9ee;
-  --green: #55e39a;
-  --gold: #e8c766;
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
   --ease: cubic-bezier(.22,1,.36,1);
   --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
   --ring: 0 0 0 2px rgba(157,117,255,.35);
@@ -92,40 +92,55 @@ p { margin-bottom: 16px; max-width: 72ch; }
 .living-btn {
   position: relative; overflow: hidden; cursor: pointer; border: none;
   font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
-  color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
-  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
-  /* The rim: visible skin */
+  color: #0b0d14; padding: 22px 44px; border-radius: 999px; min-width: 300px;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f4fa 45%, #dbe0ef 100%);
+  /* White light at rest. Dark voice on white light — the one place ink goes dark. The rim: visible skin. */
   box-shadow:
-    inset 0 0 0 1.7px rgba(255,255,255,.92),
-    inset 0 2px 6px rgba(255,255,255,.22),
-    inset 0 -8px 18px rgba(0,0,0,.75),
-    0 14px 40px rgba(0,0,0,.6),
-    0 4px 14px rgba(0,0,0,.5);
-  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+    inset 0 0 0 1.7px #ffffff,
+    inset 0 3px 10px rgba(255,255,255,.95),
+    inset 0 -12px 26px rgba(110,125,175,.42),
+    0 18px 48px rgba(0,0,0,.6),
+    0 5px 16px rgba(0,0,0,.45),
+    0 0 44px -6px var(--btnc, rgba(160,107,255,.55));
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .3s ease, color .3s ease;
   animation: idleBreathe 4.2s ease-in-out infinite;
 }
+/* Each hero carries its own spectrum halo */
+.living-btn[data-spectrum="magenta"] { --btnc: rgba(232,79,255,.6); }
+.living-btn[data-spectrum="purple"] { --btnc: rgba(160,107,255,.6); }
+.living-btn[data-spectrum="blue"] { --btnc: rgba(63,184,255,.6); }
 .living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
-.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(216,108,255,.5), inset 0 0 22px rgba(216,108,255,.28); }
-.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(157,117,255,.5), inset 0 0 22px rgba(157,117,255,.28); animation-delay: 1.4s; }
-.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(85,185,238,.5), inset 0 0 22px rgba(85,185,238,.28); animation-delay: 2.8s; }
+.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 44px 8px rgba(232,79,255,.6), inset 0 0 26px rgba(232,79,255,.32); }
+.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 44px 8px rgba(160,107,255,.6), inset 0 0 26px rgba(160,107,255,.32); animation-delay: 1.4s; }
+.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 44px 8px rgba(63,184,255,.6), inset 0 0 26px rgba(63,184,255,.32); animation-delay: 2.8s; }
 /* The light sweep: a shine that flashes across on its own rhythm */
 .living-btn::after {
   content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
-  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
+  background: linear-gradient(105deg, transparent 20%, var(--btnc, rgba(160,107,255,.55)) 50%, transparent 80%);
   transform: skewX(-18deg); pointer-events: none;
   animation: sweep 5.5s var(--ease) infinite;
 }
+.living-btn:hover::after { animation-duration: .9s; }
 .living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
 .living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
 @keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
 @keyframes idleBreathe {
-  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
-  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+  0%, 100% { box-shadow: inset 0 0 0 1.7px #fff, inset 0 3px 10px rgba(255,255,255,.95), inset 0 -12px 26px rgba(110,125,175,.42), 0 18px 48px rgba(0,0,0,.6), 0 5px 16px rgba(0,0,0,.45), 0 0 44px -6px var(--btnc, rgba(160,107,255,.55)); }
+  50% { box-shadow: inset 0 0 0 2px #fff, inset 0 3px 14px #fff, inset 0 -12px 26px rgba(110,125,175,.42), 0 24px 62px rgba(0,0,0,.65), 0 5px 16px rgba(0,0,0,.45), 0 0 72px -4px var(--btnc, rgba(160,107,255,.7)); }
 }
-.living-btn:hover { transform: translateY(-4px) scale(1.025); }
-.living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(216,108,255,.4), 0 6px 18px rgba(0,0,0,.5); }
-.living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(157,117,255,.4), 0 6px 18px rgba(0,0,0,.5); }
-.living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(85,185,238,.4), 0 6px 18px rgba(0,0,0,.5); }
+.living-btn:hover { transform: translateY(-4px) scale(1.03); color: #fff; animation: none; }
+.living-btn[data-spectrum="magenta"]:hover {
+  background: linear-gradient(180deg, #ff8ae2 0%, #e84fff 52%, #b52fe0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(60,0,80,.5), 0 28px 74px rgba(232,79,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(232,79,255,.85);
+}
+.living-btn[data-spectrum="purple"]:hover {
+  background: linear-gradient(180deg, #c49aff 0%, #a06bff 52%, #6a3df0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(30,0,90,.5), 0 28px 74px rgba(160,107,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(160,107,255,.85);
+}
+.living-btn[data-spectrum="blue"]:hover {
+  background: linear-gradient(180deg, #8ad8ff 0%, #3fb8ff 52%, #1a7fe0 100%);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.95), inset 0 3px 12px rgba(255,255,255,.55), inset 0 -12px 26px rgba(0,40,90,.5), 0 28px 74px rgba(63,184,255,.65), 0 8px 22px rgba(0,0,0,.5), 0 0 110px -8px rgba(63,184,255,.85);
+}
 .living-btn:hover .btn-glow { opacity: 1; }
 .living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
 .living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
@@ -135,14 +150,18 @@ p { margin-bottom: 16px; max-width: 72ch; }
 /* ============ PRIMO BUTTONS (standard) ============ */
 .primo {
   display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
-  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff;
+  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #0b0d14;
   padding: 14px 26px; border-radius: 999px; border: none;
-  background: linear-gradient(180deg, #141419 0%, #050505 60%, #08080c 100%);
-  box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.9), inset 0 2px 5px rgba(255,255,255,.2), inset 0 -6px 14px rgba(0,0,0,.7), 0 10px 28px rgba(0,0,0,.55), 0 3px 10px rgba(0,0,0,.45);
-  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f8 50%, #d7dcee 100%);
+  box-shadow: inset 0 0 0 1.7px #fff, inset 0 2px 6px rgba(255,255,255,.9), inset 0 -8px 16px rgba(110,125,175,.35), 0 12px 30px rgba(0,0,0,.5), 0 3px 10px rgba(0,0,0,.4), 0 0 28px -6px var(--glow);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .25s ease, color .25s ease;
   --glow: var(--soul);
 }
-.primo:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px var(--glow), inset 0 2px 5px rgba(255,255,255,.25), inset 0 -6px 14px rgba(0,0,0,.65), 0 14px 36px rgba(0,0,0,.6), 0 0 26px -4px var(--glow); }
+.primo:hover { transform: translateY(-3px) scale(1.02); color: #fff; background: linear-gradient(180deg, #c49aff, #a06bff 55%, #6a3df0); box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), inset 0 -8px 16px rgba(30,0,90,.45), 0 16px 44px rgba(160,107,255,.6), 0 0 70px -6px rgba(160,107,255,.75); }
+.primo.theme-magenta:hover { background: linear-gradient(180deg, #ff8ae2, #e84fff 55%, #b52fe0); box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), inset 0 -8px 16px rgba(60,0,80,.45), 0 16px 44px rgba(232,79,255,.6), 0 0 70px -6px rgba(232,79,255,.75); }
+.primo.theme-blue:hover { background: linear-gradient(180deg, #8ad8ff, #3fb8ff 55%, #1a7fe0); box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), inset 0 -8px 16px rgba(0,40,90,.45), 0 16px 44px rgba(63,184,255,.6), 0 0 70px -6px rgba(63,184,255,.75); }
+.primo.theme-green:hover { background: linear-gradient(180deg, #8affc4, #2fe89e 55%, #0fae68); box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), inset 0 -8px 16px rgba(0,70,40,.45), 0 16px 44px rgba(47,232,158,.6), 0 0 70px -6px rgba(47,232,158,.75); }
+.primo.theme-gold:hover { background: linear-gradient(180deg, #ffd98a, #ffbf3d 55%, #d98f00); box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), inset 0 -8px 16px rgba(90,50,0,.45), 0 16px 44px rgba(255,191,61,.6), 0 0 70px -6px rgba(255,191,61,.75); }
 .primo:active { transform: translateY(1px) scale(.985); }
 .primo.theme-magenta { --glow: var(--magenta); }
 .primo.theme-purple { --glow: var(--purple); }
@@ -189,7 +208,12 @@ pre.code .st { color: var(--green); }
 /* ============ JEWELS ============ */
 .jewel-row { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
 .jewel { text-align: center; }
-.jewel svg { width: 72px; height: 72px; filter: drop-shadow(0 0 16px currentColor); animation: jewelPulse 4s ease-in-out infinite; }
+.jewel svg { width: 72px; height: 72px; filter: drop-shadow(0 0 22px currentColor); animation: jewelPulse 4s ease-in-out infinite; }
+.jewel-meanings { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; margin: 4px 0 32px; }
+.jm { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.jm i { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: 0 0 16px var(--c); }
+.jm b { font-size: 14px; letter-spacing: .06em; color: #fff; }
+.jm span { font-size: 13px; color: var(--secondary); }
 .jewel:nth-child(2) svg { animation-delay: .8s; } .jewel:nth-child(3) svg { animation-delay: 1.6s; }
 .jewel:nth-child(4) svg { animation-delay: 2.4s; } .jewel:nth-child(5) svg { animation-delay: 3.2s; }
 @keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
@@ -223,14 +247,24 @@ pre.code .st { color: var(--green); }
 
 /* ============ SMART TABS ============ */
 .sn-row { position: sticky; top: 12px; z-index: 100; display: flex; gap: 8px; overflow: auto; -webkit-overflow-scrolling: touch; padding: 10px; border-radius: 999px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.12); margin: 24px 0; }
-.sn-pill { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(0,0,0,.55); color: #e6ecff; font-weight: 700; font-size: 14px; cursor: pointer; user-select: none; transition: transform .18s var(--ease), box-shadow .18s var(--ease); }
-.sn-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.5); }
-.sn-pill.heart { box-shadow: 0 0 0 2px rgba(183,114,255,.4) inset, 0 0 16px rgba(183,114,255,.25); }
-.sn-pill.star { box-shadow: 0 0 0 2px rgba(248,201,56,.4) inset, 0 0 16px rgba(248,201,56,.25); }
+.sn-pill { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1.7px solid #fff; background: linear-gradient(180deg, #ffffff, #e9edf6 60%, #d9dfee); color: #0b0d14; font-weight: 700; font-size: 14px; cursor: pointer; user-select: none; transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .2s ease, color .2s ease; box-shadow: inset 0 2px 5px rgba(255,255,255,.9), inset 0 -5px 10px rgba(110,125,175,.3), 0 6px 16px rgba(0,0,0,.45); }
+.sn-pill:hover { transform: translateY(-2px) scale(1.03); color: #fff; }
+/* Spectrum flow across pills: hover ignites each pill in law order */
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+1):hover { background: linear-gradient(180deg, #ff8ae2, #e84fff 60%, #b52fe0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(232,79,255,.55), 0 0 40px -4px rgba(232,79,255,.7); }
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+2):hover { background: linear-gradient(180deg, #c49aff, #a06bff 60%, #6a3df0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(160,107,255,.55), 0 0 40px -4px rgba(160,107,255,.7); }
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+3):hover { background: linear-gradient(180deg, #8ad8ff, #3fb8ff 60%, #1a7fe0); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(63,184,255,.55), 0 0 40px -4px rgba(63,184,255,.7); }
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n+4):hover { background: linear-gradient(180deg, #8affc4, #2fe89e 60%, #0fae68); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(47,232,158,.55), 0 0 40px -4px rgba(47,232,158,.7); }
+#smarttabs-demo .sn-pill:not(.add):not(.heart):not(.star):nth-of-type(5n):hover { background: linear-gradient(180deg, #ffd98a, #ffbf3d 60%, #d98f00); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 26px rgba(255,191,61,.55), 0 0 40px -4px rgba(255,191,61,.7); }
+.sn-pill.heart:hover { background: linear-gradient(180deg, #c49aff, #a06bff 60%, #6a3df0); color: #fff; box-shadow: inset 0 0 0 2px #fff, 0 10px 26px rgba(160,107,255,.65); }
+.sn-pill.star:hover { background: linear-gradient(180deg, #ffd98a, #ffbf3d 60%, #d98f00); color: #fff; box-shadow: inset 0 0 0 2px #fff, 0 10px 26px rgba(255,191,61,.65); }
+.sn-pill.add { border-style: dashed; border-color: rgba(255,255,255,.5); color: var(--quiet); background: transparent; box-shadow: none; }
+.sn-pill.add:hover { color: #fff; border-color: #fff; background: rgba(255,255,255,.08); transform: translateY(-2px); }
+.sn-pill.heart { box-shadow: inset 0 0 0 2px rgba(160,107,255,.55), 0 0 18px rgba(160,107,255,.35); }
+.sn-pill.star { box-shadow: inset 0 0 0 2px rgba(255,191,61,.55), 0 0 18px rgba(255,191,61,.35); }
 .sn-pill.add { border-style: dashed; color: var(--quiet); }
 .sn-label { white-space: nowrap; }
-.sn-more { border: 0; background: rgba(255,255,255,.1); color: #fff; border-radius: 8px; padding: 4px 9px; cursor: pointer; font-size: 13px; }
-.sn-more:hover { background: rgba(255,255,255,.2); }
+.sn-more { border: 1.7px solid #fff; background: linear-gradient(180deg, #ffffff, #e4e9f4); color: #0b0d14; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,.35); }
+.sn-more:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.4), 0 0 24px -4px rgba(160,107,255,.5); }
 .sn-menu { position: fixed; z-index: 1000; display: none; min-width: 220px; background: linear-gradient(180deg,#121827,#0e1424); border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 18px 40px rgba(0,0,0,.5); }
 .sn-menu .mi { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); cursor: pointer; color: #fff; font-weight: 700; font-size: 14px; }
 .sn-menu .mi:last-child { border-bottom: none; }
@@ -243,9 +277,19 @@ pre.code .st { color: var(--green); }
 .sn-pop .tgl { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.45); cursor: pointer; color: #fff; font-weight: 700; font-size: 13px; }
 .sn-pop .tgl.on { box-shadow: 0 0 0 2px rgba(255,255,255,.3) inset, 0 0 18px rgba(124,77,255,.3); }
 .sn-pop .ft { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
-.sn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.55); color: #fff; cursor: pointer; font-size: 14px; font-weight: 700; }
-.sn-btn.primary { background: linear-gradient(135deg,#6F3DFF,#9D7BFF); border: none; }
+.sn-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1.7px solid #fff; background: linear-gradient(180deg, #ffffff, #e9edf6 60%, #d9dfee); color: #0b0d14; cursor: pointer; font-size: 14px; font-weight: 700; box-shadow: inset 0 2px 5px rgba(255,255,255,.9), inset 0 -4px 8px rgba(110,125,175,.3), 0 6px 16px rgba(0,0,0,.4); transition: transform .18s var(--ease), box-shadow .18s var(--ease); }
+.sn-btn:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px #fff, 0 10px 24px rgba(160,107,255,.5), 0 0 34px -4px rgba(160,107,255,.6); }
+.sn-btn.primary { background: linear-gradient(135deg,#7a45ff,#a06bff); border: none; color: #fff; }
+.sn-btn.primary:hover { box-shadow: 0 10px 26px rgba(160,107,255,.65), 0 0 44px -4px rgba(160,107,255,.8); }
 
+/* ============ HONESTY STRIP ============ */
+.honesty { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+.hon-col { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px 24px; }
+.hon-col h4 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; }
+.hon-col:first-child h4 { color: var(--green); }
+.hon-col:last-child h4 { color: var(--gold); }
+.hon-col ul { margin: 0; padding-left: 20px; font-size: 15px; color: var(--quiet); line-height: 1.65; }
+@media (max-width: 700px) { .honesty { grid-template-columns: 1fr; } }
 /* ============ LAW CARDS ============ */
 .law-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 28px 0; }
 .law-card { --sc: var(--soul); background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; position: relative; overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
@@ -311,41 +355,49 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
 <section id="buttons">
   <p class="kicker">01 · The standard-bearers</p>
   <h2><span class="n">01</span>Three buttons. This is the bar.</h2>
-  <p class="lede">Before anything else: <strong>buttons are alive.</strong> Black heart. White voice. Visible skin. At rest they breathe — a quiet glow, a light that sweeps across on its own rhythm. On hover they rise and ignite in their own spectrum color. On press they compress like something real. If your button doesn't do this, it isn't a Naya button.</p>
+  <p class="lede">Before anything else: <strong>buttons are alive.</strong> White light. Visible skin. At rest they breathe — a quiet glow, a light that sweeps across on its own rhythm. On hover they rise and ignite in their own spectrum color. On press they compress like something real. If your button doesn't do this, it isn't a Naya button.</p>
 
   <div class="callout">
-    <p><strong>The anatomy of living depth.</strong> Five layers, no shortcuts: (1) the black-heart gradient — never flat black, always a deep gradient with life in it; (2) the white rim — 1.7px, visible at rest, the "skin" you can see before you touch; (3) the inset top highlight — light catching an edge, this is what makes it 3D; (4) the inset bottom shadow — weight, gravity, the object sits IN the page; (5) the drop shadow — elevation, it floats above the field. Then motion: breathe at rest, sweep on rhythm, ignite on hover, compress on press.</p>
+    <p><strong>The anatomy of living depth.</strong> Six layers, no shortcuts: (1) the white-light gradient — pearl white, never flat, glowing from within; (2) the white rim — 1.7px, visible at rest, the "skin" you can see before you touch; (3) the inset top highlight — light catching an edge, this is what makes it 3D; (4) the inset bottom shadow — weight, gravity, the object sits IN the page; (5) the drop shadow — elevation, it floats above the field; (6) the spectrum halo — your own color, glowing underneath at rest. Then motion: breathe at rest, sweep on rhythm, ignite on hover, compress on press.</p>
   </div>
 
   <div class="code-head"><span class="micro">Copy this — the living button</span><button class="copy-btn" onclick="copyCode('livingCss')">Copy CSS</button></div>
 <pre class="code" id="livingCss"><span class="cm">/* THE LIVING BUTTON — copy this verbatim. This is the standard. */</span>
 .living-btn {
   position: relative; overflow: hidden; cursor: pointer;
-  font-weight: 800; font-size: 17px; letter-spacing: .12em; color: #fff;
+  font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  <span class="cm">/* White light at rest — dark voice on white light */</span>
+  color: #0b0d14;
   padding: 22px 44px; border-radius: 999px;
-  <span class="cm">/* Layer 1: the black heart — gradient, never flat */</span>
-  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
-  <span class="cm">/* Layers 2–5: skin, bevel, weight, elevation */</span>
+  <span class="cm">/* Layer 1: white-light gradient, glowing from within */</span>
+  background: linear-gradient(180deg, #ffffff 0%, #f2f4fa 45%, #dbe0ef 100%);
+  <span class="cm">/* Layers 2–6: skin, bevel, weight, elevation, halo */</span>
   box-shadow:
-    inset 0 0 0 1.7px rgba(255,255,255,.92),  <span class="cm">/* visible skin */</span>
-    inset 0 2px 6px rgba(255,255,255,.22),    <span class="cm">/* top bevel: light catches edge */</span>
-    inset 0 -8px 18px rgba(0,0,0,.75),        <span class="cm">/* bottom weight: gravity */</span>
-    0 14px 40px rgba(0,0,0,.6),               <span class="cm">/* elevation */</span>
-    0 4px 14px rgba(0,0,0,.5);
+    inset 0 0 0 1.7px #ffffff,              <span class="cm">/* visible skin */</span>
+    inset 0 3px 10px rgba(255,255,255,.95), <span class="cm">/* top bevel: light catches edge */</span>
+    inset 0 -12px 26px rgba(110,125,175,.42),<span class="cm">/* bottom weight: gravity */</span>
+    0 18px 48px rgba(0,0,0,.6),             <span class="cm">/* elevation */</span>
+    0 0 44px -6px var(--btnc);              <span class="cm">/* own spectrum halo */</span>
   animation: idleBreathe 4.2s ease-in-out infinite;  <span class="cm">/* alive at rest */</span>
 }
-<span class="cm">/* The light sweep — a shine crossing on its own rhythm */</span>
+<span class="cm">/* The color-flow sweep — your spectrum color crossing on its own rhythm */</span>
 .living-btn::after {
   content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
   background: linear-gradient(105deg, transparent 20%,
-    rgba(255,255,255,.34) 50%, transparent 80%);
+    var(--btnc) 50%, transparent 80%);
   transform: skewX(-18deg);
   animation: sweep 5.5s cubic-bezier(.22,1,.36,1) infinite;
 }
-<span class="cm">/* Hover: rise + ignite in own spectrum color */</span>
-.living-btn:hover { transform: translateY(-4px) scale(1.025); }
+<span class="cm">/* Hover: kill the idle animation, IGNITE in your spectrum color */</span>
+.living-btn:hover { transform: translateY(-4px) scale(1.03); color: #fff; animation: none; }
+.living-btn[data-spectrum="magenta"]:hover {
+  background: linear-gradient(180deg, #ff8ae2, #e84fff 52%, #b52fe0);
+  box-shadow: inset 0 0 0 2px #fff, 0 28px 74px rgba(232,79,255,.65),
+    0 0 110px -8px rgba(232,79,255,.85);
+}
 <span class="cm">/* Press: compress like something real */</span>
-.living-btn:active { transform: translateY(1px) scale(.975); }</pre>
+.living-btn:active { transform: translateY(1px) scale(.975); }
+</pre>
 
   <h3 style="font-size:24px; margin:40px 0 8px;">The working button — <span style="font-family:Inter">.primo</span></h3>
   <p>For every interface, every day. Same DNA as the living button, tuned for density. Set <span style="font-family:monospace">--glow</span> to the context's spectrum color — the button ignites in the color of what it belongs to.</p>
@@ -357,7 +409,7 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
     <button class="primo theme-gold">◈&nbsp; VIEW LEDGER</button>
   </div>
   <div class="btn-state-grid">
-    <div class="btn-state"><button class="primo">HOVER ME</button><p class="micro">IDLE — white rim visible. Quiet.</p></div>
+    <div class="btn-state"><button class="primo">HOVER ME</button><p class="micro">White light at rest. Ignites on touch.</p></div>
     <div class="btn-state"><button class="primo theme-purple" disabled>DISABLED</button><p class="micro">DISABLED — 60% opacity. Honest about it.</p></div>
   </div>
   <p class="micro" style="margin-top:20px">Law: a button reads as a button before it is touched. The glyph is a promise — it shows what happens.</p>
@@ -412,12 +464,19 @@ tabs.el.addEventListener(<span class="st">'change'</span>, e =&gt; console.log(e
   <h2><span class="n">03</span>The spectrum flows one way.</h2>
   <p class="lede"><strong>Magenta → purple → blue → green → gold.</strong> Richest first, ultra-rich magenta leading. Every sequence on every page follows it. When a list runs long, return to magenta and flow again. Scramble it and the eye knows something's wrong before the mind does.</p>
   <div class="jewel-row" id="spectrumJewels"></div>
+  <div class="jewel-meanings">
+    <div class="jm" style="--c:#e84fff"><i></i><b>Magenta</b><span>What matters to you</span></div>
+    <div class="jm" style="--c:#a06bff"><i></i><b>Purple</b><span>Naya's presence</span></div>
+    <div class="jm" style="--c:#3fb8ff"><i></i><b>Blue</b><span>Understanding</span></div>
+    <div class="jm" style="--c:#2fe89e"><i></i><b>Green</b><span>Connected and well</span></div>
+    <div class="jm" style="--c:#ffbf3d"><i></i><b>Gold</b><span>A rare achievement</span></div>
+  </div>
   <div class="token-grid">
-    <div class="token"><div class="swatch" style="background:#d86cff; box-shadow:0 0 20px #d86cff"></div><code>--magenta #d86cff</code><p class="micro">The living edge. Leads every flow.</p></div>
-    <div class="token"><div class="swatch" style="background:#9d75ff; box-shadow:0 0 20px #9d75ff"></div><code>--purple #9d75ff</code><p class="micro">Choosing intelligence. The soul.</p></div>
-    <div class="token"><div class="swatch" style="background:#55b9ee; box-shadow:0 0 20px #55b9ee"></div><code>--blue #55b9ee</code><p class="micro">Knowledge moving.</p></div>
-    <div class="token"><div class="swatch" style="background:#55e39a; box-shadow:0 0 20px #55e39a"></div><code>--green #55e39a</code><p class="micro">Alive and well.</p></div>
-    <div class="token"><div class="swatch" style="background:#e8c766; box-shadow:0 0 20px #e8c766"></div><code>--gold #e8c766</code><p class="micro">Attention, earned.</p></div>
+    <div class="token"><div class="swatch" style="background:#e84fff; box-shadow:0 0 26px #e84fff"></div><code>--magenta #e84fff</code><p class="micro">The living edge. Leads every flow.</p></div>
+    <div class="token"><div class="swatch" style="background:#a06bff; box-shadow:0 0 26px #a06bff"></div><code>--purple #a06bff</code><p class="micro">Choosing intelligence. The soul.</p></div>
+    <div class="token"><div class="swatch" style="background:#3fb8ff; box-shadow:0 0 26px #3fb8ff"></div><code>--blue #3fb8ff</code><p class="micro">Knowledge moving.</p></div>
+    <div class="token"><div class="swatch" style="background:#2fe89e; box-shadow:0 0 26px #2fe89e"></div><code>--green #2fe89e</code><p class="micro">Alive and well.</p></div>
+    <div class="token"><div class="swatch" style="background:#ffbf3d; box-shadow:0 0 26px #ffbf3d"></div><code>--gold #ffbf3d</code><p class="micro">Attention, earned.</p></div>
   </div>
   <p><strong>Color is identity, not decoration.</strong> One color job per thing. Adjacent things never share a hue. The spectrum gives each thing its identity — and never shouts over the brand.</p>
   <div class="code-head"><span class="micro">The tokens — copy these</span><button class="copy-btn" onclick="copyCode('tokens')">Copy</button></div>
@@ -428,10 +487,10 @@ tabs.el.addEventListener(<span class="st">'change'</span>, e =&gt; console.log(e
   <span class="cm">/* The light */</span>
   --white: #F8F7FB;      <span class="cm">/* text 99% of the time. Every idle rim. */</span>
   <span class="cm">/* The soul */</span>
-  --soul: #9d75ff;       <span class="cm">/* chrome accent. Naya's presence. Never a flood. */</span>
+  --soul: #a06bff;       <span class="cm">/* chrome accent. Naya's presence. Never a flood. */</span>
   <span class="cm">/* The spectrum — in law order */</span>
-  --magenta: #d86cff; --purple: #9d75ff; --blue: #55b9ee;
-  --green: #55e39a;   --gold: #e8c766;
+  --magenta: #e84fff; --purple: #a06bff; --blue: #3fb8ff;
+  --green: #2fe89e;   --gold: #ffbf3d;
 }</pre>
 </section>
 
@@ -540,6 +599,20 @@ tabs.el.addEventListener(<span class="st">'change'</span>, e =&gt; console.log(e
   <div class="callout">
     <p><strong>For every new Naya:</strong> open this page. See what elite looks like. Copy the code — it's yours. Follow the laws — they're the standard. When you build, build like this. When you ship, ship at this level. <strong>Understand. Learn. Apply.</strong></p>
   </div>
+   <div class="honesty">
+     <div class="hon-col"><h4>Checked on this page</h4><ul>
+       <li>Rendered in Chromium at desktop and 390px widths — no horizontal overflow, all images load, no script errors.</li>
+       <li>Zero PR numbers, zero UUIDs, zero machine jargon in the prose.</li>
+       <li>Spectrum flows magenta → purple → blue → green → gold with no adjacent duplicates.</li>
+       <li>Buttons ignite in their own spectrum color on hover; the idle sweep animation no longer overrides the hover glow.</li>
+     </ul></div>
+     <div class="hon-col"><h4>Not yet proven</h4><ul>
+       <li>Independent designer score against the 100-point playbook.</li>
+       <li>Screen-reader pass and full keyboard walkthrough.</li>
+       <li>Cross-browser behavior beyond Chromium.</li>
+       <li>Cold-builder reuse: a fresh Naya building from this page alone.</li>
+     </ul></div>
+   </div>
 </section>
 
 </div>
@@ -566,11 +639,11 @@ function copyCode(id) {
 
 /* ============ SPECTRUM JEWELS (distinct cuts, law order) ============ */
 const SPECTRUM = [
-  { name: 'MAGENTA', hex: '#d86cff', svg: '<path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/>' },
-  { name: 'PURPLE', hex: '#9d75ff', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/>' },
-  { name: 'BLUE', hex: '#55b9ee', svg: '<path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/>' },
-  { name: 'GREEN', hex: '#55e39a', svg: '<rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/>' },
-  { name: 'GOLD', hex: '#e8c766', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/>' }
+  { name: 'MAGENTA', hex: '#e84fff', svg: '<path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/>' },
+  { name: 'PURPLE', hex: '#a06bff', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/><circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/><circle cx="36" cy="30" r="4" fill="#fff"/>' },
+  { name: 'BLUE', hex: '#3fb8ff', svg: '<path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/><path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/>' },
+  { name: 'GREEN', hex: '#2fe89e', svg: '<rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/><rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/>' },
+  { name: 'GOLD', hex: '#ffbf3d', svg: '<circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/><circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/>' }
 ];
 document.getElementById('spectrumJewels').innerHTML = SPECTRUM.map(s =>
   `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`
