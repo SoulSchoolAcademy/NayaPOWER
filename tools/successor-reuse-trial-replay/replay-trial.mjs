@@ -35,7 +35,24 @@ async function listFiles(dir, base = '') {
   return out.sort();
 }
 
-const sha256File = async (p) => createHash('sha256').update(await readFile(p)).digest('hex');
+// Archive integrity must be independent of the line-ending convention of the
+// machine running the replay. Every recorded file_hash in this manifest was
+// computed over LF bytes; hashing raw bytes made a correct archive fail its own
+// integrity gate on any CRLF checkout. Normalizing here changes no recorded pin
+// and still detects real archive drift, because any genuine content edit changes
+// the normalized digest too.
+const normalizeEol = (buf) => {
+  let out = Buffer.alloc(buf.length);
+  let n = 0;
+  for (let i = 0; i < buf.length; i++) {
+    if (buf[i] === 0x0d && buf[i + 1] === 0x0a) continue;
+    out[n++] = buf[i];
+  }
+  return out.subarray(0, n);
+};
+
+const sha256File = async (p) =>
+  createHash('sha256').update(normalizeEol(await readFile(p))).digest('hex');
 
 const manifestPath = path.join(root, 'manifest.json');
 try { await stat(manifestPath); } catch { fail(`no manifest.json at ${manifestPath}`); }

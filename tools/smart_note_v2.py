@@ -44,7 +44,17 @@ from pathlib import Path
 
 # Truth-state guard (Option C, 2026-10-06): all elevations go through
 # apply_elevation() so authority, evidence, and grants are enforced by code.
-from tools.truth_state_guard import apply_elevation as _guard_apply_elevation
+#
+# Both import forms must work, because both are documented and both are used:
+#   python -m tools.smart_note_v2 ...   (repo root on sys.path -> package form)
+#   python tools/smart_note_v2.py ...   (tools/ on sys.path   -> flat form)
+# The second form is the one printed in tools/cold_retrieve_drill/README.md and
+# invoked by drill.py, and it previously died with ModuleNotFoundError before
+# doing any work. Fall through instead of choosing one and breaking the other.
+try:
+    from tools.truth_state_guard import apply_elevation as _guard_apply_elevation
+except ImportError:  # running by path: sys.path[0] is tools/, not the repo root
+    from truth_state_guard import apply_elevation as _guard_apply_elevation
 
 ROOT = Path(__file__).resolve().parents[1]
 BRAIN_SMART_NOTE_ROOT = ROOT / "BRAIN" / "05-MEMORY" / "SMART-NOTES"
