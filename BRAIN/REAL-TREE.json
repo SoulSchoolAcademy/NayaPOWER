@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-08",
-  "receipt_basis_commit": "77e8670193a6db9e4c35a9487e951b19d909a26d",
-  "inventory_file_count": 796,
+  "receipt_basis_commit": "00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9",
+  "inventory_file_count": 797,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
@@ -14,7 +14,7 @@
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
-    "10-INTERFACES": 7,
+    "10-INTERFACES": 8,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
     "90-OPERATIONS": 13,
@@ -3737,6 +3737,11 @@
       "path": "BRAIN/10-INTERFACES/0003-NAYA-VOICE-CHATTERBOX-SPEC-V1.md",
       "blob_sha": "c549ed2f71eee30e34cf67a63502f944a0dade8f",
       "size": 5118
+    },
+    {
+      "path": "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+      "blob_sha": "10d0d9e27133a4e0131eaea1f7fc2aaed57de5c5",
+      "size": 6827
     },
     {
       "path": "BRAIN/10-INTERFACES/README.md",
