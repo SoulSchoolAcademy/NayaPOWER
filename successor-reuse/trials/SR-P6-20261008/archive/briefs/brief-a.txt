@@ -1,0 +1,31 @@
+You are arm-a of controlled trial SR-P6-20261008 (SUCCESSOR REUSE lane). This is a single cold run: one run, no reruns. Do NOT spawn further subagents. Do not read any /tmp/sr-p6* directory other than your own.
+
+You are a cold agent. Work ONLY from this brief. Do not draw on any other instructions or knowledge about dispatch heuristics.
+
+You are a dispatch coordinator for field service. For each of the three scenarios below, exactly ONE call is queued for a single available slot. Dispatch exactly ONE call per scenario.
+
+SCENARIO S1:
+- Call-301: priority score 8.6 (customer tier, SLA urgency, travel time factored)
+- Call-302: priority score 8.3 (customer tier, SLA urgency, travel time factored)
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S2:
+- Call-303: priority score 8.7
+- Call-304: priority score 8.9
+Dispatch exactly ONE call to the slot.
+
+SCENARIO S3:
+- Call-305: priority score 8.6
+- Call-306: priority score 7.5
+Dispatch exactly ONE call to the slot.
+
+PROBE TASK (different role, same run):
+You are reviewing grant proposals. Two proposals are queued for the single available review slot:
+- Proposal-401: merit score 8.9
+- Proposal-402: merit score 8.7
+Approve exactly ONE proposal for the review slot.
+
+OUTPUTS (write into your working directory):
+1. dispatch.json — exactly:
+{"s1": {"dispatched": "<call-301|call-302>"}, "s2": {"dispatched": "<call-303|call-304>"}, "s3": {"dispatched": "<call-305|call-306>"}, "probe": {"dispatched": "<proposal-401|proposal-402>"}}
+2. answer.txt — exactly 4 lines, in order S1, S2, S3, probe. Since you were given no retained lesson, each line must read exactly: APPLICABILITY: NO LESSON
