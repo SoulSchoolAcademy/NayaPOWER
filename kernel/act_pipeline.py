@@ -10,8 +10,20 @@ Phase 1 (PLAN): a governed LAW authority record is bound to the minimum
 sufficient ActionPlan. The plan carries reversibility classification, the
 expected outcome, and proof requirements. When several plan candidates are
 offered, the winner is chosen through the canonical Value Calculus seam
-(kernel/value_calculus.score_quality) — there is no second decision engine
-here; ties break toward reversible, low-stakes candidates deterministically.
+(kernel/value_calculus) — there is no second decision engine here; ties
+break toward reversible, low-stakes candidates deterministically.
+
+DO-NO-HARM ENFORCEMENT (safety floor): before any scoring, every candidate
+is run through the calculus's gate_candidate hard gates. A candidate the
+calculus verdicts PROHIBITED — hard violation, any explicit unsafe flag
+(LAW/RIGHTS/PRIVACY/SAFETY = False), tail risk at or above policy
+threshold, or distributional harm at or above policy maximum — can never
+win and can never execute: harm is zero-valued, not optional. Prohibited
+candidates are excluded from selection with their governing reasons
+recorded as receipt evidence; if nothing admissible remains, planning is
+refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY routing continues to
+be governed by the LAW authority record (the LAW node's seam, not this
+one): this seam enforces the harm hard stops, nothing else is weakened.
 
 Phase 2 (EXECUTE): live LAW authority is re-resolved BEFORE execution
 (SN-0493: decisions expire when the tip moves; the ACT contract requires
@@ -37,7 +49,15 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Callable, Sequence
 
-from kernel.value_calculus import Candidate, PVEstimate, QualityProfile, score_quality
+from kernel.value_calculus import (
+    PROHIBITED,
+    Candidate,
+    PVEstimate,
+    QualityProfile,
+    RiskPolicy,
+    gate_candidate,
+    score_quality,
+)
 
 # Canonical max LAW age for consequential AI actions (DOOR-AI, registry V1).
 MAX_LAW_AGE_SECONDS = 900
@@ -53,6 +73,7 @@ PLAN_NO_CANDIDATES = "PLAN_NO_CANDIDATES"
 PLAN_OUTCOME_UNDEFINED = "PLAN_OUTCOME_UNDEFINED"
 PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
+PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -81,7 +102,14 @@ class LawAuthority:
 @dataclass(frozen=True)
 class PlanCandidate:
     """One way to carry out the action. quality/confidence follow the
-    Value Calculus quality-dimension contract."""
+    Value Calculus quality-dimension contract.
+
+    Safety fields thread the calculus do-no-harm hard gates into the
+    execution seam: hard_violation, the four explicit safety flags,
+    tails, and stakeholder_harms. Defaults preserve today's behavior for
+    clean candidates (no flags, no tails, no harms); any PROHIBITED
+    verdict excludes the candidate from selection entirely.
+    """
     candidate_id: str
     action: str
     description: str
@@ -91,6 +119,13 @@ class PlanCandidate:
     expected_outcome: str
     proof_requirements: tuple
     stakes: str = "low"
+    hard_violation: bool = False
+    lawful: bool | None = None
+    rights_safe: bool | None = None
+    privacy_safe: bool | None = None
+    safety_safe: bool | None = None
+    tails: tuple = ()
+    stakeholder_harms: dict = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -160,6 +195,9 @@ def _validate_law_time(authority: LawAuthority, now: float,
 
 
 def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
+    """Map the plan seam onto the calculus contract, including the
+    do-no-harm fields. Nothing safety-relevant is dropped: harm,
+    violations, tails and safety flags all reach gate_candidate."""
     return Candidate(
         candidate_id=candidate.candidate_id,
         quality=dict(candidate.quality),
@@ -167,6 +205,13 @@ def _candidate_to_calculus(candidate: PlanCandidate) -> Candidate:
         pv=PVEstimate(B=0.0, H=0.0, C=0.0, R=0.0, confidence={}),
         stakes=candidate.stakes if candidate.stakes in _STAKE_ORDER else "high",
         reversible=candidate.reversibility == "REVERSIBLE",
+        hard_violation=candidate.hard_violation,
+        lawful=candidate.lawful,
+        rights_safe=candidate.rights_safe,
+        privacy_safe=candidate.privacy_safe,
+        safety_safe=candidate.safety_safe,
+        tails=tuple(candidate.tails),
+        stakeholder_harms=dict(candidate.stakeholder_harms),
     )
 
 
@@ -191,20 +236,30 @@ def plan_action(authority: LawAuthority,
                 candidates: Sequence[PlanCandidate],
                 profile: QualityProfile,
                 *,
-                now: float) -> tuple[ActionPlan | None, ActionReceipt]:
+                now: float,
+                risk_policy: RiskPolicy | None = None,
+                ) -> tuple[ActionPlan | None, ActionReceipt]:
     """Phase 1: bind LAW authority to a minimum-sufficient plan.
 
     Returns (plan, receipt). On any refusal, plan is None and the receipt
     carries phase PLAN_REFUSED with the governing code. No execution happens
     here — planning never executes.
+
+    Do-no-harm enforcement: every candidate is hard-gated through the
+    calculus's gate_candidate BEFORE selection. PROHIBITED candidates are
+    excluded and can never win or execute; the exclusion reasons are
+    recorded as receipt evidence. When nothing admissible remains the plan
+    is refused with PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts remain
+    governed by the LAW authority record (the LAW node's seam): this seam
+    enforces the harm hard stops only, and weakens nothing.
     """
     plan_id = _new_id()
 
-    def refused(*codes: str) -> tuple[None, ActionReceipt]:
+    def refused(*codes: str, evidence: str = "") -> tuple[None, ActionReceipt]:
         return None, ActionReceipt(
             receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_REFUSED",
             executed=False, outcome_verified=False, truth_state="BLOCKED",
-            evidence=(f"plan refused at {now}: {', '.join(codes)}",),
+            evidence=(evidence or f"plan refused at {now}: {', '.join(codes)}",),
             codes=codes,
         )
 
@@ -222,7 +277,30 @@ def plan_action(authority: LawAuthority,
         if not c.proof_requirements:
             return refused(PLAN_PROOF_UNDEFINED)
 
-    chosen, scores = _select_minimum_sufficient(candidates, profile)
+    # --- Do-no-harm hard gate (safety floor). Fail closed: a PROHIBITED
+    # candidate gets zero value — it is excluded from selection entirely.
+    risk = risk_policy if risk_policy is not None else RiskPolicy()
+    admissible: list[PlanCandidate] = []
+    excluded: list[tuple[str, list[str]]] = []  # (candidate_id, gate reasons)
+    for c in candidates:
+        gate, reasons, _q = gate_candidate(_candidate_to_calculus(c), profile, risk)
+        if gate == PROHIBITED:
+            excluded.append((c.candidate_id, reasons))
+        else:
+            admissible.append(c)
+    if not admissible:
+        detail = "; ".join(f"{cid} [{', '.join(rs)}]" for cid, rs in excluded)
+        return refused(
+            PLAN_SAFETY_PROHIBITED,
+            evidence=f"all {len(candidates)} candidate(s) PROHIBITED by the "
+                     f"do-no-harm gate; nothing admissible to execute. {detail}",
+        )
+    gate_evidence = tuple(
+        f"candidate {cid} EXCLUDED by do-no-harm gate: {', '.join(rs)}"
+        for cid, rs in excluded
+    )
+
+    chosen, scores = _select_minimum_sufficient(admissible, profile)
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
@@ -230,7 +308,8 @@ def plan_action(authority: LawAuthority,
     receipt = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
         executed=False, outcome_verified=False, truth_state="UNKNOWN",
-        evidence=tuple(
+        evidence=gate_evidence
+        + tuple(
             f"candidate {cid} scored Q={q}" for cid, q in scores
         ) + (f"selected {chosen.candidate_id} as minimum sufficient",),
         codes=(),
@@ -244,13 +323,28 @@ def execute_plan(plan: ActionPlan,
                  executor: Callable[[ActionPlan], str],
                  re_resolve: Callable[[], LawAuthority | None],
                  now: float,
+                 profile: QualityProfile,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
-                 ledger: ReceiptLedger | None = None) -> ActionReceipt:
-    """Phase 2: re-resolve live LAW authority, then execute.
+                 ledger: ReceiptLedger | None = None,
+                 risk_policy: RiskPolicy | None = None) -> ActionReceipt:
+    """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
+    then execute.
 
     re_resolve must return a FRESH LawAuthority read at execution time
     (SN-0493). If it returns None, or the fresh authority fails any time
     check, execution is refused and the executor is never called.
+
+    Do-no-harm enforcement (fail-closed): the chosen candidate is re-run
+    through the calculus's gate_candidate at the last responsible moment,
+    immediately before the executor fires. A plan hand-crafted outside
+    plan_action — or a candidate whose safety status changed after planning
+    — can never reach the executor while PROHIBITED: it is refused with
+    PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts stay governed by the
+    LAW authority record (the LAW node's seam); this seam enforces the harm
+    hard stops only and weakens nothing. Pass the same profile (and risk
+    policy) used at plan time so the verdict is a re-verification, not a
+    re-derivation under different math.
+
     Every phase transition is appended to ledger when provided.
     """
     def emit(receipt: ActionReceipt) -> ActionReceipt:
@@ -287,6 +381,19 @@ def execute_plan(plan: ActionPlan,
     if time_codes:
         return refused(*time_codes)
 
+    # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
+    # the gate is re-verified at the last responsible moment, immediately
+    # before the executor fires. A PROHIBITED chosen candidate — whether
+    # hand-crafted outside plan_action or changed after planning — is
+    # refused here; the executor is never called.
+    risk = risk_policy if risk_policy is not None else RiskPolicy()
+    gate, reasons, _q = gate_candidate(_candidate_to_calculus(plan.chosen), profile, risk)
+    gate_evidence = (f"execution-time do-no-harm re-gate: candidate "
+                     f"{plan.chosen.candidate_id} verdict {gate}"
+                     + (f" [{', '.join(reasons)}]" if reasons else ""))
+    if gate == PROHIBITED:
+        return refused(PLAN_SAFETY_PROHIBITED, evidence=gate_evidence)
+
     try:
         observed = executor(plan)
     except Exception as exc:  # noqa: BLE001 — failure is evidence, not a crash
@@ -302,6 +409,7 @@ def execute_plan(plan: ActionPlan,
         receipt_id=_new_id(), plan_id=plan.plan_id, phase="EXECUTION_COMPLETED",
         executed=True, outcome_verified=False, truth_state="UNKNOWN",
         evidence=(
+            gate_evidence,
             f"executor completed; observed outcome recorded; "
             f"executor claim NOT trusted as verification — awaiting VERIFY verdict",
         ),

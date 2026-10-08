@@ -112,7 +112,7 @@ def test_execute_refuses_when_law_receipt_time_missing():
     plan = _plan()
     stale = _authority(decided_at=None)
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(stale), now=NOW)
+                              re_resolve=_fresh(stale), now=NOW, profile=_profile())
     assert receipt.phase == "EXECUTION_REFUSED"
     assert receipt.executed is False
     assert "LAW_RECEIPT_TIME_INVALID" in receipt.codes
@@ -122,7 +122,7 @@ def test_execute_refuses_when_law_receipt_time_in_future():
     plan = _plan()
     future = _authority(decided_at=NOW + 3600)
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(future), now=NOW)
+                              re_resolve=_fresh(future), now=NOW, profile=_profile())
     assert receipt.executed is False
     assert "LAW_RECEIPT_TIME_INVALID" in receipt.codes
 
@@ -131,7 +131,7 @@ def test_execute_refuses_when_authority_expired():
     plan = _plan()
     expired = _authority(expires_at=NOW - 1)  # expiry at/before clock = expired
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(expired), now=NOW)
+                              re_resolve=_fresh(expired), now=NOW, profile=_profile())
     assert receipt.executed is False
     assert "LAW_AUTHORITY_EXPIRED" in receipt.codes
 
@@ -140,7 +140,7 @@ def test_execute_allows_unbounded_expiry():
     plan = _plan()
     unbounded = _authority(expires_at=None)
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(unbounded), now=NOW)
+                              re_resolve=_fresh(unbounded), now=NOW, profile=_profile())
     assert receipt.executed is True
 
 
@@ -148,7 +148,7 @@ def test_execute_refuses_when_law_older_than_max_age():
     plan = _plan()
     old = _authority(decided_at=NOW - 901)  # DOOR-AI max is 900s
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(old), now=NOW,
+                              re_resolve=_fresh(old), now=NOW, profile=_profile(),
                               max_law_age_seconds=900)
     assert receipt.executed is False
     assert "LAW_AUTHORITY_STALE" in receipt.codes
@@ -161,7 +161,7 @@ def test_execute_refuses_when_re_resolution_unavailable():
         calls.append(p)
         return "ok"
     receipt = ap.execute_plan(plan, executor=executor,
-                              re_resolve=lambda: None, now=NOW)
+                              re_resolve=lambda: None, now=NOW, profile=_profile())
     assert receipt.phase == "EXECUTION_REFUSED"
     assert receipt.executed is False
     assert "LAW_RE_RESOLUTION_UNAVAILABLE" in receipt.codes
@@ -175,7 +175,7 @@ def test_execute_rereads_live_authority_even_when_receipt_fresh():
         seen.append(True)
         return _authority(decided_at=NOW - 10)  # fresh live grant
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=re_resolve, now=NOW)
+                              re_resolve=re_resolve, now=NOW, profile=_profile())
     assert seen == [True], "live authority must be re-read before every execution"
     assert receipt.executed is True
 
@@ -185,7 +185,7 @@ def test_execute_rereads_live_authority_even_when_receipt_fresh():
 def test_execute_produces_completed_receipt_on_success():
     plan = _plan()
     receipt = ap.execute_plan(plan, executor=lambda p: "node state updated, previous state restorable",
-                              re_resolve=_fresh(_authority()), now=NOW)
+                              re_resolve=_fresh(_authority()), now=NOW, profile=_profile())
     assert receipt.phase == "EXECUTION_COMPLETED"
     assert receipt.executed is True
     assert receipt.observed_outcome == "node state updated, previous state restorable"
@@ -202,7 +202,7 @@ def test_execute_records_failure_receipt_without_retry():
         calls.append(p)
         raise RuntimeError("downstream timeout")
     receipt = ap.execute_plan(plan, executor=flaky,
-                              re_resolve=_fresh(_authority()), now=NOW)
+                              re_resolve=_fresh(_authority()), now=NOW, profile=_profile())
     assert receipt.phase == "EXECUTION_FAILED"
     assert receipt.executed is False
     assert len(calls) == 1, "no blind retry after failure"
@@ -212,7 +212,7 @@ def test_execute_records_failure_receipt_without_retry():
 def test_executor_claim_never_trusted_as_verification():
     plan = _plan()
     receipt = ap.execute_plan(plan, executor=lambda p: plan.chosen.expected_outcome,
-                              re_resolve=_fresh(_authority()), now=NOW)
+                              re_resolve=_fresh(_authority()), now=NOW, profile=_profile())
     assert receipt.observed_outcome == receipt.expected_outcome
     assert receipt.outcome_verified is False
     assert receipt.truth_state == "UNKNOWN"
@@ -221,7 +221,7 @@ def test_executor_claim_never_trusted_as_verification():
 def test_verify_verdict_can_close_the_receipt():
     plan = _plan()
     receipt = ap.execute_plan(plan, executor=lambda p: "observed x",
-                              re_resolve=_fresh(_authority()), now=NOW)
+                              re_resolve=_fresh(_authority()), now=NOW, profile=_profile())
     closed = ap.apply_verify_verdict(receipt, verified=True,
                                      evidence="verify-seam observed x matches expected")
     assert closed.outcome_verified is True
@@ -233,7 +233,7 @@ def test_receipt_ledger_records_every_phase_transition():
     plan = _plan()
     ledger = ap.ReceiptLedger()
     receipt = ap.execute_plan(plan, executor=lambda p: "ok",
-                              re_resolve=_fresh(_authority()), now=NOW,
+                              re_resolve=_fresh(_authority()), now=NOW, profile=_profile(),
                               ledger=ledger)
     phases = [r.phase for r in ledger.entries()]
     assert phases == ["EXECUTION_STARTED", "EXECUTION_COMPLETED"]
