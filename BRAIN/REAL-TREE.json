@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-08",
-  "receipt_basis_commit": "00f50bb32c1c7fadfbe5cd03d0319646ab9dc0e9",
-  "inventory_file_count": 797,
+  "receipt_basis_commit": "f52ffb966432f8f2429da1ce009c6e5f0ec177ef",
+  "inventory_file_count": 806,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 21,
+    "01-GOVERNANCE": 22,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 626,
+    "05-MEMORY": 634,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -187,6 +187,11 @@
       "path": "BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json",
       "blob_sha": "9d9d1fe2937d4ee3bcb6c7c9ebcbae6e884dc290",
       "size": 3087
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md",
+      "blob_sha": "0800143c89ba1e784b89b7e14d16146982869507",
+      "size": 4990
     },
     {
       "path": "BRAIN/01-GOVERNANCE/README.md",
@@ -1432,6 +1437,11 @@
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0544/IB-SMART-NOTE-20261007-sn0544-presence-is-not-influence-separate-context-from-causal-proof.md",
       "blob_sha": "05f320947d8f0f95b65322109f1865ec9832809e",
       "size": 8785
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/PROTECTED-DOCUMENT-INTEGRITY/SN-0633/IB-SMART-NOTE-20261008-sn0633-bulk-merge-hollows-protected-document.md",
+      "blob_sha": "317a73ae44ed1288bf60bfdc435e35b25ee3acbb",
+      "size": 8762
     },
     {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/RETRIEVAL-RANKING/SN-0449/IB-SMART-NOTE-20261006-sn0449-retrieval-relevance-first-authority-second.md",
@@ -3549,9 +3559,44 @@
       "size": 3032
     },
     {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0635/IB-SMART-NOTE-20261008-sn0635-inheritance-needs-the-outcome-evidence-not-just-the-rule.md",
+      "blob_sha": "fb04b30923a46f801bb8e368c5354c509a6d6540",
+      "size": 3344
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0636/IB-SMART-NOTE-20261008-sn0636-non-derivable-lesson-selection-closed-the-null-hole.md",
+      "blob_sha": "f218e901ed0855ecef9cd679588e4326c147d59e",
+      "size": 3540
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0637/IB-SMART-NOTE-20261008-sn0637-local-verifier-green-proves-local-code-never-deployed-enforcement.md",
+      "blob_sha": "9357f09e9bdbbed7d58837e642c86376ad946518",
+      "size": 4051
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0639/IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag.md",
+      "blob_sha": "3a94c477d1821c3df480b0e69442137f36c2665d",
+      "size": 4673
+    },
+    {
       "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/NO-WAITING/SN-0626/IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine.md",
       "blob_sha": "bc8337523e53548d8ad104962ed9b85e18aee735",
       "size": 4548
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0632/IB-SMART-NOTE-20261008-sn0632-team-naya-operating-protocol.md",
+      "blob_sha": "14039acf0b66d8e7ea7a948a9e69b8f7b4fa788e",
+      "size": 4164
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0634/IB-SMART-NOTE-20261008-sn0634-protocol-three-tongues-machine-law.md",
+      "blob_sha": "e645e635f0aeefd194e0ddb07e881ce7eecaf848",
+      "size": 2676
+    },
+    {
+      "path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0638/IB-SMART-NOTE-20261008-sn0638-wisdom-over-smartness.md",
+      "blob_sha": "c10e37a63c96a57a39560bcb940554ca40ab71b0",
+      "size": 2357
     },
     {
       "path": "BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md",
