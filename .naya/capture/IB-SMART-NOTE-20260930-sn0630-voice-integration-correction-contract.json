@@ -1,0 +1,20 @@
+{
+ "smart_note_id": "SN-0630",
+ "intelligence": {
+  "title": "Voice Integration Correction Contract \u2014 the Button Goes on the Block, Plays the Block's Own Text; Inventory the Built Voice Before You Build",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract",
+  "smart_note_id": "SN-0630",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/VOICE-INTEGRATION/SN-0630/IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed. Renumbered SN-0522->SN-0630. No runtime provenance invented.",
+  "ingested_at": "2026-10-08",
+  "renumbered_from": "SN-0522",
+  "renumber_reason": "cross-branch collision; first-claim stands"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/VOICE-INTEGRATION/SN-0630/IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract.md",
+  "provenance_note": "reconstructed; renumbered; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

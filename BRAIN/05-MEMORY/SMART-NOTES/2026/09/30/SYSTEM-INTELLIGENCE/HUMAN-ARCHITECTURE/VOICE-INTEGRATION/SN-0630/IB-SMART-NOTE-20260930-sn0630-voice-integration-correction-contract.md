@@ -1,6 +1,6 @@
 # Voice Integration Correction Contract — the Button Goes on the Block, Plays the Block's Own Text; Inventory the Built Voice Before You Build
 
-**Intelligent Block:** IB-SMART-NOTE-20260930-sn0627-voice-integration-correction-contract
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-06
@@ -35,7 +35,7 @@ Note to future me: when you integrate an identity-carrying capability into a uni
 
 ```json
 {
-  "id": "SN-0627",
+  "id": "SN-0630",
   "title": "Voice Integration Correction Contract — Button on the Block, the Block's Own Text; Inventory Before Build; Blocked Is Not Yours to Solve",
   "class": "HUMAN-ARCHITECTURE",
   "truth_state": "CANDIDATE",
