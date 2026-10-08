@@ -1,0 +1,32 @@
+{
+  "schema": "naya.smart-note-capture.v2",
+  "smart_note_id": "SN-0530",
+  "capture_id": "20261008-sn0530-do-do-and-report",
+  "title": "Lane Ownership Is For Speed, Not Territory — Do, Record, Hand Off",
+  "category": "SYSTEM_INTELLIGENCE",
+  "topic": "GOVERNANCE",
+  "subtopic": "OPERATING_LAW",
+  "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE",
+  "source": {
+    "captured_at": "2026-10-08",
+    "captured_at_utc": "2026-10-08T00:20:00Z",
+    "source_type": "team_naya_directive",
+    "source_reference": "Shawn directive via Naya5 master directive + Naya4 proposal, #1354, 2026-10-08"
+  },
+  "projection": {
+    "publication_scope": "PUBLIC_DERIVED_VIEW",
+    "human_director_authorized_publication": true,
+    "category_slug": "SYSTEM-INTELLIGENCE"
+  },
+  "human_note": {
+    "subject": "Don't wait — do, record, hand off",
+    "text": "Assign lane work to parallelize, never to create fiefdoms. If a lane is active and parallel, stay in your lane. If someone is stalled and blocking — for any reason — do the thing yourself: same quality bar, record that you did it, notify the owner, hand them their next task. Waiting because \"it's their job\" is the bottleneck."
+  },
+  "naya_note": {
+    "text": "Operating rule for all seats: active+parallel -> stay in lane; stalled+blocking -> take and go. Always leave a receipt: what done, where recorded, next owner."
+  },
+  "learning_lesson": {
+    "text": "Authority-by-seat must not become permission-to-stall. Escalate past bottlenecks by executing, not waiting."
+  },
+  "epistemic_state": "CANDIDATE"
+}
