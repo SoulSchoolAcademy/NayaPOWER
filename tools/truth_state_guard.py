@@ -239,15 +239,18 @@ def validate_grant(grant, note_id, target_state, now=None,
 
 
 def check_elevation_grant(entry, new_state, elevation_grants, elevation_receipts=None,
-                          attempt_renewal=False, verification_state=None, now=None):
+                          attempt_renewal=True, verification_state=None, now=None):
     """VERIFIED->RATIFIED requires authority: a valid, unexpired grant naming
     this note, OR a valid SN-0340 five-step scorecard receipt binding this
     note and target state (receipt-as-authority, Shawn directive 2026-10-08).
 
     elevation_grants: iterable of grant dicts (or None).
     elevation_receipts: iterable of scorecard receipt dicts (or None).
-    attempt_renewal: when True, expired grants are evaluated for auto-renewal
-        before being treated as dead (see evaluate_renewal).
+    attempt_renewal: defaults True — expiry is a review checkpoint, not a
+        cliff (Shawn directive 2026-10-08). Fail-closed is preserved:
+        renewal requires verification_state with verification_valid True,
+        scope_unchanged True, and no objections; with no verification_state
+        the grant stays expired (RENEWAL_BLOCKED), exactly as before.
     Returns (ok, record). On success the record's detail names the satisfying
     grant_id or receipt.
     """
@@ -687,7 +690,8 @@ def _valid_predecessor_receipt(pred, entry):
 
 
 def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_entry=None,
-                    elevation_grants=None):
+                    elevation_grants=None, elevation_receipts=None,
+                    verification_state=None):
     """Attempt a truth-state transition on a registry entry dict.
 
     On success the entry is mutated in place (truth_state + appended
@@ -703,6 +707,13 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
     elevation_grants: iterable of elevation-grant dicts. VERIFIED->RATIFIED
     requires a valid, unexpired grant naming this note (RATIFIED_REQUIRES_
     ELEVATION_GRANT). All other transitions ignore grants.
+    elevation_receipts: iterable of SN-0340 scorecard receipts accepted as
+    authority-equivalent (receipt-as-authority, Shawn directive 2026-10-08).
+    verification_state: {"verification_valid", "scope_unchanged",
+    "objections", ...} — when an elevation grant is expired, the canonical
+    path attempts auto-renewal against this state (attempt_renewal defaults
+    True in check_elevation_grant); fail-closed: without it the expired
+    grant stays dead.
     """
     if not isinstance(entry, dict):
         return False, _record(False, "INVALID_ENTRY", "entry is not an object")
@@ -753,7 +764,9 @@ def apply_elevation(entry, new_state, authority=None, evidence=None, superseded_
     # travels with the elevation request (Option C, ratified 2026-10-06).
     grant_id = None
     if old == "VERIFIED" and new == "RATIFIED":
-        ok, rec = check_elevation_grant(entry, new, elevation_grants)
+        ok, rec = check_elevation_grant(entry, new, elevation_grants,
+                                        elevation_receipts=elevation_receipts,
+                                        verification_state=verification_state)
         if not ok:
             return False, rec
         # Extract the satisfying grant_id from the detail for the history record.
