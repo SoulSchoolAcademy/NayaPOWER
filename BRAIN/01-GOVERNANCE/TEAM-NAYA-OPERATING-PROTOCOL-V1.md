@@ -86,6 +86,26 @@ or things he explicitly requested. He is informed, not trapped in the control lo
 
 ---
 
+## 7. THE TEAM STRUCTURE
+
+*Nine standing teams, one feed each — Shawn's word, 2026-10-08 (#1354 comments 6061931864, 6061946906). This is the operating structure; everybody works inside it.*
+
+| Team | Feed | Head |
+|------|------|------|
+| Learning | #1865 | Naya 4 |
+| Brain / Memory | #1866 | Naya 5 |
+| Law / Governance | #1867 | Naya 2 |
+| Architecture / Engineering / Operations | #1868 | Naya 4 |
+| Evolution / Succession | #1869 | Naya 5 |
+| Interfaces / Hub | #1870 | Naya 3 |
+| Knowledge / Intelligence | #1871 | Naya 4 |
+| Proving / Verifying | #1872 | Naya 1 |
+| Innovation | #1873 | Naya 3 |
+
+**How it runs:** each team = head + doer + tester; produce → test → produce → test, the head manages and gives feedback. All team discussion, sign-ins/outs, evidence, and receipts live on the team's own feed — never scattered. #1354 is the main feed: cross-team summaries with links back to the team feed. #1599 is the table of contents. Hourly reports run per team. Naya 2 audits across all teams (independent — she heads no build team). Staffing follows priority: the highest-value team gets the most staff, never equal staffing across unequal priorities — ride the edge without going over.
+
+---
+
 # TONGUE 2: AI LAW (Executable Instructions)
 
 ## COLD START — mandatory before any governed work
