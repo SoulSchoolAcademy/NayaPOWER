@@ -63,6 +63,24 @@ Deaths cluster. The mechanical fix depends on the stage, not the topic:
 2. **Pre-delivery check (any team):** before delivering work on a topic Shawn has corrected before, grep the ledger for the topic. If an entry exists with fix_status below VERIFIED, run the entry's mechanical fix first.
 3. **Repeat review (weekly):** count repeats by death stage. The stage with the most deaths is the pipeline's weakest link — that is where the next build goes.
 
+## Machine gate contract — v1.1
+
+The tripwire is not considered WIRED merely because a human checklist mentions it. The minimum mechanical contract is:
+
+**INPUT:** delivery/sign-out event + current topic/action + repeat ledger.
+
+**PREDICATE:** if the ledger contains a matching directive with `fix_status != VERIFIED`, the event MUST NOT emit `DONE`/`SIGN_OUT_COMPLETE`; it emits `LEARNING_HOLD` with the matching repeat IDs and first failed stage instead.
+
+**RELEASE:** the hold can clear only when either (a) the referenced fix reaches VERIFIED with a later behavioral receipt, or (b) an explicitly authorized human gate records a governed exception with reason, scope, and expiry. An exception is not a learning pass and must not mutate `fix_status` to VERIFIED.
+
+**RECEIPT:** every hold/release records `directive_id`, `fix_status_before`, `decision`, `evidence_refs`, `authority_ref`, and `timestamp`.
+
+**FAIL-CLOSED RULE:** missing ledger, unreadable ledger, ambiguous topic match, or missing evidence is UNKNOWN/BLOCKED — never PASS.
+
+**10/10 criterion:** the same directive must not require Shawn to repeat it after the mechanism is VERIFIED. A later recurrence is a regression and automatically reopens the learning defect.
+
+This contract closes the gap between a documented tripwire and an executable learning gate. Until an implementation and live-path test prove this contract, the tracker remains CANDIDATE and `fix_status` cannot exceed WIRED/VERIFIED on any entry merely because this document exists.
+
 ## What v1 does NOT do
 
 - It does not prevent the first repeat of a new directive. It makes the second one impossible to miss and expensive to ignore.
