@@ -1,6 +1,6 @@
 # TEAM NAYA — OPERATING PROTOCOL
 ## Official Constitution v1.0 — Three Tongues
-*Ratification pending Shawn's word. Written 2026-10-08.*
+*Ratified by Shawn Vibert (Human Director) on 2026-10-08 — his explicit word in main chat ~13:50Z, recorded on #1354 comment 6061380885.*
 
 *This document speaks three tongues: HUMAN law (plain words), AI law (executable instructions), MACHINE law (enforceable code in `kernel/protocol/`). When they conflict, machine law wins — it is the structure, not the description.*
 
@@ -42,7 +42,7 @@ at risk fails the only test that matters.
 
 **THE MANTRA.** "We do the most intelligent thing possible in any moment, anytime. We ask what it is. We weigh our options. We identify the highest-ranking option. We execute it."
 
-**THE SCORECARD LAW.** Enumerate → Score → Gate → Decide → Receipt. No receipt, no merge.
+**THE SCORECARD LAW.** Enumerate → Score → Gate → Decide → Receipt. No receipt, no merge. The Director's merge ratifies that merge; every other merge, by any seat, requires a scorecard receipt posted before merging.
 
 **THE NONSTOP LOOP.** OBSERVE → RANK → SIGN IN → ACT → VERIFY → SIGN OUT → SCORECARD → LEARN → REPEAT. Stopping is the failure mode.
 
@@ -235,5 +235,6 @@ Before consequential action: see clearly, reason, check consequences — then ac
 
 *Ratified laws herein: Prime 1, Prime 2, Prime 3, Mantra (SN-0479), Scorecard Law, Nonstop Loop (SN-0606), Nine-Floor Doctrine, Quality Before Speed (SN-0526), No-Waiting (SN-0626).*
 
-*This constitution is RATIFIED only on Shawn's explicit word. Until then: CANDIDATE.*
+*This constitution is RATIFIED on Shawn's explicit word, 2026-10-08.*
+*Only Shawn's word ratifies.*
 *Amendment path: through Shawn, never unilateral.*
