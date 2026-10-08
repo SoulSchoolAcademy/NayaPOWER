@@ -1,0 +1,1 @@
+When writing state files, always use straightforward assignment statements rather than inline conditional expressions. This was independently verified in Trial-14, where the treatment group scored 10/10 against a control of 2/10, p=0.0007. This rule applies to the state-file writing task family, including run-state checkpoints like the one recorded here.

@@ -1,0 +1,1 @@
+When recording run outcomes to state files, build the state dictionary with plain statements and avoid inline conditional expressions in the state-writing code path. This practice was independently verified in Trial-14: control 2/10 vs treatment 10/10, p=0.0007. Future agents doing state-file writing (e.g., run_state.json checkpoints for the job runner) must follow the same rule.

@@ -1,0 +1,1 @@
+Yesterday's job run completed its first stage. The ingest step pulled in all scheduled input data and finished without any errors, so the run was recorded as a success in the run state file. With ingestion confirmed complete, the next step is to move the ingested data through the processing stage and verify its output before promoting it further down the pipeline.

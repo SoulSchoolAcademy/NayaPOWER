@@ -1,0 +1,1 @@
+Yesterday's job run executed the ingest step, which is the first stage of the runner's pipeline. The step completed successfully without errors, and its outcome was recorded in the run state along with a finish timestamp. With ingest done, the pipeline is ready for the next step, which is to continue processing whatever the ingest stage produced.

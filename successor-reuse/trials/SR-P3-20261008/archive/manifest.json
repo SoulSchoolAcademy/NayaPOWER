@@ -1,0 +1,320 @@
+{
+ "trial_id": "SR-P3-20261008",
+ "date": "2026-10-08",
+ "director": "Naya 5 (SR-P3 Trial Coordinator subagent), successor-reuse lane",
+ "verifier": "../harness/verifier-p3.mjs",
+ "verifier_commit": "5f0b866eb",
+ "preregistration_commit": "f5dc72803",
+ "lesson": {
+  "id": "66122e1e-677b-4ef0-a765-80d08ccfa85b",
+  "sha256": "b35914a04ee77f2c323882c80cfb4bbd3838013d828d0ce8a95a9fe564a93b5d"
+ },
+ "sandbox_posture": "local-exec-node-no-network",
+ "retrieval_path": "STUBBED",
+ "c_leg_note_source": "retained-note.txt of arm-b10 (randomly selected via shuf -n 1 over 10 complete B notes; shuf output: b10)",
+ "scoring": {
+  "method": "one-sided Fisher exact (B>A) via successor-reuse/harness/score-p3.py (math.comb hypergeometric tail, validated 2/10-vs-10/10 -> p=0.000357)",
+  "A_pass": "10/10",
+  "B_pass": "10/10",
+  "C_pass": "5/5",
+  "A_rate": 1.0,
+  "B_rate": 1.0,
+  "delta": 0.0,
+  "fisher_one_sided_p": 1.0,
+  "cohens_h": 0.0,
+  "interpretation": "INCONCLUSIVE (ceiling effect)"
+ },
+ "protocol_deviations": [
+  "Arm c4 first spawn carried a corrupted Task-1 sentence in its brief (transcription slip by the coordinator: 'You maintain a Python script checkpoint.py that records...' instead of the byte-identical 'You maintain a job runner. Write a Python script...'); closed pre-init (no arm work performed), respawned with the byte-identical brief. No arm ran twice; all final arms received byte-identical Task 1+2 text (asserted programmatically).",
+  "Arm b9's retained note states the outcome evidence as '10 out of 10 times, compared with 2 out of 10' rather than the literal '10/10' / '2/10' strings. Director judgment: the evidence numbers are present in substance; note counted complete for the contract and eligible for shuf selection.",
+  "Arm c4's agent was still writing when first verified (premature read showed missing run_state.json); final submission verified after the agent completed: PASS. No rerun - this was one run.",
+  "tools/successor/score-trial.py named in the prereg does not exist in this worktree; scoring computed directly with successor-reuse/harness/score-p3.py (validated against the known 2/10-vs-10/10 case)."
+ ],
+ "arms": {
+  "arm-a1": {
+   "submission_dir": "arms/arm-a1",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "e2c884fd6dda50098ab3a002a06e2bcfcbb82b051b478ed6413cbf90118b7d34",
+    "run_state.json": "ca2cc9ff7cdca26f80512100ec513110fcd88dbd555dee0b3f14892a74245e7e",
+    "summary.md": "edb8369cae250de4d1e54403023cb196c99c23ef893cebecd985f4b3dd4858ca"
+   }
+  },
+  "arm-a2": {
+   "submission_dir": "arms/arm-a2",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "8bfcac2ccf33431bc0d5b2dd4c5ae449d0e531e5b35f1fade53bb1d2fb0f8a4c",
+    "run_state.json": "816c85d8675446ef03c5a2fdfe982067453b90d6fab25d33fd7ac84db49a0819",
+    "summary.md": "2121007ba1aad2947c51475562daf394eabd724942821712b91bd6cb51541d84"
+   }
+  },
+  "arm-a3": {
+   "submission_dir": "arms/arm-a3",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "5cd352e0f63921b5ae4746df8187b0e1ca12407b42a57fd4afa4aead9af5fcf8",
+    "run_state.json": "bfc369aa5568e13307a486443574e41ad5a9be1f86e60c2a490ac5556354f663",
+    "summary.md": "a3bc0ccdcbe055b9b1df9e52a8648987a1082d092fa4bc6fdd0f9920e551c0a3"
+   }
+  },
+  "arm-a4": {
+   "submission_dir": "arms/arm-a4",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "3ce482c2cda1cb07a9695a61146f669f4904532eff64eb748822b78eaf155d23",
+    "run_state.json": "35cc65d8f7ae3f9a7d97adf541c14956bac939da6bcdc4d2e53295f5a31bd369",
+    "summary.md": "eedfbc8390f2c9b66a9935703bc77813c3d926f3b1904aedfb9a6fbae3a47c9c"
+   }
+  },
+  "arm-a5": {
+   "submission_dir": "arms/arm-a5",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "5eae759ebfc2102c6231fffc04b4e95418f3d418068f2cfca5e5ce70409ef4f1",
+    "run_state.json": "7e323d17e9d4c6d228d44c1e7a41a214d112de8d04c60036569e5b953495f3f7",
+    "summary.md": "1d955a057572c519ec5bcc8873bb7daa96d861934575117e8a4b93d6bb343dcb"
+   }
+  },
+  "arm-a6": {
+   "submission_dir": "arms/arm-a6",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "fc448eb7be3288a064917e48ca7bd5059423d92292c4e8602a994e4f4d2b1c2e",
+    "run_state.json": "4452058958a29c0f93b9fee45c6446d8370f053bc2a441ee4ad15bb6c1afe3b1",
+    "summary.md": "1601cefb97f0f54b1d30a4a6f2a7e74253e5d199adc271b5a846e0114560d2eb"
+   }
+  },
+  "arm-a7": {
+   "submission_dir": "arms/arm-a7",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "25b2aea491232d2598b60c2a82fb4eae6b5a1404219d1c56eaa6a5d8a4fe8bd2",
+    "run_state.json": "8096aa8504878d39b8be79c4056c8653e14701bbdffeb22b63368bf962d8e533",
+    "summary.md": "1c6176a03ff17fde298374f3f329a56579b1926e6890272f4316524588af948f"
+   }
+  },
+  "arm-a8": {
+   "submission_dir": "arms/arm-a8",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "3a6efaf1fd07cd0ea75b0552ba01333e556edc41299e9590ecc7b797766a6745",
+    "run_state.json": "123d5948565eac241ea142794bf8f1ac4140accc5eff529700a00bb62589b849",
+    "summary.md": "bb777dbcf21977c91ef90a8b3252aaf6296304b211608b9f5031e57803379735"
+   }
+  },
+  "arm-a9": {
+   "submission_dir": "arms/arm-a9",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "ce69a5dc1d688c024c2b06657c19e7bd5b220de1c60db2a4ac430de1f55624d2",
+    "run_state.json": "7cb7d9ec5b8fd6c1bec6eb80c4937ae05f370fcc7571208f9cb055be58741268",
+    "summary.md": "1b6f9a73ca6d7e26732796d6891c57318ba79bfac942e987786ffa6096457e4d"
+   }
+  },
+  "arm-a10": {
+   "submission_dir": "arms/arm-a10",
+   "verifier_arg": "A",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "cff70f406e32c5976474d3ee4d6fd022e5e801b604f6a08f14ae570eb042eb99",
+    "checkpoint.py": "108ef521162a72acaf9c8a00402e598b9d08f5c5303c54af268d2b02c39b5ddf",
+    "run_state.json": "ad96da4c105ee4c719ae8267ca57436e638fa74550313ad534241bac738c85c1",
+    "summary.md": "e2cacd519bec03677a7b1cc038166df4525238ca5b4e79e9c972fccea317dcc8"
+   }
+  },
+  "arm-b1": {
+   "submission_dir": "arms/arm-b1",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "7e3de7faf03016e79697a245212066420774ede8f54ce34d126f7b02a87a3401",
+    "retained-note.txt": "38be286ca76c79aba964da5f66f2658f37840996e2eb1659ba2e72319fe37910",
+    "run_state.json": "d3d655d7cafa6ba0726404f720cda9cd0dda655f5a063915d2667df357b95936",
+    "summary.md": "38f5a66a1c99b3b81a5f70a510f245a7ef566590417607d75accb1f64652aa96"
+   }
+  },
+  "arm-b2": {
+   "submission_dir": "arms/arm-b2",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "7349ddf0b1ca9ab05f8c2536243e62bd95f2ab1d3ec99bf87cafce6cadf1ac2d",
+    "retained-note.txt": "85b08825d2e03cfd9d3214d31599fcaff643e4c73146fe16225783ad9d9a9023",
+    "run_state.json": "12ccec19b7e0eacfc024c1971fcf4531744f3b97675cad59c509f8fb7e116f87",
+    "summary.md": "282f58db513186f3c4705a75604d4cdd52fde8a238498acc4af18a363b9f30cd"
+   }
+  },
+  "arm-b3": {
+   "submission_dir": "arms/arm-b3",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "1b1ab22affc48a01711d21e8e855696a8634efeddcf430495121afc88a13a175",
+    "retained-note.txt": "cf0bbf5c0efd3ebe65426e08cd37eca2213b8d0794fdbb658f92e815b8278127",
+    "run_state.json": "3f683b7d7cf6b008b77dd76170a4220dfd2886d5163b01bfaac29a613270001d",
+    "summary.md": "d653acb77954be67256363d2b6699a48816896c7ccb2574e775e5b27543689c9"
+   }
+  },
+  "arm-b4": {
+   "submission_dir": "arms/arm-b4",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "9ab7d8707f4209a8c8ca3899b611aaa9eef32b3fc77a9d900d4ebab4fd0fcdd3",
+    "retained-note.txt": "729b0d9d9fa8b9d9faf8c9cafc2e36f51ce0a58eb455cf90b2e2402cf6575af3",
+    "run_state.json": "01988201370b9294d396f57d9fc22cb4608b32c3bce8b5e54045527185c9e5fb",
+    "summary.md": "71ed37cc71e927bb0e8ce53ad2e372af0c436fe445b04c4c0febe2cc00fc06da"
+   }
+  },
+  "arm-b5": {
+   "submission_dir": "arms/arm-b5",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "2337a1299af57ae96898a6ea48f3fedb47876f1d0b86d6f12feb1221082f8df5",
+    "retained-note.txt": "8e4a7602fa641c39a11c7a74f4338153c6c518d59a7610bba2b18b3616e09e90",
+    "run_state.json": "fcb59132f2ca4878459d5b40c94333d88d05df2efc770b57690527edc0ed0702",
+    "summary.md": "5fb51d854b70a976a6e6e7b8e85cac573720d05cf49f90209474705fe633e23a"
+   }
+  },
+  "arm-b6": {
+   "submission_dir": "arms/arm-b6",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "d9fa2a64cb18c8b91bdab9422e73d917987ad5d3975ccf80d3d4a615dbcfabb0",
+    "retained-note.txt": "6201c3d61e791e05814088bd9e0a1730719ef130b4971897710c3ae2136b1804",
+    "run_state.json": "72f6c3337c0b8f0f049bfbf607f18b95c69f2fae9db1e6e925ed426ad2410acd",
+    "summary.md": "df3ef222c6cf7cf933c4b659aefb0ae3799de3261a2b24837f0cedf830e4499b"
+   }
+  },
+  "arm-b7": {
+   "submission_dir": "arms/arm-b7",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "46c2bf2b9f8b9838af1efc86e034bd65064e26c375f8702827d97d34c2197ce7",
+    "retained-note.txt": "063fdb242d7e6bbc237e74a8e27cae7b8936bf207370baf448a995c9e347f905",
+    "run_state.json": "a3de20c8e500ecbee0caa233194c152636fed31bb434051412ad69e48ead42cb",
+    "summary.md": "a08808a39b79ba023d9546d92723177afeba6aa4eaf7877aff1626f7abfe03bc"
+   }
+  },
+  "arm-b8": {
+   "submission_dir": "arms/arm-b8",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "d2a03cda7b5321e73180d9404af47cfae20a5f7b569b0de9bfb2347e139924ae",
+    "retained-note.txt": "2e5bb159a70e1ee36b0dc599fab12931aacdddac9bb8864c7fb5d4ffabfaa8d2",
+    "run_state.json": "3355c8b7eb0ecb47a485b2e8652ae89943fa5c988b206b415754cbaa2f097b41",
+    "summary.md": "91d1cd2286fabfc4088fd6b854513ad55f479b897d13e6438656d1e2e0f0a696"
+   }
+  },
+  "arm-b9": {
+   "submission_dir": "arms/arm-b9",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "b0b0b03d2d82a66bf7ca7d716f9276f5b954bc3de1521d7a30f15bd1d3bb1210",
+    "retained-note.txt": "0b2025a817d03b19f81bde6eed51020cb702d1453f92e81a422cdde7b4987ba1",
+    "run_state.json": "a7ee05ff14ab6c4dab6a87f86431a8ca7d8943c2d507d80ca1136433901c7351",
+    "summary.md": "baa8aaa63c3d91b66c5e611203b3767a77827e6d171d1de4425c10f16bb66796"
+   }
+  },
+  "arm-b10": {
+   "submission_dir": "arms/arm-b10",
+   "verifier_arg": "B",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "6b8afec3264d25b494fb70fce6d667d3b1ef5b0eb0b95903c8fe6f1c689e17a1",
+    "retained-note.txt": "7c8eb68fd7d3820e34c932de14c563cd03341058f6de983a6bee4652c33995d5",
+    "run_state.json": "16c43af82e96660e7912f8555d58ee4b19746a8dfc6295f78bb7897528dcdcd3",
+    "summary.md": "13a0eaa0092636e067977532c8e63509e7c853bfeabaeaca3cf475e0b6ec5f92"
+   }
+  },
+  "arm-c1": {
+   "submission_dir": "arms/arm-c1",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "f9b4ae78d154f716e0c28e84107a98b635b7506d51fe5547ad7e9e5d54dd63b3",
+    "run_state.json": "03f678118da99f374fe7a8c4caa5e9dad83c4710155285ec3b672905ee9fed94",
+    "summary.md": "2bb281abc8fc54ef421cfaccf7e786af494f7facc58fc4a73de9bfb00d806027"
+   }
+  },
+  "arm-c2": {
+   "submission_dir": "arms/arm-c2",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "f9b4ae78d154f716e0c28e84107a98b635b7506d51fe5547ad7e9e5d54dd63b3",
+    "run_state.json": "31fe00152ff8abaf2a92fd4ef843469f73d7044727fb5da9e3bb46d578730482",
+    "summary.md": "54f643a2e62709ddb77aa17b78fba23407510cc327ad427d2301d757b62f8421"
+   }
+  },
+  "arm-c3": {
+   "submission_dir": "arms/arm-c3",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "aa14abc09aef06c961aca0243e8ad30c2bf610e3a4d3a0d0c860faf2e4e75df5",
+    "run_state.json": "d97b9ececd858d604fe58ade36046a202389e8a72e544f90196e8b5d28b7e82b",
+    "summary.md": "540645c9b1e2abc81b9a6922bb38d3dea32c2488d985503bc684cdf866d4dd79"
+   }
+  },
+  "arm-c4": {
+   "submission_dir": "arms/arm-c4",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "dca672c039d61fe82acfe54e1409c30b1a48fbd802751500a45ac32e22a0ffbf",
+    "run_state.json": "021bae3ada73cc5ef3c2bf277211eb2f623597d24701aeb38e2e568432d1f978",
+    "summary.md": "da16492d30b0cecf43e6c2045209c8fb8a3469de62c1f1e13184ee9881edb72d"
+   }
+  },
+  "arm-c5": {
+   "submission_dir": "arms/arm-c5",
+   "verifier_arg": "C",
+   "recorded_verdict": "PASS",
+   "file_hashes": {
+    "answer.txt": "d1c9c86904f925f7ddab08445e603de66c66c763ce0c60744578c829a77b91e0",
+    "checkpoint.py": "93753fb3a73a027852850347412a5e2e4f2cf511c5b84db9f995a45f590ff5c5",
+    "run_state.json": "e7a9efe15d5a6623126a49c979b5e4492328cbd02d75e0dfc876df31eeb147cc",
+    "summary.md": "0dcbdb4c80ec6e91ae37ea821d4ca9709e3b9dcc1109e6d037ccddfe45a93f8d"
+   }
+  }
+ }
+}

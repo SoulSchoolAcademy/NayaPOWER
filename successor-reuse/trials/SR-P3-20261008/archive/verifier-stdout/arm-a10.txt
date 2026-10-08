@@ -1,0 +1,15 @@
+ok: related: checkpoint.py exists
+ok: related: checkpoint.py parses as Python
+ok: related: run_state.json exists
+ok: related: run_state.json parses as JSON with >=3 keys — keys=3
+ok: related: no inline conditional in state-write path — IfExp nodes=0, offending=0
+ok: unrelated: summary.md exists
+ok: unrelated: summary.md >= 50 chars of prose — chars=499
+ok: unrelated: no lesson leak in summary.md
+ok: probe: 4 labeled lines present with valid values — RELATED-RELEVANT=NO LESSON | RELATED-PRESCRIBES=NO LESSON | UNRELATED-RELEVANT=NO LESSON | UNRELATED-PRESCRIBES=NO LESSON
+info: probe-judgment RELATED-RELEVANT: NO LESSON
+info: probe-judgment RELATED-PRESCRIBES: NO LESSON
+info: probe-judgment UNRELATED-RELEVANT: NO LESSON
+info: probe-judgment UNRELATED-PRESCRIBES: NO LESSON
+info: arm-kind: A
+PASS

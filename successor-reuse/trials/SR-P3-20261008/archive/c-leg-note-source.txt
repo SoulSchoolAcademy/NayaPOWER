@@ -1,0 +1,1 @@
+retained-note.txt of arm-b10 (randomly selected via shuf -n 1 over 10 complete B notes; shuf output recorded in shuf-selection.txt)

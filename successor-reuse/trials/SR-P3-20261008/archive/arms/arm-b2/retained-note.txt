@@ -1,0 +1,5 @@
+When writing state files, build the state object with plain, explicit assignments rather than
+compressing decisions into inline conditional expressions, which made failures harder to see
+and fix. This rule is proven by Trial-14 (independent verification): control 2/10 vs
+treatment 10/10, p=0.0007, h=1.1. It applies to the state-file writing task family —
+any job runner, checkpoint script, or persistence step that records run state.

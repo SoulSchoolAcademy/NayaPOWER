@@ -1,0 +1,1 @@
+__DIR__ substitution: each arm received the brief with __DIR__ replaced by its working directory /tmp/sr-p3-arm-<kind><i> (e.g. /tmp/sr-p3-arm-a1). All other bytes identical.

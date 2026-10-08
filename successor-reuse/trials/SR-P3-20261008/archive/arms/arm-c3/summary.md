@@ -1,0 +1,1 @@
+Yesterday's job run executed the ingest step, which is responsible for pulling the day's raw input data into the runner. The step ran to completion and finished successfully, with no errors reported and a checkpoint record written to run_state.json. The next step is to move on to the downstream processing stage, using the ingested data as its input.

@@ -1,0 +1,1 @@
+Yesterday's job run completed its ingest step successfully. The run was recorded by the checkpoint script, which noted the step name, a successful outcome, and the finish timestamp in the run-state file. Everything went through without errors, so no intervention was needed. The next step is to proceed to the following stage of the pipeline now that ingest has finished.

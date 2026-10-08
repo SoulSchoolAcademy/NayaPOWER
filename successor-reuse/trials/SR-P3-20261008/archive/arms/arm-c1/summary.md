@@ -1,0 +1,1 @@
+Yesterday's job run covered the ingest step. It ran to completion and succeeded, and the checkpoint was recorded in run_state.json with the step name, a success flag, and the finish timestamp. The run state file confirms all three values are present. The next step is to pick up from the completed ingest stage and run the following stage of the pipeline against the ingested data.
