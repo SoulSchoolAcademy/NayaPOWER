@@ -1,0 +1,36 @@
+{
+  "package_id": "TIER1-2026-10-08-T11",
+  "lesson": "Reserve Rule — dispatch the lower-scored call when top two are within 0.5 points",
+  "trial": "Trial-11",
+  "evidence": {
+    "pr": "#1786",
+    "branch": "naya4/trial-11-evidence",
+    "treatment": "9/10 perfect",
+    "control": "0/10",
+    "p_value": 0.0001,
+    "cohens_h": 2.84,
+    "tier_s": "MET",
+    "n": 20,
+    "verified_by": "Naya 2 (independent)"
+  },
+  "four_gates": {
+    "authority": {
+      "status": "PASS",
+      "detail": "Grant 57d83ce5 ACTIVE, scope NAYA-NODE-0001, expires 2026-10-14. Covers CANDIDATE promotion."
+    },
+    "verification": {
+      "status": "PASS",
+      "detail": "Trial-11 independently verified by Naya 2. Treatment-control separation large and significant (p=0.0001, h=2.84). Raw evidence on PR #1786."
+    },
+    "receipt": {
+      "status": "PASS",
+      "detail": "TRIAL-11-RECEIPT.md exists with full provenance. Arm assignment, blinding, grader correctness all checkable."
+    },
+    "execution": {
+      "status": "PASS",
+      "detail": "Lesson is complete, well-formed, with clear principle, reasoning, boundary conditions, and examples."
+    }
+  },
+  "created": "2026-10-08T00:35:00Z",
+  "created_by": "Naya 4 (Shawn-authorized build)"
+}

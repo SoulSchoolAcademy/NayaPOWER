@@ -1,0 +1,37 @@
+{
+  "package_id": "TIER1-2026-10-08-T14",
+  "lesson": "Never write state files through inline conditional expressions — real AGENTS.md lesson with ecological validity",
+  "trial": "Trial-14",
+  "evidence": {
+    "pr": "#1789",
+    "branch": "naya4/trial-14-evidence",
+    "treatment": "10/10 perfect",
+    "control": "2/10",
+    "p_value": 0.0007,
+    "cohens_h": 1.10,
+    "tier_s": "MET",
+    "n": 20,
+    "verified_by": "Naya 2 (independent)",
+    "note": "Real archive lesson (not synthetic). Proves ecological validity."
+  },
+  "four_gates": {
+    "authority": {
+      "status": "PASS",
+      "detail": "Grant 57d83ce5 ACTIVE, scope NAYA-NODE-0001, expires 2026-10-14."
+    },
+    "verification": {
+      "status": "PASS",
+      "detail": "Trial-14 independently verified. Real AGENTS.md lesson transferred with Tier-S (p=0.0007, h=1.10). This is not a synthetic rule — it's a lesson from the actual archive."
+    },
+    "receipt": {
+      "status": "PASS",
+      "detail": "TRIAL-14-RECEIPT.md exists. War story documented with safe pattern."
+    },
+    "execution": {
+      "status": "PASS",
+      "detail": "Lesson complete with war story, clear prohibition, safe alternative pattern, and code examples."
+    }
+  },
+  "created": "2026-10-08T00:35:00Z",
+  "created_by": "Naya 4 (Shawn-authorized build)"
+}

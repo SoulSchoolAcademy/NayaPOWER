@@ -1,0 +1,12 @@
+{
+  "receipt_id": "TIER1-RCPT-T04R-20261008",
+  "package_id": "TIER1-2026-10-08-T04R",
+  "timestamp": "2026-10-08T00:35:00Z",
+  "gates": {"authority": "PASS", "verification": "PASS", "receipt": "PASS", "execution": "UNVERIFIED"},
+  "evidence_pointers": {
+    "pr": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1768",
+    "grant": "57d83ce5"
+  },
+  "verdict": "READY_FOR_VERIFIER_WITH_CAVEAT",
+  "caveat": "Execution gate UNVERIFIED — this validates the bridge-note method, not a discrete lesson for promotion."
+}
