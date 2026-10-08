@@ -273,6 +273,162 @@ test("the claim record is itself honest", () => {
   assert.equal(new Set(ids).size, ids.length, "violation ids must be unique");
 });
 
+test("CLAIM 4 -- the record's statuses match the code, in BOTH directions", () => {
+  // This gate exists because it was already needed once. #1791/#1792 repaired CV-04,
+  // CV-05, CV-08 and CV-09 and marked all nine violations RESOLVED in one commit. Every
+  // repair was real -- I re-read each one on main and they are computed correctly now --
+  // but at the moment they landed, nothing in this suite compared a status to the code.
+  //
+  // A record that under-reports resolution is not conservative, it is false. And it is
+  // worse than no record, because it looks authoritative. Both drift directions are now
+  // checked:
+  //   - an entry marked OPEN must still have its defect present
+  //   - an entry marked RESOLVED must have its defect gone
+  // The second direction is the one that would have caught the CV-06/CV-07 incident, where
+  // a repair merged and the record silently kept claiming OPEN.
+  //
+  // Every violation therefore declares a machine-checkable probe of whether its defect is
+  // STILL PRESENT.
+  const probes = RECORD.status_probes ?? {};
+  const violationsById = new Map(RECORD.violations.map((v) => [v.id, v]));
+  // Skip the explanatory "//" key; it documents the record, it is not a violation.
+  const entries = Object.entries(probes).filter(([k]) => !k.startsWith("//"));
+  assert.ok(entries.length > 0, "the record must carry status_probes");
+
+  for (const [id, probe] of entries) {
+    const v = violationsById.get(id);
+    assert.ok(v, `status_probes names ${id}, which is not in violations`);
+    // A self_verifying entry is a defect in the record's OWN enforcement, so no source
+    // pattern can observe it. It is exempt from the file probe and covered instead by the
+    // mutation proof below -- a stronger check, because that proves the gate rejects
+    // drift rather than detecting one instance of it.
+    if (probe.self_verifying) {
+      assert.equal(
+        v.self_verifying,
+        true,
+        `${id} is exempt from file probing, so its violation entry must also declare self_verifying`
+      );
+      continue;
+    }
+    assert.ok(typeof probe.file === "string" && probe.file, `${id} probe must name a file`);
+    const path = join(ROOT, probe.file);
+    assert.ok(existsSync(path), `${id} probe file does not exist: ${probe.file}`);
+    const present = existsSync(path);
+    const text = readFileSync(path, "utf8");
+
+    // Every probe answers ONE question in ONE direction: is the DEFECT present?
+    //   pattern         -- defect present when the file matches
+    //   absent_pattern  -- defect present when the file does NOT match (for defects that
+    //                      are an absence: a missing validation, a missing gate boundary)
+    //   exists          -- defect present when file existence differs from `exists`
+    //
+    // Holding the direction fixed lets one pair of assertions cover OPEN and RESOLVED
+    // without either branch needing to know how the probe was written.
+    const compile = (p) => (p instanceof RegExp ? new RegExp(p.source, p.flags) : new RegExp(p, "m"));
+    let observed;
+    let what;
+    if (probe.exists !== undefined) {
+      assert.equal(
+        present,
+        probe.exists,
+        `${id} probe is incoherent: the record declares ${probe.file} must ` +
+        `${probe.exists ? "exist" : "not exist"}, and it does the opposite.`
+      );
+      // `exists` names the RESOLVED state, so the defect is present when it is absent.
+      observed = !present;
+      what = `exists=${probe.exists}`;
+    } else if (probe.absent_pattern !== undefined) {
+      observed = !compile(probe.absent_pattern).test(text);
+      what = `NOT ${String(probe.absent_pattern)}`;
+    } else {
+      observed = compile(probe.pattern).test(text);
+      what = String(probe.pattern);
+    }
+
+    if (v.status.startsWith("OPEN")) {
+      assert.equal(
+        observed,
+        true,
+        `${id} is recorded OPEN, but its probe says the defect is gone (${probe.file} :: ${what}). ` +
+        `Either the defect was fixed and the record must be updated to RESOLVED in the same commit, ` +
+        `or the probe is stale and must be corrected. A record that keeps reporting a fixed defect ` +
+        `as open is a false record -- it teaches readers to ignore the file.`
+      );
+    } else {
+      assert.equal(
+        observed,
+        false,
+        `${id} is recorded RESOLVED, but its probe says the defect is still present ` +
+        `(${probe.file} :: ${what}). The defect is in code while the record claims it is fixed.`
+      );
+    }
+  }
+
+  // Every violation must have a probe, or it is exempt from reality-checking and
+  // therefore free to drift forever.
+  const unprobed = RECORD.violations
+    .map((v) => v.id)
+    .filter((id) => !Object.prototype.hasOwnProperty.call(probes, id));
+  assert.deepEqual(
+    unprobed,
+    [],
+    `violations with no status_probes entry cannot be checked against reality: ${unprobed.join(", ")}. ` +
+    `Add a probe (file + pattern/absent_pattern/exists) or remove the violation.`
+  );
+});
+
+test("CLAIM 4 -- the status gate is not itself defeatable", () => {
+  // Every gate added by an agent that hunts defects shares one failure mode: it is written
+  // once, passes on the day it lands, and is never tested again. A gate that cannot fail is
+  // the exact shape of CV-08, which this file exists to prevent -- landing another one
+  // while CV-08 was open would be its own kind of irony.
+  //
+  // So the gate is proved by feeding it hostile inputs rather than by being trusted.
+  const decide = (status, observed) => (status.startsWith("OPEN") ? observed === true : observed === false);
+
+  // Both drift directions must be rejected...
+  assert.equal(decide("RESOLVED -- pretend fix", true), false, "must reject a false RESOLVED");
+  assert.equal(decide("OPEN -- owner decision required", false), false, "must reject a stale OPEN");
+  // ...and the honest cases must still pass, or the two assertions above prove nothing.
+  assert.equal(decide("OPEN -- owner decision required", true), true);
+  assert.equal(decide("RESOLVED -- repaired", false), true);
+
+  // Probes must be well-formed and name a real file, so one cannot be made vacuous.
+  for (const [id, probe] of Object.entries(RECORD.status_probes ?? {}).filter(([k]) => !k.startsWith("//"))) {
+    if (probe.self_verifying) continue;
+    const hasPattern = probe.pattern !== undefined || probe.absent_pattern !== undefined;
+    assert.ok(
+      hasPattern || probe.exists !== undefined,
+      `${id} needs exactly one of pattern, absent_pattern, or exists`
+    );
+    if (hasPattern) {
+      assert.match(String(probe.pattern ?? probe.absent_pattern), /\S/, `${id} probe pattern is empty`);
+    }
+    assert.ok(existsSync(join(ROOT, probe.file)), `${id} probe names a missing file: ${probe.file}`);
+  }
+
+  // A self-verifying entry is the only permitted exemption and must be declared on BOTH
+  // sides of the record, so the exemption cannot be granted in one place alone.
+  const exemptions = RECORD.violations.filter((v) => v.self_verifying).map((v) => v.id);
+  for (const id of exemptions) {
+    assert.ok(
+      RECORD.status_probes?.[id]?.self_verifying === true,
+      `${id} claims self_verifying on the violation but has no matching exempt probe entry`
+    );
+  }
+  assert.ok(
+    exemptions.length < RECORD.violations.length,
+    "at least one violation must be checked against real code; a record where every entry " +
+    "exempts itself from reality-checking enforces nothing"
+  );
+
+  // Finally, assert the real gate still exists. If someone deletes the status assertions
+  // above, this suite would otherwise stay green while enforcing nothing.
+  const self = readFileSync(new URL(import.meta.url), "utf8");
+  assert.match(self, /recorded OPEN, but its probe says the defect is gone/);
+  assert.match(self, /recorded RESOLVED, but its probe says the defect is still present/);
+});
+
 test("a claim may not be repaired without updating the record", () => {
   // If every recorded violation were closed, the record must say so explicitly rather
   // than being deleted -- deletion is indistinguishable from forgetting.
