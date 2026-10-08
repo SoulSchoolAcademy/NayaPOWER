@@ -323,13 +323,28 @@ def execute_plan(plan: ActionPlan,
                  executor: Callable[[ActionPlan], str],
                  re_resolve: Callable[[], LawAuthority | None],
                  now: float,
+                 profile: QualityProfile,
                  max_law_age_seconds: float = MAX_LAW_AGE_SECONDS,
-                 ledger: ReceiptLedger | None = None) -> ActionReceipt:
-    """Phase 2: re-resolve live LAW authority, then execute.
+                 ledger: ReceiptLedger | None = None,
+                 risk_policy: RiskPolicy | None = None) -> ActionReceipt:
+    """Phase 2: re-resolve live LAW authority, re-verify the do-no-harm gate,
+    then execute.
 
     re_resolve must return a FRESH LawAuthority read at execution time
     (SN-0493). If it returns None, or the fresh authority fails any time
     check, execution is refused and the executor is never called.
+
+    Do-no-harm enforcement (fail-closed): the chosen candidate is re-run
+    through the calculus's gate_candidate at the last responsible moment,
+    immediately before the executor fires. A plan hand-crafted outside
+    plan_action — or a candidate whose safety status changed after planning
+    — can never reach the executor while PROHIBITED: it is refused with
+    PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts stay governed by the
+    LAW authority record (the LAW node's seam); this seam enforces the harm
+    hard stops only and weakens nothing. Pass the same profile (and risk
+    policy) used at plan time so the verdict is a re-verification, not a
+    re-derivation under different math.
+
     Every phase transition is appended to ledger when provided.
     """
     def emit(receipt: ActionReceipt) -> ActionReceipt:
@@ -366,6 +381,19 @@ def execute_plan(plan: ActionPlan,
     if time_codes:
         return refused(*time_codes)
 
+    # --- Execution-time do-no-harm re-gate (safety floor). Fail closed:
+    # the gate is re-verified at the last responsible moment, immediately
+    # before the executor fires. A PROHIBITED chosen candidate — whether
+    # hand-crafted outside plan_action or changed after planning — is
+    # refused here; the executor is never called.
+    risk = risk_policy if risk_policy is not None else RiskPolicy()
+    gate, reasons, _q = gate_candidate(_candidate_to_calculus(plan.chosen), profile, risk)
+    gate_evidence = (f"execution-time do-no-harm re-gate: candidate "
+                     f"{plan.chosen.candidate_id} verdict {gate}"
+                     + (f" [{', '.join(reasons)}]" if reasons else ""))
+    if gate == PROHIBITED:
+        return refused(PLAN_SAFETY_PROHIBITED, evidence=gate_evidence)
+
     try:
         observed = executor(plan)
     except Exception as exc:  # noqa: BLE001 — failure is evidence, not a crash
@@ -381,6 +409,7 @@ def execute_plan(plan: ActionPlan,
         receipt_id=_new_id(), plan_id=plan.plan_id, phase="EXECUTION_COMPLETED",
         executed=True, outcome_verified=False, truth_state="UNKNOWN",
         evidence=(
+            gate_evidence,
             f"executor completed; observed outcome recorded; "
             f"executor claim NOT trusted as verification — awaiting VERIFY verdict",
         ),
