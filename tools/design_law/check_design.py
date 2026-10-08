@@ -28,6 +28,8 @@ FIELD_HEXES = {
 SPECTRUM_HEXES = {
     "#9d75ff", "#6675ff", "#55b9ee", "#40d3bb", "#55e39a", "#b8ee57",
     "#e8b64c", "#f1d75a", "#ff9a5a", "#ff7a3d", "#ff5a6e", "#d86cff",
+    # SYNTHESIS 2026-10-08: resolved room accents from the 12 fresh files
+    "#8a5cff", "#38bdf8", "#d4a017", "#3ca8ff", "#ff5e6c", "#b9b9c4",
 }
 TOKEN_HEXES = FIELD_HEXES | SPECTRUM_HEXES
 # SYNTHESIS 2026-10-08 (R-4): Shawn's nine team colors — team→color mapping is
@@ -46,23 +48,33 @@ TEAM_COLOR_HEXES = {
 }
 TOKEN_HEXES = TOKEN_HEXES | TEAM_COLOR_HEXES
 
+# SYNTHESIS 2026-10-08: room table rewritten from the 12 fresh HTML files
+# (design authority). Bespoke self-declaration beats registry boilerplate.
 ROOM_HEX = {
-    "today": "#d86cff", "reports": "#6675ff", "library": "#55b9ee",
-    "smart-doors": "#40d3bb", "ledger": "#e8b64c", "connections": "#ff9a5a",
-    "lists": "#9d75ff", "mail": "#ff7a3d", "spaces": "#b8ee57",
+    "feed": "#55e39a",
+    "today": "#d86cff",
+    "reports": "#8a5cff",
+    "library": "#38bdf8",
+    "connect": "#40d3bb",
+    "ledger": "#d4a017",
+    "connections": "#9d75ff",
+    "lists": "#b8ee57",
+    "mail": "#3ca8ff",
+    "spaces": "#ff5e6c",
+    "settings": "#b9b9c4",
     "smart-grow": "#55e39a",
 }
 ROOM_TOKEN = {
-    "today": "magenta", "reports": "indigo", "library": "blue",
-    "smart-doors": "teal", "ledger": "gold", "connections": "orange",
-    "lists": "purple", "mail": "rich-orange", "spaces": "lime",
-    "smart-grow": "emerald",
+    "feed": "emerald", "today": "magenta", "reports": "sapphire",
+    "library": "blue", "connect": "teal", "ledger": "gold",
+    "connections": "purple", "lists": "lime", "mail": "blue",
+    "spaces": "coral", "settings": "silver", "smart-grow": "emerald",
 }
-# Known wrong accents recorded in the drift register (D2-D4 = HARD)
+# Known wrong accents (HARD). D2R/D4R 2026-10-08: mail #3ca8ff and
+# connections #9d75ff were wrongly flagged under the old table — they are
+# now the CORRECT accents. Remaining: spaces wearing purple is still drift.
 ROOM_WRONG = {
-    "mail": ({"#3ca8ff"}, "D2"),
     "spaces": ({"#7c3aed"}, "D3"),
-    "connections": ({"#9d75ff"}, "D4"),
 }
 JEWEL_CLIP_EXACT = "polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)"
 

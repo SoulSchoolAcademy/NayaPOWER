@@ -31,7 +31,9 @@
       "topic": "Smart Connect vs Smart Doors",
       "convergence_hold": "Convergence doc self-flags the rename as HOLD",
       "contract_keeps": "smart-doors",
-      "contractor_recommendation": "nayanet.live rules \u2014 ground truth for room names. Reconcile when live findings land."
+      "contractor_recommendation": "nayanet.live rules \u2014 ground truth for room names. Reconcile when live findings land.",
+      "resolution": "RESOLVED 2026-10-08: 'Smart Connect', teal #40d3bb \u2014 unanimous across 12 fresh files and sidebar. Contract key 'smart-doors' was wrong. Room table rewritten.",
+      "status": "resolved"
     }
   ],
   "contract": "NAYA-DESIGN-CONTRACT-V1",
@@ -161,6 +163,42 @@
       "topic": "Button rim floor",
       "decision": "\u22651.5px white rim at rest (briefing A-LAW-05/06 governs over Code NC-5.3's 1px purple); resolves X-1.",
       "status": "synthesis ruling \u2014 briefing outranks candidate Code"
+    },
+    {
+      "id": "CD-22",
+      "topic": "Room table rewrite",
+      "decision": "11-room table resolved from 12 fresh files; bespoke self-declaration beats registry boilerplate; 7/7 consensus beats buggy file.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-23",
+      "topic": "X-5 Smart Connect",
+      "decision": "RESOLVED: 'Smart Connect', teal #40d3bb. 'smart-doors' was wrong.",
+      "status": "resolved"
+    },
+    {
+      "id": "CD-24",
+      "topic": "Nav region title",
+      "decision": "'ROOMS' (fresh files) overrules 'Intelligence rooms' (stale live site).",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-25",
+      "topic": "Room field color",
+      "decision": "Room page root #020202 family (fresh files); #0B0D12 stays entrance/start token.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-26",
+      "topic": "Gray repair backlog",
+      "decision": "Fresh files' dim-tier grays are REPAIR BACKLOG, not law. Shawn's no-gray-body-text stands; violations flagged per file, not blessed.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-27",
+      "topic": "index.html exclusion",
+      "decision": "Sovereign Entrance index.html excluded from authority (alien palette, rem type, follows none of the code).",
+      "status": "synthesis ruling"
     }
   ],
   "drift_register": [
@@ -174,27 +212,11 @@
     },
     {
       "check": "P-wrong-room-accent",
-      "fix": "Recolor to rich-orange #ff7a3d",
-      "id": "D2",
-      "page": "mail.html",
-      "severity": "HARD",
-      "violation": "room accent #3ca8ff (blue)"
-    },
-    {
-      "check": "P-wrong-room-accent",
       "fix": "Recolor to lime #b8ee57",
       "id": "D3",
       "page": "spaces.html",
       "severity": "HARD",
       "violation": "room accent #7c3aed (purple)"
-    },
-    {
-      "check": "P-wrong-room-accent",
-      "fix": "Recolor to orange #ff9a5a",
-      "id": "D4",
-      "page": "connections.html",
-      "severity": "HARD",
-      "violation": "room accent #9d75ff (signature purple as room color)"
     },
     {
       "check": "P-non-token-chromatic",
@@ -267,6 +289,14 @@
       "page": "mail, spaces, connect, connections, ledger, reports",
       "severity": "LOW",
       "violation": "SF Pro stack vs Inter/system"
+    },
+    {
+      "id": "D2R",
+      "note": "SUPERSEDED 2026-10-08: old D2 (mail #3ca8ff as wrong-room) was based on the wrong table; #3ca8ff is now mail's CORRECT accent."
+    },
+    {
+      "id": "D4R",
+      "note": "SUPERSEDED 2026-10-08: old D4 (connections #9d75ff as wrong-room) was based on the wrong table; #9d75ff is now connections' CORRECT accent."
     }
   ],
   "law_counts": {
@@ -276,7 +306,7 @@
     "drift_repair_laws": 13,
     "tokens_pinned": 47,
     "total_enforceable_statements": 155,
-    "synthesis_rulings": 21,
+    "synthesis_rulings": 28,
     "synthesis_harvests": 14
   },
   "north_star": "Black ground. White light. Purple soul.",
@@ -572,46 +602,77 @@
     }
   ],
   "rooms": {
-    "connections": {
-      "accent": "orange",
-      "hex": "#ff9a5a"
-    },
-    "ledger": {
-      "accent": "gold",
-      "hex": "#e8b64c"
-    },
-    "library": {
-      "accent": "blue",
-      "hex": "#55b9ee"
-    },
-    "lists": {
-      "accent": "purple",
-      "hex": "#9d75ff"
-    },
-    "mail": {
-      "accent": "rich-orange",
-      "hex": "#ff7a3d"
-    },
-    "reports": {
-      "accent": "indigo",
-      "hex": "#6675ff"
-    },
-    "smart-doors": {
-      "accent": "teal",
-      "hex": "#40d3bb"
-    },
-    "smart-grow": {
+    "feed": {
+      "name": "Smart Feed",
       "accent": "emerald",
       "hex": "#55e39a",
-      "note": "CONTRACTOR DECISION pending Shawn (Code TBD)"
-    },
-    "spaces": {
-      "accent": "lime",
-      "hex": "#b8ee57"
+      "basis": "4/7 registries, uncontested"
     },
     "today": {
+      "name": "Your Intelligence Today",
       "accent": "magenta",
-      "hex": "#d86cff"
+      "hex": "#d86cff",
+      "basis": "unanimous 7/7 + self-declared"
+    },
+    "reports": {
+      "name": "Your Reports",
+      "accent": "sapphire",
+      "hex": "#8a5cff",
+      "basis": "bespoke 'New color identity: deep sapphire'"
+    },
+    "library": {
+      "name": "Intelligent Library",
+      "accent": "blue",
+      "hex": "#38bdf8",
+      "basis": "bespoke --lib-blue, newest file"
+    },
+    "connect": {
+      "name": "Smart Connect",
+      "accent": "teal",
+      "hex": "#40d3bb",
+      "basis": "unanimous 7/7 + self-declared; X-5 RESOLVED"
+    },
+    "ledger": {
+      "name": "Smart Ledger",
+      "accent": "gold",
+      "hex": "#d4a017",
+      "basis": "bespoke COLORS.ledger"
+    },
+    "connections": {
+      "name": "Your Connections",
+      "accent": "purple",
+      "hex": "#9d75ff",
+      "basis": "bespoke --cx-purple + 4/7 registries"
+    },
+    "lists": {
+      "name": "Smart Lists",
+      "accent": "lime",
+      "hex": "#b8ee57",
+      "basis": "unanimous 7/7 + self-declared"
+    },
+    "mail": {
+      "name": "Smart Mail",
+      "accent": "blue",
+      "hex": "#3ca8ff",
+      "basis": "bespoke 'Blue identity' --ml-blue"
+    },
+    "spaces": {
+      "name": "Smart Spaces",
+      "accent": "coral",
+      "hex": "#ff5e6c",
+      "basis": "7/7 registry consensus (page file has copy-paste bugs)"
+    },
+    "settings": {
+      "name": "Settings",
+      "accent": "silver",
+      "hex": "#b9b9c4",
+      "basis": "uncontested"
+    },
+    "smart-grow": {
+      "name": "Smart Grow",
+      "accent": "emerald",
+      "hex": "#55e39a",
+      "basis": "carried from V1; no fresh file"
     }
   },
   "spectrum_flow": [
@@ -626,7 +687,7 @@
   ],
   "spectrum_flow_note": "SYNTHESIS 2026-10-08: three separate jobs \u2014 (1) nine team colors for team-coded elements; (2) twelve chromatic tokens as the working palette; (3) the eight-flow below as the alternation sequence for breaking visual flow. Never conflate. Cycles back to purple.",
   "status": "CANDIDATE",
-  "status_note": "CANDIDATE. Synthesis 2026-10-08 folded in six new sources (Showcase, Elite, report/lists/today, Convergence). Pending: Shawn's ratification, team-color hex confirmation (X-4), nayanet.live reconciliation (X-5 + room accents).",
+  "status_note": "CANDIDATE. Re-synthesized 2026-10-08 from the 12 fresh HTML files (design authority; live site stale). Room table rewritten, X-5 resolved, nav corrected to 'ROOMS'. Pending: Shawn's ratification, team-hex confirmation (X-4).",
   "team_colors": {
     "note": "Shawn's nine team colors for reports referenced in precedence rules but absent from all Phase-1 inputs; not invented.",
     "status": "PENDING_INPUT"
@@ -657,7 +718,9 @@
       "--btn-black": "#050505",
       "--edge": "#252B39",
       "--ink": "#F5F7FB",
-      "--muted": "#AAB2BF"
+      "--muted": "#AAB2BF",
+      "--bg-room": "#020202",
+      "field_note": "SYNTHESIS 2026-10-08: the 12 fresh room files use #020202/#020403/#060608, not #0B0D12. #0B0D12 remains the entrance/start context token; room page root is #020202 family."
     },
     "jewel": {
       "--jewel-clip": "polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)",
@@ -692,7 +755,14 @@
       "--red": "#ff5a6e",
       "--rich-orange": "#ff7a3d",
       "--teal": "#40d3bb",
-      "--yellow": "#f1d75a"
+      "--yellow": "#f1d75a",
+      "--sapphire": "#8a5cff",
+      "--library-blue": "#38bdf8",
+      "--ledger-gold": "#d4a017",
+      "--mail-blue": "#3ca8ff",
+      "--coral": "#ff5e6c",
+      "--silver": "#b9b9c4",
+      "_note": "SYNTHESIS 2026-10-08: resolved room accents added; see rooms table for per-room bindings."
     },
     "surfaces": {
       "--depth-deep": "0 20px 48px #000d",
@@ -797,7 +867,24 @@
       "VIEW FULL NOTE",
       "\u2605 SAVED"
     ],
-    "human_first_rule": "Write for a human child first. Technicals ride as evidence links, never as prose. PR numbers never appear in body text."
+    "human_first_rule": "Write for a human child first. Technicals ride as evidence links, never as prose. PR numbers never appear in body text.",
+    "navigation": {
+      "region_title": "ROOMS",
+      "tabs": [
+        "Smart Feed",
+        "Your Intelligence Today",
+        "Your Reports",
+        "Intelligent Library",
+        "Smart Connect",
+        "Smart Ledger",
+        "Your Connections",
+        "Smart Lists",
+        "Smart Mail",
+        "Smart Spaces",
+        "Settings"
+      ],
+      "motto": "PRIVATE BY DEFAULT. / SHARED BY CHOICE. / COLLECTIVE BY CONSENT."
+    }
   },
   "failure_posture": {
     "source": "NayaNET-Design-Code-Convergence-2026-10-08.pdf",
@@ -808,5 +895,45 @@
       "No rounding up.",
       "Beauty never overrides security/accessibility."
     ]
+  },
+  "navigation_language": {
+    "status": "SYNTHESIS 2026-10-08 \u2014 from live hub sidebar inventory (navigation language only; page design authority is the 12 fresh HTML files)",
+    "nav_region_title": "ROOMS",
+    "tabs_in_order": [
+      "Smart Feed",
+      "Your Intelligence Today",
+      "Your Reports",
+      "Intelligent Library",
+      "Smart Connect",
+      "Smart Ledger",
+      "Your Connections",
+      "Smart Lists",
+      "Smart Mail",
+      "Smart Spaces",
+      "Settings"
+    ],
+    "naming_pattern": {
+      "Smart ___": [
+        "Feed",
+        "Connect",
+        "Ledger",
+        "Lists",
+        "Mail",
+        "Spaces"
+      ],
+      "Your ___": [
+        "Intelligence Today",
+        "Reports",
+        "Connections"
+      ],
+      "standalone": [
+        "Intelligent Library",
+        "Settings"
+      ]
+    },
+    "sidebar_footer_motto": "PRIVATE BY DEFAULT. / SHARED BY CHOICE. / COLLECTIVE BY CONSENT.",
+    "tab_icon_language": "Each tab carries a color-coded glowing orb icon.",
+    "note": "Tab 5 'Smart Connect' vs contract room key 'smart-doors' \u2014 see conflict X-5; fresh connect.html is the arbiter.",
+    "nav_region_note": "CORRECTED 2026-10-08: fresh files use 'ROOMS' as the drawer kicker; the sidebar inventory's 'Intelligence rooms' came from the stale live site. Fresh files win."
   }
 }

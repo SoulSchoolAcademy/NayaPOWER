@@ -65,13 +65,9 @@ def test_d1_zoom_allowed_passes():
 
 
 # ---- D2/D3/D4: wrong room accents -----------------------------------------
-def test_d2_mail_wrong_accent_fails():
+def test_mail_blue_accent_passes():
+    # SYNTHESIS 2026-10-08: mail's accent is blue #3ca8ff (bespoke "Blue identity").
     css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--ml-blue:#3ca8ff")
-    fails_with(css, "D2", room="mail")
-
-
-def test_d2_mail_correct_accent_passes():
-    css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--rich-orange:#ff7a3d")
     passes(css, room="mail")
 
 
@@ -86,22 +82,19 @@ def test_d3_spaces_prefixed_accent_fails():
 
 
 def test_d3_spaces_correct_accent_passes():
-    passes(COMPLIANT_BASE, room="spaces")  # --lime:#b8ee57 is the assigned accent
+    css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--sp-coral:#ff5e6c")
+    passes(css, room="spaces")  # coral #ff5e6c is the assigned accent
 
 
-def test_d4_connections_wrong_accent_fails():
+def test_connections_purple_accent_passes():
+    # SYNTHESIS 2026-10-08: connections' accent is purple #9d75ff (bespoke --cx-purple).
     css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--cx-purple:#9d75ff")
-    fails_with(css, "D4", room="connections")
-
-
-def test_d4_connections_correct_accent_passes():
-    css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--cx-orange:#ff9a5a")
     passes(css, room="connections")
 
 
 def test_room_accent_missing_fails():
     css = COMPLIANT_BASE.replace("--lime:#b8ee57", "")
-    v = check(css, room="spaces")
+    v = check(css, room="spaces")  # no coral accent -> FAIL
     assert "D3" in ids(v)
 
 
@@ -135,7 +128,7 @@ def test_d9_presentation_variant_14_passes():
 
 # ---- SPECTRUM: non-token chromatic colors ----------------------------------
 def test_spectrum_nontoken_hex_fails():
-    fails_with(COMPLIANT_BASE + "<style>.x{color:#3ca8ff;}</style>", "SPECTRUM")
+    fails_with(COMPLIANT_BASE + "<style>.x{color:#a020f0;}</style>", "SPECTRUM")
 
 
 def test_spectrum_token_hex_passes():
@@ -241,7 +234,8 @@ def test_jewel_clip_drift_warns_only():
 
 
 def test_missing_bottombar_warns_only():
-    v = check(COMPLIANT_BASE, room="spaces")  # --lime:#b8ee57 satisfies the accent
+    css = COMPLIANT_BASE.replace("--lime:#b8ee57", "--sp-coral:#ff5e6c")
+    v = check(css, room="spaces")  # coral #ff5e6c satisfies the accent
     assert "BOTTOMBAR" in ids(v, "WARN")
     assert not any(x["severity"] == "FAIL" for x in v), v
 
