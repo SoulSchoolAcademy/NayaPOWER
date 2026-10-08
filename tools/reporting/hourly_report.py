@@ -2,8 +2,8 @@
 """Hourly report wrapper (08:00–22:00 UTC).
 
 Covers the window since the last report of any type (hourly, morning, or
-nightly). Emphasis: current status, top 10 holes, achievements since
-last hour, score deltas.
+nightly). Broken down by the nine teams: per-team scores, holes,
+priorities, action plan to 10, and what got done this hour.
 
 Usage:
     python3 hourly_report.py [--save-dir DIR] [--no-save]

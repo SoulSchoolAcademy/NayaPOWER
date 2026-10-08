@@ -2,8 +2,8 @@
 """Morning report wrapper (06:00 UTC).
 
 Covers the overnight window: since the last nightly report (or 23:00 UTC
-previous day if no watermark). Emphasis: overnight summary + today's
-top priorities + current scores.
+previous day if no watermark). Broken down by the nine teams: per-team
+scores, holes, priorities, action plan to 10, overnight achievements.
 
 Usage:
     python3 morning_report.py [--save-dir DIR] [--no-save] [--print-only]

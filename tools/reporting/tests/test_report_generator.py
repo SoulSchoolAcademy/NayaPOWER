@@ -15,15 +15,22 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from report_generator import (  # noqa: E402
+    AREAS,
+    AREA_TO_TEAM,
+    TEAM_STRUCTURE,
     Item,
     ReportData,
     ReportGenerator,
     ScorePoint,
+    TeamSection,
     _dedup,
     _hole_priority,
     _normalize_area,
     _section_items,
+    action_plan_text,
+    attribute_team,
     extract_scores_from_text,
+    group_by_team,
     parse_memory_log,
     parse_worker_log,
     save_score_state,
@@ -387,16 +394,19 @@ def _sample_data():
 def test_render_structure():
     report = ReportGenerator.render(_sample_data())
     assert report.startswith("# HOURLY Report — 2026-10-08 12:00 UTC")
-    for section in ["## Scores (all levels)",
-                    "## Top 10 Holes (highest priority actions)",
-                    "## Top 10 Achievements (since last report)",
-                    "## Team Activity",
-                    "## Intelligence Learned",
-                    "## Next Actions",
+    # Nine team sections, in order.
+    for i, team in enumerate(TEAM_STRUCTURE, 1):
+        header = f"## Team {i}: {team['name']} ({team['manager']})"
+        assert header in report, f"missing {header}"
+    for section in ["**Holes (top 3):**",
+                    "**Priorities (top 3):**",
+                    "**Action plan to 10:**",
+                    "**This hour:**",
+                    "## Cross-team signals",
                     "## Evidence Snapshot"]:
         assert section in report, f"missing {section}"
-    # Score delta rendered.
-    assert "| Learning | 5.0 | 5.5 | +0.5 | claim |" in report
+    # Learning score lands in the Learning team section with delta.
+    assert "Learning 5.5 (claim, Δ +0.5)" in report
     # Sources attached.
     assert "_(src: w1)_" in report
     # Evidence snapshot.
@@ -408,16 +418,25 @@ def test_render_empty_sections():
                       generated_at=NOW, window_label="nightly")
     report = ReportGenerator.render(data)
     assert "_None recorded this window._" in report
-    assert "_No data this window:" in report
+    assert "_Nothing recorded this window._" in report
+    assert "_All items attributed to teams._" in report
+    # Cross-cutting teams show no direct area score.
+    assert "cross-cutting — no direct area score." in report
 
 
-def test_render_caps_at_ten():
+def test_render_caps_per_team():
     data = _sample_data()
-    data.holes = [Item(f"hole {i}", "w", priority=i) for i in range(25)]
-    data.holes = sorted(data.holes, key=lambda i: -i.priority)[:10]
+    # 25 holes from the same worker: all attribute to Learning.
+    data.holes = [Item(f"Learning hole {i}", "learn-builder", priority=i)
+                  for i in range(25)]
     report = ReportGenerator.render(data)
-    assert "hole 24" in report
-    assert "hole 0" not in report  # lowest priority cut off
+    # Top-3 per team: highest priorities shown...
+    assert "Learning hole 24" in report
+    assert "Learning hole 23" in report
+    assert "Learning hole 22" in report
+    # ...rest cut off.
+    assert "Learning hole 21" not in report
+    assert "Learning hole 0" not in report
 
 
 # ---------------------------------------------------------------------------
@@ -447,7 +466,9 @@ def test_generate_end_to_end_with_mocks():
     )
     report = gen.generate("morning", NOW - dt.timedelta(hours=8), NOW)
     assert "# MORNING Report" in report
-    assert "## Scores (all levels)" in report
+    assert "## Team 1: Learning (Naya 4)" in report
+    assert "## Team 9: Innovation (Naya 3)" in report
+    assert "## Cross-team signals" in report
     assert json.dumps  # sanity: module imports cleanly
 
 
@@ -528,3 +549,281 @@ def test_newer_memory_file_beats_older_despite_mtime(tmp_path):
     assert old_pts[0].score == 6.5
     assert new_pts[0].score == 7.0
     assert new_pts[0].as_of > old_pts[0].as_of
+
+
+# ---------------------------------------------------------------------------
+# 2026-10-08 (second pass, same run): bare-"production" alias removed and
+# bold qualifier words allowed — the deck's 8.5/10 ("production 9" sub-score)
+# must not be attributed to Production Readiness, while the honest
+# "**3.0/10 unchanged**" statement must be extracted.
+# ---------------------------------------------------------------------------
+
+
+def test_bare_production_alias_not_an_area():
+    pts = extract_scores_from_text(
+        "Naya 5 scored it **8.5/10**: narrative 9, clarity 8.5, memorable "
+        "lines 9, production 9, doctrinal accuracy 8.",
+        source="t", as_of=NOW)
+    assert pts == []
+
+
+def test_bold_score_with_qualifier_extracted():
+    pts = extract_scores_from_text(
+        "Production Readiness area: **3.0/10 unchanged** (honest).",
+        source="t", as_of=NOW)
+    assert len(pts) == 1
+    assert pts[0].area == "Production Readiness" and pts[0].score == 3.0
+
+
+def test_full_area_name_still_matches():
+    pts = extract_scores_from_text(
+        "Production Readiness **3.5/10** (chain red).",
+        source="t", as_of=NOW)
+    assert len(pts) == 1 and pts[0].score == 3.5
+
+
+def test_single_re_with_topic_phrase():
+    # "Honest score: Retrieval 7.0/10 CLAIM" — the current live statement
+    # missed by the old pattern, which let a stale 6.5 stand.
+    pts = extract_scores_from_text(
+        "Honest score: Retrieval 7.0/10 CLAIM (was 6.5).",
+        source="t", as_of=NOW)
+    assert len(pts) == 1
+    assert pts[0].area == "Retrieval" and pts[0].score == 7.0
+
+
+def test_single_re_still_rejects_rescore_and_scorecard():
+    # "re-score" must not double-count via the single pattern; the movement
+    # (8.5 → 8.8) wins and yields exactly one point.
+    pts = extract_scores_from_text(
+        "TRUTH re-score: 8.5 → 8.8 done.", source="t", as_of=NOW)
+    assert [p.score for p in pts if p.area == "Truth"] == [8.8]
+
+
+# ---------------------------------------------------------------------------
+# Nine-team structure (2026-10-08): reports break down by team, not by
+# flat area list. Shawn: "give me a briefing on each category."
+# ---------------------------------------------------------------------------
+
+
+def test_nine_teams_defined():
+    assert len(TEAM_STRUCTURE) == 9
+    names = [t["name"] for t in TEAM_STRUCTURE]
+    assert names == [
+        "Learning", "Brain/Memory", "Law/Governance",
+        "Architecture/Engineering/Ops", "Evolution/Succession",
+        "Interfaces/Hub", "Knowledge/Intelligence",
+        "Proving/Verifying", "Innovation",
+    ]
+
+
+def test_every_area_maps_to_exactly_one_team():
+    for area in AREAS:
+        assert area in AREA_TO_TEAM, f"{area} has no team"
+    # No area claimed twice.
+    seen: dict[str, str] = {}
+    for t in TEAM_STRUCTURE:
+        for a in t["areas"]:
+            assert a not in seen, f"{a} in two teams"
+            seen[a] = t["name"]
+    assert set(seen) == set(AREAS)
+
+
+def test_cross_cutting_teams_have_no_areas():
+    for t in TEAM_STRUCTURE:
+        if t["name"] in ("Knowledge/Intelligence", "Innovation"):
+            assert t["areas"] == []
+
+
+def test_team_managers_match_roster():
+    managers = {t["name"]: t["manager"] for t in TEAM_STRUCTURE}
+    assert managers["Learning"] == "Naya 4"
+    assert managers["Brain/Memory"] == "Naya 5"
+    assert managers["Law/Governance"] == "Naya 2"
+    assert managers["Evolution/Succession"] == "Naya 5"
+    assert managers["Proving/Verifying"] == "Naya 1"
+
+
+# ---------------------------------------------------------------------------
+# Team attribution
+# ---------------------------------------------------------------------------
+
+
+def test_attribute_team_by_area_mention():
+    it = Item("Tip RED blocks Retrieval CI", "learn-builder", priority=25)
+    assert attribute_team(it, "hole") == "Architecture/Engineering/Ops"
+    it2 = Item("Safety gate closed the ACT bypass", "safety-builder")
+    assert attribute_team(it2, "achievement") == "Law/Governance"
+
+
+def test_attribute_team_by_worker_prefix():
+    # No area named: falls back to who did the work.
+    it = Item("Tip RED blocks CI", "learn-builder", priority=25)
+    assert attribute_team(it, "hole") == "Learning"
+    it2 = Item("Fixed deck honesty", "voice-builder")
+    assert attribute_team(it2, "achievement") == "Interfaces/Hub"
+    it3 = Item("SR-P5 improved", "successor-builder")
+    assert attribute_team(it3, "achievement") == "Evolution/Succession"
+
+
+def test_attribute_team_area_beats_worker_prefix():
+    # A learn-builder item ABOUT retrieval belongs to Arch/Eng/Ops,
+    # not Learning — the subject wins over the author.
+    it = Item("Retrieval probe 5/5 PASS", "learn-builder")
+    assert attribute_team(it, "achievement") == "Architecture/Engineering/Ops"
+
+
+def test_attribute_team_intelligence_defaults_to_knowledge():
+    it = Item("Fix It First: repair it, then report what you did",
+              "memory:2026-10-08")
+    assert attribute_team(it, "intelligence") == "Knowledge/Intelligence"
+    # But a lesson naming an area goes to that area's team.
+    it2 = Item("Learning score is 5.0 authoritative, not 7.0",
+               "memory:2026-10-08")
+    assert attribute_team(it2, "intelligence") == "Learning"
+
+
+def test_attribute_team_unassigned_not_guessed():
+    it = Item("something vague happened", "unknown-source")
+    assert attribute_team(it, "hole") is None
+    assert attribute_team(it, "achievement") is None
+
+
+def test_attribute_team_innovation_keyword():
+    it = Item("Researched a new framework for the Hub", "memory:2026-10-08")
+    assert attribute_team(it, "achievement") == "Innovation"
+
+
+# ---------------------------------------------------------------------------
+# Grouping
+# ---------------------------------------------------------------------------
+
+
+def _team_data():
+    data = ReportData(since=NOW - dt.timedelta(hours=1),
+                      generated_at=NOW, window_label="hourly",
+                      previous_scores={})
+    data.scores = [
+        ScorePoint("Learning", 5.0, NOW, "pin", "authoritative"),
+        ScorePoint("Truth", 9.0, NOW, "w", "claim"),
+    ]
+    data.holes = [
+        Item("Learning pipeline jammed: 13 stuck", "learn-builder",
+             priority=20),
+        Item("mystery blocker", "???"),
+    ]
+    data.achievements = [
+        Item("T13 proof 9.0", "learn-builder"),
+    ]
+    data.next_actions = [
+        Item("Write scorecard receipts", "learn-builder"),
+    ]
+    data.intelligence = [
+        Item("Fix It First law", "memory:2026-10-08"),
+    ]
+    return data
+
+
+def test_group_by_team_order_and_scores():
+    sections, unassigned = group_by_team(_team_data())
+    assert [s.name for s in sections] == [t["name"] for t in TEAM_STRUCTURE]
+    learning = sections[0]
+    assert learning.manager == "Naya 4"
+    assert [(s.area, s.score) for s in learning.scores] == [("Learning", 5.0)]
+    proving = sections[7]
+    assert [(s.area, s.score) for s in proving.scores] == [("Truth", 9.0)]
+    # Cross-cutting team has no scores.
+    ki = sections[6]
+    assert ki.scores == []
+
+
+def test_group_by_team_routes_items():
+    sections, unassigned = group_by_team(_team_data())
+    learning = sections[0]
+    assert any("jammed" in h.text for h in learning.holes)
+    assert any("receipts" in p.text for p in learning.priorities)
+    assert any("T13" in a.text for a in learning.achievements)
+    # The area-less lesson went to Knowledge/Intelligence's "This hour".
+    ki = sections[6]
+    assert any("Fix It First" in a.text for a in ki.achievements)
+    # The truly unattributable hole surfaces under Cross-team signals.
+    assert any("mystery" in h.text for h in unassigned["holes"])
+
+
+def test_group_by_team_holes_sorted_by_priority():
+    data = _team_data()
+    data.holes = [
+        Item("Learning minor note", "learn-builder", priority=5),
+        Item("Learning pipeline jammed", "learn-builder", priority=20),
+    ]
+    sections, _ = group_by_team(data)
+    assert sections[0].holes[0].priority == 20
+
+
+# ---------------------------------------------------------------------------
+# Action plan
+# ---------------------------------------------------------------------------
+
+
+def test_action_plan_names_top_hole_and_priority():
+    sec = TeamSection(
+        name="Learning", manager="Naya 4", feed="#1602",
+        scores=[ScorePoint("Learning", 5.0, NOW, "pin", "authoritative")],
+        holes=[Item("Pipeline jammed: 13 stuck", "w", priority=20)],
+        priorities=[Item("Write scorecard receipts", "w")],
+    )
+    plan = action_plan_text(sec)
+    assert "Pipeline jammed" in plan
+    assert "Write scorecard receipts" in plan
+    assert "independent verification" in plan
+
+
+def test_action_plan_hold_when_above_nine():
+    sec = TeamSection(
+        name="Proving/Verifying", manager="Naya 1", feed="#1723",
+        scores=[ScorePoint("Truth", 9.0, NOW, "w", "claim")],
+    )
+    plan = action_plan_text(sec)
+    assert "hold 9.0+" in plan
+
+
+def test_action_plan_empty_is_honest():
+    sec = TeamSection(name="Innovation", manager="Naya 3", feed="#1607")
+    plan = action_plan_text(sec)
+    assert "No recorded actions this window" in plan
+
+
+# ---------------------------------------------------------------------------
+# Pinned Learning 5.0 survives the team restructure
+# ---------------------------------------------------------------------------
+
+
+def test_pinned_learning_in_team_section():
+    saved = {}
+
+    def fake_load():
+        return {"Learning": {"score": 7.0,
+                             "as_of": "2026-10-08T00:00:00+00:00",
+                             "source": "stale", "status": "claim"}}
+
+    gen = ReportGenerator(
+        fetch_worker_logs=lambda s: [{
+            "worker": "learn-builder", "mtime": NOW,
+            "scores": [ScorePoint("Learning", 7.0, NOW, "learn-builder")],
+            "holes": [], "achievements": [], "activity": [],
+        }],
+        fetch_memory=lambda s: {"achievements": [], "intelligence": [],
+                                "holes": [], "scores": []},
+        fetch_github_fn=lambda s: {"prs": [], "comments": [], "error": None},
+        fetch_supabase_fn=lambda: {"counts": {}, "error": None},
+        load_scores_fn=fake_load,
+        save_scores_fn=lambda s: saved.update(s),
+    )
+    data = gen.collect("hourly", NOW - dt.timedelta(hours=1), NOW)
+    sections, _ = group_by_team(data)
+    learning = sections[0]
+    assert len(learning.scores) == 1
+    assert learning.scores[0].score == 5.0
+    assert learning.scores[0].status == "authoritative"
+    report = gen.render(data)
+    assert "Learning 5.0 (authoritative" in report

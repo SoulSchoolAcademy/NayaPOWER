@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Team Naya automated reporting system — core generator.
 
-Pulls data from all sources, distills it into Shawn's report structure:
+Pulls data from all sources, distills it into Shawn's report structure,
+broken down by the nine teams (ratified 2026-10-08):
     # [MORNING/HOURLY/NIGHTLY] Report — [date/time]
-    ## Scores (all levels)
-    ## Top 10 Holes (highest priority actions)
-    ## Top 10 Achievements (since last report)
-    ## Team Activity
-    ## Intelligence Learned
-    ## Next Actions
+    ## Team 1: Learning (Naya 4) — feed #1602
+    ## Team 2: Brain/Memory (Naya 5) — feed #1603
+    ... (all nine teams)
+    ## Cross-team signals
+    ## Evidence Snapshot
+
+Each team section shows: Scores, Holes (top 3), Priorities (top 3),
+Action plan to 10, This hour (what got done).
 
 Data sources (all read paths, no writes outside state/):
   - Worker run logs: ~/workspace/goals/<goal>/hidden_files/*.md
@@ -86,10 +89,104 @@ AREA_ALIASES = {
     "voice & experience": "Voice & Experience",
     "production readiness": "Production Readiness",
     "prod readiness": "Production Readiness",
-    "production": "Production Readiness",
+    # NOTE: bare "production" was deliberately removed (2026-10-08): it
+    # mis-attributed reveal-deck sub-scores ("production 9") to the
+    # Production Readiness area. Score statements use the full area name.
     "successor": "Successor Reuse",
     "successor reuse": "Successor Reuse",
 }
+
+# ---------------------------------------------------------------------------
+# Nine-team structure (ratified 2026-10-08, Shawn).
+# #1354 = main coordination feed. Each team owns scorecard areas and a
+# working feed. Reports break down by team, not by flat area list.
+# ---------------------------------------------------------------------------
+
+TEAM_STRUCTURE = [
+    {"name": "Learning", "manager": "Naya 4",
+     "areas": ["Learning"], "feed": "#1602"},
+    {"name": "Brain/Memory", "manager": "Naya 5",
+     "areas": ["Memory & Continuity"], "feed": "#1603"},
+    {"name": "Law/Governance", "manager": "Naya 2",
+     "areas": ["Authority & Governance", "Safety"], "feed": "#1606"},
+    {"name": "Architecture/Engineering/Ops", "manager": "Naya 4",
+     "areas": ["Action & Execution", "Retrieval", "Production Readiness"],
+     "feed": "#1605"},
+    {"name": "Evolution/Succession", "manager": "Naya 5",
+     "areas": ["Successor Reuse"], "feed": "#1715"},
+    {"name": "Interfaces/Hub", "manager": "Naya 3",
+     "areas": ["Voice & Experience", "Human Value"], "feed": "#1607"},
+    {"name": "Knowledge/Intelligence", "manager": "Naya 4",
+     "areas": [], "feed": "#1713"},  # cross-cutting: lessons → system
+    {"name": "Proving/Verifying", "manager": "Naya 1",
+     "areas": ["Truth"], "feed": "#1723"},
+    {"name": "Innovation", "manager": "Naya 3",
+     "areas": [], "feed": "#1607"},  # cross-cutting: improvements adopted
+]
+
+# Area -> owning team name. Every AREAS entry must appear exactly once.
+AREA_TO_TEAM: dict[str, str] = {}
+for _t in TEAM_STRUCTURE:
+    for _a in _t["areas"]:
+        AREA_TO_TEAM[_a] = _t["name"]
+
+# Worker-log name prefix -> team. Checked after area-mention attribution,
+# so a learn-builder hole about "tip RED" still lands on Learning even
+# though the text names no area.
+WORKER_TEAM_PREFIXES = [
+    ("learn", "Learning"),
+    ("memory", "Brain/Memory"),
+    ("authority", "Law/Governance"),
+    ("safety", "Law/Governance"),
+    ("action", "Architecture/Engineering/Ops"),
+    ("cold-retrieve", "Architecture/Engineering/Ops"),
+    ("cold_retrieve", "Architecture/Engineering/Ops"),
+    ("prod", "Architecture/Engineering/Ops"),
+    ("successor", "Evolution/Succession"),
+    ("voice", "Interfaces/Hub"),
+    ("human-value", "Interfaces/Hub"),
+    ("human_value", "Interfaces/Hub"),
+    ("truth", "Proving/Verifying"),
+]
+
+# Conservative keyword fallback for cross-cutting innovation items that
+# name no area and come from no known worker (e.g. memory-log notes).
+_INNOVATION_RE = re.compile(
+    r"\b(innovat\w*|cutting.?edge|research\w*|prototyp\w*|"
+    r"new tool\w*|new framework|adopt\w+)\b",
+    re.IGNORECASE,
+)
+
+
+def attribute_team(item: Item, kind: str) -> str | None:
+    """Attribute an item to one of the nine teams.
+
+    kind in {"hole", "achievement", "next", "intelligence"}.
+    Order: area mentioned in text -> worker/source prefix ->
+    intelligence defaults to Knowledge/Intelligence -> None (unassigned).
+    Never guesses: ambiguous or unattributable items return None and are
+    surfaced under Cross-team signals.
+    """
+    area = _normalize_area(item.text)
+    if area:
+        team = AREA_TO_TEAM.get(area)
+        if team:
+            return team
+    src = (item.source or "").lower()
+    # Memory-log sources ("memory:2026-10-08") are not workers — the
+    # "memory" worker prefix is for memory-builder run logs only.
+    if not src.startswith("memory:"):
+        for prefix, team in WORKER_TEAM_PREFIXES:
+            if src.startswith(prefix):
+                return team
+    if kind == "achievement" and _INNOVATION_RE.search(item.text):
+        return "Innovation"
+    if kind == "intelligence":
+        # Lessons with no area named belong to the team whose job is
+        # getting intelligence INTO the system.
+        return "Knowledge/Intelligence"
+    return None
+
 
 # ---------------------------------------------------------------------------
 # Data structures
@@ -139,6 +236,101 @@ class ReportData:
     window_label: str = ""
 
 
+@dataclass
+class TeamSection:
+    """One team's slice of a report."""
+    name: str
+    manager: str
+    feed: str
+    scores: list[ScorePoint] = field(default_factory=list)
+    holes: list[Item] = field(default_factory=list)       # top blockers
+    priorities: list[Item] = field(default_factory=list)  # next actions
+    achievements: list[Item] = field(default_factory=list)  # done + learned
+
+
+def group_by_team(data: ReportData
+                  ) -> tuple[list[TeamSection], dict[str, list[Item]]]:
+    """Split report items across the nine teams.
+
+    Returns (sections in TEAM_STRUCTURE order, unassigned items by kind).
+    Items that name no area and match no worker prefix are NOT guessed
+    into a team — they surface under Cross-team signals.
+    """
+    by_team: dict[str, dict[str, list[Item]]] = {
+        t["name"]: {"holes": [], "achievements": [], "priorities": []}
+        for t in TEAM_STRUCTURE
+    }
+    unassigned: dict[str, list[Item]] = {
+        "holes": [], "achievements": [], "priorities": [],
+        "intelligence": [],
+    }
+
+    def put(kind: str, item: Item):
+        team = attribute_team(item, kind)
+        if team is not None and team in by_team:
+            by_team[team][kind].append(item)
+        else:
+            unassigned[kind].append(item)
+
+    for h in data.holes:
+        put("holes", h)
+    for a in data.achievements:
+        put("achievements", a)
+    for n in data.next_actions:
+        put("priorities", n)
+    for ig in data.intelligence:
+        # Lessons learned land in the attributed team's "This hour".
+        team = attribute_team(ig, "intelligence")
+        if team is not None and team in by_team:
+            by_team[team]["achievements"].append(ig)
+        else:
+            unassigned["intelligence"].append(ig)
+
+    scores_by_area = {sp.area: sp for sp in data.scores}
+    sections: list[TeamSection] = []
+    for t in TEAM_STRUCTURE:
+        secs = [scores_by_area[a] for a in t["areas"]
+                if a in scores_by_area]
+        sections.append(TeamSection(
+            name=t["name"],
+            manager=t["manager"],
+            feed=t["feed"],
+            scores=secs,
+            holes=sorted(by_team[t["name"]]["holes"],
+                         key=lambda i: -i.priority),
+            priorities=by_team[t["name"]]["priorities"],
+            achievements=by_team[t["name"]]["achievements"],
+        ))
+    return sections, unassigned
+
+
+def _short(text: str, limit: int = 110) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    return text if len(text) <= limit else text[:limit].rstrip() + "…"
+
+
+def action_plan_text(section: TeamSection) -> str:
+    """Brief honest action plan: top hole -> top priority -> verify.
+
+    Built only from recorded items. When the team has no recorded
+    holes or priorities this window, says so instead of inventing one.
+    """
+    bits: list[str] = []
+    if section.holes:
+        bits.append("close: " + _short(section.holes[0].text))
+    if section.priorities:
+        bits.append("land: " + _short(section.priorities[0].text))
+    below = [s for s in section.scores if s.score < 9.0]
+    if below:
+        bits.append("independent verification → re-score toward 10")
+    elif section.scores:
+        bits.append("hold 9.0+ via independent verification; harden toward 10")
+    if not bits:
+        return ("_No recorded actions this window — team to publish "
+                "plan on feed._")
+    return " → ".join(bits) + "."
+
+
 # ---------------------------------------------------------------------------
 # Score extraction from worker logs
 # ---------------------------------------------------------------------------
@@ -147,8 +339,17 @@ class ReportData:
 # ("8.5 → 8.8") always wins over a point score ("re-score: 8.5") whose
 # span it overlaps — the movement's NEW value is the current score.
 _MOVEMENT_RE = re.compile(r"(\d{1,2}\.\d)\s*(?:→|->)\s*(\d{1,2}\.\d)")
-_SINGLE_RE = re.compile(r"(?<![\w-])[Ss]core[:\s]+(\d{1,2}\.\d)")
-_BOLD_RE = re.compile(r"\*\*(\d{1,2}\.\d)(?:/10)?\*\*")
+_SINGLE_RE = re.compile(
+    r"(?<![\w-])[Ss]core[:\s]+(?:[A-Za-z][A-Za-z &/-]{0,40}?\s+)?(\d{1,2}\.\d)"
+)
+# 2026-10-08: the optional topic phrase lets "Honest score: Retrieval 7.0/10"
+# extract 7.0. The (?<![\w-]) guard still rejects "re-score:"/"scorecard".
+_BOLD_RE = re.compile(
+    r"\*\*(\d{1,2}\.\d)(?:/10)?(?:\s+[A-Za-z-]+){0,2}\*\*"
+)
+# 2026-10-08: allow up to two qualifier words before the closing ** so
+# "**3.0/10 unchanged**" (an honest stated score) is extracted. A 10/10
+# is still never extracted — see _MAX_HEURISTIC_SCORE.
 
 # 10.0 is never heuristically extracted: a 10/10 requires Shawn's explicit
 # confirmation (mission law — "a self-declared 10 without his word is not
@@ -602,8 +803,24 @@ class ReportGenerator:
                 window_points[p.area] = p
 
         new_state = dict(state)
+        # Pinned authoritative scores — set by Naya 1 / Shawn reconciliation.
+        # Heuristic extraction NEVER overwrites these.
+        # 2026-10-08: Naya 1 reconciled whole-area Learning = 5.0.
+        # The 7.0 seen in worker logs is the bounded trial-rung score, not whole-area.
+        PINNED_AUTHORITATIVE = {
+            "Learning": 5.0,
+        }
         for area, point in window_points.items():
             existing = new_state.get(area, {})
+            # Pinned scores win over everything heuristic.
+            if area in PINNED_AUTHORITATIVE:
+                new_state[area] = {
+                    "score": PINNED_AUTHORITATIVE[area],
+                    "as_of": point.as_of.isoformat(),
+                    "source": "Naya 1 reconciliation 2026-10-08 (pinned)",
+                    "status": "authoritative",
+                }
+                continue
             # Never downgrade: an authoritative score is not overwritten
             # by a heuristic claim's status.
             status = point.status
@@ -642,13 +859,15 @@ class ReportGenerator:
         data.github_snapshot = self.fetch_github_fn(since)
         data.supabase_snapshot = self.fetch_supabase_fn()
 
-        # Rank + cap.
+        # Rank + dedup. Per-team caps happen at render time; keep the
+        # full ranked lists here so no team's items are starved by a
+        # global cap.
         data.holes = _dedup(sorted(data.holes,
-                                   key=lambda i: -i.priority))[:10]
-        data.achievements = _dedup(data.achievements)[:10]
-        data.team_activity = _dedup(data.team_activity)[:12]
-        data.intelligence = _dedup(data.intelligence)[:10]
-        data.next_actions = _dedup(data.next_actions)[:10]
+                                   key=lambda i: -i.priority))
+        data.achievements = _dedup(data.achievements)
+        data.team_activity = _dedup(data.team_activity)
+        data.intelligence = _dedup(data.intelligence)
+        data.next_actions = _dedup(data.next_actions)
         return data
 
     # -- rendering ------------------------------------------------------------
@@ -658,45 +877,88 @@ class ReportGenerator:
         kind = data.window_label.upper()
         stamp = data.generated_at.strftime("%Y-%m-%d %H:%M UTC")
         lines = [f"# {kind} Report — {stamp}", ""]
-
-        # Scores table.
-        lines.append("## Scores (all levels)")
+        lines.append("_Nine-team structure (ratified 2026-10-08). "
+                     "#1354 = main feed. Scores labeled claim vs "
+                     "authoritative._")
         lines.append("")
-        lines.append("| Area | Prev | Now | Δ | Status |")
-        lines.append("|------|------|-----|---|--------|")
-        for sp in data.scores:
-            prev = data.previous_scores.get(sp.area)
-            if prev is None or prev == sp.score:
-                delta = "—"
+
+        sections, unassigned = group_by_team(data)
+
+        for i, sec in enumerate(sections, 1):
+            lines.append(f"## Team {i}: {sec.name} ({sec.manager}) — "
+                         f"feed {sec.feed}")
+            lines.append("")
+
+            # Scores for the team's areas, with deltas.
+            if sec.scores:
+                bits = []
+                for sp in sec.scores:
+                    prev = data.previous_scores.get(sp.area)
+                    if prev is None or prev == sp.score:
+                        delta = "—"
+                    else:
+                        delta = f"{sp.score - prev:+.1f}"
+                    tag = ("authoritative"
+                           if sp.status == "authoritative" else "claim")
+                    bits.append(f"{sp.area} {sp.score:.1f} ({tag}, Δ {delta})")
+                lines.append("**Scores:** " + " · ".join(bits))
             else:
-                d = sp.score - prev
-                delta = f"{d:+.1f}"
-            tag = "authoritative" if sp.status == "authoritative" else "claim"
-            lines.append(f"| {sp.area} | "
-                         f"{prev if prev is not None else '—'} | "
-                         f"{sp.score:.1f} | {delta} | {tag} |")
-        missing = [a for a in AREAS
-                   if not any(s.area == a for s in data.scores)]
-        if missing:
+                lines.append("**Scores:** cross-cutting — no direct "
+                             "area score.")
             lines.append("")
-            lines.append(f"_No data this window: {', '.join(missing)}_")
-        lines.append("")
 
-        def section(title: str, items: list[Item], numbered: bool = True):
-            lines.append(f"## {title}")
-            lines.append("")
-            if not items:
+            lines.append("**Holes (top 3):**")
+            if sec.holes:
+                for j, h in enumerate(sec.holes[:3], 1):
+                    lines.append(f"{j}. {h.text} _(src: {h.source})_")
+            else:
                 lines.append("_None recorded this window._")
-            for i, it in enumerate(items, 1):
-                prefix = f"{i}." if numbered else "-"
+            lines.append("")
+
+            lines.append("**Priorities (top 3):**")
+            if sec.priorities:
+                for j, p in enumerate(sec.priorities[:3], 1):
+                    lines.append(f"{j}. {p.text} _(src: {p.source})_")
+            else:
+                lines.append("_None recorded this window._")
+            lines.append("")
+
+            lines.append("**Action plan to 10:** " +
+                         action_plan_text(sec))
+            lines.append("")
+
+            lines.append("**This hour:**")
+            done = sec.achievements[:5]
+            if done:
+                for a in done:
+                    lines.append(f"- {a.text} _(src: {a.source})_")
+            else:
+                lines.append("_Nothing recorded this window._")
+            lines.append("")
+
+        # Cross-team signals: items that could not be attributed to any
+        # team. Never guessed into a team — surfaced here instead.
+        lines.append("## Cross-team signals")
+        lines.append("")
+        shown_any = False
+        for label, items, numbered in (
+                ("Unassigned holes", unassigned["holes"][:3], True),
+                ("Unassigned priorities", unassigned["priorities"][:3], True),
+                ("Unassigned achievements", unassigned["achievements"][:3],
+                 False),
+                ("Unassigned intelligence", unassigned["intelligence"][:3],
+                 False)):
+            if not items:
+                continue
+            shown_any = True
+            lines.append(f"**{label}:**")
+            for j, it in enumerate(items, 1):
+                prefix = f"{j}." if numbered else "-"
                 lines.append(f"{prefix} {it.text} _(src: {it.source})_")
             lines.append("")
-
-        section("Top 10 Holes (highest priority actions)", data.holes)
-        section("Top 10 Achievements (since last report)", data.achievements)
-        section("Team Activity", data.team_activity, numbered=False)
-        section("Intelligence Learned", data.intelligence, numbered=False)
-        section("Next Actions", data.next_actions, numbered=False)
+        if not shown_any:
+            lines.append("_All items attributed to teams._")
+            lines.append("")
 
         # Evidence snapshots.
         gh = data.github_snapshot

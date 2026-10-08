@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Nightly report wrapper (23:00 UTC).
 
-Covers the full day: since 00:00 UTC. Emphasis: full-day summary,
-intelligence learned, score movements, tomorrow's plan.
+Covers the full day: since 00:00 UTC. Broken down by the nine teams:
+per-team scores, holes, priorities, action plan to 10, and the day's
+intelligence learned.
 
 Usage:
     python3 nightly_report.py [--save-dir DIR] [--no-save]
