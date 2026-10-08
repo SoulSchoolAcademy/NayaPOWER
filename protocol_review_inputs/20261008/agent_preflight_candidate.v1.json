@@ -1,0 +1,66 @@
+{
+  "$comment": "CANDIDATE_NON_GOVERNING. Descriptive inputs for a proposed preflight checker. Not a LAW grant, a score engine or a ratification receipt.",
+  "schema": "naya.team.agent-preflight.candidate.v1",
+  "status": "CANDIDATE_NON_GOVERNING",
+  "canonical_entry": "AGENTS.md",
+  "canonical_activation": "NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md",
+  "canonical_cold_acceptance": "NAYA-ACTIVATION/COLD-GITHUB-BOOTSTRAP-ACCEPTANCE-V1.md",
+  "canonical_score_engine": "kernel/value_calculus.py",
+  "existing_decision_gate": [
+    "PROHIBITED",
+    "NEEDS_AUTHORITY",
+    "NEEDS_EVIDENCE",
+    "ADMISSIBLE"
+  ],
+  "preflight_state": [
+    "PREFLIGHT_NOT_READY",
+    "PREFLIGHT_ELIGIBLE"
+  ],
+  "truth_ceiling": "READ_ATTESTED_NOT_COMPREHENSION_PROVEN",
+  "mandatory_sources": [
+    "AGENTS.md",
+    "NAYA-ACTIVATION/PORTABLE-ACTIVATION-PROTOCOL-V1.md",
+    "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+    "NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json",
+    "NAYA-ACTIVATION/00-ACTIVATION-KIT-MAP-V1.md",
+    "BRAIN/01-GOVERNANCE/0004-NONSTOP-LOOP-V1.ai.md",
+    "BRAIN/01-GOVERNANCE/0004-nonstop-loop-v1.machine.json"
+  ],
+  "dynamic_sources": [
+    "newest CURRENT-REALITY reconciliation",
+    "applicable role/domain contract",
+    "ratified .naya/project-intelligence",
+    "current branch/main",
+    "relevant live issues/PRs/test/proof"
+  ],
+  "actor_fields": [
+    "actor_id",
+    "session_id",
+    "repository",
+    "source_commit",
+    "observed_at",
+    "read_evidence",
+    "understanding",
+    "proposed_action"
+  ],
+  "understanding_questions": {
+    "source_of_truth": "CURRENT_MAIN_AND_MATCHED_PROOF",
+    "human_authority": "HUMAN_DIRECTOR",
+    "learning_threshold": "CAUSAL_OUTCOME_AND_SUCCESSOR_REUSE",
+    "board_role": "COORDINATION_NOT_AUTHORITY",
+    "next_action_requirement": "ONE_ADMISSIBLE_NEXT_ACTION"
+  },
+  "nonnegotiable_human_boundaries": [
+    "production_dispatch",
+    "production_db_read",
+    "production_db_write",
+    "production_migration",
+    "credentials",
+    "money",
+    "destructive_action",
+    "constitutional_ratification",
+    "evolve_charter_ratification",
+    "security_privacy_consent_authority_change"
+  ],
+  "important_note": "Even all preflight checks passing does not authorize ACT. Runtime LAW/authorization and current task gates still apply; read receipt is an attestational artifact and actual comprehension requires independent cold acceptance."
+}
