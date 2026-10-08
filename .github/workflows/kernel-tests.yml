@@ -21,3 +21,5 @@ jobs:
       - run: python -m pytest -q
       - name: Verify generated Brain index has no drift
         run: python tools/regenerate_brain_index.py --check
+      - name: Truth-state semantic audit (no hand-edited elevation on disk)
+        run: python3 tools/truth_state_guard.py --audit

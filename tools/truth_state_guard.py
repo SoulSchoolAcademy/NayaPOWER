@@ -39,6 +39,7 @@ import copy
 import hashlib
 import json
 import re
+import sys
 from datetime import datetime, timezone
 
 LADDER = ["CANDIDATE", "TESTING", "VERIFIED", "RATIFIED", "ACTIVE", "LEARNED"]
@@ -870,3 +871,45 @@ def audit_registry_semantics(registry):
     total = sum(counts.values())
     return {"ok": total == 0, "counts": counts, "defect_total": total,
             "defects": defects, "entries_scanned": len(entries)}
+
+
+def _cli(argv):
+    """CLI for CI wiring: run the read-side semantic audit against a registry.
+
+    Exit codes (fail-closed — UNKNOWN != PASS):
+      0 = audit clean
+      1 = defects found (each printed with its class)
+      2 = environment failure (registry unreadable, unparsable) — never
+          treated as clean
+    """
+    import argparse
+    from pathlib import Path as _P
+
+    ap = argparse.ArgumentParser(
+        description="Truth-state semantic audit: find elevation already on disk.")
+    ap.add_argument("--audit", action="store_true", required=True,
+                    help="Run audit_registry_semantics against the registry.")
+    ap.add_argument("--registry", default=None,
+                    help="Path to index.json (default: repo's canonical registry).")
+    args = ap.parse_args(argv)
+    reg_path = _P(args.registry) if args.registry else \
+        _P(__file__).resolve().parents[1] / ".naya" / "memory" / "smart-notes" / "index.json"
+    try:
+        registry = json.loads(reg_path.read_text(encoding="utf-8"))
+    except Exception as exc:  # fail closed: unreadable registry is not a pass
+        print(f"AUDIT_ENVIRONMENT_FAILURE: cannot read registry {reg_path}: {exc}")
+        return 2
+    try:
+        result = audit_registry_semantics(registry)
+    except Exception as exc:
+        print(f"AUDIT_ENVIRONMENT_FAILURE: audit crashed: {exc}")
+        return 2
+    print(f"scanned={result['entries_scanned']} defects={result['defect_total']}")
+    for cls, ids in result["defects"].items():
+        for sid in ids:
+            print(f"DEFECT {cls}: {sid}")
+    return 0 if result["ok"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(_cli(sys.argv[1:]))
