@@ -1,15 +1,15 @@
 {
   "schema": "naya.brain.real_tree.v1",
-  "generated_at": "2026-10-07",
-  "receipt_basis_commit": "7e6bc649e21ecf5f2bf19ddf0ad56a6e8e006cfc",
-  "inventory_file_count": 239,
+  "generated_at": "2026-10-08",
+  "receipt_basis_commit": "e9afcc17b1620c9fd74aaf4f44ed65bd7ab32799",
+  "inventory_file_count": 245,
   "domain_counts": {
     "00-SPEC": 15,
     "01-GOVERNANCE": 21,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
-    "05-MEMORY": 70,
+    "05-MEMORY": 75,
     "06-PROOF": 10,
     "07-LEARNING": 2,
     "08-SUCCESSION": 2,
@@ -17,7 +17,7 @@
     "10-INTERFACES": 7,
     "11-KNOWLEDGE": 7,
     "12-ENGINEERING": 25,
-    "90-OPERATIONS": 12,
+    "90-OPERATIONS": 13,
     "99-ARCHIVE": 1,
     "ROOT": 5
   },
@@ -572,6 +572,31 @@
       "path": "BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md",
       "blob_sha": "3539d973f1e8066cacb47b7aa22cc6d65d48b61e",
       "size": 6111
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/README.md",
+      "blob_sha": "331d4c154e151c7d72c6889fae4d464aeb8e0383",
+      "size": 1648
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial11.py",
+      "blob_sha": "57161e89ed373a45470e3017d4f2f8183343dd52",
+      "size": 4850
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial12.py",
+      "blob_sha": "4fb00fe4a0c53a39a7ad3dd28a412522c29d8860",
+      "size": 3489
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial13.py",
+      "blob_sha": "c7da6ba12add1094ac40d1499f25df6fc29c9f7a",
+      "size": 3000
+    },
+    {
+      "path": "BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py",
+      "blob_sha": "20c4418652af7367f83f929d14dc19a89a7e4f09",
+      "size": 3595
     },
     {
       "path": "BRAIN/05-MEMORY/README.md",
@@ -1182,6 +1207,11 @@
       "path": "BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md",
       "blob_sha": "188ee5921503ff2fb36ab10f11f6531cde8b71d0",
       "size": 30828
+    },
+    {
+      "path": "BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md",
+      "blob_sha": "37e4e4b70a230f3e5027499fba1c5e3f146996d2",
+      "size": 20377
     },
     {
       "path": "BRAIN/90-OPERATIONS/README.md",
