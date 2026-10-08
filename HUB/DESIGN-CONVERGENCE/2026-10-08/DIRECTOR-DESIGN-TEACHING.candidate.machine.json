@@ -1,0 +1,138 @@
+{
+  "contract_id": "nayanet.design-convergence.2026-10-08.candidate",
+  "status": "CANDIDATE_NOT_RATIFIED",
+  "predecessors": [
+    "HUB/DESIGN-CONTRACT.md",
+    "BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md",
+    "HUB/ROOMS/README.md"
+  ],
+  "palette": {
+    "obsidian": "#0B0D12",
+    "raised": "#12151D",
+    "card": "#171B25",
+    "white": "#F5F7FB",
+    "purple": "#9d75ff",
+    "flow": [
+      "purple",
+      "indigo",
+      "blue",
+      "teal",
+      "emerald",
+      "lime",
+      "yellow",
+      "gold",
+      "orange",
+      "red",
+      "magenta"
+    ]
+  },
+  "proposal": {
+    "body_text_target_px": 18,
+    "heading_px": 24,
+    "small_meta_px": 14,
+    "touch_target_min_px": 44,
+    "primary_button_min_px": 52,
+    "interactive_idle_rim_min_px": 1.5
+  },
+  "rules": [
+    {
+      "id": "M01",
+      "assertion": "viewport_zoom_not_disabled",
+      "gate": "FAIL"
+    },
+    {
+      "id": "M02",
+      "assertion": "interactive_semantics_and_action",
+      "gate": "FAIL_IF_PROVEN"
+    },
+    {
+      "id": "M03",
+      "assertion": "no_prohibited_old_maxis_url",
+      "gate": "FAIL_IF_ACTIVE"
+    },
+    {
+      "id": "M04",
+      "assertion": "one_shell_one_room_socket",
+      "gate": "HOLD_ARCH_REVIEW"
+    },
+    {
+      "id": "M05",
+      "assertion": "real_authorized_action_per_affordance",
+      "gate": "HOLD_RUNTIME"
+    },
+    {
+      "id": "M06",
+      "assertion": "live_labels_have_canonical_receipts",
+      "gate": "HOLD_RUNTIME"
+    },
+    {
+      "id": "M07",
+      "assertion": "body_type_18px_target",
+      "gate": "HOLD_RATIFICATION"
+    },
+    {
+      "id": "M08",
+      "assertion": "logo_top_left",
+      "gate": "HOLD_RATIFICATION"
+    },
+    {
+      "id": "M09",
+      "assertion": "idle_white_rim_and_own_color_hover",
+      "gate": "HOLD_VISUAL"
+    },
+    {
+      "id": "M10",
+      "assertion": "reduced_motion_honored",
+      "gate": "HOLD_BROWSER"
+    },
+    {
+      "id": "M11",
+      "assertion": "rose_amber_exclusion_on_new_work",
+      "gate": "HOLD_RATIFICATION"
+    },
+    {
+      "id": "M12",
+      "assertion": "no_duplicate_functionality",
+      "gate": "HOLD_ARCH_REVIEW"
+    },
+    {
+      "id": "M13",
+      "assertion": "rendered_review_evidence_in_score",
+      "gate": "HOLD_REVIEW"
+    },
+    {
+      "id": "M14",
+      "assertion": "tested_sha_matches_deployed_sha",
+      "gate": "HOLD_PRODUCTION"
+    }
+  ],
+  "conflict_register": [
+    "C01:selected-glow",
+    "C02:typography",
+    "C03:logo-shell",
+    "C04:room-accent",
+    "C05:canvas-vs-text-measure",
+    "C06:interactive-rim",
+    "C07:room-registration",
+    "C08:ratification"
+  ],
+  "room_feeds": {
+    "today": 1890,
+    "spaces": 1891,
+    "reports": 1892,
+    "mail": 1893,
+    "lists": 1894,
+    "ledger": 1895,
+    "library": 1896,
+    "smart_doors": 1897,
+    "connections": 1898,
+    "smart_grow": 1899
+  },
+  "proof": {
+    "static": "CANDIDATE",
+    "visual": "NOT_VERIFIED",
+    "runtime": "NOT_VERIFIED",
+    "prod": "NOT_VERIFIED"
+  },
+  "truth_policy": "UNKNOWN is not PASS. Existing governed contract outranks candidate. Candidate cannot alter authority."
+}
