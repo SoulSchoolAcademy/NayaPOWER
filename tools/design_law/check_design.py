@@ -30,6 +30,21 @@ SPECTRUM_HEXES = {
     "#e8b64c", "#f1d75a", "#ff9a5a", "#ff7a3d", "#ff5a6e", "#d86cff",
 }
 TOKEN_HEXES = FIELD_HEXES | SPECTRUM_HEXES
+# SYNTHESIS 2026-10-08 (R-4): Shawn's nine team colors — team→color mapping is
+# law; exact hexes PROVISIONAL (builder's best-effort, pending his confirmation).
+# Sanctioned for team-coded elements; exempt from the SPECTRUM non-token check.
+TEAM_COLOR_HEXES = {
+    "#ff00ff",  # Learning — magenta
+    "#800080",  # Brain/Memory — purple
+    "#4b0082",  # Law/Governance — indigo
+    "#228b22",  # Architecture/Engineering/Ops — green
+    "#ffff00",  # Evolution/Succession — yellow
+    "#ffd700",  # Interfaces/Hub — gold
+    "#ffa500",  # Knowledge/Intelligence — orange
+    "#ff0000",  # Proving/Verifying — red
+    # Innovation — silver (#c0c0c0) is grayscale, already skipped by is_gray
+}
+TOKEN_HEXES = TOKEN_HEXES | TEAM_COLOR_HEXES
 
 ROOM_HEX = {
     "today": "#d86cff", "reports": "#6675ff", "library": "#55b9ee",
@@ -280,6 +295,17 @@ def check(source_text, room=None):
             elif "18px" not in body_fs and "var(--fs-body)" not in body_fs:
                 add("D9", "FAIL", "body font-size '%s' is not 18px (NC-3.1)" % body_fs.strip()[:40])
 
+    # ---- SYN-H24: headline 24px (Shawn's direct spec 2026-10-08) ------------
+    # 24 headlines / 18 body / 14 small. Explicit non-24 headline sizes FAIL;
+    # undeclared headline size is WARN (intent unverifiable from source).
+    for _s, decls, _m in rules_for(rules, "h1"):
+        if "font-size" not in decls:
+            continue
+        m = re.match(r"\s*([0-9.]+)px", decls["font-size"])
+        if m and float(m.group(1)) != 24:
+            add("SYN-H24", "FAIL",
+                "h1 font-size %s != 24px — Shawn's spec: 24 headlines / 18 body / 14 small (SYN-R-3)"
+                % decls["font-size"].strip())
     # ---- BODYCOLOR: white body text --------------------------------------
     white_ok = {"#ffffff", "#f5f7fb", "#f4f6fb", "#f8f7fb", "white",
                 "var(--ink)", "var(--white)"}

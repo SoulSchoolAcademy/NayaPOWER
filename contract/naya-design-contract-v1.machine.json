@@ -1,1 +1,812 @@
-{"conflicts_for_ratification":[{"briefing_effective":"1.5px+ white edge light on every interactive element at rest (A-LAW-05/06)","code_candidate":"1px solid purple-65 (NC-5.3)","contractor_recommendation":"Briefing governs: white 1.5px+ at rest; chrome ignites purple on hover, themed ignites own color.","id":"X-1","topic":"Button rest edge"},{"briefing_effective":"4-7s ease-in-out loops (A-LAW-10)","code_candidate":"8s breathing / 78s orbital drift (NC-7.2)","contractor_recommendation":"Union band 4s-78s for ambient infinite loops until Shawn rules.","id":"X-2","topic":"Ambient loop timing"},{"id":"X-3","note":"Where any page disagrees with the candidate Code, both are recorded (drift register); briefing + shipped ground truths govern until ratification.","topic":"Shipped pages vs Code V1"}],"contract":"NAYA-DESIGN-CONTRACT-V1","contractor_decisions":[{"decision":"Body 18 / kicker-big-headline 24 / headline 18 / sub-detail 14; presentation variant 24/18/14","id":"CD-1","status":"pending Shawn","topic":"Type-scale mapping"},{"decision":"Ambient overlay opacity <= 0.25","id":"CD-2","status":"pending Shawn","topic":"Low opacity numeric"},{"decision":"The black orb with orbiting light","id":"CD-3","status":"pending Shawn","topic":"Living mark"},{"decision":"green=#55e39a (emerald), yellow=#f1d75a","id":"CD-4","status":"pending Shawn","topic":"green/yellow hexes"},{"decision":"indigo=#6675ff, orange=#ff9a5a, rich-orange=#ff7a3d","id":"CD-5","status":"pending Shawn","topic":"indigo/orange/rich-orange hexes"},{"decision":"emerald #55e39a","id":"CD-6","status":"pending Shawn","topic":"Smart Grow tenth color"},{"decision":"color-mix(in srgb, #9d75ff 65%, #000) / color-mix(in srgb, #9d75ff 35%, transparent)","id":"CD-7","status":"pending Shawn","topic":"purple-65/purple-35"},{"decision":"L1 0 18px 42px rgba(0,0,0,.73); L2 0 20px 48px rgba(0,0,0,.87)","id":"CD-8","status":"pending Shawn","topic":"Deep drop shadow numerics"},{"decision":"Presenter's choice; machine rule = circular subsequence of flow","id":"CD-9","status":"pending Shawn","topic":"Nav subset start point"},{"decision":"Cycle rule governs; >=7 items may span full spectrum; never all solid fills","id":"CD-10","status":"pending Shawn","topic":"Never-all-at-once vs cycle"},{"decision":"Reconstructed: 0 0 2px rgba(255,255,255,.85), 0 0 5px <jewel>, 0 0 10px <jewel>, 0 0 16px <jewel>","id":"CD-11","status":"pending Shawn","topic":"Jewel glow garbled tail"},{"decision":"#0B0D12 room default; #010103 entrance variant","id":"CD-12","status":"pending Shawn","topic":"--bg double value"},{"decision":"SF Pro counts as system stack","id":"CD-13","status":"pending Shawn","topic":"SF Pro vs Inter"},{"decision":"PENDING INPUT - not invented","id":"CD-14","status":"awaiting Shawn","topic":"Shawn's nine team colors"}],"drift_register":[{"check":"P-user-scalable, P-maximum-scale","fix":"Remove both; allow pinch zoom","id":"D1","page":"index.html","severity":"HARD","violation":"user-scalable=no + maximum-scale=1"},{"check":"P-wrong-room-accent","fix":"Recolor to rich-orange #ff7a3d","id":"D2","page":"mail.html","severity":"HARD","violation":"room accent #3ca8ff (blue)"},{"check":"P-wrong-room-accent","fix":"Recolor to lime #b8ee57","id":"D3","page":"spaces.html","severity":"HARD","violation":"room accent #7c3aed (purple)"},{"check":"P-wrong-room-accent","fix":"Recolor to orange #ff9a5a","id":"D4","page":"connections.html","severity":"HARD","violation":"room accent #9d75ff (signature purple as room color)"},{"check":"P-non-token-chromatic","fix":"Correct to indigo #6675ff","id":"D5","page":"reports.html","severity":"MEDIUM","violation":"room accent #8a5cff (violet)"},{"check":"P-non-token-chromatic, P-amber-rose","fix":"Correct to gold #e8b64c","id":"D6","page":"ledger.html","severity":"MEDIUM","violation":"accent gold #f2c94c"},{"check":"naming (manual)","fix":"Rename to --cn-teal","id":"D7","page":"connect.html","severity":"LOW","violation":"--cn-emerald names the teal value #40d3bb"},{"check":"warning + P-body-under-18","fix":"Snap clip-path to exact; body to 18px","id":"D8","page":"index-2.html","severity":"LOW+MEDIUM","violation":"jewel clip-path near-variant; --fs-body:16px"},{"check":"P-body-under-18, P-body-missing-18","fix":"Explicit 18px body everywhere (presentation variant exempt)","id":"D9","page":"all","severity":"HARD","violation":"body 18px law violated systemically"},{"check":"warning R-eco-bottombar","fix":"Roll shared chrome to all rooms","id":"D10","page":"connect, connections, index-2, index, start","severity":"MEDIUM","violation":"eco-bottombar missing"},{"check":"P-button-text-color, P-button-solid-fill","fix":"Rebuild primaries to DC-072/073","id":"D11","page":"spaces, mail","severity":"MEDIUM","violation":"button law not implemented"},{"check":"warning","fix":"Adopt index-2 token map","id":"D12","page":"7 of 9","severity":"MEDIUM","violation":"no canonical :root token system"},{"check":"recorded","fix":"None — contractor decision: SF counts as system stack","id":"D13","page":"mail, spaces, connect, connections, ledger, reports","severity":"LOW","violation":"SF Pro stack vs Inter/system"}],"law_counts":{"briefing_laws":15,"briefing_preship_checks":10,"design_code_laws":105,"drift_repair_laws":13,"tokens_pinned":47,"total_enforceable_statements":143},"north_star":"Black ground. White light. Purple soul.","prohibited_patterns":[{"description":"Never block pinch zoom","id":"P-user-scalable","law":["NC-12.4","NC-10.3"],"regex":"user-scalable\\s*=\\s*['\"]?no","severity":"HARD"},{"description":"maximum-scale=1 blocks zoom","id":"P-maximum-scale","law":["NC-12.4"],"regex":"maximum-scale\\s*=\\s*['\"]?(1|1\\.0)['\"]?","severity":"HARD"},{"description":"Solid purple fills: purple is glow, not paint","id":"P-purple-fill","law":["NC-12.2"],"regex":"background(-color)?\\s*:\\s*#9d75ff\\b","severity":"HARD"},{"description":"Never clickable divs; use real buttons","id":"P-clickable-div","law":["NC-12.5"],"regex":"<div[^>]*\\bonclick","severity":"HARD"},{"description":"Links to the old MAXIS app","id":"P-maxis-link","law":["NC-12.7"],"regex":"app\\.nayanet\\.technology","severity":"HARD"},{"description":"Body font-size under 18px (presentation variant exempt)","id":"P-body-under-18","kind":"css-rule","law":["NC-3.1","NC-12.1"],"severity":"HARD"},{"description":"No explicit body font-size declared (law: Body 18px. Always.)","id":"P-body-missing-18","kind":"css-rule","law":["NC-3.1"],"severity":"HARD"},{"description":"Non-white body text color","id":"P-gray-body","kind":"css-rule","law":["A-LAW-07"],"severity":"HARD"},{"description":"Light backgrounds (relative luminance >= 0.55)","id":"P-light-bg","kind":"css-rule","law":["NC-1.3"],"severity":"HARD"},{"description":"Chromatic hex outside the token set","id":"P-non-token-chromatic","kind":"css-rule","law":["DC-030","NC-2.7"],"severity":"HARD"},{"description":"Amber (hue 30-52) or rose/pink (hue 330-360/0-12) chromatic colors, excluding token gold/yellow","id":"P-amber-rose","kind":"css-rule","law":["NC-12.3","NC-2.9"],"severity":"HARD"},{"description":"Colored text on buttons. Ever.","id":"P-button-text-color","kind":"css-rule","law":["A-LAW-06"],"severity":"HARD"},{"description":"Solid non-black fill on primary buttons","id":"P-button-solid-fill","kind":"css-rule","law":["NC-5.1"],"severity":"MEDIUM"},{"description":"max-width caps on chassis/room selectors","id":"P-maxwidth-chassis","kind":"css-rule","law":["NC-6.14","NC-12.6"],"severity":"MEDIUM"},{"description":"Animations present without prefers-reduced-motion handling","id":"P-no-reduced-motion","kind":"css-rule","law":["NC-7.7"],"severity":"MEDIUM"},{"description":"Room accent not matching the assigned token (D2/D3/D4/D5/D6)","id":"P-wrong-room-accent","kind":"css-rule","law":["NC-2.8","DC-040"],"severity":"HARD"}],"required_patterns":[{"description":"Explicit body font-size: 18px (or presentation-variant markers)","id":"R-body-18","kind":"css-rule","law":["NC-3.1"]},{"description":"Exact faceted-diamond clip-path","id":"R-jewel-clip","law":["NC-4.2"],"value":"polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)"},{"description":"The easing","id":"R-ease","law":["NC-7.1"],"value":"cubic-bezier(.16,.84,.22,1)"},{"description":"Pill radius on primary buttons","id":"R-btn-pill","law":["NC-5.2"],"value":"999px"},{"description":"Light comes from within","id":"R-depth-formula","law":["NC-6.9"],"value":"outer theme glow + inset 0 1px #fff6 + deep drop shadow"},{"description":"Each room declares its assigned accent hex","id":"R-room-accent","kind":"css-rule","law":["NC-2.8","DC-040"]},{"description":"Viewport MUST NOT block pinch zoom","id":"R-zoom-allowed","law":["NC-10.3"]},{"description":"Shared bottom nav on every room (warning until rolled out)","id":"R-eco-bottombar","law":["NC-9.2"]}],"rooms":{"connections":{"accent":"orange","hex":"#ff9a5a"},"ledger":{"accent":"gold","hex":"#e8b64c"},"library":{"accent":"blue","hex":"#55b9ee"},"lists":{"accent":"purple","hex":"#9d75ff"},"mail":{"accent":"rich-orange","hex":"#ff7a3d"},"reports":{"accent":"indigo","hex":"#6675ff"},"smart-doors":{"accent":"teal","hex":"#40d3bb"},"smart-grow":{"accent":"emerald","hex":"#55e39a","note":"CONTRACTOR DECISION pending Shawn (Code TBD)"},"spaces":{"accent":"lime","hex":"#b8ee57"},"today":{"accent":"magenta","hex":"#d86cff"}},"spectrum_flow":["purple","blue","emerald","yellow","gold","orange","red","magenta"],"spectrum_flow_note":"Cycles back to purple. 'green' pinned to emerald #55e39a, 'yellow' pinned to #f1d75a (contractor decision, pending Shawn).","status":"CANDIDATE","status_note":"Pending Shawn's ratification. Contractor decisions and conflict resolutions marked accordingly; they bind as recorded until he rules.","team_colors":{"note":"Shawn's nine team colors for reports referenced in precedence rules but absent from all Phase-1 inputs; not invented.","status":"PENDING_INPUT"},"tokens":{"buttons":{"--btn-fill":"#050505","--btn-height-max":"55px","--btn-height-min":"52px","--btn-hover-lift":"translateY(-1px)","--btn-radius":"999px","--btn-rest-border":"1px solid color-mix(in srgb, #9d75ff 65%, #000)","--btn-rest-glow":"0 0 22px color-mix(in srgb, #9d75ff 35%, transparent)","--btn-rest-inner":"inset 0 1px #fff2","--btn-text":"#ffffff","--btn-touch-min":"44px"},"edge_light":{"color":"white","min_width_px":1.5,"rule":"visible white edge light on every interactive element at rest; ignites own spectrum color on hover (purple for chrome)"},"field":{"--bg":"#0B0D12","--bg-card":"#171B25","--bg-entrance-variant":"#010103","--bg-raise":"#12151D","--btn-black":"#050505","--edge":"#252B39","--ink":"#F5F7FB","--muted":"#AAB2BF"},"jewel":{"--jewel-clip":"polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)","--jewel-glow":"0 0 2px rgba(255,255,255,.85), 0 0 5px <jewel>, 0 0 10px <jewel>, 0 0 16px <jewel>","--jewel-glow-note":"CONTRACTOR RECONSTRUCTION of garbled source tail '16px 42'; <jewel> = the jewel's own theme color. Pending Shawn."},"motion":{"--ambient-band-max":"78s","--ambient-band-min":"4s","--ambient-opacity-max":0.25,"--dur-fast":".18s","--dur-med":".28s","--dur-slow":".5s","--ease":"cubic-bezier(.16,.84,.22,1)"},"radii":{"--radius-lg":"17px","--radius-md":"13px","--radius-pill":"999px","--radius-sm":"11px","--radius-xl":"22px"},"spectrum":{"--blue":"#55b9ee","--emerald":"#55e39a","--gold":"#e8b64c","--indigo":"#6675ff","--lime":"#b8ee57","--magenta":"#d86cff","--orange":"#ff9a5a","--purple":"#9d75ff","--red":"#ff5a6e","--rich-orange":"#ff7a3d","--teal":"#40d3bb","--yellow":"#f1d75a"},"surfaces":{"--depth-deep":"0 20px 48px #000d","--depth-drop":"0 18px 42px #000b","--depth-hi":"inset 0 1px #fff6","elevation_levels":["L0 field","L1 boards","L2 boards-within-boards","L3 controls","L4 overlays"]}},"type_scale":{"body_color":"white 99%","body_px":18,"brand_weight":"700-950, letterspaced, uppercase for kickers/mottos","font_editorial":"Cormorant Garamond (editorial surfaces only: reports, voice)","font_ui":"Inter, system stack (SF Pro counts as system stack)","headline_px":18,"hierarchy_by":"size, never color","icon_readability_floor_px":16,"kicker_big_headline_px":24,"note":"Kicker 24 > headline 18 is the sources' explicit mapping (learnings); kicker = monumental big-headline voice.","presentation_variant":{"body_px":14,"headline_px":24,"sub_px":18},"sub_headline_detail_px":14}}
+{
+  "conflicts_for_ratification": [
+    {
+      "briefing_effective": "1.5px+ white edge light on every interactive element at rest (A-LAW-05/06)",
+      "code_candidate": "1px solid purple-65 (NC-5.3)",
+      "contractor_recommendation": "Briefing governs: white 1.5px+ at rest; chrome ignites purple on hover, themed ignites own color.",
+      "id": "X-1",
+      "topic": "Button rest edge"
+    },
+    {
+      "briefing_effective": "4-7s ease-in-out loops (A-LAW-10)",
+      "code_candidate": "8s breathing / 78s orbital drift (NC-7.2)",
+      "contractor_recommendation": "Union band 4s-78s for ambient infinite loops until Shawn rules.",
+      "id": "X-2",
+      "topic": "Ambient loop timing"
+    },
+    {
+      "id": "X-3",
+      "note": "Where any page disagrees with the candidate Code, both are recorded (drift register); briefing + shipped ground truths govern until ratification.",
+      "topic": "Shipped pages vs Code V1"
+    },
+    {
+      "id": "X-4",
+      "topic": "Team-color exact hexes",
+      "provisional": "Builder's best-effort hexes in tokens.team_colors_provisional",
+      "needs": "Shawn to confirm or correct the nine exact values",
+      "contractor_recommendation": "Keep provisional until he speaks them."
+    },
+    {
+      "id": "X-5",
+      "topic": "Smart Connect vs Smart Doors",
+      "convergence_hold": "Convergence doc self-flags the rename as HOLD",
+      "contract_keeps": "smart-doors",
+      "contractor_recommendation": "nayanet.live rules \u2014 ground truth for room names. Reconcile when live findings land."
+    }
+  ],
+  "contract": "NAYA-DESIGN-CONTRACT-V1",
+  "contractor_decisions": [
+    {
+      "decision": "Body 18 / kicker-big-headline 24 / headline 18 / sub-detail 14; presentation variant 24/18/14",
+      "id": "CD-1",
+      "status": "pending Shawn",
+      "topic": "Type-scale mapping"
+    },
+    {
+      "decision": "Ambient overlay opacity <= 0.25",
+      "id": "CD-2",
+      "status": "pending Shawn",
+      "topic": "Low opacity numeric"
+    },
+    {
+      "decision": "The black orb with orbiting light",
+      "id": "CD-3",
+      "status": "pending Shawn",
+      "topic": "Living mark"
+    },
+    {
+      "decision": "green=#55e39a (emerald), yellow=#f1d75a",
+      "id": "CD-4",
+      "status": "pending Shawn",
+      "topic": "green/yellow hexes"
+    },
+    {
+      "decision": "indigo=#6675ff, orange=#ff9a5a, rich-orange=#ff7a3d",
+      "id": "CD-5",
+      "status": "pending Shawn",
+      "topic": "indigo/orange/rich-orange hexes"
+    },
+    {
+      "decision": "emerald #55e39a",
+      "id": "CD-6",
+      "status": "pending Shawn",
+      "topic": "Smart Grow tenth color"
+    },
+    {
+      "decision": "color-mix(in srgb, #9d75ff 65%, #000) / color-mix(in srgb, #9d75ff 35%, transparent)",
+      "id": "CD-7",
+      "status": "pending Shawn",
+      "topic": "purple-65/purple-35"
+    },
+    {
+      "decision": "L1 0 18px 42px rgba(0,0,0,.73); L2 0 20px 48px rgba(0,0,0,.87)",
+      "id": "CD-8",
+      "status": "pending Shawn",
+      "topic": "Deep drop shadow numerics"
+    },
+    {
+      "decision": "Presenter's choice; machine rule = circular subsequence of flow",
+      "id": "CD-9",
+      "status": "pending Shawn",
+      "topic": "Nav subset start point"
+    },
+    {
+      "decision": "Cycle rule governs; >=7 items may span full spectrum; never all solid fills",
+      "id": "CD-10",
+      "status": "pending Shawn",
+      "topic": "Never-all-at-once vs cycle"
+    },
+    {
+      "decision": "Reconstructed: 0 0 2px rgba(255,255,255,.85), 0 0 5px <jewel>, 0 0 10px <jewel>, 0 0 16px <jewel>",
+      "id": "CD-11",
+      "status": "pending Shawn",
+      "topic": "Jewel glow garbled tail"
+    },
+    {
+      "decision": "#0B0D12 room default; #010103 entrance variant",
+      "id": "CD-12",
+      "status": "pending Shawn",
+      "topic": "--bg double value"
+    },
+    {
+      "decision": "SF Pro counts as system stack",
+      "id": "CD-13",
+      "status": "pending Shawn",
+      "topic": "SF Pro vs Inter"
+    },
+    {
+      "decision": "PENDING INPUT - not invented",
+      "id": "CD-14",
+      "status": "awaiting Shawn",
+      "topic": "Shawn's nine team colors"
+    },
+    {
+      "id": "CD-15",
+      "topic": "Type-scale override",
+      "decision": "Shawn's 24/18/14 (headlines 24) overrides source-read kicker mapping. headline_px=24.",
+      "status": "synthesis ruling \u2014 Shawn already spoke it"
+    },
+    {
+      "id": "CD-16",
+      "topic": "Team-color hexes",
+      "decision": "Team\u2192color-name mapping is law; exact hexes PROVISIONAL pending Shawn's confirmation.",
+      "status": "pending Shawn"
+    },
+    {
+      "id": "CD-17",
+      "topic": "Spectrum role separation",
+      "decision": "Nine team colors / twelve chromatic tokens / eight-flow alternation are separate jobs; never conflate.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-18",
+      "topic": "At-rest chrome vs alternation",
+      "decision": "At-rest chrome may share white/silver rest language; active/accented neighbors must alternate colors.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-19",
+      "topic": "Background tokens",
+      "decision": "Page root #0B0D12; #010103 entrance variant only; submission near-blacks (#020202 etc.) are drift.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-20",
+      "topic": "16px floor",
+      "decision": "The 16px is the icon readability floor, not a body-text allowance. No drift. P-body-under-18 stands.",
+      "status": "synthesis ruling"
+    },
+    {
+      "id": "CD-21",
+      "topic": "Button rim floor",
+      "decision": "\u22651.5px white rim at rest (briefing A-LAW-05/06 governs over Code NC-5.3's 1px purple); resolves X-1.",
+      "status": "synthesis ruling \u2014 briefing outranks candidate Code"
+    }
+  ],
+  "drift_register": [
+    {
+      "check": "P-user-scalable, P-maximum-scale",
+      "fix": "Remove both; allow pinch zoom",
+      "id": "D1",
+      "page": "index.html",
+      "severity": "HARD",
+      "violation": "user-scalable=no + maximum-scale=1"
+    },
+    {
+      "check": "P-wrong-room-accent",
+      "fix": "Recolor to rich-orange #ff7a3d",
+      "id": "D2",
+      "page": "mail.html",
+      "severity": "HARD",
+      "violation": "room accent #3ca8ff (blue)"
+    },
+    {
+      "check": "P-wrong-room-accent",
+      "fix": "Recolor to lime #b8ee57",
+      "id": "D3",
+      "page": "spaces.html",
+      "severity": "HARD",
+      "violation": "room accent #7c3aed (purple)"
+    },
+    {
+      "check": "P-wrong-room-accent",
+      "fix": "Recolor to orange #ff9a5a",
+      "id": "D4",
+      "page": "connections.html",
+      "severity": "HARD",
+      "violation": "room accent #9d75ff (signature purple as room color)"
+    },
+    {
+      "check": "P-non-token-chromatic",
+      "fix": "Correct to indigo #6675ff",
+      "id": "D5",
+      "page": "reports.html",
+      "severity": "MEDIUM",
+      "violation": "room accent #8a5cff (violet)"
+    },
+    {
+      "check": "P-non-token-chromatic, P-amber-rose",
+      "fix": "Correct to gold #e8b64c",
+      "id": "D6",
+      "page": "ledger.html",
+      "severity": "MEDIUM",
+      "violation": "accent gold #f2c94c"
+    },
+    {
+      "check": "naming (manual)",
+      "fix": "Rename to --cn-teal",
+      "id": "D7",
+      "page": "connect.html",
+      "severity": "LOW",
+      "violation": "--cn-emerald names the teal value #40d3bb"
+    },
+    {
+      "check": "warning + P-body-under-18",
+      "fix": "Snap clip-path to exact; body to 18px",
+      "id": "D8",
+      "page": "index-2.html",
+      "severity": "LOW+MEDIUM",
+      "violation": "jewel clip-path near-variant; --fs-body:16px"
+    },
+    {
+      "check": "P-body-under-18, P-body-missing-18",
+      "fix": "Explicit 18px body everywhere (presentation variant exempt)",
+      "id": "D9",
+      "page": "all",
+      "severity": "HARD",
+      "violation": "body 18px law violated systemically"
+    },
+    {
+      "check": "warning R-eco-bottombar",
+      "fix": "Roll shared chrome to all rooms",
+      "id": "D10",
+      "page": "connect, connections, index-2, index, start",
+      "severity": "MEDIUM",
+      "violation": "eco-bottombar missing"
+    },
+    {
+      "check": "P-button-text-color, P-button-solid-fill",
+      "fix": "Rebuild primaries to DC-072/073",
+      "id": "D11",
+      "page": "spaces, mail",
+      "severity": "MEDIUM",
+      "violation": "button law not implemented"
+    },
+    {
+      "check": "warning",
+      "fix": "Adopt index-2 token map",
+      "id": "D12",
+      "page": "7 of 9",
+      "severity": "MEDIUM",
+      "violation": "no canonical :root token system"
+    },
+    {
+      "check": "recorded",
+      "fix": "None \u2014 contractor decision: SF counts as system stack",
+      "id": "D13",
+      "page": "mail, spaces, connect, connections, ledger, reports",
+      "severity": "LOW",
+      "violation": "SF Pro stack vs Inter/system"
+    }
+  ],
+  "law_counts": {
+    "briefing_laws": 15,
+    "briefing_preship_checks": 10,
+    "design_code_laws": 105,
+    "drift_repair_laws": 13,
+    "tokens_pinned": 47,
+    "total_enforceable_statements": 155,
+    "synthesis_rulings": 21,
+    "synthesis_harvests": 14
+  },
+  "north_star": "Black ground. White light. Purple soul.",
+  "prohibited_patterns": [
+    {
+      "description": "Never block pinch zoom",
+      "id": "P-user-scalable",
+      "law": [
+        "NC-12.4",
+        "NC-10.3"
+      ],
+      "regex": "user-scalable\\s*=\\s*['\"]?no",
+      "severity": "HARD"
+    },
+    {
+      "description": "maximum-scale=1 blocks zoom",
+      "id": "P-maximum-scale",
+      "law": [
+        "NC-12.4"
+      ],
+      "regex": "maximum-scale\\s*=\\s*['\"]?(1|1\\.0)['\"]?",
+      "severity": "HARD"
+    },
+    {
+      "description": "Solid purple fills: purple is glow, not paint",
+      "id": "P-purple-fill",
+      "law": [
+        "NC-12.2"
+      ],
+      "regex": "background(-color)?\\s*:\\s*#9d75ff\\b",
+      "severity": "HARD"
+    },
+    {
+      "description": "Never clickable divs; use real buttons",
+      "id": "P-clickable-div",
+      "law": [
+        "NC-12.5"
+      ],
+      "regex": "<div[^>]*\\bonclick",
+      "severity": "HARD"
+    },
+    {
+      "description": "Links to the old MAXIS app",
+      "id": "P-maxis-link",
+      "law": [
+        "NC-12.7"
+      ],
+      "regex": "app\\.nayanet\\.technology",
+      "severity": "HARD"
+    },
+    {
+      "description": "Body font-size under 18px (presentation variant exempt)",
+      "id": "P-body-under-18",
+      "kind": "css-rule",
+      "law": [
+        "NC-3.1",
+        "NC-12.1"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "No explicit body font-size declared (law: Body 18px. Always.)",
+      "id": "P-body-missing-18",
+      "kind": "css-rule",
+      "law": [
+        "NC-3.1"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Non-white body text color",
+      "id": "P-gray-body",
+      "kind": "css-rule",
+      "law": [
+        "A-LAW-07"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Light backgrounds (relative luminance >= 0.55)",
+      "id": "P-light-bg",
+      "kind": "css-rule",
+      "law": [
+        "NC-1.3"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Chromatic hex outside the token set",
+      "id": "P-non-token-chromatic",
+      "kind": "css-rule",
+      "law": [
+        "DC-030",
+        "NC-2.7"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Amber (hue 30-52) or rose/pink (hue 330-360/0-12) chromatic colors, excluding token gold/yellow",
+      "id": "P-amber-rose",
+      "kind": "css-rule",
+      "law": [
+        "NC-12.3",
+        "NC-2.9"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Colored text on buttons. Ever.",
+      "id": "P-button-text-color",
+      "kind": "css-rule",
+      "law": [
+        "A-LAW-06"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "description": "Solid non-black fill on primary buttons",
+      "id": "P-button-solid-fill",
+      "kind": "css-rule",
+      "law": [
+        "NC-5.1"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "description": "max-width caps on chassis/room selectors",
+      "id": "P-maxwidth-chassis",
+      "kind": "css-rule",
+      "law": [
+        "NC-6.14",
+        "NC-12.6"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "description": "Animations present without prefers-reduced-motion handling",
+      "id": "P-no-reduced-motion",
+      "kind": "css-rule",
+      "law": [
+        "NC-7.7"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "description": "Room accent not matching the assigned token (D2/D3/D4/D5/D6)",
+      "id": "P-wrong-room-accent",
+      "kind": "css-rule",
+      "law": [
+        "NC-2.8",
+        "DC-040"
+      ],
+      "severity": "HARD"
+    },
+    {
+      "id": "P-self-declared-score",
+      "severity": "HARD",
+      "description": "Scores \u22659.0 claimed without independent verification. Self-declared scores are rejected; only independently verified scores count.",
+      "law": [
+        "SYN-R-10"
+      ],
+      "regex": null,
+      "note": "Process law \u2014 enforced by reviewers, not regex."
+    },
+    {
+      "id": "P-gray-copy",
+      "severity": "HARD",
+      "description": "Gray body/copy text anywhere. Body text is white (#F5F7FB), always. Submissions shipping gray copy are wrong, not the law.",
+      "law": [
+        "SYN-R-2"
+      ],
+      "regex": "#[aA0-9]{6}.*color.*(?:#a09a8a|#aaa4b1|#c8c4d0|#aab2bf)",
+      "note": "BODYCOLOR check covers body; this names the repeat offenders."
+    }
+  ],
+  "required_patterns": [
+    {
+      "description": "Explicit body font-size: 18px (or presentation-variant markers)",
+      "id": "R-body-18",
+      "kind": "css-rule",
+      "law": [
+        "NC-3.1"
+      ]
+    },
+    {
+      "description": "Exact faceted-diamond clip-path",
+      "id": "R-jewel-clip",
+      "law": [
+        "NC-4.2"
+      ],
+      "value": "polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)"
+    },
+    {
+      "description": "The easing",
+      "id": "R-ease",
+      "law": [
+        "NC-7.1"
+      ],
+      "value": "cubic-bezier(.16,.84,.22,1)"
+    },
+    {
+      "description": "Pill radius on primary buttons",
+      "id": "R-btn-pill",
+      "law": [
+        "NC-5.2"
+      ],
+      "value": "999px"
+    },
+    {
+      "description": "Light comes from within",
+      "id": "R-depth-formula",
+      "law": [
+        "NC-6.9"
+      ],
+      "value": "outer theme glow + inset 0 1px #fff6 + deep drop shadow"
+    },
+    {
+      "description": "Each room declares its assigned accent hex",
+      "id": "R-room-accent",
+      "kind": "css-rule",
+      "law": [
+        "NC-2.8",
+        "DC-040"
+      ]
+    },
+    {
+      "description": "Viewport MUST NOT block pinch zoom",
+      "id": "R-zoom-allowed",
+      "law": [
+        "NC-10.3"
+      ]
+    },
+    {
+      "description": "Shared bottom nav on every room (warning until rolled out)",
+      "id": "R-eco-bottombar",
+      "law": [
+        "NC-9.2"
+      ]
+    },
+    {
+      "id": "R-truth-states",
+      "kind": "design-rule",
+      "description": "Truth-state pills (VERIFIED / DEMONSTRATION / NOT LIVE) on every claim-bearing surface. 'Animated \u2260 alive. Stored \u2260 learned. Claimed \u2260 proven.'",
+      "law": [
+        "SYN-H-1"
+      ],
+      "source": "NayaNET_ELITE_DESIGN_STANDARD_LIVE.html"
+    },
+    {
+      "id": "R-button-three-states",
+      "kind": "css-rule",
+      "description": "Buttons expose three observable states: IDLE / HOVER / FOCUS; focus+pressed mandatory. 44px touch floor, principal CTA \u226552px. Disabled state cannot pretend to work.",
+      "law": [
+        "SYN-H-3"
+      ],
+      "source": "Elite + Convergence"
+    },
+    {
+      "id": "R-feed-restraint",
+      "kind": "design-rule",
+      "description": "Feed surfaces: orb \u00b7 title \u00b7 nutshell \u00b7 why-now. No buttons, no modes, no chrome shouting over the intelligence. One color, one board \u2014 a board is a destination you ENTER.",
+      "law": [
+        "SYN-H-11"
+      ],
+      "source": "today.html"
+    },
+    {
+      "id": "R-jewel-bullets",
+      "kind": "css-rule",
+      "description": "Bullets are 26px faceted rounded-square spectrum jewels with color-mix glow, not dots.",
+      "law": [
+        "SYN-H-10"
+      ],
+      "source": "report.html"
+    },
+    {
+      "id": "R-human-first-language",
+      "kind": "design-rule",
+      "description": "Write for a human child first. Technicals ride as evidence links, never as prose. PR numbers never appear in body text.",
+      "law": [
+        "SYN-LANG"
+      ],
+      "source": "Shawn 2026-10-08"
+    },
+    {
+      "id": "R-lived-render-scoring",
+      "kind": "process-rule",
+      "description": "Design ratings are scored against the rendered output, never the source. 'Score the lived render, not CSS.'",
+      "law": [
+        "SYN-H-7"
+      ],
+      "source": "Convergence Law 01"
+    }
+  ],
+  "rooms": {
+    "connections": {
+      "accent": "orange",
+      "hex": "#ff9a5a"
+    },
+    "ledger": {
+      "accent": "gold",
+      "hex": "#e8b64c"
+    },
+    "library": {
+      "accent": "blue",
+      "hex": "#55b9ee"
+    },
+    "lists": {
+      "accent": "purple",
+      "hex": "#9d75ff"
+    },
+    "mail": {
+      "accent": "rich-orange",
+      "hex": "#ff7a3d"
+    },
+    "reports": {
+      "accent": "indigo",
+      "hex": "#6675ff"
+    },
+    "smart-doors": {
+      "accent": "teal",
+      "hex": "#40d3bb"
+    },
+    "smart-grow": {
+      "accent": "emerald",
+      "hex": "#55e39a",
+      "note": "CONTRACTOR DECISION pending Shawn (Code TBD)"
+    },
+    "spaces": {
+      "accent": "lime",
+      "hex": "#b8ee57"
+    },
+    "today": {
+      "accent": "magenta",
+      "hex": "#d86cff"
+    }
+  },
+  "spectrum_flow": [
+    "purple",
+    "blue",
+    "emerald",
+    "yellow",
+    "gold",
+    "orange",
+    "red",
+    "magenta"
+  ],
+  "spectrum_flow_note": "SYNTHESIS 2026-10-08: three separate jobs \u2014 (1) nine team colors for team-coded elements; (2) twelve chromatic tokens as the working palette; (3) the eight-flow below as the alternation sequence for breaking visual flow. Never conflate. Cycles back to purple.",
+  "status": "CANDIDATE",
+  "status_note": "CANDIDATE. Synthesis 2026-10-08 folded in six new sources (Showcase, Elite, report/lists/today, Convergence). Pending: Shawn's ratification, team-color hex confirmation (X-4), nayanet.live reconciliation (X-5 + room accents).",
+  "team_colors": {
+    "note": "Shawn's nine team colors for reports referenced in precedence rules but absent from all Phase-1 inputs; not invented.",
+    "status": "PENDING_INPUT"
+  },
+  "tokens": {
+    "buttons": {
+      "--btn-fill": "#050505",
+      "--btn-height-max": "55px",
+      "--btn-height-min": "52px",
+      "--btn-hover-lift": "translateY(-1px)",
+      "--btn-radius": "999px",
+      "--btn-rest-border": "1px solid color-mix(in srgb, #9d75ff 65%, #000)",
+      "--btn-rest-glow": "0 0 22px color-mix(in srgb, #9d75ff 35%, transparent)",
+      "--btn-rest-inner": "inset 0 1px #fff2",
+      "--btn-text": "#ffffff",
+      "--btn-touch-min": "44px"
+    },
+    "edge_light": {
+      "color": "white",
+      "min_width_px": 1.5,
+      "rule": "visible white edge light on every interactive element at rest; ignites own spectrum color on hover (purple for chrome)"
+    },
+    "field": {
+      "--bg": "#0B0D12",
+      "--bg-card": "#171B25",
+      "--bg-entrance-variant": "#010103",
+      "--bg-raise": "#12151D",
+      "--btn-black": "#050505",
+      "--edge": "#252B39",
+      "--ink": "#F5F7FB",
+      "--muted": "#AAB2BF"
+    },
+    "jewel": {
+      "--jewel-clip": "polygon(50% 0%, 86% 28%, 74% 82%, 50% 100%, 26% 82%, 14% 28%)",
+      "--jewel-glow": "0 0 2px rgba(255,255,255,.85), 0 0 5px <jewel>, 0 0 10px <jewel>, 0 0 16px <jewel>",
+      "--jewel-glow-note": "CONTRACTOR RECONSTRUCTION of garbled source tail '16px 42'; <jewel> = the jewel's own theme color. Pending Shawn."
+    },
+    "motion": {
+      "--ambient-band-max": "78s",
+      "--ambient-band-min": "4s",
+      "--ambient-opacity-max": 0.25,
+      "--dur-fast": ".18s",
+      "--dur-med": ".28s",
+      "--dur-slow": ".5s",
+      "--ease": "cubic-bezier(.16,.84,.22,1)"
+    },
+    "radii": {
+      "--radius-lg": "17px",
+      "--radius-md": "13px",
+      "--radius-pill": "999px",
+      "--radius-sm": "11px",
+      "--radius-xl": "22px"
+    },
+    "spectrum": {
+      "--blue": "#55b9ee",
+      "--emerald": "#55e39a",
+      "--gold": "#e8b64c",
+      "--indigo": "#6675ff",
+      "--lime": "#b8ee57",
+      "--magenta": "#d86cff",
+      "--orange": "#ff9a5a",
+      "--purple": "#9d75ff",
+      "--red": "#ff5a6e",
+      "--rich-orange": "#ff7a3d",
+      "--teal": "#40d3bb",
+      "--yellow": "#f1d75a"
+    },
+    "surfaces": {
+      "--depth-deep": "0 20px 48px #000d",
+      "--depth-drop": "0 18px 42px #000b",
+      "--depth-hi": "inset 0 1px #fff6",
+      "elevation_levels": [
+        "L0 field",
+        "L1 boards",
+        "L2 boards-within-boards",
+        "L3 controls",
+        "L4 overlays"
+      ]
+    },
+    "team_colors_provisional": {
+      "status": "PROVISIONAL \u2014 team-to-color mapping is Shawn's ground truth; exact hexes are the builder's best-effort rendering, NOT verified as his spoken values. Pending his confirmation.",
+      "mapping": {
+        "Learning": {
+          "color": "magenta",
+          "hex_provisional": "#FF00FF"
+        },
+        "Brain/Memory": {
+          "color": "purple",
+          "hex_provisional": "#800080"
+        },
+        "Law/Governance": {
+          "color": "indigo",
+          "hex_provisional": "#4B0082"
+        },
+        "Architecture/Engineering/Ops": {
+          "color": "green",
+          "hex_provisional": "#228B22"
+        },
+        "Evolution/Succession": {
+          "color": "yellow",
+          "hex_provisional": "#FFFF00"
+        },
+        "Interfaces/Hub": {
+          "color": "gold",
+          "hex_provisional": "#FFD700"
+        },
+        "Knowledge/Intelligence": {
+          "color": "orange",
+          "hex_provisional": "#FFA500"
+        },
+        "Proving/Verifying": {
+          "color": "red",
+          "hex_provisional": "#FF0000"
+        },
+        "Innovation": {
+          "color": "silver",
+          "hex_provisional": "#C0C0C0"
+        }
+      }
+    }
+  },
+  "type_scale": {
+    "body_color": "white 99%",
+    "body_px": 18,
+    "brand_weight": "700-950, letterspaced, uppercase for kickers/mottos",
+    "font_editorial": "Cormorant Garamond (editorial surfaces only: reports, voice)",
+    "font_ui": "Inter, system stack (SF Pro counts as system stack)",
+    "headline_px": 24,
+    "hierarchy_by": "size, never color",
+    "icon_readability_floor_px": 16,
+    "kicker_big_headline_px": 24,
+    "note": "SYNTHESIS 2026-10-08: Shawn's spoken 24/18/14 governs. All submissions violating it (82px/100px heroes, 16-17px bodies) are wrong, not the law.",
+    "presentation_variant": {
+      "body_px": 14,
+      "headline_px": 24,
+      "sub_px": 18
+    },
+    "sub_headline_detail_px": 14,
+    "headline_note": "Shawn's direct spec 2026-10-08 overrides source readings: 24 headlines, 18 body, 14 small. Kicker-big-headline mapping retired."
+  },
+  "language_law": {
+    "status": "SYNTHESIS 2026-10-08 \u2014 nailed words, adopt verbatim",
+    "brand_voice": [
+      "Naya is black, white, and purple \u2014 with a rainbow that knows its place. Black is the night everything floats in. White is the light. Purple is the signature.",
+      "The laws Naya lives by \u2014 checkable, not just beautiful.",
+      "A claim without verification is a lie told to yourself first.",
+      "Proof, not promises. Every report carries its evidence and its receipts."
+    ],
+    "builder_maxims": [
+      "Give every element one color job.",
+      "Light everything: white at rest, color on touch.",
+      "Build buttons with black hearts.",
+      "Size separates, color doesn't.",
+      "Make the header a front door.",
+      "No buttons, no modes, no chrome shouting over the intelligence."
+    ],
+    "page_language": [
+      "Your intelligence, filed.",
+      "Every smart note, grouped by what it teaches.",
+      "When something matters, it appears here \u2014 ordered for you, never manufactured to fill the space.",
+      "No verified highlight was manufactured just to fill the page.",
+      "Everything retained, organized by what it means \u2014 not where it happened to land.",
+      "ONE INTELLIGENCE \u00b7 MANY VIEWS \u00b7 ONE IDENTITY"
+    ],
+    "interaction_labels": [
+      "IN A NUTSHELL",
+      "SAVE TO LIST",
+      "VIEW FULL NOTE",
+      "\u2605 SAVED"
+    ],
+    "human_first_rule": "Write for a human child first. Technicals ride as evidence links, never as prose. PR numbers never appear in body text."
+  },
+  "failure_posture": {
+    "source": "NayaNET-Design-Code-Convergence-2026-10-08.pdf",
+    "rules": [
+      "Hard check fails \u2192 do not ship.",
+      "Conflicting authority \u2192 HOLD.",
+      "Missing evidence \u2192 UNKNOWN.",
+      "No rounding up.",
+      "Beauty never overrides security/accessibility."
+    ]
+  }
+}

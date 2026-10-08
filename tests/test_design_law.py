@@ -275,3 +275,25 @@ def test_cli_room_flag():
     code, out = _run_cli(["--room", "spaces", css])
     assert code == 1, out
     assert "D3" in out
+
+
+# ---- synthesis 2026-10-08: team colors + headline 24 -------------------------------
+def test_team_colors_exempt_from_spectrum():
+    # Shawn's nine team colors (provisional hexes) must not trip SPECTRUM.
+    for hx in ["#FF00FF", "#800080", "#4B0082", "#228B22",
+               "#FFFF00", "#FFD700", "#FFA500", "#FF0000"]:
+        snippet = COMPLIANT_BASE.replace(
+            "</style>",
+            ".team-tag{color:%s;}</style>" % hx)
+        v = check(snippet)
+        assert "SPECTRUM" not in ids(v), "team color %s tripped SPECTRUM: %s" % (hx, v)
+
+
+def test_headline_24_fail():
+    fails_with(
+        COMPLIANT_BASE.replace("</style>", "h1{font-size:82px;}</style>"),
+        "SYN-H24")
+
+
+def test_headline_24_pass():
+    passes(COMPLIANT_BASE.replace("</style>", "h1{font-size:24px;}</style>"))
