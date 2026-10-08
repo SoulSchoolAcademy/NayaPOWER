@@ -214,7 +214,7 @@ def check_sign_out(sign_out: dict) -> FormatResult:
             )
             if not gate.passed:
                 reasons.append(
-                    f"learning gate {gate.decision}: " + "; ".join(gate.reasons)
+                    f"learning gate {gate.verdict}: " + "; ".join(gate.reasons)
                 )
             return FormatResult(
                 passed=not reasons,
@@ -360,6 +360,7 @@ class AdapterResult:
     verdict: str | None = None
     reasons: list = field(default_factory=list)
     delegated_to: str = ""
+    receipts: list = field(default_factory=list)
 
 
 def _try_kernel_attr(module_name: str, attr: str):
@@ -552,6 +553,7 @@ def check_repeat_learning_gate(
             verdict=result.decision,
             reasons=list(result.reasons),
             delegated_to="kernel.protocol.repeat_learning_gate",
+            receipts=list(result.receipts),
         )
     except Exception as exc:
         return AdapterResult(
