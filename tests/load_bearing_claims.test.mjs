@@ -282,19 +282,48 @@ test("CLAIM 2 -- REVIEWED_OK literals cannot be moved above their guards", () =>
   // REVIEWED_OK site pins the ordering. SN-0528's rule: a verdict is
   // auditable; the ordering it depends on must be executable.
 
-  // live-act-proof.yml: the proof dict's independent_verification literal must
-  // come after the assertion gauntlet in the same run step. set -euo pipefail
-  // aborts the step on any failed assert, so the literal is unreachable unless
-  // every independent check passed.
+  // live-act-proof.yml: the proof dict's independent_verification flag must be
+  // DERIVED from a named predicate computed after the assertion gauntlet —
+  // never a bare literal (SN-0528). The predicate must summarize the same
+  // verification outcomes the asserts check, and the proof must name its scope
+  // and carry the act receipt's own (False-by-design) value, so a cold reader
+  // cannot mistake the workflow-level PASS for runtime-level verification
+  // (anti-citogenesis).
   const actProof = read(".github/workflows/live-act-proof.yml");
-  const literalAt = actProof.indexOf('"independent_verification":True');
-  assert.ok(literalAt > 0, "the act proof literal must exist");
-  const stepStart = actProof.lastIndexOf("run: |", literalAt);
-  const stepText = actProof.slice(stepStart, literalAt);
+  const bareLiterals = [...actProof.matchAll(/["']independent_verification["']\s*:\s*True\b/g)];
+  assert.deepEqual(
+    bareLiterals,
+    [],
+    "live-act-proof.yml must not contain a bare independent_verification:True literal"
+  );
+  const derivedAt = actProof.indexOf('"independent_verification":workflow_verified_plan');
+  assert.ok(derivedAt > 0, "the act proof flag must be derived from the workflow_verified_plan predicate");
+  const stepStart = actProof.lastIndexOf("run: |", derivedAt);
+  const stepText = actProof.slice(stepStart, derivedAt);
   const asserts = [...stepText.matchAll(/^\s*assert\s/mg)];
   assert.ok(
     asserts.length >= 10,
-    `the act proof step must keep its assertion gauntlet before the literal (found ${asserts.length})`
+    `the act proof step must keep its assertion gauntlet before the derivation (found ${asserts.length})`
+  );
+  const predStart = actProof.indexOf("workflow_verified_plan=(");
+  assert.ok(
+    predStart > stepStart && predStart < derivedAt,
+    "workflow_verified_plan must be computed inside the proof step before the proof dict"
+  );
+  const predText = actProof.slice(predStart, derivedAt);
+  for (const outcome of ["recomputed==stored", 'ae["observed_behavior"]']) {
+    assert.ok(
+      predText.includes(outcome),
+      `the derivation predicate must summarize the verification outcome (${outcome})`
+    );
+  }
+  assert.ok(
+    actProof.includes('"independent_verification_scope"'),
+    "the proof must name the scope of its independent_verification claim"
+  );
+  assert.ok(
+    actProof.includes('"act_receipt_independent_verification":ae["independent_verification"]'),
+    "the proof must carry the act receipt's own (False-by-design) value"
   );
 
   // tools/live_intelligence_reconcile.py: verify_supersession must raise on any
