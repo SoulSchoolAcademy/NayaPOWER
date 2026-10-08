@@ -1024,20 +1024,23 @@ def _highlight_boxes(st: dict, data: ReportData,
 
 
 def _auth_chip(st: dict, status: str) -> Chip:
-    """Ledger status-chip pattern: AUTH = emerald (verified/alive),
-    claim = quiet white (awaiting stamp) — NEVER gray (Shawn's law)."""
+    """Truth dialect (BF-006): AUTH = emerald (verified — the number survived
+    contact with reality); claim = PURPLE (self-reported, awaiting its stamp —
+    shown honestly, never hidden). State is color; color is state."""
     if status == "authoritative":
         return Chip("AUTH", EMERALD, st)
-    return Chip("claim", INK, st, edge_alpha=0.55, glow_alpha=0.08)
+    return Chip("claim", PURPLE, st, edge_alpha=0.55, glow_alpha=0.08)
 
 
-def _scorecard_table(st: dict, data: ReportData,
-                     cycler: SpectrumCycler) -> Table:
+def _scorecard_table(st: dict, data: ReportData) -> Table:
     """Team × score dashboard — L1 card, 1.5pt white edge, team colors.
 
-    The alternation law covers TABLE ROWS too: when two adjacent rows
-    belong to the same team, the repeated team cell takes a spectrum
-    alternate (the team NAME still carries identity; color carries flow).
+    BF-001/BF-009 (seat synthesis): a color MUST mean the same thing every
+    time. Each team owns ONE fixed identity hue — the color IS the name.
+    No positional alternation: two adjacent Architecture rows are both green
+    because green MEANS Architecture. Separation between areas comes from
+    dividers, not color rotation. (DC-041 amendment: identity first,
+    flow-order second.)
     """
     from report_generator import AREA_TO_TEAM
 
@@ -1049,17 +1052,18 @@ def _scorecard_table(st: dict, data: ReportData,
         Paragraph("<b>Δ</b>", st["cell_head"]),
     ]
     rows = [header]
-    prev_displayed: HexColor | None = None
-    for sp in data.scores:
+    table_style_cmds = []
+    prev_team: str | None = None
+    for i, sp in enumerate(data.scores):
         team_name = AREA_TO_TEAM.get(sp.area, "—")
-        pinned = TEAM_COLORS.get(team_name, INK)
-        # Same team on the previous row → alternate the CELL color.
-        # Identity lives in the name text; the color must keep flowing.
-        team_color = pinned
-        if (prev_displayed is not None
-                and _same_color(pinned, prev_displayed)):
-            team_color = cycler.next(exclude=pinned)
-        prev_displayed = team_color
+        # Identity color — pinned, never rotated (BF-009).
+        team_color = TEAM_COLORS.get(team_name, INK)
+        # Team boundary: stronger divider when the team changes (BF-009
+        # grouping cue — areas under one team read as a family).
+        if prev_team is not None and team_name != prev_team:
+            table_style_cmds.append(
+                ("LINEABOVE", (0, i + 1), (-1, i + 1), 1.0, EDGE))
+        prev_team = team_name
         # Score color keeps perceptual distance from the DISPLAYED team
         # color: a GOLD score beside a gold team header is muddy.
         color = _distant_or_ink(_score_color(sp.score), team_color)
@@ -1099,7 +1103,7 @@ def _scorecard_table(st: dict, data: ReportData,
         ("LINEBELOW", (0, 0), (-1, 0), 1.5, WHITE),
         ("LINEBELOW", (0, 1), (-1, -2), 0.75, EDGE),
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-    ]))
+    ] + table_style_cmds))
     return t
 
 def _team_section_flowables(st: dict, i: int, sec: TeamSection,
@@ -1149,7 +1153,7 @@ def _team_section_flowables(st: dict, i: int, sec: TeamSection,
             st["detail_white"]))
     out.append(Spacer(1, 6))
 
-    out.append(Paragraph("<b>Done this period</b>", st["h2"]))
+    out.append(Paragraph("<b>The work that landed.</b>", st["h2"]))
     done = sec.achievements[:5]
     if done:
         for a in done:
@@ -1174,7 +1178,7 @@ def _team_section_flowables(st: dict, i: int, sec: TeamSection,
                 st, cycler.next(),
                 f"<b>{j}.</b> {_esc(humanize(_short(clean, 200)))}"))
 
-    out.append(Paragraph("<b>Plan to 10</b>", st["h2"]))
+    out.append(Paragraph("<b>The road to 10.</b>", st["h2"]))
     plan = action_plan_text(sec).replace("_", "")
     plan_clean, plan_prs = strip_pr_refs(plan)
     evidence.extend(plan_prs)
@@ -1396,19 +1400,19 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     story.extend(_highlight_boxes(st, data, sections, cycler))
     story.append(Spacer(1, 4))
 
-    # ---- 1 · Scorecard ----
-    story.append(Paragraph("1 · Scorecard", st["h1"]))
+    # ---- 1 · Scorecard (W-001: the headline argues) ----
+    story.append(Paragraph("Scores move on evidence, never optimism.",
+                           st["h1"]))
     story.append(Paragraph(
-        "Scores move on evidence, never optimism. "
-        "<b>AUTH</b> means checked by someone else; "
-        "<b>claim</b> means our own assessment so far.",
+        "<b>AUTH</b> means checked by someone else — it survived contact "
+        "with reality. <b>claim</b> means our own assessment so far.",
         st["detail_white"]))
     story.append(Spacer(1, 6))
-    story.append(_scorecard_table(st, data, cycler))
+    story.append(_scorecard_table(st, data))
     story.append(Spacer(1, 4))
 
-    # ---- 2 · What got done (by team) ----
-    story.append(Paragraph("2 · What got done — by team", st["h1"]))
+    # ---- 2 · What got done (W-001: the headline argues) ----
+    story.append(Paragraph("What the teams got done.", st["h1"]))
     for i, sec in enumerate(sections, 1):
         story.extend(_team_section_flowables(st, i, sec, data, cycler,
                                              evidence))
