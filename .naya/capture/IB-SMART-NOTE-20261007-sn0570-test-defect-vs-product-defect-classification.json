@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0570",
+ "intelligence": {
+  "title": "Classify a Contract-Expanding Merge's RED as Test Defect or Product Defect Before Touching Either — Compare the Harness's Fabricated World to the Shipped Contract",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0570-test-defect-vs-product-defect-classification",
+  "smart_note_id": "SN-0570",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0570/IB-SMART-NOTE-20261007-sn0570-test-defect-vs-product-defect-classification.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0570/IB-SMART-NOTE-20261007-sn0570-test-defect-vs-product-defect-classification.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

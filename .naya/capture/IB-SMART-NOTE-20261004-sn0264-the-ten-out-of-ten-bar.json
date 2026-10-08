@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0264",
+ "intelligence": {
+  "title": "The 10/10 Bar — the Human Director's Definition of Done",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0264-the-ten-out-of-ten-bar",
+  "smart_note_id": "SN-0264",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0264/IB-SMART-NOTE-20261004-sn0264-the-ten-out-of-ten-bar.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0264/IB-SMART-NOTE-20261004-sn0264-the-ten-out-of-ten-bar.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

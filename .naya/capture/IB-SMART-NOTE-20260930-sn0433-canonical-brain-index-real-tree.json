@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0433",
+ "intelligence": {
+  "title": "REAL-TREE.json Is the Canonical Brain Index — NAYAPOWER-BRAIN-INDEX.json Retired",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0433-canonical-brain-index-real-tree",
+  "smart_note_id": "SN-0433",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0433/IB-SMART-NOTE-20260930-sn0433-canonical-brain-index-real-tree.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0433/IB-SMART-NOTE-20260930-sn0433-canonical-brain-index-real-tree.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

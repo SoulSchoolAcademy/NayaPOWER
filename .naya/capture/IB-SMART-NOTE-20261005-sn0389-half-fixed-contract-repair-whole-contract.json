@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0389",
+ "intelligence": {
+  "title": "A Half-Fixed Contract Still Fails — A Repair Must Satisfy the Whole Producer-Consumer Contract, Not Just the Flagged Symptom",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0389-half-fixed-contract-repair-whole-contract",
+  "smart_note_id": "SN-0389",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0389/IB-SMART-NOTE-20261005-sn0389-half-fixed-contract-repair-whole-contract.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0389/IB-SMART-NOTE-20261005-sn0389-half-fixed-contract-repair-whole-contract.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

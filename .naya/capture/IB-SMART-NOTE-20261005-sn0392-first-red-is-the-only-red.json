@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0392",
+ "intelligence": {
+  "title": "The First RED Is the Only RED — Never Patch Downstream of an Unproven Boundary",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0392-first-red-is-the-only-red",
+  "smart_note_id": "SN-0392",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0392/IB-SMART-NOTE-20261005-sn0392-first-red-is-the-only-red.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0392/IB-SMART-NOTE-20261005-sn0392-first-red-is-the-only-red.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

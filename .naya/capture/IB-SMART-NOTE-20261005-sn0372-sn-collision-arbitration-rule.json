@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0372",
+ "intelligence": {
+  "title": "When Two Lanes Claim One Number: The Collision Arbitration Rule",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0372-sn-collision-arbitration-rule",
+  "smart_note_id": "SN-0372",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0372/IB-SMART-NOTE-20261005-sn0372-sn-collision-arbitration-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0372/IB-SMART-NOTE-20261005-sn0372-sn-collision-arbitration-rule.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

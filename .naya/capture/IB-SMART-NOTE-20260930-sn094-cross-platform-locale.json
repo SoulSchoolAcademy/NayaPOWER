@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-094",
+ "intelligence": {
+  "title": "A Fresh Clone Can Still Be the Wrong Evidence — Attribute Red Suites to the OS, Not the Workspace",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn094-cross-platform-locale",
+  "smart_note_id": "SN-094",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-094/IB-SMART-NOTE-20260930-sn094-cross-platform-locale.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/CROSS-PLATFORM-LOCALE/SN-094/IB-SMART-NOTE-20260930-sn094-cross-platform-locale.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

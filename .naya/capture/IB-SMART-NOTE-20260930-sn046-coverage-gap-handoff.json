@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-046",
+ "intelligence": {
+  "title": "Coverage-Gap Handoff — Name the Uncovered Head, Pass the Baton",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn046-coverage-gap-handoff",
+  "smart_note_id": "SN-046",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-046/IB-SMART-NOTE-20260930-sn046-coverage-gap-handoff.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-046/IB-SMART-NOTE-20260930-sn046-coverage-gap-handoff.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

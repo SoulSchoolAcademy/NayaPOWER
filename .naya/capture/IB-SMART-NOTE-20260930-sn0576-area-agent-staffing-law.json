@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0576",
+ "intelligence": {
+  "title": "IB-SMART-NOTE — SN-0576 — Area-Agent Staffing Law: Nine Dedicated Teams, 24/7 to 10/10",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0576-area-agent-staffing-law",
+  "smart_note_id": "SN-0576",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0576/IB-SMART-NOTE-20260930-sn0576-area-agent-staffing-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0576/IB-SMART-NOTE-20260930-sn0576-area-agent-staffing-law.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

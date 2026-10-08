@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0457",
+ "intelligence": {
+  "title": "An Instrument That Can't Resolve Its Top Signal's Identity Is Theater",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0457-top-signal-identity-resolution",
+  "smart_note_id": "SN-0457",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0457/IB-SMART-NOTE-20261006-sn0457-top-signal-identity-resolution.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/OPERATIONS/MEASUREMENT-DISCIPLINE/SN-0457/IB-SMART-NOTE-20261006-sn0457-top-signal-identity-resolution.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-073",
+ "intelligence": {
+  "title": "Invocation ≠ Consumption ≠ Enforcement — Proving the Runtime USES the Canonical Engine",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn073-invocation-consumption-enforcement",
+  "smart_note_id": "SN-073",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-073/IB-SMART-NOTE-20260930-sn073-invocation-consumption-enforcement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-073/IB-SMART-NOTE-20260930-sn073-invocation-consumption-enforcement.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-075",
+ "intelligence": {
+  "title": "Committed Holds Are Constraints — When a Higher Authority Overrides, Log the Override, Never Silently Break the Commitment",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn075-committed-hold-override-logging",
+  "smart_note_id": "SN-075",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COMMITMENT-INTEGRITY/SN-075/IB-SMART-NOTE-20260930-sn075-committed-hold-override-logging.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COMMITMENT-INTEGRITY/SN-075/IB-SMART-NOTE-20260930-sn075-committed-hold-override-logging.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

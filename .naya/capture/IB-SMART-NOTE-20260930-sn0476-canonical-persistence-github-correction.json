@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0476",
+ "intelligence": {
+  "title": "Canonical Persistence Is the NayaPOWER GitHub Source of Truth — Basic Memory Is Not in the Architecture",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0476-canonical-persistence-github-correction",
+  "smart_note_id": "SN-0476",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTELLIGENCE-CONTINUITY/GOVERNED-CONTINUITY/SN-0476/IB-SMART-NOTE-20260930-sn0476-canonical-persistence-github-correction.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/INTELLIGENCE-CONTINUITY/GOVERNED-CONTINUITY/SN-0476/IB-SMART-NOTE-20260930-sn0476-canonical-persistence-github-correction.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

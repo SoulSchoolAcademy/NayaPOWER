@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0108",
+ "intelligence": {
+  "title": "SMART NOTE — One Change, One PR: Deconflict Duplicate Ownership Before Executing",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0108-one-change-one-pr-duplicate-ownership-collision",
+  "smart_note_id": "SN-0108",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-0108/IB-SMART-NOTE-20260930-sn0108-one-change-one-pr-duplicate-ownership-collision.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-0108/IB-SMART-NOTE-20260930-sn0108-one-change-one-pr-duplicate-ownership-collision.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

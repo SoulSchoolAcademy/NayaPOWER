@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0170",
+ "intelligence": {
+  "title": "When the Scope Blocks the Mechanism, the Board Is the Vehicle",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0170-scope-blocked-delivery-protocol",
+  "smart_note_id": "SN-0170",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0170/IB-SMART-NOTE-20260930-sn0170-scope-blocked-delivery-protocol.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-0170/IB-SMART-NOTE-20260930-sn0170-scope-blocked-delivery-protocol.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

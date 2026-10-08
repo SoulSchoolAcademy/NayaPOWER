@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0577",
+ "intelligence": {
+  "title": "IB-SMART-NOTE — SN-0577 — Unlogged Value Breaks the Proof Chain: Feed the Instrument Daily",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0577-unlogged-value-breaks-proof-chain",
+  "smart_note_id": "SN-0577",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/VALUE-LOOPS/SN-0577/IB-SMART-NOTE-20260930-sn0577-unlogged-value-breaks-proof-chain.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/VALUE-LOOPS/SN-0577/IB-SMART-NOTE-20260930-sn0577-unlogged-value-breaks-proof-chain.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

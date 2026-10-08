@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0226",
+ "intelligence": {
+  "title": "Re-verify the Gap at the Pin Before Designing the Repair — H15 Half-2 Closed as STALE",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0226-close-the-gap-as-stale-before-designing-the-repair",
+  "smart_note_id": "SN-0226",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0226/IB-SMART-NOTE-20260930-sn0226-close-the-gap-as-stale-before-designing-the-repair.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0226/IB-SMART-NOTE-20260930-sn0226-close-the-gap-as-stale-before-designing-the-repair.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
