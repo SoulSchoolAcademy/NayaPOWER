@@ -33,22 +33,32 @@ Top-level domains use stable numeric addresses because they represent architectu
 
 ## Object IDs
 
-Object IDs use:
+Durable intelligence objects use the canonical schemes:
+
+```
+SN-<sequence>                          (Smart Notes, e.g. SN-0549)
+IB-<TYPE>-<date>-<sequence>             (Intelligent Blocks, e.g. IB-SMART-NOTE-20261007-XXXX)
+```
+
+**Terminology law:** "Naya Node" for objects is RETIRED. The `NAYA-<TYPE>-<SEQUENCE>`
+scheme below is superseded for durable objects; it remains valid only for
+historical references. New durable objects MUST use SN-… or IB-… schemes.
+
+Superseded scheme (historical only):
 
 ```
 NAYA-<TYPE>-<SEQUENCE>
 ```
 
-Canonical machine form:
+Canonical machine form (historical):
 
 ```regex
 ^NAYA-[A-Z][A-Z0-9_]*-[0-9]{4,}$
 ```
 
-Examples:
+Historical examples (do not use for new objects):
 
 ```
-NAYA-NODE-0001
 NAYA-PRINCIPLE-0001
 NAYA-DECISION-0001
 NAYA-EVIDENCE-0001

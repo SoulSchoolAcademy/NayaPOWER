@@ -98,9 +98,13 @@ Within a domain, names are semantic first. Sequence numbers are used only where 
 
 ## 6. The canonical intelligent object
 
-The fundamental durable unit is the **Intelligent Object**.
+The fundamental durable unit is the **Intelligent Block**.
 
-A Node is a durable intelligent object with additional lifecycle and relationship semantics.
+An Intelligent Block is a durable intelligent object with additional lifecycle and relationship semantics.
+
+**Terminology law:** "Naya Node" for objects is RETIRED. Durable objects are Intelligent
+Blocks (IB-…). "Master Nodes" are the nine kernel processors
+(SELF/LAW/ACT/KNOW/PROVE/CONNECT/VERIFY/LEARN/EVOLVE), never the objects.
 
 Minimum identity:
 
