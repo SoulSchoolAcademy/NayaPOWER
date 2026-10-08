@@ -16,18 +16,25 @@ python3 tools/human_value/compute_hv.py \
   --receipts tools/human_value/ledgers/decision-predictions.json
 ```
 
-## Result
+## Result (final branch state — re-verified after the outcome event)
+
+Second cold run, same procedure, fresh clone @ `6cc7d0e9` (7-event ledger):
 
 | Check | Originating worktree | Cold clone | Match |
 |---|---|---|---|
-| HEAD | `de955893` | `de955893` | ✅ |
-| `ledger_sha256` | `sha256:fd75825efd1f89e4d7133ba1d67a8f309699f74085269a3aa3af68bc3fac9cd5` | (same) | ✅ |
-| `hv_per_day_total` | 1.0 | 1.0 | ✅ |
+| HEAD | `6cc7d0e9` | `6cc7d0e9` | ✅ |
+| `ledger_sha256` | `sha256:864ba35dfa75c743353450943aa3713869b79913d35281b4cd6743ca946aefb1` | (same) | ✅ |
+| `hv_per_day_total` | 1.1429 | 1.1429 | ✅ |
 | `dai_per_day` | 0.2857 | 0.2857 | ✅ |
-| `events_validated` | 6 | 6 | ✅ |
-| `calibration.n` | 0 (no joined observations yet) | 0 | ✅ |
+| `events_validated` | 7 | 7 | ✅ |
+| `calibration.n` / MAE | 1 / 0.5 | 1 / 0.5 | ✅ |
+| test suite | 34 passed | 34 passed | ✅ |
 
-**Verdict:** the real measurement is cold-recomputable. Same bytes → same
-numbers, with no access to the originating workspace. The 2026-10-06 failure
-(dead workspace, documented-only numbers) cannot recur for this ledger: the
-producing bytes are canonical repo bytes on a pushed branch.
+(First cold run @ `de955893`, 6-event ledger: HV/day 1.0, DAI 0.2857,
+`sha256:fd75825e…`, calibration n=0 — all matched identically.)
+
+**Verdict:** the real measurement is cold-recomputable at the branch's final
+state. Same bytes → same numbers, with no access to the originating
+workspace. The 2026-10-06 failure (dead workspace, documented-only numbers)
+cannot recur for this ledger: the producing bytes are canonical repo bytes
+on a pushed branch.
