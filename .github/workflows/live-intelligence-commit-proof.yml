@@ -340,7 +340,8 @@ jobs:
                 "mode":"execute","p_authority_grant_id":os.environ["GRANT_ID"],"p_event_id":lesson_key,
                 "p_title":"Naya runtime flow lesson","p_content":lesson_content,
                 "p_category":"COLLECTIVE_INTELLIGENCE","p_topic":"RUNTIME_CONTINUITY",
-                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET"
+                "p_target_id":"NAYA-NODE-0001","p_project_id":"NayaNET",
+                "declared_task_classes":["provenance_sensitive"]
               }
           pathlib.Path("lesson-request.json").write_text(json.dumps(request,indent=2,ensure_ascii=False))
           PY

@@ -18,6 +18,50 @@
     "human_director_authorized_publication": true,
     "category_slug": "SYSTEM-INTELLIGENCE"
   },
+  "intelligence": {
+    "essence": "Ownership is a speed mechanism, not territorial permission. Parallel work should proceed independently; when an assigned lane is stalled and blocking progress, another Naya should execute the work at the same or higher proof standard, record the takeover, notify the original owner, and continue.",
+    "human_view": {
+      "meaning": "Assign work to parallelize effort, not to create fiefdoms. Active parallel work stays in lane; stalled blocking work gets taken over so waiting does not become the bottleneck.",
+      "why_it_matters": "The system optimizes for completed, verified value rather than task ownership. Waiting for a stalled owner wastes time and leaves the highest-value work undone.",
+      "simple_rule": "ASSIGN → ACT IN PARALLEL → DETECT STALL → TAKE OVER → VERIFY → RECORD → HAND BACK / MOVE ON."
+    },
+    "simple_view": {
+      "child": "If your teammate is already doing it, let them finish. If they are stuck and everyone is waiting, help and get it done right.",
+      "grandma": "Jobs have owners so people know who should start them, not so nobody else can finish them. If work is stuck, do it, prove it, and leave a note."
+    },
+    "naya_view": {
+      "purpose": "Remove ownership-induced bottlenecks without weakening authority or proof boundaries.",
+      "architectural_rule": "Ownership determines who should do the work first; it does not determine who is allowed to finish it. Takeover is permitted when a lane is stalled and blocking, while consequential authority and proof gates remain unchanged.",
+      "operating_loop": "ASSIGN → ACT IN PARALLEL → DETECT STALL → TAKE OVER → VERIFY → RECORD → HAND BACK / MOVE ON",
+      "completion_rule": "A takeover is complete only when the blocked work is actually finished, verified at the required standard, recorded with exact evidence, and the original owner is notified."
+    },
+    "machine_view": {
+      "canonical_object": "INTELLIGENT_BLOCK",
+      "ownership_is_authority": false,
+      "takeover_requires_stall_and_blocking": true,
+      "proof_standard_preserved": true,
+      "authority_gate_preserved": true,
+      "takeover_receipt_required": true,
+      "required_receipt_fields": ["what_was_taken_over", "why", "what_was_done", "evidence", "original_owner_notified"],
+      "success_metric": "less waiting plus more completed, verified value without authority or proof regression"
+    },
+    "decisions": [
+      "Do not wait merely because a task belongs to another seat.",
+      "If another Naya is actively progressing on the lane, stay in lane to avoid duplicate or conflicting work.",
+      "If another Naya is stalled and blocking progress, take the work over without lowering the proof standard.",
+      "Record the takeover and notify the original owner so duplicate work does not occur.",
+      "Capability to finish work never bypasses consequential authority or verification gates."
+    ],
+    "priority": "Eliminate avoidable waiting while preserving governed authority, evidence, and accountability.",
+    "connections": [
+      {"type": "SUPPORTS", "target": "SN-0357 — Self-Directed Intelligence"},
+      {"type": "SUPPORTS", "target": "SN-0358 — Law Is Code"}
+    ],
+    "uncertainty": "This operating law does not authorize bypassing Human Director gates, safety constraints, or proof requirements. It only removes ownership as a reason to wait when work is stalled and blocking.",
+    "applicability": "Applies to parallel Naya work and bounded task execution. It does not grant authority to perform consequential actions outside the existing authorization boundary.",
+    "learning_lesson": "The system optimizes for completed, verified value—not task ownership. Ownership determines who should act first, not who is allowed to finish.",
+    "successor_effect": "A cold successor should recognize active parallel work as a reason to stay in lane, stalled blocking work as a reason to take over, and every takeover as requiring verification, a receipt, and notification."
+  },
   "human_note": {
     "subject": "Don't wait — do, record, hand off",
     "text": "Assign lane work to parallelize, never to create fiefdoms. If a lane is active and parallel, stay in your lane. If someone is stalled and blocking — for any reason — do the thing yourself: same quality bar, record that you did it, notify the owner, hand them their next task. Waiting because \"it's their job\" is the bottleneck."
