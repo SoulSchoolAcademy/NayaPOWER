@@ -30,13 +30,34 @@ python3 tools/human_value/compute_hv.py \
 - `real_outcome_loop.py` — prediction→observation join feeding the kernel's
   `calibration_summary` / `build_recalibration_receipt`
 - `examples/` — synthetic demonstration corpus (labeled SYNTHETIC; not real data)
+- `ledgers/` — REAL data: `real-events.jsonl` (verified public-evidence events),
+  `decision-predictions.json` (pre-registered calculus predictions; the
+  prediction side of the real-outcome loop)
 - `../../tests/test_human_value_instrument.py` — the proof this works
+- `../../tests/test_human_value_real_ledger.py` — the proof the real ledger
+  validates, recomputes deterministically, and joins to its predictions
+
+## Real-data quick start
+
+```bash
+# First real measurement (deterministic — same bytes, same numbers)
+python3 tools/human_value/compute_hv.py \
+  --ledger tools/human_value/ledgers/real-events.jsonl \
+  --receipts tools/human_value/ledgers/decision-predictions.json
+```
 
 ## Recording a real event
 
-Append one JSON object per line to your ledger (ledgers live outside this
-directory — e.g. a goal's `hidden_files/`; only derived measures + pointers,
-never raw private data):
+**Ledger placement law** (learned 2026-10-08 from the dead-workspace failure):
+- **Non-sensitive ledgers** (public evidence only — `feed_comment`, `url`,
+  `smart_note`, `receipt` pointers; no private human data) are canonical **in
+  this repo** under `tools/human_value/ledgers/`. Cold successors recompute
+  from these. Anything that lives only in a workspace can die with it.
+- **Sensitive ledgers** (anything touching private human data) live **outside**
+  this repo (e.g. a goal's `hidden_files/`); the repo holds only derived
+  measures + `content_hash` pins, never raw private bytes.
+
+Append one JSON object per line to the ledger:
 
 ```json
 {"schema_version": "1", "event_id": "HV-20261008-001",
