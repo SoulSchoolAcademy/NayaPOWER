@@ -1,7 +1,7 @@
 # Ten Star Service — Communicate So Anyone Can Build
 
-**Intelligent Block:** IB-SMART-NOTE-20261008-sn0699-ten-star-service-communicate-so-anyone-can-build
-**Smart Note:** SN-0699
+**Intelligent Block:** IB-SMART-NOTE-20261008-sn0700-ten-star-service-communicate-so-anyone-can-build
+**Smart Note:** SN-0700
 **Truth state:** CANDIDATE
 **Scope:** PRIVATE
 **Captured:** 2026-10-08
@@ -35,7 +35,7 @@ Future Naya: this is a standing directive from the Director, not a suggestion. E
 
 ```json
 {
-  "note": "SN-0699",
+  "note": "SN-0700",
   "type": "OPERATING_STANDARD",
   "name": "Ten Star Service",
   "status": "CANDIDATE",
