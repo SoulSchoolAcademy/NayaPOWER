@@ -57,7 +57,7 @@ Behavioral PASS on all 10 B arms and all 10 A arms and all 5 C arms: no summary.
 
 ## What this trial proves / does not prove
 
-PROVES (under the preregistered boundary): the frozen T14 lesson changes cold-successor behavior on a held-out task under a faithful, pre-sealed operationalization of the lesson text — 0.90 attributable delta, p=5.95e-05, mechanism-cited, no leak. Replication 2/3 toward the 10/10 bar (SR-P3 IMPROVED-equivalent, SR-P4 INCONCLUSIVE on its own rule, SR-P5 IMPROVED).
+PROVES (under the preregistered boundary): the frozen T14 lesson changes cold-successor behavior on a held-out task under a faithful, pre-sealed operationalization of the lesson text — 0.90 attributable delta, p=5.95e-05, mechanism-cited, no leak. Replication 2/3 toward the 10/10 bar (SR-P2 IMPROVED, SR-P3/SR-P4 INCONCLUSIVE on their own rules, SR-P5 IMPROVED).
 DOES NOT PROVE: retrieval (STUBBED — corpus gap re-verified open 2026-10-08), lesson truth (Naya 1's job), compounding reliability (C exploratory, n=5), the real ingestion path (gated), or that the successor's idiom change would survive beyond this task family. The C-leg skepticism notes are a real signal that the prescription's *mechanism* is not believed even when the *behavior* transfers.
 
 ## Protocol deviations
