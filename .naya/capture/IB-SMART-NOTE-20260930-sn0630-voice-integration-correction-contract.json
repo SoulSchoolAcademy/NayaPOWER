@@ -6,7 +6,7 @@
   "smart_note_id": "SN-0630",
   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/HUMAN-ARCHITECTURE/VOICE-INTEGRATION/SN-0630/IB-SMART-NOTE-20260930-sn0630-voice-integration-correction-contract.md",
   "ingest": "canonical-reconstruction",
-  "ingest_note": "Reconstructed. Renumbered SN-0522->SN-0630. No runtime provenance invented.",
+  "ingest_note": "Reconstructed. Renumbered SN-0522->SN-0630 due to collisions. No runtime provenance invented.",
   "ingested_at": "2026-10-08",
   "renumbered_from": "SN-0522",
   "renumber_reason": "cross-branch collision; first-claim stands"
