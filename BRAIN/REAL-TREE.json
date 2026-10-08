@@ -1,11 +1,11 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-08",
-  "receipt_basis_commit": "f52ffb966432f8f2429da1ce009c6e5f0ec177ef",
-  "inventory_file_count": 806,
+  "receipt_basis_commit": "027fceb0ac99047e4adcd8381ad6ca65744df6c0",
+  "inventory_file_count": 808,
   "domain_counts": {
     "00-SPEC": 15,
-    "01-GOVERNANCE": 22,
+    "01-GOVERNANCE": 24,
     "02-ARCHITECTURE": 5,
     "03-KERNEL": 30,
     "04-INTELLIGENCE": 25,
@@ -25,13 +25,13 @@
   "files": [
     {
       "path": "BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md",
-      "blob_sha": "5dcb8d07285079a5701b31fe1a18fafb278cfe22",
-      "size": 12637
+      "blob_sha": "88ce71b543d0beb5a67f70459c03a8cc1afa22cd",
+      "size": 12877
     },
     {
       "path": "BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md",
-      "blob_sha": "95938c6ed34200a41157f450ffd44a524e6070af",
-      "size": 2751
+      "blob_sha": "7dd1e97029364b6cde28d20d5cd563201a4e4bed",
+      "size": 3277
     },
     {
       "path": "BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md",
@@ -50,13 +50,13 @@
     },
     {
       "path": "BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md",
-      "blob_sha": "c7b34af4b206f9c54e3db0c3032970a046d4baba",
-      "size": 5681
+      "blob_sha": "d31a734487be18947224ccf966c9484fd44fa791",
+      "size": 5689
     },
     {
       "path": "BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md",
-      "blob_sha": "18e886b7038e69497ed2a1b168ec5ac7593a5387",
-      "size": 2864
+      "blob_sha": "d74f53a516057046699006160b9fc01755b932f0",
+      "size": 2969
     },
     {
       "path": "BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json",
@@ -97,6 +97,11 @@
       "path": "BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json",
       "blob_sha": "bab1255dcaf28075f11a94028f676f3fc2df4402",
       "size": 3904
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md",
+      "blob_sha": "9f4270a236bd8aea96fefdddf83b7f4c17c69f03",
+      "size": 6180
     },
     {
       "path": "BRAIN/01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md",
@@ -197,6 +202,11 @@
       "path": "BRAIN/01-GOVERNANCE/README.md",
       "blob_sha": "065bb6dc15301d4ab133fea4f01390475b7aabe6",
       "size": 1673
+    },
+    {
+      "path": "BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md",
+      "blob_sha": "947a3a14a9bf267e50ff8e108b5375dee95fd7b5",
+      "size": 14458
     },
     {
       "path": "BRAIN/01-GOVERNANCE/elevation-grants/README.md",

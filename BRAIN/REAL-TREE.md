@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-08  
-**Receipt basis commit:** `f52ffb966432f8f2429da1ce009c6e5f0ec177ef`  
-**Inventory file count:** 806  
+**Receipt basis commit:** `027fceb0ac99047e4adcd8381ad6ca65744df6c0`  
+**Inventory file count:** 808  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -11,7 +11,7 @@
 | Domain | Files |
 |---|---|
 | 00-SPEC | 15 |
-| 01-GOVERNANCE | 22 |
+| 01-GOVERNANCE | 24 |
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
@@ -31,13 +31,13 @@
 
 ### 00-SPEC — Specification
 
-- `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `5dcb8d072850` (12637 bytes)
-- `BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md` — `95938c6ed342` (2751 bytes)
+- `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `88ce71b543d0` (12877 bytes)
+- `BRAIN/00-SPEC/0002-TREE-AND-GRAPH-NAMING-LAW-V1.md` — `7dd1e9702936` (3277 bytes)
 - `BRAIN/00-SPEC/0003-REPRESENTATION-LAW-V1.md` — `bd599702c291` (948 bytes)
 - `BRAIN/00-SPEC/0004-KNOWLEDGE-POPULATION-SPEC-V1.md` — `28dae6fc731f` (2743 bytes)
 - `BRAIN/00-SPEC/0005-TREE-V1.md` — `edc4fdb44334` (1622 bytes)
-- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `c7b34af4b206` (5681 bytes)
-- `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `18e886b7038e` (2864 bytes)
+- `BRAIN/00-SPEC/0006-NIA-LANGUAGE-INTENT-CONTRACT-V1.md` — `d31a734487be` (5689 bytes)
+- `BRAIN/00-SPEC/0006-OBJECT-TYPES-V1.md` — `d74f53a51605` (2969 bytes)
 - `BRAIN/00-SPEC/BRAIN-MACHINE-CONTRACT-V1.schema.json` — `75200ca1f5ce` (7778 bytes)
 - `BRAIN/00-SPEC/NIA-LANGUAGE-INTENT-V1.json` — `a40095e2113f` (2068 bytes)
 - `BRAIN/00-SPEC/README.md` — `bf8da2f302ef` (2845 bytes)
@@ -48,6 +48,7 @@
 - `BRAIN/00-SPEC/SCHEMA/SUCCESSOR-PACKAGE-SCHEMA.json` — `bab1255dcaf2` (3904 bytes)
 ### 01-GOVERNANCE — Governance
 
+- `BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md` — `9f4270a236bd` (6180 bytes)
 - `BRAIN/01-GOVERNANCE/0001-GOVERNANCE-CONTRACT-V1.md` — `45b91bd80137` (1061 bytes)
 - `BRAIN/01-GOVERNANCE/0002-PROMOTION-AND-REVOCATION-V1.md` — `5b5c6d52d386` (1978 bytes)
 - `BRAIN/01-GOVERNANCE/0003-FULL-AUTO-MERGE-V1.ai.md` — `11c8c5515633` (11571 bytes)
@@ -68,6 +69,7 @@
 - `BRAIN/01-GOVERNANCE/0014-mantra-v1.machine.json` — `9d9d1fe2937d` (3087 bytes)
 - `BRAIN/01-GOVERNANCE/0015-SECURITY-ACKNOWLEDGMENTS-V1.md` — `0800143c89ba` (4990 bytes)
 - `BRAIN/01-GOVERNANCE/README.md` — `065bb6dc1530` (1673 bytes)
+- `BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md` — `947a3a14a9bf` (14458 bytes)
 - `BRAIN/01-GOVERNANCE/elevation-grants/README.md` — `37afb12365a8` (1910 bytes)
 - `BRAIN/01-GOVERNANCE/naya-dream-v1.machine.json` — `c469937962eb` (22689 bytes)
 ### 02-ARCHITECTURE — Architecture
