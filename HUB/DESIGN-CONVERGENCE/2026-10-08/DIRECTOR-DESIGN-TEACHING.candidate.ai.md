@@ -23,3 +23,11 @@ selected glow (C01), 18px/body role (C02), top-left logo vs centered NAYA NAV (C
 `SOURCE SHA | ROOM | USER JOB | CANONICAL ACTION | DESIGN TOKENS | WHAT STAYS | WHAT CHANGES | STATIC CHECK | BROWSER EVIDENCE | REALITY/ACCESSIBILITY | INDEPENDENT VERIFIER | SCORE | CONFLICTS | EXACT NEXT ACTION`.
 
 **Do not merge/deploy/mark official from this candidate without governed approval.**
+
+## Director's corrective review — 2026-10-08 (new CANDIDATE lessons)
+- **Never repeat immediate jewel or bullet colors.** Check computed final CSS, not just a list of intended hex values. Separate neighboring hues by perceptual contrast and adequate space; five signature jewels are CENTERED, not crowded.
+- **Human-first communication.** Start with what actually happened, what that means to an ordinary person, why it matters, and what comes next. Place internal PR numbers and technical statuses behind an optional evidence link.
+- **Real brand identity.** Use the actual authorized NayaNET logo; a generic N-like icon is not compliance.
+- **Readability.** Default body at 18px, major content headline about 24px or clear display headline, secondary details 14px; white primary text, appropriate line-height and separation, not gray 11px paragraphs.
+- **Professional gate.** After code tests, inspect the actual rendered user experience on desktop/tablet/phone. Challenge clashing accent neighborhoods, text-over-button collisions, crowded boards and redundant copy. Independent designer must review BEFORE any 9+ claim.
+- **Learning falsifier.** A fresh builder must produce varied semantically appropriate jewel hues, human-meaning-first copy and no visual overflow from the canonical law without Shawn reminding them. Source-only PASS is not visual PASS.
