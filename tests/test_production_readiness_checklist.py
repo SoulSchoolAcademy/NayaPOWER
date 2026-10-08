@@ -238,6 +238,128 @@ def test_required_ci_status_no_sha():
     assert prc.required_ci_status(None) == {}
 
 
+def test_required_ci_status_includes_failed_jobs(monkeypatch):
+    def fake_gh(path):
+        if "/actions/runs/" in path:  # jobs endpoint for the failing kernel run
+            return {"jobs": [{"name": "test", "conclusion": "failure",
+                              "steps": [{"name": "Run python -m pytest -q",
+                                         "conclusion": "failure"}]}]}
+        if "kernel-tests.yml" in path:
+            return {"workflow_runs": [
+                {"id": 200, "head_sha": "b" * 40, "head_branch": "main",
+                 "event": "push", "status": "completed", "conclusion": "failure",
+                 "run_attempt": 1}]}
+        return {"workflow_runs": [
+            {"id": 201, "head_sha": "b" * 40, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "success",
+             "run_attempt": 1}]}
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    out = prc.required_ci_status("b" * 40)
+    assert out["kernel-tests.yml"]["failed_jobs"] == ["test"], out
+    assert out["collective-chain-readiness-gate.yml"]["failed_jobs"] is None
+
+
+def test_required_ci_status_failed_jobs_none_when_jobs_api_down(monkeypatch):
+    def fake_gh(path):
+        if "/actions/runs/" in path:
+            return None
+        return {"workflow_runs": [
+            {"id": 200, "head_sha": "b" * 40, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "failure",
+             "run_attempt": 1}]}
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    out = prc.required_ci_status("b" * 40)
+    assert out["kernel-tests.yml"]["failed_jobs"] is None
+
+
+# ---- C3 fail-closed classification ------------------------------------------------
+
+def _ci(red=(), unknown=()):
+    out = {}
+    for wf in prc.REQUIRED_CI_WORKFLOWS:
+        if wf in red:
+            out[wf] = {"status": "completed", "conclusion": "failure",
+                       "run_id": 1, "failed_jobs": ["test"]}
+        elif wf in unknown:
+            out[wf] = {"status": "unknown", "conclusion": None,
+                       "reason": "no_api", "failed_jobs": None}
+        else:
+            out[wf] = {"status": "completed", "conclusion": "success",
+                       "run_id": 2, "failed_jobs": None}
+    return out
+
+
+def _failures(n, steps):
+    return [{"run_id": i, "failing_steps": list(steps)} for i in range(n)]
+
+
+def test_classify_fail_closed_by_design():
+    r = prc.classify_promotion_failures(
+        _failures(3, ["Enforce ratified standing policy before automatic promotion"]),
+        _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "FAIL_CLOSED_BY_DESIGN", r
+    assert r["policy_step_trips"] == 3
+    assert "kernel-tests.yml" in r["detail"]
+
+
+def test_classify_needs_investigation_when_step_unexplained():
+    r = prc.classify_promotion_failures(
+        _failures(2, ["Some other step broke"]),
+        _ci(red=("kernel-tests.yml",)))
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
+def test_classify_needs_investigation_when_ci_green():
+    r = prc.classify_promotion_failures(
+        _failures(1, ["Enforce ratified standing policy before automatic promotion"]),
+        _ci())
+    assert r["classification"] == "NEEDS_INVESTIGATION", r
+
+
+def test_classify_unknown_when_ci_unreadable():
+    r = prc.classify_promotion_failures(
+        _failures(1, ["Enforce ratified standing policy before automatic promotion"]),
+        _ci(unknown=("kernel-tests.yml", "collective-chain-readiness-gate.yml")))
+    assert r["classification"] == "UNKNOWN", r
+
+
+def test_check_workflow_health_carries_classification(monkeypatch):
+    head = "c" * 40
+
+    def fake_gh(path):
+        if "governed-supabase-production-deploy.yml/runs" in path:
+            return {"workflow_runs": [
+                {"id": 100, "event": "push", "head_sha": head,
+                 "conclusion": "failure", "created_at": "2026-10-08T15:27:40Z"}]}
+        if "/actions/runs/100/jobs" in path:
+            return {"jobs": [{"name": "promote", "conclusion": "failure",
+                              "steps": [{"name": "Enforce ratified standing policy "
+                                                 "before automatic promotion",
+                                         "conclusion": "failure"}]}]}
+        if "/actions/runs/200/jobs" in path:
+            return {"jobs": [{"name": "test", "conclusion": "failure",
+                              "steps": [{"name": "Run python -m pytest -q",
+                                         "conclusion": "failure"}]}]}
+        if "kernel-tests.yml" in path:
+            return {"workflow_runs": [
+                {"id": 200, "head_sha": head, "head_branch": "main",
+                 "event": "push", "status": "completed", "conclusion": "failure",
+                 "run_attempt": 1}]}
+        return {"workflow_runs": [
+            {"id": 201, "head_sha": head, "head_branch": "main",
+             "event": "push", "status": "completed", "conclusion": "success",
+             "run_attempt": 1}]}
+
+    monkeypatch.setattr(prc, "gh_get", fake_gh)
+    r = prc.check_workflow_health(recent=1)
+    assert r["check"] == "C3"
+    assert r["verdict"] == "FAIL", r
+    cls = r["evidence"]["promotion_failure_classification"]
+    assert cls["classification"] == "FAIL_CLOSED_BY_DESIGN", cls
+    assert "FAIL_CLOSED_BY_DESIGN" in r["summary"]
+    assert r["evidence"]["required_ci_at_latest_tip"]["kernel-tests.yml"]["failed_jobs"] == ["test"]
+
+
 # ---- C9 branch hygiene ---------------------------------------------------------
 
 def _prs(n, start=1800, age_days=1):

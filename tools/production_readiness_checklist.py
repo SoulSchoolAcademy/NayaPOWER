@@ -145,7 +145,13 @@ def check_production_stamp(tip_sha: str | None) -> dict:
 
 
 def check_workflow_health(recent: int = 12) -> dict:
-    """C3 — recent Governed Production Promotion runs: verdicts + failing step."""
+    """C3 — recent Governed Production Promotion runs: verdicts + failing step.
+
+    Classifies promotion failures as FAIL_CLOSED_BY_DESIGN (the standing-policy
+    step correctly refused while required CI is red) vs NEEDS_INVESTIGATION
+    (the gate model cannot explain the failure). A working gate refusing is
+    not a broken deploy path — the verdict names the true hole.
+    """
     data = gh_get(f"/repos/{REPO}/actions/workflows/{PROMOTION_WORKFLOW_FILE}/runs?per_page={recent}")
     if data is None:
         return check_result("C3", "UNKNOWN", "GitHub API unreachable (no credential path)",
@@ -188,22 +194,47 @@ def check_workflow_health(recent: int = 12) -> dict:
     if failing_ci:
         ci_note = (f"; required CI failing at latest tip {latest_failed_sha[:12] if latest_failed_sha else '?'}: "
                    f"{', '.join(failing_ci)}")
+    classification = classify_promotion_failures(failures, evidence["required_ci_at_latest_tip"])
+    evidence["promotion_failure_classification"] = classification
+    class_note = (f"; classification: {classification['classification']} — "
+                  f"{classification['detail']}")
     if not failures:
         return check_result("C3", "PASS", f"last {len(runs)} promotion runs all succeeded", evidence)
     if successes == 0:
         return check_result("C3", "FAIL",
                             f"all {len(runs)} recent promotion runs failed; "
-                            f"failing steps: {failing_steps or 'unknown'}{ci_note}", evidence)
+                            f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
     return check_result("C3", "WARN",
                         f"{len(failures)}/{len(runs)} recent promotion runs failed; "
-                        f"failing steps: {failing_steps or 'unknown'}{ci_note}", evidence)
+                        f"failing steps: {failing_steps or 'unknown'}{ci_note}{class_note}", evidence)
+
+
+def failed_jobs_for_run(run_id: int | None) -> list[str] | None:
+    """Names of failed jobs in a workflow run; None when the jobs API is unreachable.
+
+    Stops at job granularity: per-test detail needs the job-log download, which
+    is not available from every credential path, so the instrument records what
+    it could actually read rather than guessing.
+    """
+    if not run_id:
+        return None
+    jobs = gh_get(f"/repos/{REPO}/actions/runs/{run_id}/jobs?per_page=30")
+    if not isinstance(jobs, dict):
+        return None
+    out = []
+    for j in jobs.get("jobs", []) or []:
+        if j.get("conclusion") not in ("success", "skipped", None):
+            out.append(j.get("name") or f"job-{j.get('id')}")
+    return out
 
 
 def required_ci_status(head_sha: str | None) -> dict:
     """Required-CI verdicts at the exact head SHA (mirrors the workflow's own gate).
 
-    Returns {workflow_file: {status, conclusion, run_id}} for REQUIRED_CI_WORKFLOWS.
-    This names WHICH fail-closed sub-gate trips when the promotion step fails.
+    Returns {workflow_file: {status, conclusion, run_id, failed_jobs}} for
+    REQUIRED_CI_WORKFLOWS. This names WHICH fail-closed sub-gate trips when the
+    promotion step fails, and which jobs inside it failed. failed_jobs is None
+    when the jobs API could not be read (recorded honestly, never guessed).
     """
     if not head_sha:
         return {}
@@ -212,17 +243,68 @@ def required_ci_status(head_sha: str | None) -> dict:
         data = gh_get(f"/repos/{REPO}/actions/workflows/{wf}/runs"
                       f"?head_sha={head_sha}&event=push&per_page=10")
         if not isinstance(data, dict):
-            out[wf] = {"status": "unknown", "conclusion": None, "reason": "no_api"}
+            out[wf] = {"status": "unknown", "conclusion": None, "reason": "no_api",
+                       "failed_jobs": None}
             continue
         matches = [r for r in data.get("workflow_runs", [])
                    if r.get("head_sha") == head_sha and r.get("head_branch") == "main"]
         if not matches:
-            out[wf] = {"status": "missing", "conclusion": None}
+            out[wf] = {"status": "missing", "conclusion": None, "failed_jobs": None}
             continue
         best = max(matches, key=lambda r: (int(r.get("id", 0)), int(r.get("run_attempt", 0))))
-        out[wf] = {"status": best.get("status"), "conclusion": best.get("conclusion"),
-                   "run_id": best.get("id")}
+        entry = {"status": best.get("status"), "conclusion": best.get("conclusion"),
+                 "run_id": best.get("id"), "failed_jobs": None}
+        if best.get("status") == "completed" and best.get("conclusion") == "failure":
+            entry["failed_jobs"] = failed_jobs_for_run(best.get("id"))
+        out[wf] = entry
     return out
+
+
+def classify_promotion_failures(failures: list[dict], ci_status: dict) -> dict:
+    """FAIL_CLOSED_BY_DESIGN vs NEEDS_INVESTIGATION for promotion-run failures.
+
+    The promotion workflow's standing-policy step fail-closes whenever required
+    CI is red at the exact head SHA (it raises SystemExit("FAIL CLOSED:
+    required workflow failed: ...")). A promotion run that refuses to promote
+    under those conditions is the gate OPERATING CORRECTLY — the readiness
+    hole is the red CI, not the deploy path. This classifier distinguishes that
+    from failures the gate model cannot explain, so the readiness verdict names
+    the true hole instead of blaming a working gate.
+    """
+    ci_failing = [w for w, s in ci_status.items()
+                  if s.get("status") == "completed" and s.get("conclusion") == "failure"]
+    ci_unknown = [w for w, s in ci_status.items()
+                  if s.get("conclusion") is None or s.get("status") == "unknown"]
+    policy_trips = sum(1 for f in failures
+                       if any("standing policy" in (st or "").lower()
+                              for st in f.get("failing_steps", [])))
+    evidence = {"policy_step_trips": policy_trips,
+                "failures_examined": len(failures),
+                "required_ci_failing": ci_failing,
+                "required_ci_unknown": ci_unknown}
+    if not failures:
+        return {"classification": "NONE", "detail": "no failures", **evidence}
+    if ci_failing and policy_trips == len(failures):
+        jobs = {w: (ci_status[w].get("failed_jobs") or []) for w in ci_failing}
+        job_note = "; ".join(f"{w}: {', '.join(j) if j else 'jobs unreadable'}"
+                             for w, j in jobs.items())
+        return {"classification": "FAIL_CLOSED_BY_DESIGN",
+                "detail": ("every promotion failure is the standing-policy step "
+                           "refusing while required CI is red "
+                           f"({', '.join(ci_failing)}; failed jobs: {job_note}). "
+                           "Deploy path is operating correctly; root cause is "
+                           "red CI, not a broken gate."),
+                **evidence}
+    if ci_unknown and policy_trips:
+        return {"classification": "UNKNOWN",
+                "detail": ("required-CI state unreadable; cannot tell "
+                           "fail-closed from pathology"),
+                **evidence}
+    return {"classification": "NEEDS_INVESTIGATION",
+            "detail": ("promotion failures not fully explained by red required "
+                       f"CI (policy-step trips: {policy_trips}/{len(failures)}; "
+                       f"red CI: {ci_failing or 'none'})"),
+            **evidence}
 
 
 def _paged_open_prs(max_pages: int = 3) -> list | None:
