@@ -8,7 +8,11 @@ re-resolution straight into the executor.
 The fix: execute_plan re-runs gate_candidate on plan.chosen at the last
 responsible moment — immediately before the executor fires. PROHIBITED is
 refused with PLAN_SAFETY_PROHIBITED; the executor never runs.
-NEEDS_AUTHORITY verdicts stay governed by the LAW authority record.
+NEEDS_AUTHORITY is refused with PLAN_SAFETY_NEEDS_AUTHORITY (the seam
+binds a LAW grant but cannot observe the human authorization the calculus
+demands for consequential/irreversible plans — fail closed, never absorb).
+The bound LAW grant IS mapped as the calculus's authorized channel, so the
+always-on AUTHORITY_MISSING verdict is retired.
 """
 import pytest
 
@@ -128,16 +132,19 @@ def test_planned_clean_candidate_still_executes():
     assert any("re-gate" in e for e in receipt.evidence)
 
 
-def test_needs_authority_verdict_still_executes():
-    # A clean hand-crafted plan gates NEEDS_AUTHORITY (AUTHORITY_MISSING on
-    # the calculus Candidate) — LAW re-resolution governs authority, not the
-    # safety seam, so execution proceeds.
+def test_clean_reversible_plan_verdicts_honestly_and_executes():
+    # The authority channel is now mapped: a clean reversible hand plan no
+    # longer verdicts NEEDS_AUTHORITY/AUTHORITY_MISSING (the bound LAW
+    # grant IS the authority the calculus channel demands). Unknown safety
+    # flags (None) verdict NEEDS_EVIDENCE — recorded in the evidence, not
+    # blocking.
     plan = _hand_plan(_candidate())
     receipt, calls = _execute(plan)
     assert receipt.phase == "EXECUTION_COMPLETED"
     assert receipt.executed is True
     assert len(calls) == 1
-    assert any("NEEDS_AUTHORITY" in e for e in receipt.evidence)
+    assert any("NEEDS_EVIDENCE" in e for e in receipt.evidence)
+    assert not any("AUTHORITY_MISSING" in e for e in receipt.evidence)
 
 
 def test_custom_risk_policy_is_honored():
