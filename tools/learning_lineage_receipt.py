@@ -28,17 +28,26 @@ Stage states:
                  known-unknown with the owning lane (never hidden)
 
 Verdict: BROKEN if any GAP; PARTIAL if any PENDING/UNINSTRUMENTED;
-COMPLETE only when all 11 stages are PRESENT. On current main the five
-post-promotion stages are UNINSTRUMENTED, so COMPLETE is unreachable --
-that is the honest instrumentation gap, now visible in one place.
+COMPLETE only when all 11 stages are PRESENT. The retrieval /
+applicability / application / outcome stages are UNINSTRUMENTED until a
+reader attaches convergence-item-D receipts (retrieval_receipts,
+application_receipts, outcome_records, attached via
+attach_to_lineage_bundle()) -- the consumer wiring for that contract
+lives in this module, so those four stages become machine-resolvable the
+moment receipts exist. reuse / generalization / successor remain
+uninstrumented (successor-builder's lane); COMPLETE stays unreachable
+until those lanes emit -- the honest gap, visible in one place.
 
 Pure functions only: no DB, no network. A reader assembles the bundle;
 this module reconstructs and judges. Machine-falsifiable via
-tests/test_learning_lineage_receipt.py.
+tests/test_learning_lineage_receipt.py and
+tests/test_lineage_receipt_evidence_consumption.py.
 """
 
 from __future__ import annotations
 
+import hashlib
+import json
 from typing import Any
 
 SCHEMA = "NAYANET_LEARNING_LINEAGE_RECEIPT_V1"
@@ -58,11 +67,15 @@ STAGES: tuple[str, ...] = (
 )
 
 # Stages with no emitter on current main: explicit known-unknowns.
+# retrieval / applicability / application / outcome stay UNINSTRUMENTED
+# only until D-shaped receipts are attached to the bundle; the consumer
+# wiring below resolves them then. The emitters live with the runtime and
+# the Learning-team D instrument (PR #1882).
 UNINSTRUMENTED_OWNERS: dict[str, str] = {
-    "retrieval": "learn-builder (convergence item D: durable retrieval/application receipts)",
-    "applicability": "learn-builder (convergence item D; #1733 decision-context boundary)",
-    "application": "learn-builder (convergence item D)",
-    "outcome": "learn-builder (convergence item D)",
+    "retrieval": "runtime + Learning-team D instrument (PR #1882); consumer wired -- attach via attach_to_lineage_bundle()",
+    "applicability": "runtime + Learning-team D instrument (PR #1882); consumer wired",
+    "application": "runtime + Learning-team D instrument (PR #1882); consumer wired",
+    "outcome": "runtime + Learning-team D instrument (PR #1882); consumer wired",
     "reuse": "successor-builder",
     "generalization": "successor-builder",
     "successor": "successor-builder",
@@ -75,6 +88,223 @@ FORBIDDEN_AUTHORITY_FIELDS = frozenset(
 )
 
 _PROMOTED_STATUSES = {"ACTIVE", "LEARNED"}
+
+
+# ---------------------------------------------------------------------------
+# Convergence consumer: D-shaped receipt attachment (items B + D)
+#
+# Convergence item D's emitter (tools/learning_application_receipt.py,
+# Learning-team PR #1882) produces three append-only records:
+#   retrieval_receipt   NAYANET_LEARNING_RETRIEVAL_RECEIPT_V1
+#   application_receipt NAYANET_LEARNING_APPLICATION_RECEIPT_V1
+#   outcome_record      NAYANET_LEARNING_OUTCOME_RECORD_V1
+# A reader attaches them to a lineage bundle via attach_to_lineage_bundle()
+# under the keys "retrieval_receipts", "application_receipts" and
+# "outcome_records" (lists). This module CONSUMES those keys and resolves
+# its retrieval / applicability / application / outcome stages from them --
+# that is the convergence of B (lineage reconstructability) with D
+# (durable receipts linked to outcome). D is not on main yet, so this
+# consumer keys to the published schema contract, not to D's module.
+#
+# Fail-closed contract (never rounded up, never assumed):
+#  - schema marker must match exactly the published schema string;
+#  - the id must recompute from the apply-time core fields (sha256 of
+#    canonical JSON, first 32 hex, RET-/APP-/OUT- prefix) -- a tampered
+#    receipt fails integrity and the stage goes GAP, never PRESENT;
+#  - lesson_id must equal the reconstructed learning's id;
+#  - application receipts must resolve retrieval_ref to an attached
+#    retrieval receipt; outcome records must resolve
+#    application_receipt_id to an attached application receipt.
+# A stage with attached-but-invalid evidence -> GAP naming the failure.
+# A stage with no attached evidence -> UNINSTRUMENTED (honest), exactly
+# as before this wiring. Attached evidence never becomes authority.
+# ---------------------------------------------------------------------------
+
+RETRIEVAL_SCHEMA = "NAYANET_LEARNING_RETRIEVAL_RECEIPT_V1"
+APPLICATION_SCHEMA = "NAYANET_LEARNING_APPLICATION_RECEIPT_V1"
+OUTCOME_SCHEMA = "NAYANET_LEARNING_OUTCOME_RECORD_V1"
+
+_EVIDENCE_SCHEMA = {
+    "retrieval": RETRIEVAL_SCHEMA,
+    "application": APPLICATION_SCHEMA,
+    "outcome": OUTCOME_SCHEMA,
+}
+_EVIDENCE_DIGEST_PREFIX = {"retrieval": "RET", "application": "APP", "outcome": "OUT"}
+_EVIDENCE_ID_FIELD = {"retrieval": "receipt_id", "application": "receipt_id", "outcome": "record_id"}
+_EVIDENCE_CORE_FIELDS = {
+    # Must mirror the emitter's apply-time core exactly (see D module).
+    "retrieval": ("schema", "lesson_id", "retriever", "retrieved_at",
+                  "query_context", "lesson_content_sha"),
+    "application": ("schema", "lesson_id", "retrieval_ref", "task_ref",
+                    "applier", "applied_at"),
+    "outcome": ("schema", "application_receipt_id", "lesson_id", "task_ref",
+                "measured_effect", "observed_at"),
+}
+_EVIDENCE_BUNDLE_KEYS = {
+    "retrieval": "retrieval_receipts",
+    "application": "application_receipts",
+    "outcome": "outcome_records",
+}
+
+
+def _canonical_core(obj: Any) -> str:
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+
+
+def _recompute_evidence_id(kind: str, record: dict[str, Any]) -> str:
+    core = {f: record.get(f) for f in _EVIDENCE_CORE_FIELDS[kind]}
+    digest = hashlib.sha256(_canonical_core(core).encode("utf-8")).hexdigest()[:32]
+    return "%s-%s" % (_EVIDENCE_DIGEST_PREFIX[kind], digest)
+
+
+def _check_evidence(kind: str, record: Any, learning_id: Any) -> tuple[bool, str, str]:
+    """Classify one attached evidence record.
+
+    Returns (ok, evidence_id, failure). failure names the exact defect;
+    ok=True means schema, integrity and lesson linkage all hold.
+    """
+    label = kind.upper()
+    if not isinstance(record, dict):
+        return False, "", "%s_ENTRY_NOT_OBJECT: attached evidence must be an object" % label
+    expected_schema = _EVIDENCE_SCHEMA[kind]
+    if record.get("schema") != expected_schema:
+        return False, "", "%s_SCHEMA_MISMATCH: expected=%r actual=%r" % (
+            label, expected_schema, record.get("schema"))
+    rid = str(record.get(_EVIDENCE_ID_FIELD[kind]) or "")
+    if rid != _recompute_evidence_id(kind, record):
+        return False, "", "%s_INTEGRITY_FAILED: id=%r does not recompute from core fields" % (label, rid)
+    if str(record.get("lesson_id") or "") != str(learning_id or ""):
+        return False, "", "%s_LESSON_MISMATCH: record lesson=%r learning=%r" % (
+            label, record.get("lesson_id"), learning_id)
+    return True, rid, ""
+
+
+def _resolve_evidence_stages(
+    bundle: dict[str, Any],
+    learning_id: Any,
+    stages: dict[str, dict[str, Any]],
+    gaps: list[str],
+    links_verified: list[str],
+    uninstrumented: list[str],
+) -> None:
+    """Resolve retrieval / applicability / application / outcome from
+    attached D-shaped receipts. Mutates the shared stage lists."""
+
+    def _mark_uninstrumented(stage: str) -> None:
+        owner = UNINSTRUMENTED_OWNERS[stage]
+        uninstrumented.append("%s: %s" % (stage, owner))
+        stages[stage] = _stage("UNINSTRUMENTED", note="no receipts attached; owner: %s" % owner)
+
+    attached_kinds = [k for k, key in _EVIDENCE_BUNDLE_KEYS.items() if bundle.get(key)]
+    if not attached_kinds:
+        for stage in ("retrieval", "applicability", "application", "outcome"):
+            _mark_uninstrumented(stage)
+        return
+
+    # Classify every attached record: valid (id -> record) vs failures.
+    valid: dict[str, dict[str, dict[str, Any]]] = {"retrieval": {}, "application": {}, "outcome": {}}
+    broken_key = False
+    for kind, key in _EVIDENCE_BUNDLE_KEYS.items():
+        records = bundle.get(key)
+        if records is None:
+            continue
+        if not isinstance(records, list):
+            gaps.append("EVIDENCE_KEY_NOT_LIST: %s must be a list" % key)
+            broken_key = True
+            continue
+        for record in records:
+            ok, rid, failure = _check_evidence(kind, record, learning_id)
+            if ok:
+                valid[kind][rid] = record
+            else:
+                gaps.append(failure)
+
+    # ---- retrieval: at least one integrity-verified receipt for the learning ----
+    if bundle.get(_EVIDENCE_BUNDLE_KEYS["retrieval"]):
+        rids = sorted(valid["retrieval"])
+        if rids:
+            stages["retrieval"] = _stage("PRESENT", {"receipt_ids": rids, "count": len(rids)})
+            for rid in rids:
+                links_verified.append("retrieval_receipt.%s -> learning.%s" % (rid, learning_id))
+        else:
+            stages["retrieval"] = _stage("GAP", note="retrieval receipts attached but none valid; see gaps")
+    else:
+        _mark_uninstrumented("retrieval")
+
+    # ---- application: valid receipt whose retrieval_ref resolves ----
+    if bundle.get(_EVIDENCE_BUNDLE_KEYS["application"]):
+        bound, dangling = [], []
+        for rid, rec in valid["application"].items():
+            ref = str(rec.get("retrieval_ref") or "")
+            (bound if ref in valid["retrieval"] else dangling).append((rid, ref))
+        if dangling:
+            for rid, ref in dangling:
+                gaps.append("APPLICATION_RETRIEVAL_LINK_BROKEN: receipt=%s retrieval_ref=%r not attached"
+                            % (rid, ref))
+        if bound:
+            stages["application"] = _stage("PRESENT", {
+                "receipt_ids": sorted(r for r, _ in bound),
+                "retrieval_refs": sorted({ref for _, ref in bound}),
+            })
+            for rid, ref in bound:
+                links_verified.append("application_receipt.%s -> retrieval_receipt.%s" % (rid, ref))
+        else:
+            stages["application"] = _stage("GAP", note="application receipts attached but none resolve; see gaps")
+    else:
+        _mark_uninstrumented("application")
+
+    # ---- applicability: rationale recorded at apply time on a valid receipt ----
+    if bundle.get(_EVIDENCE_BUNDLE_KEYS["application"]):
+        with_rationale = [rid for rid, rec in valid["application"].items()
+                          if isinstance(rec.get("applicability"), dict)
+                          and (str(rec["applicability"].get("relevance_rationale") or "").strip()
+                               or str(rec["applicability"].get("task_match") or "").strip())]
+        if with_rationale:
+            stages["applicability"] = _stage("PRESENT", {
+                "receipt_ids": sorted(with_rationale),
+                "rationale": {rid: valid["application"][rid]["applicability"] for rid in sorted(with_rationale)},
+            })
+            links_verified.append("applicability.rationale recorded at apply time on %d receipt(s)"
+                                  % len(with_rationale))
+        elif valid["application"]:
+            stages["applicability"] = _stage("PENDING",
+                                            note="application evidence present; no applicability rationale recorded")
+        else:
+            stages["applicability"] = _stage("GAP", note="no valid application receipt carries an applicability rationale")
+    else:
+        _mark_uninstrumented("applicability")
+
+    # ---- outcome: valid record resolving to an attached application receipt ----
+    if bundle.get(_EVIDENCE_BUNDLE_KEYS["outcome"]):
+        linked, unlinked = [], []
+        for rid, rec in valid["outcome"].items():
+            app_ref = str(rec.get("application_receipt_id") or "")
+            (linked if app_ref in valid["application"] else unlinked).append((rid, app_ref))
+        if unlinked:
+            for rid, app_ref in unlinked:
+                gaps.append("OUTCOME_APPLICATION_LINK_BROKEN: record=%s application_receipt_id=%r not attached"
+                            % (rid, app_ref))
+        if linked:
+            verifiers = sorted({
+                str((valid["outcome"][rid].get("independent_verification") or {}).get("verifier") or "")
+                for rid, _ in linked
+            } - {""})
+            refs: dict[str, Any] = {"record_ids": sorted(r for r, _ in linked)}
+            if verifiers:
+                refs["independent_verifiers"] = verifiers
+            stages["outcome"] = _stage("PRESENT", refs)
+            for rid, app_ref in linked:
+                links_verified.append("outcome_record.%s -> application_receipt.%s" % (rid, app_ref))
+        else:
+            stages["outcome"] = _stage("GAP", note="outcome records attached but none resolve; see gaps")
+    else:
+        _mark_uninstrumented("outcome")
+
+    if broken_key:
+        # A malformed evidence key poisons the evidence stages that depend on it.
+        for stage in ("retrieval", "application", "applicability", "outcome"):
+            if stages.get(stage, {}).get("status") == "UNINSTRUMENTED":
+                stages[stage] = _stage("GAP", note="evidence key malformed; see gaps")
 
 
 def _stage(status: str, refs: dict[str, Any] | None = None, note: str = "") -> dict[str, Any]:
@@ -90,7 +320,11 @@ def reconstruct(bundle: dict[str, Any]) -> dict[str, Any]:
 
     bundle keys (all optional except 'learning'):
       cognition_event, commit_receipt, intelligent_block, learning,
-      relationship, checkpoint, verification, authority_ref_links
+      relationship, checkpoint, verification, authority_ref_links,
+      retrieval_receipts, application_receipts, outcome_records
+      (the last three are convergence-item-D receipts, attached via
+      attach_to_lineage_bundle(); the resolver verifies their integrity
+      and linkages before marking stages PRESENT)
     """
     gaps: list[str] = []
     links_verified: list[str] = []
@@ -167,9 +401,13 @@ def reconstruct(bundle: dict[str, Any]) -> dict[str, Any]:
         else:
             links_verified.append(f"learning.observed_value.{key} -> {label.lower()}")
 
-    # ---- post-promotion stages: uninstrumented on current main ----
-    for stage in ("retrieval", "applicability", "application", "outcome",
-                  "reuse", "generalization", "successor"):
+    # ---- evidence stages: retrieval / applicability / application / outcome ----
+    # Resolved from attached D-shaped receipts when present (consumer wiring
+    # for the attach_to_lineage_bundle() contract); UNINSTRUMENTED otherwise.
+    _resolve_evidence_stages(bundle, learning_id, stages, gaps, links_verified, uninstrumented)
+
+    # ---- post-promotion stages: still uninstrumented on current main ----
+    for stage in ("reuse", "generalization", "successor"):
         owner = UNINSTRUMENTED_OWNERS[stage]
         uninstrumented.append(f"{stage}: {owner}")
         stages[stage] = _stage("UNINSTRUMENTED", note=f"no emitter on current main; owner: {owner}")
