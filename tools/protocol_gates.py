@@ -129,6 +129,7 @@ REQUIRED_SIGN_OUT_FIELDS = (
 class FormatResult:
     passed: bool
     reasons: list = field(default_factory=list)
+    receipts: list = field(default_factory=list)
 
 
 def _nonempty_str(value) -> bool:
@@ -198,7 +199,7 @@ def check_sign_out(sign_out: dict) -> FormatResult:
     if not isinstance(learning, dict):
         reasons.append("learning must be a dict carrying topic/action/ledger")
     else:
-        required_learning = ("topic", "action", "ledger")
+        required_learning = ("topic", "action", "ledger", "evidence_refs", "authority_ref")
         for field_name in required_learning:
             if field_name not in learning:
                 reasons.append(f"learning field {field_name!r} is required")
@@ -213,8 +214,13 @@ def check_sign_out(sign_out: dict) -> FormatResult:
             )
             if not gate.passed:
                 reasons.append(
-                    f"learning gate {gate.verdict}: " + "; ".join(gate.reasons)
+                    f"learning gate {gate.decision}: " + "; ".join(gate.reasons)
                 )
+            return FormatResult(
+                passed=not reasons,
+                reasons=reasons,
+                receipts=list(gate.receipts),
+            )
     return FormatResult(passed=not reasons, reasons=reasons)
 
 
