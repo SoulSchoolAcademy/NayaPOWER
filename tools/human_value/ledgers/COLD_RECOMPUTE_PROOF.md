@@ -58,3 +58,26 @@ rebased onto tip `aacbcc9a5`):
 cold-recomputable at the pushed SHA. MAE 0.5→0.25, signed bias +0.5→+0.25,
 no overprediction — the calibration math a cold successor recomputes is the
 same math the originating run reported. /tmp clones removed after verification.
+
+## Fourth cold run — 2026-10-08 ~22:05 UTC (19-event ledger, n=3 loop)
+
+Same procedure, fresh clone @ `961a4d35` (branch `naya5/human-value-real-data-v1`):
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `961a4d35e931747c94076d8a43487d0ebaa389c8` | (same) | ✅ |
+| `ledger_sha256` | `sha256:e28ab77b…89d9b` | (same) | ✅ |
+| `hv_per_day_total` | 2.8572 | 2.8572 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 19 | 19 | ✅ |
+| `calibration.n` / MAE / bias | 3 / 0.1667 / 0.1667 | 3 / 0.1667 / 0.1667 | ✅ |
+| test suite (real ledger + instrument) | 36 passed | 36 passed | ✅ |
+
+**Verdict:** the third real prediction→observation join (n=3, DEC-003) is
+cold-recomputable at the pushed SHA. MAE 0.25→0.1667, signed bias
++0.25→+0.1667, no overprediction — the n>=3 recalibration floor is now
+measurable by any cold successor from canonical repo bytes alone.
+Run note: the first cold attempt of this run caught a stale era-pinned test
+(`n == 2` hardcoded); the test was updated to pin the new floor
+(`n >= 3`, LEARN_CANDIDATE proposes, never promotes) and both sides re-ran
+green before this proof. /tmp clones removed after verification.
