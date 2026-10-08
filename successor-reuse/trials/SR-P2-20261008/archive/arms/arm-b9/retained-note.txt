@@ -1,0 +1,1 @@
+The Reserve Rule only applies when the top two calls differ by at most 0.5 points, in which case I dispatch the lower-scored call. I applied it in Task 1 (gap 0.4, dispatched Call-102) and not in Task 2 (gap 1.5, dispatched the higher-scored Call-201).
