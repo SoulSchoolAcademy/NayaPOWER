@@ -481,3 +481,51 @@ def check_quality_gate(
         reasons=reasons,
         delegated_to="local-fallback (kernel/protocol not yet merged)",
     )
+
+
+
+def check_repeat_learning_gate(
+    *,
+    topic: str,
+    action: str,
+    ledger: list[dict] | None,
+    evidence_refs: list[str] | tuple[str, ...] | None = None,
+    authority_ref: str = "",
+    timestamp: float | None = None,
+) -> AdapterResult:
+    """Canonical adapter for the Repeat Tracker v1.1 completion tripwire.
+
+    This is deliberately a thin consumer of kernel.protocol.repeat_learning_gate.
+    It does not duplicate the gate logic. The result is FAIL unless the
+    canonical gate returns PASS.
+    """
+    evaluate = _try_kernel_attr("repeat_learning_gate", "evaluate_learning_gate")
+    if evaluate is None:
+        return AdapterResult(
+            passed=False,
+            verdict="BLOCKED",
+            reasons=["repeat learning gate unavailable — fail closed"],
+            delegated_to="kernel.protocol.repeat_learning_gate (unavailable)",
+        )
+    try:
+        result = evaluate(
+            topic=topic,
+            action=action,
+            ledger=ledger,
+            evidence_refs=evidence_refs,
+            authority_ref=authority_ref,
+            timestamp=timestamp,
+        )
+        return AdapterResult(
+            passed=result.passed,
+            verdict=result.decision,
+            reasons=list(result.reasons),
+            delegated_to="kernel.protocol.repeat_learning_gate",
+        )
+    except Exception as exc:
+        return AdapterResult(
+            passed=False,
+            verdict="BLOCKED",
+            reasons=[f"repeat learning gate error — fail closed: {exc}"],
+            delegated_to="kernel.protocol.repeat_learning_gate",
+        )
