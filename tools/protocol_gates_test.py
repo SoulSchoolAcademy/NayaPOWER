@@ -306,3 +306,52 @@ def test_quality_rejects_nan_score():
 def test_quality_rejects_mismatched_weights():
     r = check_quality_gate({"a": 9.5}, {"a": 0.5, "b": 0.5})
     assert not r.passed
+
+# ---------------- independent decision-gate falsifiers ----------------
+
+@pytest.mark.parametrize("gate", [
+    "reversible_or_safe", "no_major_damage",
+    "positive_forward_effect", "authority_clear",
+])
+def test_scorecard_refuses_false_gate_even_when_all_fields_present(gate):
+    sc = good_scorecard()
+    sc["gates_checked"][gate] = False
+    result = check_scorecard(sc)
+    assert not result.passed
+    assert any(gate in reason for reason in result.reasons)
+
+
+def test_scorecard_refuses_duplicate_options():
+    sc = good_scorecard()
+    sc["options"].append("adapter")
+    assert not check_scorecard(sc).passed
+
+
+def test_scorecard_refuses_unenumerated_scores():
+    sc = good_scorecard()
+    sc["scores"]["phantom"] = dict(sc["scores"]["adapter"])
+    assert not check_scorecard(sc).passed
+
+
+def test_scorecard_refuses_unexplained_lower_scored_winner():
+    sc = good_scorecard()
+    sc["winner"] = "duplicate"
+    result = check_scorecard(sc)
+    assert not result.passed
+    assert any("override_rationale" in reason for reason in result.reasons)
+
+
+def test_scorecard_allows_documented_lower_scored_choice_only_when_gates_clear():
+    sc = good_scorecard()
+    sc["winner"] = "defer"
+    sc["override_rationale"] = "The numeric totals did not model a newly discovered external dependency."
+    assert check_scorecard(sc).passed
+    sc["gates_checked"]["authority_clear"] = False
+    assert not check_scorecard(sc).passed
+
+
+def test_scorecard_override_requires_nonempty_rationale():
+    sc = good_scorecard()
+    sc["winner"] = "duplicate"
+    sc["override_rationale"] = "   "
+    assert not check_scorecard(sc).passed
