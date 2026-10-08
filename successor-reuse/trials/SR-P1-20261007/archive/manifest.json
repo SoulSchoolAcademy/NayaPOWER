@@ -1,0 +1,34 @@
+{
+  "trial_id": "SR-P1-20261007",
+  "director": "Naya 5 Trial Executor (subagent)",
+  "date": "2026-10-07",
+  "verifier": "../harness/verifier-p1.mjs",
+  "sandbox_posture": "local-exec-bash-node-python3-no-network",
+  "retrieval_path": "STUBBED",
+  "arms": {
+    "arm-b": {
+      "submission_dir": "arms/arm-b",
+      "applicability": "NO LESSON",
+      "recorded_verdict": "PASS",
+      "file_hashes": {
+        "run.sh": "d421e6bf4495135a4eb42c835fb6a915458065cb2a98cef533c3c1018774baad",
+        "sum.mjs": "259534d8385ed6af86bbcee32f707542003899ae692da3083ed77ba73b22fedb",
+        "tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tools/runner.py": "8641705acfa3c13789291a967e5a72f8e3f1dfb355de41c30b2076dcd7ac88c5",
+        "tools/util.py": "56cde90987f55a935b764c8b0ddefabdbde9283fdc333381e2725d7f8b1f7b6f"
+      }
+    },
+    "arm-t": {
+      "submission_dir": "arms/arm-t",
+      "applicability": "NOT APPLICABLE",
+      "recorded_verdict": "PASS",
+      "file_hashes": {
+        "run.sh": "5301764197f1b8bb176db070f31f6984ebfa8a07051d4d54c15f69e357532e1e",
+        "sum.mjs": "4da7536ca2bc2e65819d0ec4ba738bc552ed476edd3b210be390fe160faba85b",
+        "tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tools/runner.py": "8641705acfa3c13789291a967e5a72f8e3f1dfb355de41c30b2076dcd7ac88c5",
+        "tools/util.py": "56cde90987f55a935b764c8b0ddefabdbde9283fdc333381e2725d7f8b1f7b6f"
+      }
+    }
+  }
+}
