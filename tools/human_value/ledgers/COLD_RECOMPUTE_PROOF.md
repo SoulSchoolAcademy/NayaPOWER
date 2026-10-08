@@ -38,3 +38,23 @@ state. Same bytes → same numbers, with no access to the originating
 workspace. The 2026-10-06 failure (dead workspace, documented-only numbers)
 cannot recur for this ledger: the producing bytes are canonical repo bytes
 on a pushed branch.
+
+## Third cold run — 2026-10-08 ~16:10 UTC (18-event ledger, n=2 loop)
+
+Same procedure, fresh clone @ `08946947` (branch `naya5/human-value-real-data-v1`,
+rebased onto tip `aacbcc9a5`):
+
+| Check | Originating worktree | Cold clone | Match |
+|---|---|---|---|
+| HEAD | `08946947` | `08946947` | ✅ |
+| `ledger_sha256` | `sha256:d4aa6a07…f5b6f` | (same) | ✅ |
+| `hv_per_day_total` | 2.7143 | 2.7143 | ✅ |
+| `dai_per_day` | 0.2857 | 0.2857 | ✅ |
+| `events_validated` | 18 | 18 | ✅ |
+| `calibration.n` / MAE / bias | 2 / 0.25 / 0.25 | 2 / 0.25 / 0.25 | ✅ |
+| test suite (real ledger + instrument) | 35 passed | 35 passed | ✅ |
+
+**Verdict:** the second real prediction→observation join (n=2, DEC-002) is
+cold-recomputable at the pushed SHA. MAE 0.5→0.25, signed bias +0.5→+0.25,
+no overprediction — the calibration math a cold successor recomputes is the
+same math the originating run reported. /tmp clones removed after verification.
