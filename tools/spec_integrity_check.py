@@ -53,9 +53,50 @@ def blob_sha(path: Path) -> str | None:
         data = path.read_bytes()
     except OSError:
         return None
+    return _git_blob_sha(data)
+
+
+def blob_sha_lf_normalized(path: Path) -> str | None:
+    """Git blob SHA computed over LF-normalized bytes.
+
+    Acceptance evidence must not depend on the line-ending convention of the
+    machine that happens to run the check. Several pins in this repository were
+    computed over LF bytes, so a Windows checkout (core.autocrlf=true, CRLF on
+    disk) produces different bytes for identical ratified text.
+    """
+    try:
+        data = path.read_bytes().replace(b"\r\n", b"\n")
+    except OSError:
+        return None
+    return _git_blob_sha(data)
+
+
+def _git_blob_sha(data: bytes) -> str:
     h = hashlib.sha1()
     h.update(b"blob " + str(len(data)).encode() + b"\0" + data)
     return h.hexdigest()
+
+
+def pin_matches(path: Path, pinned: str) -> tuple[bool, str]:
+    """Does the file still match its ratified pin, under either convention?
+
+    Line-ending representation is not ratified content. Pins in this repository
+    are legitimately mixed: most were computed over LF bytes, but at least one
+    Director-ratified machine spec was committed with CRLF inside the blob
+    itself. Requiring an exact byte match therefore fails a correct checkout on
+    the wrong platform. Accepting either representation detects genuine content
+    drift (any real edit changes both digests) without ever mutating or
+    re-pinning a ratified artifact.
+
+    Returns (matched, observed_digest_for_reporting).
+    """
+    raw = blob_sha(path)
+    if raw == pinned:
+        return True, raw
+    lf = blob_sha_lf_normalized(path)
+    if lf == pinned:
+        return True, lf
+    return False, raw
 
 
 def load_json(path: Path):
@@ -89,14 +130,14 @@ def check_spec(entry: dict, root: Path) -> list[str]:
         rel = proj.get("path", "")
         pinned = proj.get("blob_sha", "")
         full = root / rel
-        current = blob_sha(full)
+        matched, current = pin_matches(full, pinned)
         if current is None:
             failures.append(
                 f"FAIL: [{law}] projection '{proj_name}' missing at {rel} "
                 "-- file deleted or unreadable"
             )
             continue
-        if current != pinned:
+        if not matched:
             failures.append(
                 f"FAIL: [{law}] projection '{proj_name}' drifted from ratified pin "
                 f"({rel}): pinned {pinned[:8]}, now {current[:8]} -- "
@@ -165,7 +206,11 @@ def check_coverage(manifest: dict, root: Path) -> list[str]:
             failures.append(f"FAIL: governed dir missing: {gdir}")
             continue
         for mj in sorted(full_dir.glob("*.machine.json")):
-            rel = str(mj.relative_to(root))
+            # as_posix() keeps this comparison platform-independent. str() would
+            # yield backslash separators on Windows and every governed spec would
+            # be reported as unpinned, which is a false alarm about the evidence
+            # rather than a real coverage gap.
+            rel = mj.relative_to(root).as_posix()
             if rel not in pinned and rel not in excluded:
                 failures.append(
                     f"FAIL: unpinned machine spec {rel} -- pin it in the manifest "
@@ -196,8 +241,12 @@ def cmd_print_pins(root: Path) -> int:
     found = sorted(root.rglob("*.machine.json"))
     out = []
     for mj in found:
-        rel = str(mj.relative_to(root))
-        out.append({"path": rel, "blob_sha": blob_sha(mj)})
+        rel = mj.relative_to(root).as_posix()
+        out.append({
+            "path": rel,
+            "blob_sha": blob_sha(mj),
+            "blob_sha_lf_normalized": blob_sha_lf_normalized(mj),
+        })
     print(json.dumps(out, indent=2))
     return 0
 
