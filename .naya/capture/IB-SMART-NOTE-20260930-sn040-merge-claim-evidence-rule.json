@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-040",
+ "intelligence": {
+  "title": "No Reconciliation Artifact, No Reconciliation Claim — the Merge-Claim Evidence Rule",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn040-merge-claim-evidence-rule",
+  "smart_note_id": "SN-040",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-040/IB-SMART-NOTE-20260930-sn040-merge-claim-evidence-rule.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/AMENDMENT-VERIFICATION/MERGE-DECISION-INTEGRITY/SN-040/IB-SMART-NOTE-20260930-sn040-merge-claim-evidence-rule.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-080",
+ "intelligence": {
+  "title": "Frozen-Evidence Retirement — Retire Explicitly, Re-Freeze, Never Mutate the Freeze",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement",
+  "smart_note_id": "SN-080",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IMMUTABILITY/SN-080/IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/EVIDENCE-IMMUTABILITY/SN-080/IB-SMART-NOTE-20260930-sn080-frozen-evidence-retirement.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

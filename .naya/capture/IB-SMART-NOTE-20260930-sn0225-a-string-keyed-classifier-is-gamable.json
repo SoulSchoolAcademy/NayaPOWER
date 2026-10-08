@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0225",
+ "intelligence": {
+  "title": "A Classifier That Reads Strings Can Be Gamed by Strings — H8-7 CONFIRMED BUG: Lesson-Text Regex Gamable at Lock-In",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0225-a-string-keyed-classifier-is-gamable",
+  "smart_note_id": "SN-0225",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0225/IB-SMART-NOTE-20260930-sn0225-a-string-keyed-classifier-is-gamable.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CLASSIFICATION-INTEGRITY/SN-0225/IB-SMART-NOTE-20260930-sn0225-a-string-keyed-classifier-is-gamable.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

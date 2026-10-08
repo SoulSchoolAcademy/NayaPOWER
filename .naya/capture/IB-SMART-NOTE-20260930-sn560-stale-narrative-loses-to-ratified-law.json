@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-560",
+ "intelligence": {
+  "title": "Stale Narrative Loses to Ratified Law — Re-Verify the Governance Boundary at Action Time",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn560-stale-narrative-loses-to-ratified-law",
+  "smart_note_id": "SN-560",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-560/IB-SMART-NOTE-20260930-sn560-stale-narrative-loses-to-ratified-law.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-ENVELOPE/SN-560/IB-SMART-NOTE-20260930-sn560-stale-narrative-loses-to-ratified-law.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

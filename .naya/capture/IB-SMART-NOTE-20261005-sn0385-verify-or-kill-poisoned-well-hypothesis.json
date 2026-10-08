@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0385",
+ "intelligence": {
+  "title": "Verify-or-Kill — When the Fix Exposes the Next Failure, Test Whether the Producer Is Poisoning Its Own Well",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0385-verify-or-kill-poisoned-well-hypothesis",
+  "smart_note_id": "SN-0385",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0385/IB-SMART-NOTE-20261005-sn0385-verify-or-kill-poisoned-well-hypothesis.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-RUN-DIAGNOSIS/SN-0385/IB-SMART-NOTE-20261005-sn0385-verify-or-kill-poisoned-well-hypothesis.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

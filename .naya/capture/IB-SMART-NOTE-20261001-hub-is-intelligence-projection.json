@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0593",
+ "intelligence": {
+  "title": "The Hub Is the Visual Projection of Intelligence",
+  "intelligent_block_id": "IB-SMART-NOTE-20261001-hub-is-intelligence-projection",
+  "smart_note_id": "SN-0593",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0593/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. Published as Markdown projection without preserved runtime capture. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0593/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

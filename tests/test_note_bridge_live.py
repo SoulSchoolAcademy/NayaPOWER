@@ -65,12 +65,17 @@ def test_benign_action_allows():
 
 
 def test_phantom_notes_absent():
-    # SN-0518/SN-0521 were cited by the prototype but don't exist on disk.
-    # The live corpus must not contain them.
+    # SN-0518/SN-0521 were cited by the prototype before they existed on disk
+    # (the original phantom case). Both have since been genuinely captured with
+    # #1354 provenance, so they are no longer phantoms. The guard's intent stands:
+    # a phantom is a cited-but-nonexistent note, so every cited id here must
+    # resolve to a genuine, fully-structured note in the live corpus.
     notes, _ = load_live_corpus()
-    ids = {n.id for n in notes}
-    assert "SN-0518" not in ids
-    assert "SN-0521" not in ids
+    by_id = {n.id: n for n in notes}
+    for sn_id in ("SN-0518", "SN-0521"):
+        assert sn_id in by_id, f"{sn_id} cited but missing from corpus (phantom)"
+        n = by_id[sn_id]
+        assert n.title and n.nutshell and n.keywords, f"{sn_id} is not a genuine note"
 
 
 def test_retrieval_uses_live_notes():

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0469",
+ "intelligence": {
+  "title": "Count What the Ledger Counts — Audit the Instrument Before Its Verdict",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0469-count-what-the-ledger-counts",
+  "smart_note_id": "SN-0469",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0469/IB-SMART-NOTE-20261006-sn0469-count-what-the-ledger-counts.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0469/IB-SMART-NOTE-20261006-sn0469-count-what-the-ledger-counts.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

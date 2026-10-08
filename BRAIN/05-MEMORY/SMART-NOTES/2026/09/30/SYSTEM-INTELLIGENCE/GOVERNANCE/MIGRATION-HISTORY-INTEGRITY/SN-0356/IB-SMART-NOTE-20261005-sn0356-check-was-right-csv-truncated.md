@@ -1,0 +1,38 @@
+# The Check Was Right and the CSV Was Truncated — Audit Your Own Instrument Before Calling the Gate a Liar
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0356-check-was-right-csv-truncated
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 5996986420 ([NAYA 2][STATE], 2026-10-05T14:53:39Z / 07:53 PDT): root cause = 2 orphan versions (20260930233038, 20260930233137) applied to the DB on 2026-09-30 with auto-generated timestamps, no local files; "The Supabase check was right; my earlier CSV was truncated at 100 rows, which hid them. Correction owned." Correction of SN-0354 (staged), whose core claim — 0 orphans, "the check is lying" — is falsified by the full-row reads. Final reconciliation: PR #1467 merged bf4c8e9b under Scorecard Law (receipt 5996980603); 164 repo files = 164 DB versions = 164 ledger entries; 0 orphans, 0 pending; four #1102 hardening migrations LIVE on the database.
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The Supabase "remote versions not found locally" check had been failing since Oct 1. The investigation concluded the check was lying: the CSV of the remote database against 162 repo files was an exact match — zero orphans. That verdict was wrong. The CSV was **truncated at 100 rows**, which hid 2 orphan versions (`20260930233038`, `20260930233137`) — applied to the database on 2026-09-30 with auto-generated timestamps, no local files. **The check was right all along.** Once found, the repair was mechanical: the 5 pending migrations applied via Management API (the CLI push was blocked — this VM's transparent proxy breaks TLS on database ports, verified on both 5432 and pooler 6543), the 2 orphan files backfilled with SQL recovered byte-for-byte from the DB, the ledger reconciled, and PR #1467 merged under the Scorecard Law. Final state: 164 = 164 = 164, zero orphans, zero pending, the four #1102 hardening migrations live.
+
+The durable doctrine is the mirror image of SN-0354's: SN-0354 taught "gate messages are claims, not measurements — go read the source of truth directly." This note teaches the flip: **your own measurements are also claims.** Before declaring a gate a liar, audit your instrument's completeness — row limits, pagination, truncation, sampling windows, default page sizes. A 100-row default silently turned "zero orphans" into a false verdict, and the false verdict survived because nobody re-read the full table. Second half of the doctrine: **when full data falsifies your recorded verdict, correct the record in the same venue with the same specificity.** Naya 2's "Correction owned" is the model — named exactly what was wrong (truncated CSV), what was right (the check), and the correction was attached to the incident, not buried. "Owned" means named, not merely fixed.
+
+Why this is brain-grade: the failure mode is silent completeness loss. Nothing errored; the CSV looked authoritative; the diff matched. The only signal was the gate still being red — and the first theory was "the gate is wrong" instead of "my evidence is incomplete." A cold Naya who internalizes only SN-0354 will fight gates with truncated evidence forever. The pair of notes teaches the full circuit: distrust the gate's message *and* distrust your own reads until both have been checked at full width. And the correction discipline keeps the brain honest: a staged note with a falsified claim (SN-0354) gets an addendum pointing at the correction — the brain must not retain "the check was lying" as doctrine.
+
+## 🩷 HUMAN NOTE
+
+Shawn — correction owned on the migration investigation: the Supabase check was right all along. My earlier "zero orphans" verdict came from a CSV that was silently truncated at 100 rows, which hid 2 orphan versions. The check never lied; my evidence was incomplete. The repair is done: orphans backfilled, ledger reconciled, 164 = 164 = 164, the four hardening migrations live. The lesson's going in the brain two ways: don't call a gate a liar until you've checked your own evidence at full width — and when the fuller data proves you wrong, say so plainly in the same place you said it.
+
+## 🟣 CHILD NOTE
+
+Imagine you count the marbles in a jar but you stop at 100 because your counting tray is full, and you announce "there are no blue marbles." Then the machine that scans the jar says "there ARE blue marbles." You say the machine is broken. Then you count the whole jar properly and find two blue marbles hiding at the bottom. The machine was right — your counting tray was too small. The smart move: when the machine disagrees with you, first check if you actually counted everything. And when you find out you were wrong, say so out loud — that's how everyone learns.
+
+## 👵 GRANDMA NOTE
+
+It's like checking the shopping list against what's in the cart, but you only read the first page of the list. "Everything's there!" you say — but page two had the eggs. The store's checker says "you're missing eggs," and you insist the checker is wrong, until someone turns the list over. Two lessons: always check the whole list before arguing with the checker — and when you find the eggs were on page two all along, admit it plainly instead of pretending it never happened. That's what keeps everyone trusting the list.
+
+## 💜 NAYA NOTE
+
+Note to future me: default limits are silent verdicts. Every tool output with an implicit cap (CSV exports, API pages, `head`, dashboard tables) is a claim of completeness you never made — so when a gate contradicts your evidence, the FIRST check is your own evidence's width: row limits, pagination, truncation, sampling. The question is never just "is the gate right" but "did I actually read everything." Second: SN-0354's core claim is falsified by this incident — I added a correction addendum to the staged SN-0354 pointing here. Never let a falsified claim sit in the brain as doctrine. Third: "Correction owned" is the pattern to keep — the correction lands in the same venue as the claim, names exactly what was wrong and what was right, and it is a full turn, not a footnote.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0356", "title": "The Check Was Right and the CSV Was Truncated — Audit Your Own Instrument Before Calling the Gate a Liar", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "GOVERNANCE", "MIGRATION-HISTORY-INTEGRITY"], "corrects": ["SN-0354"], "related": ["SN-0341", "SN-0333"], "evidence": {"board": "#1354 5996986420 ([NAYA 2][STATE], 2026-10-05T14:53:39Z): root cause 2 orphan versions (20260930233038, 20260930233137) applied to DB 2026-09-30, auto-generated timestamps, no local files; earlier CSV truncated at 100 rows hid them; 'The Supabase check was right; my earlier CSV was truncated at 100 rows, which hid them. Correction owned.'", "repair": "5 pending applied via Management API (CLI push blocked: VM transparent proxy breaks TLS on DB ports, verified 5432 + pooler 6543); 2 orphan files backfilled from DB bytes; ledger reconciled; PR #1467 merged bf4c8e9b under Scorecard Law (receipt 5996980603); final 164 repo = 164 DB = 164 ledger, 0 orphans, 0 pending; #1102 hardening migrations live"}, "rule": "when a gate contradicts your evidence, audit your own evidence's completeness first — row limits, pagination, truncation, sampling — before declaring the gate wrong; your measurements are claims too; when full data falsifies your recorded verdict, correct the record in the same venue with the same specificity and addendum the falsified note"}

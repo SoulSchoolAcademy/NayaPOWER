@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-056",
+ "intelligence": {
+  "title": "Evidence Beats Scoring — Reverse Your Own Executed Decision Openly When the Deciding Fact Arrives",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn056-evidence-beats-scoring-reversal",
+  "smart_note_id": "SN-056",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-056/IB-SMART-NOTE-20260930-sn056-evidence-beats-scoring-reversal.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-056/IB-SMART-NOTE-20260930-sn056-evidence-beats-scoring-reversal.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0328",
+ "intelligence": {
+  "title": "The Auto-Merge Gate Must Re-Verify on the Merge Commit — the Merge Itself Changes the Tree",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0328-the-auto-merge-gate-must-re-verify-on-the-merge-commit",
+  "smart_note_id": "SN-0328",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0328/IB-SMART-NOTE-20260930-sn0328-the-auto-merge-gate-must-re-verify-on-the-merge-commit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0328/IB-SMART-NOTE-20260930-sn0328-the-auto-merge-gate-must-re-verify-on-the-merge-commit.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

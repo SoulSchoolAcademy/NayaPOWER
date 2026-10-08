@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0624",
+ "intelligence": {
+  "title": "A Quarantine Snapshot Is Point-in-Time Evidence — Reconstruct the Collision Registry from Live Bytes Before Triaging",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0624-quarantine-snapshot-stale-reconstruct-live-bytes",
+  "smart_note_id": "SN-0624",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0624/IB-SMART-NOTE-20260930-sn0624-quarantine-snapshot-stale-reconstruct-live-bytes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0624/IB-SMART-NOTE-20260930-sn0624-quarantine-snapshot-stale-reconstruct-live-bytes.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

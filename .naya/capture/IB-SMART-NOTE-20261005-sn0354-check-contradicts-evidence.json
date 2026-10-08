@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0354",
+ "intelligence": {
+  "title": "The Check Can Contradict the Evidence — Reconcile the DB Directly, Then Accept the Verification Wall",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0354-check-contradicts-evidence",
+  "smart_note_id": "SN-0354",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MIGRATION-HISTORY-INTEGRITY/SN-0354/IB-SMART-NOTE-20261005-sn0354-check-contradicts-evidence.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/MIGRATION-HISTORY-INTEGRITY/SN-0354/IB-SMART-NOTE-20261005-sn0354-check-contradicts-evidence.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0175",
+ "intelligence": {
+  "title": "An Endorsement Only Counts on a Live Venue Re-Read",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0175-endorsement-on-live-venue-reread",
+  "smart_note_id": "SN-0175",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0175/IB-SMART-NOTE-20260930-sn0175-endorsement-on-live-venue-reread.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/COLLISION-REGISTRY/SN-0175/IB-SMART-NOTE-20260930-sn0175-endorsement-on-live-venue-reread.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0544",
+ "intelligence": {
+  "title": "Presence Is Not Influence — Separate Context Availability from Causal Proof",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0544-presence-is-not-influence-separate-context-from-causal-proof",
+  "smart_note_id": "SN-0544",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0544/IB-SMART-NOTE-20261007-sn0544-presence-is-not-influence-separate-context-from-causal-proof.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0544/IB-SMART-NOTE-20261007-sn0544-presence-is-not-influence-separate-context-from-causal-proof.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

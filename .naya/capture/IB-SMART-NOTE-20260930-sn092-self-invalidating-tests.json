@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-092",
+ "intelligence": {
+  "title": "Design Qualification Tests That Self-Invalidate — and Name the Consequence Class Honestly",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn092-self-invalidating-tests",
+  "smart_note_id": "SN-092",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-092/IB-SMART-NOTE-20260930-sn092-self-invalidating-tests.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-092/IB-SMART-NOTE-20260930-sn092-self-invalidating-tests.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

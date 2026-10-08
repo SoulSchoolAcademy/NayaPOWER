@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0579",
+ "intelligence": {
+  "title": "IB-SMART-NOTE — SN-0579 — NaN Compares False to Everything: Finiteness Is the Gate",
+  "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0579-nan-comparisons-false-finiteness-is-the-gate",
+  "smart_note_id": "SN-0579",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0579/IB-SMART-NOTE-20261007-sn0579-nan-comparisons-false-finiteness-is-the-gate.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/SECURITY-POSTURE/SN-0579/IB-SMART-NOTE-20261007-sn0579-nan-comparisons-false-finiteness-is-the-gate.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

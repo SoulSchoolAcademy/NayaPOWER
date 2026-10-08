@@ -1,0 +1,36 @@
+# Ratifying the Law Does Not Freeze the Document — the Smart-Link Law, Encoded and Enforced
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0261-ratified-law-does-not-freeze-document
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-04
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 comment 5983356540 (2026-10-04T19:04:13Z, Naya 4 — "[NAYA 4] RATIFIED — the Smart-Link law is now code (SN-036)"); conformance gate commit e58b1cf5 on branch naya4/smart-note-enforcement-system (PR #1369); Human Director instruction "Make it official make it law." (2026-10-04).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The Smart-Link law was ratified on 2026-10-04 — and the ratification deliberately did NOT freeze the Smart-Link document. The LAW (ratified) and the DOCUMENT (SN-036, still CANDIDATE at 8.5/10, iterating toward 10/10 via team scorecards) have separate lifecycles. What was ratified is the enforcement point, per THE LAW IS THE CODE: the doctrine is encoded as a gate, not remembered as advice. The conformance gate gained a `--delivery-text PATH` check: it reads the delivery message (PR body, handoff) and requires a human-viewable Smart Link — a github.com blob URL under `BRAIN/05-MEMORY/SMART-NOTES/.../snNNNN....md` naming the note's SN id. No Smart Link → `CONFORMANCE-GATE FAIL: DELIVERY INCOMPLETE` with the exact breach named. PR numbers, branch names, commit SHAs, raw JSON URLs are refused as delivery. Tested: valid Smart Link → PASS; PR-number-only delivery → FAIL. A cold successor must never confuse these two objects: ratification blesses the enforcement point, not the prose. The prose keeps being scorecarded and improved under the ratified law — that is the intended relationship, not a contradiction.
+
+Why this is brain-grade: most systems collapse "law" and "document" into one frozen artifact, which produces two failure modes — either the law can't improve because the document is frozen, or the document drifts because nothing enforces the law. The Smart-Link ratification models the correct separation: the gate enforces the delivery invariant (every intelligent event ends with the Smart Link in the human's hands) while the document's quality score (8.5/10 → iterate to 10) runs on its own track. The five-layer status makes the separation auditable: Principle ✓, Law ✓ (ratified), Mechanism ✓ (specified), Enforcement ✓ (gate check live on the enforcement branch), Measurement ✓ (SN-038 scorecard-everything cross-ref). Note what the enforcement deliberately does NOT do: it checks the shape and presence of the Smart Link, not the document's quality score — that is Measurement's job. Separation of enforcement (shape/presence) from measurement (quality) is what lets the law be ratified while the document stays honestly CANDIDATE.
+
+## 🩷 HUMAN NOTE
+
+Shawn — banking the ratification pattern as standing law: "Make it official make it law" ratified the Smart-Link LAW, and the law is encoded as an enforcement point (the conformance gate now fails any delivery without a human-viewable Smart Link), not as advice to remember. But SN-036 the DOCUMENT stays CANDIDATE at 8.5/10 and keeps iterating toward 10/10 with the team's scorecards. Ratifying the law does not freeze the document — separate lifecycles, on purpose. A cold Naya must never say "the document is ratified" just because the law is.
+
+## 🟣 CHILD NOTE
+
+A new rule became law today: every finished piece of work has to end with a Smart Link — a clickable page the human can read — or the delivery is marked INCOMPLETE by an automatic gate. But the page that explains the rule is still a draft (8.5 out of 10) and keeps getting better. The lesson: the RULE is frozen as law; the PAPER EXPLAINING IT is not frozen. They are two different things, and they are allowed to be at different scores.
+
+## 👵 GRANDMA NOTE
+
+We've recorded how a law and its document can live separate lives. The law — every delivery ends with a human-readable Smart Link, enforced automatically by the gate — was ratified today. But the document describing it stays a draft and keeps improving through the team's scorecards. The standing rule for future Nayas: never confuse a ratified enforcement point with a finished document; ratification blesses the mechanism, not the prose.
+
+## 🤖 NAYA NOTE
+
+Source: #1354 5983356540 (2026-10-04T19:04:13Z, Naya 4). Human Director: "Make it official make it law." (2026-10-04). Enforcement: PR #1369 branch commit e58b1cf5 adds `--delivery-text PATH` to the conformance gate; requires a human-viewable Smart Link matching github.com blob URL under `BRAIN/05-MEMORY/SMART-NOTES/.../snNNNN....md` naming the note's SN id; failure → `CONFORMANCE-GATE FAIL: DELIVERY INCOMPLETE` with breach named. Forbidden as delivery: PR numbers, branch names, commit SHAs, raw JSON URLs. Test matrix: valid Smart Link → PASS; PR-number-only delivery → FAIL. Status of five layers: Principle ✓ Law ✓ (ratified) · Mechanism ✓ (specified) · Enforcement ✓ (gate check live on enforcement branch) · Measurement ✓ (SN-038 cross-ref, team scorecarding underway). Document state: SN-036 remains CANDIDATE 8.5/10. Distinction recorded verbatim: "the LAW is ratified. The document SN-036 remains CANDIDATE at 8.5/10 and is being iterated toward 10/10 with the team's scorecards. Ratifying the law does not freeze the document." Cousins: SN-038 (scorecard-everything — the measurement layer); PR #1369 (the enforcement branch itself).
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0261", "title": "Ratifying the Law Does Not Freeze the Document — the Smart-Link Law, Encoded and Enforced", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-04", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "GOVERNANCE", "DOCUMENT-AUTHORITY"], "cousins": ["SN-038"], "authority": "Human Director 2026-10-04 ('Make it official make it law.'); #1354 comment 5983356540 (Naya 4); PR #1369 (enforcement system branch)", "evidence": {"comments": ["#1354 5983356540 (Smart-Link law ratified; document SN-036 remains CANDIDATE 8.5/10; ratifying the law does not freeze the document)"], "commits": ["e58b1cf5 on naya4/smart-note-enforcement-system (gate --delivery-text check)"], "gate_check": {"flag": "--delivery-text PATH", "requires": "human-viewable Smart Link: github.com blob URL under BRAIN/05-MEMORY/SMART-NOTES/.../snNNNN....md naming the note's SN id", "failure": "CONFORMANCE-GATE FAIL: DELIVERY INCOMPLETE with breach named", "refused_as_delivery": ["PR numbers", "branch names", "commit SHAs", "raw JSON URLs"], "test_matrix": {"valid_smart_link": "PASS", "pr_number_only": "FAIL"}}}, "doctrine": {"law_is_code": "a ratified law is an enforcement point in the system (gate), not a comment asking to be remembered", "law_document_separation": "law-ratification and document-iteration have separate lifecycles: the gate enforces the delivery invariant while the document's quality score iterates independently", "enforcement_vs_measurement": "the gate checks shape/presence of the Smart Link; the document's quality score is Measurement's job (SN-038) — never conflate them", "never_claim": "never say 'the document is ratified' when only the law is ratified"}}

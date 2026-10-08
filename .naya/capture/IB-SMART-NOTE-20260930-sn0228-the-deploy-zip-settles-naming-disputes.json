@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0228",
+ "intelligence": {
+  "title": "The Deploy Zip Settles Naming Disputes — Read the Artifact, Not Opinions",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0228-the-deploy-zip-settles-naming-disputes",
+  "smart_note_id": "SN-0228",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0228/IB-SMART-NOTE-20260930-sn0228-the-deploy-zip-settles-naming-disputes.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0228/IB-SMART-NOTE-20260930-sn0228-the-deploy-zip-settles-naming-disputes.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

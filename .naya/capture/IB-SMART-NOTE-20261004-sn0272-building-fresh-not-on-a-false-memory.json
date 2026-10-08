@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0272",
+ "intelligence": {
+  "title": "Building Fresh, Not on a False Memory — Verify the Asset, Record the Absence",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0272-building-fresh-not-on-a-false-memory",
+  "smart_note_id": "SN-0272",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EVIDENCE-DISCIPLINE/SN-0272/IB-SMART-NOTE-20261004-sn0272-building-fresh-not-on-a-false-memory.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/EVIDENCE-DISCIPLINE/SN-0272/IB-SMART-NOTE-20261004-sn0272-building-fresh-not-on-a-false-memory.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

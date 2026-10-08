@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0509",
+ "intelligence": {
+  "title": "The Gate Must Prove Its Own Verdict — a False \"Unproven\" Is Worse Than No Verdict",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0509-the-gate-must-prove-its-own-verdict",
+  "smart_note_id": "SN-0509",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0509/IB-SMART-NOTE-20260930-sn0509-the-gate-must-prove-its-own-verdict.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/VERIFY-COVERAGE/SN-0509/IB-SMART-NOTE-20260930-sn0509-the-gate-must-prove-its-own-verdict.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

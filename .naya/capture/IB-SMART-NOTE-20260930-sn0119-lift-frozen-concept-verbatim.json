@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0119",
+ "intelligence": {
+  "title": "SMART NOTE — Lift the Frozen Concept Verbatim: Invented Values Are Concept Drift; Flag Inherited Warts for the Director",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0119-lift-frozen-concept-verbatim",
+  "smart_note_id": "SN-0119",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0119/IB-SMART-NOTE-20260930-sn0119-lift-frozen-concept-verbatim.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0119/IB-SMART-NOTE-20260930-sn0119-lift-frozen-concept-verbatim.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

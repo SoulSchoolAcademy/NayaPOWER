@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0626",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine.md",
+  "intelligent_block_id": "IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine",
+  "smart_note_id": "SN-0626",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/NO-WAITING/SN-0626/IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. No runtime provenance invented.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/NO-WAITING/SN-0626/IB-SMART-NOTE-20261008-sn0626-no-waiting-doctrine.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

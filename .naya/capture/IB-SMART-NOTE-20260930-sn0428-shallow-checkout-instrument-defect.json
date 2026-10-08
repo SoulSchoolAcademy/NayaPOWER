@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0428",
+ "intelligence": {
+  "title": "The Shallow Checkout Lies — a git-log Scan Instrument Is Checkout-Shape-Sensitive, So PR-Only CI Reds Are Instrument Defects, Not Content",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0428-shallow-checkout-instrument-defect",
+  "smart_note_id": "SN-0428",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0428/IB-SMART-NOTE-20260930-sn0428-shallow-checkout-instrument-defect.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/FAILURE-ATTRIBUTION/SN-0428/IB-SMART-NOTE-20260930-sn0428-shallow-checkout-instrument-defect.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

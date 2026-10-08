@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0598",
+ "intelligence": {
+  "title": "Naya 1 Distilled Intelligence — Director / Integrator Operating Doctrine",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence",
+  "smart_note_id": "SN-0598",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-0598/IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-0598/IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

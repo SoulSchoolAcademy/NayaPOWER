@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0445",
+ "intelligence": {
+  "title": "The Evidence You Cannot Reach Is Not Evidence You Have — the Production DB Is Agent-Unobservable",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0445-db-is-agent-unobservable",
+  "smart_note_id": "SN-0445",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0445/IB-SMART-NOTE-20260930-sn0445-db-is-agent-unobservable.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/MEASUREMENT-BOUNDARY/SN-0445/IB-SMART-NOTE-20260930-sn0445-db-is-agent-unobservable.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

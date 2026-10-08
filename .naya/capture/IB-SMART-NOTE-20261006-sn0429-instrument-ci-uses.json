@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0429",
+ "intelligence": {
+  "title": "Verify with the Instrument CI Uses — a Branch's Exact-Pinned Tool Can Lag the Ratchet-Floor Version",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0429-instrument-ci-uses",
+  "smart_note_id": "SN-0429",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0429/IB-SMART-NOTE-20261006-sn0429-instrument-ci-uses.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/INSTRUMENT-PARITY/SN-0429/IB-SMART-NOTE-20261006-sn0429-instrument-ci-uses.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

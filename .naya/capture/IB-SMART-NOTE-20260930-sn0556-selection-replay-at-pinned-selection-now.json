@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0556",
+ "intelligence": {
+  "title": "Replay Canonical Selection at the Pinned selection_now — the Stale-Eligible-Block Forgery",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0556-selection-replay-at-pinned-selection-now",
+  "smart_note_id": "SN-0556",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KERNEL-CONTRACT-SEAMS/SN-0556/IB-SMART-NOTE-20260930-sn0556-selection-replay-at-pinned-selection-now.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KERNEL-CONTRACT-SEAMS/SN-0556/IB-SMART-NOTE-20260930-sn0556-selection-replay-at-pinned-selection-now.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

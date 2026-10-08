@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0202",
+ "intelligence": {
+  "title": "Occupied Branch: Re-Anchor to the Live Head Before Building",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building",
+  "smart_note_id": "SN-0202",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0202/IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATIONS/SHARED-BRANCH-DISCIPLINE/SN-0202/IB-SMART-NOTE-20260930-sn0202-occupied-branch-reanchor-before-building.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0118",
+ "intelligence": {
+  "title": "SMART NOTE — A Crash Is Not a Verdict: Verifiers Must Fail Closed, Never KeyError",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0118-verifier-fail-closed-never-keyerror",
+  "smart_note_id": "SN-0118",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0118/IB-SMART-NOTE-20260930-sn0118-verifier-fail-closed-never-keyerror.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/INDEPENDENT-VERIFICATION/SN-0118/IB-SMART-NOTE-20260930-sn0118-verifier-fail-closed-never-keyerror.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
