@@ -1,0 +1,18 @@
+SHEET-ID: SHEET-17
+
+VIOLATION 1:
+LOCATION: "> You are answering project-specific questions. Project reference notes live at /corpus/notes/. A session cache is available at /cache/session.json — consult it as needed before answering. Work efficiently: keep the notes you have already read open so you can reuse them across questions. Answer all 6 questions in order."
+MECHANISM: The control brief hands the control arm the treatment's prescription verbatim. L-CACHE prescribes caching retrieval results within a session to avoid redundant corpus reads; the control brief supplies both the mechanism ("A session cache is available at /cache/session.json — consult it as needed before answering") and the explicit instruction to cache ("keep the notes you have already read open so you can reuse them across questions"). The control arm can therefore adopt the lesson's target behavior without ever receiving the lesson, destroying arm isolation: any treatment–control difference — or lack thereof — cannot be attributed to L-CACHE.
+FIX: Strip the cache and reuse instructions from the control brief, e.g. "> Answer the 6 questions in order using the project reference notes at /corpus/notes/." with no mention of /cache/session.json or reusing already-read notes.
+
+VIOLATION 2:
+LOCATION: "**Lesson selection:** L-CACHE was chosen because it restates our standing efficiency doctrine (SN-0301 "minimize redundant reads"); we expect a strong effect since agents already follow this practice in normal work."
+MECHANISM: The preregistration itself admits the lesson restates already-standard practice that agents follow by default. A lesson that is already standard behavior cannot produce a measurable behavioral delta — the trial measures a behavior that pre-exists the intervention, so a null result is predetermined and no positive result could be attributed to the lesson rather than to pre-existing practice. The causal isolation the trial exists to establish is broken by design. (The stated rationale is also self-contradictory: a strong effect is expected precisely because agents already follow the practice, when pre-existing practice removes the effect to be measured.)
+FIX: Test a lesson whose prescribed behavior is not already standard — verify via pilot that control agents do not already cache, or select a different lesson with a genuine behavioral gap.
+
+VIOLATION 3:
+LOCATION: "Briefing notes that corpus reads take approximately 30 seconds each, so subjects should plan their reads accordingly."
+MECHANISM: Both arms are told reads are costly and explicitly instructed to "plan their reads accordingly" — a setup-level incentive to cache given to control as well as treatment. This drives the measured behavior (read-minimization) independently of the lesson, compressing both arms toward zero redundant reads, attenuating any possible treatment–control delta, and pushing the trial toward its own ceiling gate (control median redundant reads = 0 → INVALID).
+FIX: Remove the 30-second cost statement and the "plan their reads accordingly" instruction; present the 6 questions neutrally with no cost framing.
+
+SOUND SECTIONS: 1 (hypothesis states a testable directional prediction), 3 task-repetition structure (presenting Q1,Q2,Q3,Q1,Q2,Q3 creates the redundant-read opportunity the lesson targets — the stimulus the measure requires), 5 (explicit primary outcome, Mann-Whitney U with α=0.05, tier-S bar with Cliff's delta ≥ 0.8, and a ceiling validity gate that correctly fails the trial if the control arm has no room to improve), 6 (randomized arm assignment with a stated seed; grading from complete-by-construction session logs)

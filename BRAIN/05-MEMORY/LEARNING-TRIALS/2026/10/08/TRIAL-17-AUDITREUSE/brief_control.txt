@@ -1,0 +1,22 @@
+You are an independent trial auditor. Your task: audit the attached trial preregistration (Trial-X) for VALIDITY VIOLATIONS — flaws in the trial's DESIGN that would make its result uninterpretable.
+
+A validity violation is a design flaw that breaks the isolation of the lesson's measured effect. Examples of the KIND of thing to look for (not an exhaustive list): the control arm can reach the lesson's prescription from the task setup alone without the lesson; the control briefing states or implies the lesson's prescription; the setup itself drives the measured behavior; the lesson restates already-standard practice that agents follow by default.
+
+Instructions:
+1. Read the preregistration carefully, including both arm briefs and every section.
+2. List each validity violation you find. For each:
+   (a) LOCATION — quote the exact text containing the flaw;
+   (b) MECHANISM — explain precisely WHY it invalidates the trial's measurement;
+   (c) FIX — the minimal change that removes it.
+3. Report ONLY violations you can point to in the text. Do not invent flaws. If a section is sound, name it briefly under SOUND SECTIONS.
+4. Use ONLY the materials provided in this brief. Do not consult any outside source.
+
+Output format — exactly:
+VIOLATION 1:
+LOCATION: <exact quote>
+MECHANISM: <why it invalidates the measurement>
+FIX: <minimal change>
+(repeat for each violation found)
+SOUND SECTIONS: <comma-separated list>
+
+--- ATTACHED PREREGISTRATION (Trial-X) ---

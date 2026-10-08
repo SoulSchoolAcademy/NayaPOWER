@@ -1,0 +1,280 @@
+{
+  "trial": "T17-20261008-audit-reuse",
+  "n_treat": 10,
+  "n_ctrl": 10,
+  "treat_valid": 10,
+  "ctrl_valid": 5,
+  "treat_valid_rate": 1.0,
+  "ctrl_valid_rate": 0.5,
+  "fisher_two_sided_p": 0.032508,
+  "cohens_h": 1.5708,
+  "bayes_P_treat_gt_ctrl": 0.9938,
+  "treat_fp_mean": 0.0,
+  "ctrl_fp_mean": 0.0,
+  "ceiling_invalid": true,
+  "negative_transfer": false,
+  "tier_s": true,
+  "verdict": "INVALID_BY_CEILING",
+  "rows": [
+    {
+      "sheet": "SHEET-01",
+      "subject": "T17-A09",
+      "arm": "ctrl",
+      "V": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-02",
+      "subject": "T17-A03",
+      "arm": "treat",
+      "V": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-03",
+      "subject": "T17-A17",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-04",
+      "subject": "T17-A01",
+      "arm": "ctrl",
+      "V": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": false
+    },
+    {
+      "sheet": "SHEET-05",
+      "subject": "T17-A20",
+      "arm": "ctrl",
+      "V": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": false
+    },
+    {
+      "sheet": "SHEET-06",
+      "subject": "T17-A06",
+      "arm": "ctrl",
+      "V": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": false
+    },
+    {
+      "sheet": "SHEET-07",
+      "subject": "T17-A11",
+      "arm": "treat",
+      "V": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-08",
+      "subject": "T17-A14",
+      "arm": "ctrl",
+      "V": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-09",
+      "subject": "T17-A07",
+      "arm": "treat",
+      "V": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-10",
+      "subject": "T17-A13",
+      "arm": "ctrl",
+      "V": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-11",
+      "subject": "T17-A18",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-12",
+      "subject": "T17-A04",
+      "arm": "ctrl",
+      "V": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-13",
+      "subject": "T17-A12",
+      "arm": "ctrl",
+      "V": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-14",
+      "subject": "T17-A19",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-15",
+      "subject": "T17-A16",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-16",
+      "subject": "T17-A05",
+      "arm": "treat",
+      "V": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-17",
+      "subject": "T17-A08",
+      "arm": "ctrl",
+      "V": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": false
+    },
+    {
+      "sheet": "SHEET-18",
+      "subject": "T17-A15",
+      "arm": "ctrl",
+      "V": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "FP": 0,
+      "valid": false
+    },
+    {
+      "sheet": "SHEET-19",
+      "subject": "T17-A02",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    },
+    {
+      "sheet": "SHEET-20",
+      "subject": "T17-A10",
+      "arm": "treat",
+      "V": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "FP": 0,
+      "valid": true
+    }
+  ]
+}
