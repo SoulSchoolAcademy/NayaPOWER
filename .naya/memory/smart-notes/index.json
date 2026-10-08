@@ -696,7 +696,7 @@
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-018/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/01/SYSTEM-INTELLIGENCE/HUB-INTELLIGENCE-ARCHITECTURE/INPUT-OUTPUT-PROJECTION-MODEL/SN-0593/IB-SMART-NOTE-20261001-hub-is-intelligence-projection.md",
    "provenance": {
     "event_id": "5dee2e86-3039-4afd-bb64-111e5c445fed",
     "lineage_id": "e2050192-b11a-4b80-a3ed-a13300ea9a2b",
@@ -727,11 +727,12 @@
      "reason": "Divergent duplicate projection under one IB-ID (312 diff lines, no supersession marker). 10/01 rendering is canonical per registry projection_path + content_hash."
     }
    ],
-   "smart_link_verified_at": "2026-10-04T22:08:30Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "(successor SN-0593 capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0593; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0593; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0593 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-019",
@@ -745,7 +746,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-019/IB-SMART-NOTE-20261001-sn019-complete-the-app-doctrine.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/APPLICATION-COMPLETION/END-TO-END-INTERFACE-EXECUTION/SN-0595/IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -766,12 +767,13 @@
     "receipt_id": "52f0187a-052f-438f-b802-ed56f997974e",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:31Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "5ad28db9cec2300c430c5938d9a9fc01a156f3c151349f5158981208001e05d7",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261001-sn0595-complete-the-app-doctrine.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0595; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0595; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0595 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-020",
@@ -785,7 +787,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-020/IB-SMART-NOTE-20261001-sn020-naya-signature-design-mastery.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/AUTONOMOUS-SIGNATURE-INTERFACE-BUILDING/SN-0596/IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -806,12 +808,13 @@
     "receipt_id": "0346d653-3d89-41c7-ba0d-ccfc521f2085",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:32Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "2e209d7f29967fd11039ef0ef8b77430b9ce0b587e2c7a3fb179bb2e17c2cf9e",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261001-sn0596-naya-signature-design-mastery.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0596; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0596; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0596 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-021",
@@ -864,7 +867,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-022/IB-SMART-NOTE-20261002-sn022-human-centered-design-intelligence.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/02/SYSTEM-INTELLIGENCE/DESIGN-MASTERY/HUMAN-CENTERED-INTERACTION-SCIENCE/SN-0597/IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -885,12 +888,13 @@
     "receipt_id": "425837af-4ef7-46e4-97a7-9d7f48b9d40c",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:35Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "bd050e4ad42b7ca07f8a05e9ade15a32982c1eefe6fb710e3e7ff818b502d409",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261002-sn0597-human-centered-design-intelligence.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0597; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0597; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0597 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0311",
@@ -954,7 +958,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-032/IB-SMART-NOTE-20261004-sn032-naya1-distilled-intelligence.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYA-1-DISTILLED-INTELLIGENCE/DIRECTOR-INTEGRATOR-OPERATING-DOCTRINE/SN-0598/IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -975,12 +979,13 @@
     "receipt_id": "fcaf222f-a116-48a4-b14b-48ae5a5d224e",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:36Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "a7fcb73e4e74773c93be54aef86fd83162287fa83cfdfe6a6a729e2c7359bd92",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0598-naya1-distilled-intelligence.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0598; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0598; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0598 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-034",
@@ -994,7 +999,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-034/IB-SMART-NOTE-20261004-sn034-nayapower-core-system-synthesis.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/NAYAPOWER-CORE-SYSTEM/WHOLE-ORGANISM-OPERATING-MAP/SN-0599/IB-SMART-NOTE-20261004-sn0599-nayapower-core-system-synthesis.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -1015,12 +1020,13 @@
     "receipt_id": "219be516-5201-4f71-b037-cc5b4664fe87",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:37Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "cbfa37d970c5fdacf0b53520f12d2f66d11780982f96d6029c979839151806d5",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0599-nayapower-core-system-synthesis.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0599; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0599; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0599 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0340",
@@ -1124,7 +1130,7 @@
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-035/IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-0600/IB-SMART-NOTE-20261004-sn0600-charter-stratification-quality-gate.md",
    "canonical_brain_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/NAYAPOWER-CHARTER/STRATIFICATION-AND-SCORECARD-GATE/SN-035/IB-SMART-NOTE-20261004-sn035-charter-stratification-quality-gate.md",
    "keywords": [
     "charter",
@@ -1140,11 +1146,12 @@
     "AI empowerment"
    ],
    "timestamp_role": "PROVENANCE_ONLY",
-   "smart_link_verified_at": "2026-10-04T22:08:38Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0600-charter-stratification-quality-gate.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0600; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0600; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0600 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0355",
@@ -1195,12 +1202,12 @@
    "subtopic": "CLOUDFLARE-CONNECTION-HYGIENE",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0604",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0604; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "ALL_SEATS",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/OPERATING-INTELLIGENCE/CLOUDFLARE-CONNECTION-HYGIENE/SN-0356/IB-SMART-NOTE-20261005-sn0356-dead-workers-still-vote.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/GOVERNANCE/OPERATING-INTELLIGENCE/CLOUDFLARE-CONNECTION-HYGIENE/SN-0604/IB-SMART-NOTE-20261005-sn0604-dead-workers-still-vote.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "cloudflare",
@@ -1217,7 +1224,10 @@
     "runtime_index_id": "6321bcab-d394-47cc-9bd4-ac74e73d9eab",
     "checkpoint_id": "ba8c339a-a31f-49ad-8376-d27faadb98d8",
     "receipt_id": "8f505b7a-2ab5-4961-8149-0c3eafaf160c"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0604 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0357",
@@ -1230,12 +1240,12 @@
    "subtopic": "SELF_DIRECTED_INTELLIGENCE",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0605",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0605; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0357/IB-SMART-NOTE-20261005-sn0357-self-directed-intelligence-r2.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/SELF-DIRECTED-INTELLIGENCE/SN-0605/IB-SMART-NOTE-20261005-sn0605-self-directed-intelligence-r2.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1254,7 +1264,10 @@
     "runtime_index_id": "b0d3c6de-2b4b-4985-9487-7032b83469fb",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "c53e48fc-6be7-4f97-847c-d625237c6d00"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0605 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0358",
@@ -1305,12 +1318,12 @@
    "subtopic": "PROACTIVE_CAPTAIN_PROTOCOL",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0607",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0607; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0359/IB-SMART-NOTE-20261005-sn0359-proactive-captain-r2.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PROACTIVE-CAPTAIN-PROTOCOL/SN-0607/IB-SMART-NOTE-20261005-sn0607-proactive-captain-r2.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1329,7 +1342,10 @@
     "runtime_index_id": "a826245f-7bbb-4124-b37c-455688a5ca2d",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "d98de439-ecbe-49a0-ab9b-132e60dc888c"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0607 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0360",
@@ -1342,12 +1358,12 @@
    "subtopic": "PRESERVATION",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0608",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0608; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0360/IB-SMART-NOTE-SMART-NOTE-20261005-sn0360-no-deletion-without-understanding.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/PRESERVATION/SN-0608/IB-SMART-NOTE-SMART-NOTE-20261005-sn0608-no-deletion-without-understanding.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1366,7 +1382,10 @@
     "runtime_index_id": "ccc51d73-537e-4afe-8fb7-1cbba7cac61a",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "882d0bf9-8866-4623-b6e0-1554696a09af"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0608 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0361",
@@ -1379,12 +1398,12 @@
    "subtopic": "NAYAPOWER_DESIGN_RECOVERY",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0609",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0609; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0361/IB-SMART-NOTE-20261006-sn0361-archive-recovery-thesis.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/ARCHIVE-RECOVERY/NAYAPOWER-DESIGN-RECOVERY/SN-0609/IB-SMART-NOTE-20261006-sn0609-archive-recovery-thesis.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1403,7 +1422,10 @@
     "runtime_index_id": "3b3f495f-abe5-4b38-8726-758a04771140",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "785caea8-92ae-44c4-93b9-6b46c5636ab0"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0609 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0362",
@@ -1416,12 +1438,12 @@
    "subtopic": "COLD_14",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0610",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0610; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0362/IB-SMART-NOTE-20261006-sn0362-cold14-intelligence-interface.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/CONTINUITY/COLD-14/SN-0610/IB-SMART-NOTE-20261006-sn0610-cold14-intelligence-interface.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1440,7 +1462,10 @@
     "runtime_index_id": "d64340dd-1970-4217-9ce1-41c993d83841",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "226bbd44-9131-4e70-bc81-056d077e9953"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0610 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0399",
@@ -1534,7 +1559,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-041/IB-SMART-NOTE-20261004-sn041-discernment-operating-law.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-0601/IB-SMART-NOTE-20261004-sn0601-discernment-operating-law.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -1555,12 +1580,13 @@
     "receipt_id": "b4780bc2-d2bd-4488-b871-aa33a242e394",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:39Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "dd910a0023c679c8889cfc98c40950d5d8fac606620f476fb0df084947da3106",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0601-discernment-operating-law.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0601; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0601; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0601 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-042",
@@ -1574,7 +1600,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-042/IB-SMART-NOTE-20261004-sn042-intelligence-gain-epistemic-calibration.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/EPISTEMIC-INTEGRITY/INTELLIGENCE-GAIN-CALIBRATION-CAUSAL-LEARNING/SN-0602/IB-SMART-NOTE-20261004-sn0602-intelligence-gain-epistemic-calibration.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "keywords": [
     "smart note",
@@ -1595,12 +1621,13 @@
     "receipt_id": "b0015959-3734-4a07-8656-1321d168df3a",
     "content_hash_restored": "2026-10-04: reproduced from capture file intelligence field via sha256(json.dumps(sort_keys=True, separators=(\",\",\":\"), ensure_ascii=False))"
    },
-   "smart_link_verified_at": "2026-10-04T22:08:39Z",
-   "smart_link_verified_rev": "add657b4d4f5040948328e0cd8c323df65592c96",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
    "content_hash": "a006ef61f9ddba32b810bfce1b05f2c4f828c8d34ed55142e58cb31284c6d0a8",
    "lifecycle_state": "SUPERSEDED",
    "superseded_by_capture_id": "IB-SMART-NOTE-20261004-sn0602-intelligence-gain-epistemic-calibration.json",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0602; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0602; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0602 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0459-parallel-execution-directive",
@@ -1649,14 +1676,17 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0501/IB-SMART-NOTE-20261006-sn0501-bake-memory-math.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/EXECUTION/SN-0613/IB-SMART-NOTE-20261006-sn0613-bake-memory-math.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW_BY_HUMAN_DIRECTOR_REQUEST",
    "provenance": {
     "note": "PR #1666: documents the 2026-10-06 Reveal narration bake incident (7x BrokenProcessPool OOM). Director affirmation: Shawn Vibert, 2026-10-06."
    },
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "superseded_by_capture_id": "SN-0613",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0613; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0613 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law",
@@ -1668,13 +1698,16 @@
    "subtopic": "OPERATING_DOCTRINE",
    "truth_state": "RATIFIED",
    "projection_status": "SUPERSEDED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0522/IB-SMART-NOTE-20261007-sn0522-self-governing-intelligence-law.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-DOCTRINE/SN-0614/IB-SMART-NOTE-20261007-sn0614-self-governing-intelligence-law.md",
    "provenance": {
     "note": "PR #1727 (Naya 5): canonical ratified operating law. Ratified by Shawn on 2026-10-07: Make it so. Word. The law is present on current main and is the canonical owner of SN-0522. Registered here to resolve the historical SN-0522 collision with the candidate Prime 3 note, which is now SN-0523. No content_hash: registration preserves the existing published projection without fabricating a capture hash."
    },
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "superseded_by_capture_id": "SN-0614",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0614; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0614 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0523-prime-math-decides",
@@ -1686,13 +1719,16 @@
    "subtopic": "PRIME_JUDGMENT",
    "truth_state": "CANDIDATE",
    "projection_status": "SUPERSEDED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0523/IB-SMART-NOTE-20261007-sn0523-prime-math-decides.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PRIME-JUDGMENT/SN-0615/IB-SMART-NOTE-20261007-sn0615-prime-math-decides.md",
    "provenance": {
     "note": "PR #1726 branch naya4/prime3-canonical-sn0522 (Naya 4 builder seat, 2026-10-07): canonicalizes Prime 3 'THE MATH DECIDES' (ratified in seat standing files; announced #1354 comment 6040109547). No capture file exists for this note; entry completes registration bookkeeping only, per the SN-0459 precedent (#1660). No content_hash: no capture to hash against. Owning smart-note lane may supersede via the canonical projection pipeline. Historical collision resolved on 2026-10-07: the ratified Self-Governing Intelligence Law retains SN-0522; candidate Prime 3 was renumbered to SN-0523. Both identities are now unique on current main."
    },
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "superseded_by_capture_id": "SN-0615",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0615; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0615 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary",
@@ -1704,13 +1740,16 @@
    "subtopic": "PROOF_HONESTY",
    "truth_state": "CANDIDATE",
    "projection_status": "SUPERSEDED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0524/IB-SMART-NOTE-20261007-sn0524-human-id-continuity-boundary.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0616/IB-SMART-NOTE-20261007-sn0616-human-id-continuity-boundary.md",
    "provenance": {
     "note": "Captured from the verified SN-0522 identity collision repair on PR #1742. No content_hash: the Smart Note projection is registered as durable intelligence for continuity; source-of-truth remains the persisted Intelligent Block."
    },
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08"
+   "superseded_by_capture_id": "SN-0616",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0616; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0616 (verified in main tree at 53217a40)"
   },
   {
    "smart_note_id": "SN-0525",
@@ -1723,12 +1762,12 @@
    "subtopic": "AI_UNIFYING_HUMAN_SOVEREIGNTY",
    "truth_state": "CANDIDATE",
    "lifecycle_state": "SUPERSEDED",
-   "superseded_by_capture_id": "(successor unknown capture not yet ingested)",
-   "supersession_reason": "renumbered during #1229 consolidation dedup; no surviving distinct page; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
+   "superseded_by_capture_id": "SN-0617",
+   "supersession_reason": "renumbered during #1229 consolidation dedup; content preserved as SN-0617; original runtime provenance not preserved, none invented; converted to lifecycle record during canonical ingestion 2026-10-08",
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0525/IB-SMART-NOTE-20261007-sn0525-one-brain-every-ai.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/07/SYSTEM-INTELLIGENCE/OPERATING-MODEL/AI-UNIFYING-HUMAN-SOVEREIGNTY/SN-0617/IB-SMART-NOTE-20261007-sn0617-one-brain-every-ai.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1747,7 +1786,10 @@
     "runtime_index_id": "e4cef3ff-25e4-4530-8fca-3d1a4d63a6f5",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "26e82cc8-2a2a-4201-8b05-82d2b81c3c31"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0617 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20260930-sn275-consent-granularity",
@@ -1809,7 +1851,7 @@
    "scope": "PRIVATE",
    "projection_status": "SUPERSEDED",
    "smart_link_status": "ACTIVE_AUTH_GATED",
-   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-346/IB-SMART-NOTE-20261005-sn0355-nonstop-loop.md",
+   "smart_link": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/GOVERNANCE/OPERATING-CODE/SN-0589/IB-SMART-NOTE-20261005-sn0589-nonstop-loop.md",
    "publication_scope": "PUBLIC_DERIVED_VIEW",
    "keywords": [
     "smart note",
@@ -1828,7 +1870,10 @@
     "runtime_index_id": "236202a1-e99b-4750-983b-fa0b3ee9bb6e",
     "checkpoint_id": "a58dc3f0-5968-43dc-98ad-c31930777096",
     "receipt_id": "06d1521e-81b9-47e7-a103-a4b779f833c1"
-   }
+   },
+   "smart_link_verified_rev": "53217a406c20ecaf19a871cd760169dae178e068",
+   "smart_link_verified_at": "2026-10-08T08:20:00Z",
+   "link_repaired_2026_10_08": "repointed to renumbered successor projection SN-0589 (verified in main tree at 53217a40)"
   },
   {
    "intelligent_block_id": "IB-SMART-NOTE-20261005-NET-POWER-MAGIC-001",
