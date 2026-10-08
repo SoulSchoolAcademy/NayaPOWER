@@ -226,3 +226,24 @@ def close_receipts(receipts,
 
     return CloseResult(closed=tuple(closed), records=tuple(records),
                        skipped=tuple(skipped))
+
+
+def reconcile_ledger(ledger: ap.ReceiptLedger,
+                     *,
+                     verifier_id: str,
+                     verdict_fn: Callable[[ap.ActionReceipt], Verdict],
+                     now: float | None = None,
+                     log: VerdictLog | None = None) -> CloseResult:
+    """Runtime entry point: feed the producer's receipt record through the
+    VERIFY seam. A 24/7 worker calls this once per reconciliation cycle,
+    after the independent verifier's judgments are available; the seam
+    decides eligibility per receipt. No caller walks the ledger itself —
+    one seam, no forks, no duplicate stores.
+
+    A missing ledger is refused loudly: reconciliation of nothing is a
+    defect, never a no-op success.
+    """
+    if ledger is None:
+        raise VerdictRefused("receipt ledger is required; nothing to reconcile")
+    return close_receipts(ledger.entries(), verifier_id=verifier_id,
+                          verdict_fn=verdict_fn, now=now, log=log)

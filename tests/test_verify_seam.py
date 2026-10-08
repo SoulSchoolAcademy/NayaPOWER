@@ -236,3 +236,33 @@ def test_verdict_log_bound_fails_loud():
     with pytest.raises(vs.LogFull):
         vs.close_receipts([receipt2], verifier_id="naya-2",
                           verdict_fn=_accept, now=NOW, log=log)
+
+
+# ---------------- runtime wiring: ledger -> seam ----------------
+
+def test_reconcile_ledger_closes_completed_from_producer_record():
+    """A 24/7 worker hands the producer's ReceiptLedger to reconcile_ledger;
+    the seam iterates it — no caller walks the ledger itself."""
+    plan, plan_receipt = ap.plan_action(_authority(), [_candidate()],
+                                        _profile(), now=NOW)
+    ledger = ap.ReceiptLedger()
+    ledger.append(plan_receipt)
+    ap.execute_plan(plan, executor=lambda p: "node state updated, previous state restorable",
+                    re_resolve=lambda: _authority(), now=NOW, ledger=ledger)
+    log = vs.VerdictLog()
+    result = vs.reconcile_ledger(ledger, verifier_id="naya-2",
+                                verdict_fn=_accept, now=NOW, log=log)
+    assert len(result.closed) == 1
+    assert result.closed[0].truth_state == "VERIFIED"
+    assert result.closed[0].outcome_verified is True
+    assert log.closed_receipt_ids() == frozenset({result.closed[0].receipt_id})
+    # PLAN_ACCEPTED / EXECUTION_STARTED receipts are named, never closed.
+    assert {r for r, _ in result.skipped} == (
+        frozenset(r.receipt_id for r in ledger.entries()
+                  if r.phase != "EXECUTION_COMPLETED"))
+
+
+def test_reconcile_ledger_without_ledger_is_refused():
+    with pytest.raises(vs.VerdictRefused):
+        vs.reconcile_ledger(None, verifier_id="naya-2",
+                            verdict_fn=_accept, now=NOW)
