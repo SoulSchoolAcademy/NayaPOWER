@@ -94,6 +94,19 @@
       "status": "CANDIDATE",
       "text": "When any agent sees something valuable \u2014 lesson, pattern, fix, insight \u2014 it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
       "machine_check": "kernel/protocol/learning_capture.py"
+    },
+    {
+      "id": "SN-DESIGN-CONTRACT",
+      "title": "Naya Design Contract V1",
+      "status": "CANDIDATE",
+      "text": "The Naya Design Contract V1 governs every visual surface: field/spectrum tokens, room accents, button law, 18px body, spectrum flow, reduced motion. Conflicts X-1/X-2/X-3 are recorded for Shawn's ratification; the briefing + shipped ground truths govern until he rules. CANDIDATE pending Shawn's ratification \u2014 never mark ratified without his word.",
+      "machine_check": "tools/design_law/check_design.py",
+      "contract_files": [
+        "contract/NAYA-DESIGN-CONTRACT-V1.md",
+        "contract/NAYA-DESIGN-CONTRACT-V1.ai.md",
+        "contract/naya-design-contract-v1.machine.json"
+      ],
+      "enforcement": "no design surface ships without passing check_design.py"
     }
   ],
   "never_do": [

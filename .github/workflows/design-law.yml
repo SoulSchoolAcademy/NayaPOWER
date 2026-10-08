@@ -1,0 +1,95 @@
+# Design law gate — Naya Design Contract V1 (CANDIDATE)
+#
+# Runs tools/design_law/check_design.py against every tracked HTML file on each
+# PR. Static, stdlib-only, no browser, no rendering — finishes in seconds.
+#
+# Enforcement model (ratchet, per contract X-3): the contract is CANDIDATE and
+# shipped pages carry documented pre-existing drift (repairs D1-D9 pending
+# Shawn's ratification). So the gate FAILS only when files touched by the PR
+# introduce violations. Pre-existing drift elsewhere is reported as baseline
+# and does not block unrelated work — no design surface SHIPS new violations.
+name: design-law
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  design-law:
+    name: design-law (check_design.py)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+
+      - name: Fetch PR base ref
+        run: git fetch origin "${{ github.base_ref }}" --depth=1
+
+      - name: Run design law checker (all files; gate on PR-touched files)
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          python3 - <<'EOF'
+          import json
+          import os
+          import subprocess
+          import sys
+
+          CHECKER = "tools/design_law/check_design.py"
+          base = os.environ["BASE_REF"]
+
+          def run(*args):
+              return subprocess.run(args, capture_output=True, text=True)
+
+          # All tracked HTML files, NUL-separated (filenames may contain spaces)
+          all_files = [f for f in
+                       run("git", "ls-files", "-z", "*.html").stdout.split("\0") if f]
+
+          # HTML files this PR adds/copies/modifies/renames
+          diff = run("git", "diff", "--name-only", "--diff-filter=ACMR", "-z",
+                     f"origin/{base}...HEAD", "--", "*.html")
+          if diff.returncode != 0:
+              print(f"[ERROR] could not determine PR-changed files:\n{diff.stderr}")
+              print("DESIGN LAW GATE FAILED (fail-closed: changed-file set unknown)")
+              sys.exit(1)
+          changed = {f for f in diff.stdout.split("\0") if f}
+
+          if not all_files:
+              print("no tracked HTML files; nothing to check")
+              sys.exit(0)
+
+          baseline_files = 0
+          gate_failures = 0
+          for path in sorted(all_files):
+              r = run(sys.executable, CHECKER, path, "--json")
+              try:
+                  out = json.loads(r.stdout)
+              except Exception:
+                  print(f"[ERROR] checker crashed on {path}")
+                  gate_failures += 1
+                  continue
+              fails = [v for v in out["violations"] if v["severity"] == "FAIL"]
+              if not fails:
+                  continue
+              if path in changed:
+                  gate_failures += len(fails)
+                  print(f"[FAIL] {path}: {len(fails)} violation(s) introduced by this PR")
+                  for v in fails:
+                      print(f"         [{v['id']}] {v['message']}")
+              else:
+                  baseline_files += 1
+                  print(f"[BASELINE] {path}: {len(fails)} pre-existing violation(s) "
+                        f"(documented drift, X-3 — not blocking this PR)")
+
+          print("---")
+          print(f"files checked: {len(all_files)} | PR-touched: {len(changed)} | "
+                f"baseline drift files: {baseline_files} | "
+                f"PR-introduced violations: {gate_failures}")
+          if gate_failures:
+              print("DESIGN LAW GATE FAILED: no design surface ships "
+                    "without passing check_design.py")
+              sys.exit(1)
+          print("DESIGN LAW GATE PASSED")
+          EOF
