@@ -125,6 +125,14 @@
     "supabase/functions/nayanet-verified-ai-action/index.ts": {
       "verdict": "REVIEWED_OK",
       "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+    },
+    ".github/workflows/live-act-proof.yml": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE. The literal sits in the proof dict AFTER ~25 independent assertions in the same run step (cold re-read of plan + authoritative execution state, recomputed==stored, receipt-id and behavior matches). The step runs under set -euo pipefail, so any failed assertion aborts before the literal is written; the literal records the workflow's own completed verification, it does not self-certify an unchecked outcome. Recorded so a future edit that moves the literal above the assertion gauntlet fails the move-above-guard test."
+    },
+    "tools/live_intelligence_reconcile.py": {
+      "verdict": "REVIEWED_OK",
+      "reason": "SAFE. In verify_supersession the literal is returned only after a raise-gauntlet (prior lineage valid, BLOCK_VERIFIED, supersession chain forward/back links, content hash equality); any failed check raises ValueError before the return is reached. The literal therefore attests to checks that actually executed. Recorded so a future edit that returns before the gauntlet fails the move-above-guard test."
     }
   },
   "repaired_claims": {

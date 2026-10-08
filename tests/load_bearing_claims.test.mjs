@@ -221,16 +221,32 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
   // with a reason. A bare allowlist would let a real regression hide next to a false
   // positive. A verdict is auditable; a silenced rule is not.
   const offenders = new Set();
+  const scanLiteral = (rel) => {
+    const text = readFileSync(join(ROOT, rel), "utf8");
+    // TS/JS runtimes: independent_verification: true  |  Python/YAML: "independent_verification": True
+    if (/independent_verification\s*:\s*true/.test(text) || /["']independent_verification["']\s*:\s*True/.test(text)) {
+      offenders.add(rel);
+    }
+  };
   const dir = join(ROOT, "supabase", "functions");
   for (const fn of readdirSync(dir, { withFileTypes: true })) {
     if (!fn.isDirectory()) continue;
     for (const f of readdirSync(join(dir, fn.name))) {
       if (!f.endsWith(".ts")) continue;
-      const rel = `supabase/functions/${fn.name}/${f}`;
-      if (/independent_verification\s*:\s*true/.test(readFileSync(join(dir, fn.name, f), "utf8"))) {
-        offenders.add(rel);
-      }
+      scanLiteral(`supabase/functions/${fn.name}/${f}`);
     }
+  }
+  // The same trust class lives outside TS runtimes: live workflows build proof
+  // receipts, and tools/*.py builds verification responses. A literal on any of
+  // these surfaces is self-certification with the same blast radius, so the
+  // scanner covers them too. Excludes this test file's own quoted patterns.
+  for (const f of readdirSync(join(ROOT, ".github", "workflows"))) {
+    if (!f.endsWith(".yml")) continue;
+    scanLiteral(`.github/workflows/${f}`);
+  }
+  for (const f of readdirSync(join(ROOT, "tools"))) {
+    if (!f.endsWith(".py")) continue;
+    scanLiteral(`tools/${f}`);
   }
 
   const verdicts = RECORD.hardcoded_independent_verification_sites ?? {};
@@ -257,6 +273,42 @@ test("CLAIM 2 -- every runtime site hardcoding independent_verification has a re
       `${site} must record WHY it is safe or what is wrong with it`
     );
   }
+});
+
+test("CLAIM 2 -- REVIEWED_OK literals cannot be moved above their guards", () => {
+  // A REVIEWED_OK verdict is a claim about ORDER: the literal is safe only
+  // because verification executes before it is written. Moving the literal
+  // above its guard turns a safe attestation into self-certification, so each
+  // REVIEWED_OK site pins the ordering. SN-0528's rule: a verdict is
+  // auditable; the ordering it depends on must be executable.
+
+  // live-act-proof.yml: the proof dict's independent_verification literal must
+  // come after the assertion gauntlet in the same run step. set -euo pipefail
+  // aborts the step on any failed assert, so the literal is unreachable unless
+  // every independent check passed.
+  const actProof = read(".github/workflows/live-act-proof.yml");
+  const literalAt = actProof.indexOf('"independent_verification":True');
+  assert.ok(literalAt > 0, "the act proof literal must exist");
+  const stepStart = actProof.lastIndexOf("run: |", literalAt);
+  const stepText = actProof.slice(stepStart, literalAt);
+  const asserts = [...stepText.matchAll(/^\s*assert\s/mg)];
+  assert.ok(
+    asserts.length >= 10,
+    `the act proof step must keep its assertion gauntlet before the literal (found ${asserts.length})`
+  );
+
+  // tools/live_intelligence_reconcile.py: verify_supersession must raise on any
+  // failed check before reaching the return that carries the literal.
+  const reconcile = read("tools/live_intelligence_reconcile.py");
+  const fnStart = reconcile.indexOf("def verify_supersession(");
+  const literalLine = reconcile.indexOf('"independent_verification": True', fnStart);
+  assert.ok(fnStart >= 0 && literalLine > fnStart, "the reconcile literal must exist inside verify_supersession");
+  const guardText = reconcile.slice(fnStart, literalLine);
+  const raises = [...guardText.matchAll(/raise ValueError\(/g)];
+  assert.ok(
+    raises.length >= 5,
+    `verify_supersession must keep its raise-gauntlet before the literal (found ${raises.length})`
+  );
 });
 
 test("the claim record is itself honest", () => {
@@ -465,7 +517,18 @@ test("CLAIM 3 -- a regression that drops kernel influence fails the build", () =
   // influential for the runtime kernel -- the floor is recorded so it can only rise,
   // exactly like guard liveness.
   const probePath = join(ROOT, "tools", "measure_node_influence.py");
-  const out = execFileSync("python", [probePath, "--json"], {
+  // Resolve the interpreter at runtime: CI images carry `python`, minimal VMs
+  // carry only `python3`. A gate that cannot execute is a gate that cannot
+  // fire, so the probe must run wherever the suite runs.
+  const pythonBin = (() => {
+    try {
+      execFileSync("python3", ["--version"], { stdio: "ignore" });
+      return "python3";
+    } catch {
+      return "python";
+    }
+  })();
+  const out = execFileSync(pythonBin, [probePath, "--json"], {
     cwd: ROOT,
     encoding: "utf8",
     timeout: 180000,
