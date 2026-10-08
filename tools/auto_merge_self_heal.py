@@ -102,11 +102,47 @@ def main(argv):
     )
     with open("/tmp/h3_self_heal_board.md", "w", encoding="utf-8") as fh:
         fh.write(board_body)
-    api("POST", f"/repos/{REPO}/issues/{BOARD_ISSUE}/comments",
-        {"body": board_body})
+    from tools.team_naya_delivery import deliver_team_naya_comment
+
+    delivery_handoff = (
+        "## Current known reality\n"
+        f"H3 self-heal reverted merge `{merge_sha}` to `{revert_sha}`.\n"
+        "## Current P0\nPreserve the verification battery and surface the receipt.\n"
+        "## Next three actions\n1. post receipt\n2. re-score\n3. repair or escalate\n"
+        "## Permanent constraints\nUNKNOWN/BLOCKED never PASS.\n"
+        "## First action\nPublish the governed self-heal receipt.\n"
+        "## Handoff completion\nReceipt is the delivery artifact; learning decision: CAPTURE.\n"
+    )
+    delivery_sign_out = {
+        "seat": "NAYA-AUTO-MERGE-SELF-HEAL",
+        "did": "publish H3 self-heal receipt",
+        "evidence_links": [merge_sha, revert_sha],
+        "score": 10.0,
+        "proven": "main was reverted to the pre-merge tree and evidence was prepared",
+        "unknown": "none",
+        "blocked": "none",
+        "next_action": "re-score the repaired state",
+        "learning": {
+            "topic": "Team Naya self-heal delivery",
+            "action": "publish H3 self-heal receipt",
+            "ledger": [],
+            "evidence_refs": [merge_sha, revert_sha],
+            "authority_ref": "FULL-AUTO-MERGE-V1-H3",
+        },
+    }
+    delivered = deliver_team_naya_comment(
+        delivery_handoff,
+        delivery_sign_out,
+        lambda body: api("POST", f"/repos/{REPO}/issues/{BOARD_ISSUE}/comments", {"body": body}),
+    )
+    if not delivered.passed:
+        print(json.dumps({"reverted": True, "revert_sha": revert_sha,
+                          "reverted_merge": merge_sha, "delivery": delivered.decision,
+                          "delivery_reasons": delivered.reasons}))
+        return 1
 
     print(json.dumps({"reverted": True, "revert_sha": revert_sha,
-                      "reverted_merge": merge_sha}))
+                      "reverted_merge": merge_sha, "delivery": "PASS"}))
     return 0
 
 
