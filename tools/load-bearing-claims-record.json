@@ -56,8 +56,10 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "ORDERING DEFECT ON THE LOCK-IN PATH. index.ts:404 promotes learning_evidence to status:ACTIVE / provenance:VERIFICATION. index.ts:453 writes verified:true into an execution receipt. index.ts:482 calls resolveLearningLockInLaw(). So when LAW denies, the runtime correctly returns 403 LEARNING_LOCK_IN_LAW_DENIED while both mutations are ALREADY PERSISTED. The refusal is real and the fail-open is real in the same request. The same ordering applies to RECEIPT_NOT_FOUND_OR_NOT_OWNED at index.ts:435: the learning row is ACTIVE before the receipt is looked up. The H13 comment at index.ts:478 states the intent -- 'every canonical mutation must sit behind the grant gate' -- and two of them do not.",
       "law": "SN-0468 (fail closed, always), SN-0481 (never impersonate the verifier)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Reordering a live lock-in transaction changes what gets promoted when LAW denies, and a partial failure after the promote would leave learning_evidence ACTIVE with no rollback. That is a transactional-design decision for an owner. The repair is to hoist resolveLearningLockInLaw and the LEARNING_PROVENANCE_LINKS_REQUIRED check above index.ts:404.",
+      "status": "RESOLVED in #1695 (SN-0521, 2026-10-07) -- fixed before this entry was updated, which is what motivated status_probes",
+      "resolution": "#1695 hoisted resolveLearningLockInLaw, the LEARNING_PROVENANCE_LINKS_REQUIRED check, and the receipt-existence lookup ABOVE the learning_evidence promotion, under a single 'All gates passed. Mutations begin here.' boundary. A denial now writes nothing. Verified by the converted pins in tests/learning_verify_guard_firing_proofs.test.mjs, which now assert fail-closed behaviour rather than the defect.",
+      "why_not_fixed_here": "Resolved by an owner-authorised lane. Recorded here because the record must be true, and because a fixed defect that stays listed as OPEN teaches every future reader to discount this file.",
+      "was_open_from": "PR #1688",
       "not_a_theory": "Executed. The pinned tests drive the real handler with no authority grant and observe, in one response, ok:false + LEARNING_LOCK_IN_LAW_DENIED + learning_evidence.status == ACTIVE + a receipt entry with verified:true. A companion test asserts the graph mutations ARE correctly untouched, so the leak is scoped precisely rather than overclaimed."
     },
     {
@@ -66,8 +68,10 @@
       "location": "supabase/functions/nayanet-learning-verify/index.ts",
       "problem": "index.ts:398 accepts body.evidence_refs as an array of caller-supplied strings and requires only that it be non-empty (index.ts:399). No check that any element corresponds to a real causal verification record. index.ts:552 then derives causal_verification_id: refs.find(r => r.startsWith('CVO-')) || null. So arbitrary strings promote the learning to ACTIVE, set the block LEARNED and the relationship VERIFIED, while recording causal_verification_id: null and reporting ok:true / verified:true. Nothing in the response or the persisted provenance says the verification was never found.",
       "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
-      "status": "OPEN -- owner decision required",
-      "why_not_fixed_here": "Deciding what counts as acceptable evidence is a truth/authority policy, not a parsing change. Requiring at least one CVO- id, or resolving each ref against nayanet-causal-verifications, are both defensible and have different failure modes. That choice is an owner's. The repair is small once the policy is chosen.",
+      "status": "RESOLVED in #1695 (SN-0521, 2026-10-07) -- fixed before this entry was updated, which is what motivated status_probes",
+      "resolution": "#1695 added validateEvidenceRefs() ahead of every mutation. It rejects empty/whitespace/short refs (EVIDENCE_REFS_INVALID) and requires at least one well-formed CVO causal-verification ID (EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION), so junk and forged CVO prefixes can no longer promote a learning.",
+      "why_not_fixed_here": "Resolved by an owner-authorised lane, which made the evidence policy call that was the blocker: a well-formed CVO id is the required shape of evidence.",
+      "was_open_from": "PR #1688",
       "not_a_theory": "Executed. The pinned test passes evidence_refs: ['not-a-verification', '', '0'] and observes ok:true, verified:true, block LEARNED, relationship VERIFIED. A second test shows the id is silently null in the canonical provenance, and a third shows that one forged 'CVO-forged' string among junk is accepted as the causal_verification_id.",
       "contradicts_its_own_text": "The candidate's own verification_method, written at index.ts:333, is 'Pending independent causal verification of the persisted Event -> Intelligent Block -> Lineage -> Relationship -> Index -> Checkpoint chain.' The promotion claims to discharge a requirement it never checks."
     },
@@ -91,6 +95,18 @@
       "status": "OPEN -- owner decision required",
       "why_not_fixed_here": "Deciding whether a prior independent verification should be accepted, rejected, or required to match a specific recorded method is a verification-policy question. Narrowing the check is a one-line change; choosing the correct predicate is not.",
       "not_a_theory": "Executed. The pinning test seeds an outcome with verified:true and verification_method:'TRUST_ME_I_ALREADY_DID_IT', drives the real handler, and observes outcome_not_self_certified_at_execution:true with a 200 OUTCOME_VERIFIED response."
+    },
+    {
+      "id": "CV-10",
+      "claim": "the claim record's statuses match the code",
+      "location": "tools/load-bearing-claims-record.json",
+      "problem": "The record enforced its own SHAPE -- every entry names a law, a location, a status -- and nothing compared any status to the code. So the exact failure the file exists to prevent happened inside the file itself. When #1695 repaired CV-06 (LAW gate ordering) and CV-07 (evidence_refs never validated), the code changed and 524/524 tests went green, but both entries kept reading OPEN. Nothing was red because no test asked.",
+      "law": "SN-0481 (never impersonate the verifier), SN-0462 (structural audit blind to meaning)",
+      "status": "RESOLVED in this commit -- status_probes added, CV-06/CV-07 corrected",
+      "why_not_fixed_here": "This IS the fix. Every violation now carries a machine-checkable probe of whether its defect is still present, and tests/load_bearing_claims.test.mjs asserts that an OPEN entry must still misbehave and a RESOLVED entry must not.",
+      "not_a_theory": "Mutation-tested in both directions before this entry was written. Marking the still-present CV-08 defect RESOLVED turns the build red. Replacing CV-04's probe with a pattern that can never match -- simulating a silent fix that left the record untouched -- also turns it red. The gate is therefore not defeatable in the way it was previously, which is itself asserted by a companion test rather than assumed.",
+      "severity_note": "A record that under-reports resolution is not conservative, it is false. And it is worse than having no record, because it looks authoritative. The real cost is teaching every future reader to discount the file.",
+      "self_verifying": true
     }
   ],
   "hardcoded_independent_verification_sites": {
@@ -108,6 +124,52 @@
     "supabase/functions/nayanet-verified-ai-action/index.ts": {
       "verdict": "REVIEWED_OK",
       "reason": "SAFE. The literal sits on the success path only: line 562 computes authorizedOk, and lines 566-582 already returned 409 with independent_verification:false when any check fails. Flagged by the scanner as a false positive, recorded here so the scanner is not silenced and so a future edit that moves the literal above the guard fails this file."
+    }
+  },
+  "status_probes": {
+    "//": "Each probe is a machine-checkable statement about whether a violation's defect is STILL PRESENT in the named file. tests/load_bearing_claims.test.mjs asserts: a violation recorded OPEN must still match its probe, and a violation recorded RESOLVED must NOT match its probe. This exists because of CV-10: when #1695 repaired CV-06 and CV-07, the code changed and 524/524 tests went green, but both entries kept reading OPEN. Nothing compared the record to the code, so the record became false without anything going red. A record that under-reports resolution trains readers to ignore it -- which makes it worse than no record, because it looks authoritative.",
+    "CV-01": {
+      "file": ".github/workflows/live-supabase-runtime-proof.yml",
+      "pattern": "\"independent_verification\":\\s*(True|true)"
+    },
+    "CV-02": {
+      "file": "tools/measure_node_influence.py",
+      "pattern": "shape check\\. Nothing in that receipt executes a node"
+    },
+    "CV-03": {
+      "file": "tools/measure_node_influence.py",
+      "exists": true,
+      "note": "CV-03's defect was the ABSENCE of the measurement, so no positive pattern can express it. `exists` inverts the check: an OPEN entry requires the file to be missing, a RESOLVED entry requires it to be present. A measurement tool that is later deleted turns this red."
+    },
+    "CV-04": {
+      "file": "supabase/functions/nayanet-intelligence-commit-runtime/index.ts",
+      "pattern": "independent_verification:\\s*true"
+    },
+    "CV-05": {
+      "file": "supabase/functions/nayanet-law-runtime/index.ts",
+      "pattern": "LAW_DECISION_MISMATCH[^\\n]*independent_verification:\\s*true"
+    },
+    "CV-06": {
+      "file": "supabase/functions/nayanet-learning-verify/index.ts",
+      "absent_pattern": "All gates passed\\. Mutations begin here\\.",
+      "regression_note": "The defect was an ABSENCE: no boundary separating the gates from the mutations, so nothing marked where the ordering guarantee begins. If the gates are moved back below the learning_evidence promotion, this marker disappears and the RESOLVED assertion fails."
+    },
+    "CV-07": {
+      "file": "supabase/functions/nayanet-learning-verify/index.ts",
+      "absent_pattern": "EVIDENCE_REFS_MISSING_CAUSAL_VERIFICATION",
+      "regression_note": "Also an absence-defect: non-empty was the only check, so there was no evidence-content refusal to find. Removing validateEvidenceRefs reintroduces the defect and removes the marker."
+    },
+    "CV-08": {
+      "file": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "pattern": "receipt_mutated_after_refusal:\\s*false"
+    },
+    "CV-09": {
+      "file": "supabase/functions/nayanet-verified-ai-action/index.ts",
+      "pattern": "outcome\\.verified === true"
+    },
+    "CV-10": {
+      "self_verifying": true,
+      "note": "CV-10 is a defect in the record's own enforcement, so no source pattern can observe it. It is checked by the mutation-proof companion test, which drives the gate's decision function with both drift directions and asserts it rejects them."
     }
   },
   "repaired_claims": {
