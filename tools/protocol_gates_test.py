@@ -39,6 +39,14 @@ def good_sign_out():
         "unknown": "cold-agent acceptance untested",
         "blocked": "none",
         "next_action": "open PR",
+        "learning": {
+            "topic": "protocol gates",
+            "action": "open PR with protocol gate changes",
+            "ledger": [],
+            "evidence_refs": ["tests/protocol_gates_test.py"],
+            "authority_ref": "standing-routine-authority",
+            "timestamp": 1000,
+        },
     }
 
 
@@ -172,6 +180,33 @@ def test_sign_out_rejects_out_of_range_score():
     d["score"] = 11
     assert not check_sign_out(d).passed
 
+
+
+def test_sign_out_rejects_unresolved_learning_repeat():
+    d = good_sign_out()
+    d["learning"] = {
+        "topic": "protocol gates",
+        "action": "deliver protocol gate changes",
+        "ledger": [{
+            "id": "R-TEST",
+            "directive_essence": "protocol gates must be fail closed",
+            "fix_status": "WIRED",
+        }],
+        "evidence_refs": ["old-receipt"],
+        "authority_ref": "standing-routine-authority",
+        "timestamp": 1000,
+    }
+    r = check_sign_out(d)
+    assert not r.passed
+    assert any("LEARNING_HOLD" in reason for reason in r.reasons)
+
+
+def test_sign_out_rejects_missing_learning_context():
+    d = good_sign_out()
+    del d["learning"]
+    r = check_sign_out(d)
+    assert not r.passed
+    assert any("learning" in reason for reason in r.reasons)
 
 # ---------------- 5-step scorecard ----------------
 
