@@ -121,6 +121,7 @@ REQUIRED_SIGN_OUT_FIELDS = (
     "unknown",
     "blocked",
     "next_action",
+    "learning",
 )
 
 
@@ -190,6 +191,30 @@ def check_sign_out(sign_out: dict) -> FormatResult:
             f"score {score!r} must be finite and within [0, 10] "
             "(NaN/Infinity fail closed)"
         )
+
+    # Completion now consumes the Repeat Tracker gate at the sign-out seam.
+    # A sign-out without a resolvable learning decision is not complete.
+    learning = sign_out["learning"]
+    if not isinstance(learning, dict):
+        reasons.append("learning must be a dict carrying topic/action/ledger")
+    else:
+        required_learning = ("topic", "action", "ledger")
+        for field_name in required_learning:
+            if field_name not in learning:
+                reasons.append(f"learning field {field_name!r} is required")
+        if not reasons:
+            gate = check_repeat_learning_gate(
+                topic=learning["topic"],
+                action=learning["action"],
+                ledger=learning["ledger"],
+                evidence_refs=learning.get("evidence_refs", []),
+                authority_ref=learning.get("authority_ref", ""),
+                timestamp=learning.get("timestamp"),
+            )
+            if not gate.passed:
+                reasons.append(
+                    f"learning gate {gate.verdict}: " + "; ".join(gate.reasons)
+                )
     return FormatResult(passed=not reasons, reasons=reasons)
 
 
