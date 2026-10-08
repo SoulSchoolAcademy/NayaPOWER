@@ -108,6 +108,41 @@ Run `python3 tools/design_law/check_design.py <file> --room <room>`. **Exit 0 re
 
 `user-scalable=no` · light backgrounds · body text under 18px · gray body text · colored button text · solid purple fills · solid non-black button fills · clickable divs · amber/rose pink · non-token chromatic colors · wrong room accent · max-width on chassis/rooms · links to app.nayanet.technology · a second system for an existing thing · fake liveness · capture surfaces in Hub chrome · decorative/lying glyphs · shipping below 9+ · claiming without grepping.
 
+## 8. BRAND FEEL — THE LIT ROOM (READ THIS BEFORE YOU DESIGN)
+
+The mechanics are furniture. This is the lighting. Internalize it or your output will be
+correct and wrong.
+
+- **A color must mean the same thing every time, or it doesn't ship.** Identity mapping
+  replaces mechanical alternation for anything with an identity (room, law, concept, truth
+  state). Never rotate a fixed identity color for variety. Test: remove any color — if
+  nothing meaningful breaks, it was decoration. Remove it.
+- **White idle, color on intent.** The page at rest is calm white-on-black. Color ignites
+  only on hover, touch, or state change. Color is an event, not a theme.
+- **Color is light, not paint.** Glows, auras, jewels, thin beams — never flat fills.
+  Luminous objects in a dark room.
+- **Purple is the signature; ration it.** ~85% obsidian/white, ~10% purple, ~5% everything
+  else. Never a flood, never body copy, never a fill.
+- **Gold is reserved.** Scarcity signals specialness. Full spectrum at most once per page,
+  as a flourish — never a theme.
+- **Truth has a visual dialect:** green = verified, purple = claim/unverified,
+  gold = demonstration. A glance tells the truth-status.
+- **The Trinity: BLACK GROUND · WHITE LIGHT · PURPLE SOUL.** If it doesn't read that way
+  at a glance, it's wrong.
+- **Errors are quarantined in red.** Red-tinted container borders, never red text.
+
+## 9. WRITING DISCIPLINE — ARGUE, DON'T LABEL
+
+- Headlines are declarative sentences, not category names. "Color has four jobs. Never
+  cross them." — not "Color palette."
+- Open with the failure scene: "They read X …and shipped Y." Then the rule.
+- Antithesis pairs: state the value, draw the boundary.
+- Every rule ends with teeth — an imperative close. No "prefer," no "ideally."
+- End every explanation at the human's benefit. Never feature framing.
+- Contrast-first definitions: "Not X. Not Y. A Z."
+- One metaphor world: night, jewels, fire, ignition. Never drift domains.
+- Three registers in order: aphorism → rolling explanation → machine predicate.
+
 ---
 
 *End of AI operating law. The machine twin (`naya-design-contract-v1.machine.json`) is the checkable source of truth for tokens and patterns.*

@@ -161,6 +161,41 @@
       "topic": "Button rim floor",
       "decision": "\u22651.5px white rim at rest (briefing A-LAW-05/06 governs over Code NC-5.3's 1px purple); resolves X-1.",
       "status": "synthesis ruling \u2014 briefing outranks candidate Code"
+    },
+    {
+      "id": "CD-22",
+      "topic": "Identity mapping vs mechanical alternation",
+      "decision": "Fixed identity colors govern identity-bearing objects (rooms, laws, concepts, truth states); DC-041 flow-order subset rule applies ONLY where no identity exists. A color must mean the same thing every time or it doesn't ship.",
+      "status": "pending Shawn",
+      "source": "Naya 3 (seat submission 2026-10-08)"
+    },
+    {
+      "id": "CD-23",
+      "topic": "Color-as-light craft",
+      "decision": "Color arrives as glow/aura/jewel/beam, never flat fill. White idle + semantic color on intent (hover/touch/state-change). Purple rationed to signature/chrome (~10%); gold reserved for meaning-bearing special objects.",
+      "status": "pending Shawn",
+      "source": "Naya 2, Naya 3, Naya 4 (seat submissions 2026-10-08)"
+    },
+    {
+      "id": "CD-24",
+      "topic": "Truth-state visual dialect",
+      "decision": "Green = verified, purple = claim/unverified, gold = demonstration. Consistent across all components. Errors quarantined in red container borders, never red text.",
+      "status": "pending Shawn",
+      "source": "Naya 4, Naya 3 (seat submissions 2026-10-08)"
+    },
+    {
+      "id": "CD-25",
+      "topic": "Writing law for the spec",
+      "decision": "Spec prose follows W-001..W-008: aphoristic headlines, failure-scene openings, antithesis pairs, imperative closes, human-benefit endings, contrast-first definitions, one metaphor world, three registers (aphorism -> explanation -> predicate).",
+      "status": "pending Shawn",
+      "source": "Naya 2, Naya 3, Naya 4 (seat submissions 2026-10-08)"
+    },
+    {
+      "id": "CD-26",
+      "topic": "The Trinity as one-line law",
+      "decision": "BLACK GROUND \u00b7 WHITE LIGHT \u00b7 PURPLE SOUL is the color constitution. If a design doesn't read that way at a glance, it is wrong.",
+      "status": "pending Shawn",
+      "source": "Naya 3 (seat submission 2026-10-08)"
     }
   ],
   "drift_register": [
@@ -275,9 +310,11 @@
     "design_code_laws": 105,
     "drift_repair_laws": 13,
     "tokens_pinned": 47,
-    "total_enforceable_statements": 155,
-    "synthesis_rulings": 21,
-    "synthesis_harvests": 14
+    "total_enforceable_statements": 172,
+    "synthesis_rulings": 26,
+    "synthesis_harvests": 14,
+    "brand_feel_laws": 9,
+    "writing_laws": 8
   },
   "north_star": "Black ground. White light. Purple soul.",
   "prohibited_patterns": [
@@ -569,6 +606,39 @@
         "SYN-H-7"
       ],
       "source": "Convergence Law 01"
+    },
+    {
+      "id": "R-identity-color",
+      "kind": "design-rule",
+      "description": "Identity-bearing objects carry ONE fixed hue everywhere they appear; never rotate identity colors for variety",
+      "law": [
+        "BF-001",
+        "BF-009"
+      ]
+    },
+    {
+      "id": "R-white-idle",
+      "kind": "design-rule",
+      "description": "Interactive chrome rests white/neutral; color ignites on intent (hover/touch/state)",
+      "law": [
+        "BF-002"
+      ]
+    },
+    {
+      "id": "R-truth-dialect",
+      "kind": "design-rule",
+      "description": "Truth states use the visual dialect: green=verified, purple=claim, gold=demonstration",
+      "law": [
+        "BF-006"
+      ]
+    },
+    {
+      "id": "R-no-color-flood",
+      "kind": "design-rule",
+      "description": "~85% obsidian/white, ~10% purple, ~5% spectrum; no floods",
+      "law": [
+        "BF-004"
+      ]
     }
   ],
   "rooms": {

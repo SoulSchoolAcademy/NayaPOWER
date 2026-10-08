@@ -104,3 +104,55 @@ Showcase's 9.4 scores are self-declared — the 10/10 standard rejects them. Eli
 - Room names and accents vs live site (main, reports, connections pages)
 - Any submission-vs-live contradictions (live wins)
 - Final lock only after live findings land
+
+---
+
+## 6. SEAT CREDITS — what was adopted from whom (2026-10-08)
+
+Shawn: "a lot of what they've done is good, so learn from them." Every adoption below
+names its seat. Nothing was taken silently.
+
+### Naya 4 — `Naya_Design_Standard_Showcase__1.html`
+- **Aphoristic law-headlines** → W-001. "Color has four jobs. Never cross them."
+- **"They read X …and shipped Y" drift pairs** → W-002. The highest-value writing technique found.
+- **Color-has-jobs taxonomy** (obsidian=field, white=light, purple=soul, spectrum=meaning) → BF-001/BF-004/BF-009.
+- **Truth trinity visual** (verified/claim/demonstration orb cards) → BF-006.
+- **Machine predicates with "the machine wins"** → W-008's third register.
+- **Pre-ship gate as visible checklist** → reinforced Gate A.
+- **One-board-one-color identity agreement** (`--ic` cascade) → BF-009.
+- **Layered rim-light recipe** (`inset 0 1px` + deep shadow + accent glow) → the "carved from dark" feel, BF-003.
+- **Front-door headers** → reinforced DC-006.
+- *Fell short where adopted critically:* display type breaks 24/18/14, opacity-gray, purple kickers, decorative section-color rotation — noted, not adopted.
+
+### Naya 2 — `report__3.html`
+- **Failure-scene openings** (cause → observed failure → rule) → W-002.
+- **Antithesis pairs** ("Black is the night. White is the light. Purple is the signature.") → W-003.
+- **Imperative closes** ("Cut it." "No exceptions, no excuses.") → W-004.
+- **Named stakes** ("Nothing reaches Shawn below 9.") → writing discipline §9.
+- **One-token theming** (`--accent` + `color-mix` derivations) → token discipline guidance.
+- **Color-as-light craft** (glow, never fill; color = state change) → BF-002/BF-003.
+- **Semantic color sub-language** (green=verified, gold=demo, blue=info) → BF-006.
+- **In-file self-scorecard with conditional verdict** ("refuses a 9 I can't earn") → honesty ritual, Gate A.
+- **"No cages"** (no max-width, full-bleed) → reinforced DC-061.
+- *Fell short where adopted critically:* violates own 1.5px border law (ships 1px), dead CSS blocks, duplicate `:hover` bug, stub AI-Law card — noted, not adopted.
+
+### Naya 3 — `NayaNET_ELITE_DESIGN_STANDARD_LIVE.html`
+- **"A color must mean the same thing every time or it doesn't ship"** → BF-001, CD-22. The central ruling.
+- **The Trinity: BLACK GROUND · WHITE LIGHT · PURPLE SOUL** → BF-007, CD-26.
+- **White idle, color on intent** → BF-002, CD-23.
+- **Gold reserved; spectrum as signature flourish** → BF-005.
+- **Contrast-first definitions** ("Not X. Not Y. A Z.") → W-006.
+- **Meaning → mechanism → human benefit** anatomy → W-005.
+- **First-person human voice; honesty as copy** → W-005, BF-006.
+- **Human/Naya/Machine three-voice pattern** → W-008's register model.
+- **`.primo` button + `.jewel`/`.board` anatomy** → component canon candidates.
+- *Fell short where adopted critically:* gray text violations, 12–100px undisciplined scale, GPU-heavy glow stacks — noted, not adopted.
+
+### What "it" is (all three seats converge)
+Mechanical alternation gives color the job of *variety*. Their systems give color the job of
+*identity and truth*: purple is Naya, each identity owns one fixed hue, white is the chrome,
+gold is reserved, truth-states are color-coded. **Remove any color and something meaningful
+breaks** — that is the test, and mechanical alternation fails it. Same with words: they
+don't describe the system to designers; they speak the human's outcome back and always
+land on what's in it for them. We were doing decoration; they do meaning. The spec now
+teaches both the mechanics (checker) and the feel (§13–§14).

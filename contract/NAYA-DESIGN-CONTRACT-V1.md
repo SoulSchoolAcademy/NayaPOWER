@@ -400,6 +400,99 @@ Recorded verbatim per precedence rule 2 — the contract does not silently pick.
 
 Warnings (do not fail): jewel clip-path drift (D8), missing eco-bottombar (D10), thin token system (D12).
 
+## 13. BRAND FEEL — THE LIT ROOM
+
+*Naya's design isn't a set of rules — it's a lit room. The mechanics (1.5px borders, no gray
+text, 24/18/14, no adjacent duplicates) are the furniture. This section is the lighting.
+Learned from Naya 2, Naya 3, and Naya 4's submissions (2026-10-08) — credited in
+synthesis/ULTIMATE-SPEC-SYNTHESIS.md.*
+
+**BF-001 [CANDIDATE].** A color MUST mean the same thing every time, or it doesn't ship.
+Identity mapping replaces mechanical alternation for identity-bearing objects (rooms, laws,
+concepts, truth states). Mechanical alternation assigns colors by *position*; Naya assigns
+colors by *meaning*. The no-adjacent-dupe rule stays as a guardrail, but it is not the law —
+meaning is. **Test:** remove any color placement; if nothing meaningful breaks, it was
+decoration. Remove it. *(Naya 3)*
+
+**BF-002 [CANDIDATE].** White idle, color on intent. Chrome rests white — the page at rest is
+calm white-on-black. Color ignites ONLY when something means something: on hover, on touch,
+on state change. Color is an event, not a theme. *(Naya 3, Naya 4)*
+
+**BF-003 [CANDIDATE].** Color is light, not paint. Almost nothing is a solid colored area.
+Color arrives as glow (`box-shadow` auras), text-shadow breathing, radial-gradient jewels,
+thin beams, small dots. The verbs are *ignite, glow, breathe, re-fire* — never "highlight"
+or "accent." On a night page, color must read as luminous objects in a dark room: a night
+sky with named stars, not a dashboard. *(Naya 2)*
+
+**BF-004 [CANDIDATE].** Purple is the signature; ration it. Purple owns chrome (nav, orb,
+default hover) and Naya's presence. It is never a flood, never body copy, never a fill.
+~85% obsidian/white, ~10% purple, ~5% everything else — that ratio IS the feel. *(Naya 4)*
+
+**BF-005 [CANDIDATE].** Gold is reserved for meaning-bearing special objects. Scarcity signals
+specialness. The full spectrum appears at most once per page, as a signature flourish
+(a 3px bar) — never as a theme. *(Naya 3)*
+
+**BF-006 [CANDIDATE].** Truth has a visual dialect. **Green = verified** (independent evidence
+exists; the number survived contact with reality). **Purple = claim/unverified** (self-reported,
+awaiting its stamp; shown honestly, never hidden). **Gold = demonstration** (beautiful on
+purpose, not pretending to be live). State is color; color is state. A glance must tell you
+the truth-status. *(Naya 4, Naya 3)*
+
+**BF-007 [CANDIDATE].** The Trinity, one line: **BLACK GROUND · WHITE LIGHT · PURPLE SOUL.**
+If a design doesn't read that way at a glance, it is wrong. *(Naya 3)*
+
+**BF-008 [CANDIDATE].** Errors are quarantined in red. Danger is a container's border, never
+the words. Red-tinted cards with ✕ jewels — red text is never the vehicle for a message.
+*(Naya 4)*
+
+**BF-009 [CANDIDATE].** One color per concept = identity. Each law, each room, each
+meaning-bearing thing owns ONE fixed hue as its name — constant everywhere it appears.
+The color IS the name. Wayfinding by hue. *(Naya 2, Naya 3)*
+
+> **Amendment to DC-041:** the flow-order subset rule now applies ONLY where no identity
+> exists (generic sequential items with no fixed meaning). Where an object has an identity
+> (room, law, concept, truth state), its fixed identity color governs — never rotate it
+> for variety. Identity first, flow-order second.
+
+## 14. WRITING LAW — ARGUE, DON'T LABEL
+
+*The #1 gap. Our spec stated laws; their submissions argued them. Learned from Naya 2,
+Naya 3, and Naya 4 (2026-10-08).*
+
+**W-001 [CANDIDATE].** Laws are argued, not labeled. Every section headline is a declarative
+sentence you can repeat from memory — not a category name. "Color has four jobs. Never cross
+them." beats "Color palette." Write to be remembered by a builder under deadline, not filed.
+*(Naya 4)*
+
+**W-002 [CANDIDATE].** Open with the failure scene. "They read *'white light at rest'* …and
+shipped hairline borders." Cause → observed failure → rule. Show the wound the law heals.
+Every rule that ever drifted gets a "read → shipped" pair. *(Naya 4, Naya 2)*
+
+**W-003 [CANDIDATE].** Antithesis pairs. "Black is the night. White is the light. Purple is
+the signature." The first clause states the value, the second draws the boundary. A human
+remembers pairs. *(Naya 2)*
+
+**W-004 [CANDIDATE].** Every rule ends with teeth — an imperative close. "Cut it." "If a page
+violates any SHALL, it does not ship." A law without a closing imperative reads like a
+suggestion. Strip the escape hatch: no "prefer," no "ideally," no "where possible." *(Naya 2)*
+
+**W-005 [CANDIDATE].** End every explanation at the human's benefit. Meaning → mechanism →
+"what's in it for you." Never feature framing; always time, relationship, outcome framing.
+*(Naya 3)*
+
+**W-006 [CANDIDATE].** Contrast-first definitions. "Not X. Not Y. A Z." The negation clears
+the wrong mental model before the positive lands. *(Naya 3)*
+
+**W-007 [CANDIDATE].** One extended metaphor world: night, jewels, fire, ignition, light.
+Never drift into other domains. One world carried through every section makes the whole
+system feel like one mind. *(Naya 4)*
+
+**W-008 [CANDIDATE].** Three registers, in order: **aphorism → rolling explanation → machine
+predicate.** The aphorism states the intuition; the rolling sentence does the teaching
+(the colon does the work — rule as intuition, then the numbers); the predicate is the
+checkable machine form. A normal human reads the first, a builder reads the second, the
+machine enforces the third. *(Naya 4)*
+
 ---
 
 *End of THE NAYA DESIGN CONTRACT V1 — CANDIDATE pending Shawn's ratification.*
