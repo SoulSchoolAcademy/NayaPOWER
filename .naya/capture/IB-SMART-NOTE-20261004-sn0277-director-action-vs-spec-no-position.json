@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0277",
+ "intelligence": {
+  "title": "When the Director's Action Contradicts the Spec — Record the Tension, Take No Position",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0277-director-action-vs-spec-no-position",
+  "smart_note_id": "SN-0277",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0277/IB-SMART-NOTE-20261004-sn0277-director-action-vs-spec-no-position.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-CONFLICT-PRESERVATION/SN-0277/IB-SMART-NOTE-20261004-sn0277-director-action-vs-spec-no-position.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

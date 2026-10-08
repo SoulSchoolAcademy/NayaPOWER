@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0517",
+ "intelligence": {
+  "title": "A Stub That Is Merely Close Produces a 500 That Looks Like a Product Defect",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0517-stub-merely-close-masquerades-as-product-defect",
+  "smart_note_id": "SN-0517",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0517/IB-SMART-NOTE-20260930-sn0517-stub-merely-close-masquerades-as-product-defect.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ENGINEERING-PROOF/TEST-DESIGN/SN-0517/IB-SMART-NOTE-20260930-sn0517-stub-merely-close-masquerades-as-product-defect.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

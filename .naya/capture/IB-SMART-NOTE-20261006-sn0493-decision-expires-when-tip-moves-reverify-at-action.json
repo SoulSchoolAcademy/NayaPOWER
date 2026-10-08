@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0493",
+ "intelligence": {
+  "title": "IB-SMART-NOTE-20261006-sn0493-decision-expires-when-tip-moves-reverify-at-action",
+  "intelligent_block_id": "IB-SMART-NOTE-20261006-sn0493-decision-expires-when-tip-moves-reverify-at-action",
+  "smart_note_id": "SN-0493",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0493/IB-SMART-NOTE-20261006-sn0493-decision-expires-when-tip-moves-reverify-at-action.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/06/SYSTEM-INTELLIGENCE/GOVERNANCE/LANE-COORDINATION/SN-0493/IB-SMART-NOTE-20261006-sn0493-decision-expires-when-tip-moves-reverify-at-action.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

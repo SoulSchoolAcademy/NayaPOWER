@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0417",
+ "intelligence": {
+  "title": "REGISTRY_RUNTIME_CONTENT_DRIFT — a Registry-Hash Hit Must Never Be Accepted as Reusable Until the Live Runtime Body Is Independently Content-Hash Verified",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0417-registry-runtime-content-drift",
+  "smart_note_id": "SN-0417",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-0417/IB-SMART-NOTE-20261005-sn0417-registry-runtime-content-drift.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/MEASUREMENT-INTEGRITY/SN-0417/IB-SMART-NOTE-20261005-sn0417-registry-runtime-content-drift.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

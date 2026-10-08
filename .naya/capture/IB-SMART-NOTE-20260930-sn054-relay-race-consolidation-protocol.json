@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-054",
+ "intelligence": {
+  "title": "Relay-Race Consolidation — Own the Duplicate Artifact Openly and Patch the Trigger",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn054-relay-race-consolidation-protocol",
+  "smart_note_id": "SN-054",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-054/IB-SMART-NOTE-20260930-sn054-relay-race-consolidation-protocol.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-054/IB-SMART-NOTE-20260930-sn054-relay-race-consolidation-protocol.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

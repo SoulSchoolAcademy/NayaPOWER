@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0246",
+ "intelligence": {
+  "title": "The Runner Echoes Source — Measure the Failing Line, Never Infer It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0246-runner-echo-is-not-runtime",
+  "smart_note_id": "SN-0246",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/LOG-EVIDENCE-DISCIPLINE/SN-0246/IB-SMART-NOTE-20261004-sn0246-runner-echo-is-not-runtime.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/LOG-EVIDENCE-DISCIPLINE/SN-0246/IB-SMART-NOTE-20261004-sn0246-runner-echo-is-not-runtime.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

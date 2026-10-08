@@ -287,3 +287,22 @@ Never infer:
 **NayaPOWER is the governed substrate that lets intelligence persist and compound. NayaNET is the network through which humans and intelligent agents connect to it. Identity remains private at the social layer. Distilled wisdom can strengthen the collective. Authority is explicitly governed. Value is measured separately. Verification determines what can be trusted. Learning is demonstrated by changed future behavior. Evolution carries verified intelligence forward.**
 
 **That is what we are building.**
+
+## 🟢 MACHINE NOTE
+
+~~~json
+{
+  "sn": "SN-0012",
+  "automatic_truth_ceiling": "CANDIDATE",
+  "canonical_object": "INTELLIGENT_BLOCK",
+  "title": "NayaPOWER Operating Model: Identity ≠ Intelligence ≠ Authority ≠ Value",
+  "status": "CANDIDATE",
+  "separations": ["IDENTITY ≠ INTELLIGENCE ≠ AUTHORITY ≠ VALUE", "VALUE ≠ TRUTH", "TRUTH ≠ AUTHORITY", "RETRIEVAL ≠ AUTHORIZATION", "IMPLEMENTATION ≠ VERIFICATION", "VERIFIED ≠ PRODUCTION-PROVEN", "UNKNOWN ≠ PASS", "BLOCKED ≠ PASS"],
+  "privacy_model": "identity-private, intelligence-sharing",
+  "architecture": "MANY DOORS -> ONE GOVERNED SUBSTRATE -> MANY INTERFACES; AI-agnostic by architecture",
+  "lifecycle": ["CONNECT", "ESTABLISH IDENTITY/AUTHORITY", "CAPTURE/CLASSIFY/DISTILL", "PROTECT IDENTITY", "PROVENANCE/VERIFY", "SHARE", "RETAIN/RETRIEVE/APPLY", "OBSERVE/VERIFY", "LEARN/COMPOUND", "SUCCESSION/EVOLUTION"],
+  "objective": "maximum understanding per unit of human attention",
+  "constitutional_note": "communicates intended model; does not ratify or amend constitutional law",
+  "provenance": "Human Director design clarification 2026-09-30, reconciled against main"
+}
+~~~

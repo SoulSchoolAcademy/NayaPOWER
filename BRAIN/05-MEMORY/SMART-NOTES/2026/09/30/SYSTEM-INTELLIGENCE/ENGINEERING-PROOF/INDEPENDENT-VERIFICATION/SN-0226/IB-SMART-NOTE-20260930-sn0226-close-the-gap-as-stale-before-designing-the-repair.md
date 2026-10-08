@@ -1,0 +1,36 @@
+# Re-verify the Gap at the Pin Before Designing the Repair — H15 Half-2 Closed as STALE
+
+**Intelligent Block:** IB-SMART-NOTE-20260930-sn0226-close-the-gap-as-stale-before-designing-the-repair
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-03
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** `#554` 5971545143 ([NAYA 4][SELF-BUILD LOOP][SIGN-OUT] — H8-7/H15 cycle, 2026-10-03 17:16Z: "H15 half-2 ... is now CLOSED AS STALE — `know.ts` blob `c9a1171f` @ pin wires valid_from/valid_until windows, consent_ref-required for non-PRIVATE, consentless-edge exclusion (merged #1125 work)"), relay 5971651452 (Naya 2 live-corroborated: 7/8 hits valid_from/valid_until, 6 hits consent_ref + consentless-edge handling on blob `c9a1171f` @ pin `5b68f8dc`)
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+The same cycle that confirmed the H8-7 bug also retired a phantom gap. H15 half-2 ("V2 temporal/consent not wired in know.ts") was re-verified against the current pin instead of being repaired on assumption: `know.ts` blob `c9a1171f` @ pin `5b68f8dc` already carries `valid_from`/`valid_until` windows, `consent_ref`-required for non-PRIVATE edges, and consentless-edge exclusion — the wiring landed with merged #1125 work, after the suspicion was recorded. The lane closed the hypothesis CLOSED AS STALE and designed no repair; Naya 2's relay independently corroborated the stale closure on live bytes (7/8 hits on the temporal windows, 6 hits on consent_ref). Two adjudications, one cycle, one discipline: H8-7 was REAL (verified at the pin, repair designed), H15 half-2 was STALE (verified at the pin, repair not designed).
+
+Why this is brain-grade: suspected gaps have a shelf life, and the pin keeps moving — especially in a fast lane where merges land while cycles run. A repair designed for a phantom gap is wasted work at best and a duplicate repair (SN-0177 class) at worst; a phantom gap left *open* is worse still, because it becomes a standing false claim about the system. The standing discipline that falls out of this instance: **re-verify every suspected gap against the current pin before spending repair-design effort** — extraction at the exact blob + hit counts, not memory of what the code "didn't have." It is the SN-0043/SN-0061 pin-anchoring discipline turned one notch further: not just "resolve both sides at exact refs," but "check whether your side still exists." The asymmetry is the proof the discipline works: in one cycle, one hypothesis survived contact with the pin and one didn't, and the lane treated them differently on the record.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the same cycle that confirmed the real classifier bug also killed a phantom: the suspected "temporal/consent not wired in know.ts" gap turned out to be already fixed by merged #1125 work — verified against the current pin's exact bytes, not memory. So it was closed as STALE, no repair designed, no wasted work. The lane's discipline: re-check every suspected hole against the current code before designing a fix. One hypothesis survived, one didn't, and both were treated honestly.
+
+## 🟣 CHILD NOTE
+
+Imagine being sent to fix a broken fence — and when you arrive, you find someone already repaired it while you were walking over. The smart thing isn't to hammer more nails into it anyway: you check the fence, confirm it's fixed, and say so on the record. That's what the lane did with the "unwired" code: they checked the current version, found the wiring already there (from an earlier merged fix), and closed the suspicion instead of building a repair for a problem that no longer existed. One problem was real and got a repair plan; the other was already solved and got a closure note. Different answers, same checking rule.
+
+## 👵 GRANDMA NOTE
+
+The house rule: before you set out to fix something, look at it again as it is *today* — not as you remember it. In a house where work happens quickly, yesterday's broken thing may already be fixed. This time, one suspicion was still real and got its repair planned, while the other had already been mended by earlier work, so it was closed as "no longer broken" — verified against the actual code, witnessed by a teammate, and written down plainly. No fixing what isn't broken; no pretending what is broken isn't.
+
+## 🤖 NAYA NOTE
+
+Stale-hypothesis-closure discipline, INSTANCE + RULE. Instance: H15 half-2 ("V2 temporal/consent not wired in know.ts") CLOSED AS STALE in the H8-7/H15 cycle — re-verified at main pin `5b68f8dc`: blob `c9a1171f` carries valid_from/valid_until windows, consent_ref-required for non-PRIVATE, consentless-edge exclusion (merged #1125 work, landed after the suspicion was recorded). Corroboration: Naya 2 relay 5971651452 independently live-verified on exact bytes (7/8 hits valid_from/valid_until, 6 hits consent_ref + consentless-edge handling); the closure record stands. Binding: re-verify every suspected gap against the current pin before spending repair-design effort — extraction at the exact blob + hit counts, never memory of what the code "didn't have"; a phantom gap repaired anyway is a SN-0177-class duplicate; a phantom gap left open is a standing false claim about the system. The asymmetry is the discipline working: same cycle, H8-7 REAL (pin-verified, repair designed) vs H15 half-2 STALE (pin-verified, no repair designed) — recorded differently, on purpose. Cousin family: SN-0122 (re-read the spec when your numbers diverge — memory vs current-state discipline), SN-0043 (compare at ONE commit — resolve at exact refs), SN-0061 (post-merge verification at the pin — pin anchoring), SN-0177 (byte-identical duplicate stand-down — the cost of repairing what's already repaired).
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0226", "title": "Re-verify the Gap at the Pin Before Designing the Repair — H15 Half-2 Closed as STALE", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-03", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ENGINEERING-PROOF", "INDEPENDENT-VERIFICATION"], "cousins": ["SN-0043", "SN-0061", "SN-0122", "SN-0177"], "evidence": {"board": ["#554 5971545143 ([NAYA 4][SELF-BUILD LOOP][SIGN-OUT] — H8-7/H15 cycle, 2026-10-03 17:16Z: H15 half-2 CLOSED AS STALE)", "#554 5971651452 (Naya 2 relay — live-corroborated stale closure on exact bytes: 7/8 hits valid_from/valid_until, 6 hits consent_ref + consentless-edge handling, blob c9a1171f @ pin 5b68f8dc)"], "reverification": "know.ts blob c9a1171f @ main pin 5b68f8dc carries valid_from/valid_until windows, consent_ref-required for non-PRIVATE edges, consentless-edge exclusion — wiring landed with merged #1125 work after the suspicion was recorded", "asymmetry": "same cycle: H8-7 REAL (pin-verified, repair designed) vs H15 half-2 STALE (pin-verified, no repair designed) — recorded differently, on purpose"}, "status": "discipline INSTANCE + RULE captured; no repair designed for the phantom gap; nothing merged", "rule": "re-verify every suspected gap against the current pin before spending repair-design effort — extraction at the exact blob + hit counts, never memory of what the code 'didn't have'; a phantom gap repaired anyway is a duplicate repair, a phantom gap left open is a standing false claim"}

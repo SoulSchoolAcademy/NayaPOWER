@@ -1,0 +1,38 @@
+# A Fallback Must Carry the Contract Semantics, Not Just Parse
+
+**Intelligent Block:** IB-SMART-NOTE-20261005-sn0391-fallback-must-carry-contract-semantics
+**Truth state:** CANDIDATE
+**Scope:** PRIVATE
+**Captured:** 2026-10-05
+**Canonical intent:** CAPTURE_DURABLE_INTELLIGENCE
+**Provenance:** #1354 6003410998 ([NAYA 3][SUPERBRAIN OPTIMIZATION — EXECUTION UPDATE], 2026-10-05T21:33:57Z / 14:33 PDT); PRs #1504/#1508 (merged), repair PR #1510 (open).
+
+> Verified projection of the persisted Intelligent Block. This file is not a second source of truth.
+
+## ✦ IN A NUTSHELL
+
+PR #1504 had made the zero-capture fallback unique AND valid JSON — the parse crash was dead. Then run `37374859264` failed at a NEW first rung: `cold-successor-held-out` died at the single-capture verifier line 52, `assert comprehension["understands_raw_source_separate"]`. Root cause: the fallback was unique + parseable but emitted an **empty `machine_view`** — the verifier could not truthfully prove the CANDIDATE/distillation law from nothing. The repair (#1508, merged) populated the fallback's `machine_view` with the required contract fields; the follow-on repair (#1510) goes further: the fallback carries explicit CANDIDATE/distillation semantics, the single-capture verifier becomes lifecycle-aware V3 (the batch verifier already handled ACTIVE vs SUPERSEDED — the single path was still old V2), and the downstream single-path independent verifier mirrors the lifecycle. SUPERSEDED history now proves provenance + a real ACTIVE successor instead of being forced through ACTIVE requirements.
+
+The same update named two companion findings: the single-real-capture verifier had lifecycle drift (single V2 vs batch already lifecycle-aware), and the repair adds a regression ratchet for single/batch parity. The doctrine is the onion rule: **each repair exposes the next rung.** #1501 fixed the retry break, #1502 the IV reread, #1504 the fallback form, #1508 the fallback semantics, #1510 the lifecycle drift. Peeling is normal — a newly-exposed rung is a NEW RED, not evidence the repair failed.
+
+Why this is brain-grade: a test double exists to prove a negative — "the pipeline works even with zero captures." But "works" means satisfying the verifier's ACTUAL assertions, not merely not crashing. The fallback was designed against the crash just seen (JSONDecodeError) and not against the contract the verifier must prove (`understands_raw_source_separate`). Form-validity (unique, parses) ≠ semantic-validity (carries the semantics the proof requires). Design every fixture, stub, and fallback against the verifier's contract — read the assertions first, then build the double. And when two paths verify the same property (single vs batch), they must stay in parity by regression ratchet, or the drift becomes the next rung. A cold Naya who writes a fallback that "at least doesn't crash" will ship a green-looking test that proves nothing — this note is the vaccine.
+
+## 🩷 HUMAN NOTE
+
+Shawn — the proof chain peeled another layer today: after we made the fallback unique and valid JSON, the next failure was that it was *semantically empty* — the verifier couldn't prove anything from it. Fixed by giving the fallback real contract content, and the verifier now understands lifecycles properly. Banked rule: a test double has to satisfy the verifier's actual assertions, not just "not crash." Form-valid isn't meaning-valid. And when two code paths verify the same thing, keep them in parity or the drift becomes the next failure.
+
+## 🟣 CHILD NOTE
+
+Imagine the teacher asks "prove you understand the book" and you hand in a beautifully formatted essay — perfect spelling, nice margins — but it's completely blank inside. It doesn't crash the printer, but it proves nothing. The essay has to actually SAY something about the book. A test double is like that essay: it must contain the real answers the test is checking for, not just look like a proper essay. And if there are two tests checking the same thing, they must stay identical — if one gets updated and the other doesn't, the old one becomes the next failure.
+
+## 👵 GRANDMA NOTE
+
+A spare key is only useful if it actually opens the lock. A beautifully cut key that turns smoothly but doesn't match the pins is worse than no key — it makes you think you're prepared when you're not. When you make a stand-in for the real thing, test it against the real lock: does it do the actual job? And if you have two locks on the same door, both keys must work — fixing one and forgetting the other just moves the problem. A substitute must carry the substance, not just the shape.
+
+## 💜 NAYA NOTE
+
+Note to future me: before writing any fallback, stub, or test fixture, read the verifier's actual assertions first and design the double to satisfy them — not merely to avoid the crash you just saw. Unique + parseable is necessary, not sufficient: the fallback must carry the contract semantics the proof requires (CANDIDATE/distillation content, populated machine_view). When single and batch paths verify the same property, add a regression ratchet for their parity — lifecycle drift between them is a rung waiting to fail. And treat peeling-the-onion as normal: each newly-exposed rung is a NEW RED, not evidence the previous repair failed.
+
+## ⚙️ MACHINE NOTE
+
+{"sn": "SN-0391", "title": "A Fallback Must Carry the Contract Semantics, Not Just Parse", "truth_state": "CANDIDATE", "scope": "PRIVATE", "captured": "2026-10-05", "canonical_intent": "CAPTURE_DURABLE_INTELLIGENCE", "taxonomy": ["SYSTEM-INTELLIGENCE", "ACTIVE-INTELLIGENCE", "CANARY-PROOF"], "cousins": ["SN-0390", "SN-0384", "SN-0356"], "authority": "observed episode — Naya 3 execution update + #1508 merge + #1510 repair, CANDIDATE (auto-capture, not ratified)", "evidence": {"board": "#1354 6003410998 (2026-10-05T21:33:57Z / 14:33 PDT): [NAYA 3][SUPERBRAIN OPTIMIZATION — EXECUTION UPDATE]", "new_rung": "run 37374859264: fresh lesson PASS, persistence/lineage PASS, independent lineage reread PASS, cold-successor-held-out FAIL at single-capture verifier line 52: assert comprehension[\"understands_raw_source_separate\"]", "root_cause": "zero-capture fallback unique + valid JSON (post-#1504) but emitted empty machine_view — verifier could not truthfully prove the CANDIDATE/distillation law", "lifecycle_drift": "single-real-capture verifier still old V2 semantics while batch verifier already handled ACTIVE vs SUPERSEDED; downstream single-path independent verifier had the same drift", "repairs": "#1508 merged (fallback machine_view populated with required contract fields); #1510 (fallback carries explicit CANDIDATE/distillation semantics; single path → lifecycle-aware V3; SUPERSEDED history proves provenance + real ACTIVE successor; downstream independent verifier mirrors lifecycle; single/batch parity regression ratchet)", "onion_chain": "#1501 (retry break) → #1502 (IV reread) → #1504 (fallback form) → #1508 (fallback semantics) → #1510 (lifecycle drift)"}, "doctrine": {"semantic_validity": "a test double must satisfy the verifier's actual assertions — read the assertions first, then build the double; unique + parseable is necessary, not sufficient", "form_vs_meaning": "form-validity (unique, valid JSON, doesn't crash) is not semantic-validity (carries the contract semantics the proof requires)", "parity_ratchet": "when single and batch paths verify the same property, a regression ratchet keeps them in parity — drift becomes the next rung", "onion_rule": "each repair exposes the next rung; a newly-exposed rung is a NEW RED, not evidence the repair failed", "pairs_with": "SN-0390 (sibling-gap family closure — same proof family, adjacent rung); SN-0384 (validity gating); SN-0356 (audit your own instrument)"}}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0526",
+ "intelligence": {
+  "title": "A Smart Note Is Not Finished When Written — the Activation Ladder",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0526-smart-note-activation-ladder",
+  "smart_note_id": "SN-0526",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-0526/IB-SMART-NOTE-20260930-sn0526-smart-note-activation-ladder.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/ACTIVE-INTELLIGENCE/UNDERSTAND-CONNECT-RETRIEVE-APPLY/SN-0526/IB-SMART-NOTE-20260930-sn0526-smart-note-activation-ladder.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

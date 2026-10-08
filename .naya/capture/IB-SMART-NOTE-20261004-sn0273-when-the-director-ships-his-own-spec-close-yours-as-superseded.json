@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0273",
+ "intelligence": {
+  "title": "When the Director Ships His Own Spec, Close Yours as Superseded — Carry Only the Missing Piece",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0273-when-the-director-ships-his-own-spec-close-yours-as-superseded",
+  "smart_note_id": "SN-0273",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-HANDLING/SN-0273/IB-SMART-NOTE-20261004-sn0273-when-the-director-ships-his-own-spec-close-yours-as-superseded.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/GOVERNANCE/AUTHORITY-HANDLING/SN-0273/IB-SMART-NOTE-20261004-sn0273-when-the-director-ships-his-own-spec-close-yours-as-superseded.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

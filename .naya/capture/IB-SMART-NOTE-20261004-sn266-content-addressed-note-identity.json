@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-266",
+ "intelligence": {
+  "title": "Content-Addressed Note Identity — Kill the Double-Claim Class with a Mechanism, Not a Social Protocol",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn266-content-addressed-note-identity",
+  "smart_note_id": "SN-266",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-266/IB-SMART-NOTE-20261004-sn266-content-addressed-note-identity.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/GOVERNANCE/OPERATING-INTELLIGENCE/DISCERNMENT-DISTILLATION-AUTONOMY-LEARNING/SN-266/IB-SMART-NOTE-20261004-sn266-content-addressed-note-identity.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

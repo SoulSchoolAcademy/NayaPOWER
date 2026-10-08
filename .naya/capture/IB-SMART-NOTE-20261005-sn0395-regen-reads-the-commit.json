@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0395",
+ "intelligence": {
+  "title": "Regen Reads the Commit, Not the Worktree — the ls-tree HEAD Rule",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0395-regen-reads-the-commit",
+  "smart_note_id": "SN-0395",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-0395/IB-SMART-NOTE-20261005-sn0395-regen-reads-the-commit.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/CI-TRIAGE/REGENERATION-INTENT/SN-0395/IB-SMART-NOTE-20261005-sn0395-regen-reads-the-commit.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

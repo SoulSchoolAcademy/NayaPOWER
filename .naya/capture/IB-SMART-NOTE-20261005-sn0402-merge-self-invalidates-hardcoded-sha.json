@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0402",
+ "intelligence": {
+  "title": "A Merge Self-Invalidates Hardcoded \"Current Main\" SHAs — Embedded SHAs Are Snapshots, Never Currency",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0402-merge-self-invalidates-hardcoded-sha",
+  "smart_note_id": "SN-0402",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0402/IB-SMART-NOTE-20261005-sn0402-merge-self-invalidates-hardcoded-sha.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/OPERATIONS/DEPLOYMENT-EVIDENCE/SN-0402/IB-SMART-NOTE-20261005-sn0402-merge-self-invalidates-hardcoded-sha.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0323",
+ "intelligence": {
+  "title": "The Same Red at Three Unrelated Tips Is the Platform Talking — the Infra-Noise Repetition Test",
+  "intelligent_block_id": "IB-SMART-NOTE-20261004-sn0323-infra-noise-repetition-test",
+  "smart_note_id": "SN-0323",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0323/IB-SMART-NOTE-20261004-sn0323-infra-noise-repetition-test.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/04/SYSTEM-INTELLIGENCE/CI-TRIAGE/RED-CLASSIFICATION/SN-0323/IB-SMART-NOTE-20261004-sn0323-infra-noise-repetition-test.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

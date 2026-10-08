@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0422",
+ "intelligence": {
+  "title": "One Canonical Truth Owner — a Second Registry That Disagrees Is a Second Brain; Remove It, Don't Index It",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0422-one-canonical-truth-owner-remove-the-second-brain",
+  "smart_note_id": "SN-0422",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0422/IB-SMART-NOTE-20261005-sn0422-one-canonical-truth-owner-remove-the-second-brain.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/05/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/CANONICAL-PLACEMENT/SN-0422/IB-SMART-NOTE-20261005-sn0422-one-canonical-truth-owner-remove-the-second-brain.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

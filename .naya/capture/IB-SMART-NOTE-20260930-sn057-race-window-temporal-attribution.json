@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-057",
+ "intelligence": {
+  "title": "Race-Window Temporal Attribution — Name Which Came First, Because a Stale Read Can Invert the Outcome",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn057-race-window-temporal-attribution",
+  "smart_note_id": "SN-057",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-057/IB-SMART-NOTE-20260930-sn057-race-window-temporal-attribution.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DIRECT-LANE-COLLABORATION/SN-057/IB-SMART-NOTE-20260930-sn057-race-window-temporal-attribution.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

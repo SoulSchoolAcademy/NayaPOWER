@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0147",
+ "intelligence": {
+  "title": "The Image Is the Lock Artifact — Visuals Are First-Class, Not Derived",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact",
+  "smart_note_id": "SN-0147",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0147/IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/SYSTEM-DESIGN/KNOWLEDGE-PROJECTION/SN-0147/IB-SMART-NOTE-20260930-sn0147-visual-first-class-lock-artifact.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

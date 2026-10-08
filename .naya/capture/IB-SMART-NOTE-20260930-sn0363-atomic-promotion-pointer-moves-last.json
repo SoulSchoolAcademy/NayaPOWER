@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0363",
+ "intelligence": {
+  "title": "Atomic Promotion: The Pointer Moves Last, Not First",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0363-atomic-promotion-pointer-moves-last",
+  "smart_note_id": "SN-0363",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRODUCTION-PROMOTION-INTEGRITY/SN-0363/IB-SMART-NOTE-20260930-sn0363-atomic-promotion-pointer-moves-last.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/GOVERNANCE/PRODUCTION-PROMOTION-INTEGRITY/SN-0363/IB-SMART-NOTE-20260930-sn0363-atomic-promotion-pointer-moves-last.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

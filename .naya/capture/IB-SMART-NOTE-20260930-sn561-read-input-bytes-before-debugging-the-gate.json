@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-561",
+ "intelligence": {
+  "title": "Read the Input Bytes Before Debugging the Gate — Fail-Closed Is Evidence the Validator Works",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate",
+  "smart_note_id": "SN-561",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-561/IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-561/IB-SMART-NOTE-20260930-sn561-read-input-bytes-before-debugging-the-gate.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

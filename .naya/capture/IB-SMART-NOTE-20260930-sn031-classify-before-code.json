@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-031",
+ "intelligence": {
+  "title": "Classify Before Code Change — and a Scope 403 Is a Gate, Not an Obstacle",
+  "intelligent_block_id": "IB-SMART-NOTE-20260930-sn031-classify-before-code",
+  "smart_note_id": "SN-031",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-031/IB-SMART-NOTE-20260930-sn031-classify-before-code.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/EARNED-INTELLIGENCE/VERIFIED-EXPERIENCE/SN-031/IB-SMART-NOTE-20260930-sn031-classify-before-code.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}

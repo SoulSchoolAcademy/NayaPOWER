@@ -1,0 +1,18 @@
+{
+ "smart_note_id": "SN-0353",
+ "intelligence": {
+  "title": "Call the Pause, Don't Hand Over Another SHA",
+  "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0353-call-the-pause-not-another-sha",
+  "smart_note_id": "SN-0353",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-0353/IB-SMART-NOTE-20261005-sn0353-call-the-pause-not-another-sha.md",
+  "ingest": "canonical-reconstruction",
+  "ingest_note": "Reconstructed intake record. This Smart Note was published as a Markdown projection without a preserved runtime capture. Original runtime provenance was not preserved and none is invented here.",
+  "ingested_at": "2026-10-08"
+ },
+ "source": {
+  "ingestion": "canonical-reconstruction",
+  "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/OPERATING-MODE/DECISION-EFFICIENCY/SN-0353/IB-SMART-NOTE-20261005-sn0353-call-the-pause-not-another-sha.md",
+  "provenance_note": "reconstructed from published projection; no runtime provenance invented"
+ },
+ "schema": "naya.smart-note-capture.v2"
+}
