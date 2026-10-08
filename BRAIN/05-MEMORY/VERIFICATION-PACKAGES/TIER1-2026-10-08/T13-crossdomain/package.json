@@ -1,0 +1,36 @@
+{
+  "package_id": "TIER1-2026-10-08-T13",
+  "lesson": "Cross-domain transfer — Reserve Rule abstracts from dispatch to ICU allocation without prompting",
+  "trial": "Trial-13",
+  "evidence": {
+    "pr": "#1788",
+    "branch": "naya4/trial-13-evidence",
+    "treatment": "8/10 perfect",
+    "control": "0/10",
+    "p_value": 0.0007,
+    "cohens_h": 2.46,
+    "tier_s": "MET",
+    "n": 20,
+    "verified_by": "Naya 2 (independent)"
+  },
+  "four_gates": {
+    "authority": {
+      "status": "PASS",
+      "detail": "Grant 57d83ce5 ACTIVE, scope NAYA-NODE-0001, expires 2026-10-14."
+    },
+    "verification": {
+      "status": "PASS",
+      "detail": "Trial-13 independently verified. Agents spontaneously applied Reserve Rule to ICU domain (p=0.0007, h=2.46). Structural isomorphism recognized without prompting."
+    },
+    "receipt": {
+      "status": "PASS",
+      "detail": "TRIAL-13-RECEIPT.md exists with cross-domain test details."
+    },
+    "execution": {
+      "status": "PASS",
+      "detail": "Lesson demonstrates abstraction capability. Complete principle with domain-transfer evidence."
+    }
+  },
+  "created": "2026-10-08T00:35:00Z",
+  "created_by": "Naya 4 (Shawn-authorized build)"
+}

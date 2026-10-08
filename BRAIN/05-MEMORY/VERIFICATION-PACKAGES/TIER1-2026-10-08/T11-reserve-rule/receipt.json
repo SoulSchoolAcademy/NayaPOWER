@@ -1,0 +1,17 @@
+{
+  "receipt_id": "TIER1-RCPT-T11-20261008",
+  "package_id": "TIER1-2026-10-08-T11",
+  "timestamp": "2026-10-08T00:35:00Z",
+  "gates": {
+    "authority": "PASS",
+    "verification": "PASS",
+    "receipt": "PASS",
+    "execution": "PASS"
+  },
+  "evidence_pointers": {
+    "pr": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/1786",
+    "trial_receipt": "BRAIN/05-MEMORY/LEARNING-TRIALS/trial-11-reserve/TRIAL-11-RECEIPT.md",
+    "grant": "57d83ce5"
+  },
+  "verdict": "READY_FOR_VERIFIER"
+}
