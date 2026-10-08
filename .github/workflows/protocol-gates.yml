@@ -23,7 +23,7 @@ jobs:
       - name: Run protocol gate tests
         run: python -m pytest tests/test_protocol_machine_law.py -q
       - name: Verify protocol document exists
-        run: test -f BRAIN/01-GOVERNANCE/TEAM-NAYA-OPERATING-PROTOCOL-V1.md
+        run: test -f BRAIN/01-GOVERNANCE/0000-OPERATING-CODE-V1.md
 
   no-competing-constitution:
     name: No competing boot/authority systems
