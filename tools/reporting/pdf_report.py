@@ -761,7 +761,13 @@ def main() -> None:
     since = now - dt.timedelta(hours=args.hours)
     gen = ReportGenerator()
     data = gen.collect(args.type, since, now)
-    path = build_pdf(data, args.type, args.out)
+    if args.type == "hourly":
+        # Hourly ships the Design Contract exemplar renderer (repaired 2026-10-08).
+        # Same data layer, same CLI contract — only the renderer changes.
+        from pdf_report_exemplar import build_pdf as build_exemplar_pdf
+        path = build_exemplar_pdf(data, args.type, args.out)
+    else:
+        path = build_pdf(data, args.type, args.out)
     print(path)
 
 
