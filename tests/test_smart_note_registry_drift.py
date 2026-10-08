@@ -28,6 +28,14 @@ PINNED_BASELINE = {
     "entries_without_hash": 28,
     "entries_with_stale_hash": 0,
     "duplicate_smart_note_ids": 0,
+    # Measured 18 on main@53217a40 (2026-10-08): 17 canonical-ingestion
+    # tombstone pairs (ACTIVE live entry + SUPERSEDED tombstone sharing the
+    # id; repair owned by PR #1844) + the SN-0359 duplicate pair (repair owned
+    # by PR #1837). The hash-keyed duplicate_smart_note_ids above stays 0 on
+    # the same bytes -- that is the instrument blind spot this class closes.
+    # When the wave merges, RE-PIN this downward per the ratchet's shrink
+    # rule; do not leave the healed state pinned at 18.
+    "conflicting_smart_note_ids": 18,
     "published_entries_missing_projection_path": 0,
     "registry_projection_paths_absent": 0,
     "published_pages_without_registry_entry": 1,
@@ -131,6 +139,11 @@ def test_clean_fixture_is_reported_ok(tmp_path):
             id="projection_path_absent_on_disk",
         ),
         pytest.param(
+            lambda root: _dup_entry_same_id_different_hash(root),
+            "conflicting_smart_note_ids",
+            id="same_id_different_content",
+        ),
+        pytest.param(
             lambda root: _write_capture(root, "{ not json"),
             "unparseable_captures",
             id="unparseable_capture",
@@ -189,6 +202,21 @@ def _point_projection_at_absent_path(root):
     reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
     entries = read_entries(reg)
     entries[0]["projection_path"] = PAGE.replace("IB-1.md", "IB-MISSING.md")
+    write_entries(reg, entries)
+
+
+def _dup_entry_same_id_different_hash(root):
+    """A second registry entry claims the same smart_note_id with different
+    content: the canonical-ingestion tombstone pattern. The hash-keyed
+    duplicate_smart_note_ids check is blind to this by construction; the
+    ID-keyed conflicting_smart_note_ids class must fire."""
+    reg = root / ".naya" / "memory" / "smart-notes" / "index.json"
+    entries = read_entries(reg)
+    tombstone = dict(entries[0])
+    tombstone["content_hash"] = "f" * 64
+    tombstone["lifecycle_state"] = "SUPERSEDED"
+    tombstone["projection_path"] = None
+    entries.append(tombstone)
     write_entries(reg, entries)
 
 
