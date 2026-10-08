@@ -1,5 +1,8 @@
 from pathlib import Path
+import ast
+import re
 import textwrap
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 LEARN = (ROOT / "supabase/functions/nayanet-learning-verify/index.ts").read_text(encoding="utf-8")
@@ -79,10 +82,34 @@ def test_workflow_graph_proof_waits_for_verified_learning_and_uses_producer_bloc
 
 def test_fallback_capture_declares_provenance_sensitive_task_class():
     source = (ROOT / ".github" / "workflows" / "live-intelligence-commit-proof.yml").read_text(encoding="utf-8")
-    assert '"declared_task_classes":["provenance_sensitive"]' in source
-    assert '"p_project_id":"NayaNET",\\n' not in source
+    # Execute request expressions from the actual embedded producers. Selecting
+    # the first request only can silently test the batch path as the fallback.
+    fixture = {
+        "os": SimpleNamespace(environ={"GRANT_ID": "LOCAL-FIXTURE-GRANT"}),
+        "capture": {"capture_id": "ordinary-note", "title": "ordinary", "topic": "ordinary"},
+        "distilled": "ordinary content",
+        "resolved_connections": [],
+        "lesson_key": "LOCAL-FALLBACK",
+        "lesson_content": "fixture content",
+    }
+    requests = []
+    for match in re.finditer(r"<<'PY'[^\n]*\n(.*?)^          PY\s*$", source, re.M | re.S):
+        embedded = textwrap.dedent(match.group(1))
+        tree = ast.parse(embedded)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Assign) and any(
+                isinstance(target, ast.Name) and target.id == "request"
+                for target in node.targets
+            ):
+                expression = compile(ast.Expression(node.value), "<workflow-request>", "eval")
+                requests.append(eval(expression, {"__builtins__": {}}, fixture))
 
-    start = source.index("          request={")
-    end = source.index('          pathlib.Path(f"lesson-request', start)
-    embedded = textwrap.dedent(source[start:end])
-    compile(embedded, "<live-intelligence-fallback-request>", "exec")
+    ordinary = [r for r in requests if r["p_event_id"] == "SMART-NOTE-ordinary-note"]
+    fallback = [r for r in requests if r["p_event_id"] == "LOCAL-FALLBACK"]
+    assert len(requests) == 3, "batch, single-capture and fallback must all be exercised"
+    assert len(ordinary) == 2
+    assert len(fallback) == 1
+    assert fallback[0].get("declared_task_classes") == ["provenance_sensitive"]
+    assert all("declared_task_classes" not in r for r in ordinary), (
+        "ordinary captures must not inherit a proof-fixture task declaration"
+    )
