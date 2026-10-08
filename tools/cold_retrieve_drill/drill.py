@@ -23,6 +23,11 @@ def load_bank(path):
 
 def pick(items, week):
     act = [i for i in items]
+    if not act:
+        # All bank items retired (or bank empty): fail LOUD, never silently
+        # pick index 0 of nothing (was: cryptic ZeroDivisionError) and never
+        # let a weekly cron report a pass it never earned.
+        raise SystemExit("BANK_EMPTY")
     return act[week % len(act)]
 
 def main():
