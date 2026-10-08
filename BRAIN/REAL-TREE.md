@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-07  
-**Receipt basis commit:** `7e6bc649e21ecf5f2bf19ddf0ad56a6e8e006cfc`  
-**Inventory file count:** 239  
+**Receipt basis commit:** `e9afcc17b1620c9fd74aaf4f44ed65bd7ab32799`  
+**Inventory file count:** 245  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 70 |
+| 05-MEMORY | 75 |
 | 06-PROOF | 10 |
 | 07-LEARNING | 2 |
 | 08-SUCCESSION | 2 |
@@ -23,7 +23,7 @@
 | 10-INTERFACES | 7 |
 | 11-KNOWLEDGE | 7 |
 | 12-ENGINEERING | 25 |
-| 90-OPERATIONS | 12 |
+| 90-OPERATIONS | 13 |
 | 99-ARCHIVE | 1 |
 | ROOT | 5 |
 
@@ -151,6 +151,11 @@
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/05/IB-DIR-NAYAPOWER-20261005-001.md` — `d747afcc0ba0` (8002 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/DAILY/2026/10/06/IB-DIR-NAYAPOWER-20261006-001.md` — `a5cc40093ada` (5770 bytes)
 - `BRAIN/05-MEMORY/INTELLIGENCE-REPORTS/README.md` — `3539d973f1e8` (6111 bytes)
+- `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/README.md` — `331d4c154e15` (1648 bytes)
+- `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial11.py` — `57161e89ed37` (4850 bytes)
+- `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial12.py` — `4fb00fe4a0c5` (3489 bytes)
+- `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial13.py` — `c7da6ba12add` (3000 bytes)
+- `BRAIN/05-MEMORY/LEARNING-TRIALS/2026/10/07/GRADER-REPAIR-2026-10-07/grade_trial14.py` — `20c4418652af` (3595 bytes)
 - `BRAIN/05-MEMORY/README.md` — `d9ca35c22c01` (2300 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/NAYA-CONTINUATION-ENGINE/ONE-NEXT-ACTION-AND-PROOF/SN-003/IB-SMART-NOTE-20260929-sn003-naya-continuation-engine.md` — `029a0f3e447d` (6599 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/09/29/SYSTEM-INTELLIGENCE/SMART-NOTE-NODE-OPERATING-FLOW/END-TO-END-PROTOCOL/SN-002/IB-SMART-NOTE-20260929-sn002-smart-note-node-flow.md` — `f82e011d20fa` (18984 bytes)
@@ -289,6 +294,7 @@
 - `BRAIN/90-OPERATIONS/2026-09-30-FRESH-MAIN-RECONCILIATION.md` — `73d6eddebcec` (9953 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-04-WHOLE-REPOSITORY-ALIGNMENT.md` — `954227fe2d94` (8068 bytes)
 - `BRAIN/90-OPERATIONS/2026-10-06-COLD-14-CURRENT-STATE-AND-10-10-GAP-AUDIT.md` — `188ee5921503` (30828 bytes)
+- `BRAIN/90-OPERATIONS/2026-10-08-COLD-14-INDEPENDENT-RUN-AND-PRODUCT-PATH-REPAIR.md` — `37e4e4b70a23` (20377 bytes)
 - `BRAIN/90-OPERATIONS/README.md` — `c9c2abaff648` (2077 bytes)
 ### 99-ARCHIVE — Archive
 
