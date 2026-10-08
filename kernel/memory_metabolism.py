@@ -386,12 +386,20 @@ def metabolize(
     Pure function over the record list; same input yields same output and
     same receipts. Refuses on any integrity failure instead of metabolizing
     around corruption — corruption is a quarantine decision, not a
-    housekeeping detail.
+    housekeeping detail. Non-ACTIVE records are skipped with a noop receipt:
+    history is immutable by law, so a housekeeping pass must be total over
+    mixed-state stores rather than crashing on the first history record.
+    `decay()` itself stays strict for direct callers.
     """
     receipts: list[dict[str, Any]] = []
     for record in records:
         _require_integrity(record)
     for record in records:
-        receipt = decay(record, now=now, stale_after_days=stale_after_days)
-        receipts.append(receipt)
+        if record.memory_state != ACTIVE:
+            receipt = _receipt("decay", record, record.memory_state, now,
+                               "not_active_noop")
+            receipt["to_state"] = record.memory_state
+            receipts.append(receipt)
+            continue
+        receipts.append(decay(record, now=now, stale_after_days=stale_after_days))
     return records, receipts
