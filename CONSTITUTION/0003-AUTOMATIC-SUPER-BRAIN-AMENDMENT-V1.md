@@ -1,8 +1,8 @@
-# CONSTITUTIONAL AMENDMENT — CANDIDATE
+# CONSTITUTIONAL AMENDMENT — RATIFIED
 
 ## 0003-AUTOMATIC-SUPER-BRAIN-AMENDMENT-V1.md
 
-**STATUS:** CANDIDATE — AWAITING HUMAN DIRECTOR RATIFICATION
+**STATUS:** RATIFIED — Human Director Shawn Vibert, 2026-10-08 (#1354 comment 6061380885; manifest recorded in PR #1863)
 **DATE:** 2026-10-08
 **AUTHOR:** Naya 5 (from Shawn's directive 2026-10-08)
 **AMENDS:** Constitution Act V1 (0000), adds operational articles
@@ -73,8 +73,8 @@ clear, defined, and organized. Non-stop execution. Value 24 hours a day, 7 days 
 
 ## RATIFICATION
 
-This amendment becomes constitutional law ONLY on the Human Director's explicit word.
-Until then: CANDIDATE.
+This amendment became constitutional law on the Human Director's explicit word.
+**RATIFIED:** 2026-10-08 by Shawn Vibert (Human Director) — #1354 comment 6061380885; manifest updated in PR #1863.
 
 Proposed machine-law implementations:
 - `kernel/protocol/automatic_operation.py` — checks for Article VII (auto-prioritization)
