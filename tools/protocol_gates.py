@@ -427,14 +427,46 @@ def check_quality_gate(
     (PR #1807 — canonical). The local fallback enforces the floor rule only;
     the full delivery-scorecard checks (evidence, weakest point, independent
     verifier) live in the canonical module.
+
+    Input validation runs BEFORE delegation on both paths: the kernel gate
+    does not check score finiteness/range, so delegating unchecked inputs
+    would let e.g. NaN slip past the floor (NaN < 9.0 is False).
     """
+    reasons: list[str] = []
+    if not isinstance(scores, dict) or not scores:
+        reasons.append("scores must be a non-empty dict of dimension -> 0-10")
+    if weights is not None and isinstance(scores, dict):
+        if set(scores) != set(weights):
+            reasons.append("scores and weights must cover the same dimensions")
+        elif abs(sum(weights.values()) - 1.0) > 0.001:
+            reasons.append("weights must sum to 1.0")
+    bad = []
+    for dim, v in (scores.items() if isinstance(scores, dict) else []):
+        if not isinstance(v, (int, float)) or isinstance(v, bool) \
+                or not math.isfinite(v) or not (0 <= v <= 10):
+            bad.append(dim)
+    if bad:
+        reasons.append(f"Non-finite or out-of-range scores: {bad}")
+    if reasons:
+        return AdapterResult(
+            passed=False, verdict="FAIL",
+            reasons=reasons,
+            delegated_to="adapter-input-validation",
+        )
+
     check_delivery = _try_kernel_attr("quality_gate", "check_delivery")
     Scorecard = _try_kernel_attr("quality_gate", "Scorecard")
     if check_delivery is not None and Scorecard is not None:
         try:
+            # Adapter contract: weights are optional (equal weighting implied).
+            # Kernel contract: weights are required and must sum to 1.0.
+            # Bridge the two here so the delegation honors both.
+            w = dict(weights) if weights else (
+                {d: 1.0 / len(scores) for d in scores}
+            )
             sc = Scorecard(
                 what="adapter-call", evidence="adapter-call",
-                scores=dict(scores), weights=dict(weights or {}),
+                scores=dict(scores), weights=w,
                 weakest_point="adapter-call", verified_by="adapter",
             )
             r = check_delivery(sc, builder_id="protocol_gates-adapter")
@@ -446,28 +478,7 @@ def check_quality_gate(
         except Exception:
             pass  # fall through to local mirror
 
-    reasons: list[str] = []
-    if not isinstance(scores, dict) or not scores:
-        return AdapterResult(
-            passed=False, verdict="FAIL",
-            reasons=["scores must be a non-empty dict of dimension -> 0-10"],
-            delegated_to="local-fallback (kernel/protocol not yet merged)",
-        )
-    if weights is not None:
-        if set(scores) != set(weights):
-            reasons.append("scores and weights must cover the same dimensions")
-        elif abs(sum(weights.values()) - 1.0) > 0.001:
-            reasons.append("weights must sum to 1.0")
-    bad = []
-    for dim, v in scores.items():
-        if not isinstance(v, (int, float)) or isinstance(v, bool) \
-                or not math.isfinite(v) or not (0 <= v <= 10):
-            bad.append(dim)
-    if bad:
-        reasons.append(f"Non-finite or out-of-range scores: {bad}")
-    low = [d for d, s in scores.items()
-           if isinstance(s, (int, float)) and not isinstance(s, bool)
-           and math.isfinite(s) and s < 9.0]
+    low = [d for d, s in scores.items() if s < 9.0]
     if low:
         reasons.append(
             f"Dimensions below floor 9.0: {low}. A 10 never covers a 7."

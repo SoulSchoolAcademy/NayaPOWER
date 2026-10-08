@@ -9,7 +9,11 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "workspace"))
+# Import from the repository, not from an ambient ~/workspace copy: on a clean
+# CI runner there is no ~/workspace/engineering_gates.py, so the old path made
+# this test pass locally and fail in CI — the exact defect the CI-dependency
+# guard exists to prevent.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools" / "protocol"))
 
 from engineering_gates import (
     check_test_the_seam,

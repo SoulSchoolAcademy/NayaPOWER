@@ -67,9 +67,14 @@ def _first_party_modules() -> set:
     # before `import smart_link`) are first-party as well: those modules resolve from the
     # checkout itself, so CI needs no pip install for them. Without this the guard cries wolf
     # about project modules and gets ignored — the exact failure mode its docstring warns of.
-    for import_root in (REPO / "tools",):
+    for import_root in (REPO / "tools", REPO / "tools" / "protocol"):
         if import_root.is_dir():
             names.update(p.stem for p in import_root.glob("*.py"))
+    # tools/protocol/checks is itself an import root (tests do
+    # sys.path.insert(0, ROOT/"tools"/"protocol") then `from checks import ...`).
+    checks_pkg = REPO / "tools" / "protocol" / "checks"
+    if checks_pkg.is_dir():
+        names.add(checks_pkg.name)
     for entry in REPO.iterdir():
         if entry.is_dir() and (entry / "__init__.py").exists():
             names.add(entry.name)
