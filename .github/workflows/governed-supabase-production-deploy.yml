@@ -768,12 +768,58 @@ jobs:
           PY
           cat production-promotion-receipt.json
 
+      - name: Write production promotion failure receipt
+        # Complements the fail-closed handshake above: when the chain fails,
+        # the handshake step is skipped and no receipt exists. This step runs
+        # only on the failure path and writes a durable, always-emittable
+        # failure receipt (tools/production_promotion_failure_receipt.py) that
+        # records the refusal explicitly and binds every available proof-leg
+        # artifact to the authorized source and deployment commit. It never
+        # certifies PROMOTED_AND_PROVEN and never raises on missing inputs.
+        if: ${{ failure() && (github.event_name == 'workflow_dispatch' || steps.standing_policy.outputs.allowed != '') }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os
+          from tools.production_promotion_failure_receipt import build_failure_receipt, SCHEMA
+          def load(name):
+              try:
+                  with open(name, encoding="utf-8") as f:
+                      return json.load(f)
+              except (OSError, ValueError):
+                  return None
+          files = {
+              "supabase-production-check.json": load("supabase-production-check.json"),
+              "producer-run.json": load("producer-run.json"),
+              "proof-run.json": load("proof-run.json"),
+              "act-proof-run.json": load("act-proof-run.json"),
+              "learning-act-proof-run.json": load("learning-act-proof-run.json"),
+              "connect-proof-run.json": load("connect-proof-run.json"),
+          }
+          receipt = build_failure_receipt(
+              github_sha=os.environ["GITHUB_SHA"],
+              production_branch=os.environ["PRODUCTION_BRANCH"],
+              promotion_mode=os.environ.get("PROMOTION_MODE", "UNKNOWN"),
+              authorized_source_sha=os.environ.get("AUTHORIZED_SOURCE_SHA", os.environ["GITHUB_SHA"]),
+              actor=os.environ.get("GITHUB_ACTOR"),
+              workflow_run_id=os.environ.get("GITHUB_RUN_ID"),
+              env=dict(os.environ),
+              files=files,
+          )
+          assert receipt["schema"] == SCHEMA
+          assert receipt["status"] != "PROMOTED_AND_PROVEN"
+          json.dump(receipt, open("production-promotion-failure-receipt.json", "w"), indent=2)
+          PY
+          cat production-promotion-failure-receipt.json
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: production-promotion-receipt
           path: |
             production-promotion-receipt.json
+            production-promotion-failure-receipt.json
             production-promotion-denial.json
             standing-authorization-verdict.json
             standing-ci-evidence.json
