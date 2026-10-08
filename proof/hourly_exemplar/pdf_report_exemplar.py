@@ -98,6 +98,77 @@ TEAM_COLORS: dict[str, HexColor] = {
 }
 
 PAGE_W, PAGE_H = A4
+
+
+# ---------------------------------------------------------------------------
+# Spectrum flow — Shawn's hard law: NO TWO ADJACENT ELEMENTS SHARE A COLOR.
+# Colors exist to break visual flow and signal "new point". Adjacent colors
+# must also be perceptually distant (no muddy neighbors like gold-vs-yellow).
+# ---------------------------------------------------------------------------
+
+_SPECTRUM_FLOW = [MAGENTA, PURPLE, BLUE, TEAL, EMERALD,
+                  LIME, YELLOW, GOLD, ORANGE, RED]
+
+# Minimum perceptual distance between adjacent colors. Tuned so that
+# gold-vs-yellow and gold-vs-gold FAIL, gold-vs-blue PASSES.
+_MIN_ADJACENT_DISTANCE = 0.30
+
+
+def _color_distance(c1: HexColor, c2: HexColor) -> float:
+    """Redmean-weighted RGB perceptual distance, 0.0 (identical) to ~1.7."""
+    r1, g1, b1 = c1.red, c1.green, c1.blue
+    r2, g2, b2 = c2.red, c2.green, c2.blue
+    rm = (r1 + r2) / 2.0
+    dr, dg, db = r1 - r2, g1 - g2, b1 - b2
+    return (((2 + rm) * dr * dr + 4 * dg * dg
+             + (3 - rm) * db * db) ** 0.5) / 3.0
+
+
+def _same_color(c1: HexColor, c2: HexColor) -> bool:
+    return _hx(c1).lower() == _hx(c2).lower()
+
+
+class SpectrumCycler:
+    """Yields spectrum colors in flow order. Hard guarantees:
+    - never returns the same color twice in a row
+    - always keeps minimum perceptual distance from the previous color
+    - falls back to INK (white) rather than violating either rule
+    """
+
+    def __init__(self) -> None:
+        self._idx = 0
+        self._last: HexColor | None = None
+
+    def next(self, exclude: HexColor | None = None) -> HexColor:
+        for _ in range(len(_SPECTRUM_FLOW) * 3):
+            cand = _SPECTRUM_FLOW[self._idx % len(_SPECTRUM_FLOW)]
+            self._idx += 1
+            if self._last is not None and _same_color(cand, self._last):
+                continue
+            if exclude is not None and _same_color(cand, exclude):
+                continue
+            if (self._last is not None
+                    and _color_distance(cand, self._last)
+                    < _MIN_ADJACENT_DISTANCE):
+                continue
+            self._last = cand
+            return cand
+        self._last = INK  # white never violates; always a safe fallback
+        return INK
+
+    def reset(self) -> None:
+        self._last = None
+
+
+def _distant_or_ink(candidate: HexColor, neighbor: HexColor) -> HexColor:
+    """Return candidate unless it's too close to neighbor — then INK.
+
+    Used where a score color would sit next to a team color (e.g. GOLD
+    score beside a gold/yellow team header = muddy, unreadable).
+    """
+    if _color_distance(candidate, neighbor) < _MIN_ADJACENT_DISTANCE:
+        return INK
+    return candidate
 MARGIN = 0.55 * inch
 SHADOW = HexColor("#000000")
 
@@ -146,6 +217,156 @@ def _delta_str(sp: ScorePoint, previous: dict) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Human-first language — Shawn's law: "write for a human child first."
+# Plain meaning comes FIRST (18px). Technicals are evidence, linked, second.
+# PR/issue numbers NEVER appear in body text — they become evidence links.
+# ---------------------------------------------------------------------------
+
+_PR_RE = re.compile(r"\bPR[-\s]?(\d+)\b|(?<!\w)#(\d{3,})\b")
+
+
+def strip_pr_refs(text: str) -> tuple[str, list[str]]:
+    """Remove PR/issue numbers from body text. Returns (clean, [numbers])."""
+    found: list[str] = []
+    def _grab(m: re.Match) -> str:
+        num = m.group(1) or m.group(2)
+        if num not in found:
+            found.append(num)
+        return ""
+    clean = _PR_RE.sub(_grab, text)
+    clean = re.sub(r"\s{2,}", " ", clean).strip()
+    clean = re.sub(r"\s+([,.])", r"\1", clean)
+    return clean, found
+
+
+# Jargon → plain human meaning. Ordered longest-first so multi-word
+# phrases match before their parts.
+_JARGON: list[tuple[str, str]] = [
+    ("production readiness", "how ready we are to launch"),
+    ("production parity", "whether what's live matches what's built"),
+    ("fail-closed", "safely said no"),
+    ("fail closed", "safely said no"),
+    ("cold retrieve", "finding it fresh, with no memory to lean on"),
+    ("cold retrieval", "finding it fresh, with no memory to lean on"),
+    ("cold successor", "a fresh teammate with no prior context"),
+    ("cold-start", "starting from zero"),
+    ("successor reuse", "a future teammate using what we learned"),
+    ("learning lineage", "the trail from experience to lesson"),
+    ("scorecard receipt", "a graded report card"),
+    ("independent verification", "checked by someone else"),
+    ("merge-ready", "ready to be approved and added"),
+    ("merged", "approved and added"),
+    ("merges", "gets approved"),
+    ("merge", "approve and add"),
+    ("tip", "the latest version"),
+    ("CI", "automated checks"),
+    ("governance", "the rules"),
+    ("ratified", "officially approved"),
+    ("candidate", "being considered"),
+    ("promotion", "moving up"),
+    ("promoted", "moved up"),
+    ("rebase", "refresh"),
+    ("rebased", "refreshed"),
+    ("red", "blocked"),
+    ("green", "working"),
+    ("worktree", "workspace"),
+    ("submodule", "part"),
+    ("regression", "something that broke again"),
+    ("falsifier", "a test designed to catch mistakes"),
+    ("harness", "test setup"),
+    ("preregistration", "a public promise of what we'll test"),
+    ("replication", "repeat test"),
+    ("delta", "change"),
+    ("throughput", "how much got done"),
+    ("stale", "out of date"),
+    ("drift", "slowly going off course"),
+    ("quarantine", "set aside safely"),
+    ("parity verdict", "match check"),
+    ("handshake", "confirmation"),
+    ("provenance", "where it came from"),
+    ("ingestion", "taking in"),
+    ("distillation", "boiling down to the essence"),
+    ("compound", "build on itself"),
+    ("compounding", "building on itself"),
+    ("rows", "items"),
+    ("row", "item"),
+    ("shebang", "starter line"),
+    ("subprocess", "background task"),
+    ("bash", "command line"),
+    ("script", "tool"),
+    ("binary", "program"),
+    ("invoke", "run"),
+    ("wrapper", "helper"),
+    ("401", "connection problem"),
+    ("403", "permission problem"),
+    ("sb-api", "database tool"),
+    ("prod", "live"),
+    ("lane", "team"),
+    ("authd", "login"),
+    ("surrogate", "temporary"),
+    ("PR", "fix"),
+]
+
+
+def humanize(text: str) -> str:
+    """Translate technical report language into plain human meaning.
+
+    PR numbers are stripped here too (they become evidence links).
+    Output reads for a smart 12-year-old, not an engineer.
+    """
+    text, _ = strip_pr_refs(text)
+    # snake_case and SCREAMING_CASE are database-speak: normalize first.
+    text = re.sub(r"_", " ", text)
+    text = re.sub(r"\b([A-Z]{2,})([A-Z][a-z])", r"\1 \2", text)
+    # Backticks and commit SHAs are engineer noise: remove.
+    text = text.replace("`", "")
+    text = re.sub(
+        r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b",
+        "", text)
+    text = re.sub(r"\b[0-9a-f]{7,40}\b", "", text)
+    # Empty parens left by stripping: remove.
+    text = re.sub(r"\(\s*\)", "", text)
+    # SCREAMING_CASE database-speak: bring down to normal case.
+    # (Common acronyms are preserved.)
+    text = re.sub(r"\b([A-Z]{3,})(?=\s|$|[.,])",
+                  lambda m: (m.group(1) if m.group(1) in
+                             {"API", "URL", "UUID", "SQL"}
+                             else m.group(1).capitalize()), text)
+    # Markdown markers leak from source text: strip.
+    text = text.replace("**", "")
+    out = f" {text} "
+    for jargon, plain in _JARGON:
+        out = re.sub(r"\b" + re.escape(jargon) + r"\b", plain, out,
+                     flags=re.IGNORECASE)
+    out = re.sub(r"\s{2,}", " ", out).strip()
+    # Clean up doubled words the substitution can create ("the the").
+    out = re.sub(r"\b(\w+) \1\b", r"\1", out, flags=re.IGNORECASE)
+    return out
+
+
+def _score_plain(score: float) -> str:
+    """What a score MEANS to a human, first — before the number."""
+    if score >= 9.0:
+        return "excellent — verified working"
+    if score >= 7.0:
+        return "good progress, still improving"
+    if score >= 5.0:
+        return "about halfway there"
+    if score >= 3.0:
+        return "early stages"
+    return "just getting started"
+
+
+def _area_plain(area: str, score: float, status: str) -> str:
+    """One human sentence for an area score. No jargon, no PR numbers."""
+    meaning = _score_plain(score)
+    verified = ("independently checked" if status == "authoritative"
+                else "our own assessment so far")
+    return (f"{area}: {meaning} ({score:.1f} out of 10, "
+            f"{verified}).")
+
+
+# ---------------------------------------------------------------------------
 # Styles — 24/18/14; body 18px minimum; hierarchy by SIZE, never color
 # ---------------------------------------------------------------------------
 
@@ -169,13 +390,17 @@ def _styles() -> dict[str, ParagraphStyle]:
                              fontSize=18, leading=23, textColor=INK,
                              spaceBefore=10, spaceAfter=6),
         "body": base,
+        # Shawn's law: ZERO gray text anywhere. Secondary text is 14px
+        # white, never muted — muted (#AAB2BF) is unreadable on dark.
         "detail": ParagraphStyle("detail", parent=base,
-                                 fontSize=14, leading=19, textColor=MUTED),
+                                 fontSize=14, leading=19, textColor=INK),
         "detail_white": ParagraphStyle("detail_white", parent=base,
                                        fontSize=14, leading=19,
                                        textColor=INK),
+        # Bullets: color changes signal "new point" — paired with real
+        # breathing room (Shawn's law: separation is spacing + color).
         "bullet": ParagraphStyle("bullet", parent=base, leftIndent=6,
-                                 spaceBefore=4, spaceAfter=4),
+                                 spaceBefore=7, spaceAfter=9),
         "chip": ParagraphStyle("chip", parent=base,
                                fontName="Helvetica-Bold",
                                fontSize=14, leading=18, textColor=INK,
@@ -318,14 +543,33 @@ class ButtonBar(Flowable):
     def __init__(self, text: str, st: dict, glow: HexColor = PURPLE,
                  pad_v: float = 13):
         super().__init__()
-        self.text = text
         self.st = st
         self.glow = glow
         self.pad_v = pad_v
         self._w = self._h = 0.0
-        self._para = Paragraph("◆&nbsp;&nbsp;" + _esc(text), st["btn"])
+        # HARD LAW: text NEVER overlaps the button or anything else.
+        # Measure at render width; truncate with ellipsis rather than
+        # overflow. A clipped button is an instant design fail.
+        self.text = self._fit_text(text, st["btn"])
+
+    @staticmethod
+    def _fit_text(text: str, style, max_width: float = 7.0 * inch,
+                  limit: int = 120) -> str:
+        from reportlab.pdfbase.pdfmetrics import stringWidth
+        text = re.sub(r"\s+", " ", str(text)).strip()
+        if len(text) > limit:
+            text = text[:limit].rstrip() + "…"
+        # Shrink until it fits the button's inner width.
+        while text and stringWidth(text, style.fontName,
+                                   style.fontSize) > max_width - 60:
+            text = text[:-2].rstrip() + "…"
+        return text or "—"
+
+    def _make_para(self):
+        return Paragraph("◆&nbsp;&nbsp;" + _esc(self.text), self.st["btn"])
 
     def wrap(self, aW, aH):
+        self._para = self._make_para()
         _w, _h = self._para.wrap(aW - 44, aH)
         self._w = aW
         self._h = _h + 2 * self.pad_v
@@ -510,16 +754,12 @@ def _single_priority(sections: list[TeamSection], unassigned: dict) -> str:
 # Section builders — exemplar styling
 # ---------------------------------------------------------------------------
 
-# Spectrum flow accents for the metrics set (DC-041: 5 items →
-# magenta, purple, blue, green, yellow; green pinned to emerald).
-_METRIC_ACCENTS = [MAGENTA, PURPLE, BLUE, EMERALD, YELLOW]
-
-
-def _metrics_bar(st: dict, data: ReportData) -> Table:
-    """Metrics strip — five L1 glow-cards, spectrum-flow accents (DC-041).
+def _metrics_bar(st: dict, data: ReportData,
+                 cycler: SpectrumCycler) -> Table:
+    """Metrics strip — five L1 glow-cards, spectrum-cycled accents.
 
     Ground truth: reports.html weekStrip dayTiles, one tile per day each in
-    its own spectrum color.
+    its own spectrum color. Accents cycle with no adjacent repeats.
     """
     gh = data.github_snapshot
     sb = data.supabase_snapshot
@@ -534,18 +774,19 @@ def _metrics_bar(st: dict, data: ReportData) -> Table:
         sb_txt = ", ".join(f"{k}={v}" for k, v in counts.items()) or "no rows"
 
     metrics = [
-        ("PRs touched", f"{len(prs)} · {merged} merged"),
+        ("PRs touched", f"{len(prs)} · {merged} approved and added"),
         ("Open PRs", f"{open_prs}"),
-        ("#1354", f"{comments}"),
-        ("Evidence", sb_txt),
+        ("Team feed", f"{comments} messages"),
+        ("Evidence", _short(sb_txt, 40)),
         ("Window", data.since.strftime("%m-%d %H:%M")),
     ]
     width = (PAGE_W - 2 * MARGIN) / 5
     row = []
-    for (label, value), accent in zip(metrics, _METRIC_ACCENTS):
+    for label, value in metrics:
+        accent = cycler.next()
         inner = [
-            Paragraph(f"<b>{_esc(label)}</b>", st["detail_white"]),
-            Paragraph(_esc(_short(value, 48)), st["detail"]),
+            Paragraph(f"<b>{_esc(humanize(label))}</b>", st["detail_white"]),
+            Paragraph(_esc(_short(value, 48)), st["detail_white"]),
         ]
         inner_t = Table([[inner[0]], [inner[1]]], colWidths=[width - 24])
         inner_t.setStyle(TableStyle([
@@ -567,9 +808,15 @@ def _metrics_bar(st: dict, data: ReportData) -> Table:
 
 
 def _highlight_boxes(st: dict, data: ReportData,
-                     sections: list[TeamSection]) -> Table:
-    """Callout cards — jewel-bullet titles, L1 elevation (DC-070 + DC-065)."""
-    boxes: list[tuple[str, str, HexColor]] = []
+                     sections: list[TeamSection],
+                     cycler: SpectrumCycler) -> Table:
+    """Callout cards — jewel-bullet titles, L1 elevation (DC-070 + DC-065).
+
+    Colors cycle the spectrum: no two adjacent boxes share a color or sit
+    in muddy proximity (Shawn's hard law). Semantic colors (red = alarm)
+    yield to the alternation law — the TITLE text already signals urgency.
+    """
+    boxes: list[tuple[str, str]] = []
 
     moves: list[tuple[float, str, float, float, str]] = []
     for sp in data.scores:
@@ -581,37 +828,35 @@ def _highlight_boxes(st: dict, data: ReportData,
     if moves:
         _, area, prev, now, status = moves[0]
         d = now - prev
-        color = EMERALD if d > 0 else RED
+        direction = "up" if d > 0 else "down"
         boxes.append((
             "BIGGEST MOVE",
-            f"{_esc(area)} {prev:.1f} → <b>{now:.1f}</b> ({_esc(status)})",
-            color,
+            f"{_esc(humanize(area))} {prev:.1f} → <b>{now:.1f}</b> "
+            f"({direction}, {_esc(status)})",
         ))
 
     misses = _top_misses(sections, {}, limit=1)
     if misses:
         team, item = misses[0]
+        clean, _ = strip_pr_refs(item.text)
         boxes.append((
             "TOP BLOCKER",
-            f"[{_esc(team)}] {_esc(_short(item.text, 110))}",
-            RED,
+            f"[{_esc(humanize(team))}] {_esc(humanize(_short(clean, 110)))}",
         ))
 
     n_ach = sum(len(s.achievements) for s in sections)
     boxes.append((
         "THROUGHPUT",
         f"<b>{n_ach}</b> achievements recorded this window",
-        GOLD,
     ))
 
     at_floor = [sp for sp in data.scores if sp.score >= 9.0]
     boxes.append((
         "AT 9.0+ FLOOR",
         f"<b>{len(at_floor)}</b> of {len(data.scores)} "
-        f"area{'s' if len(data.scores) != 1 else ''}"
-        + (": " + ", ".join(_esc(sp.area) for sp in at_floor[:3])
+        f"area{'s' if len(data.scores) != 1 else ''} verified excellent"
+        + (": " + ", ".join(_esc(humanize(sp.area)) for sp in at_floor[:3])
            if at_floor else ""),
-        EMERALD if at_floor else INK,
     ))
 
     auth = [sp for sp in data.scores if sp.status == "authoritative"]
@@ -619,16 +864,16 @@ def _highlight_boxes(st: dict, data: ReportData,
         sp = auth[0]
         boxes.append((
             "AUTHORITATIVE",
-            f"{_esc(sp.area)} <b>{sp.score:.1f}</b> (verified, not a claim)",
-            EMERALD,
+            f"{_esc(humanize(sp.area))} <b>{sp.score:.1f}</b> "
+            f"({_score_plain(sp.score)})",
         ))
 
     boxes = boxes[:5]
     # Full-width callout strips: jewel + colored title + 18px body.
-    # A horizontal strip reads at a glance; five narrow columns did not.
     out: list = []
     avail = PAGE_W - 2 * MARGIN
-    for title, body, color in boxes:
+    for title, body in boxes:
+        color = cycler.next()
         text = (f'<font color="{_hx(color)}"><b>{_esc(title)}</b></font>'
                 f" &nbsp;{body}")
         inner = Table(
@@ -668,7 +913,10 @@ def _scorecard_table(st: dict, data: ReportData) -> Table:
     rows = [header]
     for sp in data.scores:
         team_name = AREA_TO_TEAM.get(sp.area, "—")
-        color = _score_color(sp.score)
+        team_color = TEAM_COLORS.get(team_name, INK)
+        # Score color keeps perceptual distance from the team color:
+        # a GOLD score beside a gold team header is muddy (Shawn's law).
+        color = _distant_or_ink(_score_color(sp.score), team_color)
         thx = _team_hx(team_name)
         # Break ONLY at slashes — never mid-word (the old report's
         # "Engine/ering" wraps were a readability failure).
@@ -709,9 +957,19 @@ def _scorecard_table(st: dict, data: ReportData) -> Table:
     return t
 
 def _team_section_flowables(st: dict, i: int, sec: TeamSection,
-                            data: ReportData) -> list:
-    """One team's section — 24px team-colored header (Shawn's spec),
-    jewel-bullet rows in the team color (DC-070), 18px body (D9)."""
+                            data: ReportData,
+                            cycler: SpectrumCycler,
+                            evidence: list[str]) -> list:
+    """One team's section — human first, always.
+
+    - 24px team-colored header (Shawn's spec)
+    - Plain-language status line FIRST (18px): what a human needs to know
+    - Bullets cycle the spectrum: NEVER two adjacent the same color,
+      always perceptually distant (Shawn's hard law)
+    - Every bullet humanized; PR numbers stripped to evidence links
+    - Score colors keep distance from the team header color (no muddy
+      gold-on-gold); fall back to white when too close
+    """
     out: list = []
     thx = _team_hx(sec.name)
     team_color = TEAM_COLORS.get(sec.name, INK)
@@ -719,102 +977,129 @@ def _team_section_flowables(st: dict, i: int, sec: TeamSection,
     out.append(Paragraph(
         f'<font color="{thx}"><b>Team {i}: {_esc(sec.name)}</b></font>',
         st["h1"]))
-    out.append(Paragraph(
-        f"{_esc(sec.manager)} · feed {_esc(sec.feed)}", st["detail"]))
-    out.append(Spacer(1, 4))
+    # Human status line FIRST: what does this team's hour MEAN?
+    out.append(Paragraph(_esc(_team_human_status(sec)), st["body"]))
+    out.append(Spacer(1, 6))
 
     chips: list[str] = []
     for sp in sec.scores:
-        color = _score_color(sp.score)
+        # Score color must stay readable next to the team header:
+        # too close (gold score + gold team) → white instead.
+        scolor = _distant_or_ink(_score_color(sp.score), team_color)
         tag = "AUTH" if sp.status == "authoritative" else "claim"
         delta = _delta_str(sp, data.previous_scores)
         chips.append(
-            f'<font color="{_hx(color)}"><b>{sp.score:.1f}</b></font>'
-            f" {_esc(sp.area)} · {tag} · Δ{delta}"
+            f'<font color="{_hx(scolor)}"><b>{sp.score:.1f}</b></font>'
+            f" {_esc(humanize(sp.area))} · {tag} · Δ{delta}"
         )
     chip_txt = " &nbsp;&nbsp; ".join(chips) if chips else \
         "cross-cutting — no direct area score"
     out.append(Paragraph(chip_txt, st["body"]))
+    out.append(Spacer(1, 6))
+    # Plain-English score meanings, one line each.
+    for sp in sec.scores:
+        out.append(Paragraph(
+            f"• {_esc(_area_plain(sp.area, sp.score, sp.status))}",
+            st["detail_white"]))
     out.append(Spacer(1, 6))
 
     out.append(Paragraph("<b>Done this period</b>", st["h2"]))
     done = sec.achievements[:5]
     if done:
         for a in done:
+            clean, prs = strip_pr_refs(a.text)
+            evidence.extend(prs)
             out.append(_jewel_bullet(
-                st, team_color,
-                f"{_esc(_short(a.text, 200))} "
-                f'<font color="{_hx(MUTED)}">[{_esc(a.source)}]</font>'))
+                st, cycler.next(exclude=team_color),
+                _esc(humanize(_short(clean, 200)))))
     else:
         out.append(Paragraph("Nothing recorded this window.", st["body"]))
 
     holes = sorted(sec.holes, key=lambda x: -x.priority)[:3]
     if holes:
-        out.append(Paragraph("<b>Holes</b>", st["h2"]))
+        out.append(Paragraph("<b>What needs attention</b>", st["h2"]))
         for j, h in enumerate(holes, 1):
-            # Holes are the alarm's business: red jewels (NC-2.5 — red
-            # reads as blocked/failed here, never decoration).
+            clean, prs = strip_pr_refs(h.text)
+            evidence.extend(prs)
+            # Holes are the alarm's business — but STILL cycle: never
+            # two reds in a row (Shawn's law beats the alarm convention;
+            # the "What needs attention" header already signals urgency).
             out.append(_jewel_bullet(
-                st, RED,
-                f"<b>{j}.</b> {_esc(_short(h.text, 200))} "
-                f'<font color="{_hx(MUTED)}">[{_esc(h.source)}]</font>'))
+                st, cycler.next(),
+                f"<b>{j}.</b> {_esc(humanize(_short(clean, 200)))}"))
 
     out.append(Paragraph("<b>Plan to 10</b>", st["h2"]))
     plan = action_plan_text(sec).replace("_", "")
-    out.append(Paragraph(_esc(_short(plan, 260)), st["body"]))
+    plan_clean, plan_prs = strip_pr_refs(plan)
+    evidence.extend(plan_prs)
+    out.append(Paragraph(_esc(humanize(_short(plan_clean, 260))),
+                         st["body"]))
 
     if sec.priorities:
         out.append(Paragraph("<b>Next</b>", st["h2"]))
         for p in sec.priorities[:3]:
+            clean, prs = strip_pr_refs(p.text)
+            evidence.extend(prs)
             out.append(_jewel_bullet(
-                st, team_color, _esc(_short(p.text, 200))))
+                st, cycler.next(exclude=team_color),
+                _esc(humanize(_short(clean, 200)))))
 
     out.append(HRFlowable(width="100%", thickness=1.5, color=EDGE,
                           spaceAfter=6, spaceBefore=10))
     return out
 
 
-def _wins_misses_decisions(st: dict, sections: list[TeamSection],
-                           unassigned: dict) -> list:
+def _team_human_status(sec: TeamSection) -> str:
+    """One plain sentence: what does this team's period MEAN to a human?"""
+    def _n(n: int, singular: str, plural: str | None = None) -> str:
+        w = singular if n == 1 else (plural or singular + "s")
+        return f"{n} {w}"
+    bits: list[str] = []
+    n_done = len(sec.achievements)
+    n_holes = len(sec.holes)
+    if n_done and not n_holes:
+        bits.append(f"a strong period — {_n(n_done, 'thing')} got done, "
+                    "nothing blocked")
+    elif n_done and n_holes:
+        bits.append(f"moving forward — {_n(n_done, 'thing')} done, "
+                    f"{_n(n_holes, 'blocker')} needing attention")
+    elif n_holes:
+        bits.append(f"a tough period — {_n(n_holes, 'blocker')}, "
+                    "working through them")
+    else:
+        bits.append("a quiet period — nothing major recorded")
+    best = None
+    if sec.scores:
+        best = max(sec.scores, key=lambda s: s.score)
+        bits.append(f"strongest area: {humanize(best.area)} "
+                    f"({_score_plain(best.score)})")
+    return f"The {sec.name} team had " + ", ".join(bits) + "."
+
+
+def _decisions_only(st: dict, sections: list[TeamSection],
+                    unassigned: dict, cycler: SpectrumCycler,
+                    evidence: list[str]) -> list:
+    """Decisions needed — the ONLY cross-team list. Wins and misses were
+    removed: they duplicated the team sections (Shawn: "you have it twice").
+    Every bullet cycles the spectrum; PR numbers become evidence."""
     out: list = []
-
-    out.append(Paragraph("3 · Where we're winning", st["h1"]))
-    wins = _top_wins(sections)
-    if wins:
-        for team, item in wins:
-            team_color = TEAM_COLORS.get(team, INK)
-            out.append(_jewel_bullet(
-                st, team_color,
-                f"<b>[{_esc(team)}]</b> {_esc(_short(item.text, 220))} "
-                f'<font color="{_hx(MUTED)}">[{_esc(item.source)}]</font>'))
-    else:
-        out.append(Paragraph("No achievements recorded this window.",
-                             st["body"]))
-
-    out.append(Paragraph("4 · Where we're missing the mark", st["h1"]))
-    misses = _top_misses(sections, unassigned)
-    if misses:
-        for j, (team, item) in enumerate(misses, 1):
-            out.append(_jewel_bullet(
-                st, RED,
-                f"<b>MISS {j} — [{_esc(team)}]</b> "
-                f"{_esc(_short(item.text, 240))} "
-                f'<font color="{_hx(MUTED)}">[{_esc(item.source)}]</font>'))
-    else:
-        out.append(Paragraph("No holes recorded this window.", st["body"]))
-
-    out.append(Paragraph("5 · Decisions needed", st["h1"]))
+    out.append(Paragraph("3 · Decisions needed", st["h1"]))
+    out.append(Paragraph(
+        "Only items genuinely needing a human call appear here — "
+        "everything else lives in its team section above.", st["body"]))
     decisions = _decisions(sections, unassigned)
     if decisions:
         for j, (team, item) in enumerate(decisions, 1):
-            team_color = TEAM_COLORS.get(team, INK)
+            clean, prs = strip_pr_refs(item.text)
+            evidence.extend(prs)
             out.append(_jewel_bullet(
-                st, team_color,
-                f"<b>{j} · [{_esc(team)}]</b> "
-                f"{_esc(_short(item.text, 240))}"))
+                st, cycler.next(),
+                f"<b>{j} · [{_esc(humanize(team))}]</b> "
+                f"{_esc(humanize(_short(clean, 240)))}"))
             out.append(Paragraph(
-                "Recommendation: run the Value Calculus; escalate to Shawn "
-                "only if it crosses a protected gate.", st["detail"]))
+                "Our suggestion: pick the option that helps the most; "
+                "only bring it to Shawn if it's something only he can "
+                "approve.", st["detail_white"]))
     else:
         out.append(Paragraph("None recorded this window — "
                              "the math is deciding.", st["body"]))
@@ -824,6 +1109,10 @@ def _wins_misses_decisions(st: dict, sections: list[TeamSection],
 # ---------------------------------------------------------------------------
 # Page template — obsidian field, jewel brand, ambient glow
 # ---------------------------------------------------------------------------
+
+# Actual Naya brand mark (harvested from reports.html NAYA_LOGO).
+_LOGO_PATH = str(Path(__file__).parent / "naya-logo.png")
+
 
 def _header_footer(canvas, doc, kind: str, stamp: str):
     canvas.saveState()
@@ -842,17 +1131,24 @@ def _header_footer(canvas, doc, kind: str, stamp: str):
                    PAGE_W * 0.55, PAGE_H * 0.45, stroke=0, fill=1)
     canvas.setFillAlpha(1)
 
-    # Brand lockup, top-left always (DC-061): jewel + wordmark.
-    jewel = JewelMark(30, INDIGO)
-    jewel.canv = canvas
-    jewel.drawOn(canvas, MARGIN, PAGE_H - 0.72 * inch)
+    # Brand lockup, top-left always (DC-061): THE ACTUAL NAYA LOGO +
+    # wordmark. Never a placeholder diamond.
+    # Type scale is strict 24/18/14 — no 15px, 11px, 10px anywhere.
+    try:
+        canvas.drawImage(_LOGO_PATH, MARGIN, PAGE_H - 0.78 * inch,
+                         width=0.52 * inch, height=0.52 * inch,
+                         mask="auto", preserveAspectRatio=True)
+    except Exception:
+        jewel = JewelMark(30, INDIGO)  # last-resort fallback only
+        jewel.canv = canvas
+        jewel.drawOn(canvas, MARGIN, PAGE_H - 0.72 * inch)
 
-    canvas.setFont("Helvetica-Bold", 15)
+    canvas.setFont("Helvetica-Bold", 18)
     canvas.setFillColor(INK)
-    canvas.drawString(MARGIN + 40, PAGE_H - 0.52 * inch, "NAYA")
-    canvas.setFont("Helvetica", 11)
-    canvas.setFillColor(MUTED)
-    canvas.drawString(MARGIN + 40, PAGE_H - 0.68 * inch,
+    canvas.drawString(MARGIN + 44, PAGE_H - 0.50 * inch, "NAYA")
+    canvas.setFont("Helvetica", 14)
+    canvas.setFillColor(INK)  # white, never gray
+    canvas.drawString(MARGIN + 44, PAGE_H - 0.70 * inch,
                       "TEAM INTELLIGENCE")
 
     # Header rule — visible edge.
@@ -864,8 +1160,8 @@ def _header_footer(canvas, doc, kind: str, stamp: str):
     canvas.setStrokeAlpha(1)
 
     # Right: stamp only (kind already rides the title-block chip).
-    canvas.setFont("Helvetica", 11)
-    canvas.setFillColor(MUTED)
+    canvas.setFont("Helvetica", 14)
+    canvas.setFillColor(INK)  # white, never gray
     canvas.drawRightString(PAGE_W - MARGIN, PAGE_H - 0.60 * inch, stamp)
 
     # Footer.
@@ -874,11 +1170,11 @@ def _header_footer(canvas, doc, kind: str, stamp: str):
     canvas.setLineWidth(1)
     canvas.line(MARGIN, 0.62 * inch, PAGE_W - MARGIN, 0.62 * inch)
     canvas.setStrokeAlpha(1)
-    canvas.setFont("Helvetica-Bold", 10)
+    canvas.setFont("Helvetica-Bold", 14)
     canvas.setFillColor(INK)
     canvas.drawString(MARGIN, 0.44 * inch, "PROVE THAT THE BRAIN LEARNS")
-    canvas.setFont("Helvetica", 10)
-    canvas.setFillColor(MUTED)
+    canvas.setFont("Helvetica", 14)
+    canvas.setFillColor(INK)  # white, never gray
     canvas.drawRightString(PAGE_W - MARGIN, 0.44 * inch,
                            f"{stamp} · Page {doc.page}")
     canvas.restoreState()
@@ -888,11 +1184,43 @@ def _header_footer(canvas, doc, kind: str, stamp: str):
 # Main entry
 # ---------------------------------------------------------------------------
 
+def _evidence_section(st: dict, evidence: list[str]) -> list:
+    """Evidence links — every PR/issue number stripped from body text lands
+    here as a clickable reference. Shawn's law: technicals are evidence,
+    linked, never in the reading flow."""
+    out: list = []
+    seen: list[str] = []
+    for num in evidence:
+        if num not in seen:
+            seen.append(num)
+    if not seen:
+        return out
+    out.append(Paragraph("Evidence", st["h1"]))
+    out.append(Paragraph(
+        "Every technical reference from this report, linked. "
+        "The story above is written for humans; this is the proof "
+        "underneath it.", st["body"]))
+    for num in seen[:12]:
+        url = ("https://github.com/SoulSchoolAcademy/NayaPOWER/pull/"
+               + num)
+        out.append(Paragraph(
+            f'• <link href="{url}">Pull request #{num}</link>',
+            st["detail_white"]))
+    if len(seen) > 12:
+        out.append(Paragraph(
+            f"• …and {len(seen) - 12} more on the team feed #1354.",
+            st["detail_white"]))
+    out.append(Spacer(1, 8))
+    return out
+
+
 def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     """Render ReportData to the exemplar-standard dark PDF."""
     st = _styles()
     stamp = data.generated_at.strftime("%Y-%m-%d %H:%M UTC")
     kind = (data.window_label or report_type).upper()
+    cycler = SpectrumCycler()  # ONE cycler for the whole doc: the spectrum
+    evidence: list[str] = []   # flows unbroken, no color ever repeats nearby.
 
     story: list = []
     sections, unassigned = group_by_team(data)
@@ -910,23 +1238,25 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     story.append(Spacer(1, 8))
     story.append(Paragraph("Intelligence Report", st["title"]))
     story.append(Spacer(1, 6))
-    story.append(Paragraph(_esc(_headline(data, sections)), st["body"]))
+    story.append(Paragraph(_esc(humanize(_headline(data, sections))),
+                           st["body"]))
     story.append(Spacer(1, 10))
 
     # ---- Metrics bar ----
-    story.append(_metrics_bar(st, data))
+    story.append(_metrics_bar(st, data, cycler))
     story.append(Spacer(1, 10))
 
     # ---- Highlight boxes ----
-    story.extend(_highlight_boxes(st, data, sections))
+    story.extend(_highlight_boxes(st, data, sections, cycler))
     story.append(Spacer(1, 4))
 
     # ---- 1 · Scorecard ----
     story.append(Paragraph("1 · Scorecard", st["h1"]))
     story.append(Paragraph(
         "Scores move on evidence, never optimism. "
-        "<b>AUTH</b> = independently verified; <b>claim</b> = self-reported, "
-        "awaiting a stamp.", st["detail_white"]))
+        "<b>AUTH</b> means checked by someone else; "
+        "<b>claim</b> means our own assessment so far.",
+        st["detail_white"]))
     story.append(Spacer(1, 6))
     story.append(_scorecard_table(st, data))
     story.append(Spacer(1, 4))
@@ -934,33 +1264,43 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
     # ---- 2 · What got done (by team) ----
     story.append(Paragraph("2 · What got done — by team", st["h1"]))
     for i, sec in enumerate(sections, 1):
-        story.extend(_team_section_flowables(st, i, sec, data))
+        story.extend(_team_section_flowables(st, i, sec, data, cycler,
+                                             evidence))
 
-    # ---- 3/4/5 · wins, misses, decisions ----
-    story.extend(_wins_misses_decisions(st, sections, unassigned))
+    # ---- 3 · Decisions needed (wins/misses removed: they duplicated
+    # the team sections above) ----
+    story.extend(_decisions_only(st, sections, unassigned, cycler,
+                                 evidence))
 
-    # ---- 6 · Single priority — the button-law bar (DC-072/073) ----
-    story.append(Paragraph("6 · Single priority for next period", st["h1"]))
-    story.append(ButtonBar(_single_priority(sections, unassigned), st))
+    # ---- 4 · Single priority — the button-law bar (DC-072/073) ----
+    story.append(Paragraph("4 · Single priority for next period", st["h1"]))
+    prio = _single_priority(sections, unassigned)
+    prio_clean, prio_prs = strip_pr_refs(prio)
+    evidence.extend(prio_prs)
+    story.append(ButtonBar(humanize(prio_clean), st))
     story.append(Spacer(1, 6))
 
     # ---- Cross-team signals ----
     story.append(Paragraph("Cross-team signals", st["h1"]))
     shown = False
-    for label, items in (("Holes", unassigned.get("holes", [])),
+    for label, items in (("Needs attention", unassigned.get("holes", [])),
                          ("Achievements", unassigned.get("achievements", [])),
                          ("Intelligence", unassigned.get("intelligence", []))):
         items = items[:3]
         if not items:
             continue
         shown = True
-        story.append(Paragraph(f"<b>{_esc(label)}</b>", st["h2"]))
+        story.append(Paragraph(f"<b>{_esc(humanize(label))}</b>", st["h2"]))
         for it in items:
-            out_text = (f"{_esc(_short(it.text, 220))} "
-                        f'<font color="{_hx(MUTED)}">[{_esc(it.source)}]</font>')
-            story.append(_jewel_bullet(st, PURPLE, out_text))
+            clean, prs = strip_pr_refs(it.text)
+            evidence.extend(prs)
+            out_text = _esc(humanize(_short(clean, 220)))
+            story.append(_jewel_bullet(st, cycler.next(), out_text))
     if not shown:
         story.append(Paragraph("All items attributed to teams.", st["body"]))
+
+    # ---- Evidence — PR/issue links, never in body text ----
+    story.extend(_evidence_section(st, evidence))
 
     # ---- Evidence basis — truth, stated (DC-091) ----
     story.append(Spacer(1, 8))
@@ -968,13 +1308,11 @@ def build_pdf(data: ReportData, report_type: str, output_path: str) -> str:
                             spaceAfter=8, spaceBefore=8))
     story.append(Paragraph(
         f"Window: since {_esc(data.since.strftime('%Y-%m-%d %H:%M UTC'))}. "
-        f"Generated {_esc(stamp)}. Evidence basis: worker run logs, daily "
-        "memory log, GitHub (#1354 + PRs), Supabase learning_evidence "
-        "(read-only). All items carry their source. Scores labeled claim "
-        "vs AUTH; a claim becomes authoritative only on independent "
-        "verification. Demo or simulated content is labeled as such; "
-        "counts come from real outcomes or do not appear.",
-        st["detail"]))
+        f"Generated {_esc(stamp)}. Built from: worker run logs, daily "
+        "memory log, the team feed, and the project database (read-only). "
+        "Scores labeled claim vs AUTH; a claim becomes authoritative only "
+        "when someone else checks it.",
+        st["detail_white"]))
 
     def _page(canv, doc):
         _header_footer(canv, doc, kind, stamp)
