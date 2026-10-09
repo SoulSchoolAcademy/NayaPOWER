@@ -1,0 +1,43 @@
+name: Design and Activation Law Gate
+
+on:
+  pull_request:
+    paths:
+      - "tools/design_gate.py"
+      - "smart-blocks/**"
+      - ".github/workflows/design-gate-activation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: design-activation-gate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  design-activation-falsifiers:
+    name: Lawful pass + unlawful rejection controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile gate
+        run: python -m py_compile tools/design_gate.py
+      - name: Run lawful and adversarial falsifiers
+        run: python tools/design_gate.py --self-test
+      - name: Confirm trusted main tip is a full SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          main_sha="$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)"
+          test "${#main_sha}" -eq 40
+          printf 'Trusted live main tip resolved: %s\n' "${main_sha}"
