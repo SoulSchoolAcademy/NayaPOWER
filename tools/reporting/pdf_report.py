@@ -338,11 +338,19 @@ def main() -> None:
                     choices=["hourly", "morning", "nightly"])
     ap.add_argument("--out", default="/tmp/naya-report.pdf")
     ap.add_argument("--hours", type=float, default=1.0,
-                    help="lookback window in hours")
+                    help="lookback window in hours (ignored when --since given)")
+    ap.add_argument("--since", default=None,
+                    help="window start as ISO timestamp; when given, the PDF "
+                         "covers exactly the same window as the markdown")
     args = ap.parse_args()
 
     now = dt.datetime.now(dt.timezone.utc)
-    since = now - dt.timedelta(hours=args.hours)
+    if args.since:
+        since = dt.datetime.fromisoformat(args.since)
+        if since.tzinfo is None:
+            since = since.replace(tzinfo=dt.timezone.utc)
+    else:
+        since = now - dt.timedelta(hours=args.hours)
     gen = ReportGenerator()
     data = gen.collect(args.type, since, now)
     path = build_pdf(data, args.type, args.out)

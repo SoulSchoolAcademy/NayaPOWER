@@ -23,9 +23,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from report_generator import (  # noqa: E402
     ReportGenerator,
+    STATE_DIR,
     load_watermarks,
     save_watermark,
 )
+import json  # noqa: E402
 
 REPORT_TYPE = "hourly"
 DEFAULT_SAVE_DIR = Path.home() / "workspace" / "reports"
@@ -70,6 +72,12 @@ def main() -> int:
         print(f"[saved: {outdir / fname}]", file=sys.stderr)
 
     save_watermark(REPORT_TYPE, now)
+    # The PDF step must cover exactly this window — record it for
+    # pdf_report.py --since so the two artifacts never disagree.
+    (STATE_DIR / "last_window.json").write_text(
+        json.dumps({"since": since.isoformat(),
+                    "generated_at": now.isoformat()}),
+        encoding="utf-8")
     print(report)
     return 0
 
