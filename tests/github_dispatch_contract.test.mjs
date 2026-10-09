@@ -315,21 +315,21 @@ test('happy path returns PROJECTION_VERIFIED with caller-compatible smart_link',
 test('GitHub PUT rejection persists sanitized reason and target context', async () => {
   const { post, receipts } = runtime({
     githubPutStatus: 403,
-    githubPutMessage: 'Resource not accessible by integration\\nAuthorization: Bearer DO_NOT_STORE',
+    githubPutMessage: 'Resource not accessible by integration\nAuthorization: Bearer DO_NOT_STORE',
   });
   const { status, body } = await post(validBody());
   assert.equal(status, 502);
   assert.equal(body.error, 'GITHUB_COMMIT_FAILED');
-  assert.equal(body.detail.includes('\\n'), false, 'control characters are removed');
+  assert.equal(body.detail.includes('\n'), false, 'control characters are removed');
   assert.equal(body.detail.includes('DO_NOT_STORE'), false, 'bearer-shaped content is redacted');
-  assert.match(body.detail, /Authorization: \\[REDACTED\\]/);
+  assert.match(body.detail, /Authorization: \[REDACTED\]/);
   const receipt = receipts.get(IDEM);
   assert.equal(receipt.status, 'failed');
   assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:403:/);
   assert.equal(receipt.intelligent_block_id, IB_ID);
-  assert.match(receipt.repo_path, /IB-000042\\/smart-note\\.md$/);
+  assert.match(receipt.repo_path, /IB-000042\/smart-note\.md$/);
   assert.ok(receipt.smart_link.includes('/' + IB_ID + '/smart-note.md'));
-  assert.equal(receipt.failure.includes('\\n'), false);
+  assert.equal(receipt.failure.includes('\n'), false);
   assert.equal(receipt.failure.includes('DO_NOT_STORE'), false, 'failure receipt must not retain bearer-shaped content');
 });
 
