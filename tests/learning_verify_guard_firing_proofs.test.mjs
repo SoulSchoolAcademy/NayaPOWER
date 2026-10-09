@@ -228,6 +228,8 @@ async function runtime({ mode = "verify", body = {}, tables = {}, auth = {}, met
     ADMITTED_NOT_VERIFIED: "NOT_VERIFIED",
     ADMITTED_REJECTED: "REJECTED",
     GATE_EVALUATION_ERROR: "GATE_EVALUATION_ERROR",
+    canonicalJson: (value) => JSON.stringify(value),
+    inputHash: (_value) => "test-input-hash",
     admit_candidate: () => { throw new Error("admission gate must be tested through its dedicated proof suite"); },
     resolveScorecardReceiptAuthority: async () => ({ authorized: false, reason: "TEST_STUB_NO_SCORECARD_RECEIPT" }),
     // The handler logs every refusal to stderr. That is correct runtime behaviour, but
