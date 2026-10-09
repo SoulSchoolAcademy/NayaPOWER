@@ -1,0 +1,83 @@
+/* Smart Block: orbit-dial
+ * Source: authored 2026-10-09 from orbit-btn conic-ring DNA (exact stops)
+ * Type: graphs
+ * The score, set in orbit. A jewel ring gauge for 0–10 scores — the visual
+ * voice of the Calculator. The arc sweeps in on light using the exact orbit
+ * conic stops; the number sits at the center in white tabular numerals.
+ *
+ * Data contract:
+ *   .od-ring style="--v:.91" — normalized score 0..1 (9.1/10 → .91)
+ *   .od-num — the score text, e.g. "9.1"
+ * Dependencies: tokens.css
+ * Requires: @property --oa registered (below) for the sweep animation.
+ */
+
+@property --oa { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+/* --v is transitionable so the arc sweeps in on light */
+@property --v { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+.sg-card { border-radius: 20px; padding: 24px 22px 20px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 6px; }
+
+.od-stage { display: flex; align-items: center; justify-content: center; padding: 26px 0 20px; }
+
+.od-dial { --oc-rgb: var(--purple-rgb);
+  position: relative; width: 210px; height: 210px; border-radius: 50%;
+  transform: scale(.7); opacity: 0; transition: transform .8s var(--ease) .1s, opacity .8s var(--ease) .1s; }
+.sg-card.lit .od-dial { transform: none; opacity: 1; }
+
+/* track */
+.od-dial::before { content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(255,255,255,.09) 0deg, rgba(255,255,255,.09) 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 14px; }
+
+/* the score arc — orbit-btn DNA: colored trail, white-hot head, 60° rest gap.
+ * Author sets --vt (target 0..1); the arc sweeps from 0 on light. */
+.od-arc { --vt: .9; --oc-rgb: var(--purple-rgb);
+  position: absolute; inset: 0; border-radius: 50%;
+  --v: 0;
+  background: conic-gradient(from -90deg,
+    rgba(var(--oc-rgb),.92) 0deg,
+    rgba(var(--oc-rgb),.92) calc(var(--v) * 268deg),
+    color-mix(in srgb, rgba(var(--oc-rgb),.9) 55%, transparent) calc(var(--v) * 288deg),
+    rgba(255,255,255,.95) calc(var(--v) * 298deg),
+    transparent calc(var(--v) * 300deg),
+    transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 14px;
+  filter: drop-shadow(0 0 10px rgba(var(--oc-rgb),.65));
+  transition: --v 1.6s var(--ease) .3s; }
+.sg-card.lit .od-arc { --v: var(--vt); }
+
+/* tick marks */
+.od-ticks { position: absolute; inset: 6px; border-radius: 50%; pointer-events: none;
+  background: repeating-conic-gradient(from -90deg, rgba(255,255,255,.28) 0deg 1deg, transparent 1deg 36deg);
+  -webkit-mask: radial-gradient(circle, transparent 62%, #fff 62%, #fff 68%, transparent 68%);
+  mask: radial-gradient(circle, transparent 62%, #fff 62%, #fff 68%, transparent 68%); }
+
+.od-center { position: absolute; inset: 34px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.85) 0%, rgba(255,255,255,.22) 14%, transparent 32%),
+    radial-gradient(circle at 50% 55%, #14141b 0%, #050507 78%);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.3), inset 0 -10px 20px rgba(0,0,0,.65),
+    0 0 30px rgba(var(--oc-rgb),.35); }
+.od-num { color: #fff; font-weight: 800; font-size: 46px; font-variant-numeric: tabular-nums; line-height: 1;
+  text-shadow: 0 2px 14px rgba(0,0,0,.6); }
+.od-cap { color: rgba(255,255,255,.72); font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+.od-scale { display: flex; justify-content: space-between; font-size: 11px; color: var(--quiet);
+  font-weight: 700; font-variant-numeric: tabular-nums; padding: 2px 34px 0; }
+
+.sg-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid var(--soft-line); font-size: 12.5px; color: var(--quiet); }
+
+@media (prefers-reduced-motion: reduce) {
+  .od-dial { transform: none; opacity: 1; transition: none; }
+  .od-arc { transition: none; --v: var(--vt); }
+}

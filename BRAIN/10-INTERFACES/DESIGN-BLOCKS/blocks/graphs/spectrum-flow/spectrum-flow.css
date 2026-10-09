@@ -1,0 +1,40 @@
+/* Smart Block: spectrum-flow
+ * Source: authored 2026-10-09 for the Smart Graphs visual language
+ * Type: graphs
+ * Layered spectrum bands — the composition of a whole, flowing like a river.
+ * Each band is one series; band thickness at any x is its share at that time.
+ * Bands drift slowly; the flow never freezes, because the data never does.
+ *
+ * Data contract: inline SVG, one <path class="sf-band"> per series.
+ *   Set fill="url(#sfGradN)" from the defs, or a flat spectrum color.
+ * Dependencies: tokens.css
+ */
+
+.sg-card { border-radius: 20px; padding: 24px 22px 18px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 14px; }
+
+@keyframes sf-drift { 0% { transform: translateX(0); } 50% { transform: translateX(-26px); } 100% { transform: translateX(0); } }
+@keyframes sf-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.sf-river { width: 100%; height: 190px; display: block; border-radius: 12px; overflow: hidden;
+  opacity: 0; }
+.sg-card.lit .sf-river { animation: sf-rise .9s var(--ease) .1s forwards; }
+.sf-bands { animation: sf-drift 14s ease-in-out infinite; }
+.sf-band { transition: opacity .3s; }
+.sf-band:hover { opacity: .92; }
+.sf-grid { stroke: rgba(255,255,255,.07); stroke-width: 1; }
+.sf-axis { font-size: 10px; fill: var(--quiet); font-weight: 600; }
+
+.sg-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--quiet); }
+.sg-legend i { width: 10px; height: 10px; border-radius: 2px; transform: rotate(45deg); display: inline-block;
+  margin-right: 7px; background: linear-gradient(140deg, #fff, var(--lc, var(--purple)) 55%, #18101a);
+  box-shadow: 0 0 8px var(--lc, var(--purple)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-bands { animation: none; }
+  .sg-card.lit .sf-river { animation: none; opacity: 1; }
+}

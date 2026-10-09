@@ -1,0 +1,56 @@
+/* Smart Block: living-counter
+ * Source: authored 2026-10-09 for the Smart Graphs visual language
+ * Type: graphs
+ * The number, alive. A giant tabular-numeral counter that rolls up on entry,
+ * a jewel delta for the trend, and a whisper of a sparkline for the story
+ * behind it. For the stats people check every day: prices, totals, streaks.
+ *
+ * Data contract:
+ *   .lc-num[data-to="<final>"][data-decimals="2"][data-prefix="$"] — count-up target
+ *   .lc-delta.up/.down — trend
+ *   svg.lc-spark path — the story
+ * JS: living-counter.js (IntersectionObserver + rAF count-up, ~30 lines)
+ * Dependencies: tokens.css
+ */
+
+.sg-card { border-radius: 20px; padding: 24px 22px 20px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 10px; }
+
+@keyframes lc-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.lc-num { color: #fff; font-weight: 800; letter-spacing: -.02em; line-height: 1;
+  font-size: clamp(44px, 9vw, 72px); font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 34px rgba(var(--purple-rgb),.35), 0 4px 18px rgba(0,0,0,.6);
+  opacity: 0; }
+.sg-card.lit .lc-num { animation: lc-in .7s var(--ease) .15s forwards; }
+
+.lc-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.lc-delta { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 800;
+  font-variant-numeric: tabular-nums; opacity: 0; }
+.sg-card.lit .lc-delta { animation: lc-in .7s var(--ease) .35s forwards; }
+.lc-delta .gem { width: 11px; height: 11px; transform: rotate(45deg); flex: none;
+  background: linear-gradient(140deg, #fff, var(--dc, var(--green)) 55%, #18101a);
+  box-shadow: 0 0 12px var(--dc, var(--green)); }
+.lc-delta.up { color: var(--green); }
+.lc-delta.down { color: var(--error, #ff6b6b); --dc: var(--error, #ff6b6b); }
+.lc-per { font-size: 12.5px; color: var(--quiet); font-weight: 600; }
+
+.lc-spark { width: 100%; height: 56px; display: block; margin-top: 12px; opacity: 0; }
+.sg-card.lit .lc-spark { animation: lc-in .8s var(--ease) .5s forwards; }
+.lc-spark path.area { fill: url(#lcArea); }
+.lc-spark path.line { fill: none; stroke: var(--purple); stroke-width: 2.5; stroke-linecap: round;
+  stroke-dasharray: 400; stroke-dashoffset: 400; }
+.sg-card.lit .lc-spark path.line { animation: lc-draw 1.4s var(--ease) .6s forwards; }
+@keyframes lc-draw { to { stroke-dashoffset: 0; } }
+
+.sg-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid var(--soft-line); font-size: 12.5px; color: var(--quiet); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-card.lit .lc-num, .sg-card.lit .lc-delta, .sg-card.lit .lc-spark { animation: none; opacity: 1; }
+  .sg-card.lit .lc-spark path.line { animation: none; stroke-dashoffset: 0; }
+}

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://nayanet.live/schemas/smart-graphs-spec-v1.json",
+  "date": "2026-10-09",
+  "grammar": {
+    "G1_living": "Every stat enters with motion and keeps a quiet pulse. No static chart images.",
+    "G2_magnitude_is_light": "Bigger value = more light (glow/size/arc), never more ink.",
+    "G3_max_series": 5,
+    "G3_spectrum_order": [
+      "purple",
+      "blue",
+      "cyan",
+      "green",
+      "gold"
+    ],
+    "G4_number_is_hero": "White tabular numerals, largest type on card, arm's-length readable on 375px.",
+    "G5_one_accent": "One identity color per stat (or one spectrum progression). Purple soul appears somewhere.",
+    "G6_truth_in_states": "Loading=shimmer, empty=honest empty, error=names failure. No fake zeros.",
+    "G7_card_contract": "Every stat is .sg-card: title, sub-line (mode \u00b7 window), visualization, foot (honesty + 4 actions)."
+  },
+  "honesty_boundaries": [
+    "Mode A without instrumentation renders SAMPLE, labeled \u2014 never live-claimed",
+    "Rendered stat presents obtained data; source always named; UNKNOWN != VERIFIED"
+  ],
+  "instruments": [
+    {
+      "block": "blocks/graphs/pulse-orb",
+      "id": "pulse-orb",
+      "props": [
+        "--v",
+        "--oc",
+        "--oc-rgb",
+        "--d"
+      ],
+      "when": "one number with emotional weight"
+    },
+    {
+      "block": "blocks/graphs/jewel-pillar",
+      "id": "jewel-pillar",
+      "props": [
+        "--v",
+        "--c",
+        "--crgb",
+        "--d"
+      ],
+      "when": "discrete series to compare"
+    },
+    {
+      "block": "blocks/graphs/spectrum-flow",
+      "id": "spectrum-flow",
+      "props": [
+        "svg paths"
+      ],
+      "when": "parts-of-a-whole over time"
+    },
+    {
+      "block": "blocks/graphs/constellation",
+      "id": "constellation",
+      "props": [
+        "--nc",
+        "--ncrgb",
+        "r=weight"
+      ],
+      "when": "entities + relationships"
+    },
+    {
+      "block": "blocks/graphs/pulse-rings",
+      "id": "pulse-rings",
+      "props": [
+        "--rc",
+        "--rcrgb",
+        "--pd"
+      ],
+      "when": "liveness/rates across streams"
+    },
+    {
+      "block": "blocks/graphs/living-counter",
+      "id": "living-counter",
+      "props": [
+        "data-to",
+        "data-decimals",
+        "data-prefix",
+        "data-suffix"
+      ],
+      "when": "a number checked daily"
+    },
+    {
+      "block": "blocks/graphs/orbit-dial",
+      "id": "orbit-dial",
+      "props": [
+        "--vt"
+      ],
+      "when": "a score 0-10"
+    }
+  ],
+  "modes": {
+    "automatic": {
+      "availability": "always (when instrumented)",
+      "fallback": "SAMPLE, labeled",
+      "source": "instrumented NayaNET events"
+    },
+    "on_demand": {
+      "availability": "per question",
+      "fallback": "SAMPLE, labeled",
+      "source": "retrieved via existing capabilities"
+    }
+  },
+  "name": "smart-graphs-spec",
+  "output_contract": {
+    "actions": [
+      "save",
+      "share",
+      "pdf",
+      "send_to_nayanet"
+    ],
+    "actions_v1": "specified and reserved; wiring is future work; action row must still render",
+    "fields": [
+      "title",
+      "scope",
+      "instrument",
+      "value",
+      "unit",
+      "delta",
+      "series",
+      "source",
+      "rendered_at",
+      "actions"
+    ]
+  },
+  "pairing_intelligent_blocks": {
+    "caption": "IB may caption a stat as interpretation",
+    "embed": "stat card may embed in IB as evidence",
+    "rule": "meaning \u2192 Intelligent Block; measure \u2192 Smart Graph"
+  },
+  "quality_bar": 9.0,
+  "selection_procedure": [
+    "score 0-10 bound \u2192 orbit-dial",
+    "one number checked repeatedly \u2192 living-counter",
+    "one number with emotional weight \u2192 pulse-orb",
+    "N discrete values (snapshot, not over time) \u2192 jewel-pillar",
+    "parts-of-a-whole over time \u2192 spectrum-flow",
+    "entities + relationships \u2192 constellation",
+    "liveness/rates \u2192 pulse-rings",
+    "ambiguous: single \u2192 living-counter; series \u2192 jewel-pillar"
+  ],
+  "status": "CANDIDATE",
+  "tokens": {
+    "blue": "#3f9ff5",
+    "blue_rgb": "63,184,255",
+    "card_background": "linear-gradient(180deg,#101117,#0a0b0f)",
+    "card_border": "1px solid var(--soft-line)",
+    "card_radius": "20px",
+    "cyan": "#39d7e8",
+    "cyan_rgb": "57,215,232",
+    "error": "#ff6b6b",
+    "gold": "#e7c65a",
+    "gold_rgb": "255,191,61",
+    "green": "#34d38a",
+    "green_rgb": "47,232,158",
+    "ground": "#050508",
+    "purple": "#a06bff",
+    "purple_rgb": "160,107,255"
+  },
+  "version": "1.0.0"
+}

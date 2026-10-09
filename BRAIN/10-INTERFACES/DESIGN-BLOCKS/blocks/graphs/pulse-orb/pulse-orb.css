@@ -1,0 +1,73 @@
+/* Smart Block: pulse-orb
+ * Source: authored 2026-10-09 from orb block DNA (Naya_5_Jewel_Library.html)
+ * Type: graphs
+ * A living orb that breathes with the data. The value drives its size and glow:
+ * bigger value = more light, never more ink (Smart Graphs Grammar G2).
+ *
+ * Data contract (CSS custom props):
+ *   --v    normalized value 0..1  (drives diameter 110px -> 210px and glow intensity)
+ *   --oc   identity color (default var(--purple)); --oc-rgb its rgb triplet
+ *   --d    entrance delay, e.g. .1s
+ * Dependencies: tokens.css
+ */
+
+@keyframes sg-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+@keyframes sg-spin { to { transform: rotate(360deg); } }
+
+.sg-card { border-radius: 20px; padding: 24px 22px 20px;
+  background: linear-gradient(180deg, #101117, #0a0b0f);
+  border: 1px solid var(--soft-line);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -12px 24px rgba(0,0,0,.4), 0 16px 34px rgba(0,0,0,.5); }
+.sg-card h4 { margin: 0 0 4px; font-size: 16px; color: #fff; font-weight: 700; }
+.sg-card .c-sub { font-size: 13px; color: var(--quiet); margin-bottom: 6px; }
+
+.pulse-orb-stage { display: flex; align-items: center; justify-content: center; padding: 34px 0 30px; }
+
+.pulse-orb { --oc: var(--purple); --oc-rgb: var(--purple-rgb); --v: .5;
+  position: relative; display: inline-block; border-radius: 50%;
+  width: calc(110px + var(--v) * 100px); height: calc(110px + var(--v) * 100px);
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 calc(22px + var(--v) * 34px) rgba(var(--oc-rgb), calc(.34 + var(--v) * .42)),
+    0 0 calc(60px + var(--v) * 46px) rgba(var(--oc-rgb), calc(.22 + var(--v) * .30)),
+    0 24px 48px rgba(0,0,0,.65);
+  animation: sg-breathe 5s ease-in-out infinite;
+  transform: scale(.55); opacity: 0;
+  transition: transform .9s var(--ease) var(--d, 0s), opacity .9s var(--ease) var(--d, 0s);
+}
+.sg-card.lit .pulse-orb, .pulse-orb-stage.lit .pulse-orb { transform: scale(1); opacity: 1; }
+
+.pulse-orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: sg-spin 6s linear infinite; opacity: .85; pointer-events: none; }
+
+.pulse-orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+
+.pulse-orb .po-val { position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2px; text-align: center; padding: 0 18%; }
+.pulse-orb .po-num { color: #fff; font-weight: 800; font-size: calc(26px + var(--v) * 22px);
+  font-variant-numeric: tabular-nums; line-height: 1; text-shadow: 0 2px 14px rgba(0,0,0,.65); }
+.pulse-orb .po-label { color: rgba(255,255,255,.82); font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; }
+
+.sg-delta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--quiet); }
+.sg-delta .gem-bullet { margin-top: 0; }
+.sg-delta.up { color: var(--green); }
+.sg-delta.down { color: var(--error, #ff6b6b); }
+
+.sg-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid var(--soft-line); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-orb { animation: none; transform: none; opacity: 1; transition: none; }
+  .pulse-orb::before { animation: none; }
+}
