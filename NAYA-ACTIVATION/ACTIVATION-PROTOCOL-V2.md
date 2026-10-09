@@ -21,7 +21,7 @@ Get the live main SHA. Not a remembered SHA, not yesterday's — live, right now
 
 ### Step 1: LOAD
 Pull the current state into working memory:
-1. Design doctrine version — SHA of `BRAIN/10-INTERFACES/DESIGN-DOCTRINE.md` on main
+1. Design doctrine version — resolve in order: (a) `BRAIN/10-INTERFACES/DESIGN-DOCTRINE.md` on main if present; (b) `HUB/DESIGN-CONTRACT.md` on main. Record the file used and its SHA in the receipt. If neither resolves, activation FAILS CLOSED with `DOCTRINE_UNAVAILABLE` — never proceed on assumed doctrine, never get stuck silently.
 2. Block library version — entry count + index SHA of `BRAIN/10-INTERFACES/DESIGN-BLOCKS/`
 3. Goal state — the active goals and their current status
 4. Feed digest — latest #1354 state (last comment id seen, open decisions needing Shawn)
@@ -55,3 +55,6 @@ So the law is enforced the three ways that actually work:
 Shawn as the linter. Shawn as the re-teacher. Shawn as the context-relay between seats.
 The supercomputer holds the state; activation loads it; the receipt proves it; the gate checks it.
 He teaches once — the machine carries it forever.
+
+---
+*2026-10-09 (Naya 3 review): fixed Step 1.1 — the stated DESIGN-DOCTRINE.md path does not exist on main; added resolution order + fail-closed rule so a fresh Naya never gets stuck.*
