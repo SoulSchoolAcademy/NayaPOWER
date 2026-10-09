@@ -2,7 +2,7 @@
   "library": "Naya Design Blocks Library",
   "version": "1.0.0",
   "created": "2026-10-09",
-  "status": "CANDIDATE \u2014 cold-Naya graduation test pending",
+  "status": "CANDIDATE — cold-Naya graduation test pending",
   "sets": [
     {
       "slug": "ultimate-design-system",
@@ -20,7 +20,7 @@
     },
     {
       "slug": "naya-forest",
-      "title": "Naya Forest \u2014 The Naya Button Library",
+      "title": "Naya Forest — The Naya Button Library",
       "seat": "Naya 4",
       "date": "2026-10-09",
       "score": "9.0/10 (Naya 2 deep-dive, 2026-10-09)",
@@ -34,11 +34,11 @@
     },
     {
       "slug": "naya-5-jewel-library",
-      "title": "Naya Lego \u2014 Jewels",
+      "title": "Naya Lego — Jewels",
       "seat": "Naya 5",
       "date": "2026-10-09",
       "score": "7.5/10 (Naya 2 analysis, 2026-10-09)",
-      "best_for": "Spheres, orbs, luminous marks, and the token block \u2014 the best :root in the family. Lift the tokens verbatim.",
+      "best_for": "Spheres, orbs, luminous marks, and the token block — the best :root in the family. Lift the tokens verbatim.",
       "source_sha16": "acdb0f21a69d1e4d",
       "files": [
         "index.html",
@@ -48,7 +48,7 @@
     },
     {
       "slug": "naya-5-beautiful-buttons",
-      "title": "Naya Lego \u2014 Buttons",
+      "title": "Naya Lego — Buttons",
       "seat": "Naya 5",
       "date": "2026-10-09",
       "score": "7.5/10 (Naya 2 analysis, 2026-10-09)",
@@ -62,7 +62,7 @@
     },
     {
       "slug": "naya-5-epic-elements",
-      "title": "Naya Ultimate Lego Library \u2014 Epic Elements",
+      "title": "Naya Ultimate Lego Library — Epic Elements",
       "seat": "Naya 5",
       "date": "2026-10-09",
       "score": "8.0/10 (Naya 2 analysis, 2026-10-09)",
@@ -74,5 +74,29 @@
         "MANIFEST.md"
       ]
     }
+  ],
+  "categories": [
+    "assessment",
+    "boards",
+    "buttons",
+    "chat",
+    "chrome",
+    "data",
+    "feed",
+    "graphs",
+    "inputs",
+    "jewels",
+    "knowledge",
+    "layout",
+    "lists",
+    "media",
+    "orbs",
+    "overlays",
+    "report",
+    "spaces",
+    "tabs",
+    "toggles",
+    "type",
+    "voice"
   ]
 }
