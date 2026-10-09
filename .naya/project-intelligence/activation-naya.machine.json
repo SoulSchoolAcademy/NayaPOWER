@@ -1,0 +1,861 @@
+{
+  "schema": "naya.project-intelligence.activation.v1",
+  "schema_version": "1.0.0",
+  "record_type": "NON_AUTHORITATIVE_PROJECT_PROJECTION_CANDIDATE",
+  "project_id": "activation-naya",
+  "project_name": "Activation Naya",
+  "project_state": "NOT_FULLY_ACTIVATED",
+  "project_health": "NOT_INDEPENDENTLY_RATIFIED",
+  "source_main_sha": "89916e37de86e0ac738f0fce0ff42dfe41ac8e1c",
+  "compiled_utc_date": "2026-10-09",
+  "source_policy": {
+    "precedence": [
+      "authenticated_human_director_authority",
+      "current_main_ratified_contracts",
+      "executable_bytes_current_main",
+      "exact_sha_tests_and_live_receipts",
+      "independent_reverification",
+      "supporting_user_source_documents",
+      "agent_reports_and_proposals"
+    ],
+    "this_record_is": "query_and_coordination_projection_only",
+    "never_override": [
+      "AGENTS.md",
+      "constitutional_LAW",
+      "nine_node_contract",
+      "canonical_Smart_Note_receiver",
+      "canonical_runtime_db_receipts"
+    ],
+    "intent": "preserve_relevant_machine_context_with_minimum_duplication",
+    "no_second": [
+      "Brain",
+      "authority_model",
+      "registry_writer",
+      "Hub_shell",
+      "learning_pipeline"
+    ]
+  },
+  "mission": {
+    "north_star": "Authorized people and AI agents share durable, explainable intelligence that improves future decisions and outcomes, while preserving ownership, consent, law and continuity.",
+    "activation_objective": "A human teaches one novel testable lesson once; a cold authorized Naya later retrieves it by intent, understands its applicability and limits, uses it in a real lawful task, gets an independently verified better outcome, and a second cold Naya can reuse the improvement.",
+    "human_summary": "Smart Note saves a lesson; a receipt proves persistence; retrieval brings it back; LAW governs use; ACT applies; VERIFY proves outcome; LEARN retains justified improvement; EVOLVE carries it to the next Naya.",
+    "current_unproven": "No independently verified complete closed causal successor learning loop for T11 as of this snapshot."
+  },
+  "information_architecture": {
+    "layers": [
+      {
+        "id": "LAW",
+        "canonical": "AGENTS_and_director_ratified_charter",
+        "purpose": "stable_mission_scope_acceptance_and_authority"
+      },
+      {
+        "id": "DESIGN",
+        "canonical": "ratified_blueprints_and_node_contracts",
+        "purpose": "interfaces_execution_paths_and_invariants"
+      },
+      {
+        "id": "CAPTURE",
+        "canonical": "Smart_Note_Intelligent_Block_events_receipts",
+        "purpose": "append_only_source_and_history"
+      },
+      {
+        "id": "PROJECT_VIEW",
+        "canonical": ".naya/project-intelligence/activation-naya.machine.json",
+        "purpose": "fresh_permission_bounded_refs_decisions_blockers_and_next_action"
+      }
+    ],
+    "project_view_is": "read_model_or_materialized_projection_not_Source_Of_Truth",
+    "existing_migration_tables": [
+      "public.nayanet_project_intelligence_state",
+      "public.nayanet_project_intelligence_bridge"
+    ],
+    "existing_hub_design": "HUB/PROJECT-INTELLIGENCE.md",
+    "communication_feed_ref": "BOARD",
+    "raw_source_policy": "no_transcript_or_wholesale_document_duplication; compact_1_to_3_sentence_reasoned_capsules_plus_sources"
+  },
+  "node_contract": {
+    "canonical_order": [
+      "SELF",
+      "LAW",
+      "ACT",
+      "KNOW",
+      "PROVE",
+      "CONNECT",
+      "VERIFY",
+      "LEARN",
+      "EVOLVE"
+    ],
+    "roles": [
+      {
+        "id": "SELF",
+        "owns": "identity_mission_continuity",
+        "emits": "supply_identity_scope_context",
+        "must_not": "cannot_grant_authority_or_self_promote_learning"
+      },
+      {
+        "id": "LAW",
+        "owns": "authorization_consent_scope_revocation",
+        "emits": "evaluate_proposed_action_and_private_read",
+        "must_not": "cannot_execute_or_promote_truth"
+      },
+      {
+        "id": "ACT",
+        "owns": "authorized_plan_execution_refusal",
+        "emits": "consume_LAW_receipt_plus_context_and_write_action_receipt",
+        "must_not": "cannot_grant_authority_or_self_verify"
+      },
+      {
+        "id": "KNOW",
+        "owns": "canonical_intelligence_memory_indexes",
+        "emits": "persist_and_return_provenance_bounded_candidates",
+        "must_not": "cannot_authorize_or_claim_applicability"
+      },
+      {
+        "id": "PROVE",
+        "owns": "provenance_evidence_truth_bounds",
+        "emits": "bind_claim_to_exact_receipts_hashes_and_limits",
+        "must_not": "cannot_self_certify_outcome_or_execute"
+      },
+      {
+        "id": "CONNECT",
+        "owns": "relevance_applicability_relationships",
+        "emits": "resolve_task_fit_scope_supersession_contradictions",
+        "must_not": "cannot_authorize_or_promote_learning"
+      },
+      {
+        "id": "VERIFY",
+        "owns": "independent_outcome_and_causality",
+        "emits": "replay_observed_result_check_negative_controls",
+        "must_not": "cannot_create_authority_or_invent_evidence"
+      },
+      {
+        "id": "LEARN",
+        "owns": "verified_behavioral_improvement",
+        "emits": "retain_candidate_and_promote_only_with_qualified_evidence",
+        "must_not": "cannot_convert_capture_to_truth_without_verification"
+      },
+      {
+        "id": "EVOLVE",
+        "owns": "successor_transfer_governed_evolution",
+        "emits": "prepare_integrity_bound_continuity_and_regression",
+        "must_not": "cannot_inherit_authority_or_self_deploy"
+      }
+    ],
+    "decision_path": "LAW_permission_precedes_private_KNOW; KNOW_context_and_CONNECT_applicability_are_resolved_before_consequential_ACT_plan; PROVE_and_VERIFY_support_verdict_after_observed_effect"
+  },
+  "pipeline": {
+    "type": "required_behavioral_chain_not_claimed_operational",
+    "stages": [
+      {
+        "id": "intent",
+        "owners": [
+          "SELF",
+          "LAW"
+        ],
+        "input": "authenticated_directive_scope",
+        "output": "capture_request",
+        "refusal": "reject_missing_user_authority"
+      },
+      {
+        "id": "capture",
+        "owners": [
+          "LEARN",
+          "KNOW"
+        ],
+        "input": "capture_request",
+        "output": "conformant_naya.smart-note-capture.v2",
+        "refusal": "reject_raw_transcript_as_canonical"
+      },
+      {
+        "id": "persist",
+        "owners": [
+          "LAW",
+          "ACT",
+          "KNOW"
+        ],
+        "input": "capture_and_authority_receipt",
+        "output": "IB_event_lineage_index_checkpoint_commit_receipt",
+        "refusal": "reject_duplicate_or_mutated_hash"
+      },
+      {
+        "id": "project",
+        "owners": [
+          "KNOW"
+        ],
+        "input": "persisted_IB_and_verified_receipt",
+        "output": "GitHub_human_projection_registry_and_scoped_Smart_Link",
+        "refusal": "fail_if_unverified_blob_or_wrong_scope"
+      },
+      {
+        "id": "find",
+        "owners": [
+          "KNOW"
+        ],
+        "input": "lawful_query_with_identity_purpose",
+        "output": "ranked_authorized_candidates_with_provenance",
+        "refusal": "refuse_private_or_missing_provenance"
+      },
+      {
+        "id": "select",
+        "owners": [
+          "CONNECT",
+          "PROVE"
+        ],
+        "input": "candidate_objects_and_task",
+        "output": "applicable_context_with_reasons_and_exclusions",
+        "refusal": "exclude_contradicted_superseded_or_out_of_domain"
+      },
+      {
+        "id": "plan",
+        "owners": [
+          "LAW",
+          "ACT"
+        ],
+        "input": "fresh_LAW_verdict_applicable_context_task",
+        "output": "authorized_plan_and_decision_trace",
+        "refusal": "deny_when_knowledge_attempts_authority"
+      },
+      {
+        "id": "execute",
+        "owners": [
+          "ACT"
+        ],
+        "input": "authorized_plan",
+        "output": "execution_receipt_and_observation_request",
+        "refusal": "refuse_stale_scope_or_duplicate_effect"
+      },
+      {
+        "id": "observe",
+        "owners": [
+          "ACT",
+          "PROVE"
+        ],
+        "input": "execution_receipt_and_actual_observations",
+        "output": "bounded_proof_package",
+        "refusal": "no_claim_of_success_from_intent"
+      },
+      {
+        "id": "verify_outcome",
+        "owners": [
+          "VERIFY"
+        ],
+        "input": "control_treatment_wrong_lesson_traces",
+        "output": "independent_causal_verdict",
+        "refusal": "no_builder_self_certification"
+      },
+      {
+        "id": "learn",
+        "owners": [
+          "LEARN",
+          "LAW",
+          "PROVE"
+        ],
+        "input": "qualified_verification_and_applicability",
+        "output": "promotion_or_hold_receipt",
+        "refusal": "hold_when_no_measured_effect"
+      },
+      {
+        "id": "succeed",
+        "owners": [
+          "EVOLVE",
+          "SELF"
+        ],
+        "input": "proven_learning_receipt_and_state",
+        "output": "integrity_checked_successor_context",
+        "refusal": "recheck_LAW_and_freshness_on_restart"
+      }
+    ],
+    "distinct_paths": [
+      {
+        "id": "GitHub_OIDC_v2",
+        "receipt_state": "PARTIAL_VERIFIED",
+        "key": "v2_T11_SN782_persisted_and_projected;_cold_retrieval_unproven"
+      },
+      {
+        "id": "Supabase_v7",
+        "receipt_state": "REPORTED_PARTIAL",
+        "key": "v7_transactions_and_GitHub_dispatch_projections_need_fresh_verify_and_path_reconciliation"
+      },
+      {
+        "id": "learning_evidence_promotion",
+        "receipt_state": "REPORTED_PARTIAL",
+        "key": "candidate_ACTIVE_learnevidence_and_repo_registry_status_may_diverge;_no_assumed_back_sync"
+      }
+    ]
+  },
+  "state_contract": {
+    "orthogonal_axes": [
+      {
+        "name": "capture_lifecycle",
+        "purpose": "object_availability_and_history",
+        "values_seen": [
+          "CANDIDATE",
+          "ACTIVE",
+          "SUPERSEDED"
+        ],
+        "governance": "do_not_infer_truth_from_visibility"
+      },
+      {
+        "name": "epistemic_truth",
+        "purpose": "claim_quality_not_object_lifecycle",
+        "values_seen": [
+          "CANDIDATE",
+          "VERIFIED",
+          "RATIFIED",
+          "ACTIVE",
+          "LEARNED",
+          "REJECTED",
+          "CONTRADICTED"
+        ],
+        "governance": "separate_evidence_and_gate_for_each_promotion"
+      },
+      {
+        "name": "learning_outcome",
+        "purpose": "measured_behavior_gain",
+        "values_seen": [
+          "CANDIDATE",
+          "ACTIVE",
+          "STALE",
+          "SUPERSEDED",
+          "CONFLICTED",
+          "EXPIRED"
+        ],
+        "governance": "do_not_conflate_with_repo_truth_state"
+      },
+      {
+        "name": "smart_link_access",
+        "purpose": "projection_discoverability",
+        "values_seen": [
+          "ACTIVE",
+          "ACTIVE_AUTH_GATED",
+          "PENDING",
+          "BROKEN",
+          "SUPERSEDED",
+          "COLLISION"
+        ],
+        "governance": "link_not_truth_or_authority"
+      }
+    ],
+    "invariants": [
+      "CAPTURE_ACCEPTED_DOES_NOT_IMPLY_VERIFIED",
+      "PERSISTED_DOES_NOT_IMPLY_RETRIEVED",
+      "RETRIEVED_DOES_NOT_IMPLY_APPLICABLE",
+      "APPLICABLE_DOES_NOT_IMPLY_AUTHORIZED",
+      "DECISION_CHANGED_DOES_NOT_IMPLY_OUTCOME_IMPROVED",
+      "OUTCOME_IMPROVED_DOES_NOT_IMPLY_CAUSAL_UNLESS_INDEPENDENTLY_VERIFIED",
+      "LESSON_DOES_NOT_PROMOTE_ITSELF",
+      "RAW_TEXT_CANNOT_SET_VERIFIED_OR_DIRECTOR_AUTHORITY",
+      "PRIVATE_DATA_REQUIRES_FRESH_LAW_ACCESS_AND_PROPER_SCOPE",
+      "NO_DUAL_WRITE_TO_CANONICAL_REGISTRY",
+      "SUPERCESSION_RETAINS_PROVENANCE",
+      "EXACT_HASH_MUST_BIND_CAPTURE_RUNTIME_AND_PROJECTION",
+      "WRONG_LESSON_MUST_BE_IGNORED_WITH_EVIDENCE"
+    ]
+  },
+  "runtime_snapshot": {
+    "facts_verified": [
+      {
+        "id": "F01",
+        "state": "VERIFIED_GITHUB",
+        "claim": "T11_capture_merged_into_main",
+        "refs": [
+          "PR-2020",
+          "MERGE-075b169e"
+        ]
+      },
+      {
+        "id": "F02",
+        "state": "VERIFIED_GITHUB",
+        "claim": "SN-782_canonical_projected_indexed_with_intelligent_block_and_receipt",
+        "refs": [
+          "SN-782",
+          "WORKFLOW-37980089547"
+        ]
+      },
+      {
+        "id": "F03",
+        "state": "VERIFIED_GITHUB",
+        "claim": "T11_lifecycle_and_truth_state_CANDIDATE_scope_PRIVATE_smart_link_ACTIVE_AUTH_GATED",
+        "refs": [
+          "SN-782"
+        ]
+      },
+      {
+        "id": "F04",
+        "state": "VERIFIED_GITHUB",
+        "claim": "Receiver_fresh_lesson_and_independent_verification_succeeded_cold_successor_failed_CANDIDATE_assertion_downstream_behavior_skipped",
+        "refs": [
+          "WORKFLOW-37980089547"
+        ]
+      },
+      {
+        "id": "F05",
+        "state": "VERIFIED_GITHUB",
+        "claim": "Existing_Project_Intelligence_Hub_and_database_migration_artifacts_present_in_repository",
+        "refs": [
+          "HUB-PI",
+          "MIGRATION-PI"
+        ]
+      },
+      {
+        "id": "F06",
+        "state": "VERIFIED_GITHUB",
+        "claim": "Existing_nine_node_organism_contract_roles_deny_separate_brains_and_authority_models",
+        "refs": [
+          "NINE-NODE-CONTRACT"
+        ]
+      },
+      {
+        "id": "F07",
+        "state": "VERIFIED_GITHUB",
+        "claim": "Correction_branch_PR2051_green_exact_head_seven_checks_but_not_integrated",
+        "refs": [
+          "PR-2051"
+        ]
+      },
+      {
+        "id": "F08",
+        "state": "VERIFIED_GITHUB",
+        "claim": "Project_Intelligence_pilot_PR2050_open_draft_pending_independent_review",
+        "refs": [
+          "PR-2050"
+        ]
+      }
+    ],
+    "source_reported_claims": [
+      {
+        "id": "R01",
+        "claim": "nayanet_learning_verify_can_promote_qualified_learning_evidence_in_Supabase_but_registry_back_sync_absent",
+        "source": "learning_system_blueprint",
+        "validation": "CHECK_LIVE_EXECUTED_TRANSACTION_AND_DEPLOYED_PARITY"
+      },
+      {
+        "id": "R02",
+        "claim": "verified_lesson_decision_context_has_no_operational_consumer_in_ACT_plan_path",
+        "source": "learning_system_blueprint",
+        "validation": "TRACE_ACT_PLAN_FOR_ACTIVE_LESSON_AND_CONTROL"
+      },
+      {
+        "id": "R03",
+        "claim": "two_Smart_Note_receivers_v2_GitHub_OIDC_and_v7_Supabase_have_distinct_projection_results",
+        "source": "learning_system_blueprint",
+        "validation": "TRACE_LIVE_TRANSACTION_ID_AND_RECEIPT_IN_BOTH_PATHS"
+      },
+      {
+        "id": "R04",
+        "claim": "production_ranked_retrieval_RPC_migration_not_deployed",
+        "source": "learning_system_blueprint",
+        "validation": "VERIFY_DATABASE_MIGRATION_AND_FUNCTION_STATUS"
+      },
+      {
+        "id": "R05",
+        "claim": "legacy_number_collisions_exist_beyond_SN-781_and_SN-782",
+        "source": "learning_system_blueprint",
+        "validation": "RECALCULATE_LIVE_REGISTRY_DUPLICATES_AND_CANONICALITY"
+      },
+      {
+        "id": "R06",
+        "claim": "fourteen_agents_assigned_with_live_owners",
+        "source": "activation_local_intelligence",
+        "validation": "CONFIRM_CURRENT_OWNER_WORKSHA_AND_NONOVERLAPPING_LANES"
+      },
+      {
+        "id": "R07",
+        "claim": "LOCAL_INTELLIGENCE_YELLOW_and_preflight_full_battery_green_on_earlier_tip",
+        "source": "activation_project_intelligence",
+        "validation": "REVERIFY_ON_CURRENT_MAIN_AND_DERIVE_HEALTH"
+      },
+      {
+        "id": "R08",
+        "claim": "v7_dispatch_403_and_TRANSACTION_NOT_FOUND_historical_receipts",
+        "source": "learning_system_blueprint",
+        "validation": "CHECK_LATEST_DEPLOYED_WRITER_RECEIPT_REASONS"
+      }
+    ],
+    "disputed_and_resolution_required": [
+      {
+        "id": "X01",
+        "topic": "lifecycle_vs_truth",
+        "positions": [
+          "blueprints_propose_turning_T11_lifecycle_CANDIDATE_into_ACTIVE",
+          "canonical_capture_declares_CANDIDATE_and_workflow_test_rejects_it"
+        ],
+        "resolution": "DO_NOT_EDIT_CANONICAL_CAPTURE_OR_PRETEND_PROMOTION; qualify_lifecycle_contract_and_candidate_readability_without_truth_escalation",
+        "blocking": true
+      },
+      {
+        "id": "X02",
+        "topic": "LEARN_promotion",
+        "positions": [
+          "promotion_never_built",
+          "Supabase_learning_evidence_promotion_exists_but_registry_back_sync_missing"
+        ],
+        "resolution": "DISAMBIGUATE_V2_V7_learnevidence_repo_status; require_exact_transaction_and_evidence_bound_transition",
+        "blocking": true
+      },
+      {
+        "id": "X03",
+        "topic": "KNOW_ACT_seam",
+        "positions": [
+          "ACT_never_queries_KNOW",
+          "Supabase_ACT_consumes_KNOW_receipts_but_not_learned_active_rows"
+        ],
+        "resolution": "VERIFY_ACTUAL_TARGET_RUNTIME_AND_PROVE_LEARNED_LESSON_INFLUENCES_PLAN_NOT_JUST_PRESENT",
+        "blocking": true
+      },
+      {
+        "id": "X04",
+        "topic": "Project_Intelligence_location",
+        "positions": [
+          "local_goal_INTELLIGENCE.md_treated_as_canonical",
+          "GitHub_project_intelligence_existing_directory_and_DB_bridge"
+        ],
+        "resolution": "USE_CURRENT_CANONICAL_REPO_AND_EXISTING_OWNER_BOUND_RUNTIME; local_files_are_source_references_not_parallel_truth",
+        "blocking": true
+      },
+      {
+        "id": "X05",
+        "topic": "receiver_success_meaning",
+        "positions": [
+          "v7_receiver_GitHub_dispatch_not_working",
+          "v2_T11_GitHub_projected_and_link_generated"
+        ],
+        "resolution": "REPORT_PER_PIPELINE_WITH_IDENTIFIER; DO_NOT_DECLARE_ALL_SMART_LINKS_BROKEN",
+        "blocking": false
+      },
+      {
+        "id": "X06",
+        "topic": "promotion_authority",
+        "positions": [
+          "LAW_node_is_proposed_as_truth_promoter",
+          "LEARN_promotes_only_qualifying_VERIFIED_evidence_under_LAW_controls"
+        ],
+        "resolution": "LAW_EVALUATES_PERMISSION; LEARN_RECORDS_QUALIFIED_BEHAVIOR; VERIFY_ATTESTS_OUTCOME",
+        "blocking": true
+      },
+      {
+        "id": "X07",
+        "topic": "project_approval_and_scores",
+        "positions": [
+          "source_templates_self_label_CANONICAL_or_ACTIVE",
+          "underlying_source_docs_and_repo_execution_may_be_UNRATIFIED"
+        ],
+        "resolution": "DOCUMENT_TITLE_IS_NOT_AUTHORITY; source_current_state_reported_until_reverified; score_ladder_ratification_pending",
+        "blocking": false
+      },
+      {
+        "id": "X08",
+        "topic": "supersession_and_ID",
+        "positions": [
+          "some_notes_report_SN782_collision",
+          "main_single_SN782_entry_verified"
+        ],
+        "resolution": "DO_NOT_RESOLVE_UNPROVEN_COLLISION_BY_RENUMBERING; inventory_actual_duplicates_on_exact_main",
+        "blocking": false
+      }
+    ],
+    "T11": {
+      "smart_note_id": "SN-782",
+      "ib_id": "IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical",
+      "content_sha256": "9ce231bbe2eac3cfe4642e84dc5f5a3b33d20f0ae3dd906c6d75b40800e90032",
+      "truth_state": "CANDIDATE",
+      "lifecycle_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "smart_link_status": "ACTIVE_AUTH_GATED",
+      "projection_ref": "SN-782",
+      "runtime_receipt_id": "7eface12-492c-4a9f-a40a-34d9a78a1866",
+      "receiver_workflow_run": 37980089547,
+      "capture_job": "SUCCESS",
+      "independent_persistence_check": "SUCCESS",
+      "cold_retrieval_job": "FAILURE_CANDIDATE_ASSERTION",
+      "independent_behavior_check": "SKIPPED",
+      "learning_proven": false
+    },
+    "score": {
+      "value_reported_by_source": 5,
+      "source_status": "SOURCE_REPORTED_NOT_RATIFIED",
+      "current_earned_value": null,
+      "why": "exact_current_retrieval_behavior_successor_proof_absent"
+    }
+  },
+  "work": {
+    "single_next_action_id": "A01",
+    "ordered_actions": [
+      {
+        "id": "A01",
+        "priority": 1,
+        "owner": "Naya_2_with_Naya_5",
+        "objective": "Independently_qualify_and_govern_PR2051_current_main_candidate_safe_cold_retrieval",
+        "done_when": "exact_head_CI_current_main_lawful_review_then_fresh_retrieval_refusal_proof",
+        "not_authorized": "protected_workflow_merge_without_governed_permission"
+      },
+      {
+        "id": "A02",
+        "priority": 2,
+        "owner": "Naya_1_LAW_LEARN",
+        "objective": "Ratify_separate_lifecycle_truth_promotion_and_access_state_matrix",
+        "done_when": "one_machine_contract_exact_source_owners_and_transition_receipts",
+        "not_authorized": "silently_promote_CANDIDATE"
+      },
+      {
+        "id": "A03",
+        "priority": 3,
+        "owner": "Naya_4_ACT_CONNECT_KNOW",
+        "objective": "Prove_real_qualified_verified_learning_context_changes_authorized_ACT_plan",
+        "done_when": "trace_different_CONTROL_TREATMENT_with_WRONG_LESSON_refusal_on_real_runtime",
+        "not_authorized": "knowledge_grants_authority"
+      },
+      {
+        "id": "A04",
+        "priority": 4,
+        "owner": "Naya_2_VERIFY",
+        "objective": "Perform_blinded_causal_experiment_and_second_cold_successor",
+        "done_when": "independently_measured_effect_with_provenance_and_replay_receipt",
+        "not_authorized": "self_certification"
+      },
+      {
+        "id": "A05",
+        "priority": 5,
+        "owner": "Naya_5_KNOW",
+        "objective": "Reconcile_v2_v7_sources_and_eligible_status_read_back",
+        "done_when": "one_identity_hash_lineage_model_no_duplicate_writer_no_private_leak",
+        "not_authorized": "cross_system_truth_state_overwrite_without_attestation"
+      },
+      {
+        "id": "A06",
+        "priority": 6,
+        "owner": "Naya_1_Naya_2_Naya_3_Naya_4_Naya_5",
+        "objective": "Qualify_project_intelligence_as_a_permission_scoped_projection_of_existing_substrate",
+        "done_when": "cold_agent_reads_current_status_blockers_decisions_proof_within_10_minutes_and_five_leader_consensus",
+        "not_authorized": "new_Brain_index_or_auto_ratification"
+      }
+    ],
+    "leaders": [
+      {
+        "name": "Naya_1",
+        "accountability": "score_contract_integration_ownership_and_governed_merge"
+      },
+      {
+        "name": "Naya_2",
+        "accountability": "cold_successor_independent_adversarial_proof"
+      },
+      {
+        "name": "Naya_3",
+        "accountability": "one_Hub_human_project_view_and_truthful_evidence_display"
+      },
+      {
+        "name": "Naya_4",
+        "accountability": "nine_node_runtime_law_retrieval_connect_act_learn"
+      },
+      {
+        "name": "Naya_5",
+        "accountability": "Smart_Note_intake_receiver_ID_registry_and_project_projection"
+      }
+    ],
+    "staffing_claim": "user_documents_report_14_seats; current_live_roster_not_independently_verified",
+    "pending_consensus": "request_explicit_ACCEPT_or_reasoned_objection_from_all_five_leaders_on_existing_PR2050"
+  },
+  "acceptance": {
+    "all_required": true,
+    "checks": [
+      {
+        "id": "C01",
+        "name": "instant_capture_and_evidence",
+        "condition": "authenticated_instruction_to_canonical_capture_and_runtime_receipt",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C02",
+        "name": "governed_status_transition",
+        "condition": "CANDIDATE_to_verified_active_only_with_separate_traced_authority_and_evidence",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C03",
+        "name": "cold_intent_retrieval",
+        "condition": "fresh_agent_finds_correct_note_without_original_conversation",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C04",
+        "name": "decision_context",
+        "condition": "applicable_authorized_lesson_appears_in_actual_ACT_planning_context",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C05",
+        "name": "causal_effect",
+        "condition": "matched_control_treatment_wrong_lesson_prove_attributable_behavior_delta",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C06",
+        "name": "execution_feedback",
+        "condition": "real_execution_receipt_links_to_queryable_intelligence_and_outcome",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C07",
+        "name": "independent_verification",
+        "condition": "distinct_actor_reconstructs_evidence_and_records_warranted_verdict",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      },
+      {
+        "id": "C08",
+        "name": "cold_successor_continuity",
+        "condition": "another_fresh_agent_repeats_correct_lawful_behavior_from_retained_context",
+        "result": "NOT_PROVEN",
+        "evidence_refs": []
+      }
+    ],
+    "definition_of_ten": "all_eight_checks_with_exact_live_receipts_refusal_controls_repeatability_and_no_unresolved_authority_bypass",
+    "not_sufficient": [
+      "passing_unit_tests",
+      "green_capture_CI",
+      "human_hand_off_fixture",
+      "Smart_Link_alone",
+      "assistant_self_score",
+      "brief_includes_lesson"
+    ]
+  },
+  "refresh": {
+    "mode": "event_driven",
+    "triggers": [
+      "ratified_decision",
+      "merge_or_deploy",
+      "receipt_verified",
+      "blocker_change",
+      "lesson_earned",
+      "team_owner_change",
+      "source_conflict_resolved",
+      "new_successor_test"
+    ],
+    "staleness_days": {
+      "status": 3,
+      "blockers": 7,
+      "owners": 7,
+      "timeline": 14
+    },
+    "histories": "append_only_canonical; project_view_compacts_by_ref_without_erasure",
+    "on_stale": "mark_STALE_and_fail_closed_on_consequential_use; refresh_against_current_main_and_owner_scoped_runtime",
+    "cold_reader_target_minutes": 10,
+    "no_manual_counter_edits": true,
+    "update_strategy": "machine_derived_snapshot_from_source_ids_with_independent_validation_before_production_claims"
+  },
+  "machine_interface": {
+    "query": "get_project_intelligence",
+    "input_required": [
+      "authenticated_actor",
+      "project_id",
+      "purpose",
+      "authority_scope"
+    ],
+    "output_required": [
+      "project_id",
+      "source_main_sha",
+      "mission",
+      "truth_summary",
+      "evidence_refs",
+      "contradictions",
+      "current_blockers",
+      "next_action",
+      "scope"
+    ],
+    "on_unauthorized": "DENY_NO_PRIVATE_PROJECTION",
+    "on_unknown_source": "UNKNOWN_DO_NOT_PROMOTE",
+    "on_conflict": "REPORT_CONFLICT_NO_AUTOMATIC_MERGE",
+    "on_stale": "STALE_REFRESH_REQUIRED",
+    "application_rule": "a_project_brief_is_context_not_permission",
+    "integration_goal": "authorized_cold_agent_can_explain_mission_evidence_current_gap_and_next_action_without_chat_history"
+  },
+  "sources": {
+    "uploaded_pdf_corpus": {
+      "unique_documents": 8,
+      "raw_pdf_count": 9,
+      "deduplication": "dedupe_identical_extracted_text; retain_one_shahash_per_distinct_document",
+      "documents": [
+        {
+          "key": "activation_project_intelligence",
+          "file": "project-intelligence-activation-naya.pdf",
+          "pages": 9,
+          "sha256": "3207ca6845a8c53603c26890591f255697b2d917754256de2249d6761aec1e16",
+          "role": "project_context_and_working_state"
+        },
+        {
+          "key": "project_intelligence_template_9_section",
+          "file": "project-intelligence-template.pdf",
+          "pages": 5,
+          "sha256": "20c72420a2f101120085a6458e2a51d8f67b189c072d1df21eb26a31923923cb",
+          "role": "project_view_sections_and_triggers"
+        },
+        {
+          "key": "activation_local_intelligence",
+          "file": "INTELLIGENCE.pdf",
+          "pages": 9,
+          "sha256": "b744ce53349dfd1767983eb03dee54dc0d09ddba243f3d3889e037690b692ca2",
+          "role": "local_team_decisions_evidence_risks_and_history"
+        },
+        {
+          "key": "project_intelligence_template_11_section",
+          "file": "TEMPLATE.pdf",
+          "pages": 4,
+          "sha256": "93ae758ac6ae1d1a4159ea26e7b864079a38fa11fe83c14e8d0a14026f60cfbe",
+          "role": "human_view_and_stable_entry_ids"
+        },
+        {
+          "key": "project_intelligence_spec",
+          "file": "SPEC.pdf",
+          "pages": 11,
+          "sha256": "ac77d3371de1613434e6dfd98d37c1f033b3cafe70d0f5d970803f8e367ea926",
+          "role": "four_layer_model_machine_parse_update_and_staleness"
+        },
+        {
+          "key": "activation_project_charter",
+          "file": "PROJECT(1).pdf",
+          "pages": 5,
+          "sha256": "71ea6617a8582587dc03754678e159282c5b00841a12c13cf1a563780422e9ce",
+          "role": "mission_eight_acceptance_gates_and_five_phases"
+        },
+        {
+          "key": "learning_system_blueprint",
+          "file": "learning-system-blueprint-v1 (1)(2).pdf",
+          "pages": 13,
+          "sha256": "57c93abf0ecc0b68a7fa6ca5f1dbaa8dd90bf9b829e72c76fecc583722e514ee",
+          "role": "actual_pipeline_inventory_and_conflicts"
+        },
+        {
+          "key": "system_architecture_blueprint",
+          "file": "SYSTEM-BLUEPRINT-20261009(2).pdf",
+          "pages": 26,
+          "sha256": "6f52221855b25fc2ef31461303812c1ec03bcf6dc2e0ae1914cfb1ebf6962fc1",
+          "role": "nine_node_detailed_interfaces_and_implementation_design"
+        }
+      ]
+    },
+    "canonical_refs": {
+      "AGENTS": "AGENTS.md",
+      "NINE-NODE-CONTRACT": "BRAIN/03-KERNEL/0004-NINE-NODE-ORGANISM-CONTRACT-V1.md",
+      "SMART-NOTE-CONTRACT": "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md",
+      "HUB-PI": "HUB/PROJECT-INTELLIGENCE.md",
+      "MIGRATION-PI": "supabase/migrations/20260921162858_20260921093000_project_intelligence_operating_layer_v1.sql",
+      "PROJECT-NAMESPACE": ".naya/project-intelligence/",
+      "REGISTRY": ".naya/memory/smart-notes/index.json",
+      "SN-782": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/OPERATIONAL-INTELLIGENCE/DISPATCH/RESERVE-RULE/SN-782/IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical.md",
+      "WORKFLOW-37980089547": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/37980089547",
+      "PR-2020": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2020",
+      "MERGE-075b169e": "075b169e4b92c21c72f888c93d48588c7cd8fc32",
+      "PR-2037": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2037",
+      "PR-2050": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2050",
+      "PR-2051": "https://github.com/SoulSchoolAcademy/NayaPOWER/pull/2051",
+      "BOARD": "https://github.com/SoulSchoolAcademy/NayaPOWER/issues/1354"
+    }
+  },
+  "summary_for_agents": "This file is a candidate, scope-filtered project read model. DO NOT use it as a proof of learning, a new registry, authorization, deployment instruction, or replacement of canonical contracts. Refresh current main, reconstruct referenced receipts and conflicts, qualify PR2051's runtime repair, then prove cold intent retrieval, wrong-lesson refusal, verified ACT behavior delta, and successor reuse. If evidence unavailable mark UNKNOWN, never PASS."
+}
