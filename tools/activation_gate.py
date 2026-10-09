@@ -25,13 +25,16 @@ verdict STILL-LEAKING, 5.5/10. Four reproduced bypasses, all closed here:
       file and the gate code come from BASE, never from the PR. The PR's
       bytes are data, verified, never executed as the judge.
   BYPASS 3 (ROW 7 — freestyle component): an undocumented component class +
-      freestyle CSS passed with a valid receipt. The component closed-world
-      belongs to design_gate.py (PR #1996, not merged yet). INTERIM
-      ENFORCEMENT here, same semantics as that lane (Naya-prefixed classes
-      must be registered in the shipped manifest), marked INTERIM-ROW7 and
-      slated for deletion when PR #1996 merges. Named honestly in the
-      report; pure-CSS freestyle with no component class remains that
-      lane's full structural check.
+      freestyle CSS passed with a valid receipt. The component/structural
+      closed-world belongs to the design lane (tools/design_gate.py, PR
+      #1996, branch naya5/ship-design-gate) — this gate does NOT reimplement
+      it. DELEGATE-AND-VERIFY: in delivery mode the workflow fetches the
+      design gate + manifest at the PINNED reviewed commit DESIGN_GATE_PIN
+      (content-addressed, immutable — the PR cannot change its judge) and
+      the gate folds its verdict into every HTML deliverable. No design gate
+      available -> DESIGN_GATE_UNAVAILABLE -> REJECT (fail closed, never a
+      silent pass). Coordination note: PR #1994 (gate fusion) is the
+      reconciliation vehicle to watch so three gates don't become permanent.
   BYPASS 4 (RECEIPT TRANSPLANT): a receipt minted for one job shipped a
       different deliverable — job/proof_plan/session_id were unchecked free
       text. CLOSED: the receipt must bind every deliverable it covers via
@@ -72,7 +75,7 @@ Acceptance table (every row must hold in real CI):
   missing / abbreviated / mismatched commit SHA .. REJECT
   missing / tampered receipt ..................... REJECT
   transplanted receipt (wrong deliverable) ....... REJECT
-  unregistered component class (interim row 7) ... REJECT
+  unregistered component class (design lane) ..... REJECT (delegated)
   expired / future activation .................... REJECT
   alternate route bypassing the gate ............. LOCAL-REHEARSAL-*, never
       PASS, exit 3 (self-minted truth yields no passing verdict)
@@ -127,12 +130,6 @@ RECEIPT_PATH = ".naya/activation/receipt.json"
 
 IDENTITY_FIELDS = ("session_id", "naya_identity", "human_authority",
                    "repository", "job", "proof_plan")
-
-# INTERIM-ROW7: component-class closed-world. These prefixes and the
-# registered-class rule mirror design_gate.py::check_no_freestyle
-# (PR #1996, branch naya5/ship-design-gate). When that lane merges, this
-# interim check is DELETED and the design gate owns row 7 outright.
-COMPONENT_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 
 API_HOST = "https://api.github.com"
 
@@ -362,70 +359,54 @@ def check(receipt_bytes, deliverable_text, truth):
 
 
 # ---------------------------------------------------------------------------
-# INTERIM-ROW7: component-class closed-world (mirrors design_gate.py).
-# DELETE when PR #1996 (naya5/ship-design-gate) merges — that lane owns row 7.
+# ROW 7 — delegate-and-verify. The component/structural closed-world belongs
+# to the design lane: tools/design_gate.py (PR #1996, branch
+# naya5/ship-design-gate). This gate does NOT reimplement it. In delivery
+# mode the CI workflow fetches the design gate + manifest at the PINNED
+# reviewed commit DESIGN_GATE_PIN (content-addressed, immutable — the PR
+# cannot change which code judges it) and this function runs it against each
+# HTML deliverable, folding its verdict in. No design gate available ->
+# DESIGN_GATE_UNAVAILABLE -> REJECT (fail closed, never a silent pass).
+# When PR #1996 merges, the pin becomes tools/design_gate.py at base.
 # ---------------------------------------------------------------------------
 
-def manifest_known_classes(pr_head_dir):
-    """Classes registered in the shipped manifest: canonical CSS classes +
-    block css_classes + block snippet classes. Raises RuntimeError when the
-    manifest is absent — fail closed, never fail open."""
-    base = os.path.join(pr_head_dir, "smart-blocks")
-    mf = os.path.join(base, "manifest.json")
-    if not os.path.isfile(mf):
-        raise RuntimeError("INTERIM-ROW7: design manifest not found at %s — "
-                           "component closed-world unverifiable, refusing" % mf)
-    with open(mf, encoding="utf-8") as f:
-        data = json.load(f)
-    known = set()
-    css_files = []
-    for root, _dirs, files in os.walk(base):
-        for fn in files:
-            if fn.endswith(".css"):
-                css_files.append(os.path.join(root, fn))
-    for cssf in css_files:
-        with open(cssf, encoding="utf-8", errors="replace") as f:
-            css = f.read()
-        for m in re.finditer(r"\.([a-zA-Z0-9_-]+)", css):
-            if m.group(1).startswith(COMPONENT_PREFIXES):
-                known.add(m.group(1))
-    for b in data.get("blocks", []):
-        for c in b.get("css_classes", []):
-            for part in re.split(r"[/,]", c):
-                known.update(re.findall(r"\.([a-zA-Z0-9_-]+)", part))
-        html_file = b.get("html_file", "")
-        if html_file:
-            snippet = os.path.join(base, b.get("category_id", ""),
-                                   os.path.basename(html_file))
-            if os.path.isfile(snippet):
-                with open(snippet, encoding="utf-8", errors="replace") as f:
-                    shtml = f.read()
-                for m in re.finditer(r"class=[\"']([^\"']+)[\"']", shtml):
-                    known.update(m.group(1).split())
-    known.add("naya-page")  # structural page root, not a component
-    return known
+DESIGN_GATE_PIN = "3bfa8f64cafa482a17ed89790f7be02c2e320628"
+DESIGN_GATE_FILE = "tools/design_gate.py"
+DESIGN_MANIFEST_FILE = "smart-blocks/manifest.json"
 
 
-def check_no_freestyle_component(html_text, known):
-    """INTERIM-ROW7: every component-prefixed class used must be registered.
-    Same rule as design_gate.py::check_no_freestyle (BEM/state suffixes of
-    known bases allowed)."""
+def run_design_gate(deliverable_path, design_gate_path, manifest_path):
+    """Run the design lane's gate against one deliverable. Returns a list of
+    violation strings (empty = the design gate passed)."""
+    if not design_gate_path or not os.path.isfile(design_gate_path):
+        return ["DESIGN_GATE_UNAVAILABLE: design gate not supplied — "
+                "structural closed-world unverifiable, refusing"]
+    if not manifest_path or not os.path.isfile(manifest_path):
+        return ["DESIGN_GATE_UNAVAILABLE: design manifest not supplied — "
+                "refusing"]
+    import subprocess as _sp
+    try:
+        p = _sp.run([sys.executable, design_gate_path, deliverable_path,
+                     manifest_path],
+                    capture_output=True, text=True, timeout=120)
+    except (OSError, _sp.SubprocessError) as e:
+        return ["DESIGN_GATE_TOOL_ERROR: %s" % e]
+    if p.returncode == 0:
+        return []
     violations = []
-    used = set()
-    for m in re.finditer(r"class=[\"']([^\"']+)[\"']", html_text):
-        used.update(m.group(1).split())
-    for cls in sorted(used):
-        if cls.startswith(COMPONENT_PREFIXES) and cls not in known:
-            base_name = cls.split("--")[0].split("__")[0]
-            if base_name not in known:
-                violations.append(
-                    "COMPONENT_NOT_REGISTERED: class `.%s` is not in the "
-                    "shipped manifest — use a canonical block or file the "
-                    "gap (interim row-7; design_gate.py owns this check)" % cls)
+    for line in (p.stdout + "\n" + p.stderr).splitlines():
+        line = line.strip()
+        if "✕" in line:
+            violations.append(
+                "DESIGN_GATE: " + line.split("✕", 1)[1].strip())
+    if not violations:
+        violations.append("DESIGN_GATE: failed with exit %d (no parsed "
+                          "violations)" % p.returncode)
     return violations
 
 
-def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth):
+def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth,
+                   design_gate_path="", design_manifest_path=""):
     """Delivery predicate for ONE pull request. Pure apart from reading the
     PR-head files from disk (bytes the gate verifies, never trusts).
 
@@ -482,16 +463,15 @@ def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth):
             violations.append(
                 "CITATION_DIGEST_MISMATCH: %r marker does not match sha256 of "
                 "the exact receipt bytes" % path)
-        # INTERIM-ROW7: component closed-world for HTML deliverables
+        # ROW 7 — delegate-and-verify: the design lane's gate judges the
+        # deliverable's structural closed-world (no freestyle components,
+        # black root, dark scheme, self-contained, ...). Absent design gate
+        # fails closed — never a silent pass.
         if path.lower().endswith(".html"):
-            try:
-                known = manifest_known_classes(pr_head_dir)
-            except RuntimeError as e:
-                violations.append("TRUTH_UNTRUSTED: %s" % e)
-            else:
-                violations.extend(
-                    "[%s] %s" % (path, x)
-                    for x in check_no_freestyle_component(text, known))
+            violations.extend(
+                "[%s] %s" % (path, x)
+                for x in run_design_gate(disk_path, design_gate_path,
+                                         design_manifest_path))
 
     if violations:
         return "REJECT", violations
@@ -629,6 +609,11 @@ def main(argv=None):
     ap.add_argument("--changed-files", default=None,
                     help="comma-separated changed paths (delivery mode; "
                          "overrides the live API — for tests)")
+    ap.add_argument("--design-gate", default="",
+                    help="path to the design lane's gate script (delivery "
+                         "mode; row-7 delegate-and-verify)")
+    ap.add_argument("--design-manifest", default="",
+                    help="path to the Smart Blocks manifest (delivery mode)")
     ap.add_argument("--mode", choices=("protected", "local"),
                     default="protected",
                     help="protected: resolve truth from the runner (default). "
@@ -718,7 +703,9 @@ def _run_delivery(args):
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
-    verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed, truth)
+    verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed,
+                                         truth, args.design_gate,
+                                         args.design_manifest)
     code = 0 if verdict == "PASS" else 1
     return _emit(verdict, violations, args, code, local=False)
 

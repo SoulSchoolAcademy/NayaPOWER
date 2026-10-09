@@ -22,8 +22,8 @@ from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from activation_gate import (  # noqa: E402
-    check, check_receipt, check_delivery, check_no_freestyle_component,
-    manifest_known_classes, resolve_truth, main as gate_main,
+    check, check_receipt, check_delivery, run_design_gate,
+    resolve_truth, main as gate_main,
     CANONICAL_SOURCES, SCHEMA, RECEIPT_MARKER_RE,
     _canonical_deliverable_bytes, _safe_repo_path, _is_deliverable)
 
@@ -279,32 +279,29 @@ class TestLocalLabels(unittest.TestCase):
         self.assertNotIn("PASS", data["verdict"])
 
 
-def make_pr_head(tmp, manifest_blocks, pages):
-    """pages: {relpath: html_body_without_marker}."""
-    sb = os.path.join(tmp, "smart-blocks")
-    os.makedirs(sb, exist_ok=True)
-    json.dump({"blocks": manifest_blocks},
-              open(os.path.join(sb, "manifest.json"), "w"))
-    for rel, body in pages.items():
-        full = os.path.join(tmp, rel)
-        os.makedirs(os.path.dirname(full), exist_ok=True)
-        open(full, "w").write(body)
-    return tmp
-
-
 class TestDeliveryPredicate(unittest.TestCase):
-    def _setup(self, pages, manifest_blocks=None):
+    def _stub_design_gate(self, d, fail=False):
+        """A stub design-lane gate: exits 0, or 1 with an \u2715 violation line."""
+        p = os.path.join(d, "design_gate_stub.py")
+        body = ("import sys; print('  \u2715 NO FREESTYLE: stub violation'); "
+                "sys.exit(1)") if fail else "import sys; sys.exit(0)"
+        open(p, "w").write(body)
+        mf = os.path.join(d, "manifest.json")
+        open(mf, "w").write("{}")
+        return p, mf
+
+    def _setup(self, pages, design_fail=False):
         d = tempfile.mkdtemp()
         self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
-        manifest_blocks = (manifest_blocks if manifest_blocks is not None
-                           else [{"css_classes": [".naya-btn"]}])
-        make_pr_head(d, manifest_blocks, pages)
+        dg, mf = self._stub_design_gate(d, fail=design_fail)
+        self._dg, self._mf = dg, mf
         # mint one receipt binding ALL pages (canonical bytes), then add markers
         hashes = {p: hashlib.sha256(_canonical_deliverable_bytes(b.encode())).hexdigest()
                   for p, b in pages.items()}
         rb = mint_receipt_bytes(hashes)
         for p, b in pages.items():
             full = os.path.join(d, p)
+            os.makedirs(os.path.dirname(full), exist_ok=True)
             open(full, "wb").write(mint_page(rb, b))
         # write the receipt into the conventional PR-head location
         rdir = os.path.join(d, ".naya", "activation")
@@ -313,15 +310,17 @@ class TestDeliveryPredicate(unittest.TestCase):
         return d, rb
 
     def test_lawful_delivery_pass(self):
-        d, rb = self._setup({"page.html": "<html><body class=\"naya-btn\">x</body></html>"})
-        v, viols = check_delivery(rb, d, ["page.html"], TRUTH)
+        d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
+        v, viols = check_delivery(rb, d, ["page.html"], TRUTH,
+                                  self._dg, self._mf)
         self.assertEqual(v, "PASS", viols)
 
     def test_delivery_transplant_reject(self):
         d, rb = self._setup({"a.html": "<html><body>A</body></html>"})
         # PR changes b.html too, but the receipt only binds a.html
         open(os.path.join(d, "b.html"), "wb").write(mint_page(rb, "<html><body>B</body></html>"))
-        v, viols = check_delivery(rb, d, ["a.html", "b.html"], TRUTH)
+        v, viols = check_delivery(rb, d, ["a.html", "b.html"], TRUTH,
+                                  self._dg, self._mf)
         self.assertEqual(v, "REJECT", viols)
         self.assertTrue(any("DELIVERABLE_NOT_BOUND" in x for x in viols), viols)
 
@@ -330,23 +329,27 @@ class TestDeliveryPredicate(unittest.TestCase):
         self.assertEqual(v, "REJECT")
         self.assertTrue(any("RECEIPT_MISSING_OR_EMPTY" in x for x in viols), viols)
 
-    def test_delivery_unregistered_component_reject(self):
-        d, rb = self._setup(
-            {"evil.html": "<html><body><div class=\"naya-evil-widget\">x</div></body></html>"})
-        v, viols = check_delivery(rb, d, ["evil.html"], TRUTH)
+    def test_delivery_design_gate_reject_folded(self):
+        """Row 7 delegate-and-verify: the design lane's verdict folds in."""
+        d, rb = self._setup({"evil.html": "<html><body>x</body></html>"},
+                            design_fail=True)
+        v, viols = check_delivery(rb, d, ["evil.html"], TRUTH,
+                                  self._dg, self._mf)
         self.assertEqual(v, "REJECT", viols)
-        self.assertTrue(any("COMPONENT_NOT_REGISTERED" in x for x in viols), viols)
+        self.assertTrue(any("DESIGN_GATE:" in x for x in viols), viols)
 
-    def test_delivery_registered_component_pass(self):
-        d, rb = self._setup(
-            {"good.html": "<html><body><button class=\"naya-btn naya-btn--primary\">go</button></body></html>"},
-            manifest_blocks=[{"css_classes": [".naya-btn"]}])
-        v, viols = check_delivery(rb, d, ["good.html"], TRUTH)
-        self.assertEqual(v, "PASS", viols)
+    def test_delivery_design_gate_absent_fails_closed(self):
+        """No design gate available -> REJECT, never a silent pass."""
+        d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
+        v, viols = check_delivery(rb, d, ["page.html"], TRUTH, "", "")
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DESIGN_GATE_UNAVAILABLE" in x for x in viols),
+                        viols)
 
     def test_delivery_non_deliverable_change_ignored(self):
         d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
-        v, viols = check_delivery(rb, d, ["page.html", "tools/helper.py"], TRUTH)
+        v, viols = check_delivery(rb, d, ["page.html", "tools/helper.py"], TRUTH,
+                                  self._dg, self._mf)
         self.assertEqual(v, "PASS", viols)
 
     def test_is_deliverable(self):
@@ -356,20 +359,30 @@ class TestDeliveryPredicate(unittest.TestCase):
         self.assertFalse(_is_deliverable("BRAIN/note.md"))
 
 
-class TestComponentCheck(unittest.TestCase):
-    def test_bem_suffix_of_known_base_allowed(self):
-        v = check_no_freestyle_component(
-            '<div class="naya-btn naya-btn--primary naya-card__title">',
-            {"naya-btn", "naya-card"})
-        self.assertEqual(v, [], v)
+class TestDesignGateDelegation(unittest.TestCase):
+    def test_run_design_gate_pass(self):
+        d = tempfile.mkdtemp()
+        self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
+        gp = os.path.join(d, "g.py")
+        open(gp, "w").write("import sys; sys.exit(0)")
+        mp = os.path.join(d, "m.json")
+        open(mp, "w").write("{}")
+        self.assertEqual(run_design_gate("/tmp/x.html", gp, mp), [])
 
-    def test_unknown_prefixed_class_rejected(self):
-        v = check_no_freestyle_component('<div class="naya-evil">', {"naya-btn"})
-        self.assertTrue(any("COMPONENT_NOT_REGISTERED" in x for x in v), v)
+    def test_run_design_gate_violations_parsed(self):
+        d = tempfile.mkdtemp()
+        self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
+        gp = os.path.join(d, "g.py")
+        open(gp, "w").write(
+            "import sys; print('  \u2715 NO FREESTYLE: bad class'); sys.exit(1)")
+        mp = os.path.join(d, "m.json")
+        open(mp, "w").write("{}")
+        v = run_design_gate("/tmp/x.html", gp, mp)
+        self.assertTrue(any("NO FREESTYLE" in x for x in v), v)
 
-    def test_unprefixed_classes_ignored(self):
-        v = check_no_freestyle_component('<div class="my-thing container">', set())
-        self.assertEqual(v, [], v)
+    def test_run_design_gate_absent(self):
+        v = run_design_gate("/tmp/x.html", "", "")
+        self.assertTrue(any("DESIGN_GATE_UNAVAILABLE" in x for x in v), v)
 
 
 if __name__ == "__main__":

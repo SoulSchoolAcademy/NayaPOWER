@@ -98,6 +98,69 @@ def canonical_hash_of_body(body):
         _canonical_deliverable_bytes(body.encode())).hexdigest()
 
 
+def fetch_pinned_design_gate():
+    """Row-7 delegate-and-verify: fetch the design lane's gate + manifest at
+    the PINNED reviewed commit (content-addressed, immutable). Returns
+    (gate_path, manifest_path) or ("", "") when the fetch fails — the gate
+    then fails closed (DESIGN_GATE_UNAVAILABLE)."""
+    import base64
+    import urllib.request
+    pin = "3bfa8f64cafa482a17ed89790f7be02c2e320628"
+    repo = os.environ.get("GITHUB_REPOSITORY", "SoulSchoolAcademy/NayaPOWER")
+    token = os.environ.get("GITHUB_TOKEN", "")
+    d = tempfile.mkdtemp(prefix="design-gate-pin-")
+    paths = {}
+    for f, name in (("tools/design_gate.py", "design_gate.py"),
+                    ("smart-blocks/manifest.json", "manifest.json")):
+        try:
+            req = urllib.request.Request(
+                "https://api.github.com/repos/%s/contents/%s?ref=%s"
+                % (repo, f, pin),
+                headers={"Authorization": "Bearer " + token,
+                         "Accept": "application/vnd.github+json"})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                payload = json.load(r)
+            raw = base64.b64decode(payload["content"]).decode("utf-8")
+            out = os.path.join(d, name)
+            with open(out, "w", encoding="utf-8") as fh:
+                fh.write(raw)
+            paths[name] = out
+            print("pinned design-gate fetch: %s @ %s" % (f, pin[:12]))
+        except Exception as e:  # noqa: BLE001 — fail closed downstream
+            print("pinned design-gate fetch FAILED for %s: %s "
+                  "(delivery will fail closed)" % (f, e))
+    return paths.get("design_gate.py", ""), paths.get("manifest.json", "")
+
+
+LAWFUL_PAGE_BODY = """<!DOCTYPE html>
+<html>
+<head>
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html{background:#050507;color-scheme:dark}
+body{background:#050507;color:#ffffff;font-size:18px}
+</style>
+</head>
+<body class="naya-page"><button class="naya-btn">go</button></body>
+</html>
+"""
+
+EVIL_PAGE_BODY = """<!DOCTYPE html>
+<html>
+<head>
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html{background:#050507;color-scheme:dark}
+body{background:#050507;color:#ffffff;font-size:18px}
+</style>
+</head>
+<body class="naya-page"><div class="naya-evil-widget">x</div></body>
+</html>
+"""
+
+
 def lawful_pair(name, truth, body="<html><body>lawful test page</body></html>"):
     rp = "%s/%s.json" % (WORK, name)
     dp = "%s/%s.html" % (WORK, name)
@@ -252,12 +315,11 @@ def main():
            "%s exit=%s" % (verdict, code))
 
     # --- delivery mode (fail-closed PR gating) ---
-    def make_pr_head(pages, manifest_blocks=None):
+    dg_path, dg_manifest = fetch_pinned_design_gate()
+    dg_args = ["--design-gate", dg_path, "--design-manifest", dg_manifest]
+
+    def make_pr_head(pages):
         d = tempfile.mkdtemp(prefix="pr-head-")
-        sb = os.path.join(d, "smart-blocks")
-        os.makedirs(sb, exist_ok=True)
-        json.dump({"blocks": manifest_blocks or [{"css_classes": [".naya-btn"]}]},
-                  open(os.path.join(sb, "manifest.json"), "w"))
         hashes = {}
         for rel, body in pages.items():
             hashes[rel] = canonical_hash_of_body(body)
@@ -272,20 +334,20 @@ def main():
         shutil.copy(rp, os.path.join(rdir, "receipt.json"))
         return d
 
-    # lawful delivery
-    d = make_pr_head({"ship.html": "<html><body class=\"naya-btn\">x</body></html>"})
+    # lawful delivery (page passes the REAL design lane gate too)
+    d = make_pr_head({"ship.html": LAWFUL_PAGE_BODY})
     code, out = run_gate(["--delivery", "--pr-head", d,
-                          "--changed-files", "ship.html"])
+                          "--changed-files", "ship.html", *dg_args])
     record("delivery: lawful bound PR -> PASS",
            code == 0 and out.get("verdict") == "PASS",
            "%s %s" % (out.get("verdict"), out.get("violations")))
     shutil.rmtree(d, ignore_errors=True)
 
     # delivery transplant: receipt binds ship.html, PR also changes evil.html
-    d = make_pr_head({"ship.html": "<html><body>x</body></html>"})
+    d = make_pr_head({"ship.html": LAWFUL_PAGE_BODY})
     open(os.path.join(d, "evil.html"), "w").write("<html><body>unbound</body></html>")
     code, out = run_gate(["--delivery", "--pr-head", d,
-                          "--changed-files", "ship.html,evil.html"])
+                          "--changed-files", "ship.html,evil.html", *dg_args])
     record("delivery: unbound changed deliverable -> REJECT",
            code == 1 and any("DELIVERABLE_NOT_BOUND" in v
                              for v in out.get("violations", [])),
@@ -296,21 +358,22 @@ def main():
     d = tempfile.mkdtemp(prefix="pr-head-")
     open(os.path.join(d, "lonely.html"), "w").write("<html><body>x</body></html>")
     code, out = run_gate(["--delivery", "--pr-head", d,
-                          "--changed-files", "lonely.html"])
+                          "--changed-files", "lonely.html", *dg_args])
     record("delivery: missing receipt -> REJECT (fail closed)",
            code == 1 and any("RECEIPT_MISSING_OR_EMPTY" in v
                              for v in out.get("violations", [])),
            "%s %s" % (out.get("verdict"), out.get("violations")))
     shutil.rmtree(d, ignore_errors=True)
 
-    # INTERIM-ROW7: undocumented component class + freestyle CSS, valid receipt
-    d = make_pr_head({"freestyle.html":
-                      "<html><body><div class=\"naya-evil-widget\" "
-                      "style=\"color:red\">x</div></body></html>"})
+    # ROW 7 (attacker's bypass 3): undocumented component class + freestyle
+    # CSS ships with a VALID receipt — the design lane's gate (pinned
+    # reviewed commit, delegate-and-verify) must reject it.
+    d = make_pr_head({"freestyle.html": EVIL_PAGE_BODY})
     code, out = run_gate(["--delivery", "--pr-head", d,
-                          "--changed-files", "freestyle.html"])
-    record("delivery: unregistered component class -> REJECT (interim row 7)",
-           code == 1 and any("COMPONENT_NOT_REGISTERED" in v
+                          "--changed-files", "freestyle.html", *dg_args])
+    record("delivery: unregistered component class -> REJECT (row 7, "
+           "design lane)",
+           code == 1 and any("DESIGN_GATE:" in v and "NO FREESTYLE" in v
                              for v in out.get("violations", [])),
            "%s %s" % (out.get("verdict"), out.get("violations")))
     shutil.rmtree(d, ignore_errors=True)
