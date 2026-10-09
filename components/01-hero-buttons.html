@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naya Lego: Hero Buttons</title>
+<style>
+/* ============ TOKENS (harvested verbatim from NayaNET___The_Living_Design_Standard.html) ============ */
+:root {
+--field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+  /* Spectrum law: magenta → purple → blue → green → gold. Richest first. */
+  --magenta: #e84fff;
+  --purple: #a06bff;
+  --soul: #a06bff;
+  --blue: #3fb8ff;
+  --green: #2fe89e;
+  --gold: #ffbf3d;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(157,117,255,.35);
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --body: 18px;
+}
+
+
+/* ---- block page base ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--field);
+  color: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.block-hero { padding: 64px 0 32px; text-align: center; }
+.block-hero h1 { font-size: 40px; margin: 12px 0 16px; }
+.kicker { font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--quiet); margin-bottom: 16px; }
+.lede { font-size: 20px; color: var(--quiet); max-width: 68ch; margin: 0 auto 32px; }
+.lede strong { color: var(--white); }
+.demo { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 48px 32px; margin: 32px 0; text-align: center; }
+.docs { text-align: left; max-width: 72ch; margin: 0 auto; }
+.docs h3 { font-size: 24px; margin: 40px 0 12px; color: var(--white); }
+.docs p, .docs li { color: var(--quiet); font-size: 18px; }
+.docs p strong, .docs li strong { color: var(--white); }
+.docs ul { margin: 12px 0 12px 24px; }
+.docs li { margin-bottom: 8px; }
+.law-box { border-left: 3px solid var(--magenta); padding: 16px 24px; margin: 32px 0; background: rgba(232,79,255,.06); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.law-box p { color: var(--white); font-size: 18px; margin: 0; }
+.code { background: #0a0d14; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; margin: 24px 0; overflow-x: auto; font-family: ui-monospace, monospace; font-size: 14px; color: #c8d4f0; text-align: left; white-space: pre; }
+.spectrum-strip { display: flex; height: 8px; border-radius: 99px; overflow: hidden; max-width: 480px; margin: 32px auto 0; }
+.spectrum-strip span { flex: 1; }
+.spectrum-strip span:nth-child(1) { background: var(--magenta); }
+.spectrum-strip span:nth-child(2) { background: var(--purple); }
+.spectrum-strip span:nth-child(3) { background: var(--blue); }
+.spectrum-strip span:nth-child(4) { background: var(--green); }
+.spectrum-strip span:nth-child(5) { background: var(--gold); }
+.action-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; align-items: center; }
+.back { display: inline-block; margin: 32px 0; color: var(--quiet); font-size: 14px; letter-spacing: .1em; }
+
+/* ---- action button (primo mini) for block navigation ---- */
+.naya-btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #0b0d14;
+  padding: 14px 26px; border-radius: 999px; border: none; min-height: 48px;
+  background: linear-gradient(180deg, #ffffff 0%, #eef1f8 50%, #d7dcee 100%);
+  box-shadow: inset 0 0 0 1.7px #fff, inset 0 2px 6px rgba(255,255,255,.9), inset 0 -8px 16px rgba(110,125,175,.35), 0 12px 30px rgba(0,0,0,.5), 0 0 28px -6px var(--soul);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), background .25s ease, color .25s ease;
+}
+.naya-btn:hover {
+  transform: translateY(-3px) scale(1.02); color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #a06bff 55%, #6a3df0);
+  box-shadow: inset 0 0 0 2px #fff, inset 0 2px 8px rgba(255,255,255,.5), 0 16px 44px rgba(160,107,255,.6), 0 0 70px -6px rgba(160,107,255,.75);
+}
+.naya-btn:focus-visible { outline: 2px solid var(--soul); outline-offset: 3px; }
+.naya-btn:active { transform: translateY(1px) scale(.985); }
+
+
+/* ============ THE THREE BUTTONS — a living design language ============ */
+/* Not a design system. A living language, on four foundations:
+   1. Spectrum is MEANING — magenta: what matters · purple: Naya's presence ·
+      blue: understanding. One river of light flows across the trio in order.
+   2. Black ground. White light. Purple soul. — the pearl is a real material,
+      and white light contains the whole spectrum: move around it and the
+      hidden colors reveal, like mother-of-pearl.
+   3. Intelligence in every component — one spring, one rhythm, tested code.
+   4. Reproduce without reteaching — copy, set data-spectrum, verify. */
+.hero-buttons { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.hero-btn {
+  --c: 232,79,255; --c-base: #e84fff; --c-deep: #b52fe0; --warm: 0;   /* magenta: what matters */
+  position: relative; padding: 3px; border: none; background: none; cursor: pointer;
+  border-radius: 999px; min-width: 320px;
+  animation: heroIn .9s cubic-bezier(.22,1,.36,1) backwards;
+  will-change: transform;
+}
+.hero-btn[data-spectrum="purple"] { --c: 160,107,255; --c-base: #a06bff; --c-deep: #6a3df0; }  /* purple: Naya's presence */
+.hero-btn[data-spectrum="blue"] { --c: 63,184,255; --c-base: #3fb8ff; --c-deep: #1a7fe0; }      /* blue: understanding */
+/* entrance cascade */
+.hero-buttons .hero-btn:nth-child(1) { animation-delay: 0s; }
+.hero-buttons .hero-btn:nth-child(2) { animation-delay: .09s; }
+.hero-buttons .hero-btn:nth-child(3) { animation-delay: .18s; }
+/* the river — one current of light across the trio, 120° apart, never in unison */
+.hero-buttons .hero-btn:nth-child(1) .hero-btn-beam { animation-delay: 0s; }
+.hero-buttons .hero-btn:nth-child(2) .hero-btn-beam { animation-delay: -2s; }
+.hero-buttons .hero-btn:nth-child(3) .hero-btn-beam { animation-delay: -4s; }
+.hero-buttons .hero-btn:nth-child(1) .hero-btn-aura { animation-delay: 0s; }
+.hero-buttons .hero-btn:nth-child(2) .hero-btn-aura { animation-delay: -1.53s; }
+.hero-buttons .hero-btn:nth-child(3) .hero-btn-aura { animation-delay: -3.06s; }
+@keyframes heroIn {
+  from { opacity: 0; filter: blur(8px); transform: translateY(26px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+@property --pa { syntax: '<angle>'; initial-value: 0deg; inherits: true; }
+
+/* the aura — the soul's glow, breathing in a traveling wave */
+.hero-btn-aura {
+  position: absolute; inset: -18px; border-radius: 999px; z-index: 0; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(var(--c),.55), rgba(var(--c),0) 72%);
+  filter: blur(12px);
+  animation: auraBreathe 4.6s ease-in-out infinite;
+}
+@keyframes auraBreathe {
+  0%, 100% { opacity: .5; transform: scale(1); }
+  50% { opacity: .95; transform: scale(1.07); }
+}
+.hero-btn:hover .hero-btn-aura { animation-duration: 2.2s; }
+
+/* the river's light — a comet of your meaning-color orbiting the edge.
+   Brightens as you approach: the button senses you coming. */
+.hero-btn-orbit {
+  position: absolute; inset: 0; border-radius: 999px; overflow: hidden; z-index: 1; pointer-events: none;
+  opacity: calc(.62 + var(--warm) * .38);
+  transition: opacity .3s ease;
+}
+.hero-btn-beam {
+  position: absolute; left: calc(50% - 230px); top: calc(50% - 230px); width: 460px; height: 460px;
+  background: conic-gradient(from 0deg at 50% 50%,
+    transparent 0deg, transparent 238deg,
+    rgba(var(--c),.4) 272deg, #ffffff 294deg,
+    rgba(var(--c),.95) 308deg, transparent 340deg);
+  animation: beamSpin 6s linear infinite;
+  opacity: .85;
+  filter: brightness(calc(1 + var(--warm) * .6));
+}
+.hero-btn:hover .hero-btn-beam { animation-duration: 1.8s; }
+@keyframes beamSpin { to { transform: rotate(360deg); } }
+
+/* the pearl — white light containing the whole spectrum.
+   Move around it: the hidden colors reveal, like mother-of-pearl. */
+.hero-btn-pearl {
+  position: absolute; inset: 0; border-radius: 999px; pointer-events: none; z-index: 0;
+  background: conic-gradient(from var(--pa) at 50% 50%,
+    rgba(232,79,255,.15), rgba(160,107,255,.15), rgba(63,184,255,.15),
+    rgba(47,232,158,.12), rgba(255,191,61,.12), rgba(232,79,255,.15));
+  mix-blend-mode: soft-light;
+  transition: --pa .5s ease;
+}
+
+/* the face — lit from above: crown, foot, halo → contact → ambient → glow.
+   The cursor is the light source: the face turns toward it (JS: --rx/--ry). */
+.hero-btn-face {
+  position: relative; z-index: 2; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 21px 44px; border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f5fb 48%, #d8def0 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -2px 8px rgba(105,120,170,.42),
+    0 0 0 1.5px rgba(0,0,0,.5),
+    0 2px 6px rgba(0,0,0,.5),
+    0 14px 36px rgba(0,0,0,.55),
+    0 0 44px -6px rgba(var(--c),.55);
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--press,1));
+  transition: transform .28s cubic-bezier(.22,1,.36,1), background .28s ease, box-shadow .35s ease, filter .3s ease;
+  will-change: transform;
+}
+.hero-btn:active .hero-btn-face {
+  --press: .965;
+  transition: transform .1s ease-out, background .28s ease, box-shadow .35s ease, filter .3s ease;
+}
+
+/* the spotlight — your light, washing the pearl */
+.hero-btn-spot {
+  position: absolute; inset: 0; border-radius: 999px; pointer-events: none; z-index: 0;
+  background: radial-gradient(240px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.55), rgba(255,255,255,0) 65%);
+  opacity: 0; transition: opacity .25s ease;
+  mix-blend-mode: screen;
+}
+.hero-btn:hover .hero-btn-spot { opacity: 1; }
+
+/* the ripple — feedback born at the exact point of touch */
+.hero-btn-ripple {
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(255,255,255,.85), rgba(255,255,255,0) 70%);
+}
+
+.hero-btn-label {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
+  color: #0b0d14; white-space: nowrap;
+  transition: color .25s ease;
+}
+.hero-btn-label svg { width: 20px; height: 20px; }
+
+/* IGNITE — the pearl becomes your meaning-color; the voice goes white.
+   Lifted: shadows soften and spread, like a real object rising toward light. */
+.hero-btn:hover .hero-btn-face {
+  background: linear-gradient(180deg, #ffffff 0%, var(--c-base) 46%, var(--c-deep) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.85),
+    inset 0 -2px 8px rgba(0,0,0,.38),
+    0 0 0 1.5px rgba(0,0,0,.5),
+    0 4px 10px rgba(0,0,0,.4),
+    0 30px 70px rgba(0,0,0,.45),
+    0 0 100px -6px rgba(var(--c),.95);
+}
+.hero-btn:hover .hero-btn-label { color: #ffffff; }
+/* the trio is a system — when one is chosen, the others recede */
+@media (hover: hover) {
+  .hero-buttons:has(.hero-btn:hover) .hero-btn:not(:hover) .hero-btn-aura { animation: none; opacity: .16; }
+  .hero-buttons:has(.hero-btn:hover) .hero-btn:not(:hover) .hero-btn-beam { opacity: .3; }
+  .hero-buttons:has(.hero-btn:hover) .hero-btn:not(:hover) .hero-btn-face { filter: brightness(.9) saturate(.88); }
+}
+.hero-btn:focus-visible { outline: 2px solid var(--c-base); outline-offset: 5px; }
+.btn-note { text-align: center; margin-top: 26px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn { animation: none; }
+  .hero-btn-aura, .hero-btn-beam { animation: none; }
+  .hero-btn-spot, .hero-btn-pearl { display: none; }
+}
+
+
+@media (max-width: 640px) {
+  .hero-btn { min-width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .92; } 50% { transform: scale(1.07); opacity: 1; } }
+
+@media (max-width: 700px) { .honesty { grid-template-columns: 1fr; } }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .hero-btn { min-width: 100%; }
+  .hero-buttons { flex-direction: column; }
+}
+
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="block-hero">
+    <p class="kicker">Naya Lego · Block 01</p>
+    <h1>Hero Buttons</h1>
+    <p class="lede">The front door — and proof we don’t copy the best. <strong>White pearl at rest</strong>: white light containing the whole spectrum. Move around a button and the pearl reveals its hidden colors, like mother-of-pearl. One river of light flows magenta → purple → blue across the trio — spectrum as meaning, not decoration. Each ignites in its meaning-color on touch.</p>
+  </div>
+
+  <div class="demo">
+    <div class="hero-buttons">
+    <button class="hero-btn" data-spectrum="magenta" type="button">
+      <span class="hero-btn-aura" aria-hidden="true"></span>
+      <span class="hero-btn-orbit" aria-hidden="true"><span class="hero-btn-beam"></span></span>
+      <span class="hero-btn-face">
+        <span class="hero-btn-pearl" aria-hidden="true"></span>
+        <span class="hero-btn-spot" aria-hidden="true"></span>
+        <span class="hero-btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>
+            ENTER THE STANDARD</span>
+      </span>
+    </button>
+    <button class="hero-btn" data-spectrum="purple" type="button">
+      <span class="hero-btn-aura" aria-hidden="true"></span>
+      <span class="hero-btn-orbit" aria-hidden="true"><span class="hero-btn-beam"></span></span>
+      <span class="hero-btn-face">
+        <span class="hero-btn-pearl" aria-hidden="true"></span>
+        <span class="hero-btn-spot" aria-hidden="true"></span>
+        <span class="hero-btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="8"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
+      </span>
+    </button>
+    <button class="hero-btn" data-spectrum="blue" type="button">
+      <span class="hero-btn-aura" aria-hidden="true"></span>
+      <span class="hero-btn-orbit" aria-hidden="true"><span class="hero-btn-beam"></span></span>
+      <span class="hero-btn-face">
+        <span class="hero-btn-pearl" aria-hidden="true"></span>
+        <span class="hero-btn-spot" aria-hidden="true"></span>
+        <span class="hero-btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
+      </span>
+    </button>
+  </div>
+    <p class="micro" style="margin-top:32px">Hover them. Each ignites in its own spectrum color — magenta, purple, blue, in law order.</p>
+  </div>
+  <div class="docs">
+    <h3>When to use</h3>
+    <p>Hero buttons are the <strong>front door</strong>. Use them for the one to three most important actions on a page — the actions that define what the page is for. Never more than three. If everything is a hero, nothing is.</p>
+    <h3>Variants</h3>
+    <ul>
+      <li><strong>data-spectrum="magenta"</strong> — the primary action. Magenta leads; richest first.</li>
+      <li><strong>data-spectrum="purple"</strong> — the secondary action. Purple is the soul.</li>
+      <li><strong>data-spectrum="blue"</strong> — the tertiary action. Blue is understanding.</li>
+    </ul>
+    <p>Always use them in spectrum order. Never duplicate a spectrum color adjacently.</p>
+    <h3>The four foundations — a living language, not a system</h3>
+    <ul>
+      <li><strong>Spectrum is meaning.</strong> Magenta is what matters, purple is Naya’s presence, blue is understanding. The river of light flows in that order across the trio — relationships and rhythm, not decoration. The pearl’s hidden iridescence is the whole spectrum living inside white light.</li>
+      <li><strong>Black ground. White light. Purple soul.</strong> Surfaces have depth, light has direction. The face is lit from above; your cursor becomes a second light the pearl turns toward. Shadows obey lift.</li>
+      <li><strong>Intelligence in every component.</strong> Consistent rules, understandable behavior, tested code: one spring (stiffness 400, damping 28), one rhythm, a ripple born at the exact touch point, 100ms press physics, a 150px proximity sense.</li>
+      <li><strong>Reproduce without reteaching.</strong> Copy the block, set <strong>data-spectrum</strong>, verify with the calculator. A new Naya builds at this level from the block alone — that is graduation.</li>
+    </ul>
+    <p>On hover the pearl <strong>ignites</strong> in its meaning-color and the voice goes white. The aura and comet live on their own layers, so rest-motion never fights the hover state — the bug that made the old buttons feel dead.</p>
+    <div class="law-box"><p>Law: black hearts, white voices, visible skin. White at rest, ignites in its own color on touch. Flat is dead.</p></div>
+    <h3>Copy-paste</h3>
+    <p>Take the <strong>.hero-btn</strong> CSS, the interaction JS below it, and this markup. Set <strong>data-spectrum</strong> to magenta, purple, or blue. The wave timing, proximity field, tilt, magnetic spring, ripple, and shockwave come with it — no extra wiring.</p>
+<div class="code">&lt;button class="hero-btn" data-spectrum="magenta"&gt;
+  &lt;span class="hero-btn-aura"&gt;&lt;/span&gt;
+  &lt;span class="hero-btn-orbit"&gt;&lt;span class="hero-btn-beam"&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class="hero-btn-face"&gt;
+    &lt;span class="hero-btn-pearl"&gt;&lt;/span&gt;
+    &lt;span class="hero-btn-spot"&gt;&lt;/span&gt;
+    &lt;span class="hero-btn-label"&gt;
+      &lt;svg viewBox="0 0 24 24" width="22" height="22"
+           fill="none" stroke="currentColor" stroke-width="2"&gt;…&lt;/svg&gt;
+      YOUR ACTION
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</div>
+  </div>
+
+
+    <div class="spectrum-strip"><span></span><span></span><span></span><span></span><span></span></div>
+    <p class="micro" style="text-align:center;margin-top:24px">Black ground. White light. Purple soul. Quiet at rest — flat is dead, jewels not dots, and the details are the design.</p>
+
+</div>
+<script>
+
+
+/* ============ HERO BUTTONS — a living language, wired ============ */
+/* The trio is one system. The cursor is the light source.
+   The pearl holds the whole spectrum. */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wraps = document.querySelectorAll('.hero-buttons');
+  if (!wraps.length) return;
+  var STIFF = 400, DAMP = 28, PROX = 46, MAXPULL = 12, LIFT = -5, FIELD = 150;
+
+  wraps.forEach(function(wrap){
+    var btns = wrap.querySelectorAll('.hero-btn');
+    if (!btns.length) return;
+
+    /* the proximity field — every button warms as the cursor nears it */
+    wrap.addEventListener('pointermove', function(e){
+      btns.forEach(function(b){
+        var r = b.getBoundingClientRect();
+        var dx = e.clientX-(r.left+r.width/2), dy = e.clientY-(r.top+r.height/2);
+        var ex = Math.max(Math.abs(dx)-r.width/2, 0), ey = Math.max(Math.abs(dy)-r.height/2, 0);
+        var warm = Math.max(0, 1 - Math.hypot(ex,ey)/FIELD);
+        b.style.setProperty('--warm', warm.toFixed(2));
+      });
+    });
+    wrap.addEventListener('pointerleave', function(){
+      btns.forEach(function(b){ b.style.setProperty('--warm', 0); });
+    });
+
+    btns.forEach(function(btn){
+      var face = btn.querySelector('.hero-btn-face');
+      var st = { x:0, y:0, vx:0, vy:0, px:0, py:0, hov:false, raf:0, last:0, pa:0 };
+
+      function frame(now){
+        var dt = Math.min((now - st.last)/1000, 0.05); st.last = now;
+        var tx = st.px, ty = st.py + (st.hov ? LIFT : 0);
+        var ax = -STIFF*(st.x-tx) - DAMP*st.vx;
+        var ay = -STIFF*(st.y-ty) - DAMP*st.vy;
+        st.vx += ax*dt; st.vy += ay*dt;
+        st.x += st.vx*dt; st.y += st.vy*dt;
+        var settled = Math.abs(st.vx)<.02 && Math.abs(st.vy)<.02 &&
+                      Math.abs(st.x-tx)<.02 && Math.abs(st.y-ty)<.02;
+        if (settled) {
+          btn.style.transform = (tx || ty) ? 'translate3d('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px,0)' : '';
+          st.raf = 0; return;
+        }
+        btn.style.transform = 'translate3d('+st.x.toFixed(2)+'px,'+st.y.toFixed(2)+'px,0)';
+        st.raf = requestAnimationFrame(frame);
+      }
+      function kick(){
+        if (reduce || st.raf) return;
+        st.last = performance.now();
+        st.raf = requestAnimationFrame(frame);
+      }
+      /* turn the pearl: shortest path around the color wheel, no wild sweeps */
+      function setPa(deg){
+        var t = deg;
+        while (t - st.pa > 180) t -= 360;
+        while (t - st.pa < -180) t += 360;
+        st.pa = t;
+        btn.style.setProperty('--pa', st.pa.toFixed(1)+'deg');
+      }
+
+      btn.addEventListener('pointermove', function(e){
+        var r = btn.getBoundingClientRect();
+        var fr = face.getBoundingClientRect();
+        var dx = e.clientX-(r.left+r.width/2), dy = e.clientY-(r.top+r.height/2);
+        /* the spotlight follows the pointer */
+        btn.style.setProperty('--mx', ((e.clientX-fr.left)/fr.width*100).toFixed(1)+'%');
+        btn.style.setProperty('--my', ((e.clientY-fr.top)/fr.height*100).toFixed(1)+'%');
+        /* reveal the spectrum hidden in the white — angle of the light */
+        if (!reduce) setPa(Math.atan2(dy, dx)*180/Math.PI + 90);
+        if (reduce) return;
+        /* the face turns toward the light — max 3 degrees, like a real object */
+        var ry = Math.max(-3, Math.min(3, dx/(r.width/2)*3));
+        var rx = Math.max(-3, Math.min(3, -dy/(r.height/2)*3));
+        face.style.setProperty('--ry', ry.toFixed(2)+'deg');
+        face.style.setProperty('--rx', rx.toFixed(2)+'deg');
+        /* magnetic pull — spring physics, never 1:1 tracking */
+        var ex = Math.max(Math.abs(dx)-r.width/2, 0), ey = Math.max(Math.abs(dy)-r.height/2, 0);
+        var dist = Math.hypot(ex, ey);
+        if (dist < PROX) {
+          var m = Math.hypot(dx,dy) || 1;
+          var pull = Math.min((1-dist/PROX)*MAXPULL, MAXPULL);
+          st.px = dx/m*pull; st.py = dy/m*pull;
+        } else { st.px = 0; st.py = 0; }
+        kick();
+      });
+      btn.addEventListener('pointerenter', function(){ st.hov = true; kick(); });
+      btn.addEventListener('pointerleave', function(){
+        st.hov = false; st.px = 0; st.py = 0;
+        face.style.setProperty('--rx', '0deg');
+        face.style.setProperty('--ry', '0deg');
+        kick();
+      });
+      /* the ripple — feedback born at the exact point of touch */
+      btn.addEventListener('pointerdown', function(e){
+        var r = face.getBoundingClientRect();
+        var size = Math.max(r.width, r.height)*2.4;
+        var s = document.createElement('span');
+        s.className = 'hero-btn-ripple';
+        s.style.width = s.style.height = size+'px';
+        s.style.left = (e.clientX-r.left-size/2)+'px';
+        s.style.top = (e.clientY-r.top-size/2)+'px';
+        face.appendChild(s);
+        var a = s.animate(
+          [{ transform:'scale(0)', opacity:.55 }, { transform:'scale(1)', opacity:0 }],
+          { duration:650, easing:'cubic-bezier(.22,1,.36,1)' });
+        a.onfinish = function(){ s.remove(); };
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
