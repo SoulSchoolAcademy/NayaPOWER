@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>avatar-stack — specimen</title>
+<link rel="stylesheet" href="avatar-stack.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:48px 24px; display:flex; flex-direction:column; gap:40px; align-items:flex-start; }
+  h2 { font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  section { display:flex; flex-direction:column; gap:12px; }
+  .row { display:flex; align-items:center; gap:16px; }
+  .cap { font-size:14px; color:rgba(255,255,255,.45); }
+</style>
+</head>
+<body>
+
+<section>
+  <h2>Default — with presence</h2>
+  <div class="row">
+    <div class="as" aria-label="5 members online">
+      <span class="as-ava" title="Maya">M<span class="as-dot"></span></span>
+      <span class="as-ava" title="Jon">J<span class="as-dot"></span></span>
+      <span class="as-ava is-away" title="Priya">P<span class="as-dot"></span></span>
+      <span class="as-ava" title="Sam">S<span class="as-dot"></span></span>
+      <button class="as-ava as-more" title="12 more members">+8</button>
+    </div>
+    <span class="cap">Design Guild · 12 members</span>
+  </div>
+</section>
+
+<section>
+  <h2>Small</h2>
+  <div class="as as--sm">
+    <span class="as-ava">A</span>
+    <span class="as-ava">B</span>
+    <span class="as-ava">C</span>
+  </div>
+</section>
+
+<section>
+  <h2>Large</h2>
+  <div class="as as--lg">
+    <span class="as-ava">N<span class="as-dot"></span></span>
+    <span class="as-ava is-off">K<span class="as-dot"></span></span>
+  </div>
+</section>
+
+</body>
+</html>

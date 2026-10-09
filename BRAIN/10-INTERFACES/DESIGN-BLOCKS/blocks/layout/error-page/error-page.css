@@ -1,0 +1,115 @@
+/* Smart Block: error-page — 404/error page composition */
+/* Built 2026-10-09 for the NayaNET gap build. Full-bleed obsidian, orbit glow, jewel 404. */
+
+:root {
+  --ep-bg: #050508;
+  --ep-ink: #f5f7fb;
+  --ep-dim: rgba(255,255,255,.55);
+  --ep-line: rgba(255,255,255,.12);
+  --ep-purple: #a06bff;
+  --ep-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.ep {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--ep-bg);
+  color: var(--ep-ink);
+  padding: 48px 24px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Ambient orbit glow */
+.ep::before {
+  content: "";
+  position: absolute;
+  width: min(90vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160,107,255,.16), transparent 65%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.ep-code {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(96px, 22vw, 180px);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  background: linear-gradient(160deg, #f5f7fb 30%, var(--ep-purple) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 60px rgba(160,107,255,.25);
+  position: relative;
+}
+
+.ep-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 16px 0 8px;
+  position: relative;
+}
+
+.ep-sub {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ep-dim);
+  max-width: 480px;
+  margin: 0 0 32px;
+  position: relative;
+}
+
+.ep-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.ep-btn {
+  min-height: 52px;
+  padding: 0 32px;
+  border-radius: 999px;
+  border: 1px solid var(--ep-purple);
+  background: #0a0a0e;
+  color: var(--ep-ink);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 0 18px rgba(160,107,255,.3), inset 0 1px 0 rgba(255,255,255,.08);
+  transition: background .2s var(--ep-ease), color .2s var(--ep-ease), box-shadow .2s var(--ep-ease);
+}
+
+.ep-btn:hover {
+  background: var(--ep-ink);
+  color: #050508;
+  box-shadow: 0 0 32px rgba(160,107,255,.6);
+}
+
+.ep-btn--ghost {
+  border-color: var(--ep-line);
+  box-shadow: none;
+  background: transparent;
+}
+.ep-btn--ghost:hover { background: rgba(255,255,255,.06); color: var(--ep-ink); box-shadow: none; }
+
+.ep-id {
+  margin-top: 40px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  color: rgba(255,255,255,.3);
+  position: relative;
+}

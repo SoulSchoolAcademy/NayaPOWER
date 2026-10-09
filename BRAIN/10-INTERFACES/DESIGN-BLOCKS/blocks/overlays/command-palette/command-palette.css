@@ -1,0 +1,128 @@
+/* Smart Block: command-palette — ⌘K quick-action palette */
+/* Built 2026-10-09 for the NayaNET gap build. Centered obsidian command bar, jewel results. */
+
+:root {
+  --cp-bg: #0a0a0e;
+  --cp-line: rgba(255,255,255,.12);
+  --cp-ink: #f5f7fb;
+  --cp-dim: rgba(255,255,255,.6);
+  --cp-faint: rgba(255,255,255,.35);
+  --cp-purple: #a06bff;
+  --cp-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.cp-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,2,3,.65);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s var(--cp-ease);
+  z-index: 960;
+}
+.cp-backdrop.is-on { opacity: 1; pointer-events: auto; }
+
+.cp {
+  position: fixed;
+  top: 18vh;
+  left: 50%;
+  transform: translate(-50%, -12px) scale(.98);
+  width: min(600px, calc(100vw - 32px));
+  z-index: 961;
+  background: var(--cp-bg);
+  border: 1px solid var(--cp-line);
+  border-radius: 17px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.7), 0 0 48px rgba(160,107,255,.12), inset 0 1px 0 rgba(255,255,255,.07);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s var(--cp-ease), transform .25s var(--cp-ease);
+  overflow: hidden;
+}
+.cp.is-on { opacity: 1; pointer-events: auto; transform: translate(-50%, 0) scale(1); }
+
+.cp-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--cp-line);
+}
+
+.cp-icon { color: var(--cp-purple); font-size: 18px; text-shadow: 0 0 12px rgba(160,107,255,.6); }
+
+.cp-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cp-ink);
+  font-size: 18px;
+}
+.cp-input::placeholder { color: var(--cp-faint); }
+
+.cp-kbd {
+  font-size: 12px;
+  color: var(--cp-faint);
+  border: 1px solid var(--cp-line);
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+.cp-list {
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+}
+
+.cp-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--cp-dim);
+  transition: background .12s var(--cp-ease), color .12s var(--cp-ease);
+}
+
+.cp-item.is-active {
+  background: rgba(160,107,255,.1);
+  color: var(--cp-ink);
+  box-shadow: inset 0 0 0 1px rgba(160,107,255,.3);
+}
+
+.cp-jewel {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--cp-purple);
+  box-shadow: 0 0 8px var(--cp-purple);
+}
+.cp-item[data-group="go"] .cp-jewel { background: #3f9ff5; box-shadow: 0 0 8px #3f9ff5; }
+.cp-item[data-group="do"] .cp-jewel { background: #e455f4; box-shadow: 0 0 8px #e455f4; }
+.cp-item[data-group="ask"] .cp-jewel { background: #34d38a; box-shadow: 0 0 8px #34d38a; }
+
+.cp-label { flex: 1; }
+.cp-hint { font-size: 12px; color: var(--cp-faint); }
+
+.cp-foot {
+  padding: 10px 20px;
+  border-top: 1px solid var(--cp-line);
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--cp-faint);
+}
+.cp-foot .cp-kbd { font-size: 11px; padding: 2px 6px; }
+
+.cp-none {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--cp-faint);
+  font-size: 14px;
+}

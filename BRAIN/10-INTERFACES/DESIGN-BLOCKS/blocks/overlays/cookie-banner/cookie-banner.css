@@ -1,0 +1,90 @@
+/* Smart Block: cookie-banner — consent banner */
+/* Built 2026-10-09 for the NayaNET gap build. Bottom sheet, obsidian, jewel accept. */
+
+:root {
+  --ck-bg: #0a0a0e;
+  --ck-line: rgba(255,255,255,.12);
+  --ck-ink: #f5f7fb;
+  --ck-dim: rgba(255,255,255,.6);
+  --ck-purple: #a06bff;
+  --ck-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.ck {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--ck-bg);
+  border: 1px solid var(--ck-line);
+  border-radius: 17px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);
+  transform: translateY(140%);
+  transition: transform .45s var(--ck-ease);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.ck.is-on { transform: none; }
+
+.ck-copy { flex: 1; min-width: 0; }
+
+.ck-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--ck-ink);
+}
+
+.ck-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ck-dim);
+  margin: 0;
+}
+
+.ck-text a { color: var(--ck-purple); text-decoration: none; }
+.ck-text a:hover { text-decoration: underline; }
+
+.ck-actions {
+  display: flex;
+  gap: 10px;
+  flex: none;
+}
+
+.ck-btn {
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid var(--ck-purple);
+  background: var(--ck-purple);
+  color: #0a0a0e;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(160,107,255,.5);
+  transition: box-shadow .2s var(--ck-ease), transform .2s var(--ck-ease);
+  white-space: nowrap;
+}
+.ck-btn:hover { box-shadow: 0 0 28px rgba(160,107,255,.75); transform: translateY(-1px); }
+.ck-btn:focus-visible { outline: 2px solid #f5f7fb; outline-offset: 2px; }
+
+.ck-btn--ghost {
+  background: transparent;
+  border-color: var(--ck-line);
+  color: var(--ck-ink);
+  box-shadow: none;
+  font-weight: 600;
+}
+.ck-btn--ghost:hover { background: rgba(255,255,255,.06); box-shadow: none; transform: none; }
+
+@media (max-width: 640px) {
+  .ck { flex-direction: column; align-items: stretch; gap: 16px; }
+  .ck-actions { justify-content: stretch; }
+  .ck-btn { flex: 1; }
+}

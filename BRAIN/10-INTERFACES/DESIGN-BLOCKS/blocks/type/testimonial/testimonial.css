@@ -1,0 +1,99 @@
+/* Smart Block: testimonial — attributed testimonial card */
+/* Built 2026-10-09 for the NayaNET gap build. Voice serif quote, jewel attribution. */
+
+:root {
+  --tm-bg: #0a0a0e;
+  --tm-line: rgba(255,255,255,.12);
+  --tm-ink: #f5f7fb;
+  --tm-dim: rgba(255,255,255,.6);
+  --tm-faint: rgba(255,255,255,.4);
+  --tm-purple: #a06bff;
+  --tm-voice: "Cormorant Garamond", Georgia, serif;
+}
+
+.tm {
+  background: var(--tm-bg);
+  border: 1px solid var(--tm-line);
+  border-radius: 17px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.tm::before {
+  content: "\201C";
+  position: absolute;
+  top: 8px;
+  left: 20px;
+  font-family: var(--tm-voice);
+  font-size: 72px;
+  line-height: 1;
+  color: var(--tm-purple);
+  opacity: .35;
+  text-shadow: 0 0 24px rgba(160,107,255,.5);
+}
+
+.tm-quote {
+  font-family: var(--tm-voice);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--tm-ink);
+  margin: 24px 0 20px;
+  position: relative;
+}
+
+.tm-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tm-ava {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f5f7fb;
+  background: radial-gradient(circle at 35% 30%, var(--tm-purple), #4a2a86);
+  box-shadow: 0 0 14px rgba(160,107,255,.4);
+  overflow: hidden;
+}
+.tm-ava img { width: 100%; height: 100%; object-fit: cover; }
+
+.tm-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tm-ink);
+  margin: 0;
+}
+
+.tm-role {
+  font-size: 14px;
+  color: var(--tm-faint);
+  margin: 2px 0 0;
+}
+
+/* Star row */
+.tm-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+  color: #e7c65a;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(231,198,90,.5);
+}
+
+/* Grid of testimonials */
+.tm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}

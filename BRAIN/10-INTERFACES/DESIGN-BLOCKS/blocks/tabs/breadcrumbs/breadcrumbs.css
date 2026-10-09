@@ -1,0 +1,72 @@
+/* Smart Block: breadcrumbs — breadcrumb trail */
+/* Built 2026-10-09 for the NayaNET gap build. Quiet text links, jewel separators, current page in white. */
+
+:root {
+  --bc-ink: #f5f7fb;
+  --bc-dim: rgba(255,255,255,.45);
+  --bc-faint: rgba(255,255,255,.25);
+  --bc-purple: #a06bff;
+  --bc-spectrum: #e455f4, #a06bff, #3f9ff5, #34d38a, #e7c65a;
+  --bc-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.bc {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bc-item { display: inline-flex; align-items: center; gap: 8px; }
+
+.bc-link {
+  color: var(--bc-dim);
+  text-decoration: none;
+  transition: color .18s var(--bc-ease);
+  white-space: nowrap;
+}
+
+.bc-link:hover { color: var(--bc-ink); }
+
+.bc-link:focus-visible {
+  outline: 2px solid var(--bc-purple);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.bc-current {
+  color: var(--bc-ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Jewel separators cycle the spectrum, never repeating adjacent hues */
+.bc-sep {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  box-shadow: 0 0 8px currentColor;
+}
+.bc-item:nth-child(1) .bc-sep { background: #e455f4; color: #e455f4; }
+.bc-item:nth-child(2) .bc-sep { background: #a06bff; color: #a06bff; }
+.bc-item:nth-child(3) .bc-sep { background: #3f9ff5; color: #3f9ff5; }
+.bc-item:nth-child(4) .bc-sep { background: #34d38a; color: #34d38a; }
+.bc-item:nth-child(5) .bc-sep { background: #e7c65a; color: #e7c65a; }
+.bc-item:nth-child(6) .bc-sep { background: #e455f4; color: #e455f4; }
+
+/* Collapsed middle for deep trails */
+.bc-collapse {
+  color: var(--bc-faint);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.bc-collapse:hover { color: var(--bc-ink); background: rgba(255,255,255,.06); }

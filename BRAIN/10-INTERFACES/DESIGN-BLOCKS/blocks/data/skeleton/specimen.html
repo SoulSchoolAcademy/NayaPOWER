@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>skeleton — specimen</title>
+<link rel="stylesheet" href="skeleton.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:48px 24px; display:flex; flex-direction:column; gap:40px; }
+  .wrap { max-width: 720px; margin: 0 auto; width: 100%; }
+  h2 { font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:16px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h2>Feed skeleton</h2>
+  <div class="sk-feed" aria-hidden="true">
+    <div class="sk-row">
+      <div class="sk sk--ava"></div>
+      <div class="sk-stack">
+        <div class="sk sk--title" style="width:60%"></div>
+        <div class="sk sk--para" style="width:90%"></div>
+      </div>
+    </div>
+    <div class="sk sk--card"></div>
+    <div class="sk-row">
+      <div class="sk sk--ava"></div>
+      <div class="sk-stack">
+        <div class="sk sk--title" style="width:45%"></div>
+        <div class="sk sk--para" style="width:75%"></div>
+        <div class="sk sk--para" style="width:55%"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <h2>Card grid skeleton</h2>
+  <div class="sk-grid" aria-hidden="true">
+    <div class="sk sk--card"></div>
+    <div class="sk sk--card"></div>
+    <div class="sk sk--card"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <h2>Hero skeleton</h2>
+  <div class="sk-stack" aria-hidden="true">
+    <div class="sk sk--title" style="width:70%; height:32px"></div>
+    <div class="sk sk--para" style="width:95%"></div>
+    <div class="sk sk--para" style="width:80%"></div>
+    <div class="sk sk--btn" style="margin-top:8px"></div>
+  </div>
+</div>
+
+</body>
+</html>

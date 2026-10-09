@@ -1,0 +1,102 @@
+/* Smart Block: carousel — image/content slider gallery */
+/* Built 2026-10-09 for the NayaNET gap build. 17px cards, jewel dots, edge-fade arrows. */
+
+:root {
+  --cr-bg: #0a0a0e;
+  --cr-line: rgba(255,255,255,.12);
+  --cr-ink: #f5f7fb;
+  --cr-dim: rgba(255,255,255,.45);
+  --cr-purple: #a06bff;
+  --cr-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.cr {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+  background: var(--cr-bg);
+  border: 1px solid var(--cr-line);
+}
+
+.cr-track {
+  display: flex;
+  transition: transform .45s var(--cr-ease);
+  will-change: transform;
+}
+
+.cr-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.cr-slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.cr-cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 40px 20px 16px;
+  background: linear-gradient(transparent, rgba(0,0,0,.75));
+  font-size: 14px;
+  color: var(--cr-ink);
+}
+
+/* Arrows */
+.cr-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--cr-line);
+  background: rgba(10,10,14,.7);
+  backdrop-filter: blur(8px);
+  color: var(--cr-ink);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .18s var(--cr-ease), box-shadow .18s var(--cr-ease);
+  z-index: 2;
+}
+.cr-arrow:hover {
+  border-color: var(--cr-purple);
+  box-shadow: 0 0 16px rgba(160,107,255,.45);
+}
+.cr-arrow:focus-visible { outline: 2px solid var(--cr-purple); outline-offset: 2px; }
+.cr-prev { left: 12px; }
+.cr-next { right: 12px; }
+
+/* Jewel dots — spectrum order */
+.cr-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+.cr-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.25);
+  cursor: pointer;
+  padding: 0;
+  transition: transform .2s var(--cr-ease), background .2s var(--cr-ease), box-shadow .2s var(--cr-ease);
+}
+.cr-dot:hover { transform: scale(1.25); }
+.cr-dot.is-on { transform: scale(1.35); box-shadow: 0 0 10px currentColor; }
+.cr-dot:nth-child(5n+1).is-on { background: #e455f4; color: #e455f4; }
+.cr-dot:nth-child(5n+2).is-on { background: #a06bff; color: #a06bff; }
+.cr-dot:nth-child(5n+3).is-on { background: #3f9ff5; color: #3f9ff5; }
+.cr-dot:nth-child(5n+4).is-on { background: #34d38a; color: #34d38a; }
+.cr-dot:nth-child(5n+5).is-on { background: #e7c65a; color: #e7c65a; }

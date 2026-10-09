@@ -1,0 +1,78 @@
+/* Smart Block: pagination — page number controls */
+/* Built 2026-10-09 for the NayaNET gap build. Obsidian pill strip, jewel current-page. */
+
+:root {
+  --pg-bg: #0a0a0e;
+  --pg-line: rgba(255,255,255,.12);
+  --pg-ink: #f5f7fb;
+  --pg-dim: rgba(255,255,255,.45);
+  --pg-purple: #a06bff;
+  --pg-ease: cubic-bezier(.16,.84,.22,1);
+}
+
+.pg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: var(--pg-bg);
+  border: 1px solid var(--pg-line);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.pg-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--pg-dim);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .18s var(--pg-ease), background .18s var(--pg-ease), border-color .18s var(--pg-ease), box-shadow .18s var(--pg-ease);
+}
+
+.pg-btn:hover {
+  color: var(--pg-ink);
+  background: rgba(255,255,255,.06);
+}
+
+.pg-btn:focus-visible {
+  outline: 2px solid var(--pg-purple);
+  outline-offset: 2px;
+}
+
+.pg-btn.is-current {
+  color: #0a0a0e;
+  background: var(--pg-purple);
+  border-color: var(--pg-purple);
+  box-shadow: 0 0 18px rgba(160,107,255,.55), 0 4px 12px rgba(0,0,0,.4);
+  font-weight: 700;
+}
+
+.pg-btn.is-current:hover { color: #0a0a0e; }
+
+.pg-btn:disabled {
+  opacity: .3;
+  cursor: default;
+  background: transparent;
+}
+
+.pg-btn.pg-nav { font-size: 16px; min-width: 40px; }
+
+.pg-ellipsis {
+  color: var(--pg-dim);
+  font-size: 14px;
+  padding: 0 4px;
+  user-select: none;
+}
+
+/* Compact variant for dense lists */
+.pg--compact .pg-btn { min-width: 32px; height: 32px; font-size: 13px; }
+.pg--compact { padding: 6px; gap: 4px; }

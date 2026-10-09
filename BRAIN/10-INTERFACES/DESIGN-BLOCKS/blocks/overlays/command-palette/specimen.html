@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>command-palette — specimen</title>
+<link rel="stylesheet" href="command-palette.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .demo { text-align:center; color:rgba(255,255,255,.5); font-size:18px; }
+  .demo kbd { border:1px solid rgba(255,255,255,.12); border-radius:6px; padding:4px 10px; font-size:14px; background:#0a0a0e; }
+  .log { margin-top:24px; font-size:14px; color:#a06bff; min-height:20px; }
+</style>
+</head>
+<body>
+
+<div class="demo">
+  <p>Press <kbd>⌘K</kbd> anywhere</p>
+  <p class="log" id="log"></p>
+</div>
+
+<div class="cp-backdrop"></div>
+<div class="cp" role="dialog" aria-label="Command palette">
+  <div class="cp-input-row">
+    <span class="cp-icon">✦</span>
+    <input class="cp-input" placeholder="Type a command or search…" aria-label="Command input">
+    <span class="cp-kbd">esc</span>
+  </div>
+  <ul class="cp-list">
+    <li class="cp-item" data-group="go" data-action="go-hub"><span class="cp-jewel"></span><span class="cp-label">Go to Intelligent Hub</span><span class="cp-hint">jump</span></li>
+    <li class="cp-item" data-group="go" data-action="go-spaces"><span class="cp-jewel"></span><span class="cp-label">Go to Smart Spaces</span><span class="cp-hint">jump</span></li>
+    <li class="cp-item" data-group="do" data-action="new-note"><span class="cp-jewel"></span><span class="cp-label">Capture Smart Note</span><span class="cp-hint">create</span></li>
+    <li class="cp-item" data-group="do" data-action="new-space"><span class="cp-jewel"></span><span class="cp-label">Create space</span><span class="cp-hint">create</span></li>
+    <li class="cp-item" data-group="ask" data-action="ask-naya"><span class="cp-jewel"></span><span class="cp-label">Ask Naya…</span><span class="cp-hint">query</span></li>
+    <li class="cp-item" data-group="ask" data-action="stats"><span class="cp-jewel"></span><span class="cp-label">Smart Stats for this page</span><span class="cp-hint">query</span></li>
+  </ul>
+  <div class="cp-none" style="display:none">No commands match. Try "go", "create", or "ask".</div>
+  <div class="cp-foot">
+    <span><span class="cp-kbd">↑↓</span> navigate</span>
+    <span><span class="cp-kbd">↵</span> run</span>
+    <span><span class="cp-kbd">esc</span> close</span>
+  </div>
+</div>
+
+<script src="command-palette.js"></script>
+<script>
+  document.querySelector('.cp').addEventListener('cp:run', function (e) {
+    document.getElementById('log').textContent = '→ ' + e.detail.label + ' (' + e.detail.action + ')';
+  });
+</script>
+</body>
+</html>

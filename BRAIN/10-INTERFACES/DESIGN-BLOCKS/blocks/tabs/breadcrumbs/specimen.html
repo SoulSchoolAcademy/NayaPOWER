@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>breadcrumbs — specimen</title>
+<link rel="stylesheet" href="breadcrumbs.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:48px 24px; display:flex; flex-direction:column; gap:40px; }
+  h2 { font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  section { display:flex; flex-direction:column; gap:12px; }
+</style>
+</head>
+<body>
+
+<section>
+  <h2>Standard trail</h2>
+  <nav aria-label="Breadcrumb">
+    <ol class="bc">
+      <li class="bc-item"><a class="bc-link" href="#">Home</a><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><a class="bc-link" href="#">Smart Spaces</a><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><a class="bc-link" href="#">Design Guild</a><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><span class="bc-current" aria-current="page">Tonight's critique</span></li>
+    </ol>
+  </nav>
+</section>
+
+<section>
+  <h2>Collapsed deep trail</h2>
+  <nav aria-label="Breadcrumb">
+    <ol class="bc">
+      <li class="bc-item"><a class="bc-link" href="#">Home</a><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><button class="bc-collapse" aria-label="Show full path">…</button><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><a class="bc-link" href="#">Reports</a><span class="bc-sep" aria-hidden="true"></span></li>
+      <li class="bc-item"><span class="bc-current" aria-current="page">Q3 compounding</span></li>
+    </ol>
+  </nav>
+</section>
+
+</body>
+</html>

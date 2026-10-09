@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pagination — specimen</title>
+<link rel="stylesheet" href="pagination.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:48px 24px; display:flex; flex-direction:column; gap:32px; align-items:center; }
+  h2 { font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+  section { display:flex; flex-direction:column; align-items:center; gap:12px; }
+</style>
+</head>
+<body>
+
+<section>
+  <h2>Standard</h2>
+  <nav class="pg" aria-label="Pages">
+    <button class="pg-btn pg-nav" disabled aria-label="Previous page">‹</button>
+    <button class="pg-btn is-current" aria-current="page">1</button>
+    <button class="pg-btn">2</button>
+    <button class="pg-btn">3</button>
+    <span class="pg-ellipsis">…</span>
+    <button class="pg-btn">12</button>
+    <button class="pg-btn pg-nav" aria-label="Next page">›</button>
+  </nav>
+</section>
+
+<section>
+  <h2>Compact</h2>
+  <nav class="pg pg--compact" aria-label="Pages">
+    <button class="pg-btn pg-nav" aria-label="Previous page">‹</button>
+    <button class="pg-btn">4</button>
+    <button class="pg-btn is-current" aria-current="page">5</button>
+    <button class="pg-btn">6</button>
+    <button class="pg-btn pg-nav" aria-label="Next page">›</button>
+  </nav>
+</section>
+
+<script src="pagination.js"></script>
+</body>
+</html>

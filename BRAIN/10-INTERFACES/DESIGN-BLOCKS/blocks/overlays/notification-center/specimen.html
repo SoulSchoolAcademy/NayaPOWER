@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>notification-center — specimen</title>
+<link rel="stylesheet" href="notification-center.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .bell { position:relative; width:56px; height:56px; border-radius:50%; border:1px solid rgba(255,255,255,.12); background:#0a0a0e; color:#f5f7fb; font-size:22px; cursor:pointer; }
+  .bell:hover { border-color:#a06bff; box-shadow:0 0 18px rgba(160,107,255,.45); }
+  .bell .dot { position:absolute; top:10px; right:12px; width:10px; height:10px; border-radius:50%; background:#a06bff; box-shadow:0 0 8px #a06bff; }
+</style>
+</head>
+<body>
+
+<button class="bell" data-nc-open aria-label="Open notifications">◉<span class="dot"></span></button>
+
+<div class="nc-backdrop"></div>
+<aside class="nc" role="dialog" aria-label="Notifications">
+  <div class="nc-head">
+    <h2 class="nc-title">Notifications <span class="nc-count">3</span></h2>
+    <button class="nc-close" data-nc-close aria-label="Close notifications">✕</button>
+  </div>
+  <ul class="nc-list">
+    <li class="nc-item is-unread" data-kind="mention" data-id="n1">
+      <span class="nc-jewel"></span>
+      <div class="nc-body">
+        <p class="nc-text"><strong>Rena</strong> mentioned you in <strong>Design Guild</strong>: "this is the critique we've been waiting for"</p>
+        <span class="nc-time">2 min ago</span>
+      </div>
+    </li>
+    <li class="nc-item is-unread" data-kind="verified" data-id="n2">
+      <span class="nc-jewel"></span>
+      <div class="nc-body">
+        <p class="nc-text">Your Smart Note <strong>"The compounding loop"</strong> was verified by 3 citizens</p>
+        <span class="nc-time">1 hr ago</span>
+      </div>
+    </li>
+    <li class="nc-item is-unread" data-kind="reward" data-id="n3">
+      <span class="nc-jewel"></span>
+      <div class="nc-body">
+        <p class="nc-text">You earned the <strong>First Light</strong> badge — welcome to the network</p>
+        <span class="nc-time">3 hrs ago</span>
+      </div>
+    </li>
+    <li class="nc-item" data-kind="reply" data-id="n4">
+      <span class="nc-jewel"></span>
+      <div class="nc-body">
+        <p class="nc-text"><strong>Devon</strong> replied to your note in <strong>Reports</strong></p>
+        <span class="nc-time">Yesterday</span>
+      </div>
+    </li>
+    <li class="nc-item" data-kind="system" data-id="n5">
+      <span class="nc-jewel"></span>
+      <div class="nc-body">
+        <p class="nc-text">Smart Stats weekly digest is ready — your spaces compounded 14 insights</p>
+        <span class="nc-time">2 days ago</span>
+      </div>
+    </li>
+  </ul>
+</aside>
+
+<script src="notification-center.js"></script>
+</body>
+</html>

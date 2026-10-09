@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wizard-stepper — specimen</title>
+<link rel="stylesheet" href="wizard-stepper.css">
+<style>
+  body { background:#050508; color:#f5f7fb; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:48px 24px; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h2 { font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>Wizard stepper</h2>
+  <div class="wz">
+    <ol class="wz-steps" aria-label="Progress">
+      <li class="wz-step"><button class="wz-node">1</button><span class="wz-label">Identity</span></li>
+      <li class="wz-step"><button class="wz-node">2</button><span class="wz-label">Interests</span></li>
+      <li class="wz-step"><button class="wz-node">3</button><span class="wz-label">Doors</span></li>
+      <li class="wz-step"><button class="wz-node">4</button><span class="wz-label">Ignite</span></li>
+    </ol>
+    <div class="wz-panels">
+      <div class="wz-panel">
+        <h3 class="wz-title">Who's arriving?</h3>
+        <p class="wz-body">Give Naya a name to call you. This stays yours — the system remembers the lessons, never the gossip.</p>
+        <div class="wz-actions">
+          <button class="wz-btn" data-wz-next>Continue</button>
+        </div>
+      </div>
+      <div class="wz-panel">
+        <h3 class="wz-title">What pulls you?</h3>
+        <p class="wz-body">Pick the currents you want Naya to watch. She'll tune the feed to what matters to you.</p>
+        <div class="wz-actions">
+          <button class="wz-btn wz-btn--ghost" data-wz-back>Back</button>
+          <button class="wz-btn" data-wz-next>Continue</button>
+        </div>
+      </div>
+      <div class="wz-panel">
+        <h3 class="wz-title">Open your doors</h3>
+        <p class="wz-body">Connect the channels you live in. One brain, many doors — each one yours to close.</p>
+        <div class="wz-actions">
+          <button class="wz-btn wz-btn--ghost" data-wz-back>Back</button>
+          <button class="wz-btn" data-wz-next>Continue</button>
+        </div>
+      </div>
+      <div class="wz-panel">
+        <h3 class="wz-title">Ignite</h3>
+        <p class="wz-body">You're in. The Hub is live, the feed is yours, and Naya is listening.</p>
+        <div class="wz-actions">
+          <button class="wz-btn wz-btn--ghost" data-wz-back>Back</button>
+          <button class="wz-btn" data-wz-next>Enter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="wizard-stepper.js"></script>
+</body>
+</html>
