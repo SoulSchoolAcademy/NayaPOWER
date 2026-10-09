@@ -321,6 +321,8 @@ test('GitHub PUT rejection persists sanitized reason and target context', async 
   assert.equal(status, 502);
   assert.equal(body.error, 'GITHUB_COMMIT_FAILED');
   assert.equal(body.detail.includes('\\n'), false, 'control characters are removed');
+  assert.equal(body.detail.includes('DO_NOT_STORE'), false, 'bearer-shaped content is redacted');
+  assert.match(body.detail, /Authorization: \\[REDACTED\\]/);
   const receipt = receipts.get(IDEM);
   assert.equal(receipt.status, 'failed');
   assert.match(receipt.failure, /^GITHUB_COMMIT_FAILED:403:/);
@@ -328,6 +330,7 @@ test('GitHub PUT rejection persists sanitized reason and target context', async 
   assert.match(receipt.repo_path, /IB-000042\\/smart-note\\.md$/);
   assert.ok(receipt.smart_link.includes('/' + IB_ID + '/smart-note.md'));
   assert.equal(receipt.failure.includes('\\n'), false);
+  assert.equal(receipt.failure.includes('DO_NOT_STORE'), false, 'failure receipt must not retain bearer-shaped content');
 });
 
 test('idempotent replay returns stored receipt without touching GitHub', async () => {
