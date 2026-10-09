@@ -1,0 +1,16 @@
+/* Smart Block: law-group — byte-true from smart-blocks/data/data.css */
+.law-group {border:1px solid var(--line);border-radius:20px;background:linear-gradient(155deg,var(--surface-2),var(--surface));box-shadow:inset 0 1px rgba(255,255,255,.1),0 18px 40px rgba(0,0,0,.35);overflow:hidden}
+
+.law-group summary {cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;padding:18px 20px;font-size:15px;font-weight:800}
+
+.law-group summary::-webkit-details-marker {display:none}
+
+.law-group summary:after {content:"+";margin-left:auto;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:#070709;box-shadow:inset 0 1px rgba(255,255,255,.16),0 7px 14px rgba(0,0,0,.4)}
+
+.law-group[open] summary:after {content:"−";color:var(--purple)}
+
+.law-group ol {margin:0;padding:0 22px 20px 52px}
+
+.law-group li {padding:8px 0;color:var(--quiet);font-size:13px}
+
+.law-group li::marker {color:var(--purple);font-weight:800}

@@ -1,0 +1,15 @@
+/* Smart Block: naya-skel — byte-true from smart-blocks/new/new.css */
+.naya-skel {
+  position: relative; overflow: hidden; border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, #16121f, #0d0c12);
+  border: 1px solid var(--line-soft); min-height: 16px;
+}
+
+.naya-skel::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.07) 50%, transparent 80%);
+  animation: naya-skel-sweep 1.8s ease-in-out infinite;
+}
+
+/* Smart Block: naya-skel — byte-true from smart-blocks/base.css */
+@keyframes naya-skel-sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }

@@ -1,0 +1,6 @@
+/* Smart Block: naya-avatar-stack — byte-true from smart-blocks/new/new.css */
+.naya-avatar-stack { display: inline-flex; }
+
+.naya-avatar-stack .naya-avatar { margin-left: -10px; border-color: var(--bg); }
+
+.naya-avatar-stack .naya-avatar:first-child { margin-left: 0; }

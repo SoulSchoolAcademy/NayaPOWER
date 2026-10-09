@@ -1,0 +1,6 @@
+/* Smart Block: physics-row — byte-true from smart-blocks/specialty/specialty.css */
+.physics-row {display:grid;grid-template-columns:100px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--soft-line);font-size:14px}
+
+.physics-row:last-child {border:0}
+
+.physics-row b {color:var(--purple)}

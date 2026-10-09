@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: naya-avatar-stack</title>
+<link rel="stylesheet" href="naya-avatar-stack.css">
+<link rel="stylesheet" href="../../media/naya-avatar/naya-avatar.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+body { background:#050507; color:#F8F7FB; font-family:system-ui,-apple-system,sans-serif; padding:48px 32px; min-height:100vh; }
+.sb-note { max-width:760px; margin:0 0 32px; padding:16px 20px; border:1px dashed rgba(255,255,255,.25); border-radius:12px; font-size:13px; color:rgba(255,255,255,.65); }
+.sb-note b { color:#fff; }
+/* SPECIMEN ONLY — tokens this block needs that the wave specimen :root does not define.
+   Values are byte-true from the branch smart-blocks/tokens.css, which is divergent and
+   needs Shawn’s eye — they ship inline here and NEVER touch canonical tokens.css. */
+:root {
+  --av: /* undefined */;
+  --av-hue: /* undefined */;
+  --bg: #050507;
+  --depth-hi: inset 0 1px rgba(255,255,255,.4);
+  --line-bright: rgba(232,234,242,.42);
+}
+
+</style>
+</head>
+<body>
+<div class="sb-note"><b>Smart Block: naya-avatar-stack</b> &mdash; specimen. Block CSS is byte-true from <i>smart-blocks/new/new.css</i> (branch naya5/smart-blocks-library). Requires <b>tokens.css</b> (plus the composed block CSS linked above).</div>
+<span class="naya-avatar-stack">
+
+        <span class="naya-avatar" style="--av-hue:var(--soul)">S</span>
+        <span class="naya-avatar" style="--av-hue:var(--sapphire)">N2</span>
+        <span class="naya-avatar" style="--av-hue:var(--emerald)">N4</span>
+        <span class="naya-avatar" style="--av-hue:var(--gold)">+9</span>
+      </span>
+</body>
+</html>

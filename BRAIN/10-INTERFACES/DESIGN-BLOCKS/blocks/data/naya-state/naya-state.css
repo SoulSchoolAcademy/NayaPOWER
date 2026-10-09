@@ -1,0 +1,17 @@
+/* Smart Block: naya-state — byte-true from smart-blocks/new/new.css */
+.naya-state {
+  text-align: center; padding: 56px 28px; border: 1px dashed var(--line);
+  border-radius: var(--radius-lg); background: rgba(255,255,255,.012);
+}
+
+.naya-state h3 { font-size: 17px; font-weight: 800; color: var(--ink); margin: 0 0 8px; }
+
+.naya-state p { font-size: 13.5px; color: var(--ink-dim); max-width: 380px; margin: 0 auto 18px; line-height: 1.6; }
+
+.naya-state.is-error .naya-state-icon { color: var(--danger); border-color: rgba(255,94,108,.35);
+  box-shadow: var(--depth-hi), 0 0 26px -8px rgba(255,94,108,.5), 0 12px 30px rgba(0,0,0,.6); }
+
+/* Smart Block: naya-state — byte-true from smart-blocks/base.css */
+.naya-state-icon { display: inline-grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+  border: 1px solid var(--line); background: radial-gradient(circle at 50% 30%, #1b1726, #0a0a0e 70%);
+  box-shadow: var(--depth-hi), 0 12px 30px rgba(0,0,0,.6); margin-bottom: 16px; color: var(--ink-faint); }

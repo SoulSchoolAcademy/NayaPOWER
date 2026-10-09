@@ -1,6 +1,6 @@
 {
- "version": "1.4",
- "generated": "2026-10-09T13:40:00Z",
+ "version": "1.5",
+ "generated": "2026-10-09T17:41:52Z",
  "blocks": [
   {
    "id": "naya-btn",
@@ -7259,6 +7259,344 @@
    },
    "score": null,
    "review": "pending independent review"
+  },
+  {
+   "id": "naya-avatar",
+   "type": "media",
+   "description": "A person, reduced to their essence \u2014 initials on a jewel-toned orb. Set `--av-hue` to give them their color.",
+   "source": "smart-blocks/new/new-avatars-naya-avatar-naya-avatar-stack.html + smart-blocks/new/new.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/media/naya-avatar/naya-avatar.css",
+    "specimen": "blocks/media/naya-avatar/specimen.html",
+    "readme": "blocks/media/naya-avatar/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    ".xs (28px)",
+    ".lg (56px)",
+    "--av-hue theming"
+   ],
+   "selectors": [
+    ".naya-avatar",
+    ".naya-avatar.xs",
+    ".naya-avatar.lg"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-avatar-stack",
+   "type": "media",
+   "description": "The room at a glance \u2014 overlapping avatars, the count carried in the last one.",
+   "source": "smart-blocks/new/new-avatars-naya-avatar-naya-avatar-stack.html + smart-blocks/new/new.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/media/naya-avatar-stack/naya-avatar-stack.css",
+    "specimen": "blocks/media/naya-avatar-stack/specimen.html",
+    "readme": "blocks/media/naya-avatar-stack/README.md"
+   },
+   "dependencies": [
+    "tokens.css",
+    "blocks/media/naya-avatar/naya-avatar.css"
+   ],
+   "states": [],
+   "selectors": [
+    ".naya-avatar-stack",
+    ".naya-avatar-stack .naya-avatar",
+    ".naya-avatar-stack .naya-avatar:first-child"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-badge",
+   "type": "chrome",
+   "description": "A truth label you can read from across the room \u2014 verified green, claim gold, demo magenta, danger red.",
+   "source": "smart-blocks/new/new-badges-naya-badge.html + smart-blocks/new/new.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/chrome/naya-badge/naya-badge.css",
+    "specimen": "blocks/chrome/naya-badge/specimen.html",
+    "readme": "blocks/chrome/naya-badge/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    ".is-verified",
+    ".is-claim",
+    ".is-demo",
+    ".is-danger"
+   ],
+   "selectors": [
+    ".naya-badge",
+    ".naya-badge::before",
+    ".naya-badge.is-verified",
+    ".naya-badge.is-verified::before",
+    ".naya-badge.is-claim",
+    ".naya-badge.is-claim::before",
+    ".naya-badge.is-demo",
+    ".naya-badge.is-demo::before",
+    ".naya-badge.is-danger",
+    ".naya-badge.is-danger::before"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-check",
+   "type": "inputs",
+   "description": "A checkbox with jewel physics \u2014 it ignites green when the promise is kept, and the label rests when it is done.",
+   "source": "smart-blocks/inputs/inputs-jeweled-checkbox-naya-check.html + smart-blocks/inputs/inputs.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/inputs/naya-check/naya-check.css",
+    "specimen": "blocks/inputs/naya-check/specimen.html",
+    "readme": "blocks/inputs/naya-check/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    ":checked",
+    ":hover",
+    ":active",
+    ":focus-visible"
+   ],
+   "selectors": [
+    ".naya-check",
+    ".naya-check input",
+    ".naya-check .box",
+    ".naya-check:hover .box",
+    ".naya-check input:checked + .box",
+    ".naya-check input:focus-visible + .box",
+    ".naya-check:active .box",
+    ".naya-check .txt",
+    ".naya-check input:checked ~ .txt"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-drawer",
+   "type": "overlays",
+   "description": "The side drawer that slides in from the right \u2014 notifications live here, one tap away, dismissed with the backdrop.",
+   "source": "smart-blocks/new/new-notification-drawer-naya-drawer.html + smart-blocks/new/new.css + smart-blocks/base.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/overlays/naya-drawer/naya-drawer.css",
+    "specimen": "blocks/overlays/naya-drawer/specimen.html",
+    "readme": "blocks/overlays/naya-drawer/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    "[hidden]"
+   ],
+   "selectors": [
+    ".naya-drawer",
+    ".naya-drawer[hidden]",
+    ".naya-drawer-backdrop",
+    ".naya-drawer-backdrop[hidden]"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-shell",
+   "type": "layout",
+   "description": "The page chassis \u2014 rail, head, main, foot. Every page starts here; content fills the rooms.",
+   "source": "smart-blocks/new/new-page-shell-naya-shell.html + smart-blocks/new/new.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/layout/naya-shell/naya-shell.css",
+    "specimen": "blocks/layout/naya-shell/specimen.html",
+    "readme": "blocks/layout/naya-shell/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    ".is-demo (specimen mode: static, bordered)"
+   ],
+   "selectors": [
+    ".naya-shell",
+    ".naya-shell.is-demo",
+    ".naya-shell.is-demo .naya-shell-rail",
+    ".naya-shell.is-demo .naya-shell-head",
+    ".naya-shell.is-demo .naya-shell-main"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-skel",
+   "type": "data",
+   "description": "Loading, honestly \u2014 shimmer placeholders that hold the exact shape of what is coming.",
+   "source": "smart-blocks/new/new-skeleton-loading-naya-skel.html + smart-blocks/new/new.css + smart-blocks/base.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/data/naya-skel/naya-skel.css",
+    "specimen": "blocks/data/naya-skel/specimen.html",
+    "readme": "blocks/data/naya-skel/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [],
+   "selectors": [
+    ".naya-skel",
+    ".naya-skel::after",
+    "@keyframes naya-skel-sweep"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-spinner",
+   "type": "data",
+   "description": "The breath between asking and knowing \u2014 a ring that spins while Naya gathers your world.",
+   "source": "smart-blocks/new/new-empty-error-loading-naya-state-naya-spinner.html + smart-blocks/new/new.css + smart-blocks/base.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/data/naya-spinner/naya-spinner.css",
+    "specimen": "blocks/data/naya-spinner/specimen.html",
+    "readme": "blocks/data/naya-spinner/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [],
+   "selectors": [
+    ".naya-spinner",
+    ".naya-spinner::before",
+    ".naya-spinner::after",
+    "@keyframes naya-spin"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-state",
+   "type": "data",
+   "description": "Empty, error, loading \u2014 the three honest faces of \u201cnot yet\u201d, each with one clear next action.",
+   "source": "smart-blocks/new/new-empty-error-loading-naya-state-naya-spinner.html + smart-blocks/new/new.css + smart-blocks/base.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/data/naya-state/naya-state.css",
+    "specimen": "blocks/data/naya-state/specimen.html",
+    "readme": "blocks/data/naya-state/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    ".is-error"
+   ],
+   "selectors": [
+    ".naya-state",
+    ".naya-state h3",
+    ".naya-state p",
+    ".naya-state.is-error .naya-state-icon",
+    ".naya-state-icon"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "naya-table",
+   "type": "data",
+   "description": "Data you can interrogate \u2014 click any header to sort. Statuses ride along as badges.",
+   "source": "smart-blocks/new/new-live-data-table-table-naya-table-data-sortable.html + smart-blocks/base.css + smart-blocks/naya-blocks.js (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/data/naya-table/naya-table.css",
+    "specimen": "blocks/data/naya-table/specimen.html",
+    "readme": "blocks/data/naya-table/README.md",
+    "js": "blocks/data/naya-table/naya-table.js"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    "[data-sortable]",
+    "th.sorted",
+    "[aria-sort]"
+   ],
+   "selectors": [
+    ".naya-table-wrap",
+    "table.naya-table",
+    ".naya-table thead th",
+    ".naya-table[data-sortable] thead th[data-sort]",
+    ".naya-table[data-sortable] thead th[data-sort]:hover",
+    ".naya-table[data-sortable] thead th[data-sort]::after",
+    ".naya-table[data-sortable] thead th.sorted",
+    ".naya-table[data-sortable] thead th.sorted[aria-sort=\"ascending\"]::after",
+    ".naya-table[data-sortable] thead th.sorted[aria-sort=\"descending\"]::after",
+    ".naya-table tbody td",
+    ".naya-table tbody tr:last-child td",
+    ".naya-table tbody tr",
+    ".naya-table tbody tr:hover"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "nestcard",
+   "type": "cards",
+   "description": "Cards within cards \u2014 a thought and its meaning, nested, with a jewel marker for the key. Set `--nc` for the jewel color.",
+   "source": "smart-blocks/cards/cards-nested-cards-nestcard.html + smart-blocks/cards/cards.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/cards/nestcard/nestcard.css",
+    "specimen": "blocks/cards/nestcard/specimen.html",
+    "readme": "blocks/cards/nestcard/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    "--nc jewel theming"
+   ],
+   "selectors": [
+    ".nestcard",
+    ".nestcard .nk",
+    ".nestcard .ndot",
+    ".nestcard p"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "law-group",
+   "type": "knowledge",
+   "description": "A law library that opens \u2014 collapsible groups of the rules that govern, numbered and quotable.",
+   "source": "smart-blocks/data/data-law-library-law-group.html + smart-blocks/data/data.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/knowledge/law-group/law-group.css",
+    "specimen": "blocks/knowledge/law-group/specimen.html",
+    "readme": "blocks/knowledge/law-group/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [
+    "[open]"
+   ],
+   "selectors": [
+    ".law-group",
+    ".law-group summary",
+    ".law-group summary::-webkit-details-marker",
+    ".law-group summary:after",
+    ".law-group[open] summary:after",
+    ".law-group ol",
+    ".law-group li",
+    ".law-group li::marker"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
+  },
+  {
+   "id": "physics-row",
+   "type": "data",
+   "description": "Interaction physics, demonstrated \u2014 approach, hover, press, focus, reduced motion. The five promises, in a row.",
+   "source": "smart-blocks/specialty/specialty-interaction-physics-physics-row.html + smart-blocks/specialty/specialty.css (branch `naya5/smart-blocks-library`)",
+   "files": {
+    "css": "blocks/data/physics-row/physics-row.css",
+    "specimen": "blocks/data/physics-row/specimen.html",
+    "readme": "blocks/data/physics-row/README.md"
+   },
+   "dependencies": [
+    "tokens.css"
+   ],
+   "states": [],
+   "selectors": [
+    ".physics-row",
+    ".physics-row:last-child",
+    ".physics-row b"
+   ],
+   "score": "unscored \u2014 ported 2026-10-09, needs independent verification"
   }
  ]
 }

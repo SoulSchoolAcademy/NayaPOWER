@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Block: naya-shell</title>
+<link rel="stylesheet" href="naya-shell.css">
+<link rel="stylesheet" href="../../orbs/orb/orb.css">
+<link rel="stylesheet" href="../../data/metric/metric.css">
+<style>
+/* SPECIMEN ONLY — page ground + tokens normally provided by tokens.css */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+body { background:#050507; color:#F8F7FB; font-family:system-ui,-apple-system,sans-serif; padding:48px 32px; min-height:100vh; }
+.sb-note { max-width:760px; margin:0 0 32px; padding:16px 20px; border:1px dashed rgba(255,255,255,.25); border-radius:12px; font-size:13px; color:rgba(255,255,255,.65); }
+.sb-note b { color:#fff; }
+/* SPECIMEN ONLY — tokens this block needs that the wave specimen :root does not define.
+   Values are byte-true from the branch smart-blocks/tokens.css, which is divergent and
+   needs Shawn’s eye — they ship inline here and NEVER touch canonical tokens.css. */
+:root {
+  --bg: #050507;
+  --oc: /* undefined */;
+  --oc-rgb: /* undefined */;
+  --radius-lg: 22px;
+  --surface: #101116;
+  --tone: /* undefined */;
+}
+/* SPECIMEN ONLY — the source provides the chassis grid only; inner regions below are demo content. */
+.naya-shell-rail { background: rgba(255,255,255,.02); border-right: 1px solid rgba(255,255,255,.08); padding: 20px 14px; display: flex; flex-direction: column; gap: 4px; }
+.naya-shell-brand { display: flex; align-items: center; gap: 10px; padding: 6px 10px 16px; }
+.naya-shell-brand .word { font-weight: 800; color: #fff; letter-spacing: .04em; }
+.orb--xs { width: 22px !important; height: 22px !important; }
+.naya-shell-link { display: block; padding: 9px 12px; border-radius: 10px; color: rgba(255,255,255,.65); text-decoration: none; font-size: 13.5px; font-weight: 600; }
+.naya-shell-link.is-here { background: rgba(160,107,255,.14); color: #fff; }
+.naya-shell-head { padding: 22px 26px 0; }
+.naya-shell-title { display: block; font-size: 24px; font-weight: 800; color: #fff; }
+.naya-shell-sub { display: block; font-size: 13.5px; color: rgba(255,255,255,.55); margin-top: 4px; }
+.naya-shell-main { padding: 20px 26px; }
+.naya-shell-foot { padding: 14px 26px; border-top: 1px solid rgba(255,255,255,.06); color: rgba(255,255,255,.35); font-size: 12px; }
+.naya-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.span-4 { grid-column: span 4; }
+.spec-demo-wrap { max-width: 900px; }
+@media (max-width: 700px) { .span-4 { grid-column: span 12; } }
+</style>
+</head>
+<body>
+<div class="sb-note"><b>Smart Block: naya-shell</b> &mdash; specimen. Block CSS is byte-true from <i>smart-blocks/new/new.css</i> (branch naya5/smart-blocks-library). Requires <b>tokens.css</b> (plus the composed block CSS linked above).</div>
+<div class="spec-demo-wrap">
+<div class="naya-shell is-demo">
+        <aside class="naya-shell-rail">
+          <div class="naya-shell-brand"><span class="orb orb--xs" style="--oc:var(--soul);--oc-rgb:var(--purple-rgb)"></span><span class="word">NayaNET</span></div>
+          <a class="naya-shell-link is-here" href="#new">Today</a>
+          <a class="naya-shell-link" href="#cards">Spaces</a>
+          <a class="naya-shell-link" href="#data">Ledger</a>
+          <a class="naya-shell-link" href="#overlays">Mail</a>
+        </aside>
+        <header class="naya-shell-head"><span class="naya-shell-title">Today</span><span class="naya-shell-sub">Three things need you. The rest can wait.</span></header>
+        <div class="naya-shell-main"><div class="naya-grid">
+          <div class="span-4"><div class="metric" style="--tone:var(--magenta)"><b>What matters</b><span>Priority is explicit.</span></div></div>
+          <div class="span-4"><div class="metric" style="--tone:var(--emerald)"><b>What changed</b><span>+12 this week.</span></div></div>
+          <div class="span-4"><div class="metric" style="--tone:var(--gold)"><b>What's next</b><span>Review the three waiting.</span></div></div>
+        </div></div>
+        <div class="naya-shell-foot"></div>
+      </div>
+</div>
+</body>
+</html>

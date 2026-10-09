@@ -1,0 +1,12 @@
+/* Smart Block: nestcard — byte-true from smart-blocks/cards/cards.css */
+.nestcard {border:1.5px solid rgba(255,255,255,.22); border-radius:14px; padding:18px;
+  background:rgba(0,0,0,.35);
+  box-shadow:0 10px 26px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);}
+
+.nestcard .nk {display:flex; align-items:center; gap:10px; font-size:14px; font-weight:800;
+  letter-spacing:.2em; color:var(--nc); margin-bottom:10px;}
+
+.nestcard .ndot {width:12px; height:12px; transform:rotate(45deg); background:var(--nc);
+  box-shadow:0 0 10px var(--nc); flex:none;}
+
+.nestcard p {font-size:18px; color:#fff; margin:0;}

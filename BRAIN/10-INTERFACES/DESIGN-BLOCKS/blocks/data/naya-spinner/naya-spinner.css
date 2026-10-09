@@ -1,0 +1,19 @@
+/* Smart Block: naya-spinner — byte-true from smart-blocks/new/new.css */
+.naya-spinner {
+  width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 16px; position: relative;
+  border: 1.5px solid rgba(255,255,255,.12);
+}
+
+.naya-spinner::before {
+  content: ""; position: absolute; inset: -1.5px; border-radius: 50%;
+  border: 1.5px solid transparent; border-top-color: #fff;
+  animation: naya-spin 1s linear infinite;
+}
+
+.naya-spinner::after {
+  content: ""; position: absolute; inset: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(160,107,255,.5), rgba(160,107,255,0) 70%);
+}
+
+/* Smart Block: naya-spinner — byte-true from smart-blocks/base.css */
+@keyframes naya-spin { to { transform: rotate(360deg); } }

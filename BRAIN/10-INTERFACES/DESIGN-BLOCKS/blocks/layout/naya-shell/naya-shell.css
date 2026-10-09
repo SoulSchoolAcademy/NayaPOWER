@@ -1,0 +1,17 @@
+/* Smart Block: naya-shell — byte-true from smart-blocks/new/new.css */
+.naya-shell {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "rail head" "rail main" "rail foot";
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.naya-shell.is-demo { min-height: 0; grid-template-rows: auto auto auto; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+
+.naya-shell.is-demo .naya-shell-rail { position: static; height: auto; padding: 16px 12px; }
+
+.naya-shell.is-demo .naya-shell-head { position: static; padding: 14px 18px; }
+
+.naya-shell.is-demo .naya-shell-main { padding: 18px; }

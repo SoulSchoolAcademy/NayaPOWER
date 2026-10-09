@@ -1,0 +1,13 @@
+/* Smart Block: naya-avatar — byte-true from smart-blocks/new/new.css */
+.naya-avatar {
+  --av: 40px; width: var(--av); height: var(--av); border-radius: 50%; flex: none;
+  display: inline-grid; place-items: center;
+  font-size: calc(var(--av) * .38); font-weight: 800; color: var(--ink);
+  border: 1.5px solid var(--line-bright);
+  background: radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--av-hue, var(--soul)) 42%, #1a1524), #0b0a10 72%);
+  box-shadow: var(--depth-hi), 0 8px 20px rgba(0,0,0,.6), 0 0 18px -8px var(--av-hue, var(--soul));
+}
+
+.naya-avatar.xs { --av: 28px; }
+
+.naya-avatar.lg { --av: 56px; }
