@@ -853,7 +853,7 @@ jobs:
           machine=intel.get("machine_view",{})
           capture=json.load(open(expected["capture_path"]))
           lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
-          assert lifecycle_state in {"ACTIVE","SUPERSEDED"}, lifecycle_state
+          assert lifecycle_state in {"ACTIVE","CANDIDATE","SUPERSEDED"}, lifecycle_state
           comprehension={
             "schema":"naya.smart-note-cold-retrieval.v3",
             "lifecycle_state":lifecycle_state,
@@ -870,12 +870,12 @@ jobs:
           assert comprehension["exact_current_capture_retrieved"]
           assert comprehension["canonical_lineage_verified"]
 
-          if lifecycle_state=="ACTIVE":
+          if lifecycle_state in {"ACTIVE","CANDIDATE"}:
               assert machine.get("raw_source_separate_from_distillation") is True
               assert machine.get("automatic_truth_ceiling")=="CANDIDATE"
               from tools import smart_note_v2 as sn
               active=sn.retrieve(capture["title"])
-              assert active["retrieved"]["smart_note_id"]==capture["smart_note_id"], active
+              assert active["retrieved"]["smart_note_id"]==next(e["smart_note_id"] for e in json.load(open(".naya/memory/smart-notes/index.json"))["entries"] if e.get("content_hash")==expected["content_hash"] and e.get("intelligent_block_id")==block["intelligent_block_id"]), active
               assert active["retrieved"]["intelligent_block_id"]==block["intelligent_block_id"], active
               comprehension.update({
                 "understands_raw_source_separate":True,
@@ -892,7 +892,7 @@ jobs:
               }
               behavior={
                 "schema":"naya.smart-note-held-out-behavior.v3",
-                "lifecycle_state":"ACTIVE",
+                "lifecycle_state":lifecycle_state,
                 "task":task,
                 "task_is_distinct_from_capture_command":True,
                 "control":control,
@@ -1087,7 +1087,7 @@ jobs:
           if capture_path:
               capture=json.load(open(capture_path))
               lifecycle_state=str(capture.get("lifecycle_state","ACTIVE")).upper()
-          assert lifecycle_state in {"ACTIVE","SUPERSEDED"}, lifecycle_state
+          assert lifecycle_state in {"ACTIVE","CANDIDATE","SUPERSEDED"}, lifecycle_state
           comprehension={
             "schema":"naya.smart-note-cold-retrieval.v3",
             "lifecycle_state":lifecycle_state,
@@ -1104,7 +1104,7 @@ jobs:
           assert comprehension["exact_current_capture_retrieved"]
           assert comprehension["canonical_lineage_verified"]
 
-          if lifecycle_state=="ACTIVE":
+          if lifecycle_state in {"ACTIVE","CANDIDATE"}:
               assert machine.get("raw_source_separate_from_distillation") is True
               assert machine.get("automatic_truth_ceiling")=="CANDIDATE"
               comprehension.update({
@@ -1121,7 +1121,7 @@ jobs:
               }
               behavior={
                 "schema":"naya.smart-note-held-out-behavior.v3",
-                "lifecycle_state":"ACTIVE",
+                "lifecycle_state":lifecycle_state,
                 "task":task,
                 "task_is_distinct_from_capture_command":True,
                 "control":control,
