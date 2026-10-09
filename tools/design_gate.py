@@ -525,8 +525,7 @@ def self_test() -> int:
             ("expired receipt", expired_v, True),
             ("wrong-repository receipt", wrongrepo_v, True),
             ("wrong repository ID", wrongid_v, True),
-            ("stale main SHA", stale_v, True),
-            ("undocumented unprefixed class", unknown_class_v, True)]:
+            ("stale main SHA", stale_v, True)]:
         has_act = any(x.startswith("ACTIVATION") for x in vv)
         if want_fail and not has_act:
             print(f"SELF-TEST FAIL: activation case '{name}' did not fail")
@@ -537,6 +536,11 @@ def self_test() -> int:
         else:
             print(f"SELF-TEST: activation case '{name}' "
                   f"{'failed as required' if want_fail else 'passed'} (good)")
+    if not any(x.startswith("NO FREESTYLE: class .undocumented-widget") for x in unknown_class_v):
+        print("SELF-TEST FAIL: undocumented unprefixed component class passed the gate")
+        ok = False
+    else:
+        print("SELF-TEST: undocumented unprefixed component class rejected (good)")
     return 0 if ok else 1
 
 
