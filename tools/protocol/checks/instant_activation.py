@@ -22,12 +22,19 @@ Input record:
 
 Checks:
   1. request_type == "capture" with requester shawn/user: the ask IS the
-     verification — queued_for_verification must be false.
+     verification — queued_for_verification must be false. The request
+     TEXT is REQUIRED for a direct capture: an empty record cannot be
+     "direct", and without the ask the law is evaded by omission.
   2. disposition must be "activated" (the only lawful instant state).
-  3. activated_at present — activation happened, not promised.
+  3. activated_at present AND parseable as a real ISO-8601 timestamp —
+     presence is not proof; "soon" is a promise, not a timestamp.
 
 Note: ratified by Shawn's own words (#1354). This check verifies the
 law's compliance; it never grants authority.
+
+Validator lesson (2026-10-09): fail closed on SHAPE, not just syntax —
+every field the law's hard line depends on is REQUIRED, not merely
+validated-when-present. Absence is the cheapest exploit.
 
 Usage:
     python3 tools/protocol/checks/instant_activation.py \
@@ -38,12 +45,30 @@ from __future__ import annotations
 
 import argparse
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
 DIRECT_REQUESTERS = {"shawn", "user", "human_director"}
+
+
+def _parse_ts(value: str) -> datetime | None:
+    """Parse an ISO-8601 timestamp. Returns None when unparseable.
+
+    Presence is not proof: "soon" is a promise, not a timestamp. A missing
+    or unparseable activated_at fails closed.
+    """
+    if not value:
+        return None
+    try:
+        ts = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
+        return ts
+    except ValueError:
+        return None
 
 
 def check(record: dict) -> dict:
@@ -64,11 +89,22 @@ def check(record: dict) -> dict:
                     "request_type": request_type})
 
     is_direct_capture = (
-        request_type == "capture" and requester in DIRECT_REQUESTERS and bool(request)
+        request_type == "capture" and requester in DIRECT_REQUESTERS
     )
     details["is_direct_capture_request"] = is_direct_capture
 
     if is_direct_capture:
+        # HARD LINE 1 — the ask itself is required. An empty request text
+        # would classify the record "non-direct" and let a QUEUED disposition
+        # pass while printing "Verification Law honored". Absence is the
+        # cheapest exploit: require the request, never infer around it.
+        if not request:
+            return fail(
+                f"request empty on a direct capture request (requester "
+                f"{requester!r}) — the law's hard line needs the actual ask. "
+                "An empty record cannot be 'direct'; state the ask.",
+                details,
+            )
         if queued:
             return fail(
                 "queued_for_verification is true on a direct capture request — "
@@ -92,10 +128,16 @@ def check(record: dict) -> dict:
                         details)
         reasons.append(f"non-direct request, disposition {disposition!r} recorded")
 
-    if not activated_at:
-        return fail("activated_at missing — activation happened, not promised",
-                    details)
-    reasons.append("activated_at present")
+    # HARD LINE 3 — the timestamp must be real. activated_at: "soon" passed
+    # on presence alone; presence is not proof. Fail closed on shape.
+    if _parse_ts(activated_at) is None:
+        return fail(
+            "activated_at missing or unparseable — activation must be a real "
+            "ISO-8601 timestamp, not a promise or a placeholder. "
+            "'soon' is not a timestamp.",
+            details,
+        )
+    reasons.append(f"activated_at is a real timestamp ({activated_at})")
 
     reasons.append("Verification Law honored: the ask was the verification")
     return result(True, reasons, details)

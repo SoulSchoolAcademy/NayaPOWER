@@ -442,6 +442,48 @@ def test_ingest_boundary_honors_pin_immune_skip():
     assert r["pass"] is True, r["reasons"]
 
 
+# ---------------------------------------------------------------- hardening
+# Validator round 2 (comment 6086185213): fail closed on SHAPE, not just
+# syntax. Five near-miss evasions — every field the law's hard line depends
+# on is REQUIRED, not merely validated-when-present. Absence is the exploit.
+def test_verification_law_fires_on_empty_request_direct_capture():
+    # Empty request text classified the record "non-direct", so a QUEUED
+    # disposition PASSED while printing "Verification Law honored".
+    r = instant_activation.check(_good_capture(
+        request="", disposition="queued", queued_for_verification=True))
+    assert r["pass"] is False
+
+
+def test_verification_law_fires_on_unparseable_activation_time():
+    # activated_at: "soon" passed on presence alone. Presence is not proof.
+    r = instant_activation.check(_good_capture(activated_at="soon"))
+    assert r["pass"] is False
+
+
+def test_triple_a_fires_on_unnamed_builder():
+    # Empty builder skipped the scorer==builder independence check, so a
+    # self-scored DONE passed by omission.
+    r = triple_a.check(_good_deliverable(builder="", scorer="naya5"))
+    assert r["pass"] is False
+
+
+def test_sn0732_fires_on_reworded_dependent_trigger():
+    # "Shawn said capture that" (spaces) evaded the exact-match ban.
+    r = naya_identity.check(_good_lesson(capture_trigger="Shawn said capture that"))
+    assert r["pass"] is False
+    assert any("not compounded" in x for x in r["reasons"])
+
+
+def test_sn0735_fires_on_omitted_reverts_main():
+    # reverts_main omitted on a row passed silently as "delta, no revert".
+    rec = _good_dup_pr()
+    rec["blob_comparison"] = [
+        {"path": "tools/gate.py", "pr_blob": B40, "main_blob": A40, "identical": False},
+    ]
+    r = duplicate_pr_blobs.check(rec)
+    assert r["pass"] is False
+
+
 # ---------------------------------------------------------------- runner
 def main() -> int:
     fns = sorted((n, f) for n, f in globals().items()

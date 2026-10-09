@@ -27,7 +27,9 @@ Checks:
   1. claimed done/awesome requires demonstrated == true.
   2. evidence_ref present AND evidence_verified_exists true
      (smart-link discipline: verify the artifact exists before linking).
-  3. scorer present, named, and != builder
+  3. builder NAMED (required — the independence check cannot run on an
+     anonymous builder; self-scoring passes by omission), and
+     scorer present, named, and != builder
      (independent verification; a 10/10 is never self-declared).
 
 This complements the SN-0526 quality gate (score >= 9.0): Triple-A is
@@ -96,18 +98,29 @@ def check(record: dict) -> dict:
     reasons.append(f"evidence exists and verified: {evidence_ref}")
     details["evidence_ref"] = evidence_ref
 
+    # HARD LINE — the builder must be NAMED. An empty builder used to skip
+    # the scorer==builder independence check below, so a self-scored DONE
+    # passed by omission. The 10/10-never-self-declared line is exactly what
+    # this law exists to hold: absence is not independence.
+    if not builder:
+        return fail(
+            f"{deliverable}: builder unnamed — the scorer==builder "
+            "independence check cannot run on an anonymous builder. "
+            "Name the builder; self-scoring passes by omission.",
+            details,
+        )
     if not scorer:
         return fail(
             f"{deliverable}: scorer unnamed — anonymous scores are not scores",
             details,
         )
-    if builder and scorer == builder:
+    if scorer == builder:
         return fail(
             f"{deliverable}: scorer == builder ({builder}) — independent "
             "verification required; 10/10 is never self-declared",
             details,
         )
-    reasons.append(f"independently scored by {scorer}")
+    reasons.append(f"independently scored by {scorer} (builder: {builder})")
     details["scorer"] = scorer
 
     reasons.append(f"{deliverable}: Triple-A contract met — demonstrated, evidenced, independent")

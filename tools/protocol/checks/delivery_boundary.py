@@ -38,6 +38,13 @@ Note: SN-0733 is the mechanism-side law; predicate_vs_perimeter.py is
 the claim-side law (a predicate passing is not a perimeter holding).
 Both must pass for a mechanism to be honestly called enforced.
 
+Collision note: the design-intake corpus uses SN-0733 for a different law
+(Law 20 — "Subtract before adding", an effects-restraint law). This
+encoding follows the enforcement-at-delivery-boundary definition ratified
+on #1354; the title above disambiguates. If the registry collision is
+resolved by the Director, renumber this entry — never silently merge the
+two meanings.
+
 Usage:
     python3 tools/protocol/checks/delivery_boundary.py \
         --record '{"mechanism": "...", ...}' [--json]

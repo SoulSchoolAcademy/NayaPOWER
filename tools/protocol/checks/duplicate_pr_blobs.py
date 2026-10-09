@@ -28,7 +28,9 @@ Checks:
      and main_blob and a boolean identical flag.
   2. identical must be consistent with pr_blob == main_blob (the math is
      checked, not trusted).
-  3. Any entry with reverts_main true fails closed — the revert bomb.
+  3. reverts_main must be an EXPLICIT boolean on every row — absence fails
+     closed ("delta, no revert" must be stated, never inferred). Any entry
+     with reverts_main true fails closed — the revert bomb.
   4. An entry that is non-identical, unexplained, and disposed by merge
      fails: merges need the revert direction established for every delta.
 
@@ -128,14 +130,26 @@ def check(record: dict) -> dict:
                 f"blob math says {actual_identical} — the math is checked, not trusted",
                 details,
             )
-        if row.get("reverts_main") is True:
+        # HARD LINE — the revert direction is a REQUIRED field, not
+        # validated-when-present. An omitted reverts_main used to pass
+        # silently as "delta, no revert": absence is not evidence of no
+        # revert. Fail closed on shape.
+        reverts = row.get("reverts_main")
+        if reverts is not True and reverts is not False:
+            return fail(
+                f"PR #{pr}: {path}: 'reverts_main' must be an explicit "
+                "boolean — absence is not evidence of no revert. "
+                "State the revert direction for every row.",
+                details,
+            )
+        if reverts is True:
             return fail(
                 f"PR #{pr}: {path}: REVERT BOMB — this path would move main's "
                 "bytes backwards. Disposition refused. Retire the branch, "
                 "rebase on the new main, re-resolve.",
                 details,
             )
-        reasons.append(f"{path}: {'identical' if actual_identical else 'delta, no revert'}")
+        reasons.append(f"{path}: {'identical' if actual_identical else 'delta, no revert (stated)'}")
 
     details["paths_compared"] = len(rows)
     reasons.append(

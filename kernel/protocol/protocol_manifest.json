@@ -121,7 +121,7 @@
       "name": "Enforcement lives at the delivery boundary",
       "check": "tools/protocol/checks/delivery_boundary.py",
       "enforcement": "delivery_binding_required",
-      "statement": "A gate is ENFORCED only when wired into a real delivery path (required PR check or push-to-main workflow that invokes the gate). Branch-only presence is CANDIDATE, never ENFORCED."
+      "statement": "A gate is ENFORCED only when wired into a real delivery path (required PR check or push-to-main workflow that invokes the gate). Branch-only presence is CANDIDATE, never ENFORCED. Note: design-intake corpus uses SN-0733 for a different law; title disambiguates pending registry resolution."
     },
     {
       "id": "PREDICATE-PERIMETER",

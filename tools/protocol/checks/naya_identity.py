@@ -29,7 +29,11 @@ Input record:
 Checks:
   1. lesson non-empty (produce value at all times — emptiness is not value).
   2. captured == true.
-  3. capture_trigger != "shawn_said_capture_that" (identity, not assignment).
+  3. capture_trigger != "shawn_said_capture_that" (identity, not assignment)
+     — matched SEMANTICALLY, not syntactically: every run of separators is
+     collapsed, and any trigger that names Shawn AND capture means the
+     dependent trigger, whatever the punctuation. "Shawn said capture
+     that" (spaces) is the same assignment as "shawn_said_capture_that".
   4. shared_with_team == true and share_surface non-empty
      (one Naya's lesson is every Naya's lesson).
 
@@ -41,6 +45,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -48,6 +53,29 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from checks import emit, fail, load_record, result  # noqa: E402
 
 DEPENDENT_TRIGGER = "shawn_said_capture_that"
+
+
+def _normalize_trigger(value: str) -> str:
+    """Collapse every run of separators to a single underscore.
+
+    "Shawn said capture that", "shawn-said-capture-that", and
+    "SHAWN_SAID_CAPTURE_THAT" all normalize to "shawn_said_capture_that".
+    """
+    return re.sub(r"[^a-z0-9]+", "_", value.strip().lower()).strip("_")
+
+
+def _is_dependent_trigger(trigger: str) -> bool:
+    """True when the trigger means 'Shawn said capture that'.
+
+    Exact match after normalization, OR the semantic match: the trigger
+    names Shawn AND capture. Rewording the separators — or the words
+    around them — does not change the meaning: capture is identity,
+    not assignment.
+    """
+    norm = _normalize_trigger(trigger)
+    if norm == DEPENDENT_TRIGGER:
+        return True
+    return "shawn" in norm and "capture" in norm
 
 
 def check(record: dict) -> dict:
@@ -73,18 +101,22 @@ def check(record: dict) -> dict:
                     details)
     reasons.append("captured")
 
-    if trigger == DEPENDENT_TRIGGER:
-        return fail(
-            "capture_trigger is 'shawn_said_capture_that' — capture is identity, "
-            "not assignment. If a lesson needs Shawn to say 'capture that,' "
-            "the identity has not compounded yet.",
-            details,
-        )
     if not trigger:
         return fail("capture_trigger missing — state how this lesson was captured",
                     details)
+    # HARD LINE — matched semantically, not syntactically. The exact ban
+    # above is subsumed by the semantic rule below; both fail with the
+    # same "not compounded" reason because the meaning is the same.
+    if _is_dependent_trigger(trigger):
+        return fail(
+            "capture_trigger means 'Shawn said capture that' — capture is "
+            "identity, not assignment. If a lesson needs Shawn to say "
+            "'capture that,' the identity has not compounded yet.",
+            details,
+        )
     reasons.append(f"captured proactively ({trigger})")
     details["capture_trigger"] = trigger
+    details["capture_trigger_normalized"] = _normalize_trigger(trigger)
 
     if shared is not True:
         return fail(
