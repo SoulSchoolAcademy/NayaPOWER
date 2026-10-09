@@ -393,8 +393,8 @@ Deno.serve(async (req) => {
       // installation scope, SSO policy, or branch/ruleset denial. Never store
       // request headers, tokens, or the response body wholesale.
       const githubReason = normalizedText(putJson?.message)
-        .replace(/[\\r\\n\\t]+/g, " ")
-        .replace(/[^\\x20-\\x7E]/g, "")
+        .replace(/[\r\n\t]+/g, " ")
+        .replace(/[^\x20-\x7E]/g, "")
         .slice(0, 240) || "UNKNOWN";
       await failReceipt("GITHUB_COMMIT_FAILED:" + putRes.status + ":" + githubReason);
       return json(
