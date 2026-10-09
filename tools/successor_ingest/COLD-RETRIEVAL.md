@@ -63,10 +63,11 @@ in order — never a hardcoded private-machine path:
 
 Two ways to satisfy the prerequisite:
 
-- **In the governed runtime:** the `sb-api` CLI (Supabase skill) is already
-  on `PATH` via the connector — zero configuration. The CLI never handles
-  raw keys; only the authd surrogate leaves the machine. This is the
-  zero-config path.
+- **In the governed runtime:** the `sb-api` CLI (Supabase skill) is the
+  zero-config transport — but it is NOT on `PATH` by default. Set
+  `SB_API=$HOME/workspace/skills/supabase/bin/sb-api` (or point
+  `NAYA_LESSON_TRANSPORT` at the same path) before running. The CLI never
+  handles raw keys; only the authd surrogate leaves the machine.
 - **Anywhere else:** build a script that speaks the protocol above (e.g. a
   thin wrapper around `curl` with your own read-only credentials) and point
   `NAYA_LESSON_TRANSPORT` at it. The seam does not care how the transport
