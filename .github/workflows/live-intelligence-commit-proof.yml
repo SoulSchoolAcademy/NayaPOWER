@@ -747,17 +747,22 @@ jobs:
           echo "promoted=false" >> "$GITHUB_OUTPUT"
           echo "sha=${{ env.SOURCE_SHA }}" >> "$GITHUB_OUTPUT"
 
+          # Skip reasons are recorded as outputs; the step never exits 0
+          # early (a gate that cannot fail is not a gate).
+          skip_reason=""
           if [[ ! -f capture-count.txt ]]; then
-            echo "No lineage artifact found; skipping promotion."
-            exit 0
+            skip_reason="no_lineage_artifact"
+          else
+            count="$(cat capture-count.txt | tr -d '[:space:]')"
+            if [[ -z "$count" || "$count" == "0" ]]; then
+              skip_reason="no_captures"
+            fi
           fi
 
-          count="$(cat capture-count.txt | tr -d '[:space:]')"
-          if [[ -z "$count" || "$count" == "0" ]]; then
-            echo "No captures in this run; skipping promotion."
-            exit 0
-          fi
-
+          if [[ -n "$skip_reason" ]]; then
+            echo "Skipping promotion: $skip_reason. Cold job uses original SOURCE_SHA."
+            echo "skip_reason=$skip_reason" >> "$GITHUB_OUTPUT"
+          else
           promoted_any=false
           for i in $(seq 0 $((count - 1))); do
             capture_path="$(sed -n "$((i + 1))p" capture-paths.txt | tr -d '[:space:]')"
@@ -826,8 +831,8 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add .naya/capture/
             if git diff --cached --quiet; then
-              echo "No changes to commit (unexpected); keeping original SHA."
-              exit 0
+              echo "No changes to commit after promotion (unexpected); failing loudly."
+              exit 1
             fi
             git commit -m "feat(learn): promote CANDIDATE→ACTIVE via admission gate [admission-promotion]"
             git pull --rebase origin main
@@ -839,6 +844,7 @@ jobs:
           else
             echo "No CANDIDATE captures needed promotion."
           fi
+          fi # end: skip_reason empty — promotion logic ran
 
   cold-successor-held-out:
     needs: admission-promotion
