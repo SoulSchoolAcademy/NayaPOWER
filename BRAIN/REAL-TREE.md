@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `2e96aa43baf37cba8bfc49159004b6c781eca821`  
-**Inventory file count:** 1195  
+**Receipt basis commit:** `b9d21f1925f6bc1c08b7601db15e4ff18d9bade0`  
+**Inventory file count:** 1196  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 638 |
+| 05-MEMORY | 639 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 4 |
 | 08-SUCCESSION | 2 |
@@ -766,6 +766,7 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0632/IB-SMART-NOTE-20261008-sn0632-team-naya-operating-protocol.md` — `14039acf0b66` (4164 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0634/IB-SMART-NOTE-20261008-sn0634-protocol-three-tongues-machine-law.md` — `e645e635f0ae` (2676 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/OPERATING-DOCTRINE/TEAM-PROTOCOL/SN-0638/IB-SMART-NOTE-20261008-sn0638-wisdom-over-smartness.md` — `c10e37a63c96` (2357 bytes)
+- `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/OPERATIONAL-INTELLIGENCE/DISPATCH/RESERVE-RULE/SN-782/IB-SMART-NOTE-20261009-successor-t11-reserve-rule-canonical.md` — `91652e0cbce4` (3879 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md` — `868eb151cebb` (8239 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md` — `23407a63f5ee` (8719 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md` — `507e1bc3ea7d` (7680 bytes)
