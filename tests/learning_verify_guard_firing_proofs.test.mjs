@@ -31,9 +31,16 @@ const source = readFileSync(
 );
 const code = stripTypeScriptTypes(
   source
+    // Strip local multiline imports added by the TS admission-gate port before
+    // executing the handler in this VM harness. The admission gate's real
+    // behavior is covered by the dedicated parity/acceptance proof suite.
+    .replace(/^import\s*\{[\s\S]*?\}\s*from "\.\/[^"]+";\r?\n/gm, "")
     .replace(/^import .*from "\.\/.*";\r?\n/gm, "")
     .replace(/^import .*;\r?\n/gm, "")
 );
+if (/^\s*import\b/m.test(code)) {
+  throw new Error("test harness failed to strip TypeScript imports before vm.Script");
+}
 
 const OWNER = "adfdf0b8-5558-41d1-9fed-ec51abf4fe2f";
 const FUTURE = "2099-01-01T00:00:00.000Z";
