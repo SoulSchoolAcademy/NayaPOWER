@@ -4,7 +4,81 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Naya Lego — Jewels · Drawn, Not Dotted</title>
-<link rel="stylesheet" href="../tokens.css">
+<style>
+/* TOKENS — inlined so this page is self-contained (tokens.css kept for the library) */
+:root {
+  /* The field — the world. Deep, never gray. */
+  --field: #050507;
+  --obsidian: #0B0D12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* The light — text 99% of the time. Every idle rim. */
+  --white: #F8F7FB;
+  --ink: #F5F7FB;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+  --line: rgba(255,255,255,.12);
+
+  /* The soul — chrome accent. Naya's presence. Never a flood. */
+  --soul: #a06bff;
+
+  /* The spectrum — in law order. Richest first, ultra-rich magenta leading. */
+  --magenta: #e84fff;  /* The living edge. Leads every flow. */
+  --purple: #a06bff;   /* Choosing intelligence. The soul. */
+  --blue: #3fb8ff;     /* Knowledge moving. */
+  --green: #2fe89e;    /* Alive and well. */
+  --gold: #ffbf3d;     /* Attention, earned. */
+
+  /* Spectrum RGB triplets — for rgba() glows */
+  --magenta-rgb: 232,79,255;
+  --purple-rgb: 160,107,255;
+  --blue-rgb: 63,184,255;
+  --green-rgb: 47,232,158;
+  --gold-rgb: 255,191,61;
+
+  /* Extended family */
+  --teal: #40d3bb;
+  --teal-rgb: 64,211,187;
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+  --lime: #b8ee57;
+  --lime-rgb: 184,238,87;
+  --indigo: #6675ff;
+  --indigo-rgb: 102,117,255;
+
+  /* Truth states */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+
+  /* Motion */
+  --ease: cubic-bezier(.22,1,.36,1);
+  --snap: cubic-bezier(.32,.72,0,1);
+
+  /* Elevation */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* Radii */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* Type scale — size separates, color doesn't */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+}
+</style>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--field); color: var(--white); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: var(--type-body); line-height: 1.65; -webkit-font-smoothing: antialiased; padding: 48px 24px; }
@@ -22,16 +96,63 @@ pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14
 .copy-btn:hover { border-color: var(--soul); }
 .law-note { border-left: 3px solid var(--magenta); padding: 12px 18px; margin: 20px 0; background: rgba(232,79,255,.05); border-radius: 0 10px 10px 0; font-size: 16px; }
 
-/* ============ JEWEL CUTS — world-class diamonds, highest contrast ============ */
-.jewel-row { display: flex; gap: 36px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
-.jewel { text-align: center; }
-.jewel svg { width: 84px; height: 84px; filter: drop-shadow(0 0 18px currentColor) drop-shadow(0 4px 12px rgba(0,0,0,.6)); animation: jewelPulse 4s ease-in-out infinite; transition: transform .25s var(--ease); }
-.jewel:hover svg { transform: scale(1.18) rotate(4deg); }
-.jewel:nth-child(2) svg { animation-delay: .8s; } .jewel:nth-child(3) svg { animation-delay: 1.6s; }
-.jewel:nth-child(4) svg { animation-delay: 2.4s; } .jewel:nth-child(5) svg { animation-delay: 3.2s; }
-@keyframes jewelPulse { 0%,100% { transform: scale(1); opacity: .94; } 50% { transform: scale(1.07); opacity: 1; } }
-.jewel .micro { margin-top: 10px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
-@media (prefers-reduced-motion: reduce) { .jewel svg { animation: none; } }
+/* ============ ORBS — spherical, orbital, lit from within ============ */
+.orb-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin: 36px 0 12px; }
+.orb-wrap { text-align: center; }
+.orb-wrap .micro { margin-top: 16px; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; color: var(--quiet); }
+.orb-wrap .micro small { display: block; letter-spacing: .06em; text-transform: none; color: var(--secondary); margin-top: 4px; font-size: 12px; }
+.orb { --oc: #a06bff; --oc-rgb: 160,107,255; position: relative; display: inline-block; width: 120px; height: 120px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, color-mix(in srgb, var(--oc) 62%, #000) 56%, #040406 100%);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255,255,255,.50),
+    inset 0 10px 18px rgba(255,255,255,.14),
+    inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55),
+    0 0 74px -10px rgba(var(--oc-rgb),.42),
+    0 24px 48px rgba(0,0,0,.65);
+  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+.orb-wrap:nth-child(2) .orb { animation-delay: 1s; } .orb-wrap:nth-child(3) .orb { animation-delay: 2s; }
+.orb-wrap:nth-child(4) .orb { animation-delay: 3s; } .orb-wrap:nth-child(5) .orb { animation-delay: 4s; }
+@keyframes orb-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+.orb::before { content: ""; position: absolute; inset: -17px; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg, rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding: 3px;
+  animation: orb-spin 6s linear infinite; opacity: .85; pointer-events: none;
+}
+.orb::after { content: ""; position: absolute; left: 16%; right: 16%; bottom: -30px; height: 24px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--oc-rgb),.42), transparent 70%); filter: blur(7px); z-index: -1; pointer-events: none; }
+.orb:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.06);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.65), inset 0 10px 18px rgba(255,255,255,.2), inset 0 -12px 24px rgba(0,0,0,.55),
+    0 0 44px rgba(var(--oc-rgb),.8), 0 0 90px -8px rgba(var(--oc-rgb),.55), 0 30px 54px rgba(0,0,0,.7); }
+.orb:hover::before { animation-duration: 1.5s; opacity: 1; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+.orb--sm { width: 56px; height: 56px; animation: none; }
+.orb--sm::before { inset: -10px; padding: 2px; animation-duration: 7s; }
+.orb--sm::after { bottom: -16px; height: 14px; }
+.orb--xs { width: 30px; height: 30px; animation: none; }
+.orb--xs::before { inset: -7px; padding: 2px; animation-duration: 8s; }
+.orb--xs::after { display: none; }
+.orb--black { background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),
+    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);
+  box-shadow:
+    inset 0 0 0 2px rgba(var(--oc-rgb),.9),
+    inset 0 -12px 24px rgba(0,0,0,.7),
+    0 0 30px rgba(var(--oc-rgb),.5),
+    0 0 70px -12px rgba(var(--oc-rgb),.4),
+    0 24px 48px rgba(0,0,0,.65);
+}
+.orb-scale { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; align-items: flex-end; margin: 28px 0; padding: 36px 20px; border: 1px solid var(--line); border-radius: var(--r-xl); background: linear-gradient(180deg, rgba(255,255,255,.025), transparent); }
+.orb-demo { text-align: center; }
+.orb-demo .micro { margin-top: 14px; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: var(--quiet); }
+.orb-demo .micro small { display: block; letter-spacing: .05em; text-transform: none; color: var(--secondary); margin-top: 4px; }
+@media (prefers-reduced-motion: reduce) { .orb, .orb::before { animation: none; } }
 
 /* ============ MINI-ORB — the luminous mark (Naya_3) ============ */
 .mini-orb { --c: var(--blue); width: 34px; height: 34px; border-radius: 50%; flex: none;
@@ -59,23 +180,55 @@ pre.code { background: #0a0d14; border: 1px solid var(--line); border-radius: 14
 <div class="law-note"><strong>The law:</strong> Every bullet a jewel. Never twice in a row. One global spectrum sequence per page: <strong>magenta → purple → blue → green → gold.</strong></div>
 
 <div class="lego-section">
-<h2>01 · Jewel Cuts — five distinct cuts</h2>
-<p class="why"><strong>Why:</strong> Five different SVG cuts, five spectrum colors, in law order. Each pulses on a staggered rhythm. Hover any jewel — it flares.</p>
-<div class="jewel-row" id="jewelRow"></div>
-<button class="copy-btn" onclick="copyCode('jewelCode')">Copy jewel system</button>
-<pre class="code" id="jewelCode">&lt;div class="jewel-row" id="jewelRow"&gt;&lt;/div&gt;
-&lt;script&gt;
-const SPECTRUM = [
-  { name:'MAGENTA', hex:'#e84fff', svg:'&lt;path d="M36 6 L58 30 L36 54 L14 30 Z" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;path d="M36 16 L48 30 L36 44 L24 30 Z" fill="COLOR" opacity=".35"/&gt;' },
-  { name:'PURPLE', hex:'#a06bff', svg:'&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;circle cx="36" cy="30" r="10" fill="COLOR" opacity=".4"/&gt;&lt;circle cx="36" cy="30" r="4" fill="#fff"/&gt;' },
-  { name:'BLUE', hex:'#3fb8ff', svg:'&lt;path d="M36 8 L60 52 L12 52 Z" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;path d="M36 24 L48 46 L24 46 Z" fill="COLOR" opacity=".3"/&gt;' },
-  { name:'GREEN', hex:'#2fe89e', svg:'&lt;rect x="16" y="10" width="40" height="40" rx="6" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3"/&gt;&lt;rect x="26" y="20" width="20" height="20" rx="3" transform="rotate(45 36 30)" fill="COLOR" opacity=".35"/&gt;' },
-  { name:'GOLD', hex:'#ffbf3d', svg:'&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="3" stroke-dasharray="6 4"/&gt;&lt;circle cx="36" cy="30" r="22" fill="none" stroke="COLOR" stroke-width="1.5"/&gt;&lt;circle cx="36" cy="30" r="7" fill="COLOR" opacity=".45"/&gt;' }
-];
-document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =&gt;
-  `&lt;div class="jewel" style="color:${s.hex}"&gt;&lt;svg viewBox="0 0 72 60"&gt;${s.svg.replace(/COLOR/g, s.hex)}&lt;/svg&gt;&lt;p class="micro"&gt;${s.name}&lt;/p&gt;&lt;/div&gt;`
-).join('');
-&lt;/script&gt;</pre>
+<h2>01 · Orbs — finished objects of light</h2>
+<p class="why"><strong>Why:</strong> A jewel is a cut stone. An <strong>orb</strong> is a finished object — spherical, orbital, lit from within. Each holds one spectrum color at its core. A ring of light circles every orb. Hover — the orbit flares and the orb lifts toward you. <strong>Use for:</strong> bullets, section marks, app icons, truth states.</p>
+<div class="orb-row">
+  <div class="orb-wrap"><span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">MAGENTA<small>The living edge</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#a06bff;--oc-rgb:160,107,255"></span><p class="micro">PURPLE<small>Naya's presence</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">BLUE<small>Knowledge moving</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">GREEN<small>Alive and well</small></p></div>
+  <div class="orb-wrap"><span class="orb" style="--oc:#ffbf3d;--oc-rgb:255,191,61"></span><p class="micro">GOLD<small>Attention, earned</small></p></div>
+</div>
+<div class="orb-scale">
+  <div class="orb-demo"><span class="orb orb--xs" style="--oc:#e84fff;--oc-rgb:232,79,255"></span><p class="micro">BULLET · 30px<small>Lists, gem points</small></p></div>
+  <div class="orb-demo"><span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"></span><p class="micro">SECTION MARK · 56px<small>Room icons, headers</small></p></div>
+  <div class="orb-demo"><span class="orb orb--black" style="--oc:#2fe89e;--oc-rgb:47,232,158"></span><p class="micro">BLACK ORB · 120px<small>Dark soul, color rim</small></p></div>
+</div>
+<button class="copy-btn" onclick="copyCode('orbCode')">Copy orb system</button>
+<pre class="code" id="orbCode">&lt;!-- ORB — one object, every scale. Set --oc / --oc-rgb to any spectrum color. --&gt;
+&lt;span class="orb" style="--oc:#e84fff;--oc-rgb:232,79,255"&gt;&lt;/span&gt;
+&lt;span class="orb orb--sm" style="--oc:#3fb8ff;--oc-rgb:63,184,255"&gt;&lt;/span&gt; &lt;!-- section mark --&gt;
+&lt;span class="orb orb--xs" style="--oc:#2fe89e;--oc-rgb:47,232,158"&gt;&lt;/span&gt; &lt;!-- bullet --&gt;
+&lt;span class="orb orb--black" style="--oc:#ffbf3d;--oc-rgb:255,191,61"&gt;&lt;/span&gt; &lt;!-- black variant --&gt;
+
+&lt;style&gt;
+.orb { --oc:#a06bff; --oc-rgb:160,107,255; position:relative; display:inline-block;
+  width:120px; height:120px; border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.30) 13%, transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255,255,255,.10) 0%, transparent 42%),
+    radial-gradient(circle at 50% 50%, var(--oc) 0%, var(--oc) 56%, #040406 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5), inset 0 -12px 24px rgba(0,0,0,.62),
+    0 0 30px rgba(var(--oc-rgb),.55), 0 24px 48px rgba(0,0,0,.65);
+  animation: orb-breathe 5s ease-in-out infinite; }
+.orb::before { /* orbiting ring of light */
+  content:""; position:absolute; inset:-17px; border-radius:50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 282deg,
+    rgba(var(--oc-rgb),.85) 328deg, rgba(255,255,255,.95) 350deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; padding:3px;
+  animation: orb-spin 6s linear infinite; }
+.orb:hover { transform: translateY(-8px) scale(1.06); }
+.orb:hover::before { animation-duration:1.5s; }
+@keyframes orb-spin { to { transform: rotate(360deg); } }
+@keyframes orb-breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(1.045); } }
+.orb--sm { width:56px; height:56px; } .orb--sm::before { inset:-10px; }
+.orb--xs { width:30px; height:30px; } .orb--xs::before { inset:-7px; }
+.orb--black { background:
+    radial-gradient(circle at 34% 26%, rgba(255,255,255,.55) 0%, transparent 26%),
+    radial-gradient(circle at 50% 55%, #1b1b22 0%, #050507 72%);
+  box-shadow: inset 0 0 0 2px rgba(var(--oc-rgb),.9), 0 0 30px rgba(var(--oc-rgb),.5); }
+&lt;/style&gt;</pre>
 </div>
 
 <div class="lego-section">
@@ -124,16 +277,7 @@ function copyCode(id) {
     btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = old, 1600);
   });
 }
-const SPECTRUM = [
-  { name:'MAGENTA', hex:'#e84fff', svg:'<path d="M36 4 L60 30 L36 56 L12 30 Z" fill="none" stroke="COLOR" stroke-width="3.5"/><path d="M36 4 L48 30 L36 56 L24 30 Z" fill="none" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M12 30 L60 30" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M36 14 L48 30 L36 46 L24 30 Z" fill="COLOR" opacity=".4"/><circle cx="28" cy="20" r="3" fill="#fff" opacity=".95"/>' },
-  { name:'PURPLE', hex:'#a06bff', svg:'<circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="3.5"/><circle cx="36" cy="30" r="24" fill="none" stroke="#fff" stroke-width="1" opacity=".5" stroke-dasharray="4 6"/><circle cx="36" cy="30" r="12" fill="COLOR" opacity=".45"/><circle cx="36" cy="30" r="5" fill="#fff"/><circle cx="31" cy="24" r="2.5" fill="#fff" opacity=".9"/>' },
-  { name:'BLUE', hex:'#3fb8ff', svg:'<path d="M36 6 L62 54 L10 54 Z" fill="none" stroke="COLOR" stroke-width="3.5"/><path d="M36 6 L36 54" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M23 30 L49 30" stroke="COLOR" stroke-width="1.2" opacity=".7"/><path d="M36 22 L50 48 L22 48 Z" fill="COLOR" opacity=".35"/><circle cx="30" cy="38" r="2.5" fill="#fff" opacity=".9"/>' },
-  { name:'GREEN', hex:'#2fe89e', svg:'<rect x="14" y="8" width="44" height="44" rx="8" transform="rotate(45 36 30)" fill="none" stroke="COLOR" stroke-width="3.5"/><rect x="14" y="8" width="44" height="44" rx="8" transform="rotate(45 36 30)" fill="none" stroke="#fff" stroke-width="1" opacity=".5"/><rect x="24" y="18" width="24" height="24" rx="4" transform="rotate(45 36 30)" fill="COLOR" opacity=".4"/><circle cx="29" cy="22" r="2.5" fill="#fff" opacity=".9" transform="rotate(45 36 30)"/>' },
-  { name:'GOLD', hex:'#ffbf3d', svg:'<circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="3.5" stroke-dasharray="8 5"/><circle cx="36" cy="30" r="24" fill="none" stroke="COLOR" stroke-width="1.5"/><circle cx="36" cy="30" r="15" fill="none" stroke="COLOR" stroke-width="1" opacity=".6"/><circle cx="36" cy="30" r="8" fill="COLOR" opacity=".5"/><circle cx="31" cy="24" r="2.5" fill="#fff" opacity=".95"/>' }
-];
-document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =>
-  `<div class="jewel" style="color:${s.hex}"><svg viewBox="0 0 72 60">${s.svg.replace(/COLOR/g, s.hex)}</svg><p class="micro">${s.name}</p></div>`
-).join('');
+/* Orbs are static markup — no JS needed. */
 </script>
 </body>
 </html>
