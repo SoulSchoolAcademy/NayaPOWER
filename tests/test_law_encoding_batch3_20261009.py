@@ -843,24 +843,38 @@ def test_merge_fires_on_lunate_sigma_dead_entries():
     assert merge_authority._seat_key("\u03c2oda-1") == "coda1"
 
 
-def test_merge_fires_on_fresh_dead_entry_variants():
-    # Fresh letter-forms from the measured 32 (not the re-validator's
-    # instances): long-s, script-I, roman-numeral-I, fullwidth-I,
-    # double-struck-P families.
+def test_merge_fires_on_nfkc_retargeted_variants():
+    # NFKC-retargeted entries (2026-10-09, re-grounded -- was
+    # test_merge_fires_on_fresh_dead_entry_variants): the table now folds
+    # these to their NFKC behavior, not confusables.txt's MA mapping. A
+    # human reading "\u017fin-1" reads "sin-1", not "fin-1"; the old
+    # assertions encoded the defeated MA judgment. The gate is unchanged
+    # in form: the twin is caught against its HONEST canonical, and it
+    # must NOT collide with the defeated MA canonical (no false merge of
+    # seats a human reads as different).
     twins = [
-        ("\u017fin-1", "fin-1", "fin1"),     # LATIN SMALL LETTER LONG S -> 'f'
-        ("\u2110ook-1", "look-1", "look1"),  # SCRIPT CAPITAL I -> 'l'
-        ("\u2160ook-1", "look-1", "look1"),  # ROMAN NUMERAL ONE -> 'l'
-        ("\uff29ook-1", "look-1", "look1"),  # FULLWIDTH LATIN CAPITAL I -> 'l'
-        ("\u2119in-1", "pin-1", "pin1"),     # DOUBLE-STRUCK CAPITAL P -> 'p'
+        # (twin, honest_seat, honest_key, defeated_ma_seat)
+        ("\u017fin-1", "sin-1", "sin1", "fin-1"),      # LONG S -> 's'
+        ("\u2110ook-1", "iook-1", "iook1", "look-1"),   # SCRIPT CAPITAL I -> 'i'
+        ("\u2160ook-1", "iook-1", "iook1", "look-1"),   # ROMAN NUMERAL ONE -> 'i'
+        ("\uff29ook-1", "iook-1", "iook1", "look-1"),   # FULLWIDTH CAPITAL I -> 'i'
+        ("\u2119in-1", "pin-1", "pin1", None),          # DOUBLE-STRUCK P -> 'p'
     ]
-    for twin, seat, key in twins:
+    for twin, seat, key, defeated in twins:
         rec = _good_merge_packet()
         rec["seat"] = seat
         rec["independent_validator"] = twin
         r = merge_authority.check(rec)
-        assert not r["pass"], f"dead-entry twin {twin!r} passed as {seat!r}"
+        assert not r["pass"], f"retargeted twin {twin!r} passed as {seat!r}"
         assert merge_authority._seat_key(twin) == key
+        if defeated is not None:
+            assert merge_authority._seat_key(twin) != \
+                merge_authority._seat_key(defeated), \
+                f"twin {twin!r} still collides with defeated {defeated!r}"
+    # Stylistic digit forms stay digits in the seat key (digit/letter
+    # non-fold policy, now honored in this lane too):
+    assert merge_authority._seat_key("naya-\U0001d7ce") == "naya0"
+    assert merge_authority._seat_key("naya-\U0001d7cf") == "naya1"
     # The 45-char residual a single-pass reorder misses: NFKC output IS
     # a table source (U+02E0 -> U+0263 -> 'y').
     assert merge_authority._seat_key("\u02e0") == "y"
