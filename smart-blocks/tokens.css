@@ -1,0 +1,176 @@
+/* ============================================================
+   NAYA SMART BLOCKS — Canonical Design Tokens (v1)
+   Extracted verbatim from the best work in DESIGN/ (2026-10-09).
+   Black is the suit. Light comes from above. Always.
+   ============================================================ */
+
+:root {
+  /* ---- Ground ---- */
+  --bg: #050507;
+  --bg-raise: #0b0a10;
+  --bg-panel: #0d0c12;
+  --bg-card: #14101b;
+
+  /* ---- Ink ---- */
+  --ink: #f8f7fb;
+  --ink-dim: #ddd9e4;
+  --ink-faint: #a9a4b8;
+
+  /* ---- Lines ---- */
+  --line: rgba(255,255,255,.09);
+  --line-soft: rgba(255,255,255,.05);
+  --line-bright: rgba(232,234,242,.42);   /* the standard silver — every file */
+
+  /* ---- Depth (the 5-layer shadow formula) ---- */
+  --depth-hi: inset 0 1px rgba(255,255,255,.4);
+  --depth-hi-strong: inset 0 2px 3px rgba(255,255,255,.35);
+  --depth-lo: inset 0 -4px 8px rgba(0,0,0,.7);
+  --depth-drop: 0 18px 42px rgba(0,0,0,.7);
+  --depth-deep: 0 30px 75px rgba(0,0,0,.7);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.16,.84,.22,1);
+  --dur-fast: .18s;
+  --dur-med: .28s;
+
+  /* ---- Shape ---- */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Type ---- */
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --voice: "Cormorant Garamond", Georgia, serif;
+
+  /* ---- Spectrum (theme accents — NEVER on chrome) ---- */
+  --purple: #9d75ff;
+  --indigo: #6675ff;
+  --sapphire: #4f8ff7;
+  --blue: #55b9ee;
+  --teal: #40d3bb;
+  --emerald: #35e0a1;
+  --green: #55e39a;
+  --lime: #b8ee57;
+  --yellow: #f1d75a;
+  --gold: #e8c766;
+  --orange: #ff9a5a;
+  --rich-orange: #ff7a3d;
+  --red: #ff5e6c;
+  --magenta: #d86cff;
+
+  /* ---- Chrome (buttons at rest — silver/white, always) ---- */
+  --chrome: var(--purple);
+  --chrome-border: rgba(255,255,255,.75);
+}
+
+/* ---- Page base: every NayaNET page starts here ---- */
+.naya-page {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  min-height: 100vh;
+}
+
+/* ---- Type hierarchy: size separates, color doesn't (24/18/14) ---- */
+.naya-h1 { font-size: 24px; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+.naya-h2 { font-size: 18px; font-weight: 700; color: var(--ink); }
+.naya-h3 { font-size: 14px; font-weight: 700; color: var(--ink); }
+.naya-body { font-size: 14px; color: var(--ink); line-height: 1.6; }
+.naya-dim { font-size: 14px; color: var(--ink-dim); line-height: 1.6; }
+.naya-eyebrow {
+  font-size: 11px; font-weight: 800; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+/* Voice headers: serif, carved with light, breathing luminosity */
+.naya-voice {
+  font-family: var(--voice); font-weight: 600; color: var(--ink);
+  text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 0 14px rgba(255,255,255,.25);
+}
+
+/* ============================================================
+   EPIC/JEWEL :root (canonical — merged in, no conflicts)
+   From "Naya Epic Elements" N5 = "Naya Jewel Library" N5.
+   Colliding names keep the Button-Law values above;
+   Epic's unique names + every -rgb twin live here.
+   ============================================================ */
+:root {
+  /* ---- Ground (Epic aliases) ---- */
+  --field: #050507;
+  --obsidian: #0b0d12;
+  --raise: #10141d;
+  --card: #141a28;
+  --deep: #0a0e16;
+
+  /* ---- Light ---- */
+  --white: #f8f7fb;
+  --quiet: rgba(248,247,251,.72);
+  --secondary: rgba(248,247,251,.55);
+
+  /* ---- The soul — Naya's presence. Never a flood. ---- */
+  --soul: #a06bff;
+
+  /* ---- Spectrum RGB twins (for rgba() glows) — matches the
+          14-hue spectrum above, in the same order ---- */
+  --magenta-rgb: 216,108,255;
+  --purple-rgb: 157,117,255;
+  --indigo-rgb: 102,117,255;
+  --sapphire-rgb: 79,143,247;
+  --blue-rgb: 85,185,238;
+  --teal-rgb: 64,211,187;
+  --emerald-rgb: 53,224,161;
+  --green-rgb: 85,227,154;
+  --lime-rgb: 184,238,87;
+  --yellow-rgb: 241,215,90;
+  --gold-rgb: 232,199,102;
+  --orange-rgb: 255,154,90;
+  --rich-orange-rgb: 255,122,61;
+  --red-rgb: 255,94,108;
+
+  /* ---- Epic extended family ---- */
+  --coral: #ff5e6c;
+  --coral-rgb: 255,94,108;
+
+  /* ---- Truth states ---- */
+  --verified: #2fe89e;
+  --verified-rgb: 47,232,158;
+  --claim: #ffbf3d;
+  --claim-rgb: 255,191,61;
+  --demo: #e84fff;
+  --demo-rgb: 232,79,255;
+  --danger: #ff5e6c;
+  --danger-rgb: 255,94,108;
+
+  /* ---- Motion ---- */
+  --snap: cubic-bezier(.2,.8,.2,1);
+
+  /* ---- Elevation ---- */
+  --lift: 0 18px 50px rgba(0,0,0,.55), 0 6px 18px rgba(0,0,0,.4);
+  --ring: 0 0 0 2px rgba(160,107,255,.35);
+
+  /* ---- Radii (Epic scale) ---- */
+  --r-sm: 11px;
+  --r-md: 13px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* ---- Type scale — size separates, color doesn't ---- */
+  --type-display: 64px;
+  --type-chapter: 40px;
+  --type-headline: 24px;
+  --type-body: 18px;
+  --type-small: 14px;
+
+  /* ---- Materials (N2 Building Blocks extras) ---- */
+  --surface: #101116;
+  --surface-2: #17181f;
+  --mat-0: #020203;
+  --mat-1: #08080b;
+  --mat-2: #101117;
+  --mat-3: #1b1c24;
+  --mat-white: #fbfaff;
+  --shadow-soft: 0 26px 70px rgba(28,18,38,.18), 0 7px 22px rgba(28,18,38,.11);
+  --page: clamp(17px,4vw,68px);
+  --radius: 24px;
+}
