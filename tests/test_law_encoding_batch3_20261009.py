@@ -549,6 +549,92 @@ def test_receipt_fires_on_ghost_ids_chose_looked_end_to_end():
     assert not r["pass"], "ghost ids from the template vocabulary must fail closed"
 
 
+def _ghost_verbfamily_rec(ghost_id, receipt):
+    # Ghost is an unchosen alternative; the receipt is natural prose that
+    # only ever mentions the ghost word BY ACCIDENT ("had to choose",
+    # "one hard look"). Pre-fix every such record PASSED end-to-end —
+    # the word was not banned, so step 2 let it through and the
+    # bounded-token name-check in step 5 matched the accidental token.
+    return {
+        "decision": "verb-family ghost demo",
+        "chosen": "opt-a",
+        "alternatives": [
+            {"id": ghost_id, "description": "ghost option"},
+            {"id": "opt-a", "description": "plan alpha"},
+        ],
+        "winning_evidence": "measured faster in the field trial",
+        "receipt": receipt,
+        "seat": "naya-5",
+        "close_call": False,
+        "uncertainty_declared": False,
+    }
+
+
+def test_receipt_fires_on_ghost_id_choose():
+    # Verb-family closure (class-fix): the template writes "chose", but the
+    # same past-tense idea arrives in receipts as "choose" — the ban must
+    # cover the family, exactly as ORDINARY_WORDS already covers full
+    # conjugations for every other verb in the list.
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "choose",
+        "I chose opt-a. I looked at opt-a and the other plan. opt-a won "
+        "because the measured score was higher, and honestly I had to "
+        "choose fast."))
+    assert not r["pass"], "ghost id 'choose' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_chosen():
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "chosen",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because the "
+        "field data favored it; I have chosen the safer plan."))
+    assert not r["pass"], "ghost id 'chosen' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_chooses():
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "chooses",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because the "
+        "protocol chooses the measured winner, and that was opt-a."))
+    assert not r["pass"], "ghost id 'chooses' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_choosing():
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "choosing",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because "
+        "choosing on evidence instead of vibes is the law."))
+    assert not r["pass"], "ghost id 'choosing' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_look():
+    # The template's "looked" is banned; its bare-stem sibling "look" is
+    # equally accidental in prose ("one hard look"). Bounded-token matching
+    # means banning "look" never collides with "looked" — the honest
+    # template token — anywhere else.
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "look",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because one "
+        "hard look at opt-b showed weaker evidence."))
+    assert not r["pass"], "ghost id 'look' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_looks():
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "looks",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because it "
+        "looks stronger on every measure."))
+    assert not r["pass"], "ghost id 'looks' must fail closed"
+
+
+def test_receipt_fires_on_ghost_id_looking():
+    r = decision_receipt.check(_ghost_verbfamily_rec(
+        "looking",
+        "I chose opt-a. I looked at opt-a, opt-b. opt-a won because I "
+        "kept looking at opt-b and the numbers never moved."))
+    assert not r["pass"], "ghost id 'looking' must fail closed"
+
+
 def test_receipt_fires_on_ghost_id_evidence():
     # "[evidence]" is the template's own evidence slot — the word appears
     # naturally in every template receipt, so it can never name an option.

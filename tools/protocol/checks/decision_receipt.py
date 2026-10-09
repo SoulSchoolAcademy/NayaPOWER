@@ -147,6 +147,7 @@ fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty
 fifty sixty seventy eighty ninety hundred thousand million second third
 yes no ok okay please thanks hello hi
 chose looked
+choose chooses choosing chosen look looks looking
 evidence
 b c x
 """.split())
