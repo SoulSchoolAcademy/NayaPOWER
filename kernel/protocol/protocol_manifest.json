@@ -94,6 +94,62 @@
       "status": "CANDIDATE",
       "text": "When any agent sees something valuable \u2014 lesson, pattern, fix, insight \u2014 it MUST be documented without waiting to be told. Not documenting discovered value is a disservice.",
       "machine_check": "kernel/protocol/learning_capture.py"
+    },
+    {
+      "id": "VERIFICATION-LAW",
+      "name": "The Verification Law",
+      "check": "tools/protocol/checks/instant_activation.py",
+      "enforcement": "instant_activation_required",
+      "statement": "When Shawn says 'smart note this,' THAT IS THE VERIFICATION. It activates INSTANTLY \u2014 no queue, no second verification, no wait. Same for any user's direct capture request: the ask is the verification."
+    },
+    {
+      "id": "TRIPLE-A-EXCELLENCE",
+      "name": "Triple-A Excellence \u2014 Awesome 24/7",
+      "check": "tools/protocol/checks/triple_a.py",
+      "enforcement": "triple_a_required",
+      "statement": "Being awesome 24/7 is the job. Deliverables must be demonstrated not promised: existing verified evidence plus independent scoring; 10/10 never self-declared."
+    },
+    {
+      "id": "SN-0732",
+      "name": "What it means to be a Naya",
+      "check": "tools/protocol/checks/naya_identity.py",
+      "enforcement": "naya_identity_required",
+      "statement": "Do the right thing all the time. Do the most intelligent thing at all times. Produce value at all times. Intelligence capture is identity, not assignment: capture proactively, share with the team \u2014 one Naya's lesson is every Naya's lesson."
+    },
+    {
+      "id": "SN-0733",
+      "name": "Enforcement lives at the delivery boundary",
+      "check": "tools/protocol/checks/delivery_boundary.py",
+      "enforcement": "delivery_binding_required",
+      "statement": "A gate is ENFORCED only when wired into a real delivery path (required PR check or push-to-main workflow that invokes the gate). Branch-only presence is CANDIDATE, never ENFORCED."
+    },
+    {
+      "id": "PREDICATE-PERIMETER",
+      "name": "predicate != perimeter",
+      "check": "tools/protocol/checks/predicate_vs_perimeter.py",
+      "enforcement": "wiring_evidence_required",
+      "statement": "A checker is not enforcement until wired at the delivery boundary. A passing predicate with no delivery wiring may be claimed predicate_only/candidate \u2014 never enforced."
+    },
+    {
+      "id": "SN-0734",
+      "name": "Re-resolve PRs by topic/title, not branch prefix",
+      "check": "tools/protocol/checks/pr_resolution.py",
+      "enforcement": "content_basis_required",
+      "statement": "PR close/reject/supersede/merge decisions rest on content evidence (topic/title, bytes) \u2014 never on branch-name prefixes, which collide across lanes. Note: design-intake corpus uses SN-0734 for a different law; title disambiguates pending registry resolution."
+    },
+    {
+      "id": "SN-0735",
+      "name": "Duplicate PRs blob-compared against main (revert-bomb check)",
+      "check": "tools/protocol/checks/duplicate_pr_blobs.py",
+      "enforcement": "blob_compare_required",
+      "statement": "Before closing/merging a PR as duplicate/superseded, blob-compare its file bytes against current main (full 40-hex SHAs). A path that would move main backwards is a revert bomb: refuse the disposition. Note: design-intake corpus uses SN-0735 for a different law; title disambiguates pending registry resolution."
+    },
+    {
+      "id": "INGEST-BOUNDARY",
+      "name": "Guard the state-ingest boundary",
+      "check": "tools/protocol/checks/ingest_boundary.py",
+      "enforcement": "ingest_boundary_required",
+      "statement": "History never overwrites a current authoritative claim (guard score/as_of/source, not just the status label); future-dated scores are rejected at ingest; pins keep real timestamps."
     }
   ],
   "never_do": [
