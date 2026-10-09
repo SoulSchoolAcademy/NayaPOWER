@@ -86,3 +86,19 @@ def test_machine_sha_pins_and_runtime_proof_reference():
     assert d["runtime_snapshot"]["T11"]["receiver_workflow_run"] == 37980089547
     assert d["sources"]["canonical_refs"]["SMART-NOTE-CONTRACT"] == "NAYA-ACTIVATION/SMART-NOTE-OPERATING-CONTRACT-V1.md"
     assert "git" in d["sources"]["canonical_refs"]["PR-2050"]
+
+
+def test_multi_lesson_retrieval_audit_is_not_conflated_with_blind_learning():
+    d = load()
+    a = d["runtime_snapshot"]["retrieval_diagnostic"]
+    b = d["runtime_snapshot"]["team_reported_blind_battery"]
+    assert a["schema"] == "naya.lesson-exam.repository-audit.v1"
+    assert a["total_scenarios"] == 43
+    assert a["retrieved_expected_id"] + a["selected_different_id"] + a["id_collision"] == 43
+    assert a["state"] == "GITHUB_REPRODUCED_DIAGNOSTIC_NOT_CAUSAL_LEARNING"
+    assert a["act_control_treatment_wrong_lesson"] == "NOT_RUN"
+    assert b["state"] == "TEAM_REPORTED_NOT_INDEPENDENTLY_REPLAYED_IN_THIS_LANE"
+    assert b["reported_numerator"] == 14 and b["reported_denominator"] == 14
+    assert b["reported_average_score"] == 9.93
+    assert d["runtime_snapshot"]["T11"]["learning_proven"] is False
+    assert d["work"]["single_next_action_id"] in {a["id"] for a in d["work"]["ordered_actions"]}
