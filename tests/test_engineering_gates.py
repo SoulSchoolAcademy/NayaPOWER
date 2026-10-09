@@ -5,13 +5,14 @@ true negative (clean code passes). A gate that cannot catch its own
 defect in a test is theater, not engineering.
 """
 
-import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "workspace"))
-
-from engineering_gates import (
+# Import the gates from the repo itself (tools/protocol/engineering_gates.py).
+# A prior revision imported from ~/workspace — a machine-local leak that broke
+# collection on CI runners (ModuleNotFoundError → pytest interrupted → whole
+# `test` step red). Tests must never depend on the developer's home directory.
+from tools.protocol.engineering_gates import (
     check_test_the_seam,
     check_no_dead_code,
     check_smallest_change,
