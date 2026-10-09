@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `094634be45b2fb82baac281c95db17e86ee07cc9`  
-**Inventory file count:** 1197  
+**Receipt basis commit:** `7e4fcb6b51fdb128736c01c162305fd8cf9ea53a`  
+**Inventory file count:** 1203  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -15,7 +15,7 @@
 | 02-ARCHITECTURE | 5 |
 | 03-KERNEL | 30 |
 | 04-INTELLIGENCE | 25 |
-| 05-MEMORY | 639 |
+| 05-MEMORY | 642 |
 | 06-PROOF | 13 |
 | 07-LEARNING | 5 |
 | 08-SUCCESSION | 2 |
@@ -32,7 +32,12 @@
 ### 00-ACTIVATION — (unregistered domain)
 
 - `BRAIN/00-ACTIVATION/DESIGN-ACTIVATION.md` — `fed3bb338e02` (4229 bytes)
-- `BRAIN/00-ACTIVATION/activation-checklist.json` — `af3a0fec47e9` (3427 bytes)
+- `BRAIN/00-ACTIVATION/activation-checklist.json` — `0f8903747734` (3734 bytes)
+### 00-ARCHITECTURE — (unregistered domain)
+
+- `BRAIN/00-ARCHITECTURE/ACTIVATION-NAYA-PROJECT.md` — `d93e078f54a5` (8039 bytes)
+- `BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json` — `982546196b24` (47410 bytes)
+- `BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md` — `07a492bbcb3d` (55326 bytes)
 ### 00-SPEC — Specification
 
 - `BRAIN/00-SPEC/0001-INTELLIGENT-GRAPH-AND-TREE-SPEC-V1.md` — `88ce71b543d0` (12877 bytes)
@@ -771,6 +776,9 @@
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/INCOME-REFRAME/SN-0744/IB-SMART-NOTE-20261009-sn0744-ai-creates-income.md` — `23407a63f5ee` (8719 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/MAGIC-FEELING/SN-0743/IB-SMART-NOTE-20261009-sn0743-magic-feeling.md` — `507e1bc3ea7d` (7680 bytes)
 - `BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/VISION/SELF-OPTIMIZATION/SN-0742/IB-SMART-NOTE-20261009-sn0742-self-optimizing-system.md` — `151b620a7c56` (6817 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/ACTIVATION-NAYA-INTELLIGENCE.md` — `f5ca40dcb428` (14353 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-SPEC.md` — `c700b5612b24` (19507 bytes)
+- `BRAIN/05-MEMORY/SYSTEM-INTELLIGENCE/PROJECT-INTELLIGENCE-TEMPLATE.md` — `bed099ad9863` (5504 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/INDEX.md` — `7afad9abac25` (1331 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/note.md` — `71a20d452aa4` (3406 bytes)
 - `BRAIN/05-MEMORY/VERIFICATION-PACKAGES/TIER1-2026-10-08/T04R-coldsuccessor/package.json` — `79d92cf4098f` (1432 bytes)
