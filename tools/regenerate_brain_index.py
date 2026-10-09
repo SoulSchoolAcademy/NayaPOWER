@@ -138,6 +138,11 @@ PATH_LIKE_RE = re.compile(r"^(BRAIN/|CONSTITUTION/|GOVERNANCE/|ARCHITECTURE/|\.n
 # floor's narrowed job is to stop the regeneration command itself from silently
 # blessing a mass deletion. Git history remains the ultimate backstop.
 BASELINE_DOMAIN_FLOORS = {
+    # 2026-10-09: BRAIN/00-ACTIVATION/ landed with the Naya Activation Package
+    # v1 (PR #1971): DESIGN-ACTIVATION.md + activation-checklist.json — 2 real
+    # governed artifacts, so the baseline moves deliberately rather than being
+    # forced.
+    "00-ACTIVATION": 2,
     "00-SPEC": 15,
     # 3 -> 6 for #1444: 0003-FULL-AUTO-MERGE-V1 (ai/human/machine) lands under
     # the supreme Scorecard Law (verbal ratification 2026-10-05). Deliberate update.
@@ -223,6 +228,7 @@ def floor_violations(counts: dict[str, int], floors: dict[str, int]) -> list[str
 
 
 DOMAIN_TITLES = {
+    "00-ACTIVATION": "00-ACTIVATION — Activation",
     "00-SPEC": "00-SPEC — Specification",
     "01-GOVERNANCE": "01-GOVERNANCE — Governance",
     "02-ARCHITECTURE": "02-ARCHITECTURE — Architecture",
@@ -240,6 +246,22 @@ DOMAIN_TITLES = {
     "99-ARCHIVE": "99-ARCHIVE — Archive",
     "ROOT": "ROOT — Brain root files",
 }
+
+
+def report_unknown_domains(counts: dict[str, int]) -> bool:
+    """Print the governed diagnosis for unregistered domains; True if any."""
+    unknown = unknown_domains(counts)
+    if not unknown:
+        return False
+    print("error: unregistered BRAIN domain(s): " + ", ".join(unknown), file=sys.stderr)
+    print(
+        "Register each one deliberately: a BASELINE_DOMAIN_FLOORS floor entry "
+        "and a DOMAIN_TITLES title in tools/regenerate_brain_index.py, with a "
+        "comment naming the landing PR and the reason. The index cannot be "
+        "regenerated around an unclassified domain — classify, do not force.",
+        file=sys.stderr,
+    )
+    return True
 
 
 def git(args: list[str], root: Path) -> str:
@@ -291,6 +313,35 @@ def domain_counts(files: list[dict]) -> dict[str, int]:
         d = domain_of(f["path"])
         counts[d] = counts.get(d, 0) + 1
     return counts
+
+
+def registered_domains() -> set:
+    """Domains the tool's classification tables know about."""
+    return set(BASELINE_DOMAIN_FLOORS) & set(DOMAIN_TITLES)
+
+
+def unknown_domains(counts: dict[str, int]) -> list[str]:
+    """Domains present in the git tree that the tables do not classify."""
+    registered = registered_domains()
+    return sorted(d for d in counts if d not in registered)
+
+
+def domain_title(d: str) -> str:
+    """Title for a domain; fails loudly on unregistered ones.
+
+    Deliberate loud failure (the ratchet philosophy): a new BRAIN domain that
+    landed without being classified must stop the tool with a named diagnosis,
+    never crash with a bare KeyError and never be absorbed silently.
+    """
+    try:
+        return DOMAIN_TITLES[d]
+    except KeyError:
+        raise RuntimeError(
+            f"unregistered BRAIN domain '{d}': add a BASELINE_DOMAIN_FLOORS "
+            f"floor entry and a DOMAIN_TITLES title in "
+            f"tools/regenerate_brain_index.py, with a comment naming the "
+            f"landing PR and the reason."
+        ) from None
 
 
 def get_field(doc: dict, dotted: str):
@@ -437,7 +488,7 @@ def build_real_tree_md(basis: str, files: list[dict], counts: dict[str, int], to
         d = domain_of(f["path"])
         if d != current_domain:
             current_domain = d
-            lines.append(f"### {DOMAIN_TITLES[d]}")
+            lines.append(f"### {domain_title(d)}")
             lines.append("")
         if f["path"] in RECEIPT_PATHS:
             lines.append(f"- `{f['path']}` — _(self-referential index file; blob SHA omitted)_")
@@ -498,6 +549,8 @@ def normalize_md(text: str) -> str:
 def check(root: Path) -> int:
     files = inventory(root)
     counts = domain_counts(files)
+    if report_unknown_domains(counts):
+        return 2
     problems = []
     floors = floor_domain_counts(files)
     violations = floor_violations(counts, floors)
@@ -581,6 +634,9 @@ def main() -> int:
             print(f"  {e}", file=sys.stderr)
         print("A dangling pointer in the index layer fails the run — fix the pointer, do not force.",
               file=sys.stderr)
+        return 2
+
+    if report_unknown_domains(counts):
         return 2
 
     if args.check:
