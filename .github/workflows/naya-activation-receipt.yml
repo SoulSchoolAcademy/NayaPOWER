@@ -1,0 +1,103 @@
+name: Naya Activation Receipt (Protected Main)
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_id:
+        description: Unique activation/session identifier
+        required: true
+        type: string
+      naya_identity:
+        description: Naya seat/identity performing activation
+        required: true
+        type: string
+      human_authority:
+        description: Human authority for this activation
+        required: true
+        type: string
+      job:
+        description: Intended human outcome
+        required: true
+        type: string
+      gates:
+        description: Comma-separated governing gates
+        required: true
+        type: string
+      proof_plan:
+        description: Independent proof plan
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  issue-receipt:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout protected main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Resolve trusted repository and main identity
+        id: trusted
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo_id="$(gh api "repos/${GITHUB_REPOSITORY}" --jq .id)"
+          main_sha="$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)"
+          test "${repo_id}" -gt 0
+          test "${#main_sha}" -eq 40
+          test "$(git rev-parse HEAD)" = "${main_sha}"
+          echo "repo_id=${repo_id}" >> "$GITHUB_OUTPUT"
+          echo "main_sha=${main_sha}" >> "$GITHUB_OUTPUT"
+      - name: Create activation receipt
+        env:
+          SESSION_ID: ${{ inputs.session_id }}
+          NAYA_IDENTITY: ${{ inputs.naya_identity }}
+          HUMAN_AUTHORITY: ${{ inputs.human_authority }}
+          JOB: ${{ inputs.job }}
+          GATES: ${{ inputs.gates }}
+          PROOF_PLAN: ${{ inputs.proof_plan }}
+          REPO_ID: ${{ steps.trusted.outputs.repo_id }}
+          MAIN_SHA: ${{ steps.trusted.outputs.main_sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          receipt = {
+            "schema": "naya.activation.receipt.v2",
+            "status": "ACTIVATED",
+            "session_id": os.environ["SESSION_ID"],
+            "naya_identity": os.environ["NAYA_IDENTITY"],
+            "human_authority": os.environ["HUMAN_AUTHORITY"],
+            "repository": os.environ["GITHUB_REPOSITORY"],
+            "repository_id": os.environ["REPO_ID"],
+            "job": os.environ["JOB"],
+            "gates": [x.strip() for x in os.environ["GATES"].split(",") if x.strip()],
+            "proof_plan": os.environ["PROOF_PLAN"],
+            "main_sha": os.environ["MAIN_SHA"],
+            "activated_at": datetime.now(timezone.utc).isoformat(),
+            "activation_run_id": os.environ["GITHUB_RUN_ID"],
+            "activation_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+            "activation_workflow": os.environ["GITHUB_WORKFLOW_REF"].split("@")[0].split("/", 1)[1],
+          }
+          required = ("session_id", "naya_identity", "human_authority", "job", "proof_plan")
+          if not all(receipt[k].strip() for k in required) or not receipt["gates"]:
+            raise SystemExit("activation receipt inputs incomplete")
+          with open("receipt.json", "w", encoding="utf-8") as f:
+            json.dump(receipt, f, sort_keys=True, separators=(",", ":"))
+            f.write("\n")
+          PY
+      - name: Upload the canonical receipt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-activation-receipt
+          path: receipt.json
+          if-no-files-found: error
+          retention-days: 1
