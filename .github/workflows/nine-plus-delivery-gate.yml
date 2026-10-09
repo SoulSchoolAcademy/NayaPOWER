@@ -1,0 +1,44 @@
+name: 9+ Delivery Gate (advisory)
+
+# SN-0526 - Quality Before Speed, The 9+ Delivery Law (Shawn Vibert,
+# 2026-10-08 - RATIFIED): "No agent sends Shawn anything below 9/10. Every
+# deliverable gets scorecarded by the sending agent BEFORE it reaches him.
+# If it's not 9+, it goes back - never forward."
+#
+# This check is ADVISORY ONLY. It reports whether the PR body - a common
+# deliverable surface - reads as Shawn-facing and carries a 9+ scorecard.
+# It NEVER fails and NEVER blocks merging; the sending seat owns the
+# honesty of the score (nine-floor doctrine: Shawn spot-checks the math).
+# Promoting this to a required/blocking check is a merge-policy change and
+# needs the Human Director's explicit word.
+#
+# First mechanical rung only: presence and threshold, not honesty.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  nine-plus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check 9+ delivery gate on PR body (advisory)
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # The tool exits 1 when a Shawn-facing body is unscored or below
+          # 9.0; the workflow is advisory by construction, so the step always
+          # succeeds and the verdict lands in the step summary for the
+          # sending seat to read before anything reaches Shawn.
+          python3 tools/check_nine_plus_delivery.py \
+            --body-env PR_BODY --pr "$PR_NUMBER" --summary >> "$GITHUB_STEP_SUMMARY" || true
+          echo "Advisory 9+ delivery check complete - verdict in the summary above."
