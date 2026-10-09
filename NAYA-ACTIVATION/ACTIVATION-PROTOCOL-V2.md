@@ -59,6 +59,8 @@ So the law is enforced the three ways that actually work:
    wakes up connected; it never has to remember to connect.
 2. **Skipping is detectable.** Receipts carry SHAs. The design gate checks every
    deliverable for a current activation citation. No citation = visible, flaggable, rework.
+   (Design: `NAYA-ACTIVATION/TRUSTED-RUNNER-DESIGN.md` — the check runs in CI where the
+   builder cannot forge expected values, per SN-0787.)
 3. **Skipping is pointless.** The blocks, the generators, the briefs, the doctrine —
    everything worth using lives behind activated state. An unactivated seat works blind,
    with worse tools and worse results. There is no advantage in skipping.
