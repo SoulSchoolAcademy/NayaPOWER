@@ -1,0 +1,209 @@
+# Design Gate — Code Is Law at the delivery boundary.
+#
+# Naya 1's requirement: this workflow must ACTUALLY RUN the gate, not just exist.
+# Scorer requirements R1–R10 (independent attack plan) are enforced below.
+# R11 (reconciliation): the workflow must exercise the CURRENT gate — not a
+# stale copy — with the repaired parser cases pinned as regression fixtures.
+#
+# RECONCILED 2026-10-09 (naya5/gate-ci-reconciled) against gate head
+#   naya5/ship-design-gate @ 3bfa8f64
+#   "fix(gate): close 5 parser blind spots found by independent red-team"
+# Pair A's branch (naya5/pair-a-gate-ci @ 10857db5) was built against the
+# PRE-REPAIR gate (6a3ed8ce3) — its fixtures could not prove the repairs.
+# This branch carries the current gate in-tree (based on the gate branch),
+# and adds one regression fixture per repair:
+#   regress-01-named-yellow.html  (body{background:yellow} — named light color)
+#   regress-02-hsl-white.html     (body{background:hsl(0,0%,100%)} — hsl white)
+#   regress-03-snow.html          (.snowpanel{background:snow} — named surface)
+#   regress-04-script-src-ws.html (<script src ="..."> — whitespace evasion)
+#   regress-05-link-rel-ws.html   (<link rel = "stylesheet" ...> — whitespace evasion)
+# Each fixture was PROVEN to PASS the pre-repair gate (6a3ed8ce3) and to be
+# REJECTED by the current gate (3bfa8f64) with the repair-targeted violation.
+# If a future gate change drops a repair, its fixture turns red here first.
+#
+# R1  Triggers: pull_request (ALL branches incl. forks) AND push to main.
+#     No paths filter — the gate cannot be dodged by touching other files.
+# R2  Failure propagates: gate exit 1 fails the job. No continue-on-error,
+#     no `|| true`. The ONE `set +e` pattern checks `$?` explicitly (permitted);
+#     exit 0 on a violating page = BYPASS = job fails; crash = job fails.
+#     (The `set +e` measuring pattern of collective-chain-readiness-gate.yml
+#     is deliberately NOT copied here — this is an enforcement gate.)
+# R3  The gate executes on real files: its own red-green self-test plus real
+#     fixture pages. No zero-file theater.
+# R4  Self-proof first: --self-test must exit 0 before any verdict is trusted.
+# R5  Default checkout (PR merge ref). No `ref: main` override — the gate tests
+#     the code under review, not a different tree.
+# R6  REQUIRED STATUS CHECK: the check name is "Design Gate / design-gate".
+#     Adding it to main's branch protection requires admin action (an authority
+#     change — Shawn's word). Until then this workflow RUNS on every PR but
+#     cannot BLOCK merges. That gap is named, not hidden.
+# R7  Activation mode is real: --require-activation is passed a receipt minted
+#     FRESH in this run (activated_at=now, always inside the 4h TTL), bound to
+#     $GITHUB_REPOSITORY via --expected-repo, main_sha=$GITHUB_SHA (40-hex).
+#     Honest limit: a CI-minted receipt is self-asserted — the gate layer
+#     proves structure/format/freshness/binding, NOT independent truth.
+# R8  Vacuous-pass guard: if the gate, the manifest, the base fixtures, or
+#     any of the 5 repair-regression fixtures are absent, the job FAILS
+#     closed. Zero deliverables scanned can never pass, and a repair can
+#     never silently lose its regression fixture.
+# R9  Naya 3's checker (tools/qa/activation_receipt_consistency.mjs, PR #1974)
+#     is NOT run here — the file does not exist in the repo yet (verified:
+#     present only on PR #1974's head). Wiring it in before it merges would be
+#     fake enforcement. Integration contract when it lands:
+#       1. PR #1974 merged to main.
+#       2. A SEPARATE independent-runner job builds `expected` (main SHA, blob
+#          SHAs, goal/feed digests, receipt digest) from LIVE GitHub API state.
+#          Builder-supplied `expected` is UNSAFE (her README's security warning).
+#       3. That job invokes her pure function. Her unit tests alone are not CI
+#          integration (her README says so explicitly).
+# R10 Deterministic, pinned, offline: actions SHA-pinned, python 3.12 pinned,
+#     gate is stdlib-only (no network), manifest ships in-repo.
+# R11 Stale-gate guard: --self-test output must contain all 6 blind-spot
+#     regression lines (5 repairs + hsl-black control). A stale, pre-repair
+#     gate cannot print them — so the job fails closed if the gate under
+#     test ever stops being the repaired gate. Behavior-based, not byte-
+#     pinned: future repairs add lines; this never false-fails on evolution.
+#
+# What this workflow does NOT yet do (named, not hidden):
+#   - Scan arbitrary repo HTML for deliverables (per-PR page scanning is the
+#     documented next step; --require-activation on every HTML change would be
+#     a policy decision for Shawn/Naya 1, not a unilateral CI imposition).
+#   - Judge craft/copy/motion — those remain Shawn's eye.
+name: Design Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  design-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: R8 vacuous-pass guard (fail closed on missing enforcement targets)
+        run: |
+          test -f tools/design_gate.py || { echo "R8: tools/design_gate.py absent — failing closed"; exit 1; }
+          test -f smart-blocks/manifest.json || { echo "R8: smart-blocks/manifest.json absent — failing closed"; exit 1; }
+          test -f tools/design_gate_fixtures/lawful.html || { echo "R8: lawful fixture absent — failing closed"; exit 1; }
+          test -f tools/design_gate_fixtures/violating.html || { echo "R8: violating fixture absent — failing closed"; exit 1; }
+          for n in 01-named-yellow 02-hsl-white 03-snow 04-script-src-ws 05-link-rel-ws; do
+            test -f "tools/design_gate_fixtures/regress-$n.html" \
+              || { echo "R8: repair-regression fixture regress-$n absent — failing closed"; exit 1; }
+          done
+          count=$(find tools/design_gate_fixtures -name '*.html' | wc -l)
+          echo "R8: gate + manifest + base fixtures + 5 repair fixtures present ($count pages)"
+
+      - name: R4+R11 gate self-test + stale-gate guard (proves the REPAIRED gate is under test)
+        run: |
+          out=$(python3 tools/design_gate.py --self-test 2>&1)
+          code=$?
+          echo "$out"
+          if [ "$code" -ne 0 ]; then
+            echo "R4: gate self-test failed (exit $code) — no verdict trusted"
+            exit 1
+          fi
+          # R11: the current gate prints one blind-spot line per repair; a
+          # stale pre-repair gate cannot. Six lines expected (5 repairs +
+          # the hsl-black control).
+          held=$(echo "$out" | grep -c "SELF-TEST: blind-spot.*held (good)")
+          if [ "$held" -ne 6 ]; then
+            echo "R11 STALE GATE: only $held/6 blind-spot regressions held —"
+            echo "the gate under test is not the repaired gate. Failing closed."
+            exit 1
+          fi
+          echo "R4+R11: self-test green, all 6 blind-spot regressions held"
+
+      - name: R7 mint a fresh CI activation receipt
+        # Receipts expire after 4h, so CI mints its own per run: schema,
+        # status, repository binding and marker integrity are verified by
+        # the gate. See R7 caveat in the header.
+        run: |
+          python3 - <<'EOF'
+          import json, hashlib, datetime, os
+          now = datetime.datetime.now(datetime.timezone.utc)
+          receipt = {
+              "schema": "naya.activation.receipt.v2",
+              "status": "ACTIVATED",
+              "session_id": "ci-design-gate",
+              "naya_identity": "CI",
+              "human_authority": "Shawn",
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "job": "design-gate-ci",
+              "gates": ["Usefulness Gate"],
+              "proof_plan": "ci-enforcement",
+              "main_sha": os.environ["GITHUB_SHA"],
+              "activated_at": now.isoformat(),
+          }
+          raw = json.dumps(receipt).encode()
+          with open("/tmp/ci-receipt.json", "wb") as f:
+              f.write(raw)
+          digest = hashlib.sha256(raw).hexdigest()
+          with open("tools/design_gate_fixtures/lawful.html") as f:
+              page = f.read()
+          marked = page.replace(
+              "</body>",
+              "<!-- NAYA-ACTIVATION-RECEIPT-SHA256:" + digest + " --></body>")
+          with open("/tmp/lawful-marked.html", "w") as f:
+              f.write(marked)
+          print("receipt minted; marker digest " + digest[:12] + "...")
+          EOF
+
+      - name: Lawful page must PASS with activation enforced
+        run: |
+          python3 tools/design_gate.py /tmp/lawful-marked.html \
+            --require-activation --receipt=/tmp/ci-receipt.json \
+            --expected-repo="${{ github.repository }}"
+
+      - name: Violating page must be REJECTED with activation enforced
+        # R2: the gate must exit 1 (violations found). Exit 0 means the gate
+        # was bypassed -> the job FAILS. Any other exit means the gate crashed
+        # -> the job also FAILS (a crash is not enforcement). The `set +e`
+        # here is the explicitly permitted pattern: every exit code is
+        # checked via `$?`, nothing is swallowed.
+        run: |
+          set +e
+          python3 tools/design_gate.py tools/design_gate_fixtures/violating.html \
+            --require-activation --receipt=/tmp/ci-receipt.json \
+            --expected-repo="${{ github.repository }}"
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
+            echo "GATE BYPASS: violating page passed the gate — enforcement is broken"
+            exit 1
+          elif [ "$code" -eq 1 ]; then
+            echo "Gate correctly rejected the violating page (exit 1)"
+          else
+            echo "Gate crashed instead of enforcing (exit $code)"
+            exit 1
+          fi
+
+      - name: R11 parser-repair regressions must each be REJECTED
+        # One page per repaired blind spot (reconciled 2026-10-09 against gate
+        # head 3bfa8f64). Each page passed the PRE-repair gate — the evasion
+        # was real — so a rejection here proves the repair holds in CI.
+        # Same R2 exit-code discipline as the violating page above.
+        run: |
+          fail=0
+          for page in tools/design_gate_fixtures/regress-*.html; do
+            set +e
+            python3 tools/design_gate.py "$page" >/dev/null 2>&1
+            code=$?
+            set -e
+            name=$(basename "$page")
+            if [ "$code" -eq 1 ]; then
+              echo "REPAIR HELD: $name rejected (exit 1)"
+            elif [ "$code" -eq 0 ]; then
+              echo "REPAIR REGRESSED: $name passed the gate — blind spot is back"
+              fail=1
+            else
+              echo "GATE CRASH on $name (exit $code)"
+              fail=1
+            fi
+          done
+          exit $fail
