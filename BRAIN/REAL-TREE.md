@@ -1,7 +1,7 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `455cdf5a7d846d16dd56e19b12b4a61ab242d866`  
+**Receipt basis commit:** `5dd6bd04774e335fa465431a3a5df402a1c4e8d4`  
 **Inventory file count:** 1211  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
