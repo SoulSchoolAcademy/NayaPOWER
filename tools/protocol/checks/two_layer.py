@@ -19,10 +19,14 @@ Exempt types (one-line pings stay cheap — the law deliberately skips):
 The carve-out is NARROW: it covers one-line pings only. A record that
 carries substantive consequential content VOIDS the exemption — content
 decides the path, not the label (a relabel is not a rule). Substantive =
-any of technical/plain_human/full_text present and non-blank, or any
-other text field at/over PING_MAX_CHARS (300) chars. The voided record
-is then checked as a consequential report: it can still pass, but only
-by actually honoring the two layers.
+any report-shaped field present and non-blank (technical, plain_human,
+full_text, blocker_x, unblock_action — a one-line ping never carries
+these), or PING_MAX_CHARS (300) total chars of text accounted IN
+AGGREGATE across ALL fields, whatever their names or types: splitting
+text across fields cannot dodge the accounting, and non-str payloads
+(lists, nested dicts) count as content. The voided record is then
+checked as a consequential report: it can still pass, but only by
+actually honoring the two layers.
 
 Anything else fails CLOSED: an unknown report_type is never silently
 defaulted to exempt. (Fail-closed on shape, not just syntax — the
@@ -47,12 +51,15 @@ Checks (fail-closed: shape first via shape_closed.validate_shape):
   5. plain_human is not a copy of technical (token Jaccard < 0.7).
      Copy-pasting the jargon into the second field is the laziest exploit.
   6. plain_human carries at least one plain-words signal (cheap screen —
-     the law's own markers), AND reads plain: Flesch Reading Ease >= 50.
+     the law's own markers), AND reads short: Flesch Reading Ease >= 50.
      Sprinkling one signal phrase into jargon, or paraphrasing the jargon,
-     keeps the long words and long sentences, so Flesch stays low. To beat
-     50 you must write short sentences in short, common words — which IS
-     the law's demand ("like explaining to a child"). The exploit
-     collapses into compliance.
+     keeps the long words and long sentences, so Flesch stays low and the
+     wall kills the lazy attacks. HONEST LIMIT, measured live 2026-10-09:
+     Flesch rewards SHORTNESS, not plainness — choppy jargon in short
+     fragments scores 62.8 and passes, while a genuine flowing explanation
+     that must name technical things scores 46-47 and fails. No Flesch
+     threshold separates the two (the bands overlap), so this wall is a
+     laziness screen, not a plainness test. See HONEST BOUND below.
   7. If full_text is provided, it must contain a TECHNICAL marker followed
      by a PLAIN-WORDS marker. Order is the law: technicals-first-then-literal.
 
@@ -60,13 +67,27 @@ HONEST BOUND (what this check provably does NOT do):
   - It proves READABILITY, not truthfulness. A readable-but-vacuous layer
     ("In other words, think of it like a car. For example, it drives.")
     passes the mechanics while explaining nothing.
+  - JARGON-READABLE PASSES (admitted 2026-10-09, measured live by the
+    independent re-validator): choppy jargon in short fragments
+    ("In other words: the CSI driver choked. PVs stuck. Kubelet flapped.
+    Restarts looped. Nodes drained.") scores Flesch 62.8 and PASSES.
+    Flesch measures short words in short sentences — shortness, not
+    plainness. No threshold on this axis separates jargon-short from
+    plain-long; the bands overlap.
+  - FALSE NEGATIVES EXIST (admitted 2026-10-09, measured live): a genuine
+    plain explanation that must name technical things, written in flowing
+    sentences, scores 46-47 and FAILS at threshold 50 — including the
+    prior round's own honoring fixture at 46.1. Real two-layer reports on
+    #1354 (n=6, 2026-10-09) score Flesch 62.8-73.6 and clear the wall with
+    margin; the wall is calibrated for real reports, not against every
+    genuine sentence shape.
   - It does not grade comprehension, intent, or whether the plain layer
     faithfully represents the technical layer.
   - High-stakes reports still need a human seat to actually read them.
 The check is a cheap screen against laziness and decoration — missing
 layer, verbatim copy, marker-free jargon, jargon wearing one plain-words
 phrase as camouflage. It is not a comprehension test, and it never
-claims to be.
+claims to be. It does not claim to be a plainness test either.
 
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
@@ -129,49 +150,96 @@ PLAIN_MARKERS = [
     "plainly put",
 ]
 
-# --- Hardening 2 (2026-10-09): the exempt carve-out is one-line pings only.
-# Fields that ARE the consequential report shape. A ping never carries
-# these; their presence means this is a report wearing a ping's label.
-CONSEQUENTIAL_FIELDS = ("technical", "plain_human", "full_text")
-# Other free-text payload fields a ping may legitimately carry — but only
-# as a one-liner. At/over this length it is a report, not a ping.
-# Judgment call, tested at the boundary (299 passes, 300 voids).
-PING_MAX_CHARS = 300
-PING_TEXT_FIELDS = (
-    "title",
-    "message",
-    "body",
-    "content",
-    "note",
-    "summary",
-    "details",
-    "description",
-    "text",
+# --- Hardening 2 (2026-10-09) + Round 2 (2026-10-09): the exempt
+# carve-out is one-line pings only, and CONTENT DECIDES — accounted in
+# aggregate, not per enumerated field (round-1's per-field list left
+# three same-class residuals: split-across-fields, non-str payloads,
+# uncovered report-shaped fields).
+#
+# Fields that ARE the consequential report shape. A one-line ping never
+# carries these; their non-blank presence voids the exemption on sight.
+REPORT_SHAPED_FIELDS = (
+    "technical",
+    "plain_human",
+    "full_text",
+    "blocker_x",
+    "unblock_action",
 )
+# Everything else is content-accounted IN AGGREGATE across ALL fields,
+# whatever their names: str or nested containers (a 600-word list payload
+# is content, not a type loophole; dict keys count too). Non-text scalars
+# (numbers, bools, None) carry no prose and are not counted. The
+# report_type label itself is not content.
+# At/over PING_MAX_CHARS total chars it is a report, not a one-line ping —
+# spreading 400 chars across two fields cannot dodge the accounting.
+# Judgment call, tested at the boundary (299 total chars passes, 300 voids).
+PING_MAX_CHARS = 300
+
+
+def _content_chars(value) -> int:
+    """Text chars in a value, recursing into containers."""
+    if isinstance(value, str):
+        return len(value)
+    if isinstance(value, dict):
+        return sum(_content_chars(k) + _content_chars(v)
+                   for k, v in value.items())
+    if isinstance(value, (list, tuple, set, frozenset)):
+        return sum(_content_chars(v) for v in value)
+    return 0
+
+
+def _aggregate_content(record: dict) -> tuple[int, list[tuple[str, int]]]:
+    """(total content chars, per-field breakdown) over every field except
+    the report_type label — largest contributor first."""
+    breakdown: list[tuple[str, int]] = []
+    total = 0
+    for key, val in record.items():
+        if key == "report_type":
+            continue
+        n = _content_chars(val)
+        total += n
+        if n:
+            breakdown.append((str(key), n))
+    breakdown.sort(key=lambda kv: kv[1], reverse=True)
+    return total, breakdown
 
 
 def _exemption_voided_reason(record: dict) -> str | None:
     """Why the exempt-type carve-out is voided, or None for a genuine
-    one-line ping. Content decides the path, not the label."""
-    for field in CONSEQUENTIAL_FIELDS:
+    one-line ping. Content decides the path, not the label — and content
+    is accounted IN AGGREGATE, so neither splitting text across fields
+    nor hiding it in non-str payloads changes the verdict."""
+    for field in REPORT_SHAPED_FIELDS:
         val = record.get(field)
         if isinstance(val, str) and val.strip():
-            return f"carries report field {field!r}"
-    for field in PING_TEXT_FIELDS:
-        val = record.get(field)
-        if isinstance(val, str) and len(val) >= PING_MAX_CHARS:
             return (
-                f"text field {field!r} is {len(val)} chars "
-                f"(>= {PING_MAX_CHARS}) — a report, not a one-line ping"
+                f"carries report field {field!r} — a one-line ping never "
+                "carries one"
             )
+    total, breakdown = _aggregate_content(record)
+    if total >= PING_MAX_CHARS:
+        top = ", ".join(f"{k}={v}" for k, v in breakdown[:3])
+        return (
+            f"carries {total} chars of text across {len(breakdown)} "
+            f"field(s) (>= {PING_MAX_CHARS}) — a report, not a one-line "
+            f"ping (largest: {top})"
+        )
     return None
 
 
-# --- Hardening 3 (2026-10-09): readability wall.
-# Minimum Flesch Reading Ease for the plain-words layer. Calibrated on
-# real fixtures 2026-10-09: genuine plain layers measured 55–103;
-# jargon-dense attacks (sprinkled signal phrase, paraphrase) measured
-# -0–43. The threshold sits between them with margin on both sides.
+# --- Hardening 3 (2026-10-09) + Round 2 (2026-10-09): the shortness wall.
+# Minimum Flesch Reading Ease for the plain-words layer.
+# What it IS: a laziness screen. The 8 battery attacks (signal phrase
+# sprinkled into jargon, paraphrased jargon) measured -0-43 and all die
+# here; real two-layer reports on #1354 (n=6, 2026-10-09) measured
+# 62.8-73.6 and clear 50 with margin.
+# What it IS NOT: a plainness test. Choppy jargon in short fragments
+# measured 62.8 live and PASSES — Flesch rewards shortness, not plainness.
+# A genuine flowing explanation that must name technical things measured
+# 46-47 and FAILS (false negatives, admitted). The bands overlap, so no
+# threshold on this axis separates jargon-short from plain-long: 50 is the
+# documented judgment call that kills the lazy attacks while clearing
+# real reports, not a wall against all jargon.
 MIN_FLESCH = 50.0
 
 
@@ -309,13 +377,14 @@ def check(record: dict) -> dict:
         )
     reasons.append("plain_human carries plain-words signal")
 
-    # Readability wall: the layer must READ plain, not just wear one
+    # Shortness wall: the layer must read SHORT, not just wear one
     # plain-words phrase as camouflage. Sprinkling "in other words" into
     # jargon, or paraphrasing the jargon, keeps the long words and long
-    # sentences — Flesch stays low. Beating 50 requires writing short
-    # sentences in short, common words: the exploit collapses into
-    # compliance. (Honest bound: this proves readability, not
-    # truthfulness — a readable-but-vacuous layer still passes.)
+    # sentences — Flesch stays low and the lazy attack dies. Honest bounds
+    # (measured live 2026-10-09, pinned in tests): choppy jargon in short
+    # fragments scores 62.8 and PASSES — Flesch rewards shortness, not
+    # plainness; and a genuine flowing explanation can score 46-47 and
+    # FAIL. This wall kills laziness, not all jargon.
     ease = _flesch_reading_ease(plain)
     details["plain_flesch"] = round(ease, 1)
     if ease < MIN_FLESCH:

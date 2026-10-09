@@ -123,10 +123,14 @@ def test_h2_short_technical_field_voids_too():
 
 
 def test_h2_boundary_299_char_message_still_ping():
+    # ROUND 2 (2026-10-09): the boundary is TOTAL content, not per-field.
+    # 299-char message + 6-char title = 305 total -> voids under the
+    # aggregate rule. This test now pins the total-content boundary:
+    # 293-char message + 6-char title = 299 total -> still a ping.
     rec = {
         "report_type": "status_ping",
         "title": "update",
-        "message": "x" * 299,
+        "message": "x" * 293,
     }
     r = two_layer.check(rec)
     assert r["pass"] is True, r["reasons"]
@@ -134,10 +138,11 @@ def test_h2_boundary_299_char_message_still_ping():
 
 
 def test_h2_boundary_300_char_message_voids():
+    # ROUND 2: 294-char message + 6-char title = 300 total -> voids.
     rec = {
         "report_type": "status_ping",
         "title": "update",
-        "message": "x" * 300,
+        "message": "x" * 294,
     }
     r = two_layer.check(rec)
     assert r["pass"] is False, r["reasons"]
