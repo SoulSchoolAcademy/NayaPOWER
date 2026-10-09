@@ -145,6 +145,72 @@ def validate_shawn_direct(capture) -> dict:
     }
 
 
+def _canonical_lesson_bytes(capture) -> bytes:
+    """Canonical bytes of the capture's lesson content (integrity binding)."""
+    intel = capture.get("intelligence")
+    lesson = intel if isinstance(intel, dict) else {"lesson": capture.get("lesson")}
+    canonical = json.dumps(lesson, sort_keys=True, separators=(",", ":"),
+                           ensure_ascii=False)
+    return canonical.encode("utf-8")
+
+
+def check_capture_integrity(capture) -> dict:
+    """Run the automatic machine integrity guards on the instant path.
+
+    Naya 1's acceptance (2026-10-09): instant authorization skips the
+    human value-review queue, NOT machine integrity checks. These run on
+    every instant activation, authorized or not:
+      - schema: required fields present and well-formed
+      - provenance: captured_at parseable
+      - privacy: scope, when declared, is a known value
+      - integrity: a declared content_hash must match recomputed bytes
+
+    Returns the list of passed checks. Raises InstantActivationRefused
+    with MALFORMED_INPUT or TAMPERED_INPUT on any failure.
+    """
+    checks = []
+    title = (capture or {}).get("title")
+    if not isinstance(title, str) or not title.strip():
+        raise InstantActivationRefused("MALFORMED_INPUT",
+                                       "capture.title is missing or empty.")
+    checks.append("schema:title_present")
+
+    intel = (capture or {}).get("intelligence")
+    lesson = capture.get("lesson")
+    if not isinstance(intel, dict) and not (isinstance(lesson, str) and lesson.strip()):
+        raise InstantActivationRefused("MALFORMED_INPUT",
+                                       "capture has no lesson content "
+                                       "(intelligence dict or lesson string).")
+    checks.append("schema:lesson_present")
+
+    captured_at = str(((capture or {}).get("source") or {}).get("captured_at") or "")
+    if _parse_ts(captured_at) is None:
+        raise InstantActivationRefused("MALFORMED_INPUT",
+                                       f"source.captured_at unparseable: {captured_at!r}.")
+    checks.append("provenance:captured_at_parseable")
+
+    scope = str(capture.get("scope") or capture.get("owner_scope") or "PRIVATE").upper()
+    if scope not in {"PRIVATE", "PUBLIC", "COLLECTIVE"}:
+        raise InstantActivationRefused("MALFORMED_INPUT",
+                                       f"unknown scope {scope!r}; expected "
+                                       "PRIVATE, PUBLIC, or COLLECTIVE.")
+    checks.append("privacy:scope_known")
+
+    declared = (capture or {}).get("content_hash")
+    if declared:
+        recomputed = hashlib.sha256(_canonical_lesson_bytes(capture)).hexdigest()
+        if str(declared).lower() != recomputed:
+            raise InstantActivationRefused(
+                "TAMPERED_INPUT",
+                "capture.content_hash does not match the recomputed lesson "
+                "bytes; the input was tampered with after hashing.")
+        checks.append("integrity:content_hash_bound")
+    else:
+        checks.append("integrity:content_hash_computed")
+    return {"checks": checks,
+            "content_hash": hashlib.sha256(_canonical_lesson_bytes(capture)).hexdigest()}
+
+
 def _ib_slug(title: str, captured_at: str) -> str:
     date = (captured_at or "")[:10].replace("-", "")
     return f"IB-SMART-NOTE-{date}-{sn2.slug(title or 'untitled')}"
@@ -227,24 +293,23 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
              private_root=None, brain_root=None) -> dict:
     """Activate a Shawn-verified capture in one motion.
 
-    Steps (all inside this call, no queue, no second verification):
+    Steps (all inside this call, no queue, no second human value-review):
       1. validate the shawn_direct marker (fail-closed),
-      2. reserve the SN id,
-      3. render the projection,
-      4. write the registry entry with truth_state=VERIFIED,
-      5. mint the activation receipt,
-      6. produce the smart link.
+      2. run the automatic machine integrity guards (fail-closed),
+      3. reserve the SN id,
+      4. render the projection,
+      5. write the registry entry with truth_state=VERIFIED,
+      6. mint the activation receipt,
+      7. verify the persisted bytes by read-back (fail-closed),
+      8. produce the smart link.
 
-    brain_root overrides the projection root (tests). The smart link is
-    always derived from the canonical BRAIN/05-MEMORY/SMART-NOTES/ suffix,
-    so it names the location the file WILL have on main.
-
-    Returns a dict with sn_id, intelligent_block_id, projection_path,
-    smart_link, truth_state, receipt, and receipt_path.
-
-    Raises InstantActivationRefused for anything without a valid marker.
+    Naya 1's acceptance (2026-10-09): instant authorization skips the
+    value-review queue, NOT machine integrity checks. This function is
+    capture activation, not learning proof -- it must never be reported
+    as causal behavioral learning or successor reuse.
     """
     verification = validate_shawn_direct(capture)
+    integrity = check_capture_integrity(capture)
 
     title = str(capture.get("title") or "").strip()
     if not title:
@@ -329,6 +394,7 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
         "projection_path": entry.get("projection_path"),
         "smart_link": smart_link,
         "smart_link_status": smart_link_status,
+        "integrity_checks": integrity["checks"],
         "law": "Shawn's Verification Law (2026-10-09): his word IS the verification.",
     }
     receipt["receipt_hash"] = _hash_receipt(receipt)
@@ -341,6 +407,27 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
     receipt_path.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
                             encoding="utf-8")
 
+    # Genuine persistence receipt: read the stored bytes back and verify.
+    # A receipt for bytes that were never durably written is a lie with
+    # formatting (Usefulness Gate). Any mismatch fails closed.
+    stored = json.loads(receipt_path.read_text(encoding="utf-8"))
+    if stored.get("receipt_hash") != receipt["receipt_hash"]:
+        raise InstantActivationRefused(
+            "PERSISTENCE_NOT_VERIFIED",
+            "receipt bytes read back do not match the minted receipt.")
+    stored_reg = json.loads(reg_path.read_text(encoding="utf-8"))
+    stored_entry = next(
+        (e for e in stored_reg.get("entries", [])
+         if e.get("intelligent_block_id") == ib), None)
+    if stored_entry is None or stored_entry.get("truth_state") != "VERIFIED":
+        raise InstantActivationRefused(
+            "PERSISTENCE_NOT_VERIFIED",
+            "registry entry read back is missing or not VERIFIED.")
+    if not projection.exists():
+        raise InstantActivationRefused(
+            "PERSISTENCE_NOT_VERIFIED",
+            f"projection file missing at {projection}.")
+
     return {
         "activated": True,
         "sn_id": sn_id,
@@ -349,6 +436,8 @@ def activate(capture: dict, *, registry_path=None, receipt_dir=None,
         "smart_link": smart_link,
         "truth_state": "VERIFIED",
         "verification_method": "shawn_direct_verification",
+        "integrity_checks": integrity["checks"],
+        "persistence_verified": True,
         "receipt": receipt,
         "receipt_path": str(receipt_path),
     }

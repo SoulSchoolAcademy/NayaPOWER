@@ -234,7 +234,7 @@ def test_cli_refuses_non_shawn_capture(env, tmp_path, capsys):
 
 
 # ------------------------------------------------------------------
-# 3. Receipt integrity
+# 3. Receipt integrity + persistence verification
 # ------------------------------------------------------------------
 
 def test_receipt_hash_detects_tampering(env):
@@ -243,3 +243,56 @@ def test_receipt_hash_detects_tampering(env):
     good = receipt["receipt_hash"]
     receipt["title"] = "TAMPERED TITLE"
     assert ia._hash_receipt(receipt) != good
+
+
+def test_receipt_bytes_on_disk_match_minted_receipt(env):
+    # A genuine persistence receipt: the stored bytes ARE the receipt.
+    result = _activate(_shawn_capture(), env)
+    stored = json.loads(Path(result["receipt_path"]).read_text(encoding="utf-8"))
+    assert stored == result["receipt"]
+    assert result["persistence_verified"] is True
+
+
+def test_integrity_checks_recorded_in_receipt(env):
+    result = _activate(_shawn_capture(), env)
+    checks = result["receipt"]["integrity_checks"]
+    assert "schema:title_present" in checks
+    assert "integrity:content_hash_computed" in checks
+    assert result["integrity_checks"] == checks
+
+
+# ------------------------------------------------------------------
+# 4. Naya 1's acceptance: integrity guards run on the authorized path
+# ------------------------------------------------------------------
+
+def test_authorized_capture_still_runs_integrity_checks(env):
+    # Instant authorization skips the value-review queue, NOT machine
+    # integrity checks. A structurally broken capture is refused even
+    # with a perfect shawn_direct marker.
+    cap = _shawn_capture()
+    cap["title"] = "   "
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate(cap, env)
+    assert exc.value.code == "MALFORMED_INPUT"
+
+
+def test_tampered_content_hash_refused(env):
+    cap = _shawn_capture()
+    cap["content_hash"] = "0" * 64  # declared but does not match the bytes
+    with pytest.raises(ia.InstantActivationRefused) as exc:
+        _activate(cap, env)
+    assert exc.value.code == "TAMPERED_INPUT"
+    assert not Path(env["registry"]).exists()
+
+
+def test_matching_content_hash_passes_integrity(env):
+    import hashlib as _hl
+    cap = _shawn_capture()
+    intel = {"lesson": cap["lesson"]}
+    cap["intelligence"] = intel
+    cap["content_hash"] = _hl.sha256(
+        json.dumps(intel, sort_keys=True, separators=(",", ":"),
+                   ensure_ascii=False).encode()).hexdigest()
+    result = _activate(cap, env)
+    assert result["activated"] is True
+    assert "integrity:content_hash_bound" in result["integrity_checks"]
