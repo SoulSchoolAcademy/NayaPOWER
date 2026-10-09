@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Stats v2 — Visual Bliss · Data You've Never Seen · Naya Lego Library</title>
+<style>
+/* ============ TOKENS (inlined — self-contained, black ground bulletproof) ============ */
+:root{
+  --field:#050507;--surface:#101116;--surface-2:#17181f;--ink:#f8f7fb;--quiet:#c8c2ce;
+  --line:rgba(255,255,255,.20);--soft-line:rgba(255,255,255,.10);
+  --magenta:#e84fff;--purple:#a06bff;--blue:#3fb8ff;--green:#2fe89e;--gold:#ffbf3d;
+  --teal:#40d3bb;--coral:#ff5e6c;
+  --ease:cubic-bezier(.22,1,.36,1);--snap:cubic-bezier(.32,.72,0,1);
+  --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#050507;color:var(--ink);font-family:Manrope,Inter,ui-sans-serif,system-ui,sans-serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding:0 24px 120px}
+/* ambient breathing field — the page itself breathes with the data */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 480px at 12% 0%,rgba(232,79,255,.07),transparent 60%),
+             radial-gradient(800px 480px at 88% 18%,rgba(160,107,255,.06),transparent 60%),
+             radial-gradient(700px 600px at 50% 100%,rgba(63,184,255,.05),transparent 60%);
+  animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
+.nav{max-width:1180px;margin:0 auto;padding:28px 0;display:flex;align-items:center;gap:14px}
+.nav a{color:var(--quiet);text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.06em}
+.nav a:hover{color:var(--ink)}
+.nav .v2tag{font-size:11px;font-weight:800;letter-spacing:.22em;color:#050507;background:linear-gradient(100deg,var(--magenta),var(--blue));padding:5px 12px;border-radius:999px}
+.wrap{max-width:1180px;margin:0 auto}
+.kicker{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--quiet);margin-bottom:14px}
+h1{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin-bottom:16px}
+h1 .grad{background:linear-gradient(100deg,var(--magenta),var(--purple) 35%,var(--blue) 70%,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--quiet);max-width:740px;margin-bottom:20px}
+.lawstrip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
+.lawstrip span{font-size:12px;font-weight:800;letter-spacing:.14em;padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:var(--quiet)}
+section{margin:84px 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-num{font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--purple)}
+h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
+.sec-desc{color:var(--quiet);margin-bottom:28px;max-width:700px}
+/* ============ LIVING BOARD ============ */
+.board{background:linear-gradient(180deg,#121318,#0a0b0f);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px;position:relative;transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease);
+  box-shadow:0 22px 50px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.09),inset 0 -14px 28px rgba(0,0,0,.35)}
+.board:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.32);
+  box-shadow:0 30px 64px rgba(0,0,0,.65),0 8px 20px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -14px 28px rgba(0,0,0,.3)}
+.board::before{content:"";position:absolute;left:32px;top:0;width:56px;height:4px;border-radius:0 0 6px 6px;
+  background:var(--spine,var(--purple));box-shadow:0 0 16px var(--spine,var(--purple))}
+/* ============ 01 · ORBITAL DATA SYSTEM ============ */
+.orb-stage{position:relative;height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  border-radius:var(--radius)}
+.sun{width:158px;height:158px;border-radius:50%;position:relative;z-index:6;cursor:default;
+  background:radial-gradient(circle at 38% 32%,#ffffff 0%,rgba(255,255,255,.6) 26%,rgba(190,160,255,.38) 52%,rgba(24,12,48,.92) 78%,#050507 100%);
+  box-shadow:0 0 60px 12px rgba(160,107,255,.45),0 0 150px 34px rgba(160,107,255,.16),inset 0 -20px 44px rgba(0,0,0,.55);
+  animation:sunPulse 5s ease-in-out infinite}
+@keyframes sunPulse{0%,100%{box-shadow:0 0 60px 12px rgba(160,107,255,.45),0 0 150px 34px rgba(160,107,255,.16),inset 0 -20px 44px rgba(0,0,0,.55)}50%{box-shadow:0 0 80px 18px rgba(160,107,255,.6),0 0 190px 44px rgba(160,107,255,.24),inset 0 -20px 44px rgba(0,0,0,.55)}}
+.sun-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.sun-num{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#0a0616}
+.sun-lbl{font-size:10px;font-weight:800;letter-spacing:.18em;color:#2a2140;margin-top:2px}
+.orbit{position:absolute;top:50%;left:50%;border:1px solid rgba(255,255,255,.09);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.orbit-spin{position:absolute;top:50%;left:50%;width:0;height:0;animation:spin linear infinite;z-index:4}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb{position:absolute;left:0;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.22) 24%,var(--oc) 56%,rgba(0,0,0,.55) 88%);
+  box-shadow:0 0 26px 3px var(--ocg),0 12px 32px rgba(0,0,0,.6),inset 0 -12px 24px rgba(0,0,0,.45);
+  transition:scale .25s var(--ease),box-shadow .25s var(--ease)}
+.orb:hover,.orb.hot{scale:1.32;box-shadow:0 0 44px 8px var(--ocg),0 16px 40px rgba(0,0,0,.65),inset 0 -12px 24px rgba(0,0,0,.4);z-index:7}
+.orb .olbl{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--quiet);white-space:nowrap}
+#orbTip{position:fixed;z-index:50;pointer-events:none;background:#15161d;border:1px solid var(--line);border-radius:14px;
+  padding:12px 16px;min-width:190px;opacity:0;transform:translateY(6px);transition:opacity .18s var(--ease),transform .18s var(--ease);
+  box-shadow:0 18px 44px rgba(0,0,0,.6)}
+#orbTip.show{opacity:1;transform:translateY(0)}
+#orbTip .t-name{font-size:13px;font-weight:800;letter-spacing:.1em}
+#orbTip .t-val{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+#orbTip .t-chg{font-size:13px;font-weight:700;margin-top:2px}
+.orb-detail{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.orb-sub{background:#0c0d12;border:1px solid var(--soft-line);border-radius:16px;padding:16px 18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -10px 20px rgba(0,0,0,.35),0 10px 24px rgba(0,0,0,.4)}
+.orb-sub .s-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--quiet)}
+.orb-sub .s-val{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:4px}
+.orb-sub .s-bar{height:6px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
+.orb-sub .s-bar i{display:block;height:100%;border-radius:99px;background:var(--sc);box-shadow:0 0 10px var(--sc)}
+.orb-hint{text-align:center;color:var(--quiet);font-size:14px;margin-top:18px}
+</style>
+</head>
+<body>
+<div id="orbTip"><div class="t-name"></div><div class="t-val"></div><div class="t-chg"></div></div>
+<nav class="nav"><a href="../index.html">← Naya Lego Library</a><span class="v2tag">V2 · REINVENTED</span></nav>
+<div class="wrap">
+  <div class="kicker">Smart Stats · Version 2</div>
+  <h1>Data you've <span class="grad">never seen before.</span></h1>
+  <p class="lede">Not better bar charts — entirely new ways to see. Orbs in orbit. Rivers of light. A heartbeat you can watch. Numbers with real weight. Every visualization below was invented for NayaNET: dimensional, alive, and honest about what the numbers mean.</p>
+  <div class="lawstrip"><span>BLACK GROUND</span><span>SPECTRUM = MEANING</span><span>ZERO FLAT</span><span>EVERYTHING BREATHES</span><span>PLAY WITH IT</span></div>
+
+  <!-- ============ 01 · THE ORBITAL SYSTEM ============ -->
+  <section id="orbital">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The Orbital System</h2></div>
+    <p class="sec-desc">The center holds the whole. Every category is a world in orbit — sized by its value, glowing in its spectrum color, moving at its own speed like real planets. Hover to hold one still. Click to make it the center of its own story.</p>
+    <div class="board" style="--spine:var(--purple)">
+      <div class="orb-stage" id="orbStage">
+        <div class="sun" id="sun"><div class="sun-core"><div class="sun-num" id="sunNum">51,210</div><div class="sun-lbl">INTELLIGENCE ACTIONS · THIS WEEK</div></div></div>
+      </div>
+      <div class="orb-detail" id="orbDetail"></div>
+      <p class="orb-hint">◈ Hover an orb to hold it still &amp; read it &nbsp;·&nbsp; Click an orb to open its world</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 · RIVERS OF LIGHT ============ -->
+  <section id="rivers">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Rivers of Light</h2></div>
+    <p class="sec-desc">Data doesn't sit still — it flows. Each category is a river of living light, its width carrying its weight, its current always moving. The rivers merge into one great confluence: the whole system, flowing together.</p>
+    <div class="board" style="--spine:var(--blue)" id="riverBoard"></div>
+  </section>
+
+  <!-- ============ 03 · THE HEARTBEAT ============ -->
+  <section id="heartbeat">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The Heartbeat</h2></div>
+    <p class="sec-desc">Every living system has a pulse. This is NayaNET's — engagement beating across the week. Watch the light travel the wave. When the rhythm changes, something real changed.</p>
+    <div class="board" style="--spine:var(--green)">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:6px">
+        <div class="mega-num" style="--ng:rgba(47,232,158,.4);font-size:clamp(44px,6vw,72px)"><span id="bpmNum">72</span><span style="font-size:.4em;color:var(--quiet)"> bpm</span></div>
+        <div style="color:var(--quiet);font-size:14px;font-weight:700;letter-spacing:.1em">DATA PULSE · LIVE</div>
+      </div>
+      <svg viewBox="0 0 640 170" style="width:100%;height:auto;display:block" role="img" aria-label="Engagement heartbeat wave">
+        <defs>
+          <linearGradient id="hbGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2fe89e"/><stop offset=".5" stop-color="#3fb8ff"/><stop offset="1" stop-color="#2fe89e"/>
+          </linearGradient>
+        </defs>
+        <g stroke="rgba(255,255,255,.07)" stroke-width="1">
+          <line x1="0" y1="42" x2="640" y2="42"/><line x1="0" y1="90" x2="640" y2="90"/><line x1="0" y1="138" x2="640" y2="138"/>
+        </g>
+        <path id="hbPath" d="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"
+          fill="none" stroke="url(#hbGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+          style="filter:drop-shadow(0 0 10px rgba(47,232,158,.55))"/>
+        <circle r="14" fill="rgba(47,232,158,.18)"><animateMotion dur="7s" repeatCount="indefinite" path="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"/></circle>
+        <circle r="6" fill="#eafff5" style="filter:drop-shadow(0 0 8px #2fe89e)"><animateMotion dur="7s" repeatCount="indefinite" path="M0,90 L110,90 L124,90 L132,58 L141,118 L150,90 L268,90 L282,90 L290,52 L299,124 L308,90 L426,90 L440,90 L448,60 L457,114 L466,90 L640,90"/></circle>
+      </svg>
+      <p style="color:var(--quiet);font-size:14px;margin-top:10px">Peaks are launch moments. Valleys are rest. The wave never stops because the network never sleeps.</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 · MATERIALIZED NUMBERS ============ -->
+  <section id="numbers">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Materialized Numbers</h2></div>
+    <p class="sec-desc">Numbers with weight. They don't appear — they arrive, counting up from zero like something being built in front of you. Each one casts its own light in its spectrum color.</p>
+    <div class="board" style="--spine:var(--magenta)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px" id="megaNums"></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · THE CONSTELLATION ============ -->
+  <section id="constellation">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The Constellation</h2></div>
+    <p class="sec-desc">Relationships drawn as starlight. Every line is a real connection — hover a star to light up everything it touches. This is how the network sees itself.</p>
+    <div class="board" style="--spine:var(--gold)">
+      <div id="constel" style="position:relative;height:380px;overflow:hidden;border-radius:16px">
+        <svg id="constelSvg" style="position:absolute;inset:0;width:100%;height:100%"></svg>
+      </div>
+      <p style="color:var(--quiet);font-size:14px;margin-top:14px">6 worlds · 9 living connections · hover any star</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 · DO'S & DON'TS ============ -->
+  <section id="rules">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The Laws of Living Data</h2></div>
+    <p class="sec-desc">Innovation without discipline is decoration. These are non-negotiable.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px" id="ruleGrid"></div>
+  </section>
+
+  <!-- ============ 07 · COPY THE CODE ============ -->
+  <section id="code">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Take It With You</h2></div>
+    <p class="sec-desc">Every visualization above is built from three primitives. Learn these and you can invent your own.</p>
+    <div class="board" style="--spine:var(--purple)">
+<pre style="background:#0a0b10;border:1px solid var(--soft-line);border-radius:14px;padding:22px;overflow-x:auto;font-size:13.5px;line-height:1.7;color:#d8d4e0"><code><span style="color:#a06bff">/* 1 · THE ORB — a sphere of data */</span>
+.orb{
+  background:radial-gradient(circle at 35% 30%,
+    rgba(255,255,255,.95) 0%, rgba(255,255,255,.22) 24%,
+    var(--oc) 56%, rgba(0,0,0,.55) 88%);
+  box-shadow:0 0 26px 3px var(--ocg), 0 12px 32px rgba(0,0,0,.6);
+}
+<span style="color:#a06bff">/* 2 · THE ORBIT — motion with meaning (inner = faster) */</span>
+.orbit-spin{ animation:spin var(--dur) linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg);} }
+<span style="color:#a06bff">/* 3 · THE RIVER — data that flows */</span>
+.flow{
+  background:repeating-linear-gradient(100deg,
+    transparent 0 18px, rgba(var(--crgb),.55) 18px 34px,
+    transparent 34px 52px);
+  animation:flow 2.6s linear infinite;
+}
+@keyframes flow{ to{ background-position:52px 0; } }</code></pre>
+      <p style="color:var(--quiet);font-size:14px;margin-top:14px">Orb + Orbit + River. Spectrum colors in law order. Black ground. That's the whole alphabet — now write poetry.</p>
+    </div>
+  </section>
+</div>
+<style>
+/* v2 extension styles */
+.orb{transform:translate(-50%,-50%)}
+.mega-num{font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#f8f7fb;
+  text-shadow:0 2px 0 rgba(255,255,255,.08),0 8px 22px rgba(0,0,0,.7),0 0 46px var(--ng,rgba(160,107,255,.35))}
+.mega-lbl{font-size:12px;letter-spacing:.2em;color:var(--quiet);margin-top:10px;font-weight:700}
+.riv-row{display:grid;grid-template-columns:120px 1fr 92px;align-items:center;gap:16px;margin:18px 0}
+.riv-label{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--quiet);text-align:right}
+.river{position:relative;border-radius:999px;overflow:hidden;cursor:pointer;
+  background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.02) 45%,rgba(0,0,0,.4));
+  box-shadow:inset 0 2px 4px rgba(255,255,255,.12),inset 0 -6px 14px rgba(0,0,0,.5),0 8px 22px rgba(0,0,0,.5)}
+.river .flow{position:absolute;inset:5px;border-radius:999px;
+  background:repeating-linear-gradient(100deg,transparent 0 18px,rgba(var(--crgb),.6) 18px 32px,transparent 32px 50px),
+             linear-gradient(90deg,rgba(var(--crgb),.10),rgba(var(--crgb),.45),rgba(var(--crgb),.10));
+  background-position:0 0,0 0;animation:flow 2.4s linear infinite}
+.river:hover .flow{animation-play-state:paused;filter:brightness(1.5)}
+@keyframes flow{to{background-position:50px 0,0 0}}
+.riv-val{font-variant-numeric:tabular-nums;font-weight:800;text-align:right}
+.confluence{margin-top:28px;padding-top:24px;border-top:1px solid var(--soft-line)}
+.cstar{position:absolute;transform:translate(-50%,-50%);border-radius:50%;cursor:pointer;z-index:2;
+  background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.95),rgba(255,255,255,.2) 26%,var(--sc) 58%,rgba(0,0,0,.6) 90%);
+  box-shadow:0 0 22px 2px var(--scg),0 8px 24px rgba(0,0,0,.6);transition:scale .25s var(--ease),box-shadow .25s var(--ease)}
+.cstar:hover{scale:1.35;z-index:3}
+.cstar .slbl{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--quiet);white-space:nowrap}
+.clink{stroke:rgba(255,255,255,.14);stroke-width:1.5;transition:stroke-width .25s var(--ease)}
+.rule{background:#0c0d12;border:1px solid var(--soft-line);border-radius:18px;padding:20px 22px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),inset 0 -10px 20px rgba(0,0,0,.3),0 12px 28px rgba(0,0,0,.4)}
+.rule .r-do{color:var(--green);font-weight:800;font-size:14px;letter-spacing:.04em}
+.rule .r-dont{color:var(--coral);font-weight:800;font-size:14px;letter-spacing:.04em;margin-top:12px}
+.rule p{color:var(--quiet);font-size:14px;margin-top:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.orb-stage{height:480px}.riv-row{grid-template-columns:86px 1fr 70px}}
+</style>
+<script>
+(function(){
+'use strict';
+var CATS=[
+ {id:'creators',name:'CREATORS',color:'#e84fff',rgb:'232,79,255',value:12840,change:18.2,unit:'new apps',
+  subs:[['Published',8420],['Drafted',3110],['Remixed',1310]]},
+ {id:'builders',name:'BUILDERS',color:'#a06bff',rgb:'160,107,255',value:9615,change:9.4,unit:'components shipped',
+  subs:[['Buttons',4210],['Boards',2890],['Orbs',2515]]},
+ {id:'learners',name:'LEARNERS',color:'#3fb8ff',rgb:'63,184,255',value:18230,change:24.7,unit:'lessons completed',
+  subs:[['Design',9100],['Code',6230],['Data',2900]]},
+ {id:'sharers',name:'SHARERS',color:'#2fe89e',rgb:'47,232,158',value:7240,change:6.1,unit:'shares sent',
+  subs:[['Apps',3880],['Boards',2110],['Stats',1250]]},
+ {id:'earners',name:'EARNERS',color:'#ffbf3d',rgb:'255,191,61',value:3285,change:31.9,unit:'payouts earned',
+  subs:[['Referrals',1980],['Sales',905],['Tips',400]]}
+];
+function fmt(n){return n.toLocaleString('en-US');}
+
+/* ---------- 01 · ORBITAL SYSTEM ---------- */
+var stage=document.getElementById('orbStage'),tip=document.getElementById('orbTip'),detail=document.getElementById('orbDetail');
+var maxV=Math.max.apply(null,CATS.map(function(c){return c.value;}));
+var order=CATS.slice().sort(function(a,b){return a.value-b.value;}); // small → inner orbit
+var radii=[118,158,198,238,278],durs=['13s','17s','22s','28s','36s'];
+var orbs={};
+order.forEach(function(cat,i){
+  var R=radii[i],size=Math.round(34+(cat.value/maxV)*46);
+  var ring=document.createElement('div');ring.className='orbit';
+  ring.style.width=(R*2)+'px';ring.style.height=(R*2)+'px';stage.appendChild(ring);
+  var spin=document.createElement('div');spin.className='orbit-spin';
+  spin.style.animationDuration=durs[i];stage.appendChild(spin);
+  var orb=document.createElement('div');orb.className='orb';
+  orb.style.width=size+'px';orb.style.height=size+'px';orb.style.top=(-R)+'px';
+  orb.style.setProperty('--oc',cat.color);orb.style.setProperty('--ocg','rgba('+cat.rgb+',.55)');
+  orb.setAttribute('role','button');orb.setAttribute('tabindex','0');
+  orb.setAttribute('aria-label',cat.name+': '+fmt(cat.value)+' '+cat.unit);
+  orb.innerHTML='<div class="olbl">'+cat.name+'</div>';
+  spin.appendChild(orb);orbs[cat.id]={el:orb,spin:spin,cat:cat};
+  orb.addEventListener('mouseenter',function(){
+    spin.style.animationPlayState='paused';
+    tip.querySelector('.t-name').textContent=cat.name;tip.querySelector('.t-name').style.color=cat.color;
+    tip.querySelector('.t-val').textContent=fmt(cat.value);
+    tip.querySelector('.t-chg').textContent=(cat.change>0?'+':'')+cat.change+'% this week · '+cat.unit;
+    tip.querySelector('.t-chg').style.color=cat.change>0?'#2fe89e':'#ff5e6c';
+    var r=orb.getBoundingClientRect(),x=Math.min(r.right+16,window.innerWidth-220),y=Math.max(8,r.top-10);
+    tip.style.left=x+'px';tip.style.top=y+'px';tip.classList.add('show');
+  });
+  orb.addEventListener('mouseleave',function(){spin.style.animationPlayState='running';tip.classList.remove('show');});
+  function select(){renderDetail(cat);
+    Object.keys(orbs).forEach(function(k){orbs[k].el.classList.remove('hot');});
+    orb.classList.add('hot');}
+  orb.addEventListener('click',select);
+  orb.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();select();}});
+});
+function renderDetail(cat){
+  var maxS=Math.max.apply(null,cat.subs.map(function(s){return s[1];}));
+  detail.innerHTML=cat.subs.map(function(s){
+    var pct=Math.round(s[1]/maxS*100);
+    return '<div class="orb-sub"><div class="s-lbl">'+s[0]+'</div><div class="s-val">'+fmt(s[1])+'</div>'+
+      '<div class="s-bar"><i style="width:'+pct+'%;--sc:'+cat.color+'"></i></div></div>';
+  }).join('');
+}
+renderDetail(CATS[2]);orbs['learners'].el.classList.add('hot');
+
+/* ---------- 02 · RIVERS OF LIGHT ---------- */
+var rb=document.getElementById('riverBoard'),total=CATS.reduce(function(a,c){return a+c.value;},0);
+var rows=CATS.slice().sort(function(a,b){return b.value-a.value;}).map(function(cat){
+  var h=Math.round(16+(cat.value/maxV)*44);
+  return '<div class="riv-row"><div class="riv-label" style="color:'+cat.color+'">'+cat.name+'</div>'+
+    '<div class="river" style="height:'+h+'px" title="'+cat.name+': '+fmt(cat.value)+'"><div class="flow" style="--crgb:'+cat.rgb+'"></div></div>'+
+    '<div class="riv-val">'+fmt(cat.value)+'</div></div>';
+}).join('');
+rb.innerHTML=rows+'<div class="confluence"><div class="riv-row"><div class="riv-label" style="color:#f8f7fb">CONFLUENCE</div>'+
+  '<div class="river" style="height:64px;box-shadow:inset 0 2px 4px rgba(255,255,255,.16),inset 0 -8px 18px rgba(0,0,0,.5),0 0 34px rgba(160,107,255,.35)">'+
+  '<div class="flow" style="--crgb:200,170,255"></div></div>'+
+  '<div class="riv-val" style="font-size:20px">'+fmt(total)+'</div></div>'+
+  '<p style="color:var(--quiet);font-size:14px;margin-top:6px">Five rivers. One system. Hover any river to hold its current still.</p></div>';
+
+/* ---------- 03 · HEARTBEAT wobble ---------- */
+var bpm=document.getElementById('bpmNum');
+setInterval(function(){bpm.textContent=68+Math.round(Math.random()*8);},3000);
+
+/* ---------- 04 · MATERIALIZED NUMBERS ---------- */
+var MEGAS=[
+ {v:51210,l:'INTELLIGENCE ACTIONS · THIS WEEK',c:'rgba(232,79,255,.4)'},
+ {v:19.4,l:'AVG. WEEKLY GROWTH · %',c:'rgba(47,232,158,.4)',dec:1},
+ {v:5,l:'WORLDS IN ORBIT',c:'rgba(63,184,255,.4)'}
+];
+var mn=document.getElementById('megaNums');
+mn.innerHTML=MEGAS.map(function(m,i){
+  return '<div><div class="mega-num" style="--ng:'+m.c+'" data-v="'+m.v+'" data-dec="'+(m.dec||0)+'" id="mega'+i+'">0</div><div class="mega-lbl">'+m.l+'</div></div>';
+}).join('');
+function countUp(el,to,dec,dur){var t0=performance.now();
+  function f(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3),v=to*e;
+    el.textContent=dec?v.toFixed(1):fmt(Math.round(v));
+    if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+var seen=false;
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting&&!seen){
+      seen=true;
+      MEGAS.forEach(function(m,i){countUp(document.getElementById('mega'+i),m.v,m.dec||0,1600);});
+    }
+  });
+},{threshold:.4});
+io.observe(mn);
+
+/* ---------- 05 · CONSTELLATION ---------- */
+var STARS=[
+ {id:'you',x:50,y:50,label:'YOU',c:'#f8f7fb',s:62},
+ {id:'creators',x:19,y:24,label:'CREATORS',c:'#e84fff',s:46},
+ {id:'learners',x:79,y:22,label:'LEARNERS',c:'#3fb8ff',s:50},
+ {id:'builders',x:15,y:74,label:'BUILDERS',c:'#a06bff',s:44},
+ {id:'sharers',x:83,y:70,label:'SHARERS',c:'#2fe89e',s:44},
+ {id:'earners',x:50,y:86,label:'EARNERS',c:'#ffbf3d',s:40}
+];
+var LINKS=[['you','creators'],['you','learners'],['you','builders'],['you','sharers'],['you','earners'],
+           ['creators','learners'],['builders','sharers'],['learners','earners'],['creators','builders']];
+var box=document.getElementById('constel'),svg=document.getElementById('constelSvg'),starEls={};
+function drawConstel(){
+  var W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML='';
+  var pos={};STARS.forEach(function(s){pos[s.id]=[s.x/100*W,s.y/100*H];});
+  LINKS.forEach(function(l){
+    var a=pos[l[0]],b=pos[l[1]],ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('x1',a[0]);ln.setAttribute('y1',a[1]);ln.setAttribute('x2',b[0]);ln.setAttribute('y2',b[1]);
+    ln.setAttribute('class','clink');ln.dataset.pair=l[0]+'|'+l[1];svg.appendChild(ln);
+  });
+  STARS.forEach(function(s){
+    var d=document.createElement('div');d.className='cstar';
+    d.style.left=s.x+'%';d.style.top=s.y+'%';d.style.width=s.s+'px';d.style.height=s.s+'px';
+    d.style.setProperty('--sc',s.c);d.style.setProperty('--scg',s.c+'55');
+    d.innerHTML='<div class="slbl">'+s.label+'</div>';d.setAttribute('role','button');d.setAttribute('tabindex','0');
+    d.setAttribute('aria-label',s.label+' star');
+    d.addEventListener('mouseenter',function(){lightLinks(s.id,s.c,true);});
+    d.addEventListener('mouseleave',function(){lightLinks(s.id,s.c,false);});
+    d.addEventListener('focus',function(){lightLinks(s.id,s.c,true);});
+    d.addEventListener('blur',function(){lightLinks(s.id,s.c,false);});
+    box.appendChild(d);starEls[s.id]=d;
+  });
+  function lightLinks(id,color,on){
+    svg.querySelectorAll('.clink').forEach(function(ln){
+      var p=ln.dataset.pair.split('|');
+      if(p[0]===id||p[1]===id){ln.style.stroke=on?color:'';ln.style.strokeWidth=on?'3':'';}
+    });
+  }
+}
+drawConstel();window.addEventListener('resize',function(){
+  box.querySelectorAll('.cstar').forEach(function(n){n.remove();});drawConstel();});
+
+/* ---------- 06 · LAWS ---------- */
+var RULES=[
+ ['DO let data move.','Motion is meaning — orbit speed, river current, pulse rate all carry information.','DON\u2019T freeze numbers on the page.','A static dashboard is a photograph of a living thing.'],
+ ['DO give every number a color job.','One spectrum, one meaning: magenta creates, blue learns, green shares.','DON\u2019T rainbow without meaning.','Random color is noise wearing a costume.'],
+ ['DO make hover reveal truth.','The tooltip is a promise: what you see is what the number is.','DON\u2019T hide values behind clicks.','Exploration should be frictionless, not a maze.'],
+ ['DO let the page breathe with the data.','The ambient field pulses because the network pulses.','DON\u2019T animate for decoration.','Every movement must earn its place or it\u2019s clutter.'],
+ ['DO show the whole and the parts.','The sun holds the total; the orbs hold the worlds.','DON\u2019T chart without context.','A number alone is trivia. A number in orbit is intelligence.'],
+ ['DO respect reduced motion.','Every animation here yields to prefers-reduced-motion.','DON\u2019T assume everyone sees movement.','Beauty that excludes is not elite.']
+];
+document.getElementById('ruleGrid').innerHTML=RULES.map(function(r){
+  return '<div class="rule"><div class="r-do">✓ '+r[0]+'</div><p>'+r[1]+'</p><div class="r-dont">✕ '+r[2]+'</div><p>'+r[3]+'</p></div>';
+}).join('');
+})();
+</script>
+</body>
+</html>
