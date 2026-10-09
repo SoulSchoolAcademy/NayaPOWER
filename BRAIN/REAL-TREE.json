@@ -1,7 +1,7 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "84a47ea320d40c4fcb957f6156b7b807f8019baa",
+  "receipt_basis_commit": "7e4fcb6b51fdb128736c01c162305fd8cf9ea53a",
   "inventory_file_count": 1203,
   "domain_counts": {
     "00-ACTIVATION": 2,
@@ -42,8 +42,8 @@
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/MACHINE-INTELLIGENCE.json",
-      "blob_sha": "4f315d167d677ac140ce4593cee1774f7aa71251",
-      "size": 58549
+      "blob_sha": "982546196b2401a417bcb773c48e8b156b65ab1a",
+      "size": 47410
     },
     {
       "path": "BRAIN/00-ARCHITECTURE/SYSTEM-BLUEPRINT-20261009.md",
