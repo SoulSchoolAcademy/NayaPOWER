@@ -1,7 +1,7 @@
 {
   "schema": "naya.learning-engine-assembly-gate.v1",
   "status": "BLOCKED",
-  "source_main_sha": "527ebcfbc04896c3a6beee127757785597e0713a",
+  "source_main_sha": "455cdf5a7d846d16dd56e19b12b4a61ab242d866",
   "required_connections": [
     {
       "id": "NINE_NODE_RUNTIME_BINDINGS",
@@ -19,7 +19,7 @@
       "id": "LEARNING_EXPERIMENT_ADMISSION",
       "status": "PARTIAL",
       "evidence": [],
-      "current_gap": "Python admission gate/queue exist, but the production learning claim/promotion path has no proven caller bound to its experiment evidence."
+      "current_gap": "The TypeScript gate is merged into main at nayanet-learning-verify mode=candidate, but the live workflow sends no admission design and the gate passes through when absent. The deployed nayanet-learning-verify v98 is stale and does not contain the gate. Redesign the pre-experiment placeholder vs post-measurement claim path before enabling E2E."
     },
     {
       "id": "VERIFIED_LESSON_TO_ACT",
@@ -37,7 +37,7 @@
       "id": "SOURCE_RUNTIME_PARITY",
       "status": "PARTIAL",
       "evidence": [],
-      "current_gap": "nayanet-learning-verify and nayanet-act-runtime deployed bytes differ from main; deployed nayanet-github-dispatch matches an unmerged draft branch rather than main."
+      "current_gap": "nayanet-learning-verify v98 and nayanet-act-runtime v65 differ from current main; nayanet-github-dispatch v36 matches the unmerged PR #2012 branch rather than main. Current main SHA changed to 455cdf5a after WO3 merge."
     },
     {
       "id": "PROMOTION_BACKSYNC",
