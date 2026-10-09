@@ -126,7 +126,7 @@ _NAYA_PREFIXES = ("naya-", "board", "orb-", "lv-", "torb", "gem-")
 
 
 # =====================================================================
-# STAGE 1 — DESIGN (fused from Naya 5 tools/design_gate.py @ 728cab40)
+# STAGE 1 — DESIGN (Naya 5 7-law spec, implemented here; @728cab40 withdrawn, see ATTRIBUTION)
 # =====================================================================
 
 def read_page(path: Path) -> str:
@@ -328,7 +328,7 @@ def run_design_stage(page: Path, manifest: Path) -> list[str]:
 
 # =====================================================================
 # STAGE 2 — ACTIVATION (fused: drink-first PR #1979 + Naya 3 PR #1974
-#                       + Naya 5 citation binding @ 728cab40)
+#                       + Naya 5 citation binding (spec; @728cab40 withdrawn))
 # =====================================================================
 
 def resolve_live_tip_trusted() -> tuple[str | None, str | None]:
