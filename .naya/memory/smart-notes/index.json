@@ -11394,25 +11394,6 @@
    }
   },
   {
-   "smart_note_id": "SN-0359",
-   "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0359-repin-test-to-new-invariant",
-   "title": "Reconciliation Rewrites the Invariant \u2014 Re-pin the Test, Never Weaken the Guard",
-   "content_hash": "536fefd773bbad45f03150b648cf44e6c7b312e777274a22cd312a755c293b8c",
-   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0359/IB-SMART-NOTE-20261005-sn0359-repin-test-to-new-invariant.md",
-   "projection_status": "GITHUB_BRAIN_PUBLISHED",
-   "truth_state": "CANDIDATE",
-   "scope": "PRIVATE",
-   "category": "SYSTEM_INTELLIGENCE",
-   "topic": "SYSTEM-INTELLIGENCE",
-   "subtopic": "CI-TRIAGE",
-   "captured_at": "2026-09-30",
-   "lifecycle_state": "ACTIVE",
-   "provenance": {
-    "ingestion": "canonical-reconstruction",
-    "note": "reconstructed from published projection; no runtime provenance invented"
-   }
-  },
-  {
    "smart_note_id": "SN-0327",
    "intelligent_block_id": "IB-SMART-NOTE-20260930-sn0327-never-regen-the-brain-index-on-a-dirty-worktree",
    "title": "Never Regen the Brain Index on a Dirty Worktree \u2014 the Tool Reads the Committed Tree, Not Your Files",
@@ -12571,6 +12552,20 @@
     "ingestion": "canonical-reconstruction",
     "note": "reconstructed; no runtime provenance invented"
    }
+  },
+  {
+   "intelligent_block_id": "IB-SMART-NOTE-20261005-sn0642-repin-test-to-new-invariant",
+   "smart_note_id": "SN-0642",
+   "title": "Reconciliation Rewrites the Invariant \u2014 Re-pin the Test, Never Weaken the Guard",
+   "captured_at": "2026-10-05",
+   "category": "SYSTEM_INTELLIGENCE",
+   "topic": "CI-TRIAGE/REPAIR-DISCIPLINE",
+   "truth_state": "CANDIDATE",
+   "scope": "PRIVATE",
+   "projection_status": "GITHUB_BRAIN_PUBLISHED",
+   "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/09/30/SYSTEM-INTELLIGENCE/CI-TRIAGE/REPAIR-DISCIPLINE/SN-0359/IB-SMART-NOTE-20261005-sn0359-repin-test-to-new-invariant.md",
+   "content_hash": "bd94d8b9e8f8586b14911ba1790e3b52bebe580b5697e8fdd626a5bb82752932",
+   "smart_link_status": "ACTIVE_AUTH_GATED"
   }
  ],
  "sequence_policy": {
