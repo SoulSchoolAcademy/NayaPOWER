@@ -1,0 +1,3939 @@
+{
+ "format": "naya-design-catalog-v1",
+ "generated": "2026-10-09",
+ "source_index": "blocks/index.json v1.4",
+ "total_blocks": 91,
+ "law": "If a block exists for the job, use it. Custom CSS for a solved job is a violation.",
+ "blocks": [
+  {
+   "id": "answer",
+   "category": "assessment",
+   "name": "Answer",
+   "job": "Answer option — jewel icon, title + sub, chevron. The choice presented beautifully.",
+   "when_to_use": "Quiz/assessment options, any multiple-choice moment. Per-answer --accent.",
+   "when_not_to_use": "Not for binary yes/no (simpler). Not outside assessment context without reason.",
+   "pairs_with": [
+    "question",
+    "progress-hud",
+    "interest-picker"
+   ],
+   "needs": [
+    "--accent per answer (inline)",
+    "--ease motion curve"
+   ],
+   "selectors": [
+    ".answers",
+    ".answer",
+    ".answer .jewel",
+    ".answer .glyph",
+    ".answer-copy",
+    ".answer-title",
+    ".answer-sub",
+    ".answer .chevron"
+   ],
+   "states": [
+    ":hover",
+    ":focus-visible",
+    "[aria-pressed=true] (selected)"
+   ],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/answer/block.css",
+    "specimen": "blocks/assessment/answer/specimen.html",
+    "readme": "blocks/assessment/answer/README.md"
+   },
+   "tags": [
+    "assessment",
+    "quiz",
+    "multiple-choice",
+    "option",
+    "answer",
+    "select"
+   ]
+  },
+  {
+   "id": "dimension-constellation",
+   "category": "assessment",
+   "name": "Dimension Constellation",
+   "job": "9-dimension orb grid — ring gauge + score + name + status each. The mastery signature.",
+   "when_to_use": "Multi-dimensional results: skills radar, assessment breakdown, profile completeness.",
+   "when_not_to_use": "Not for fewer than 4 dimensions (use simpler). The 9-grid is the signature — don't dilute.",
+   "pairs_with": [
+    "score-stage",
+    "orbit-dial",
+    "scorecard"
+   ],
+   "needs": [
+    "--dimensionColor per orb",
+    "--dimDeg per ring (score × 3.6deg)"
+   ],
+   "selectors": [
+    ".dimension-constellation",
+    ".dimension-orb",
+    ".dimension-ring",
+    ".dimension-ring::after",
+    ".dimension-score",
+    ".dimension-name",
+    ".dimension-status"
+   ],
+   "states": [],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/dimension-constellation/block.css",
+    "specimen": "blocks/assessment/dimension-constellation/specimen.html",
+    "readme": "blocks/assessment/dimension-constellation/README.md"
+   },
+   "tags": [
+    "assessment",
+    "dimensions",
+    "radar",
+    "mastery",
+    "multi-dimensional",
+    "profile",
+    "results"
+   ]
+  },
+  {
+   "id": "interest-picker",
+   "category": "assessment",
+   "name": "Interest Picker",
+   "job": "Interest picker — selectable cards with orb + check, selected pills summary.",
+   "when_to_use": "Onboarding: 'what are you into?' Preference capture with delight.",
+   "when_not_to_use": "Not for required single-choice. It's a picker, not a quiz.",
+   "pairs_with": [
+    "question",
+    "answer",
+    "primo"
+   ],
+   "needs": [
+    "--interest per card (inline)",
+    "--ease motion curve"
+   ],
+   "selectors": [
+    ".interest-board",
+    ".interest-intro",
+    ".interest-eyebrow",
+    ".interest-title",
+    ".interest-description",
+    ".interest-area",
+    ".interest-area:hover",
+    ".interest-area.selected",
+    ".interest-area.selected .interest-check",
+    ".interest-orb",
+    ".interest-check",
+    ".interest-name"
+   ],
+   "states": [
+    ".selected + .selected .interest-check (checked)",
+    ":hover"
+   ],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/interest-picker/block.css",
+    "specimen": "blocks/assessment/interest-picker/specimen.html",
+    "readme": "blocks/assessment/interest-picker/README.md"
+   },
+   "tags": [
+    "assessment",
+    "onboarding",
+    "interests",
+    "picker",
+    "preferences",
+    "selection"
+   ]
+  },
+  {
+   "id": "progress-hud",
+   "category": "assessment",
+   "name": "Progress Hud",
+   "job": "Assessment progress — pill bar with location dot, animated fill, percent.",
+   "when_to_use": "Top of every multi-step flow: quizzes, onboarding, wizards. Shows 'where am I.'",
+   "when_not_to_use": "Not for single-step actions. Not as decoration.",
+   "pairs_with": [
+    "question",
+    "answer",
+    "score-stage"
+   ],
+   "needs": [
+    "--ease motion curve (define once per page)"
+   ],
+   "selectors": [
+    ".progress-hud",
+    ".progress-location",
+    ".progress-dot",
+    ".progress-label",
+    ".progress-track",
+    ".progress-fill",
+    ".progress-percent"
+   ],
+   "states": [],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/progress-hud/block.css",
+    "specimen": "blocks/assessment/progress-hud/specimen.html",
+    "readme": "blocks/assessment/progress-hud/README.md"
+   },
+   "tags": [
+    "assessment",
+    "progress",
+    "hud",
+    "multi-step",
+    "wizard",
+    "location",
+    "percent"
+   ]
+  },
+  {
+   "id": "question",
+   "category": "assessment",
+   "name": "Question",
+   "job": "Question block — eyebrow label, title, hairline rule. The asking face.",
+   "when_to_use": "Every question in an assessment, quiz, or onboarding flow.",
+   "when_not_to_use": "Not for statements. Pair with answer blocks, never alone.",
+   "pairs_with": [
+    "answer",
+    "progress-hud",
+    "interest-picker"
+   ],
+   "needs": [],
+   "selectors": [
+    ".question-area",
+    ".question-label",
+    ".question-title",
+    ".question-rule"
+   ],
+   "states": [],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/question/block.css",
+    "specimen": "blocks/assessment/question/specimen.html",
+    "readme": "blocks/assessment/question/README.md"
+   },
+   "tags": [
+    "assessment",
+    "quiz",
+    "question",
+    "asking",
+    "prompt"
+   ]
+  },
+  {
+   "id": "score-stage",
+   "category": "assessment",
+   "name": "Score Stage",
+   "job": "260px circular score stage — glowing ring with big number. The results hero.",
+   "when_to_use": "Assessment results: the final score reveal. The moment of judgment.",
+   "when_not_to_use": "Not for mid-flow scores. One per results page — it's the climax.",
+   "pairs_with": [
+    "dimension-constellation",
+    "orbit-dial",
+    "verdict",
+    "progress-hud"
+   ],
+   "needs": [
+    "--scoreColor, --scoreDeg (score × 3.6deg) on .score-stage"
+   ],
+   "selectors": [
+    ".score-stage",
+    ".score-content",
+    ".score-number",
+    ".score-outof"
+   ],
+   "states": [],
+   "source": "Maxis App Design.html",
+   "files": {
+    "css": "blocks/assessment/score-stage/block.css",
+    "specimen": "blocks/assessment/score-stage/specimen.html",
+    "readme": "blocks/assessment/score-stage/README.md"
+   },
+   "tags": [
+    "assessment",
+    "results",
+    "score",
+    "reveal",
+    "hero-number",
+    "judgment",
+    "final"
+   ]
+  },
+  {
+   "id": "board",
+   "category": "boards",
+   "name": "Board",
+   "job": "Intelligent board container with identity spine — one board, one color, one destination.",
+   "when_to_use": "Content sections that deserve a destination feel: feature areas, grouped content. REQUIRED: set --ic identity color.",
+   "when_not_to_use": "Not for single small items (use nl-ccard). Don't nest boards more than one deep.",
+   "pairs_with": [
+    "board-tone",
+    "headline",
+    "naya-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".board",
+    ".board .corner",
+    ".board h3",
+    ".board::after",
+    ".board::before",
+    ".board:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_4_Design_Element_Set.html",
+   "files": {
+    "css": "blocks/boards/board/board.css",
+    "specimen": "blocks/boards/board/specimen.html",
+    "js": null,
+    "readme": "blocks/boards/board/README.md"
+   },
+   "tags": [
+    "container",
+    "card",
+    "section",
+    "identity-spine",
+    "destination",
+    "grouped-content"
+   ]
+  },
+  {
+   "id": "board-tone",
+   "category": "boards",
+   "name": "Board Tone",
+   "job": "Board with 5px glowing tone spine — stronger identity edge than board.",
+   "when_to_use": "When the board's identity color must read from across the room: category headers, featured sections.",
+   "when_not_to_use": "Don't use alongside board in the same view — pick one spine language per page.",
+   "pairs_with": [
+    "board",
+    "headline",
+    "metric-ribbon"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".board-tone",
+    ".board-tone .board-content",
+    ".board-tone .board-name",
+    ".board-tone .board-sub",
+    ".board-tone .board-tag",
+    ".board-tone::after",
+    ".board-tone::before",
+    ".board-tone:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
+   "files": {
+    "css": "blocks/boards/board-tone/board-tone.css",
+    "specimen": "blocks/boards/board-tone/specimen.html",
+    "js": null,
+    "readme": "blocks/boards/board-tone/README.md"
+   },
+   "tags": [
+    "container",
+    "card",
+    "tone-spine",
+    "featured",
+    "category",
+    "glowing-edge"
+   ]
+  },
+  {
+   "id": "demo-board",
+   "category": "boards",
+   "name": "Demo Board",
+   "job": "Board with 1px light beam across the top edge — for showcasing, demos, specimens.",
+   "when_to_use": "Component showcases, demo content, specimen pages. Signals 'this is a demonstration.'",
+   "when_not_to_use": "Never for production content — the beam marks it as demo. Never for user data.",
+   "pairs_with": [
+    "stage",
+    "swatch",
+    "truthgrid"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".demo-board",
+    ".demo-board code"
+   ],
+   "states": [],
+   "source": "Naya_5__Epic_Elements_-_Lego_pieces.html",
+   "files": {
+    "css": "blocks/boards/demo-board/demo-board.css",
+    "specimen": "blocks/boards/demo-board/specimen.html",
+    "js": null,
+    "readme": "blocks/boards/demo-board/README.md"
+   },
+   "tags": [
+    "container",
+    "demo",
+    "showcase",
+    "specimen",
+    "light-beam",
+    "demonstration"
+   ]
+  },
+  {
+   "id": "nl-ccard",
+   "category": "boards",
+   "name": "Ccard",
+   "job": "Content card — the everyday card for content with media.",
+   "when_to_use": "Article cards, media cards, generic content tiles. The default when no specialized card fits.",
+   "when_not_to_use": "Not for knowledge content (use intelligent-block). Not for feed items (use activity-card). Not for spaces (use sp-card).",
+   "pairs_with": [
+    "cx-btn",
+    "row-grid",
+    "headline"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-ccard",
+    ".nl-ccard:hover",
+    ".nl-ccard:hover .nl-cmedia:after"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/boards/nl-ccard/nl-ccard.css",
+    "specimen": "blocks/boards/nl-ccard/specimen.html",
+    "js": null,
+    "readme": "blocks/boards/nl-ccard/README.md"
+   },
+   "tags": [
+    "card",
+    "content",
+    "media-card",
+    "article",
+    "generic",
+    "tile"
+   ]
+  },
+  {
+   "id": "stage",
+   "category": "boards",
+   "name": "Stage",
+   "job": "Elevated demo stage for showcasing components.",
+   "when_to_use": "Design system pages, component galleries, before/after comparisons.",
+   "when_not_to_use": "Not in production UI. It's a workshop table, not furniture.",
+   "pairs_with": [
+    "demo-board",
+    "section"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".stage",
+    ".stage-label",
+    ".stage:before"
+   ],
+   "states": [],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/boards/stage/stage.css",
+    "specimen": "blocks/boards/stage/specimen.html",
+    "js": null,
+    "readme": "blocks/boards/stage/README.md"
+   },
+   "tags": [
+    "container",
+    "showcase",
+    "workshop",
+    "component-gallery",
+    "demo"
+   ]
+  },
+  {
+   "id": "cx-btn",
+   "category": "buttons",
+   "name": "Cx Btn",
+   "job": "Essential CTA — simpler tier, 1.5px border. Clean action without ceremony.",
+   "when_to_use": "In-content CTAs, card footers, anywhere a clear action is needed without the full naya-btn weight.",
+   "when_not_to_use": "Not for the primary page action. Not where spectrum theming is needed (use primo).",
+   "pairs_with": [
+    "primo",
+    "nl-ccard",
+    "board"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".cx-btn",
+    ".cx-btn:active",
+    ".cx-btn:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/cx-btn/cx-btn.css",
+    "specimen": "blocks/buttons/cx-btn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/cx-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "cta",
+    "simple",
+    "card-action",
+    "in-content"
+   ]
+  },
+  {
+   "id": "icon-btn",
+   "category": "buttons",
+   "name": "Icon Btn",
+   "job": "52px round icon button with SVG icons and aria-pressed fill state.",
+   "when_to_use": "Icon-only actions: close, menu, favorite, share, settings. Anywhere space is tight and the icon is unambiguous.",
+   "when_not_to_use": "Never for actions needing a text label to be understood. Never below 44px touch target (it's 52px for a reason).",
+   "pairs_with": [
+    "nl-iconbtn",
+    "share-fab",
+    "drawer"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".icon-btn",
+    ".icon-btn svg",
+    ".icon-btn:active",
+    ".icon-btn:hover",
+    ".icon-btn[aria-pressed=\"true\"]",
+    ".icon-btn[aria-pressed=\"true\"] svg"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/icon-btn/icon-btn.css",
+    "specimen": "blocks/buttons/icon-btn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/icon-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "icon-only",
+    "round",
+    "close",
+    "menu",
+    "favorite",
+    "compact-action"
+   ]
+  },
+  {
+   "id": "living-btn",
+   "category": "buttons",
+   "name": "Living Btn",
+   "job": "Hero flagship button — breathes at idle with a sheen sweep. Maximum presence.",
+   "when_to_use": "The ONE hero action on a landing/entrance page. Where you want the button to feel alive before it's touched.",
+   "when_not_to_use": "Only one per page. Never in forms or lists. Strip the idle animation if Shawn finds it busy (noted in source).",
+   "pairs_with": [
+    "hero",
+    "portal",
+    "hub-quote"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".living-btn",
+    ".living-btn .btn-glow",
+    ".living-btn .btn-label",
+    ".living-btn .btn-label svg",
+    ".living-btn, .living-btn::after",
+    ".living-btn::after",
+    ".living-btn:active",
+    ".living-btn:hover",
+    ".living-btn:hover .btn-glow",
+    ".living-btn[data-spectrum=\"blue\"] .btn-glow",
+    ".living-btn[data-spectrum=\"blue\"]::after",
+    ".living-btn[data-spectrum=\"blue\"]:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/living-btn/living-btn.css",
+    "specimen": "blocks/buttons/living-btn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/living-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "hero-action",
+    "flagship",
+    "breathing",
+    "landing-page",
+    "entrance"
+   ]
+  },
+  {
+   "id": "lv-btn",
+   "category": "buttons",
+   "name": "Lv Btn",
+   "job": "The living button — cursor sheen, soul core, proximity-aware. Responds before you click.",
+   "when_to_use": "Interactive surfaces where hover feedback matters: dashboards, tool palettes, anywhere the user explores options.",
+   "when_not_to_use": "Not for static pages. The proximity/JS behavior needs lv-btn.js — don't use it as a dumb button.",
+   "pairs_with": [
+    "naya-btn",
+    "icon-btn",
+    "seg-tab"
+   ],
+   "needs": [
+    "lv-btn.js",
+    "tokens.css"
+   ],
+   "selectors": [
+    ".lv-btn",
+    ".lv-btn .lv-label",
+    ".lv-btn .lv-label svg",
+    ".lv-btn, .lv-btn::after",
+    ".lv-btn--danger",
+    ".lv-btn--danger:hover, .lv-btn--danger:focus-visible",
+    ".lv-btn::after",
+    ".lv-btn::before",
+    ".lv-btn:active",
+    ".lv-btn:active::after",
+    ".lv-btn:disabled",
+    ".lv-btn:focus-visible"
+   ],
+   "states": [
+    ":hover",
+    ":active",
+    ":focus",
+    ":focus-visible",
+    ":disabled"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/lv-btn/lv-btn.css",
+    "specimen": "blocks/buttons/lv-btn/specimen.html",
+    "js": "blocks/buttons/lv-btn/lv-btn.js",
+    "readme": "blocks/buttons/lv-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "interactive",
+    "hover-feedback",
+    "proximity",
+    "cursor-sheen",
+    "dashboard"
+   ]
+  },
+  {
+   "id": "naya-btn",
+   "category": "buttons",
+   "name": "Naya Btn",
+   "job": "The canonical action button — 95% restraint, 5% fire. Use for the single most important action on any surface.",
+   "when_to_use": "Primary CTAs: submit, continue, confirm, enter, send. Anywhere the user must take ONE decisive action.",
+   "when_not_to_use": "Never for secondary/tertiary actions (use primo or ghost). Never in dense lists where 11 of them would scream.",
+   "pairs_with": [
+    "primo",
+    "nl-btn-ghost",
+    "icon-btn"
+   ],
+   "needs": [
+    "naya-btn.js",
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-btn",
+    ".naya-btn .nb-icon",
+    ".naya-btn .nb-label",
+    ".naya-btn > *",
+    ".naya-btn--block",
+    ".naya-btn--danger",
+    ".naya-btn--foundation .nb-copy",
+    ".naya-btn--foundation .nb-jewel",
+    ".naya-btn--foundation .nb-sub",
+    ".naya-btn--foundation .nb-title",
+    ".naya-btn--ghost",
+    ".naya-btn--ghost.is-aware"
+   ],
+   "states": [
+    ":hover",
+    ":active",
+    ":focus",
+    ":focus-visible",
+    ":disabled",
+    ".is-"
+   ],
+   "source": "Naya_4_Design_Element_Set.html",
+   "files": {
+    "css": "blocks/buttons/naya-btn/naya-btn.css",
+    "specimen": "blocks/buttons/naya-btn/specimen.html",
+    "js": "blocks/buttons/naya-btn/naya-btn.js",
+    "readme": "blocks/buttons/naya-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "primary-action",
+    "cta",
+    "submit",
+    "confirm",
+    "continue",
+    "hero-action",
+    "canonical"
+   ]
+  },
+  {
+   "id": "nl-btn",
+   "category": "buttons",
+   "name": "Btn",
+   "job": "Generic elevated button, --tone themable. The utility button.",
+   "when_to_use": "Utility actions in dense UI: table rows, list items, toolbars. Theme with --tone to match context.",
+   "when_not_to_use": "Not for hero/primary actions — it has no soul, just function.",
+   "pairs_with": [
+    "nl-btn-ghost",
+    "primo",
+    "nl-table"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".btn",
+    ".btn .dot",
+    ".btn-ghost",
+    ".btn-ghost:hover",
+    ".btn:active",
+    ".btn:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/buttons/nl-btn/nl-btn.css",
+    "specimen": "blocks/buttons/nl-btn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/nl-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "utility",
+    "dense-ui",
+    "themable",
+    "toolbar"
+   ]
+  },
+  {
+   "id": "nl-btn-ghost",
+   "category": "buttons",
+   "name": "Btn Ghost",
+   "job": "Ghost button — minimal chrome, text-like action.",
+   "when_to_use": "Tertiary actions: cancel, skip, 'learn more', dismiss. Where a full button would be visual noise.",
+   "when_not_to_use": "Never for the primary action — ghosts don't convert. Never as the only action (pair with a real button).",
+   "pairs_with": [
+    "naya-btn",
+    "primo",
+    "nl-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".btn-ghost",
+    ".btn-ghost:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/buttons/nl-btn-ghost/nl-btn-ghost.css",
+    "specimen": "blocks/buttons/nl-btn-ghost/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/nl-btn-ghost/README.md"
+   },
+   "tags": [
+    "button",
+    "ghost",
+    "tertiary",
+    "cancel",
+    "skip",
+    "minimal",
+    "text-action"
+   ]
+  },
+  {
+   "id": "nl-iconbtn",
+   "category": "buttons",
+   "name": "Iconbtn",
+   "job": "Icon button with liked/saved toggle states.",
+   "when_to_use": "Toggle actions on content: like, save, bookmark. The .liked/.saved states show the toggle visibly.",
+   "when_not_to_use": "Not for one-shot actions (use icon-btn). Not where the toggle state doesn't persist.",
+   "pairs_with": [
+    "icon-btn",
+    "activity-card",
+    "sp-card"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-iconbtn",
+    ".nl-iconbtn.liked",
+    ".nl-iconbtn.saved",
+    ".nl-iconbtn:active",
+    ".nl-iconbtn:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/buttons/nl-iconbtn/nl-iconbtn.css",
+    "specimen": "blocks/buttons/nl-iconbtn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/nl-iconbtn/README.md"
+   },
+   "tags": [
+    "button",
+    "icon-only",
+    "like",
+    "save",
+    "bookmark",
+    "toggle-state",
+    "content-action"
+   ]
+  },
+  {
+   "id": "nl-playbtn",
+   "category": "buttons",
+   "name": "Playbtn",
+   "job": "Play button with ring — for audio/voice playback.",
+   "when_to_use": "Voice playback on Intelligent Blocks, audio messages, any 'press to hear' moment. .playing state shows the ring.",
+   "when_not_to_use": "Not for video (use nl-player). Not for navigation.",
+   "pairs_with": [
+    "sp-audio-msg",
+    "voice-type",
+    "intelligent-block"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-playbtn",
+    ".nl-playbtn .ring",
+    ".nl-playbtn.playing .ring",
+    ".nl-playbtn:active",
+    ".nl-playbtn:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/buttons/nl-playbtn/nl-playbtn.css",
+    "specimen": "blocks/buttons/nl-playbtn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/nl-playbtn/README.md"
+   },
+   "tags": [
+    "button",
+    "play",
+    "audio",
+    "voice-playback",
+    "listen",
+    "media"
+   ]
+  },
+  {
+   "id": "orbit-btn",
+   "category": "buttons",
+   "name": "Orbit Btn",
+   "job": "Button ringed by orbiting light — for actions that feel alive, magical, premium.",
+   "when_to_use": "Special moments: entering a space, activating a feature, anything where the action itself should feel like an event.",
+   "when_not_to_use": "Not for mundane actions (save, cancel). The orbit draws the eye — spending it on trivia cheapens it.",
+   "pairs_with": [
+    "orb",
+    "mini-orb",
+    "naya-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".orbit-btn",
+    ".orbit-btn .orbit-label",
+    ".orbit-btn::after",
+    ".orbit-btn::before",
+    ".orbit-btn:active",
+    ".orbit-btn:hover",
+    ".orbit-btn:hover::after",
+    ".orbit-btn:hover::before"
+   ],
+   "states": [
+    ":hover",
+    ":active"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/orbit-btn/orbit-btn.css",
+    "specimen": "blocks/buttons/orbit-btn/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/orbit-btn/README.md"
+   },
+   "tags": [
+    "button",
+    "magical",
+    "premium",
+    "special-moment",
+    "orbiting-light",
+    "activation"
+   ]
+  },
+  {
+   "id": "primo",
+   "category": "buttons",
+   "name": "Primo",
+   "job": "The disciplined workhorse button — no idle animation, spectrum theme classes. For everyday actions.",
+   "when_to_use": "Secondary actions, repeated actions, form buttons, any action that isn't THE moment. Theme it per context (theme-blue/gold/green/magenta/purple).",
+   "when_not_to_use": "Not for the hero CTA (use naya-btn or living-btn). Not where you need icon+label complexity.",
+   "pairs_with": [
+    "naya-btn",
+    "nl-btn-ghost",
+    "cx-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".primo",
+    ".primo.theme-blue",
+    ".primo.theme-gold",
+    ".primo.theme-green",
+    ".primo.theme-magenta",
+    ".primo.theme-purple",
+    ".primo:active",
+    ".primo:disabled",
+    ".primo:hover"
+   ],
+   "states": [
+    ":hover",
+    ":active",
+    ":disabled"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/buttons/primo/primo.css",
+    "specimen": "blocks/buttons/primo/specimen.html",
+    "js": null,
+    "readme": "blocks/buttons/primo/README.md"
+   },
+   "tags": [
+    "button",
+    "secondary-action",
+    "workhorse",
+    "themed",
+    "form-button",
+    "everyday"
+   ]
+  },
+  {
+   "id": "sp-audio-msg",
+   "category": "chat",
+   "name": "Space Audio Msg",
+   "job": "Audio message with seeded waveform — play button, 24 bars, duration.",
+   "when_to_use": "Voice notes in chat. The waveform shows it's audio before it's played.",
+   "when_not_to_use": "Not for music players (use nl-player). Needs --sc accent context.",
+   "pairs_with": [
+    "sp-chat",
+    "nl-playbtn",
+    "voice-type"
+   ],
+   "needs": [
+    "--sc (space accent — used by .sp-audio-play background/glow and .sp-audio-wave i",
+    "the specimen must set it, e.g. --sc:#7c3aed",
+    "spAudioMsg sets it on the message box from opts.accent)"
+   ],
+   "selectors": [
+    ".sp-audio-msg",
+    ".sp-audio-play",
+    ".sp-audio-wave",
+    ".sp-audio-wave i",
+    ".sp-audio-dur"
+   ],
+   "states": [],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/chat/sp-audio-msg/block.css",
+    "specimen": "blocks/chat/sp-audio-msg/specimen.html",
+    "js": "blocks/chat/sp-audio-msg/block.js",
+    "readme": "blocks/chat/sp-audio-msg/README.md"
+   },
+   "tags": [
+    "chat",
+    "audio-message",
+    "voice-note",
+    "waveform",
+    "play"
+   ]
+  },
+  {
+   "id": "sp-chat",
+   "category": "chat",
+   "name": "Space Chat",
+   "job": "Space chat — message list, composer (text + mic + send), post composer.",
+   "when_to_use": "Community chat, space conversations, any real-time messaging surface.",
+   "when_not_to_use": "Not for 1:1 DM without adaptation. Needs --sc accent context.",
+   "pairs_with": [
+    "sp-audio-msg",
+    "sp-card",
+    "sp-detail"
+   ],
+   "needs": [
+    "--sc (space accent, used by .sp-mic-btn:hover",
+    "set via opts.accent)"
+   ],
+   "selectors": [
+    ".sp-empty",
+    ".sp-composer",
+    ".sp-composer-ta",
+    ".sp-composer-ta:focus",
+    ".sp-composer-ta::placeholder",
+    ".sp-composer-row",
+    ".sp-sched-btn",
+    ".sp-post-btn",
+    ".sp-sched-btn.set",
+    ".sp-post-btn:hover",
+    ".sp-chat-list",
+    ".sp-chat-msg"
+   ],
+   "states": [
+    "`.sp-composer-ta:focus`",
+    "`.sp-composer-ta::placeholder`",
+    "`.sp-sched-btn.set`",
+    "`.sp-post-btn:hover`",
+    "`.sp-chat-ti:focus`",
+    "`.sp-chat-send:hover`",
+    "`.sp-mic-btn:hover`",
+    "`.sp-mic-btn.rec`"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/chat/sp-chat/block.css",
+    "specimen": "blocks/chat/sp-chat/specimen.html",
+    "js": "blocks/chat/sp-chat/block.js",
+    "readme": "blocks/chat/sp-chat/README.md"
+   },
+   "tags": [
+    "chat",
+    "messaging",
+    "conversation",
+    "composer",
+    "real-time",
+    "community"
+   ]
+  },
+  {
+   "id": "door",
+   "category": "chrome",
+   "name": "Door",
+   "job": "Smart Door card — 'one brain, many doors.' Per-door accent theming, 48px icon.",
+   "when_to_use": "Connection points: integrations, entry points to tools/spaces. Grid them.",
+   "when_not_to_use": "Not for content cards (use board/nl-ccard). Doors are passages, not containers.",
+   "pairs_with": [
+    "row-grid",
+    "drawer",
+    "portal"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".door",
+    ".door:hover",
+    ".door-top",
+    ".door-icon",
+    ".door-name",
+    ".door-for",
+    ".door-desc",
+    ".door-foot"
+   ],
+   "states": [
+    ":hover (lift + glow)"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/chrome/door/block.css",
+    "specimen": "blocks/chrome/door/specimen.html",
+    "readme": "blocks/chrome/door/README.md"
+   },
+   "tags": [
+    "chrome",
+    "door",
+    "integration",
+    "entry-point",
+    "connection",
+    "passage",
+    "grid-card"
+   ]
+  },
+  {
+   "id": "drawer",
+   "category": "chrome",
+   "name": "Drawer",
+   "job": "Slide-in drawer — app navigation that tucks away on mobile.",
+   "when_to_use": "App side navigation. Toggle via .drawer-open. Mobile-first.",
+   "when_not_to_use": "Not for page nav (use nav). Needs drawer.js for toggle.",
+   "pairs_with": [
+    "eco-bottombar",
+    "room-chrome",
+    "nav-orb"
+   ],
+   "needs": [
+    "drawer.js (open/close toggle), tokens.css"
+   ],
+   "selectors": [
+    ".drawer-backdrop",
+    ".shell.drawer-open .rail.left",
+    ".shell.drawer-open .drawer-backdrop",
+    "body.drawer-open",
+    ".rail.left",
+    "@media (max-width: 900px)"
+   ],
+   "states": [
+    ".drawer-open (shell + body)",
+    "mobile breakpoint"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/chrome/drawer/block.css",
+    "specimen": "blocks/chrome/drawer/specimen.html",
+    "readme": "blocks/chrome/drawer/README.md"
+   },
+   "tags": [
+    "chrome",
+    "drawer",
+    "side-nav",
+    "slide-in",
+    "app-navigation",
+    "mobile"
+   ]
+  },
+  {
+   "id": "eco-bottombar",
+   "category": "chrome",
+   "name": "Eco Bottombar",
+   "job": "Mobile bottom bar — 46px round buttons, jewel plus, pop-up menu. Shared across Hub/Ledger/Spaces.",
+   "when_to_use": "Mobile app chrome. The thumb-zone navigation.",
+   "when_not_to_use": "Desktop (hidden). Not for page content.",
+   "pairs_with": [
+    "drawer",
+    "share-fab",
+    "room-chrome"
+   ],
+   "needs": [
+    "eco-bottombar.js (menu toggle), tokens.css"
+   ],
+   "selectors": [
+    ".eco-bottombar",
+    ".eco-bb-btn",
+    ".eco-bb-btn:hover",
+    ".eco-ico",
+    ".eco-plus",
+    ".eco-plus[aria-expanded=\"true\"]",
+    ".eco-menu",
+    ".eco-menu.open",
+    ".eco-menu a",
+    "@media (max-width: 900px)"
+   ],
+   "states": [
+    ":hover",
+    "[aria-expanded]",
+    ".open",
+    "mobile breakpoint"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/chrome/eco-bottombar/block.css",
+    "specimen": "blocks/chrome/eco-bottombar/specimen.html",
+    "readme": "blocks/chrome/eco-bottombar/README.md"
+   },
+   "tags": [
+    "chrome",
+    "bottom-bar",
+    "mobile",
+    "thumb-zone",
+    "app-navigation",
+    "plus-button"
+   ]
+  },
+  {
+   "id": "room-chrome",
+   "category": "chrome",
+   "name": "Room Chrome",
+   "job": "Room shell — head (kicker+title+lede) + toolbar + body + outlet. Every Hub room composes this.",
+   "when_to_use": "App rooms/screens: the consistent frame. --room-accent themes per room.",
+   "when_not_to_use": "Not for marketing pages (use page-shell). This is app interior.",
+   "pairs_with": [
+    "drawer",
+    "eco-bottombar",
+    "smart-tabs",
+    "lens-tabs"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".room-outlet",
+    ".room-head",
+    ".room-head .kicker",
+    ".room-head h2",
+    ".room-head p",
+    ".room-body",
+    ".room-scene",
+    ".room-toolbar",
+    ".room-toolbar.between",
+    ".room-status-line",
+    ".room-status-line .led",
+    "@media breakpoints"
+   ],
+   "states": [
+    "mobile/desktop breakpoints"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/chrome/room-chrome/block.css",
+    "specimen": "blocks/chrome/room-chrome/specimen.html",
+    "readme": "blocks/chrome/room-chrome/README.md"
+   },
+   "tags": [
+    "chrome",
+    "room",
+    "app-shell",
+    "screen-frame",
+    "interior"
+   ]
+  },
+  {
+   "id": "share-fab",
+   "category": "chrome",
+   "name": "Share Fab",
+   "job": "56px jewel FAB — fixed bottom-right, mobile-only. The action button.",
+   "when_to_use": "Mobile primary action: compose, share, create. One per screen.",
+   "when_not_to_use": "Desktop (hidden). Never two FABs — one action per screen.",
+   "pairs_with": [
+    "eco-bottombar",
+    "nl-sheet",
+    "icon-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".share-fab",
+    ".share-fab:active",
+    "@media (max-width: 768px)"
+   ],
+   "states": [
+    ":active (scale .94)",
+    "mobile breakpoint"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/chrome/share-fab/block.css",
+    "specimen": "blocks/chrome/share-fab/specimen.html",
+    "readme": "blocks/chrome/share-fab/README.md"
+   },
+   "tags": [
+    "chrome",
+    "fab",
+    "floating-action",
+    "mobile",
+    "compose",
+    "share",
+    "create"
+   ]
+  },
+  {
+   "id": "li-day",
+   "category": "data",
+   "name": "Ledger Day",
+   "job": "Day divider for streams — 'Tuesday, October 7' between groups.",
+   "when_to_use": "Time-grouped feeds: Ledger stream, activity history. Marks day boundaries.",
+   "when_not_to_use": "Not for non-time groupings. Needs .li-stage wrapper.",
+   "pairs_with": [
+    "activity-stream",
+    "li-card",
+    "activity-card"
+   ],
+   "needs": [
+    ".li-stage wrapper (base rule prepended into block.css",
+    "block is self-contained)"
+   ],
+   "selectors": [
+    ".li-stage",
+    ".li-day"
+   ],
+   "states": [
+    "static label (no hover/animation states in source)"
+   ],
+   "source": "Ledger Page Design.html",
+   "files": {
+    "css": "blocks/data/li-day/block.css",
+    "specimen": "blocks/data/li-day/specimen.html",
+    "js": "blocks/data/li-day/block.js",
+    "readme": "blocks/data/li-day/README.md"
+   },
+   "tags": [
+    "data",
+    "divider",
+    "day-boundary",
+    "time-group",
+    "stream"
+   ]
+  },
+  {
+   "id": "nl-bar",
+   "category": "data",
+   "name": "Bar",
+   "job": "Bar chart bar — the single bar primitive.",
+   "when_to_use": "Building bar charts: repeat per data point, hover reveals knob.",
+   "when_not_to_use": "Not standalone. For rich bars use jewel-pillar instead.",
+   "pairs_with": [
+    "nl-chart",
+    "nl-table",
+    "jewel-pillar"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-bar",
+    ".nl-bar:hover .nl-knobp",
+    ".nl-vol .nl-bar"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/data/nl-bar/nl-bar.css",
+    "specimen": "blocks/data/nl-bar/specimen.html",
+    "js": null,
+    "readme": "blocks/data/nl-bar/README.md"
+   },
+   "tags": [
+    "data",
+    "bar",
+    "chart-primitive",
+    "bar-chart"
+   ]
+  },
+  {
+   "id": "nl-chart",
+   "category": "data",
+   "name": "Chart",
+   "job": "Chart container — the frame charts render in.",
+   "when_to_use": "Wrapping any chart/graph block with title + sub.",
+   "when_not_to_use": "Not a chart itself — it's the container. Pair with a graphs/ block for the visual.",
+   "pairs_with": [
+    "nl-bar",
+    "jewel-pillar",
+    "spectrum-flow",
+    "living-counter"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-chart",
+    ".nl-chart .c-sub",
+    ".nl-chart h4"
+   ],
+   "states": [],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/data/nl-chart/nl-chart.css",
+    "specimen": "blocks/data/nl-chart/specimen.html",
+    "js": null,
+    "readme": "blocks/data/nl-chart/README.md"
+   },
+   "tags": [
+    "data",
+    "chart-container",
+    "frame",
+    "wrapper"
+   ]
+  },
+  {
+   "id": "nl-table",
+   "category": "data",
+   "name": "Table",
+   "job": "Data table with sortable headers — for structured data.",
+   "when_to_use": "Tabular data: leaderboards, logs, comparisons. Sortable via th.sorted.",
+   "when_not_to_use": "Not for 2-3 items (use lists). Not on narrow mobile without scroll planning.",
+   "pairs_with": [
+    "nl-bar",
+    "nl-chart",
+    "metric-ribbon"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-table tbody tr",
+    ".nl-table tbody tr:hover",
+    ".nl-table tbody tr:last-child td",
+    ".nl-table td",
+    ".nl-table th",
+    ".nl-table th .arr",
+    ".nl-table th.sorted",
+    ".nl-table th.sorted .arr",
+    ".nl-table th:hover",
+    ".nl-table-wrap"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/data/nl-table/nl-table.css",
+    "specimen": "blocks/data/nl-table/specimen.html",
+    "js": null,
+    "readme": "blocks/data/nl-table/README.md"
+   },
+   "tags": [
+    "data",
+    "table",
+    "tabular",
+    "sortable",
+    "structured",
+    "rows"
+   ]
+  },
+  {
+   "id": "state-badge",
+   "category": "data",
+   "name": "State Badge",
+   "job": "Inline honesty badge — verified/claimed/demo states made visible. Cheap, everywhere.",
+   "when_to_use": "Next to ANY claim: verified (green), claimed (quiet), demo (labeled). The truth-state system in one pill.",
+   "when_not_to_use": "Never skip it on claims — that's the whole point. Don't use for decoration.",
+   "pairs_with": [
+    "intelligent-block",
+    "li-card",
+    "truthgrid"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".state-badge"
+   ],
+   "states": [],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/data/state-badge/block.css",
+    "specimen": "blocks/data/state-badge/specimen.html",
+    "readme": "blocks/data/state-badge/README.md"
+   },
+   "tags": [
+    "data",
+    "honesty",
+    "truth-state",
+    "verified",
+    "badge",
+    "provenance",
+    "pill"
+   ]
+  },
+  {
+   "id": "swatch",
+   "category": "data",
+   "name": "Swatch",
+   "job": "Color swatch — 44px touchable palette bar with hover lift.",
+   "when_to_use": "Palettes, theme pickers, design system pages. Showing colors as interactive elements.",
+   "when_not_to_use": "Not as a color INPUT (no picker logic). Display + selection only.",
+   "pairs_with": [
+    "demo-board",
+    "board-tone"
+   ],
+   "needs": [
+    "--ease motion curve"
+   ],
+   "selectors": [
+    ".swatch",
+    ".swatch:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/data/swatch/block.css",
+    "specimen": "blocks/data/swatch/specimen.html",
+    "readme": "blocks/data/swatch/README.md"
+   },
+   "tags": [
+    "data",
+    "color",
+    "palette",
+    "swatch",
+    "theme"
+   ]
+  },
+  {
+   "id": "truthgrid",
+   "category": "data",
+   "name": "Truthgrid",
+   "job": "Truth-state grid — orb + label + explanation per epistemic state.",
+   "when_to_use": "Explaining the honesty system: what verified/claimed/demo/sample mean. Onboarding, docs.",
+   "when_not_to_use": "Not inline (use state-badge). This is the explainer, not the label.",
+   "pairs_with": [
+    "state-badge",
+    "lawcard",
+    "tongue"
+   ],
+   "needs": [
+    "--tc2 per state (inline accent)"
+   ],
+   "selectors": [
+    ".truthgrid",
+    ".truth",
+    ".torb",
+    ".truth b",
+    ".truth p"
+   ],
+   "states": [],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/data/truthgrid/block.css",
+    "specimen": "blocks/data/truthgrid/specimen.html",
+    "readme": "blocks/data/truthgrid/README.md"
+   },
+   "tags": [
+    "data",
+    "honesty",
+    "epistemic",
+    "explainer",
+    "truth-states",
+    "onboarding"
+   ]
+  },
+  {
+   "id": "activity-card",
+   "category": "feed",
+   "name": "Activity Card",
+   "job": "Feed card — 'every event is a card, not a line.' Jewel, narrative, source + time.",
+   "when_to_use": "Activity feeds, timelines, event streams. Each event gets the card treatment.",
+   "when_not_to_use": "Not for knowledge content (use intelligent-block). Not for intel with truth states (use li-card).",
+   "pairs_with": [
+    "activity-stream",
+    "state-badge",
+    "nl-iconbtn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".activity-card",
+    ".activity-card:hover",
+    ".activity-card:active",
+    ".activity-card::before",
+    ".activity-card-high",
+    ".activity-card-high::after",
+    ".activity-card-top",
+    ".activity-card-jewel",
+    ".activity-card-source",
+    ".activity-card-time",
+    ".activity-card-title",
+    ".activity-card-narrative"
+   ],
+   "states": [
+    ":hover (lift + glow)",
+    ":active",
+    ".activity-card-high (featured)"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/feed/activity-card/block.css",
+    "specimen": "blocks/feed/activity-card/specimen.html",
+    "readme": "blocks/feed/activity-card/README.md"
+   },
+   "tags": [
+    "feed",
+    "card",
+    "activity",
+    "event",
+    "timeline",
+    "narrative"
+   ]
+  },
+  {
+   "id": "activity-stream",
+   "category": "feed",
+   "name": "Activity Stream",
+   "job": "Time-grouped stream — time heads, timeline rows, live dot. The feed container.",
+   "when_to_use": "Any chronological feed: activity, history, updates. Renders activity-cards in time groups.",
+   "when_not_to_use": "Not for non-time content. Pair with li-day for day boundaries.",
+   "pairs_with": [
+    "activity-card",
+    "li-day",
+    "li-card",
+    "smart-tabs"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".activity-stream",
+    ".activity-time-group",
+    ".activity-time-head",
+    ".activity-timeline-row",
+    ".activity-live-dot",
+    ".activity-pulse-ring"
+   ],
+   "states": [
+    "live dot pulse (livedot)",
+    "ring breathe (pulsebreathe)"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/feed/activity-stream/block.css",
+    "specimen": "blocks/feed/activity-stream/specimen.html",
+    "readme": "blocks/feed/activity-stream/README.md"
+   },
+   "tags": [
+    "feed",
+    "stream",
+    "timeline",
+    "chronological",
+    "container",
+    "time-grouped"
+   ]
+  },
+  {
+   "id": "intel-row",
+   "category": "feed",
+   "name": "Intel Row",
+   "job": "Compact intel row — type tag + title + summary. Dense intelligence list.",
+   "when_to_use": "Intel lists, digest rows, anywhere many items need scanning fast.",
+   "when_not_to_use": "Not for hero content. Density is the point — don't use it for 2 items.",
+   "pairs_with": [
+    "activity-stream",
+    "state-badge",
+    "li-card"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".intelligence-list",
+    ".intel-row",
+    ".intel-row:hover",
+    ".intel-type",
+    ".intel-title",
+    ".intel-summary"
+   ],
+   "states": [
+    ":hover (accent border)"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/feed/intel-row/block.css",
+    "specimen": "blocks/feed/intel-row/specimen.html",
+    "readme": "blocks/feed/intel-row/README.md"
+   },
+   "tags": [
+    "feed",
+    "row",
+    "dense",
+    "intel",
+    "list",
+    "scanning",
+    "digest"
+   ]
+  },
+  {
+   "id": "li-card",
+   "category": "feed",
+   "name": "Ledger Card",
+   "job": "Ledger intel card — identity edge bar, jewel, source, time-ago, hint pill. Truth-aware.",
+   "when_to_use": "Intelligence items with provenance: ledger entries, findings, claims with truth states.",
+   "when_not_to_use": "Not for social activity (use activity-card). Needs .li-stage wrapper.",
+   "pairs_with": [
+    "li-modal",
+    "state-badge",
+    "metric-ribbon",
+    "activity-stream"
+   ],
+   "needs": [
+    ".li-stage wrapper (base rule prepended into block.css",
+    "block is self-contained)"
+   ],
+   "selectors": [
+    ".li-stage",
+    ".li-stage .li-hero.li-flash",
+    ".li-stage .li-jewels",
+    ".li-stage .li-jewel",
+    ".li-stage .li-jewel:hover",
+    ".li-stage .li-jewel:focus-visible",
+    ".li-stage .li-jewel-g",
+    ".li-stage .li-jewel-n",
+    ".li-stage .li-jewel-c",
+    ".li-stage .li-card",
+    ".li-stage .li-card::before",
+    ".li-stage .li-card:hover"
+   ],
+   "states": [
+    "rest",
+    "hover / focus-visible (card + hint pill)",
+    "`li-card-hint` highlight on card hover",
+    "`licardin` entry animation (opt-in `animate`)",
+    "`libar` pulsing edge bar (staggered via `--i`)",
+    "`liflash` hook via `flash` param",
+    "DEMO chip (opt-in)"
+   ],
+   "source": "Ledger Page Design.html",
+   "files": {
+    "css": "blocks/feed/li-card/block.css",
+    "specimen": "blocks/feed/li-card/specimen.html",
+    "js": "blocks/feed/li-card/block.js",
+    "readme": "blocks/feed/li-card/README.md"
+   },
+   "tags": [
+    "feed",
+    "intel",
+    "ledger",
+    "truth-aware",
+    "provenance",
+    "card",
+    "finding"
+   ]
+  },
+  {
+   "id": "metric-ribbon",
+   "category": "feed",
+   "name": "Metric Ribbon",
+   "job": "Stat ribbon — auto-fit grid, hairline gaps, honest .unknown states.",
+   "when_to_use": "Digest stats, dashboard KPIs, any multi-stat strip. .unknown renders 'not yet' honestly.",
+   "when_not_to_use": "Not for single hero numbers (use living-counter). Not for charts.",
+   "pairs_with": [
+    "living-counter",
+    "jewel-pillar",
+    "scorecard",
+    "li-card"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".metric-ribbon",
+    ".metric",
+    ".metric b",
+    ".metric span",
+    ".metric.unknown",
+    ".digest-stats"
+   ],
+   "states": [
+    ".unknown (honest pending state)"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/feed/metric-ribbon/block.css",
+    "specimen": "blocks/feed/metric-ribbon/specimen.html",
+    "readme": "blocks/feed/metric-ribbon/README.md"
+   },
+   "tags": [
+    "feed",
+    "stats",
+    "ribbon",
+    "kpi",
+    "dashboard",
+    "multi-stat",
+    "digest"
+   ]
+  },
+  {
+   "id": "constellation",
+   "category": "graphs",
+   "name": "Constellation",
+   "job": "Network map — glowing nodes, weight-sized, light-arc relationships.",
+   "when_to_use": "Relationships: who connects to whom, knowledge graphs, team maps.",
+   "when_not_to_use": "Not for hierarchical data (use lists). Needs real relationship data.",
+   "pairs_with": [
+    "dimension-constellation",
+    "nl-chart"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".sc-sky",
+    ".sc-arc",
+    ".sc-node",
+    ".sc-tag",
+    ".sc-hub",
+    ".sc-star",
+    ".sg-legend"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/constellation/constellation.css",
+    "specimen": "blocks/graphs/constellation/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/constellation/README.md"
+   },
+   "tags": [
+    "graph",
+    "network",
+    "nodes",
+    "relationships",
+    "knowledge-graph",
+    "map"
+   ]
+  },
+  {
+   "id": "jewel-pillar",
+   "category": "graphs",
+   "name": "Jewel Pillar",
+   "job": "Jeweled series pillars — faceted cap, glowing base, staggered rise.",
+   "when_to_use": "Comparing 3-8 values: bar chart, but jeweled. Categories side by side.",
+   "when_not_to_use": "Not for time series (use spectrum-flow). Not for 20+ bars.",
+   "pairs_with": [
+    "nl-chart",
+    "metric-ribbon",
+    "scorecard"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".jp-track",
+    ".jp-col",
+    ".jp-val",
+    ".jp-pillar",
+    ".jp-cap",
+    ".sg-legend"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/jewel-pillar/jewel-pillar.css",
+    "specimen": "blocks/graphs/jewel-pillar/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/jewel-pillar/README.md"
+   },
+   "tags": [
+    "graph",
+    "bar-chart",
+    "comparison",
+    "pillars",
+    "jeweled",
+    "categories"
+   ]
+  },
+  {
+   "id": "living-counter",
+   "category": "graphs",
+   "name": "Living Counter",
+   "job": "The number, alive — count-up numerals, jewel delta, sparkline whisper.",
+   "when_to_use": "KPIs, totals, any number that deserves to feel alive on arrival.",
+   "when_not_to_use": "Not for precise tables (use nl-table). The count-up is theater — use it deliberately.",
+   "pairs_with": [
+    "metric-ribbon",
+    "pulse-orb",
+    "jewel-pillar"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".lc-num",
+    ".lc-row",
+    ".lc-delta",
+    ".lc-delta .gem",
+    ".lc-per",
+    ".lc-spark",
+    ".sg-foot"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/living-counter/living-counter.css",
+    "specimen": "blocks/graphs/living-counter/specimen.html",
+    "js": "blocks/graphs/living-counter/living-counter.js",
+    "readme": "blocks/graphs/living-counter/README.md"
+   },
+   "tags": [
+    "graph",
+    "counter",
+    "kpi",
+    "count-up",
+    "number",
+    "total",
+    "stat"
+   ]
+  },
+  {
+   "id": "orbit-dial",
+   "category": "graphs",
+   "name": "Orbit Dial",
+   "job": "Score set in orbit — jewel ring gauge 0-10. The Calculator's face.",
+   "when_to_use": "Scores: assessment results, ratings, any 0-10 judgment rendered beautifully.",
+   "when_not_to_use": "Not for non-score numbers. The ring means 'judged' — don't use it for counts.",
+   "pairs_with": [
+    "score-stage",
+    "scorecard",
+    "dimension-constellation"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".od-stage",
+    ".od-dial",
+    ".od-arc",
+    ".od-ticks",
+    ".od-center",
+    ".od-num",
+    ".od-cap",
+    ".od-scale",
+    ".sg-foot"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/orbit-dial/orbit-dial.css",
+    "specimen": "blocks/graphs/orbit-dial/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/orbit-dial/README.md"
+   },
+   "tags": [
+    "graph",
+    "gauge",
+    "score",
+    "0-10",
+    "judgment",
+    "ring",
+    "calculator"
+   ]
+  },
+  {
+   "id": "pulse-orb",
+   "category": "graphs",
+   "name": "Pulse Orb",
+   "job": "Living orb that breathes with the data — value drives diameter and glow.",
+   "when_to_use": "Single hero metrics: the number that matters most, alive.",
+   "when_not_to_use": "Not for comparisons (use jewel-pillar). One metric per orb.",
+   "pairs_with": [
+    "living-counter",
+    "metric-ribbon",
+    "orb"
+   ],
+   "needs": [
+    "tokens.css",
+    "jewels/gem-bullet"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".pulse-orb-stage",
+    ".pulse-orb",
+    ".pulse-orb .po-val",
+    ".pulse-orb .po-num",
+    ".pulse-orb .po-label",
+    ".sg-delta",
+    ".sg-delta .gem-bullet",
+    ".sg-foot"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/pulse-orb/pulse-orb.css",
+    "specimen": "blocks/graphs/pulse-orb/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/pulse-orb/README.md"
+   },
+   "tags": [
+    "graph",
+    "metric",
+    "hero-number",
+    "breathing",
+    "single-value",
+    "alive"
+   ]
+  },
+  {
+   "id": "pulse-rings",
+   "category": "graphs",
+   "name": "Pulse Rings",
+   "job": "Network heartbeat — concentric sonar rings, live total at center.",
+   "when_to_use": "Live activity: the pulse of a system right now. Urgency encoded in pace.",
+   "when_not_to_use": "Not for static historical data. It's a heartbeat — it must beat.",
+   "pairs_with": [
+    "pulse-orb",
+    "activity-stream",
+    "living-counter"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".pr-stage",
+    ".pr-ring",
+    ".pr-core",
+    ".pr-core .pr-num",
+    ".pr-core .pr-label",
+    ".pr-keys",
+    ".sg-foot"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/pulse-rings/pulse-rings.css",
+    "specimen": "blocks/graphs/pulse-rings/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/pulse-rings/README.md"
+   },
+   "tags": [
+    "graph",
+    "heartbeat",
+    "live",
+    "activity",
+    "sonar",
+    "real-time",
+    "urgency"
+   ]
+  },
+  {
+   "id": "spectrum-flow",
+   "category": "graphs",
+   "name": "Spectrum Flow",
+   "job": "Layered spectrum bands — composition of a whole flowing over time.",
+   "when_to_use": "Part-to-whole over time: stacked area with soul.",
+   "when_not_to_use": "Not for single series. Not for non-time x-axis.",
+   "pairs_with": [
+    "nl-chart",
+    "jewel-pillar",
+    "pulse-rings"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".sg-card",
+    ".sg-card .c-sub",
+    ".sf-river",
+    ".sf-bands",
+    ".sf-band",
+    ".sf-grid",
+    ".sf-axis",
+    ".sg-legend"
+   ],
+   "states": [
+    ":hover",
+    ".lit",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 (Smart Graphs visual language)",
+   "files": {
+    "css": "blocks/graphs/spectrum-flow/spectrum-flow.css",
+    "specimen": "blocks/graphs/spectrum-flow/specimen.html",
+    "js": null,
+    "readme": "blocks/graphs/spectrum-flow/README.md"
+   },
+   "tags": [
+    "graph",
+    "area-chart",
+    "time-series",
+    "part-to-whole",
+    "flow",
+    "stacked"
+   ]
+  },
+  {
+   "id": "nl-field",
+   "category": "inputs",
+   "name": "Field",
+   "job": "Text input field with error/ok states and required markers.",
+   "when_to_use": "Forms: name, email, any text entry. .err/.ok states for validation feedback.",
+   "when_not_to_use": "Not for search (use nl-search). Not for long text (no textarea variant in library).",
+   "pairs_with": [
+    "primo",
+    "naya-btn",
+    "nl-toggle-row"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-field",
+    ".nl-field .req",
+    ".nl-field label",
+    ".nl-field.err .nl-msg",
+    ".nl-field.err .nl-well",
+    ".nl-field.ok .nl-msg",
+    ".nl-field.ok .nl-well",
+    ".nl-field:focus-within .icon",
+    ".nl-field:focus-within .nl-well"
+   ],
+   "states": [
+    ":focus"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/inputs/nl-field/nl-field.css",
+    "specimen": "blocks/inputs/nl-field/specimen.html",
+    "js": null,
+    "readme": "blocks/inputs/nl-field/README.md"
+   },
+   "tags": [
+    "input",
+    "form",
+    "text-field",
+    "validation",
+    "entry"
+   ]
+  },
+  {
+   "id": "nl-search",
+   "category": "inputs",
+   "name": "Search",
+   "job": "Search field — for finding things.",
+   "when_to_use": "Global search, list filtering, anywhere the user types to find.",
+   "when_not_to_use": "Not for data entry. Not as a generic text field.",
+   "pairs_with": [
+    "nl-field",
+    "smart-tabs"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-search",
+    ".nl-search .nl-well input",
+    ".nl-search:focus-within .icon",
+    ".nl-search:focus-within .nl-well"
+   ],
+   "states": [
+    ":focus"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/inputs/nl-search/nl-search.css",
+    "specimen": "blocks/inputs/nl-search/specimen.html",
+    "js": null,
+    "readme": "blocks/inputs/nl-search/README.md"
+   },
+   "tags": [
+    "input",
+    "search",
+    "find",
+    "filter",
+    "query"
+   ]
+  },
+  {
+   "id": "sn-pill",
+   "category": "inputs",
+   "name": "Sn Pill",
+   "job": "Smart Note filter pill with popover editor — filter content by note, edit inline.",
+   "when_to_use": "Spaces/feed filtering by Smart Note. Where notes are both filters and editable objects.",
+   "when_not_to_use": "Not as a generic tag (no editor needed). Tied to the Smart Notes concept.",
+   "pairs_with": [
+    "smart-tabs",
+    "activity-stream",
+    "sp-chat"
+   ],
+   "needs": [
+    "--tc (per-pill accent, set inline by the builder), --cx-dim (dim text color — defined *outside* this block",
+    "used by .sn-pill.add and .sn-pop label",
+    "the specimen defines --cx-dim:#8a8a96 on :root)"
+   ],
+   "selectors": [
+    ".sn-menu .mi",
+    ".sn-menu .mi:last-child",
+    ".sn-menu .mi:hover",
+    ".sn-pop h3",
+    ".sn-pop .row",
+    ".sn-pop label",
+    ".sn-pop input",
+    ".sn-pop .toggles",
+    ".sn-pop .tgl",
+    ".sn-pop .tgl.on",
+    ".sn-pop .ft",
+    ".sn-btn"
+   ],
+   "states": [
+    "`.sn-menu .mi:hover`",
+    "`.sn-pill.heart`",
+    "`.sn-pill.star`",
+    "`.sn-pill:hover`",
+    "`.cx-stage .sn-pill:focus-visible`",
+    "`.sn-pill.on`",
+    "`.sn-pill.add`",
+    "`.sn-pill.add:hover`"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/inputs/sn-pill/block.css",
+    "specimen": "blocks/inputs/sn-pill/specimen.html",
+    "js": "blocks/inputs/sn-pill/block.js",
+    "readme": "blocks/inputs/sn-pill/README.md"
+   },
+   "tags": [
+    "input",
+    "filter-pill",
+    "smart-note",
+    "popover-editor",
+    "feed-filter"
+   ]
+  },
+  {
+   "id": "gem-bullet",
+   "category": "jewels",
+   "name": "Gem Bullet",
+   "job": "12px diamond bullet — glowing list marker. Bullets are jewels, never dots.",
+   "when_to_use": "List bullets everywhere. Cycle spectrum colors down the list (never repeat adjacent).",
+   "when_not_to_use": "Not at sizes other than 12px without care. Not as a status indicator (use mini-orb).",
+   "pairs_with": [
+    "jw",
+    "body",
+    "checks"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".gem-bullet"
+   ],
+   "states": [],
+   "source": "Naya_5_Jewel_Library.html",
+   "files": {
+    "css": "blocks/jewels/gem-bullet/gem-bullet.css",
+    "specimen": "blocks/jewels/gem-bullet/specimen.html",
+    "js": null,
+    "readme": "blocks/jewels/gem-bullet/README.md"
+   },
+   "tags": [
+    "bullet",
+    "list-marker",
+    "diamond",
+    "jewel",
+    "spectrum"
+   ]
+  },
+  {
+   "id": "jw",
+   "category": "jewels",
+   "name": "Jw",
+   "job": "Jewel atom — reusable across bullets, corners, states. The single jewel primitive.",
+   "when_to_use": "Anywhere a jewel is needed inline: law markers, prediction rows, tongue lists, corners.",
+   "when_not_to_use": "Not as a standalone decorative element at large sizes (use orb).",
+   "pairs_with": [
+    "gem-bullet",
+    "lawcard",
+    "law-steps"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".gate .jw",
+    ".hbul .jw",
+    ".jw",
+    ".laws-line .jw",
+    ".pred .jw",
+    ".tongue ul li .jw"
+   ],
+   "states": [],
+   "source": "Naya_4_Design_Element_Set.html",
+   "files": {
+    "css": "blocks/jewels/jw/jw.css",
+    "specimen": "blocks/jewels/jw/specimen.html",
+    "js": null,
+    "readme": "blocks/jewels/jw/README.md"
+   },
+   "tags": [
+    "jewel",
+    "atom",
+    "marker",
+    "inline",
+    "primitive",
+    "corner"
+   ]
+  },
+  {
+   "id": "intelligent-block",
+   "category": "knowledge",
+   "name": "Intelligent Block",
+   "job": "THE signature block — header (jewel+kind+title+truth badge), 4-layer answer, expandable layers, provenance footer.",
+   "when_to_use": "Every knowledge surface: answers, explanations, Smart Notes, intelligence delivery. This IS NayaNET's voice in block form.",
+   "when_not_to_use": "Not for feed events (use activity-card). Not for chat. When content has no truth state, you're probably using the wrong block.",
+   "pairs_with": [
+    "state-badge",
+    "metric-ribbon",
+    "hub-quote",
+    "nl-playbtn",
+    "checks"
+   ],
+   "needs": [
+    "intelligent-block.js (layer toggle + play), tokens.css"
+   ],
+   "selectors": [
+    ".ib-blocktop",
+    ".ib-identity",
+    ".ib-jewel",
+    ".ib-title",
+    ".ib-subtitle",
+    ".ib-meta",
+    ".ib-truth",
+    ".ib-nutshell",
+    ".ib-nutshell-label",
+    ".ib-layers",
+    ".ib-layer",
+    ".ib-layer-head"
+   ],
+   "states": [
+    ".ib-layer-head.open",
+    ".ib-layer-play.playing",
+    ".ib-layer.is-deeper",
+    ":hover"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/knowledge/intelligent-block/block.css",
+    "specimen": "blocks/knowledge/intelligent-block/specimen.html",
+    "readme": "blocks/knowledge/intelligent-block/README.md"
+   },
+   "tags": [
+    "knowledge",
+    "signature",
+    "answer",
+    "intelligent-block",
+    "truth-badge",
+    "layers",
+    "provenance",
+    "smart-note"
+   ]
+  },
+  {
+   "id": "footer",
+   "category": "layout",
+   "name": "Footer",
+   "job": "Page footer — brand lockup, link columns, legal row.",
+   "when_to_use": "Bottom of every page. The closing statement.",
+   "when_not_to_use": "Not for app bottom bars (use eco-bottombar).",
+   "pairs_with": [
+    "page-shell",
+    "nav",
+    "section"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-footer",
+    ".naya-footer--compact",
+    ".naya-footer__brand",
+    ".naya-footer__grid",
+    ".naya-footer__group",
+    ".naya-footer__heading",
+    ".naya-footer__heading::before",
+    ".naya-footer__legal",
+    ".naya-footer__list",
+    ".naya-footer__mark",
+    ".naya-footer__mark-row",
+    ".naya-footer__social"
+   ],
+   "states": [
+    ":hover",
+    "@media max-width: 900px",
+    "@media max-width: 560px",
+    "prefers-reduced-motion"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/layout/footer/footer.css",
+    "specimen": "blocks/layout/footer/specimen.html",
+    "js": null,
+    "readme": "blocks/layout/footer/README.md"
+   },
+   "tags": [
+    "layout",
+    "footer",
+    "brand",
+    "links",
+    "legal",
+    "closing"
+   ]
+  },
+  {
+   "id": "nav",
+   "category": "layout",
+   "name": "Nav",
+   "job": "Top navigation — logo left, links, CTA right. Sticky translucent.",
+   "when_to_use": "Every page with navigation. Mobile hamburger included.",
+   "when_not_to_use": "Not for app chrome (use drawer + eco-bottombar). This is page nav.",
+   "pairs_with": [
+    "page-shell",
+    "footer",
+    "naya-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-nav",
+    ".naya-nav--open",
+    ".naya-nav--overlay",
+    ".naya-nav--scrolled",
+    ".naya-nav--static",
+    ".naya-nav__brand",
+    ".naya-nav__cta",
+    ".naya-nav__link",
+    ".naya-nav__link--active",
+    ".naya-nav__link--active::after",
+    ".naya-nav__link:hover",
+    ".naya-nav__links"
+   ],
+   "states": [
+    ":hover",
+    ".naya-nav--open",
+    "@media max-width: 860px",
+    "prefers-reduced-motion"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/layout/nav/nav.css",
+    "specimen": "blocks/layout/nav/specimen.html",
+    "js": null,
+    "readme": "blocks/layout/nav/README.md"
+   },
+   "tags": [
+    "layout",
+    "navigation",
+    "header",
+    "topbar",
+    "sticky",
+    "menu"
+   ]
+  },
+  {
+   "id": "page-shell",
+   "category": "layout",
+   "name": "Page Shell",
+   "job": "The page chassis — full-width black ground, no max-width caps, base resets.",
+   "when_to_use": "EVERY page starts here. The ground everything else stands on.",
+   "when_not_to_use": "Never skip it. Never add max-width caps inside it (Shawn's law).",
+   "pairs_with": [
+    "section",
+    "nav",
+    "footer"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-page",
+    ".naya-page--edgelight",
+    ".naya-page--edgelight::before",
+    ".naya-page ::selection",
+    ".naya-page :focus-visible",
+    "body:has(.naya-page)"
+   ],
+   "states": [
+    ":focus-visible",
+    "::selection",
+    "@media (prefers-reduced-motion: reduce)"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/layout/page-shell/page-shell.css",
+    "specimen": "blocks/layout/page-shell/specimen.html",
+    "readme": "blocks/layout/page-shell/README.md"
+   },
+   "tags": [
+    "layout",
+    "chassis",
+    "page-frame",
+    "black-ground",
+    "full-width",
+    "foundation"
+   ]
+  },
+  {
+   "id": "portal",
+   "category": "layout",
+   "name": "Portal",
+   "job": "Welcome entry portal — orbit rings + purple glow staging a centered core. The front door.",
+   "when_to_use": "Entrance/landing pages. The moment of arrival.",
+   "when_not_to_use": "Not inside apps. Once per experience — it's the door, not a hallway.",
+   "pairs_with": [
+    "hero",
+    "presence",
+    "living-btn",
+    "orb"
+   ],
+   "needs": [
+    "orbit keyframes (included where defined in source)"
+   ],
+   "selectors": [
+    ".portal",
+    ".stage",
+    ".naya-orbit",
+    ".naya-color-orbit",
+    ".naya-white-orbit",
+    ".naya-white-light"
+   ],
+   "states": [],
+   "source": "Welcome Page Design.html",
+   "files": {
+    "css": "blocks/layout/portal/block.css",
+    "specimen": "blocks/layout/portal/specimen.html",
+    "readme": "blocks/layout/portal/README.md"
+   },
+   "tags": [
+    "layout",
+    "entrance",
+    "portal",
+    "landing",
+    "arrival",
+    "front-door",
+    "orbits"
+   ]
+  },
+  {
+   "id": "row-grid",
+   "category": "layout",
+   "name": "Row Grid",
+   "job": "Responsive grids — 2/3/4 col mobile-first, collapsing cleanly.",
+   "when_to_use": "Card grids, feature rows, any multi-column layout. Mobile-first always.",
+   "when_not_to_use": "Not for single-column flow (just stack). Not for complex asymmetric layouts.",
+   "pairs_with": [
+    "section",
+    "sp-card",
+    "door",
+    "nl-ccard"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-grid",
+    ".naya-grid--2",
+    ".naya-grid--3",
+    ".naya-grid--4",
+    ".naya-grid--tight",
+    ".naya-grid--loose",
+    ".naya-grid--center",
+    ".naya-grid--stretch",
+    ".naya-row",
+    ".naya-row--top",
+    ".naya-row--spread",
+    ".naya-split"
+   ],
+   "states": [
+    "@media (min-width: 640px)",
+    "@media (min-width: 900px)",
+    "@media (min-width: 1024px)"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/layout/row-grid/row-grid.css",
+    "specimen": "blocks/layout/row-grid/specimen.html",
+    "readme": "blocks/layout/row-grid/README.md"
+   },
+   "tags": [
+    "layout",
+    "grid",
+    "columns",
+    "responsive",
+    "mobile-first",
+    "card-grid"
+   ]
+  },
+  {
+   "id": "section",
+   "category": "layout",
+   "name": "Section",
+   "job": "Content rhythm — vertical spacing with optional jewel divider.",
+   "when_to_use": "Between every major content block. The breathing room of the page.",
+   "when_not_to_use": "Not for horizontal layout (use row-grid).",
+   "pairs_with": [
+    "page-shell",
+    "headline",
+    "row-grid"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-section",
+    ".naya-section--compact",
+    ".naya-section--roomy",
+    ".naya-section--divided",
+    ".naya-section--divided::before",
+    ".naya-section--jewel::after",
+    ".naya-section--tint"
+   ],
+   "states": [
+    "@media (max-width: 480px)"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/layout/section/section.css",
+    "specimen": "blocks/layout/section/specimen.html",
+    "readme": "blocks/layout/section/README.md"
+   },
+   "tags": [
+    "layout",
+    "spacing",
+    "rhythm",
+    "divider",
+    "vertical",
+    "breathing-room"
+   ]
+  },
+  {
+   "id": "sp-about-rows",
+   "category": "lists",
+   "name": "Space About Rows",
+   "job": "Key/value about rows — the About-tab card.",
+   "when_to_use": "Space/profile about sections: structured facts as rows.",
+   "when_not_to_use": "Not for long prose. Keep values short.",
+   "pairs_with": [
+    "sp-detail",
+    "sp-blockrow",
+    "nl-toggle-row"
+   ],
+   "needs": [],
+   "selectors": [
+    ".sp-about",
+    ".sp-about-row",
+    ".sp-about-k",
+    ".sp-about-v",
+    ".sp-about-desc"
+   ],
+   "states": [
+    "about card with rows; optional description paragraph; no accent styling needed (block uses neutral colors)"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/lists/sp-about-rows/block.css",
+    "specimen": "blocks/lists/sp-about-rows/specimen.html",
+    "js": "blocks/lists/sp-about-rows/block.js",
+    "readme": "blocks/lists/sp-about-rows/README.md"
+   },
+   "tags": [
+    "list",
+    "about",
+    "key-value",
+    "facts",
+    "profile",
+    "rows"
+   ]
+  },
+  {
+   "id": "sp-blockrow",
+   "category": "lists",
+   "name": "Space Blockrow",
+   "job": "Block list row — title + category label, for picking content.",
+   "when_to_use": "Pickers: 'pin an Intelligent Block' lists, content selection.",
+   "when_not_to_use": "Not for display-only lists (use sp-about-rows).",
+   "pairs_with": [
+    "sp-about-rows",
+    "intelligent-block",
+    "primo"
+   ],
+   "needs": [],
+   "selectors": [
+    ".sp-blocklist",
+    ".sp-blockrow",
+    ".sp-blockrow-t",
+    ".sp-blockrow-c"
+   ],
+   "states": [
+    "row (default",
+    "hover); list container scrolls (max-height 50vh); optional action button active/inactive (source: Pin / ✓ Pinned)"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/lists/sp-blockrow/block.css",
+    "specimen": "blocks/lists/sp-blockrow/specimen.html",
+    "js": "blocks/lists/sp-blockrow/block.js",
+    "readme": "blocks/lists/sp-blockrow/README.md"
+   },
+   "tags": [
+    "list",
+    "picker",
+    "row",
+    "selection",
+    "content-picker"
+   ]
+  },
+  {
+   "id": "nl-player",
+   "category": "media",
+   "name": "Player",
+   "job": "Media player chrome — for audio/video playback surfaces.",
+   "when_to_use": "Podcast/audio players, media embeds. The frame; pair with nl-playbtn for control.",
+   "when_not_to_use": "Not for voice notes in chat (use sp-audio-msg).",
+   "pairs_with": [
+    "nl-playbtn",
+    "sp-audio-msg"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-player",
+    ".nl-player-top"
+   ],
+   "states": [],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/media/nl-player/nl-player.css",
+    "specimen": "blocks/media/nl-player/specimen.html",
+    "js": null,
+    "readme": "blocks/media/nl-player/README.md"
+   },
+   "tags": [
+    "media",
+    "player",
+    "audio",
+    "video",
+    "playback",
+    "podcast"
+   ]
+  },
+  {
+   "id": "mini-orb",
+   "category": "orbs",
+   "name": "Mini Orb",
+   "job": "Atomic luminous mark — one class, one variable. The most copy-pasteable element.",
+   "when_to_use": "Status dots, list markers, tiny presence indicators. Anywhere you need a 1-element glow.",
+   "when_not_to_use": "Not for hero visuals (use orb). Not as a button (no affordance).",
+   "pairs_with": [
+    "gem-bullet",
+    "state-badge",
+    "intel-row"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".mini-orb"
+   ],
+   "states": [],
+   "source": "Naya_5_Jewel_Library.html",
+   "files": {
+    "css": "blocks/orbs/mini-orb/mini-orb.css",
+    "specimen": "blocks/orbs/mini-orb/specimen.html",
+    "js": null,
+    "readme": "blocks/orbs/mini-orb/README.md"
+   },
+   "tags": [
+    "decorative",
+    "dot",
+    "status-indicator",
+    "tiny",
+    "glow",
+    "marker"
+   ]
+  },
+  {
+   "id": "nav-orb",
+   "category": "orbs",
+   "name": "Nav Orb",
+   "job": "40px navigation orb with conic ring — a tappable presence.",
+   "when_to_use": "Nav brand marks, user presence in headers, tappable identity.",
+   "when_not_to_use": "Not for body content. Keep it in chrome.",
+   "pairs_with": [
+    "nav",
+    "drawer",
+    "eco-bottombar"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nav-orb"
+   ],
+   "states": [],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/orbs/nav-orb/nav-orb.css",
+    "specimen": "blocks/orbs/nav-orb/specimen.html",
+    "js": null,
+    "readme": "blocks/orbs/nav-orb/README.md"
+   },
+   "tags": [
+    "navigation",
+    "brand-mark",
+    "presence",
+    "header",
+    "tappable"
+   ]
+  },
+  {
+   "id": "orb",
+   "category": "orbs",
+   "name": "Orb",
+   "job": "Sphere of light — the presence of the intelligence made visible.",
+   "when_to_use": "Hero moments, loading states with soul, the visual anchor of an entrance or dashboard. Variants: --black, --hero, --btn.",
+   "when_not_to_use": "Not as decoration scattered everywhere. One orb per view — it's a sun, not confetti.",
+   "pairs_with": [
+    "portal",
+    "hero",
+    "orbit-btn"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".orb",
+    ".orb, .orb::before",
+    ".orb--black",
+    ".orb--btn:active",
+    ".orb--btn:focus-visible",
+    ".orb--glyph",
+    ".orb--hero",
+    ".orb--hero::after",
+    ".orb--hero::before",
+    ".orb--icon",
+    ".orb--icon::after",
+    ".orb--icon::before"
+   ],
+   "states": [
+    ":hover",
+    ":active",
+    ":focus",
+    ":focus-visible"
+   ],
+   "source": "Naya_5_Jewel_Library.html",
+   "files": {
+    "css": "blocks/orbs/orb/orb.css",
+    "specimen": "blocks/orbs/orb/specimen.html",
+    "js": null,
+    "readme": "blocks/orbs/orb/README.md"
+   },
+   "tags": [
+    "decorative",
+    "presence",
+    "hero-visual",
+    "loading",
+    "sphere-of-light",
+    "anchor"
+   ]
+  },
+  {
+   "id": "li-modal",
+   "category": "overlays",
+   "name": "Ledger Modal",
+   "job": "Ledger detail modal — intel deep-dive with stat grid, full a11y plumbing.",
+   "when_to_use": "Opening an intel card for the full detail: stats, explanation, provenance. Has focus trap + restore.",
+   "when_not_to_use": "Not as a generic modal (use nl-modal). Tied to the li- intel grammar.",
+   "pairs_with": [
+    "li-card",
+    "metric-ribbon",
+    "state-badge"
+   ],
+   "needs": [
+    ".li-stage wrapper (base rule prepended into block.css",
+    "block is self-contained)"
+   ],
+   "selectors": [
+    ".li-stage",
+    ".li-stage .li-overlay",
+    ".li-stage .li-modal",
+    ".li-stage .li-modal-title",
+    ".li-stage .li-modal-meta",
+    ".li-stage .li-modal-stats",
+    ".li-stage .li-modal-stat",
+    ".li-stage .li-modal-stat + .li-modal-stat",
+    ".li-stage .li-modal-stat-l",
+    ".li-stage .li-modal-stat-v",
+    ".li-stage .li-modal-explain",
+    ".li-stage .li-modal-x"
+   ],
+   "states": [
+    "open (limodal pop animation)",
+    "CLOSE button hover / focus-visible",
+    "close on backdrop click",
+    "close on Escape",
+    "Tab focus trap inside dialog",
+    "focus restored to invoker on close"
+   ],
+   "source": "Ledger Page Design.html",
+   "files": {
+    "css": "blocks/overlays/li-modal/block.css",
+    "specimen": "blocks/overlays/li-modal/specimen.html",
+    "js": "blocks/overlays/li-modal/block.js",
+    "readme": "blocks/overlays/li-modal/README.md"
+   },
+   "tags": [
+    "overlay",
+    "modal",
+    "intel-detail",
+    "deep-dive",
+    "stat-grid",
+    "ledger"
+   ]
+  },
+  {
+   "id": "nl-modal",
+   "category": "overlays",
+   "name": "Modal",
+   "job": "Modal dialog — focused task overlay with backdrop.",
+   "when_to_use": "Confirmations, focused forms, detail views that need full attention. Always with a clear dismiss.",
+   "when_not_to_use": "Not for toasts (use nl-toast). Not for bottom sheets on mobile (use nl-sheet). Don't stack modals.",
+   "pairs_with": [
+    "naya-btn",
+    "nl-btn-ghost",
+    "primo"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-modal",
+    ".nl-modal .gem",
+    ".nl-modal h3",
+    ".nl-modal p",
+    ".nl-modal-actions",
+    ".nl-modal-back",
+    ".nl-modal-back.open",
+    ".nl-modal-x",
+    ".nl-modal-x:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/overlays/nl-modal/nl-modal.css",
+    "specimen": "blocks/overlays/nl-modal/specimen.html",
+    "js": null,
+    "readme": "blocks/overlays/nl-modal/README.md"
+   },
+   "tags": [
+    "overlay",
+    "modal",
+    "dialog",
+    "confirmation",
+    "focused-task",
+    "backdrop"
+   ]
+  },
+  {
+   "id": "nl-sheet",
+   "category": "overlays",
+   "name": "Sheet",
+   "job": "Share sheet — bottom sheet for share/actions on mobile.",
+   "when_to_use": "Mobile share flows, action sheets. Slides from bottom.",
+   "when_not_to_use": "Not on desktop (use modal or popover). Not for complex forms.",
+   "pairs_with": [
+    "share-fab",
+    "eco-bottombar",
+    "nl-modal"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-sheet",
+    ".nl-sheet .s-sub",
+    ".nl-sheet h3",
+    ".nl-sheet-back",
+    ".nl-sheet-back.open"
+   ],
+   "states": [],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/overlays/nl-sheet/nl-sheet.css",
+    "specimen": "blocks/overlays/nl-sheet/specimen.html",
+    "js": null,
+    "readme": "blocks/overlays/nl-sheet/README.md"
+   },
+   "tags": [
+    "overlay",
+    "bottom-sheet",
+    "share",
+    "mobile",
+    "action-sheet"
+   ]
+  },
+  {
+   "id": "nl-toast",
+   "category": "overlays",
+   "name": "Toast",
+   "job": "Toast notification — transient feedback, auto-dismissing.",
+   "when_to_use": "Confirmations ('Saved'), errors, status updates. Fire-and-forget feedback.",
+   "when_not_to_use": "Not for content requiring action (use modal). Not for persistent status.",
+   "pairs_with": [
+    "state-badge",
+    "nl-modal"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-toast",
+    ".nl-toast .t-act",
+    ".nl-toast .t-act:hover",
+    ".nl-toast .t-dot",
+    ".nl-toast-row",
+    ".nl-toast-zone",
+    ".nl-toast.out"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/overlays/nl-toast/nl-toast.css",
+    "specimen": null,
+    "js": null,
+    "readme": "blocks/overlays/nl-toast/README.md"
+   },
+   "tags": [
+    "overlay",
+    "toast",
+    "notification",
+    "transient",
+    "feedback",
+    "auto-dismiss"
+   ]
+  },
+  {
+   "id": "checks",
+   "category": "report",
+   "name": "Checks",
+   "job": "Vertical checklist — real checkboxes with accent rows. Verification you can tick.",
+   "when_to_use": "Acceptance criteria, verification steps, any 'prove it' list.",
+   "when_not_to_use": "Not for navigation. Each item needs --cc accent.",
+   "pairs_with": [
+    "law-steps",
+    "scorecard",
+    "verdict"
+   ],
+   "needs": [
+    "--cc per check (inline accent)"
+   ],
+   "selectors": [
+    ".checks",
+    ".check",
+    ".check input",
+    ".check span"
+   ],
+   "states": [
+    ":checked",
+    ":hover",
+    ":focus-visible"
+   ],
+   "source": "Naya Design Elements N2.html",
+   "files": {
+    "css": "blocks/report/checks/block.css",
+    "specimen": "blocks/report/checks/specimen.html",
+    "readme": "blocks/report/checks/README.md"
+   },
+   "tags": [
+    "report",
+    "checklist",
+    "verification",
+    "acceptance",
+    "todo",
+    "proof"
+   ]
+  },
+  {
+   "id": "law-steps",
+   "category": "report",
+   "name": "Law Steps",
+   "job": "Law-pipeline steps — jewel marker + rule + explanation. Governance as a staircase.",
+   "when_to_use": "Showing process/pipeline stages: how something flows from A to B.",
+   "when_not_to_use": "Not for unordered lists. Steps must have order.",
+   "pairs_with": [
+    "lawcard",
+    "checks",
+    "verdict"
+   ],
+   "needs": [
+    ".jewel.mini from the jewels category (or any 1em marker)"
+   ],
+   "selectors": [
+    ".law-steps",
+    ".law-step",
+    ".law-step > div",
+    ".law-step strong",
+    ".law-step span"
+   ],
+   "states": [],
+   "source": "Naya Design Elements N2.html",
+   "files": {
+    "css": "blocks/report/law-steps/block.css",
+    "specimen": "blocks/report/law-steps/specimen.html",
+    "readme": "blocks/report/law-steps/README.md"
+   },
+   "tags": [
+    "report",
+    "pipeline",
+    "steps",
+    "process",
+    "governance",
+    "stages",
+    "sequence"
+   ]
+  },
+  {
+   "id": "lawcard",
+   "category": "report",
+   "name": "Lawcard",
+   "job": "Law card — numbered law with diamond marker, title, body. Governance made visible.",
+   "when_to_use": "Displaying laws, rules, principles — one card per law.",
+   "when_not_to_use": "Not for procedures (use law-steps). Each card is one law.",
+   "pairs_with": [
+    "law-steps",
+    "jw",
+    "tongue"
+   ],
+   "needs": [
+    "--lc per card (inline accent)",
+    "--ease motion curve"
+   ],
+   "selectors": [
+    ".lawcard",
+    ".lawcard .ln",
+    ".lawcard .ld",
+    ".lawcard h3",
+    ".lawcard p"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/report/lawcard/block.css",
+    "specimen": "blocks/report/lawcard/specimen.html",
+    "readme": "blocks/report/lawcard/README.md"
+   },
+   "tags": [
+    "report",
+    "law",
+    "rule",
+    "principle",
+    "governance",
+    "numbered"
+   ]
+  },
+  {
+   "id": "scorecard",
+   "category": "report",
+   "name": "Scorecard",
+   "job": "Scorecard — dimension label, big glowing number, note. The Calculator's output face.",
+   "when_to_use": "Scoring results: dimensions with scores and notes. After assessments.",
+   "when_not_to_use": "Not for single scores (use orbit-dial/score-stage). This is the breakdown.",
+   "pairs_with": [
+    "orbit-dial",
+    "jewel-pillar",
+    "verdict",
+    "dimension-constellation"
+   ],
+   "needs": [
+    "--sc per row (inline accent)"
+   ],
+   "selectors": [
+    ".scorecard",
+    ".score-row",
+    ".score-row:last-child",
+    ".dim",
+    ".num",
+    ".note"
+   ],
+   "states": [],
+   "source": "Naya Design Elements N2.html",
+   "files": {
+    "css": "blocks/report/scorecard/block.css",
+    "specimen": "blocks/report/scorecard/specimen.html",
+    "readme": "blocks/report/scorecard/README.md"
+   },
+   "tags": [
+    "report",
+    "scores",
+    "dimensions",
+    "breakdown",
+    "calculator",
+    "results"
+   ]
+  },
+  {
+   "id": "tongue",
+   "category": "report",
+   "name": "Tongue",
+   "job": "Three-language display — human/AI/machine. The 3-language standard made visible.",
+   "when_to_use": "Showing the same truth in three tongues: specs, laws, any trilingual content.",
+   "when_not_to_use": "Not for single-language content. All three tongues must be present.",
+   "pairs_with": [
+    "lawcard",
+    "verdict",
+    "truthgrid"
+   ],
+   "needs": [
+    "--tc3 per tongue",
+    ".jw jewel uses --j"
+   ],
+   "selectors": [
+    ".tongues",
+    ".tongue",
+    ".tongue h3",
+    ".tongue p",
+    ".pred",
+    ".pred-name",
+    ".jw"
+   ],
+   "states": [],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/report/tongue/block.css",
+    "specimen": "blocks/report/tongue/specimen.html",
+    "readme": "blocks/report/tongue/README.md"
+   },
+   "tags": [
+    "report",
+    "three-language",
+    "human-ai-machine",
+    "spec",
+    "trilingual"
+   ]
+  },
+  {
+   "id": "verdict",
+   "category": "report",
+   "name": "Verdict",
+   "job": "Verdict display — Cormorant voice serif, centered. The judgment, spoken plainly.",
+   "when_to_use": "Final judgments, conclusions, the last word on a report/scorecard.",
+   "when_not_to_use": "Not for ongoing content. A verdict closes — don't put body copy after it.",
+   "pairs_with": [
+    "scorecard",
+    "hub-quote",
+    "score-stage"
+   ],
+   "needs": [],
+   "selectors": [
+    ".verdict",
+    ".verdictsub"
+   ],
+   "states": [],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/report/verdict/block.css",
+    "specimen": "blocks/report/verdict/specimen.html",
+    "readme": "blocks/report/verdict/README.md"
+   },
+   "tags": [
+    "report",
+    "verdict",
+    "judgment",
+    "conclusion",
+    "final",
+    "serif"
+   ]
+  },
+  {
+   "id": "sp-card",
+   "category": "spaces",
+   "name": "Space Card",
+   "job": "Space card with cover art — the grid unit of Spaces discovery.",
+   "when_to_use": "Space grids, community discovery. Cover art + name + topic + meta.",
+   "when_not_to_use": "Not for non-space content. Needs --sc accent.",
+   "pairs_with": [
+    "sp-detail",
+    "sp-inv-chip",
+    "row-grid",
+    "nl-iconbtn"
+   ],
+   "needs": [
+    "CSS var --sc (set on the card",
+    "specimen sets it per card). .sp-mstack, .sp-mcount, .sp-priv, .sp-join are emitted by the builder but styled by sibling blocks, not this block's CSS (see Notes)."
+   ],
+   "selectors": [
+    ".sp-grid",
+    ".sp-card",
+    ".sp-card-name",
+    ".sp-card-topic",
+    ".sp-card-body",
+    ".sp-card-desc",
+    ".sp-card-meta",
+    ".sp-card-cover"
+   ],
+   "states": [
+    "card (default",
+    "hover)",
+    "joined / not-joined (`sp-join.in`)",
+    "private badge",
+    "accent per card via `--sc` (default `#7c3aed` from block.css)"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/spaces/sp-card/block.css",
+    "specimen": "blocks/spaces/sp-card/specimen.html",
+    "js": "blocks/spaces/sp-card/block.js",
+    "readme": "blocks/spaces/sp-card/README.md"
+   },
+   "tags": [
+    "spaces",
+    "card",
+    "community",
+    "discovery",
+    "cover-art",
+    "grid"
+   ]
+  },
+  {
+   "id": "sp-detail",
+   "category": "spaces",
+   "name": "Space Detail",
+   "job": "Space detail view — cover, head, title/topic/desc, actions, content.",
+   "when_to_use": "Opening a space: the full detail view after tapping a sp-card.",
+   "when_not_to_use": "Not standalone — it's the destination of a sp-card tap.",
+   "pairs_with": [
+    "sp-card",
+    "sp-dtabs",
+    "sp-chat",
+    "sp-about-rows"
+   ],
+   "needs": [
+    "CSS var --sc (set on the shell",
+    "specimen sets it per space). .sp-back, .sp-join, .sp-invite-btn are emitted by the builder but styled by sibling blocks, not this block's CSS (see Notes)."
+   ],
+   "selectors": [
+    ".sp-detail",
+    ".sp-dhead",
+    ".sp-dcover",
+    ".sp-dtitle",
+    ".sp-dtopic",
+    ".sp-ddesc",
+    ".sp-dhrow",
+    ".sp-dcount",
+    ".sp-dcontent"
+   ],
+   "states": [
+    "detail shell; topic line `topic · 🔒 Private` / `topic · Public`; joined / not-joined join button; accent per space via `--sc` (default `#7c3aed` from block.css)"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/spaces/sp-detail/block.css",
+    "specimen": "blocks/spaces/sp-detail/specimen.html",
+    "js": "blocks/spaces/sp-detail/block.js",
+    "readme": "blocks/spaces/sp-detail/README.md"
+   },
+   "tags": [
+    "spaces",
+    "detail",
+    "profile",
+    "destination",
+    "cover",
+    "full-view"
+   ]
+  },
+  {
+   "id": "sp-inv-chip",
+   "category": "spaces",
+   "name": "Space Inv Chip",
+   "job": "Invite chip + invite rows — 'tap to step into a room.'",
+   "when_to_use": "Invites, room entry points, member lists with Invite buttons.",
+   "when_not_to_use": "Not for general navigation. It's an invitation, not a link.",
+   "pairs_with": [
+    "sp-card",
+    "door",
+    "primo"
+   ],
+   "needs": [
+    "CSS var --sc (set on the chip",
+    "specimen sets it per chip). .sp-invite-row has no rule in this block's CSS (see Notes)."
+   ],
+   "selectors": [
+    ".sp-invite-btn",
+    ".sp-invite-list",
+    ".sp-invite-name",
+    ".sp-invite-add",
+    ".sp-inv-chip",
+    ".sp-inv-chip-name",
+    ".sp-inv-chip-join"
+   ],
+   "states": [
+    "invite chip (default",
+    "hover)",
+    "invite list row with Invite button (default",
+    "hover)",
+    "invite list (scrollable",
+    "max-height 320px)",
+    "`.sp-invite-btn` (default",
+    "hover); accent per chip via `--sc` (default `#7c3aed` from block.css)"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/spaces/sp-inv-chip/block.css",
+    "specimen": "blocks/spaces/sp-inv-chip/specimen.html",
+    "js": "blocks/spaces/sp-inv-chip/block.js",
+    "readme": "blocks/spaces/sp-inv-chip/README.md"
+   },
+   "tags": [
+    "spaces",
+    "invite",
+    "chip",
+    "entry",
+    "room",
+    "invitation"
+   ]
+  },
+  {
+   "id": "lens-tabs",
+   "category": "tabs",
+   "name": "Lens Tabs",
+   "job": "Three lens buttons (Collective/Personal/Activity) — the view switcher.",
+   "when_to_use": "Hub feed views: switching between collective, personal, and activity lenses. Exactly three, always.",
+   "when_not_to_use": "Not for other tab counts — it's designed for exactly three lenses. Not for navigation.",
+   "pairs_with": [
+    "smart-tabs",
+    "activity-stream",
+    "seg-tab"
+   ],
+   "needs": [
+    "lens-tabs.js (selection), tokens.css"
+   ],
+   "selectors": [
+    ".lens-tabs",
+    ".lens-tab",
+    ".lens-tab b",
+    ".lens-tab.active",
+    ".lens-tab.lens-collective:hover",
+    ".lens-tab.lens-personal:hover",
+    ".lens-tab.lens-activity:hover",
+    "@media (max-width: 640px)"
+   ],
+   "states": [
+    ":hover (per-lens glow)",
+    ".active",
+    "mobile"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/tabs/lens-tabs/block.css",
+    "specimen": "blocks/tabs/lens-tabs/specimen.html",
+    "readme": "blocks/tabs/lens-tabs/README.md"
+   },
+   "tags": [
+    "tabs",
+    "lens",
+    "view-switcher",
+    "collective",
+    "personal",
+    "activity",
+    "three-way"
+   ]
+  },
+  {
+   "id": "seg-tab",
+   "category": "tabs",
+   "name": "Seg Tab",
+   "job": "Segmented tab — compact option switcher for room controls.",
+   "when_to_use": "Small option groups: view modes, filters with 2-5 options. Where space is tight.",
+   "when_not_to_use": "Not for primary navigation (use smart-tabs). Not for many options (scrolls poorly).",
+   "pairs_with": [
+    "lens-tabs",
+    "smart-tabs",
+    "lv-btn"
+   ],
+   "needs": [
+    "seg-tab.js",
+    "tokens.css"
+   ],
+   "selectors": [
+    ".seg-tab",
+    ".seg-tab, .like-pill, .act-chip, .tog-chip, .day-dot, .send-cta",
+    ".seg-tab.lv-aware, .like-pill.lv-aware, .act-chip.lv-aware, .tog-chip.lv-aware, .day-dot.lv-aware",
+    ".seg-tab.lv-aware::before, .like-pill.lv-aware::before, .act-chip.lv-aware::before,\n.tog-chip.lv-aware::before, .day-dot.lv-aware::before, .send-cta.lv-aware::before",
+    ".seg-tab.on",
+    ".seg-tab.on::after, .like-pill.on::after, .act-chip.on::after, .tog-chip.on::after, .day-dot.on::after",
+    ".seg-tab::before, .like-pill::before, .act-chip::before, .tog-chip::before, .day-dot::before, .send-cta::before",
+    ".seg-tab:hover"
+   ],
+   "states": [
+    ":hover",
+    ".on"
+   ],
+   "source": "Naya_5_Beautiful_Button_set.html",
+   "files": {
+    "css": "blocks/tabs/seg-tab/seg-tab.css",
+    "specimen": "blocks/tabs/seg-tab/specimen.html",
+    "js": "blocks/tabs/seg-tab/seg-tab.js",
+    "readme": "blocks/tabs/seg-tab/README.md"
+   },
+   "tags": [
+    "tabs",
+    "segmented",
+    "option-switcher",
+    "compact",
+    "view-mode",
+    "filter"
+   ]
+  },
+  {
+   "id": "smart-tabs",
+   "category": "tabs",
+   "name": "Smart Tabs",
+   "job": "Feed-navigation tab bar — horizontal scroll, per-tab theming, popover editor. Tabs are navigation intent, never storage.",
+   "when_to_use": "Feed filtering, room navigation, any tab set the user can customize (tab-pop editor).",
+   "when_not_to_use": "Not for 2-3 fixed options (use seg-tab). Not where tabs must never scroll.",
+   "pairs_with": [
+    "lens-tabs",
+    "activity-stream",
+    "sn-pill"
+   ],
+   "needs": [
+    "smart-tabs.js (selection), tokens.css"
+   ],
+   "selectors": [
+    ".smart-tabs",
+    ".smart-tab",
+    ".smart-tab:hover",
+    ".smart-tab.active",
+    ".smart-tab .sn-label",
+    ".smart-tab .sn-mark",
+    ".smart-tab .sn-more",
+    ".tab-pop",
+    ".tab-pop-title",
+    ".tab-pop-list",
+    ".tab-pop-row",
+    ".tab-pop-add"
+   ],
+   "states": [
+    ":hover",
+    ".active",
+    "mobile"
+   ],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/tabs/smart-tabs/block.css",
+    "specimen": "blocks/tabs/smart-tabs/specimen.html",
+    "readme": "blocks/tabs/smart-tabs/README.md"
+   },
+   "tags": [
+    "tabs",
+    "feed-navigation",
+    "scrollable",
+    "customizable",
+    "themed",
+    "filter"
+   ]
+  },
+  {
+   "id": "sp-dtabs",
+   "category": "tabs",
+   "name": "Space Dtabs",
+   "job": "Underline tabs with count badges — for detail views.",
+   "when_to_use": "Space detail, profile sections: tabs with item counts (Members 12, Posts 48).",
+   "when_not_to_use": "Not for feed filtering (use smart-tabs). Needs --sc accent context.",
+   "pairs_with": [
+    "sp-detail",
+    "sp-card",
+    "lens-tabs"
+   ],
+   "needs": [
+    "--sc (space accent — underline, glow, badge background",
+    "set via opts.accent)"
+   ],
+   "selectors": [
+    ".sp-dtabs",
+    ".sp-dtab",
+    ".sp-dtab:hover",
+    ".sp-dtab.on",
+    ".sp-dtab-n"
+   ],
+   "states": [
+    "`.sp-dtab:hover`",
+    "`.sp-dtab.on`"
+   ],
+   "source": "Smart Spaces Page Design.html",
+   "files": {
+    "css": "blocks/tabs/sp-dtabs/block.css",
+    "specimen": "blocks/tabs/sp-dtabs/specimen.html",
+    "js": "blocks/tabs/sp-dtabs/block.js",
+    "readme": "blocks/tabs/sp-dtabs/README.md"
+   },
+   "tags": [
+    "tabs",
+    "underline",
+    "count-badge",
+    "detail-view",
+    "sections"
+   ]
+  },
+  {
+   "id": "nl-switch",
+   "category": "toggles",
+   "name": "Switch",
+   "job": "Toggle switch — on/off with full a11y states.",
+   "when_to_use": "Settings, preferences, feature flags. Any binary choice.",
+   "when_not_to_use": "Not for multi-option choice (use seg-tab or radio). Not for actions (use buttons).",
+   "pairs_with": [
+    "nl-toggle-row",
+    "nl-field"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-switch",
+    ".nl-switch input",
+    ".nl-switch input:checked ~ .nl-knob",
+    ".nl-switch input:checked ~ .nl-track",
+    ".nl-switch input:disabled",
+    ".nl-switch input:disabled ~ .nl-track",
+    ".nl-switch input:focus-visible ~ .nl-track"
+   ],
+   "states": [
+    ":focus",
+    ":focus-visible",
+    ":disabled"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/toggles/nl-switch/nl-switch.css",
+    "specimen": "blocks/toggles/nl-switch/specimen.html",
+    "js": null,
+    "readme": "blocks/toggles/nl-switch/README.md"
+   },
+   "tags": [
+    "toggle",
+    "switch",
+    "on-off",
+    "settings",
+    "preference",
+    "binary"
+   ]
+  },
+  {
+   "id": "nl-toggle-row",
+   "category": "toggles",
+   "name": "Toggle Row",
+   "job": "Toggle row with label + sub-label — the settings list row.",
+   "when_to_use": "Settings screens: each row is a labeled toggle with explanation.",
+   "when_not_to_use": "Not standalone (it's a row — needs a list container).",
+   "pairs_with": [
+    "nl-switch",
+    "sp-blockrow",
+    "sp-about-rows"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".nl-toggle-row",
+    ".nl-toggle-row .t-label",
+    ".nl-toggle-row .t-sub",
+    ".nl-toggle-row:hover"
+   ],
+   "states": [
+    ":hover"
+   ],
+   "source": "Naya_Lego-blocks.html",
+   "files": {
+    "css": "blocks/toggles/nl-toggle-row/nl-toggle-row.css",
+    "specimen": "blocks/toggles/nl-toggle-row/specimen.html",
+    "js": null,
+    "readme": "blocks/toggles/nl-toggle-row/README.md"
+   },
+   "tags": [
+    "toggle",
+    "settings-row",
+    "labeled",
+    "preference-list"
+   ]
+  },
+  {
+   "id": "body",
+   "category": "type",
+   "name": "Body",
+   "job": "Reading text — 18px floor, 1.65 leading, 68ch measure.",
+   "when_to_use": "All body copy. The 18px floor is law.",
+   "when_not_to_use": "Never below 18px for reading text. Never gray-on-black low contrast.",
+   "pairs_with": [
+    "headline",
+    "gem-bullet",
+    "hub-quote"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-body",
+    ".naya-body--quiet",
+    ".naya-body--small",
+    ".naya-body--lead",
+    ".naya-body--wide",
+    ".naya-body a",
+    ".naya-body a:hover",
+    ".naya-body strong",
+    ".naya-body em"
+   ],
+   "states": [
+    ":hover (links)"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/type/body/body.css",
+    "specimen": "blocks/type/body/specimen.html",
+    "readme": "blocks/type/body/README.md"
+   },
+   "tags": [
+    "type",
+    "body-text",
+    "reading",
+    "18px",
+    "paragraph",
+    "copy"
+   ]
+  },
+  {
+   "id": "headline",
+   "category": "type",
+   "name": "Headline",
+   "job": "Section titles — 24px per the type scale, white, with kicker/jewel options.",
+   "when_to_use": "Every section header. Size does the hierarchy work, never color.",
+   "when_not_to_use": "Not for body text. Not for the page hero (use hero).",
+   "pairs_with": [
+    "section",
+    "body",
+    "gem-bullet"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-headline",
+    ".naya-headline__kicker",
+    ".naya-headline--jewel",
+    ".naya-headline--jewel::before",
+    ".naya-headline--sm",
+    ".naya-headline--lg",
+    ".naya-headline-group"
+   ],
+   "states": [
+    "responsive clamp() on --lg"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/type/headline/headline.css",
+    "specimen": "blocks/type/headline/specimen.html",
+    "readme": "blocks/type/headline/README.md"
+   },
+   "tags": [
+    "type",
+    "section-title",
+    "24px",
+    "hierarchy",
+    "kicker"
+   ]
+  },
+  {
+   "id": "hero",
+   "category": "type",
+   "name": "Hero",
+   "job": "The page opening — editorial display headline with kicker, sub, CTA row.",
+   "when_to_use": "Top of landing/feature pages. The first impression in type.",
+   "when_not_to_use": "Not for section headers (use headline). One per page.",
+   "pairs_with": [
+    "portal",
+    "living-btn",
+    "naya-btn",
+    "hub-quote"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".naya-hero",
+    ".naya-hero--center",
+    ".naya-hero__eyebrow",
+    ".naya-hero__title",
+    ".naya-hero__title .naya-accent",
+    ".naya-hero__sub",
+    ".naya-hero__actions"
+   ],
+   "states": [
+    "@media (prefers-reduced-motion: no-preference)"
+   ],
+   "source": "authored 2026-10-09 for the Smart Blocks library (composition layer)",
+   "files": {
+    "css": "blocks/type/hero/hero.css",
+    "specimen": "blocks/type/hero/specimen.html",
+    "readme": "blocks/type/hero/README.md"
+   },
+   "tags": [
+    "type",
+    "headline",
+    "hero",
+    "landing",
+    "display",
+    "first-impression",
+    "kicker"
+   ]
+  },
+  {
+   "id": "hub-quote",
+   "category": "type",
+   "name": "Hub Quote",
+   "job": "Pull-quote — 22px/700 white, muted sub-line. The editorial voice.",
+   "when_to_use": "Interstitials, report openers, deck moments. When a voice needs to land.",
+   "when_not_to_use": "Not for body copy. Not more than 1-2 per page.",
+   "pairs_with": [
+    "hero",
+    "body",
+    "verdict"
+   ],
+   "needs": [
+    "tokens.css"
+   ],
+   "selectors": [
+    ".hub-quote",
+    ".hub-quote-text",
+    ".hub-quote-sub"
+   ],
+   "states": [],
+   "source": "Naya Smart Hub Design.html",
+   "files": {
+    "css": "blocks/type/hub-quote/block.css",
+    "specimen": "blocks/type/hub-quote/specimen.html",
+    "readme": "blocks/type/hub-quote/README.md"
+   },
+   "tags": [
+    "type",
+    "pull-quote",
+    "editorial",
+    "voice",
+    "interstitial",
+    "emphasis"
+   ]
+  },
+  {
+   "id": "presence",
+   "category": "type",
+   "name": "Presence",
+   "job": "Presence label — 950 weight, .28em tracking, uppercase. The state of the intelligence in one line.",
+   "when_to_use": "Status lines, entrance labels, 'SOVEREIGN ENTRANCE' moments.",
+   "when_not_to_use": "Not for sentences. Not for body text — it's a label, shouted quietly.",
+   "pairs_with": [
+    "portal",
+    "hero",
+    "voice-type"
+   ],
+   "needs": [],
+   "selectors": [
+    ".presence"
+   ],
+   "states": [],
+   "source": "Welcome Page Design.html",
+   "files": {
+    "css": "blocks/type/presence/block.css",
+    "specimen": "blocks/type/presence/specimen.html",
+    "readme": "blocks/type/presence/README.md"
+   },
+   "tags": [
+    "type",
+    "label",
+    "presence",
+    "uppercase",
+    "tracking",
+    "status"
+   ]
+  },
+  {
+   "id": "voice-type",
+   "category": "voice",
+   "name": "Voice Type",
+   "job": "Cormorant voice serif — Naya's spoken voice set in type. 24px/700 with dual shadow.",
+   "when_to_use": "Voice transcripts, spoken responses rendered as text, anything Naya 'says.'",
+   "when_not_to_use": "Not for UI labels or body copy. This is her voice, not the interface.",
+   "pairs_with": [
+    "verdict",
+    "hub-quote",
+    "nl-playbtn",
+    "presence"
+   ],
+   "needs": [
+    "--voice font stack (define once per page)"
+   ],
+   "selectors": [
+    ".voice",
+    ".voice em"
+   ],
+   "states": [],
+   "source": "Naya Design Element Set N4.html",
+   "files": {
+    "css": "blocks/voice/voice-type/block.css",
+    "specimen": "blocks/voice/voice-type/specimen.html",
+    "readme": "blocks/voice/voice-type/README.md"
+   },
+   "tags": [
+    "voice",
+    "serif",
+    "spoken",
+    "transcript",
+    "naya-voice",
+    "quote"
+   ]
+  }
+ ]
+}
