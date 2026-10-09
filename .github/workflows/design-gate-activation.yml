@@ -33,6 +33,8 @@ jobs:
         run: python -m py_compile tools/design_gate.py
       - name: Run lawful and adversarial falsifiers
         run: python tools/design_gate.py --self-test
+      - name: Run independent activation consistency falsifiers from PR #1974
+        run: node --test tools/qa/activation_receipt_consistency.test.mjs
       - name: Confirm trusted main tip is a full SHA
         env:
           GH_TOKEN: ${{ github.token }}
