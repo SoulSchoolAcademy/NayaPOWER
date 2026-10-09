@@ -21,11 +21,14 @@ import unittest
 from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import activation_gate as ag  # noqa: E402 — for monkeypatching
 from activation_gate import (  # noqa: E402
     check, check_receipt, check_delivery, run_design_gate,
+    canonicalize_class_attributes, verify_issuance,
     resolve_truth, main as gate_main,
     CANONICAL_SOURCES, SCHEMA, RECEIPT_MARKER_RE,
-    _canonical_deliverable_bytes, _safe_repo_path, _is_deliverable)
+    _canonical_deliverable_bytes, _safe_repo_path, _is_deliverable,
+    _sha256_hex)
 
 NOW = datetime(2026, 10, 9, 16, 30, tzinfo=timezone.utc)
 MAIN = "2bf25f3e62a71d6001b6796678e04c9fab5d7f5c"
@@ -290,11 +293,17 @@ class TestDeliveryPredicate(unittest.TestCase):
         open(mf, "w").write("{}")
         return p, mf
 
+    def _patch_issuance_ok(self):
+        real = ag.verify_issuance
+        ag.verify_issuance = lambda *a, **k: []
+        self.addCleanup(lambda: setattr(ag, "verify_issuance", real))
+
     def _setup(self, pages, design_fail=False):
         d = tempfile.mkdtemp()
         self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
         dg, mf = self._stub_design_gate(d, fail=design_fail)
         self._dg, self._mf = dg, mf
+        self._patch_issuance_ok()
         # mint one receipt binding ALL pages (canonical bytes), then add markers
         hashes = {p: hashlib.sha256(_canonical_deliverable_bytes(b.encode())).hexdigest()
                   for p, b in pages.items()}
@@ -309,23 +318,28 @@ class TestDeliveryPredicate(unittest.TestCase):
         open(os.path.join(rdir, "receipt.json"), "wb").write(rb)
         return d, rb
 
+    def _chg(self, *paths, status="modified"):
+        return [{"path": p, "status": status, "previous_filename": None}
+                for p in paths]
+
     def test_lawful_delivery_pass(self):
         d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
-        v, viols = check_delivery(rb, d, ["page.html"], TRUTH,
-                                  self._dg, self._mf)
+        v, viols = check_delivery(rb, d, self._chg("page.html"), TRUTH,
+                                  self._dg, self._mf, token="t")
         self.assertEqual(v, "PASS", viols)
 
     def test_delivery_transplant_reject(self):
         d, rb = self._setup({"a.html": "<html><body>A</body></html>"})
         # PR changes b.html too, but the receipt only binds a.html
         open(os.path.join(d, "b.html"), "wb").write(mint_page(rb, "<html><body>B</body></html>"))
-        v, viols = check_delivery(rb, d, ["a.html", "b.html"], TRUTH,
-                                  self._dg, self._mf)
+        v, viols = check_delivery(rb, d, self._chg("a.html", "b.html"), TRUTH,
+                                  self._dg, self._mf, token="t")
         self.assertEqual(v, "REJECT", viols)
         self.assertTrue(any("DELIVERABLE_NOT_BOUND" in x for x in viols), viols)
 
     def test_delivery_missing_receipt_bytes(self):
-        v, viols = check_delivery(b"", "/tmp", ["page.html"], TRUTH)
+        v, viols = check_delivery(b"", "/tmp", self._chg("page.html"), TRUTH,
+                                  token="t")
         self.assertEqual(v, "REJECT")
         self.assertTrue(any("RECEIPT_MISSING_OR_EMPTY" in x for x in viols), viols)
 
@@ -333,30 +347,221 @@ class TestDeliveryPredicate(unittest.TestCase):
         """Row 7 delegate-and-verify: the design lane's verdict folds in."""
         d, rb = self._setup({"evil.html": "<html><body>x</body></html>"},
                             design_fail=True)
-        v, viols = check_delivery(rb, d, ["evil.html"], TRUTH,
-                                  self._dg, self._mf)
+        v, viols = check_delivery(rb, d, self._chg("evil.html"), TRUTH,
+                                  self._dg, self._mf, token="t")
         self.assertEqual(v, "REJECT", viols)
         self.assertTrue(any("DESIGN_GATE:" in x for x in viols), viols)
 
     def test_delivery_design_gate_absent_fails_closed(self):
         """No design gate available -> REJECT, never a silent pass."""
         d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
-        v, viols = check_delivery(rb, d, ["page.html"], TRUTH, "", "")
+        v, viols = check_delivery(rb, d, self._chg("page.html"), TRUTH, "", "",
+                                  token="t")
         self.assertEqual(v, "REJECT", viols)
         self.assertTrue(any("DESIGN_GATE_UNAVAILABLE" in x for x in viols),
                         viols)
 
     def test_delivery_non_deliverable_change_ignored(self):
         d, rb = self._setup({"page.html": "<html><body>x</body></html>"})
-        v, viols = check_delivery(rb, d, ["page.html", "tools/helper.py"], TRUTH,
-                                  self._dg, self._mf)
+        v, viols = check_delivery(
+            rb, d, self._chg("page.html", "tools/helper.py"), TRUTH,
+            self._dg, self._mf, token="t")
         self.assertEqual(v, "PASS", viols)
+
+    def test_delivery_renamed_expands(self):
+        d, rb = self._setup({"new.html": "<html><body>x</body></html>"})
+        chg = [{"path": "new.html", "status": "renamed",
+                "previous_filename": "old.html"}]
+        v, viols = check_delivery(rb, d, chg, TRUTH, self._dg, self._mf,
+                                  token="t")
+        # old.html removed without tombstone -> REJECT
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DELETION_UNATTESTED" in x for x in viols), viols)
 
     def test_is_deliverable(self):
         self.assertTrue(_is_deliverable("smart-blocks/manifest.json"))
         self.assertTrue(_is_deliverable("pages/room.html"))
         self.assertFalse(_is_deliverable("tools/gate.py"))
         self.assertFalse(_is_deliverable("BRAIN/note.md"))
+
+
+class TestCanonicalization(unittest.TestCase):
+    """D3/D4: quote-tolerant class-attribute canonicalization."""
+
+    def test_unquoted(self):
+        out = canonicalize_class_attributes('<div class=naya-evil>x</div>')
+        self.assertEqual(out, '<div class="naya-evil">x</div>')
+
+    def test_spaced(self):
+        out = canonicalize_class_attributes('<div class = "naya-evil" >x</div>')
+        self.assertEqual(out, '<div class="naya-evil" >x</div>')
+
+    def test_single_quoted(self):
+        out = canonicalize_class_attributes("<div class='a b'>x</div>")
+        self.assertEqual(out, '<div class="a b">x</div>')
+
+    def test_quoted_untouched(self):
+        html = '<div class="a b">x</div>'
+        self.assertEqual(canonicalize_class_attributes(html), html)
+
+    def test_case_insensitive(self):
+        out = canonicalize_class_attributes('<div CLASS=naya-evil>x</div>')
+        self.assertIn('class="naya-evil"', out)
+
+    def test_non_class_attrs_untouched(self):
+        html = '<a href="http://x/?a=b" data-v="1">x</a>'
+        self.assertEqual(canonicalize_class_attributes(html), html)
+
+
+class TestDeletionTombstone(unittest.TestCase):
+    def _fake_api(self, base_bytes):
+        import base64
+        real = ag._api
+
+        def fake(method, path, token, body=None):
+            if "/contents/" in path:
+                return {"type": "file", "sha": "abc123"}
+            if "/git/blobs/" in path:
+                return {"encoding": "base64",
+                        "content": base64.b64encode(base_bytes).decode()}
+            raise AssertionError("unexpected API path: " + path)
+
+        ag._api = fake
+        self.addCleanup(lambda: setattr(ag, "_api", real))
+
+    def _patch_issuance_ok(self):
+        real = ag.verify_issuance
+        ag.verify_issuance = lambda *a, **k: []
+        self.addCleanup(lambda: setattr(ag, "verify_issuance", real))
+
+    def _tombstone_receipt(self, path, base_bytes):
+        h = hashlib.sha256(
+            _canonical_deliverable_bytes(base_bytes)).hexdigest()
+        r = json.loads(mint_receipt_bytes({}).decode())
+        r["deliverables"] = [{"path": path, "sha256": h, "action": "delete"}]
+        return json.dumps(r, sort_keys=True).encode()
+
+    def test_legitimate_deletion_passes(self):
+        self._fake_api(b"<html><body>gone</body></html>")
+        self._patch_issuance_ok()
+        d = tempfile.mkdtemp()
+        self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
+        rb = self._tombstone_receipt("old.html", b"<html><body>gone</body></html>")
+        chg = [{"path": "old.html", "status": "removed",
+                "previous_filename": None}]
+        v, viols = check_delivery(rb, d, chg, TRUTH, base_sha="a" * 40,
+                                  token="t")
+        self.assertEqual(v, "PASS", viols)
+
+    def test_deletion_without_tombstone_rejects(self):
+        self._fake_api(b"<html><body>gone</body></html>")
+        self._patch_issuance_ok()
+        d = tempfile.mkdtemp()
+        self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
+        rb = mint_receipt_bytes(
+            {"old.html": hashlib.sha256(b"x").hexdigest()})
+        chg = [{"path": "old.html", "status": "removed",
+                "previous_filename": None}]
+        v, viols = check_delivery(rb, d, chg, TRUTH, base_sha="a" * 40,
+                                  token="t")
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DELETION_UNATTESTED" in x for x in viols), viols)
+
+    def test_deletion_wrong_base_bytes_rejects(self):
+        self._fake_api(b"<html><body>DIFFERENT</body></html>")
+        self._patch_issuance_ok()
+        d = tempfile.mkdtemp()
+        self.addCleanup(lambda: __import__("shutil").rmtree(d, ignore_errors=True))
+        rb = self._tombstone_receipt("old.html", b"<html><body>gone</body></html>")
+        chg = [{"path": "old.html", "status": "removed",
+                "previous_filename": None}]
+        v, viols = check_delivery(rb, d, chg, TRUTH, base_sha="a" * 40,
+                                  token="t")
+        self.assertEqual(v, "REJECT", viols)
+        self.assertTrue(any("DELETION_BINDING_MISMATCH" in x for x in viols),
+                        viols)
+
+
+class TestIssuance(unittest.TestCase):
+    def _receipt_with_attestation(self, run_id=12345):
+        r = json.loads(mint_receipt_bytes(
+            {"p.html": hashlib.sha256(b"x").hexdigest()}).decode())
+        r["attestation"] = {"workflow": ".github/workflows/activation-mint.yml",
+                            "run_id": run_id, "run_attempt": 1}
+        rb = json.dumps(r, sort_keys=True).encode()
+        return r, rb
+
+    def _fake(self, run=None, artifacts=(), blob=b""):
+        real_api, real_dl = ag._api, ag._download_bytes
+
+        def fake_api(method, path, token, body=None):
+            if path.endswith("/artifacts"):
+                return {"artifacts": list(artifacts)}
+            return dict(run or {})
+
+        ag._api = fake_api
+        ag._download_bytes = lambda url, token: blob
+        self.addCleanup(lambda: setattr(ag, "_api", real_api))
+        self.addCleanup(lambda: setattr(ag, "_download_bytes", real_dl))
+
+    def _run_ok(self, blob):
+        import io
+        import zipfile
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w") as z:
+            z.writestr("receipt.json", blob)
+        return {
+            "event": "workflow_dispatch",
+            "path": ".github/workflows/activation-mint.yml",
+            "conclusion": "success",
+            "head_repository": {"full_name": "SoulSchoolAcademy/NayaPOWER"},
+        }, [{"name": "activation-receipt-12345",
+             "archive_download_url": "https://x/y.zip"}], buf.getvalue()
+
+    def test_genuine_issuance_passes(self):
+        r, rb = self._receipt_with_attestation()
+        run, arts, blob = self._run_ok(rb)
+        self._fake(run, arts, blob)
+        self.assertEqual(verify_issuance(r, rb, TRUTH, "t"), [])
+
+    def test_unattested_rejects(self):
+        r = json.loads(mint_receipt_bytes(
+            {"p.html": hashlib.sha256(b"x").hexdigest()}).decode())
+        rb = json.dumps(r, sort_keys=True).encode()
+        self._fake({}, [], b"")
+        v = verify_issuance(r, rb, TRUTH, "t")
+        self.assertTrue(any("ISSUANCE_UNATTESTED" in x for x in v), v)
+
+    def test_failed_run_rejects(self):
+        r, rb = self._receipt_with_attestation()
+        run, arts, blob = self._run_ok(rb)
+        run["conclusion"] = "failure"
+        self._fake(run, arts, blob)
+        v = verify_issuance(r, rb, TRUTH, "t")
+        self.assertTrue(any("ISSUANCE_RUN_NOT_SUCCESS" in x for x in v), v)
+
+    def test_foreign_run_rejects(self):
+        r, rb = self._receipt_with_attestation()
+        run, arts, blob = self._run_ok(rb)
+        run["head_repository"] = {"full_name": "evil-corp/stolen-repo"}
+        self._fake(run, arts, blob)
+        v = verify_issuance(r, rb, TRUTH, "t")
+        self.assertTrue(any("ISSUANCE_FOREIGN_RUN" in x for x in v), v)
+
+    def test_bytes_mismatch_rejects(self):
+        r, rb = self._receipt_with_attestation()
+        run, arts, blob = self._run_ok(b'{"different": "bytes"}')
+        self._fake(run, arts, blob)
+        v = verify_issuance(r, rb, TRUTH, "t")
+        self.assertTrue(any("ISSUANCE_BYTES_MISMATCH" in x for x in v), v)
+
+    def test_wrong_workflow_rejects(self):
+        r, rb = self._receipt_with_attestation()
+        run, arts, blob = self._run_ok(rb)
+        run["path"] = ".github/workflows/evil.yml"
+        self._fake(run, arts, blob)
+        v = verify_issuance(r, rb, TRUTH, "t")
+        self.assertTrue(any("ISSUANCE_WRONG_WORKFLOW" in x for x in v), v)
 
 
 class TestDesignGateDelegation(unittest.TestCase):

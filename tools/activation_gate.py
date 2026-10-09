@@ -51,11 +51,37 @@ verdict STILL-LEAKING, 5.5/10. Four reproduced bypasses, all closed here:
 
 ARCHITECTURAL LAW (non-negotiable): a builder cannot establish authenticity
 by writing a plausible JSON file. Any input the builder supplies about the
-truth being checked is untrusted by construction. In protected mode the only
-trusted inputs are the runner context (the runner-written event payload +
-GITHUB_TOKEN) and the live GitHub API. A self-served truth (--mode local)
-can never produce a PASS verdict — only an honestly labeled
-LOCAL-REHEARSAL-* verdict with a distinct exit code.
+truth being checked is untrusted by construction.
+
+Round-3 settles the forgery question (attacker A1) explicitly: a receipt
+with correct PUBLIC data (repo, live SHA, blob SHAs, fresh timestamp,
+valid deliverables[] binding) but minted by NOBODY is still a forgery, and
+public data was never the authenticity root. Authenticity == RUN-ATTESTED
+ISSUANCE: the receipt must have been minted by the trusted mint workflow
+(.github/workflows/activation-mint.yml, base code, trusted runner), and the
+delivery gate verifies via the live API that the attested run exists in the
+gated repository, ran the mint workflow to success via workflow_dispatch,
+and its artifact's receipt.json is byte-identical to the presented receipt.
+A self-minted receipt, however perfect its public data, FAILS issuance
+verification: ISSUANCE_UNATTESTED / ISSUANCE_BYTES_MISMATCH.
+
+What the gate enforces, precisely:
+  (1) ISSUANCE — the receipt was minted by the trusted runner (delivery
+      boundary only; the single-pair predicate tests consistency+binding).
+  (2) CONSISTENCY — schema v2, ACTIVATED, identity fields, exact repo,
+      full 40-hex live main SHA equality, closed-world source fingerprints,
+      4h TTL, no future skew.
+  (3) BINDING — two-way: deliverable cites sha256(exact receipt bytes);
+      receipt's deliverables[] binds sha256(canonical deliverable bytes).
+  (4) ROW 7 — the design lane's gate judges HTML deliverables on
+      canonicalized bytes (D3/D4 quote-tolerant); absent design gate fails
+      closed.
+job/proof_plan/session_id remain DESCRIPTIVE claims about the activation
+session — the enforced primitives are issuance, consistency, and binding.
+In protected mode the only trusted inputs are the runner context (the
+runner-written event payload + GITHUB_TOKEN) and the live GitHub API.
+A self-served truth (--mode local) can never produce a PASS verdict — only
+an honestly labeled LOCAL-REHEARSAL-* verdict with a distinct exit code.
 
 Binding design (no circularity): the deliverable cites the receipt with
   <!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> -->
@@ -67,17 +93,23 @@ hashing, so minting converges in one pass.
 
 Acceptance table (every row must hold in real CI):
   authentic fresh receipt, exact repo, full current main SHA,
-    bound deliverable .............................. PASS
+    bound deliverable, RUN-ATTESTED issuance ........ PASS
   fabricated / self-asserted receipt .............. REJECT
+  self-minted receipt, perfect public data (A1) ... REJECT (ISSUANCE_*)
+  tampered attestation / foreign run / failed run . REJECT (ISSUANCE_*)
   stale activation / changed commit (tip moved) ... REJECT
   wrong repository identity ...................... REJECT
   env-tampered repository (event payload wins) .... TOOL-ERROR (fail closed)
   missing / abbreviated / mismatched commit SHA .. REJECT
   missing / tampered receipt ..................... REJECT
   transplanted receipt (wrong deliverable) ....... REJECT
+  deleted deliverable with tombstone ............. PASS
+  deleted deliverable without tombstone .......... REJECT
   unregistered component class (design lane) ..... REJECT (delegated)
+  unquoted class=naya-evil (D3) .................. REJECT
+  spaced class = "..." (D4) ...................... REJECT
   expired / future activation .................... REJECT
-  alternate route bypassing the gate ............. LOCAL-REHEARSAL-*, never
+  alternate route bypassing the gate .............. LOCAL-REHEARSAL-*, never
       PASS, exit 3 (self-minted truth yields no passing verdict)
 
 Closed-world source rule: receipt.loaded must be an object whose keys are
@@ -375,6 +407,148 @@ DESIGN_GATE_FILE = "tools/design_gate.py"
 DESIGN_MANIFEST_FILE = "smart-blocks/manifest.json"
 
 
+# D3/D4 (round-3): the design lane's class regex only matches quoted
+# `class="..."`. Unquoted (`class=naya-evil`) and spaced (`class = "..."`)
+# forms evade it. This gate canonicalizes every class attribute to the
+# quoted form BEFORE delegating, so the lane's logic judges every class the
+# browser will see. Semantics-preserving: `class=x` == `class="x"` in HTML.
+CLASS_ATTR_RE = re.compile(
+    r'''\bclass\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))''', re.IGNORECASE)
+
+
+def canonicalize_class_attributes(html_text):
+    """Rewrite every class attribute to canonical `class="..."` form."""
+    def _q(m):
+        val = m.group(1) if m.group(1) is not None else (
+            m.group(2) if m.group(2) is not None else (m.group(3) or ""))
+        return 'class="%s"' % val
+    return CLASS_ATTR_RE.sub(_q, html_text)
+
+
+def _download_bytes(url, token):
+    """Two-hop download: the API 302-redirects to a pre-signed blob URL that
+    rejects the API bearer — take the Location and fetch it WITHOUT auth."""
+    req = urllib.request.Request(url)
+    req.add_header("Authorization", "Bearer " + token)
+    req.add_header("Accept", "application/vnd.github+json")
+    opener = urllib.request.build_opener(NoRedirect())
+    try:
+        opener.open(req, timeout=30)
+    except Redirected as r:
+        loc = r.location
+    else:
+        raise RuntimeError("artifact download did not redirect — refusing")
+    req2 = urllib.request.Request(loc)
+    with urllib.request.urlopen(req2, timeout=60) as resp:
+        return resp.read()
+
+
+class Redirected(Exception):
+    def __init__(self, location):
+        super().__init__("redirect")
+        self.location = location
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise Redirected(newurl)
+
+
+MINT_WORKFLOW_PATH = ".github/workflows/activation-mint.yml"
+MINT_ARTIFACT_PREFIX = "activation-receipt-"
+
+
+def verify_issuance(receipt, receipt_bytes, truth, token):
+    """Run-attested trusted issuance (round-3, forgery A1).
+
+    A receipt is authentic iff the trusted mint workflow minted THESE EXACT
+    BYTES: the attested run must exist in this repo, have run the base mint
+    workflow to success via workflow_dispatch, and its artifact's
+    receipt.json must be byte-identical to the presented receipt. A
+    fully self-minted receipt with correct PUBLIC data (repo, live SHA,
+    blob SHAs, fresh timestamp, valid binding) FAILS here — public data was
+    never the authenticity root; the runner's attested issuance is.
+    Returns a list of violations (empty = issuance genuine).
+    """
+    att = receipt.get("attestation")
+    if not isinstance(att, dict):
+        return ["ISSUANCE_UNATTESTED: receipt carries no trusted-issuance "
+                "attestation — a self-minted receipt, however plausible, "
+                "cannot pass the delivery boundary (forgery A1)"]
+    run_id = att.get("run_id")
+    if not run_id:
+        return ["ISSUANCE_UNATTESTED: attestation names no run"]
+    repo = _normalize_repo((truth or {}).get("repository", ""))
+    if not repo:
+        return ["TRUTH_UNTRUSTED: no trusted repository for issuance check"]
+    try:
+        run = _api("GET", "/repos/%s/actions/runs/%s" % (repo, run_id), token)
+    except RuntimeError as e:
+        return ["ISSUANCE_UNVERIFIABLE: attested run %s unreachable (%s)"
+                % (run_id, e)]
+    if run.get("event") != "workflow_dispatch":
+        return ["ISSUANCE_WRONG_EVENT: attested run %s event is %r, not "
+                "workflow_dispatch" % (run_id, run.get("event"))]
+    if run.get("path") != MINT_WORKFLOW_PATH:
+        return ["ISSUANCE_WRONG_WORKFLOW: attested run %s ran %r, not the "
+                "trusted mint workflow" % (run_id, run.get("path"))]
+    if run.get("conclusion") != "success":
+        return ["ISSUANCE_RUN_NOT_SUCCESS: attested run %s concluded %r"
+                % (run_id, run.get("conclusion"))]
+    head_repo = _normalize_repo(
+        ((run.get("head_repository") or {}).get("full_name")) or "")
+    if head_repo != repo:
+        return ["ISSUANCE_FOREIGN_RUN: attested run %s belongs to %r, not "
+                "the gated repository" % (run_id, head_repo)]
+    try:
+        arts = _api("GET", "/repos/%s/actions/runs/%s/artifacts" % (repo, run_id),
+                    token)
+    except RuntimeError as e:
+        return ["ISSUANCE_UNVERIFIABLE: attested run artifacts unreachable (%s)"
+                % e]
+    want_digest = _sha256_hex(receipt_bytes)
+    saw_receipt_artifact = False
+    for a in arts.get("artifacts", []) or []:
+        if not str(a.get("name", "")).startswith(MINT_ARTIFACT_PREFIX):
+            continue
+        saw_receipt_artifact = True
+        try:
+            blob = _download_bytes(a.get("archive_download_url", ""), token)
+        except RuntimeError as e:
+            return ["ISSUANCE_UNVERIFIABLE: artifact download failed (%s)" % e]
+        import io
+        import zipfile
+        try:
+            z = zipfile.ZipFile(io.BytesIO(blob))
+            names = [n for n in z.namelist()
+                     if os.path.basename(n) == "receipt.json"]
+            if not names:
+                continue
+            if _sha256_hex(z.read(names[0])) == want_digest:
+                return []
+        except zipfile.BadZipFile:
+            continue
+    if not saw_receipt_artifact:
+        return ["ISSUANCE_ARTIFACT_MISSING: attested run %s carries no "
+                "activation-receipt artifact" % run_id]
+    return ["ISSUANCE_BYTES_MISMATCH: the presented receipt bytes are not "
+            "byte-identical to the attested run's minted receipt — forged "
+            "or tampered issuance (forgery A1)"]
+
+
+def base_blob_bytes(repo, path, ref, token):
+    """Bytes of a file at a base ref, via the live API (for tombstones)."""
+    import base64
+    meta = _api("GET", "/repos/%s/contents/%s?ref=%s" % (repo, path, ref), token)
+    if meta.get("type") != "file" or not meta.get("sha"):
+        raise RuntimeError("not a file at base ref")
+    blob = _api("GET", "/repos/%s/git/blobs/%s" % (repo, meta["sha"]), token)
+    content = blob.get("content", "")
+    if blob.get("encoding") != "base64":
+        raise RuntimeError("unexpected blob encoding")
+    return base64.b64decode("".join(content.split()))
+
+
 def run_design_gate(deliverable_path, design_gate_path, manifest_path):
     """Run the design lane's gate against one deliverable. Returns a list of
     violation strings (empty = the design gate passed)."""
@@ -405,15 +579,23 @@ def run_design_gate(deliverable_path, design_gate_path, manifest_path):
     return violations
 
 
-def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth,
-                   design_gate_path="", design_manifest_path=""):
+def check_delivery(receipt_bytes, pr_head_dir, changed, truth,
+                   design_gate_path="", design_manifest_path="",
+                   base_sha="", token=""):
     """Delivery predicate for ONE pull request. Pure apart from reading the
-    PR-head files from disk (bytes the gate verifies, never trusts).
+    PR-head files from disk and the live API calls for issuance + tombstones
+    (bytes the gate verifies, never trusts).
 
-    Every changed deliverable must be bound by the receipt (path + sha256
-    of PR-head bytes), cite the receipt (marker = sha256 of exact receipt
-    bytes), and — for HTML — use only registered component classes.
-    Returns (verdict, violations).
+    Every changed deliverable must be bound by a RUN-ATTESTED receipt
+    (issuance verified via the live API — forgery A1), by path + sha256 of
+    PR-head bytes, and cite the receipt (marker = sha256 of exact receipt
+    bytes). HTML deliverables additionally pass the design lane's gate on
+    canonicalized bytes (D3/D4 quote-tolerant). Deleted deliverables travel
+    the tombstone path: the receipt carries action:"delete" and the gate
+    verifies the base blob. Returns (verdict, violations).
+
+    `changed`: list of {"path", "status", "previous_filename"} — status in
+    added/modified/removed/renamed (the PR files API vocabulary).
     """
     violations = []
     receipt, verdict, v = check_receipt(receipt_bytes, truth)
@@ -421,8 +603,25 @@ def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth,
     if receipt is None:
         return "REJECT", violations
 
-    changed_deliverables = sorted(
-        {f for f in (changed_files or []) if _is_deliverable(f)})
+    # issuance FIRST: no attested issuance, no delivery — however plausible
+    # the receipt's public data (forgery A1).
+    violations.extend(verify_issuance(receipt, receipt_bytes, truth, token))
+    if any(x.startswith("ISSUANCE_") or x.startswith("TRUTH_UNTRUSTED")
+           for x in violations):
+        return "REJECT", violations
+
+    # expand renames into delete(old) + add(new)
+    logical = []
+    for c in changed or []:
+        path = c.get("path", "")
+        status = (c.get("status") or "modified").lower()
+        prev = c.get("previous_filename")
+        if status == "renamed" and prev and prev != path:
+            logical.append({"path": prev, "status": "removed"})
+            logical.append({"path": path, "status": "added"})
+        else:
+            logical.append({"path": path, "status": status})
+    changed_deliverables = [c for c in logical if _is_deliverable(c["path"])]
     if not changed_deliverables:
         violations.append("DELIVERY_SCOPE_EMPTY: no changed deliverables — "
                           "nothing for the gate to bind (fail closed)")
@@ -431,30 +630,67 @@ def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth,
     entries = {}
     for entry in receipt.get("deliverables") or []:
         if isinstance(entry, dict) and _safe_repo_path(entry.get("path")):
-            entries[entry["path"]] = entry.get("sha256", "")
+            entries[entry["path"]] = entry
 
-    for path in changed_deliverables:
-        if path not in entries:
-            violations.append(
-                "DELIVERABLE_NOT_BOUND: changed deliverable %r is not listed "
-                "in receipt.deliverables" % path)
-            continue
+    repo = _normalize_repo((truth or {}).get("repository", ""))
+    digest = _sha256_hex(receipt_bytes)
+
+    for change in sorted(changed_deliverables, key=lambda c: c["path"]):
+        path = change["path"]
+        status = change["status"]
+        entry = entries.get(path)
         if not _safe_repo_path(path):
             violations.append("DELIVERABLE_PATH_UNSAFE: %r" % path)
             continue
         disk_path = os.path.join(pr_head_dir, path)
+
+        if status == "removed":
+            # --- tombstone path (round-3c): legitimate deletions merge ---
+            if entry is None or entry.get("action") != "delete":
+                violations.append(
+                    "DELETION_UNATTESTED: %r is removed in the PR but the "
+                    "receipt carries no tombstone for it (action:\"delete\")"
+                    % path)
+                continue
+            if os.path.isfile(disk_path):
+                violations.append(
+                    "DELETION_NOT_EFFECTIVE: %r attested deleted but still "
+                    "present in the PR head" % path)
+                continue
+            ref = base_sha or (truth or {}).get("main_sha", "")
+            try:
+                base_raw = base_blob_bytes(repo, path, ref, token)
+            except RuntimeError as e:
+                violations.append(
+                    "DELETION_UNVERIFIABLE: base bytes of %r unreachable (%s)"
+                    % (path, e))
+                continue
+            if _sha256_hex(_canonical_deliverable_bytes(base_raw)) != \
+                    str(entry.get("sha256", "")).lower():
+                violations.append(
+                    "DELETION_BINDING_MISMATCH: tombstone for %r does not "
+                    "match the base bytes (wrong file)" % path)
+            continue
+
+        if entry is None:
+            violations.append(
+                "DELIVERABLE_NOT_BOUND: changed deliverable %r is not listed "
+                "in receipt.deliverables" % path)
+            continue
+
         if not os.path.isfile(disk_path):
-            violations.append("DELIVERABLE_MISSING: %r not found in PR head" % path)
+            violations.append("DELIVERABLE_MISSING: %r not found in PR head "
+                              "(not marked deleted — tombstone required)" % path)
             continue
         with open(disk_path, "rb") as f:
             raw = f.read()
-        if _sha256_hex(_canonical_deliverable_bytes(raw)) != entries[path].lower():
+        if _sha256_hex(_canonical_deliverable_bytes(raw)) != \
+                str(entry.get("sha256", "")).lower():
             violations.append(
                 "DELIVERABLE_BINDING_MISMATCH: PR-head bytes of %r do not "
                 "match the receipt's bound sha256 (transplant or drift)" % path)
             continue
         # citation: deliverable -> receipt
-        digest = _sha256_hex(receipt_bytes)
         text = raw.decode("utf-8", errors="replace")
         m = RECEIPT_MARKER_RE.search(text)
         if not m:
@@ -463,15 +699,39 @@ def check_delivery(receipt_bytes, pr_head_dir, changed_files, truth,
             violations.append(
                 "CITATION_DIGEST_MISMATCH: %r marker does not match sha256 of "
                 "the exact receipt bytes" % path)
-        # ROW 7 — delegate-and-verify: the design lane's gate judges the
-        # deliverable's structural closed-world (no freestyle components,
-        # black root, dark scheme, self-contained, ...). Absent design gate
-        # fails closed — never a silent pass.
+        # ROW 7 — delegate-and-verify on CANONICALIZED bytes (D3/D4): the
+        # design lane's gate judges the structural closed-world; every class
+        # attribute is first rewritten to the quoted form so unquoted/spaced
+        # evasions cannot hide from its regex. Absent design gate fails
+        # closed — never a silent pass.
         if path.lower().endswith(".html"):
-            violations.extend(
-                "[%s] %s" % (path, x)
-                for x in run_design_gate(disk_path, design_gate_path,
-                                         design_manifest_path))
+            canon = canonicalize_class_attributes(text)
+            if canon != text:
+                fd, tmp = None, None
+                try:
+                    import tempfile
+                    fd, tmp = tempfile.mkstemp(prefix="gate-canon-",
+                                               suffix=".html")
+                    with os.fdopen(fd, "w", encoding="utf-8") as f:
+                        f.write(canon)
+                    delegate_path = tmp
+                except OSError as e:
+                    violations.append("TOOL-ERROR: canonicalization failed (%s)"
+                                      % e)
+                    delegate_path = disk_path
+            else:
+                tmp, delegate_path = None, disk_path
+            try:
+                violations.extend(
+                    "[%s] %s" % (path, x)
+                    for x in run_design_gate(delegate_path, design_gate_path,
+                                             design_manifest_path))
+            finally:
+                if tmp:
+                    try:
+                        os.unlink(tmp)
+                    except OSError:
+                        pass
 
     if violations:
         return "REJECT", violations
@@ -557,7 +817,8 @@ def resolve_truth():
 
 
 def pr_changed_files(repo, pr_number, token):
-    """Changed filenames of a PR, via the live API (trusted)."""
+    """Changed files of a PR, via the live API (trusted). Returns a list of
+    {"path", "status", "previous_filename"} in the PR files API vocabulary."""
     files = []
     page = 1
     while True:
@@ -565,13 +826,32 @@ def pr_changed_files(repo, pr_number, token):
                      % (repo, pr_number, page), token)
         if not batch:
             break
-        files.extend(f.get("filename", "") for f in batch)
+        for f in batch:
+            files.append({"path": f.get("filename", ""),
+                          "status": (f.get("status") or "modified").lower(),
+                          "previous_filename": f.get("previous_filename")})
         if len(batch) < 100:
             break
         page += 1
         if page > 40:
             raise RuntimeError("PR file list implausibly large — refusing")
     return files
+
+
+def parse_changed_files(spec):
+    """CLI override: 'path[:status],path[:status],...' (default modified)."""
+    out = []
+    for chunk in (spec or "").split(","):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        if ":" in chunk:
+            path, status = chunk.rsplit(":", 1)
+        else:
+            path, status = chunk, "modified"
+        out.append({"path": path.strip(), "status": status.strip().lower() or
+                    "modified", "previous_filename": None})
+    return out
 
 
 def load_local_truth(path):
@@ -607,8 +887,11 @@ def main(argv=None):
     ap.add_argument("--pr", default=None,
                     help="PR number (delivery mode; changed files via live API)")
     ap.add_argument("--changed-files", default=None,
-                    help="comma-separated changed paths (delivery mode; "
+                    help="comma-separated 'path[:status]' (delivery mode; "
                          "overrides the live API — for tests)")
+    ap.add_argument("--base-sha", default="",
+                    help="base ref SHA for tombstone verification (delivery "
+                         "mode; defaults to the PR base / live main)")
     ap.add_argument("--design-gate", default="",
                     help="path to the design lane's gate script (delivery "
                          "mode; row-7 delegate-and-verify)")
@@ -693,7 +976,7 @@ def _run_delivery(args):
     token = os.environ.get("GITHUB_TOKEN", "").strip()
     try:
         if args.changed_files is not None:
-            changed = [c.strip() for c in args.changed_files.split(",") if c.strip()]
+            changed = parse_changed_files(args.changed_files)
         else:
             if not args.pr:
                 return _emit("TOOL-ERROR",
@@ -703,9 +986,20 @@ def _run_delivery(args):
     except RuntimeError as e:
         return _emit("TOOL-ERROR", [str(e)], args, 2, local=False)
 
+    base_sha = args.base_sha.strip() or ""
+    if not base_sha and not args.changed_files:
+        # live path: the PR's base SHA from the runner event payload
+        try:
+            with open(os.environ.get("GITHUB_EVENT_PATH", "")) as f:
+                ev = json.load(f)
+            base_sha = ((ev.get("pull_request") or {}).get("base") or {}).get("sha", "")
+        except (OSError, ValueError):
+            base_sha = ""
+
     verdict, violations = check_delivery(receipt_bytes, args.pr_head, changed,
                                          truth, args.design_gate,
-                                         args.design_manifest)
+                                         args.design_manifest,
+                                         base_sha=base_sha, token=token)
     code = 0 if verdict == "PASS" else 1
     return _emit(verdict, violations, args, code, local=False)
 
