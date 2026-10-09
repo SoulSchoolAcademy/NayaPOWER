@@ -57,7 +57,7 @@ jobs:
             "activation_run_id":"999999999999","activation_run_attempt":"1",
             "activation_workflow":".github/workflows/naya-activation-receipt.yml"
           }
-          raw=json.dumps(receipt,sort_keys=True,separators=(",",":")).encode()+b"\\n"
+          raw=json.dumps(receipt,sort_keys=True,separators=(",",":")).encode()+b"\n"
           open("/tmp/naya-fabricated-receipt/receipt.json","wb").write(raw)
           digest=hashlib.sha256(raw).hexdigest()
           page='''<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><style>html{background:#050507}body{background:#050507;color:#f8f7fb}</style></head><body><!-- NAYA-ACTIVATION-RECEIPT-SHA256:'''+digest+''' --></body></html>'''
