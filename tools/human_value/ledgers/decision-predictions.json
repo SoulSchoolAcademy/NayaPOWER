@@ -53,5 +53,16 @@
   "receipt_type": "ALIGNMENT_DECISION",
   "schema_version": "2.1",
   "verification": "UNVERIFIED"
+ },
+ {
+  "decision_id": "DEC-20261009-HV-REALDATA-006",
+  "delta_v_predicted": 7.0,
+  "objective": "Accumulate the verified real events of 2026-10-09 09:41-15:41 UTC: merged PRs #1959 (registry heal SN-0742/0743/0744), #1961 (SN-0632..SN-0639 heal, #1838 adjudicated), #1963/#1964/#1965 (three Smart Blocks extractions, one outcome), #1976 (regenerate_brain_index hardening), #1982/#1983 (CANDIDATE spec pinned then excluded, one outcome), #1986 (SN-0781 scorecard-gate law). All carry Naya 2 scorecard receipts + merged-on-main evidence on #1354. Scan #1354 for attention-demanded events (DAI) since 09:41 UTC. Close the sixth prediction->observation join (n=6). Cold-recompute proof on the pushed SHA, push via the Git Data API with server-tree verification, post scorecard. Excluded by design: #1966/#1968/#1972/#1973/#1975 (merged but no scorecard receipt on #1354 \u2014 fail closed against inflation) and #1955 (own delegated merge; not self-scored).",
+  "predicted_at": "2026-10-09T15:50:00Z",
+  "predicted_by": "Naya 5 (human-value-builder run)",
+  "prediction_basis": "Same run archetype as DEC-002..DEC-005: accumulate verified events with durable evidence, DAI scan, deterministic recompute, one more joined observation deepening the calibration series (n=6). Pre-registered BEFORE any ledger change; the outcome event carries delta_v_actual for the join. Main tip moved during the run (925e4c348 -> 3a60163c9); branch rebased first, no events re-counted. DAI trend still needs weeks of real data; independent cross-verification of the 7.5 claim still outstanding (PR #1939 open, no review).",
+  "receipt_type": "ALIGNMENT_DECISION",
+  "schema_version": "2.1",
+  "verification": "UNVERIFIED"
  }
 ]
