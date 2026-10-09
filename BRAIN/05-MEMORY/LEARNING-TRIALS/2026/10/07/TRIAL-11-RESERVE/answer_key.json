@@ -1,0 +1,38 @@
+{
+  "Q1": {
+    "correct": "Call A",
+    "reserve_applies": true
+  },
+  "Q2": {
+    "correct": "Call A",
+    "reserve_applies": false
+  },
+  "Q3": {
+    "correct": "Call B",
+    "reserve_applies": true
+  },
+  "Q4": {
+    "correct": "Call A",
+    "reserve_applies": false
+  },
+  "Q5": {
+    "correct": "Call A",
+    "reserve_applies": true
+  },
+  "Q6": {
+    "correct": "Call B",
+    "reserve_applies": true
+  },
+  "Q7": {
+    "correct": "Call A",
+    "reserve_applies": false
+  },
+  "Q8": {
+    "correct": "Call A",
+    "reserve_applies": false
+  },
+  "Q9": {
+    "correct": "Call B",
+    "reserve_applies": true
+  }
+}

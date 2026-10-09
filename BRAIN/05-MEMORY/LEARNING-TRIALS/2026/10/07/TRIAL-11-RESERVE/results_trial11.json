@@ -1,0 +1,122 @@
+{
+  "T11-AGENT-02": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-03": {
+    "total": 8,
+    "reserve": 4,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-04": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-05": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-07": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-10": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-13": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-17": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-18": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-19": {
+    "total": 9,
+    "reserve": 5,
+    "normal": 4,
+    "arm": "treatment"
+  },
+  "T11-AGENT-01": {
+    "total": 3,
+    "reserve": 0,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T11-AGENT-06": {
+    "total": 3,
+    "reserve": 0,
+    "normal": 3,
+    "arm": "control"
+  },
+  "T11-AGENT-08": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-09": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-11": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-12": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-14": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-15": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-16": {
+    "total": 4,
+    "reserve": 0,
+    "normal": 4,
+    "arm": "control"
+  },
+  "T11-AGENT-20": {
+    "total": 3,
+    "reserve": 0,
+    "normal": 3,
+    "arm": "control"
+  }
+}
