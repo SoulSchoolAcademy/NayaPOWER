@@ -179,7 +179,7 @@
   "knowledge_node_map": "BRAIN/04-INTELLIGENCE/GRAPH/0002-KNOWLEDGE-TO-NODE-MAP-V1.json",
   "node_objects": "BRAIN/04-INTELLIGENCE/OBJECTS/",
   "inventory": "BRAIN/12-ENGINEERING/0003-BRAIN-FILE-INVENTORY-AND-RACE-READINESS-V1.md",
-  "inventory_file_count": 1203,
+  "inventory_file_count": 1207,
   "current_runtime_boundary": {
     "canonical_persistence": "Supabase",
     "runtime_convergence": "BOUNDED_NINE_NODE_BEHAVIORAL_ACCEPTANCE_PROVEN_AT_335bdd82; UNIVERSAL_DOMAIN_CAPABILITY_NOT_PROVEN",
@@ -302,13 +302,13 @@
     "method": "tools/regenerate_brain_index.py from the committed git tree",
     "domain_counts": {
       "00-ACTIVATION": 2,
-      "00-ARCHITECTURE": 3,
+      "00-ARCHITECTURE": 5,
       "00-SPEC": 15,
       "01-GOVERNANCE": 28,
       "02-ARCHITECTURE": 5,
       "03-KERNEL": 30,
       "04-INTELLIGENCE": 25,
-      "05-MEMORY": 642,
+      "05-MEMORY": 643,
       "06-PROOF": 13,
       "07-LEARNING": 5,
       "08-SUCCESSION": 2,
@@ -317,7 +317,7 @@
       "11-KNOWLEDGE": 7,
       "12-ENGINEERING": 25,
       "90-OPERATIONS": 13,
-      "99-ARCHIVE": 1,
+      "99-ARCHIVE": 2,
       "ROOT": 5
     },
     "note": "Counts are machine-verified against the Git tree. Semantic sections (nine_nodes, proof_boundary, operations, ...) are preserved untouched; only generated_at, inventory_file_count, last_reconciled_main and this section are mechanical."
