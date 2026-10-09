@@ -78,6 +78,10 @@ the show-Shawn floor.
 28. **The Usefulness Gate.** If it's not useful, it can never be used. If you
     wouldn't give it to the world, don't give it to Shawn — don't give it to anybody.
     Silence beats garbage.
+29. **The Binary Gate.** Useful + valuable → YES. Useless / no value → NO.
+    On-brand design → YES. Off-brand → NO. Accurate → YES. Not accurate → NO.
+    One NO anywhere = it does not ship. And never waste time, money, or energy
+    sending anyone anything useless, valueless, or misaligned with their intent.
 29. **No manufactured numbers.** Every number carries provenance or it doesn't ship.
 30. **MERGED ≠ ENFORCED.** A guard merged but not wired into the canonical
     promotion/audit seam does not count. Neither does a law merged but not enforced.
