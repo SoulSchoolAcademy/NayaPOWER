@@ -3,11 +3,18 @@
 
 Usage:
     python3 tools/design_gate.py <page.html> [--manifest smart-blocks/manifest.json]
+    python3 tools/design_gate.py <page.html> --require-activation --receipt=<receipt.json>
 
 Enforces the STRUCTURAL design laws from DESIGN-LAWS.md as a hard gate.
 Exit 0 = pass. Exit 1 = fail, with each violation named specifically.
 Eye-enforced laws (craft, copy, motion meaning) remain Shawn's verdict —
 this gate catches what a machine can prove.
+
+With --require-activation, the gate also rejects deliverables with no, stale,
+or mismatched activation citation (Naya 3's Gap 2, PR #1974). The citation
+marker <!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> --> must match the sha256
+of the exact receipt bytes, and the receipt must be fresh (<4h). Deep
+verification against live GitHub state is Naya 3's checker in CI.
 
 Structural checks:
   1. SELF-CONTAINED — no external stylesheet/script references (all inlined).
@@ -21,9 +28,11 @@ Structural checks:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -269,7 +278,71 @@ def check_viewport(html: str) -> list[str]:
     return []
 
 
-def run_gate(page: Path, manifest: Path) -> list[str]:
+RECEIPT_MARKER_RE = re.compile(
+    r"<!--\s*NAYA-ACTIVATION-RECEIPT-SHA256:([a-fA-F0-9]{64})\s*-->")
+RECEIPT_TTL = timedelta(hours=4)
+
+
+def check_activation(html: str, receipt_path: Path | None) -> list[str]:
+    """Activation citation check (Naya 3's Gap 2 — PR #1974 integration).
+
+    With --require-activation, a deliverable FAILS unless it carries a
+    current activation citation. This is the gate layer: structural
+    presence/format/freshness. Deep verification of the receipt against
+    live GitHub state is Naya 3's checker (tools/qa/) running in CI —
+    the gate cannot fetch live state, and must not trust builder-supplied
+    state as live.
+    """
+    v = []
+    m = RECEIPT_MARKER_RE.search(html)
+    if not m:
+        return ["ACTIVATION: no activation citation marker in deliverable "
+                "(<!-- NAYA-ACTIVATION-RECEIPT-SHA256:<64hex> -->). "
+                "Unactivated work doesn't ship."]
+    marker_sha = m.group(1).lower()
+    if receipt_path is None:
+        return ["ACTIVATION: citation marker present but no --receipt given; "
+                "cannot verify freshness or integrity."]
+    try:
+        raw = receipt_path.read_bytes()
+        receipt = json.loads(raw)
+    except (OSError, ValueError) as e:
+        return [f"ACTIVATION: cannot read receipt {receipt_path}: {e}"]
+    if receipt.get("schema") != "naya.activation.receipt.v2":
+        v.append("ACTIVATION: receipt schema is not naya.activation.receipt.v2")
+    if receipt.get("status") != "ACTIVATED":
+        v.append("ACTIVATION: receipt status is not ACTIVATED")
+    for field in ("session_id", "naya_identity", "human_authority",
+                  "repository", "job", "proof_plan"):
+        if not receipt.get(field):
+            v.append(f"ACTIVATION: receipt missing {field}")
+    if not receipt.get("gates"):
+        v.append("ACTIVATION: receipt names no governing gates")
+    main_sha = receipt.get("main_sha", "")
+    if not re.fullmatch(r"[a-fA-F0-9]{40}", str(main_sha)):
+        v.append("ACTIVATION: receipt main_sha is not a 40-hex SHA")
+    # Integrity: the marker must be the sha256 of the exact receipt bytes.
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != marker_sha:
+        v.append("ACTIVATION: citation marker does not match receipt bytes "
+                 "(stale or forged citation)")
+    # Freshness: 4h TTL, no future activations.
+    try:
+        activated = datetime.fromisoformat(
+            str(receipt.get("activated_at", "")).replace("Z", "+00:00"))
+        now = datetime.now(timezone.utc)
+        if activated > now + timedelta(minutes=2):
+            v.append("ACTIVATION: receipt activated_at is in the future")
+        elif now - activated > RECEIPT_TTL:
+            v.append("ACTIVATION: receipt expired (>4h old) — re-activate")
+    except ValueError:
+        v.append("ACTIVATION: receipt activated_at is not a valid timestamp")
+    return v
+
+
+def run_gate(page: Path, manifest: Path,
+             require_activation: bool = False,
+             receipt_path: Path | None = None) -> list[str]:
     html = read_page(page)
     css = inline_css(html)
     violations: list[str] = []
@@ -284,6 +357,8 @@ def run_gate(page: Path, manifest: Path) -> list[str]:
         violations.append(f"NO FREESTYLE: manifest not found at {manifest} "
                           f"— cannot verify components")
     violations += check_light_text(css)
+    if require_activation:
+        violations += check_activation(html, receipt_path)
     return violations
 
 
@@ -306,6 +381,48 @@ def self_test() -> int:
         pg.write_text(good)
         bad_v = run_gate(pb, mf)
         good_v = run_gate(pg, mf)
+        # --- activation scenarios (Naya 3 Gap 2) ---
+        now = datetime.now(timezone.utc)
+        receipt = {
+            "schema": "naya.activation.receipt.v2",
+            "status": "ACTIVATED",
+            "session_id": "selftest-1",
+            "naya_identity": "Naya 5",
+            "human_authority": "Shawn",
+            "repository": "SoulSchoolAcademy/NayaPOWER",
+            "job": "self-test",
+            "gates": ["Usefulness Gate"],
+            "proof_plan": "self-test",
+            "main_sha": "a" * 40,
+            "activated_at": now.isoformat(),
+        }
+        rp = Path(d) / "receipt.json"
+        rp.write_bytes(json.dumps(receipt).encode())
+        digest = hashlib.sha256(rp.read_bytes()).hexdigest()
+        marked = good.replace("</body>",
+                              f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{digest} --></body>")
+        pm = Path(d) / "marked.html"
+        pm.write_text(marked)
+        noact_v = run_gate(pg, mf, require_activation=True,
+                           receipt_path=rp)          # no marker -> fail
+        okact_v = run_gate(pm, mf, require_activation=True,
+                           receipt_path=rp)          # valid -> pass
+        forged = marked.replace(digest, "0" * 64)
+        pf = Path(d) / "forged.html"
+        pf.write_text(forged)
+        forged_v = run_gate(pf, mf, require_activation=True,
+                            receipt_path=rp)         # mismatch -> fail
+        old = dict(receipt,
+                   activated_at=(now - timedelta(hours=5)).isoformat())
+        rp_old = Path(d) / "receipt_old.json"
+        rp_old.write_bytes(json.dumps(old).encode())
+        d_old = hashlib.sha256(rp_old.read_bytes()).hexdigest()
+        pm_old = Path(d) / "marked_old.html"
+        pm_old.write_text(good.replace(
+            "</body>",
+            f"<!-- NAYA-ACTIVATION-RECEIPT-SHA256:{d_old} --></body>"))
+        expired_v = run_gate(pm_old, mf, require_activation=True,
+                             receipt_path=rp_old)    # expired -> fail
     ok = True
     if not bad_v:
         print("SELF-TEST FAIL: violating page passed the gate")
@@ -321,23 +438,47 @@ def self_test() -> int:
         ok = False
     else:
         print("SELF-TEST: lawful page passed (good)")
+    for name, vv, want_fail in [
+            ("no-marker+required", noact_v, True),
+            ("valid receipt", okact_v, False),
+            ("forged marker", forged_v, True),
+            ("expired receipt", expired_v, True)]:
+        has_act = any(x.startswith("ACTIVATION") for x in vv)
+        if want_fail and not has_act:
+            print(f"SELF-TEST FAIL: activation case '{name}' did not fail")
+            ok = False
+        elif not want_fail and vv:
+            print(f"SELF-TEST FAIL: activation case '{name}' failed: {vv}")
+            ok = False
+        else:
+            print(f"SELF-TEST: activation case '{name}' "
+                  f"{'failed as required' if want_fail else 'passed'} (good)")
     return 0 if ok else 1
 
 
 def main(argv: list[str]) -> int:
     if "--self-test" in argv:
         return self_test()
-    if not argv:
+    args = [a for a in argv if not a.startswith("--")]
+    flags = {a for a in argv if a.startswith("--")}
+    if not args:
         print(__doc__)
         return 2
-    page = Path(argv[0])
-    manifest = Path(argv[1]) if len(argv) > 1 else (
+    page = Path(args[0])
+    manifest = Path(args[1]) if len(args) > 1 else (
         REPO_ROOT / "smart-blocks" / "manifest.json"
     )
+    require_activation = "--require-activation" in flags
+    receipt_path = None
+    for a in argv:
+        if a.startswith("--receipt="):
+            receipt_path = Path(a.split("=", 1)[1])
     if not page.exists():
         print(f"design_gate: no such file: {page}")
         return 2
-    violations = run_gate(page, manifest)
+    violations = run_gate(page, manifest,
+                          require_activation=require_activation,
+                          receipt_path=receipt_path)
     if violations:
         print(f"DESIGN GATE: FAIL — {len(violations)} violation(s) in {page}:")
         for viol in violations:
