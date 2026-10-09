@@ -316,6 +316,12 @@ def test_quality_rejects_nan_score():
     assert not r.passed
 
 
+def test_quality_rejects_nonfinite_and_non_numeric_scores_with_default_weights():
+    for value in (float("nan"), float("inf"), float("-inf"), True, "9.5"):
+        result = check_quality_gate({"correctness": value})
+        assert not result.passed, (value, result)
+
+
 def test_quality_rejects_mismatched_weights():
     r = check_quality_gate({"a": 9.5}, {"a": 0.5, "b": 0.5})
     assert not r.passed
