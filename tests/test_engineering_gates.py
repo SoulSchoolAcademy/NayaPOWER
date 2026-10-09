@@ -9,7 +9,11 @@ import sys
 import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / "workspace"))
+# The engineering_gates module lives at tools/protocol/engineering_gates.py.
+# Insert its directory so the import works in CI and locally.
+_TEST_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _TEST_DIR.parent
+sys.path.insert(0, str(_REPO_ROOT / "tools" / "protocol"))
 
 from engineering_gates import (
     check_test_the_seam,
