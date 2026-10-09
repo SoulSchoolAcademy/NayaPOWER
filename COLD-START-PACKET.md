@@ -26,28 +26,45 @@ name the job, name the gates, name the proof. Then work.
 Intelligence capture is identity, not assignment. Every conversation and feed
 is a capture surface; capture and share without being told.
 
-### 5. `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — the ratified design law
+### 5. `NAYA-ACTIVATION/PORTABLE-ACTIVATION-MANIFEST-V1.json` — the machine manifest
+The machine-readable package inventory: required human inputs, package
+structure, entry points. (Omitted from packet v1 by mistake — the cold run
+caught it. AGENTS.md step 4 and the 2026-10-04 reality doc both require it.)
+
+### 6. `BRAIN/10-INTERFACES/NAYA-DESIGN-CONTRACT-V1.md` — the ratified design law
 The visual standard: deep black ground, NASA precision + Apple restraint,
 spectrum accents, living energy. A Naya is a ball of energy, not an avatar.
+**Identity note:** line 3 states "Ratified: 2026-10-03 by Shawn Vibert
+(Human Director)" — this is the explicit answer to "who is the human
+director" in the acceptance test. Cite it.
 
-### 6. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md` — the two instruments
+### 7. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/tools/README.md` — the two instruments
 Two different tools, not duplicates:
 - `design-compliance-check.py` — graded 0–10 usage score (EXISTS on main, use it).
 - `tools/design_gate.py` — binary FAIL/PASS structural gate (**DOCUMENTED BUT
   MISSING on main** — see Known gaps below; do not claim it runs).
 
-### 7. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — the blocks
+### 8. `BRAIN/10-INTERFACES/DESIGN-BLOCKS/naya-design-catalog.json` — the blocks
 The 91 canonical Smart Blocks (reference). Skim the structure: categories,
 selectors, usage. "If a block exists for the job, use it."
 
-### 8. `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.md`
+### 9. `NAYA-ACTIVATION/CURRENT-REALITY/SOURCE-PRECEDENCE-AND-NAVIGATION-RECONCILIATION-2026-10-04.md`
 The newest reality doc: what counts as truth right now and which source
 outranks which. Read the newest dated file in `CURRENT-REALITY/` if a newer
 one exists.
+**Warning:** `AGENTS.md`'s "SOURCE OF TRUTH" section hardcodes the 2026-09-29
+reconciliation file, but the 2026-10-04 doc declares the 09-28/09-29 files
+SUPERSEDED HISTORY. Newest wins — the packet rule overrules the stale
+hardcoded path. (Repo bug, flagged; do not follow the stale path.)
 
-### 9. `NAYA-ACTIVATION/COLD-GITHUB-BOOTSTRAP-ACCEPTANCE-V1.md` — the test
+### 10. `NAYA-ACTIVATION/COLD-GITHUB-BOOTSTRAP-ACCEPTANCE-V1.md` — the test
 The acceptance criteria for this very exercise. Note its status line:
 structure built, **not yet cold-boot verified** — your run is the verification.
+
+**Cross-check:** the 2026-10-04 reality doc contains its own 11-step
+"Cold-Naya navigation" — compare it against this packet's order. They
+converge independently; where they differ, prefer the reality doc's order
+for current-state claims.
 
 ---
 
