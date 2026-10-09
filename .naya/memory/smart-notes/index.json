@@ -12725,6 +12725,19 @@
       "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/08/SYSTEM-INTELLIGENCE/GOVERNANCE/PROOF-HONESTY/SN-0639/IB-SMART-NOTE-20261008-sn0639-virgin-confirm-before-flag.md",
       "content_hash": "e4b2ef472e33ed61352dbd04fccff33ff4b03c20b4a3e5d2221b947a1443390e",
       "smart_link_status": "ACTIVE_AUTH_GATED"
+    },
+    {
+      "intelligent_block_id": "IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate",
+      "smart_note_id": "SN-0781",
+      "title": "Scorecard Must Run the Gate — No Exit Code, No Merge",
+      "captured_at": "2026-10-09",
+      "category": "SYSTEM_INTELLIGENCE",
+      "topic": "SCORECARD-DISCIPLINE/GATE-EXECUTION",
+      "truth_state": "CANDIDATE",
+      "scope": "PRIVATE",
+      "projection_status": "GITHUB_BRAIN_PUBLISHED",
+      "projection_path": "BRAIN/05-MEMORY/SMART-NOTES/2026/10/09/SYSTEM-INTELLIGENCE/SCORECARD-DISCIPLINE/GATE-EXECUTION/SN-0781/IB-SMART-NOTE-20261009-sn0781-scorecard-must-run-the-gate.md",
+      "content_hash": "4037f63ed869437f310a1f23f92c5e2de50a9970b91e1a15e934f9ba5039a1e9"
     }
   ],
   "sequence_policy": {
