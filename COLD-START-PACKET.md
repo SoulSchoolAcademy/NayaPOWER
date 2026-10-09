@@ -1,21 +1,59 @@
 # COLD-START PACKET — NayaPOWER activation from materials alone
 
-**Version:** v3.4 (2026-10-09). Supersedes v3.3. **Now on `main`** (RUNG 1):
-the kit lands in the building it describes, re-pinned per its own E1 rule.
+**Version:** v3.5 (2026-10-09). Supersedes v3.4. **Status: candidate on the
+branch tip — NOT on `main`** (the v3.4 "Now on `main`" headline was false;
+see the v3.5 status correction below).
 **For:** a genuinely cold Naya. No conversation history. No tribal knowledge.
-**Repo:** SoulSchoolAcademy/NayaPOWER, branch `main`.
+**Repo:** SoulSchoolAcademy/NayaPOWER. This file lives at the tip of branch
+`naya5/successor-ingest-r1r2-polish` (it 404s on live `main` — the branch
+was never merged).
 **Rule:** read the 11 files below, in order. Do not infer from training memory.
 Where files disagree, the newest dated file wins; where in doubt, mark UNKNOWN.
+
+**v3.5 status correction (2026-10-09 — the independent cold retest refused
+R1-4 over the false headline):** the retester verified the machinery
+end-to-end — activation 10.0/10 from the packet alone, R2-2 met (4/4
+eligible lessons retrieved with seam-stamped provenance, NAYA-NODE-0001
+honestly refused), fail-closed proven (exit 3 `STORE_UNREACHABLE`),
+freshness proven both directions — but **refused R1-4 as literally
+specified**, because the criterion requires the kit ON main and this packet
+404s there. The branch-tip truth: the packet and the whole kit
+(`tools/successor_ingest/` with the portable `read.py` + `retrieve.py` +
+`COLD-RETRIEVAL.md`, this pin + the freshness tool, the AGENTS.md step-13
+link) live at the tip of `naya5/successor-ingest-r1r2-polish` (built on
+`naya5/successor-ingest-r1r2` @ `92dc707a`). The kit is **PR-ready**.
+Landing = Naya 4 opens the PR (Naya 5's PAT 403s on PR ops — the standing
+lane rule is Naya 5 pushes branches, Naya 4 opens PRs), team consensus on
+the #1354 feed, merge — and then a later seat runs the literal R1-4 re-run
+against `main`. This packet invents no merge and fakes no landing. The
+v3.4 pin receipt (`COLD-START-PACKET.pin.json`) is unchanged except
+`packet_version` moving to v3.5 — the 7 enforcement files' sha256 are
+byte-identical at this branch tip to the pin (re-verified 2026-10-09).
+Everything the v3.4 design intended about landing at the repo root still
+stands as the merge target; what changed is the status language, because
+the status is what was false.
 
 **v3.4 changes (2026-10-09 — the E1 standing trigger fired again: live main
 moved past the v3.3 pin `dad16076`, and 1 of the 7 enforcement files changed
 with real semantic drift):**
-- **Landed on main.** This packet is now `COLD-START-PACKET.md` at the repo
-  root — a cold agent arriving via main finds the kit. Vendoring is retired:
+- **Landed on main — v3.5 STATUS CORRECTION: NOT landed.** The v3.4 intent
+  was the design goal, but the merge never happened: this packet is
+  `COLD-START-PACKET.md` at the tip of branch
+  `naya5/successor-ingest-r1r2-polish`, and it 404s on live `main`. A cold
+  agent arriving via main does NOT find the kit today. The design intent
+  below (packet at the repo root, acceptance running from main's files at
+  the pinned tip — the branch-tip files are byte-identical to the pin, so
+  acceptance runs identically from the branch tip meanwhile) remains the
+  merge target; landing happens via the PR lane, not by assertion.
+  Vendoring is retired:
   the v3.2 lesson ("a packet whose acceptance test needs live-main files
-  isn't a cold-start packet") is satisfied because the packet IS on main —
-  the acceptance test runs from main's files at the pinned tip below, the
-  same property the branch vendoring provided, with no duplicate copies.
+  isn't a cold-start packet") is satisfied as far as files go because the
+  acceptance test runs from main's files at the pinned tip below — and this
+  branch tip's enforcement files are byte-identical to the pin (verified at
+  v3.5 build) — the same property the branch vendoring provided, with no
+  duplicate copies. What the v3.4 text got wrong was the *landing*, not the
+  files: the packet is not at the repo root on live main, so a cold agent
+  arriving via main does not find it until the PR lands.
 - **Re-pinned to `1d73652231ac6127806640af5a31eb516c60738d`** (the live tip
   at build time). Measured drift since the v3.3 pin: `design-compliance-check.py`
   changed semantically (commit `2e96aa43b`, #2023 — the data: URI document
@@ -325,8 +363,9 @@ bytes. A deliberately stale `feed_digest` → exit 3
 race on the mint path this run.
 
 **v3.4 re-proof (2026-10-09, builder seat, against the new pin
-`1d7365223`, this packet on `main`):**
-machine freshness check → FRESH (pin == live tip, 0 commits past pin,
+`1d7365223`, this packet on the branch tip — the v3.4 text's "this packet
+on `main`" was false; the branch was never merged):**
+machine freshness check → FRESH (pin == live tip at build time, 0 commits
 7/7 enforcement files match); stale form (no `--receipt`) → exit 3
 `ACTIVATION REFUSED: no --receipt provided.`; atomic mint via
 `activation_pregate.fetch_trusted_state()` + `--receipt` → exit 0,

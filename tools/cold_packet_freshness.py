@@ -167,8 +167,8 @@ def main(argv: list[str] | None = None) -> int:
 
     dist = f"{ahead} commits past pin" if ahead is not None else "distance n/a"
     n_files = len(pin_doc["enforcement_files"])
-    print(f"FRESH: pin {pin[:12]}… == live tip {tip[:12]}… "
-          f"(via {how}); age {age_h:.1f}h; {dist}; "
+    print(f"FRESH: pin {pin[:12]}… is the acceptance baseline; live tip "
+          f"{tip[:12]}… (via {how}) is {dist}; age {age_h:.1f}h; "
           f"enforcement files {n_files}/{n_files} match the pin.")
     return 0
 
