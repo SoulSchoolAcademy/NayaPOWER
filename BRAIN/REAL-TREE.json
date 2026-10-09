@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "7ba8e40ef4d6232b62ca387dea2b3d96ce2c6500",
-  "inventory_file_count": 1208,
+  "receipt_basis_commit": "6fb7b7ee631979da9f6c5483f8f9abd7e196ec76",
+  "inventory_file_count": 1211,
   "domain_counts": {
     "00-ACTIVATION": 3,
     "00-ARCHITECTURE": 5,
@@ -13,7 +13,7 @@
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 643,
     "06-PROOF": 13,
-    "07-LEARNING": 5,
+    "07-LEARNING": 8,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
@@ -3866,6 +3866,11 @@
       "size": 2052
     },
     {
+      "path": "BRAIN/07-LEARNING/BACKLOG-TRIAGE-2026-10-09.md",
+      "blob_sha": "0ab171a524af7aa68936e66acffcb823368c8eac",
+      "size": 3540
+    },
+    {
       "path": "BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md",
       "blob_sha": "a458a8436eca50dc82f192392ae1182cbe54df70",
       "size": 2253
@@ -3879,6 +3884,16 @@
       "path": "BRAIN/07-LEARNING/README.md",
       "blob_sha": "519227d792b54ea891b46abc6cf055f4d24ff0e3",
       "size": 798
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/README.md",
+      "blob_sha": "d314acd59aa80c953a2cc30b482b83806fa0b6d3",
+      "size": 742
+    },
+    {
+      "path": "BRAIN/07-LEARNING/VERIFICATION-QUEUE/queue.json",
+      "blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "size": 3
     },
     {
       "path": "BRAIN/07-LEARNING/learning-system-blueprint-v1.md",
