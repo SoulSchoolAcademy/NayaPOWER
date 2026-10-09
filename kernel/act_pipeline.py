@@ -74,6 +74,10 @@ PLAN_OUTCOME_UNDEFINED = "PLAN_OUTCOME_UNDEFINED"
 PLAN_PROOF_UNDEFINED = "PLAN_PROOF_UNDEFINED"
 PLAN_CANDIDATE_MISMATCH = "PLAN_CANDIDATE_MISMATCH"
 PLAN_SAFETY_PROHIBITED = "PLAN_SAFETY_PROHIBITED"
+# Execute-time risk policy differs from the plan-time policy recorded on the
+# plan. The re-gate must be a re-verification under the SAME math; a moved
+# policy mid-flight is a re-plan, never a silent re-derivation. Fail closed.
+PLAN_RISK_POLICY_MISMATCH = "PLAN_RISK_POLICY_MISMATCH"
 
 _REVERSIBLE_VALUES = ("REVERSIBLE", "IRREVERSIBLE", "UNKNOWN")
 _STAKE_ORDER = {"low": 0, "medium": 1, "high": 2}
@@ -130,12 +134,22 @@ class PlanCandidate:
 
 @dataclass(frozen=True)
 class ActionPlan:
+    """A bound plan produced by plan_action — or hand-crafted outside it.
+
+    risk_policy records the effective plan-time RiskPolicy so the
+    execution seam can re-verify under the SAME math (SN-0522: the
+    re-gate is a re-verification, not a re-derivation). None means the
+    plan was built outside plan_action and its plan-time math is unknown;
+    execute_plan then falls back to the caller's policy or the default,
+    exactly as before.
+    """
     plan_id: str
     action: str
     chosen: PlanCandidate
     authority: LawAuthority
     candidate_scores: tuple  # ((candidate_id, Q), ...) — the math is visible
     planned_at: float
+    risk_policy: RiskPolicy | None = None
 
 
 @dataclass(frozen=True)
@@ -304,11 +318,13 @@ def plan_action(authority: LawAuthority,
     plan = ActionPlan(
         plan_id=plan_id, action=authority.action, chosen=chosen,
         authority=authority, candidate_scores=scores, planned_at=now,
+        risk_policy=risk,
     )
     receipt = ActionReceipt(
         receipt_id=_new_id(), plan_id=plan_id, phase="PLAN_ACCEPTED",
         executed=False, outcome_verified=False, truth_state="UNKNOWN",
         evidence=gate_evidence
+        + (f"plan-time risk policy: {risk!r}",)
         + tuple(
             f"candidate {cid} scored Q={q}" for cid, q in scores
         ) + (f"selected {chosen.candidate_id} as minimum sufficient",),
@@ -341,9 +357,11 @@ def execute_plan(plan: ActionPlan,
     — can never reach the executor while PROHIBITED: it is refused with
     PLAN_SAFETY_PROHIBITED. NEEDS_AUTHORITY verdicts stay governed by the
     LAW authority record (the LAW node's seam); this seam enforces the harm
-    hard stops only and weakens nothing. Pass the same profile (and risk
-    policy) used at plan time so the verdict is a re-verification, not a
-    re-derivation under different math.
+    hard stops only and weakens nothing. The re-gate runs under the SAME
+    math the plan was gated with: the plan records its plan-time risk
+    policy, execute_plan defaults to it when the caller passes None, and
+    fails closed with PLAN_RISK_POLICY_MISMATCH on any explicit mismatch —
+    a moved policy mid-flight is a re-plan, never a silent re-derivation.
 
     Every phase transition is appended to ledger when provided.
     """
@@ -386,11 +404,31 @@ def execute_plan(plan: ActionPlan,
     # before the executor fires. A PROHIBITED chosen candidate — whether
     # hand-crafted outside plan_action or changed after planning — is
     # refused here; the executor is never called.
-    risk = risk_policy if risk_policy is not None else RiskPolicy()
+    #
+    # Risk-policy threading: the re-gate must run under the SAME math the
+    # plan was gated with. The plan records its plan-time policy; when the
+    # caller passes nothing we default to it, when the caller passes an
+    # equal policy we use it, and when the caller passes a DIFFERENT policy
+    # we refuse with PLAN_RISK_POLICY_MISMATCH — a moved policy mid-flight
+    # is a re-plan, never a silent re-derivation under laxer (or stricter)
+    # thresholds. Hand-crafted plans carry no plan-time record (None), so
+    # the caller's policy or the default governs, as before.
+    plan_risk = plan.risk_policy if plan.risk_policy is not None else RiskPolicy()
+    if (risk_policy is not None and plan.risk_policy is not None
+            and risk_policy != plan_risk):
+        return refused(
+            PLAN_RISK_POLICY_MISMATCH,
+            evidence=(f"execute-time risk policy {risk_policy!r} differs from "
+                      f"plan-time policy {plan_risk!r}; refusing — re-plan "
+                      f"under the new policy instead of re-gating under "
+                      f"moved math"),
+        )
+    risk = risk_policy if risk_policy is not None else plan_risk
     gate, reasons, _q = gate_candidate(_candidate_to_calculus(plan.chosen), profile, risk)
     gate_evidence = (f"execution-time do-no-harm re-gate: candidate "
                      f"{plan.chosen.candidate_id} verdict {gate}"
-                     + (f" [{', '.join(reasons)}]" if reasons else ""))
+                     + (f" [{', '.join(reasons)}]" if reasons else "")
+                     + f"; re-gate math: {risk!r}")
     if gate == PROHIBITED:
         return refused(PLAN_SAFETY_PROHIBITED, evidence=gate_evidence)
 
