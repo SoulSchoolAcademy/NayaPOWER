@@ -1,0 +1,123 @@
+/* Smart Block: forms/file-upload — drag & drop upload zone in Naya design language */
+/* shared tokens */
+:root{
+  --field:#050507; --obsidian:#0B0D12; --raise:#10141d; --card:#141a28;
+  --white:#F8F7FB; --ink:#F5F7FB;
+  --quiet:rgba(248,247,251,.72); --secondary:rgba(248,247,251,.55);
+  --line:rgba(255,255,255,.12);
+  --soul:#a06bff;
+  --magenta:#e84fff; --purple:#a06bff; --blue:#3fb8ff; --green:#2fe89e; --gold:#ffbf3d;
+  --magenta-rgb:232,79,255; --purple-rgb:160,107,255; --blue-rgb:63,184,255;
+  --green-rgb:47,232,158; --gold-rgb:255,191,61;
+  --verified:#2fe89e; --claim:#ffbf3d; --demo:#e84fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r-lg:18px; --r-md:13px; --r-pill:999px;
+  --type-headline:24px; --type-body:18px; --type-small:14px;
+}
+
+/* Dropzone — obsidian, dashed machined edge */
+.fu-dropzone{
+  position:relative;
+  min-height:120px;
+  border:2px dashed rgba(255,255,255,.25);
+  border-radius:var(--r-lg);
+  background:linear-gradient(180deg,#2a2b33 0%,#0c0c0f 52%,#030304 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(238,236,228,.18),
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.72),
+    0 20px 42px rgba(0,0,0,.84),
+    0 6px 14px rgba(0,0,0,.58);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; padding:28px 20px; cursor:pointer;
+  transition:border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);
+  overflow:hidden;
+}
+.fu-dropzone input[type="file"]{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+.fu-dropzone:focus-visible{ outline:none; border-color:var(--purple);
+  box-shadow:inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    0 0 18px -2px rgba(var(--purple-rgb),.55), 0 0 42px -8px rgba(var(--purple-rgb),.35); }
+
+/* Upload jewel icon */
+.fu-icon{
+  width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 30% 28%, #3a3d4a 0%, #14151b 58%, #050507 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28), inset 0 1px 0 rgba(255,255,255,.35),
+    0 8px 20px rgba(0,0,0,.6);
+  color:var(--white); font-size:20px; line-height:1;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.fu-title{ font-size:var(--type-body); font-weight:700; color:var(--white); margin:0; }
+.fu-hint{ font-size:var(--type-small); color:var(--secondary); margin:0; }
+
+/* Dragover — purple ignite wash */
+.fu-dropzone.fu-dragover{
+  border:2px solid var(--purple);
+  box-shadow:inset 0 0 0 1.5px rgba(var(--purple-rgb),.92),
+    inset 0 0 60px rgba(var(--purple-rgb),.12),
+    0 0 18px -2px rgba(var(--purple-rgb),.55), 0 0 42px -8px rgba(var(--purple-rgb),.35);
+  transform:translateY(-2px);
+}
+.fu-dropzone.fu-dragover .fu-icon{ transform:translateY(-6px) scale(1.12);
+  box-shadow:inset 0 0 0 1px rgba(var(--purple-rgb),.9),
+    0 0 22px rgba(var(--purple-rgb),.5), 0 8px 20px rgba(0,0,0,.6); }
+
+/* File list */
+.fu-list{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+
+/* File row — 52px machined row */
+.fu-row{
+  display:flex; align-items:center; gap:12px; min-height:52px;
+  padding:8px 12px; border-radius:var(--r-md);
+  background:linear-gradient(180deg,#1a1d27 0%,#0b0d12 100%);
+  box-shadow:inset 0 0 0 1px var(--line), inset 0 1px 0 rgba(255,255,255,.16),
+    0 8px 18px rgba(0,0,0,.5);
+  animation:fu-in .35s var(--ease);
+}
+@keyframes fu-in{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+
+/* Type jewel — spectrum identity by file type */
+.fu-type{
+  width:34px; height:34px; border-radius:10px; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  font-size:var(--type-small); font-weight:800; color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35), inset 0 1px 0 rgba(255,255,255,.4),
+    0 6px 14px rgba(0,0,0,.55);
+  background:radial-gradient(circle at 30% 28%, var(--fu-hi,#8a8f9e) 0%, var(--fu-c,#555) 55%, var(--fu-lo,#1a1b20) 100%);
+}
+.fu-type[data-type="img"]{ --fu-hi:#ff9bf0; --fu-c:#e84fff; --fu-lo:#5c115f; }
+.fu-type[data-type="doc"]{ --fu-hi:#9fdcff; --fu-c:#3fb8ff; --fu-lo:#0d3c55; }
+.fu-type[data-type="audio"]{ --fu-hi:#c9a8ff; --fu-c:#a06bff; --fu-lo:#33166b; }
+.fu-type[data-type="video"]{ --fu-hi:#ffe3a1; --fu-c:#ffbf3d; --fu-lo:#5f430c; }
+.fu-type[data-type="zip"]{ --fu-hi:#b9f5d8; --fu-c:#2fe89e; --fu-lo:#0d4a33; }
+.fu-type[data-type="code"]{ --fu-hi:#e6e6ef; --fu-c:#8a8f9e; --fu-lo:#26272d; }
+
+.fu-meta{ flex:1; min-width:0; display:flex; flex-direction:column; gap:4px; }
+.fu-name{ font-size:16px; color:var(--white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fu-size{ font-size:var(--type-small); color:var(--secondary); }
+.fu-bar{ height:4px; border-radius:var(--r-pill); background:#0a0a0e;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.8); overflow:hidden; }
+.fu-fill{ height:100%; width:0%; border-radius:inherit;
+  background:linear-gradient(90deg,var(--purple),var(--magenta));
+  box-shadow:0 0 12px rgba(var(--purple-rgb),.7);
+  transition:width .25s var(--ease); }
+.fu-row.fu-done .fu-bar{ display:none; }
+
+/* Status jewel + remove */
+.fu-status{
+  width:26px; height:26px; border-radius:50%; flex:none;
+  display:none; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 30% 28%, #8ff5c6 0%, var(--green) 55%, #0d4a33 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4), 0 0 14px rgba(var(--green-rgb),.55);
+  color:#04140d; font-size:14px; font-weight:800;
+}
+.fu-row.fu-done .fu-status{ display:flex; }
+.fu-remove{
+  width:30px; height:30px; border-radius:50%; flex:none; border:0; cursor:pointer;
+  background:transparent; color:var(--secondary); font-size:18px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  transition:color .2s, background .2s, transform .2s;
+}
+.fu-remove:hover{ color:var(--white); background:rgba(255,255,255,.1); transform:scale(1.1); }
+.fu-remove:focus-visible{ outline:none; box-shadow:0 0 0 2px rgba(var(--purple-rgb),.8); }
