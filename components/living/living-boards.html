@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Naya Lego: Living Hero Buttons</title>
+<title>The Living Boards — Naya Lego Set</title>
 <style>
 /* ==========================================================================
    THE LIVING SYSTEM — Naya buttons & boards
@@ -264,94 +264,92 @@ body.lv-lit .lv-ambient { opacity: 1; }
   .kicker { font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: #a06bff; font-weight: 700; }
   h1 { font-size: 24px; font-weight: 800; margin: 14px 0 10px; }
   h1 .soul { color: #a06bff; }
-  .lede { max-width: 620px; margin: 0 auto; color: rgba(246,245,239,.78); }
-  .demo-grid { display: grid; gap: 26px; margin-top: 48px; }
-  .demo-card { border-radius: 22px; padding: 26px; background: linear-gradient(180deg,#101015,#070709); border: 1px solid rgba(255,255,255,.09); box-shadow: 0 24px 60px rgba(0,0,0,.55); }
-  .demo-top { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
-  .demo-num { font-size: 13px; font-weight: 800; color: #0a0a0c; border-radius: 8px; padding: 3px 9px; }
-  .demo-name { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
-  .demo-meaning { font-size: 14px; color: rgba(246,245,239,.55); margin-left: auto; }
-  .demo-stage { display: flex; justify-content: center; padding: 44px 10px; border-radius: 14px; background: #08080b; border: 1px solid rgba(255,255,255,.06); margin-bottom: 18px; }
-  .code-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .lede { max-width: 640px; margin: 0 auto; color: rgba(246,245,239,.78); }
+  .sec-title { font-size: 26px; margin: 72px 0 6px; }
+  .sec-sub { color: rgba(246,245,239,.65); margin-bottom: 26px; max-width: 660px; }
+  .trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .demo-card { border-radius: 22px; padding: 26px; background: linear-gradient(180deg,#101015,#070709); border: 1px solid rgba(255,255,255,.09); box-shadow: 0 24px 60px rgba(0,0,0,.55); margin-top: 26px; }
+  .demo-name { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; display: block; }
+  .code-head { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 8px; }
   .micro { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(246,245,239,.5); font-weight: 700; }
   .copy-btn { font: 700 12px Inter,sans-serif; letter-spacing: .1em; color: #0a0a0c; background: #F8F7FB; border: none; border-radius: 999px; padding: 9px 18px; cursor: pointer; }
-  .code { background: #0a0a0d; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; font: 12.5px/1.7 ui-monospace, monospace; color: #c9c7d8; overflow-x: auto; white-space: pre; }
-  .law-note { margin-top: 14px; font-size: 14px; color: rgba(246,245,239,.55); }
+  .code { background: #0a0a0d; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; font: 12.5px/1.7 ui-monospace, monospace; color: #c9c7d8; overflow-x: auto; white-space: pre; max-height: 260px; overflow-y: auto; }
+  .ib-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .ib-dot { width: 14px; height: 14px; border-radius: 50%; background: #a06bff; box-shadow: 0 0 12px rgba(160,107,255,.8); }
+  .ib-title { font-size: 19px; font-weight: 800; }
+  .ib-meta { font-size: 13px; color: rgba(246,245,239,.5); letter-spacing: .1em; text-transform: uppercase; }
+  .ib-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
   footer { text-align: center; padding: 60px 0 20px; color: rgba(246,245,239,.4); font-size: 14px; }
 </style>
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">The Lego Set · 01</p>
-  <h1>Living Hero <span class="soul">Buttons</span></h1>
-  <p class="lede">The three standard-bearers. Dark hearts, cursor as light source, spectrum souls. Move near them — they wake before you arrive.</p>
+  <p class="kicker">The Lego Set · Living Intelligence</p>
+  <h1>The Living <span class="soul">Boards</span></h1>
+  <p class="lede">Boards are destinations you enter. Black — never purple. Glow stays at the border, never bleeding out. Hover moves them. The surface catches your cursor's light. No flat boards. No dead boards.</p>
 </header>
 <div class="wrap">
-  <div class="demo-grid">
 
-  <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#e84fff">01</span>
-      <span class="demo-name">magenta · hero</span>
-      <span class="demo-meaning">What matters most</span></div>
-    <div class="demo-stage"><span class="lv-wrap">
-  <span class="lv-aura" aria-hidden="true"></span>
-  <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
-    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
-  </button>
-</span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
-      <button class="copy-btn" onclick="copyCode('code01')">Copy</button></div>
-    <pre class="code" id="code01">&lt;span class=&quot;lv-wrap&quot;&gt;
-  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-  &lt;button class=&quot;lv-btn lv-hero&quot; style=&quot;--lv-accent:#e84fff;--lv-accent-rgb:232,79,255&quot;&gt;
-    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z&quot;/&gt;&lt;/svg&gt;ENTER THE STANDARD&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
+  <h2 class="sec-title">The understanding trio</h2>
+  <p class="sec-sub">"In a nutshell / what it means / how to use it" — elevated into real boards. They breathe, they lift, they catch light.</p>
+  <div class="trio">
+    <div class="lv-board" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+      <h3>In a nutshell</h3>
+      <p>The living system in one line: dark substance, light that behaves, color with meaning. Every element earns its place on the page.</p>
+    </div>
+    <div class="lv-board" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+      <h3>What it means</h3>
+      <p>Depth is honesty. A button that looks touchable tells the truth about being touchable. Flat elements lie — they hide whether anything will happen.</p>
+    </div>
+    <div class="lv-board" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158">
+      <h3>How to use it</h3>
+      <p>Link <b>living.css</b> and <b>living.js</b>. Add <b>.lv-board</b>, set the accent. Proximity and cursor light are automatic.</p>
+    </div>
   </div>
 
-  <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#a06bff">02</span>
-      <span class="demo-name">purple · hero</span>
-      <span class="demo-meaning">Naya's presence</span></div>
-    <div class="demo-stage"><span class="lv-wrap">
-  <span class="lv-aura" aria-hidden="true"></span>
-  <button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
-    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z M8 12h8"/></svg>SEE IT WORKING</span>
-  </button>
-</span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
-      <button class="copy-btn" onclick="copyCode('code02')">Copy</button></div>
-    <pre class="code" id="code02">&lt;span class=&quot;lv-wrap&quot;&gt;
-  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-  &lt;button class=&quot;lv-btn lv-hero&quot; style=&quot;--lv-accent:#a06bff;--lv-accent-rgb:160,107,255&quot;&gt;
-    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M4 5h16v14H4z M8 12h8&quot;/&gt;&lt;/svg&gt;SEE IT WORKING&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
+  <h2 class="sec-title">The Intelligent Block</h2>
+  <p class="sec-sub">Black board. Restrained border glow. Hover lifts and the edge ignites — the intelligence inside stays readable, the chrome stays quiet.</p>
+  <div class="lv-board" id="ib-demo" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+    <div class="ib-head">
+      <span class="ib-dot"></span>
+      <div><div class="ib-title">SN-0576 · Forked NayaNET Publishing</div>
+      <div class="ib-meta">Intelligent Block · Candidate</div></div>
+    </div>
+    <p>Every person gets their own forked NayaNET. Describe → NayaPOWER builds → preview → the calculator scores it → it goes live. Beauty and safety by default.</p>
+    <div class="ib-actions">
+      <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+        <button class="lv-btn lv-sm" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158"><span class="lv-label">Verified</span></button></span>
+      <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+        <button class="lv-btn lv-sm" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61"><span class="lv-label">Demonstrated</span></button></span>
+    </div>
   </div>
 
   <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#3fb8ff">03</span>
-      <span class="demo-name">blue · hero</span>
-      <span class="demo-meaning">Understanding</span></div>
-    <div class="demo-stage"><span class="lv-wrap">
-  <span class="lv-aura" aria-hidden="true"></span>
-  <button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
-    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
-  </button>
-</span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
-      <button class="copy-btn" onclick="copyCode('code03')">Copy</button></div>
-    <pre class="code" id="code03">&lt;span class=&quot;lv-wrap&quot;&gt;
-  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-  &lt;button class=&quot;lv-btn lv-hero&quot; style=&quot;--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255&quot;&gt;
-    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 2v20M2 12h20&quot;/&gt;&lt;/svg&gt;READ THE LAW&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
+    <span class="demo-name">Copy — the living board</span>
+    <div class="code-head"><span class="micro">Board markup</span><button class="copy-btn" onclick="copyCode('boardcode')">Copy</button></div>
+<pre class="code" id="boardcode">&lt;div class="lv-board" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255"&gt;
+  &lt;h3&gt;Board title&lt;/h3&gt;
+  &lt;p&gt;Board body. White text, always readable.&lt;/p&gt;
+&lt;/div&gt;</pre>
+    <div class="code-head"><span class="micro">The law, in CSS</span><button class="copy-btn" onclick="copyCode('boardcss')">Copy</button></div>
+<pre class="code" id="boardcss">.lv-board {
+  background: linear-gradient(180deg, #121217, #070709); /* BLACK, not purple */
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 22px; padding: 28px;
+  /* glow stays AT the border — never bleeding out */
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60);
+}
+.lv-board:hover {
+  transform: translateY(-4px);              /* hover MOVES it */
+  border-color: rgba(var(--lv-accent-rgb),.45);
+  /* edge ignites, face lights up — light up, don't glow out */
+}</pre>
   </div>
-  </div>
+
 </div>
 <footer>Black ground. White light. Purple soul. — The Naya Living System</footer>
 <script>

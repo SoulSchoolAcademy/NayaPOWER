@@ -87,73 +87,257 @@ p { margin-bottom: 16px; max-width: 72ch; }
 .spectrum-bar span:nth-child(5) { background: var(--gold); box-shadow: 0 0 18px var(--gold); }
 .spectrum-label { margin-top: 14px; font-size: 13px; letter-spacing: .3em; color: var(--secondary); text-transform: uppercase; }
 
-/* ============ THE THREE BUTTONS — living depth ============ */
-.hero-buttons { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
-.living-btn {
-  position: relative; overflow: hidden; cursor: pointer; border: none;
-  font-family: Inter, sans-serif; font-weight: 800; font-size: 17px; letter-spacing: .12em;
-  color: #fff; padding: 22px 44px; border-radius: 999px; min-width: 300px;
-  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
-  /* The rim: visible skin */
-  box-shadow:
-    inset 0 0 0 1.7px rgba(255,255,255,.92),
-    inset 0 2px 6px rgba(255,255,255,.22),
-    inset 0 -8px 18px rgba(0,0,0,.75),
-    0 14px 40px rgba(0,0,0,.6),
-    0 4px 14px rgba(0,0,0,.5);
-  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
-  animation: idleBreathe 4.2s ease-in-out infinite;
-}
-.living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
-.living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(216,108,255,.5), inset 0 0 22px rgba(216,108,255,.28); }
-.living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(157,117,255,.5), inset 0 0 22px rgba(157,117,255,.28); animation-delay: 1.4s; }
-.living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(85,185,238,.5), inset 0 0 22px rgba(85,185,238,.28); animation-delay: 2.8s; }
-/* The light sweep: a shine that flashes across on its own rhythm */
-.living-btn::after {
-  content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
-  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
-  transform: skewX(-18deg); pointer-events: none;
-  animation: sweep 5.5s var(--ease) infinite;
-}
-.living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
-.living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
-@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
-@keyframes idleBreathe {
-  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
-  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
-}
-.living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
-.living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(216,108,255,.4), 0 6px 18px rgba(0,0,0,.5); }
-.living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(157,117,255,.4), 0 6px 18px rgba(0,0,0,.5); }
-.living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(85,185,238,.4), 0 6px 18px rgba(0,0,0,.5); }
-.living-btn:hover .btn-glow { opacity: 1; }
-.living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
-.living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
-.living-btn .btn-label svg { width: 20px; height: 20px; }
-.btn-note { text-align: center; margin-top: 26px; }
+/* ============ THE LIVING SYSTEM — buttons & boards ============ */
+/* ==========================================================================
+   THE LIVING SYSTEM — Naya buttons & boards
+   Law: no flat elements. Everything has depth. Everything responds.
+   "Light up, don't glow out." — depth through layers, not neon.
+   Copy this file verbatim. Set --lv-accent / --lv-accent-rgb per element.
+   ========================================================================== */
 
-/* ============ PRIMO BUTTONS (standard) ============ */
-.primo {
-  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
-  font-weight: 800; font-size: 15px; letter-spacing: .08em; color: #fff;
-  padding: 14px 26px; border-radius: 999px; border: none;
-  background: linear-gradient(180deg, #141419 0%, #050505 60%, #08080c 100%);
-  box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.9), inset 0 2px 5px rgba(255,255,255,.2), inset 0 -6px 14px rgba(0,0,0,.7), 0 10px 28px rgba(0,0,0,.55), 0 3px 10px rgba(0,0,0,.45);
-  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
-  --glow: var(--soul);
+:root {
+  --lv-ease: cubic-bezier(.22,1,.36,1);
+  --lv-snap: cubic-bezier(.32,.72,0,1);
 }
-.primo:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px var(--glow), inset 0 2px 5px rgba(255,255,255,.25), inset 0 -6px 14px rgba(0,0,0,.65), 0 14px 36px rgba(0,0,0,.6), 0 0 26px -4px var(--glow); }
-.primo:active { transform: translateY(1px) scale(.985); }
-.primo.theme-magenta { --glow: var(--magenta); }
-.primo.theme-purple { --glow: var(--purple); }
-.primo.theme-blue { --glow: var(--blue); }
-.primo.theme-green { --glow: var(--green); }
-.primo.theme-gold { --glow: var(--gold); }
-.primo:disabled { opacity: .6; cursor: default; transform: none; }
-.btn-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; align-items: center; }
-.btn-state-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
-.btn-state { background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px; text-align: center; }
-.btn-state .micro { margin-top: 12px; }
+
+/* ---------- LIVING BUTTON ---------- */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-wrap.block { display: block; }
+
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }
+
+.lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #f6f5ef;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  /* Dark heart: sheen over deep black gradient — never flat */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  /* Seven layers: skin, top light, bottom line, weight, inner glow, elevation, contact */
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--lv-ease), box-shadow .38s var(--lv-ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes lv-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.46),
+    inset 0 1px 0 rgba(255,255,255,.52),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 24px 50px rgba(0,0,0,.88),
+    0 6px 16px rgba(0,0,0,.60); }
+}
+
+/* Cursor sheen — the surface notices light before touch */
+.lv-btn::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+
+/* Spectrum soul — the color sleeping inside, breathing at rest */
+.lv-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-btn .lv-label svg { width: 18px; height: 18px; }
+
+/* Aware — the button wakes as you approach (set by living.js, 160px) */
+.lv-wrap.lv-aware .lv-btn {
+  animation: none;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.58),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    inset 0 -16px 30px rgba(0,0,0,.48),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 0 0 1px rgba(var(--lv-accent-rgb),.16),
+    0 26px 52px rgba(0,0,0,.87),
+    0 8px 18px rgba(0,0,0,.62);
+}
+
+/* Hover / focus — LIGHT UP, don't glow out. Edge fire stays at the border. */
+.lv-btn:hover, .lv-btn:focus-visible {
+  animation: none;
+  transform: translateY(-3px) scale(1.012);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.66),
+    inset 0 -16px 30px rgba(0,0,0,.42),
+    inset 0 12px 22px rgba(255,255,255,.10),
+    inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85),
+    0 0 22px -4px rgba(var(--lv-accent-rgb),.50),
+    0 32px 60px rgba(0,0,0,.88),
+    0 10px 22px rgba(0,0,0,.62);
+}
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+
+/* Press — compress like something real. Inner shadows deepen. */
+.lv-btn:active {
+  transform: translateY(1px) scale(.97) !important;
+  transition-duration: .08s;
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.48),
+    inset 0 4px 14px rgba(0,0,0,.85),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(0,0,0,.30),
+    0 10px 24px rgba(0,0,0,.78);
+}
+.lv-btn:active::after { opacity: .35; }
+
+.lv-btn:disabled {
+  opacity: .55; cursor: not-allowed; animation: none;
+  transform: none !important;
+}
+
+/* Sizes */
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-sm { min-height: 44px; padding: 0 22px; font-size: 13px; gap: 8px; }
+
+/* Danger — NO red glow on hover. Darker black, more depth instead. */
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover, .lv-btn--danger:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%),
+    linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.55),
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -1px 0 rgba(0,0,0,.85),
+    inset 0 -20px 36px rgba(0,0,0,.70),
+    inset 0 6px 18px rgba(0,0,0,.40),
+    0 32px 60px rgba(0,0,0,.92),
+    0 10px 22px rgba(0,0,0,.66);
+}
+
+/* ---------- LIVING BOARD ---------- */
+.lv-board {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: 22px; padding: 28px;
+  background: linear-gradient(180deg, #121217 0%, #070709 100%);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45);
+  transition: transform .28s var(--lv-ease), box-shadow .38s var(--lv-ease), border-color .3s ease;
+  animation: lv-board-breathe 8s ease-in-out infinite;
+}
+@keyframes lv-board-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.20),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 34px -10px rgba(var(--lv-accent-rgb),.36),
+    0 28px 64px rgba(0,0,0,.62),
+    0 8px 20px rgba(0,0,0,.45); }
+}
+/* Cursor light washing the board's surface */
+.lv-board::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: 0; transition: opacity .45s ease;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,20%),
+    rgba(255,255,255,.07), transparent 65%);
+}
+.lv-board.lv-aware::after, .lv-board:hover::after { opacity: 1; }
+/* Faint accent wash inside — light up, not glow out */
+.lv-board::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90% 60% at 50% 0%, rgba(var(--lv-accent-rgb),.10), transparent 70%);
+  opacity: .7; transition: opacity .4s ease;
+}
+.lv-board.lv-aware, .lv-board:hover {
+  animation: none;
+  transform: translateY(-4px);
+  border-color: rgba(var(--lv-accent-rgb),.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.38),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -18px 36px rgba(0,0,0,.40),
+    0 0 34px -6px rgba(var(--lv-accent-rgb),.45),
+    0 36px 80px rgba(0,0,0,.70),
+    0 12px 26px rgba(0,0,0,.50);
+}
+.lv-board.lv-aware::before, .lv-board:hover::before { opacity: 1; }
+.lv-board h3 { color: #f6f5ef; font-size: 20px; margin: 0 0 10px; letter-spacing: .02em; }
+.lv-board p { color: rgba(246,245,239,.78); font-size: 16px; line-height: 1.6; margin: 0; }
+
+/* Ambient wash — the page itself receives the button's light */
+.lv-ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: opacity .6s ease;
+  background: radial-gradient(640px circle at var(--lx,50%) var(--ly,40%),
+    rgba(var(--lv-wash-rgb,160,107,255),.075), transparent 70%);
+}
+body.lv-lit .lv-ambient { opacity: 1; }
+
+/* Reduced motion — still, honest, deep */
+@media (prefers-reduced-motion: reduce) {
+  .lv-btn, .lv-board { animation: none !important; }
+  .lv-btn::after { animation: none; opacity: .14; }
+  .lv-aura { display: none; }
+}
+
 
 /* ============ CODE BLOCKS ============ */
 pre.code {
@@ -269,7 +453,7 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
 @media (max-width: 640px) {
   .hero h1 { font-size: 42px; }
   h2 { font-size: 30px; }
-  .living-btn { min-width: 100%; }
+  .lv-wrap { min-width: 100%; } .lv-wrap .lv-btn { width: 100%; }
   .hero-buttons { flex-direction: column; }
 }
 
@@ -300,18 +484,18 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
   <p class="spectrum-label">Magenta → Purple → Blue → Green → Gold</p>
   <div style="height:56px"></div>
   <div class="hero-buttons">
-    <button class="living-btn" data-spectrum="magenta" onclick="document.getElementById('buttons').scrollIntoView({behavior:'smooth'})">
-      <span class="btn-glow"></span>
-      <span class="btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
-    </button>
-    <button class="living-btn" data-spectrum="purple" onclick="document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})">
-      <span class="btn-glow"></span>
-      <span class="btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="8"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
-    </button>
-    <button class="living-btn" data-spectrum="blue" onclick="document.getElementById('laws').scrollIntoView({behavior:'smooth'})">
-      <span class="btn-glow"></span>
-      <span class="btn-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
-    </button>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255" onclick="document.getElementById('buttons').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255" onclick="document.getElementById('smarttabs').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255" onclick="document.getElementById('laws').scrollIntoView({behavior:'smooth'})">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
+    </button></span>
   </div>
   <p class="micro btn-note">These three buttons are the standard. Living depth. Lit at rest. Ignite on touch.<br>Every button you ever build starts here.</p>
   <nav class="toc">
@@ -324,57 +508,361 @@ footer .spectrum-bar { max-width: 320px; margin-bottom: 20px; }
 <!-- ================= THE THREE BUTTONS ================= -->
 <section id="buttons">
   <p class="kicker">01 · The standard-bearers</p>
-  <h2><span class="n">01</span>Three buttons. This is the bar.</h2>
-  <p class="lede">Before anything else: <strong>buttons are alive.</strong> Black heart. White voice. Visible skin. At rest they breathe — a quiet glow, a light that sweeps across on its own rhythm. On hover they rise and ignite in their own spectrum color. On press they compress like something real. If your button doesn't do this, it isn't a Naya button.</p>
+  <h2><span class="n">01</span>Living buttons. This is the bar.</h2>
+  <p class="lede">A living thing notices you before you touch it. These buttons are dark, luminous substance — polished obsidian with light trapped inside. At rest they breathe, a quiet hint of their spectrum color. As your cursor approaches they wake. On hover they light up from within. Their light falls on the page around them. If your button doesn't do this, it isn't a Naya button.</p>
 
   <div class="callout">
-    <p><strong>The anatomy of living depth.</strong> Five layers, no shortcuts: (1) the black-heart gradient — never flat black, always a deep gradient with life in it; (2) the white rim — 1.7px, visible at rest, the "skin" you can see before you touch; (3) the inset top highlight — light catching an edge, this is what makes it 3D; (4) the inset bottom shadow — weight, gravity, the object sits IN the page; (5) the drop shadow — elevation, it floats above the field. Then motion: breathe at rest, sweep on rhythm, ignite on hover, compress on press.</p>
+    <p><strong>The six laws of living.</strong> (1) <strong>Dark heart</strong> — deep black gradient, never flat. Depth you can feel. (2) <strong>Cursor as light source</strong> — the surface responds to pointer position like polished stone. (3) <strong>Spectrum soul</strong> — each button holds its color inside: breathing hint at rest, awakening on approach, full ignition on hover. (4) <strong>Physical press</strong> — inner shadows deepen, like pressing something real. (5) <strong>Cast light</strong> — the button's glow falls on surrounding elements. (6) <strong>Breathe</strong> — a living pulse, never a dead loop. And the standing law over all of it: <strong>light up, don't glow out.</strong> Depth through layers, elevation, cleanness — not neon.</p>
   </div>
 
-  <div class="code-head"><span class="micro">Copy this — the living button</span><button class="copy-btn" onclick="copyCode('livingCss')">Copy CSS</button></div>
-<pre class="code" id="livingCss"><span class="cm">/* THE LIVING BUTTON — copy this verbatim. This is the standard. */</span>
-.living-btn {
-  position: relative; overflow: hidden; cursor: pointer;
-  font-weight: 800; font-size: 17px; letter-spacing: .12em; color: #fff;
-  padding: 22px 44px; border-radius: 999px;
-  <span class="cm">/* Layer 1: the black heart — gradient, never flat */</span>
-  background: linear-gradient(180deg, #17171c 0%, #050505 55%, #0a0a0e 100%);
-  <span class="cm">/* Layers 2–5: skin, bevel, weight, elevation */</span>
+  <h3 style="font-size:24px; margin:36px 0 8px;">The three heroes</h3>
+  <p>Magenta, purple, blue — the spectrum leading edge. Move your cursor near them. Watch them wake before you arrive.</p>
+  <div class="btn-row" style="margin:26px 0 10px;">
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M8 12h8"/></svg>SEE IT WORKING</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-hero" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+      <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
+    </button></span>
+  </div>
+
+  <h3 style="font-size:24px; margin:40px 0 8px;">Every size, one soul</h3>
+  <p>Same DNA at every scale. <span style="font-family:monospace">lv-hero</span> for flagships, default for interfaces, <span style="font-family:monospace">lv-sm</span> for density. Danger gets darker black and more depth — never a red glow.</p>
+  <div class="btn-row" style="margin:26px 0 10px;">
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158">
+      <span class="lv-label">JOINED</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-sm" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61">
+      <span class="lv-label">VIEW LEDGER</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn lv-btn--danger">
+      <span class="lv-label">DELETE</span>
+    </button></span>
+    <span class="lv-wrap"><span class="lv-aura" aria-hidden="true"></span>
+    <button class="lv-btn" disabled>
+      <span class="lv-label">DISABLED</span>
+    </button></span>
+  </div>
+  <p class="micro" style="margin-top:6px">States, left to right: standard · compact · danger (depth, not alarm) · disabled (honest about it).</p>
+
+  <div class="code-head"><span class="micro">Copy this — the living system CSS</span><button class="copy-btn" onclick="copyCode('livingCss')">Copy CSS</button></div>
+<pre class="code" id="livingCss">/* ==========================================================================
+   THE LIVING SYSTEM — Naya buttons &amp; boards
+   Law: no flat elements. Everything has depth. Everything responds.
+   &quot;Light up, don&#x27;t glow out.&quot; — depth through layers, not neon.
+   Copy this file verbatim. Set --lv-accent / --lv-accent-rgb per element.
+   ========================================================================== */
+
+:root {
+  --lv-ease: cubic-bezier(.22,1,.36,1);
+  --lv-snap: cubic-bezier(.32,.72,0,1);
+}
+
+/* ---------- LIVING BUTTON ---------- */
+.lv-wrap { position: relative; display: inline-block; }
+.lv-wrap.block { display: block; }
+
+.lv-aura {
+  position: absolute; inset: -70px; border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--lv-accent-rgb,160,107,255),.20) 0%, rgba(var(--lv-accent-rgb,160,107,255),.06) 45%, transparent 70%);
+  filter: blur(14px); opacity: 0; pointer-events: none;
+  transition: opacity .55s ease;
+}
+.lv-wrap.lv-aware .lv-aura { opacity: .55; }
+.lv-wrap:hover .lv-aura, .lv-wrap:focus-within .lv-aura { opacity: 1; }
+
+.lv-btn {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 52px; padding: 0 30px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #f6f5ef;
+  text-shadow: 0 -1px 1px rgba(0,0,0,.85), 0 1px 3px rgba(0,0,0,.6);
+  /* Dark heart: sheen over deep black gradient — never flat */
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.02) 38%, rgba(0,0,0,.22) 100%),
+    linear-gradient(180deg, #26262e 0%, #0b0b0f 52%, #020203 100%);
+  /* Seven layers: skin, top light, bottom line, weight, inner glow, elevation, contact */
   box-shadow:
-    inset 0 0 0 1.7px rgba(255,255,255,.92),  <span class="cm">/* visible skin */</span>
-    inset 0 2px 6px rgba(255,255,255,.22),    <span class="cm">/* top bevel: light catches edge */</span>
-    inset 0 -8px 18px rgba(0,0,0,.75),        <span class="cm">/* bottom weight: gravity */</span>
-    0 14px 40px rgba(0,0,0,.6),               <span class="cm">/* elevation */</span>
-    0 4px 14px rgba(0,0,0,.5);
-  animation: idleBreathe 4.2s ease-in-out infinite;  <span class="cm">/* alive at rest */</span>
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60);
+  transition: transform .22s var(--lv-ease), box-shadow .38s var(--lv-ease), background .3s ease;
+  animation: lv-breathe 7s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
 }
-<span class="cm">/* The light sweep — a shine crossing on its own rhythm */</span>
-.living-btn::after {
-  content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
-  background: linear-gradient(105deg, transparent 20%,
-    rgba(255,255,255,.34) 50%, transparent 80%);
-  transform: skewX(-18deg);
-  animation: sweep 5.5s cubic-bezier(.22,1,.36,1) infinite;
+@keyframes lv-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.40),
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.05),
+    0 22px 46px rgba(0,0,0,.85),
+    0 6px 16px rgba(0,0,0,.60); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.46),
+    inset 0 1px 0 rgba(255,255,255,.52),
+    inset 0 -1px 0 rgba(0,0,0,.75),
+    inset 0 -16px 30px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 24px 50px rgba(0,0,0,.88),
+    0 6px 16px rgba(0,0,0,.60); }
 }
-<span class="cm">/* Hover: rise + ignite in own spectrum color */</span>
-.living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
-<span class="cm">/* Press: compress like something real */</span>
-.living-btn:active { transform: translateY(1px) scale(.975); }</pre>
 
-  <h3 style="font-size:24px; margin:40px 0 8px;">The working button — <span style="font-family:Inter">.primo</span></h3>
-  <p>For every interface, every day. Same DNA as the living button, tuned for density. Set <span style="font-family:monospace">--glow</span> to the context's spectrum color — the button ignites in the color of what it belongs to.</p>
-  <div class="btn-row">
-    <button class="primo theme-magenta">✉&nbsp; WRITE MAIL</button>
-    <button class="primo theme-purple">＋&nbsp; ADD CONNECTION</button>
-    <button class="primo theme-blue">→&nbsp; OPEN REPORT</button>
-    <button class="primo theme-green">✓&nbsp; JOINED</button>
-    <button class="primo theme-gold">◈&nbsp; VIEW LEDGER</button>
-  </div>
-  <div class="btn-state-grid">
-    <div class="btn-state"><button class="primo">HOVER ME</button><p class="micro">IDLE — white rim visible. Quiet.</p></div>
-    <div class="btn-state"><button class="primo theme-purple" disabled>DISABLED</button><p class="micro">DISABLED — 60% opacity. Honest about it.</p></div>
-  </div>
-  <p class="micro" style="margin-top:20px">Law: a button reads as a button before it is touched. The glyph is a promise — it shows what happens.</p>
+/* Cursor sheen — the surface notices light before touch */
+.lv-btn::before {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(180px circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.14), rgba(255,255,255,.03) 42%, transparent 68%);
+}
+.lv-wrap.lv-aware .lv-btn::before { opacity: 1; }
+
+/* Spectrum soul — the color sleeping inside, breathing at rest */
+.lv-btn::after {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 60%, rgba(var(--lv-accent-rgb),.34), rgba(var(--lv-accent-rgb),.08) 55%, transparent 80%);
+  opacity: .10; transition: opacity .45s ease;
+  animation: lv-soul 7s ease-in-out infinite;
+}
+@keyframes lv-soul { 0%,100% { opacity: .08; } 50% { opacity: .16; } }
+.lv-wrap.lv-aware .lv-btn::after { opacity: .30; animation: none; }
+
+.lv-btn .lv-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+.lv-btn .lv-label svg { width: 18px; height: 18px; }
+
+/* Aware — the button wakes as you approach (set by living.js, 160px) */
+.lv-wrap.lv-aware .lv-btn {
+  animation: none;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.58),
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 -1px 0 rgba(0,0,0,.70),
+    inset 0 -16px 30px rgba(0,0,0,.48),
+    inset 0 12px 22px rgba(255,255,255,.08),
+    0 0 0 1px rgba(var(--lv-accent-rgb),.16),
+    0 26px 52px rgba(0,0,0,.87),
+    0 8px 18px rgba(0,0,0,.62);
+}
+
+/* Hover / focus — LIGHT UP, don&#x27;t glow out. Edge fire stays at the border. */
+.lv-btn:hover, .lv-btn:focus-visible {
+  animation: none;
+  transform: translateY(-3px) scale(1.012);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.04) 38%, rgba(0,0,0,.18) 100%),
+    linear-gradient(180deg, #2e2e38 0%, #101016 52%, #060608 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.72),
+    inset 0 1px 0 rgba(255,255,255,.62),
+    inset 0 -1px 0 rgba(0,0,0,.66),
+    inset 0 -16px 30px rgba(0,0,0,.42),
+    inset 0 12px 22px rgba(255,255,255,.10),
+    inset 0 0 0 1.5px rgba(var(--lv-accent-rgb),.85),
+    0 0 22px -4px rgba(var(--lv-accent-rgb),.50),
+    0 32px 60px rgba(0,0,0,.88),
+    0 10px 22px rgba(0,0,0,.62);
+}
+.lv-btn:hover::after, .lv-btn:focus-visible::after { opacity: .55; animation: none; }
+.lv-btn:hover::before, .lv-btn:focus-visible::before { opacity: 1; }
+.lv-btn:focus-visible { outline: 2px solid rgba(255,255,255,.92); outline-offset: 3px; }
+
+/* Press — compress like something real. Inner shadows deepen. */
+.lv-btn:active {
+  transform: translateY(1px) scale(.97) !important;
+  transition-duration: .08s;
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.48),
+    inset 0 4px 14px rgba(0,0,0,.85),
+    inset 0 -4px 10px rgba(0,0,0,.55),
+    inset 0 12px 22px rgba(0,0,0,.30),
+    0 10px 24px rgba(0,0,0,.78);
+}
+.lv-btn:active::after { opacity: .35; }
+
+.lv-btn:disabled {
+  opacity: .55; cursor: not-allowed; animation: none;
+  transform: none !important;
+}
+
+/* Sizes */
+.lv-hero { min-height: 68px; padding: 0 54px; font-size: 18px; }
+.lv-sm { min-height: 44px; padding: 0 22px; font-size: 13px; gap: 8px; }
+
+/* Danger — NO red glow on hover. Darker black, more depth instead. */
+.lv-btn--danger { --lv-accent: #ff5e6c; --lv-accent-rgb: 255,94,108; }
+.lv-btn--danger:hover, .lv-btn--danger:focus-visible {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.01) 40%, rgba(0,0,0,.35) 100%),
+    linear-gradient(180deg, #101014 0%, #050506 55%, #000000 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(240,238,230,.55),
+    inset 0 1px 0 rgba(255,255,255,.35),
+    inset 0 -1px 0 rgba(0,0,0,.85),
+    inset 0 -20px 36px rgba(0,0,0,.70),
+    inset 0 6px 18px rgba(0,0,0,.40),
+    0 32px 60px rgba(0,0,0,.92),
+    0 10px 22px rgba(0,0,0,.66);
+}
+
+/* ---------- LIVING BOARD ---------- */
+.lv-board {
+  --lv-accent: #a06bff;
+  --lv-accent-rgb: 160,107,255;
+  position: relative; isolation: isolate; overflow: hidden;
+  border-radius: 22px; padding: 28px;
+  background: linear-gradient(180deg, #121217 0%, #070709 100%);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45);
+  transition: transform .28s var(--lv-ease), box-shadow .38s var(--lv-ease), border-color .3s ease;
+  animation: lv-board-breathe 8s ease-in-out infinite;
+}
+@keyframes lv-board-breathe {
+  0%,100% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.14),
+    inset 0 1px 0 rgba(255,255,255,.09),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 30px -10px rgba(var(--lv-accent-rgb),.28),
+    0 26px 60px rgba(0,0,0,.60),
+    0 8px 20px rgba(0,0,0,.45); }
+  50% { box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.20),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -18px 36px rgba(0,0,0,.45),
+    0 0 34px -10px rgba(var(--lv-accent-rgb),.36),
+    0 28px 64px rgba(0,0,0,.62),
+    0 8px 20px rgba(0,0,0,.45); }
+}
+/* Cursor light washing the board&#x27;s surface */
+.lv-board::after {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: 0; transition: opacity .45s ease;
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,20%),
+    rgba(255,255,255,.07), transparent 65%);
+}
+.lv-board.lv-aware::after, .lv-board:hover::after { opacity: 1; }
+/* Faint accent wash inside — light up, not glow out */
+.lv-board::before {
+  content: &quot;&quot;; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(90% 60% at 50% 0%, rgba(var(--lv-accent-rgb),.10), transparent 70%);
+  opacity: .7; transition: opacity .4s ease;
+}
+.lv-board.lv-aware, .lv-board:hover {
+  animation: none;
+  transform: translateY(-4px);
+  border-color: rgba(var(--lv-accent-rgb),.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--lv-accent-rgb),.38),
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -18px 36px rgba(0,0,0,.40),
+    0 0 34px -6px rgba(var(--lv-accent-rgb),.45),
+    0 36px 80px rgba(0,0,0,.70),
+    0 12px 26px rgba(0,0,0,.50);
+}
+.lv-board.lv-aware::before, .lv-board:hover::before { opacity: 1; }
+.lv-board h3 { color: #f6f5ef; font-size: 20px; margin: 0 0 10px; letter-spacing: .02em; }
+.lv-board p { color: rgba(246,245,239,.78); font-size: 16px; line-height: 1.6; margin: 0; }
+
+/* Ambient wash — the page itself receives the button&#x27;s light */
+.lv-ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0;
+  transition: opacity .6s ease;
+  background: radial-gradient(640px circle at var(--lx,50%) var(--ly,40%),
+    rgba(var(--lv-wash-rgb,160,107,255),.075), transparent 70%);
+}
+body.lv-lit .lv-ambient { opacity: 1; }
+
+/* Reduced motion — still, honest, deep */
+@media (prefers-reduced-motion: reduce) {
+  .lv-btn, .lv-board { animation: none !important; }
+  .lv-btn::after { animation: none; opacity: .14; }
+  .lv-aura { display: none; }
+}
+</pre>
+
+  <div class="code-head"><span class="micro">Copy this — the living system JS (once per page)</span><button class="copy-btn" onclick="copyCode('livingJs')">Copy JS</button></div>
+<pre class="code" id="livingJs">/* living.js — proximity awareness (include once per page) */
+(function () {
+  &#x27;use strict&#x27;;
+  if (window.matchMedia &amp;&amp; window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches) return;
+  var els = Array.prototype.slice.call(document.querySelectorAll(&#x27;.lv-btn, .lv-board&#x27;));
+  if (!els.length) return;
+  var ambient = document.createElement(&#x27;div&#x27;);
+  ambient.className = &#x27;lv-ambient&#x27;; ambient.setAttribute(&#x27;aria-hidden&#x27;, &#x27;true&#x27;);
+  document.body.appendChild(ambient);
+  var raf = null, lastX = -9999, lastY = -9999;
+  function accentOf(el) {
+    var wrap = el.closest(&#x27;.lv-wrap&#x27;);
+    var rgb = getComputedStyle(wrap || el).getPropertyValue(&#x27;--lv-accent-rgb&#x27;).trim();
+    return rgb || &#x27;160,107,255&#x27;;
+  }
+  function update() {
+    raf = null; var lit = false, best = null, bestDist = 1e9;
+    for (var i = 0; i &lt; els.length; i++) {
+      var el = els[i];
+      var wrap = el.classList.contains(&#x27;lv-btn&#x27;) ? (el.closest(&#x27;.lv-wrap&#x27;) || el) : el;
+      if (el.disabled) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom &lt; -180 || r.top &gt; window.innerHeight + 180) { wrap.classList.remove(&#x27;lv-aware&#x27;); continue; }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      var aware = dist &lt; 160;
+      if (aware !== wrap.classList.contains(&#x27;lv-aware&#x27;)) wrap.classList.toggle(&#x27;lv-aware&#x27;, aware);
+      if (aware || el.matches(&#x27;:hover&#x27;)) {
+        el.style.setProperty(&#x27;--mx&#x27;, ((lastX - r.left) / Math.max(r.width,1) * 100).toFixed(1) + &#x27;%&#x27;);
+        el.style.setProperty(&#x27;--my&#x27;, ((lastY - r.top) / Math.max(r.height,1) * 100).toFixed(1) + &#x27;%&#x27;);
+      }
+      if (aware &amp;&amp; dist &lt; bestDist) { bestDist = dist; best = el; }
+      if (el.matches(&#x27;:hover&#x27;)) { best = el; lit = true; }
+    }
+    if (best) { lit = true;
+      document.documentElement.style.setProperty(&#x27;--lv-wash-rgb&#x27;, accentOf(best));
+      document.documentElement.style.setProperty(&#x27;--lx&#x27;, lastX + &#x27;px&#x27;);
+      document.documentElement.style.setProperty(&#x27;--ly&#x27;, lastY + &#x27;px&#x27;); }
+    document.body.classList.toggle(&#x27;lv-lit&#x27;, lit);
+  }
+  document.addEventListener(&#x27;pointermove&#x27;, function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+})();</pre>
+
+  <div class="code-head"><span class="micro">Copy this — one living button</span><button class="copy-btn" onclick="copyCode('livingBtn')">Copy HTML</button></div>
+<pre class="code" id="livingBtn">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn lv-hero&quot; style=&quot;--lv-accent:#e84fff;--lv-accent-rgb:232,79,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;ENTER THE STANDARD&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+
+  <p class="micro" style="margin-top:20px">Law: a button reads as a button before it is touched. Any board or button that's not alive, doesn't respond on hover, doesn't have depth — is no good. All buttons, all boards, all the time.</p>
 </section>
 
 <!-- ================= SMART TABS ================= -->
@@ -700,6 +1188,96 @@ document.getElementById('jewelRow').innerHTML = SPECTRUM.map(s =>
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanels(); });
   render();
 })();
+</script>
+<script>
+/* ==========================================================================
+   LIVING.JS — proximity awareness for the living system
+   One system, no forks. Buttons AND boards share it.
+   - 160px proximity → .lv-aware (wake up before touch)
+   - --mx/--my → cursor light position on the element
+   - --lx/--ly + body.lv-lit → the page receives the element's light
+   ========================================================================== */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var els = Array.prototype.slice.call(document.querySelectorAll('.lv-btn, .lv-board'));
+  if (!els.length) return;
+
+  /* ambient wash layer — the page catching the light */
+  var ambient = document.createElement('div');
+  ambient.className = 'lv-ambient';
+  ambient.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ambient);
+
+  var raf = null, lastX = -9999, lastY = -9999;
+
+  function accentOf(el) {
+    var wrap = el.closest('.lv-wrap');
+    var src = wrap || el;
+    var rgb = getComputedStyle(src).getPropertyValue('--lv-accent-rgb').trim();
+    return rgb || '160,107,255';
+  }
+
+  function update() {
+    raf = null;
+    var lit = false, best = null, bestDist = 1e9;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      if (el.disabled) continue;
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -180 || r.top > window.innerHeight + 180) {
+        wrap.classList.remove('lv-aware'); continue;
+      }
+      var dx = Math.max(r.left - lastX, 0, lastX - r.right);
+      var dy = Math.max(r.top - lastY, 0, lastY - r.bottom);
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var aware = dist < 160;
+      var was = wrap.classList.contains('lv-aware');
+      if (aware !== was) wrap.classList.toggle('lv-aware', aware);
+      if (aware || el.matches(':hover')) {
+        var mx = ((lastX - r.left) / Math.max(r.width, 1) * 100);
+        var my = ((lastY - r.top) / Math.max(r.height, 1) * 100);
+        el.style.setProperty('--mx', mx.toFixed(1) + '%');
+        el.style.setProperty('--my', my.toFixed(1) + '%');
+      }
+      if (aware && dist < bestDist) { bestDist = dist; best = el; }
+      if (el.matches(':hover')) { best = el; bestDist = -1; lit = true; }
+    }
+    if (best) {
+      lit = true;
+      document.documentElement.style.setProperty('--lv-wash-rgb', accentOf(best));
+      document.documentElement.style.setProperty('--lx', lastX + 'px');
+      document.documentElement.style.setProperty('--ly', lastY + 'px');
+    }
+    document.body.classList.toggle('lv-lit', lit);
+  }
+
+  document.addEventListener('pointermove', function (e) {
+    lastX = e.clientX; lastY = e.clientY;
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+
+  document.addEventListener('pointerleave', function () {
+    lastX = -9999; lastY = -9999;
+    els.forEach(function (el) {
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      wrap.classList.remove('lv-aware');
+    });
+    document.body.classList.remove('lv-lit');
+  });
+
+  /* touch: brief wake flash */
+  els.forEach(function (el) {
+    el.addEventListener('touchstart', function () {
+      var wrap = el.classList.contains('lv-btn') ? (el.closest('.lv-wrap') || el) : el;
+      wrap.classList.add('lv-aware');
+      setTimeout(function () { wrap.classList.remove('lv-aware'); }, 600);
+    }, { passive: true });
+  });
+})();
+
 </script>
 </body>
 </html>

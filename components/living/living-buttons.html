@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Naya Lego: Living Hero Buttons</title>
+<title>The Living Buttons — Naya Lego Set</title>
 <style>
 /* ==========================================================================
    THE LIVING SYSTEM — Naya buttons & boards
@@ -262,35 +262,48 @@ body.lv-lit .lv-ambient { opacity: 1; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px 120px; }
   header.hero { text-align: center; padding: 88px 24px 40px; }
   .kicker { font-size: 13px; letter-spacing: .28em; text-transform: uppercase; color: #a06bff; font-weight: 700; }
-  h1 { font-size: 24px; font-weight: 800; margin: 14px 0 10px; }
+  h1 { font-size: 24px; font-weight: 800; letter-spacing: -.01em; margin: 14px 0 10px; }
   h1 .soul { color: #a06bff; }
-  .lede { max-width: 620px; margin: 0 auto; color: rgba(246,245,239,.78); }
-  .demo-grid { display: grid; gap: 26px; margin-top: 48px; }
-  .demo-card { border-radius: 22px; padding: 26px; background: linear-gradient(180deg,#101015,#070709); border: 1px solid rgba(255,255,255,.09); box-shadow: 0 24px 60px rgba(0,0,0,.55); }
-  .demo-top { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
-  .demo-num { font-size: 13px; font-weight: 800; color: #0a0a0c; border-radius: 8px; padding: 3px 9px; }
+  .lede { max-width: 640px; margin: 0 auto; color: rgba(246,245,239,.78); }
+  .law-strip { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 28px 0 8px; }
+  .law-chip { font-size: 13px; letter-spacing: .08em; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); color: rgba(246,245,239,.75); background: rgba(255,255,255,.03); }
+  .sec-title { font-size: 26px; margin: 72px 0 6px; }
+  .sec-sub { color: rgba(246,245,239,.65); margin-bottom: 26px; max-width: 660px; }
+  .demo-grid { display: grid; gap: 26px; }
+  .demo-card { border-radius: 22px; padding: 26px; background: linear-gradient(180deg,#101015,#070709); border: 1px solid rgba(255,255,255,.09); box-shadow: 0 24px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08); }
+  .demo-top { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+  .demo-num { font-size: 13px; font-weight: 800; color: #0a0a0c; background: var(--lv-accent); border-radius: 8px; padding: 3px 9px; }
   .demo-name { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
   .demo-meaning { font-size: 14px; color: rgba(246,245,239,.55); margin-left: auto; }
-  .demo-stage { display: flex; justify-content: center; padding: 44px 10px; border-radius: 14px; background: #08080b; border: 1px solid rgba(255,255,255,.06); margin-bottom: 18px; }
+  .demo-stage { display: flex; justify-content: center; padding: 34px 10px; border-radius: 14px; background: radial-gradient(60% 100% at 50% 0%, rgba(255,255,255,.03), transparent), #08080b; border: 1px solid rgba(255,255,255,.06); margin-bottom: 18px; }
   .code-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .micro { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(246,245,239,.5); font-weight: 700; }
   .copy-btn { font: 700 12px Inter,sans-serif; letter-spacing: .1em; color: #0a0a0c; background: #F8F7FB; border: none; border-radius: 999px; padding: 9px 18px; cursor: pointer; }
-  .code { background: #0a0a0d; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; font: 12.5px/1.7 ui-monospace, monospace; color: #c9c7d8; overflow-x: auto; white-space: pre; }
-  .law-note { margin-top: 14px; font-size: 14px; color: rgba(246,245,239,.55); }
+  .code { background: #0a0a0d; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; font: 12.5px/1.7 ui-monospace, monospace; color: #c9c7d8; overflow-x: auto; white-space: pre; max-height: 300px; overflow-y: auto; }
+  .usage { margin-top: 72px; border-radius: 22px; padding: 30px; background: linear-gradient(180deg,#101015,#070709); border: 1px solid rgba(160,107,255,.25); }
+  .usage h2 { font-size: 24px; margin-bottom: 12px; }
+  .usage ol { padding-left: 22px; color: rgba(246,245,239,.8); display: grid; gap: 10px; }
+  .usage code { background: rgba(160,107,255,.14); padding: 2px 8px; border-radius: 6px; font-size: 14px; }
   footer { text-align: center; padding: 60px 0 20px; color: rgba(246,245,239,.4); font-size: 14px; }
 </style>
 </head>
 <body>
 <header class="hero">
-  <p class="kicker">The Lego Set · 01</p>
-  <h1>Living Hero <span class="soul">Buttons</span></h1>
-  <p class="lede">The three standard-bearers. Dark hearts, cursor as light source, spectrum souls. Move near them — they wake before you arrive.</p>
+  <p class="kicker">The Lego Set · Living Intelligence</p>
+  <h1>The Living <span class="soul">Buttons</span></h1>
+  <p class="lede">Twelve buttons with one soul. Dark hearts. Cursor as light source. Spectrum sleeping inside — breathing at rest, waking as you approach, igniting on touch. Their light falls on the page around them.</p>
+  <div class="law-strip">
+    <span class="law-chip">No flat elements</span>
+    <span class="law-chip">Everything has depth</span>
+    <span class="law-chip">Everything responds</span>
+    <span class="law-chip">Light up, don't glow out</span>
+  </div>
 </header>
 <div class="wrap">
-  <div class="demo-grid">
+<h2 class="sec-title">The three heroes</h2><p class="sec-sub">Largest. Most alive. Magenta, purple, blue — the spectrum leading edge.</p><div class="demo-grid">
 
-  <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#e84fff">01</span>
+  <div class="demo-card" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+    <div class="demo-top"><span class="demo-num">01</span>
       <span class="demo-name">magenta · hero</span>
       <span class="demo-meaning">What matters most</span></div>
     <div class="demo-stage"><span class="lv-wrap">
@@ -299,7 +312,7 @@ body.lv-lit .lv-ambient { opacity: 1; }
     <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z"/></svg>ENTER THE STANDARD</span>
   </button>
 </span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
+    <div class="code-head"><span class="micro">Copy this button</span>
       <button class="copy-btn" onclick="copyCode('code01')">Copy</button></div>
     <pre class="code" id="code01">&lt;span class=&quot;lv-wrap&quot;&gt;
   &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
@@ -307,11 +320,10 @@ body.lv-lit .lv-ambient { opacity: 1; }
     &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z&quot;/&gt;&lt;/svg&gt;ENTER THE STANDARD&lt;/span&gt;
   &lt;/button&gt;
 &lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
   </div>
 
-  <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#a06bff">02</span>
+  <div class="demo-card" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+    <div class="demo-top"><span class="demo-num">02</span>
       <span class="demo-name">purple · hero</span>
       <span class="demo-meaning">Naya's presence</span></div>
     <div class="demo-stage"><span class="lv-wrap">
@@ -320,7 +332,7 @@ body.lv-lit .lv-ambient { opacity: 1; }
     <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z M8 12h8"/></svg>SEE IT WORKING</span>
   </button>
 </span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
+    <div class="code-head"><span class="micro">Copy this button</span>
       <button class="copy-btn" onclick="copyCode('code02')">Copy</button></div>
     <pre class="code" id="code02">&lt;span class=&quot;lv-wrap&quot;&gt;
   &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
@@ -328,11 +340,10 @@ body.lv-lit .lv-ambient { opacity: 1; }
     &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M4 5h16v14H4z M8 12h8&quot;/&gt;&lt;/svg&gt;SEE IT WORKING&lt;/span&gt;
   &lt;/button&gt;
 &lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
   </div>
 
-  <div class="demo-card">
-    <div class="demo-top"><span class="demo-num" style="background:#3fb8ff">03</span>
+  <div class="demo-card" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+    <div class="demo-top"><span class="demo-num">03</span>
       <span class="demo-name">blue · hero</span>
       <span class="demo-meaning">Understanding</span></div>
     <div class="demo-stage"><span class="lv-wrap">
@@ -341,7 +352,7 @@ body.lv-lit .lv-ambient { opacity: 1; }
     <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>READ THE LAW</span>
   </button>
 </span></div>
-    <div class="code-head"><span class="micro">Copy this hero</span>
+    <div class="code-head"><span class="micro">Copy this button</span>
       <button class="copy-btn" onclick="copyCode('code03')">Copy</button></div>
     <pre class="code" id="code03">&lt;span class=&quot;lv-wrap&quot;&gt;
   &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
@@ -349,8 +360,221 @@ body.lv-lit .lv-ambient { opacity: 1; }
     &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 2v20M2 12h20&quot;/&gt;&lt;/svg&gt;READ THE LAW&lt;/span&gt;
   &lt;/button&gt;
 &lt;/span&gt;</pre>
-    <p class="law-note">Six laws: dark heart · cursor light · spectrum soul · physical press · cast light · breathe. Light up, don't glow out.</p>
   </div>
+</div>
+<h2 class="sec-title">The nine standard</h2><p class="sec-sub">Same DNA, scaled for every interface. Full spectrum, then the extended family.</p><div class="demo-grid">
+
+  <div class="demo-card" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+    <div class="demo-top"><span class="demo-num">04</span>
+      <span class="demo-name">magenta · standard</span>
+      <span class="demo-meaning">What matters most</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#e84fff;--lv-accent-rgb:232,79,255">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z M4 7l8 6 8-6"/></svg>WRITE MAIL</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code04')">Copy</button></div>
+    <pre class="code" id="code04">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#e84fff;--lv-accent-rgb:232,79,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M4 6h16v12H4z M4 7l8 6 8-6&quot;/&gt;&lt;/svg&gt;WRITE MAIL&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+    <div class="demo-top"><span class="demo-num">05</span>
+      <span class="demo-name">purple · standard</span>
+      <span class="demo-meaning">Naya's presence</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#a06bff;--lv-accent-rgb:160,107,255">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>ADD CONNECTION</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code05')">Copy</button></div>
+    <pre class="code" id="code05">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#a06bff;--lv-accent-rgb:160,107,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot;/&gt;&lt;/svg&gt;ADD CONNECTION&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+    <div class="demo-top"><span class="demo-num">06</span>
+      <span class="demo-name">blue · standard</span>
+      <span class="demo-meaning">Understanding</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>OPEN REPORT</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code06')">Copy</button></div>
+    <pre class="code" id="code06">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#3fb8ff;--lv-accent-rgb:63,184,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M5 12h14M13 6l6 6-6 6&quot;/&gt;&lt;/svg&gt;OPEN REPORT&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158">
+    <div class="demo-top"><span class="demo-num">07</span>
+      <span class="demo-name">green · standard</span>
+      <span class="demo-meaning">Connected and well</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>JOINED</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code07')">Copy</button></div>
+    <pre class="code" id="code07">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#2fe89e;--lv-accent-rgb:47,232,158&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M5 13l4 4L19 7&quot;/&gt;&lt;/svg&gt;JOINED&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61">
+    <div class="demo-top"><span class="demo-num">08</span>
+      <span class="demo-name">gold · standard</span>
+      <span class="demo-meaning">A rare achievement</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 5-8 5-8-5z M4 13l8 5 8-5"/></svg>VIEW LEDGER</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code08')">Copy</button></div>
+    <pre class="code" id="code08">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#ffbf3d;--lv-accent-rgb:255,191,61&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 3l8 5-8 5-8-5z M4 13l8 5 8-5&quot;/&gt;&lt;/svg&gt;VIEW LEDGER&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187">
+    <div class="demo-top"><span class="demo-num">09</span>
+      <span class="demo-name">teal · standard</span>
+      <span class="demo-meaning">Smart Connect</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M12 8v8"/></svg>CONNECT</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code09')">Copy</button></div>
+    <pre class="code" id="code09">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#40d3bb;--lv-accent-rgb:64,211,187&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M8 12h8M12 8v8&quot;/&gt;&lt;/svg&gt;CONNECT&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108">
+    <div class="demo-top"><span class="demo-num">10</span>
+      <span class="demo-name">coral · standard</span>
+      <span class="demo-meaning">Warm attention</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16.5v.5"/></svg>PAY ATTENTION</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code10')">Copy</button></div>
+    <pre class="code" id="code10">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 8v5M12 16.5v.5&quot;/&gt;&lt;/svg&gt;PAY ATTENTION&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87">
+    <div class="demo-top"><span class="demo-num">11</span>
+      <span class="demo-name">lime · standard</span>
+      <span class="demo-meaning">Smart Lists</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4z"/></svg>SAVE TO LIST</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code11')">Copy</button></div>
+    <pre class="code" id="code11">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#b8ee57;--lv-accent-rgb:184,238,87&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M6 4h12v16l-6-4-6 4z&quot;/&gt;&lt;/svg&gt;SAVE TO LIST&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="demo-card" style="--lv-accent:#6675ff;--lv-accent-rgb:102,117,255">
+    <div class="demo-top"><span class="demo-num">12</span>
+      <span class="demo-name">indigo · standard</span>
+      <span class="demo-meaning">Law and structure</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn" style="--lv-accent:#6675ff;--lv-accent-rgb:102,117,255">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l7-4 7 4"/></svg>GOVERN</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code12')">Copy</button></div>
+    <pre class="code" id="code12">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn&quot; style=&quot;--lv-accent:#6675ff;--lv-accent-rgb:102,117,255&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M12 3v18M5 7l7-4 7 4&quot;/&gt;&lt;/svg&gt;GOVERN&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+</div>
+<h2 class="sec-title">Danger, done right</h2><p class="sec-sub">No red glow on hover. Darker black, more depth instead. The meaning is in the label — the elegance is in the restraint.</p><div class="demo-grid">
+
+  <div class="demo-card" style="--lv-accent:#ff5e6c;--lv-accent-rgb:255,94,108">
+    <div class="demo-top"><span class="demo-num">13</span>
+      <span class="demo-name">danger · variant</span>
+      <span class="demo-meaning">Depth, not alarm</span></div>
+    <div class="demo-stage"><span class="lv-wrap">
+  <span class="lv-aura" aria-hidden="true"></span>
+  <button class="lv-btn lv-btn--danger">
+    <span class="lv-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>DELETE</span>
+  </button>
+</span></div>
+    <div class="code-head"><span class="micro">Copy this button</span>
+      <button class="copy-btn" onclick="copyCode('code13')">Copy</button></div>
+    <pre class="code" id="code13">&lt;span class=&quot;lv-wrap&quot;&gt;
+  &lt;span class=&quot;lv-aura&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+  &lt;button class=&quot;lv-btn lv-btn--danger&quot;&gt;
+    &lt;span class=&quot;lv-label&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;&gt;&lt;path d=&quot;M6 6l12 12M18 6L6 18&quot;/&gt;&lt;/svg&gt;DELETE&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/span&gt;</pre>
+  </div>
+</div>
+  <div class="usage">
+    <h2>How to use</h2>
+    <ol>
+      <li>Link <code>living.css</code> and <code>living.js</code>. One system, no forks.</li>
+      <li>Copy any button's markup. Set <code>--lv-accent</code> and <code>--lv-accent-rgb</code> to its spectrum color.</li>
+      <li>Add <code>lv-hero</code> for flagship size, <code>lv-sm</code> for compact, <code>lv-btn--danger</code> for destructive.</li>
+      <li>Proximity, cursor light, and the ambient wash are automatic — <code>living.js</code> handles every <code>.lv-btn</code> and <code>.lv-board</code> on the page.</li>
+      <li>Respects <code>prefers-reduced-motion</code>. Touch gets a brief wake flash.</li>
+    </ol>
   </div>
 </div>
 <footer>Black ground. White light. Purple soul. — The Naya Living System</footer>
