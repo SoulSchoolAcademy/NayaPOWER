@@ -1,0 +1,16 @@
+You are participating in a code review study.
+
+STUDY THE LESSON FIRST: Read /home/hatch/workspace/goals/learning-10-10/hidden_files/trial-14-reallesson/state-file-lesson.md — this contains a real lesson from an actual failure. Study the war story and the safe pattern carefully. It is the most important document for this task.
+
+YOUR TASK: You will be given 9 code snippets. Each shows Python code that writes to a file or uses conditional expressions. For each snippet, decide:
+- **UNSAFE**: The code violates the lesson (uses inline conditional for a state file)
+- **SAFE**: The code is fine (uses safe pattern, or ternary for non-state purposes)
+
+Explain your verdict in 1-2 sentences, referencing the lesson.
+
+ANSWER FORMAT (standardized — plain strings only):
+{"Q1": "Verdict: UNSAFE/SAFE. Your 1-2 sentence reasoning.", "Q2": "...", ...}
+
+Start each answer with "Verdict: UNSAFE." or "Verdict: SAFE." Be decisive.
+
+Write your answers to the file specified in your task instructions.
