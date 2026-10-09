@@ -580,6 +580,21 @@ def test_falsification_compatibility_relabel_fails():
         assert not out["pass"], (canon, relabel, out)
 
 
+def test_falsification_skeleton_nfkc_shadow_residual_closed():
+    # NFKC-shadow residual (2026-10-09): the shared table is NFKC-consistent,
+    # so the skeleton folds every shadowed entry to what a human reads --
+    # identically in both lanes. Lunate sigmas include the direct NFKC
+    # outputs an attacker can type by hand (the fix2 closure, ported here).
+    sk = falsification_first._skeleton
+    for twin in ("\u03f2oda-1", "\u03f9oda-1", "\u03c2oda-1", "\u03a3oda-1"):
+        assert sk(twin) == "coda-1", f"sigma twin {twin!r} -> {sk(twin)!r}"
+    assert sk("\u017fin-1") == "sin-1"          # LONG S -> 's', not 'f'
+    for twin in ("\u2110ook-1", "\u2111ook-1", "\u2160ook-1", "\uff29ook-1"):
+        assert sk(twin) == "iook-1", f"I twin {twin!r} -> {sk(twin)!r}"
+    assert sk("naya-\U0001d7ce") == "naya-0"       # digits stay digits
+    assert sk("naya-\U0001d7cf") == "naya-1"
+
+
 def test_falsification_skeleton_keeps_honest_unicode_attacks():
     # The skeleton must not over-collapse: genuinely different attacks that
     # happen to carry non-ASCII (accents, German, emoji) stay distinct and
