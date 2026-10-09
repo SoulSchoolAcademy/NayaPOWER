@@ -51,8 +51,10 @@ LITERAL-FIRST REFINEMENT (Shawn, 2026-10-09 — the law's root-cause fix):
      hex letter — pure numbers stay legal), no #NNNN PR/issue refs, no
      test-count patterns (NNN passed/failed/skipped, N/M ratios), and no
      CI-state markers (CI, GitHub Actions, green/red build language).
-     A SHA in the literal layer is the law's named failure mode: "speak it
-     in words that I can't understand."
+     Chopping a SHA into sub-7-char chunks does not launder it: runs of
+     short hex tokens that reassemble to 7+ hex chars (with a digit) are
+     caught too. A SHA in the literal layer is the law's named failure
+     mode: "speak it in words that I can't understand."
   9. If full_text is provided, the literal portion (after the plain-words
      marker) gets the same purity screen — the rule is about the LAYER,
      wherever it appears, not the field.
@@ -62,6 +64,13 @@ HONEST BOUND (what this check provably does NOT do):
     true, complete, or faithful to the technical layer.
   - Readability (Flesch >= 50, checks 5-6) plus purity (checks 8-9) is a
     cheap screen against laziness and decoration, not a comprehension test.
+  - The reassembly heuristic catches runs of 2+ short (2-6 char) pure-hex
+    tokens that reassemble to 7+ hex chars with at least one digit.
+    Single-letter tokens are excluded and pure numbers stay legal, so
+    ordinary English hex-words ("beef", "face") pass. Two all-letter hex
+    words ("dead beef") are indistinguishable from English words and pass
+    by design — the screen catches exhaust a reader could mechanically
+    reassemble, not every letter arrangement.
 
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
@@ -171,6 +180,49 @@ def _literal_impurities(text: str) -> list[str]:
         m = pattern.search(text)
         if m:
             hits.append(f"{label} {m.group(0)!r}")
+    hits.extend(_reassembled_hex_hits(text))
+    return hits
+
+
+# Reassembly heuristic (hole closed 2026-10-09): a SHA chopped into
+# sub-7-char chunks stays reassembleable by any human reader — it is
+# machine exhaust whether or not it arrives in one piece. Find maximal
+# runs of 2+ consecutive short (2-6 char) pure-hex tokens; if they
+# reassemble to 7+ hex chars with at least one digit and at least one
+# hex letter, the run is flagged.
+#
+# The digit requirement and the 2-char token floor are the tuning: they
+# keep ordinary English hex-words ("beef", "face") and lone articles
+# ("a") legal, while every realistic chopped SHA (which always mixes
+# letters and digits) is caught. Pure numbers stay legal, per the law.
+# Two all-letter hex words ("dead beef") are indistinguishable from
+# English words and pass by design — documented bound, not a claim.
+_HEX_TOKEN = re.compile(r"^[0-9a-f]{2,6}$")
+
+
+def _reassembled_hex_hits(text: str) -> list[str]:
+    """Flag hex chunks that reassemble to SHA length across separators."""
+    tokens = re.findall(r"[0-9a-z]+", text.lower())
+    hits: list[str] = []
+    run: list[str] = []
+
+    def flush() -> None:
+        if len(run) >= 2:
+            joined = "".join(run)
+            if (
+                len(joined) >= 7
+                and any(c.isdigit() for c in joined)
+                and any(c in "abcdef" for c in joined)
+            ):
+                hits.append(f"reassembled SHA-like hex {' '.join(run)!r}")
+        run.clear()
+
+    for tok in tokens:
+        if _HEX_TOKEN.match(tok):
+            run.append(tok)
+        else:
+            flush()
+    flush()
     return hits
 
 

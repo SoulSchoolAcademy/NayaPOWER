@@ -68,8 +68,16 @@ PASSING_VERDICTS = {"verified", "pass", "proven", "confirmed"}
 
 
 def _norm(text: str) -> str:
-    """Fold case, punctuation, and whitespace for copy detection."""
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", "", text.lower())).strip()
+    """Fold case, punctuation, and whitespace for copy detection.
+
+    Punctuation is FOLDED to a common separator (one space), never
+    deleted. Deleting separators made 'test_x' and 'test x' normalize
+    apart — a verifier could copy the builder's snake_case battery,
+    swap separators for spaces (the most natural relabel there is),
+    and pass it off as their own attack. Folding closes that lane;
+    genuinely different inputs still normalize apart.
+    """
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", text.lower())).strip()
 
 
 def check(record: dict) -> dict:

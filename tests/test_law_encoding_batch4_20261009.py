@@ -171,6 +171,37 @@ def test_literal_first_plain_numbers_stay_legal():
     assert out["pass"], out
 
 
+def test_literal_first_chopped_sha_fails():
+    # HOLE 2 regression (2026-10-09): chopping a SHA into sub-7-char chunks
+    # does not launder it — it stays reassembleable machine exhaust, and
+    # any human reader can put it back together. The purity screen measures
+    # reassembleable exhaust, not just contiguous runs.
+    r = _base_two_layer_report()
+    r["plain_human"] = (
+        "Literally what I'm saying: the turning point arrived quietly, like "
+        "a key sliding into a lock. Think of it as commit "
+        "8ce2f fc015 f89feb af9045 52f81f — the moment everything snapped "
+        "into place for you, basically a fresh start."
+    )
+    out = two_layer.check(r)
+    assert not out["pass"], out
+    assert "reassembled" in out["reasons"][0]
+
+
+def test_literal_first_hex_words_in_prose_stay_legal():
+    # The reassembly heuristic is tuned for machine exhaust, not English:
+    # incidental hex-words ("beef", "face") carry no digits and pass.
+    # A single sub-7-char hex word alone is not flagged either.
+    r = _base_two_layer_report()
+    r["plain_human"] = (
+        "Literally what I'm saying: the kitchen is finally stocked, like a "
+        "pantry after market day. Think of it as beef and face paint at the "
+        "county fair — simply put, basically a good honest day for the crew."
+    )
+    out = two_layer.check(r)
+    assert out["pass"], out
+
+
 def test_literal_first_technicals_keep_their_exhaust():
     # The technical layer may carry SHAs/PRs/counts — purity is about the
     # LITERAL layer only.
@@ -374,6 +405,39 @@ def test_falsification_attack_without_input_fails():
     out = falsification_first.check(r)
     assert not out["pass"], out
     assert "no real attack input" in out["reasons"][0]
+
+
+def test_falsification_separator_relabel_fails():
+    # HOLE 1 regression (2026-10-09): normalization FOLDS punctuation to a
+    # common separator — it never deletes it. Underscores, dashes, and dots
+    # all fold to the same separator as a plain space, so the most natural
+    # relabel there is (snake_case battery -> spaced words) is a caught
+    # copy, not a distinct attack.
+    battery = ["test_literal_first_sha_fails"]
+    for relabel in (
+        "test literal first sha fails",   # underscore -> space
+        "test-literal-first-sha-fails",   # underscore -> dash
+        "test.literal.first.sha.fails",   # underscore -> dot
+        "Test Literal First Sha Fails",   # case + spaces
+    ):
+        r = _base_falsification_report()
+        r["builder_battery"] = battery
+        r["verifier_attacks"] = [{"input": relabel, "outcome": "held"}]
+        out = falsification_first.check(r)
+        assert not out["pass"], (relabel, out)
+        assert "relabel" in out["reasons"][0]
+
+
+def test_falsification_folded_norm_keeps_distinct_attacks():
+    # Folding must not over-collapse: battery entries that differ only in
+    # words stay distinct, and a genuinely different attack still passes.
+    r = _base_falsification_report()
+    r["builder_battery"] = ["test_login_happy_path", "test_login_sad_path"]
+    r["verifier_attacks"] = [
+        {"input": "null bytes smuggled into the name field", "outcome": "held"},
+    ]
+    out = falsification_first.check(r)
+    assert out["pass"], out
 
 
 # ---------------------------------------------------------------- manifest integrity
