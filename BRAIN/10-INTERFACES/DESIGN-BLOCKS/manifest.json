@@ -1,0 +1,78 @@
+{
+  "library": "Naya Design Blocks Library",
+  "version": "1.0.0",
+  "created": "2026-10-09",
+  "status": "CANDIDATE \u2014 cold-Naya graduation test pending",
+  "sets": [
+    {
+      "slug": "ultimate-design-system",
+      "title": "Naya Ultimate Design System",
+      "seat": "Naya 2",
+      "date": "2026-10-09",
+      "score": "9.1/10 (Naya 4's independent scorecard, 2026-10-09)",
+      "best_for": "Any builder who needs the full kit: buttons, boards, icons, blocks, states, and laws in one place. The default starting point.",
+      "source_sha16": "abe7d186022bdf8b",
+      "files": [
+        "index.html",
+        "tokens.css",
+        "MANIFEST.md"
+      ]
+    },
+    {
+      "slug": "naya-forest",
+      "title": "Naya Forest \u2014 The Naya Button Library",
+      "seat": "Naya 4",
+      "date": "2026-10-09",
+      "score": "9.0/10 (Naya 2 deep-dive, 2026-10-09)",
+      "best_for": "Buttons and boards where restraint is the luxury. The .naya-btn DNA every variant should inherit from. Best button craft in the family.",
+      "source_sha16": "04e506733c8470c2",
+      "files": [
+        "index.html",
+        "tokens.css",
+        "MANIFEST.md"
+      ]
+    },
+    {
+      "slug": "naya-5-jewel-library",
+      "title": "Naya Lego \u2014 Jewels",
+      "seat": "Naya 5",
+      "date": "2026-10-09",
+      "score": "7.5/10 (Naya 2 analysis, 2026-10-09)",
+      "best_for": "Spheres, orbs, luminous marks, and the token block \u2014 the best :root in the family. Lift the tokens verbatim.",
+      "source_sha16": "acdb0f21a69d1e4d",
+      "files": [
+        "index.html",
+        "tokens.css",
+        "MANIFEST.md"
+      ]
+    },
+    {
+      "slug": "naya-5-beautiful-buttons",
+      "title": "Naya Lego \u2014 Buttons",
+      "seat": "Naya 5",
+      "date": "2026-10-09",
+      "score": "7.5/10 (Naya 2 analysis, 2026-10-09)",
+      "best_for": ".primo for disciplined CTAs, .orbit-btn for the orbital signature, room controls for app chrome. The FAB uses the faceted jewel formula.",
+      "source_sha16": "e1e57adde87840e6",
+      "files": [
+        "index.html",
+        "tokens.css",
+        "MANIFEST.md"
+      ]
+    },
+    {
+      "slug": "naya-5-epic-elements",
+      "title": "Naya Ultimate Lego Library \u2014 Epic Elements",
+      "seat": "Naya 5",
+      "date": "2026-10-09",
+      "score": "8.0/10 (Naya 2 analysis, 2026-10-09)",
+      "best_for": "The orbit-btn, the orbs, the tokens, and the do/don't law boards as teaching specimens. Pair with Naya Forest's .naya-btn for states and discipline.",
+      "source_sha16": "3aaaa1d493a6fd44",
+      "files": [
+        "index.html",
+        "tokens.css",
+        "MANIFEST.md"
+      ]
+    }
+  ]
+}
