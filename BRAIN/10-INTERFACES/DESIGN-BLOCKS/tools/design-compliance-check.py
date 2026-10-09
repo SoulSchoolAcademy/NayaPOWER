@@ -33,6 +33,8 @@ import json
 import re
 import sys
 import os
+import base64
+import urllib.parse
 from html.parser import HTMLParser
 from collections import defaultdict
 
@@ -85,6 +87,7 @@ class PageParser(HTMLParser):
         self.classes_used = defaultdict(int)   # class name -> count
         self.style_blocks = []                  # raw CSS text
         self.inline_styles = []                 # style="" values
+        self.link_stylesheets = []              # {"href","media","rel"} for <link rel=stylesheet>
         self._in_style = False
         self._style_buf = []
         self.tag_count = 0
@@ -101,6 +104,18 @@ class PageParser(HTMLParser):
             self._in_style = True
             self._style_buf = []
             return
+        if tag == "link":
+            # rel is a space-separated token list (case-insensitive), per HTML.
+            # HTMLParser already lowercases tag/attr names and skips tags
+            # inside <!-- comments --> — same as browsers. Unquoted and
+            # single-quoted attribute values are handled by the parser.
+            rel_tokens = (ad.get("rel") or "").lower().split()
+            if "stylesheet" in rel_tokens:
+                self.link_stylesheets.append({
+                    "href": ad.get("href"),
+                    "media": ad.get("media") or "",
+                    "rel": ad.get("rel") or "",
+                })
         cls = ad.get("class", "")
         for c in cls.split():
             self.classes_used[c] += 1
@@ -377,6 +392,125 @@ def classes_in_selector(selector):
     return set(CLASS_RE.findall(selector))
 
 
+def _home_block(page_dir, catalog):
+    """(block_id, block_dir) if page_dir is inside that block's library home.
+
+    A page at blocks/<category>/<block-id>/... IS that block's own home.
+    Two consequences (see analyze):
+      1. the block's catalog vocabulary counts as official there (a block
+         may not be told to "use the official block instead" of itself);
+      2. linked stylesheets that live inside the block's home directory
+         are the block's IMPLEMENTATION — the library, not a delivery —
+         so their rules are not graded as custom CSS (their at-rules are
+         still recorded at the delivery boundary).
+    Quarantine trees and showcase indexes are not a block's home: no
+    exemption there (unapproved inventions stay fully graded).
+    """
+    if not page_dir:
+        return None, None
+    ids = {b["id"] for b in catalog["blocks"]}
+    parts = os.path.normpath(os.path.abspath(page_dir)).split(os.sep)
+    for i in range(len(parts) - 1, -1, -1):
+        if (parts[i] == "blocks" and i + 2 < len(parts)
+                and parts[i + 2] in ids):
+            return parts[i + 2], os.sep.join(parts[:i + 3])
+    return None, None
+
+
+# ---------------------------------------------------------------------------
+# External stylesheets (<link rel=stylesheet>) — the second perimeter
+# ---------------------------------------------------------------------------
+#
+# CLASS-LEVEL RULE: the class is "CSS outside the grader's view", not the
+# keyword that references it. @import was closed with record + bounded -1.0
+# (duplication UNKNOWN). <link> is the same shape and is closed by CAPABILITY,
+# not keyword:
+#   - what the grader can deterministically see, it READS and grades:
+#     relative local files (same trust domain as the page file itself —
+#     resolved against the page's directory, never the network) and
+#     in-document data:text/css URIs (decoded, never fetched);
+#   - what it cannot see — remote URLs, missing/unreadable files, absolute
+#     paths, non-CSS schemes — is RECORDED at the delivery boundary and costs
+#     one bounded -1.0 deduction (duplication UNKNOWN, not "clean"),
+#     exactly the @import precedent.
+# The grader never touches the network: scores stay deterministic
+# (same bytes in -> same score out). The resolver is total — every input
+# classifies without exceptions; failures land in "unresolvable" (fail closed).
+
+_MAX_LINKED_CSS_BYTES = 1_000_000
+
+
+def resolve_stylesheet_link(href, page_dir):
+    """Classify a <link rel=stylesheet> href; read what the grader can see.
+
+    Returns {"href","kind","css_text"} with kind in
+    {"local","data","remote","unresolvable"}. css_text is set only when the
+    grader can deterministically see the CSS. "path" is the resolved
+    absolute filesystem path for local files, else None.
+    Never raises, never fetches.
+    """
+    rec = {"href": href, "kind": "unresolvable", "css_text": None, "path": None}
+    if not href or not href.strip():
+        return rec
+    h = href.strip()
+
+    # data: URIs live inside the document — the grader CAN see them.
+    # Decoding them (not just recording) also defeats stuffing custom CSS
+    # into a data: link to dodge the <style> scan.
+    if h[:5].lower() == "data:":
+        rec["kind"] = "data"
+        try:
+            header, _, data = h[5:].partition(",")
+            parts = header.split(";")
+            mime = (parts[0] or "text/plain").lower()
+            is_b64 = any(p.strip().lower() == "base64" for p in parts[1:])
+            if not mime.startswith("text/css"):
+                rec["kind"] = "unresolvable"  # not CSS: nothing to grade
+            else:
+                raw = (base64.b64decode(data) if is_b64
+                       else urllib.parse.unquote_to_bytes(data))
+                rec["css_text"] = raw.decode("utf-8", errors="replace")
+        except Exception:
+            # malformed data: URI (bad base64, etc.) — fail closed, never crash
+            rec["kind"] = "unresolvable"
+            rec["css_text"] = None
+        return rec
+
+    # Any other scheme, or protocol-relative //host/..., is remote: the
+    # grader cannot see it and never fetches (determinism is a scorecard
+    # property). Non-http(s) schemes are unresolvable rather than remote,
+    # but both are equally outside the grader's view.
+    low = h.lower()
+    if low.startswith(("http://", "https://", "//")):
+        rec["kind"] = "remote"
+        return rec
+    if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", h):
+        return rec  # javascript:, file:, ftp:, ... — unresolvable
+    if h.startswith("/"):
+        return rec  # absolute filesystem paths are never read — fail closed
+
+    # Relative local file: deterministic disk read. Same trust domain as the
+    # page file the grader already opened. Query strings/fragments are
+    # stripped for resolution but kept in the recorded href.
+    if page_dir is None:
+        return rec
+    path_part = h.split("#", 1)[0].split("?", 1)[0]
+    if not path_part:
+        return rec
+    try:
+        full = os.path.normpath(
+            os.path.join(page_dir, urllib.parse.unquote(path_part)))
+        if (os.path.isfile(full)
+                and os.path.getsize(full) <= _MAX_LINKED_CSS_BYTES):
+            with open(full, encoding="utf-8", errors="replace") as f:
+                rec["css_text"] = f.read()
+            rec["kind"] = "local"
+            rec["path"] = full
+    except (OSError, ValueError):
+        pass  # unreadable -> unresolvable (fail closed, total)
+    return rec
+
+
 # ---------------------------------------------------------------------------
 # Job inference — guess what a custom class is FOR, to match against blocks
 # ---------------------------------------------------------------------------
@@ -455,7 +589,7 @@ def normalize_selector(sel):
     return m.group(1) if m else sel
 
 
-def analyze(page_html, catalog):
+def analyze(page_html, catalog, page_dir=None):
     blocks = catalog["blocks"]
 
     # Index: class name -> block ids that claim it
@@ -480,16 +614,64 @@ def analyze(page_html, catalog):
     block_index = {b["id"]: b for b in blocks}
     categories_used = sorted({block_index[bid]["category"] for bid in blocks_used})
 
+    # --- 1b. Specimen-home exemption ---
+    # A page inside blocks/<category>/<block-id>/ is that block's own home:
+    # its implementation classes (every class token in its catalog
+    # selectors, not just first tokens) count as official for this page.
+    home_block_id, home_dir = _home_block(page_dir, catalog)
+
     # --- 2. Custom CSS ---
     # A "custom class" = appears in the page's own <style> but is not an
     # official block selector class.
     official_classes = set(class_to_blocks.keys())
+    if home_block_id:
+        # Specimen-home exemption (see _home_block): the home block's
+        # full implementation vocabulary counts as official here.
+        for b in blocks:
+            if b["id"] == home_block_id:
+                for sel in b.get("selectors", []):
+                    official_classes.update(CLASS_RE.findall(sel))
     custom_rules = []  # (selector, declarations, classes)
     # Delivery boundary: every <style> block is parsed with full at-rule
     # semantics. At-rules (esp. @import) are RECORDED, never silently
     # swallowed — absence of the class in the report is the cheapest exploit.
+    #
+    # Second perimeter: <link rel=stylesheet>. Same class as @import ("CSS
+    # outside the grader's view"), closed by capability: stylesheets the
+    # grader can deterministically see (relative local files, in-document
+    # data: URIs) are parsed and graded exactly like <style> blocks —
+    # hiding custom CSS in a linked sheet no longer hides it from the
+    # grader. Stylesheets it cannot see are recorded below and cost the
+    # bounded deduction at 4e (duplication UNKNOWN, never "clean").
+    # Home-turf exception: a linked stylesheet living inside the analyzed
+    # page's own block home (see _home_block) is that block's
+    # IMPLEMENTATION — the library, not a delivery — so its rules are not
+    # graded as custom CSS. Its at-rules are still recorded at the
+    # delivery boundary (an @import inside block.css still costs 4d).
     at_rules_seen = []  # (name, prelude), deduplicated, in order
-    for css in parser.style_blocks:
+    external_stylesheets = []  # recorded at the boundary, never silently absent
+    linked_css_sources = []    # CSS text the grader CAN see (local / data:)
+    for link in parser.link_stylesheets:
+        rec = resolve_stylesheet_link(link["href"], page_dir)
+        external_stylesheets.append({
+            "href": rec["href"],
+            "media": link["media"],
+            "kind": rec["kind"],
+        })
+        if rec["css_text"] is not None:
+            home_turf = bool(
+                home_dir and rec["path"]
+                and (rec["path"] == home_dir
+                     or rec["path"].startswith(home_dir + os.sep)))
+            # at-rules are ALWAYS recorded at the delivery boundary,
+            # even on home turf — only rule-grading is exempt there.
+            rules, at_rules = parse_stylesheet(rec["css_text"])
+            for name, prelude in at_rules:
+                if (name, prelude) not in at_rules_seen:
+                    at_rules_seen.append((name, prelude))
+            if not home_turf:
+                linked_css_sources.append(rec["css_text"])
+    for css in parser.style_blocks + linked_css_sources:
         rules, at_rules = parse_stylesheet(css)
         for name, prelude in at_rules:
             if (name, prelude) not in at_rules_seen:
@@ -612,6 +794,23 @@ def analyze(page_html, catalog):
         })
         score -= 1.0
 
+    # 4e. External stylesheets via <link> the grader cannot see (remote URLs,
+    # missing/unreadable files, absolute paths, bad schemes): same class as
+    # 4d, same treatment — duplication UNKNOWN, one bounded deduction.
+    # Stylesheets the grader COULD see (local files, data: URIs) were parsed
+    # and graded above, so they cost nothing here.
+    blind_links = [e for e in external_stylesheets
+                   if e["kind"] in ("remote", "unresolvable")]
+    if blind_links:
+        deductions.append({
+            "points": -1.0,
+            "reason": (f"{len(blind_links)} external stylesheet(s) via <link> — "
+                       "their rules are outside the grader's view; "
+                       "duplication unverifiable"),
+            "detail": [str(e["href"])[:120] for e in blind_links[:5]],
+        })
+        score -= 1.0
+
     score = max(0.0, round(score, 1))
     verdict = "PASS" if score >= 7 else "FAIL"
 
@@ -638,6 +837,9 @@ def analyze(page_html, catalog):
             {"name": n, "prelude": p} for n, p in at_rules_seen
         ],
         "num_at_rules": len(at_rules_seen),
+        "external_stylesheets": external_stylesheets,
+        "num_external_stylesheets": len(external_stylesheets),
+        "specimen_home": home_block_id,
         "notes": sorted(undefined_classes)[:20],
         "stats": {
             "total_classes_in_html": len(used_classes),
@@ -674,6 +876,12 @@ def human_summary(result, page_name):
         L.append("At-rules seen (parsed, not merged into selectors):")
         for a in result["at_rules"]:
             L.append(f"  @ {a['name']} {a['prelude']}".rstrip())
+        L.append("")
+    if result.get("external_stylesheets"):
+        L.append("External stylesheets (<link rel=stylesheet>):")
+        for e in result["external_stylesheets"]:
+            media = f" [media: {e['media']}]" if e["media"] else ""
+            L.append(f"  -> {e['kind']}: {e['href']}{media}")
         L.append("")
     if result["deductions"]:
         L.append("Deductions:")
@@ -742,7 +950,8 @@ def main(argv):
         print("The checker does not score work without valid activation.", file=sys.stderr)
         return 3
 
-    result = analyze(html, catalog)
+    result = analyze(html, catalog,
+                     os.path.dirname(os.path.abspath(page_path)))
     result["page"] = page_path
     result["catalog"] = used_catalog
     result["catalog_blocks"] = catalog["total_blocks"]
