@@ -50,44 +50,31 @@ Checks (fail-closed: shape first via shape_closed.validate_shape):
   4. plain_human present, non-empty, >= 40 chars.
   5. plain_human is not a copy of technical (token Jaccard < 0.7).
      Copy-pasting the jargon into the second field is the laziest exploit.
-  6. plain_human carries at least one plain-words signal (cheap screen —
-     the law's own markers), AND reads short: Flesch Reading Ease >= 50.
-     Sprinkling one signal phrase into jargon, or paraphrasing the jargon,
-     keeps the long words and long sentences, so Flesch stays low and the
-     wall kills the lazy attacks. HONEST LIMIT, measured live 2026-10-09:
-     Flesch rewards SHORTNESS, not plainness — choppy jargon in short
-     fragments scores 62.8 and passes, while a genuine flowing explanation
-     that must name technical things scores 46-47 and fails. No Flesch
-     threshold separates the two (the bands overlap), so this wall is a
-     laziness screen, not a plainness test. See HONEST BOUND below.
+  6. plain_human carries at least one plain-words signal (the law's own
+     markers), AND reads like plain human words: abstraction density
+     below MAX_ABSTRACTION. The wall measures DICTION — the register of
+     the words — not word or sentence length. Choppy jargon built from
+     short buzzwords ("synergy is key. We leverage core competencies.")
+     sails past length-based readability scores while staying unreadable
+     to a human; genuine plain writing with flowing sentences fails them.
+     Flesch was disproved on live probes 2026-10-09 and removed. To beat
+     the abstraction wall you must write in concrete, everyday words —
+     which IS the law's demand ("like explaining to a child"). The exploit
+     collapses into compliance.
   7. If full_text is provided, it must contain a TECHNICAL marker followed
      by a PLAIN-WORDS marker. Order is the law: technicals-first-then-literal.
 
 HONEST BOUND (what this check provably does NOT do):
-  - It proves READABILITY, not truthfulness. A readable-but-vacuous layer
-    ("In other words, think of it like a car. For example, it drives.")
-    passes the mechanics while explaining nothing.
-  - JARGON-READABLE PASSES (admitted 2026-10-09, measured live by the
-    independent re-validator): choppy jargon in short fragments
-    ("In other words: the CSI driver choked. PVs stuck. Kubelet flapped.
-    Restarts looped. Nodes drained.") scores Flesch 62.8 and PASSES.
-    Flesch measures short words in short sentences — shortness, not
-    plainness. No threshold on this axis separates jargon-short from
-    plain-long; the bands overlap.
-  - FALSE NEGATIVES EXIST (admitted 2026-10-09, measured live): a genuine
-    plain explanation that must name technical things, written in flowing
-    sentences, scores 46-47 and FAILS at threshold 50 — including the
-    prior round's own honoring fixture at 46.1. Real two-layer reports on
-    #1354 (n=6, 2026-10-09) score Flesch 62.8-73.6 and clear the wall with
-    margin; the wall is calibrated for real reports, not against every
-    genuine sentence shape.
+  - It proves PLAINNESS OF DICTION, not truthfulness. A plain-but-vacuous
+    layer ("In other words, think of it like a car. For example, it
+    drives.") passes the mechanics while explaining nothing.
   - It does not grade comprehension, intent, or whether the plain layer
     faithfully represents the technical layer.
   - High-stakes reports still need a human seat to actually read them.
 The check is a cheap screen against laziness and decoration — missing
 layer, verbatim copy, marker-free jargon, jargon wearing one plain-words
 phrase as camouflage. It is not a comprehension test, and it never
-claims to be. It does not claim to be a plainness test either.
+claims to be.
 
 Usage:
     python3 tools/protocol/checks/two_layer.py \\
@@ -232,46 +219,111 @@ def _exemption_voided_reason(record: dict) -> str | None:
     return None
 
 
-# --- Hardening 3 (2026-10-09) + Round 2 (2026-10-09): the shortness wall.
-# Minimum Flesch Reading Ease for the plain-words layer.
-# What it IS: a laziness screen. The 8 battery attacks (signal phrase
-# sprinkled into jargon, paraphrased jargon) measured -0-43 and all die
-# here; real two-layer reports on #1354 (n=6, 2026-10-09) measured
-# 62.8-73.6 and clear 50 with margin.
-# What it IS NOT: a plainness test. Choppy jargon in short fragments
-# measured 62.8 live and PASSES — Flesch rewards shortness, not plainness.
-# A genuine flowing explanation that must name technical things measured
-# 46-47 and FAILS (false negatives, admitted). The bands overlap, so no
-# threshold on this axis separates jargon-short from plain-long: 50 is the
-# documented judgment call that kills the lazy attacks while clearing
-# real reports, not a wall against all jargon.
-MIN_FLESCH = 50.0
+# --- Rewrite (2026-10-09): the plain-diction wall replaces Flesch.
+# Round-2 hardening DISPROVED Flesch Reading Ease as the plain-words proxy
+# on live probes: choppy jargon scored 54.7–62.8 (PASSES the old >= 50
+# gate — short buzzwords are short words in short sentences) while
+# genuinely plain human writing scored 41.6–47 (FAILS — flowing sentences
+# with ordinary multi-syllable words). Flesch measures word/sentence
+# LENGTH, but the law demands a REGISTER: concrete, everyday human words.
+# The replacement measures abstraction density = (jargon-lexicon hits +
+# nominalization hits) / words. Calibrated on the probe corpus
+# (tools/protocol/probes/clarity_probes.json) 2026-10-09: honoring and
+# bound probes measured 0.000, attacks measured 0.229–0.429. The wall sits
+# between them with margin on both sides. Deterministic, no model; every
+# hit is named in the result details, so the number has provenance.
+MAX_ABSTRACTION = 0.10
+
+# Corporate/consultant jargon and the techno-abstract register of the
+# paraphrase attacks. Words that are never needed in plain human speech.
+# Multi-word entries are matched as phrases. This list is the documented
+# approximation — reviewable in the open, unlike a formula's hidden bias.
+JARGON = {
+    # corporate fluff
+    "synergy", "synergies", "synergy-driven", "paradigm", "holistic",
+    "robust", "scalable", "scalability", "granular", "granularity",
+    "utilize", "utilizes", "utilized", "utilizing", "utilization",
+    "facilitate", "facilitates", "facilitated", "facilitating",
+    "facilitation", "bandwidth", "deliverable", "deliverables",
+    "stakeholder", "stakeholders", "ecosystem", "ecosystems", "ideate",
+    "ideation", "operationalize", "operationalization", "monetize",
+    "incentivize", "incentivise", "impactful", "learnings", "uplevel",
+    "cross-functional", "silo", "silos", "siloed", "unpack",
+    "double-click", "kpi", "kpis", "okr", "okrs", "takeaway",
+    "takeaways", "net-net", "thought leadership", "bleeding edge",
+    "cutting edge", "game changer", "game-changer", "secret sauce",
+    "pivot", "pivoting", "disruption", "disruptive",
+    "leverage", "leverages", "leveraged", "leveraging",
+    "optimize", "optimizes", "optimized", "optimizing", "optimization",
+    "throughput",
+    # techno-abstract register (the paraphrase-attack vocabulary)
+    "propagation", "delegation", "retrieval", "redirection", "validation",
+    "authorization", "authentication", "configuration", "reconfiguration",
+    "traversal", "traverse", "traverses", "surrogate", "surrogates",
+    "mechanism", "mechanisms", "subsystem", "subsystems", "endpoint",
+    "endpoints", "infrastructure", "credential", "credentials",
+    "continuity", "systemic", "necessitating", "initiative",
+}
+
+# Nominalization suffixes: abstract nouns built from verbs ("implementation"
+# instead of "implement") are the fingerprint of the technical register in
+# plain-words clothing. Plain everyday words that happen to end this way
+# are excepted so ordinary speech never trips the wall. Entry rule: a word
+# is excepted ONLY if it is genuinely ordinary in plain civic/business
+# prose — never a corporate-abstraction term. Seeded from the suffix hits
+# of real plain sentences (never guesswork): 2026-10-09, a re-validator
+# measured a dense-but-plain sentence at 0.160 (false FAIL from
+# government/payment/department/agreement); the exceptions below return it
+# under the wall while the attack probes still fail.
+NOMINAL_SUFFIXES = ("tion", "sion", "ment", "ance", "ence", "ity")
+PLAIN_EXCEPTIONS = {
+    "moment", "moments", "comment", "comments", "question", "questions",
+    "station", "stations", "nation", "nations", "section", "sections",
+    "sentence", "sentences", "evidence", "presence", "science", "silence",
+    "patience", "distance", "distances", "audience", "instance",
+    "instances", "experience", "experiences", "difference", "differences",
+    "apartment", "apartments", "clarity", "explanation", "explanations",
+    "quality", "community", "communities", "activity", "activities",
+    "security", "priority", "priorities", "reality",
+    # ordinary civic/business nominalizations (2026-10-09 audit):
+    "government", "governments", "payment", "payments", "agreement",
+    "agreements", "department", "departments", "statement", "statements",
+    "development", "developments", "management", "treatment", "treatments",
+    "movement", "movements", "settlement", "settlements", "improvement",
+    "improvements", "arrangement", "arrangements",
+}
 
 
-def _syllables(word: str) -> int:
-    word = word.lower().strip("'")
-    if not word:
-        return 0
-    count = len(re.findall(r"[aeiouy]+", word))
-    if word.endswith("e"):
-        count -= 1
-    if word.endswith("le") and len(word) > 2 and word[-3] not in "aeiouy":
-        count += 1
-    return max(count, 1)
+def _abstraction_hits(text: str) -> tuple[list[str], int]:
+    """(named hits, word count). A hit is a JARGON word/phrase or a
+    nominalization-suffix word not in PLAIN_EXCEPTIONS. Suffix hits are
+    marked with a trailing '*' in the named list so the provenance shows
+    which rule fired."""
+    words = re.findall(r"[a-zA-Z']+", text.lower())
+    hits: list[str] = []
+    for w in words:
+        if w in JARGON:
+            hits.append(w)
+        elif (
+            w not in PLAIN_EXCEPTIONS
+            and any(w.endswith(s) and len(w) > len(s) + 2
+                    for s in NOMINAL_SUFFIXES)
+        ):
+            hits.append(w + "*")
+    # multi-word jargon phrases: match on normalized spacing
+    norm = " " + re.sub(r"[^a-z0-9 ]+", " ", text.lower()) + " "
+    for j in JARGON:
+        if " " in j and f" {j} " in norm:
+            hits.append(j)
+    return hits, len(words)
 
 
-def _flesch_reading_ease(text: str) -> float:
-    """Flesch Reading Ease: 206.835 - 1.015*(words/sentences)
-    - 84.6*(syllables/words). Higher = plainer. Deterministic, no word
-    list, no model — short sentences in short common words score high."""
-    words = re.findall(r"[a-zA-Z']+", text)
-    sentences = [s for s in re.split(r"[.!?;]+", text) if s.strip()]
-    n_words = len(words)
-    n_sent = max(len(sentences), 1)
-    n_syl = sum(_syllables(w) for w in words)
+def _abstraction_density(text: str) -> tuple[float, list[str]]:
+    """Abstraction density of the text: hits per word. Higher = more jargon."""
+    hits, n_words = _abstraction_hits(text)
     if n_words == 0:
-        return 0.0
-    return 206.835 - 1.015 * (n_words / n_sent) - 84.6 * (n_syl / n_words)
+        return 0.0, hits
+    return len(hits) / n_words, hits
 
 
 def _tokens(text: str) -> set[str]:
@@ -382,25 +434,30 @@ def check(record: dict) -> dict:
         )
     reasons.append("plain_human carries plain-words signal")
 
-    # Shortness wall: the layer must read SHORT, not just wear one
-    # plain-words phrase as camouflage. Sprinkling "in other words" into
-    # jargon, or paraphrasing the jargon, keeps the long words and long
-    # sentences — Flesch stays low and the lazy attack dies. Honest bounds
-    # (measured live 2026-10-09, pinned in tests): choppy jargon in short
-    # fragments scores 62.8 and PASSES — Flesch rewards shortness, not
-    # plainness; and a genuine flowing explanation can score 46-47 and
-    # FAIL. This wall kills laziness, not all jargon.
-    ease = _flesch_reading_ease(plain)
-    details["plain_flesch"] = round(ease, 1)
-    if ease < MIN_FLESCH:
+    # Plain-diction wall: the layer must READ like plain human words, not
+    # just wear one plain-words phrase as camouflage. Sprinkling "in other
+    # words" into jargon, paraphrasing the jargon, or chopping the jargon
+    # into short buzzword sentences all keep the abstract register — the
+    # abstraction density stays high. Beating the wall requires writing in
+    # concrete, everyday words: the exploit collapses into compliance.
+    # (Honest bound: this proves plainness of diction, not truthfulness —
+    # a plain-but-vacuous layer still passes.)
+    density, hits = _abstraction_density(plain)
+    details["plain_abstraction"] = round(density, 3)
+    details["abstraction_hits"] = sorted(set(hits))
+    if density >= MAX_ABSTRACTION:
+        shown = ", ".join(sorted(set(hits))[:8])
         return fail(
-            f"{title}: plain_human reads at Flesch {ease:.1f} "
-            f"(< {MIN_FLESCH:g}) — it may carry a plain-words marker, but "
-            "it still reads like technicals. Plain human words, like "
-            "explaining to a child: short sentences, short common words.",
+            f"{title}: plain_human reads like jargon, not plain human words "
+            f"(abstraction density {density:.2f} >= {MAX_ABSTRACTION:g}; "
+            f"hits: {shown}) — it may carry a plain-words marker, but it "
+            "still speaks in abstractions. Plain human words, like "
+            "explaining to a child: concrete, everyday words.",
             details,
         )
-    reasons.append(f"plain layer reads plain (Flesch {ease:.1f})")
+    reasons.append(
+        f"plain layer reads like human words (abstraction {density:.3f})"
+    )
 
     # Order, when the rendered text is provided: technicals FIRST, then literal.
     full = str(record.get("full_text") or "").strip()

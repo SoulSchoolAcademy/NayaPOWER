@@ -46,9 +46,9 @@ GENUINE_PLAIN = (
 
 # Real two-layer literal layers from #1354, verbatim (provenance: the
 # comment id in each name). Written by seats BEFORE the check existed, so
-# they are measured on the Flesch axis only — the honest claim is "real
-# reports clear the wall with margin", not "every real report passes the
-# full check".
+# they are re-measured on the density axis (2026-10-09) — the honest claim
+# is "real reports clear the wall with margin", not "every real report
+# passes the full check".
 CORPUS_6086636048 = (
     """We found the actual reason learning still cannot finish: saving the note and writing its visible Smart Note link are two separate steps. Saving can succeed while GitHub refuses to publish the link. We improved the system so the next refusal will tell us why, and the automated test suite passed all 11 checks. But those tests use a simulated refusal; nobody has yet run the changed code against the real production receiver, and the changed code is not deployed. So I am not calling learning activated yet."""
 )
@@ -185,31 +185,45 @@ def test_r2_voided_split_but_honored_still_passes():
     assert r["details"].get("exemption_voided")
 
 
-# ---------------- Gap 3, round 2: honest bounds, pinned
+# ---------------- Gap 3, round 2: honest bounds, re-pinned on the density axis
+# (2026-10-09 port). The clarity rewrite replaced the Flesch wall with the
+# abstraction-density wall, so the round-2 Gap-3 pins are re-measured here
+# on the new axis. The admitted Flesch bounds (choppy-jargon pass at 62.8,
+# genuine-plain false fail at 46-47) were properties of the OLD wall; what
+# follows is the measured truth about the NEW one.
 def test_r2_choppy_jargon_passes_documented_bound():
-    # ADMITTED BOUND (not a feature): Flesch rewards shortness, not
-    # plainness. The re-validator's live counterexample scores 62.8 and
-    # passes. If this test ever FAILS, the docs are wrong, not the code.
+    # ADMITTED BOUND (not a feature), re-pinned on the density axis: the
+    # abstraction wall measures the corporate/techno-abstract REGISTER,
+    # not terse technical shorthand. The re-validator's CSI/Kubelet
+    # counterexample scores density 0.000 (measured 2026-10-09 — no
+    # abstract-register words, so the wall has nothing to catch) and
+    # passes. The rewrite closed the bound for the buzzword class
+    # (clarity's "synergy is key" probe fails at 0.261); the shorthand
+    # class remains an admitted bound. If this test ever FAILS, the docs
+    # are wrong, not the code.
     r = two_layer.check(_report(CHOPPY_JARGON))
-    ease = two_layer._flesch_reading_ease(CHOPPY_JARGON)
-    assert ease >= 50.0, ease
+    density, _ = two_layer._abstraction_density(CHOPPY_JARGON)
+    assert density < 0.10, density
     assert r["pass"] is True, r["reasons"]
 
 
-def test_r2_genuine_plain_false_negative_documented():
-    # ADMITTED FALSE NEGATIVE: a genuine flowing explanation that must
-    # name technical things scores below 50 and fails. The docs admit
-    # this; the test pins the admission so it cannot silently regress
-    # into a pretended wall.
+def test_r2_genuine_plain_false_negative_fixed():
+    # The old Flesch FALSE NEGATIVE is fixed on the density axis: the
+    # re-validator's genuine-plain counterexample failed Flesch at 46-47
+    # (< 50); it scores density 0.077 (hits: authentication, deployment*,
+    # measured 2026-10-09) and PASSES the new wall. Flowing sentences no
+    # longer fail.
     r = two_layer.check(_report(GENUINE_PLAIN))
-    ease = two_layer._flesch_reading_ease(GENUINE_PLAIN)
-    assert ease < 50.0, ease
-    assert r["pass"] is False, r["reasons"]
-    assert "Flesch" in r["reasons"][0]
+    density, hits = two_layer._abstraction_density(GENUINE_PLAIN)
+    assert density < 0.10, (density, hits)
+    assert r["pass"] is True, r["reasons"]
+    assert r["details"]["plain_abstraction"] < 0.10
 
 
 def test_r2_sprinkle_and_paraphrase_attacks_still_die():
-    # The wall's REAL job, kept: lazy jargon attacks die here.
+    # The wall's REAL job, kept across the rewrite: lazy jargon attacks die
+    # here — sprinkle at 0.333, paraphrase at 0.229 (measured 2026-10-09),
+    # both >= 0.10.
     sprinkle = (
         "The authentication surrogate token propagation mechanism "
         "experienced a 401 authorization rejection at the pre-signed "
@@ -225,26 +239,28 @@ def test_r2_sprinkle_and_paraphrase_attacks_still_die():
     for attack in (sprinkle, paraphrase):
         r = two_layer.check(_report(attack))
         assert r["pass"] is False, r["reasons"]
-        assert "Flesch" in r["reasons"][0]
+        assert "abstraction" in r["reasons"][0]
 
 
-def test_r2_real_corpus_flesch_clears_wall_with_margin():
-    # The honest calibration claim: real two-layer reports from #1354
-    # (n=3 sampled 2026-10-09) clear 50 with margin. Measured on the
-    # Flesch axis only — these predate the signal requirement.
+def test_r2_real_corpus_abstraction_clears_wall_with_margin():
+    # The honest calibration claim, re-measured on the density axis
+    # 2026-10-09: real two-layer reports from #1354 (n=3 sampled) score
+    # 0.000–0.018, clearing 0.10 with margin. These predate the signal
+    # requirement, so the claim is "real reports clear the wall", not
+    # "every real report passes the full check".
     for name, sample in (
         ("6086636048", CORPUS_6086636048),
         ("6086661723", CORPUS_6086661723),
         ("6086599220", CORPUS_6086599220),
     ):
-        ease = two_layer._flesch_reading_ease(sample)
-        assert ease >= 50.0, (name, ease)
+        density, hits = two_layer._abstraction_density(sample)
+        assert density < 0.10, (name, density, hits)
 
 
 def test_r2_honoring_fixture_still_passes():
     r = two_layer.check(_report(PLAIN_GOOD))
     assert r["pass"] is True, r["reasons"]
-    assert r["details"]["plain_flesch"] >= 50.0
+    assert r["details"]["plain_abstraction"] < 0.10
 
 
 # ---------------------------------------------------------------- runner

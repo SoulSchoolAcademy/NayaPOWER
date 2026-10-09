@@ -151,18 +151,20 @@ def test_topkey_voided_but_two_layered_passes():
 # ---------------- battery replay: the claim, now replayable from the repo
 def test_topkey_battery_fixture_all_die_at_wall():
     # The Gap-3 battery fixture (tests/fixtures/gap3_battery_attacks.json):
-    # every attack dies at the Flesch wall, and the measured scores match
-    # the pinned independent measurements (the function is deterministic).
+    # every attack dies at the abstraction-density wall, and the measured
+    # densities match the pinned independent measurements (the function is
+    # deterministic). Re-pinned on the density axis 2026-10-09 when the
+    # clarity rewrite replaced the Flesch wall (see fixture _doc).
     fixture = json.loads(
         (ROOT / "tests" / "fixtures" / "gap3_battery_attacks.json").read_text()
     )
     technical = fixture["technical"]
     assert len(fixture["attacks"]) == 6, "fixture must carry all 6 attacks"
     for attack in fixture["attacks"]:
-        ease = two_layer._flesch_reading_ease(attack["plain_human"])
-        assert ease < 50.0, (attack["id"], ease)
-        assert abs(ease - attack["measured_flesch"]) < 0.05, (
-            attack["id"], ease, attack["measured_flesch"])
+        density, hits = two_layer._abstraction_density(attack["plain_human"])
+        assert density >= 0.10, (attack["id"], density, hits)
+        assert abs(density - attack["measured_abstraction"]) < 0.005, (
+            attack["id"], density, attack["measured_abstraction"])
         r = two_layer.check({
             "report_type": "deliverable_report",
             "title": attack["id"],
@@ -170,7 +172,7 @@ def test_topkey_battery_fixture_all_die_at_wall():
             "plain_human": attack["plain_human"],
         })
         assert r["pass"] is False, (attack["id"], r["reasons"])
-        assert "Flesch" in r["reasons"][0], (attack["id"], r["reasons"])
+        assert "abstraction" in r["reasons"][0], (attack["id"], r["reasons"])
 
 
 # ---------------------------------------------------------------- runner
