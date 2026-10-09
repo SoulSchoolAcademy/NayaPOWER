@@ -1,0 +1,38 @@
+<!-- Smart Block specimen: nl-search -->
+<!-- Source: Naya_Lego-blocks.html -->
+<div class="nl-search">
+      <div class="nl-field" style="margin:0;max-width:none">
+        <div class="nl-well">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+          <input id="demo-search" type="search" placeholder="Search Smart Apps…" autocomplete="off" aria-expanded="false" aria-controls="demo-results" role="combobox">
+        </div>
+      </div>
+      <div class="nl-results" id="demo-results" role="listbox"></div>
+    </div>
+  </div>
+  <div class="rules">
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Elevate the results as a board. Each result is a touchable row with an orb.</div>
+    <div class="rule do"><span class="tag">Do</span><b class="mk">✓</b>Write an empty state that helps: "No matches — try 'ledger'."</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Show a naked dropdown with no shadow. It would look pasted on.</div>
+    <div class="rule dont"><span class="tag">Don't</span><b class="mk">✕</b>Search on every keystroke without debounce. 150ms, then ask.</div>
+  </div>
+  <div class="codewrap">
+    <div class="codebar"><span>search.css — input with ambition</span><button class="copybtn" data-copy="code-search">Copy</button></div>
+<pre id="code-search"><span class="c">/* Law 71: results arrive as a board, never a naked list */</span>
+<span class="k">.nl-results</span> {
+  position: absolute; top: calc(100% + 10px); left: 0; right: 0;
+  border-radius: 18px;
+  background: <span class="s">linear-gradient(180deg,#14151c,#0b0c10)</span>;
+  border: 1px solid <span class="s">rgba(255,255,255,.13)</span>;
+  box-shadow: <span class="s">inset 0 1px 0 rgba(255,255,255,.14)</span>,
+              <span class="s">0 30px 60px rgba(0,0,0,.7)</span>,
+              <span class="s">0 0 40px -10px rgba(231,198,90,.4)</span>;
+}
+<span class="k">.nl-result:hover</span> { background: <span class="s">rgba(231,198,90,.09)</span>; }
+<span class="c">/* debounce 150ms before filtering — Law: never thrash */</span></pre>
+  </div>
+</section>
+
+<!-- ============ 06 TOGGLE ============ -->
+<section class="block-sec" id="toggle" style="--tone:var(--magenta)">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Toggle</h2><span class="sec-law">Law 3 · Law 29</span></div>

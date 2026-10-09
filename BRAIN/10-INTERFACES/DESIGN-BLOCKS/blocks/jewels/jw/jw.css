@@ -1,0 +1,28 @@
+/* Smart Block: jw
+ * Source: Naya_4_Design_Element_Set.html (byte-true extraction, not rewritten)
+ * Type: jewels
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+.jw{width:30px; height:30px; border-radius:9px; display:grid; place-items:center;
+  font-size:13px; font-weight:900; color:#fff; flex:none;
+  background:radial-gradient(circle at 32% 22%, rgba(255,255,255,.85), transparent 42%),
+    radial-gradient(circle at 50% 55%, var(--j), #000 130%);
+  border:1px solid rgba(255,255,255,.4); box-shadow:0 0 14px var(--j);}
+
+
+.tongue ul li .jw{width:24px; height:24px; font-size:11px; margin-top:2px;}
+
+
+.hbul .jw{width:24px; height:24px; font-size:11px; margin-top:2px;}
+
+
+.pred .jw{width:20px; height:20px; font-size:10px; border-radius:6px; flex:none;}
+
+
+.gate .jw{width:28px; height:28px; font-size:13px; margin-top:1px;}
+
+
+.laws-line .jw{width:22px; height:22px; font-size:10px; margin-top:1px;}

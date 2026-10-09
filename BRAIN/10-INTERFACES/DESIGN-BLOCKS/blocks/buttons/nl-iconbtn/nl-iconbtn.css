@@ -1,0 +1,24 @@
+/* Smart Block: nl-iconbtn
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: buttons
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+      .nl-iconbtn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.16);color:var(--quiet);display:flex;align-items:center;justify-content:center;
+        background:radial-gradient(circle at 35% 30%,#1d1e26,#0c0d12 70%);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -4px 8px rgba(0,0,0,.5),0 8px 18px rgba(0,0,0,.5);
+        transition:all .2s var(--snap)}
+
+
+      .nl-iconbtn:hover{color:#fff;transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px var(--gold),0 12px 24px rgba(0,0,0,.55)}
+
+
+      .nl-iconbtn:active{transform:scale(.92)}
+
+
+      .nl-iconbtn.liked{color:var(--magenta);border-color:rgba(228,85,244,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px rgba(228,85,244,.7)}
+
+
+      .nl-iconbtn.saved{color:var(--gold);border-color:rgba(231,198,90,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 0 18px -2px rgba(231,198,90,.7)}

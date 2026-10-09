@@ -1,0 +1,21 @@
+/* Smart Block: nl-toggle-row
+ * Source: Naya_Lego-blocks.html (byte-true extraction, not rewritten)
+ * Type: toggles
+ * Extracted: 2026-10-09
+ */
+
+/* ---- component rules ---- */
+
+      .nl-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:18px;
+        background:linear-gradient(180deg,#101117,#0a0b0f);border:1px solid var(--soft-line);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 -10px 20px rgba(0,0,0,.35),0 12px 26px rgba(0,0,0,.45);
+        transition:transform .2s var(--snap),box-shadow .25s}
+
+
+      .nl-toggle-row:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 22px -6px var(--magenta),0 16px 32px rgba(0,0,0,.5)}
+
+
+      .nl-toggle-row .t-label{font-weight:700;font-size:16px}
+
+
+      .nl-toggle-row .t-sub{font-size:13.5px;color:var(--quiet)}
