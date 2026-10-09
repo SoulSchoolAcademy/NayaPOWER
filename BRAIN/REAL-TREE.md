@@ -1,8 +1,8 @@
 # NayaPOWER Brain — Real Tree (machine-verified)
 
 **Generated:** 2026-10-09  
-**Receipt basis commit:** `b9d21f1925f6bc1c08b7601db15e4ff18d9bade0`  
-**Inventory file count:** 1196  
+**Receipt basis commit:** `1d73652231ac6127806640af5a31eb516c60738d`  
+**Inventory file count:** 1197  
 
 > Regenerated from the committed git tree by `tools/regenerate_brain_index.py`. Per-domain counts are asserted against the 2026-09-30 brain-reconciliation ledger classification table. The three index files are self-referential (their blob SHAs are omitted by design); every other file lists its exact blob SHA at the basis commit.
 
@@ -17,7 +17,7 @@
 | 04-INTELLIGENCE | 25 |
 | 05-MEMORY | 639 |
 | 06-PROOF | 13 |
-| 07-LEARNING | 4 |
+| 07-LEARNING | 5 |
 | 08-SUCCESSION | 2 |
 | 09-EVOLUTION | 2 |
 | 10-INTERFACES | 380 |
@@ -805,6 +805,7 @@
 ### 07-LEARNING — Learning
 
 - `BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md` — `7380da90eb74` (2052 bytes)
+- `BRAIN/07-LEARNING/LEARNING-ENGINE-LIVE-INTEGRATION-AUDIT-2026-10-09.md` — `ca2ad33c5885` (25274 bytes)
 - `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md` — `a458a8436eca` (2253 bytes)
 - `BRAIN/07-LEARNING/PROMOTION-RECEIPTS/receipts-2026-10-08.json` — `351a2f836391` (38980 bytes)
 - `BRAIN/07-LEARNING/README.md` — `519227d792b5` (798 bytes)

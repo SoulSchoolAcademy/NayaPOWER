@@ -1,8 +1,8 @@
 {
   "schema": "naya.brain.real_tree.v1",
   "generated_at": "2026-10-09",
-  "receipt_basis_commit": "b9d21f1925f6bc1c08b7601db15e4ff18d9bade0",
-  "inventory_file_count": 1196,
+  "receipt_basis_commit": "1d73652231ac6127806640af5a31eb516c60738d",
+  "inventory_file_count": 1197,
   "domain_counts": {
     "00-ACTIVATION": 2,
     "00-SPEC": 15,
@@ -12,7 +12,7 @@
     "04-INTELLIGENCE": 25,
     "05-MEMORY": 639,
     "06-PROOF": 13,
-    "07-LEARNING": 4,
+    "07-LEARNING": 5,
     "08-SUCCESSION": 2,
     "09-EVOLUTION": 2,
     "10-INTERFACES": 380,
@@ -3813,6 +3813,11 @@
       "path": "BRAIN/07-LEARNING/0001-LEARNING-CONTRACT-V1.md",
       "blob_sha": "7380da90eb74aa2420a62a090dddb39316fd7439",
       "size": 2052
+    },
+    {
+      "path": "BRAIN/07-LEARNING/LEARNING-ENGINE-LIVE-INTEGRATION-AUDIT-2026-10-09.md",
+      "blob_sha": "ca2ad33c58857d4a14b057b7e6cb4a742238cf4c",
+      "size": 25274
     },
     {
       "path": "BRAIN/07-LEARNING/PROMOTION-RECEIPTS/SCHEMA-V1.md",
