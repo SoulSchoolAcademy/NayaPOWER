@@ -4,7 +4,7 @@
  * Extracted: 2026-10-09
  */
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
 
 
 /* ============ STANDARD — .primo ============ */
@@ -13,23 +13,15 @@
   box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.9), inset 0 2px 5px rgba(255,255,255,.2), inset 0 -6px 14px rgba(0,0,0,.7), 0 10px 28px rgba(0,0,0,.55), 0 3px 10px rgba(0,0,0,.45);
   transition: transform .22s var(--ease), box-shadow .22s var(--ease); --glow: var(--soul); }
 
-
 .primo:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.7px var(--glow), inset 0 2px 5px rgba(255,255,255,.25), inset 0 -6px 14px rgba(0,0,0,.65), 0 14px 36px rgba(0,0,0,.6), 0 0 26px -4px var(--glow); }
-
 
 .primo:active { transform: translateY(1px) scale(.985); }
 
-
 .primo.theme-magenta { --glow: var(--magenta); }
-
  .primo.theme-purple { --glow: var(--purple); }
 
-
 .primo.theme-blue { --glow: var(--blue); }
-
  .primo.theme-green { --glow: var(--green); }
-
  .primo.theme-gold { --glow: var(--gold); }
-
 
 .primo:disabled { opacity: .6; cursor: default; transform: none; }

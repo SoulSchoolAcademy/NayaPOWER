@@ -12,7 +12,16 @@
   50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
 }
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
+/* ---- required @keyframes ---- */
+@keyframes sweep { 0%, 62% { left: -70%; } 88%, 100% { left: 130%; } }
+
+@keyframes idleBreathe {
+  0%, 100% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,.92), inset 0 2px 6px rgba(255,255,255,.22), inset 0 -8px 18px rgba(0,0,0,.75), 0 14px 40px rgba(0,0,0,.6), 0 4px 14px rgba(0,0,0,.5); }
+  50% { box-shadow: inset 0 0 0 1.7px rgba(255,255,255,1), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.75), 0 18px 52px rgba(0,0,0,.65), 0 4px 14px rgba(0,0,0,.5); }
+}
+
+
 
 .living-btn {
   position: relative; overflow: hidden; cursor: pointer; border: none;
@@ -29,18 +38,13 @@
   animation: idleBreathe 4.2s ease-in-out infinite;
 }
 
-
 .living-btn .btn-glow { position: absolute; inset: -2px; border-radius: 999px; opacity: .55; pointer-events: none; transition: opacity .3s; }
-
 
 .living-btn[data-spectrum="magenta"] .btn-glow { box-shadow: 0 0 34px 4px rgba(232,79,255,.5), inset 0 0 22px rgba(232,79,255,.28); }
 
-
 .living-btn[data-spectrum="purple"] .btn-glow { box-shadow: 0 0 34px 4px rgba(160,107,255,.5), inset 0 0 22px rgba(160,107,255,.28); animation-delay: 1.4s; }
 
-
 .living-btn[data-spectrum="blue"] .btn-glow { box-shadow: 0 0 34px 4px rgba(63,184,255,.5), inset 0 0 22px rgba(63,184,255,.28); animation-delay: 2.8s; }
-
 
 .living-btn::after {
   content: ""; position: absolute; top: -20%; bottom: -20%; width: 46%; left: -70%;
@@ -49,36 +53,24 @@
   animation: sweep 5.5s var(--ease) infinite;
 }
 
-
 .living-btn[data-spectrum="purple"]::after { animation-delay: 1.8s; }
-
 
 .living-btn[data-spectrum="blue"]::after { animation-delay: 3.6s; }
 
-
 .living-btn:hover { transform: translateY(-4px) scale(1.025); animation: none; }
-
 
 .living-btn[data-spectrum="magenta"]:hover { box-shadow: inset 0 0 0 2px var(--magenta), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(232,79,255,.4), 0 6px 18px rgba(0,0,0,.5); }
 
-
 .living-btn[data-spectrum="purple"]:hover { box-shadow: inset 0 0 0 2px var(--purple), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(160,107,255,.4), 0 6px 18px rgba(0,0,0,.5); }
-
 
 .living-btn[data-spectrum="blue"]:hover { box-shadow: inset 0 0 0 2px var(--blue), inset 0 2px 8px rgba(255,255,255,.3), inset 0 -8px 18px rgba(0,0,0,.7), 0 22px 60px rgba(63,184,255,.4), 0 6px 18px rgba(0,0,0,.5); }
 
-
 .living-btn:hover .btn-glow { opacity: 1; }
-
 
 .living-btn:active { transform: translateY(1px) scale(.975); transition-duration: .08s; }
 
-
 .living-btn .btn-label { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; }
 
-
 .living-btn .btn-label svg { width: 20px; height: 20px; }
-
  .living-btn { min-width: 100%; }
-
  .living-btn, .living-btn::after { animation: none; }

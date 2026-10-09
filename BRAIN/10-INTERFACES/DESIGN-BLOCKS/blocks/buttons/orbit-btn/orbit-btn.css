@@ -7,7 +7,11 @@
 /* ---- required @keyframes ---- */
 @keyframes orbit-spin { to { --oa: 360deg; } }
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
+/* ---- required @keyframes ---- */
+@keyframes orbit-spin { to { --oa: 360deg; } }
+
+
 
 
 
@@ -23,7 +27,6 @@
   transition: transform .25s var(--ease);
 }
 
-
 .orbit-btn::before {
   content: ""; position: absolute; inset: -3px; border-radius: 999px; z-index: -1;
   background: conic-gradient(from var(--oa, 0deg), transparent 0deg, transparent 300deg, rgba(var(--oc-rgb),.9) 340deg, rgba(255,255,255,.95) 355deg, transparent 360deg);
@@ -33,26 +36,19 @@
   filter: drop-shadow(0 0 8px rgba(var(--oc-rgb),.6));
 }
 
-
 .orbit-btn::after {
   content: ""; position: absolute; inset: -18px; border-radius: 999px; z-index: -2;
   background: radial-gradient(ellipse at center, rgba(var(--oc-rgb),.35), transparent 70%);
   opacity: 0; transition: opacity .4s ease; filter: blur(6px);
 }
 
-
 .orbit-btn .orbit-label { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
-
 
 .orbit-btn:hover { transform: translateY(-3px) scale(1.02); }
 
-
 .orbit-btn:hover::before { opacity: 1; animation-duration: 1.5s; }
-
 
 .orbit-btn:hover::after { opacity: 1; }
 
-
 .orbit-btn:active { transform: translateY(1px) scale(.98); transition-duration: .08s; }
-
  .orbit-btn::before { animation: none; }

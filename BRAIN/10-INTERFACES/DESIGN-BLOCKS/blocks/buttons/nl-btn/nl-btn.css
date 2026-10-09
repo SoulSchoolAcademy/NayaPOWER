@@ -4,7 +4,7 @@
  * Extracted: 2026-10-09
  */
 
-/* ---- component rules ---- */
+/* ---- component rules (v2) ---- */
 
 /* ---------- shared elevated bits ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:999px;padding:14px 28px;font-weight:700;color:#fff;
@@ -13,17 +13,37 @@
   transition:transform .18s var(--snap),box-shadow .25s var(--ease)}
 
 
+
 .btn:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.95),inset 0 2px 3px rgba(255,255,255,.32),inset 0 -4px 8px rgba(0,0,0,.6),0 0 26px -2px var(--tone,var(--purple)),0 18px 38px rgba(0,0,0,.65),0 4px 10px rgba(0,0,0,.5)}
+
 
 
 .btn:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7),inset 0 4px 10px rgba(0,0,0,.8),0 6px 14px rgba(0,0,0,.5)}
 
 
+
 .btn .dot{width:10px;height:10px;border-radius:50%;background:var(--tone,var(--purple));box-shadow:0 0 10px var(--tone,var(--purple))}
 
 
-      .btn-ghost{background:transparent;border:1px solid var(--soft-line);color:var(--quiet);border-radius:999px;padding:13px 26px;font-weight:700;
-        box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:all .2s var(--ease)}
+
+    
+
+      .nl-modal-back{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;
+        background:rgba(3,3,5,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 
 
-      .btn-ghost:hover{color:var(--ink);border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
+
+      .nl-modal-back.open{display:flex}
+
+
+
+      .nl-modal-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+
+
+
+      .nl-modal-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--soft-line);background:rgba(255,255,255,.04);color:var(--quiet);font-size:17px;line-height:1;
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transition:all .2s}
+
+
+
+      .nl-modal-x:hover{color:#fff;border-color:rgba(255,255,255,.35);transform:rotate(90deg)}
