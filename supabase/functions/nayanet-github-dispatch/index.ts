@@ -395,6 +395,7 @@ Deno.serve(async (req) => {
       const githubReason = normalizedText(putJson?.message)
         .replace(/[\r\n\t]+/g, " ")
         .replace(/[^\x20-\x7E]/g, "")
+        .replace(/Authorization:\s*Bearer\s+\S+/gi, "Authorization: [REDACTED]")
         .slice(0, 240) || "UNKNOWN";
       const failureUpdate = await receipts
         .update({
