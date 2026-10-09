@@ -22,6 +22,19 @@ Implementation is not verification.
 
 > **Note (2026-09-30):** the dated `2026-09-2*` / `2026-09-30-*` files are point-in-time evidence snapshots. Their embedded SHAs describe the main revision at the time of writing — see live main for current. They are preserved as historical evidence, not current claims.
 
+## Tip-pinned proof by construction (2026-10-07)
+
+Every green `live-law-proof.yml` run commits its own proof receipt into this
+directory (`0006-LAW-LIVE-PROOF-<run_id>-V1.json`, schema
+`naya.law.live-proof.v1`, `source_main` = the exact main SHA the proof ran
+against) via the `publish-tip-proof` job, built by the fail-closed
+`scripts/build_law_tip_proof.py` — the negative control (capability without
+authority MUST be refused) is re-validated before anything lands, and the
+brain index is regenerated in the same commit. [`LATEST-LAW-LIVE-PROOF.json`](./LATEST-LAW-LIVE-PROOF.json)
+is the registry pointer to the newest receipt. Historical hand-committed
+receipts above remain as history; the by-construction series is the current
+claim.
+
 ## Key Principles
 
 - Proof states: `CLAIMED → SUPPORTED → VERIFIED → PRODUCTION-PROVEN`
